@@ -7,7 +7,7 @@
 
 package app.morphe.extension.music.patches.scrobbling.lastfm;
 
-import com.google.gson.Gson;
+import org.json.JSONObject;
 
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -33,22 +33,12 @@ public class LastFM {
     public static final String API_KEY = "986d00852eea80eda8b2930e0abf5c46";
     public static final String SECRET = "1d802c749ccec53103400582fcaebd01";
 
-    private static final Gson gson = new Gson();
     private static final ExecutorService executor = Executors.newSingleThreadExecutor();
 
     public static class Session {
         public String name;
         public String key;
         public int subscriber;
-    }
-
-    public static class MobileSessionResponse {
-        public Session session;
-    }
-
-    public static class LastFmError {
-        public int error;
-        public String message;
     }
 
     private static String calculateApiSig(Map<String, String> params) {
@@ -127,9 +117,9 @@ public class LastFM {
                 }
                 String errResponse = response.toString();
                 try {
-                    LastFmError errorObj = gson.fromJson(errResponse, LastFmError.class);
-                    if (errorObj != null && errorObj.message != null) {
-                        throw new Exception(errorObj.message + " (Code: " + errorObj.error + ")");
+                    JSONObject errorObj = new JSONObject(errResponse);
+                    if (errorObj.has("message")) {
+                        throw new Exception(errorObj.getString("message") + " (Code: " + errorObj.optInt("error") + ")");
                     }
                 } catch (Exception ignored) {}
                 throw new Exception("HTTP error " + code + ": " + errResponse);
@@ -145,9 +135,14 @@ public class LastFM {
         params.put("password", password);
 
         String jsonResponse = executePostRequest(params);
-        MobileSessionResponse response = gson.fromJson(jsonResponse, MobileSessionResponse.class);
-        if (response != null && response.session != null) {
-            return response.session;
+        JSONObject root = new JSONObject(jsonResponse);
+        if (root.has("session")) {
+            JSONObject sessionJson = root.getJSONObject("session");
+            Session session = new Session();
+            session.name = sessionJson.getString("name");
+            session.key = sessionJson.getString("key");
+            session.subscriber = sessionJson.optInt("subscriber");
+            return session;
         }
         throw new Exception("Invalid response structure from Last.fm");
     }

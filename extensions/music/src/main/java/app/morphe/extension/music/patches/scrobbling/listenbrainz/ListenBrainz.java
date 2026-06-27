@@ -7,8 +7,8 @@
 
 package app.morphe.extension.music.patches.scrobbling.listenbrainz;
 
-import com.google.gson.Gson;
-import com.google.gson.annotations.SerializedName;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -28,49 +28,12 @@ public class ListenBrainz {
     private static final String BASE_URL = "https://api.listenbrainz.org/";
     private static final String USER_AGENT = "YT Music Morphe (https://github.com/MorpheApp/morphe-patches)";
     
-    private static final Gson gson = new Gson();
     private static final ExecutorService executor = Executors.newSingleThreadExecutor();
 
     public static class TokenValidation {
         public boolean valid;
-        @SerializedName("user_name")
         public String userName;
         public String message;
-    }
-
-    public static class AdditionalInfo {
-        @SerializedName("duration_ms")
-        public Long durationMs;
-        @SerializedName("origin_url")
-        public String originUrl;
-        @SerializedName("submission_client")
-        public String submissionClient = "YT Music Morphe";
-        @SerializedName("submission_client_version")
-        public String submissionClientVersion = "1.0.0";
-    }
-
-    public static class TrackMetadata {
-        @SerializedName("artist_name")
-        public String artistName;
-        @SerializedName("track_name")
-        public String trackName;
-        @SerializedName("release_name")
-        public String releaseName;
-        @SerializedName("additional_info")
-        public AdditionalInfo additionalInfo;
-    }
-
-    public static class ListenPayload {
-        @SerializedName("listened_at")
-        public Long listenedAt;
-        @SerializedName("track_metadata")
-        public TrackMetadata trackMetadata;
-    }
-
-    public static class SubmitListensRequest {
-        @SerializedName("listen_type")
-        public String listenType;
-        public List<ListenPayload> payload;
     }
 
     /**
@@ -94,7 +57,18 @@ public class ListenBrainz {
         final int code = conn.getResponseCode();
         if (code == 200) {
             try (InputStreamReader reader = new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8)) {
-                return gson.fromJson(reader, TokenValidation.class);
+                StringBuilder response = new StringBuilder();
+                char[] buffer = new char[1024];
+                int read;
+                while ((read = reader.read(buffer)) != -1) {
+                    response.append(buffer, 0, read);
+                }
+                JSONObject root = new JSONObject(response.toString());
+                TokenValidation validation = new TokenValidation();
+                validation.valid = root.optBoolean("valid");
+                validation.userName = root.optString("user_name");
+                validation.message = root.optString("message");
+                return validation;
             }
         } else {
             TokenValidation validation = new TokenValidation();
@@ -116,15 +90,18 @@ public class ListenBrainz {
         }
         executor.submit(() -> {
             try {
-                SubmitListensRequest req = new SubmitListensRequest();
-                req.listenType = "single";
-                
-                ListenPayload payload = new ListenPayload();
-                payload.listenedAt = timestamp;
-                payload.trackMetadata = createTrackMetadata(artist, track, songId, album, duration);
-                req.payload = Collections.singletonList(payload);
+                JSONObject req = new JSONObject();
+                req.put("listen_type", "single");
 
-                String jsonBody = gson.toJson(req);
+                JSONObject payload = new JSONObject();
+                payload.put("listened_at", timestamp);
+                payload.put("track_metadata", createTrackMetadata(artist, track, songId, album, duration));
+
+                JSONArray payloadArray = new JSONArray();
+                payloadArray.put(payload);
+                req.put("payload", payloadArray);
+
+                String jsonBody = req.toString();
                 if (postRequest("1/submit-listens", token, jsonBody)) {
                     Logger.printDebug(() -> "Successfully scrobbled: '" + track + "' by: " + artist);
                 }
@@ -146,37 +123,45 @@ public class ListenBrainz {
         }
         executor.submit(() -> {
             try {
-                SubmitListensRequest req = new SubmitListensRequest();
-                req.listenType = "playing_now";
-                
-                ListenPayload payload = new ListenPayload();
-                payload.trackMetadata = createTrackMetadata(artist, track, songId, album, duration);
-                req.payload = Collections.singletonList(payload);
+                JSONObject req = new JSONObject();
+                req.put("listen_type", "playing_now");
 
-                String jsonBody = gson.toJson(req);
+                JSONObject payload = new JSONObject();
+                payload.put("track_metadata", createTrackMetadata(artist, track, songId, album, duration));
+
+                JSONArray payloadArray = new JSONArray();
+                payloadArray.put(payload);
+                req.put("payload", payloadArray);
+
+                String jsonBody = req.toString();
                 postRequest("1/submit-listens?return_msid=true", token, jsonBody);
-                Logger.printDebug(() -> "ListenBrainz: updated Now Playing status to '" + track + "'");
-            } catch (Exception e) {
-                Logger.printException(() -> "ListenBrainz Now Playing update failure", e);
+                Logger.printDebug(() -> "Updated Now Playing status to '" + track + "'");
+            } catch (Exception ex) {
+                Logger.printException(() -> "Now Playing update failure", ex);
             }
         });
     }
 
-    private static TrackMetadata createTrackMetadata(String artist, String track,
-                                                     String songId, String album, int duration) {
-        TrackMetadata metadata = new TrackMetadata();
-        metadata.artistName = artist;
-        metadata.trackName = track;
-        metadata.releaseName = (album != null && !album.isBlank()) ? album : null;
+    private static JSONObject createTrackMetadata(String artist, String track,
+                                                     String songId, String album, int duration) throws Exception {
+        JSONObject metadata = new JSONObject();
+        metadata.put("artist_name", artist);
+        metadata.put("track_name", track);
+        if (album != null && !album.isBlank()) {
+            metadata.put("release_name", album);
+        }
 
-        AdditionalInfo info = new AdditionalInfo();
+        JSONObject info = new JSONObject();
         if (duration > 0) {
-            info.durationMs = (long) duration * 1000;
+            info.put("duration_ms", (long) duration * 1000);
         }
         if (songId != null && !songId.isBlank()) {
-            info.originUrl = "https://music.youtube.com/watch?v=" + songId;
+            info.put("origin_url", "https://music.youtube.com/watch?v=" + songId);
         }
-        metadata.additionalInfo = info;
+        info.put("submission_client", "YT Music Morphe");
+        info.put("submission_client_version", "1.0.0");
+        
+        metadata.put("additional_info", info);
         return metadata;
     }
 
