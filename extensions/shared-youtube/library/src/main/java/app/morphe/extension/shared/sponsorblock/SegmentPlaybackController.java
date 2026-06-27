@@ -89,7 +89,7 @@ public class SegmentPlaybackController {
         }
     }
 
-    /*
+    /**
      * Highlight segments have zero length as they are a point in time.
      * Draw them on screen using a fixed width bar.
      */
