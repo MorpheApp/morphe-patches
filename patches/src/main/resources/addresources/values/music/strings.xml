@@ -84,7 +84,7 @@ Second \"item\" text"</string>
     <string name="morphe_music_crossfade_about_title">About</string>
     <string name="morphe_music_crossfade_about_summary">How crossfade works — and when it does not</string>
     <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
-    <string name="morphe_music_crossfade_about_banner_title" translatable="false"></string>
+    <string name="morphe_music_crossfade_about_banner_title" translatable="false"> </string>
     <string name="morphe_music_crossfade_about_how_title">How it works</string>
     <string name="morphe_music_crossfade_about_how_summary">"Crossfade overlaps the end of one song with the start of the next, fading one down as the other comes up over your chosen duration and curve.
 
@@ -177,7 +177,7 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <string name="morphe_music_scrobbling_log_out">Log out</string>
     <string name="morphe_music_scrobbling_logged_out_toast">Logged out</string>
 
-    <string name="morphe_settings_music_listenbrainz_title" translatable="false">ListenBrainz</string>
+    <string name="morphe_music_listenbrainz_title" translatable="false">ListenBrainz</string>
     <!-- 'scrobbling' must be kept untranslated -->
     <string name="morphe_music_listenbrainz_enabled_title">Enable scrobbling</string>
     <string name="morphe_music_listenbrainz_now_playing_title">Submit \"Now Playing\" status</string>
@@ -203,7 +203,7 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <string name="morphe_music_listenbrainz_token_toast_saved">Token saved</string>
     <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Warning: Saved token is invalid!</string>
 
-    <string name="morphe_settings_music_lastfm_title" translatable="false">Last.fm</string>
+    <string name="morphe_music_lastfm_title" translatable="false">Last.fm</string>
     <!-- 'scrobbling' must be kept untranslated -->
     <string name="morphe_music_lastfm_enabled_title">Enable scrobbling</string>
     <string name="morphe_music_lastfm_now_playing_title">Submit \"Now Playing\" status</string>
@@ -233,10 +233,9 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <string name="morphe_music_scrobbling_custom_regex_title">Custom regex cleanup</string>
     <string name="morphe_music_scrobbling_custom_regex_summary">Enter a custom regular expression (regex) to match and remove additional text from song titles, artists, or albums</string>
 
-    <!-- Scrobbling About Page -->
     <string name="morphe_music_scrobbling_about_title">About</string>
     <string name="morphe_music_scrobbling_about_summary">How scrobbling works, background requirements, and rules</string>
-    <string name="morphe_music_scrobbling_about_banner_title" translatable="false"></string>
+    <string name="morphe_music_scrobbling_about_banner_title" translatable="false"> </string>
     <string name="morphe_music_scrobbling_about_how_title">How scrobbling works</string>
     <string name="morphe_music_scrobbling_about_how_summary">Morphe monitors your playback lifecycle to automatically submit played songs to Last.fm and ListenBrainz. Once a song crosses the specified play threshold, a scrobble is sent securely using your authorized credentials.</string>
     <string name="morphe_music_scrobbling_about_battery_title">Background execution</string>

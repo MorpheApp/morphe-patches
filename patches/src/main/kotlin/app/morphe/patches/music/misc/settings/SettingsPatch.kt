@@ -27,6 +27,7 @@ import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.IntentPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
+import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.settings.settingsPatch
@@ -70,8 +71,8 @@ private val settingsResourcePatch = resourcePatch {
                 "morphe_settings_screen_05_player_bold.xml",
                 "morphe_settings_screen_11_misc.xml",
                 "morphe_settings_screen_11_misc_bold.xml",
-                "morphe_settings_screen_scrobbling.xml",
-                "morphe_settings_screen_scrobbling_bold.xml"
+                "morphe_settings_music_screen_05_scrobbling.xml",
+                "morphe_settings_music_screen_05_scrobbling_bold.xml"
             ),
             ResourceGroup("layout",
                 "morphe_preference_with_icon.xml"
@@ -214,9 +215,10 @@ object PreferenceScreen : BasePreferenceScreen() {
     val SCROBBLING = Screen(
         key = "morphe_settings_music_screen_4_scrobbling",
         summaryKey = null,
-        icon = "@drawable/morphe_settings_screen_scrobbling",
-        iconBold = "@drawable/morphe_settings_screen_scrobbling_bold",
-        layout = "@layout/morphe_preference_with_icon"
+        icon = "@drawable/morphe_settings_music_screen_05_scrobbling",
+        iconBold = "@drawable/morphe_settings_music_screen_05_scrobbling_bold",
+        layout = "@layout/morphe_preference_with_icon",
+        sorting = Sorting.UNSORTED
     )
     val MISC = Screen(
         key = "morphe_settings_music_screen_5_misc",

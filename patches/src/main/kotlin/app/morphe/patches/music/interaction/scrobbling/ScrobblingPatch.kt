@@ -19,6 +19,7 @@ import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
+import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.youtube.layout.returnyoutubedislike.DislikeFingerprint
@@ -61,7 +62,7 @@ val scrobblingPatch = bytecodePatch(
     execute {
         PreferenceScreen.SCROBBLING.addPreferences(
             PreferenceCategory(
-                key = "morphe_settings_music_listenbrainz",
+                key = "morphe_music_listenbrainz",
                 preferences = setOf(
                     NonInteractivePreference(
                         key = "morphe_music_listenbrainz_token_ui",
@@ -93,7 +94,7 @@ val scrobblingPatch = bytecodePatch(
                 )
             ),
             PreferenceCategory(
-                key = "morphe_settings_music_lastfm",
+                key = "morphe_music_lastfm",
                 preferences = setOf(
                     NonInteractivePreference(
                         key = "morphe_music_lastfm_token_ui",
@@ -134,7 +135,7 @@ val scrobblingPatch = bytecodePatch(
             ),
             PreferenceScreenPreference(
                 key = "morphe_music_scrobbling_about",
-                sorting = PreferenceScreenPreference.Sorting.UNSORTED,
+                sorting = Sorting.UNSORTED,
                 preferences = setOf(
                     NonInteractivePreference(
                         key = "morphe_music_scrobbling_about_banner",
