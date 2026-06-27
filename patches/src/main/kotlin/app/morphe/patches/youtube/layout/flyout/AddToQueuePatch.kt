@@ -8,11 +8,14 @@
 package app.morphe.patches.youtube.layout.flyout
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.string
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.auth.authHookPatch
@@ -34,6 +37,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
@@ -98,37 +102,63 @@ val addToQueuePatch = bytecodePatch(
         }
 
 
-        // Full watch history list. Needs special treatment because it doesn't use litho.
-        val protocolMessageType = FlyoutMenuItemMessageFingerprint
-            .instructionMatches[1]
-            .getInstruction<ReferenceInstruction>()
-            .getReference<TypeReference>()!!.type
-        mutableClassDefBy(protocolMessageType).apply {
-            // videoId is the only string field in the class
-            val stringIdField = fields.single { it.type == "Ljava/lang/String;" }
+        fun addProtocolVideoIdInterface(messageType: String) {
+            // videoId is the only string field in the class initialized to an empty string.
+            val videoIdStringField = Fingerprint(
+                definingClass = messageType,
+                name = "<init>",
+                filters = listOf(
+                    string(""),
+                    fieldAccess(
+                        opcode = Opcode.IPUT_OBJECT,
+                        definingClass = "this",
+                        type = "Ljava/lang/String;",
+                        location = MatchAfterWithin(2))
+                )
+            ).instructionMatches.last().getFieldAccessed()
 
-            interfaces.add(EXTENSION_FLYOUT_MENU_VIDEO_ID_INTERFACE)
-            methods.add(
-                ImmutableMethod(
-                    type,
-                    "patch_getVideoId",
-                    listOf(),
-                    "Ljava/lang/String;",
-                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                    null,
-                    null,
-                    MutableMethodImplementation(2),
-                ).toMutable().apply {
-                    addInstructions(
-                        0,
+            mutableClassDefBy(messageType).apply {
+                interfaces.add(EXTENSION_FLYOUT_MENU_VIDEO_ID_INTERFACE)
+                methods.add(
+                    ImmutableMethod(
+                        type,
+                        "patch_getVideoId",
+                        listOf(),
+                        "Ljava/lang/String;",
+                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                        null,
+                        null,
+                        MutableMethodImplementation(2),
+                    ).toMutable().apply {
+                        addInstructions(
+                            0,
                         """
-                            iget-object v0, p0, $stringIdField
-                            return-object v0
-                        """
-                    )
-                }
-            )
+                                iget-object v0, p0, $videoIdStringField
+                                return-object v0
+                            """
+                        )
+                    }
+                )
+            }
         }
+
+        // Full watch history list. Needs special treatment because it doesn't use litho.
+        addProtocolVideoIdInterface(
+            FlyoutMenuItemMessageFingerprint
+                .instructionMatches[1]
+                .getInstruction<ReferenceInstruction>()
+                .getReference<TypeReference>()!!
+                .type
+        )
+
+        // Playlists in 'You' tab. Doesn't seem required for 21.x but is required for 20.21
+        addProtocolVideoIdInterface(
+            SingularGeneratedExtensionFingerprint
+                .instructionMatches[1]
+                .getInstruction<ReferenceInstruction>()
+                .getReference<FieldReference>()!!
+                .type
+        )
 
         // region Hook flyout menu protocol buffer object.
         FeedFlyoutBufferObjectFingerprint.method.addInstruction(
