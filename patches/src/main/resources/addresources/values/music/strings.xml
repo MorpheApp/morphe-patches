@@ -204,6 +204,8 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Warning: Saved token is invalid!</string>
 
     <string name="morphe_settings_music_lastfm_title" translatable="false">Last.fm</string>
+    <!-- 'scrobbling' must be kept untranslated -->
+    <string name="morphe_music_lastfm_enabled_title">Enable scrobbling</string>
     <string name="morphe_music_lastfm_now_playing_title">Submit \"Now Playing\" status</string>
     <string name="morphe_music_lastfm_love_on_like_title">Love liked tracks</string>
     <string name="morphe_music_lastfm_love_on_like_summary">Automatically love tracks on Last.fm when you like them on YouTube Music</string>
