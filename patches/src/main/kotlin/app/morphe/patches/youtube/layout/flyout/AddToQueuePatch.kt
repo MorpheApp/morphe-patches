@@ -26,6 +26,7 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
+import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -33,10 +34,14 @@ import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/AddToQueuePatch;"
+
+private const val EXTENSION_FLYOUT_MENU_VIDEO_ID_INTERFACE =
+    $$"Lapp/morphe/extension/youtube/patches/AddToQueuePatch$FlyoutMenuVideoIdInterface;"
 
 private const val EXTENSION_PROTOCOL_BUFFER_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/AddToQueuePatch$ProtocolBufferFieldInterface;"
@@ -92,10 +97,43 @@ val addToQueuePatch = bytecodePatch(
             }
         }
 
+
+        // Full watch history list. Needs special treatment because it doesn't use litho.
+        val protocolMessageType = FlyoutMenuItemMessageFingerprint
+            .instructionMatches[1]
+            .getInstruction<ReferenceInstruction>()
+            .getReference<TypeReference>()!!.type
+        mutableClassDefBy(protocolMessageType).apply {
+            // videoId is the only string field in the class
+            val stringIdField = fields.single { it.type == "Ljava/lang/String;" }
+
+            interfaces.add(EXTENSION_FLYOUT_MENU_VIDEO_ID_INTERFACE)
+            methods.add(
+                ImmutableMethod(
+                    type,
+                    "patch_getVideoId",
+                    listOf(),
+                    "Ljava/lang/String;",
+                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                    null,
+                    null,
+                    MutableMethodImplementation(2),
+                ).toMutable().apply {
+                    addInstructions(
+                        0,
+                        """
+                            iget-object v0, p0, $stringIdField
+                            return-object v0
+                        """
+                    )
+                }
+            )
+        }
+
         // region Hook flyout menu protocol buffer object.
         FeedFlyoutBufferObjectFingerprint.method.addInstruction(
             0,
-            "invoke-static/range { p2 .. p2 }, $EXTENSION_CLASS->extractVideoIdFromFlyoutBuffer(Ljava/util/Map;)V"
+            "invoke-static/range { p2 .. p2 }, $EXTENSION_CLASS->extractVideoId(Ljava/util/Map;)V"
         )
 
         FullHistoryFlyoutBufferObjectFingerprint.let {
@@ -107,7 +145,7 @@ val addToQueuePatch = bytecodePatch(
 
                 addInstruction(
                     instructionIndex + 1,
-                    "invoke-static { v$instructionRegister }, $EXTENSION_CLASS->extractVideoIdFromFlyoutBuffer(Ljava/lang/Object;)V"
+                    "invoke-static { v$instructionRegister }, $EXTENSION_CLASS->extractVideoId(Ljava/lang/Object;)V"
                 )
             }
         }

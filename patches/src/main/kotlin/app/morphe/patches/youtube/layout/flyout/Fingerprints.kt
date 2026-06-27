@@ -105,3 +105,14 @@ internal object InteractiveStickerRendererGetEditViewFingerprint : Fingerprint(
         fieldAccess(opcode = Opcode.IGET_OBJECT, type = "[B") // The only byte array accessed in the method.
     )
 )
+
+internal object FlyoutMenuItemMessageFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf("Ljava/lang/String;", "Lcom/google/protobuf/MessageLite;"),
+    filters = listOf(
+        literal(42357),
+        opcode(Opcode.INSTANCE_OF, location = MatchAfterWithin(10)),
+        string("downloads_page_downloads_item_section_identifier")
+    )
+)

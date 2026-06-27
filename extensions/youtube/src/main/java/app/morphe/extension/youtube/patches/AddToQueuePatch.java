@@ -30,11 +30,19 @@ import app.morphe.extension.youtube.settings.Settings;
 public final class AddToQueuePatch {
 
     /**
-     * Interface to use obfuscated methods.
+     * Interface to use obfuscated fields.
      */
     public interface ProtocolBufferFieldInterface {
         // Method is added during patching.
         byte[] patch_getBuffer();
+    }
+
+    /**
+     * Interface to use obfuscated fields.
+     */
+    public interface FlyoutMenuVideoIdInterface {
+        // Method is added during patching.
+        String patch_getVideoId();
     }
 
     private static Dialog flyoutDialog = null;
@@ -91,24 +99,29 @@ public final class AddToQueuePatch {
     /**
      * Injection point.
      */
-    public static void extractVideoIdFromFlyoutBuffer(Map<?, ?> map) {
-        extractVideoIdFromFlyoutBuffer(map.get("com.google.android.libraries.youtube.innertube.endpoint.tag"));
+    public static void extractVideoId(Map<?, ?> map) {
+        extractVideoId(map.get("com.google.android.libraries.youtube.innertube.endpoint.tag"));
     }
 
     /**
      * Injection point.
      */
-    public static void extractVideoIdFromFlyoutBuffer(Object bufferObject) {
+    public static void extractVideoId(Object bufferObject) {
         try {
-            flyoutVideoId = "";
+            Logger.printDebug(() -> "FlyoutBuffer class: " + bufferObject.getClass());
 
-            Logger.printDebug(() -> "FlyoutBuffer class is: " + bufferObject.getClass());
+            if (bufferObject instanceof FlyoutMenuVideoIdInterface videoIdInterface) {
+                String videoId = videoIdInterface.patch_getVideoId();
+                if (videoId == null) {
+                    Logger.printDebug(() -> "VideoId is null"); // Should never happen.
+                }
+                Logger.printDebug(() -> "Found flyout videoId: " + videoId);
+                flyoutVideoId = videoId;
+                visibleFlyoutButtons.clear();
+                return;
+            }
 
             if (!(bufferObject instanceof ProtocolBufferFieldInterface bufferInterface)) {
-                var videoIdField = bufferObject.getClass().getDeclaredField("e"); // Name e come from 21.26.360
-                videoIdField.setAccessible(true);
-                flyoutVideoId = (String) videoIdField.get(bufferObject);
-
                 return;
             }
 
