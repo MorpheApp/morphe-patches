@@ -147,6 +147,7 @@ val scrobblingPatch = bytecodePatch(
                     NonInteractivePreference("morphe_music_scrobbling_about_love"),
                     NonInteractivePreference("morphe_music_scrobbling_about_rules"),
                     NonInteractivePreference("morphe_music_scrobbling_about_cleanup"),
+                    NonInteractivePreference("morphe_music_scrobbling_about_regex_examples"),
                     NonInteractivePreference("morphe_music_scrobbling_about_credit")
                 )
             )

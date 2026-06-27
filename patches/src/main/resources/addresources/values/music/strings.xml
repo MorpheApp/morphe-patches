@@ -248,10 +248,9 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <string name="morphe_music_scrobbling_about_cleanup_title">Metadata cleanup &amp; custom regex</string>
     <string name="morphe_music_scrobbling_about_cleanup_summary">"To ensure clean scrobbles, Morphe can strip common video-related suffixes from song titles and names (like \"(Official Music Video)\", \"- Topic\", etc.).
 
-You can also specify a custom regular expression (regex) to remove any other unwanted text. When matched, the matching text is replaced with nothing.
-
-Examples:
-• Remove featuring artists: (?i)\\s*[\\(\\[](feat\\.|ft\\.)[^\\)]*[\\)\\]]
+You can also specify a custom regular expression (regex) to remove any other unwanted text. When matched, the matching text is replaced with nothing."</string>
+    <string name="morphe_music_scrobbling_about_regex_examples_title">Regex examples</string>
+    <string name="morphe_music_scrobbling_about_regex_examples_summary">"• Remove featuring artists: (?i)\\s*[\\(\\[](feat\\.|ft\\.)[^\\)]*[\\)\\]]
 • Remove clean/explicit tags: (?i)\\s*\\((clean|explicit)\\)
 • Remove specific text: \\s*-\\s*Single"</string>
     <string name="morphe_music_scrobbling_about_credit_title">Credit</string>
