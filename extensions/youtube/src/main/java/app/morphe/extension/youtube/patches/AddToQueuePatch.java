@@ -105,6 +105,10 @@ public final class AddToQueuePatch {
             Logger.printDebug(() -> "FlyoutBuffer class is: " + bufferObject.getClass());
 
             if (!(bufferObject instanceof ProtocolBufferFieldInterface bufferInterface)) {
+                var videoIdField = bufferObject.getClass().getDeclaredField("e"); // Name e come from 21.26.360
+                videoIdField.setAccessible(true);
+                flyoutVideoId = (String) videoIdField.get(bufferObject);
+
                 return;
             }
 
