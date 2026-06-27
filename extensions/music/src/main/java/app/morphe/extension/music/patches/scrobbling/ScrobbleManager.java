@@ -165,8 +165,8 @@ public class ScrobbleManager {
 
         final int minSongDuration = Settings.LISTENBRAINZ_MIN_SONG_DURATION.get();
         if (currentDurationSeconds <= minSongDuration) {
-            Logger.printDebug(() -> "ListenBrainz: duration " + currentDurationSeconds
-                    + "s <= minimum " + minSongDuration + "s, skipping scrobble");
+            Logger.printDebug(() -> "DurationL " + currentDurationSeconds
+                    + "s <= minimum: " + minSongDuration + "s, skipping scrobble");
             return;
         }
 

@@ -23,7 +23,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import app.morphe.extension.music.patches.scrobbling.lastfm.LastFM;
 import app.morphe.extension.music.settings.Settings;
@@ -140,7 +139,7 @@ public class LastFMTokenPreference extends Preference {
                     Settings.LASTFM_SESSION_KEY.resetToDefault();
                     Settings.LASTFM_USERNAME.resetToDefault();
                     updateSummary();
-                    Toast.makeText(context, str("morphe_music_scrobbling_logged_out_toast"), Toast.LENGTH_SHORT).show();
+                    Utils.showToastShort(str("morphe_music_scrobbling_logged_out_toast"));
                 } : null,
                 true
         );
@@ -154,27 +153,32 @@ public class LastFMTokenPreference extends Preference {
                     String username = usernameInput.getText().toString().trim();
                     String password = passwordInput.getText().toString();
                     if (username.isEmpty() || password.isEmpty()) {
-                        showStatus(status, str("morphe_music_lastfm_token_status_empty"), STATUS_COLOR_ERROR);
+                        showStatus(status, str("morphe_music_lastfm_token_status_empty"),
+                                STATUS_COLOR_ERROR);
                         return;
                     }
-                    showStatus(status, str("morphe_music_lastfm_token_status_logging_in"), Utils.getAppForegroundColor());
+                    showStatus(status, str("morphe_music_lastfm_token_status_logging_in"),
+                            Utils.getAppForegroundColor());
                     Utils.runOnBackgroundThread(() -> {
                         try {
                             LastFM.Session session = LastFM.getMobileSession(username, password);
                             Utils.runOnMainThread(() -> {
-                                if (session != null && session.key != null) {
-                                    showStatus(status, str("morphe_music_lastfm_token_status_success"), STATUS_COLOR_SUCCESS);
+                                if (session.key != null) {
+                                    showStatus(status, str("morphe_music_lastfm_token_status_success"),
+                                            STATUS_COLOR_SUCCESS);
                                     Settings.LASTFM_SESSION_KEY.save(session.key);
                                     Settings.LASTFM_USERNAME.save(session.name);
                                     updateSummary();
-                                    Toast.makeText(context, str("morphe_music_lastfm_token_toast_saved"), Toast.LENGTH_SHORT).show();
+                                    Utils.showToastShort(str("morphe_music_lastfm_token_toast_saved"));
                                 } else {
-                                    showStatus(status, str("morphe_music_lastfm_token_status_no_session"), STATUS_COLOR_ERROR);
+                                    showStatus(status, str("morphe_music_lastfm_token_status_no_session"),
+                                            STATUS_COLOR_ERROR);
                                 }
                             });
-                        } catch (Exception e) {
-                            Utils.runOnMainThread(() ->
-                                    showStatus(status, str("morphe_music_lastfm_token_status_failed", e.getMessage()), STATUS_COLOR_ERROR));
+                        } catch (Exception ex) {
+                            Utils.runOnMainThread(() -> showStatus(status,
+                                    str("morphe_music_lastfm_token_status_failed",
+                                            ex.getMessage()), STATUS_COLOR_ERROR));
                         }
                     });
                 },

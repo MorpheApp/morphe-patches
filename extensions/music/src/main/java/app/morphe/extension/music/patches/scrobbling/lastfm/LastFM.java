@@ -74,6 +74,7 @@ public class LastFM {
         }
     }
 
+    @SuppressWarnings("CharsetObjectCanBeUsed")
     private static String executePostRequest(Map<String, String> params) throws Exception {
         Map<String, String> paramsForSig = new HashMap<>(params);
         String apiSig = calculateApiSig(paramsForSig);
@@ -164,9 +165,9 @@ public class LastFM {
                 if (duration != null && duration > 0) params.put("duration", String.valueOf(duration));
 
                 executePostRequest(params);
-                Logger.printInfo(() -> "Last.fm: Updated Now Playing for " + artist + " - " + track);
-            } catch (Exception e) {
-                Logger.printException(() -> "Last.fm: Failed to update Now Playing", e);
+                Logger.printDebug(() -> "Updated Now Playing for " + artist + " - " + track);
+            } catch (Exception ex) {
+                Logger.printException(() -> "Failed to update Now Playing", ex);
             }
         });
     }
@@ -186,9 +187,9 @@ public class LastFM {
                 if (duration != null && duration > 0) params.put("duration[0]", String.valueOf(duration));
 
                 executePostRequest(params);
-                Logger.printInfo(() -> "Last.fm: Scrobbled track: " + artist + " - " + track);
-            } catch (Exception e) {
-                Logger.printException(() -> "Last.fm: Failed to scrobble track", e);
+                Logger.printDebug(() -> "Scrobbled track: " + artist + " - " + track);
+            } catch (Exception ex) {
+                Logger.printException(() -> "Failed to scrobble track", ex);
             }
         });
     }

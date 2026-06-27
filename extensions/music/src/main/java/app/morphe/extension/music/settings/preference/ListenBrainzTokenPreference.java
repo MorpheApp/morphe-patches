@@ -24,7 +24,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import app.morphe.extension.music.patches.scrobbling.listenbrainz.ListenBrainz;
 import app.morphe.extension.music.settings.Settings;
@@ -66,11 +65,10 @@ public class ListenBrainzTokenPreference extends Preference {
     }
 
     private void updateSummary() {
-        if (isLoggedIn()) {
-            setSummary(str("morphe_music_listenbrainz_token_summary_logged_in"));
-        } else {
-            setSummary(str("morphe_music_scrobbling_summary_logged_out"));
-        }
+        setSummary(str(isLoggedIn()
+                ? "morphe_music_listenbrainz_token_summary_logged_in"
+                : "morphe_music_scrobbling_summary_logged_out"
+        ));
     }
 
     private static boolean isLoggedIn() {
@@ -84,8 +82,7 @@ public class ListenBrainzTokenPreference extends Preference {
 
     private void showDialog() {
         Context context = getContext();
-        String currentToken = Settings.LISTENBRAINZ_USER_TOKEN.get();
-        final boolean loggedIn = !currentToken.isBlank();
+        final boolean loggedIn = isLoggedIn();
 
         LinearLayout content = new LinearLayout(context);
         content.setOrientation(LinearLayout.VERTICAL);
@@ -103,6 +100,7 @@ public class ListenBrainzTokenPreference extends Preference {
         EditText tokenInput = createThemedEditText(context);
         tokenInput.setHint(str("morphe_music_listenbrainz_token_dialog_hint"));
         if (loggedIn) {
+            String currentToken = Settings.LISTENBRAINZ_USER_TOKEN.get();
             tokenInput.setText(currentToken);
             tokenInput.setSelection(currentToken.length());
         }
@@ -126,17 +124,16 @@ public class ListenBrainzTokenPreference extends Preference {
                     if (token.isEmpty()) {
                         Settings.LISTENBRAINZ_USER_TOKEN.resetToDefault();
                         updateSummary();
-                        Toast.makeText(context, str("morphe_music_listenbrainz_token_toast_cleared"), Toast.LENGTH_SHORT).show();
+                        Utils.showToastShort(str("morphe_music_listenbrainz_token_toast_cleared"));
                     } else {
                         Settings.LISTENBRAINZ_USER_TOKEN.save(token);
                         updateSummary();
-                        Toast.makeText(context, str("morphe_music_listenbrainz_token_toast_saved"), Toast.LENGTH_SHORT).show();
+                        Utils.showToastShort(str("morphe_music_listenbrainz_token_toast_saved"));
                         Utils.runOnBackgroundThread(() -> {
                             try {
                                 ListenBrainz.TokenValidation validation = ListenBrainz.validateToken(token);
                                 if (!validation.valid) {
-                                    Utils.runOnMainThread(() ->
-                                            Toast.makeText(context, str("morphe_music_listenbrainz_token_toast_invalid_warning"), Toast.LENGTH_LONG).show());
+                                    Utils.showToastLong(str("morphe_music_listenbrainz_token_toast_invalid_warning"));
                                 }
                             } catch (Exception ignored) {}
                         });
@@ -147,7 +144,7 @@ public class ListenBrainzTokenPreference extends Preference {
                 loggedIn ? () -> {
                     Settings.LISTENBRAINZ_USER_TOKEN.resetToDefault();
                     updateSummary();
-                    Toast.makeText(context, str("morphe_music_scrobbling_logged_out_toast"), Toast.LENGTH_SHORT).show();
+                    Utils.showToastShort(str("morphe_music_scrobbling_logged_out_toast"));
                 } : null,
                 true
         );

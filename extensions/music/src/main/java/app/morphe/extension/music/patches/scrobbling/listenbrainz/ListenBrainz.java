@@ -28,10 +28,6 @@ public class ListenBrainz {
     private static final String BASE_URL = "https://api.listenbrainz.org/";
     private static final String USER_AGENT = "YT Music Morphe (https://github.com/MorpheApp/morphe-patches)";
     
-    public static final float DEFAULT_SCROBBLE_DELAY_PERCENT = 0.5f;
-    public static final int DEFAULT_SCROBBLE_MIN_SONG_DURATION = 30;
-    public static final int DEFAULT_SCROBBLE_DELAY_SECONDS = 180;
-
     private static final Gson gson = new Gson();
     private static final ExecutorService executor = Executors.newSingleThreadExecutor();
 
@@ -115,7 +111,7 @@ public class ListenBrainz {
                                      String songId, String album, int duration) {
         String token = Settings.LISTENBRAINZ_USER_TOKEN.get();
         if (token.isBlank()) {
-            Logger.printDebug(() -> "ListenBrainz: cannot scrobble, token not set or invalid");
+            Logger.printDebug(() -> "Cannot scrobble, token not set or invalid");
             return;
         }
         executor.submit(() -> {
@@ -145,7 +141,7 @@ public class ListenBrainz {
                                              String songId, String album, int duration) {
         String token = Settings.LISTENBRAINZ_USER_TOKEN.get();
         if (token.isBlank()) {
-            Logger.printDebug(() -> "ListenBrainz: cannot update Now Playing, token not set or invalid");
+            Logger.printDebug(() -> "Cannot update Now Playing, token not set or invalid");
             return;
         }
         executor.submit(() -> {
