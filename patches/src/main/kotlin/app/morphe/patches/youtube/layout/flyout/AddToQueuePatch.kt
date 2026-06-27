@@ -99,15 +99,17 @@ val addToQueuePatch = bytecodePatch(
         )
 
         FullHistoryFlyoutBufferObjectFingerprint.let {
-            val instructionIndex = it.instructionMatches[2].index
-            val instructionRegister = it.method.getInstruction<OneRegisterInstruction>(
-                instructionIndex
-            ).registerA
+            it.method.apply {
+                val instructionIndex = it.instructionMatches[2].index
+                val instructionRegister = getInstruction<OneRegisterInstruction>(
+                    instructionIndex
+                ).registerA
 
-            it.method.addInstruction(
-                instructionIndex + 1,
-                "invoke-static { v$instructionRegister }, $EXTENSION_CLASS->extractVideoIdFromFlyoutBuffer(Ljava/lang/Object;)V"
-            )
+                addInstruction(
+                    instructionIndex + 1,
+                    "invoke-static { v$instructionRegister }, $EXTENSION_CLASS->extractVideoIdFromFlyoutBuffer(Ljava/lang/Object;)V"
+                )
+            }
         }
 
         // end region

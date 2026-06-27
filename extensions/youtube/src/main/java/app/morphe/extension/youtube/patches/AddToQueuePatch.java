@@ -69,6 +69,7 @@ public final class AddToQueuePatch {
         if (flyoutDialog == null) {
             return;
         }
+        flyoutVideoId = "";
         flyoutDialog.dismiss();
     }
 
@@ -83,6 +84,7 @@ public final class AddToQueuePatch {
         if (flyoutPopupWindow == null) {
             return;
         }
+        flyoutVideoId = "";
         flyoutPopupWindow.dismiss();
     }
 
