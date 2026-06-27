@@ -69,7 +69,7 @@ public class ScrobbleManager {
             clean = clean.replaceAll("(?i)\\s*[（(\\[](official\\s+)?(video|audio|music\\s+video|lyric\\s+video|visualizer)[）)\\]]", "");
             clean = clean.replaceAll("(?i)\\s*[（(\\[](\\d{4}\\s+)?remaster(ed)?(\\s+\\d{4})?[）)\\]]", "");
             clean = clean.replaceAll("(?i)\\s*[（(\\[]live(\\s+at\\s+.*|\\s+\\d{4})?[）)\\]]", "");
-            clean = clean.replaceAll("(?i)\\s*[（(\\[]mono|stereo|hq|hd)[）)\\]]", "");
+            clean = clean.replaceAll("(?i)\\s*[（(\\[](mono|stereo|hq|hd)[）)\\]]", "");
             clean = applyCustomRegex(clean);
         }
         return clean.replaceAll("\\s+", " ").trim();
