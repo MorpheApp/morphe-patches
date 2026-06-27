@@ -171,20 +171,24 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <string name="morphe_music_hide_upgrade_button_title">Hide upgrade button</string>
 
     <!-- interaction.scrobbling.scrobblingPatch -->
-    <string name="morphe_music_scrobbling_title">Scrobbling</string>
+    <string name="morphe_music_scrobbling_title" translatable="false">Scrobbling</string>
     <string name="morphe_music_scrobbling_summary">Configure Last.fm and ListenBrainz integration</string>
     <string name="morphe_music_scrobbling_summary_logged_out">Not logged in. Tap to configure</string>
     <string name="morphe_music_scrobbling_log_out">Log out</string>
     <string name="morphe_music_scrobbling_logged_out_toast">Logged out</string>
 
     <string name="morphe_settings_music_listenbrainz_title" translatable="false">ListenBrainz</string>
+    <!-- 'scrobbling' must be kept untranslated -->
     <string name="morphe_music_listenbrainz_enabled_title">Enable scrobbling</string>
     <string name="morphe_music_listenbrainz_now_playing_title">Submit \"Now Playing\" status</string>
     <string name="morphe_music_listenbrainz_min_song_duration_title">Minimum song duration</string>
+    <!-- 'scrobble' must be kept untranslated -->
     <string name="morphe_music_listenbrainz_delay_percent_title">Scrobble delay percent</string>
+    <!-- 'scrobble' must be kept untranslated -->
     <string name="morphe_music_listenbrainz_delay_seconds_title">Scrobble delay seconds</string>
     <string name="morphe_music_listenbrainz_token_title">ListenBrainz Account</string>
     <string name="morphe_music_listenbrainz_token_summary_logged_in">Logged in. Tap to manage account</string>
+    <!-- 'scrobbling' must be kept untranslated -->
     <string name="morphe_music_listenbrainz_token_dialog_instruction">Enter your ListenBrainz User Token to enable scrobbling</string>
     <string name="morphe_music_listenbrainz_token_dialog_hint">Token</string>
     <string name="morphe_music_listenbrainz_token_dialog_get_token">Get token</string>
@@ -200,12 +204,13 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Warning: Saved token is invalid!</string>
 
     <string name="morphe_settings_music_lastfm_title" translatable="false">Last.fm</string>
-    <string name="morphe_music_lastfm_enabled_title">Enable scrobbling</string>
     <string name="morphe_music_lastfm_now_playing_title">Submit \"Now Playing\" status</string>
     <string name="morphe_music_lastfm_love_on_like_title">Love liked tracks</string>
     <string name="morphe_music_lastfm_love_on_like_summary">Automatically love tracks on Last.fm when you like them on YouTube Music</string>
     <string name="morphe_music_lastfm_min_song_duration_title">Minimum song duration</string>
+    <!-- 'scrobble' must be kept untranslated -->
     <string name="morphe_music_lastfm_delay_percent_title">Scrobble delay percent</string>
+    <!-- 'scrobble' must be kept untranslated -->
     <string name="morphe_music_lastfm_delay_seconds_title">Scrobble delay seconds</string>
     <string name="morphe_music_lastfm_token_title">Last.fm Account</string>
     <string name="morphe_music_lastfm_token_summary_logged_in">Logged in as %s. Tap to manage account</string>
