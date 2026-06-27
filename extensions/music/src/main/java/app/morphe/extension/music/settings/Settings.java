@@ -11,6 +11,7 @@ import app.morphe.extension.music.patches.CrossfadeManager.CrossFadeDuration;
 import app.morphe.extension.music.patches.CrossfadeManager.FadeCurve;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.EnumSetting;
+import app.morphe.extension.shared.settings.IntegerSetting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.ClientType;
 
@@ -59,4 +60,51 @@ public class Settings extends SharedYouTubeSettings {
 
     public static final BooleanSetting FORCE_ORIGINAL_AUDIO = new BooleanSetting("morphe_force_original_audio", TRUE, true);
 
+    // ListenBrainz
+    public static final BooleanSetting LISTENBRAINZ_SCROBBLING = new BooleanSetting("morphe_music_listenbrainz_enabled", FALSE, true);
+    public static final BooleanSetting LISTENBRAINZ_NOW_PLAYING = new BooleanSetting("morphe_music_listenbrainz_now_playing", FALSE, true, parent(LISTENBRAINZ_SCROBBLING));
+    public static final IntegerSetting LISTENBRAINZ_MIN_SONG_DURATION = new IntegerSetting("morphe_music_listenbrainz_min_song_duration", 30, true);
+    public static final IntegerSetting LISTENBRAINZ_DELAY_PERCENT = new IntegerSetting("morphe_music_listenbrainz_delay_percent", 50, true);
+    public static final IntegerSetting LISTENBRAINZ_DELAY_SECONDS = new IntegerSetting("morphe_music_listenbrainz_delay_seconds", 180, true);
+
+    // Last.fm
+    public static final BooleanSetting LASTFM_SCROBBLING = new BooleanSetting("morphe_music_lastfm_enabled", FALSE, true);
+    public static final BooleanSetting LASTFM_NOW_PLAYING = new BooleanSetting("morphe_music_lastfm_now_playing", FALSE, true, parent(LASTFM_SCROBBLING));
+    public static final IntegerSetting LASTFM_MIN_SONG_DURATION = new IntegerSetting("morphe_music_lastfm_min_song_duration", 30, true);
+    public static final IntegerSetting LASTFM_DELAY_PERCENT = new IntegerSetting("morphe_music_lastfm_delay_percent", 50, true);
+    public static final IntegerSetting LASTFM_DELAY_SECONDS = new IntegerSetting("morphe_music_lastfm_delay_seconds", 180, true);
+
+    static {
+        app.morphe.extension.shared.settings.preference.SeekBarPreference.register(
+                new app.morphe.extension.shared.settings.preference.SeekBarPreference.SeekBarConfig(
+                        LISTENBRAINZ_MIN_SONG_DURATION, 10, 60, 5, "s"
+                )
+        );
+        app.morphe.extension.shared.settings.preference.SeekBarPreference.register(
+                new app.morphe.extension.shared.settings.preference.SeekBarPreference.SeekBarConfig(
+                        LISTENBRAINZ_DELAY_PERCENT, 30, 95, 5, "%"
+                )
+        );
+        app.morphe.extension.shared.settings.preference.SeekBarPreference.register(
+                new app.morphe.extension.shared.settings.preference.SeekBarPreference.SeekBarConfig(
+                        LISTENBRAINZ_DELAY_SECONDS, 30, 360, 10, "s"
+                )
+        );
+
+        app.morphe.extension.shared.settings.preference.SeekBarPreference.register(
+                new app.morphe.extension.shared.settings.preference.SeekBarPreference.SeekBarConfig(
+                        LASTFM_MIN_SONG_DURATION, 10, 60, 5, "s"
+                )
+        );
+        app.morphe.extension.shared.settings.preference.SeekBarPreference.register(
+                new app.morphe.extension.shared.settings.preference.SeekBarPreference.SeekBarConfig(
+                        LASTFM_DELAY_PERCENT, 30, 95, 5, "%"
+                )
+        );
+        app.morphe.extension.shared.settings.preference.SeekBarPreference.register(
+                new app.morphe.extension.shared.settings.preference.SeekBarPreference.SeekBarConfig(
+                        LASTFM_DELAY_SECONDS, 30, 360, 10, "s"
+                )
+        );
+    }
 }

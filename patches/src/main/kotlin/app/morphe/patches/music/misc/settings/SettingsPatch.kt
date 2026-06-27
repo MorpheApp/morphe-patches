@@ -26,6 +26,7 @@ import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.IntentPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
+import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
@@ -69,7 +70,9 @@ private val settingsResourcePatch = resourcePatch {
                 "morphe_settings_screen_05_player.xml",
                 "morphe_settings_screen_05_player_bold.xml",
                 "morphe_settings_screen_11_misc.xml",
-                "morphe_settings_screen_11_misc_bold.xml"
+                "morphe_settings_screen_11_misc_bold.xml",
+                "morphe_settings_screen_listenbrainz.xml",
+                "morphe_settings_screen_listenbrainz_bold.xml"
             ),
             ResourceGroup("layout",
                 "morphe_preference_with_icon.xml"
@@ -144,6 +147,83 @@ val settingsPatch = bytecodePatch(
             SwitchPreference("morphe_show_menu_icons")
         )
 
+        val listenBrainzCategory = PreferenceCategory(
+            key = "morphe_settings_music_screen_5_listenbrainz",
+            preferences = setOf(
+                NonInteractivePreference(
+                    key = "morphe_music_listenbrainz_token",
+                    titleKey = "morphe_music_listenbrainz_token_title",
+                    summaryKey = null,
+                    tag = "app.morphe.extension.music.settings.preference.ListenBrainzTokenPreference",
+                    selectable = true
+                ),
+                SwitchPreference("morphe_music_listenbrainz_enabled"),
+                SwitchPreference("morphe_music_listenbrainz_now_playing"),
+                NonInteractivePreference(
+                    key = "morphe_music_listenbrainz_min_song_duration",
+                    summaryKey = null,
+                    tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                    selectable = true
+                ),
+                NonInteractivePreference(
+                    key = "morphe_music_listenbrainz_delay_percent",
+                    summaryKey = null,
+                    tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                    selectable = true
+                ),
+                NonInteractivePreference(
+                    key = "morphe_music_listenbrainz_delay_seconds",
+                    summaryKey = null,
+                    tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                    selectable = true
+                )
+            )
+        )
+
+        val lastfmCategory = PreferenceCategory(
+            key = "morphe_music_lastfm_category",
+            titleKey = "morphe_settings_music_lastfm_title",
+            preferences = setOf(
+                NonInteractivePreference(
+                    key = "morphe_music_lastfm_token",
+                    titleKey = "morphe_music_lastfm_token_title",
+                    summaryKey = null,
+                    tag = "app.morphe.extension.music.settings.preference.LastFMTokenPreference",
+                    selectable = true
+                ),
+                SwitchPreference("morphe_music_lastfm_enabled"),
+                SwitchPreference("morphe_music_lastfm_now_playing"),
+                NonInteractivePreference(
+                    key = "morphe_music_lastfm_min_song_duration",
+                    summaryKey = null,
+                    tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                    selectable = true
+                ),
+                NonInteractivePreference(
+                    key = "morphe_music_lastfm_delay_percent",
+                    summaryKey = null,
+                    tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                    selectable = true
+                ),
+                NonInteractivePreference(
+                    key = "morphe_music_lastfm_delay_seconds",
+                    summaryKey = null,
+                    tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                    selectable = true
+                )
+            )
+        )
+
+        val scrobblingScreen = PreferenceScreenPreference(
+            key = "morphe_settings_music_screen_5_scrobbling",
+            titleKey = "morphe_settings_music_screen_scrobbling_title",
+            summaryKey = "morphe_settings_music_screen_scrobbling_summary",
+            preferences = setOf(
+                listenBrainzCategory,
+                lastfmCategory
+            )
+        )
+
         PreferenceScreen.MISC.addPreferences(
             TextPreference(
                 key = null,
@@ -151,7 +231,8 @@ val settingsPatch = bytecodePatch(
                 summaryKey = "morphe_pref_import_export_summary",
                 inputType = InputType.TEXT_MULTI_LINE,
                 tag = "app.morphe.extension.shared.settings.preference.ImportExportPreference",
-            )
+            ),
+            scrobblingScreen
         )
 
         modifyActivityForSettingsInjection(
@@ -209,6 +290,7 @@ object PreferenceScreen : BasePreferenceScreen() {
         iconBold = "@drawable/morphe_settings_screen_05_player_bold",
         layout = "@layout/morphe_preference_with_icon"
     )
+
     val MISC = Screen(
         key = "morphe_settings_music_screen_4_misc",
         summaryKey = null,
