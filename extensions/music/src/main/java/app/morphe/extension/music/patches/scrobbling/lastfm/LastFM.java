@@ -189,4 +189,42 @@ public class LastFM {
             }
         });
     }
+
+    public static void love(String sessionKey, String artist, String track) {
+        if (sessionKey == null || sessionKey.isBlank()) return;
+        executor.submit(() -> {
+            try {
+                Map<String, String> params = new HashMap<>();
+                params.put("method", "track.love");
+                params.put("api_key", API_KEY);
+                params.put("sk", sessionKey);
+                params.put("artist", artist);
+                params.put("track", track);
+
+                executePostRequest(params);
+                Logger.printInfo(() -> "Last.fm: Loved track: " + artist + " - " + track);
+            } catch (Exception e) {
+                Logger.printException(() -> "Last.fm: Failed to love track", e);
+            }
+        });
+    }
+
+    public static void unlove(String sessionKey, String artist, String track) {
+        if (sessionKey == null || sessionKey.isBlank()) return;
+        executor.submit(() -> {
+            try {
+                Map<String, String> params = new HashMap<>();
+                params.put("method", "track.unlove");
+                params.put("api_key", API_KEY);
+                params.put("sk", sessionKey);
+                params.put("artist", artist);
+                params.put("track", track);
+
+                executePostRequest(params);
+                Logger.printInfo(() -> "Last.fm: Unloved track: " + artist + " - " + track);
+            } catch (Exception e) {
+                Logger.printException(() -> "Last.fm: Failed to unlove track", e);
+            }
+        });
+    }
 }

@@ -98,6 +98,38 @@ public class ScrobbleManager {
         onPlayerStateChanged(isPlaying);
     }
 
+    public void onLikeClicked(String serviceName, String videoId) {
+        Utils.verifyOnMainThread();
+        if (serviceName == null || videoId == null) return;
+        Logger.printInfo(() -> "ScrobbleManager: onLikeClicked - serviceName: " + serviceName + ", videoId: " + videoId);
+
+        // Check if Last.fm scrobbling and love-on-like are enabled
+        if (!Settings.LASTFM_SCROBBLING.get() || !Settings.LASTFM_LOVE_ON_LIKE.get()) {
+            return;
+        }
+
+        // We only care about the currently playing song
+        if (!videoId.equals(currentSongId)) {
+            Logger.printInfo(() -> "ScrobbleManager: Like click videoId (" + videoId + ") does not match currentSongId (" + currentSongId + "), ignoring");
+            return;
+        }
+
+        if (currentTitle == null || currentArtist == null) {
+            return;
+        }
+
+        String sk = Settings.LASTFM_SESSION_KEY.get();
+        if (sk == null || sk.isBlank()) {
+            return;
+        }
+
+        if ("like/like".equals(serviceName)) {
+            LastFM.love(sk, currentArtist, currentTitle);
+        } else if ("like/removelike".equals(serviceName) || "like/dislike".equals(serviceName)) {
+            LastFM.unlove(sk, currentArtist, currentTitle);
+        }
+    }
+
     private void onPlayerStateChanged(boolean isPlaying) {
         if (currentTitle == null || currentArtist == null) return;
 

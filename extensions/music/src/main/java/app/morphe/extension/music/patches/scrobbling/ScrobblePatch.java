@@ -35,4 +35,12 @@ public class ScrobblePatch {
             Logger.printException(() -> "onSetPlaybackState failure", ex);
         }
     }
+
+    public static void onLikeClicked(String serviceName, String videoId) {
+        try {
+            ScrobbleManager.getInstance().onLikeClicked(serviceName, videoId);
+        } catch (Throwable t) {
+            Logger.printException(() -> "ScrobbleHook: onLikeClicked failed", t);
+        }
+    }
 }
