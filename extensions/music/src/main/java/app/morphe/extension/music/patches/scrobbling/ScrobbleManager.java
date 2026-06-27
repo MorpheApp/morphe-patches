@@ -109,8 +109,7 @@ public class ScrobbleManager {
         }
 
         // We only care about the currently playing song
-        if (!videoId.equals(currentSongId)) {
-            Logger.printInfo(() -> "ScrobbleManager: Like click videoId (" + videoId + ") does not match currentSongId (" + currentSongId + "), ignoring");
+        if (currentSongId != null && !videoId.equals(currentSongId)) {
             return;
         }
 
@@ -129,6 +128,7 @@ public class ScrobbleManager {
             LastFM.unlove(sk, currentArtist, currentTitle);
         }
     }
+
 
     private void onPlayerStateChanged(boolean isPlaying) {
         if (currentTitle == null || currentArtist == null) return;
