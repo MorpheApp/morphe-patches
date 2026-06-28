@@ -24,13 +24,8 @@ import app.morphe.extension.shared.Logger;
 @SuppressWarnings("unused")
 public final class OpenSystemShareSheetPatch {
 
-    private static boolean isFlyoutShareButton = false;
     public static boolean systemSheetOpened;
     public static WeakReference<RecyclerView> flyoutMenuRecyclerView = new WeakReference<>(null);
-
-    public static void enableIsFlyoutShareButton() {
-        isFlyoutShareButton = true;
-    }
 
     /**
      * Injection point.
@@ -41,11 +36,7 @@ public final class OpenSystemShareSheetPatch {
 
     public static boolean openSystemShareSheet() {
         systemSheetOpened = true;
-        final String videoID = (isFlyoutShareButton ? getFlyoutVideoId() : VideoInformation.getVideoId());
-        isFlyoutShareButton = false;
-        if (videoID == null) {
-            return false;
-        }
+        final String videoID = (!getFlyoutVideoId().isEmpty() ? getFlyoutVideoId() : VideoInformation.getVideoId());
         final String videoURL = "https://www.youtu.be/" + videoID;
         RecyclerView shareSheetRecyclerView = flyoutMenuRecyclerView.get();
         if (shareSheetRecyclerView != null) {

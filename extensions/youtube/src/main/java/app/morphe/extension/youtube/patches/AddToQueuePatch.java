@@ -8,10 +8,10 @@
 package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.shared.Utils.getContext;
-import static app.morphe.extension.youtube.patches.OpenSystemShareSheetPatch.enableIsFlyoutShareButton;
 
 import android.app.Dialog;
-import android.util.Log;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Pair;
 import android.view.View;
 import android.view.ViewParent;
@@ -59,7 +59,6 @@ public final class AddToQueuePatch {
     private static PopupWindow flyoutPopupWindow = null;
 
     private static final String queueButtonName = "QUEUE_PLAY_NEXT";
-    private static final String shareButtonName = "SHARE_ARROW";
 
     private static final List<byte[]> VIDEO_ID_PREFIXES_BYTES = List.of(
             // Can be i.ytimg.com, i2.ytimg.com, i3, etc.
@@ -80,14 +79,20 @@ public final class AddToQueuePatch {
      * Injection point.
      */
     public static void setBottomSheetFlyout(Dialog dialog) {
+        if (dialog == null) {
+            return;
+        }
+
         flyoutDialog = dialog;
+
+        runFlyoutPanelVisibilityHandler(dialog);
     }
 
     public static void dismissBottomSheetFlyout() {
         if (flyoutDialog == null) {
             return;
         }
-        flyoutVideoId = "";
+
         flyoutDialog.dismiss();
     }
 
@@ -95,15 +100,49 @@ public final class AddToQueuePatch {
      * Injection point.
      */
     public static void setPopupWindowFlyout(PopupWindow popupWindow) {
+        if (popupWindow == null) {
+            return;
+        }
+
         flyoutPopupWindow = popupWindow;
+
+        runFlyoutPanelVisibilityHandler(popupWindow);
     }
 
     public static void dismissPopupWindowFlyout() {
         if (flyoutPopupWindow == null) {
             return;
         }
-        flyoutVideoId = "";
         flyoutPopupWindow.dismiss();
+    }
+
+    // Since we do not want to overwrite the object's original listener, we will
+    // use a handler to check if the flyout panel is still visible
+    // and, if not, reset the `flyoutVideoId` variable.
+    private static void runFlyoutPanelVisibilityHandler(Object flyoutPanel) {
+        if (flyoutPanel == null) {
+            return;
+        }
+
+        final Handler visibilityHandler = new Handler(Looper.getMainLooper());
+        visibilityHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                boolean isShowing = false;
+
+                if (flyoutPanel instanceof android.app.Dialog) {
+                    isShowing = ((android.app.Dialog) flyoutPanel).isShowing();
+                } else if (flyoutPanel instanceof android.widget.PopupWindow) {
+                    isShowing = ((android.widget.PopupWindow) flyoutPanel).isShowing();
+                }
+
+                if (isShowing) {
+                    visibilityHandler.postDelayed(this, 100);
+                } else {
+                    flyoutVideoId = "";
+                }
+            }
+        });
     }
 
     /**
@@ -354,11 +393,6 @@ public final class AddToQueuePatch {
                 dismissBottomSheetFlyout(); // Must dismiss after showing dialog.
                 dismissPopupWindowFlyout();
                 return;
-            }
-            if (buttonName.equals(shareButtonName)) {
-                // It is necessary to check whether the Share
-                // button is of type Flyout or Action.
-                enableIsFlyoutShareButton();
             }
 
             if (original != null) {
