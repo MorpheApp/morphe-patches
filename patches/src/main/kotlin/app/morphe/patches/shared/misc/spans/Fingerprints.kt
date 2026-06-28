@@ -9,6 +9,7 @@ package app.morphe.patches.shared.misc.spans
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.instanceOf
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -32,6 +33,9 @@ internal object InclusiveSpanFilterFingerprint : Fingerprint(
 internal object GetSpanTypeFingerprint : Fingerprint(
     definingClass = EXTENSION_SPANS_CLASS,
     name = "getSpanType",
+    filters = listOf(
+        instanceOf("Landroid/text/style/CharacterStyle;")
+    ),
     custom = { method, _ ->
         method.returnType != "Ljava/lang/String;"
     }

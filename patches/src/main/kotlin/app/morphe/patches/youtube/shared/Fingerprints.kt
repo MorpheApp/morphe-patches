@@ -15,6 +15,7 @@ import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.InstructionLocation.MatchFirst
 import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
@@ -23,13 +24,8 @@ import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import app.morphe.patches.all.misc.resources.ResourceType
 import app.morphe.patches.all.misc.resources.resourceLiteral
-import app.morphe.util.getReference
-import app.morphe.util.indexOfFirstInstruction
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.Method
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
-import com.android.tools.smali.dexlib2.iface.reference.StringReference
 
 internal const val YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE = "Lcom/google/android/apps/youtube/app/watchwhile/MainActivity;"
 
@@ -263,21 +259,29 @@ internal object WatchNextResponseParserFingerprint : Fingerprint(
 
 internal object SpannableStringBuilderFingerprint : Fingerprint(
     returnType = "Ljava/lang/CharSequence;",
-    custom = { method, _ ->
-        method.indexOfFirstInstruction {
-            opcode == Opcode.CONST_STRING &&
-                    getReference<StringReference>()
-                        ?.string.toString()
-                        .startsWith("Failed to set PB Style Run Extension in TextComponentSpec.")
-        } >= 0 &&
-                indexOfSpannableStringInstruction(method) >= 0
-    }
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            smali = SPANNABLE_STRING_REFERENCE
+        ),
+        methodCall(
+          opcode = Opcode.INVOKE_STATIC,
+            returnType = "V",
+            parameters = listOf(
+                "Landroid/text/SpannableString;",
+                "Ljava/lang/Object;",
+                "I",
+                "Z",
+                "I"
+            )
+        ),
+        string(
+            "Failed to set PB Style Run Extension in TextComponentSpec.",
+            comparison = StringComparisonType.STARTS_WITH
+        )
+    )
 )
 
 const val SPANNABLE_STRING_REFERENCE =
     "Landroid/text/SpannableString;->valueOf(Ljava/lang/CharSequence;)Landroid/text/SpannableString;"
 
-fun indexOfSpannableStringInstruction(method: Method) = method.indexOfFirstInstruction {
-    opcode == Opcode.INVOKE_STATIC &&
-            getReference<MethodReference>()?.toString() == SPANNABLE_STRING_REFERENCE
-}

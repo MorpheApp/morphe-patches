@@ -19,17 +19,13 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMuta
 import app.morphe.patches.youtube.misc.textcomponent.hookSpannableString
 import app.morphe.patches.youtube.misc.textcomponent.textComponentPatch
 import app.morphe.patches.youtube.shared.SpannableStringBuilderFingerprint
-import app.morphe.patches.youtube.shared.indexOfSpannableStringInstruction
 import app.morphe.util.fiveRegisters
-import app.morphe.util.getMutableMethod
 import app.morphe.util.getReference
-import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
@@ -70,43 +66,29 @@ val inclusiveSpanPatch = bytecodePatch(
             "setConversionContext"
         )
 
-        SpannableStringBuilderFingerprint.method.apply {
-            val spannedIndex = indexOfSpannableStringInstruction(this)
-            val setInclusiveSpanIndex = indexOfFirstInstructionOrThrow(spannedIndex) {
-                val reference = getReference<MethodReference>()
-                opcode == Opcode.INVOKE_STATIC &&
-                        reference?.returnType == "V" &&
-                        reference.parameterTypes.size > 3 &&
-                        reference.parameterTypes.firstOrNull() == "Landroid/text/SpannableString;"
+        SpannableStringBuilderFingerprint.instructionMatches[1].getMethodCalled().apply {
+            val insertIndex = indexOfFirstInstructionReversedOrThrow {
+                opcode == Opcode.INVOKE_VIRTUAL && getReference<MethodReference>().toString() ==
+                        "Landroid/text/SpannableString;->setSpan(Ljava/lang/Object;III)V"
             }
-            val setInclusiveSpanMethod = getInstruction<ReferenceInstruction>(setInclusiveSpanIndex)
-                .getReference<MethodReference>()!!
-                .getMutableMethod()
-
-            setInclusiveSpanMethod.apply {
-                val insertIndex = indexOfFirstInstructionReversedOrThrow {
-                    opcode == Opcode.INVOKE_VIRTUAL &&
-                            getReference<MethodReference>().toString() == "Landroid/text/SpannableString;->setSpan(Ljava/lang/Object;III)V"
-                }
-                replaceInstruction(
-                    insertIndex,
-                    "invoke-static { ${fiveRegisters(insertIndex)} }, $EXTENSION_SPANS_CLASS->setSpan(Landroid/text/SpannableString;Ljava/lang/Object;III)V"
-                )
-            }
+            replaceInstruction(
+                insertIndex,
+                "invoke-static { ${fiveRegisters(insertIndex)} }, " +
+                        "$EXTENSION_SPANS_CLASS->setSpan(Landroid/text/SpannableString;Ljava/lang/Object;III)V"
+            )
         }
 
-        val customCharacterStyle = CustomCharacterStyleFingerprint.classDef.type
 
-        GetSpanTypeFingerprint.method.apply {
-            val index = indexOfFirstInstructionOrThrow {
-                opcode == Opcode.INSTANCE_OF &&
-                        (this as? ReferenceInstruction)?.reference?.toString() == "Landroid/text/style/CharacterStyle;"
+        GetSpanTypeFingerprint.let {
+            val customCharacterStyle = CustomCharacterStyleFingerprint.classDef.type
+            it.method.apply {
+                val index = it.instructionMatches.first().index
+                val instruction = getInstruction<TwoRegisterInstruction>(index)
+                replaceInstruction(
+                    index,
+                    "instance-of v${instruction.registerA}, v${instruction.registerB}, $customCharacterStyle"
+                )
             }
-            val instruction = getInstruction<TwoRegisterInstruction>(index)
-            replaceInstruction(
-                index,
-                "instance-of v${instruction.registerA}, v${instruction.registerB}, $customCharacterStyle"
-            )
         }
 
         // Remove dummy filter from extension static field and add the filters included during patching.

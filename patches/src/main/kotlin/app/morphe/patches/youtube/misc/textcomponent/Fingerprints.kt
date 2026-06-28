@@ -8,30 +8,32 @@
 package app.morphe.patches.youtube.misc.textcomponent
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal object TextComponentConstructorFingerprint : Fingerprint(
-    returnType = "V",
-    parameters = emptyList(),
-    filters = listOf(
-        string("TextComponent"),
-        opcode(Opcode.SGET_OBJECT),
-        opcode(Opcode.IPUT_OBJECT)
-    )
-)
-
 internal object TextComponentContextFingerprint : Fingerprint(
-    classFingerprint = TextComponentConstructorFingerprint,
+    classFingerprint = Fingerprint(
+        returnType = "V",
+        parameters = listOf(),
+        filters = listOf(
+            string("TextComponent"),
+            opcode(Opcode.SGET_OBJECT),
+            opcode(Opcode.IPUT_OBJECT)
+        )
+    ),
     returnType = "L",
     accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
     parameters = listOf("L"),
     filters = listOf(
-        opcode(Opcode.IGET_OBJECT),
-        opcode(Opcode.IGET_OBJECT),
-        opcode(Opcode.IGET_OBJECT),
-        opcode(Opcode.IGET_BOOLEAN)
+        fieldAccess(type = "Ljava/util/Map;"),
     )
+//    filters = OpcodesFilter.opcodesToFilters(
+//        Opcode.IGET_OBJECT,
+//        Opcode.IGET_OBJECT,
+//        Opcode.IGET_OBJECT,
+//        Opcode.IGET_BOOLEAN
+//    )
 )
