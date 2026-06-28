@@ -14,7 +14,6 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-    <!-- layout.sponsorblock.sponsorBlockPatch -->
     <string name="morphe_sb_enabled_title">Enable SponsorBlock</string>
     <string name="morphe_sb_enabled_summary">SponsorBlock is a crowdsourced system for skipping annoying parts of YouTube videos</string>
     <string name="morphe_sb_appearance_category_title">Appearance</string>
@@ -237,7 +236,7 @@ If you\'re not submitting a highlight, tap Cancel and mark the second location"<
     <string name="morphe_sb_color_dot_label">Color:</string>
     <string name="morphe_sb_about_title">About</string>
     <string name="morphe_sb_about_api_title" translatable="false">SponsorBlock</string>
-    <string name="morphe_sb_about_api_summary">"Data is provided by the SponsorBlock API.
+    <string name="morphe_sb_about_api_summary">"Data is provided by the SponsorBlock API
 
 Tap here to open Sponsor.ajay.app and see downloads for other platforms"</string>
 </resources>
