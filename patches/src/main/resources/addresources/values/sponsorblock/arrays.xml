@@ -1,0 +1,51 @@
+<resources>
+    <string-array name="morphe_sb_auto_hide_skip_button_duration_entries">
+        <item>@string/morphe_sb_duration_1s</item>
+        <item>@string/morphe_sb_duration_2s</item>
+        <item>@string/morphe_sb_duration_3s</item>
+        <item>@string/morphe_sb_duration_4s</item>
+        <item>@string/morphe_sb_duration_5s</item>
+        <item>@string/morphe_sb_duration_6s</item>
+        <item>@string/morphe_sb_duration_7s</item>
+        <item>@string/morphe_sb_duration_8s</item>
+        <item>@string/morphe_sb_duration_9s</item>
+        <item>@string/morphe_sb_duration_10s</item>
+    </string-array>
+    <string-array name="morphe_sb_auto_hide_skip_button_duration_entry_values">
+        <item>ONE_SECOND</item>
+        <item>TWO_SECONDS</item>
+        <item>THREE_SECONDS</item>
+        <item>FOUR_SECONDS</item>
+        <item>FIVE_SECONDS</item>
+        <item>SIX_SECONDS</item>
+        <item>SEVEN_SECONDS</item>
+        <item>EIGHT_SECONDS</item>
+        <item>NINE_SECONDS</item>
+        <item>TEN_SECONDS</item>
+    </string-array>
+    <!-- No easy way to make an alias to another array declaration, so copy it again here. -->
+    <string-array name="morphe_sb_toast_on_skip_duration_entries">
+        <item>@string/morphe_sb_duration_1s</item>
+        <item>@string/morphe_sb_duration_2s</item>
+        <item>@string/morphe_sb_duration_3s</item>
+        <item>@string/morphe_sb_duration_4s</item>
+        <item>@string/morphe_sb_duration_5s</item>
+        <item>@string/morphe_sb_duration_6s</item>
+        <item>@string/morphe_sb_duration_7s</item>
+        <item>@string/morphe_sb_duration_8s</item>
+        <item>@string/morphe_sb_duration_9s</item>
+        <item>@string/morphe_sb_duration_10s</item>
+    </string-array>
+    <string-array name="morphe_sb_toast_on_skip_duration_entry_values">
+        <item>ONE_SECOND</item>
+        <item>TWO_SECONDS</item>
+        <item>THREE_SECONDS</item>
+        <item>FOUR_SECONDS</item>
+        <item>FIVE_SECONDS</item>
+        <item>SIX_SECONDS</item>
+        <item>SEVEN_SECONDS</item>
+        <item>EIGHT_SECONDS</item>
+        <item>NINE_SECONDS</item>
+        <item>TEN_SECONDS</item>
+    </string-array>
+</resources>

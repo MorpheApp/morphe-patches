@@ -21,6 +21,7 @@ import android.view.View;
 import java.lang.ref.WeakReference;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
 public final class OpenSystemShareSheetPatch {
@@ -38,6 +39,10 @@ public final class OpenSystemShareSheetPatch {
      * Injection point.
      */
     public static void openSystemShareSheet() {
+        if (!Settings.OPEN_SYSTEM_SHARE_SHEET.get()) {
+            return;
+        }
+
         final String videoURL =
                 "https://youtu.be/" +
                 (!getFlyoutVideoId().isEmpty() ? getFlyoutVideoId() : VideoInformation.getVideoId());
