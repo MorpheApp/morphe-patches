@@ -109,6 +109,25 @@ Second \"item\" text"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">כפה שפת שמע מקורית</string>
   <string name="morphe_force_original_audio_summary">תמיד מנגן את רצועת האודיו המקורית של הסרטון במקום גרסה מדובבת</string>
+  <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">פרוקסי רשת</string>
+  <string name="morphe_proxy_screen_summary">נתב בקשות רשת נתמכות דרך פרוקסי</string>
+  <string name="morphe_proxy_enabled_title">הפעל פרוקסי</string>
+  <string name="morphe_proxy_enabled_summary">הזרמת בקשות רשת דרך פרוקסי HTTP או HTTPS מוגדר</string>
+  <string name="morphe_proxy_host_title">כתובת מארח של פרוקסי</string>
+  <string name="morphe_proxy_host_summary">שם מארח או כתובת IP של שרת הפרוקסי</string>
+  <string name="morphe_proxy_port_title">יציאת פרוקסי</string>
+  <string name="morphe_proxy_port_summary">יציאת שרת הפרוקסי</string>
+  <string name="morphe_proxy_https_title">השתמש בפרוקסי HTTPS</string>
+  <string name="morphe_proxy_https_summary">השתמש ב-HTTPS כדי להתחבר לשרת הפרוקסי במקום HTTP</string>
+  <string name="morphe_proxy_auth_enabled_title">אימות פרוקסי</string>
+  <string name="morphe_proxy_auth_enabled_summary">שליחת אימות Basic עם בקשות פרוקסי</string>
+  <string name="morphe_proxy_auth_username_title">שם משתמש לפרוקסי</string>
+  <string name="morphe_proxy_auth_username_summary">שם משתמש לאימות Basic בפרוקסי</string>
+  <string name="morphe_proxy_auth_password_title">סיסמת פרוקסי</string>
+  <string name="morphe_proxy_auth_password_summary">סיסמה לאימות Basic בפרוקסי</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">אפשר חזרה ישירה</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">התחבר ישירות אם הפרוקסי נכשל</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">הסתר מודעות מסך מלא</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

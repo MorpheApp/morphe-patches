@@ -35,7 +35,7 @@ public final class LithoFilterPatch {
         @Nullable
         private String strings;
 
-        BufferAsciiStrings(byte[] bytes) {
+        public BufferAsciiStrings(byte[] bytes) {
             this.bytes = Objects.requireNonNull(bytes);
         }
 

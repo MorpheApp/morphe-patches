@@ -148,6 +148,11 @@ final class KeywordContentFilter extends Filter {
             "video_card.e" // Shorts that appear in a horizontal shelf.
     );
 
+    private final StringFilterGroup commentsFilter = new StringFilterGroup(
+            Settings.HIDE_KEYWORD_CONTENT_COMMENTS,
+                "comment_thread.eml"
+    );
+
     /**
      * Path components to not filter.  Cannot filter the buffer when these are present,
      * otherwise text in UI controls can be filtered as a keyword (such as using "Playlist" as a keyword).
@@ -532,7 +537,7 @@ final class KeywordContentFilter extends Filter {
 
     public KeywordContentFilter() {
         // Keywords are parsed on first call to isFiltered()
-        addPathCallbacks(startsWithFilter, containsFilter);
+        addPathCallbacks(startsWithFilter, containsFilter, commentsFilter);
     }
 
     private boolean hideKeywordSettingIsActive() {
@@ -618,7 +623,7 @@ final class KeywordContentFilter extends Filter {
             parseKeywords();
         }
 
-        if (!hideKeywordSettingIsActive()) return false;
+        if (matchedGroup != commentsFilter && !hideKeywordSettingIsActive()) return false;
 
         if (exceptions.matches(path)) {
             return false; // Do not update statistics.

@@ -234,6 +234,7 @@ Endringer inkluderer:
   <string name="morphe_hide_keyword_content_home_title">Skjul Hjem-videoer etter nøkkelord</string>
   <string name="morphe_hide_keyword_content_search_title">Skjul søkeresultater etter nøkkelord</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Skjul videoer fra abonnementer etter nøkkelord</string>
+  <string name="morphe_hide_keyword_content_comments_title">Skjul kommentarer etter nøkkelord</string>
   <string name="morphe_hide_keyword_content_phrases_title">Nøkkelord som skal skjules</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
@@ -243,11 +244,11 @@ Nøkkelord kan være all tekst som vises i videotitler eller kanalnavn
 
 Ord med store bokstaver i midten må samsvare nøyaktig (f.eks. iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">Om nøkkelordfiltrering</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Hjem / Abonnementer / Søkeresultater filtreres for å skjule innhold som samsvarer med nøkkelord
+  <string name="morphe_hide_keyword_content_about_summary">"Hjem / Abonnementer / Søk / Kommentarer er filtrert for å skjule innhold som samsvarer med nøkkelordfraser
 
 Begrensninger:
 • Shorts kan ikke skjules etter kanalnavn
-• Noen UI-komponenter kanskje ikke skjules
+• Noen UI-komponenter kan ikke skjules
 • Søk etter et nøkkelord kan vise ingen resultater"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Match hele ord</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
@@ -305,6 +306,59 @@ Begrensninger:
 
 Vennligst sjekk at pakkenavnet er riktig og at appen er installert"</string>
   <string name="morphe_external_downloader_empty_warning">Pakkenavnet kan ikke være tomt</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">Taleoversettelse</string>
+  <string name="morphe_vot_screen_summary">Les opp tekstingen til videoen ved hjelp av tekst-til-tale på enheten, synkronisert med avspillingen</string>
+  <string name="morphe_vot_enabled_title">Taleoversettelse</string>
+  <string name="morphe_vot_caption_language_title">Språk</string>
+  <string name="morphe_vot_translation_service_title">Oversettelsestjeneste</string>
+  <string name="morphe_vot_original_audio_volume_title">Original lydstyrke</string>
+  <string name="morphe_vot_original_audio_volume_summary">Volum på original YouTube-lyd mens oversettelsen snakker</string>
+  <string name="morphe_vot_translation_volume_title">Oversettelsesvolum</string>
+  <string name="morphe_vot_translation_volume_summary">Volum på den dubberte oversettelsesstemmen</string>
+  <string name="morphe_vot_max_speech_rate_title">Maks talehastighet</string>
+  <string name="morphe_vot_max_speech_rate_summary">Maksimal hastighetsmultiplikator når talen tilpasses en undertekstposisjon</string>
+  <string name="morphe_vot_mymemory_info_summary">"Gratis oversettelses-API, ingen API-nøkkel kreves. Opptil 5 000 tegn per dag på gratisnivå, eller opptil 50 000 tegn per dag med en e-postadresse.
+
+Trykk her for å åpne MyMemory.translated.net"</string>
+  <string name="morphe_vot_mymemory_email_title">MyMemory-epost</string>
+  <string name="morphe_vot_mymemory_email_summary">Valgfritt. Skriv inn din MyMemory-e-postadresse for å øke den daglige grensen fra 5 000 til 50 000 tegn. La stå tomt for å bruke den anonyme grensen</string>
+  <string name="morphe_vot_openrouter_info_summary">"Betalt AI-oversettelse via OpenRouter. Fyll på en gang og oversett tusenvis av videoer. Mistral Nemo er det billigste alternativet, Gemma 4 tilbyr høyest kvalitet.
+
+Trykk her for å åpne OpenRouter.ai"</string>
+  <string name="morphe_vot_openrouter_api_key_title">OpenRouter API-nøkkel</string>
+  <string name="morphe_vot_openrouter_api_key_summary">Din OpenRouter API-nøkkel. Opprett en nøkkel på OpenRouter.ai &gt; Workspace &gt; API Keys</string>
+  <string name="morphe_vot_openrouter_model_title">OpenRouter-modell</string>
+  <string name="morphe_vot_openrouter_model_custom">Tilpasset</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter ikke konfigurert</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Angi din OpenRouter API-nøkkel i innstillingene før du velger denne leverandøren</string>
+  <string name="morphe_vot_cost_free">Gratis</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s per 100 videotimer</string>
+  <string name="morphe_vot_tts_voice_type">Stemme</string>
+  <string name="morphe_vot_tts_system">System</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Flerstemt mannlig</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Flerstemt kvinnelig</string>
+  <string name="morphe_vot_voice_gender_male">Mannlig</string>
+  <string name="morphe_vot_voice_gender_female">Kvinnelig</string>
+  <string name="morphe_vot_tts_sample">Det er morfingtid!</string>
+  <string name="morphe_vot_http_error_title">Oversettelse ikke tilgjengelig</string>
+  <string name="morphe_vot_http_error_message">"Oversettelsestjenesten returnerte HTTP-feil %s. Din IP-adresse er sannsynligvis begrenset i opptil 24 timer.
+
+For å fortsette å bruke oversettelser, bytt til en annen oversettelsesleverandør i innstillingene eller bruk en VPN"</string>
+  <string name="morphe_vot_do_not_show_again">Ikke vis igjen</string>
+  <string name="morphe_vot_export_api_key_warning">"Innstillingene dine inneholder en OpenRouter API-nøkkel.
+
+API-nøkkelen din bør aldri deles. Alle med tilgang til den kan bruke OpenRouter-kredittene dine"</string>
+  <string name="morphe_vot_openrouter_credits_title">OpenRouter-kredittgrense nådd</string>
+  <string name="morphe_vot_openrouter_credits_message">OpenRouter-kredittgrensen din er nådd. Fyll på saldoen eller øk nøkkels pennegrensen på OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">Åpne OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">OpenRouter-oversettelse mislyktes (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">MyMemory-daglig grense nådd</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Neste tilgjengelig kl. %s.</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Du har brukt dagens gratis MyMemory-oversettelseskvote (5 000 tegn). Legg til en MyMemory-e-post i innstillingene for å heve den daglige grensen til 50 000 tegn, eller bytt til en annen oversettelsestjeneste</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Du har brukt dagens MyMemory-oversettelseskvote (50 000 tegn). Bytt til en annen oversettelsestjeneste eller prøv igjen i morgen</string>
+  <string name="morphe_vot_mymemory_error">MyMemory-oversettelse mislyktes (status %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Aktiver video i sløyfe</string>
   <string name="morphe_do_not_remember_loop_video_title">Husk ikke løkkevideo</string>
@@ -355,6 +409,8 @@ Info: Fungerer kanskje ikke på direktesendinger"</string>
   <string name="morphe_queue_restore_summary">Køen beholdes etter omstart av appen</string>
   <string name="morphe_swap_save_and_queue_actions_title">Bytt om «Lagre» og «Kø»-handlinger</string>
   <string name="morphe_swap_save_and_queue_actions_summary">Trykk for køalternativer, trykk og hold for å lagre til «Se senere»</string>
+  <string name="morphe_queue_override_flyout_menu_title">Overskriv kø-flyout-knappen for avspillingsliste</string>
+  <string name="morphe_queue_override_flyout_menu_summary">Åpner Morphe-køen i stedet for YouTube-køen</string>
   <string name="morphe_queue_manager_check_failed_auth">Ikke logget inn</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">Ingen spillelist-ID</string>
   <string name="morphe_queue_manager_check_failed_queue">Køen er tom</string>
@@ -470,6 +526,8 @@ Merk: Hvis «Spoof videostrømmer» ikke er aktivert, kan aktivering av dette f�
   <string name="morphe_hide_stop_ads_button_title">Skjul \'Stopp annonser\'-knapp</string>
   <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
   <string name="morphe_hide_comments_button_title">Skjul Kommentarer-knapp</string>
+  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_connect_button_title">Skjul Koble til-knappen</string>
   <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears on live streamed videos. -->
   <string name="morphe_hide_report_button_title">Skjul Rapport-knapp</string>
@@ -494,6 +552,7 @@ Merk: Hvis «Spoof videostrømmer» ikke er aktivert, kan aktivering av dette f�
   <string name="morphe_hide_shop_button_title">Skjul Shop-knapp</string>
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_save_button_title">Skjul Lagre-knapp</string>
+  <string name="morphe_hide_more_button_title">Skjul Mer-knappen</string>
   <string name="morphe_fullscreen_buttons">Action bar er skjult</string>
   <string name="morphe_hide_quick_actions_title">Action bar vises</string>
   <string name="morphe_hide_quick_actions_ask_button_title">Skjul Spør-knapp</string>
@@ -579,6 +638,7 @@ For å få tilgang til Innstillinger, aktiver Innstillingsknappen via General �
   <string name="morphe_toolbar_screen_title">Verktøylinje</string>
   <string name="morphe_toolbar_screen_summary">Velg hvilke komponenter som vises i popup-menyen</string>
   <string name="morphe_hide_toolbar_cast_button_title">Skjul Kast-knapp</string>
+  <string name="morphe_hide_toolbar_chat_button_title">Skjul chat-knapp</string>
   <string name="morphe_hide_toolbar_create_button_title">Skjul Opprett-knappen</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Skjul Mikrofon-knapp</string>
   <string name="morphe_hide_toolbar_notification_button_title">Skjul Varsler-knapp</string>
@@ -739,8 +799,11 @@ Innstillinger → Avspilling (eller Autoplay) → Spill av neste video automatis
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">Deaktiver sveip opp-bevegelse i stående modus</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Deaktiver sveip-ned-gesten i stående modus</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Deaktiver sveip-ned-gesten i liggende modus</string>
-  <!-- layout.player.fullscreen.openVideosFullscreen -->
-  <string name="morphe_open_videos_fullscreen_portrait_title">Åpne videoer i fullskjermmodus i stående format</string>
+  <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
+  <string name="morphe_open_videos_fullscreen_title">Åpne videoer i fullskjermmodus</string>
+  <string name="morphe_open_videos_fullscreen_entry_1">Deaktivert</string>
+  <string name="morphe_open_videos_fullscreen_entry_2">Portrett</string>
+  <string name="morphe_open_videos_fullscreen_entry_3">Landskap</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Spilleroverleggs opasitet</string>
   <string name="morphe_player_overlay_opacity_summary">Juster gjennomsiktighetsnivået (0 er gjennomsiktig, 100 er ugjennomsiktig)</string>
@@ -767,7 +830,9 @@ Innstillinger → Avspilling (eller Autoplay) → Spill av neste video automatis
   <string name="morphe_ryd_estimated_like_summary">Viser et estimert likerklikk-antall på videoer der skaperen har deaktivert likerklikk</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Vis tilkoblingsfeilvarsler</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Viser en varsling når Return YouTube Dislike-serveren ikke er tilgjengelig</string>
-  <string name="morphe_ryd_attribution_summary">Dataene er levert av Return YouTube Dislike API. Trykk her for å lære mer</string>
+  <string name="morphe_ryd_attribution_summary">"Data leveres av Return YouTube Dislike API.
+
+Trykk her for å åpne ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Return YouTube Dislike API-statistikk for denne enheten</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API-responstid, gjennomsnitt</string>
@@ -1009,7 +1074,9 @@ Hvis du ikke sender inn et utvalg, trykk Avbryt og marker det andre stedet"</str
   <string name="morphe_sb_color_opacity_label">Opasitet:</string>
   <string name="morphe_sb_color_dot_label">Farge:</string>
   <string name="morphe_sb_about_title">Om</string>
-  <string name="morphe_sb_about_api_summary">Data leveres av SponsorBlock API. Trykk her for å lære mer og se nedlastinger for andre plattformer</string>
+  <string name="morphe_sb_about_api_summary">"Data leveres av SponsorBlock API.
+
+Trykk her for å åpne Sponsor.ajay.app og se nedlastinger for andre plattformer"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Enhetslayout</string>
   <string name="morphe_change_form_factor_entry_1">Standard</string>
@@ -1018,20 +1085,23 @@ Hvis du ikke sender inn et utvalg, trykk Avbryt og marker det andre stedet"</str
   <string name="morphe_change_form_factor_entry_4">Bil</string>
   <string name="morphe_change_form_factor_user_dialog_message">"Endringer inkluderer:
 
-Tablet-layout
-• Sammunninnlegg er skjult
-• Avspilling i feed-innstilling er ikke tilgjengelig
-• Remiks-knappen og Lyd-knappen er ikke tilgjengelig i Shorts
-• Videoaksjonslinjen er ikke sammenfoldet
+Nettbrettlayout
+• Innlegg fra fellesskapet er skjult
+• Innstillingen for avspilling i feed er ikke tilgjengelig
+• Remix-knappen og Lyd-knappen er ikke tilgjengelig i Shorts
+• Gammel videohandlingslinje som ikke er rullet sammen vises
 
-Bilformfaktor
+Layout for bil
 • Feeden er organisert etter emner og kanaler
-• Avspilling i feed-innstilling er ikke tilgjengelig
-• Remiks-knappen og Lyd-knappen er ikke tilgjengelig i Shorts
+• Innstillingen for avspilling i feed er ikke tilgjengelig
+• Remix-knappen og Lyd-knappen er ikke tilgjengelig i Shorts
 • Shorts åpnes i den vanlige spilleren
-• Videoaksjonslinjen er ikke sammenfoldet"</string>
+• Gammel videohandlingslinje som ikke er rullet sammen vises"</string>
   <string name="morphe_tablet_layout_in_player_title">Aktiver nettbrettlayout i spilleren</string>
-  <string name="morphe_tablet_layout_in_player_summary">Gjenoppretter det gamle spillerlayoutet</string>
+  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+  <string name="morphe_tablet_layout_in_player_summary">"Gjenoppretter det gamle spillerlayoutet
+
+Begrensninger: Hvis \"Gjenopprett gammel videoverktøylinje\" er slått av, er det mulig at \"Flere videoer\"-overlegget ikke er tilgjengelig"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Spoof appversjon</string>
   <string name="morphe_spoof_app_version_summary">Lurer serveren til å tro at du bruker en eldre appversjon for å gjenopprette gamle brukergrensesnittfunksjoner</string>
@@ -1157,11 +1227,9 @@ Begrensning: Bruk av tilbake-knappen på verktøylinjen fungerer kanskje ikke"</
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow &amp; Originale miniatyrbilder</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow &amp; Stillbilder</string>
   <string name="morphe_alt_thumbnail_options_entry_4">Stillbilder</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow tilbyr crowdsourced miniatyrbilder for YouTube-videoer. Disse miniatyrbildene er ofte mer relevante enn de som tilbys av YouTube
+  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow leverer crowdsourcet miniatyrbilder for YouTube-videoer. Disse miniatyrbildene er ofte mer relevante enn de som leveres av YouTube
 
-Hvis det er aktivert, vil video-URL-er bli sendt til API-serveren, og ingen andre data sendes. Hvis en video ikke har DeArrow-miniatyrbilder, vises de originale eller stillbildene
-
-Trykk her for å lære mer om DeArrow"</string>
+Hvis aktivert, sendes videourler til API-serveren og ingen andre data sendes. Hvis en video ikke har DeArrow-miniatyrbilder, vises de originale eller stillbilder"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Viser en varsling når DeArrow-serveren ikke er tilgjengelig</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary">Forbedrer lastingshastigheten ved å bruke bilder av middels kvalitet. Live-strømmer, ikke utgitte og eldre videoer kan vise tomme miniatyrbilder</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">DeArrow API-endepunkt</string>
@@ -1289,4 +1357,9 @@ Videospilling med AV1 kan hakke eller miste bilder."</string>
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Original lyd kan ikke tvinges</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Spiller JavaScript-variant</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Ekstraher videobilde fra</string>
+  <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <string name="morphe_restore_old_video_action_bar_title">Gjenopprett gammel videomeny</string>
+  <string name="morphe_restore_old_video_action_bar_summary">"Fikser at nedstemmer ikke vises og at videoknappene ikke kan skjules
+
+Begrensninger: Går tilbake til den gamle stilen for «Flere videoer»-overlegg"</string>
 </resources>

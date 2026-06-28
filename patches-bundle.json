@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-06-15T06:32:36",
-  "description": "## [1.32.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.31.0...v1.32.0-dev.1) (2026-06-15)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Link sanitize:** Live links sanitize doesn't work ([ad91b37](https://github.com/MorpheApp/morphe-patches/commit/ad91b3759c42befbf4c32804cad5de5a48f14255))\n* **YouTube - Reload video:** App exits after pressing back button ([#1740](https://github.com/MorpheApp/morphe-patches/issues/1740)) ([743bc76](https://github.com/MorpheApp/morphe-patches/commit/743bc76743c529aa8f6da4ecffd9643088c7fd97))\n\n### ✨ New Features\n\n* **YouTube Music:** Add experimental support for `9.23.52` ([#1747](https://github.com/MorpheApp/morphe-patches/issues/1747)) ([31f0c4a](https://github.com/MorpheApp/morphe-patches/commit/31f0c4a503226ce7e6ffa58eb8f32af2f1f92f8c))\n* **YouTube:** Add `Disable fullscreen gesture` patch ([#1724](https://github.com/MorpheApp/morphe-patches/issues/1724)) ([00ec593](https://github.com/MorpheApp/morphe-patches/commit/00ec59355d57c66f1189b779ab6806c7dcdd5fd3))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.32.0-dev.1/patches-1.32.0-dev.1.mpp",
+  "created_at": "2026-06-28T12:54:27",
+  "description": "## [1.33.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.33.0-dev.4...v1.33.0-dev.5) (2026-06-28)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Add to queue:** Use app activity for dialog to open dialog ([f3e2b2b](https://github.com/MorpheApp/morphe-patches/commit/f3e2b2b3f3350ff6bea937f9eb81da10aab14c34))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.33.0-dev.5/patches-1.33.0-dev.5.mpp",
   "signature_download_url": "",
-  "version": "1.32.0-dev.1"
+  "version": "1.33.0-dev.5"
 }

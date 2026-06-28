@@ -37,12 +37,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">Menonaktifkan kotak dialog yang muncul saat mengambil tangkapan layar</string>
   <string name="morphe_hide_ask_button_title">Sembunyikan tombol Tanya</string>
   <string name="morphe_hide_ask_button_summary">Menyembunyikan tombol Tanya di bilah pencarian</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">Sembunyikan komunitas yang direkomendasikan</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">Menyembunyikan rak-rak komunitas yang direkomendasikan di subreddit</string>
-  <string name="morphe_hide_trending_today_shelf_title">Sembunyikan rak Tren Hari Ini</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"Menyembunyikan rak Tren Hari Ini dari saran pencarian
-
-Batasan: Spasi visual mungkin tidak disembunyikan"</string>
+  <string name="morphe_hide_communities_shelf_title">Sembunyikan rak komunitas</string>
+  <string name="morphe_hide_communities_shelf_summary">Menyembunyikan rak komunitas terkait atau yang disarankan di subreddit</string>
+  <string name="morphe_hide_trending_shelves_title">Sembunyikan rak-rak Trending</string>
+  <string name="morphe_hide_trending_shelves_summary">Menyembunyikan rak-rak Trending dari feed dan saran pencarian</string>
   <string name="morphe_remove_notification_dialog_title">Hapus dialog saran notifikasi</string>
   <string name="morphe_remove_notification_dialog_summary">Secara otomatis menutup dialog saran pemberitahuan saat mengunjungi subreddit</string>
   <string name="morphe_show_view_count_title">Tampilkan jumlah tayangan di postingan</string>

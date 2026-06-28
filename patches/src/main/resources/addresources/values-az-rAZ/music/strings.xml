@@ -27,7 +27,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_1_ads_title">Reklamlar</string>
   <string name="morphe_settings_music_screen_2_general_title">Ümumi</string>
   <string name="morphe_settings_music_screen_3_player_title">Oynadıcı</string>
-  <string name="morphe_settings_music_screen_4_misc_title">Çoxvariantlı</string>
+  <string name="morphe_settings_music_screen_4_scrobbling_title">Analiz</string>
+  <string name="morphe_settings_music_screen_5_misc_title">Çoxvariantlı</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title"> \'Musiqi Premiumu Əldə et\' etiketini gizlət</string>
   <!-- ad.video.hideVideoAdsPatch -->
@@ -69,10 +70,34 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">Bu sessiya üçün Çarpaz Solma dayandırıldı</string>
   <string name="morphe_music_crossfade_resumed_toast">Çarpaz Soldurma yenidən başladı</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Çarpaz Soldurma işlək olduqda video rejimi əlçatan deyil</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Səs verilərkən yaxud əks etdirilərkən çarpaz soldurma dayandırılır. Veriliş/əksetmə üzərindən çarpaz soldurma sabit deyil və heç vaxt düzəldilməyə bilər</string>
   <string name="morphe_music_crossfade_about_title">Haqqında</string>
-  <string name="morphe_music_crossfade_about_summary">"Qapatmaq/aktivləşdirmək üçün qarışdırma düyməsini uzun bas
+  <string name="morphe_music_crossfade_about_summary">Çarpaz soldurma necə işləyir — və hansı hallarda işləmir</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">Bu necə işləyir</string>
+  <string name="morphe_music_crossfade_about_how_summary">"Çarpaz soldurma, seçdiyiniz müddət və əyri boyunca digəri yuxarı qalxdıqca o biri aşağı solarkən, bir mahnının sonunu növbətinin əvvəli ilə üst-üstə salır.
 
-VazerOG tərəfindən xüsusiyyətin tətbiqi"</string>
+​O, birbaşa irəliləmə (mahnı öz-özünə bitdikdə) və əl ilə keçidlərdə işləyir — hər birinin yuxarıda öz keçid açarı var. Birbaşa irəliləmədə qarışma mahnının bitməsindən bir neçə saniyə əvvəl başlayır.
+
+​YouTube Music 9.x yaxud daha yenisi tələb olunur."</string>
+  <string name="morphe_music_crossfade_about_best_title">Ən yaxşı şəkildə işləyir</string>
+  <string name="morphe_music_crossfade_about_best_summary">Normal mahnıdan mahnıya səsləndirmə və birbaşa irəliləmə, təkrarlama (mahnı öz-özünə çarpaz solur) və yerli səs — telefon dinamiki, simli qulaqlıqlar, Bluetooth və ya USB.</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Tamamilə düzgün işləmir</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Musiqi videoları çarpaz soldurma işlək olduqda yalnız səs kimi səsləndirilir (istəyirsinizsə videonu, dayandırmaq üçün qarışdırmaya uzun basın)
+
+Soldurma müddətinizdən qısa olan mahnılar soldurmanı keçə bilər
+
+Kilid ekranı və ya bildiriş qısa müddətdə keçidin ortasında köhnəlmiş vəziyyət göstərə bilər"</string>
+  <string name="morphe_music_crossfade_about_known_title">Məlum problemlər</string>
+  <string name="morphe_music_crossfade_about_known_summary">"İlk mahnı kimi təyin edilən və ya hazırkı növbədən kənarda başlayan musiqi videosu yalnız səs rejimi işə düşməzdən əvvəl qısa müddətdə video kimi görünə bilər
+
+Musiqi videosuna baxmaq üçün çarpaz soldurmanı dayandırmaq bəzi videoları (səsi videonun özündən gələn videoları) qara edə bilər. Siz mahnını seçməzdən əvvəl çarpaz soldurmanı dayandırmaq bunun qarşısını alır"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Heç işləmir</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Səsin verilməsi və ya əks etdirilməsi (Chromecast, ekran və ya səs əks etdirmə) — çarpaz soldurma dayandırılır, çünki orada qeyri-sabitdir və heç vaxt düzəldilməyə bilər.
+
+YouTube Music 8.x — çarpaz soldurma yalnız 9.x və daha yenisində işləyir"</string>
+  <string name="morphe_music_crossfade_about_credit_title">Hazırladı</string>
+  <string name="morphe_music_crossfade_about_credit_summary">VazerOG tərəfindən Çarpaz soldurma xüsusiyyəti</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Daimi təkrarlamanı aktivləşdir</string>
   <!-- layout.buttons.hideButtonsPatch -->
@@ -123,4 +148,21 @@ VazerOG tərəfindən xüsusiyyətin tətbiqi"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Fəaliyyət düyməsi etiketlərini gizlət</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Güncəlləyin düyməsini gizlət</string>
+  <!-- interaction.scrobbling.scrobblingPatch -->
+  <string name="morphe_music_scrobbling_summary">Last.fm və ListenBrainz birləşməsini tənzimlə</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <!-- 'scrobbled' must be kept untranslated -->
+  <!-- 'scrobble' must be kept untranslated -->
+  <!-- 'scrobble' must be kept untranslated -->
+  <!-- 'scrobble' must be kept untranslated -->
+  <!-- 'scrobble' must be kept untranslated -->
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_token_status_invalid_unknown">naməlum</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <!-- 'scrobbled' must be kept untranslated -->
+  <!-- 'scrobble' must be kept untranslated -->
+  <!-- 'scrobble' must be kept untranslated -->
+  <!-- 'scrobble' must be kept untranslated -->
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_token_dialog_password_hint">Parol</string>
 </resources>

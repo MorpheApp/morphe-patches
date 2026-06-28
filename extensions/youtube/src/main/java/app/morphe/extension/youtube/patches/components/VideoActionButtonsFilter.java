@@ -49,13 +49,17 @@ public class VideoActionButtonsFilter extends Filter {
                 "yt_outline_experimental_text_bubble",
                 "yt_outline_message_bubble"
         ),
+        CONNECT(Settings.HIDE_CONNECT_BUTTON.get()),
+        DISLIKE(Settings.HIDE_LIKE_DISLIKE_BUTTON.get()),
         DOWNLOAD(Settings.HIDE_DOWNLOAD_BUTTON.get()),
         HYPE(
                 Settings.HIDE_HYPE_BUTTON.get(),
                 "yt_outline_experimental_hype",
                 "yt_outline_star_shooting"
         ),
+        LIKE(Settings.HIDE_LIKE_DISLIKE_BUTTON.get()),
         LIKE_DISLIKE(Settings.HIDE_LIKE_DISLIKE_BUTTON.get()),
+        MORE(Settings.HIDE_MORE_BUTTON.get()),
         PROMOTE(
                 Settings.HIDE_PROMOTE_BUTTON.get(),
                 "yt_outline_experimental_megaphone",
@@ -135,11 +139,18 @@ public class VideoActionButtonsFilter extends Filter {
     private static final String COMPACTIFY_VIDEO_ACTION_BAR_PREFIX = "compactify_video_action_bar.e";
     private static final String VIDEO_ACTION_BAR_PREFIX = "video_action_bar.e";
 
+    private static final String ELEMENT_BUTTON_ID = "id.elements.button";
+    private static final String MORE_BUTTON_PATH = "overflow_menu_button.e";
+
+    private final StringFilterGroup actionBarGroup;
     private final StringFilterGroup likeSubscribeGlow;
+    private final StringFilterGroup moreButton;
+    private final StringFilterGroupList accessibilityGroupList = new StringFilterGroupList();
+    private final ByteArrayFilterGroupList bufferGroupList = new ByteArrayFilterGroupList();
 
     public VideoActionButtonsFilter() {
-        StringFilterGroup actionBarGroup = new StringFilterGroup(
-                Settings.HIDE_ACTION_BAR,
+        actionBarGroup = new StringFilterGroup(
+                null,
                 VIDEO_ACTION_BAR_PREFIX
         );
         addIdentifierCallbacks(actionBarGroup);
@@ -149,8 +160,42 @@ public class VideoActionButtonsFilter extends Filter {
                 Settings.DISABLE_LIKE_SUBSCRIBE_GLOW,
                 "animated_button_border.e"
         );
+        moreButton = new StringFilterGroup(
+                Settings.HIDE_MORE_BUTTON,
+                MORE_BUTTON_PATH
+        );
 
-        addPathCallbacks(likeSubscribeGlow);
+        addPathCallbacks(likeSubscribeGlow, moreButton);
+
+        //
+        // All other action buttons.
+        //
+        accessibilityGroupList.addAll(
+                new StringFilterGroup(
+                        Settings.HIDE_LIKE_DISLIKE_BUTTON,
+                        "id.video.dislike",
+                        "id.video.like"
+                ),
+                new StringFilterGroup(
+                        Settings.HIDE_SHARE_BUTTON,
+                        "id.video.share"
+                ),
+                new StringFilterGroup(
+                        Settings.HIDE_SAVE_BUTTON,
+                        "id.video.add_to.button"
+                )
+        );
+        bufferGroupList.addAll(
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_ASK_BUTTON,
+                        "PAyouchat"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_HYPE_BUTTON,
+                        "yt_outline_experimental_hype",
+                        "yt_outline_star_shooting"
+                )
+        );
     }
 
     @Override
@@ -165,6 +210,15 @@ public class VideoActionButtonsFilter extends Filter {
                        int contentIndex) {
         if (matchedGroup == likeSubscribeGlow) {
             return Utils.startsWithAny(path, COMPACT_CHANNEL_BAR_PREFIX, COMPACTIFY_VIDEO_ACTION_BAR_PREFIX, VIDEO_ACTION_BAR_PREFIX);
+        } else if (matchedGroup == moreButton) {
+            return true;
+        } else if (matchedGroup == actionBarGroup) {
+            if (Settings.HIDE_ACTION_BAR.get() || accessibilityGroupList.check(accessibility).isFiltered()) {
+                return true;
+            } else if (accessibility != null && accessibility.startsWith(ELEMENT_BUTTON_ID) && !path.contains(MORE_BUTTON_PATH)) {
+                return bufferGroupList.check(buffer).isFiltered();
+            }
+            return false;
         }
 
         return true;
@@ -315,14 +369,22 @@ public class VideoActionButtonsFilter extends Filter {
                                 Logger.printDebug(() -> "Unknown iconName: " + iconName + ", videoId: " + videoId);
                             }
                         }
+                    } else if (primaryButtonViewModel.hasAccountLinkButtonViewModel()) {
+                        actionButton = ActionButton.CONNECT;
                     } else if (primaryButtonViewModel.hasAddToPlaylistButtonViewModel()) {
                         actionButton = ActionButton.SAVE;
                     } else if (primaryButtonViewModel.hasClipButtonViewModel()) {
                         actionButton = ActionButton.CLIP;
                     }  else if (primaryButtonViewModel.hasCompactChannelBarViewModel()) {
                         actionButton = ActionButton.CHANNEL_PROFILE;
+                    } else if (primaryButtonViewModel.hasDislikeButtonViewModel()) {
+                        actionButton = ActionButton.DISLIKE;
                     } else if (primaryButtonViewModel.hasDownloadButtonViewModel()) {
                         actionButton = ActionButton.DOWNLOAD;
+                    } else if (primaryButtonViewModel.hasLikeButtonViewModel()) {
+                        actionButton = ActionButton.LIKE;
+                    } else if (primaryButtonViewModel.hasOverflowMenuButtonViewModel()) {
+                        actionButton = ActionButton.MORE;
                     } else if (primaryButtonViewModel.hasSegmentedLikeDislikeButtonViewModel()) {
                         actionButton = ActionButton.LIKE_DISLIKE;
                     } else {

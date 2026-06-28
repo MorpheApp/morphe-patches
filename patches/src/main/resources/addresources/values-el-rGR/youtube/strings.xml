@@ -234,6 +234,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_home_title">Φιλτράρισμα αρχικής ροής</string>
   <string name="morphe_hide_keyword_content_search_title">Φιλτράρισμα αποτελεσμάτων αναζήτησης</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Φιλτράρισμα σελίδας εγγραφών</string>
+  <string name="morphe_hide_keyword_content_comments_title">Απόκρυψη σχολίων με λέξεις-κλειδιά</string>
   <string name="morphe_hide_keyword_content_phrases_title">Λέξεις-κλειδιά για απόκρυψη</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
@@ -243,12 +244,12 @@ Second \"item\" text"</string>
 
 Οι λέξεις με κεφαλαία γράμματα στη μέση πρέπει να ταιριάζουν ακριβώς (π.χ.: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">Σχετικά με το φιλτράρισμα λέξεων-κλειδιών</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Αρχική / Εγγραφές / Τα αποτελέσματα αναζήτησης φιλτράρονται για να αποκρύψουν περιεχόμενο που ταιριάζει με φράσεις λέξεων-κλειδιών
+  <string name="morphe_hide_keyword_content_about_summary">"Η «Αρχική», οι «Εγγραφές», η «Αναζήτηση» και τα σχόλια φιλτράρονται για να αποκρύψουν περιεχόμενο που ταιριάζει με τις λέξεις-κλειδιά
 
 Περιορισμοί:
-• Δεν γίνεται απόκρυψη των Shorts με βάση το όνομα καναλιού
-• Κάποια στοιχεία UI ενδέχεται να μην είναι κρυμμένα
-• Η αναζήτηση για μια λέξη-κλειδί ενδέχεται να μην εμφανίζει κανένα αποτέλεσμα"</string>
+• Τα Shorts δεν μπορούν να αποκρυφθούν με βάση το όνομα του καναλιού
+• Ορισμένα στοιχεία διεπαφής χρήστη ενδέχεται να μην αποκρύπτονται
+• Η αναζήτηση για μια λέξη-κλειδί ενδέχεται να μην εμφανίσει αποτελέσματα"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Ταίριασμα ολόκληρων λέξεων</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Περιβάλλοντας μια λέξη-κλειδί / φράση με διπλά εισαγωγικά θα αποτρέψει μερικές αντιστοιχίες των τίτλων βίντεο και των ονομάτων καναλιών&lt;br&gt;&lt;br&gt;Για παράδειγμα,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; θα κρύψει το βίντεο: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;αλλά δεν θα κρύψει: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
@@ -305,6 +306,59 @@ Second \"item\" text"</string>
 
 Επιβεβαιώστε ότι το όνομα πακέτου είναι σωστό και ότι η εφαρμογή είναι εγκατεστημένη"</string>
   <string name="morphe_external_downloader_empty_warning">Το όνομα πακέτου δεν μπορεί να είναι κενό</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">Μετάφραση φωνής</string>
+  <string name="morphe_vot_screen_summary">Διαβάστε τις λεζάντες του βίντεο δυνατά χρησιμοποιώντας το text-to-speech της συσκευής, συγχρονισμένα με την αναπαραγωγή</string>
+  <string name="morphe_vot_enabled_title">Μετάφραση φωνής</string>
+  <string name="morphe_vot_caption_language_title">Γλώσσα</string>
+  <string name="morphe_vot_translation_service_title">Πάροχος μετάφρασης</string>
+  <string name="morphe_vot_original_audio_volume_title">Ένταση αρχικού ήχου</string>
+  <string name="morphe_vot_original_audio_volume_summary">Ένταση του αρχικού ήχου του YouTube κατά τη διάρκεια της μετάφρασης</string>
+  <string name="morphe_vot_translation_volume_title">Ένταση μετάφρασης</string>
+  <string name="morphe_vot_translation_volume_summary">Ένταση της φωνής της μεταγλωττισμένης μετάφρασης</string>
+  <string name="morphe_vot_max_speech_rate_title">Μέγιστη ταχύτητα ομιλίας</string>
+  <string name="morphe_vot_max_speech_rate_summary">Μέγιστος πολλαπλασιαστής ταχύτητας κατά την προσαρμογή της ομιλίας σε μια υποτιτλισμένη θέση</string>
+  <string name="morphe_vot_mymemory_info_summary">"Δωρεάν API μετάφρασης, δεν απαιτείται κλειδί API. Έως 5.000 χαρακτήρες την ημέρα στο δωρεάν πρόγραμμα, ή έως 50.000 χαρακτήρες την ημέρα με μια διεύθυνση email.
+
+Πατήστε εδώ για να ανοίξετε το MyMemory.translated.net"</string>
+  <string name="morphe_vot_mymemory_email_title">Email MyMemory</string>
+  <string name="morphe_vot_mymemory_email_summary">Προαιρετικό. Εισαγάγετε τη διεύθυνση email του MyMemory σας για να αυξήσετε το ημερήσιο όριο από 5.000 σε 50.000 χαρακτήρες. Αφήστε το κενό για να χρησιμοποιήσετε το ανώνυμο όριο</string>
+  <string name="morphe_vot_openrouter_info_summary">"Επι πληρωμή μετάφραση AI μέσω OpenRouter. Προσθέστε χρήματα μία φορά και μεταφράστε χιλιάδες βίντεο. Το Mistral Nemo είναι η φθηνότερη επιλογή, το Gemma 4 προσφέρει την υψηλότερη ποιότητα.
+
+Πατήστε εδώ για να ανοίξετε το OpenRouter.ai"</string>
+  <string name="morphe_vot_openrouter_api_key_title">Κλειδί API OpenRouter</string>
+  <string name="morphe_vot_openrouter_api_key_summary">Το κλειδί API OpenRouter σας. Δημιουργήστε ένα κλειδί στο OpenRouter.ai > Workspace > API Keys</string>
+  <string name="morphe_vot_openrouter_model_title">Μοντέλο OpenRouter</string>
+  <string name="morphe_vot_openrouter_model_custom">Προσαρμοσμένο</string>
+  <string name="morphe_vot_openrouter_not_configured_title">Το OpenRouter δεν έχει διαμορφωθεί</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Εισαγάγετε το κλειδί API OpenRouter σας στις ρυθμίσεις πριν επιλέξετε αυτόν τον πάροχο</string>
+  <string name="morphe_vot_cost_free">Δωρεάν</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s ανά 100 ώρες βίντεο</string>
+  <string name="morphe_vot_tts_voice_type">Φωνή</string>
+  <string name="morphe_vot_tts_system">Σύστημα</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Πολυγλωσσικός άνδρας</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Πολυγλωσσική γυναίκα</string>
+  <string name="morphe_vot_voice_gender_male">Άνδρας</string>
+  <string name="morphe_vot_voice_gender_female">Γυναίκα</string>
+  <string name="morphe_vot_tts_sample">Ώρα μεταμόρφωσης!</string>
+  <string name="morphe_vot_http_error_title">Μετάφραση μη διαθέσιμη</string>
+  <string name="morphe_vot_http_error_message">"Η υπηρεσία μετάφρασης επέστρεψε σφάλμα HTTP %s. Η διεύθυνση IP σας έχει πιθανώς περιοριστεί για έως και 24 ώρες.
+
+Για να συνεχίσετε να χρησιμοποιείτε μεταφράσεις, αλλάξτε σε έναν άλλο πάροχο μετάφρασης στις ρυθμίσεις ή χρησιμοποιήστε ένα VPN"</string>
+  <string name="morphe_vot_do_not_show_again">Να μην εμφανιστεί ξανά</string>
+  <string name="morphe_vot_export_api_key_warning">"Οι ρυθμίσεις σας περιέχουν ένα κλειδί API OpenRouter.
+
+Το κλειδί API σας δεν πρέπει ποτέ να κοινοποιείται. Όποιος έχει πρόσβαση σε αυτό μπορεί να χρησιμοποιήσει τα credits του OpenRouter σας"</string>
+  <string name="morphe_vot_openrouter_credits_title">Επιτεύχθηκε το όριο πίστωσης OpenRouter</string>
+  <string name="morphe_vot_openrouter_credits_message">Έχετε φτάσει στο όριο πίστωσης OpenRouter σας. Προσθέστε χρήματα στο υπόλοιπό σας ή αυξήστε το όριο δαπανών του κλειδιού σας στο OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">Άνοιγμα OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">Αποτυχία μετάφρασης OpenRouter (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">Επιτεύχθηκε το ημερήσιο όριο MyMemory</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Διαθέσιμο στις %s.</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Έχετε χρησιμοποιήσει το σημερινό δωρεάν ποσοστωτικό μετάφρασης MyMemory (5.000 χαρακτήρες). Προσθέστε ένα email MyMemory στις ρυθμίσεις για να αυξήσετε το ημερήσιο όριο σε 50.000 χαρακτήρες ή αλλάξτε σε μια άλλη υπηρεσία μετάφρασης</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Έχετε χρησιμοποιήσει το σημερινό ποσοστωτικό μετάφρασης MyMemory (50.000 χαρακτήρες). Αλλάξτε σε μια άλλη υπηρεσία μετάφρασης ή δοκιμάστε ξανά αύριο</string>
+  <string name="morphe_vot_mymemory_error">Αποτυχία μετάφρασης MyMemory (κατάσταση %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Αυτόματη επανάληψη βίντεο</string>
   <string name="morphe_do_not_remember_loop_video_title">Μην απομνημονεύεται η επαναλαμβανόμενη αναπαραγωγή βίντεο</string>
@@ -355,6 +409,8 @@ Second \"item\" text"</string>
   <string name="morphe_queue_restore_summary">Η ουρά διατηρείται μετά την επανεκκίνηση της εφαρμογής</string>
   <string name="morphe_swap_save_and_queue_actions_title">Αντιμετάθεση των ενεργειών Αποθήκευσης και Προσθήκης στην ουρά</string>
   <string name="morphe_swap_save_and_queue_actions_summary">Πατήστε για επιλογές ουράς, πατήστε και κρατήστε για αποθήκευση για να παρακολουθήσετε αργότερα</string>
+  <string name="morphe_queue_override_flyout_menu_title">Κουμπί αντικατάστασης σειράς αναδυόμενου μενού ροής</string>
+  <string name="morphe_queue_override_flyout_menu_summary">Ανοίγει την ουρά Morphe αντί για την ουρά YouTube</string>
   <string name="morphe_queue_manager_check_failed_auth">Δεν έχετε συνδεθεί</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">Δεν υπάρχει ID λίστας αναπαραγωγής</string>
   <string name="morphe_queue_manager_check_failed_queue">Η ουρά είναι άδεια</string>
@@ -470,6 +526,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_stop_ads_button_title">Απόκρυψη κουμπιού Αποθήκευσης</string>
   <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
   <string name="morphe_hide_comments_button_title">Κουμπί σχολίων</string>
+  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_connect_button_title">Απόκρυψη κουμπιού \"Σύνδεση\"</string>
   <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears on live streamed videos. -->
   <string name="morphe_hide_report_button_title">Κουμπί \"Απόκρυψη Αναφοράς\"</string>
@@ -494,6 +552,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shop_button_title">Κουμπί «Κατάστημα»</string>
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_save_button_title">Απόκρυψη τμήματος Διορθώσεων</string>
+  <string name="morphe_hide_more_button_title">Απόκρυψη κουμπιού \"Περισσότερα\"</string>
   <string name="morphe_fullscreen_buttons">Κουμπιά πλήρους οθόνης</string>
   <string name="morphe_hide_quick_actions_title">Απόκρυψη γραμμής ενεργειών</string>
   <string name="morphe_hide_quick_actions_ask_button_title">Απόκρυψη τμήματος «Πρόοδος μαθήματος»</string>
@@ -579,6 +638,7 @@ Second \"item\" text"</string>
   <string name="morphe_toolbar_screen_title">Γραμμή εργαλείων</string>
   <string name="morphe_toolbar_screen_summary">Επιλέξτε ποια στοιχεία εμφανίζονται στη γραμμή εργαλείων</string>
   <string name="morphe_hide_toolbar_cast_button_title">Κουμπί μετάδοσης</string>
+  <string name="morphe_hide_toolbar_chat_button_title">Απόκρυψη κουμπιού \"Συνομιλία\"</string>
   <string name="morphe_hide_toolbar_create_button_title">Απόκρυψη κουμπιού \"Δημιουργία\"</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Κρύψτε το κουμπί \'Μικρόφωνο\'</string>
   <string name="morphe_hide_toolbar_notification_button_title">Κρύψτε το κουμπί \'Ειδοποιήσεις\'</string>
@@ -739,8 +799,11 @@ Second \"item\" text"</string>
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">Απενεργοποίηση χειρονομίας σάρωσης προς τα πάνω σε κατακόρυφο προσανατολισμό</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Απενεργοποίηση χειρονομίας σάρωσης προς τα κάτω σε κατακόρυφη προβολή</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Απενεργοποίηση χειρονομίας σάρωσης προς τα κάτω σε οριζόντια προβολή</string>
-  <!-- layout.player.fullscreen.openVideosFullscreen -->
-  <string name="morphe_open_videos_fullscreen_portrait_title">Άνοιγμα των βίντεο σε πλήρη οθόνη με κατακόρυφη προβολή</string>
+  <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
+  <string name="morphe_open_videos_fullscreen_title">Άνοιγμα βίντεο σε πλήρη οθόνη</string>
+  <string name="morphe_open_videos_fullscreen_entry_1">Απενεργοποιημένο</string>
+  <string name="morphe_open_videos_fullscreen_entry_2">Κατακόρυφη</string>
+  <string name="morphe_open_videos_fullscreen_entry_3">Οριζόντια</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Αδιαφάνεια φόντου οθόνης αναπαραγωγής</string>
   <string name="morphe_player_overlay_opacity_summary">Ρυθμίστε το επίπεδο διαφάνειας (0 είναι διαφανές, 100 είναι αδιαφανές)</string>
@@ -767,7 +830,9 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_summary">Εμφανίζει μια εκτιμώμενη καταμέτρηση των likes σε βίντεο όπου ο δημιουργός έχει απενεργοποιήσει τα likes</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Εμφάνιση ειδοποιήσεων σφάλματος σύνδεσης</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Εμφανίζει μια ειδοποίηση όταν ο διακομιστής Return YouTube Dislike δεν είναι διαθέσιμος</string>
-  <string name="morphe_ryd_attribution_summary">Τα δεδομένα Dislike παρέχονται από το API του Return YouTube Dislike. Πατήστε εδώ για να μάθετε περισσότερα</string>
+  <string name="morphe_ryd_attribution_summary">"Τα δεδομένα παρέχονται από το Return YouTube Dislike API.
+
+Πατήστε εδώ για να ανοίξετε το ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Στατιστικά ReturnYouTubeDislike API αυτής της συσκευής</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Χρόνος απόκρισης API, μέσος όρος</string>
@@ -1009,7 +1074,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_color_opacity_label">Αδιαφάνεια:</string>
   <string name="morphe_sb_color_dot_label">Χρώμα:</string>
   <string name="morphe_sb_about_title">Σχετικά με</string>
-  <string name="morphe_sb_about_api_summary">Τα δεδομένα παρέχονται από το SponsorBlock API. Πατήστε για να μάθετε περισσότερα και να δείτε λήψεις για άλλες πλατφόρμες</string>
+  <string name="morphe_sb_about_api_summary">"Τα δεδομένα παρέχονται από το SponsorBlock API.
+
+Πατήστε εδώ για να ανοίξετε το Sponsor.ajay.app και να δείτε λήψεις για άλλες πλατφόρμες"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Διάταξη συσκευής</string>
   <string name="morphe_change_form_factor_entry_1">Προεπιλογή</string>
@@ -1018,20 +1085,23 @@ Second \"item\" text"</string>
   <string name="morphe_change_form_factor_entry_4">Αυτοκίνητο</string>
   <string name="morphe_change_form_factor_user_dialog_message">"Οι αλλαγές περιλαμβάνουν:
 
-Διάταξη Tablet
-• Τα δημοσιεύματα της κοινότητας είναι κρυφά
-• Η ρύθμιση αναπαραγωγής σε ροές δεν είναι διαθέσιμη
-• Το κουμπί Remix και το κουμπί Ήχου δεν είναι διαθέσιμα στο Shorts
-• Η γραμμή ενεργειών βίντεο δεν έχει καταρρεύσει
+Διάταξη για ταμπλέτες
+• Οι δημοσιεύσεις στην κοινότητα είναι κρυφές
+• Η ρύθμιση αναπαραγωγής στις ροές δεν είναι διαθέσιμη
+• Το κουμπί \"Remix\" και το κουμπί \"Ήχος\" δεν είναι διαθέσιμα στα Shorts
+• Εμφανίζεται η παλιά γραμμή ενεργειών βίντεο χωρίς κατάρρευση
 
-Διάταξη Automotive
+Διάταξη για αυτοκίνητα
 • Η ροή είναι οργανωμένη ανά θέματα και κανάλια
-• Η ρύθμιση αναπαραγωγής σε ροές δεν είναι διαθέσιμη
-• Το κουμπί Remix και το κουμπί Ήχου δεν είναι διαθέσιμα στο Shorts
-• Τα Shorts ανοίγουν στον κανονικό αναπαραγωγέ
-• Η γραμμή ενεργειών βίντεο δεν έχει καταρρεύσει"</string>
+• Η ρύθμιση αναπαραγωγής στις ροές δεν είναι διαθέσιμη
+• Το κουμπί \"Remix\" και το κουμπί \"Ήχος\" δεν είναι διαθέσιμα στα Shorts
+• Τα Shorts ανοίγουν στον κανονικό player
+• Εμφανίζεται η παλιά γραμμή ενεργειών βίντεο χωρίς κατάρρευση"</string>
   <string name="morphe_tablet_layout_in_player_title">Ενεργοποίηση διάταξης για tablet στον παίκτη</string>
-  <string name="morphe_tablet_layout_in_player_summary">Επαναφέρει τη παλιά διάταξη του player</string>
+  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+  <string name="morphe_tablet_layout_in_player_summary">"Επαναφέρει τη παλιά διάταξη του αναπαραγωγέα
+
+Περιορισμοί: Εάν η επιλογή \"Επαναφορά παλιάς γραμμής εργαλείων βίντεο\" είναι απενεργοποιημένη, η επικάλυψη \"Περισσότερα βίντεο\" ενδέχεται να μην είναι διαθέσιμη"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Παραποίηση έκδοσης εφαρμογής</string>
   <string name="morphe_spoof_app_version_summary">Εξαπατά τον διακομιστή ώστε να νομίζει ότι χρησιμοποιείτε μια παλαιότερη έκδοση εφαρμογής για να επαναφέρετε τις παλιότερες λειτουργίες UI</string>
@@ -1157,7 +1227,9 @@ Second \"item\" text"</string>
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow &amp; Αρχικές μικρογραφίες</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow &amp; Ακίνητα καρέ</string>
   <string name="morphe_alt_thumbnail_options_entry_4">Ακίνητα καρέ</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"Το DeArrow παρέχει μικρογραφίες από το κοινό για τα βίντεο. Οι μικρογραφίες αυτές είναι συχνά πιο σχετικές από εκείνες που παρέχει το ίδιο το YouTube. Αν ενεργοποιηθεί, οι διευθύνσεις URL των βίντεο θα στέλνονται στον διακομιστή API χωρίς να στέλνονται άλλα δεδομένα. Αν κάποιο βίντεο δεν έχει μικρογραφίες DeArrow, θα εμφανιστούν είτε οι αρχικές του μικρογραφίες είτε λήψεις ακίνητων καρέ.
+  <string name="morphe_alt_thumbnail_dearrow_about_summary">"Το DeArrow παρέχει μικρογραφίες από το κοινό για τα βίντεο. Οι μικρογραφίες αυτές είναι συχνά πιο σχετικές από εκείνες που παρέχει το ίδιο το YouTube.
+
+Αν ενεργοποιηθεί, οι διευθύνσεις URL των βίντεο θα στέλνονται στον διακομιστή API χωρίς να στέλνονται άλλα δεδομένα. Αν κάποιο βίντεο δεν έχει μικρογραφίες DeArrow, θα εμφανιστούν είτε οι αρχικές του μικρογραφίες είτε λήψεις ακίνητων καρέ.
 
 Πατήστε για να μάθετε περισσότερα για το DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Εμφάνιση ειδοποιήσεων σφάλματος σύνδεσης</string>
@@ -1287,4 +1359,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Ο εξαναγκασμός αρχικής γλώσσας ήχου δεν είναι διαθέσιμος</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Παραλλαγή πρόγραμμα αναπαραγωγής JavaScript</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Εμφάνιση παραποίησης στα Στατιστικά για ιδιοφυείς</string>
+  <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <string name="morphe_restore_old_video_action_bar_title">Επαναφορά γραμμής ενεργειών βίντεο παλαιού τύπου</string>
+  <string name="morphe_restore_old_video_action_bar_summary">"Διορθώνει την μη εμφάνιση των απορρίψεων και την αδυναμία απόκρυψης των κουμπιών ενεργειών βίντεο.
+
+Περιορισμοί: Επιστρέφει στην παλιά μορφή επικάλυψης 'Περισσότερα βίντεο'"</string>
 </resources>

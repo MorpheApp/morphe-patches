@@ -27,7 +27,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_1_ads_title">الإعلانات</string>
   <string name="morphe_settings_music_screen_2_general_title">عام</string>
   <string name="morphe_settings_music_screen_3_player_title">المشغل</string>
-  <string name="morphe_settings_music_screen_4_misc_title">متنوعة</string>
+  <string name="morphe_settings_music_screen_4_scrobbling_title">تسجيل التشغيل</string>
+  <string name="morphe_settings_music_screen_5_misc_title">خيارات متنوعة</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">إخفاء تسمية \'الحصول على Music Premium\'</string>
   <!-- ad.video.hideVideoAdsPatch -->
@@ -69,10 +70,34 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">تم إيقاف التلاشي التدريجي لهذه الجلسة</string>
   <string name="morphe_music_crossfade_resumed_toast">تم استئناف التلاشي التدريجي</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">وضع الفيديو غير متاح أثناء تمكين التلاشي التدريجي</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">تم إيقاف التشغيل التدريجي أثناء البث أو انعكاس الصوت. التلاشي التدريجي عبر البث/الانعكاس غير مستقر وقد لا يمكن إصلاحه أبدًا.</string>
   <string name="morphe_music_crossfade_about_title">لمحة</string>
-  <string name="morphe_music_crossfade_about_summary">"اضغط مع الاستمرار على زر التشغيل العشوائي لتعطيل/تمكين الميزة
+  <string name="morphe_music_crossfade_about_summary">كيف يعمل التشغيل التدريجي — ومتى لا يعمل</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">كيف يعمل</string>
+  <string name="morphe_music_crossfade_about_how_summary">"يؤدي التشغيل التدريجي إلى تداخل نهاية إحدى الأغاني مع بداية الأغنية التالية، مع خفض صوت الأولى تدريجيًا أثناء ارتفاع صوت الأخرى خلال المدة والمنحنى اللذين اخترتهما.
 
-تنفيذ الميزة بواسطة VazerOG"</string>
+يعمل على التقديم التلقائي (عندما تنتهي الأغنية من تلقاء نفسها) وعلى عمليات التخطي اليدوي — ولكل منهما مفتاح تشغيل/إيقاف خاص به أعلاه. في التقديم التلقائي، يبدأ المزج قبل ثوانٍ قليلة من نهاية الأغنية.
+
+يتطلب YouTube Music الإصدار 9.x أو أحدث."</string>
+  <string name="morphe_music_crossfade_about_best_title">يعمل بشكل أفضل مع</string>
+  <string name="morphe_music_crossfade_about_best_summary">التشغيل العادي للأغاني من أغنية إلى أخرى، والتقديم التلقائي، والتكرار الواحد (حيث تتلاشى الأغنية في نفسها)، والصوت المحلي — مكبر صوت الهاتف، وسماعات الرأس السلكية، والبلوتوث، أو USB.</string>
+  <string name="morphe_music_crossfade_about_quirks_title">لا يعمل بشكل صحيح</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"تعمل مقاطع فيديو الموسيقى كصوت فقط أثناء تشغيل الانتقال التدريجي (اضغط مع الاستمرار على زر التشغيل العشوائي للإيقاف إذا كنت تريد الفيديو)
+
+قد تتخطى الأغاني الأقصر من مدة التلاشي عملية التلاشي
+
+قد يعرض شاشة القفل أو الإشعار حالة قديمة لفترة وجيزة أثناء الانتقال"</string>
+  <string name="morphe_music_crossfade_about_known_title">مشاكل معروفة</string>
+  <string name="morphe_music_crossfade_about_known_summary">"قد تظهر مقاطع فيديو الموسيقى المعينة كأول أغنية - أو التي بدأت من خارج قائمة الانتظار الحالية - كفيديو لفترة وجيزة قبل أن يبدأ وضع الصوت فقط
+
+قد يؤدي إيقاف الانتقال التدريجي لمشاهدة مقطع فيديو موسيقي إلى ظهور بعض مقاطع الفيديو باللون الأسود (تلك التي يأتي صوتها من الفيديو نفسه). تجنب ذلك عن طريق إيقاف الانتقال التدريجي قبل اختيار الأغنية"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">لا يعمل على الإطلاق</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"البث أو عكس الصوت (Chromecast، أو عكس الشاشة أو الصوت) - يتوقف الانتقال التدريجي لأنه غير مستقر هناك وقد لا يتم إصلاحه أبدًا.
+
+YouTube Music 8.x - يعمل الانتقال التدريجي فقط على الإصدار 9.x والإصدارات الأحدث"</string>
+  <string name="morphe_music_crossfade_about_credit_title">حقوق الملكية</string>
+  <string name="morphe_music_crossfade_about_credit_summary">ميزة Transitions مقدمة من VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">تمكين التكرار الدائم</string>
   <!-- layout.buttons.hideButtonsPatch -->
@@ -123,4 +148,77 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">إخفاء تسميات أزرار التنقل</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">إخفاء زر الترقية</string>
+  <!-- interaction.scrobbling.scrobblingPatch -->
+  <string name="morphe_music_scrobbling_summary">تكوين تكامل Last.fm و ListenBrainz</string>
+  <string name="morphe_music_scrobbling_summary_logged_out">تسجيل خروج. اضغط للتكوين</string>
+  <string name="morphe_music_scrobbling_log_out">تسجيل خروج</string>
+  <string name="morphe_music_scrobbling_logged_out_toast">تم تسجيل الخروج</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_enabled_title">تمكين scrobbling</string>
+  <string name="morphe_music_listenbrainz_now_playing_title">إرسال حالة \"قيد التشغيل\"</string>
+  <string name="morphe_music_listenbrainz_min_song_duration_title">الحد الأدنى لمدة الأغنية</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_min_song_duration_summary">لن يتم تسجيل الأغاني الأقصر من هذا الوقت</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_title">نسبة تأخير scrobble</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_summary">قم بتشغيل scrobble بعد الاستماع إلى هذه النسبة المئوية من الأغنية</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_title">ثواني تأخير scrobble</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_summary">قم بتشغيل scrobble بعد الاستماع لهذا العدد من الثواني</string>
+  <string name="morphe_music_listenbrainz_token_title">حساب ListenBrainz</string>
+  <string name="morphe_music_listenbrainz_token_summary_logged_in">تم تسجيل الدخول. اضغط لإدارة الحساب</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">أدخل رمز مستخدم ListenBrainz الخاص بك لتمكين scrobbling</string>
+  <string name="morphe_music_listenbrainz_token_dialog_hint">رمز</string>
+  <string name="morphe_music_listenbrainz_token_dialog_get_token">الحصول على رمز</string>
+  <string name="morphe_music_listenbrainz_token_dialog_verify">تحقق</string>
+  <string name="morphe_music_listenbrainz_token_status_empty">الرجاء إدخال رمز</string>
+  <string name="morphe_music_listenbrainz_token_status_validating">التحقق...</string>
+  <string name="morphe_music_listenbrainz_token_status_valid">رمز صالح! المستخدم: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">رمز غير صالح: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid_unknown">غير معروف</string>
+  <string name="morphe_music_listenbrainz_token_status_failed">فشل التحقق: %s</string>
+  <string name="morphe_music_listenbrainz_token_toast_cleared">تم مسح الرمز</string>
+  <string name="morphe_music_listenbrainz_token_toast_saved">تم حفظ الرمز</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">تحذير: الرمز المحفوظ غير صالح!</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_lastfm_enabled_title">تمكين scrobbling</string>
+  <string name="morphe_music_lastfm_now_playing_title">إرسال حالة \"قيد التشغيل\"</string>
+  <string name="morphe_music_lastfm_love_on_like_title">الإعجاب بالأغاني المحببة</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">الإعجاب تلقائيًا بالأغاني على Last.fm عندما تعجبك على YouTube Music (وإزالة الإعجاب عند عدم الإعجاب أو عدم الاستحسان)</string>
+  <string name="morphe_music_lastfm_min_song_duration_title">الحد الأدنى لمدة الأغنية</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_lastfm_min_song_duration_summary">لن يتم تسجيل الأغاني الأقصر من هذا الوقت</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_title">نسبة تأخير scrobble</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_summary">قم بتشغيل scrobble بعد الاستماع إلى هذه النسبة المئوية من الأغنية</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_title">ثواني تأخير scrobble</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_summary">قم بتشغيل scrobble بعد الاستماع لهذا العدد من الثواني</string>
+  <string name="morphe_music_lastfm_token_title">حساب Last.fm</string>
+  <string name="morphe_music_lastfm_token_summary_logged_in">تم تسجيل الدخول باسم %s. اضغط لإدارة الحساب</string>
+  <string name="morphe_music_lastfm_token_dialog_instruction">أدخل بيانات اعتماد Last.fm لتسجيل الدخول</string>
+  <string name="morphe_music_lastfm_token_dialog_username_hint">اسم المستخدم</string>
+  <string name="morphe_music_lastfm_token_dialog_password_hint">كلمة المرور</string>
+  <string name="morphe_music_lastfm_token_dialog_login">تسجيل الدخول</string>
+  <string name="morphe_music_lastfm_token_status_empty">الرجاء إدخال اسم المستخدم وكلمة المرور</string>
+  <string name="morphe_music_lastfm_token_status_logging_in">جاري تسجيل الدخول...</string>
+  <string name="morphe_music_lastfm_token_status_success">تم تسجيل الدخول بنجاح!</string>
+  <string name="morphe_music_lastfm_token_status_no_session">فشل الحصول على جلسة من Last.fm</string>
+  <string name="morphe_music_lastfm_token_status_failed">فشل تسجيل الدخول: %s</string>
+  <string name="morphe_music_lastfm_token_toast_saved">تم حفظ بيانات اعتماد Last.fm!</string>
+  <string name="morphe_settings_music_scrobbling_metadata_title">تنظيف البيانات الوصفية</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_title">تنظيف البيانات الوصفية</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">تنظيف تلقائي للفوضى الشائعة (مثل \"فيديو رسمي\"، \"إعادة إتقان\"، \"مباشر\") من العناوين والفنانين والألبومات قبل scrobbling</string>
+  <string name="morphe_music_scrobbling_custom_regex_title">تنظيف regex مخصص</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">"أدخل تعبيرًا نمطيًا مخصصًا (regex) لمطابقة وإزالة نص إضافي من عناوين الأغاني أو الفنانين أو الألبومات.
+مثال: (?i)\\s*\\((clean|explicit)\\)"</string>
+  <string name="morphe_music_scrobbling_about_title">حول scrobbling</string>
+  <string name="morphe_music_scrobbling_about_summary">"يتتبع scrobbling تلقائيًا الموسيقى التي تشغلها على YouTube Music ويزامنها مع ملف تعريف Last.fm أو ListenBrainz الخاص بك.
+
+لضمان تشغيل scrobbling بشكل موثوق في الخلفية، يرجى التأكد من تعيين استخدام نظام طاقة YouTube Music على \"غير مقيد\"."</string>
 </resources>

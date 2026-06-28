@@ -234,6 +234,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_home_title">过滤首页视频</string>
   <string name="morphe_hide_keyword_content_search_title">过滤搜索结果</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">过滤订阅视频</string>
+  <string name="morphe_hide_keyword_content_comments_title">隐藏关键词评论</string>
   <string name="morphe_hide_keyword_content_phrases_title">要隐藏的关键字</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
@@ -243,10 +244,10 @@ Second \"item\" text"</string>
 
 中间带有大写字母的单词必须按照字母的大小写输入 (例如: iPhone、TikTok、LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">关于关键字过滤</string>
-  <string name="morphe_hide_keyword_content_about_summary">"首页/订阅/搜索结果过滤掉与关键词短语匹配的内容
+  <string name="morphe_hide_keyword_content_about_summary">"首页/订阅/搜索/评论会过滤掉与关键词短语匹配的内容
 
 限制：
-• 短视频无法通过频道名称隐藏
+• Shorts 无法通过频道名称隐藏
 • 某些 UI 组件可能不会隐藏
 • 搜索关键词可能没有结果"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">匹配整个词语</string>
@@ -305,6 +306,59 @@ Second \"item\" text"</string>
 
 请验证包名是否正确且应用已安装"</string>
   <string name="morphe_external_downloader_empty_warning">包名不能为空</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">语音旁白翻译</string>
+  <string name="morphe_vot_screen_summary">使用设备上的文本转语音功能朗读视频字幕，并与播放同步</string>
+  <string name="morphe_vot_enabled_title">语音旁白翻译</string>
+  <string name="morphe_vot_caption_language_title">语言</string>
+  <string name="morphe_vot_translation_service_title">翻译提供商</string>
+  <string name="morphe_vot_original_audio_volume_title">原始音频音量</string>
+  <string name="morphe_vot_original_audio_volume_summary">翻译语音播放时原始 YouTube 音频的音量</string>
+  <string name="morphe_vot_translation_volume_title">翻译音量</string>
+  <string name="morphe_vot_translation_volume_summary">配音翻译语音的音量</string>
+  <string name="morphe_vot_max_speech_rate_title">最大语速</string>
+  <string name="morphe_vot_max_speech_rate_summary">将语音适应字幕时，最大语速倍数</string>
+  <string name="morphe_vot_mymemory_info_summary">"免费翻译 API，无需 API 密钥。免费套餐每天最多 5,000 个字符，或使用电子邮件地址每天最多 50,000 个字符。
+
+点击此处打开 MyMemory.translated.net"</string>
+  <string name="morphe_vot_mymemory_email_title">MyMemory 邮箱</string>
+  <string name="morphe_vot_mymemory_email_summary">可选。输入您的 MyMemory 邮箱地址以将每日限制从 5,000 个字符提高到 50,000 个字符。留空以使用匿名限制</string>
+  <string name="morphe_vot_openrouter_info_summary">"通过 OpenRouter 付费 AI 翻译。一次充值，即可翻译数千个视频。Mistral Nemo 是最便宜的选项，Gemma 4 提供最高的质量。
+
+点击此处打开 OpenRouter.ai"</string>
+  <string name="morphe_vot_openrouter_api_key_title">OpenRouter API 密钥</string>
+  <string name="morphe_vot_openrouter_api_key_summary">您的 OpenRouter API 密钥。在 OpenRouter.ai &gt; 工作区 &gt; API 密钥处创建密钥</string>
+  <string name="morphe_vot_openrouter_model_title">OpenRouter 模型</string>
+  <string name="morphe_vot_openrouter_model_custom">自定义</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter 未配置</string>
+  <string name="morphe_vot_openrouter_not_configured_message">在设置中输入您的 OpenRouter API 密钥，然后再选择此提供商</string>
+  <string name="morphe_vot_cost_free">免费</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">每 100 小时 %s</string>
+  <string name="morphe_vot_tts_voice_type">语音</string>
+  <string name="morphe_vot_tts_system">系统</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">多语言男声</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">多语言女声</string>
+  <string name="morphe_vot_voice_gender_male">男声</string>
+  <string name="morphe_vot_voice_gender_female">女声</string>
+  <string name="morphe_vot_tts_sample">变身时间到了！</string>
+  <string name="morphe_vot_http_error_title">翻译不可用</string>
+  <string name="morphe_vot_http_error_message">"翻译服务返回 HTTP 错误 %s。您的 IP 地址可能已被限制速率，最长 24 小时。
+
+要继续使用翻译，请在设置中切换到不同的翻译提供商，或使用 VPN"</string>
+  <string name="morphe_vot_do_not_show_again">不再显示</string>
+  <string name="morphe_vot_export_api_key_warning">"您的设置包含 OpenRouter API 密钥。
+
+您的 API 密钥绝不能共享。任何访问它的人都可以使用您的 OpenRouter 积分"</string>
+  <string name="morphe_vot_openrouter_credits_title">OpenRouter 信用额度已用完</string>
+  <string name="morphe_vot_openrouter_credits_message">您的 OpenRouter 信用额度已用完。在 OpenRouter.ai 上充值或增加您的密钥支出限制</string>
+  <string name="morphe_vot_openrouter_open_website">打开 OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">OpenRouter 翻译失败 (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">MyMemory 每日限制已达到</string>
+  <string name="morphe_vot_mymemory_quota_next_available">下次可用时间为 %s。</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">您已使用今天的免费 MyMemory 翻译配额（5,000 个字符）。在设置中添加 MyMemory 邮箱以将每日限制提高到 50,000 个字符，或切换到其他翻译服务</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">您已使用今天的 MyMemory 翻译配额（50,000 个字符）。切换到其他翻译服务或明天再试</string>
+  <string name="morphe_vot_mymemory_error">MyMemory 翻译失败 (状态 %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">启用循环播放视频</string>
   <string name="morphe_do_not_remember_loop_video_title">不记住循环视频</string>
@@ -355,6 +409,8 @@ Second \"item\" text"</string>
   <string name="morphe_queue_restore_summary">重启应用后队列仍会保留</string>
   <string name="morphe_swap_save_and_queue_actions_title">交换保存和队列操作</string>
   <string name="morphe_swap_save_and_queue_actions_summary">点击查看队列选项，长按保存以供稍后观看</string>
+  <string name="morphe_queue_override_flyout_menu_title">覆盖信息流浮动队列按钮</string>
+  <string name="morphe_queue_override_flyout_menu_summary">打开 Morphe 队列，而不是 YouTube 队列</string>
   <string name="morphe_queue_manager_check_failed_auth">未登录</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">没有播放列表ID</string>
   <string name="morphe_queue_manager_check_failed_queue">队列为空</string>
@@ -470,6 +526,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_stop_ads_button_title">隐藏“停止广告”按钮</string>
   <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
   <string name="morphe_hide_comments_button_title">隐藏评论按钮</string>
+  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_connect_button_title">隐藏关联按钮</string>
   <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears on live streamed videos. -->
   <string name="morphe_hide_report_button_title">隐藏举报按钮</string>
@@ -494,6 +552,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shop_button_title">隐藏商店按钮</string>
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_save_button_title">隐藏保存按钮</string>
+  <string name="morphe_hide_more_button_title">隐藏更多按钮</string>
   <string name="morphe_fullscreen_buttons">全屏按钮</string>
   <string name="morphe_hide_quick_actions_title">隐藏操作栏</string>
   <string name="morphe_hide_quick_actions_ask_button_title">隐藏询问按钮</string>
@@ -579,6 +638,7 @@ Second \"item\" text"</string>
   <string name="morphe_toolbar_screen_title">工具栏</string>
   <string name="morphe_toolbar_screen_summary">选择工具栏中显示哪些组件</string>
   <string name="morphe_hide_toolbar_cast_button_title">隐藏“投屏”按钮</string>
+  <string name="morphe_hide_toolbar_chat_button_title">隐藏聊天按钮</string>
   <string name="morphe_hide_toolbar_create_button_title">隐藏创建按钮</string>
   <string name="morphe_hide_toolbar_microphone_button_title">隐藏麦克风按钮</string>
   <string name="morphe_hide_toolbar_notification_button_title">隐藏通知按钮</string>
@@ -739,8 +799,11 @@ Second \"item\" text"</string>
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">禁用向上滑动返回手势</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">禁用竖屏下滑手势</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">禁用横屏下滑手势</string>
-  <!-- layout.player.fullscreen.openVideosFullscreen -->
-  <string name="morphe_open_videos_fullscreen_portrait_title">以全屏纵向模式打开视频</string>
+  <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
+  <string name="morphe_open_videos_fullscreen_title">以全屏模式打开视频</string>
+  <string name="morphe_open_videos_fullscreen_entry_1">已禁用</string>
+  <string name="morphe_open_videos_fullscreen_entry_2">纵向显示</string>
+  <string name="morphe_open_videos_fullscreen_entry_3">横向显示</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">播放器叠加层不透明度</string>
   <string name="morphe_player_overlay_opacity_summary">调整透明度 (0 为透明，100 为不透明)</string>
@@ -767,7 +830,9 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_summary">显示在禁用点赞的视频上估算的赞数</string>
   <string name="morphe_ryd_toast_on_connection_error_title">显示连接错误提醒</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">当 Return YouTube Dislike 服务器不可用时显示通知</string>
-  <string name="morphe_ryd_attribution_summary">数据由 Return YouTube Dislike API 提供。点击此处了解更多</string>
+  <string name="morphe_ryd_attribution_summary">"数据由 Return YouTube Dislike API 提供。
+
+点击此处打开 ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">ReturnYouTubeDislike API 设备统计信息</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API 响应时间，平均值</string>
@@ -1011,7 +1076,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_color_opacity_label">不透明度：</string>
   <string name="morphe_sb_color_dot_label">颜色:</string>
   <string name="morphe_sb_about_title">关于</string>
-  <string name="morphe_sb_about_api_summary">数据由 SponsorBlock API 提供。点击这里了解更多信息并查看其他平台的下载内容</string>
+  <string name="morphe_sb_about_api_summary">"数据由 SponsorBlock API 提供。
+
+点击此处打开 Sponsor.ajay.app，查看其他平台的下载内容"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">设备布局</string>
   <string name="morphe_change_form_factor_entry_1">默认</string>
@@ -1022,18 +1089,21 @@ Second \"item\" text"</string>
 
 平板电脑布局
 • 社区帖子已隐藏
-• 订阅源中的播放设置不可用
-• Shorts 中未提供 Remix 按钮和 Sound 按钮
-• 视频操作栏未折叠
+• 消息流中播放不可用
+• Shorts 中没有混音按钮和声音按钮
+• 显示未折叠的旧视频操作栏
 
-车载布局
-• 订阅源按主题和频道组织
-• 订阅源中的播放设置不可用
-• Shorts 中未提供 Remix 按钮和 Sound 按钮
+汽车布局
+• 消息流按主题和频道组织
+• 消息流中播放不可用
+• Shorts 中没有混音按钮和声音按钮
 • Shorts 在常规播放器中打开
-• 视频操作栏未折叠"</string>
+• 显示未折叠的旧视频操作栏"</string>
   <string name="morphe_tablet_layout_in_player_title">在播放器中启用平板电脑布局</string>
-  <string name="morphe_tablet_layout_in_player_summary">恢复旧版播放器布局</string>
+  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+  <string name="morphe_tablet_layout_in_player_summary">"恢复旧版播放器布局
+
+限制：如果关闭“恢复旧版视频操作栏”，则可能无法使用“更多视频”叠加层"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">伪装应用程序版本</string>
   <string name="morphe_spoof_app_version_summary">欺骗服务器，使其认为您正在使用较旧的应用程序版本以恢复旧版 UI 功能</string>
@@ -1291,4 +1361,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• 强制原始音频不可用</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">播放器JavaScript变种</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">在“极客统计”中显示欺骗信息</string>
+  <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <string name="morphe_restore_old_video_action_bar_title">恢复旧版视频操作栏</string>
+  <string name="morphe_restore_old_video_action_bar_summary">"修复无法显示不喜欢次数以及无法隐藏视频操作按钮的问题。
+
+限制：恢复到旧版“更多视频”叠加层"</string>
 </resources>

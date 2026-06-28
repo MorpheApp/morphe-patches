@@ -109,6 +109,25 @@ Reprodukcija će neće uspeti ako je heš kőd JavaScript plejera zastareo."</st
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Prisili originalni jezik zvuka</string>
   <string name="morphe_force_original_audio_summary">Uvek reprodukuje originalnu audio traku videa umesto sinhronizovane verzije</string>
+  <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">Mrežni proxy</string>
+  <string name="morphe_proxy_screen_summary">Usmeravanje podrŽane mreŽne zahteve preko proxy servera</string>
+  <string name="morphe_proxy_enabled_title">Omoguči proxy</string>
+  <string name="morphe_proxy_enabled_summary">Usmerava mrežne zahteve podržanih ruta preko konfigurisane HTTP ili HTTPS proksi servera</string>
+  <string name="morphe_proxy_host_title">Proksi host</string>
+  <string name="morphe_proxy_host_summary">Naziv hosta ili IP adresa proksi servera</string>
+  <string name="morphe_proxy_port_title">Proksi port</string>
+  <string name="morphe_proxy_port_summary">Port proksi servera</string>
+  <string name="morphe_proxy_https_title">Koristi HTTPS proksi</string>
+  <string name="morphe_proxy_https_summary">Koristi HTTPS za povezivanje na proksi server umesto HTTP</string>
+  <string name="morphe_proxy_auth_enabled_title">Proksi autentifikacija</string>
+  <string name="morphe_proxy_auth_enabled_summary">Šalje Basic autentifikaciju sa proksi zahtevima</string>
+  <string name="morphe_proxy_auth_username_title">Vaše korisničko ime</string>
+  <string name="morphe_proxy_auth_username_summary">Korisničko ime za Basic proksi autentifikaciju</string>
+  <string name="morphe_proxy_auth_password_title">Proksi korisničko ime</string>
+  <string name="morphe_proxy_auth_password_summary">Šifra za Basic proksi autentifikaciju</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">Dozvoli direktan povratak</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">Poveži se direktno ako proksi ne uspe</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Sakrij oglase preko celog ekrana</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

@@ -37,12 +37,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">禁用在截屏时出现的弹窗</string>
   <string name="morphe_hide_ask_button_title">隐藏询问按钮</string>
   <string name="morphe_hide_ask_button_summary">隐藏搜索栏中的询问按钮</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">隐藏推荐社区</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">隐藏子版块中的推荐社区专栏</string>
-  <string name="morphe_hide_trending_today_shelf_title">隐藏“今日热门”专栏</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"隐藏搜索建议中的“今日热门”专栏。
-
-限制：视觉间隔符可能无法隐藏"</string>
+  <string name="morphe_hide_communities_shelf_title">隐藏社区展示栏</string>
+  <string name="morphe_hide_communities_shelf_summary">隐藏 Reddit 页面中相关的或推荐的社区展示栏</string>
+  <string name="morphe_hide_trending_shelves_title">隐藏热门书架</string>
+  <string name="morphe_hide_trending_shelves_summary">从信息流和搜索建议中隐藏热门标签</string>
   <string name="morphe_remove_notification_dialog_title">移除通知建议对话框</string>
   <string name="morphe_remove_notification_dialog_summary">在访问subreddit时自动关闭通知建议对话框</string>
   <string name="morphe_show_view_count_title">在帖子中显示观看次数</string>

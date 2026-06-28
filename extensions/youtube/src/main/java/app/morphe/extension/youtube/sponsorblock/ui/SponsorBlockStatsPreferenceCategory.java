@@ -19,12 +19,12 @@ import androidx.annotation.Nullable;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.preference.ResettableEditTextPreference;
+import app.morphe.extension.shared.sponsorblock.SponsorBlockHelpers;
+import app.morphe.extension.shared.sponsorblock.objects.UserStats;
+import app.morphe.extension.shared.sponsorblock.requests.SBRequester;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.youtube.settings.Settings;
-import app.morphe.extension.youtube.sponsorblock.SponsorBlockSettings;
 import app.morphe.extension.youtube.sponsorblock.SponsorBlockUtils;
-import app.morphe.extension.youtube.sponsorblock.objects.UserStats;
-import app.morphe.extension.youtube.sponsorblock.requests.SBRequester;
 
 /**
  * User skip stats.
@@ -58,7 +58,7 @@ public class SponsorBlockStatsPreferenceCategory extends PreferenceCategory {
             setEnabled(enabled);
             removeAll();
 
-            if (!SponsorBlockSettings.userHasSBPrivateID()) {
+            if (!SponsorBlockHelpers.userHasSBPrivateID()) {
                 // User has never voted or created any segments. Only local stats exist.
                 addLocalUserStats();
                 return;

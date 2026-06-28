@@ -37,12 +37,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">Изключва изскачащия прозорец, който се появява при правене на екранна снимка</string>
   <string name="morphe_hide_ask_button_title">Скрий бутона \"Попитай\"</string>
   <string name="morphe_hide_ask_button_summary">Скрива бутона \"Попитай\" в лентата за търсене</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">Скриване на препоръчаните общности</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">Скрива рафтовете с препоръчани общности в подредитите</string>
-  <string name="morphe_hide_trending_today_shelf_title">Скриване на рафта \"Днес най-популярни\"</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"Скрива рафта \"Днес най-популярни\" от предложенията за търсене
-
-Ограничение: Визуалните разделители може да не бъдат скрити"</string>
+  <string name="morphe_hide_communities_shelf_title">Скриване на секцията с общности</string>
+  <string name="morphe_hide_communities_shelf_summary">Скрива секцията с препоръчани или свързани общности в подредитите</string>
+  <string name="morphe_hide_trending_shelves_title">Скрий популярните секции</string>
+  <string name="morphe_hide_trending_shelves_summary">Скрива секциите \"Тенденции\" от началната страница и предложенията за търсене.</string>
   <string name="morphe_remove_notification_dialog_title">Премахване на диалоговия прозорец за предложения за известия</string>
   <string name="morphe_remove_notification_dialog_summary">Автоматично затваря диалоговия прозорец за предложение за известие при посещение на подреддит</string>
   <string name="morphe_show_view_count_title">Покажи броя на преглежданията на публикациите</string>

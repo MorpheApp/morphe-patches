@@ -16,9 +16,8 @@ import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
-import java.util.logging.Logger
 
-internal const val EXTENSION_CLASS =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/HideSidebarComponentsPatch;"
 
 private const val EXTENSION_HEADER_ITEM_INTERFACE =

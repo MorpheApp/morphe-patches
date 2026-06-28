@@ -37,12 +37,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">Deaktiviert das Pop-up bei einem Screenshot</string>
   <string name="morphe_hide_ask_button_title">Frage-Button ausblenden</string>
   <string name="morphe_hide_ask_button_summary">Blendet den Frage-Button in der Suchleiste aus</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">Empfohlene Communities ausblenden</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">Blendet die Bereiche der empfohlenen Communities in Subreddits aus</string>
-  <string name="morphe_hide_trending_today_shelf_title">\"Im Trend\"-Bereich ausblenden</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"Blendet den \"Im Trend\"-Bereich aus Suchvorschlägen aus
-
-Einschränkung: Visuelle Abstandshalter werden möglicherweise nicht ausgeblendet"</string>
+  <string name="morphe_hide_communities_shelf_title">Communities-Bereich ausblenden</string>
+  <string name="morphe_hide_communities_shelf_summary">Blendet die Bereiche der zugehörigen oder vorgeschlagenen Communities in Subreddits aus</string>
+  <string name="morphe_hide_trending_shelves_title">\"Im Trend\"-Bereich ausblenden</string>
+  <string name="morphe_hide_trending_shelves_summary">Verbirgt die Trending-Regale aus dem Feed und den Suchvorschlägen</string>
   <string name="morphe_remove_notification_dialog_title">Benachrichtigungs-Vorschlagsdialog entfernen</string>
   <string name="morphe_remove_notification_dialog_summary">Entfernt den Benachrichtigungsvorschlagsdialog automatisch beim Besuch eines Subreddits</string>
   <string name="morphe_show_view_count_title">Anzahl der Aufrufe anzeigen</string>

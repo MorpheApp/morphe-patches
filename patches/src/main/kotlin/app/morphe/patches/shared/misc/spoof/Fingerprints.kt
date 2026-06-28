@@ -212,6 +212,6 @@ internal fun indexOfNewUrlRequestBuilderInstruction(method: Method) = method.ind
             && reference.name == "newUrlRequestBuilder"
             && reference.parameterTypes.size == 3
             && reference.parameterTypes[0] == "Ljava/lang/String;"
-            && reference.parameterTypes[1] == "Lorg/chromium/net/UrlRequest\$Callback;"
+            && reference.parameterTypes[1] == $$"Lorg/chromium/net/UrlRequest$Callback;"
             && reference.parameterTypes[2] == "Ljava/util/concurrent/Executor;"
 }

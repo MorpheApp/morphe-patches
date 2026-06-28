@@ -23,8 +23,6 @@ import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayMethod
-import app.morphe.patches.youtube.misc.playservice.is_21_21_or_greater
-import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.copyResources
@@ -46,7 +44,7 @@ import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
-internal const val EXTENSION_CLASS =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/shared/spoof/SpoofVideoStreamsPatch;"
 
 private val spoofVideoStreamsResourcePatch = resourcePatch {
@@ -77,7 +75,7 @@ internal fun spoofVideoStreamsPatch(
     fixParsePlaybackResponseFeatureFlag: BytecodePatchBuilder.() -> Boolean,
     fixMediaSessionFeatureFlag: BytecodePatchBuilder.() -> Boolean,
     fixReelItemWatchResponseFeatureFlag: BytecodePatchBuilder.() -> Boolean,
-    hookAccountIdentity: BytecodePatchBuilder.() -> Boolean,
+    @Suppress("unused") hookAccountIdentity: BytecodePatchBuilder.() -> Boolean,
     useNewRequestBuilderFingerprint: BytecodePatchBuilder.() -> Boolean,
     block: BytecodePatchBuilder.() -> Unit,
     executeBlock: BytecodePatchContext.() -> Unit = {},
@@ -137,9 +135,9 @@ internal fun spoofVideoStreamsPatch(
 
                     addInstructionsAtControlFlowLabel(
                         index,
-                        """
-                            invoke-static { v$register }, $EXTENSION_CLASS->blockGetWatchRequest(Landroid/net/Uri${'$'}Builder;)Landroid/net/Uri${'$'}Builder;
-                            move-result-object v$register
+                        $$"""
+                            invoke-static { v$$register }, $$EXTENSION_CLASS->blockGetWatchRequest(Landroid/net/Uri$Builder;)Landroid/net/Uri$Builder;
+                            move-result-object v$$register
                         """
                     )
                 }

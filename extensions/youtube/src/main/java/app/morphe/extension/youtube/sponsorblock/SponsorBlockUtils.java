@@ -47,14 +47,15 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
+import app.morphe.extension.shared.sponsorblock.SegmentPlaybackController;
+import app.morphe.extension.shared.sponsorblock.objects.CategoryBehaviour;
+import app.morphe.extension.shared.sponsorblock.objects.SegmentCategory;
+import app.morphe.extension.shared.sponsorblock.objects.SponsorSegment;
+import app.morphe.extension.shared.sponsorblock.objects.SponsorSegment.SegmentVote;
+import app.morphe.extension.shared.sponsorblock.requests.SBRequester;
+import app.morphe.extension.shared.sponsorblock.requests.SBRequester.SegmentSubmitAction;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
-import app.morphe.extension.youtube.sponsorblock.objects.CategoryBehaviour;
-import app.morphe.extension.youtube.sponsorblock.objects.SegmentCategory;
-import app.morphe.extension.youtube.sponsorblock.objects.SponsorSegment;
-import app.morphe.extension.youtube.sponsorblock.objects.SponsorSegment.SegmentVote;
-import app.morphe.extension.youtube.sponsorblock.requests.SBRequester;
-import app.morphe.extension.youtube.sponsorblock.requests.SBRequester.SegmentSubmitAction;
 import app.morphe.extension.youtube.sponsorblock.ui.SponsorBlockViewController;
 
 /**
@@ -411,20 +412,6 @@ public class SponsorBlockUtils {
         }
     }
 
-    static void sendViewRequestAsync(SponsorSegment segment) {
-        if (segment.recordedAsSkipped || segment.category == SegmentCategory.UNSUBMITTED) {
-            return;
-        }
-        segment.recordedAsSkipped = true;
-        final long totalTimeSkipped = Settings.SB_LOCAL_TIME_SAVED_MILLISECONDS.get() + segment.length();
-        Settings.SB_LOCAL_TIME_SAVED_MILLISECONDS.save(totalTimeSkipped);
-        Settings.SB_LOCAL_TIME_SAVED_NUMBER_SEGMENTS.save(Settings.SB_LOCAL_TIME_SAVED_NUMBER_SEGMENTS.get() + 1);
-
-        if (Settings.SB_TRACK_SKIP_COUNT.get()) {
-            Utils.runOnBackgroundThread(() -> SBRequester.sendSegmentSkippedViewedRequest(segment));
-        }
-    }
-
     public static void showErrorDialog(String dialogMessage) {
         Utils.runOnMainThreadNowOrLater(() -> {
             Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
@@ -558,7 +545,7 @@ public class SponsorBlockUtils {
             mainLayout.setPadding(Dim.dp16, 0, Dim.dp16, Dim.dp16);
 
             TextView titleView = new TextView(context);
-            titleView.setText(str("morphe_sb_channel_whitelist"));
+            titleView.setText(str("morphe_sb_channel_whitelist_title"));
             titleView.setTextSize(18);
             titleView.setTypeface(Typeface.DEFAULT_BOLD);
             titleView.setTextColor(Utils.getAppForegroundColor());

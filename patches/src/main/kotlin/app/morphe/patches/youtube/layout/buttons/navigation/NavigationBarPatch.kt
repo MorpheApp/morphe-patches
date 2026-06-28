@@ -17,6 +17,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
@@ -210,17 +211,22 @@ val navigationBarPatch = bytecodePatch(
         }
 
         if (is_20_31_or_greater) {
-            AutoHideNavigationBarFingerprint.method.addInstructionsWithLabels(
-                0,
-                """
-                    invoke-static { }, $EXTENSION_CLASS->disableAutoHidingNavigationBar()Z
-                    move-result v0      
-                    if-eqz v0, :show
-                    return-void      
-                    :show
-                    nop      
-                """
-            )
+            listOf(
+                AutoHideNavigationBarOnFeedScrollingFingerprint,
+                AutoHideNavigationBarOnDismissMiniplayerFingerprint,
+            ).forEach {
+                it.method.addInstructionsWithLabels(
+                    0,
+                    """
+                        invoke-static { }, $EXTENSION_CLASS->disableAutoHidingNavigationBar()Z
+                        move-result v0      
+                        if-eqz v0, :show
+                        return-void      
+                        :show
+                        nop      
+                    """
+                )
+            }
         }
 
         //
@@ -356,6 +362,7 @@ val navigationBarPatch = bytecodePatch(
 
         val toolbarPreferences = mutableSetOf(
             SwitchPreference("morphe_hide_toolbar_cast_button"),
+            SwitchPreference("morphe_hide_toolbar_chat_button"),
             SwitchPreference("morphe_hide_toolbar_create_button"),
             SwitchPreference("morphe_hide_toolbar_microphone_button"),
             SwitchPreference("morphe_hide_toolbar_notification_button"),
@@ -379,6 +386,7 @@ val navigationBarPatch = bytecodePatch(
         hookToolBar("$EXTENSION_CLASS->hideCreateButton")
         hookToolBar("$EXTENSION_CLASS->hideNotificationButton")
         hookToolBar("$EXTENSION_CLASS->hideSearchButton")
+        hookToolBar("$EXTENSION_CLASS->hideChatButton")
 
         //
         // Hide cast button
@@ -478,10 +486,18 @@ val navigationBarPatch = bytecodePatch(
                     null,
                     MutableMethodImplementation(2),
                 ).toMutable().apply {
+                    // 21.25+ has an ignored MenuItem parameter.
+                    val parameters = when (it.method.parameters.size) {
+                        0 -> ""
+                        1 -> ", v0"
+                        else -> throw PatchException("Unpexpected number of parameters")
+                    }
+
                     addInstructions(
                         0,
                         """
-                            invoke-virtual { p0 }, ${it.method}
+                            const/4 v0, 0x0
+                            invoke-virtual { p0 $parameters }, ${it.method}
                             return-void
                         """
                     )

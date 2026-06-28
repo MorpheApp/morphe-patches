@@ -78,11 +78,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_expandable_card_entry_5">Приховати всі</string>
   <string name="morphe_hide_floating_microphone_button_title">Приховати плаваючу кнопку мікрофона</string>
   <string name="morphe_hide_floating_microphone_button_summary">Приховує плаваючу кнопку мікрофона в правому нижньому куті екрана пошукових підказок</string>
-  <string name="morphe_hide_horizontal_shelves_title">Приховати горизонтальні полиці</string>
-  <string name="morphe_hide_horizontal_shelves_summary">Приховує горизонтальні полиці, зокрема Останні новини, Рекомендовані дописи спільноти, Продовжити перегляд, Перегляньте більше каналів, Перегляньте більше тем, Для вас, Останні відео, Найбільш релевантні, Дописи зі спільноти автора, Покупки та Переглянути знову</string>
+  <string name="morphe_hide_horizontal_shelves_title">Приховати горизонтальні панелі</string>
+  <string name="morphe_hide_horizontal_shelves_summary">Приховує горизонтальні панелі, зокрема Останні новини, Рекомендовані дописи спільноти, Продовжити перегляд, Перегляньте більше каналів, Перегляньте більше тем, Для вас, Останні відео, Найбільш релевантні, Дописи зі спільноти автора, Покупки та Переглянути знову</string>
   <string name="morphe_hide_hyped_label_title">Приховати мітку \"У тренді\"</string>
-  <string name="morphe_hide_image_shelf_title">Приховати полицю із зображеннями</string>
-  <string name="morphe_hide_image_shelf_summary">Приховує полиці із зображеннями в результатах пошуку</string>
+  <string name="morphe_hide_image_shelf_title">Приховати панель із зображеннями</string>
+  <string name="morphe_hide_image_shelf_summary">Приховує панелі із зображеннями в результатах пошуку</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Приховати кнопку \"Останні відео\"</string>
@@ -104,7 +104,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_subscribed_channels_bar_title">Приховати панель підписок</string>
   <string name="morphe_hide_surveys_title">Приховати опитування</string>
   <string name="morphe_hide_surveys_summary">Приховує опитування та підказки щодо точності рекомендацій у стрічці</string>
-  <string name="morphe_hide_ticket_shelf_title">Приховати полицю квитків</string>
+  <string name="morphe_hide_ticket_shelf_title">Приховати панель квитків</string>
   <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_recommendation_labels_title">Приховати мітки відеорекомендацій</string>
   <string name="morphe_hide_video_recommendation_labels_summary">Приховує мітки \"Інші користувачі також переглядали це відео\" та \"Вам також може сподобатися\" у результатах пошуку</string>
@@ -180,9 +180,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_join_button_title">Приховати кнопку \"Підписатися +\"</string>
   <string name="morphe_hide_links_preview_title">Приховати попередній перегляд посилань</string>
   <string name="morphe_hide_links_preview_summary">Приховує клікабельні вебпосилання у шапці каналу</string>
-  <string name="morphe_hide_members_shelf_title">Приховати полицю учасників</string>
+  <string name="morphe_hide_members_shelf_title">Приховати панель учасників</string>
   <string name="morphe_hide_members_shelf_summary">Приховує список учасників каналу</string>
-  <string name="morphe_hide_posts_shelf_title">Приховати полицю з дописами</string>
+  <string name="morphe_hide_posts_shelf_title">Приховати панель з дописами</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Приховати кнопку \"Магазин\"</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
@@ -222,18 +222,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_view_count_title">Приховати кількість переглядів</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Обмеження:
-• Полиці Shorts, сторінки каналів та результати пошуку можуть досі показувати кількість переглядів
+• Панелі Shorts, сторінки каналів та результати пошуку можуть досі показувати кількість переглядів
 • Ця функція не працює з автомобільним макетом інтерфейсу"</string>
   <string name="morphe_hide_upload_time_title">Приховати час завантаження</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Обмеження:
-• Полиці Shorts, сторінки каналів та результати пошуку можуть досі показувати час завантаження
+• Панелі Shorts, сторінки каналів та результати пошуку можуть досі показувати час завантаження
 • Ця функція не працює з автомобільним макетом інтерфейсу"</string>
   <string name="morphe_hide_keyword_content_screen_title">Фільтр ключових слів</string>
   <string name="morphe_hide_keyword_content_screen_summary">Виберіть слова або фрази для приховування відео у стрічках і пошуку</string>
   <string name="morphe_hide_keyword_content_home_title">Приховати відео на головній</string>
   <string name="morphe_hide_keyword_content_search_title">Приховати відео в пошуку</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Приховати відео в підписках</string>
+  <string name="morphe_hide_keyword_content_comments_title">Приховати коментарі за ключовими словами</string>
   <string name="morphe_hide_keyword_content_phrases_title">Ключові слова, які потрібно приховати</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
@@ -243,7 +244,7 @@ Second \"item\" text"</string>
 
 Слова з великими літерами всередині потрібно вводити точно (наприклад: iPhone, TikTok, Івано-Франківськ)"</string>
   <string name="morphe_hide_keyword_content_about_title">Про фільтр ключових слів</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Головна / Підписки / Результати пошуку фільтруються, щоб приховати вміст, який відповідає ключовим фразам
+  <string name="morphe_hide_keyword_content_about_summary">"Головна / Підписки / Пошук / Коментарі фільтруються, щоб приховати вміст, який відповідає ключовим фразам
 
 Обмеження:
 • Shorts неможливо приховати за назвою каналу
@@ -259,7 +260,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Ключове слово занадто коротке і потребує лапок: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Ключове слово приховає всі відео: %s</string>
   <!-- ad.general.hideAdsPatch -->
-  <string name="morphe_hide_creator_store_shelf_title">Приховати полицю магазину автора</string>
+  <string name="morphe_hide_creator_store_shelf_title">Приховати панель магазину автора</string>
   <string name="morphe_hide_end_screen_store_banner_title">Приховати банер магазину на кінцевому екрані</string>
   <string name="morphe_hide_general_ads_title">Приховати загальну рекламу</string>
   <string name="morphe_hide_merchandise_banners_title">Приховати товарні банери</string>
@@ -305,6 +306,59 @@ Second \"item\" text"</string>
 
 Перевірте, чи правильне ім'я пакета та чи встановлено застосунок"</string>
   <string name="morphe_external_downloader_empty_warning">Ім\'я пакета не може бути порожнім</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">Голосовий переклад</string>
+  <string name="morphe_vot_screen_summary">Зачитує субтитри відео вголос за допомогою локального синтезу мовлення, синхронізованого з відтворенням</string>
+  <string name="morphe_vot_enabled_title">Голосовий переклад</string>
+  <string name="morphe_vot_caption_language_title">Мова</string>
+  <string name="morphe_vot_translation_service_title">Постачальник перекладу</string>
+  <string name="morphe_vot_original_audio_volume_title">Гучність оригінального звуку</string>
+  <string name="morphe_vot_original_audio_volume_summary">Гучність оригінального звуку YouTube під час озвучення перекладу</string>
+  <string name="morphe_vot_translation_volume_title">Гучність перекладу</string>
+  <string name="morphe_vot_translation_volume_summary">Гучність озвученого перекладу</string>
+  <string name="morphe_vot_max_speech_rate_title">Максимальна швидкість мовлення</string>
+  <string name="morphe_vot_max_speech_rate_summary">Максимальний коефіцієнт прискорення мовлення для вписування у слот субтитрів</string>
+  <string name="morphe_vot_mymemory_info_summary">"Безкоштовний API перекладу, ключ API не потрібен. До 5 000 символів на день у безкоштовному тарифі, або до 50 000 символів на день із вказаною електронною поштою.
+
+Натисніть тут, щоб відкрити MyMemory.translated.net"</string>
+  <string name="morphe_vot_mymemory_email_title">Електронна пошта MyMemory</string>
+  <string name="morphe_vot_mymemory_email_summary">Необов\'язково. Введіть вашу електронну пошту MyMemory, щоб збільшити денний ліміт із 5 000 до 50 000 символів. Залиште порожнім, щоб використовувати анонімний ліміт</string>
+  <string name="morphe_vot_openrouter_info_summary">"Платний переклад на основі ШІ через OpenRouter. Поповніть баланс один раз і перекладайте тисячі відео. Mistral Nemo - найдешевший варіант, Gemma 4 пропонує найвищу якість.
+
+Натисніть тут, щоб відкрити OpenRouter.ai"</string>
+  <string name="morphe_vot_openrouter_api_key_title">Ключ API OpenRouter</string>
+  <string name="morphe_vot_openrouter_api_key_summary">Ваш ключ API OpenRouter. Створіть ключ на OpenRouter.ai > Workspace > API Keys</string>
+  <string name="morphe_vot_openrouter_model_title">Модель OpenRouter</string>
+  <string name="morphe_vot_openrouter_model_custom">Власна</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter не налаштовано</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Введіть ваш ключ API OpenRouter у налаштуваннях перед вибором цього постачальника</string>
+  <string name="morphe_vot_cost_free">Безкоштовно</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s за 100 годин відео</string>
+  <string name="morphe_vot_tts_voice_type">Голос</string>
+  <string name="morphe_vot_tts_system">Системний</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Багатомовний чоловічий</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Багатомовний жіночий</string>
+  <string name="morphe_vot_voice_gender_male">Чоловічий</string>
+  <string name="morphe_vot_voice_gender_female">Жіночий</string>
+  <string name="morphe_vot_tts_sample">Час морфінгу!</string>
+  <string name="morphe_vot_http_error_title">Переклад недоступний</string>
+  <string name="morphe_vot_http_error_message">"Сервіс перекладу повернув помилку HTTP %s. Ймовірно, вашу IP-адресу тимчасово обмежено на термін до 24 годин.
+
+Щоб продовжити користуватися перекладом, оберіть іншого постачальника перекладу в налаштуваннях або скористайтеся VPN"</string>
+  <string name="morphe_vot_do_not_show_again">Більше не показувати</string>
+  <string name="morphe_vot_export_api_key_warning">"Ваші налаштування містять ключ API OpenRouter.
+
+Ваш ключ API ніколи не можна передавати іншим. Будь-хто з доступом до нього може використовувати ваші кредити OpenRouter"</string>
+  <string name="morphe_vot_openrouter_credits_title">Досягнуто ліміту кредитів OpenRouter</string>
+  <string name="morphe_vot_openrouter_credits_message">Досягнуто лімітy кредитів OpenRouter. Поповніть баланс або збільшіть ліміт витрат ключа на OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">Відкрити OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">Переклад через OpenRouter не вдався (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">Досягнуто денного ліміту MyMemory</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Доступно знову о %s.</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Ви використали сьогоднішню безкоштовну квоту перекладу MyMemory (5 000 символів). Додайте електронну пошту MyMemory в налаштуваннях, щоб збільшити денний ліміт до 50 000 символів, або оберіть інший сервіс перекладу</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Ви використали сьогоднішню квоту перекладу MyMemory (50 000 символів). Оберіть інший сервіс перекладу або спробуйте знову завтра</string>
+  <string name="morphe_vot_mymemory_error">Переклад через MyMemory не вдався (статус %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Увімкнути повторення відео</string>
   <string name="morphe_do_not_remember_loop_video_title">Не запам\'ятовувати повтор відео</string>
@@ -355,6 +409,8 @@ Second \"item\" text"</string>
   <string name="morphe_queue_restore_summary">Черга зберігається після перезапуску застосунку</string>
   <string name="morphe_swap_save_and_queue_actions_title">Поміняти місцями кнопки \"Зберегти\" та \"Додати в чергу\"</string>
   <string name="morphe_swap_save_and_queue_actions_summary">Натисніть для опцій черги, натисніть і утримуйте, щоб зберегти для перегляду пізніше</string>
+  <string name="morphe_queue_override_flyout_menu_title">Замінити чергу плейлістів</string>
+  <string name="morphe_queue_override_flyout_menu_summary">Відкриває чергу Morphe замість черги YouTube</string>
   <string name="morphe_queue_manager_check_failed_auth">Не увійшли в систему</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">Немає ID списку відтворення</string>
   <string name="morphe_queue_manager_check_failed_queue">Черга порожня</string>
@@ -470,6 +526,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_stop_ads_button_title">Приховати кнопку \"Зупинити рекламу\"</string>
   <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
   <string name="morphe_hide_comments_button_title">Приховати кнопку \"Коментарі\"</string>
+  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_connect_button_title">Приховати кнопку \"Підключити\"</string>
   <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears on live streamed videos. -->
   <string name="morphe_hide_report_button_title">Приховати кнопку \"Поскаржитися\"</string>
@@ -494,6 +552,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shop_button_title">Приховати кнопку \"Магазин\"</string>
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_save_button_title">Приховати кнопку \"Зберегти\"</string>
+  <string name="morphe_hide_more_button_title">Приховати кнопку \"Більше\"</string>
   <string name="morphe_fullscreen_buttons">Кнопки в повноекранному режимі</string>
   <string name="morphe_hide_quick_actions_title">Приховати панель дій</string>
   <string name="morphe_hide_quick_actions_ask_button_title">Приховати кнопку \"Запитати\"</string>
@@ -579,6 +638,7 @@ Second \"item\" text"</string>
   <string name="morphe_toolbar_screen_title">Панель інструментів</string>
   <string name="morphe_toolbar_screen_summary">Виберіть, які компоненти будуть показуватися на панелі інструментів</string>
   <string name="morphe_hide_toolbar_cast_button_title">Приховати кнопку \"Трансляція\"</string>
+  <string name="morphe_hide_toolbar_chat_button_title">Приховати кнопку \"Чат\"</string>
   <string name="morphe_hide_toolbar_create_button_title">Приховати кнопку \"Створити\"</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Приховати кнопку \"Мікрофон\"</string>
   <string name="morphe_hide_toolbar_notification_button_title">Приховати кнопку \"Сповіщення\"</string>
@@ -729,8 +789,8 @@ Second \"item\" text"</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Вийти з повноекранного режиму в кінці відео</string>
   <string name="morphe_exit_fullscreen_entry_1">Вимкнено</string>
-  <string name="morphe_exit_fullscreen_entry_2">Портретний</string>
-  <string name="morphe_exit_fullscreen_entry_3">Альбомний</string>
+  <string name="morphe_exit_fullscreen_entry_2">Лише портретний</string>
+  <string name="morphe_exit_fullscreen_entry_3">Лише альбомний</string>
   <string name="morphe_exit_fullscreen_entry_4">Портретний і альбомний</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Повноекранні жести</string>
@@ -738,8 +798,11 @@ Second \"item\" text"</string>
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">Вимкнути жест свайпу вгору у портретному режимі</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Вимкнути жест свайпу вниз у портретному режимі</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Вимкнути жест свайпу вниз у ландшафтному режимі</string>
-  <!-- layout.player.fullscreen.openVideosFullscreen -->
-  <string name="morphe_open_videos_fullscreen_portrait_title">Відкривати відео в портретному режимі</string>
+  <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
+  <string name="morphe_open_videos_fullscreen_title">Відкривати відео у повноекранному режимі</string>
+  <string name="morphe_open_videos_fullscreen_entry_1">Вимкнено</string>
+  <string name="morphe_open_videos_fullscreen_entry_2">Портретний</string>
+  <string name="morphe_open_videos_fullscreen_entry_3">Альбомний</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Затемнення плеєра при натисканні</string>
   <string name="morphe_player_overlay_opacity_summary">Налаштовує рівень прозорості (0 це прозоро, 100 це непрозоро)</string>
@@ -766,7 +829,9 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_summary">Показує приблизну кількість лайків на відео, де автор вимкнув їх відображення</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Показувати сповіщення про помилки з’єднання</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Показує сповіщення, коли сервер Return YouTube Dislike недоступний</string>
-  <string name="morphe_ryd_attribution_summary">Дані надаються через API Return YouTube Dislike. Натисніть тут, щоб дізнатися більше</string>
+  <string name="morphe_ryd_attribution_summary">"Дані надаються API Return YouTube Dislike.
+
+Торкніться тут, щоб відкрити ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Статистика API ReturnYouTubeDislike цього пристрою</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Час відповіді API, середній</string>
@@ -1008,7 +1073,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_color_opacity_label">Непрозорість:</string>
   <string name="morphe_sb_color_dot_label">Колір:</string>
   <string name="morphe_sb_about_title">Про інтеграцію</string>
-  <string name="morphe_sb_about_api_summary">Дані надаються через API SponsorBlock. Натисніть тут, щоб дізнатися більше та побачити завантаження для інших платформ</string>
+  <string name="morphe_sb_about_api_summary">"Дані надаються API SponsorBlock.
+
+Торкніться тут, щоб відкрити Sponsor.ajay.app та переглянути завантаження для інших платформ"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Макет пристрою</string>
   <string name="morphe_change_form_factor_entry_1">За замовчуванням</string>
@@ -1017,20 +1084,23 @@ Second \"item\" text"</string>
   <string name="morphe_change_form_factor_entry_4">Автомобільний</string>
   <string name="morphe_change_form_factor_user_dialog_message">"Зміни включають:
 
-Планшетний макет
+Макет для планшетів
 • Публікації спільноти приховані
 • Налаштування відтворення у стрічках недоступне
 • Кнопки \"Ремікс\" та \"Звук\" недоступні в Short
-• Панель дій відео не згорнуто
+• Панель дій відео не згорнута
 
 Автомобільний макет
 • Стрічка організована за темами та каналами
 • Налаштування відтворення у стрічках недоступне
 • Кнопки \"Ремікс\" та \"Звук\" недоступні в Short
 • Short відкриваються у звичайному плеєрі
-• Панель дій відео не згорнуто"</string>
+• Панель дій відео не згорнута"</string>
   <string name="morphe_tablet_layout_in_player_title">Увімкнути планшетний макет у плеєрі</string>
-  <string name="morphe_tablet_layout_in_player_summary">Відновлює старий макет плеєра</string>
+  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+  <string name="morphe_tablet_layout_in_player_summary">"Відновлює старий макет плеєра
+
+Обмеження: якщо \"Відновити стару панель дій відео\" вимкнено, накладка \"Інші відео\" може бути недоступна"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Підміна версії застосунку</string>
   <string name="morphe_spoof_app_version_summary">Змушує сервер вважати, що використовується старіша версія застосунку, щоб відновити елементи старого інтерфейсу</string>
@@ -1160,7 +1230,7 @@ Second \"item\" text"</string>
 
 Якщо увімкнено, серверу API надсилатимуться лише посилання на відео, і більше жодних інших даних. Якщо відео не має прев'ю DeArrow, то відображаються оригінальні прев'ю або стоп-кадри
 
-Натисніть тут, щоб дізнатися більше про DeArrow"</string>
+Торкніться тут, щоб відкрити DeArrow.ajay.app"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Показувати сповіщення про помилки з’єднання</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary">Показує сповіщення, коли сервер DeArrow недоступний</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">Кінцева точка API DeArrow</string>
@@ -1288,4 +1358,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Примусово оригінальна мова звукової доріжки\" недоступна</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Варіант JavaScript плеєра</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Показати підміну в \"Статистиці для сисадмінів\"</string>
+  <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <string name="morphe_restore_old_video_action_bar_title">Відновити стару панель дій відео</string>
+  <string name="morphe_restore_old_video_action_bar_summary">"Виправляє відсутність лайків/дизлайків та неможливість приховати кнопки дій відео
+
+Обмеження: повертає старий стиль накладки \"Інші відео\""</string>
 </resources>

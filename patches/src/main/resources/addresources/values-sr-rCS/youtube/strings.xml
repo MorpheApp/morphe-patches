@@ -234,6 +234,7 @@ Promene uključuju:
   <string name="morphe_hide_keyword_content_home_title">Sakrij videe na kartici „Početna” prema ključnim rečima</string>
   <string name="morphe_hide_keyword_content_search_title">Sakrij rezultate pretrage prema ključnim rečima</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Sakrij videe na kartici „Praćenja” prema ključnim rečima</string>
+  <string name="morphe_hide_keyword_content_comments_title">Sakrij komentare prema ključnim rečima</string>
   <string name="morphe_hide_keyword_content_phrases_title">Ključne reči za sakrivanje</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
@@ -243,7 +244,7 @@ Ključne reči mogu biti bilo koji tekst prikazan u naslovima videa ili nazivima
 
 Reči sa velikim slovima u sredini moraju se uneti tačno (npr.: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">O filtriranju prema ključnim rečima</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Početna/Praćenja/Rezultati pretrage se filtriraju da bi sakrili sadržaj koji se podudara sa frazama ključnih reči
+  <string name="morphe_hide_keyword_content_about_summary">"Početna/Praćenja/Pretraga/Komentari su filtrirani da bi sakrili sadržaj koji se podudara sa frazama ključnih reči
 
 Ograničenja:
 • Shorts videi se ne mogu sakriti prema nazivu kanala
@@ -305,6 +306,59 @@ Ograničenja:
 
 Proverite da li je naziv paketa ispravan i da li je aplikacija instalirana"</string>
   <string name="morphe_external_downloader_empty_warning">Naziv paketa ne može biti prazan</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">Prevod sinhronizovane titlova</string>
+  <string name="morphe_vot_screen_summary">Učita titlove iz videa i izgovara ih pomoću ugrađenog pretvarača teksta u govor, sinhronizovano sa reprodukcijom</string>
+  <string name="morphe_vot_enabled_title">Prevod sinhronizovane titlova</string>
+  <string name="morphe_vot_caption_language_title">Jezik</string>
+  <string name="morphe_vot_translation_service_title">Провајдер превода</string>
+  <string name="morphe_vot_original_audio_volume_title">Гласноћа оригиналног звука</string>
+  <string name="morphe_vot_original_audio_volume_summary">Гласноћа оригиналног YouTube звука док се превод изговара</string>
+  <string name="morphe_vot_translation_volume_title">Гласноћа превода</string>
+  <string name="morphe_vot_translation_volume_summary">Гласноћа гласа у синхронизованом преводу</string>
+  <string name="morphe_vot_max_speech_rate_title">Максимална брзина говора</string>
+  <string name="morphe_vot_max_speech_rate_summary">Максимални мултипликатор брзине прилагођавања говора према слоту за титилове</string>
+  <string name="morphe_vot_mymemory_info_summary">"Бесплатан API за превод, није потребан API кључ. До 5.000 знакова дневно у бесплатној верзији, или до 50.000 знакова дневно уз адресу е-поште.
+
+Додирните овде да бисте отворили MyMemory.translated.net"</string>
+  <string name="morphe_vot_mymemory_email_title">MyMemory е-пошта</string>
+  <string name="morphe_vot_mymemory_email_summary">Опционо. Унесите своју MyMemory е-адресу да бисте повећали дневни лимит са 5.000 на 50.000 знакова. Оставите празно да бисте користили анонимни лимит</string>
+  <string name="morphe_vot_openrouter_info_summary">"Плаћиви AI превод преко OpenRouter-а. Допуните једном и преводите хиљаде видео снимака. Mistral Nemo је најјефтинија опција, Gemma 4 нуди највиши квалитет.
+
+Додирните овде да бисте отворили OpenRouter.ai"</string>
+  <string name="morphe_vot_openrouter_api_key_title">OpenRouter API кључ</string>
+  <string name="morphe_vot_openrouter_api_key_summary">Ваш OpenRouter API кључ. Направите кључ на OpenRouter.ai > Workspace > API Keys</string>
+  <string name="morphe_vot_openrouter_model_title">OpenRouter модел</string>
+  <string name="morphe_vot_openrouter_model_custom">Прилагођено</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter није конфигурисан</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Унесите свој OpenRouter API кључ у подешавањима пре него што одаберете овог добављача</string>
+  <string name="morphe_vot_cost_free">Бесплатно</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s по 100 сати видеа</string>
+  <string name="morphe_vot_tts_voice_type">Глас</string>
+  <string name="morphe_vot_tts_system">Sistem</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Мушки, мултилингвални</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Женски, мултилингвални</string>
+  <string name="morphe_vot_voice_gender_male">Мушки</string>
+  <string name="morphe_vot_voice_gender_female">Женски</string>
+  <string name="morphe_vot_tts_sample">Време трансформације!</string>
+  <string name="morphe_vot_http_error_title">Превод није доступан</string>
+  <string name="morphe_vot_http_error_message">"Преводна услуга је вратила HTTP грешку %s. Ваша IP адреса је вероватно ограничена за до 24 сата.
+
+Да бисте наставили са коришћењем превода, пређите на другог добављача превода у подешавањима или користите VPN"</string>
+  <string name="morphe_vot_do_not_show_again">Ne prikazuj ponovo</string>
+  <string name="morphe_vot_export_api_key_warning">"Ваша подешавања садрже OpenRouter API кључ.
+
+Ваш API кључ никада не треба делити. Свако ко има приступ њему може користити ваше OpenRouter кредите"</string>
+  <string name="morphe_vot_openrouter_credits_title">Досегнут је лимит кредита за OpenRouter</string>
+  <string name="morphe_vot_openrouter_credits_message">Досегнут је ваш OpenRouter лимит кредита. Допуните баланс или повећајте лимит трошења кључа на OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">Отвори OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">Грешка превода OpenRouter (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">Досегнут је дневни лимит MyMemory-ја</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Следеће доступно у %s.</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Искористили сте данашњу бесплатну квоту за превод MyMemory-ја (5.000 знакова). Додајте MyMemory е-пошту у подешавањима да бисте повећали дневни лимит на 50.000 знакова, или пређите на другу преводну услугу</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Искористили сте данашњу квоту за превод MyMemory-ја (50.000 знакова). Пређите на другу преводну услугу или покушајте поново сутра</string>
+  <string name="morphe_vot_mymemory_error">Грешка превода MyMemory-ја (статус %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Omogući ponavljanje videa</string>
   <string name="morphe_do_not_remember_loop_video_title">Ne pamti petlju videa</string>
@@ -355,6 +409,8 @@ Napomena: Možda neće raditi na direktnim prenosima"</string>
   <string name="morphe_queue_restore_summary">Red čekanja je sačuvan nakon ponovnog pokretanja aplikacije</string>
   <string name="morphe_swap_save_and_queue_actions_title">Zameni akcije Štednje i stavljanja u red</string>
   <string name="morphe_swap_save_and_queue_actions_summary">Dodirnite za opcije reda, dodirnite i zadržite da biste sačavali za gledanje kasnije</string>
+  <string name="morphe_queue_override_flyout_menu_title">Preuzmi red za reprize</string>
+  <string name="morphe_queue_override_flyout_menu_summary">Otvara Morphe red čekanja umesto YouTube reda čekanja</string>
   <string name="morphe_queue_manager_check_failed_auth">Nije prijavljen</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">ID liste za reprodukciju nije naveden</string>
   <string name="morphe_queue_manager_check_failed_queue">Red je prazan</string>
@@ -470,6 +526,8 @@ Napomena: Ako \"Lažiranje video tokova\" nije omogućeno, omogućavanje ovog mo
   <string name="morphe_hide_stop_ads_button_title">Sakrij dugme „Zaustavi reklame”</string>
   <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
   <string name="morphe_hide_comments_button_title">Sakrij dugme „Komentari”</string>
+  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_connect_button_title">Sakrij dugme „Poveži se”</string>
   <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears on live streamed videos. -->
   <string name="morphe_hide_report_button_title">Sakrij dugme „Prijavi”</string>
@@ -494,6 +552,7 @@ Napomena: Ako \"Lažiranje video tokova\" nije omogućeno, omogućavanje ovog mo
   <string name="morphe_hide_shop_button_title">Sakrij dugme „Prodavnica”</string>
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_save_button_title">Sakrij dugme „Čuvaj”</string>
+  <string name="morphe_hide_more_button_title">Sakrij dugme „Više”</string>
   <string name="morphe_fullscreen_buttons">Dugmad za puni ekran</string>
   <string name="morphe_hide_quick_actions_title">Sakrij traku sa akcijama</string>
   <string name="morphe_hide_quick_actions_ask_button_title">Sakrij dugme „Pitaj”</string>
@@ -579,6 +638,7 @@ Da biste pristupili Podešavanjima, omogućite dugme Podešavanja preko Opšte �
   <string name="morphe_toolbar_screen_title">Traka za alatke</string>
   <string name="morphe_toolbar_screen_summary">Izaberite koje komponente se pojavljuju u padajućem meniju</string>
   <string name="morphe_hide_toolbar_cast_button_title">Sakrij dugme „Prebacuj”</string>
+  <string name="morphe_hide_toolbar_chat_button_title">Sakrij dugme „Chat“</string>
   <string name="morphe_hide_toolbar_create_button_title">Sakrij dugme „Kreiraj”</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Sakrij dugme „Mikrofon”</string>
   <string name="morphe_hide_toolbar_notification_button_title">Sakrij dugme „Obaveštenja”</string>
@@ -739,8 +799,11 @@ Postavke → Reprodukcija (ili Automatsko puštanje) → Automatski pusti slede�
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">Onemogući gest povlačenja nagore u portretnom režimu</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Isključi gest povlačenja prema dole u portretnom režimu</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Isključi gest povlačenja prema dole u pejzažnom režimu</string>
-  <!-- layout.player.fullscreen.openVideosFullscreen -->
-  <string name="morphe_open_videos_fullscreen_portrait_title">Otvori videe preko celog ekrana uspravno</string>
+  <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
+  <string name="morphe_open_videos_fullscreen_title">Otvorite video zapise u režimu punog ekrana</string>
+  <string name="morphe_open_videos_fullscreen_entry_1">Onemogućen</string>
+  <string name="morphe_open_videos_fullscreen_entry_2">Uspravno</string>
+  <string name="morphe_open_videos_fullscreen_entry_3">Vodoravno</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Neprozirnost preklopa plejera</string>
   <string name="morphe_player_overlay_opacity_summary">Podesi nivo prozirnosti (0 je providno, 100 je neprovidno)</string>
@@ -767,7 +830,9 @@ Postavke → Reprodukcija (ili Automatsko puštanje) → Automatski pusti slede�
   <string name="morphe_ryd_estimated_like_summary">Prikazuje procenjeni broj lajkova na video zapisima na kojima je kreator onemogućio lajkove</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Prikaži upozorenja o grešci u vezi</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Prikazuje obaveštenje kada je server Return YouTube Dislike nedostupan</string>
-  <string name="morphe_ryd_attribution_summary">Podatke obezbeđuje Return YouTube Dislike API. Dodirnite ovde da saznate više</string>
+  <string name="morphe_ryd_attribution_summary">"Податке пружа Return YouTube Dislike API.
+
+Додирните овде да бисте отворили ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Statistike ReturnYouTubeDislike API-ja za ovaj uređaj</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Vreme odgovora API-ja, prosečno</string>
@@ -1009,29 +1074,34 @@ Ako ne šaljete isticanje, dodirnite Otkaži i označite drugu lokaciju."</strin
   <string name="morphe_sb_color_opacity_label">Neprozirnost:</string>
   <string name="morphe_sb_color_dot_label">Boja:</string>
   <string name="morphe_sb_about_title">O programu</string>
-  <string name="morphe_sb_about_api_summary">Podatke obezbeđuje SponsorBlock API. Dodirnite ovde da saznate više i vidite preuzimanja za druge platforme</string>
+  <string name="morphe_sb_about_api_summary">"Податке пружа SponsorBlock API.
+
+Додирните овде да бисте отворили Sponsor.ajay.app и погледали преузимања за друге платформе"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Raspored uređaja</string>
   <string name="morphe_change_form_factor_entry_1">Podrazumevani</string>
   <string name="morphe_change_form_factor_entry_2">Telefon</string>
   <string name="morphe_change_form_factor_entry_3">Tablet</string>
   <string name="morphe_change_form_factor_entry_4">Automobilski</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Izmene uključuju:
+  <string name="morphe_change_form_factor_user_dialog_message">"Promene uključuju:
 
-Tablet raspored
-• Obaveštenja zajednice su skrivena
-• Podešavanje reprodukcije u feedu nije dostupno
-• Taster za miksanje i taster za zvuk nisu dostupni u Shorts
-• Traka sa akcijama za video nije uzeta.
+Tablet izgled
+• Objava u zajednici su sakrivene
+• Podesavanje za reprodukciju u feedu nije dostupno
+• Dugme „Remiks” i dugme „Zvuk” nisu dostupni u Shorts-u
+• Stara traka sa akcijama videa nije smanjena
 
-Automobilski raspored
+Izgled za automobil
 • Feed je organizovan po temama i kanalima
-• Podešavanje reprodukcije u feedu nije dostupno
-• Taster za miksanje i taster za zvuk nisu dostupni u Shorts
-• Shorts se otvaraju u redovnom plejeru
-• Traka sa akcijama za video nije uzeta."</string>
+• Podesavanje za reprodukciju u feedu nije dostupno
+• Dugme „Remiks” i dugme „Zvuk” nisu dostupni u Shorts-u
+• Shorts se otvaraju u standardnom plejeru
+• Stara traka sa akcijama videa nije smanjena"</string>
   <string name="morphe_tablet_layout_in_player_title">Omogući izgled za tablet u plejeru</string>
-  <string name="morphe_tablet_layout_in_player_summary">Vraća stari izgled plejera</string>
+  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+  <string name="morphe_tablet_layout_in_player_summary">"Vraća stari izgled plejera
+
+Ograničenja: Ako je opcija \"Vrati staru traku sa akcijama za video\" isključena, preklapanje \"Još videa\" možda neće biti dostupno"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Lažirana verzija aplikacije</string>
   <string name="morphe_spoof_app_version_summary">Prevara server da misli da koristiš stariju verziju aplikacije kako bi povratio legacy UI funkcije</string>
@@ -1157,11 +1227,11 @@ Ograničenje: Korišćenje dugmeta „Nazad” na traci sa alatkama možda neće
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow i originalne minijature</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow i statične snimke</string>
   <string name="morphe_alt_thumbnail_options_entry_4">Zahvati kadra</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow pruža sličice za YouTube videe prikupljene od zajednice korisnika. Ove sličice su često relevantnije od onih koje pruža YouTube
+  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow пружа слике са минијатурама за YouTube видео снимке генерисане од стране заједнице. Ове слике са минијатурама су често релевантније од оних које пружа YouTube
 
-Ako je omogućeno, linkovi videa će biti poslati na API server i nikakvi drugi podaci se neće slati. Ako video nema DeArrow sličice, onda se prikazuju originalne ili zahvati kadra
+Ако је омогућено, URL-ови видео записа ће бити послати на API сервер и неће бити послати никакви други подаци. Ако видео нема DeArrow слике са минијатурама, онда се приказују оригиналне или захвати кадра
 
-Dodirnite ovde da saznate više o DeArrowu"</string>
+Додирните овде да сазнате више о DeArrow-у"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Prikaži upozorenja o grešci u vezi</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary">Prikazuje obaveštenje kada je server DeArrow nedostupan</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">Krajnja tačka DeArrow API-ja</string>
@@ -1289,4 +1359,9 @@ Reprodukcija videa s AV1 može zastajkivati ili preskakati kadrove."</string>
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Prisiljavanje originalnog zvuka nije dostupno</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Varijanta JavaScript igračnog programa</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Prikaži lažiranje u statistici za znalce</string>
+  <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <string name="morphe_restore_old_video_action_bar_title">Vraća staru traku radnji videa</string>
+  <string name="morphe_restore_old_video_action_bar_summary">"Popravlja prikazivanje lajkova i skrivanje dugmadi u traci radnji videa
+
+Ograničenja: Vraća se na stari stil prekrivanja 'Više videa'"</string>
 </resources>

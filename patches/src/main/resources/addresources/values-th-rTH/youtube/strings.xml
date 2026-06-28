@@ -234,6 +234,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_home_title">ซ่อนวิดีโอหน้าแรกตามคำสำคัญ</string>
   <string name="morphe_hide_keyword_content_search_title">ซ่อนผลลัพธ์การค้นหาตามคำสำคัญ</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">ซ่อนวิดีโอการสมัครสมาชิกตามคำสำคัญ</string>
+  <string name="morphe_hide_keyword_content_comments_title">ซ่อนความคิดเห็นตามคำหลัก</string>
   <string name="morphe_hide_keyword_content_phrases_title">คำสำคัญที่จะซ่อน</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
@@ -243,12 +244,12 @@ Second \"item\" text"</string>
 
 คำที่มีตัวอักษรตัวใหญ่ตรงกลางต้องป้อนพร้อมเคส (เช่น: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">เกี่ยวกับการกรองคำสำคัญ</string>
-  <string name="morphe_hide_keyword_content_about_summary">"หน้าแรก/การสมัครสมาชิก/ผลลัพธ์การค้นหา จะถูกกรองเพื่อซ่อนเนื้อหาที่ตรงกับวลีคําหลัก
+  <string name="morphe_hide_keyword_content_about_summary">"หน้าแรก / การสมัครรับข้อมูล / การค้นหา / ความคิดเห็น จะถูกกรองเพื่อซ่อนเนื้อหาที่ตรงกับวลีคำสำคัญ
 
-ข้อจํากัด
+ข้อจำกัด:
 • Shorts ไม่สามารถซ่อนได้ตามชื่อช่อง
-• บางส่วนของ UI อาจไม่ถูกซ่อน
-• การค้นหาคําหลักอาจไม่แสดงผลลัพธ์"</string>
+• บางส่วนของส่วนประกอบ UI อาจไม่ถูกซ่อน
+• การค้นหาคำหลักอาจไม่แสดงผลลัพธ์"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">จับคู่ทั้งคำ</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">การล้อมรอบคีย์เวิร์ด/วลีด้วยเครื่องหมายคำพูดคู่จะป้องกันการจับคู่บางส่วนของชื่อวิดีโอและชื่อช่อง&lt;br&gt;&lt;br&gt;ตัวอย่างเช่น&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; จะซ่อนวิดีโอ: &lt;b&gt;AI ทำงานอย่างไร?&lt;/b&gt;&lt;br&gt;แต่จะไม่ซ่อน: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
@@ -305,6 +306,59 @@ Second \"item\" text"</string>
 
 ตรวจสอบว่าชื่อแพ็กเกจถูกต้องและติดตั้งแอปแล้ว"</string>
   <string name="morphe_external_downloader_empty_warning">ชื่อแพ็กเกจต้องไม่ว่างเปล่า</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">การแปลเสียงบรรยาย</string>
+  <string name="morphe_vot_screen_summary">อ่านคำบรรยายวิดีโอออกเสียงด้วยระบบแปลงข้อความเป็นเสียงบนอุปกรณ์ โดยซิงโครไนซ์กับการเล่น</string>
+  <string name="morphe_vot_enabled_title">การแปลเสียงบรรยาย</string>
+  <string name="morphe_vot_caption_language_title">ภาษา</string>
+  <string name="morphe_vot_translation_service_title">ผู้ให้บริการแปล</string>
+  <string name="morphe_vot_original_audio_volume_title">ระดับเสียงเสียงต้นฉบับ</string>
+  <string name="morphe_vot_original_audio_volume_summary">ระดับเสียงของเสียง YouTube ต้นฉบับขณะที่การแปลกำลังพูดอยู่</string>
+  <string name="morphe_vot_translation_volume_title">ระดับเสียงการแปล</string>
+  <string name="morphe_vot_translation_volume_summary">ระดับเสียงของเสียงพากย์แปล</string>
+  <string name="morphe_vot_max_speech_rate_title">อัตราการพูดสูงสุด</string>
+  <string name="morphe_vot_max_speech_rate_summary">ตัวคูณความเร็วสูงสุดเมื่อปรับการพูดให้พอดีกับช่องคำบรรยาย</string>
+  <string name="morphe_vot_mymemory_info_summary">"API การแปลภาษาฟรี ไม่จำเป็นต้องใช้คีย์ API สูงสุด 5,000 ตัวอักษรต่อวันในระดับฟรี หรือสูงสุด 50,000 ตัวอักษรต่อวันเมื่อใช้ที่อยู่อีเมล
+
+แตะที่นี่เพื่อเปิด MyMemory.translated.net"</string>
+  <string name="morphe_vot_mymemory_email_title">อีเมล MyMemory</string>
+  <string name="morphe_vot_mymemory_email_summary">ไม่บังคับ ใส่ที่อยู่อีเมล MyMemory ของคุณเพื่อเพิ่มขีดจำกัดรายวันจาก 5,000 เป็น 50,000 ตัวอักษร ปล่อยว่างไว้เพื่อใช้ขีดจำกัดที่ไม่ระบุตัวตน</string>
+  <string name="morphe_vot_openrouter_info_summary">"การแปลด้วย AI แบบเสียเงินผ่าน OpenRouter เติมเงินครั้งเดียวแล้วแปลวิดีโอหลายพันรายการ Mistral Nemo เป็นตัวเลือกที่ถูกที่สุด Gemma 4 มีคุณภาพสูงสุด
+
+แตะที่นี่เพื่อเปิด OpenRouter.ai"</string>
+  <string name="morphe_vot_openrouter_api_key_title">คีย์ API OpenRouter</string>
+  <string name="morphe_vot_openrouter_api_key_summary">คีย์ API OpenRouter ของคุณ สร้างคีย์ที่ OpenRouter.ai > Workspace > API Keys</string>
+  <string name="morphe_vot_openrouter_model_title">โมเดล OpenRouter</string>
+  <string name="morphe_vot_openrouter_model_custom">The </string>
+  <string name="morphe_vot_openrouter_not_configured_title">ยังไม่ได้กำหนดค่า OpenRouter</string>
+  <string name="morphe_vot_openrouter_not_configured_message">ป้อนคีย์ API OpenRouter ของคุณในการตั้งค่าก่อนที่จะเลือกผู้ให้บริการนี้</string>
+  <string name="morphe_vot_cost_free">ฟรี</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s ต่อวิดีโอ 100 ชั่วโมง</string>
+  <string name="morphe_vot_tts_voice_type">เสียง</string>
+  <string name="morphe_vot_tts_system">ระบบ</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">ชายหลายภาษา</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">หญิงหลายภาษา</string>
+  <string name="morphe_vot_voice_gender_male">ชาย</string>
+  <string name="morphe_vot_voice_gender_female">หญิง</string>
+  <string name="morphe_vot_tts_sample">ถึงเวลาแปลงร่าง!</string>
+  <string name="morphe_vot_http_error_title">ไม่สามารถแปลได้</string>
+  <string name="morphe_vot_http_error_message">"บริการแปลคืนค่าข้อผิดพลาด HTTP %s ที่อยู่ IP ของคุณอาจถูกจำกัดอัตราเป็นเวลาสูงสุด 24 ชั่วโมง
+
+หากต้องการใช้งานการแปลต่อ ให้เปลี่ยนไปใช้ผู้ให้บริการแปลอื่นในการตั้งค่าหรือใช้ VPN"</string>
+  <string name="morphe_vot_do_not_show_again">อย่าแสดงอีก</string>
+  <string name="morphe_vot_export_api_key_warning">"การตั้งค่าของคุณมีคีย์ API OpenRouter อยู่
+
+คีย์ API ของคุณไม่ควรถูกเปิดเผย ใครก็ตามที่มีสิทธิ์เข้าถึงสามารถใช้เครดิต OpenRouter ของคุณได้"</string>
+  <string name="morphe_vot_openrouter_credits_title">ถึงเครดิต OpenRouter แล้ว</string>
+  <string name="morphe_vot_openrouter_credits_message">เครดิต OpenRouter ของคุณหมดแล้ว เติมเงินในบัญชีของคุณหรือเพิ่มขีดจำกัดการใช้จ่ายของคีย์ของคุณที่ OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">เปิด OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">การแปล OpenRouter ล้มเหลว (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">ถึงขีดจำกัดรายวันของ MyMemory แล้ว</string>
+  <string name="morphe_vot_mymemory_quota_next_available">พร้อมใช้งานอีกครั้งใน %s</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">คุณใช้โควต้าการแปล MyMemory ฟรีสำหรับวันนี้แล้ว (5,000 ตัวอักษร) เพิ่มอีเมล MyMemory ในการตั้งค่าเพื่อเพิ่มขีดจำกัดรายวันเป็น 50,000 ตัวอักษร หรือเปลี่ยนไปใช้บริการแปลอื่น</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">คุณใช้โควต้าการแปล MyMemory สำหรับวันนี้แล้ว (50,000 ตัวอักษร) เปลี่ยนไปใช้บริการแปลอื่นหรือลองใหม่อีกครั้งในวันพรุ่งนี้</string>
+  <string name="morphe_vot_mymemory_error">การแปล MyMemory ล้มเหลว (สถานะ %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">เปิดใช้งานการเล่นวิดีโอซ้ำ</string>
   <string name="morphe_do_not_remember_loop_video_title">จำการเล่นวิดีโอซ้ำไม่ได้</string>
@@ -355,6 +409,8 @@ Second \"item\" text"</string>
   <string name="morphe_queue_restore_summary">คิวจะถูกเก็บไว้หลังจากการปิดและเปิดแอปอีกครั้ง</string>
   <string name="morphe_swap_save_and_queue_actions_title">สลับการดำเนินการบันทึกและคิว</string>
   <string name="morphe_swap_save_and_queue_actions_summary">แตะเพื่อดูตัวเลือกคิว แตะค้างเพื่อบันทึกเพื่อดูในภายหลัง</string>
+  <string name="morphe_queue_override_flyout_menu_title">ปุ่มยกเลิกคิวการเล่นแบบผุดขึ้น</string>
+  <string name="morphe_queue_override_flyout_menu_summary">เปิดคิว Morphe แทนคิว YouTube</string>
   <string name="morphe_queue_manager_check_failed_auth">ยังไม่ได้เข้าสู่ระบบ</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">ไม่มี ID เพลย์ลิสต์</string>
   <string name="morphe_queue_manager_check_failed_queue">คิวว่างเปล่า</string>
@@ -470,6 +526,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_stop_ads_button_title">ซ่อนปุ่ม \'หยุดโฆษณา\'</string>
   <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
   <string name="morphe_hide_comments_button_title">ซ่อนปุ่มแสดงความคิดเห็น</string>
+  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_connect_button_title">ซ่อนปุ่มเชื่อมต่อ</string>
   <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears on live streamed videos. -->
   <string name="morphe_hide_report_button_title">ซ่อนปุ่มรายงาน</string>
@@ -494,6 +552,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shop_button_title">ซ่อนปุ่มร้านค้า</string>
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_save_button_title">ซ่อนปุ่มบันทึก</string>
+  <string name="morphe_hide_more_button_title">ซ่อนปุ่มเพิ่มเติม</string>
   <string name="morphe_fullscreen_buttons">ปุ่มในโหมดเต็มหน้าจอ</string>
   <string name="morphe_hide_quick_actions_title">ซ่อนแถบแอ็กชัน</string>
   <string name="morphe_hide_quick_actions_ask_button_title">ซ่อนปุ่ม Ask</string>
@@ -579,6 +638,7 @@ Second \"item\" text"</string>
   <string name="morphe_toolbar_screen_title">แถบเครื่องมือ</string>
   <string name="morphe_toolbar_screen_summary">ซ่อนเมนูคำบรรยาย</string>
   <string name="morphe_hide_toolbar_cast_button_title">ซ่อนปุ่มส่ง</string>
+  <string name="morphe_hide_toolbar_chat_button_title">ซ่อนปุ่มแชท</string>
   <string name="morphe_hide_toolbar_create_button_title">ซ่อนปุ่มสร้าง</string>
   <string name="morphe_hide_toolbar_microphone_button_title">ซ่อนปุ่มไมโครโฟน</string>
   <string name="morphe_hide_toolbar_notification_button_title">ซ่อนปุ่มการแจ้งเตือน</string>
@@ -739,8 +799,11 @@ Second \"item\" text"</string>
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">ปิดใช้งานท่าทางปัดขึ้นในโหมดแนวตั้ง</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">ปิดการใช้งานท่าทางปัดลงในโหมดแนวตั้ง</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">ปิดการใช้งานท่าทางปัดลงในโหมดแนวนอน</string>
-  <!-- layout.player.fullscreen.openVideosFullscreen -->
-  <string name="morphe_open_videos_fullscreen_portrait_title">เปิดวิดีโอในโหมดเต็มหน้าจอสแนวตั้ง</string>
+  <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
+  <string name="morphe_open_videos_fullscreen_title">เปิดวิดีโอในโหมดเต็มหน้าจอ</string>
+  <string name="morphe_open_videos_fullscreen_entry_1">ปิดการใช้งานอยู่</string>
+  <string name="morphe_open_videos_fullscreen_entry_2">แนวตั้ง</string>
+  <string name="morphe_open_videos_fullscreen_entry_3">แนวนอน</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">ความโปร่งใสของการซ้อนทับของเครื่องเล่น</string>
   <string name="morphe_player_overlay_opacity_summary">ปรับระดับความโปร่งใส (0 คือโปร่งใส, 100 คือทึบแสง)</string>
@@ -767,7 +830,9 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_summary">แสดงจำนวนการถูกใจโดยประมาณบนวิดีโอที่ผู้สร้างปิดใช้งานการถูกใจ</string>
   <string name="morphe_ryd_toast_on_connection_error_title">แสดงการแจ้งเตือนข้อผิดพลาดการเชื่อมต่อ</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">แสดงการแจ้งเตือนเมื่อเซิร์ฟเวอร์ Return YouTube Dislike ไม่สามารถใช้งานได้</string>
-  <string name="morphe_ryd_attribution_summary">ข้อมูลนี้ให้มาโดย Return YouTube Dislike API。 แตะที่นี่เพื่อเรียนรู้เพิ่มเติม</string>
+  <string name="morphe_ryd_attribution_summary">"ข้อมูลนี้จัดทำโดย Return YouTube Dislike API
+
+แตะที่นี่เพื่อเปิด ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">อุปกรณ์นี้</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">เฉลี่ย</string>
@@ -1006,29 +1071,34 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_sb_color_opacity_label">ความทึบ:</string>
   <string name="morphe_sb_color_dot_label">สี:</string>
   <string name="morphe_sb_about_title">เกี่ยวกับ</string>
-  <string name="morphe_sb_about_api_summary">ข้อมูลนี้มาจาก SponsorBlock API แตะที่นี่เพื่อเรียนรู้เพิ่มเติมและดูการดาวน์โหลดสำหรับแพลตฟอร์มอื่น ๆ</string>
+  <string name="morphe_sb_about_api_summary">"ข้อมูลนี้จัดทำโดย SponsorBlock API
+
+แตะที่นี่เพื่อเปิด Sponsor.ajay.app และดูการดาวน์โหลดสำหรับแพลตฟอร์มอื่น ๆ"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">รูปแบบอุปกรณ์</string>
   <string name="morphe_change_form_factor_entry_1">ค่าเริ่มต้น</string>
   <string name="morphe_change_form_factor_entry_2">โทรศัพท์</string>
   <string name="morphe_change_form_factor_entry_3">แท็บเล็ต</string>
   <string name="morphe_change_form_factor_entry_4">ยานยนต์</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"การเปลี่ยนแปลงประกอบด้วย:
+  <string name="morphe_change_form_factor_user_dialog_message">"มีการเปลี่ยนแปลงดังนี้:
 
-รูปแบบแท็บเล็ต
-• โพสต์ชุมชนถูกซ่อน
-• การตั้งค่าการเล่นในฟีดไม่สามารถใช้ได้
-• ปุ่ม Remix และปุ่ม Sound ไม่สามารถใช้ได้ใน Shorts
-• แถบการดำเนินการวิดีโอไม่ได้ถูกพับเก็บ
+เลย์เอาต์สำหรับแท็บเล็ต
+• โพสต์จากชุมชนจะถูกซ่อนไว้
+• จะไม่มีตัวเลือกการเล่นในฟีด
+• จะไม่มีปุ่มรีมิกซ์และปุ่มเสียงใน Shorts
+• แถบการทำงานของวิดีโอแบบเดิมที่ไม่ยุบจะแสดงขึ้น
 
-รูปแบบรถยนต์
-• ฟีดถูกจัดระเบียบตามหัวข้อและช่อง
-• การตั้งค่าการเล่นในฟีดไม่สามารถใช้ได้
-• ปุ่ม Remix และปุ่ม Sound ไม่สามารถใช้ได้ใน Shorts
-• Shorts เปิดในเครื่องเล่นปกติ
-• แถบการดำเนินการวิดีโอไม่ได้ถูกพับเก็บ"</string>
+เลย์เอาต์สำหรับรถยนต์
+• ฟีดจะถูกจัดระเบียบตามหัวข้อและช่อง
+• จะไม่มีตัวเลือกการเล่นในฟีด
+• จะไม่มีปุ่มรีมิกซ์และปุ่มเสียงใน Shorts
+• Shorts จะเปิดในโปรแกรมเล่นปกติ
+• แถบการทำงานของวิดีโอแบบเดิมที่ไม่ยุบจะแสดงขึ้น"</string>
   <string name="morphe_tablet_layout_in_player_title">เปิดใช้งานรูปแบบแท็บเล็ตในโปรแกรมเล่น</string>
-  <string name="morphe_tablet_layout_in_player_summary">คืนค่ารูปแบบเครื่องเล่นเดิม</string>
+  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+  <string name="morphe_tablet_layout_in_player_summary">"คืนค่ารูปแบบเครื่องเล่นเดิม
+
+ข้อจำกัด: หากปิด 'คืนค่าแถบเครื่องมือวิดีโอแบบเก่า' แล้ว 'วิดีโอเพิ่มเติม' อาจจะไม่แสดงผล"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">ปลอมแปลงเวอร์ชันแอป</string>
   <string name="morphe_spoof_app_version_summary">หลอกลวงเซิร์ฟเวอร์เพื่อให้คิดว่าคุณกำลังใช้แอปเวอร์ชันเก่าเพื่อคืนค่าคุณสมบัติ UI เดิม</string>
@@ -1154,7 +1224,7 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow &amp; รูปขนาดย่อดั้งเดิม</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow &amp; ภาพนิ่ง</string>
   <string name="morphe_alt_thumbnail_options_entry_4">ภาพนิ่ง</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow ให้ภาพขนาดย่อที่รวบรวมจากฝูงชนสําหรับวิดีโอ YouTube ภาพขนาดย่อเหล่านี้มักจะเกี่ยวข้องมากกว่าภาพขนาดย่อที่ให้โดย YouTube
+  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow ให้ภาพขนาดย่อที่รวบรวมจากฝูงชนสำหรับวิดีโอ YouTube ภาพขนาดย่อเหล่านี้มักจะเกี่ยวข้องมากกว่าภาพขนาดย่อที่ให้โดย YouTube
 
 ถ้าเปิดใช้งาน URL ของวิดีโอจะถูกส่งไปยังเซิร์ฟเวอร์ API และไม่มีข้อมูลอื่นๆ ถูกส่งไป หากวิดีโอไม่มีภาพขนาดย่อ DeArrow ภาพขนาดย่อดั้งเดิมหรือภาพนิ่งจะถูกแสดง
 
@@ -1286,4 +1356,9 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• บังคับใช้เสียงต้นฉบับไม่พร้อมใช้งาน</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">แปลรูปแบบ JavaScript ของเพลเยอร์</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">แสดงการปลอมแปลงในสถิติสำหรับพวกเนิร์ด</string>
+  <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <string name="morphe_restore_old_video_action_bar_title">กู้คืนแถบการทำงานของวิดีโอแบบเดิม</string>
+  <string name="morphe_restore_old_video_action_bar_summary">"แก้ไขปัญหาการแสดงผลที่ไม่ชอบและปุ่มการทำงานของวิดีโอซ่อนไม่ได้
+
+ข้อจำกัด: กลับไปใช้รูปแบบ 'วิดีโอเพิ่มเติม' แบบเดิม"</string>
 </resources>

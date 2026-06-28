@@ -37,12 +37,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">Ekran görüntüsü çəkərkən görünən ani görüntünü qapadır</string>
   <string name="morphe_hide_ask_button_title">Soruş düyməsini gizlət</string>
   <string name="morphe_hide_ask_button_summary">Axtarış cərgəsindəki Soruş düyməsi gizlədilir</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">Tövsiyə olunan icmaları gizlət</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">Tövsiyə olunan icma səhifələri subreddit-lərdə gizlədilir</string>
-  <string name="morphe_hide_trending_today_shelf_title">Bu gün trenddə olan cərgəsin gizlət</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"Bu gün trenddə olan səhifəsi axtarış təkliflərindən gizlədilir
-
-Məhdudiyyət: Vizual boşluqlar gizlədilməyə bilər"</string>
+  <string name="morphe_hide_communities_shelf_title">İcmalar bölməsin gizlət</string>
+  <string name="morphe_hide_communities_shelf_summary">Subredditlərdə əlaqəli və ya təklif olunan icmalar bölməsin gizlədir</string>
+  <string name="morphe_hide_trending_shelves_title">Trenddə olan bölmələrin gizlət</string>
+  <string name="morphe_hide_trending_shelves_summary">Trend bölmələri axın və axtarış təkliflərindən gizlədir</string>
   <string name="morphe_remove_notification_dialog_title">Bildiriş təklifi dialoqunu sil</string>
   <string name="morphe_remove_notification_dialog_summary">Subreddit-i ziyarət etdikdə bildiriş təklifi dialoqun birbaşa ləğv edir</string>
   <string name="morphe_show_view_count_title">Elanlarda baxış sayını göstər</string>

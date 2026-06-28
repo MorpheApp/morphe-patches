@@ -27,7 +27,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_1_ads_title">Реклама</string>
   <string name="morphe_settings_music_screen_2_general_title">Загальні</string>
   <string name="morphe_settings_music_screen_3_player_title">Плеєр</string>
-  <string name="morphe_settings_music_screen_4_misc_title">Різне</string>
+  <string name="morphe_settings_music_screen_4_scrobbling_title">Відстеження</string>
+  <string name="morphe_settings_music_screen_5_misc_title">Різне</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Приховати пункт \"Підписатися на Music Premium\"</string>
   <!-- ad.video.hideVideoAdsPatch -->
@@ -69,10 +70,34 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">Плавний перехід призупинено для цієї сесії</string>
   <string name="morphe_music_crossfade_resumed_toast">Плавний перехід відновлено</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Режим відео недоступний, коли ввімкнено плавний перехід</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Плавний перехід призупинено під час трансляції або дублювання звуку. Плавний перехід через трансляцію/дублювання нестабільний, і можливо, ніколи не бути виправленим</string>
   <string name="morphe_music_crossfade_about_title">Інформація</string>
-  <string name="morphe_music_crossfade_about_summary">"Натисніть і утримуйте кнопку перемішування, щоб вимкнути/увімкнути
+  <string name="morphe_music_crossfade_about_summary">Як працює плавний перехід — і коли він не працює</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">Як це працює</string>
+  <string name="morphe_music_crossfade_about_how_summary">"Плавний перехід накладає кінець однієї пісні на початок наступної, поступово знижуючи звук однієї та підвищуючи звук іншої впродовж обраної тривалості та за обраною кривою.
 
-Реалізація функції: VazerOG"</string>
+Він працює як при автоматичному переході (коли пісня завершується сама), так і при ручному перемиканні — для кожного є власний перемикач вище. При автоматичному переході змішування починається за кілька секунд до завершення пісні.
+
+Потребує YouTube Music 9.x або новішої версії."</string>
+  <string name="morphe_music_crossfade_about_best_title">Найкраще працює з</string>
+  <string name="morphe_music_crossfade_about_best_summary">Звичайне відтворення треку за треком та автоперехід, повтор одного треку (трек плавно переходить сам у себе) і локальний звук — динамік телефону, дротові навушники, Bluetooth або USB.</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Працює не зовсім правильно</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Музичні відео відтворюються лише як аудіо, коли увімкнено плавний перехід (довге натискання на перемішування для призупинення, якщо потрібне відео)
+
+Треки коротші за тривалість переходу можуть пропускати перехід
+
+Екран блокування або сповіщення можуть короткочасно показувати застарілий стан під час переходу"</string>
+  <string name="morphe_music_crossfade_about_known_title">Відомі проблеми</string>
+  <string name="morphe_music_crossfade_about_known_summary">"Музичне відео, встановлене першим треком — або запущене не з поточної черги — може на короткий час показуватися як відео, перш ніж увімкнеться режим лише аудіо
+
+Призупинення плавного переходу для перегляду музичного відео може залишити деякі відео чорними (ті, чий звук надходить із самого відео). Призупинення плавного переходу перед вибором треку допомагає уникнути цього"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Не працює взагалі</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Трансляція або дублювання звуку (Chromecast, дублювання екрана чи звуку) — плавний перехід призупиняється, оскільки він нестабільний у цьому випадку, і можливо, ніколи не бути виправленим
+
+YouTube Music 8.x — плавний перехід працює лише на версії 9.x і новіших"</string>
+  <string name="morphe_music_crossfade_about_credit_title">Подяки</string>
+  <string name="morphe_music_crossfade_about_credit_summary">Функція плавного переходу від VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Увімкнути постійний повтор</string>
   <!-- layout.buttons.hideButtonsPatch -->
@@ -123,4 +148,77 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Приховати підписи кнопок навігації</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Приховати кнопку \"Підписка\"</string>
+  <!-- interaction.scrobbling.scrobblingPatch -->
+  <string name="morphe_music_scrobbling_summary">Налаштуйте інтеграцію з Last.fm та ListenBrainz</string>
+  <string name="morphe_music_scrobbling_summary_logged_out">Не увійшли в систему. Натисніть, щоб налаштувати</string>
+  <string name="morphe_music_scrobbling_log_out">Вийти</string>
+  <string name="morphe_music_scrobbling_logged_out_toast">Вийшли з системи</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_enabled_title">Увімкнути scrobbling</string>
+  <string name="morphe_music_listenbrainz_now_playing_title">Надсилати статус \"Відтворюється зараз\"</string>
+  <string name="morphe_music_listenbrainz_min_song_duration_title">Мінімальна тривалість пісні</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_min_song_duration_summary">Пісні, коротші за цю тривалість, не будуть відстежуватися</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_title">Відсоток затримки scrobble</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_summary">Запустити scrobble після прослуховування цього відсотка пісні</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_title">Затримка scrobble у секундах</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_summary">Запустити scrobble після прослуховування протягом заданої кількості секунд</string>
+  <string name="morphe_music_listenbrainz_token_title">Обліковий запис ListenBrainz</string>
+  <string name="morphe_music_listenbrainz_token_summary_logged_in">Увійшли в систему. Натисніть, щоб керувати обліковим записом</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">Введіть токен користувача ListenBrainz, щоб увімкнути scrobbling</string>
+  <string name="morphe_music_listenbrainz_token_dialog_hint">Токен</string>
+  <string name="morphe_music_listenbrainz_token_dialog_get_token">Отримати токен</string>
+  <string name="morphe_music_listenbrainz_token_dialog_verify">Перевірити</string>
+  <string name="morphe_music_listenbrainz_token_status_empty">Будь ласка, введіть токен</string>
+  <string name="morphe_music_listenbrainz_token_status_validating">Перевірка...</string>
+  <string name="morphe_music_listenbrainz_token_status_valid">Дійсний токен! Користувач: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">Недійсний токен: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid_unknown">невідомо</string>
+  <string name="morphe_music_listenbrainz_token_status_failed">Помилка перевірки: %s</string>
+  <string name="morphe_music_listenbrainz_token_toast_cleared">Токен очищено</string>
+  <string name="morphe_music_listenbrainz_token_toast_saved">Токен збережено</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Увага: Збережений токен недійсний!</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_lastfm_enabled_title">Увімкнути scrobbling</string>
+  <string name="morphe_music_lastfm_now_playing_title">Надсилати статус \"Відтворюється зараз\"</string>
+  <string name="morphe_music_lastfm_love_on_like_title">Вподобати треки в Last.fm</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">Автоматично додавайте треки в улюблені на Last.fm, коли ви їх лайкаєте на YouTube Music (і видаляйте з улюблених, коли ви їх дизлайкаєте)</string>
+  <string name="morphe_music_lastfm_min_song_duration_title">Мінімальна тривалість пісні</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_lastfm_min_song_duration_summary">Пісні, коротші за цю тривалість, не будуть відстежуватися</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_title">Відсоток затримки scrobble</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_summary">Запустити scrobble після прослуховування цього відсотка пісні</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_title">Затримка scrobble у секундах</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_summary">Запустити scrobble після прослуховування протягом заданої кількості секунд</string>
+  <string name="morphe_music_lastfm_token_title">Обліковий запис Last.fm</string>
+  <string name="morphe_music_lastfm_token_summary_logged_in">Увійшли як %s. Натисніть, щоб керувати обліковим записом</string>
+  <string name="morphe_music_lastfm_token_dialog_instruction">Введіть облікові дані Last.fm для входу</string>
+  <string name="morphe_music_lastfm_token_dialog_username_hint">Ім\'я користувача</string>
+  <string name="morphe_music_lastfm_token_dialog_password_hint">Пароль</string>
+  <string name="morphe_music_lastfm_token_dialog_login">Увійти</string>
+  <string name="morphe_music_lastfm_token_status_empty">Будь ласка, введіть ім\'я користувача та пароль</string>
+  <string name="morphe_music_lastfm_token_status_logging_in">Вхід...</string>
+  <string name="morphe_music_lastfm_token_status_success">Увійшли успішно!</string>
+  <string name="morphe_music_lastfm_token_status_no_session">Не вдалося отримати сеанс з Last.fm</string>
+  <string name="morphe_music_lastfm_token_status_failed">Помилка входу: %s</string>
+  <string name="morphe_music_lastfm_token_toast_saved">Облікові дані Last.fm збережено!</string>
+  <string name="morphe_settings_music_scrobbling_metadata_title">Очищення метаданих</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_title">Очистити метадані</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">Автоматично очистити поширені безладки (наприклад, \"Офіційне відео\", \"Ремікс\", \"Живий запис\") з назв, виконавців та альбомів перед відстеженням</string>
+  <string name="morphe_music_scrobbling_custom_regex_title">Спеціальне очищення за допомогою регулярних виразів</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">"Введіть спеціальний регулярний вираз (regex), щоб знаходити та видаляти додатковий текст з назв пісень, виконавців або альбомів.
+Приклад: (?i)\s*\((clean|explicit)\)"</string>
+  <string name="morphe_music_scrobbling_about_title">Про відстеження</string>
+  <string name="morphe_music_scrobbling_about_summary">"Відстеження автоматично відслідковує музику, яку ви відтворюєте на YouTube Music, та синхронізує її з вашим профілем Last.fm або ListenBrainz.
+
+Щоб переконатися, що відстеження надійно працює у фоновому режимі, переконайтеся, що використання батареї YouTube Music у системі встановлено на \"Без обмежень\"."</string>
 </resources>

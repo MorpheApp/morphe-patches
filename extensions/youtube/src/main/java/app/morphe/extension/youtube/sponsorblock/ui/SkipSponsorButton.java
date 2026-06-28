@@ -24,8 +24,8 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.settings.Settings;
-import app.morphe.extension.youtube.sponsorblock.SegmentPlaybackController;
-import app.morphe.extension.youtube.sponsorblock.objects.SponsorSegment;
+import app.morphe.extension.shared.sponsorblock.SegmentPlaybackController;
+import app.morphe.extension.shared.sponsorblock.objects.SponsorSegment;
 
 public class SkipSponsorButton extends FrameLayout {
     /**

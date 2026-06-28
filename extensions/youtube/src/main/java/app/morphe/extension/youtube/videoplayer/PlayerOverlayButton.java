@@ -290,12 +290,13 @@ public class PlayerOverlayButton {
      * @param onClickListener     invoked when the button is tapped.
      * @param onLongClickListener invoked when the button is long-pressed.
      */
-    public static void addButton(View sourceButton,
-                                 String drawableName,
-                                 View.OnClickListener onClickListener,
-                                 View.OnLongClickListener onLongClickListener) {
+    @Nullable
+    public static ImageView addButton(View sourceButton,
+                                      String drawableName,
+                                      View.OnClickListener onClickListener,
+                                      View.OnLongClickListener onLongClickListener) {
         ViewGroup sourceButtonViewGroup = updateRefsFromSourceButton(sourceButton);
-        if (sourceButtonViewGroup == null) return;
+        if (sourceButtonViewGroup == null) return null;
 
         ImageView button = new ImageView(sourceButton.getContext());
         button.setId(View.generateViewId());
@@ -308,6 +309,7 @@ public class PlayerOverlayButton {
         sourceButtonViewGroup.addView(button);
 
         buttonControllers.add(new PlayerOverlayButtonController(button, button::setBackground));
+        return button;
     }
 
     /**

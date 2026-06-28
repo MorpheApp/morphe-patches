@@ -21,7 +21,6 @@ import app.morphe.extension.shared.spoof.requests.StreamOrDetailsDataRequest;
 
 @SuppressWarnings("unused")
 public class SpoofVideoStreamsPatch {
-    public static volatile Map<String, String> currentVideoRequestHeader;
 
     public static final class JavaScriptClientAvailability implements Setting.Availability {
         @Override
@@ -68,12 +67,23 @@ public class SpoofVideoStreamsPatch {
 
     private static final boolean SPOOF_VIDEO_STREAMS = SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.get();
 
+    public static volatile Map<String, String> currentVideoRequestHeader;
+
+    public static boolean overrideSpoofStreamFlagsForHeaders = SPOOF_VIDEO_STREAMS;
+
     @Nullable
     private static volatile AppLanguage languageOverride;
 
     private static volatile ClientType preferredClient = ClientType.ANDROID_REEL_AUTH;
 
     private static WeakReference<Application> mainActivityRef = new WeakReference<>(null);
+
+    public static void setOverrideSpoofStreamFlagsForHeaders() {
+        if (!overrideSpoofStreamFlagsForHeaders) {
+            Logger.printDebug(() -> "Forcing override of spoof stream flags with spoofing off");
+            overrideSpoofStreamFlagsForHeaders = true;
+        }
+    }
 
     /**
      * Injection point.
@@ -251,10 +261,10 @@ public class SpoofVideoStreamsPatch {
             Logger.printDebug(() -> "useMediaFetchHotConfigReplacement is set on");
         }
 
-        if (!SPOOF_VIDEO_STREAMS) {
-            return original;
+        if (overrideSpoofStreamFlagsForHeaders) {
+            return false;
         }
-        return false;
+        return original;
     }
 
     /**
@@ -296,16 +306,18 @@ public class SpoofVideoStreamsPatch {
             Logger.printDebug(() -> "useMediaSessionFeatureFlag is set on");
         }
 
-        if (!SPOOF_VIDEO_STREAMS) {
-            return original;
+        if (overrideSpoofStreamFlagsForHeaders) {
+            return false;
         }
-        return false;
+        return original;
     }
 
     /**
      * Injection point.
      */
     public static void fetchStreams(String url, Map<String, String> requestHeaders) {
+        currentVideoRequestHeader = requestHeaders;
+
         if (SPOOF_VIDEO_STREAMS) {
             try {
                 Uri uri = Uri.parse(url);
@@ -330,9 +342,7 @@ public class SpoofVideoStreamsPatch {
                     return;
                 }
 
-                currentVideoRequestHeader = requestHeaders;
-
-                StreamOrDetailsDataRequest.fetchStreamRequest(id, currentVideoRequestHeader);
+                StreamOrDetailsDataRequest.fetchStreamRequest(id, requestHeaders);
             } catch (Exception ex) {
                 Logger.printException(() -> "buildRequest failure", ex);
             }

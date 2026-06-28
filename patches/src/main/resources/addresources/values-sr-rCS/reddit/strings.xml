@@ -37,12 +37,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">Onemogućava pojavni prozor koji se pojavljuje prilikom snimanja snimka ekrana</string>
   <string name="morphe_hide_ask_button_title">Sakrij dugme Zahtev</string>
   <string name="morphe_hide_ask_button_summary">Skriva dugme Zahtev u traci za pretragu</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">Sakrij preporučene zajednice</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">Sakriva preporučene police zajednica u podredditima</string>
-  <string name="morphe_hide_trending_today_shelf_title">Sakrij policu „Danas popularno”</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"Sakriva policu „Danas popularno” iz predloga za pretragu
-
-Ograničenje: Vizuelni razmak ne može da bude sakriven"</string>
+  <string name="morphe_hide_communities_shelf_title">Sakrij policu zajednica</string>
+  <string name="morphe_hide_communities_shelf_summary">Sakriva policu povezanih ili predloženih zajednica u subredditovima</string>
+  <string name="morphe_hide_trending_shelves_title">Sakrij popularne police</string>
+  <string name="morphe_hide_trending_shelves_summary">Sakriva Trending police sa feed-a i sugestije za pretragu</string>
   <string name="morphe_remove_notification_dialog_title">Ukloni dijalog predloga obaveštenja</string>
   <string name="morphe_remove_notification_dialog_summary">Automatski zatvara prozor za predlog notifikacije prilikom posete subreditu</string>
   <string name="morphe_show_view_count_title">Prikaži broj pregleda na objavama</string>

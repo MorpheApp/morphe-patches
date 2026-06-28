@@ -170,6 +170,11 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_title">دانه‌کانی دەرەکی</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_other_item">دوان</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_openrouter_model_custom">باو</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_tts_system">سیستەم</string>
+  <string name="morphe_vot_do_not_show_again">نیشانی مەدەوە دووبارە</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">ڤیدیۆ دوبارەبوونەوە چالاک بکە</string>
   <!-- interaction.loop.loopVideoButtonPatch -->
@@ -225,6 +230,7 @@ Second \"item\" text"</string>
   <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
   <string name="morphe_hide_comments_button_title">خۆشکردنەوەی کۆمێنتەکان</string>
+  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears on live streamed videos. -->
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
@@ -377,8 +383,8 @@ Second \"item\" text"</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_entry_1">نه‌كردوه‌</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
-  <!-- layout.player.fullscreen.openVideosFullscreen -->
-  <string name="morphe_open_videos_fullscreen_portrait_title">ڤیدێۆکان لە شاشە گەورەکەدا بە ڕووت و دەستەقەڵەو بکە</string>
+  <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
+  <string name="morphe_open_videos_fullscreen_entry_1">لەکارخراو</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">زینەی دەربانەی خەڵاتکار</string>
   <string name="morphe_player_overlay_opacity_summary">ءيجست سير رنغدي - (0 ري رنحانًح, 100 ري دواق)</string>
@@ -568,19 +574,12 @@ Second \"item\" text"</string>
   <string name="morphe_sb_color_opacity_label">ناوەڕاستی:</string>
   <string name="morphe_sb_color_dot_label">ڕەنگ:</string>
   <string name="morphe_sb_about_title">دربارە</string>
-  <string name="morphe_sb_about_api_summary">داتا لەلایەن API-ی SponsorBlock پێشکەش دەکرێت. بۆ ئەوەی زیاد بخوێنیتەوە و داونلۆدەکانی بۆ دەستەگەشەکانی تروان ببینیت، خوارەو دەشێتە سەر.</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_entry_1">بونیاد</string>
   <string name="morphe_change_form_factor_entry_2">تەلەفۆن</string>
   <string name="morphe_change_form_factor_entry_3">تەبلێت</string>
   <string name="morphe_change_form_factor_entry_4">ئۆتۆمۆبێل</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"گۆڕانكارییەکان دەگرنەوە:
-
-ڕووسەتی تابلێت
-• وتەکان خراوتن دەکرێت
-• ڕاچۆ لە ڕژێناندا نادرێت
-• پشکنەکان و دکۆی دەنگی لە Shorts دا نادرێت
-• باری ئەودرە داخراو نەیە"</string>
+  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">نسخەی سەرەکیی ئەپ وێنۆ بکە</string>
   <string name="morphe_spoof_app_version_user_dialog_message">"نسخەی ئەپ دەگێڕدرێتەوە بۆ ئەندازەیەکی کۆتری یوتوب.
@@ -673,9 +672,6 @@ Second \"item\" text"</string>
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow &amp; ثومب‌نەییلە سەرەکیەکان</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow &amp; پێگه‌شبونه‌وه‌کانی ثومب‌نەییل</string>
   <string name="morphe_alt_thumbnail_options_entry_4">پێگه‌شبونه‌وه‌کانی ثومب‌نەییل</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow ثومب‌نەییلەکان بۆ سەرکه‌وتووییەکانی یوتیوب به‌رپرسیار دەبێت. ئەم ثومب‌نەییلان زۆر جار به‌و مەبەستە زۆر پێوه‌سته‌ له‌وه‌ی یوتیوب پێشنیار ده‌کات
-
-به‌کاردانی ئەمشه‌و، به‌سته‌ره‌کانی ڤیدۆ دەناێردرێنه‌ کۆیله‌کانی API و تێكه‌ڵه‌کان نایه‌ن. که‌ ڕێکه‌خستنێک به‌لاوه‌شه‌وه‌ ره‌ت ده‌کرێت, هه‌رگیز نه‌بێت ڕوونی بۆ ڕۆڵی به‌ڵێزێت."</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Show connection error alerts</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">بڕی سه‌رێزه‌که‌ی کۆیله‌ی DeArrow</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_summary">URLی کۆیله‌کانی DeArrow ڕه‌هه‌ه‌ه‌</string>
@@ -744,4 +740,5 @@ Second \"item\" text"</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• دەنگی سەرەکیی تایبەت ناخۆش بە دەستەبەرە</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">ژیان JavaScript-ی خاس</string>
+  <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
 </resources>

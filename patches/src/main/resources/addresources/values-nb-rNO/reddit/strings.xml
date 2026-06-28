@@ -37,12 +37,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">Deaktiverer popup-vinduet som vises når du tar et skjermbilde</string>
   <string name="morphe_hide_ask_button_title">Skjul Spør-knapp</string>
   <string name="morphe_hide_ask_button_summary">Skjuler Spør-knappen i søkefeltet</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">Skjul anbefalte samfunn</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">Skjuler de anbefalte samfunnshyllene i subredditer</string>
-  <string name="morphe_hide_trending_today_shelf_title">Skjul Trending i dag-hyllen</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"Skjuler Trending i dag-hyllen fra søkeforslag
-
-Begrensning: Visuelle avstandsholdere skjules kanskje ikke"</string>
+  <string name="morphe_hide_communities_shelf_title">Skjul fellesskap-hyllen</string>
+  <string name="morphe_hide_communities_shelf_summary">Skjuler den relaterte eller foreslåtte fellesskap-hyllen i subreddits</string>
+  <string name="morphe_hide_trending_shelves_title">Skjul Trending-hyller</string>
+  <string name="morphe_hide_trending_shelves_summary">Skjuler \"Trending\"-hyllene fra feeden og søkeforslag</string>
   <string name="morphe_remove_notification_dialog_title">Fjern varslingsforslagsdialog</string>
   <string name="morphe_remove_notification_dialog_summary">Lukker automatisk dialogboksen for forslag til varsler når du besøker en subreddit</string>
   <string name="morphe_show_view_count_title">Vis antall visninger på innlegg</string>

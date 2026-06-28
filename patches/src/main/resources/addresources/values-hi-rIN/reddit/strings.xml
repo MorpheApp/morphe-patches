@@ -37,12 +37,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">स्क्रीनशॉट लेने पर दिखाई देने वाले पॉपअप को अक्षम करता है</string>
   <string name="morphe_hide_ask_button_title">छुपाएं \'पूछो\' बटन</string>
   <string name="morphe_hide_ask_button_summary">यह खोज बार में \'पूछो\' बटन को छुपाता है</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">अनुशंसित समुदाय छुपाएं</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">सबरेडिट में अनुशंसित समुदाय शेल्फ को छुपाता है</string>
-  <string name="morphe_hide_trending_today_shelf_title">आज के ट्रेंडिंग शेल्फ छुपाएं</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"खोज सुझावों से ट्रेंडिंग आज शेल्फ को छुपाता है
-
-सीमा: दृश्य स्पेसर्स को छुपाया नहीं जा सकता है"</string>
+  <string name="morphe_hide_communities_shelf_title">समुदाय शेल्फ़ छिपाएं</string>
+  <string name="morphe_hide_communities_shelf_summary">सबरेडिट्स में संबंधित या सुझाए गए समुदाय शेल्फ़ को छुपाता है</string>
+  <string name="morphe_hide_trending_shelves_title">ट्रेंडिंग शेल्फ़ छिपाएं</string>
+  <string name="morphe_hide_trending_shelves_summary">फ़ीड और खोज सुझावों से ट्रेंडिंग शेल्फ़ छिपाएँ</string>
   <string name="morphe_remove_notification_dialog_title">नोटिफिकेशन सुझाव संवाद हटाएं</string>
   <string name="morphe_remove_notification_dialog_summary">जब आप एक सबरेडिट पर जाते हैं तो सूचना सुझाव संवाद स्वचालित रूप से खारिज हो जाता है</string>
   <string name="morphe_show_view_count_title">पोस्ट पर दृश्य गणना दिखाएं</string>

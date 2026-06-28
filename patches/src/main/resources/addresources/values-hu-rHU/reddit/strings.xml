@@ -37,12 +37,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">Letiltja a képernyőfotó készítésekor megjelenő felugró párbeszédet</string>
   <string name="morphe_hide_ask_button_title">Kérdezz gomb elrejtése</string>
   <string name="morphe_hide_ask_button_summary">Elrejti a Kérdezz gombot a keresősávban</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">Ajánlott közösségek elrejtése</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">Elrejti az ajánlott közösségek részt a subredditeken belül</string>
-  <string name="morphe_hide_trending_today_shelf_title">Mai felkapott témák sáv elrejtése</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"Elrejti a mai felkapott témák sávot a keresési javaslatokból.
-
-Korlátozás: A vizuális elválasztók láthatók maradhatnak"</string>
+  <string name="morphe_hide_communities_shelf_title">Közösségek polc elrejtése</string>
+  <string name="morphe_hide_communities_shelf_summary">Elrejti a kapcsolódó vagy javasolt közösségek polcát a subredditeken.</string>
+  <string name="morphe_hide_trending_shelves_title">Elrejtett népszerű polcok</string>
+  <string name="morphe_hide_trending_shelves_summary">Elrejti a népszerű polcokat a hírekből és a keresési javaslatokból.</string>
   <string name="morphe_remove_notification_dialog_title">Értesítési javaslat ablak eltávolítása</string>
   <string name="morphe_remove_notification_dialog_summary">Automatikusan elutasítja az értesítési javaslatok ablakot egy subreddit felkeresésekor</string>
   <string name="morphe_show_view_count_title">Megtekintésszám megjelenítése a posztokon</string>

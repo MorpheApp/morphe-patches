@@ -233,6 +233,7 @@ As mudanças incluem:
   <string name="morphe_hide_keyword_content_home_title">Ocultar vídeos na tela inicial com palavras-chave</string>
   <string name="morphe_hide_keyword_content_search_title">Ocultar resultados de busca com palavras-chave</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Ocultar vídeos de inscrições com palavras-chave</string>
+  <string name="morphe_hide_keyword_content_comments_title">Ocultar comentários por palavras-chave</string>
   <string name="morphe_hide_keyword_content_phrases_title">Palavras-chave para ocultar</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
@@ -242,10 +243,10 @@ As palavras-chave podem ser qualquer texto exibido nos títulos dos vídeos ou n
 
 Palavras com letras maiúsculas no meio devem corresponder exatamente (por exemplo: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">Sobre a filtragem com palavra-chave</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Início / Assinaturas / Os resultados da pesquisa são filtrados para ocultar o conteúdo que corresponde às frases de palavras-chave
+  <string name="morphe_hide_keyword_content_about_summary">"Página inicial / Assinaturas / Pesquisa / Comentários são filtrados para ocultar conteúdo que corresponde a frases de palavras-chave
 
 Limitações:
-• Os Shorts não podem ser ocultados pelo nome do canal
+• Shorts não podem ser ocultados pelo nome do canal
 • Alguns componentes da IU podem não ser ocultados
 • A pesquisa por uma palavra-chave pode não mostrar resultados"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Corresponder palavras inteiras</string>
@@ -304,6 +305,59 @@ Limitações:
 
 Verifique se o nome do pacote está correto e se o aplicativo está instalado"</string>
   <string name="morphe_external_downloader_empty_warning">O nome do pacote não pode estar vazio</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">Tradução por voz</string>
+  <string name="morphe_vot_screen_summary">Leia as legendas do vídeo em voz alta usando a conversão de texto em fala no dispositivo, sincronizada com a reprodução</string>
+  <string name="morphe_vot_enabled_title">Tradução por voz</string>
+  <string name="morphe_vot_caption_language_title">Idioma</string>
+  <string name="morphe_vot_translation_service_title">Provedor de tradução</string>
+  <string name="morphe_vot_original_audio_volume_title">Volume do áudio original</string>
+  <string name="morphe_vot_original_audio_volume_summary">Volume do áudio original do YouTube enquanto a tradução está sendo reproduzida</string>
+  <string name="morphe_vot_translation_volume_title">Volume da tradução</string>
+  <string name="morphe_vot_translation_volume_summary">Volume da voz dublada da tradução</string>
+  <string name="morphe_vot_max_speech_rate_title">Velocidade máxima da fala</string>
+  <string name="morphe_vot_max_speech_rate_summary">Multiplicador máximo de velocidade ao ajustar a fala a um espaço de legenda</string>
+  <string name="morphe_vot_mymemory_info_summary">"API de tradução gratuita, sem chave de API necessária. Até 5.000 caracteres por dia no plano gratuito, ou até 50.000 caracteres por dia com um endereço de e-mail.
+
+Toque aqui para abrir MyMemory.translated.net"</string>
+  <string name="morphe_vot_mymemory_email_title">E-mail do MyMemory</string>
+  <string name="morphe_vot_mymemory_email_summary">Opcional. Insira seu endereço de e-mail do MyMemory para aumentar o limite diário de 5.000 para 50.000 caracteres. Deixe em branco para usar o limite anônimo</string>
+  <string name="morphe_vot_openrouter_info_summary">"Tradução de IA paga via OpenRouter. Recarregue uma vez e traduza milhares de vídeos. Mistral Nemo é a opção mais barata, Gemma 4 oferece a maior qualidade.
+
+Toque aqui para abrir OpenRouter.ai"</string>
+  <string name="morphe_vot_openrouter_api_key_title">Chave de API OpenRouter</string>
+  <string name="morphe_vot_openrouter_api_key_summary">Sua chave de API OpenRouter. Crie uma chave em OpenRouter.ai &gt; Workspace &gt; API Keys</string>
+  <string name="morphe_vot_openrouter_model_title">Modelo OpenRouter</string>
+  <string name="morphe_vot_openrouter_model_custom">Personalizado</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter não configurado</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Insira sua chave de API OpenRouter nas configurações antes de selecionar este provedor</string>
+  <string name="morphe_vot_cost_free">Gratuito</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s por 100 horas de vídeo</string>
+  <string name="morphe_vot_tts_voice_type">Voz</string>
+  <string name="morphe_vot_tts_system">Sistema</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Masculino multilíngue</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Feminino multilíngue</string>
+  <string name="morphe_vot_voice_gender_male">Masculino</string>
+  <string name="morphe_vot_voice_gender_female">Feminino</string>
+  <string name="morphe_vot_tts_sample">É hora de transformar!</string>
+  <string name="morphe_vot_http_error_title">Tradução não disponível</string>
+  <string name="morphe_vot_http_error_message">"O serviço de tradução retornou um erro HTTP %s. Seu endereço IP provavelmente foi limitado por até 24 horas.
+
+Para continuar usando as traduções, altere para um provedor de tradução diferente nas configurações ou use uma VPN"</string>
+  <string name="morphe_vot_do_not_show_again">Não exibir novamente</string>
+  <string name="morphe_vot_export_api_key_warning">"Suas configurações contêm uma chave de API OpenRouter.
+
+Sua chave de API nunca deve ser compartilhada. Qualquer pessoa com acesso a ela pode usar seus créditos OpenRouter"</string>
+  <string name="morphe_vot_openrouter_credits_title">Limite de crédito OpenRouter atingido</string>
+  <string name="morphe_vot_openrouter_credits_message">Seu limite de crédito OpenRouter foi atingido. Recarregue seu saldo ou aumente o limite de gastos da sua chave em OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">Abrir OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">Falha na tradução do OpenRouter (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">Limite diário do MyMemory atingido</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Disponível novamente em %s.</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Você usou a cota de tradução gratuita do MyMemory (5.000 caracteres) de hoje. Adicione um e-mail do MyMemory nas configurações para aumentar o limite diário para 50.000 caracteres, ou altere para um serviço de tradução diferente</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Você usou a cota de tradução do MyMemory (50.000 caracteres) de hoje. Altere para um serviço de tradução diferente ou tente novamente amanhã</string>
+  <string name="morphe_vot_mymemory_error">Falha na tradução do MyMemory (status %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Ativar vídeo em loop</string>
   <string name="morphe_do_not_remember_loop_video_title">Não lembrar vídeo em loop</string>
@@ -322,7 +376,7 @@ Verifique se o nome do pacote está correto e se o aplicativo está instalado"</
   <string name="morphe_loop_video_range_toast_on">Repetindo %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Tempo inserido inválido</string>
   <!-- interaction.playall.playAllButtonPatch -->
-  <string name="morphe_play_all_button_title">Lembra o nível de brilho ao entrar / sair do modo de tela cheia</string>
+  <string name="morphe_play_all_button_title">Mostrar botão de gerar playlist</string>
   <string name="morphe_play_all_button_summary">"Toque para gerar uma playlist de todos os vídeos do canal, toque e segure para desfazer
 
 Informação: pode não funcionar em transmissões ao vivo"</string>
@@ -354,6 +408,8 @@ Informação: pode não funcionar em transmissões ao vivo"</string>
   <string name="morphe_queue_restore_summary">A fila é mantida após reiniciar o aplicativo</string>
   <string name="morphe_swap_save_and_queue_actions_title">Trocar ações de Salvar e Fila</string>
   <string name="morphe_swap_save_and_queue_actions_summary">Toque para opções de fila, toque e segure para salvar para assistir mais tarde</string>
+  <string name="morphe_queue_override_flyout_menu_title">Substituir fila de reprodução flutuante</string>
+  <string name="morphe_queue_override_flyout_menu_summary">Abre a fila do Morphe em vez da fila do YouTube</string>
   <string name="morphe_queue_manager_check_failed_auth">Não conectado(a)</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">Nenhum ID de playlist</string>
   <string name="morphe_queue_manager_check_failed_queue">Fila vazia</string>
@@ -411,29 +467,29 @@ Observação: Se \"Simular streams de vídeo\" não estiver ativado, habilitar i
   <string name="morphe_swipe_zone_label_volume">Volume</string>
   <string name="morphe_swipe_zone_label_native">Nativo</string>
   <string name="morphe_swipe_press_to_engage_title">Ativar gesto de pressionar para deslizar</string>
-  <string name="morphe_swipe_press_to_engage_summary">Impede que os botões Curtir e Inscrever-se brilhem quando um criador os menciona</string>
+  <string name="morphe_swipe_press_to_engage_summary">Requer pressionar e segurar antes que um gesto de deslize seja reconhecido</string>
   <string name="morphe_swipe_haptic_feedback_title">Ativar resposta tátil</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Salvar e restaurar brilho</string>
-  <string name="morphe_swipe_save_and_restore_brightness_summary">Ocultar botão Curtir e Descurtir</string>
+  <string name="morphe_swipe_save_and_restore_brightness_summary">Lembra o nível de brilho ao entrar/sair do modo de tela cheia</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Ativar gesto de brilho automático</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_summary">Deslizar o brilho até o valor mais baixo ativa o brilho automático do sistema</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_overlay_text">Automático</string>
   <string name="morphe_swipe_overlay_timeout_title">Tempo limite da sobreposição no gesto</string>
   <string name="morphe_swipe_overlay_timeout_summary">A quantidade de milissegundos em que a sobreposição é visível</string>
   <string name="morphe_swipe_overlay_background_opacity_title">Opacidade do plano de fundo de sobreposição de deslize</string>
-  <string name="morphe_swipe_overlay_background_opacity_summary">Ocultar botão \'Parar anúncios\'</string>
+  <string name="morphe_swipe_overlay_background_opacity_summary">Ajuste o nível de transparência (0 é transparente, 100 é opaco)</string>
   <string name="morphe_swipe_overlay_background_opacity_invalid_toast">A opacidade do deslizar deve estar entre 0-100</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_title">Cor da barra de brilho da sobreposição de deslize</string>
-  <string name="morphe_swipe_overlay_progress_brightness_color_summary">Ocultar botão \'Denunciar\'</string>
+  <string name="morphe_swipe_overlay_progress_brightness_color_summary">Definir a cor da barra de progresso dos controles de brilho</string>
   <string name="morphe_swipe_overlay_progress_volume_color_title">Cor da barra de volume da sobreposição de deslize</string>
-  <string name="morphe_swipe_overlay_progress_volume_color_summary">Ocultar botão \'Download\'</string>
+  <string name="morphe_swipe_overlay_progress_volume_color_summary">Definir a cor da barra de progresso dos controles de volume</string>
   <string name="morphe_swipe_overlay_progress_speed_color_title">Cor da barra de progresso da velocidade da sobreposição de deslize</string>
   <string name="morphe_swipe_overlay_progress_speed_color_summary">Defina a cor da barra de progresso dos controles de velocidade de reprodução</string>
   <string name="morphe_swipe_text_overlay_size_title">Tamanho do texto da sobreposição de deslize</string>
-  <string name="morphe_swipe_text_overlay_size_summary">Ocultar botão \'Hype\'</string>
+  <string name="morphe_swipe_text_overlay_size_summary">Ajuste o tamanho do texto na tela (1-30)</string>
   <string name="morphe_swipe_text_overlay_size_invalid_toast">O tamanho do texto deve estar entre 1 e 30</string>
   <string name="morphe_swipe_threshold_title">Limiar distância no gesto</string>
-  <string name="morphe_swipe_threshold_summary">Ocultar botão \'Promover\'</string>
+  <string name="morphe_swipe_threshold_summary">Defina a distância de deslize necessária antes que um ajuste seja acionado</string>
   <string name="morphe_swipe_volume_sensitivity_title">Sensibilidade ao deslizar o volume</string>
   <string name="morphe_swipe_volume_sensitivity_summary">Valores mais altos aumentam a mudança de volume por deslize</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Sensibilidade ao deslizar o brilho</string>
@@ -469,6 +525,8 @@ Observação: Se \"Simular streams de vídeo\" não estiver ativado, habilitar i
   <string name="morphe_hide_stop_ads_button_title">Ocultar botão \'Mais\'</string>
   <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
   <string name="morphe_hide_comments_button_title">Ocultar botão Comentários</string>
+  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_connect_button_title">Ocultar botão Conectar</string>
   <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears on live streamed videos. -->
   <string name="morphe_hide_report_button_title">Ocultar botão \'Playlist\'</string>
@@ -493,6 +551,7 @@ Observação: Se \"Simular streams de vídeo\" não estiver ativado, habilitar i
   <string name="morphe_hide_shop_button_title">Ocultar botão Loja</string>
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_save_button_title">Resolve uma falha na verificação de pré-condição que pode impedir o carregamento da transcrição</string>
+  <string name="morphe_hide_more_button_title">Ocultar botão Mais</string>
   <string name="morphe_fullscreen_buttons">Botões de tela cheia</string>
   <string name="morphe_hide_quick_actions_title">Ocultar barra de ação</string>
   <string name="morphe_hide_quick_actions_ask_button_title">Escolha quais botões aparecem na barra de navegação inferior</string>
@@ -578,6 +637,7 @@ Para acessar as Configurações, ative o botão Configurações via Geral → Ba
   <string name="morphe_toolbar_screen_title">Barra de ferramentas</string>
   <string name="morphe_toolbar_screen_summary">Escolha quais componentes aparecem na barra de ferramentas</string>
   <string name="morphe_hide_toolbar_cast_button_title">Ocultar botão Transmitir</string>
+  <string name="morphe_hide_toolbar_chat_button_title">Ocultar botão de bate-papo</string>
   <string name="morphe_hide_toolbar_create_button_title">Ocultar o botão Criar</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Ocultar botão de Microfone</string>
   <string name="morphe_hide_toolbar_notification_button_title">Ocultar o botão Notificações</string>
@@ -738,11 +798,14 @@ Configurações → Reprodução (ou Reprodução automática) → Reproduzir o 
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">Desativar gesto de deslizar para cima na vertical</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Desativar gesto de deslizar para baixo na vertical</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Desativar gesto de deslizar para baixo na horizontal</string>
-  <!-- layout.player.fullscreen.openVideosFullscreen -->
-  <string name="morphe_open_videos_fullscreen_portrait_title">Abrir vídeos em tela cheia retrato</string>
+  <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
+  <string name="morphe_open_videos_fullscreen_title">Abrir vídeos em tela cheia</string>
+  <string name="morphe_open_videos_fullscreen_entry_1">Desativado</string>
+  <string name="morphe_open_videos_fullscreen_entry_2">Retrato</string>
+  <string name="morphe_open_videos_fullscreen_entry_3">Paisagem</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Opacidade do reprodutor</string>
-  <string name="morphe_player_overlay_opacity_summary">Ativar Return YouTube Dislike</string>
+  <string name="morphe_player_overlay_opacity_summary">Ajuste o nível de transparência (0 é transparente, 100 é opaco)</string>
   <string name="morphe_player_overlay_opacity_invalid_toast">Opacidade do reprodutor deve estar entre 0-100</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
@@ -756,17 +819,19 @@ Configurações → Reprodução (ou Reprodução automática) → Reproduzir o 
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Oculto pelo proprietário</string>
   <string name="morphe_ryd_enabled_title">Limitação: As curtidas podem não aparecer no modo anônimo</string>
   <string name="morphe_ryd_shorts_title">Mostrar não gostei no Shorts</string>
-  <string name="morphe_ryd_shorts_summary">Mostrar curtidas como porcentagem</string>
-  <string name="morphe_ryd_dislike_percentage_title">Mostra as curtidas como uma porcentagem de curtidas em vez de um número</string>
-  <string name="morphe_ryd_dislike_percentage_summary">Usar botão Curtir compacto</string>
+  <string name="morphe_ryd_shorts_summary">Limitação: \"Não gostei\" podem não aparecer no modo Incognito</string>
+  <string name="morphe_ryd_dislike_percentage_title">Mostrar não gostei como porcentagem</string>
+  <string name="morphe_ryd_dislike_percentage_summary">Exibe não gostei como porcentagem, substituindo o número convencional</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">Reduz a largura do botão Curtir para economizar espaço</string>
-  <string name="morphe_ryd_compact_layout_summary">Mostra uma contagem estimada de curtidas em vídeos em que o criador desativou as curtidas</string>
+  <string name="morphe_ryd_compact_layout_title">Usar botão Curtir compacto</string>
+  <string name="morphe_ryd_compact_layout_summary">Reduz a largura do botão Curtir para economizar espaço</string>
   <string name="morphe_ryd_estimated_like_title">Mostrar estimativa de \"gostei\"</string>
-  <string name="morphe_ryd_estimated_like_summary">Mostrar alertas de erro de conexão</string>
+  <string name="morphe_ryd_estimated_like_summary">Exibe uma contagem de likes estimada em vídeos onde o criador desativou likes</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Mostra uma notificação quando o servidor Return YouTube Dislike estiver indisponível</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Mostra uma notificação quando o servidor Return YouTube Dislike estiver indisponível</string>
-  <string name="morphe_ryd_attribution_summary">Os dados são fornecidos pela API do Return Dislike YouTube. Toque aqui para saber mais</string>
+  <string name="morphe_ryd_attribution_summary">"Os dados são fornecidos pela API Return YouTube Dislike.
+
+Toque aqui para abrir ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Estatísticas da API do Return YouTube Dislike deste dispositivo</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Tempo de resposta da API, média</string>
@@ -885,7 +950,7 @@ Seu ID de usuário é como uma senha e nunca deve ser compartilhado."</string>
   <string name="morphe_sb_segments_hook_summary">Trailers narrados para o próximo vídeo, saudações e despedidas. Não inclui seções que adicionam conteúdo adicional</string>
   <string name="morphe_sb_segments_preview">Prévia / Resumo</string>
   <string name="morphe_sb_segments_preview_summary">Coleção de clipes que mostram o que está chegando ou o que aconteceu no vídeo ou em outras séries, onde todas as informações se repetem em outro lugar</string>
-  <string name="morphe_sb_segments_filler">Divagação / Piadas</string>
+  <string name="morphe_sb_segments_filler">Desvios / Piadas</string>
   <string name="morphe_sb_segments_filler_summary">Cenas tangenciais ou piadas que não são necessárias para entender o conteúdo principal do vídeo. Não inclui seções que fornecem contexto ou detalhes de fundo</string>
   <string name="morphe_sb_segments_nomusic">Música: Seção Sem Música</string>
   <string name="morphe_sb_segments_nomusic_summary">Somente para uso em videoclipes. Seções de videoclipes sem música que não são cobertas por outra categoria</string>
@@ -1006,29 +1071,34 @@ Se você não estiver enviando um destaque, toque em Cancelar e marque a segunda
   <string name="morphe_sb_color_opacity_label">Opacidade:</string>
   <string name="morphe_sb_color_dot_label">Cor:</string>
   <string name="morphe_sb_about_title">Sobre</string>
-  <string name="morphe_sb_about_api_summary">Os dados são fornecidos pela API do SponsorBlock. Toque aqui para aprender mais e ver como baixar para outras plataformas</string>
+  <string name="morphe_sb_about_api_summary">"Os dados são fornecidos pela API SponsorBlock.
+
+Toque aqui para abrir Sponsor.ajay.app e veja downloads para outras plataformas"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Layout do dispositivo</string>
   <string name="morphe_change_form_factor_entry_1">Padrão</string>
   <string name="morphe_change_form_factor_entry_2">Telefone</string>
   <string name="morphe_change_form_factor_entry_3">Tablet</string>
   <string name="morphe_change_form_factor_entry_4">Automóveis</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Alterações incluem:
+  <string name="morphe_change_form_factor_user_dialog_message">"As mudanças incluem:
 
 Layout para tablet
 • Publicações da comunidade estão ocultas
-• Configuração de reprodução em feeds não está disponível
-• Botão Remix e Botão de Som não estão disponíveis em Shorts
-• Barra de ações de vídeo não está recolhida
+• A configuração de reprodução em feeds não está disponível
+• O botão Remixar e o botão Som não estão disponíveis no Shorts
+• A barra de ações antiga não recolhida é mostrada
 
-Layout para automóvel
-• Feed é organizado por tópicos e canais
-• Configuração de reprodução em feeds não está disponível
-• Botão Remix e Botão de Som não estão disponíveis em Shorts
-• Shorts abrem no player normal
-• Barra de ações de vídeo não está recolhida"</string>
+Layout automotivo
+• O feed é organizado por tópicos e canais
+• A configuração de reprodução em feeds não está disponível
+• O botão Remixar e o botão Som não estão disponíveis no Shorts
+• Shorts abrem no reprodutor normal
+• A barra de ações antiga não recolhida é mostrada"</string>
   <string name="morphe_tablet_layout_in_player_title">Ativar layout de tablet no player</string>
-  <string name="morphe_tablet_layout_in_player_summary">Restaura o layout antigo do player</string>
+  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+  <string name="morphe_tablet_layout_in_player_summary">"Restaura o layout antigo do player
+
+Limitações: Se a opção \"Restaurar barra de ações de vídeo antiga\" estiver desativada, a sobreposição \"Mais vídeos\" pode não estar disponível."</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Spoofing da versão do aplicativo</string>
   <string name="morphe_spoof_app_version_summary">Truques no servidor para fazer você pensar que está usando uma versão mais antiga do aplicativo para restaurar recursos de interface do usuário legados</string>
@@ -1154,11 +1224,11 @@ Limitação: Usar o botão Voltar na barra de ferramentas pode não funcionar"</
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow &amp; Miniaturas originais</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow &amp; captura estática</string>
   <string name="morphe_alt_thumbnail_options_entry_4">Captura estática</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow fornece miniaturas de crowdsourcing para vídeos do YouTube. Essas miniaturas costumam ser mais relevantes do que as fornecidas pelo YouTube
+  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow fornece miniaturas de crowdsourcing para vídeos do YouTube. Essas miniaturas são frequentemente mais relevantes do que as fornecidas pelo YouTube
 
-Se ativado, os URLs dos vídeos serão enviados ao servidor API e nenhum outro dado será enviado. Se um vídeo não tiver miniaturas DeArrow, as originais ou capturas fixas serão exibidas 
+Se ativado, os URLs dos vídeos serão enviados ao servidor API e nenhum outro dado será enviado. Se um vídeo não tiver miniaturas DeArrow, as originais ou capturas fixas serão exibidas
 
-Toque aqui para saber mais sobre DeArrow"</string>
+Toque aqui para abrir DeArrow.ajay.app"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Mostrar alertas de erro de conexão</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary">Mostra uma notificação quando o servidor DeArrow estiver indisponível</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">Endpoint da API DeArrow</string>
@@ -1286,4 +1356,9 @@ A reprodução de vídeo com AV1 pode gaguejar ou perder quadros."</string>
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Forçar áudio original não está disponível</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Variante de JavaScript do player</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Mostrar falsificação em Estatísticas para nerds</string>
+  <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <string name="morphe_restore_old_video_action_bar_title">Restaurar barra de ações de vídeo antiga</string>
+  <string name="morphe_restore_old_video_action_bar_summary">"Corrige a não exibição de dislikes e a impossibilidade de ocultar os botões de ação do vídeo
+
+Limitações: Retorna à sobreposição 'Mais vídeos' no estilo antigo"</string>
 </resources>

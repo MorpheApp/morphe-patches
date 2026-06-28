@@ -134,4 +134,16 @@ public class ChangeFormFactorPatch {
             return original;
         }
     }
+
+    /**
+     * Injection point.
+     * <p>
+     * This method check whatever the list of player's litho elements is empty, when the tablet
+     * layout setting is set to off but the app is not restarted correctly, by running in
+     * onResume() mode instead of onCreate().
+     * <p>
+     **/
+     public static boolean checkPlayerLithoElementsListSize(List<?> list) {
+        return list.isEmpty();
+    }
 }

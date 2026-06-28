@@ -234,6 +234,7 @@ Muutoksia ovat muun muassa:
   <string name="morphe_hide_keyword_content_home_title">Piilota Koti-videoita avainsanojen mukaan</string>
   <string name="morphe_hide_keyword_content_search_title">Piilota hakutuloksia avainsanojen mukaan</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Piilota Tilaukset-videoita avainsanojen mukaan</string>
+  <string name="morphe_hide_keyword_content_comments_title">Piilota kommentit avainsanojen perusteella</string>
   <string name="morphe_hide_keyword_content_phrases_title">Piilotettavat avainsanat</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
@@ -243,7 +244,7 @@ Avainsanat voivat olla kanavien nimiä tai mitä tahansa videoiden otsikoissa n�
 
 Sanat, joiden keskellä on isoja kirjaimia, on kirjoitettava täsmälleen samassa muodossa (esim. iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">Tietoja avainsanoilla suodatuksesta</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Etusivu- / Tilaukset- / Hakutulokset-näkymistä on suodatettu pois sisältö, joka vastaa avainsanoja
+  <string name="morphe_hide_keyword_content_about_summary">"Etusivu- / Tilaukset- / Haku- / Kommentit-näkymistä on suodatettu pois sisältö, joka vastaa avainsanoja.
 
 Rajoitukset:
 • Shorts-videoita ei voi piilottaa kanavan nimen perusteella.
@@ -305,6 +306,59 @@ Rajoitukset:
 
 Tarkista, että paketin nimi on oikein ja sovellus on asennettu"</string>
   <string name="morphe_external_downloader_empty_warning">Paketin nimi ei voi olla tyhjä</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">Ääniratateksti</string>
+  <string name="morphe_vot_screen_summary">Lue videon tekstitykset ääneen laitteen tekstistä puheeksi -toiminnolla, synkronoitu toiston kanssa</string>
+  <string name="morphe_vot_enabled_title">Ääniratateksti</string>
+  <string name="morphe_vot_caption_language_title">Kieli</string>
+  <string name="morphe_vot_translation_service_title">Käännöspalvelun tarjoaja</string>
+  <string name="morphe_vot_original_audio_volume_title">Alkuperäisen äänenvoimakkuus</string>
+  <string name="morphe_vot_original_audio_volume_summary">Alkuperäisen YouTube-äänen voimakkuus käännöksen puhuessa</string>
+  <string name="morphe_vot_translation_volume_title">Käännöksen äänenvoimakkuus</string>
+  <string name="morphe_vot_translation_volume_summary">Dubatun käännöksen äänen voimakkuus</string>
+  <string name="morphe_vot_max_speech_rate_title">Suurin puhenopeus</string>
+  <string name="morphe_vot_max_speech_rate_summary">Suurin nopeuden kerroin, kun puhe sovitetaan tekstityskohtaan</string>
+  <string name="morphe_vot_mymemory_info_summary">"Ilmainen käännöspalvelu, API-avainta ei vaadita. Jopa 5 000 merkkiä päivässä ilmaisversiossa tai jopa 50 000 merkkiä päivässä sähköpostiosoitteella.
+
+Napauta tästä avataksesi MyMemory.translated.net"</string>
+  <string name="morphe_vot_mymemory_email_title">MyMemory-sähköposti</string>
+  <string name="morphe_vot_mymemory_email_summary">Valinnainen. Anna MyMemory-sähköpostiosoitteesi nostaaksesi päivittäisen rajan 5 000:sta 50 000 merkkiin. Jätä tyhjäksi käyttääksesi anonyymirajoitusta</string>
+  <string name="morphe_vot_openrouter_info_summary">"Maksullinen AI-käännös OpenRouterin kautta. Lisää rahaa kerran ja käännä tuhansia videoita. Mistral Nemo on halvin vaihtoehto, Gemma 4 tarjoaa korkeimman laadun.
+
+Napauta tästä avataksesi OpenRouter.ai"</string>
+  <string name="morphe_vot_openrouter_api_key_title">OpenRouter API -avain</string>
+  <string name="morphe_vot_openrouter_api_key_summary">OpenRouter API -avain. Luo avain osoitteessa OpenRouter.ai > Workspace > API Keys</string>
+  <string name="morphe_vot_openrouter_model_title">OpenRouter-malli</string>
+  <string name="morphe_vot_openrouter_model_custom">Mukautettu</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouteria ei ole määritetty</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Syötä OpenRouter API -avain asetuksiin ennen tämän palveluntarjoajan valitsemista</string>
+  <string name="morphe_vot_cost_free">Ilmainen</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s per 100 videotuntia</string>
+  <string name="morphe_vot_tts_voice_type">Ääni</string>
+  <string name="morphe_vot_tts_system">Järjestelmä</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Monikielinen mies</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Monikielinen nainen</string>
+  <string name="morphe_vot_voice_gender_male">Mies</string>
+  <string name="morphe_vot_voice_gender_female">Nainen</string>
+  <string name="morphe_vot_tts_sample">Muodonmuutos alkaa!</string>
+  <string name="morphe_vot_http_error_title">Käännöstä ei ole saatavilla</string>
+  <string name="morphe_vot_http_error_message">"Käännöspalvelu palautti HTTP-virheen %s. IP-osoitteesi on todennäköisesti rajoitettu enintään 24 tunniksi.
+
+Jatkaaksesi käännösten käyttöä, vaihda toiseen käännöspalveluntarjoajaan asetuksissa tai käytä VPN:ää."</string>
+  <string name="morphe_vot_do_not_show_again">Älä näytä uudelleen</string>
+  <string name="morphe_vot_export_api_key_warning">"Asetuksissasi on OpenRouter API -avain.
+
+API-avaintasi ei saa koskaan jakaa. Kuka tahansa, jolla on pääsy siihen, voi käyttää OpenRouter-saldoasi."</string>
+  <string name="morphe_vot_openrouter_credits_title">OpenRouter-saldoa ei ole enää</string>
+  <string name="morphe_vot_openrouter_credits_message">OpenRouter-saldo on loppu. Lisää saldoa tai nosta avaimen kulutusrajaa osoitteessa OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">Avaa OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">OpenRouter-käännöksessä virhe (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">MyMemoryn päivittäinen raja on saavutettu</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Saatavilla seuraavan kerran %s.</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Olet käyttänyt tämän päivän ilmaisen MyMemory-käännöskiintiön (5 000 merkkiä). Lisää MyMemory-sähköpostiosoite asetuksiin nostaaksesi päivittäisen rajan 50 000 merkkiin tai vaihda toiseen käännöspalveluun</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Olet käyttänyt tämän päivän MyMemory-käännöskiintiön (50 000 merkkiä). Vaihda toiseen käännöspalveluun tai yritä uudelleen huomenna</string>
+  <string name="morphe_vot_mymemory_error">MyMemory-käännöksessä virhe (tila %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Ota jatkuva toisto käyttöön</string>
   <string name="morphe_do_not_remember_loop_video_title">Älä muista silmukoitua videota</string>
@@ -355,6 +409,8 @@ Tieto: Ei välttämättä toimi suoratoistoissa"</string>
   <string name="morphe_queue_restore_summary">Jono säilyy sovelluksen uudelleenkäynnistyksen jälkeen</string>
   <string name="morphe_swap_save_and_queue_actions_title">Vaihda Tallenna- ja Jonotoiminnot</string>
   <string name="morphe_swap_save_and_queue_actions_summary">Napauta jonkovaihtoehtoja varten, napauta ja pidä saadaksesi tallennettua myöhempää katselua varten</string>
+  <string name="morphe_queue_override_flyout_menu_title">Korvaa syötteen pikavalikkojonon painike</string>
+  <string name="morphe_queue_override_flyout_menu_summary">Avaa Morphe-jono YouTuben jonon sijaan</string>
   <string name="morphe_queue_manager_check_failed_auth">Kirjauduttu ulos</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">Ei soittolistan tunnistetta</string>
   <string name="morphe_queue_manager_check_failed_queue">Jono on tyhjä</string>
@@ -470,6 +526,8 @@ Huomautus: Jos ”Väärennä videostriimejä” ei ole käytössä, tämän kä
   <string name="morphe_hide_stop_ads_button_title">Piilota Klippi-painike</string>
   <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
   <string name="morphe_hide_comments_button_title">Piilota Kommentit-painike</string>
+  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_connect_button_title">Piilota Yhdistä-painike</string>
   <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears on live streamed videos. -->
   <string name="morphe_hide_report_button_title">Piilota Kysy-painike</string>
@@ -494,6 +552,7 @@ Huomautus: Jos ”Väärennä videostriimejä” ei ole käytössä, tämän kä
   <string name="morphe_hide_shop_button_title">Piilota Kauppa-painike</string>
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_save_button_title">Automaattisten tekstitysten päälle / pois -painikke</string>
+  <string name="morphe_hide_more_button_title">Piilota Lisää-painike</string>
   <string name="morphe_fullscreen_buttons">Koko näytön painikkeet</string>
   <string name="morphe_hide_quick_actions_title">Piilota toimintopalkki</string>
   <string name="morphe_hide_quick_actions_ask_button_title">Piilota Käynnistä automaattinen käännös painike</string>
@@ -579,6 +638,7 @@ Saadaksesi asetukset, ota Asetukset-painike käyttöön kohdasta Yleiset → Ty�
   <string name="morphe_toolbar_screen_title">Työkalupalkki</string>
   <string name="morphe_toolbar_screen_summary">Valitse, mitkä komponentit näkyvät työkalupalkissa</string>
   <string name="morphe_hide_toolbar_cast_button_title">Piilota Cast-painike</string>
+  <string name="morphe_hide_toolbar_chat_button_title">Piilota chat-painike</string>
   <string name="morphe_hide_toolbar_create_button_title">Piilota Luo-painike</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Piilota Mikrofoni-painike</string>
   <string name="morphe_hide_toolbar_notification_button_title">Piilota Ilmoitukset-painike</string>
@@ -739,8 +799,11 @@ Asetukset → Toisto (tai Automaattinen toisto) → Toista seuraava video"</stri
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">Poista käytöstä pystysuuntainen ylöspäin pyyhkäisy ele</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Poista muotokuvasuuntaisen sivunäppäilyele</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Poista maisemakuvauksen sivunäppäilyele</string>
-  <!-- layout.player.fullscreen.openVideosFullscreen -->
-  <string name="morphe_open_videos_fullscreen_portrait_title">Avaa videot koko näytöllä pystyasennossa</string>
+  <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
+  <string name="morphe_open_videos_fullscreen_title">Avaa videot koko näytön tilassa</string>
+  <string name="morphe_open_videos_fullscreen_entry_1">Pois käytöstä</string>
+  <string name="morphe_open_videos_fullscreen_entry_2">Pysty</string>
+  <string name="morphe_open_videos_fullscreen_entry_3">Vaaka</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Soittimen peittokuvan läpinäkymättömyys</string>
   <string name="morphe_player_overlay_opacity_summary">Säädä läpinäkyvyys (0 on täysin läpinäkyvä, 100 on peittävä)</string>
@@ -767,7 +830,9 @@ Asetukset → Toisto (tai Automaattinen toisto) → Toista seuraava video"</stri
   <string name="morphe_ryd_estimated_like_summary">Näyttää arvioidun tykkäysmäärän videoissa, joissa luoja on poistanut tykkäykset käytöstä</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Näytä yhteysvirheilmoitukset</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Näyttää ilmoituksen, kun Return YouTube Dislike -palvelin ei ole käytettävissä</string>
-  <string name="morphe_ryd_attribution_summary">Tiedot ovat peräisin Return YouTube Disliken API:sta. Napauta tästä lukeaksesi lisää</string>
+  <string name="morphe_ryd_attribution_summary">"Tiedot tarjoaa Return YouTube Dislike API.
+
+Napauta tästä avataksesi ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Tämän laitteen ReturnYouTubeDislike API -tilastot</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API-vasteaika, keskiarvo</string>
@@ -1008,7 +1073,9 @@ Jos et lähetä korostusta, napauta Peruuta ja merkitse toinen sijainti"</string
   <string name="morphe_sb_color_opacity_label">Läpikuultamattomuus:</string>
   <string name="morphe_sb_color_dot_label">Väri:</string>
   <string name="morphe_sb_about_title">Tietoja</string>
-  <string name="morphe_sb_about_api_summary">Tiedot tarjoaa SponsorBlock API. Napauta tätä saadaksesi lisätietoja ja nähdäksesi lataukset muille alustoille</string>
+  <string name="morphe_sb_about_api_summary">"Tiedot tarjoaa SponsorBlock API.
+
+Napauta tästä avataksesi Sponsor.ajay.app ja nähdäksesi lataukset muille alustoille"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Laitteen asettelu</string>
   <string name="morphe_change_form_factor_entry_1">Oletus</string>
@@ -1017,20 +1084,23 @@ Jos et lähetä korostusta, napauta Peruuta ja merkitse toinen sijainti"</string
   <string name="morphe_change_form_factor_entry_4">Ajoneuvo</string>
   <string name="morphe_change_form_factor_user_dialog_message">"Muutokset sisältävät:
 
-Tablettiasettelun
-• Yhteisöpostit on piilotettu
-• Toiston asetusta syötteissä ei ole saatavilla
-• Remix-painiketta ja Äänen painiketta ei ole saatavilla Shorts-videossa
-• Videotoimintopalkki ei ole piilotettu
+Tablettinäkymä
+• Yhteisöjulkaisut on piilotettu
+• Toiston syötteissä -asetus ei ole käytettävissä
+• Remix-painike ja Ääni-painike eivät ole käytettävissä Shortseissa
+• Vanha videotoimintopalkki ei ole kokoonpainettu
 
-Automaattiasettelun
+Autonäyttö
 • Syöte on järjestetty aiheiden ja kanavien mukaan
-• Toiston asetusta syötteissä ei ole saatavilla
-• Remix-painiketta ja Äänen painiketta ei ole saatavilla Shorts-videossa
+• Toiston syötteissä -asetus ei ole käytettävissä
+• Remix-painike ja Ääni-painike eivät ole käytettävissä Shortseissa
 • Shorts-videot avautuvat tavallisessa soittimessa
-• Videotoimintopalkki ei ole piilotettu"</string>
+• Vanha videotoimintopalkki ei ole kokoonpainettu"</string>
   <string name="morphe_tablet_layout_in_player_title">Ota tablettiasettelun käyttöön soittimessa</string>
-  <string name="morphe_tablet_layout_in_player_summary">Palauttaa vanhan soittimen asettelun</string>
+  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+  <string name="morphe_tablet_layout_in_player_summary">"Palauttaa vanhan soittimen asettelun
+
+Rajoitukset: Jos \"Palauta vanha videon toimintopalkki\" on poissa käytöstä, \"Lisää videoita\" -peitto ei ehkä ole käytettävissä."</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Naamioi sovellusversio</string>
   <string name="morphe_spoof_app_version_summary">Huulet palvelimen luulemaan käyttäväsi vanhempaa sovellusversiota palauttaaksesi vanhat UI-ominaisuudet</string>
@@ -1156,7 +1226,7 @@ Rajoitus: Työkalupalkin takaisin-painikkeen käyttäminen ei välttämättä to
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow &amp; Alkuperäiset pikkukuvat</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow &amp; Still-kuvakaappaukset</string>
   <string name="morphe_alt_thumbnail_options_entry_4">Kuvakaappaukset</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow tarjoaa YouTube-videoille joukkoistettuja pikkukuvia. Nämä pikkukuvat ovat usein osuvampia kuin YouTuben tarjoamat pikkukuvat.
+  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow tarjoaa joukkoistettuja pikkukuvia YouTube-videoille. Nämä pikkukuvat ovat usein osuvampia kuin YouTuben tarjoamat pikkukuvat.
 
 Jos tämä on käytössä, videoiden URL-osoitteet lähetetään API-palvelimelle, mutta muita tietoja ei lähetetä. Jos videolla ei ole DeArrow- pikkukuvia, näytetään alkuperäisiä pikkukuvia tai kuvakaappauksia.
 
@@ -1288,4 +1358,9 @@ AV1-videon toisto saattaa pätkiä."</string>
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Pakota alkuperäinen ääni ei ole käytettävissä</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Pelaajan JavaScript-versio</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Näytä peittämiset Stats for nerdseissä</string>
+  <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <string name="morphe_restore_old_video_action_bar_title">Palauta vanha videotoimintopalkki</string>
+  <string name="morphe_restore_old_video_action_bar_summary">"Korjaa tyytymättömyysnäyttöjen ongelma ja estää videotoimintopainikkeiden piilottamisen
+
+Ominaisuudet: Palaa vanhaan 'Lisää videoita' -peittoon"</string>
 </resources>

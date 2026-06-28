@@ -20,7 +20,7 @@ public class MusicSearchResultsAdapter extends BaseSearchResultsAdapter {
         super(context, items, fragment, searchViewController);
     }
 
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings({"deprecation", "RedundantSuppression"})
     @Override
     protected PreferenceScreen getMainPreferenceScreen() {
         return fragment.getPreferenceScreenForSearch();

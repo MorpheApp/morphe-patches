@@ -10,7 +10,6 @@ import app.morphe.extension.shared.settings.search.BaseSearchResultItem;
 import app.morphe.extension.shared.settings.search.BaseSearchResultsAdapter;
 import app.morphe.extension.shared.settings.search.BaseSearchViewController;
 import app.morphe.extension.youtube.settings.preference.YouTubePreferenceFragment;
-import app.morphe.extension.youtube.sponsorblock.ui.SponsorBlockPreferenceGroup;
 
 /**
  * YouTube-specific search view controller implementation.
@@ -34,20 +33,11 @@ public class YouTubeSearchViewController extends BaseSearchViewController {
 
     @Override
     protected boolean isSpecialPreferenceGroup(Preference preference) {
-        return preference instanceof SponsorBlockPreferenceGroup;
+        return false;
     }
 
     @Override
     protected void setupSpecialPreferenceListeners(BaseSearchResultItem item) {
-    }
-
-    // Static method for Activity finish.
-    public static boolean handleFinish(YouTubeSearchViewController searchViewController) {
-        if (searchViewController != null && searchViewController.isSearchActive()) {
-            searchViewController.closeSearch();
-            return true;
-        }
-        return false;
     }
 
     // Adapter to wrap YouTubePreferenceFragment to BasePreferenceFragment interface.

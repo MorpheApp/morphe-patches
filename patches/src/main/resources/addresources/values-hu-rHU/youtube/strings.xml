@@ -234,6 +234,7 @@ A változások a következőket tartalmazzák:
   <string name="morphe_hide_keyword_content_home_title">Főoldali videók elrejtése kulcsszavak alapján</string>
   <string name="morphe_hide_keyword_content_search_title">Keresési találatok elrejtése kulcsszavak alapján</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Feliratkozások videóinak elrejtése kulcsszavak alapján</string>
+  <string name="morphe_hide_keyword_content_comments_title">Kulcsszavak szerinti megjegyzések elrejtése</string>
   <string name="morphe_hide_keyword_content_phrases_title">Elrejtendő kulcsszavak</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
@@ -243,12 +244,12 @@ Kulcsszavak lehetnek csatorna nevek vagy a videó címekben megjelenő szövegek
 
 A közepén nagybetűvel kezdődő szavakat pontosan úgy kell megadni, ahogy írva vannak (pl.: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">Tudnivalók a kulcsszószűrőről</string>
-  <string name="morphe_hide_keyword_content_about_summary">"​A Főoldal, a Feliratkozások és a keresési találatok szűrve vannak a kulcsszavas kifejezésekkel egyező tartalmak elrejtéséhez
+  <string name="morphe_hide_keyword_content_about_summary">"A Főoldal, a Feliratkozások, a Keresés és a megjegyzések szűrése kulcsszavas kifejezésekkel egyező tartalmak elrejtéséhez
 
-Korlátok:
-• A Shorts-videók elrejtése csatornanév alapján nem működik.
+Korlátozások:
+• A Shorts-videók nem rejthetők el csatornanév alapján.
 • Egyes felületi elemek láthatóak maradhatnak.
-• Egy-egy kulcsszó keresésekor előfordulhat, hogy nincs találat."</string>
+• Egy kulcsszó keresésekor előfordulhat, hogy nincs találat."</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Teljes szavas egyezés</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Kulcsszavak vagy kifejezések idézőjelbe tételével elkerülhetők a részleges egyezések a videócímeknél és csatornaneveknél&lt;br&gt;&lt;br&gt; Például,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; el fogja rejteni ezt a videót: &lt;b&gt;Hogyan működik az AI?&lt;/b&gt;&lt;br&gt;de nem fogja elrejteni ezt: &lt;b&gt;Mit jelent a méltányos használat?&lt;/b&gt;</string>
@@ -305,6 +306,59 @@ Korlátok:
 
 Ellenőrizze, hogy a csomagnév helyes-e, és az alkalmazás telepítve van-e."</string>
   <string name="morphe_external_downloader_empty_warning">A csomagnév nem lehet üres</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">Hangfelirat hangos felolvasása</string>
+  <string name="morphe_vot_screen_summary">Olvassa fel a videó feliratait hangosan a készüléken található szöveg-beszéddé alakító segítségével, szinkronban a lejátszással.</string>
+  <string name="morphe_vot_enabled_title">Hangfelirat hangos felolvasása</string>
+  <string name="morphe_vot_caption_language_title">Nyelv</string>
+  <string name="morphe_vot_translation_service_title">Fordítási szolgáltató</string>
+  <string name="morphe_vot_original_audio_volume_title">Az eredeti hang hangereje</string>
+  <string name="morphe_vot_original_audio_volume_summary">Az eredeti YouTube hang hangereje a fordítás közben</string>
+  <string name="morphe_vot_translation_volume_title">A fordítás hangereje</string>
+  <string name="morphe_vot_translation_volume_summary">A szinkronizált fordítás hangjának hangereje</string>
+  <string name="morphe_vot_max_speech_rate_title">Maximális beszédsebesség</string>
+  <string name="morphe_vot_max_speech_rate_summary">A maximális sebesség szorzója, amikor a beszédet egy felirat helyére illesztjük</string>
+  <string name="morphe_vot_mymemory_info_summary">"Ingyenes fordítási API, API kulcsra nincs szükség. Naponta akár 5000 karakter a díjmentes verzióban, vagy akár 50000 karakter e-mail címmel. 
+
+Érintse meg ide a MyMemory.translated.net megnyitásához"</string>
+  <string name="morphe_vot_mymemory_email_title">MyMemory e-mail cím</string>
+  <string name="morphe_vot_mymemory_email_summary">Nem kötelező. Adja meg MyMemory e-mail címét a napi korlát 5000-ről 50000 karakterre növeléséhez. Hagyja üresen az anonim korlát használatához</string>
+  <string name="morphe_vot_openrouter_info_summary">"Fizetős AI fordítás az OpenRouteren keresztül. Töltsön fel egyszer, és fordítson több ezer videót. A Mistral Nemo a legolcsóbb opció, a Gemma 4 a legjobb minőséget kínálja.
+
+Érintse meg ide az OpenRouter.ai megnyitásához"</string>
+  <string name="morphe_vot_openrouter_api_key_title">OpenRouter API kulcs</string>
+  <string name="morphe_vot_openrouter_api_key_summary">Az OpenRouter API kulcsa. Hozzon létre egy kulcsot az OpenRouter.ai oldalon a Workspace > API Keys területen</string>
+  <string name="morphe_vot_openrouter_model_title">OpenRouter modell</string>
+  <string name="morphe_vot_openrouter_model_custom">Egyedi</string>
+  <string name="morphe_vot_openrouter_not_configured_title">Az OpenRouter nincs konfigurálva</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Adja meg az OpenRouter API kulcsát a beállításokban, mielőtt kiválasztja ezt a szolgáltatót</string>
+  <string name="morphe_vot_cost_free">Ingyenes</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s dollár 100 videóóra esetén</string>
+  <string name="morphe_vot_tts_voice_type">Hang</string>
+  <string name="morphe_vot_tts_system">Rendszer</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Többnyelvű férfi</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Többnyelvű női</string>
+  <string name="morphe_vot_voice_gender_male">Férfi</string>
+  <string name="morphe_vot_voice_gender_female">Női</string>
+  <string name="morphe_vot_tts_sample">Változás van! </string>
+  <string name="morphe_vot_http_error_title">A fordítás nem elérhető</string>
+  <string name="morphe_vot_http_error_message">"A fordításszolgáltatás HTTP hibát (%s) adott vissza. Az IP-címe valószínűleg korlátozva lett legfeljebb 24 órára.
+
+A fordítások folytatásához váltson másik fordításszolgáltatót a beállításokban, vagy használjon VPN-t"</string>
+  <string name="morphe_vot_do_not_show_again">Ne jelenjen meg többet</string>
+  <string name="morphe_vot_export_api_key_warning">"A beállításaid tartalmaznak egy OpenRouter API kulcsot.
+
+A API kulcsodat soha nem szabad megosztani. Bárki, akinek hozzáférése van hozzá, felhasználhatja az OpenRouter jóváírásaidat"</string>
+  <string name="morphe_vot_openrouter_credits_title">Az OpenRouter jóváírásának limite elérése</string>
+  <string name="morphe_vot_openrouter_credits_message">Az OpenRouter jóváírásának limite elérése. Töltse fel egyenlegét vagy növelje a kulcs költési limitjét az OpenRouter.ai oldalon</string>
+  <string name="morphe_vot_openrouter_open_website">Nyissa meg az OpenRouter.ai oldalt</string>
+  <string name="morphe_vot_openrouter_error">Az OpenRouter fordítása sikertelen (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">A MyMemory napi limite elérése</string>
+  <string name="morphe_vot_mymemory_quota_next_available">A következő elérhetőség: %s</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Kimerítette a mai ingyenes MyMemory fordítási kvótát (5000 karakter). Adjon meg egy MyMemory e-mail címet a beállításokban a napi korlát 50000 karakterre emeléséhez, vagy váltson másik fordításszolgáltatót</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Kimerítette a mai MyMemory fordítási kvótát (50000 karakter). Váltson másik fordításszolgáltatót, vagy próbálkozzon holnap</string>
+  <string name="morphe_vot_mymemory_error">A MyMemory fordítása sikertelen (állapot %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Hurokismétlés engedélyezése</string>
   <string name="morphe_do_not_remember_loop_video_title">Ne emlékszik a loop videóra</string>
@@ -355,6 +409,8 @@ Figyelem: Lehet, hogy az élő közvetítéseknél nem működik"</string>
   <string name="morphe_queue_restore_summary">A sor az alkalmazás újraindítása után is megőrizhető</string>
   <string name="morphe_swap_save_and_queue_actions_title">Csere a Mentés és a Sorba rendezés műveletekhez</string>
   <string name="morphe_swap_save_and_queue_actions_summary">Érintse meg a sorba rendezési lehetőségekért, vagy tartsa lenyomva a későbbi megtekintéshez való mentéshez</string>
+  <string name="morphe_queue_override_flyout_menu_title">A Morphe sor felülbírálása a lejálistában</string>
+  <string name="morphe_queue_override_flyout_menu_summary">A Morphe sorbanálítást nyit meg a YouTube sor helyett.</string>
   <string name="morphe_queue_manager_check_failed_auth">Nem jelentkezett be</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">Nincs lejálistázás azonosító</string>
   <string name="morphe_queue_manager_check_failed_queue">A sor üres</string>
@@ -470,6 +526,8 @@ Megjegyzés: Ha a „Videófolyamok hamisítása” nincs engedélyezve, akkor e
   <string name="morphe_hide_stop_ads_button_title">„Hirdetések leállítása” gomb elrejtése</string>
   <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
   <string name="morphe_hide_comments_button_title">Hozzászólások gomb elrejtése</string>
+  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_connect_button_title">Rejtse el a Csatlakozás gombot</string>
   <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears on live streamed videos. -->
   <string name="morphe_hide_report_button_title">Jelentés gomb elrejtése</string>
@@ -494,6 +552,7 @@ Megjegyzés: Ha a „Videófolyamok hamisítása” nincs engedélyezve, akkor e
   <string name="morphe_hide_shop_button_title">Shop gomb elrejtése</string>
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_save_button_title">Mentés gomb elrejtése</string>
+  <string name="morphe_hide_more_button_title">Rejtse el a Továbbiak gombot</string>
   <string name="morphe_fullscreen_buttons">Teljes képernyős gombok</string>
   <string name="morphe_hide_quick_actions_title">A műveletsáv elrejtése</string>
   <string name="morphe_hide_quick_actions_ask_button_title">Kérdés gomb elrejtése</string>
@@ -579,6 +638,7 @@ A Beállítások eléréséhez engedje a Beállítások gombot a Általános →
   <string name="morphe_toolbar_screen_title">Eszközevek sorozata</string>
   <string name="morphe_toolbar_screen_summary">Válassza ki, mely komponensek jelenjenek meg az eszköztáron</string>
   <string name="morphe_hide_toolbar_cast_button_title">Átküldés gomb elrejtése</string>
+  <string name="morphe_hide_toolbar_chat_button_title">Csevegés gomb elrejtése</string>
   <string name="morphe_hide_toolbar_create_button_title">Létrehozás gomb elrejtése</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Mikrofon gomb elrejtése</string>
   <string name="morphe_hide_toolbar_notification_button_title">Értesítések gomb elrejtése</string>
@@ -739,8 +799,11 @@ Beállítások → Lejátszás (vagy Automatikus lejátszás) → Következő vi
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">A teljes képernyős felhúzásos gesztus letiltása</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Portré gesztus letiltása – lefelé húzás</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Tájkép gesztus letiltása – lefelé húzás</string>
-  <!-- layout.player.fullscreen.openVideosFullscreen -->
-  <string name="morphe_open_videos_fullscreen_portrait_title">Nyissa meg a videókat teljes képernyős portréban</string>
+  <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
+  <string name="morphe_open_videos_fullscreen_title">Videók megnyitása teljes képernyős módban</string>
+  <string name="morphe_open_videos_fullscreen_entry_1">Kikapcsolva</string>
+  <string name="morphe_open_videos_fullscreen_entry_2">Portré</string>
+  <string name="morphe_open_videos_fullscreen_entry_3">Tájkép</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Lejátszó fedőrétegének átlátszatlansága</string>
   <string name="morphe_player_overlay_opacity_summary">Állítsa be az átlátszó szintet (0 átlátszó, 100 opák)</string>
@@ -767,7 +830,9 @@ Beállítások → Lejátszás (vagy Automatikus lejátszás) → Következő vi
   <string name="morphe_ryd_estimated_like_summary">Megmutatja a becsült lájkok számát azon videókon, ahol a készítő letiltotta a lájkokat</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Kapcsolati hibaüzenetek megjelenítése</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Értesítést jelenít meg, ha a Return YouTube Dislike szerver nem érhető el</string>
-  <string name="morphe_ryd_attribution_summary">Az adatokat a Return YouTube Dislike API biztosítja. További információért koppintson ide</string>
+  <string name="morphe_ryd_attribution_summary">"Az adatokat a Return YouTube Dislike API biztosítja.
+
+Érintse meg ide a ReturnYouTubeDislike.com megnyitásához"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">ReturnYouTubeDislike API statisztika az eszközön</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API válaszidő, átlagos</string>
@@ -1008,29 +1073,34 @@ Ha nem szeretne kiemelést küldeni, nyomja meg a Mégse gombot, és jelölje me
   <string name="morphe_sb_color_opacity_label">Áttetszőség:</string>
   <string name="morphe_sb_color_dot_label">Szín:</string>
   <string name="morphe_sb_about_title">Rólunk</string>
-  <string name="morphe_sb_about_api_summary">Az adatokat a SponsorBlock API biztosítja. Koppintson ide, ha többet szeretne megtudni és megtekintené a letöltéseket más platformokra</string>
+  <string name="morphe_sb_about_api_summary">"Az adatokat a SponsorBlock API biztosítja.
+
+Érintse meg ide a Sponsor.ajay.app megnyitásához, és tekintse meg a letöltéseket más platformokra"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Eszköz elrendezés</string>
   <string name="morphe_change_form_factor_entry_1">Alapértelmezett</string>
   <string name="morphe_change_form_factor_entry_2">Telefon</string>
   <string name="morphe_change_form_factor_entry_3">Táblagép</string>
   <string name="morphe_change_form_factor_entry_4">Autóipari</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"A módosítások a következők:
+  <string name="morphe_change_form_factor_user_dialog_message">"A változtatások a következők:
 
 Táblagépes elrendezés
-• A közösségi bejegyzések el vannak rejtve
-• A feed-ben történő lejátszás beállítás nem érhető el
-• A Remix gomb és a Hang gomb nem érhető el a Shortsban
-• A videó műveleti sáv nem omlik össze
+• A közösségi bejegyzések rejtve vannak
+• A hírcsatornában történő lejátszás beállítás nem érhető el
+• A Keverés gomb és a Hang gomb nem érhető el a Shortoknál
+• A régi videósáv nem összecsukott formában jelenik meg
 
-Autóelrendezés
-• A feed témák és csatornák szerint van szervezve
-• A feed-ben történő lejátszás beállítás nem érhető el
-• A Remix gomb és a Hang gomb nem érhető el a Shortsban
-• A Shorts a hagyományos lejátszóban nyílnak meg
-• A videó műveleti sáv nem omlik össze"</string>
+Autós elrendezés
+• A hírcsatorna témák és csatornák szerint van rendezve
+• A hírcsatornában történő lejátszás beállítás nem érhető el
+• A Keverés gomb és a Hang gomb nem érhető el a Shortoknál
+• A Shortok a szokásos lejátszóban nyílnak meg
+• A régi videósáv nem összecsukott formában jelenik meg"</string>
   <string name="morphe_tablet_layout_in_player_title">Tablet elrendezés engedélyezése a lejátszóban</string>
-  <string name="morphe_tablet_layout_in_player_summary">Visszaállítja a régi lejátszó elrendezést</string>
+  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+  <string name="morphe_tablet_layout_in_player_summary">"Visszaállítja a régi lejátszó elrendezést
+
+Korlátozások: Ha a \"Régi videósáv helyreállítása\" ki van kapcsolva, a \"További videók\" felülbélyegzés nem jelenhet meg."</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Alkalmazásverzió hamisítása</string>
   <string name="morphe_spoof_app_version_summary">A szervert becsapja, hogy úgy gondolja, egy régebbi alkalmazásverziót használ a korábbi UI funkciók helyreállításához</string>
@@ -1286,4 +1356,9 @@ Az AV1-es videólejátszás akadozhat vagy képkockákat ejthet."</string>
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Eredeti hang kényszerítése nem érhető el</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Lejátszó JavaScript változata</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Megmutatja a hamisítást a Statisztikákban</string>
+  <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <string name="morphe_restore_old_video_action_bar_title">Régi videós eszköztár visszaállítása</string>
+  <string name="morphe_restore_old_video_action_bar_summary">"Javítja a negatív értékelések megjelenítésének problémáját és lehetővé teszi a videós gombok elrejtését.
+
+Korlátozások: Visszatér a régi stílusú \"További videók\" átfedéshez."</string>
 </resources>

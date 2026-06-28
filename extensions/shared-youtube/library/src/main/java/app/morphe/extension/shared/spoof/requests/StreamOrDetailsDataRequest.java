@@ -160,7 +160,8 @@ public class StreamOrDetailsDataRequest {
                                        String videoId, Map<String, String> playerHeaders) {
         this.videoId = videoId;
         // Strictly require playerHeaders only if endpoint is null (only for Stream fetching)
-        if (endpoint == null) {
+        // or equals to the one used by the Save Video To Watch Later button.
+        if (endpoint == null || endpoint == PlayerRoutes.SEND_SAVE_VIDEO_TO_WATCH_LATER) {
             Objects.requireNonNull(playerHeaders);
         }
         this.future = submitOnBackgroundThread(() -> fetch(endpoint, videoId, playerHeaders));

@@ -6,10 +6,8 @@ option optimize_for = LITE_RUNTIME;
 option java_package = "app.morphe.extension.shared.innertube";
 
 message PlayerResponse {
-    oneof data {
-      PlayabilityStatus playability_status = 2;
-      StreamingData streaming_data = 4;
-    }
+  PlayabilityStatus playability_status = 2;
+  optional StreamingData streaming_data = 4;
 }
 
 message PlayabilityStatus {

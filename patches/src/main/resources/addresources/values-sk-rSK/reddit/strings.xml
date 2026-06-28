@@ -37,12 +37,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">Vypne upozornenie, ktoré sa zobrazí pri vytváraní snímky obrazovky</string>
   <string name="morphe_hide_ask_button_title">Skryť tlačidlo \'Opýtať sa\'</string>
   <string name="morphe_hide_ask_button_summary">Skryje tlačidlo \'Opýtať sa\' v vyhľadávacom paneli</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">Skryť ponuku s odporúčanými komunitami</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">Skryje ponuky odporúčaných komunít v subredditoch</string>
-  <string name="morphe_hide_trending_today_shelf_title">Skryť ponuku \'Trending Today\'</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"Skryje ponuku 'Trending Today' z návrhov vyhľadávania
-
-Obmedzenie: Môžu sa zobrazovať vizuálne medzery"</string>
+  <string name="morphe_hide_communities_shelf_title">Skryť poličku komunít</string>
+  <string name="morphe_hide_communities_shelf_summary">Skryje poličku súvisiacich alebo navrhovaných komunít v subredditoch</string>
+  <string name="morphe_hide_trending_shelves_title">Skryť populárne police</string>
+  <string name="morphe_hide_trending_shelves_summary">Skryje Trending police z kanála a návrhov na vyhľadávanie</string>
   <string name="morphe_remove_notification_dialog_title">Skryť návrh notifikácií</string>
   <string name="morphe_remove_notification_dialog_summary">Automaticky zatvorí dialógové okno s návrhom notifikácie pri návšteve subredditu</string>
   <string name="morphe_show_view_count_title">Zobrazovať počet zhliadnutí na príspevkoch</string>

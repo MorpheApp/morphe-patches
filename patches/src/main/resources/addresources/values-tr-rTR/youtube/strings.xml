@@ -234,6 +234,7 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_keyword_content_home_title">Ana sayfadaki videoları anahtar kelimelerle gizle</string>
   <string name="morphe_hide_keyword_content_search_title">Arama sonuçlarını anahtar kelimelerle gizle</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Aboneliklerdeki videoları anahtar kelimelerle gizle</string>
+  <string name="morphe_hide_keyword_content_comments_title">Yorumları anahtar kelimelerle gizle</string>
   <string name="morphe_hide_keyword_content_phrases_title">Gizlenecek anahtar kelimeler</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
@@ -243,12 +244,12 @@ Anahtar kelimeler, video başlıklarında veya kanal adlarında görünen herhan
 
 Ortasında büyük harf bulunan kelimeler tam olarak eşleşmelidir (örneğin: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">Anahtar kelimeyle filtreleme hakkında</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Ana Sayfa/Abonelikler/Arama sonuçları, anahtar kelime ifadeleriyle eşleşen içeriği gizlemek için filtrelenir
+  <string name="morphe_hide_keyword_content_about_summary">"Ana Sayfa / Abonelikler / Arama / Yorumlar anahtar kelime öbekleriyle eşleşen içeriği gizlemek için filtrelenir
 
-Sınırlamalar
-• Shorts, kanal adı ile gizlenemez
-• Bazı kullanıcı arayüzü bileşenleri gizlenemeyebilir
-• Bir anahtar kelime aranması sonuç göstermeyebilir"</string>
+Sınırlamalar:
+• Shorts, kanal adına göre gizlenemez
+• Bazı arayüz bileşenleri gizlenemeyebilir
+• Bir anahtar kelime araması sonuç göstermeyebilir"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Tam kelimeleri eşleştir</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Bir anahtar kelimeyi veya ifadeyi tırnak işareti içine almak, video başlıkları ve kanal adlarının kısmi eşleşmelerini önleyecektir&lt;br&gt;&lt;br&gt;Örneğin,&lt;br&gt;&lt;b&gt;\"ağustos\"&lt;/b&gt;, &lt;b&gt;Ağustos ayında kardan adam yapmak!&lt;/b&gt; başlıklı videoyu gizleyecektir&lt;br&gt;ancak &lt;b&gt;Ağustosböcekleri hakkında bilgiler&lt;/b&gt; başlıklı videoyu gizlemeyecektir</string>
@@ -305,6 +306,59 @@ Sınırlamalar
 
 Paket adının doğru olduğunu ve uygulamanın yüklü olduğunu doğrulayın"</string>
   <string name="morphe_external_downloader_empty_warning">Paket adı boş olamaz</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">Seslendirme çevirisi</string>
+  <string name="morphe_vot_screen_summary">Cihaz üzerindeki metin-konuşma özelliğini kullanarak video altyazılarını oynatmayla senkronize bir şekilde yüksek sesle okuyun.</string>
+  <string name="morphe_vot_enabled_title">Seslendirme çevirisi</string>
+  <string name="morphe_vot_caption_language_title">Dil</string>
+  <string name="morphe_vot_translation_service_title">Çeviri sağlayıcısı</string>
+  <string name="morphe_vot_original_audio_volume_title">Orijinal ses seviyesi</string>
+  <string name="morphe_vot_original_audio_volume_summary">Çeviri konuşurken orijinal YouTube sesi seviyesi</string>
+  <string name="morphe_vot_translation_volume_title">Çeviri ses seviyesi</string>
+  <string name="morphe_vot_translation_volume_summary">Dublaj yapılan çeviri sesinin seviyesi</string>
+  <string name="morphe_vot_max_speech_rate_title">Maksimum konuşma hızı</string>
+  <string name="morphe_vot_max_speech_rate_summary">Konuşmayı bir altyazı alanına sığdırırken maksimum hız çarpanı</string>
+  <string name="morphe_vot_mymemory_info_summary">"Ücretsiz çeviri API'si, API anahtarı gerekmez. Ücretsiz sürümde günde 5.000 karaktere veya bir e-posta adresiyle günde 50.000 karaktere kadar. 
+
+MyMemory.translated.net'i açmak için buraya dokunun"</string>
+  <string name="morphe_vot_mymemory_email_title">MyMemory e-postası</string>
+  <string name="morphe_vot_mymemory_email_summary">İsteğe bağlı. Günlük limiti 5.000\'den 50.000 karaktere çıkarmak için MyMemory e-posta adresinizi girin. Anonim limiti kullanmak için boş bırakın</string>
+  <string name="morphe_vot_openrouter_info_summary">"OpenRouter üzerinden ücretli yapay zeka çevirisi. Bir kez para yatırın ve binlerce videoyu çevirin. Mistral Nemo en ucuz seçenek, Gemma 4 en yüksek kaliteyi sunar.
+
+OpenRouter.ai'yi açmak için buraya dokunun"</string>
+  <string name="morphe_vot_openrouter_api_key_title">OpenRouter API anahtarı</string>
+  <string name="morphe_vot_openrouter_api_key_summary">OpenRouter API anahtarınız. OpenRouter.ai > Çalışma Alanı > API Anahtarları\'nda bir anahtar oluşturun</string>
+  <string name="morphe_vot_openrouter_model_title">OpenRouter Modeli</string>
+  <string name="morphe_vot_openrouter_model_custom">Özel</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter yapılandırılmadı</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Bu sağlayıcıyı seçmeden önce ayarlarınızda OpenRouter API anahtarınızı girin</string>
+  <string name="morphe_vot_cost_free">Ücretsiz</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s video saati başına</string>
+  <string name="morphe_vot_tts_voice_type">Ses</string>
+  <string name="morphe_vot_tts_system">Sistem</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Çok dilli erkek</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Çok dilli kadın</string>
+  <string name="morphe_vot_voice_gender_male">Erkek</string>
+  <string name="morphe_vot_voice_gender_female">Kadın</string>
+  <string name="morphe_vot_tts_sample">Dönüşüm zamanı!</string>
+  <string name="morphe_vot_http_error_title">Çeviri kullanılamıyor</string>
+  <string name="morphe_vot_http_error_message">"Çeviri hizmeti HTTP hatası %s döndürdü. IP adresiniz muhtemelen 24 saate kadar oran sınırlandırıldı.
+
+Çevirileri kullanmaya devam etmek için ayarlarınızda farklı bir çeviri sağlayıcısı seçin veya bir VPN kullanın"</string>
+  <string name="morphe_vot_do_not_show_again">Bir daha gösterme</string>
+  <string name="morphe_vot_export_api_key_warning">"Ayarlarınızda bir OpenRouter API anahtarı var.
+
+API anahtarınız asla paylaşılmamalıdır. Ona erişimi olan herkes OpenRouter kredilerinizi kullanabilir"</string>
+  <string name="morphe_vot_openrouter_credits_title">OpenRouter kredi limiti aşıldı</string>
+  <string name="morphe_vot_openrouter_credits_message">OpenRouter kredi limitiniz aşıldı. Bakiyenizi artırın veya OpenRouter.ai adresinde anahtar harcama limitinizi artırın</string>
+  <string name="morphe_vot_openrouter_open_website">OpenRouter.ai\'yi aç</string>
+  <string name="morphe_vot_openrouter_error">OpenRouter çevirisi başarısız oldu (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">MyMemory günlük limiti aşıldı</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Sonraki kullanıma %s tarihinde izin verilecek.</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Bugünün ücretsiz MyMemory çeviri kotasını (5.000 karakter) kullandınız. Günlük limiti 50.000 karaktere çıkarmak için ayarlarınızda bir MyMemory e-postası ekleyin veya farklı bir çeviri hizmetine geçin</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Bugünün MyMemory çeviri kotasını (50.000 karakter) kullandınız. Farklı bir çeviri hizmetine geçin veya yarın tekrar deneyin</string>
+  <string name="morphe_vot_mymemory_error">MyMemory çevirisi başarısız oldu (durum %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Videoyu döngüye almayı etkinleştir</string>
   <string name="morphe_do_not_remember_loop_video_title">Döngü videosunu hatırlama</string>
@@ -355,6 +409,8 @@ Bilgi: Canlı yayınlarda çalışmayabilir"</string>
   <string name="morphe_queue_restore_summary">Uygulama yeniden başlatıldığında sıra korunur</string>
   <string name="morphe_swap_save_and_queue_actions_title">Kaydet ve Sıra eylemlerini değiştir</string>
   <string name="morphe_swap_save_and_queue_actions_summary">Sıra seçenekleri için dokunun, daha sonra izle\'ye kaydetmek için dokunup basılı tutun</string>
+  <string name="morphe_queue_override_flyout_menu_title">Yem yayın açılır menüsü kuyruk düğmesini geçersiz kıl</string>
+  <string name="morphe_queue_override_flyout_menu_summary">Morphe kuyruğunu, YouTube kuyruğu yerine açar</string>
   <string name="morphe_queue_manager_check_failed_auth">Giriş yapılmadı</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">Oynatma listesi kimliği yok</string>
   <string name="morphe_queue_manager_check_failed_queue">Sıra boş</string>
@@ -415,7 +471,7 @@ Not: 'Video akışlarını taklit et' etkin değilse, bu özelliği etkinleştir
   <string name="morphe_swipe_press_to_engage_summary">Kaydırma hareketinin algılanması için önce basılı tutulması gerekir</string>
   <string name="morphe_swipe_haptic_feedback_title">Titreşimli geri bildirimi etkinleştir</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Parlaklığı kaydet ve geri yükle</string>
-  <string name="morphe_swipe_save_and_restore_brightness_summary">Tam ekran moduna girerken/çıkarken parlaklık seviyesini hatırlar</string>
+  <string name="morphe_swipe_save_and_restore_brightness_summary">Tam ekran moduna girerken / çıkarken parlaklık seviyesini hatırlar</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Otomatik parlaklık hareketini etkinleştir</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_summary">Parlaklığı en düşük değere kaydırmak sistem otomatik parlaklığını etkinleştirir</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_overlay_text">Oto</string>
@@ -470,6 +526,8 @@ Not: 'Video akışlarını taklit et' etkin değilse, bu özelliği etkinleştir
   <string name="morphe_hide_stop_ads_button_title">\'Reklamları durdur\' düğmesini gizle</string>
   <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
   <string name="morphe_hide_comments_button_title">Yorumlar düğmesini gizle</string>
+  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_connect_button_title">Bağlan düğmesini gizle</string>
   <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears on live streamed videos. -->
   <string name="morphe_hide_report_button_title">Bildir düğmesini gizle</string>
@@ -494,6 +552,7 @@ Not: 'Video akışlarını taklit et' etkin değilse, bu özelliği etkinleştir
   <string name="morphe_hide_shop_button_title">Alışveriş düğmesini gizle</string>
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_save_button_title">Kaydet düğmesini gizle</string>
+  <string name="morphe_hide_more_button_title">Daha fazla düğmesini gizle</string>
   <string name="morphe_fullscreen_buttons">Tam ekran düğmeleri</string>
   <string name="morphe_hide_quick_actions_title">Eylem çubuğunu gizle</string>
   <string name="morphe_hide_quick_actions_ask_button_title">Soru düğmesini gizle</string>
@@ -579,6 +638,7 @@ Ayarlara erişmek için, Genel → Araç Çubuğu → Ayarları Göster yoluyla 
   <string name="morphe_toolbar_screen_title">Araç Çubuğu</string>
   <string name="morphe_toolbar_screen_summary">Araç çubuğunda hangi bileşenlerin görüneceğini seçin</string>
   <string name="morphe_hide_toolbar_cast_button_title">Yayınla düğmesini gizle</string>
+  <string name="morphe_hide_toolbar_chat_button_title">Sohbet düğmesini gizle</string>
   <string name="morphe_hide_toolbar_create_button_title">Oluştur düğmesini gizle</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Mikrofon düğmesini gizle</string>
   <string name="morphe_hide_toolbar_notification_button_title">Bildirimler düğmesini gizle</string>
@@ -739,8 +799,11 @@ Ayarlar → Oynatma (veya Otomatik Oynatma) → Sonraki videoyu otomatik oynat"<
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">Dikey modda yukarı kaydırma hareketini devre dışı bırak</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Dikey modda aşağı kaydırma hareketini devre dışı bırak</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Yatay modda aşağı kaydırma hareketini devre dışı bırak</string>
-  <!-- layout.player.fullscreen.openVideosFullscreen -->
-  <string name="morphe_open_videos_fullscreen_portrait_title">Videoları tam ekran dikey modda aç</string>
+  <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
+  <string name="morphe_open_videos_fullscreen_title">Videoları tam ekran modunda aç</string>
+  <string name="morphe_open_videos_fullscreen_entry_1">Devre dışı</string>
+  <string name="morphe_open_videos_fullscreen_entry_2">Dikey</string>
+  <string name="morphe_open_videos_fullscreen_entry_3">Yatay</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Oynatıcı katmanı opaklığı</string>
   <string name="morphe_player_overlay_opacity_summary">Şeffaflık düzeyini ayarlayın (0 şeffaf, 100 opak)</string>
@@ -767,7 +830,9 @@ Ayarlar → Oynatma (veya Otomatik Oynatma) → Sonraki videoyu otomatik oynat"<
   <string name="morphe_ryd_estimated_like_summary">Oluşturucunun beğenileri devre dışı bıraktığı videolarda tahmini beğeni sayısını gösterir</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Bağlantı hatası uyarılarını göster</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Return YouTube Dislike sunucusu kullanılamadığında bir bildirim gösterir</string>
-  <string name="morphe_ryd_attribution_summary">Veri, Return YouTube Dislike API\'sinden sağlanır. Daha fazla bilgi için dokunun</string>
+  <string name="morphe_ryd_attribution_summary">"Veriler, Return YouTube Dislike API tarafından sağlanır.
+
+ReturnYouTubeDislike.com'u açmak için buraya dokunun"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Bu cihazın ReturnYouTubeDislike API istatistikleri</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Ortalama API yanıt süresi</string>
@@ -858,7 +923,7 @@ Ayarlar → Oynatma (veya Otomatik Oynatma) → Sonraki videoyu otomatik oynat"<
   <string name="morphe_sb_api_url_reset">API URL\'si sıfırlandı</string>
   <string name="morphe_sb_api_url_invalid">API URL\'si geçersiz</string>
   <string name="morphe_sb_api_url_changed">API URL\'si değiştirildi</string>
-  <string name="morphe_sb_settings_ie">Ayarları içe/dışa aktar</string>
+  <string name="morphe_sb_settings_ie">Ayarları içe / dışa aktar</string>
   <string name="morphe_sb_settings_copy">Kopyala</string>
   <string name="morphe_sb_settings_ie_summary">Morphe\'e ve diğer SponsorBlock platformlarına aktarılabilecek SponsorBlock JSON yapılandırmanız</string>
   <string name="morphe_sb_settings_ie_summary_warning">"Morphe ve diğer SponsorBlock platformlarına aktarılabilecek SponsorBlock JSON yapılandırmanız
@@ -1009,7 +1074,9 @@ Bir vurgu göndermiyorsanız, İptal'e dokunun ve ikinci konumu işaretleyin"</s
   <string name="morphe_sb_color_opacity_label">Opaklık:</string>
   <string name="morphe_sb_color_dot_label">Renk:</string>
   <string name="morphe_sb_about_title">Hakkında</string>
-  <string name="morphe_sb_about_api_summary">Veri, SponsorBlock API\'sinden sağlanır. Daha fazla bilgi ve diğer platformlar için indirmeleri görmek için dokunun</string>
+  <string name="morphe_sb_about_api_summary">"Veriler, SponsorBlock API tarafından sağlanır.
+
+Daha fazla bilgi ve diğer platformlar için indirmeleri görmek için Sponsor.ajay.app'i açın"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Cihaz düzeni</string>
   <string name="morphe_change_form_factor_entry_1">Varsayılan</string>
@@ -1022,16 +1089,19 @@ Tablet düzeni
 • Topluluk gönderileri gizlenmiştir
 • Akış ayarlarında oynatma mevcut değildir
 • Remix düğmesi ve Ses düğmesi Shorts'ta mevcut değildir
-• Video eylem çubuğu daraltılmamıştır
+• Daraltılmamış, eski video eylem çubuğu gösterilir
 
 Otomotiv düzeni
 • Akış konulara ve kanallara göre düzenlenmiştir
 • Akış ayarlarında oynatma mevcut değildir
 • Remix düğmesi ve Ses düğmesi Shorts'ta mevcut değildir
 • Shorts normal oynatıcıda açılır
-• Video eylem çubuğu daraltılmamıştır"</string>
+• Daraltılmamış, eski video eylem çubuğu gösterilir"</string>
   <string name="morphe_tablet_layout_in_player_title">Oynatıcıda tablet düzenini etkinleştir</string>
-  <string name="morphe_tablet_layout_in_player_summary">Eski oynatıcı düzenini geri yükler</string>
+  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+  <string name="morphe_tablet_layout_in_player_summary">"Eski oynatıcı düzenini geri yükler
+
+Sınırlamalar: 'Eski video eylem çubuğunu geri yükle' kapatılırsa, 'Daha fazla video' katmanı kullanılamayabilir"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Uygulama sürümünü taklit et</string>
   <string name="morphe_spoof_app_version_summary">Sunucuya daha eski bir uygulama sürümü kullandığınızı düşündürerek eski arayüz özelliklerini geri yükler</string>
@@ -1157,9 +1227,9 @@ Sınırlama: Araç çubuğundaki geri düğmesini kullanmak işe yaramayabilir"<
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow &amp; Orijinal kapak resimleri</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow &amp; Hareketsiz yakalamalar</string>
   <string name="morphe_alt_thumbnail_options_entry_4">Hareketsiz yakalamalar</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow, YouTube videoları için topluluk kaynaklı kapak resimleri sağlar. Bu kapak resimleri, YouTube tarafından sağlananlardan genellikle daha alakalıdır.
+  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow, YouTube videoları için topluluk kaynaklı küçük resimler sağlar. Bu küçük resimler genellikle YouTube tarafından sağlananlardan daha alakalıdır
 
-Etkinleştirilirse, video URL'leri API sunucusuna gönderilecek ve başka hiçbir veri gönderilmeyecektir. Bir videoda DeArrow kapak resmi yoksa, orijinal kapak resmi veya hareketsiz yakalamalar gösterilir
+Etkinleştirilirse, video URL'leri API sunucusuna gönderilir ve başka hiçbir veri gönderilmez. Bir videoda DeArrow küçük resmi yoksa, orijinal veya hareketsiz yakalamalar gösterilir
 
 DeArrow hakkında daha fazla bilgi edinmek için buraya dokunun"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Bağlantı hatası uyarılarını göster</string>
@@ -1167,7 +1237,7 @@ DeArrow hakkında daha fazla bilgi edinmek için buraya dokunun"</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">DeArrow API uç noktası</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_summary">DeArrow kapak resim önbelleğinin URL\'si</string>
   <string name="morphe_alt_thumbnail_stills_about_title">Hareketsiz video yakalamaları</string>
-  <string name="morphe_alt_thumbnail_stills_about_summary">Her videonun başından/ortasından/sonundan hareketsiz yakalamalar alınır. Bu resimler YouTube\'da yerleşiktir ve harici bir API kullanılmaz</string>
+  <string name="morphe_alt_thumbnail_stills_about_summary">Her videonun başından / ortasından / sonundan hareketsiz yakalamalar alınır. Bu resimler YouTube\'da yerleşiktir ve harici bir API kullanılmaz</string>
   <string name="morphe_alt_thumbnail_stills_fast_title">Hızlı hareketsiz yakalamaları kullan</string>
   <string name="morphe_alt_thumbnail_stills_fast_summary">Orta kalitede görseller kullanarak yükleme hızlarını artırır. Canlı yayınlar, yayınlanmamış ve eski videolar boş kapak resimler gösterebilir</string>
   <string name="morphe_alt_thumbnail_stills_time_title">Videodan kare çıkar</string>
@@ -1180,7 +1250,7 @@ DeArrow hakkında daha fazla bilgi edinmek için buraya dokunun"</string>
   <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Eski oynatıcı düğmesi stilini geri getir</string>
-  <string name="morphe_restore_old_player_buttons_summary">Kalın video oynatıcı kontrollerini eski, daha ince görsel stile geri döndürür</string>
+  <string name="morphe_restore_old_player_buttons_summary">Kalın video oynatıcı kontrollerini eski, daha ince görünüme geri döndürür</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Cihaz boyutlarını taklit et</string>
   <string name="morphe_spoof_device_dimensions_summary">Bunu etkinleştirmek daha yüksek video kalitelerini açabilir</string>
@@ -1289,4 +1359,9 @@ AV1 ile video oynatma takılabilir veya kare atlayabilir."</string>
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Orijinal sesi zorlama mevcut değil</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Oynatıcı JavaScript varyantı</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Meraklısı için istatistikler\'de takliti göster</string>
+  <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <string name="morphe_restore_old_video_action_bar_title">Eski video eylem çubuğunu geri yükle</string>
+  <string name="morphe_restore_old_video_action_bar_summary">"Beğenmemelerin görünmemesi ve video eylem düğmelerinin gizlenememesi sorunlarını düzeltir
+
+Sınırlamalar: Eski 'Daha fazla video' katmanı görünümüne geri döner"</string>
 </resources>

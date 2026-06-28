@@ -37,12 +37,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">Zakáže vyskakovací okno, které se zobrazí při pořízení screenshotu</string>
   <string name="morphe_hide_ask_button_title">Skrýt tlačítko Zeptej se</string>
   <string name="morphe_hide_ask_button_summary">Skryje tlačítko Zeptej se v vyhledávacím řádku</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">Skrýt doporučené komunity</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">Skrývá panely s doporučenými komunitami na subredditech</string>
-  <string name="morphe_hide_trending_today_shelf_title">Skrýt panel Trendující dnes</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"Skrývá panel Trendující dnes z návrhů vyhledávání
-
-Omezení: Vizuální mezery nemusí být skryty"</string>
+  <string name="morphe_hide_communities_shelf_title">Skrýt panel komunit</string>
+  <string name="morphe_hide_communities_shelf_summary">Skryje panel souvisejících nebo doporučených komunit v subredditech</string>
+  <string name="morphe_hide_trending_shelves_title">Skrýt oblíbené regály</string>
+  <string name="morphe_hide_trending_shelves_summary">Skryje doporučené regály z kanálu a návrhů vyhledávání</string>
   <string name="morphe_remove_notification_dialog_title">Odstranit dialogové okno s návrhem oznámení</string>
   <string name="morphe_remove_notification_dialog_summary">Automaticky zavře dialog s návrhy oznámení při návštěvě subredditu</string>
   <string name="morphe_show_view_count_title">Zobrazit počet zobrazení u příspěvků</string>

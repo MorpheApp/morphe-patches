@@ -234,6 +234,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_home_title">गृह वीडियो को शब्दों से छुपाएं</string>
   <string name="morphe_hide_keyword_content_search_title">गूगल से खोज परिणाम छुपाएं</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">छुपाएं शब्दों से सदस्यता वीडियो</string>
+  <string name="morphe_hide_keyword_content_comments_title">कीवर्ड द्वारा टिप्पणियाँ छिपाएँ</string>
   <string name="morphe_hide_keyword_content_phrases_title">कीवर्ड छुपाने के लिए</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
@@ -243,12 +244,12 @@ Second \"item\" text"</string>
 
 मध्य में बड़े अक्षरों वाले शब्दों को उसी केसिंग में दर्ज किया जाना चाहिए (जैसे: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">कीवर्ड फ़िल्टरिंग के बारे में</string>
-  <string name="morphe_hide_keyword_content_about_summary">"होम / सबस्क्राइब्शंस / खोज परिणाम छुपा हुआ है
+  <string name="morphe_hide_keyword_content_about_summary">"होम / सदस्यताएँ / खोज / टिप्पणियाँ कीवर्ड वाक्यांशों से मेल खाने वाली सामग्री को छिपाने के लिए फ़िल्टर की जाती हैं
 
-मुसीबतें:
-• चैनल नाम से शॉर्ट नहीं छुपा सकते हैं
-• कुछ यूआई घटकों को छुपा नहीं किया जा सकता है
-• एक कुयों को खोजने पर कोई परिणाम नहीं दिखा सकता है"</string>
+सीमाएँ:
+• चैनल के नाम से शॉर्ट्स को छिपाया नहीं जा सकता
+• कुछ UI घटक छिपे नहीं हो सकते
+• कीवर्ड खोजने पर कोई परिणाम नहीं दिख सकता"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">मैच पूरा शब्द</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">कीवर्ड/वाक्यांश को डबल-कोटेशन के साथ घेरने से वीडियो शीर्षकों और चैनल नामों के आंशिक मिलान को रोका जा सकेगा&lt;br&gt;&lt;br&gt;उदाहरण के लिए,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; वीडियो को छिपा देगा: &lt;b&gt;AI कैसे काम करता है?&lt;/b&gt;&lt;br&gt;लेकिन यह: &lt;b&gt;उचित उपयोग का क्या मतलब है?&lt;/b&gt; को नहीं छिपाएगा।</string>
@@ -305,6 +306,59 @@ Second \"item\" text"</string>
 
 पैकेज नाम को सही और एप्लिकेशन को स्थापित किया गया है, यह सुनिश्चित करें"</string>
   <string name="morphe_external_downloader_empty_warning">पैकेज का नाम खाली नहीं हो सकता</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">वॉइस ओवर अनुवाद</string>
+  <string name="morphe_vot_screen_summary">डिवाइस पर टेक्स्ट-टू-स्पीच का उपयोग करके वीडियो कैप्शन को ज़ोर से पढ़ें, जो प्लेबैक के साथ सिंक्रनाइज़ किया गया है।</string>
+  <string name="morphe_vot_enabled_title">वॉइस ओवर अनुवाद</string>
+  <string name="morphe_vot_caption_language_title">भाषा</string>
+  <string name="morphe_vot_translation_service_title">अनुवाद प्रदाता</string>
+  <string name="morphe_vot_original_audio_volume_title">मूल ऑडियो वॉल्यूम</string>
+  <string name="morphe_vot_original_audio_volume_summary">अनुवाद बोलते समय मूल YouTube ऑडियो की वॉल्यूम</string>
+  <string name="morphe_vot_translation_volume_title">अनुवाद वॉल्यूम</string>
+  <string name="morphe_vot_translation_volume_summary">डब किए गए अनुवाद की आवाज की वॉल्यूम</string>
+  <string name="morphe_vot_max_speech_rate_title">अधिकतम भाषण दर</string>
+  <string name="morphe_vot_max_speech_rate_summary">उपशीर्षक स्लॉट में भाषण फिट करते समय अधिकतम गति गुणक</string>
+  <string name="morphe_vot_mymemory_info_summary">"मुफ्त अनुवाद एपीआई, एपीआई कुंजी की आवश्यकता नहीं है। मुफ्त टियर पर प्रति दिन 5,000 वर्णों तक, या ईमेल पते के साथ प्रति दिन 50,000 वर्णों तक।
+
+MyMemory.translated.net खोलने के लिए यहां टैप करें"</string>
+  <string name="morphe_vot_mymemory_email_title">MyMemory ईमेल</string>
+  <string name="morphe_vot_mymemory_email_summary">वैकल्पिक। दैनिक सीमा को 5,000 से 50,000 वर्णों तक बढ़ाने के लिए अपना MyMemory ईमेल पता दर्ज करें। गुमनाम सीमा का उपयोग करने के लिए खाली छोड़ दें</string>
+  <string name="morphe_vot_openrouter_info_summary">"OpenRouter के माध्यम से सशुल्क AI अनुवाद। एक बार टॉप अप करें और हजारों वीडियो का अनुवाद करें। Mistral Nemo सबसे सस्ता विकल्प है, Gemma 4 उच्चतम गुणवत्ता प्रदान करता है।
+
+OpenRouter.ai खोलने के लिए यहां टैप करें"</string>
+  <string name="morphe_vot_openrouter_api_key_title">OpenRouter API कुंजी</string>
+  <string name="morphe_vot_openrouter_api_key_summary">आपकी OpenRouter API कुंजी। OpenRouter.ai > Workspace > API Keys पर एक कुंजी बनाएं</string>
+  <string name="morphe_vot_openrouter_model_title">OpenRouter मॉडल</string>
+  <string name="morphe_vot_openrouter_model_custom">कस्टम</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter कॉन्फ़िगर नहीं किया गया</string>
+  <string name="morphe_vot_openrouter_not_configured_message">इस प्रदाता का चयन करने से पहले सेटिंग्स में अपनी OpenRouter API कुंजी दर्ज करें</string>
+  <string name="morphe_vot_cost_free">मुफ्त</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">प्रति 100 वीडियो घंटे %s</string>
+  <string name="morphe_vot_tts_voice_type">आवाज</string>
+  <string name="morphe_vot_tts_system">सिस्टम</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">बहुभाषी पुरुष</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">बहुभाषी महिला</string>
+  <string name="morphe_vot_voice_gender_male">पुरुष</string>
+  <string name="morphe_vot_voice_gender_female">महिला</string>
+  <string name="morphe_vot_tts_sample">यह रूप बदलने का समय है!</string>
+  <string name="morphe_vot_http_error_title">अनुवाद उपलब्ध नहीं है</string>
+  <string name="morphe_vot_http_error_message">"अनुवाद सेवा ने HTTP त्रुटि %s लौटाई है। आपके IP पते को संभवतः 24 घंटे तक के लिए दर-सीमित किया गया है।
+
+अनुवाद का उपयोग जारी रखने के लिए, सेटिंग्स में एक अलग अनुवाद प्रदाता पर स्विच करें या वीपीएन का उपयोग करें"</string>
+  <string name="morphe_vot_do_not_show_again">फिर से न दिखाएं</string>
+  <string name="morphe_vot_export_api_key_warning">"आपकी सेटिंग्स में एक OpenRouter API कुंजी शामिल है।
+
+आपकी API कुंजी कभी भी साझा नहीं की जानी चाहिए। जो भी व्यक्ति इसके पास पहुंच रखता है, वह आपके OpenRouter क्रेडिट का उपयोग कर सकता है"</string>
+  <string name="morphe_vot_openrouter_credits_title">OpenRouter क्रेडिट सीमा पहुंच गई</string>
+  <string name="morphe_vot_openrouter_credits_message">आपकी OpenRouter क्रेडिट सीमा पहुंच गई है। OpenRouter.ai पर अपना बैलेंस टॉप अप करें या अपनी कुंजी व्यय सीमा बढ़ाएं</string>
+  <string name="morphe_vot_openrouter_open_website">OpenRouter.ai खोलें</string>
+  <string name="morphe_vot_openrouter_error">OpenRouter अनुवाद विफल (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">MyMemory दैनिक सीमा पहुंच गई</string>
+  <string name="morphe_vot_mymemory_quota_next_available">अगली उपलब्धता %s पर।</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">आपने आज का मुफ्त MyMemory अनुवाद कोटा (5,000 वर्ण) उपयोग कर लिया है। दैनिक सीमा को 50,000 वर्णों तक बढ़ाने के लिए सेटिंग्स में एक MyMemory ईमेल जोड़ें, या किसी भिन्न अनुवाद सेवा पर स्विच करें</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">आपने आज का MyMemory अनुवाद कोटा (50,000 वर्ण) उपयोग कर लिया है। किसी भिन्न अनुवाद सेवा पर स्विच करें या कल फिर से प्रयास करें</string>
+  <string name="morphe_vot_mymemory_error">MyMemory अनुवाद विफल (स्थिति %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">लूप वीडियो सक्षम करें</string>
   <string name="morphe_do_not_remember_loop_video_title">लूप वीडियो याद न रखें</string>
@@ -355,6 +409,8 @@ Second \"item\" text"</string>
   <string name="morphe_queue_restore_summary">ऐप को पुनरारंभ करने के बाद कतार बनी रहती है</string>
   <string name="morphe_swap_save_and_queue_actions_title">स्वैप सेव और क्यू क्रियाएँ</string>
   <string name="morphe_swap_save_and_queue_actions_summary">क्यू विकल्पों के लिए टैप करें, बाद में देखने के लिए सेव करने के लिए टैप करके दबाएँ</string>
+  <string name="morphe_queue_override_flyout_menu_title">फ़ीड फ्लाईआउट कतार बटन को ओवरराइड करें</string>
+  <string name="morphe_queue_override_flyout_menu_summary">Morphe कतार को YouTube कतार के बजाय खोलता है</string>
   <string name="morphe_queue_manager_check_failed_auth">लॉग इन नहीं किया गया</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">प्लेलिस्ट आईडी नहीं</string>
   <string name="morphe_queue_manager_check_failed_queue">क्यू खाली है</string>
@@ -470,6 +526,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_stop_ads_button_title">\'विज्ञापन रोकें\' बटन छुपाएं</string>
   <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
   <string name="morphe_hide_comments_button_title">टिप्पणी बटन छुपाएं</string>
+  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_connect_button_title">कनेक्ट बटन छिपाएं</string>
   <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears on live streamed videos. -->
   <string name="morphe_hide_report_button_title">रिपोर्ट बटन छुपाएं</string>
@@ -494,6 +552,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shop_button_title">शॉप बटन छुपाएं</string>
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_save_button_title">सहेजें बटन छुपाएं</string>
+  <string name="morphe_hide_more_button_title">अधिक बटन छिपाएं</string>
   <string name="morphe_fullscreen_buttons">फ़ुलस्क्रीन बटन</string>
   <string name="morphe_hide_quick_actions_title">एक्शन बार छिपाएं</string>
   <string name="morphe_hide_quick_actions_ask_button_title">पूछें बटन छुपाएं</string>
@@ -579,6 +638,7 @@ Second \"item\" text"</string>
   <string name="morphe_toolbar_screen_title">टूलबार</string>
   <string name="morphe_toolbar_screen_summary">टूलबार में कौन से घटक दिखाई दें, यह चुनें</string>
   <string name="morphe_hide_toolbar_cast_button_title">\'ऑडियो ट्रैक\' मेनू फ़ूटर छुपाएं</string>
+  <string name="morphe_hide_toolbar_chat_button_title">चैट बटन छुपाएं</string>
   <string name="morphe_hide_toolbar_create_button_title">छिपाएं बनाएं बटन</string>
   <string name="morphe_hide_toolbar_microphone_button_title">कैप्शन मेनू फ़ूटर छुपाएं</string>
   <string name="morphe_hide_toolbar_notification_button_title">सूचनाएं छिपाएं</string>
@@ -739,8 +799,11 @@ Second \"item\" text"</string>
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">पोर्ट्रेट स्वाइप-अप जेस्चर को अक्षम करें</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">पोर्ट्रेट स्वाइप-डाउन इशारा अक्षम करें</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">लैंडस्केप स्वाइप-डाउन इशारा अक्षम करें</string>
-  <!-- layout.player.fullscreen.openVideosFullscreen -->
-  <string name="morphe_open_videos_fullscreen_portrait_title">फुलस्क्रीन पोर्ट्रेट में वीडियो खोलें</string>
+  <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
+  <string name="morphe_open_videos_fullscreen_title">फ़ुलस्क्रीन मोड में वीडियो खोलें</string>
+  <string name="morphe_open_videos_fullscreen_entry_1">अक्षम</string>
+  <string name="morphe_open_videos_fullscreen_entry_2">पोर्ट्रेट</string>
+  <string name="morphe_open_videos_fullscreen_entry_3">लैंडस्केप</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">प्लेयर ओवरले अस्पष्टता</string>
   <string name="morphe_player_overlay_opacity_summary">ओवरले पारदर्शिता स्तर समायोजित करें (0 पारदर्शी है, 100 अपारदर्शी है)</string>
@@ -767,7 +830,9 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_summary">उन वीडियो पर अनुमानित लाइक काउंट दिखाता है जहां निर्माता ने लाइक को अक्षम कर दिया है</string>
   <string name="morphe_ryd_toast_on_connection_error_title">कनेक्शन त्रुटि अलर्ट दिखाएं</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">जब रिटर्न YouTube डिसलाइक सर्वर अनुपलब्ध हो तो एक सूचना दिखाता है</string>
-  <string name="morphe_ryd_attribution_summary">डेटा Return YouTube Dislike एपीआई द्वारा प्रदान किया जाता है। अधिक जानने के लिए यहां टैप करें</string>
+  <string name="morphe_ryd_attribution_summary">"डेटा Return YouTube Dislike API द्वारा प्रदान किया गया है।
+
+ReturnYouTubeDislike.com खोलने के लिए यहां टैप करें"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">इस डिवाइस के Return YouTube Dislike एपीआई आँकड़े</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">एपीआई प्रतिक्रिया समय, औसत</string>
@@ -1005,7 +1070,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_color_opacity_label">अपारदर्शिता:</string>
   <string name="morphe_sb_color_dot_label">रंग:</string>
   <string name="morphe_sb_about_title">इसके बारे में</string>
-  <string name="morphe_sb_about_api_summary">डेटा SponsorBlock API द्वारा प्रदान किया गया है। अधिक जानने और अन्य प्लेटफार्मों के लिए डाउनलोड देखने के लिए यहां टैप करें</string>
+  <string name="morphe_sb_about_api_summary">"डेटा SponsorBlock API द्वारा प्रदान किया गया है।
+
+अन्य प्लेटफार्मों के लिए डाउनलोड देखने के लिए Sponsor.ajay.app खोलें"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">डिवाइस लेआउट</string>
   <string name="morphe_change_form_factor_entry_1">डिफ़ॉल्ट</string>
@@ -1015,19 +1082,22 @@ Second \"item\" text"</string>
   <string name="morphe_change_form_factor_user_dialog_message">"परिवर्तनों में शामिल हैं:
 
 टैबलेट लेआउट
-• समुदाय पोस्ट्स छिपे हुए हैं
+• सामुदायिक पोस्ट छिपी हुई हैं
 • फ़ीड में प्लेबैक सेटिंग उपलब्ध नहीं है
 • शॉर्ट्स में रीमिक्स बटन और साउंड बटन उपलब्ध नहीं हैं
-• वीडियो एक्शन बार संकुचित नहीं होता है
+• पुराना वीडियो एक्शन बार ध्वस्त नहीं है
 
 ऑटोमोटिव लेआउट
 • फ़ीड विषयों और चैनलों द्वारा व्यवस्थित है
 • फ़ीड में प्लेबैक सेटिंग उपलब्ध नहीं है
 • शॉर्ट्स में रीमिक्स बटन और साउंड बटन उपलब्ध नहीं हैं
 • शॉर्ट्स नियमित प्लेयर में खुलते हैं
-• वीडियो एक्शन बार संकुचित नहीं होता है"</string>
+• पुराना वीडियो एक्शन बार ध्वस्त नहीं है"</string>
   <string name="morphe_tablet_layout_in_player_title">प्लेयर में टैबलेट लेआउट सक्षम करें</string>
-  <string name="morphe_tablet_layout_in_player_summary">पुराने प्लेयर लेआउट को पुनर्स्थापित करता है</string>
+  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+  <string name="morphe_tablet_layout_in_player_summary">"पुराने प्लेयर लेआउट को पुनर्स्थापित करता है
+
+सीमाएं: यदि 'पुराना वीडियो एक्शन बार पुनर्स्थापित करें' बंद कर दिया गया है, तो 'अधिक वीडियो' ओवरले उपलब्ध नहीं हो सकता है"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Spoof ऐप संस्करण</string>
   <string name="morphe_spoof_app_version_summary">सर्वर को यह सोचने में धोखा देता है कि आप पुराने ऐप संस्करण का उपयोग कर रहे हैं ताकि विरासत UI सुविधाओं को बहाल किया जा सके</string>
@@ -1153,11 +1223,11 @@ Second \"item\" text"</string>
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow &amp; Original thumbnails</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow &amp; Still captures</string>
   <string name="morphe_alt_thumbnail_options_entry_4">Still captures</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow YouTube वीडियो के लिए क्राउडसोर्स थंबनेल प्रदान करता है। ये थंबनेल YouTube द्वारा प्रदान किए गए थंबनेल की तुलना में अक्सर अधिक प्रासंगिक होते हैं
+  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow YouTube वीडियो के लिए क्राउडसोर्स्ड थंबनेल प्रदान करता है। ये थंबनेल अक्सर उन थंबनेल की तुलना में अधिक प्रासंगिक होते हैं जो YouTube द्वारा प्रदान किए जाते हैं
 
-यदि सक्षम किया गया है, तो वीडियो URL API सर्वर को भेजे जाएंगे और कोई अन्य डेटा नहीं भेजा जाएगा। यदि कोई वीडियो DeArrow थंबनेल नहीं है, तो मूल या अभी भी कैप्चर दिखाए जाते हैं
+यदि सक्षम है, तो वीडियो URL API सर्वर पर भेजे जाएंगे और कोई अन्य डेटा नहीं भेजा जाएगा। यदि किसी वीडियो में DeArrow थंबनेल नहीं हैं, तो मूल या अभी भी कैप्चर दिखाए जाते हैं
 
-अधिक जानने के लिए यहां टैप करें"</string>
+DeArrow.ajay.app खोलने के लिए यहां टैप करें"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">कनेक्शन त्रुटि अलर्ट दिखाएं</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary">जब DeArrow सर्वर अनुपलब्ध हो तो एक सूचना दिखाता है</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">DeArrow API एंडपॉइंट</string>
@@ -1285,4 +1355,9 @@ AV1 के साथ वीडियो प्लेबैक स्टटर �
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• बल मूल ऑडियो उपलब्ध नहीं है</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">प्लेयर जावास्क्रिप्ट वैरिएंट</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">\'nerds के लिए आँकड़े\' में स्पूफिंग दिखाएं</string>
+  <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <string name="morphe_restore_old_video_action_bar_title">पुराने वीडियो एक्शन बार को पुनर्स्थापित करें</string>
+  <string name="morphe_restore_old_video_action_bar_summary">"Dislike नहीं दिखना और वीडियो एक्शन बटन को छुपाने में अक्षम होने की समस्या ठीक करता है
+
+सीमाएँ: पुराने शैली के 'अधिक वीडियो' ओवरले पर वापस लौटता है"</string>
 </resources>

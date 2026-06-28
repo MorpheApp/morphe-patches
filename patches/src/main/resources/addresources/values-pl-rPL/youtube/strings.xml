@@ -234,6 +234,7 @@ Zmiany obejmują:
   <string name="morphe_hide_keyword_content_home_title">Ukryj filmy na stronie głównej</string>
   <string name="morphe_hide_keyword_content_search_title">Ukryj wyniki wyszukiwania</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Ukryj filmy na stronie subskrypcji</string>
+  <string name="morphe_hide_keyword_content_comments_title">Ukryj komentarze</string>
   <string name="morphe_hide_keyword_content_phrases_title">Słowa do ukrycia</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
@@ -243,7 +244,7 @@ Słowem może być dowolny tekst wyświetlany w tytułach filmów lub nazwach ka
 
 Słowa z wielkimi literami w środku muszą pasować dokładnie (np. iPhone, TikTok, InPost)"</string>
   <string name="morphe_hide_keyword_content_about_title">O filtrowaniu słów</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Strona główna / subskrypcji / wyniki wyszukiwania są filtrowane, aby ukryć treści, które zawierają słowa z filtra
+  <string name="morphe_hide_keyword_content_about_summary">"Strona główna / Subskrypcje / Wyniki wyszukiwania / Komentarze są filtrowane, aby ukryć treści, które zawierają słowa z filtra
 
 Ograniczenia:
 • Shortsy nie mogą być ukryte po nazwie kanału
@@ -305,6 +306,59 @@ Ograniczenia:
 
 Upewnij się, że nazwa pakietu jest poprawna, a aplikacja została zainstalowana"</string>
   <string name="morphe_external_downloader_empty_warning">Nazwa pakietu nie może być pusta</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">Tłumaczenie głosowe</string>
+  <string name="morphe_vot_screen_summary">Czyta napisy na głos przy użyciu wbudowanego syntezatora mowy, synchronizując je z odtwarzaniem obrazu</string>
+  <string name="morphe_vot_enabled_title">Tłumaczenie głosowe</string>
+  <string name="morphe_vot_caption_language_title">Język</string>
+  <string name="morphe_vot_translation_service_title">Dostawca tłumaczeń</string>
+  <string name="morphe_vot_original_audio_volume_title">Głośność oryginalnego dźwięku</string>
+  <string name="morphe_vot_original_audio_volume_summary">Głośność oryginalnego dźwięku z YouTube podczas odtwarzania tłumaczenia</string>
+  <string name="morphe_vot_translation_volume_title">Głośność tłumaczenia</string>
+  <string name="morphe_vot_translation_volume_summary">Głośność nałożonego głosu tłumaczenia</string>
+  <string name="morphe_vot_max_speech_rate_title">Maksymalne tempo mowy</string>
+  <string name="morphe_vot_max_speech_rate_summary">Maksymalny mnożnik szybkości podczas wpasowywania mowy w czas wyświetlania napisu</string>
+  <string name="morphe_vot_mymemory_info_summary">"Darmowe API do tłumaczeń, nie wymaga klucza. Do 5000 znaków dziennie w darmowym planie lub do 50 000 znaków dziennie po podaniu adresu e-mail.
+
+​Dotknij tutaj, aby otworzyć MyMemory.translated.net"</string>
+  <string name="morphe_vot_mymemory_email_title">Adres e-mail MyMemory</string>
+  <string name="morphe_vot_mymemory_email_summary">Opcjonalne. Wprowadź swój adres e-mail z MyMemory, aby zwiększyć dzienny limit z 5000 do 50 000 znaków. Zostaw puste, aby korzystać z limitu dla anonimowych użytkowników</string>
+  <string name="morphe_vot_openrouter_info_summary">"Płatne tłumaczenia AI przez OpenRouter. Doładuj konto raz i tłumacz tysiące filmów. Mistral Nemo to najtańsza opcja, a Gemma 4 oferuje najwyższą jakość.
+
+​Dotknij tutaj, aby otworzyć OpenRouter.ai"</string>
+  <string name="morphe_vot_openrouter_api_key_title">Klucz API OpenRouter</string>
+  <string name="morphe_vot_openrouter_api_key_summary">Twój klucz API OpenRouter. Utwórz klucz na stronie OpenRouter.ai &gt; Workspace &gt; API Keys</string>
+  <string name="morphe_vot_openrouter_model_title">Model OpenRouter</string>
+  <string name="morphe_vot_openrouter_model_custom">Własny</string>
+  <string name="morphe_vot_openrouter_not_configured_title">Brak konfiguracji OpenRouter</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Wprowadź klucz API OpenRouter w ustawieniach, zanim wybierzesz tego dostawcę</string>
+  <string name="morphe_vot_cost_free">Darmowe</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s za 100 godzin filmu</string>
+  <string name="morphe_vot_tts_voice_type">Głos</string>
+  <string name="morphe_vot_tts_system">Systemowy</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Męski wielojęzyczny</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Żeński wielojęzyczny</string>
+  <string name="morphe_vot_voice_gender_male">Męski</string>
+  <string name="morphe_vot_voice_gender_female">Żeński</string>
+  <string name="morphe_vot_tts_sample">Czas na morfowanie!</string>
+  <string name="morphe_vot_http_error_title">Tłumaczenie niedostępne</string>
+  <string name="morphe_vot_http_error_message">"Usługa tłumaczenia zwróciła błąd HTTP %s. Prawdopodobnie nałożono limit na Twój adres IP na maksymalnie 24 godziny.
+
+​Aby kontynuować korzystanie z tłumaczeń, zmień dostawcę w ustawieniach lub użyj VPN"</string>
+  <string name="morphe_vot_do_not_show_again">Nie pokazuj ponownie</string>
+  <string name="morphe_vot_export_api_key_warning">"Twoje ustawienia zawierają klucz API OpenRouter.
+
+​Nigdy nie udostępniaj swojego klucza API. Każdy, kto ma do niego dostęp, może wykorzystać Twoje środki na OpenRouterze"</string>
+  <string name="morphe_vot_openrouter_credits_title">Osiągnięto limit środków OpenRouter</string>
+  <string name="morphe_vot_openrouter_credits_message">Osiągnięto limit środków na koncie OpenRouter. Doładuj saldo lub zwiększ limit wydatków dla klucza na stronie OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">Otwórz OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">Tłumaczenie OpenRouter nie powiodło się (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">Osiągnięto dzienny limit MyMemory</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Dostępne ponownie o %s.</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Wykorzystano dzisiejszy darmowy limit tłumaczeń MyMemory (5000 znaków). Dodaj adres e-mail MyMemory w ustawieniach, aby zwiększyć dzienny limit do 50 000 znaków, lub zmień usługę tłumaczenia</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Wykorzystano dzisiejszy limit tłumaczeń MyMemory (50 000 znaków). Zmień usługę tłumaczenia lub spróbuj ponownie jutro</string>
+  <string name="morphe_vot_mymemory_error">Tłumaczenie MyMemory nie powiodło się (status %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Włącz zapętlanie filmu</string>
   <string name="morphe_do_not_remember_loop_video_title">Nie zapamiętuj zapętlania</string>
@@ -355,6 +409,8 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_queue_restore_summary">Kolejka nie zniknie po ponownym uruchomieniu aplikacji</string>
   <string name="morphe_swap_save_and_queue_actions_title">Zamień akcje Zapisz i Kolejka</string>
   <string name="morphe_swap_save_and_queue_actions_summary">Dotknij, aby wyświetlić opcje kolejki. Przytrzymaj, aby zapisać do obejrzenia później</string>
+  <string name="morphe_queue_override_flyout_menu_title">Zastąp przycisk kolejki w menu strony głównej</string>
+  <string name="morphe_queue_override_flyout_menu_summary">Otwiera kolejkę Morphe zamiast kolejki YouTube</string>
   <string name="morphe_queue_manager_check_failed_auth">Nie zalogowano</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">Brak identyfikatora playlisty</string>
   <string name="morphe_queue_manager_check_failed_queue">Kolejka jest pusta</string>
@@ -470,6 +526,8 @@ Uwaga: Jeśli opcja \"Fałszowanie strumieni filmów\" nie jest włączona, wł�
   <string name="morphe_hide_stop_ads_button_title">Ukryj przycisk \"Zatrzymaj reklamy\"</string>
   <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
   <string name="morphe_hide_comments_button_title">Ukryj przycisk Komentarze</string>
+  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_connect_button_title">Ukryj przycisk Połącz</string>
   <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears on live streamed videos. -->
   <string name="morphe_hide_report_button_title">Ukryj przycisk Zgłoś</string>
@@ -494,6 +552,7 @@ Uwaga: Jeśli opcja \"Fałszowanie strumieni filmów\" nie jest włączona, wł�
   <string name="morphe_hide_shop_button_title">Ukryj przycisk Sklep</string>
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_save_button_title">Ukryj przycisk Zapisz</string>
+  <string name="morphe_hide_more_button_title">Ukryj przycisk Więcej</string>
   <string name="morphe_fullscreen_buttons">Przyciski w trybie pełnoekranowym</string>
   <string name="morphe_hide_quick_actions_title">Ukryj pasek akcji</string>
   <string name="morphe_hide_quick_actions_ask_button_title">Ukryj przycisk Zapytaj</string>
@@ -579,6 +638,7 @@ Aby przejść do ustawień, włącz przycisk w menu: Ogólne → Pasek narzędzi
   <string name="morphe_toolbar_screen_title">Pasek narzędzi</string>
   <string name="morphe_toolbar_screen_summary">Zdecyduj, które elementy będą wyświetlane na pasku narzędzi</string>
   <string name="morphe_hide_toolbar_cast_button_title">Ukryj przycisk Przesyłaj</string>
+  <string name="morphe_hide_toolbar_chat_button_title">Ukryj przycisk Czat</string>
   <string name="morphe_hide_toolbar_create_button_title">Ukryj przycisk Utwórz</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Ukryj przycisk Mikrofon</string>
   <string name="morphe_hide_toolbar_notification_button_title">Ukryj przycisk Powiadomienia</string>
@@ -738,8 +798,11 @@ To ustawienie działa tylko wtedy, gdy autoodtwarzanie jest wyłączone. Możesz
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">Wyłącz gest przeciągnięcia w górę w trybie pionowym</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Wyłącz gest przeciągnięcia w dół w trybie pionowym</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Wyłącz gest przeciągnięcia w dół w trybie poziomym</string>
-  <!-- layout.player.fullscreen.openVideosFullscreen -->
-  <string name="morphe_open_videos_fullscreen_portrait_title">Otwieraj filmy w trybie pełnoekranowym</string>
+  <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
+  <string name="morphe_open_videos_fullscreen_title">Otwieraj filmy w trybie pełnoekranowym</string>
+  <string name="morphe_open_videos_fullscreen_entry_1">Wyłączone</string>
+  <string name="morphe_open_videos_fullscreen_entry_2">W trybie pionowym</string>
+  <string name="morphe_open_videos_fullscreen_entry_3">W trybie poziomym</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Przezroczystość nakładki odtwarzacza</string>
   <string name="morphe_player_overlay_opacity_summary">Dostosuj poziom przezroczystości (0 to pełna przezroczystość, 100 to brak przezroczystości)</string>
@@ -766,7 +829,9 @@ To ustawienie działa tylko wtedy, gdy autoodtwarzanie jest wyłączone. Możesz
   <string name="morphe_ryd_estimated_like_summary">Wyświetla przybliżoną liczbę polubień w filmach, w których twórca ukrył statystyki</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Pokaż powiadomienia o błędach połączenia</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Wyświetla powiadomienie, gdy serwer Return YouTube Dislike jest niedostępny</string>
-  <string name="morphe_ryd_attribution_summary">Dane są dostarczane przez API Return YouTube Dislike. Dotknij tutaj, aby dowiedzieć się więcej</string>
+  <string name="morphe_ryd_attribution_summary">"Dane są dostarczane przez API Return YouTube Dislike.
+
+Dotknij tutaj, aby otworzyć ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Statystyki API Return YouTube Dislike tego urządzenia</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Średni czas odpowiedzi API</string>
@@ -1008,7 +1073,9 @@ Jeśli nie wysyłasz wyróżnienia, dotknij Anuluj i zaznacz drugi punkt"</strin
   <string name="morphe_sb_color_opacity_label">Przezroczystość:</string>
   <string name="morphe_sb_color_dot_label">Kolor:</string>
   <string name="morphe_sb_about_title">Informacje</string>
-  <string name="morphe_sb_about_api_summary">Dane są dostarczane przez API SponsorBlock. Dotknij tutaj, aby dowiedzieć się więcej i pobrać na inne platformy</string>
+  <string name="morphe_sb_about_api_summary">"Dane są dostarczane przez API SponsorBlock.
+
+Dotknij tutaj, aby otworzyć Sponsor.ajay.app i zobaczyć wersje na inne platformy"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Układ urządzenia</string>
   <string name="morphe_change_form_factor_entry_1">Domyślny</string>
@@ -1021,16 +1088,19 @@ Układ tabletowy
 • Posty są ukryte
 • Ustawienie odtwarzania na stronie głównej nie jest dostępne
 • Przyciski Remiks i Dźwięk nie są dostępne w Shortsach
-• Pasek akcji filmu nie jest zwinięty
+• Stary pasek akcji filmu nie jest zwinięty
 
 Układ samochodowy
 • Strona główna jest uporządkowana według tematów i kanałów
 • Ustawienie odtwarzania na stronie głównej nie jest dostępne
 • Przyciski Remiks i Dźwięk nie są dostępne w Shortsach
 • Shortsy otwierają się w zwykłym odtwarzaczu
-• Pasek akcji filmu nie jest zwinięty"</string>
+• Stary pasek akcji filmu nie jest zwinięty"</string>
   <string name="morphe_tablet_layout_in_player_title">Włącz układ tabletowy w odtwarzaczu</string>
-  <string name="morphe_tablet_layout_in_player_summary">Przywraca stary układ odtwarzacza</string>
+  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+  <string name="morphe_tablet_layout_in_player_summary">"Przywraca stary układ odtwarzacza
+
+​Ograniczenia: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączona, nakładka \"Więcej filmów\" może być niedostępna"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Fałszuj wersję aplikacji</string>
   <string name="morphe_spoof_app_version_summary">Oszukuje serwer, że używasz starszej wersji aplikacji, aby przywrócić klasyczne elementy interfejsu</string>
@@ -1160,7 +1230,7 @@ Ograniczenie: Użycie przycisku wstecz na pasku narzędzi może nie działać"</
 
 Jeśli opcja ta jest włączona, do serwera API wysyłane są wyłącznie adresy filmów. W przypadku braku miniaturek DeArrow, wyświetlana jest miniaturka oryginalna lub kadr z filmu
 
-Dotknij tutaj, aby dowiedzieć się więcej o DeArrow"</string>
+Dotknij tutaj, aby otworzyć DeArrow.ajay.app"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Pokaż powiadomienia o błędach połączenia</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary">Wyświetla powiadomienie, gdy serwer DeArrow jest niedostępny</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">Punkt końcowy API DeArrow</string>
@@ -1288,4 +1358,9 @@ Odtwarzanie filmu z użyciem AV1 może powodować zacinanie się lub gubienie kl
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Wymuszanie oryginalnej ścieżki dźwiękowej nie działa</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Wariant skryptu JS odtwarzacza</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Pokaż fałszowanie w Statystykach dla nerdów</string>
+  <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <string name="morphe_restore_old_video_action_bar_title">Przywróć stary pasek akcji filmu</string>
+  <string name="morphe_restore_old_video_action_bar_summary">"Naprawia problem z niewidocznymi łapkami w dół i brakiem możliwości ukrycia przycisków akcji
+
+​Ograniczenia: Przywraca stary wygląd nakładki \"Więcej filmów\""</string>
 </resources>

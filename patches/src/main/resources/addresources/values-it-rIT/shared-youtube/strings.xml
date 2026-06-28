@@ -109,6 +109,25 @@ La riproduzione fallirà se l'hash JavaScript del player è obsoleto."</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Forza la lingua audio originale</string>
   <string name="morphe_force_original_audio_summary">Riproduce sempre la traccia audio originale del video invece di una versione doppiata</string>
+  <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">Proxy di rete</string>
+  <string name="morphe_proxy_screen_summary">Instrada le richieste di rete tramite un proxy</string>
+  <string name="morphe_proxy_enabled_title">Abilita proxy</string>
+  <string name="morphe_proxy_enabled_summary">Instrada le richieste di rete attraverso un proxy HTTP o HTTPS configurato</string>
+  <string name="morphe_proxy_host_title">Host proxy</string>
+  <string name="morphe_proxy_host_summary">Nome host o indirizzo IP del server proxy</string>
+  <string name="morphe_proxy_port_title">Porta proxy</string>
+  <string name="morphe_proxy_port_summary">Porta del server proxy</string>
+  <string name="morphe_proxy_https_title">Usa proxy HTTPS</string>
+  <string name="morphe_proxy_https_summary">Usa HTTPS per connetterti al server proxy invece di HTTP</string>
+  <string name="morphe_proxy_auth_enabled_title">Autenticazione proxy</string>
+  <string name="morphe_proxy_auth_enabled_summary">Invia l\'autenticazione Basic con le richieste proxy</string>
+  <string name="morphe_proxy_auth_username_title">Nome utente proxy</string>
+  <string name="morphe_proxy_auth_username_summary">Nome utente per l\'autenticazione proxy Basic</string>
+  <string name="morphe_proxy_auth_password_title">Password proxy</string>
+  <string name="morphe_proxy_auth_password_summary">Password per l\'autenticazione proxy Basic</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">Consenti fallback diretto</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">Connettiti direttamente se il proxy fallisce</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Nascondi le pubblicità a schermo intero</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

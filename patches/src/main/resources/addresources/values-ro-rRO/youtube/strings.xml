@@ -234,6 +234,7 @@ Schimbari incluse:
   <string name="morphe_hide_keyword_content_home_title">Ascunde videoclipurile de acasă după cuvintele cheie</string>
   <string name="morphe_hide_keyword_content_search_title">Ascunde rezultatele căutării după cuvinte cheie</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Ascunde abonarea videoclipurilor după cuvintele-cheie</string>
+  <string name="morphe_hide_keyword_content_comments_title">Ascunde comentariile după cuvinte cheie</string>
   <string name="morphe_hide_keyword_content_phrases_title">Cuvinte cheie de ascuns</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
@@ -243,7 +244,7 @@ Cuvintele cheie pot fi orice text afișat în titlurile videoclipurilor sau în 
 
 Cuvintele cu litere mari în mijloc trebuie să corespundă exact (de exemplu: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">Despre filtrarea cuvintelor cheie</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Acasă / Abonamente / Rezultatele căutărilor sunt filtrate pentru a ascunde conținutul care se potrivește cu expresiile de cuvinte cheie
+  <string name="morphe_hide_keyword_content_about_summary">"Pagina de pornire / Abonamente / Căutare / Comentarii sunt filtrate pentru a ascunde conținutul care se potrivește cu expresiile de cuvinte cheie
 
 Limitări:
 • Shorts nu pot fi ascunse după numele canalului
@@ -305,6 +306,59 @@ Limitări:
 
 Verificați dacă numele pachetului este corect și dacă aplicația este instalată"</string>
   <string name="morphe_external_downloader_empty_warning">Numele pachetului nu poate fi gol</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">Traducere cu voce peste</string>
+  <string name="morphe_vot_screen_summary">Citește cu voce tare subtitrările video folosind text-to-speech pe dispozitiv, sincronizat cu redarea</string>
+  <string name="morphe_vot_enabled_title">Traducere cu voce peste</string>
+  <string name="morphe_vot_caption_language_title">Limba</string>
+  <string name="morphe_vot_translation_service_title">Furnizor de traducere</string>
+  <string name="morphe_vot_original_audio_volume_title">Volumul audio original</string>
+  <string name="morphe_vot_original_audio_volume_summary">Volumul audio original de pe YouTube în timp ce traducerea vorbește</string>
+  <string name="morphe_vot_translation_volume_title">Volumul traducerii</string>
+  <string name="morphe_vot_translation_volume_summary">Volumul vocii traduse dublate</string>
+  <string name="morphe_vot_max_speech_rate_title">Viteză maximă de vorbire</string>
+  <string name="morphe_vot_max_speech_rate_summary">Multiplicatorul de viteză maxim când se potrivește vorbirea într-un slot de subtitlu</string>
+  <string name="morphe_vot_mymemory_info_summary">"API de traducere gratuit, fără cheie API necesară. Până la 5.000 de caractere pe zi pe nivelul gratuit sau până la 50.000 de caractere pe zi cu o adresă de e-mail.
+
+Atingeți aici pentru a deschide MyMemory.translated.net"</string>
+  <string name="morphe_vot_mymemory_email_title">E-mail MyMemory</string>
+  <string name="morphe_vot_mymemory_email_summary">Opțional. Introduceți adresa de e-mail MyMemory pentru a crește limita zilnică de la 5.000 la 50.000 de caractere. Lăsați câmpul gol pentru a utiliza limita anonimă</string>
+  <string name="morphe_vot_openrouter_info_summary">"Traducere AI plătită prin OpenRouter. Reîncarcă o dată și traduce mii de videoclipuri. Mistral Nemo este cea mai ieftină opțiune, Gemma 4 oferă cea mai bună calitate.
+
+Atingeți aici pentru a deschide OpenRouter.ai"</string>
+  <string name="morphe_vot_openrouter_api_key_title">Cheie API OpenRouter</string>
+  <string name="morphe_vot_openrouter_api_key_summary">Cheia API OpenRouter. Creează o cheie la OpenRouter.ai > Workspace > Chei API</string>
+  <string name="morphe_vot_openrouter_model_title">Model OpenRouter</string>
+  <string name="morphe_vot_openrouter_model_custom">Personalizat</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter nu este configurat</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Introduceți cheia API OpenRouter în setări înainte de a selecta acest furnizor</string>
+  <string name="morphe_vot_cost_free">Gratuit</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s per 100 de ore de video</string>
+  <string name="morphe_vot_tts_voice_type">Voce</string>
+  <string name="morphe_vot_tts_system">Sistem</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Masculin multilingual</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Feminin multilingual</string>
+  <string name="morphe_vot_voice_gender_male">Masculin</string>
+  <string name="morphe_vot_voice_gender_female">Feminin</string>
+  <string name="morphe_vot_tts_sample">Este timpul să te transformi!</string>
+  <string name="morphe_vot_http_error_title">Traducere indisponibilă</string>
+  <string name="morphe_vot_http_error_message">"Serviciul de traducere a returnat o eroare HTTP %s. Adresa dvs. IP a fost probabil limitată pentru până la 24 de ore.
+
+Pentru a continua să utilizați traduceri, schimbați la un alt furnizor de traducere în setări sau utilizați un VPN"</string>
+  <string name="morphe_vot_do_not_show_again">Nu mai afișa</string>
+  <string name="morphe_vot_export_api_key_warning">"Setările dvs. conțin o cheie API OpenRouter.
+
+Cheia API nu trebuie niciodată distribuită. Oricine are acces la aceasta poate utiliza creditele dvs. OpenRouter"</string>
+  <string name="morphe_vot_openrouter_credits_title">Limita de credit OpenRouter a fost atinsă</string>
+  <string name="morphe_vot_openrouter_credits_message">Limita de credit OpenRouter a fost atinsă. Reîncarcă-ți soldul sau mărește limita de cheltuieli a cheii la OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">Deschide OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">Traducerea OpenRouter a eșuat (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">Limita zilnică MyMemory a fost atinsă</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Disponibilă din nou la %s.</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Ai folosit cota gratuită de traducere MyMemory de astăzi (5.000 de caractere). Adaugă un e-mail MyMemory în setări pentru a crește limita zilnică la 50.000 de caractere sau schimbă la un alt serviciu de traducere</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Ai folosit cota de traducere MyMemory de astăzi (50.000 de caractere). Schimbă la un alt serviciu de traducere sau încearcă mâine</string>
+  <string name="morphe_vot_mymemory_error">Traducerea MyMemory a eșuat (stare %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Activează bucla video</string>
   <string name="morphe_do_not_remember_loop_video_title">Nu-ți aminti video în buclă</string>
@@ -355,6 +409,8 @@ Info: S-ar putea să nu funcționeze pe transmisiuni live"</string>
   <string name="morphe_queue_restore_summary">Coada este păstrată după repornirea aplicației</string>
   <string name="morphe_swap_save_and_queue_actions_title">Schimbă acțiunile Salvare și Coadă</string>
   <string name="morphe_swap_save_and_queue_actions_summary">Atingeți pentru opțiunile cozii, atingeți și mențineți apăsat pentru a salva pentru a urmări mai târziu</string>
+  <string name="morphe_queue_override_flyout_menu_title">Înlocuire coadă flyout feed buton</string>
+  <string name="morphe_queue_override_flyout_menu_summary">Deschide coada Morphe în loc de coada YouTube</string>
   <string name="morphe_queue_manager_check_failed_auth">Nu ești autentificat</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">ID playlistă inexistent</string>
   <string name="morphe_queue_manager_check_failed_queue">Coada este goală</string>
@@ -470,6 +526,8 @@ Notă: Dacă „Spoof video streams” nu este activat, activarea acesteia poate
   <string name="morphe_hide_stop_ads_button_title">Ascunde butonul Chat live</string>
   <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
   <string name="morphe_hide_comments_button_title">Ascunde butonul Comentarii</string>
+  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_connect_button_title">Ascunde butonul Conectare</string>
   <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears on live streamed videos. -->
   <string name="morphe_hide_report_button_title">Ascunde butonul Mai multe</string>
@@ -494,6 +552,7 @@ Notă: Dacă „Spoof video streams” nu este activat, activarea acesteia poate
   <string name="morphe_hide_shop_button_title">Ascunde butonul Cumpără</string>
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_save_button_title">Cookie-urile sunt folosite pentru a autentifica cererile API pentru text în timp real pentru subtitrări</string>
+  <string name="morphe_hide_more_button_title">Ascunde butonul Mai multe</string>
   <string name="morphe_fullscreen_buttons">Butoane modul ecran complet</string>
   <string name="morphe_hide_quick_actions_title">Ascunde bara de acțiune</string>
   <string name="morphe_hide_quick_actions_ask_button_title">Recuperează și salvează automat cookie-urile dacă sunt valide</string>
@@ -579,6 +638,7 @@ Pentru a accesa Setări, activați butonul Setări prin General → Bara de inst
   <string name="morphe_toolbar_screen_title">Bara de navigare</string>
   <string name="morphe_toolbar_screen_summary">Ascunde previzualizarea videoclipului următor în ecran complet înainte de începerea redării automate</string>
   <string name="morphe_hide_toolbar_cast_button_title">Ascunde butonul Distribuție</string>
+  <string name="morphe_hide_toolbar_chat_button_title">Ascunde butonul Chat</string>
   <string name="morphe_hide_toolbar_create_button_title">Ascunde butonul Retrage</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Ascunde butonul Ecran complet</string>
   <string name="morphe_hide_toolbar_notification_button_title">Ascunde butonul de notificări</string>
@@ -739,8 +799,11 @@ Setări → Redare (sau Redare automată) → Redare automată următorul videoc
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">Dezactivează gestul de glisare în sus în modul portret</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Dezactivează gestul de glisare în jos în modul portret</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Dezactivează gestul de glisare în jos în modul peisaj</string>
-  <!-- layout.player.fullscreen.openVideosFullscreen -->
-  <string name="morphe_open_videos_fullscreen_portrait_title">Deschide videoclipurile în modul ecran complet</string>
+  <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
+  <string name="morphe_open_videos_fullscreen_title">Deschide videoclipurile în modul ecran complet</string>
+  <string name="morphe_open_videos_fullscreen_entry_1">Dezactivat</string>
+  <string name="morphe_open_videos_fullscreen_entry_2">Portret</string>
+  <string name="morphe_open_videos_fullscreen_entry_3">Peisaj</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Opacitate suprapusă jucătorului</string>
   <string name="morphe_player_overlay_opacity_summary">Ajustați nivelul de transparență (0 este transparent, 100 este opac)</string>
@@ -767,7 +830,9 @@ Setări → Redare (sau Redare automată) → Redare automată următorul videoc
   <string name="morphe_ryd_estimated_like_summary">Afișează un număr estimat de aprecieri pe videoclipurile în care creatorul a dezactivat aprecierile</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Afișează alerte de eroare de conexiune</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Afișează o notificare atunci când serverul Return YouTube Dislike este indisponibil</string>
-  <string name="morphe_ryd_attribution_summary">Datele sunt furnizate de API-ul Returnare YouTube Dislike. Atinge aici pentru a afla mai multe</string>
+  <string name="morphe_ryd_attribution_summary">"Datele sunt furnizate de API-ul Return YouTube Dislike.
+
+Atingeți aici pentru a deschide ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">ReturnYouTubeDislike statistici API ale acestui dispozitiv</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Timp de răspuns API, medie</string>
@@ -1009,7 +1074,9 @@ Dacă nu trimiteți o evidențiere, apăsați Anulare și marcați a doua locaț
   <string name="morphe_sb_color_opacity_label">Opacitate:</string>
   <string name="morphe_sb_color_dot_label">Culoare:</string>
   <string name="morphe_sb_about_title">Despre</string>
-  <string name="morphe_sb_about_api_summary">Datele sunt furnizate de API-ul SponsorBlock. Apasă aici pentru a afla mai multe și a vedea descărcările pentru alte platforme</string>
+  <string name="morphe_sb_about_api_summary">"Datele sunt furnizate de API-ul SponsorBlock.
+
+Atingeți aici pentru a deschide Sponsor.ajay.app și a vedea descărcările pentru alte platforme"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Aspect dispozitiv</string>
   <string name="morphe_change_form_factor_entry_1">Implicit</string>
@@ -1018,20 +1085,23 @@ Dacă nu trimiteți o evidențiere, apăsați Anulare și marcați a doua locaț
   <string name="morphe_change_form_factor_entry_4">Automatizări</string>
   <string name="morphe_change_form_factor_user_dialog_message">"Modificările includ:
 
-Aspectul pentru tabletă
-• Postările comunității sunt ascunse
-• Setarea Redare în fluxuri nu este disponibilă
-• Butonul Remix și Butonul Sunet nu sunt disponibile în Shorts
-• Bara de acțiuni video nu este pliată
+Aspect tabletă
+• Postările din Comunitate sunt ascunse
+• Setarea de redare în fluxuri nu este disponibilă
+• Butoanele Remix și Sunet nu sunt disponibile în Shorts
+• Bara de acțiuni video veche, neprăbușită, este afișată
 
-Aspectul pentru Automotive
-• Fluxul este organizat pe teme și canale
-• Setarea Redare în fluxuri nu este disponibilă
-• Butonul Remix și Butonul Sunet nu sunt disponibile în Shorts
-• Shorts se deschid în playerul normal
-• Bara de acțiuni video nu este pliată"</string>
+Aspect auto
+• Fluxul este organizat pe subiecte și canale
+• Setarea de redare în fluxuri nu este disponibilă
+• Butoanele Remix și Sunet nu sunt disponibile în Shorts
+• Shorts se deschid în playerul obișnuit
+• Bara de acțiuni video veche, neprăbușită, este afișată"</string>
   <string name="morphe_tablet_layout_in_player_title">Activează aspectul tabletă în player</string>
-  <string name="morphe_tablet_layout_in_player_summary">Restabilește aspectul vechi al playerului</string>
+  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+  <string name="morphe_tablet_layout_in_player_summary">"Restabilește aspectul vechi al playerului
+
+Limitări: Dacă \"Restaurare bară de acțiuni video veche\" este dezactivată, suprapunerea \"Mai multe videoclipuri\" s-ar putea să nu fie disponibilă"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Falsifică versiunea aplicației</string>
   <string name="morphe_spoof_app_version_summary">Păcălește serverul să creadă că utilizezi o versiune mai veche a aplicației pentru a restabili funcțiile UI moștenite</string>
@@ -1289,4 +1359,9 @@ Redarea video cu AV1 poate sacada sau pierde cadre."</string>
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Forțarea sunetului original nu este disponibilă</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Varianta JavaScript a playerului</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Extinde durata DVR pentru transmisiuni live până la 7 zile în trecut</string>
+  <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <string name="morphe_restore_old_video_action_bar_title">Restaurare bara de acțiune video veche</string>
+  <string name="morphe_restore_old_video_action_bar_summary">"Corectează problema neafisarii dislike-urilor și imposibilitatea de a ascunde butoanele de acțiune video.
+
+Limitări: Revine la stilul vechi al suprapunerii „Mai multe videoclipuri”"</string>
 </resources>

@@ -19,6 +19,7 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.fix.videoactionbar.restoreOldVideoActionBarPatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.litho.node.treeNodeElementHookPatch
@@ -47,7 +48,8 @@ val hideVideoActionButtonsPatch = bytecodePatch(
         treeNodeElementHookPatch,
         fixProtoLibraryPatch,
         videoInformationPatch,
-        quickActionsMarginPatch
+        quickActionsMarginPatch,
+        restoreOldVideoActionBarPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -65,9 +67,11 @@ val hideVideoActionButtonsPatch = bytecodePatch(
                             SwitchPreference("morphe_hide_ask_button"),
                             SwitchPreference("morphe_hide_clip_button", summary = true),
                             SwitchPreference("morphe_hide_comments_button"),
+                            SwitchPreference("morphe_hide_connect_button"),
                             SwitchPreference("morphe_hide_download_button"),
                             SwitchPreference("morphe_hide_hype_button"),
                             SwitchPreference("morphe_hide_like_dislike_button"),
+                            SwitchPreference("morphe_hide_more_button"),
                             SwitchPreference("morphe_hide_promote_button"),
                             SwitchPreference("morphe_hide_remix_button"),
                             SwitchPreference("morphe_hide_report_button"),

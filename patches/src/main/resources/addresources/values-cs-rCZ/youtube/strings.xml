@@ -234,6 +234,7 @@ Změny zahrnují:
   <string name="morphe_hide_keyword_content_home_title">Skrýt domovská videa podle klíčových slov</string>
   <string name="morphe_hide_keyword_content_search_title">Skrýt výsledky vyhledávání podle klíčových slov</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Skrýt videa z odběrů podle klíčových slov</string>
+  <string name="morphe_hide_keyword_content_comments_title">Skrýt komentáře podle klíčových slov</string>
   <string name="morphe_hide_keyword_content_phrases_title">Klíčová slova ke skrytí</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
@@ -243,12 +244,12 @@ Klíčová slova mohou být jakýkoli text zobrazený v názvech videí nebo ná
 
 Slova s velkými písmeny uprostřed musí odpovídat přesně (např. iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">O filtrování klíčových slov</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Domů / Přihlášení / Výsledky vyhledávání jsou filtrovány tak, aby se skryl obsah, který odpovídá klíčovým frázím
+  <string name="morphe_hide_keyword_content_about_summary">"Domů / Přihlášení / Vyhledávání / Komentáře jsou filtrovány, aby se skryl obsah, který odpovídá klíčovým frázím
 
 Omezení:
 • Krátká videa nelze skrýt podle názvu kanálu
-• Některé komponenty uživatelského rozhraní nemusí být skryty
-• Hledání klíčového slova nemusí zobrazit žádné výsledky"</string>
+• Některé prvky uživatelského rozhraní nemusí být skryty
+• Vyhledávání klíčového slova nemusí zobrazit žádné výsledky"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Shoda celých slov</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Ohraničení klíčového slova/fráze dvojitými uvozovkami zabrání částečným shodám s názvy videí a názvy kanálů&lt;br&gt;&lt;br&gt;Například,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; skryje video: &lt;b&gt;Jak AI funguje?&lt;/b&gt;&lt;br&gt;ale neskryje: &lt;b&gt;Co znamená fair use?&lt;/b&gt;</string>
@@ -305,6 +306,59 @@ Omezení:
 
 Zkontrolujte, zda je název balíčku správný a aplikace je nainstalována"</string>
   <string name="morphe_external_downloader_empty_warning">Název balíčku nemůže být prázdný</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">Hlasový překlad</string>
+  <string name="morphe_vot_screen_summary">Přečte titulky videa nahlas pomocí text-to-speech v zařízení, synchronizovaně s přehráváním</string>
+  <string name="morphe_vot_enabled_title">Hlasový překlad</string>
+  <string name="morphe_vot_caption_language_title">Jazyk</string>
+  <string name="morphe_vot_translation_service_title">Poskytovatel překladu</string>
+  <string name="morphe_vot_original_audio_volume_title">Hlasitost původního zvuku</string>
+  <string name="morphe_vot_original_audio_volume_summary">Hlasitost původního zvuku YouTube během překladu</string>
+  <string name="morphe_vot_translation_volume_title">Hlasitost překladu</string>
+  <string name="morphe_vot_translation_volume_summary">Hlasitost namluveného překladu</string>
+  <string name="morphe_vot_max_speech_rate_title">Maximální rychlost řeči</string>
+  <string name="morphe_vot_max_speech_rate_summary">Maximální multiplikátor rychlosti řeči při umisťování řeči do slotu titulku</string>
+  <string name="morphe_vot_mymemory_info_summary">"Bezplatné překladatelské API, nevyžaduje se žádný API klíč. Až 5 000 znaků denně v bezplatné verzi nebo až 50 000 znaků denně s e-mailovou adresou.
+
+Klepnutím zde otevřete MyMemory.translated.net"</string>
+  <string name="morphe_vot_mymemory_email_title">E-mail MyMemory</string>
+  <string name="morphe_vot_mymemory_email_summary">Volitelné. Zadejte svou e-mailovou adresu MyMemory a zvyšte denní limit z 5 000 na 50 000 znaků. Nechte prázdné, pokud chcete použít anonymní limit</string>
+  <string name="morphe_vot_openrouter_info_summary">"Placené překlady pomocí AI přes OpenRouter. Doplňte kredit a přeložte tisíce videí. Mistral Nemo je nejlevnější možnost, Gemma 4 nabízí nejvyšší kvalitu.
+
+Klepnutím zde otevřete OpenRouter.ai"</string>
+  <string name="morphe_vot_openrouter_api_key_title">API klíč OpenRouter</string>
+  <string name="morphe_vot_openrouter_api_key_summary">Váš API klíč OpenRouter. Vytvořte klíč na OpenRouter.ai > Pracovní prostor > API klíče</string>
+  <string name="morphe_vot_openrouter_model_title">Model OpenRouter</string>
+  <string name="morphe_vot_openrouter_model_custom">Vlastní</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter není nakonfigurován</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Zadejte svůj API klíč OpenRouter v nastavení a poté vyberte tohoto poskytovatele</string>
+  <string name="morphe_vot_cost_free">Zdarma</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s za 100 hodin videa</string>
+  <string name="morphe_vot_tts_voice_type">Hlas</string>
+  <string name="morphe_vot_tts_system">Systém</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Multijazyčný mužský</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Multijazyčná ženská</string>
+  <string name="morphe_vot_voice_gender_male">Mužský</string>
+  <string name="morphe_vot_voice_gender_female">Ženský</string>
+  <string name="morphe_vot_tts_sample">Je čas na přeměnu! </string>
+  <string name="morphe_vot_http_error_title">Překlad nedostupný</string>
+  <string name="morphe_vot_http_error_message">"Překladatelská služba vrátila chybu HTTP %s. Vaše IP adresa byla pravděpodobně omezena až na 24 hodin.
+
+Pro pokračování v používání překladů přepněte v nastavení jiného poskytovatele překladů nebo použijte VPN"</string>
+  <string name="morphe_vot_do_not_show_again">Už se to nezobrazovat</string>
+  <string name="morphe_vot_export_api_key_warning">"Vaše nastavení obsahuje API klíč OpenRouter.
+
+API klíč by se nikdy neměl sdílet. Kdokoli s přístupem k němu může používat vaše kredity OpenRouter"</string>
+  <string name="morphe_vot_openrouter_credits_title">Limit kreditu OpenRouter byl dosažen</string>
+  <string name="morphe_vot_openrouter_credits_message">Byl vyčerpán limit kreditu OpenRouter. Doplňte zůstatek nebo zvyšte limit výdajů klíče na OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">Otevřít OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">Překlad OpenRouter selhal (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">Dosažen denní limit MyMemory</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Dostupné opět v %s. </string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Využili jste dnešní bezplatnou kvótu překladů MyMemory (5 000 znaků). Přidejte e-mail MyMemory v nastavení a zvyšte denní limit na 50 000 znaků, nebo přepněte na jinou překladatelskou službu</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Využili jste dnešní kvótu překladů MyMemory (50 000 znaků). Přepněte na jinou překladatelskou službu nebo zkusím zítra</string>
+  <string name="morphe_vot_mymemory_error">Překlad MyMemory selhal (stav %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Povolit smyčku videa</string>
   <string name="morphe_do_not_remember_loop_video_title">Nezapomenout přehrávání videa ve smyčce</string>
@@ -355,6 +409,8 @@ Upozornění: Možná nebude fungovat u živých přenosů"</string>
   <string name="morphe_queue_restore_summary">Fronta je zachována i po restartu aplikace</string>
   <string name="morphe_swap_save_and_queue_actions_title">Prohoďte akce Uložit a Zařadit do fronty</string>
   <string name="morphe_swap_save_and_queue_actions_summary">Klepnutím zobrazíte možnosti fronty, podržením uložíte pro pozdější zhlédnutí</string>
+  <string name="morphe_queue_override_flyout_menu_title">Přepsat frontu flyout nabídky</string>
+  <string name="morphe_queue_override_flyout_menu_summary">Otevře frontu Morphe místo fronty YouTube</string>
   <string name="morphe_queue_manager_check_failed_auth">Není přihlášen</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">Není ID seznamu přehrávání</string>
   <string name="morphe_queue_manager_check_failed_queue">Fronta je prázdná</string>
@@ -470,6 +526,8 @@ Poznámka: Pokud není povolena možnost \"Spoof video streams\", povolení tét
   <string name="morphe_hide_stop_ads_button_title">Skrýt tlačítko \'Zastavit reklamy\'</string>
   <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
   <string name="morphe_hide_comments_button_title">Skrýt tlačítko Komentáře</string>
+  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_connect_button_title">Skrýt tlačítko Připojit</string>
   <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears on live streamed videos. -->
   <string name="morphe_hide_report_button_title">Skrýt tlačítko Nahlásit</string>
@@ -494,6 +552,7 @@ Poznámka: Pokud není povolena možnost \"Spoof video streams\", povolení tét
   <string name="morphe_hide_shop_button_title">Skrýt tlačítko Obchod</string>
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_save_button_title">Skrývá kontextové informační zprávy v sekci komentářů</string>
+  <string name="morphe_hide_more_button_title">Skrýt tlačítko Více</string>
   <string name="morphe_fullscreen_buttons">Tlačítka v režimu celé obrazovky</string>
   <string name="morphe_hide_quick_actions_title">Skrýt panel akcí</string>
   <string name="morphe_hide_quick_actions_ask_button_title">Skrývá náhled komentáře pod videem před otevřením celé sekce komentářů</string>
@@ -579,6 +638,7 @@ Pro přístup k Nastavení povolte tlačítko Nastavení přes Obecné → Nást
   <string name="morphe_toolbar_screen_title">Nárazovka</string>
   <string name="morphe_toolbar_screen_summary">Skrýt menu Další nastavení / Více</string>
   <string name="morphe_hide_toolbar_cast_button_title">Skrýt tlačítko Odeslat</string>
+  <string name="morphe_hide_toolbar_chat_button_title">Skrýt tlačítko chatu</string>
   <string name="morphe_hide_toolbar_create_button_title">Skrýt menu Smyčka videa</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Skrýt menu Režim Ambient</string>
   <string name="morphe_hide_toolbar_notification_button_title">Skrýt menu Stabilní hlasitost</string>
@@ -739,8 +799,11 @@ Nastavení → Přehrávání (nebo Automatické přehrávání) → Automaticky
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">Zakázat gesta při přejetí prstem nahoru v portrétním režimu</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Zakázat gesto přejetím dolů na výšku</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Zakázat gesto přejetím dolů na šířku</string>
-  <!-- layout.player.fullscreen.openVideosFullscreen -->
-  <string name="morphe_open_videos_fullscreen_portrait_title">Otevřít videa v režimu na celou obrazovku na výšku</string>
+  <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
+  <string name="morphe_open_videos_fullscreen_title">Otevřít videa v režimu na celou obrazovku</string>
+  <string name="morphe_open_videos_fullscreen_entry_1">Vypnuto</string>
+  <string name="morphe_open_videos_fullscreen_entry_2">Na výšku</string>
+  <string name="morphe_open_videos_fullscreen_entry_3">Na šířku</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Průhlednost překrytí přehrávače</string>
   <string name="morphe_player_overlay_opacity_summary">Upravte úroveň průhlednosti (0 je průhledná, 100 je neprůhledná)</string>
@@ -767,7 +830,9 @@ Nastavení → Přehrávání (nebo Automatické přehrávání) → Automaticky
   <string name="morphe_ryd_estimated_like_summary">Zobrazuje odhadovaný počet lajků na videích, kde tvůrce zakázal lajky</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Zobrazit upozornění na chyby připojení</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Zobrazí se upozornění, když server Return YouTube Dislike není k dispozici</string>
-  <string name="morphe_ryd_attribution_summary">Data jsou poskytována API Return YouTube Dislike. Klepnutím se dozvíte více</string>
+  <string name="morphe_ryd_attribution_summary">"Data poskytuje Return YouTube Dislike API.
+
+Klepnutím sem otevřete ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Statistiky API Return YouTube Dislike tohoto zařízení</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Doba odezvy API, průměr</string>
@@ -1009,7 +1074,9 @@ Pokud neodesíláte zvýraznění, klepněte na Zrušit a označte druhou polohu
   <string name="morphe_sb_color_opacity_label">Průhlednost:</string>
   <string name="morphe_sb_color_dot_label">Barva:</string>
   <string name="morphe_sb_about_title">O aplikaci</string>
-  <string name="morphe_sb_about_api_summary">Data poskytuje rozhraní API SponsorBlock. Klepněte zde, abyste se dozvěděli více a zobrazili si soubory ke stažení pro další platformy</string>
+  <string name="morphe_sb_about_api_summary">"Data poskytuje SponsorBlock API.
+
+Klepnutím sem otevřete Sponsor.ajay.app a zobrazte si soubory ke stažení pro jiné platformy"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Rozložení zařízení</string>
   <string name="morphe_change_form_factor_entry_1">Výchozí</string>
@@ -1018,20 +1085,23 @@ Pokud neodesíláte zvýraznění, klepněte na Zrušit a označte druhou polohu
   <string name="morphe_change_form_factor_entry_4">Automobilový</string>
   <string name="morphe_change_form_factor_user_dialog_message">"Změny zahrnují:
 
-Rozložení pro tablet
-• Komunitní příspěvky jsou skryté
+Rozložení pro tablety
+• Příspěvky komunity jsou skryté
 • Nastavení přehrávání v kanálech není k dispozici
-• Tlačítko Remix a tlačítko Zvuk nejsou k dispozici ve Shorts
-• Akční lišta videa není složená
+• Tlačítko Remix a tlačítko Zvuk nejsou k dispozici v Shortech
+• Zobrazena je stará akční lišta videa, která není zmenšená
 
-Rozložení pro automobil
-• Kanál je uspořádán podle témat a kanálů
+Rozložení pro automobily
+• Kanál je organizován podle témat a kanálů
 • Nastavení přehrávání v kanálech není k dispozici
-• Tlačítko Remix a tlačítko Zvuk nejsou k dispozici ve Shorts
+• Tlačítko Remix a tlačítko Zvuk nejsou k dispozici v Shortech
 • Shorts se otevírají v běžném přehrávači
-• Akční lišta videa není složená"</string>
+• Zobrazena je stará akční lišta videa, která není zmenšená"</string>
   <string name="morphe_tablet_layout_in_player_title">Povolit rozložení tabletu v přehrávači</string>
-  <string name="morphe_tablet_layout_in_player_summary">Obnoví původní rozložení přehrávače</string>
+  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+  <string name="morphe_tablet_layout_in_player_summary">"Obnoví staré rozložení přehrávače
+
+Omezení: Pokud je vypnutá možnost \"Obnovit starou lištu nástrojů videa\", překrytí \"Další videa\" nemusí být k dispozici"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Napodobit verzi aplikace</string>
   <string name="morphe_spoof_app_version_summary">Triky serveru podvede, aby si myslel, že používáte starší verzi aplikace, a obnovil tak dědictví UI funkcí</string>
@@ -1157,9 +1227,9 @@ Omezení: Použití tlačítka zpět na panelu nástrojů nemusí fungovat"</str
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow &amp; Původní náhledy</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow &amp; Zachycení snímků</string>
   <string name="morphe_alt_thumbnail_options_entry_4">Zachycení snímků</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow poskytuje miniatury videí YouTube z crowdsourcingu. Tyto miniatury jsou často relevantnější než ty, které poskytuje YouTube
+  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow poskytuje crowdsourced miniatury pro videa YouTube. Tyto miniatury jsou často relevantnější než ty poskytované YouTube
 
-Pokud je tato funkce povolena, budou adresy URL videí odeslány na server API a nebudou odesílány žádné další údaje. Pokud video nemá miniatury DeArrow, zobrazí se originální nebo statické snímky
+Pokud je povoleno, adresy URL videí budou odeslány na server API a nebudou odeslány žádné další údaje. Pokud video nemá miniatury DeArrow, zobrazí se originální nebo statické snímky
 
 Klepnutím sem se dozvíte více o DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Zobrazit upozornění na chyby připojení</string>
@@ -1289,4 +1359,9 @@ Přehrávání videa s AV1 se může sekat nebo vypadávat snímky."</string>
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Vynutit původní zvuk není k dispozici</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Varianta JavaScript pro přehrávač</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Zobrazit podvádění ve statistikách pro nadšence</string>
+  <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <string name="morphe_restore_old_video_action_bar_title">Obnovit starou akční lištu videa</string>
+  <string name="morphe_restore_old_video_action_bar_summary">"Opravuje problém se nezobrazovanými dislajky a nemožností skrýt tlačítka akcí videa.
+
+Omezení: Vrací se ke staršímu překryvu 'Další videa'"</string>
 </resources>

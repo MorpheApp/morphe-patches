@@ -25,7 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_1_ads_title">ពាណិជ្ជកម្ម</string>
   <string name="morphe_settings_music_screen_2_general_title">ជាទូទៅ</string>
   <string name="morphe_settings_music_screen_3_player_title">ការីចាក់</string>
-  <string name="morphe_settings_music_screen_4_misc_title">ផ្សេងៗទៀត</string>
+  <string name="morphe_settings_music_screen_5_misc_title">ផ្សេងៗទៀត</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">លាក់ស្លាក “ទទួលយក Music Premium”</string>
   <!-- ad.video.hideVideoAdsPatch -->
@@ -33,6 +33,7 @@ Second \"item\" text"</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <!-- Empty string because custom preference handles the title itself -->
   <string name="morphe_music_crossfade_about_title">អំពីកម្មវិធីនេះ</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">បើកមុខងារសាឡើងវិញជាអចិន្ត្រៃយ៍</string>
   <!-- layout.buttons.hideButtonsPatch -->
@@ -59,4 +60,18 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">លាក់ស្លាកប៊ូតុងរុករក</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">លាក់ប៊ូតុងអាប់ក្រេដ</string>
+  <!-- interaction.scrobbling.scrobblingPatch -->
+  <!-- 'scrobbling' must be kept untranslated -->
+  <!-- 'scrobbled' must be kept untranslated -->
+  <!-- 'scrobble' must be kept untranslated -->
+  <!-- 'scrobble' must be kept untranslated -->
+  <!-- 'scrobble' must be kept untranslated -->
+  <!-- 'scrobble' must be kept untranslated -->
+  <!-- 'scrobbling' must be kept untranslated -->
+  <!-- 'scrobbling' must be kept untranslated -->
+  <!-- 'scrobbled' must be kept untranslated -->
+  <!-- 'scrobble' must be kept untranslated -->
+  <!-- 'scrobble' must be kept untranslated -->
+  <!-- 'scrobble' must be kept untranslated -->
+  <!-- 'scrobble' must be kept untranslated -->
 </resources>

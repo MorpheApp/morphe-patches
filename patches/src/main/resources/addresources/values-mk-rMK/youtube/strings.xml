@@ -227,7 +227,6 @@ Second \"item\" text"</string>
 
 Зборовите со големи букви во средината мора да одговараат точно (на пр. iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">За филтрирање со клучни зборови</string>
-  <string name="morphe_hide_keyword_content_about_summary">"На почетната страница / Претплати / Резултатите од пребарување се филтрирани за да се скрие содржина што одговара на клучните зборови."</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Оптимизација на целосно зборот</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Окружувањето на клучна реч/фраза со двојни наводници ќе спречи делумни совпаѓања на наслови на видеа и имиња на канали&lt;br&gt;&lt;br&gt;На пример,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; ќе го скрие видеото: &lt;b&gt;Како работи AI?&lt;/b&gt;&lt;br&gt;но нема да го скрие: &lt;b&gt;Што значи фер употреба?&lt;/b&gt;</string>
@@ -278,6 +277,10 @@ Second \"item\" text"</string>
 
 Проверете дали името на пакетот е правилно и дали апликацијата е инсталирана"</string>
   <string name="morphe_external_downloader_empty_warning">Името на пакетот не може да биде празно</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_openrouter_model_custom">По нарачка</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_tts_system">Систем</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Вклучи повторување на видеото</string>
   <string name="morphe_do_not_remember_loop_video_title">Не се сеќавам видео во повторување</string>
@@ -407,6 +410,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_stop_ads_button_title">Прикријте го копчето \'Stop ads\'</string>
   <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
   <string name="morphe_hide_comments_button_title">Прикријте го копчето за Коментари</string>
+  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears on live streamed videos. -->
   <string name="morphe_hide_report_button_title">Прикријте го копчето за Пријавување</string>
@@ -665,8 +669,8 @@ Second \"item\" text"</string>
   <string name="morphe_exit_fullscreen_entry_3">Само хоризонтален режим</string>
   <string name="morphe_exit_fullscreen_entry_4">Портрет и пејзаж</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
-  <!-- layout.player.fullscreen.openVideosFullscreen -->
-  <string name="morphe_open_videos_fullscreen_portrait_title">Отвори видеа во портретен цел екран</string>
+  <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
+  <string name="morphe_open_videos_fullscreen_entry_1">Оневозможено</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Непроѕирност на прекривката на плеер</string>
   <string name="morphe_player_overlay_opacity_summary">Прилагодете ја провидноста (0 е провидно, 100 е непровидно)</string>
@@ -693,7 +697,6 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_summary">Прикажува приближен број на Likes на видеа на кои креаторот ги деактивирал Likes</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Прикажи известувања за грешки во поврзувањето</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Прикажува известување кога серверот Return YouTube Dislike не е достапен</string>
-  <string name="morphe_ryd_attribution_summary">Податоците се дадени од Return YouTube Dislike API. Кликнете овде за да дознаете повеќе</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Статистика на Return YouTube Dislike API на овој уред</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Време за одговор на API, просек</string>
@@ -924,27 +927,13 @@ Second \"item\" text"</string>
   <string name="morphe_sb_color_opacity_label">Непровидност:</string>
   <string name="morphe_sb_color_dot_label">Боја:</string>
   <string name="morphe_sb_about_title">Филмови</string>
-  <string name="morphe_sb_about_api_summary">Вести</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Поставување на уред</string>
   <string name="morphe_change_form_factor_entry_1">Плејлисти</string>
   <string name="morphe_change_form_factor_entry_2">Пребарување</string>
   <string name="morphe_change_form_factor_entry_3">Шопинг</string>
   <string name="morphe_change_form_factor_entry_4">Спорт</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Промените вклучуваат:
-
-Таблет изглед
-• Скриени се објавите од заедницата
-• Не е достапна поставката за репродукција во Feed
-• Копчето за ремикс и копчето Звук не се достапни во Shorts
-• Лентата со алатки за видео не е преклопена
-
-Изглед за автомобили
-• Feed е организиран по теми и канали
-• Не е достапна поставката за репродукција во Feed
-• Копчето за ремикс и копчето Звук не се достапни во Shorts
-• Shorts се отвораат во стандардниот плеер
-• Лентата со алатки за видео не е преклопена"</string>
+  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Трендинг</string>
   <string name="morphe_spoof_app_version_summary">Преглос на вештата и да ја врати во коврот</string>
@@ -1067,11 +1056,6 @@ Second \"item\" text"</string>
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow &amp; Оригинални слики</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow &amp; Снимки од екранот</string>
   <string name="morphe_alt_thumbnail_options_entry_4">Снимки од екранот</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow обезбедува слики на минијатури од други корисници за видеа на YouTube.
-
-Ако е активирано, URL-адресите на видеата ќе бидат испратени до API сервер и не се испраќаат други податоци. Ако видеото нема минијатури од DeArrow, ќе се прикажат оригиналните или сликите од екранот.
-
-Допрете овде за да дознаете повеќе за DeArrow."</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Прикажи известувања за грешка во поврзувањето</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary">Прикажува известување кога серверот DeArrow не е достапен</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">Конечно место на DeArrow API</string>
@@ -1188,4 +1172,5 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Недостапен принуден оригинален звук</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Варијанта на JavaScript на плеерот</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Прикажи лажирање во Статистика за гикови</string>
+  <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
 </resources>

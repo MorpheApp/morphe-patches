@@ -22,7 +22,7 @@ import app.morphe.extension.shared.ui.Dim;
  * Base class for hooking activities to inject a custom PreferenceFragment with a toolbar.
  * Provides common logic for initializing the activity and setting up the toolbar.
  */
-@SuppressWarnings({"deprecation", "NewApi"})
+@SuppressWarnings({"deprecation"})
 public abstract class BaseActivityHook extends Activity {
 
     public static final String MORPHE_SETTINGS_INTENT = "morphe_settings_intent";

@@ -69,7 +69,7 @@ val overrideYouTubeMusicButtonsPatch = bytecodePatch(
                                 (it as? ReferenceInstruction)?.reference?.let { ref ->
                                     val mRef = ref as? MethodReference
                                     mRef?.definingClass == "Landroid/content/Intent;" &&
-                                            (mRef.name == "setPackage" || mRef.name == "setData")
+                                            (mRef.name == "setPackage" || mRef.name == "setData" || mRef.name == "setComponent")
                                 } == true
                     } == true) {
                     needsPatch = true
@@ -88,6 +88,8 @@ val overrideYouTubeMusicButtonsPatch = bytecodePatch(
                                     index to "overrideSetPackage(Landroid/content/Intent;Ljava/lang/String;)Landroid/content/Intent;"
                                 } else if (ref.name == "setData" && ref.parameterTypes == listOf("Landroid/net/Uri;")) {
                                     index to "overrideSetData(Landroid/content/Intent;Landroid/net/Uri;)Landroid/content/Intent;"
+                                } else if (ref.name == "setComponent" && ref.parameterTypes == listOf("Landroid/content/ComponentName;")) {
+                                    index to "overrideSetComponent(Landroid/content/Intent;Landroid/content/ComponentName;)Landroid/content/Intent;"
                                 } else null
                             } else null
                         } else null

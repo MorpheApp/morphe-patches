@@ -5,7 +5,6 @@ import android.preference.PreferenceScreen;
 import android.widget.Toolbar;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.GmsCoreSupportPatch;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.settings.preference.ToolbarPreferenceFragment;

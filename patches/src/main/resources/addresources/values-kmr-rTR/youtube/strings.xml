@@ -236,6 +236,7 @@ Guherînan têne xistine:
   <string name="morphe_hide_keyword_content_home_title">Vîdyoyên tabeya malê bi şêwaziyan veşêre</string>
   <string name="morphe_hide_keyword_content_search_title">Encamên lêgerînê bi şêwaziyan veşêre</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Vîdyoyên tabeya aboneyan bi şêwaziyan veşêre</string>
+  <string name="morphe_hide_keyword_content_comments_title">Şîroveyên bi peyvên sereke veşêrin</string>
   <string name="morphe_hide_keyword_content_phrases_title">Şêwaziyên veşerê</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
@@ -245,12 +246,12 @@ Keywords can be any text shown in video titles or channel names
 
 Words with uppercase letters in the middle must match exactly (ie: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">Li ser filtrakirina gotinan</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Mal / Aboneyan / Sonuçên lêgerînê ji bo veşartina pêwîstên ku bandora navê frazên lêgerînê dikin, hatine çêkirin
+  <string name="morphe_hide_keyword_content_about_summary">"Serê malê / Abonayî / Lêgerîn / Şîrovet bi peyvên sereke fêltirêkirin da ku naveroka ku bi hev re tê peyvên sereke veşêre
 
-Sînorgertî:
-• Shorts nikare bi navê kanalê veşêre.
-• Çend komên UI berê veşêre.
-• Lêgerîna ji bo pêwistiyek dibe ku dibe ku encamên nêzîk nedê."</string>
+Sînorkirin:
+• Kurtevîdan bi navê kanalenê nayê veşartin
+• Hinek pêkhateyên UI neyê veşartin
+• Lêgerîna peyvek sereke dibe ku encamên tune nîşan bide"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Hevokan tevbidin</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Nêçirandin şêwaziyê/ji aşîqê bi pêlên dobel ve, pêvajo bibe ku ne hemî sêwirên navan û kanalê tên neseranden&lt;br&gt;&lt;br&gt;Bo nimûne,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; vîdyoya: &lt;b&gt;Ka AI kî wa dîtin?&lt;/b&gt; veşêre&lt;br&gt;lê &lt;b&gt;Ferqa ku fermanskeriya çekebeweşana raya çawa dîtin?&lt;/b&gt; neserandin.</string>
@@ -307,6 +308,59 @@ Sînorgertî:
 
 Doza navê pakkê rast be û sepan serdest be"</string>
   <string name="morphe_external_downloader_empty_warning">Navê pakkê nikare vala be</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">Wergerê dîtinî</string>
+  <string name="morphe_vot_screen_summary">Jê wergirê nivîskên vîdyoyê bi teknolojîya veguherandina nivîsê ya cîhazê, bi hevdîtina lîstikê, bi dengî bixîne</string>
+  <string name="morphe_vot_enabled_title">Wergerê dîtinî</string>
+  <string name="morphe_vot_caption_language_title">Ziman</string>
+  <string name="morphe_vot_translation_service_title">Pêşangeha wergerê</string>
+  <string name="morphe_vot_original_audio_volume_title">Hêza dengê ya orjînal</string>
+  <string name="morphe_vot_original_audio_volume_summary">Hêza dengê ya YouTube-yê ya orjînal dema werger parve dike</string>
+  <string name="morphe_vot_translation_volume_title">Hêza wergerê</string>
+  <string name="morphe_vot_translation_volume_summary">Hêza dengê dublajkirî yê wergerê</string>
+  <string name="morphe_vot_max_speech_rate_title">Rêjeya herî bilind a axaftinê</string>
+  <string name="morphe_vot_max_speech_rate_summary">Herî zêde zêdekirina lezê dema danîna axaftinê di cîhê jêrnavan de</string>
+  <string name="morphe_vot_mymemory_info_summary">"API-ya wergerê ya belaş, ne hewce ye anahtara API-yê. Bi heya 5,000 karakteran di rojê de li ser qadê belaş, an bi heya 50,000 karakteran di rojê de bi adreseya e-mailê.
+
+Bike li vir da vekirina MyMemory.translated.net"</string>
+  <string name="morphe_vot_mymemory_email_title">E-maila MyMemory</string>
+  <string name="morphe_vot_mymemory_email_summary">Dibe ku ne hewce ye. E-maila xwe ya MyMemory-yê têkeve da zêdekirina sînorê rojane ji 5,000 berbi 50,000 karakteran. Bi vala bihêle da bikarbîne sînorê nebê navdar</string>
+  <string name="morphe_vot_openrouter_info_summary">"Wergera AI-yê ya parêkirî bi rêya OpenRouter. Çêbîne carekê û wergera hezar vîdeoyên din. Mistral Nemo ya herî hêsan e, Gemma 4 ji bo kalîteya herî zêde teklîf dike.
+
+Bike li vir da vekirina OpenRouter.ai"</string>
+  <string name="morphe_vot_openrouter_api_key_title">Anahtara API-yê ya OpenRouter</string>
+  <string name="morphe_vot_openrouter_api_key_summary">Anahtara API-yê ya OpenRouter-ê ya we. Çêbike anahtarê li OpenRouter.ai > Karûbar > Anahtarên API-yê</string>
+  <string name="morphe_vot_openrouter_model_title">Modela OpenRouter</string>
+  <string name="morphe_vot_openrouter_model_custom">Xas</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter ne hatiye saz kirin</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Têkeve anahtara API-ya OpenRouter-ê ya te li ser mîhengên berê ji bo hilbijartina dabînkerê vê</string>
+  <string name="morphe_vot_cost_free">Belaş</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s her 100 saet vîdeoyê</string>
+  <string name="morphe_vot_tts_voice_type">Deng</string>
+  <string name="morphe_vot_tts_system">Sîstem</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Nirxê mêr ya zimanên pirjimar</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Nirxê jin ya zimanên pirjimar</string>
+  <string name="morphe_vot_voice_gender_male">Mêr</string>
+  <string name="morphe_vot_voice_gender_female">Jin</string>
+  <string name="morphe_vot_tts_sample">Wextê guhertinê ye!</string>
+  <string name="morphe_vot_http_error_title">Werger ne berdest e</string>
+  <string name="morphe_vot_http_error_message">"Hizmeta wergerê xeletiya HTTP-yê %s da. Adresa IP-ya te bi heya 24 saetan hatiye bindir kirin.
+
+Da ku bikar bînin wergeran, guhêrîne dabînkerê wergerê din li ser mîhengên, an bikarbîne VPN"</string>
+  <string name="morphe_vot_do_not_show_again">Ne nîşan de bide dîsa</string>
+  <string name="morphe_vot_export_api_key_warning">"Mîhengên we anahtara API-ya OpenRouter bin. 
+
+Divê anahtara we ne were parve kirin. Kesê ku bigihe wê dikare bikar bîne kredîyên OpenRouter-ê we"</string>
+  <string name="morphe_vot_openrouter_credits_title">Sînore kredîyê ya OpenRouter gihîştiye</string>
+  <string name="morphe_vot_openrouter_credits_message">Sînore kredîyê ya OpenRouter-ê ya we gihîştiye. Serkirin balanse we an zêde kirin sînore xerckirina anahtara we li OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">Veke OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">Wergera OpenRouter çê bû (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">Sînore rojane ya MyMemory gihîştiye</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Berdest dibe li %s.</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Hêj we bikar hînê kotaya wergerê ya belaş a MyMemory-yê ya roja îro (5,000 karakteran). Zêde bike e-maila we ya MyMemory-yê li ser mîhengên da zêde bike sînorê rojane berbi 50,000 karakteran, an guhêrîne dabînkerê wergerê din</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Hêj we bikar hînê kotaya wergerê ya MyMemory-yê (50,000 karakteran). Guhêrîne dabînkerê wergerê din an bicerîbîne dîsa yarîn</string>
+  <string name="morphe_vot_mymemory_error">Wergera MyMemory çê bû (hewl %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Çalak bikin loop vîdyoyê</string>
   <string name="morphe_do_not_remember_loop_video_title">Vîdeoya dawî kirinê ji bîr neke</string>
@@ -357,6 +411,8 @@ Info: May not work on live streams"</string>
   <string name="morphe_queue_restore_summary">Lîste piştî destkirina serî lêve tê parastin</string>
   <string name="morphe_swap_save_and_queue_actions_title">Veguherîneya kirina tomarkirinê û kirina rêzê</string>
   <string name="morphe_swap_save_and_queue_actions_summary">Bikîne bo vebijarkên rêzê, bikîne û bidin girtin da ku paşê li serê şîret bike</string>
+  <string name="morphe_queue_override_flyout_menu_title">Bi serkirîkirina pêşniyarên rêzika peydakirinê</string>
+  <string name="morphe_queue_override_flyout_menu_summary">Lihevîneya Morphe li şûna hejmara YouTube\'yê vekirin</string>
   <string name="morphe_queue_manager_check_failed_auth">Tewrê nîşanî dayî ne</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">Îd-a lîsteyê tune ye</string>
   <string name="morphe_queue_manager_check_failed_queue">Lîste vala ye</string>
@@ -472,6 +528,8 @@ Not: Ger 'Herikînên vîdyoyê' nebe, vekirina vê dikare têkiliyên nehevdît
   <string name="morphe_hide_stop_ads_button_title">Butona rawestgehek dîmenî veşêrin</string>
   <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
   <string name="morphe_hide_comments_button_title">Butona şîroveyê veşêrin</string>
+  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_connect_button_title">Butona Verbijîrê Veşêrin</string>
   <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears on live streamed videos. -->
   <string name="morphe_hide_report_button_title">Raportkirina butonê veşêrin</string>
@@ -496,6 +554,7 @@ Not: Ger 'Herikînên vîdyoyê' nebe, vekirina vê dikare têkiliyên nehevdît
   <string name="morphe_hide_shop_button_title">Butona dikanê veşêrin</string>
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_save_button_title">Butona tomar kirinê veşêrin</string>
+  <string name="morphe_hide_more_button_title">Butona Zêdetir Veşêrin</string>
   <string name="morphe_fullscreen_buttons">Biçikên tûjî</string>
   <string name="morphe_hide_quick_actions_title">Çekûlbarê bigihîne</string>
   <string name="morphe_hide_quick_actions_ask_button_title">Butona pirsê veşêrin</string>
@@ -582,6 +641,7 @@ Ji bo ku derfetên sazkarî pêşero, rêzika 'Settings' zivirînin bi General �
   <string name="morphe_toolbar_screen_title">Rêz</string>
   <string name="morphe_toolbar_screen_summary">Hilbijêre ku kîjan pêkhateyên di menuya veşêrîn de xuya dibe</string>
   <string name="morphe_hide_toolbar_cast_button_title">Butona birêveberînê veşêrin</string>
+  <string name="morphe_hide_toolbar_chat_button_title">Butona Şîrkirina Chatê veşêre</string>
   <string name="morphe_hide_toolbar_create_button_title">Dîmena Butona Çêkirin</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Butona mikrofonê veşêrin</string>
   <string name="morphe_hide_toolbar_notification_button_title">Butona nigihîştinê veşêrin</string>
@@ -742,8 +802,11 @@ Settings → Playback (an Autoplay) → Autoplay next video"</string>
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">Devêrê têkelê neşrîyê parçebûyî</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Portret mod da xêrkirina destûrê sekinîn</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Portreta horizontal da xêrkirina destûrê sekinîn</string>
-  <!-- layout.player.fullscreen.openVideosFullscreen -->
-  <string name="morphe_open_videos_fullscreen_portrait_title">Vîdyoyên li portreya qerezalîyê veke.</string>
+  <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
+  <string name="morphe_open_videos_fullscreen_title">Vîdyoyên bi modê tîrêjê vekin</string>
+  <string name="morphe_open_videos_fullscreen_entry_1">Vemirandî</string>
+  <string name="morphe_open_videos_fullscreen_entry_2">Portre</string>
+  <string name="morphe_open_videos_fullscreen_entry_3">Landin</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Şewitîya zeviyayê pêşandanê.</string>
   <string name="morphe_player_overlay_opacity_summary">Astê şeffafiyê bistîne (0 şeffaf e, 100 neşeffaf e)</string>
@@ -770,7 +833,9 @@ Settings → Playback (an Autoplay) → Autoplay next video"</string>
   <string name="morphe_ryd_estimated_like_summary">Hejmara hezkirî ya tê texmîn kirin li ser vîdeoyên ku afirîner hezkirinê dezaktîv kirine nîşan bide</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Îşaretên xeletêya têkiliyê nîşan bide</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Îşaretê nîşan dide gava ku servera Return YouTube Dislike hewîr be</string>
-  <string name="morphe_ryd_attribution_summary">Datek ji API-ya Return YouTube Dislike tê peyda kirin. Li vir biketina zêde besînîne</string>
+  <string name="morphe_ryd_attribution_summary">"Daneyan ji aliyê API-ya Return YouTube Dislike-ê ve hatine peyda kirin.
+
+Bike li vir da vekirina ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Statîstîkên API-ya Return YouTube Dislike ji vê alavê re.</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Demerê bersiva API, seraverî</string>
@@ -1013,29 +1078,34 @@ Ger hûn ne dixwin ronahîyek, bikirtînin Betal kirin û cîhê duyemîn nîşa
   <string name="morphe_sb_color_opacity_label">Astorî:</string>
   <string name="morphe_sb_color_dot_label">Reng:</string>
   <string name="morphe_sb_about_title">Derbarê</string>
-  <string name="morphe_sb_about_api_summary">Agahdariyê ji API-ya SponsorBlock tê kirin. Li vir amadebibin bêtir bifikirin û daxûwanên ji bo platformên din bibînin</string>
+  <string name="morphe_sb_about_api_summary">"Daneyan ji aliyê API-ya SponsorBlock-ê ve hatine peyda kirin.
+
+Bike li vir da vekirina Sponsor.ajay.app û dîsa dîtina platformên din"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Sêwirana cîhazê</string>
   <string name="morphe_change_form_factor_entry_1">Bixwe</string>
   <string name="morphe_change_form_factor_entry_2">Telefon</string>
   <string name="morphe_change_form_factor_entry_3">Tabled</string>
   <string name="morphe_change_form_factor_entry_4">Otomobîl</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Gûherînên tê de:
+  <string name="morphe_change_form_factor_user_dialog_message">"Guherîn tê de:
 
-Qeşeyê mezin
-• Postên Civakê veşartin
-• Astîmê lêbelgîrkirinê di danînên belavê de nîne
-• Dema bi Shortsê re, rêzika lîstinê û konteynerek Dengê nîn in
-• Barê çalakiyê ya vîdyoyê pêşîne nedin
+Saziya tabletan
+• Postên Civatê veşartî ne
+• Sazkirina lêkirina di xwarê de nepejirê
+• Butona Remix û Butona Dengê di Shorts de nepejirê
+• Bara kirrûbêja vîdyoya kevin ku nehatibe girtin nîşan dide
 
-Qeşeyê otomotîvê
-• Belavê bi waran û kanalên ku tê de rêz kirin
-• Astîmê lêbelgîrkirinê di danînên belavê de nîne
-• Dema bi Shortsê re, rêzika lîstinê û konteynerek Dengê nîn in
-• Shorts di xîlstokê asayî de vekirin
-• Barê çalakiyê ya vîdyoyê pêşîne nedin"</string>
+Saziya otomobîlan
+• Xwarê li gor navnîşanan û kanalên hatine rêzekirin.
+• Sazkirina lêkirina di xwarê de nepejirê
+• Butona Remix û Butona Dengê di Shorts de nepejirê
+• Shorts di lîstikvanê normal de vekirin
+• Bara kirrûbêja vîdyoya kevin ku nehatibe girtin nîşan dide"</string>
   <string name="morphe_tablet_layout_in_player_title">Rêvekirina sêwirana tabletê di lîstikvan de</string>
-  <string name="morphe_tablet_layout_in_player_summary">Mîzegeha layouta lîstikvanê yê kevnar vegerîne</string>
+  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+  <string name="morphe_tablet_layout_in_player_summary">"Pêşvekirina sêwirêşa lîstikvanê yê kevn
+
+Sînorkirin: Ger 'Pêşvekirina barra çalakiyê ya vîdyoya kevn' be jî nebe, dabeşa 'Vîdyoyên din' neyê dîtin."</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Versona asayî</string>
   <string name="morphe_spoof_app_version_summary">Serverê qedexe dike ku bi hesinkirina guhertoyek kevnertirîn ya app-ê, taybetmendiyên berê yên UI-yê vegerîne</string>
@@ -1161,11 +1231,11 @@ Sînordarî: Bikaranîna Butona paşve li ser Toolbarê dibe ku kar neke"</strin
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow &amp; Thumbnailên orîjinal</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow &amp; Gîrkirinên statik</string>
   <string name="morphe_alt_thumbnail_options_entry_4">Gîrkirinên statik</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow thumbnailên ji aliyê hemwelatiyan ve peyda dike ji bo vîdyoyên YouTube-yê. Ev thumbnailên heta nêzîktir in li ser wan ku YouTube peyda dike.
+  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow diyare resmên çêkerîn ji bo vîdeoyên YouTube-yê. Van resman pir caran ji ya pêşniyar kirina YouTube-yê têne hejkirin
 
-Ger were vekirin, serlêdêrên vîdyoyê dê were şandin ser seranserê API serverê û tu dane din nemêve. Ger vîdyoyek thumbnailên DeArrow tune bin, dê orîjinal an gîrkirina statik were nîşandin.
+Ger hatiye saz kirin, URL-ên vîdeoyê dê bên şandina serverê API-yê, û ne heya din daneyan tên şandin. Ger vîdeoyek wenda nîne resmên DeArrow, paşiya resmên orjînal an wan hatine girtin tên nîşan dîsa
 
-Li vir bitapîre ji bo bêtir hêsanîyê li ser DeArrow"</string>
+Bike li vir da vekirina DeArrow.ajay.app"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Pêstirî dîsêne berî nebeko şok û sînûse şîn-şûşê bikar bici kîrinê. Giritik ne tiştek şûşin kîninî dîşker di heşîn de şêrîne.</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary">Îşaretên xeletêya têkiliyê nîşan bide</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">Xwecihê API DeArrow</string>
@@ -1293,4 +1363,9 @@ Lêxistina video bi AV1 dikare kîzbirin an kêmuçêkî framean bike."</string>
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Hişandinê orîjinal audio tune</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Warianta JavaScriptê lîstikvanê</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Şopînkirina li Stats for nerds nîşan bide</string>
+  <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <string name="morphe_restore_old_video_action_bar_title">Çêkirina dîskê ya pelê vîdyoya kevnê</string>
+  <string name="morphe_restore_old_video_action_bar_summary">"Çêkirina kêşeya ku nehatî nîşandan û pêşîlîgirê pelê vîdyoyê ne dikare veşêrin
+
+Sînorkirin: Vegere ser şiklê 'Zêdetir vîdyo' yê yê kevnê"</string>
 </resources>

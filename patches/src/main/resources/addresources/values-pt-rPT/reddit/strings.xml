@@ -37,12 +37,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">Desativa a janela pop-up que aparece ao tirar uma captura de tela</string>
   <string name="morphe_hide_ask_button_title">Ocultar botão de Perguntar</string>
   <string name="morphe_hide_ask_button_summary">Oculta o botão de Perguntar na barra de pesquisa</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">Ocultar comunidades recomendadas</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">Oculta as prateleiras de comunidades recomendadas em subreddits</string>
-  <string name="morphe_hide_trending_today_shelf_title">Ocultar prateleira de Hoje em alta</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"Oculta a prateleira de Hoje em alta nas sugestões de pesquisa
-
-Limitação: Espaçadores visuais podem não ser ocultados"</string>
+  <string name="morphe_hide_communities_shelf_title">Ocultar prateleira de comunidades</string>
+  <string name="morphe_hide_communities_shelf_summary">Oculta a prateleira de comunidades relacionadas ou sugeridas em subreddits</string>
+  <string name="morphe_hide_trending_shelves_title">Ocultar prateleiras em alta</string>
+  <string name="morphe_hide_trending_shelves_summary">Oculta as prateleiras de Tendências do feed e das sugestões de pesquisa</string>
   <string name="morphe_remove_notification_dialog_title">Remover diálogo de sugestão de notificação</string>
   <string name="morphe_remove_notification_dialog_summary">Fecha automaticamente a caixa de diálogo de sugestão de notificação ao visitar um subreddit</string>
   <string name="morphe_show_view_count_title">Mostrar contagem de visualizações nas publicações</string>

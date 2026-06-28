@@ -109,6 +109,25 @@ Redarea va eșua dacă hash-ul scriptului JavaScript al playerului este depăși
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Forțează limba audio originală</string>
   <string name="morphe_force_original_audio_summary">Redă întotdeauna piesa audio originală a videoclipului în loc de o versiune dublată</string>
+  <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">Proxy de rețea</string>
+  <string name="morphe_proxy_screen_summary">Direcționează cererile de rețea prin intermediul unui proxy</string>
+  <string name="morphe_proxy_enabled_title">Activează proxy</string>
+  <string name="morphe_proxy_enabled_summary">Rutările cererilor de rețea suportate printr-un proxy HTTP sau HTTPS configurat</string>
+  <string name="morphe_proxy_host_title">Gazda proxy</string>
+  <string name="morphe_proxy_host_summary">Numele de domeniu sau adresa IP a serverului proxy</string>
+  <string name="morphe_proxy_port_title">Portul proxy</string>
+  <string name="morphe_proxy_port_summary">Portul serverului proxy</string>
+  <string name="morphe_proxy_https_title">Utilizează proxy HTTPS</string>
+  <string name="morphe_proxy_https_summary">Utilizează HTTPS pentru a te conecta la serverul proxy în loc de HTTP</string>
+  <string name="morphe_proxy_auth_enabled_title">Autentificare proxy</string>
+  <string name="morphe_proxy_auth_enabled_summary">Trimite autentificare Basic cu cererile proxy</string>
+  <string name="morphe_proxy_auth_username_title">Numele de utilizator proxy</string>
+  <string name="morphe_proxy_auth_username_summary">Nume de utilizator pentru autentificarea Basic proxy</string>
+  <string name="morphe_proxy_auth_password_title">Parola proxy</string>
+  <string name="morphe_proxy_auth_password_summary">Parola pentru autentificarea Basic proxy</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">Permite revenire directă</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">Conectează-te direct dacă proxy-ul eșuează</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Ascunde reclame pe tot ecranul</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

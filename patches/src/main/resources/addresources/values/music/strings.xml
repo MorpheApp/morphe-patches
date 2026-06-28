@@ -33,7 +33,9 @@ Second \"item\" text"</string>
     <string name="morphe_settings_music_screen_1_ads_title">Ads</string>
     <string name="morphe_settings_music_screen_2_general_title">General</string>
     <string name="morphe_settings_music_screen_3_player_title">Player</string>
-    <string name="morphe_settings_music_screen_4_misc_title">Miscellaneous</string>
+    <string name="morphe_settings_music_screen_4_scrobbling_title" translatable="false">Scrobbling</string>
+    <string name="morphe_settings_music_screen_5_sponsorblock_title" translatable="false">SponsorBlock</string>
+    <string name="morphe_settings_music_screen_6_misc_title">Miscellaneous</string>
 
     <!-- ad.general.hideAdsPatch -->
     <string name="morphe_music_hide_get_premium_label_title">Hide \'Get Music Premium\' label</string>
@@ -79,10 +81,35 @@ Second \"item\" text"</string>
     <string name="morphe_music_crossfade_paused_toast">Crossfade paused for this session</string>
     <string name="morphe_music_crossfade_resumed_toast">Crossfade resumed</string>
     <string name="morphe_music_crossfade_video_mode_disabled_toast">Video mode is not available while crossfade is enabled</string>
+    <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade is paused while casting or mirroring audio. Crossfade over cast/mirror is unstable and may never be fixable</string>
     <string name="morphe_music_crossfade_about_title">About</string>
-    <string name="morphe_music_crossfade_about_summary">"Long press the shuffle button to disable/enable
+    <string name="morphe_music_crossfade_about_summary">How crossfade works — and when it does not</string>
+    <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+    <string name="morphe_music_crossfade_about_banner_title" translatable="false"> </string>
+    <string name="morphe_music_crossfade_about_how_title">How it works</string>
+    <string name="morphe_music_crossfade_about_how_summary">"Crossfade overlaps the end of one song with the start of the next, fading one down as the other comes up over your chosen duration and curve.
 
-Feature implementation by VazerOG"</string>
+It runs on auto-advance (when a song ends on its own) and on manual skips — each has its own toggle above. On auto-advance the blend starts a few seconds before the song ends.
+
+Requires YouTube Music 9.x or newer."</string>
+    <string name="morphe_music_crossfade_about_best_title">Works best with</string>
+    <string name="morphe_music_crossfade_about_best_summary">Normal song-to-song playback and auto-advance, repeat-one (the song crossfades into itself), and local audio — phone speaker, wired headphones, Bluetooth, or USB.</string>
+    <string name="morphe_music_crossfade_about_quirks_title">Doesn\'t work quite right</string>
+    <string name="morphe_music_crossfade_about_quirks_summary">"Music videos play as audio-only while crossfade is on (long-press shuffle to pause if you want the video)
+
+Songs shorter than your fade duration may skip the fade
+
+The lock screen or notification can briefly show a stale state mid-transition"</string>
+    <string name="morphe_music_crossfade_about_known_title">Known issues</string>
+    <string name="morphe_music_crossfade_about_known_summary">"A music video set as the first song — or one started from outside the current queue — may briefly show as video before audio-only mode kicks in
+
+Pausing crossfade to watch a music video can leave some videos black (the ones whose audio comes from the video itself). Pausing crossfade before you pick the song avoids it"</string>
+    <string name="morphe_music_crossfade_about_unsupported_title">Doesn\'t work at all</string>
+    <string name="morphe_music_crossfade_about_unsupported_summary">"Casting or mirroring audio (Chromecast, screen or audio mirroring) — crossfade pauses because it's unstable there and may never be fixable.
+
+YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
+    <string name="morphe_music_crossfade_about_credit_title">Credit</string>
+    <string name="morphe_music_crossfade_about_credit_summary">Crossfade feature by VazerOG</string>
 
     <!-- interaction.permanentrepeat.permanentRepeatPatch -->
     <string name="morphe_music_play_permanent_repeat_title">Enable permanent repeat</string>
@@ -143,4 +170,72 @@ Feature implementation by VazerOG"</string>
 
     <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
     <string name="morphe_music_hide_upgrade_button_title">Hide upgrade button</string>
+
+    <!-- interaction.scrobbling.scrobblingPatch -->
+    <string name="morphe_music_scrobbling_title" translatable="false">Scrobbling</string>
+    <string name="morphe_music_scrobbling_summary">Configure Last.fm and ListenBrainz integration</string>
+    <string name="morphe_music_scrobbling_summary_logged_out">Not logged in. Tap to configure</string>
+    <string name="morphe_music_scrobbling_log_out">Log out</string>
+    <string name="morphe_music_scrobbling_logged_out_toast">Logged out</string>
+
+    <string name="morphe_music_listenbrainz_title" translatable="false">ListenBrainz</string>
+    <!-- 'scrobbling' must be kept untranslated -->
+    <string name="morphe_music_scrobbling_enabled_title">Enable scrobbling</string>
+    <string name="morphe_music_scrobbling_now_playing_title">Submit \"Now Playing\" status</string>
+    <string name="morphe_music_scrobbling_min_song_duration_title">Minimum song duration</string>
+    <!-- 'scrobbled' must be kept untranslated -->
+    <string name="morphe_music_scrobbling_min_song_duration_summary">Songs shorter than this will not be scrobbled</string>
+    <!-- 'scrobble' must be kept untranslated -->
+    <string name="morphe_music_scrobbling_delay_percent_title">Scrobble delay percent</string>
+    <!-- 'scrobble' must be kept untranslated -->
+    <string name="morphe_music_scrobbling_delay_percent_summary">Trigger scrobble after listening to this percentage of the song</string>
+    <!-- 'scrobble' must be kept untranslated -->
+    <string name="morphe_music_scrobbling_delay_seconds_title">Scrobble delay seconds</string>
+    <!-- 'scrobble' must be kept untranslated -->
+    <string name="morphe_music_scrobbling_delay_seconds_summary">Trigger scrobble after listening for this many seconds</string>
+    <string name="morphe_music_listenbrainz_token_title">ListenBrainz Account</string>
+    <string name="morphe_music_listenbrainz_token_summary_logged_in">Logged in. Tap to manage account</string>
+    <!-- 'scrobbling' must be kept untranslated -->
+    <string name="morphe_music_listenbrainz_token_dialog_instruction">Enter your ListenBrainz User Token to enable scrobbling</string>
+    <string name="morphe_music_listenbrainz_token_dialog_hint">Token</string>
+    <string name="morphe_music_listenbrainz_token_dialog_get_token">Get token</string>
+    <string name="morphe_music_listenbrainz_token_dialog_verify">Verify</string>
+    <string name="morphe_music_listenbrainz_token_status_empty">Please enter a token</string>
+    <string name="morphe_music_listenbrainz_token_status_validating">Validating...</string>
+    <string name="morphe_music_listenbrainz_token_status_valid">Valid token! User: %s</string>
+    <string name="morphe_music_listenbrainz_token_status_invalid">Invalid token: %s</string>
+    <string name="morphe_music_listenbrainz_token_status_invalid_unknown">unknown</string>
+    <string name="morphe_music_listenbrainz_token_status_failed">Verification failed: %s</string>
+    <string name="morphe_music_listenbrainz_token_toast_cleared">Token cleared</string>
+    <string name="morphe_music_listenbrainz_token_toast_saved">Token saved</string>
+    <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Warning: Saved token is invalid!</string>
+
+    <string name="morphe_music_lastfm_title" translatable="false">Last.fm</string>
+    <string name="morphe_music_lastfm_love_on_like_title">Love liked tracks</string>
+    <string name="morphe_music_lastfm_love_on_like_summary">Automatically love tracks on Last.fm when you like them on YouTube Music (and remove love when unliked or disliked)</string>
+    <string name="morphe_music_lastfm_token_title">Last.fm Account</string>
+    <string name="morphe_music_lastfm_token_summary_logged_in">Logged in as %s. Tap to manage account</string>
+    <string name="morphe_music_lastfm_token_dialog_instruction">Enter your Last.fm credentials to log in</string>
+    <string name="morphe_music_lastfm_token_dialog_username_hint">Username</string>
+    <string name="morphe_music_lastfm_token_dialog_password_hint">Password</string>
+    <string name="morphe_music_lastfm_token_dialog_login">Log in</string>
+    <string name="morphe_music_lastfm_token_status_empty">Please enter username and password</string>
+    <string name="morphe_music_lastfm_token_status_logging_in">Logging in...</string>
+    <string name="morphe_music_lastfm_token_status_success">Logged in successfully!</string>
+    <string name="morphe_music_lastfm_token_status_no_session">Failed to get session from Last.fm</string>
+    <string name="morphe_music_lastfm_token_status_failed">Login failed: %s</string>
+    <string name="morphe_music_lastfm_token_toast_saved">Last.fm credentials saved!</string>
+
+    <string name="morphe_settings_music_scrobbling_metadata_title">Metadata cleanup</string>
+    <string name="morphe_music_scrobbling_metadata_cleanup_title">Clean up metadata</string>
+    <string name="morphe_music_scrobbling_metadata_cleanup_summary">Automatically clean common clutter (like \"Official Video\", \"Remaster\", \"Live\") from titles, artists, and albums before scrobbling</string>
+    <string name="morphe_music_scrobbling_custom_regex_title">Custom regex cleanup</string>
+    <string name="morphe_music_scrobbling_custom_regex_summary">Enter a custom regular expression to remove additional text from song titles, artists, or albums. Example: (?i)\\s*\\((clean|explicit)\\)</string>
+
+    <!-- 'scrobbling' must be kept untranslated -->
+    <string name="morphe_music_scrobbling_about_title">About scrobbling</string>
+    <!-- 'scrobbling' must be kept untranslated -->
+    <string name="morphe_music_scrobbling_about_summary">"Scrobbling automatically syncs your YouTube Music usage with your Last.fm or ListenBrainz profile
+
+To ensure scrobbling is synced during background playback, ensure that YouTube Music's app battery usage is set to \"Unrestricted\""</string>
 </resources>

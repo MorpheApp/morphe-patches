@@ -37,12 +37,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">Onemogoči pojavno okno, ki se pojavi ob zajetju zaslona</string>
   <string name="morphe_hide_ask_button_title">Skrij gumb Vprašanja</string>
   <string name="morphe_hide_ask_button_summary">Skrije gumb Vprašanja v vrstici za iskanje</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">Skrij priporočene skupnosti</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">Skrije priporočene skupnosti v podbralnikih</string>
-  <string name="morphe_hide_trending_today_shelf_title">Skrij polico Danes</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"Skrije polico Danes iz predlogov iskanja
-
-Omejitev: Vizualni delilniki se ne morejo skriti"</string>
+  <string name="morphe_hide_communities_shelf_title">Skrij polico skupnosti</string>
+  <string name="morphe_hide_communities_shelf_summary">Skrije povezane ali predlagane skupnosti v podbralnikih</string>
+  <string name="morphe_hide_trending_shelves_title">Skrij priljubljene police</string>
+  <string name="morphe_hide_trending_shelves_summary">Skrije priljubljene police iz vira in predlogov iskanja</string>
   <string name="morphe_remove_notification_dialog_title">Odstrani dialog za predlog obvestil</string>
   <string name="morphe_remove_notification_dialog_summary">Samodejno skrije okno z obvestili, ko obiščete subreddit.</string>
   <string name="morphe_show_view_count_title">Prikaži število ogledov na objavah</string>

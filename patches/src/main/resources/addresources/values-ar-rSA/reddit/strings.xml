@@ -37,12 +37,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">يُعطل النافذة المنبثقة التي تظهر عند التقاط لقطة شاشة</string>
   <string name="morphe_hide_ask_button_title">إخفاء زر طرح سؤال</string>
   <string name="morphe_hide_ask_button_summary">يخفي زر طرح سؤال في شريط البحث</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">إخفاء المجتمعات الموصى بها</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">يخفي الرفوف الخاصة بالمجتمعات الموصى بها في subreddits</string>
-  <string name="morphe_hide_trending_today_shelf_title">إخفاء رف الأكثر رواجًا اليوم</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"يخفي الرف الأكثر رواجًا اليوم من اقتراحات البحث
-
-القيود: قد لا يتم إخفاء الفواصل المرئية"</string>
+  <string name="morphe_hide_communities_shelf_title">إخفاء رف المجتمعات</string>
+  <string name="morphe_hide_communities_shelf_summary">يخفي رفوف المجتمعات ذات الصلة أو المقترحة في subreddits</string>
+  <string name="morphe_hide_trending_shelves_title">إخفاء الرفوف الرائجة</string>
+  <string name="morphe_hide_trending_shelves_summary">يخفي رفوف \"الترند\" من موجز الأخبار واقتراحات البحث</string>
   <string name="morphe_remove_notification_dialog_title">إزالة مربع حوار اقتراح الإشعارات</string>
   <string name="morphe_remove_notification_dialog_summary">يقوم بإخفاء حوار اقتراح الإشعار تلقائيًا عند زيارة subreddit</string>
   <string name="morphe_show_view_count_title">إظهار عدد المشاهدات</string>

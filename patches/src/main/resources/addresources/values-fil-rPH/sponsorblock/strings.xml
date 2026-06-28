@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
+  <string name="morphe_sb_enable_compact_skip_button">Gamitin ang compact Skip button</string>
+  <string name="morphe_sb_enable_compact_skip_button_summary">Binabawasan ang lapad ng Skip button para makatipid ng espasyo</string>
+  <string name="morphe_sb_enable_auto_hide_skip_segment_button">Awtomatikong itago ang Skip button</string>
+  <string name="morphe_sb_enable_auto_hide_skip_segment_button_summary">Itinatago ang Skip button pagkatapos ng ilang segundo sa halip na panatilihing nakikita ito sa buong segment</string>
+  <string name="morphe_sb_auto_hide_skip_button_duration">Tagal ng Skip button</string>
+  <string name="morphe_sb_auto_hide_skip_button_duration_summary">Itakda kung gaano katagal mananatiling nakikita ang mga Skip button</string>
+  <string name="morphe_sb_general_skiptoast">Ipakita ang notipikasyon ng undo skip</string>
+  <string name="morphe_sb_general_skiptoast_summary">Ipinapakita ang isang notification na nagbibigay-daan sa iyo na i-tap upang kanselahin ang awtomatikong paglaktaw</string>
+  <string name="morphe_sb_toast_on_skip_duration">Tagal ng notipikasyon</string>
+  <string name="morphe_sb_toast_on_skip_duration_summary">Itakda kung gaano katagal mananatiling nakikita ang notification ng pag-undo</string>
+  <string name="morphe_sb_duration_1s">1 segundo</string>
+  <string name="morphe_sb_duration_2s">2 segundo</string>
+  <string name="morphe_sb_duration_3s">3 segundo</string>
+  <string name="morphe_sb_duration_4s">4 segundo</string>
+  <string name="morphe_sb_duration_5s">5 segundo</string>
+  <string name="morphe_sb_duration_6s">6 segundo</string>
+  <string name="morphe_sb_duration_7s">7 segundo</string>
+  <string name="morphe_sb_duration_8s">8 segundo</string>
+  <string name="morphe_sb_duration_9s">9 segundo</string>
+  <string name="morphe_sb_duration_10s">10 segundo</string>
+  <string name="morphe_sb_general_time_without">Ipakita ang haba ng video nang walang segment</string>
+  <string name="morphe_sb_general_time_without_summary">Binabawas ang lahat ng segment sa kabuuang tagal ng video na ipinapakita sa seekbar</string>
+  <string name="morphe_sb_create_segment_category">Paglikha ng bagong segment</string>
+  <string name="morphe_sb_enable_create_segment">Ipakita ang \'Create new segment\' button</string>
+  <string name="morphe_sb_enable_create_segment_summary">Nagdaragdag ng button sa video player na nagbibigay-daan sa iyo na magsumite ng mga bagong segment ng SponsorBlock</string>
+  <string name="morphe_sb_general_adjusting">Hakbang ng pagsasaayos ng oras</string>
+  <string name="morphe_sb_general_adjusting_summary">Halaga ng paghahanap ng oras ng mga button ng pagsasaayos (sa milliseconds)</string>
+  <string name="morphe_sb_general_adjusting_invalid">Dapat maging positibong numero</string>
+  <string name="morphe_sb_guidelines_preference_title">Mga alituntunin sa pagsusumite</string>
+  <string name="morphe_sb_guidelines_preference_summary">Naglalaman ang mga alituntunin ng mga patakaran at tip para sa paggawa ng mga bagong segment</string>
+  <string name="morphe_sb_guidelines_popup_title">Sundin ang guidelines</string>
+  <string name="morphe_sb_guidelines_popup_content">Basahin ang mga alituntunin ng SponsorBlock bago gumawa ng mga bagong segment</string>
+  <string name="morphe_sb_guidelines_popup_already_read">Nabasa ko na</string>
+  <string name="morphe_sb_guidelines_popup_open">Ipakita sa akin</string>
+  <string name="morphe_sb_general">Pangkalahatan</string>
+  <string name="morphe_sb_toast_on_connection_error">Ipakita ang mga alerto ng error sa koneksyon</string>
+  <string name="morphe_sb_toast_on_connection_error_summary">Ipinapakita ang isang notification kapag ang SponsorBlock server ay hindi magagamit</string>
+  <string name="morphe_sb_general_skipcount">I-enable ang skip count tracking</string>
+  <string name="morphe_sb_general_skipcount_summary">Nagpapadala ng mga bilang ng paglaktaw sa SponsorBlock leaderboard upang subaybayan kung gaano karaming oras ang natipid</string>
+  <string name="morphe_sb_general_min_duration">Minimum na tagal ng segment</string>
+  <string name="morphe_sb_general_min_duration_summary">Ang mga segment na mas maikli kaysa sa halagang ito (sa segundo) ay hindi ipapakita o lalaktawan</string>
+  <string name="morphe_sb_general_min_duration_invalid">Hindi wastong tagal ng oras</string>
+  <string name="morphe_sb_general_uuid">Ang iyong pribadong user ID</string>
+  <string name="morphe_sb_general_uuid_summary">Dapat itong panatilihing pribado. Ito ay tulad ng isang password at hindi dapat ibahagi sa sinuman. Kung mayroon nito, maaari ka nilang gayahin</string>
+  <string name="morphe_sb_general_uuid_invalid">Ang pribadong user ID ay dapat na hindi bababa sa 30 karakter ang haba</string>
+  <string name="morphe_sb_general_api_url">Baguhin ang URL ng API</string>
+  <string name="morphe_sb_general_api_url_summary">Ang address na ginagamit ng SponsorBlock para gumawa ng mga tawag sa server</string>
+  <string name="morphe_sb_channel_whitelist">Listahan ng mga pinahihintulutang channel</string>
+  <string name="morphe_sb_channel_whitelist_summary">Hindi pinagana ang SponsorBlock para sa mga pinahihintulutang channel</string>
+  <string name="morphe_sb_channel_whitelist_current_channel">Kasalukuyang channel:</string>
+  <string name="morphe_sb_channel_whitelist_add">Idagdag sa whitelist</string>
+  <string name="morphe_sb_channel_whitelist_remove">Alisin</string>
+  <string name="morphe_sb_channel_whitelist_channels_header">Mga channel na nasa whitelist</string>
+  <string name="morphe_sb_channel_whitelist_empty">Walang channel na nasa whitelist</string>
+  <string name="morphe_sb_channel_whitelist_channel_added">Idinagdag ang channel sa whitelist</string>
+  <string name="morphe_sb_channel_whitelist_channel_removed">Tinanggal ang channel sa whitelist</string>
+  <string name="morphe_sb_toast_on_whitelisted_channel">Magpadala ng notification kapag nasa whitelisted channel</string>
+  <string name="morphe_sb_toast_on_whitelisted_channel_summary">Nagpapakita ng notification kapag ang SponsorBlock ay hindi pinagana para sa isang whitelisted channel</string>
+  <string name="morphe_sb_channel_whitelisted_toast">Hindi pinagana ang SponsorBlock para sa channel na ito</string>
+  <string name="morphe_sb_api_url_reset">I-reset ang API URL</string>
+  <string name="morphe_sb_api_url_invalid">Ang API URL ay hindi balido</string>
+  <string name="morphe_sb_api_url_changed">Nabago ang API URL</string>
+  <string name="morphe_sb_settings_ie">I-import / I-export ang mga setting</string>
+  <string name="morphe_sb_settings_copy">Kopyahin</string>
+  <string name="morphe_sb_settings_ie_summary">Ang iyong JSON configuration ng SponsorBlock na maaaring i-import / i-export sa Morphe at iba pang mga platform ng SponsorBlock</string>
+  <string name="morphe_sb_settings_ie_summary_warning">"Ang iyong configuration ng JSON ng SponsorBlock na maaaring i-import / i-export sa Morphe at iba pang mga platform ng SponsorBlock
+
+Kabilang dito ang iyong pribadong user ID. Siguraduhing ibahagi ito nang may pag-iingat"</string>
+  <string name="morphe_sb_settings_import_successful">Matagumpay na na-import ang mga setting</string>
+  <string name="morphe_sb_settings_import_failed">Nabigong i-import: %s</string>
+  <string name="morphe_sb_settings_export_failed">Nabigong i-export: %s</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"Ang iyong mga setting ay naglalaman ng pribadong SponsorBlock user ID.
+
+Ang iyong user ID ay tulad ng isang password, at hindi ito dapat ibahagi."</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Huwag nang ipakita muli</string>
+  <string name="morphe_sb_diff_segments">Baguhin ang pag-uugali ng segment</string>
+  <string name="morphe_sb_segments_sponsor">Sponsor</string>
+  <string name="morphe_sb_segments_sponsor_summary">Paid promotion, paid referrals at direct advertisements. Hindi para sa self-promotion o libreng shout-outs sa mga sanhi / creator / website / produkto na gusto nila</string>
+  <string name="morphe_sb_segments_selfpromo">Hindi Bayad / Pagpapa-promote sa Sarili</string>
+  <string name="morphe_sb_segments_selfpromo_summary">Katulad ng Sponsor maliban sa hindi bayad / self promotion. Kasama ang mga seksyon tungkol sa merchandise, donasyon, o impormasyon tungkol sa kung sino ang nakipagtulungan nila</string>
+  <string name="morphe_sb_segments_interaction">Paalala sa Pakikipag-ugnayan (Mag-subscribe)</string>
+  <string name="morphe_sb_segments_interaction_summary">Isang maikling paalala para mag-like, mag-subscribe o sundan sila sa kalagitnaan ng content. Kung ito ay mahaba o tungkol sa isang tiyak na bagay, dapat itong nasa ilalim ng self promotion sa halip</string>
+  <string name="morphe_sb_segments_highlight">I-highlight</string>
+  <string name="morphe_sb_segments_highlight_summary">Ang bahagi ng video na karamihan sa mga tao ang hinahanap</string>
+  <string name="morphe_sb_segments_intro">Pagitan / Animasyon ng Intro</string>
+  <string name="morphe_sb_segments_intro_summary">Isang pagitan na walang aktwal na content. Maaaring ito ay isang paghinto, static na frame, o paulit-ulit na animation. Hindi kasama ang mga paglipat na naglalaman ng impormasyon</string>
+  <string name="morphe_sb_segments_outro">Endcards / Credits</string>
+  <string name="morphe_sb_segments_outro_summary">Mga kredito o kapag lumalabas ang mga endcard ng YouTube. Hindi para sa mga konklusyon na may impormasyon.</string>
+  <string name="morphe_sb_segments_hook">Hook / Pagbati</string>
+  <string name="morphe_sb_segments_hook_summary">Mga trailer na may salaysay para sa paparating na video, pagbati at pamamaalam. Hindi kasama ang mga seksyon na nagdaragdag ng karagdagang nilalaman.</string>
+  <string name="morphe_sb_segments_preview">Preview / Recap</string>
+  <string name="morphe_sb_segments_preview_summary">Koleksyon ng mga clip na nagpapakita kung ano ang darating o kung ano ang nangyari sa video o sa iba pang mga video ng isang serye, kung saan ang lahat ng impormasyon ay inuulit sa ibang lugar.</string>
+  <string name="morphe_sb_segments_filler">Tangent / Jokes</string>
+  <string name="morphe_sb_segments_filler_summary">Mga eksena o biro na hindi kinakailangan upang maunawaan ang pangunahing nilalaman ng video. Hindi kasama ang mga seksyon na nagbibigay ng konteksto o background na detalye.</string>
+  <string name="morphe_sb_segments_nomusic">Musika: Seksyon na Walang Musika</string>
+  <string name="morphe_sb_segments_nomusic_summary">Para lamang gamitin sa mga music video. Mga seksyon ng mga music video na walang musika na hindi pa nasasakop ng ibang kategorya</string>
+  <string name="morphe_sb_skip_button_compact">Laktawan</string>
+  <string name="morphe_sb_skip_button_compact_highlight">I-highlight</string>
+  <string name="morphe_sb_skip_button_sponsor">Laktawan ang sponsor</string>
+  <string name="morphe_sb_skip_button_selfpromo">Laktawan ang promo</string>
+  <string name="morphe_sb_skip_button_interaction">Laktawan ang pakikipag-ugnayan</string>
+  <string name="morphe_sb_skip_button_highlight">Laktawan sa highlight</string>
+  <string name="morphe_sb_skip_button_intro_beginning">Laktawan ang intro</string>
+  <string name="morphe_sb_skip_button_intro_middle">Laktawan ang intermission</string>
+  <string name="morphe_sb_skip_button_intro_end">Laktawan ang intermission</string>
+  <string name="morphe_sb_skip_button_outro">Laktawan ang outro</string>
+  <string name="morphe_sb_skip_button_hook">Laktawan ang hook</string>
+  <string name="morphe_sb_skip_button_preview_beginning">Laktawan ang preview</string>
+  <string name="morphe_sb_skip_button_preview_middle">Laktawan ang preview</string>
+  <string name="morphe_sb_skip_button_preview_end">Laktawan ang recap</string>
+  <string name="morphe_sb_skip_button_filler">Laktawan ang tangent</string>
+  <string name="morphe_sb_skip_button_nomusic">Laktawan ang walang musika</string>
+  <string name="morphe_sb_skip_button_unsubmitted">Laktawan ang segment</string>
+  <string name="morphe_sb_skipped_sponsor">Nilaktawan ang sponsor</string>
+  <string name="morphe_sb_skipped_selfpromo">Nilaktawan ang pagpapa-promote sa sarili</string>
+  <string name="morphe_sb_skipped_interaction">Nilaktawan ang nakakainis na paalala</string>
+  <string name="morphe_sb_skipped_highlight">Nilaktawan papunta sa highlight</string>
+  <string name="morphe_sb_skipped_intro_beginning">Na-skip ang intro</string>
+  <string name="morphe_sb_skipped_intro_middle">Na-skip ang intermission</string>
+  <string name="morphe_sb_skipped_intro_end">Na-skip ang intermission</string>
+  <string name="morphe_sb_skipped_outro">Na-skip ang outro</string>
+  <string name="morphe_sb_skipped_hook">Na-skip ang hook</string>
+  <string name="morphe_sb_skipped_preview_beginning">Na-skip ang preview</string>
+  <string name="morphe_sb_skipped_preview_middle">Na-skip ang preview</string>
+  <string name="morphe_sb_skipped_preview_end">Na-skip ang recap</string>
+  <string name="morphe_sb_skipped_filler">Na-skip ang tangent</string>
+  <string name="morphe_sb_skipped_nomusic">Na-skip ang isang hindi tugtog na seksyon</string>
+  <string name="morphe_sb_skipped_unsubmitted">Na-skip ang hindi pa naisusumiteng segment</string>
+  <string name="morphe_sb_skipped_multiple_segments">Na-skip ang maraming segment</string>
+  <string name="morphe_sb_skip_automatically">I-skip nang awtomatiko</string>
+  <string name="morphe_sb_skip_automatically_once">I-skip nang awtomatiko isang beses</string>
+  <string name="morphe_sb_skip_showbutton">Ipakita ang button na I-skip</string>
+  <string name="morphe_sb_skip_seekbaronly">Ipakita sa seekbar</string>
+  <string name="morphe_sb_skip_ignore">Patayin</string>
+  <string name="morphe_sb_submit_failed_invalid">Hindi ma-sumite ang segment: %s</string>
+  <string name="morphe_sb_submit_failed_timeout">Pansamantalang hindi magagamit ang SponsorBlock</string>
+  <string name="morphe_sb_submit_failed_unknown_error">Hindi ma-sumite ang segment (status: %1$d %2$s)</string>
+  <string name="morphe_sb_submit_failed_rate_limit">Hindi ma-sumite ang segment. Limitado ang dami (masyadong marami mula sa parehong gumagamit o IP)</string>
+  <string name="morphe_sb_submit_failed_forbidden">Hindi ma-submit ang segment: %s</string>
+  <string name="morphe_sb_submit_failed_duplicate">"Hindi ma-submit ang segment.
+Na umiiral na"</string>
+  <string name="morphe_sb_submit_succeeded">Matagumpay na na-sumite ang segment</string>
+  <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_sb_sponsorblock_connection_failure_timeout">Pansamantalang hindi magagamit ang SponsorBlock (Nag-time out ang API)</string>
+  <string name="morphe_sb_sponsorblock_connection_failure_status">Pansamantalang hindi magagamit ang SponsorBlock (kapalaran %d)</string>
+  <string name="morphe_sb_sponsorblock_connection_failure_generic">Pansamantalang hindi magagamit ang SponsorBlock</string>
+  <string name="morphe_sb_vote_failed_timeout">Hindi ma-boto para sa segment (Nag-time out ang API)</string>
+  <string name="morphe_sb_vote_failed_unknown_error">Hindi ma-boto para sa segment (status: %1$d %2$s)</string>
+  <string name="morphe_sb_vote_failed_forbidden">Hindi ma-boto para sa segment: %s</string>
+  <string name="morphe_sb_vote_upvote">Itaas ang boto</string>
+  <string name="morphe_sb_vote_downvote">Ibaba ang boto</string>
+  <string name="morphe_sb_vote_category">Baguhin ang kategorya</string>
+  <string name="morphe_sb_vote_no_segments">Walang segments na maaaring pagbotohan</string>
+  <!-- A segment start and end time, such as "02:10 to 03:40". -->
+  <string name="morphe_sb_vote_segment_time_to_from">%1$s hanggang %2$s</string>
+  <string name="morphe_sb_new_segment_choose_category">Pumili ng kategorya para sa segment</string>
+  <string name="morphe_sb_new_segment_disabled_category">Ang kategorya ay hindi pinagana sa settings. Paganahin ang categoria upang magsumite.</string>
+  <string name="morphe_sb_new_segment_title">Bagong segment ng SponsorBlock</string>
+  <string name="morphe_sb_new_segment_mark_time_as_question">Itakda ang %s bilang simula o dulo ng bagong segment?</string>
+  <string name="morphe_sb_new_segment_mark_start">Simula</string>
+  <string name="morphe_sb_new_segment_mark_end">Dulo</string>
+  <string name="morphe_sb_new_segment_now">Ngayon</string>
+  <string name="morphe_sb_new_segment_time_start">Kailan nagsisimula ang segment</string>
+  <string name="morphe_sb_new_segment_time_end">Kailan nagtatapos ang segment</string>
+  <string name="morphe_sb_new_segment_confirm_title">Tama ba ang mga oras?</string>
+  <string name="morphe_sb_new_segment_confirm_content">"Ang segment ay mula
+
+%1$s
+ hanggang
+%2$s
+
+(%3$s)
+
+Handa nang isumite?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Isumite</string>
+  <string name="morphe_sb_new_segment_start_is_before_end">Dapat bago ang simula kaysa dulo</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Magmarka muna ng lokasyon sa time bar</string>
+  <string name="morphe_sb_new_segment_preview_segment_first">I-preview ang segment, at tiyakin na ito ay maayos na nag-skip</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_title">I-edit ng mano-mano ang timing ng segment</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_content">Gusto mo bang i-edit ang timing para sa simula o dulo ng segment?</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Hindi wastong oras ang ibinigay</string>
+  <string name="morphe_sb_new_segment_highlight_title">Isumite ang highlight</string>
+  <string name="morphe_sb_new_segment_highlight_content">"Tama ba ang oras ng highlight?
+
+%s
+
+Kung hindi ka nagsumite ng highlight, pindutin ang Kanselahin at markahan ang pangalawang lokasyon"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Isumite ang highlight</string>
+  <string name="morphe_sb_stats_title">Stats</string>
+  <!-- Shown in the settings preferences, and translations can be any text length. -->
+  <string name="morphe_sb_stats_connection_failure">Pansamantalang hindi magagamit ang stats (pababa ang API)</string>
+  <string name="morphe_sb_stats_loading">Naglo-load…</string>
+  <string name="morphe_sb_stats_sb_disabled">Ang SponsorBlock ay hindi gumagana</string>
+  <string name="morphe_sb_stats_username">Ang iyong username: <b>%s</b></string>
+  <string name="morphe_sb_stats_username_change">I-tap dito para baguhin ang iyong username</string>
+  <string name="morphe_sb_stats_username_change_unknown_error">Hindi maaring baguhin ang username: Status: %1$d %2$s</string>
+  <string name="morphe_sb_stats_username_changed">Matagumpay na nabago ang username</string>
+  <string name="morphe_sb_stats_reputation">Ang iyong reputasyon ay <b>%.2f</b></string>
+  <string name="morphe_sb_stats_submissions">Gumawa ka na ng <b>%s</b> segments</string>
+  <string name="morphe_sb_stats_submissions_summary">I-tap dito upang tingnan ang iyong mga segment.</string>
+  <string name="morphe_sb_stats_saved_zero">SponsorBlock leaderboard</string>
+  <string name="morphe_sb_stats_saved">Nakapagligtas ka ng mga tao mula sa <b>%s</b> segments</string>
+  <string name="morphe_sb_stats_saved_summary_zero">I-tap dito upang makita ang pandaigdigang istatistika at mga nangungunang nag-aambag.</string>
+  <string name="morphe_sb_stats_saved_summary">Iyan ay &lt;b&gt;%s&lt;/b&gt; ng kanilang buhay.&lt;br&gt;I-tap dito upang makita ang leaderboard.</string>
+  <string name="morphe_sb_stats_self_saved">Lumaktaw ka na ng <b>%s</b> segments</string>
+  <string name="morphe_sb_stats_self_saved_summary">Iyan ay &lt;b&gt;%s&lt;/b&gt;.</string>
+  <string name="morphe_sb_stats_self_saved_reset_title">I-reset ang counter ng skipped segments?</string>
+  <string name="morphe_sb_stats_saved_hour_format">%1$s oras %2$s minuto</string>
+  <string name="morphe_sb_stats_saved_minute_format">%1$s minuto %2$s segundo</string>
+  <string name="morphe_sb_stats_saved_second_format">%s segundo</string>
+  <string name="morphe_sb_color_opacity_label">Opacity:</string>
+  <string name="morphe_sb_color_dot_label">Kulay:</string>
+  <string name="morphe_sb_about_title">Tungkol</string>
+  <string name="morphe_sb_about_api_summary">"Ang data ay ibinibigay ng SponsorBlock API.
+
+I-tap dito upang buksan ang Sponsor.ajay.app at tingnan ang mga pag-download para sa iba pang mga platform"</string>
+</resources>

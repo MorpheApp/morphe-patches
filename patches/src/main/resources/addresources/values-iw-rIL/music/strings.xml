@@ -27,7 +27,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_1_ads_title">מודעות</string>
   <string name="morphe_settings_music_screen_2_general_title">כללי</string>
   <string name="morphe_settings_music_screen_3_player_title">נגן</string>
-  <string name="morphe_settings_music_screen_4_misc_title">שונות</string>
+  <string name="morphe_settings_music_screen_4_scrobbling_title">מעקב אחר שירים</string>
+  <string name="morphe_settings_music_screen_5_misc_title">שונות</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">הסתר תווית \'קבל Premium למוזיקה\'</string>
   <!-- ad.video.hideVideoAdsPatch -->
@@ -69,10 +70,34 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">המעבר בין השירים הופסק עבור סשן זה</string>
   <string name="morphe_music_crossfade_resumed_toast">המעבר בין השירים התחדש</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">מצב וידאו אינו זמין כאשר מעבר בין השירים מופעל</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">המעבר הדרגתי מושהה בזמן שידור או מראה שמע. מעבר הדרגתי בשידור/מראה אינו יציב וייתכן שלא ניתן יהיה לתקן אותו.</string>
   <string name="morphe_music_crossfade_about_title">אודות</string>
-  <string name="morphe_music_crossfade_about_summary">"לחץ לחיצה ארוכה על כפתור הערבוב כדי לבטל/להפעיל
+  <string name="morphe_music_crossfade_about_summary">איך מעבר הדרגתי עובד – ומתי הוא לא עובד</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">איך זה עובד</string>
+  <string name="morphe_music_crossfade_about_how_summary">"מעבר הדרגתי חופף את סוף השיר אחד לתחילת השיר הבא, דועך את אחד בעוד השני עולה במהלך משך הזמן והעקומה שבחרת.
 
-מימוש תכונה על ידי VazerOG"</string>
+הוא פועל במצב של מעבר אוטומטי (כאשר שיר מסתיים מעצמו) ובדילוגים ידניים – לכל אחד מהם יש מתג משלו למעלה. במצב של מעבר אוטומטי, הערבוב מתחיל כמה שניות לפני שהשיר מסתיים.
+
+דורש YouTube Music 9.x ומעלה."</string>
+  <string name="morphe_music_crossfade_about_best_title">עובד הכי טוב עם</string>
+  <string name="morphe_music_crossfade_about_best_summary">השמעה רגילה של שיר לשיר ומעבר אוטומטי, חזרה על שיר אחד (השיר עובר מעבר הדרגתי לתוך עצמו), ושמע מקומי – רמקול הטלפון, אוזניות חוטיות, Bluetooth או USB.</string>
+  <string name="morphe_music_crossfade_about_quirks_title">לא עובד בצורה חלקה</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"סרטוני מוזיקה מתנגנים רק עם אודיו כאשר מעבר צלילים פעיל (לחיצה ארוכה על כפתור הערבוב תעצור את הוידאו אם תרצו לראות אותו).
+
+שירים שקצרים יותר ממשך ההעמעום עשויים לדלג על ההעמעום.
+
+מסך הנעילה או ההתראה עשויים להציג באופן זמני מצב מיושן באמצע המעבר."</string>
+  <string name="morphe_music_crossfade_about_known_title">בעיות ידועות</string>
+  <string name="morphe_music_crossfade_about_known_summary">"סרטון מוזיקה שהוגדר כשיר הראשון - או כזה שהתחיל מחוץ לתור הנוכחי - עשוי להופיע לרגע כסרטון לפני שמצב האודיו-בלבד נכנס לפעולה.
+
+השהיית מעבר הצלילים כדי לצפות בסרטון מוזיקה עלולה לגרום לכך שחלק מהסרטונים יהיו שחורים (אלו שהאודיו שלהם מגיע מהסרטון עצמו). השהיית מעבר הצלילים לפני שאתה בוחר את השיר תמנע זאת."</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">לא עובד בכלל</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"שידור או מראה אודיו (Chromecast, מראה מסך או אודיו) - מעבר הצלילים נעצר מכיוון שהוא לא יציב שם וייתכן שלעולם לא יתוקן.
+
+YouTube Music 8.x - מעבר הצלילים פועל רק בגרסה 9.x ומעלה"</string>
+  <string name="morphe_music_crossfade_about_credit_title">קרדיט</string>
+  <string name="morphe_music_crossfade_about_credit_summary">תכונת מעבר הצלילים על ידי VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">אפשר חזרה קבועה</string>
   <!-- layout.buttons.hideButtonsPatch -->
@@ -123,4 +148,77 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">הסתר תוויות לחצני ניווט</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">הסתר לחצן שדרוג</string>
+  <!-- interaction.scrobbling.scrobblingPatch -->
+  <string name="morphe_music_scrobbling_summary">הגדרת אינטגרציה של Last.fm ו-ListenBrainz</string>
+  <string name="morphe_music_scrobbling_summary_logged_out">לא מחובר. הקש להגדרה</string>
+  <string name="morphe_music_scrobbling_log_out">התנתק</string>
+  <string name="morphe_music_scrobbling_logged_out_toast">התנתקתי</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_enabled_title">הפעל מעקב</string>
+  <string name="morphe_music_listenbrainz_now_playing_title">שלח סטטוס \"מתנגן כעת\"</string>
+  <string name="morphe_music_listenbrainz_min_song_duration_title">משך שיר מינימלי</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_min_song_duration_summary">שירים קצרים מזה לא יירשמו</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_title">אחוז עיכוב מעקב</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_summary">הפעל מעקב לאחר האזנה לאחוז זה מהשיר</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_title">עיכוב מעקב בשניות</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_summary">הפעל מעקב לאחר האזנה למשך מספר שניות זה</string>
+  <string name="morphe_music_listenbrainz_token_title">חשבון ListenBrainz</string>
+  <string name="morphe_music_listenbrainz_token_summary_logged_in">מחובר. הקש לניהול חשבון</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">הזן את אסימון המשתמש של ListenBrainz שלך כדי להפעיל מעקב</string>
+  <string name="morphe_music_listenbrainz_token_dialog_hint">אסימון</string>
+  <string name="morphe_music_listenbrainz_token_dialog_get_token">קבל אסימון</string>
+  <string name="morphe_music_listenbrainz_token_dialog_verify">אמת</string>
+  <string name="morphe_music_listenbrainz_token_status_empty">אנא הזן אסימון</string>
+  <string name="morphe_music_listenbrainz_token_status_validating">מאמת...</string>
+  <string name="morphe_music_listenbrainz_token_status_valid">אסימון חוקי! משתמש: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">אסימון לא חוקי: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid_unknown">לא ידוע</string>
+  <string name="morphe_music_listenbrainz_token_status_failed">האימות נכשל: %s</string>
+  <string name="morphe_music_listenbrainz_token_toast_cleared">אסימון נוקה</string>
+  <string name="morphe_music_listenbrainz_token_toast_saved">אסימון נשמר</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">אזהרה: האסימון השמור לא חוקי!</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_lastfm_enabled_title">הפעל מעקב</string>
+  <string name="morphe_music_lastfm_now_playing_title">שלח סטטוס \"מתנגן כעת\"</string>
+  <string name="morphe_music_lastfm_love_on_like_title">אהב שירים אהובים</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">אהב באופן אוטומטי שירים ב-Last.fm כשאתה אוהב אותם ב-YouTube Music (והסר אהבה כשאתה לא אוהב או לא אוהב)</string>
+  <string name="morphe_music_lastfm_min_song_duration_title">משך שיר מינימלי</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_lastfm_min_song_duration_summary">שירים קצרים מזה לא יירשמו</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_title">אחוז עיכוב מעקב</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_summary">הפעל מעקב לאחר האזנה לאחוז זה מהשיר</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_title">עיכוב מעקב בשניות</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_summary">הפעל מעקב לאחר האזנה למשך מספר שניות זה</string>
+  <string name="morphe_music_lastfm_token_title">חשבון Last.fm</string>
+  <string name="morphe_music_lastfm_token_summary_logged_in">מחובר כ-%s. הקש לניהול חשבון</string>
+  <string name="morphe_music_lastfm_token_dialog_instruction">הזן את פרטי הכניסה שלך ל-Last.fm כדי להתחבר</string>
+  <string name="morphe_music_lastfm_token_dialog_username_hint">שם משתמש</string>
+  <string name="morphe_music_lastfm_token_dialog_password_hint">סיסמה</string>
+  <string name="morphe_music_lastfm_token_dialog_login">להתחבר</string>
+  <string name="morphe_music_lastfm_token_status_empty">אנא הזן שם משתמש וסיסמה</string>
+  <string name="morphe_music_lastfm_token_status_logging_in">מתחבר...</string>
+  <string name="morphe_music_lastfm_token_status_success">הכניסה הצליחה!</string>
+  <string name="morphe_music_lastfm_token_status_no_session">נכשל לקבל סשן מ-Last.fm</string>
+  <string name="morphe_music_lastfm_token_status_failed">הכניסה נכשלה: %s</string>
+  <string name="morphe_music_lastfm_token_toast_saved">פרטי הכניסה ל-Last.fm נשמרו!</string>
+  <string name="morphe_settings_music_scrobbling_metadata_title">ניקוי מטא-נתונים</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_title">נקה מטא-נתונים</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">נקה באופן אוטומטי עומס נפוץ (כמו \"סרטון רשמי\", \"רימסטר\", \"שידור חי\") מכותרות, אמנים ואלבומים לפני הרישום</string>
+  <string name="morphe_music_scrobbling_custom_regex_title">ניקוי רגולרי מותאם אישית</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">"הזן ביטוי רגולרי (regex) מותאם אישית כדי להתאים ולהסיר טקסט נוסף מכותרות שירים, אמנים או אלבומים.
+דוגמה: (?i)\\s*\\((clean|explicit)\\)"</string>
+  <string name="morphe_music_scrobbling_about_title">אודות מעקב</string>
+  <string name="morphe_music_scrobbling_about_summary">"מעקב עוקב באופן אוטומטי אחר המוזיקה שאתה מנגן ב-YouTube Music ומסנכרן אותה עם הפרופיל שלך ב-Last.fm או ListenBrainz.
+
+כדי להבטיח שהמעקב יפעל בצורה מהימנה ברקע, אנא ודא ששימוש הסוללה של YouTube Music במערכת מוגדר ל\"ללא הגבלה\"."</string>
 </resources>

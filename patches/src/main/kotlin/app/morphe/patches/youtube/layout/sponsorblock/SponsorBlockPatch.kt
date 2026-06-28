@@ -5,10 +5,17 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patches.all.misc.resources.addAppResources
+import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
+import app.morphe.patches.shared.misc.settings.preference.BasePreference
+import app.morphe.patches.shared.misc.settings.preference.InputType
+import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
+import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
@@ -35,22 +42,109 @@ import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
+private const val SB_PREFERENCES_PACKAGE = "app.morphe.extension.youtube.sponsorblock.preferences"
+private const val SEGMENT_CATEGORY_PREFERENCE_TAG =
+    "app.morphe.extension.shared.sponsorblock.objects.SegmentCategoryPreference"
+
+public fun categoryPreference(settingKey: String): BasePreference =
+    object : BasePreference(settingKey, null, null, null, null, null, SEGMENT_CATEGORY_PREFERENCE_TAG) {}
+
 private val sponsorBlockResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
         resourceMappingPatch,
         legacyPlayerControlsPatch,
+        addResourcesPatch
     )
 
     execute {
+        addAppResources("sponsorblock")
+
         PreferenceScreen.SPONSORBLOCK.addPreferences(
-            // SB setting is old code with lots of custom preferences and updating behavior.
-            // Added as a preference group and not a fragment so the preferences are searchable.
+            SwitchPreference("morphe_sb_enabled", summary = true),
             PreferenceCategory(
-                key = "morphe_settings_screen_10_sponsorblock",
+                key = "morphe_sb_appearance_category",
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,
-                preferences = emptySet(), // Preferences are added by custom class at runtime.
-                tag = "app.morphe.extension.youtube.sponsorblock.ui.SponsorBlockPreferenceGroup"
+                preferences = setOf(
+                    SwitchPreference("morphe_sb_voting_button", summary = true),
+                    SwitchPreference("morphe_sb_compact_skip_button", summary = true),
+                    SwitchPreference("morphe_sb_auto_hide_skip_button", summary = true),
+                    ListPreference(key = "morphe_sb_auto_hide_skip_button_duration"),
+                    SwitchPreference("morphe_sb_toast_on_skip", summary = true),
+                    ListPreference(key = "morphe_sb_toast_on_skip_duration"),
+                    SwitchPreference("morphe_sb_video_length_without_segments", summary = true),
+                    SwitchPreference("morphe_sb_square_layout", summary = true)
+                )
+            ),
+            PreferenceCategory(
+                key = "morphe_sb_diff_segments",
+                sorting = PreferenceScreenPreference.Sorting.UNSORTED,
+                preferences = setOf(
+                    categoryPreference("morphe_sb_sponsor_color"),
+                    categoryPreference("morphe_sb_selfpromo_color"),
+                    categoryPreference("morphe_sb_interaction_color"),
+                    categoryPreference("morphe_sb_highlight_color"),
+                    categoryPreference("morphe_sb_intro_color"),
+                    categoryPreference("morphe_sb_outro_color"),
+                    categoryPreference("morphe_sb_preview_color"),
+                    categoryPreference("morphe_sb_hook_color"),
+                    categoryPreference("morphe_sb_filler_color"),
+                    categoryPreference("morphe_sb_music_offtopic_color")
+                )
+            ),
+            PreferenceCategory(
+                key = "morphe_sb_create_segment_category",
+                sorting = PreferenceScreenPreference.Sorting.UNSORTED,
+                preferences = setOf(
+                    SwitchPreference(
+                        key = "morphe_sb_create_new_segment",
+                        summary = true,
+                        tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockCreateSegmentSwitchPreference"
+                    ),
+                    TextPreference(
+                        key = "morphe_sb_create_new_segment_step",
+                        tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockSegmentStepPreference",
+                        inputType = InputType.NUMBER
+                    ),
+                    NonInteractivePreference(
+                        key = "morphe_sb_guidelines",
+                        tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockGuidelinesPreference",
+                        selectable = true
+                    )
+                )
+            ),
+            PreferenceCategory(
+                key = "morphe_sb_general",
+                sorting = PreferenceScreenPreference.Sorting.UNSORTED,
+                preferences = setOf(
+                    SwitchPreference("morphe_sb_toast_on_connection_error", summary = true),
+                    SwitchPreference("morphe_sb_track_skip_count", summary = true),
+                    TextPreference(
+                        key = "morphe_sb_min_segment_duration",
+                        inputType = InputType.NUMBER_DECIMAL
+                    ),
+                    TextPreference(
+                        key = "morphe_sb_private_user_id_Do_Not_Share",
+                        tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockPrivateUserIdPreference"
+                    ),
+                    NonInteractivePreference(
+                        key = "morphe_sb_api_url",
+                        tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockApiUrlPreference",
+                        selectable = true
+                    ),
+                    NonInteractivePreference(
+                        key = "morphe_sb_channel_whitelist",
+                        tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockChannelWhitelistPreference",
+                        selectable = true
+                    ),
+                    SwitchPreference("morphe_sb_toast_on_whitelisted_channel", summary = true),
+                    TextPreference(
+                        key = null,
+                        titleKey = "morphe_sb_settings_ie_title",
+                        summaryKey = "morphe_sb_settings_ie_summary",
+                        tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockImportExportPreference"
+                    )
+                )
             ),
             PreferenceCategory(
                 key = "morphe_sb_stats",
@@ -64,8 +158,8 @@ private val sponsorBlockResourcePatch = resourcePatch {
                 preferences = setOf(
                     NonInteractivePreference(
                         key = "morphe_sb_about_api",
-                        tag = "app.morphe.extension.youtube.sponsorblock.ui.SponsorBlockAboutPreference",
-                        selectable = true,
+                        tag = "app.morphe.extension.shared.sponsorblock.ui.SponsorBlockAboutPreference",
+                        selectable = true
                     )
                 )
             )
@@ -76,7 +170,7 @@ private val sponsorBlockResourcePatch = resourcePatch {
                 "layout",
                 "morphe_sb_inline_sponsor_overlay.xml",
                 "morphe_sb_new_segment.xml",
-                "morphe_sb_skip_sponsor_button.xml",
+                "morphe_sb_skip_sponsor_button.xml"
             ),
             ResourceGroup(
                 "drawable",
@@ -95,7 +189,7 @@ private val sponsorBlockResourcePatch = resourcePatch {
                 "morphe_sb_publish.xml",
                 "morphe_sb_publish_bold.xml",
                 "morphe_sb_voting.xml",
-                "morphe_sb_voting_bold.xml",
+                "morphe_sb_voting_bold.xml"
             )
         ).forEach { resourceGroup ->
             copyResources("sponsorblock", resourceGroup)
@@ -110,7 +204,7 @@ private val sponsorBlockResourcePatch = resourcePatch {
 }
 
 internal const val EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS =
-    "Lapp/morphe/extension/youtube/sponsorblock/SegmentPlaybackController;"
+    "Lapp/morphe/extension/youtube/sponsorblock/YouTubeSponsorBlockConfig;"
 private const val EXTENSION_CREATE_SEGMENT_BUTTON_CONTROLLER_CLASS =
     "Lapp/morphe/extension/youtube/sponsorblock/ui/CreateSegmentButton;"
 private const val EXTENSION_VOTING_BUTTON_CONTROLLER_CLASS =
@@ -121,7 +215,7 @@ private const val EXTENSION_SPONSORBLOCK_VIEW_CONTROLLER_CLASS =
 @Suppress("unused")
 val sponsorBlockPatch = bytecodePatch(
     name = "SponsorBlock",
-    description = "Adds options to enable and configure SponsorBlock, which can skip undesired video segments such as sponsored content.",
+    description = "Adds options to enable and configure SponsorBlock, which can skip undesired video segments such as sponsored content."
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -130,7 +224,7 @@ val sponsorBlockPatch = bytecodePatch(
         videoInformationPatch,
         playerTypeHookPatch,
         legacyPlayerControlsPatch,
-        sponsorBlockResourcePatch,
+        sponsorBlockResourcePatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -139,12 +233,12 @@ val sponsorBlockPatch = bytecodePatch(
         // Hook the video time methods.
         videoTimeHook(
             EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS,
-            "setVideoTime",
+            "setVideoTime"
         )
 
         hookBackgroundPlayVideoId(
             EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS +
-                "->setCurrentVideoId(Ljava/lang/String;)V",
+                "->setCurrentVideoId(Ljava/lang/String;)V"
         )
 
         // Set seekbar draw rectangle.
@@ -174,7 +268,7 @@ val sponsorBlockPatch = bytecodePatch(
                 addInstruction(
                     thicknessIndex + 1,
                     "invoke-static { v$thicknessRegister }, " +
-                            "$EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS->setSeekbarThickness(I)V",
+                            "$EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS->setSeekbarThickness(I)V"
                 )
 
                 // Find the drawCircle call and draw the segment before it.
@@ -189,7 +283,7 @@ val sponsorBlockPatch = bytecodePatch(
                     drawCircleIndex,
                     "invoke-static { v$canvasInstanceRegister, v$centerYRegister }, " +
                             "$EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS->" +
-                            "drawSegmentTimeBars(Landroid/graphics/Canvas;F)V",
+                            "drawSegmentTimeBars(Landroid/graphics/Canvas;F)V"
                 )
 
                 // Set seekbar bounds.
@@ -240,7 +334,7 @@ val sponsorBlockPatch = bytecodePatch(
                 val frameLayoutRegister = getInstruction<OneRegisterInstruction>(checkCastIndex).registerA
                 addInstruction(
                     checkCastIndex + 1,
-                    "invoke-static {v$frameLayoutRegister}, $EXTENSION_SPONSORBLOCK_VIEW_CONTROLLER_CLASS->initialize(Landroid/view/ViewGroup;)V",
+                    "invoke-static {v$frameLayoutRegister}, $EXTENSION_SPONSORBLOCK_VIEW_CONTROLLER_CLASS->initialize(Landroid/view/ViewGroup;)V"
                 )
             }
         }

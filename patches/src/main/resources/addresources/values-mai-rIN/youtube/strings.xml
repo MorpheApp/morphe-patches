@@ -155,12 +155,6 @@ Second \"item\" text"</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
   <string name="morphe_hide_keyword_content_about_title">कीवर्ड फ़िल्टरिंग के बारे में</string>
-  <string name="morphe_hide_keyword_content_about_summary">"होम / सब्सक्रिप्शन / खोज परिणाम कवर्ड फ्रेज संग मेल खाए वाला सामग्री छिपाइत अछि।
-
-सीमाएं:
-• चैनल नाम स शॉर्ट्स छिपायल नहि जा सकैत अछि
-• कुछ UI घटक छिपायल नहि जा सकैत अछि।
-• कीवर्ड क खोज से कोना परिणाम नहि देखायल जा सकैत अछि।"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">पूरे शब्द मिलान करें</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">डबल उद्धरण के साथ एक कीवर्ड/वाक्यांश को घेरने से वीडियो शीर्षक और चैनल नामों के आंशिक मिलान को रोका जाएगा&lt;br&gt;&lt;br&gt;उदाहरण के लिए,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; वीडियो को छिपा देगा: &lt;b&gt;AI कैसे काम करता है?&lt;/b&gt;&lt;br&gt;लेकिन यह नहीं छिपाएगा: &lt;b&gt;उचित उपयोग का क्या अर्थ है?&lt;/b&gt;</string>
@@ -204,6 +198,8 @@ Second \"item\" text"</string>
 
 कृपया सत्यापित करें कि पैकेज नाम सही है और ऐप इंस्टॉल है"</string>
   <string name="morphe_external_downloader_empty_warning">पैकेज नाम खाली नहीं हो सकता</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">लूप वीडियो सक्षम करी</string>
   <!-- interaction.loop.loopVideoButtonPatch -->
@@ -278,6 +274,7 @@ Second \"item\" text"</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
+  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears on live streamed videos. -->
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
@@ -426,8 +423,7 @@ Second \"item\" text"</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_entry_1">निष्क्रिय</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
-  <!-- layout.player.fullscreen.openVideosFullscreen -->
-  <string name="morphe_open_videos_fullscreen_portrait_title">पूर्णस्क्रिन पोर्ट्रेटमा भिडियोहरू खोल्नुहोस्</string>
+  <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">प्लेयर ओभरले अपारदर्शिता</string>
   <string name="morphe_player_overlay_opacity_invalid_toast">प्लेयर ओभरले अपारदर्शिता 0-100 बीचमा हुनुपर्छ</string>
@@ -444,7 +440,6 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_shorts_title">शर्ट्समा Dislikes देखाउनुहोस्</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
   <string name="morphe_ryd_estimated_like_title">अनुमानित लाइकहरू देखाउनुहोस्</string>
-  <string name="morphe_ryd_attribution_summary">डेटा Return YouTube Dislike API द्वारा प्रदान गरिएको छ। थप जान्न यहाँ ट्याप गर्नुहोस्</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">यस उपकरणको Return YouTube Dislike API तथ्याङ्क</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API प्रतिक्रिया समय, औसत</string>
@@ -632,26 +627,12 @@ Second \"item\" text"</string>
   <string name="morphe_sb_color_opacity_label">अपारदर्शिता:</string>
   <string name="morphe_sb_color_dot_label">रंग:</string>
   <string name="morphe_sb_about_title">के बारे में</string>
-  <string name="morphe_sb_about_api_summary">डेटा स्पोंसरब्लॉक एपीआई द्वारा प्रदान किया गया है। अधिक जानकारी के लिए इहाँ टैप करी और अन्य प्लेटफार्म के लिए डाउनलोड देखें</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_entry_1">डिफ़ॉल्ट</string>
   <string name="morphe_change_form_factor_entry_2">फ़ोन</string>
   <string name="morphe_change_form_factor_entry_3">टैबलेट</string>
   <string name="morphe_change_form_factor_entry_4">ऑटोमोटिव</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"परिवर्तनहरू समावेश छन्:
-
-ट्याब्लेट लेआउट
-• सामुदायिक पोस्टहरू लुकेका छन्
-• फीडमा प्लेब्याक सेटिङ उपलब्ध छैन
-• सर्ट्समा रिमिक्स बटन र ध्वनि बटन उपलब्ध छैन
-• भिडियो एक्शन बार सङ्कुचित हुँदैन
-
-मोटर वाहन लेआउट
-• फीड विषयवस्तु र च्यानल अनुसार व्यवस्थित छ
-• फीडमा प्लेब्याक सेटिङ उपलब्ध छैन
-• सर्ट्समा रिमिक्स बटन र ध्वनि बटन उपलब्ध छैन
-• सर्ट्स नियमित प्लेयरमा खोल्छन्
-• भिडियो एक्शन बार सङ्कुचित हुँदैन"</string>
+  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">ऐप संस्करण स्पूफ करी</string>
   <string name="morphe_spoof_app_version_user_dialog_message">"एप संस्करण युट्युबको पुरानो संस्करणमा स्पूफ गरिएको हुनेछ।
@@ -746,11 +727,6 @@ Second \"item\" text"</string>
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow र मौलिक थम्बनेलहरू</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow र स्थिर क्याप्चरहरू</string>
   <string name="morphe_alt_thumbnail_options_entry_4">अभी के कैप्चर</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow YouTube वीडियो खातिर क्राउडसोर्स्ड थंबनेल प्रदान करेला। एह थंबनेल अक्सर YouTube द्वारा प्रदान किए गए से अधिक प्रासंगिक होला
-
-अगर सक्षम कइल गइल, तो वीडियो URL एपीआई सर्वर के भेजल जाई और कवनो अउर डेटा नइखे भेजा। अगर वीडियो में DeArrow थंबनेल नइखे, तो मूल या अभी के कैप्चर दिखवले जाई
-
-अधिक जानकारी के लिए इहाँ टैप करी"</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">DeArrow API अन्त बिन्दु</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_summary">DeArrow थम्बनेल क्याशे endpoint क URL</string>
   <string name="morphe_alt_thumbnail_stills_about_title">स्टिल वीडियो कैप्चर</string>
@@ -838,4 +814,5 @@ AV1 को साथ भिडियो प्लेब्याक स्टट
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• मूल ऑडियो फोर्स उपलब्ध नहि अछि।</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">प्लेयर जावास्क्रिप्ट भिन्नता</string>
+  <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
 </resources>

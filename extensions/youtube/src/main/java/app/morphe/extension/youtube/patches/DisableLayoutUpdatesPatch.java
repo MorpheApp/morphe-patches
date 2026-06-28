@@ -11,7 +11,6 @@ public class DisableLayoutUpdatesPatch {
     private static final List<String> REQUEST_HEADER_KEYS = List.of(
             "X-Youtube-Cold-Config-Data",
             "X-Youtube-Cold-Hash-Data",
-            "X-Youtube-Hot-Config-Data",
             "X-Youtube-Hot-Hash-Data"
     );
 

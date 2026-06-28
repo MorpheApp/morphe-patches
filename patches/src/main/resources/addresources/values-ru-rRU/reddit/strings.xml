@@ -37,12 +37,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">Отключает всплывающее окно, которое появляется при создании снимка экрана</string>
   <string name="morphe_hide_ask_button_title">Скрыть кнопку \"Спросить\"</string>
   <string name="morphe_hide_ask_button_summary">Скрывает кнопку \"Спросить\" в строке поиска</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">Скрыть рекомендованные сообщества</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">Скрывает полки рекомендованных сообществ в подреддитах</string>
-  <string name="morphe_hide_trending_today_shelf_title">Скрыть полку \"Тренды сегодня\"</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"Скрывает полку \"Тренды сегодня\" из предложений поиска
-
-Ограничение: Визуальные разделители могут не быть скрыты"</string>
+  <string name="morphe_hide_communities_shelf_title">Скрыть блок сообществ</string>
+  <string name="morphe_hide_communities_shelf_summary">Скрывает блок связанных или предлагаемых сообществ в сабреддитах</string>
+  <string name="morphe_hide_trending_shelves_title">Скрыть популярные полки</string>
+  <string name="morphe_hide_trending_shelves_summary">Скрывает полки \"В тренде\" из ленты и предложений поиска</string>
   <string name="morphe_remove_notification_dialog_title">Удалить диалоговое окно предложения уведомлений</string>
   <string name="morphe_remove_notification_dialog_summary">Автоматически закрывает диалоговое окно с предложением уведомления при посещении сабреддита</string>
   <string name="morphe_show_view_count_title">Показывать количество просмотров в публикациях</string>

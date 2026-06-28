@@ -382,7 +382,23 @@ internal object ContextualMenuItemBuilderFingerprint : Fingerprint(
     )
 )
 
+// 21.25+
 internal object ChannelTabBuilderFingerprint : Fingerprint(
+    returnType = "Landroid/view/View;",
+    parameters = listOf(
+        "Ljava/lang/CharSequence;",
+        "Ljava/lang/CharSequence;",
+        "Z",
+        "L",
+        "Z"
+    ),
+    custom = { method, _ ->
+        !AccessFlags.STATIC.isSet(method.accessFlags)
+    }
+)
+
+// 21.24 and older
+internal object ChannelTabBuilderLegacyFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Landroid/view/View;",
     parameters = listOf(

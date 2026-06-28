@@ -37,12 +37,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">ปิดใช้งานหน้าต่างป๊อปอัพที่ปรากฏเมื่อถ่ายภาพหน้าจอ</string>
   <string name="morphe_hide_ask_button_title">ซ่อนปุ่มถาม</string>
   <string name="morphe_hide_ask_button_summary">ซ่อนปุ่มถามในแถบค้นหา</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">ซ่อนชุมชนที่แนะนำ</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">ซ่อนชั้นวางชุมชนที่แนะนำในสับเรดดิต</string>
-  <string name="morphe_hide_trending_today_shelf_title">ซ่อนชั้นวาง \'วันนี้มาแรง\'</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"ซ่อนชั้นวาง 'วันนี้มาแรง' จากคำแนะนำในการค้นหา
-
-ข้อจำกัด: สเปซเซอร์ภาพอาจไม่ถูกซ่อน"</string>
+  <string name="morphe_hide_communities_shelf_title">ซ่อนชั้นชุมชน</string>
+  <string name="morphe_hide_communities_shelf_summary">ซ่อนชั้นชุมชนที่เกี่ยวข้องหรือแนะนำในซับเรดดิต</string>
+  <string name="morphe_hide_trending_shelves_title">ซ่อนชั้นวางยอดนิยม</string>
+  <string name="morphe_hide_trending_shelves_summary">ซ่อนชั้นวางสินค้าที่กำลังเป็นที่นิยมออกจากฟีดและคำแนะนำในการค้นหา</string>
   <string name="morphe_remove_notification_dialog_title">นำไดอะล็อกการแจ้งเตือนออก</string>
   <string name="morphe_remove_notification_dialog_summary">ปิดกล่องโต้ตอบคำแนะนำการแจ้งเตือนโดยอัตโนมัติเมื่อเข้าสู่ subreddit</string>
   <string name="morphe_show_view_count_title">แสดงจำนวนการเข้าชมในโพสต์</string>

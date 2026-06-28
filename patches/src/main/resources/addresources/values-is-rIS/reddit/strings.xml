@@ -37,12 +37,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">Gerir af virkni gluggann sem birtist þegar skjásnaps er tekinn</string>
   <string name="morphe_hide_ask_button_title">Felja Spyrja hnappinn</string>
   <string name="morphe_hide_ask_button_summary">Felur Spyrja hnappinn í leitastiku</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">Felja mæltu samfélög</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">Felur mæltu samfélagahillurnar í undirredditum</string>
-  <string name="morphe_hide_trending_today_shelf_title">Felja Trending Today hillu</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"Felur Trending Today hilluna úr leitartillögum
-
-Takmörkun: Visleg bilrásir kunna að ekki að vera felldar"</string>
+  <string name="morphe_hide_communities_shelf_title">Fela samfélagasafna</string>
+  <string name="morphe_hide_communities_shelf_summary">Felur tengda eða tillögð samfélagasafna á undirredditum</string>
+  <string name="morphe_hide_trending_shelves_title">Fela vinsælu hillur</string>
+  <string name="morphe_hide_trending_shelves_summary">Felur Trending hillirnir úr fóræði og leitarsuggestions</string>
   <string name="morphe_remove_notification_dialog_title">Fjarlægja tilkynningartillögu gluggann</string>
   <string name="morphe_remove_notification_dialog_summary">Fjarlægir sjálfkrafa tilkynningartillögu gluggann þegar heimsótt er undirredditt</string>
   <string name="morphe_show_view_count_title">Sýna skoðanir á færslum</string>

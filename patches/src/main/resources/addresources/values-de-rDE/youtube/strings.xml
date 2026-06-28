@@ -234,6 +234,7 @@ Folgende Änderungen werden vorgenommen:
   <string name="morphe_hide_keyword_content_home_title">Home-Videos nach Schlüsselwörtern ausblenden</string>
   <string name="morphe_hide_keyword_content_search_title">Suchergebnisse mit Schlüsselwörtern ausblenden</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Abonnement-Videos mit Schlüsselwörtern ausblenden</string>
+  <string name="morphe_hide_keyword_content_comments_title">Kommentare nach Schlüsselwörtern ausblenden</string>
   <string name="morphe_hide_keyword_content_phrases_title">Zu versteckende Stichwörter</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
@@ -243,12 +244,12 @@ Schlüsselwörter können beliebige Texte sein, die in Videotiteln oder Kanalnam
 
 Wörter mit Großbuchstaben in der Mitte müssen exakt übereinstimmen (z. B. iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">Über Keyword-Filterung</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Startseite / Abonnements / Suchergebnisse werden gefiltert, um Inhalte auszublenden, die mit Stichwortphrasen übereinstimmen
+  <string name="morphe_hide_keyword_content_about_summary">"Startseite / Abonnements / Suche / Kommentare werden gefiltert, um Inhalte auszublenden, die mit Schlüsselwortphrasen übereinstimmen
 
 Einschränkungen:
 • Shorts können nicht nach Kanalnamen ausgeblendet werden
 • Einige UI-Komponenten können nicht ausgeblendet werden
-• Die Suche nach einem Stichwort kann zu keinen Ergebnissen führen"</string>
+• Die Suche nach einem Schlüsselwort kann zu keinen Ergebnissen führen"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Ganze Wörter abgleichen</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Durch das Umschließen mit doppelten Anführungszeichen wird verhindert, dass teilweise Videotitel und Kanalnamen&lt;br&gt;&lt;br&gt;Zum Beispiel&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; wird folgendes Video ausblenden: &lt;b&gt;Wie funktioniert AI?&lt;/b&gt;&lt;br&gt;aber folgendes nicht: &lt;b&gt;Was bedeutet Fair Use?&lt;/b&gt;</string>
@@ -305,6 +306,59 @@ Einschränkungen:
 
 Stellen Sie sicher, dass der Paketname korrekt ist und die App installiert ist"</string>
   <string name="morphe_external_downloader_empty_warning">Der Paketname darf nicht leer sein</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">Sprachausgabe-Übersetzung</string>
+  <string name="morphe_vot_screen_summary">Lies die Videountertitel laut mithilfe der Text-to-Speech-Funktion des Geräts, synchronisiert mit der Wiedergabe.</string>
+  <string name="morphe_vot_enabled_title">Sprachausgabe-Übersetzung</string>
+  <string name="morphe_vot_caption_language_title">Sprache</string>
+  <string name="morphe_vot_translation_service_title">Übersetzungsanbieter</string>
+  <string name="morphe_vot_original_audio_volume_title">Lautstärke des Originaltons</string>
+  <string name="morphe_vot_original_audio_volume_summary">Lautstärke des Original-YouTube-Audios, während die Übersetzung spricht</string>
+  <string name="morphe_vot_translation_volume_title">Übersetzungslautstärke</string>
+  <string name="morphe_vot_translation_volume_summary">Lautstärke der synchronisierten Übersetzungsstimme</string>
+  <string name="morphe_vot_max_speech_rate_title">Maximale Sprechgeschwindigkeit</string>
+  <string name="morphe_vot_max_speech_rate_summary">Maximaler Geschwindigkeitsmultiplikator beim Anpassen der Sprache an einen Untertitelplatz</string>
+  <string name="morphe_vot_mymemory_info_summary">"Kostenloses Übersetzungs-API, kein API-Key erforderlich. Bis zu 5.000 Zeichen pro Tag im kostenlosen Tarif oder bis zu 50.000 Zeichen pro Tag mit einer E-Mail-Adresse.
+
+Tippen Sie hier, um MyMemory.translated.net zu öffnen"</string>
+  <string name="morphe_vot_mymemory_email_title">MyMemory E-Mail</string>
+  <string name="morphe_vot_mymemory_email_summary">Optional. Geben Sie Ihre MyMemory-E-Mail-Adresse ein, um das tägliche Limit von 5.000 auf 50.000 Zeichen zu erhöhen. Lassen Sie das Feld leer, um das anonyme Limit zu verwenden</string>
+  <string name="morphe_vot_openrouter_info_summary">"Kostenpflichtige KI-Übersetzung über OpenRouter. Laden Sie Guthaben auf und übersetzen Sie Tausende von Videos. Mistral Nemo ist die günstigste Option, Gemma 4 bietet die höchste Qualität.
+
+Tippen Sie hier, um OpenRouter.ai zu öffnen"</string>
+  <string name="morphe_vot_openrouter_api_key_title">OpenRouter API-Key</string>
+  <string name="morphe_vot_openrouter_api_key_summary">Ihr OpenRouter API-Key. Erstellen Sie einen Key unter OpenRouter.ai > Workspace > API-Keys</string>
+  <string name="morphe_vot_openrouter_model_title">OpenRouter-Modell</string>
+  <string name="morphe_vot_openrouter_model_custom">Benutzerdefiniert</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter nicht konfiguriert</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Geben Sie Ihren OpenRouter-API-Key in den Einstellungen ein, bevor Sie diesen Anbieter auswählen</string>
+  <string name="morphe_vot_cost_free">Kostenlos</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s pro 100 Videostunden</string>
+  <string name="morphe_vot_tts_voice_type">Sprache</string>
+  <string name="morphe_vot_tts_system">System</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Mehrsprachig männlich</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Mehrsprachig weiblich</string>
+  <string name="morphe_vot_voice_gender_male">Männlich</string>
+  <string name="morphe_vot_voice_gender_female">Weiblich</string>
+  <string name="morphe_vot_tts_sample">Es ist Morphing-Zeit!</string>
+  <string name="morphe_vot_http_error_title">Übersetzung nicht verfügbar</string>
+  <string name="morphe_vot_http_error_message">"Der Übersetzungsdienst hat einen HTTP-Fehler %s zurückgegeben. Ihre IP-Adresse wurde wahrscheinlich für bis zu 24 Stunden gedrosselt.
+
+Um die Übersetzung weiterhin zu nutzen, wechseln Sie in den Einstellungen zu einem anderen Übersetzungsanbieter oder verwenden Sie ein VPN"</string>
+  <string name="morphe_vot_do_not_show_again">Nicht wieder anzeigen</string>
+  <string name="morphe_vot_export_api_key_warning">"Ihre Einstellungen enthalten einen OpenRouter API-Key.
+
+Ihr API-Key sollte niemals weitergegeben werden. Jeder, der Zugriff darauf hat, kann Ihre OpenRouter-Guthaben verwenden"</string>
+  <string name="morphe_vot_openrouter_credits_title">OpenRouter-Guthabenlimit erreicht</string>
+  <string name="morphe_vot_openrouter_credits_message">Ihr OpenRouter-Guthabenlimit wurde erreicht. Laden Sie Ihr Guthaben auf oder erhöhen Sie das Ausgabenlimit Ihres Keys bei OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">Open OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">OpenRouter-Übersetzung fehlgeschlagen (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">MyMemory tägliches Limit erreicht</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Nächste Verfügbarkeit um %s.</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Sie haben heute Ihr kostenloses MyMemory-Übersetzungskontingent (5.000 Zeichen) verbraucht. Fügen Sie eine MyMemory-E-Mail-Adresse in den Einstellungen hinzu, um das tägliche Limit auf 50.000 Zeichen zu erhöhen, oder wechseln Sie zu einem anderen Übersetzungsdienst</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Sie haben heute Ihr MyMemory-Übersetzungskontingent (50.000 Zeichen) verbraucht. Wechseln Sie zu einem anderen Übersetzungsdienst oder versuchen Sie es morgen erneut</string>
+  <string name="morphe_vot_mymemory_error">MyMemory-Übersetzung fehlgeschlagen (Status %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Loop-Video aktivieren</string>
   <string name="morphe_do_not_remember_loop_video_title">Schleifenwiedergabe nicht merken</string>
@@ -355,6 +409,8 @@ Info: Funktioniert möglicherweise nicht bei Live-Streams"</string>
   <string name="morphe_queue_restore_summary">Warteschlange wird nach Neustart der App beibehalten</string>
   <string name="morphe_swap_save_and_queue_actions_title">Tausche Speichern- und Warteschlangenaktionen</string>
   <string name="morphe_swap_save_and_queue_actions_summary">Tippen für Warteschlangen-Optionen; tippen und halten, um zum späteren Ansehen zu speichern.</string>
+  <string name="morphe_queue_override_flyout_menu_title">Überschreiben-Button für Feed-Flyout-Warteschlange</string>
+  <string name="morphe_queue_override_flyout_menu_summary">Öffnet die Morphe-Warteschlange anstelle der YouTube-Warteschlange</string>
   <string name="morphe_queue_manager_check_failed_auth">Nicht angemeldet</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">Keine Wiedergabelisten-ID</string>
   <string name="morphe_queue_manager_check_failed_queue">Warteschlange ist leer</string>
@@ -470,6 +526,8 @@ Hinweis: Wenn „Videostreams spoofen“ nicht aktiviert ist, kann das Aktiviere
   <string name="morphe_hide_stop_ads_button_title">Werbefreigabe-Schaltfläche ausblenden</string>
   <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
   <string name="morphe_hide_comments_button_title">Kommentar-Button ausblenden</string>
+  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_connect_button_title">Verstecke Connect-Button</string>
   <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears on live streamed videos. -->
   <string name="morphe_hide_report_button_title">Melden-Schaltfläche ausblenden</string>
@@ -494,6 +552,7 @@ Hinweis: Wenn „Videostreams spoofen“ nicht aktiviert ist, kann das Aktiviere
   <string name="morphe_hide_shop_button_title">Shop-Button ausblenden</string>
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_save_button_title">Mix-Schaltfläche ausblenden</string>
+  <string name="morphe_hide_more_button_title">Mehr-Button ausblenden</string>
   <string name="morphe_fullscreen_buttons">Vollbild-Buttons</string>
   <string name="morphe_hide_quick_actions_title">Aktionsleiste ausblenden</string>
   <string name="morphe_hide_quick_actions_ask_button_title">Frage-Button ausblenden</string>
@@ -579,6 +638,7 @@ Um auf Einstellungen zuzugreifen, aktivieren Sie die Einstellungen Schaltfläche
   <string name="morphe_toolbar_screen_title">Leiste</string>
   <string name="morphe_toolbar_screen_summary">Ambient-Modus-Menü ausblenden</string>
   <string name="morphe_hide_toolbar_cast_button_title">Cast-Button ausblenden</string>
+  <string name="morphe_hide_toolbar_chat_button_title">Chat-Button ausblenden</string>
   <string name="morphe_hide_toolbar_create_button_title">Erstellen-Button ausblenden</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Wiedergabegeschwindigkeit-Menü ausblenden</string>
   <string name="morphe_hide_toolbar_notification_button_title">Lock Screen-Menü ausblenden</string>
@@ -739,8 +799,11 @@ Einstellungen → Wiedergabe (oder Automatische Wiedergabe) → Nächstes Video 
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">Deaktivieren der Wischgeste nach oben im Hochformat</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Deaktivieren der Wischbewegung von oben nach unten im Porträtmodus</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Deaktivieren der Wischbewegung von oben nach unten im Landschaftsmodus</string>
-  <!-- layout.player.fullscreen.openVideosFullscreen -->
-  <string name="morphe_open_videos_fullscreen_portrait_title">Videos im Vollbild-Hochformat öffnen</string>
+  <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
+  <string name="morphe_open_videos_fullscreen_title">Videos im Vollbildmodus öffnen</string>
+  <string name="morphe_open_videos_fullscreen_entry_1">Deaktiviert</string>
+  <string name="morphe_open_videos_fullscreen_entry_2">Hochformat</string>
+  <string name="morphe_open_videos_fullscreen_entry_3">Querformat</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Spieler-Überlagerung Deckkraft</string>
   <string name="morphe_player_overlay_opacity_summary">Passen Sie die Transparenz an (0 ist transparent, 100 ist opak)</string>
@@ -767,7 +830,9 @@ Einstellungen → Wiedergabe (oder Automatische Wiedergabe) → Nächstes Video 
   <string name="morphe_ryd_estimated_like_summary">Zeigt eine geschätzte Like-Anzahl auf Videos an, bei denen der Ersteller Likes deaktiviert hat</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Verbindungsfehler-Benachrichtigungen anzeigen</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Zeigt eine Benachrichtigung an, wenn der Return YouTube Dislike-Server nicht verfügbar ist</string>
-  <string name="morphe_ryd_attribution_summary">Daten werden von der YouTube Dislike API zurückgegeben. Tippe hier, um mehr zu erfahren</string>
+  <string name="morphe_ryd_attribution_summary">"Daten werden von der Return YouTube Dislike API bereitgestellt.
+
+Tippen Sie hier, um ReturnYouTubeDislike.com zu öffnen"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Gibt die API-Statistiken dieses Geräts zurück</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API-Antwortzeit, Durchschnitt</string>
@@ -1009,7 +1074,9 @@ Wenn Sie keine Markierung senden, tippen Sie auf Abbrechen und markieren Sie die
   <string name="morphe_sb_color_opacity_label">Deckkraft:</string>
   <string name="morphe_sb_color_dot_label">Farbe:</string>
   <string name="morphe_sb_about_title">Über</string>
-  <string name="morphe_sb_about_api_summary">Daten werden von der SponsorBlock API bereitgestellt. Tippe hier, um mehr zu erfahren und Downloads für andere Plattformen zu sehen</string>
+  <string name="morphe_sb_about_api_summary">"Daten werden von der SponsorBlock API bereitgestellt.
+
+Tippen Sie hier, um Sponsor.ajay.app zu öffnen und Downloads für andere Plattformen anzuzeigen"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Geräte-Layout</string>
   <string name="morphe_change_form_factor_entry_1">Standard</string>
@@ -1019,19 +1086,22 @@ Wenn Sie keine Markierung senden, tippen Sie auf Abbrechen und markieren Sie die
   <string name="morphe_change_form_factor_user_dialog_message">"Änderungen umfassen:
 
 Tablet-Layout
-• Community-Beiträge sind ausgeblendet
-• Wiedergabe in Feeds-Einstellungen ist nicht verfügbar
-• Remix-Taste und Sound-Taste sind in Shorts nicht verfügbar
-• Video-Aktionenleiste ist nicht zusammengeklappt
+• Community-Beiträge werden ausgeblendet
+• Wiedergabe in Feeds-Einstellung ist nicht verfügbar
+• Remix-Button und Sound-Button sind in Shorts nicht verfügbar
+• Nicht zusammengeklappte alte Video-Aktionsleiste wird angezeigt
 
 Automobil-Layout
 • Feed ist nach Themen und Kanälen organisiert
-• Wiedergabe in Feeds-Einstellungen ist nicht verfügbar
-• Remix-Taste und Sound-Taste sind in Shorts nicht verfügbar
-• Shorts öffnen im regulären Player
-• Video-Aktionenleiste ist nicht zusammengeklappt"</string>
+• Wiedergabe in Feeds-Einstellung ist nicht verfügbar
+• Remix-Button und Sound-Button sind in Shorts nicht verfügbar
+• Shorts werden im regulären Player geöffnet
+• Nicht zusammengeklappte alte Video-Aktionsleiste wird angezeigt"</string>
   <string name="morphe_tablet_layout_in_player_title">Tablet-Layout im Player aktivieren</string>
-  <string name="morphe_tablet_layout_in_player_summary">Stellt das alte Player-Layout wieder her</string>
+  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+  <string name="morphe_tablet_layout_in_player_summary">"Stellt das alte Player-Layout wieder her
+
+Einschränkungen: Wenn \"Alte Video-Aktionsleiste wiederherstellen\" deaktiviert ist, ist die \"Weitere Videos\"-Überlagerung möglicherweise nicht verfügbar."</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Spoof-App-Version</string>
   <string name="morphe_spoof_app_version_summary">Täuscht den Server dazu, dass Sie eine ältere App-Version verwenden, um Legacy-UI-Funktionen wiederherzustellen</string>
@@ -1159,7 +1229,7 @@ Einschränkung: Die Verwendung der Zurück-Taste auf der Symbolleiste funktionie
   <string name="morphe_alt_thumbnail_options_entry_4">Standbild</string>
   <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow bietet von der Community bereitgestellte Vorschaubilder für YouTube-Videos. Diese Vorschaubilder sind oft relevanter als die von YouTube bereitgestellten.
 
-Wenn diese Option aktiviert ist, werden Video-URLs an den API-Server gesendet und keine anderen Daten werden gesendet. Wenn ein Video keine DeArrow-Vorschaubilder hat, wird das originale Vorschaubild oder ein Standbild angezeigt.
+Wenn diese Option aktiviert ist, werden Video-URLs an den API-Server gesendet und keine anderen Daten werden gesendet. Wenn ein Video keine DeArrow-Vorschaubilder hat, wird das originale oder ein Standbild angezeigt.
 
 Tippen Sie hier, um mehr über DeArrow zu erfahren"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Verbindungsfehler-Benachrichtigungen anzeigen</string>
@@ -1289,4 +1359,9 @@ Die Videowiedergabe mit AV1 kann stottern oder Bilder überspringen."</string>
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Originalton erzwingen ist nicht verfügbar</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Player-JavaScript-Variante</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Fälschen in Statistiken für Nerds anzeigen</string>
+  <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <string name="morphe_restore_old_video_action_bar_title">Alte Video-Aktionsleiste wiederherstellen</string>
+  <string name="morphe_restore_old_video_action_bar_summary">"Behebt Probleme mit nicht angezeigten Dislikes und nicht ausblendbaren Video-Aktionsschaltflächen
+
+Einschränkungen: Kehrt zum alten Stil der \"Weitere Videos\"-Überlagerung zurück"</string>
 </resources>

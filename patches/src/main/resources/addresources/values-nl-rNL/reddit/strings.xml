@@ -37,12 +37,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">Schakelt het popup-venster uit dat verschijnt bij het maken van een screenshot</string>
   <string name="morphe_hide_ask_button_title">AI-knop verbergen</string>
   <string name="morphe_hide_ask_button_summary">Verbergt de knop \'Vragen\' in de zoekbalk</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">Aanbevolen communities verbergen</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">Verbergt de aanbevolen communities planken in subreddits</string>
-  <string name="morphe_hide_trending_today_shelf_title">Trending Today plank verbergen</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"Verbergt de Trending Today plank uit zoeksuggesties
-
-Beperking: Visuele spatieen worden mogelijk niet verborgen"</string>
+  <string name="morphe_hide_communities_shelf_title">Verberg communities plank</string>
+  <string name="morphe_hide_communities_shelf_summary">Verbergt het gerelateerde of voorgestelde communities plank in subreddits</string>
+  <string name="morphe_hide_trending_shelves_title">Verberg Trending planken</string>
+  <string name="morphe_hide_trending_shelves_summary">Verbergt de Trending planken van de feed en zoekopdrachten</string>
   <string name="morphe_remove_notification_dialog_title">Verwijder notificatie suggestie dialoog</string>
   <string name="morphe_remove_notification_dialog_summary">Sluit de suggestiedialoog voor meldingen automatisch wanneer je een subreddit bezoekt</string>
   <string name="morphe_show_view_count_title">Toon het aantal weergaven op berichten</string>

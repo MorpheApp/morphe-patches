@@ -37,12 +37,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">Desactiva la ventana emergente que aparece al tomar una captura de pantalla</string>
   <string name="morphe_hide_ask_button_title">Ocultar botón de preguntar</string>
   <string name="morphe_hide_ask_button_summary">Oculta el botón de preguntar en la barra de búsqueda</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">Ocultar comunidades recomendadas</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">Oculta las estanterías de comunidades recomendadas en los subreddits</string>
-  <string name="morphe_hide_trending_today_shelf_title">Ocultar estantería \"Tendencias de hoy\"</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"Oculta la estantería \"Tendencias de hoy\" de las sugerencias de búsqueda
-
-Limitación: Los separadores visuales pueden no ocultarse"</string>
+  <string name="morphe_hide_communities_shelf_title">Ocultar estantería de \"Comunidades\"</string>
+  <string name="morphe_hide_communities_shelf_summary">Oculta la estantería de comunidades relacionadas o sugeridas en los subreddits</string>
+  <string name="morphe_hide_trending_shelves_title">Ocultar estantería \"Tendencias\"</string>
+  <string name="morphe_hide_trending_shelves_summary">Oculta las estanterías de tendencias del feed y de las sugerencias de búsqueda</string>
   <string name="morphe_remove_notification_dialog_title">Eliminar diálogo de sugerencia de notificación</string>
   <string name="morphe_remove_notification_dialog_summary">Despide automáticamente la sugerencia de diálogo de notificación al visitar un subreddit</string>
   <string name="morphe_show_view_count_title">Mostrar recuento de vistas en las publicaciones</string>

@@ -37,12 +37,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">स्क्रीनशॉट काढताना दिसणारा पॉपअप अक्षम करते</string>
   <string name="morphe_hide_ask_button_title">\'विचारा\' (Ask) बटण लपवा</string>
   <string name="morphe_hide_ask_button_summary">सर्च बारमधील \'Ask\' बटण लपवते</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">शिफारस केलेले समुदाय लपवा</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">सबरेडिट्समधील शिफारस केलेले समुदाय शेल्फ लपवते</string>
-  <string name="morphe_hide_trending_today_shelf_title">आजचे ट्रेंडिंग शेल्फ लपवा</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"शोध सूचनांमध्ये आजचे ट्रेंडिंग शेल्फ लपवते
-
-मर्यादा: व्हिज्युअल स्पेसर्स लपवले जाणार नाहीत"</string>
+  <string name="morphe_hide_communities_shelf_title">समुदाय शेल्फ लपवा</string>
+  <string name="morphe_hide_communities_shelf_summary">सबरेडिट्समध्ये संबंधित किंवा प्रस्तावित समुदाय शेल्फ लपवते</string>
+  <string name="morphe_hide_trending_shelves_title">ट्रेंडिंग शेल्फ लपवा</string>
+  <string name="morphe_hide_trending_shelves_summary">फीड आणि शोध शिफारशींमधून ट्रेंडिंग शेल्फ लपवते</string>
   <string name="morphe_remove_notification_dialog_title">सूचना सूचना संवाद काढून टाका</string>
   <string name="morphe_remove_notification_dialog_summary">subredditला भेट देताना सूचना सूचना संवाद आपोआप बंद होतो</string>
   <string name="morphe_show_view_count_title">पोस्टवर दृश्य संख्या दर्शवा</string>

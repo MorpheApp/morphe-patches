@@ -27,7 +27,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_1_ads_title">Огласи</string>
   <string name="morphe_settings_music_screen_2_general_title">Опште</string>
   <string name="morphe_settings_music_screen_3_player_title">Плејер</string>
-  <string name="morphe_settings_music_screen_4_misc_title">Разно</string>
+  <string name="morphe_settings_music_screen_4_scrobbling_title">Скробовање</string>
+  <string name="morphe_settings_music_screen_5_misc_title">Разно</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Сакриј ознаку „Набавите Music Premium”</string>
   <!-- ad.video.hideVideoAdsPatch -->
@@ -69,10 +70,34 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">Прелазак је паузиран за ову сесију</string>
   <string name="morphe_music_crossfade_resumed_toast">Прелазак настављен</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Режим видео режима није доступан када је прелазак омогућен</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Прелазак је паузиран током емитовања или преноса звука. Прелазак током емитовања/преноса је нестабилан и можда никада неће бити поправљен.</string>
   <string name="morphe_music_crossfade_about_title">О програму</string>
-  <string name="morphe_music_crossfade_about_summary">"Pritisnite i zadržite dugme za nasumično puštanje kako biste onemogućili/omogućili
+  <string name="morphe_music_crossfade_about_summary">Како ради прелазак – и када не ради</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">Како то ради</string>
+  <string name="morphe_music_crossfade_about_how_summary">"Прелазак преклапа крај једне песме са почетком следеће, постепено смањујући јачину једне док се друга не појави током изабраног трајања и криве.
 
-Implementacija funkcije od strane VazerOG"</string>
+Ради на аутоматском преласку (када песма сама заврши) и на ручном прескакању – сваки од њих има свој прекидач изнад. На аутоматском преласку мешање почиње неколико секунди пре краја песме.
+
+Захтева YouTube Music 9.x или новију верзију."</string>
+  <string name="morphe_music_crossfade_about_best_title">Најбоље функционише са</string>
+  <string name="morphe_music_crossfade_about_best_summary">Нормалним пуштањем песама и аутоматским преласком, понављањем једне песме (песма прелази у саму себе) и локалним звуком – звучником телефона, жичаним слушалицама, Блутоотхом или УСБ-ом.</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Не ради баш како треба</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Музички спотови репродукују се само као звук када је укључено прелажење (дуго притисните мешање да бисте паузирали ако желите видео)
+
+Песме краће од времена преласка могу прескочити прелаз
+
+Закључани екран или обавештење могу на кратко приказати застарело стање током прелаза"</string>
+  <string name="morphe_music_crossfade_about_known_title">Познати проблеми</string>
+  <string name="morphe_music_crossfade_about_known_summary">"Музички спот постављен као прва песма — или она започета изван тренутне листе — може на кратко приказати видео пре него што почне репродукција само звука
+
+Паузирање прелазака за гледање музичког видеа може оставити неке видее црне (оне чији звук долази из самог видеа). Паузирање прелазака пре него што одаберете песму избегава то"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Не ради уопште</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Пренос или огледање звука (Chromecast, екран или огледање звука) — прелазак се паузира јер је нестабилан тамо и можда никада неће бити поправљено.
+
+YouTube Music 8.x — прелазак ради само на 9.x и новијим верзијама"</string>
+  <string name="morphe_music_crossfade_about_credit_title">Заслуге</string>
+  <string name="morphe_music_crossfade_about_credit_summary">Функција преласка од стране VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Омогући трајно понављање</string>
   <!-- layout.buttons.hideButtonsPatch -->
@@ -123,4 +148,77 @@ Implementacija funkcije od strane VazerOG"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Сакриј ознаке дугмади за навигацију</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Сакриј дугме за надоградњу</string>
+  <!-- interaction.scrobbling.scrobblingPatch -->
+  <string name="morphe_music_scrobbling_summary">Конфигуришите интеграцију са Last.fm и ListenBrainz</string>
+  <string name="morphe_music_scrobbling_summary_logged_out">Нисте пријављени. Додирните да бисте конфигурисали</string>
+  <string name="morphe_music_scrobbling_log_out">Одјавите се</string>
+  <string name="morphe_music_scrobbling_logged_out_toast">Одјављени</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_enabled_title">Омогућите scrobbling</string>
+  <string name="morphe_music_listenbrainz_now_playing_title">Пошаљите статус \"Сада се пушта\"</string>
+  <string name="morphe_music_listenbrainz_min_song_duration_title">Минимално трајање песме</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_min_song_duration_summary">Песме краће од овог трајања неће бити scrobble</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_title">Проценат кашњења за scrobble</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_summary">Покрени scrobble након слушања овог процента песме</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_title">Кашњење за scrobble у секундама</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_summary">Покрени scrobble након слушања овом броју секунди</string>
+  <string name="morphe_music_listenbrainz_token_title">ListenBrainz налог</string>
+  <string name="morphe_music_listenbrainz_token_summary_logged_in">Пријављени. Додирните да бисте управљали налогом</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">Унесите свој ListenBrainz кориснички токен да бисте омогућили scrobbling</string>
+  <string name="morphe_music_listenbrainz_token_dialog_hint">Токен</string>
+  <string name="morphe_music_listenbrainz_token_dialog_get_token">Набави токен</string>
+  <string name="morphe_music_listenbrainz_token_dialog_verify">Верификуј</string>
+  <string name="morphe_music_listenbrainz_token_status_empty">Унесите токен</string>
+  <string name="morphe_music_listenbrainz_token_status_validating">Провера се наставља...</string>
+  <string name="morphe_music_listenbrainz_token_status_valid">Важан токен! Корисник: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">Неважећи токен: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid_unknown">непознато</string>
+  <string name="morphe_music_listenbrainz_token_status_failed">Верификација није успела: %s</string>
+  <string name="morphe_music_listenbrainz_token_toast_cleared">Токен је обрисан</string>
+  <string name="morphe_music_listenbrainz_token_toast_saved">Токен је сачуван</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Упозорење: Сачувани токен је неважећи!</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_lastfm_enabled_title">Омогућите scrobbling</string>
+  <string name="morphe_music_lastfm_now_playing_title">Пошаљите статус \"Сада се пушта\"</string>
+  <string name="morphe_music_lastfm_love_on_like_title">Свиђају се траке</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">Аутоматски волите траке на Last.fm када вам се свиђају на YouTube Music (и уклоните вољење када не волите или вам се не свиђа)</string>
+  <string name="morphe_music_lastfm_min_song_duration_title">Минимално трајање песме</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_lastfm_min_song_duration_summary">Песме краће од овог трајања неће бити scrobble</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_title">Проценат кашњења за scrobble</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_summary">Покрени scrobble након слушања овог процента песме</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_title">Кашњење за scrobble у секундама</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_summary">Покрени scrobble након слушања овом броју секунди</string>
+  <string name="morphe_music_lastfm_token_title">Last.fm налог</string>
+  <string name="morphe_music_lastfm_token_summary_logged_in">Пријављени као %s. Додирните да бисте управљали налогом</string>
+  <string name="morphe_music_lastfm_token_dialog_instruction">Унесите своје Last.fm акредитиве да бисте се пријавили</string>
+  <string name="morphe_music_lastfm_token_dialog_username_hint">Корисничко име</string>
+  <string name="morphe_music_lastfm_token_dialog_password_hint">Лозинка</string>
+  <string name="morphe_music_lastfm_token_dialog_login">Пријави се</string>
+  <string name="morphe_music_lastfm_token_status_empty">Унесите корисничко име и лозинку</string>
+  <string name="morphe_music_lastfm_token_status_logging_in">Пријављивање...</string>
+  <string name="morphe_music_lastfm_token_status_success">Успешно пријављени!</string>
+  <string name="morphe_music_lastfm_token_status_no_session">Неуспело преузимање сесије са Last.fm</string>
+  <string name="morphe_music_lastfm_token_status_failed">Грешка при пријављивању: %s</string>
+  <string name="morphe_music_lastfm_token_toast_saved">Last.fm акредитиви су сачувани!</string>
+  <string name="morphe_settings_music_scrobbling_metadata_title">Чишћење метаподатака</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_title">Очисти метаподатке</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">Аутоматски очистите уобичајени неред (као што су „Званични видео“, „Ремастер“, „Уживо“) из назива, извођача и албума пре него што се scrobble</string>
+  <string name="morphe_music_scrobbling_custom_regex_title">Прилагођено чишћење регуларним изразом</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">"Унесите прилагођени регуларни израз (regex) да бисте пронашли и уклонили додатни текст из назива песама, извођача или албума.
+Пример: (?i)\s*\((clean|explicit)\)"</string>
+  <string name="morphe_music_scrobbling_about_title">О scrobbling-у</string>
+  <string name="morphe_music_scrobbling_about_summary">"Scrobbling аутоматски прати музику коју пуштате на YouTube Music и синхронизује је са вашим профилом на Last.fm или ListenBrainz.
+
+Да бисте били сигурни да scrobbling поуздано ради у позадини, проверите да ли је системска употреба батерије на YouTube Music подешена на „Неограничено“"</string>
 </resources>

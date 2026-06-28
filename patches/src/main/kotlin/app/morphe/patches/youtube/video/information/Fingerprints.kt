@@ -3,7 +3,6 @@
 package app.morphe.patches.youtube.video.information
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.StringComparisonType
@@ -24,13 +23,6 @@ internal object PlaybackSpeedOnItemClickFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L", "L", "I", "J")
-)
-
-internal object PlayerControllerSetTimeReferenceFingerprint : Fingerprint(
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.INVOKE_DIRECT_RANGE, Opcode.IGET_OBJECT
-    ),
-    strings = listOf("Media progress reported outside media playback: ")
 )
 
 internal object PlayerInitFingerprint : Fingerprint(

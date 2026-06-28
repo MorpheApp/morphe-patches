@@ -109,7 +109,9 @@ public final class HideNavigationButtonsPatch {
 
         NavigationButtonLegacy(boolean shouldHide, String resourceName) {
             this.shouldHide = shouldHide;
-            this.label = ResourceUtils.getString(resourceName);
+            this.label = ResourceUtils.getStringIdentifier(resourceName) == 0
+                    ? "dummy_bogus_legacy_label" // Some legacy strings are missing with 2026.26.0+
+                    : ResourceUtils.getString(resourceName);
         }
     }
 }

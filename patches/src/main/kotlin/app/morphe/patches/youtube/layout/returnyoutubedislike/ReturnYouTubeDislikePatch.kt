@@ -9,12 +9,14 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.fix.videoactionbar.restoreOldVideoActionBarPatch
 import app.morphe.patches.youtube.misc.litho.context.EXTENSION_CONTEXT_INTERFACE
 import app.morphe.patches.youtube.misc.litho.context.conversionContextClassDef
 import app.morphe.patches.youtube.misc.litho.context.conversionContextPatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
+import app.morphe.patches.youtube.misc.playservice.is_21_25_or_greater
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -25,6 +27,7 @@ import app.morphe.patches.youtube.video.videoid.videoIdPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.cloneParameters
 import app.morphe.util.findFreeRegister
+import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
@@ -55,6 +58,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
         lithoFilterPatch,
         videoIdPatch,
         playerTypeHookPatch,
+        restoreOldVideoActionBarPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -91,18 +95,32 @@ val returnYouTubeDislikePatch = bytecodePatch(
 
         // region Hook like/dislike/remove like button clicks to send votes to the API.
 
-        arrayOf(
-            LikeFingerprint to Vote.LIKE,
-            DislikeFingerprint to Vote.DISLIKE,
-            RemoveLikeFingerprint to Vote.REMOVE_LIKE,
-        ).forEach { (fingerprint, vote) ->
-            fingerprint.method.addInstructions(
-                0,
-                """
-                    const/4 v0, ${vote.value}
-                    invoke-static { v0 }, $EXTENSION_CLASS->sendVote(I)V
-                """
-            )
+        val endPointServiceNameField = EndpointServiceNameFingerprint
+            .instructionMatches.last().instruction.getReference<FieldReference>()!!
+        val likeEndpointParserClass = DislikeFingerprint.classDef.superclass!!
+        val videoIdField = requestParameterCheckFingerprint(likeEndpointParserClass)
+            .instructionMatches.last().instruction.getReference<FieldReference>()!!
+
+        likeEndpointParserFingerprint(likeEndpointParserClass).let {
+            it.method.apply {
+                val insertIndex = it.instructionMatches[1].index + 1
+                val likeEndpointTargetClassRegister =
+                    getInstruction<TwoRegisterInstruction>(insertIndex - 1).registerA
+                val registerProvider = getFreeRegisterProvider(
+                    insertIndex, 2, likeEndpointTargetClassRegister
+                )
+                val endPointServiceNameRegister = registerProvider.getFreeRegister()
+                val videoIdRegister = registerProvider.getFreeRegister()
+
+                addInstructions(
+                    insertIndex,
+                    """
+                        iget-object v$endPointServiceNameRegister, p0, $endPointServiceNameField
+                        iget-object v$videoIdRegister, v$likeEndpointTargetClassRegister, $videoIdField
+                        invoke-static { v$endPointServiceNameRegister, v$videoIdRegister }, $EXTENSION_CLASS->sendVote(Ljava/lang/String;Ljava/lang/String;)V
+                    """
+                )
+            }
         }
 
         // endregion
@@ -221,12 +239,14 @@ val returnYouTubeDislikePatch = bytecodePatch(
 
         // Rolling Number text views use the measured width of the raw string for layout.
         // Modify the measure text calculation to include the left drawable separator if needed.
-        RollingNumberMeasureAnimatedTextFingerprint.let {
-            // Additional check to verify the opcodes are at the start of the method
-            if (it.instructionMatches.first().index != 0) throw PatchException("Unexpected opcode location")
-            val endIndex = it.instructionMatches.last().index
+        val rollingNumberMeasureAnimatedTextFingerprint = if (is_21_25_or_greater)
+            RollingNumberMeasureAnimatedTextFingerprint
+        else
+            RollingNumberMeasureAnimatedTextLegacyFingerprint
 
+        rollingNumberMeasureAnimatedTextFingerprint.let {
             it.method.apply {
+                val endIndex = it.instructionMatches.last().index
                 val measuredTextWidthRegister = getInstruction<OneRegisterInstruction>(endIndex).registerA
 
                 addInstructions(
@@ -285,10 +305,4 @@ val returnYouTubeDislikePatch = bytecodePatch(
 
         // endregion
     }
-}
-
-enum class Vote(val value: Int) {
-    LIKE(1),
-    DISLIKE(-1),
-    REMOVE_LIKE(0),
 }

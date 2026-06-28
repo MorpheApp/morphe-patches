@@ -115,7 +115,7 @@ public class CopyVideoLinkButton {
             if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2
                     || (withTimestamp && currentVideoTimeInSeconds > 0)) {
                 Utils.showToastShort(withTimestamp && currentVideoTimeInSeconds > 0
-                        ? str("morphe_share_copy_link_button_timestamp_success")
+                        ? str("morphe_share_copy_link_with_timestamp_button_success")
                         : str("morphe_share_copy_link_button_success"));
             }
         } catch (Exception e) {

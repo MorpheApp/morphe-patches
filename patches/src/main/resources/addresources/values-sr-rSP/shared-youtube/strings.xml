@@ -109,6 +109,25 @@ Da bi se prijavili, pritisnite nastavak ispod"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Присили оригинални језик звука</string>
   <string name="morphe_force_original_audio_summary">Увек пушта оригиналну аудио нумеру видеа уместо синхронизоване верзије.</string>
+  <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">Мрежни прокси</string>
+  <string name="morphe_proxy_screen_summary">Усмеравање подржаних мрежних захтева преко проксија</string>
+  <string name="morphe_proxy_enabled_title">Омогући прокси</string>
+  <string name="morphe_proxy_enabled_summary">Проксирање мрежних захтева кроз конфигурисани ХТТП или ХТТПС прокси</string>
+  <string name="morphe_proxy_host_title">Прокси хост</string>
+  <string name="morphe_proxy_host_summary">Назив хоста или ИП адреса прокси сервера</string>
+  <string name="morphe_proxy_port_title">Прокси порт</string>
+  <string name="morphe_proxy_port_summary">Порт прокси сервера</string>
+  <string name="morphe_proxy_https_title">Користи ХТТПС прокси</string>
+  <string name="morphe_proxy_https_summary">Користи ХТТПС за повезивање на прокси сервер уместо ХТТП</string>
+  <string name="morphe_proxy_auth_enabled_title">Прокси аутентификација</string>
+  <string name="morphe_proxy_auth_enabled_summary">Слање основне аутентификације са прокси захтевима</string>
+  <string name="morphe_proxy_auth_username_title">Ваше корисничко име</string>
+  <string name="morphe_proxy_auth_username_summary">Корисничко име за основну прокси аутентификацију</string>
+  <string name="morphe_proxy_auth_password_title">Прокси корисничко име</string>
+  <string name="morphe_proxy_auth_password_summary">Лозинка за основну прокси аутентификацију</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">Омогући директан пад</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">Повезивање директно ако прокси не успе</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Сакриј огласе преко целог екрана</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

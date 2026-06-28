@@ -37,12 +37,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">Dezactivează fereastra care apare când faci o captură de ecran</string>
   <string name="morphe_hide_ask_button_title">Ascunde butonul Ask</string>
   <string name="morphe_hide_ask_button_summary">Ascunde butonul Ask în bara de căutare</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">Ascunde comunități recomandate</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">Ascunde rafturile comunități recomandate în subreddituri</string>
-  <string name="morphe_hide_trending_today_shelf_title">Ascunde raftul Astăzi în tendințe</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"Ascunde raftul Astăzi în tendințe din sugestiile de căutare
-
-Limitare: Spațiatorii vizuali pot să nu fie ascunși"</string>
+  <string name="morphe_hide_communities_shelf_title">Ascunde raftul comunităților</string>
+  <string name="morphe_hide_communities_shelf_summary">Ascunde raftul comunităților asociate sau sugerate în subreddit-uri</string>
+  <string name="morphe_hide_trending_shelves_title">Ascunde rafturile în tendințe</string>
+  <string name="morphe_hide_trending_shelves_summary">Ascunde rafturile \"În tendințe\" din flux și din sugestiile de căutare</string>
   <string name="morphe_remove_notification_dialog_title">Elimină dialogul de sugestie a notificărilor</string>
   <string name="morphe_remove_notification_dialog_summary">Dismissă automat sugestia de notificare când vizitezi un subreddit</string>
   <string name="morphe_show_view_count_title">Afișează numărul de vizualizări pe postări</string>

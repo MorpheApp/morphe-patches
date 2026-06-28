@@ -51,7 +51,7 @@ public class LayoutReloadObserverPatch {
         PlayerType playerType = PlayerType.getCurrent();
         if (playerType == PlayerType.WATCH_WHILE_MINIMIZED || playerType == PlayerType.WATCH_WHILE_PICTURE_IN_PICTURE) {
             if (isActionBarVisible.compareAndSet(false, true)) {
-                Utils.runOnMainThreadDelayed(() -> isActionBarVisible.compareAndSet(true, false), 250);
+                Utils.runOnMainThreadDelayed(() -> isActionBarVisible.compareAndSet(true, false), 100);
             }
         }
     }

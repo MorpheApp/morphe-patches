@@ -109,6 +109,25 @@ Prehrávanie zlyhá, ak je hash JavaScript prehrávača zastaraný."</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Vynútiť pôvodný jazyk zvukovej stopy</string>
   <string name="morphe_force_original_audio_summary">Vždy prehráva pôvodnú zvukovu stopu videa namiesto nadabovanej verzie</string>
+  <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">Sieťový proxy</string>
+  <string name="morphe_proxy_screen_summary">Smerujte podporované sieťové požiadavky cez proxy</string>
+  <string name="morphe_proxy_enabled_title">Povoliť proxy</string>
+  <string name="morphe_proxy_enabled_summary">Smeruje sieťové požiadavky podporovaných trás cez konfigurovaný HTTP alebo HTTPS proxy server</string>
+  <string name="morphe_proxy_host_title">Proxy hostiteľ</string>
+  <string name="morphe_proxy_host_summary">Názov hostiteľa alebo IP adresa proxy servera</string>
+  <string name="morphe_proxy_port_title">Proxy port</string>
+  <string name="morphe_proxy_port_summary">Port proxy servera</string>
+  <string name="morphe_proxy_https_title">Použiť HTTPS proxy</string>
+  <string name="morphe_proxy_https_summary">Použite HTTPS na pripojenie k proxy serveru namiesto HTTP</string>
+  <string name="morphe_proxy_auth_enabled_title">Overenie proxy</string>
+  <string name="morphe_proxy_auth_enabled_summary">Posiela základné overenie s proxy požiadavkami</string>
+  <string name="morphe_proxy_auth_username_title">Používateľské meno proxy</string>
+  <string name="morphe_proxy_auth_username_summary">Používateľské meno pre základné overenie proxy</string>
+  <string name="morphe_proxy_auth_password_title">Heslo proxy</string>
+  <string name="morphe_proxy_auth_password_summary">Heslo pre základné overenie proxy</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">Povoliť priame prepnutie</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">Pripojte sa priamo, ak proxy zlyhá</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Skryť reklamy na celú obrazovku</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

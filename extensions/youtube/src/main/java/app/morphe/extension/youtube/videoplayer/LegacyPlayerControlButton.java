@@ -322,6 +322,19 @@ public class LegacyPlayerControlButton {
     }
 
     /**
+     * Sets the alpha of the button's image drawable (0–255).
+     * Unlike {@link View#setAlpha}, this is not overridden by visibility animations.
+     */
+    public void setImageAlpha(int alpha) {
+        Utils.verifyOnMainThread();
+
+        View button = buttonRef.get();
+        if (button instanceof ImageView imageButton) {
+            imageButton.setImageAlpha(alpha);
+        }
+    }
+
+    /**
      * Sets the text to be displayed on the text overlay.
      * @param text The text to set on the overlay, or null to clear the text.
      */

@@ -14,6 +14,8 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.reddit.misc.settings.settingsPatch
+import app.morphe.patches.reddit.misc.version.is_2026_25_0_or_greater
+import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
@@ -22,7 +24,6 @@ import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
@@ -40,58 +41,58 @@ val hideNavigationButtonsPatch = bytecodePatch(
 ) {
     compatibleWith(COMPATIBILITY_REDDIT)
 
-    dependsOn(settingsPatch)
+    dependsOn(settingsPatch, versionCheckPatch)
 
     execute {
-
         // region legacy method
+        if (!is_2026_25_0_or_greater) {
+            val navigationButtonInnerMethod =
+                BottomNavScreenResourceBuilderLegacyFingerprint.instructionMatches[0]
+                    .instruction.getReference<MethodReference>()!!
 
-        val navigationButtonInnerMethod = BottomNavScreenResourceBuilderFingerprint.instructionMatches[0]
-            .instruction.getReference<MethodReference>()!!
+            mutableClassDefBy(navigationButtonInnerMethod.definingClass).apply {
+                // Add interface and helper methods to allow extension code to call obfuscated methods.
+                interfaces.add(EXTENSION_HEADER_ITEM_INTERFACE)
+                // Add methods to access obfuscated navigation button fields.
+                methods.add(
+                    ImmutableMethod(
+                        type,
+                        "patch_getLabel",
+                        listOf(),
+                        "Ljava/lang/String;",
+                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                        null,
+                        null,
+                        MutableMethodImplementation(2),
+                    ).toMutable().apply {
+                        val labelField = fields.single { field ->
+                            field.type == "Ljava/lang/String;"
+                        }
 
-        mutableClassDefBy(navigationButtonInnerMethod.definingClass).apply {
-            // Add interface and helper methods to allow extension code to call obfuscated methods.
-            interfaces.add(EXTENSION_HEADER_ITEM_INTERFACE)
-            // Add methods to access obfuscated navigation button fields.
-            methods.add(
-                ImmutableMethod(
-                    type,
-                    "patch_getLabel",
-                    listOf(),
-                    "Ljava/lang/String;",
-                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                    null,
-                    null,
-                    MutableMethodImplementation(2),
-                ).toMutable().apply {
-                    val labelField = fields.single { field ->
-                        field.type == "Ljava/lang/String;"
+                        addInstructions(
+                            0,
+                            """
+                                iget-object v0, p0, $labelField
+                                return-object v0
+                            """
+                        )
                     }
+                )
+            }
 
-                    addInstructions(
-                        0,
-                        """
-                            iget-object v0, p0, $labelField
-                            return-object v0
-                        """
+            BottomNavScreenResourceBuilderLegacyFingerprint.method.apply {
+                findInstructionIndicesReversedOrThrow(ADD_METHOD_CALL).forEach { index ->
+                    val instruction = getInstruction<FiveRegisterInstruction>(index)
+
+                    val listRegister = instruction.registerC
+                    val objectRegister = instruction.registerD
+
+                    replaceInstruction(
+                        index,
+                        "invoke-static { v$listRegister, v$objectRegister }, " +
+                                "$EXTENSION_CLASS->hideNavigationButtonsLegacy(Ljava/util/List;Ljava/lang/Object;)V"
                     )
                 }
-            )
-        }
-
-        BottomNavScreenResourceBuilderFingerprint.method.apply {
-            findInstructionIndicesReversedOrThrow(ADD_METHOD_CALL).forEach { index ->
-                val instruction = getInstruction<FiveRegisterInstruction>(index)
-
-                val listRegister = instruction.registerC
-                val objectRegister = instruction.registerD
-
-                replaceInstruction(
-                    index,
-                    "invoke-static { v$listRegister, v$objectRegister }, " +
-                            "$EXTENSION_CLASS->" +
-                            "hideNavigationButtonsLegacy(Ljava/util/List;Ljava/lang/Object;)V"
-                )
             }
         }
 
@@ -104,6 +105,8 @@ val hideNavigationButtonsPatch = bytecodePatch(
                 val enumIndex = it.instructionMatches.last().index
                 val enumRegister = getInstruction<TwoRegisterInstruction>(enumIndex).registerA
                 val freeRegister = findFreeRegister(enumIndex, enumRegister)
+                val jumpInstructionIndex = it.instructionMatches[1].index
+                val jumpInstruction = getInstruction(jumpInstructionIndex)
 
                 addInstructionsWithLabels(
                     enumIndex + 1,
@@ -112,7 +115,7 @@ val hideNavigationButtonsPatch = bytecodePatch(
                         move-result v$freeRegister
                         if-nez v$freeRegister, :jump
                     """,
-                    ExternalLabel("jump", it.instructionMatches[1].instruction)
+                    ExternalLabel("jump", jumpInstruction)
                 )
             }
         }

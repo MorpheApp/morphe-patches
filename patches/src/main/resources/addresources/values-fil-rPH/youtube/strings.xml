@@ -234,6 +234,7 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_keyword_content_home_title">Itago ang mga video ng bahay sa pamamagitan ng mga keyword</string>
   <string name="morphe_hide_keyword_content_search_title">Itago ang mga resulta ng paghahanap sa pamamagitan ng mga keyword</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Itago ang mga video sa Mga Subscription sa pamamagitan ng mga keyword</string>
+  <string name="morphe_hide_keyword_content_comments_title">Itago ang mga komento ayon sa mga keyword</string>
   <string name="morphe_hide_keyword_content_phrases_title">Mga Keyword na itatago</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
@@ -243,12 +244,12 @@ Ang mga keyword ay maaaring anumang teksto na ipinapakita sa mga pamagat ng vide
 
 Ang mga salita na may malalaking titik sa gitna ay dapat na tumugma nang eksakto (halimbawa: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">Tungkol sa keyword filtering</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Bahay / Mga Subscription / Ang mga resulta ng paghahanap ay fini-filter upang itago ang nilalaman na tumutugma sa mga parirala ng keyword 
+  <string name="morphe_hide_keyword_content_about_summary">"Bahay / Mga Subscription / Paghahanap / Ang mga komento ay nasala upang itago ang nilalamang tumutugma sa mga parirala ng keyword
 
-Mga Limitasyon: 
-• Hindi maitatago ang shorts sa pamamagitan ng pangalan ng channel 
-• Maaaring hindi maitago ang ilang bahagi ng UI 
-• Ang paghahanap para sa isang keyword ay maaaring walang mga resulta"</string>
+Mga Limitasyon:
+• Hindi maitatago ang Shorts sa pamamagitan ng pangalan ng channel
+• Maaaring hindi maitago ang ilang bahagi ng UI
+• Ang paghahanap para sa isang keyword ay maaaring walang resulta"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Itugma ang buong salita</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Mapipigilan ang mga bahagyang pagtutugma ng mga pamagat ng video at pangalan ng channel kung pinapaligiran ang isang keyword/parirala na may dobleng panipi&lt;br&gt;&lt;br&gt;Halimbawa, ang&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; ay magtatago ng video: &lt;b&gt;Paano gumagana ang AI?&lt;/b&gt;&lt;br&gt;ngunit hindi magtatago:&lt;b&gt;Ano ang ibig sabihin ng patas na paggamit?&lt;/b&gt;</string>
@@ -305,6 +306,59 @@ Mga Limitasyon:
 
 Suriin kung tama ang pangalan ng package at naka-install ang app"</string>
   <string name="morphe_external_downloader_empty_warning">Hindi maaaring walang laman ang pangalan ng package</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">Pagsasalin ng boses</string>
+  <string name="morphe_vot_screen_summary">Basahin nang malakas ang mga caption ng video gamit ang text-to-speech sa iyong device, na naka-synchronize sa pagpapatugtog</string>
+  <string name="morphe_vot_enabled_title">Pagsasalin ng boses</string>
+  <string name="morphe_vot_caption_language_title">Wika</string>
+  <string name="morphe_vot_translation_service_title">Tagapagbigay ng pagsasalin</string>
+  <string name="morphe_vot_original_audio_volume_title">Dami ng orihinal na audio</string>
+  <string name="morphe_vot_original_audio_volume_summary">Dami ng orihinal na audio ng YouTube habang nagsasalita ang pagsasalin</string>
+  <string name="morphe_vot_translation_volume_title">Dami ng pagsasalin</string>
+  <string name="morphe_vot_translation_volume_summary">Dami ng dubbed na boses ng pagsasalin</string>
+  <string name="morphe_vot_max_speech_rate_title">Pinakamataas na bilis ng pagsasalita</string>
+  <string name="morphe_vot_max_speech_rate_summary">Pinakamataas na multiplier ng bilis kapag umaangkop sa pagsasalita sa isang slot ng subtitle</string>
+  <string name="morphe_vot_mymemory_info_summary">"Libreng API ng pagsasalin, walang kinakailangang API key. Hanggang 5,000 karakter bawat araw sa libreng tier, o hanggang 50,000 karakter bawat araw gamit ang isang email address.
+
+I-tap dito upang buksan ang MyMemory.translated.net"</string>
+  <string name="morphe_vot_mymemory_email_title">Email ng MyMemory</string>
+  <string name="morphe_vot_mymemory_email_summary">Opsyonal. Ipasok ang iyong email address ng MyMemory upang madagdagan ang pang-araw-araw na limitasyon mula 5,000 hanggang 50,000 karakter. Iwanang blangko upang gamitin ang limitasyon ng anonymous</string>
+  <string name="morphe_vot_openrouter_info_summary">"Bayad na AI pagsasalin sa pamamagitan ng OpenRouter. Mag-top up nang isang beses at isalin ang libu-libong video. Ang Mistral Nemo ang pinakamurang opsyon, ang Gemma 4 ay nag-aalok ng pinakamataas na kalidad.
+
+I-tap dito upang buksan ang OpenRouter.ai"</string>
+  <string name="morphe_vot_openrouter_api_key_title">API key ng OpenRouter</string>
+  <string name="morphe_vot_openrouter_api_key_summary">Ang iyong API key ng OpenRouter. Gumawa ng key sa OpenRouter.ai > Workspace > API Keys</string>
+  <string name="morphe_vot_openrouter_model_title">Modelo ng OpenRouter</string>
+  <string name="morphe_vot_openrouter_model_custom">Pasadya</string>
+  <string name="morphe_vot_openrouter_not_configured_title">Hindi naka-configure ang OpenRouter</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Ipasok ang iyong API key ng OpenRouter sa mga setting bago piliin ang tagapagbigay na ito</string>
+  <string name="morphe_vot_cost_free">Libre</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s bawat 100 oras ng video</string>
+  <string name="morphe_vot_tts_voice_type">Boses</string>
+  <string name="morphe_vot_tts_system">Sistema</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Multilingual na lalaki</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Multilingual na babae</string>
+  <string name="morphe_vot_voice_gender_male">Lalaki</string>
+  <string name="morphe_vot_voice_gender_female">Babae</string>
+  <string name="morphe_vot_tts_sample">Panahon na para magbago!</string>
+  <string name="morphe_vot_http_error_title">Hindi magagamit ang pagsasalin</string>
+  <string name="morphe_vot_http_error_message">"Ang serbisyo ng pagsasalin ay nagbalik ng HTTP error %s. Malamang na nalimitahan ang iyong IP address sa loob ng hanggang 24 na oras.
+
+Upang magpatuloy sa paggamit ng mga pagsasalin, lumipat sa ibang tagapagbigay ng pagsasalin sa mga setting o gumamit ng VPN"</string>
+  <string name="morphe_vot_do_not_show_again">Huwag nang ipakita muli</string>
+  <string name="morphe_vot_export_api_key_warning">"Mayroong API key ng OpenRouter sa iyong mga setting.
+
+Hindi dapat ibahagi ang iyong API key. Sinumang may access dito ay maaaring gumamit ng iyong mga kredito ng OpenRouter"</string>
+  <string name="morphe_vot_openrouter_credits_title">Naabot na ang limitasyon ng kredito ng OpenRouter</string>
+  <string name="morphe_vot_openrouter_credits_message">Naabot mo na ang iyong limitasyon ng kredito ng OpenRouter. Mag-top up ng iyong balanse o taasan ang iyong limitasyon sa paggastos ng key sa OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">Buksan ang OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">Nabigo ang pagsasalin ng OpenRouter (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">Naabot na ang pang-araw-araw na limitasyon ng MyMemory</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Available muli sa %s.</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Ginagamit mo na ang pang-araw-araw na libreng quota ng pagsasalin ng MyMemory (5,000 character). Magdagdag ng email ng MyMemory sa mga setting upang itaas ang pang-araw-araw na limitasyon sa 50,000 character, o lumipat sa ibang serbisyo ng pagsasalin</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Ginagamit mo na ang quota ng pagsasalin ng MyMemory ngayong araw (50,000 character). Lumipat sa ibang serbisyo ng pagsasalin o subukan muli bukas</string>
+  <string name="morphe_vot_mymemory_error">Nabigo ang pagsasalin ng MyMemory (status %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">I-enable ang loop video</string>
   <string name="morphe_do_not_remember_loop_video_title">Huwag tandaan ang pag-uulit ng video</string>
@@ -355,6 +409,8 @@ Impormasyon: Maaaring hindi gumana sa mga live stream"</string>
   <string name="morphe_queue_restore_summary">Ang pila ay nananatili kahit i-restart ang app</string>
   <string name="morphe_swap_save_and_queue_actions_title">Palitan ang Save at Queue na aksyon</string>
   <string name="morphe_swap_save_and_queue_actions_summary">I-tap para sa mga opsyon sa queue, i-tap at pindutin nang matagal para i-save para mapanood mamaya</string>
+  <string name="morphe_queue_override_flyout_menu_title">Palitan ang pila ng feed flyout na buton</string>
+  <string name="morphe_queue_override_flyout_menu_summary">Binubuksan ang pila ng Morphe sa halip na ang pila ng YouTube</string>
   <string name="morphe_queue_manager_check_failed_auth">Hindi naka-log in</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">Walang ID ng playlist</string>
   <string name="morphe_queue_manager_check_failed_queue">Walang laman ang queue</string>
@@ -470,6 +526,8 @@ Paalala: Kung ang 'Spoof video streams' ay hindi pinagana, ang pagpapagana nito 
   <string name="morphe_hide_stop_ads_button_title">Itago ang \'Stop ads\' button</string>
   <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
   <string name="morphe_hide_comments_button_title">Itago ang Comments button</string>
+  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_connect_button_title">Itago ang button na Sumali</string>
   <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears on live streamed videos. -->
   <string name="morphe_hide_report_button_title">Itago ang Report button</string>
@@ -494,6 +552,7 @@ Paalala: Kung ang 'Spoof video streams' ay hindi pinagana, ang pagpapagana nito 
   <string name="morphe_hide_shop_button_title">Itago ang Shop button</string>
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_save_button_title">Itago ang Save button</string>
+  <string name="morphe_hide_more_button_title">Itago ang button na Higit pa</string>
   <string name="morphe_fullscreen_buttons">Mga button ng fullscreen</string>
   <string name="morphe_hide_quick_actions_title">Itago ang action bar</string>
   <string name="morphe_hide_quick_actions_ask_button_title">Itago ang Ask button</string>
@@ -579,6 +638,7 @@ Upang ma-access ang Settings, i-enable ang Settings button sa pamamagitan ng Gen
   <string name="morphe_toolbar_screen_title">Toolbar</string>
   <string name="morphe_toolbar_screen_summary">Pumili kung aling mga component ang lilitaw sa flyout menu</string>
   <string name="morphe_hide_toolbar_cast_button_title">Itago ang \'Audio Track\' menu</string>
+  <string name="morphe_hide_toolbar_chat_button_title">Itago ang Chat button</string>
   <string name="morphe_hide_toolbar_create_button_title">Itago ang Create button</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Itago ang Microphone button</string>
   <string name="morphe_hide_toolbar_notification_button_title">Itago ang Notifications button</string>
@@ -739,8 +799,11 @@ Mga Setting → Playback (o Autoplay) → Autoplay ng susunod na video."</string
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">Huwag paganahin ang portrait swipe-up gesture</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Huwag paganahin ang kilos ng pag-swipe pababa sa portrait mode</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Huwag paganahin ang kilos ng pag-swipe pababa sa landscape mode</string>
-  <!-- layout.player.fullscreen.openVideosFullscreen -->
-  <string name="morphe_open_videos_fullscreen_portrait_title">Buksan ang mga video sa fullscreen portrait</string>
+  <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
+  <string name="morphe_open_videos_fullscreen_title">Buksan ang mga video sa fullscreen mode</string>
+  <string name="morphe_open_videos_fullscreen_entry_1">Nakapatay</string>
+  <string name="morphe_open_videos_fullscreen_entry_2">Patayo</string>
+  <string name="morphe_open_videos_fullscreen_entry_3">Pahiga</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Opacity ng overlay ng player</string>
   <string name="morphe_player_overlay_opacity_summary">Ayusin ang antas ng transparency (0 ay transparent, 100 ay opaque)</string>
@@ -767,7 +830,9 @@ Mga Setting → Playback (o Autoplay) → Autoplay ng susunod na video."</string
   <string name="morphe_ryd_estimated_like_summary">Ipinapakita ang tinantyang bilang ng like sa mga video kung saan hindi pinagana ng creator ang mga like</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Ipakita ang mga alerto ng error sa koneksyon</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Ipinapakita ang isang notification kapag ang Return YouTube Dislike server ay hindi magagamit</string>
-  <string name="morphe_ryd_attribution_summary">Ang datos ay ibinibigay ng Return YouTube Dislike API. I-tap ang dito para matuto pa</string>
+  <string name="morphe_ryd_attribution_summary">"Ang data ay ibinibigay ng Return YouTube Dislike API.
+
+I-tap dito upang buksan ang ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Return YouTube Dislike API statistics ng device na ito</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Oras ng tugon ng API, average</string>
@@ -1009,7 +1074,9 @@ Kung hindi ka nagsumite ng highlight, pindutin ang Kanselahin at markahan ang pa
   <string name="morphe_sb_color_opacity_label">Opacity:</string>
   <string name="morphe_sb_color_dot_label">Kulay:</string>
   <string name="morphe_sb_about_title">Tungkol</string>
-  <string name="morphe_sb_about_api_summary">Ang data ay ibinibigay ng SponsorBlock API. I-tap dito para malaman pa at makita ang mga downloads para sa ibang plataporma</string>
+  <string name="morphe_sb_about_api_summary">"Ang data ay ibinibigay ng SponsorBlock API.
+
+I-tap dito upang buksan ang Sponsor.ajay.app at tingnan ang mga pag-download para sa iba pang mga platform"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Layout ng device</string>
   <string name="morphe_change_form_factor_entry_1">Panimula</string>
@@ -1018,20 +1085,23 @@ Kung hindi ka nagsumite ng highlight, pindutin ang Kanselahin at markahan ang pa
   <string name="morphe_change_form_factor_entry_4">Automotive</string>
   <string name="morphe_change_form_factor_user_dialog_message">"Kasama sa mga pagbabago:
 
-Tablet layout
-• Nakatago ang mga post ng komunidad
-• Hindi magagamit ang playback sa feeds setting
-• Hindi magagamit ang Remix button at Sound button sa Shorts
-• Hindi nakatiklop ang Video action bar
+Layout ng Tablet
+• Nakatago ang mga post sa Komunidad
+• Hindi available ang setting ng pag-playback sa feed
+• Hindi available ang button na Remix at Sound button sa Shorts
+• Ipinapakita ang lumang video action bar na hindi nakatiklop
 
-Automotive layout
-• Nakapag-ayos ang feed ayon sa mga paksa at channel
-• Hindi magagamit ang playback sa feeds setting
-• Hindi magagamit ang Remix button at Sound button sa Shorts
-• Ang Shorts ay bumubukas sa regular na player
-• Hindi nakatiklop ang Video action bar"</string>
+Layout ng Automotive
+• Ang feed ay nakaayos ayon sa mga paksa at channel
+• Hindi available ang setting ng pag-playback sa feed
+• Hindi available ang button na Remix at Sound button sa Shorts
+• Bukas ang Shorts sa regular na player
+• Ipinapakita ang lumang video action bar na hindi nakatiklop"</string>
   <string name="morphe_tablet_layout_in_player_title">Paganahin ang layout ng tablet sa player</string>
-  <string name="morphe_tablet_layout_in_player_summary">Ibinabalik ang lumang layout ng player</string>
+  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+  <string name="morphe_tablet_layout_in_player_summary">"Ibinabalik ang lumang layout ng player
+
+Limitasyon: Kung naka-off ang \"Ibalik ang lumang action bar ng video\", maaaring hindi available ang overlay na \"Higit pang mga video\""</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Spoof app version</string>
   <string name="morphe_spoof_app_version_summary">Dinadaya ang server upang isipin na gumagamit ka ng mas lumang bersyon ng app upang ibalik ang legacy UI features</string>
@@ -1157,11 +1227,11 @@ Limitasyon: Maaaring hindi gumana ang paggamit ng back button sa toolbar"</strin
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow &amp; Mga orihinal na thumbnail</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow &amp; Kinukuha pa rin</string>
   <string name="morphe_alt_thumbnail_options_entry_4">Kinukuha pa rin</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"Ang DeArrow ay nagbibigay ng mga thumbnail na pinagsama-sama ng mga tao para sa mga video sa YouTube. Ang mga thumbnail na ito ay madalas na mas may kaugnayan kaysa sa mga ibinigay ng YouTube
+  <string name="morphe_alt_thumbnail_dearrow_about_summary">"Ang DeArrow ay nagbibigay ng mga thumbnail na pinagsama-sama ng publiko para sa mga video sa YouTube. Ang mga thumbnail na ito ay madalas na mas may kaugnayan kaysa sa mga ibinigay ng YouTube
 
-Kung naka-enable, ang mga URL ng video ay ipapadala sa API server at walang ibang data ang ipapadala. Kung ang isang video ay walang mga thumbnail ng DeArrow, ipinapakita ang orihinal o still captures
+Kung pinagana, ang mga URL ng video ay ipapadala sa server ng API at walang ibang data ang ipapadala. Kung ang isang video ay walang mga thumbnail ng DeArrow, kung gayon ang mga orihinal o still captures ang ipinapakita
 
-I-tap dito upang matuto nang higit pa tungkol sa DeArrow"</string>
+I-tap dito upang buksan ang DeArrow.ajay.app"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Ipakita ang mga alerto ng error sa koneksyon</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary">Ipinapakita ang isang notification kapag hindi magagamit ang DeArrow server</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">DeArrow API endpoint</string>
@@ -1289,4 +1359,9 @@ Ang pag-playback ng video gamit ang AV1 ay maaaring mag-stutter o mag-drop ng mg
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Hindi available ang Force original audio</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Variant ng JavaScript ng Player</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Ipakita ang spoofing sa Stats for nerds</string>
+  <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <string name="morphe_restore_old_video_action_bar_title">Ibalik ang lumang video action bar</string>
+  <string name="morphe_restore_old_video_action_bar_summary">"Inaayos ang hindi pagpapakita ng dislikes at hindi maitagong mga button ng video action
+
+Limitasyon: Ibabalik sa lumang estilo ng 'Higit pang mga video' na overlay"</string>
 </resources>

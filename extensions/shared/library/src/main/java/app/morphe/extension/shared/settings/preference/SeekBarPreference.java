@@ -19,6 +19,8 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -35,12 +37,23 @@ import app.morphe.extension.shared.ui.Dim;
 @SuppressWarnings({"unused", "deprecation"})
 public class SeekBarPreference extends Preference {
 
-    public record SeekBarConfig(IntegerSetting setting, int min, int max, int step, String unit) { }
+    public record SeekBarConfig(IntegerSetting setting, int min, int max, int step,
+                                String unit, int divisor) {
+        public SeekBarConfig(IntegerSetting setting, int min, int max, int step, String unit) {
+            this(setting, min, max, step, unit, 1);
+        }
+    }
 
     private static final Map<String, SeekBarConfig> REGISTRY = new HashMap<>();
 
     public static void register(SeekBarConfig config) {
         REGISTRY.put(config.setting.key, config);
+    }
+
+    /** Returns the config registered for the given setting, or {@code null} if none. */
+    @Nullable
+    public static SeekBarConfig configFor(IntegerSetting setting) {
+        return REGISTRY.get(setting.key);
     }
 
     public SeekBarPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
@@ -91,7 +104,7 @@ public class SeekBarPreference extends Preference {
         currentLabel.setGravity(Gravity.CENTER);
         currentLabel.setTextColor(colorAccent);
         currentLabel.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
-        updateLabel(currentLabel, pending[0], config.unit);
+        updateLabel(currentLabel, pending[0], config);
 
         SeekBar seekBar = new SeekBar(context);
         seekBar.setMax((config.max - config.min) / config.step);
@@ -102,7 +115,7 @@ public class SeekBarPreference extends Preference {
             @Override
             public void onProgressChanged(SeekBar bar, int progress, boolean fromUser) {
                 pending[0] = progressToValue(config, progress);
-                updateLabel(currentLabel, pending[0], config.unit);
+                updateLabel(currentLabel, pending[0], config);
             }
 
             @Override public void onStartTrackingTouch(SeekBar bar) {}
@@ -129,7 +142,7 @@ public class SeekBarPreference extends Preference {
         seekRow.setGravity(Gravity.BOTTOM);
 
         TextView minLabel = new TextView(context);
-        minLabel.setText(String.format(Locale.ROOT, "%d%s", config.min, config.unit));
+        minLabel.setText(formatValue(config.min, config));
         minLabel.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
         seekRow.addView(minLabel,
                 LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -142,7 +155,7 @@ public class SeekBarPreference extends Preference {
         seekRow.addView(seekCenter, centerParams);
 
         TextView maxLabel = new TextView(context);
-        maxLabel.setText(String.format(Locale.ROOT, "%d%s", config.max, config.unit));
+        maxLabel.setText(formatValue(config.max, config));
         maxLabel.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
         seekRow.addView(maxLabel,
                 LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -168,7 +181,7 @@ public class SeekBarPreference extends Preference {
                     Integer defaultValue = config.setting.defaultValue;
                     pending[0] = defaultValue;
                     seekBar.setProgress(valueToProgress(config, defaultValue));
-                    updateLabel(currentLabel, defaultValue, config.unit);
+                    updateLabel(currentLabel, defaultValue, config);
                 },
                 false
         );
@@ -178,15 +191,26 @@ public class SeekBarPreference extends Preference {
         dialogPair.first.show();
     }
 
-    private static void updateLabel(TextView label, int value, String unit) {
-        label.setText(String.format(Locale.ROOT, "%d%s", value, unit));
+    private static void updateLabel(TextView label, int value, SeekBarConfig config) {
+        label.setText(formatLabel(value, config));
     }
 
-    private static int valueToProgress(SeekBarConfig config, int value) {
+    public static String formatLabel(int value, SeekBarConfig config) {
+        return formatValue(value, config);
+    }
+
+    private static String formatValue(int value, SeekBarConfig config) {
+        if (config.divisor == 1) {
+            return String.format(Locale.ROOT, "%d%s", value, config.unit);
+        }
+        return String.format(Locale.ROOT, "%.1f%s", (float) value / config.divisor, config.unit);
+    }
+
+    public static int valueToProgress(SeekBarConfig config, int value) {
         return (Math.max(config.min, Math.min(config.max, value)) - config.min) / config.step;
     }
 
-    private static int progressToValue(SeekBarConfig config, int progress) {
+    public static int progressToValue(SeekBarConfig config, int progress) {
         return config.min + progress * config.step;
     }
 }

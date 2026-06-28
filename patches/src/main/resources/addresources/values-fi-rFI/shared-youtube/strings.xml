@@ -109,6 +109,25 @@ Toisto epäonnistuu, jos pelaajan JavaScript-hash on vanhentunut."</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Pakota alkuperäinen äänen kieli</string>
   <string name="morphe_force_original_audio_summary">Toistaa aina videon alkuperäisen ääniraidan dubatun version sijaan</string>
+  <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">Verkkoproksi</string>
+  <string name="morphe_proxy_screen_summary">Reititä tuetut verkkopyynnöt välityspalvelimen kautta</string>
+  <string name="morphe_proxy_enabled_title">Ota välityspalvelin käyttöön</string>
+  <string name="morphe_proxy_enabled_summary">Reitittää tuetut verkkopyynnöt määritetyn HTTP- tai HTTPS-proxyn kautta</string>
+  <string name="morphe_proxy_host_title">Proxy-palvelimen osoite</string>
+  <string name="morphe_proxy_host_summary">Proxy-palvelimen nimi tai IP-osoite</string>
+  <string name="morphe_proxy_port_title">Proxy-portti</string>
+  <string name="morphe_proxy_port_summary">Proxy-palvelimen portti</string>
+  <string name="morphe_proxy_https_title">Käytä HTTPS-proxya</string>
+  <string name="morphe_proxy_https_summary">Käytä HTTPS-yhteyttä proxy-palvelimeen HTTP:n sijaan</string>
+  <string name="morphe_proxy_auth_enabled_title">Proxy-todennus</string>
+  <string name="morphe_proxy_auth_enabled_summary">Lähettää Basic-todennuksen proxy-pyyntöjen mukana</string>
+  <string name="morphe_proxy_auth_username_title">Proxy-käyttäjänimi</string>
+  <string name="morphe_proxy_auth_username_summary">Käyttäjänimi Basic-proxy-todennusta varten</string>
+  <string name="morphe_proxy_auth_password_title">Proxy-salasana</string>
+  <string name="morphe_proxy_auth_password_summary">Salasana Basic-proxy-todennusta varten</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">Salli suora yhteys varalla</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">Yhdistä suoraan, jos proxy epäonnistuu</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Piilota koko näytön mainokset</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

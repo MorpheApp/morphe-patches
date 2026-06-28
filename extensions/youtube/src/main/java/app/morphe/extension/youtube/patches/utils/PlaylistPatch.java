@@ -10,6 +10,7 @@ package app.morphe.extension.youtube.patches.utils;
 import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.shared.innertube.utils.AuthUtils.getRequestHeader;
 import static app.morphe.extension.shared.innertube.utils.AuthUtils.isNotLoggedIn;
+import static app.morphe.extension.youtube.patches.LoadVideoPatch.closeVideo;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -376,25 +377,41 @@ public class PlaylistPatch {
             }
             try {
                 String url;
+                int intentActionDelay = 0;
                 if (openVideo) {
                     if (StringUtils.isEmpty(currentVideoId)) {
                         handleCheckError(checkFailedVideoId);
                         return;
                     }
                     if (reload) {
-                        url = "https://youtu.be/" + VideoInformation.getVideoId()
-                                + "?list=" + currentPlaylistId;
+                        final long videoTime = VideoInformation.getVideoTime();
+
+                        url = "https://youtu.be/" +
+                                VideoInformation.getVideoId() +
+                                "?list=" +
+                                currentPlaylistId +
+                                (videoTime > 0 ? "&t=" + (videoTime / 1000) : "");
+
+                        closeVideo();
+
+                        intentActionDelay = 1000;
                     } else {
-                        url = "https://youtu.be/" + currentVideoId + "?list=" + currentPlaylistId;
+                        url = "https://youtu.be/" +
+                                currentVideoId +
+                                "?list=" +
+                                currentPlaylistId;
                     }
                 } else {
-                    url = "https://www.youtube.com/playlist?list=" + currentPlaylistId;
+                    url = "https://www.youtube.com/playlist?list=" +
+                            currentPlaylistId;
                 }
 
-                Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(url));
-                intent.setPackage(context.getPackageName());
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
+                Utils.runOnMainThreadDelayed(() -> {
+                    Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(url));
+                    intent.setPackage(context.getPackageName());
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }, intentActionDelay);
             } catch (Exception ex) {
                 Logger.printException(() -> "openQueue failure", ex);
             }

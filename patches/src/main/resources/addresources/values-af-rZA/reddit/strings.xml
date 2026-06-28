@@ -37,12 +37,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">Deaktiveer die opspringkassie wat verskyn wanneer \'n skermkiekie geneem word</string>
   <string name="morphe_hide_ask_button_title">Verberg Vra-knoppie</string>
   <string name="morphe_hide_ask_button_summary">Verberg die Vra-knoppie in die soekbalk</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">Verberg aanbevole gemeenskappe</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">Verberg die aanbevole gemeenskappe-rakke in subreddits</string>
-  <string name="morphe_hide_trending_today_shelf_title">Verberg Trending Vandag-rak</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"Verberg die Trending vandag-rak uit soekvoorstelle
-
-Beperking: Visuele afstandhouers kan nie weggesteek word nie"</string>
+  <string name="morphe_hide_communities_shelf_title">Verberg gemeenskappe-rak</string>
+  <string name="morphe_hide_communities_shelf_summary">Verberg die verwante of voorgestelde gemeenskappe-rak in subreddits</string>
+  <string name="morphe_hide_trending_shelves_title">Verberg Trending-rakke</string>
+  <string name="morphe_hide_trending_shelves_summary">Verberg die Trending-rakke van die nuutvoerm en soekvoorstelle</string>
   <string name="morphe_remove_notification_dialog_title">Verwyder kennisgewing-voorstel-dialoog</string>
   <string name="morphe_remove_notification_dialog_summary">Sluit die kennisgewingvoorstel-dialoog outomaties wanneer \'n subreddit besoek word</string>
   <string name="morphe_show_view_count_title">Wys vertoon telling op plasings</string>

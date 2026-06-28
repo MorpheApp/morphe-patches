@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
+  <string name="morphe_sb_channel_whitelist">Senarai putih saluran</string>
+  <string name="morphe_sb_channel_whitelist_summary">SponsorBlock dilumpuhkan untuk saluran di dalam senarai putih</string>
+  <string name="morphe_sb_channel_whitelist_current_channel">Saluran semasa:</string>
+  <string name="morphe_sb_channel_whitelist_add">Tambahkan ke senarai putih</string>
+  <string name="morphe_sb_channel_whitelist_remove">Keluarkan</string>
+  <string name="morphe_sb_channel_whitelist_channels_header">Saluran dalam senarai putih</string>
+  <string name="morphe_sb_channel_whitelist_empty">Tiada saluran dalam senarai putih</string>
+  <string name="morphe_sb_channel_whitelist_channel_added">Saluran ditambahkan ke senarai putih</string>
+  <string name="morphe_sb_channel_whitelist_channel_removed">Saluran dikeluarkan daripada senarai putih</string>
+  <string name="morphe_sb_toast_on_whitelisted_channel">Beritahu pada saluran di dalam senarai putih</string>
+  <string name="morphe_sb_toast_on_whitelisted_channel_summary">Menunjukkan pemberitahuan apabila SponsorBlock dilumpuhkan untuk saluran di dalam senarai putih</string>
+  <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock dilumpuhkan untuk saluran ini</string>
+</resources>

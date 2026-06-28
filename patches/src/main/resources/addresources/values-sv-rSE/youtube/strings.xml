@@ -216,12 +216,6 @@ Vissa layouter på serversidan kanske inte återställs.
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
   <string name="morphe_hide_keyword_content_about_title">Om nyckelordsfiltrering</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Hem/Prenumerationer/sökresultat filtreras för att dölja innehåll som matchar nyckelordsfraser
-
-Begränsningar:
-• Shorts-videor kan inte döljas baserat på kanalnamn
-• Vissa komponenter i användargränssnittet kanske inte döljs
-• Om du söker på ett nyckelord kan det hända att inga resultat visas"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Matcha hela ord</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Om du omger ett nyckelord/en fras med dubbla citattecken förhindrar du partiella matchningar av videotitlar och kanalnamn&lt;br&gt;&lt;br&gt;Till exempel:&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; kommer att dölja videon: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;men kommer inte att dölja: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
@@ -267,6 +261,11 @@ Begränsningar:
 
 Kontrollera att paketnamnet är korrekt och att appen är installerad"</string>
   <string name="morphe_external_downloader_empty_warning">Paketnamnet får inte vara tomt</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_openrouter_model_custom">Anpassad</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_tts_system">System</string>
+  <string name="morphe_vot_do_not_show_again">Visa inte igen</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Aktivera videoslinga</string>
   <!-- interaction.loop.loopVideoButtonPatch -->
@@ -365,6 +364,7 @@ Kontrollera att paketnamnet är korrekt och att appen är installerad"</string>
   <string name="morphe_hide_stop_ads_button_title">Dölj knappen Stoppa annonser</string>
   <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
   <string name="morphe_hide_comments_button_title">Dölj knappen Kommentarer</string>
+  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears on live streamed videos. -->
   <string name="morphe_hide_report_button_title">Dölj knappen Rapportera</string>
@@ -465,6 +465,7 @@ Om du vill komma åt inställningarna aktiverar du knappen Inställningar via Al
   <string name="morphe_toolbar_screen_title">Verktygsfält</string>
   <string name="morphe_toolbar_screen_summary">Välj vilka komponenter som visas i verktygsfältet</string>
   <string name="morphe_hide_toolbar_cast_button_title">Dölj knappen Casta</string>
+  <string name="morphe_hide_toolbar_chat_button_title">Dölj knappen Chatta</string>
   <string name="morphe_hide_toolbar_create_button_title">Dölj knappen Skapa</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Dölj mikrofonknappen</string>
   <string name="morphe_hide_toolbar_notification_button_title">Dölj knappen Aviseringar</string>
@@ -613,8 +614,10 @@ Om du vill att menyn Ljudspår ska visas ändrar du Förfalska videostreamar til
   <string name="morphe_exit_fullscreen_entry_3">Endast liggande</string>
   <string name="morphe_exit_fullscreen_entry_4">Stående och liggande</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
-  <!-- layout.player.fullscreen.openVideosFullscreen -->
-  <string name="morphe_open_videos_fullscreen_portrait_title">Öppna videor i stående helskärmsläge</string>
+  <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
+  <string name="morphe_open_videos_fullscreen_entry_1">Inaktiverad</string>
+  <string name="morphe_open_videos_fullscreen_entry_2">Stående</string>
+  <string name="morphe_open_videos_fullscreen_entry_3">Liggande</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Spelaröverläggets opacitet</string>
   <string name="morphe_player_overlay_opacity_summary">Justera genomskinlighetsnivån (0 är genomskinligt, 100 är ogenomskinligt)</string>
@@ -641,7 +644,6 @@ Om du vill att menyn Ljudspår ska visas ändrar du Förfalska videostreamar til
   <string name="morphe_ryd_estimated_like_summary">Visar ett uppskattat antal gilla-markeringar för videor där kreatören har inaktiverat gilla-markeringar</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Visa meddelanden om anslutningsfel</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Visar ett meddelande när Return YouTube Dislike-servern inte är tillgänglig</string>
-  <string name="morphe_ryd_attribution_summary">Data tillhandahålls av Return YouTube Dislike-API:et. Tryck här för att läsa mer</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Return YouTube Dislike-API-statistik för denna enhet</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API-svarstid, genomsnittlig</string>
@@ -867,28 +869,13 @@ Om du inte vill skicka in en höjdpunkt trycker du på Avbryt och markerar den a
   <string name="morphe_sb_color_opacity_label">Opacitet:</string>
   <string name="morphe_sb_color_dot_label">Färg:</string>
   <string name="morphe_sb_about_title">Om</string>
-  <string name="morphe_sb_about_api_summary">Data tillhandahålls av SponsorBlock-API:et. Tryck här för att läsa mer och se nedladdningar för andra plattformar</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Enhetslayout</string>
   <string name="morphe_change_form_factor_entry_1">Standard</string>
   <string name="morphe_change_form_factor_entry_2">Telefon</string>
   <string name="morphe_change_form_factor_entry_3">Surfplatta</string>
   <string name="morphe_change_form_factor_entry_4">Bil</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Ändringar som ingår:
-
-Layout för surfplatta
-• Community-inlägg döljs
-• Inställningen Uppspelning i flöden är inte tillgänglig
-• Knappen Remixa och knappen Ljud är inte tillgängliga i Shorts
-• Åtgärdsfältet för videor är inte komprimerat
-
-Billayout
-• Flödet sorteras efter ämnen och kanaler
-• Inställningen Uppspelning i flöden är inte tillgänglig
-• Knappen Remixa och knappen Ljud är inte tillgängliga i Shorts
-• Shorts-videor öppnas i vanliga spelaren
-• Åtgärdsfältet för videor är inte komprimerat
-"</string>
+  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Förfalska appversionen</string>
   <string name="morphe_spoof_app_version_summary">Lurar servern att tro att du använder en äldre appversion för att återställa äldre funktioner i användargränssnittet</string>
@@ -1012,11 +999,6 @@ Begränsning: Bakåtknappen i verktygsfältet kanske inte fungerar"</string>
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow och ursprungliga miniatyrer</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow och stillbilder</string>
   <string name="morphe_alt_thumbnail_options_entry_4">Stillbilder</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow tillhandahåller crowdsourcing-baserade miniatyrbilder för YouTube-videor. Dessa miniatyrbilder är ofta mer relevanta än de som tillhandahålls av YouTube
-
-Om detta aktiveras skickas videoadresser till API-servern och inga andra data skickas. Om en video inte har DeArrow-miniatyrer visas den ursprungliga bilden eller stillbilder
-
-Tryck här för att läsa mer om DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Visa meddelanden om anslutningsfel</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary">Visar ett meddelande när DeArrow-servern inte är tillgänglig</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">API-slutpunkt för DeArrow</string>
@@ -1136,4 +1118,5 @@ Videouppspelning med AV1 kan hacka eller tappa bildrutor."</string>
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Tvinga ursprungligt ljud är inte tillgängligt</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">JavaScript-variant av spelaren</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Visa förfalskningen i Statistik för nördar</string>
+  <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
 </resources>

@@ -37,12 +37,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">停用截圖彈出視窗</string>
   <string name="morphe_hide_ask_button_title">隱藏詢問按鈕</string>
   <string name="morphe_hide_ask_button_summary">隱藏搜尋列中的詢問按鈕</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">隱藏推薦社群</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">隱藏推薦社群區塊在版塊中</string>
-  <string name="morphe_hide_trending_today_shelf_title">隱藏今日熱門區塊</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"隱藏今日熱門區塊，但搜尋建議失敗
-
-限制：視覺間隔符號可能無法隱藏"</string>
+  <string name="morphe_hide_communities_shelf_title">隱藏社群專區</string>
+  <string name="morphe_hide_communities_shelf_summary">隱藏 Reddit 上的相關或推薦社群專區</string>
+  <string name="morphe_hide_trending_shelves_title">隱藏熱門書架</string>
+  <string name="morphe_hide_trending_shelves_summary">從動態消息和搜尋建議中隱藏熱門專區</string>
   <string name="morphe_remove_notification_dialog_title">移除通知建議對話框</string>
   <string name="morphe_remove_notification_dialog_summary">前往 subreddit 時自動解除通知建議對話方塊</string>
   <string name="morphe_show_view_count_title">在貼文中顯示檢視次數</string>

@@ -37,12 +37,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">משביתה את החלון הצידודית שמופיע בעת לקיחת צילום מסך</string>
   <string name="morphe_hide_ask_button_title">הסתר לחצן שאלה</string>
   <string name="morphe_hide_ask_button_summary">מסתיר את לחצן השאלה בשורת החיפוש</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">הסתרת קהילות מומלצות</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">מסתירה את מדפי הקהילות המומלצות בתת-רדיטים</string>
-  <string name="morphe_hide_trending_today_shelf_title">הסתרת מדף היום העולמי</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"מסתירה את מדף היום העולמי מהצעות חיפוש
-
-מגבלה: ייתכן שמרווחים חזותיים לא יוסרו"</string>
+  <string name="morphe_hide_communities_shelf_title">הסתר מדף קהילות</string>
+  <string name="morphe_hide_communities_shelf_summary">מסתיר את המדף של קהילות קשורות או מוצעות בתתי-רדיט</string>
+  <string name="morphe_hide_trending_shelves_title">הסתר מדפים פופולריים</string>
+  <string name="morphe_hide_trending_shelves_summary">מסתיר את המדפים הפופולריים מהפיד והצעות החיפוש</string>
   <string name="morphe_remove_notification_dialog_title">הסרת חלון ההצעה של התראות</string>
   <string name="morphe_remove_notification_dialog_summary">מפטר אוטומטית את תיבת ההצעה להודעה בעת ביקור בתת-פורום</string>
   <string name="morphe_show_view_count_title">הצג מספר צפיות בפוסטים</string>

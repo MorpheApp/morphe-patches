@@ -37,12 +37,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">Ekran görüntüsü alındığında görünen açılır pencereyi devre dışı bırakır</string>
   <string name="morphe_hide_ask_button_title">Sor düğmesini gizle</string>
   <string name="morphe_hide_ask_button_summary">Arama çubuğundaki \"Sor\" düğmesini gizler</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">Önerilen toplulukları gizle</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">Subreddit\'lerde önerilen topluluklar raflarını gizler</string>
-  <string name="morphe_hide_trending_today_shelf_title">Bugünün Trendleri rafını gizle</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"Arama önerilerinden Bugünün Trendleri rafını gizler
-
-Sınırlama: Görsel ayırıcılar gizlenmeyebilir"</string>
+  <string name="morphe_hide_communities_shelf_title">Topluluklar rafını gizle</string>
+  <string name="morphe_hide_communities_shelf_summary">Subreddit\'lerdeki ilgili veya önerilen topluluklar rafını gizler</string>
+  <string name="morphe_hide_trending_shelves_title">Trendler rafını gizle</string>
+  <string name="morphe_hide_trending_shelves_summary">Arama önerilerinde Trendler rafını gizler</string>
   <string name="morphe_remove_notification_dialog_title">Bildirim öneri iletişim kutusunu kaldır</string>
   <string name="morphe_remove_notification_dialog_summary">Bir subreddit ziyaret edildiğinde bildirim önerisi iletişim kutusunu otomatik olarak kapatır</string>
   <string name="morphe_show_view_count_title">Gönderilerde görüntüleme sayısını göster</string>

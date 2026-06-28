@@ -103,6 +103,25 @@ Het afspelen mislukt als de Player JavaScript hash verouderd is."</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Forceer de originele audiotaal</string>
   <string name="morphe_force_original_audio_summary">Speelt altijd het originele audiospoor van de video af in plaats van een nagesynchroniseerde versie</string>
+  <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">Netwerkproxy</string>
+  <string name="morphe_proxy_screen_summary">Route ondersteunde netwerkverzoeken via een proxy</string>
+  <string name="morphe_proxy_enabled_title">Proxy inschakelen</string>
+  <string name="morphe_proxy_enabled_summary">Routes ondersteunde netwerkverzoeken via een geconfigureerde HTTP of HTTPS proxy</string>
+  <string name="morphe_proxy_host_title">Proxy host</string>
+  <string name="morphe_proxy_host_summary">Hostname of IP-adres van de proxy server</string>
+  <string name="morphe_proxy_port_title">Proxy poort</string>
+  <string name="morphe_proxy_port_summary">Poort van de proxy server</string>
+  <string name="morphe_proxy_https_title">Gebruik HTTPS proxy</string>
+  <string name="morphe_proxy_https_summary">Gebruik HTTPS om verbinding te maken met de proxy server in plaats van HTTP</string>
+  <string name="morphe_proxy_auth_enabled_title">Proxy authenticatie</string>
+  <string name="morphe_proxy_auth_enabled_summary">Verzendt Basic authenticatie met proxy verzoeken</string>
+  <string name="morphe_proxy_auth_username_title">Proxy gebruikersnaam</string>
+  <string name="morphe_proxy_auth_username_summary">Gebruikersnaam voor Basic proxy authenticatie</string>
+  <string name="morphe_proxy_auth_password_title">Proxy wachtwoord</string>
+  <string name="morphe_proxy_auth_password_summary">Wachtwoord voor Basic proxy authenticatie</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">Directe fallback toestaan</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">Maak rechtstreeks verbinding als de proxy faalt</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Volledig scherm advertenties verbergen</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

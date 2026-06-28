@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
+  <string name="morphe_sb_enable_compact_skip_button">Ufak Atlama düğmesi kullan</string>
+  <string name="morphe_sb_enable_compact_skip_button_summary">Yer kazanmak için Atlama düğmesinin genişliğini azaltır</string>
+  <string name="morphe_sb_enable_auto_hide_skip_segment_button">Atlama düğmesini otomatik olarak gizle</string>
+  <string name="morphe_sb_enable_auto_hide_skip_segment_button_summary">Kısmın tamamı boyunca görünür kalmak yerine birkaç saniye sonra Atlama düğmesini gizler</string>
+  <string name="morphe_sb_auto_hide_skip_button_duration">Atlama düğmesi süresi</string>
+  <string name="morphe_sb_auto_hide_skip_button_duration_summary">Atlama düğmelerinin görünür kalma süresini ayarlayın</string>
+  <string name="morphe_sb_general_skiptoast">Atlamayı geri al bildirimini göster</string>
+  <string name="morphe_sb_general_skiptoast_summary">Otomatik atlamayı geri almak için dokunabileceğiniz bir bildirim gösterir</string>
+  <string name="morphe_sb_toast_on_skip_duration">Atlama bildirimi süresi</string>
+  <string name="morphe_sb_toast_on_skip_duration_summary">Bildirimin geri alma için görünür kalma süresini ayarlayın</string>
+  <string name="morphe_sb_duration_1s">1 saniye</string>
+  <string name="morphe_sb_duration_2s">2 saniye</string>
+  <string name="morphe_sb_duration_3s">3 saniye</string>
+  <string name="morphe_sb_duration_4s">4 saniye</string>
+  <string name="morphe_sb_duration_5s">5 saniye</string>
+  <string name="morphe_sb_duration_6s">6 saniye</string>
+  <string name="morphe_sb_duration_7s">7 saniye</string>
+  <string name="morphe_sb_duration_8s">8 saniye</string>
+  <string name="morphe_sb_duration_9s">9 saniye</string>
+  <string name="morphe_sb_duration_10s">10 saniye</string>
+  <string name="morphe_sb_general_time_without">Kısımlar olmadan video süresini göster</string>
+  <string name="morphe_sb_general_time_without_summary">Zaman çubuğunda görünen toplam video süresinden tüm segmentleri çıkarır</string>
+  <string name="morphe_sb_create_segment_category">Yeni kısım oluşturma</string>
+  <string name="morphe_sb_enable_create_segment">\'Yeni bölüm oluştur\' düğmesini göster</string>
+  <string name="morphe_sb_enable_create_segment_summary">Video oynatıcıya yeni SponsorBlock bölümleri göndermenizi sağlayan bir düğme ekler</string>
+  <string name="morphe_sb_general_adjusting">Zaman ayarlama adımı</string>
+  <string name="morphe_sb_general_adjusting_summary">Zaman ayarlama düğmelerinin sardırma miktarı (milisaniye cinsinden)</string>
+  <string name="morphe_sb_general_adjusting_invalid">Değer pozitif bir sayı olmalıdır</string>
+  <string name="morphe_sb_guidelines_preference_title">Gönderi yönergeleri</string>
+  <string name="morphe_sb_guidelines_preference_summary">Yönergeler, yeni kısım oluşturma kurallarını ve ipuçlarını içerir</string>
+  <string name="morphe_sb_guidelines_popup_title">Yönergeleri takip edin</string>
+  <string name="morphe_sb_guidelines_popup_content">Yeni kısım oluşturmadan önce SponsorBlock yönergelerini okuyun</string>
+  <string name="morphe_sb_guidelines_popup_already_read">Okudum</string>
+  <string name="morphe_sb_guidelines_popup_open">Göster</string>
+  <string name="morphe_sb_general">Genel</string>
+  <string name="morphe_sb_toast_on_connection_error">Bağlantı hatası uyarılarını göster</string>
+  <string name="morphe_sb_toast_on_connection_error_summary">SponsorBlock sunucusu kullanılamadığında bir bildirim gösterir</string>
+  <string name="morphe_sb_general_skipcount">Atlama sayısı takibini etkinleştir</string>
+  <string name="morphe_sb_general_skipcount_summary">Zaman tasarrufunu izlemek için beğenilerin sayısını SponsorBlock lider panosuna gönderir</string>
+  <string name="morphe_sb_general_min_duration">En az kısım süresi</string>
+  <string name="morphe_sb_general_min_duration_summary">Bu değerden (saniye cinsinden) kısa olan kısımlar gösterilmeyecek ve atlanmayacaktır</string>
+  <string name="morphe_sb_general_min_duration_invalid">Geçersiz süre</string>
+  <string name="morphe_sb_general_uuid">Özel kullanıcı kimliğiniz</string>
+  <string name="morphe_sb_general_uuid_summary">Bu gizli tutulmalıdır. Bu bir şifreye benzer ve başkalarıyla paylaşılmaması gerekir. Birinin eline geçerse, sizi taklit edebilirler</string>
+  <string name="morphe_sb_general_uuid_invalid">Özel kullanıcı kimliği en az 30 karakter olmalıdır</string>
+  <string name="morphe_sb_general_api_url">API URL\'sini değiştir</string>
+  <string name="morphe_sb_general_api_url_summary">SponsorBlock\'un sunucuya çağrı yapmak için kullandığı adres</string>
+  <string name="morphe_sb_channel_whitelist">Kanal beyaz listesi</string>
+  <string name="morphe_sb_channel_whitelist_summary">Beyaz listeye alınmış kanallar için SponsorBlock devre dışıdır</string>
+  <string name="morphe_sb_channel_whitelist_current_channel">Şu anki kanal:</string>
+  <string name="morphe_sb_channel_whitelist_add">Beyaz listeye ekle</string>
+  <string name="morphe_sb_channel_whitelist_remove">Kaldır</string>
+  <string name="morphe_sb_channel_whitelist_channels_header">Beyaz listeye alınmış kanallar</string>
+  <string name="morphe_sb_channel_whitelist_empty">Beyaz listeye alınmış kanal yok</string>
+  <string name="morphe_sb_channel_whitelist_channel_added">Kanal beyaz listeye eklendi</string>
+  <string name="morphe_sb_channel_whitelist_channel_removed">Kanal beyaz listeden kaldırıldı</string>
+  <string name="morphe_sb_toast_on_whitelisted_channel">Beyaz listeye alınmış kanalda bildir</string>
+  <string name="morphe_sb_toast_on_whitelisted_channel_summary">Beyaz listeye alınmış bir kanal için SponsorBlock devre dışı bırakıldığında bildirim gösterir</string>
+  <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock bu kanal için devre dışı bırakıldı</string>
+  <string name="morphe_sb_api_url_reset">API URL\'si sıfırlandı</string>
+  <string name="morphe_sb_api_url_invalid">API URL\'si geçersiz</string>
+  <string name="morphe_sb_api_url_changed">API URL\'si değiştirildi</string>
+  <string name="morphe_sb_settings_ie">Ayarları içe/dışa aktar</string>
+  <string name="morphe_sb_settings_copy">Kopyala</string>
+  <string name="morphe_sb_settings_ie_summary">Morphe\'e ve diğer SponsorBlock platformlarına aktarılabilecek SponsorBlock JSON yapılandırmanız</string>
+  <string name="morphe_sb_settings_ie_summary_warning">"Morphe ve diğer SponsorBlock platformlarına aktarılabilecek SponsorBlock JSON yapılandırmanız
+    
+Bu, özel kullanıcı kimliğinizi içerir. Bunu paylaşırken dikkatli olun"</string>
+  <string name="morphe_sb_settings_import_successful">Ayarlar başarıyla içe aktarıldı</string>
+  <string name="morphe_sb_settings_import_failed">İçe aktarılamadı: %s</string>
+  <string name="morphe_sb_settings_export_failed">Dışa aktarılamadı: %s</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"Ayarlarınız özel bir SponsorBlock kullanıcı kimliği içeriyor.
+
+Kullanıcı kimliğiniz bir parola gibidir ve asla paylaşılmamalıdır."</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Bir daha gösterme</string>
+  <string name="morphe_sb_diff_segments">Kısım davranışını değiştir</string>
+  <string name="morphe_sb_segments_sponsor">Sponsor</string>
+  <string name="morphe_sb_segments_sponsor_summary">Ücretli tanıtım, ücretli yönlendirmeler ve doğrudan reklamlar. Kendi reklamı veya sevdikleri amaçlar / içerik üreticiler / web siteler / ürünlere yönelik ücretsiz tanıtımlar için değildir</string>
+  <string name="morphe_sb_segments_selfpromo">Karşılıksız / Kendi Reklamı</string>
+  <string name="morphe_sb_segments_selfpromo_summary">Ücretsiz veya kendi reklamı olmadığı, Sponsor\'a benzer. Ürünler, bağışlar veya kimlerle iş birliği yaptıklarına ilişkin bölümleri içerir</string>
+  <string name="morphe_sb_segments_interaction">Etkileşim Hatırlatıcısı (Abone ol)</string>
+  <string name="morphe_sb_segments_interaction_summary">İçeriğin ortasında beğenme, abone olma veya takip etme için kısa hatırlatmalar. Eğer uzunsa veya belirli bir şey hakkındaysa kendi reklamı kategorisinde olmalıdır</string>
+  <string name="morphe_sb_segments_highlight">Vurgu</string>
+  <string name="morphe_sb_segments_highlight_summary">Videonun çoğu kişinin aradığı bölümü</string>
+  <string name="morphe_sb_segments_intro">Ara / Giriş Animasyonu</string>
+  <string name="morphe_sb_segments_intro_summary">Gerçek içerik barındırmayan aralıklar. Duraklama, sabit kare veya tekrar eden bir animasyon olabilir. Bilgi içeren geçişleri içermez</string>
+  <string name="morphe_sb_segments_outro">Bitiş Ekranı / Jenerik</string>
+  <string name="morphe_sb_segments_outro_summary">Jenerik veya YouTube bitiş kartlarının göründüğü zaman. Bilgi içeren çıkarımlar için değil</string>
+  <string name="morphe_sb_segments_hook">Giriş / Selamlama</string>
+  <string name="morphe_sb_segments_hook_summary">Gelecek video için anlatımlı fragmanlar, selamlamalar ve vedalar. Ek içerik ekleyen kısımları içermez</string>
+  <string name="morphe_sb_segments_preview">Ön İzleme / Özet</string>
+  <string name="morphe_sb_segments_preview_summary">Videoda veya bir dizinin diğer videolarında neler olduğunu ve nelerin geleceğini gösteren, tüm bilgilerin başka bir yerde tekrarlandığı klip koleksiyonu</string>
+  <string name="morphe_sb_segments_filler">Konuyla Alakasız / Şakalar</string>
+  <string name="morphe_sb_segments_filler_summary">Videonun ana içeriğini anlamak için gerekli olmayan alakasız sahneler veya şakalar. Bağlam veya arka plan detayları sağlayan kısımları içermez</string>
+  <string name="morphe_sb_segments_nomusic">Müzik: Müzik Olmayan Kısım</string>
+  <string name="morphe_sb_segments_nomusic_summary">Yalnızca müzik videolarında kullanım içindir. Müziğin olmadığı müzik video bölümleri, başka bir kategoriye zaten dahil edilmemişse</string>
+  <string name="morphe_sb_skip_button_compact">Atla</string>
+  <string name="morphe_sb_skip_button_compact_highlight">Vurgu</string>
+  <string name="morphe_sb_skip_button_sponsor">Sponsoru atla</string>
+  <string name="morphe_sb_skip_button_selfpromo">Tanıtımı atla</string>
+  <string name="morphe_sb_skip_button_interaction">Etkileşimi atla</string>
+  <string name="morphe_sb_skip_button_highlight">Vurguya atla</string>
+  <string name="morphe_sb_skip_button_intro_beginning">Girişi atla</string>
+  <string name="morphe_sb_skip_button_intro_middle">Arayı atla</string>
+  <string name="morphe_sb_skip_button_intro_end">Arayı atla</string>
+  <string name="morphe_sb_skip_button_outro">Bitişi atla</string>
+  <string name="morphe_sb_skip_button_hook">Girişi atla</string>
+  <string name="morphe_sb_skip_button_preview_beginning">Ön izlemeyi atla</string>
+  <string name="morphe_sb_skip_button_preview_middle">Ön izlemeyi atla</string>
+  <string name="morphe_sb_skip_button_preview_end">Özeti atla</string>
+  <string name="morphe_sb_skip_button_filler">Konu dışını atla</string>
+  <string name="morphe_sb_skip_button_nomusic">Müziksiz kısmı atla</string>
+  <string name="morphe_sb_skip_button_unsubmitted">Kısmı atla</string>
+  <string name="morphe_sb_skipped_sponsor">Sponsor atlandı</string>
+  <string name="morphe_sb_skipped_selfpromo">Kendi reklamı atlandı</string>
+  <string name="morphe_sb_skipped_interaction">Sıkıcı hatırlatma atlandı</string>
+  <string name="morphe_sb_skipped_highlight">Vurguya atlandı</string>
+  <string name="morphe_sb_skipped_intro_beginning">Giriş atlandı</string>
+  <string name="morphe_sb_skipped_intro_middle">Ara atlandı</string>
+  <string name="morphe_sb_skipped_intro_end">Ara atlandı</string>
+  <string name="morphe_sb_skipped_outro">Bitiş atlandı</string>
+  <string name="morphe_sb_skipped_hook">Giriş atlandı</string>
+  <string name="morphe_sb_skipped_preview_beginning">Ön izleme atlandı</string>
+  <string name="morphe_sb_skipped_preview_middle">Ön izleme atlandı</string>
+  <string name="morphe_sb_skipped_preview_end">Özet atlandı</string>
+  <string name="morphe_sb_skipped_filler">Konu dışı atlandı</string>
+  <string name="morphe_sb_skipped_nomusic">Müziksiz kısım atlandı</string>
+  <string name="morphe_sb_skipped_unsubmitted">Gönderilmemiş kısım atlandı</string>
+  <string name="morphe_sb_skipped_multiple_segments">Birden fazla kısım atlandı</string>
+  <string name="morphe_sb_skip_automatically">Otomatik atla</string>
+  <string name="morphe_sb_skip_automatically_once">Bir defalık otomatik atla</string>
+  <string name="morphe_sb_skip_showbutton">Atlama düğmesi göster</string>
+  <string name="morphe_sb_skip_seekbaronly">Zaman çubuğunda göster</string>
+  <string name="morphe_sb_skip_ignore">Devre dışı bırak</string>
+  <string name="morphe_sb_submit_failed_invalid">Kısım gönderilemedi: %s</string>
+  <string name="morphe_sb_submit_failed_timeout">SponsorBlock geçici olarak kapalı</string>
+  <string name="morphe_sb_submit_failed_unknown_error">Kısım gönderilemedi (durum: %1$d %2$s)</string>
+  <string name="morphe_sb_submit_failed_rate_limit">Segment gönderilemedi. Hız Sınırlı (aynı kullanıcıdan veya IP\'den çok fazla)</string>
+  <string name="morphe_sb_submit_failed_forbidden">Kısım gönderilemiyor: %s</string>
+  <string name="morphe_sb_submit_failed_duplicate">"Kısmı gönderilemiyor.
+Aynısı mevcut"</string>
+  <string name="morphe_sb_submit_succeeded">Kısım başarıyla gönderildi</string>
+  <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock geçici olarak kullanılamıyor (API zaman aşımı)</string>
+  <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock geçici olarak kullanılamıyor (durum %d)</string>
+  <string name="morphe_sb_sponsorblock_connection_failure_generic">SponsorBlock geçici olarak kullanılamıyor</string>
+  <string name="morphe_sb_vote_failed_timeout">Kısım oylanamıyor (API zaman aşımı)</string>
+  <string name="morphe_sb_vote_failed_unknown_error">Kısım oylanamıyor (durum %1$d %2$s)</string>
+  <string name="morphe_sb_vote_failed_forbidden">Kısım oylanamıyor: %s</string>
+  <string name="morphe_sb_vote_upvote">Olumlu oy</string>
+  <string name="morphe_sb_vote_downvote">Olumsuz oy</string>
+  <string name="morphe_sb_vote_category">Kategori değiştir</string>
+  <string name="morphe_sb_vote_no_segments">Oylanılacak kısım bulunmuyor</string>
+  <!-- A segment start and end time, such as "02:10 to 03:40". -->
+  <string name="morphe_sb_vote_segment_time_to_from">%1$s - %2$s</string>
+  <string name="morphe_sb_new_segment_choose_category">Kısım kategorisini seçin</string>
+  <string name="morphe_sb_new_segment_disabled_category">Kategori, ayarlarda devre dışı. Göndermek için etkinleştirin.</string>
+  <string name="morphe_sb_new_segment_title">Yeni SponsorBlock kısmı</string>
+  <string name="morphe_sb_new_segment_mark_time_as_question">%s yeni kısmın başlangıcı mı, bitişi mi olarak ayarlansın?</string>
+  <string name="morphe_sb_new_segment_mark_start">Başlangıç</string>
+  <string name="morphe_sb_new_segment_mark_end">Bitiş</string>
+  <string name="morphe_sb_new_segment_now">Şimdi</string>
+  <string name="morphe_sb_new_segment_time_start">Kısmın başladığı zaman</string>
+  <string name="morphe_sb_new_segment_time_end">Kısmın bittiği zaman</string>
+  <string name="morphe_sb_new_segment_confirm_title">Süreler doğru mu?</string>
+  <string name="morphe_sb_new_segment_confirm_content">"Kısım şu süreler arasında:
+
+%1$s
+ile
+%2$s
+
+(%3$s)
+
+Göndermeye hazır mısınız?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Gönder</string>
+  <string name="morphe_sb_new_segment_start_is_before_end">Başlangıç bitişten önce olmalıdır</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Öncelikle zaman çubuğunda bir konum işaretleyin</string>
+  <string name="morphe_sb_new_segment_preview_segment_first">Kısmı ön izleyin ve sorunsuz bir şekilde atladığından emin olun</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_title">Kısmın zamanlamasını el ile ayarlayın</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_content">Kısmın başlangıcını mı, bitişini mi düzenlemek istiyorsunuz?</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Geçersiz süre girildi</string>
+  <string name="morphe_sb_new_segment_highlight_title">Vurguyu gönder</string>
+  <string name="morphe_sb_new_segment_highlight_content">"Vurgu zamanı doğru mu?
+
+%s
+
+Bir vurgu göndermiyorsanız, İptal'e dokunun ve ikinci konumu işaretleyin"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Vurguyu gönder</string>
+  <string name="morphe_sb_stats_title">İstatistikler</string>
+  <!-- Shown in the settings preferences, and translations can be any text length. -->
+  <string name="morphe_sb_stats_connection_failure">İstatistikler geçici olarak kullanılamıyor (API çalışmıyor)</string>
+  <string name="morphe_sb_stats_loading">Yükleniyor...</string>
+  <string name="morphe_sb_stats_sb_disabled">SponsorBlock devre dışı</string>
+  <string name="morphe_sb_stats_username">Kullanıcı adınız: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_username_change">Kullanıcı adınızı değiştirmek için buraya dokunun</string>
+  <string name="morphe_sb_stats_username_change_unknown_error">Kullanıcı adı değiştirilemiyor: Durum: %1$d %2$s</string>
+  <string name="morphe_sb_stats_username_changed">Kullanıcı adı başarıyla değiştirildi</string>
+  <string name="morphe_sb_stats_reputation">İtibarınız &lt;b&gt;%.2f&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_submissions">&lt;b&gt;%s&lt;/b&gt; kısım oluşturdunuz</string>
+  <string name="morphe_sb_stats_submissions_summary">Kısımlarınızı görüntülemek için buraya dokunun</string>
+  <string name="morphe_sb_stats_saved_zero">SponsorBlock liderlik tablosu</string>
+  <string name="morphe_sb_stats_saved">İnsanları &lt;b&gt;%s&lt;/b&gt; kısımdan kurtardınız</string>
+  <string name="morphe_sb_stats_saved_summary_zero">Küresel istatistikleri ve en çok katkıda bulunanları görmek için buraya dokunun</string>
+  <string name="morphe_sb_stats_saved_summary">Bu, hayatlarının &lt;b&gt;%s&lt;/b&gt; kadarı.&lt;br&gt;Liderlik tablosunu görmek için dokunun</string>
+  <string name="morphe_sb_stats_self_saved">&lt;b&gt;%s&lt;/b&gt; kısım atladınız</string>
+  <string name="morphe_sb_stats_self_saved_summary">Bu da &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_self_saved_reset_title">Atlanan kısım sayacı sıfırlansın mı?</string>
+  <string name="morphe_sb_stats_saved_hour_format">%1$s saat %2$s dakika</string>
+  <string name="morphe_sb_stats_saved_minute_format">%1$s dakika %2$s saniye</string>
+  <string name="morphe_sb_stats_saved_second_format">%s saniye</string>
+  <string name="morphe_sb_color_opacity_label">Opaklık:</string>
+  <string name="morphe_sb_color_dot_label">Renk:</string>
+  <string name="morphe_sb_about_title">Hakkında</string>
+  <string name="morphe_sb_about_api_summary">"Veriler, SponsorBlock API tarafından sağlanır.
+
+Daha fazla bilgi ve diğer platformlar için indirmeleri görmek için Sponsor.ajay.app'i açın"</string>
+</resources>

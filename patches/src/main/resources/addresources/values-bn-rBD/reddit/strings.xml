@@ -37,12 +37,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">স্ক্রিনশট নেওয়ার সময় যে পপআপটি দেখা যায় সেটি নিষ্ক্রিয় করা হয়েছে</string>
   <string name="morphe_hide_ask_button_title">লুকানোর বোতামটি জিজ্ঞাসা করুন</string>
   <string name="morphe_hide_ask_button_summary">সার্চ বারে জিজ্ঞাসা করার বোতামটি লুকায়</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">প্রস্তাবিত কমিউনিটিস লুকান</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">সাবরেডিটগুলিতে প্রস্তাবিত কমিউনিটিস শেল্ফ লুকানো হয়েছে</string>
-  <string name="morphe_hide_trending_today_shelf_title">ট্রেন্ডিং টুডে শেল্ফ লুকান</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"অনুসন্ধান পরামর্শ থেকে ট্রেন্ডিং টুডে শেল্ফ লুকানো হয়েছে
-
-সীমাবদ্ধতা: ভিজ্যুয়াল স্পেসার লুকানো নাও যেতে পারে"</string>
+  <string name="morphe_hide_communities_shelf_title">কমিউনিটি শেলফ লুকিয়ে রাখুন</string>
+  <string name="morphe_hide_communities_shelf_summary">সাবরেডিটগুলোর ভেতরের সম্পর্কিত বা প্রস্তাবিত কমিউনিটি শেলফ লুকিয়ে রাখে</string>
+  <string name="morphe_hide_trending_shelves_title">ট্রেন্ডিং শেলফগুলো লুকিয়ে রাখুন</string>
+  <string name="morphe_hide_trending_shelves_summary">অনুসন্ধান পরামর্শ এবং ফিড থেকে \'ট্রেন্ডিং\' শেলফগুলি লুকায়</string>
   <string name="morphe_remove_notification_dialog_title">নোটিফিকেশন পরামর্শ ডায়ালগ সরান</string>
   <string name="morphe_remove_notification_dialog_summary">সাবরেডিট ভিজিট করার সময় স্বয়ংক্রিয়ভাবে নোটিফিকেশন পরামর্শ ডায়ালগটি খারিজ করে দেয়</string>
   <string name="morphe_show_view_count_title">পোস্টগুলিতে ভিউ গণনা দেখান</string>

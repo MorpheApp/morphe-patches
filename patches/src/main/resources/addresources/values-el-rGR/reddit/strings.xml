@@ -37,12 +37,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">Απενεργοποιεί το αναδυόμενο παράθυρο που εμφανίζεται κατά τη λήψη στιγμιότυπου της οθόνης</string>
   <string name="morphe_hide_ask_button_title">Απόκρυψη κουμπιού</string>
   <string name="morphe_hide_ask_button_summary">Αποκρύπτει το κουμπί στην γραμμή αναζήτησης</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">Απόκρυψη \"Προτεινόμενων Κοινοτήτων\"</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">Αποκρύπτει τα ράφια \"Προτεινόμενες Κοινότητες\" στα subreddits</string>
-  <string name="morphe_hide_trending_today_shelf_title">Απόκρυψη ραφιού \"Τάσεις Σήμερα\"</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"Αποκρύπτει το ράφι \"Δημοφιλή Σήμερα\" από τις προτάσεις αναζήτησης
-
-Περιορισμός: Οι οπτικοί διαχωριστές ενδέχεται να μην αποκρυφτούν"</string>
+  <string name="morphe_hide_communities_shelf_title">Απόκρυψη ράφιου κοινοτήτων</string>
+  <string name="morphe_hide_communities_shelf_summary">Αποκρύπτει το ράφι με τις σχετικές ή προτεινόμενες κοινότητες στα subreddits</string>
+  <string name="morphe_hide_trending_shelves_title">Απόκρυψη δημοφιλών ραφιών</string>
+  <string name="morphe_hide_trending_shelves_summary">Απόκρυψη των προτεινόμενων κατηγοριών από τη ροή και τις προτάσεις αναζήτησης</string>
   <string name="morphe_remove_notification_dialog_title">Αφαίρεση του διαλόγου \"Προτεινόμενη Ειδοποίηση\"</string>
   <string name="morphe_remove_notification_dialog_summary">Απορρίπτει αυτόματα το παράθυρο διαλόγου υποδείξεων ειδοποιήσεων κατά την επίσκεψη σε ένα subreddit</string>
   <string name="morphe_show_view_count_title">Εμφάνιση αριθμού προβολών στις δημοσιεύσεις</string>

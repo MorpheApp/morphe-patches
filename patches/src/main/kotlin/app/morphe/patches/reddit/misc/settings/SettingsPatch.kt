@@ -32,7 +32,7 @@ import app.morphe.util.findFreeRegister
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-internal const val EXTENSION_CLASS =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/settings/RedditActivityHook;"
 
 val settingsPatch = bytecodePatch(

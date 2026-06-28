@@ -234,6 +234,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_home_title">Скрийте видеоклипове в домакинството по ключови</string>
   <string name="morphe_hide_keyword_content_search_title">Скрийте видеоклипове в търсене по ключови</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Скрийте видеоклипове в абонаменти по ключови</string>
+  <string name="morphe_hide_keyword_content_comments_title">Скриване на коментари по ключови думи</string>
   <string name="morphe_hide_keyword_content_phrases_title">Ключови за скриване</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
@@ -243,12 +244,12 @@ Second \"item\" text"</string>
 
 Думите с главни букви в средата трябва да съвпадат точно (напр. iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">За ключови филтри</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Домашната / Абонаменти / Резултати от търсене са филтрирани, за да скрият съдържание, което съвпада с ключови думи
+  <string name="morphe_hide_keyword_content_about_summary">"Начало / Абонаменти / Търсене / Коментарите са филтрирани, за да скрият съдържание, което съответства на ключови фрази
 
 Ограничения:
-• Шортс не може да се скрие по име на канал
-• Неки UI компоненти може да не бъдат скрити
-• Търсене на ключова дума може да не покаже резултати"</string>
+• Shorts не могат да бъдат скрити по име на канал
+• Някои UI компоненти може да не бъдат скрити
+• Търсенето на ключова дума може да не покаже резултати"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Мъст цели думи</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Ограждането на ключова дума/фраза с двойни кавички ще предотврати частични съвпадения на заглавия на видеоклипове и имена на канали&lt;br&gt;&lt;br&gt;Например,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; ще скрие видеоклипа: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;но няма да скрие: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
@@ -303,6 +304,59 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_not_installed_warning">Външен свалик</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Външен свалик не е инсталиран. Инсталирайте го."</string>
   <string name="morphe_external_downloader_empty_warning">Името на пакета не може да бъде празно</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">Превод на глас зад кадър</string>
+  <string name="morphe_vot_screen_summary">Четете надписите на видеото на глас, използвайки вграден текстов говор, синхронизиран с възпроизвеждането</string>
+  <string name="morphe_vot_enabled_title">Превод на глас зад кадър</string>
+  <string name="morphe_vot_caption_language_title">Език</string>
+  <string name="morphe_vot_translation_service_title">Доставчик на превод</string>
+  <string name="morphe_vot_original_audio_volume_title">Сила на звука на оригиналния звук</string>
+  <string name="morphe_vot_original_audio_volume_summary">Сила на звука на оригиналния звук на YouTube, докато преводът говори</string>
+  <string name="morphe_vot_translation_volume_title">Сила на звука на превода</string>
+  <string name="morphe_vot_translation_volume_summary">Сила на звука на дублирания превод</string>
+  <string name="morphe_vot_max_speech_rate_title">Максимална скорост на речта</string>
+  <string name="morphe_vot_max_speech_rate_summary">Максимален множител на скоростта, когато се побира речта в слота за субтитри</string>
+  <string name="morphe_vot_mymemory_info_summary">"Безплатен API за превод, не се изисква API ключ. До 5000 знака на ден в безплатната версия или до 50 000 знака на ден с имейл адрес.
+
+Натиснете тук, за да отворите MyMemory.translated.net"</string>
+  <string name="morphe_vot_mymemory_email_title">MyMemory имейл</string>
+  <string name="morphe_vot_mymemory_email_summary">По избор. Въведете своя имейл адрес на MyMemory, за да увеличите дневния лимит от 5000 на 50 000 знака. Оставете празно, за да използвате анонимния лимит</string>
+  <string name="morphe_vot_openrouter_info_summary">"Платен AI превод чрез OpenRouter. Заредете веднъж и превеждайте хиляди видеа. Mistral Nemo е най-евтината опция, Gemma 4 предлага най-високо качество.
+
+Натиснете тук, за да отворите OpenRouter.ai"</string>
+  <string name="morphe_vot_openrouter_api_key_title">OpenRouter API ключ</string>
+  <string name="morphe_vot_openrouter_api_key_summary">Вашият OpenRouter API ключ. Създайте ключ в OpenRouter.ai > Workspace > API Keys</string>
+  <string name="morphe_vot_openrouter_model_title">OpenRouter Модел</string>
+  <string name="morphe_vot_openrouter_model_custom">По избор</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter не е конфигуриран</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Въведете своя OpenRouter API ключ в настройките, преди да изберете този доставчик</string>
+  <string name="morphe_vot_cost_free">Безплатен</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s на 100 видео часа</string>
+  <string name="morphe_vot_tts_voice_type">Глас</string>
+  <string name="morphe_vot_tts_system">Система</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Многоезичен мъжки</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Многоезичен женски</string>
+  <string name="morphe_vot_voice_gender_male">Мъжки</string>
+  <string name="morphe_vot_voice_gender_female">Женски</string>
+  <string name="morphe_vot_tts_sample">Време е за трансформация!</string>
+  <string name="morphe_vot_http_error_title">Преводът не е достъпен</string>
+  <string name="morphe_vot_http_error_message">"Услугата за превод върна HTTP грешка %s. Вашият IP адрес вероятно е ограничен за до 24 часа.
+
+За да продължите да използвате преводи, превключете към друг доставчик на превод в настройките или използвайте VPN"</string>
+  <string name="morphe_vot_do_not_show_again">Не показвай отново</string>
+  <string name="morphe_vot_export_api_key_warning">"Вашите настройки съдържат OpenRouter API ключ.
+
+Вашият API ключ никога не трябва да се споделя. Всеки, който има достъп до него, може да използва вашите кредити на OpenRouter"</string>
+  <string name="morphe_vot_openrouter_credits_title">Достигнат кредитен лимит на OpenRouter</string>
+  <string name="morphe_vot_openrouter_credits_message">Вашият кредитен лимит на OpenRouter е достигнат. Заредете баланса си или увеличете лимита за разходите на вашия ключ в OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">Отворете OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">OpenRouter преводът не успя (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">Достигнат дневен лимит на MyMemory</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Наличност отново на %s.</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Използвахте дневната безплатна квота за превод на MyMemory (5000 знака). Добавете имейл адрес на MyMemory в настройките, за да увеличите дневния лимит до 50 000 знака, или превключете към друга услуга за превод</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Използвахте дневната квота за превод на MyMemory (50 000 знака). Превключете към друга услуга за превод или опитайте отново утре</string>
+  <string name="morphe_vot_mymemory_error">MyMemory преводът не успя (състояние %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Версията е фалшира</string>
   <string name="morphe_do_not_remember_loop_video_title">Не запомни цикъла на видеото</string>
@@ -353,6 +407,8 @@ Second \"item\" text"</string>
   <string name="morphe_queue_restore_summary">Опашката се запазва след рестартиране на приложението</string>
   <string name="morphe_swap_save_and_queue_actions_title">Размяна на действията Запази и Опашка</string>
   <string name="morphe_swap_save_and_queue_actions_summary">Натиснете за опции за опашка, натиснете и задръжте, за да запазите за гледане по-късно</string>
+  <string name="morphe_queue_override_flyout_menu_title">Бутон за заместване на опашката на канала</string>
+  <string name="morphe_queue_override_flyout_menu_summary">Отваря опашката на Morphe вместо опашката на YouTube</string>
   <string name="morphe_queue_manager_check_failed_auth">Невход в системата</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">Няма ID на плейлист</string>
   <string name="morphe_queue_manager_check_failed_queue">Опашката е празна</string>
@@ -468,6 +524,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_stop_ads_button_title">Скрий бутона „Магазин“</string>
   <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
   <string name="morphe_hide_comments_button_title">Скрий бутона „Запази“</string>
+  <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_connect_button_title">Скриване на бутона \"Свързване\"</string>
   <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears on live streamed videos. -->
   <string name="morphe_hide_report_button_title">Скрий бутона „Задай въпрос“</string>
@@ -492,6 +550,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shop_button_title">Бисквитки, използвани за удостоверяване на заявки за Timed Text API за надписи</string>
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_save_button_title">Извлича и запазва бисквитки автоматично, ако са валидни</string>
+  <string name="morphe_hide_more_button_title">Скриване на бутона \"Още\"</string>
   <string name="morphe_fullscreen_buttons">Бутони за цял екран</string>
   <string name="morphe_hide_quick_actions_title">Скриване на лентата с действия</string>
   <string name="morphe_hide_quick_actions_ask_button_title">Решава проблема с неуспешна проверка на предварителното условие, който може да попречи на зареждането на транскрипцията</string>
@@ -577,6 +636,7 @@ Second \"item\" text"</string>
   <string name="morphe_toolbar_screen_title">Тойбър</string>
   <string name="morphe_toolbar_screen_summary">Изберете кои компоненти да се показват в лентата с инструменти</string>
   <string name="morphe_hide_toolbar_cast_button_title">Бутон за предаване на Тв</string>
+  <string name="morphe_hide_toolbar_chat_button_title">Скрий бутона за чат</string>
   <string name="morphe_hide_toolbar_create_button_title">Скриване на бутона за Апгрейд</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Плаващ бутон за микрофона</string>
   <string name="morphe_hide_toolbar_notification_button_title">Бутон за Известия</string>
@@ -737,8 +797,11 @@ Second \"item\" text"</string>
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">Деактивиране на жестовото движение на плъзгане нагоре в портретен режим</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Деактивиране на жестовото плъзгане надолу в портретен режим</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Деактивиране на жестовото плъзгане надолу в хоризонтален режим</string>
-  <!-- layout.player.fullscreen.openVideosFullscreen -->
-  <string name="morphe_open_videos_fullscreen_portrait_title">Скрий дублиране на видеа</string>
+  <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
+  <string name="morphe_open_videos_fullscreen_title">Отваряне на видеа в режим на цял екран</string>
+  <string name="morphe_open_videos_fullscreen_entry_1">Забранено</string>
+  <string name="morphe_open_videos_fullscreen_entry_2">Портрет</string>
+  <string name="morphe_open_videos_fullscreen_entry_3">Пейзаж</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Скрий дублиране на видеа</string>
   <string name="morphe_player_overlay_opacity_summary">Регулирайте нивото на прозрачност (0 е прозрачно, 100 е непрозрачно)</string>
@@ -765,7 +828,9 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_summary">Показва приблизителен брой харесвания за видеа, при които създателят е деактивирал харесванията</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Показвай предупреждения за грешки в връзката</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Показва известие, когато сървърът на Return YouTube Dislike не е достъпен</string>
-  <string name="morphe_ryd_attribution_summary">Дублирането на видеа е скрито</string>
+  <string name="morphe_ryd_attribution_summary">"Данните са предоставени от Return YouTube Dislike API.
+
+Натиснете тук, за да отворите ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Дублирането на видеа се показва</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Скрий дублиране на видеа</string>
@@ -1007,7 +1072,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_color_opacity_label">Непрозрачност</string>
   <string name="morphe_sb_color_dot_label">Цвят</string>
   <string name="morphe_sb_about_title">Отношение</string>
-  <string name="morphe_sb_about_api_summary">Информацията е предоставена от API на SponsorBlock. Натиснете тук, за да научите повече и вижте други платформи</string>
+  <string name="morphe_sb_about_api_summary">"Данните са предоставени от SponsorBlock API.
+
+Натиснете тук, за да отворите Sponsor.ajay.app и да видите изтеглянията за други платформи"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Оформление на устройството</string>
   <string name="morphe_change_form_factor_entry_1">По подразбиране</string>
@@ -1016,20 +1083,23 @@ Second \"item\" text"</string>
   <string name="morphe_change_form_factor_entry_4">Автомобилна</string>
   <string name="morphe_change_form_factor_user_dialog_message">"Промените включват:
 
-Начален вид на таблет:
-• Публикации от общността са скрити
-• Настройката за възпроизвеждане в каналите не е налична
-• Бутонът за ремикс и бутонът за звук не са налични в Shorts
-• Видео лентата с действия не е сгъната
+Оформление за таблет
+• Публикациите в общността са скрити
+• Настройката за възпроизвеждане в потоци не е достъпна
+• Бутонът „Remix“ и бутонът „Звук“ не са достъпни в Shorts
+• Показва се старата лента с действия за видео, която не е сгъната
 
-Начален вид за автомобил:
-• Каналът е организиран по теми и канали
-• Настройката за възпроизвеждане в каналите не е налична
-• Бутонът за ремикс и бутонът за звук не са налични в Shorts
+Оформление за автомобили
+• Потокът е организиран по теми и канали
+• Настройката за възпроизвеждане в потоци не е достъпна
+• Бутонът „Remix“ и бутонът „Звук“ не са достъпни в Shorts
 • Shorts се отварят в стандартния плейър
-• Видео лентата с действия не е сгъната"</string>
+• Показва се старата лента с действия за видео, която не е сгъната"</string>
   <string name="morphe_tablet_layout_in_player_title">Активиране на оформление за таблет в плейъра</string>
-  <string name="morphe_tablet_layout_in_player_summary">Възстановява стария вид на плейъра</string>
+  <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+  <string name="morphe_tablet_layout_in_player_summary">"Възстановява стария оформление на плейъра
+
+Ограничения: Ако опцията \"Възстановяване на стара лента за управление на видеото\" е изключена, овърлейът \"Още видеа\" може да не е достъпен."</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Фалшира версия на приложението</string>
   <string name="morphe_spoof_app_version_summary">Използва трикове, за да заблуди сървъра, че използвате по-стара версия на приложението, за да възстановите стари UI функции</string>
@@ -1155,7 +1225,7 @@ Second \"item\" text"</string>
   <string name="morphe_alt_thumbnail_options_entry_2">Still video captures</string>
   <string name="morphe_alt_thumbnail_options_entry_3">Включете бързо still captures</string>
   <string name="morphe_alt_thumbnail_options_entry_4">Неподвижни кадри</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow осигурява crowdsourced превью за видеоклипове на YouTube. Тези превю са често по-релевантни от тези, предоставени от YouTube
+  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow осигурява crowdsourced превю за видеоклипове на YouTube. Тези превю са често по-релевантни от тези, предоставени от YouTube
 
 Ако е включено, URL-овете на видеоклиповете ще бъдат изпращани към сървъра на API и няма да се изпращат други данни. Ако видеоклип не има DeArrow превю, тогава ще се показват оригиналните или превю с кадри
 
@@ -1287,4 +1357,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Не е налично \"Принудително оригинално аудио\"</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Вариант на Player JavaScript</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Показвай заблудата в статистиката за зукъри</string>
+  <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <string name="morphe_restore_old_video_action_bar_title">Възстановяване на стар видео бар с действия</string>
+  <string name="morphe_restore_old_video_action_bar_summary">"Коригира проблем с неотчетени негативни оценки и невъзможност за скриване на видео бутоните за действия.
+
+Ограничения: Връща се към стар стил на наслагване на „Още видеа“"</string>
 </resources>

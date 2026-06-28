@@ -37,12 +37,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">Disabilita la notifica che appare quando si esegue la cattura di una schermata</string>
   <string name="morphe_hide_ask_button_title">Nascondi il pulsante Chiedi</string>
   <string name="morphe_hide_ask_button_summary">Nasconde il pulsante Chiedi nella barra di ricerca</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">Nascondi community consigliate</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">Nasconde gli scaffali delle community consigliate nei subreddit</string>
-  <string name="morphe_hide_trending_today_shelf_title">Nascondi lo scaffale Oggi in tendenza</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"Nasconde lo scaffale Oggi in tendenza dai suggerimenti di ricerca
-
-Limitazione: I separatori visivi potrebbero non essere nascosti"</string>
+  <string name="morphe_hide_communities_shelf_title">Nascondi lo scaffale delle community</string>
+  <string name="morphe_hide_communities_shelf_summary">Nasconde lo scaffale delle community correlate o suggerite nei subreddit</string>
+  <string name="morphe_hide_trending_shelves_title">Nascondi gli scaffali di tendenza</string>
+  <string name="morphe_hide_trending_shelves_summary">Nasconde gli scaffali di tendenza dal feed e dai suggerimenti di ricerca</string>
   <string name="morphe_remove_notification_dialog_title">Rimuovi finestra di dialogo dei suggerimenti di notifica</string>
   <string name="morphe_remove_notification_dialog_summary">Chiude automaticamente la finestra di dialogo del suggerimenti di notifica, che appaiono quando si visita un subreddit</string>
   <string name="morphe_show_view_count_title">Mostra il conteggio delle visualizzazioni nei post</string>

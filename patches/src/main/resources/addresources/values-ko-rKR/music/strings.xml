@@ -27,7 +27,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_1_ads_title">광고</string>
   <string name="morphe_settings_music_screen_2_general_title">일반</string>
   <string name="morphe_settings_music_screen_3_player_title">플레이어</string>
-  <string name="morphe_settings_music_screen_4_misc_title">기타</string>
+  <string name="morphe_settings_music_screen_4_scrobbling_title">스크로블링</string>
+  <string name="morphe_settings_music_screen_5_misc_title">기타</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Music Premium 가입 라벨 숨기기</string>
   <!-- ad.video.hideVideoAdsPatch -->
@@ -69,12 +70,36 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">이 세션에서 크로스페이드를 일시 중지하였습니다</string>
   <string name="morphe_music_crossfade_resumed_toast">크로스페이드를 다시 시작하였습니다</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">크로스페이드가 활성화된 동안에는 동영상 모드를 사용할 수 없습니다</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">오디오를 캐스팅하거나 미러링하는 동안에는 크로스페이드가 일시 중지됩니다. 캐스팅/미러링 환경에서의 크로스페이드는 불안정하며, 영구적으로 해결되지 않을 수도 있습니다</string>
   <string name="morphe_music_crossfade_about_title">정보</string>
-  <string name="morphe_music_crossfade_about_summary">"셔플 버튼을 길게 탭하여 크로스페이드를 비활성화하거나 활성화할 수 있습니다
+  <string name="morphe_music_crossfade_about_summary">크로스페이드 작동 방식과 제한 사항</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">작동 방식</string>
+  <string name="morphe_music_crossfade_about_how_summary">"크로스페이드는 한 트랙이 끝날 때 다음 트랙의 시작 부분을 겹쳐 재생하며, 설정한 지속 시간과 곡선에 따라 한 트랙의 음량은 줄이고 다른 트랙의 음량은 높입니다
 
-VazerOG에 의해 이 기능이 구현되었습니다"</string>
+자동으로 다음 트랙이 재생될 때(트랙이 자연스럽게 끝난 경우)와 수동으로 트랙을 건너뛸 때 모두 작동하며, 각각은 위에서 개별적으로 설정할 수 있습니다. 자동 전환 시에는 트랙이 끝나기 몇 초 전부터 크로스페이드가 시작됩니다
+
+이 기능을 사용하려면 YouTube Music 9.x 이상이 필요합니다"</string>
+  <string name="morphe_music_crossfade_about_best_title">가장 잘 작동하는 경우</string>
+  <string name="morphe_music_crossfade_about_best_summary">일반적인 트랙 간 재생 및 자동 다음 트랙 재생, 한 트랙 반복(트랙이 자기 자신으로 크로스페이드됨), 그리고 휴대폰 스피커, 유선 이어폰/헤드폰, Bluetooth, USB 등 로컬 오디오 환경에서 가장 잘 작동합니다</string>
+  <string name="morphe_music_crossfade_about_quirks_title">제대로 작동하지 않는 경우</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"크로스페이드가 활성화되어 있는 동안에는 뮤직 비디오가 오디오 전용으로 재생됩니다 (동영상을 시청하려면 셔플 버튼을 길게 탭하여 크로스페이드를 일시 중지하세요)
+
+트랙의 길이가 설정한 크로스페이드 시간보다 짧은 경우 크로스페이드가 적용되지 않을 수 있습니다
+
+트랙 전환 중에는 잠금 화면이나 알림에 이전 재생 상태가 잠시 표시될 수 있습니다"</string>
+  <string name="morphe_music_crossfade_about_known_title">알려진 문제점</string>
+  <string name="morphe_music_crossfade_about_known_summary">"첫 번째 트랙으로 설정된 뮤직 비디오나 현재 재생목록 외부에서 시작된 뮤직 비디오는 오디오 전용 모드가 적용되기 전까지 잠시 동영상으로 표시될 수 있습니다
+
+뮤직 비디오를 시청하기 위해 크로스페이드를 일시 중지하면 일부 동영상(자체 오디오를 사용하는 동영상)이 검은 화면으로 표시될 수 있습니다. 이를 방지하려면 트랙을 선택하기 전에 크로스페이드를 일시 중지하세요"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">전혀 작동하지 않는 경우</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"오디오를 캐스팅하거나 미러링하는 동안에는 크로스페이드가 일시 중지됩니다. 캐스트/미러링 환경에서의 크로스페이드는 불안정하며, 영구적으로 해결되지 않을 수도 있습니다
+
+YouTube Music 8.x에서는 크로스페이드가 작동하지 않습니다. 크로스페이드는 YouTube Music 9.x 이상에서만 지원됩니다"</string>
+  <string name="morphe_music_crossfade_about_credit_title">크레딧</string>
+  <string name="morphe_music_crossfade_about_credit_summary">VazerOG의 크로스페이드 기능</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
-  <string name="morphe_music_play_permanent_repeat_title">영구적인 반복 활성화하기</string>
+  <string name="morphe_music_play_permanent_repeat_title">반복 재생 토글 상태 저장하기</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">크롬캐스트 버튼 숨기기</string>
   <string name="morphe_music_hide_history_button_title">기록 버튼 숨기기</string>
@@ -123,4 +148,77 @@ VazerOG에 의해 이 기능이 구현되었습니다"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">하단바 버튼 라벨 숨기기</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">업그레이드 버튼 숨기기</string>
+  <!-- interaction.scrobbling.scrobblingPatch -->
+  <string name="morphe_music_scrobbling_summary">Last.fm 및 ListenBrainz 통합을 설정할 수 있습니다</string>
+  <string name="morphe_music_scrobbling_summary_logged_out">로그인되어 있지 않습니다. 설정하려면 탭하세요</string>
+  <string name="morphe_music_scrobbling_log_out">로그아웃</string>
+  <string name="morphe_music_scrobbling_logged_out_toast">로그아웃하였습니다</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_enabled_title">스크로블링 활성화하기</string>
+  <string name="morphe_music_listenbrainz_now_playing_title">\'현재 재생 중\' 상태 제출하기</string>
+  <string name="morphe_music_listenbrainz_min_song_duration_title">최소 노래 재생시간</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_min_song_duration_summary">이보다 짧은 노래는 스크로블되지 않습니다</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_title">스크로블 지연 비율</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_summary">노래를 이 비율이상 재생하면 스크로블합니다</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_title">스크로블 지연 시간 (초)</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_summary">노래를 이 시간이상 재생하면 스크로블합니다</string>
+  <string name="morphe_music_listenbrainz_token_title">ListenBrainz 계정</string>
+  <string name="morphe_music_listenbrainz_token_summary_logged_in">로그인되어 있습니다. 계정을 관리하려면 탭하세요</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">스크로블링을 활성화하려면 ListenBrainz 사용자 토큰을 입력하세요</string>
+  <string name="morphe_music_listenbrainz_token_dialog_hint">토큰</string>
+  <string name="morphe_music_listenbrainz_token_dialog_get_token">토큰 가져오기</string>
+  <string name="morphe_music_listenbrainz_token_dialog_verify">검증</string>
+  <string name="morphe_music_listenbrainz_token_status_empty">토큰을 입력하세요</string>
+  <string name="morphe_music_listenbrainz_token_status_validating">유효성 검사하는 중...</string>
+  <string name="morphe_music_listenbrainz_token_status_valid">유효한 토큰! 사용자: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">잘못된 토큰: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid_unknown">알 수 없음</string>
+  <string name="morphe_music_listenbrainz_token_status_failed">검증 실패: %s</string>
+  <string name="morphe_music_listenbrainz_token_toast_cleared">토큰이 지워졌습니다</string>
+  <string name="morphe_music_listenbrainz_token_toast_saved">토큰을 저장하였습니다</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">경고: 저장된 토큰이 유효하지 않습니다!</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_lastfm_enabled_title">스크로블링 활성화하기</string>
+  <string name="morphe_music_lastfm_now_playing_title">\"현재 재생 중\' 상태 제출하기</string>
+  <string name="morphe_music_lastfm_love_on_like_title">좋아요한 트랙에 좋아요 표시하기</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">YouTube Music에서 트랙에 좋아요를 누르면 Last.fm에서도 자동으로 좋아요가 표시되며, YouTube Music에서 트랙에 좋아요를 해제하거나 싫어요를 누르면 Last.fm에서도 자동으로 좋아요가 해제됩니다</string>
+  <string name="morphe_music_lastfm_min_song_duration_title">최소 노래 재생시간</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_lastfm_min_song_duration_summary">이보다 짧은 노래는 스크로블되지 않습니다</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_title">스크로블 지연 비율</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_summary">노래를 이 비율이상 재생하면 스크로블합니다</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_title">스크로블 지연 시간 (초)</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_summary">이 시간이상 재생하면 스크로블합니다</string>
+  <string name="morphe_music_lastfm_token_title">Last.fm 계정</string>
+  <string name="morphe_music_lastfm_token_summary_logged_in">\'%s\'으로 로그인되어 있습니다. 계정을 관리하려면 탭하세요</string>
+  <string name="morphe_music_lastfm_token_dialog_instruction">Last.fm 자격 증명을 입력하여 로그인하세요</string>
+  <string name="morphe_music_lastfm_token_dialog_username_hint">사용자 이름</string>
+  <string name="morphe_music_lastfm_token_dialog_password_hint">비밀번호</string>
+  <string name="morphe_music_lastfm_token_dialog_login">로그인</string>
+  <string name="morphe_music_lastfm_token_status_empty">사용자 이름 및 비밀번호를 입력하세요</string>
+  <string name="morphe_music_lastfm_token_status_logging_in">로그인하는 중...</string>
+  <string name="morphe_music_lastfm_token_status_success">성공적으로 로그인하였습니다!</string>
+  <string name="morphe_music_lastfm_token_status_no_session">Last.fm에서 세션을 가져올 수 없습니다</string>
+  <string name="morphe_music_lastfm_token_status_failed">로그인 실패: %s</string>
+  <string name="morphe_music_lastfm_token_toast_saved">Last.fm 자격 증명을 저장하였습니다!</string>
+  <string name="morphe_settings_music_scrobbling_metadata_title">메타데이터 정리</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_title">메타데이터 정리</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">스크로블하기 전에 제목, 아티스트, 앨범에서 \'Official Video\', \'Remaster\', \'Live\'와 같은 일반적인 불필요한 문구를 자동으로 정리합니다</string>
+  <string name="morphe_music_scrobbling_custom_regex_title">사용자 정의 정규식 정리</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">"스크로블하기 전에 노래 제목, 아티스트 또는 앨범에서 추가 텍스트를 찾아 제거할 사용자 정의 정규식을 입력합니다
+예시: (?i)\\s*\\((clean|explicit)\\)"</string>
+  <string name="morphe_music_scrobbling_about_title">스크로블링에 대한 정보</string>
+  <string name="morphe_music_scrobbling_about_summary">"스크로블은 YouTube Music에서 재생한 음악을 자동으로 기록하여 Last.fm 또는 ListenBrainz 프로필과 동기화합니다
+
+백그라운드에서 스크로블이 안정적으로 실행되도록 하려면 YouTube Music의 시스템 배터리 사용 설정이 '제한 없음'으로 되어 있는지 확인하세요"</string>
 </resources>

@@ -245,6 +245,7 @@ Changes include:
     <string name="morphe_hide_keyword_content_home_title">Hide Home videos by keywords</string>
     <string name="morphe_hide_keyword_content_search_title">Hide search results by keywords</string>
     <string name="morphe_hide_keyword_content_subscriptions_title">Hide Subscriptions videos by keywords</string>
+    <string name="morphe_hide_keyword_content_comments_title">Hide comments by keywords</string>
     <string name="morphe_hide_keyword_content_phrases_title">Keywords to hide</string>
     <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
@@ -254,7 +255,7 @@ Keywords can be any text shown in video titles or channel names
 
 Words with uppercase letters in the middle must match exactly (ie: iPhone, TikTok, LeBlanc)"</string>
     <string name="morphe_hide_keyword_content_about_title">About keyword filtering</string>
-    <string name="morphe_hide_keyword_content_about_summary">"Home / Subscriptions / Search results are filtered to hide content that matches keyword phrases
+    <string name="morphe_hide_keyword_content_about_summary">"Home / Subscriptions / Search / Comments are filtered to hide content that matches keyword phrases
 
 Limitations:
 • Shorts cannot be hidden by channel name
@@ -335,6 +336,67 @@ Limitations:
 Verify the package name is correct and the app is installed"</string>
     <string name="morphe_external_downloader_empty_warning">The package name cannot be empty</string>
 
+    <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+    <string name="morphe_vot_screen_title">Voice over translation</string>
+    <string name="morphe_vot_screen_summary">Read video captions aloud using on-device text-to-speech, synchronized with playback</string>
+    <string name="morphe_vot_enabled_title">Voice over translation</string>
+    <string name="morphe_vot_caption_language_title">Language</string>
+    <string name="morphe_vot_translation_service_title">Translation provider</string>
+    <string name="morphe_vot_original_audio_volume_title">Original audio volume</string>
+    <string name="morphe_vot_original_audio_volume_summary">Volume of the original YouTube audio while the translation is speaking</string>
+    <string name="morphe_vot_translation_volume_title">Translation volume</string>
+    <string name="morphe_vot_translation_volume_summary">Volume of the dubbed translation voice</string>
+    <string name="morphe_vot_max_speech_rate_title">Max speech rate</string>
+    <string name="morphe_vot_max_speech_rate_summary">Maximum speed multiplier when fitting speech into a subtitle slot</string>
+    <string name="morphe_vot_service_google" translatable="false">Google Translate</string>
+    <string name="morphe_vot_service_mymemory" translatable="false">MyMemory</string>
+    <string name="morphe_vot_mymemory_info_summary">"Free translation API, no API key required. Up to 5,000 characters per day on the free tier, or up to 50,000 characters per day with an email address.
+
+Tap here to open MyMemory.translated.net"</string>
+    <string name="morphe_vot_mymemory_email_title">MyMemory email</string>
+    <string name="morphe_vot_mymemory_email_summary">Optional. Enter your MyMemory email address to increase the daily limit from 5,000 to 50,000 characters. Leave empty to use the anonymous limit</string>
+    <string name="morphe_vot_service_openrouter" translatable="false">OpenRouter</string>
+    <string name="morphe_vot_openrouter_info_summary">"Paid AI translation via OpenRouter. Top up once and translate thousands of videos. Mistral Nemo is the cheapest option, Gemma 4 offers the highest quality.
+
+Tap here to open OpenRouter.ai"</string>
+    <string name="morphe_vot_openrouter_api_key_title">OpenRouter API key</string>
+    <string name="morphe_vot_openrouter_api_key_summary">Your OpenRouter API key. Create a key at OpenRouter.ai > Workspace > API Keys</string>
+    <string name="morphe_vot_openrouter_model_title">OpenRouter Model</string>
+    <string name="morphe_vot_openrouter_model_mistral_nemo" translatable="false">Mistral Nemo</string>
+    <string name="morphe_vot_openrouter_model_gemma4_26b_a4b" translatable="false">Gemma 4</string>
+    <string name="morphe_vot_openrouter_model_deepseek_flash_v4" translatable="false">DeepSeek V4 Flash</string>
+    <string name="morphe_vot_openrouter_model_custom">Custom</string>
+    <string name="morphe_vot_openrouter_model_hint" translatable="false">e.g. qwen/qwen3.5-flash-02-23</string>
+    <string name="morphe_vot_openrouter_not_configured_title">OpenRouter not configured</string>
+    <string name="morphe_vot_openrouter_not_configured_message">Enter your OpenRouter API key in settings before selecting this provider</string>
+    <string name="morphe_vot_cost_free">Free</string>
+    <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+    <string name="morphe_vot_cost_per_hour">%s per 100 video hours</string>
+    <string name="morphe_vot_tts_voice_type">Voice</string>
+    <string name="morphe_vot_tts_system">System</string>
+    <string name="morphe_vot_voice_gender_male_multilingual">Multilingual male</string>
+    <string name="morphe_vot_voice_gender_female_multilingual">Multilingual female</string>
+    <string name="morphe_vot_voice_gender_male">Male</string>
+    <string name="morphe_vot_voice_gender_female">Female</string>
+    <string name="morphe_vot_tts_sample">It\'s morphing time!</string>
+    <string name="morphe_vot_http_error_title">Translation unavailable</string>
+    <string name="morphe_vot_http_error_message">"The translation service returned HTTP error %s. Your IP address has likely been rate-limited for up to 24 hours.
+
+To continue using translations, switch to a different translation provider in settings or use a VPN"</string>
+    <string name="morphe_vot_do_not_show_again">Do not show again</string>
+    <string name="morphe_vot_export_api_key_warning">"Your settings contain an OpenRouter API key.
+
+Your API key should never be shared. Anyone with access to it can use your OpenRouter credits"</string>
+    <string name="morphe_vot_openrouter_credits_title">OpenRouter credit limit reached</string>
+    <string name="morphe_vot_openrouter_credits_message">Your OpenRouter credit limit has been reached. Top up your balance or increase your key spending limit at OpenRouter.ai</string>
+    <string name="morphe_vot_openrouter_open_website">Open OpenRouter.ai</string>
+    <string name="morphe_vot_openrouter_error">OpenRouter translation failed (HTTP %s)</string>
+    <string name="morphe_vot_mymemory_quota_title">MyMemory daily limit reached</string>
+    <string name="morphe_vot_mymemory_quota_next_available">Next available at %s.</string>
+    <string name="morphe_vot_mymemory_quota_message_no_email">You\'ve used today\'s free MyMemory translation quota (5,000 characters). Add a MyMemory email in settings to raise the daily limit to 50,000 characters, or switch to a different translation service</string>
+    <string name="morphe_vot_mymemory_quota_message_with_email">You\'ve used today\'s MyMemory translation quota (50,000 characters). Switch to a different translation service or try again tomorrow</string>
+    <string name="morphe_vot_mymemory_error">MyMemory translation failed (status %s)</string>
+
     <!-- interaction.loop.loopVideoPatch -->
     <string name="morphe_loop_video_title">Enable loop video</string>
     <string name="morphe_do_not_remember_loop_video_title">Don\'t remember loop video</string>
@@ -389,6 +451,8 @@ Info: May not work on live streams"</string>
     <string name="morphe_queue_restore_summary">Queue is kept after restarting the app</string>
     <string name="morphe_swap_save_and_queue_actions_title">Swap Save and Queue actions</string>
     <string name="morphe_swap_save_and_queue_actions_summary">Tap for queue options, tap and hold to save to watch later</string>
+    <string name="morphe_queue_override_flyout_menu_title">Override feed flyout queue button</string>
+    <string name="morphe_queue_override_flyout_menu_summary">Opens the Morphe queue instead of the YouTube queue</string>
     <string name="morphe_queue_manager_check_failed_auth">Not logged in</string>
     <string name="morphe_queue_manager_check_failed_playlist_id">No playlist ID</string>
     <string name="morphe_queue_manager_check_failed_queue">Queue is empty</string>
@@ -512,6 +576,8 @@ Note: If \'Spoof video streams\' is not enabled, enabling this may cause unexpec
     <string name="morphe_hide_stop_ads_button_title">Hide \'Stop ads\' button</string>
     <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
     <string name="morphe_hide_comments_button_title">Hide Comments button</string>
+    <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
+    <string name="morphe_hide_connect_button_title">Hide Connect button</string>
     <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears on live streamed videos. -->
     <string name="morphe_hide_report_button_title">Hide Report button</string>
@@ -536,6 +602,7 @@ Note: If \'Spoof video streams\' is not enabled, enabling this may cause unexpec
     <string name="morphe_hide_shop_button_title">Hide Shop button</string>
     <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_save_button_title">Hide Save button</string>
+    <string name="morphe_hide_more_button_title">Hide More button</string>
 
     <string name="morphe_fullscreen_buttons">Fullscreen buttons</string>
     <string name="morphe_hide_quick_actions_title">Hide action bar</string>
@@ -628,6 +695,7 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
     <string name="morphe_toolbar_screen_title">Toolbar</string>
     <string name="morphe_toolbar_screen_summary">Choose which components appear in the toolbar</string>
     <string name="morphe_hide_toolbar_cast_button_title">Hide Cast button</string>
+    <string name="morphe_hide_toolbar_chat_button_title">Hide Chat button</string>
     <string name="morphe_hide_toolbar_create_button_title">Hide Create button</string>
     <string name="morphe_hide_toolbar_microphone_button_title">Hide Microphone button</string>
     <string name="morphe_hide_toolbar_notification_button_title">Hide Notifications button</string>
@@ -805,8 +873,11 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Disable portrait swipe-down gesture</string>
     <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Disable landscape swipe-down gesture</string>
 
-    <!-- layout.player.fullscreen.openVideosFullscreen -->
-    <string name="morphe_open_videos_fullscreen_portrait_title">Open videos in fullscreen portrait</string>
+    <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
+    <string name="morphe_open_videos_fullscreen_title">Open videos in fullscreen mode</string>
+    <string name="morphe_open_videos_fullscreen_entry_1">Disabled</string>
+    <string name="morphe_open_videos_fullscreen_entry_2">Portrait</string>
+    <string name="morphe_open_videos_fullscreen_entry_3">Landscape</string>
 
     <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
     <string name="morphe_player_overlay_opacity_title">Player overlay opacity</string>
@@ -835,8 +906,10 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <string name="morphe_ryd_estimated_like_summary">Shows an estimated like count on videos where the creator has disabled likes</string>
     <string name="morphe_ryd_toast_on_connection_error_title">Show connection error alerts</string>
     <string name="morphe_ryd_toast_on_connection_error_summary">Shows a notification when the Return YouTube Dislike server is unavailable</string>
-    <string name="morphe_ryd_attribution_title" translatable="false">ReturnYouTubeDislike.com</string>
-    <string name="morphe_ryd_attribution_summary">Data is provided by the Return YouTube Dislike API. Tap here to learn more</string>
+    <string name="morphe_ryd_attribution_title" translatable="false">ReturnYouTubeDislike</string>
+    <string name="morphe_ryd_attribution_summary">"Data is provided by the Return YouTube Dislike API
+
+Tap here to open ReturnYouTubeDislike.com"</string>
     <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
     <string name="morphe_ryd_statistics_category_title">Return YouTube Dislike API statistics of this device</string>
     <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API response time, average</string>
@@ -860,229 +933,6 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
 
     <!-- layout.sponsorblock.sponsorBlockPatch -->
     <string name="morphe_settings_screen_10_sponsorblock_title" translatable="false">SponsorBlock</string>
-    <string name="morphe_sb_enable_sb">Enable SponsorBlock</string>
-    <string name="morphe_sb_enable_sb_summary">SponsorBlock is a crowdsourced system for skipping annoying parts of YouTube videos</string>
-    <string name="morphe_sb_appearance_category">Appearance</string>
-    <string name="morphe_sb_enable_voting">Show voting button</string>
-    <string name="morphe_sb_enable_voting_summary">Adds a button to upvote or downvote segments</string>
-    <string name="morphe_sb_square_layout">Use square layout</string>
-    <string name="morphe_sb_square_layout_summary">Uses rounded corners for SponsorBlock buttons and controls</string>
-    <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
-    <string name="morphe_sb_enable_compact_skip_button">Use compact Skip button</string>
-    <string name="morphe_sb_enable_compact_skip_button_summary">Reduces the width of the Skip button to save space</string>
-    <string name="morphe_sb_enable_auto_hide_skip_segment_button">Automatically hide Skip button</string>
-    <string name="morphe_sb_enable_auto_hide_skip_segment_button_summary">Hides the Skip button after a few seconds instead of keeping it visible for the entire segment</string>
-    <string name="morphe_sb_auto_hide_skip_button_duration">Skip button duration</string>
-    <string name="morphe_sb_auto_hide_skip_button_duration_summary">Set how long the Skip buttons remains visible</string>
-    <string name="morphe_sb_general_skiptoast">Show undo skip notification</string>
-    <string name="morphe_sb_general_skiptoast_summary">Shows a notification allowing you to tap to undo an automatic skip</string>
-    <string name="morphe_sb_toast_on_skip_duration">Skip notification duration</string>
-    <string name="morphe_sb_toast_on_skip_duration_summary">Set how long the undo notification remains visible</string>
-    <string name="morphe_sb_duration_1s">1 second</string>
-    <string name="morphe_sb_duration_2s">2 seconds</string>
-    <string name="morphe_sb_duration_3s">3 seconds</string>
-    <string name="morphe_sb_duration_4s">4 seconds</string>
-    <string name="morphe_sb_duration_5s">5 seconds</string>
-    <string name="morphe_sb_duration_6s">6 seconds</string>
-    <string name="morphe_sb_duration_7s">7 seconds</string>
-    <string name="morphe_sb_duration_8s">8 seconds</string>
-    <string name="morphe_sb_duration_9s">9 seconds</string>
-    <string name="morphe_sb_duration_10s">10 seconds</string>
-    <string name="morphe_sb_general_time_without">Show video length without segments</string>
-    <string name="morphe_sb_general_time_without_summary">Subtracts all segments in total video duration shown on the seekbar</string>
-    <string name="morphe_sb_create_segment_category">Creating new segments</string>
-    <string name="morphe_sb_enable_create_segment">Show \'Create new segment\' button</string>
-    <string name="morphe_sb_enable_create_segment_summary">Adds a button to the video player allowing you to submit new SponsorBlock segments</string>
-    <string name="morphe_sb_general_adjusting">Time adjustment step</string>
-    <string name="morphe_sb_general_adjusting_summary">Seek amount of the time adjustment buttons (in milliseconds)</string>
-    <string name="morphe_sb_general_adjusting_invalid">Value must be a positive number</string>
-    <string name="morphe_sb_guidelines_preference_title">Submission guidelines</string>
-    <string name="morphe_sb_guidelines_preference_summary">Guidelines contain rules and tips for creating new segments</string>
-    <string name="morphe_sb_guidelines_popup_title">Follow the guidelines</string>
-    <string name="morphe_sb_guidelines_popup_content">Read the SponsorBlock guidelines before creating new segments</string>
-    <string name="morphe_sb_guidelines_popup_already_read">Already read</string>
-    <string name="morphe_sb_guidelines_popup_open">Show me</string>
-    <string name="morphe_sb_general">General</string>
-    <string name="morphe_sb_toast_on_connection_error">Show connection error alerts</string>
-    <string name="morphe_sb_toast_on_connection_error_summary">Shows a notification when the SponsorBlock server is unavailable</string>
-    <string name="morphe_sb_general_skipcount">Enable skip count tracking</string>
-    <string name="morphe_sb_general_skipcount_summary">Sends skip counts to the SponsorBlock leaderboard to track how much time is saved</string>
-    <string name="morphe_sb_general_min_duration">Minimum segment duration</string>
-    <string name="morphe_sb_general_min_duration_summary">Segments shorter than this value (in seconds) will not be shown or skipped</string>
-    <string name="morphe_sb_general_min_duration_invalid">Invalid time duration</string>
-    <string name="morphe_sb_general_uuid">Your private user ID</string>
-    <string name="morphe_sb_general_uuid_summary">This should be kept private. This is like a password and should not be shared with anyone. If someone has this, they can impersonate you</string>
-    <string name="morphe_sb_general_uuid_invalid">Private user ID must be at least 30 characters long</string>
-    <string name="morphe_sb_general_api_url">Change API URL</string>
-    <string name="morphe_sb_general_api_url_summary">The address SponsorBlock uses to make calls to the server</string>
-    <string name="morphe_sb_channel_whitelist">Channel whitelist</string>
-    <string name="morphe_sb_channel_whitelist_summary">SponsorBlock is disabled for whitelisted channels</string>
-    <string name="morphe_sb_channel_whitelist_current_channel">Current channel:</string>
-    <string name="morphe_sb_channel_whitelist_add">Add to whitelist</string>
-    <string name="morphe_sb_channel_whitelist_remove">Remove</string>
-    <string name="morphe_sb_channel_whitelist_channels_header">Whitelisted channels</string>
-    <string name="morphe_sb_channel_whitelist_empty">No channels whitelisted</string>
-    <string name="morphe_sb_channel_whitelist_channel_added">Channel added to whitelist</string>
-    <string name="morphe_sb_channel_whitelist_channel_removed">Channel removed from whitelist</string>
-    <string name="morphe_sb_toast_on_whitelisted_channel">Notify on whitelisted channel</string>
-    <string name="morphe_sb_toast_on_whitelisted_channel_summary">Shows a notification when SponsorBlock is disabled for a whitelisted channel</string>
-    <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock disabled for this channel</string>
-    <string name="morphe_sb_api_url_reset">API URL reset</string>
-    <string name="morphe_sb_api_url_invalid">API URL is invalid</string>
-    <string name="morphe_sb_api_url_changed">API URL changed</string>
-    <string name="morphe_sb_settings_ie">Import / Export settings</string>
-    <string name="morphe_sb_settings_copy">Copy</string>
-    <string name="morphe_sb_settings_ie_summary">Your SponsorBlock JSON configuration that can be imported / exported to Morphe and other SponsorBlock platforms</string>
-    <string name="morphe_sb_settings_ie_summary_warning">"Your SponsorBlock JSON configuration that can be imported / exported to Morphe and other SponsorBlock platforms
-
-This includes your private user ID. Be sure to share this wisely"</string>
-    <string name="morphe_sb_settings_import_successful">Settings imported successfully</string>
-    <string name="morphe_sb_settings_import_failed">Failed to import: %s</string>
-    <string name="morphe_sb_settings_export_failed">Failed to export: %s</string>
-    <string name="morphe_sb_settings_morphe_export_user_id_warning">"Your settings contain a private SponsorBlock user ID.
-
-Your user ID is like a password, and it should never be shared."</string>
-    <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Do not show again</string>
-    <string name="morphe_sb_diff_segments">Change segment behavior</string>
-    <string name="morphe_sb_segments_sponsor">Sponsor</string>
-    <string name="morphe_sb_segments_sponsor_summary">Paid promotion, paid referrals and direct advertisements. Not for self-promotion or free shout-outs to causes / creators / websites / products they like</string>
-    <string name="morphe_sb_segments_selfpromo">Unpaid / Self Promotion</string>
-    <string name="morphe_sb_segments_selfpromo_summary">Similar to Sponsor except for unpaid / self promotion. Includes sections about merchandise, donations, or information about who they collaborated with</string>
-    <string name="morphe_sb_segments_interaction">Interaction Reminder (Subscribe)</string>
-    <string name="morphe_sb_segments_interaction_summary">A short reminder to like, subscribe or follow them in the middle of content. If it is long or about something specific, it should instead be under self promotion</string>
-    <string name="morphe_sb_segments_highlight">Highlight</string>
-    <string name="morphe_sb_segments_highlight_summary">The part of the video that most people are looking for</string>
-    <string name="morphe_sb_segments_intro">Intermission / Intro Animation</string>
-    <string name="morphe_sb_segments_intro_summary">An interval without actual content. Could be a pause, static frame, or repeating animation. Does not include transitions containing information</string>
-    <string name="morphe_sb_segments_outro">Endcards / Credits</string>
-    <string name="morphe_sb_segments_outro_summary">Credits or when the YouTube endcards appear. Not for conclusions with information</string>
-    <string name="morphe_sb_segments_hook">Hook / Greetings</string>
-    <string name="morphe_sb_segments_hook_summary">Narrated trailers for the upcoming video, greetings and goodbyes. Does not include sections that add additional content</string>
-    <string name="morphe_sb_segments_preview">Preview / Recap</string>
-    <string name="morphe_sb_segments_preview_summary">Collection of clips that show what is coming up or what happened in the video or in other videos of a series, where all information is repeated elsewhere</string>
-    <string name="morphe_sb_segments_filler">Tangent / Jokes</string>
-    <string name="morphe_sb_segments_filler_summary">Tangential scenes or jokes that are not required to understand the main content of the video. Does not include sections providing context or background details</string>
-    <string name="morphe_sb_segments_nomusic">Music: Non-Music Section</string>
-    <string name="morphe_sb_segments_nomusic_summary">Only for use in music videos. Sections of music videos without music that are not already covered by another category</string>
-    <string name="morphe_sb_skip_button_compact">Skip</string>
-    <string name="morphe_sb_skip_button_compact_highlight">Highlight</string>
-    <string name="morphe_sb_skip_button_sponsor">Skip sponsor</string>
-    <string name="morphe_sb_skip_button_selfpromo">Skip promo</string>
-    <string name="morphe_sb_skip_button_interaction">Skip interact</string>
-    <string name="morphe_sb_skip_button_highlight">Skip to highlight</string>
-    <string name="morphe_sb_skip_button_intro_beginning">Skip intro</string>
-    <string name="morphe_sb_skip_button_intro_middle">Skip intermission</string>
-    <string name="morphe_sb_skip_button_intro_end">Skip intermission</string>
-    <string name="morphe_sb_skip_button_outro">Skip outro</string>
-    <string name="morphe_sb_skip_button_hook">Skip hook</string>
-    <string name="morphe_sb_skip_button_preview_beginning">Skip preview</string>
-    <string name="morphe_sb_skip_button_preview_middle">Skip preview</string>
-    <string name="morphe_sb_skip_button_preview_end">Skip recap</string>
-    <string name="morphe_sb_skip_button_filler">Skip tangent</string>
-    <string name="morphe_sb_skip_button_nomusic">Skip non-music</string>
-    <string name="morphe_sb_skip_button_unsubmitted">Skip segment</string>
-    <string name="morphe_sb_skipped_sponsor">Skipped sponsor</string>
-    <string name="morphe_sb_skipped_selfpromo">Skipped self promotion</string>
-    <string name="morphe_sb_skipped_interaction">Skipped annoying reminder</string>
-    <string name="morphe_sb_skipped_highlight">Skipped to highlight</string>
-    <string name="morphe_sb_skipped_intro_beginning">Skipped intro</string>
-    <string name="morphe_sb_skipped_intro_middle">Skipped intermission</string>
-    <string name="morphe_sb_skipped_intro_end">Skipped intermission</string>
-    <string name="morphe_sb_skipped_outro">Skipped outro</string>
-    <string name="morphe_sb_skipped_hook">Skipped hook</string>
-    <string name="morphe_sb_skipped_preview_beginning">Skipped preview</string>
-    <string name="morphe_sb_skipped_preview_middle">Skipped preview</string>
-    <string name="morphe_sb_skipped_preview_end">Skipped recap</string>
-    <string name="morphe_sb_skipped_filler">Skipped tangent</string>
-    <string name="morphe_sb_skipped_nomusic">Skipped a non-music section</string>
-    <string name="morphe_sb_skipped_unsubmitted">Skipped unsubmitted segment</string>
-    <string name="morphe_sb_skipped_multiple_segments">Skipped multiple segments</string>
-    <string name="morphe_sb_skip_automatically">Skip automatically</string>
-    <string name="morphe_sb_skip_automatically_once">Skip automatically once</string>
-    <string name="morphe_sb_skip_showbutton">Show a Skip button</string>
-    <string name="morphe_sb_skip_seekbaronly">Show in seekbar</string>
-    <string name="morphe_sb_skip_ignore">Disable</string>
-    <string name="morphe_sb_submit_failed_invalid">Unable to submit segment: %s</string>
-    <string name="morphe_sb_submit_failed_timeout">SponsorBlock is temporarily down</string>
-    <string name="morphe_sb_submit_failed_unknown_error">Unable to submit segment (status: %1$d %2$s)</string>
-    <string name="morphe_sb_submit_failed_rate_limit">Unable to submit segment. Rate Limited (too many from the same user or IP)</string>
-    <string name="morphe_sb_submit_failed_forbidden">Cannot submit the segment: %s</string>
-    <string name="morphe_sb_submit_failed_duplicate">"Cannot submit the segment.
-Already exists"</string>
-    <string name="morphe_sb_submit_succeeded">Segment submitted successfully</string>
-    <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-    <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock is temporarily not available (API timed out)</string>
-    <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock is temporarily not available (status %d)</string>
-    <string name="morphe_sb_sponsorblock_connection_failure_generic">SponsorBlock is temporarily not available</string>
-    <string name="morphe_sb_vote_failed_timeout">Unable to vote for segment (API timed out)</string>
-    <string name="morphe_sb_vote_failed_unknown_error">Unable to vote for segment (status: %1$d %2$s)</string>
-    <string name="morphe_sb_vote_failed_forbidden">Unable to vote for segment: %s</string>
-    <string name="morphe_sb_vote_upvote">Upvote</string>
-    <string name="morphe_sb_vote_downvote">Downvote</string>
-    <string name="morphe_sb_vote_category">Change category</string>
-    <string name="morphe_sb_vote_no_segments">There are no segments to vote for</string>
-    <!-- A segment start and end time, such as "02:10 to 03:40". -->
-    <string name="morphe_sb_vote_segment_time_to_from">%1$s to %2$s</string>
-    <string name="morphe_sb_new_segment_choose_category">Choose the segment category</string>
-    <string name="morphe_sb_new_segment_disabled_category">Category is disabled in settings. Enable category to submit.</string>
-    <string name="morphe_sb_new_segment_title">New SponsorBlock segment</string>
-    <string name="morphe_sb_new_segment_mark_time_as_question">Set %s as the start or end of a new segment?</string>
-    <string name="morphe_sb_new_segment_mark_start">Start</string>
-    <string name="morphe_sb_new_segment_mark_end">End</string>
-    <string name="morphe_sb_new_segment_now">Now</string>
-    <string name="morphe_sb_new_segment_time_start">Time the segment begins at</string>
-    <string name="morphe_sb_new_segment_time_end">Time the segment ends at</string>
-    <string name="morphe_sb_new_segment_confirm_title">Are the times correct?</string>
-    <string name="morphe_sb_new_segment_confirm_content">"The segment is from
-
-%1$s
-to
-%2$s
-
-(%3$s)
-
-Ready to submit?"</string>
-    <string name="morphe_sb_new_segment_confirm_submit">Submit</string>
-    <string name="morphe_sb_new_segment_start_is_before_end">Start must be before the end</string>
-    <string name="morphe_sb_new_segment_mark_locations_first">First mark a location on the time bar</string>
-    <string name="morphe_sb_new_segment_preview_segment_first">Preview the segment, and ensure it skips smoothly</string>
-    <string name="morphe_sb_new_segment_edit_by_hand_title">Edit timing of segment manually</string>
-    <string name="morphe_sb_new_segment_edit_by_hand_content">Do you want to edit the timing for the start or end of the segment?</string>
-    <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Invalid time given</string>
-    <string name="morphe_sb_new_segment_highlight_title">Submit highlight</string>
-    <string name="morphe_sb_new_segment_highlight_content">"Is the highlight time correct?
-
-%s
-
-If you\'re not submitting a highlight, tap Cancel and mark the second location"</string>
-    <string name="morphe_sb_new_segment_highlight_submit">Submit highlight</string>
-    <string name="morphe_sb_stats_title">Stats</string>
-    <!-- Shown in the settings preferences, and translations can be any text length. -->
-    <string name="morphe_sb_stats_connection_failure">Stats are temporarily not available (API is down)</string>
-    <string name="morphe_sb_stats_loading">Loading...</string>
-    <string name="morphe_sb_stats_sb_disabled">SponsorBlock is disabled</string>
-    <string name="morphe_sb_stats_username">Your username: &lt;b>%s&lt;/b></string>
-    <string name="morphe_sb_stats_username_change">Tap here to change your username</string>
-    <string name="morphe_sb_stats_username_change_unknown_error">Unable to change username: Status: %1$d %2$s</string>
-    <string name="morphe_sb_stats_username_changed">Username successfully changed</string>
-    <string name="morphe_sb_stats_reputation">Your reputation is &lt;b>%.2f&lt;/b></string>
-    <string name="morphe_sb_stats_submissions">You\'ve created &lt;b>%s&lt;/b> segments</string>
-    <string name="morphe_sb_stats_submissions_summary">Tap here to view your segments</string>
-    <string name="morphe_sb_stats_saved_zero">SponsorBlock leaderboard</string>
-    <string name="morphe_sb_stats_saved">You\'ve saved people from &lt;b>%s&lt;/b> segments</string>
-    <string name="morphe_sb_stats_saved_summary_zero">Tap here to see the global stats and top contributors</string>
-    <string name="morphe_sb_stats_saved_summary">That\'s &lt;b>%s&lt;/b> of their lives.&lt;br>Tap here to see the leaderboard</string>
-    <string name="morphe_sb_stats_self_saved">You\'ve skipped &lt;b>%s&lt;/b> segments</string>
-    <string name="morphe_sb_stats_self_saved_summary">That\'s &lt;b>%s&lt;/b></string>
-    <string name="morphe_sb_stats_self_saved_reset_title">Reset skipped segments counter?</string>
-    <string name="morphe_sb_stats_saved_hour_format">%1$s hours %2$s minutes</string>
-    <string name="morphe_sb_stats_saved_minute_format">%1$s minutes %2$s seconds</string>
-    <string name="morphe_sb_stats_saved_second_format">%s seconds</string>
-    <string name="morphe_sb_color_opacity_label">Opacity:</string>
-    <string name="morphe_sb_color_dot_label">Color:</string>
-    <string name="morphe_sb_about_title">About</string>
-    <string name="morphe_sb_about_api_title" translatable="false">sponsor.ajay.app</string>
-    <string name="morphe_sb_about_api_summary">Data is provided by the SponsorBlock API. Tap here to learn more and see downloads for other platforms</string>
     <!-- layout.formfactor.changeFormFactorPatch -->
     <string name="morphe_change_form_factor_title">Device layout</string>
     <string name="morphe_change_form_factor_entry_1">Default</string>
@@ -1095,16 +945,19 @@ Tablet layout
 • Community posts are hidden
 • Playback in feeds setting is not available
 • Remix button and Sound button are not available in Shorts
-• Video action bar is not collapsed
+• Non collapsed old video action bar is shown
 
 Automotive layout
 • Feed is organized by topics and channels
 • Playback in feeds setting is not available
 • Remix button and Sound button are not available in Shorts
 • Shorts open in the regular player
-• Video action bar is not collapsed"</string>
+• Non collapsed old video action bar is shown"</string>
     <string name="morphe_tablet_layout_in_player_title">Enable tablet layout in player</string>
-    <string name="morphe_tablet_layout_in_player_summary">Restores the old player layout</string>
+    <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
+    <string name="morphe_tablet_layout_in_player_summary">"Restores the old player layout
+
+Limitations: If 'Restore old video action bar' is turned off, 'More videos' overlay may not be available"</string>
 
     <!-- layout.spoofappversion.spoofAppVersionPatch -->
     <string name="morphe_spoof_app_version_title">Spoof app version</string>
@@ -1253,7 +1106,7 @@ Limitation: Using the back button on the toolbar may not work"</string>
 
 If enabled, video URLs will be sent to the API server and no other data is sent. If a video does not have DeArrow thumbnails, then the original or still captures are shown
 
-Tap here to learn more about DeArrow"</string>
+Tap here to open DeArrow.ajay.app"</string>
     <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Show connection error alerts</string>
     <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary">Shows a notification when the DeArrow server is unavailable</string>
     <string name="morphe_alt_thumbnail_dearrow_api_url_title">DeArrow API endpoint</string>
@@ -1403,4 +1256,10 @@ Video playback with AV1 may stutter or drop frames."</string>
     <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Force original audio is not available</string>
     <string name="morphe_spoof_video_streams_player_js_variant_title">Player JavaScript variant</string>
     <string name="morphe_spoof_video_streams_stats_for_nerds_title">Show spoofing in Stats for nerds</string>
+
+    <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+    <string name="morphe_restore_old_video_action_bar_title">Restore old video action bar</string>
+    <string name="morphe_restore_old_video_action_bar_summary">"Fixes dislikes not shown and video action buttons cannot be hidden
+
+Limitations: Reverts to old style 'More videos' overlay"</string>
 </resources>

@@ -36,7 +36,7 @@ internal object BottomNavScreenListBuilderFingerprint : Fingerprint(
     )
 )
 
-internal object BottomNavScreenResourceBuilderFingerprint : Fingerprint(
+internal object BottomNavScreenResourceBuilderLegacyFingerprint : Fingerprint(
     definingClass = "Lcom/reddit/launch/bottomnav/BottomNavScreen;",
     returnType = "L",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),

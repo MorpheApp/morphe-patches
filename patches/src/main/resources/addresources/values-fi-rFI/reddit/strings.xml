@@ -37,12 +37,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">Poistaa näyttökuvan ottamisen yhteydessä näkyvän pop-upin käytöstä</string>
   <string name="morphe_hide_ask_button_title">Piilota Kysy-painike</string>
   <string name="morphe_hide_ask_button_summary">Piilottaa Kysy-painike hakupalkissa</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">Piilota suositellut yhteisöt</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">Piilottaa suositellut yhteisöt -hyllyt alikommuniteeteista</string>
-  <string name="morphe_hide_trending_today_shelf_title">Piilota Tänään suosituimmat -hylly</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"Piilottaa Tänään suosituimmat -hyllyn hakuehdotuksista
-
-Rajaus: Visuaalisia erottimia ei välttämättä piiloteta"</string>
+  <string name="morphe_hide_communities_shelf_title">Piilota yhteisöjen hylly</string>
+  <string name="morphe_hide_communities_shelf_summary">Piilottaa ehdotetut tai samankaltaiset yhteisöjen hyllyt aliryhmissä</string>
+  <string name="morphe_hide_trending_shelves_title">Piilota suositut hyllyt</string>
+  <string name="morphe_hide_trending_shelves_summary">Piilottaa suositut hyllyt syötteestä ja ehdotuksista</string>
   <string name="morphe_remove_notification_dialog_title">Poista ilmoituspyyntödialogi</string>
   <string name="morphe_remove_notification_dialog_summary">Poistaa ilmoitusehdotusikkunan automaattisesti vieraillessa aliryhmässä</string>
   <string name="morphe_show_view_count_title">Näytä katselukerrat julkaisuissa</string>

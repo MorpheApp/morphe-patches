@@ -17,6 +17,8 @@ internal object FormatStreamModelToStringFingerprint : Fingerprint(
 
 internal object SelectAudioStreamFingerprint : Fingerprint(
     filters = listOf(
+        // YT 21.25 and older.
+        // 21.26+ usage appears to be partially replaced with flag 45673827L
         literal(45666189L)
     )
 )
