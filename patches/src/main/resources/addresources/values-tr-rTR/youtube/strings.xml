@@ -409,6 +409,8 @@ Bilgi: Canlı yayınlarda çalışmayabilir"</string>
   <string name="morphe_queue_restore_summary">Uygulama yeniden başlatıldığında sıra korunur</string>
   <string name="morphe_swap_save_and_queue_actions_title">Kaydet ve Sıra eylemlerini değiştir</string>
   <string name="morphe_swap_save_and_queue_actions_summary">Sıra seçenekleri için dokunun, daha sonra izle\'ye kaydetmek için dokunup basılı tutun</string>
+  <string name="morphe_queue_override_flyout_menu_title">Yem yayın açılır menüsü kuyruk düğmesini geçersiz kıl</string>
+  <string name="morphe_queue_override_flyout_menu_summary">Morphe kuyruğunu, YouTube kuyruğu yerine açar</string>
   <string name="morphe_queue_manager_check_failed_auth">Giriş yapılmadı</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">Oynatma listesi kimliği yok</string>
   <string name="morphe_queue_manager_check_failed_queue">Sıra boş</string>
@@ -921,7 +923,7 @@ ReturnYouTubeDislike.com'u açmak için buraya dokunun"</string>
   <string name="morphe_sb_api_url_reset">API URL\'si sıfırlandı</string>
   <string name="morphe_sb_api_url_invalid">API URL\'si geçersiz</string>
   <string name="morphe_sb_api_url_changed">API URL\'si değiştirildi</string>
-  <string name="morphe_sb_settings_ie">Ayarları içe/dışa aktar</string>
+  <string name="morphe_sb_settings_ie">Ayarları içe / dışa aktar</string>
   <string name="morphe_sb_settings_copy">Kopyala</string>
   <string name="morphe_sb_settings_ie_summary">Morphe\'e ve diğer SponsorBlock platformlarına aktarılabilecek SponsorBlock JSON yapılandırmanız</string>
   <string name="morphe_sb_settings_ie_summary_warning">"Morphe ve diğer SponsorBlock platformlarına aktarılabilecek SponsorBlock JSON yapılandırmanız
@@ -1235,7 +1237,7 @@ DeArrow hakkında daha fazla bilgi edinmek için buraya dokunun"</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">DeArrow API uç noktası</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_summary">DeArrow kapak resim önbelleğinin URL\'si</string>
   <string name="morphe_alt_thumbnail_stills_about_title">Hareketsiz video yakalamaları</string>
-  <string name="morphe_alt_thumbnail_stills_about_summary">Her videonun başından/ortasından/sonundan hareketsiz yakalamalar alınır. Bu resimler YouTube\'da yerleşiktir ve harici bir API kullanılmaz</string>
+  <string name="morphe_alt_thumbnail_stills_about_summary">Her videonun başından / ortasından / sonundan hareketsiz yakalamalar alınır. Bu resimler YouTube\'da yerleşiktir ve harici bir API kullanılmaz</string>
   <string name="morphe_alt_thumbnail_stills_fast_title">Hızlı hareketsiz yakalamaları kullan</string>
   <string name="morphe_alt_thumbnail_stills_fast_summary">Orta kalitede görseller kullanarak yükleme hızlarını artırır. Canlı yayınlar, yayınlanmamış ve eski videolar boş kapak resimler gösterebilir</string>
   <string name="morphe_alt_thumbnail_stills_time_title">Videodan kare çıkar</string>

@@ -11,6 +11,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.litho.addLithoFilter
 import app.morphe.patches.shared.misc.litho.lithoFilterPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.layout.flyout.addToQueuePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.recyclerviewtree.hook.addRecyclerViewTreeHook
@@ -34,7 +35,8 @@ internal fun openSystemShareSheetPatch(
         sharedExtensionPatch,
         settingsPatch,
         lithoFilterPatch,
-        recyclerViewTreeHookPatch
+        recyclerViewTreeHookPatch,
+        addToQueuePatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)

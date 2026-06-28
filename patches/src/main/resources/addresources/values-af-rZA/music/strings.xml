@@ -27,7 +27,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_1_ads_title">Advertensies</string>
   <string name="morphe_settings_music_screen_2_general_title">Algemeen</string>
   <string name="morphe_settings_music_screen_3_player_title">Speler</string>
-  <string name="morphe_settings_music_screen_4_misc_title">Diverse</string>
+  <string name="morphe_settings_music_screen_4_scrobbling_title">Scrobbling</string>
+  <string name="morphe_settings_music_screen_5_misc_title">Diverse</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Versteek \'Kry Musiek Premium\' beskrywing</string>
   <!-- ad.video.hideVideoAdsPatch -->
@@ -147,4 +148,77 @@ YouTube Music 8.x — vervaag loop slegs op 9.x en nuwer"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Versteek navigasieknoppie-etikette</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Versteek opgraderingsknoppie</string>
+  <!-- interaction.scrobbling.scrobblingPatch -->
+  <string name="morphe_music_scrobbling_summary">Konfigureer Last.fm en ListenBrainz integrasie</string>
+  <string name="morphe_music_scrobbling_summary_logged_out">Nie aangemeld nie. Tik om te konfigureer</string>
+  <string name="morphe_music_scrobbling_log_out">Uitlog</string>
+  <string name="morphe_music_scrobbling_logged_out_toast">Uitgevoer</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_enabled_title">Aktiveer scrobbling</string>
+  <string name="morphe_music_listenbrainz_now_playing_title">Dien \"Nou speel\" status in</string>
+  <string name="morphe_music_listenbrainz_min_song_duration_title">Minimum liedjieduur</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_min_song_duration_summary">Liedjies korter as hierdie sal nie gescrob nie</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_title">Scrobbel vertraging persentasie</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_summary">Aktiveer scrobbling nadat na hierdie persentasie van die liedjie geluister is</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_title">Scrobbel vertraging sekondes</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_summary">Aktiveer scrobbling nadat na hierdie aantal sekondes geluister is</string>
+  <string name="morphe_music_listenbrainz_token_title">ListenBrainz Rekening</string>
+  <string name="morphe_music_listenbrainz_token_summary_logged_in">Aangemeld. Tik om rekening te bestuur</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">Voer jou ListenBrainz Gebruikers Token in om scrobbling te aktiveer</string>
+  <string name="morphe_music_listenbrainz_token_dialog_hint">Token</string>
+  <string name="morphe_music_listenbrainz_token_dialog_get_token">Kry token</string>
+  <string name="morphe_music_listenbrainz_token_dialog_verify">Verifieer</string>
+  <string name="morphe_music_listenbrainz_token_status_empty">Voer asseblief \'n token in</string>
+  <string name="morphe_music_listenbrainz_token_status_validating">Valideer...</string>
+  <string name="morphe_music_listenbrainz_token_status_valid">Geldige token! Gebruiker: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">Ongeldige token: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid_unknown">onbekend</string>
+  <string name="morphe_music_listenbrainz_token_status_failed">Verifikasie misluk: %s</string>
+  <string name="morphe_music_listenbrainz_token_toast_cleared">Token uitgevee</string>
+  <string name="morphe_music_listenbrainz_token_toast_saved">Token gered</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Waarskuwing: Geredde token is ongeldig!</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_lastfm_enabled_title">Aktiveer scrobbling</string>
+  <string name="morphe_music_lastfm_now_playing_title">Dien \"Nou speel\" status in</string>
+  <string name="morphe_music_lastfm_love_on_like_title">Hou van geliefde liedjies</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">Hou outomaties van liedjies op Last.fm wanneer jy daarvan op YouTube Music hou (en verwyder liefde wanneer dit nie meer gehou of nie gehou word)</string>
+  <string name="morphe_music_lastfm_min_song_duration_title">Minimum liedjieduur</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_lastfm_min_song_duration_summary">Liedjies korter as hierdie sal nie gescrob nie</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_title">Scrobbel vertraging persentasie</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_summary">Aktiveer scrobbling nadat na hierdie persentasie van die liedjie geluister is</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_title">Scrobbel vertraging sekondes</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_summary">Aktiveer scrobbling nadat na hierdie aantal sekondes geluister is</string>
+  <string name="morphe_music_lastfm_token_title">Last.fm Rekening</string>
+  <string name="morphe_music_lastfm_token_summary_logged_in">Aangemeld as %s. Tik om rekening te bestuur</string>
+  <string name="morphe_music_lastfm_token_dialog_instruction">Voer jou Last.fm geloofsbriewe in om aan te meld</string>
+  <string name="morphe_music_lastfm_token_dialog_username_hint">Gebruikersnaam</string>
+  <string name="morphe_music_lastfm_token_dialog_password_hint">Wagwoord</string>
+  <string name="morphe_music_lastfm_token_dialog_login">Aanmeld</string>
+  <string name="morphe_music_lastfm_token_status_empty">Voer asseblief gebruikersnaam en wagwoord in</string>
+  <string name="morphe_music_lastfm_token_status_logging_in">Besig met aanmeld...</string>
+  <string name="morphe_music_lastfm_token_status_success">Succesvol aangemeld!</string>
+  <string name="morphe_music_lastfm_token_status_no_session">Kon nie sessie van Last.fm kry nie</string>
+  <string name="morphe_music_lastfm_token_status_failed">Aanmelding misluk: %s</string>
+  <string name="morphe_music_lastfm_token_toast_saved">Last.fm geloofsbriewe gered!</string>
+  <string name="morphe_settings_music_scrobbling_metadata_title">Metadata opruiming</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_title">Maak metadata skoon</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">Maak outomaties algemene rommel (soos \"Official Video\", \"Remaster\", \"Live\") skoon van titels, kunstenaars en albums voordat dit gescrob word</string>
+  <string name="morphe_music_scrobbling_custom_regex_title">Custom regex opruiming</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">"Voer 'n custom regulêre uitdrukking (regex) in om ekstra teks van liedtitels, kunstenaars of albums te pas en te verwyder.
+Voorbeeld: (?i)\\s*\\((clean|explicit)\\)"</string>
+  <string name="morphe_music_scrobbling_about_title">Oor scrobbling</string>
+  <string name="morphe_music_scrobbling_about_summary">"Scrobbling spoor outomaties die musiek op wat jy op YouTube Music speel en sinkroniseer dit met jou Last.fm of ListenBrainz profiel.
+
+Om te verseker dat scrobbling betroubaar op die agtergrond loop, verifieer asseblief dat YouTube Music se stelselbatteryverbruik op \"Onbeperk\" gestel is."</string>
 </resources>

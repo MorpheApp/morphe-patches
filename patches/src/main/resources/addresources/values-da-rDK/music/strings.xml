@@ -27,9 +27,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_1_ads_title">Annoncer</string>
   <string name="morphe_settings_music_screen_2_general_title">Generelt</string>
   <string name="morphe_settings_music_screen_3_player_title">Afspiller</string>
-  <string name="morphe_settings_music_screen_4_misc_title">Diverse</string>
+  <string name="morphe_settings_music_screen_4_scrobbling_title">Scrobbling</string>
+  <string name="morphe_settings_music_screen_5_misc_title">Diverse</string>
   <!-- ad.general.hideAdsPatch -->
-  <string name="morphe_music_hide_get_premium_label_title">Skjul \'Få Music Premium\'-etiket</string>
+  <string name="morphe_music_hide_get_premium_label_title">Skjul \"Få Music Premium\"-tekst</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Skjul videoannoncer</string>
   <!-- interaction.crossfade.crossfadePatch -->
@@ -144,7 +145,80 @@ YouTube Music 8.x – crossfade kører kun på 9.x og nyere"</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Skjul opgraderingsknap</string>
   <string name="morphe_music_hide_navigation_bar_title">Skjul navigationslinje</string>
-  <string name="morphe_music_hide_navigation_bar_labels_title">Skjul etiketter for navigationsknapper</string>
+  <string name="morphe_music_hide_navigation_bar_labels_title">Skjul navigationsknappers tekst</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Skjul opgraderingsknap</string>
+  <!-- interaction.scrobbling.scrobblingPatch -->
+  <string name="morphe_music_scrobbling_summary">Konfigurer Last.fm og ListenBrainz-integration</string>
+  <string name="morphe_music_scrobbling_summary_logged_out">Ikke logget ind. Tryk for at konfigurere</string>
+  <string name="morphe_music_scrobbling_log_out">Log ud</string>
+  <string name="morphe_music_scrobbling_logged_out_toast">Logget ud</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_enabled_title">Aktiver scrobbling</string>
+  <string name="morphe_music_listenbrainz_now_playing_title">Send \"Spiller nu\" status</string>
+  <string name="morphe_music_listenbrainz_min_song_duration_title">Minimum sangvarighed</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_min_song_duration_summary">Sange, der er kortere end dette, bliver ikke scrobblet</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_title">Scrobble-forsinkelse i procent</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_summary">Udløs scrobble efter at have lyttet til denne procentdel af sangen</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_title">Scrobble-forsinkelse i sekunder</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_summary">Udløs scrobble efter at have lyttet i dette antal sekunder</string>
+  <string name="morphe_music_listenbrainz_token_title">ListenBrainz-konto</string>
+  <string name="morphe_music_listenbrainz_token_summary_logged_in">Logget ind. Tryk for at administrere konto</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">Indtast dit ListenBrainz-brugertoken for at aktivere scrobbling</string>
+  <string name="morphe_music_listenbrainz_token_dialog_hint">Token</string>
+  <string name="morphe_music_listenbrainz_token_dialog_get_token">Hent token</string>
+  <string name="morphe_music_listenbrainz_token_dialog_verify">Bekræft</string>
+  <string name="morphe_music_listenbrainz_token_status_empty">Angiv venligst et token</string>
+  <string name="morphe_music_listenbrainz_token_status_validating">Validerer...</string>
+  <string name="morphe_music_listenbrainz_token_status_valid">Gyldigt token! Bruger: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">Ugyldigt token: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid_unknown">ukendt</string>
+  <string name="morphe_music_listenbrainz_token_status_failed">Bekræftelse mislykkedes: %s</string>
+  <string name="morphe_music_listenbrainz_token_toast_cleared">Token ryddet</string>
+  <string name="morphe_music_listenbrainz_token_toast_saved">Token gemt</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Advarsel: Gemt token er ugyldigt!</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_lastfm_enabled_title">Aktiver scrobbling</string>
+  <string name="morphe_music_lastfm_now_playing_title">Send \"Spiller nu\" status</string>
+  <string name="morphe_music_lastfm_love_on_like_title">Elsk liked sange</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">Automatisk elsk sange på Last.fm, når du kan lide dem på YouTube Music (og fjern elsk, når du ikke kan lide eller disliker dem)</string>
+  <string name="morphe_music_lastfm_min_song_duration_title">Minimum sangvarighed</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_lastfm_min_song_duration_summary">Sange, der er kortere end dette, bliver ikke scrobblet</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_title">Scrobble-forsinkelse i procent</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_summary">Udløs scrobble efter at have lyttet til denne procentdel af sangen</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_title">Scrobble-forsinkelse i sekunder</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_summary">Udløs scrobble efter at have lyttet i dette antal sekunder</string>
+  <string name="morphe_music_lastfm_token_title">Last.fm-konto</string>
+  <string name="morphe_music_lastfm_token_summary_logged_in">Logget ind som %s. Tryk for at administrere konto</string>
+  <string name="morphe_music_lastfm_token_dialog_instruction">Indtast dine Last.fm-oplysninger for at logge ind</string>
+  <string name="morphe_music_lastfm_token_dialog_username_hint">Brugernavn</string>
+  <string name="morphe_music_lastfm_token_dialog_password_hint">Adgangskode</string>
+  <string name="morphe_music_lastfm_token_dialog_login">Log ind</string>
+  <string name="morphe_music_lastfm_token_status_empty">Angiv venligst brugernavn og adgangskode</string>
+  <string name="morphe_music_lastfm_token_status_logging_in">Logger ind...</string>
+  <string name="morphe_music_lastfm_token_status_success">Logget ind korrekt!</string>
+  <string name="morphe_music_lastfm_token_status_no_session">Kunne ikke hente session fra Last.fm</string>
+  <string name="morphe_music_lastfm_token_status_failed">Login mislykkedes: %s</string>
+  <string name="morphe_music_lastfm_token_toast_saved">Last.fm-oplysninger gemt!</string>
+  <string name="morphe_settings_music_scrobbling_metadata_title">Metadataoprydning</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_title">Ryd op i metadata</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">Ryd automatisk almindeligt rod (såsom \"Officiel video\", \"Remaster\", \"Live\") fra titler, kunstnere og albummer, før der scrobbles</string>
+  <string name="morphe_music_scrobbling_custom_regex_title">Brugerdefineret regex-oprydning</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">"Indtast et brugerdefineret regulært udtryk (regex) for at matche og fjerne yderligere tekst fra sangtitler, kunstnere eller albummer.
+Eksempel: (?i)\\s*\\((clean|explicit)\\)"</string>
+  <string name="morphe_music_scrobbling_about_title">Om scrobbling</string>
+  <string name="morphe_music_scrobbling_about_summary">"Scrobbling sporer automatisk den musik, du afspiller på YouTube Music, og synkroniserer den med din Last.fm- eller ListenBrainz-profil.
+
+For at sikre, at scrobbling kører pålideligt i baggrunden, skal du verificere, at YouTube Musics systembatteriforbrug er indstillet til \"Ubegrænset\"."</string>
 </resources>

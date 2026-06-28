@@ -1,3 +1,28 @@
+## [1.33.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.33.0-dev.4...v1.33.0-dev.5) (2026-06-28)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Add to queue:** Use app activity for dialog to open dialog ([f3e2b2b](https://github.com/MorpheApp/morphe-patches/commit/f3e2b2b3f3350ff6bea937f9eb81da10aab14c34))
+
+## [1.33.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.33.0-dev.3...v1.33.0-dev.4) (2026-06-28)
+
+### ✨ New Features
+
+* **YouTube Music:** Add `Scrobbling` patch ([#1856](https://github.com/MorpheApp/morphe-patches/issues/1856)) ([f9ca802](https://github.com/MorpheApp/morphe-patches/commit/f9ca802aa756d7eb78ab86df5f302c3abfe2d15b))
+* **YouTube:** Add `Add to queue` patch ([#1837](https://github.com/MorpheApp/morphe-patches/issues/1837)) ([36a1e6e](https://github.com/MorpheApp/morphe-patches/commit/36a1e6e6d6c529aa94fc607970c2cf067b0f6f4c))
+
+## [1.33.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.33.0-dev.2...v1.33.0-dev.3) (2026-06-27)
+
+### 🐛 Bug Fixes
+
+* **Change package name:** Add incompatible apps, update all permissions and providers ([#1847](https://github.com/MorpheApp/morphe-patches/issues/1847)) ([ff5359a](https://github.com/MorpheApp/morphe-patches/commit/ff5359ac6d61b7b7274a7d7ed7c06198c1ed3b7f))
+* **Reddit - Hide Trending shelves:** Hide 'Trending on Reddit' shelf ([#1849](https://github.com/MorpheApp/morphe-patches/issues/1849)) ([5dfff49](https://github.com/MorpheApp/morphe-patches/commit/5dfff49c21f0aad61e997ad1ef31c65af58f85ab))
+
+### 🚀 Updated App Support
+
+* **Reddit:** Add experimental support for `2026.26.0` ([de01fad](https://github.com/MorpheApp/morphe-patches/commit/de01fadca647632390ecf4148986880d924434b5))
+* **YouTube:** Add experimental support for `21.26.360` ([197e9ce](https://github.com/MorpheApp/morphe-patches/commit/197e9ce272515002787a41c919ff7ea8ec698f30))
+
 ## [1.33.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.33.0-dev.1...v1.33.0-dev.2) (2026-06-26)
 
 ### 🐛 Bug Fixes

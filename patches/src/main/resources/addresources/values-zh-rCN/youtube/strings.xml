@@ -409,6 +409,8 @@ Second \"item\" text"</string>
   <string name="morphe_queue_restore_summary">重启应用后队列仍会保留</string>
   <string name="morphe_swap_save_and_queue_actions_title">交换保存和队列操作</string>
   <string name="morphe_swap_save_and_queue_actions_summary">点击查看队列选项，长按保存以供稍后观看</string>
+  <string name="morphe_queue_override_flyout_menu_title">覆盖信息流浮动队列按钮</string>
+  <string name="morphe_queue_override_flyout_menu_summary">打开 Morphe 队列，而不是 YouTube 队列</string>
   <string name="morphe_queue_manager_check_failed_auth">未登录</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">没有播放列表ID</string>
   <string name="morphe_queue_manager_check_failed_queue">队列为空</string>

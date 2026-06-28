@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-06-26T09:29:40",
-  "description": "## [1.33.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.33.0-dev.1...v1.33.0-dev.2) (2026-06-26)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Hide layout components:**  Match `RD` playlist URLs to improve \"Hide mix playlists\" filter ([#1835](https://github.com/MorpheApp/morphe-patches/issues/1835)) ([1172ce0](https://github.com/MorpheApp/morphe-patches/commit/1172ce044f14cc842eb6390d997d7793f8e2b4c3))\n\n### ✨ New Features\n\n* **YouTube:** Add `Voice over translation` patch ([#1685](https://github.com/MorpheApp/morphe-patches/issues/1685)) ([d811a32](https://github.com/MorpheApp/morphe-patches/commit/d811a3264878d01697eb75bd05185d9359603a4a))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.33.0-dev.2/patches-1.33.0-dev.2.mpp",
+  "created_at": "2026-06-28T12:54:27",
+  "description": "## [1.33.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.33.0-dev.4...v1.33.0-dev.5) (2026-06-28)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Add to queue:** Use app activity for dialog to open dialog ([f3e2b2b](https://github.com/MorpheApp/morphe-patches/commit/f3e2b2b3f3350ff6bea937f9eb81da10aab14c34))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.33.0-dev.5/patches-1.33.0-dev.5.mpp",
   "signature_download_url": "",
-  "version": "1.33.0-dev.2"
+  "version": "1.33.0-dev.5"
 }

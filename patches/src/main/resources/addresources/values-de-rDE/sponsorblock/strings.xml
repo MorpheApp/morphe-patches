@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
+  <string name="morphe_sb_enable_compact_skip_button">Kompakten Überspringen-Button verwenden</string>
+  <string name="morphe_sb_enable_compact_skip_button_summary">Reduziert die Breite der Überspringen-Schaltfläche, um Platz zu sparen</string>
+  <string name="morphe_sb_enable_auto_hide_skip_segment_button">Überspringen-Button automatisch ausblenden</string>
+  <string name="morphe_sb_enable_auto_hide_skip_segment_button_summary">Blendet die Überspringen-Schaltfläche nach einigen Sekunden aus, anstatt sie für das gesamte Segment sichtbar zu lassen</string>
+  <string name="morphe_sb_auto_hide_skip_button_duration">Anzeigedauer des Überspringen-Buttons</string>
+  <string name="morphe_sb_auto_hide_skip_button_duration_summary">Legen Sie fest, wie lange die Überspringen-Schaltfläche sichtbar bleibt</string>
+  <string name="morphe_sb_general_skiptoast">Toast zum Rückgängigmachen des Überspringens anzeigen</string>
+  <string name="morphe_sb_general_skiptoast_summary">Zeigt eine Benachrichtigung an, mit der Sie ein automatisches Überspringen rückgängig machen können</string>
+  <string name="morphe_sb_toast_on_skip_duration">Dauer der Überspring-Toastmeldung</string>
+  <string name="morphe_sb_toast_on_skip_duration_summary">Legen Sie fest, wie lange die Rückgängig-Meldung sichtbar bleibt</string>
+  <string name="morphe_sb_duration_1s">1 Sekunde</string>
+  <string name="morphe_sb_duration_2s">2 Sekunden</string>
+  <string name="morphe_sb_duration_3s">3 Sekunden</string>
+  <string name="morphe_sb_duration_4s">4 Sekunden</string>
+  <string name="morphe_sb_duration_5s">5 Sekunden</string>
+  <string name="morphe_sb_duration_6s">6 Sekunden</string>
+  <string name="morphe_sb_duration_7s">7 Sekunden</string>
+  <string name="morphe_sb_duration_8s">8 Sekunden</string>
+  <string name="morphe_sb_duration_9s">9 Sekunden</string>
+  <string name="morphe_sb_duration_10s">10 Sekunden</string>
+  <string name="morphe_sb_general_time_without">Videolänge ohne Segmente anzeigen</string>
+  <string name="morphe_sb_general_time_without_summary">Zieht alle Segmente in der gesamten Videolänge ab, die auf der Fortschrittsanzeige angezeigt werden</string>
+  <string name="morphe_sb_create_segment_category">Neue Segmente erstellen</string>
+  <string name="morphe_sb_enable_create_segment">Schaltfläche \"Neues Segment erstellen\" anzeigen</string>
+  <string name="morphe_sb_enable_create_segment_summary">Fügt dem Videoplayer eine Schaltfläche zum Einreichen neuer SponsorBlock-Segmente hinzu</string>
+  <string name="morphe_sb_general_adjusting">Zeitliche Anpassungsstufe</string>
+  <string name="morphe_sb_general_adjusting_summary">Suchbetrag der Zeitstellungs-Tasten (in Millisekunden)</string>
+  <string name="morphe_sb_general_adjusting_invalid">Wert muss eine positive Zahl sein</string>
+  <string name="morphe_sb_guidelines_preference_title">Richtlinien</string>
+  <string name="morphe_sb_guidelines_preference_summary">Richtlinien enthalten Regeln und Tipps zum Erstellen neuer Segmente</string>
+  <string name="morphe_sb_guidelines_popup_title">Den Richtlinien folgen</string>
+  <string name="morphe_sb_guidelines_popup_content">Lesen Sie die SponsorBlock Richtlinien bevor Sie neue Segmente erstellen</string>
+  <string name="morphe_sb_guidelines_popup_already_read">Bereits gelesen</string>
+  <string name="morphe_sb_guidelines_popup_open">Zeig sie mir</string>
+  <string name="morphe_sb_general">Allgemein</string>
+  <string name="morphe_sb_toast_on_connection_error">Verbindungsfehler-Benachrichtigungen anzeigen</string>
+  <string name="morphe_sb_toast_on_connection_error_summary">Zeigt eine Benachrichtigung an, wenn der SponsorBlock-Server nicht verfügbar ist</string>
+  <string name="morphe_sb_general_skipcount">Aktiviere Sprungzähler-Tracking</string>
+  <string name="morphe_sb_general_skipcount_summary">Sendet Übersprungszahlen an die SponsorBlock-Bestenliste, um die eingesparte Zeit zu verfolgen</string>
+  <string name="morphe_sb_general_min_duration">Mindestdauer der Segmente</string>
+  <string name="morphe_sb_general_min_duration_summary">Segmente kürzer als dieser Wert (in Sekunden) werden nicht angezeigt oder übersprungen</string>
+  <string name="morphe_sb_general_min_duration_invalid">Ungültige Zeitdauer</string>
+  <string name="morphe_sb_general_uuid">Ihre private Benutzer-ID</string>
+  <string name="morphe_sb_general_uuid_summary">Das sollte vertraulich behandelt werden. Das ist wie ein Passwort und sollte mit niemandem geteilt werden. Wenn jemand das hat, kann er sich für dich ausgeben</string>
+  <string name="morphe_sb_general_uuid_invalid">Private Benutzer-ID muss mindestens 30 Zeichen lang sein</string>
+  <string name="morphe_sb_general_api_url">API URL ändern</string>
+  <string name="morphe_sb_general_api_url_summary">Die Adresse des SponsorBlocks für Anrufe an den Server</string>
+  <string name="morphe_sb_channel_whitelist">Kanal-Whitelist</string>
+  <string name="morphe_sb_channel_whitelist_summary">SponsorBlock ist für whitelisted Kanäle deaktiviert.</string>
+  <string name="morphe_sb_channel_whitelist_current_channel">Aktueller Kanal:</string>
+  <string name="morphe_sb_channel_whitelist_add">Zur Whitelist hinzufügen</string>
+  <string name="morphe_sb_channel_whitelist_remove">Entfernen</string>
+  <string name="morphe_sb_channel_whitelist_channels_header">Whitelist-Kanäle</string>
+  <string name="morphe_sb_channel_whitelist_empty">Keine Kanäle auf der Whitelist</string>
+  <string name="morphe_sb_channel_whitelist_channel_added">Kanal zur Whitelist hinzugefügt</string>
+  <string name="morphe_sb_channel_whitelist_channel_removed">Kanal von der Whitelist entfernt</string>
+  <string name="morphe_sb_toast_on_whitelisted_channel">Benachrichtigen, wenn ein Kanal auf der Whitelist ist</string>
+  <string name="morphe_sb_toast_on_whitelisted_channel_summary">Zeigt eine Benachrichtigung an, wenn SponsorBlock für einen Kanal auf der Whitelist deaktiviert ist.</string>
+  <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock für diesen Kanal deaktiviert</string>
+  <string name="morphe_sb_api_url_reset">API-URL zurückgesetzt</string>
+  <string name="morphe_sb_api_url_invalid">API URL ist ungültig</string>
+  <string name="morphe_sb_api_url_changed">API-URL geändert</string>
+  <string name="morphe_sb_settings_ie">Einstellungen importieren/exportieren</string>
+  <string name="morphe_sb_settings_copy">Kopieren</string>
+  <string name="morphe_sb_settings_ie_summary">Ihre SponsorBlock JSON-Konfiguration, die auf Morphe und andere SponsorBlock-Plattformen importiert oder exportiert werden kann</string>
+  <string name="morphe_sb_settings_ie_summary_warning">"Ihre SponsorBlock JSON Konfiguration, die auf Morphe und andere SponsorBlock-Plattformen importiert / exportiert werden kann
+
+Dies beinhaltet Ihre private Benutzer-ID. Achten Sie darauf, diese mit Bedacht weiterzugeben"</string>
+  <string name="morphe_sb_settings_import_successful">Einstellungen erfolgreich importiert</string>
+  <string name="morphe_sb_settings_import_failed">Import fehlgeschlagen: %s</string>
+  <string name="morphe_sb_settings_export_failed">Export fehlgeschlagen: %s</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"Ihre Einstellungen enthalten eine private SponsorBlock-Benutzer-ID.
+
+Ihre Benutzer-ID ist wie ein Passwort und sollte niemals weitergegeben werden."</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Nicht wieder anzeigen</string>
+  <string name="morphe_sb_diff_segments">Segmentverhalten ändern</string>
+  <string name="morphe_sb_segments_sponsor">Sponsor</string>
+  <string name="morphe_sb_segments_sponsor_summary">Bezahlte Werbung, bezahlte Empfehlungen und direkte Werbung. Nicht für Eigenwerbung oder kostenlose Shoutouts an Zwecke/Ersteller/Webseiten/Produkte, die sie mögen</string>
+  <string name="morphe_sb_segments_selfpromo">Unbezahlte oder Eigenwerbung</string>
+  <string name="morphe_sb_segments_selfpromo_summary">Ähnlich wie Sponsor, jedoch für unbezahlte oder Eigenwerbung. Enthält Abschnitte über Merchandise, Spenden oder Informationen darüber, mit wem sie zusammengearbeitet haben</string>
+  <string name="morphe_sb_segments_interaction">Interaktionserinnerung (Abonnieren)</string>
+  <string name="morphe_sb_segments_interaction_summary">Eine kurze Erinnerung, sie in der Mitte des Inhalts zu liken, abonnieren oder folgen. Wenn er lang ist oder es um etwas Bestimmtes geht, sollte es stattdessen als Eigenwerbung gekennzeichnet sein</string>
+  <string name="morphe_sb_segments_highlight">Hervorheben</string>
+  <string name="morphe_sb_segments_highlight_summary">Der Teil des Videos, nach dem die meisten Menschen suchen</string>
+  <string name="morphe_sb_segments_intro">Unterbrechung/Introanimation</string>
+  <string name="morphe_sb_segments_intro_summary">Ein Intervall ohne aktuellen Inhalt. Kann eine Pause, ein statischer Frame oder eine wiederholende Animation sein. Enthält keine Übergänge mit Informationen</string>
+  <string name="morphe_sb_segments_outro">Endkarte / Credits</string>
+  <string name="morphe_sb_segments_outro_summary">Credits oder wenn die YouTube-Endkarten erscheinen. Nicht für Fazite mit Informationen</string>
+  <string name="morphe_sb_segments_hook">Hook / Begrüßungen</string>
+  <string name="morphe_sb_segments_hook_summary">Erzählte Trailer für das kommende Video, Begrüßungen und Verabschiedungen. Enthält keine Segmente, die zusätzlichen Inhalt hinzufügen</string>
+  <string name="morphe_sb_segments_preview">Vorschau / Rückblick</string>
+  <string name="morphe_sb_segments_preview_summary">Sammlung von Clips, die zeigen, was im Video oder in anderen Videos einer Serie passiert ist, wo alle Informationen andernorts wiederholt werden</string>
+  <string name="morphe_sb_segments_filler">Abschweifung / Witze</string>
+  <string name="morphe_sb_segments_filler_summary">Tangentiale Szenen oder Witze, die nicht erforderlich sind, um den Hauptinhalt des Videos zu verstehen. Enthält keine Segmente, die Kontext oder Hintergrunddetails liefern</string>
+  <string name="morphe_sb_segments_nomusic">Musikvideos: Nicht-Musik-Passagen</string>
+  <string name="morphe_sb_segments_nomusic_summary">Nur für Musikvideos. Abschnitte von Musikvideos ohne Musik, die noch nicht von einer anderen Kategorie abgedeckt werden</string>
+  <string name="morphe_sb_skip_button_compact">Überspringen</string>
+  <string name="morphe_sb_skip_button_compact_highlight">Hervorheben</string>
+  <string name="morphe_sb_skip_button_sponsor">Sponsor überspringen</string>
+  <string name="morphe_sb_skip_button_selfpromo">Promo überspringen</string>
+  <string name="morphe_sb_skip_button_interaction">Interaktion überspringen</string>
+  <string name="morphe_sb_skip_button_highlight">Zum Hervorheben springen</string>
+  <string name="morphe_sb_skip_button_intro_beginning">Einleitung überspringen</string>
+  <string name="morphe_sb_skip_button_intro_middle">Unterbrechung überspringen</string>
+  <string name="morphe_sb_skip_button_intro_end">Unterbrechung überspringen</string>
+  <string name="morphe_sb_skip_button_outro">Überspringen</string>
+  <string name="morphe_sb_skip_button_hook">Hook überspringen</string>
+  <string name="morphe_sb_skip_button_preview_beginning">Vorschau überspringen</string>
+  <string name="morphe_sb_skip_button_preview_middle">Vorschau überspringen</string>
+  <string name="morphe_sb_skip_button_preview_end">Rückfall überspringen</string>
+  <string name="morphe_sb_skip_button_filler">Abschweifung überspringen</string>
+  <string name="morphe_sb_skip_button_nomusic">Nicht-Musik überspringen</string>
+  <string name="morphe_sb_skip_button_unsubmitted">Segment überspringen</string>
+  <string name="morphe_sb_skipped_sponsor">Sponsor übersprungen</string>
+  <string name="morphe_sb_skipped_selfpromo">Eigenwerbung übersprungen</string>
+  <string name="morphe_sb_skipped_interaction">Nervige Erinnerung übersprungen</string>
+  <string name="morphe_sb_skipped_highlight">Zum Hervorheben übersprungen</string>
+  <string name="morphe_sb_skipped_intro_beginning">Intro übersprungen</string>
+  <string name="morphe_sb_skipped_intro_middle">Übersprungene Unterbrechung</string>
+  <string name="morphe_sb_skipped_intro_end">Übersprungene Unterbrechung</string>
+  <string name="morphe_sb_skipped_outro">Outro übersprungen</string>
+  <string name="morphe_sb_skipped_hook">Hook übersprungen</string>
+  <string name="morphe_sb_skipped_preview_beginning">Vorschau übersprungen</string>
+  <string name="morphe_sb_skipped_preview_middle">Vorschau übersprungen</string>
+  <string name="morphe_sb_skipped_preview_end">Übersprungene Rücklage</string>
+  <string name="morphe_sb_skipped_filler">Abschweifung übersprungen</string>
+  <string name="morphe_sb_skipped_nomusic">Nicht-Musik-Sektion übersprungen</string>
+  <string name="morphe_sb_skipped_unsubmitted">Nicht übermitteltes Segment übersprungen</string>
+  <string name="morphe_sb_skipped_multiple_segments">Mehrere Segmente übersprungen</string>
+  <string name="morphe_sb_skip_automatically">Automatisch überspringen</string>
+  <string name="morphe_sb_skip_automatically_once">Automatisch einmal überspringen</string>
+  <string name="morphe_sb_skip_showbutton">Einen Skip-Button anzeigen</string>
+  <string name="morphe_sb_skip_seekbaronly">In Suchleiste anzeigen</string>
+  <string name="morphe_sb_skip_ignore">Deaktivieren</string>
+  <string name="morphe_sb_submit_failed_invalid">Segment kann nicht gesendet werden: %s</string>
+  <string name="morphe_sb_submit_failed_timeout">SponsorBlock ist vorübergehend nicht verfügbar</string>
+  <string name="morphe_sb_submit_failed_unknown_error">Segment kann nicht gesendet werden (Status: %1$d %2$s)</string>
+  <string name="morphe_sb_submit_failed_rate_limit">Segment kann nicht übermittelt werden. Rate Limited (zu viele vom selben Benutzer oder der gleichen IP)</string>
+  <string name="morphe_sb_submit_failed_forbidden">Das Segment kann nicht gesendet werden: %s</string>
+  <string name="morphe_sb_submit_failed_duplicate">"Kann das Segment nicht übermitteln.
+Existiert bereits"</string>
+  <string name="morphe_sb_submit_succeeded">Segment erfolgreich übertragen</string>
+  <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock vorübergehend nicht verfügbar (API Timeout)</string>
+  <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock vorübergehend nicht verfügbar (Status %d)</string>
+  <string name="morphe_sb_sponsorblock_connection_failure_generic">SponsorBlock vorübergehend nicht verfügbar</string>
+  <string name="morphe_sb_vote_failed_timeout">Abstimmung für Segment nicht möglich (API Timeout)</string>
+  <string name="morphe_sb_vote_failed_unknown_error">Segment kann nicht gewählt werden (Status: %1$d %2$s)</string>
+  <string name="morphe_sb_vote_failed_forbidden">Kann nicht für Segment abstimmen: %s</string>
+  <string name="morphe_sb_vote_upvote">Gut bewerten</string>
+  <string name="morphe_sb_vote_downvote">Schlecht bewerten</string>
+  <string name="morphe_sb_vote_category">Kategorie ändern</string>
+  <string name="morphe_sb_vote_no_segments">Es gibt keine Segmente zur Abstimmung</string>
+  <!-- A segment start and end time, such as "02:10 to 03:40". -->
+  <string name="morphe_sb_vote_segment_time_to_from">%1$s bis %2$s</string>
+  <string name="morphe_sb_new_segment_choose_category">Wähle die Segmentkategorie</string>
+  <string name="morphe_sb_new_segment_disabled_category">Kategorie ist in den Einstellungen deaktiviert. Aktivieren zum Senden.</string>
+  <string name="morphe_sb_new_segment_title">Neues SponsorBlock Segment</string>
+  <string name="morphe_sb_new_segment_mark_time_as_question">%s als Start oder Ende eines neuen Segments festlegen?</string>
+  <string name="morphe_sb_new_segment_mark_start">Start</string>
+  <string name="morphe_sb_new_segment_mark_end">Ende</string>
+  <string name="morphe_sb_new_segment_now">Jetzt</string>
+  <string name="morphe_sb_new_segment_time_start">Das Segiment beginnt ab</string>
+  <string name="morphe_sb_new_segment_time_end">Das Segiment endet bei</string>
+  <string name="morphe_sb_new_segment_confirm_title">Sind diese Zeiten richtig?</string>
+  <string name="morphe_sb_new_segment_confirm_content">"Das Segment ist von
+
+%1$s
+nach
+%2$s
+
+(%3$s)
+
+Bereit zum Einreichen?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Absenden</string>
+  <string name="morphe_sb_new_segment_start_is_before_end">Start muss vor dem Ende sein</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Markieren Sie zuerst einen Zeitpunkt auf der Zeitleiste</string>
+  <string name="morphe_sb_new_segment_preview_segment_first">Vorschau des Segments und sorgt dafür, dass es reibungslos überspringt</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_title">Timing des Segments manuell bearbeiten</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_content">Möchtest du den Zeitpunkt für den Anfang oder das Ende des Segments bearbeiten?</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Ungültige Zeit angegeben</string>
+  <string name="morphe_sb_new_segment_highlight_title">Hervorhebung übermitteln</string>
+  <string name="morphe_sb_new_segment_highlight_content">"Ist die Markierung korrekt?
+
+%s
+
+Wenn Sie keine Markierung senden, tippen Sie auf Abbrechen und markieren Sie die zweite Position"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Markierung senden</string>
+  <string name="morphe_sb_stats_title">Statistiken</string>
+  <!-- Shown in the settings preferences, and translations can be any text length. -->
+  <string name="morphe_sb_stats_connection_failure">Statistiken sind vorübergehend nicht verfügbar (API ist ausgefallen)</string>
+  <string name="morphe_sb_stats_loading">Lädt...</string>
+  <string name="morphe_sb_stats_sb_disabled">SponsorBlock ist deaktiviert</string>
+  <string name="morphe_sb_stats_username">Ihr Benutzername: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_username_change">Tippe hier, um deinen Benutzernamen zu ändern</string>
+  <string name="morphe_sb_stats_username_change_unknown_error">Benutzername konnte nicht geändert werden; Status: %1$d %2$s</string>
+  <string name="morphe_sb_stats_username_changed">Benutzername wurde geändert</string>
+  <string name="morphe_sb_stats_reputation">Dein Ruf ist &lt;b&gt;%.2f&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_submissions">Du hast &lt;b&gt;%s&lt;/b&gt; Segmente erstellt</string>
+  <string name="morphe_sb_stats_submissions_summary">Tippen Sie hier, um Ihre Segmente anzuzeigen</string>
+  <string name="morphe_sb_stats_saved_zero">SponsorBlock Rangliste</string>
+  <string name="morphe_sb_stats_saved">Du hast den Leuten &lt;b&gt;%s&lt;/b&gt; Segmente erspart</string>
+  <string name="morphe_sb_stats_saved_summary_zero">Hier tippen, um die globalen Statistiken und Top-Beitragszahler zu sehen</string>
+  <string name="morphe_sb_stats_saved_summary">Das ist &lt;b&gt;%s&lt;/b&gt; ihres Lebens.&lt;br&gt;Tippe hier, um die Rangliste zu sehen</string>
+  <string name="morphe_sb_stats_self_saved">Du hast &lt;b&gt;%s&lt;/b&gt; Segmente übersprungen</string>
+  <string name="morphe_sb_stats_self_saved_summary">Das ist &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_self_saved_reset_title">Zähler übersprungener Segmente zurücksetzen?</string>
+  <string name="morphe_sb_stats_saved_hour_format">%1$s Stunden %2$s Minuten</string>
+  <string name="morphe_sb_stats_saved_minute_format">%1$s Minuten %2$s Sekunden</string>
+  <string name="morphe_sb_stats_saved_second_format">%s Sekunden</string>
+  <string name="morphe_sb_color_opacity_label">Deckkraft:</string>
+  <string name="morphe_sb_color_dot_label">Farbe:</string>
+  <string name="morphe_sb_about_title">Über</string>
+  <string name="morphe_sb_about_api_summary">"Daten werden von der SponsorBlock API bereitgestellt.
+
+Tippen Sie hier, um Sponsor.ajay.app zu öffnen und Downloads für andere Plattformen anzuzeigen"</string>
+</resources>

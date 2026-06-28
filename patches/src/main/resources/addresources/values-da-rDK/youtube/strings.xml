@@ -36,11 +36,11 @@ Second \"item\" text"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_protobuffer_title">Fejlfindingslog protokolbuffer</string>
   <string name="morphe_debug_protobuffer_summary">Tilføjer yderligere logningsinformation for udviklere til at identificere app-komponenter</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Aktivering af denne indstilling logger yderligere layoutdata, inklusive tekst på skærmen for nogle UI-komponenter.
+  <string name="morphe_debug_protobuffer_user_dialog_message">"Aktivering af denne indstilling logger yderligere layoutdata, bl.a. skærmtekst for visse UI-komponenter.
 
-Dette kan hjælpe med at identificere komponenter, når der oprettes brugerdefinerede filtre.
+Det kan hjælpe med at finde komponenter til egne filtre.
 
-Aktivering af dette vil dog også logge nogle brugerdata, såsom din IP-adresse."</string>
+Det logger dog også brugerdata som din IP-adresse."</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">Deaktiver opdateringer af layout</string>
   <string name="morphe_disable_layout_updates_summary">Forhindrer serveren i at opdatere applayoutet</string>
@@ -67,7 +67,7 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_artist_cards_title">Skjul kunstnerkort</string>
   <string name="morphe_hide_artist_cards_summary">Skjuler kunstnerkortet øverst i søgeresultaterne</string>
   <string name="morphe_hide_auto_dubbed_label_title">Skjul labelen \'Automatisk dubbing\'</string>
-  <string name="morphe_hide_community_posts_title">Skjul fællesskabs indlæg</string>
+  <string name="morphe_hide_community_posts_title">Skjul fællesskabsopslag</string>
   <string name="morphe_hide_compact_banner_title">Skjul kompakte bannere</string>
   <string name="morphe_hide_compact_banner_summary">Skjuler kompakte bannere og afstand mellem nogle komponenter</string>
   <string name="morphe_hide_expandable_card_title">Udvidelige kort under videoer</string>
@@ -87,7 +87,7 @@ Nogle server-side layouts kan ikke vende tilbage.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Skjul knappen \'Seneste videoer\'</string>
   <string name="morphe_hide_latest_videos_button_summary">Skjuler det blå \'Seneste videoer\'-banner, der vises øverst i startfeedet</string>
-  <string name="morphe_hide_mix_playlists_title">Skjul miks afspilningslister</string>
+  <string name="morphe_hide_mix_playlists_title">Skjul mix-playlister</string>
   <string name="morphe_hide_movies_section_title">Skjul filmsektion</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
@@ -106,7 +106,7 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_surveys_summary">Skjuler undersøgelser og forslag vedrørende nøjagtigheden af feedanbefalinger</string>
   <string name="morphe_hide_ticket_shelf_title">Skjul billetreolen</string>
   <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
-  <string name="morphe_hide_video_recommendation_labels_title">Skjul etiketter for videoanbefalinger</string>
+  <string name="morphe_hide_video_recommendation_labels_title">Skjul videoforslagstekster</string>
   <string name="morphe_hide_video_recommendation_labels_summary">Skjuler \'Folk så også\' og \'Du kan også synes om\'-etiketter i søgeresultater</string>
   <string name="morphe_hide_web_search_results_title">Skjul søgeresultater</string>
   <string name="morphe_hide_web_search_results_summary">Skjuler afsnittet \'Resultater fra internettet\' fra søgeresultaterne</string>
@@ -168,7 +168,7 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Skjul i feeds</string>
   <string name="morphe_hide_filter_bar_feed_in_related_videos_title">Skjul i relaterede videoer</string>
   <string name="morphe_hide_filter_bar_feed_in_search_title">Skjul i søgeresultater</string>
-  <string name="morphe_hide_filter_bar_feed_in_history_title">Skjul i seerhistorik</string>
+  <string name="morphe_hide_filter_bar_feed_in_history_title">Skjul i afspilningshistorik</string>
   <string name="morphe_channel_screen_title">Kanalside</string>
   <string name="morphe_channel_screen_summary">Vælg hvilke komponenter der vises på kanalsiden</string>
   <string name="morphe_hide_channel_tab_title">Aktiver kanalfanefilter</string>
@@ -203,8 +203,8 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_comments_section_title">Skjul kommentarsektion</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Skjul kommentarer i Home-feed</string>
   <string name="morphe_hide_comments_community_guidelines_title">Skjul fællesskabsretningslinjer</string>
-  <string name="morphe_hide_comments_create_a_short_button_title">Skjul knappen \"Opret en Short\"</string>
-  <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Skjul Emoji- og Tidsstempelknapper</string>
+  <string name="morphe_hide_comments_create_a_short_button_title">Skjul knappen \'Opret en Short\'</string>
+  <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Skjul emoji- og tidsstempelknapper</string>
   <string name="morphe_hide_comments_info_button_title">Skjul Info-knap</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Skjul live chat donatorbjælken</string>
   <string name="morphe_hide_comments_preview_comment_title">Skjul forhåndsvisning kommentar</string>
@@ -263,7 +263,7 @@ Begrænsninger:
   <string name="morphe_hide_creator_store_shelf_title">Skjul butikshylde for skabere</string>
   <string name="morphe_hide_end_screen_store_banner_title">Skjul banner fra butikken på slutskærmen</string>
   <string name="morphe_hide_general_ads_title">Skjul generelle annoncer</string>
-  <string name="morphe_hide_merchandise_banners_title">Skjul merchandise bannere</string>
+  <string name="morphe_hide_merchandise_banners_title">Skjul merchandise-bannere</string>
   <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_paid_promotion_label_title">Skjul \'Indeholder betalt promovering\' label</string>
   <string name="morphe_hide_player_popup_ads_title">Skjul afspiller pop-up reklamer</string>
@@ -297,7 +297,7 @@ Begrænsninger:
   <string name="morphe_external_downloader_action_button_title">Overskriv knappen Download</string>
   <string name="morphe_external_downloader_action_button_summary">Erstatter YouTubes indbyggede downloadfunktion med din eksterne downloader</string>
   <string name="morphe_external_downloader_name_title">Downloader pakkenavn</string>
-  <string name="morphe_external_downloader_name_summary">Pakkenavn på din installerede eksterne download-app</string>
+  <string name="morphe_external_downloader_name_summary">Pakkenavn på din installerede eksterne downloader-app</string>
   <string name="morphe_external_downloader_other_item_hint">Indtast pakkenavnet</string>
   <string name="morphe_external_downloader_other_item">Andet</string>
   <string name="morphe_external_downloader_not_found_title">Appen er ikke installeret</string>
@@ -409,6 +409,8 @@ Info: Virker muligvis ikke på live streams"</string>
   <string name="morphe_queue_restore_summary">Køen bevares efter genstart af appen</string>
   <string name="morphe_swap_save_and_queue_actions_title">Byt rundt på Gem og Kø-handlinger</string>
   <string name="morphe_swap_save_and_queue_actions_summary">Tryk for køindstillinger, tryk og hold for at gemme til senere</string>
+  <string name="morphe_queue_override_flyout_menu_title">Erstat feed flyout kø-knap</string>
+  <string name="morphe_queue_override_flyout_menu_summary">Åbner Morphe-køen i stedet for YouTube-køen</string>
   <string name="morphe_queue_manager_check_failed_auth">Ikke logget ind</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">Intet afspilningslist-id</string>
   <string name="morphe_queue_manager_check_failed_queue">Køen er tom</string>
@@ -613,7 +615,7 @@ Bemærk: Hvis 'Spoof video streams' ikke er aktiveret, kan aktivering af denne f
   <string name="morphe_show_settings_button_type_summary">Åbner Morphe-indstillinger, når den er aktiveret, eller YouTube-indstillinger, når den er deaktiveret</string>
   <string name="morphe_swap_create_with_notifications_button_title">Byt Opret-knap med Notifikationsknap</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Hvis ændringen af denne indstilling ikke virker, prøv at skifte til Incognito-tilstand</string>
-  <string name="morphe_hide_navigation_button_labels_title">Skjul navigationsknappens etiketter</string>
+  <string name="morphe_hide_navigation_button_labels_title">Skjul navigationsknappers tekst</string>
   <string name="morphe_hide_navigation_bar_title">Skjul navigationsbjælke</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"Dette skjuler navigationslinjen helt, inklusiv fanen 'Dig'.
 

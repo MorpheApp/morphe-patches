@@ -408,6 +408,8 @@ Informação: pode não funcionar em transmissões ao vivo"</string>
   <string name="morphe_queue_restore_summary">A fila é mantida após reiniciar o aplicativo</string>
   <string name="morphe_swap_save_and_queue_actions_title">Trocar ações de Salvar e Fila</string>
   <string name="morphe_swap_save_and_queue_actions_summary">Toque para opções de fila, toque e segure para salvar para assistir mais tarde</string>
+  <string name="morphe_queue_override_flyout_menu_title">Substituir fila de reprodução flutuante</string>
+  <string name="morphe_queue_override_flyout_menu_summary">Abre a fila do Morphe em vez da fila do YouTube</string>
   <string name="morphe_queue_manager_check_failed_auth">Não conectado(a)</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">Nenhum ID de playlist</string>
   <string name="morphe_queue_manager_check_failed_queue">Fila vazia</string>
@@ -821,7 +823,7 @@ Configurações → Reprodução (ou Reprodução automática) → Reproduzir o 
   <string name="morphe_ryd_dislike_percentage_title">Mostrar não gostei como porcentagem</string>
   <string name="morphe_ryd_dislike_percentage_summary">Exibe não gostei como porcentagem, substituindo o número convencional</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">Reduz a largura do botão Curtir para economizar espaço</string>
+  <string name="morphe_ryd_compact_layout_title">Usar botão Curtir compacto</string>
   <string name="morphe_ryd_compact_layout_summary">Reduz a largura do botão Curtir para economizar espaço</string>
   <string name="morphe_ryd_estimated_like_title">Mostrar estimativa de \"gostei\"</string>
   <string name="morphe_ryd_estimated_like_summary">Exibe uma contagem de likes estimada em vídeos onde o criador desativou likes</string>

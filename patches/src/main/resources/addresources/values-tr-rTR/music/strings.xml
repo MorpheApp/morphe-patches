@@ -27,7 +27,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_1_ads_title">Reklamlar</string>
   <string name="morphe_settings_music_screen_2_general_title">Genel</string>
   <string name="morphe_settings_music_screen_3_player_title">Oynatıcı</string>
-  <string name="morphe_settings_music_screen_4_misc_title">Çeşitli</string>
+  <string name="morphe_settings_music_screen_4_scrobbling_title">Müzik çalma listesine ekleme</string>
+  <string name="morphe_settings_music_screen_5_misc_title">Çeşitli</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">\'Music Premium üyesi olun\' etiketini gizle</string>
   <!-- ad.video.hideVideoAdsPatch -->
@@ -147,4 +148,77 @@ YouTube Music 8.x — geçiş yalnızca 9.x ve sonraki sürümlerde çalışır"
   <string name="morphe_music_hide_navigation_bar_labels_title">Gezinme düğmeleri etiketlerini gizle</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Yükseltme düğmesini gizle</string>
+  <!-- interaction.scrobbling.scrobblingPatch -->
+  <string name="morphe_music_scrobbling_summary">Last.fm ve ListenBrainz entegrasyonunu yapılandırın</string>
+  <string name="morphe_music_scrobbling_summary_logged_out">Oturum açılmadı. Yapılandırmak için dokunun</string>
+  <string name="morphe_music_scrobbling_log_out">Oturumu Kapat</string>
+  <string name="morphe_music_scrobbling_logged_out_toast">Oturum kapatıldı</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_enabled_title">scrobbling\'i etkinleştir</string>
+  <string name="morphe_music_listenbrainz_now_playing_title">\"Şu anda çalınan\" durumunu gönder</string>
+  <string name="morphe_music_listenbrainz_min_song_duration_title">Minimum şarkı süresi</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_min_song_duration_summary">Bu süreden kısa şarkılar scrobble edilmeyecektir</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_title">Scrobble gecikmesi yüzdesi</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_summary">Şarkının bu yüzdesini dinledikten sonra scrobble\'ı tetikle</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_title">Scrobble gecikmesi saniye</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_summary">Şu kadar saniye dinledikten sonra scrobble\'ı tetikle</string>
+  <string name="morphe_music_listenbrainz_token_title">ListenBrainz Hesabı</string>
+  <string name="morphe_music_listenbrainz_token_summary_logged_in">Oturum açıldı. Hesabı yönetmek için dokunun</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">scrobbling\'i etkinleştirmek için ListenBrainz Kullanıcı belirtecinizi girin</string>
+  <string name="morphe_music_listenbrainz_token_dialog_hint">Belirteç</string>
+  <string name="morphe_music_listenbrainz_token_dialog_get_token">Belirteç al</string>
+  <string name="morphe_music_listenbrainz_token_dialog_verify">Doğrula</string>
+  <string name="morphe_music_listenbrainz_token_status_empty">Lütfen bir belirteç girin</string>
+  <string name="morphe_music_listenbrainz_token_status_validating">Doğrulama yapılıyor...</string>
+  <string name="morphe_music_listenbrainz_token_status_valid">Geçerli belirteç! Kullanıcı: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">Geçersiz belirteç: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid_unknown">bilinmiyor</string>
+  <string name="morphe_music_listenbrainz_token_status_failed">Doğrulama başarısız oldu: %s</string>
+  <string name="morphe_music_listenbrainz_token_toast_cleared">Belirteç temizlendi</string>
+  <string name="morphe_music_listenbrainz_token_toast_saved">Belirteç kaydedildi</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Uyarı: Kaydedilen belirteç geçersiz!</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_lastfm_enabled_title">scrobbling\'i etkinleştir</string>
+  <string name="morphe_music_lastfm_now_playing_title">\"Şu anda çalınan\" durumunu gönder</string>
+  <string name="morphe_music_lastfm_love_on_like_title">Beğenilen parçaları sev</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">Last.fm\'de YouTube Music\'te beğendiğiniz parçaları otomatik olarak sevin (beğenmezseniz veya beğenmezseniz sevmeyi kaldırın)</string>
+  <string name="morphe_music_lastfm_min_song_duration_title">Minimum şarkı süresi</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_lastfm_min_song_duration_summary">Bu süreden kısa şarkılar scrobble edilmeyecektir</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_title">Scrobble gecikmesi yüzdesi</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_summary">Şarkının bu yüzdesini dinledikten sonra scrobble\'ı tetikle</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_title">Scrobble gecikmesi saniye</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_summary">Şu kadar saniye dinledikten sonra scrobble\'ı tetikle</string>
+  <string name="morphe_music_lastfm_token_title">Last.fm Hesabı</string>
+  <string name="morphe_music_lastfm_token_summary_logged_in">%s olarak oturum açıldı. Hesabı yönetmek için dokunun</string>
+  <string name="morphe_music_lastfm_token_dialog_instruction">Oturum açmak için Last.fm kimlik bilgilerinizi girin</string>
+  <string name="morphe_music_lastfm_token_dialog_username_hint">Kullanıcı adı</string>
+  <string name="morphe_music_lastfm_token_dialog_password_hint">Şifre</string>
+  <string name="morphe_music_lastfm_token_dialog_login">Oturum aç</string>
+  <string name="morphe_music_lastfm_token_status_empty">Lütfen kullanıcı adınızı ve şifrenizi girin</string>
+  <string name="morphe_music_lastfm_token_status_logging_in">Oturum açılıyor...</string>
+  <string name="morphe_music_lastfm_token_status_success">Oturum açma başarılı!</string>
+  <string name="morphe_music_lastfm_token_status_no_session">Last.fm\'den oturum alamadı</string>
+  <string name="morphe_music_lastfm_token_status_failed">Oturum açma başarısız oldu: %s</string>
+  <string name="morphe_music_lastfm_token_toast_saved">Last.fm kimlik bilgileri kaydedildi!</string>
+  <string name="morphe_settings_music_scrobbling_metadata_title">Meta veri temizleme</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_title">Meta verileri temizle</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">Şarkı başlıklarından, sanatçılardan ve albümlerden \"Resmi Video\", \"Yeniden Düzenleme\", \"Canlı\" gibi yaygın karmaşaları otomatik olarak temizleyin scrobble yapmadan önce</string>
+  <string name="morphe_music_scrobbling_custom_regex_title">Özel düzenli ifade temizleme</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">"Şarkı başlıklarından, sanatçılardan veya albümlerden ek metinleri eşleştirmek ve kaldırmak için özel bir düzenli ifade (regex) girin.
+Örnek: (?i)\\s*\\((clean|explicit)\\)"</string>
+  <string name="morphe_music_scrobbling_about_title">scrobbling hakkında</string>
+  <string name="morphe_music_scrobbling_about_summary">"Scrobbling, YouTube Music'te çaldığınız müziği otomatik olarak izler ve Last.fm veya ListenBrainz profilinizle senkronize eder.
+
+Scrobbling'in arka planda güvenilir bir şekilde çalıştığından emin olmak için, lütfen YouTube Music'in sistem pil kullanımının \"Kısıtlanmamış\" olarak ayarlandığını doğrulayın."</string>
 </resources>

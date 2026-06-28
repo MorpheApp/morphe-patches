@@ -118,7 +118,7 @@ Oynatıcı JavaScript hash'i güncel değilse oynatma başarısız olur."</strin
   <string name="morphe_proxy_host_summary">Proxy sunucusunun ana bilgisayar adı veya IP adresi</string>
   <string name="morphe_proxy_port_title">Proxy portu</string>
   <string name="morphe_proxy_port_summary">Proxy sunucusunun portu</string>
-  <string name="morphe_proxy_https_title">HTTPS proxy\'sini kullan</string>
+  <string name="morphe_proxy_https_title">HTTPS proxy\'si kullan</string>
   <string name="morphe_proxy_https_summary">Proxy sunucusuna bağlanmak için HTTP yerine HTTPS kullanın</string>
   <string name="morphe_proxy_auth_enabled_title">Proxy kimlik doğrulaması</string>
   <string name="morphe_proxy_auth_enabled_summary">Proxy istekleriyle birlikte Temel kimlik doğrulaması gönderir</string>
@@ -126,7 +126,7 @@ Oynatıcı JavaScript hash'i güncel değilse oynatma başarısız olur."</strin
   <string name="morphe_proxy_auth_username_summary">Temel proxy kimlik doğrulaması için kullanıcı adı</string>
   <string name="morphe_proxy_auth_password_title">Proxy parolası</string>
   <string name="morphe_proxy_auth_password_summary">Temel proxy kimlik doğrulaması için parola</string>
-  <string name="morphe_proxy_allow_direct_fallback_title">Doğrudan geri dönüşe izin ver</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">Doğrudan yedeğe izin ver</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">Proxy başarısız olursa doğrudan bağlan</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Tam ekran reklamları gizle</string>

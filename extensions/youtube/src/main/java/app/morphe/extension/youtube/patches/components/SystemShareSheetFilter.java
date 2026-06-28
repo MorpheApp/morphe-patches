@@ -39,7 +39,7 @@ public final class SystemShareSheetFilter extends Filter {
                               StringFilterGroup matchedGroup,
                               FilterContentType contentType,
                               int contentIndex) {
-        if (!systemSheetOpened && openSystemShareSheet(asciiStrings.getStrings())) {
+        if (!systemSheetOpened && openSystemShareSheet()) {
             systemSheetOpened = true;
         }
         return false;

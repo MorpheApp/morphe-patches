@@ -27,6 +27,7 @@ import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.IntentPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
+import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.settings.settingsPatch
@@ -68,11 +69,16 @@ private val settingsResourcePatch = resourcePatch {
                 "morphe_settings_screen_04_general_bold.xml",
                 "morphe_settings_screen_05_player.xml",
                 "morphe_settings_screen_05_player_bold.xml",
+                "morphe_settings_screen_10_sponsorblock.xml",
+                "morphe_settings_screen_10_sponsorblock_bold.xml",
                 "morphe_settings_screen_11_misc.xml",
-                "morphe_settings_screen_11_misc_bold.xml"
+                "morphe_settings_screen_11_misc_bold.xml",
+                "morphe_settings_screen_13_scrobbling.xml",
+                "morphe_settings_screen_13_scrobbling_bold.xml"
             ),
             ResourceGroup("layout",
-                "morphe_preference_with_icon.xml"
+                "morphe_preference_with_icon.xml",
+                "morphe_color_dot_widget.xml"
             )
         )
 
@@ -81,11 +87,11 @@ private val settingsResourcePatch = resourcePatch {
         val targetResource = "values/styles.xml"
         inputStreamFromBundledResource(
             "settings/music",
-            targetResource,
+            targetResource
         )!!.let { inputStream ->
             "resources".copyXmlNode(
                 document(inputStream),
-                document("res/$targetResource"),
+                document("res/$targetResource")
             ).close()
         }
 
@@ -105,7 +111,7 @@ private val settingsResourcePatch = resourcePatch {
 }
 
 val settingsPatch = bytecodePatch(
-    description = "Adds settings for Morphe to YouTube Music.",
+    description = "Adds settings for Morphe to YouTube Music."
 ) {
     dependsOn(
         checkPatcherUpToDatePatch,
@@ -150,7 +156,7 @@ val settingsPatch = bytecodePatch(
                 titleKey = "morphe_pref_import_export_title",
                 summaryKey = "morphe_pref_import_export_summary",
                 inputType = InputType.TEXT_MULTI_LINE,
-                tag = "app.morphe.extension.shared.settings.preference.ImportExportPreference",
+                tag = "app.morphe.extension.shared.settings.preference.ImportExportPreference"
             )
         )
 
@@ -209,8 +215,24 @@ object PreferenceScreen : BasePreferenceScreen() {
         iconBold = "@drawable/morphe_settings_screen_05_player_bold",
         layout = "@layout/morphe_preference_with_icon"
     )
+    val SCROBBLING = Screen(
+        key = "morphe_settings_music_screen_4_scrobbling",
+        summaryKey = null,
+        icon = "@drawable/morphe_settings_screen_13_scrobbling",
+        iconBold = "@drawable/morphe_settings_screen_13_scrobbling_bold",
+        layout = "@layout/morphe_preference_with_icon",
+        sorting = Sorting.UNSORTED
+    )
+    val SPONSORBLOCK = Screen(
+        key = "morphe_settings_music_screen_5_sponsorblock",
+        summaryKey = null,
+        icon = "@drawable/morphe_settings_screen_10_sponsorblock",
+        iconBold = "@drawable/morphe_settings_screen_10_sponsorblock_bold",
+        layout = "@layout/morphe_preference_with_icon",
+        sorting = Sorting.UNSORTED
+    )
     val MISC = Screen(
-        key = "morphe_settings_music_screen_4_misc",
+        key = "morphe_settings_music_screen_6_misc",
         summaryKey = null,
         icon = "@drawable/morphe_settings_screen_11_misc",
         iconBold = "@drawable/morphe_settings_screen_11_misc_bold",

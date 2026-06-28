@@ -19,8 +19,8 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
-import app.morphe.extension.youtube.sponsorblock.SegmentPlaybackController;
-import app.morphe.extension.youtube.sponsorblock.objects.SponsorSegment;
+import app.morphe.extension.shared.sponsorblock.SegmentPlaybackController;
+import app.morphe.extension.shared.sponsorblock.objects.SponsorSegment;
 import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton;
 import kotlin.Unit;
 

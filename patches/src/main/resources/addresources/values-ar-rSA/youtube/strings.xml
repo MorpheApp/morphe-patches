@@ -413,6 +413,8 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_queue_restore_summary">تبقى قائمة الانتظار محفوظة بعد إعادة تشغيل التطبيق</string>
   <string name="morphe_swap_save_and_queue_actions_title">تبديل إجراءات حفظ وإضافة إلى قائمة الانتظار</string>
   <string name="morphe_swap_save_and_queue_actions_summary">انقر لخيارات قائمة الانتظار، واضغط مع الاستمرار للحفظ في المشاهدة لاحقًا</string>
+  <string name="morphe_queue_override_flyout_menu_title">تجاوز زر قائمة الانتظار في قائمة الفيديو المنبثقة</string>
+  <string name="morphe_queue_override_flyout_menu_summary">يفتح قائمة انتظار Morphe بدلًا من قائمة انتظار YouTube</string>
   <string name="morphe_queue_manager_check_failed_auth">تسجيل الدخول غير ممكن</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">لا يوجد معرّف قائمة تشغيل</string>
   <string name="morphe_queue_manager_check_failed_queue">قائمة الانتظار فارغة</string>

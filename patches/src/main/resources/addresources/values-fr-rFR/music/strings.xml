@@ -27,7 +27,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_1_ads_title">Publicités</string>
   <string name="morphe_settings_music_screen_2_general_title">Général</string>
   <string name="morphe_settings_music_screen_3_player_title">Lecteur</string>
-  <string name="morphe_settings_music_screen_4_misc_title">Divers</string>
+  <string name="morphe_settings_music_screen_4_scrobbling_title">Envoi d\'informations sur les morceaux écoutés</string>
+  <string name="morphe_settings_music_screen_5_misc_title">Divers</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Masquer le libellé \'S\'abonner à Music Premium\'</string>
   <!-- ad.video.hideVideoAdsPatch -->
@@ -147,4 +148,77 @@ YouTube Music 8.x — le fondu enchaîné ne fonctionne que sur les versions 9.x
   <string name="morphe_music_hide_navigation_bar_labels_title">Masquer les libellés des boutons de navigation</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Masquer le bouton \'S\'abonner\'</string>
+  <!-- interaction.scrobbling.scrobblingPatch -->
+  <string name="morphe_music_scrobbling_summary">Configurer l\'intégration Last.fm et ListenBrainz</string>
+  <string name="morphe_music_scrobbling_summary_logged_out">Non connecté. Appuyez pour configurer</string>
+  <string name="morphe_music_scrobbling_log_out">Se déconnecter</string>
+  <string name="morphe_music_scrobbling_logged_out_toast">Déconnecté</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_enabled_title">Activer l\'envoi d\'informations sur les morceaux écoutés</string>
+  <string name="morphe_music_listenbrainz_now_playing_title">Envoyer le statut \"Lecture en cours\"</string>
+  <string name="morphe_music_listenbrainz_min_song_duration_title">Durée minimale d\'un morceau</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_min_song_duration_summary">Les morceaux plus courts ne seront pas envoyés</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_title">Pourcentage de délai d\'envoi d\'informations</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_summary">Déclencher l\'envoi d\'informations après avoir écouté ce pourcentage du morceau</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_title">Délai d\'envoi d\'informations en secondes</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_summary">Déclencher l\'envoi d\'informations après avoir écouté pendant ce nombre de secondes</string>
+  <string name="morphe_music_listenbrainz_token_title">Compte ListenBrainz</string>
+  <string name="morphe_music_listenbrainz_token_summary_logged_in">Connecté. Appuyez pour gérer le compte</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">Entrez votre jeton d\'utilisateur ListenBrainz pour activer l\'envoi d\'informations sur les morceaux écoutés</string>
+  <string name="morphe_music_listenbrainz_token_dialog_hint">Jeton</string>
+  <string name="morphe_music_listenbrainz_token_dialog_get_token">Obtenir un jeton</string>
+  <string name="morphe_music_listenbrainz_token_dialog_verify">Vérifier</string>
+  <string name="morphe_music_listenbrainz_token_status_empty">Veuillez entrer un jeton</string>
+  <string name="morphe_music_listenbrainz_token_status_validating">Validation en cours...</string>
+  <string name="morphe_music_listenbrainz_token_status_valid">Jeton valide ! Utilisateur : %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">Jeton invalide : %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid_unknown">inconnu</string>
+  <string name="morphe_music_listenbrainz_token_status_failed">Échec de la vérification : %s</string>
+  <string name="morphe_music_listenbrainz_token_toast_cleared">Jeton effacé</string>
+  <string name="morphe_music_listenbrainz_token_toast_saved">Jeton enregistré</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Attention : le jeton enregistré est invalide !</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_lastfm_enabled_title">Activer l\'envoi d\'informations sur les morceaux écoutés</string>
+  <string name="morphe_music_lastfm_now_playing_title">Envoyer le statut \"Lecture en cours\"</string>
+  <string name="morphe_music_lastfm_love_on_like_title">Aimer les morceaux aimés</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">Aimer automatiquement les morceaux sur Last.fm lorsque vous les aimez sur YouTube Music (et supprimer l\'aimer lorsqu\'ils sont désaimés ou n\'aiment pas)</string>
+  <string name="morphe_music_lastfm_min_song_duration_title">Durée minimale d\'un morceau</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_lastfm_min_song_duration_summary">Les morceaux plus courts ne seront pas envoyés</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_title">Pourcentage de délai d\'envoi d\'informations</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_summary">Déclencher l\'envoi d\'informations après avoir écouté ce pourcentage du morceau</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_title">Délai d\'envoi d\'informations en secondes</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_summary">Déclencher l\'envoi d\'informations après avoir écouté pendant ce nombre de secondes</string>
+  <string name="morphe_music_lastfm_token_title">Compte Last.fm</string>
+  <string name="morphe_music_lastfm_token_summary_logged_in">Connecté en tant que %s. Appuyez pour gérer le compte</string>
+  <string name="morphe_music_lastfm_token_dialog_instruction">Entrez vos identifiants Last.fm pour vous connecter</string>
+  <string name="morphe_music_lastfm_token_dialog_username_hint">Nom d\'utilisateur</string>
+  <string name="morphe_music_lastfm_token_dialog_password_hint">Mot de passe</string>
+  <string name="morphe_music_lastfm_token_dialog_login">Se connecter</string>
+  <string name="morphe_music_lastfm_token_status_empty">Veuillez entrer un nom d\'utilisateur et un mot de passe</string>
+  <string name="morphe_music_lastfm_token_status_logging_in">Connexion en cours...</string>
+  <string name="morphe_music_lastfm_token_status_success">Connecté avec succès !</string>
+  <string name="morphe_music_lastfm_token_status_no_session">Impossible d\'obtenir une session depuis Last.fm</string>
+  <string name="morphe_music_lastfm_token_status_failed">Échec de la connexion : %s</string>
+  <string name="morphe_music_lastfm_token_toast_saved">Identifiants Last.fm enregistrés !</string>
+  <string name="morphe_settings_music_scrobbling_metadata_title">Nettoyage des métadonnées</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_title">Nettoyer les métadonnées</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">Nettoyer automatiquement le bazar courant (comme « Vidéo officielle », « Remasterisée », « En direct ») des titres, des artistes et des albums avant l\'envoi d\'informations</string>
+  <string name="morphe_music_scrobbling_custom_regex_title">Nettoyage personnalisé avec une expression régulière</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">"Entrez une expression régulière (regex) personnalisée pour faire correspondre et supprimer du texte supplémentaire des titres des chansons, des artistes ou des albums.
+Exemple : (?i)\\s*\\((clean|explicit)\\)"</string>
+  <string name="morphe_music_scrobbling_about_title">À propos de l\'envoi d\'informations sur les morceaux écoutés</string>
+  <string name="morphe_music_scrobbling_about_summary">"L'envoi d'informations sur les morceaux écoutés suit automatiquement la musique que vous écoutez sur YouTube Music et la synchronise avec votre profil Last.fm ou ListenBrainz.
+
+Pour garantir que l'envoi d'informations fonctionne de manière fiable en arrière-plan, veuillez vérifier que l'utilisation de la batterie du système de YouTube Music est définie sur « Sans restriction »."</string>
 </resources>

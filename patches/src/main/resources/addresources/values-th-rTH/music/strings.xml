@@ -27,7 +27,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_1_ads_title">โฆษณา</string>
   <string name="morphe_settings_music_screen_2_general_title">ทั่วไป</string>
   <string name="morphe_settings_music_screen_3_player_title">เครื่องเล่น</string>
-  <string name="morphe_settings_music_screen_4_misc_title">เบ็ดเตล็ด</string>
+  <string name="morphe_settings_music_screen_4_scrobbling_title">กำลังบันทึกเพลง</string>
+  <string name="morphe_settings_music_screen_5_misc_title">เบ็ดเตล็ด</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">ซ่อนป้าย \'รับ Music Premium\'</string>
   <!-- ad.video.hideVideoAdsPatch -->
@@ -147,4 +148,77 @@ YouTube Music 8.x — การเฟดข้ามจะทำงานบน 
   <string name="morphe_music_hide_navigation_bar_labels_title">ซ่อนป้ายกำกับปุ่มนำทาง</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">ซ่อนปุ่มอัปเกรด</string>
+  <!-- interaction.scrobbling.scrobblingPatch -->
+  <string name="morphe_music_scrobbling_summary">ตั้งค่าการทำงานร่วมกับ Last.fm และ ListenBrainz</string>
+  <string name="morphe_music_scrobbling_summary_logged_out">ยังไม่ได้เข้าสู่ระบบ แตะเพื่อตั้งค่า</string>
+  <string name="morphe_music_scrobbling_log_out">ออกจากระบบ</string>
+  <string name="morphe_music_scrobbling_logged_out_toast">ออกจากระบบแล้ว</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_enabled_title">เปิดการบันทึกเพลง</string>
+  <string name="morphe_music_listenbrainz_now_playing_title">ส่งสถานะ \"กำลังเล่นอยู่\"</string>
+  <string name="morphe_music_listenbrainz_min_song_duration_title">ระยะเวลาขั้นต่ำของเพลง</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_min_song_duration_summary">เพลงที่มีความยาวน้อยกว่านี้จะไม่ถูกบันทึก</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_title">เปอร์เซ็นต์ความล่าช้าในการบันทึก</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_summary">เริ่มบันทึกหลังจากฟังเพลงไปแล้วตามเปอร์เซ็นต์นี้</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_title">วินาทีความล่าช้าในการบันทึก</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_summary">เริ่มบันทึกหลังจากฟังเพลงไปแล้วตามจำนวนวินาทีนี้</string>
+  <string name="morphe_music_listenbrainz_token_title">บัญชี ListenBrainz</string>
+  <string name="morphe_music_listenbrainz_token_summary_logged_in">เข้าสู่ระบบแล้ว แตะเพื่อจัดการบัญชี</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">ป้อนโทเค็นผู้ใช้ ListenBrainz ของคุณเพื่อเปิดใช้งานการบันทึกเพลง</string>
+  <string name="morphe_music_listenbrainz_token_dialog_hint">โทเค็น</string>
+  <string name="morphe_music_listenbrainz_token_dialog_get_token">รับโทเค็น</string>
+  <string name="morphe_music_listenbrainz_token_dialog_verify">ตรวจสอบ</string>
+  <string name="morphe_music_listenbrainz_token_status_empty">กรุณาป้อนโทเค็น</string>
+  <string name="morphe_music_listenbrainz_token_status_validating">กำลังตรวจสอบ…</string>
+  <string name="morphe_music_listenbrainz_token_status_valid">โทเค็นถูกต้อง! ผู้ใช้: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">โทเค็นไม่ถูกต้อง: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid_unknown">ไม่ทราบ</string>
+  <string name="morphe_music_listenbrainz_token_status_failed">การตรวจสอบล้มเหลว: %s</string>
+  <string name="morphe_music_listenbrainz_token_toast_cleared">ล้างโทเค็นแล้ว</string>
+  <string name="morphe_music_listenbrainz_token_toast_saved">บันทึกโทเค็นแล้ว</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">คำเตือน: โทเค็นที่บันทึกไว้ไม่ถูกต้อง!</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_lastfm_enabled_title">เปิดการบันทึกเพลง</string>
+  <string name="morphe_music_lastfm_now_playing_title">ส่งสถานะ \"กำลังเล่นอยู่\"</string>
+  <string name="morphe_music_lastfm_love_on_like_title">ชอบเพลงที่ถูกใจ</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">ชอบเพลงบน Last.fm โดยอัตโนมัติเมื่อคุณชอบบน YouTube Music (และยกเลิกการชอบเมื่อไม่ชอบ)</string>
+  <string name="morphe_music_lastfm_min_song_duration_title">ระยะเวลาขั้นต่ำของเพลง</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_lastfm_min_song_duration_summary">เพลงที่มีความยาวน้อยกว่านี้จะไม่ถูกบันทึก</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_title">เปอร์เซ็นต์ความล่าช้าในการบันทึก</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_summary">เริ่มบันทึกหลังจากฟังเพลงไปแล้วตามเปอร์เซ็นต์นี้</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_title">วินาทีความล่าช้าในการบันทึก</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_summary">เริ่มบันทึกหลังจากฟังเพลงไปแล้วตามจำนวนวินาทีนี้</string>
+  <string name="morphe_music_lastfm_token_title">บัญชี Last.fm</string>
+  <string name="morphe_music_lastfm_token_summary_logged_in">เข้าสู่ระบบในฐานะ %s แตะเพื่อจัดการบัญชี</string>
+  <string name="morphe_music_lastfm_token_dialog_instruction">ป้อนข้อมูลรับรอง Last.fm ของคุณเพื่อเข้าสู่ระบบ</string>
+  <string name="morphe_music_lastfm_token_dialog_username_hint">ชื่อผู้ใช้</string>
+  <string name="morphe_music_lastfm_token_dialog_password_hint">รหัสผ่าน</string>
+  <string name="morphe_music_lastfm_token_dialog_login">เข้าสู่ระบบ</string>
+  <string name="morphe_music_lastfm_token_status_empty">กรุณาป้อนชื่อผู้ใช้และรหัสผ่าน</string>
+  <string name="morphe_music_lastfm_token_status_logging_in">กำลังเข้าสู่ระบบ…</string>
+  <string name="morphe_music_lastfm_token_status_success">เข้าสู่ระบบสำเร็จ!</string>
+  <string name="morphe_music_lastfm_token_status_no_session">ไม่สามารถรับเซสชันจาก Last.fm ได้</string>
+  <string name="morphe_music_lastfm_token_status_failed">เข้าสู่ระบบล้มเหลว: %s</string>
+  <string name="morphe_music_lastfm_token_toast_saved">บันทึกข้อมูลรับรอง Last.fm แล้ว!</string>
+  <string name="morphe_settings_music_scrobbling_metadata_title">ทำความสะอาดข้อมูลเมตา</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_title">ทำความสะอาดข้อมูลเมตา</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">ทำความสะอาดข้อมูลเมตาโดยอัตโนมัติ เช่น \"วิดีโออย่างเป็นทางการ\", \"ปรับปรุงใหม่\", \"สด\" จากชื่อเพลง ศิลปิน และอัลบั้มก่อนการบันทึก</string>
+  <string name="morphe_music_scrobbling_custom_regex_title">การทำความสะอาดด้วย Regex ที่กำหนดเอง</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">"ป้อน Regular Expression (regex) ที่กำหนดเองเพื่อจับคู่และลบข้อความเพิ่มเติมจากชื่อเพลง ศิลปิน หรืออัลบั้ม
+ตัวอย่าง: (?i)\\s*\\((clean|explicit)\\)"</string>
+  <string name="morphe_music_scrobbling_about_title">เกี่ยวกับ การบันทึกเพลง</string>
+  <string name="morphe_music_scrobbling_about_summary">"การบันทึกเพลงจะติดตามเพลงที่คุณเล่นบน YouTube Music โดยอัตโนมัติและซิงค์กับโปรไฟล์ Last.fm หรือ ListenBrainz ของคุณ
+
+เพื่อให้แน่ใจว่าการบันทึกเพลงทำงานได้อย่างน่าเชื่อถือในพื้นหลัง โปรดตรวจสอบให้แน่ใจว่าการใช้งานแบตเตอรี่ของระบบ YouTube Music ถูกตั้งค่าเป็น \"ไม่จำกัด\""</string>
 </resources>
