@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <string name="morphe_sb_channel_whitelist_remove">Noņemt</string>
+  <string name="morphe_sb_settings_copy">Kopēt</string>
+  <string name="morphe_sb_segments_sponsor">Sponsoru reklāma</string>
+  <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_sb_vote_upvote">Balsot par</string>
+  <string name="morphe_sb_vote_downvote">Balsot pret</string>
+  <!-- A segment start and end time, such as "02:10 to 03:40". -->
+  <string name="morphe_sb_stats_title">Statistika</string>
+  <!-- Shown in the settings preferences, and translations can be any text length. -->
+  <string name="morphe_sb_stats_saved_minute_format">%1$s minūtes %2$s sekundes</string>
+  <string name="morphe_sb_stats_saved_second_format">%s sekundes</string>
+</resources>

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
+  <string name="morphe_sb_enable_compact_skip_button">Gunakan tombol Lewati ringkas</string>
+  <string name="morphe_sb_enable_compact_skip_button_summary">Mengurangi lebar tombol Lewati untuk menghemat ruang</string>
+  <string name="morphe_sb_enable_auto_hide_skip_segment_button">Sembunyikan tombol Lewati secara otomatis</string>
+  <string name="morphe_sb_enable_auto_hide_skip_segment_button_summary">Menyembunyikan tombol Lewati setelah beberapa detik daripada menampilkannya selama seluruh segmen</string>
+  <string name="morphe_sb_auto_hide_skip_button_duration">Durasi tombol Lewati</string>
+  <string name="morphe_sb_auto_hide_skip_button_duration_summary">Atur berapa lama tombol Lewati tetap terlihat</string>
+  <string name="morphe_sb_general_skiptoast">Tampilkan lewati pembatalan pemberitahuan</string>
+  <string name="morphe_sb_general_skiptoast_summary">Menampilkan pemberitahuan yang memungkinkan Anda mengetuk untuk membatalkan lewati otomatis</string>
+  <string name="morphe_sb_toast_on_skip_duration">Durasi lewati pemberitahuan</string>
+  <string name="morphe_sb_toast_on_skip_duration_summary">Atur berapa lama notifikasi pembatalan tetap terlihat</string>
+  <string name="morphe_sb_duration_1s">1 detik</string>
+  <string name="morphe_sb_duration_2s">2 detik</string>
+  <string name="morphe_sb_duration_3s">3 detik</string>
+  <string name="morphe_sb_duration_4s">4 detik</string>
+  <string name="morphe_sb_duration_5s">5 detik</string>
+  <string name="morphe_sb_duration_6s">6 detik</string>
+  <string name="morphe_sb_duration_7s">7 detik</string>
+  <string name="morphe_sb_duration_8s">8 detik</string>
+  <string name="morphe_sb_duration_9s">9 detik</string>
+  <string name="morphe_sb_duration_10s">10 detik</string>
+  <string name="morphe_sb_general_time_without">Tampilkan durasi video tanpa segmen</string>
+  <string name="morphe_sb_general_time_without_summary">Mengurangi semua durasi segmen dari total durasi video yang ditampilkan pada bilah pencarian</string>
+  <string name="morphe_sb_create_segment_category">Membuat segmen baru</string>
+  <string name="morphe_sb_enable_create_segment">Tampilkan tombol \'Buat segmen baru\'</string>
+  <string name="morphe_sb_enable_create_segment_summary">Menambahkan tombol ke pemutar video yang memungkinkan Anda mengirimkan segmen SponsorBlock baru</string>
+  <string name="morphe_sb_general_adjusting">Langkah penyesuaian waktu</string>
+  <string name="morphe_sb_general_adjusting_summary">Jumlah pencarian dari tombol penyesuaian waktu (dalam milidetik)</string>
+  <string name="morphe_sb_general_adjusting_invalid">Nilainya harus berupa angka positif</string>
+  <string name="morphe_sb_guidelines_preference_title">Pedoman pengajuan</string>
+  <string name="morphe_sb_guidelines_preference_summary">Pedoman berisi aturan dan saran untuk membuat segmen baru</string>
+  <string name="morphe_sb_guidelines_popup_title">Ikuti pedoman</string>
+  <string name="morphe_sb_guidelines_popup_content">Bacalah panduan SponsorBlock sebelum membuat segmen baru</string>
+  <string name="morphe_sb_guidelines_popup_already_read">Sudah dibaca</string>
+  <string name="morphe_sb_guidelines_popup_open">Tunjukkan</string>
+  <string name="morphe_sb_general">Umum</string>
+  <string name="morphe_sb_toast_on_connection_error">Tampilkan peringatan kesalahan sambungan</string>
+  <string name="morphe_sb_toast_on_connection_error_summary">Menampilkan pemberitahuan saat server SponsorBlock tidak tersedia</string>
+  <string name="morphe_sb_general_skipcount">Aktifkan pelacakan melewati hitungan</string>
+  <string name="morphe_sb_general_skipcount_summary">Mengirimkan jumlah lewati ke papan peringkat SponsorBlock untuk melacak berapa banyak waktu yang dihemat</string>
+  <string name="morphe_sb_general_min_duration">Durasi minimum segmen</string>
+  <string name="morphe_sb_general_min_duration_summary">Segmen yang lebih pendek pada dari nilai ini (dalam detik) tidak akan ditampilkan atau dilewati</string>
+  <string name="morphe_sb_general_min_duration_invalid">Durasi waktu tidak sah</string>
+  <string name="morphe_sb_general_uuid">ID pengguna pribadi Anda</string>
+  <string name="morphe_sb_general_uuid_summary">Ini harus dijaga kerahasiaannya. Seperti kata sandi dan tidak disarankan untuk dibagikan dengan siapa pun. Jika seseorang mendapatkan ini, mereka dapat menyamar sebagai Anda</string>
+  <string name="morphe_sb_general_uuid_invalid">ID pengguna tidak boleh lebih dari 30 karakter</string>
+  <string name="morphe_sb_general_api_url">Ubah URL API</string>
+  <string name="morphe_sb_general_api_url_summary">Alamat yang digunakan SponsorBlock untuk membuat panggilan ke server</string>
+  <string name="morphe_sb_channel_whitelist">Daftar putih saluran</string>
+  <string name="morphe_sb_channel_whitelist_summary">SponsorBlock dinonaktifkan untuk saluran dalam daftar putih</string>
+  <string name="morphe_sb_channel_whitelist_current_channel">Saluran saat ini:</string>
+  <string name="morphe_sb_channel_whitelist_add">Tambahkan ke daftar putih</string>
+  <string name="morphe_sb_channel_whitelist_remove">Hapus</string>
+  <string name="morphe_sb_channel_whitelist_channels_header">Saluran yang ditambahkan ke daftar putih</string>
+  <string name="morphe_sb_channel_whitelist_empty">Tidak ada saluran yang ditambahkan ke daftar putih</string>
+  <string name="morphe_sb_channel_whitelist_channel_added">Saluran ditambahkan ke daftar putih</string>
+  <string name="morphe_sb_channel_whitelist_channel_removed">Saluran dihapus dari daftar putih</string>
+  <string name="morphe_sb_toast_on_whitelisted_channel">Beri tahu jika ada saluran dalam daftar putih</string>
+  <string name="morphe_sb_toast_on_whitelisted_channel_summary">Menampilkan notifikasi saat SponsorBlock dinonaktifkan untuk saluran yang ada dalam daftar putih</string>
+  <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock dinonaktifkan untuk saluran ini</string>
+  <string name="morphe_sb_api_url_reset">Atur ulang URL API</string>
+  <string name="morphe_sb_api_url_invalid">URL API tidak sah</string>
+  <string name="morphe_sb_api_url_changed">URL API diubah</string>
+  <string name="morphe_sb_settings_ie">Impor/Ekspor pengaturan</string>
+  <string name="morphe_sb_settings_copy">Salin</string>
+  <string name="morphe_sb_settings_ie_summary">Konfigurasi JSON SponsorBlock Anda yang dapat diimpor / diekspor ke Morphe dan platform SponsorBlock lainnya</string>
+  <string name="morphe_sb_settings_ie_summary_warning">"Konfigurasi JSON SponsorBlock Anda yang dapat diimpor / diekspor ke Morphe dan platform SponsorBlock lainnya
+
+Ini termasuk ID pengguna pribadi Anda. Pastikan untuk membagikannya dengan bijak"</string>
+  <string name="morphe_sb_settings_import_successful">Pengaturan berhasil diimpor</string>
+  <string name="morphe_sb_settings_import_failed">Gagal mengimpor: %s</string>
+  <string name="morphe_sb_settings_export_failed">Gagal mengekspor: %s</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"Pengaturan Anda berisi ID pengguna pribadi SponsorBlock.
+
+ID pengguna Anda seperti kata sandi dan jangan pernah dibagikan."</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Jangan tampilkan lagi</string>
+  <string name="morphe_sb_diff_segments">Ubah perilaku segmen</string>
+  <string name="morphe_sb_segments_sponsor">Sponsor</string>
+  <string name="morphe_sb_segments_sponsor_summary">Promosi berbayar, rujukan berbayar, dan iklan langsung. Bukan untuk promosi diri atau promosi gratis untuk gerakan / kreator / situs web / produk yang mereka sukai</string>
+  <string name="morphe_sb_segments_selfpromo">Tidak Dibayar/Promosi Diri Sendiri</string>
+  <string name="morphe_sb_segments_selfpromo_summary">Mirip dengan Sponsor kecuali untuk promosi tidak berbayar / mandiri. Termasuk bagian tentang merchandise, donasi, atau informasi tentang siapa yang berkolaborasi dengan mereka</string>
+  <string name="morphe_sb_segments_interaction">Pengingat Interaksi (Subscribe)</string>
+  <string name="morphe_sb_segments_interaction_summary">Pengingat singkat untuk suka, subscribe, atau mengikuti mereka di tengah-tengah konten. Jika berdurasi panjang atau tentang sesuatu yang spesifik, sebaiknya berada di bawah promosi diri sendiri</string>
+  <string name="morphe_sb_segments_highlight">Sorotan</string>
+  <string name="morphe_sb_segments_highlight_summary">Bagian video yang paling banyak dicari orang</string>
+  <string name="morphe_sb_segments_intro">Jeda/Animasi Intro</string>
+  <string name="morphe_sb_segments_intro_summary">Interval tanpa konten yang sebenarnya. Bisa berupa jeda, bingkai statis, atau animasi berulang. Tidak termasuk transisi yang berisi informasi</string>
+  <string name="morphe_sb_segments_outro">Kartu Akhir / Kredit</string>
+  <string name="morphe_sb_segments_outro_summary">Kredit atau ketika layar akhir YouTube muncul. Bukan kesimpulan dengan informasi</string>
+  <string name="morphe_sb_segments_hook">Pengantar / Sapaan</string>
+  <string name="morphe_sb_segments_hook_summary">Trailer yang dinarasikan untuk video mendatang, sapaan, dan perpisahan. Tidak termasuk bagian yang menambahkan konten tambahan</string>
+  <string name="morphe_sb_segments_preview">Pratinjau / Rekap</string>
+  <string name="morphe_sb_segments_preview_summary">Kumpulan klip yang menunjukkan apa yang akan datang atau apa yang terjadi di video atau di video lain dari sebuah seri, di mana semua informasi diulang di tempat lain</string>
+  <string name="morphe_sb_segments_filler">Singgungan / Lelucon</string>
+  <string name="morphe_sb_segments_filler_summary">Adegan atau lelucon sampingan yang tidak diperlukan untuk memahami konten utama video. Tidak termasuk bagian yang memberikan konteks atau detail latar belakang</string>
+  <string name="morphe_sb_segments_nomusic">Musik: Bagian Non-Musik</string>
+  <string name="morphe_sb_segments_nomusic_summary">Hanya untuk digunakan dalam video musik. Bagian video musik tanpa musik yang belum tercakup oleh kategori lain</string>
+  <string name="morphe_sb_skip_button_compact">Lewati</string>
+  <string name="morphe_sb_skip_button_compact_highlight">Sorotan</string>
+  <string name="morphe_sb_skip_button_sponsor">Lewati sponsor</string>
+  <string name="morphe_sb_skip_button_selfpromo">Lewati promo</string>
+  <string name="morphe_sb_skip_button_interaction">Lewati interaksi</string>
+  <string name="morphe_sb_skip_button_highlight">Lewati ke sorotan</string>
+  <string name="morphe_sb_skip_button_intro_beginning">Lewati intro</string>
+  <string name="morphe_sb_skip_button_intro_middle">Lewati jeda</string>
+  <string name="morphe_sb_skip_button_intro_end">Lewati jeda</string>
+  <string name="morphe_sb_skip_button_outro">Lewati outro</string>
+  <string name="morphe_sb_skip_button_hook">Lewati pengantar</string>
+  <string name="morphe_sb_skip_button_preview_beginning">Lewati pratinjau</string>
+  <string name="morphe_sb_skip_button_preview_middle">Lewati pratinjau</string>
+  <string name="morphe_sb_skip_button_preview_end">Lewati rekap</string>
+  <string name="morphe_sb_skip_button_filler">Lewati singgungan</string>
+  <string name="morphe_sb_skip_button_nomusic">Lewati non-musik</string>
+  <string name="morphe_sb_skip_button_unsubmitted">Lewati segmen</string>
+  <string name="morphe_sb_skipped_sponsor">Sponsor dilewati</string>
+  <string name="morphe_sb_skipped_selfpromo">Promosi diri sendiri dilewati</string>
+  <string name="morphe_sb_skipped_interaction">Pengingat mengganggu dilewati</string>
+  <string name="morphe_sb_skipped_highlight">Dilewati ke sorotan</string>
+  <string name="morphe_sb_skipped_intro_beginning">Intro dilewati</string>
+  <string name="morphe_sb_skipped_intro_middle">Jeda dilewati</string>
+  <string name="morphe_sb_skipped_intro_end">Jeda dilewati</string>
+  <string name="morphe_sb_skipped_outro">Outro dilewati</string>
+  <string name="morphe_sb_skipped_hook">Sapaan dilewati</string>
+  <string name="morphe_sb_skipped_preview_beginning">Pratinjau dilewati</string>
+  <string name="morphe_sb_skipped_preview_middle">Pratinjau dilewati</string>
+  <string name="morphe_sb_skipped_preview_end">Rekap dilewati</string>
+  <string name="morphe_sb_skipped_filler">Singgungan dilewati</string>
+  <string name="morphe_sb_skipped_nomusic">Melewati bagian non-musik</string>
+  <string name="morphe_sb_skipped_unsubmitted">Melewati segmen yang belum dikirim</string>
+  <string name="morphe_sb_skipped_multiple_segments">Beberapa segmen dilewati</string>
+  <string name="morphe_sb_skip_automatically">Lewati otomatis</string>
+  <string name="morphe_sb_skip_automatically_once">Lewati otomatis sekali</string>
+  <string name="morphe_sb_skip_showbutton">Tampilkan tombol Lewati</string>
+  <string name="morphe_sb_skip_seekbaronly">Tampilkan di seekbar</string>
+  <string name="morphe_sb_skip_ignore">Nonaktifkan</string>
+  <string name="morphe_sb_submit_failed_invalid">Tak dapat mengirim segmen: %s</string>
+  <string name="morphe_sb_submit_failed_timeout">SponsorBlock sementara tidak tersedia</string>
+  <string name="morphe_sb_submit_failed_unknown_error">Tak dapat mengirim segmen (status: %1$d %2$s)</string>
+  <string name="morphe_sb_submit_failed_rate_limit">Tidak dapat mengirimkan segmen. Rate Limited (terlalu banyak dari pengguna atau IP yang sama)</string>
+  <string name="morphe_sb_submit_failed_forbidden">Tidak dapat mengirim segmen: %s</string>
+  <string name="morphe_sb_submit_failed_duplicate">"Tidak dapat mengirim segmen.
+Sudah ada"</string>
+  <string name="morphe_sb_submit_succeeded">Segmen berhasil terkirim</string>
+  <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock tidak tersedia (API kehabisan waktu)</string>
+  <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock sementara tidak tersedia (status %d)</string>
+  <string name="morphe_sb_sponsorblock_connection_failure_generic">SponsorBlock sementara tidak tersedia</string>
+  <string name="morphe_sb_vote_failed_timeout">Tidak dapat memilih segmen (API kehabisan waktu)</string>
+  <string name="morphe_sb_vote_failed_unknown_error">Tidak dapat memilih segmen (status: %1$d %2$s)</string>
+  <string name="morphe_sb_vote_failed_forbidden">Tidak dapat memilih segmen: %s</string>
+  <string name="morphe_sb_vote_upvote">Sukai</string>
+  <string name="morphe_sb_vote_downvote">Tidak sukai</string>
+  <string name="morphe_sb_vote_category">Ubah kategori</string>
+  <string name="morphe_sb_vote_no_segments">Tidak ada segmen untuk dipilih</string>
+  <!-- A segment start and end time, such as "02:10 to 03:40". -->
+  <string name="morphe_sb_vote_segment_time_to_from">%1$s ke %2$s</string>
+  <string name="morphe_sb_new_segment_choose_category">Pilih kategori segmen</string>
+  <string name="morphe_sb_new_segment_disabled_category">Kategori dinonaktifkan di pengaturan. Aktifkan kategori untuk dikirim.</string>
+  <string name="morphe_sb_new_segment_title">Segmen SponsorBlock Baru</string>
+  <string name="morphe_sb_new_segment_mark_time_as_question">Tetapkan %s sebagai awal atau akhir segmen baru?</string>
+  <string name="morphe_sb_new_segment_mark_start">Mulai</string>
+  <string name="morphe_sb_new_segment_mark_end">Akhir</string>
+  <string name="morphe_sb_new_segment_now">Sekarang</string>
+  <string name="morphe_sb_new_segment_time_start">Waktu segmen dimulai pada</string>
+  <string name="morphe_sb_new_segment_time_end">Waktu segmen diakhiri pada</string>
+  <string name="morphe_sb_new_segment_confirm_title">Apakah waktunya benar?</string>
+  <string name="morphe_sb_new_segment_confirm_content">"Bagian ini terdiri dari
+
+%1$s
+sampai
+%2$s
+
+(%3$s)
+
+Siap mengirim?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Kirim</string>
+  <string name="morphe_sb_new_segment_start_is_before_end">Awal harus sebelum akhir</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Tandai lokasi terlebih dahulu di bilah waktu</string>
+  <string name="morphe_sb_new_segment_preview_segment_first">Pratinjau segmen, dan pastikan segmen dilewati dengan lancar</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_title">Ubah waktu segmen secara manual</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_content">Apakah Anda ingin menubah waktu awal atau akhir segmen?</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Waktu yang diberikan tidak sah</string>
+  <string name="morphe_sb_new_segment_highlight_title">Kirim sorotan</string>
+  <string name="morphe_sb_new_segment_highlight_content">"Apakah waktu sorotan sudah benar?
+
+%s
+
+Jika Anda tidak mengirimkan sorotan, ketuk Batal dan tandai lokasi kedua"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Kirim sorotan</string>
+  <string name="morphe_sb_stats_title">Statistik</string>
+  <!-- Shown in the settings preferences, and translations can be any text length. -->
+  <string name="morphe_sb_stats_connection_failure">Statistik sementara tidak tersedia (API tidak aktif)</string>
+  <string name="morphe_sb_stats_loading">Memuat...</string>
+  <string name="morphe_sb_stats_sb_disabled">SponsorBlock dinonaktifkan</string>
+  <string name="morphe_sb_stats_username">Nama pengguna Anda: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_username_change">Tekan di sini untuk mengubah nama pengguna Anda</string>
+  <string name="morphe_sb_stats_username_change_unknown_error">Tidak dapat mengubah nama pengguna: Status: %1$d %2$s</string>
+  <string name="morphe_sb_stats_username_changed">Nama pengguna berhasil diubah</string>
+  <string name="morphe_sb_stats_reputation">Reputasi Anda: &lt;b&gt;%.2f&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_submissions">Anda telah membuat &lt;b&gt;%s&lt;/b&gt; segmen</string>
+  <string name="morphe_sb_stats_submissions_summary">Ketuk di sini untuk melihat segmen Anda</string>
+  <string name="morphe_sb_stats_saved_zero">Papan peringkat SponsorBlock</string>
+  <string name="morphe_sb_stats_saved">Anda menghindarkan orang dari &lt;b&gt;%s&lt;/b&gt; segmen</string>
+  <string name="morphe_sb_stats_saved_summary_zero">Tekan di sini untuk melihat data global dan kontributor utama</string>
+  <string name="morphe_sb_stats_saved_summary">Itu &lt;b&gt;%s&lt;/b&gt; dari hidup mereka.&lt;br&gt;Tekan di sini untuk melihat papan peringkat</string>
+  <string name="morphe_sb_stats_self_saved">Anda melewati &lt;b&gt;%s&lt;/b&gt; segmen</string>
+  <string name="morphe_sb_stats_self_saved_summary">Itu &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_self_saved_reset_title">Atur ulang penghitungan segmen terlewati?</string>
+  <string name="morphe_sb_stats_saved_hour_format">%1$s jam %2$s menit</string>
+  <string name="morphe_sb_stats_saved_minute_format">%1$s menit %2$s detik</string>
+  <string name="morphe_sb_stats_saved_second_format">%s detik</string>
+  <string name="morphe_sb_color_opacity_label">Opasitas:</string>
+  <string name="morphe_sb_color_dot_label">Warna:</string>
+  <string name="morphe_sb_about_title">Tentang</string>
+  <string name="morphe_sb_about_api_summary">"Data disediakan oleh API SponsorBlock.
+
+Ketuk di sini untuk membuka Sponsor.ajay.app dan lihat unduhan untuk platform lain"</string>
+</resources>

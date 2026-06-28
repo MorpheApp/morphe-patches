@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
+  <string name="morphe_sb_enable_compact_skip_button">بۆ شێوازێک هێشتیار</string>
+  <string name="morphe_sb_enable_auto_hide_skip_segment_button">به‌گشتی دکۆی نه‌شه‌وه‌ قایپ بکه</string>
+  <string name="morphe_sb_auto_hide_skip_button_duration">ماوەی یاخی</string>
+  <string name="morphe_sb_general_skiptoast">نشانەدانی ڕاگەیاندنی هەڵواسین و هەڵگزانی</string>
+  <string name="morphe_sb_toast_on_skip_duration">ماوەي دەربانەی دەلطة</string>
+  <string name="morphe_sb_duration_1s">1 سكاكەت</string>
+  <string name="morphe_sb_duration_2s">2 سكاكەت</string>
+  <string name="morphe_sb_duration_3s">3 سكاكەت</string>
+  <string name="morphe_sb_duration_4s">4 سكاكەت</string>
+  <string name="morphe_sb_duration_5s">5 سكاكەت</string>
+  <string name="morphe_sb_duration_6s">6 سكاكەت</string>
+  <string name="morphe_sb_duration_7s">7 سكاكەت</string>
+  <string name="morphe_sb_duration_8s">8 سكاكەت</string>
+  <string name="morphe_sb_duration_9s">9 سكاكەت</string>
+  <string name="morphe_sb_duration_10s">10 سكاكەت</string>
+  <string name="morphe_sb_general_time_without">شێوەزاری ڤیديۆ دەربخۆیتەوە بێ ئەندامان</string>
+  <string name="morphe_sb_create_segment_category">درووشتین سێگمنتی نوێ</string>
+  <string name="morphe_sb_general_adjusting_invalid">هۆكاری ئەبێتە جۆرێك ژمارەیە</string>
+  <string name="morphe_sb_guidelines_popup_title">ڕێنماییەكان ڕاكوێب</string>
+  <string name="morphe_sb_guidelines_popup_already_read">خۆم پێشتر خوێندرۆتە</string>
+  <string name="morphe_sb_guidelines_popup_open">نێشانم بده</string>
+  <string name="morphe_sb_general">ئاسماني</string>
+  <string name="morphe_sb_toast_on_connection_error">نشان دادن ڕێنمایەکانی هەڵە یەکباری پەیوەندیمان</string>
+  <string name="morphe_sb_general_skipcount">بەدواداچوونی ژمارەی پەڕینەوە چالاک بکە</string>
+  <string name="morphe_sb_general_min_duration">ئاستی خوولي خاك</string>
+  <string name="morphe_sb_general_min_duration_summary">خۆڵەکان کەمتر لەم ڕێژەیە (لە چاوسێکدانە) نمایش ناکەین یان نادەین بەربەست</string>
+  <string name="morphe_sb_general_min_duration_invalid">هۆكار لە پێشكەش كردن</string>
+  <string name="morphe_sb_general_uuid">ناسنامەی تایبەتی تۆ</string>
+  <string name="morphe_sb_general_uuid_invalid">ناسنامەی بەکارهێنەری تایبەت دەبێت لانیکەم ٣٠ پیت بێت</string>
+  <string name="morphe_sb_general_api_url">گۆرینواری ئادرس</string>
+  <string name="morphe_sb_channel_whitelist_remove">سڕینەوە</string>
+  <string name="morphe_sb_api_url_reset">هاوخراپی ئادرس ئاسانکارە</string>
+  <string name="morphe_sb_api_url_invalid">ئادرس نامەی ڕاست نەكرا</string>
+  <string name="morphe_sb_api_url_changed">ئادرس ڕێكەش كرێ</string>
+  <string name="morphe_sb_settings_ie">گۆرتنە-بەسەرهاتە دەسوێستدان</string>
+  <string name="morphe_sb_settings_copy">وێنەلەمەر</string>
+  <string name="morphe_sb_settings_import_successful">ڕێکخستنەکان بە سەرکەوتوویی هاوردەکران</string>
+  <string name="morphe_sb_settings_import_failed">هەڵنەتە: %s</string>
+  <string name="morphe_sb_settings_export_failed">هەڵنەتە دەخورا: %s</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"ڕێکخستنەکانت ناسنامەی بەکارهێنەری تایبەتی SponsorBlock لەخۆدەگرن.
+
+ ناسنامەی بەکارهێنەرەکەت وەک وشەی نهێنی وایە، هەرگیز نابێت هاوبەشی بکرێت."</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">دوباره نەكریبنەوە</string>
+  <string name="morphe_sb_diff_segments">گۆرینهی ڕیشی خاكی</string>
+  <string name="morphe_sb_segments_sponsor">هاوکار</string>
+  <string name="morphe_sb_segments_selfpromo">بێتەش به غەرەزی/ خۆ دەدگەی</string>
+  <string name="morphe_sb_segments_interaction">ئەتیای ڕاست (نیگنن)</string>
+  <string name="morphe_sb_segments_highlight">خارا</string>
+  <string name="morphe_sb_segments_intro">پشوودان / ئەنیمەیشنی پێشەکی</string>
+  <string name="morphe_sb_segments_intro_summary">نێوانێک کە ناوەڕۆکی ڕاستەقینەی تێدا نەبێت.  دەتوانێت وەستان، چوارچێوەی جێگیر، یان دووبارەبوونەوەی ئەنیمەیشن بێت.  ئەو گواستنەوەیانە ناگرێتەوە کە زانیارییان تێدایە</string>
+  <string name="morphe_sb_segments_outro">کارتی کۆتایی / کرێدت</string>
+  <string name="morphe_sb_segments_outro_summary">ئەگەر ناوی کەرتەکان ببینێیت یان کاتێک کۆتاییەکانی YouTube دەربکەون. بۆ کۆتایەکانی زانیاری نین</string>
+  <string name="morphe_sb_segments_hook">سڵاو / ڕێکخستن</string>
+  <string name="morphe_sb_segments_hook_summary">ڤیدێ‌یۆک تایبەت بۆ ڤیدێ‌یۆکێ دێتەجۆر، پێشوازیکردن و خوازیا. نەگه‌یەنێت بە بەشێک کە بگرێتەوە محتواکێی زیاتر</string>
+  <string name="morphe_sb_segments_preview">پیشاندانی / کۆکردنەوە</string>
+  <string name="morphe_sb_segments_preview_summary"> کۆلێکنەی بەشە کلیپەکان کە ئەو شتانە دەربارەی نمایش دەکەن کە دەربکەون یان لە ڕاستی ڤیدۆکە یاخود لە ڤیدۆکانی تری زنجۆرەکەدا ڕویدا، کە هەموو زانیارییەکە لە شوێنەکانی تردا دووبارە دەکرێتەوە</string>
+  <string name="morphe_sb_segments_filler">ئەلگاری / شوێنی خەیاڵی</string>
+  <string name="morphe_sb_segments_nomusic">موزیک: بەشی نەموزیکی</string>
+  <string name="morphe_sb_skip_button_compact">لەوەشدا بجە</string>
+  <string name="morphe_sb_skip_button_compact_highlight">خۆراگرتن</string>
+  <string name="morphe_sb_skip_button_sponsor">لەوەشدا بێ دەستخۆ سپۆنسۆر بجە</string>
+  <string name="morphe_sb_skip_button_selfpromo">لەوەشدا بێ دەستخۆ پڕۆمۆشنی خۆت بجە</string>
+  <string name="morphe_sb_skip_button_interaction">لەوەشدا بێ دەستخۆ پەیوەندیکردن بجە</string>
+  <string name="morphe_sb_skip_button_highlight">لەوەشدا بێ دەستخۆ خۆراگرتن بجە</string>
+  <string name="morphe_sb_skip_button_intro_beginning">لەوەشدا بێ دەستخۆ سەرەتای ڤیدیو بجە</string>
+  <string name="morphe_sb_skip_button_intro_middle">وازهێنان لە پشوودان</string>
+  <string name="morphe_sb_skip_button_intro_end">لەوەشدا بێ دەستخۆ کۆتاییی ڤیدیو بجە</string>
+  <string name="morphe_sb_skip_button_outro">لەوەشدا بێ دەستخۆ کۆتاییی ڤیدیو بجە</string>
+  <string name="morphe_sb_skip_button_hook">لەوەشدا بێ دەستخۆ ھووک بجە</string>
+  <string name="morphe_sb_skip_button_preview_beginning">لەوەشدا بێ دەستخۆ پێشینەی ڤیدیو بجە</string>
+  <string name="morphe_sb_skip_button_preview_middle">وازهێنان لە پێشبینی</string>
+  <string name="morphe_sb_skip_button_preview_end">وازهێنان لە دووبارەکردنەوە</string>
+  <string name="morphe_sb_skip_button_filler">لەوەشدا بێ دەستخۆ بابەتێک بجە</string>
+  <string name="morphe_sb_skip_button_nomusic">لەوەشدا بێ دەستخۆ بەشی نەموزیکی بجە</string>
+  <string name="morphe_sb_skip_button_unsubmitted">لەوەشدا بێ دەستخۆ بەشێک بجە</string>
+  <string name="morphe_sb_skipped_sponsor">بێ دەستخۆ سپۆنسۆر بجە</string>
+  <string name="morphe_sb_skipped_selfpromo">بێ دەستخۆ پڕۆمۆشنی خۆت بجە</string>
+  <string name="morphe_sb_skipped_interaction">بێ دەستخۆ یادگاری مەترسیدار بجە</string>
+  <string name="morphe_sb_skipped_highlight">بێ دەستخۆ خۆراگرتن بۆ خۆراگرتن بجە</string>
+  <string name="morphe_sb_skipped_intro_beginning">بێ دەستخۆ سەرەتای ڤیدیو بجە</string>
+  <string name="morphe_sb_skipped_intro_middle">بێ دەستخۆ نێوەڕاستی ڤیدیو بجە</string>
+  <string name="morphe_sb_skipped_intro_end">بێ دەستخۆ کۆتاییی ڤیدیو بجە</string>
+  <string name="morphe_sb_skipped_outro">بێ دەستخۆ کۆتاییی ڤیدیو بجە</string>
+  <string name="morphe_sb_skipped_hook">بێ دەستخۆ ھووک بجە</string>
+  <string name="morphe_sb_skipped_preview_beginning">بێ دەستخۆ پێشینەی ڤیدیو بجە</string>
+  <string name="morphe_sb_skipped_preview_middle">پێشبینی پشتگوێخراوە</string>
+  <string name="morphe_sb_skipped_preview_end">بێ دەستخۆ کۆتاییی پێشینەی ڤیدیو بجە</string>
+  <string name="morphe_sb_skipped_filler">بێ دەستخۆ بابەتێک بجە</string>
+  <string name="morphe_sb_skipped_nomusic">بێ دەستخۆ بەشی نەموزیکی بجە</string>
+  <string name="morphe_sb_skipped_unsubmitted">بێ دەستخۆ بەشێک بجە</string>
+  <string name="morphe_sb_skipped_multiple_segments">بێ دەستخۆ چەندین بەش بجە</string>
+  <string name="morphe_sb_skip_automatically">بێ دەستخۆ بجە</string>
+  <string name="morphe_sb_skip_automatically_once">بێ دەستخۆ جارێک بجە</string>
+  <string name="morphe_sb_skip_showbutton">نیشان بدە دکمه‌ی ڕا کردن</string>
+  <string name="morphe_sb_skip_seekbaronly">نیشان بدە لە ڕاستگۆڕی</string>
+  <string name="morphe_sb_skip_ignore">خۆراکە</string>
+  <string name="morphe_sb_submit_failed_invalid">نەیتوانی دەربخە: %s</string>
+  <string name="morphe_sb_submit_failed_timeout">SponsorBlock بۆ ماوەیەکی کاتی کەوتووە</string>
+  <string name="morphe_sb_submit_failed_unknown_error">نەیتوانی دەربخە (ئاست: %1$d %2$s)</string>
+  <string name="morphe_sb_submit_failed_rate_limit">نەیتوانی دەربخە. سنووردارکراوە (زیادە لە یەک کەس یان IP یەک)</string>
+  <string name="morphe_sb_submit_failed_forbidden">لە دەربارەی پێشکەشکردنی دەق نەکرێت: %s</string>
+  <string name="morphe_sb_submit_failed_duplicate">"لە دەربارەی پێشکەشکردنی دەق نەکرێت.\nئەگەر هەبێت"</string>
+  <string name="morphe_sb_submit_succeeded">دەربخستن سەرکەوتایە</string>
+  <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock بەردەست نیە ( کاتەکەی بەسەرچووە API)</string>
+  <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock هۊتا سەرلەشêره (ئاستی %d)</string>
+  <string name="morphe_sb_sponsorblock_connection_failure_generic">SponsorBlock بەشێوەیەکی کاتی بەردەست نیە</string>
+  <string name="morphe_sb_vote_failed_timeout">نەتوانین بۆ بەشیەک دەنگی بدەین (API کات تەواو بوو)</string>
+  <string name="morphe_sb_vote_failed_unknown_error">نەتوانین بۆ بەشیەک دەنگی بدەین (نرخ: %1$d %2$s)</string>
+  <string name="morphe_sb_vote_failed_forbidden">نەتوانین بۆ بەشیەک دەنگی بدەین: %s</string>
+  <string name="morphe_sb_vote_upvote">سەروو دەنگ</string>
+  <string name="morphe_sb_vote_downvote">نزمی دەنگ</string>
+  <string name="morphe_sb_vote_category">گۆڕینی پۆل</string>
+  <string name="morphe_sb_vote_no_segments">هیچ بەشێک نییە دەنگی پێبدرێت</string>
+  <!-- A segment start and end time, such as "02:10 to 03:40". -->
+  <string name="morphe_sb_vote_segment_time_to_from">%1$s بـۆ %2$s</string>
+  <string name="morphe_sb_new_segment_choose_category">خه‌ڵه‌تێكی كاته‌گۆری راكوه‌ن</string>
+  <string name="morphe_sb_new_segment_disabled_category">كاته‌گۆری له‌ ناخه‌وه‌ كه‌ره‌سته‌ له‌ نه‌خشه‌كان. كاته‌گۆری خه‌ڵه‌تێكی به‌شى ئه‌ركه‌وانه‌ تاوه‌ده‌كه‌یت.</string>
+  <string name="morphe_sb_new_segment_title">بەشی نوێی SponsorBlock</string>
+  <string name="morphe_sb_new_segment_mark_time_as_question">ئه‌گه‌ر %s به‌وه‌ڵاتم هه‌رچیه‌كه‌ت گۆڕانه‌ یان كۆتایییه‌كی خه‌ڵه‌تێكی تازه‌؟</string>
+  <string name="morphe_sb_new_segment_mark_start">دەستپێکردن</string>
+  <string name="morphe_sb_new_segment_mark_end">كۆتایـی</string>
+  <string name="morphe_sb_new_segment_now">ئێسـتا</string>
+  <string name="morphe_sb_new_segment_time_start">به‌ زووه كه‌ خه‌ڵه‌تێك یه‌ك به‌ڵێننه‌</string>
+  <string name="morphe_sb_new_segment_time_end">به‌ زووه كه‌ خه‌ڵه‌تێك ئه‌مشه‌و وه‌كه‌ت به‌ڵێننه‌</string>
+  <string name="morphe_sb_new_segment_confirm_title">ئه‌گه‌ر كاته‌كان ڕاستنه‌؟</string>
+  <string name="morphe_sb_new_segment_confirm_content">"خه‌ڵه‌تێك له‌ %1$s
+
+ته‌ به‌ %2$s
+
+(%3$s)
+
+هاوه‌ل بۆ له‌سه‌ركه‌وتن؟"</string>
+  <string name="morphe_sb_new_segment_start_is_before_end">ئه‌ركه‌وانه‌ پێش كۆتایییه‌كه‌</string>
+  <string name="morphe_sb_new_segment_preview_segment_first">له‌هه‌تدا ڕه‌وشت به‌ هێڵه‌كانی خه‌ركه‌ك پێكه‌هه‌ن و هه‌رێزی پێكه‌ك گه‌شكه‌ن</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_title">ئه‌گه‌ر به‌ به‌سته‌ش واستێكی زانه‌وانه‌</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_content">ئه‌گه‌ر ده‌وته‌كه‌ چۆنه‌وێ بەرێ بۆ سەردا؟</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_parse_error">به‌شێوه‌یه‌كی به‌راوه‌ستى گه‌ر به‌رهه‌م نه‌هات</string>
+  <string name="morphe_sb_stats_title">دۆخ</string>
+  <!-- Shown in the settings preferences, and translations can be any text length. -->
+  <string name="morphe_sb_stats_connection_failure">ئه‌حڤال هه‌تاوه‌ به‌شێوه‌یه‌كی موقه‌تیر ناتوانێت به‌ره‌وه‌ بێت (API هه‌تایه‌)</string>
+  <string name="morphe_sb_stats_loading">ئه‌وه التى…</string>
+  <string name="morphe_sb_stats_sb_disabled">SponsorBlock لەکارخراوە</string>
+  <string name="morphe_sb_stats_username">ناوی بەکارهێنەر &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_username_change">سه‌ره‌ته‌ به‌ڕێزه‌كه‌ بۆ ناڤێت گۆڕه‌ن</string>
+  <string name="morphe_sb_stats_username_change_unknown_error">نابێ ناڤێت گۆڕێن: به‌شێوه‌یه‌كی ڕه‌وشت: %1$d %2$s</string>
+  <string name="morphe_sb_stats_username_changed">ناوی بەکارهێنە بەسەرکەوتوویی گۆڕدرا</string>
+  <string name="morphe_sb_stats_reputation">ناوبانگی تۆ &lt;b&gt;%.2f&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_submissions">&lt;b&gt;%s&lt;/b&gt; پارچەگەشكاری دروستكراون</string>
+  <string name="morphe_sb_stats_saved_zero">ته‌سه‌رێ SponsorBlock</string>
+  <string name="morphe_sb_stats_saved">تۊ ئه‌هنه‌ك به‌ ڤه‌نه‌تانه‌ کە هەستن &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_self_saved">تۊ ڤه‌ره سكی ده‌شکه‌ن &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_self_saved_reset_title">مره‌هه‌م به‌ شه‌ڤه‌ت ڕه‌ز كه‌ سكی ده‌به‌ست؟</string>
+  <string name="morphe_sb_stats_saved_hour_format">%1$s سەعات %2$s خولەك</string>
+  <string name="morphe_sb_stats_saved_minute_format">%1$s خولەک %2$s چرکە</string>
+  <string name="morphe_sb_stats_saved_second_format">%s چرکە</string>
+  <string name="morphe_sb_color_opacity_label">ناوەڕاستی:</string>
+  <string name="morphe_sb_color_dot_label">ڕەنگ:</string>
+  <string name="morphe_sb_about_title">دربارە</string>
+</resources>

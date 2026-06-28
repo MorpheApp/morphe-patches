@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
+  <string name="morphe_sb_enable_compact_skip_button">Gebruik kompakte Skip-knoppie</string>
+  <string name="morphe_sb_enable_compact_skip_button_summary">Verminder die breedte van die Skip-knoppie om spasie te bespaar</string>
+  <string name="morphe_sb_enable_auto_hide_skip_segment_button">Outomaties Skip-knoppie versteek</string>
+  <string name="morphe_sb_enable_auto_hide_skip_segment_button_summary">Verberg die Skip-knoppie na \'n paar sekondes in plaas daarvan om dit vir die hele segment sigbaar te hou</string>
+  <string name="morphe_sb_auto_hide_skip_button_duration">Skip-knoppie duur</string>
+  <string name="morphe_sb_auto_hide_skip_button_duration_summary">Stel hoe lank die Skip-knoppie sigbaar bly</string>
+  <string name="morphe_sb_general_skiptoast">Wys ongedaanmaak skip kennisgewing</string>
+  <string name="morphe_sb_general_skiptoast_summary">Wys \'n kennisgewing wat jou toelaat om \'n outomatiese oorslae ongedaan te maak</string>
+  <string name="morphe_sb_toast_on_skip_duration">Skip kennisgewing duur</string>
+  <string name="morphe_sb_toast_on_skip_duration_summary">Stel hoe lank die ongedaankmaak-kennisgewing sigbaar bly</string>
+  <string name="morphe_sb_duration_1s">1 sekonde</string>
+  <string name="morphe_sb_duration_2s">2 sekondes</string>
+  <string name="morphe_sb_duration_3s">3 sekondes</string>
+  <string name="morphe_sb_duration_4s">4 sekondes</string>
+  <string name="morphe_sb_duration_5s">5 sekondes</string>
+  <string name="morphe_sb_duration_6s">6 sekondes</string>
+  <string name="morphe_sb_duration_7s">7 sekondes</string>
+  <string name="morphe_sb_duration_8s">8 sekondes</string>
+  <string name="morphe_sb_duration_9s">9 sekondes</string>
+  <string name="morphe_sb_duration_10s">10 sekondes</string>
+  <string name="morphe_sb_general_time_without">Wys video lengte sonder segmente</string>
+  <string name="morphe_sb_general_time_without_summary">Trek alle segmente in totale videotyduur wat op die seekbar gewys word, af</string>
+  <string name="morphe_sb_create_segment_category">Skep nuwe segmente</string>
+  <string name="morphe_sb_enable_create_segment">Wys \'Skep nuwe segment\'-knoppie</string>
+  <string name="morphe_sb_enable_create_segment_summary">Voeg \'n knoppie by aan die videospeler wat jou toelaat om nuwe SponsorBlock-segmente te indien</string>
+  <string name="morphe_sb_general_adjusting">Tyd aanpassingsstap</string>
+  <string name="morphe_sb_general_adjusting_summary">Soek bedrag van die tyd aanpassingsknoppies (in millisekondes)</string>
+  <string name="morphe_sb_general_adjusting_invalid">Waarde moet \'n positiewe getal wees</string>
+  <string name="morphe_sb_guidelines_preference_title">Indieningsriglyne</string>
+  <string name="morphe_sb_guidelines_preference_summary">Riglyne bevat reëls en wenke vir die skep van nuwe segmente</string>
+  <string name="morphe_sb_guidelines_popup_title">Volg die riglyne</string>
+  <string name="morphe_sb_guidelines_popup_content">Lees die SponsorBlock riglyne voordat jy nuwe segmente skep</string>
+  <string name="morphe_sb_guidelines_popup_already_read">Reeds gelees</string>
+  <string name="morphe_sb_guidelines_popup_open">Wys my</string>
+  <string name="morphe_sb_general">Algemeen</string>
+  <string name="morphe_sb_toast_on_connection_error">Wys konneksiefoutwaarskuwings</string>
+  <string name="morphe_sb_toast_on_connection_error_summary">Wys \'n kennisgewing wanneer die SponsorBlock-bediener nie beskikbaar is nie</string>
+  <string name="morphe_sb_general_skipcount">Aktiveer skip telling dop</string>
+  <string name="morphe_sb_general_skipcount_summary">Stuur oorslaaktellings aan die SponsorBlock-ranglys om te volg hoeveel tyd gespaar word</string>
+  <string name="morphe_sb_general_min_duration">Minimum segment duur</string>
+  <string name="morphe_sb_general_min_duration_summary">Segmente korter as hierdie waarde (in sekondes) sal nie gewys of oorgeslaan word nie</string>
+  <string name="morphe_sb_general_min_duration_invalid">Ongeldige tyd duur</string>
+  <string name="morphe_sb_general_uuid">Jou privaat gebruikers ID</string>
+  <string name="morphe_sb_general_uuid_summary">Dit moet privaat gehou word. Dit is soos \'n wagwoord en moet met niemand gedeel word nie. As iemand dit het, kan hulle jou namaak</string>
+  <string name="morphe_sb_general_uuid_invalid">Private gebruikers ID moet ten minste 30 karakters lank wees</string>
+  <string name="morphe_sb_general_api_url">Verander API URL</string>
+  <string name="morphe_sb_general_api_url_summary">Die adres wat SponsorBlock gebruik om oproepe na die bediener te maak</string>
+  <string name="morphe_sb_channel_whitelist">Kanal witlys</string>
+  <string name="morphe_sb_channel_whitelist_summary">SponsorBlock is afgeskakel vir gekanaliseerde kanale op die witlys</string>
+  <string name="morphe_sb_channel_whitelist_current_channel">Huidige kanaal:</string>
+  <string name="morphe_sb_channel_whitelist_add">Voeg toe aan witlys</string>
+  <string name="morphe_sb_channel_whitelist_remove">Verwyder</string>
+  <string name="morphe_sb_channel_whitelist_channels_header">Witgelyste kanale</string>
+  <string name="morphe_sb_channel_whitelist_empty">Geen kanale op die witlys</string>
+  <string name="morphe_sb_channel_whitelist_channel_added">Kanaal by witlys gevoeg</string>
+  <string name="morphe_sb_channel_whitelist_channel_removed">Kanaal van witlys verwyder</string>
+  <string name="morphe_sb_toast_on_whitelisted_channel">Kennisgewing op witgelyste kanaal</string>
+  <string name="morphe_sb_toast_on_whitelisted_channel_summary">Wys \'n kennisgewing wanneer SponsorBlock vir \'n witgelyste kanaal afgeskakel is</string>
+  <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock afgeskakel vir hierdie kanaal</string>
+  <string name="morphe_sb_api_url_reset">API URL teruggestel</string>
+  <string name="morphe_sb_api_url_invalid">API URL is ongeldig</string>
+  <string name="morphe_sb_api_url_changed">API URL verander</string>
+  <string name="morphe_sb_settings_ie">Importeer / Eksporteer instellings</string>
+  <string name="morphe_sb_settings_copy">Kopieer</string>
+  <string name="morphe_sb_settings_ie_summary">Jou SponsorBlock JSON-konfigurasie wat geïmporteer/uitgevoer kan word na Morphe en ander SponsorBlock-platforms</string>
+  <string name="morphe_sb_settings_ie_summary_warning">"Jou SponsorBlock JSON konfigurasie wat na Morphe en ander SponsorBlock platforms geïmporteer / uitgevoer kan word
+
+Dit sluit jou privaat gebruikers-ID in. Wees seker om dit verstandig te deel"</string>
+  <string name="morphe_sb_settings_import_successful">Instellings suksesvol geïmporteer</string>
+  <string name="morphe_sb_settings_import_failed">Kon nie invoer nie: %s</string>
+  <string name="morphe_sb_settings_export_failed">Kon nie uitvoer nie: %s</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"Jou instellings bevat 'n privaat SponsorBlock gebruikers ID.
+
+Jou gebruikers ID is soos 'n wagwoord, en dit moet nooit gedeel word nie."</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Moet nie weer wys nie</string>
+  <string name="morphe_sb_diff_segments">Verander segment gedrag</string>
+  <string name="morphe_sb_segments_sponsor">Sponsor</string>
+  <string name="morphe_sb_segments_sponsor_summary">Betaalde promosie, betaalde verwysings en direkte advertensies. Nie vir selfpromosie of gratis skreeusnaa vir sake / skeppers / webwerwe / produkte wat hulle graag wil hê nie</string>
+  <string name="morphe_sb_segments_selfpromo">Onbetaalde / Selfpromosie</string>
+  <string name="morphe_sb_segments_selfpromo_summary">Soortgelyk aan Sponsor, maar vir onbetaalde / selfpromosie. Sluit afdelings in oor handelsware, donasies of inligting oor met wie hulle saamgewerk het</string>
+  <string name="morphe_sb_segments_interaction">Interaksie Herinnering (Subskribeer)</string>
+  <string name="morphe_sb_segments_interaction_summary">\'n Kort herinnering om te like, inteken of hulle te volg in die middel van inhoud. As dit lank is of oor iets spesifieks gaan, moet dit eerder onder selfpromosie wees</string>
+  <string name="morphe_sb_segments_highlight">Hoogtepte</string>
+  <string name="morphe_sb_segments_highlight_summary">Die deel van die video waarna die meeste mense kyk</string>
+  <string name="morphe_sb_segments_intro">Intermissie / Intro Animatie</string>
+  <string name="morphe_sb_segments_intro_summary">\'n Interval sonder werklike inhoud. Kan \'n pouse, statiese raam of herhalende animasie wees. Sluit nie oorgange in wat inligting bevat nie</string>
+  <string name="morphe_sb_segments_outro">Eindkaarte / Krediete</string>
+  <string name="morphe_sb_segments_outro_summary">Krediete of wanneer die YouTube-eindkaarte verskyn. Nie vir gevolgtrekkings met inligting nie</string>
+  <string name="morphe_sb_segments_hook">Hook / Groete</string>
+  <string name="morphe_sb_segments_hook_summary">Geanimeerde voorlopers vir die komende video, groete en tot siens. Sluit nie afdelings in wat bykomende inhoud byvoeg nie</string>
+  <string name="morphe_sb_segments_preview">Preview / Opsomming</string>
+  <string name="morphe_sb_segments_preview_summary">\'n Versameling van snitte wat wys wat gaan gebeur of wat in die video of in ander video\'s van \'n reeks gebeur het, waar alle inligting elders herhaal word</string>
+  <string name="morphe_sb_segments_filler">Raak / Grappe</string>
+  <string name="morphe_sb_segments_filler_summary">Tangensiële tonele of grappies wat nie nodig is om die hoofinhoud van die video te verstaan nie. Sluit nie afdelings in wat konteks of agtergrondinligting verskaf nie</string>
+  <string name="morphe_sb_segments_nomusic">Musiek: Nie-Musiek-Afdeling</string>
+  <string name="morphe_sb_segments_nomusic_summary">Slegs vir gebruik in musiekvideo\'s. Afdelings van musiekvideo\'s sonder musiek wat nie reeds deur \'n ander kategorie gedek word nie</string>
+  <string name="morphe_sb_skip_button_compact">Slaan oor</string>
+  <string name="morphe_sb_skip_button_compact_highlight">Hoogtepte</string>
+  <string name="morphe_sb_skip_button_sponsor">Sponsor oorslaan</string>
+  <string name="morphe_sb_skip_button_selfpromo">Promo oorslaan</string>
+  <string name="morphe_sb_skip_button_interaction">Interaksie oorslaan</string>
+  <string name="morphe_sb_skip_button_highlight">Slaap na hoogtepte</string>
+  <string name="morphe_sb_skip_button_intro_beginning">Intro oorslaan</string>
+  <string name="morphe_sb_skip_button_intro_middle">Intermissie oorslaan</string>
+  <string name="morphe_sb_skip_button_intro_end">Intermissie oorslaan</string>
+  <string name="morphe_sb_skip_button_outro">Outro oorslaan</string>
+  <string name="morphe_sb_skip_button_hook">Hook oorslaan</string>
+  <string name="morphe_sb_skip_button_preview_beginning">Preview oorslaan</string>
+  <string name="morphe_sb_skip_button_preview_middle">Preview oorslaan</string>
+  <string name="morphe_sb_skip_button_preview_end">Opsomming oorslaan</string>
+  <string name="morphe_sb_skip_button_filler">Tangent oorslaan</string>
+  <string name="morphe_sb_skip_button_nomusic">Nie-musiek oorslaan</string>
+  <string name="morphe_sb_skip_button_unsubmitted">Segment oorslaan</string>
+  <string name="morphe_sb_skipped_sponsor">Sponsor oorgeslaan</string>
+  <string name="morphe_sb_skipped_selfpromo">Selfpromosie oorgeslaan</string>
+  <string name="morphe_sb_skipped_interaction">Irriterende herinnering oorgeslaan</string>
+  <string name="morphe_sb_skipped_highlight">Hoogtepte oorgeslaan</string>
+  <string name="morphe_sb_skipped_intro_beginning">Intro oorgeslaan</string>
+  <string name="morphe_sb_skipped_intro_middle">Intermissie oorgeslaan</string>
+  <string name="morphe_sb_skipped_intro_end">Intermissie oorgeslaan</string>
+  <string name="morphe_sb_skipped_outro">Oorgeslaan uitgang</string>
+  <string name="morphe_sb_skipped_hook">Oorgeslaan intro</string>
+  <string name="morphe_sb_skipped_preview_beginning">Oorgeslaan voorbeskouing</string>
+  <string name="morphe_sb_skipped_preview_middle">Oorgeslaan voorbeskouing</string>
+  <string name="morphe_sb_skipped_preview_end">Oorgeslaan terugblik</string>
+  <string name="morphe_sb_skipped_filler">Oorgeslaan uitloop</string>
+  <string name="morphe_sb_skipped_nomusic">Oorgeslaan nie-musiek gedeelte</string>
+  <string name="morphe_sb_skipped_unsubmitted">Oorgeslaan oningediende segment</string>
+  <string name="morphe_sb_skipped_multiple_segments">Oorgeslaan verskeie segmente</string>
+  <string name="morphe_sb_skip_automatically">Oorspronklik oorslaan</string>
+  <string name="morphe_sb_skip_automatically_once">Oorspronklik een keer oorslaan</string>
+  <string name="morphe_sb_skip_showbutton">Wys \'n Oorslaan-knoppie</string>
+  <string name="morphe_sb_skip_seekbaronly">Wys in soekbalk</string>
+  <string name="morphe_sb_skip_ignore">Deaktiveer</string>
+  <string name="morphe_sb_submit_failed_invalid">Kon segment nie indien nie: %s</string>
+  <string name="morphe_sb_submit_failed_timeout">SponsorBlock is tans nie beskikbaar nie</string>
+  <string name="morphe_sb_submit_failed_unknown_error">Kon segment nie indien nie (status: %1$d %2$s)</string>
+  <string name="morphe_sb_submit_failed_rate_limit">Kon segment nie indien nie. Beperking van tempo (te veel vanaf dieselfde gebruiker of IP)</string>
+  <string name="morphe_sb_submit_failed_forbidden">Kan die segment nie voorlê nie: %s</string>
+  <string name="morphe_sb_submit_failed_duplicate">"Kan die segment nie voorlê nie.
+Reeds bestaan"</string>
+  <string name="morphe_sb_submit_succeeded">Segment is suksesvol ingedien</string>
+  <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock is tans nie beskikbaar nie (API het tyd uit)</string>
+  <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock is tans nie beskikbaar nie (status %d)</string>
+  <string name="morphe_sb_sponsorblock_connection_failure_generic">SponsorBlock is tans nie beskikbaar nie</string>
+  <string name="morphe_sb_vote_failed_timeout">Kon segment nie stem nie (API het tyd uit)</string>
+  <string name="morphe_sb_vote_failed_unknown_error">Kon segment nie stem nie (status: %1$d %2$s)</string>
+  <string name="morphe_sb_vote_failed_forbidden">Kon segment nie stem nie: %s</string>
+  <string name="morphe_sb_vote_upvote">Stem op</string>
+  <string name="morphe_sb_vote_downvote">Stem af</string>
+  <string name="morphe_sb_vote_category">Kategorie verander</string>
+  <string name="morphe_sb_vote_no_segments">Daar is geen segmente om vir te stem nie</string>
+  <!-- A segment start and end time, such as "02:10 to 03:40". -->
+  <string name="morphe_sb_vote_segment_time_to_from">%1$s tot %2$s</string>
+  <string name="morphe_sb_new_segment_choose_category">Kies die segment kategorie</string>
+  <string name="morphe_sb_new_segment_disabled_category">Kategorie is in instellings gedeaktiveer. Aktiveer kategorie om in te dien.</string>
+  <string name="morphe_sb_new_segment_title">Nuwe SponsorBlock segment</string>
+  <string name="morphe_sb_new_segment_mark_time_as_question">Stel %s as die begin of einde van \'n nuwe segment?</string>
+  <string name="morphe_sb_new_segment_mark_start">Begin</string>
+  <string name="morphe_sb_new_segment_mark_end">Einde</string>
+  <string name="morphe_sb_new_segment_now">Nou</string>
+  <string name="morphe_sb_new_segment_time_start">Tyd wanneer die segment begin</string>
+  <string name="morphe_sb_new_segment_time_end">Tyd wanneer die segment eindig</string>
+  <string name="morphe_sb_new_segment_confirm_title">Is die tye korrek?</string>
+  <string name="morphe_sb_new_segment_confirm_content">"Die segment is van
+
+%1$s
+to
+%2$s
+
+(%3$s)
+
+Klaar om in te dien?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Stuur in</string>
+  <string name="morphe_sb_new_segment_start_is_before_end">Begin moet voor die einde wees</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Merk eers \'n plek op die tydbalk</string>
+  <string name="morphe_sb_new_segment_preview_segment_first">Voorbeskou die segment, en verseker dit slaap glad oorskakel</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_title">Wysig die timing van segment handmatig</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_content">Wil jy die timing vir die begin of einde van die segment redigeer?</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Ongeldige tyd gegee</string>
+  <string name="morphe_sb_new_segment_highlight_title">Stuur hoogtepunt in</string>
+  <string name="morphe_sb_new_segment_highlight_content">"Is die hoogtepunt tyd reg?
+
+%s
+
+As jy nie 'n hoogtepunt indien nie, tik Kanselleer en merk die tweede plek"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Stuur hoogtepunt in</string>
+  <string name="morphe_sb_stats_title">Statistiek</string>
+  <!-- Shown in the settings preferences, and translations can be any text length. -->
+  <string name="morphe_sb_stats_connection_failure">Statistiek is tans nie beskikbaar nie (API is af)</string>
+  <string name="morphe_sb_stats_loading">Laai...</string>
+  <string name="morphe_sb_stats_sb_disabled">SponsorBlock is gedeaktiveer</string>
+  <string name="morphe_sb_stats_username">Jou gebruikersnaam: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_username_change">Tik hier om jou gebruikersnaam te verander</string>
+  <string name="morphe_sb_stats_username_change_unknown_error">Kon gebruikersnaam nie verander nie: Status: %1$d %2$s</string>
+  <string name="morphe_sb_stats_username_changed">Gebruikersnaam is suksesvol verander</string>
+  <string name="morphe_sb_stats_reputation">Jou reputasie is &lt;b&gt;%.2f&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_submissions">Jy het &lt;b&gt;%s&lt;/b&gt; segmente geskep</string>
+  <string name="morphe_sb_stats_submissions_summary">Tik hier om jou segmente te bekyk</string>
+  <string name="morphe_sb_stats_saved_zero">SponsorBlock ranglys</string>
+  <string name="morphe_sb_stats_saved">Jy het mense gered van &lt;b&gt;%s&lt;/b&gt; segmente</string>
+  <string name="morphe_sb_stats_saved_summary_zero">Tik hier om die globale statistieke en topbydraers te sien</string>
+  <string name="morphe_sb_stats_saved_summary">Dit is &lt;b&gt;%s&lt;/b&gt; van hul lewens.&lt;br&gt;Tik hier om die ranglys te sien</string>
+  <string name="morphe_sb_stats_self_saved">Jy het &lt;b&gt;%s&lt;/b&gt; segmente oorgeslaan</string>
+  <string name="morphe_sb_stats_self_saved_summary">Dit is &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_self_saved_reset_title">Herstel oorgeslaan segmente teller?</string>
+  <string name="morphe_sb_stats_saved_hour_format">%1$s ure %2$s minute</string>
+  <string name="morphe_sb_stats_saved_minute_format">%1$s minute %2$s sekondes</string>
+  <string name="morphe_sb_stats_saved_second_format">%s sekondes</string>
+  <string name="morphe_sb_color_opacity_label">Dekking:</string>
+  <string name="morphe_sb_color_dot_label">Kleur:</string>
+  <string name="morphe_sb_about_title">Oor</string>
+  <string name="morphe_sb_about_api_summary">"Data word verskaf deur die SponsorBlock API.
+
+Tik hier om Sponsor.ajay.app oop te maak en laai aflaai vir ander platforms"</string>
+</resources>

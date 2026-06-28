@@ -10,6 +10,8 @@ package app.morphe.patches.music.layout.sponsorblock
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patches.all.misc.resources.addAppResources
+import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -42,12 +44,15 @@ val musicSponsorBlockPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         musicVideoInformationPatch,
-        settingsPatch
+        settingsPatch,
+        addResourcesPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
 
     execute {
+        addAppResources("sponsorblock")
+
         // Configure the shared SponsorBlockApi and clear per-track state. Registered after the
         // VideoInformation initialize hook so player state is ready before SB initializes.
         onMusicCreateHook(EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS, "initialize")

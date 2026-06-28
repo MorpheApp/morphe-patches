@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
+  <string name="morphe_sb_enable_compact_skip_button">Koristi kompaktno dugme za preskakanje</string>
+  <string name="morphe_sb_enable_compact_skip_button_summary">Smanjuje širinu dugmeta „Preskoči” radi uštede prostora</string>
+  <string name="morphe_sb_enable_auto_hide_skip_segment_button">Automatski sakrij dugme za preskakanje</string>
+  <string name="morphe_sb_enable_auto_hide_skip_segment_button_summary">Sakriva dugme „Preskoči” nakon nekoliko sekundi umesto da ga prikazuje tokom celog segmenta</string>
+  <string name="morphe_sb_auto_hide_skip_button_duration">Trajanje dugmeta za preskakanje</string>
+  <string name="morphe_sb_auto_hide_skip_button_duration_summary">Postavi koliko dugo ostaje vidljivo dugme „Preskoči”</string>
+  <string name="morphe_sb_general_skiptoast">Prikaži iskačuće obaveštenje o poništavanju preskakanja</string>
+  <string name="morphe_sb_general_skiptoast_summary">Prikazuje obaveštenje koje ti omogućava da otkažeš automatsko preskakanje</string>
+  <string name="morphe_sb_toast_on_skip_duration">Trajanje iskačućeg obaveštenja pri preskakanju</string>
+  <string name="morphe_sb_toast_on_skip_duration_summary">Postavi koliko dugo ostaje vidljivo obaveštenje za otkazivanje</string>
+  <string name="morphe_sb_duration_1s">1 sekunda</string>
+  <string name="morphe_sb_duration_2s">2 sekunde</string>
+  <string name="morphe_sb_duration_3s">3 sekunde</string>
+  <string name="morphe_sb_duration_4s">4 sekunde</string>
+  <string name="morphe_sb_duration_5s">5 sekundi</string>
+  <string name="morphe_sb_duration_6s">6 sekundi</string>
+  <string name="morphe_sb_duration_7s">7 sekundi</string>
+  <string name="morphe_sb_duration_8s">8 sekundi</string>
+  <string name="morphe_sb_duration_9s">9 sekundi</string>
+  <string name="morphe_sb_duration_10s">10 sekundi</string>
+  <string name="morphe_sb_general_time_without">Prikaži dužinu videa bez segmenata</string>
+  <string name="morphe_sb_general_time_without_summary">Oduzima sve segmente u ukupnoj trajanju videa prikazanoj na traci za pretraživanje</string>
+  <string name="morphe_sb_create_segment_category">Pravljenje novih segmenata</string>
+  <string name="morphe_sb_enable_create_segment">Prikaži dugme „Kreiraj novi segment”</string>
+  <string name="morphe_sb_enable_create_segment_summary">Dodaje dugme plejeru videa koje ti omogućava da pošalješ nove segmente SponsorBlock</string>
+  <string name="morphe_sb_general_adjusting">Korak podešavanja vremena</string>
+  <string name="morphe_sb_general_adjusting_summary">Iznos podešavanja vremena pomoću dugmadi za podešavanje (u milisekundama)</string>
+  <string name="morphe_sb_general_adjusting_invalid">Vrednost mora biti pozitivan broj</string>
+  <string name="morphe_sb_guidelines_preference_title">Smernice za predaju</string>
+  <string name="morphe_sb_guidelines_preference_summary">Smernice sadrže pravila i savete za pravljenje novih segmenata</string>
+  <string name="morphe_sb_guidelines_popup_title">Pratite smernice</string>
+  <string name="morphe_sb_guidelines_popup_content">Pročitajte smernice SponsorBlocka pre pravljenja novih segmenata</string>
+  <string name="morphe_sb_guidelines_popup_already_read">Već pročitano</string>
+  <string name="morphe_sb_guidelines_popup_open">Pokaži mi</string>
+  <string name="morphe_sb_general">Opšte</string>
+  <string name="morphe_sb_toast_on_connection_error">Prikaži upozorenja o grešci u vezi</string>
+  <string name="morphe_sb_toast_on_connection_error_summary">Prikazuje obaveštenje kada je server SponsorBlock nedostupan</string>
+  <string name="morphe_sb_general_skipcount">Omogući praćenje broja preskakanja</string>
+  <string name="morphe_sb_general_skipcount_summary">Šalje brojeve preskakanja na rang listu SponsorBlock kako bi se pratilo koliko vremena se uštedi</string>
+  <string name="morphe_sb_general_min_duration">Minimalno trajanje segmenta</string>
+  <string name="morphe_sb_general_min_duration_summary">Segmenti kraći od ove vrednosti (u sekundama) neće biti prikazani ili preskočeni</string>
+  <string name="morphe_sb_general_min_duration_invalid">Nevažeće vremensko trajanje</string>
+  <string name="morphe_sb_general_uuid">Vaš privatni korisnički ID</string>
+  <string name="morphe_sb_general_uuid_summary">Ovo treba da ostane privatno. Ovo je kao lozinka i ne bi trebalo da se deli ni sa kim. Ako neko ima ovo, može da se lažno predstavlja za vas</string>
+  <string name="morphe_sb_general_uuid_invalid">Privatni korisnički ID mora da ima najmanje 30 znakova</string>
+  <string name="morphe_sb_general_api_url">Promena URL-a API-ja</string>
+  <string name="morphe_sb_general_api_url_summary">Adresa koju SponsorBlock koristi za upućivanje poziva serveru</string>
+  <string name="morphe_sb_channel_whitelist">Lista dozvoljenih kanala</string>
+  <string name="morphe_sb_channel_whitelist_summary">SponsorBlock je onemogućen za kanale na listi dozvoljenih</string>
+  <string name="morphe_sb_channel_whitelist_current_channel">Trenutni kanal:</string>
+  <string name="morphe_sb_channel_whitelist_add">Dodaj na listu dozvoljenih kanala</string>
+  <string name="morphe_sb_channel_whitelist_remove">Ukloni</string>
+  <string name="morphe_sb_channel_whitelist_channels_header">Kanali sa liste dozvoljenih kanala</string>
+  <string name="morphe_sb_channel_whitelist_empty">Nijedan kanal nije na listi dozvoljenih kanala</string>
+  <string name="morphe_sb_channel_whitelist_channel_added">Kanal je dodan na listu dozvoljenih kanala</string>
+  <string name="morphe_sb_channel_whitelist_channel_removed">Kanal je uklonjen sa liste dozvoljenih kanala</string>
+  <string name="morphe_sb_toast_on_whitelisted_channel">Obavesti kada je kanal na listi dozvoljenih kanala</string>
+  <string name="morphe_sb_toast_on_whitelisted_channel_summary">Prikazuje obaveštenje kada je SponsorBlock isključen za kanal na listi dozvoljenih kanala</string>
+  <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock je isključen za ovaj kanal</string>
+  <string name="morphe_sb_api_url_reset">Resetovanje URL-a API-ja</string>
+  <string name="morphe_sb_api_url_invalid">URL API-ja je nevažeći</string>
+  <string name="morphe_sb_api_url_changed">URL API-ja je promenjen</string>
+  <string name="morphe_sb_settings_ie">Uvoz/Izvoz podešavanja</string>
+  <string name="morphe_sb_settings_copy">Kopiraj</string>
+  <string name="morphe_sb_settings_ie_summary">Vaša SponsorBlock JSON konfiguracija koja može da se uveze/izveze u Morphe i druge SponsorBlock platforme</string>
+  <string name="morphe_sb_settings_ie_summary_warning">"Tvoja JSON konfiguracija SponsorBlock-a koja se može uvesti / izvesti u Morphe i druge SponsorBlock platforme
+
+Ovo uključuje tvoj privatni korisnički ID. Obavezno budite oprezni pri deljenju ovog"</string>
+  <string name="morphe_sb_settings_import_successful">Podešavanja su uspešno uvezena</string>
+  <string name="morphe_sb_settings_import_failed">Neuspešan uvoz: %s</string>
+  <string name="morphe_sb_settings_export_failed">Neuspešan izvoz: %s</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"Vaša podešavanja sadrže privatni SponsorBlock korisnički ID.
+
+Vaš korisnički ID je kao lozinka i nikada ga ne treba deliti."</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Ne prikazuj ponovo</string>
+  <string name="morphe_sb_diff_segments">Promena ponašanja segmenta</string>
+  <string name="morphe_sb_segments_sponsor">Sponzor</string>
+  <string name="morphe_sb_segments_sponsor_summary">Plaćene promocije, plaćene preporuke i direktni oglasi. Nije za samopromociju ili besplatno pozivanje na ciljeve / kreatore / veb-sajtove / proizvode koji im se sviđaju</string>
+  <string name="morphe_sb_segments_selfpromo">Neplaćena promocija/Samopromocija</string>
+  <string name="morphe_sb_segments_selfpromo_summary">Slično kao Kod sponzora, osim za neplaćenu / samopromociju. Uključuje odeljke o robi, donacijama ili informacijama o tome sa kim su sarađivali</string>
+  <string name="morphe_sb_segments_interaction">Podsetnik o interakciji (praćenje)</string>
+  <string name="morphe_sb_segments_interaction_summary">Kratak podsetnik da lajkujete, pretplatite se ili ih zapratite usred sadržaja. Ako je dugačak ili o nečemu konkretnom, trebalo bi da bude pod samopromocijom</string>
+  <string name="morphe_sb_segments_highlight">Istaknuto</string>
+  <string name="morphe_sb_segments_highlight_summary">Deo videa koji većina ljudi traži</string>
+  <string name="morphe_sb_segments_intro">Pauza/Uvodna animacija</string>
+  <string name="morphe_sb_segments_intro_summary">Interval bez stvarnog sadržaja. Može biti pauza, statični kadar ili ponavljajuća animacija. Ne uključuje prelaze koji sadrže informacije</string>
+  <string name="morphe_sb_segments_outro">Završne kartice / Zasluge</string>
+  <string name="morphe_sb_segments_outro_summary">Zasluge ili kada se pojave YouTube završne kartice. Nije za zaključke sa informacijama</string>
+  <string name="morphe_sb_segments_hook">Mamac / Pozdravi</string>
+  <string name="morphe_sb_segments_hook_summary">Narativni trejleri za predstojeći video, pozdravi i oproštaji. Ne uključuje segmente koji dodaju dodatni sadržaj</string>
+  <string name="morphe_sb_segments_preview">Pregled / Rekapitulacija</string>
+  <string name="morphe_sb_segments_preview_summary">Kolekcija klipova koji pokazuju šta sledi ili šta se desilo u videu ili u drugim videima serijе, gde se sve informacije ponavljaju na drugom mestu</string>
+  <string name="morphe_sb_segments_filler">Digresija / Šale</string>
+  <string name="morphe_sb_segments_filler_summary">Digresivne scene ili šale, koje nisu potrebne za razumevanje glavnog sadržaja videa. Ovo ne uključuje segmente koji pružaju detalje o kontekstu ili pozadini</string>
+  <string name="morphe_sb_segments_nomusic">Muzika: Segment bez muzike</string>
+  <string name="morphe_sb_segments_nomusic_summary">Samo za upotrebu u muzičkim spotovima. Delovi muzičkih spotova bez muzike koji nisu obuhvaćeni drugom kategorijom</string>
+  <string name="morphe_sb_skip_button_compact">Preskoči</string>
+  <string name="morphe_sb_skip_button_compact_highlight">Istaknuto</string>
+  <string name="morphe_sb_skip_button_sponsor">Preskoči sponzora</string>
+  <string name="morphe_sb_skip_button_selfpromo">Preskoči promociju</string>
+  <string name="morphe_sb_skip_button_interaction">Preskoči interakciju</string>
+  <string name="morphe_sb_skip_button_highlight">Preskoči na istaknuto</string>
+  <string name="morphe_sb_skip_button_intro_beginning">Preskoči uvodnu animaciju</string>
+  <string name="morphe_sb_skip_button_intro_middle">Preskoči pauzu</string>
+  <string name="morphe_sb_skip_button_intro_end">Preskoči pauzu</string>
+  <string name="morphe_sb_skip_button_outro">Preskoči završnu animaciju</string>
+  <string name="morphe_sb_skip_button_hook">Preskoči mamac</string>
+  <string name="morphe_sb_skip_button_preview_beginning">Preskoči pregled</string>
+  <string name="morphe_sb_skip_button_preview_middle">Preskoči pregled</string>
+  <string name="morphe_sb_skip_button_preview_end">Preskoči rekapitulaciju</string>
+  <string name="morphe_sb_skip_button_filler">Preskoči digresiju</string>
+  <string name="morphe_sb_skip_button_nomusic">Preskoči segment bez muzike</string>
+  <string name="morphe_sb_skip_button_unsubmitted">Preskoči segment</string>
+  <string name="morphe_sb_skipped_sponsor">Preskočen sponzor</string>
+  <string name="morphe_sb_skipped_selfpromo">Preskočena samopromocija</string>
+  <string name="morphe_sb_skipped_interaction">Preskočen dosadni podsetnik</string>
+  <string name="morphe_sb_skipped_highlight">Preskočeno na istaknuto</string>
+  <string name="morphe_sb_skipped_intro_beginning">Preskočena uvodna animacija</string>
+  <string name="morphe_sb_skipped_intro_middle">Preskočena pauza</string>
+  <string name="morphe_sb_skipped_intro_end">Preskočena pauza</string>
+  <string name="morphe_sb_skipped_outro">Preskočena završna animacija</string>
+  <string name="morphe_sb_skipped_hook">Preskočen mamac</string>
+  <string name="morphe_sb_skipped_preview_beginning">Preskočen pregled</string>
+  <string name="morphe_sb_skipped_preview_middle">Preskočen pregled</string>
+  <string name="morphe_sb_skipped_preview_end">Preskočena rekapitulacija</string>
+  <string name="morphe_sb_skipped_filler">Preskočeno nepovezano</string>
+  <string name="morphe_sb_skipped_nomusic">Preskočen segment bez muzike</string>
+  <string name="morphe_sb_skipped_unsubmitted">Preskočen nepodneseni segment</string>
+  <string name="morphe_sb_skipped_multiple_segments">Preskočeno više segmenata</string>
+  <string name="morphe_sb_skip_automatically">Preskoči automatski</string>
+  <string name="morphe_sb_skip_automatically_once">Preskoči automatski jedanput</string>
+  <string name="morphe_sb_skip_showbutton">Prikaži dugme za preskakanje</string>
+  <string name="morphe_sb_skip_seekbaronly">Prikaži na traci za premotavanje</string>
+  <string name="morphe_sb_skip_ignore">Onemogući</string>
+  <string name="morphe_sb_submit_failed_invalid">Nije moguće podneti segment: %s</string>
+  <string name="morphe_sb_submit_failed_timeout">SponsorBlock privremeno ne radi</string>
+  <string name="morphe_sb_submit_failed_unknown_error">Nije mogući podneti segment (status: %1$d %2$s)</string>
+  <string name="morphe_sb_submit_failed_rate_limit">Nije moguće podneti segment. Prekoračeno ograničenje stope (previše od istog korisnika ili IP adrese)</string>
+  <string name="morphe_sb_submit_failed_forbidden">Nije moguće podneti segment: %s</string>
+  <string name="morphe_sb_submit_failed_duplicate">"Nije moguće podneti segment.
+Već postoji"</string>
+  <string name="morphe_sb_submit_succeeded">Segment je uspešno podnet</string>
+  <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock privremeno nije dostupan (API istekao)</string>
+  <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock privremeno nije dostupan (status %d)</string>
+  <string name="morphe_sb_sponsorblock_connection_failure_generic">SponsorBlock privremeno nije dostupan</string>
+  <string name="morphe_sb_vote_failed_timeout">Nije moguće glasati za segment (API istekao)</string>
+  <string name="morphe_sb_vote_failed_unknown_error">Nije moguće glasati za segment (status: %1$d %2$s)</string>
+  <string name="morphe_sb_vote_failed_forbidden">Nije moguće glasati za segment: %s</string>
+  <string name="morphe_sb_vote_upvote">Glasaj za</string>
+  <string name="morphe_sb_vote_downvote">Glasaj protiv</string>
+  <string name="morphe_sb_vote_category">Promeni kategoriju</string>
+  <string name="morphe_sb_vote_no_segments">Nema nijednog segmenta za glasanje</string>
+  <!-- A segment start and end time, such as "02:10 to 03:40". -->
+  <string name="morphe_sb_vote_segment_time_to_from">%1$s do %2$s</string>
+  <string name="morphe_sb_new_segment_choose_category">Izaberite kategoriju segmenta</string>
+  <string name="morphe_sb_new_segment_disabled_category">Kategorija je onemogućena u podešavanjima. Omogućite kategoriju da biste podneli.</string>
+  <string name="morphe_sb_new_segment_title">Novi SponsorBlock segment</string>
+  <string name="morphe_sb_new_segment_mark_time_as_question">Postaviti %s kao početak ili kraj novog segmenta?</string>
+  <string name="morphe_sb_new_segment_mark_start">Početak</string>
+  <string name="morphe_sb_new_segment_mark_end">Kraj</string>
+  <string name="morphe_sb_new_segment_now">Sada</string>
+  <string name="morphe_sb_new_segment_time_start">Vreme početka segmenta</string>
+  <string name="morphe_sb_new_segment_time_end">Vreme kraja segmenta</string>
+  <string name="morphe_sb_new_segment_confirm_title">Da li su vremena tačna?</string>
+  <string name="morphe_sb_new_segment_confirm_content">"Segment je od
+
+%1$s
+do
+%2$s
+
+(%3$s)
+
+Spreman za podnošenje?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Potvrdi</string>
+  <string name="morphe_sb_new_segment_start_is_before_end">Početak mora biti pre kraja</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Prvo označite lokaciju na vremenskoj traci</string>
+  <string name="morphe_sb_new_segment_preview_segment_first">Pregledajte segment i uverite se da glatko preskače</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_title">Ručno izmenite vreme segmenta</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_content">Želite li da izmenite vreme početka ili kraja segmenta?</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Dato je nevažeće vreme</string>
+  <string name="morphe_sb_new_segment_highlight_title">Pošalji isticanje</string>
+  <string name="morphe_sb_new_segment_highlight_content">"Da li je vreme za isticanje ispravno?
+
+%s
+
+Ako ne šaljete isticanje, dodirnite Otkaži i označite drugu lokaciju."</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Pošalji isticanje</string>
+  <string name="morphe_sb_stats_title">Statistika</string>
+  <!-- Shown in the settings preferences, and translations can be any text length. -->
+  <string name="morphe_sb_stats_connection_failure">Statistike privremeno nisu dostupne (API ne radi)</string>
+  <string name="morphe_sb_stats_loading">Učitavanje…</string>
+  <string name="morphe_sb_stats_sb_disabled">SponsorBlock je onemogućen</string>
+  <string name="morphe_sb_stats_username">Vaše korisničko ime: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_username_change">Dodirnite ovde da promenite svoje korisničko ime</string>
+  <string name="morphe_sb_stats_username_change_unknown_error">Nije moguće promeniti korisničko ime: Status: %1$d %2$s</string>
+  <string name="morphe_sb_stats_username_changed">Korisničko ime uspešno promenjeno</string>
+  <string name="morphe_sb_stats_reputation">Vaša reputacija je &lt;b&gt;%.2f&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_submissions">Napravili ste &lt;b&gt;%s&lt;/b&gt; segmenata</string>
+  <string name="morphe_sb_stats_submissions_summary">Dodirnite ovde da biste videli svoje segmente</string>
+  <string name="morphe_sb_stats_saved_zero">SponsorBlock rang-lista</string>
+  <string name="morphe_sb_stats_saved">Sačuvali ste ljude od &lt;b&gt;%s&lt;/b&gt; segmenata</string>
+  <string name="morphe_sb_stats_saved_summary_zero">Dodirnite ovde da biste videli globalnu statistiku i najbolje doprinosioce</string>
+  <string name="morphe_sb_stats_saved_summary">To je &lt;b&gt;%s&lt;/b&gt; njihovih života.&lt;br&gt;Dodirnite ovde da biste videli rang-listu</string>
+  <string name="morphe_sb_stats_self_saved">Preskočili ste &lt;b&gt;%s&lt;/b&gt; segmenata</string>
+  <string name="morphe_sb_stats_self_saved_summary">To je &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_self_saved_reset_title">Resetovati brojač preskočenih segmenata?</string>
+  <string name="morphe_sb_stats_saved_hour_format">%1$s sati %2$s minuta</string>
+  <string name="morphe_sb_stats_saved_minute_format">%1$s minuta %2$s sekundi</string>
+  <string name="morphe_sb_stats_saved_second_format">%s sekundi</string>
+  <string name="morphe_sb_color_opacity_label">Neprozirnost:</string>
+  <string name="morphe_sb_color_dot_label">Boja:</string>
+  <string name="morphe_sb_about_title">O programu</string>
+  <string name="morphe_sb_about_api_summary">"Податке пружа SponsorBlock API.
+
+Додирните овде да бисте отворили Sponsor.ajay.app и погледали преузимања за друге платформе"</string>
+</resources>

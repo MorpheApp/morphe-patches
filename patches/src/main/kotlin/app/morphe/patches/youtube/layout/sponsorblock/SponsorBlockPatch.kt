@@ -5,6 +5,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patches.all.misc.resources.addAppResources
+import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.InputType
@@ -51,10 +53,13 @@ private val sponsorBlockResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
         resourceMappingPatch,
-        legacyPlayerControlsPatch
+        legacyPlayerControlsPatch,
+        addResourcesPatch
     )
 
     execute {
+        addAppResources("sponsorblock")
+
         PreferenceScreen.SPONSORBLOCK.addPreferences(
             SwitchPreference("morphe_sb_enabled", summary = true),
             PreferenceCategory(
