@@ -13,9 +13,7 @@ package app.morphe.extension.youtube.patches;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.view.MenuItem;
 
 import androidx.annotation.Nullable;
 
@@ -106,6 +104,11 @@ public final class ChangeStartPagePatch {
 
     /**
      * Intent action when YouTube is cold started from the launcher.
+     * <p>
+     * If you don't check this, the hooking will also apply in the following cases:
+     * Case 1. The user clicked Shorts button on the YouTube shortcut.
+     * Case 2. The user clicked Shorts button on the YouTube widget.
+     * In this case, instead of opening Shorts, the start page specified by the user is opened.
      */
     private static final String ACTION_MAIN = "android.intent.action.MAIN";
     private static boolean appLaunched = false;
@@ -113,18 +116,13 @@ public final class ChangeStartPagePatch {
     public static String overrideBrowseId(String original) {
         try {
             StartPage startPage = Settings.CHANGE_START_PAGE.get();
-            boolean changeStartPageAlways = Settings.CHANGE_START_PAGE_ALWAYS.get();
+            boolean changeStartPageAlways = true;
 
             if (!startPage.isBrowseId()) {
                 return original;
             }
 
             if (!"FEwhat_to_watch".equals(original)) {
-                return original;
-            }
-
-            if (!changeStartPageAlways && appLaunched) {
-                Logger.printDebug(() -> "Ignore override browseId to prevent back-button loop");
                 return original;
             }
 
@@ -139,13 +137,9 @@ public final class ChangeStartPagePatch {
 
     public static void overrideIntentAction(Intent intent) {
         try {
-            if (intent == null) return;
-            if (ACTION_MAIN.equals(intent.getAction())) {
-                appLaunched = false;
-            }
 
             StartPage startPage = Settings.CHANGE_START_PAGE.get();
-            boolean changeStartPageAlways = Settings.CHANGE_START_PAGE_ALWAYS.get();
+            boolean changeStartPageAlways = true;
 
             if (!startPage.isIntentAction()) {
                 return;
@@ -161,10 +155,6 @@ public final class ChangeStartPagePatch {
                 return;
             }
 
-            if (!changeStartPageAlways && appLaunched) {
-                Logger.printDebug(() -> "Ignore override intent action as the app already launched");
-                return;
-            }
             appLaunched = true;
 
             String intentAction = startPage.id;
@@ -175,40 +165,5 @@ public final class ChangeStartPagePatch {
         } catch (Exception ex) {
             Logger.printException(() -> "overrideIntentAction failure", ex);
         }
-    }
-
-    /**
-     * Injection point.
-     */
-    public static boolean handleOptionsItemSelected(MenuItem item, Activity activity) {
-        try {
-            if (item != null && item.getItemId() == 16908332) {
-                Logger.printDebug(() -> "Toolbar back button (Home/Up) intercepted! Forcing app exit.");
-
-                if (activity.getClass().getName().contains("Shell$HomeActivity")) {
-                    activity.finishAffinity();
-                    return true;
-                }
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "Failed to intercept options item selection", ex);
-        }
-        return false;
-    }
-
-    /**
-     * Injection point.
-     */
-    public static boolean handleBackPressed(Activity activity) {
-        try {
-            if (activity.getClass().getName().contains("Shell$HomeActivity")) {
-                Logger.printDebug(() -> "Physical back button pressed. Exiting application directly.");
-                activity.finishAffinity();
-                return true;
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "handleBackPressed tracking failed", ex);
-        }
-        return false;
     }
 }

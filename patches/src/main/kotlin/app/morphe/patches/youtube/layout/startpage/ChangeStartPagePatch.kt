@@ -41,7 +41,8 @@ val changeStartPagePatch = bytecodePatch(
         BrowseIdFingerprint.let {
             it.method.apply {
                 val browseIdIndex = it.instructionMatches.first().index
-                val browseIdRegister = getInstruction<OneRegisterInstruction>(browseIdIndex).registerA
+                val browseIdRegister =
+                    getInstruction<OneRegisterInstruction>(browseIdIndex).registerA
 
                 addInstructions(
                     browseIdIndex + 1,
@@ -58,31 +59,6 @@ val changeStartPagePatch = bytecodePatch(
         IntentActionFingerprint.method.addInstruction(
             0,
             "invoke-static { p1 }, $EXTENSION_CLASS->overrideIntentAction(Landroid/content/Intent;)V",
-        )
-
-        OnBackPressedFingerprint.method.addInstructions(
-            0,
-            """
-                invoke-static { p0 }, $EXTENSION_CLASS->handleBackPressed(Landroid/app/Activity;)Z
-                move-result v0
-                
-                if-eqz v0, :cond_continue_back
-                return-void
-                :cond_continue_back
-            """
-        )
-
-        OnOptionsItemSelectedFingerprint.method.addInstructions(
-            0,
-            """
-                invoke-static { p1, p0 }, $EXTENSION_CLASS->handleOptionsItemSelected(Landroid/view/MenuItem;Landroid/app/Activity;)Z
-                move-result v0
-
-                if-eqz v0, :cond_continue_options
-                const/4 v0, 0x1
-                return v0
-                :cond_continue_options
-            """
         )
     }
 }
