@@ -5,6 +5,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
+import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -26,9 +28,12 @@ val changeStartPagePatch = bytecodePatch(
 
     execute {
         PreferenceScreen.GENERAL.addPreferences(
-            ListPreference(
-                key = "morphe_change_start_page",
-                tag = "app.morphe.extension.shared.settings.preference.SortedListPreference"
+            noTitleUnsortedPreferenceCategory(
+                ListPreference(
+                    key = "morphe_change_start_page",
+                    tag = "app.morphe.extension.shared.settings.preference.SortedListPreference"
+                ),
+                SwitchPreference("morphe_change_start_page_always", summary = true)
             )
         )
 
@@ -53,6 +58,31 @@ val changeStartPagePatch = bytecodePatch(
         IntentActionFingerprint.method.addInstruction(
             0,
             "invoke-static { p1 }, $EXTENSION_CLASS->overrideIntentAction(Landroid/content/Intent;)V",
+        )
+
+        OnBackPressedFingerprint.method.addInstructions(
+            0,
+            """
+                invoke-static { p0 }, $EXTENSION_CLASS->handleBackPressed(Landroid/app/Activity;)Z
+                move-result v0
+                
+                if-eqz v0, :cond_continue_back
+                return-void
+                :cond_continue_back
+            """
+        )
+
+        OnOptionsItemSelectedFingerprint.method.addInstructions(
+            0,
+            """
+                invoke-static { p1, p0 }, $EXTENSION_CLASS->handleOptionsItemSelected(Landroid/view/MenuItem;Landroid/app/Activity;)Z
+                move-result v0
+
+                if-eqz v0, :cond_continue_options
+                const/4 v0, 0x1
+                return v0
+                :cond_continue_options
+            """
         )
     }
 }

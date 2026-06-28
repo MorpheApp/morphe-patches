@@ -23,3 +23,16 @@ internal object BrowseIdFingerprint : Fingerprint(
         fieldAccess(opcode = Opcode.IPUT_OBJECT, type = "Ljava/lang/String;")
     )
 )
+
+internal object OnOptionsItemSelectedFingerprint : Fingerprint(
+    returnType = "Z",
+    parameters = listOf("Landroid/view/MenuItem;"),
+    filters = listOf(
+        literal(16908332)
+    )
+)
+
+internal object OnBackPressedFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf()
+)

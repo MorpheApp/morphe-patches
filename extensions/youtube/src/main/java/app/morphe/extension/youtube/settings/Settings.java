@@ -50,6 +50,7 @@ import app.morphe.extension.youtube.patches.AlternativeThumbnailsPatch.Thumbnail
 import app.morphe.extension.youtube.patches.AlternativeThumbnailsPatch.ThumbnailStillTime;
 import app.morphe.extension.youtube.patches.AutoCaptionsPatch.AutoCaptionsStyle;
 import app.morphe.extension.youtube.patches.ChangeFormFactorPatch.TabletLayoutInPlayerAvailability;
+import app.morphe.extension.youtube.patches.ChangeStartPagePatch;
 import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch.RestoreOldPlayerButtonsAvailability;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.patches.components.LayoutComponentsFilter;
@@ -376,6 +377,8 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting OVERRIDE_YOUTUBE_MUSIC_BUTTONS = new BooleanSetting("morphe_override_youtube_music_buttons", FALSE, true);
     public static final StringSetting MORPHE_MUSIC_PACKAGE_NAME = new StringSetting("morphe_music_package_name", "app.morphe.android.apps.youtube.music", true, parent(OVERRIDE_YOUTUBE_MUSIC_BUTTONS));
     public static final EnumSetting<StartPage> CHANGE_START_PAGE = new EnumSetting<>("morphe_change_start_page", StartPage.DEFAULT, true);
+    public static final BooleanSetting CHANGE_START_PAGE_ALWAYS = new BooleanSetting("morphe_change_start_page_always", FALSE, true,
+            new ChangeStartPagePatch.ChangeStartPageTypeAvailability());
     public static final StringSetting SPOOF_APP_VERSION_TARGET = new StringSetting("morphe_spoof_app_version_target", "20.13.41", true, parent(SPOOF_APP_VERSION));
 
     // Custom filter
