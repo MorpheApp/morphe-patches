@@ -7,28 +7,24 @@
 
 package app.morphe.extension.youtube.patches.components;
 
-import static app.morphe.extension.youtube.patches.OpenSystemShareSheetPatch.openSystemShareSheet;
-import static app.morphe.extension.youtube.patches.OpenSystemShareSheetPatch.systemSheetOpened;
-import static app.morphe.extension.youtube.settings.Settings.OPEN_SYSTEM_SHARE_SHEET;
+import static app.morphe.extension.youtube.patches.OpenSystemShareSheetPatch.closeLithoAppShareSheet;
 
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.Filter;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
+import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
 public final class SystemShareSheetFilter extends Filter {
 
     public SystemShareSheetFilter() {
         addPathCallbacks(new StringFilterGroup(
-                OPEN_SYSTEM_SHARE_SHEET,
+                Settings.OPEN_SYSTEM_SHARE_SHEET,
                 "share_sheet_container."
         ));
     }
 
-    /**
-     * Replaces YouTube's in-app share sheet with the system share sheet.
-     */
     @Override
     public boolean isFiltered(ContextInterface contextInterface,
                               String identifier,
@@ -39,9 +35,8 @@ public final class SystemShareSheetFilter extends Filter {
                               StringFilterGroup matchedGroup,
                               FilterContentType contentType,
                               int contentIndex) {
-        if (!systemSheetOpened && openSystemShareSheet()) {
-            systemSheetOpened = true;
-        }
+        closeLithoAppShareSheet();
+
         return false;
     }
 }
