@@ -59,6 +59,8 @@ public final class AddToQueuePatch {
     private static PopupWindow flyoutPopupWindow = null;
 
     private static final String queueButtonName = "QUEUE_PLAY_NEXT";
+    private static final String shareButtonName = "SHARE_ARROW";
+
 
     private static final List<byte[]> VIDEO_ID_PREFIXES_BYTES = List.of(
             // Can be i.ytimg.com, i2.ytimg.com, i3, etc.
@@ -70,10 +72,15 @@ public final class AddToQueuePatch {
 
     private static final List<Pair<String, Integer>> visibleFlyoutButtons = new ArrayList<>();
     private static String flyoutVideoId = "";
+    private static boolean delayedFlyoutVideoIdReset = false;
     private static String currentButtonName = "";
     private static int currentButtonIndex;
 
     // All methods are called on main thread.
+
+    public static void disableDelayedFlyoutVideoIdReset() {
+        delayedFlyoutVideoIdReset = false;
+    }
 
     /**
      * Injection point.
@@ -119,8 +126,8 @@ public final class AddToQueuePatch {
     // Since we do not want to overwrite the object's original listener, we will
     // use a handler to check if the flyout panel is still visible
     // and, if not, reset the `flyoutVideoId` variable.
-    private static void runFlyoutPanelVisibilityHandler(Object flyoutPanel) {
-        if (flyoutPanel == null) {
+    private static void runFlyoutPanelVisibilityHandler(Object flyoutObject) {
+        if (flyoutObject == null) {
             return;
         }
 
@@ -129,15 +136,15 @@ public final class AddToQueuePatch {
             @Override
             public void run() {
                 final boolean isShowing;
-                if (flyoutPanel instanceof Dialog flyoutPanelDialog) {
-                    isShowing = flyoutPanelDialog.isShowing();
-                } else if (flyoutPanel instanceof PopupWindow flyoutPopup) {
-                    isShowing = flyoutPopup.isShowing();
+                if (flyoutObject instanceof Dialog flyoutDialogHandler) {
+                    isShowing = flyoutDialogHandler.isShowing();
+                } else if (flyoutObject instanceof PopupWindow flyoutPopupWindowHandler) {
+                    isShowing = flyoutPopupWindowHandler.isShowing();
                 } else {
                     isShowing = false;
                 }
 
-                if (isShowing) {
+                if (isShowing || delayedFlyoutVideoIdReset) {
                     visibilityHandler.postDelayed(this, 100);
                 } else {
                     flyoutVideoId = "";
@@ -396,6 +403,10 @@ public final class AddToQueuePatch {
                 dismissBottomSheetFlyout(); // Must dismiss after showing dialog.
                 dismissPopupWindowFlyout();
                 return;
+            }
+            // The following check is necessary for the 'System Share Sheet' patch to function correctly.
+            if (buttonName.equals(shareButtonName)) {
+                delayedFlyoutVideoIdReset = true;
             }
 
             if (original != null) {

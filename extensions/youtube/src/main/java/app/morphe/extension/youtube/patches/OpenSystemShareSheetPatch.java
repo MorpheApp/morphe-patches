@@ -8,6 +8,7 @@
 package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.shared.Utils.getContext;
+import static app.morphe.extension.youtube.patches.AddToQueuePatch.disableDelayedFlyoutVideoIdReset;
 import static app.morphe.extension.youtube.patches.AddToQueuePatch.getFlyoutVideoId;
 
 import android.content.Intent;
@@ -36,8 +37,10 @@ public final class OpenSystemShareSheetPatch {
 
     public static boolean openSystemShareSheet() {
         systemSheetOpened = true;
-        final String videoID = (!getFlyoutVideoId().isEmpty() ? getFlyoutVideoId() : VideoInformation.getVideoId());
-        final String videoURL = "https://www.youtu.be/" + videoID;
+        final String videoURL =
+                "https://youtu.be/" +
+                (!getFlyoutVideoId().isEmpty() ? getFlyoutVideoId() : VideoInformation.getVideoId());
+        disableDelayedFlyoutVideoIdReset();
         RecyclerView shareSheetRecyclerView = flyoutMenuRecyclerView.get();
         if (shareSheetRecyclerView != null) {
             performClickOutsidePanel(shareSheetRecyclerView.getRootView());
