@@ -7,8 +7,7 @@
 
 package app.morphe.extension.youtube.patches.components;
 
-import static app.morphe.extension.youtube.patches.OpenSystemShareSheetPatch.openSystemShareSheet;
-import static app.morphe.extension.youtube.patches.OpenSystemShareSheetPatch.systemSheetOpened;
+import static app.morphe.extension.youtube.patches.OpenSystemShareSheetPatch.closeLithoAppShareSheet;
 import static app.morphe.extension.youtube.settings.Settings.OPEN_SYSTEM_SHARE_SHEET;
 
 import app.morphe.extension.youtube.patches.components.LithoFilterPatch.BufferAsciiStrings;
@@ -37,9 +36,8 @@ public final class SystemShareSheetFilter extends Filter {
                        StringFilterGroup matchedGroup,
                        FilterContentType contentType,
                        int contentIndex) {
-        if (!systemSheetOpened && openSystemShareSheet()) {
-            systemSheetOpened = false;
-        }
+        closeLithoAppShareSheet();
+
         return true;
     }
 }

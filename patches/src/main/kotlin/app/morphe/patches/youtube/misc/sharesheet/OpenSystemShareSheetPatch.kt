@@ -7,12 +7,13 @@
 
 package app.morphe.patches.youtube.misc.sharesheet
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.flyout.addToQueuePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
+import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.recyclerviewtree.hook.addRecyclerViewTreeHook
 import app.morphe.patches.youtube.misc.recyclerviewtree.hook.recyclerViewTreeHookPatch
@@ -23,6 +24,7 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/OpenSystemShareSheetPatch;"
 private const val EXTENSION_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/SystemShareSheetFilter;"
+
 
 @Suppress("unused")
 internal fun openSystemShareSheetPatch(
@@ -44,6 +46,11 @@ internal fun openSystemShareSheetPatch(
     execute {
         PreferenceScreen.GENERAL.addPreferences(
             SwitchPreference("morphe_open_system_share_sheet", summary = true)
+        )
+
+        ShareSheetPanelContentInitializationFingerprint.method.addInstruction(
+            0,
+            "invoke-static { }, $EXTENSION_CLASS->openSystemShareSheet()V"
         )
 
         addRecyclerViewTreeHook(EXTENSION_CLASS)
