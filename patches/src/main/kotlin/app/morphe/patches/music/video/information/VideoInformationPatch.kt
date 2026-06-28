@@ -15,6 +15,7 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMuta
 import app.morphe.patcher.util.smali.toInstructions
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
+import app.morphe.patches.shared.misc.videoinformation.PlayerControllerSetTimeReferenceFingerprint
 import app.morphe.util.addStaticFieldToExtension
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
@@ -124,7 +125,7 @@ val musicVideoInformationPatch = bytecodePatch(
         // Hook broadcastCurrentProgress at its position-long parameter. The progress-object
         // constructor it eventually calls has multiple overloads and the long passed there is not
         // the playback position, so resolve the position from this method's own parameter list.
-        videoTimeMethod = PlayerControllerSetTimeFingerprint.method
+        videoTimeMethod = PlayerControllerSetTimeReferenceFingerprint.method
         run {
             // The method takes (state, sentinel:long=-1, positionMs:long, …). Use the range form
             // since the long pair may sit above v15, beyond a plain invoke-static's reach.

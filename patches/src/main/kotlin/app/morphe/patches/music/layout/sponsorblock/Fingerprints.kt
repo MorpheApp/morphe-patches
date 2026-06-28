@@ -14,11 +14,9 @@ import app.morphe.patcher.Fingerprint
  * Draws segment markers on the compact/mini player seekbar.
  */
 internal object MusicTimeBarDrawFingerprint : Fingerprint(
-    returnType = "V",
-    custom = { method, _ ->
-        method.definingClass.endsWith("/MusicPlaybackControlsTimeBar;") &&
-                method.name == "draw"
-    }
+    definingClass = "/MusicPlaybackControlsTimeBar;",
+    name = "draw",
+    returnType = "V"
 )
 
 /**
@@ -26,9 +24,7 @@ internal object MusicTimeBarDrawFingerprint : Fingerprint(
  * Resolves the Rect field used for seekbar bounds.
  */
 internal object MusicTimeBarOnMeasureFingerprint : Fingerprint(
-    returnType = "V",
-    custom = { method, _ ->
-        method.definingClass.endsWith("/MusicPlaybackControlsTimeBar;") &&
-                method.name == "onMeasure"
-    }
+    definingClass = "/MusicPlaybackControlsTimeBar;",
+    name = "onMeasure",
+    returnType = "V"
 )

@@ -8,22 +8,7 @@
 package app.morphe.patches.music.video.information
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.opcode
 import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.Opcode
-
-/**
- * Matches the method that contains a call to the actual video-time setter (~every 1000ms).
- * The log string is stable across YTM versions.
- */
-internal object PlayerControllerSetTimeFingerprint : Fingerprint(
-    returnType = "V",
-    filters = listOf(
-        opcode(Opcode.INVOKE_DIRECT_RANGE),
-        opcode(Opcode.IGET_OBJECT),
-    ),
-    strings = listOf("Media progress reported outside media playback: ")
-)
 
 /**
  * Matches the player class that exposes a seek method.

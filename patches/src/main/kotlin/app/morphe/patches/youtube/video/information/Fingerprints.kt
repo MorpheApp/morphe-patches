@@ -25,13 +25,6 @@ internal object PlaybackSpeedOnItemClickFingerprint : Fingerprint(
     parameters = listOf("L", "L", "I", "J")
 )
 
-internal object PlayerControllerSetTimeReferenceFingerprint : Fingerprint(
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.INVOKE_DIRECT_RANGE, Opcode.IGET_OBJECT
-    ),
-    strings = listOf("Media progress reported outside media playback: ")
-)
-
 internal object PlayerInitFingerprint : Fingerprint(
     filters = listOf(
         string("playVideo called on player response with no videoStreamingData."),
