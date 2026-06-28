@@ -53,7 +53,7 @@ public final class AddToQueuePatch {
         String patch_getVideoId();
     }
 
-    private static WeakReference<View> senderViewObjectRef;
+    private static WeakReference<View> senderViewObjectRef = new WeakReference<>(null);
 
     private static Dialog flyoutDialog = null;
     private static PopupWindow flyoutPopupWindow = null;
@@ -128,12 +128,13 @@ public final class AddToQueuePatch {
         visibilityHandler.post(new Runnable() {
             @Override
             public void run() {
-                boolean isShowing = false;
-
-                if (flyoutPanel instanceof android.app.Dialog) {
-                    isShowing = ((android.app.Dialog) flyoutPanel).isShowing();
-                } else if (flyoutPanel instanceof android.widget.PopupWindow) {
-                    isShowing = ((android.widget.PopupWindow) flyoutPanel).isShowing();
+                final boolean isShowing;
+                if (flyoutPanel instanceof Dialog flyoutPanelDialog) {
+                    isShowing = flyoutPanelDialog.isShowing();
+                } else if (flyoutPanel instanceof PopupWindow flyoutPopup) {
+                    isShowing = flyoutPopup.isShowing();
+                } else {
+                    isShowing = false;
                 }
 
                 if (isShowing) {
@@ -255,11 +256,13 @@ public final class AddToQueuePatch {
         return -1;
     }
 
-    // - Sliding Window with Keyword Density Matching -
-    // The description of the ComponentHost item is compared against the various 'horizontal shelf'
-    // items listed in the buffer, until the matching index is found and a trimmed buffer
-    // (that start from the matched index, in order to return the right video Id)
-    // is returned. Otherwise, return the original buffer.
+    /**
+     * Sliding Window with Keyword Density Matching -
+     * The description of the ComponentHost item is compared against the various 'horizontal shelf'
+     * items listed in the buffer, until the matching index is found and a trimmed buffer
+     * (that start from the matched index, in order to return the right video Id)
+     * is returned. Otherwise, return the original buffer.
+     */
     public static byte[] getTrimmedHorizontalShelfBuffer(byte[] buffer, String description) {
         if (description == null || buffer == null || description.isEmpty()) {
             return buffer;
