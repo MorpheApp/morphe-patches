@@ -306,10 +306,9 @@ public class ScrobbleManager {
         final int delaySeconds = Settings.LISTENBRAINZ_DELAY_SECONDS.get();
 
         final long thresholdMs = (long) (currentDurationSeconds * 1000L * delayPercent);
-        long totalDelayMs = Math.min(thresholdMs, (long) delaySeconds * 1000L);
+        final long totalDelayMs = Math.min(thresholdMs, (long) delaySeconds * 1000L);
 
-        long elapsedMs = System.currentTimeMillis() - (songStartedAtSeconds * 1000L);
-        if (elapsedMs < 0) elapsedMs = 0;
+        final long elapsedMs = Math.max(0, System.currentTimeMillis() - (songStartedAtSeconds * 1000L));
 
         lbScrobbleRemainingMillis = totalDelayMs - elapsedMs;
 
@@ -340,10 +339,9 @@ public class ScrobbleManager {
         final int delaySeconds = Settings.LASTFM_DELAY_SECONDS.get();
 
         final long thresholdMs = (long) (currentDurationSeconds * 1000L * delayPercent);
-        long totalDelayMs = Math.min(thresholdMs, (long) delaySeconds * 1000L);
+        final long totalDelayMs = Math.min(thresholdMs, (long) delaySeconds * 1000L);
 
-        long elapsedMs = System.currentTimeMillis() - (songStartedAtSeconds * 1000L);
-        if (elapsedMs < 0) elapsedMs = 0;
+        final long elapsedMs = Math.max(0, System.currentTimeMillis() - (songStartedAtSeconds * 1000L));
 
         lfScrobbleRemainingMillis = totalDelayMs - elapsedMs;
 

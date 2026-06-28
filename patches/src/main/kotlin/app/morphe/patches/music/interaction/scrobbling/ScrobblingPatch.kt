@@ -162,11 +162,13 @@ val scrobblingPatch = bytecodePatch(
 
         likeEndpointParserFingerprint(likeEndpointParserClass).let {
             it.method.apply {
-                val insertIndex = it.instructionMatches[1].index + 1
+                val matchIndex = it.instructionMatches[1].index
+                val insertIndex = matchIndex + 1
                 val likeEndpointTargetClassRegister =
-                    getInstruction<TwoRegisterInstruction>(insertIndex - 1).registerA
+                    getInstruction<TwoRegisterInstruction>(matchIndex).registerA
                 val registerProvider = getFreeRegisterProvider(
-                    insertIndex, 2, likeEndpointTargetClassRegister
+                    insertIndex, 2,
+                    likeEndpointTargetClassRegister
                 )
                 val endPointServiceNameRegister = registerProvider.getFreeRegister()
                 val videoIdRegister = registerProvider.getFreeRegister()

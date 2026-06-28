@@ -9,10 +9,9 @@ package app.morphe.extension.music.patches.scrobbling;
 
 import android.media.MediaMetadata;
 import android.media.session.PlaybackState;
-import android.os.Handler;
-import android.os.Looper;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
 public class ScrobblePatch {
@@ -39,17 +38,14 @@ public class ScrobblePatch {
     }
 
     public static void onLikeClicked(final String serviceName, final String videoId) {
-        try {
-            new Handler(Looper.getMainLooper()).post(() -> {
-                try {
-                    ScrobbleManager.getInstance().onLikeClicked(serviceName, videoId);
-                } catch (Throwable t) {
-                    Logger.printException(() -> "ScrobbleHook: onLikeClicked inside post failed", t);
-                }
-            });
-        } catch (Throwable t) {
-            Logger.printException(() -> "ScrobbleHook: onLikeClicked failed", t);
-        }
+        // Edit: If this call is always on the main thread then runOnMainThreadNowOrLater can be removed.
+        Utils.runOnMainThreadNowOrLater(() -> {
+            try {
+                ScrobbleManager.getInstance().onLikeClicked(serviceName, videoId);
+            } catch (Exception ex) {
+                Logger.printException(() -> "onLikeClicked failure", ex);
+            }
+        });
     }
 }
 
