@@ -11,14 +11,22 @@ import static app.morphe.extension.shared.Utils.getContext;
 import static app.morphe.extension.youtube.patches.OpenSystemShareSheetPatch.enableIsFlyoutShareButton;
 
 import android.app.Dialog;
+import android.util.Log;
 import android.util.Pair;
+import android.view.View;
+import android.view.ViewParent;
 import android.widget.PopupWindow;
 
 import androidx.annotation.Nullable;
 
+import com.facebook.litho.ComponentHost;
+
+import java.lang.ref.WeakReference;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
@@ -44,6 +52,8 @@ public final class AddToQueuePatch {
         // Method is added during patching.
         String patch_getVideoId();
     }
+
+    private static WeakReference<View> senderViewObjectRef;
 
     private static Dialog flyoutDialog = null;
     private static PopupWindow flyoutPopupWindow = null;
@@ -100,6 +110,10 @@ public final class AddToQueuePatch {
      * Injection point.
      */
     public static void extractVideoId(Map<?, ?> map) {
+        senderViewObjectRef = new WeakReference<>(
+                (View) map.get("com.google.android.libraries.youtube.rendering.elements.sender_view")
+        );
+
         extractVideoId(map.get("com.google.android.libraries.youtube.innertube.endpoint.tag"));
     }
 
@@ -134,17 +148,31 @@ public final class AddToQueuePatch {
             }
 
             if (Settings.DEBUG_PROTOBUFFER.get()) {
+                byte[] debugFlyoutBuffer = flyoutBuffer;
                 Logger.printDebug(() -> "Flyout buffer: " +
-                        new LithoFilterPatch.BufferAsciiStrings(flyoutBuffer).getStrings());
+                        new LithoFilterPatch.BufferAsciiStrings(debugFlyoutBuffer).getStrings());
             }
 
             if (indexOf(flyoutBuffer, HORIZONTAL_SHELF_BYTES) >= 0) {
-                // The buffer contains the video id of all items in the shelf,
-                // meaning when the flyout queue button is used it needs to figure out
-                // which of those video id's the flyout belongs to.
-                // The major place this is an issue is the 'You' tab horizontal history shelf.
-                Logger.printDebug(() -> "Ignoring flyout buffer containing a horizontal shelf");
-                return;
+                View senderViewObject = senderViewObjectRef.get();
+
+                if (senderViewObject != null) {
+                    ViewParent viewObjectParent = senderViewObject.getParent();
+
+                    while (viewObjectParent != null) {
+                        if (viewObjectParent instanceof ComponentHost componentHost) {
+                            CharSequence contentDescriptionChars = componentHost.getContentDescription();
+
+                            if (contentDescriptionChars != null) {
+                                String contentDescription = contentDescriptionChars.toString();
+
+                                flyoutBuffer = getTrimmedHorizontalShelfBuffer(flyoutBuffer, contentDescription);
+                            }
+                        }
+
+                        viewObjectParent = viewObjectParent.getParent();
+                    }
+                }
             }
 
             for (byte[] VIDEO_ID_PREFIX_BYTES : VIDEO_ID_PREFIXES_BYTES) {
@@ -186,6 +214,79 @@ public final class AddToQueuePatch {
             if (found) return i;
         }
         return -1;
+    }
+
+    // - Sliding Window with Keyword Density Matching -
+    // The description of the ComponentHost item is compared against the various 'horizontal shelf'
+    // items listed in the buffer, until the matching index is found and a trimmed buffer
+    // (that start from the matched index, in order to return the right video Id)
+    // is returned. Otherwise, return the original buffer.
+    public static byte[] getTrimmedHorizontalShelfBuffer(byte[] buffer, String description) {
+        if (description == null || buffer == null || description.isEmpty()) {
+            return buffer;
+        }
+
+        String[] parts = description.split(" - ");
+        if (parts.length == 0) {
+            return buffer;
+        }
+
+        String title = parts[0].toLowerCase(Locale.ROOT).replaceAll("[^a-zA-Z0-9\\s]", "");
+        String[] rawWords = title.split("\\s+");
+        List<byte[]> words = new ArrayList<>();
+
+        for (String w : rawWords) {
+            if (w.length() > 2) {
+                words.add(w.getBytes(StandardCharsets.UTF_8));
+            }
+        }
+
+        if (words.isEmpty()) {
+            return buffer;
+        }
+
+        int bestIdx = -1;
+        int maxScore = 0;
+        int len = buffer.length;
+        int windowSize = 200;
+
+        for (int i = 0; i <= len - windowSize; i += 20) {
+            int score = 0;
+            for (byte[] w : words) {
+                boolean found = false;
+                int endLimit = i + windowSize - w.length;
+
+                for (int j = i; j <= endLimit; j++) {
+                    int k = 0;
+                    while (k < w.length) {
+                        byte b = buffer[j + k];
+                        byte processedByte = (b >= 65 && b <= 90) ? (byte) (b + 32) : b;
+                        if (processedByte != w[k]) {
+                            break;
+                        }
+                        k++;
+                    }
+                    if (k == w.length) {
+                        found = true;
+                        break;
+                    }
+                }
+                if (found) {
+                    score++;
+                }
+            }
+            if (score > maxScore) {
+                maxScore = score;
+                bestIdx = i;
+            }
+        }
+
+        int requiredScore = Math.max(1, (int) Math.ceil(words.size() * 0.4));
+        if (bestIdx != -1 && maxScore >= requiredScore) {
+            return Arrays.copyOfRange(buffer, bestIdx, len);
+        }
+
+        return buffer;
     }
 
     /**
