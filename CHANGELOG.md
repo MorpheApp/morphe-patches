@@ -1,3 +1,10 @@
+## [1.33.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.33.0-dev.3...v1.33.0-dev.4) (2026-06-28)
+
+### ✨ New Features
+
+* **YouTube Music:** Add `Scrobbling` patch ([#1856](https://github.com/MorpheApp/morphe-patches/issues/1856)) ([f9ca802](https://github.com/MorpheApp/morphe-patches/commit/f9ca802aa756d7eb78ab86df5f302c3abfe2d15b))
+* **YouTube:** Add `Add to queue` patch ([#1837](https://github.com/MorpheApp/morphe-patches/issues/1837)) ([36a1e6e](https://github.com/MorpheApp/morphe-patches/commit/36a1e6e6d6c529aa94fc607970c2cf067b0f6f4c))
+
 ## [1.33.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.33.0-dev.2...v1.33.0-dev.3) (2026-06-27)
 
 ### 🐛 Bug Fixes

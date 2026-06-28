@@ -27,7 +27,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_1_ads_title">Iklan</string>
   <string name="morphe_settings_music_screen_2_general_title">Umum</string>
   <string name="morphe_settings_music_screen_3_player_title">Pemutar</string>
-  <string name="morphe_settings_music_screen_4_misc_title">Lain-lain</string>
+  <string name="morphe_settings_music_screen_4_scrobbling_title">Melacak lagu</string>
+  <string name="morphe_settings_music_screen_5_misc_title">Lain-lain</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Sembunyikan label \'Dapatkan Music Premium\'</string>
   <!-- ad.video.hideVideoAdsPatch -->
@@ -147,4 +148,77 @@ YouTube Music 8.x — pudar silang hanya berfungsi pada versi 9.x dan yang lebih
   <string name="morphe_music_hide_navigation_bar_labels_title">Sembunyikan label tombol navigasi</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Sembunyikan tombol Upgrade</string>
+  <!-- interaction.scrobbling.scrobblingPatch -->
+  <string name="morphe_music_scrobbling_summary">Konfigurasikan integrasi Last.fm dan ListenBrainz</string>
+  <string name="morphe_music_scrobbling_summary_logged_out">Belum masuk. Ketuk untuk konfigurasi</string>
+  <string name="morphe_music_scrobbling_log_out">Keluar</string>
+  <string name="morphe_music_scrobbling_logged_out_toast">Keluar</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_enabled_title">Aktifkan scrobbling</string>
+  <string name="morphe_music_listenbrainz_now_playing_title">Kirim status \"Sedang Diputar\"</string>
+  <string name="morphe_music_listenbrainz_min_song_duration_title">Durasi lagu minimum</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_min_song_duration_summary">Lagu yang lebih pendek dari durasi ini tidak akan di-scrobble</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_title">Persentase penundaan scrobble</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_summary">Aktifkan scrobble setelah mendengarkan persentase lagu ini</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_title">Detik penundaan scrobble</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_summary">Aktifkan scrobble setelah mendengarkan selama beberapa detik ini</string>
+  <string name="morphe_music_listenbrainz_token_title">Akun ListenBrainz</string>
+  <string name="morphe_music_listenbrainz_token_summary_logged_in">Masuk. Ketuk untuk mengelola akun</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">Masukkan Token Pengguna ListenBrainz Anda untuk mengaktifkan scrobbling</string>
+  <string name="morphe_music_listenbrainz_token_dialog_hint">Token</string>
+  <string name="morphe_music_listenbrainz_token_dialog_get_token">Dapatkan token</string>
+  <string name="morphe_music_listenbrainz_token_dialog_verify">Verifikasi</string>
+  <string name="morphe_music_listenbrainz_token_status_empty">Mohon masukkan token</string>
+  <string name="morphe_music_listenbrainz_token_status_validating">Memvalidasi...</string>
+  <string name="morphe_music_listenbrainz_token_status_valid">Token valid! Pengguna: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">Token tidak valid: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid_unknown">tidak diketahui</string>
+  <string name="morphe_music_listenbrainz_token_status_failed">Verifikasi gagal: %s</string>
+  <string name="morphe_music_listenbrainz_token_toast_cleared">Token dihapus</string>
+  <string name="morphe_music_listenbrainz_token_toast_saved">Token disimpan</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Perhatian: Token yang disimpan tidak valid!</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_lastfm_enabled_title">Aktifkan scrobbling</string>
+  <string name="morphe_music_lastfm_now_playing_title">Kirim status \"Sedang Diputar\"</string>
+  <string name="morphe_music_lastfm_love_on_like_title">Sukai trek yang disukai</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">Secara otomatis sukai trek di Last.fm saat Anda menyukainya di YouTube Music (dan hapus suka saat tidak disukai atau tidak disetujui)</string>
+  <string name="morphe_music_lastfm_min_song_duration_title">Durasi lagu minimum</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_lastfm_min_song_duration_summary">Lagu yang lebih pendek dari durasi ini tidak akan di-scrobble</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_title">Persentase penundaan scrobble</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_summary">Aktifkan scrobble setelah mendengarkan persentase lagu ini</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_title">Detik penundaan scrobble</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_summary">Aktifkan scrobble setelah mendengarkan selama beberapa detik ini</string>
+  <string name="morphe_music_lastfm_token_title">Akun Last.fm</string>
+  <string name="morphe_music_lastfm_token_summary_logged_in">Masuk sebagai %s. Ketuk untuk mengelola akun</string>
+  <string name="morphe_music_lastfm_token_dialog_instruction">Masukkan kredensial Last.fm Anda untuk masuk</string>
+  <string name="morphe_music_lastfm_token_dialog_username_hint">Nama Pengguna</string>
+  <string name="morphe_music_lastfm_token_dialog_password_hint">Kata Sandi</string>
+  <string name="morphe_music_lastfm_token_dialog_login">Masuk</string>
+  <string name="morphe_music_lastfm_token_status_empty">Mohon masukkan nama pengguna dan kata sandi</string>
+  <string name="morphe_music_lastfm_token_status_logging_in">Masuk...</string>
+  <string name="morphe_music_lastfm_token_status_success">Berhasil masuk!</string>
+  <string name="morphe_music_lastfm_token_status_no_session">Gagal mendapatkan sesi dari Last.fm</string>
+  <string name="morphe_music_lastfm_token_status_failed">Masuk gagal: %s</string>
+  <string name="morphe_music_lastfm_token_toast_saved">Kredensial Last.fm tersimpan!</string>
+  <string name="morphe_settings_music_scrobbling_metadata_title">Pembersihan metadata</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_title">Bersihkan metadata</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">Secara otomatis bersihkan kekacauan umum (seperti \"Video Resmi\", \"Remaster\", \"Langsung\") dari judul, artis, dan album sebelum di-scrobble</string>
+  <string name="morphe_music_scrobbling_custom_regex_title">Pembersihan regex khusus</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">"Masukkan ekspresi reguler (regex) khusus untuk mencocokkan dan menghapus teks tambahan dari judul lagu, artis, atau album.
+Contoh: (?i)\s*\((clean|explicit)\)"</string>
+  <string name="morphe_music_scrobbling_about_title">Tentang scrobbling</string>
+  <string name="morphe_music_scrobbling_about_summary">"Scrobbling secara otomatis melacak musik yang Anda putar di YouTube Music dan menyinkronkannya ke profil Last.fm atau ListenBrainz Anda.
+
+Untuk memastikan scrobbling berjalan dengan andal di latar belakang, harap verifikasi bahwa penggunaan baterai sistem YouTube Music diatur ke \"Tidak Dibatasi\"."</string>
 </resources>

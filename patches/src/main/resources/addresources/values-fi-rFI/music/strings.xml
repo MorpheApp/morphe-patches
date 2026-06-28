@@ -27,7 +27,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_1_ads_title">Mainokset</string>
   <string name="morphe_settings_music_screen_2_general_title">Yleiset</string>
   <string name="morphe_settings_music_screen_3_player_title">Soitin</string>
-  <string name="morphe_settings_music_screen_4_misc_title">Sekalaiset</string>
+  <string name="morphe_settings_music_screen_4_scrobbling_title">Toistaminen</string>
+  <string name="morphe_settings_music_screen_5_misc_title">Sekalaiset</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Piilota \"Hanki Music Premium\" -tunniste</string>
   <!-- ad.video.hideVideoAdsPatch -->
@@ -147,4 +148,77 @@ YouTube Music 8.x – crossfade toimii vain versiossa 9.x ja uudemmissa."</strin
   <string name="morphe_music_hide_navigation_bar_labels_title">Piilota navigointipainikkeiden tunnisteet</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Piilota päivitä-painike</string>
+  <!-- interaction.scrobbling.scrobblingPatch -->
+  <string name="morphe_music_scrobbling_summary">Määritä Last.fm- ja ListenBrainz-integraatio</string>
+  <string name="morphe_music_scrobbling_summary_logged_out">Kirjaudu ulos. Napauta määrittääksesi</string>
+  <string name="morphe_music_scrobbling_log_out">Kirjaudu ulos</string>
+  <string name="morphe_music_scrobbling_logged_out_toast">Kirjauduttu ulos</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_enabled_title">Ota toistaminen käyttöön</string>
+  <string name="morphe_music_listenbrainz_now_playing_title">Lähetä \"Soitetaan nyt\" -tila</string>
+  <string name="morphe_music_listenbrainz_min_song_duration_title">Kappaleen vähimmäiskesto</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_min_song_duration_summary">Lyhyemmät kappaleet kuin tämä ei toisteta</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_title">Toiston viiveprosentti</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_summary">Aloita toisto kuunneltuasi tätä prosenttiosuutta kappaleesta</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_title">Toiston viive sekunneissa</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_summary">Aloita toisto kuunneltuasi tämän monen sekunnin ajan</string>
+  <string name="morphe_music_listenbrainz_token_title">ListenBrainz-tili</string>
+  <string name="morphe_music_listenbrainz_token_summary_logged_in">Kirjautuneena. Napauta hallitaksesi tiliä</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">Syötä ListenBrainz-käyttäjätunnuksesi ottaaksesi toiston käyttöön</string>
+  <string name="morphe_music_listenbrainz_token_dialog_hint">Tunnus</string>
+  <string name="morphe_music_listenbrainz_token_dialog_get_token">Hae tunnus</string>
+  <string name="morphe_music_listenbrainz_token_dialog_verify">Vahvista</string>
+  <string name="morphe_music_listenbrainz_token_status_empty">Anna tunnus</string>
+  <string name="morphe_music_listenbrainz_token_status_validating">Validoidaan...</string>
+  <string name="morphe_music_listenbrainz_token_status_valid">Kelvollinen tunnus! Käyttäjä: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">Virheellinen tunnus: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid_unknown">tuntematon</string>
+  <string name="morphe_music_listenbrainz_token_status_failed">Vahvistus epäonnistui: %s</string>
+  <string name="morphe_music_listenbrainz_token_toast_cleared">Tunnus tyhjennetty</string>
+  <string name="morphe_music_listenbrainz_token_toast_saved">Tunnus tallennettu</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Varoitus: Tallennettu tunnus on virheellinen!</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_lastfm_enabled_title">Ota toistaminen käyttöön</string>
+  <string name="morphe_music_lastfm_now_playing_title">Lähetä \"Soitetaan nyt\" -tila</string>
+  <string name="morphe_music_lastfm_love_on_like_title">Tykkää kappaleista Last.fm:ssä</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">Tykkää automaattisesti kappaleista Last.fm:ssä, kun tykkäät niistä YouTubessa (ja poista tykkäys, kun et tykkää tai inhoa niitä)</string>
+  <string name="morphe_music_lastfm_min_song_duration_title">Kappaleen vähimmäiskesto</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_lastfm_min_song_duration_summary">Lyhyemmät kappaleet kuin tämä ei toisteta</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_title">Toiston viiveprosentti</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_summary">Aloita toisto kuunneltuasi tätä prosenttiosuutta kappaleesta</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_title">Toiston viive sekunneissa</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_summary">Aloita toisto kuunneltuasi tämän monen sekunnin ajan</string>
+  <string name="morphe_music_lastfm_token_title">Last.fm-tili</string>
+  <string name="morphe_music_lastfm_token_summary_logged_in">Kirjautuneena käyttäjänä %s. Napauta hallitaksesi tiliä</string>
+  <string name="morphe_music_lastfm_token_dialog_instruction">Syötä Last.fm-tunnuksesi kirjautuaksesi sisään</string>
+  <string name="morphe_music_lastfm_token_dialog_username_hint">Käyttäjänimi</string>
+  <string name="morphe_music_lastfm_token_dialog_password_hint">Salasana</string>
+  <string name="morphe_music_lastfm_token_dialog_login">Kirjaudu sisään</string>
+  <string name="morphe_music_lastfm_token_status_empty">Anna käyttäjätunnus ja salasana</string>
+  <string name="morphe_music_lastfm_token_status_logging_in">Kirjaudutaan sisään...</string>
+  <string name="morphe_music_lastfm_token_status_success">Kirjautuminen onnistui!</string>
+  <string name="morphe_music_lastfm_token_status_no_session">Last.fm:ltä ei saatu istuntoa</string>
+  <string name="morphe_music_lastfm_token_status_failed">Kirjautuminen epäonnistui: %s</string>
+  <string name="morphe_music_lastfm_token_toast_saved">Last.fm-tunnus tallennettu!</string>
+  <string name="morphe_settings_music_scrobbling_metadata_title">Metatietojen puhdistus</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_title">Puhdista metatiedot</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">Puhdista automaattisesti yleiset häiriöt (kuten \"Virallinen video\", \"Remaster\", \"Live\") kappaleiden, artistien ja albumien nimikkeistä ennen toistamista</string>
+  <string name="morphe_music_scrobbling_custom_regex_title">Mukautettu regex-puhdistus</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">"Anna mukautettu säännöllinen lauseke (regex) vastaavien ja poistettavien lisätekstien etsimiseen kappaleiden, artistien tai albumien nimikkeistä.
+Esimerkki: (?i)\\s*\\((clean|explicit)\\)"</string>
+  <string name="morphe_music_scrobbling_about_title">Tietoa toistamisesta</string>
+  <string name="morphe_music_scrobbling_about_summary">"Toistaminen seuraa automaattisesti kuuntelemasi musiikkia YouTubessa ja synkronoi sen Last.fm- tai ListenBrainz-profiiliisi.
+
+Varmista, että YouTube Musiikin järjestelmän akun käyttö on asetettu arvoon \"Rajoittamaton\", jotta toistaminen toimii luotettavasti taustalla."</string>
 </resources>

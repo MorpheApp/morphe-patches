@@ -27,7 +27,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_1_ads_title">Quảng cáo</string>
   <string name="morphe_settings_music_screen_2_general_title">Chung</string>
   <string name="morphe_settings_music_screen_3_player_title">Trình phát</string>
-  <string name="morphe_settings_music_screen_4_misc_title">Khác</string>
+  <string name="morphe_settings_music_screen_4_scrobbling_title">Đang ghi lại</string>
+  <string name="morphe_settings_music_screen_5_misc_title">Khác</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Ẩn menu \"Mua Music Premium\"</string>
   <!-- ad.video.hideVideoAdsPatch -->
@@ -147,4 +148,77 @@ YouTube Music 8.x – hiệu ứng chuyển tiếp chỉ chạy trên 9.x trở 
   <string name="morphe_music_hide_navigation_bar_labels_title">Ẩn tên nút điều hướng</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Ẩn nút nâng cấp</string>
+  <!-- interaction.scrobbling.scrobblingPatch -->
+  <string name="morphe_music_scrobbling_summary">Cấu hình tích hợp Last.fm và ListenBrainz</string>
+  <string name="morphe_music_scrobbling_summary_logged_out">Chưa đăng nhập. Nhấn để cấu hình</string>
+  <string name="morphe_music_scrobbling_log_out">Đăng xuất</string>
+  <string name="morphe_music_scrobbling_logged_out_toast">Đã đăng xuất</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_enabled_title">Bật scrobbling</string>
+  <string name="morphe_music_listenbrainz_now_playing_title">Gửi trạng thái \"Đang phát\"</string>
+  <string name="morphe_music_listenbrainz_min_song_duration_title">Thời lượng bài hát tối thiểu</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_min_song_duration_summary">Những bài hát ngắn hơn thời lượng này sẽ không được scrobble</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_title">Tỷ lệ trễ scrobble</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_summary">Kích hoạt scrobble sau khi nghe phần trăm này của bài hát</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_title">Thời gian trễ scrobble (giây)</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_summary">Kích hoạt scrobble sau khi nghe trong thời gian (giây) này</string>
+  <string name="morphe_music_listenbrainz_token_title">Tài khoản ListenBrainz</string>
+  <string name="morphe_music_listenbrainz_token_summary_logged_in">Đã đăng nhập. Nhấn để quản lý tài khoản</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">Nhập mã thông báo người dùng ListenBrainz của bạn để bật scrobbling</string>
+  <string name="morphe_music_listenbrainz_token_dialog_hint">Mã thông báo</string>
+  <string name="morphe_music_listenbrainz_token_dialog_get_token">Lấy mã thông báo</string>
+  <string name="morphe_music_listenbrainz_token_dialog_verify">Xác minh</string>
+  <string name="morphe_music_listenbrainz_token_status_empty">Vui lòng nhập mã thông báo</string>
+  <string name="morphe_music_listenbrainz_token_status_validating">Đang xác thực...</string>
+  <string name="morphe_music_listenbrainz_token_status_valid">Mã thông báo hợp lệ! Người dùng: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">Mã thông báo không hợp lệ: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid_unknown">không xác định</string>
+  <string name="morphe_music_listenbrainz_token_status_failed">Xác minh thất bại: %s</string>
+  <string name="morphe_music_listenbrainz_token_toast_cleared">Mã thông báo đã được xóa</string>
+  <string name="morphe_music_listenbrainz_token_toast_saved">Mã thông báo đã lưu</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Cảnh báo: Mã thông báo đã lưu không hợp lệ!</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_lastfm_enabled_title">Bật scrobbling</string>
+  <string name="morphe_music_lastfm_now_playing_title">Gửi trạng thái \"Đang phát\"</string>
+  <string name="morphe_music_lastfm_love_on_like_title">Yêu thích các bài hát đã thích</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">Tự động yêu thích các bài hát trên Last.fm khi bạn thích chúng trên YouTube Music (và bỏ yêu thích khi bạn không thích hoặc không thích)</string>
+  <string name="morphe_music_lastfm_min_song_duration_title">Thời lượng bài hát tối thiểu</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_lastfm_min_song_duration_summary">Những bài hát ngắn hơn thời lượng này sẽ không được scrobble</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_title">Tỷ lệ trễ scrobble</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_summary">Kích hoạt scrobble sau khi nghe phần trăm này của bài hát</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_title">Thời gian trễ scrobble (giây)</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_summary">Kích hoạt scrobble sau khi nghe trong thời gian (giây) này</string>
+  <string name="morphe_music_lastfm_token_title">Tài khoản Last.fm</string>
+  <string name="morphe_music_lastfm_token_summary_logged_in">Đã đăng nhập với tư cách %s. Nhấn để quản lý tài khoản</string>
+  <string name="morphe_music_lastfm_token_dialog_instruction">Nhập thông tin đăng nhập Last.fm của bạn để đăng nhập</string>
+  <string name="morphe_music_lastfm_token_dialog_username_hint">Tên người dùng</string>
+  <string name="morphe_music_lastfm_token_dialog_password_hint">Mật khẩu</string>
+  <string name="morphe_music_lastfm_token_dialog_login">Đăng nhập</string>
+  <string name="morphe_music_lastfm_token_status_empty">Vui lòng nhập tên người dùng và mật khẩu</string>
+  <string name="morphe_music_lastfm_token_status_logging_in">Đang đăng nhập...</string>
+  <string name="morphe_music_lastfm_token_status_success">Đăng nhập thành công!</string>
+  <string name="morphe_music_lastfm_token_status_no_session">Không thể lấy phiên từ Last.fm</string>
+  <string name="morphe_music_lastfm_token_status_failed">Đăng nhập thất bại: %s</string>
+  <string name="morphe_music_lastfm_token_toast_saved">Thông tin đăng nhập Last.fm đã lưu!</string>
+  <string name="morphe_settings_music_scrobbling_metadata_title">Làm sạch siêu dữ liệu</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_title">Làm sạch siêu dữ liệu</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">Tự động làm sạch các thông tin gây rối phổ biến (như \"Video chính thức\", \"Phục chế\", \"Trực tiếp\") khỏi tiêu đề, nghệ sĩ và album trước khi scrobble</string>
+  <string name="morphe_music_scrobbling_custom_regex_title">Làm sạch regex tùy chỉnh</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">"Nhập một biểu thức chính quy (regex) tùy chỉnh để khớp và xóa thêm văn bản khỏi tiêu đề bài hát, nghệ sĩ hoặc album.
+Ví dụ: (?i)\\s*\\((clean|explicit)\\)"</string>
+  <string name="morphe_music_scrobbling_about_title">Giới thiệu về scrobbling</string>
+  <string name="morphe_music_scrobbling_about_summary">"Scrobbling tự động theo dõi âm nhạc bạn phát trên YouTube Music và đồng bộ hóa nó với hồ sơ Last.fm hoặc ListenBrainz của bạn.
+
+Để đảm bảo scrobbling chạy đáng tin cậy trong nền, vui lòng xác minh rằng mức sử dụng pin của hệ thống YouTube Music được đặt thành \"Không giới hạn\"."</string>
 </resources>

@@ -27,7 +27,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_1_ads_title">广告</string>
   <string name="morphe_settings_music_screen_2_general_title">通用</string>
   <string name="morphe_settings_music_screen_3_player_title">播放器</string>
-  <string name="morphe_settings_music_screen_4_misc_title">杂项</string>
+  <string name="morphe_settings_music_screen_4_scrobbling_title">播放记录</string>
+  <string name="morphe_settings_music_screen_5_misc_title">其他</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">隐藏“订阅 Music Premium”标签</string>
   <!-- ad.video.hideVideoAdsPatch -->
@@ -147,4 +148,77 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <string name="morphe_music_hide_navigation_bar_labels_title">隐藏导航按钮标签</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">隐藏升级按钮</string>
+  <!-- interaction.scrobbling.scrobblingPatch -->
+  <string name="morphe_music_scrobbling_summary">配置 Last.fm 和 ListenBrainz 集成</string>
+  <string name="morphe_music_scrobbling_summary_logged_out">未登录。点击进行配置</string>
+  <string name="morphe_music_scrobbling_log_out">登出</string>
+  <string name="morphe_music_scrobbling_logged_out_toast">已登出</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_enabled_title">启用播放记录</string>
+  <string name="morphe_music_listenbrainz_now_playing_title">提交“正在播放”状态</string>
+  <string name="morphe_music_listenbrainz_min_song_duration_title">最短歌曲时长</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_min_song_duration_summary">时长小于此值的歌曲将不会被记录</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_title">播放记录延迟百分比</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_summary">在听完歌曲的这个百分比之后触发播放记录</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_title">播放记录延迟秒数</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_summary">在听了这么多秒后触发播放记录</string>
+  <string name="morphe_music_listenbrainz_token_title">ListenBrainz 账户</string>
+  <string name="morphe_music_listenbrainz_token_summary_logged_in">已登录。点击管理账户</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">输入您的 ListenBrainz 用户令牌以启用播放记录</string>
+  <string name="morphe_music_listenbrainz_token_dialog_hint">令牌</string>
+  <string name="morphe_music_listenbrainz_token_dialog_get_token">获取令牌</string>
+  <string name="morphe_music_listenbrainz_token_dialog_verify">验证</string>
+  <string name="morphe_music_listenbrainz_token_status_empty">请输入令牌</string>
+  <string name="morphe_music_listenbrainz_token_status_validating">验证中...</string>
+  <string name="morphe_music_listenbrainz_token_status_valid">令牌有效！用户：%s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">令牌无效：%s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid_unknown">未知</string>
+  <string name="morphe_music_listenbrainz_token_status_failed">验证失败：%s</string>
+  <string name="morphe_music_listenbrainz_token_toast_cleared">令牌已清除</string>
+  <string name="morphe_music_listenbrainz_token_toast_saved">令牌已保存</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">警告：保存的令牌无效！</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_lastfm_enabled_title">启用播放记录</string>
+  <string name="morphe_music_lastfm_now_playing_title">提交“正在播放”状态</string>
+  <string name="morphe_music_lastfm_love_on_like_title">喜欢喜欢的曲目</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">当您在 YouTube Music 上喜欢曲目时，自动在 Last.fm 上喜欢歌曲（并在不喜欢或不喜欢时删除喜欢）</string>
+  <string name="morphe_music_lastfm_min_song_duration_title">最短歌曲时长</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_lastfm_min_song_duration_summary">时长小于此值的歌曲将不会被记录</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_title">播放记录延迟百分比</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_summary">在听完歌曲的这个百分比之后触发播放记录</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_title">播放记录延迟秒数</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_summary">在听了这么多秒后触发播放记录</string>
+  <string name="morphe_music_lastfm_token_title">Last.fm 账户</string>
+  <string name="morphe_music_lastfm_token_summary_logged_in">您已登录 %s。点击管理账户</string>
+  <string name="morphe_music_lastfm_token_dialog_instruction">输入您的 Last.fm 凭据以登录</string>
+  <string name="morphe_music_lastfm_token_dialog_username_hint">用户名</string>
+  <string name="morphe_music_lastfm_token_dialog_password_hint">密码</string>
+  <string name="morphe_music_lastfm_token_dialog_login">登录</string>
+  <string name="morphe_music_lastfm_token_status_empty">请输入用户名和密码</string>
+  <string name="morphe_music_lastfm_token_status_logging_in">正在登录...</string>
+  <string name="morphe_music_lastfm_token_status_success">登录成功！</string>
+  <string name="morphe_music_lastfm_token_status_no_session">未能从 Last.fm 获取会话</string>
+  <string name="morphe_music_lastfm_token_status_failed">登录失败：%s</string>
+  <string name="morphe_music_lastfm_token_toast_saved">Last.fm 凭据已保存！</string>
+  <string name="morphe_settings_music_scrobbling_metadata_title">元数据清理</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_title">清理元数据</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">自动清理标题、艺术家和专辑中的常见杂乱信息（如“官方视频”、“混音”、“现场”）before播放记录</string>
+  <string name="morphe_music_scrobbling_custom_regex_title">自定义正则表达式清理</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">"输入自定义正则表达式 (regex) 以匹配和删除歌曲标题、艺术家或专辑中的其他文本。
+示例: (?i)\s*\((clean|explicit)\)"</string>
+  <string name="morphe_music_scrobbling_about_title">关于播放记录</string>
+  <string name="morphe_music_scrobbling_about_summary">"播放记录会自动跟踪您在 YouTube Music 上播放的音乐，并将其同步到您的 Last.fm 或 ListenBrainz 个人资料。
+
+为了确保播放记录在后台可靠运行，请验证 YouTube Music 的系统电池使用设置为“无限制”。"</string>
 </resources>

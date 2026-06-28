@@ -27,7 +27,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_1_ads_title">বিজ্ঞাপন</string>
   <string name="morphe_settings_music_screen_2_general_title">সাধারণ</string>
   <string name="morphe_settings_music_screen_3_player_title">প্লেয়ার</string>
-  <string name="morphe_settings_music_screen_4_misc_title">বিবিধ</string>
+  <string name="morphe_settings_music_screen_4_scrobbling_title">স্ক্রবলিং</string>
+  <string name="morphe_settings_music_screen_5_misc_title">বিবিধ</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">\'গেট মিউজিক প্রিমিয়াম\' লেবেল লুকান</string>
   <!-- ad.video.hideVideoAdsPatch -->
@@ -147,4 +148,77 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">নেভিগেশন বোতামের লেবেলগুলি লুকান</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">আপগ্রেড বাটন লুকান</string>
+  <!-- interaction.scrobbling.scrobblingPatch -->
+  <string name="morphe_music_scrobbling_summary">Last.fm এবং ListenBrainz ইন্টিগ্রেশন কনফিগার করুন</string>
+  <string name="morphe_music_scrobbling_summary_logged_out">লগ ইন করা হয়নি। কনফিগার করতে ট্যাপ করুন</string>
+  <string name="morphe_music_scrobbling_log_out">লগ আউট করুন</string>
+  <string name="morphe_music_scrobbling_logged_out_toast">লগ আউট করা হয়েছে</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_enabled_title">স্ক্রবলিং সক্ষম করুন</string>
+  <string name="morphe_music_listenbrainz_now_playing_title">\"এখন বাজছে\" স্ট্যাটাস জমা দিন</string>
+  <string name="morphe_music_listenbrainz_min_song_duration_title">ন্যূনতম গানের সময়কাল</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_min_song_duration_summary">এই সময়ের চেয়ে ছোট গানগুলি স্ক্রবল করা হবে না</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_title">স্ক্রবল বিলম্ব শতাংশ</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_summary">গানের এই শতাংশ শোনার পরে স্ক্রবল ট্রিগার করুন</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_title">স্ক্রবল বিলম্ব সেকেন্ড</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_summary">এই সেকেন্ডের জন্য শোনার পরে স্ক্রবল ট্রিগার করুন</string>
+  <string name="morphe_music_listenbrainz_token_title">ListenBrainz অ্যাকাউন্ট</string>
+  <string name="morphe_music_listenbrainz_token_summary_logged_in">লগ ইন করা হয়েছে। অ্যাকাউন্ট পরিচালনা করতে ট্যাপ করুন</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">স্ক্রবলিং সক্ষম করতে আপনার ListenBrainz ব্যবহারকারী টোকেন লিখুন</string>
+  <string name="morphe_music_listenbrainz_token_dialog_hint">টোকেন</string>
+  <string name="morphe_music_listenbrainz_token_dialog_get_token">টোকেন পান</string>
+  <string name="morphe_music_listenbrainz_token_dialog_verify">যাচাই করুন</string>
+  <string name="morphe_music_listenbrainz_token_status_empty">অনুগ্রহ করে একটি টোকেন লিখুন</string>
+  <string name="morphe_music_listenbrainz_token_status_validating">যাচাই করা হচ্ছে...</string>
+  <string name="morphe_music_listenbrainz_token_status_valid">বৈধ টোকেন! ব্যবহারকারী: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">অবৈধ টোকেন: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid_unknown">অজানা</string>
+  <string name="morphe_music_listenbrainz_token_status_failed">যাচাইকরণ ব্যর্থ হয়েছে: %s</string>
+  <string name="morphe_music_listenbrainz_token_toast_cleared">টোকেন পরিষ্কার করা হয়েছে</string>
+  <string name="morphe_music_listenbrainz_token_toast_saved">টোকেন সংরক্ষণ করা হয়েছে</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">সতর্কতা: সংরক্ষিত টোকেনটি অবৈধ!</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_lastfm_enabled_title">স্ক্রবলিং সক্ষম করুন</string>
+  <string name="morphe_music_lastfm_now_playing_title">\"এখন বাজছে\" স্ট্যাটাস জমা দিন</string>
+  <string name="morphe_music_lastfm_love_on_like_title">লাইক করা ট্র্যাকগুলি পছন্দ করুন</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">আপনি YouTube Music-এ পছন্দ করলে Last.fm-এ স্বয়ংক্রিয়ভাবে ট্র্যাকগুলি পছন্দ করুন (এবং অপছন্দ করলে বা অপছন্দ করলে পছন্দ বাতিল করুন)</string>
+  <string name="morphe_music_lastfm_min_song_duration_title">ন্যূনতম গানের সময়কাল</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_lastfm_min_song_duration_summary">এই সময়ের চেয়ে ছোট গানগুলি স্ক্রবল করা হবে না</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_title">স্ক্রবল বিলম্ব শতাংশ</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_summary">গানের এই শতাংশ শোনার পরে স্ক্রবল ট্রিগার করুন</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_title">স্ক্রবল বিলম্ব সেকেন্ড</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_summary">এই সেকেন্ডের জন্য শোনার পরে স্ক্রবল ট্রিগার করুন</string>
+  <string name="morphe_music_lastfm_token_title">Last.fm অ্যাকাউন্ট</string>
+  <string name="morphe_music_lastfm_token_summary_logged_in">আপনি %s হিসাবে লগ ইন করেছেন। অ্যাকাউন্ট পরিচালনা করতে ট্যাপ করুন</string>
+  <string name="morphe_music_lastfm_token_dialog_instruction">লগ ইন করতে আপনার Last.fm credentials লিখুন</string>
+  <string name="morphe_music_lastfm_token_dialog_username_hint">ব্যবহারকারীর নাম</string>
+  <string name="morphe_music_lastfm_token_dialog_password_hint">পাসওয়ার্ড</string>
+  <string name="morphe_music_lastfm_token_dialog_login">লগ ইন করুন</string>
+  <string name="morphe_music_lastfm_token_status_empty">অনুগ্রহ করে ব্যবহারকারীর নাম এবং পাসওয়ার্ড লিখুন</string>
+  <string name="morphe_music_lastfm_token_status_logging_in">লগ ইন করা হচ্ছে...</string>
+  <string name="morphe_music_lastfm_token_status_success">সফলভাবে লগ ইন করা হয়েছে!</string>
+  <string name="morphe_music_lastfm_token_status_no_session">Last.fm থেকে সেশন পেতে ব্যর্থ হয়েছে</string>
+  <string name="morphe_music_lastfm_token_status_failed">লগইন ব্যর্থ হয়েছে: %s</string>
+  <string name="morphe_music_lastfm_token_toast_saved">Last.fm credentials সংরক্ষণ করা হয়েছে!</string>
+  <string name="morphe_settings_music_scrobbling_metadata_title">মেটাডেটা পরিষ্কার করা</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_title">মেটাডেটা পরিষ্কার করুন</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">স্ক্রবলিং করার আগে শিরোনাম, শিল্পী এবং অ্যালবাম থেকে সাধারণ বিশৃঙ্খলা (যেমন \"Official Video\", \"Remaster\", \"Live\") স্বয়ংক্রিয়ভাবে পরিষ্কার করুন</string>
+  <string name="morphe_music_scrobbling_custom_regex_title">কাস্টম রেজেক্স পরিষ্কার</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">"গান শিরোনাম, শিল্পী বা অ্যালবাম থেকে অতিরিক্ত টেক্সট মেলানোর জন্য একটি কাস্টম রেগুলার এক্সপ্রেশন (রেজেক্স) লিখুন।
+উদাহরণ: (?i)\s*\((clean|explicit)\)"</string>
+  <string name="morphe_music_scrobbling_about_title">স্ক্রবলিং সম্পর্কে</string>
+  <string name="morphe_music_scrobbling_about_summary">"স্ক্রবলিং স্বয়ংক্রিয়ভাবে YouTube Music-এ আপনি যে গান চালান তা ট্র্যাক করে এবং এটিকে আপনার Last.fm বা ListenBrainz প্রোফাইলের সাথে সিঙ্ক করে।
+
+স্ক্রবলিং ব্যাকগ্রাউন্ডে নির্ভরযোগ্যভাবে চালানোর জন্য, অনুগ্রহ করে নিশ্চিত করুন যে YouTube Music-এর সিস্টেম ব্যাটারি ব্যবহার \"Unrestricted\"-এ সেট করা আছে।"</string>
 </resources>

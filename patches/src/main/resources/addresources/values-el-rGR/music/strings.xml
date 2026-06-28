@@ -27,7 +27,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_1_ads_title">Διαφημίσεις</string>
   <string name="morphe_settings_music_screen_2_general_title">Γενικά</string>
   <string name="morphe_settings_music_screen_3_player_title">Πρόγραμμα αναπαραγωγής</string>
-  <string name="morphe_settings_music_screen_4_misc_title">Διάφορα</string>
+  <string name="morphe_settings_music_screen_4_scrobbling_title">Αναφορά</string>
+  <string name="morphe_settings_music_screen_5_misc_title">Διάφορα</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Απόκρυψη ετικέτας \'Get Music Premium\'</string>
   <!-- ad.video.hideVideoAdsPatch -->
@@ -147,4 +148,77 @@ YouTube Music 8.x — το crossfade λειτουργεί μόνο στις εκ
   <string name="morphe_music_hide_navigation_bar_labels_title">Απόκρυψη Ονομάτων κουμπιών Γραμμής Πλοήγησης</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Απόκρυψη κουμπιού Αναβάθμιση</string>
+  <!-- interaction.scrobbling.scrobblingPatch -->
+  <string name="morphe_music_scrobbling_summary">Ρύθμιση ενσωμάτωσης Last.fm και ListenBrainz</string>
+  <string name="morphe_music_scrobbling_summary_logged_out">Δεν έχετε συνδεθεί. Πατήστε για να ρυθμίσετε</string>
+  <string name="morphe_music_scrobbling_log_out">Αποσύνδεση</string>
+  <string name="morphe_music_scrobbling_logged_out_toast">Αποσυνδέθηκατε</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_enabled_title">Ενεργοποίηση scrobbling</string>
+  <string name="morphe_music_listenbrainz_now_playing_title">Υποβολή κατάστασης \"Playing\"</string>
+  <string name="morphe_music_listenbrainz_min_song_duration_title">Ελάχιστη διάρκεια τραγουδιού</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_min_song_duration_summary">Τα τραγούδια με διάρκεια μικρότερη από αυτή δεν θα αναφέρονται</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_title">Ποσοστό καθυστέρησης scrobble</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_summary">Ενεργοποίηση scrobble μετά την ακρόαση αυτού του ποσοστού του τραγουδιού</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_title">Δευτερόλεπτα καθυστέρησης scrobble</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_summary">Ενεργοποίηση scrobble μετά την ακρόαση για αυτόν τον αριθμό δευτερολέπτων</string>
+  <string name="morphe_music_listenbrainz_token_title">Λογαριασμός ListenBrainz</string>
+  <string name="morphe_music_listenbrainz_token_summary_logged_in">Συνδεθήκατε. Πατήστε για να διαχειριστείτε τον λογαριασμό</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">Εισαγάγετε το token χρήστη ListenBrainz για να ενεργοποιήσετε το scrobbling</string>
+  <string name="morphe_music_listenbrainz_token_dialog_hint">Token</string>
+  <string name="morphe_music_listenbrainz_token_dialog_get_token">Λήψη token</string>
+  <string name="morphe_music_listenbrainz_token_dialog_verify">Επαλήθευση</string>
+  <string name="morphe_music_listenbrainz_token_status_empty">Παρακαλώ εισαγάγετε ένα token</string>
+  <string name="morphe_music_listenbrainz_token_status_validating">Επικύρωση...</string>
+  <string name="morphe_music_listenbrainz_token_status_valid">Έγκυρο token! Χρήστης: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">Μη έγκυρο token: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid_unknown">Άγνωστο</string>
+  <string name="morphe_music_listenbrainz_token_status_failed">Η επαλήθευση απέτυχε: %s</string>
+  <string name="morphe_music_listenbrainz_token_toast_cleared">Token διαγράφηκε</string>
+  <string name="morphe_music_listenbrainz_token_toast_saved">Token αποθηκεύτηκε</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Προσοχή: Το αποθηκευμένο token είναι άκυρο!</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_lastfm_enabled_title">Ενεργοποίηση scrobbling</string>
+  <string name="morphe_music_lastfm_now_playing_title">Υποβολή κατάστασης \"Playing\"</string>
+  <string name="morphe_music_lastfm_love_on_like_title">Αγαπήστε τα κομμάτια που σας αρέσουν</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">Αγαπήστε αυτόματα τα κομμάτια στο Last.fm όταν σας αρέσουν στο YouTube Music (και αφαιρέστε την αγάπη όταν δεν σας αρέσουν ή δεν σας αρέσουν)</string>
+  <string name="morphe_music_lastfm_min_song_duration_title">Ελάχιστη διάρκεια τραγουδιού</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_lastfm_min_song_duration_summary">Τα τραγούδια με διάρκεια μικρότερη από αυτή δεν θα αναφέρονται</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_title">Ποσοστό καθυστέρησης scrobble</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_summary">Ενεργοποίηση scrobble μετά την ακρόαση αυτού του ποσοστού του τραγουδιού</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_title">Δευτερόλεπτα καθυστέρησης scrobble</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_summary">Ενεργοποίηση scrobble μετά την ακρόαση για αυτόν τον αριθμό δευτερολέπτων</string>
+  <string name="morphe_music_lastfm_token_title">Λογαριασμός Last.fm</string>
+  <string name="morphe_music_lastfm_token_summary_logged_in">Συνδεθήκατε ως %s. Πατήστε για να διαχειριστείτε τον λογαριασμό</string>
+  <string name="morphe_music_lastfm_token_dialog_instruction">Εισαγάγετε τα διαπιστευτήρια Last.fm για να συνδεθείτε</string>
+  <string name="morphe_music_lastfm_token_dialog_username_hint">Όνομα χρήστη</string>
+  <string name="morphe_music_lastfm_token_dialog_password_hint">Κωδικός πρόσβασης</string>
+  <string name="morphe_music_lastfm_token_dialog_login">Σύνδεση</string>
+  <string name="morphe_music_lastfm_token_status_empty">Παρακαλώ εισαγάγετε όνομα χρήστη και κωδικό πρόσβασης</string>
+  <string name="morphe_music_lastfm_token_status_logging_in">Συνδέομαι...</string>
+  <string name="morphe_music_lastfm_token_status_success">Συνδεθήκατε επιτυχώς!</string>
+  <string name="morphe_music_lastfm_token_status_no_session">Αδυναμία λήψης συνεδρίας από το Last.fm</string>
+  <string name="morphe_music_lastfm_token_status_failed">Αποτυχία σύνδεσης: %s</string>
+  <string name="morphe_music_lastfm_token_toast_saved">Τα διαπιστευτήρια Last.fm αποθηκεύτηκαν!</string>
+  <string name="morphe_settings_music_scrobbling_metadata_title">Καθαρισμός μεταδεδομένων</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_title">Καθαρισμός μεταδεδομένων</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">Αυτόματος καθαρισμός κοινής ακαταστασίας (όπως \"Επίσημο Βίντεο\", \"Remaster\", \"Live\") από τίτλους, καλλιτέχνες και άλμπουμ πριν από την αναφορά</string>
+  <string name="morphe_music_scrobbling_custom_regex_title">Προσαρμοσμένος καθαρισμός regex</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">"Εισαγάγετε μια προσαρμοσμένη κανονική έκφραση (regex) για να ταιριάξετε και να αφαιρέσετε επιπλέον κείμενο από τίτλους τραγουδιών, καλλιτέχνες ή άλμπουμ.
+Παράδειγμα: (?i)\s*\((clean|explicit)\)"</string>
+  <string name="morphe_music_scrobbling_about_title">Σχετικά με την αναφορά</string>
+  <string name="morphe_music_scrobbling_about_summary">"Η αναφορά καταγράφει αυτόματα τη μουσική που ακούτε στο YouTube Music και τη συγχρονίζει με το προφίλ σας στο Last.fm ή ListenBrainz.
+
+Για να διασφαλίσετε ότι η αναφορά εκτελείται αξιόπιστα στο παρασκήνιο, βεβαιωθείτε ότι η χρήση μπαταρίας συστήματος του YouTube Music είναι ρυθμισμένη στο \"Μη περιορισμένο\"."</string>
 </resources>

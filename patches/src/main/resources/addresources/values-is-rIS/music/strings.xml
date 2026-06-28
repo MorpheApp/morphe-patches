@@ -27,7 +27,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_1_ads_title">Auglýsingar</string>
   <string name="morphe_settings_music_screen_2_general_title">Alhliða</string>
   <string name="morphe_settings_music_screen_3_player_title">Spilari</string>
-  <string name="morphe_settings_music_screen_4_misc_title">Ýmislegt</string>
+  <string name="morphe_settings_music_screen_4_scrobbling_title">Spilun</string>
+  <string name="morphe_settings_music_screen_5_misc_title">Ýmislegt</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Fela merkið \'Fá Morphe Premium\'</string>
   <!-- ad.video.hideVideoAdsPatch -->
@@ -147,4 +148,77 @@ YouTube Music 8.x — crossfade virkar bara á 9.x og nýrri útgáfum"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Fela lýsingar stjórnbandshnappa</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Fela uppfærsluhnappinn</string>
+  <!-- interaction.scrobbling.scrobblingPatch -->
+  <string name="morphe_music_scrobbling_summary">Stilltu Last.fm og ListenBrainz samþættingu</string>
+  <string name="morphe_music_scrobbling_summary_logged_out">Ekki innskráður. Ýttu hér til að stilla</string>
+  <string name="morphe_music_scrobbling_log_out">Rýma</string>
+  <string name="morphe_music_scrobbling_logged_out_toast">Rýmt</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_enabled_title">Vírðu \'spila núna\' stöðu</string>
+  <string name="morphe_music_listenbrainz_now_playing_title">Sendu \"Spila núna\" stöðu</string>
+  <string name="morphe_music_listenbrainz_min_song_duration_title">Lágmarks lengd lagas</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_min_song_duration_summary">Lög sem eru styttri en þetta verða ekki skráð</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_title">Spilunar seinkun í prósentur</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_summary">Ræsu spilun eftir að hafa hlustað á þennan hluta af laginu</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_title">Spilunar seinkun í sekúndum</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_summary">Ræsu spilun eftir að hafa hlustað í þennan fjölda sekúnda</string>
+  <string name="morphe_music_listenbrainz_token_title">ListenBrainz Reikningur</string>
+  <string name="morphe_music_listenbrainz_token_summary_logged_in">Innskráð(ur). Ýttu hér til að stjórna reikningi</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">Sláðu inn ListenBrainz notendatakkann þinn til að virkja spilun</string>
+  <string name="morphe_music_listenbrainz_token_dialog_hint">Takkinn</string>
+  <string name="morphe_music_listenbrainz_token_dialog_get_token">Skaffa Takkann</string>
+  <string name="morphe_music_listenbrainz_token_dialog_verify">Staðfestu</string>
+  <string name="morphe_music_listenbrainz_token_status_empty">Vinsamlegast sláðu inn takkann</string>
+  <string name="morphe_music_listenbrainz_token_status_validating">Staðfesting er í gangi...</string>
+  <string name="morphe_music_listenbrainz_token_status_valid">Gildur takki! Notandi: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">Ógildur takki: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid_unknown">Óþekkt</string>
+  <string name="morphe_music_listenbrainz_token_status_failed">Staðfesting mistókst: %s</string>
+  <string name="morphe_music_listenbrainz_token_toast_cleared">Takkinn hreinsaður</string>
+  <string name="morphe_music_listenbrainz_token_toast_saved">Takkinn vistaður</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Varnarhluti: Vistaður takki er ógildur!</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_lastfm_enabled_title">Vírðu spilun</string>
+  <string name="morphe_music_lastfm_now_playing_title">Sendu \"Spila núna\" stöðu</string>
+  <string name="morphe_music_lastfm_love_on_like_title">Elska líktuð lög</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">Elska sjálfkrafa lög á Last.fm þegar þú líkar við þau á YouTube Music (og fjarlægja elskun þegar ólíkuð eða mislíkuð)</string>
+  <string name="morphe_music_lastfm_min_song_duration_title">Lágmarks lengd lagas</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_lastfm_min_song_duration_summary">Lög sem eru styttri en þetta verða ekki skráð</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_title">Spilunar seinkun í prósentur</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_summary">Ræsu spilun eftir að hafa hlustað á þennan hluta af laginu</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_title">Spilunar seinkun í sekúndum</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_summary">Ræsu spilun eftir að hafa hlustað í þennan fjölda sekúnda</string>
+  <string name="morphe_music_lastfm_token_title">Last.fm Reikningur</string>
+  <string name="morphe_music_lastfm_token_summary_logged_in">Innskráð(ur) sem %s. Ýttu hér til að stjórna reikningi</string>
+  <string name="morphe_music_lastfm_token_dialog_instruction">Sláðu inn Last.fm notendanafnið þitt til að skrá inn</string>
+  <string name="morphe_music_lastfm_token_dialog_username_hint">Notendanafnið</string>
+  <string name="morphe_music_lastfm_token_dialog_password_hint">Lykilorðið</string>
+  <string name="morphe_music_lastfm_token_dialog_login">Skrá inn</string>
+  <string name="morphe_music_lastfm_token_status_empty">Vinsamlegast sláðu inn notendanafnið og lykilorðið</string>
+  <string name="morphe_music_lastfm_token_status_logging_in">Er að skrá inn...</string>
+  <string name="morphe_music_lastfm_token_status_success">Tókst að skrá inn!</string>
+  <string name="morphe_music_lastfm_token_status_no_session">Tókst ekki að fá sessíu frá Last.fm</string>
+  <string name="morphe_music_lastfm_token_status_failed">Innskráning mistókst: %s</string>
+  <string name="morphe_music_lastfm_token_toast_saved">Last.fm notendaupplýsingar vistaðar!</string>
+  <string name="morphe_settings_music_scrobbling_metadata_title">Hreinsun gagnabrjóta</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_title">Hreinsa gagnabrjóta</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">Hreinsa sjálfkrafa óþarfa upplýsingar (eins og \"Hafist video\", \"Endurútgáfa\", \"Lifandi\") frá titlum, Flytjendum og albúmum áður en skráning fer fram</string>
+  <string name="morphe_music_scrobbling_custom_regex_title">Sérsniðin regex hreinsun</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">"Sláðu inn reglulegt tákn (regex) til að passa við og fjarlægja viðbótartexta úr lagatitlum, Flytjendum eða albúmum.
+Dæmi: (?i)\s*\((clean|explicit)\)"</string>
+  <string name="morphe_music_scrobbling_about_title">Um spilun</string>
+  <string name="morphe_music_scrobbling_about_summary">"Spilun fylgist sjálfkrafa með tónlist sem þú spilar á YouTube Music og samstilla hana við Last.fm eða ListenBrainz prófíl þinn.
+
+Til að tryggja að spilun keyri áreiðanlega í bakgrunni, vinsamlegast staðfestu að kerfisrafmagnsnálgun YouTube Music sé stillt á \"Ótakmarkað\"."</string>
 </resources>

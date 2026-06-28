@@ -1,0 +1,421 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
+ */
+
+package app.morphe.extension.youtube.patches;
+
+import static app.morphe.extension.shared.Utils.getContext;
+
+import android.app.Dialog;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Pair;
+import android.view.View;
+import android.view.ViewParent;
+import android.widget.PopupWindow;
+
+import androidx.annotation.Nullable;
+
+import com.facebook.litho.ComponentHost;
+
+import java.lang.ref.WeakReference;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
+import app.morphe.extension.shared.Logger;
+import app.morphe.extension.youtube.patches.components.LithoFilterPatch;
+import app.morphe.extension.youtube.patches.utils.PlaylistPatch;
+import app.morphe.extension.youtube.settings.Settings;
+
+@SuppressWarnings("unused")
+public final class AddToQueuePatch {
+
+    /**
+     * Interface to use obfuscated fields.
+     */
+    public interface ProtocolBufferFieldInterface {
+        // Method is added during patching.
+        byte[] patch_getBuffer();
+    }
+
+    /**
+     * Interface to use obfuscated fields.
+     */
+    public interface FlyoutMenuVideoIdInterface {
+        // Method is added during patching.
+        String patch_getVideoId();
+    }
+
+    private static WeakReference<View> senderViewObjectRef = new WeakReference<>(null);
+
+    private static Dialog flyoutDialog = null;
+    private static PopupWindow flyoutPopupWindow = null;
+
+    private static final String queueButtonName = "QUEUE_PLAY_NEXT";
+    private static final String shareButtonName = "SHARE_ARROW";
+
+
+    private static final List<byte[]> VIDEO_ID_PREFIXES_BYTES = List.of(
+            // Can be i.ytimg.com, i2.ytimg.com, i3, etc.
+            ".ytimg.com/vi/".getBytes(StandardCharsets.US_ASCII),
+            "youtube.com/watch?v=".getBytes(StandardCharsets.US_ASCII));
+
+    private static final byte[] HORIZONTAL_SHELF_BYTES =
+            "horizontal_shelf.e".getBytes(StandardCharsets.US_ASCII);
+
+    private static final List<Pair<String, Integer>> visibleFlyoutButtons = new ArrayList<>();
+    private static String flyoutVideoId = "";
+    private static boolean delayedFlyoutVideoIdReset = false;
+    private static String currentButtonName = "";
+    private static int currentButtonIndex;
+
+    // All methods are called on main thread.
+
+    public static void disableDelayedFlyoutVideoIdReset() {
+        delayedFlyoutVideoIdReset = false;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setBottomSheetFlyout(Dialog dialog) {
+        if (dialog == null) {
+            return;
+        }
+
+        flyoutDialog = dialog;
+
+        runFlyoutPanelVisibilityHandler(dialog);
+    }
+
+    public static void dismissBottomSheetFlyout() {
+        if (flyoutDialog == null) {
+            return;
+        }
+
+        flyoutDialog.dismiss();
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setPopupWindowFlyout(PopupWindow popupWindow) {
+        if (popupWindow == null) {
+            return;
+        }
+
+        flyoutPopupWindow = popupWindow;
+
+        runFlyoutPanelVisibilityHandler(popupWindow);
+    }
+
+    public static void dismissPopupWindowFlyout() {
+        if (flyoutPopupWindow == null) {
+            return;
+        }
+        flyoutPopupWindow.dismiss();
+    }
+
+    // Since we do not want to overwrite the object's original listener, we will
+    // use a handler to check if the flyout panel is still visible
+    // and, if not, reset the `flyoutVideoId` variable.
+    private static void runFlyoutPanelVisibilityHandler(Object flyoutObject) {
+        if (flyoutObject == null) {
+            return;
+        }
+
+        final Handler visibilityHandler = new Handler(Looper.getMainLooper());
+        visibilityHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                final boolean isShowing;
+                if (flyoutObject instanceof Dialog flyoutDialogHandler) {
+                    isShowing = flyoutDialogHandler.isShowing();
+                } else if (flyoutObject instanceof PopupWindow flyoutPopupWindowHandler) {
+                    isShowing = flyoutPopupWindowHandler.isShowing();
+                } else {
+                    isShowing = false;
+                }
+
+                if (isShowing || delayedFlyoutVideoIdReset) {
+                    visibilityHandler.postDelayed(this, 100);
+                } else {
+                    flyoutVideoId = "";
+                }
+            }
+        });
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void extractVideoId(Map<?, ?> map) {
+        senderViewObjectRef = new WeakReference<>(
+                (View) map.get("com.google.android.libraries.youtube.rendering.elements.sender_view")
+        );
+
+        extractVideoId(map.get("com.google.android.libraries.youtube.innertube.endpoint.tag"));
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void extractVideoId(Object bufferObject) {
+        try {
+            Logger.printDebug(() -> "FlyoutBuffer class: " + bufferObject.getClass());
+
+            if (bufferObject instanceof FlyoutMenuVideoIdInterface videoIdInterface) {
+                String videoId = videoIdInterface.patch_getVideoId();
+                if (videoId == null) {
+                    Logger.printDebug(() -> "VideoId is null"); // Should never happen.
+                }
+                Logger.printDebug(() -> "Found flyout videoId: " + videoId);
+                flyoutVideoId = videoId;
+                visibleFlyoutButtons.clear();
+                return;
+            }
+
+            if (!(bufferObject instanceof ProtocolBufferFieldInterface bufferInterface)) {
+                return;
+            }
+
+            visibleFlyoutButtons.clear();
+
+            byte[] flyoutBuffer = bufferInterface.patch_getBuffer();
+            if (flyoutBuffer == null) {
+                Logger.printDebug(() -> "FlyoutBuffer is null"); // Should never happen.
+                return;
+            }
+
+            if (Settings.DEBUG_PROTOBUFFER.get()) {
+                byte[] debugFlyoutBuffer = flyoutBuffer;
+                Logger.printDebug(() -> "Flyout buffer: " +
+                        new LithoFilterPatch.BufferAsciiStrings(debugFlyoutBuffer).getStrings());
+            }
+
+            if (indexOf(flyoutBuffer, HORIZONTAL_SHELF_BYTES) >= 0) {
+                View senderViewObject = senderViewObjectRef.get();
+
+                if (senderViewObject != null) {
+                    ViewParent viewObjectParent = senderViewObject.getParent();
+
+                    while (viewObjectParent != null) {
+                        if (viewObjectParent instanceof ComponentHost componentHost) {
+                            CharSequence contentDescriptionChars = componentHost.getContentDescription();
+
+                            if (contentDescriptionChars != null) {
+                                String contentDescription = contentDescriptionChars.toString();
+
+                                flyoutBuffer = getTrimmedHorizontalShelfBuffer(flyoutBuffer, contentDescription);
+                            }
+                        }
+
+                        viewObjectParent = viewObjectParent.getParent();
+                    }
+                }
+            }
+
+            for (byte[] VIDEO_ID_PREFIX_BYTES : VIDEO_ID_PREFIXES_BYTES) {
+                final int index = indexOf(flyoutBuffer, VIDEO_ID_PREFIX_BYTES);
+
+                if (index >= 0) {
+                    final int youTubeVideoIdLength = 11;
+                    final int videoIdStart = index + VIDEO_ID_PREFIX_BYTES.length;
+                    final int videoIdEnd = videoIdStart + youTubeVideoIdLength;
+
+                    if (videoIdEnd <= flyoutBuffer.length) {
+                        flyoutVideoId = new String(
+                                flyoutBuffer,
+                                videoIdStart,
+                                youTubeVideoIdLength,
+                                StandardCharsets.US_ASCII
+                        );
+                        Logger.printDebug(() -> "Found flyout videoId: " + flyoutVideoId);
+                        break;
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "extractVideoIdFromFlyoutBuffer failure", ex);
+        }
+    }
+
+    @SuppressWarnings("SameParameterValue")
+    private static int indexOf(byte[] haystack, byte[] needle) {
+        final int needleLength = needle.length;
+        for (int i = 0, lastIndex = haystack.length - needleLength; i <= lastIndex; i++) {
+            boolean found = true;
+            for (int j = 0; j < needleLength; j++) {
+                if (haystack[i + j] != needle[j]) {
+                    found = false;
+                    break;
+                }
+            }
+            if (found) return i;
+        }
+        return -1;
+    }
+
+    /**
+     * Sliding Window with Keyword Density Matching -
+     * The description of the ComponentHost item is compared against the various 'horizontal shelf'
+     * items listed in the buffer, until the matching index is found and a trimmed buffer
+     * (that start from the matched index, in order to return the right video Id)
+     * is returned. Otherwise, return the original buffer.
+     */
+    public static byte[] getTrimmedHorizontalShelfBuffer(byte[] buffer, String description) {
+        if (description == null || buffer == null || description.isEmpty()) {
+            return buffer;
+        }
+
+        String[] parts = description.split(" - ");
+        if (parts.length == 0) {
+            return buffer;
+        }
+
+        String title = parts[0].toLowerCase(Locale.ROOT).replaceAll("[^a-zA-Z0-9\\s]", "");
+        String[] rawWords = title.split("\\s+");
+        List<byte[]> words = new ArrayList<>();
+
+        for (String w : rawWords) {
+            if (w.length() > 2) {
+                words.add(w.getBytes(StandardCharsets.UTF_8));
+            }
+        }
+
+        if (words.isEmpty()) {
+            return buffer;
+        }
+
+        int bestIdx = -1;
+        int maxScore = 0;
+        int len = buffer.length;
+        int windowSize = 200;
+
+        for (int i = 0; i <= len - windowSize; i += 20) {
+            int score = 0;
+            for (byte[] w : words) {
+                boolean found = false;
+                int endLimit = i + windowSize - w.length;
+
+                for (int j = i; j <= endLimit; j++) {
+                    int k = 0;
+                    while (k < w.length) {
+                        byte b = buffer[j + k];
+                        byte processedByte = (b >= 65 && b <= 90) ? (byte) (b + 32) : b;
+                        if (processedByte != w[k]) {
+                            break;
+                        }
+                        k++;
+                    }
+                    if (k == w.length) {
+                        found = true;
+                        break;
+                    }
+                }
+                if (found) {
+                    score++;
+                }
+            }
+            if (score > maxScore) {
+                maxScore = score;
+                bestIdx = i;
+            }
+        }
+
+        int requiredScore = Math.max(1, (int) Math.ceil(words.size() * 0.4));
+        if (bestIdx != -1 && maxScore >= requiredScore) {
+            return Arrays.copyOfRange(buffer, bestIdx, len);
+        }
+
+        return buffer;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setCurrentButtonInfo(@Nullable Enum<?> buttonEnum, @Nullable CharSequence buttonText) {
+        if (buttonEnum == null || buttonText == null || buttonText.toString().isEmpty()) {
+            return;
+        }
+        currentButtonName = buttonEnum.name();
+        currentButtonIndex++;
+
+        visibleFlyoutButtons.add(new Pair<>(currentButtonName, currentButtonIndex));
+    }
+
+    /**
+     * Injection point.
+     */
+    public static Runnable replaceButtonRunnable(Runnable original) {
+        if (!Settings.QUEUE_OVERRIDE_FLYOUT_MENU.get()) {
+            return original;
+        }
+
+        if (flyoutVideoId.isEmpty()) {
+            Logger.printDebug(() -> "Cannot replace on item click, flyoutVideoId is empty");
+            return original;
+        }
+
+        return invokeQueueFlyout(original, currentButtonName);
+    }
+
+    /**
+     * Injection point.
+     * -
+     * 21.04 and older.
+     */
+    public static boolean replaceOnItemClick(int index) {
+        if (!Settings.QUEUE_OVERRIDE_FLYOUT_MENU.get()) {
+            return false;
+        }
+
+        if (flyoutVideoId.isEmpty()) {
+            Logger.printDebug(() -> "Cannot replace on item click, flyoutVideoId is empty");
+            return false;
+        }
+
+        try {
+            if (!visibleFlyoutButtons.isEmpty()) {
+                String currentIndexedButtonName = visibleFlyoutButtons.get(index).first;
+
+                invokeQueueFlyout(null, currentIndexedButtonName).run();
+                return true;
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "replaceOnItemClick failure", ex);
+        }
+        return false;
+    }
+
+    private static Runnable invokeQueueFlyout(@Nullable Runnable original, String buttonName) {
+        return () -> {
+            if (buttonName.equals(queueButtonName)) {
+                Logger.printDebug(() -> "Opening custom queue flyout with videoId: " + flyoutVideoId);
+                PlaylistPatch.prepareDialogBuilder(getContext(), flyoutVideoId);
+                dismissBottomSheetFlyout(); // Must dismiss after showing dialog.
+                dismissPopupWindowFlyout();
+                return;
+            }
+            // The following check is necessary for the 'System Share Sheet' patch to function correctly.
+            if (buttonName.equals(shareButtonName)) {
+                delayedFlyoutVideoIdReset = true;
+            }
+
+            if (original != null) {
+                original.run();
+            }
+        };
+    }
+
+    public static String getFlyoutVideoId() {
+        return flyoutVideoId;
+    }
+}

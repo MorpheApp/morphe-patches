@@ -27,7 +27,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_1_ads_title">Reklamy</string>
   <string name="morphe_settings_music_screen_2_general_title">Obecné</string>
   <string name="morphe_settings_music_screen_3_player_title">Přehrávač</string>
-  <string name="morphe_settings_music_screen_4_misc_title">Různé</string>
+  <string name="morphe_settings_music_screen_4_scrobbling_title">Scrobbling</string>
+  <string name="morphe_settings_music_screen_5_misc_title">Různé</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Skrýt štítek „Získat Music Premium“</string>
   <!-- ad.video.hideVideoAdsPatch -->
@@ -147,4 +148,77 @@ YouTube Music 8.x – plynulé přecházení funguje pouze ve verzích 9.x a vy�
   <string name="morphe_music_hide_navigation_bar_labels_title">Skrýt štítky navigačních tlačítek</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Skrýt tlačítko pro upgrade</string>
+  <!-- interaction.scrobbling.scrobblingPatch -->
+  <string name="morphe_music_scrobbling_summary">Konfigurace integrace Last.fm a ListenBrainz</string>
+  <string name="morphe_music_scrobbling_summary_logged_out">Není přihlášen. Klepnutím nakonfigurujete</string>
+  <string name="morphe_music_scrobbling_log_out">Odhlásit se</string>
+  <string name="morphe_music_scrobbling_logged_out_toast">Odhlášeno</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_enabled_title">Povolit scrobbling</string>
+  <string name="morphe_music_listenbrainz_now_playing_title">Odeslat stav \"Přehrávám nyní\"</string>
+  <string name="morphe_music_listenbrainz_min_song_duration_title">Minimální délka skladby</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_min_song_duration_summary">Skladby kratší než tato délka nebudou scrobblingem zaznamenány</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_title">Procento zpoždění scrobblingu</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_summary">Spusťte scrobbling po poslechu tohoto procenta skladby</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_title">Sekundy zpoždění scrobblingu</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_summary">Spusťte scrobbling po poslechu po dobu tohoto počtu sekund</string>
+  <string name="morphe_music_listenbrainz_token_title">Účet ListenBrainz</string>
+  <string name="morphe_music_listenbrainz_token_summary_logged_in">Přihlášeno. Klepnutím spravujete účet</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">Zadejte svůj uživatelský token ListenBrainz pro povolení scrobblingu</string>
+  <string name="morphe_music_listenbrainz_token_dialog_hint">Token</string>
+  <string name="morphe_music_listenbrainz_token_dialog_get_token">Získat token</string>
+  <string name="morphe_music_listenbrainz_token_dialog_verify">Ověřit</string>
+  <string name="morphe_music_listenbrainz_token_status_empty">Vložte, prosím, token</string>
+  <string name="morphe_music_listenbrainz_token_status_validating">Ověřování...</string>
+  <string name="morphe_music_listenbrainz_token_status_valid">Platný token! Uživatel: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">Neplatný token: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid_unknown">neznámý</string>
+  <string name="morphe_music_listenbrainz_token_status_failed">Ověření selhalo: %s</string>
+  <string name="morphe_music_listenbrainz_token_toast_cleared">Token vymazán</string>
+  <string name="morphe_music_listenbrainz_token_toast_saved">Upozornění: Uložený token je neplatný!</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Upozornění: Uložený token je neplatný!</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_lastfm_enabled_title">Povolit scrobbling</string>
+  <string name="morphe_music_lastfm_now_playing_title">Odeslat stav \"Přehrávám nyní\"</string>
+  <string name="morphe_music_lastfm_love_on_like_title">Označit oblíbené skladby</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">Automaticky označujte skladby na Last.fm jako oblíbené, když se vám líbí na YouTube Music (a odeberte označení, když se vám nelíbí nebo se vám nelíbí)</string>
+  <string name="morphe_music_lastfm_min_song_duration_title">Minimální délka skladby</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_lastfm_min_song_duration_summary">Skladby kratší než tato délka nebudou scrobblingem zaznamenány</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_title">Procento zpoždění scrobblingu</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_summary">Spusťte scrobbling po poslechu tohoto procenta skladby</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_title">Sekundy zpoždění scrobblingu</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_summary">Spusťte scrobbling po poslechu po dobu tohoto počtu sekund</string>
+  <string name="morphe_music_lastfm_token_title">Účet Last.fm</string>
+  <string name="morphe_music_lastfm_token_summary_logged_in">Přihlášeno jako %s. Klepnutím spravujete účet</string>
+  <string name="morphe_music_lastfm_token_dialog_instruction">Zadejte své přihlašovací údaje Last.fm pro přihlášení</string>
+  <string name="morphe_music_lastfm_token_dialog_username_hint">Uživatelské jméno</string>
+  <string name="morphe_music_lastfm_token_dialog_password_hint">Heslo</string>
+  <string name="morphe_music_lastfm_token_dialog_login">Přihlásit se</string>
+  <string name="morphe_music_lastfm_token_status_empty">Vložte, prosím, uživatelské jméno a heslo</string>
+  <string name="morphe_music_lastfm_token_status_logging_in">Přihlašuji se...</string>
+  <string name="morphe_music_lastfm_token_status_success">Přihlášení proběhlo úspěšně!</string>
+  <string name="morphe_music_lastfm_token_status_no_session">Nepodařilo se získat relaci z Last.fm</string>
+  <string name="morphe_music_lastfm_token_status_failed">Přihlášení selhalo: %s</string>
+  <string name="morphe_music_lastfm_token_toast_saved">Přihlašovací údaje Last.fm uloženy!</string>
+  <string name="morphe_settings_music_scrobbling_metadata_title">Vyčištění metadat</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_title">Vyčistit metadata</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">Automaticky vyčistěte běžný nepořádek (např. \"Oficiální video\", \"Remaster\", \"Živé\") z názvů, interpretů a alb před scrobblingem</string>
+  <string name="morphe_music_scrobbling_custom_regex_title">Vlastní čištění pomocí regexu</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">"Zadejte vlastní regulární výraz (regex), který se má shodovat a odstraňovat další text z názvů skladeb, interpretů nebo alb.
+Příklad: (?i)\s*\((clean|explicit)\)"</string>
+  <string name="morphe_music_scrobbling_about_title">O scrobblingu</string>
+  <string name="morphe_music_scrobbling_about_summary">"Scrobbling automaticky sleduje hudbu, kterou přehráváte na YouTube Music, a synchronizuje ji s vaším profilem Last.fm nebo ListenBrainz.
+
+Pro zajištění spolehlivého běhu scrobblingu na pozadí ověřte, že využití systémové energie YouTube Music je nastaveno na „Nekontrolované“."</string>
 </resources>

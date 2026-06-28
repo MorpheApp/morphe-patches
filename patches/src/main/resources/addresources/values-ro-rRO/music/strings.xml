@@ -27,7 +27,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_1_ads_title">Anunțuri</string>
   <string name="morphe_settings_music_screen_2_general_title">Generalități</string>
   <string name="morphe_settings_music_screen_3_player_title">Jucător</string>
-  <string name="morphe_settings_music_screen_4_misc_title">Diverse</string>
+  <string name="morphe_settings_music_screen_4_scrobbling_title">Scrobbling</string>
+  <string name="morphe_settings_music_screen_5_misc_title">Diverse</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Ascunde eticheta „Obține Music Premium”</string>
   <!-- ad.video.hideVideoAdsPatch -->
@@ -147,4 +148,77 @@ YouTube Music 8.x — estomparea încrucișată funcționează doar pe 9.x și v
   <string name="morphe_music_hide_navigation_bar_labels_title">Ascundeți etichetele butoanelor de navigare</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Ascunde butonul de upgrade</string>
+  <!-- interaction.scrobbling.scrobblingPatch -->
+  <string name="morphe_music_scrobbling_summary">Configurare integrarea Last.fm și ListenBrainz</string>
+  <string name="morphe_music_scrobbling_summary_logged_out">Nu sunteți conectat. Atingeți pentru a configura</string>
+  <string name="morphe_music_scrobbling_log_out">Deconectare</string>
+  <string name="morphe_music_scrobbling_logged_out_toast">Deconectat</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_enabled_title">Activare scrobbling</string>
+  <string name="morphe_music_listenbrainz_now_playing_title">Trimite starea \"În curs de redare\"</string>
+  <string name="morphe_music_listenbrainz_min_song_duration_title">Durata minimă a melodiei</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_min_song_duration_summary">Melodiile mai scurte decât aceasta nu vor fi scrobble-uite</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_title">Procentaj de întârziere scrobbling</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_summary">Declanșează scrobbling-ul după ce ai ascultat acest procentaj din melodie</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_title">Secunde de întârziere scrobbling</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_summary">Declanșează scrobbling-ul după ce ai ascultat pentru acest număr de secunde</string>
+  <string name="morphe_music_listenbrainz_token_title">Cont ListenBrainz</string>
+  <string name="morphe_music_listenbrainz_token_summary_logged_in">Conectat. Atingeți pentru a gestiona contul</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">Introdu token-ul tău de utilizator ListenBrainz pentru a activa scrobbling-ul</string>
+  <string name="morphe_music_listenbrainz_token_dialog_hint">Token</string>
+  <string name="morphe_music_listenbrainz_token_dialog_get_token">Obține token</string>
+  <string name="morphe_music_listenbrainz_token_dialog_verify">Verificare</string>
+  <string name="morphe_music_listenbrainz_token_status_empty">Vă rugăm să introduceți un token</string>
+  <string name="morphe_music_listenbrainz_token_status_validating">Validare...</string>
+  <string name="morphe_music_listenbrainz_token_status_valid">Token valid! Utilizator: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">Token invalid: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid_unknown">necunoscut</string>
+  <string name="morphe_music_listenbrainz_token_status_failed">Verificarea a eșuat: %s</string>
+  <string name="morphe_music_listenbrainz_token_toast_cleared">Token șters</string>
+  <string name="morphe_music_listenbrainz_token_toast_saved">Token salvat</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Atenție: Token-ul salvat este invalid!</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_lastfm_enabled_title">Activare scrobbling</string>
+  <string name="morphe_music_lastfm_now_playing_title">Trimite starea \"În curs de redare\"</string>
+  <string name="morphe_music_lastfm_love_on_like_title">Iubește piesele apreciate</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">Iubește automat piesele de pe Last.fm atunci când le apreciezi pe YouTube Music (și încetează să mai iubești piesele când nu îți mai plac sau dislike-uiești)</string>
+  <string name="morphe_music_lastfm_min_song_duration_title">Durata minimă a melodiei</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_lastfm_min_song_duration_summary">Melodiile mai scurte decât aceasta nu vor fi scrobble-uite</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_title">Procentaj de întârziere scrobbling</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_summary">Declanșează scrobbling-ul după ce ai ascultat acest procentaj din melodie</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_title">Secunde de întârziere scrobbling</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_summary">Declanșează scrobbling-ul după ce ai ascultat pentru acest număr de secunde</string>
+  <string name="morphe_music_lastfm_token_title">Cont Last.fm</string>
+  <string name="morphe_music_lastfm_token_summary_logged_in">Conectat ca %s. Atingeți pentru a gestiona contul</string>
+  <string name="morphe_music_lastfm_token_dialog_instruction">Introdu datele tale de autentificare Last.fm</string>
+  <string name="morphe_music_lastfm_token_dialog_username_hint">Nume de utilizator</string>
+  <string name="morphe_music_lastfm_token_dialog_password_hint">Parolă</string>
+  <string name="morphe_music_lastfm_token_dialog_login">Conectare</string>
+  <string name="morphe_music_lastfm_token_status_empty">Vă rugăm să introduceți nume de utilizator și parolă</string>
+  <string name="morphe_music_lastfm_token_status_logging_in">Se conectează...</string>
+  <string name="morphe_music_lastfm_token_status_success">Conectare reușită!</string>
+  <string name="morphe_music_lastfm_token_status_no_session">Nu s-a putut obține o sesiune de la Last.fm</string>
+  <string name="morphe_music_lastfm_token_status_failed">Conectare eșuată: %s</string>
+  <string name="morphe_music_lastfm_token_toast_saved">Datele de autentificare Last.fm au fost salvate!</string>
+  <string name="morphe_settings_music_scrobbling_metadata_title">Curățarea metadatelor</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_title">Curățare metadate</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">Curăță automat dezordinea comună (cum ar fi \"Video oficial\", \"Remaster\", \"Live\") din titluri, artiști și albume înainte de scrobbling</string>
+  <string name="morphe_music_scrobbling_custom_regex_title">Curățare regex personalizată</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">"Introdu o expresie regulată (regex) personalizată pentru a potrivi și elimina text suplimentar din titlurile melodilor, artiști sau albume.
+Exemplu: (?i)\\s*\\((clean|explicit)\\)"</string>
+  <string name="morphe_music_scrobbling_about_title">Despre scrobbling</string>
+  <string name="morphe_music_scrobbling_about_summary">"Scrobbling-ul urmărește automat muzica pe care o redai pe YouTube Music și o sincronizează cu profilul tău Last.fm sau ListenBrainz.
+
+Pentru a te asigura că scrobbling-ul funcționează în mod fiabil în fundal, te rugăm să verifici că utilizarea bateriei sistemului YouTube Music este setată la \"Nerestrictivă\"."</string>
 </resources>

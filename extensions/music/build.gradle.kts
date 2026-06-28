@@ -13,3 +13,4 @@ configure<ApplicationExtension> {
         minSdk = 26
     }
 }
+

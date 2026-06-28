@@ -27,7 +27,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_1_ads_title">Annonser</string>
   <string name="morphe_settings_music_screen_2_general_title">Generelt</string>
   <string name="morphe_settings_music_screen_3_player_title">Spiller</string>
-  <string name="morphe_settings_music_screen_4_misc_title">Diverse</string>
+  <string name="morphe_settings_music_screen_4_scrobbling_title">Spilling</string>
+  <string name="morphe_settings_music_screen_5_misc_title">Diverse</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Skjul «Skaff Music Premium»-etikett</string>
   <!-- ad.video.hideVideoAdsPatch -->
@@ -147,4 +148,77 @@ YouTube Music 8.x – crossfade kjører bare på 9.x og nyere"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Skjul navigasjonsknappetiketter</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Skjul oppgraderingsknapp</string>
+  <!-- interaction.scrobbling.scrobblingPatch -->
+  <string name="morphe_music_scrobbling_summary">Konfigurer integrasjon med Last.fm og ListenBrainz</string>
+  <string name="morphe_music_scrobbling_summary_logged_out">Ikke logget inn. Trykk for å konfigurere</string>
+  <string name="morphe_music_scrobbling_log_out">Logg ut</string>
+  <string name="morphe_music_scrobbling_logged_out_toast">Logget ut</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_enabled_title">Aktiver spilling</string>
+  <string name="morphe_music_listenbrainz_now_playing_title">Send \"Spilles nå\"-status</string>
+  <string name="morphe_music_listenbrainz_min_song_duration_title">Minimum sanglengde</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_min_song_duration_summary">Sanger som er kortere enn dette vil ikke bli spilt inn</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_title">Spilleforsinkelse i prosent</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_summary">Start spilling etter å ha lyttet til denne prosentandelen av sangen</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_title">Spilleforsinkelse i sekunder</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_summary">Start spilling etter å ha lyttet i dette antall sekunder</string>
+  <string name="morphe_music_listenbrainz_token_title">ListenBrainz-konto</string>
+  <string name="morphe_music_listenbrainz_token_summary_logged_in">Logget inn. Trykk for å administrere konto</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">Skriv inn din ListenBrainz-brukertoken for å aktivere spilling</string>
+  <string name="morphe_music_listenbrainz_token_dialog_hint">Token</string>
+  <string name="morphe_music_listenbrainz_token_dialog_get_token">Hent token</string>
+  <string name="morphe_music_listenbrainz_token_dialog_verify">Bekreft</string>
+  <string name="morphe_music_listenbrainz_token_status_empty">Vennligst skriv inn en token</string>
+  <string name="morphe_music_listenbrainz_token_status_validating">Validerer...</string>
+  <string name="morphe_music_listenbrainz_token_status_valid">Gyldig token! Bruker: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">Ugyldig token: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid_unknown">Ukjent</string>
+  <string name="morphe_music_listenbrainz_token_status_failed">Bekreftelse mislyktes: %s</string>
+  <string name="morphe_music_listenbrainz_token_toast_cleared">Token slettet</string>
+  <string name="morphe_music_listenbrainz_token_toast_saved">Token lagret</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Advarsel: Lagret token er ugyldig!</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_lastfm_enabled_title">Aktiver spilling</string>
+  <string name="morphe_music_lastfm_now_playing_title">Send \"Spilles nå\"-status</string>
+  <string name="morphe_music_lastfm_love_on_like_title">Liker likte spor</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">Automatisk lik spor på Last.fm når du liker dem på YouTube Music (og fjern lik når du ikke liker eller misliker)</string>
+  <string name="morphe_music_lastfm_min_song_duration_title">Minimum sanglengde</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_lastfm_min_song_duration_summary">Sanger som er kortere enn dette vil ikke bli spilt inn</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_title">Spilleforsinkelse i prosent</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_summary">Start spilling etter å ha lyttet til denne prosentandelen av sangen</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_title">Spilleforsinkelse i sekunder</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_summary">Start spilling etter å ha lyttet i dette antall sekunder</string>
+  <string name="morphe_music_lastfm_token_title">Last.fm-konto</string>
+  <string name="morphe_music_lastfm_token_summary_logged_in">Logget inn som %s. Trykk for å administrere konto</string>
+  <string name="morphe_music_lastfm_token_dialog_instruction">Skriv inn dine Last.fm-legitimasjoner for å logge inn</string>
+  <string name="morphe_music_lastfm_token_dialog_username_hint">Brukernavn</string>
+  <string name="morphe_music_lastfm_token_dialog_password_hint">Passord</string>
+  <string name="morphe_music_lastfm_token_dialog_login">Logg inn</string>
+  <string name="morphe_music_lastfm_token_status_empty">Vennligst skriv inn brukernavn og passord</string>
+  <string name="morphe_music_lastfm_token_status_logging_in">Logger inn...</string>
+  <string name="morphe_music_lastfm_token_status_success">Logget inn!</string>
+  <string name="morphe_music_lastfm_token_status_no_session">Kunne ikke hente sesjon fra Last.fm</string>
+  <string name="morphe_music_lastfm_token_status_failed">Innlogging mislyktes: %s</string>
+  <string name="morphe_music_lastfm_token_toast_saved">Last.fm-legitimasjonen er lagret!</string>
+  <string name="morphe_settings_music_scrobbling_metadata_title">Metadataopprydding</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_title">Rydd opp metadata</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">Rydder automatisk opp vanlig rot (som \"Offisiell video\", \"Remaster\", \"Live\") fra titler, artister og album før spilling</string>
+  <string name="morphe_music_scrobbling_custom_regex_title">Egendefinert regex-opprydding</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">"Skriv inn et egendefinert regulært uttrykk (regex) for å matche og fjerne ekstra tekst fra sangtitler, artister eller album. 
+Eksempel: (?i)\\s*\\((clean|explicit)\\)"</string>
+  <string name="morphe_music_scrobbling_about_title">Om spilling</string>
+  <string name="morphe_music_scrobbling_about_summary">"Spilling sporer automatisk musikken du spiller på YouTube Music og synkroniserer den til din Last.fm- eller ListenBrainz-profil.
+
+For å sikre at spilling kjører pålitelig i bakgrunnen, må du bekrefte at YouTube Musics systembatteribruk er satt til \"Ubegrenset\"."</string>
 </resources>

@@ -27,7 +27,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_1_ads_title">Oglasi</string>
   <string name="morphe_settings_music_screen_2_general_title">Opšte</string>
   <string name="morphe_settings_music_screen_3_player_title">Plejer</string>
-  <string name="morphe_settings_music_screen_4_misc_title">Razno</string>
+  <string name="morphe_settings_music_screen_4_scrobbling_title">Slušanje</string>
+  <string name="morphe_settings_music_screen_5_misc_title">Razno</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Sakrij oznaku „Nabavite Music Premium”</string>
   <!-- ad.video.hideVideoAdsPatch -->
@@ -146,4 +147,77 @@ YouTube Music 8.x — prelazni efekat radi samo na 9.x i novijim verzijama"</str
   <string name="morphe_music_hide_navigation_bar_labels_title">Sakrij oznake dugmadi za navigaciju</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Sakrij dugme za nadogradnju</string>
+  <!-- interaction.scrobbling.scrobblingPatch -->
+  <string name="morphe_music_scrobbling_summary">Konfigurišite integraciju Last.fm i ListenBrainz</string>
+  <string name="morphe_music_scrobbling_summary_logged_out">Niste prijavljeni. Dodirnite za konfigurisanje</string>
+  <string name="morphe_music_scrobbling_log_out">Odjavite se</string>
+  <string name="morphe_music_scrobbling_logged_out_toast">Odjavljeni</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_enabled_title">Omogući scrobbling</string>
+  <string name="morphe_music_listenbrainz_now_playing_title">Pošalji status \"Sada slušam\"</string>
+  <string name="morphe_music_listenbrainz_min_song_duration_title">Minimalno trajanje pesme</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_min_song_duration_summary">Pesme kraće od ovog trajanja neće biti scroblovane</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_title">Procenat kašnjenja scrobblinga</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_summary">Pokreni scrobbling nakon slušanja ovog procenta pesme</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_title">Kašnjenje scrobblinga u sekundama</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_summary">Pokreni scrobbling nakon slušanja određeni broj sekundi</string>
+  <string name="morphe_music_listenbrainz_token_title">ListenBrainz nalog</string>
+  <string name="morphe_music_listenbrainz_token_summary_logged_in">Prijavljeni. Dodirnite za upravljanje nalogom</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">Unesite svoj ListenBrainz korisnički token da biste omogućili scrobbling</string>
+  <string name="morphe_music_listenbrainz_token_dialog_hint">Token</string>
+  <string name="morphe_music_listenbrainz_token_dialog_get_token">Dohvati token</string>
+  <string name="morphe_music_listenbrainz_token_dialog_verify">Proveri</string>
+  <string name="morphe_music_listenbrainz_token_status_empty">Molimo unesite token</string>
+  <string name="morphe_music_listenbrainz_token_status_validating">Validacija u toku...</string>
+  <string name="morphe_music_listenbrainz_token_status_valid">Važeći token! Korisnik: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">Nevažeći token: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid_unknown">nepoznato</string>
+  <string name="morphe_music_listenbrainz_token_status_failed">Validacija nije uspela: %s</string>
+  <string name="morphe_music_listenbrainz_token_toast_cleared">Token je obrisan</string>
+  <string name="morphe_music_listenbrainz_token_toast_saved">Token je sačuvan</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Upozorenje: Sačuvani token je nevažeći!</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_lastfm_enabled_title">Omogući scrobbling</string>
+  <string name="morphe_music_lastfm_now_playing_title">Pošalji status \"Sada slušam\"</string>
+  <string name="morphe_music_lastfm_love_on_like_title">Sviđaju se pesme</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">Automatski označite pesme na Last.fm kao omiljene kada vam se dopadnu na YouTube Music (i uklonite oznaku kada vam se ne dopadnu ili ne sviđaju)</string>
+  <string name="morphe_music_lastfm_min_song_duration_title">Minimalno trajanje pesme</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_lastfm_min_song_duration_summary">Pesme kraće od ovog trajanja neće biti scroblovane</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_title">Procenat kašnjenja scrobblinga</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_summary">Pokreni scrobbling nakon slušanja ovog procenta pesme</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_title">Kašnjenje scrobblinga u sekundama</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_summary">Pokreni scrobbling nakon slušanja određeni broj sekundi</string>
+  <string name="morphe_music_lastfm_token_title">Last.fm nalog</string>
+  <string name="morphe_music_lastfm_token_summary_logged_in">Prijavljeni kao %s. Dodirnite za upravljanje nalogom</string>
+  <string name="morphe_music_lastfm_token_dialog_instruction">Unesite svoje Last.fm kredenciale za prijavu</string>
+  <string name="morphe_music_lastfm_token_dialog_username_hint">Korisničko ime</string>
+  <string name="morphe_music_lastfm_token_dialog_password_hint">Lozinka </string>
+  <string name="morphe_music_lastfm_token_dialog_login">Prijavi se</string>
+  <string name="morphe_music_lastfm_token_status_empty">Molimo unesite korisničko ime i lozinku</string>
+  <string name="morphe_music_lastfm_token_status_logging_in">Prijavljivanje...</string>
+  <string name="morphe_music_lastfm_token_status_success">Uspješno prijavljeni!</string>
+  <string name="morphe_music_lastfm_token_status_no_session">Nije uspjelo dobijanje sesije sa Last.fm</string>
+  <string name="morphe_music_lastfm_token_status_failed">Neuspešna prijava: %s</string>
+  <string name="morphe_music_lastfm_token_toast_saved">Last.fm kredencijali su sačuvani!</string>
+  <string name="morphe_settings_music_scrobbling_metadata_title">Čišćenje metapodataka</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_title">Očisti metapodatak</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">Automatski uklonite uobičajeni nered (kao što su „Oficijelni video“, „Remaster“, „Uživo“) iz naslova, izvođača i albuma pre scrobblinga</string>
+  <string name="morphe_music_scrobbling_custom_regex_title">Čišćenje prilagođenim regex-om</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">"Unesite prilagođeni regularni izraz (regex) da biste pronašli i uklonili dodatni tekst iz naslova pesama, izvođača ili albuma.
+Primer: (?i)\\s*\\((clean|explicit)\\)"</string>
+  <string name="morphe_music_scrobbling_about_title">O scrobblingu</string>
+  <string name="morphe_music_scrobbling_about_summary">"Scrobbling automatski prati muziku koju slušate na YouTube Music i sinhronizuje je sa svojim Last.fm ili ListenBrainz profilom.
+
+Da biste osigurali da scrobbling pouzdano radi u pozadini, proverite da je podešavanje korišćenja baterije sistema YouTube Music postavljeno na \"Nekontrolisano\"."</string>
 </resources>

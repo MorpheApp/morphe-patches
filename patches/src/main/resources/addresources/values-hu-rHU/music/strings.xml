@@ -27,7 +27,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_1_ads_title">Hirdetések</string>
   <string name="morphe_settings_music_screen_2_general_title">Általános</string>
   <string name="morphe_settings_music_screen_3_player_title">Lejátszó</string>
-  <string name="morphe_settings_music_screen_4_misc_title">Egyéb</string>
+  <string name="morphe_settings_music_screen_4_scrobbling_title">Scrobbling</string>
+  <string name="morphe_settings_music_screen_5_misc_title">Egyéb</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">A „Music Premium beszerzése” címke elrejtése</string>
   <!-- ad.video.hideVideoAdsPatch -->
@@ -147,4 +148,77 @@ YouTube Music 8.x – a keresztátmenet csak a 9.x és újabb verziókon fut."</
   <string name="morphe_music_hide_navigation_bar_labels_title">Navigációs gombok feliratainak elrejtése</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Frissítés gomb elrejtése</string>
+  <!-- interaction.scrobbling.scrobblingPatch -->
+  <string name="morphe_music_scrobbling_summary">Konfigurálja a Last.fm és a ListenBrainz integrációt</string>
+  <string name="morphe_music_scrobbling_summary_logged_out">Nem jelentkezett be. A konfiguráláshoz koppintson ide.</string>
+  <string name="morphe_music_scrobbling_log_out">Kijelentkezés</string>
+  <string name="morphe_music_scrobbling_logged_out_toast">Kijelentkezett</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_enabled_title">Engedélyezze a scrobblingot</string>
+  <string name="morphe_music_listenbrainz_now_playing_title">Küldje el a \"Éppen játszik\" állapotot</string>
+  <string name="morphe_music_listenbrainz_min_song_duration_title">Minimum dalidőtartam</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_min_song_duration_summary">A nála rövidebb dalok nem lesznek scrobblingolva</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_title">Scrobbling késleltetése százalékban</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_summary">A dal lejátszásának ez a százaléka után indítsa el a scrobblingot</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_title">Scrobbling késleltetése másodpercben</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_summary">A dal ennyi másodperc lejátszása után indítsa el a scrobblingot</string>
+  <string name="morphe_music_listenbrainz_token_title">ListenBrainz fiók</string>
+  <string name="morphe_music_listenbrainz_token_summary_logged_in">Bejelentkezett. A fiók kezeléséhez koppintson ide.</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">Adja meg a ListenBrainz felhasználói azonosítóját a scrobbling engedélyezéséhez</string>
+  <string name="morphe_music_listenbrainz_token_dialog_hint">Azonosító</string>
+  <string name="morphe_music_listenbrainz_token_dialog_get_token">Azonosító beszerzése</string>
+  <string name="morphe_music_listenbrainz_token_dialog_verify">Ellenőrzés</string>
+  <string name="morphe_music_listenbrainz_token_status_empty">Kérjük, adjon meg egy azonosítót</string>
+  <string name="morphe_music_listenbrainz_token_status_validating">Ellenőrzés folyamatban...</string>
+  <string name="morphe_music_listenbrainz_token_status_valid">Érvényes azonosító! Felhasználó: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">Érvénytelen azonosító: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid_unknown">ismeretlen</string>
+  <string name="morphe_music_listenbrainz_token_status_failed">Az ellenőrzés sikertelen: %s</string>
+  <string name="morphe_music_listenbrainz_token_toast_cleared">Azonosító törölve</string>
+  <string name="morphe_music_listenbrainz_token_toast_saved">Azonosító mentve</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Figyelem: A mentett azonosító érvénytelen!</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_lastfm_enabled_title">Engedélyezze a scrobblingot</string>
+  <string name="morphe_music_lastfm_now_playing_title">Küldje el a \"Éppen játszik\" állapotot</string>
+  <string name="morphe_music_lastfm_love_on_like_title">Szeresse a kedvenc zeneszámokat</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">Automatikus zeneszámok szeretése a Last.fm-en, ha kedvelik őket a YouTube Musicban (és a nem kedvelés vagy nem értékelés esetén a szeretet eltávolítása)</string>
+  <string name="morphe_music_lastfm_min_song_duration_title">Minimum dalidőtartam</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_lastfm_min_song_duration_summary">A nála rövidebb dalok nem lesznek scrobblingolva</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_title">Scrobbling késleltetése százalékban</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_summary">A dal lejátszásának ez a százaléka után indítsa el a scrobblingot</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_title">Scrobbling késleltetése másodpercben</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_summary">A dal ennyi másodperc lejátszása után indítsa el a scrobblingot</string>
+  <string name="morphe_music_lastfm_token_title">Last.fm fiók</string>
+  <string name="morphe_music_lastfm_token_summary_logged_in">%s néven bejelentkezve. A fiók kezeléséhez koppintson ide.</string>
+  <string name="morphe_music_lastfm_token_dialog_instruction">Adja meg Last.fm felhasználóneve és jelszavát a bejelentkezéshez</string>
+  <string name="morphe_music_lastfm_token_dialog_username_hint">Felhasználónév</string>
+  <string name="morphe_music_lastfm_token_dialog_password_hint">Jelszó</string>
+  <string name="morphe_music_lastfm_token_dialog_login">Bejelentkezés</string>
+  <string name="morphe_music_lastfm_token_status_empty">Kérjük, adjon meg felhasználónevet és jelszót</string>
+  <string name="morphe_music_lastfm_token_status_logging_in">Bejelentkezés folyamatban...</string>
+  <string name="morphe_music_lastfm_token_status_success">Sikeres bejelentkezés!</string>
+  <string name="morphe_music_lastfm_token_status_no_session">Sikertelen a Last.fm-től származó session lekérése</string>
+  <string name="morphe_music_lastfm_token_status_failed">Sikertelen bejelentkezés: %s</string>
+  <string name="morphe_music_lastfm_token_toast_saved">Last.fm fiókadatok mentve!</string>
+  <string name="morphe_settings_music_scrobbling_metadata_title">Metadata tisztítása</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_title">Metadata tisztítása</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">Automatikus gyakori zavarok (mint például a \"Official Video\", \"Remaster\", \"Live\") eltávolítása címekről, művészekről és albumokról a scrobbling előtt</string>
+  <string name="morphe_music_scrobbling_custom_regex_title">Egyéni reguláris kifejezéses tisztítás</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">"Adjon meg egy egyéni reguláris kifejezést (regex), amely megegyezik és eltávolít további szöveget dalcímekből, művészekből vagy albumokból.
+Példa: (?i)\s*\((clean|explicit)\)"</string>
+  <string name="morphe_music_scrobbling_about_title">A scrobblingről</string>
+  <string name="morphe_music_scrobbling_about_summary">"A scrobbling automatikusan rögzíti a YouTube Musicban lejátszott zenét, és szinkronizálja azt a Last.fm vagy ListenBrainz profiljával.
+
+A scrobbling megbízható működésének biztosítása érdekében kérjük, ellenőrizze, hogy a YouTube Music rendszer akkumulátor-használata \"Korlátozatlan\" értékre van állítva."</string>
 </resources>

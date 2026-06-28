@@ -27,7 +27,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_1_ads_title">Annunci</string>
   <string name="morphe_settings_music_screen_2_general_title">Generale</string>
   <string name="morphe_settings_music_screen_3_player_title">Lettore</string>
-  <string name="morphe_settings_music_screen_4_misc_title">Varie</string>
+  <string name="morphe_settings_music_screen_4_scrobbling_title">Tracciamento</string>
+  <string name="morphe_settings_music_screen_5_misc_title">Varie</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Nascondi l\'etichetta \'Ottieni Music Premium\'</string>
   <!-- ad.video.hideVideoAdsPatch -->
@@ -147,4 +148,77 @@ YouTube Music 8.x: il crossfade funziona solo su 9.x e versioni successive"</str
   <string name="morphe_music_hide_navigation_bar_labels_title">Nascondi le etichette dei pulsanti di navigazione</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Nascondi pulsante di aggiornamento</string>
+  <!-- interaction.scrobbling.scrobblingPatch -->
+  <string name="morphe_music_scrobbling_summary">Configura l\'integrazione con Last.fm e ListenBrainz</string>
+  <string name="morphe_music_scrobbling_summary_logged_out">Non effettuato l\'accesso. Tocca per configurare</string>
+  <string name="morphe_music_scrobbling_log_out">Esci</string>
+  <string name="morphe_music_scrobbling_logged_out_toast">Disconnesso</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_enabled_title">Abilita scrobbling</string>
+  <string name="morphe_music_listenbrainz_now_playing_title">Invia stato \"In riproduzione\"</string>
+  <string name="morphe_music_listenbrainz_min_song_duration_title">Durata minima della canzone</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_min_song_duration_summary">Le canzoni più corte di questa durata non verranno scrobbled</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_title">Percentuale di ritardo dello scrobbling</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_summary">Attiva lo scrobbling dopo aver ascoltato questa percentuale della canzone</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_title">Ritardo dello scrobbling in secondi</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_summary">Attiva lo scrobbling dopo aver ascoltato per questo numero di secondi</string>
+  <string name="morphe_music_listenbrainz_token_title">Account ListenBrainz</string>
+  <string name="morphe_music_listenbrainz_token_summary_logged_in">Accesso effettuato. Tocca per gestire l\'account</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">Inserisci il token utente ListenBrainz per abilitare lo scrobbling</string>
+  <string name="morphe_music_listenbrainz_token_dialog_hint">Token</string>
+  <string name="morphe_music_listenbrainz_token_dialog_get_token">Ottieni token</string>
+  <string name="morphe_music_listenbrainz_token_dialog_verify">Verifica</string>
+  <string name="morphe_music_listenbrainz_token_status_empty">Inserisci un token</string>
+  <string name="morphe_music_listenbrainz_token_status_validating">Validazione in corso...</string>
+  <string name="morphe_music_listenbrainz_token_status_valid">Token valido! Utente: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">Token non valido: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid_unknown">sconosciuto</string>
+  <string name="morphe_music_listenbrainz_token_status_failed">Verifica fallita: %s</string>
+  <string name="morphe_music_listenbrainz_token_toast_cleared">Token cancellato</string>
+  <string name="morphe_music_listenbrainz_token_toast_saved">Token salvato</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Avviso: il token salvato non è valido!</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_lastfm_enabled_title">Abilita scrobbling</string>
+  <string name="morphe_music_lastfm_now_playing_title">Invia stato \"In riproduzione\"</string>
+  <string name="morphe_music_lastfm_love_on_like_title">Aggiungi ai brani preferiti le tracce piaciute</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">Aggiungi automaticamente ai brani preferiti su Last.fm le tracce che ti piacciono su YouTube Music (e rimuovi dai preferiti quando non ti piacciono o non ti piacciono)</string>
+  <string name="morphe_music_lastfm_min_song_duration_title">Durata minima della canzone</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_lastfm_min_song_duration_summary">Le canzoni più corte di questa durata non verranno scrobbled</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_title">Percentuale di ritardo dello scrobbling</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_summary">Attiva lo scrobbling dopo aver ascoltato questa percentuale della canzone</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_title">Ritardo dello scrobbling in secondi</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_summary">Attiva lo scrobbling dopo aver ascoltato per questo numero di secondi</string>
+  <string name="morphe_music_lastfm_token_title">Account Last.fm</string>
+  <string name="morphe_music_lastfm_token_summary_logged_in">Accesso effettuato come %s. Tocca per gestire l\'account</string>
+  <string name="morphe_music_lastfm_token_dialog_instruction">Inserisci le credenziali Last.fm per accedere</string>
+  <string name="morphe_music_lastfm_token_dialog_username_hint">Nome utente</string>
+  <string name="morphe_music_lastfm_token_dialog_password_hint">Password</string>
+  <string name="morphe_music_lastfm_token_dialog_login">Accedi</string>
+  <string name="morphe_music_lastfm_token_status_empty">Inserisci nome utente e password</string>
+  <string name="morphe_music_lastfm_token_status_logging_in">Accesso in corso...</string>
+  <string name="morphe_music_lastfm_token_status_success">Accesso riuscito!</string>
+  <string name="morphe_music_lastfm_token_status_no_session">Impossibile ottenere la sessione da Last.fm</string>
+  <string name="morphe_music_lastfm_token_status_failed">Accesso non riuscito: %s</string>
+  <string name="morphe_music_lastfm_token_toast_saved">Credenziali Last.fm salvate!</string>
+  <string name="morphe_settings_music_scrobbling_metadata_title">Pulizia metadati</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_title">Pulisci i metadati</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">Pulisci automaticamente il disordine comune (come \"Video ufficiale\", \"Remaster\", \"Dal vivo\") da titoli, artisti e album prima dello scrobbling</string>
+  <string name="morphe_music_scrobbling_custom_regex_title">Pulizia regex personalizzata</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">"Inserisci un'espressione regolare (regex) personalizzata da utilizzare per trovare e rimuovere testo aggiuntivo da titoli di canzoni, artisti o album.
+Esempio: (?i)\\s*\\((clean|explicit)\\)"</string>
+  <string name="morphe_music_scrobbling_about_title">Informazioni sullo scrobbling</string>
+  <string name="morphe_music_scrobbling_about_summary">"Lo scrobbling tiene automaticamente traccia della musica che riproduci su YouTube Music e la sincronizza con il tuo profilo Last.fm o ListenBrainz.
+
+Per garantire che lo scrobbling funzioni in modo affidabile in background, verifica che l'utilizzo della batteria di sistema di YouTube Music sia impostato su \"Illimitato\"."</string>
 </resources>

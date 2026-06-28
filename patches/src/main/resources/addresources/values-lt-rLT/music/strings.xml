@@ -27,7 +27,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_1_ads_title">Reklamos</string>
   <string name="morphe_settings_music_screen_2_general_title">Bendri</string>
   <string name="morphe_settings_music_screen_3_player_title">Leistuvas</string>
-  <string name="morphe_settings_music_screen_4_misc_title">Įvairūs</string>
+  <string name="morphe_settings_music_screen_5_misc_title">Įvairūs</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Paslėpti \"Gauti Music Premium\" etiketę</string>
   <!-- ad.video.hideVideoAdsPatch -->
@@ -119,4 +119,19 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Slėpti naršymo mygtukų etiketes</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Slėpti atnaujinimo mygtuką</string>
+  <!-- interaction.scrobbling.scrobblingPatch -->
+  <!-- 'scrobbling' must be kept untranslated -->
+  <!-- 'scrobbled' must be kept untranslated -->
+  <!-- 'scrobble' must be kept untranslated -->
+  <!-- 'scrobble' must be kept untranslated -->
+  <!-- 'scrobble' must be kept untranslated -->
+  <!-- 'scrobble' must be kept untranslated -->
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_token_status_invalid_unknown">nežinoma</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <!-- 'scrobbled' must be kept untranslated -->
+  <!-- 'scrobble' must be kept untranslated -->
+  <!-- 'scrobble' must be kept untranslated -->
+  <!-- 'scrobble' must be kept untranslated -->
+  <!-- 'scrobble' must be kept untranslated -->
 </resources>

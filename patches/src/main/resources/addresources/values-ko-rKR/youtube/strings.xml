@@ -104,7 +104,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_subscribed_channels_bar_title">구독 채널바 숨기기</string>
   <string name="morphe_hide_surveys_title">설문 조사 숨기기</string>
   <string name="morphe_hide_surveys_summary">피드 추천 정확도에 대한 설문 조사 및 안내 메시지를 숨깁니다</string>
-  <string name="morphe_hide_ticket_shelf_title">콘서트 티켓 선반 숨기기</string>
+  <string name="morphe_hide_ticket_shelf_title">콘서트 선반 숨기기</string>
   <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_recommendation_labels_title">동영상 추천 라벨 숨기기</string>
   <string name="morphe_hide_video_recommendation_labels_summary">검색 결과에서 다음 라벨을 숨깁니다:\n• 시청자가 이 동영상도 시청함\n• 내가 좋아할 만한 동영상</string>
@@ -308,7 +308,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_empty_warning">패키지명은 비워둘 수 없습니다</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">음성 번역</string>
-  <string name="morphe_vot_screen_summary">기기의 텍스트 음성 변환(TTS)을 사용하여 동영상 자막을 재생과 동기화하여 음성으로 읽어줍니다</string>
+  <string name="morphe_vot_screen_summary">기기의 텍스트 음성 변환(TTS)을 사용하여 재생에 맞춰 동기화된 동영상 자막을 읽어줍니다</string>
   <string name="morphe_vot_enabled_title">음성 번역</string>
   <string name="morphe_vot_caption_language_title">언어</string>
   <string name="morphe_vot_translation_service_title">번역 제공자</string>
@@ -318,16 +318,16 @@ Second \"item\" text"</string>
   <string name="morphe_vot_translation_volume_summary">더빙된 번역 음성의 볼륨</string>
   <string name="morphe_vot_max_speech_rate_title">최대 음성 속도</string>
   <string name="morphe_vot_max_speech_rate_summary">자막 구간에 맞추기 위한 최대 음성 속도 배수</string>
-  <string name="morphe_vot_mymemory_info_summary">"무료 번역 API로, API 키가 필요하지 않습니다. 무료 플랜에서는 하루 최대 5,000자까지 사용할 수 있으며, 이메일 주소를 등록하면 하루 최대 50,000자까지 사용할 수 있습니다.
+  <string name="morphe_vot_mymemory_info_summary">"무료 번역 API로, API 키가 필요하지 않습니다. 무료 플랜에서는 하루 최대 5,000자까지 사용할 수 있으며, 이메일 주소를 등록하면 하루 최대 50,000자까지 사용할 수 있습니다
 
-여기를 탭하여 MyMemory.translated.net을 여세요."</string>
+자세한 정보를 보려면 여기를 탭하여 'MyMemory.translated.net'으로 이동하세요"</string>
   <string name="morphe_vot_mymemory_email_title">MyMemory 이메일</string>
-  <string name="morphe_vot_mymemory_email_summary">선택 사항입니다. MyMemory 이메일 주소를 입력하면 일일 사용 한도가 5,000자에서 50,000자로 증가합니다. 이메일 주소를 입력하지 않으면 익명 사용자 한도가 적용됩니다.</string>
-  <string name="morphe_vot_openrouter_info_summary">"OpenRouter를 통한 유료 AI 번역입니다. 한 번만 충전하면 수천 개의 동영상을 번역할 수 있습니다. Mistral Nemo는 가장 저렴한 옵션이며, Gemma 4는 가장 높은 번역 품질을 제공합니다.
+  <string name="morphe_vot_mymemory_email_summary">선택 사항입니다. MyMemory 이메일 주소를 입력하면 일일 사용 한도가 5,000자에서 50,000자로 증가합니다. 이메일 주소를 입력하지 않으면 익명 사용자 한도가 적용됩니다</string>
+  <string name="morphe_vot_openrouter_info_summary">"OpenRouter를 통한 유료 AI 번역입니다. 한 번만 충전하면 수천 개의 동영상을 번역할 수 있습니다. Mistral Nemo는 가장 저렴한 옵션이며, Gemma 4는 가장 높은 번역 품질을 제공합니다
 
-여기를 탭하여 OpenRouter.ai를 여세요."</string>
+자세한 정보를 보려면 여기를 탭하여 'OpenRouter.ai'로 이동하세요"</string>
   <string name="morphe_vot_openrouter_api_key_title">OpenRouter API 키</string>
-  <string name="morphe_vot_openrouter_api_key_summary">OpenRouter API 키입니다. API 키는 \'OpenRouter.ai &gt; Workspace &gt; API Keys\'에서 만들 수 있습니다.</string>
+  <string name="morphe_vot_openrouter_api_key_summary">OpenRouter API 키입니다. API 키는 \'OpenRouter.ai &gt; Workspace &gt; API Keys\'에서 만들 수 있습니다</string>
   <string name="morphe_vot_openrouter_model_title">OpenRouter 모델</string>
   <string name="morphe_vot_openrouter_model_custom">사용자 정의</string>
   <string name="morphe_vot_openrouter_not_configured_title">OpenRouter가 설정되지 않았습니다</string>
@@ -354,7 +354,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_vot_openrouter_credits_message">OpenRouter 크레딧 한도에 도달하였습니다. OpenRouter.ai에서 잔액을 충전하거나 API 키의 사용 한도를 늘리세요.</string>
   <string name="morphe_vot_openrouter_open_website">OpenRouter.ai 열기</string>
   <string name="morphe_vot_openrouter_error">OpenRouter 번역을 사용할 수 없습니다 (HTTP %s)</string>
-  <string name="morphe_vot_mymemory_quota_title">MyMemory 일일 사용 한도에 도달하였습니다</string>
+  <string name="morphe_vot_mymemory_quota_title">MyMemory 일일 사용 한도 도달</string>
   <string name="morphe_vot_mymemory_quota_next_available">%s에 다시 사용할 수 있습니다.</string>
   <string name="morphe_vot_mymemory_quota_message_no_email">오늘의 무료 MyMemory 번역 할당량(5,000자)을 모두 사용하였습니다. 설정에서 MyMemory 이메일 주소를 추가하여 일일 한도를 50,000자로 늘리거나 다른 번역 서비스를 사용하세요</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">오늘의 MyMemory 번역 할당량(50,000자)을 모두 사용하였습니다. 다른 번역 서비스를 사용하거나 내일 다시 시도하세요</string>
@@ -411,6 +411,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_queue_restore_summary">앱을 다시 시작한 후에도 현재 재생목록이 유지됩니다</string>
   <string name="morphe_swap_save_and_queue_actions_title">저장과 현재 재생목록 작업 교환하기</string>
   <string name="morphe_swap_save_and_queue_actions_summary">버튼을 탭하여 현재 재생목록 옵션을 실행할 수 있고, 길게 탭하면 나중에 볼 동영상에 저장됩니다</string>
+  <string name="morphe_queue_override_flyout_menu_title">피드 메뉴 현재 재생목록 버튼 재정의하기</string>
+  <string name="morphe_queue_override_flyout_menu_summary">YouTube 현재 재생목록이 아닌 Morphe 현재 재생목록을 실행합니다</string>
   <string name="morphe_queue_manager_check_failed_auth">로그인하지 않았습니다</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">재생목록 ID가 없습니다</string>
   <string name="morphe_queue_manager_check_failed_queue">현재 재생목록이 비어 있습니다</string>
@@ -830,9 +832,9 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_ryd_estimated_like_summary">좋아요 수가 숨겨진 동영상에서 추정되는 좋아요 수를 표시합니다</string>
   <string name="morphe_ryd_toast_on_connection_error_title">연결 오류 알림 표시하기</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Return YouTube Dislike 서버를 사용할 수 없을 경우에 알림을 표시합니다</string>
-  <string name="morphe_ryd_attribution_summary">"데이터는 Return YouTube Dislike API에서 제공합니다.
+  <string name="morphe_ryd_attribution_summary">"데이터는 Return YouTube Dislike API에 의해 제공됩니다
 
-ReturnYouTubeDislike.com을 열려면 여기를 탭하세요."</string>
+자세한 정보를 보려면 여기를 탭하여 'ReturnYouTubeDislike.com'으로 이동하세요"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">이 기기의 Return YouTube Dislike API 사용 통계</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">평균 API 응답 시간</string>
@@ -1074,9 +1076,9 @@ ReturnYouTubeDislike.com을 열려면 여기를 탭하세요."</string>
   <string name="morphe_sb_color_opacity_label">불투명도:</string>
   <string name="morphe_sb_color_dot_label">색상:</string>
   <string name="morphe_sb_about_title">정보</string>
-  <string name="morphe_sb_about_api_summary">"데이터는 SponsorBlock API에서 제공합니다.
+  <string name="morphe_sb_about_api_summary">"데이터는 SponsorBlock API에 의해 제공됩니다
 
-자세한 내용 및 다른 플랫폼용 다운로드를 확인하려면 여기를 탭하여 Sponsor.ajay.app를 여세요."</string>
+자세한 정보 및 다른 플랫폼용 다운로드를 확인하려면 여기를 탭하여 'Sponsor.ajay.app'으로 이동하세요"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">기기 레이아웃</string>
   <string name="morphe_change_form_factor_entry_1">기본값</string>
@@ -1231,7 +1233,7 @@ ReturnYouTubeDislike.com을 열려면 여기를 탭하세요."</string>
 
 이 설정을 활성화하면 동영상 URL이 API 서버로 전송되며, 다른 데이터는 전송되지 않습니다. 동영상에 DeArrow 썸네일이 없는 경우에는 원본 썸네일 또는 스틸 컷 썸네일이 표시됩니다
 
-여기를 탭하여 DeArrow.ajay.app를 여세요"</string>
+자세한 정보를 보려면 여기를 탭하여 'DeArrow.ajay.app'으로 이동하세요"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">연결 오류 알림 표시하기</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary">DeArrow 서버를 사용할 수 없을 경우에 알림을 표시합니다</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">DeArrow API 엔드포인트</string>

@@ -27,7 +27,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_1_ads_title">Reklam</string>
   <string name="morphe_settings_music_screen_2_general_title">Sazî</string>
   <string name="morphe_settings_music_screen_3_player_title">Lîstikvan</string>
-  <string name="morphe_settings_music_screen_4_misc_title">Cûre</string>
+  <string name="morphe_settings_music_screen_4_scrobbling_title">Lêkirin</string>
+  <string name="morphe_settings_music_screen_5_misc_title">Cûda</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">\'Get Music Premium\' etîketê veşêre</string>
   <!-- ad.video.hideVideoAdsPatch -->
@@ -147,4 +148,76 @@ YouTube Music 8.x — crossfade tenê li 9.x û nûjenertirîn de dimeşe"</stri
   <string name="morphe_music_hide_navigation_bar_labels_title">Etîketên barê navigasyonê veşêre</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Bişevêna barê veşêre</string>
+  <!-- interaction.scrobbling.scrobblingPatch -->
+  <string name="morphe_music_scrobbling_summary">Konfîgkirina entegrasyona Last.fm û ListenBrainz</string>
+  <string name="morphe_music_scrobbling_summary_logged_out">Ne têkeve. Têke da ku konfîg bike</string>
+  <string name="morphe_music_scrobbling_log_out">Derkeve</string>
+  <string name="morphe_music_scrobbling_logged_out_toast">Derketin</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_enabled_title">Lêkirinê çalak bike</string>
+  <string name="morphe_music_listenbrainz_now_playing_title">Statûsa \"Niha lîstikê\" bigihîne</string>
+  <string name="morphe_music_listenbrainz_min_song_duration_title">Mîqdara herî kêm a durasiya stranê</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_min_song_duration_summary">Stranên ku ji vê kêmtir in, nayên lêkirin</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_title">Sedîya derengkirina lêkirinê</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_percent_summary">Lêkirinê piştî guhdarîkirina vê sedîya stranê bişopîne</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_title">Çend saniyeyên derengkirina lêkirinê</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_delay_seconds_summary">Lêkirinê piştî guhdarîkirina vê hejmara saniyetan bişopîne</string>
+  <string name="morphe_music_listenbrainz_token_title">Hesaba ListenBrainz</string>
+  <string name="morphe_music_listenbrainz_token_summary_logged_in">Têkeve. Têke da ku hesabê birêve bike</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">Tokena bikarînerê ListenBrainz-ê têkevin da ku lêkirinê çalak bike</string>
+  <string name="morphe_music_listenbrainz_token_dialog_hint">Token</string>
+  <string name="morphe_music_listenbrainz_token_dialog_get_token">Token bistîne</string>
+  <string name="morphe_music_listenbrainz_token_dialog_verify">Verastkirin</string>
+  <string name="morphe_music_listenbrainz_token_status_empty">Ji kerem tokenê têkevin</string>
+  <string name="morphe_music_listenbrainz_token_status_validating">Verastkirin...</string>
+  <string name="morphe_music_listenbrainz_token_status_valid">Token valide! Bikarîner: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">Token ne valide: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid_unknown">Nezanîn</string>
+  <string name="morphe_music_listenbrainz_token_status_failed">Verastkirin têk çû: %s</string>
+  <string name="morphe_music_listenbrainz_token_toast_cleared">Token paqij kirin</string>
+  <string name="morphe_music_listenbrainz_token_toast_saved">Token ji nû ve hat tomarkirin</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Hişyarî: Tokena hat tomarkirin ne valide ye!</string>
+  <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_lastfm_enabled_title">Lêkirinê çalak bike</string>
+  <string name="morphe_music_lastfm_now_playing_title">Statûsa \"Niha lîstikê\" bigihîne</string>
+  <string name="morphe_music_lastfm_love_on_like_title">Stranên hezkirî hez bike</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">Bi otomatîkî stranên Last.fm de hez kirin dema ku hûn wan li YouTube Music de hez dikin (û hezkirina we winda bikin dema ku ne hezkirî an na hes xwe li wan dikin)</string>
+  <string name="morphe_music_lastfm_min_song_duration_title">Mîqdara herî kêm a durasiya stranê</string>
+  <!-- 'scrobbled' must be kept untranslated -->
+  <string name="morphe_music_lastfm_min_song_duration_summary">Stranên ku ji vê kêmtir in, nayên lêkirin</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_title">Sedîya derengkirina lêkirinê</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_percent_summary">Lêkirinê piştî guhdarîkirina vê sedîya stranê bişopîne</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_title">Çend saniyeyên derengkirina lêkirinê</string>
+  <!-- 'scrobble' must be kept untranslated -->
+  <string name="morphe_music_lastfm_delay_seconds_summary">Lêkirinê piştî guhdarîkirina vê hejmara saniyetan bişopîne</string>
+  <string name="morphe_music_lastfm_token_title">Hesaba Last.fm</string>
+  <string name="morphe_music_lastfm_token_summary_logged_in">Têkeve wek %s. Têke da ku hesabê birêve bike</string>
+  <string name="morphe_music_lastfm_token_dialog_instruction">Navê bikarînerê Last.fm-ê têkevin da ku têkevin</string>
+  <string name="morphe_music_lastfm_token_dialog_username_hint">Navê bikarînerê</string>
+  <string name="morphe_music_lastfm_token_dialog_password_hint">Şîfre</string>
+  <string name="morphe_music_lastfm_token_dialog_login">Têkeve</string>
+  <string name="morphe_music_lastfm_token_status_empty">Ji kerem navê bikarînerê û şîfre têkevin</string>
+  <string name="morphe_music_lastfm_token_status_logging_in">Têkevin...</string>
+  <string name="morphe_music_lastfm_token_status_success">Serkeftî têkeve!</string>
+  <string name="morphe_music_lastfm_token_status_no_session">Ji Last.fm-ê sesyonê girtin pêk nehat</string>
+  <string name="morphe_music_lastfm_token_status_failed">Têkevin pêk nehat: %s</string>
+  <string name="morphe_music_lastfm_token_toast_saved">Agahiyên Last.fm hatin tomarkirin!</string>
+  <string name="morphe_settings_music_scrobbling_metadata_title">Paqijkirina metadata</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_title">Metadata paqij bike</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">Bi otomatîkî metadata-ya hevpar (wek \"Vîdeoya fermî\", \"Remaster\", \"Zindî\") ji sernavan, hunerîstan, û albuman paqij bike berî lêkirinê</string>
+  <string name="morphe_music_scrobbling_custom_regex_title">Paqijkirina regex-a xwerû</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">"Hinek regex-a xwerû têkevin da ku texta zêde ji sernavan, hunerîstan, an albuman pêvekirî hebe. Mînak: (?i)\s*\((clean|explicit)\)"</string>
+  <string name="morphe_music_scrobbling_about_title">Derbarê lêkirinê</string>
+  <string name="morphe_music_scrobbling_about_summary">"Lêkirin bi otomatîkî muzîka ku hûn li YouTube Music de lê dikin şopîne û wê bi profîla Last.fm an ListenBrainz-ê re senk bike.
+
+Da ku lêkirin bi pêbawerî di paşnavê de xebitîne, ji kerem verast bike ku bikarîna pîvana pîvanê ya YouTube Music wekî \"Nerêvekirî\" hatî saz kirin."</string>
 </resources>

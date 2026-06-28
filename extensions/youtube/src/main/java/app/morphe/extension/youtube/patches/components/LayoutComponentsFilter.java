@@ -780,6 +780,7 @@ public final class LayoutComponentsFilter extends Filter {
 
         for (String filter : flyoutMenuFilterStrings) {
             if (menuTitleString.equalsIgnoreCase(filter)) {
+                Logger.printDebug(() -> "Hiding: " + menuTitleString);
                 return null;
             }
         }
@@ -806,6 +807,7 @@ public final class LayoutComponentsFilter extends Filter {
 
         for (String filter : flyoutMenuFilterStrings) {
             if (menuTitleString.equalsIgnoreCase(filter)) {
+                Logger.printDebug(() -> "Hiding: " + menuTitleString);
                 Utils.hideViewByLayoutParams(parentView);
             }
         }

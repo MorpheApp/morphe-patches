@@ -71,6 +71,9 @@ private val settingsResourcePatch = resourcePatch {
                 "morphe_settings_screen_05_player_bold.xml",
                 "morphe_settings_screen_11_misc.xml",
                 "morphe_settings_screen_11_misc_bold.xml",
+                "morphe_settings_music_screen_05_scrobbling.xml",
+                "morphe_settings_music_screen_05_scrobbling_bold.xml"
+                "morphe_settings_screen_11_misc_bold.xml",
                 "morphe_settings_screen_10_sponsorblock.xml",
                 "morphe_settings_screen_10_sponsorblock_bold.xml"
             ),
@@ -213,8 +216,16 @@ object PreferenceScreen : BasePreferenceScreen() {
         iconBold = "@drawable/morphe_settings_screen_05_player_bold",
         layout = "@layout/morphe_preference_with_icon"
     )
+    val SCROBBLING = Screen(
+        key = "morphe_settings_music_screen_4_scrobbling",
+        summaryKey = null,
+        icon = "@drawable/morphe_settings_music_screen_05_scrobbling",
+        iconBold = "@drawable/morphe_settings_music_screen_05_scrobbling_bold",
+        layout = "@layout/morphe_preference_with_icon",
+        sorting = Sorting.UNSORTED
+    )
     val MISC = Screen(
-        key = "morphe_settings_music_screen_4_misc",
+        key = "morphe_settings_music_screen_5_misc",
         summaryKey = null,
         icon = "@drawable/morphe_settings_screen_11_misc",
         iconBold = "@drawable/morphe_settings_screen_11_misc_bold",

@@ -409,6 +409,8 @@ Info : Peut ne pas fonctionner sur les diffusions en direct"</string>
   <string name="morphe_queue_restore_summary">La file d\'attente est conservée après le redémarrage de l\'application</string>
   <string name="morphe_swap_save_and_queue_actions_title">Inverser les actions \'Enregistrer\' et \'File d’attente\'</string>
   <string name="morphe_swap_save_and_queue_actions_summary">Appuyez pour afficher les options de la file d’attente, appuyez longuement pour enregistrer dans \'À regarder plus tard\'</string>
+  <string name="morphe_queue_override_flyout_menu_title">Remplacer la file d\'attente de flux</string>
+  <string name="morphe_queue_override_flyout_menu_summary">Ouvre la file d\'attente Morphe au lieu de la file d\'attente YouTube</string>
   <string name="morphe_queue_manager_check_failed_auth">Non connecté</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">Aucun ID de playlist</string>
   <string name="morphe_queue_manager_check_failed_queue">La file d\'attente est vide</string>
