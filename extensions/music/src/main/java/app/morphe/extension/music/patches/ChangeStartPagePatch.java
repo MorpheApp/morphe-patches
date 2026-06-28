@@ -19,9 +19,10 @@ import androidx.annotation.Nullable;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.patches.BaseChangeStartPagePatch;
 
 @SuppressWarnings("unused")
-public final class ChangeStartPagePatch {
+public final class ChangeStartPagePatch extends BaseChangeStartPagePatch {
 
     public enum StartPage {
         DEFAULT("", null),
@@ -32,8 +33,8 @@ public final class ChangeStartPagePatch {
         PLAYLISTS("FEmusic_liked_playlists", TRUE),
         PODCASTS("FEmusic_non_music_audio", TRUE),
         SUBSCRIPTIONS("FEmusic_library_corpus_artists", TRUE),
-        EPISODES_FOR_LATER("SE", false),
-        LIKED_MUSIC("LM", false),
+        EPISODES_FOR_LATER("VLSE", TRUE),
+        LIKED_MUSIC("VLLM", TRUE),
         SEARCH("", false);
 
         @NonNull
@@ -52,7 +53,6 @@ public final class ChangeStartPagePatch {
         }
     }
 
-    private static final String ACTION_MAIN = "android.intent.action.MAIN";
     private static final String SETTINGS_CLASS = "com.google.android.apps.youtube.music.settings.SettingsCompatActivity";
     private static final String SETTINGS_ATTRIBUTION_FRAGMENT_KEY = ":android:show_fragment";
     private static final String SETTINGS_ATTRIBUTION_FRAGMENT_VALUE = "com.google.android.apps.youtube.music.settings.fragment.SettingsHeadersFragment";
@@ -67,7 +67,9 @@ public final class ChangeStartPagePatch {
 
     private static void openSearch() {
         Activity mActivity = Utils.getActivity();
-        if (mActivity == null) return;
+        if (mActivity == null) {
+            return;
+        }
         Intent intent = new Intent();
         setSearchIntent(mActivity, intent);
         mActivity.startActivity(intent);
@@ -75,7 +77,9 @@ public final class ChangeStartPagePatch {
 
     private static void openSetting() {
         Activity mActivity = Utils.getActivity();
-        if (mActivity == null) return;
+        if (mActivity == null) {
+            return;
+        }
         Intent intent = new Intent();
         intent.setPackage(mActivity.getPackageName());
         intent.setClassName(mActivity, SETTINGS_CLASS);
@@ -93,55 +97,28 @@ public final class ChangeStartPagePatch {
     }
 
     public static String overrideBrowseId(@Nullable String original) {
-        try {
-            StartPage startPage = Settings.CHANGE_START_PAGE.get();
-
-            if (!"FEmusic_home".equals(original)) return original;
-            if (!startPage.isBrowseId()) return original;
-
-            String overrideBrowseId = startPage.id;
-            if (overrideBrowseId.isEmpty()) return original;
-
-            return overrideBrowseId;
-        } catch (Exception ex) {
+        if (!"FEmusic_home".equals(original)) {
             return original;
         }
+
+        StartPage startPage = Settings.CHANGE_START_PAGE.get();
+        return processBrowseId(original, startPage.isBrowseId(), startPage.id, startPage.name());
     }
 
-    public static void overrideIntentActionOnCreate(Activity activity, @Nullable Bundle savedInstanceState) {
-        try {
-            if (savedInstanceState != null) return;
-            if (!activity.isTaskRoot()) return;
+    public static void overrideIntentActionOnCreate(@NonNull Activity activity, @Nullable Bundle savedInstanceState) {
+        if (savedInstanceState != null) return;
 
-            StartPage startPage = Settings.CHANGE_START_PAGE.get();
-            if (startPage == StartPage.DEFAULT || startPage.isBrowseId()) return;
+        StartPage startPage = Settings.CHANGE_START_PAGE.get();
+        if (startPage != StartPage.SEARCH) return;
 
-            Intent originalIntent = activity.getIntent();
-            if (originalIntent == null) return;
-            if ((originalIntent.getFlags() & Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY) != 0) {
-                return;
-            }
+        Intent originalIntent = activity.getIntent();
+        if (originalIntent == null) return;
 
-            if (!ACTION_MAIN.equals(originalIntent.getAction())) {
-                return;
-            }
-
-            if (startPage == StartPage.SEARCH) {
-                Intent searchIntent = new Intent();
-                setSearchIntent(activity, searchIntent);
-                searchIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                activity.startActivity(searchIntent);
-                activity.overridePendingTransition(0, 0);
-            } else if (startPage == StartPage.LIKED_MUSIC || startPage == StartPage.EPISODES_FOR_LATER) {
-                Intent playlistIntent = new Intent(Intent.ACTION_VIEW);
-                playlistIntent.setData(android.net.Uri.parse("https://music.youtube.com/playlist?list=" + startPage.id));
-                playlistIntent.setPackage(activity.getPackageName());
-                playlistIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                activity.startActivity(playlistIntent);
-                activity.overridePendingTransition(0, 0);
-            }
-        } catch (Exception ex ){
-            Logger.printException(() -> "overrideIntentActionOnCreate failure", ex);
+        if (ACTION_MAIN.equals(originalIntent.getAction())) {
+            Logger.printDebug(() -> "Cold start: Firing search activity directly");
+            Intent searchIntent = new Intent();
+            setSearchIntent(activity, searchIntent);
+            activity.startActivity(searchIntent);
         }
     }
 }

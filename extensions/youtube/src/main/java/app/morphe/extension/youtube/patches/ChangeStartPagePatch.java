@@ -15,16 +15,18 @@ import static java.lang.Boolean.TRUE;
 
 import android.content.Intent;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.patches.BaseChangeStartPagePatch;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
-public final class ChangeStartPagePatch {
+public final class ChangeStartPagePatch extends BaseChangeStartPagePatch {
 
     public enum StartPage {
         /**
@@ -70,12 +72,13 @@ public final class ChangeStartPagePatch {
         SEARCH("com.google.android.youtube.action.open.search", FALSE),
         SHORTS("com.google.android.youtube.action.open.shorts", FALSE);
 
+        @NonNull
         final String id;
 
         @Nullable
         final Boolean isBrowseId;
 
-        StartPage(String id, @Nullable Boolean isBrowseId) {
+        StartPage(@NonNull String id, @Nullable Boolean isBrowseId) {
             this.id = id;
             this.isBrowseId = isBrowseId;
         }
@@ -110,60 +113,25 @@ public final class ChangeStartPagePatch {
      * Case 2. The user clicked Shorts button on the YouTube widget.
      * In this case, instead of opening Shorts, the start page specified by the user is opened.
      */
-    private static final String ACTION_MAIN = "android.intent.action.MAIN";
-    private static boolean appLaunched = false;
+    private static final StartPage START_PAGE = Settings.CHANGE_START_PAGE.get();
 
-    public static String overrideBrowseId(String original) {
-        try {
-            StartPage startPage = Settings.CHANGE_START_PAGE.get();
-            boolean changeStartPageAlways = true;
-
-            if (!startPage.isBrowseId()) {
-                return original;
-            }
-
-            if (!"FEwhat_to_watch".equals(original)) {
-                return original;
-            }
-
-            appLaunched = true;
-            Logger.printDebug(() -> "Changing browseId to: " + startPage.id);
-            return startPage.id;
-        } catch (Exception ex) {
-            Logger.printException(() -> "overrideBrowseId failure", ex);
-            return original;
-        }
+    public static String overrideBrowseId(@NonNull String original) {
+        return processBrowseId(original, START_PAGE.isBrowseId(), START_PAGE.id, START_PAGE.id);
     }
 
-    public static void overrideIntentAction(Intent intent) {
-        try {
-
-            StartPage startPage = Settings.CHANGE_START_PAGE.get();
-            boolean changeStartPageAlways = true;
-
-            if (!startPage.isIntentAction()) {
-                return;
-            }
-
-            if ((intent.getFlags() & Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY) != 0) {
-                Logger.printDebug(() -> "Ignore override intent action as the app was launched from history");
-                return;
-            }
-
-            if (!ACTION_MAIN.equals(intent.getAction())) {
-                Logger.printDebug(() -> "Ignore override intent action as the current activity is not the entry point");
-                return;
-            }
-
-            appLaunched = true;
-
-            String intentAction = startPage.id;
-            Logger.printDebug(() -> "Changing intent action to: " + intentAction);
-            intent.setAction(intentAction);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-
-        } catch (Exception ex) {
-            Logger.printException(() -> "overrideIntentAction failure", ex);
+    public static void overrideIntentAction(@NonNull Intent intent) {
+        if (!START_PAGE.isIntentAction()) {
+            return;
         }
+
+        if (!ACTION_MAIN.equals(intent.getAction())) {
+            Logger.printDebug(() -> "Ignore override intent action" +
+                    " as the current activity is not the entry point of the application");
+            return;
+        }
+
+        String intentAction = START_PAGE.id;
+        Logger.printDebug(() -> "Changing intent action to: " + intentAction);
+        intent.setAction(intentAction);
     }
 }
