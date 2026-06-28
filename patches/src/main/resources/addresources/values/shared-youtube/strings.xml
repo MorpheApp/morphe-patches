@@ -150,4 +150,13 @@ Playback will fail if the Player JavaScript hash is outdated."</string>
     <string name="morphe_replace_music_with_youtube_summary">Replaces music.youtube.com to youtube.com in shared links</string>
     <string name="morphe_replace_links_with_shortener_title">Change share links to youtu.be</string>
     <string name="morphe_replace_links_with_shortener_summary">Forces videos to use the shortened youtu.be URL format</string>
+
+    <!-- misc.debugging.enableDebuggingPatch -->
+    <string name="morphe_debug_protobuffer_title">Debug log protocol buffer</string>
+    <string name="morphe_debug_protobuffer_summary">Adds additional logging information for developers to identify app components</string>
+    <string name="morphe_debug_protobuffer_user_dialog_message">"Enabling this setting will log additional layout data, including on-screen text for some UI components.
+
+This can help identify components when creating custom filters.
+
+However, enabling this will also log some user data such as your IP address."</string>
 </resources>

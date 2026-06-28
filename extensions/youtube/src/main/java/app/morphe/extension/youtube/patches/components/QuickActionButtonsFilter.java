@@ -10,10 +10,14 @@
 
 package app.morphe.extension.youtube.patches.components;
 
+import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
+import app.morphe.extension.shared.patches.components.ByteArrayFilterGroup;
+import app.morphe.extension.shared.patches.components.ByteArrayFilterGroupList;
+import app.morphe.extension.shared.patches.components.ContextInterface;
+import app.morphe.extension.shared.patches.components.Filter;
+import app.morphe.extension.shared.patches.components.StringFilterGroup;
 import app.morphe.extension.shared.StringTrieSearch;
-import app.morphe.extension.youtube.patches.components.LithoFilterPatch.BufferAsciiStrings;
 import app.morphe.extension.youtube.settings.Settings;
-import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 
 @SuppressWarnings("unused")
 public final class QuickActionButtonsFilter extends Filter {
@@ -105,15 +109,15 @@ public final class QuickActionButtonsFilter extends Filter {
     }
 
     @Override
-    boolean isFiltered(ContextInterface contextInterface,
-                       String identifier,
-                       String accessibility,
-                       String path,
-                       byte[] buffer,
-                       BufferAsciiStrings asciiStrings,
-                       StringFilterGroup matchedGroup,
-                       FilterContentType contentType,
-                       int contentIndex) {
+    public boolean isFiltered(ContextInterface contextInterface,
+                              String identifier,
+                              String accessibility,
+                              String path,
+                              byte[] buffer,
+                              BufferAsciiStrings asciiStrings,
+                              StringFilterGroup matchedGroup,
+                              FilterContentType contentType,
+                              int contentIndex) {
 
         if (!path.startsWith(QUICK_ACTIONS_PATH)) {
             return false;

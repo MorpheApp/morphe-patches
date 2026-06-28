@@ -16,4 +16,3 @@ internal object PlayerBytesAdLayoutFingerprint : Fingerprint(
         "Bootstrapped layout construction resulted in non PlayerBytesLayout. PlayerAds count: ",
     )
 )
-

@@ -22,6 +22,8 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMuta
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
+import app.morphe.patches.shared.misc.litho.addLithoFilter
+import app.morphe.patches.shared.misc.litho.lithoFilterPatch
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
@@ -30,11 +32,11 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
+import app.morphe.patches.shared.misc.spans.addSpanFilter
+import app.morphe.patches.shared.misc.spans.inclusiveSpanPatch
 import app.morphe.patches.youtube.layout.hide.shelves.hideHorizontalShelvesPatch
 import app.morphe.patches.youtube.layout.hide.updatescreen.hideUpdateScreenPatch
 import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
-import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
-import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.litho.node.hookTreeNodeResult
 import app.morphe.patches.youtube.misc.litho.node.treeNodeElementHookPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
@@ -79,6 +81,8 @@ private const val CUSTOM_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/CustomFilter;"
 private const val KEYWORD_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/KeywordContentFilter;"
+private const val SANITIZE_VIDEO_SUBTITLE_FILTER =
+    "Lapp/morphe/extension/youtube/patches/spans/SanitizeVideoSubtitleFilter;"
 
 val hideLayoutComponentsPatch = bytecodePatch(
     name = "Hide layout components",
@@ -96,7 +100,8 @@ val hideLayoutComponentsPatch = bytecodePatch(
         hideUpdateScreenPatch,
         elementProtoParserHookPatch,
         fixProtoLibraryPatch,
-        treeNodeElementHookPatch
+        treeNodeElementHookPatch,
+        inclusiveSpanPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -175,6 +180,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_sync_button"),
             SwitchPreference("morphe_hide_timed_reactions", summary = true),
             SwitchPreference("morphe_hide_video_title", summary = true),
+            SwitchPreference("morphe_sanitize_video_subtitle", summary = true)
         )
 
         PreferenceScreen.FEED.addPreferences(
@@ -304,6 +310,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
         addLithoFilter(COMMENTS_FILTER)
         addLithoFilter(KEYWORD_FILTER)
         addLithoFilter(CUSTOM_FILTER)
+        addSpanFilter(SANITIZE_VIDEO_SUBTITLE_FILTER)
         hookTreeNodeResult("$COMMENTS_FILTER->sanitizeCommentsCategoryBar")
 
         // region hide mix playlists

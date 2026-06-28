@@ -62,24 +62,24 @@ internal val captionCookiesPatch = bytecodePatch(
                 ).toMutable().apply {
                     addInstructionsWithLabels(
                         0,
-                        """
-                            invoke-static { }, $EXTENSION_CLASS->getRequireCookies()Z
+                        $$"""
+                            invoke-static { }, $$EXTENSION_CLASS->getRequireCookies()Z
                             move-result v0
                             if-eqz v0, :disabled
                             
                             # Set Cookie.
                             const-string v0, "Cookie"
-                            invoke-static { }, $EXTENSION_CLASS->getCookies()Ljava/lang/String;
+                            invoke-static { }, $$EXTENSION_CLASS->getCookies()Ljava/lang/String;
                             move-result-object v1
-                            invoke-virtual { p1, v0, v1 }, Lorg/chromium/net/UrlRequest${'$'}Builder;->addHeader(Ljava/lang/String;Ljava/lang/String;)Lorg/chromium/net/UrlRequest${'$'}Builder;
+                            invoke-virtual { p1, v0, v1 }, Lorg/chromium/net/UrlRequest$Builder;->addHeader(Ljava/lang/String;Ljava/lang/String;)Lorg/chromium/net/UrlRequest$Builder;
 
                             # Set User-Agent.
                             const-string v0, "User-Agent"
-                            invoke-static { }, $EXTENSION_CLASS->getUserAgent()Ljava/lang/String;
+                            invoke-static { }, $$EXTENSION_CLASS->getUserAgent()Ljava/lang/String;
                             move-result-object v1
 
                             # Set Header.
-                            invoke-virtual { p1, v0, v1 }, Lorg/chromium/net/UrlRequest${'$'}Builder;->addHeader(Ljava/lang/String;Ljava/lang/String;)Lorg/chromium/net/UrlRequest${'$'}Builder;
+                            invoke-virtual { p1, v0, v1 }, Lorg/chromium/net/UrlRequest$Builder;->addHeader(Ljava/lang/String;Ljava/lang/String;)Lorg/chromium/net/UrlRequest$Builder;
 
                             :disabled
                             return-void

@@ -121,4 +121,3 @@ internal object LottieCompositionFactoryFromJsonInputStreamFingerprint : Fingerp
         anyInstruction(literal(2), literal(3))
     )
 )
-

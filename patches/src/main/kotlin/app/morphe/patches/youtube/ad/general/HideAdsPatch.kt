@@ -19,6 +19,8 @@ import app.morphe.patches.all.misc.resources.ResourceType
 import app.morphe.patches.all.misc.resources.getResourceId
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.ad.hideFullscreenAdsPatch
+import app.morphe.patches.shared.misc.litho.addLithoFilter
+import app.morphe.patches.shared.misc.litho.lithoFilterPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.hide.shelves.hideHorizontalShelvesPatch
 import app.morphe.patches.youtube.misc.contexthook.Endpoint
@@ -26,8 +28,6 @@ import app.morphe.patches.youtube.misc.contexthook.addOSNameHook
 import app.morphe.patches.youtube.misc.contexthook.clientContextHookPatch
 import app.morphe.patches.youtube.misc.engagement.addEngagementPanelIdHook
 import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
-import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
-import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.misc.proto.hookElement

@@ -1,11 +1,8 @@
-package app.morphe.extension.youtube.patches.components;
+package app.morphe.extension.shared.patches.components;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import app.morphe.extension.youtube.patches.components.LithoFilterPatch.BufferAsciiStrings;
-import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 
 /**
  * Filters litho based components.
@@ -15,13 +12,13 @@ import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
  * <p>
  * To filter {@link FilterContentType#PROTOBUFFER} or {@link FilterContentType#ACCESSIBILITY}, first add a callback to
  * either an identifier or a path.
- * Then inside {@link #isFiltered(ContextInterface, String, String, String, byte[], LithoFilterPatch.BufferAsciiStrings, StringFilterGroup, FilterContentType, int)}
+ * Then inside {@link #isFiltered(ContextInterface, String, String, String, byte[], BufferAsciiStrings, StringFilterGroup, FilterContentType, int)}
  * search for the buffer content using either a {@link ByteArrayFilterGroup} (if searching for 1 pattern)
  * or a {@link ByteArrayFilterGroupList} (if searching for more than 1 pattern).
  * <p>
  * All callbacks must be registered before the constructor completes.
  */
-abstract class Filter {
+public abstract class Filter {
 
     public enum FilterContentType {
         IDENTIFIER,
@@ -34,15 +31,15 @@ abstract class Filter {
      * Identifier callbacks.  Do not add to this instance,
      * and instead use {@link #addIdentifierCallbacks(StringFilterGroup...)}.
      */
-    protected final List<StringFilterGroup> identifierCallbacks = new ArrayList<>();
+    public final List<StringFilterGroup> identifierCallbacks = new ArrayList<>();
     /**
      * Path callbacks. Do not add to this instance,
      * and instead use {@link #addPathCallbacks(StringFilterGroup...)}.
      */
-    protected final List<StringFilterGroup> pathCallbacks = new ArrayList<>();
+    public final List<StringFilterGroup> pathCallbacks = new ArrayList<>();
 
     /**
-     * Adds callbacks to {@link #isFiltered(ContextInterface, String, String, String, byte[], LithoFilterPatch.BufferAsciiStrings, StringFilterGroup, FilterContentType, int)}
+     * Adds callbacks to {@link #isFiltered(ContextInterface, String, String, String, byte[], BufferAsciiStrings, StringFilterGroup, FilterContentType, int)}
      * if any of the groups are found.
      */
     protected final void addIdentifierCallbacks(StringFilterGroup... groups) {
@@ -50,7 +47,7 @@ abstract class Filter {
     }
 
     /**
-     * Adds callbacks to {@link #isFiltered(ContextInterface, String, String, String, byte[], LithoFilterPatch.BufferAsciiStrings, StringFilterGroup, FilterContentType, int)}
+     * Adds callbacks to {@link #isFiltered(ContextInterface, String, String, String, byte[], BufferAsciiStrings, StringFilterGroup, FilterContentType, int)}
      * if any of the groups are found.
      */
     protected final void addPathCallbacks(StringFilterGroup... groups) {
@@ -73,10 +70,9 @@ abstract class Filter {
      * @param contentIndex  Matched index of the identifier or path.
      * @return True if the litho component should be filtered out.
      */
-    boolean isFiltered(ContextInterface contextInterface, String identifier, String accessibility,
+    public boolean isFiltered(ContextInterface contextInterface, String identifier, String accessibility,
                        String path, byte[] buffer, BufferAsciiStrings asciiStrings,
                        StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
         return true;
     }
 }
-

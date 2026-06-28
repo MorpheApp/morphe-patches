@@ -1,5 +1,8 @@
 package app.morphe.extension.youtube.patches.components;
 
+import app.morphe.extension.shared.patches.components.Filter;
+import app.morphe.extension.shared.patches.components.StringFilterGroup;
+
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")

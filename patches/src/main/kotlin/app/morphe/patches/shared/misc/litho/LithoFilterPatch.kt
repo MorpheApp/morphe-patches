@@ -10,7 +10,7 @@
 
 @file:Suppress("SpellCheckingInspection")
 
-package app.morphe.patches.youtube.misc.litho.filter
+package app.morphe.patches.shared.misc.litho
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
@@ -44,9 +44,9 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import java.lang.ref.WeakReference
 
-internal const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/components/LithoFilterPatch;"
+internal const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/components/LithoFilterPatch;"
 
-internal const val EXTENSION_FILTER = "[Lapp/morphe/extension/youtube/patches/components/Filter;"
+internal const val EXTENSION_FILTER = "[Lapp/morphe/extension/shared/patches/components/Filter;"
 
 // Registers used in extension helperMethod.
 private const val REGISTER_FILTER_CLASS = 0

@@ -70,4 +70,3 @@ internal fun indexOfAdProgressTextViewVisibilityInstruction(method: Method) =
                 "Lcom/google/android/libraries/youtube/ads/player/ui/AdProgressTextView;"
                 && reference.name =="setVisibility"
     }
-

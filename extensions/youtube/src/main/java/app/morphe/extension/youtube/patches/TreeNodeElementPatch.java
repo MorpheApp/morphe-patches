@@ -13,8 +13,8 @@ import static app.morphe.extension.youtube.shared.ConversionContext.ELEMENT_IDEN
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 
 @SuppressWarnings("unused")
 public class TreeNodeElementPatch {

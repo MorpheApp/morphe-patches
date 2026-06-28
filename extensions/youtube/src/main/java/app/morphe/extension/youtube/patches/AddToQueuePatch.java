@@ -30,7 +30,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.youtube.patches.components.LithoFilterPatch;
+import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
 import app.morphe.extension.youtube.patches.utils.PlaylistPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -197,7 +197,7 @@ public final class AddToQueuePatch {
             if (Settings.DEBUG_PROTOBUFFER.get()) {
                 byte[] debugFlyoutBuffer = flyoutBuffer;
                 Logger.printDebug(() -> "Flyout buffer: " +
-                        new LithoFilterPatch.BufferAsciiStrings(debugFlyoutBuffer).getStrings());
+                        new BufferAsciiStrings(debugFlyoutBuffer).getStrings());
             }
 
             if (indexOf(flyoutBuffer, HORIZONTAL_SHELF_BYTES) >= 0) {

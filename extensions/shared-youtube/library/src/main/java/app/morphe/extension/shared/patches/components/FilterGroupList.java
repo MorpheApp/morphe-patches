@@ -1,4 +1,4 @@
-package app.morphe.extension.youtube.patches.components;
+package app.morphe.extension.shared.patches.components;
 
 import androidx.annotation.NonNull;
 
@@ -9,17 +9,15 @@ import java.util.List;
 import java.util.Spliterator;
 import java.util.function.Consumer;
 
-import app.morphe.extension.shared.ByteTrieSearch;
-import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.shared.TrieSearch;
 
-abstract class FilterGroupList<V, T extends FilterGroup<V>> implements Iterable<T> {
+public abstract class FilterGroupList<V, T extends FilterGroup<V>> implements Iterable<T> {
 
     private final List<T> filterGroups = new ArrayList<>();
     private final TrieSearch<V> search = createSearchGraph();
 
     @SafeVarargs
-    protected final void addAll(final T... groups) {
+    public final void addAll(final T... groups) {
         filterGroups.addAll(Arrays.asList(groups));
 
         for (T group : groups) {
@@ -56,7 +54,7 @@ abstract class FilterGroupList<V, T extends FilterGroup<V>> implements Iterable<
         return filterGroups.spliterator();
     }
 
-    protected FilterGroup.FilterGroupResult check(V stack) {
+    public FilterGroup.FilterGroupResult check(V stack) {
         FilterGroup.FilterGroupResult result = new FilterGroup.FilterGroupResult();
         search.matches(stack, result);
         return result;
@@ -64,21 +62,4 @@ abstract class FilterGroupList<V, T extends FilterGroup<V>> implements Iterable<
     }
 
     protected abstract TrieSearch<V> createSearchGraph();
-}
-
-final class StringFilterGroupList extends FilterGroupList<String, StringFilterGroup> {
-    protected StringTrieSearch createSearchGraph() {
-        return new StringTrieSearch();
-    }
-}
-
-/**
- * If searching for a single byte pattern, then it is slightly better to use
- * {@link ByteArrayFilterGroup#check(byte[])} as it uses BMH which is faster
- * than a prefix tree to search for only 1 pattern.
- */
-final class ByteArrayFilterGroupList extends FilterGroupList<byte[], ByteArrayFilterGroup> {
-    protected ByteTrieSearch createSearchGraph() {
-        return new ByteTrieSearch();
-    }
 }

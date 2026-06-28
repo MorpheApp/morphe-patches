@@ -36,15 +36,6 @@ Second \"item\" text"</string>
     <string name="morphe_remove_background_playback_restrictions_title">Remove background play restrictions</string>
     <string name="morphe_shorts_disable_background_playback_title">Disable background play</string>
 
-    <!-- misc.debugging.enableDebuggingPatch -->
-    <string name="morphe_debug_protobuffer_title">Debug log protocol buffer</string>
-    <string name="morphe_debug_protobuffer_summary">Adds additional logging information for developers to identify app components</string>
-    <string name="morphe_debug_protobuffer_user_dialog_message">"Enabling this setting will log additional layout data, including on-screen text for some UI components.
-
-This can help identify components when creating custom filters.
-
-However, enabling this will also log some user data such as your IP address."</string>
-
     <!-- layout.disableLayoutUpdatesPatch -->
     <string name="morphe_disable_layout_updates_title">Disable layout updates</string>
     <string name="morphe_disable_layout_updates_summary">Prevents the server from updating the app layout</string>
@@ -142,6 +133,8 @@ Changes include:
     <string name="morphe_hide_timed_reactions_summary">Hides the feature that allows users to react with emojis in the comments section and live chat</string>
     <string name="morphe_hide_video_title_title">Hide video title</string>
     <string name="morphe_hide_video_title_summary">Hides the video title in the fullscreen mode</string>
+    <string name="morphe_sanitize_video_subtitle_title">Sanitize video subtitle</string>
+    <string name="morphe_sanitize_video_subtitle_summary">Sanitizes phrases like \'#\', \'Fundraiser\', \'Shop\', and \'products\' from video subtitle</string>
 
     <string name="morphe_hide_description_components_screen_title">Video description</string>
     <string name="morphe_hide_description_components_screen_summary">Choose which components appear in the video description</string>

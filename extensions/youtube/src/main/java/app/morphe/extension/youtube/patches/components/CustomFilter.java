@@ -26,9 +26,11 @@ import app.morphe.extension.shared.ByteTrieSearch;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.youtube.patches.components.LithoFilterPatch.BufferAsciiStrings;
+import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
+import app.morphe.extension.shared.patches.components.ContextInterface;
+import app.morphe.extension.shared.patches.components.Filter;
+import app.morphe.extension.shared.patches.components.StringFilterGroup;
 import app.morphe.extension.youtube.settings.Settings;
-import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 
 /**
  * Allows custom filtering using a path and optionally a proto buffer string.
@@ -71,7 +73,7 @@ import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
  *
  * <code>^video_lockup_with_attachment.e$Mr. Beast</code>
  * Hides a feed/search video, but only if the buffer contains "Mr. Beast" anywhere
- * (video title, video description, channel name, etc).
+ * (video title, video description, channel name, etc.).
  *
  * <code>^video_lockup_with_attachment.e$- MrBeast -</code>
  * Hides videos by the channel MrBeast (but not videos that just use MrBeast in the title),
@@ -79,7 +81,7 @@ import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
  * </pre>
  */
 @SuppressWarnings("unused")
-final class CustomFilter extends Filter {
+public final class CustomFilter extends Filter {
 
     private static void showInvalidSyntaxToast(String expression) {
         Utils.showToastLong(str("morphe_custom_filter_toast_invalid_syntax", expression));
@@ -270,15 +272,15 @@ final class CustomFilter extends Filter {
     }
 
     @Override
-    boolean isFiltered(ContextInterface contextInterface,
-                       String identifier,
-                       String accessibility,
-                       String path,
-                       byte[] buffer,
-                       BufferAsciiStrings asciiStrings,
-                       StringFilterGroup matchedGroup,
-                       FilterContentType contentType,
-                       int contentIndex) {
+    public boolean isFiltered(ContextInterface contextInterface,
+                              String identifier,
+                              String accessibility,
+                              String path,
+                              byte[] buffer,
+                              BufferAsciiStrings asciiStrings,
+                              StringFilterGroup matchedGroup,
+                              FilterContentType contentType,
+                              int contentIndex) {
         // All callbacks are custom filter groups.
         CustomFilterGroup custom = (CustomFilterGroup) matchedGroup;
 
@@ -300,10 +302,6 @@ final class CustomFilter extends Filter {
         }
 
         // Check buffer if specified.
-        if (custom.bufferSearch != null && !custom.bufferSearch.matches(buffer)) {
-            return false;
-        }
-
-        return true; // All custom filter conditions passed.
+        return custom.bufferSearch == null || custom.bufferSearch.matches(buffer); // All custom filter conditions passed.
     }
 }
