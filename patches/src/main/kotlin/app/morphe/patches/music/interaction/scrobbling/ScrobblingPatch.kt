@@ -50,11 +50,6 @@ val scrobblingPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.SCROBBLING.addPreferences(
-            NonInteractivePreference(
-                key = "morphe_music_scrobbling_about",
-                titleKey = "morphe_music_scrobbling_about_title",
-                summaryKey = "morphe_music_scrobbling_about_summary"
-            ),
             PreferenceCategory(
                 key = "morphe_music_listenbrainz",
                 preferences = setOf(
@@ -126,6 +121,11 @@ val scrobblingPatch = bytecodePatch(
                     SwitchPreference("morphe_music_scrobbling_metadata_cleanup"),
                     TextPreference("morphe_music_scrobbling_custom_regex")
                 )
+            ),
+            NonInteractivePreference(
+                key = "morphe_music_scrobbling_about",
+                titleKey = "morphe_music_scrobbling_about_title",
+                summaryKey = "morphe_music_scrobbling_about_summary"
             )
         )
 
