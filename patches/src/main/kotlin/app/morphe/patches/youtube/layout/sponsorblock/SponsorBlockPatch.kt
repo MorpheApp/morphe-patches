@@ -128,16 +128,12 @@ private val sponsorBlockResourcePatch = resourcePatch {
                         tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockPrivateUserIdPreference"
                     ),
                     NonInteractivePreference(
-                        key = "morphe_sb_change_api_url",
-                        titleKey = "morphe_sb_api_url_title",
-                        summaryKey = "morphe_sb_api_url_summary",
+                        key = "morphe_sb_api_url",
                         tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockApiUrlPreference",
                         selectable = true
                     ),
                     NonInteractivePreference(
-                        key = "morphe_sb_open_channel_whitelist",
-                        titleKey = "morphe_sb_channel_whitelist_title",
-                        summaryKey = "morphe_sb_channel_whitelist_summary",
+                        key = "morphe_sb_channel_whitelist",
                         tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockChannelWhitelistPreference",
                         selectable = true
                     ),

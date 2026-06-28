@@ -54,7 +54,7 @@ val scrobblingPatch = bytecodePatch(
                         titleKey = "morphe_music_scrobbling_enabled_title"
                     ),
                     NonInteractivePreference(
-                        key = "morphe_music_listenbrainz_token_ui",
+                        key = "morphe_music_listenbrainz_token",
                         titleKey = "morphe_music_listenbrainz_token_title",
                         summaryKey = null,
                         tag = "app.morphe.extension.music.settings.preference.ListenBrainzTokenPreference",
@@ -96,7 +96,7 @@ val scrobblingPatch = bytecodePatch(
                         titleKey = "morphe_music_scrobbling_enabled_title"
                     ),
                     NonInteractivePreference(
-                        key = "morphe_music_lastfm_token_ui",
+                        key = "morphe_music_lastfm_session_key",
                         titleKey = "morphe_music_lastfm_token_title",
                         summaryKey = null,
                         tag = "app.morphe.extension.music.settings.preference.LastFMTokenPreference",
