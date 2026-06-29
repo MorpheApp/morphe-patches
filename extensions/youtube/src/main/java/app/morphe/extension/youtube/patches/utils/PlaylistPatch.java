@@ -94,7 +94,7 @@ public class PlaylistPatch {
             synchronized (lastVideoIds) {
                 videoId = currentVideoId;
                 QueueManager[] customActionsEntries;
-                boolean canReload = PlayerType.getCurrent().isMaximizedOrFullscreen() &&
+                boolean canReload = !PlayerType.getCurrent().isNoneOrHidden() &&
                         lastVideoIds.get(VideoInformation.getVideoId()) != null;
                 if (playlistId.isEmpty() || lastVideoIds.get(currentVideoId) == null) {
                     customActionsEntries = canReload
