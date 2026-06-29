@@ -111,12 +111,18 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting SB_CATEGORY_MUSIC_OFFTOPIC_COLOR = new StringSetting("morphe_sb_music_offtopic_color", "#FFFF9900", parent(SB_ENABLED));
 
     static {
-        SeekBarPreference.register(new SeekBarConfig(LISTENBRAINZ_MIN_SONG_DURATION, 10, 60, 5, "s"));
-        SeekBarPreference.register(new SeekBarConfig(LISTENBRAINZ_DELAY_PERCENT, 30, 95, 5, "%"));
-        SeekBarPreference.register(new SeekBarConfig(LISTENBRAINZ_DELAY_SECONDS, 30, 360, 10, "s"));
-        SeekBarPreference.register(new SeekBarConfig(LASTFM_MIN_SONG_DURATION, 10, 60, 5, "s"));
-        SeekBarPreference.register(new SeekBarConfig(LASTFM_DELAY_PERCENT, 30, 95, 5, "%"));
-        SeekBarPreference.register(new SeekBarConfig(LASTFM_DELAY_SECONDS, 30, 360, 10, "s"));
+        SeekBarPreference.register(new SeekBarConfig(LISTENBRAINZ_MIN_SONG_DURATION,
+                10, 60, 5, "s"));
+        SeekBarPreference.register(new SeekBarConfig(LISTENBRAINZ_DELAY_PERCENT,
+                30, 95, 5, "%"));
+        SeekBarPreference.register(new SeekBarConfig(LISTENBRAINZ_DELAY_SECONDS,
+                30, 360, 10, "s"));
+        SeekBarPreference.register(new SeekBarConfig(LASTFM_MIN_SONG_DURATION,
+                10, 60, 5, "s"));
+        SeekBarPreference.register(new SeekBarConfig(LASTFM_DELAY_PERCENT,
+                30, 95, 5, "%"));
+        SeekBarPreference.register(new SeekBarConfig(LASTFM_DELAY_SECONDS,
+                30, 360, 10, "s"));
 
         // Must run before any code reads a SegmentCategory setting.
         MusicSponsorBlockConfig.install();

@@ -731,18 +731,31 @@ public class Settings extends SharedYouTubeSettings {
     // Register SeekBar UI configs so the single shared SeekBarPreference class knows the
     // range, step, unit, integer setting that uses it.
     static {
-        SeekBarPreference.register(new SeekBarConfig(SWIPE_ZONE_WIDTH, 5, 50, 1, "%"));
-        SeekBarPreference.register(new SeekBarConfig(SWIPE_OVERLAY_OPACITY, 0, 100, 1, "%"));
-        SeekBarPreference.register(new SeekBarConfig(SWIPE_OVERLAY_TEXT_SIZE, 1, 30, 1, "sp"));
-        SeekBarPreference.register(new SeekBarConfig(MINIPLAYER_OPACITY, 0, 100, 1, "%"));
-        SeekBarPreference.register(new SeekBarConfig(PLAYER_OVERLAY_OPACITY, 0, 100, 1, "%"));
-        SeekBarPreference.register(new SeekBarConfig(SWIPE_VOLUME_SENSITIVITY, 1, 10, 1, ""));
-        SeekBarPreference.register(new SeekBarConfig(SWIPE_BRIGHTNESS_SENSITIVITY, 1, 10, 1, ""));
-        SeekBarPreference.register(new SeekBarConfig(SWIPE_SPEED_SENSITIVITY, 1, 20, 1, ""));
-        SeekBarPreference.register(new SeekBarConfig(SWIPE_SPEED_ZONE_HEIGHT, 5, 75, 1, "%"));
-        SeekBarPreference.register(new SeekBarConfig(QUICK_ACTIONS_TOP_MARGIN, 0, 32, 1, "dp"));
-        SeekBarPreference.register(new SeekBarConfig(VOT_ORIGINAL_AUDIO_VOLUME, 0, 100, 10, "%"));
-        SeekBarPreference.register(new SeekBarConfig(VOT_TRANSLATION_VOLUME, 0, 100, 10, "%"));
-        SeekBarPreference.register(new SeekBarConfig(VOT_MAX_SPEECH_RATE, 10, 25, 1, "x", 10));
+        SeekBarPreference.register(new SeekBarConfig(SWIPE_ZONE_WIDTH,
+                5, 50, 1, "%"));
+        SeekBarPreference.register(new SeekBarConfig(SWIPE_OVERLAY_OPACITY,
+                0, 100, 1, "%"));
+        SeekBarPreference.register(new SeekBarConfig(SWIPE_OVERLAY_TEXT_SIZE,
+                1, 30, 1, "sp"));
+        SeekBarPreference.register(new SeekBarConfig(MINIPLAYER_OPACITY,
+                0, 100, 1, "%"));
+        SeekBarPreference.register(new SeekBarConfig(PLAYER_OVERLAY_OPACITY,
+                0, 100, 1, "%"));
+        SeekBarPreference.register(new SeekBarConfig(SWIPE_VOLUME_SENSITIVITY,
+                1, 10, 1, ""));
+        SeekBarPreference.register(new SeekBarConfig(SWIPE_BRIGHTNESS_SENSITIVITY,
+                1, 10, 1, ""));
+        SeekBarPreference.register(new SeekBarConfig(SWIPE_SPEED_SENSITIVITY,
+                1, 20, 1, ""));
+        SeekBarPreference.register(new SeekBarConfig(SWIPE_SPEED_ZONE_HEIGHT,
+                5, 75, 1, "%"));
+        SeekBarPreference.register(new SeekBarConfig(QUICK_ACTIONS_TOP_MARGIN,
+                0, 32, 1, "dp"));
+        SeekBarPreference.register(new SeekBarConfig(VOT_ORIGINAL_AUDIO_VOLUME,
+                0, 100, 10, "%"));
+        SeekBarPreference.register(new SeekBarConfig(VOT_TRANSLATION_VOLUME,
+                0, 100, 10, "%"));
+        SeekBarPreference.register(new SeekBarConfig(VOT_MAX_SPEECH_RATE,
+                10, 25, 1, "x", 10));
     }
 }
