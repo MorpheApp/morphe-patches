@@ -93,18 +93,6 @@ public final class ChangeStartPagePatch extends BaseChangeStartPagePatch {
         }
     }
 
-    public static class ChangeStartPageTypeAvailability implements Setting.Availability {
-        @Override
-        public boolean isAvailable() {
-            return Settings.CHANGE_START_PAGE.get() != StartPage.DEFAULT;
-        }
-
-        @Override
-        public List<Setting<?>> getParentSettings() {
-            return List.of(Settings.CHANGE_START_PAGE);
-        }
-    }
-
     /**
      * Intent action when YouTube is cold started from the launcher.
      * <p>

@@ -9,9 +9,10 @@ import static app.morphe.extension.shared.settings.Setting.parentsAny;
 import static app.morphe.extension.shared.sponsorblock.objects.CategoryBehaviour.IGNORE;
 import static app.morphe.extension.shared.sponsorblock.objects.CategoryBehaviour.SKIP_AUTOMATICALLY;
 
-import app.morphe.extension.music.patches.ChangeHeaderPatch;
-import app.morphe.extension.music.patches.ChangeStartPagePatch;
-import app.morphe.extension.music.patches.CrossfadeManager;
+import app.morphe.extension.music.patches.ChangeHeaderPatch.HeaderLogo;
+import app.morphe.extension.music.patches.ChangeStartPagePatch.StartPage;
+import app.morphe.extension.music.patches.CrossfadeManager.CrossFadeDuration;
+import app.morphe.extension.music.patches.CrossfadeManager.FadeCurve;
 import app.morphe.extension.music.sponsorblock.MusicSponsorBlockConfig;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.EnumSetting;
@@ -19,6 +20,7 @@ import app.morphe.extension.shared.settings.IntegerSetting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference;
+import app.morphe.extension.shared.settings.preference.SeekBarPreference.SeekBarConfig;
 import app.morphe.extension.shared.spoof.ClientType;
 
 
@@ -30,7 +32,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_VIDEO_ADS = new BooleanSetting("morphe_music_hide_video_ads", TRUE, true);
 
     // General (Layout)
-    public static final EnumSetting<ChangeStartPagePatch.StartPage> CHANGE_START_PAGE = new EnumSetting<>("morphe_change_start_page", ChangeStartPagePatch.StartPage.DEFAULT, true);
+    public static final EnumSetting<StartPage> CHANGE_START_PAGE = new EnumSetting<>("morphe_change_start_page", StartPage.DEFAULT, true);
     public static final BooleanSetting HIDE_CAST_BUTTON = new BooleanSetting("morphe_music_hide_cast_button", TRUE, true);
     public static final BooleanSetting HIDE_CATEGORY_BAR = new BooleanSetting("morphe_music_hide_category_bar", FALSE, true);
     public static final BooleanSetting HIDE_HISTORY_BUTTON = new BooleanSetting("morphe_music_hide_history_button", FALSE, true);
@@ -43,7 +45,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_NAVIGATION_BAR_LIBRARY_BUTTON = new BooleanSetting("morphe_music_hide_navigation_bar_library_button", FALSE, true, parentNot(HIDE_NAVIGATION_BAR));
     public static final BooleanSetting HIDE_NAVIGATION_BAR_UPGRADE_BUTTON = new BooleanSetting("morphe_music_hide_navigation_bar_upgrade_button", TRUE, true, parentNot(HIDE_NAVIGATION_BAR));
     public static final BooleanSetting HIDE_NAVIGATION_BAR_LABEL = new BooleanSetting("morphe_music_hide_navigation_bar_labels", FALSE, true, parentNot(HIDE_NAVIGATION_BAR));
-    public static final EnumSetting<ChangeHeaderPatch.HeaderLogo> HEADER_LOGO = new EnumSetting<>("morphe_header_logo", ChangeHeaderPatch.HeaderLogo.DEFAULT, true);
+    public static final EnumSetting<HeaderLogo> HEADER_LOGO = new EnumSetting<>("morphe_header_logo", HeaderLogo.DEFAULT, true);
 
     // Player
     public static final BooleanSetting MINIPLAYER_NEXT_BUTTON = new BooleanSetting("morphe_music_miniplayer_next_button", TRUE, true);
@@ -55,8 +57,8 @@ public class Settings extends SharedYouTubeSettings {
 
     // Crossfade
     public static final BooleanSetting CROSSFADE_ENABLED = new BooleanSetting("morphe_music_crossfade_enabled", FALSE, true);
-    public static final EnumSetting<CrossfadeManager.FadeCurve> CROSSFADE_CURVE = new EnumSetting<>("morphe_music_crossfade_curve", CrossfadeManager.FadeCurve.EQUAL_POWER, parent(CROSSFADE_ENABLED));
-    public static final EnumSetting<CrossfadeManager.CrossFadeDuration> CROSSFADE_DURATION = new EnumSetting<>("morphe_music_crossfade_duration", CrossfadeManager.CrossFadeDuration.MILLISECONDS_3000, parent(CROSSFADE_ENABLED));
+    public static final EnumSetting<FadeCurve> CROSSFADE_CURVE = new EnumSetting<>("morphe_music_crossfade_curve", FadeCurve.EQUAL_POWER, parent(CROSSFADE_ENABLED));
+    public static final EnumSetting<CrossFadeDuration> CROSSFADE_DURATION = new EnumSetting<>("morphe_music_crossfade_duration", CrossFadeDuration.MILLISECONDS_3000, parent(CROSSFADE_ENABLED));
     public static final BooleanSetting CROSSFADE_ON_SKIP = new BooleanSetting("morphe_music_crossfade_on_skip", TRUE, parent(CROSSFADE_ENABLED));
     public static final BooleanSetting CROSSFADE_ON_AUTO_ADVANCE = new BooleanSetting("morphe_music_crossfade_on_auto_advance", TRUE, parent(CROSSFADE_ENABLED));
     public static final BooleanSetting CROSSFADE_SESSION_CONTROL = new BooleanSetting("morphe_music_crossfade_session_control", TRUE, parent(CROSSFADE_ENABLED));
@@ -109,12 +111,12 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting SB_CATEGORY_MUSIC_OFFTOPIC_COLOR = new StringSetting("morphe_sb_music_offtopic_color", "#FFFF9900", parent(SB_ENABLED));
 
     static {
-        SeekBarPreference.register(new SeekBarPreference.SeekBarConfig(LISTENBRAINZ_MIN_SONG_DURATION, 10, 60, 5, "s"));
-        SeekBarPreference.register(new SeekBarPreference.SeekBarConfig(LISTENBRAINZ_DELAY_PERCENT, 30, 95, 5, "%"));
-        SeekBarPreference.register(new SeekBarPreference.SeekBarConfig(LISTENBRAINZ_DELAY_SECONDS, 30, 360, 10, "s"));
-        SeekBarPreference.register(new SeekBarPreference.SeekBarConfig(LASTFM_MIN_SONG_DURATION, 10, 60, 5, "s"));
-        SeekBarPreference.register(new SeekBarPreference.SeekBarConfig(LASTFM_DELAY_PERCENT, 30, 95, 5, "%"));
-        SeekBarPreference.register(new SeekBarPreference.SeekBarConfig(LASTFM_DELAY_SECONDS, 30, 360, 10, "s"));
+        SeekBarPreference.register(new SeekBarConfig(LISTENBRAINZ_MIN_SONG_DURATION, 10, 60, 5, "s"));
+        SeekBarPreference.register(new SeekBarConfig(LISTENBRAINZ_DELAY_PERCENT, 30, 95, 5, "%"));
+        SeekBarPreference.register(new SeekBarConfig(LISTENBRAINZ_DELAY_SECONDS, 30, 360, 10, "s"));
+        SeekBarPreference.register(new SeekBarConfig(LASTFM_MIN_SONG_DURATION, 10, 60, 5, "s"));
+        SeekBarPreference.register(new SeekBarConfig(LASTFM_DELAY_PERCENT, 30, 95, 5, "%"));
+        SeekBarPreference.register(new SeekBarConfig(LASTFM_DELAY_SECONDS, 30, 360, 10, "s"));
 
         // Must run before any code reads a SegmentCategory setting.
         MusicSponsorBlockConfig.install();
