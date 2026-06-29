@@ -5,12 +5,12 @@
  * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
-package app.morphe.extension.youtube.settings.preference;
+package app.morphe.extension.music.settings.preference;
 
 import android.content.Context;
 import android.util.AttributeSet;
 
-import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.settings.preference.SharedExternalDownloaderPreference;
 
 @SuppressWarnings("unused")
