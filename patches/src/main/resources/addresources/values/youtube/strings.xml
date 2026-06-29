@@ -312,22 +312,12 @@ Limitations:
 
     <!-- interaction.downloads.downloadsPatch -->
     <string name="morphe_external_downloader_screen_title">External downloads</string>
-    <string name="morphe_external_downloader_screen_summary">Download videos with third-party downloading apps</string>
+    <string name="morphe_external_downloader_screen_summary">Download videos, podcasts, or songs with third-party downloading apps</string>
     <string name="morphe_external_downloader_title">Show external download button</string>
     <string name="morphe_external_downloader_summary">Shows an overlay button in video player that opens your external downloader</string>
     <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
     <string name="morphe_external_downloader_action_button_title">Override Download action button</string>
     <string name="morphe_external_downloader_action_button_summary">Replaces YouTube\'s built-in download function with your external downloader</string>
-    <string name="morphe_external_downloader_name_title">Downloader package name</string>
-    <string name="morphe_external_downloader_name_summary">Package name of your installed external downloader app</string>
-    <string name="morphe_external_downloader_other_item_hint">Enter the package name</string>
-    <string name="morphe_external_downloader_other_item">Other</string>
-    <string name="morphe_external_downloader_not_found_title">App not installed</string>
-    <string name="morphe_external_downloader_not_installed_warning">%s is not installed. Please install it.</string>
-    <string name="morphe_external_downloader_package_not_found_warning">"Could not find installed app with package name: %s
-
-Verify the package name is correct and the app is installed"</string>
-    <string name="morphe_external_downloader_empty_warning">The package name cannot be empty</string>
 
     <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
     <string name="morphe_vot_screen_title">Voice over translation</string>
