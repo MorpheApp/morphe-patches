@@ -14,6 +14,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
+import app.morphe.patches.youtube.misc.playservice.is_20_40_or_greater
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.shared.YouTubeMainActivityOnBackPressedFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.getReference
@@ -30,7 +32,8 @@ internal val fixBackToExitGesturePatch = bytecodePatch(
 ) {
     dependsOn(
         sharedExtensionPatch,
-        playerTypeHookPatch
+        playerTypeHookPatch,
+        versionCheckPatch
     )
 
     execute {
@@ -74,9 +77,11 @@ internal val fixBackToExitGesturePatch = bytecodePatch(
             }
         }
 
-        PredictiveGesturesOnBackInvokedFingerprint.method.addInstruction(
-            0,
-            "invoke-static { }, $EXTENSION_CLASS->onBackPressed()V"
-        )
+        if (is_20_40_or_greater) {
+            PredictiveGesturesOnBackInvokedFingerprint.method.addInstruction(
+                0,
+                "invoke-static { }, $EXTENSION_CLASS->onBackPressed()V"
+            )
+        }
     }
 }
