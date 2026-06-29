@@ -95,6 +95,7 @@ public final class MusicSponsorBlockConfig implements Configuration {
 
     @Override public boolean undoToastEnabled()            { return false; }
     @Override public boolean includesHighlight()           { return false; }
+    @Override public boolean supportsSegmentCreation()     { return false; }
     @Override public boolean compactSkipButtonEnabled()    { return false; }
     @Override public boolean viewTrackingEnabled()         { return false; }
 

@@ -161,6 +161,11 @@ public enum SegmentCategory {
         for (SegmentCategory category : activeCategories()) {
             category.loadFromSettings();
         }
+        // UNSUBMITTED is host-internal (not in the API request set) and excluded from
+        // activeCategories(), so its persisted color/behavior must be loaded explicitly.
+        if (SponsorBlockApi.config().supportsSegmentCreation()) {
+            UNSUBMITTED.loadFromSettings();
+        }
         updateEnabledCategories();
     }
 

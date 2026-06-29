@@ -71,6 +71,12 @@ public final class SponsorBlockApi {
         /** Include the {@code HIGHLIGHT} segment category in active iteration and API requests. */
         boolean includesHighlight();
 
+        /**
+         * Whether this host app supports creating new SponsorBlock segments. Gates loading of
+         * the {@link SegmentCategory#UNSUBMITTED} category's persisted color and behavior.
+         */
+        boolean supportsSegmentCreation();
+
         /** Compact skip-button text. When false, position-aware text (beginning/middle/end) is used. */
         boolean compactSkipButtonEnabled();
 
