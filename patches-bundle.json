@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-06-29T07:22:42",
-  "description": "## [1.33.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.33.0-dev.5...v1.33.0-dev.6) (2026-06-29)\n\n### 🐛 Bug Fixes\n\n* **YouTube - SponsorBlock:** Resolve missing resource dependency when patch is excluded ([3721511](https://github.com/MorpheApp/morphe-patches/commit/3721511a7e89124fe92d529399f58f3ec39b26f3))\n* **YouTube - System Share:** Increased the opening speed of the system share sheet ([9cacff8](https://github.com/MorpheApp/morphe-patches/commit/9cacff89172fb05760bdae2dbbae275c0db5934c))\n* **YouTube - Video queue:** A video from a playlist does not opened or reloaded within the playlist. ([fbca3e7](https://github.com/MorpheApp/morphe-patches/commit/fbca3e755a67d89026064a6c04dfbaf1bb676caf))\n\n### ✨ New Features\n\n* **YouTube - Hide layout components:** Add \"Sanitize video subtitle\" setting ([#1277](https://github.com/MorpheApp/morphe-patches/issues/1277)) ([0cb4bc5](https://github.com/MorpheApp/morphe-patches/commit/0cb4bc5d59c18b3df9037914db2002942db127be))\n* **YouTube Music:** Add `SponsorBlock` patch ([#1842](https://github.com/MorpheApp/morphe-patches/issues/1842)) ([0e6e8f1](https://github.com/MorpheApp/morphe-patches/commit/0e6e8f1c0d53df205be8cf12f365224293128f1f))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.33.0-dev.6/patches-1.33.0-dev.6.mpp",
+  "created_at": "2026-06-29T09:00:43",
+  "description": "## [1.33.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v1.33.0-dev.6...v1.33.0-dev.7) (2026-06-29)\n\n### 🐛 Bug Fixes\n\n* **YouTube - System share sheet:** Prevents consecutive attempts to close the panel ([d9c6b1b](https://github.com/MorpheApp/morphe-patches/commit/d9c6b1b08fdc290ed5f59ad80056452ca5f0d52b))\n* **YouTube Music - SponsorBlock:** Support older app versions ([bb74726](https://github.com/MorpheApp/morphe-patches/commit/bb7472618b96cf6953292b8466c347a1ddd523df))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.33.0-dev.7/patches-1.33.0-dev.7.mpp",
   "signature_download_url": "",
-  "version": "1.33.0-dev.6"
+  "version": "1.33.0-dev.7"
 }

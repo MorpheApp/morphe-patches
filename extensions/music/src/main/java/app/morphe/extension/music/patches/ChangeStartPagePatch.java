@@ -19,9 +19,10 @@ import androidx.annotation.Nullable;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.patches.BaseChangeStartPagePatch;
 
 @SuppressWarnings("unused")
-public final class ChangeStartPagePatch {
+public final class ChangeStartPagePatch extends BaseChangeStartPagePatch {
 
     public enum StartPage {
         DEFAULT("", null),
@@ -51,8 +52,6 @@ public final class ChangeStartPagePatch {
             return TRUE.equals(isBrowseId);
         }
     }
-
-    private static final String ACTION_MAIN = "android.intent.action.MAIN";
 
     private static final String SETTINGS_CLASS = "com.google.android.apps.youtube.music.settings.SettingsCompatActivity";
     private static final String SETTINGS_ATTRIBUTION_FRAGMENT_KEY = ":android:show_fragment";
@@ -98,23 +97,12 @@ public final class ChangeStartPagePatch {
     }
 
     public static String overrideBrowseId(@Nullable String original) {
-        StartPage startPage = Settings.CHANGE_START_PAGE.get();
-
-        if (!startPage.isBrowseId()) {
-            return original;
-        }
-
         if (!"FEmusic_home".equals(original)) {
             return original;
         }
 
-        String overrideBrowseId = startPage.id;
-        if (overrideBrowseId.isEmpty()) {
-            return original;
-        }
-
-        Logger.printDebug(() -> "Changing browseId to: " + startPage.name());
-        return overrideBrowseId;
+        StartPage startPage = Settings.CHANGE_START_PAGE.get();
+        return processBrowseId(original, startPage.isBrowseId(), startPage.id, startPage.name());
     }
 
     public static void overrideIntentActionOnCreate(@NonNull Activity activity, @Nullable Bundle savedInstanceState) {

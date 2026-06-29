@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.patches;
 
 import static java.lang.Boolean.FALSE;
@@ -11,11 +21,12 @@ import androidx.annotation.Nullable;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.patches.BaseChangeStartPagePatch;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
-public final class ChangeStartPagePatch {
+public final class ChangeStartPagePatch extends BaseChangeStartPagePatch {
 
     public enum StartPage {
         /**
@@ -82,18 +93,6 @@ public final class ChangeStartPagePatch {
         }
     }
 
-    public static class ChangeStartPageTypeAvailability implements Setting.Availability {
-        @Override
-        public boolean isAvailable() {
-            return Settings.CHANGE_START_PAGE.get() != StartPage.DEFAULT;
-        }
-
-        @Override
-        public List<Setting<?>> getParentSettings() {
-            return List.of(Settings.CHANGE_START_PAGE);
-        }
-    }
-
     /**
      * Intent action when YouTube is cold started from the launcher.
      * <p>
@@ -102,31 +101,10 @@ public final class ChangeStartPagePatch {
      * Case 2. The user clicked Shorts button on the YouTube widget.
      * In this case, instead of opening Shorts, the start page specified by the user is opened.
      */
-    private static final String ACTION_MAIN = "android.intent.action.MAIN";
-
     private static final StartPage START_PAGE = Settings.CHANGE_START_PAGE.get();
 
-    private static final boolean CHANGE_START_PAGE_ALWAYS = Settings.CHANGE_START_PAGE_ALWAYS.get();
-
-    /**
-     * There is an issue where the back button on the toolbar doesn't work properly.
-     * As a workaround for this issue, instead of overriding the browserId multiple times, just override it once.
-     */
-    private static boolean appLaunched = false;
-
     public static String overrideBrowseId(@NonNull String original) {
-        if (!START_PAGE.isBrowseId()) {
-            return original;
-        }
-
-        if (!CHANGE_START_PAGE_ALWAYS && appLaunched) {
-            Logger.printDebug(() -> "Ignore override browseId as the app already launched");
-            return original;
-        }
-        appLaunched = true;
-
-        Logger.printDebug(() -> "Changing browseId to: " + START_PAGE.id);
-        return START_PAGE.id;
+        return processBrowseId(original, START_PAGE.isBrowseId(), START_PAGE.id, START_PAGE.id);
     }
 
     public static void overrideIntentAction(@NonNull Intent intent) {
@@ -139,12 +117,6 @@ public final class ChangeStartPagePatch {
                     " as the current activity is not the entry point of the application");
             return;
         }
-
-        if (!CHANGE_START_PAGE_ALWAYS && appLaunched) {
-            Logger.printDebug(() -> "Ignore override intent action as the app already launched");
-            return;
-        }
-        appLaunched = true;
 
         String intentAction = START_PAGE.id;
         Logger.printDebug(() -> "Changing intent action to: " + intentAction);

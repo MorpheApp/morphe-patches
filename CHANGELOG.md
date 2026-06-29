@@ -1,3 +1,10 @@
+## [1.33.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v1.33.0-dev.6...v1.33.0-dev.7) (2026-06-29)
+
+### 🐛 Bug Fixes
+
+* **YouTube - System share sheet:** Prevents consecutive attempts to close the panel ([d9c6b1b](https://github.com/MorpheApp/morphe-patches/commit/d9c6b1b08fdc290ed5f59ad80056452ca5f0d52b))
+* **YouTube Music - SponsorBlock:** Support older app versions ([bb74726](https://github.com/MorpheApp/morphe-patches/commit/bb7472618b96cf6953292b8466c347a1ddd523df))
+
 ## [1.33.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.33.0-dev.5...v1.33.0-dev.6) (2026-06-29)
 
 ### 🐛 Bug Fixes

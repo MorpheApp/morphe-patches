@@ -8,6 +8,7 @@
 package app.morphe.patches.music.video.information
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 
 /**
@@ -15,7 +16,11 @@ import com.android.tools.smali.dexlib2.AccessFlags
  * Used to add a seekTo(J)Z bridge and hook the constructor.
  */
 internal object VideoEndFingerprint : Fingerprint(
-    strings = listOf("Attempting to seek during an ad")
+    parameters = listOf("J", "L"),
+    filters = listOf(
+        string("currentPositionMs."),
+        string(";seekTimeUs.")
+    )
 )
 
 /**
