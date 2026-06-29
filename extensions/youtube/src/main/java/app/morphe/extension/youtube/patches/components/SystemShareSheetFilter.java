@@ -21,7 +21,7 @@ public final class SystemShareSheetFilter extends Filter {
     public SystemShareSheetFilter() {
         addPathCallbacks(new StringFilterGroup(
                 Settings.OPEN_SYSTEM_SHARE_SHEET,
-                "share_sheet_container."
+                "share_sheet_container.e"
         ));
     }
 
@@ -37,6 +37,6 @@ public final class SystemShareSheetFilter extends Filter {
                               int contentIndex) {
         closeLithoAppShareSheet();
 
-        return false;
+        return true;
     }
 }

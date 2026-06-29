@@ -21,12 +21,14 @@ import android.view.View;
 import java.lang.ref.WeakReference;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
 public final class OpenSystemShareSheetPatch {
 
     public static WeakReference<RecyclerView> flyoutMenuRecyclerView = new WeakReference<>(null);
+    private static boolean waitUntilClosingDone;
 
     /**
      * Injection point.
@@ -64,6 +66,11 @@ public final class OpenSystemShareSheetPatch {
     }
 
     public static void closeLithoAppShareSheet() {
+        if (waitUntilClosingDone) {
+            return;
+        }
+        waitUntilClosingDone = true;
+
         RecyclerView shareSheetRecyclerView = flyoutMenuRecyclerView.get();
         if (shareSheetRecyclerView != null) {
             View decorView = shareSheetRecyclerView.getRootView();
@@ -91,6 +98,14 @@ public final class OpenSystemShareSheetPatch {
                     decorView.dispatchTouchEvent(touchEvent);
                     touchEvent.recycle();
                 }
+
+                // Given the speed of Litho's elements renders, disable 'waitUntilClosingDone'
+                // after a 500ms delay to ensure that only a single filtered
+                // Litho object triggers the panel's closure.
+                Utils.runOnMainThreadDelayed(
+                        () -> waitUntilClosingDone = false,
+                        500
+                );
             }
         }
     }
