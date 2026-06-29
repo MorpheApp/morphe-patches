@@ -35,10 +35,14 @@ public class FixBackToExitGesturePatch {
 
     /**
      * Handle the event after clicking the back button.
-     *
-     * @param activity The activity, the app is launched with to finish.
      */
-    public static void onBackPressed(Activity activity) {
+    public static void onBackPressed() {
+        Activity activity = Utils.getActivity();
+
+        if (activity == null) {
+            return;
+        }
+
         if (isTopView) {
             long now = System.currentTimeMillis();
 
