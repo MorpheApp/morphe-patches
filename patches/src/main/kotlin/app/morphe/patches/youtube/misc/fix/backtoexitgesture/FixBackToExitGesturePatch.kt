@@ -10,8 +10,6 @@
 
 package app.morphe.patches.youtube.misc.fix.backtoexitgesture
 
-import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -21,7 +19,6 @@ import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
-import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
@@ -77,32 +74,7 @@ internal val fixBackToExitGesturePatch = bytecodePatch(
             }
         }
 
-        // PredictiveGesturesOnBackInvokedFingerprint
-        Fingerprint(
-            definingClass = Fingerprint(
-                accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-                returnType = "V",
-                parameters = listOf(),
-                filters = OpcodesFilter.opcodesToFilters(
-                    Opcode.IGET_OBJECT,
-                    Opcode.IGET_OBJECT,
-                    Opcode.IF_NEZ,
-                    Opcode.RETURN_VOID,
-                    Opcode.IGET_BOOLEAN,
-                    Opcode.CONST_4,
-                    Opcode.IF_NEZ,
-                    Opcode.INVOKE_VIRTUAL,
-                    Opcode.IGET_OBJECT,
-                    Opcode.CHECK_CAST,
-                ),
-                custom = { method, _ ->
-                    method.name == "onBackCancelled"
-                }
-            ).method.definingClass,
-            custom = { method, _ ->
-                method.name == "onBackInvoked"
-            }
-        ).method.addInstruction(
+        PredictiveGesturesOnBackInvokedFingerprint.method.addInstruction(
             0,
             "invoke-static { }, $EXTENSION_CLASS->onBackPressed()V"
         )
