@@ -763,8 +763,10 @@ val hideLayoutComponentsPatch = bytecodePatch(
         }
 
         ContextualMenuItemBuilderFingerprint.let {
+            it.clearMatch()
+
             it.method.apply {
-                val index = it.instructionMatches[1].index
+                val index = it.instructionMatches[2].index
                 val targetInstruction = getInstruction<FiveRegisterInstruction>(index)
 
                 addInstruction(

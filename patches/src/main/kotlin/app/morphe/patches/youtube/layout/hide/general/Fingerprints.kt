@@ -373,10 +373,22 @@ internal object ContextualMenuItemBuilderFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("L", "L"),
     filters = listOf(
-        checkCast("Landroid/widget/TextView;"),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            returnType = "Ljava/lang/CharSequence;",
+        ),
+        checkCast(
+            type = "Landroid/widget/TextView;",
+            location = MatchAfterWithin(3),
+        ),
         methodCall(
             smali = "Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V",
-            location = MatchAfterWithin(5)
+            location = MatchAfterWithin(5),
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            returnType = "I",
+            location = MatchAfterWithin(7),
         ),
         resourceLiteral(ResourceType.DIMEN, "poster_art_width_default"),
     )
