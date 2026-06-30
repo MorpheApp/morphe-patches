@@ -11,6 +11,7 @@ import android.media.MediaMetadata;
 import android.media.session.PlaybackState;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Pair;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -95,15 +96,17 @@ public class ScrobbleManager {
         return clean.replaceAll("\\s+", " ").trim();
     }
 
-    private String[] resolveTitleAndArtist(String rawTitle, String rawArtist) {
+    private Pair<String, String> resolveTitleAndArtist(String rawTitle, String rawArtist) {
         String title = cleanTitle(rawTitle);
         String artist = cleanArtist(rawArtist);
 
         if (Settings.SCROBBLING_PARSE_TITLE.get() && rawTitle != null) {
-            int separatorIndex = rawTitle.indexOf(" - ");
-            if (separatorIndex > 0 && separatorIndex < rawTitle.length() - 3) {
+            String separator = " - ";
+            final int separatorLength = 3;
+            final int separatorIndex = rawTitle.indexOf(separator);
+            if (separatorIndex > 0 && separatorIndex < rawTitle.length() - separatorLength) {
                 String parsedArtist = cleanArtist(rawTitle.substring(0, separatorIndex).trim());
-                String parsedTrack = cleanTitle(rawTitle.substring(separatorIndex + 3).trim());
+                String parsedTrack = cleanTitle(rawTitle.substring(separatorIndex + separatorLength).trim());
                 if (!parsedArtist.isEmpty() && !parsedTrack.isEmpty()) {
                     title = parsedTrack;
                     artist = parsedArtist;
@@ -111,7 +114,7 @@ public class ScrobbleManager {
             }
         }
 
-        return new String[]{title, artist};
+        return new Pair<>(title, artist);
     }
 
     private static String applyCustomRegex(String input) {
@@ -130,18 +133,15 @@ public class ScrobbleManager {
         if (metadata == null) return;
 
         try {
-            String rawTitle = metadata.getString(MediaMetadata.METADATA_KEY_TITLE);
-            String rawArtist = metadata.getString(MediaMetadata.METADATA_KEY_ARTIST);
-            String rawAlbum = metadata.getString(MediaMetadata.METADATA_KEY_ALBUM);
             String songId = metadata.getString(MediaMetadata.METADATA_KEY_MEDIA_ID);
-            long durationMs = metadata.getLong(MediaMetadata.METADATA_KEY_DURATION);
-            int duration = (int) (durationMs / 1000);
-
-            String[] resolved = resolveTitleAndArtist(rawTitle, rawArtist);
-            String title = resolved[0];
-            String artist = resolved[1];
-            String album = cleanAlbum(rawAlbum);
-
+            String album = cleanAlbum(metadata.getString(MediaMetadata.METADATA_KEY_ALBUM));
+            Pair<String, String> resolved = resolveTitleAndArtist(
+                    metadata.getString(MediaMetadata.METADATA_KEY_TITLE),
+                    metadata.getString(MediaMetadata.METADATA_KEY_ARTIST)
+            );
+            String title = resolved.first;
+            String artist = resolved.second;
+            final int duration = (int) (metadata.getLong(MediaMetadata.METADATA_KEY_DURATION) / 1000);
             if (title == null || title.isBlank() || artist == null || artist.isBlank()) {
                 return;
             }
