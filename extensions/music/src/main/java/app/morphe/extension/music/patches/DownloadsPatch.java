@@ -9,6 +9,7 @@ package app.morphe.extension.music.patches;
 
 import android.content.Context;
 import android.content.Intent;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,10 +29,12 @@ import app.morphe.extension.music.patches.utils.VideoUtils;
 public final class DownloadsPatch {
 
     private static final String ELEMENTS_SENDER_VIEW = "com.google.android.libraries.youtube.rendering.elements.sender_view";
-    private static final String EXTERNAL_DOWNLOADER_LAUNCHED = "external_downloader_launched";
 
     private static String cachedFlyoutVideoId = "";
     private static String downloadButtonLabel = "";
+
+    private static long lastFlyoutDownloadTime = 0;
+    private static long lastMainPlayerDownloadTime = 0;
 
     /**
      * Injection point.
@@ -79,6 +82,7 @@ public final class DownloadsPatch {
         String lower = id.toLowerCase();
 
         return !lower.startsWith("yt_") &&
+                !lower.startsWith("video_") &&
                 !lower.contains("download") &&
                 !lower.contains("list_item") &&
                 !lower.contains("button");
@@ -118,6 +122,27 @@ public final class DownloadsPatch {
     }
 
     /**
+     * Determines if the clicked view is inside a Dialog/BottomSheet by comparing
+     * its Window root to the main Activity's Window root.
+     */
+    private static boolean isViewInsideDialog(Object viewObj) {
+        try {
+            if (viewObj instanceof View view) {
+                View buttonRoot = view.getRootView();
+
+                android.app.Activity activity = Utils.getActivity();
+                if (activity != null) {
+                    View activityRoot = activity.getWindow().getDecorView();
+                    return buttonRoot != activityRoot;
+                }
+            }
+        } catch (Exception e) {
+            Logger.printDebug(() -> "isViewInsideDialog exception: " + e.getMessage());
+        }
+        return false;
+    }
+
+    /**
      * Injection point.
      */
     public static boolean inAppDownloadButtonOnClick(@Nullable Map<Object, Object> map) {
@@ -131,10 +156,13 @@ public final class DownloadsPatch {
                         componentHost.getContentDescription().toString() : "";
 
                 if (downloadButtonLabel.equals(description)) {
-                    if (!map.containsKey(EXTERNAL_DOWNLOADER_LAUNCHED)) {
-                        map.put(EXTERNAL_DOWNLOADER_LAUNCHED, Boolean.TRUE);
-                        Utils.runOnMainThreadDelayed(VideoUtils::launchExternalDownloader, 0);
+                    long now = System.currentTimeMillis();
+                    if (now - lastMainPlayerDownloadTime < 1000) {
+                        return true;
                     }
+                    lastMainPlayerDownloadTime = now;
+
+                    Utils.runOnMainThreadDelayed(VideoUtils::launchExternalDownloader, 0);
                     return true;
                 }
             }
@@ -158,31 +186,52 @@ public final class DownloadsPatch {
                 return true;
             }
 
-            if (map != null && p1 != null) {
+            if (p1 != null) {
                 String p1Str = p1.toString();
 
-                if (p1Str.contains("[98150882]")) {
+                boolean isMenuOpen = p1Str.contains("[98150882]");
+                boolean isDownloadClick = p1Str.contains("[133724106]");
+
+                if (isMenuOpen) {
+                    cachedFlyoutVideoId = "";
+
                     String extractedId = extractVideoIdFromCommand(p1);
                     if (extractedId != null) {
                         cachedFlyoutVideoId = extractedId;
-                        Logger.printDebug(() -> "Cached TARGET Flyout Video ID: " + cachedFlyoutVideoId);
                     }
                     return false;
                 }
 
-                if (p1Str.contains("[133724106]")) {
-                    if (map.containsKey(EXTERNAL_DOWNLOADER_LAUNCHED)) {
+                if (isDownloadClick) {
+                    long now = System.currentTimeMillis();
+                    if (now - lastFlyoutDownloadTime < 1000) {
                         return true;
                     }
 
-                    if (!cachedFlyoutVideoId.isEmpty()) {
-                        Logger.printDebug(() -> "Intercepted Download! Launching ID: " + cachedFlyoutVideoId);
-                        map.put(EXTERNAL_DOWNLOADER_LAUNCHED, Boolean.TRUE);
+                    Object viewObj = map != null ? map.get(ELEMENTS_SENDER_VIEW) : null;
+                    boolean inDialog = isViewInsideDialog(viewObj);
 
-                        final String finalId = cachedFlyoutVideoId;
+                    String targetId = extractVideoIdFromCommand(p1);
+
+                    if (targetId == null && inDialog) {
+                        targetId = cachedFlyoutVideoId;
+                    }
+
+                    if (targetId != null && !targetId.isEmpty()) {
+                        lastFlyoutDownloadTime = now;
+                        final String finalId = targetId;
                         Utils.runOnMainThreadDelayed(() -> launchExternalDownloaderWithId(finalId), 0);
-
                         return true;
+
+                    } else if (inDialog) {
+                        lastFlyoutDownloadTime = now;
+                        Logger.printDebug(() -> "Now Playing Download Intercepted via Window Check.");
+                        Utils.runOnMainThreadDelayed(VideoUtils::launchExternalDownloader, 0);
+                        return true;
+
+                    } else {
+                        Logger.printDebug(() -> "Playlist Download detected via Window Check. Falling back to native UI");
+                        return false;
                     }
                 }
             }
