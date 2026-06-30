@@ -182,7 +182,6 @@ public final class DownloadsPatch {
                         final String finalId = cachedFlyoutVideoId;
                         Utils.runOnMainThreadDelayed(() -> launchExternalDownloaderWithId(finalId), 0);
 
-                        cachedFlyoutVideoId = "";
                         return true;
                     }
                 }
