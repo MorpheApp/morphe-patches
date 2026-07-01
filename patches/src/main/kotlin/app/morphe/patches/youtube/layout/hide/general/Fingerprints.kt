@@ -394,6 +394,22 @@ internal object ContextualMenuItemBuilderFingerprint : Fingerprint(
     )
 )
 
+internal object ContextualMenuItemBuilderOnClickFingerprint : Fingerprint(
+    classFingerprint = ContextualMenuItemBuilderFingerprint,
+    name = "onClick",
+    parameters = listOf("Landroid/view/View;"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/Object;"
+        ),
+        opcode(Opcode.CHECK_CAST, location = MatchAfterImmediately()),
+        opcode(Opcode.INVOKE_STATIC, location = MatchAfterImmediately()),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
+    )
+)
+
 // 21.25+
 internal object ChannelTabBuilderFingerprint : Fingerprint(
     returnType = "Landroid/view/View;",

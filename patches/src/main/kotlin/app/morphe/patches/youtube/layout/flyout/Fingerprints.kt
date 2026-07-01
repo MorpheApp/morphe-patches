@@ -95,6 +95,11 @@ internal object FeedFlyoutButtonsInitializerFingerprint : Fingerprint(
     )
 )
 
+internal object FeedFlyoutButtonsInitializerOnItemClickFingerprint : Fingerprint(
+    classFingerprint = FeedFlyoutButtonsInitializerFingerprint,
+    name = "onItemClick"
+)
+
 internal object InteractiveStickerRendererGetEditViewFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Landroid/view/View;",
