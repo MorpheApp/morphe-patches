@@ -191,25 +191,17 @@ val addToQueuePatch = bytecodePatch(
         // end region
 
         FeedFlyoutButtonsInitializerFingerprint.let { mainFingerprint ->
-            fun getReplaceOnItemClickPatch(targetInstructionRegister: String, freeRegister: String): String = """
-                invoke-static { $targetInstructionRegister }, $EXTENSION_CLASS->replaceOnItemClick(Ljava/lang/Object;)Z
-                move-result $freeRegister
-                if-eqz $freeRegister, :block_item_click
-                return-void
-                :block_item_click
-                nop
-            """
-
-            val runnableIndex = mainFingerprint.instructionMatches.last().index
-            val runnableRegister = mainFingerprint.method.getInstruction<TwoRegisterInstruction>(runnableIndex).registerA
-
-            mainFingerprint.method.addInstructions(
-                runnableIndex,
-                """
-                    invoke-static { v$runnableRegister }, $EXTENSION_CLASS->replaceButtonRunnable(Ljava/lang/Runnable;)Ljava/lang/Runnable;
-                    move-result-object v$runnableRegister
-                """
-            )
+            mainFingerprint.method.apply {
+                val runnableIndex = mainFingerprint.instructionMatches.last().index
+                val runnableRegister = getInstruction<TwoRegisterInstruction>(runnableIndex).registerA
+                addInstructions(
+                    runnableIndex,
+                    """
+                        invoke-static { v$runnableRegister }, $EXTENSION_CLASS->replaceButtonRunnable(Ljava/lang/Runnable;)Ljava/lang/Runnable;
+                        move-result-object v$runnableRegister
+                    """
+                )
+            }
 
             val charCheckIndex = mainFingerprint.instructionMatches[4].index
             val enumMethodRegister = mainFingerprint.instructionMatches[1].getInstruction<OneRegisterInstruction>().registerA
@@ -232,11 +224,11 @@ val addToQueuePatch = bytecodePatch(
                         Opcode.IGET_OBJECT,
                         Opcode.IGET_OBJECT,
                         Opcode.INVOKE_INTERFACE,
-                    ),
+                    )
                 ),
                 Fingerprint(
                     classFingerprint = FeedFlyoutButtonsInitializerFingerprint,
-                    name = "onItemClick",
+                    name = "onItemClick"
                 )
             ).forEachIndexed { index, fingerprint ->
                 var methodWithEnoughRegistersSize: MutableMethod? = null
@@ -259,67 +251,77 @@ val addToQueuePatch = bytecodePatch(
                     iGetClassRegister = "v$enumMethodRegister"
                     secondButtonInfoParameterRegister = "v$charCheckRegister"
                     integrationsMethod = "invoke-static { $freeRegister, $secondButtonInfoParameterRegister }, $EXTENSION_CLASS->setCurrentButtonInfo(Ljava/lang/Enum;Ljava/lang/Object;)V"
-                } else {
-                    if (!is_21_05_or_greater) {
-                        fun getPostHeaderPatch(targetInstructionRegister: String, freeRegister: String): String = """
-                            invoke-static { $targetInstructionRegister }, ${mainFingerprint.instructionMatches[0].getInstruction<ReferenceInstruction>().reference}
-                            move-result-object $freeRegister
-                        """
+                } else if (!is_21_05_or_greater) {
+                    fun getReplaceOnItemClickPatch(
+                        targetInstructionRegister: String,
+                        freeRegister: String
+                    ): String = """
+                        invoke-static { $targetInstructionRegister }, $EXTENSION_CLASS->replaceOnItemClick(Ljava/lang/Object;)Z
+                        move-result $freeRegister
+                        if-eqz $freeRegister, :block_item_click
+                        return-void
+                        :block_item_click
+                        nop
+                    """
+                    fun getPostHeaderPatch(targetInstructionRegister: String, freeRegister: String): String = """
+                        invoke-static { $targetInstructionRegister }, ${mainFingerprint.instructionMatches[0].getInstruction<ReferenceInstruction>().reference}
+                        move-result-object $freeRegister
+                    """
 
-                        if (index == 1) {
-                            methodWithEnoughRegistersSize = fingerprint.method.cloneParameters()
+                    if (index == 1) {
+                        methodWithEnoughRegistersSize = fingerprint.method.cloneParameters()
 
-                            val cloneParametersAdd = fingerprint.method.numberOfParameterRegisters
+                        val cloneParametersAdd = fingerprint.method.numberOfParameterRegisters
 
-                            targetInstructionIndex =
-                                fingerprint.instructionMatches[3].index + cloneParametersAdd
+                        targetInstructionIndex =
+                            fingerprint.instructionMatches[3].index + cloneParametersAdd
 
-                            val targetInstructionRegister = "v${
-                                methodWithEnoughRegistersSize.getInstruction<BuilderInstruction35c>(
-                                    targetInstructionIndex
-                                ).registerC
-                            }"
+                        val targetInstructionRegister = "v${
+                            methodWithEnoughRegistersSize.getInstruction<BuilderInstruction35c>(
+                                targetInstructionIndex
+                            ).registerC
+                        }"
 
-                            freeRegister = "p0"; iGetClassRegister = freeRegister
-                            secondButtonInfoParameterRegister = "v${
-                                methodWithEnoughRegistersSize.getInstruction<BuilderInstruction35c>(
-                                    fingerprint.instructionMatches[2].index + cloneParametersAdd
-                                ).registerC
-                            }"
-                            headerPatch = getPostHeaderPatch(targetInstructionRegister, freeRegister)
-                            integrationsMethod = "invoke-static { $freeRegister, $secondButtonInfoParameterRegister }, $EXTENSION_CLASS->setCurrentButtonInfo(Ljava/lang/Enum;Ljava/lang/Object;)V"
-                        } else if (index == 2) {
-                            methodWithEnoughRegistersSize = fingerprint.method
-                            freeRegister = "v0"; iGetClassRegister = freeRegister
-                            targetInstructionIndex = 0
+                        freeRegister = "p0"; iGetClassRegister = freeRegister
+                        secondButtonInfoParameterRegister = "v${
+                            methodWithEnoughRegistersSize.getInstruction<BuilderInstruction35c>(
+                                fingerprint.instructionMatches[2].index + cloneParametersAdd
+                            ).registerC
+                        }"
+                        headerPatch = getPostHeaderPatch(targetInstructionRegister, freeRegister)
+                        integrationsMethod = "invoke-static { $freeRegister, $secondButtonInfoParameterRegister }, $EXTENSION_CLASS->setCurrentButtonInfo(Ljava/lang/Enum;Ljava/lang/Object;)V"
+                    } else if (index == 2) {
+                        methodWithEnoughRegistersSize = fingerprint.method
+                        freeRegister = "v0"; iGetClassRegister = freeRegister
+                        targetInstructionIndex = 0
 
-                            val enumMethodParameterClassReference = fingerprint.instructionMatches.first().getInstruction<
-                                    ReferenceInstruction
-                            >().reference
-                            val enumMethodParameterClassName = fingerprint.instructionMatches[1].getInstruction<
-                                    ReferenceInstruction
-                            >().reference
+                        val enumMethodParameterClassReference = fingerprint.instructionMatches.first().getInstruction<
+                                ReferenceInstruction
+                        >().reference
+                        val enumMethodParameterClassName = fingerprint.instructionMatches[1].getInstruction<
+                                ReferenceInstruction
+                        >().reference
 
-                            headerPatch = """
-                                iget-object v0, p0, $enumMethodParameterClassReference
-                                check-cast v0, $enumMethodParameterClassName
-                            """ + getPostHeaderPatch("v0", "v0")
-                            integrationsMethod = """
-                                invoke-virtual {v0}, Ljava/lang/Enum;->name()Ljava/lang/String;
-                                move-result-object v0
-                            """ + getReplaceOnItemClickPatch("v0", "v0")
-                        } else if (index == 3) {
-                            fingerprint.method.addInstructionsWithLabels(
-                                0,
-                                """
-                                    invoke-static { p3 }, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-                                    move-result-object p2
-                                """ + getReplaceOnItemClickPatch("p2", "p2")
-                            )
-                        }
+                        headerPatch = """
+                            iget-object v0, p0, $enumMethodParameterClassReference
+                            check-cast v0, $enumMethodParameterClassName
+                        """ + getPostHeaderPatch("v0", "v0")
+                        integrationsMethod = """
+                            invoke-virtual {v0}, Ljava/lang/Enum;->name()Ljava/lang/String;
+                            move-result-object v0
+                        """ + getReplaceOnItemClickPatch("v0", "v0")
+                    } else if (index == 3) {
+                        fingerprint.method.addInstructionsWithLabels(
+                            0,
+                            """
+                                invoke-static { p3 }, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+                                move-result-object p2
+                            """ + getReplaceOnItemClickPatch("p2", "p2")
+                        )
                     }
                 }
-                methodWithEnoughRegistersSize?.addInstructions( //nvz
+
+                methodWithEnoughRegistersSize?.addInstructions(
                     targetInstructionIndex,
                     headerPatch + """
                         iget $freeRegister, $iGetClassRegister, $enumIntField

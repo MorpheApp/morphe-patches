@@ -343,19 +343,15 @@ public final class AddToQueuePatch {
      * Injection point.
      */
     public static void setCurrentButtonInfo(@Nullable Enum<?> buttonEnum, @Nullable Object buttonInfo) {
-        View buttonView = null;
+        if (buttonEnum == null) {
+            return;
+        }
 
         if (buttonInfo instanceof CharSequence charSequence && charSequence.toString().isEmpty()) {
             return;
         }
 
-        if (buttonInfo instanceof View view) {
-            if (view.getVisibility() == View.GONE) {
-                return;
-            }
-        }
-
-        if (buttonEnum == null) {
+        if (buttonInfo instanceof View view && view.getVisibility() == View.GONE) {
             return;
         }
 
@@ -396,19 +392,13 @@ public final class AddToQueuePatch {
             return false;
         }
 
-        int buttonIndex;
-        String buttonName;
+        int buttonIndex = -1;
+        String buttonName = "";
 
         if (object instanceof Integer index) {
             buttonIndex = index;
-        } else {
-            buttonIndex = -1;
-        }
-
-        if (object instanceof String name) {
+        } else if (object instanceof String name) {
             buttonName = name;
-        } else {
-            buttonName = "";
         }
 
         try {
