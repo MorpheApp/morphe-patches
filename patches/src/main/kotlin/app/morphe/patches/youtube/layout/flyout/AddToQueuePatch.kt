@@ -300,18 +300,16 @@ val addToQueuePatch = bytecodePatch(
             }
         }
 
-        if (is_21_12_or_greater) {
-            FeedPopupWindowFlyoutFingerprint.matchAll(2..2).forEach {
-                it.method.apply {
-                    val instructionIndex = it.instructionMatches.last().index
-                    val instructionRegister = getInstruction<FiveRegisterInstruction>(instructionIndex).registerC
+        FeedPopupWindowFlyoutFingerprint.matchAll(2..2).forEach {
+            it.method.apply {
+                val instructionIndex = it.instructionMatches.last().index
+                val instructionRegister = getInstruction<FiveRegisterInstruction>(instructionIndex).registerC
 
-                    addInstruction(
-                        instructionIndex,
-                        "invoke-static { v$instructionRegister }, $EXTENSION_CLASS->" +
-                                "setPopupWindowFlyout(Landroid/widget/PopupWindow;)V"
-                    )
-                }
+                addInstruction(
+                    instructionIndex,
+                    "invoke-static { v$instructionRegister }, $EXTENSION_CLASS->" +
+                            "setPopupWindowFlyout(Landroid/widget/PopupWindow;)V"
+                )
             }
         }
     }

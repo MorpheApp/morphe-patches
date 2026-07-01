@@ -39,7 +39,6 @@ internal object FeedPopupWindowFlyoutFingerprint : Fingerprint (
     returnType = "V",
     parameters = listOf(),
     filters = listOf(
-        resourceLiteral(ResourceType.DRAWABLE, "menu_drop_shadow"),
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
             smali = $$"Landroid/widget/PopupWindow;->setOnDismissListener(Landroid/widget/PopupWindow$OnDismissListener;)V",
