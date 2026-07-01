@@ -300,7 +300,7 @@ val addToQueuePatch = bytecodePatch(
             }
         }
 
-        FeedPopupWindowFlyoutFingerprint.matchAll(2..2).forEach {
+        FeedPopupWindowFlyoutFingerprint.matchAll(2..4).forEach {
             it.method.apply {
                 val instructionIndex = it.instructionMatches.last().index
                 val instructionRegister = getInstruction<FiveRegisterInstruction>(instructionIndex).registerC
