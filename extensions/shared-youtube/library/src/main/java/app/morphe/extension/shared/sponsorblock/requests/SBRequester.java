@@ -199,7 +199,8 @@ public class SBRequester {
             String duration = String.format(Locale.US, TIME_TEMPLATE, videoLength / 1000f);
 
             HttpURLConnection connection = getConnectionFromRoute(SBRoutes.SUBMIT_SEGMENTS,
-                    privateUserID, videoId, category.keyValue, start, end, duration, action.type);
+                    privateUserID, videoId, category.keyValue, start, end, duration, action.type,
+                    "Morphe/" + Utils.getAppVersionName());
             final int responseCode = connection.getResponseCode();
 
             if (responseCode == HTTP_STATUS_CODE_SUCCESS) {
