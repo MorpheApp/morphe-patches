@@ -262,11 +262,6 @@ public class Settings extends SharedYouTubeSettings {
     public static final IntegerSetting MINIPLAYER_WIDTH_DIP = new IntegerSetting("morphe_miniplayer_width_dip", 192, true, new MiniplayerAnyModernAvailability());
     public static final IntegerSetting MINIPLAYER_OPACITY = new IntegerSetting("morphe_miniplayer_opacity", 100, true, new MiniplayerOverlayOpacityAvailability());
 
-    // External downloader
-    public static final BooleanSetting EXTERNAL_DOWNLOADER = new BooleanSetting("morphe_external_downloader", FALSE);
-    public static final BooleanSetting EXTERNAL_DOWNLOADER_ACTION_BUTTON = new BooleanSetting("morphe_external_downloader_action_button", FALSE);
-    public static final StringSetting EXTERNAL_DOWNLOADER_PACKAGE_NAME = new StringSetting("morphe_external_downloader_name", "com.deniscerri.ytdl" /* YTDLnis */, parentsAny(EXTERNAL_DOWNLOADER, EXTERNAL_DOWNLOADER_ACTION_BUTTON));
-
     // Comments
     public static final BooleanSetting HIDE_COMMENTS_CAROUSEL = new BooleanSetting("morphe_hide_comments_carousel", FALSE);
     public static final StringSetting HIDE_COMMENTS_CAROUSEL_FILTER_STRINGS = new StringSetting("morphe_hide_comments_carousel_filter_strings", "", true, parent(HIDE_COMMENTS_CAROUSEL));

@@ -34,7 +34,7 @@ private val downloadsResourcePatch = resourcePatch {
                     SwitchPreference("morphe_external_downloader_action_button", summary = true),
                     TextPreference(
                         "morphe_external_downloader_name",
-                        tag = "app.morphe.extension.music.settings.preference.ExternalDownloaderPreference"
+                        tag = "app.morphe.extension.shared.settings.preference.ExternalDownloaderPreference"
                     )
                 )
             )

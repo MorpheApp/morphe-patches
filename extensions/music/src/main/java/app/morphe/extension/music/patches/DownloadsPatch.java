@@ -7,11 +7,9 @@
 
 package app.morphe.extension.music.patches;
 
-import android.content.Context;
-import android.content.Intent;
+import android.app.Activity;
 import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.facebook.litho.ComponentHost;
@@ -20,58 +18,48 @@ import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
+import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.music.settings.Settings;
-import app.morphe.extension.music.patches.utils.VideoUtils;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.shared.settings.preference.ExternalDownloaderPreference;
 
 @SuppressWarnings("unused")
 public final class DownloadsPatch {
 
-    private static final String ELEMENTS_SENDER_VIEW = "com.google.android.libraries.youtube.rendering.elements.sender_view";
+    private static final String ELEMENTS_SENDER_VIEW =
+            "com.google.android.libraries.youtube.rendering.elements.sender_view";
+    public static final int IGNORE_DOUBLE_CLICK_DURATION_MS = 1000;
 
     private static String cachedFlyoutVideoId = "";
     private static String downloadButtonLabel = "";
 
-    private static long lastFlyoutDownloadTime = 0;
-    private static long lastMainPlayerDownloadTime = 0;
+    private static long lastFlyoutDownloadTime;
+    private static long lastMainPlayerDownloadTime;
 
     /**
      * Injection point.
      */
-    public static CharSequence onLithoTextLoaded(@NonNull Object conversionContext, @NonNull CharSequence original) {
+    public static CharSequence onLithoTextLoaded(Object conversionContext, CharSequence original) {
         try {
-            if (Settings.EXTERNAL_DOWNLOADER_ACTION_BUTTON.get() &&
+            if (SharedYouTubeSettings.EXTERNAL_DOWNLOADER_ACTION_BUTTON.get() &&
                     downloadButtonLabel.isEmpty() &&
                     conversionContext.toString().contains("music_download_button.")) {
-
                 downloadButtonLabel = original.toString();
             }
-        } catch (Exception ignored) {
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not parse litho text", ex);
         }
         return original;
     }
 
-    /**
-     * Helper to manually construct the external downloader Intent
-     */
-    private static void launchExternalDownloaderWithId(String videoId) {
-        try {
-            Context context = Utils.getActivity();
-            if (context == null) context = Utils.getContext();
+    private static void launchExternalDownloader() {
+        launchExternalDownloader(VideoInformation.getVideoId());
+    }
 
-            String downloaderPackageName = Settings.EXTERNAL_DOWNLOADER_PACKAGE_NAME.get().trim();
-
-            String content = "https://music.youtube.com/watch?v=" + videoId;
-            Intent intent = new Intent("android.intent.action.SEND");
-            intent.setType("text/plain");
-            intent.setPackage(downloaderPackageName);
-            intent.putExtra("android.intent.extra.TEXT", content);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(intent);
-        } catch (Exception ex) {
-            Logger.printException(() -> "launchExternalDownloaderWithId failure", ex);
-        }
+    private static void launchExternalDownloader(String videoId) {
+        ExternalDownloaderPreference.launchExternalDownloader(
+                videoId, Utils.getActivity(), "https://music.youtube.com/watch?v=" + videoId);
     }
 
     /**
@@ -98,18 +86,20 @@ public final class DownloadsPatch {
             Method toByteArray = commandObj.getClass().getMethod("toByteArray");
             byte[] bytes = (byte[]) toByteArray.invoke(commandObj);
 
-            if (bytes != null && bytes.length > 0) {
-                for (int i = 1; i < bytes.length - 11; i++) {
-                    if (bytes[i] == 11) {
-                        byte tagByte = bytes[i - 1];
+            if (bytes == null || bytes.length == 0) {
+                return null;
+            }
+            for (int i = 1; i < bytes.length - 11; i++) {
+                if (bytes[i] == 11) {
+                    byte tagByte = bytes[i - 1];
 
-                        if ((tagByte & 0b00000111) == 2) {
-                            String possibleId = new String(bytes, i + 1, 11, StandardCharsets.US_ASCII);
+                    if ((tagByte & 0b00000111) == 2) {
+                        String possibleId = new String(bytes, i + 1, 11,
+                                StandardCharsets.US_ASCII);
 
-                            if (possibleId.matches("^[A-Za-z0-9_\\-]{11}$")) {
-                                if (isValidVideoId(possibleId)) {
-                                    return possibleId;
-                                }
+                        if (possibleId.matches("^[A-Za-z0-9_\\-]{11}$")) {
+                            if (isValidVideoId(possibleId)) {
+                                return possibleId;
                             }
                         }
                     }
@@ -130,14 +120,14 @@ public final class DownloadsPatch {
             if (viewObj instanceof View view) {
                 View buttonRoot = view.getRootView();
 
-                android.app.Activity activity = Utils.getActivity();
+                Activity activity = Utils.getActivity();
                 if (activity != null) {
                     View activityRoot = activity.getWindow().getDecorView();
                     return buttonRoot != activityRoot;
                 }
             }
-        } catch (Exception e) {
-            Logger.printDebug(() -> "isViewInsideDialog exception: " + e.getMessage());
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "isViewInsideDialog failure", ex);
         }
         return false;
     }
@@ -147,22 +137,24 @@ public final class DownloadsPatch {
      */
     public static boolean inAppDownloadButtonOnClick(@Nullable Map<Object, Object> map) {
         try {
-            if (!Settings.EXTERNAL_DOWNLOADER_ACTION_BUTTON.get() || downloadButtonLabel.isEmpty()) {
+            if (!SharedYouTubeSettings.EXTERNAL_DOWNLOADER_ACTION_BUTTON.get()
+                    || downloadButtonLabel.isEmpty()) {
                 return false;
             }
+            Utils.verifyOnMainThread();
 
             if (map != null && map.get(ELEMENTS_SENDER_VIEW) instanceof ComponentHost componentHost) {
                 String description = componentHost.getContentDescription() != null ?
                         componentHost.getContentDescription().toString() : "";
 
                 if (downloadButtonLabel.equals(description)) {
-                    long now = System.currentTimeMillis();
-                    if (now - lastMainPlayerDownloadTime < 1000) {
+                    final long now = System.currentTimeMillis();
+                    if (now - lastMainPlayerDownloadTime < IGNORE_DOUBLE_CLICK_DURATION_MS) {
                         return true;
                     }
                     lastMainPlayerDownloadTime = now;
 
-                    Utils.runOnMainThreadDelayed(VideoUtils::launchExternalDownloader, 0);
+                    launchExternalDownloader();
                     return true;
                 }
             }
@@ -177,9 +169,10 @@ public final class DownloadsPatch {
      */
     public static boolean commandResolverOnClick(Object p0, Object p1, @Nullable Map<Object, Object> map) {
         try {
-            if (!Settings.EXTERNAL_DOWNLOADER_ACTION_BUTTON.get()) {
+            if (!SharedYouTubeSettings.EXTERNAL_DOWNLOADER_ACTION_BUTTON.get()) {
                 return false;
             }
+            Utils.verifyOnMainThread();
 
             if (inAppDownloadButtonOnClick(map)) {
                 cachedFlyoutVideoId = "";
@@ -189,8 +182,8 @@ public final class DownloadsPatch {
             if (p1 != null) {
                 String p1Str = p1.toString();
 
-                boolean isMenuOpen = p1Str.contains("[98150882]");
-                boolean isDownloadClick = p1Str.contains("[133724106]");
+                final boolean isMenuOpen = p1Str.contains("[98150882]");
+                final boolean isDownloadClick = p1Str.contains("[133724106]");
 
                 if (isMenuOpen) {
                     cachedFlyoutVideoId = "";
@@ -203,13 +196,13 @@ public final class DownloadsPatch {
                 }
 
                 if (isDownloadClick) {
-                    long now = System.currentTimeMillis();
-                    if (now - lastFlyoutDownloadTime < 1000) {
+                    final long now = System.currentTimeMillis();
+                    if (now - lastFlyoutDownloadTime < IGNORE_DOUBLE_CLICK_DURATION_MS) {
                         return true;
                     }
 
                     Object viewObj = map != null ? map.get(ELEMENTS_SENDER_VIEW) : null;
-                    boolean inDialog = isViewInsideDialog(viewObj);
+                    final boolean inDialog = isViewInsideDialog(viewObj);
 
                     String targetId = extractVideoIdFromCommand(p1);
 
@@ -219,14 +212,13 @@ public final class DownloadsPatch {
 
                     if (targetId != null && !targetId.isEmpty()) {
                         lastFlyoutDownloadTime = now;
-                        final String finalId = targetId;
-                        Utils.runOnMainThreadDelayed(() -> launchExternalDownloaderWithId(finalId), 0);
+                        launchExternalDownloader(targetId);
                         return true;
 
                     } else if (inDialog) {
                         lastFlyoutDownloadTime = now;
                         Logger.printDebug(() -> "Now Playing Download Intercepted via Window Check.");
-                        Utils.runOnMainThreadDelayed(VideoUtils::launchExternalDownloader, 0);
+                        launchExternalDownloader();
                         return true;
 
                     } else {

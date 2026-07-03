@@ -37,6 +37,7 @@ import java.util.function.Function;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 
@@ -44,7 +45,34 @@ import app.morphe.extension.shared.ui.Dim;
  * A shared base ListPreference for selecting an external downloader package with checkmarks and EditText for custom package names.
  */
 @SuppressWarnings({"unused", "deprecation"})
-public abstract class SharedExternalDownloaderPreference extends CustomDialogListPreference {
+public class ExternalDownloaderPreference extends CustomDialogListPreference {
+
+    public static void launchExternalDownloader(String videoId, @Nullable Context context, String url) {
+        try {
+            Objects.requireNonNull(videoId);
+            if (context == null) {
+                context = Utils.getActivity();
+            }
+            Context contextFinal = context;
+            Logger.printDebug(() -> "Launching external downloader: " + videoId + " context: " + contextFinal);
+
+            // Trim string to avoid any accidental whitespace.
+            var downloaderPackageName = SharedYouTubeSettings.EXTERNAL_DOWNLOADER_PACKAGE_NAME.get().trim();
+
+            // If the package is not installed, show a dialog.
+            if (showDialogIfAppIsNotInstalled(context, downloaderPackageName)) {
+                return;
+            }
+
+            Intent intent = new Intent("android.intent.action.SEND");
+            intent.setType("text/plain");
+            intent.setPackage(downloaderPackageName);
+            intent.putExtra("android.intent.extra.TEXT", url);
+            context.startActivity(intent);
+        } catch (Exception ex) {
+            Logger.printException(() -> "launchExternalDownloader failure", ex);
+        }
+    }
 
     /**
      * Enum representing supported external downloaders with their display names, package names, and download URLs.
@@ -145,26 +173,29 @@ public abstract class SharedExternalDownloaderPreference extends CustomDialogLis
     private EditText editText;
     private CustomDialogListPreference.ListPreferenceArrayAdapter adapter;
 
-    public SharedExternalDownloaderPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public ExternalDownloaderPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-    public SharedExternalDownloaderPreference(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ExternalDownloaderPreference(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
-    public SharedExternalDownloaderPreference(Context context, AttributeSet attrs) {
+    public ExternalDownloaderPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public SharedExternalDownloaderPreference(Context context) {
+    public ExternalDownloaderPreference(Context context) {
         super(context);
     }
 
-    // --- Abstract Methods to be implemented by app-specific classes ---
-    protected abstract String getCurrentPackageName();
-    protected abstract String getDefaultPackageName();
-    // ------------------------------------------------------------------
+    protected String getCurrentPackageName() {
+        return SharedYouTubeSettings.EXTERNAL_DOWNLOADER_PACKAGE_NAME.get();
+    }
+
+    protected String getDefaultPackageName() {
+        return SharedYouTubeSettings.EXTERNAL_DOWNLOADER_PACKAGE_NAME.defaultValue;
+    }
 
     private void updateEntries() {
         List<CharSequence> entries = new ArrayList<>();

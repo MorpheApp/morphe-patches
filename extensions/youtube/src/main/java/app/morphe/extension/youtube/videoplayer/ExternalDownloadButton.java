@@ -15,15 +15,15 @@ import android.view.View;
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.youtube.patches.DownloadsPatch;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.shared.settings.preference.ExternalDownloaderPreference;
 import app.morphe.extension.youtube.patches.VideoInformation;
-import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
 public class ExternalDownloadButton {
 
     static {
-        if (Settings.EXTERNAL_DOWNLOADER.get()) {
+        if (SharedYouTubeSettings.EXTERNAL_DOWNLOADER.get()) {
             LegacyPlayerControlButton.incrementUpperButtonCount();
         }
     }
@@ -41,7 +41,7 @@ public class ExternalDownloadButton {
                     "morphe_external_download_button",
                     null,
                     "morphe_yt_download_button",
-                    Settings.EXTERNAL_DOWNLOADER::get,
+                    SharedYouTubeSettings.EXTERNAL_DOWNLOADER::get,
                     ExternalDownloadButton::onDownloadClick,
                     null
             );
@@ -72,10 +72,7 @@ public class ExternalDownloadButton {
     }
 
     private static void onDownloadClick(View view) {
-        DownloadsPatch.launchExternalDownloader(
-                VideoInformation.getVideoId(),
-                view.getContext(),
-                true);
+        ExternalDownloaderPreference.launchExternalDownloader(VideoInformation.getVideoId(), view.getContext(), "https://youtu.be/" + VideoInformation.getVideoId());
     }
 }
 
