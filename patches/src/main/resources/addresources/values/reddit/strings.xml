@@ -49,6 +49,8 @@ Second \"item\" text"</string>
     <string name="morphe_show_view_count_summary">Limitation: Only available if the API response includes the view count</string>
     <string name="morphe_remove_nsfw_dialog_title">Remove NSFW warning dialog</string>
     <string name="morphe_remove_nsfw_dialog_summary">Automatically accepts the NSFW content warning when visiting a subreddit</string>
+    <string name="morphe_incognito_keyboard_title">Incognito keyboard</string>
+    <string name="morphe_incognito_keyboard_summary">Prevents keyboard from learning from your typing</string>
 
     <string name="morphe_screen_miscellaneous_title">Miscellaneous</string>
     <string name="morphe_about_title">About</string>
