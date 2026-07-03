@@ -217,3 +217,27 @@ internal object WatchWhileLayoutFingerprint : Fingerprint(
         )
     )
 )
+
+/**
+ * Matches the watch-while dismiss callback (swipe-dismiss or "Dismiss queue"),
+ * identified by an IGET_OBJECT of the MusicActivity peer's AtomicBoolean and
+ * a following `AtomicBoolean.set(Z)`. Caller must supply the peer class via
+ * [MusicActivityWidgetFingerprint].
+ */
+internal fun watchWhileDismissedFingerprint(musicActivityPeerClass: String) = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf(),
+    returnType = "V",
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = musicActivityPeerClass,
+            type = "Ljava/util/concurrent/atomic/AtomicBoolean;"
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Ljava/util/concurrent/atomic/AtomicBoolean;->set(Z)V",
+            location = MatchAfterWithin(3)
+        )
+    )
+)

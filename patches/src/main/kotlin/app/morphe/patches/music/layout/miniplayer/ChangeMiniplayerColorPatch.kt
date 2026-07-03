@@ -108,11 +108,23 @@ val changeMiniplayerColorPatch = bytecodePatch(
             addInstructions(
                 setBackgroundColorIndex,
                 """
-                    invoke-static { v$tabLayoutRegister }, $EXTENSION_CLASS->registerNavigationBar(Landroid/view/View;)V
+                    invoke-static { v$tabLayoutRegister, v$colorRegister }, $EXTENSION_CLASS->registerNavigationBar(Landroid/view/View;I)V
                     invoke-static { v$colorRegister }, $EXTENSION_CLASS->overrideNavigationBarColor(I)I
                     move-result v$colorRegister
                 """
             )
         }
+
+        // Hook the watch-while dismiss callback to drop the cached tint.
+        // Fingerprint factory is shared with the swipe-to-dismiss patch.
+        val musicActivityPeerClass = (
+            MusicActivityWidgetFingerprint.instructionMatches[1]
+                .getInstruction<ReferenceInstruction>().reference as FieldReference
+        ).definingClass
+
+        watchWhileDismissedFingerprint(musicActivityPeerClass).method.addInstructions(
+            0,
+            "invoke-static { }, $EXTENSION_CLASS->onMiniplayerDismissed()V"
+        )
     }
 }
