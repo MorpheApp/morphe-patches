@@ -31,6 +31,19 @@ internal object MiniPlayerConstructorFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Matches the TabLayout method that assigns the navigation bar background color.
+ */
+internal object NavigationBarTabLayoutFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        string("FEmusic_radio_builder"),
+        resourceLiteral(ResourceType.COLOR, "ytm_color_grey_12")
+    )
+)
+
 internal object SwitchToggleColorFingerprint : Fingerprint(
     classFingerprint = MiniPlayerConstructorFingerprint,
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
