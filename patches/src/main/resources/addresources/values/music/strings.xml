@@ -139,8 +139,8 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <!-- layout.miniplayer.changeMiniplayerColorPatch -->
     <string name="morphe_music_change_miniplayer_color_title">Change miniplayer color</string>
     <string name="morphe_music_change_miniplayer_color_summary">Matches the miniplayer color to the fullscreen player</string>
-    <string name="morphe_music_match_navigation_bar_color_title">Match navigation bar color</string>
-    <string name="morphe_music_match_navigation_bar_color_summary">Tints the navigation bar with the same color applied to the miniplayer</string>
+    <string name="morphe_music_match_navigation_bar_color_title">Change navigation bar color</string>
+    <string name="morphe_music_match_navigation_bar_color_summary">Matches the navigation bar color to the miniplayer</string>
 
     <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
     <string name="morphe_music_miniplayer_next_button_title">Show next button in miniplayer</string>
