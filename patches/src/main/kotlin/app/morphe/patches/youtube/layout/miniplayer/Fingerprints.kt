@@ -62,27 +62,27 @@ internal object MiniplayerHorizontalDragPlaybackFingerprint : Fingerprint (
         ),
         opcode(
             opcode = Opcode.NEW_INSTANCE,
-            location = MatchAfterImmediately(),
+            location = MatchAfterWithin(4)
         ),
         methodCall(
             opcode = Opcode.INVOKE_DIRECT,
             name = "<init>",
-            location = MatchAfterImmediately(),
+            location = MatchAfterWithin(4)
         ),
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
             smali = $$"Landroid/animation/ValueAnimator;->addListener(Landroid/animation/Animator$AnimatorListener;)V",
-            location = MatchAfterImmediately(),
+            location = MatchAfterWithin(4)
         ),
         opcode(
             opcode = Opcode.IGET_OBJECT,
-            location = MatchAfterImmediately(),
+            location = MatchAfterWithin(4)
         ),
         methodCall(
             opcode = Opcode.INVOKE_INTERFACE,
             returnType = "Ljava/lang/Object;",
-            location = MatchAfterImmediately(),
-        ),
+            location = MatchAfterWithin(4)
+        )
     )
 )
 
