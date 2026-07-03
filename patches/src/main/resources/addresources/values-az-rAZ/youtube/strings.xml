@@ -121,11 +121,15 @@ Dəyişikliklər ehtiva edir:
   <string name="morphe_hide_live_chat_replay_button_title">\"Canlı söhbət oxudulması\" düyməsin gizlət</string>
   <string name="morphe_hide_live_chat_replay_button_summary">Tam ekran rejimində söhbətin təkrar oxudulması düyməsin gizlədir</string>
   <string name="morphe_hide_medical_panels_title">Tibbi lövhələri gizlət</string>
+  <string name="morphe_hide_snackbar_title">Ani bildiriş zolağını gizlət</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Abunəçi təlimatlarını gizlət</string>
+  <string name="morphe_hide_sync_button_title">\"Videoya sinxronizasiya et\" düyməsin gizlət</string>
   <string name="morphe_hide_timed_reactions_title">Vaxtlı reaksiyaları gizlət</string>
   <string name="morphe_hide_timed_reactions_summary">İstifadəçilərə şərh bölməsində və canlı söhbətdə emojilərlə qarşılıq verməyə imkan verən xüsusiyyəti gizlədir</string>
   <string name="morphe_hide_video_title_title">Video başlığını gizlət</string>
   <string name="morphe_hide_video_title_summary">Tam ekran rejimindəki video başlığı gizlədilir</string>
+  <string name="morphe_sanitize_video_subtitle_title">Video titrin təmizlə</string>
+  <string name="morphe_sanitize_video_subtitle_summary">Video titrdən \"#\", \"İanə toplayan\", \"Mağaza\" və \"məhsullar\" kimi ifadələri təmizləyir</string>
   <string name="morphe_hide_description_components_screen_title">Video təsviri</string>
   <string name="morphe_hide_description_components_screen_summary">Video təsvirində hansı elementlər görünür seç</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">\"AI tərəfindən yaradılan video xülasəsi\" bölməsini gizlət</string>
@@ -139,6 +143,7 @@ Dəyişikliklər ehtiva edir:
   <string name="morphe_hide_explore_section_summary">Bu kursu araşdırın və Podkasti araşdırın bölmələrin gizlədir</string>
   <string name="morphe_hide_explore_course_section_title">\"Bu kursu araşdırın\" bölməsini gizlət</string>
   <string name="morphe_hide_explore_podcast_section_title">\"Podkasti araşdırın\" bölməsini gizlət</string>
+  <string name="morphe_hide_featured_channels_section_title">Seçilmiş kanallar bölməsini gizlət</string>
   <string name="morphe_hide_featured_links_section_title">Seçilən keçidlər bölməsini gizlət</string>
   <string name="morphe_hide_featured_places_section_title">\'Seçilən yerlər\' bölməsini gizlət</string>
   <string name="morphe_hide_featured_videos_section_title">Seçilən videolar bölməsini gizlət</string>
@@ -179,6 +184,9 @@ Dəyişikliklər ehtiva edir:
   <string name="morphe_comments_screen_title">Şərhlər</string>
   <string name="morphe_comments_screen_summary">Şərhlər bölməsində hansı elementlər görünür seç</string>
   <string name="morphe_hide_comments_carousel_title">Şərhləri sürüşdürmə filtrini aktivləşdir</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Sürüşdürmə elementinin dəqiq adını qeyd etdiyinizə əmin ol (məsələn; soruş, bu videonu hayp edin, YouTube Music-də dinlə və s.)
+• Sürüşdürmə elementlərini gizlətmə gözlənilməz yan təsirlərə səbəb ola bilər
+• Bütün sürüşdürmə elementləri gizlədilibsə, bütün şərhlər bölməsi də gizlədiləcək"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Şərhləri sürüşdürmə filtri</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Yeni cərgələrlə ayrılan, çeşidləmək üçün şərhləri sürüşdürmə adlarını qeyd et</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Sİ söhbət xülasəsini gizlət</string>
@@ -199,6 +207,7 @@ Dəyişikliklər ehtiva edir:
   <string name="morphe_sanitize_comments_category_bar_title">Kateqoriya tabelin təmizlə</string>
   <string name="morphe_sanitize_comments_category_bar_summary">\"Yuxarı\" və \"Ən Yeni\" istisna olmaqla, bütün şərh çeşidləmə seçimlərini gizlədir</string>
   <string name="morphe_custom_filter_screen_title">Şəxsi filtr</string>
+  <string name="morphe_custom_filter_screen_summary">Hər hansı elementi gizlətmək üçün fərdi filtrləri tənzimlə</string>
   <string name="morphe_custom_filter_title">Fərdi filtri aktivləşdir</string>
   <string name="morphe_custom_filter_strings_title">Fərdi filtr</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
@@ -206,17 +215,35 @@ Dəyişikliklər ehtiva edir:
   <string name="morphe_custom_filter_toast_invalid_syntax">Etibarsız fərdi filtr: %s</string>
   <string name="morphe_hide_view_count_title">Baxış sayını gizlət</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
+  <string name="morphe_hide_view_count_summary">"Məhdudiyyətlər:
+• Shorts cərgələri, kanal səhifələri və axtarış nəticələri baxış sayını yenə də göstərə bilər
+• Bu xüsusiyyət avtomobil tərtibatı ilə işləmir"</string>
   <string name="morphe_hide_upload_time_title">Yüklənilmə vaxtını gizlət</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
+  <string name="morphe_hide_upload_time_summary">"Məhdudiyyətlər:
+• Shorts cərgələri, kanal səhifələri və axtarış nəticələri yüklənmə vaxtlarını hələ də göstərə bilər
+• Bu xüsusiyyət avtomobil tərtibatı ilə işləmir"</string>
   <string name="morphe_hide_keyword_content_screen_title">Açar söz çeşidləyici</string>
   <string name="morphe_hide_keyword_content_screen_summary">Videoları axınlarda və axtarışda gizlətmək üçün xüsusi sözlər və ya ifadələr seç</string>
   <string name="morphe_hide_keyword_content_home_title">Ev videolarını açar sözlərə görə gizlət</string>
   <string name="morphe_hide_keyword_content_search_title">Axtarış nəticələrini açar sözlərlə gizlət</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Abunəlik videolarını açar sözlərlə gizlət</string>
+  <string name="morphe_hide_keyword_content_comments_title">Şərhləri açar sözlərə görə gizlət</string>
   <string name="morphe_hide_keyword_content_phrases_title">Gizlədiləcək açar sözlər</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
+  <string name="morphe_hide_keyword_content_phrases_summary">"Gizlətmək üçün açar sözlər və ifadələri yeni sətirlərlə ayrılmış şəkildə qeyd et
+
+Açar sözlər video başlıqlarında və ya kanal adlarında görünən hər hansı mətn ola bilər
+
+Ortada böyük hərflər olan sözlər tam uyğunlaşmalıdır (məsələn: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">Açar söz filtrləməsi haqqında</string>
+  <string name="morphe_hide_keyword_content_about_summary">"Ev / Abunəliklər / Axtarış / Şərhlər açar söz ifadələrinə uyğun məzmunu gizlətmək üçün filtrlənir
+
+Məhdudiyyətlər:
+• Shorts kanal adına görə gizlədilə bilməz
+• Bəzi UI elementləri gizlədilməyə bilər
+• Açar söz axtarışı heç bir nəticə göstərməyə bilər"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Bütün sözləri uyğunlaşdır</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Açar söz/frazanın qoşa dırnaqlarla əhatə olunması video adları və kanal adlarının qismən uyğunlaşmasına mane olacaq &lt;br&gt;&lt;br&gt;Məsələn,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; videonu gizlədəcək:&lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt; lakin gizlətməyəcək: Düzgün;&lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
@@ -232,6 +259,7 @@ Dəyişikliklər ehtiva edir:
   <string name="morphe_hide_general_ads_title">Ümumi reklamları gizlət</string>
   <string name="morphe_hide_merchandise_banners_title">Məhsul afişaların gizlət</string>
   <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
+  <string name="morphe_hide_paid_promotion_label_title">\"Ödənişli tanıtım daxildir\" etiketini gizlət</string>
   <string name="morphe_hide_player_popup_ads_title">Oynadıcı ani açılan reklamlarını gizlət</string>
   <string name="morphe_hide_self_sponsor_ads_title">Öz-sponsorlu kartları gizlət</string>
   <string name="morphe_hide_shopping_links_title">Alış-veriş linklərini gizlət</string>
@@ -240,6 +268,12 @@ Dəyişikliklər ehtiva edir:
   <string name="morphe_hide_video_ads_title">Video reklamlarını gizlət</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
+  <string name="morphe_share_copy_link_button_success">Link buferə köçürüldü</string>
+  <string name="morphe_share_copy_link_with_timestamp_button_success">Vaxt möhürü olan link buferə köçürüldü</string>
+  <string name="morphe_copy_video_link_button_title">Video linki köçürmə düyməsini göstər</string>
+  <string name="morphe_copy_video_link_button_summary">Video linki köçürmək üçün toxun, vaxt möhürü ilə köçürmək üçün toxun və saxla</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_title">Vaxt möhürünü birbaşa köçür</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_summary">​\"Video linkini köçür\" düyməsinin toxunma və basıb saxlama fəaliyyətlərini əksinə dəyiş</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">İzləyici mülahizə dialoqun sil</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Bu, yaş məhdudiyyətini ötürmür. Sadəcə birbaşa qəbul edir</string>
@@ -247,11 +281,15 @@ Dəyişikliklər ehtiva edir:
   <string name="morphe_disable_sign_in_to_tv_popup_title">TV ani görüntüsü girişin qapat</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">Cüt toxunuşla fəsil ötürülməsini qapat</string>
+  <string name="morphe_disable_chapter_skip_double_tap_summary">Tək barmaqla bilmədən aktivləşə bilən, fəsilləri ötürən iki barmaqla cüt toxunma jestini qapadır</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Xarici yükləmələr</string>
+  <string name="morphe_external_downloader_screen_summary">Üçüncü tərəf yükləmə tətbiqləri ilə videoları yüklə</string>
   <string name="morphe_external_downloader_title">Xarici yükləmə düyməsini göstər</string>
+  <string name="morphe_external_downloader_summary">Video oynadıcıda xarici yükləyicinizi açan örtük düyməsini göstərir</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">Yükləmə fəaliyyət düyməsin qəbul etmə</string>
+  <string name="morphe_external_downloader_action_button_summary">YouTube-un qurulmuş yükləmə xüsusiyyətini xarici yükləyicinizlə əvəzləyir</string>
   <string name="morphe_external_downloader_name_title">Yükləyici paketi adı</string>
   <string name="morphe_external_downloader_name_summary">Quraşdırılan xarici yükləyici tətbiqinizin paket adı</string>
   <string name="morphe_external_downloader_other_item_hint">Paket adını yerləşdir</string>
@@ -263,10 +301,50 @@ Dəyişikliklər ehtiva edir:
 Paket adının düzgün olduğun yoxla və tətbiqi quraşdırın"</string>
   <string name="morphe_external_downloader_empty_warning">Paket adı boş ola bilməz</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">Səs üstələyici tərcümə</string>
+  <string name="morphe_vot_screen_summary">Cihazdakı mətni nitqə çevirməni istifadə edərək video titrlərini oynatma ilə sinxronlaşdırıb ucadan oxu</string>
+  <string name="morphe_vot_enabled_title">Səs üstələyici tərcümə</string>
+  <string name="morphe_vot_caption_language_title">Dil</string>
+  <string name="morphe_vot_translation_service_title">Tərcümə təminatçısı</string>
+  <string name="morphe_vot_original_audio_volume_title">Orijinal səs səviyyəsi</string>
+  <string name="morphe_vot_original_audio_volume_summary">Tərcümə səslənərkən orijinal YouTube səsinin səviyyəsi</string>
+  <string name="morphe_vot_translation_volume_title">Tərcümə səs səviyyəsi</string>
+  <string name="morphe_vot_translation_volume_summary">Dublyaj olunmuş tərcümə səsinin səviyyəsi</string>
+  <string name="morphe_vot_max_speech_rate_title">Ən yüksək danışıq sürəti</string>
+  <string name="morphe_vot_max_speech_rate_summary">Danışığı titr bölümünə uyğunlaşdıranda ən yüksək sürət misli</string>
+  <string name="morphe_vot_mymemory_info_summary">"Pulsuz tərcümə API-si, API açarı tələb olunmur. Pulsuz paketdə hər gün 5.000 simvola qədər və ya e-poçt ünvanı ilə hər gün 50.000 simvola qədər.
+
+MyMemory.translated.net-i açmaq üçün buraya toxun"</string>
+  <string name="morphe_vot_mymemory_email_title">MyMemory e-poçtu</string>
+  <string name="morphe_vot_mymemory_email_summary">Könüllü. Gündəlik həddi 5.000-dən 50.000 simvola qədər artırmaq üçün MyMemory e-poçt ünvanınızı qeyd edin. Gizli limitdən istifadə etmək üçün boş buraxın</string>
+  <string name="morphe_vot_openrouter_info_summary">"OpenRouter vasitəsilə ödənişli Sİ tərcüməsi. Bir dəfə balansınızı artırın və minlərlə videonu tərcümə edin. Mistral Nemo ən ucuz seçimdir, Gemma 4 isə ən yüksək keyfiyyət təklif edir.
+
+OpenRouter.ai-ı açmaq üçün buraya toxunun"</string>
+  <string name="morphe_vot_openrouter_api_key_title">OpenRouter API açarı</string>
+  <string name="morphe_vot_openrouter_api_key_summary">OpenRouter API açarınız. OpenRouter.ai &gt; İş sahəsi &gt; API Açarların-da açar yaradın</string>
+  <string name="morphe_vot_openrouter_model_title">OpenRouter Modeli</string>
   <string name="morphe_vot_openrouter_model_custom">Fərdi</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter tənzimlənməyib</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Bu təminatçını seçməzdən əvvəl tənzimləmələrdə OpenRouter API açarınızı qeyd edin</string>
+  <string name="morphe_vot_cost_free">Pulsuz</string>
   <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">Hər 100 video saatına %s</string>
+  <string name="morphe_vot_tts_voice_type">Səs</string>
   <string name="morphe_vot_tts_system">Sistem</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Çoxdilli kişi</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Çoxdilli qadın</string>
+  <string name="morphe_vot_voice_gender_male">Kişi</string>
+  <string name="morphe_vot_voice_gender_female">Qadın</string>
+  <string name="morphe_vot_tts_sample">Dəyişmə vaxtıdır!</string>
+  <string name="morphe_vot_http_error_title">Tərcümə əlçatan deyil</string>
+  <string name="morphe_vot_http_error_message">"Tərcümə xidməti HTTP %s xətası qaytardı. IP ünvanınız deyəsən 24 saatlıq norma limitinə məruz qalıb.
+
+​Tərcümələri istifadə etməyə davam etmək üçün tənzimləmələrdə başqa tərcümə təminatçısına keç və ya VPN istifadə et"</string>
   <string name="morphe_vot_do_not_show_again">Təkrar göstərmə</string>
+  <string name="morphe_vot_export_api_key_warning">"Tənzimləmələriniz OpenRouter API açarını ehtiva edir.
+
+API açarınız heç vaxt paylaşılmamalıdır. Buna girişi olan hər bir kəs OpenRouter balansınızı istifadə edə bilər"</string>
+  <string name="morphe_vot_openrouter_credits_title">OpenRouter balans limitinə çatıldı</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Video təkrarlamanı aktivləşdir</string>
   <!-- interaction.loop.loopVideoButtonPatch -->
@@ -694,7 +772,6 @@ Sonradan qapadılarsa, UI səhvlərin önləmək üçün tətbiq məlumatların 
   <string name="morphe_change_start_page_entry_virtual_reality">Faktiki Həyat</string>
   <string name="morphe_change_start_page_entry_watch_later">Sonra izlə</string>
   <string name="morphe_change_start_page_entry_your_clips">Klipləriniz</string>
-  <string name="morphe_change_start_page_always_title"> Başlatma səhifəsini həmişə dəyişdir</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Shorts-u bununla aç</string>

@@ -824,6 +824,9 @@ Nastavenia → Prehrávanie (alebo Automatické prehrávanie) → Automaticky pr
   <string name="morphe_ryd_estimated_like_summary">Zobrazuje odhadovaný počet označení \'Páči sa mi\' na videách, kde tvorca zakázal označenia</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Zobraziť upozornenia na chyby pripojenia</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Zobrazuje upozornenie, keď server Return YouTube Dislike nie je k dispozícii</string>
+  <string name="morphe_ryd_attribution_summary">"Údaje poskytuje rozhranie API Return YouTube Dislike
+
+Ťuknite sem a otvorte ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Vrátiť štatistiky API dislajkov tohto zariadenia</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Čas odozvy API, priemer</string>
@@ -916,10 +919,6 @@ Ak ju neskôr vypnete, odporúča sa vymazať dáta aplikácie, aby sa predišlo
   <string name="morphe_change_start_page_entry_virtual_reality">Virtuálna realita</string>
   <string name="morphe_change_start_page_entry_watch_later">Pozrieť neskôr</string>
   <string name="morphe_change_start_page_entry_your_clips">Vaše videá</string>
-  <string name="morphe_change_start_page_always_title">Vždy zmeniť úvodnú stránku</string>
-  <string name="morphe_change_start_page_always_summary">"Vždy presmeruje na zvolenú počiatočnú stránku, nie len pri spustení aplikácie
-
-Obmedzenie: Používanie tlačidla späť na paneli nástrojov nemusí fungovať"</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <string name="morphe_disable_shorts_resuming_on_startup_title">Zakázať obnovenie spustenia</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->

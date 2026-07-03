@@ -23,10 +23,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_02_alt_thumbnails_title">Miniaturas alternativas</string>
   <string name="morphe_settings_screen_03_feed_title">Feed</string>
   <string name="morphe_settings_screen_04_general_title">Geral</string>
-  <string name="morphe_settings_screen_05_player_title">Player</string>
+  <string name="morphe_settings_screen_05_player_title">Reprodutor</string>
   <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Barra de busca</string>
-  <string name="morphe_settings_screen_08_swipe_controls_title">Controles deslizantes</string>
+  <string name="morphe_settings_screen_08_swipe_controls_title">Controles por gestos</string>
   <string name="morphe_settings_screen_11_misc_title">Diversos</string>
   <string name="morphe_settings_screen_12_video_title">Vídeo</string>
   <string name="morphe_restore_old_settings_menus_title">Restaurar menus de configurações antigos</string>
@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_remove_background_playback_restrictions_title">Remover restrições de reprodução em segundo plano</string>
   <string name="morphe_shorts_disable_background_playback_title">Desativar reprodução de fundo dos Shorts</string>
   <!-- layout.disableLayoutUpdatesPatch -->
-  <string name="morphe_disable_layout_updates_title">Desativar atualizações de layout</string>
+  <string name="morphe_disable_layout_updates_title">Desativar atualizações de interface</string>
   <string name="morphe_disable_layout_updates_summary">Impede que o servidor atualize o layout do aplicativo</string>
   <string name="morphe_disable_layout_updates_user_dialog_message">"O layout do app volta para o layout utilizado quando foi instalado pela primeira vez.
 
@@ -47,8 +47,8 @@ As mudanças incluem:
 • A seção de música da descrição do vídeo pode não funcionar.
 • O botão de alternância de conta pode não aparecer na guia da biblioteca."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
-  <string name="morphe_hide_feed_flyout_menu_title">Habilitar filtro do menu de voo do feed</string>
-  <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Filtro do menu de voo do feed</string>
+  <string name="morphe_hide_feed_flyout_menu_title">Ativar filtros no menu flutuante do feed</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Filtros no menu flutuante do feed</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">Insira os nomes do menu flyout para filtrar, separados por novas linhas</string>
   <string name="morphe_hide_account_menu_title">Ativar Biblioteca / Filtro do menu inferior</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Ativar Biblioteca / Filtro do menu inferior</string>
@@ -79,13 +79,13 @@ As mudanças incluem:
   <string name="morphe_hide_latest_videos_button_title">Ocultar botão \'Vídeos recentes\'</string>
   <string name="morphe_hide_latest_videos_button_summary">Oculta o banner azul \'Vídeos mais recentes\' que aparece no topo do feed inicial</string>
   <string name="morphe_hide_mix_playlists_title">Ocultar playlists de mix</string>
-  <string name="morphe_hide_movies_section_title">Ocultar seção de filmes</string>
+  <string name="morphe_hide_movies_section_title">Ocultar seção \"Filmes\"</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Ocultar botão \'Notificar-me\'</string>
   <string name="morphe_hide_notify_me_button_summary">Oculta o botão de lembrete para transmissões ao vivo e estreias agendadas</string>
-  <string name="morphe_hide_playables_title">Ocultar Playables</string>
-  <string name="morphe_hide_playables_summary">Oculta o recurso que permite jogar jogos</string>
+  <string name="morphe_hide_playables_title">Ocultar seção Sala de Jogos</string>
+  <string name="morphe_hide_playables_summary">Oculta o recurso que permite jogar</string>
   <string name="morphe_hide_search_term_thumbnails_title">Ocultar miniaturas dos termos de pesquisa</string>
   <string name="morphe_hide_search_term_thumbnails_summary">Oculta as miniaturas na lista de autocompletar da pesquisa</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
@@ -133,29 +133,29 @@ As mudanças incluem:
   <string name="morphe_hide_description_components_screen_summary">Escolha quais componentes aparecem na descrição do vídeo</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Ocultar seção \'Resumo de vídeo gerado por IA\'</string>
   <string name="morphe_hide_ask_section_title">Ocultar seção \'Pergunte\'</string>
-  <string name="morphe_hide_attributes_section_title">Ocultar seção \'Atributos\'</string>
+  <string name="morphe_hide_attributes_section_title">Ocultar seção \"Atributos\"</string>
   <string name="morphe_hide_attributes_section_summary">Oculta as seções \'Lugares em destaque\', \'Jogos\', \'Música\' e \'Pessoas mencionadas\'</string>
-  <string name="morphe_hide_chapters_section_title">Ocultar seção \'Capítulos\'</string>
+  <string name="morphe_hide_chapters_section_title">Ocultar seção \"Capítulos\"</string>
   <string name="morphe_hide_corrections_section_title">Ocultar seção \'Correções\'</string>
   <string name="morphe_hide_course_progress_section_title">Ocultar seção \'Progresso do curso\'</string>
   <string name="morphe_hide_explore_section_title">Ocultar seção \'Explorar\'</string>
   <string name="morphe_hide_explore_section_summary">Oculta as seções \'Explorar este curso\' e \'Explorar o podcast\'</string>
   <string name="morphe_hide_explore_course_section_title">Ocultar seção \'Explorar este curso\'</string>
-  <string name="morphe_hide_explore_podcast_section_title">Ocultar seção \'Explorar o podcast\'</string>
+  <string name="morphe_hide_explore_podcast_section_title">Ocultar seção \"Conheça mais sobre o podcast\"</string>
   <string name="morphe_hide_featured_channels_section_title">Ocultar seção de canais em destaque</string>
   <string name="morphe_hide_featured_links_section_title">Ocultar seção \'Links em destaque\'</string>
   <string name="morphe_hide_featured_places_section_title">Ocultar seção \'Lugares em destaque\'</string>
   <string name="morphe_hide_featured_videos_section_title">Ocultar seção \'Vídeos em destaque\'</string>
-  <string name="morphe_hide_gaming_section_title">Ocultar seção \'Jogos\'</string>
-  <string name="morphe_hide_how_this_was_made_section_title">Ocultar seção \'Como este conteúdo foi feito\'</string>
-  <string name="morphe_hide_hype_points_title">Ocultar pontos de Hype</string>
+  <string name="morphe_hide_gaming_section_title">Ocultar seção \"Jogos\"</string>
+  <string name="morphe_hide_how_this_was_made_section_title">Ocultar seção \"Como este conteúdo foi criado\"</string>
+  <string name="morphe_hide_hype_points_title">Ocultar botão \"Pontos de hype\"</string>
   <string name="morphe_hide_info_cards_section_title">Ocultar seção \'Cartões de informações\'</string>
   <string name="morphe_hide_key_concepts_section_title">Ocultar seção \'Conceitos-chave\'</string>
-  <string name="morphe_hide_music_section_title">Ocultar seção \'Música\'</string>
+  <string name="morphe_hide_music_section_title">Ocultar seção \"Música\"</string>
   <string name="morphe_hide_quizzes_section_title">Ocultar seção \'Quizzes\'</string>
   <string name="morphe_hide_subscribe_button_title">Ocultar o botão Inscrever-se</string>
-  <string name="morphe_hide_transcript_section_title">Ocultar seção \'Transcrição\'</string>
-  <string name="morphe_hide_video_details_section_title">Ocultar seção \'Detalhes do vídeo\'</string>
+  <string name="morphe_hide_transcript_section_title">Ocultar seção \"Transcrição\"</string>
+  <string name="morphe_hide_video_details_section_title">Ocultar seção \"Detalhes do vídeo\"</string>
   <string name="morphe_hide_filter_bar_screen_title">Barra de filtro</string>
   <string name="morphe_hide_filter_bar_screen_summary">Escolha onde ocultar os chips de categoria de rolagem</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Ocultar em feeds</string>
@@ -406,18 +406,18 @@ Informação: pode não funcionar em transmissões ao vivo"</string>
   <string name="morphe_queue_override_flyout_menu_summary">Abre a fila do Morphe em vez da fila do YouTube</string>
   <string name="morphe_queue_manager_check_failed_auth">Não conectado(a)</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">Nenhum ID de playlist</string>
-  <string name="morphe_queue_manager_check_failed_queue">Fila vazia</string>
+  <string name="morphe_queue_manager_check_failed_queue">Fila está vazia</string>
   <string name="morphe_queue_manager_check_failed_video_id">Nenhum ID de vídeo</string>
   <string name="morphe_queue_manager_check_failed_generic">Falha: %s</string>
   <string name="morphe_queue_manager_fetch_failed_add">Falha ao adicionar à fila</string>
   <string name="morphe_queue_manager_fetch_failed_create">Falha ao criar fila</string>
   <string name="morphe_queue_manager_fetch_failed_remove">Falha ao remover da fila</string>
   <string name="morphe_queue_manager_fetch_failed_save">Falha ao salvar fila</string>
-  <string name="morphe_queue_manager_fetch_succeeded_add">Adicionado(a) à fila</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">Adicionado à fila</string>
   <string name="morphe_queue_manager_fetch_succeeded_create">Fila criada</string>
   <string name="morphe_queue_manager_fetch_succeeded_remove">Removido(a) da fila</string>
   <string name="morphe_queue_manager_fetch_succeeded_save">Fila salva em %s</string>
-  <string name="morphe_queue_manager_playlist_title">Fila do Morphe</string>
+  <string name="morphe_queue_manager_playlist_title">Fila Morphe</string>
   <string name="morphe_queue_manager_add_to_queue">Adicionar à fila</string>
   <string name="morphe_queue_manager_add_to_queue_and_open_queue">Adicionar à fila e abrir</string>
   <string name="morphe_queue_manager_add_to_queue_and_play_video">Adicionar à fila e reproduzir</string>
@@ -918,10 +918,6 @@ Se posteriormente desativado, é recomendável limpar os dados do aplicativo par
   <string name="morphe_change_start_page_entry_virtual_reality">Realidade virtual</string>
   <string name="morphe_change_start_page_entry_watch_later">Assistir mais tarde</string>
   <string name="morphe_change_start_page_entry_your_clips">Seus clipes</string>
-  <string name="morphe_change_start_page_always_title">Sempre alterar a página inicial</string>
-  <string name="morphe_change_start_page_always_summary">"Sempre redireciona para a página inicial escolhida, não apenas na inicialização do aplicativo
-
-Limitação: Usar o botão Voltar na barra de ferramentas pode não funcionar"</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <string name="morphe_disable_shorts_resuming_on_startup_title">Desativar retomada na inicialização</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->

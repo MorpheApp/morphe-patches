@@ -824,6 +824,9 @@ Configurações → Reprodução (ou Reprodução automática) → Reproduzir o 
   <string name="morphe_ryd_estimated_like_summary">Mostra uma contagem estimada de curtidas em vídeos em que o criador desativou as curtidas</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Mostrar alertas de erro de conexão</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Mostra uma notificação quando o servidor Return YouTube Dislike não estiver disponível</string>
+  <string name="morphe_ryd_attribution_summary">"Dados fornecidos pela API do Return YouTube Dislike
+
+Toque aqui para abrir o ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Estatísticas da API deste dispositivo RetnYouTubeDislike</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Tempo de resposta da API, média</string>
@@ -916,10 +919,6 @@ Nếu sau này tắt, bạn nên xóa dữ liệu ứng dụng để tránh lỗ
   <string name="morphe_change_start_page_entry_virtual_reality">Realidade virtual</string>
   <string name="morphe_change_start_page_entry_watch_later">Assistir depois</string>
   <string name="morphe_change_start_page_entry_your_clips">Seus clipes</string>
-  <string name="morphe_change_start_page_always_title">Sempre alterar a página inicial</string>
-  <string name="morphe_change_start_page_always_summary">"Sempre redireciona para a página inicial escolhida, não apenas na inicialização do aplicativo
-
-Limitação: Usar o botão Voltar na barra de ferramentas pode não funcionar"</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <string name="morphe_disable_shorts_resuming_on_startup_title">Desativar retomada no início</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->

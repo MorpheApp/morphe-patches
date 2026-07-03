@@ -824,6 +824,9 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_summary">Εμφανίζει μια εκτιμώμενη καταμέτρηση των likes σε βίντεο όπου ο δημιουργός έχει απενεργοποιήσει τα likes</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Εμφάνιση ειδοποιήσεων σφάλματος σύνδεσης</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Εμφανίζει μια ειδοποίηση όταν ο διακομιστής Return YouTube Dislike δεν είναι διαθέσιμος</string>
+  <string name="morphe_ryd_attribution_summary">"Τα δεδομένα παρέχονται από το Return YouTube Dislike API
+
+Πατήστε εδώ για να ανοίξετε το ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Στατιστικά ReturnYouTubeDislike API αυτής της συσκευής</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Χρόνος απόκρισης API, μέσος όρος</string>
@@ -916,10 +919,6 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_virtual_reality">Εικονική Πραγματικότητα</string>
   <string name="morphe_change_start_page_entry_watch_later">Παρακολούθηση αργότερα</string>
   <string name="morphe_change_start_page_entry_your_clips">Τα κλιπ σας</string>
-  <string name="morphe_change_start_page_always_title">Να αλλάζει πάντα η αρχική σελίδα</string>
-  <string name="morphe_change_start_page_always_summary">"Πάντα ανακατευθύνει στην επιλεγμένη αρχική σελίδα, όχι μόνο κατά την εκκίνηση της εφαρμογής
-
-Περιορισμός: Η χρήση του κουμπιού επιστροφής στη γραμμή εργαλείων ενδέχεται να μην λειτουργεί"</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <string name="morphe_disable_shorts_resuming_on_startup_title">Απενεργοποίηση της συνέχισης της αναπαραγωγής κατά την εκκίνηση</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->

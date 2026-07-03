@@ -128,8 +128,8 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_timed_reactions_summary">Folaíonn sé an ghné a ligeann d’úsáideoirí imoibriú le emojis sa chuid tuairimí agus sa chomhrá beo</string>
   <string name="morphe_hide_video_title_title">Folaigh teideal an fhíseáin</string>
   <string name="morphe_hide_video_title_summary">Folaíonn sé teideal an fhíseáin sa mhodh lánscáileáin</string>
-  <string name="morphe_sanitize_video_subtitle_title">Glana teideal fothaoiscí an fhíseáin</string>
-  <string name="morphe_sanitize_video_subtitle_summary">Glanaíonn fráiseanna cosúil le \'#\', \'Fíorfhaisnéis\', \'Siopa\', agus \'táirgí\' ó fothaoiscí an fhíseáin</string>
+  <string name="morphe_sanitize_video_subtitle_title">Glanadh fotheideal físe</string>
+  <string name="morphe_sanitize_video_subtitle_summary">Glanann sé frásaí cosúil le \'#\', \'Bailitheoir Airgid\', \'Siopa\', agus \'táirgí\' ó fhotheideal an fhíseáin</string>
   <string name="morphe_hide_description_components_screen_title">Cur síos ar an bhfíseán</string>
   <string name="morphe_hide_description_components_screen_summary">Roghnaigh cé na comhpháirteanna a thaispeántar i dtuairisc an fhíseáin</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Folaigh an chuid \'Achoimre ar fhíseán a ghintear le hintleacht shaorga\'</string>
@@ -403,8 +403,8 @@ Eolas: Seans nach n-oibreoidh sé ar shruthanna beo"</string>
   <string name="morphe_queue_restore_summary">Coinnítear an scuaine tar éis an aip a atosú</string>
   <string name="morphe_swap_save_and_queue_actions_title">Malartaigh gníomhartha Sábháil agus Ciú</string>
   <string name="morphe_swap_save_and_queue_actions_summary">Tapáil le haghaidh roghanna scuaine, tapáil agus coinnigh síos chun sábháil le féachaint air níos déanaí</string>
-  <string name="morphe_queue_override_flyout_menu_title">Cúram oiridh an earráid a bhaineann le scáthán eitil feamhnóir</string>
-  <string name="morphe_queue_override_flyout_menu_summary">Oscaílann sé an earráid Morphe seachas an earráid YouTube</string>
+  <string name="morphe_queue_override_flyout_menu_title">Sáraigh an cnaipe scuaine fothaithe</string>
+  <string name="morphe_queue_override_flyout_menu_summary">Osclaíonn sé an scuaine Morphe in ionad scuaine YouTube</string>
   <string name="morphe_queue_manager_check_failed_auth">Gan logáil isteach</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">Gan aon ID seinmliosta</string>
   <string name="morphe_queue_manager_check_failed_queue">Tá an scuaine folamh</string>
@@ -824,6 +824,9 @@ Socruithe → Athsheinm (nó Uathsheinm) → Uathsheinm an chéad fhíseán eile
   <string name="morphe_ryd_estimated_like_summary">Taispeánann sé líon measta na \'Is maith liom\' ar fhíseáin inar dhíchumasaigh an cruthaitheoir \'Is maith liom\'</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Taispeáin foláirimh earráide nasc</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Taispeánann sé fógra nuair nach bhfuil an freastalaí Return YouTube Dislike ar fáil</string>
+  <string name="morphe_ryd_attribution_summary">"Cuirtear sonraí ar fáil ag API Return YouTube Dislike
+
+Tapáil anseo chun ReturnYouTubeDislike.com a oscailt"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Staitisticí API ReturnYouTubeDislike an ghléis seo</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Am freagartha API, meán</string>
@@ -916,10 +919,6 @@ Má mhúchtar é níos déanaí, moltar sonraí na haipe a ghlanadh chun fabhtan
   <string name="morphe_change_start_page_entry_virtual_reality">Réaltacht Fhíorúil</string>
   <string name="morphe_change_start_page_entry_watch_later">Féach níos déanaí</string>
   <string name="morphe_change_start_page_entry_your_clips">Do ghearrthóga</string>
-  <string name="morphe_change_start_page_always_title">Athraigh an leathanach tosaigh i gcónaí</string>
-  <string name="morphe_change_start_page_always_summary">"Atreoraíonn i gcónaí chuig an leathanach tosaigh roghnaithe, ní hamháin nuair a thosaíonn an aip
-
-Teorainn: B’fhéidir nach n-oibreoidh an cnaipe ar ais ar an mbarra uirlisí a úsáid"</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <string name="morphe_disable_shorts_resuming_on_startup_title">Díchumasaigh atosú ag am tosaithe</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->

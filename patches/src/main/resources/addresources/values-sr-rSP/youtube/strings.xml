@@ -824,6 +824,9 @@ Promene uključuju:
   <string name="morphe_ryd_estimated_like_summary">Приказује процењени број свиђања на видео снимцима на којима је креатор деактивирао свиђања</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Прикажи упозорења о грешци у вези</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Приказује обавештење када је сервер Return YouTube Dislike недоступан</string>
+  <string name="morphe_ryd_attribution_summary">"Подаци су пружени од стране Return YouTube Dislike API
+
+Додирните овде да бисте отворили ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Статистике ReturnYouTubeDislike API-ја за овај уређај</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Време одговора API-ја, просечно</string>
@@ -916,10 +919,6 @@ Promene uključuju:
   <string name="morphe_change_start_page_entry_virtual_reality">Виртуелна реалност</string>
   <string name="morphe_change_start_page_entry_watch_later">За касније</string>
   <string name="morphe_change_start_page_entry_your_clips">Ваши клипови</string>
-  <string name="morphe_change_start_page_always_title">Увек мењај полазну страницу</string>
-  <string name="morphe_change_start_page_always_summary">"Увек преусмерава на изабрану почетну страницу, а не само приликом покретања апликације
-
-Ограничење: Коришћење дугмета „Назад” на траци са алаткама можда неће радити"</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <string name="morphe_disable_shorts_resuming_on_startup_title">Онемогући наставак репродукције при покретању</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->

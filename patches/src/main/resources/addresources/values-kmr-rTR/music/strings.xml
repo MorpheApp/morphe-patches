@@ -201,6 +201,8 @@ YouTube Music 8.x — crossfade tenê li 9.x û nûjenertirîn de dimeşe"</stri
   <string name="morphe_music_scrobbling_metadata_cleanup_summary">Bi otomatîkî metadata-ya hevpar (wek \"Vîdeoya fermî\", \"Remaster\", \"Zindî\") ji sernavan, hunerîstan, û albuman paqij bike berî lêkirinê</string>
   <string name="morphe_music_scrobbling_custom_regex_title">Paqijkirina regex-a xwerû</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">Bi rêzekê ya pêşniyazkirî bikar bîne da ku nivîsa zêde ji sernavên stran, hunermend an albûman were hildan. Mînak: (?i)\\s*\\((clean|explicit)\\)</string>
+  <string name="morphe_music_scrobbling_parse_title_title">Hûnerê ji sernavê de dîtin û şîrovekirin</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">Navê hunerê û şîrovekirinê ji sernavê vîdyoyê bi rêya vê neşê \" - \" derxin. Ji bo naverokên ku hatine barkirin lênêrîn, navê kanalê dikare wek hunerê were bikaranîn.</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_title">Derbarê lêkirinê</string>
   <!-- 'scrobbling' must be kept untranslated -->

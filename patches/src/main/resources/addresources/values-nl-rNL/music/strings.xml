@@ -201,6 +201,8 @@ YouTube Music 8.x - crossfade werkt alleen op 9.x en nieuwer"</string>
   <string name="morphe_music_scrobbling_metadata_cleanup_summary">Maak automatisch veelvoorkomende rommel (zoals \"Official Video\", \"Remaster\", \"Live\") uit titels, artiesten en albums weg voordat scrobbling</string>
   <string name="morphe_music_scrobbling_custom_regex_title">Aangepaste regex opschonen</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">Voer een aangepaste reguliere expressie in om extra tekst uit songtitels, artiesten of albums te verwijderen. Voorbeeld: (?i)\\s*\\((clean|explicit)\\)</string>
+  <string name="morphe_music_scrobbling_parse_title_title">Haal artiest en tracknaam uit de titel.</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">Haal de artiest- en tracknaam uit de videotitel met behulp van de \" - \" scheidingsteken. Handig voor opnieuw geüploade content waarbij de zendernaam mogelijk als artiest wordt gebruikt.</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_title">Over scrobbelen</string>
   <!-- 'scrobbling' must be kept untranslated -->

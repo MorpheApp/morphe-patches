@@ -201,6 +201,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_scrobbling_metadata_cleanup_summary">স্ক্রবলিং করার আগে শিরোনাম, শিল্পী এবং অ্যালবাম থেকে সাধারণ বিশৃঙ্খলা (যেমন \"Official Video\", \"Remaster\", \"Live\") স্বয়ংক্রিয়ভাবে পরিষ্কার করুন</string>
   <string name="morphe_music_scrobbling_custom_regex_title">কাস্টম রেজেক্স পরিষ্কার</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">গান শিরোনাম, শিল্পী বা অ্যালবম থেকে অতিরিক্ত টেক্সট সরানোর জন্য একটি কাস্টম রেগুলার এক্সপ্রেশন লিখুন। উদাহরণ: (?i)\\s*\\((clean|explicit)\\)</string>
+  <string name="morphe_music_scrobbling_parse_title_title">শিরোনাম থেকে শিল্পী এবং ট্র্যাক পার্স করুন</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">\" - \" বিভাজক ব্যবহার করে ভিডিওর শিরোনাম থেকে শিল্পী এবং ট্র্যাকের নাম বের করুন। চ্যানেলের নাম শিল্পীর নাম হিসাবে ব্যবহৃত হতে পারে এমন পুনরায় আপলোড করা সামগ্রীর জন্য এটি উপযোগী।</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_title">স্ক্রবলিং সম্পর্কে</string>
   <!-- 'scrobbling' must be kept untranslated -->

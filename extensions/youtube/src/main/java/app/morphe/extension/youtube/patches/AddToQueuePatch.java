@@ -168,9 +168,9 @@ public final class AddToQueuePatch {
     /**
      * Injection point.
      */
-    public static void extractVideoId(Object bufferObject) {
+    public static void extractVideoId(@Nullable Object bufferObject) {
         try {
-            Logger.printDebug(() -> "FlyoutBuffer class: " + bufferObject.getClass());
+            Logger.printDebug(() -> "FlyoutBuffer class: " + ((bufferObject == null) ? null : bufferObject.getClass()));
 
             if (bufferObject instanceof FlyoutMenuVideoIdInterface videoIdInterface) {
                 String videoId = videoIdInterface.patch_getVideoId();
@@ -342,10 +342,19 @@ public final class AddToQueuePatch {
     /**
      * Injection point.
      */
-    public static void setCurrentButtonInfo(@Nullable Enum<?> buttonEnum, @Nullable CharSequence buttonText) {
-        if (buttonEnum == null || buttonText == null || buttonText.toString().isEmpty()) {
+    public static void setCurrentButtonInfo(@Nullable Enum<?> buttonEnum, @Nullable Object buttonInfo) {
+        if (buttonEnum == null) {
             return;
         }
+
+        if (buttonInfo instanceof CharSequence charSequence && charSequence.toString().isEmpty()) {
+            return;
+        }
+
+        if (buttonInfo instanceof View view && view.getVisibility() == View.GONE) {
+            return;
+        }
+
         currentButtonName = buttonEnum.name();
         currentButtonIndex++;
 
@@ -365,7 +374,7 @@ public final class AddToQueuePatch {
             return original;
         }
 
-        return invokeQueueFlyout(original, currentButtonName);
+        return getNewRunnable(original, currentButtonName);
     }
 
     /**
@@ -373,7 +382,7 @@ public final class AddToQueuePatch {
      * -
      * 21.04 and older.
      */
-    public static boolean replaceOnItemClick(int index) {
+    public static boolean replaceOnItemClick(Object object) {
         if (!Settings.QUEUE_OVERRIDE_FLYOUT_MENU.get()) {
             return false;
         }
@@ -383,12 +392,22 @@ public final class AddToQueuePatch {
             return false;
         }
 
+        int buttonIndex = -1;
+        String buttonName = "";
+
+        if (object instanceof Integer index) {
+            buttonIndex = index;
+        } else if (object instanceof String name) {
+            buttonName = name;
+        }
+
         try {
             if (!visibleFlyoutButtons.isEmpty()) {
-                String currentIndexedButtonName = visibleFlyoutButtons.get(index).first;
-
-                invokeQueueFlyout(null, currentIndexedButtonName).run();
-                return true;
+                if (buttonIndex >= 0) {
+                    return flyoutButtonClickLogic(visibleFlyoutButtons.get(buttonIndex).first);
+                } else if (!buttonName.isEmpty()) {
+                    return flyoutButtonClickLogic(buttonName);
+                }
             }
         } catch (Exception ex) {
             Logger.printException(() -> "replaceOnItemClick failure", ex);
@@ -396,29 +415,37 @@ public final class AddToQueuePatch {
         return false;
     }
 
-    private static Runnable invokeQueueFlyout(@Nullable Runnable original, String buttonName) {
+    private static Runnable getNewRunnable(@Nullable Runnable original, String buttonName) {
         return () -> {
-            if (buttonName.equals(queueButtonName)) {
-                Logger.printDebug(() -> "Opening custom queue flyout with videoId: " + flyoutVideoId);
-
-                Activity activity = getActivity();
-                if (activity != null && !activity.isFinishing() && !activity.isDestroyed()) {
-                    PlaylistPatch.prepareDialogBuilder(getActivity(), flyoutVideoId);
-                }
-
-                dismissBottomSheetFlyout(); // Must dismiss after showing dialog.
-                dismissPopupWindowFlyout();
+            if (flyoutButtonClickLogic(buttonName)) {
                 return;
-            }
-            // The following check is necessary for the 'System Share Sheet' patch to function correctly.
-            if (buttonName.equals(shareButtonName)) {
-                delayedFlyoutVideoIdReset = true;
             }
 
             if (original != null) {
                 original.run();
             }
         };
+    }
+
+    private static boolean flyoutButtonClickLogic(String buttonName) {
+        if (buttonName.equals(queueButtonName)) {
+            Logger.printDebug(() -> "Opening custom queue flyout with videoId: " + flyoutVideoId);
+
+            Activity activity = getActivity();
+            if (activity != null && !activity.isFinishing() && !activity.isDestroyed()) {
+                PlaylistPatch.prepareDialogBuilder(getActivity(), flyoutVideoId);
+            }
+
+            dismissBottomSheetFlyout(); // Must dismiss after showing dialog.
+            dismissPopupWindowFlyout();
+            return true;
+        }
+        // The following check is necessary for the 'System Share Sheet' patch to function correctly.
+        if (buttonName.equals(shareButtonName)) {
+            delayedFlyoutVideoIdReset = true;
+        }
+
+        return false;
     }
 
     public static String getFlyoutVideoId() {

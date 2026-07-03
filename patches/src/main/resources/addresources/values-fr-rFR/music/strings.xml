@@ -74,13 +74,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_about_summary">Comment fonctionne le fondu enchaîné — et dans quels cas il ne fonctionne pas</string>
   <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
   <string name="morphe_music_crossfade_about_how_title">Comment ça marche</string>
-  <string name="morphe_music_crossfade_about_how_summary">"Le fondu enchaîné superpose la fin d’une chanson au début de la suivante, en diminuant progressivement le volume de l’une tandis que celui de l’autre augmente, selon la durée et la courbe de transition que vous avez choisies.
+  <string name="morphe_music_crossfade_about_how_summary">"Le fondu enchaîné superpose la fin d'une chanson au début de la suivante, en diminuant progressivement le volume de l'une tandis que celui de l'autre augmente, selon la durée et la courbe de transition que vous avez choisies.
 
-Il fonctionne aussi bien lors du passage automatique à la piste suivante (lorsqu’une chanson se termine d’elle-même) que lors des passages manuels — chacun dispose de son propre interrupteur ci-dessus. Lors du passage automatique, la transition commence quelques secondes avant la fin de la chanson.
+Il fonctionne aussi bien lors du passage automatique à la piste suivante (lorsqu'une chanson se termine d'elle-même) que lors des passages manuels — chacun dispose de son propre interrupteur ci-dessus. Lors du passage automatique, la transition commence quelques secondes avant la fin de la chanson.
 
-Nécessite YouTube Music 9.x ou une version ultérieure"</string>
+Nécessite YouTube Music 9.x ou une version ultérieure."</string>
   <string name="morphe_music_crossfade_about_best_title">Fonctionne mieux avec</string>
-  <string name="morphe_music_crossfade_about_best_summary">Lecture normale d’une chanson à l’autre avec passage automatique à la suivante, répétition d’un seul titre (la chanson effectue un fondu enchaîné vers elle-même) et audio local — haut-parleur du téléphone, écouteurs filaires, Bluetooth ou USB. </string>
+  <string name="morphe_music_crossfade_about_best_summary">Lecture normale d\'une chanson à l\'autre avec passage automatique à la suivante, répétition d\'un seul titre (la chanson effectue un fondu enchaîné vers elle-même) et audio local — haut-parleur du téléphone, écouteurs filaires, Bluetooth ou USB. </string>
   <string name="morphe_music_crossfade_about_quirks_title">Ne fonctionne pas tout à fait correctement</string>
   <string name="morphe_music_crossfade_about_quirks_summary">"Les vidéos musicales sont lues en mode audio uniquement lorsque le fondu enchaîné est activé (appuyez longuement sur le bouton 'Lecture aléatoire' pour le mettre en pause si vous souhaitez voir la vidéo)
 
@@ -88,11 +88,11 @@ Les chansons plus courtes que votre durée de fondu peuvent ne pas bénéficier 
 
 L’écran de verrouillage ou la notification peut brièvement afficher un état obsolète pendant une transition"</string>
   <string name="morphe_music_crossfade_about_known_title">Problèmes connus</string>
-  <string name="morphe_music_crossfade_about_known_summary">"Une vidéo musicale définie comme première chanson — ou lancée depuis l’extérieur de la file d’attente actuelle — peut brièvement s’afficher en mode vidéo avant que le mode audio uniquement ne s’active
+  <string name="morphe_music_crossfade_about_known_summary">"Une vidéo musicale définie comme première chanson — ou lancée depuis l'extérieur de la file d'attente actuelle — peut brièvement s'afficher en mode vidéo avant que le mode audio uniquement ne s’active
 
-Mettre le fondu enchaîné en pause pour regarder une vidéo musicale peut laisser certaines vidéos avec un écran noir (celles dont l’audio provient directement de la vidéo elle-même). Mettre le fondu enchaîné en pause avant de sélectionner la chanson permet d’éviter ce problème"</string>
+Mettre le fondu enchaîné en pause pour regarder une vidéo musicale peut laisser certaines vidéos avec un écran noir (celles dont l'audio provient directement de la vidéo elle-même). Mettre le fondu enchaîné en pause avant de sélectionner la chanson permet d'éviter ce problème"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">Ne fonctionne pas du tout</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Diffusion ou duplication audio (Chromecast, duplication d’écran ou audio) — le fondu enchaîné est mis en pause, car il est instable dans ce contexte et il se peut que cela ne soit jamais corrigé.
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Diffusion ou duplication audio (Chromecast, duplication d'écran ou audio) — le fondu enchaîné est mis en pause, car il est instable dans ce contexte et il se peut que cela ne soit jamais corrigé.
 
 YouTube Music 8.x — le fondu enchaîné ne fonctionne que sur les versions 9.x et ultérieures"</string>
   <string name="morphe_music_crossfade_about_credit_title">Crédit</string>
@@ -190,7 +190,7 @@ YouTube Music 8.x — le fondu enchaîné ne fonctionne que sur les versions 9.x
   <string name="morphe_music_lastfm_token_dialog_username_hint">Nom d\'utilisateur</string>
   <string name="morphe_music_lastfm_token_dialog_password_hint">Mot de passe</string>
   <string name="morphe_music_lastfm_token_dialog_login">Se connecter</string>
-  <string name="morphe_music_lastfm_token_status_empty">Veuillez entrer votre nom d’utilisateur et votre mot de passe</string>
+  <string name="morphe_music_lastfm_token_status_empty">Veuillez entrer votre nom d\'utilisateur et votre mot de passe</string>
   <string name="morphe_music_lastfm_token_status_logging_in">Connexion en cours...</string>
   <string name="morphe_music_lastfm_token_status_success">Connecté avec succès !</string>
   <string name="morphe_music_lastfm_token_status_no_session">Échec de récupération de la session depuis Last.fm</string>
@@ -200,7 +200,9 @@ YouTube Music 8.x — le fondu enchaîné ne fonctionne que sur les versions 9.x
   <string name="morphe_music_scrobbling_metadata_cleanup_title">Nettoyer les métadonnées</string>
   <string name="morphe_music_scrobbling_metadata_cleanup_summary">Supprime automatiquement les mentions courantes (comme \"Official Video\", \"Remaster\" ou \"Live\") des titres, des noms d\'artistes et des albums avant le scrobbling.</string>
   <string name="morphe_music_scrobbling_custom_regex_title">Nettoyage par regex personnalisée</string>
-  <string name="morphe_music_scrobbling_custom_regex_summary">Entrez une expression régulière personnalisée pour supprimer du texte supplémentaire des titres de morceaux, des noms d\'artistes ou des albums.\nExemple : (?i)\\s*\\((clean|explicit)\\)</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">Entrez une expression régulière personnalisée pour supprimer le texte supplémentaire des titres de morceaux, des noms d\'artistes ou des albums. Exemple : (?i)\\s*\\((clean|explicit)\\)</string>
+  <string name="morphe_music_scrobbling_parse_title_title">Analyser l\'artiste et le morceau à partir du titre</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">Extrait le nom de l\'artiste et le titre du morceau à partir du titre de la vidéo en utilisant le séparateur \" - \". Utile pour les contenus réimportés, où le nom de la chaîne peut être utilisé comme nom de l\'artiste.</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_title">À propos du scrobbling</string>
   <!-- 'scrobbling' must be kept untranslated -->

@@ -126,6 +126,8 @@ Second \"item\" text"</string>
   <string name="morphe_proxy_auth_username_summary">Имя пользователя для базовой аутентификации прокси-сервера</string>
   <string name="morphe_proxy_auth_password_title">Пароль прокси-сервера</string>
   <string name="morphe_proxy_auth_password_summary">Пароль для базовой аутентификации прокси-сервера</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">Разрешить прямой откат</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">Подключитесь напрямую, если прокси-сервер не работает</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Скрыть полноэкранную рекламу</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

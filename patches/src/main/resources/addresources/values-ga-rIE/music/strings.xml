@@ -148,59 +148,61 @@ YouTube Music 8.x — ní ritheann an traschéimniú ach ar 9.x agus níos nuaí
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Folaigh an cnaipe uasghrádaithe</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
-  <string name="morphe_music_scrobbling_summary">Configure Last.fm and ListenBrainz integration</string>
-  <string name="morphe_music_scrobbling_summary_logged_out">Níl tú logáilte isteach. Tapáil chun configureáil</string>
-  <string name="morphe_music_scrobbling_log_out">Sínigh amach</string>
+  <string name="morphe_music_scrobbling_summary">Cumraigh comhtháthú Last.fm agus ListenBrainz</string>
+  <string name="morphe_music_scrobbling_summary_logged_out">Níl tú logáilte isteach. Tapáil chun cumrú.</string>
+  <string name="morphe_music_scrobbling_log_out">Logáil amach</string>
   <string name="morphe_music_scrobbling_logged_out_toast">Logáilte amach</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_enabled_title">Comascú scrobbling</string>
-  <string name="morphe_music_scrobbling_now_playing_title">Seoladh stádas \"Ag imirt anois\"</string>
+  <string name="morphe_music_scrobbling_enabled_title">Cumasaigh scrobbling</string>
+  <string name="morphe_music_scrobbling_now_playing_title">Cuir isteach stádas \"Ag imirt anois\"</string>
   <string name="morphe_music_scrobbling_min_song_duration_title">Fad íosta amhrán</string>
   <!-- 'scrobbled' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_min_song_duration_summary">Ní scrobbláilfear amhráin a bhfuil an fad seo leo nó faoi</string>
+  <string name="morphe_music_scrobbling_min_song_duration_summary">Ní dhéanfar scrobble ar amhráin níos giorra ná seo</string>
   <!-- 'scrobble' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_delay_percent_title">Percent ag scrobbláil</string>
+  <string name="morphe_music_scrobbling_delay_percent_title">Céatadán moille Scrobble</string>
   <!-- 'scrobble' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_delay_percent_summary">Spreag scrobbling tar éis éisteacht leis an gcéatdán seo den amhrán</string>
+  <string name="morphe_music_scrobbling_delay_percent_summary">Spreag scrobble tar éis éisteacht leis an gcéatadán seo den amhrán</string>
   <!-- 'scrobble' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_delay_seconds_title">Nóiméad scrobbling</string>
+  <string name="morphe_music_scrobbling_delay_seconds_title">Moill Scrobble soicindí</string>
   <!-- 'scrobble' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_delay_seconds_summary">Spreag scrobbling tar éis éisteacht ar feadh na nóiméad seo</string>
+  <string name="morphe_music_scrobbling_delay_seconds_summary">Spreag scrobble tar éis éisteacht ar feadh an méid seo soicind</string>
   <string name="morphe_music_listenbrainz_token_title">Cuntas ListenBrainz</string>
-  <string name="morphe_music_listenbrainz_token_summary_logged_in">Logáilte isteach. Tapáil chun cuntas a bhainistiú</string>
+  <string name="morphe_music_listenbrainz_token_summary_logged_in">Logáilte isteach. Tapáil chun cuntas a bhainistiú.</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_listenbrainz_token_dialog_instruction">Ionduigh do token úsáideora ListenBrainz chun scrobbling a chur ar siúl</string>
-  <string name="morphe_music_listenbrainz_token_dialog_hint">Token</string>
-  <string name="morphe_music_listenbrainz_token_dialog_get_token">Faigh token</string>
-  <string name="morphe_music_listenbrainz_token_dialog_verify">Verify</string>
-  <string name="morphe_music_listenbrainz_token_status_empty">Le do thoil ionduigh token</string>
-  <string name="morphe_music_listenbrainz_token_status_validating">Á bainistiú...</string>
-  <string name="morphe_music_listenbrainz_token_status_valid">Token bailí! Úsáideoir: %s</string>
-  <string name="morphe_music_listenbrainz_token_status_invalid">Token neamhbhailí: %s</string>
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">Cuir isteach do Chomhartha Úsáideora ListenBrainz chun scrobbling a chumasú</string>
+  <string name="morphe_music_listenbrainz_token_dialog_hint">Comhartha</string>
+  <string name="morphe_music_listenbrainz_token_dialog_get_token">Faigh comhartha</string>
+  <string name="morphe_music_listenbrainz_token_dialog_verify">Fíoraigh</string>
+  <string name="morphe_music_listenbrainz_token_status_empty">Cuir isteach comhartha le do thoil</string>
+  <string name="morphe_music_listenbrainz_token_status_validating">Ag bailíochtú...</string>
+  <string name="morphe_music_listenbrainz_token_status_valid">Comhartha bailí! Úsáideoir: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">Comhartha neamhbhailí: %s</string>
   <string name="morphe_music_listenbrainz_token_status_invalid_unknown">anaithnid</string>
-  <string name="morphe_music_listenbrainz_token_status_failed">Theip ar bhailíochtú: %s</string>
-  <string name="morphe_music_listenbrainz_token_toast_cleared">Glanadh token</string>
-  <string name="morphe_music_listenbrainz_token_toast_saved">Token sábháilte</string>
-  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Rabhadh: Tá token sábháilte neamhbhailí!</string>
-  <string name="morphe_music_lastfm_love_on_like_title">Is grá mór ar riananna líonta</string>
-  <string name="morphe_music_lastfm_love_on_like_summary">Is grá go huaimhneach ar riananna ar Last.fm nuair a thaitníonn tú leo ar YouTube Music (agus bain an grá nuair a dhéantar rian a dhíspreagadh nó a mheastófar níl grá agat air)</string>
+  <string name="morphe_music_listenbrainz_token_status_failed">Theip ar fhíorú: %s</string>
+  <string name="morphe_music_listenbrainz_token_toast_cleared">Glanadh an chomhartha</string>
+  <string name="morphe_music_listenbrainz_token_toast_saved">Comhartha sábháilte</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Rabhadh: Tá an comhartha sábháilte neamhbhailí!</string>
+  <string name="morphe_music_lastfm_love_on_like_title">Rianta a thaitin go mór liom</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">Tabhair grá go huathoibríoch do rianta ar Last.fm nuair is maith leat iad ar YouTube Music (agus bain an grá nuair nach maith leat nó nach maith leat iad)</string>
   <string name="morphe_music_lastfm_token_title">Cuntas Last.fm</string>
   <string name="morphe_music_lastfm_token_summary_logged_in">Logáilte isteach mar %s. Tapáil chun cuntas a bhainistiú</string>
-  <string name="morphe_music_lastfm_token_dialog_instruction">Ionduigh fianaise Last.fm chun logáil isteach</string>
+  <string name="morphe_music_lastfm_token_dialog_instruction">Cuir isteach do chuid dintiúir Last.fm le logáil isteach</string>
   <string name="morphe_music_lastfm_token_dialog_username_hint">Ainm úsáideora</string>
   <string name="morphe_music_lastfm_token_dialog_password_hint">Pasfhocal</string>
   <string name="morphe_music_lastfm_token_dialog_login">Logáil isteach</string>
-  <string name="morphe_music_lastfm_token_status_empty">Le do thoil ionduigh ainm úsáideora agus pasfhocal</string>
-  <string name="morphe_music_lastfm_token_status_logging_in">Logáil isteach á bainistiú...</string>
-  <string name="morphe_music_lastfm_token_status_success">Logáil isteach rathúil!</string>
-  <string name="morphe_music_lastfm_token_status_no_session">Theip ar fhaigh seisiún ón Last.fm</string>
+  <string name="morphe_music_lastfm_token_status_empty">Cuir isteach ainm úsáideora agus pasfhocal le do thoil</string>
+  <string name="morphe_music_lastfm_token_status_logging_in">Ag logáil isteach...</string>
+  <string name="morphe_music_lastfm_token_status_success">Logáilte isteach go rathúil!</string>
+  <string name="morphe_music_lastfm_token_status_no_session">Theip ar an seisiún a fháil ó Last.fm</string>
   <string name="morphe_music_lastfm_token_status_failed">Theip ar logáil isteach: %s</string>
-  <string name="morphe_music_lastfm_token_toast_saved">Fianaise Last.fm sábháilte!</string>
-  <string name="morphe_settings_music_scrobbling_metadata_title">Glanadh metadata</string>
-  <string name="morphe_music_scrobbling_metadata_cleanup_title">Glanadh metadata</string>
-  <string name="morphe_music_scrobbling_metadata_cleanup_summary">Glan go huaimhneach grinníocht choitianta (mar \"Físeán Oifigiúil\", \"Athnuachan\", \"Beo\") ó theideanna, faisnéis ealaithe, agus albaim roimh scrobbling</string>
+  <string name="morphe_music_lastfm_token_toast_saved">Dintiúir Last.fm sábháilte!</string>
+  <string name="morphe_settings_music_scrobbling_metadata_title">Glanadh meiteashonraí</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_title">Glan suas meiteashonraí</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">Glan praiseach coitianta (cosúil le \"Físeán Oifigiúil\", \"Athmháistreacht\", \"Beo\") go huathoibríoch ó theidil, ealaíontóirí agus albaim sula ndéantar scrobáil air.</string>
   <string name="morphe_music_scrobbling_custom_regex_title">Glanadh regex saincheaptha</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">Cuir isteach rialú coibhéiseach custaim chun téacs breise a bhaint as teachtaireanna, ealaíontóirí, nó albaim. Sampla: (?i)\s*\((clean|explicit)\)</string>
+  <string name="morphe_music_scrobbling_parse_title_title">Parsáil an t-ealaíontóir agus an rian ón teideal</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">Bain ainm an ealaíontóra agus an riain as teideal an fhíseáin ag baint úsáide as an deighilteoir \"-\". Úsáideach le haghaidh ábhar ath-uaslódáilte ina bhféadfaí ainm an chainéil a úsáid mar an t-ealaíontóir.</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_title">Maidir le scrobbling</string>
   <!-- 'scrobbling' must be kept untranslated -->

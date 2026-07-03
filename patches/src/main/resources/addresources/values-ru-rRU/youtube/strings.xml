@@ -826,6 +826,9 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_summary">Показывает приблизительное количество «Мне нравится» на видео, у которых создатель отключил лайки</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Показывать оповещения об ошибках подключения</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Показывает уведомление, когда сервер Return YouTube Dislike недоступен</string>
+  <string name="morphe_ryd_attribution_summary">"Данные предоставлены API Return YouTube Dislike
+
+Нажмите здесь, чтобы открыть ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Статистика Return YouTube Dislike API этого устройства</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Время ответа API, среднее</string>
@@ -918,10 +921,6 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_virtual_reality">Виртуальная реальность</string>
   <string name="morphe_change_start_page_entry_watch_later">Смотреть позже</string>
   <string name="morphe_change_start_page_entry_your_clips">Ваши клипы</string>
-  <string name="morphe_change_start_page_always_title">Всегда изменять начальную страницу</string>
-  <string name="morphe_change_start_page_always_summary">"Всегда перенаправляет на выбранную начальную страницу, а не только при запуске приложения
-
-Ограничение: Использование кнопки «Назад» на панели инструментов может не работать"</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <string name="morphe_disable_shorts_resuming_on_startup_title">Отключить продолжение при запуске</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->

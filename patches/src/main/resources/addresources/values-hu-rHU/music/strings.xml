@@ -201,6 +201,8 @@ YouTube Music 8.x – a keresztátmenet csak a 9.x és újabb verziókon fut."</
   <string name="morphe_music_scrobbling_metadata_cleanup_summary">Automatikus gyakori zavarok (mint például a \"Official Video\", \"Remaster\", \"Live\") eltávolítása címekről, művészekről és albumokról a scrobbling előtt</string>
   <string name="morphe_music_scrobbling_custom_regex_title">Egyéni reguláris kifejezéses tisztítás</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">Adj meg egy egyéni reguláris kifejezést a dalok címéből, előadóból vagy albumokból felesleges szöveg eltávolításához. Példa: (?i)\\s*\\((clean|explicit)\\)</string>
+  <string name="morphe_music_scrobbling_parse_title_title">Bontsa ki a művészt és a számcímet a címből</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">A videó címéből szűri ki a művész és a számcím nevét a \" - \" elválasztóval. Hasznos feltöltött tartalmak esetén, ahol a csatorna neve a művész nevéként szerepel.</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_title">A scrobblingről</string>
   <!-- 'scrobbling' must be kept untranslated -->

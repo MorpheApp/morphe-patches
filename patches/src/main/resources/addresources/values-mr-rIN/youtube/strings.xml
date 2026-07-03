@@ -716,6 +716,7 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_hide_seekbar_thumbnail_summary">तुम्ही आधीच पाहिलेल्या व्हिडिओंच्या थंबनेलवर दर्शविलेला वॉच प्रोग्रेस बार लपवा</string>
   <string name="morphe_fullscreen_large_seekbar_title">पूर्ण स्क्रीन मोठ्या सिकबार सक्षम करा</string>
   <!-- layout.hide.shorts.hideShortsComponentsPatch -->
+  <string name="morphe_shorts_player_screen_title">Shorts प्लेयर</string>
   <string name="morphe_shorts_player_screen_summary">शॉर्ट्स प्लेयरमध्ये दिसणारे घटक निवडा</string>
   <string name="morphe_hide_shorts_category_title">Shorts लपवा</string>
   <string name="morphe_hide_shorts_channel_title">चॅनेल पृष्ठावर लपवा</string>
@@ -823,6 +824,9 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_ryd_estimated_like_summary">ज्या निर्मात्याने लाईक्स अक्षम केले आहेत अशा व्हिडिओवर अंदाजित लाईक संख्या दर्शवते</string>
   <string name="morphe_ryd_toast_on_connection_error_title">कनेक्शन त्रुटी सूचना दर्शवा</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Return YouTube Dislike सर्व्हर उपलब्ध नसल्यास सूचना दर्शवते</string>
+  <string name="morphe_ryd_attribution_summary">"डेटा रिटर्न YouTube डिसलाइक API द्वारे प्रदान केला जातो
+
+रिटर्नYouTubeDislike.com उघडण्यासाठी येथे टॅप करा"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">या डिव्हाइसचे Return YouTube Dislike API आकडेवारी</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API प्रतिसाद वेळ, सरासरी</string>
@@ -915,10 +919,6 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_change_start_page_entry_virtual_reality">व्हर्च्युअल रिॲलिटी</string>
   <string name="morphe_change_start_page_entry_watch_later">नंतर पहा</string>
   <string name="morphe_change_start_page_entry_your_clips">तुमचे क्लिप्स</string>
-  <string name="morphe_change_start_page_always_title">सुरुवात पान नेहमी बदला</string>
-  <string name="morphe_change_start_page_always_summary">"ॲप सुरू केल्यावर नेहमी निवडलेल्या सुरुवात पृष्ठावर पुनर्निर्देशित (Redirect) करते, फक्त ॲप सुरू केल्यावर नाही
-
-मर्यादा: टूलबारवरील बॅक (Back) बटण काम करू शकत नाही"</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <string name="morphe_disable_shorts_resuming_on_startup_title">सुरुवातीला पुन्हा सुरू करणे अक्षम करा</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->

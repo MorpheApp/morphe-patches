@@ -135,7 +135,8 @@ val scrobblingPatch = bytecodePatch(
                 key = "morphe_settings_music_scrobbling_metadata",
                 preferences = setOf(
                     SwitchPreference("morphe_music_scrobbling_metadata_cleanup"),
-                    TextPreference("morphe_music_scrobbling_custom_regex")
+                    TextPreference("morphe_music_scrobbling_custom_regex"),
+                    SwitchPreference("morphe_music_scrobbling_parse_title", summary = true)
                 )
             ),
             NonInteractivePreference(

@@ -21,16 +21,16 @@ Second \"item\" text"</string>
   <string name="morphe_sb_voting_button_title">投票ボタンを表示</string>
   <string name="morphe_sb_voting_button_summary">プレーヤー オーバーレイにセグメントへの評価を投票するボタンを表示します</string>
   <string name="morphe_sb_square_layout_title">ボタンとコントロールを直角化</string>
-  <string name="morphe_sb_square_layout_summary">SponsorBlock のボタンとコントロールの角に丸角を使用します</string>
+  <string name="morphe_sb_square_layout_summary">SponsorBlock のボタンとコントロールの角を丸角から直角に変更します</string>
   <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_compact_skip_button_title">コンパクトなスキップボタンを使用</string>
-  <string name="morphe_sb_compact_skip_button_summary">スキップボタンを、カテゴリ名などを省略した横幅が短いボタンで置き換えます</string>
+  <string name="morphe_sb_compact_skip_button_summary">スキップボタンを、カテゴリ名などを省略した横幅が短いボタンに変更します</string>
   <string name="morphe_sb_auto_hide_skip_button_title">スキップボタンを自動的に非表示</string>
   <string name="morphe_sb_auto_hide_skip_button_summary">スキップボタンの表示方法を、「セグメントの開始から終了まで表示」から「表示された数秒後に自動的に非表示」に変更します</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_title">スキップボタンの表示時間</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_summary">スキップボタンが表示されてから自動的に非表示になるまでの時間の長さを設定します</string>
   <string name="morphe_sb_toast_on_skip_title">スキップ通知を表示</string>
-  <string name="morphe_sb_toast_on_skip_summary">セグメントが自動的にスキップされたときに通知を表示します</string>
+  <string name="morphe_sb_toast_on_skip_summary">セグメントが自動的にスキップされたときに通知を表示します。この通知をタップすると、通知されたスキップをキャンセルすることができます</string>
   <string name="morphe_sb_toast_on_skip_duration_title">スキップ通知の表示時間</string>
   <string name="morphe_sb_toast_on_skip_duration_summary">セグメントが自動的にスキップされたときに表示される通知が、表示されてから自動的に非表示になるまでの時間の長さを設定します</string>
   <string name="morphe_sb_duration_1s">1 秒</string>
@@ -62,7 +62,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_toast_on_connection_error_summary">SponsorBlock サーバーが利用できない場合に通知を表示します</string>
   <string name="morphe_sb_track_skip_count_title">スキップデータの収集を有効化</string>
   <string name="morphe_sb_track_skip_count_summary">SponsorBlock リーダーボード にスキップによって節約した時間を送信します。セグメントをスキップする度にデータを送信します</string>
-  <string name="morphe_sb_min_segment_duration_title">セグメントの長さの最小値</string>
+  <string name="morphe_sb_min_segment_duration_title">セグメントの長さのしきい値</string>
   <string name="morphe_sb_min_segment_duration_summary">この値 (秒) よりも長さが短いセグメントは、表示もスキップもされません</string>
   <string name="morphe_sb_min_segment_duration_invalid">時間 (長さ) の値が無効です</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_title">非公開ユーザー ID</string>
@@ -236,7 +236,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_color_opacity_label">透明度:</string>
   <string name="morphe_sb_color_dot_label">色:</string>
   <string name="morphe_sb_about_title">SponsorBlock について</string>
-  <string name="morphe_sb_about_api_summary">"データはSponsorBlock APIによって提供されています。
+  <string name="morphe_sb_about_api_summary">"SponsorBlock API を使用してデータを取得しています
 
-Sponsor.ajay.appを開いて、他のプラットフォーム用のダウンロードを確認してください"</string>
+ここをタップすると Sponsor.ajay.app を開きます。詳細の確認や、他のプラットフォーム版のダウンロードが可能です"</string>
 </resources>

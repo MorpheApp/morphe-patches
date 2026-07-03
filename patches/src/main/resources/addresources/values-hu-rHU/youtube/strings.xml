@@ -824,6 +824,9 @@ Beállítások → Lejátszás (vagy Automatikus lejátszás) → Következő vi
   <string name="morphe_ryd_estimated_like_summary">Megmutatja a becsült lájkok számát azon videókon, ahol a készítő letiltotta a lájkokat</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Kapcsolati hibaüzenetek megjelenítése</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Értesítést jelenít meg, ha a Return YouTube Dislike szerver nem érhető el</string>
+  <string name="morphe_ryd_attribution_summary">"Az adatokat a Return YouTube Dislike API szolgáltatja
+
+Érintse meg ide a ReturnYouTubeDislike.com megnyitásához"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">ReturnYouTubeDislike API statisztika az eszközön</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API válaszidő, átlagos</string>
@@ -916,8 +919,6 @@ Ha később kikapcsolja, akkor ajánlott az alkalmazás adatait törölni, hogy 
   <string name="morphe_change_start_page_entry_virtual_reality">Virtuális valóság</string>
   <string name="morphe_change_start_page_entry_watch_later">Megnézem később</string>
   <string name="morphe_change_start_page_entry_your_clips">A saját klipjeid</string>
-  <string name="morphe_change_start_page_always_title">Mindig módosítsa a kezdőoldalt</string>
-  <string name="morphe_change_start_page_always_summary">"Mindig a választott kezdőlapra lép, nem csak az alkalmazás indításakor.\n\nKorlátozás: A visszagomb használata az eszköztáron nem feltétlenül működik"</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <string name="morphe_disable_shorts_resuming_on_startup_title">A Shorts lejátszás folytatásának letiltása</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->

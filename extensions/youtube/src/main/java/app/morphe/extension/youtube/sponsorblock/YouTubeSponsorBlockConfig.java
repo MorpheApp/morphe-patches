@@ -155,6 +155,7 @@ public final class YouTubeSponsorBlockConfig implements Configuration {
 
     @Override public boolean undoToastEnabled()            { return true; }
     @Override public boolean includesHighlight()           { return true; }
+    @Override public boolean supportsSegmentCreation()     { return true; }
     @Override public boolean compactSkipButtonEnabled()    { return Settings.SB_COMPACT_SKIP_BUTTON.get(); }
     @Override public boolean viewTrackingEnabled()         { return true; }
 

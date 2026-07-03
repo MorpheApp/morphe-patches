@@ -201,6 +201,8 @@ YouTube Music 8.x — tumatakbo lamang ang crossfade sa 9.x at mas bago"</string
   <string name="morphe_music_scrobbling_metadata_cleanup_summary">Awtomatikong linisin ang karaniwang gulo (tulad ng \"Official Video\", \"Remaster\", \"Live\") mula sa mga pamagat, artist, at album bago ma-scrobble</string>
   <string name="morphe_music_scrobbling_custom_regex_title">Custom regex cleanup</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">Maglagay ng custom regular expression para alisin ang karagdagang teksto mula sa mga pamagat ng kanta, artist, o album. Halimbawa: (?i)\\s*\\((clean|explicit)\\)</string>
+  <string name="morphe_music_scrobbling_parse_title_title">I-parse ang artist at track mula sa pamagat</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">I-extract ang pangalan ng artist at track mula sa pamagat ng video gamit ang separator na \" - \". Kapaki-pakinabang ito para sa mga muling inupload na content kung saan ang pangalan ng channel ay maaaring gamitin bilang artist.</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_title">Tungkol sa pag-scrobble</string>
   <!-- 'scrobbling' must be kept untranslated -->

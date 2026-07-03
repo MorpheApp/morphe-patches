@@ -824,6 +824,9 @@ Setări → Redare (sau Redare automată) → Redare automată următorul videoc
   <string name="morphe_ryd_estimated_like_summary">Afișează un număr estimat de aprecieri pe videoclipurile în care creatorul a dezactivat aprecierile</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Afișează alerte de eroare de conexiune</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Afișează o notificare atunci când serverul Return YouTube Dislike este indisponibil</string>
+  <string name="morphe_ryd_attribution_summary">"Datele sunt furnizate de API-ul Return YouTube Dislike
+
+Apasa aici pentru a deschide ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">ReturnYouTubeDislike statistici API ale acestui dispozitiv</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Timp de răspuns API, medie</string>
@@ -916,10 +919,6 @@ Dacă este dezactivat ulterior, se recomandă să ștergeți datele aplicației 
   <string name="morphe_change_start_page_entry_virtual_reality">Realitate virtuală</string>
   <string name="morphe_change_start_page_entry_watch_later">Urmărește mai târziu</string>
   <string name="morphe_change_start_page_entry_your_clips">Clipurile tale</string>
-  <string name="morphe_change_start_page_always_title">Schimbă întotdeauna pagina de pornire</string>
-  <string name="morphe_change_start_page_always_summary">"Redirecționează întotdeauna către pagina de pornire aleasă, nu doar la pornirea aplicației
-
-Limitare: Utilizarea butonului Înapoi de pe bara de instrumente s-ar putea să nu funcționeze"</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <string name="morphe_disable_shorts_resuming_on_startup_title">Dezactivează reluarea la pornire</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->

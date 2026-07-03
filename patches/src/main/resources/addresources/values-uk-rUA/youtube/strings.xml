@@ -128,8 +128,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_timed_reactions_summary">Приховує функцію реакцій емодзі в секції коментарів і чаті трансляцій</string>
   <string name="morphe_hide_video_title_title">Приховати назву відео</string>
   <string name="morphe_hide_video_title_summary">Приховує назву відео в повноекранному режимі</string>
-  <string name="morphe_sanitize_video_subtitle_title">Очистити субтитри відео</string>
-  <string name="morphe_sanitize_video_subtitle_summary">Видаляє фрази, такі як \'#\', \'Фандрейзинг\', \'Магазин\' та \'продукти\' із субтитрів відео</string>
+  <string name="morphe_sanitize_video_subtitle_title">Очищувати підзаголовок відео</string>
+  <string name="morphe_sanitize_video_subtitle_summary">Очищує підзаголовок відео від фраз типу \"#\", \"Збір коштів\", \"Магазин\" та \"Товари\"</string>
   <string name="morphe_hide_description_components_screen_title">Опис відео</string>
   <string name="morphe_hide_description_components_screen_summary">Виберіть, які компоненти будуть показуватися в описі відео</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Приховати секцію \"Короткий переказ від ШІ\"</string>
@@ -918,10 +918,6 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_virtual_reality">Віртуальна реальність</string>
   <string name="morphe_change_start_page_entry_watch_later">Переглянути пізніше</string>
   <string name="morphe_change_start_page_entry_your_clips">Ваші кліпи</string>
-  <string name="morphe_change_start_page_always_title">Завжди змінювати початкову сторінку</string>
-  <string name="morphe_change_start_page_always_summary">"Завжди перенаправляє на обрану початкову сторінку, а не лише під час запуску застосунку
-
-Обмеження: кнопка \"Назад\" на панелі інструментів може не працювати"</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <string name="morphe_disable_shorts_resuming_on_startup_title">Вимкнути відновлення відтворення під час запуску</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->

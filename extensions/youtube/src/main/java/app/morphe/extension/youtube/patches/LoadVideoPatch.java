@@ -78,13 +78,12 @@ public final class LoadVideoPatch {
                     : VideoInformation.getPlayerResponseVideoId();
             String playlistId = VideoInformation.getPlaylistId();
             final long videoTime = VideoInformation.getVideoTime();
-            String parameterSeparator = "?";
+            String parameterSeparator = "&";
             StringBuilder builder = new StringBuilder(videoId);
             if (!playlistId.isEmpty()) {
                 builder.append(parameterSeparator);
                 builder.append("list=");
                 builder.append(playlistId);
-                parameterSeparator = "&";
             }
             if (videoTime > 0) {
                 builder.append(parameterSeparator);

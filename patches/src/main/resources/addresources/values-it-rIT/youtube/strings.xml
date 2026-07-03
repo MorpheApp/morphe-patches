@@ -824,6 +824,9 @@ Impostazioni → Riproduzione (o Autoplay) → Riproduci il video successivo aut
   <string name="morphe_ryd_estimated_like_summary">Mostra un conteggio approssimativo dei Mi piace su video in cui il creatore ha disabilitato i Mi piace</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Mostra avvisi di errore di connessione</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Mostra una notifica quando il server Return YouTube Dislike non è disponibile</string>
+  <string name="morphe_ryd_attribution_summary">"I dati sono forniti dall'API Return YouTube Dislike
+
+Tocca qui per aprire ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Statistiche dell\'API di ReturnYouTubeDislike per questo dispositivo</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Tempo di risposta dell\'API, media</string>
@@ -916,10 +919,6 @@ Se in seguito verrà disattivata, si consiglia di cancellare i dati dell'app per
   <string name="morphe_change_start_page_entry_virtual_reality">Realtà Virtuale</string>
   <string name="morphe_change_start_page_entry_watch_later">Guarda più tardi</string>
   <string name="morphe_change_start_page_entry_your_clips">Le tue clip</string>
-  <string name="morphe_change_start_page_always_title">Cambia sempre la pagina iniziale</string>
-  <string name="morphe_change_start_page_always_summary">"Reindirizza sempre alla pagina iniziale scelta, non solo all'avvio dell'app
-
-Limitazione: l'uso del pulsante indietro sulla barra degli strumenti potrebbe non funzionare"</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <string name="morphe_disable_shorts_resuming_on_startup_title">Disabilita la ripresa all\'avvio</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->

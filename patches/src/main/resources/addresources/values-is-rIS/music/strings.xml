@@ -201,6 +201,8 @@ YouTube Music 8.x — crossfade virkar bara á 9.x og nýrri útgáfum"</string>
   <string name="morphe_music_scrobbling_metadata_cleanup_summary">Hreinsa sjálfkrafa óþarfa upplýsingar (eins og \"Hafist video\", \"Endurútgáfa\", \"Lifandi\") frá titlum, Flytjendum og albúmum áður en skráning fer fram</string>
   <string name="morphe_music_scrobbling_custom_regex_title">Sérsniðin regex hreinsun</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">Sláðu inn sérstakt reglugerðarfyrirbæri til að fjarlægja auka texta úr lagtitlum, listamönnum eða albúmum. Dæmi: (?i)\\s*\\((clean|explicit)\\)</string>
+  <string name="morphe_music_scrobbling_parse_title_title">Greina listamann og lag úr titli</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">Þrækja út listamanns- og lagheiti úr vídeótitli með \" - \" skiljanum.  Nýtt fyrir endurhleypta efnis þar sem nafn rásarinnar getur verið notað sem listamaður.</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_title">Um spilun</string>
   <!-- 'scrobbling' must be kept untranslated -->

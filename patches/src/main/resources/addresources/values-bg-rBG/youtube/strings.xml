@@ -822,6 +822,9 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_summary">Показва приблизителен брой харесвания за видеа, при които създателят е деактивирал харесванията</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Показвай предупреждения за грешки в връзката</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Показва известие, когато сървърът на Return YouTube Dislike не е достъпен</string>
+  <string name="morphe_ryd_attribution_summary">"Данните са предоставени от Return YouTube Dislike API
+
+Натиснете тук, за да отворите ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Дублирането на видеа се показва</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Скрий дублиране на видеа</string>
@@ -914,10 +917,6 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_virtual_reality">Видео в 3D</string>
   <string name="morphe_change_start_page_entry_watch_later">Запазите видеа</string>
   <string name="morphe_change_start_page_entry_your_clips">Ваши клипове</string>
-  <string name="morphe_change_start_page_always_title">Винаги променяйте стартова страница</string>
-  <string name="morphe_change_start_page_always_summary">"Винаги пренасочва към избраната начална страница, а не само при стартиране на приложението
-
-Ограничение: Използването на бутона „Назад“ на лентата с инструменти може да не работи"</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <string name="morphe_disable_shorts_resuming_on_startup_title">Деактивирай възстановяването при стартиране</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->

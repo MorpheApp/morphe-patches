@@ -632,6 +632,7 @@ Second \"item\" text"</string>
   <string name="morphe_toolbar_screen_title">תּוּר</string>
   <string name="morphe_toolbar_screen_summary">בחר אילו רכיבים יופיעו בסרגל הכלים</string>
   <string name="morphe_hide_toolbar_cast_button_title">הסתר לחצן העברה</string>
+  <string name="morphe_hide_toolbar_chat_button_title">הסתר לחצן צ\'אט</string>
   <string name="morphe_hide_toolbar_create_button_title">הסתר כפתור יצירה</string>
   <string name="morphe_hide_toolbar_microphone_button_title">הסתר כפתור מיקרופון</string>
   <string name="morphe_hide_toolbar_notification_button_title">הסתר כפתור התראות</string>
@@ -823,6 +824,9 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_summary">מציג ספירת לייקים משוערת בסרטונים שבהם היוצר ביטל לייקים</string>
   <string name="morphe_ryd_toast_on_connection_error_title">הצג התראות שגיאת חיבור</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">מציג התראה כאשר שרת Return YouTube Dislike אינו זמין</string>
+  <string name="morphe_ryd_attribution_summary">"הנתונים מסופקים על ידי ה-API של Return YouTube Dislike
+
+הקישו כאן כדי לפתוח את ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">סטטיסטיקת ReturnYouTubeDislike API של מכשיר זה</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">זמן תגובת API, ממוצע</string>
@@ -915,10 +919,6 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_virtual_reality">מציאות מדומה</string>
   <string name="morphe_change_start_page_entry_watch_later">לצפייה בהמשך</string>
   <string name="morphe_change_start_page_entry_your_clips">הקליפים שלך</string>
-  <string name="morphe_change_start_page_always_title">לשנות תמיד את דף הפתיחה</string>
-  <string name="morphe_change_start_page_always_summary">"מפנה תמיד לדף ההתחלתי שנבחר, לא רק בעת הפעלת האפליקציה
-
-מגבלה: השימוש בכפתור החזרה בסרגל הכלים עלול לא לעבוד"</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <string name="morphe_disable_shorts_resuming_on_startup_title">השבת חידוש בעת הפעלה</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->

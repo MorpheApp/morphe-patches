@@ -111,23 +111,23 @@ Bạn sẽ không còn xem được video nếu mã băm hết hạn."</string>
   <string name="morphe_force_original_audio_summary">Luôn phát âm thanh gốc của video thay vì bản lồng tiếng</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Proxy mạng</string>
-  <string name="morphe_proxy_screen_summary">Định tuyến các yêu cầu mạng đã hỗ trợ thông qua proxy</string>
+  <string name="morphe_proxy_screen_summary">Định tuyến các kết nối mạng được hỗ trợ qua proxy</string>
   <string name="morphe_proxy_enabled_title">Bật proxy</string>
-  <string name="morphe_proxy_enabled_summary">Định tuyến các yêu cầu mạng đã được hỗ trợ thông qua proxy HTTP hoặc HTTPS được cấu hình</string>
-  <string name="morphe_proxy_host_title">Địa chỉ máy chủ proxy</string>
-  <string name="morphe_proxy_host_summary">Tên miền hoặc địa chỉ IP của máy chủ proxy</string>
+  <string name="morphe_proxy_enabled_summary">Định tuyến các kết nối mạng được hỗ trợ qua proxy HTTP hoặc HTTPS đã cấu hình</string>
+  <string name="morphe_proxy_host_title">Máy chủ proxy</string>
+  <string name="morphe_proxy_host_summary">Nhập tên miền hoặc địa chỉ IP của máy chủ proxy</string>
   <string name="morphe_proxy_port_title">Cổng proxy</string>
   <string name="morphe_proxy_port_summary">Cổng của máy chủ proxy</string>
-  <string name="morphe_proxy_https_title">Sử dụng proxy HTTPS</string>
-  <string name="morphe_proxy_https_summary">Sử dụng HTTPS để kết nối với máy chủ proxy thay vì HTTP</string>
+  <string name="morphe_proxy_https_title">Dùng HTTP proxy</string>
+  <string name="morphe_proxy_https_summary">Kết nối đến máy chủ proxy bằng HTTPS thay vì HTTP</string>
   <string name="morphe_proxy_auth_enabled_title">Xác thực proxy</string>
   <string name="morphe_proxy_auth_enabled_summary">Gửi xác thực Basic kèm theo các yêu cầu proxy</string>
   <string name="morphe_proxy_auth_username_title">Tên người dùng proxy</string>
-  <string name="morphe_proxy_auth_username_summary">Tên người dùng cho việc xác thực proxy Basic</string>
+  <string name="morphe_proxy_auth_username_summary">Tên người dùng để xác thực proxy Basic</string>
   <string name="morphe_proxy_auth_password_title">Mật khẩu proxy</string>
   <string name="morphe_proxy_auth_password_summary">Mật khẩu để xác thực proxy Basic</string>
-  <string name="morphe_proxy_allow_direct_fallback_title">Cho phép chuyển đổi trực tiếp</string>
-  <string name="morphe_proxy_allow_direct_fallback_summary">Kết nối trực tiếp nếu proxy không thành công</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">Cho phép chuyển sang trực tiếp</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">Kết nối trực tiếp nếu proxy gặp sự cố</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Ẩn quảng cáo toàn màn hình</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

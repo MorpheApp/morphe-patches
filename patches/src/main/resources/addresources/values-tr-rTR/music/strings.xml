@@ -161,27 +161,27 @@ YouTube Music 8.x — geçiş yalnızca 9.x ve sonraki sürümlerde çalışır"
   <!-- 'scrobble' must be kept untranslated -->
   <string name="morphe_music_scrobbling_delay_percent_title">Scrobble gecikme yüzdesi</string>
   <!-- 'scrobble' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_delay_percent_summary">Şarkının bu yüzdesi dinlendikten sonra scrobble işlemini tetikle</string>
+  <string name="morphe_music_scrobbling_delay_percent_summary">Şarkının bu yüzdesi dinlendikten sonra scrobble\'ı tetikle</string>
   <!-- 'scrobble' must be kept untranslated -->
   <string name="morphe_music_scrobbling_delay_seconds_title">Scrobble gecikme saniyesi</string>
   <!-- 'scrobble' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_delay_seconds_summary">Bu kadar saniye dinlendikten sonra scrobble işlemini tetikle</string>
+  <string name="morphe_music_scrobbling_delay_seconds_summary">Bu kadar saniye dinledikten sonra scrobble\'ı tetikle</string>
   <string name="morphe_music_listenbrainz_token_title">ListenBrainz Hesabı</string>
   <string name="morphe_music_listenbrainz_token_summary_logged_in">Oturum açıldı. Hesabı yönetmek için dokunun</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_listenbrainz_token_dialog_instruction">scrobbling\'i etkinleştirmek için ListenBrainz Kullanıcı belirtecinizi girin</string>
-  <string name="morphe_music_listenbrainz_token_dialog_hint">Belirteç</string>
-  <string name="morphe_music_listenbrainz_token_dialog_get_token">Belirteç al</string>
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">Scrobbling\'i etkinleştirmek için ListenBrainz Kullanıcı Token\'ınızı girin</string>
+  <string name="morphe_music_listenbrainz_token_dialog_hint">Token</string>
+  <string name="morphe_music_listenbrainz_token_dialog_get_token">Token alın</string>
   <string name="morphe_music_listenbrainz_token_dialog_verify">Doğrula</string>
-  <string name="morphe_music_listenbrainz_token_status_empty">Lütfen bir belirteç girin</string>
+  <string name="morphe_music_listenbrainz_token_status_empty">Lütfen bir token girin</string>
   <string name="morphe_music_listenbrainz_token_status_validating">Doğrulama yapılıyor...</string>
-  <string name="morphe_music_listenbrainz_token_status_valid">Geçerli belirteç! Kullanıcı: %s</string>
-  <string name="morphe_music_listenbrainz_token_status_invalid">Geçersiz belirteç: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_valid">Geçerli token! Kullanıcı: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">Geçersiz token: %s</string>
   <string name="morphe_music_listenbrainz_token_status_invalid_unknown">bilinmiyor</string>
   <string name="morphe_music_listenbrainz_token_status_failed">Doğrulama başarısız oldu: %s</string>
-  <string name="morphe_music_listenbrainz_token_toast_cleared">Belirteç temizlendi</string>
-  <string name="morphe_music_listenbrainz_token_toast_saved">Belirteç kaydedildi</string>
-  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Uyarı: Kaydedilen belirteç geçersiz!</string>
+  <string name="morphe_music_listenbrainz_token_toast_cleared">Token temizlendi</string>
+  <string name="morphe_music_listenbrainz_token_toast_saved">Token kaydedildi</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Uyarı: Kaydedilen token geçersiz!</string>
   <string name="morphe_music_lastfm_love_on_like_title">Beğenilen parçaları sev</string>
   <string name="morphe_music_lastfm_love_on_like_summary">Last.fm\'de YouTube Music\'te beğendiğiniz parçaları otomatik olarak sevin (beğenmezseniz veya beğenmezseniz sevmeyi kaldırın)</string>
   <string name="morphe_music_lastfm_token_title">Last.fm Hesabı</string>
@@ -193,7 +193,7 @@ YouTube Music 8.x — geçiş yalnızca 9.x ve sonraki sürümlerde çalışır"
   <string name="morphe_music_lastfm_token_status_empty">Lütfen kullanıcı adınızı ve şifrenizi girin</string>
   <string name="morphe_music_lastfm_token_status_logging_in">Oturum açılıyor...</string>
   <string name="morphe_music_lastfm_token_status_success">Oturum açma başarılı!</string>
-  <string name="morphe_music_lastfm_token_status_no_session">Last.fm\'den oturum alamadı</string>
+  <string name="morphe_music_lastfm_token_status_no_session">Last.fm\'den oturum alınamadı</string>
   <string name="morphe_music_lastfm_token_status_failed">Oturum açma başarısız oldu: %s</string>
   <string name="morphe_music_lastfm_token_toast_saved">Last.fm kimlik bilgileri kaydedildi!</string>
   <string name="morphe_settings_music_scrobbling_metadata_title">Meta veri temizleme</string>
@@ -201,8 +201,10 @@ YouTube Music 8.x — geçiş yalnızca 9.x ve sonraki sürümlerde çalışır"
   <string name="morphe_music_scrobbling_metadata_cleanup_summary">Şarkı başlıklarından, sanatçılardan ve albümlerden \"Resmi Video\", \"Yeniden Düzenleme\", \"Canlı\" gibi yaygın karmaşaları otomatik olarak temizleyin scrobble yapmadan önce</string>
   <string name="morphe_music_scrobbling_custom_regex_title">Özel düzenli ifade temizleme</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">Şarkı adlarından, sanatçılardan veya albümlerden ek metni kaldırmak için özel bir düzenli ifade girin. Örnek: (?i)\\s*\\((clean|explicit)\\)</string>
+  <string name="morphe_music_scrobbling_parse_title_title">Başlıktan sanatçı ve parça adını ayrıştır</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">\" - \" ayıracını kullanarak video başlığından sanatçı ve parça adını çıkar. Kanal adı sanatçı olarak kullanılmış yeniden yüklenmiş içerik için kullanışlıdır.</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_about_title">scrobbling hakkında</string>
+  <string name="morphe_music_scrobbling_about_title">Scrobbling hakkında</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling, YouTube Music kullanımınızı Last.fm veya ListenBrainz profilinizle otomatik olarak senkronize eder.
 

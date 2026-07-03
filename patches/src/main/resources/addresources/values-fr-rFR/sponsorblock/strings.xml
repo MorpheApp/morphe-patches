@@ -32,7 +32,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_toast_on_skip_title">Afficher une notification d\'annulation de saut</string>
   <string name="morphe_sb_toast_on_skip_summary">Affiche une notification lorsqu’un segment est automatiquement sauté</string>
   <string name="morphe_sb_toast_on_skip_duration_title">Durée de la notification de saut</string>
-  <string name="morphe_sb_toast_on_skip_duration_summary">Définir la durée pendant laquelle la notification d’annulation reste visible</string>
+  <string name="morphe_sb_toast_on_skip_duration_summary">Définir la durée pendant laquelle la notification d\'annulation reste visible</string>
   <string name="morphe_sb_duration_1s">1 seconde</string>
   <string name="morphe_sb_duration_2s">2 secondes</string>
   <string name="morphe_sb_duration_3s">3 secondes</string>
@@ -48,7 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_create_segment_category_title">Création de nouveaux segments</string>
   <string name="morphe_sb_create_new_segment_title">Afficher un bouton \'Créer un nouveau segment\'</string>
   <string name="morphe_sb_create_new_segment_summary">Ajoute un bouton au lecteur vidéo vous permettant de soumettre de nouveaux segments SponsorBlock</string>
-  <string name="morphe_sb_create_new_segment_step_title">Pas d’ajustement du temps</string>
+  <string name="morphe_sb_create_new_segment_step_title">Pas d\'ajustement du temps</string>
   <string name="morphe_sb_create_new_segment_step_summary">Valeur de saut des boutons d\'ajustement du temps (en millisecondes)</string>
   <string name="morphe_sb_create_new_segment_step_invalid">La valeur doit être un nombre positif</string>
   <string name="morphe_sb_guidelines_title">Consignes de soumission</string>
@@ -166,10 +166,10 @@ Votre ID utilisateur est comme un mot de passe et ne doit jamais être partagé.
 Il existe déjà"</string>
   <string name="morphe_sb_submit_succeeded">Segment soumis avec succès</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock est temporairement indisponible (délai d’attente d’API dépassé)</string>
+  <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock est temporairement indisponible (délai d\'attente d\'API dépassé)</string>
   <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock est temporairement indisponible (statut %d)</string>
   <string name="morphe_sb_sponsorblock_connection_failure_generic">SponsorBlock est temporairement indisponible</string>
-  <string name="morphe_sb_vote_failed_timeout">Impossible de voter pour le segment (délai d’attente de l\'API dépassé)</string>
+  <string name="morphe_sb_vote_failed_timeout">Impossible de voter pour le segment (délai d\'attente de l\'API dépassé)</string>
   <string name="morphe_sb_vote_failed_unknown_error">Impossible de voter pour le segment (statut : %1$d %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">Impossible de voter pour le segment : %s</string>
   <string name="morphe_sb_vote_upvote">Voter pour</string>
@@ -199,7 +199,7 @@ Il existe déjà"</string>
 Prêt à le soumettre ?"</string>
   <string name="morphe_sb_new_segment_confirm_submit">Soumettre</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Le début doit précéder la fin</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Marquez d’abord un emplacement sur la barre de temps</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Marquez d\'abord un emplacement sur la barre de temps</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Prévisualisez le segment et assurez-vous que le saut soit fluide</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">Éditer la durée du segment manuellement</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Souhaitez-vous modifier la durée du début ou de la fin du segment ?</string>

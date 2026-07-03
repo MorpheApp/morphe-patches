@@ -824,6 +824,9 @@ Einstellungen → Wiedergabe (oder Automatische Wiedergabe) → Nächstes Video 
   <string name="morphe_ryd_estimated_like_summary">Zeigt eine geschätzte Like-Anzahl auf Videos an, bei denen der Ersteller Likes deaktiviert hat</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Verbindungsfehler-Benachrichtigungen anzeigen</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Zeigt eine Benachrichtigung an, wenn der Return YouTube Dislike-Server nicht verfügbar ist</string>
+  <string name="morphe_ryd_attribution_summary">"Daten werden von der Return YouTube Dislike API bereitgestellt
+
+Tippen Sie hier, um ReturnYouTubeDislike.com zu öffnen"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Gibt die API-Statistiken dieses Geräts zurück</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API-Antwortzeit, Durchschnitt</string>
@@ -916,10 +919,6 @@ Wenn Sie die Funktion später deaktivieren, wird empfohlen, die App-Daten zu lö
   <string name="morphe_change_start_page_entry_virtual_reality">Virtuelle Realität</string>
   <string name="morphe_change_start_page_entry_watch_later">Später ansehen</string>
   <string name="morphe_change_start_page_entry_your_clips">Deine Clips</string>
-  <string name="morphe_change_start_page_always_title">Startseite immer ändern</string>
-  <string name="morphe_change_start_page_always_summary">"Leitet immer zur gewählten Startseite weiter, nicht nur beim Starten der App
-
-Einschränkung: Die Verwendung der Zurück-Taste auf der Symbolleiste funktioniert möglicherweise nicht"</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <string name="morphe_disable_shorts_resuming_on_startup_title">Deaktivieren Sie das Fortsetzen beim Start</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->

@@ -826,6 +826,9 @@ Settings → Playback (an Autoplay) → Autoplay next video"</string>
   <string name="morphe_ryd_estimated_like_summary">Hejmara hezkirî ya tê texmîn kirin li ser vîdeoyên ku afirîner hezkirinê dezaktîv kirine nîşan bide</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Îşaretên xeletêya têkiliyê nîşan bide</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Îşaretê nîşan dide gava ku servera Return YouTube Dislike hewîr be</string>
+  <string name="morphe_ryd_attribution_summary">"Daneyê ji aliyê Return YouTube Dislike API ve tê peydakirin.
+
+Virê bikirin da ku ReturnYouTubeDislike.com vekin."</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Statîstîkên API-ya Return YouTube Dislike ji vê alavê re.</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Demerê bersiva API, seraverî</string>
@@ -918,10 +921,6 @@ Hatin binveşirin, ew tê mesêr kirin ka danayê peşêbîyê şêniyel ki bug-
   <string name="morphe_change_start_page_entry_virtual_reality">Realîteya Virtual</string>
   <string name="morphe_change_start_page_entry_watch_later">Dîrûvaniya paş</string>
   <string name="morphe_change_start_page_entry_your_clips">Klîpên te</string>
-  <string name="morphe_change_start_page_always_title">Her demüa destinüyin malül hewüin</string>
-  <string name="morphe_change_start_page_always_summary">"Her gav vegirî rûpela destpêkirina bijare, ne tenê dema ku app dest pê bike
-
-Sînordarî: Bikaranîna Butona paşve li ser Toolbarê dibe ku kar neke"</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <string name="morphe_disable_shorts_resuming_on_startup_title">Kêşkirina destpêkirina rizewaniya rizewî deaktîv bike</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->

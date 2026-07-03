@@ -201,6 +201,8 @@ YouTube Music 8.x — การเฟดข้ามจะทำงานบน 
   <string name="morphe_music_scrobbling_metadata_cleanup_summary">ทำความสะอาดข้อมูลเมตาโดยอัตโนมัติ เช่น \"วิดีโออย่างเป็นทางการ\", \"ปรับปรุงใหม่\", \"สด\" จากชื่อเพลง ศิลปิน และอัลบั้มก่อนการบันทึก</string>
   <string name="morphe_music_scrobbling_custom_regex_title">การทำความสะอาดด้วย Regex ที่กำหนดเอง</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">ป้อน regular expression แบบกำหนดเองเพื่อลบข้อความเพิ่มเติมออกจากชื่อเพลง ชื่อศิลปิน หรือชื่ออัลบั้ม ตัวอย่าง: (?i)\\s*\\((clean|explicit)\\)</string>
+  <string name="morphe_music_scrobbling_parse_title_title">แยกชื่อศิลปินและเพลงออกจากชื่อ</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">แยกชื่อศิลปินและชื่อเพลงออกจากชื่อวิดีโอโดยใช้ตัวคั่น \" - \" มีประโยชน์สำหรับเนื้อหาที่อัปโหลดใหม่ซึ่งชื่อช่องอาจถูกใช้เป็นชื่อศิลปิน</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_title">เกี่ยวกับ การบันทึกเพลง</string>
   <!-- 'scrobbling' must be kept untranslated -->

@@ -824,6 +824,9 @@ Ayarlar → Oynatma (veya Otomatik Oynatma) → Sonraki videoyu otomatik oynat"<
   <string name="morphe_ryd_estimated_like_summary">Oluşturucunun beğenileri devre dışı bıraktığı videolarda tahmini beğeni sayısını gösterir</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Bağlantı hatası uyarılarını göster</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Return YouTube Dislike sunucusu kullanılamadığında bir bildirim gösterir</string>
+  <string name="morphe_ryd_attribution_summary">"Veriler Return YouTube Dislike API tarafından sağlanır.
+
+ReturnYouTubeDislike.com'u açmak için buraya dokunun."</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Bu cihazın ReturnYouTubeDislike API istatistikleri</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Ortalama API yanıt süresi</string>
@@ -916,10 +919,6 @@ Daha sonra kapatılırsa, arayüz hatalarını önlemek için uygulama verilerin
   <string name="morphe_change_start_page_entry_virtual_reality">Sanal Gerçeklik</string>
   <string name="morphe_change_start_page_entry_watch_later">Daha sonra izle</string>
   <string name="morphe_change_start_page_entry_your_clips">Klipleriniz</string>
-  <string name="morphe_change_start_page_always_title">Başlangıç sayfasını her zaman değiştir</string>
-  <string name="morphe_change_start_page_always_summary">"Yalnızca uygulama başlatıldığında değil her zaman seçilen başlangıç ​​sayfasına yönlendirir
-
-Sınırlama: Araç çubuğundaki geri düğmesini kullanmak işe yaramayabilir"</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <string name="morphe_disable_shorts_resuming_on_startup_title">Başlangıçta devam etmeyi devre dışı bırak</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->

@@ -201,6 +201,8 @@ YouTube Music 8.x – prehod deluje samo v 9.x in novejših različicah."</strin
   <string name="morphe_music_scrobbling_metadata_cleanup_summary">Samodejno odstranite pogoste nepotrebne informacije (kot so \"Uradni videospot\", \"Remaster\", \"V živo\") iz naslovov, izvajalcev in albumov pred scrobblingom</string>
   <string name="morphe_music_scrobbling_custom_regex_title">Čiščenje s pomočjo regularnih izrazov</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">Vnesite poljuben regularen izraz za odstranjevanje dodatnega besedila iz naslovov pesmi, izvajalcev ali albumov. Primer: (?i)\\s*\\((clean|explicit)\\)</string>
+  <string name="morphe_music_scrobbling_parse_title_title">Razčleni izvajalca in naslov skladbe iz naslova</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">Iz naslova videoposnetka izvlecite ime izvajalca in naslov skladbe z uporabo ločila \" - \". Uporabno za ponovno naložene vsebine, kjer se ime kanala lahko uporabi kot ime izvajalca.</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_title">O scrobblingu</string>
   <!-- 'scrobbling' must be kept untranslated -->

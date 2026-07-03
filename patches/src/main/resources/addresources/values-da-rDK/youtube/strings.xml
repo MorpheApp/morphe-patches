@@ -824,6 +824,9 @@ Indstillinger → Afspilning (eller Automatisk afspilning) → Afspil næste vid
   <string name="morphe_ryd_estimated_like_summary">Viser et estimeret antal likes på videoer, hvor skaberen har deaktiveret likes</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Vis forbindelsesfejlmeddelelser</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Viser en notifikation, når Return YouTube Dislike-serveren er utilgængelig</string>
+  <string name="morphe_ryd_attribution_summary">"Data er leveret af Return YouTube Dislike API
+
+Tryk her for at åbne ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Return YouTube Dislike API statistikker for denne enhed</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API svartid, gennemsnit</string>
@@ -916,10 +919,6 @@ Hvis det senere slås fra, anbefales det at rydde app-data for at forhindre UI-f
   <string name="morphe_change_start_page_entry_virtual_reality">Virtual Reality</string>
   <string name="morphe_change_start_page_entry_watch_later">Se senere</string>
   <string name="morphe_change_start_page_entry_your_clips">Dine klip</string>
-  <string name="morphe_change_start_page_always_title">Skift altid startside</string>
-  <string name="morphe_change_start_page_always_summary">"Startside ændres altid
-
-Begrænsning: Brug af tilbage-knappen på værktøjslinjen fungerer muligvis ikke"</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <string name="morphe_disable_shorts_resuming_on_startup_title">Deaktiver genoptagelse ved opstart</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->

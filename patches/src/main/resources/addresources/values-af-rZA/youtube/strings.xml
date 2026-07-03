@@ -824,6 +824,9 @@ Instellings → Weergawe (of outoplay) → Speel volgende video outomaties"</str
   <string name="morphe_ryd_estimated_like_summary">Wys \'n beraamde like-telling op video\'s waar die skepper likes gedeaktiveer het</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Wys konneksiefoutwaarskuwings</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Wys \'n kennisgewing wanneer die Return YouTube Dislike-bediener nie beskikbaar is nie</string>
+  <string name="morphe_ryd_attribution_summary">"Data word verskaf deur die Return YouTube Dislike API
+
+Tik hier om ReturnYouTubeDislike.com oop te maak"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Return YouTube Dislike API statistiek van hierdie toestel</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API reaksietyd, gemiddeld</string>
@@ -916,10 +919,6 @@ Indien later afgeskakel, word dit aanbeveel om die app se data uit te vee om UI-
   <string name="morphe_change_start_page_entry_virtual_reality">Virtuele Realiteit</string>
   <string name="morphe_change_start_page_entry_watch_later">Kyk later</string>
   <string name="morphe_change_start_page_entry_your_clips">Jou knippe</string>
-  <string name="morphe_change_start_page_always_title">Altyd beginblad verander</string>
-  <string name="morphe_change_start_page_always_summary">"Herlei altyd na die gekose beginblad, nie net wanneer die program begin nie
-
-Beperking: Die gebruik van die terugknoppie op die nutsbalk werk dalk nie"</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <string name="morphe_disable_shorts_resuming_on_startup_title">Deaktiveer hervatting wanneer die program begin</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->

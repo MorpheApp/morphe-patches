@@ -820,6 +820,9 @@ Stillingar → Spilun (eða Sjálfvædd spilun) → Sjálfvædd næsta myndband"
   <string name="morphe_ryd_estimated_like_summary">Sýnir áætlaðan like count á vídeóum þar sem skapari hefur afvirkjað likes</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Sýna tengingar villuboð</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Sýnir tilkynningu þegar Return YouTube Dislike þjón er óvirkur</string>
+  <string name="morphe_ryd_attribution_summary">"Gagnagögn eru veitt af Return YouTube Dislike API
+
+Taktu hér til að opna ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Return YouTube Dislike API tölfræði fyrir þetta tæki</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Samspil niðurhal </string>
@@ -912,10 +915,6 @@ Ef kveikt á því síðar er mælt með því að hreinsa gögn forritsins til 
   <string name="morphe_change_start_page_entry_virtual_reality">Raðveruleiki</string>
   <string name="morphe_change_start_page_entry_watch_later">Skoða síðar</string>
   <string name="morphe_change_start_page_entry_your_clips">Þínar klippur</string>
-  <string name="morphe_change_start_page_always_title">Alltaf breyta start síðu</string>
-  <string name="morphe_change_start_page_always_summary">"Sérstaklega stýrir alltaf á valda forsíðarsíðu, ekki bara við ræsingaráfyrirtækjaforritsins
-
-Takmörkun: Notkun afturhnappsins á tólaborðinu virkar kannski ekki"</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <string name="morphe_disable_shorts_resuming_on_startup_title">Gerir óvirkt endurræsingu við ræsing</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->

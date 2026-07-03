@@ -140,11 +140,11 @@ Second \"item\" text"</string>
   <string name="morphe_replace_links_with_shortener_title">Змінити посилання для поширення на youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Примусово використовує скорочений формат URL youtu.be для відео</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Журнал протоколу буфера</string>
-  <string name="morphe_debug_protobuffer_summary">Додає необроблені дані protocol buffer до журналу налагодження для визначення компонентів інтерфейсу</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Увімкнення цього налаштування реєструватиме додаткові дані про макет, зокрема текст на екрані для деяких компонентів інтерфейсу.
+  <string name="morphe_debug_protobuffer_title">Налагоджувальний журнал протоколу буфера</string>
+  <string name="morphe_debug_protobuffer_summary">Додає додаткову інформацію в журнал для розробників для ідентифікації компонентів застосунку</string>
+  <string name="morphe_debug_protobuffer_user_dialog_message">"Увімкнення цього налаштування додасть до журналу додаткові дані макета, включно з текстом на екрані для деяких компонентів інтерфейсу.
 
-Це може допомогти визначити компоненти під час створення власних фільтрів.
+Це може допомогти визначити компоненти при створенні власних фільтрів.
 
-Однак, увімкнувши це, також буде записано деякі дані користувача, наприклад Вашу IP-адресу."</string>
+Однак увімкнення цього також додасть до журналу деякі дані користувача, наприклад вашу IP-адресу."</string>
 </resources>

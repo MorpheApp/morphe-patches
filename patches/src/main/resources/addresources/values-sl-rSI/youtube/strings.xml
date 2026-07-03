@@ -824,6 +824,9 @@ Nastavitve → Predvajanje (ali Samodejno predvajanje) → Samodejno predvajanje
   <string name="morphe_ryd_estimated_like_summary">Pokaže ocenjeno število všečkov na videih, kjer je ustvarjalec onemogočil všečke</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Pokaži opozorila o napaki povezave</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Pokaže obvestilo, ko je strežnik Return YouTube Dislike nedostopen</string>
+  <string name="morphe_ryd_attribution_summary">"Podatke zagotavlja API za vrnitev všečkov YouTube
+
+Tapnite tukaj, da odprete ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Statistika naprave za Return YouTube Dislike</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Čas odziva API, povprečen</string>
@@ -916,10 +919,6 @@ To bo spremenilo videz in funkcije aplikacije, vendar lahko pride do neznanih st
   <string name="morphe_change_start_page_entry_virtual_reality">Virtualna resničnost</string>
   <string name="morphe_change_start_page_entry_watch_later">Oglej si kasneje</string>
   <string name="morphe_change_start_page_entry_your_clips">Tvoji izrezki</string>
-  <string name="morphe_change_start_page_always_title">Vedno spreminjaj začetno stran</string>
-  <string name="morphe_change_start_page_always_summary">"Vedno preusmeri na izbrano začetno stran, ne samo ob zagonu aplikacije
-
-Omejitev: Uporaba gumba za vrnitev v orodni vrstici morda ne bo delovala"</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <string name="morphe_disable_shorts_resuming_on_startup_title">Onemogoči nadaljevanje ob zagonu</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->

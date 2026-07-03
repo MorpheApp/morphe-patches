@@ -201,6 +201,8 @@ YouTube Music 8.x – hiệu ứng chuyển tiếp chỉ chạy trên 9.x trở 
   <string name="morphe_music_scrobbling_metadata_cleanup_summary">Tự động làm sạch các thông tin gây rối phổ biến (như \"Video chính thức\", \"Phục chế\", \"Trực tiếp\") khỏi tiêu đề, nghệ sĩ và album trước khi scrobble</string>
   <string name="morphe_music_scrobbling_custom_regex_title">Làm sạch regex tùy chỉnh</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">Nhập một biểu thức chính quy tùy chỉnh để loại bỏ văn bản bổ sung khỏi tiêu đề bài hát, nghệ sĩ hoặc album. Ví dụ: (?i)\\s*\\((clean|explicit)\\)</string>
+  <string name="morphe_music_scrobbling_parse_title_title">Phân tích nghệ sĩ và bài hát từ tiêu đề</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">Trích xuất tên nghệ sĩ và bài hát từ tiêu đề video bằng dấu phân cách \" - \". Hữu ích cho nội dung đã tải lại, nơi tên kênh có thể được sử dụng làm nghệ sĩ.</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_title">Giới thiệu về scrobbling</string>
   <!-- 'scrobbling' must be kept untranslated -->

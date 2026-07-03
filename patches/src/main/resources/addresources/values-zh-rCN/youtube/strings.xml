@@ -824,6 +824,9 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_summary">显示在禁用点赞的视频上估算的赞数</string>
   <string name="morphe_ryd_toast_on_connection_error_title">显示连接错误提醒</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">当 Return YouTube Dislike 服务器不可用时显示通知</string>
+  <string name="morphe_ryd_attribution_summary">"数据由 Return YouTube Dislike API 提供
+
+点击此处打开 ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">ReturnYouTubeDislike API 设备统计信息</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API 响应时间，平均值</string>
@@ -916,10 +919,6 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_virtual_reality">虚拟实境</string>
   <string name="morphe_change_start_page_entry_watch_later">稍后观看</string>
   <string name="morphe_change_start_page_entry_your_clips">你的剪辑</string>
-  <string name="morphe_change_start_page_always_title">始终更改起始页</string>
-  <string name="morphe_change_start_page_always_summary">"始终重定向到所选的开始页面，而不仅仅是在应用程序启动时
-
-限制：工具栏上的后退按钮可能无法正常工作"</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <string name="morphe_disable_shorts_resuming_on_startup_title">禁用在启动时恢复</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->

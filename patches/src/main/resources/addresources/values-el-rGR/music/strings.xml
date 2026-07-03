@@ -201,6 +201,8 @@ YouTube Music 8.x — το crossfade λειτουργεί μόνο στις εκ
   <string name="morphe_music_scrobbling_metadata_cleanup_summary">Αυτόματος καθαρισμός κοινής ακαταστασίας (όπως \"Επίσημο Βίντεο\", \"Remaster\", \"Live\") από τίτλους, καλλιτέχνες και άλμπουμ πριν από την αναφορά</string>
   <string name="morphe_music_scrobbling_custom_regex_title">Προσαρμοσμένος καθαρισμός regex</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">Εισαγάγετε μια προσαρμοσμένη κανονική έκφραση για να αφαιρέσετε επιπλέον κείμενο από τους τίτλους τραγουδιών, τους καλλιτέχνες ή τα άλμπουμ. Παράδειγμα: (?i)\\s*\\((clean|explicit)\\)</string>
+  <string name="morphe_music_scrobbling_parse_title_title">Ανάλυση καλλιτέχνη και κομματιού από τον τίτλο</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">Εξαγωγή ονόματος καλλιτέχνη και κομματιού από τον τίτλο του βίντεο χρησιμοποιώντας τον διαχωριστή \" - \". Χρήσιμο για περιεχόμενο που έχει επαναφορτωθεί όπου το όνομα του καναλιού μπορεί να χρησιμοποιηθεί ως καλλιτέχνης.</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_title">Σχετικά με την αναφορά</string>
   <!-- 'scrobbling' must be kept untranslated -->

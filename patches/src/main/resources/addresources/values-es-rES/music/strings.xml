@@ -202,6 +202,8 @@ YouTube Music 8.x: el fundido cruzado solo funciona en la versión 9.x o posteri
   <string name="morphe_music_scrobbling_metadata_cleanup_summary">Limpiar automáticamente el desorden común (como \"Video oficial\", \"Remasterizado\", \"En vivo\") de los títulos, artistas y álbumes antes de registrar</string>
   <string name="morphe_music_scrobbling_custom_regex_title">Limpieza de regex personalizada</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">Ingrese una expresión regular personalizada para eliminar texto adicional de los títulos de canciones, artistas o álbumes. Ejemplo: (?i)\\s*\\((clean|explicit)\\)</string>
+  <string name="morphe_music_scrobbling_parse_title_title">Analizar artista y pista a partir del título</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">Extraer el nombre del artista y de la pista del título del video utilizando el separador \" - \". Útil para contenido re-subido donde el nombre del canal puede usarse como artista.</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_title">Acerca del scrobbling</string>
   <!-- 'scrobbling' must be kept untranslated -->

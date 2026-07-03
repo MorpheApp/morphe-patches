@@ -201,6 +201,8 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <string name="morphe_music_scrobbling_metadata_cleanup_summary">自动清理标题、艺术家和专辑中的常见杂乱信息（如“官方视频”、“混音”、“现场”）before播放记录</string>
   <string name="morphe_music_scrobbling_custom_regex_title">自定义正则表达式清理</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">输入自定义正则表达式以移除歌曲标题、艺术家或专辑中的额外文本。例如：(?i)\\s*\\((clean|explicit)\\)</string>
+  <string name="morphe_music_scrobbling_parse_title_title">解析标题中的艺术家和曲目</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">使用 \" - \" 分隔符从视频标题中提取艺术家和曲目名称。对于重新上传的内容，当频道名称可用作艺术家时，此功能很有用。</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_title">关于播放记录</string>
   <!-- 'scrobbling' must be kept untranslated -->

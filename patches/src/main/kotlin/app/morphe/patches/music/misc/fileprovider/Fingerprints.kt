@@ -1,4 +1,4 @@
-package app.morphe.patches.music.utils.fix.fileprovider
+package app.morphe.patches.music.misc.fileprovider
 
 import app.morphe.patcher.Fingerprint
 

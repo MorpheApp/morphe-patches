@@ -102,7 +102,7 @@ YouTube Music 8.x — pudar silang hanya berfungsi pada versi 9.x dan yang lebih
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Sembunyikan tombol transmisi</string>
   <string name="morphe_music_hide_history_button_title">Sembunyikan tombol Riwayat</string>
-  <string name="morphe_music_hide_notification_button_title">Sembunyikan tombol pemberitahuan</string>
+  <string name="morphe_music_hide_notification_button_title">Sembunyikan tombol notifikasi</string>
   <string name="morphe_music_hide_search_button_title">Sembunyikan tombol pencarian</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Halaman awal</string>
@@ -201,6 +201,8 @@ YouTube Music 8.x — pudar silang hanya berfungsi pada versi 9.x dan yang lebih
   <string name="morphe_music_scrobbling_metadata_cleanup_summary">Secara otomatis bersihkan kekacauan umum (seperti \"Video Resmi\", \"Remaster\", \"Langsung\") dari judul, artis, dan album sebelum di-scrobble</string>
   <string name="morphe_music_scrobbling_custom_regex_title">Pembersihan regex khusus</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">Masukkan ekspresi reguler khusus untuk menghapus teks tambahan dari judul lagu, artis, atau album. Contoh: (?i)\\s*\\((clean|explicit)\\)</string>
+  <string name="morphe_music_scrobbling_parse_title_title">Parsing artis dan trek dari judul</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">Ekstrak nama artis dan trek dari judul video menggunakan pemisah \" - \". Berguna untuk konten yang diunggah ulang di mana nama channel dapat digunakan sebagai artis.</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_title">Tentang scrobbling</string>
   <!-- 'scrobbling' must be kept untranslated -->

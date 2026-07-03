@@ -18,18 +18,21 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.string
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.layout.hide.general.ContextualMenuItemBuilderFingerprint
+import app.morphe.patches.youtube.layout.hide.general.ContextualMenuItemBuilderOnClickFingerprint
 import app.morphe.patches.youtube.misc.auth.authHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_21_12_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.information.videoInformationPatch
+import app.morphe.util.cloneParameters
 import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
+import app.morphe.util.numberOfParameterRegisters
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -182,9 +185,17 @@ val addToQueuePatch = bytecodePatch(
 
         // end region
 
-        FeedFlyoutButtonsInitializerFingerprint.let {
-            it.method.apply {
-                val runnableIndex = it.instructionMatches.last().index
+        FeedFlyoutButtonsInitializerFingerprint.let { mainFingerprint ->
+            val mainFingerprintMatches = mainFingerprint.instructionMatches
+            val getCharSequenceReference = mainFingerprintMatches.first().getInstruction<ReferenceInstruction>().reference
+            val enumMethodRegister = mainFingerprintMatches[1].getInstruction<OneRegisterInstruction>().registerA
+            val charCheckIndex = mainFingerprintMatches[4].index
+            val enumIntField = mainFingerprintMatches[6].getInstruction<ReferenceInstruction>().reference
+            val enumMethodCall = mainFingerprintMatches[7].getInstruction<ReferenceInstruction>().reference
+            val runnableIndex = mainFingerprintMatches.last().index
+            val charCheckRegister = mainFingerprint.method.getInstruction<OneRegisterInstruction>(charCheckIndex).registerA
+
+            mainFingerprint.method.apply {
                 val runnableRegister = getInstruction<TwoRegisterInstruction>(runnableIndex).registerA
                 addInstructions(
                     runnableIndex,
@@ -194,45 +205,86 @@ val addToQueuePatch = bytecodePatch(
                     """
                 )
 
-                val charCheckIndex = it.instructionMatches[4].index
-                val enumClassRegister = it.instructionMatches[1].getInstruction<OneRegisterInstruction>().registerA
-                val charCheckRegister = getInstruction<OneRegisterInstruction>(charCheckIndex).registerA
-                val freeRegister = findFreeRegister(
-                    charCheckIndex,
-                    charCheckRegister,
-                    enumClassRegister
-                )
-
-                val enumIntField = it.instructionMatches[6].getInstruction<ReferenceInstruction>().reference
-                val enumMethodCall = it.instructionMatches[7].getInstruction<ReferenceInstruction>().reference
-
+                val freeRegister = findFreeRegister(charCheckIndex, charCheckRegister, enumMethodRegister)
                 addInstructions(
                     charCheckIndex,
                     """
-                        iget v$freeRegister, v$enumClassRegister, $enumIntField
+                        iget v$freeRegister, v$enumMethodRegister, $enumIntField
                         invoke-static { v$freeRegister }, $enumMethodCall
                         move-result-object v$freeRegister
-                        invoke-static { v$freeRegister, v$charCheckRegister }, $EXTENSION_CLASS->setCurrentButtonInfo(Ljava/lang/Enum;Ljava/lang/CharSequence;)V
+                        invoke-static { v$freeRegister, v$charCheckRegister }, $EXTENSION_CLASS->setCurrentButtonInfo(Ljava/lang/Enum;Ljava/lang/Object;)V
                     """
                 )
             }
-        }
 
-        if (!is_21_05_or_greater) {
-            Fingerprint(
-                classFingerprint = FeedFlyoutButtonsInitializerFingerprint,
-                name = "onItemClick"
-            ).method.addInstructionsWithLabels(
-                0,
-                """
-                    invoke-static { p3 }, $EXTENSION_CLASS->replaceOnItemClick(I)Z
-                    move-result p2
-                    if-eqz p2, :block_item_click
+            if (!is_21_05_or_greater) {
+                ContextualMenuItemBuilderFingerprint.let {
+                    it.method.cloneParameters().apply {
+                        val filterIndexClonedOffset = numberOfParameterRegisters
+                        val targetInstructionIndex = it.instructionMatches[3].index + filterIndexClonedOffset
+                        val targetInstructionRegister = getInstruction<FiveRegisterInstruction>(
+                            targetInstructionIndex
+                        ).registerC
+                        val secondButtonInfoParameterRegister = getInstruction<FiveRegisterInstruction>(
+                            it.instructionMatches[2].index + filterIndexClonedOffset
+                        ).registerC
+
+                        addInstructions(
+                            targetInstructionIndex,
+                                """
+                                invoke-static { v$targetInstructionRegister }, $getCharSequenceReference
+                                move-result-object p0
+                                iget p0, p0, $enumIntField
+                                invoke-static { p0 }, $enumMethodCall
+                                move-result-object p0
+                                invoke-static { p0, v$secondButtonInfoParameterRegister }, $EXTENSION_CLASS->setCurrentButtonInfo(Ljava/lang/Enum;Ljava/lang/Object;)V
+                            """
+                        )
+                    }
+                }
+
+                fun getReplaceOnItemClickPatch(
+                    targetInstructionRegister: String,
+                    freeRegister: String
+                ): String = """
+                    invoke-static { $targetInstructionRegister }, $EXTENSION_CLASS->replaceOnItemClick(Ljava/lang/Object;)Z
+                    move-result $freeRegister
+                    if-eqz $freeRegister, :block_item_click
                     return-void
                     :block_item_click
                     nop
                 """
-            )
+
+                ContextualMenuItemBuilderOnClickFingerprint.let {
+                    val enumMethodParameterClassReference = it.instructionMatches.first()
+                        .getInstruction<ReferenceInstruction>().reference
+                    val enumMethodParameterClassName = it.instructionMatches[1]
+                        .getInstruction<ReferenceInstruction>().reference
+
+                    it.method.addInstructions(
+                        0,
+                        """
+                            iget-object v0, p0, $enumMethodParameterClassReference
+                            check-cast v0, $enumMethodParameterClassName
+                            invoke-static { v0 }, $getCharSequenceReference
+                            move-result-object v0
+                            iget v0, v0, $enumIntField
+                            invoke-static { v0 }, $enumMethodCall
+                            move-result-object v0
+                            invoke-virtual {v0}, Ljava/lang/Enum;->name()Ljava/lang/String;
+                            move-result-object v0
+                        """ + getReplaceOnItemClickPatch("v0", "v0")
+                    )
+                }
+
+                FeedFlyoutButtonsInitializerOnItemClickFingerprint.method.addInstructionsWithLabels(
+                    0,
+                    """
+                        invoke-static { p3 }, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+                        move-result-object p2
+                    """ + getReplaceOnItemClickPatch("p2", "p2")
+                )
+            }
         }
 
         FeedBottomSheetFlyoutFingerprint.method.apply {
@@ -241,22 +293,22 @@ val addToQueuePatch = bytecodePatch(
 
                 addInstruction(
                     index,
-                    "invoke-static { v$register }, $EXTENSION_CLASS->setBottomSheetFlyout(Landroid/app/Dialog;)V"
+                    "invoke-static { v$register }, $EXTENSION_CLASS->" +
+                            "setBottomSheetFlyout(Landroid/app/Dialog;)V"
                 )
             }
         }
 
-        if (is_21_12_or_greater) {
-            FeedPopupWindowFlyoutFingerprint.matchAll(2..2).forEach {
-                it.method.apply {
-                    val instructionIndex = it.instructionMatches.last().index
-                    val instructionRegister = getInstruction<FiveRegisterInstruction>(instructionIndex).registerC
+        FeedPopupWindowFlyoutFingerprint.matchAll(2..4).forEach {
+            it.method.apply {
+                val instructionIndex = it.instructionMatches.last().index
+                val instructionRegister = getInstruction<FiveRegisterInstruction>(instructionIndex).registerC
 
-                    addInstruction(
-                        instructionIndex,
-                        "invoke-static { v$instructionRegister }, $EXTENSION_CLASS->setPopupWindowFlyout(Landroid/widget/PopupWindow;)V"
-                    )
-                }
+                addInstruction(
+                    instructionIndex,
+                    "invoke-static { v$instructionRegister }, $EXTENSION_CLASS->" +
+                            "setPopupWindowFlyout(Landroid/widget/PopupWindow;)V"
+                )
             }
         }
     }

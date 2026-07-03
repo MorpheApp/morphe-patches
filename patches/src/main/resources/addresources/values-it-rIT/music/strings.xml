@@ -201,6 +201,8 @@ YouTube Music 8.x: il crossfade funziona solo su 9.x e versioni successive"</str
   <string name="morphe_music_scrobbling_metadata_cleanup_summary">Pulisci automaticamente il disordine comune (come \"Video ufficiale\", \"Remaster\", \"Dal vivo\") da titoli, artisti e album prima dello scrobbling</string>
   <string name="morphe_music_scrobbling_custom_regex_title">Pulizia regex personalizzata</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">Inserisci un\'espressione regolare personalizzata per rimuovere testo aggiuntivo dai titoli delle canzoni, degli artisti o degli album. Esempio: (?i)\\s*\\((clean|explicit)\\)</string>
+  <string name="morphe_music_scrobbling_parse_title_title">Analizza artista e titolo dalla canzone</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">Estrai il nome dell\'artista e il titolo del brano dal titolo del video utilizzando il separatore \" - \". Utile per i contenuti ricaricati dove il nome del canale potrebbe essere utilizzato come artista.</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_title">Informazioni sullo scrobbling</string>
   <!-- 'scrobbling' must be kept untranslated -->

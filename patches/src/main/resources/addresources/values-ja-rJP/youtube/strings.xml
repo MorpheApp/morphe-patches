@@ -128,8 +128,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_timed_reactions_summary">コメント欄やライブ配信のチャット欄で絵文字を使ってリアクションする機能 (ハート アイコン ボタン) を非表示にします</string>
   <string name="morphe_hide_video_title_title">動画のタイトルを非表示</string>
   <string name="morphe_hide_video_title_summary">全画面表示モードでの動画のタイトルを非表示にします</string>
-  <string name="morphe_sanitize_video_subtitle_title">動画字幕の不要な語句を除去</string>
-  <string name="morphe_sanitize_video_subtitle_summary">動画の字幕から「#」「Fundraiser」「Shop」「products」などを取り除きます</string>
+  <string name="morphe_sanitize_video_subtitle_title">動画のタグを非表示</string>
+  <string name="morphe_sanitize_video_subtitle_summary">動画タイトル下に表示される、「#\"タグ名\"」「募金活動」「購入」「x 個の商品」などのタグを非表示にします</string>
   <string name="morphe_hide_description_components_screen_title">概要欄</string>
   <string name="morphe_hide_description_components_screen_summary">動画の概要欄に表示するコンポーネントを設定します</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">「AI 生成による動画の要約」セクションを非表示</string>
@@ -825,6 +825,9 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_ryd_estimated_like_summary">動画投稿者が高評価数を非公開に設定している動画で、高評価の推定値を表示します</string>
   <string name="morphe_ryd_toast_on_connection_error_title">接続エラーの通知を表示</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Return YouTube Dislike サーバーが利用できない場合に通知を表示します</string>
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike API を使用してデータを取得しています
+
+ここをタップすると ReturnYouTubeDislike.com を開きます"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">このデバイスの ReturnYouTubeDislike API 統計情報</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API の応答時間 (平均)</string>
@@ -917,10 +920,6 @@ Automotive レイアウト
   <string name="morphe_change_start_page_entry_virtual_reality">バーチャル リアリティ</string>
   <string name="morphe_change_start_page_entry_watch_later">後で見る</string>
   <string name="morphe_change_start_page_entry_your_clips">クリップ</string>
-  <string name="morphe_change_start_page_always_title">スタート画面の変更を常時適用</string>
-  <string name="morphe_change_start_page_always_summary">"設定したスタート画面への変更を、「アプリの起動時にのみ適用」から「常時適用」に変更します
-
-制限事項: ツールバーに表示される左矢印の [戻る] ボタンが機能しない場合があります"</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <string name="morphe_disable_shorts_resuming_on_startup_title">起動時のショートの再開を無効化</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
@@ -995,11 +994,9 @@ Automotive レイアウト
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow &amp; デフォルト</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow &amp; 静止画</string>
   <string name="morphe_alt_thumbnail_options_entry_4">静止画サムネイル</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow は、YouTube 動画のサムネイルをクラウドソーシングで提供する機能です。これらのサムネイルは、YouTube が提供するサムネイルよりも適切なことが多いです。
+  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow は、YouTube 動画のサムネイルをクラウドソーシングで提供する機能です。DeArrow のサムネイルは、YouTube が提供するサムネイルよりも適切なことが多いです。この機能は、動画の URL を API サーバーに送信しますが、他のデータは送信しません。動画に DeArrow サムネイルがない場合は、デフォルトのサムネイルまたは静止画サムネイルを表示します
 
-有効にすると、動画の URL が API サーバーに送信されますが、他のデータは送信されません。動画に DeArrow サムネイルがない場合は、デフォルトのサムネイルまたは静止画サムネイルが表示されます。
-
-詳細については、ここをタップしてください"</string>
+ここをタップすると DeArrow.ajay.app を開きます"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">接続エラーの通知を表示</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary">DeArrow サーバーが利用できない場合に通知を表示します</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">DeArrow API のエンドポイント</string>

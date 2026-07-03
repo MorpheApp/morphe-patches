@@ -824,6 +824,9 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_summary">แสดงจำนวนการถูกใจโดยประมาณบนวิดีโอที่ผู้สร้างปิดใช้งานการถูกใจ</string>
   <string name="morphe_ryd_toast_on_connection_error_title">แสดงการแจ้งเตือนข้อผิดพลาดการเชื่อมต่อ</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">แสดงการแจ้งเตือนเมื่อเซิร์ฟเวอร์ Return YouTube Dislike ไม่สามารถใช้งานได้</string>
+  <string name="morphe_ryd_attribution_summary">"ข้อมูลนี้มาจาก Return YouTube Dislike API
+
+แตะที่นี่เพื่อเปิด ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">อุปกรณ์นี้</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">เฉลี่ย</string>
@@ -916,10 +919,6 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_virtual_reality">กทบทาคส์ชียอลัด</string>
   <string name="morphe_change_start_page_entry_watch_later">ดูต่อภายหลัง</string>
   <string name="morphe_change_start_page_entry_your_clips">คลิปของคุณ</string>
-  <string name="morphe_change_start_page_always_title">เปลี่ยนหน้าเริ่มต้นเสมอ</string>
-  <string name="morphe_change_start_page_always_summary">"การเปลี่ยนหน้าเริ่มต้นโดยอัตโนมัติ
-
-ข้อจำกัด: การใช้ปุ่มย้อนกลับบนแถบเครื่องมืออาจใช้ไม่ได้"</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <string name="morphe_disable_shorts_resuming_on_startup_title">ปิดใช้งานการกลับมาเล่นต่อเมื่อเริ่มระบบ</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
