@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
+ */
+
 @file:Suppress("SpellCheckingInspection")
 
 package app.morphe.patches.youtube.layout.miniplayer
@@ -41,6 +48,41 @@ internal object MiniplayerModernConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     filters = listOf(
         literal(MINIPLAYER_MODERN_TYPE_1_FEATURE_KEY)
+    )
+)
+
+internal object MiniplayerHorizontalDragPlaybackFingerprint : Fingerprint (
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = $$"Landroid/animation/ValueAnimator;->addUpdateListener(Landroid/animation/ValueAnimator$AnimatorUpdateListener;)V",
+        ),
+        opcode(
+            opcode = Opcode.NEW_INSTANCE,
+            location = MatchAfterImmediately(),
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT,
+            name = "<init>",
+            location = MatchAfterImmediately(),
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = $$"Landroid/animation/ValueAnimator;->addListener(Landroid/animation/Animator$AnimatorListener;)V",
+            location = MatchAfterImmediately(),
+        ),
+        opcode(
+            opcode = Opcode.IGET_OBJECT,
+            location = MatchAfterImmediately(),
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            returnType = "Ljava/lang/Object;",
+            location = MatchAfterImmediately(),
+        ),
     )
 )
 

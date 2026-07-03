@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
+ */
+
 @file:Suppress("SpellCheckingInspection")
 
 package app.morphe.patches.youtube.layout.miniplayer
@@ -32,10 +39,12 @@ import app.morphe.util.indexOfFirstLiteralInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction35c
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/MiniplayerPatch;"
 
@@ -68,6 +77,7 @@ val miniplayerPatch = bytecodePatch(
         preferences += SwitchPreference("morphe_miniplayer_disable_resuming", summary = true)
         preferences += SwitchPreference("morphe_miniplayer_disable_drag_and_drop", summary = true)
         preferences += SwitchPreference("morphe_miniplayer_disable_horizontal_drag", summary = true)
+        preferences += SwitchPreference("morphe_miniplayer_allow_playback_with_horizontal_drag")
         preferences += SwitchPreference("morphe_miniplayer_disable_rounded_corners")
         preferences += SwitchPreference("morphe_miniplayer_hide_overlay_buttons")
         preferences += TextPreference("morphe_miniplayer_width_dip", inputType = InputType.NUMBER)
@@ -280,6 +290,28 @@ val miniplayerPatch = bytecodePatch(
             MINIPLAYER_HORIZONTAL_DRAG_FEATURE_KEY,
             "getHorizontalDrag",
         )
+
+        MiniplayerHorizontalDragPlaybackFingerprint.let {
+            val definingClassInstructionIndex = it.instructionMatches[2].index
+            val definingClassName = it.method.getInstruction<BuilderInstruction35c>(
+                definingClassInstructionIndex
+            ).getReference<MethodReference>()?.definingClass
+
+            Fingerprint(
+                definingClass = definingClassName,
+                name = "onAnimationEnd",
+            ).method.addInstructions(
+                0,
+                """
+                    invoke-static { }, $EXTENSION_CLASS->allowHorizontalDragPlayback()Z
+                    move-result v0
+                    if-eqz v0, :allow_horizontal_drag_playback
+                    return-void
+                    :allow_horizontal_drag_playback
+                    nop
+                """
+            )
+        }
 
         MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
             MINIPLAYER_ANIMATED_EXPAND_FEATURE_KEY,

@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
@@ -8,6 +15,7 @@ import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerTyp
 import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MODERN_2;
 import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MODERN_3;
 import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MODERN_4;
+import static app.morphe.extension.youtube.settings.Settings.MINIPLAYER_ALLOW_PLAYBACK_WITH_HORIZONTAL_DRAG;
 
 import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
@@ -335,6 +343,13 @@ public final class MiniplayerPatch {
         }
 
         return MINIPLAYER_HORIZONTAL_DRAG_ENABLED;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean allowHorizontalDragPlayback() {
+        return MINIPLAYER_HORIZONTAL_DRAG_ENABLED && MINIPLAYER_ALLOW_PLAYBACK_WITH_HORIZONTAL_DRAG.get();
     }
 
     /**
