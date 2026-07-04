@@ -259,6 +259,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting MINIPLAYER_DISABLE_DRAG_AND_DROP = new BooleanSetting("morphe_miniplayer_disable_drag_and_drop", FALSE, true, new MiniplayerAnyModernAvailability());
     public static final BooleanSetting MINIPLAYER_DISABLE_HORIZONTAL_DRAG = new BooleanSetting("morphe_miniplayer_disable_horizontal_drag", FALSE, true, new MiniplayerHorizontalDragAvailability());
     public static final BooleanSetting MINIPLAYER_DISABLE_HORIZONTAL_DRAG_PLAYBACK = new BooleanSetting("morphe_miniplayer_disable_horizontal_drag_playback", FALSE, true, new MiniplayerHorizontalDragPlaybackAvailability());
+    public static final BooleanSetting MINIPLAYER_DISABLE_HORIZONTAL_REPOSITION = new BooleanSetting("morphe_miniplayer_disable_horizontal_reposition", FALSE, true, new MiniplayerHorizontalDragPlaybackAvailability());
     public static final BooleanSetting MINIPLAYER_DISABLE_ROUNDED_CORNERS = new BooleanSetting("morphe_miniplayer_disable_rounded_corners", FALSE, true, new MiniplayerAnyModernAvailability());
     public static final BooleanSetting MINIPLAYER_HIDE_OVERLAY_BUTTONS = new BooleanSetting("morphe_miniplayer_hide_overlay_buttons", FALSE, true, new MiniplayerHideOverlayButtonsAvailability());
     public static final IntegerSetting MINIPLAYER_WIDTH_DIP = new IntegerSetting("morphe_miniplayer_width_dip", 192, true, new MiniplayerAnyModernAvailability());

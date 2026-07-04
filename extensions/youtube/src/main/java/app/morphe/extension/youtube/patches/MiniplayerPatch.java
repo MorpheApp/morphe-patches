@@ -17,10 +17,13 @@ import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerTyp
 import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MODERN_4;
 import static app.morphe.extension.youtube.settings.Settings.MINIPLAYER_DISABLE_HORIZONTAL_DRAG;
 import static app.morphe.extension.youtube.settings.Settings.MINIPLAYER_DISABLE_HORIZONTAL_DRAG_PLAYBACK;
+import static app.morphe.extension.youtube.settings.Settings.MINIPLAYER_DISABLE_HORIZONTAL_REPOSITION;
 
 import android.content.res.ColorStateList;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -86,6 +89,9 @@ public final class MiniplayerPatch {
     }
 
     private static final int MINIPLAYER_SIZE;
+    private static boolean offScreenMiniplayerButtonPressed = false;
+    private static int miniplayerOffscreenState = 0;
+    private static final int horizontalPositionJump = 5;
 
     static {
         // YT appears to use the device screen dip width, plus an unknown fixed horizontal padding size.
@@ -370,6 +376,63 @@ public final class MiniplayerPatch {
      */
     public static boolean pausePlaybackWithHorizontalDrag() {
         return MINIPLAYER_HORIZONTAL_DRAG_ENABLED && !MINIPLAYER_DISABLE_HORIZONTAL_DRAG_PLAYBACK.get();
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void enableOffScreenMiniplayerButtonPressed(MotionEvent motionEvent) {
+        if (!MINIPLAYER_DISABLE_HORIZONTAL_REPOSITION.get()) {
+            return;
+        }
+
+        if (miniplayerOffscreenState > 0 &&
+                motionEvent.getAction() == MotionEvent.ACTION_UP &&
+                motionEvent.getEventTime() - motionEvent.getDownTime() < 200) {
+            offScreenMiniplayerButtonPressed = true;
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static Rect blockOffscreenMiniplayerHorizontalReposition(Rect currentRect, Rect previousRect, int screenWidth) {
+        if (!MINIPLAYER_DISABLE_HORIZONTAL_REPOSITION.get()) {
+            miniplayerOffscreenState = 0;
+            return currentRect;
+        }
+
+        if (!offScreenMiniplayerButtonPressed) {
+            int previousRectLeft = previousRect.left;
+            int originalWidth = currentRect.width();
+
+            if (previousRectLeft != screenWidth || currentRect.left >= screenWidth) {
+                if (previousRectLeft < 0 && previousRect.right == 0 && currentRect.right > 0) {
+                    currentRect.left = -originalWidth;
+                    currentRect.right = 0;
+                    miniplayerOffscreenState = 1;
+                }
+            } else {
+                currentRect.left = screenWidth;
+                currentRect.right = screenWidth + originalWidth;
+                miniplayerOffscreenState = 2;
+            }
+        } else {
+            int originalWidth = currentRect.width();
+
+            if (miniplayerOffscreenState == 1) {
+                currentRect.left = horizontalPositionJump;
+                currentRect.right = horizontalPositionJump + originalWidth;
+            } else if (miniplayerOffscreenState == 2) {
+                currentRect.left = screenWidth - horizontalPositionJump;
+                currentRect.right = (screenWidth - horizontalPositionJump) + originalWidth;
+            }
+
+            miniplayerOffscreenState = 0;
+            offScreenMiniplayerButtonPressed = false;
+        }
+
+        return currentRect;
     }
 
     /**
