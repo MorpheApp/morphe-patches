@@ -49,7 +49,7 @@ import app.morphe.extension.shared.settings.StringSetting;
  * string. This is not common to use because most components do not have an accessibility string.
  *
  * <code>$</code> Buffer string. Any string that must appear inside the protocol buffer.
- * Buffer strings are case-sensitive. May contain uni-code characters, spaces,
+ * Buffer strings are case-sensitive. May contain Unicode characters, spaces,
  * and any syntax characters as the entire string is matched exactly as-is.
  * </pre>
  *

@@ -18,33 +18,26 @@ import app.morphe.extension.shared.patches.components.StringFilterGroup;
  * Umbrella Litho filter for YT Music layout components hidden via the Morphe patches.
  * <p>
  * New categories (flyout menu items, engagement-panel entries, feed cards, etc.) should be added
- * here as additional path callbacks + buffer/accessibility gates so the whole family shares one
- * filter registration.
- *
- * <h5>Lyrics engagement panel — Share / Translate chip buttons</h5>
- *
- * The buttons' Litho path contains {@code "timed_lyrics_controller"} (the parent controller path).
- * Each button component's serialized proto buffer contains one of the marker strings
- * {@code "lyric_share_button"} or {@code "lyric_translate_button"} — observed from a device log
- * dump of the lyrics panel Litho tree. We register a single broad path callback on the controller
- * so every child component of the lyrics panel enters {@link #isFiltered}, then inspect the buffer
- * to decide whether the specific child is one of the two chip buttons.
+ * here as additional identifier/path callbacks + buffer/accessibility gates so the whole family
+ * shares one filter registration.
  */
 @SuppressWarnings("unused")
 public final class MusicLayoutComponentsFilter extends Filter {
 
-    private final StringFilterGroup lyricsControllerGroup;
+    private final StringFilterGroup lyricsElementsGroup;
     private final ByteArrayFilterGroup lyricsShareButtonBuffer;
     private final ByteArrayFilterGroup lyricsTranslateButtonBuffer;
 
     public MusicLayoutComponentsFilter() {
         // region Lyrics engagement panel
 
-        lyricsControllerGroup = new StringFilterGroup(
-                null, // Setting-less catch: gating happens via the buffer groups below.
-                "timed_lyrics_controller"
+        // Identifier prefix shared by every lyrics-panel button element.
+        // Setting-less catch: gating happens via the buffer groups below.
+        lyricsElementsGroup = new StringFilterGroup(
+                null,
+                "id.elements.timed_lyrics"
         );
-        addPathCallbacks(lyricsControllerGroup);
+        addIdentifierCallbacks(lyricsElementsGroup);
 
         lyricsShareButtonBuffer = new ByteArrayFilterGroup(
                 Settings.HIDE_LYRICS_SHARE_BUTTON,
@@ -68,7 +61,7 @@ public final class MusicLayoutComponentsFilter extends Filter {
                               StringFilterGroup matchedGroup,
                               FilterContentType contentType,
                               int contentIndex) {
-        if (matchedGroup == lyricsControllerGroup) {
+        if (matchedGroup == lyricsElementsGroup) {
             // Only hide the specific chip whose marker is present in this component's buffer.
             return lyricsShareButtonBuffer.check(buffer).isFiltered()
                     || lyricsTranslateButtonBuffer.check(buffer).isFiltered();

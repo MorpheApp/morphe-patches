@@ -29,7 +29,7 @@ private const val CUSTOM_FILTER =
 @Suppress("unused")
 val hideMusicComponentsPatch = bytecodePatch(
     name = "Hide music components",
-    description = "Adds options to hide various Litho-rendered layout components in YT Music, " +
+    description = "Adds options to hide various Litho-rendered layout components, " +
             "and a custom filter for hiding arbitrary components."
 ) {
     dependsOn(
@@ -46,9 +46,9 @@ val hideMusicComponentsPatch = bytecodePatch(
                 titleKey = "morphe_music_hide_lyrics_panel_category_title",
                 preferences = setOf(
                     SwitchPreference("morphe_music_hide_lyrics_share_button"),
-                    SwitchPreference("morphe_music_hide_lyrics_translate_button"),
+                    SwitchPreference("morphe_music_hide_lyrics_translate_button")
                 )
-            ),
+            )
         )
 
         PreferenceScreen.GENERAL.addPreferences(
@@ -69,7 +69,7 @@ val hideMusicComponentsPatch = bytecodePatch(
                         inputType = InputType.TEXT_MULTI_LINE
                     )
                 )
-            ),
+            )
         )
 
         addLithoFilter(LAYOUT_COMPONENTS_FILTER)
