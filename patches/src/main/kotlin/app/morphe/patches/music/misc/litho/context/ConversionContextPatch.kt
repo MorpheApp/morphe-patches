@@ -7,9 +7,9 @@
 
 @file:Suppress("SpellCheckingInspection")
 
-package app.morphe.patches.youtube.misc.litho.context
+package app.morphe.patches.music.misc.litho.context
 
+import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.shared.misc.litho.context.createConversionContextPatch
-import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 
 val conversionContextPatch = createConversionContextPatch(sharedExtensionPatch)
