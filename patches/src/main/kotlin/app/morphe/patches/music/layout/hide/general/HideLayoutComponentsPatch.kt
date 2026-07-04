@@ -22,15 +22,14 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 
 private const val LAYOUT_COMPONENTS_FILTER =
-    "Lapp/morphe/extension/music/patches/components/MusicLayoutComponentsFilter;"
+    "Lapp/morphe/extension/music/patches/components/LayoutComponentsFilter;"
 private const val CUSTOM_FILTER =
     "Lapp/morphe/extension/music/patches/components/CustomFilter;"
 
 @Suppress("unused")
-val hideMusicComponentsPatch = bytecodePatch(
-    name = "Hide music components",
-    description = "Adds options to hide various Litho-rendered layout components, " +
-            "and a custom filter for hiding arbitrary components."
+val hideLayoutComponentsPatch = bytecodePatch(
+    name = "Hide layout components",
+    description = "Adds options to hide general layout components."
 ) {
     dependsOn(
         sharedExtensionPatch,

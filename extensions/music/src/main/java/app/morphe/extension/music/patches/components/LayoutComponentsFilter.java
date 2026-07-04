@@ -15,29 +15,27 @@ import app.morphe.extension.shared.patches.components.Filter;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
 
 /**
- * Umbrella Litho filter for YT Music layout components hidden via the Morphe patches.
+ * Umbrella Litho filter for YT Music layout components.
  * <p>
  * New categories (flyout menu items, engagement-panel entries, feed cards, etc.) should be added
  * here as additional identifier/path callbacks + buffer/accessibility gates so the whole family
  * shares one filter registration.
  */
 @SuppressWarnings("unused")
-public final class MusicLayoutComponentsFilter extends Filter {
+public final class LayoutComponentsFilter extends Filter {
 
-    private final StringFilterGroup lyricsElementsGroup;
+    private final StringFilterGroup toggleButtonGroup;
     private final ByteArrayFilterGroup lyricsShareButtonBuffer;
     private final ByteArrayFilterGroup lyricsTranslateButtonBuffer;
 
-    public MusicLayoutComponentsFilter() {
+    public LayoutComponentsFilter() {
         // region Lyrics engagement panel
 
-        // Identifier prefix shared by every lyrics-panel button element.
-        // Setting-less catch: gating happens via the buffer groups below.
-        lyricsElementsGroup = new StringFilterGroup(
+        toggleButtonGroup = new StringFilterGroup(
                 null,
-                "id.elements.timed_lyrics"
+                "toggle_button.eml"
         );
-        addIdentifierCallbacks(lyricsElementsGroup);
+        addPathCallbacks(toggleButtonGroup);
 
         lyricsShareButtonBuffer = new ByteArrayFilterGroup(
                 Settings.HIDE_LYRICS_SHARE_BUTTON,
@@ -61,7 +59,7 @@ public final class MusicLayoutComponentsFilter extends Filter {
                               StringFilterGroup matchedGroup,
                               FilterContentType contentType,
                               int contentIndex) {
-        if (matchedGroup == lyricsElementsGroup) {
+        if (matchedGroup == toggleButtonGroup) {
             // Only hide the specific chip whose marker is present in this component's buffer.
             return lyricsShareButtonBuffer.check(buffer).isFiltered()
                     || lyricsTranslateButtonBuffer.check(buffer).isFiltered();
