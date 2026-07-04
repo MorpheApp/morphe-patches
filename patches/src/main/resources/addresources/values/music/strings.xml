@@ -120,6 +120,11 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <string name="morphe_music_hide_notification_button_title">Hide notification button</string>
     <string name="morphe_music_hide_search_button_title">Hide search button</string>
 
+    <!-- layout.hide.general.hideMusicComponentsPatch -->
+    <string name="morphe_music_hide_lyrics_panel_category_title">Lyrics panel</string>
+    <string name="morphe_music_hide_lyrics_share_button_title">Hide lyrics share button</string>
+    <string name="morphe_music_hide_lyrics_translate_button_title">Hide lyrics translate button</string>
+
     <!-- layout.startpage.changeStartPagePatch -->
     <string name="morphe_change_start_page_title">Start page</string>
     <string name="morphe_change_start_page_entry_default">Default</string>
