@@ -1,4 +1,4 @@
-package app.morphe.patches.youtube.layout.spoofappversion
+package app.morphe.patches.youtube.misc.spoof.appversion
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter

@@ -31,8 +31,8 @@ import app.morphe.patches.youtube.misc.playservice.is_20_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_12_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
-import app.morphe.patches.youtube.misc.recyclerviewtree.hook.addRecyclerViewTreeHook
-import app.morphe.patches.youtube.misc.recyclerviewtree.hook.recyclerViewTreeHookPatch
+import app.morphe.patches.youtube.misc.recyclerviewtree.addRecyclerViewTreeHook
+import app.morphe.patches.youtube.misc.recyclerviewtree.recyclerViewTreeHookPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.PlaybackSpeedOnItemClickParentFingerprint
 import app.morphe.patches.youtube.video.speed.settingsMenuVideoSpeedGroup

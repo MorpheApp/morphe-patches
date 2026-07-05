@@ -1,4 +1,4 @@
-package app.morphe.patches.youtube.layout.spoofappversion
+package app.morphe.patches.youtube.misc.spoof.appversion
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels

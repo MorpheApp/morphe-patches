@@ -701,3 +701,17 @@ internal object SyncButtonFingerprint : Fingerprint(
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
     )
 )
+
+internal object PanelSubheaderFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "V",
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "panel_header"),
+        resourceLiteral(ResourceType.ID, "close_button"),
+        resourceLiteral(ResourceType.ID, "panel_subheader"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "removeAllViews"
+        )
+    )
+)

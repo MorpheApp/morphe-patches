@@ -1,4 +1,4 @@
-package app.morphe.patches.youtube.misc.dimensions.spoof
+package app.morphe.patches.youtube.misc.spoof.dimensions
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.string

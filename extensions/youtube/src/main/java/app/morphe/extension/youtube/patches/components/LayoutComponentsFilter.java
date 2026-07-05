@@ -160,7 +160,7 @@ public final class LayoutComponentsFilter extends Filter {
         );
 
         final var subscriptionsChipBar = new StringFilterGroup(
-                Settings.HIDE_FILTER_BAR_FEED_IN_FEED,
+                Settings.HIDE_FILTER_BAR_IN_FEED,
                 "subscriptions_chip_bar"
         );
 
@@ -170,7 +170,7 @@ public final class LayoutComponentsFilter extends Filter {
         );
 
         chipBar = new StringFilterGroup(
-                Settings.HIDE_FILTER_BAR_FEED_IN_HISTORY,
+                Settings.HIDE_FILTER_BAR_IN_HISTORY,
                 "chip_bar"
         );
 
@@ -404,6 +404,12 @@ public final class LayoutComponentsFilter extends Filter {
                               StringFilterGroup matchedGroup,
                               FilterContentType contentType,
                               int contentIndex) {
+        // The groups are excluded from the filter due to the exceptions list below.
+        // Filter them separately here.
+        if (matchedGroup == notifyMe || matchedGroup == surveys) {
+            return true;
+        }
+
         // Exceptions are not filtered.
         if (exceptions.matches(path)) {
             return false;
@@ -429,12 +435,6 @@ public final class LayoutComponentsFilter extends Filter {
             } else {
                 return true;
             }
-        }
-
-        // The groups are excluded from the filter due to the exceptions list below.
-        // Filter them separately here.
-        if (matchedGroup == notifyMe || matchedGroup == surveys) {
-            return true;
         }
 
         if (matchedGroup == expandableMetadata) {
@@ -551,7 +551,7 @@ public final class LayoutComponentsFilter extends Filter {
      * Injection point.
      */
     public static int hideInFeed(final int height) {
-        return Settings.HIDE_FILTER_BAR_FEED_IN_FEED.get()
+        return Settings.HIDE_FILTER_BAR_IN_FEED.get()
                 ? 0
                 : height;
     }
@@ -560,19 +560,19 @@ public final class LayoutComponentsFilter extends Filter {
      * Injection point.
      */
     public static int hideInSearch(int height) {
-        return Settings.HIDE_FILTER_BAR_FEED_IN_SEARCH.get()
+        return Settings.HIDE_FILTER_BAR_IN_SEARCH.get()
                 ? 0
                 : height;
     }
 
-    private static final boolean HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS_ENABLED
-            = Settings.HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS.get();
+    private static final boolean HIDE_FILTER_BAR_IN_RELATED_VIDEOS_ENABLED
+            = Settings.HIDE_FILTER_BAR_IN_RELATED_VIDEOS.get();
 
     /**
      * Injection point.
      */
     public static int hideInRelatedVideos(int height) {
-        return HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS_ENABLED
+        return HIDE_FILTER_BAR_IN_RELATED_VIDEOS_ENABLED
                 ? 0
                 : height;
     }
@@ -581,14 +581,14 @@ public final class LayoutComponentsFilter extends Filter {
      * Injection point.
      */
     public static boolean hideInRelatedVideos(boolean original) {
-        return HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS_ENABLED || original;
+        return HIDE_FILTER_BAR_IN_RELATED_VIDEOS_ENABLED || original;
     }
 
     /**
      * Injection point.
      */
     public static void hideInRelatedVideos(View chipView) {
-        Utils.hideViewUnderCondition(HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS_ENABLED, chipView);
+        Utils.hideViewUnderCondition(HIDE_FILTER_BAR_IN_RELATED_VIDEOS_ENABLED, chipView);
     }
 
     private static final boolean HIDE_YOUTUBE_DOODLES_ENABLED = Settings.HIDE_YOUTUBE_DOODLES.get();
