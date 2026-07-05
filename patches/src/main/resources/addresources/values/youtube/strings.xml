@@ -1039,7 +1039,7 @@ If later turned off, it is recommended to clear the app data to prevent UI bugs.
     <string name="morphe_miniplayer_disable_horizontal_drag_summary">Prevents closing the miniplayer by swiping it horizontally off-screen</string>
     <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Disable playback with horizontal drag</string>
     <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Playback will pause when the miniplayer is dragged off screen</string>
-    <string name="morphe_miniplayer_disable_horizontal_reposition_title">Prevents horizontal drag automatic reposition</string>
+    <string name="morphe_miniplayer_disable_horizontal_reposition_title">Prevent horizontal drag automatic reposition</string>
     <string name="morphe_miniplayer_disable_horizontal_reposition_summary">Dragged off screen miniplayer will keep its state across the UI</string>
     <string name="morphe_miniplayer_hide_overlay_buttons_title">Hide overlay buttons</string>
     <string name="morphe_miniplayer_width_dip_title">Default size</string>
