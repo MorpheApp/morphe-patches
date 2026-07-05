@@ -7,18 +7,25 @@
 
 package app.morphe.patches.music.flyoutmenu.components
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.getResourceId
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
+import app.morphe.patches.music.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
+import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
+import app.morphe.util.indexOfFirstLiteralInstructionOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
@@ -27,6 +34,9 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/HideFlyoutMenuComponentsPatch;"
 
+private const val PLAYER_FLYOUT_MENU_COMPONENTS_FILTER =
+    "Lapp/morphe/extension/music/patches/components/PlayerFlyoutMenuComponentsFilter;"
+
 @Suppress("unused")
 val hideFlyoutMenuComponentsPatch = bytecodePatch(
     name = "Hide flyout menu components",
@@ -34,7 +44,9 @@ val hideFlyoutMenuComponentsPatch = bytecodePatch(
 ) {
     dependsOn(
         sharedExtensionPatch,
-        settingsPatch
+        settingsPatch,
+        lithoFilterPatch,
+        resourceMappingPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
@@ -44,6 +56,9 @@ val hideFlyoutMenuComponentsPatch = bytecodePatch(
             PreferenceScreenPreference(
                 key = "morphe_music_hide_flyout_menu_components_screen",
                 preferences = setOf(
+                    SwitchPreference("morphe_music_hide_flyout_menu_3_column_component"),
+                    SwitchPreference("morphe_music_hide_flyout_menu_like_dislike"),
+                    SwitchPreference("morphe_music_hide_flyout_menu_taste_match"),
                     SwitchPreference("morphe_music_hide_flyout_menu_add_to_listen_later"),
                     SwitchPreference("morphe_music_hide_flyout_menu_add_to_queue"),
                     SwitchPreference("morphe_music_hide_flyout_menu_captions"),
@@ -106,5 +121,25 @@ val hideFlyoutMenuComponentsPatch = bytecodePatch(
                 ExternalLabel("hide", getInstruction(implementation!!.instructions.lastIndex))
             )
         }
+
+        // Legacy View-level hide for older YT Music versions where like/dislike is a
+        // native child of `end_buttons_container`. From ~9.x the container is empty and
+        // the button is drawn via Litho (see `like_toggle_button.` filter in
+        // PlayerFlyoutMenuComponentsFilter). Kept side-by-side as a fallback for
+        // pre-Litho builds; the two hooks share HIDE_FLYOUT_MENU_LIKE_DISLIKE and are
+        // mutually harmless when both fire.
+        val endButtonsContainer = getResourceId(ResourceType.ID, "end_buttons_container")
+        EndButtonsContainerFingerprint.method.apply {
+            val startIndex = indexOfFirstLiteralInstructionOrThrow(endButtonsContainer)
+            val targetIndex = indexOfFirstInstructionOrThrow(startIndex, Opcode.MOVE_RESULT_OBJECT)
+            val targetRegister = getInstruction<OneRegisterInstruction>(targetIndex).registerA
+
+            addInstruction(
+                targetIndex + 1,
+                "invoke-static { v$targetRegister }, $EXTENSION_CLASS->hideLikeDislikeContainer(Landroid/view/View;)V"
+            )
+        }
+
+        addLithoFilter(PLAYER_FLYOUT_MENU_COMPONENTS_FILTER)
     }
 }

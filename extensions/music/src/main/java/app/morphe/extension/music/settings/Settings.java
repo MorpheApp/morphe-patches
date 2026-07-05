@@ -64,6 +64,9 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting PERMANENT_REPEAT = new BooleanSetting("morphe_music_play_permanent_repeat", FALSE, true);
 
     // Flyout menu
+    public static final BooleanSetting HIDE_FLYOUT_MENU_3_COLUMN_COMPONENT = new BooleanSetting("morphe_music_hide_flyout_menu_3_column_component", FALSE);
+    public static final BooleanSetting HIDE_FLYOUT_MENU_LIKE_DISLIKE = new BooleanSetting("morphe_music_hide_flyout_menu_like_dislike", FALSE);
+    public static final BooleanSetting HIDE_FLYOUT_MENU_TASTE_MATCH = new BooleanSetting("morphe_music_hide_flyout_menu_taste_match", FALSE);
     public static final BooleanSetting HIDE_FLYOUT_MENU_ADD_TO_LISTEN_LATER = new BooleanSetting("morphe_music_hide_flyout_menu_add_to_listen_later", FALSE);
     public static final BooleanSetting HIDE_FLYOUT_MENU_ADD_TO_QUEUE = new BooleanSetting("morphe_music_hide_flyout_menu_add_to_queue", FALSE);
     public static final BooleanSetting HIDE_FLYOUT_MENU_CAPTIONS = new BooleanSetting("morphe_music_hide_flyout_menu_captions", FALSE);

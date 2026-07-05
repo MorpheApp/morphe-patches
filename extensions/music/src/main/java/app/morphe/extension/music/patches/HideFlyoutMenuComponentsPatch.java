@@ -7,6 +7,9 @@
 
 package app.morphe.extension.music.patches;
 
+import android.view.View;
+import android.view.ViewGroup;
+
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.music.settings.Settings;
@@ -30,6 +33,22 @@ public class HideFlyoutMenuComponentsPatch {
         return false;
     }
 
+    /**
+     * Injection point.
+     * <p>
+     * Legacy hook for pre-Litho builds where like/dislike is a native child of
+     * {@code end_buttons_container}. Newer builds render the buttons via Litho and
+     * leave this container empty (see {@code PlayerFlyoutMenuComponentsFilter}); the
+     * two hooks share {@link Settings#HIDE_FLYOUT_MENU_LIKE_DISLIKE} and are harmless
+     * when both fire.
+     */
+    public static void hideLikeDislikeContainer(View view) {
+        if (Settings.HIDE_FLYOUT_MENU_LIKE_DISLIKE.get()
+                && view.getParent() instanceof ViewGroup viewGroup) {
+            viewGroup.removeView(view);
+        }
+    }
+
     // Enum constant name matches the YT Music menu icon identifier at runtime.
     private enum FlyoutPanelComponent {
         ADD_CIRCLE(Settings.HIDE_FLYOUT_MENU_ADD_TO_LISTEN_LATER),
@@ -38,6 +57,7 @@ public class HideFlyoutMenuComponentsPatch {
         ADD_TO_WATCH_LATER(Settings.HIDE_FLYOUT_MENU_ADD_TO_LISTEN_LATER),
         ALBUM(Settings.HIDE_FLYOUT_MENU_GO_TO_ALBUM),
         ARTIST(Settings.HIDE_FLYOUT_MENU_GO_TO_ARTIST),
+        BOOKMARK(Settings.HIDE_FLYOUT_MENU_REMOVE_FROM_LIBRARY),
         BOOKMARK_BORDER(Settings.HIDE_FLYOUT_MENU_SAVE_EPISODE_FOR_LATER_SAVE_TO_LIBRARY),
         BROADCAST(Settings.HIDE_FLYOUT_MENU_GO_TO_PODCAST),
         CAPTIONS(Settings.HIDE_FLYOUT_MENU_CAPTIONS),

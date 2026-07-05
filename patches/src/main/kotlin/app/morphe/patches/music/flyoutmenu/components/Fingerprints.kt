@@ -9,6 +9,8 @@ package app.morphe.patches.music.flyoutmenu.components
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.string
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 
 internal object MenuItemFingerprint : Fingerprint(
@@ -17,5 +19,11 @@ internal object MenuItemFingerprint : Fingerprint(
     parameters = listOf(),
     filters = listOf(
         string("toggleMenuItemMutations")
+    )
+)
+
+internal object EndButtonsContainerFingerprint : Fingerprint(
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "end_buttons_container")
     )
 )
