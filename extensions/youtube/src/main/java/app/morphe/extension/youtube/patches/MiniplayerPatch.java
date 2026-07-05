@@ -380,6 +380,8 @@ public final class MiniplayerPatch {
 
     /**
      * Injection point.
+     * Check if the button to show the miniplayer from offscreen is pressed, than will skip
+     * the code to change the miniplayer param offsets and prevents the reposition.
      */
     public static void enableOffScreenMiniplayerButtonPressed(MotionEvent motionEvent) {
         if (!MINIPLAYER_DISABLE_HORIZONTAL_REPOSITION.get()) {
@@ -395,6 +397,8 @@ public final class MiniplayerPatch {
 
     /**
      * Injection point.
+     * Forcefully set the current params of miniplayer rect to the device offscreen offsets, only when the miniplayer is set
+     * offscreen, in order to prevents miniplayer from being shown itself during the user's navigation across the app.
      */
     public static Rect blockOffscreenMiniplayerHorizontalReposition(Rect currentRect, Rect previousRect, int screenWidth) {
         if (!MINIPLAYER_DISABLE_HORIZONTAL_REPOSITION.get()) {
@@ -407,17 +411,21 @@ public final class MiniplayerPatch {
             int originalWidth = currentRect.width();
 
             if (previousRectLeft != screenWidth || currentRect.left >= screenWidth) {
+                // Offscreen params is forcefully set on the right side.
                 if (previousRectLeft < 0 && previousRect.right == 0 && currentRect.right > 0) {
                     currentRect.left = -originalWidth;
                     currentRect.right = 0;
                     miniplayerOffscreenState = 1;
                 }
             } else {
+                // Offscreen params is forcefully set on the left side.
                 currentRect.left = screenWidth;
                 currentRect.right = screenWidth + originalWidth;
                 miniplayerOffscreenState = 2;
             }
         } else {
+            // Button to show the miniplayer from its offscreen position is pressed.
+            // Move the offscreen miniplayer of 5 pixels to the center of screen, in order to allow the miniplayer animator to perform the transition to show it again.
             int originalWidth = currentRect.width();
 
             if (miniplayerOffscreenState == 1) {
