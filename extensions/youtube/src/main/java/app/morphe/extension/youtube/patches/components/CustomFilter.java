@@ -10,15 +10,15 @@
 
 package app.morphe.extension.youtube.patches.components;
 
-import app.morphe.extension.shared.patches.components.CustomFilterBase;
+import app.morphe.extension.shared.patches.components.BaseCustomFilter;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
- * YouTube-side entry point for the shared custom filter. See {@link CustomFilterBase} for the
+ * YouTube-side entry point for the shared custom filter. See {@link BaseCustomFilter} for the
  * expression syntax reference.
  */
 @SuppressWarnings("unused")
-public final class CustomFilter extends CustomFilterBase {
+public final class CustomFilter extends BaseCustomFilter {
 
     public CustomFilter() {
         super(

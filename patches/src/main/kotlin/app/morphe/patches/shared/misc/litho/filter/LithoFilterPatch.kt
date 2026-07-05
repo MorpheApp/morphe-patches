@@ -10,7 +10,7 @@
 
 @file:Suppress("SpellCheckingInspection")
 
-package app.morphe.patches.shared.misc.litho
+package app.morphe.patches.shared.misc.litho.filter
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin

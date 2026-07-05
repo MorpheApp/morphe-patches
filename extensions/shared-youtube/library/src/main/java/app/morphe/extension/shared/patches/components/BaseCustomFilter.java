@@ -83,13 +83,13 @@ import app.morphe.extension.shared.settings.StringSetting;
  * "invalid syntax" toast (so localized copy can differ per app).
  */
 @SuppressWarnings("unused")
-public abstract class CustomFilterBase extends Filter {
+public abstract class BaseCustomFilter extends Filter {
 
     private final BooleanSetting filterEnabledSetting;
     private final StringSetting filterStringsSetting;
     private final String invalidSyntaxToastKey;
 
-    protected CustomFilterBase(BooleanSetting filterEnabledSetting,
+    protected BaseCustomFilter(BooleanSetting filterEnabledSetting,
                                StringSetting filterStringsSetting,
                                String invalidSyntaxToastKey) {
         this.filterEnabledSetting = filterEnabledSetting;

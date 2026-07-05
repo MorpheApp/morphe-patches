@@ -7,9 +7,9 @@
 
 @file:Suppress("SpellCheckingInspection")
 
-package app.morphe.patches.youtube.misc.litho
+package app.morphe.patches.youtube.misc.litho.filter
 
-import app.morphe.patches.shared.misc.litho.sharedLithoFilterPatch
+import app.morphe.patches.shared.misc.litho.filter.sharedLithoFilterPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.fix.backtoexitgesture.fixBackToExitGesturePatch
 import app.morphe.patches.youtube.misc.fix.verticalscroll.fixVerticalScrollPatch

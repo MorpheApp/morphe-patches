@@ -8,14 +8,14 @@
 package app.morphe.extension.music.patches.components;
 
 import app.morphe.extension.music.settings.Settings;
-import app.morphe.extension.shared.patches.components.CustomFilterBase;
+import app.morphe.extension.shared.patches.components.BaseCustomFilter;
 
 /**
- * YT Music entry point for the shared custom filter. See {@link CustomFilterBase} for the
+ * YT Music entry point for the shared custom filter. See {@link BaseCustomFilter} for the
  * expression syntax reference.
  */
 @SuppressWarnings("unused")
-public final class CustomFilter extends CustomFilterBase {
+public final class CustomFilter extends BaseCustomFilter {
 
     public CustomFilter() {
         super(
