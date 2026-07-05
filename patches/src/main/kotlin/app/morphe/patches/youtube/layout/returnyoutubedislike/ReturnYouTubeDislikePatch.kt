@@ -55,7 +55,6 @@ val returnYouTubeDislikePatch = bytecodePatch(
         settingsPatch,
         sharedExtensionPatch,
         conversionContextPatch,
-        lithoFilterPatch,
         videoIdPatch,
         playerTypeHookPatch,
         restoreOldVideoActionBarPatch,
@@ -66,7 +65,6 @@ val returnYouTubeDislikePatch = bytecodePatch(
     execute {
         PreferenceScreen.RETURN_YOUTUBE_DISLIKE.addPreferences(
             SwitchPreference("morphe_ryd_enabled"),
-            SwitchPreference("morphe_ryd_shorts", summary = true),
             SwitchPreference("morphe_ryd_dislike_percentage", summary = true),
             SwitchPreference("morphe_ryd_compact_layout", summary = true),
             SwitchPreference("morphe_ryd_estimated_like", summary = true),
@@ -203,16 +201,6 @@ val returnYouTubeDislikePatch = bytecodePatch(
                 )
             }
         }
-
-        // endregion
-
-        // region Hook Shorts
-
-        // Filter that parses the video ID from the UI
-        addLithoFilter(EXTENSION_FILTER)
-
-        // Player response video ID is needed to search for the video IDs in Shorts litho components.
-        hookPlayerResponseVideoId("$EXTENSION_FILTER->newPlayerResponseVideoId(Ljava/lang/String;Z)V")
 
         // endregion
 

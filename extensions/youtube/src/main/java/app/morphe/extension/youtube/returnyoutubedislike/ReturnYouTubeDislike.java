@@ -385,8 +385,16 @@ public class ReturnYouTubeDislike {
         }
     }
 
-    @NonNull
-    public static ReturnYouTubeDislike getFetchForVideoId(@Nullable String videoId) {
+    @Nullable
+    public static ReturnYouTubeDislike getFetchForVideoIdOrNull(String videoId) {
+        return getFetchForVideoId(videoId, false);
+    }
+
+    public static ReturnYouTubeDislike getFetchForVideoId(String videoId) {
+        return getFetchForVideoId(videoId, true);
+    }
+
+    private static ReturnYouTubeDislike getFetchForVideoId(String videoId, boolean createIfNeeded) {
         Objects.requireNonNull(videoId);
         synchronized (fetchCache) {
             // Remove any expired entries.
@@ -399,7 +407,7 @@ public class ReturnYouTubeDislike {
             });
 
             ReturnYouTubeDislike fetch = fetchCache.get(videoId);
-            if (fetch == null) {
+            if (fetch == null && createIfNeeded) {
                 fetch = new ReturnYouTubeDislike(videoId);
                 fetchCache.put(videoId, fetch);
             }
