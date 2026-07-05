@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/1881
  *
  * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
@@ -180,10 +180,10 @@ public final class DownloadsPatch {
             }
 
             if (p1 != null) {
-                String p1Str = p1.toString();
-                Logger.printDebug(() -> "commandResolverOnClick: " + p1Str);
+                String p1String = p1.toString();
+                Logger.printDebug(() -> "commandResolverOnClick: " + p1String);
 
-                final boolean isMenuOpen = p1Str.contains("[98150882]");
+                final boolean isMenuOpen = p1String.contains("[98150882]");
                 if (isMenuOpen) {
                     Logger.printDebug(() -> "Flyout isMenuOpen");
                     String extractedId = extractVideoIdFromCommand(p1);
@@ -196,7 +196,8 @@ public final class DownloadsPatch {
                     return false;
                 }
 
-                final boolean isDownloadClick = p1Str.contains("[133724106]");
+                final boolean isDownloadClick = Utils.containsAny(p1String,
+                        "[133724106]", "[144224893]");
                 if (isDownloadClick) {
                     Logger.printDebug(() -> "Flyout isDownloadClick");
                     final long now = System.currentTimeMillis();
