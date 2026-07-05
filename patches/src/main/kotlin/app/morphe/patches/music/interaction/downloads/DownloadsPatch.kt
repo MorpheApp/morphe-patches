@@ -43,6 +43,9 @@ private val downloadsResourcePatch = resourcePatch {
 }
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/DownloadsPatch;"
+private const val EXTENSION_PROTOCOL_BUFFER_INTERFACE =
+    $$"Lapp/morphe/extension/music/patches/DownloadsPatch$ProtocolBufferFieldInterface;"
+
 
 @Suppress("unused")
 val downloadsPatch = bytecodePatch(
@@ -61,13 +64,21 @@ val downloadsPatch = bytecodePatch(
     execute {
         hookSpannableString(EXTENSION_CLASS, "onLithoTextLoaded")
 
-        CommandResolverFingerprint.method.addInstruction(
-            0,
-            "invoke-static { p0, p1, p2 }, $EXTENSION_CLASS->commandResolverOnClick(Ljava/lang/Object;Ljava/lang/Object;Ljava/util/Map;)Z"
-        )
+        CommandResolverFingerprint.method.apply {
+            // Add interface to get buffer.
+            mutableClassDefBy(parameterTypes[1].toString())
+                .interfaces.add(EXTENSION_PROTOCOL_BUFFER_INTERFACE)
+
+            addInstruction(
+                0,
+                "invoke-static { p1, p2 }, $EXTENSION_CLASS->" +
+                        "commandResolverOnClick(${EXTENSION_PROTOCOL_BUFFER_INTERFACE}Ljava/util/Map;)Z"
+            )
+        }
 
         OfflineVideoEndpointFingerprint.method.addInstructionsWithLabels(
-            0, """
+            0,
+            """
                 invoke-static { p2 }, $EXTENSION_CLASS->inAppDownloadButtonOnClick(Ljava/util/Map;)Z
                 move-result v0
                 if-eqz v0, :show_native_downloader

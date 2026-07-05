@@ -27,6 +27,14 @@ import app.morphe.extension.shared.settings.preference.ExternalDownloaderPrefere
 @SuppressWarnings("unused")
 public final class DownloadsPatch {
 
+    /**
+     * Interface to use obfuscated fields.
+     */
+    public interface ProtocolBufferFieldInterface {
+        // Exposes non-obfuscated method on an obfuscated class.
+        byte[] toByteArray();
+    }
+
     private static final String ELEMENTS_SENDER_VIEW =
             "com.google.android.libraries.youtube.rendering.elements.sender_view";
     private static final int IGNORE_DOUBLE_CLICK_DURATION_MS = 1000;
@@ -39,6 +47,7 @@ public final class DownloadsPatch {
 
     /**
      * Injection point.
+     * Usually is called of the main thread.
      */
     public static CharSequence onLithoTextLoaded(Object conversionContext, CharSequence original) {
         try {
@@ -64,71 +73,86 @@ public final class DownloadsPatch {
     }
 
     /**
-     * Filters out standard 11-char strings that are known Protobuf hashes/keys.
-     */
-    private static boolean isValidVideoId(String id) {
-        if (id == null || id.length() != 11) return false;
-        String lower = id.toLowerCase();
-
-        return !lower.startsWith("yt_") &&
-                !lower.startsWith("video_") &&
-                !lower.contains("download") &&
-                !lower.contains("list_item") &&
-                !lower.contains("button");
-    }
-
-    /**
      * Scans the raw bytes of the Command object looking for the specific
      * Protobuf binary signature of an 11-byte String field.
      */
-    private static String extractVideoIdFromCommand(Object commandObj) {
-        try {
-            if (commandObj == null) return null;
-            Method toByteArray = commandObj.getClass().getMethod("toByteArray");
-            byte[] bytes = (byte[]) toByteArray.invoke(commandObj);
-            if (bytes == null) {
-                return null;
-            }
+    private static String extractVideoIdFromCommand(ProtocolBufferFieldInterface commandObj) {
+        byte[] bytes = commandObj.toByteArray();
+        if (bytes == null) {
+            return null;
+        }
 
-            for (int i = 1, lastIndex = bytes.length - 11; i < lastIndex; i++) {
-                if (bytes[i] == 11) {
-                    byte tagByte = bytes[i - 1];
-
-                    if ((tagByte & 0b00000111) == 2) {
-                        String possibleId = new String(bytes, i + 1, 11,
-                                StandardCharsets.US_ASCII);
-
-                        if (possibleId.matches("^[A-Za-z0-9_\\-]{11}$")) {
-                            if (isValidVideoId(possibleId)) {
-                                return possibleId;
-                            }
-                        }
-                    }
+        for (int i = 1, lastIndex = bytes.length - 11; i < lastIndex; i++) {
+            // Protobuf: field tag (wire type 2, length-delimited) followed by length 11
+            if (bytes[i] == 11 && (bytes[i - 1] & 0b00000111) == 2) {
+                if (isLikelyVideoId(bytes, i + 1) && !isBlacklisted(bytes, i + 1)) {
+                    return new String(bytes, i + 1, 11, StandardCharsets.US_ASCII);
                 }
             }
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "Failed to extract from Command bytes", ex);
         }
         return null;
+    }
+
+    /**
+     * Checks if the 11 bytes at the given offset are a valid YouTube video ID character set.
+     */
+    private static boolean isLikelyVideoId(byte[] bytes, int offset) {
+        for (int i = 0; i < 11; i++) {
+            byte b = bytes[offset + i];
+            // YouTube video IDs consist of [A-Za-z0-9_-]
+            if (!((b >= 'a' && b <= 'z') || (b >= 'A' && b <= 'Z')
+                    || (b >= '0' && b <= '9') || b == '_' || b == '-')) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Checks if the potential ID is blacklisted such as common Protobuf keys.
+     */
+    private static boolean isBlacklisted(byte[] bytes, int offset) {
+        return matchesIgnoreCase(bytes, offset, "yt_") ||
+                matchesIgnoreCase(bytes, offset, "video_") ||
+                containsIgnoreCase(bytes, offset, 11, "download") ||
+                containsIgnoreCase(bytes, offset, 11, "list_item") ||
+                containsIgnoreCase(bytes, offset, 11, "button");
+    }
+
+    private static boolean matchesIgnoreCase(byte[] bytes, int offset, String target) {
+        for (int i = 0, length = target.length(); i < length; i++) {
+            byte b = bytes[offset + i];
+            int lowerB = (b >= 'A' && b <= 'Z') ? (b + 32) : b;
+            if (lowerB != target.charAt(i)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @SuppressWarnings("SameParameterValue")
+    private static boolean containsIgnoreCase(byte[] bytes, int offset, int len, String target) {
+        for (int i = 0, lastIndex = len - target.length(); i <= lastIndex; i++) {
+            if (matchesIgnoreCase(bytes, offset + i, target)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
      * Determines if the clicked view is inside a Dialog/BottomSheet by comparing
      * its Window root to the main Activity's Window root.
      */
-    private static boolean isViewInsideDialog(Object viewObj) {
-        try {
-            if (viewObj instanceof View view) {
-                View buttonRoot = view.getRootView();
+    private static boolean isViewInsideDialog(@Nullable Object viewObj) {
+        if (viewObj instanceof View view) {
+            View buttonRoot = view.getRootView();
 
-                Activity activity = Utils.getActivity();
-                if (activity != null) {
-                    View activityRoot = activity.getWindow().getDecorView();
-                    return buttonRoot != activityRoot;
-                }
+            Activity activity = Utils.getActivity();
+            if (activity != null) {
+                View activityRoot = activity.getWindow().getDecorView();
+                return buttonRoot != activityRoot;
             }
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "isViewInsideDialog failure", ex);
         }
         return false;
     }
@@ -166,9 +190,10 @@ public final class DownloadsPatch {
     /**
      * Injection point.
      */
-    public static boolean commandResolverOnClick(Object p0, Object p1, @Nullable Map<Object, Object> map) {
+    public static boolean commandResolverOnClick(ProtocolBufferFieldInterface p1, Map<Object, Object> map) {
         try {
-            if (!SharedYouTubeSettings.EXTERNAL_DOWNLOADER_ACTION_BUTTON.get()) {
+            if (!SharedYouTubeSettings.EXTERNAL_DOWNLOADER_ACTION_BUTTON.get()
+                    || p1 == null || map == null) {
                 return false;
             }
             Utils.verifyOnMainThread();
@@ -179,57 +204,55 @@ public final class DownloadsPatch {
                 return true;
             }
 
-            if (p1 != null) {
-                String p1String = p1.toString();
-                Logger.printDebug(() -> "commandResolverOnClick: " + p1String);
+            String p1String = p1.toString();
+            Logger.printDebug(() -> "commandResolverOnClick: " + p1String);
 
-                final boolean isMenuOpen = p1String.contains("[98150882]");
-                if (isMenuOpen) {
-                    Logger.printDebug(() -> "Flyout isMenuOpen");
-                    String extractedId = extractVideoIdFromCommand(p1);
-                    if (extractedId != null) {
-                        cachedFlyoutVideoId = extractedId;
-                        Logger.printDebug(() -> "Found flyout isMenuOpen videoId: " + extractedId);
-                    } else {
-                        cachedFlyoutVideoId = "";
-                    }
-                    return false;
+            final boolean isMenuOpen = p1String.contains("[98150882]");
+            if (isMenuOpen) {
+                Logger.printDebug(() -> "Flyout isMenuOpen");
+                String extractedId = extractVideoIdFromCommand(p1);
+                if (extractedId != null) {
+                    cachedFlyoutVideoId = extractedId;
+                    Logger.printDebug(() -> "Found flyout isMenuOpen videoId: " + extractedId);
+                } else {
+                    cachedFlyoutVideoId = "";
+                }
+                return false;
+            }
+
+            final boolean isDownloadClick = Utils.containsAny(p1String,
+                    "[133724106]", "[144224893]");
+            if (isDownloadClick) {
+                Logger.printDebug(() -> "Flyout isDownloadClick");
+                final long now = System.currentTimeMillis();
+                if (now - lastFlyoutDownloadTime < IGNORE_DOUBLE_CLICK_DURATION_MS) {
+                    return true;
                 }
 
-                final boolean isDownloadClick = Utils.containsAny(p1String,
-                        "[133724106]", "[144224893]");
-                if (isDownloadClick) {
-                    Logger.printDebug(() -> "Flyout isDownloadClick");
-                    final long now = System.currentTimeMillis();
-                    if (now - lastFlyoutDownloadTime < IGNORE_DOUBLE_CLICK_DURATION_MS) {
-                        return true;
-                    }
+                Object viewObj = map.get(ELEMENTS_SENDER_VIEW);
+                final boolean inDialog = isViewInsideDialog(viewObj);
 
-                    Object viewObj = map != null ? map.get(ELEMENTS_SENDER_VIEW) : null;
-                    final boolean inDialog = isViewInsideDialog(viewObj);
+                String targetId = extractVideoIdFromCommand(p1);
 
-                    String targetId = extractVideoIdFromCommand(p1);
+                if (targetId == null && inDialog) {
+                    targetId = cachedFlyoutVideoId;
+                    Logger.printDebug(() -> "Using flyout isDownloadClick videoId: " + cachedFlyoutVideoId);
+                }
 
-                    if (targetId == null && inDialog) {
-                        targetId = cachedFlyoutVideoId;
-                        Logger.printDebug(() -> "Using flyout isDownloadClick videoId: " + cachedFlyoutVideoId);
-                    }
+                if (targetId != null && !targetId.isEmpty()) {
+                    lastFlyoutDownloadTime = now;
+                    launchExternalDownloader(targetId);
+                    return true;
 
-                    if (targetId != null && !targetId.isEmpty()) {
-                        lastFlyoutDownloadTime = now;
-                        launchExternalDownloader(targetId);
-                        return true;
+                } else if (inDialog) {
+                    lastFlyoutDownloadTime = now;
+                    Logger.printDebug(() -> "Now Playing Download Intercepted via Window Check.");
+                    launchExternalDownloader();
+                    return true;
 
-                    } else if (inDialog) {
-                        lastFlyoutDownloadTime = now;
-                        Logger.printDebug(() -> "Now Playing Download Intercepted via Window Check.");
-                        launchExternalDownloader();
-                        return true;
-
-                    } else {
-                        Logger.printDebug(() -> "Playlist Download detected via Window Check. Falling back to native UI");
-                        return false;
-                    }
+                } else {
+                    Logger.printDebug(() -> "Playlist Download detected via Window Check. Falling back to native UI");
+                    return false;
                 }
             }
         } catch (Exception ex) {
