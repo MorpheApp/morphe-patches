@@ -68,6 +68,9 @@ public final class DownloadsPatch {
     }
 
     private static void launchExternalDownloader(String videoId) {
+        cachedFlyoutVideoId = "";
+        downloadButtonLabel = "";
+
         ExternalDownloaderPreference.launchExternalDownloader(
                 videoId, Utils.getActivity(), "https://music.youtube.com/watch?v=" + videoId);
     }
@@ -204,6 +207,10 @@ public final class DownloadsPatch {
                 return true;
             }
 
+            if (!SharedYouTubeSettings.EXTERNAL_DOWNLOADER_FLYOUT_BUTTON.get()) {
+                return false;
+            }
+
             String p1String = p1.toString();
             Logger.printDebug(() -> "commandResolverOnClick: " + p1String);
 
@@ -221,7 +228,7 @@ public final class DownloadsPatch {
             }
 
             final boolean isDownloadClick = Utils.containsAny(p1String,
-                    "[133724106]", "[144224893]");
+                    "[133724106]", "[443434441]");
             if (isDownloadClick) {
                 Logger.printDebug(() -> "Flyout isDownloadClick");
                 final long now = System.currentTimeMillis();

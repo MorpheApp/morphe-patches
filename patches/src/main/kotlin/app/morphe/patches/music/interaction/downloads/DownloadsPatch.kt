@@ -32,6 +32,7 @@ private val downloadsResourcePatch = resourcePatch {
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
                     SwitchPreference("morphe_external_downloader_action_button", summary = true),
+                    SwitchPreference("morphe_external_downloader_flyout_button"),
                     TextPreference(
                         "morphe_external_downloader_name",
                         tag = "app.morphe.extension.shared.settings.preference.ExternalDownloaderPreference"
