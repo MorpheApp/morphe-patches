@@ -126,6 +126,7 @@ internal fun hookSpannableString(
             move-result-object v$spannedRegister
         """
     )
+    spannedIndex += 2
 }
 
 @Suppress("unused")

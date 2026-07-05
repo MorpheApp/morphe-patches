@@ -29,13 +29,13 @@ public final class DownloadsPatch {
 
     private static final String ELEMENTS_SENDER_VIEW =
             "com.google.android.libraries.youtube.rendering.elements.sender_view";
-    public static final int IGNORE_DOUBLE_CLICK_DURATION_MS = 1000;
+    private static final int IGNORE_DOUBLE_CLICK_DURATION_MS = 1000;
 
-    private static String cachedFlyoutVideoId = "";
-    private static String downloadButtonLabel = "";
+    private static volatile String cachedFlyoutVideoId = "";
+    private static volatile String downloadButtonLabel = "";
 
-    private static long lastFlyoutDownloadTime;
-    private static long lastMainPlayerDownloadTime;
+    private static volatile long lastFlyoutDownloadTime;
+    private static volatile long lastMainPlayerDownloadTime;
 
     /**
      * Injection point.
@@ -46,6 +46,7 @@ public final class DownloadsPatch {
                     downloadButtonLabel.isEmpty() &&
                     conversionContext.toString().contains("music_download_button.")) {
                 downloadButtonLabel = original.toString();
+                Logger.printDebug(() -> "Found download button label: " + downloadButtonLabel);
             }
         } catch (Exception ex) {
             Logger.printDebug(() -> "Could not parse litho text", ex);
@@ -81,15 +82,15 @@ public final class DownloadsPatch {
      * Protobuf binary signature of an 11-byte String field.
      */
     private static String extractVideoIdFromCommand(Object commandObj) {
-        if (commandObj == null) return null;
         try {
+            if (commandObj == null) return null;
             Method toByteArray = commandObj.getClass().getMethod("toByteArray");
             byte[] bytes = (byte[]) toByteArray.invoke(commandObj);
-
-            if (bytes == null || bytes.length == 0) {
+            if (bytes == null) {
                 return null;
             }
-            for (int i = 1; i < bytes.length - 11; i++) {
+
+            for (int i = 1, lastIndex = bytes.length - 11; i < lastIndex; i++) {
                 if (bytes[i] == 11) {
                     byte tagByte = bytes[i - 1];
 
@@ -105,8 +106,8 @@ public final class DownloadsPatch {
                     }
                 }
             }
-        } catch (Exception e) {
-            Logger.printDebug(() -> "Failed to extract from Command bytes: " + e.getMessage());
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Failed to extract from Command bytes", ex);
         }
         return null;
     }
@@ -138,16 +139,14 @@ public final class DownloadsPatch {
     public static boolean inAppDownloadButtonOnClick(@Nullable Map<Object, Object> map) {
         try {
             if (!SharedYouTubeSettings.EXTERNAL_DOWNLOADER_ACTION_BUTTON.get()
-                    || downloadButtonLabel.isEmpty()) {
+                    || downloadButtonLabel.isEmpty() || map == null) {
                 return false;
             }
             Utils.verifyOnMainThread();
 
-            if (map != null && map.get(ELEMENTS_SENDER_VIEW) instanceof ComponentHost componentHost) {
-                String description = componentHost.getContentDescription() != null ?
-                        componentHost.getContentDescription().toString() : "";
-
-                if (downloadButtonLabel.equals(description)) {
+            if (map.get(ELEMENTS_SENDER_VIEW) instanceof ComponentHost componentHost) {
+                CharSequence contentDescription = componentHost.getContentDescription();
+                if (contentDescription != null && downloadButtonLabel.equals(contentDescription.toString())) {
                     final long now = System.currentTimeMillis();
                     if (now - lastMainPlayerDownloadTime < IGNORE_DOUBLE_CLICK_DURATION_MS) {
                         return true;
@@ -175,27 +174,31 @@ public final class DownloadsPatch {
             Utils.verifyOnMainThread();
 
             if (inAppDownloadButtonOnClick(map)) {
+                Logger.printDebug(() -> "inAppDownloadButtonOnClicked");
                 cachedFlyoutVideoId = "";
                 return true;
             }
 
             if (p1 != null) {
                 String p1Str = p1.toString();
+                Logger.printDebug(() -> "commandResolverOnClick: " + p1Str);
 
                 final boolean isMenuOpen = p1Str.contains("[98150882]");
-                final boolean isDownloadClick = p1Str.contains("[133724106]");
-
                 if (isMenuOpen) {
-                    cachedFlyoutVideoId = "";
-
+                    Logger.printDebug(() -> "Flyout isMenuOpen");
                     String extractedId = extractVideoIdFromCommand(p1);
                     if (extractedId != null) {
                         cachedFlyoutVideoId = extractedId;
+                        Logger.printDebug(() -> "Found flyout isMenuOpen videoId: " + extractedId);
+                    } else {
+                        cachedFlyoutVideoId = "";
                     }
                     return false;
                 }
 
+                final boolean isDownloadClick = p1Str.contains("[133724106]");
                 if (isDownloadClick) {
+                    Logger.printDebug(() -> "Flyout isDownloadClick");
                     final long now = System.currentTimeMillis();
                     if (now - lastFlyoutDownloadTime < IGNORE_DOUBLE_CLICK_DURATION_MS) {
                         return true;
@@ -208,6 +211,7 @@ public final class DownloadsPatch {
 
                     if (targetId == null && inDialog) {
                         targetId = cachedFlyoutVideoId;
+                        Logger.printDebug(() -> "Using flyout isDownloadClick videoId: " + cachedFlyoutVideoId);
                     }
 
                     if (targetId != null && !targetId.isEmpty()) {

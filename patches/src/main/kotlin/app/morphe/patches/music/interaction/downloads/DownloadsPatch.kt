@@ -63,12 +63,12 @@ val downloadsPatch = bytecodePatch(
 
         CommandResolverFingerprint.method.addInstruction(
             0,
-            "invoke-static {p0, p1, p2}, $EXTENSION_CLASS->commandResolverOnClick(Ljava/lang/Object;Ljava/lang/Object;Ljava/util/Map;)Z"
+            "invoke-static { p0, p1, p2 }, $EXTENSION_CLASS->commandResolverOnClick(Ljava/lang/Object;Ljava/lang/Object;Ljava/util/Map;)Z"
         )
 
         OfflineVideoEndpointFingerprint.method.addInstructionsWithLabels(
             0, """
-                invoke-static {p2}, $EXTENSION_CLASS->inAppDownloadButtonOnClick(Ljava/util/Map;)Z
+                invoke-static { p2 }, $EXTENSION_CLASS->inAppDownloadButtonOnClick(Ljava/util/Map;)Z
                 move-result v0
                 if-eqz v0, :show_native_downloader
                 return-void
