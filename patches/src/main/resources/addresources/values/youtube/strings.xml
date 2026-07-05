@@ -1160,10 +1160,10 @@ Tap here to open DeArrow.ajay.app"</string>
     <string name="morphe_remember_shorts_quality_last_selected_summary">Applies your manual quality selection to all future Shorts</string>
     <string name="morphe_shorts_quality_default_wifi_title">Default Shorts quality on Wi-Fi network</string>
     <string name="morphe_shorts_quality_default_mobile_title">Default Shorts quality on mobile network</string>
-    <string name="morphe_remember_video_quality_toast_mobile">Changed default mobile quality to: %1$s</string>
-    <string name="morphe_remember_video_quality_toast_wifi">Changed default Wi-Fi quality to: %1$s</string>
-    <string name="morphe_remember_video_quality_toast_shorts_mobile">Changed Shorts mobile quality to: %1$s</string>
-    <string name="morphe_remember_video_quality_toast_shorts_wifi">Changed Shorts Wi-Fi quality to: %1$s</string>
+    <string name="morphe_remember_video_quality_toast_mobile">Changed default mobile quality to: %s</string>
+    <string name="morphe_remember_video_quality_toast_wifi">Changed default Wi-Fi quality to: %s</string>
+    <string name="morphe_remember_video_quality_toast_shorts_mobile">Changed Shorts mobile quality to: %s</string>
+    <string name="morphe_remember_video_quality_toast_shorts_wifi">Changed Shorts Wi-Fi quality to: %s</string>
 
     <!-- video.speed.button.playbackSpeedButtonPatch -->
     <string name="morphe_playback_speed_dialog_button_title">Show Playback speed button</string>
