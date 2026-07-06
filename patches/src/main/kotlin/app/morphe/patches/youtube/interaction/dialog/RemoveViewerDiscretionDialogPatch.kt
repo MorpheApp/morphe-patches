@@ -43,8 +43,10 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
             )
         }
 
+        val skipDialogFingerprint = skipDialogFingerprint(AdultContentRunnableFingerprint.method.definingClass)
+
         // region skip discretion dialog
-        skipDialogFingerprint(AdultContentRunnableFingerprint.method.definingClass).let { fingerprint ->
+        skipDialogFingerprint.let { fingerprint ->
             listOf(
                 fingerprint.instructionMatches[3],
                 fingerprint.instructionMatches[1],
@@ -63,7 +65,7 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
         val adultContentSetPropertiesMatches = AdultContentSetPropertiesFingerprint.instructionMatches
 
         unlockRelatedVideosFingerprint(
-            skipDialogClass = skipDialogFingerprint(AdultContentRunnableFingerprint.method.definingClass).method.definingClass,
+            skipDialogClass = skipDialogFingerprint.method.definingClass,
             adultContentProperty1 = adultContentSetPropertiesMatches[0]
                 .getInstruction<ReferenceInstruction>().reference.toString(),
             adultContentProperty2 = adultContentSetPropertiesMatches[2]
