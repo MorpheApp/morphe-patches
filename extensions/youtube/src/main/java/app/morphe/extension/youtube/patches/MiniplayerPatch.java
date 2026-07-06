@@ -417,7 +417,7 @@ public final class MiniplayerPatch {
     /**
      * Injection point.
      * Forcefully set the current params of miniplayer rect to the device offscreen offsets, only when the miniplayer is set
-     * offscreen, in order to prevents miniplayer from being shown itself during the user's navigation across the app.
+     * offscreen, in order to prevent miniplayer from being shown itself during the user's navigation across the app.
      */
     public static Rect blockOffscreenMiniplayerHorizontalReposition(Rect currentRect, Rect previousRect, int screenWidth) {
         if (!MINIPLAYER_DISABLE_HORIZONTAL_REPOSITION.get()) {
@@ -444,7 +444,8 @@ public final class MiniplayerPatch {
             }
         } else {
             // Button to show the miniplayer from its offscreen position is pressed.
-            // Move the offscreen miniplayer of 5 pixels to the center of screen, in order to allow the miniplayer animator to perform the transition to show it again.
+            // Move the offscreen miniplayer of 5 pixels to the center of screen, in order to allow the
+            // miniplayer animator to perform the transition to show it again.
             int originalWidth = currentRect.width();
 
             if (miniplayerOffscreenState == 1) {
