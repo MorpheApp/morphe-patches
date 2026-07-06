@@ -15,6 +15,7 @@ import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.checkCast
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
@@ -84,6 +85,55 @@ internal object MiniplayerHorizontalDragPlaybackFingerprint : Fingerprint (
             location = MatchAfterWithin(4)
         )
     )
+)
+
+internal object MiniplayerRectDragFieldsNameFingerprint : Fingerprint (
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/graphics/Rect;",
+    parameters = listOf("I", "I"),
+    filters = listOf(
+        opcode(opcode = Opcode.IF_GEZ),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "Landroid/graphics/Rect;",
+            location = MatchAfterImmediately()
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Landroid/graphics/Rect;->width()I",
+            location = MatchAfterImmediately()
+        ),
+        opcode(
+            opcode = Opcode.MOVE_RESULT,
+            location = MatchAfterImmediately()
+        ),
+        opcode(
+            opcode = Opcode.NEG_INT,
+            location = MatchAfterImmediately()
+        ),
+        opcode(
+            opcode = Opcode.GOTO,
+            location = MatchAfterImmediately()
+        ),
+        fieldAccess(
+            opcode = Opcode.IGET,
+            type = "I",
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
+internal object MiniplayerHorizontalRepositionFingerprint : Fingerprint(
+    classFingerprint = MiniplayerRectDragFieldsNameFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/graphics/Rect;"),
+)
+
+internal object NextGenWatchLayoutOnInterceptTouchEventFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/apps/youtube/app/watch/nextgenwatch/ui/NextGenWatchLayout;",
+    name = "onInterceptTouchEvent",
+    parameters = listOf("Landroid/view/MotionEvent;")
 )
 
 private object MiniplayerDimensionsCalculatorParentFingerprint : Fingerprint(
