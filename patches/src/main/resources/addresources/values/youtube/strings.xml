@@ -467,7 +467,7 @@ Info: May not work on live streams"</string>
     <string name="morphe_disable_precise_seeking_gesture_title">Disable precise seeking gesture</string>
     <string name="morphe_disable_precise_seeking_gesture_summary">Disables the precise seeking mode that activates when pulling up the seekbar</string>
 
-    <!-- interaction.seekbar.livestreamDvrPatch -->
+    <!-- interaction.seekbar.livestreamDVRPatch -->
     <string name="morphe_livestream_dvr_title">Enable livestream DVR</string>
     <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
     <string name="morphe_livestream_dvr_summary">"Allows seeking on all livestreams, even those that normally restrict it

@@ -1,7 +1,5 @@
 package app.morphe.patches.youtube.interaction.doubletap
 
-import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.OpcodesFilter.Companion.opcodesToFilters
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -10,8 +8,6 @@ import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.Opcode
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/DisableDoubleTapActionsPatch;"
@@ -34,39 +30,28 @@ val disableDoubleTapActionsPatch = bytecodePatch(
             SwitchPreference("morphe_disable_chapter_skip_double_tap", summary = true),
         )
 
-        val doubleTapInfoGetSeekSourceFingerprint = Fingerprint(
-            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-            returnType = SeekTypeEnumFingerprint.originalClassDef.type,
-            parameters = listOf("Z"),
-            filters = opcodesToFilters(
-                Opcode.IF_EQZ,
-                Opcode.SGET_OBJECT,
-                Opcode.RETURN_OBJECT,
-                Opcode.SGET_OBJECT,
-                Opcode.RETURN_OBJECT,
-            ),
-            custom = { _, classDef ->
-                classDef.fields.count() == 4
-            }
-        )
+        doubleTapInfoGetSeekSourceFingerprint(
+            SeekTypeEnumFingerprint.originalClassDef.type
+        ).let { doubleTapFingerprint ->
 
-        // Force isChapterSeek flag to false.
-        doubleTapInfoGetSeekSourceFingerprint.method.addInstructions(
-            0,
-            """
-                invoke-static { p1 }, $EXTENSION_CLASS->disableDoubleTapChapters(Z)Z
-                move-result p1
-            """
-        )
+            // Force isChapterSeek flag to false.
+            doubleTapFingerprint.method.addInstructions(
+                0,
+                """
+                    invoke-static { p1 }, $EXTENSION_CLASS->disableDoubleTapChapters(Z)Z
+                    move-result p1
+                """
+            )
 
-        DoubleTapInfoCtorFingerprint.match(
-            doubleTapInfoGetSeekSourceFingerprint.classDef
-        ).method.addInstructions(
-            0,
-            """
-                invoke-static { p3 }, $EXTENSION_CLASS->disableDoubleTapChapters(Z)Z
-                move-result p3
-            """
-        )
+            DoubleTapInfoCtorFingerprint.match(
+                doubleTapFingerprint.classDef
+            ).method.addInstructions(
+                0,
+                """
+                    invoke-static { p3 }, $EXTENSION_CLASS->disableDoubleTapChapters(Z)Z
+                    move-result p3
+                """
+            )
+        }
     }
 }

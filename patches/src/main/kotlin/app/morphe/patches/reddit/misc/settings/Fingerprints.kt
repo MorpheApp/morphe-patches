@@ -79,3 +79,30 @@ internal object WebBrowserActivityOnCreateFingerprint : Fingerprint(
     ),
     strings = listOf("com.reddit.extra.initial_url")
 )
+
+/**
+ * Matches the method returning the Reddit Activity.
+ * Caller must supply the Reddit activity type resolved from [RedditActivityFingerprint].
+ */
+internal fun getActivityMethodFingerprint(redditActivityType: String) = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = redditActivityType,
+    parameters = listOf()
+)
+
+/**
+ * Matches the method that starts the activity.
+ * Caller must supply the defining class resolved from the get activity method.
+ */
+internal fun startActivityMethodFingerprint(getActivityDefiningClass: String) = Fingerprint(
+    definingClass = getActivityDefiningClass,
+    returnType = "V",
+    parameters = listOf(
+        "Landroid/content/Intent",
+        "I",
+        "Landroid/os/Bundle;"
+    ),
+    filters = listOf(
+        string(" not attached to Activity"),
+    )
+)

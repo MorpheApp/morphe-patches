@@ -12,16 +12,10 @@
 
 package app.morphe.patches.shared.misc.litho
 
-import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation.MatchAfterWithin
-import app.morphe.patcher.checkCast
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.methodCall
-import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.string
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -37,7 +31,6 @@ import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getReference
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
@@ -181,44 +174,12 @@ val lithoFilterPatch = bytecodePatch(
 
         // There's a method in the same class that gets the value of 'buttonViewModel.accessibilityText'.
         // As this class is abstract, we need to find another method that uses a method call.
-        val accessibilityTextFingerprint = Fingerprint(
-            returnType = "V",
-            filters = listOf(
-                methodCall(
-                    opcode = Opcode.INVOKE_INTERFACE,
-                    parameters = listOf(),
-                    returnType = "Ljava/lang/String;"
-                ),
-                methodCall(
-                    reference = accessibilityIdMethod,
-                    location = MatchAfterWithin(5)
-                )
-            ),
-            custom = { method, _ ->
-                // 'public final synthetic' or 'public final bridge synthetic'.
-                AccessFlags.SYNTHETIC.isSet(method.accessFlags)
-            }
-        )
-
         // Find the method call that gets the value of 'buttonViewModel.accessibilityText'.
-        val accessibilityTextMethod = accessibilityTextFingerprint.instructionMatches.first()
+        val accessibilityTextMethod = accessibilityTextFingerprint(accessibilityIdMethod)
+            .instructionMatches.first()
             .instruction.getReference<MethodReference>()!!
 
-        val componentCreateFingerprint = Fingerprint(
-            returnType = "L",
-            filters = listOf(
-                opcode(Opcode.IF_EQZ),
-                checkCast(
-                    type = accessibilityIdMethod.definingClass,
-                    location = MatchAfterWithin(5)
-                ),
-                opcode(Opcode.RETURN_OBJECT),
-                string("Element missing correct type extension"),
-                string("Element missing type")
-            )
-        )
-
-        componentCreateFingerprint.let {
+        componentCreateFingerprint(accessibilityIdMethod.definingClass).let {
             it.method.apply {
                 val insertIndex = it.instructionMatches[2].index
                 val buttonViewModelIndex = it.instructionMatches[1].index

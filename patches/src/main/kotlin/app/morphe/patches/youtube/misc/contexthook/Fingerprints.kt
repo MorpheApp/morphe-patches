@@ -8,39 +8,41 @@
 package app.morphe.patches.youtube.misc.contexthook
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionFilter
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
-import app.morphe.util.getReference
-import app.morphe.util.indexOfFirstInstruction
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.Method
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal const val CLIENT_INFO_CLASS =
     $$"Lcom/google/protos/youtube/api/innertube/InnertubeContext$ClientInfo;"
 
+/**
+ * Reusable instruction filter for finding the MessageLite builder reference.
+ */
+internal fun messageLiteBuilderFilter(type: String = "L") = InstructionFilter { _, instruction ->
+    val reference = (instruction as? ReferenceInstruction)?.reference as? MethodReference
+        ?: return@InstructionFilter false
+
+    instruction.opcode == Opcode.INVOKE_VIRTUAL &&
+            reference.parameterTypes.isEmpty() &&
+            reference.returnType.startsWith(type)
+}
+
 internal object AuthenticationChangeListenerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
     returnType = "V",
-    strings = listOf("Authentication changed while request was being made"),
-    custom = { method, _ ->
-        // TODO: Convert this to an instruction filter
-        indexOfMessageLiteBuilderReference(method) >= 0
-    }
+    filters = listOf(
+        string("Authentication changed while request was being made"),
+        messageLiteBuilderFilter()
+    )
 )
-
-internal fun indexOfMessageLiteBuilderReference(method: Method, type: String = "L") =
-    method.indexOfFirstInstruction {
-        val reference = getReference<MethodReference>()
-        opcode == Opcode.INVOKE_VIRTUAL &&
-                reference?.parameterTypes?.isEmpty() == true &&
-                reference.returnType.startsWith(type)
-    }
 
 private object BuildClientContextBodyConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
@@ -177,4 +179,35 @@ internal object TranscriptEndpointConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     returnType = "V",
     strings = listOf("get_transcript"),
+)
+
+/**
+ * Matches the method used to set the client form factor.
+ * Caller must supply the method reference resolved from [ClientFormFactorEnumOrdinalFingerprint].
+ */
+internal fun setClientFormFactorFingerprint(clientFormFactorOrdinalReference: MethodReference) = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET,
+            definingClass = CLIENT_INFO_CLASS,
+            type = "I"
+        ),
+        methodCall(
+            reference = clientFormFactorOrdinalReference
+        )
+    )
+)
+
+/**
+ * Matches the request body method for a given endpoint.
+ * Caller must supply the parent fingerprint for the specific endpoint.
+ */
+internal fun endpointRequestBodyFingerprint(parentFingerprint: Fingerprint) = Fingerprint(
+    classFingerprint = parentFingerprint,
+    accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(),
 )

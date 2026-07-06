@@ -10,7 +10,6 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_04_0_or_greater
@@ -19,7 +18,6 @@ import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.findFieldFromToString
 import app.morphe.util.setExtensionIsPatchIncluded
-import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
@@ -108,19 +106,10 @@ val hideAdsPatch = bytecodePatch(
             val adsLoadCompletedField = CommentsAdStateToStringFingerprint.method
                 .findFieldFromToString(", adsLoadCompleted=")
 
-            val commentsAdStateConstructorFingerprint = Fingerprint(
-                definingClass = CommentsAdStateToStringFingerprint.originalClassDef.type,
-                name = "<init>",
-                returnType = "V",
-                filters = listOf(
-                    fieldAccess(
-                        opcode = Opcode.IPUT_BOOLEAN,
-                        reference = adsLoadCompletedField
-                    )
-                )
-            )
-
-            commentsAdStateConstructorFingerprint.let {
+            commentsAdStateConstructorFingerprint(
+                commentsAdStateClassType = CommentsAdStateToStringFingerprint.originalClassDef.type,
+                adsLoadCompletedField = adsLoadCompletedField
+            ).let {
                 it.method.apply {
                     val index = it.instructionMatches.last().index
                     val register =

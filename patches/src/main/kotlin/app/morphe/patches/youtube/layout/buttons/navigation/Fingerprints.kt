@@ -379,3 +379,13 @@ internal object SettingIntentFingerprint : Fingerprint(
         )
     }
 )
+
+/**
+ * Matches the protobuf list builder method.
+ * Caller must supply the dynamically resolved return type.
+ */
+internal fun protoListBuilderFingerprint(returnType: String) = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = returnType,
+    parameters = listOf("Ljava/util/Collection;")
+)

@@ -1,6 +1,7 @@
 package app.morphe.patches.youtube.layout.formfactor
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
@@ -59,6 +60,24 @@ internal object PlayerLithoElementsListFingerprint : Fingerprint(
         opcode(
             Opcode.IGET_OBJECT,
             location = MatchAfterImmediately(),
+        )
+    )
+)
+
+/**
+ * Matches the method creating the player request body with the device model.
+ * Caller must supply the enum type resolved from [FormFactorEnumConstructorFingerprint].
+ */
+internal fun createPlayerRequestBodyWithModelFingerprint(formFactorEnumType: String) = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf(),
+    filters = listOf(
+        fieldAccess(smali = "Landroid/os/Build;->MODEL:Ljava/lang/String;"),
+        fieldAccess(
+            definingClass = formFactorEnumType,
+            type = "I",
+            location = MatchAfterWithin(50)
         )
     )
 )

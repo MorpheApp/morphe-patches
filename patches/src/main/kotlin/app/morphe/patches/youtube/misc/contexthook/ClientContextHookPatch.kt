@@ -10,8 +10,6 @@ package app.morphe.patches.youtube.misc.contexthook
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -92,12 +90,10 @@ val clientContextHookPatch = bytecodePatch(
         }
 
         val messageLiteBuilderMethod : MethodReference
-        AuthenticationChangeListenerFingerprint.method.apply {
-            val messageLiteBuilderIndex = indexOfMessageLiteBuilderReference(
-                this, messageLiteBuilderField.definingClass
-            )
+        AuthenticationChangeListenerFingerprint.let {
+            val messageLiteBuilderIndex = it.instructionMatches[1].index
 
-            messageLiteBuilderMethod = getInstruction<ReferenceInstruction>(
+            messageLiteBuilderMethod = it.method.getInstruction<ReferenceInstruction>(
                 messageLiteBuilderIndex
             ).reference as MethodReference
             messageLiteBuilderMethodRef = WeakReference(messageLiteBuilderMethod)
@@ -116,32 +112,11 @@ val clientContextHookPatch = bytecodePatch(
 
         val clientFormFactorOrdinalReference = ClientFormFactorEnumOrdinalFingerprint.method as MethodReference
 
-        val setClientFormFactorFingerprint = Fingerprint(
-            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-            returnType = "V",
-            parameters = listOf("L"),
-            filters = listOf(
-                fieldAccess(
-                    opcode = Opcode.IGET,
-                    definingClass = CLIENT_INFO_CLASS,
-                    type = "I"
-                ),
-                methodCall(
-                    reference = clientFormFactorOrdinalReference
-                )
-            )
-        )
+        val clientFormFactorField = setClientFormFactorFingerprint(clientFormFactorOrdinalReference)
+            .instructionMatches.first()
+            .instruction.let { it as ReferenceInstruction }.reference as FieldReference
 
-        val clientFormFactorField : FieldReference
-        setClientFormFactorFingerprint.let {
-            it.method.apply {
-                val clientFormFactorIndex = it.instructionMatches.first().index
-                clientFormFactorField = getInstruction<ReferenceInstruction>(
-                    clientFormFactorIndex
-                ).reference as FieldReference
-                clientFormFactorFieldRef = WeakReference(clientFormFactorField)
-            }
-        }
+        clientFormFactorFieldRef = WeakReference(clientFormFactorField)
     }
 
     finalize {
@@ -154,16 +129,8 @@ val clientContextHookPatch = bytecodePatch(
             it.smaliInstructions.isNotEmpty()
         }.forEach { endpoint ->
             endpoint.parentFingerprints.forEach { parentFingerprint ->
-                // Use locally declared fingerprint because internally fingerprint caches the match.
-                // Could use Fingerprint.clearMatch() but creating a new instance also works.
-                val endpointRequestBodyFingerprint = Fingerprint(
-                    classFingerprint = parentFingerprint,
-                    accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
-                    returnType = "V",
-                    parameters = listOf(),
-                )
 
-                endpointRequestBodyFingerprint.let {
+                endpointRequestBodyFingerprint(parentFingerprint).let {
                     // 21.05+ clobbers p0 register.
                     it.method.cloneParameters().apply {
                         it.classDef.methods.add(

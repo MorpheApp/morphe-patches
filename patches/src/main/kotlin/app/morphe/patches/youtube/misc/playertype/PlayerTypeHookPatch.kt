@@ -1,16 +1,11 @@
 package app.morphe.patches.youtube.misc.playertype
 
-import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.ResourceType
-import app.morphe.patches.all.misc.resources.resourceLiteral
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 
@@ -22,11 +17,8 @@ val playerTypeHookPatch = bytecodePatch(
     dependsOn(sharedExtensionPatch, resourceMappingPatch)
 
     execute {
-        Fingerprint(
-            definingClass = "/YouTubePlayerOverlaysLayout;",
-            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-            returnType = "V",
-            parameters = listOf(PlayerTypeEnumFingerprint.originalClassDef.type)
+        youTubePlayerOverlaysLayoutFingerprint(
+            PlayerTypeEnumFingerprint.originalClassDef.type
         ).method.addInstruction(
             0,
             "invoke-static { p1 }, $EXTENSION_CLASS->setPlayerType(Ljava/lang/Enum;)V",
@@ -45,24 +37,12 @@ val playerTypeHookPatch = bytecodePatch(
         }
 
         val controlStateType = ControlsStateToStringFingerprint.originalClassDef.type
+        val videoStateType = VideoStateEnumFingerprint.originalClassDef.type
 
-        @Suppress("LocalVariableName")
-        val VideoStateFingerprint = Fingerprint(
-            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-            returnType = "V",
-            parameters = listOf(controlStateType),
-            filters = listOf(
-                // Obfuscated parameter field name.
-                fieldAccess(
-                    definingClass = controlStateType,
-                    type = VideoStateEnumFingerprint.originalClassDef.type
-                ),
-                resourceLiteral(ResourceType.STRING, "accessibility_play"),
-                resourceLiteral(ResourceType.STRING, "accessibility_pause")
-            )
-        )
-
-        VideoStateFingerprint.let {
+        videoStateFingerprint(
+            controlStateType = controlStateType,
+            videoStateEnumType = videoStateType
+        ).let {
             it.method.apply {
                 val videoStateFieldName = getInstruction<ReferenceInstruction>(
                     it.instructionMatches.first().index

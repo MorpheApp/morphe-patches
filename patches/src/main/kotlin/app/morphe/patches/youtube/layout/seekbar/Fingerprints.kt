@@ -3,7 +3,6 @@ package app.morphe.patches.youtube.layout.seekbar
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
-import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
@@ -120,4 +119,16 @@ internal object LottieCompositionFactoryFromJsonInputStreamFingerprint : Fingerp
     filters = listOf(
         anyInstruction(literal(2), literal(3))
     )
+)
+
+/**
+ * Matches the method to set a Lottie animation from an input stream.
+ * Caller must supply the dynamically resolved return type from [LottieCompositionFactoryFromJsonInputStreamFingerprint].
+ */
+internal fun lottieAnimationViewSetAnimationStreamFingerprint(
+    lottieAnimationViewDefiningClass: String,
+    factoryStreamReturnType: String) = Fingerprint(
+    definingClass = lottieAnimationViewDefiningClass,
+    returnType = "V",
+    parameters = listOf(factoryStreamReturnType)
 )

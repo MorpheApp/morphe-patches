@@ -10,16 +10,11 @@
 
 package app.morphe.patches.youtube.video.information
 
-import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.methodCall
-import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.string
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -176,23 +171,9 @@ val videoInformationPatch = bytecodePatch(
             }
         }
 
-        val playerStatusFingerprint = Fingerprint(
-            classFingerprint = PlayerInitFingerprint,
-            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-            returnType = "V",
-            parameters = listOf(PlayerStatusEnumFingerprint.originalClassDef.type),
-            filters = listOf(
-                // The opcode for the first index of the method is sget-object.
-                // Even in sufficiently old versions, such as YT 17.34, the opcode for the first index is sget-object.
-                opcode(Opcode.SGET_OBJECT),
-                methodCall(
-                    definingClass = "Lj$/time/Instant;",
-                    name = "plus"
-                )
-            )
+        playerStatusMethodRef = WeakReference(
+            playerStatusFingerprint(PlayerStatusEnumFingerprint.originalClassDef.type).method
         )
-
-        playerStatusMethodRef = WeakReference(playerStatusFingerprint.method)
 
         /*
          * Inject call for video IDs
@@ -503,32 +484,11 @@ val videoInformationPatch = bytecodePatch(
             val playerResponseType = matches.first().method.parameterTypes.first().toString()
 
             PlayerInitFingerprint.classDef.apply {
-                val channelIdMethodCall = Fingerprint(
-                    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-                    returnType = "V",
-                    parameters = listOf("Ljava/lang/Object;"),
-                    filters = listOf(
-                        methodCall(
-                            definingClass = playerResponseType,
-                            returnType = "Ljava/lang/String;"
-                        ),
-                        string(
-                            string = "com.google.android.apps.youtube.mdx.watch.LAST_MEALBAR_PROMOTED_LIVE_FEED_CHANNELS",
-                            location = MatchAfterWithin(20)
-                        )
-                    )
-                ).instructionMatches.first().getInstruction<ReferenceInstruction>().getReference<MethodReference>()
+                val channelIdMethodCall = channelIdMethodCallFingerprint(playerResponseType)
+                    .instructionMatches.first().getInstruction<ReferenceInstruction>().getReference<MethodReference>()
 
-                val channelNameMethodCall = Fingerprint(
-                    filters = listOf(
-                        string("setMetadata may only be called once"),
-                        methodCall(
-                            definingClass = playerResponseType,
-                            returnType = "Ljava/lang/String;",
-                            location = MatchAfterWithin(30)
-                        )
-                    )
-                ).instructionMatches.last().getInstruction<ReferenceInstruction>().getReference<MethodReference>()
+                val channelNameMethodCall = channelNameMethodCallFingerprint(playerResponseType)
+                    .instructionMatches.last().getInstruction<ReferenceInstruction>().getReference<MethodReference>()
 
                 methods.add(
                     ImmutableMethod(

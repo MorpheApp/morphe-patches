@@ -42,3 +42,53 @@ internal object AdultContentSetPropertiesFingerprint : Fingerprint(
         string("allowControversialContent", location = MatchAfterImmediately()),
     )
 )
+
+/**
+ * Matches the method to skip the viewer discretion dialog.
+ * Caller must supply the class resolved from [AdultContentRunnableFingerprint].
+ */
+internal fun skipDialogFingerprint(adultContentRunnableClass: String) = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L"),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Ljava/lang/Boolean;->booleanValue()Z"
+        ),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterWithin(2)),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT,
+            name = "<init>",
+            definingClass = adultContentRunnableClass,
+            location = MatchAfterWithin(3)
+        )
+    )
+)
+
+/**
+ * Matches the method unlocking related videos for restricted videos.
+ * Caller must supply the skipDialog defining class and resolved properties from [AdultContentSetPropertiesFingerprint].
+ */
+internal fun unlockRelatedVideosFingerprint(
+    skipDialogClass: String,
+    adultContentProperty1: String,
+    adultContentProperty2: String) = Fingerprint(
+    definingClass = skipDialogClass,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IPUT_BOOLEAN,
+            smali = adultContentProperty1
+        ),
+        fieldAccess(
+            opcode = Opcode.IPUT_BOOLEAN,
+            location = MatchAfterWithin(3),
+            smali = adultContentProperty2
+        ),
+    )
+)

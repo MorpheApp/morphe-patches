@@ -7,14 +7,9 @@
 
 package app.morphe.patches.music.layout.miniplayer
 
-import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.methodCall
-import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.smali.ExternalLabel
@@ -30,7 +25,6 @@ import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
@@ -85,25 +79,7 @@ val enableSwipeToDismissMiniplayerPatch = bytecodePatch(
 
         val musicActivityPeerClass = (widgetReferences[0] as FieldReference).definingClass
 
-        val onWatchWhileDismissedFingerprint = Fingerprint(
-            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-            parameters = listOf(),
-            returnType = "V",
-            filters = listOf(
-                fieldAccess(
-                    opcode = Opcode.IGET_OBJECT,
-                    definingClass = musicActivityPeerClass,
-                    type = "Ljava/util/concurrent/atomic/AtomicBoolean;"
-                ),
-                methodCall(
-                    opcode = Opcode.INVOKE_VIRTUAL,
-                    smali = "Ljava/util/concurrent/atomic/AtomicBoolean;->set(Z)V",
-                    location = MatchAfterWithin(3)
-                )
-            )
-        )
-
-        onWatchWhileDismissedFingerprint.let {
+        watchWhileDismissedFingerprint(musicActivityPeerClass).let {
             val helperMethod = ImmutableMethod(
                 it.classDef.type,
                 "patch_swipeToDismissMiniplayer",
@@ -161,26 +137,13 @@ val enableSwipeToDismissMiniplayerPatch = bytecodePatch(
 
         // region Hide cold start miniplayer text (R.string.mini_player_default_text)
 
-        val coldStartMiniPlayerDefaultTextFingerprint: Fingerprint
-
-        if (is_9_03_or_greater) {
-            coldStartMiniPlayerDefaultTextFingerprint = Fingerprint(
-                accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-                parameters = listOf("Ljava/lang/Object;"),
-                returnType = "V",
-                filters = listOf(
-                    opcode(Opcode.IF_NE),
-                    methodCall(
-                        opcode = Opcode.INVOKE_VIRTUAL,
-                        smali = MiniPlayerDefaultTextFingerprint.method.toString()
-                    )
-                )
+        (if (is_9_03_or_greater) {
+            coldStartMiniPlayerDefaultTextFingerprint(
+                MiniPlayerDefaultTextFingerprint.method.toString()
             )
         } else {
-            coldStartMiniPlayerDefaultTextFingerprint = MiniPlayerDefaultTextLegacyFingerprint
-        }
-
-        coldStartMiniPlayerDefaultTextFingerprint.let {
+            MiniPlayerDefaultTextLegacyFingerprint
+        }).let {
             it.method.apply {
                 val insertIndex = it.instructionMatches.first().index
                 val insertRegister = getInstruction<TwoRegisterInstruction>(insertIndex).registerB
@@ -210,25 +173,10 @@ val enableSwipeToDismissMiniplayerPatch = bytecodePatch(
                 )
             }
 
-        val warmStartMiniplayerFingerprint = Fingerprint(
-            definingClass = warmStartMiniplayerClass,
-            parameters = listOf("Landroid/view/View;", "I"),
-            filters = listOf(
-                fieldAccess(
-                    opcode = Opcode.IGET_OBJECT,
-                    definingClass = watchWhileLayoutClass
-                ),
-                methodCall(
-                    opcode = Opcode.INVOKE_VIRTUAL,
-                    definingClass = "Lcom/google/android/material/bottomsheet/BottomSheetBehavior;",
-                    parameters = listOf("Z"),
-                    returnType = "V",
-                    location = MatchAfterWithin(5)
-                )
-            )
-        )
-
-        warmStartMiniplayerFingerprint.let {
+        warmStartMiniplayerFingerprint(
+            warmStartMiniplayerClass = warmStartMiniplayerClass,
+            watchWhileLayoutClass = watchWhileLayoutClass
+        ).let {
             it.method.apply {
                 val insertIndex = it.instructionMatches.first().index
                 val jumpIndex = it.instructionMatches.last().index + 1

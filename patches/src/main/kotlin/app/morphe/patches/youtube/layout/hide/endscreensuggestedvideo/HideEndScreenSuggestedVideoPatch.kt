@@ -1,18 +1,12 @@
 package app.morphe.patches.youtube.layout.hide.endscreensuggestedvideo
 
-import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.getReference
-import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 private const val EXTENSION_CLASS =
@@ -37,27 +31,10 @@ val hideEndScreenSuggestedVideoPatch = bytecodePatch(
         val endScreenMethod = RemoveOnLayoutChangeListenerFingerprint.instructionMatches[1]
             .getMethodCalled()
 
-        val endScreenSuggestedVideoFingerprint = Fingerprint(
-            definingClass = endScreenMethod.definingClass,
-            name = endScreenMethod.name,
-            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-            returnType = "V",
-            parameters = listOf(),
-            filters = listOf(
-                fieldAccess(
-                    opcode = Opcode.IGET_OBJECT,
-                    definingClass = "this",
-                    type = autoNavStatusMethod.definingClass
-                ),
-                methodCall(
-                    opcode = Opcode.INVOKE_VIRTUAL,
-                    smali = autoNavStatusMethod.toString(),
-                    location = MatchAfterWithin(3)
-                )
-            )
-        )
-
-        endScreenSuggestedVideoFingerprint.let {
+        endScreenSuggestedVideoFingerprint(
+            endScreenMethod = endScreenMethod,
+            autoNavStatusMethod = autoNavStatusMethod
+        ).let {
             it.method.apply {
                 val autoNavField = it.instructionMatches.first().instruction.getReference<FieldReference>()!!
 

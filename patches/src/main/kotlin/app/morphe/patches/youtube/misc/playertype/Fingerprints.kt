@@ -2,6 +2,7 @@ package app.morphe.patches.youtube.misc.playertype
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import app.morphe.patches.all.misc.resources.ResourceType
@@ -56,5 +57,37 @@ internal object ControlsStateToStringFingerprint : Fingerprint(
     filters = listOf(
         string("videoState"),
         string("isBuffering")
+    )
+)
+
+/**
+ * Matches the method handling the player type.
+ * Caller must supply the enum type resolved from [PlayerTypeEnumFingerprint].
+ */
+internal fun youTubePlayerOverlaysLayoutFingerprint(playerTypeEnumType: String) = Fingerprint(
+    definingClass = "/YouTubePlayerOverlaysLayout;",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(playerTypeEnumType)
+)
+
+/**
+ * Matches the method providing the video state.
+ * Caller must supply the dynamically resolved control state type and video state enum type.
+ */
+internal fun videoStateFingerprint(
+    controlStateType: String,
+    videoStateEnumType: String) = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(controlStateType),
+    filters = listOf(
+        // Obfuscated parameter field name.
+        fieldAccess(
+            definingClass = controlStateType,
+            type = videoStateEnumType
+        ),
+        resourceLiteral(ResourceType.STRING, "accessibility_play"),
+        resourceLiteral(ResourceType.STRING, "accessibility_pause")
     )
 )

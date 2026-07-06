@@ -149,7 +149,7 @@ private object FormatStreamModelClassFingerprint : Fingerprint(
 
 // DVR window duration in seconds; 0 for non-DVR streams.
 // Caller multiplies result by 1e6 with 4-hour fallback when <= 0, logs "windowMaxMediaTimeUs".
-internal object FormatStreamModelMaxDvrDurationFingerprint : Fingerprint(
+internal object FormatStreamModelMaxDVRDurationFingerprint : Fingerprint(
     classFingerprint = FormatStreamModelClassFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "D",

@@ -10,7 +10,6 @@
 
 package app.morphe.patches.youtube.layout.buttons.navigation
 
-import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
@@ -315,12 +314,9 @@ val navigationBarPatch = bytecodePatch(
                 val insertRegister =
                     getInstruction<TwoRegisterInstruction>(insertIndex).registerA
 
-                val protoListBuilderFingerprint = Fingerprint(
-                    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-                    returnType = insertMatch.instruction.getReference<FieldReference>()!!.type,
-                    parameters = listOf("Ljava/util/Collection;")
-                )
-                val protoListBuilderMethod = protoListBuilderFingerprint.method
+                val protoListBuilderMethod = protoListBuilderFingerprint(
+                    insertMatch.instruction.getReference<FieldReference>()!!.type
+                ).method
 
                 addInstructions(
                     insertIndex,
