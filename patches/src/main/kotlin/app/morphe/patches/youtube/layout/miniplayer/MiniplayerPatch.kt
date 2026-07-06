@@ -15,7 +15,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
@@ -292,10 +291,8 @@ val miniplayerPatch = bytecodePatch(
             "getHorizontalDrag",
         )
 
-        Fingerprint(
-            definingClass = MiniplayerHorizontalDragPlaybackFingerprint
-                .instructionMatches[2].getMethodCalled().definingClass,
-            name = "onAnimationEnd",
+        miniplayerAnimationEndFingerprint(
+            MiniplayerHorizontalDragPlaybackFingerprint.instructionMatches[2].getMethodCalled().definingClass
         ).method.addInstructionsWithLabels(
             0,
             """
@@ -358,13 +355,8 @@ val miniplayerPatch = bytecodePatch(
             } else {
                 // Fix bold icons always shown for 20.31 to 21.16
                 MiniplayerSetIconsLegacyFingerprint.method.apply {
-                    findInstructionIndicesReversedOrThrow(
-                        methodCall(
-                            opcode = Opcode.INVOKE_INTERFACE,
-                            returnType = "Z",
-                            parameters = listOf()
-                        )
-                    ).forEach { index ->
+                    MiniplayerLegacyBoldIconFingerprint.instructionMatches.forEach { match ->
+                        val index = match.index
                         val register = getInstruction<OneRegisterInstruction>(index + 1).registerA
 
                         addInstructions(

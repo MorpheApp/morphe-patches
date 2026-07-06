@@ -87,6 +87,11 @@ internal object MiniplayerHorizontalDragPlaybackFingerprint : Fingerprint (
     )
 )
 
+internal fun miniplayerAnimationEndFingerprint(animationEndClass: String) = Fingerprint(
+    definingClass = animationEndClass,
+    name = "onAnimationEnd",
+)
+
 internal object MiniplayerRectDragFieldsNameFingerprint : Fingerprint (
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Landroid/graphics/Rect;",
@@ -282,6 +287,17 @@ internal object MiniplayerSetIconsLegacyFingerprint : Fingerprint(
     filters = listOf(
         resourceLiteral(ResourceType.DRAWABLE, "yt_fill_pause_white_36"),
         resourceLiteral(ResourceType.DRAWABLE, "yt_fill_pause_black_36")
+    )
+)
+
+internal object MiniplayerLegacyBoldIconFingerprint : Fingerprint(
+    classFingerprint = MiniplayerSetIconsLegacyFingerprint,
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            returnType = "Z",
+            parameters = listOf()
+        )
     )
 )
 
