@@ -96,31 +96,44 @@ internal object MiniplayerRectDragFieldsNameFingerprint : Fingerprint (
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
             type = "Landroid/graphics/Rect;",
-            location = MatchAfterImmediately(),
+            location = MatchAfterImmediately()
         ),
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
             smali = "Landroid/graphics/Rect;->width()I",
-            location = MatchAfterImmediately(),
+            location = MatchAfterImmediately()
         ),
         opcode(
             opcode = Opcode.MOVE_RESULT,
-            location = MatchAfterImmediately(),
+            location = MatchAfterImmediately()
         ),
         opcode(
             opcode = Opcode.NEG_INT,
-            location = MatchAfterImmediately(),
+            location = MatchAfterImmediately()
         ),
         opcode(
             opcode = Opcode.GOTO,
-            location = MatchAfterImmediately(),
+            location = MatchAfterImmediately()
         ),
         fieldAccess(
             opcode = Opcode.IGET,
             type = "I",
-            location = MatchAfterImmediately(),
-        ),
-    ),
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
+internal object MiniplayerHorizontalRepositionFingerprint : Fingerprint(
+    classFingerprint = MiniplayerRectDragFieldsNameFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/graphics/Rect;"),
+)
+
+internal object NextGenWatchLayoutOnInterceptTouchEventFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/apps/youtube/app/watch/nextgenwatch/ui/NextGenWatchLayout;",
+    name = "onInterceptTouchEvent",
+    parameters = listOf("Landroid/view/MotionEvent;")
 )
 
 private object MiniplayerDimensionsCalculatorParentFingerprint : Fingerprint(

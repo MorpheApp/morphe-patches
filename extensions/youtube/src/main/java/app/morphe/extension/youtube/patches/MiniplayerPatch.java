@@ -207,6 +207,25 @@ public final class MiniplayerPatch {
         }
     }
 
+    public static final class MiniplayerHorizontalRepositioningAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return Settings.MINIPLAYER_TYPE.get().isModern()
+                    && !Settings.MINIPLAYER_DISABLE_DRAG_AND_DROP.get()
+                    && !Settings.MINIPLAYER_DISABLE_HORIZONTAL_DRAG.get();
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(
+                    Settings.MINIPLAYER_TYPE,
+                    Settings.MINIPLAYER_DISABLE_DRAG_AND_DROP,
+                    Settings.MINIPLAYER_DISABLE_HORIZONTAL_DRAG
+            );
+        }
+    }
+
+
     public static final class MiniplayerHideOverlayButtonsAvailability implements Setting.Availability {
         @Override
         public boolean isAvailable() {
@@ -380,8 +399,8 @@ public final class MiniplayerPatch {
 
     /**
      * Injection point.
-     * Check if the button to show the miniplayer from offscreen is pressed, than will skip
-     * the code to change the miniplayer param offsets and prevents the reposition.
+     * Check if the button to show the miniplayer from offscreen is pressed and skip
+     * the code to change the miniplayer param offsets to prevent repositioning.
      */
     public static void enableOffScreenMiniplayerButtonPressed(MotionEvent motionEvent) {
         if (!MINIPLAYER_DISABLE_HORIZONTAL_REPOSITION.get()) {

@@ -308,44 +308,28 @@ val miniplayerPatch = bytecodePatch(
             """
         )
 
-        MiniplayerRectDragFieldsNameFingerprint.instructionMatches.let { miniplayerRectDragFieldsNameInstructionMatches ->
-            MiniplayerRectDragFieldsNameFingerprint.method.let { miniplayerRectDragFieldsNameMethod ->
-                Fingerprint(
-                    definingClass = miniplayerRectDragFieldsNameMethod.definingClass,
-                    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-                    returnType = "V",
-                    parameters = listOf("Landroid/graphics/Rect;"),
-                ).let {
-                    val previousRectParamFieldAccess =
-                        miniplayerRectDragFieldsNameMethod.getInstruction<ReferenceInstruction>(
-                            miniplayerRectDragFieldsNameInstructionMatches[1].index
-                        ).reference
-                    val screenWidthFieldAccess =
-                        miniplayerRectDragFieldsNameMethod.getInstruction<ReferenceInstruction>(
-                            miniplayerRectDragFieldsNameInstructionMatches.last().index
-                        ).reference
+        MiniplayerHorizontalRepositionFingerprint.method.apply {
+            val previousRectParamFieldAccess = MiniplayerRectDragFieldsNameFingerprint.instructionMatches[1]
+                .getInstruction<ReferenceInstruction>().reference
+            val screenWidthFieldAccess = MiniplayerRectDragFieldsNameFingerprint.instructionMatches.last()
+                .getInstruction<ReferenceInstruction>().reference
 
-                    it.method.addInstructions(
-                        0,
-                        """
-                            iget-object v0, p0, $previousRectParamFieldAccess
-                            iget v1, p0, $screenWidthFieldAccess
-                            invoke-static { p1, v0, v1 }, $EXTENSION_CLASS->blockOffscreenMiniplayerHorizontalReposition(Landroid/graphics/Rect;Landroid/graphics/Rect;I)Landroid/graphics/Rect;
-                            move-result-object p1
-                        """
-                    )
-                }
-
-                Fingerprint(
-                    definingClass = "Lcom/google/android/apps/youtube/app/watch/nextgenwatch/ui/NextGenWatchLayout;",
-                    name = "onInterceptTouchEvent",
-                    parameters = listOf("Landroid/view/MotionEvent;"),
-                ).method.addInstructions(
-                    0,
-                    "invoke-static { p1 }, $EXTENSION_CLASS->enableOffScreenMiniplayerButtonPressed(Landroid/view/MotionEvent;)V"
-                )
-            }
+            addInstructions(
+                0,
+                """
+                    iget-object v0, p0, $previousRectParamFieldAccess
+                    iget v1, p0, $screenWidthFieldAccess
+                    invoke-static { p1, v0, v1 }, $EXTENSION_CLASS->blockOffscreenMiniplayerHorizontalReposition(Landroid/graphics/Rect;Landroid/graphics/Rect;I)Landroid/graphics/Rect;
+                    move-result-object p1
+                """
+            )
         }
+
+        NextGenWatchLayoutOnInterceptTouchEventFingerprint.method.addInstruction(
+            0,
+            "invoke-static { p1 }, $EXTENSION_CLASS->" +
+                    "enableOffScreenMiniplayerButtonPressed(Landroid/view/MotionEvent;)V"
+        )
 
         MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
             MINIPLAYER_ANIMATED_EXPAND_FEATURE_KEY,
