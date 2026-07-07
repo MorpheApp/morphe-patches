@@ -283,8 +283,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_title">Вимкнути пропуск розділу подвійним натисканням</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Вимикає жест подвійного натискання двома пальцями для пропуску розділів, який може випадково спрацювати одним пальцем</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Зовнішній завантажувач</string>
-  <string name="morphe_external_downloader_screen_summary">Завантажуйте відео, подкасти або пісні за допомогою сторонніх програм для завантаження</string>
+  <string name="morphe_external_downloader_screen_summary">Завантажувати відео, подкасти або пісні за допомогою сторонніх застосунків для завантаження</string>
   <string name="morphe_external_downloader_title">Показувати кнопку зовнішнього завантажувача</string>
   <string name="morphe_external_downloader_summary">Показує кнопку у відеоплеєрі, яка відкриває ваш зовнішній завантажувач</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
@@ -424,7 +423,7 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Вимкнути жест точного перемотування</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Вимикає режим точного перемотування, що вмикається при потягуванні смуги відтворення вгору</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Увімкнути DVR для прямої трансляції</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"Дозволяє перемотування у всіх трансляціях, навіть тих, що зазвичай його обмежують
@@ -936,8 +935,10 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Запобігає перетягування мінімізованого плеєра до різних кутів екрана</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Вимкнути жест горизонтального перетягування</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Запобігає закривати мінiплеєр горизонтальним свайпом за межі екрана</string>
-  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Вимкнути відтворення при горизонтальному перетягуванні</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Призупиняти відтворення при горизонтальному перетягуванні</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Відтворення буде призупинено, коли мініплеєр буде перетягнуто за межі екрана</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">Запам\'ятовувати позицію при перетягуванні</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">Перетягування мініплеєра за межі екрана збереже його стан інтерфейсу</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Приховати кнопки мініплеєра</string>
   <string name="morphe_miniplayer_width_dip_title">Розмір за замовчуванням</string>
   <string name="morphe_miniplayer_width_dip_summary">Встановлює початковий розмір на екрані в пікселях</string>
@@ -1045,10 +1046,10 @@ Second \"item\" text"</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Застосовує обраний рівень якості до всіх наступних Shorts</string>
   <string name="morphe_shorts_quality_default_wifi_title">Типова якість Shorts у мережі Wi-Fi</string>
   <string name="morphe_shorts_quality_default_mobile_title">Типова якість Shorts у мобільній мережі</string>
-  <string name="morphe_remember_video_quality_toast_mobile">Змінено типову якість мобільного зв’язку на: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">Змінено типову якість Wi-Fi на: %s</string>
-  <string name="morphe_remember_video_quality_toast_shorts_mobile">Якість Shorts на мобільному зв’язку змінено на: %s</string>
-  <string name="morphe_remember_video_quality_toast_shorts_wifi">Якість Shorts через Wi-Fi змінено на: %s</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Змінено типову якість для мобільної мережі на: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Змінено типову якість для Wi-Fi на: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_mobile">Змінено якість Shorts для мобільної мережі на: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_wifi">Змінено якість Shorts для Wi-Fi на: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Показати кнопку \"Швидкість відтворення\"</string>
   <string name="morphe_playback_speed_dialog_button_summary">Натисніть і утримуйте для скидання швидкості до типової</string>
@@ -1089,8 +1090,8 @@ Second \"item\" text"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Щоб використовувати цю функцію, встановіть \"Підміна відеопотоків\" на Android VR або Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Відкрити меню налаштувань якості \"Розширені\"</string>
-  <string name="morphe_advanced_video_quality_menu_summary">Пропускає меню вибору якості та одразу відкриває меню розширених налаштувань якості</string>
+  <string name="morphe_advanced_video_quality_menu_title">Відкривати меню якості \"Розширені налаштування\"</string>
+  <string name="morphe_advanced_video_quality_menu_summary">Пропускає меню вибору якості та відкриває меню \"Розширенні налаштування\" безпосередньо</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Приховати опції Premium якості</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->

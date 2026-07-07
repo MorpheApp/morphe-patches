@@ -276,7 +276,6 @@ Slova iz velikih slova u sredini riječi moraju točno odgovarati (npr: iPhone, 
   <string name="morphe_disable_chapter_skip_double_tap_title">Onemogući preskakanje poglavlja udvojenim dodirom</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Omogućuje povremeni potez dva prsta za preskakivanje poglavlja, koji se možda slučajno pokreće jednim prstom</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Eksterni pretraživači</string>
   <string name="morphe_external_downloader_title">Prikaz dugme za pretraživanje</string>
   <string name="morphe_external_downloader_summary">Prikazuje gumb preklopa u video playeru koji otvara vaš vanjski downloader</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
@@ -360,7 +359,7 @@ Info: Možda neće raditi na prijenosima uživo"</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Onemogu precizan pritisak</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Omogući livestream DVR</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

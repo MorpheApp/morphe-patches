@@ -32,7 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_title">Palauta vanhat YouTube-asetusvalikot</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Poista taustatoiston rajoitukset</string>
-  <string name="morphe_shorts_disable_background_playback_title">Poista Shortsien taustatoisto käytöstä</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">Poista asettelupäivitykset käytöstä</string>
   <string name="morphe_disable_layout_updates_summary">Estää palvelinta päivittämästä sovelluksen asettelua</string>
@@ -283,7 +282,6 @@ Rajoitukset:
   <string name="morphe_disable_chapter_skip_double_tap_title">Estää kaksinkertaisella napautuksella siirtymisen vahingossa seuraavaan tai edelliseen lukuun</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Poistaa käytöstä kaksoisnapautusliikkeen, joka ohittaa luvut, mikä voi vahingossa laukaistua yhdellä sormella</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Ulkoiset lataukset</string>
   <string name="morphe_external_downloader_screen_summary">Lataa videoita, podcasteja tai kappaleita kolmannen osapuolen lataussovelluksilla</string>
   <string name="morphe_external_downloader_title">Näytä ulkoinen lataus -painike</string>
   <string name="morphe_external_downloader_summary">Näyttää päällekkäisen painikkeen videotoistimessa, joka avaa ulkoisen lataussovelluksesi</string>
@@ -377,7 +375,7 @@ Tieto: Ei välttämättä toimi suoratoistoissa"</string>
   <string name="morphe_play_all_button_type_entry_8">Striimivideot (Järjestä suosion mukaan)</string>
   <string name="morphe_play_all_button_type_entry_9">Vain jäsenien sisällöt</string>
   <string name="morphe_play_all_button_type_entry_10">Vain jäsenten videot</string>
-  <string name="morphe_play_all_button_type_entry_11">Vain jäsenten shortsit</string>
+  <string name="morphe_play_all_button_type_entry_11">Jäsenille vain Shorts</string>
   <string name="morphe_play_all_button_type_entry_12">Vain jäsenten striimivideot</string>
   <string name="morphe_play_all_button_not_available_toast">Kanavatunnuserojen vuoksi soittolistaa ei voitu luoda</string>
   <!-- interaction.reload.reloadVideoPatch -->
@@ -424,7 +422,7 @@ Tieto: Ei välttämättä toimi suoratoistoissa"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Poista tarkka etsintäele käytöstä</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Poistaa käytöstä tarkan hakutoiminnon, joka aktivoituu, kun vedät hakupalkkia ylöspäin</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Ota suoratoistinauhoitus käyttöön</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"Mahdollistaa haun kaikista livelähetyksistä, myös niistä, jotka normaalisti estävät sen
@@ -584,7 +582,7 @@ Huomautus: Jos ”Väärennä videostriimejä” ei ole käytössä, tämän kä
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Piilota Mikrofonipainike</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_shorts_button_title">Piilota Ilmoitukset-painike</string>
+  <string name="morphe_hide_shorts_button_title">Piilota Shorts-painike</string>
   <!-- 'Create' has no display name. Translate normally. -->
   <string name="morphe_hide_create_button_title">Piilota Hae-painike</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -593,10 +591,10 @@ Huomautus: Jos ”Väärennä videostriimejä” ei ole käytössä, tämän kä
   <string name="morphe_hide_notifications_button_title">Asetukset-painikkeen sijainti</string>
   <string name="morphe_show_search_button_title">Kun se on käytössä, napautus avaa Morphen asetukset ja pitkä painallus avaa YouTuben asetukset, poista käytöstä vaihtaaaksesi ne</string>
   <string name="morphe_show_search_button_index_title">Pienentää painikkeiden välistä vaakasuuntaista väliä</string>
-  <string name="morphe_show_settings_button_title">Animoi siirtymät välillä välilehtien välillä</string>
-  <string name="morphe_show_settings_button_index_title">Pitää navigointipalkin näkyvillä vieritettäessä</string>
+  <string name="morphe_show_settings_button_title">Näytä Asetukset-painike</string>
+  <string name="morphe_show_settings_button_index_title">Asetusten painikkeen sijainti</string>
   <string name="morphe_show_settings_button_type_title">Asetusten painikkeen toiminto</string>
-  <string name="morphe_show_settings_button_type_summary">Tehdään tilapalkista täysin läpinäkymätön</string>
+  <string name="morphe_show_settings_button_type_summary">Avaa Morphen asetukset, kun ne on käytössä, tai YouTuben asetukset, kun ne on poissa käytöstä</string>
   <string name="morphe_swap_create_with_notifications_button_title">Vaihdetaan Luo-painike Ilmoitukset-painikkeen kanssa</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Jos asetuksen muuttaminen ei tule voimaan, kokeile vaihtaa incognito-tilaan</string>
   <string name="morphe_hide_navigation_button_labels_title">Piilota navigointipainikkeiden tunnisteet</string>
@@ -605,18 +603,18 @@ Huomautus: Jos ”Väärennä videostriimejä” ei ole käytössä, tämän kä
 
 Saadaksesi asetukset, ota Asetukset-painike käyttöön kohdasta Yleiset → Työkalupalkki → Näytä asetukset."</string>
   <string name="morphe_narrow_navigation_buttons_title">Ota käyttöön kapeat navigointipainikkeet</string>
-  <string name="morphe_narrow_navigation_buttons_summary">Tehdään navigointipalkista täysin läpinäkymätön vaaleassa tilassa</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Kapeuttaa pystysuoraa väliä painikkeiden välillä</string>
   <string name="morphe_navigation_bar_animations_title">Ota käyttöön navigaatiopalkin animaatiot</string>
-  <string name="morphe_navigation_bar_animations_summary">Tehdään navigointipalkista täysin läpinäkymätön tummassa tilassa</string>
+  <string name="morphe_navigation_bar_animations_summary">Animoi siirtymät välilehtien välillä</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Poista automaattisen piilottamisen käytöstä navigointipalkissa</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary">Valitse, mitkä painikkeet näkyvät videon soittimen päällä</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary">Pitää navigointipalkin näkyvillä vieritettäessä</string>
   <string name="morphe_disable_translucent_status_bar_title">Poista läpikuultava tilapalkki käytöstä</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Piilottaa videon soittimen säätöpainikkeiden ympäröivän tumman varjostuksen</string>
+  <string name="morphe_disable_translucent_status_bar_summary">Tekee tilapalkin täysin peittäväksi</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Rajoitukset:
 • Video-soittimessa saattaa esiintyä musta juova yläosassa.
 • Järjestelmän navigointipalkki saattaa muuttua läpinäkyväksi, ja ei ole mahdollista kommentoida videoita."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Poista vaalea läpikuultava palkki käytöstä</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Piilota Asetukset-painike</string>
+  <string name="morphe_disable_translucent_navigation_bar_light_summary">Tekee navigointipalkista täysin peittävän vaaleassa tilassa</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Poista tumma läpikuultava palkki käytöstä</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary">Tekee navigaatiopalkista täysin läpinäkymättömän tummassa tilassa</string>
   <string name="morphe_toolbar_screen_title">Työkalupalkki</string>
@@ -937,8 +935,10 @@ Jos tämä poistetaan myöhemmin käytöstä, on suositeltavaa tyhjentää sovel
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Estää pienennetyn soittimen vetämisen näytön eri kulmiin</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Poista vaakasuuntainen vetoele käytöstä</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Estää minisoittimen sulkemisen vetämällä sitä vaakasuunnassa näytöltä pois</string>
-  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Poista toisto vaakasuuntaisella vedolla</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Pysäytä toisto vaakasuuntaisella vedolla</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Toisto pysähtyy, kun minisoitin vedetään näytön ulkopuolelle</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">Muista vedon sijainti</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">Pienoissoittimen vetäminen näytön ulkopuolelle säilyttää sen käyttöliittymän tilan</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Piilota peittokuvan painikkeet</string>
   <string name="morphe_miniplayer_width_dip_title">Oletuskoko</string>
   <string name="morphe_miniplayer_width_dip_summary">Aseta aloitusnäytän koko pikseleinä</string>

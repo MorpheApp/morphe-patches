@@ -283,7 +283,6 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_title">Απενεργοποιήστε την παράλειψη κεφαλαίων με διπλό πάτημα</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Απενεργοποιεί τη χειρονομία διπλού αγγίγματος με δύο δάχτυλα που παραλείπει κεφάλαια, η οποία μπορεί να ενεργοποιηθεί κατά λάθος με ένα δάχτυλο</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Εξωτερικές λήψεις</string>
   <string name="morphe_external_downloader_screen_summary">Κάντε λήψη βίντεο, podcast ή τραγούδια με εφαρμογές λήψης τρίτων</string>
   <string name="morphe_external_downloader_title">Εμφάνιση κουμπιού εξωτερικής λήψης</string>
   <string name="morphe_external_downloader_summary">Εμφανίζει ένα κουμπί επικάλυψης στον πρόγραμμα αναπαραγωγής βίντεο που ανοίγει την εφαρμογή λήψης τρίτων</string>
@@ -424,7 +423,7 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Απενεργοποίηση ακριβής αναζήτησης</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Απενεργοποιεί τη λειτουργία ακριβούς αναζήτησης που ενεργοποιείται όταν τραβάτε επάνω τη γραμμή αναζήτησης</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Ενεργοποίηση εγγραφής ζωντανής μετάδοσης DVR</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"Επιτρέπει την αναζήτηση σε όλες τις ζωντανές μεταδόσεις, ακόμη και σε αυτές που συνήθως την περιορίζουν
@@ -584,7 +583,7 @@ Second \"item\" text"</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Εμφάνιση κουμπιού Ρυθμίσεων</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_shorts_button_title">Θέση κουμπιού Ρυθμίσεων</string>
+  <string name="morphe_hide_shorts_button_title">Κουμπί Απόκρυψης Shorts</string>
   <!-- 'Create' has no display name. Translate normally. -->
   <string name="morphe_hide_create_button_title">Απόκρυψη κουμπιού \"Δημιουργία\"</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -937,8 +936,10 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Αποτρέπει τη μεταφορά του μικρογραφικού αναπαραγωγέα στις διαφορετικές γωνίες της οθόνης</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Απενεργοποίηση χειρονομίας οριζόντιας σύρσης</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Αποτρέπει το κλείσιμο του μίνι αναπαραγωγέα με οριζόντια κύλιση από την οθόνη</string>
-  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Απενεργοποίηση αναπαραγωγής με οριζόντια μεταφορά</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Παύση αναπαραγωγής με οριζόντια μεταφορά</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Η αναπαραγωγή θα παύσει όταν το μίνι πλέιερ μεταφερθεί εκτός οθόνης</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">Απομνημόνευση θέσης μεταφοράς</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">Η μεταφορά του μικροπρόβολου εκτός οθόνης θα διατηρήσει την κατάσταση διεπαφής χρήστη</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Κουμπιά επικάλυψης οθόνης αναπαραγωγής</string>
   <string name="morphe_miniplayer_width_dip_title">Προεπιλεγμένο μέγεθος</string>
   <string name="morphe_miniplayer_width_dip_summary">Ορίστε το αρχικό μέγεθος στην οθόνη, σε pixel</string>

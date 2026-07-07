@@ -283,7 +283,6 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_title">두 번 탭하여 챕터 건너뛰기 비활성화하기</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">두 손가락으로 두 번 탭하여 챕터를 건너뛰는 제스처를 비활성화하여, 한 손가락으로 실수로 작동되는 것을 방지할 수 있습니다</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">외부 다운로드</string>
   <string name="morphe_external_downloader_screen_summary">서드파티 다운로드 앱을 사용하여 동영상, 팟캐스트 또는 노래를 다운로드할 수 있습니다</string>
   <string name="morphe_external_downloader_title">외부 다운로드 버튼 표시하기</string>
   <string name="morphe_external_downloader_summary">외부 다운로드 앱을 실행할 수 있는 오버레이 버튼을 동영상 플레이어에 표시합니다</string>
@@ -426,7 +425,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">세밀한 탐색 제스처 비활성화하기</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">재생바를 길게 탭하고 위로 스와이프했을 경우에 활성화되는 세밀한 탐색 모드를 비활성화합니다</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">실시간 스트림 DVR 활성화하기</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"모든 실시간 스트림에서 탐색이 가능하며, 일반적으로 이를 제한하는 스트림에서도 사용할 수 있습니다
@@ -939,8 +938,10 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">최소화된 플레이어를 화면의 다른 모서리로 드래그하는 것을 방지할 수 있습니다</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">수평 드래그 제스처 비활성화하기</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">미니 플레이어를 화면 밖으로 가로로 스와이프하여 닫는 것을 방지할 수 있습니다</string>
-  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">수평 드래그로 동영상 재생 비활성화하기</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">수평 드래그로 동영상 재생 일시 중지</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">미니 플레이어를 화면 밖으로 드래그하면 동영상 재생이 일시 중지됩니다</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">드래그 상태 위치 기억하기</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">미니 플레이어를 화면 밖으로 드래그해도 UI 상태가 유지됩니다</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">오버레이 버튼 숨기기</string>
   <string name="morphe_miniplayer_width_dip_title">기본 크기</string>
   <string name="morphe_miniplayer_width_dip_summary">초기 화면 크기를 설정할 수 있습니다 (픽셀)</string>

@@ -283,7 +283,6 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_title">Отключить пропуск главы по двойному касанию</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Отключает жест двойного нажатия двумя пальцами, который пропускает главы, который может быть случайно вызван одним пальцем</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Внешний загрузчик</string>
   <string name="morphe_external_downloader_screen_summary">Скачивайте видео, подкасты или песни с помощью сторонних приложений для скачивания</string>
   <string name="morphe_external_downloader_title">Показать кнопку внешнего загрузчика</string>
   <string name="morphe_external_downloader_summary">Отображает кнопку наложения в видеоплеере, которая открывает ваш внешний загрузчик</string>
@@ -426,7 +425,7 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Отключить жест покадровой перемотки</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Отключает точный режим перемотки, который активируется при поднятии индикатора хода воспроизведения</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Включить прямую трансляцию DVR</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"Позволяет перематывать все прямые трансляции, даже те, которые обычно это ограничивают
@@ -939,8 +938,10 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Предотвращает перетаскивание миниплеера в разные углы экрана</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Отключить жест горизонтального перетаскивания</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Предотвращает закрытие миниплеера горизонтальным свайпом</string>
-  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Отключить воспроизведение при горизонтальном перемещении</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Приостановить воспроизведение горизонтальным жестом</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Воспроизведение будет приостановлено, когда мини-плеер будет перемещен за пределы экрана</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">Запомнить положение при жесте</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">Перетаскивание мини-плеера за пределы экрана сохранит его состояние интерфейса</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Скрыть кнопки миниплеера</string>
   <string name="morphe_miniplayer_width_dip_title">Размер по умолчанию</string>
   <string name="morphe_miniplayer_width_dip_summary">Установите начальный размер на экране, в пикселях</string>

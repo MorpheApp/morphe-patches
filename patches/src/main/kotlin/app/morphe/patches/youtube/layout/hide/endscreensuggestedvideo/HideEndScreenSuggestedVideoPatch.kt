@@ -37,7 +37,7 @@ val hideEndScreenSuggestedVideoPatch = bytecodePatch(
         val endScreenMethod = RemoveOnLayoutChangeListenerFingerprint.instructionMatches[1]
             .getMethodCalled()
 
-        val endScreenSuggestedVideoFingerprint = Fingerprint(
+        Fingerprint(
             definingClass = endScreenMethod.definingClass,
             name = endScreenMethod.name,
             accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -47,7 +47,8 @@ val hideEndScreenSuggestedVideoPatch = bytecodePatch(
                 fieldAccess(
                     opcode = Opcode.IGET_OBJECT,
                     definingClass = "this",
-                    type = autoNavStatusMethod.definingClass
+                    type = autoNavStatusMethod
+                        .definingClass
                 ),
                 methodCall(
                     opcode = Opcode.INVOKE_VIRTUAL,
@@ -55,9 +56,7 @@ val hideEndScreenSuggestedVideoPatch = bytecodePatch(
                     location = MatchAfterWithin(3)
                 )
             )
-        )
-
-        endScreenSuggestedVideoFingerprint.let {
+        ).let {
             it.method.apply {
                 val autoNavField = it.instructionMatches.first().instruction.getReference<FieldReference>()!!
 

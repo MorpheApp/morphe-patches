@@ -283,7 +283,6 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_title">停用按兩下跳過章節功能</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">停用雙指輕點跳過章節的動作，這可能會因為單指操作而意外觸發</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">外部下載</string>
   <string name="morphe_external_downloader_screen_summary">使用第三方下載應用程式下載影片、播客或歌曲</string>
   <string name="morphe_external_downloader_title">顯示外部下載按鈕</string>
   <string name="morphe_external_downloader_summary">顯示影片播放器中的疊加按鈕，以開啟您的外部下載程式</string>
@@ -424,7 +423,7 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">停用精準跳轉手勢</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">停用向上拖曳尋找條時啟動的精確尋找模式</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">啟用直播 DVR</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"允許在所有直播中尋找，即使是那些通常限制尋找功能的直播
@@ -582,21 +581,21 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_buttons_screen_title">導覽列按鈕</string>
   <string name="morphe_navigation_buttons_screen_summary">選擇要在工具列中顯示哪些元件</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_home_button_title">隱藏「麥克風」按鈕</string>
+  <string name="morphe_hide_home_button_title">隱藏主頁按鈕</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_shorts_button_title">隱藏「通知」按鈕</string>
+  <string name="morphe_hide_shorts_button_title">隱藏 Shorts 按鈕</string>
   <!-- 'Create' has no display name. Translate normally. -->
   <string name="morphe_hide_create_button_title">隱藏「建立」按鈕</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_subscriptions_button_title">顯示「設定」按鈕</string>
+  <string name="morphe_hide_subscriptions_button_title">隱藏「訂閱」按鈕</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_notifications_button_title">設定按鈕位置</string>
-  <string name="morphe_show_search_button_title">啟用時，輕觸將開啟 Morphe 設定，長按將開啟 YouTube 設定。停用以將其交換。</string>
-  <string name="morphe_show_search_button_index_title">選擇要在播放器浮動選單中顯示哪些元件</string>
-  <string name="morphe_show_settings_button_title">隱藏「音訊軌道」選單</string>
-  <string name="morphe_show_settings_button_index_title">隱藏「音訊軌道」選單頁尾</string>
+  <string name="morphe_hide_notifications_button_title">隱藏通知按鈕</string>
+  <string name="morphe_show_search_button_title">顯示搜尋按鈕</string>
+  <string name="morphe_show_search_button_index_title">搜尋按鈕位置</string>
+  <string name="morphe_show_settings_button_title">顯示設定按鈕</string>
+  <string name="morphe_show_settings_button_index_title">設定按鈕位置</string>
   <string name="morphe_show_settings_button_type_title">設定按鈕動作</string>
-  <string name="morphe_show_settings_button_type_summary">隱藏「字幕」選單</string>
+  <string name="morphe_show_settings_button_type_summary">開啟啟用時的 Morphe 設定，或停用時的 YouTube 設定</string>
   <string name="morphe_swap_create_with_notifications_button_title">將「建立」按鈕與「通知」按鈕對調</string>
   <string name="morphe_swap_create_with_notifications_button_summary">如果變更這項設定沒有生效，請嘗試切換到無痕模式。</string>
   <string name="morphe_hide_navigation_button_labels_title">隱藏導覽列按鈕標籤</string>
@@ -605,7 +604,7 @@ Second \"item\" text"</string>
 
 要存取設定，請透過「一般」→「工具列」→「顯示設定」啟用設定按鈕。"</string>
   <string name="morphe_narrow_navigation_buttons_title">啟用窄導航按鈕</string>
-  <string name="morphe_narrow_navigation_buttons_summary">隱藏「字幕」選單頁尾</string>
+  <string name="morphe_narrow_navigation_buttons_summary">減少按鈕之間的水平間距</string>
   <string name="morphe_navigation_bar_animations_title">啟用導覽列動畫</string>
   <string name="morphe_navigation_bar_animations_summary">在切換分頁時，讓轉換效果更生動</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">停用自動隱藏導航欄</string>
@@ -620,7 +619,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_title">停用深色半透明狀態列</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary">在深色模式中，讓導覽列完全不透明</string>
   <string name="morphe_toolbar_screen_title">工具列</string>
-  <string name="morphe_toolbar_screen_summary">選擇要在工具列中顯示哪些元件</string>
+  <string name="morphe_toolbar_screen_summary">選擇工具列中顯示的元件</string>
   <string name="morphe_hide_toolbar_cast_button_title">隱藏「投放」按鈕</string>
   <string name="morphe_hide_toolbar_chat_button_title">隱藏聊天按鈕</string>
   <string name="morphe_hide_toolbar_create_button_title">隱藏「建立」按鈕</string>
@@ -633,7 +632,7 @@ Second \"item\" text"</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">啟用時，點擊會開啟 Morphe 設定，長按會開啟 YouTube 設定。停用則會交換功能。</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">介面選單</string>
-  <string name="morphe_hide_player_flyout_summary">選擇要在彈出式選單中顯示哪些元件</string>
+  <string name="morphe_hide_player_flyout_summary">選擇哪些組件出現在彈出式選單中</string>
   <!-- 'Audio track' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_audio_track_title">隱藏「音訊軌道」選單</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
@@ -937,8 +936,10 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">防止將迷你播放器拖放到螢幕的不同角落</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">停用水平拖曳手勢</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">防止通過水平滑動迷你播放器關閉螢幕</string>
-  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">停用水平滑動播放</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">使用水平拖曳暫停播放</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">迷你播放器滑離螢幕時，播放將會暫停</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">記住拖曳狀態位置</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">拖曳迷你播放器至螢幕外將保留其 UI 狀態</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">隱藏暫停時顯示的按鈕</string>
   <string name="morphe_miniplayer_width_dip_title">預設大小</string>
   <string name="morphe_miniplayer_width_dip_summary">設定開始的螢幕大小（以像素為單位）</string>

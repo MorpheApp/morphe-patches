@@ -62,15 +62,7 @@ val hideRelatedVideosPatch = bytecodePatch(
         }
         val resultsClass = continuationsField.definingClass
 
-        val helperMethodParameter = listOf(
-            ImmutableMethodParameter(
-                resultsClass,
-                null,
-                null
-            )
-        )
-
-        val emptyProtobufListFingerprint = Fingerprint(
+        val emptyProtobufListMethod = Fingerprint(
             definingClass = resultsClass,
             name = "<init>",
             returnType = "V",
@@ -81,10 +73,7 @@ val hideRelatedVideosPatch = bytecodePatch(
                     name = "emptyProtobufList"
                 )
             )
-        )
-
-        val emptyProtobufListMethod = emptyProtobufListFingerprint
-            .instructionMatches.last().instruction.getReference<MethodReference>()!!
+        ).instructionMatches.last().instruction.getReference<MethodReference>()!!
 
         val sectionIdentifierField = RelatedItemSectionFingerprint
             .instructionMatches[1].instruction.getReference<FieldReference>()!!
@@ -92,7 +81,7 @@ val hideRelatedVideosPatch = bytecodePatch(
         val watchNextResponseModelClass = WatchNextResponseModelClassResolverFingerprint
             .instructionMatches.last().instruction.getReference<TypeReference>()!!.type
 
-        val watchNextResultsFingerprint = Fingerprint(
+        Fingerprint(
             definingClass = watchNextResponseModelClass,
             accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
             returnType = "V",
@@ -113,9 +102,7 @@ val hideRelatedVideosPatch = bytecodePatch(
                     type = sectionIdentifierField.definingClass
                 )
             )
-        )
-
-        watchNextResultsFingerprint.let {
+        ).let {
             val contentsField =
                 it.instructionMatches.first().instruction.getReference<FieldReference>()!!
             val itemSectionRendererField =
@@ -148,7 +135,13 @@ val hideRelatedVideosPatch = bytecodePatch(
                 val helperMethod = ImmutableMethod(
                     definingClass,
                     "patch_hideRelatedVideos",
-                    helperMethodParameter,
+                    listOf(
+                        ImmutableMethodParameter(
+                            resultsClass,
+                            null,
+                            null
+                        )
+                    ),
                     "V",
                     AccessFlags.PRIVATE.value or AccessFlags.FINAL.value,
                     annotations,

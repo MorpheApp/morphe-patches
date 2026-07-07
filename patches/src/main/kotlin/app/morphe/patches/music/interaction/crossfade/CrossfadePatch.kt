@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/1065
  *
  * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
@@ -411,16 +411,14 @@ val crossfadePatch = bytecodePatch(
                 "no field whose type declares a ($EXO_PLAYER_TYPE, 3-param) factory method",
         )
         val factoryClass = mutableClassDefBy(factoryFieldRef.type)
-
         val factoryMethod = Fingerprint(
             definingClass = factoryClass.type,
             returnType = EXO_PLAYER_TYPE,
             custom = { method, _ ->
                 method.parameterTypes.size == 3 &&
-                    method.parameterTypes[2].toString() == "I"
+                        method.parameterTypes[2].toString() == "I"
             }
         ).method
-
         // ExoPlayer concrete impl - fingerprinted via the unique "ExoPlayerImpl" log tag.
         val exoPlayerImplClass = ExoPlayerImplFingerprint.classDef
         val exoImplMethods = allMethodsInHierarchy(exoPlayerImplClass.type)
@@ -470,8 +468,8 @@ val crossfadePatch = bytecodePatch(
             Fingerprint(
                 custom = { _, classDef ->
                     !AccessFlags.INTERFACE.isSet(classDef.accessFlags)
-                        && !AccessFlags.ABSTRACT.isSet(classDef.accessFlags)
-                        && sharedStateFieldRef.type in classDef.interfaces
+                            && !AccessFlags.ABSTRACT.isSet(classDef.accessFlags)
+                            && sharedStateFieldRef.type in classDef.interfaces
                 }
             ).classDef
         } else {
@@ -482,7 +480,6 @@ val crossfadePatch = bytecodePatch(
             it.type !in knownFieldTypes && it.type != sharedStateFieldRef.type
         }
         val sharedCallbackInterfaceClass = classDefBy(sharedCallbackFieldRef.type)
-
         // Same for shared callback - resolve abstract/interface to concrete.
         val sharedCallbackClass = if (
             AccessFlags.INTERFACE.isSet(sharedCallbackInterfaceClass.accessFlags)
@@ -491,8 +488,8 @@ val crossfadePatch = bytecodePatch(
             Fingerprint(
                 custom = { _, classDef ->
                     !AccessFlags.INTERFACE.isSet(classDef.accessFlags)
-                        && !AccessFlags.ABSTRACT.isSet(classDef.accessFlags)
-                        && (sharedCallbackFieldRef.type in classDef.interfaces
+                            && !AccessFlags.ABSTRACT.isSet(classDef.accessFlags)
+                            && (sharedCallbackFieldRef.type in classDef.interfaces
                             || classDef.superclass == sharedCallbackFieldRef.type)
                 }
             ).classDef
@@ -535,11 +532,13 @@ val crossfadePatch = bytecodePatch(
         val videoSurfaceClass = Fingerprint(
             custom = { _, classDef ->
                 !AccessFlags.INTERFACE.isSet(classDef.accessFlags)
-                    && classDef.fields.any { it.type == EXO_PLAYER_TYPE }
-                    && coordinatorClass.fields.any { it.type == classDef.type }
-                    && classDef.type !in knownFieldTypes
-                    && classDef.type != sharedStateFieldRef.type
-                    && classDef.type != sharedCallbackFieldRef.type
+                        && classDef.fields.any {
+                    it.type == EXO_PLAYER_TYPE
+                }
+                        && coordinatorClass.fields.map { it.type }.any { it == classDef.type }
+                        && classDef.type !in knownFieldTypes
+                        && classDef.type != sharedStateFieldRef.type
+                        && classDef.type != sharedCallbackFieldRef.type
             }
         ).classDef
         val videoSurfaceField = coordinatorClass.fields.first { it.type == videoSurfaceClass.type }
@@ -663,13 +662,11 @@ val crossfadePatch = bytecodePatch(
             returnType = "V",
             parameters = listOf("F"),
         ).method.name
-
         val setPlayWhenReadyName = Fingerprint(
             definingClass = playerInterfaceType,
             returnType = "V",
             parameters = listOf("Z"),
         ).method.name
-
         val releaseName = Fingerprint(
             definingClass = EXO_PLAYER_TYPE,
             returnType = "V",
@@ -678,41 +675,40 @@ val crossfadePatch = bytecodePatch(
                 !AccessFlags.CONSTRUCTOR.isSet(method.accessFlags)
             }
         ).method.name
-
         // PlaybackInfo class (crf) - field on ExoPlayer impl hierarchy with >=3 int + >=1 long fields
         // and no interfaces (rules out the inner engine handler cqb which also matches field counts).
         val exoImplFields = allFieldsInHierarchy(exoPlayerImplClass.type)
         val playbackInfoClass = Fingerprint(
             custom = { _, classDef ->
                 classDef.interfaces.isEmpty()
-                    && classDef.fields.count { it.type == "I" } >= 3
-                    && classDef.fields.count { it.type == "J" } >= 1
-                    && exoImplFields.any { it.type == classDef.type }
+                        && classDef.fields.count { it.type == "I" } >= 3
+                        && classDef.fields.count { it.type == "J" } >= 1
+                        && exoImplFields.map { it.type }
+                    .any { it == classDef.type }
             }
         ).classDef
         val playbackStateFieldName = playbackInfoClass.fields.first { it.type == "I" }.name
-
         // getPlaybackState - ()I on the ExoPlayer impl hierarchy that reads PlaybackInfo + first int field.
         // Uses Option A: no definingClass, custom checks hierarchy membership.
         val getPlaybackStateName = Fingerprint(
             returnType = "I",
             parameters = emptyList(),
             custom = { method, classDef ->
-                isInHierarchyOf(classDef.type, exoPlayerImplClass.type)
-                    && method.implementation?.instructions?.let { instructions ->
-                        instructions.any { insn ->
-                            insn is ReferenceInstruction
+                isInHierarchyOf(classDef.type, startType = exoPlayerImplClass.type)
+                        // TODO: Replace this with instruction filters
+                        && method.implementation?.instructions?.let { instructions ->
+                    instructions.any { insn ->
+                        insn is ReferenceInstruction
                                 && insn.opcode == Opcode.IGET_OBJECT
                                 && (insn.reference as? FieldReference)?.type == playbackInfoClass.type
-                        } && instructions.any { insn ->
-                            insn is ReferenceInstruction
+                    } && instructions.any { insn ->
+                        insn is ReferenceInstruction
                                 && insn.opcode == Opcode.IGET
                                 && (insn.reference as? FieldReference)?.name == playbackStateFieldName
-                        }
-                    } ?: false
+                    }
+                } ?: false
             }
         ).method.name
-
 
         val getDurationName = Fingerprint(
             returnType = "J",
@@ -722,7 +718,7 @@ val crossfadePatch = bytecodePatch(
                 literal(-9223372036854775807L)
             ),
             custom = { _, classDef ->
-                isInHierarchyOf(classDef.type, exoPlayerImplClass.type)
+                isInHierarchyOf(classDef.type, startType = exoPlayerImplClass.type)
             }
         ).method.name
 
@@ -731,15 +727,15 @@ val crossfadePatch = bytecodePatch(
             returnType = "J",
             parameters = emptyList(),
             custom = { method, classDef ->
-                isInHierarchyOf(classDef.type, exoPlayerImplClass.type)
-                    && method.name != getDurationName
-                    && method.implementation?.instructions?.any { insn ->
-                        insn is ReferenceInstruction
+                isInHierarchyOf(classDef.type, startType = exoPlayerImplClass.type)
+                        && method.name != getDurationName
+                        && method.implementation?.instructions?.any { insn ->
+                    insn is ReferenceInstruction
                             && (insn.opcode == Opcode.INVOKE_DIRECT || insn.opcode == Opcode.INVOKE_VIRTUAL)
                             && insn.reference.toString().let { ref ->
-                                ref.contains("(${playbackInfoClass.type})") && ref.endsWith("J")
-                            }
-                    } ?: false
+                        ref.contains("(${playbackInfoClass.type})") && ref.endsWith("J")
+                    }
+                } ?: false
             }
         ).method.name
 
@@ -749,10 +745,12 @@ val crossfadePatch = bytecodePatch(
             accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
             custom = { _, classDef ->
                 !classDef.type.contains("ExoPlayer")
-                    && classDef.fields.any { it.type == "Ljava/util/concurrent/CopyOnWriteArraySet;" }
-                    && exoPlayerImplClass.fields.any { it.type == classDef.type }
+                        && classDef.fields.any { it.type == "Ljava/util/concurrent/CopyOnWriteArraySet;" }
+                        && exoPlayerImplClass.fields.map { it.type }
+                    .any { it == classDef.type }
             }
         ).classDef
+
         val listenerSetInWrapper = listenerWrapperClass.fields.first {
             it.type == "Ljava/util/concurrent/CopyOnWriteArraySet;"
         }
@@ -1466,7 +1464,7 @@ val crossfadePatch = bytecodePatch(
         // the Runnable from ever being posted, leaving cwh.b intact.
         if (is_9_00_or_greater && eventDispatchField9x != null && forwardingPlayerField9x != null) {
             val cgdType = eventDispatchField9x.type
-            val cwhLctrType = forwardingPlayerField9x.type  // = Lctr interface type
+            val cwhLctrType = forwardingPlayerField9x.type
             try {
                 // Find cwh.U()V: the method named "U" with no params/void return on the concrete
                 // class that (a) implements the Lctr interface and (b) has a non-static Lcgd field.
@@ -1481,16 +1479,17 @@ val crossfadePatch = bytecodePatch(
                             f.type == cgdType && !AccessFlags.STATIC.isSet(f.accessFlags)
                         }
                     }
-                ).method.addInstructions(
-                    0,
-                    """
-                        sget-boolean v0, $EXTENSION_CLASS->suppressCwhU:Z
-                        if-eqz v0, :no_suppress
-                        return-void
-                        :no_suppress
-                        nop
-                    """,
                 )
+                    .method.addInstructions(
+                        0,
+                        """
+                            sget-boolean v0, $EXTENSION_CLASS->suppressCwhU:Z
+                            if-eqz v0, :no_suppress
+                            return-void
+                            :no_suppress
+                            nop
+                        """
+                    )
                 log.fine { "9.x: injected suppressCwhU into cwh.U()V (lctrType=$cwhLctrType, cgdType=$cgdType)" }
             } catch (e: Exception) {
                 log.warning("9.x: suppressCwhU injection failed: ${e.message}")
@@ -1681,7 +1680,6 @@ val crossfadePatch = bytecodePatch(
             }
         ).method
         val stateType = getStateMethod.returnType
-
         // isAudioMode is the static (stateType)Z method with MORE enum
         // comparisons (checks 3 audio-only states vs 2 video states).
         // We pick the longest implementation among the static (T)Z methods.

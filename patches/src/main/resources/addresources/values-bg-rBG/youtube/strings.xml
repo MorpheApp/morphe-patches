@@ -283,7 +283,6 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_title">Забраняване на пропускане на глава с двойно докосване</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Деактивира жестовото двойно докосване с два пръста, което прескача глави, което може да бъде задействано случайно с един пръст</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Външните свали</string>
   <string name="morphe_external_downloader_screen_summary">Изтегляйте видеа, подкасти или песни чрез външни приложения за изтегляне</string>
   <string name="morphe_external_downloader_title">Покажи бутон за външен свалик</string>
   <string name="morphe_external_downloader_summary">Показва бутон за наслагване в плейъра на видео, който отваря вашия външен инструмент за изтегляне</string>
@@ -424,7 +423,7 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Полето за външен свалик не може да бъде празно</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Деактивира прецизния режим на търсене, който се активира при издърпване на лентата за търсене</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Активиране на livestream DVR</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"Позволява превъртане на всички предавания на живо, дори на тези, които обикновено го ограничават
@@ -584,7 +583,7 @@ Second \"item\" text"</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Скрий менюто „Надписи“</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_shorts_button_title">Скрий футъра на менюто „Надписи“</string>
+  <string name="morphe_hide_shorts_button_title">Бутон кратки клипове Shorts</string>
   <!-- 'Create' has no display name. Translate normally. -->
   <string name="morphe_hide_create_button_title">Скрий хедъра на менюто „Надписи“</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -706,7 +705,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_seekbar_thumbnail_summary">Скрива лентата за напредък на гледането, показана на миниатюрите на видеа, които вече сте гледали</string>
   <string name="morphe_fullscreen_large_seekbar_title">Дублирането на видеа се показва</string>
   <!-- layout.hide.shorts.hideShortsComponentsPatch -->
-  <string name="morphe_shorts_player_screen_title">Дублирането на видеа се показва</string>
+  <string name="morphe_shorts_player_screen_title">Играч на Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Изберете кои компоненти да се показват в плейъра на Shorts</string>
   <string name="morphe_hide_shorts_category_title">Скриване на Shorts</string>
   <string name="morphe_hide_shorts_channel_title">Скрий в страницата на канала</string>
@@ -937,8 +936,10 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Предотвратява плъзгането на минимизирания плейър в различни ъгли на екрана</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Изключете хоризонтално влачене движение</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Предотвратява затварянето на минииграча чрез плъзгане хоризонтално през екрана</string>
-  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Деактивиране на възпроизвеждането чрез плъзгане настрани</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Паузирайте възпроизвеждането с хоризонтален жест</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Възпроизвеждането ще бъде спряно, когато мини-плеърът бъде плъзнат извън екрана</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">Запомнете позицията на драг състоянието</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">Извличането на мини-плейъра извън екрана ще запази състоянието на неговия потребителски интерфейс</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Скрийте бутоните за надграждане</string>
   <string name="morphe_miniplayer_width_dip_title">Размер по подразбиране</string>
   <string name="morphe_miniplayer_width_dip_summary">Задайте началния размер на екрана, в пиксели</string>

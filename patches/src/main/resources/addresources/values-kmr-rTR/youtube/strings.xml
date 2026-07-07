@@ -284,7 +284,6 @@ Sînorkirin:
   <string name="morphe_disable_chapter_skip_double_tap_title">Destûrê nedê ku bi du lîkêkirinê beşan bazide</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Disables the two-finger double-tap gesture that skips chapters, which may be accidentally triggered with one finger</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Downloads bikêrkirî</string>
   <string name="morphe_external_downloader_screen_summary">Vîdyoyê, podcastan, an stranê bi rêya sepanên downloadkirina sêjê dakêşîne.</string>
   <string name="morphe_external_downloader_title">Nîşan bide lê gava serîna bikêrkaran</string>
   <string name="morphe_external_downloader_summary">Shows an overlay button in video player that opens your external downloader</string>
@@ -425,7 +424,7 @@ Info: May not work on live streams"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Tiliyê rovnêr a lêkirinê qut bikin</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Disables the precise seeking mode that activates when pulling up the seekbar</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Stêrkirina DVR-ya pêşandanê serdest bike</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"Hêlîkirinê li ser hemû şîrvanên zindî, tewra yên ku normalî astengî lê hene, destûr dide
@@ -939,8 +938,10 @@ Hatin binveşirin, ew tê mesêr kirin ka danayê peşêbîyê şêniyel ki bug-
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Gradientek paşnavê di ekranê de li ser ekranê ya ku bi şûşa rasterast li şûna rengê wekhev vekişîne</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Çekana mane ya serê horizontal astîne</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Tekreng</string>
-  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Dêrkirina lîstikê bi dragkirina horîzontal nekarin</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Bi lingê horîzontal vekirina ledayînê rawestînin</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Lîstikê dema ku mînîlîstik ji ekranê derbas bibe rawestî dema</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">Pozîsyona lingê parastin</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">Dragkirina mini-lîstikê derve ekranê dê şêwaza UI-ya wê parastin</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Dane serlêdanên dorpelê</string>
   <string name="morphe_miniplayer_width_dip_title">Rengê Sebarê</string>
   <string name="morphe_miniplayer_width_dip_summary">Destbîne ranga sereke ya barkê pêşkeftina vîdeoyê</string>

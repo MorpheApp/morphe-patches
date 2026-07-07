@@ -283,7 +283,6 @@ Limitazioni:
   <string name="morphe_disable_chapter_skip_double_tap_title">Disabilita lo scorrimento rapido del capitolo con un doppio tocco</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Disabilita il gesto di doppio tocco con due dita che consente di saltare i capitoli, che potrebbe essere attivato accidentalmente con un dito</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Download esterni</string>
   <string name="morphe_external_downloader_screen_summary">Scarica video, podcast o canzoni con app di download di terze parti</string>
   <string name="morphe_external_downloader_title">Mostra il pulsante Download esterno</string>
   <string name="morphe_external_downloader_summary">Mostra un pulsante di overlay sul lettore video per aprire il tuo downloader esterno</string>
@@ -424,7 +423,7 @@ Avviso: Potrebbe non funzionare sui video in diretta"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Disabilita il gesto di avanzamento preciso</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Disabilita la modalità di ricerca precisa che si attiva quando si solleva la barra di ricerca</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Abilita DVR sui video in diretta</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"Consente di effettuare l'avanzamento rapido su tutti gli streaming in diretta, anche quelli che normalmente lo limitano.
@@ -937,8 +936,10 @@ Se in seguito verrà disattivata, si consiglia di cancellare i dati dell'app per
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Impedisce di trascinare il lettore minimizzato negli angoli diversi dello schermo</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Disabilita gesto di trascinamento orizzontale</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Impedisce la chiusura del lettore minimizzato scorrendolo orizzontalmente fuori dallo schermo</string>
-  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Disattiva la riproduzione con trascinamento orizzontale</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Metti in pausa la riproduzione con uno scorrimento orizzontale</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">La riproduzione si metterà in pausa quando il miniplayer viene trascinato fuori dallo schermo</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">Ricorda la posizione dello scorrimento</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">Trascinando il miniplayer fuori dallo schermo si manterrà lo stato della sua interfaccia utente</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Nascondi i pulsanti in sovrapposizione</string>
   <string name="morphe_miniplayer_width_dip_title">Dimensione predefinita</string>
   <string name="morphe_miniplayer_width_dip_summary">Imposta la dimensione sullo schermo iniziale, in pixel</string>

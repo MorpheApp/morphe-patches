@@ -21,7 +21,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_00_about_title">Маалымат</string>
   <string name="morphe_settings_screen_01_ads_title">Жарнама</string>
   <string name="morphe_settings_screen_04_general_title">Жалпы</string>
-  <string name="morphe_settings_screen_06_shorts_title">Шортстор</string>
   <string name="morphe_settings_screen_11_misc_title">Майда-чүйдө</string>
   <string name="morphe_settings_screen_12_video_title">Видео</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
@@ -74,7 +73,7 @@ Second \"item\" text"</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
@@ -108,7 +107,6 @@ Second \"item\" text"</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Башкы бет баскычын жашыруу</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_shorts_button_title">Шортстор баскычын жашыруу</string>
   <!-- 'Create' has no display name. Translate normally. -->
   <string name="morphe_hide_create_button_title">Жасоо баскычын жашыруу</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -177,7 +175,6 @@ Second \"item\" text"</string>
   <!-- misc.sharesheet.openSystemShareSheetPatch -->
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <!-- layout.startpage.changeStartPagePatch -->
-  <string name="morphe_change_start_page_entry_shorts">Шортстор</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <!-- layout.shortsautoplay.shortsAutoplayPatch -->

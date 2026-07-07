@@ -283,7 +283,6 @@ Mga Limitasyon:
   <string name="morphe_disable_chapter_skip_double_tap_title">Patayin ang double tap na paglaktaw sa kabanata</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Hindi pinapagana ang double-tap gesture gamit ang dalawang daliri na lumalaktaw sa mga chapter, na maaaring hindi sinasadyang ma-trigger gamit ang isang daliri</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Panlabas na pag-download</string>
   <string name="morphe_external_downloader_screen_summary">Mag-download ng mga video, podcast, o kanta gamit ang mga app na pang-download ng third-party</string>
   <string name="morphe_external_downloader_title">Ipakita ang button ng panlabas na pag-download</string>
   <string name="morphe_external_downloader_summary">Nagpapakita ng overlay button sa video player na nagbubukas ng iyong external downloader</string>
@@ -424,7 +423,7 @@ Impormasyon: Maaaring hindi gumana sa mga live stream"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">I-disable ang tumpak na pag-ugong ng pag-ugong</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Hindi pinapagana ang precise seeking mode na nag-a-activate kapag hinihila pataas ang seekbar</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">I-enable ang livestream DVR</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"Pinapayagan ang paglundag sa lahat ng livestream, kahit na sa mga normal na naghihigpit nito.
@@ -937,8 +936,10 @@ Kung i-off ang, inirerekomenda na i-clear ang app data para maiwasan ang UI bugs
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Pinipigilan ang pag-drag ng minimize player sa iba\'t ibang sulok ng screen</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">I-disable ang horizontal drag gesture</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Pinipigilan ang pagsasara ng miniplayer sa pamamagitan ng pag-swipe nito pahalang sa screen</string>
-  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Huwag paganahin ang pagtugtog sa pamamagitan ng pahalang na paghila</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">I-pause ang pagtugtog gamit ang pahalang na paggalaw</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Magpapahinto ang pagtugtog kapag ang miniplayer ay inilayo sa screen</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">Tandaan ang posisyon ng paggalaw</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">Ang paghila ng miniplayer palabas ng screen ay pananatilihin ang estado ng UI nito</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Itago ang mga overlay button</string>
   <string name="morphe_miniplayer_width_dip_title">Default size</string>
   <string name="morphe_miniplayer_width_dip_summary">Itakda ang panimulang on-screen size, sa pixels</string>

@@ -20,11 +20,11 @@ import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/LivestreamDvrPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/LivestreamDVRPatch;"
 
 @Suppress("unused")
-val livestreamDvrPatch = bytecodePatch(
-    description = "Enables video seeking on live streams that have disabled DVR.",
+val livestreamDVRPatch = bytecodePatch(
+    description = "Enables video seeking on livestreams that have disabled DVR (Digital Video Recorder).",
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -46,21 +46,21 @@ val livestreamDvrPatch = bytecodePatch(
                 addInstructionsAtControlFlowLabel(
                     returnIndex,
                     """
-                        invoke-static { v$returnRegister }, $EXTENSION_CLASS->enableLivestreamDvr(Z)Z
+                        invoke-static { v$returnRegister }, $EXTENSION_CLASS->enableLivestreamDVR(Z)Z
                         move-result v$returnRegister
                     """
                 )
             }
         }
 
-        FormatStreamModelMaxDvrDurationFingerprint.method.apply {
-            val index = FormatStreamModelMaxDvrDurationFingerprint.instructionMatches.last().index
+        FormatStreamModelMaxDVRDurationFingerprint.method.apply {
+            val index = FormatStreamModelMaxDVRDurationFingerprint.instructionMatches.last().index
             val register = getInstruction<OneRegisterInstruction>(index).registerA
 
             addInstructions(
                 index,
                 """
-                    invoke-static { v$register, v${register + 1} }, $EXTENSION_CLASS->overrideMaxDvrDurationSec(D)D
+                    invoke-static { v$register, v${register + 1} }, $EXTENSION_CLASS->overrideMaxDVRDurationSeconds(D)D
                     move-result-wide v$register
                 """
             )

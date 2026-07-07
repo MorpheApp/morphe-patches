@@ -3,7 +3,6 @@ package app.morphe.patches.youtube.layout.seekbar
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
-import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
@@ -121,3 +120,4 @@ internal object LottieCompositionFactoryFromJsonInputStreamFingerprint : Fingerp
         anyInstruction(literal(2), literal(3))
     )
 )
+

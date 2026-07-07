@@ -1,3 +1,10 @@
+## [1.34.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.34.0-dev.2...v1.34.0-dev.3) (2026-07-07)
+
+### ✨ New Features
+
+* **YouTube - Miniplayer:** Add "Disable automatic reposition" setting ([#1920](https://github.com/MorpheApp/morphe-patches/issues/1920)) ([e49c0b4](https://github.com/MorpheApp/morphe-patches/commit/e49c0b4053a2bcfd0f9b1140d1e5438e43d215c5))
+* **YouTube Music - Settings:** Add Morphe language selector ([#1937](https://github.com/MorpheApp/morphe-patches/issues/1937)) ([443500c](https://github.com/MorpheApp/morphe-patches/commit/443500c66718d722a393707712c78ac3232e0fbd))
+
 ## [1.34.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.34.0-dev.1...v1.34.0-dev.2) (2026-07-05)
 
 ### 🐛 Bug Fixes

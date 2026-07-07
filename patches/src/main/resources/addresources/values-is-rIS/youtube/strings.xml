@@ -241,7 +241,7 @@ Orð með táknmyndum í miðjunni þurfa nákvæma samsvörun (til dæmis: iPho
   <string name="morphe_hide_keyword_content_about_summary">"Heim / Áskriftir / Leit / Kommenta eru síuð til að fela efni sem samsvarar leitarorðum
 
 Takmörk:
-• Shorts shorts mynda ekki hægt að fela eftir rásarnafni
+• Shorts mynda ekki hægt að fela eftir rásarnafni
 • Sum UI þættir gætu ekki verið feldir
 • Leit að leitarorði getur sýnt engin niðurstöðu"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Nota heildarorð</string>
@@ -283,7 +283,6 @@ Takmörk:
   <string name="morphe_disable_chapter_skip_double_tap_title">Gerir virka forskotaskilyrðikvillan sem getur komið í veg fyrir að afritirinn hlaðist</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Gerir óvirkt tví fingurgestina tví breytilegu sem hoppar um kafla, sem gæti verið sýnt með einni fingri</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Utanaðkomandi niðurhal</string>
   <string name="morphe_external_downloader_screen_summary">Niðurhalaðu myndbönd, hlaðvarpa eða lög með niðurhalssforritum frá þriðja aðila.</string>
   <string name="morphe_external_downloader_title">Sýna utanaðkomandi niðurhalshnapp</string>
   <string name="morphe_external_downloader_summary">Sýnir hlutfalls hnatta á myndavörpun sem opnar þinn þriðja aðila niðurhal</string>
@@ -422,7 +421,7 @@ API lykillinn þinn ætti aldrei að deila. Allir með aðgang að honum geta no
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Gerðu leitarstikuna nákvæma</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Gerir óvirkt nákvæma leit á þessu sem virkjar þegar þeir draga leitarstikuna</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Vírúð lífvídeós DVR</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"Leyfir að leita á öllum streymum, jafnvel þótt þeir venjulega takmarki það
@@ -593,7 +592,7 @@ Athugið: Ef 'Spoofa myndband streymi' er ekki virkjað getur þetta valkosti va
   <string name="morphe_show_settings_button_index_title">Stillingar hnappur staðsetning</string>
   <string name="morphe_show_settings_button_type_title">Starfa árásnstjórnstikur</string>
   <string name="morphe_show_settings_button_type_summary">Opnar Morphe stillingar þegar virkjað, eða YouTube stillingar þegar óvirkt</string>
-  <string name="morphe_swap_create_with_notifications_button_title">Hylja Shorts</string>
+  <string name="morphe_swap_create_with_notifications_button_title">Skildu við skipti Create hnappinn og Notifications hnappinn</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Ef breyting á þessari stillingu hefur ekki áhrif skaltu prófa að skipta yfir í leynistillinga ham</string>
   <string name="morphe_hide_navigation_button_labels_title">Fela stýrihnappamerki</string>
   <string name="morphe_hide_navigation_bar_title">Fela stjórnstikur</string>
@@ -704,7 +703,7 @@ Til að sýna ‚Hljómsnertistilinn‘ skaltu breyta „Forgeðu vídeóstreymi
   <!-- layout.hide.shorts.hideShortsComponentsPatch -->
   <string name="morphe_shorts_player_screen_title">Short síðu</string>
   <string name="morphe_shorts_player_screen_summary">Veldu hvaða þættir birtast í Shorts spilarann</string>
-  <string name="morphe_hide_shorts_category_title">Hylja „Fleiri vírus“ hlutfalls yfirlið</string>
+  <string name="morphe_hide_shorts_category_title">Felja Shorts</string>
   <string name="morphe_hide_shorts_channel_title">Felur á rásarsíðu</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">Felur á Heimhópi &amp; tengdri vídeóum</string>
@@ -933,8 +932,10 @@ Ef kveikt á því síðar er mælt með því að hreinsa gögn forritsins til 
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Kemur í veg fyrir að draga minnkaðan vörpuninn á mismunandi horn skjásins</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Lokað láréttri dragningu</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Kemur í veg fyrir að loka minnkaðan spilarann með því að draga hann láréttur úr sjónarsviðinu</string>
-  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Gerðu af virkni á vinstrihallu</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Pausa uppspilun með láréttum dragi</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Spilun mun hætta þegar mini-spilarinn er dreginn út af skjánum</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">Muna drag stöðu</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">Að draga litla spilarann ​​utan skjásins mun varðveita UI ástand þess</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Fela yfirborðs hnappa</string>
   <string name="morphe_miniplayer_width_dip_title">Sjálfgengið stærð</string>
   <string name="morphe_miniplayer_width_dip_summary">Stilltu upphaflegu stærðina á skjánum, í pixlum</string>

@@ -283,7 +283,6 @@ Məhdudiyyətlər:
   <string name="morphe_disable_chapter_skip_double_tap_title">Cüt toxunuşla fəsil ötürülməsini qapat</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Tək barmaqla bilmədən aktivləşə bilən, fəsilləri ötürən iki barmaqla cüt toxunma jestini qapadır</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Xarici yükləmələr</string>
   <string name="morphe_external_downloader_title">Xarici yükləmə düyməsini göstər</string>
   <string name="morphe_external_downloader_summary">Video oynadıcıda xarici yükləyicinizi açan örtük düyməsini göstərir</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
@@ -423,7 +422,7 @@ Məlumat: Canlı yayımlarda işləməyə bilər"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Dəqiq irəli-geri çəkmə jestini qapat</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Çevirmə cizgisin yuxarı çəkərkən aktivləşən dəqiq çevirmə rejimini qapadır</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Canlı yayım DVR-ni aktivləşdir</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"Normalda məhdudiyyət qoyulanlar da belə, bütün canlı yayımlarda çevirməyə imkan verir

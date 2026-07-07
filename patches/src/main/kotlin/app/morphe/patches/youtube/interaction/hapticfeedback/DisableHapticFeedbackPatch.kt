@@ -71,7 +71,7 @@ val disableHapticFeedbackPatch = bytecodePatch(
         val vibratorField = TapAndHoldHapticsHandlerFingerprint.instructionMatches.last()
             .instruction.getReference<FieldReference>()!!
 
-        val tapAndHoldHapticsFingerprint = Fingerprint(
+        Fingerprint(
             name = "run",
             accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
             returnType = "V",
@@ -84,9 +84,7 @@ val disableHapticFeedbackPatch = bytecodePatch(
                 checkCast("Landroid/os/Vibrator;"),
                 string("Failed to easy seek haptics vibrate.")
             )
-        )
-
-        tapAndHoldHapticsFingerprint.let {
+        ).let {
             // clearMatch() is used because it can be the same method as [TapAndHoldSpeedFingerprint].
             it.clearMatch()
             it.method.apply {
@@ -104,21 +102,18 @@ val disableHapticFeedbackPatch = bytecodePatch(
         }
 
         arrayOf(
-            methodCall(
-                definingClass = "Landroid/os/Vibrator;",
-                name = "vibrate",
-                parameters = listOf("Landroid/os/VibrationEffect;"),
-                returnType = "V"
-            ),
-            methodCall(
-                definingClass = "Landroid/os/Vibrator;",
-                name = "vibrate",
-                parameters = listOf("J"),
-                returnType = "V"
-            )
-        ).forEach { filter ->
+            listOf("Landroid/os/VibrationEffect;"),
+            listOf("J")
+        ).forEach { parameters ->
             Fingerprint(
-                filters = listOf(filter),
+                filters = listOf(
+                    methodCall(
+                        definingClass = "Landroid/os/Vibrator;",
+                        name = "vibrate",
+                        parameters = parameters,
+                        returnType = "V"
+                    )
+                ),
                 custom = { _, classDef ->
                     classDef.type != EXTENSION_CLASS
                 }
@@ -129,7 +124,7 @@ val disableHapticFeedbackPatch = bytecodePatch(
                 replaceInstruction(
                     index,
                     "invoke-static { $registers }, $EXTENSION_CLASS->vibrate(Landroid/os/Vibrator;" +
-                            filter.parameters!!.joinToString("") + ")V"
+                            parameters.joinToString("") + ")V"
                 )
             }
         }

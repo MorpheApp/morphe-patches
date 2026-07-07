@@ -283,12 +283,11 @@ Ograniczenia:
   <string name="morphe_disable_chapter_skip_double_tap_title">Wyłącz pominięcie rozdziału podwójnym dotknięciem</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Wyłącza gest podwójnego dotknięcia dwoma palcami do pomijania rozdziałów, który bywa przypadkowo wywoływany jednym palcem</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Zewnętrzne pobieranie</string>
   <string name="morphe_external_downloader_screen_summary">Pobieraj filmy, podcasty lub utwory za pomocą zewnętrznych aplikacji do pobierania</string>
   <string name="morphe_external_downloader_title">Pokaż przycisk zewnętrznego pobierania</string>
   <string name="morphe_external_downloader_summary">Wyświetla w odtwarzaczu przycisk otwierający zewnętrzną aplikację do pobierania</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
-  <string name="morphe_external_downloader_action_button_title">Nadpisz działanie przycisku Pobierz</string>
+  <string name="morphe_external_downloader_action_button_title">Zastąp przycisk akcji Pobierz</string>
   <string name="morphe_external_downloader_action_button_summary">Zastępuje wbudowaną funkcję pobierania YouTube zewnętrzną aplikacją do pobierania</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Tłumaczenie głosowe</string>
@@ -424,7 +423,7 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Wyłącz gest precyzyjnego przewijania</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Wyłącza tryb precyzyjnego przewijania, który aktywuje się po pociągnięciu paska postępu w górę</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Włącz przewijanie transmisji na żywo</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"Umożliwia przewijanie wszystkich transmisji na żywo, nawet tych, które normalnie to blokują
@@ -874,7 +873,7 @@ Jeśli później zostanie to wyłączone, zalecane jest usunięcie danych aplika
   <string name="morphe_open_system_share_sheet_title">Otwórz systemowe menu udostępniania</string>
   <string name="morphe_open_system_share_sheet_summary">Otwiera systemowe menu udostępniania zamiast tego wbudowanego w aplikacji</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
-  <string name="morphe_override_youtube_music_buttons_title">Nadpisz działanie przycisków YouTube Music</string>
+  <string name="morphe_override_youtube_music_buttons_title">Zastąp przyciski YouTube Music</string>
   <string name="morphe_override_youtube_music_buttons_summary">Otwiera preferowaną aplikację muzyczną zamiast YouTube Music po dotknięciu przycisków muzycznych</string>
   <string name="morphe_music_package_name_title">Nazwa pakietu docelowej aplikacji</string>
   <string name="morphe_music_package_name_summary">Pakiet docelowej aplikacji muzycznej</string>
@@ -936,8 +935,10 @@ Jeśli później zostanie to wyłączone, zalecane jest usunięcie danych aplika
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Zapobiega przeciąganiu miniodtwarzacza w różne rogi ekranu</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Wyłącz gest przeciągania w poziomie</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Zapobiega zamykaniu miniodtwarzacza poprzez przesunięcie go w poziomie poza ekran</string>
-  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Wyłącz odtwarzanie przy przesunięciu w poziomie</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Wstrzymaj odtwarzanie przy przeciągnięciu w poziomie</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Odtwarzanie zostanie wstrzymane, gdy miniodtwarzacz zostanie przeciągnięty poza ekran</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">Zapamiętaj pozycję przeciągnięcia</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">Przeciągnięcie miniodtwarzacza poza ekran zachowa stan jego interfejsu</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Ukryj przyciski w miniodtwarzaczu</string>
   <string name="morphe_miniplayer_width_dip_title">Domyślny rozmiar</string>
   <string name="morphe_miniplayer_width_dip_summary">Ustaw początkowy rozmiar na ekranie w pikselach</string>

@@ -283,7 +283,6 @@ Omezení:
   <string name="morphe_disable_chapter_skip_double_tap_title">Zakázat přeskočení kapitol dvojitým klepnutím</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Zakáže dvojité klepnutí dvěma prsty, které přeskočí kapitoly, což může být neúmyslně spuštěno jedním prstem</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Externí stahování</string>
   <string name="morphe_external_downloader_screen_summary">Stahujte videa, podcasty nebo písně pomocí aplikací pro stahování třetích stran</string>
   <string name="morphe_external_downloader_title">Zobrazit tlačítko pro externí stahování</string>
   <string name="morphe_external_downloader_summary">Zobrazuje překryvné tlačítko v přehrávači videa, které otevře váš externí downloader</string>
@@ -424,7 +423,7 @@ Upozornění: Možná nebude fungovat u živých přenosů"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Zakázat přesné gesto pro vyhledávání</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Zakáže režim přesného vyhledávání, který se aktivuje při vytáhnutí ukazatele hledání</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Povolit záznam přímého přenosu</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"Umožňuje posun v jakémkoli živém vysílání, a to i v těch, která jej běžně omezují
@@ -584,7 +583,7 @@ Je třeba zadat ‚Soubory cookie s titulky‘"</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Skrýt tlačítko Vytvořit</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_shorts_button_title">Skrýt tlačítko Mikrofonu</string>
+  <string name="morphe_hide_shorts_button_title">Skrýt tlačítko Shorts</string>
   <!-- 'Create' has no display name. Translate normally. -->
   <string name="morphe_hide_create_button_title">Skrýt tlačítko Oznámení</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -937,8 +936,10 @@ Pokud bude později vypnuta, doporučujeme vymazat data aplikace, aby se zabrán
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Zabraňuje přetahování minimalizovaného přehrávače do různých rohů obrazovky</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Zakázat horizontální gesto přetahování</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Zabraňuje zavření mini přehrávače přejetím vodorovně z obrazovky</string>
-  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Zakázat přehrávání tažením do strany</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Pozastavit přehrávání vodorovným tahem</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Přehrávání se pozastaví, když se miniplayer vytáhne mimo obrazovku</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">Zapamatovat si pozici tahu</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">Přetažením miniokna mimo obrazovku se zachová jeho uživatelské rozhraní</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Skrýt tlačítka překrytí</string>
   <string name="morphe_miniplayer_width_dip_title">Výchozí velikost</string>
   <string name="morphe_miniplayer_width_dip_summary">Nastavte počáteční velikost na obrazovce v pixelech</string>

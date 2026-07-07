@@ -26,7 +26,9 @@ val playerTypeHookPatch = bytecodePatch(
             definingClass = "/YouTubePlayerOverlaysLayout;",
             accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
             returnType = "V",
-            parameters = listOf(PlayerTypeEnumFingerprint.originalClassDef.type)
+            parameters = listOf(
+                PlayerTypeEnumFingerprint.originalClassDef.type
+            )
         ).method.addInstruction(
             0,
             "invoke-static { p1 }, $EXTENSION_CLASS->setPlayerType(Ljava/lang/Enum;)V",
@@ -45,24 +47,22 @@ val playerTypeHookPatch = bytecodePatch(
         }
 
         val controlStateType = ControlsStateToStringFingerprint.originalClassDef.type
+        val videoStateType = VideoStateEnumFingerprint.originalClassDef.type
 
-        @Suppress("LocalVariableName")
-        val VideoStateFingerprint = Fingerprint(
+        Fingerprint(
             accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
             returnType = "V",
-            parameters = listOf(controlStateType),
+            parameters = listOf(element = controlStateType),
             filters = listOf(
                 // Obfuscated parameter field name.
                 fieldAccess(
                     definingClass = controlStateType,
-                    type = VideoStateEnumFingerprint.originalClassDef.type
+                    type = videoStateType
                 ),
                 resourceLiteral(ResourceType.STRING, "accessibility_play"),
                 resourceLiteral(ResourceType.STRING, "accessibility_pause")
             )
-        )
-
-        VideoStateFingerprint.let {
+        ).let {
             it.method.apply {
                 val videoStateFieldName = getInstruction<ReferenceInstruction>(
                     it.instructionMatches.first().index

@@ -283,7 +283,6 @@ Beperkings:
   <string name="morphe_disable_chapter_skip_double_tap_title">Deaktiveer dubbeltik hoofstukskip</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Deaktiveer die dubbeltik gebaar met twee vinger wat hoofstukke oorslaan, wat per ongeluk met een vinger geaktiveer kan word</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Eksterne aflaaie</string>
   <string name="morphe_external_downloader_screen_summary">Laai video\'s, podkaste of liedjies af met derdeparty-aflaai-programme</string>
   <string name="morphe_external_downloader_title">Wys eksterne aflaaiknoppie</string>
   <string name="morphe_external_downloader_summary">Wys \'n oorvleiknoppie in video-speler wat jou eksterne aflaaier oopmaak</string>
@@ -424,7 +423,7 @@ Info: Werk moontlik nie op regstreekse uitsendings nie"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Skakel presiese soek gebaar af</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Deaktiveer die presiese soekmodus wat geaktiveer word wanneer jy aan die soekbalk trek</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Aktiveer livestream DVR</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"Laat toe om op alle regstreekse uitsendings te soek, selfs dié wat dit normaalweg beperk
@@ -584,7 +583,6 @@ Let wel: As 'Spoof video streams' nie geaktiveer is nie, kan die aktivering hier
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Hide Cast button</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_shorts_button_title">Hide Microphone button</string>
   <!-- 'Create' has no display name. Translate normally. -->
   <string name="morphe_hide_create_button_title">Verberg Skep-knoppie</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -937,8 +935,10 @@ Indien later afgeskakel, word dit aanbeveel om die app se data uit te vee om UI-
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Verhoed dat die verkleinde speler na verskillende hoeke van die skerm sleep</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Deaktiveer horisontale sleep gebaar</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Verhoed dat die minispeler gesluit word deur dit horisontaal van die skerm af te swiep</string>
-  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Deaktiveer afspeel met horisontale drag</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Pouseer die afspeel met \'n horisontale sleepbeweging</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Afspeel sal pouseer wanneer die mini-speler van die skerm af gedra word</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">Onthou die posisie van die sleepbeweging</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">As jy die minispeler van die skerm afsleep, sal die gebruikerskoppelvlak se toestand behou bly.</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Verberg oorleg knoppies</string>
   <string name="morphe_miniplayer_width_dip_title">Standaardgrootte</string>
   <string name="morphe_miniplayer_width_dip_summary">Stel die begin-aan-skerm-grootte, in pixels</string>

@@ -14,10 +14,10 @@ import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
-import app.morphe.patches.shared.misc.litho.addLithoFilter
-import app.morphe.patches.shared.misc.litho.lithoFilterPatch
+import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.litho.node.hookTreeNodeResult
 import app.morphe.patches.youtube.misc.litho.node.treeNodeElementHookPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
@@ -36,7 +36,7 @@ private const val EXTENSION_FILTER =
 @Suppress("unused")
 val hidePlayerFlyoutMenuComponentsPatch = bytecodePatch(
     name = "Hide player flyout menu components",
-    description = "Adds options to hide menu components that appear when pressing the gear icon in the video player.",
+    description = "Adds options to hide menu components that appear when pressing the gear icon in the video player."
 ) {
     dependsOn(
         lithoFilterPatch,
@@ -76,7 +76,7 @@ val hidePlayerFlyoutMenuComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_player_flyout_stable_volume"),
                     SwitchPreference("morphe_hide_player_flyout_loop_video"),
                     SwitchPreference("morphe_hide_player_flyout_sleep_timer"),
-                    SwitchPreference("morphe_hide_player_flyout_watch_in_vr"),
+                    SwitchPreference("morphe_hide_player_flyout_watch_in_vr")
                 )
             )
         )

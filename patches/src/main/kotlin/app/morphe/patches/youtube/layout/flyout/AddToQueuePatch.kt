@@ -104,7 +104,6 @@ val addToQueuePatch = bytecodePatch(
             }
         }
 
-
         fun addProtocolVideoIdInterface(messageType: String) {
             // videoId is the only string field in the class initialized to an empty string.
             val videoIdStringField = Fingerprint(
@@ -116,7 +115,8 @@ val addToQueuePatch = bytecodePatch(
                         opcode = Opcode.IPUT_OBJECT,
                         definingClass = "this",
                         type = "Ljava/lang/String;",
-                        location = MatchAfterWithin(2))
+                        location = MatchAfterWithin(2)
+                    )
                 )
             ).instructionMatches.last().getFieldAccessed()
 
@@ -135,7 +135,7 @@ val addToQueuePatch = bytecodePatch(
                     ).toMutable().apply {
                         addInstructions(
                             0,
-                        """
+                            """
                                 iget-object v0, p0, $videoIdStringField
                                 return-object v0
                             """

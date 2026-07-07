@@ -283,7 +283,6 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_title">משבית את מצב הסריקה המדויק שמופעל כשמחזיקים את מיקום החיפוש</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">משבית את מחוות ההקשה הכפולה בשתי אצבעות שמדלגת על פרקים, שעשויה להיות מופעלת בטעות עם אצבע אחת</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">הורדות חיצוניות</string>
   <string name="morphe_external_downloader_screen_summary">הורד סרטונים, פודקאסטים או שירים באמצעות אפליקציות הורדה של צד שלישי</string>
   <string name="morphe_external_downloader_title">הצג לחצן הורדה חיצונית</string>
   <string name="morphe_external_downloader_summary">מציג כפתור שכבה בנגן הווידאו שפותח את הורדת הצד השלישי שלך</string>
@@ -424,7 +423,7 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">השבת מחוות דילוג מדויקת</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">משבית את מצב החיפוש המדויק שמופעל בעת משיכת פס החיפוש</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">הפעל DVR לשידור חי</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"מאפשר ניווט בכל שידורים חיים, אפילו באלה שמגבילים זאת בדרך כלל
@@ -547,19 +546,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_quick_actions_mix_button_title">הסתר תפריט \'עזרה ומשוב\'</string>
   <string name="morphe_hide_quick_actions_more_button_title">הסתר תפריט \'מהירות הפעלה\'</string>
   <string name="morphe_hide_quick_actions_more_videos_button_title">הסתר תפריט \'נעילת מסך\'</string>
-  <string name="morphe_hide_quick_actions_playlist_button_title">הסתר תפריט \'האזן עם YouTube Music\'</string>
-  <string name="morphe_hide_quick_actions_save_button_title">הסתר תפריט \'ראה ב-VR\'</string>
+  <string name="morphe_hide_quick_actions_playlist_button_title">הסתר לחצן רשימת השמעה</string>
+  <string name="morphe_hide_quick_actions_save_button_title">הסתר לחצן שמירה</string>
   <string name="morphe_hide_quick_actions_share_button_title">הסתר לחצן שיתוף</string>
   <string name="morphe_quick_actions_top_margin_title">שוליים עליונים לפעולות מהירות</string>
   <string name="morphe_quick_actions_top_margin_summary">הגדר את השוליים העליונים של סרגל הפעולות המהירות (0-32 dp)</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">כותבים</string>
-  <string name="morphe_captions_screen_summary">הסתר את הכותרת התחתונה של תפריט \'איכות\'</string>
+  <string name="morphe_captions_screen_summary">ניהול כתוביות אוטומטיות ועוגיות כתוביות</string>
   <!-- layout.captions.autoCaptionsPatch -->
-  <string name="morphe_auto_captions_style_title">הצגת כתוביות אוטומטיות</string>
-  <string name="morphe_auto_captions_style_entry_1">הסתר את הכותרת של תפריט \'איכות\'</string>
+  <string name="morphe_auto_captions_style_title">נראות של כתוביות אוטומטיות</string>
+  <string name="morphe_auto_captions_style_entry_1">הצג תמיד</string>
   <string name="morphe_auto_captions_style_entry_2">אל תהצג</string>
-  <string name="morphe_auto_captions_style_entry_3">מסתיר את התצוגה המקדימה של הסרטון הבא במצב מסך מלא לפני שההפעלה האוטומטית מתחילה</string>
+  <string name="morphe_auto_captions_style_entry_3">הצג כאשר הושתיק</string>
   <string name="morphe_auto_captions_style_entry_4">הצג בעת שתק</string>
   <string name="morphe_auto_captions_style_legacy_entry_1">הצג כתוביות אוטומטיות</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">הסתר כתוביות אוטומטיות</string>
@@ -612,14 +611,14 @@ Second \"item\" text"</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">שומר את סרגל הניווט גלוי בזמן גלילה</string>
   <string name="morphe_disable_translucent_status_bar_title">השבת שורת מצב שקופה</string>
   <string name="morphe_disable_translucent_status_bar_summary">הופך את סרגל המצב לאטום לחלוטין</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"הגבלות:
-• סרגל שחור עשוי להופיע наверח של שחקת הסרט.
-• סרגל הניווט של המערכת עשוי להשתנות לtrasparent, ואז לא יהיה אפשרי להגיב על הסרטים."</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"מגבלות:
+• פס שחור עשוי להופיע בחלקו העליון של נגן הווידאו.
+• סרגל הניווט של המערכת עשוי להשתנות לשקוף, ואי אפשר להגיב על סרטונים."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">השבת סרגל בהיר שקוף</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary">הופך את סרגל הניווט לאטום לחלוטין במצב בהיר</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_title">השבת סרגל כהה שקוף</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary">הופך את סרגל הניווט לאטום לחלוטין במצב כהה</string>
-  <string name="morphe_toolbar_screen_title">תּוּר</string>
+  <string name="morphe_toolbar_screen_title">סרגל כלים</string>
   <string name="morphe_toolbar_screen_summary">בחר אילו רכיבים יופיעו בסרגל הכלים</string>
   <string name="morphe_hide_toolbar_cast_button_title">הסתר לחצן העברה</string>
   <string name="morphe_hide_toolbar_chat_button_title">הסתר לחצן צ\'אט</string>
@@ -875,9 +874,9 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_title">פתיחת תפריט שיתוף מערכת</string>
   <string name="morphe_open_system_share_sheet_summary">פותח את גליון השיתוף של המערכת במקום את זה שבתוך האפליקציה בעת שיתוף תוכן</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
-  <string name="morphe_override_youtube_music_buttons_title">הַפֲיְה בטוב׸יַּ הְתַָֽה</string>
+  <string name="morphe_override_youtube_music_buttons_title">גמַהת במְירַד הכולַה</string>
   <string name="morphe_override_youtube_music_buttons_summary">פותח את אפליקציית המוזיקה המועדפת עליך במקום את YouTube Music בעת הקשה על כפתורי מוזיקה</string>
-  <string name="morphe_music_package_name_title">ינהַולו הְתַָֽה ש־ן הָיְב</string>
+  <string name="morphe_music_package_name_title">שם החבילה של אפליקציית המוזיקה המיועדת</string>
   <string name="morphe_music_package_name_summary">שם החבילה של יישום המוזיקה המותקן שלך</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">דף התחלתי</string>
@@ -937,8 +936,10 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">מונע גרירת הנגן הממוזער לפינות שונות של המסך</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">בטל מחוות גרירה אופקית</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">מונע סגירת הנגן הממוזער על ידי החלקתו אופקית מהמסך</string>
-  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">השבתת השמעה באמצעות גרירה אופקית</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">השהה השמעה באמצעות גרירה אופקית</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">ההשמעה תיעצר כאשר המיני נגן ייגרר מחוץ למסך</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">זכור את מצב הגרירה</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">גרירת הנגן הממוזער מחוץ למסך תשמור על מצב הממשק שלו</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">הסתר לחצני שכבת-על</string>
   <string name="morphe_miniplayer_width_dip_title">גודל ברירת מחדל</string>
   <string name="morphe_miniplayer_width_dip_summary">הגדר את הגודל הראשוני על המסך, בפיקסלים</string>

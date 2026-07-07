@@ -32,7 +32,7 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_title">Restaurare meniuri setări vechi</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Elimină restricțiile de redare în fundal</string>
-  <string name="morphe_shorts_disable_background_playback_title">Dezactivează redarea în fundal a Shorts</string>
+  <string name="morphe_shorts_disable_background_playback_title">Dezactivează redarea în fundal</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">Dezactivaţi actualizările layout-ului</string>
   <string name="morphe_disable_layout_updates_summary">Împiedică serverul să actualizeze aspectul aplicației</string>
@@ -283,7 +283,6 @@ Limitări:
   <string name="morphe_disable_chapter_skip_double_tap_title">Dezactivează modul precis de căutare care se activează atunci când țineți apăsat o poziție de căutare</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Dezactivează gestul de dublă atingere cu două degete care sare peste capitole, care poate fi declanșat accidental cu un singur deget</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Descărcări externe</string>
   <string name="morphe_external_downloader_screen_summary">Descărcă videoclipuri, podcasturi sau melodii folosind aplicaţii de descărcare terţe</string>
   <string name="morphe_external_downloader_title">Arată butonul extern de descărcare</string>
   <string name="morphe_external_downloader_summary">Afișează un buton de suprapunere în playerul video care deschide aplicația ta de descărcare externă</string>
@@ -424,7 +423,7 @@ Info: S-ar putea să nu funcționeze pe transmisiuni live"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Dezactivează gestul de căutare precis</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Dezactivează modul de căutare precisă care se activează atunci când tragi de bara de căutare</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Activare DVR livestream</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"Permite derularea tuturor transmisiunilor live, chiar și a celor care restricționează în mod normal această funcție
@@ -584,7 +583,7 @@ Notă: Dacă „Spoof video streams” nu este activat, activarea acesteia poate
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Ascunde meniul Subtitrări</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_shorts_button_title">Ascunde subsolul meniului Subtitrări</string>
+  <string name="morphe_hide_shorts_button_title">Ascunde butonul Shorts</string>
   <!-- 'Create' has no display name. Translate normally. -->
   <string name="morphe_hide_create_button_title">Ascunde antetul meniului Subtitrări</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -937,8 +936,10 @@ Dacă este dezactivat ulterior, se recomandă să ștergeți datele aplicației 
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Împiedică tragerea miniplayerului în diferite colțuri ale ecranului</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Dezactivează gestul de glisare orizontală</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Împiedică închiderea miniplayerului prin glisarea lui orizontală în afara ecranului</string>
-  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Dezactivează redarea cu glisare orizontală</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Pauză redare cu glisare orizontală</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Redarea se va pune în pauză când miniplayerul este glisat în afara ecranului</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">Memorizează poziția glisării</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">Glisarea miniplayer-ului în afara ecranului va păstra starea interfeței utilizator</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Ascunde butoanele suprapuse</string>
   <string name="morphe_miniplayer_width_dip_title">Dimensiune implicită</string>
   <string name="morphe_miniplayer_width_dip_summary">Stabilește dimensiunea inițială a ecranului, în pixeli</string>

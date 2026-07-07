@@ -283,7 +283,6 @@ Sınırlamalar:
   <string name="morphe_disable_chapter_skip_double_tap_title">Çift dokunma ile bölüm atlamayı devre dışı bırak</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Bölümleri atlayan ve tek parmakla yanlışlıkla tetiklenebilecek iki parmakla çift dokunma hareketini devre dışı bırakır</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Harici indirmeler</string>
   <string name="morphe_external_downloader_screen_summary">Üçüncü taraf indirme uygulamalarıyla videolar, podcast\'ler veya şarkılar indirin</string>
   <string name="morphe_external_downloader_title">Harici indirme düğmesini göster</string>
   <string name="morphe_external_downloader_summary">Video oynatıcınızda harici indiricinizi açan bir katman düğmesi gösterir</string>
@@ -424,7 +423,7 @@ Bilgi: Canlı yayınlarda çalışmayabilir"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Hassas sardırma hareketini devre dışı bırak</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Zaman çubuğunu yukarı çektiğinizde etkinleşen hassas kaydırma modunu devre dışı bırakır</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Canlı yayın DVR\'ı etkinleştir</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"Normalde kısıtlananlar da dahil, tüm canlı yayınlarda arama özelliğine izin verir.
@@ -937,8 +936,10 @@ Daha sonra kapatılırsa, arayüz hatalarını önlemek için uygulama verilerin
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Küçültülmüş oynatıcının ekranın farklı köşelerine sürüklenmesini engeller</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Yatay sürükleme hareketini devre dışı bırak</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Mini oynatıcının yatay olarak ekran dışına kaydırılarak kapatılmasını engeller</string>
-  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Yatay kaydırma ile oynatmayı devre dışı bırak</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Yatay sürükleme ile oynatmayı duraklat</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Mini oynatıcı ekran dışına kaydırıldığında oynatma duraklatılacaktır</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">Sürükleme durumunun konumunu hatırla</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">Mini oynatıcıyı ekran dışına sürüklemek, arayüz durumunu koruyacaktır</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Katman düğmelerini gizle</string>
   <string name="morphe_miniplayer_width_dip_title">Varsayılan boyut</string>
   <string name="morphe_miniplayer_width_dip_summary">Başlangıç ekran boyutunu piksel cinsinden ayarlayın</string>

@@ -283,7 +283,6 @@ Limitações:
   <string name="morphe_disable_chapter_skip_double_tap_title">Desabilita o modo de busca precisa que é ativado ao segurar uma posição de busca</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Desativa o gesto de toque duplo com dois dedos que pula capítulos, o que pode ser acionado acidentalmente com um dedo</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Transferências externas</string>
   <string name="morphe_external_downloader_screen_summary">Baixe vídeos, podcasts ou músicas com aplicativos de download de terceiros</string>
   <string name="morphe_external_downloader_title">Mostrar botão externo de transferir</string>
   <string name="morphe_external_downloader_summary">Mostra um botão de sobreposição no reprodutor de vídeo que abre seu downloader externo</string>
@@ -424,7 +423,7 @@ Informação: Pode não funcionar em transmissões ao vivo"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Desativar gesto de pesquisa precisa</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Desativa o modo de busca precisa que é ativado ao puxar a barra de busca</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Habilitar DVR de livestream</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"Permite avançar em todas as transmissões ao vivo, mesmo naquelas que normalmente restringem isso
@@ -937,8 +936,10 @@ Nếu sau này tắt, bạn nên xóa dữ liệu ứng dụng để tránh lỗ
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Impede que o miniplayer seja arrastado para diferentes cantos da tela</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Desativar gesto de arrastar horizontal</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Impede o fechamento do miniplayer ao deslizar horizontalmente para fora da tela</string>
-  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Desativar reprodução com arrasto horizontal</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Pausar a reprodução com arrasto horizontal</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">A reprodução será pausada quando o miniplayer for arrastado para fora da tela</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">Lembrar posição do arrasto</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">Arrastar o miniplayer para fora da tela preservará o estado da interface do usuário</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Ocultar botões de sobreposição</string>
   <string name="morphe_miniplayer_width_dip_title">Tamanho padrão</string>
   <string name="morphe_miniplayer_width_dip_summary">Defina o tamanho inicial na tela, em pixels</string>

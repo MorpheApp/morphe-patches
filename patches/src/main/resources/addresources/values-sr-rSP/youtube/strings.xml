@@ -283,7 +283,6 @@ Promene uključuju:
   <string name="morphe_disable_chapter_skip_double_tap_title">Онемогући прескакање поглавља дуплим додиром</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Онемогућава гест двоструког додира са два прста који прескаче поглавља, који се може случајно покренути са једним прстом</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Спољна преузимања</string>
   <string name="morphe_external_downloader_screen_summary">Преузмите видео-снимке, подкасте или песме помоћу апликација за преузимање од трећих страна</string>
   <string name="morphe_external_downloader_title">Прикажи дугме за спољно преузимање</string>
   <string name="morphe_external_downloader_summary">Приказује прекривајуће дугме у плејеру видео снимка које отвара ваш спољни преузимач</string>
@@ -424,7 +423,7 @@ Promene uključuju:
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Онемогући покрет прецизног премотавања</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Онемогућава прецизан режим тражења који се активира приликом подизања траке за тражење</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Омогућите снимање преко директног преноса</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"Омогућава премотавање свих преноса уживо, чак и оних који то обично ограничавају
@@ -937,8 +936,10 @@ Promene uključuju:
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Спречава превлачење мини-плејера у различите углове екрана</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Онемогући покрет хоризонталног превлачења</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Спречава затварање мини-плејера превлачењем хоризонтално преко екрана</string>
-  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Искључи репродукцију повлачењем хоризонтално</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Зауставите репродукцију превлачењем преко хоризонтале</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Репродукција ће бити паузирана када се мини плејер извуче са екрана</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">Запамтите позицију превлачења</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">Повлачењем мини-плејера ван екрана сачуваће се његово стање корисничког интерфејса</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Сакриј дугмад преклопа</string>
   <string name="morphe_miniplayer_width_dip_title">Подразумевана величина</string>
   <string name="morphe_miniplayer_width_dip_summary">Подесите почетну величину на екрану, у пикселима</string>

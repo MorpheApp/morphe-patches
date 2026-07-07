@@ -283,7 +283,6 @@ Omejitve:
   <string name="morphe_disable_chapter_skip_double_tap_title">Onemogoči preskok poglavja z dvojnim dotikom</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Onemogoči gesto dvojnega tapkanja s prstom, ki preskoči poglavja, ki bi se jo lahko pomotoma sprožila s prstom</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Zunanji prenosi</string>
   <string name="morphe_external_downloader_screen_summary">Prenesite videoposnetke, podkaste ali pesmi z aplikacijami za prenos tretje osebe</string>
   <string name="morphe_external_downloader_title">Prikaži gumb za zunanji prenos</string>
   <string name="morphe_external_downloader_summary">Prikaže prekritje gumba v predvajalniku videa, ki odpre vaš program za prenos třjih oseb</string>
@@ -371,13 +370,11 @@ Opozorilo: morda ne deluje na prenosih v živo"</string>
   <string name="morphe_play_all_button_type_entry_2">Vse vsebine (Razvrsti po priljubljenosti)</string>
   <string name="morphe_play_all_button_type_entry_3">Samo videoposnetki (Razvrsti po času)</string>
   <string name="morphe_play_all_button_type_entry_4">Samo videoposnetki (Razvrsti po priljubljenosti)</string>
-  <string name="morphe_play_all_button_type_entry_5">Samo kratke objave (Razvrsti po času)</string>
-  <string name="morphe_play_all_button_type_entry_6">Samo kratke objave (Razvrsti po priljubljenosti)</string>
   <string name="morphe_play_all_button_type_entry_7">Samo pretočni videoposnetki (Razvrsti po času)</string>
   <string name="morphe_play_all_button_type_entry_8">Samo pretočni videoposnetki (Razvrsti po priljubljenosti)</string>
   <string name="morphe_play_all_button_type_entry_9">Vsebina samo za člane</string>
   <string name="morphe_play_all_button_type_entry_10">Samo videoposnetki za člane</string>
-  <string name="morphe_play_all_button_type_entry_11">Samo kratke objave za člane</string>
+  <string name="morphe_play_all_button_type_entry_11">Ålanom samo Shorts</string>
   <string name="morphe_play_all_button_type_entry_12">Samo pretočni videoposnetki za člane</string>
   <string name="morphe_play_all_button_not_available_toast">Ni mogoče ustvariti seznama predvajanja zaradi neusklajene ID-je številke kanala</string>
   <!-- interaction.reload.reloadVideoPatch -->
@@ -424,7 +421,7 @@ Opozorilo: morda ne deluje na prenosih v živo"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Onemogoči natančen premik z gesto</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Onemogoči način natančnega iskanja, ki se aktivira, ko povlečete drsnik</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Omogoči DVR za pretočni video</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"Omogoča iskanje v vseh prenosih v živo, tudi tistih, ki ga običajno omejujejo
@@ -584,7 +581,7 @@ Potrebno je vnesti 'piškotke za podnapise'"</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Skrij gumb za mikrofon</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_shorts_button_title">Skrij gumb za obvestila</string>
+  <string name="morphe_hide_shorts_button_title">Skrij gumb Shorts</string>
   <!-- 'Create' has no display name. Translate normally. -->
   <string name="morphe_hide_create_button_title">Skrij gumb »Ustvari«</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -706,7 +703,7 @@ Za prikaz menija 'Zvočna pot' spremenite možnost 'Ponarejanje videoposnetkov' 
   <string name="morphe_hide_seekbar_thumbnail_summary">Skrije vrstico napredka gledanja, prikazano na sličicah videoposnetkov, ki si jih že ogledali</string>
   <string name="morphe_fullscreen_large_seekbar_title">Omogoči veliko vrstico v polnem zaslonu</string>
   <!-- layout.hide.shorts.hideShortsComponentsPatch -->
-  <string name="morphe_shorts_player_screen_title">Drseče številke so animirane</string>
+  <string name="morphe_shorts_player_screen_title">Predvajalnik Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Izberite, katere komponente se pojavijo v predvajalniku Shorts</string>
   <string name="morphe_hide_shorts_category_title">Skrij Shorts</string>
   <string name="morphe_hide_shorts_channel_title">Skrij na strani kanala</string>
@@ -937,8 +934,10 @@ To bo spremenilo videz in funkcije aplikacije, vendar lahko pride do neznanih st
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Preprečuje vlečenje minimiziranega predajalnika v različne kote zaslona</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Onemogočite vodoravno povlečenjem gesta</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Preprečuje zaprtje mini predajalnika z drsenjem vodoravno po zaslonu</string>
-  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Onemogoči predvajanje z vodoravnim povlečenjem</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Zaustavite predvajanje z vodoravnim povlečenjem</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Predvajanje se bo ustavilo, ko mini predvajalnik zapusti zaslon</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">Zapomnite si položaj povlečenega stanja</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">Povlečenje predvajalnika izven zaslona bo ohranilo njegovo uporabniško stanje</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Skrijite gumbe prekrivnega okna</string>
   <string name="morphe_miniplayer_width_dip_title">Privzeta velikost</string>
   <string name="morphe_miniplayer_width_dip_summary">Nastavite začetno velikost na zaslonu, v pikah</string>

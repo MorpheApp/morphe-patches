@@ -220,9 +220,6 @@ Second \"item\" text"</string>
 • हे वैशिष्ट्य ऑटोमोटिव्ह लेआउटमध्ये कार्य करत नाही."</string>
   <string name="morphe_hide_upload_time_title">अपलोड वेळ लपवा</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
-  <string name="morphe_hide_upload_time_summary">"मर्यादा:
-• शॉर्ट्स शेल्फ, चॅनेल पृष्ठे आणि शोध परिणामांमध्ये अपलोडचे वेळ अजूनही दिसू शकतो.
-• हे वैशिष्ट्य ऑटोमोटिव्ह लेआउटमध्ये कार्य करत नाही."</string>
   <string name="morphe_hide_keyword_content_screen_title">कीवर्ड फिल्टर</string>
   <string name="morphe_hide_keyword_content_screen_summary">स्ट्रीम आणि शोधात व्हिडिओ लपवण्यासाठी विशिष्ट शब्द किंवा वाक्यांश निवडा</string>
   <string name="morphe_hide_keyword_content_home_title">कीवर्डद्वारे होम व्हिडिओ लपवा</string>
@@ -238,12 +235,6 @@ Second \"item\" text"</string>
 
 मध्यभागी मोठे अक्षर असलेले शब्द तंतोतंत जुळले पाहिजेत (उदा: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">कीवर्ड फिल्टरिंगबद्दल</string>
-  <string name="morphe_hide_keyword_content_about_summary">"मुख्य पृष्ठ / सदस्यता / शोध / टिप्पण्या कीवर्ड वाक्यांशांशी जुळणाऱ्या सामग्रीला लपवण्यासाठी फिल्टर केल्या आहेत
-
-मर्यादा:
-• शॉर्ट्स चॅनेलच्या नावावरून लपवले जाऊ शकत नाहीत
-• काही UI घटक लपवले जाऊ शकत नाहीत
-• कीवर्ड शोधल्यास कोणतेही परिणाम दिसणार नाहीत"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">संपूर्ण शब्द जुळवा</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">कीवर्ड/वाक्यांशला दुहेरी अवतरणांमध्ये टाकल्यास व्हिडिओ शीर्षक आणि चॅनेल नावांचे आंशिक जुळण टाळता येईल&lt;br&gt;&lt;br&gt;उदाहरणार्थ,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; व्हिडिओ लपवेल: &lt;b&gt;AI कसे कार्य करते?&lt;/b&gt;&lt;br&gt;पण लपवणार नाही: &lt;b&gt; fair use चा अर्थ काय आहे?&lt;/b&gt;</string>
@@ -283,7 +274,6 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_title">डबल-टॅप चॅप्टर स्किप अक्षम करा</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">अध्याय वगळण्यासाठी दोन-बोटांच्या डबल-टॅप जेस्चर अक्षम करा, जे एका बोटाने चुकून ट्रिगर होऊ शकते</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">बाह्य डाउनलोड्स</string>
   <string name="morphe_external_downloader_screen_summary">तृतीय-पक्ष डाउनलोडिंग ॲप्स वापरून व्हिडिओ, पॉडकास्ट किंवा गाणी डाउनलोड करा</string>
   <string name="morphe_external_downloader_title">डाउनलोड बटण दाखवा</string>
   <string name="morphe_external_downloader_summary">तुमचे बाह्य डाउनलोडर उघडणारे व्हिडिओ प्लेयरमध्ये ओव्हरले बटण दर्शवते</string>
@@ -377,7 +367,6 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_play_all_button_type_entry_8">स्ट्रीम केलेले व्हिडिओ फक्त (लोकप्रियतेनुसार क्रमवारी)</string>
   <string name="morphe_play_all_button_type_entry_9">सर्व सदस्यांच्या सामग्री फक्त</string>
   <string name="morphe_play_all_button_type_entry_10">सदस्यांचे फक्त व्हिडिओ</string>
-  <string name="morphe_play_all_button_type_entry_11">फक्त सदस्यांसाठी शॉर्ट्स</string>
   <string name="morphe_play_all_button_type_entry_12">सदस्यांचे फक्त थेट प्रवाह</string>
   <string name="morphe_play_all_button_not_available_toast">चॅनेल आयडी जुळत नसल्यामुळे प्लेलिस्ट तयार करणे शक्य नाही</string>
   <!-- interaction.reload.reloadVideoPatch -->
@@ -424,7 +413,7 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">अचूक शोधण्याची हावभाव अक्षम करा</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">सीकबार (seekbar) वर खेचल्यावर सक्रिय होणारा अचूक शोध मोड अक्षम करा</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">लाइव्हस्ट्रीम DVR सक्षम करा</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"सर्व लाइव्हस्ट्रीमवर शोधण्याची परवानगी देते, अगदी त्या लाइव्हस्ट्रीमवर जिथे सामान्यतः ते प्रतिबंधित असते.
@@ -584,7 +573,7 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">\'होम\' बटण लपवा</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_shorts_button_title">\'शॉर्ट्स\' बटण लपवा</string>
+  <string name="morphe_hide_shorts_button_title">Shorts बटण लपवा</string>
   <!-- 'Create' has no display name. Translate normally. -->
   <string name="morphe_hide_create_button_title">\'तयार करा\' (Create) बटण लपवा</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -707,7 +696,6 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_fullscreen_large_seekbar_title">पूर्ण स्क्रीन मोठ्या सिकबार सक्षम करा</string>
   <!-- layout.hide.shorts.hideShortsComponentsPatch -->
   <string name="morphe_shorts_player_screen_title">Shorts प्लेयर</string>
-  <string name="morphe_shorts_player_screen_summary">शॉर्ट्स प्लेयरमध्ये दिसणारे घटक निवडा</string>
   <string name="morphe_hide_shorts_category_title">Shorts लपवा</string>
   <string name="morphe_hide_shorts_channel_title">चॅनेल पृष्ठावर लपवा</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -937,8 +925,10 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">मिनीप्लेअरला (Miniplayer) स्क्रीनच्या वेगवेगळ्या कोपऱ्यात ड्रॅग (Drag) करण्यापासून प्रतिबंधित (Prevent) करते</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title"> horizontal ड्रॅग gesture अक्षम करा</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">मिनीप्लेअरला (Miniplayer) क्षैतिजरित्या (Horizontally) स्वाइप (Swipe) करून बंद करण्यापासून प्रतिबंधित (Prevent) करते</string>
-  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">व्हिडिओ आडव्या दिशेने ड्रॅग केल्यावर प्लेबॅक बंद करा</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title"> horizontal drag ने प्लेबॅक थांबवा</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">मिनीप्लेअर स्क्रीनवरून बाहेर ड्रॅग केल्यावर प्लेबॅक थांबेल</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">ड्रॅग स्टेट पोझिशन लक्षात ठेवा</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">मिनीप्लेअर स्क्रीनच्या बाहेर ड्रॅग केल्यास त्याचा UI state जतन केला जाईल.</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">ओव्हरले बटणे लपवा</string>
   <string name="morphe_miniplayer_width_dip_title">डीआयपी (DIP) मध्ये डीफॉल्ट (Default) आकार</string>
   <string name="morphe_miniplayer_width_dip_summary">सुरुवातीचा आकार सेट करा, पिक्सेलमध्ये (Pixels)</string>

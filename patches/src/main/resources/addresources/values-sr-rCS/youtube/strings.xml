@@ -283,7 +283,6 @@ Ograničenja:
   <string name="morphe_disable_chapter_skip_double_tap_title">Onemogući preskakanje poglavlja dvostrukim dodirom</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Onemogućava dvostruki dodir sa dva prsta koji preskače poglavlja, što se može slučajno aktivirati jednim prstom</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Spoljna preuzimanja</string>
   <string name="morphe_external_downloader_screen_summary">Preuzmite video snimke, podkaste ili pesme pomoću aplikacija za preuzimanje trećih strana</string>
   <string name="morphe_external_downloader_title">Prikaži dugme za spoljno preuzimanje</string>
   <string name="morphe_external_downloader_summary">Prikazuje preklapajući dugme u plejeru videa koje otvara tvoju aplikaciju za preuzimanje</string>
@@ -424,7 +423,7 @@ Napomena: Možda neće raditi na direktnim prenosima"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Onemogući pokret preciznog premotavanja</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Onemogućava precizan način podešavanja koji se aktivira kada povučete traku za podešavanje</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Uključi livestream DVR</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"Omogućava preskakanje na svim direktnim prenosima, čak i na onima koji normalno to ograničavaju
@@ -937,8 +936,10 @@ Ako se kasnije isključi, preporučuje se da izbrišete podatke aplikacije da bi
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Sprečava povlačenje smanjenog plejera u različite uglove ekrana</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Onemogući pokret horizontalnog prevlačenja</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Sprečava zatvaranje mini plejera horizontalnim prevlačenjem sa ekrana</string>
-  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Onemogućite reprodukciju horizontalnim povlačenjem</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Pauzirajte reprodukciju horizontalnim povlačenjem</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Reprodukcija će se pauzirati kada se mini plejer pomeri van ekrana</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">Zapamtite položaj povlačenja</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">Povlačenjem mini plejera van ekrana sačuvaće se njegovo korisničko sučelje</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Sakrij dugmad preklopa</string>
   <string name="morphe_miniplayer_width_dip_title">Podrazumevana veličina</string>
   <string name="morphe_miniplayer_width_dip_summary">Postavi početnu veličinu na ekranu, u pikselima</string>

@@ -283,7 +283,6 @@ Begrensninger:
   <string name="morphe_disable_chapter_skip_double_tap_title">Deaktiver dobbelttrykk for å hoppe til neste kapittel</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Deaktiverer kapittelhopping med tofinger-dobbeltrykk, som kan utløses ved et uhell med én finger</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Eksterne nedlastninger</string>
   <string name="morphe_external_downloader_screen_summary">Last ned videoer, podkaster eller sanger med nedlastingsapper fra tredjeparter</string>
   <string name="morphe_external_downloader_title">Vis ekstern nedlastingsknapp</string>
   <string name="morphe_external_downloader_summary">Viser en overleggsknapp i videospilleren som åpner din eksterne nedlaster</string>
@@ -424,7 +423,7 @@ Info: Fungerer kanskje ikke på direktesendinger"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Deaktiver presis søking med gest</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Deaktiverer den presise søkemodusen som aktiveres når du drar opp søkefeltet</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Aktiver livestream DVR</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"Tillater å spole på alle direktesendinger, selv de som normalt begrenser det
@@ -937,8 +936,10 @@ Hvis den slås av senere, anbefales det å slette appdata for å unngå brukergr
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Forhindrer at du drar den minimerte spilleren til forskjellige hjørner av skjermen</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Deaktiver horisontal dra-gest</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Forhindrer at du lukker minispilleren ved å sveipe den horisontalt av skjermen</string>
-  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Deaktiver avspilling med horisontal draing</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Paus avspilling med horisontal dra</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Avspillingen vil pauses når minispilleren dras utenfor skjermen</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">Husk dra-tilstandens posisjon</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">Å dra minispilleren utenfor skjermen vil bevare brukergrensesnittets tilstand</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Skjul overlegg-knapper</string>
   <string name="morphe_miniplayer_width_dip_title">Standardstørrelse</string>
   <string name="morphe_miniplayer_width_dip_summary">Angi startstørrelsen på skjermen, i piksler</string>

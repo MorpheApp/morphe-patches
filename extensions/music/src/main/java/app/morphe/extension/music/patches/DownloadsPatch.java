@@ -69,7 +69,7 @@ public final class DownloadsPatch {
 
     private static void launchExternalDownloader(String videoId) {
         cachedFlyoutVideoId = "";
-        downloadButtonLabel = "";
+        // Do not clear download button label.
 
         ExternalDownloaderPreference.launchExternalDownloader(
                 videoId, Utils.getActivity(), "https://music.youtube.com/watch?v=" + videoId);
