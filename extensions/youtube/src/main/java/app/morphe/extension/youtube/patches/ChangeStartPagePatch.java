@@ -18,11 +18,8 @@ import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.util.List;
-
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.patches.BaseChangeStartPagePatch;
-import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
