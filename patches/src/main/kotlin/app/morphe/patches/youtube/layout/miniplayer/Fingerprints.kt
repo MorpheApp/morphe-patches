@@ -276,23 +276,12 @@ internal object MiniplayerSetIconsFingerprint : Fingerprint(
 )
 
 // 21.16 and lower
-private object MiniplayerSetIconsLegacyFingerprint : Fingerprint(
+internal object MiniplayerSetIconsLegacyFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("I", "Ljava/lang/Runnable;"),
     filters = listOf(
         resourceLiteral(ResourceType.DRAWABLE, "yt_fill_pause_white_36"),
         resourceLiteral(ResourceType.DRAWABLE, "yt_fill_pause_black_36")
-    )
-)
-
-internal object MiniplayerLegacyBoldIconFingerprint : Fingerprint(
-    classFingerprint = MiniplayerSetIconsLegacyFingerprint,
-    filters = listOf(
-        methodCall(
-            opcode = Opcode.INVOKE_INTERFACE,
-            returnType = "Z",
-            parameters = listOf()
-        )
     )
 )
 

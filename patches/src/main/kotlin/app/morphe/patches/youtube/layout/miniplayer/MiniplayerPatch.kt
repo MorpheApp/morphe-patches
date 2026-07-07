@@ -15,6 +15,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
@@ -356,12 +357,17 @@ val miniplayerPatch = bytecodePatch(
                 }
             } else {
                 // Fix bold icons always shown for 20.31 to 21.16
-                MiniplayerLegacyBoldIconFingerprint.let {
-                    it.instructionMatches.forEach { match ->
-                        val index = match.index
-                        val register = it.method.getInstruction<OneRegisterInstruction>(index + 1).registerA
+                MiniplayerSetIconsLegacyFingerprint.method.apply {
+                    findInstructionIndicesReversedOrThrow(
+                        methodCall(
+                            opcode = Opcode.INVOKE_INTERFACE,
+                            returnType = "Z",
+                            parameters = listOf()
+                        )
+                    ).forEach { index ->
+                        val register = getInstruction<OneRegisterInstruction>(index + 1).registerA
 
-                        it.method.addInstructions(
+                        addInstructions(
                             index + 2,
                             """
                                 invoke-static { v$register }, $EXTENSION_CLASS->allowBoldIcons(Z)Z
