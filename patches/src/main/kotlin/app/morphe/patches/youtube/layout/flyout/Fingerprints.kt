@@ -131,20 +131,3 @@ internal object SingularGeneratedExtensionFingerprint : Fingerprint(
     )
 )
 
-/**
- * Matches the constructor that initializes the videoId string field to an empty string.
- * Caller must supply the dynamically resolved message type class.
- */
-internal fun videoIdStringFieldFingerprint(messageType: String) = Fingerprint(
-    definingClass = messageType,
-    name = "<init>",
-    filters = listOf(
-        string(""),
-        fieldAccess(
-            opcode = Opcode.IPUT_OBJECT,
-            definingClass = "this",
-            type = "Ljava/lang/String;",
-            location = MatchAfterWithin(2)
-        )
-    )
-)

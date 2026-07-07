@@ -10,9 +10,11 @@
 
 package app.morphe.patches.youtube.video.quality
 
+import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -24,6 +26,7 @@ import app.morphe.patches.youtube.shared.VideoQualityChangedFingerprint
 import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.findFieldFromToString
+import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS =
@@ -72,7 +75,16 @@ val rememberVideoQualityPatch = bytecodePatch {
                 .findFieldFromToString(FIXED_RESOLUTION_STRING)
 
         // Inject a call to override initial video quality.
-        playbackStartParametersConstructorFingerprint(initialResolutionField).let {
+        Fingerprint(
+            classFingerprint = PlaybackStartParametersToStringFingerprint,
+            name = "<init>",
+            filters = listOf(
+                fieldAccess(
+                    opcode = Opcode.IPUT_OBJECT,
+                    reference = initialResolutionField
+                )
+            )
+        ).let {
             it.method.apply {
                 val index = it.instructionMatches.last().index
                 val register = getInstruction<TwoRegisterInstruction>(index).registerA

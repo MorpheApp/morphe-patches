@@ -1,7 +1,13 @@
 package app.morphe.patches.youtube.interaction.dialog
 
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.methodCall
+import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -9,6 +15,8 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
@@ -43,9 +51,27 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
             )
         }
 
-        val skipDialogFingerprint = skipDialogFingerprint(AdultContentRunnableFingerprint.method.definingClass)
-
         // region skip discretion dialog
+        val skipDialogFingerprint = Fingerprint(
+            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+            returnType = "V",
+            parameters = listOf("L"),
+            filters = listOf(
+                methodCall(
+                    opcode = Opcode.INVOKE_VIRTUAL,
+                    smali = "Ljava/lang/Boolean;->booleanValue()Z"
+                ),
+                opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+                opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterWithin(2)),
+                opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+                methodCall(
+                    opcode = Opcode.INVOKE_DIRECT,
+                    name = "<init>",
+                    definingClass = AdultContentRunnableFingerprint.method.definingClass,
+                    location = MatchAfterWithin(3)
+                )
+            )
+        )
         skipDialogFingerprint.let { fingerprint ->
             listOf(
                 fingerprint.instructionMatches[3],
@@ -64,12 +90,24 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
         // region unlock related videos for restricted videos
         val adultContentSetPropertiesMatches = AdultContentSetPropertiesFingerprint.instructionMatches
 
-        unlockRelatedVideosFingerprint(
-            skipDialogClass = skipDialogFingerprint.method.definingClass,
-            adultContentProperty1 = adultContentSetPropertiesMatches[0]
-                .getInstruction<ReferenceInstruction>().reference.toString(),
-            adultContentProperty2 = adultContentSetPropertiesMatches[2]
-                .getInstruction<ReferenceInstruction>().reference.toString()
+        Fingerprint(
+            classFingerprint = skipDialogFingerprint,
+            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+            returnType = "V",
+            parameters = listOf("L"),
+            filters = listOf(
+                fieldAccess(
+                    opcode = Opcode.IPUT_BOOLEAN,
+                    smali = adultContentSetPropertiesMatches[0]
+                        .getInstruction<ReferenceInstruction>().reference.toString()
+                ),
+                fieldAccess(
+                    opcode = Opcode.IPUT_BOOLEAN,
+                    location = MatchAfterWithin(3),
+                    smali = adultContentSetPropertiesMatches[2]
+                        .getInstruction<ReferenceInstruction>().reference.toString()
+                )
+            )
         ).let { fingerprint ->
             listOf(
                 fingerprint.instructionMatches[1],

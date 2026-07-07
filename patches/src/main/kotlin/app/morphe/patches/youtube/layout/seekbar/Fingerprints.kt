@@ -121,14 +121,3 @@ internal object LottieCompositionFactoryFromJsonInputStreamFingerprint : Fingerp
     )
 )
 
-/**
- * Matches the method to set a Lottie animation from an input stream.
- * Caller must supply the dynamically resolved return type from [LottieCompositionFactoryFromJsonInputStreamFingerprint].
- */
-internal fun lottieAnimationViewSetAnimationStreamFingerprint(
-    lottieAnimationViewDefiningClass: String,
-    factoryStreamReturnType: String) = Fingerprint(
-    definingClass = lottieAnimationViewDefiningClass,
-    returnType = "V",
-    parameters = listOf(factoryStreamReturnType)
-)

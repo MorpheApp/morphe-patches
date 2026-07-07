@@ -291,8 +291,10 @@ val miniplayerPatch = bytecodePatch(
             "getHorizontalDrag",
         )
 
-        miniplayerAnimationEndFingerprint(
-            MiniplayerHorizontalDragPlaybackFingerprint.instructionMatches[2].getMethodCalled().definingClass
+        Fingerprint(
+            definingClass = MiniplayerHorizontalDragPlaybackFingerprint.instructionMatches[2]
+                .getMethodCalled().definingClass,
+            name = "onAnimationEnd",
         ).method.addInstructionsWithLabels(
             0,
             """
@@ -354,12 +356,12 @@ val miniplayerPatch = bytecodePatch(
                 }
             } else {
                 // Fix bold icons always shown for 20.31 to 21.16
-                MiniplayerSetIconsLegacyFingerprint.method.apply {
-                    MiniplayerLegacyBoldIconFingerprint.instructionMatches.forEach { match ->
+                MiniplayerLegacyBoldIconFingerprint.let {
+                    it.instructionMatches.forEach { match ->
                         val index = match.index
-                        val register = getInstruction<OneRegisterInstruction>(index + 1).registerA
+                        val register = it.method.getInstruction<OneRegisterInstruction>(index + 1).registerA
 
-                        addInstructions(
+                        it.method.addInstructions(
                             index + 2,
                             """
                                 invoke-static { v$register }, $EXTENSION_CLASS->allowBoldIcons(Z)Z

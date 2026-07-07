@@ -6,11 +6,13 @@
  */
 package app.morphe.patches.reddit.misc.settings
 
+import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.string
 import app.morphe.patches.all.misc.fix.openurllinks.removeLinkVerification
 import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
@@ -27,6 +29,7 @@ import app.morphe.util.ResourceGroup
 import app.morphe.util.cloneParameters
 import app.morphe.util.copyResources
 import app.morphe.util.findFreeRegister
+import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS =
@@ -102,10 +105,24 @@ val settingsPatch = bytecodePatch(
         }
 
         PreferenceDestinationFingerprint.let {
-            val getActivityMethod =
-                getActivityMethodFingerprint(RedditActivityFingerprint.originalClassDef.type).method
-            val startActivityMethodName =
-                startActivityMethodFingerprint(getActivityMethod.definingClass).method.name
+            val getActivityMethod = Fingerprint(
+                accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+                returnType = RedditActivityFingerprint.originalClassDef.type,
+                parameters = listOf()
+            ).method
+
+            val startActivityMethod = Fingerprint(
+                definingClass = getActivityMethod.definingClass,
+                returnType = "V",
+                parameters = listOf(
+                    "Landroid/content/Intent",
+                    "I",
+                    "Landroid/os/Bundle;"
+                ),
+                filters = listOf(
+                    string(" not attached to Activity"),
+                )
+            ).method
 
             it.method.cloneParameters().addInstructionsWithLabels(
                 0,
@@ -121,7 +138,7 @@ val settingsPatch = bytecodePatch(
                     
                     const/4 v1, -1
                     const/4 v2, 0x0
-                    invoke-virtual { p0, v0, v1, v2 }, ${getActivityMethod.definingClass}->$startActivityMethodName(Landroid/content/Intent;ILandroid/os/Bundle;)V
+                    invoke-virtual { p0, v0, v1, v2 }, ${getActivityMethod.definingClass}->${startActivityMethod.name}(Landroid/content/Intent;ILandroid/os/Bundle;)V
                     return-void
                     
                     :ignore

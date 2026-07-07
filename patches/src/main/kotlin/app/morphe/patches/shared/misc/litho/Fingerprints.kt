@@ -13,15 +13,12 @@ package app.morphe.patches.shared.misc.litho
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
-import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal object AccessibilityIdFingerprint : Fingerprint(
     filters = listOf(
@@ -105,46 +102,5 @@ internal object LithoConverterBufferUpbFeatureFlagFingerprint : Fingerprint(
     returnType = "L",
     filters = listOf(
         literal(45419603L)
-    )
-)
-
-/**
- * Matches the method returning the accessibility text.
- * Caller must supply the method reference resolved from [AccessibilityIdFingerprint].
- */
-internal fun accessibilityTextFingerprint(accessibilityIdMethod: MethodReference) = Fingerprint(
-    returnType = "V",
-    filters = listOf(
-        methodCall(
-            opcode = Opcode.INVOKE_INTERFACE,
-            parameters = listOf(),
-            returnType = "Ljava/lang/String;"
-        ),
-        methodCall(
-            reference = accessibilityIdMethod,
-            location = MatchAfterWithin(5)
-        )
-    ),
-    custom = { method, _ ->
-        // 'public final synthetic' or 'public final bridge synthetic'.
-        AccessFlags.SYNTHETIC.isSet(method.accessFlags)
-    }
-)
-
-/**
- * Matches the component create method.
- * Caller must supply the defining class of the accessibility ID method.
- */
-internal fun componentCreateFingerprint(accessibilityIdDefiningClass: String) = Fingerprint(
-    returnType = "L",
-    filters = listOf(
-        opcode(Opcode.IF_EQZ),
-        checkCast(
-            type = accessibilityIdDefiningClass,
-            location = MatchAfterWithin(5)
-        ),
-        opcode(Opcode.RETURN_OBJECT),
-        string("Element missing correct type extension"),
-        string("Element missing type")
     )
 )

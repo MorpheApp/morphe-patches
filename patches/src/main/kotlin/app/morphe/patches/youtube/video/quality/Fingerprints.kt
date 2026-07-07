@@ -22,7 +22,6 @@ import app.morphe.patches.all.misc.resources.ResourceType
 import app.morphe.patches.all.misc.resources.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 internal object NewAdvancedQualityMenuStyleFlyout : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -165,37 +164,5 @@ internal object VideoQualityMenuViewInflateFingerprint : Fingerprint(
         Opcode.CHECK_CAST,
     ) + resourceLiteral(
         ResourceType.LAYOUT, "video_quality_bottom_sheet_list_fragment_title"
-    )
-)
-
-/**
- * Matches the playback start parameters constructor.
- * Caller must supply the field reference resolved from [PlaybackStartParametersToStringFingerprint].
- */
-internal fun playbackStartParametersConstructorFingerprint(initialResolutionField: FieldReference) = Fingerprint(
-    classFingerprint = PlaybackStartParametersToStringFingerprint,
-    name = "<init>",
-    filters = listOf(
-        fieldAccess(
-            opcode = Opcode.IPUT_OBJECT,
-            reference = initialResolutionField
-        )
-    )
-)
-
-/**
- * Matches the current video format constructor.
- * Caller must supply the dynamically resolved video quality array type.
- */
-internal fun currentVideoFormatConstructorFingerprint(videoQualityArrayType: String) = Fingerprint(
-    classFingerprint = CurrentVideoFormatToStringFingerprint,
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    returnType = "V",
-    filters = listOf(
-        fieldAccess(
-            opcode = Opcode.IPUT_OBJECT,
-            definingClass = "this",
-            type = videoQualityArrayType
-        )
     )
 )

@@ -6,8 +6,6 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.Method
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private object AutoNavConstructorFingerprint : Fingerprint(
     returnType = "V",
@@ -46,24 +44,3 @@ internal object RemoveOnLayoutChangeListenerFingerprint : Fingerprint(
     )
 )
 
-internal fun endScreenSuggestedVideoFingerprint(
-    endScreenMethod: MethodReference,
-    autoNavStatusMethod: Method) = Fingerprint(
-    definingClass = endScreenMethod.definingClass,
-    name = endScreenMethod.name,
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = listOf(),
-    filters = listOf(
-        fieldAccess(
-            opcode = Opcode.IGET_OBJECT,
-            definingClass = "this",
-            type = autoNavStatusMethod.definingClass
-        ),
-        methodCall(
-            opcode = Opcode.INVOKE_VIRTUAL,
-            smali = autoNavStatusMethod.toString(),
-            location = MatchAfterWithin(3)
-        )
-    )
-)

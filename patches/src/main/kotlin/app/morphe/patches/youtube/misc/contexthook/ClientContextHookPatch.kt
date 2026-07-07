@@ -10,6 +10,8 @@ package app.morphe.patches.youtube.misc.contexthook
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -17,6 +19,7 @@ import app.morphe.patches.youtube.misc.playservice.is_21_21_or_greater
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.cloneParameters
 import app.morphe.util.findInstructionIndicesReversedOrThrow
+import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -24,14 +27,14 @@ import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
+import java.lang.ref.WeakReference
 
-private lateinit var clientFormFactorFieldString: String
-private lateinit var clientInfoDefiningClass: String
-private lateinit var clientInfoFieldString: String
-private lateinit var clientVersionFieldString: String
-private lateinit var messageLiteBuilderFieldString: String
-private lateinit var messageLiteBuilderMethodString: String
-private lateinit var osNameFieldString: String
+private lateinit var clientFormFactorFieldRef : WeakReference<FieldReference>
+private lateinit var clientInfoFieldRef : WeakReference<FieldReference>
+private lateinit var clientVersionFieldRef : WeakReference<FieldReference>
+private lateinit var messageLiteBuilderFieldRef : WeakReference<FieldReference>
+private lateinit var messageLiteBuilderMethodRef : WeakReference<MethodReference>
+private lateinit var osNameFieldRef : WeakReference<FieldReference>
 
 enum class Endpoint(
     vararg val parentFingerprints: Fingerprint,
@@ -62,58 +65,94 @@ val clientContextHookPatch = bytecodePatch(
     dependsOn(sharedExtensionPatch)
 
     execute {
+        val clientInfoField : FieldReference
+        val clientVersionField : FieldReference
+        val messageLiteBuilderField : FieldReference
+
         BuildDummyClientContextBodyFingerprint.let {
             it.method.apply {
                 val clientInfoIndex = it.instructionMatches.last().index
                 val clientVersionIndex = it.instructionMatches[2].index
                 val messageLiteBuilderIndex = it.instructionMatches.first().index
 
-                val clientInfoField = getInstruction<ReferenceInstruction>(clientInfoIndex).reference as FieldReference
-                clientInfoDefiningClass = clientInfoField.definingClass
-                clientInfoFieldString = "${clientInfoField.definingClass}->${clientInfoField.name}:${clientInfoField.type}"
+                clientInfoField = getInstruction<ReferenceInstruction>(
+                    clientInfoIndex
+                ).reference as FieldReference
+                clientInfoFieldRef = WeakReference(clientInfoField)
 
-                val clientVersionField = getInstruction<ReferenceInstruction>(clientVersionIndex).reference as FieldReference
-                clientVersionFieldString = "${clientVersionField.definingClass}->${clientVersionField.name}:${clientVersionField.type}"
+                clientVersionField = getInstruction<ReferenceInstruction>(
+                    clientVersionIndex
+                ).reference as FieldReference
+                clientVersionFieldRef = WeakReference(clientVersionField)
 
-                val messageLiteBuilderField = getInstruction<ReferenceInstruction>(messageLiteBuilderIndex).reference as FieldReference
-                messageLiteBuilderFieldString = "${messageLiteBuilderField.definingClass}->${messageLiteBuilderField.name}:${messageLiteBuilderField.type}"
+                messageLiteBuilderField = getInstruction<ReferenceInstruction>(
+                    messageLiteBuilderIndex
+                ).reference as FieldReference
+                messageLiteBuilderFieldRef = WeakReference(messageLiteBuilderField)
             }
         }
 
-        AuthenticationChangeListenerFingerprint.let {
-            val messageLiteBuilderIndex = it.instructionMatches[1].index
-            val methodRef = it.method.getInstruction<ReferenceInstruction>(messageLiteBuilderIndex).reference as MethodReference
+        val messageLiteBuilderMethod : MethodReference
+        AuthenticationChangeListenerFingerprint.method.apply {
+            val messageLiteBuilderIndex = indexOfMessageLiteBuilderReference(
+                this, messageLiteBuilderField.definingClass
+            )
 
-            val params = methodRef.parameterTypes.joinToString("")
-            messageLiteBuilderMethodString = "${methodRef.definingClass}->${methodRef.name}($params)${methodRef.returnType}"
+            messageLiteBuilderMethod = getInstruction<ReferenceInstruction>(
+                messageLiteBuilderIndex
+            ).reference as MethodReference
+            messageLiteBuilderMethodRef = WeakReference(messageLiteBuilderMethod)
         }
 
-        BuildClientContextBodyFingerprint.let {
-            it.method.apply {
-                val osNameIndex = it.instructionMatches[1].index
-                val osNameField = getInstruction<ReferenceInstruction>(osNameIndex).reference as FieldReference
-                osNameFieldString = "${osNameField.definingClass}->${osNameField.name}:${osNameField.type}"
-            }
-        }
+        osNameFieldRef = WeakReference(
+            BuildClientContextBodyFingerprint.method.getInstruction<ReferenceInstruction>(
+                BuildClientContextBodyFingerprint.instructionMatches[1].index
+            ).reference as FieldReference
+        )
 
-        val clientFormFactorOrdinalReference = ClientFormFactorEnumOrdinalFingerprint.method as MethodReference
+        val setClientFormFactorFingerprint = Fingerprint(
+            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+            returnType = "V",
+            parameters = listOf("L"),
+            filters = listOf(
+                fieldAccess(
+                    opcode = Opcode.IGET,
+                    definingClass = CLIENT_INFO_CLASS,
+                    type = "I"
+                ),
+                methodCall(
+                    reference = ClientFormFactorEnumOrdinalFingerprint.method
+                )
+            )
+        )
 
-        val clientFormFactorField = setClientFormFactorFingerprint(clientFormFactorOrdinalReference)
-            .instructionMatches.first()
-            .instruction.let { it as ReferenceInstruction }.reference as FieldReference
-
-        clientFormFactorFieldString = "${clientFormFactorField.definingClass}->${clientFormFactorField.name}:${clientFormFactorField.type}"
+        clientFormFactorFieldRef = WeakReference(
+            setClientFormFactorFingerprint.method.getInstruction<ReferenceInstruction>(
+                setClientFormFactorFingerprint.instructionMatches.first().index
+            ).reference as FieldReference
+        )
     }
 
     finalize {
+        val clientInfoField = clientInfoFieldRef.get()!!
+        val messageLiteBuilderField = messageLiteBuilderFieldRef.get()
+        val messageLiteBuilderMethod = messageLiteBuilderMethodRef.get()
         val helperMethodName = "patch_setClientContext"
 
         Endpoint.entries.filter {
             it.smaliInstructions.isNotEmpty()
         }.forEach { endpoint ->
             endpoint.parentFingerprints.forEach { parentFingerprint ->
+                // Use locally declared fingerprint because internally fingerprint caches the match.
+                // Could use Fingerprint.clearMatch() but creating a new instance also works.
+                val endpointRequestBodyFingerprint = Fingerprint(
+                    classFingerprint = parentFingerprint,
+                    accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
+                    returnType = "V",
+                    parameters = listOf(),
+                )
 
-                endpointRequestBodyFingerprint(parentFingerprint).let {
+                endpointRequestBodyFingerprint.let {
                     // 21.05+ clobbers p0 register.
                     it.method.cloneParameters().apply {
                         it.classDef.methods.add(
@@ -130,17 +169,16 @@ val clientContextHookPatch = bytecodePatch(
                                 addInstructionsWithLabels(
                                     0,
                                     """
-                                        invoke-virtual { p0 }, $messageLiteBuilderMethodString
+                                        invoke-virtual { p0 }, $messageLiteBuilderMethod
                                         move-result-object v0
-                                        iget-object v0, v0, $messageLiteBuilderFieldString
-                                        check-cast v0, $clientInfoDefiningClass
-                                        iget-object v1, v0, $clientInfoFieldString
+                                        iget-object v0, v0, $messageLiteBuilderField
+                                        check-cast v0, ${clientInfoField.definingClass}
+                                        iget-object v1, v0, $clientInfoField
                                         if-eqz v1, :ignore
-                                    """ + endpoint.smaliInstructions +
-                                            """
-                                                :ignore
-                                                return-void
-                                            """
+                                        ${endpoint.smaliInstructions}
+                                        :ignore
+                                        return-void
+                                    """
                                 )
                             }
                         )
@@ -159,33 +197,36 @@ val clientContextHookPatch = bytecodePatch(
 }
 
 fun addClientFormFactorHook(endPoint: Endpoint, descriptor: String) {
+    val clientFormFactorField = clientFormFactorFieldRef.get()!!
     val smaliInstructions = """
-        iget v2, v1, $clientFormFactorFieldString
+        iget v2, v1, $clientFormFactorField
         invoke-static { v2 }, $descriptor
         move-result v2
-        iput v2, v1, $clientFormFactorFieldString
+        iput v2, v1, $clientFormFactorField
         """
 
     endPoint.smaliInstructions += smaliInstructions
 }
 
 fun addClientVersionHook(endPoint: Endpoint, descriptor: String) {
+    val clientVersionField = clientVersionFieldRef.get()!!
     val smaliInstructions = """
-        iget-object v2, v1, $clientVersionFieldString
+        iget-object v2, v1, $clientVersionField
         invoke-static { v2 }, $descriptor
         move-result-object v2
-        iput-object v2, v1, $clientVersionFieldString
+        iput-object v2, v1, $clientVersionField
         """
 
     endPoint.smaliInstructions += smaliInstructions
 }
 
 fun addOSNameHook(endPoint: Endpoint, descriptor: String) {
+    val osNameField = osNameFieldRef.get()!!
     val smaliInstructions = """
-        iget-object v2, v1, $osNameFieldString
+        iget-object v2, v1, $osNameField
         invoke-static { v2 }, $descriptor
         move-result-object v2
-        iput-object v2, v1, $osNameFieldString
+        iput-object v2, v1, $osNameField
         """
 
     endPoint.smaliInstructions += smaliInstructions

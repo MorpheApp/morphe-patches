@@ -1,14 +1,18 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/1065
  *
  * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
 package app.morphe.patches.music.interaction.crossfade
 
+import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
+import app.morphe.patcher.literal
+import app.morphe.patcher.methodCall
+import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.util.ResourceGroup
@@ -407,7 +411,14 @@ val crossfadePatch = bytecodePatch(
                 "no field whose type declares a ($EXO_PLAYER_TYPE, 3-param) factory method",
         )
         val factoryClass = mutableClassDefBy(factoryFieldRef.type)
-        val factoryMethod = factoryMethodFingerprint(factoryClass.type, EXO_PLAYER_TYPE).method
+        val factoryMethod = Fingerprint(
+            definingClass = factoryClass.type,
+            returnType = EXO_PLAYER_TYPE,
+            custom = { method, _ ->
+                method.parameterTypes.size == 3 &&
+                        method.parameterTypes[2].toString() == "I"
+            }
+        ).method
         // ExoPlayer concrete impl - fingerprinted via the unique "ExoPlayerImpl" log tag.
         val exoPlayerImplClass = ExoPlayerImplFingerprint.classDef
         val exoImplMethods = allMethodsInHierarchy(exoPlayerImplClass.type)
@@ -454,7 +465,13 @@ val crossfadePatch = bytecodePatch(
         // If the coordinator declares its shared-state field as an interface,
         // resolve to the concrete implementation via Fingerprint.
         val sharedStateClass = if (AccessFlags.INTERFACE.isSet(sharedStateInterfaceClass.accessFlags)) {
-            sharedStateClassFingerprint(sharedStateFieldRef.type).classDef
+            Fingerprint(
+                custom = { _, classDef ->
+                    !AccessFlags.INTERFACE.isSet(classDef.accessFlags)
+                            && !AccessFlags.ABSTRACT.isSet(classDef.accessFlags)
+                            && sharedStateFieldRef.type in classDef.interfaces
+                }
+            ).classDef
         } else {
             mutableClassDefBy(sharedStateFieldRef.type)
         }
@@ -468,7 +485,14 @@ val crossfadePatch = bytecodePatch(
             AccessFlags.INTERFACE.isSet(sharedCallbackInterfaceClass.accessFlags)
             || AccessFlags.ABSTRACT.isSet(sharedCallbackInterfaceClass.accessFlags)
         ) {
-            sharedCallbackClassFingerprint(sharedCallbackFieldRef.type).classDef
+            Fingerprint(
+                custom = { _, classDef ->
+                    !AccessFlags.INTERFACE.isSet(classDef.accessFlags)
+                            && !AccessFlags.ABSTRACT.isSet(classDef.accessFlags)
+                            && (sharedCallbackFieldRef.type in classDef.interfaces
+                            || classDef.superclass == sharedCallbackFieldRef.type)
+                }
+            ).classDef
         } else {
             mutableClassDefBy(sharedCallbackFieldRef.type)
         }
@@ -505,12 +529,17 @@ val crossfadePatch = bytecodePatch(
 
         // Video surface - resolved by finding a class that holds an ExoPlayer field
         // and is itself a field on the coordinator (not one of the already-known types).
-        val videoSurfaceClass = videoSurfaceClassFingerprint(
-            coordinatorFieldTypes = coordinatorClass.fields.map { it.type },
-            knownFieldTypes = knownFieldTypes,
-            sharedStateFieldType = sharedStateFieldRef.type,
-            sharedCallbackFieldType = sharedCallbackFieldRef.type,
-            exoPlayerType = EXO_PLAYER_TYPE
+        val videoSurfaceClass = Fingerprint(
+            custom = { _, classDef ->
+                !AccessFlags.INTERFACE.isSet(classDef.accessFlags)
+                        && classDef.fields.any {
+                    it.type == EXO_PLAYER_TYPE
+                }
+                        && coordinatorClass.fields.map { it.type }.any { it == classDef.type }
+                        && classDef.type !in knownFieldTypes
+                        && classDef.type != sharedStateFieldRef.type
+                        && classDef.type != sharedCallbackFieldRef.type
+            }
         ).classDef
         val videoSurfaceField = coordinatorClass.fields.first { it.type == videoSurfaceClass.type }
         val videoSurfaceExoField = videoSurfaceClass.fields.first {
@@ -628,39 +657,100 @@ val crossfadePatch = bytecodePatch(
 
         // --- Discover ExoPlayer method names from the media3 interfaces ---
 
-        val setVolumeName = setVolumeNameFingerprint(playerInterfaceType).method.name
-        val setPlayWhenReadyName = setPlayWhenReadyNameFingerprint(playerInterfaceType).method.name
-        val releaseName = releaseNameFingerprint(EXO_PLAYER_TYPE).method.name
+        val setVolumeName = Fingerprint(
+            definingClass = playerInterfaceType,
+            returnType = "V",
+            parameters = listOf("F"),
+        ).method.name
+        val setPlayWhenReadyName = Fingerprint(
+            definingClass = playerInterfaceType,
+            returnType = "V",
+            parameters = listOf("Z"),
+        ).method.name
+        val releaseName = Fingerprint(
+            definingClass = EXO_PLAYER_TYPE,
+            returnType = "V",
+            parameters = emptyList(),
+            custom = { method, _ ->
+                !AccessFlags.CONSTRUCTOR.isSet(method.accessFlags)
+            }
+        ).method.name
         // PlaybackInfo class (crf) - field on ExoPlayer impl hierarchy with >=3 int + >=1 long fields
         // and no interfaces (rules out the inner engine handler cqb which also matches field counts).
         val exoImplFields = allFieldsInHierarchy(exoPlayerImplClass.type)
-        val playbackInfoClass = playbackInfoClassFingerprint(
-            exoImplFieldTypes = exoImplFields.map { it.type }
+        val playbackInfoClass = Fingerprint(
+            custom = { _, classDef ->
+                classDef.interfaces.isEmpty()
+                        && classDef.fields.count { it.type == "I" } >= 3
+                        && classDef.fields.count { it.type == "J" } >= 1
+                        && exoImplFields.map { it.type }
+                    .any { it == classDef.type }
+            }
         ).classDef
         val playbackStateFieldName = playbackInfoClass.fields.first { it.type == "I" }.name
         // getPlaybackState - ()I on the ExoPlayer impl hierarchy that reads PlaybackInfo + first int field.
         // Uses Option A: no definingClass, custom checks hierarchy membership.
-        val getPlaybackStateName = getPlaybackStateNameFingerprint(
-            exoPlayerImplClassType = exoPlayerImplClass.type,
-            playbackInfoClassType = playbackInfoClass.type,
-            playbackStateFieldName = playbackStateFieldName,
-            isInHierarchy = ::isInHierarchyOf
+        val getPlaybackStateName = Fingerprint(
+            returnType = "I",
+            parameters = emptyList(),
+            custom = { method, classDef ->
+                isInHierarchyOf(classDef.type, startType = exoPlayerImplClass.type)
+                        // TODO: Replace this with instruction filters
+                        && method.implementation?.instructions?.let { instructions ->
+                    instructions.any { insn ->
+                        insn is ReferenceInstruction
+                                && insn.opcode == Opcode.IGET_OBJECT
+                                && (insn.reference as? FieldReference)?.type == playbackInfoClass.type
+                    } && instructions.any { insn ->
+                        insn is ReferenceInstruction
+                                && insn.opcode == Opcode.IGET
+                                && (insn.reference as? FieldReference)?.name == playbackStateFieldName
+                    }
+                } ?: false
+            }
         ).method.name
-        val getDurationName = getDurationNameFingerprint(
-            exoPlayerImplClassType = exoPlayerImplClass.type,
-            isInHierarchy = ::isInHierarchyOf
+
+        val getDurationName = Fingerprint(
+            returnType = "J",
+            parameters = emptyList(),
+            filters = listOf(
+                // getDuration - ()J containing the C.TIME_UNSET literal (-9223372036854775807L).
+                literal(-9223372036854775807L)
+            ),
+            custom = { _, classDef ->
+                isInHierarchyOf(classDef.type, startType = exoPlayerImplClass.type)
+            }
         ).method.name
-        val getCurrentPositionName = getCurrentPositionNameFingerprint(
-            exoPlayerImplClassType = exoPlayerImplClass.type,
-            playbackInfoClassType = playbackInfoClass.type,
-            getDurationMethodName = getDurationName,
-            isInHierarchy = ::isInHierarchyOf
+
+        // getCurrentPosition - ()J that invokes a helper taking PlaybackInfo and returning long.
+        val getCurrentPositionName = Fingerprint(
+            returnType = "J",
+            parameters = emptyList(),
+            custom = { method, classDef ->
+                isInHierarchyOf(classDef.type, startType = exoPlayerImplClass.type)
+                        && method.name != getDurationName
+                        && method.implementation?.instructions?.any { insn ->
+                    insn is ReferenceInstruction
+                            && (insn.opcode == Opcode.INVOKE_DIRECT || insn.opcode == Opcode.INVOKE_VIRTUAL)
+                            && insn.reference.toString().let { ref ->
+                        ref.contains("(${playbackInfoClass.type})") && ref.endsWith("J")
+                    }
+                } ?: false
+            }
         ).method.name
+
         // Listener wrapper (cau) - has a CopyOnWriteArraySet field and is
         // referenced as a field on the ExoPlayer impl class.
-        val listenerWrapperClass = listenerWrapperClassFingerprint(
-            exoPlayerImplClassFieldTypes = exoPlayerImplClass.fields.map { it.type }
+        val listenerWrapperClass = Fingerprint(
+            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+            custom = { _, classDef ->
+                !classDef.type.contains("ExoPlayer")
+                        && classDef.fields.any { it.type == "Ljava/util/concurrent/CopyOnWriteArraySet;" }
+                        && exoPlayerImplClass.fields.map { it.type }
+                    .any { it == classDef.type }
+            }
         ).classDef
+
         val listenerSetInWrapper = listenerWrapperClass.fields.first {
             it.type == "Ljava/util/concurrent/CopyOnWriteArraySet;"
         }
@@ -1380,7 +1470,16 @@ val crossfadePatch = bytecodePatch(
                 // class that (a) implements the Lctr interface and (b) has a non-static Lcgd field.
                 // cwh.U() posts a Lcvu Runnable that calls cwh.b.d() destroying the shared
                 // listener set. Inject an early-return guard that checks suppressCwhU.
-                suppressCwhUFingerprint(cwhLctrType, cgdType)
+                Fingerprint(
+                    name = "U",
+                    returnType = "V",
+                    parameters = emptyList(),
+                    custom = { _, classDef ->
+                        cwhLctrType in classDef.interfaces && classDef.fields.any { f ->
+                            f.type == cgdType && !AccessFlags.STATIC.isSet(f.accessFlags)
+                        }
+                    }
+                )
                     .method.addInstructions(
                         0,
                         """
@@ -1389,7 +1488,7 @@ val crossfadePatch = bytecodePatch(
                             return-void
                             :no_suppress
                             nop
-                        """,
+                        """
                     )
                 log.fine { "9.x: injected suppressCwhU into cwh.U()V (lctrType=$cwhLctrType, cgdType=$cgdType)" }
             } catch (e: Exception) {
@@ -1572,12 +1671,26 @@ val crossfadePatch = bytecodePatch(
         // getState returns an enum (nlv) representing the current playback
         // content mode.  We find it as the first no-arg method returning a
         // non-Object, non-primitive type.
-        val getStateMethod = getStateMethodFingerprint(stateProviderClass.type).method
+        val getStateMethod = Fingerprint(
+            definingClass = stateProviderClass.type,
+            parameters = listOf(),
+            custom = { method, _ ->
+                !AccessFlags.CONSTRUCTOR.isSet(method.accessFlags) &&
+                        method.returnType != "Ljava/lang/Object;"
+            }
+        ).method
         val stateType = getStateMethod.returnType
         // isAudioMode is the static (stateType)Z method with MORE enum
         // comparisons (checks 3 audio-only states vs 2 video states).
         // We pick the longest implementation among the static (T)Z methods.
-        val isAudioModeMethod = isAudioModeMethodFingerprint(stateProviderClass.type, stateType).method
+        val isAudioModeMethod = Fingerprint(
+            definingClass = stateProviderClass.type,
+            returnType = "Z",
+            parameters = listOf(stateType),
+            custom = { method, _ ->
+                AccessFlags.STATIC.isSet(method.accessFlags)
+            }
+        ).method
 
         videoToggleClass.methods.add(
             ImmutableMethod(
@@ -1605,7 +1718,18 @@ val crossfadePatch = bytecodePatch(
         )
 
         // setState is the instance void method on nlw that takes one nlv param.
-        val setStateMethodFingerprint = setStateMethodFingerprint(stateProviderClass.type, stateType)
+        val setStateMethodFingerprint = Fingerprint(
+            definingClass = stateProviderClass.type,
+            returnType = "V",
+            parameters = listOf(stateType),
+            filters = listOf(
+                opcode((Opcode.IGET_OBJECT))
+            ),
+            custom = { method, _ ->
+                !AccessFlags.STATIC.isSet(method.accessFlags) &&
+                        !AccessFlags.CONSTRUCTOR.isSet(method.accessFlags)
+            }
+        )
         val setStateMethod = setStateMethodFingerprint.method
 
         // ATV_PREFERRED is the first enum constant (ordinal 0) on the nlv class.
@@ -1688,9 +1812,18 @@ val crossfadePatch = bytecodePatch(
             .reference as MethodReference
 
         // 3. Find the broadcast method implementation on the chxp class
-        val broadcastMethodFingerprint = broadcastMethodFingerprint(
-            chxpType = chxpType,
-            broadcastMethodName = broadcastMethodRef.name
+        val broadcastMethodFingerprint = Fingerprint(
+            definingClass = chxpType,
+            name = broadcastMethodRef.name,
+            returnType = "V",
+            parameters = listOf("Ljava/lang/Object;"),
+            filters = listOf(
+                methodCall(
+                    opcodes = listOf(Opcode.INVOKE_VIRTUAL, Opcode.INVOKE_INTERFACE),
+                    returnType = "V",
+                    parameters = listOf("Ljava/lang/Object;"),
+                )
+            )
         )
 
         // 4. From broadcast method's bytecode, find the silent setter (m34891ax)

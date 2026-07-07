@@ -11,7 +11,6 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
-import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
@@ -83,44 +82,3 @@ internal object PlayerDragGestureInitFingerprint : Fingerprint(
     )
 )
 
-/**
- * Matches the onClick method for entering fullscreen.
- * Caller must supply the defining class and method string resolved from [AdPlayerFullscreenFingerprint].
- */
-internal fun enterFullscreenOnClickFingerprint(
-    fullScreenDefiningClass: String,
-    fullScreenMethodSmali: String) = Fingerprint(
-    name = "onClick",
-    returnType = "V",
-    parameters = listOf("Landroid/view/View;"),
-    filters = listOf(
-        fieldAccess(
-            opcode = Opcode.IGET_OBJECT,
-            type = fullScreenDefiningClass
-        ),
-        methodCall(
-            opcode = Opcode.INVOKE_VIRTUAL,
-            definingClass = fullScreenDefiningClass,
-            returnType = "V",
-            parameters = listOf(),
-            location = MatchAfterWithin(3)
-        ),
-        methodCall(
-            opcode = Opcode.INVOKE_VIRTUAL,
-            smali = fullScreenMethodSmali,
-            location = MatchAfterWithin(10)
-        )
-    )
-)
-
-/**
- * Matches the NextGenWatchLayout constructor.
- * Caller must supply the dynamic fullScreenDefiningClass resolved from the fullscreen fingerprint.
- */
-internal fun nextGenWatchLayoutFingerprint(fullScreenDefiningClass: String) = Fingerprint(
-    definingClass = "Lcom/google/android/apps/youtube/app/watch/nextgenwatch/ui/NextGenWatchLayout;",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    filters = listOf(
-        checkCast(fullScreenDefiningClass)
-    )
-)

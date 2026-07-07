@@ -12,7 +12,6 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 internal object ListingFingerprint : Fingerprint(
     definingClass = "Lcom/reddit/domain/model/listing/Listing;",
@@ -113,20 +112,3 @@ internal object ImmutableListBuilderFingerprint : Fingerprint(
     )
 )
 
-/**
- * Matches the constructor for CommentsAdState to override adsLoadCompleted.
- * Caller must supply the dynamically resolved class type and field reference.
- */
-internal fun commentsAdStateConstructorFingerprint(
-    commentsAdStateClassType: String,
-    adsLoadCompletedField: FieldReference) = Fingerprint(
-    definingClass = commentsAdStateClassType,
-    name = "<init>",
-    returnType = "V",
-    filters = listOf(
-        fieldAccess(
-            opcode = Opcode.IPUT_BOOLEAN,
-            reference = adsLoadCompletedField
-        )
-    )
-)

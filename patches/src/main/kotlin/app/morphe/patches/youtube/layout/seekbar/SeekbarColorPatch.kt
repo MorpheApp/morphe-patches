@@ -170,18 +170,18 @@ val seekbarColorPatch = bytecodePatch(
                 )
             })
 
-            val factoryStreamClass: CharSequence
-            val factoryStreamName: CharSequence
-            val factoryStreamReturnType: CharSequence
+            val factoryStreamClass: String
+            val factoryStreamName: String
+            val factoryStreamReturnType: String
             LottieCompositionFactoryFromJsonInputStreamFingerprint.originalMethod.apply {
                 factoryStreamClass = definingClass
                 factoryStreamName = name
                 factoryStreamReturnType = returnType
             }
-
-            val setAnimationStreamName = lottieAnimationViewSetAnimationStreamFingerprint(
-                lottieAnimationViewDefiningClass = LottieAnimationViewSetAnimationIntFingerprint.originalClassDef.type,
-                factoryStreamReturnType = factoryStreamReturnType.toString()
+            val setAnimationStreamName = Fingerprint(
+                classFingerprint = LottieAnimationViewSetAnimationIntFingerprint,
+                returnType = "V",
+                parameters = listOf(factoryStreamReturnType)
             ).method.name
 
             add(ImmutableMethod(
@@ -195,7 +195,7 @@ val seekbarColorPatch = bytecodePatch(
                 AccessFlags.PUBLIC.value,
                 null,
                 null,
-                MutableMethodImplementation(4),
+                MutableMethodImplementation(4)
             ).toMutable().apply {
                 // 21.02+ method is private. Cannot easily change the access flags to public
                 // because that breaks unrelated opcode that uses invoke-direct and not invoke-virtual.

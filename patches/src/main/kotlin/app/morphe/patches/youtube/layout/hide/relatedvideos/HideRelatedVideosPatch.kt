@@ -7,9 +7,14 @@
 
 package app.morphe.patches.youtube.layout.hide.relatedvideos
 
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
+import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.string
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.fix.proto.immutableMethodRef
@@ -22,6 +27,7 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.WatchNextResponseParserFingerprint
 import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
@@ -56,17 +62,18 @@ val hideRelatedVideosPatch = bytecodePatch(
         }
         val resultsClass = continuationsField.definingClass
 
-        val helperMethodParameter = listOf(
-            ImmutableMethodParameter(
-                resultsClass,
-                null,
-                null
+        val emptyProtobufListMethod = Fingerprint(
+            definingClass = resultsClass,
+            name = "<init>",
+            returnType = "V",
+            parameters = listOf(),
+            filters = listOf(
+                methodCall(
+                    opcode = Opcode.INVOKE_STATIC,
+                    name = "emptyProtobufList"
+                )
             )
-        )
-
-        val emptyProtobufListMethod = emptyProtobufListFingerprint(resultsClass)
-            .instructionMatches.last()
-            .instruction.getReference<MethodReference>()!!
+        ).instructionMatches.last().instruction.getReference<MethodReference>()!!
 
         val sectionIdentifierField = RelatedItemSectionFingerprint
             .instructionMatches[1].instruction.getReference<FieldReference>()!!
@@ -74,11 +81,27 @@ val hideRelatedVideosPatch = bytecodePatch(
         val watchNextResponseModelClass = WatchNextResponseModelClassResolverFingerprint
             .instructionMatches.last().instruction.getReference<TypeReference>()!!.type
 
-        watchNextResultsFingerprint(
-            watchNextResponseModelClass = watchNextResponseModelClass,
-            resultsClass = resultsClass,
-            emptyProtobufListReturnType = emptyProtobufListMethod.returnType,
-            sectionIdentifierDefiningClass = sectionIdentifierField.definingClass
+        Fingerprint(
+            definingClass = watchNextResponseModelClass,
+            accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+            returnType = "V",
+            parameters = listOf(resultsClass),
+            filters = listOf(
+                fieldAccess(
+                    opcode = Opcode.IGET_OBJECT,
+                    definingClass = resultsClass,
+                    type = emptyProtobufListMethod.returnType
+                ),
+                methodCall(
+                    opcode = Opcode.INVOKE_INTERFACE,
+                    name = "iterator",
+                    location = MatchAfterImmediately()
+                ),
+                fieldAccess(
+                    opcode = Opcode.IGET_OBJECT,
+                    type = sectionIdentifierField.definingClass
+                )
+            )
         ).let {
             val contentsField =
                 it.instructionMatches.first().instruction.getReference<FieldReference>()!!
@@ -87,9 +110,20 @@ val hideRelatedVideosPatch = bytecodePatch(
             val itemSectionRendererDefaultInstance =
                 "${itemSectionRendererField.type}->a:${itemSectionRendererField.type}"
 
-            val firstHomeThumbnailCrawlerFingerprint = firstHomeThumbnailCrawlerFingerprint(
-                itemSectionRendererDefiningClass = itemSectionRendererField.definingClass,
-                itemSectionRendererField = itemSectionRendererField
+            val firstHomeThumbnailCrawlerFingerprint = Fingerprint(
+                returnType = "Ljava/util/List;",
+                parameters = listOf("Ljava/lang/Object;"),
+                filters = listOf(
+                    string("hint=%s,(%s=%s,cheatsheet=%b,key1=%s,w=%d,h=%d)"),
+                    fieldAccess(
+                        opcode = Opcode.IGET_OBJECT,
+                        definingClass = itemSectionRendererField.definingClass
+                    ),
+                    fieldAccess(
+                        opcode = Opcode.IGET_OBJECT,
+                        reference = itemSectionRendererField
+                    )
+                )
             )
 
             val shelfRendererField = firstHomeThumbnailCrawlerFingerprint.instructionMatches[1]
@@ -101,7 +135,13 @@ val hideRelatedVideosPatch = bytecodePatch(
                 val helperMethod = ImmutableMethod(
                     definingClass,
                     "patch_hideRelatedVideos",
-                    helperMethodParameter,
+                    listOf(
+                        ImmutableMethodParameter(
+                            resultsClass,
+                            null,
+                            null
+                        )
+                    ),
                     "V",
                     AccessFlags.PRIVATE.value or AccessFlags.FINAL.value,
                     annotations,

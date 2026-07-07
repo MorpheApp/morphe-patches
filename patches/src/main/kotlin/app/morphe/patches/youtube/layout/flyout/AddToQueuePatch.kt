@@ -7,11 +7,15 @@
 
 package app.morphe.patches.youtube.layout.flyout
 
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.string
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.hide.general.ContextualMenuItemBuilderFingerprint
@@ -102,9 +106,19 @@ val addToQueuePatch = bytecodePatch(
 
         fun addProtocolVideoIdInterface(messageType: String) {
             // videoId is the only string field in the class initialized to an empty string.
-            val videoIdStringField = videoIdStringFieldFingerprint(messageType)
-                .instructionMatches.last()
-                .getFieldAccessed()
+            val videoIdStringField = Fingerprint(
+                definingClass = messageType,
+                name = "<init>",
+                filters = listOf(
+                    string(""),
+                    fieldAccess(
+                        opcode = Opcode.IPUT_OBJECT,
+                        definingClass = "this",
+                        type = "Ljava/lang/String;",
+                        location = MatchAfterWithin(2)
+                    )
+                )
+            ).instructionMatches.last().getFieldAccessed()
 
             mutableClassDefBy(messageType).apply {
                 interfaces.add(EXTENSION_FLYOUT_MENU_VIDEO_ID_INTERFACE)
