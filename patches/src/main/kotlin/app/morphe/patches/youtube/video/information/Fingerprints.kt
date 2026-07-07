@@ -225,3 +225,4 @@ internal object SetVideoQualityFingerprint : Fingerprint(
         Opcode.IGET_OBJECT,
     )
 )
+

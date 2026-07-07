@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/1065
  *
  * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */

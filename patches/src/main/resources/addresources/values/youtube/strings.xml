@@ -215,13 +215,6 @@ Changes include:
     <string name="morphe_hide_comments_thanks_button_title">Hide Thanks button</string>
     <string name="morphe_sanitize_comments_category_bar_title">Sanitize category bar</string>
     <string name="morphe_sanitize_comments_category_bar_summary">Hides all comment sorting options except \'Top\' and \'Newest\'</string>
-    <string name="morphe_custom_filter_screen_title">Custom filter</string>
-    <string name="morphe_custom_filter_screen_summary">Configure custom filters to hide any component</string>
-    <string name="morphe_custom_filter_title">Enable custom filter</string>
-    <string name="morphe_custom_filter_strings_title">Custom filter</string>
-    <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
-    <string name="morphe_custom_filter_strings_summary">List of component path builder strings to filter, separated by new lines</string>
-    <string name="morphe_custom_filter_toast_invalid_syntax">Invalid custom filter: %s</string>
     <string name="morphe_hide_view_count_title">Hide view count</string>
     <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
     <string name="morphe_hide_view_count_summary">"Limitations:
@@ -311,23 +304,12 @@ Limitations:
     <string name="morphe_disable_chapter_skip_double_tap_summary">Disables the two-finger double-tap gesture that skips chapters, which may be accidentally triggered with one finger</string>
 
     <!-- interaction.downloads.downloadsPatch -->
-    <string name="morphe_external_downloader_screen_title">External downloads</string>
-    <string name="morphe_external_downloader_screen_summary">Download videos with third-party downloading apps</string>
+    <string name="morphe_external_downloader_screen_summary">Download videos, podcasts, or songs with third-party downloading apps</string>
     <string name="morphe_external_downloader_title">Show external download button</string>
     <string name="morphe_external_downloader_summary">Shows an overlay button in video player that opens your external downloader</string>
     <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
     <string name="morphe_external_downloader_action_button_title">Override Download action button</string>
     <string name="morphe_external_downloader_action_button_summary">Replaces YouTube\'s built-in download function with your external downloader</string>
-    <string name="morphe_external_downloader_name_title">Downloader package name</string>
-    <string name="morphe_external_downloader_name_summary">Package name of your installed external downloader app</string>
-    <string name="morphe_external_downloader_other_item_hint">Enter the package name</string>
-    <string name="morphe_external_downloader_other_item">Other</string>
-    <string name="morphe_external_downloader_not_found_title">App not installed</string>
-    <string name="morphe_external_downloader_not_installed_warning">%s is not installed. Please install it.</string>
-    <string name="morphe_external_downloader_package_not_found_warning">"Could not find installed app with package name: %s
-
-Verify the package name is correct and the app is installed"</string>
-    <string name="morphe_external_downloader_empty_warning">The package name cannot be empty</string>
 
     <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
     <string name="morphe_vot_screen_title">Voice over translation</string>
@@ -478,7 +460,7 @@ Info: May not work on live streams"</string>
     <string name="morphe_disable_precise_seeking_gesture_title">Disable precise seeking gesture</string>
     <string name="morphe_disable_precise_seeking_gesture_summary">Disables the precise seeking mode that activates when pulling up the seekbar</string>
 
-    <!-- interaction.seekbar.livestreamDvrPatch -->
+    <!-- interaction.seekbar.livestreamDVRPatch -->
     <string name="morphe_livestream_dvr_title">Enable livestream DVR</string>
     <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
     <string name="morphe_livestream_dvr_summary">"Allows seeking on all livestreams, even those that normally restrict it
@@ -816,7 +798,6 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to \'Android Re
     <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
     <string name="morphe_hide_shorts_like_fountain_title">Hide Like button fountain animation</string>
     <string name="morphe_hide_shorts_like_button_title">Hide Like button</string>
-    <string name="morphe_hide_shorts_dislike_button_title">Hide Dislike button</string>
     <string name="morphe_hide_shorts_comments_button_title">Hide Comments button</string>
     <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_shorts_share_button_title">Hide Share button</string>
@@ -888,8 +869,6 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <!-- Video likes have been set to hidden by the video uploader. -->
     <string name="morphe_ryd_video_likes_hidden_by_video_owner">Hidden by owner</string>
     <string name="morphe_ryd_enabled_title">Enable Return YouTube Dislike</string>
-    <string name="morphe_ryd_shorts_title">Show dislikes on Shorts</string>
-    <string name="morphe_ryd_shorts_summary">Limitation: Dislikes may not appear in Incognito mode</string>
     <string name="morphe_ryd_dislike_percentage_title">Show dislikes as percentage</string>
     <string name="morphe_ryd_dislike_percentage_summary">Shows dislikes as a percentage of likes instead of a number</string>
     <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
@@ -1037,6 +1016,10 @@ If later turned off, it is recommended to clear the app data to prevent UI bugs.
     <string name="morphe_miniplayer_disable_drag_and_drop_summary">Prevents dragging the minimized player to different corners of the screen</string>
     <string name="morphe_miniplayer_disable_horizontal_drag_title">Disable horizontal drag gesture</string>
     <string name="morphe_miniplayer_disable_horizontal_drag_summary">Prevents closing the miniplayer by swiping it horizontally off-screen</string>
+    <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Pause playback with horizontal drag</string>
+    <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Playback will pause when the miniplayer is dragged off screen</string>
+    <string name="morphe_miniplayer_disable_horizontal_reposition_title">Remember drag state position</string>
+    <string name="morphe_miniplayer_disable_horizontal_reposition_summary">Dragging the miniplayer off-screen will preserve its UI state</string>
     <string name="morphe_miniplayer_hide_overlay_buttons_title">Hide overlay buttons</string>
     <string name="morphe_miniplayer_width_dip_title">Default size</string>
     <string name="morphe_miniplayer_width_dip_summary">Set the starting on-screen size, in pixels</string>
@@ -1168,10 +1151,10 @@ Tap here to open DeArrow.ajay.app"</string>
     <string name="morphe_remember_shorts_quality_last_selected_summary">Applies your manual quality selection to all future Shorts</string>
     <string name="morphe_shorts_quality_default_wifi_title">Default Shorts quality on Wi-Fi network</string>
     <string name="morphe_shorts_quality_default_mobile_title">Default Shorts quality on mobile network</string>
-    <string name="morphe_remember_video_quality_mobile">mobile</string>
-    <string name="morphe_remember_video_quality_wifi">wifi</string>
-    <string name="morphe_remember_video_quality_toast">Changed default %1$s quality to: %2$s</string>
-    <string name="morphe_remember_video_quality_toast_shorts">Changed Shorts %1$s quality to: %2$s</string>
+    <string name="morphe_remember_video_quality_toast_mobile">Changed default mobile quality to: %s</string>
+    <string name="morphe_remember_video_quality_toast_wifi">Changed default Wi-Fi quality to: %s</string>
+    <string name="morphe_remember_video_quality_toast_shorts_mobile">Changed Shorts mobile quality to: %s</string>
+    <string name="morphe_remember_video_quality_toast_shorts_wifi">Changed Shorts Wi-Fi quality to: %s</string>
 
     <!-- video.speed.button.playbackSpeedButtonPatch -->
     <string name="morphe_playback_speed_dialog_button_title">Show Playback speed button</string>
@@ -1218,14 +1201,15 @@ Limitations:
     <string name="morphe_force_avc_codec_not_available">To use this feature, set \'Spoof video streams\' to Android VR or Android Studio</string>
 
     <!-- video.quality.advancedVideoQualityMenuPatch -->
-    <string name="morphe_advanced_video_quality_menu_title">Show advanced video quality menu</string>
+    <string name="morphe_advanced_video_quality_menu_title">Open \'Advanced\' quality menu</string>
+    <string name="morphe_advanced_video_quality_menu_summary">Skips the quality selection menu and opens the Advanced quality menu directly</string>
 
     <!-- video.quality.hidePremiumVideoQualityPatch -->
     <string name="morphe_hide_premium_video_quality_title">Hide Premium quality options</string>
 
     <!-- video.quality.prioritizeVideoQualityPatch -->
     <string name="morphe_prioritize_video_quality_title">Prioritize video quality</string>
-    <string name="morphe_prioritize_video_quality_summary">Prioritizes the highest quality video over codec efficiency</string>
+    <string name="morphe_prioritize_video_quality_summary">Prioritizes the highest available video quality over codec efficiency</string>
 
     <!-- misc.fix.playback.spoofVideoStreamsPatch -->
     <string name="morphe_spoof_video_streams_av1_title">Allow Android VR AV1</string>

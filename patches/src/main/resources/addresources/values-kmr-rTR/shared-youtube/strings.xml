@@ -20,6 +20,19 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Dest pê bike ku sazkirinê temam bike</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Navê sepanê</string>
+  <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_title">Daxazkirinê derve</string>
+  <string name="morphe_external_downloader_name_title">Navê pakêta dakêşkerê</string>
+  <string name="morphe_external_downloader_name_summary">Navê pakêta sepanê we yê dakêşkerê yê sazkirî</string>
+  <string name="morphe_external_downloader_flyout_button_title">Bi serfirehiya feedê/dîtinê bikirtîne</string>
+  <string name="morphe_external_downloader_other_item_hint">Navê pakêtê têkevin</string>
+  <string name="morphe_external_downloader_other_item">Din</string>
+  <string name="morphe_external_downloader_not_found_title">Sepanê sazkirî nîn e</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s sazkirî nîn e. Ji kerem sazkirin.</string>
+  <string name="morphe_external_downloader_package_not_found_warning">"Naxwest sepana sazkirî bi navê pakêtê %s bibîne
+
+Verast bike navê pakêtê rast e û sepan sazkirî ye"</string>
+  <string name="morphe_external_downloader_empty_warning">Navê pakêtê nikare vala be</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Xwerî</string>
   <string name="morphe_custom_branding_icon_title">Îkonê</string>

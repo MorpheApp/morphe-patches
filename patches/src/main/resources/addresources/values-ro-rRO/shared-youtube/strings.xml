@@ -20,6 +20,19 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Reporniți pentru a finaliza configurarea</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Numele aplicației</string>
+  <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_title">Descărcări externe</string>
+  <string name="morphe_external_downloader_name_title">Numele pachetului aplicației de descărcare</string>
+  <string name="morphe_external_downloader_name_summary">Numele pachetului aplicației externe de descărcare instalate</string>
+  <string name="morphe_external_downloader_flyout_button_title">Înlocuiește butonul flyout feed/căutare</string>
+  <string name="morphe_external_downloader_other_item_hint">Introduceți numele pachetului</string>
+  <string name="morphe_external_downloader_other_item">Altele</string>
+  <string name="morphe_external_downloader_not_found_title">Aplicația nu este instalată</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s nu este instalată. Vă rugăm să o instalați.</string>
+  <string name="morphe_external_downloader_package_not_found_warning">"Nu s-a putut găsi aplicația instalată cu numele pachetului: %s
+
+Verificați dacă numele pachetului este corect și aplicația este instalată"</string>
+  <string name="morphe_external_downloader_empty_warning">Numele pachetului nu poate fi gol</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Personalizat</string>
   <string name="morphe_custom_branding_icon_title">Pictograma aplicației</string>

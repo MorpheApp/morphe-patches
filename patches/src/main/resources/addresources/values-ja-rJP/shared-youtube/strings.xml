@@ -20,6 +20,19 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">設定を完了するには再起動してください</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">アプリ名</string>
+  <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_title">外部ダウンロード</string>
+  <string name="morphe_external_downloader_name_title">外部ダウンローダーのパッケージ名</string>
+  <string name="morphe_external_downloader_name_summary">インストール済みの外部ダウンロード アプリのパッケージ名</string>
+  <string name="morphe_external_downloader_flyout_button_title">フライアウト メニューの「オフラインに動画を保存」の動作を上書き</string>
+  <string name="morphe_external_downloader_other_item_hint">パッケージ名を入力してください</string>
+  <string name="morphe_external_downloader_other_item">その他</string>
+  <string name="morphe_external_downloader_not_found_title">アプリがインストールされていません</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s はインストールされていません。インストールしてください。</string>
+  <string name="morphe_external_downloader_package_not_found_warning">"パッケージ名「%s」のインストール済みアプリが見つかりませんでした
+
+パッケージ名が正しいこと、およびアプリがインストールされていることを確認してください"</string>
+  <string name="morphe_external_downloader_empty_warning">パッケージ名は空欄にはできません</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">カスタム</string>
   <string name="morphe_custom_branding_icon_title">アプリアイコン</string>

@@ -79,7 +79,7 @@ public class GmsCoreSupportPatch {
                 || originalPackageName.equals(Utils.getContext().getPackageName());
     }
 
-    private static void open(String queryOrLink) {
+    private static void open(Activity context, String queryOrLink) {
         Logger.printInfo(() -> "Opening link: " + queryOrLink);
 
         Intent intent;
@@ -93,7 +93,7 @@ public class GmsCoreSupportPatch {
             intent.putExtra(SearchManager.QUERY, queryOrLink);
         }
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        Utils.getContext().startActivity(intent);
+        context.startActivity(intent);
 
         // Gracefully exit, otherwise the broken app will continue to run.
         System.exit(0);
@@ -152,7 +152,7 @@ public class GmsCoreSupportPatch {
                 // opening another activity), then on some devices such as Pixel phone Android 10
                 // no toast will be shown and the app will continually relaunch
                 // with the appearance of a hung app.
-                open("https://morphe.software");
+                open(context, "https://morphe.software");
                 return;
             }
 
@@ -165,7 +165,7 @@ public class GmsCoreSupportPatch {
                 // Cannot show a dialog and must show a toast,
                 // because on some installations the app crashes before a dialog can be displayed.
                 Utils.showToastLong(str("gms_core_toast_not_installed_message"));
-                open(getGmsCoreDownload());
+                open(context, getGmsCoreDownload());
                 return;
             }
 
@@ -199,7 +199,7 @@ public class GmsCoreSupportPatch {
                         showBatteryOptimizationDialog(context,
                                 "gms_core_dialog_not_whitelisted_not_allowed_in_background_message",
                                 "gms_core_dialog_open_website_text",
-                                (dialog, id) -> openDontKillMyApp());
+                                (dialog, id) -> openDontKillMyApp(context));
                     }
                 }
             } finally {
@@ -239,7 +239,7 @@ public class GmsCoreSupportPatch {
         });
     }
 
-    private static void openDontKillMyApp() {
+    private static void openDontKillMyApp(Activity activity) {
         final Boolean manufacturerSupported = DONT_KILL_MY_APP_MANUFACTURER_SUPPORTED;
 
         String manufacturerPageToOpen;
@@ -256,7 +256,7 @@ public class GmsCoreSupportPatch {
             manufacturerPageToOpen = "general";
         }
 
-        open(DONT_KILL_MY_APP_URL + manufacturerPageToOpen + DONT_KILL_MY_APP_NAME_PARAMETER);
+        open(activity, DONT_KILL_MY_APP_URL + manufacturerPageToOpen + DONT_KILL_MY_APP_NAME_PARAMETER);
     }
 
     /**

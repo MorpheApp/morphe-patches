@@ -20,6 +20,19 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Перезагрузите для завершения настройки</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Название приложения</string>
+  <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_title">Внешние загрузки</string>
+  <string name="morphe_external_downloader_name_title">Имя пакета загрузчика</string>
+  <string name="morphe_external_downloader_name_summary">Имя пакета вашего установленного внешнего приложения для загрузки</string>
+  <string name="morphe_external_downloader_flyout_button_title">Заменить кнопку выпадающего меню ленты/поиска</string>
+  <string name="morphe_external_downloader_other_item_hint">Введите имя пакета</string>
+  <string name="morphe_external_downloader_other_item">Другое</string>
+  <string name="morphe_external_downloader_not_found_title">Приложение не установлено</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s не установлено. Пожалуйста, установите его.</string>
+  <string name="morphe_external_downloader_package_not_found_warning">"Не удалось найти установленное приложение с именем пакета: %s
+
+Убедитесь, что имя пакета указано верно и приложение установлено"</string>
+  <string name="morphe_external_downloader_empty_warning">Имя пакета не может быть пустым</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Пользовательское</string>
   <string name="morphe_custom_branding_icon_title">Иконка приложения</string>

@@ -22,8 +22,7 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMuta
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
-import app.morphe.patches.shared.misc.litho.addLithoFilter
-import app.morphe.patches.shared.misc.litho.lithoFilterPatch
+import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
@@ -37,6 +36,7 @@ import app.morphe.patches.shared.misc.spans.inclusiveSpanPatch
 import app.morphe.patches.youtube.layout.hide.shelves.hideHorizontalShelvesPatch
 import app.morphe.patches.youtube.layout.hide.updatescreen.hideUpdateScreenPatch
 import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
+import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.litho.node.hookTreeNodeResult
 import app.morphe.patches.youtube.misc.litho.node.treeNodeElementHookPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
@@ -86,7 +86,7 @@ private const val SANITIZE_VIDEO_SUBTITLE_FILTER =
 
 val hideLayoutComponentsPatch = bytecodePatch(
     name = "Hide layout components",
-    description = "Adds options to hide general layout components.",
+    description = "Adds options to hide general layout components."
 
 ) {
     dependsOn(
@@ -133,7 +133,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_quizzes_section"),
                     SwitchPreference("morphe_hide_subscribe_button"),
                     SwitchPreference("morphe_hide_transcript_section"),
-                    SwitchPreference("morphe_hide_video_details_section"),
+                    SwitchPreference("morphe_hide_video_details_section")
                 ),
             ),
             PreferenceScreenPreference(
@@ -163,7 +163,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_comments_live_chat_donators_bar"),
                     SwitchPreference("morphe_hide_comments_preview_comment", summary = true),
                     SwitchPreference("morphe_hide_comments_thanks_button"),
-                    SwitchPreference("morphe_sanitize_comments_category_bar", summary = true),
+                    SwitchPreference("morphe_sanitize_comments_category_bar", summary = true)
                 ),
                 sorting = Sorting.UNSORTED,
             ),
@@ -199,9 +199,9 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     ),
                     NonInteractivePreference(
                         key = "morphe_hide_keyword_content_about_whole_words",
-                        tag = "app.morphe.extension.youtube.settings.preference.HTMLPreference",
-                    ),
-                ),
+                        tag = "app.morphe.extension.youtube.settings.preference.HTMLPreference"
+                    )
+                )
             ),
             PreferenceScreenPreference(
                 key = "morphe_hide_filter_bar_screen",
@@ -209,8 +209,8 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_filter_bar_feed_in_feed"),
                     SwitchPreference("morphe_hide_filter_bar_feed_in_related_videos"),
                     SwitchPreference("morphe_hide_filter_bar_feed_in_search"),
-                    SwitchPreference("morphe_hide_filter_bar_feed_in_history"),
-                ),
+                    SwitchPreference("morphe_hide_filter_bar_feed_in_history")
+                )
             ),
             PreferenceScreenPreference(
                 key = "morphe_channel_screen",
@@ -228,7 +228,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_members_shelf", summary = true),
                     SwitchPreference("morphe_hide_posts_shelf"),
                     SwitchPreference("morphe_hide_store_button"),
-                    SwitchPreference("morphe_hide_subscribe_button_in_channel_page"),
+                    SwitchPreference("morphe_hide_subscribe_button_in_channel_page")
                 ),
             ),
             SwitchPreference("morphe_hide_album_cards", summary = true),
@@ -276,13 +276,13 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference(
                 "morphe_hide_upload_time",
                 summary = true,
-                tag = "app.morphe.extension.shared.settings.preference.BulletPointSwitchPreference",
+                tag = "app.morphe.extension.shared.settings.preference.BulletPointSwitchPreference"
             ),
             SwitchPreference("morphe_hide_video_recommendation_labels", summary = true),
             SwitchPreference(
                 "morphe_hide_view_count",
                 summary = true,
-                tag = "app.morphe.extension.shared.settings.preference.BulletPointSwitchPreference",
+                tag = "app.morphe.extension.shared.settings.preference.BulletPointSwitchPreference"
             ),
             SwitchPreference("morphe_hide_web_search_results", summary = true),
             SwitchPreference("morphe_hide_youtube_doodles", summary = true),
@@ -300,9 +300,9 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
                     SwitchPreference("morphe_custom_filter"),
-                    TextPreference("morphe_custom_filter_strings", inputType = InputType.TEXT_MULTI_LINE),
-                ),
-            ),
+                    TextPreference("morphe_custom_filter_strings", inputType = InputType.TEXT_MULTI_LINE)
+                )
+            )
         )
 
         addLithoFilter(LAYOUT_COMPONENTS_FILTER)
@@ -354,7 +354,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 """
                     invoke-static {}, $LAYOUT_COMPONENTS_FILTER->showWatermark()Z
                     move-result p2
-                """,
+                """
             )
         }
 

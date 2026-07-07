@@ -21,6 +21,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">标题logo</string>
   <string name="morphe_header_logo_entry_1">默认</string>
   <string name="morphe_header_logo_entry_3">自定义</string>
+  <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_summary">使用第三方下载应用下载音乐视频、播客或歌曲</string>
+  <string name="morphe_external_downloader_action_button_title">覆盖「下载」按钮</string>
+  <string name="morphe_external_downloader_action_button_summary">用您的外部下载器替换 YouTube Music 的内置下载功能</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">关于</string>

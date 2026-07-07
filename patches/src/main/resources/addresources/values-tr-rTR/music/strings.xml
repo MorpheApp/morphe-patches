@@ -21,6 +21,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">Başlık logosu</string>
   <string name="morphe_header_logo_entry_1">Varsayılan</string>
   <string name="morphe_header_logo_entry_3">Özel</string>
+  <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_summary">Üçüncü taraf indirme uygulamalarıyla müzik videoları, podcast\'ler veya şarkılar indirin</string>
+  <string name="morphe_external_downloader_action_button_title">İndirme eylem düğmesini kullan</string>
+  <string name="morphe_external_downloader_action_button_summary">YouTube Music\'in yerleşik indirme işlevini harici indiricinizle değiştirir</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Hakkında</string>
@@ -165,7 +169,7 @@ YouTube Music 8.x — geçiş yalnızca 9.x ve sonraki sürümlerde çalışır"
   <!-- 'scrobble' must be kept untranslated -->
   <string name="morphe_music_scrobbling_delay_seconds_title">Scrobble gecikme saniyesi</string>
   <!-- 'scrobble' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_delay_seconds_summary">Bu kadar saniye dinledikten sonra scrobble\'ı tetikle</string>
+  <string name="morphe_music_scrobbling_delay_seconds_summary">Bu kadar saniye dinlendikten sonra scrobble\'ı tetikle</string>
   <string name="morphe_music_listenbrainz_token_title">ListenBrainz Hesabı</string>
   <string name="morphe_music_listenbrainz_token_summary_logged_in">Oturum açıldı. Hesabı yönetmek için dokunun</string>
   <!-- 'scrobbling' must be kept untranslated -->
@@ -206,7 +210,7 @@ YouTube Music 8.x — geçiş yalnızca 9.x ve sonraki sürümlerde çalışır"
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_title">Scrobbling hakkında</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_about_summary">"Scrobbling, YouTube Music kullanımınızı Last.fm veya ListenBrainz profilinizle otomatik olarak senkronize eder.
+  <string name="morphe_music_scrobbling_about_summary">"Scrobbling, YouTube Music kullanımınızı Last.fm veya ListenBrainz profilinizle otomatik olarak senkronize eder
 
-Scrobbling'in arka planda çalma sırasında senkronize olduğundan emin olmak için, YouTube Music'in uygulama pil kullanımının \"Kısıtlanmamış\" olarak ayarlandığından emin olun."</string>
+Scrobbling'in arka planda çalma sırasında senkronize olduğundan emin olmak için, YouTube Music'in uygulama pil kullanımının \"Kısıtlanmamış\" olarak ayarlandığından emin olun"</string>
 </resources>

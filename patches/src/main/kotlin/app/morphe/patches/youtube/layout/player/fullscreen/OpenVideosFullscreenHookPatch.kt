@@ -110,6 +110,7 @@ internal val openVideosFullscreenHookPatch = bytecodePatch {
             it.method.apply {
                 val index = it.instructionMatches.first().index
                 val register = getInstruction<OneRegisterInstruction>(index).registerA
+
                 addInstruction(
                     index + 1,
                     "invoke-static { v$register }, $EXTENSION_CLASS->setFullscreenInterface($EXTENSION_FULLSCREEN_INTERFACE)V"

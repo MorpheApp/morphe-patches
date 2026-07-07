@@ -283,23 +283,12 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_title">Вимкнути пропуск розділу подвійним натисканням</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Вимикає жест подвійного натискання двома пальцями для пропуску розділів, який може випадково спрацювати одним пальцем</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Зовнішній завантажувач</string>
-  <string name="morphe_external_downloader_screen_summary">Завантажувати відео за допомогою сторонніх застосунків для завантаження</string>
+  <string name="morphe_external_downloader_screen_summary">Завантажувати відео, подкасти або пісні за допомогою сторонніх застосунків для завантаження</string>
   <string name="morphe_external_downloader_title">Показувати кнопку зовнішнього завантажувача</string>
   <string name="morphe_external_downloader_summary">Показує кнопку у відеоплеєрі, яка відкриває ваш зовнішній завантажувач</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">Підмінити кнопку \"Завантажити\"</string>
   <string name="morphe_external_downloader_action_button_summary">Замінює вбудовану функцію завантаження YouTube на ваш зовнішній завантажувач</string>
-  <string name="morphe_external_downloader_name_title">Ім\'я пакета завантажувача</string>
-  <string name="morphe_external_downloader_name_summary">Ім\'я пакета встановленого Вами застосунку зовнішнього завантажувача</string>
-  <string name="morphe_external_downloader_other_item_hint">Введіть ім\'я пакета</string>
-  <string name="morphe_external_downloader_other_item">Вказати інший</string>
-  <string name="morphe_external_downloader_not_found_title">Застосунок не встановлено</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s не встановлено. Встановіть його.</string>
-  <string name="morphe_external_downloader_package_not_found_warning">"Не вдалося знайти встановлений застосунок з ім'ям пакета: %s
-
-Перевірте, чи правильне ім'я пакета та чи встановлено застосунок"</string>
-  <string name="morphe_external_downloader_empty_warning">Ім\'я пакета не може бути порожнім</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Голосовий переклад</string>
   <string name="morphe_vot_screen_summary">Зачитує субтитри відео вголос за допомогою локального синтезу мовлення, синхронізованого з відтворенням</string>
@@ -434,7 +423,7 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Вимкнути жест точного перемотування</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Вимикає режим точного перемотування, що вмикається при потягуванні смуги відтворення вгору</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Увімкнути DVR для прямої трансляції</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"Дозволяє перемотування у всіх трансляціях, навіть тих, що зазвичай його обмежують
@@ -751,7 +740,6 @@ Second \"item\" text"</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Приховати анімацію фонтану кнопки \"Лайк\"</string>
   <string name="morphe_hide_shorts_like_button_title">Приховати кнопку \"Лайк\"</string>
-  <string name="morphe_hide_shorts_dislike_button_title">Приховати кнопку \"Дизлайк\"</string>
   <string name="morphe_hide_shorts_comments_button_title">Приховати кнопку \"Коментарі\"</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Приховати кнопку \"Поділитися\"</string>
@@ -812,8 +800,6 @@ Second \"item\" text"</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Приховано власником</string>
   <string name="morphe_ryd_enabled_title">Увімкнути Return YouTube Dislike</string>
-  <string name="morphe_ryd_shorts_title">Показувати дизлайки в Shorts</string>
-  <string name="morphe_ryd_shorts_summary">Обмеження: Дизлайки можуть не показуватися в анонімному режимі</string>
   <string name="morphe_ryd_dislike_percentage_title">Показувати дизлайки у відсотках</string>
   <string name="morphe_ryd_dislike_percentage_summary">Показує дизлайки у відсотках від вподобань замість числа</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
@@ -949,6 +935,10 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Запобігає перетягування мінімізованого плеєра до різних кутів екрана</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Вимкнути жест горизонтального перетягування</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Запобігає закривати мінiплеєр горизонтальним свайпом за межі екрана</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Призупиняти відтворення при горизонтальному перетягуванні</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Відтворення буде призупинено, коли мініплеєр буде перетягнуто за межі екрана</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">Запам\'ятовувати позицію при перетягуванні</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">Перетягування мініплеєра за межі екрана збереже його стан інтерфейсу</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Приховати кнопки мініплеєра</string>
   <string name="morphe_miniplayer_width_dip_title">Розмір за замовчуванням</string>
   <string name="morphe_miniplayer_width_dip_summary">Встановлює початковий розмір на екрані в пікселях</string>
@@ -1056,10 +1046,10 @@ Second \"item\" text"</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Застосовує обраний рівень якості до всіх наступних Shorts</string>
   <string name="morphe_shorts_quality_default_wifi_title">Типова якість Shorts у мережі Wi-Fi</string>
   <string name="morphe_shorts_quality_default_mobile_title">Типова якість Shorts у мобільній мережі</string>
-  <string name="morphe_remember_video_quality_mobile">в мобільній мережі</string>
-  <string name="morphe_remember_video_quality_wifi">в Wi-Fi мережі</string>
-  <string name="morphe_remember_video_quality_toast">Типову якість %1$s змінено на %2$s</string>
-  <string name="morphe_remember_video_quality_toast_shorts">Якість Shorts %1$s змінено на %2$s</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Змінено типову якість для мобільної мережі на: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Змінено типову якість для Wi-Fi на: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_mobile">Змінено якість Shorts для мобільної мережі на: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_wifi">Змінено якість Shorts для Wi-Fi на: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Показати кнопку \"Швидкість відтворення\"</string>
   <string name="morphe_playback_speed_dialog_button_summary">Натисніть і утримуйте для скидання швидкості до типової</string>
@@ -1100,12 +1090,13 @@ Second \"item\" text"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Щоб використовувати цю функцію, встановіть \"Підміна відеопотоків\" на Android VR або Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Показувати розширене меню якості відео</string>
+  <string name="morphe_advanced_video_quality_menu_title">Відкривати меню якості \"Розширені налаштування\"</string>
+  <string name="morphe_advanced_video_quality_menu_summary">Пропускає меню вибору якості та відкриває меню \"Розширенні налаштування\" безпосередньо</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Приховати опції Premium якості</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">Пріоритет якості відео</string>
-  <string name="morphe_prioritize_video_quality_summary">Надає пріоритет найвищій якості відео над ефективністю кодека</string>
+  <string name="morphe_prioritize_video_quality_summary">Надає пріоритет найвищій доступній якості відео над ефективністю кодека</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Дозволити Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Дозволяє програмне декодування AV1 при використанні клієнта Android VR</string>

@@ -26,6 +26,11 @@ Second \"item\" text"</string>
     <string name="morphe_header_logo_entry_2" translatable="false">Morphe</string>
     <string name="morphe_header_logo_entry_3">Custom</string>
 
+    <!-- interaction.downloads.downloadsPatch -->
+    <string name="morphe_external_downloader_screen_summary">Download music videos, podcasts, or songs with third-party downloading apps</string>
+    <string name="morphe_external_downloader_action_button_title">Override Download action button</string>
+    <string name="morphe_external_downloader_action_button_summary">Replaces YouTube Music\'s built-in download function with your external downloader</string>
+
     <!-- misc.settings.settingsPatch -->
 
     <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
@@ -119,6 +124,46 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <string name="morphe_music_hide_history_button_title">Hide history button</string>
     <string name="morphe_music_hide_notification_button_title">Hide notification button</string>
     <string name="morphe_music_hide_search_button_title">Hide search button</string>
+
+    <!-- layout.hide.general.hideMusicComponentsPatch -->
+    <string name="morphe_music_hide_lyrics_panel_category_title">Lyrics panel</string>
+    <string name="morphe_music_hide_lyrics_share_button_title">Hide lyrics share button</string>
+    <string name="morphe_music_hide_lyrics_translate_button_title">Hide lyrics translate button</string>
+
+    <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
+    <string name="morphe_music_hide_flyout_menu_components_screen_title">Flyout menu</string>
+    <string name="morphe_music_hide_flyout_menu_components_screen_summary">Choose which components appear in the player and queue flyout menus</string>
+    <string name="morphe_music_hide_flyout_menu_add_to_listen_later_title">Hide \'Add to \'Listen later\' playlist\' menu</string>
+    <string name="morphe_music_hide_flyout_menu_add_to_queue_title">Hide \'Add to queue\' menu</string>
+    <string name="morphe_music_hide_flyout_menu_captions_title">Hide \'Captions\' menu</string>
+    <string name="morphe_music_hide_flyout_menu_delete_playlist_title">Hide \'Delete playlist\' menu</string>
+    <string name="morphe_music_hide_flyout_menu_dismiss_queue_title">Hide \'Dismiss queue\' menu</string>
+    <string name="morphe_music_hide_flyout_menu_dont_recommend_artist_title">Hide \'Don\'t recommend this artist\' menu</string>
+    <string name="morphe_music_hide_flyout_menu_download_title">Hide \'Download\' menu</string>
+    <string name="morphe_music_hide_flyout_menu_edit_playlist_title">Hide \'Edit playlist\' menu</string>
+    <string name="morphe_music_hide_flyout_menu_go_to_album_title">Hide \'Go to album\' menu</string>
+    <string name="morphe_music_hide_flyout_menu_go_to_artist_title">Hide \'Go to artist\' menu</string>
+    <string name="morphe_music_hide_flyout_menu_go_to_episode_title">Hide \'Go to episode\' menu</string>
+    <string name="morphe_music_hide_flyout_menu_go_to_podcast_title">Hide \'Go to podcast\' menu</string>
+    <string name="morphe_music_hide_flyout_menu_help_title">Hide \'Help\' menu</string>
+    <string name="morphe_music_hide_flyout_menu_mark_episode_as_played_title">Hide \'Mark episode as played\' menu</string>
+    <string name="morphe_music_hide_flyout_menu_not_interested_title">Hide \'Not interested\' menu</string>
+    <string name="morphe_music_hide_flyout_menu_pin_to_speed_dial_title">Hide \'Pin to speed dial\' menu</string>
+    <string name="morphe_music_hide_flyout_menu_play_next_title">Hide \'Play next\' menu</string>
+    <string name="morphe_music_hide_flyout_menu_quality_title">Hide \'Quality\' menu</string>
+    <string name="morphe_music_hide_flyout_menu_remove_from_library_title">Hide \'Remove from library\' menu</string>
+    <string name="morphe_music_hide_flyout_menu_remove_from_playlist_title">Hide \'Remove from playlist\' menu</string>
+    <string name="morphe_music_hide_flyout_menu_report_title">Hide \'Report\' menu</string>
+    <string name="morphe_music_hide_flyout_menu_save_episode_for_later_save_to_library_title">Hide \'Save episode for later\' / \'Save to library\' menu</string>
+    <string name="morphe_music_hide_flyout_menu_save_to_playlist_title">Hide \'Save to playlist\' menu</string>
+    <string name="morphe_music_hide_flyout_menu_share_title">Hide \'Share\' menu</string>
+    <string name="morphe_music_hide_flyout_menu_shuffle_play_title">Hide \'Shuffle play\' menu</string>
+    <string name="morphe_music_hide_flyout_menu_sleep_timer_title">Hide \'Sleep timer\' menu</string>
+    <string name="morphe_music_hide_flyout_menu_start_radio_title">Hide \'Start radio\' menu</string>
+    <string name="morphe_music_hide_flyout_menu_stats_for_nerds_title">Hide \'Stats for nerds\' menu</string>
+    <string name="morphe_music_hide_flyout_menu_subscribe_title">Hide \'Subscribe\' menu</string>
+    <string name="morphe_music_hide_flyout_menu_unpin_from_speed_dial_title">Hide \'Unpin from speed dial\' menu</string>
+    <string name="morphe_music_hide_flyout_menu_view_song_credit_title">Hide \'View song credits\' menu</string>
 
     <!-- layout.startpage.changeStartPagePatch -->
     <string name="morphe_change_start_page_title">Start page</string>

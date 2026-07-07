@@ -21,6 +21,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">علامة الشعار</string>
   <string name="morphe_header_logo_entry_1">الافتراضي</string>
   <string name="morphe_header_logo_entry_3">مخصص</string>
+  <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_summary">تنزيل مقاطع الفيديو الموسيقية أو البودكاست أو الأغاني باستخدام تطبيقات تنزيل خارجية</string>
+  <string name="morphe_external_downloader_action_button_title">استبدال زر إجراء التنزيل</string>
+  <string name="morphe_external_downloader_action_button_summary">يستبدل وظيفة التنزيل المدمجة في YouTube بتطبيق التنزيل الخارجي الذي تختاره</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">لمحة</string>

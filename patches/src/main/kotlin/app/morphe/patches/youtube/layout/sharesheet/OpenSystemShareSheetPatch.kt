@@ -9,14 +9,14 @@ package app.morphe.patches.youtube.layout.sharesheet
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.shared.misc.litho.addLithoFilter
-import app.morphe.patches.shared.misc.litho.lithoFilterPatch
+import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.flyout.addToQueuePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.settings.PreferenceScreen
+import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.recyclerviewtree.hook.addRecyclerViewTreeHook
 import app.morphe.patches.youtube.misc.recyclerviewtree.hook.recyclerViewTreeHookPatch
+import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 

@@ -21,6 +21,20 @@ Second \"item\" text"</string>
     <!-- layout.branding.baseCustomBrandingPatch -->
     <string name="morphe_custom_branding_name_title">App name</string>
 
+    <!-- interaction.downloads.downloadsPatch -->
+    <string name="morphe_external_downloader_screen_title">External downloads</string>
+    <string name="morphe_external_downloader_name_title">Downloader package name</string>
+    <string name="morphe_external_downloader_name_summary">Package name of your installed external downloader app</string>
+    <string name="morphe_external_downloader_flyout_button_title">Override feed/search flyout button</string>
+    <string name="morphe_external_downloader_other_item_hint">Enter the package name</string>
+    <string name="morphe_external_downloader_other_item">Other</string>
+    <string name="morphe_external_downloader_not_found_title">App not installed</string>
+    <string name="morphe_external_downloader_not_installed_warning">%s is not installed. Please install it.</string>
+    <string name="morphe_external_downloader_package_not_found_warning">"Could not find installed app with package name: %s
+
+Verify the package name is correct and the app is installed"</string>
+    <string name="morphe_external_downloader_empty_warning">The package name cannot be empty</string>
+
     <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
     <string name="morphe_custom_branding_name_entry_5">Custom</string>
     <string name="morphe_custom_branding_icon_title">App icon</string>
@@ -159,4 +173,13 @@ Playback will fail if the Player JavaScript hash is outdated."</string>
 This can help identify components when creating custom filters.
 
 However, enabling this will also log some user data such as your IP address."</string>
+
+    <!-- Custom filter -->
+    <string name="morphe_custom_filter_screen_title">Custom filter</string>
+    <string name="morphe_custom_filter_screen_summary">Configure custom filters to hide any component</string>
+    <string name="morphe_custom_filter_title">Enable custom filter</string>
+    <string name="morphe_custom_filter_strings_title">Custom filter</string>
+    <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+    <string name="morphe_custom_filter_strings_summary">List of component path builder strings to filter, separated by new lines</string>
+    <string name="morphe_custom_filter_toast_invalid_syntax">Invalid custom filter: %s</string>
 </resources>

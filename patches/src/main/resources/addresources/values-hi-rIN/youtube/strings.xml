@@ -283,23 +283,12 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_title">अध्याय स्किप को डबल टैप करना अक्षम करें</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">अध्याय को छोड़ने के लिए दो उंगली के डबल-टैप जेस्चर को निष्क्रिय करता है, जो एक उंगली के साथ गलती से ट्रिगर हो सकता है</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">बाहरी डाउनलोड्स</string>
-  <string name="morphe_external_downloader_screen_summary">तृतीय-पक्ष डाउनलोडिंग ऐप्स के साथ वीडियो डाउनलोड करें</string>
+  <string name="morphe_external_downloader_screen_summary">तृतीय-पक्ष डाउनलोडिंग ऐप्स के साथ वीडियो, पॉडकास्ट या गाने डाउनलोड करें</string>
   <string name="morphe_external_downloader_title">प्रदर्शित बाहरी डाउनलोड बटन</string>
   <string name="morphe_external_downloader_summary">आपके बाहरी डाउनलोडर को खोलने वाला वीडियो प्लेयर में एक ओवरले बटन दिखाता है</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">ओवरराइड डाउनलोड एक्शन बटन</string>
   <string name="morphe_external_downloader_action_button_summary">आपके बाहरी डाउनलोडर के साथ YouTube के अंतर्निहित डाउनलोड फ़ंक्शन को बदल देता है</string>
-  <string name="morphe_external_downloader_name_title">डाउनलोडर पैकेज नाम</string>
-  <string name="morphe_external_downloader_name_summary">आपकी स्थापित बाहरी डाउनलोडर एप्लिकेशन का पैकेज नाम</string>
-  <string name="morphe_external_downloader_other_item_hint">डाउनलोडर पैकेज नाम दर्ज करें</string>
-  <string name="morphe_external_downloader_other_item">अन्य</string>
-  <string name="morphe_external_downloader_not_found_title">एप्लिकेशन स्थापित नहीं है</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s नहीं स्थापित है। कृपया इसे स्थापित करें।</string>
-  <string name="morphe_external_downloader_package_not_found_warning">"उपलब्ध नहीं किया जा सकता हैstalled एप्लिकेशन के लिए पैकेज नाम: %s
-
-पैकेज नाम को सही और एप्लिकेशन को स्थापित किया गया है, यह सुनिश्चित करें"</string>
-  <string name="morphe_external_downloader_empty_warning">पैकेज का नाम खाली नहीं हो सकता</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">वॉइस ओवर अनुवाद</string>
   <string name="morphe_vot_screen_summary">डिवाइस पर टेक्स्ट-टू-स्पीच का उपयोग करके वीडियो कैप्शन को ज़ोर से पढ़ें, जो प्लेबैक के साथ सिंक्रनाइज़ किया गया है।</string>
@@ -381,13 +370,12 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_play_all_button_type_entry_2">सभी सामग्री (लोकप्रियता के अनुसार क्रमबद्ध करें)</string>
   <string name="morphe_play_all_button_type_entry_3">सिर्फ़ वीडियो (समय के अनुसार क्रमबद्ध करें)</string>
   <string name="morphe_play_all_button_type_entry_4">सिर्फ़ वीडियो (लोकप्रियता के अनुसार क्रमबद्ध करें)</string>
-  <string name="morphe_play_all_button_type_entry_5">सिर्फ़ शॉर्ट्स (समय के अनुसार क्रमबद्ध करें)</string>
-  <string name="morphe_play_all_button_type_entry_6">सिर्फ़ शॉर्ट्स (लोकप्रियता के अनुसार क्रमबद्ध करें)</string>
+  <string name="morphe_play_all_button_type_entry_5">Shorts केवल (समय के अनुसार क्रमबद्ध करें)</string>
+  <string name="morphe_play_all_button_type_entry_6">Shorts केवल (लोकप्रियता के आधार पर क्रमबद्ध करें)</string>
   <string name="morphe_play_all_button_type_entry_7">सिर्फ़ स्ट्रीम किए गए वीडियो (समय के अनुसार क्रमबद्ध करें)</string>
   <string name="morphe_play_all_button_type_entry_8">सिर्फ़ स्ट्रीम किए गए वीडियो (लोकप्रियता के अनुसार क्रमबद्ध करें)</string>
   <string name="morphe_play_all_button_type_entry_9">सभी सदस्यों की सामग्री केवल</string>
   <string name="morphe_play_all_button_type_entry_10">केवल सदस्यों के वीडियो</string>
-  <string name="morphe_play_all_button_type_entry_11">केवल सदस्यों के शॉर्ट्स</string>
   <string name="morphe_play_all_button_type_entry_12">केवल सदस्यों के लाइव स्ट्रीम</string>
   <string name="morphe_play_all_button_not_available_toast">चैनल आईडी मिसमैच के कारण प्लेलिस्ट जेनरेट करने में असमर्थ</string>
   <!-- interaction.reload.reloadVideoPatch -->
@@ -434,7 +422,7 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">प्रेसिस सीकिंग गेस्टर को अक्षम करना</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">सीकबार को ऊपर खींचने पर सक्रिय होने वाले सटीक सीकिंग मोड को निष्क्रिय करता है</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">लाइवस्ट्रीम DVR सक्षम करें</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"यह सभी लाइवस्ट्रीम पर तलाशने की अनुमति देता है, यहां तक कि उन पर भी जो सामान्य रूप से इसे प्रतिबंधित करते हैं
@@ -594,7 +582,7 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">कास्ट बटन छुपाएं</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_shorts_button_title">माइक्रोफोन बटन छुपाएं</string>
+  <string name="morphe_hide_shorts_button_title">Shorts बटन छिपाएँ</string>
   <!-- 'Create' has no display name. Translate normally. -->
   <string name="morphe_hide_create_button_title">छिपाएं बनाएं बटन</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -716,8 +704,8 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_hide_seekbar_thumbnail_summary">उन वीडियो के थंबनेल पर दिखाए जाने वाले वॉच प्रोग्रेस बार को छुपाता है जिन्हें आपने पहले ही देख लिया है</string>
   <string name="morphe_fullscreen_large_seekbar_title">फुलस्क्रीन बड़े सीकबार् सक्षम करें</string>
   <!-- layout.hide.shorts.hideShortsComponentsPatch -->
-  <string name="morphe_shorts_player_screen_title">शॉर्ट्स प्लेयर</string>
-  <string name="morphe_shorts_player_screen_summary">शॉर्ट्स प्लेयर में दिखाई देने वाले घटकों को चुनें</string>
+  <string name="morphe_shorts_player_screen_title">Shorts खिलाड़ी</string>
+  <string name="morphe_shorts_player_screen_summary">Shorts प्लेयर में कौन‑कौन से घटक दिखाई दें, चुनें</string>
   <string name="morphe_hide_shorts_category_title">Shorts बटन छिपाएं</string>
   <string name="morphe_hide_shorts_channel_title">चैनल पेज में छुपाएं</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -751,7 +739,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">फव्वारे एनिमेशन लाइक बटन छिपाएँ</string>
   <string name="morphe_hide_shorts_like_button_title">छुपाएं \'संलग्न होना\' बटन</string>
-  <string name="morphe_hide_shorts_dislike_button_title">छुपाएं \'धन्यवाद\' बटन</string>
   <string name="morphe_hide_shorts_comments_button_title">समुदाय बटन छुपाएं</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">छुपाएं शेयर बटन</string>
@@ -813,8 +800,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">अभाव वीडियो के स्वामी द्वारा छिपाए गए हैं</string>
   <string name="morphe_ryd_enabled_title">रिटर्न YouTube डिसलाइक सक्षम करें</string>
-  <string name="morphe_ryd_shorts_title">शॉर्ट्स पर नापसंद दिखाएं</string>
-  <string name="morphe_ryd_shorts_summary">सीमा: डिसलाइक इंकॉग्निटो मोड में दिखाई नहीं दे सकते हैं</string>
   <string name="morphe_ryd_dislike_percentage_title">लाइक के प्रतिशत के रूप में डिसलाइक दिखाएं</string>
   <string name="morphe_ryd_dislike_percentage_summary">लाइक के बजाय प्रतिशत के रूप में डिसलाइक दिखाता है</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
@@ -950,6 +935,10 @@ ReturnYouTubeDislike.com खोलने के लिए यहाँ टैप
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">मिनीप्लेयर को स्क्रीन के अलग-अलग कोनों पर खींचने से रोकता है</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">क्षैतिज ड्रैग इशारा बंद करें</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">क्षैतिज रूप से स्क्रीन से स्वाइप करके मिनीप्लेयर को बंद करने से रोकता है</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">क्षैतिज ड्रैग से प्लेबैक रोकें</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">मिनीप्लेयर को स्क्रीन से बाहर ड्रैग करने पर प्लेबैक रुक जाएगा</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">ड्रैग स्थिति की स्थिति याद रखें</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">मिनीप्लेयर को स्क्रीन से बाहर ड्रैग करने पर उसका यूआई स्टेट सुरक्षित रहेगा</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">ओवरले बटन छुपाएं</string>
   <string name="morphe_miniplayer_width_dip_title">डिफ़ॉल्ट साइज़</string>
   <string name="morphe_miniplayer_width_dip_summary">शुरुआती ऑन-स्क्रीन साइज़ सेट करें, पिक्सेल में</string>
@@ -1057,10 +1046,10 @@ DeArrow.ajay.app खोलने के लिए यहां टैप कर�
   <string name="morphe_remember_shorts_quality_last_selected_summary">सभी भविष्य के शॉर्ट्स पर अपनी मैन्युअल गुणवत्ता चयन लागू करता है</string>
   <string name="morphe_shorts_quality_default_wifi_title">Wi-Fi नेटवर्क पर डिफ़ॉल्ट Shorts गुणवत्ता</string>
   <string name="morphe_shorts_quality_default_mobile_title">मोबाइल नेटवर्क पर डिफ़ॉल्ट Shorts गुणवत्ता</string>
-  <string name="morphe_remember_video_quality_mobile">मोबाइल</string>
-  <string name="morphe_remember_video_quality_wifi">वाईफाई</string>
-  <string name="morphe_remember_video_quality_toast">डिफ़ॉल्ट %1$s गुणवत्ता को: %2$s में बदल दिया गया</string>
-  <string name="morphe_remember_video_quality_toast_shorts">डिफ़ॉल्ट Shorts %1$s गुणवत्ता को: %2$s में बदल दिया गया</string>
+  <string name="morphe_remember_video_quality_toast_mobile">डिफ़ॉल्ट मोबाइल गुणवत्ता बदलकर: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">डिफ़ॉल्ट वाई-फ़ाई गुणवत्ता बदलकर: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_mobile">शॉर्ट्स मोबाइल गुणवत्ता बदलकर: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_wifi">शॉर्ट्स वाई-फ़ाई गुणवत्ता बदलकर: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">प्लेबैक स्पीड बटन दिखाएं</string>
   <string name="morphe_playback_speed_dialog_button_summary">डिफ़ॉल्ट पर गति को रीसेट करने के लिए टैप और होल्ड करें</string>
@@ -1101,12 +1090,13 @@ DeArrow.ajay.app खोलने के लिए यहां टैप कर�
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">इस सुविधा का उपयोग करने के लिए, \'वीडियो स्ट्रीम को स्पूफ करें\' को Android VR या Android Studio पर सेट करें</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">उन्नत वीडियो गुणवत्ता मेनू दिखाएं</string>
+  <string name="morphe_advanced_video_quality_menu_title">\'उन्नत\' गुणवत्ता मेनू खोलें</string>
+  <string name="morphe_advanced_video_quality_menu_summary">गुणवत्ता चयन मेनू को छोड़ता है और सीधे \'उन्नत\' गुणवत्ता मेनू खोलता है</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">छुपाएं प्रीमियम गुणवत्ता विकल्प</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">वीडियो की गुणवत्ता को प्राथमिकता दी जाएगी</string>
-  <string name="morphe_prioritize_video_quality_summary">कोडेक दक्षता पर उच्चतम गुणवत्ता वाले वीडियो को प्राथमिकता देता है</string>
+  <string name="morphe_prioritize_video_quality_summary">कोडेक दक्षता से अधिक उच्चतम उपलब्ध वीडियो गुणवत्ता को प्राथमिकता देता है</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Android VR AV1 की अनुमति दें</string>
   <string name="morphe_spoof_video_streams_av1_summary">Android VR क्लाइंट का उपयोग करते समय सॉफ्टवेयर AV1 डिकोडिंग की अनुमति देता है</string>

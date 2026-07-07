@@ -8,7 +8,7 @@
  * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
-package app.morphe.patches.shared.misc.litho
+package app.morphe.patches.shared.misc.litho.filter
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin

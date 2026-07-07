@@ -283,23 +283,12 @@ Promene uključuju:
   <string name="morphe_disable_chapter_skip_double_tap_title">Онемогући прескакање поглавља дуплим додиром</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Онемогућава гест двоструког додира са два прста који прескаче поглавља, који се може случајно покренути са једним прстом</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Спољна преузимања</string>
-  <string name="morphe_external_downloader_screen_summary">Преузмите видео снимке помоћу апликација треће стране за преузимање</string>
+  <string name="morphe_external_downloader_screen_summary">Преузмите видео-снимке, подкасте или песме помоћу апликација за преузимање од трећих страна</string>
   <string name="morphe_external_downloader_title">Прикажи дугме за спољно преузимање</string>
   <string name="morphe_external_downloader_summary">Приказује прекривајуће дугме у плејеру видео снимка које отвара ваш спољни преузимач</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">Замени дугме радње „Преузми”</string>
   <string name="morphe_external_downloader_action_button_summary">Замењује уграђену функцију за преузимање на YouTube-у вашим спољним преузимачем</string>
-  <string name="morphe_external_downloader_name_title">Назив пакета програма за преузимање</string>
-  <string name="morphe_external_downloader_name_summary">Назив пакета вашег инсталираног спољног програма за преузимање</string>
-  <string name="morphe_external_downloader_other_item_hint">Унесите назив пакета</string>
-  <string name="morphe_external_downloader_other_item">Остало</string>
-  <string name="morphe_external_downloader_not_found_title">Апликација није инсталирана</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s није инсталиран. Инсталирајте га.</string>
-  <string name="morphe_external_downloader_package_not_found_warning">"Није пронађена инсталирана апликација са називом пакета: %s
-
-Проверите да ли је назив пакета исправан и да ли је апликација инсталирана"</string>
-  <string name="morphe_external_downloader_empty_warning">Назив пакета не може бити празан</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Превод гласовног надзора</string>
   <string name="morphe_vot_screen_summary">Учитавајте титлове видео записа наглас користећи текст у говор на уређају, синхронизовано са репродукцијом</string>
@@ -434,7 +423,7 @@ Promene uključuju:
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Онемогући покрет прецизног премотавања</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Онемогућава прецизан режим тражења који се активира приликом подизања траке за тражење</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Омогућите снимање преко директног преноса</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"Омогућава премотавање свих преноса уживо, чак и оних који то обично ограничавају
@@ -751,7 +740,6 @@ Promene uključuju:
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Сакриј анимацију дугмета „Свиђање”</string>
   <string name="morphe_hide_shorts_like_button_title">Сакриј дугме „Свиђање”</string>
-  <string name="morphe_hide_shorts_dislike_button_title">Сакриј дугме „Несвиђање”</string>
   <string name="morphe_hide_shorts_comments_button_title">Сакриј дугме „Коментари”</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Сакриј дугме „Дели”</string>
@@ -813,8 +801,6 @@ Promene uključuju:
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Скривено од стране власника</string>
   <string name="morphe_ryd_enabled_title">Омогући Return YouTube Dislike</string>
-  <string name="morphe_ryd_shorts_title">Прикажи несвиђања на Shorts видеима</string>
-  <string name="morphe_ryd_shorts_summary">Ограничење: Свиђања можда неће бити приказана у режиму приватног прегледања</string>
   <string name="morphe_ryd_dislike_percentage_title">Прикажи свиђања као постотак</string>
   <string name="morphe_ryd_dislike_percentage_summary">Приказује свиђања као проценат свиђања уместо броја</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
@@ -950,6 +936,10 @@ Promene uključuju:
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Спречава превлачење мини-плејера у различите углове екрана</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Онемогући покрет хоризонталног превлачења</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Спречава затварање мини-плејера превлачењем хоризонтално преко екрана</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Зауставите репродукцију превлачењем преко хоризонтале</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Репродукција ће бити паузирана када се мини плејер извуче са екрана</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">Запамтите позицију превлачења</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">Повлачењем мини-плејера ван екрана сачуваће се његово стање корисничког интерфејса</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Сакриј дугмад преклопа</string>
   <string name="morphe_miniplayer_width_dip_title">Подразумевана величина</string>
   <string name="morphe_miniplayer_width_dip_summary">Подесите почетну величину на екрану, у пикселима</string>
@@ -1057,10 +1047,10 @@ Promene uključuju:
   <string name="morphe_remember_shorts_quality_last_selected_summary">Примењује вашу ручну селекцију квалитета на све будуће Shorts видее</string>
   <string name="morphe_shorts_quality_default_wifi_title">Подразумевани квалитет Shorts видеа на Wi-Fi мрежи</string>
   <string name="morphe_shorts_quality_default_mobile_title">Подразумевани квалитет Shorts видеа на мобилној мрежи</string>
-  <string name="morphe_remember_video_quality_mobile">мобилној мрежи</string>
-  <string name="morphe_remember_video_quality_wifi">Wi-Fi мрежи</string>
-  <string name="morphe_remember_video_quality_toast">Квалитет на %1$s промењен на: %2$s</string>
-  <string name="morphe_remember_video_quality_toast_shorts">Квалитет Shorts видеа на %1$s промењен на: %2$s</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Промењен квалитет мобилног преноса на: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Промењен квалитет Wi-Fi преноса на: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_mobile">Промењен квалитет Shorts мобилног преноса на: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_wifi">Промењен квалитет Shorts Wi-Fi преноса на: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Прикажи дугме за брзину репродукције</string>
   <string name="morphe_playback_speed_dialog_button_summary">Додините и задржите за ресетовање брзине на подразумевану</string>
@@ -1101,12 +1091,13 @@ Promene uključuju:
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Да бисте користили ову функцију, подесите „Лажирани видео стримови” на Android VR или Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Прикажи напредни мени квалитета видеа</string>
+  <string name="morphe_advanced_video_quality_menu_title">Отвори \"Напредне\" подешавања квалитета</string>
+  <string name="morphe_advanced_video_quality_menu_summary">Прескаче мени за избор квалитета и директно отвара Напредне опције квалитета</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Sakrij opcije premium kvaliteta</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">Priorizujte kvalitet video-a</string>
-  <string name="morphe_prioritize_video_quality_summary">Приоритет даје највишем квалитету видеа у односу на ефикасност кодека</string>
+  <string name="morphe_prioritize_video_quality_summary">Даје предност највишем доступном квалитету видеа у односу на ефикасност кодека</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Дозволи Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Омогућава софтверско декодирање AV1 када се користи Android VR клијент</string>

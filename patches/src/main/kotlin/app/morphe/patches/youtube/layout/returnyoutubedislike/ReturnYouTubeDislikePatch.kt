@@ -4,17 +4,17 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.shared.misc.litho.addLithoFilter
-import app.morphe.patches.shared.misc.litho.lithoFilterPatch
+import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
+import app.morphe.patches.shared.misc.litho.context.EXTENSION_CONTEXT_INTERFACE
+import app.morphe.patches.shared.misc.litho.context.conversionContextClassDef
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.fix.videoactionbar.restoreOldVideoActionBarPatch
-import app.morphe.patches.youtube.misc.litho.context.EXTENSION_CONTEXT_INTERFACE
-import app.morphe.patches.youtube.misc.litho.context.conversionContextClassDef
 import app.morphe.patches.youtube.misc.litho.context.conversionContextPatch
+import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_25_or_greater
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -55,7 +55,6 @@ val returnYouTubeDislikePatch = bytecodePatch(
         settingsPatch,
         sharedExtensionPatch,
         conversionContextPatch,
-        lithoFilterPatch,
         videoIdPatch,
         playerTypeHookPatch,
         restoreOldVideoActionBarPatch,
@@ -66,7 +65,6 @@ val returnYouTubeDislikePatch = bytecodePatch(
     execute {
         PreferenceScreen.RETURN_YOUTUBE_DISLIKE.addPreferences(
             SwitchPreference("morphe_ryd_enabled"),
-            SwitchPreference("morphe_ryd_shorts", summary = true),
             SwitchPreference("morphe_ryd_dislike_percentage", summary = true),
             SwitchPreference("morphe_ryd_compact_layout", summary = true),
             SwitchPreference("morphe_ryd_estimated_like", summary = true),
@@ -203,16 +201,6 @@ val returnYouTubeDislikePatch = bytecodePatch(
                 )
             }
         }
-
-        // endregion
-
-        // region Hook Shorts
-
-        // Filter that parses the video ID from the UI
-        addLithoFilter(EXTENSION_FILTER)
-
-        // Player response video ID is needed to search for the video IDs in Shorts litho components.
-        hookPlayerResponseVideoId("$EXTENSION_FILTER->newPlayerResponseVideoId(Ljava/lang/String;Z)V")
 
         // endregion
 

@@ -143,10 +143,8 @@ val enableSwipeToDismissMiniplayerPatch = bytecodePatch(
 
         // region Hide cold start miniplayer text (R.string.mini_player_default_text)
 
-        val coldStartMiniPlayerDefaultTextFingerprint: Fingerprint
-
-        if (is_9_03_or_greater) {
-            coldStartMiniPlayerDefaultTextFingerprint = Fingerprint(
+        (if (is_9_03_or_greater) {
+            Fingerprint(
                 accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
                 parameters = listOf("Ljava/lang/Object;"),
                 returnType = "V",
@@ -159,10 +157,8 @@ val enableSwipeToDismissMiniplayerPatch = bytecodePatch(
                 )
             )
         } else {
-            coldStartMiniPlayerDefaultTextFingerprint = MiniPlayerDefaultTextLegacyFingerprint
-        }
-
-        coldStartMiniPlayerDefaultTextFingerprint.let {
+            MiniPlayerDefaultTextLegacyFingerprint
+        }).let {
             it.method.apply {
                 val insertIndex = it.instructionMatches.first().index
                 val insertRegister = getInstruction<TwoRegisterInstruction>(insertIndex).registerB
@@ -192,7 +188,7 @@ val enableSwipeToDismissMiniplayerPatch = bytecodePatch(
                 )
             }
 
-        val warmStartMiniplayerFingerprint = Fingerprint(
+        Fingerprint(
             definingClass = warmStartMiniplayerClass,
             parameters = listOf("Landroid/view/View;", "I"),
             filters = listOf(
@@ -208,9 +204,7 @@ val enableSwipeToDismissMiniplayerPatch = bytecodePatch(
                     location = MatchAfterWithin(5)
                 )
             )
-        )
-
-        warmStartMiniplayerFingerprint.let {
+        ).let {
             it.method.apply {
                 val insertIndex = it.instructionMatches.first().index
                 val jumpIndex = it.instructionMatches.last().index + 1

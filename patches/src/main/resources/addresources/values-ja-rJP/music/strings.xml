@@ -21,6 +21,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">ヘッダーロゴ</string>
   <string name="morphe_header_logo_entry_1">デフォルト</string>
   <string name="morphe_header_logo_entry_3">カスタム</string>
+  <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_summary">サードパーティ製のダウンロード アプリで、ミュージック ビデオ、ポッドキャスト、楽曲をダウンロードします</string>
+  <string name="morphe_external_downloader_action_button_title">オフライン ボタンの動作を上書き</string>
+  <string name="morphe_external_downloader_action_button_summary">オフライン ボタンの呼び出し先を、「YouTube Music 内蔵のダウンロード機能」から「設定した外部ダウンローダー」に変更します</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Morphe について</string>
@@ -148,65 +152,65 @@ YouTube Music 8.x — クロスフェードは9.x以降でのみ実行されま�
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">アップグレード ボタンを非表示</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
-  <string name="morphe_music_scrobbling_summary">Last.fmとListenBrainzの連携を設定</string>
-  <string name="morphe_music_scrobbling_summary_logged_out">ログインしていません。設定をタップしてください。</string>
+  <string name="morphe_music_scrobbling_summary">Last.fm および ListenBrainz との連携を設定します</string>
+  <string name="morphe_music_scrobbling_summary_logged_out">ログインしていません。タップして設定してください</string>
   <string name="morphe_music_scrobbling_log_out">ログアウト</string>
   <string name="morphe_music_scrobbling_logged_out_toast">ログアウトしました</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_enabled_title">scrobblingを有効にする</string>
-  <string name="morphe_music_scrobbling_now_playing_title">「再生中」ステータスを送信する</string>
-  <string name="morphe_music_scrobbling_min_song_duration_title">曲の最小再生時間</string>
+  <string name="morphe_music_scrobbling_enabled_title">Scrobble を有効化</string>
+  <string name="morphe_music_scrobbling_now_playing_title">「現在再生中」の曲情報を送信</string>
+  <string name="morphe_music_scrobbling_min_song_duration_title">曲の長さの下限値</string>
   <!-- 'scrobbled' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_min_song_duration_summary">この時間より短い曲はscrobbleされません</string>
+  <string name="morphe_music_scrobbling_min_song_duration_summary">曲の長さがこの値より短い楽曲は、Scrobble の対象から除外されます</string>
   <!-- 'scrobble' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_delay_percent_title">scrobbleの遅延割合</string>
+  <string name="morphe_music_scrobbling_delay_percent_title">再生割合のしきい値</string>
   <!-- 'scrobble' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_delay_percent_summary">曲のこの割合を聴取後にscrobbleを開始します</string>
+  <string name="morphe_music_scrobbling_delay_percent_summary">この値 (%) 以上再生したときに楽曲を Scrobble します</string>
   <!-- 'scrobble' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_delay_seconds_title">scrobbleの遅延秒数</string>
+  <string name="morphe_music_scrobbling_delay_seconds_title">再生時間のしきい値</string>
   <!-- 'scrobble' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_delay_seconds_summary">この秒数間聴取後にscrobbleを開始します</string>
-  <string name="morphe_music_listenbrainz_token_title">ListenBrainzアカウント</string>
-  <string name="morphe_music_listenbrainz_token_summary_logged_in">ログイン済み。アカウントの管理をタップしてください。</string>
+  <string name="morphe_music_scrobbling_delay_seconds_summary">この値 (秒) 以上再生したときに楽曲を Scrobble します</string>
+  <string name="morphe_music_listenbrainz_token_title">ListenBrainz アカウント</string>
+  <string name="morphe_music_listenbrainz_token_summary_logged_in">ログインしています。タップするとアカウントを管理できます</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_listenbrainz_token_dialog_instruction">スクロブルを有効にするには、ListenBrainzユーザー トークンを入力してください</string>
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">Scrobble を有効にするには、ListenBrainz のユーザー トークンを入力してください</string>
   <string name="morphe_music_listenbrainz_token_dialog_hint">トークン</string>
   <string name="morphe_music_listenbrainz_token_dialog_get_token">トークンを取得</string>
   <string name="morphe_music_listenbrainz_token_dialog_verify">確認</string>
   <string name="morphe_music_listenbrainz_token_status_empty">トークンを入力してください</string>
   <string name="morphe_music_listenbrainz_token_status_validating">検証中…</string>
-  <string name="morphe_music_listenbrainz_token_status_valid">有効なトークンです！ ユーザー： %s</string>
-  <string name="morphe_music_listenbrainz_token_status_invalid">無効なトークンです： %s</string>
+  <string name="morphe_music_listenbrainz_token_status_valid">有効なトークンです！ユーザー: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">無効なトークンです: %s</string>
   <string name="morphe_music_listenbrainz_token_status_invalid_unknown">不明</string>
-  <string name="morphe_music_listenbrainz_token_status_failed">検証に失敗しました： %s</string>
-  <string name="morphe_music_listenbrainz_token_toast_cleared">トークンをクリアしました</string>
+  <string name="morphe_music_listenbrainz_token_status_failed">検証に失敗しました: %s</string>
+  <string name="morphe_music_listenbrainz_token_toast_cleared">トークンを消去しました</string>
   <string name="morphe_music_listenbrainz_token_toast_saved">トークンを保存しました</string>
-  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">警告：保存されたトークンが無効です！</string>
-  <string name="morphe_music_lastfm_love_on_like_title">気に入ったトラックをLoveする</string>
-  <string name="morphe_music_lastfm_love_on_like_summary">YouTube Musicで気に入ったトラックをLast.fmで自動的にLoveし、（気に入らなくなった場合やよくないと思われた場合はLoveを解除します）</string>
-  <string name="morphe_music_lastfm_token_title">Last.fmアカウント</string>
-  <string name="morphe_music_lastfm_token_summary_logged_in">%sとしてログイン済み。アカウントの管理をタップしてください。</string>
-  <string name="morphe_music_lastfm_token_dialog_instruction">ログインするには、Last.fmのアカウント情報を入力してください。</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">警告: 保存済みのトークンが無効です！</string>
+  <string name="morphe_music_lastfm_love_on_like_title">高評価した楽曲を Love に追加</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">YouTube Music で高評価した楽曲を自動的に Last.fm で Love に追加します (高評価をキャンセルした場合または低評価した場合は Love から削除します)</string>
+  <string name="morphe_music_lastfm_token_title">Last.fm アカウント</string>
+  <string name="morphe_music_lastfm_token_summary_logged_in">%s でログインしています。タップするとアカウントを管理できます</string>
+  <string name="morphe_music_lastfm_token_dialog_instruction">Last.fm のログイン情報を入力してログインしてください</string>
   <string name="morphe_music_lastfm_token_dialog_username_hint">ユーザー名</string>
   <string name="morphe_music_lastfm_token_dialog_password_hint">パスワード</string>
   <string name="morphe_music_lastfm_token_dialog_login">ログイン</string>
-  <string name="morphe_music_lastfm_token_status_empty">ユーザー名とパスワードを入力してください。</string>
+  <string name="morphe_music_lastfm_token_status_empty">ユーザー名とパスワードを入力してください</string>
   <string name="morphe_music_lastfm_token_status_logging_in">ログイン中…</string>
   <string name="morphe_music_lastfm_token_status_success">ログインに成功しました！</string>
-  <string name="morphe_music_lastfm_token_status_no_session">Last.fmからのセッションの取得に失敗しました</string>
-  <string name="morphe_music_lastfm_token_status_failed">ログインに失敗しました： %s</string>
-  <string name="morphe_music_lastfm_token_toast_saved">Last.fmアカウントが保存されました！</string>
+  <string name="morphe_music_lastfm_token_status_no_session">Last.fm のセッションの取得に失敗しました</string>
+  <string name="morphe_music_lastfm_token_status_failed">ログインに失敗しました: %s</string>
+  <string name="morphe_music_lastfm_token_toast_saved">Last.fm アカウントを保存しました！</string>
   <string name="morphe_settings_music_scrobbling_metadata_title">メタデータのクリーンアップ</string>
-  <string name="morphe_music_scrobbling_metadata_cleanup_title">メタデータをクリーンアップ</string>
-  <string name="morphe_music_scrobbling_metadata_cleanup_summary">スクロブル前に、タイトル、アーティスト、アルバムから一般的な不要な情報（「Official Video」、「Remaster」、「Live」など）を自動的にクリーンアップします。</string>
-  <string name="morphe_music_scrobbling_custom_regex_title">カスタム正規表現クリーンアップ</string>
-  <string name="morphe_music_scrobbling_custom_regex_summary">曲名、アーティスト、またはアルバムから不要なテキストを削除するために、カスタムの正規表現を入力してください。例: (?i)\\s*\\((clean|explicit)\\)</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_title">メタデータから不要なテキストを除去</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">「Official Video」「リマスター」「ライブ」などの、タイトル、アーティスト名、アルバム名に不要なテキストを自動的に除去して Scrobble します</string>
+  <string name="morphe_music_scrobbling_custom_regex_title">正規表現による除去</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">曲のタイトル、アーティスト名、アルバム名から不要なテキストを除去するための正規表現を入力してください。例: (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">タイトルから曲名とアーティスト名を取得</string>
   <string name="morphe_music_scrobbling_parse_title_summary">動画のタイトルを「 - 」で分割し、前半を曲名として、後半をアーティスト名として取得します。この機能は、動画タイトル全体が曲名として、チャンネル名がアーティスト名として取得される場合がある、非公式動画で有用です。</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_about_title">スクロブルについて</string>
+  <string name="morphe_music_scrobbling_about_title">Scrobble について</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_about_summary">"スクロブリングは、YouTube Music の使用状況を Last.fm または ListenBrainz プロフィールと自動的に同期します。
+  <string name="morphe_music_scrobbling_about_summary">"Scrobble は、YouTube Music で再生した楽曲を Last.fm または ListenBrainz のプロフィールに記録する機能です
 
-バックグラウンド再生中にスクロブリングが同期されるようにするには、YouTube Music のアプリのバッテリー使用量を「制限なし」に設定してください。"</string>
+バックグラウンドで再生した楽曲を Scrobble するには、デバイスの設定で YouTube Music を「バックグラウンド実行時に電池を使用可能」にしてください"</string>
 </resources>

@@ -12,14 +12,18 @@ import android.media.AudioTrack;
 import java.util.concurrent.atomic.AtomicReference;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 
 /**
  * Multiplies the YouTube ExoPlayer audio sink volume by a specific multiplier.
  */
 @SuppressWarnings("unused")
 public final class VotOriginalVolumePatch {
+    private static final long ENFORCE_INTERVAL_MS = 50;
+
     private static volatile float currentMultiplier = 1.0f;
     private static volatile float lastBaseVolume = 1.0f;
+    private static volatile boolean enforceScheduled;
     private static final AtomicReference<AudioTrack> lastAudioTrackRef = new AtomicReference<>(null);
 
     private static float clamp01(float value) {
@@ -47,7 +51,10 @@ public final class VotOriginalVolumePatch {
      * to call {@code setVolume} again.
      */
     public static void setAudioTrack(AudioTrack track) {
-        if (track != null) lastAudioTrackRef.set(track);
+        if (track == null) return;
+        lastAudioTrackRef.set(track);
+        applyToActiveTrack();
+        if (currentMultiplier != 1.0f) scheduleEnforce();
     }
 
     /**
@@ -59,6 +66,7 @@ public final class VotOriginalVolumePatch {
         if (clamped == currentMultiplier) return;
         currentMultiplier = clamped;
         applyToActiveTrack();
+        if (clamped != 1.0f) scheduleEnforce();
     }
 
     /**
@@ -68,10 +76,20 @@ public final class VotOriginalVolumePatch {
         setAudioMultiplier(1.0f);
     }
 
-    /**
-     * Bypasses the AudioSink.setVolume skip-if-equal optimization so a multiplier change is
-     * audible without waiting for ExoPlayer to push a new volume value through D(F)V.
-     */
+    private static void scheduleEnforce() {
+        if (enforceScheduled) return;
+        enforceScheduled = true;
+        Utils.runOnMainThreadDelayed(VotOriginalVolumePatch::enforceTick, ENFORCE_INTERVAL_MS);
+    }
+
+    private static void enforceTick() {
+        enforceScheduled = false;
+        // Stop the loop once ducking is off; setAudioMultiplier(<1.0) will restart it.
+        if (currentMultiplier == 1.0f) return;
+        applyToActiveTrack();
+        scheduleEnforce();
+    }
+
     private static void applyToActiveTrack() {
         AudioTrack track = lastAudioTrackRef.get();
         if (track == null) return;

@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
+ */
+
 @file:Suppress("SpellCheckingInspection")
 
 package app.morphe.patches.youtube.layout.miniplayer
@@ -5,6 +12,7 @@ package app.morphe.patches.youtube.layout.miniplayer
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
@@ -34,6 +42,7 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
@@ -75,6 +84,8 @@ val miniplayerPatch = bytecodePatch(
             key = "morphe_miniplayer_opacity",
             tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
         )
+        preferences += SwitchPreference("morphe_miniplayer_disable_horizontal_drag_playback", summary = true)
+        preferences += SwitchPreference("morphe_miniplayer_disable_horizontal_reposition", summary = true)
 
         PreferenceScreen.PLAYER.addPreferences(
             PreferenceScreenPreference(
@@ -279,6 +290,45 @@ val miniplayerPatch = bytecodePatch(
         MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
             MINIPLAYER_HORIZONTAL_DRAG_FEATURE_KEY,
             "getHorizontalDrag",
+        )
+
+        Fingerprint(
+            definingClass = MiniplayerHorizontalDragPlaybackFingerprint.instructionMatches[2]
+                .getMethodCalled().definingClass,
+            name = "onAnimationEnd",
+        ).method.addInstructionsWithLabels(
+            0,
+            """
+                invoke-static { }, $EXTENSION_CLASS->pausePlaybackWithHorizontalDrag()Z
+                move-result v0
+                if-eqz v0, :pause_playback_with_horizontal_drag
+                return-void
+                :pause_playback_with_horizontal_drag
+                nop
+            """
+        )
+
+        MiniplayerHorizontalRepositionFingerprint.method.apply {
+            val previousRectParamFieldAccess = MiniplayerRectDragFieldsNameFingerprint.instructionMatches[1]
+                .getInstruction<ReferenceInstruction>().reference
+            val screenWidthFieldAccess = MiniplayerRectDragFieldsNameFingerprint.instructionMatches.last()
+                .getInstruction<ReferenceInstruction>().reference
+
+            addInstructions(
+                0,
+                """
+                    iget-object v0, p0, $previousRectParamFieldAccess
+                    iget v1, p0, $screenWidthFieldAccess
+                    invoke-static { p1, v0, v1 }, $EXTENSION_CLASS->blockOffscreenMiniplayerHorizontalReposition(Landroid/graphics/Rect;Landroid/graphics/Rect;I)Landroid/graphics/Rect;
+                    move-result-object p1
+                """
+            )
+        }
+
+        NextGenWatchLayoutOnInterceptTouchEventFingerprint.method.addInstruction(
+            0,
+            "invoke-static { p1 }, $EXTENSION_CLASS->" +
+                    "enableOffScreenMiniplayerButtonPressed(Landroid/view/MotionEvent;)V"
         )
 
         MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(

@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
+ */
+
 @file:Suppress("SpellCheckingInspection")
 
 package app.morphe.patches.youtube.layout.miniplayer
@@ -8,6 +15,7 @@ import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.checkCast
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
@@ -42,6 +50,90 @@ internal object MiniplayerModernConstructorFingerprint : Fingerprint(
     filters = listOf(
         literal(MINIPLAYER_MODERN_TYPE_1_FEATURE_KEY)
     )
+)
+
+internal object MiniplayerHorizontalDragPlaybackFingerprint : Fingerprint (
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = $$"Landroid/animation/ValueAnimator;->addUpdateListener(Landroid/animation/ValueAnimator$AnimatorUpdateListener;)V",
+        ),
+        opcode(
+            opcode = Opcode.NEW_INSTANCE,
+            location = MatchAfterWithin(4)
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT,
+            name = "<init>",
+            location = MatchAfterWithin(4)
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = $$"Landroid/animation/ValueAnimator;->addListener(Landroid/animation/Animator$AnimatorListener;)V",
+            location = MatchAfterWithin(4)
+        ),
+        opcode(
+            opcode = Opcode.IGET_OBJECT,
+            location = MatchAfterWithin(4)
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            returnType = "Ljava/lang/Object;",
+            location = MatchAfterWithin(4)
+        )
+    )
+)
+
+internal object MiniplayerRectDragFieldsNameFingerprint : Fingerprint (
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/graphics/Rect;",
+    parameters = listOf("I", "I"),
+    filters = listOf(
+        opcode(opcode = Opcode.IF_GEZ),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "Landroid/graphics/Rect;",
+            location = MatchAfterImmediately()
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Landroid/graphics/Rect;->width()I",
+            location = MatchAfterImmediately()
+        ),
+        opcode(
+            opcode = Opcode.MOVE_RESULT,
+            location = MatchAfterImmediately()
+        ),
+        opcode(
+            opcode = Opcode.NEG_INT,
+            location = MatchAfterImmediately()
+        ),
+        opcode(
+            opcode = Opcode.GOTO,
+            location = MatchAfterImmediately()
+        ),
+        fieldAccess(
+            opcode = Opcode.IGET,
+            type = "I",
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
+internal object MiniplayerHorizontalRepositionFingerprint : Fingerprint(
+    classFingerprint = MiniplayerRectDragFieldsNameFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/graphics/Rect;"),
+)
+
+internal object NextGenWatchLayoutOnInterceptTouchEventFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/apps/youtube/app/watch/nextgenwatch/ui/NextGenWatchLayout;",
+    name = "onInterceptTouchEvent",
+    parameters = listOf("Landroid/view/MotionEvent;")
 )
 
 private object MiniplayerDimensionsCalculatorParentFingerprint : Fingerprint(

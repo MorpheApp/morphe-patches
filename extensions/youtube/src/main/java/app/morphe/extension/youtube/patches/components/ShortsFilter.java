@@ -214,13 +214,6 @@ public final class ShortsFilter extends Filter {
                 "reel_like_toggled_button.e"
         );
 
-        StringFilterGroup dislikeButton = new StringFilterGroup(
-                Settings.HIDE_SHORTS_DISLIKE_BUTTON,
-                "shorts_dislike_button.e",
-                "reel_dislike_button.e",
-                "reel_dislike_toggled_button.e"
-        );
-
         StringFilterGroup previewComment = new StringFilterGroup(
                 Settings.HIDE_SHORTS_PREVIEW_COMMENT,
                 // Preview comment that can popup while a Short is playing.
@@ -313,7 +306,7 @@ public final class ShortsFilter extends Filter {
                 shortsCompactFeedVideo, shelfHeaderPath, joinButton, subscribeButton, livePreview,
                 suggestedAction, pausedOverlayButtons, channelBar, infoPanel, previewComment,
                 autoDubbedLabel, fullVideoLinkLabel, videoTitle, soundButton, useButtons, likeFountain,
-                reelCarousel, reelSoundMetadata, likeButton, dislikeButton, shortsActionBar
+                reelCarousel, reelSoundMetadata, likeButton, shortsActionBar
         );
 
         //

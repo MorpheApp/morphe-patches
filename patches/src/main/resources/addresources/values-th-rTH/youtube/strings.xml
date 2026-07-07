@@ -32,7 +32,7 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_title">กู้คืนเมนูการตั้งค่าแบบเก่า</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">ลบข้อจำกัดการเล่นในพื้นหลัง</string>
-  <string name="morphe_shorts_disable_background_playback_title">ปิดการเล่นพื้นหลัง Shorts</string>
+  <string name="morphe_shorts_disable_background_playback_title">ปิดการเล่นพื้นหลัง</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">ปิดการอัปเดตรูปแบบ</string>
   <string name="morphe_disable_layout_updates_summary">ป้องกันไม่ให้เซิร์ฟเวอร์อัปเดตเลย์เอาต์ของแอป</string>
@@ -283,23 +283,12 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_title">ปิดใช้งานการข้ามบทโดยการแตะสองครั้ง</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">ปิดใช้งานท่าทางแตะสองครั้งด้วยสองนิ้วที่ข้ามบท ซึ่งอาจถูกเรียกใช้งานโดยไม่ได้ตั้งใจด้วยนิ้วเดียว</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">การดาวน์โหลดภายนอก</string>
-  <string name="morphe_external_downloader_screen_summary">ดาวน์โหลดวิดีโอด้วยแอปดาวน์โหลดของบุคคลที่สาม</string>
+  <string name="morphe_external_downloader_screen_summary">ดาวน์โหลดวิดีโอ พอดแคสต์ หรือเพลงด้วยแอปดาวน์โหลดของบุคคลที่สาม</string>
   <string name="morphe_external_downloader_title">แสดงปุ่มดาวน์โหลดภายนอก</string>
   <string name="morphe_external_downloader_summary">แสดงปุ่มซ้อนทับในเครื่องเล่นวิดีโอที่เปิดแอปดาวน์โหลดภายนอกของคุณ</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">แทนที่ปุ่ม \'ดาวน์โหลด\'</string>
   <string name="morphe_external_downloader_action_button_summary">แทนที่ฟังก์ชันดาวน์โหลดในตัวของ YouTube ด้วยแอปดาวน์โหลดภายนอกของคุณ</string>
-  <string name="morphe_external_downloader_name_title">ชื่อแพ็คเกจโปรแกรมดาวน์โหลด</string>
-  <string name="morphe_external_downloader_name_summary">ชื่อแพ็กเกจของแอปดาวน์โหลดภายนอกที่คุณติดตั้ง</string>
-  <string name="morphe_external_downloader_other_item_hint">ป้อนชื่อแพ็กเกจ</string>
-  <string name="morphe_external_downloader_other_item">อื่น ๆ</string>
-  <string name="morphe_external_downloader_not_found_title">ไม่ได้ติดตั้งแอป</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s ไม่ได้ติดตั้ง โปรดติดตั้ง</string>
-  <string name="morphe_external_downloader_package_not_found_warning">"ไม่พบแอปที่ติดตั้งด้วยชื่อแพ็กเกจ: %s
-
-ตรวจสอบว่าชื่อแพ็กเกจถูกต้องและติดตั้งแอปแล้ว"</string>
-  <string name="morphe_external_downloader_empty_warning">ชื่อแพ็กเกจต้องไม่ว่างเปล่า</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">การแปลเสียงบรรยาย</string>
   <string name="morphe_vot_screen_summary">อ่านคำบรรยายวิดีโอออกเสียงด้วยระบบแปลงข้อความเป็นเสียงบนอุปกรณ์ โดยซิงโครไนซ์กับการเล่น</string>
@@ -434,7 +423,7 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">ปิดใช้งานท่าทางการค้นหาแบบแม่นยำ</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">ปิดใช้งานโหมดการค้นหาที่แม่นยำซึ่งเปิดใช้งานเมื่อดึงแถบความคืบหน้า</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">เปิดใช้งาน DVR สตรีมมิงสด</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"ช่วยให้สามารถเลื่อนดูไลฟ์สตรีมทั้งหมดได้ แม้แต่ไลฟ์สตรีมที่ปกติจำกัดการเลื่อนดูไว้
@@ -594,7 +583,6 @@ Second \"item\" text"</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">ซ่อนปุ่มไมโครโฟน</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_shorts_button_title">ซ่อนปุ่มการแจ้งเตือน</string>
   <!-- 'Create' has no display name. Translate normally. -->
   <string name="morphe_hide_create_button_title">ซ่อนปุ่มสร้าง</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -716,7 +704,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_seekbar_thumbnail_summary">ซ่อนแถบความคืบหน้าบนภาพขนาดย่อของวิดีโอที่คุณดูไปแล้ว</string>
   <string name="morphe_fullscreen_large_seekbar_title">เปิดใช้งานแถบเลื่อนขนาดใหญ่แบบเต็มหน้าจอ</string>
   <!-- layout.hide.shorts.hideShortsComponentsPatch -->
-  <string name="morphe_shorts_player_screen_title">Shorts Player</string>
   <string name="morphe_shorts_player_screen_summary">เลือกส่วนประกอบที่จะแสดงในเครื่องเล่น Shorts</string>
   <string name="morphe_hide_shorts_category_title">ซ่อน Shorts</string>
   <string name="morphe_hide_shorts_channel_title">ซ่อนในหน้าช่อง</string>
@@ -751,7 +738,6 @@ Second \"item\" text"</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">ซ่อนเอฟเฟกต์น้ำพุปุ่มถูกใจ</string>
   <string name="morphe_hide_shorts_like_button_title">ซ่อนปุ่มถูกใจ</string>
-  <string name="morphe_hide_shorts_dislike_button_title">ซ่อนปุ่มไม่ถูกใจ</string>
   <string name="morphe_hide_shorts_comments_button_title">ซ่อนปุ่มแสดงความคิดเห็น</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">ซ่อนปุ่มแชร์</string>
@@ -813,8 +799,6 @@ Second \"item\" text"</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">ซ่อนโดยเจ้าของ</string>
   <string name="morphe_ryd_enabled_title">เปิดใช้งาน Return YouTube Dislike</string>
-  <string name="morphe_ryd_shorts_title">แสดง \"ไม่ชอบ\" ใน Shorts</string>
-  <string name="morphe_ryd_shorts_summary">ข้อจำกัด: การไม่ถูกใจอาจไม่ปรากฏในโหมดไม่ระบุตัวตน</string>
   <string name="morphe_ryd_dislike_percentage_title">แสดงการไม่ถูกใจเป็นเปอร์เซ็นต์</string>
   <string name="morphe_ryd_dislike_percentage_summary">แสดงการไม่ถูกใจเป็นเปอร์เซ็นต์ของจำนวนการถูกใจแทนที่จะเป็นตัวเลข</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
@@ -950,6 +934,10 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">ป้องกันไม่ให้ลากเครื่องเล่นขนาดเล็กไปยังมุมต่างๆ ของหน้าจอ</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">ปิดใช้งานท่าทางการลากแนวนอน</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">ป้องกันไม่ให้ปิดเครื่องเล่นขนาดเล็กโดยการปัดมันในแนวนอนนอกหน้าจอ</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">หยุดการเล่นด้วยการลากในแนวนอน</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">การเล่นจะหยุดชั่วคราวเมื่อลากมินิเพลเยอร์ออกจากหน้าจอ</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">จดจำตำแหน่งการลาก</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">การลากมินิเพลเยอร์ออกนอกหน้าจอจะรักษาUIสถานะเดิมไว้</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">ซ่อนปุ่มโอเวอร์เลย์</string>
   <string name="morphe_miniplayer_width_dip_title">ขนาดเริ่มต้น</string>
   <string name="morphe_miniplayer_width_dip_summary">ตั้งค่าขนาดเริ่มต้นบนหน้าจอเป็นพิกเซล</string>
@@ -1057,10 +1045,10 @@ Second \"item\" text"</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">ใช้การตั้งค่าคุณภาพที่คุณเลือกด้วยตนเองกับ Short ทั้งหมดในอนาคต</string>
   <string name="morphe_shorts_quality_default_wifi_title">คุณภาพ Shorts เริ่มต้นบนเครือข่าย Wi-Fi</string>
   <string name="morphe_shorts_quality_default_mobile_title">คุณภาพ Shorts เริ่มต้นบนเครือข่ายมือถือ</string>
-  <string name="morphe_remember_video_quality_mobile">มือถือ</string>
-  <string name="morphe_remember_video_quality_wifi">wifi</string>
-  <string name="morphe_remember_video_quality_toast">เปลี่ยนคุณภาพ %1$s เริ่มต้นเป็น: %2$s</string>
-  <string name="morphe_remember_video_quality_toast_shorts">เปลี่ยนคุณภาพ Shorts %1$s เป็น: %2$s</string>
+  <string name="morphe_remember_video_quality_toast_mobile">เปลี่ยนคุณภาพมือถือเริ่มต้นเป็น: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">เปลี่ยนคุณภาพ Wi-Fi เริ่มต้นเป็น: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_mobile">เปลี่ยนคุณภาพ Shorts มือถือเป็น: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_wifi">เปลี่ยนคุณภาพ Wi-Fi Shorts เป็น: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">แสดงปุ่มความเร็วในการเล่น</string>
   <string name="morphe_playback_speed_dialog_button_summary">แตะค้างไว้เพื่อรีเซ็ตความเร็วเป็นค่าเริ่มต้น</string>
@@ -1101,12 +1089,13 @@ Second \"item\" text"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">หากต้องการใช้คุณสมบัตินี้ ให้ตั้งค่า \'Spoof video streams\' เป็น Android VR หรือ Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">แสดงเมนูคุณภาพวิดีโอขั้นสูง</string>
+  <string name="morphe_advanced_video_quality_menu_title">เปิดเมนูคุณภาพ \'ขั้นสูง\'</string>
+  <string name="morphe_advanced_video_quality_menu_summary">ข้ามเมนูการเลือกคุณภาพและเปิดเมนูคุณภาพขั้นสูงโดยตรง</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">ซ่อนตัวเลือกคุณภาพสูงสุด</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">ให้ความสำคัญกับคุณภาพวิดีโอ</string>
-  <string name="morphe_prioritize_video_quality_summary">ให้ความสำคัญกับคุณภาพวิดีโอสูงสุดเหนือประสิทธิภาพของตัวแปลงสัญญาณ</string>
+  <string name="morphe_prioritize_video_quality_summary">ให้ความสำคัญกับคุณภาพวิดีโอสูงสุดเหนือประสิทธิภาพของโคเดก</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">อนุญาต Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">อนุญาตให้ถอดรหัส AV1 แบบซอฟต์แวร์เมื่อใช้ไคลเอนต์ Android VR</string>

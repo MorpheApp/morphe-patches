@@ -32,7 +32,7 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_title">Restaurare meniuri setări vechi</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Elimină restricțiile de redare în fundal</string>
-  <string name="morphe_shorts_disable_background_playback_title">Dezactivează redarea în fundal a Shorts</string>
+  <string name="morphe_shorts_disable_background_playback_title">Dezactivează redarea în fundal</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">Dezactivaţi actualizările layout-ului</string>
   <string name="morphe_disable_layout_updates_summary">Împiedică serverul să actualizeze aspectul aplicației</string>
@@ -283,23 +283,12 @@ Limitări:
   <string name="morphe_disable_chapter_skip_double_tap_title">Dezactivează modul precis de căutare care se activează atunci când țineți apăsat o poziție de căutare</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Dezactivează gestul de dublă atingere cu două degete care sare peste capitole, care poate fi declanșat accidental cu un singur deget</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Descărcări externe</string>
-  <string name="morphe_external_downloader_screen_summary">Descarcă videoclipuri cu aplicații de descărcare terțe</string>
+  <string name="morphe_external_downloader_screen_summary">Descărcă videoclipuri, podcasturi sau melodii folosind aplicaţii de descărcare terţe</string>
   <string name="morphe_external_downloader_title">Arată butonul extern de descărcare</string>
   <string name="morphe_external_downloader_summary">Afișează un buton de suprapunere în playerul video care deschide aplicația ta de descărcare externă</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">Suprascrie butonul de acțiune Descarcă</string>
   <string name="morphe_external_downloader_action_button_summary">Înlocuiește funcția de descărcare încorporată a YouTube cu aplicația ta de descărcare externă</string>
-  <string name="morphe_external_downloader_name_title">Descărcător nume pachet</string>
-  <string name="morphe_external_downloader_name_summary">Numele pachetului aplicației dvs. de descărcare externă instalate</string>
-  <string name="morphe_external_downloader_other_item_hint">Introduceți numele pachetului</string>
-  <string name="morphe_external_downloader_other_item">Altele</string>
-  <string name="morphe_external_downloader_not_found_title">Aplicația nu este instalată</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s nu este instalat. Vă rugăm să-l instalaţi.</string>
-  <string name="morphe_external_downloader_package_not_found_warning">"Nu s-a găsit aplicația instalată cu numele pachetului: %s
-
-Verificați dacă numele pachetului este corect și dacă aplicația este instalată"</string>
-  <string name="morphe_external_downloader_empty_warning">Numele pachetului nu poate fi gol</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Traducere cu voce peste</string>
   <string name="morphe_vot_screen_summary">Citește cu voce tare subtitrările video folosind text-to-speech pe dispozitiv, sincronizat cu redarea</string>
@@ -434,7 +423,7 @@ Info: S-ar putea să nu funcționeze pe transmisiuni live"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Dezactivează gestul de căutare precis</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Dezactivează modul de căutare precisă care se activează atunci când tragi de bara de căutare</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Activare DVR livestream</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"Permite derularea tuturor transmisiunilor live, chiar și a celor care restricționează în mod normal această funcție
@@ -594,7 +583,7 @@ Notă: Dacă „Spoof video streams” nu este activat, activarea acesteia poate
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Ascunde meniul Subtitrări</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_shorts_button_title">Ascunde subsolul meniului Subtitrări</string>
+  <string name="morphe_hide_shorts_button_title">Ascunde butonul Shorts</string>
   <!-- 'Create' has no display name. Translate normally. -->
   <string name="morphe_hide_create_button_title">Ascunde antetul meniului Subtitrări</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -751,7 +740,6 @@ Pentru a afișa meniul 'Audio Track', schimbați 'Spoof video streams' în 'Andr
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Ascunde animația fântână a butonului Like</string>
   <string name="morphe_hide_shorts_like_button_title">Ascunde butonul Like</string>
-  <string name="morphe_hide_shorts_dislike_button_title">Ascunde butonul Dislike</string>
   <string name="morphe_hide_shorts_comments_button_title">Ascunde butonul Comentarii</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Ascunde butonul Distribuie</string>
@@ -813,8 +801,6 @@ Setări → Redare (sau Redare automată) → Redare automată următorul videoc
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Ascuns de proprietar</string>
   <string name="morphe_ryd_enabled_title">Activează Return YouTube Dislike</string>
-  <string name="morphe_ryd_shorts_title">Arată displace pe scurtmetraje</string>
-  <string name="morphe_ryd_shorts_summary">Limitare: Aprecierile negative pot să nu apară în modul incognito</string>
   <string name="morphe_ryd_dislike_percentage_title">Afișează aprecierile negative ca procentaj</string>
   <string name="morphe_ryd_dislike_percentage_summary">Afișează aprecierile negative ca un procentaj de aprecieri, în loc de un număr</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
@@ -950,6 +936,10 @@ Dacă este dezactivat ulterior, se recomandă să ștergeți datele aplicației 
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Împiedică tragerea miniplayerului în diferite colțuri ale ecranului</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Dezactivează gestul de glisare orizontală</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Împiedică închiderea miniplayerului prin glisarea lui orizontală în afara ecranului</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Pauză redare cu glisare orizontală</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Redarea se va pune în pauză când miniplayerul este glisat în afara ecranului</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">Memorizează poziția glisării</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">Glisarea miniplayer-ului în afara ecranului va păstra starea interfeței utilizator</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Ascunde butoanele suprapuse</string>
   <string name="morphe_miniplayer_width_dip_title">Dimensiune implicită</string>
   <string name="morphe_miniplayer_width_dip_summary">Stabilește dimensiunea inițială a ecranului, în pixeli</string>
@@ -1057,10 +1047,10 @@ Atingeți aici pentru a afla mai multe despre DeArrow"</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Aplică selecția ta manuală de calitate pentru toate Shorts-urile viitoare</string>
   <string name="morphe_shorts_quality_default_wifi_title">Calitatea implicită a Shorts în rețeaua Wi-Fi</string>
   <string name="morphe_shorts_quality_default_mobile_title">Calitatea implicită a Shorts în rețeaua mobilă</string>
-  <string name="morphe_remember_video_quality_mobile">mobil</string>
-  <string name="morphe_remember_video_quality_wifi">Wi-Fi</string>
-  <string name="morphe_remember_video_quality_toast">Calitate %1$s modificată implicit: %2$s</string>
-  <string name="morphe_remember_video_quality_toast_shorts">Calitatea Shorts %1$s a fost modificată la: %2$s</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Calitate mobilă implicită modificată la: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Calitate Wi-Fi implicită modificată la: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_mobile">Calitatea Shorts mobilă a fost modificată la: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_wifi">Calitatea Shorts Wi-Fi a fost modificată la: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Afișează butonul de viteză de redare</string>
   <string name="morphe_playback_speed_dialog_button_summary">Atinge și menține apăsat pentru a reseta viteza la valoarea implicită</string>
@@ -1101,12 +1091,13 @@ Limitări:
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Pentru a utiliza această funcție, setează „Falsifică stream-uri video” la Android VR sau Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Afișează meniul avansat de calitate video</string>
+  <string name="morphe_advanced_video_quality_menu_title">Deschide meniul de calitate \"Avansat\"</string>
+  <string name="morphe_advanced_video_quality_menu_summary">Sare peste meniul de selecție a calității și deschide direct meniul de calitate avansat.</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Ascunde opţiunile calitătă premium</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">Priorize calitatea video-ului</string>
-  <string name="morphe_prioritize_video_quality_summary">Afișează falsificarea în Statistici pentru pasionați</string>
+  <string name="morphe_prioritize_video_quality_summary">Prioritizează cea mai mare calitate video disponibilă față de eficiența codec-ului.</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Permite Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Prioritizează calitatea video superioară față de eficiența codec-ului</string>

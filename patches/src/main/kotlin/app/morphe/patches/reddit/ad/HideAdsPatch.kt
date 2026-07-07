@@ -108,7 +108,7 @@ val hideAdsPatch = bytecodePatch(
             val adsLoadCompletedField = CommentsAdStateToStringFingerprint.method
                 .findFieldFromToString(", adsLoadCompleted=")
 
-            val commentsAdStateConstructorFingerprint = Fingerprint(
+            Fingerprint(
                 definingClass = CommentsAdStateToStringFingerprint.originalClassDef.type,
                 name = "<init>",
                 returnType = "V",
@@ -118,9 +118,7 @@ val hideAdsPatch = bytecodePatch(
                         reference = adsLoadCompletedField
                     )
                 )
-            )
-
-            commentsAdStateConstructorFingerprint.let {
+            ).let {
                 it.method.apply {
                     val index = it.instructionMatches.last().index
                     val register =

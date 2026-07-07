@@ -19,9 +19,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_enabled_summary">SponsorBlock là một hệ thống dựa trên đóng góp bởi cộng đồng để bỏ qua các phần gây khó chịu trong video YouTube</string>
   <string name="morphe_sb_appearance_category_title">Giao diện</string>
   <string name="morphe_sb_voting_button_title">Hiện nút bỏ phiếu</string>
-  <string name="morphe_sb_voting_button_summary">Thêm nút để bình chọn các phân đoạn</string>
+  <string name="morphe_sb_voting_button_summary">Thêm nút để bình chọn cho các phân đoạn</string>
   <string name="morphe_sb_square_layout_title">Dùng bố cục vuông</string>
-  <string name="morphe_sb_square_layout_summary">Bo tròn các nút và trình điều khiển SponsorBlock</string>
+  <string name="morphe_sb_square_layout_summary">Sử dụng các nút và trình điều khiển SponsorBlock kiểu vuông vức</string>
   <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_compact_skip_button_title">Dùng nút Bỏ qua thu gọn</string>
   <string name="morphe_sb_compact_skip_button_summary">Giảm chiều rộng của nút Bỏ qua để tiết kiệm không gian</string>
@@ -30,7 +30,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_title">Thời gian hiển thị nút bỏ qua</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_summary">Đặt thời gian hiển thị nút Bỏ qua</string>
   <string name="morphe_sb_toast_on_skip_title">Hiện thông báo ngắn hoàn tác bỏ qua</string>
-  <string name="morphe_sb_toast_on_skip_summary">Hiển thị thông báo khi một phân đoạn bị bỏ qua tự động</string>
+  <string name="morphe_sb_toast_on_skip_summary">Hiển thị thông báo khi một phân đoạn bị tự động bỏ qua</string>
   <string name="morphe_sb_toast_on_skip_duration_title">Thời gian thông báo ngắn tồn tại</string>
   <string name="morphe_sb_toast_on_skip_duration_summary">Đặt thời gian hiển thị thông báo hoàn tác</string>
   <string name="morphe_sb_duration_1s">1 giây</string>
@@ -48,7 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_create_segment_category_title">Tạo phân đoạn mới</string>
   <string name="morphe_sb_create_new_segment_title">Hiện nút \'Tạo phân đoạn mới\'</string>
   <string name="morphe_sb_create_new_segment_summary">Thêm nút vào trình phát video cho phép bạn gửi các phân đoạn SponsorBlock mới</string>
-  <string name="morphe_sb_create_new_segment_step_title">Bước tua thời gian</string>
+  <string name="morphe_sb_create_new_segment_step_title">Mức tua thời gian</string>
   <string name="morphe_sb_create_new_segment_step_summary">Mức tua của các nút tua thời gian (tính bằng mili giây)</string>
   <string name="morphe_sb_create_new_segment_step_invalid">Giá trị phải là một số dương</string>
   <string name="morphe_sb_guidelines_title">Hướng dẫn gửi bài</string>

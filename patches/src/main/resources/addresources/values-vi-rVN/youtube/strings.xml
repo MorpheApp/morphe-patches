@@ -282,23 +282,12 @@ Hạn chế:
   <string name="morphe_disable_chapter_skip_double_tap_title">Tắt chạm hai lần để bỏ qua chương</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Tắt cử chỉ chạm bằng hai ngón để chuyển chương, tránh vô tình kích hoạt bằng một ngón</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Tải xuống bên ngoài</string>
-  <string name="morphe_external_downloader_screen_summary">Tải video bằng ứng dụng tải xuống bên thứ ba</string>
+  <string name="morphe_external_downloader_screen_summary">Tải video, podcast hoặc nhạc bằng ứng dụng tải xuống của bên thứ ba</string>
   <string name="morphe_external_downloader_title">Hiện nút tải xuống bên ngoài</string>
   <string name="morphe_external_downloader_summary">Hiện nút mở ứng dụng trình tải xuống bên ngoài trong trình phát video</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">Ghi đè nút Tải xuống</string>
   <string name="morphe_external_downloader_action_button_summary">Thay thế chức năng tải xuống được tích hợp trong YouTube bằng ứng dụng tải xuống bên ngoài của bạn</string>
-  <string name="morphe_external_downloader_name_title">Tên gói trình tải xuống</string>
-  <string name="morphe_external_downloader_name_summary">Tên gói ứng dụng trình tải xuống bên ngoài đã cài đặt của bạn</string>
-  <string name="morphe_external_downloader_other_item_hint">Nhập tên gói</string>
-  <string name="morphe_external_downloader_other_item">Khác</string>
-  <string name="morphe_external_downloader_not_found_title">Ứng dụng chưa được cài đặt</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s chưa được cài đặt. Vui lòng cài đặt ứng dụng.</string>
-  <string name="morphe_external_downloader_package_not_found_warning">"Không tìm thấy ứng dụng đã cài với tên gói: %s
-
-Vui lòng kiểm tra lại tên gói và đảm bảo ứng dụng đã được cài trên thiết bị"</string>
-  <string name="morphe_external_downloader_empty_warning">Tên gói không được để trống</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Dịch giọng nói</string>
   <string name="morphe_vot_screen_summary">Đọc to phụ đề video bằng tính năng chuyển văn bản thành giọng nói trên thiết bị, đồng bộ với video</string>
@@ -403,7 +392,7 @@ Lưu ý: Có thể không hoạt động với video phát trực tiếp"</strin
   <string name="morphe_swap_save_and_queue_actions_title">Đổi chỗ Lưu và tùy chọn Hàng chờ</string>
   <string name="morphe_swap_save_and_queue_actions_summary">Bấm để xem các tùy chọn hàng đợi, bấm giữ để lưu vào xem sau</string>
   <string name="morphe_queue_override_flyout_menu_title">Ghi đè nút hàng chờ trong trang video</string>
-  <string name="morphe_queue_override_flyout_menu_summary">Mở hàng đợi Morphe thay vì hàng đợi YouTube</string>
+  <string name="morphe_queue_override_flyout_menu_summary">Mở hàng chờ Morphe thay vì hàng chờ YouTube</string>
   <string name="morphe_queue_manager_check_failed_auth">Chưa đăng nhập</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">Không có ID danh sách phát</string>
   <string name="morphe_queue_manager_check_failed_queue">Hàng chờ trống</string>
@@ -433,7 +422,7 @@ Lưu ý: Có thể không hoạt động với video phát trực tiếp"</strin
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Tắt cử chỉ tua chính xác</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Tắt chế độ tua chính xác được bật khi vuốt thanh tiến trình lên</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Bật DVR phát trực tiếp</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"Mở khóa tính năng tua trên tất cả các video phát trực tiếp, ngay cả khi video đó không hỗ trợ tua
@@ -750,7 +739,6 @@ Cần cung cấp \"Cookie phụ đề\""</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Ẩn hiệu ứng đài phun nút Thích</string>
   <string name="morphe_hide_shorts_like_button_title">Ẩn nút Thích</string>
-  <string name="morphe_hide_shorts_dislike_button_title">Ẩn nút Không thích</string>
   <string name="morphe_hide_shorts_comments_button_title">Ẩn nút Bình luận</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Ẩn nút Chia sẻ</string>
@@ -760,7 +748,7 @@ Cần cung cấp \"Cookie phụ đề\""</string>
   <string name="morphe_hide_shorts_info_panel_title">Ẩn bảng thông tin</string>
   <string name="morphe_hide_shorts_channel_bar_title">Ẩn nút kênh</string>
   <string name="morphe_hide_shorts_video_title_title">Ẩn tiêu đề video</string>
-  <string name="morphe_hide_shorts_sound_metadata_label_title">Ẩn nhãn siêu dữ liệu âm thanh</string>
+  <string name="morphe_hide_shorts_sound_metadata_label_title">Ẩn nhãn metadata âm thanh</string>
   <string name="morphe_hide_shorts_full_video_link_label_title">Ẩn nhãn liên kết video</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Tắt chạm hai lần để thích</string>
   <string name="morphe_hide_shorts_navigation_bar_title">Ẩn thanh điều hướng</string>
@@ -812,8 +800,6 @@ Cài đặt → Phát (hoặc Tự động phát) → tự động phát video t
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Đã ẩn bởi chủ sở hữu</string>
   <string name="morphe_ryd_enabled_title">Bật Return YouTube Dislike</string>
-  <string name="morphe_ryd_shorts_title">Hiện số lượt không thích trong Shorts</string>
-  <string name="morphe_ryd_shorts_summary">Hạn chế: Số lượt không thích có thể không hiển thị trong Chế độ ẩn danh</string>
   <string name="morphe_ryd_dislike_percentage_title">Hiện số lượt không thích dưới dạng phần trăm</string>
   <string name="morphe_ryd_dislike_percentage_summary">Hiển thị số lượt không thích dưới dạng phần trăm thay vì một con số</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
@@ -949,6 +935,10 @@ Nếu tắt đi sau đó, bạn nên xóa dữ liệu ứng dụng để tránh 
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Ngăn không cho kéo trình phát thu nhỏ tới các góc của màn hình</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Tắt cử chỉ kéo ngang</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Ngăn không đóng trình phát thu nhỏ bằng cách vuốt sang bên bên màn hình</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Ngừng phát khi vuốt ngang</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Tạm dừng video khi trình phát thu nhỏ bị kéo ra rìa màn hình</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">Ghi nhớ vị trí vuốt</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">Kéo miniplayer ra khỏi màn hình sẽ giữ nguyên giao diện</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Ẩn nút lớp phủ</string>
   <string name="morphe_miniplayer_width_dip_title">Kích thước mặc định</string>
   <string name="morphe_miniplayer_width_dip_summary">Đặt kích thước ban đầu của màn hình, tính bằng pixel</string>
@@ -1056,10 +1046,10 @@ Nhấn vào đây để truy cập DeArrow.ajay.app"</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Áp dụng chất lượng mà bạn đã chọn cho tất cả Shorts trong tương lai</string>
   <string name="morphe_shorts_quality_default_wifi_title">Chất lượng Shorts mặc định trên mạng Wi-Fi</string>
   <string name="morphe_shorts_quality_default_mobile_title">Chất lượng Shorts mặc định trên mạng di động</string>
-  <string name="morphe_remember_video_quality_mobile">di động</string>
-  <string name="morphe_remember_video_quality_wifi">wifi</string>
-  <string name="morphe_remember_video_quality_toast">Đã thay đổi chất lượng mặc định %1$s: %2$s</string>
-  <string name="morphe_remember_video_quality_toast_shorts">Đã thay đổi chất lượng Shorts %1$s: %2$s</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Đã thay đổi chất lượng mặc định trên mạng di động thành: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Đã thay đổi chất lượng mặc định trên Wi-Fi thành: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_mobile">Đã thay đổi chất lượng Shorts trên mạng di động thành: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_wifi">Đã thay đổi chất lượng Shorts trên Wi-Fi thành: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Hiện nút Tốc độ phát</string>
   <string name="morphe_playback_speed_dialog_button_summary">Chạm và giữ để đặt lại tốc độ về mặc định</string>
@@ -1100,12 +1090,13 @@ Hạn chế:
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Để dùng tính năng này, hãy đặt \"Giả mạo luồng phát video\" thành Android VR hoặc Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Hiện menu chất lượng video nâng cao</string>
+  <string name="morphe_advanced_video_quality_menu_title">Mở menu chất lượng \'Nâng cao\'</string>
+  <string name="morphe_advanced_video_quality_menu_summary">Bỏ qua menu chọn chất lượng và mở trực tiếp menu chất lượng nâng cao</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Ẩn tùy chọn chất lượng Premium</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">Ưu tiên chất lượng video</string>
-  <string name="morphe_prioritize_video_quality_summary">Ưu tiên chất lượng video cao hơn là tối ưu codec</string>
+  <string name="morphe_prioritize_video_quality_summary">Ưu tiên chất lượng video cao nhất hơn là tối ưu codec</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Cho phép AV1 trên Android VR</string>
   <string name="morphe_spoof_video_streams_av1_summary">Cho phép giải mã AV1 bằng phần mềm khi sử dụng client Android VR</string>

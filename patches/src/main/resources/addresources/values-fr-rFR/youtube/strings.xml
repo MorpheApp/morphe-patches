@@ -283,23 +283,12 @@ Limitations :
   <string name="morphe_disable_chapter_skip_double_tap_title">Désactiver le double appui pour passer un chapitre</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Désactive le geste de double appui à deux doigts permettant de passer des chapitres, qui peut être déclenché accidentellement avec un seul doigt</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Téléchargeurs externe</string>
-  <string name="morphe_external_downloader_screen_summary">Téléchargez des vidéos avec des applications de téléchargement tierces</string>
+  <string name="morphe_external_downloader_screen_summary">Téléchargez des vidéos, des podcasts ou des chansons avec des applications de téléchargement tierces</string>
   <string name="morphe_external_downloader_title">Afficher un bouton de téléchargeur externe</string>
   <string name="morphe_external_downloader_summary">Affiche un bouton superposé dans le lecteur vidéo qui ouvre votre téléchargeur externe</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">Remplacer l\'action du bouton \'Télécharger\'</string>
   <string name="morphe_external_downloader_action_button_summary">Remplace la fonction de téléchargement intégrée de YouTube par votre téléchargeur externe</string>
-  <string name="morphe_external_downloader_name_title">Nom de paquet du téléchargeur</string>
-  <string name="morphe_external_downloader_name_summary">Nom de paquet de votre application de téléchargement externe installée</string>
-  <string name="morphe_external_downloader_other_item_hint">Entrez le nom du paquet</string>
-  <string name="morphe_external_downloader_other_item">Autre</string>
-  <string name="morphe_external_downloader_not_found_title">Application non installée</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s n\'est pas installé. Veuillez l\'installer.</string>
-  <string name="morphe_external_downloader_package_not_found_warning">"Impossible de trouver l'application installée avec le nom de paquet : %s
-
-Vérifiez que le nom de paquet est correct et que l'application est bien installée"</string>
-  <string name="morphe_external_downloader_empty_warning">Le nom du paquet ne peut pas être vide</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Traduction en voix off</string>
   <string name="morphe_vot_screen_summary">Lisez les sous-titres de la vidéo à voix haute à l’aide de la synthèse vocale sur l’appareil, synchronisée avec la lecture</string>
@@ -311,7 +300,7 @@ Vérifiez que le nom de paquet est correct et que l'application est bien install
   <string name="morphe_vot_translation_volume_title">Volume de la traduction</string>
   <string name="morphe_vot_translation_volume_summary">Volume de la voix doublée de la traduction</string>
   <string name="morphe_vot_max_speech_rate_title">Vitesse d\'élocution maximale</string>
-  <string name="morphe_vot_max_speech_rate_summary">Multiplicateur de vitesse maximal lors de l\'adaptation de la parole à un créneau de sous-titres</string>
+  <string name="morphe_vot_max_speech_rate_summary">Multiplicateur maximal de vitesse pour adapter la parole à la durée du sous-titre</string>
   <string name="morphe_vot_mymemory_info_summary">"API de traduction gratuite, aucune clé API requise. Jusqu'à 5,000 caractères par jour avec l'offre gratuite, ou jusqu'à 50,000 caractères par jour avec une adresse e-mail.
 
 Appuyez ici pour ouvrir MyMemory.translated.net"</string>
@@ -434,7 +423,7 @@ Info : Peut ne pas fonctionner sur les diffusions en direct"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Désactiver le geste de barre de progression précise</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Désactive le mode de recherche précise qui s\'active lors d\'un glissement vers le haut sur la barre de progression</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Activer le DVR des diffusions en direct</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"Permet de déplacer la barre de progression sur toutes les diffusions en direct, y compris celles qui restreignent normalement cette fonctionnalité
@@ -581,7 +570,7 @@ Les 'Cookies des sous-titres' doivent être fournis"</string>
   <string name="morphe_caption_cookies_title">Cookies des sous-titres</string>
   <string name="morphe_caption_cookies_summary">Cookies à définir dans les requêtes de l\'API Timed Text (API des données de sous-titres)</string>
   <string name="morphe_get_caption_cookies_title">Obtenir les cookies de sous-titres</string>
-  <string name="morphe_get_caption_cookies_summary">Cliquez ici pour récupérer les cookies</string>
+  <string name="morphe_get_caption_cookies_summary">Appuyez ici pour récupérer les cookies</string>
   <string name="morphe_get_caption_cookies_failed">Échec de la récupération des cookies</string>
   <string name="morphe_get_caption_cookies_duplicate">Les cookies existent déjà</string>
   <string name="morphe_get_caption_cookies_success">Les cookies ont été mis à jour avec succès</string>
@@ -751,7 +740,6 @@ Pour afficher le menu 'Piste audio', modifier 'Falsifier les flux vidéo' en 'An
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Masquer l\'animation du bouton \'J\'aime\'</string>
   <string name="morphe_hide_shorts_like_button_title">Masquer le bouton \'J\'aime\'</string>
-  <string name="morphe_hide_shorts_dislike_button_title">Masquer le bouton \'Je n\'aime pas\'</string>
   <string name="morphe_hide_shorts_comments_button_title">Masquer le bouton \'Commentaires\'</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Masquer le bouton \'Partager\'</string>
@@ -814,8 +802,6 @@ Paramètres → Lecture (ou Lecture automatique) → Lecture automatique de la v
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Masqué par le propriétaire</string>
   <string name="morphe_ryd_enabled_title">Activer Return YouTube Dislike</string>
-  <string name="morphe_ryd_shorts_title">Afficher les \'Je n\'aime pas\' sur les Shorts</string>
-  <string name="morphe_ryd_shorts_summary">Limitation : Les \'Je n\'aime pas\' peuvent ne pas apparaître en mode navigation privée</string>
   <string name="morphe_ryd_dislike_percentage_title">Afficher les \'Je n\'aime pas\' en pourcentage</string>
   <string name="morphe_ryd_dislike_percentage_summary">Affiche les \'Je n\'aime pas\' en pourcentage du nombre de \'J\'aime\' au lieu d\'un nombre</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
@@ -951,6 +937,10 @@ Si cette option est désactivée ultérieurement, il est recommandé de vider le
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Empêche de faire glisser le mini-lecteur vers différents coins de l\'écran</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Désactiver le geste de glissement horizontal</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Empêche la fermeture du mini-lecteur en le faisant glisser horizontalement hors de l\'écran</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Mettre la lecture en pause lors d\'un glissement horizontal</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">La lecture sera mise en pause lorsque le mini-lecteur sera glissé hors de l\'écran</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">Mémoriser la position de l\'état de glissement</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">Faire glisser le mini-lecteur hors de l\'écran conservera son état d\'interface</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Masquer l\'overlay des boutons</string>
   <string name="morphe_miniplayer_width_dip_title">Taille par défaut</string>
   <string name="morphe_miniplayer_width_dip_summary">Définir la taille initiale à l\'écran, en pixels</string>
@@ -1058,10 +1048,10 @@ Appuyez ici pour ouvrir DeArrow.ajay.app"</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Applique votre sélection de qualité manuelle à tous les Shorts futurs</string>
   <string name="morphe_shorts_quality_default_wifi_title">Qualité par défaut des Shorts sur le réseau Wi-Fi</string>
   <string name="morphe_shorts_quality_default_mobile_title">Qualité par défaut des Shorts sur le réseau mobile</string>
-  <string name="morphe_remember_video_quality_mobile">mobile</string>
-  <string name="morphe_remember_video_quality_wifi">wifi</string>
-  <string name="morphe_remember_video_quality_toast">Qualité par défaut %1$s modifiée en : %2$s</string>
-  <string name="morphe_remember_video_quality_toast_shorts">Qualité des Shorts %1$s modifiée en : %2$s.</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Qualité mobile par défaut modifiée en : %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Qualité Wi-Fi par défaut modifiée en : %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_mobile">Qualité mobile des Shorts modifiée en : %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_wifi">Qualité Wi-Fi des Shorts modifiée en : %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Afficher un bouton de \'Vitesse de lecture\'</string>
   <string name="morphe_playback_speed_dialog_button_summary">Appuyez longuement pour réinitialiser la vitesse par défaut</string>
@@ -1102,12 +1092,13 @@ Limitations :
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Pour utiliser cette fonctionnalité, définissez \'Falsifier les flux vidéo\' sur \'Android VR\' ou \'Android Studio\'</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Afficher le menu de qualité vidéo avancé</string>
+  <string name="morphe_advanced_video_quality_menu_title">Ouvrir le menu qualité \'Avancée\'</string>
+  <string name="morphe_advanced_video_quality_menu_summary">Ignore le menu de sélection de qualité et ouvre directement le menu qualité \'Avancée\'</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Masquer les options de qualité Premium</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">Prioriser la qualité vidéo</string>
-  <string name="morphe_prioritize_video_quality_summary">Privilégie la qualité vidéo la plus élevée plutôt que l\'efficacité du codec</string>
+  <string name="morphe_prioritize_video_quality_summary">Privilégie la qualité vidéo la plus élevée disponible plutôt que l\'efficacité du codec</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Autoriser AV1 sur Android VR</string>
   <string name="morphe_spoof_video_streams_av1_summary">Autorise le décodage logiciel AV1 lors de l\'utilisation du client Android VR</string>

@@ -276,23 +276,11 @@ Slova iz velikih slova u sredini riječi moraju točno odgovarati (npr: iPhone, 
   <string name="morphe_disable_chapter_skip_double_tap_title">Onemogući preskakanje poglavlja udvojenim dodirom</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Omogućuje povremeni potez dva prsta za preskakivanje poglavlja, koji se možda slučajno pokreće jednim prstom</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Eksterni pretraživači</string>
-  <string name="morphe_external_downloader_screen_summary">Preuzmite videozapise pomoću aplikacija za preuzimanje trećih strana</string>
   <string name="morphe_external_downloader_title">Prikaz dugme za pretraživanje</string>
   <string name="morphe_external_downloader_summary">Prikazuje gumb preklopa u video playeru koji otvara vaš vanjski downloader</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">Preuzmi akciju dugme</string>
   <string name="morphe_external_downloader_action_button_summary">Zamjenjuje YouTubeovu ugrađenu funkciju preuzimanja s vaše odabrane aplikacije za preuzimanje treće strane</string>
-  <string name="morphe_external_downloader_name_title">Naziv paketa</string>
-  <string name="morphe_external_downloader_name_summary">Naziv paketa je instaliran</string>
-  <string name="morphe_external_downloader_other_item_hint">Uneseno je polje</string>
-  <string name="morphe_external_downloader_other_item">Ostalo</string>
-  <string name="morphe_external_downloader_not_found_title">Aplikacija nije instalirana. Molimte je instalirati.</string>
-  <string name="morphe_external_downloader_not_installed_warning">Nije mogu naći instaliranu aplikaciju s nazivom paketa: %s</string>
-  <string name="morphe_external_downloader_package_not_found_warning">"Nije mogu pronaći instaliranu aplikaciju s nazivom paketa: %s
-
-Potvrdite da naziv paketa je tačan i da je aplikacija instalirana."</string>
-  <string name="morphe_external_downloader_empty_warning">Naziv paketa ne može biti prazan</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_openrouter_model_custom">Prilagođeno</string>
   <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
@@ -371,7 +359,7 @@ Info: Možda neće raditi na prijenosima uživo"</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Onemogu precizan pritisak</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Omogući livestream DVR</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
@@ -533,7 +521,6 @@ Info: Možda neće raditi na prijenosima uživo"</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Sakrij dugmice za Like</string>
   <string name="morphe_hide_shorts_like_button_title">Sakrij dugmice za Istraži</string>
-  <string name="morphe_hide_shorts_dislike_button_title">Sakrij dugmice za komentare</string>
   <string name="morphe_hide_shorts_comments_button_title">Sakrij dugmice za dijeliti</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Sakrij dugmice za pretraživanje</string>
@@ -573,7 +560,6 @@ Info: Možda neće raditi na prijenosima uživo"</string>
   <string name="morphe_ryd_failure_ryd_enabled_while_playing_video_then_user_voted">Sakriveno od strane vlasnika</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Dislajke se prikazuju</string>
-  <string name="morphe_ryd_shorts_title">Prikaži dislajke na kratkim videoima</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
   <string name="morphe_ryd_estimated_like_title">Automatski sakrij dugmice za Like</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
@@ -726,10 +712,6 @@ Ako se kasnije isključi, preporuke za UI mogu se izbjeći čišćenjem podataka
   <string name="morphe_video_quality_default_mobile_title">Standardna kvaliteta video na mobilnoj mreži</string>
   <string name="morphe_shorts_quality_default_wifi_title">Standardna kvaliteta Shorts na mrežnoj mreži</string>
   <string name="morphe_shorts_quality_default_mobile_title">Standardna kvaliteta Shorts na mobilnoj mreži</string>
-  <string name="morphe_remember_video_quality_mobile">mobilna</string>
-  <string name="morphe_remember_video_quality_wifi">wifi</string>
-  <string name="morphe_remember_video_quality_toast">Promijenjena kvaliteta video: %1$s</string>
-  <string name="morphe_remember_video_quality_toast_shorts">Promijenjena kvaliteta Shorts: %1$s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
@@ -753,7 +735,6 @@ Ograničenja:
 • Neke uređaji ne mogu forceirati AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Pokaži napredni video kvalitetni meni</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Sakrij opcije za premium kvalitetu</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->

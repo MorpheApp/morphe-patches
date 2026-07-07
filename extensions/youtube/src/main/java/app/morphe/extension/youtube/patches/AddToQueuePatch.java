@@ -31,6 +31,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
 import app.morphe.extension.youtube.patches.utils.PlaylistPatch;
 import app.morphe.extension.youtube.settings.Settings;
@@ -73,15 +74,10 @@ public final class AddToQueuePatch {
 
     private static final List<Pair<String, Integer>> visibleFlyoutButtons = new ArrayList<>();
     private static String flyoutVideoId = "";
-    private static boolean delayedFlyoutVideoIdReset = false;
     private static String currentButtonName = "";
     private static int currentButtonIndex;
 
     // All methods are called on main thread.
-
-    public static void disableDelayedFlyoutVideoIdReset() {
-        delayedFlyoutVideoIdReset = false;
-    }
 
     /**
      * Injection point.
@@ -145,10 +141,15 @@ public final class AddToQueuePatch {
                     isShowing = false;
                 }
 
-                if (isShowing || delayedFlyoutVideoIdReset) {
+                if (isShowing) {
                     visibilityHandler.postDelayed(this, 100);
                 } else {
-                    flyoutVideoId = "";
+                    // Apply a delay of 500ms to provide a time window for
+                    // reading the video flyout ID in other patches.
+                    Utils.runOnMainThreadDelayed(
+                            () -> flyoutVideoId = "",
+                            500
+                    );
                 }
             }
         });
@@ -439,10 +440,6 @@ public final class AddToQueuePatch {
             dismissBottomSheetFlyout(); // Must dismiss after showing dialog.
             dismissPopupWindowFlyout();
             return true;
-        }
-        // The following check is necessary for the 'System Share Sheet' patch to function correctly.
-        if (buttonName.equals(shareButtonName)) {
-            delayedFlyoutVideoIdReset = true;
         }
 
         return false;

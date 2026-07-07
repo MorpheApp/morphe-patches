@@ -21,6 +21,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">हेडर लोगो</string>
   <string name="morphe_header_logo_entry_1">डिफ़ॉल्ट</string>
   <string name="morphe_header_logo_entry_3">कस्टम</string>
+  <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_summary">तृतीय-पक्ष डाउनलोडिंग ऐप्स के साथ संगीत वीडियो, पॉडकास्ट या गाने डाउनलोड करें</string>
+  <string name="morphe_external_downloader_action_button_title">डाउनलोड क्रिया बटन को ओवरराइड करें</string>
+  <string name="morphe_external_downloader_action_button_summary">यह आपके बाहरी डाउनलोडर के साथ YouTube Music के बिल्ट-इन डाउनलोड फ़ंक्शन को बदल देता है</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">इसके बारे में</string>

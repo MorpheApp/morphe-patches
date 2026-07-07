@@ -283,23 +283,12 @@ Beperkingen:
   <string name="morphe_disable_chapter_skip_double_tap_title">Schakel dubbeltik hoofdstuk overslaan uit</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Schakelt de dubbele tik met twee vingers uit die hoofdstukken overslaat, wat per ongeluk met één vinger kan worden geactiveerd</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Externe downloads</string>
-  <string name="morphe_external_downloader_screen_summary">Download video\'s met apps voor het downloaden van derden</string>
+  <string name="morphe_external_downloader_screen_summary">Download video\'s, podcasts of liedjes met apps van derden</string>
   <string name="morphe_external_downloader_title">Externe downloadknop weergeven</string>
   <string name="morphe_external_downloader_summary">Toont een overlay-knop in de videospeler die je externe downloader opent</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">Downloadactieknop overschrijven</string>
   <string name="morphe_external_downloader_action_button_summary">Vervangt de ingebouwde downloadfunctie van YouTube door je externe downloader</string>
-  <string name="morphe_external_downloader_name_title">Downloader pakketnaam</string>
-  <string name="morphe_external_downloader_name_summary">Pakketnaam van uw geïnstalleerde externe downloader-app</string>
-  <string name="morphe_external_downloader_other_item_hint">Voer de pakketnaam in</string>
-  <string name="morphe_external_downloader_other_item">Overige</string>
-  <string name="morphe_external_downloader_not_found_title">App niet geïnstalleerd</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s is niet geïnstalleerd. Installeer het.</string>
-  <string name="morphe_external_downloader_package_not_found_warning">"Kon geïnstalleerde app met pakketnaam niet vinden: %s
-
-Controleer of de pakketnaam correct is en de app is geïnstalleerd"</string>
-  <string name="morphe_external_downloader_empty_warning">De pakketnaam kan niet leeg zijn</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Spraakvertaling</string>
   <string name="morphe_vot_screen_summary">Lees ondertitels hardop voor met behulp van tekst-naar-spraak op het apparaat, gesynchroniseerd met het afspelen</string>
@@ -434,7 +423,7 @@ Info: Werkt mogelijk niet op livestreams"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Precisie-zoekbeweging uitschakelen</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Schakelt de nauwkeurige zoekmodus uit die wordt geactiveerd wanneer je de schuifbalk omhoog trekt</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Livestream DVR inschakelen</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"Hiermee kun je in alle livestreams zoeken, zelfs in de livestreams die dit normaal gesproken beperken
@@ -594,7 +583,6 @@ Let op: als 'Video streams spoofen' niet is ingeschakeld, kan het inschakelen hi
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Verberg Microfoon-knop</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_shorts_button_title">Verberg Meldingen-knop</string>
   <!-- 'Create' has no display name. Translate normally. -->
   <string name="morphe_hide_create_button_title">Knop Maken verbergen</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -751,7 +739,6 @@ Om het menu 'Audiotrack' weer te geven, wijzig je 'Video streams spoofen' naar '
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Verberg de fonteinanimatie van de vind-ik-leukknop</string>
   <string name="morphe_hide_shorts_like_button_title">Verberg de knop \"Vind ik leuk\"</string>
-  <string name="morphe_hide_shorts_dislike_button_title">Verberg de knop \"Niet leuk\"</string>
   <string name="morphe_hide_shorts_comments_button_title">Verberg de knop \"Reacties\"</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Verberg de knop \"Delen\"</string>
@@ -813,8 +800,6 @@ Instellingen → Weergave (of automatisch afspelen) → Volgende video automatis
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Verborgen door eigenaar</string>
   <string name="morphe_ryd_enabled_title">Return YouTube Dislike inschakelen</string>
-  <string name="morphe_ryd_shorts_title">Toon onlikes op Shorts</string>
-  <string name="morphe_ryd_shorts_summary">Beperking: Vind ik niet leuk wordt mogelijk niet weergegeven in de incognitomodus</string>
   <string name="morphe_ryd_dislike_percentage_title">Laat \'Dislikes\' als percentage zien</string>
   <string name="morphe_ryd_dislike_percentage_summary">Toont \'Dislikes\' als een percentage van \'Likes\' in plaats van een cijfer</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
@@ -950,6 +935,10 @@ Als het later wordt uitgeschakeld, wordt aanbevolen om de app-gegevens te wissen
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Voorkomt dat de geminimaliseerde speler naar verschillende hoeken van het scherm wordt gesleept</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Horizontale sleepbeweging uitschakelen</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Voorkomt dat de minispeler horizontaal van het scherm wordt weggeveegd</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Pauzeer het afspelen met een horizontale sleepbeweging</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Het afspelen wordt gepauzeerd wanneer de miniplayer van het scherm wordt gesleept</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">Onthoud de positie van de sleepbeweging</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">Als je de minispeler van het scherm sleept, blijft de gebruikersinterface behouden</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Overlayknoppen verbergen</string>
   <string name="morphe_miniplayer_width_dip_title">Standaardgrootte</string>
   <string name="morphe_miniplayer_width_dip_summary">Stel de begin afmeting op het scherm in, in pixels</string>
@@ -1057,10 +1046,10 @@ Tik hier om meer te weten te komen over DeArrow"</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Past je handmatige kwaliteitselectie toe op alle toekomstige Shorts</string>
   <string name="morphe_shorts_quality_default_wifi_title">Standaardkwaliteit voor Shorts op wifi-netwerk</string>
   <string name="morphe_shorts_quality_default_mobile_title">Standaardkwaliteit voor Shorts op mobiel netwerk</string>
-  <string name="morphe_remember_video_quality_mobile">mobiel</string>
-  <string name="morphe_remember_video_quality_wifi">wifi</string>
-  <string name="morphe_remember_video_quality_toast">Standaard %1$s-kwaliteit gewijzigd naar: %2$s</string>
-  <string name="morphe_remember_video_quality_toast_shorts">De kwaliteit van Shorts %1$s is gewijzigd in: %2$s</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Standaard mobiele kwaliteit gewijzigd naar: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Standaard Wi-Fi kwaliteit gewijzigd naar: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_mobile">De Shorts mobiele kwaliteit is gewijzigd in: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_wifi">De Shorts Wi-Fi kwaliteit is gewijzigd in: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Toon de \'Afspeelsnelheid\'-knop</string>
   <string name="morphe_playback_speed_dialog_button_summary">Tik en houd vast om de snelheid naar de standaard terug te zetten</string>
@@ -1101,12 +1090,13 @@ Beperkingen:
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Om deze functie te gebruiken, stel \'Videostreams spoofen\' in op Android VR of Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Geavanceerd menu voor videokwaliteit weergeven</string>
+  <string name="morphe_advanced_video_quality_menu_title">Open \"Geavanceerd\" kwaliteitsmenu</string>
+  <string name="morphe_advanced_video_quality_menu_summary">Slaat het kwaliteitsselectiemenu over en opent het Geavanceerde kwaliteitsmenu direct</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Verberg Premiumkwaliteitopties</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">Videokwaliteit wordt prioriteit gegeven</string>
-  <string name="morphe_prioritize_video_quality_summary">Prioriteert de hoogste videokwaliteit boven codec efficiëntie</string>
+  <string name="morphe_prioritize_video_quality_summary">Prioriteert de hoogst beschikbare video kwaliteit boven codecefficiëntie</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Sta Android VR AV1 toe</string>
   <string name="morphe_spoof_video_streams_av1_summary">Toestaat software AV1 decodering bij gebruik van de Android VR client</string>

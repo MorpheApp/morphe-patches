@@ -315,12 +315,11 @@ val navigationBarPatch = bytecodePatch(
                 val insertRegister =
                     getInstruction<TwoRegisterInstruction>(insertIndex).registerA
 
-                val protoListBuilderFingerprint = Fingerprint(
+                val protoListBuilderMethod = Fingerprint(
                     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
                     returnType = insertMatch.instruction.getReference<FieldReference>()!!.type,
                     parameters = listOf("Ljava/util/Collection;")
-                )
-                val protoListBuilderMethod = protoListBuilderFingerprint.method
+                ).method
 
                 addInstructions(
                     insertIndex,

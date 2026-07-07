@@ -8,7 +8,6 @@
 package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.shared.Utils.getContext;
-import static app.morphe.extension.youtube.patches.AddToQueuePatch.disableDelayedFlyoutVideoIdReset;
 import static app.morphe.extension.youtube.patches.AddToQueuePatch.getFlyoutVideoId;
 
 import android.content.Intent;
@@ -49,7 +48,6 @@ public final class OpenSystemShareSheetPatch {
         final String videoURL =
                 (REPLACE_LINKS_WITH_SHORTENER.get() ? "https://youtu.be/" : "https://www.youtube.com/watch?v=") +
                 (!getFlyoutVideoId().isEmpty() ? getFlyoutVideoId() : VideoInformation.getVideoId());
-        disableDelayedFlyoutVideoIdReset();
 
         if (!TextUtils.isEmpty(videoURL)) {
             Intent shareIntent = new Intent(Intent.ACTION_SEND);

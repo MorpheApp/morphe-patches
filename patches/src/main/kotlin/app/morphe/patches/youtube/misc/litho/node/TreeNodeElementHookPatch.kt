@@ -11,8 +11,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
+import app.morphe.patches.shared.misc.litho.context.EXTENSION_CONTEXT_INTERFACE
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.litho.context.EXTENSION_CONTEXT_INTERFACE
 import app.morphe.patches.youtube.misc.litho.context.conversionContextPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.getFreeRegisterProvider

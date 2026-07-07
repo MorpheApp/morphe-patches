@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/1065
  *
  * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
@@ -26,32 +26,32 @@ import com.android.tools.smali.dexlib2.Opcode
 /** Medialib outer player (atad): `stopVideo`. */
 internal object StopVideoFingerprint : Fingerprint(
     returnType = "V",
-    strings = listOf("stopVideo", "MedialibPlayer.stopVideo"),
+    strings = listOf("stopVideo", "MedialibPlayer.stopVideo")
 )
 
 /** Inner coordinator (athu): `playNextInQueue` / gapless. */
 internal object PlayNextInQueueFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
-        opcode(Opcode.IGET_OBJECT),
+        opcode(Opcode.IGET_OBJECT)
     ),
-    strings = listOf("gapless.seek.next", "playNextInQueue."),
+    strings = listOf("gapless.seek.next", "playNextInQueue.")
 )
 
 /** Audio/video toggle button class (nba). */
 internal object AudioVideoToggleFingerprint : Fingerprint(
     returnType = "V",
-    strings = listOf("Failed to update user last selected audio"),
+    strings = listOf("Failed to update user last selected audio")
 )
 
 internal object PauseVideoFingerprint : Fingerprint(
     returnType = "V",
-    strings = listOf("pauseVideo", "MedialibPlayer.pauseVideo()"),
+    strings = listOf("pauseVideo", "MedialibPlayer.pauseVideo()")
 )
 
 internal object PlayVideoFingerprint : Fingerprint(
     returnType = "V",
-    strings = listOf("playVideo", "MedialibPlayer.playVideo()"),
+    strings = listOf("playVideo", "MedialibPlayer.playVideo()")
 )
 
 /**
@@ -62,15 +62,15 @@ internal object PlayVideoFingerprint : Fingerprint(
 internal object ExoPlayerImplFingerprint : Fingerprint(
     strings = listOf("ExoPlayerImpl"),
     custom = { _, classDef ->
-        classDef.interfaces.any { it == "Landroidx/media3/exoplayer/ExoPlayer;" }
-    },
+        classDef.interfaces.contains("Landroidx/media3/exoplayer/ExoPlayer;")
+    }
 )
 
 /** MedialibPlayer loadVideo method (atzq.o). Scoped to StopVideoFingerprint class. */
 internal object LoadVideoFingerprint : Fingerprint(
     classFingerprint = StopVideoFingerprint,
     returnType = "V",
-    strings = listOf("MedialibPlayer.loadVideo("),
+    strings = listOf("MedialibPlayer.loadVideo(")
 )
 
 /**
@@ -85,7 +85,7 @@ internal object LoadVideoFingerprint : Fingerprint(
 internal object LoopStateAdapterFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Ljava/lang/Object;"),
-    strings = listOf("attempted to update repeat mode but media session was null"),
+    strings = listOf("attempted to update repeat mode but media session was null")
 )
 
 /**
@@ -100,15 +100,15 @@ internal object LoopStateAdapterFingerprint : Fingerprint(
  * just falls back to the slower poll-STATE_IDLE recovery in pollForNewTrackReady.
  */
 internal object HandleDismissWatchEventFingerprint : Fingerprint(
+    name = "handleDismissWatchEvent",
     returnType = "V",
     filters = listOf(
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
             definingClass = "Lcom/google/android/apps/youtube/music/watchpage/ui/WatchWhileLayout;",
-        ),
+        )
     ),
     custom = { method, _ ->
-        method.name == "handleDismissWatchEvent" && method.parameterTypes.size == 1
-    },
+        method.parameterTypes.size == 1
+    }
 )
-

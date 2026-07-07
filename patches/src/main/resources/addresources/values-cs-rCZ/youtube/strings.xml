@@ -283,23 +283,12 @@ Omezení:
   <string name="morphe_disable_chapter_skip_double_tap_title">Zakázat přeskočení kapitol dvojitým klepnutím</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Zakáže dvojité klepnutí dvěma prsty, které přeskočí kapitoly, což může být neúmyslně spuštěno jedním prstem</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Externí stahování</string>
-  <string name="morphe_external_downloader_screen_summary">Stahujte videa pomocí externích aplikací pro stahování</string>
+  <string name="morphe_external_downloader_screen_summary">Stahujte videa, podcasty nebo písně pomocí aplikací pro stahování třetích stran</string>
   <string name="morphe_external_downloader_title">Zobrazit tlačítko pro externí stahování</string>
   <string name="morphe_external_downloader_summary">Zobrazuje překryvné tlačítko v přehrávači videa, které otevře váš externí downloader</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">Přepsat tlačítko akce Stáhnout</string>
   <string name="morphe_external_downloader_action_button_summary">Nahrazuje vestavěnou funkci stahování YouTube vaším externím downloaderem</string>
-  <string name="morphe_external_downloader_name_title">Název balíčku stahovače</string>
-  <string name="morphe_external_downloader_name_summary">Název balíčku vaší nainstalované externí aplikace pro stahování</string>
-  <string name="morphe_external_downloader_other_item_hint">Zadejte název balíčku</string>
-  <string name="morphe_external_downloader_other_item">Jiné</string>
-  <string name="morphe_external_downloader_not_found_title">Aplikace není nainstalována</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s není nainstalováno. Prosím, nainstalujte.</string>
-  <string name="morphe_external_downloader_package_not_found_warning">"Nepodařilo se najít nainstalovanou aplikaci s názvem balíčku: %s
-
-Zkontrolujte, zda je název balíčku správný a aplikace je nainstalována"</string>
-  <string name="morphe_external_downloader_empty_warning">Název balíčku nemůže být prázdný</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Hlasový překlad</string>
   <string name="morphe_vot_screen_summary">Přečte titulky videa nahlas pomocí text-to-speech v zařízení, synchronizovaně s přehráváním</string>
@@ -434,7 +423,7 @@ Upozornění: Možná nebude fungovat u živých přenosů"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Zakázat přesné gesto pro vyhledávání</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Zakáže režim přesného vyhledávání, který se aktivuje při vytáhnutí ukazatele hledání</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Povolit záznam přímého přenosu</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"Umožňuje posun v jakémkoli živém vysílání, a to i v těch, která jej běžně omezují
@@ -594,7 +583,7 @@ Je třeba zadat ‚Soubory cookie s titulky‘"</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Skrýt tlačítko Vytvořit</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_shorts_button_title">Skrýt tlačítko Mikrofonu</string>
+  <string name="morphe_hide_shorts_button_title">Skrýt tlačítko Shorts</string>
   <!-- 'Create' has no display name. Translate normally. -->
   <string name="morphe_hide_create_button_title">Skrýt tlačítko Oznámení</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -751,7 +740,6 @@ Chcete-li zobrazit menu \"Audio Track\", změňte \"Spoof video streams\" na \"A
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Skrýt animaci s fontánou u tlačítka To se mi líbí</string>
   <string name="morphe_hide_shorts_like_button_title">Skrýt tlačítko To se mi líbí</string>
-  <string name="morphe_hide_shorts_dislike_button_title">Skrýt tlačítko Nelíbí se mi to</string>
   <string name="morphe_hide_shorts_comments_button_title">Skrýt tlačítko Komentáře</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Skrýt tlačítko Sdílet</string>
@@ -813,8 +801,6 @@ Nastavení → Přehrávání (nebo Automatické přehrávání) → Automaticky
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Skryto vlastníkem</string>
   <string name="morphe_ryd_enabled_title">Povolit Return YouTube Dislike</string>
-  <string name="morphe_ryd_shorts_title">Zobrazit nelíbí se mi v Shorts</string>
-  <string name="morphe_ryd_shorts_summary">Omezení: Lajky se nemusí zobrazit v režimu anonymního prohlížení</string>
   <string name="morphe_ryd_dislike_percentage_title">Zobrazovat lajky v procentech</string>
   <string name="morphe_ryd_dislike_percentage_summary">Zobrazuje lajky jako procento lajků místo čísla</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
@@ -950,6 +936,10 @@ Pokud bude později vypnuta, doporučujeme vymazat data aplikace, aby se zabrán
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Zabraňuje přetahování minimalizovaného přehrávače do různých rohů obrazovky</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Zakázat horizontální gesto přetahování</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Zabraňuje zavření mini přehrávače přejetím vodorovně z obrazovky</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Pozastavit přehrávání vodorovným tahem</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Přehrávání se pozastaví, když se miniplayer vytáhne mimo obrazovku</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">Zapamatovat si pozici tahu</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">Přetažením miniokna mimo obrazovku se zachová jeho uživatelské rozhraní</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Skrýt tlačítka překrytí</string>
   <string name="morphe_miniplayer_width_dip_title">Výchozí velikost</string>
   <string name="morphe_miniplayer_width_dip_summary">Nastavte počáteční velikost na obrazovce v pixelech</string>
@@ -1057,10 +1047,10 @@ Klepnutím sem se dozvíte více o DeArrow"</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Aplikuje vaši ruční volbu kvality na všechny budoucí Shorts</string>
   <string name="morphe_shorts_quality_default_wifi_title">Výchozí kvalita Shorts v síti Wi-Fi</string>
   <string name="morphe_shorts_quality_default_mobile_title">Výchozí kvalita Shorts v mobilní síti</string>
-  <string name="morphe_remember_video_quality_mobile">mobilní</string>
-  <string name="morphe_remember_video_quality_wifi">Wi-Fi</string>
-  <string name="morphe_remember_video_quality_toast">Výchozí kvalita %1$s změněna na: %2$s</string>
-  <string name="morphe_remember_video_quality_toast_shorts">Změněna kvalita Shorts %1$s na: %2$s</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Výchozí kvalita mobilního připojení změněna na: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Výchozí kvalita Wi-Fi změněna na: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_mobile">Změněna kvalita Shorts pro mobilní připojení na: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_wifi">Změněna kvalita Shorts pro Wi-Fi na: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Zobrazit tlačítko Rychlost přehrávání</string>
   <string name="morphe_playback_speed_dialog_button_summary">Klepněte a podržte pro reset rychlosti na výchozí</string>
@@ -1101,12 +1091,13 @@ Omezení:
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Chcete-li tuto funkci použít, nastavte ‚Podvádění video streamů‘ na Android VR nebo Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Zobrazit rozšířené menu kvality videa</string>
+  <string name="morphe_advanced_video_quality_menu_title">Otevírí menu kvality ½pokročilých nastavení</string>
+  <string name="morphe_advanced_video_quality_menu_summary">Přeskočí menu pro výběr kvality a přímo otevře menu čpokročilých nastavení</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Skrýt možnosti Premium kvality</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">Priorizujte kvalitu videa</string>
-  <string name="morphe_prioritize_video_quality_summary">Upřednostní nejvyšší kvalitu videa před efektivitou kodeku</string>
+  <string name="morphe_prioritize_video_quality_summary">Upřednostňuje nejvyšší dostupnou kvalitu videa před efektivitou kodeku</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Povolit Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Povolí softwarové dekódování AV1 při používání klienta Android VR</string>

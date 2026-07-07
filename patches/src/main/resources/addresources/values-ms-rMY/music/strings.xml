@@ -21,6 +21,7 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">Logo pengepala</string>
   <string name="morphe_header_logo_entry_1">Lalai</string>
   <string name="morphe_header_logo_entry_3">Tersuai</string>
+  <!-- interaction.downloads.downloadsPatch -->
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Mengenai</string>
@@ -133,7 +134,9 @@ YouTube Music 8.x — pudar silang hanya berkesan pada versi 9.x dan yang lebih 
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Sorokkan butang naik taraf</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
+  <string name="morphe_music_scrobbling_logged_out_toast">Telah log keluar</string>
   <!-- 'scrobbling' must be kept untranslated -->
+  <string name="morphe_music_scrobbling_enabled_title">Aktifkan scrobbling</string>
   <!-- 'scrobbled' must be kept untranslated -->
   <!-- 'scrobble' must be kept untranslated -->
   <!-- 'scrobble' must be kept untranslated -->

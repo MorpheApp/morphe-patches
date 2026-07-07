@@ -283,23 +283,12 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_title">ダブルタップによるチャプター スキップを無効化</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">チャプターをスキップする、二本指でのダブルタップ ジェスチャーを無効にします。このジェスチャーが有効の場合、一本指でのダブルタップ ジェスチャーが二本指だと誤認識され、意図せずチャプターをスキップしてしまう場合があります</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">外部ダウンロード</string>
-  <string name="morphe_external_downloader_screen_summary">サードパーティ製ダウンロード アプリで動画をダウンロードします</string>
+  <string name="morphe_external_downloader_screen_summary">サードパーティ製ダウンロード アプリで、動画、ポッドキャスト、楽曲をダウンロードします</string>
   <string name="morphe_external_downloader_title">外部ダウンロード ボタンを表示</string>
   <string name="morphe_external_downloader_summary">プレーヤー オーバーレイに外部ダウンローダーを開くボタンを表示します</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">オフライン ボタンの動作を上書き</string>
   <string name="morphe_external_downloader_action_button_summary">オフライン ボタンの呼び出し先を、「YouTube 内蔵のダウンロード機能」から「設定した外部ダウンローダー」に変更します</string>
-  <string name="morphe_external_downloader_name_title">外部ダウンローダーのパッケージ名</string>
-  <string name="morphe_external_downloader_name_summary">インストール済みの外部ダウンロード アプリのパッケージ名</string>
-  <string name="morphe_external_downloader_other_item_hint">パッケージ名を入力してください</string>
-  <string name="morphe_external_downloader_other_item">その他</string>
-  <string name="morphe_external_downloader_not_found_title">アプリがインストールされていません</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s はインストールされていません。インストールしてください。</string>
-  <string name="morphe_external_downloader_package_not_found_warning">"パッケージ名「%s」のインストール済みアプリが見つかりませんでした
-
-パッケージ名が正しいこと、およびアプリがインストールされていることを確認してください"</string>
-  <string name="morphe_external_downloader_empty_warning">パッケージ名は空欄にはできません</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">吹き替え翻訳</string>
   <string name="morphe_vot_screen_summary">動画字幕を翻訳し、デバイス上のテキスト読み上げ機能で字幕の翻訳を字幕に同期しながら読み上げます</string>
@@ -434,7 +423,7 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">精密シーク ジェスチャーを無効化</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">シークバーを上にスワイプすると有効になる「再生位置の細かい調整」モードを無効にします</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">すべてのライブ配信で DVR を有効化</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"本来はシーク機能が制限される場合も含め、すべてのライブ配信でシーク機能が利用可能になります
@@ -752,7 +741,6 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">高評価ボタンの噴水アニメーションを非表示</string>
   <string name="morphe_hide_shorts_like_button_title">高評価ボタンを非表示</string>
-  <string name="morphe_hide_shorts_dislike_button_title">低評価ボタンを非表示</string>
   <string name="morphe_hide_shorts_comments_button_title">コメントボタンを非表示</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">共有ボタンを非表示</string>
@@ -814,8 +802,6 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">非公開</string>
   <string name="morphe_ryd_enabled_title">Return YouTube Dislike を有効化</string>
-  <string name="morphe_ryd_shorts_title">ショートの低評価数を表示</string>
-  <string name="morphe_ryd_shorts_summary">制限事項: シークレット モードでは低評価数が表示されない場合があります</string>
   <string name="morphe_ryd_dislike_percentage_title">低評価をパーセントで表示</string>
   <string name="morphe_ryd_dislike_percentage_summary">投票数ではなくパーセントで低評価を表示します</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
@@ -906,7 +892,7 @@ Automotive レイアウト
   <string name="morphe_change_start_page_entry_library">マイページ</string>
   <string name="morphe_change_start_page_entry_liked_videos">高く評価した動画</string>
   <string name="morphe_change_start_page_entry_live">ライブ</string>
-  <string name="morphe_change_start_page_entry_movies">映画とテレビ</string>
+  <string name="morphe_change_start_page_entry_movies">映画とテレビ番組</string>
   <string name="morphe_change_start_page_entry_music">音楽</string>
   <string name="morphe_change_start_page_entry_news">ニュース</string>
   <string name="morphe_change_start_page_entry_notifications">通知</string>
@@ -950,7 +936,11 @@ Automotive レイアウト
   <string name="morphe_miniplayer_disable_drag_and_drop_title">ドラッグ &amp; ドロップを無効化</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">ミニプレーヤーをドラッグして画面の四隅を移動する機能を無効にします</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">横方向ドラッグ ジェスチャーを無効化</string>
-  <string name="morphe_miniplayer_disable_horizontal_drag_summary">ミニプレーヤーを横方向に画面外までドラッグして最小化および一時停止する機能を無効にします</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_summary">ミニプレーヤーを横方向に画面外までドラッグして最小化する機能を無効にします</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">横方向ドラッグ ジェスチャーで一時停止</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">横方向ドラッグ ジェスチャーでミニプレーヤーを最小化したときに再生を一時停止します</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">ドラッグ位置を記憶する</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">ミニプレーヤーを画面外にドラッグすると、UIの状態が維持されます</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">オーバーレイ ボタンを非表示</string>
   <string name="morphe_miniplayer_width_dip_title">デフォルトのサイズ</string>
   <string name="morphe_miniplayer_width_dip_summary">呼び出される際のミニプレーヤーの横幅を設定します (ピクセル)</string>
@@ -1056,10 +1046,10 @@ Automotive レイアウト
   <string name="morphe_remember_shorts_quality_last_selected_summary">画質メニューでの画質の変更を、設定の「ショートのデフォルトの画質」に反映し、すべてのショート動画に適用します</string>
   <string name="morphe_shorts_quality_default_wifi_title">デフォルトのショートの画質 (Wi-Fi)</string>
   <string name="morphe_shorts_quality_default_mobile_title">デフォルトのショートの画質 (モバイル)</string>
-  <string name="morphe_remember_video_quality_mobile">モバイル</string>
-  <string name="morphe_remember_video_quality_wifi">Wi-Fi</string>
-  <string name="morphe_remember_video_quality_toast">デフォルトの画質の変更 (%1$s): %2$s</string>
-  <string name="morphe_remember_video_quality_toast_shorts">ショートの画質の変更 (%1$s): %2$s</string>
+  <string name="morphe_remember_video_quality_toast_mobile">デフォルトの画質 (モバイル) の変更: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">デフォルトの画質 (Wi-Fi) の変更: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_mobile">ショートの画質 (モバイル) の変更: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_wifi">ショートの画質 (Wi-Fi) の変更: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">再生速度ボタンを表示</string>
   <string name="morphe_playback_speed_dialog_button_summary">長押しすると、再生速度をデフォルトの値にリセットします</string>
@@ -1100,12 +1090,13 @@ Automotive レイアウト
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">この機能を使用するには、[動画ストリームを偽装] で Android VR または Android Studio を選択してください</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">画質の詳細設定メニューを表示</string>
+  <string name="morphe_advanced_video_quality_menu_title">画質の「詳細設定」メニューを開く</string>
+  <string name="morphe_advanced_video_quality_menu_summary">画質メニューをスキップして画質の「詳細設定」メニューを直接開きます</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Premium 画質を非表示</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">画質を優先</string>
-  <string name="morphe_prioritize_video_quality_summary">コーデック効率よりも高画質を優先します</string>
+  <string name="morphe_prioritize_video_quality_summary">コーデックの圧縮効率よりも利用可能な最高画質を優先します</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Android VR で AV1 を許可</string>
   <string name="morphe_spoof_video_streams_av1_summary">Android VR クライアントを使用するときに AV1 のソフトウェア デコードを許可します</string>

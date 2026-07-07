@@ -239,20 +239,9 @@ Vissa layouter på serversidan kanske inte återställs.
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">Inaktivera dubbeltryck för att hoppa över kapitel</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Externa nedladdningar</string>
   <string name="morphe_external_downloader_title">Visa knapp för extern nedladdning</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">Åsidosätt åtgärdsknappen Ladda ned</string>
-  <string name="morphe_external_downloader_name_title">Nedladdarens paketnamn</string>
-  <string name="morphe_external_downloader_name_summary">Paketnamn på den installerade externa nedladdningsappen</string>
-  <string name="morphe_external_downloader_other_item_hint">Ange paketnamnet</string>
-  <string name="morphe_external_downloader_other_item">Annat</string>
-  <string name="morphe_external_downloader_not_found_title">Appen är inte installerad</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s är inte installerat. Installera det.</string>
-  <string name="morphe_external_downloader_package_not_found_warning">"Kunde inte hitta installerad app med paketnamn: %s
-
-Kontrollera att paketnamnet är korrekt och att appen är installerad"</string>
-  <string name="morphe_external_downloader_empty_warning">Paketnamnet får inte vara tomt</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_openrouter_model_custom">Anpassad</string>
   <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
@@ -294,7 +283,7 @@ Kontrollera att paketnamnet är korrekt och att appen är installerad"</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Inaktivera gest för exakt sökning</string>
-  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Aktivera DVR för livestreamar</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_expand_livestream_dvr_duration_title">Förläng varaktighet för DVR för livestreamar</string>
@@ -575,7 +564,6 @@ Om du vill att menyn Ljudspår ska visas ändrar du Förfalska videostreamar til
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Dölj fontäneffekt för knappen Gilla</string>
   <string name="morphe_hide_shorts_like_button_title">Dölj knappen Gilla</string>
-  <string name="morphe_hide_shorts_dislike_button_title">Dölj knappen Ogilla</string>
   <string name="morphe_hide_shorts_comments_button_title">Dölj knappen Kommentarer</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Dölj knappen Dela</string>
@@ -625,8 +613,6 @@ Om du vill att menyn Ljudspår ska visas ändrar du Förfalska videostreamar til
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Dolda av ägaren</string>
   <string name="morphe_ryd_enabled_title">Aktivera Return YouTube Dislike</string>
-  <string name="morphe_ryd_shorts_title">Visa ogilla-markeringar i Shorts</string>
-  <string name="morphe_ryd_shorts_summary">Begränsning: Ogilla-markeringar kanske inte visas i inkognitoläget</string>
   <string name="morphe_ryd_dislike_percentage_title">Visa ogilla-markeringar som procentandel</string>
   <string name="morphe_ryd_dislike_percentage_summary">Visa ogilla-markeringar som procentandelen av antalet gilla-markeringar istället för som ett tal</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
@@ -836,10 +822,6 @@ Om du senare inaktiverar det rekommenderar vi att rensa appens data för att fö
   <string name="morphe_remember_shorts_quality_last_selected_summary">Tillämpar den kvalitet som du valt manuellt i alla framtida Shorts-videor</string>
   <string name="morphe_shorts_quality_default_wifi_title">Standardkvalitet för Shorts-videor på Wi-Fi-nätverk</string>
   <string name="morphe_shorts_quality_default_mobile_title">Standardkvalitet för Shorts-videor på mobilnätverk</string>
-  <string name="morphe_remember_video_quality_mobile">mobil</string>
-  <string name="morphe_remember_video_quality_wifi">wifi</string>
-  <string name="morphe_remember_video_quality_toast">Ändrade standardkvalitet för %1$s till: %2$s</string>
-  <string name="morphe_remember_video_quality_toast_shorts">Ändrade Shorts-videokvalitet för %1$s till: %2$s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Visa knappen Uppspelningshastighet</string>
   <string name="morphe_playback_speed_dialog_button_summary">Tryck länge för att återställa till standardhastigheten</string>
@@ -877,12 +859,10 @@ Begränsningar:
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Om du vill använda den här funktionen anger du Förfalska videostreamar som Android VR eller Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Visa avancerad videokvalitetsmeny</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Dölj Premium-kvalitetsalternativ</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">Prioritera videokvalitet</string>
-  <string name="morphe_prioritize_video_quality_summary">Prioriterar högsta möjliga videokvalitet framför kodekseffektivitet</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Tillåt Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Tillåter programvaruavkodning för AV1 när du använder Android VR-klienten</string>
