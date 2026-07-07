@@ -14,8 +14,8 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.flyout.addToQueuePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
-import app.morphe.patches.youtube.misc.recyclerviewtree.hook.addRecyclerViewTreeHook
-import app.morphe.patches.youtube.misc.recyclerviewtree.hook.recyclerViewTreeHookPatch
+import app.morphe.patches.youtube.misc.recyclerviewtree.addRecyclerViewTreeHook
+import app.morphe.patches.youtube.misc.recyclerviewtree.recyclerViewTreeHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
