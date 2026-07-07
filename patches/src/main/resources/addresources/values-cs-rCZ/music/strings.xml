@@ -21,6 +21,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">Logo záhlaví</string>
   <string name="morphe_header_logo_entry_1">Výchozí</string>
   <string name="morphe_header_logo_entry_3">Vlastní</string>
+  <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_summary">Stahujte hudební videa, podcasty nebo písně pomocí externích aplikací pro stahování</string>
+  <string name="morphe_external_downloader_action_button_title">Přepsat tlačítko akce Stahování</string>
+  <string name="morphe_external_downloader_action_button_summary">Nahrazuje vestavěnou funkci stahování v YouTube Music vaším externím stahovatelem</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">O aplikaci</string>

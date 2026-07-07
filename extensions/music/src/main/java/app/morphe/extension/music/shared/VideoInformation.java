@@ -33,6 +33,21 @@ public final class VideoInformation {
         Logger.printDebug(() -> "VideoInformation: initialized");
     }
 
+    /** Injection point. */
+    public static void initializeMdx() {
+        Logger.printDebug(() -> "VideoInformation: initialized MDX player");
+    }
+
+    /**
+     * Id of the current video playing.
+     *
+     * @return The id of the video. Empty string if not set yet.
+     */
+    @NonNull
+    public static String getVideoId() {
+        return videoId;
+    }
+
     /** Injection point. Stored for downstream patches; SponsorBlock routes its own id hook. */
     public static void setVideoId(@NonNull String newVideoId) {
         if (Objects.equals(newVideoId, videoId)) return;

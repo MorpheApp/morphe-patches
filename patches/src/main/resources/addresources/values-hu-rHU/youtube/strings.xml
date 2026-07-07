@@ -284,22 +284,12 @@ Korlátozások:
   <string name="morphe_disable_chapter_skip_double_tap_summary">Letiltja a dupla koppintást ujjakkal való felemeléssel történő fejezetszkenálást, ami egy ujjal véletlenül aktiválódhat</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Külső letöltések</string>
-  <string name="morphe_external_downloader_screen_summary">Videók letöltése külső letöltőalkalmazásokkal</string>
+  <string name="morphe_external_downloader_screen_summary">Töltsön le videókat, podcastokat vagy dalokat harmadik féles alkalmazásokkal</string>
   <string name="morphe_external_downloader_title">Külső letöltés gomb megjelenítése</string>
   <string name="morphe_external_downloader_summary">Megjelenít egy átfedő gombot a videólejátszóban, amely megnyitja a külső letöltőalkalmazást</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">A Letöltés művelet gomb felülírása</string>
   <string name="morphe_external_downloader_action_button_summary">A YouTube beépített letöltési funkcióját helyettesíti a külső letöltőalkalmazással</string>
-  <string name="morphe_external_downloader_name_title">Letöltő csomagneve</string>
-  <string name="morphe_external_downloader_name_summary">A telepített külső letöltő alkalmazása csomagneve</string>
-  <string name="morphe_external_downloader_other_item_hint">Adja meg a csomagnevet</string>
-  <string name="morphe_external_downloader_other_item">Egyéb</string>
-  <string name="morphe_external_downloader_not_found_title">Az alkalmazás nincs telepítve</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s nincs telepítve. Kérjük telepítse.</string>
-  <string name="morphe_external_downloader_package_not_found_warning">"Nem található telepített alkalmazás a következő csomagnévvel: %s
-
-Ellenőrizze, hogy a csomagnév helyes-e, és az alkalmazás telepítve van-e."</string>
-  <string name="morphe_external_downloader_empty_warning">A csomagnév nem lehet üres</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Hangfelirat hangos felolvasása</string>
   <string name="morphe_vot_screen_summary">Olvassa fel a videó feliratait hangosan a készüléken található szöveg-beszéddé alakító segítségével, szinkronban a lejátszással.</string>
@@ -751,7 +741,6 @@ Az \"Audio Track\" menü megjelenítéséhez módosítsa a \"Spoof video streams
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Tetszik gomb szökőkút animációjának elrejtése</string>
   <string name="morphe_hide_shorts_like_button_title">Tetszik gomb elrejtése</string>
-  <string name="morphe_hide_shorts_dislike_button_title">Nem tetszik gomb elrejtése</string>
   <string name="morphe_hide_shorts_comments_button_title">Hozzászólások gomb elrejtése</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Megosztás gomb elrejtése</string>
@@ -813,8 +802,6 @@ Beállítások → Lejátszás (vagy Automatikus lejátszás) → Következő vi
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">A tulajdonos elrejtette</string>
   <string name="morphe_ryd_enabled_title">Engedélyezze a Return YouTube Dislike funkciót</string>
-  <string name="morphe_ryd_shorts_title">A nem tetszések megjelenítése a Shorts videóknál</string>
-  <string name="morphe_ryd_shorts_summary">Korlátozás: A nem tetszések nem jelenhetnek meg titkos üzemmódban</string>
   <string name="morphe_ryd_dislike_percentage_title">A lájkok százalékos arányban megjelenítése</string>
   <string name="morphe_ryd_dislike_percentage_summary">A nem tetszéseket a lájkok százalékos arányaként mutatja a szám helyett</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
@@ -950,6 +937,8 @@ Ha később kikapcsolja, akkor ajánlott az alkalmazás adatait törölni, hogy 
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Megakadályozza a minimalizált lejátszó áthúzását a képernyő különböző sarkaiiba</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Vízszintes húzás letiltása</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Megakadályozza a minilejátszó vízszintes elhúzásával történő bezárását</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Tiltsítási lehetőség letiltása vízszintes húzással</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">A lejátszás szünetel, ha a minilejátszó elhúzódik a képernyőről</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Fedőgomb elrejtése</string>
   <string name="morphe_miniplayer_width_dip_title">Alapértelmezett méret</string>
   <string name="morphe_miniplayer_width_dip_summary">Beállítja a kezdeti képernyőméretet, pixelben</string>
@@ -1057,10 +1046,10 @@ Ha engedélyezve van, akkor a videók URL-jeit elküldjük az API kiszolgálóna
   <string name="morphe_remember_shorts_quality_last_selected_summary">Az egyéni minőségválasztás alkalmazása minden jövőbeli Shortsra</string>
   <string name="morphe_shorts_quality_default_wifi_title">Alapértelmezett Shorts minőség Wi-Fi hálózaton</string>
   <string name="morphe_shorts_quality_default_mobile_title">Alapértelmezett Shorts minőség mobilhálózaton</string>
-  <string name="morphe_remember_video_quality_mobile">mobil</string>
-  <string name="morphe_remember_video_quality_wifi">wi-fi</string>
-  <string name="morphe_remember_video_quality_toast">Az alapértelmezett %1$s minőség a következőre változott: %2$s</string>
-  <string name="morphe_remember_video_quality_toast_shorts">A Shorts %1$s minősége megváltozott: %2$s</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Az alapértelmezett mobilminőséget %s-re módosítva</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Az alapértelmezett Wi-Fi minőséget %s-re módosítva</string>
+  <string name="morphe_remember_video_quality_toast_shorts_mobile">A Shorts mobilminősége %s-re módosítva</string>
+  <string name="morphe_remember_video_quality_toast_shorts_wifi">A Shorts Wi-Fi minősége %s-re módosítva</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Lejátszási sebesség gomb megjelenítése</string>
   <string name="morphe_playback_speed_dialog_button_summary">Érintse meg és tartsa lenyomva a sebesség alaphelyzetbe állításához</string>
@@ -1101,12 +1090,13 @@ Korlátozások:
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">A statisztikákban mutassa a hamisítást</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Speciális videóminőség menü megjelenítése</string>
+  <string name="morphe_advanced_video_quality_menu_title">Nyissa meg a \"Speciális\" minőségi menüt</string>
+  <string name="morphe_advanced_video_quality_menu_summary">A minőségi beállítások menüt kihagyva közvetlenül megnyitja a Speciális minőségi menüt</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Premium minőség opciók elrejtése</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">Videóminőség előnyben részesítése</string>
-  <string name="morphe_prioritize_video_quality_summary">A kodek hatékonyság helyett a legmagasabb videóminőség előnyben részesítése</string>
+  <string name="morphe_prioritize_video_quality_summary">A lehető legmagasabb videóminőséget részesíti előnyben a kodek hatékonysága helyett</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Android VR AV1 engedélyezése</string>
   <string name="morphe_spoof_video_streams_av1_summary">A szoftveres AV1 dekódolás engedélyezése Android VR kliens használatakor</string>

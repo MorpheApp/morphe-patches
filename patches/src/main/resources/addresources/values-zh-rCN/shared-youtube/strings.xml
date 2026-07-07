@@ -20,6 +20,19 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">重启以完成设置</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">应用名称</string>
+  <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_title">外部下载</string>
+  <string name="morphe_external_downloader_name_title">下载器的应用包名</string>
+  <string name="morphe_external_downloader_name_summary">您已安装的外部下载器应用的包名</string>
+  <string name="morphe_external_downloader_flyout_button_title">覆盖源/搜索弹出按钮</string>
+  <string name="morphe_external_downloader_other_item_hint">请输入包名</string>
+  <string name="morphe_external_downloader_other_item">其他</string>
+  <string name="morphe_external_downloader_not_found_title">应用未安装</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s未安装。请安装它。</string>
+  <string name="morphe_external_downloader_package_not_found_warning">"无法找到具有包名的已安装应用：%s
+
+请验证包名是否正确以及该应用是否已安装。"</string>
+  <string name="morphe_external_downloader_empty_warning">包名不能为空</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">自定义</string>
   <string name="morphe_custom_branding_icon_title">应用图标</string>

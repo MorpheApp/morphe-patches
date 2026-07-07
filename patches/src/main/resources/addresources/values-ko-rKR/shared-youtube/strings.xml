@@ -20,6 +20,19 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">설정을 완료하려면 다시 시작하세요</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">앱 이름</string>
+  <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_title">외부 다운로드</string>
+  <string name="morphe_external_downloader_name_title">다운로더 앱 패키지명</string>
+  <string name="morphe_external_downloader_name_summary">설치된 외부 다운로더 앱 패키지명을 설정하세요</string>
+  <string name="morphe_external_downloader_flyout_button_title">피드/검색 플라이아웃 버튼 덮어쓰기</string>
+  <string name="morphe_external_downloader_other_item_hint">앱 패키지명을 입력하세요</string>
+  <string name="morphe_external_downloader_other_item">기타</string>
+  <string name="morphe_external_downloader_not_found_title">앱이 설치되지 않음</string>
+  <string name="morphe_external_downloader_not_installed_warning">\'%s\'가 설치되어 있지 않습니다. 설치해 주세요.</string>
+  <string name="morphe_external_downloader_package_not_found_warning">"패키지명이 '%s'로 설치된 앱을 찾을 수 없습니다.
+
+패키지명이 올바른지 앱이 설치되어 있는지 확인하세요."</string>
+  <string name="morphe_external_downloader_empty_warning">패키지명을 비워둘 수 없습니다</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">사용자 정의</string>
   <string name="morphe_custom_branding_icon_title">앱 아이콘</string>
@@ -108,7 +121,7 @@ YouTube Premium 사용자는 이 설정이 필요하지 않을 수 있습니다"
   <string name="morphe_disable_drc_audio_title">DRC 오디오 비활성화하기</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">원본 오디오 언어 강제로 활성화하기</string>
-  <string name="morphe_force_original_audio_summary">더빙 버전이 아닌 동영상의 원본 오디오 트랙을 항상 재생합니다</string>
+  <string name="morphe_force_original_audio_summary">더빙 버전 대신 동영상의 원본 오디오 트랙을 항상 재생합니다</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">네트워크 프록시</string>
   <string name="morphe_proxy_screen_summary">프록시를 통해 지원되는 네트워크 요청을 라우팅합니다</string>

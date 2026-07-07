@@ -285,22 +285,12 @@ Sînorkirin:
   <string name="morphe_disable_chapter_skip_double_tap_summary">Disables the two-finger double-tap gesture that skips chapters, which may be accidentally triggered with one finger</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Downloads bikêrkirî</string>
-  <string name="morphe_external_downloader_screen_summary">Download videos with third-party downloading apps</string>
+  <string name="morphe_external_downloader_screen_summary">Vîdyoyê, podcastan, an stranê bi rêya sepanên downloadkirina sêjê dakêşîne.</string>
   <string name="morphe_external_downloader_title">Nîşan bide lê gava serîna bikêrkaran</string>
   <string name="morphe_external_downloader_summary">Shows an overlay button in video player that opens your external downloader</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">Serdest kirina gava veqelîna qeykan</string>
   <string name="morphe_external_downloader_action_button_summary">Replaces YouTube\'s built-in download function with your external downloader</string>
-  <string name="morphe_external_downloader_name_title">Navê pakkê ya danerê</string>
-  <string name="morphe_external_downloader_name_summary">Navê pakkê ya sepanê ya serdestkirî ya danerê xurekî</string>
-  <string name="morphe_external_downloader_other_item_hint">Navê pakkê binirêve</string>
-  <string name="morphe_external_downloader_other_item">Din</string>
-  <string name="morphe_external_downloader_not_found_title">Sepanek serdest nekirî</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s serdest nekirî ye. Ji kerema xwe wê serdest bikin.</string>
-  <string name="morphe_external_downloader_package_not_found_warning">"Nefotim sepanek serdestkirî bi navê pakkê: %s
-
-Doza navê pakkê rast be û sepan serdest be"</string>
-  <string name="morphe_external_downloader_empty_warning">Navê pakkê nikare vala be</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Wergerê dîtinî</string>
   <string name="morphe_vot_screen_summary">Jê wergirê nivîskên vîdyoyê bi teknolojîya veguherandina nivîsê ya cîhazê, bi hevdîtina lîstikê, bi dengî bixîne</string>
@@ -753,7 +743,6 @@ Ji bo nîşandana menûya 'Şêwaza Deng', 'Şêwazên vîdyoyê yên sexnetî' 
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Şertekên pêşiyê veşêre animasyona çavkaniyê</string>
   <string name="morphe_hide_shorts_like_button_title">Şertekê bi lêzger veşêre</string>
-  <string name="morphe_hide_shorts_dislike_button_title">Şertekê bi nehezd veşêre</string>
   <string name="morphe_hide_shorts_comments_button_title">Şertekê komentar veşêre</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Şertekê parvekirin veşêre</string>
@@ -815,8 +804,6 @@ Settings → Playback (an Autoplay) → Autoplay next video"</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Ji aliyê xwediyê videoyê ve veşêra.</string>
   <string name="morphe_ryd_enabled_title">Return YouTube Dislike bidar bike</string>
-  <string name="morphe_ryd_shorts_title">Nexweşîyên li ser Shorts nîşan tê.</string>
-  <string name="morphe_ryd_shorts_summary">Sînordarî: Dislike dibe ku di moda veşartî de xuya nebin</string>
   <string name="morphe_ryd_dislike_percentage_title">Dislike wekî ji sedî nîşan bide</string>
   <string name="morphe_ryd_dislike_percentage_summary">Dislike wekî ji sedîya hezkirinê nîşan dide, ne wekî hejmarê</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
@@ -952,6 +939,8 @@ Hatin binveşirin, ew tê mesêr kirin ka danayê peşêbîyê şêniyel ki bug-
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Gradientek paşnavê di ekranê de li ser ekranê ya ku bi şûşa rasterast li şûna rengê wekhev vekişîne</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Çekana mane ya serê horizontal astîne</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Tekreng</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Dêrkirina lîstikê bi dragkirina horîzontal nekarin</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Lîstikê dema ku mînîlîstik ji ekranê derbas bibe rawestî dema</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Dane serlêdanên dorpelê</string>
   <string name="morphe_miniplayer_width_dip_title">Rengê Sebarê</string>
   <string name="morphe_miniplayer_width_dip_summary">Destbîne ranga sereke ya barkê pêşkeftina vîdeoyê</string>
@@ -1059,10 +1048,10 @@ Bike li vir da vekirina DeArrow.ajay.app"</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Hilbijartên kalîteya we yên destan li ser hemû Shorts-an pêk bîne</string>
   <string name="morphe_shorts_quality_default_wifi_title">Kalîteya Shorts-a ya pêşdideya li ser torika Wi-Fi</string>
   <string name="morphe_shorts_quality_default_mobile_title">Kalîteya Shorts-a ya pêşdideya li ser torika mobîl</string>
-  <string name="morphe_remember_video_quality_mobile">mobîl</string>
-  <string name="morphe_remember_video_quality_wifi">wifi</string>
-  <string name="morphe_remember_video_quality_toast">Kalîteya serbixwe ya %1$s heta: %2$s guherîye</string>
-  <string name="morphe_remember_video_quality_toast_shorts">Kalîteya Shorts %1$s heta: %2$s guherîye</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Kalîteya mobîl a pêşîn hat guherandin: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Kalîteya Wi-Fi ya pêşîn hat guherandin: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_mobile">Kalîteya mobîl a Shorts hat guherandin: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_wifi">Kalîteya Wi-Fi ya Shorts hat guherandin: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Şîroveka rêzika bilindê nîşan bide</string>
   <string name="morphe_playback_speed_dialog_button_summary">Tap bike û nişê bibe ji bo vegerandina leza pêşîn</string>
@@ -1103,12 +1092,13 @@ Sînergirên:
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Ji bo karanîna vê taybetmendiyê, \'Streaming vîdyoyê şopîn bike\' saz bike bo Android VR an Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Menyûa advanced qualitya vîdyoyê nîşane bike</string>
+  <string name="morphe_advanced_video_quality_menu_title">Vebijarkirina menuya kalîteya \'Pêşkeftî\'</string>
+  <string name="morphe_advanced_video_quality_menu_summary">Dibe menuya hilbijartina kalîteyê derbas dike û rasterast menuya kalîteya Pêşkeftî vekirin</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Ji asta Premium veşêre</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">Kalîteya Vîdyoyê pêşandanî bike</string>
-  <string name="morphe_prioritize_video_quality_summary">Kalîteya vîdyoyê ya herî bilind di beramberî karbidestiya kodê de bikar bîne</string>
+  <string name="morphe_prioritize_video_quality_summary">Kalîteya herî bilind a vîdyoyê li ser karbidestiya kodekê parêz dike</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Hilbijartina AV1 ya Android VR ji bo</string>
   <string name="morphe_spoof_video_streams_av1_summary">Hêza kodêkirina AV1 ya nermalavê dema ku hûn cîhazê Android VR bikar tînin</string>

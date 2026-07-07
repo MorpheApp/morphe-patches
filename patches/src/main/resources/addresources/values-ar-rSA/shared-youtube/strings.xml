@@ -20,6 +20,19 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">إعادة التشغيل لإنهاء الإعداد</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">اسم التطبيق</string>
+  <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_title">التنزيلات الخارجية</string>
+  <string name="morphe_external_downloader_name_title">اسم حزمة أداة التنزيل</string>
+  <string name="morphe_external_downloader_name_summary">اسم حزمة تطبيق أداة التنزيل المثبت لديك</string>
+  <string name="morphe_external_downloader_flyout_button_title">تجاوز زر القائمة المنبثقة للتغذية/البحث</string>
+  <string name="morphe_external_downloader_other_item_hint">أدخل اسم الحزمة</string>
+  <string name="morphe_external_downloader_other_item">أخرى</string>
+  <string name="morphe_external_downloader_not_found_title">التطبيق غير مثبت</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s لم يتم تثبيته. قم بتثبيته.</string>
+  <string name="morphe_external_downloader_package_not_found_warning">"تعذر العثور على تطبيق مثبت باسم الحزمة: %s
+
+تحقق من صحة اسم الحزمة وأن التطبيق مثبت"</string>
+  <string name="morphe_external_downloader_empty_warning">لا يمكن أن يكون اسم الحزمة فارغًا</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">مُخصّص</string>
   <string name="morphe_custom_branding_icon_title">أيقونة التطبيق</string>

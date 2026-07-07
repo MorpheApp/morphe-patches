@@ -15,7 +15,6 @@ import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.InstructionLocation.MatchFirst
 import app.morphe.patcher.OpcodesFilter
-import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
@@ -256,32 +255,3 @@ internal object WatchNextResponseParserFingerprint : Fingerprint(
         literal(46659098L),
     )
 )
-
-internal object SpannableStringBuilderFingerprint : Fingerprint(
-    returnType = "Ljava/lang/CharSequence;",
-    filters = listOf(
-        methodCall(
-            opcode = Opcode.INVOKE_STATIC,
-            smali = SPANNABLE_STRING_REFERENCE
-        ),
-        methodCall(
-          opcode = Opcode.INVOKE_STATIC,
-            returnType = "V",
-            parameters = listOf(
-                "Landroid/text/SpannableString;",
-                "Ljava/lang/Object;",
-                "I",
-                "Z",
-                "I"
-            )
-        ),
-        string(
-            "Failed to set PB Style Run Extension in TextComponentSpec.",
-            comparison = StringComparisonType.STARTS_WITH
-        )
-    )
-)
-
-const val SPANNABLE_STRING_REFERENCE =
-    "Landroid/text/SpannableString;->valueOf(Ljava/lang/CharSequence;)Landroid/text/SpannableString;"
-

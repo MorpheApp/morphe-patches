@@ -20,6 +20,19 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Ponovo pokrenite da biste završili postavljanje</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Naziv aplikacije</string>
+  <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_title">Spoljna preuzimanja</string>
+  <string name="morphe_external_downloader_name_title">Naziv paketa programa za preuzimanje</string>
+  <string name="morphe_external_downloader_name_summary">Naziv paketa instalirane aplikacije za preuzimanje</string>
+  <string name="morphe_external_downloader_flyout_button_title">Preuzmi/pretraži padajući meni</string>
+  <string name="morphe_external_downloader_other_item_hint">Unesite naziv paketa</string>
+  <string name="morphe_external_downloader_other_item">Ostalo</string>
+  <string name="morphe_external_downloader_not_found_title">Aplikacija nije instalirana</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s nije instalirana. Molimo vas da je instalirate.</string>
+  <string name="morphe_external_downloader_package_not_found_warning">"Nije pronađena instalirana aplikacija sa nazivom paketa: %s
+
+Proverite da li je naziv paketa ispravan i da li je aplikacija instalirana"</string>
+  <string name="morphe_external_downloader_empty_warning">Naziv paketa ne može biti prazan</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Prilagođeno</string>
   <string name="morphe_custom_branding_icon_title">Ikonica aplikacije</string>

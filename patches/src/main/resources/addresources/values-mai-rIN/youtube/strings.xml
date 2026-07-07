@@ -181,16 +181,6 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_title">बाहरी डाउनलोड बटन दिखाएं</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">डाउनलोड क्रिया बटन ओवरराइड करें</string>
-  <string name="morphe_external_downloader_name_title">डाउनलोडर पैकेज नाम</string>
-  <string name="morphe_external_downloader_name_summary">आपके इंस्टॉल किए गए बाहरी डाउनलोडर ऐप का पैकेज नाम</string>
-  <string name="morphe_external_downloader_other_item_hint">पैकेज नाम दर्ज करें</string>
-  <string name="morphe_external_downloader_other_item">अन्य</string>
-  <string name="morphe_external_downloader_not_found_title">ऐप इंस्टॉल नहीं है</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s इंस्टॉल छैन। कृपया यसलाई इंस्टाल गर्नुहोस्।</string>
-  <string name="morphe_external_downloader_package_not_found_warning">"पैकेज नाम के साथ इंस्टॉल किए गए ऐप नहीं मिल सका: %s
-
-कृपया सत्यापित करें कि पैकेज नाम सही है और ऐप इंस्टॉल है"</string>
-  <string name="morphe_external_downloader_empty_warning">पैकेज नाम खाली नहीं हो सकता</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
   <!-- interaction.loop.loopVideoPatch -->
@@ -391,7 +381,6 @@ Second \"item\" text"</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">लाइक बटन फाउन्टेशन लुकाउनुहोस्</string>
   <string name="morphe_hide_shorts_like_button_title">लाइक बटन लुकाउनुहोस्</string>
-  <string name="morphe_hide_shorts_dislike_button_title">डिसलाइक बटन लुकाउनुहोस्</string>
   <string name="morphe_hide_shorts_comments_button_title">टिप्पणी बटन लुकाउनुहोस्</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">साझेदारी बटन लुकाउनुहोस्</string>
@@ -430,7 +419,6 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_failure_ryd_enabled_while_playing_video_then_user_voted">Return YouTube Dislike प्रयोग गरेर भोट दिन भिडियो पुन: लोड गर्नुहोस्</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">भिडियो मालिकद्वारा लुकाइएको</string>
-  <string name="morphe_ryd_shorts_title">शर्ट्समा Dislikes देखाउनुहोस्</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
   <string name="morphe_ryd_estimated_like_title">अनुमानित लाइकहरू देखाउनुहोस्</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
@@ -589,10 +577,6 @@ Second \"item\" text"</string>
   <string name="morphe_video_quality_default_mobile_title">मोबाइल नेटवर्क पर डिफ़ॉल्ट वीडियो गुणवत्ता</string>
   <string name="morphe_shorts_quality_default_wifi_title">Wi-Fi नेटवर्क पर डिफ़ॉल्ट शॉर्ट्स गुणवत्ता</string>
   <string name="morphe_shorts_quality_default_mobile_title">मोबाइल नेटवर्क पर डिफ़ॉल्ट शॉर्ट्स गुणवत्ता</string>
-  <string name="morphe_remember_video_quality_mobile">मोबाइल</string>
-  <string name="morphe_remember_video_quality_wifi">वाईफ़ाई</string>
-  <string name="morphe_remember_video_quality_toast">डिफ़ॉल्ट %1$s गुणवत्ता क बदला गएल अछि: %2$s</string>
-  <string name="morphe_remember_video_quality_toast_shorts">शॉर्ट्स %1$s गुणवत्ता क बदला गएल अछि: %2$s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
@@ -618,7 +602,6 @@ Second \"item\" text"</string>
 • कुछ डिवाइस AVC क जबरदस्ती नहि क सकैत।"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">उन्नत वीडियो गुणवत्ता मेनू दिखाओ</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">प्रीमियम गुणस्तर विकल्पहरू लुकाउनुहोस्</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->

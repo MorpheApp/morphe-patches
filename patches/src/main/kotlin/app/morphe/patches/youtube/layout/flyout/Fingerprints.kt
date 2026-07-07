@@ -130,3 +130,4 @@ internal object SingularGeneratedExtensionFingerprint : Fingerprint(
         methodCall(name = "newSingularGeneratedExtension")
     )
 )
+

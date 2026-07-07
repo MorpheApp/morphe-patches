@@ -20,6 +20,19 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Atosaigh chun an socrú a chríochnú</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Ainm an aip</string>
+  <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_title">Íosluchtaigh seachtracha</string>
+  <string name="morphe_external_downloader_name_title">Ainm pacáiste íoslódáil</string>
+  <string name="morphe_external_downloader_name_summary">Ainm pacáiste d\'aip íoslódálaí seachtrach suiteáilte</string>
+  <string name="morphe_external_downloader_flyout_button_title">Sáraigh cnaipe fothaithe/cuardaigh</string>
+  <string name="morphe_external_downloader_other_item_hint">Cuir isteach ainm an phacáiste</string>
+  <string name="morphe_external_downloader_other_item">Eile</string>
+  <string name="morphe_external_downloader_not_found_title">Níl an aip suiteáilte</string>
+  <string name="morphe_external_downloader_not_installed_warning">Níl %s suiteáilte. Suiteáil é le do thoil.</string>
+  <string name="morphe_external_downloader_package_not_found_warning">"Ní féidir an aip suiteáilte a aimsiú le hainm pacáiste: %s
+
+Seiceáil go bhfuil an t-ainm pacáiste ceart agus go bhfuil an aip suiteáilte"</string>
+  <string name="morphe_external_downloader_empty_warning">Ní féidir ainm an phacáiste a bheith folamh</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Saincheaptha</string>
   <string name="morphe_custom_branding_icon_title">Deilbhín aip</string>

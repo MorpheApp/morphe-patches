@@ -18,10 +18,10 @@ Second \"item\" text"</string>
   <string name="morphe_sb_enabled_title">SponsorBlock aktivieren</string>
   <string name="morphe_sb_enabled_summary">SponsorBlock ist ein Crowdsourcing-System zum Überspringen von nervigen Segmenten von YouTube-Videos</string>
   <string name="morphe_sb_appearance_category_title">Darstellung</string>
-  <string name="morphe_sb_voting_button_title">Like-Button anzeigen</string>
+  <string name="morphe_sb_voting_button_title">Bewerten-Button anzeigen</string>
   <string name="morphe_sb_voting_button_summary">Fügt einen Button zum Hoch- oder Herunterbewerten von Segmenten hinzu</string>
   <string name="morphe_sb_square_layout_title">Quadratische Bedienelemente verwenden</string>
-  <string name="morphe_sb_square_layout_summary">Verwendet abgerundete Ecken für SponsorBlock Buttons und Bedienelemente</string>
+  <string name="morphe_sb_square_layout_summary">Verwendet eckige Ecken für SponsorBlock-Schaltflächen und Steuerelemente</string>
   <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_compact_skip_button_title">Kompakten Überspringen-Button verwenden</string>
   <string name="morphe_sb_compact_skip_button_summary">Reduziert die Breite des Überspringen-Buttons, um Platz zu sparen</string>
@@ -60,7 +60,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_general_title">Allgemein</string>
   <string name="morphe_sb_toast_on_connection_error_title">Verbindungsfehler-Warnungen anzeigen</string>
   <string name="morphe_sb_toast_on_connection_error_summary">Zeigt eine Benachrichtigung an, wenn der SponsorBlock-Server nicht verfügbar ist</string>
-  <string name="morphe_sb_track_skip_count_title">Aktiviere Sprungzähler-Tracking</string>
+  <string name="morphe_sb_track_skip_count_title">Skip-Zählungsverfolgung aktivieren</string>
   <string name="morphe_sb_track_skip_count_summary">Sendet Überspringen-Zählungen an die SponsorBlock-Bestenliste, um zu verfolgen, wie viel Zeit gespart wird</string>
   <string name="morphe_sb_min_segment_duration_title">Mindestdauer der Segmente</string>
   <string name="morphe_sb_min_segment_duration_summary">Segmente kürzer als dieser Wert (in Sekunden) werden nicht angezeigt oder übersprungen</string>

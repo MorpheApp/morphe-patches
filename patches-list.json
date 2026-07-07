@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.33.0",
+  "version": "1.34.0-dev.2",
   "patches": [
     {
       "name": "Add to queue",
@@ -1427,6 +1427,13 @@
           ],
           "targets": [
             {
+              "version": "2026.27.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "2026.26.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -2237,6 +2244,13 @@
           ],
           "targets": [
             {
+              "version": "2026.27.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "2026.26.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -2442,6 +2456,13 @@
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
           "targets": [
+            {
+              "version": "2026.27.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
             {
               "version": "2026.26.0",
               "versionCodes": null,
@@ -2694,6 +2715,75 @@
             },
             {
               "version": "20.21.37",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Downloads",
+      "description": "Adds support to download songs with an external downloader app using the in-app download button.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch",
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.apps.youtube.music",
+          "name": "YouTube Music",
+          "description": null,
+          "apkFileType": "APK_REQUIRED",
+          "appIconColor": "#FF0000",
+          "signatures": [
+            "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
+            "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
+          ],
+          "targets": [
+            {
+              "version": "9.26.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 26,
+              "description": null
+            },
+            {
+              "version": "9.25.50",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 26,
+              "description": null
+            },
+            {
+              "version": "9.24.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 26,
+              "description": null
+            },
+            {
+              "version": "9.15.51",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            },
+            {
+              "version": "8.51.51",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            },
+            {
+              "version": "7.29.52",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 26,
@@ -3511,6 +3601,13 @@
           ],
           "targets": [
             {
+              "version": "2026.27.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "2026.26.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -3568,6 +3665,13 @@
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
           "targets": [
+            {
+              "version": "2026.27.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
             {
               "version": "2026.26.0",
               "versionCodes": null,
@@ -3727,6 +3831,13 @@
           ],
           "targets": [
             {
+              "version": "2026.27.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "2026.26.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -3853,6 +3964,13 @@
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
           "targets": [
+            {
+              "version": "2026.27.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
             {
               "version": "2026.26.0",
               "versionCodes": null,
@@ -4199,6 +4317,13 @@
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
           "targets": [
+            {
+              "version": "2026.27.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
             {
               "version": "2026.26.0",
               "versionCodes": null,
@@ -4635,6 +4760,13 @@
           ],
           "targets": [
             {
+              "version": "2026.27.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "2026.26.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -4998,6 +5130,13 @@
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
           "targets": [
+            {
+              "version": "2026.27.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
             {
               "version": "2026.26.0",
               "versionCodes": null,
@@ -5949,6 +6088,13 @@
           ],
           "targets": [
             {
+              "version": "2026.27.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "2026.26.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -6007,6 +6153,13 @@
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
           "targets": [
+            {
+              "version": "2026.27.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
             {
               "version": "2026.26.0",
               "versionCodes": null,
@@ -6815,6 +6968,13 @@
           ],
           "targets": [
             {
+              "version": "2026.27.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "2026.26.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -6933,7 +7093,6 @@
       "description": "Adds an option to show the dislike count of videos with Return YouTube Dislike.",
       "default": true,
       "dependencies": [
-        "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch",
@@ -7092,6 +7251,13 @@
             "970b91143813b4c9d5f3634f672c9fcaa5621b4efaaedafd6c235cbbb869736f"
           ],
           "targets": [
+            {
+              "version": "2026.27.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
             {
               "version": "2026.26.0",
               "versionCodes": null,
@@ -7526,6 +7692,13 @@
           ],
           "targets": [
             {
+              "version": "2026.27.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "2026.26.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -7884,6 +8057,13 @@
           ],
           "targets": [
             {
+              "version": "2026.27.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
               "version": "2026.26.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -8227,7 +8407,8 @@
             "Material You - Primary": "@android:color/system_accent1_800",
             "Material You - Secondary": "@android:color/system_accent2_800",
             "Material You - Tertiary": "@android:color/system_accent3_800",
-            "Classic (old YouTube)": "#212121",
+            "Modern YouTube": "#0F0F0F",
+            "Classic YouTube": "#212121",
             "Catppuccin (Mocha)": "#181825",
             "Dark pink": "#290025",
             "Dark blue": "#001029",
@@ -8330,7 +8511,8 @@
             "Material You - Primary": "@android:color/system_accent1_800",
             "Material You - Secondary": "@android:color/system_accent2_800",
             "Material You - Tertiary": "@android:color/system_accent3_800",
-            "Classic (old YouTube)": "#212121",
+            "Modern YouTube": "#0F0F0F",
+            "Classic YouTube": "#212121",
             "Catppuccin (Mocha)": "#181825",
             "Dark pink": "#290025",
             "Dark blue": "#001029",

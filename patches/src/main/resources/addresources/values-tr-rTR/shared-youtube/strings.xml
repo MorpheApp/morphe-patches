@@ -20,6 +20,19 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Kurulumu tamamlamak için yeniden başlatın</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Uygulama adı</string>
+  <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_title">Harici indirmeler</string>
+  <string name="morphe_external_downloader_name_title">İndirici paket adı</string>
+  <string name="morphe_external_downloader_name_summary">Yüklediğiniz harici indirici uygulamanın paket adı</string>
+  <string name="morphe_external_downloader_flyout_button_title">Akış/arama açılır düğmesini geçersiz kıl</string>
+  <string name="morphe_external_downloader_other_item_hint">Paket adını girin</string>
+  <string name="morphe_external_downloader_other_item">Diğer</string>
+  <string name="morphe_external_downloader_not_found_title">Uygulama yüklü değil</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s yüklü değil. Lütfen yükleyin.</string>
+  <string name="morphe_external_downloader_package_not_found_warning">"%s paket adına sahip yüklü uygulama bulunamadı
+
+Paket adının doğru olduğundan ve uygulamanın yüklü olduğundan emin olun"</string>
+  <string name="morphe_external_downloader_empty_warning">Paket adı boş olamaz</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Özel</string>
   <string name="morphe_custom_branding_icon_title">Uygulama simgesi</string>
@@ -140,7 +153,7 @@ Oynatıcı JavaScript hash'i güncel değilse oynatma başarısız olur."</strin
   <string name="morphe_replace_links_with_shortener_title">Paylaşım bağlantılarını youtu.be olarak değiştir</string>
   <string name="morphe_replace_links_with_shortener_summary">Videoları kısaltılmış youtu.be URL formatını kullanmaya zorlar</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Hata ayıklama günlük protokol arabelleği</string>
+  <string name="morphe_debug_protobuffer_title">Hata ayıklama günlüğü protokol arabelleği</string>
   <string name="morphe_debug_protobuffer_summary">Geliştiricilerin uygulama bileşenlerini belirlemesine yardımcı olacak ek günlük bilgileri ekler</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Bu ayarı etkinleştirmek, bazı kullanıcı arayüzü bileşenleri için ekrandaki metin de dahil olmak üzere ek düzen verilerini günlüğe kaydeder.
 

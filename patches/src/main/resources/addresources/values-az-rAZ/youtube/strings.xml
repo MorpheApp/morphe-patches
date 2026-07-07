@@ -284,22 +284,11 @@ Məhdudiyyətlər:
   <string name="morphe_disable_chapter_skip_double_tap_summary">Tək barmaqla bilmədən aktivləşə bilən, fəsilləri ötürən iki barmaqla cüt toxunma jestini qapadır</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Xarici yükləmələr</string>
-  <string name="morphe_external_downloader_screen_summary">Üçüncü tərəf yükləmə tətbiqləri ilə videoları yüklə</string>
   <string name="morphe_external_downloader_title">Xarici yükləmə düyməsini göstər</string>
   <string name="morphe_external_downloader_summary">Video oynadıcıda xarici yükləyicinizi açan örtük düyməsini göstərir</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">Yükləmə fəaliyyət düyməsin qəbul etmə</string>
   <string name="morphe_external_downloader_action_button_summary">YouTube-un qurulmuş yükləmə xüsusiyyətini xarici yükləyicinizlə əvəzləyir</string>
-  <string name="morphe_external_downloader_name_title">Yükləyici paketi adı</string>
-  <string name="morphe_external_downloader_name_summary">Quraşdırılan xarici yükləyici tətbiqinizin paket adı</string>
-  <string name="morphe_external_downloader_other_item_hint">Paket adını yerləşdir</string>
-  <string name="morphe_external_downloader_other_item">Digər</string>
-  <string name="morphe_external_downloader_not_found_title">Tətbiq quraşdırılmayıb</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s quraşdırılmayıb. Lütfən, bunu quraşdır.</string>
-  <string name="morphe_external_downloader_package_not_found_warning">"Paket adı ilə quraşdırılan tətbiq tapılmadı: %s
-
-Paket adının düzgün olduğun yoxla və tətbiqi quraşdırın"</string>
-  <string name="morphe_external_downloader_empty_warning">Paket adı boş ola bilməz</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Səs üstələyici tərcümə</string>
   <string name="morphe_vot_screen_summary">Cihazdakı mətni nitqə çevirməni istifadə edərək video titrlərini oynatma ilə sinxronlaşdırıb ucadan oxu</string>
@@ -345,17 +334,36 @@ OpenRouter.ai-ı açmaq üçün buraya toxunun"</string>
 
 API açarınız heç vaxt paylaşılmamalıdır. Buna girişi olan hər bir kəs OpenRouter balansınızı istifadə edə bilər"</string>
   <string name="morphe_vot_openrouter_credits_title">OpenRouter balans limitinə çatıldı</string>
+  <string name="morphe_vot_openrouter_credits_message">OpenRouter balans limitiniz bitdi. OpenRouter.ai-da balansınızı artırın və ya açar xərcləmə limitinizi yüksəldin</string>
+  <string name="morphe_vot_openrouter_open_website">OpenRouter.ai-ı Aç</string>
+  <string name="morphe_vot_openrouter_error">OpenRouter tərcüməsi uğursuz oldu (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">MyMemory gündəlik limiti bitdi</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Növbəti %s tarixində əlçatan olacaq.</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Bugünkü pulsuz MyMemory tərcümə normasını (5.000 simvol) istifadə etmisiniz. Gündəlik limiti 50.000 simvola artırmaq üçün tənzimləmələrdə MyMemory e-poçtunu əlavə edin və ya fərqli tərcümə xidmətinə keçin</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Bugünkü MyMemory tərcümə normasını (50.000 simvol) istifadə etmisiniz. Başqa tərcümə xidmətinə keçin və ya sabah təkrar cəhd edin</string>
+  <string name="morphe_vot_mymemory_error">MyMemory tərcüməsi uğursuz oldu (status %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Video təkrarlamanı aktivləşdir</string>
+  <string name="morphe_do_not_remember_loop_video_title">Video təkrarlanmasını xatırlamasın</string>
+  <string name="morphe_do_not_remember_loop_video_summary">Sonradan gələn videolar üçün video təkrarlamanın cari vəziyyətinin saxlanılmasını əngəllə</string>
   <!-- interaction.loop.loopVideoButtonPatch -->
   <string name="morphe_loop_video_button_title">Video Təkrarlama düyməsini göstər</string>
   <string name="morphe_loop_video_button_toast_on">Video təkrarlama açıqdır</string>
   <string name="morphe_loop_video_button_toast_off">Video təkrarlama qapalıdır</string>
+  <string name="morphe_loop_video_range_dialog_title">Təkrarlanma aralığı</string>
   <string name="morphe_loop_video_range_label_start">Başlanğıc</string>
   <string name="morphe_loop_video_range_label_end">Bitmə</string>
+  <string name="morphe_loop_video_range_hint_start">[hh:]mm:ss</string>
+  <string name="morphe_loop_video_range_hint_end">[hh:]mm:ss (boş = video sonu)</string>
+  <string name="morphe_loop_video_range_set">Tənzimlə</string>
   <string name="morphe_loop_video_range_clear">Təmizlə</string>
+  <string name="morphe_loop_video_range_toast_on">%1$s - %2$s arası təkrarlama</string>
+  <string name="morphe_loop_video_range_invalid_time">Etibarsız vaxt aralığı</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Hamısını oynat düyməsini göstər</string>
+  <string name="morphe_play_all_button_summary">"Kanaldan bütün videoların pleylistini yaratmaq üçün toxun, geri almaq üçün toxun və saxla
+
+Məlumat: Canlı yayımlarda işləməyə bilər"</string>
   <string name="morphe_play_all_button_type_title">Pleylist yaratma rejimi</string>
   <string name="morphe_play_all_button_type_entry_0">Bütün məzmunlar (Vaxta görə çeşidlə, Artan)</string>
   <string name="morphe_play_all_button_type_entry_1">Bütün məzmunlar (Vaxta görə çeşidlə)</string>
@@ -376,20 +384,62 @@ API açarınız heç vaxt paylaşılmamalıdır. Buna girişi olan hər bir kəs
   <string name="morphe_dismiss_player_not_available_toast">Video ID-si əlçatmazdır. Xahiş olunur, videonu əl ilə təkrar yüklə</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">Daha sonra izləmək üçün saxla Düyməsini Göstər</string>
+  <string name="morphe_save_to_watch_later_button_summary">Daha sonra baxmağa saxlamaq üçün toxun, növbə seçimləri üçün toxun və saxla</string>
   <string name="morphe_save_to_watch_later_success_toast">Video uğurla sonra izləyin pleylistində saxlanıldı</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Bu video artıq sonra izləyin pleylistində saxlanılıb</string>
   <string name="morphe_save_to_watch_later_error_toast">Bu videonu sonra izləyin pleylistində saxlamaq olmur</string>
+  <string name="morphe_queue_restore_title">​Sessiyalar arasında növbəni qoru</string>
+  <string name="morphe_queue_restore_summary">Tətbiq yenidən başladıldıqdan sonra növbə qorunur</string>
+  <string name="morphe_swap_save_and_queue_actions_title">Saxla və Növbə fəaliyyətlərini dəyişdir</string>
+  <string name="morphe_swap_save_and_queue_actions_summary">Növbə seçimləri üçün toxun, sonra baxmağa saxlamaq üçün toxun və saxla</string>
+  <string name="morphe_queue_override_flyout_menu_title">Axında açılan növbə düyməsini əvəzlə</string>
+  <string name="morphe_queue_override_flyout_menu_summary">YouTube növbəsi əvəzinə Morphe növbəsini açır</string>
+  <string name="morphe_queue_manager_check_failed_auth">Daxil olunmayıb</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">Pleylist ID-si yoxdur</string>
+  <string name="morphe_queue_manager_check_failed_queue">Növbə boşdur</string>
+  <string name="morphe_queue_manager_check_failed_video_id">Video ID-si yoxdur</string>
+  <string name="morphe_queue_manager_check_failed_generic">Uğursuz oldu: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">Növbəyə əlavə etmək olmadı</string>
+  <string name="morphe_queue_manager_fetch_failed_create">Növbə yaratmaq olmadı</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">Növbədən silmək olmadı</string>
+  <string name="morphe_queue_manager_fetch_failed_save">Növbəni saxlamaq olmadı</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">Növbəyə əlavə edildi</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">Növbə yaradıldı</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">Növbədən təmizləndi</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">Növbə %s-də saxlanıldı</string>
+  <string name="morphe_queue_manager_playlist_title">Morphe Növbəsi</string>
+  <string name="morphe_queue_manager_add_to_queue">Növbəyə əlavə et</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">Növbəyə əlavə et və aç</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">Növbəyə əlavə et və oynat</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">Video əlavə et və yenidən yüklə</string>
+  <string name="morphe_queue_manager_remove_from_queue">Növbədən sil</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">Növbəni sil və aç</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Videonu sil və yenidən yüklə</string>
+  <string name="morphe_queue_manager_open_queue">Növbəni aç</string>
+  <string name="morphe_queue_manager_save_queue">Növbəni pleylistdə saxla</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
+  <string name="morphe_open_channel_of_live_avatar_title">Canlı profildən kanalı aç</string>
+  <string name="morphe_open_channel_of_live_avatar_summary">Kanalın profilinə toxunduqda canlı yayımın açılmasın əngəlləyir</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Dəqiq irəli-geri çəkmə jestini qapat</string>
+  <string name="morphe_disable_precise_seeking_gesture_summary">Çevirmə cizgisin yuxarı çəkərkən aktivləşən dəqiq çevirmə rejimini qapadır</string>
   <!-- interaction.seekbar.livestreamDvrPatch -->
   <string name="morphe_livestream_dvr_title">Canlı yayım DVR-ni aktivləşdir</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_livestream_dvr_summary">"Normalda məhdudiyyət qoyulanlar da belə, bütün canlı yayımlarda çevirməyə imkan verir
+
+Qeyd: Əgər \"Video yayımlarını saxtalaşdır\" işlək deyilsə, bunu aktivləşdirmək gözlənilməz canlı yayım çevirmə davranışına səbəb ola bilər"</string>
+  <string name="morphe_expand_livestream_dvr_duration_title">Canlı yayım DVR müddətini genişləndir</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_expand_livestream_dvr_duration_summary">"Sizə canlı yayımları 7 günə qədər geri çevirməyə imkan verir
+
+Qeyd: Əgər \"Video yayımlarını saxtalaşdır\" işlək deyilsə, bunu aktivləşdirmək gözlənilməz canlı yayım çevirmə davranışına səbəb ola bilər"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Çevirmək üçün sürüşdürməni aktivləşdir</string>
+  <string name="morphe_slide_to_seek_summary">Video oynadıcıya basıb saxladıqda 2x sürətlə oynatmaq əvəzinə, sürüşdürərək çevirməni aktivləşdirir</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Çevirmək üçün toxunu aktivləşdir</string>
+  <string name="morphe_tap_to_seek_summary">Sürükləmədən həmin mövqeyə keçmək üçün sadəcə çevirmə cizgisinə toxun</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_brightness_title">Parlaqlıq jestini aktivləşdir</string>
   <string name="morphe_swipe_brightness_summary">Parlaqlığı nizamlamaq üçün tam ekran rejiminin sol tərəfində şaquli sürüşdür</string>
@@ -661,7 +711,6 @@ Tənzimləmələrə daxil olmaq üçün Ümumi → Alətlər Cərgəsi→ Tənzi
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Bəyənmə düyməsi fontan animasiyasın gizlət</string>
   <string name="morphe_hide_shorts_like_button_title">Bəyənmə düyməsini gizlət</string>
-  <string name="morphe_hide_shorts_dislike_button_title">Bəyənməmə düyməsini gizlət</string>
   <string name="morphe_hide_shorts_comments_button_title">Şərhlər düyməsin gizlət</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Paylaş düyməsini gizlət</string>
@@ -705,7 +754,6 @@ Tənzimləmələrə daxil olmaq üçün Ümumi → Alətlər Cərgəsi→ Tənzi
   <string name="morphe_ryd_failure_ryd_enabled_while_playing_video_then_user_voted">Ryd ilə səsvermə üçün videonu yenidən yüklə</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Sahib tərəfindən gizlədilib</string>
-  <string name="morphe_ryd_shorts_title">\"Shorts\"da bəyənməmə sayını göstər</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
   <string name="morphe_ryd_estimated_like_title">Təxmini bəyənmələri göstər</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
@@ -861,10 +909,6 @@ Sonradan qapadılarsa, UI səhvlərin önləmək üçün tətbiq məlumatların 
   <string name="morphe_video_quality_default_mobile_title">Mobil şəbəkədə ilkin video keyfiyyəti</string>
   <string name="morphe_shorts_quality_default_wifi_title">Wi-Fi şəbəkəsində ilkin Shorts keyfiyyəti</string>
   <string name="morphe_shorts_quality_default_mobile_title">Mobil şəbəkədə ilkin Shorts keyfiyyəti</string>
-  <string name="morphe_remember_video_quality_mobile">mobil</string>
-  <string name="morphe_remember_video_quality_wifi">wi-fi</string>
-  <string name="morphe_remember_video_quality_toast">İlkin %1$s keyfiyyəti %2$s kimi dəyişdi</string>
-  <string name="morphe_remember_video_quality_toast_shorts">Shorts-un %1$s keyfiyyəti %2$s olaraq dəyişdirildi</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
@@ -891,7 +935,6 @@ Məhdudiyyətlər:
 • Bəzi cihazlar AVC-ni zorlaya bilməz"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Qabaqcıl video keyfiyyət siyahısın göstər</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Premium keyfiyyət seçimlərini gizlət</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->

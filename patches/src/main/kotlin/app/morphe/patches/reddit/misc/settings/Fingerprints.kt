@@ -79,3 +79,4 @@ internal object WebBrowserActivityOnCreateFingerprint : Fingerprint(
     ),
     strings = listOf("com.reddit.extra.initial_url")
 )
+

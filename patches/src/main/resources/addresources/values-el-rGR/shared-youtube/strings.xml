@@ -20,6 +20,19 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Επανεκκινήστε για να ολοκληρωθεί η διαδικασία</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Όνομα εφαρμογής</string>
+  <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_title">Εξωτερικές λήψεις</string>
+  <string name="morphe_external_downloader_name_title">Όνομα πακέτου εφαρμογής λήψης</string>
+  <string name="morphe_external_downloader_name_summary">Όνομα πακέτου της εγκατεστημένης εξωτερικής εφαρμογής σας για λήψεις</string>
+  <string name="morphe_external_downloader_flyout_button_title">Αντικατάσταση κουμπιού αναδυόμενου παραθύρου ροής/αναζήτησης</string>
+  <string name="morphe_external_downloader_other_item_hint">Εισαγάγετε το όνομα πακέτου</string>
+  <string name="morphe_external_downloader_other_item">Άλλο</string>
+  <string name="morphe_external_downloader_not_found_title">Η εφαρμογή δεν είναι εγκατεστημένη</string>
+  <string name="morphe_external_downloader_not_installed_warning">Το %s δεν είναι εγκατεστημένο. Παρακαλώ εγκαταστήστε το.</string>
+  <string name="morphe_external_downloader_package_not_found_warning">"Δεν ήταν δυνατή η εύρεση εγκατεστημένης εφαρμογής με όνομα πακέτου: %s
+
+Επαληθεύστε ότι το όνομα πακέτου είναι σωστό και ότι η εφαρμογή είναι εγκατεστημένη"</string>
+  <string name="morphe_external_downloader_empty_warning">Το όνομα πακέτου δεν είναι δυνατό να είναι κενό</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Προσαρμοσμένο</string>
   <string name="morphe_custom_branding_icon_title">Εικονίδιο εφαρμογής</string>

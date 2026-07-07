@@ -21,6 +21,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">হেডার লোগো</string>
   <string name="morphe_header_logo_entry_1">ডিফল্ট</string>
   <string name="morphe_header_logo_entry_3">ব্যবহারকারী</string>
+  <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_summary">থার্ড-পার্টি ডাউনলোড করার অ্যাপের মাধ্যমে মিউজিক ভিডিও, পডকাস্ট বা গান ডাউনলোড করুন</string>
+  <string name="morphe_external_downloader_action_button_title">ডাউনলোড অ্যাকশন বোতামটি ওভাররাইড করুন</string>
+  <string name="morphe_external_downloader_action_button_summary">আপনার বাহ্যিক ডাউনলোডার দিয়ে YouTube Music-এর বিল্টইন ডাউনলোড ফাংশন প্রতিস্থাপন করে</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">মর্ফ সম্পর্কে</string>

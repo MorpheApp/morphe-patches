@@ -284,22 +284,12 @@ Rajoitukset:
   <string name="morphe_disable_chapter_skip_double_tap_summary">Poistaa käytöstä kaksoisnapautusliikkeen, joka ohittaa luvut, mikä voi vahingossa laukaistua yhdellä sormella</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Ulkoiset lataukset</string>
-  <string name="morphe_external_downloader_screen_summary">Lataa videoita kolmannen osapuolen lataussovelluksilla</string>
+  <string name="morphe_external_downloader_screen_summary">Lataa videoita, podcasteja tai kappaleita kolmannen osapuolen lataussovelluksilla</string>
   <string name="morphe_external_downloader_title">Näytä ulkoinen lataus -painike</string>
   <string name="morphe_external_downloader_summary">Näyttää päällekkäisen painikkeen videotoistimessa, joka avaa ulkoisen lataussovelluksesi</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">Korvaa Lataa-toimintopainike</string>
   <string name="morphe_external_downloader_action_button_summary">Korvaa YouTuben sisäänrakennetun lataustoiminnon ulkoisella lataussovelluksellasi</string>
-  <string name="morphe_external_downloader_name_title">Lataussovelluksen paketin nimi</string>
-  <string name="morphe_external_downloader_name_summary">Asennetun ulkoisen lataussovelluksen paketin nimi</string>
-  <string name="morphe_external_downloader_other_item_hint">Anna paketin nimi</string>
-  <string name="morphe_external_downloader_other_item">Muu</string>
-  <string name="morphe_external_downloader_not_found_title">Sovellusta ei ole asennettu</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s ei ole asennettu. Asenna se.</string>
-  <string name="morphe_external_downloader_package_not_found_warning">"Ei löytynyt asennettua sovellusta paketin nimellä: %s
-
-Tarkista, että paketin nimi on oikein ja sovellus on asennettu"</string>
-  <string name="morphe_external_downloader_empty_warning">Paketin nimi ei voi olla tyhjä</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Ääniratateksti</string>
   <string name="morphe_vot_screen_summary">Lue videon tekstitykset ääneen laitteen tekstistä puheeksi -toiminnolla, synkronoitu toiston kanssa</string>
@@ -751,7 +741,6 @@ Näyttääksesi Ääniraitavalikon, vaihda \"Naamioi videovirrat\" -asetukseksi 
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Piilota Tykkää-painikkeen suihkulähdeanimaatio</string>
   <string name="morphe_hide_shorts_like_button_title">Piilota Tykkää-painike</string>
-  <string name="morphe_hide_shorts_dislike_button_title">Piilota En tykkää -painike</string>
   <string name="morphe_hide_shorts_comments_button_title">Piilota Kommentit-painike</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Piilota Jaa-painike</string>
@@ -813,8 +802,6 @@ Asetukset → Toisto (tai Automaattinen toisto) → Toista seuraava video"</stri
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Omistajan piilottama</string>
   <string name="morphe_ryd_enabled_title">Ota Return YouTube Dislike käyttöön</string>
-  <string name="morphe_ryd_shorts_title">Näytä ei-tykkykset Shortseissa</string>
-  <string name="morphe_ryd_shorts_summary">Rajoitus: Ei-tykkäykset eivät välttämättä näy peitetilassa</string>
   <string name="morphe_ryd_dislike_percentage_title">Näytä ei-tykkäykset prosentteina</string>
   <string name="morphe_ryd_dislike_percentage_summary">Näyttää ei-tykkäykset tykkäysten prosenttiosuutena numeron sijaan</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
@@ -824,6 +811,9 @@ Asetukset → Toisto (tai Automaattinen toisto) → Toista seuraava video"</stri
   <string name="morphe_ryd_estimated_like_summary">Näyttää arvioidun tykkäysmäärän videoissa, joissa luoja on poistanut tykkäykset käytöstä</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Näytä yhteysvirheilmoitukset</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Näyttää ilmoituksen, kun Return YouTube Dislike -palvelin ei ole käytettävissä</string>
+  <string name="morphe_ryd_attribution_summary">"Data on tarjotaan Return YouTube Dislike API:n avulla
+
+Napauta tästä avataksesi ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Tämän laitteen ReturnYouTubeDislike API -tilastot</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API-vasteaika, keskiarvo</string>
@@ -947,6 +937,8 @@ Jos tämä poistetaan myöhemmin käytöstä, on suositeltavaa tyhjentää sovel
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Estää pienennetyn soittimen vetämisen näytön eri kulmiin</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Poista vaakasuuntainen vetoele käytöstä</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Estää minisoittimen sulkemisen vetämällä sitä vaakasuunnassa näytöltä pois</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Poista toisto vaakasuuntaisella vedolla</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Toisto pysähtyy, kun minisoitin vedetään näytön ulkopuolelle</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Piilota peittokuvan painikkeet</string>
   <string name="morphe_miniplayer_width_dip_title">Oletuskoko</string>
   <string name="morphe_miniplayer_width_dip_summary">Aseta aloitusnäytän koko pikseleinä</string>
@@ -1054,10 +1046,10 @@ Napauta tästä saadaksesi lisätietoja DeArrowista"</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Käyttää manuaalista laatuvalintaasi kaikkiin tuleviin Shortseihin</string>
   <string name="morphe_shorts_quality_default_wifi_title">Shorts-oletuslaatu Wi-Fi-verkossa</string>
   <string name="morphe_shorts_quality_default_mobile_title">Shorts-oletuslaatu mobiiliverkossa</string>
-  <string name="morphe_remember_video_quality_mobile">mobiili</string>
-  <string name="morphe_remember_video_quality_wifi">Wi-Fi</string>
-  <string name="morphe_remember_video_quality_toast">%1$s-oletuslaatu muutettiin: %2$s</string>
-  <string name="morphe_remember_video_quality_toast_shorts">Shortsien %1$s-laatu muutettiin: %2$s</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Oletusmatkapuhelinten laatu muutettiin: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Oletus-Wi-Fi-laatu muutettiin: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_mobile">Shortsien matkapuhelinten laatu muutettiin: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_wifi">Shortsien Wi-Fi-laatu muutettiin: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Näytä toistonopeuden painike</string>
   <string name="morphe_playback_speed_dialog_button_summary">Napauta ja pidä painettuna nollataksesi nopeus oletusarvoon</string>
@@ -1098,12 +1090,13 @@ Rajoitukset:
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Käyttääksesi tätä ominaisuutta, aseta \"Naamioi videovirrat\" Android VR:ksi tai Android Studioksi</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Näytä edistynyt videolaatuvalikko</string>
+  <string name="morphe_advanced_video_quality_menu_title">Avaa \'Laatu\'-valikon lisääsetukset</string>
+  <string name="morphe_advanced_video_quality_menu_summary">Ohittaa laadunvalintavalikon ja avaa Laatu-valikon lisääsetukset suoraan</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Piilota kalliiden laadun valinnat</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">Priorisoida video-laatu</string>
-  <string name="morphe_prioritize_video_quality_summary">Priorisoi korkein videon laatu koodekin tehokkuuden sijaan</string>
+  <string name="morphe_prioritize_video_quality_summary">Priorisoi korkein saatavilla oleva videon laatu koodekin tehokkuuden sijaan</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Salli Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Sallii ohjelmistopohjaisen AV1-dekoodauksen, kun käytetään Android VR -asiakasohjelmaa</string>

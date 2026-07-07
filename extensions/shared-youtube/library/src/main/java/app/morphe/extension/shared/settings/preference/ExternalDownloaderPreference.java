@@ -1,4 +1,11 @@
-package app.morphe.extension.youtube.settings.preference;
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
+package app.morphe.extension.shared.settings.preference;
 
 import static app.morphe.extension.shared.StringRef.sf;
 import static app.morphe.extension.shared.StringRef.str;
@@ -30,16 +37,42 @@ import java.util.function.Function;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
-import app.morphe.extension.youtube.settings.Settings;
 
 /**
- * A custom ListPreference for selecting an external downloader package with checkmarks and EditText for custom package names.
+ * A shared base ListPreference for selecting an external downloader package with checkmarks and EditText for custom package names.
  */
 @SuppressWarnings({"unused", "deprecation"})
 public class ExternalDownloaderPreference extends CustomDialogListPreference {
+
+    public static void launchExternalDownloader(String videoId, @Nullable Context context, String url) {
+        try {
+            Objects.requireNonNull(videoId);
+            if (context == null) {
+                context = Utils.getActivity();
+            }
+            Context contextFinal = context;
+            Logger.printDebug(() -> "Launching external downloader: " + videoId + " context: " + contextFinal);
+
+            // Trim string to avoid any accidental whitespace.
+            var downloaderPackageName = SharedYouTubeSettings.EXTERNAL_DOWNLOADER_PACKAGE_NAME.get().trim();
+
+            // If the package is not installed, show a dialog.
+            if (showDialogIfAppIsNotInstalled(context, downloaderPackageName)) {
+                return;
+            }
+
+            Intent intent = new Intent("android.intent.action.SEND");
+            intent.setType("text/plain");
+            intent.setPackage(downloaderPackageName);
+            intent.putExtra("android.intent.extra.TEXT", url);
+            context.startActivity(intent);
+        } catch (Exception ex) {
+            Logger.printException(() -> "launchExternalDownloader failure", ex);
+        }
+    }
 
     /**
      * Enum representing supported external downloaders with their display names, package names, and download URLs.
@@ -156,6 +189,14 @@ public class ExternalDownloaderPreference extends CustomDialogListPreference {
         super(context);
     }
 
+    protected String getCurrentPackageName() {
+        return SharedYouTubeSettings.EXTERNAL_DOWNLOADER_PACKAGE_NAME.get();
+    }
+
+    protected String getDefaultPackageName() {
+        return SharedYouTubeSettings.EXTERNAL_DOWNLOADER_PACKAGE_NAME.defaultValue;
+    }
+
     private void updateEntries() {
         List<CharSequence> entries = new ArrayList<>();
         List<CharSequence> entryValues = new ArrayList<>();
@@ -197,7 +238,7 @@ public class ExternalDownloaderPreference extends CustomDialogListPreference {
         updateEntries();
 
         Context context = getContext();
-        String packageName = Settings.EXTERNAL_DOWNLOADER_PACKAGE_NAME.get();
+        String packageName = getCurrentPackageName();
 
         // Create the main layout for the dialog content.
         LinearLayout contentLayout = new LinearLayout(context);
@@ -250,7 +291,7 @@ public class ExternalDownloaderPreference extends CustomDialogListPreference {
                 editText.setText(selectedApp.packageName);
                 editText.setEnabled(false); // Disable editing for predefined options.
             } else {
-                String savedPackageName = Settings.EXTERNAL_DOWNLOADER_PACKAGE_NAME.get();
+                String savedPackageName = getCurrentPackageName();
                 editText.setText(Downloader.findByPackageName(savedPackageName) == null
                         ? savedPackageName // If the user is clicking through options then retain existing other app.
                         : ""
@@ -311,7 +352,7 @@ public class ExternalDownloaderPreference extends CustomDialogListPreference {
                 () -> {}, // Cancel button action (dismiss only).
                 str("morphe_settings_reset"),
                 () -> { // Reset action.
-                    String defaultValue = Settings.EXTERNAL_DOWNLOADER_PACKAGE_NAME.defaultValue;
+                    String defaultValue = getDefaultPackageName();
                     editText.setText(defaultValue);
                     editText.setSelection(defaultValue.length());
                     editText.setEnabled(false); // Disable editing on reset.

@@ -44,7 +44,7 @@ internal val hidePremiumVideoQualityPatch = bytecodePatch {
             """
         )
 
-        val currentVideoFormatConstructorFingerprint = Fingerprint(
+        Fingerprint(
             classFingerprint = CurrentVideoFormatToStringFingerprint,
             accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
             returnType = "V",
@@ -55,9 +55,7 @@ internal val hidePremiumVideoQualityPatch = bytecodePatch {
                     type = videoQualityArray
                 )
             )
-        )
-
-        currentVideoFormatConstructorFingerprint.let {
+        ).let {
             it.method.apply {
                 val index = it.instructionMatches.last().index
                 val register = getInstruction<TwoRegisterInstruction>(index).registerA

@@ -284,22 +284,12 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">停用雙指輕點跳過章節的動作，這可能會因為單指操作而意外觸發</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">外部下載</string>
-  <string name="morphe_external_downloader_screen_summary">使用第三方下載應用程式下載影片</string>
+  <string name="morphe_external_downloader_screen_summary">使用第三方下載應用程式下載影片、播客或歌曲</string>
   <string name="morphe_external_downloader_title">顯示外部下載按鈕</string>
   <string name="morphe_external_downloader_summary">顯示影片播放器中的疊加按鈕，以開啟您的外部下載程式</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">覆蓋「下載」動作按鈕</string>
   <string name="morphe_external_downloader_action_button_summary">將 YouTube 的內建下載功能替換為您的外部下載程式</string>
-  <string name="morphe_external_downloader_name_title">下載器套件名稱</string>
-  <string name="morphe_external_downloader_name_summary">您已安裝的外部下載器應用程式的套件名稱</string>
-  <string name="morphe_external_downloader_other_item_hint">輸入套件名稱</string>
-  <string name="morphe_external_downloader_other_item">其他</string>
-  <string name="morphe_external_downloader_not_found_title">應用程式未安裝</string>
-  <string name="morphe_external_downloader_not_installed_warning">未安裝 %s。請前往安裝。</string>
-  <string name="morphe_external_downloader_package_not_found_warning">"無法找到已安裝的應用程式，套件名稱為：%s
-
-請驗證套件名稱是否正確以及應用程式是否已安裝"</string>
-  <string name="morphe_external_downloader_empty_warning">套件名稱不能為空</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">語音轉錄翻譯</string>
   <string name="morphe_vot_screen_summary">使用裝置上的文字轉語音功能朗讀影片字幕，並與播放同步</string>
@@ -751,7 +741,6 @@ Second \"item\" text"</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">隱藏喜歡按鈕的噴泉動畫</string>
   <string name="morphe_hide_shorts_like_button_title">隱藏「喜歡」按鈕</string>
-  <string name="morphe_hide_shorts_dislike_button_title">隱藏「不喜歡」按鈕</string>
   <string name="morphe_hide_shorts_comments_button_title">隱藏「留言」按鈕</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">隱藏「分享」按鈕</string>
@@ -813,8 +802,6 @@ Second \"item\" text"</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">已由擁有者隱藏</string>
   <string name="morphe_ryd_enabled_title">啟用 Return YouTube Dislike</string>
-  <string name="morphe_ryd_shorts_title">在 Shorts 中顯示不喜歡人數</string>
-  <string name="morphe_ryd_shorts_summary">限制：在無痕模式下可能不會顯示不喜歡數</string>
   <string name="morphe_ryd_dislike_percentage_title">以百分比顯示不喜歡數</string>
   <string name="morphe_ryd_dislike_percentage_summary">以喜歡數的百分比顯示不喜歡數，而不是數量</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
@@ -950,6 +937,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">防止將迷你播放器拖放到螢幕的不同角落</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">停用水平拖曳手勢</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">防止通過水平滑動迷你播放器關閉螢幕</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">停用水平滑動播放</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">迷你播放器滑離螢幕時，播放將會暫停</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">隱藏暫停時顯示的按鈕</string>
   <string name="morphe_miniplayer_width_dip_title">預設大小</string>
   <string name="morphe_miniplayer_width_dip_summary">設定開始的螢幕大小（以像素為單位）</string>
@@ -1057,10 +1046,10 @@ Second \"item\" text"</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">顯示播放速度按鈕</string>
   <string name="morphe_shorts_quality_default_wifi_title">Wi-Fi 網路下的預設 Shorts 畫質</string>
   <string name="morphe_shorts_quality_default_mobile_title">行動網路下的預設 Shorts 畫質</string>
-  <string name="morphe_remember_video_quality_mobile">行動數據</string>
-  <string name="morphe_remember_video_quality_wifi">Wi-Fi</string>
-  <string name="morphe_remember_video_quality_toast">已將預設 %1$s 畫質變更為：%2$s</string>
-  <string name="morphe_remember_video_quality_toast_shorts">已將 Shorts %1$s 畫質變更為：%2$s</string>
+  <string name="morphe_remember_video_quality_toast_mobile">已將預設行動網路畫質變更為：%s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">已將預設 Wi-Fi 畫質變更為：%s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_mobile">已將 Shorts 行動網路畫質變更為：%s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_wifi">已將 Shorts Wi-Fi 畫質變更為：%s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">點擊並按住以重設為預設速度</string>
   <string name="morphe_playback_speed_dialog_button_summary">顯示畫質按鈕</string>
@@ -1101,12 +1090,13 @@ Second \"item\" text"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">允許在使用 Android VR 用戶端時進行軟體 AV1 解碼</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">顯示進階影片畫質選單</string>
+  <string name="morphe_advanced_video_quality_menu_title">開啟「進階」畫質選單</string>
+  <string name="morphe_advanced_video_quality_menu_summary">略過畫質選單，直接開啟進階畫質選單</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">隱藏 Premium 品質選項</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">優先影片品質</string>
-  <string name="morphe_prioritize_video_quality_summary">優先考慮影片品質，而不是編解碼器效率</string>
+  <string name="morphe_prioritize_video_quality_summary">優先考慮可用的最高視訊畫質，而非編碼器效率</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">允許 Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">啟動 Return YouTube Dislike</string>

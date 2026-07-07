@@ -60,7 +60,7 @@ val changeFormFactorPatch = bytecodePatch(
             )
         )
 
-        val createPlayerRequestBodyWithModelFingerprint = Fingerprint(
+        Fingerprint(
             accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
             returnType = "L",
             parameters = listOf(),
@@ -72,9 +72,7 @@ val changeFormFactorPatch = bytecodePatch(
                     location = MatchAfterWithin(50)
                 )
             )
-        )
-
-        createPlayerRequestBodyWithModelFingerprint.let {
+        ).let {
             it.method.apply {
                 val index = it.instructionMatches.last().index
                 val register = getInstruction<TwoRegisterInstruction>(index).registerA

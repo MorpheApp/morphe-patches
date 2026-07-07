@@ -48,13 +48,11 @@ public class RememberVideoQualityPatch {
 
     public static void saveDefaultQuality(int qualityResolution) {
         final boolean shortPlayerOpen = ShortsPlayerState.isOpen();
-        String networkTypeMessage;
+        final boolean isMobile = Utils.getNetworkType() == NetworkType.MOBILE;
         IntegerSetting qualitySetting;
-        if (Utils.getNetworkType() == NetworkType.MOBILE) {
-            networkTypeMessage = str("morphe_remember_video_quality_mobile");
+        if (isMobile) {
             qualitySetting = shortPlayerOpen ? shortsQualityMobile : videoQualityMobile;
         } else {
-            networkTypeMessage = str("morphe_remember_video_quality_wifi");
             qualitySetting = shortPlayerOpen ? shortsQualityWifi : videoQualityWifi;
         }
 
@@ -67,13 +65,17 @@ public class RememberVideoQualityPatch {
 
         if (Settings.REMEMBER_VIDEO_QUALITY_LAST_SELECTED_TOAST.get()) {
             String qualityLabel = qualityResolution + "p";
-            Utils.showToastShort(str(
-                    shortPlayerOpen
-                            ? "morphe_remember_video_quality_toast_shorts"
-                            : "morphe_remember_video_quality_toast",
-                    networkTypeMessage,
-                    qualityLabel)
-            );
+            final String toastStringId;
+            if (shortPlayerOpen && isMobile) {
+                toastStringId = "morphe_remember_video_quality_toast_shorts_mobile";
+            } else if (shortPlayerOpen) {
+                toastStringId = "morphe_remember_video_quality_toast_shorts_wifi";
+            } else if (isMobile) {
+                toastStringId = "morphe_remember_video_quality_toast_mobile";
+            } else {
+                toastStringId = "morphe_remember_video_quality_toast_wifi";
+            }
+            Utils.showToastShort(str(toastStringId, qualityLabel));
         }
     }
 

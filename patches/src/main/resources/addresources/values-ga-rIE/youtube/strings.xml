@@ -284,22 +284,12 @@ Teorainneacha:
   <string name="morphe_disable_chapter_skip_double_tap_summary">Díchumasaíonn sé an ghluaiseacht sconna dúbailte dhá mhéar a scipeálann caibidlí, a d\'fhéadfaí a spreagadh de thaisme le méar amháin.</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Íoslódálacha seachtracha</string>
-  <string name="morphe_external_downloader_screen_summary">Íoslódáil físeáin le haipeanna íoslódála tríú páirtí</string>
+  <string name="morphe_external_downloader_screen_summary">Íoslódáil físeáin, podchraoltaí, nó amhráin le haipeanna íoslódála tríú páirtí</string>
   <string name="morphe_external_downloader_title">Taispeáin cnaipe íoslódála seachtrach</string>
   <string name="morphe_external_downloader_summary">Taispeánann sé cnaipe forleagan sa seinnteoir físe a osclaíonn d’íoslódálaí seachtrach</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">Sáraigh an cnaipe gníomhaíochta Íoslódála</string>
   <string name="morphe_external_downloader_action_button_summary">Cuireann sé feidhm íoslódála ionsuite YouTube in ionad d’íoslódálaí seachtrach</string>
-  <string name="morphe_external_downloader_name_title">Ainm pacáiste íoslódálaí</string>
-  <string name="morphe_external_downloader_name_summary">Ainm an phacáiste de d\'aip íoslódálaí seachtrach suiteáilte</string>
-  <string name="morphe_external_downloader_other_item_hint">Cuir isteach ainm an phacáiste</string>
-  <string name="morphe_external_downloader_other_item">Eile</string>
-  <string name="morphe_external_downloader_not_found_title">Níl an aip suiteáilte</string>
-  <string name="morphe_external_downloader_not_installed_warning">Níl %s suiteáilte. Suiteáil é le do thoil.</string>
-  <string name="morphe_external_downloader_package_not_found_warning">"Níorbh fhéidir an aip suiteáilte leis an ainm pacáiste: %s a aimsiú
-
-Fíoraigh go bhfuil ainm an phacáiste ceart agus go bhfuil an aip suiteáilte"</string>
-  <string name="morphe_external_downloader_empty_warning">Ní féidir ainm an phacáiste a fhágáil folamh</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Aistriúchán gutha</string>
   <string name="morphe_vot_screen_summary">Léigh fotheidil físe os ard ag baint úsáide as téacs-go-hurlabhra ar an ngléas, sioncrónaithe le hathsheinm</string>
@@ -751,7 +741,6 @@ Chun an roghchlár 'Rian Fuaime' a thaispeáint, athraigh 'Sruthanna físe bréi
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Folaigh an cnaipe Is maith liom \'beochan tobair\'</string>
   <string name="morphe_hide_shorts_like_button_title">Folaigh cnaipe Is maith liom</string>
-  <string name="morphe_hide_shorts_dislike_button_title">Folaigh cnaipe Ní maith liom</string>
   <string name="morphe_hide_shorts_comments_button_title">Folaigh cnaipe na Tuairimí</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Folaigh cnaipe Roinn</string>
@@ -813,8 +802,6 @@ Socruithe → Athsheinm (nó Uathsheinm) → Uathsheinm an chéad fhíseán eile
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">I bhfolach ag an úinéir</string>
   <string name="morphe_ryd_enabled_title">Cumasaigh Filleadh ar Dhí-Thaitin YouTube</string>
-  <string name="morphe_ryd_shorts_title">Taispeáin \'ní maith liom\' ar Shorts</string>
-  <string name="morphe_ryd_shorts_summary">Teorainn: B’fhéidir nach dtaispeánfar “dí-mhaith” i mód Incognito.</string>
   <string name="morphe_ryd_dislike_percentage_title">Taispeáin nach maith liom mar chéatadán</string>
   <string name="morphe_ryd_dislike_percentage_summary">Taispeánann sé nach maith leat mar chéatadán de na maith leat seachas uimhir</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
@@ -950,6 +937,8 @@ Má mhúchtar é níos déanaí, moltar sonraí na haipe a ghlanadh chun fabhtan
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Coscann sé an t-imreoir íoslaghdaithe a tharraingt chuig coirnéil éagsúla den scáileán.</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Díchumasaigh gotha tarraingthe cothrománach</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Coscann sé seo dúnadh an mhionimreoir trína shlaodadh go cothrománach as an scáileán.</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Díchumasaigh athsheinm le tarraing chothrománach</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Cuirfear sos ar athsheinm nuair a tharraingítear an mion-seinnteoir den scáileán</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Folaigh cnaipí forleagan</string>
   <string name="morphe_miniplayer_width_dip_title">Méid réamhshocraithe</string>
   <string name="morphe_miniplayer_width_dip_summary">Socraigh an méid tosaigh ar an scáileán, i bpicteilíní</string>
@@ -1057,10 +1046,10 @@ Tapáil anseo chun DeArrow.ajay.app a oscailt."</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Cuireann sé seo do rogha cáilíochta láimhe i bhfeidhm ar gach Gearrscannán amach anseo</string>
   <string name="morphe_shorts_quality_default_wifi_title">Cáilíocht réamhshocraithe Shorts ar líonra Wi-Fi</string>
   <string name="morphe_shorts_quality_default_mobile_title">Cáilíocht réamhshocraithe Shorts ar líonra soghluaiste</string>
-  <string name="morphe_remember_video_quality_mobile">soghluaiste</string>
-  <string name="morphe_remember_video_quality_wifi">Wi-Fi</string>
-  <string name="morphe_remember_video_quality_toast">Athraíodh cáilíocht réamhshocraithe %1$s go: %2$s</string>
-  <string name="morphe_remember_video_quality_toast_shorts">Athraíodh cáilíocht Shorts %1$s go: %2$s</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Athraíodh cáilíocht réamhshocraithe móbaill go: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Athraíodh cáilíocht réamhshocraithe Wi-Fi go: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_mobile">Athraíodh cáilíocht móbaill Shorts go: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_wifi">Athraíodh cáilíocht Wi-Fi Shorts go: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Taispeáin cnaipe luas athsheinm</string>
   <string name="morphe_playback_speed_dialog_button_summary">Tapáil agus coinnigh chun an luas a athshocrú go dtí an luas réamhshocraithe</string>
@@ -1101,12 +1090,13 @@ Teorainneacha:
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Chun an ghné seo a úsáid, socraigh \'Sruthanna físe bréige\' go Android VR nó Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Taispeáin roghchlár ardcháilíochta físeáin</string>
+  <string name="morphe_advanced_video_quality_menu_title">Oscail roghchlár cáilíochta \'Ard\'</string>
+  <string name="morphe_advanced_video_quality_menu_summary">Léimeann sé an roghchlár um roghnú cáilíochta agus osclaíonn sé an roghchlár Ardchaighdeán go díreach</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Folaigh roghanna cáilíochta Préimhe</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">Tabhair tús áite do cháilíocht físe</string>
-  <string name="morphe_prioritize_video_quality_summary">Tugann sé tús áite don fhíseán den chaighdeán is airde thar éifeachtúlacht an chóidéic</string>
+  <string name="morphe_prioritize_video_quality_summary">Tugann sé tosaíocht don chaighdeán físeáin is airde atá ar fáil thar éifeachtúlacht codec</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Ceadaigh Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Ceadaíonn sé díchódú bogearraí AV1 agus cliant VR Android á úsáid</string>

@@ -284,22 +284,12 @@ Limitaciones:
   <string name="morphe_disable_chapter_skip_double_tap_summary">Desactiva el gesto de doble toque con dos dedos que omite capítulos, lo que podría activarse accidentalmente con un dedo</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Descargas externas</string>
-  <string name="morphe_external_downloader_screen_summary">Descarga vídeos con aplicaciones de descarga de terceros</string>
+  <string name="morphe_external_downloader_screen_summary">Descarga videos, podcasts o canciones con aplicaciones de descarga de terceros</string>
   <string name="morphe_external_downloader_title">Mostrar botón de descarga externa</string>
   <string name="morphe_external_downloader_summary">Muestra un botón superpuesto en el reproductor de vídeo que abre tu descargador externo</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">Reemplazar botón de acción de descarga</string>
   <string name="morphe_external_downloader_action_button_summary">Reemplaza la función de descarga integrada de YouTube con tu descargador externo</string>
-  <string name="morphe_external_downloader_name_title">Nombre del paquete del descargador</string>
-  <string name="morphe_external_downloader_name_summary">Nombre del paquete de tu aplicación de descarga externa instalada</string>
-  <string name="morphe_external_downloader_other_item_hint">Introduce el nombre del paquete</string>
-  <string name="morphe_external_downloader_other_item">Otro</string>
-  <string name="morphe_external_downloader_not_found_title">Aplicación no instalada</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s no está instalado. Por favor, instálelo.</string>
-  <string name="morphe_external_downloader_package_not_found_warning">"No se pudo encontrar la aplicación instalada con el nombre de paquete: %s
-
-Verifica que el nombre del paquete sea correcto y que la aplicación esté instalada"</string>
-  <string name="morphe_external_downloader_empty_warning">El nombre del paquete no puede estar vacío</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Traducción con voz</string>
   <string name="morphe_vot_screen_summary">Lee en voz alta los subtítulos del video utilizando la conversión de texto a voz del dispositivo, sincronizada con la reproducción</string>
@@ -753,7 +743,6 @@ Para mostrar el menú \"Pista de audio\", cambia \"Falsificar transmisiones de v
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Ocultar animación de fuente del botón \"Me gusta\"</string>
   <string name="morphe_hide_shorts_like_button_title">Ocultar botón \"Me gusta\"</string>
-  <string name="morphe_hide_shorts_dislike_button_title">Ocultar botón \"No me gusta\"</string>
   <string name="morphe_hide_shorts_comments_button_title">Ocultar botón \"Comentarios\"</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Ocultar botón \"Compartir\"</string>
@@ -815,8 +804,6 @@ Configuración → Reproducción (o Reproducción automática) → Reproducción
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Oculto por el propietario</string>
   <string name="morphe_ryd_enabled_title">Activar Return YouTube Dislike</string>
-  <string name="morphe_ryd_shorts_title">Mostrar \"No me gusta\" en Shorts</string>
-  <string name="morphe_ryd_shorts_summary">Limitación: Es posible que los \"No me gusta\" no aparezcan en el modo incógnito</string>
   <string name="morphe_ryd_dislike_percentage_title">Mostrar los \"No me gusta\" como porcentaje</string>
   <string name="morphe_ryd_dislike_percentage_summary">Muestra los \"No me gusta\" como un porcentaje de los me gusta en lugar de un número</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
@@ -952,6 +939,8 @@ Si se desactiva posteriormente, se recomienda borrar los datos de la aplicación
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Evita arrastrar el reproductor minimizado a diferentes esquinas de la pantalla</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Desactivar gesto de arrastre horizontal</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Evita cerrar el reproductor en miniatura deslizando horizontalmente la pantalla</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Desactivar la reproducción con arrastre horizontal</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">La reproducción se pausará cuando el mini reproductor se arrastre fuera de la pantalla</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Ocultar botones de superposición</string>
   <string name="morphe_miniplayer_width_dip_title">Tamaño predeterminado</string>
   <string name="morphe_miniplayer_width_dip_summary">Establece el tamaño inicial en pantalla, en píxeles</string>
@@ -1059,10 +1048,10 @@ Pulsa aquí para saber más sobre DeArrow"</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Aplica tu selección de calidad manual a todos los Shorts futuros</string>
   <string name="morphe_shorts_quality_default_wifi_title">Calidad predeterminada de Shorts en la red Wi-Fi</string>
   <string name="morphe_shorts_quality_default_mobile_title">Calidad predeterminada de Shorts en la red móvil</string>
-  <string name="morphe_remember_video_quality_mobile">móvil</string>
-  <string name="morphe_remember_video_quality_wifi">wifi</string>
-  <string name="morphe_remember_video_quality_toast">Se ha cambiado la calidad %1$s predeterminada a: %2$s</string>
-  <string name="morphe_remember_video_quality_toast_shorts">Se ha cambiado la calidad %1$s de los Shorts a: %2$s</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Se ha cambiado la calidad predeterminada de datos móviles a: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Se ha cambiado la calidad predeterminada de Wi-Fi a: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_mobile">Se ha cambiado la calidad de datos móviles de los Shorts a: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_wifi">Se ha cambiado la calidad de Wi-Fi de los Shorts a: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Mostrar botón de velocidad de reproducción</string>
   <string name="morphe_playback_speed_dialog_button_summary">Toca y mantén para restablecer la velocidad a la predeterminada</string>
@@ -1103,12 +1092,13 @@ Limitaciones:
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Para usar esta función, establece \'Manipular transmisiones de vídeo\' a Android VR o Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Mostrar menú avanzado de calidad de vídeo</string>
+  <string name="morphe_advanced_video_quality_menu_title">Abrir el menú de calidad \'Avanzada\'</string>
+  <string name="morphe_advanced_video_quality_menu_summary">Omite el menú de selección de calidad y abre el menú de calidad Avanzada directamente</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Ocultar opciones de calidad premium</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">Priorizar la calidad del vídeo</string>
-  <string name="morphe_prioritize_video_quality_summary">Prioriza la calidad de vídeo más alta sobre la eficiencia del códec</string>
+  <string name="morphe_prioritize_video_quality_summary">Prioriza la calidad de video más alta sobre la eficiencia del códec</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Permitir Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Permite la decodificación AV1 por software al usar el cliente Android VR</string>

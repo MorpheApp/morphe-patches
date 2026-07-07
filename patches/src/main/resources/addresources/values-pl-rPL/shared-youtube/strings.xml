@@ -20,6 +20,19 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Uruchom ponownie, aby dokończyć konfigurację</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Nazwa aplikacji</string>
+  <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_title">Zewnętrzne pobieranie</string>
+  <string name="morphe_external_downloader_name_title">Nazwa pakietu aplikacji do pobierania</string>
+  <string name="morphe_external_downloader_name_summary">Nazwa pakietu zainstalowanej aplikacji do pobierania</string>
+  <string name="morphe_external_downloader_flyout_button_title">Zastąp przycisk menu kanału</string>
+  <string name="morphe_external_downloader_other_item_hint">Wprowadź nazwę pakietu</string>
+  <string name="morphe_external_downloader_other_item">Inna</string>
+  <string name="morphe_external_downloader_not_found_title">Aplikacja nie jest zainstalowana</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s nie jest zainstalowany. Zainstaluj go.</string>
+  <string name="morphe_external_downloader_package_not_found_warning">"Nie można znaleźć zainstalowanej aplikacji o nazwie pakietu: %s
+
+Upewnij się, że nazwa pakietu jest poprawna i czy aplikacja jest zainstalowana"</string>
+  <string name="morphe_external_downloader_empty_warning">Nazwa pakietu nie może być pusta</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Własna</string>
   <string name="morphe_custom_branding_icon_title">Ikona aplikacji</string>

@@ -284,22 +284,12 @@ Beperkings:
   <string name="morphe_disable_chapter_skip_double_tap_summary">Deaktiveer die dubbeltik gebaar met twee vinger wat hoofstukke oorslaan, wat per ongeluk met een vinger geaktiveer kan word</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Eksterne aflaaie</string>
-  <string name="morphe_external_downloader_screen_summary">Laai video\'s af met derdeparty aflaai-programme</string>
+  <string name="morphe_external_downloader_screen_summary">Laai video\'s, podkaste of liedjies af met derdeparty-aflaai-programme</string>
   <string name="morphe_external_downloader_title">Wys eksterne aflaaiknoppie</string>
   <string name="morphe_external_downloader_summary">Wys \'n oorvleiknoppie in video-speler wat jou eksterne aflaaier oopmaak</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">Oorheers aflaai aksie knoppie</string>
   <string name="morphe_external_downloader_action_button_summary">Vervang YouTube se ingeboude aflaaifunksie met jou eksterne aflaaier</string>
-  <string name="morphe_external_downloader_name_title">Downloader pakketnaam</string>
-  <string name="morphe_external_downloader_name_summary">Pakketnaam van jou geïnstalleerde eksterne downloader app</string>
-  <string name="morphe_external_downloader_other_item_hint">Voer die pakketnaam in</string>
-  <string name="morphe_external_downloader_other_item">Ander</string>
-  <string name="morphe_external_downloader_not_found_title">App nie geïnstalleer nie</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s is nie geïnstalleer nie. Installeer dit asseblief.</string>
-  <string name="morphe_external_downloader_package_not_found_warning">"Kon nie geïnstalleerde app met pakketnaam vind nie: %s
-
-Vind die pakketnaam en maak seker dat die app geïnstalleer is"</string>
-  <string name="morphe_external_downloader_empty_warning">Die pakketnaam kan nie leeg wees nie</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Vertaalde stem over</string>
   <string name="morphe_vot_screen_summary">Lees video-onderskrifte hardop voor met behulp van teks-na-spraak op die toestel, gesinkroniseer met die afspeel</string>
@@ -751,7 +741,6 @@ Om die 'Audio Track' menu te wys, verander 'Spoof video streams' na 'Android Ree
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Wegspring Like-knoppie fontein animasie</string>
   <string name="morphe_hide_shorts_like_button_title">Wegspring Like knoppie</string>
-  <string name="morphe_hide_shorts_dislike_button_title">Wegspring Dislike knoppie</string>
   <string name="morphe_hide_shorts_comments_button_title">Wegspring kommentaar knoppie</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Wegspring deel knoppie</string>
@@ -813,8 +802,6 @@ Instellings → Weergawe (of outoplay) → Speel volgende video outomaties"</str
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Versteek deur eienaar</string>
   <string name="morphe_ryd_enabled_title">Aktiveer Return YouTube Dislike</string>
-  <string name="morphe_ryd_shorts_title">Wys nie likes op Shorts</string>
-  <string name="morphe_ryd_shorts_summary">Beperking: Dislikes verskyn dalk nie in inkognitomodus nie</string>
   <string name="morphe_ryd_dislike_percentage_title">Wys dislikes as persentasie</string>
   <string name="morphe_ryd_dislike_percentage_summary">Wys dislikes as \'n persentasie van likes in plaas van \'n getal</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
@@ -950,6 +937,8 @@ Indien later afgeskakel, word dit aanbeveel om die app se data uit te vee om UI-
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Verhoed dat die verkleinde speler na verskillende hoeke van die skerm sleep</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Deaktiveer horisontale sleep gebaar</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Verhoed dat die minispeler gesluit word deur dit horisontaal van die skerm af te swiep</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Deaktiveer afspeel met horisontale drag</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Afspeel sal pouseer wanneer die mini-speler van die skerm af gedra word</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Verberg oorleg knoppies</string>
   <string name="morphe_miniplayer_width_dip_title">Standaardgrootte</string>
   <string name="morphe_miniplayer_width_dip_summary">Stel die begin-aan-skerm-grootte, in pixels</string>
@@ -1057,10 +1046,10 @@ Tik hier om DeArrow.ajay.app oop te maak"</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Pas jou handmatige kwaliteitseleksie toe op alle toekomstige Shorts</string>
   <string name="morphe_shorts_quality_default_wifi_title">Verstek Shorts kwaliteit op mobiele netwerk</string>
   <string name="morphe_shorts_quality_default_mobile_title">Standaard Shorts kwaliteit op mobiele netwerk</string>
-  <string name="morphe_remember_video_quality_mobile">mobiel</string>
-  <string name="morphe_remember_video_quality_wifi">wifi</string>
-  <string name="morphe_remember_video_quality_toast">Verstek %1$s kwaliteit verander na: %2$s</string>
-  <string name="morphe_remember_video_quality_toast_shorts">Het kortvideo %1$s kwaliteit na: %2$s</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Veranderde verstek mobiele kwaliteit na: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Veranderde verstek Wi-Fi kwaliteit na: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_mobile">Veranderde Shorts mobiele kwaliteit na: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_wifi">Veranderde Shorts Wi-Fi kwaliteit na: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Wys speelspoedknoppie</string>
   <string name="morphe_playback_speed_dialog_button_summary">Tik en hou in om spoed na verstek terug te stel</string>
@@ -1101,12 +1090,13 @@ Beperkings:
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Om hierdie funksie te gebruik, stel \'verfraai videostrome\' op Android VR of Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Toon gevorderde video kwaliteit menu</string>
+  <string name="morphe_advanced_video_quality_menu_title">Open \'Gevorderd\' kwaliteit menu</string>
+  <string name="morphe_advanced_video_quality_menu_summary">Slaan die kwaliteitkeusemenu oor en open die Gevorderde kwaliteitmenu direk</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Versteek Premium kwaliteit opsies</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">Prioriteer videokwaliteit</string>
-  <string name="morphe_prioritize_video_quality_summary">Prioriteer die hoogste kwaliteit video bo kodekeffisiëntheid</string>
+  <string name="morphe_prioritize_video_quality_summary">Prioriteer die hoogste beskikbare videokwaliteit oor kodeerdoeltreffendheid</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Sta Android VR AV1 toe</string>
   <string name="morphe_spoof_video_streams_av1_summary">Laat sagteware AV1-ontkodering toe wanneer die Android VR-kliënt gebruik word</string>

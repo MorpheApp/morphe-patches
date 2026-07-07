@@ -93,7 +93,6 @@ private val hideShortsComponentsResourcePatch = resourcePatch {
                     // Like fountain may no longer be used by YT anymore.
                     //SwitchPreference("morphe_hide_shorts_like_fountain"),
                     SwitchPreference("morphe_hide_shorts_like_button"),
-                    SwitchPreference("morphe_hide_shorts_dislike_button"),
                     SwitchPreference("morphe_hide_shorts_comments_button"),
                     SwitchPreference("morphe_hide_shorts_share_button"),
                     SwitchPreference("morphe_hide_shorts_remix_button"),

@@ -284,22 +284,12 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">अध्याय वगळण्यासाठी दोन-बोटांच्या डबल-टॅप जेस्चर अक्षम करा, जे एका बोटाने चुकून ट्रिगर होऊ शकते</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">बाह्य डाउनलोड्स</string>
-  <string name="morphe_external_downloader_screen_summary">तृतीय-पक्ष डाउनलोडिंग ॲप्स वापरून व्हिडिओ डाउनलोड करा</string>
+  <string name="morphe_external_downloader_screen_summary">तृतीय-पक्ष डाउनलोडिंग ॲप्स वापरून व्हिडिओ, पॉडकास्ट किंवा गाणी डाउनलोड करा</string>
   <string name="morphe_external_downloader_title">डाउनलोड बटण दाखवा</string>
   <string name="morphe_external_downloader_summary">तुमचे बाह्य डाउनलोडर उघडणारे व्हिडिओ प्लेयरमध्ये ओव्हरले बटण दर्शवते</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">डाउनलोड ॲक्शन बटण बदला</string>
   <string name="morphe_external_downloader_action_button_summary">YouTube चे अंगभूत डाउनलोड फंक्शन तुमच्या बाह्य डाउनलोडरने बदला</string>
-  <string name="morphe_external_downloader_name_title">डाउनलोडर पॅकेज नाव</string>
-  <string name="morphe_external_downloader_name_summary">इंस्टॉल केलेल्या तुमच्या बाह्य डाउनलोडर ॲपचे पॅकेज नाव</string>
-  <string name="morphe_external_downloader_other_item_hint">पॅकेजचे नाव प्रविष्ट करा</string>
-  <string name="morphe_external_downloader_other_item">इतर</string>
-  <string name="morphe_external_downloader_not_found_title">ॲप स्थापित नाही</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s स्थापित नाही. कृपया ते स्थापित करा.</string>
-  <string name="morphe_external_downloader_package_not_found_warning">"स्थापित ॲप पॅकेज नावाप्रमाणे सापडले नाही: %s
-
-कृपया पॅकेजचे नाव तपासा आणि ॲप स्थापित आहे का ते तपासा"</string>
-  <string name="morphe_external_downloader_empty_warning">पॅकेजचे नाव रिकामे असू शकत नाही</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">व्हॉईस ओव्हर भाषांतर</string>
   <string name="morphe_vot_screen_summary">डिव्हाइसवरील टेक्स्ट-टू-स्पीच वापरून व्हिडिओ कॅप्शन मोठ्याने वाचा, जे प्लेबॅकसह सिंक्रोनाइझ केलेले असेल.</string>
@@ -751,7 +741,6 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">லைக் बटण फाउंटेन ॲनिमेशन लपवा</string>
   <string name="morphe_hide_shorts_like_button_title">லைக் बटण लपवा</string>
-  <string name="morphe_hide_shorts_dislike_button_title">डिस्लाइक बटण लपवा</string>
   <string name="morphe_hide_shorts_comments_button_title">टिप्पणी बटण लपवा</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">शेअर बटण लपवा</string>
@@ -813,8 +802,6 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">मालकाने लपवले आहे</string>
   <string name="morphe_ryd_enabled_title">Return YouTube Dislike सक्षम करा</string>
-  <string name="morphe_ryd_shorts_title">शॉर्ट्सवर डिसलाईक्स दर्शवा</string>
-  <string name="morphe_ryd_shorts_summary">मर्यादा: Dislikes Incognito मोडमध्ये दिसणार नाहीत</string>
   <string name="morphe_ryd_dislike_percentage_title">Dislikes लाईक्सच्या टक्केवारी म्हणून दर्शवा</string>
   <string name="morphe_ryd_dislike_percentage_summary">Dislikes ची संख्याऐवजी लाईक्सच्या टक्केवारीनुसार दर्शवते</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
@@ -950,6 +937,8 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">मिनीप्लेअरला (Miniplayer) स्क्रीनच्या वेगवेगळ्या कोपऱ्यात ड्रॅग (Drag) करण्यापासून प्रतिबंधित (Prevent) करते</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title"> horizontal ड्रॅग gesture अक्षम करा</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">मिनीप्लेअरला (Miniplayer) क्षैतिजरित्या (Horizontally) स्वाइप (Swipe) करून बंद करण्यापासून प्रतिबंधित (Prevent) करते</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">व्हिडिओ आडव्या दिशेने ड्रॅग केल्यावर प्लेबॅक बंद करा</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">मिनीप्लेअर स्क्रीनवरून बाहेर ड्रॅग केल्यावर प्लेबॅक थांबेल</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">ओव्हरले बटणे लपवा</string>
   <string name="morphe_miniplayer_width_dip_title">डीआयपी (DIP) मध्ये डीफॉल्ट (Default) आकार</string>
   <string name="morphe_miniplayer_width_dip_summary">सुरुवातीचा आकार सेट करा, पिक्सेलमध्ये (Pixels)</string>
@@ -1057,10 +1046,10 @@ DeArrow.ajay.app उघडण्यासाठी येथे टॅप कर
   <string name="morphe_remember_shorts_quality_last_selected_summary">तुमची मॅन्युअल (Manual) गुणवत्ता निवड भविष्यातील सर्व शॉर्ट्सवर (Shorts) लागू (Apply) करते</string>
   <string name="morphe_shorts_quality_default_wifi_title">वाय-फाय नेटवर्कवर डीफॉल्ट शॉर्ट्स गुणवत्ता</string>
   <string name="morphe_shorts_quality_default_mobile_title">मोबाइल नेटवर्कवर डीफॉल्ट शॉर्ट्स गुणवत्ता</string>
-  <string name="morphe_remember_video_quality_mobile">मोबाइल</string>
-  <string name="morphe_remember_video_quality_wifi">वाय-फाय</string>
-  <string name="morphe_remember_video_quality_toast">डीफॉल्ट %1$s गुणवत्ता बदलली: %2$s</string>
-  <string name="morphe_remember_video_quality_toast_shorts">शॉर्ट्स %1$s गुणवत्ता बदलली: %2$s</string>
+  <string name="morphe_remember_video_quality_toast_mobile">डिफॉल्ट मोबाईल गुणवत्ता बदलली: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">डिफॉल्ट वाय-फाय गुणवत्ता बदलली: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_mobile">शॉर्ट्स मोबाईल गुणवत्ता बदलली: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_wifi">शॉर्ट्स वाय-फाय गुणवत्ता बदलली: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">प्लेबॅक वेग (Playback speed) बटण दर्शवा</string>
   <string name="morphe_playback_speed_dialog_button_summary">बटण दाबून धरल्यास (Tap and hold) डीफॉल्ट (Default) वेगात रीसेट (Reset) करा</string>
@@ -1101,12 +1090,13 @@ DeArrow.ajay.app उघडण्यासाठी येथे टॅप कर
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">हे वैशिष्ट्य (Feature) वापरण्यासाठी, \'व्हिडिओ स्ट्रीम (Video streams) स्पूफ (Spoof) करा\' Android VR किंवा Android Studio वर सेट करा</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">प्रगत व्हिडिओ गुणवत्ता मेनू दर्शवा</string>
+  <string name="morphe_advanced_video_quality_menu_title">\"Advanced\" गुणवत्ता मेनू उघडा</string>
+  <string name="morphe_advanced_video_quality_menu_summary">गुणवत्ता निवड मेनू वगळून थेट \"Advanced\" गुणवत्ता मेनू उघडतो</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">प्रीमियम गुणवत्ता पर्याय लपवा</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">व्हिडिओ गुणवत्ताला प्राधान्य द्या</string>
-  <string name="morphe_prioritize_video_quality_summary">कोडेक कार्यक्षमतेपेक्षा (Codec efficiency) उच्च-गुणवत्तेचे (High-quality) व्हिडिओ प्राधान्य (Prioritize) देते</string>
+  <string name="morphe_prioritize_video_quality_summary">कोडेक कार्यक्षमतेपेक्षा उच्च व्हिडिओ गुणवत्तेला प्राधान्य देते</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Android VR AV1 ला अनुमती द्या</string>
   <string name="morphe_spoof_video_streams_av1_summary">Android VR क्लायंट वापरताना सॉफ्टवेअर AV1 डिकोडिंगला परवानगी देते.</string>

@@ -20,17 +20,30 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Neustart, um die Einrichtung abzuschließen</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">App-Name</string>
+  <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_title">Externe Downloads</string>
+  <string name="morphe_external_downloader_name_title">Paketname des Downloaders</string>
+  <string name="morphe_external_downloader_name_summary">Paketname Ihrer installierten externen Downloader-App</string>
+  <string name="morphe_external_downloader_flyout_button_title">Überschreiben-Button für Feed-/Such-Flyout</string>
+  <string name="morphe_external_downloader_other_item_hint">Geben Sie zuerst einen Paketnamen ein</string>
+  <string name="morphe_external_downloader_other_item">Andere</string>
+  <string name="morphe_external_downloader_not_found_title">App nicht installiert</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s ist nicht installiert. Bitte installieren Sie es zuerst.</string>
+  <string name="morphe_external_downloader_package_not_found_warning">"Es konnte keine installierte App mit dem Paketnamen %s gefunden werden.
+
+Überprüfen Sie, ob der Paketname korrekt ist und die App installiert ist"</string>
+  <string name="morphe_external_downloader_empty_warning">Der Paketname darf nicht leer sein</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Benutzerdefiniert</string>
   <string name="morphe_custom_branding_icon_title">App-Icon</string>
   <string name="morphe_custom_branding_icon_entry_1">Original</string>
-  <string name="morphe_custom_branding_icon_entry_2">Morphe Schwarz</string>
-  <string name="morphe_custom_branding_icon_entry_3">Morphe dunkel</string>
-  <string name="morphe_custom_branding_icon_entry_4">Morphe hell</string>
+  <string name="morphe_custom_branding_icon_entry_2">Morphe dunkel</string>
+  <string name="morphe_custom_branding_icon_entry_3">Morphe Dunkel</string>
+  <string name="morphe_custom_branding_icon_entry_4">Morphe Hell</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
-  <string name="morphe_custom_branding_icon_entry_5">Morphe Play hell</string>
+  <string name="morphe_custom_branding_icon_entry_5">Morphe Spiellicht</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
-  <string name="morphe_custom_branding_icon_entry_6">Morphe Play schwarz</string>
+  <string name="morphe_custom_branding_icon_entry_6">Morphe Spielschwarz</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">Benutzerdefiniert</string>
   <string name="morphe_custom_branding_notification_icon_title">Benachrichtigungsicon</string>
@@ -41,9 +54,9 @@ Second \"item\" text"</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Ihr Verlauf wird nicht gespeichert.&lt;br&gt;&lt;br&gt;Dies wird höchstwahrscheinlich durch einen DNS-Werbeblocker oder einen Netzwerkproxy verursacht.&lt;br&gt;&lt;br&gt;Um dies zu beheben, setzen Sie &lt;b&gt;s.youtube.com&lt;/b&gt; auf die Whitelist oder schalten Sie alle DNS-Blocker und Proxies aus.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Nicht wieder anzeigen</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_screen_title">Fälsche Video-Streams</string>
-  <string name="morphe_spoof_video_streams_screen_summary">Fälsche die Client-Video-Streams, um Wiedergabeprobleme zu verhindern</string>
-  <string name="morphe_spoof_video_streams_title">Fälsche Video-Streams</string>
+  <string name="morphe_spoof_video_streams_screen_title">Video-Streams vortäuschen</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Client-Streams vortäuschen, um Wiedergabeprobleme zu vermeiden</string>
+  <string name="morphe_spoof_video_streams_title">Video-Streams vortäuschen</string>
   <string name="morphe_spoof_video_streams_summary">"Behebt Wiedergabeprobleme für die meisten Nutzer, indem ein kompatibler Videostream angefordert wird
 
 Wenn Sie ein YouTube Premium-Nutzer sind, ist diese Einstellung möglicherweise nicht erforderlich"</string>
@@ -51,7 +64,7 @@ Wenn Sie ein YouTube Premium-Nutzer sind, ist diese Einstellung möglicherweise 
   <string name="morphe_spoof_video_streams_user_dialog_message">Das Deaktivieren dieser Einstellung kann Wiedergabeprobleme verursachen.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
-  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Versuchen Sie folgendes zu aktivieren: Fälsche Video-Streams &gt; Android VR Anmeldung</string>
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Versuch, dies zu aktivieren: „Video-Streams vortäuschen“ &gt; Android VR Anmeldung</string>
   <string name="morphe_spoof_video_streams_client_type_title">Standard-Client</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR Anmeldung</string>
@@ -124,7 +137,7 @@ Die Wiedergabe schlägt fehl, wenn der Player JavaScript Hash veraltet ist."</st
   <string name="morphe_proxy_auth_enabled_summary">Sendet eine Basis-Authentifizierung mit Proxy-Anfragen</string>
   <string name="morphe_proxy_auth_username_title">Ihr Benutzername</string>
   <string name="morphe_proxy_auth_username_summary">Benutzername für die Basis-Proxy-Authentifizierung</string>
-  <string name="morphe_proxy_auth_password_title">Passwort speichern</string>
+  <string name="morphe_proxy_auth_password_title">Proxy-Passwort</string>
   <string name="morphe_proxy_auth_password_summary">Passwort für die Basis-Proxy-Authentifizierung</string>
   <string name="morphe_proxy_allow_direct_fallback_title">Direkten Fallback zulassen</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">Direkt verbinden, wenn der Proxy fehlschlägt</string>
@@ -133,7 +146,7 @@ Die Wiedergabe schlägt fehl, wenn der Player JavaScript Hash veraltet ist."</st
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Um diese Funktion zu nutzen, ändern Sie \"Fälsche Video-Streams\" auf Android Reel oder TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">Freigabe-Links säubern</string>
+  <string name="morphe_sanitize_sharing_links_title">Freigabelinks bereinigen</string>
   <string name="morphe_sanitize_sharing_links_summary">Tracking-Abfrageparameter wird aus freigegebenen Links entfernt</string>
   <string name="morphe_replace_music_with_youtube_title">Freigabe-Links zu youtube.com ändern</string>
   <string name="morphe_replace_music_with_youtube_summary">Ersetzt music.youtube.com durch youtube.com in geteilten Links</string>
@@ -142,9 +155,9 @@ Die Wiedergabe schlägt fehl, wenn der Player JavaScript Hash veraltet ist."</st
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_protobuffer_title">Debug-Protokollpuffer</string>
   <string name="morphe_debug_protobuffer_summary">Fügt zusätzliche Protokollierungsinformationen für Entwickler hinzu, um App-Komponenten zu identifizieren</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Wenn diese Einstellung aktiv ist werden zusätzliche Layoutdaten protokolliert, einschließlich Text auf dem Bildschirm für einige UI-Komponenten.
+  <string name="morphe_debug_protobuffer_user_dialog_message">"Wenn du diese Einstellung aktivierst, werden zusätzliche Layout-Daten protokolliert, einschließlich des eingeblendeten Texts einiger UI-Elemente.
 
-Dies kann helfen, Komponenten bei der Erstellung benutzerdefinierter Filter zu identifizieren.
+Das kann beim Erstellen benutzerdefinierter Filter helfen, Komponenten besser zu identifizieren.
 
-Dadurch werden jedoch auch einige Benutzerdaten wie deine IP-Adresse protokolliert."</string>
+Allerdings werden dabei auch einige Nutzerdaten protokolliert, zum Beispiel deine IP-Adresse."</string>
 </resources>

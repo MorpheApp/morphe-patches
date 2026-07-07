@@ -29,6 +29,7 @@ import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreferen
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.settings.settingsPatch
 import app.morphe.patches.youtube.misc.settings.modifyActivityForSettingsInjection
@@ -157,6 +158,10 @@ val settingsPatch = bytecodePatch(
                 summaryKey = "morphe_pref_import_export_summary",
                 inputType = InputType.TEXT_MULTI_LINE,
                 tag = "app.morphe.extension.shared.settings.preference.ImportExportPreference"
+            ),
+            ListPreference(
+                key = "morphe_language",
+                tag = "app.morphe.extension.shared.settings.preference.SortedListPreference"
             )
         )
 

@@ -128,8 +128,8 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_timed_reactions_summary">Kullanıcıların yorum bölümünde ve canlı sohbette emojilerle tepki vermesini sağlayan özelliği gizler</string>
   <string name="morphe_hide_video_title_title">Video başlığını gizle</string>
   <string name="morphe_hide_video_title_summary">Tam ekran modunda video başlığını gizler</string>
-  <string name="morphe_sanitize_video_subtitle_title">Videoyu altyazısını temizle</string>
-  <string name="morphe_sanitize_video_subtitle_summary">Videoyu altyazısından \'#\', \'Bağış Toplama\', \'Mağaza\' ve \'ürünler\' gibi ifadeleri temizler</string>
+  <string name="morphe_sanitize_video_subtitle_title">Video altyazısını temizle</string>
+  <string name="morphe_sanitize_video_subtitle_summary">Video altyazısından \'#\', \'Bağış toplama\', \'Mağaza\' ve \'ürünler\' gibi ifadeleri temizler</string>
   <string name="morphe_hide_description_components_screen_title">Video açıklaması</string>
   <string name="morphe_hide_description_components_screen_summary">Video açıklamasında hangi bileşenlerin görüneceğini seçin</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">\'Yapay zeka tarafından oluşturulmuş video özeti\' bölümünü gizle</string>
@@ -284,22 +284,12 @@ Sınırlamalar:
   <string name="morphe_disable_chapter_skip_double_tap_summary">Bölümleri atlayan ve tek parmakla yanlışlıkla tetiklenebilecek iki parmakla çift dokunma hareketini devre dışı bırakır</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Harici indirmeler</string>
-  <string name="morphe_external_downloader_screen_summary">Videoları üçüncü taraf indirme uygulamalarıyla indirin</string>
+  <string name="morphe_external_downloader_screen_summary">Üçüncü taraf indirme uygulamalarıyla videolar, podcast\'ler veya şarkılar indirin</string>
   <string name="morphe_external_downloader_title">Harici indirme düğmesini göster</string>
   <string name="morphe_external_downloader_summary">Video oynatıcınızda harici indiricinizi açan bir katman düğmesi gösterir</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">İndirme eylem düğmesini kullan</string>
   <string name="morphe_external_downloader_action_button_summary">YouTube\'un yerleşik indirme işlevini harici indiricinizle değiştirir</string>
-  <string name="morphe_external_downloader_name_title">İndirici paket adı</string>
-  <string name="morphe_external_downloader_name_summary">Yüklü harici indirme uygulamanızın paket adı</string>
-  <string name="morphe_external_downloader_other_item_hint">Paket adını girin</string>
-  <string name="morphe_external_downloader_other_item">Diğer</string>
-  <string name="morphe_external_downloader_not_found_title">Uygulama yüklü değil</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s yüklü değil. Lütfen yükleyin.</string>
-  <string name="morphe_external_downloader_package_not_found_warning">"%s paket adıyla yüklü uygulama bulunamadı
-
-Paket adının doğru olduğunu ve uygulamanın yüklü olduğunu doğrulayın"</string>
-  <string name="morphe_external_downloader_empty_warning">Paket adı boş olamaz</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Seslendirme çevirisi</string>
   <string name="morphe_vot_screen_summary">Cihaz üzerindeki metin-konuşma özelliğini kullanarak video altyazılarını oynatmayla senkronize bir şekilde yüksek sesle okuyun.</string>
@@ -328,7 +318,7 @@ OpenRouter.ai'yi açmak için buraya dokunun"</string>
   <string name="morphe_vot_openrouter_not_configured_message">Bu sağlayıcıyı seçmeden önce ayarlarınızda OpenRouter API anahtarınızı girin</string>
   <string name="morphe_vot_cost_free">Ücretsiz</string>
   <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
-  <string name="morphe_vot_cost_per_hour">%s video saati başına</string>
+  <string name="morphe_vot_cost_per_hour">100 video saati başına %s</string>
   <string name="morphe_vot_tts_voice_type">Ses</string>
   <string name="morphe_vot_tts_system">Sistem</string>
   <string name="morphe_vot_voice_gender_male_multilingual">Çok dilli erkek</string>
@@ -346,10 +336,10 @@ OpenRouter.ai'yi açmak için buraya dokunun"</string>
 API anahtarınız asla paylaşılmamalıdır. Ona erişimi olan herkes OpenRouter kredilerinizi kullanabilir"</string>
   <string name="morphe_vot_openrouter_credits_title">OpenRouter kredi limiti aşıldı</string>
   <string name="morphe_vot_openrouter_credits_message">OpenRouter kredi limitiniz aşıldı. Bakiyenizi artırın veya OpenRouter.ai adresinde anahtar harcama limitinizi artırın</string>
-  <string name="morphe_vot_openrouter_open_website">OpenRouter.ai\'yi aç</string>
+  <string name="morphe_vot_openrouter_open_website">OpenRouter.ai\'ı aç</string>
   <string name="morphe_vot_openrouter_error">OpenRouter çevirisi başarısız oldu (HTTP %s)</string>
   <string name="morphe_vot_mymemory_quota_title">MyMemory günlük limiti aşıldı</string>
-  <string name="morphe_vot_mymemory_quota_next_available">Sonraki kullanıma %s tarihinde izin verilecek.</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Sonraki kullanım %s\'de.</string>
   <string name="morphe_vot_mymemory_quota_message_no_email">Bugünün ücretsiz MyMemory çeviri kotasını (5.000 karakter) kullandınız. Günlük limiti 50.000 karaktere çıkarmak için ayarlarınızda bir MyMemory e-postası ekleyin veya farklı bir çeviri hizmetine geçin</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Bugünün MyMemory çeviri kotasını (50.000 karakter) kullandınız. Farklı bir çeviri hizmetine geçin veya yarın tekrar deneyin</string>
   <string name="morphe_vot_mymemory_error">MyMemory çevirisi başarısız oldu (durum %s)</string>
@@ -403,8 +393,8 @@ Bilgi: Canlı yayınlarda çalışmayabilir"</string>
   <string name="morphe_queue_restore_summary">Uygulama yeniden başlatıldığında sıra korunur</string>
   <string name="morphe_swap_save_and_queue_actions_title">Kaydet ve Sıra eylemlerini değiştir</string>
   <string name="morphe_swap_save_and_queue_actions_summary">Sıra seçenekleri için dokunun, daha sonra izle\'ye kaydetmek için dokunup basılı tutun</string>
-  <string name="morphe_queue_override_flyout_menu_title">Yem yayın açılır menüsü kuyruk düğmesini geçersiz kıl</string>
-  <string name="morphe_queue_override_flyout_menu_summary">Morphe kuyruğunu, YouTube kuyruğu yerine açar</string>
+  <string name="morphe_queue_override_flyout_menu_title">Akış açılır sıra düğmesini geçersiz kıl</string>
+  <string name="morphe_queue_override_flyout_menu_summary">Morphe sırasını, YouTube sırası yerine açar</string>
   <string name="morphe_queue_manager_check_failed_auth">Giriş yapılmadı</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">Oynatma listesi kimliği yok</string>
   <string name="morphe_queue_manager_check_failed_queue">Sıra boş</string>
@@ -751,7 +741,6 @@ Ayarlara erişmek için, Genel → Araç Çubuğu → Ayarları Göster yoluyla 
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Beğeni düğmesi çeşme animasyonunu gizle</string>
   <string name="morphe_hide_shorts_like_button_title">Beğen düğmesini gizle</string>
-  <string name="morphe_hide_shorts_dislike_button_title">Beğenmeme düğmesini gizle</string>
   <string name="morphe_hide_shorts_comments_button_title">Yorumlar düğmesini gizle</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Paylaş düğmesini gizle</string>
@@ -813,8 +802,6 @@ Ayarlar → Oynatma (veya Otomatik Oynatma) → Sonraki videoyu otomatik oynat"<
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Sahibi tarafından gizlendi</string>
   <string name="morphe_ryd_enabled_title">Return YouTube Dislike\'ı etkinleştir</string>
-  <string name="morphe_ryd_shorts_title">Shorts\'ta beğenilmeme sayılarını göster</string>
-  <string name="morphe_ryd_shorts_summary">Kısıtlama: Beğenmeme sayıları Gizli modda görünmeyebilir</string>
   <string name="morphe_ryd_dislike_percentage_title">Beğenmemeyi yüzde olarak göster</string>
   <string name="morphe_ryd_dislike_percentage_summary">Beğenmemeleri sayı yerine beğenilere kıyasla yüzde olarak gösterir</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
@@ -824,9 +811,9 @@ Ayarlar → Oynatma (veya Otomatik Oynatma) → Sonraki videoyu otomatik oynat"<
   <string name="morphe_ryd_estimated_like_summary">Oluşturucunun beğenileri devre dışı bıraktığı videolarda tahmini beğeni sayısını gösterir</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Bağlantı hatası uyarılarını göster</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Return YouTube Dislike sunucusu kullanılamadığında bir bildirim gösterir</string>
-  <string name="morphe_ryd_attribution_summary">"Veriler Return YouTube Dislike API tarafından sağlanır.
+  <string name="morphe_ryd_attribution_summary">"Veriler Return YouTube Dislike API tarafından sağlanır
 
-ReturnYouTubeDislike.com'u açmak için buraya dokunun."</string>
+ReturnYouTubeDislike.com'u açmak için buraya dokunun"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Bu cihazın ReturnYouTubeDislike API istatistikleri</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Ortalama API yanıt süresi</string>
@@ -950,6 +937,8 @@ Daha sonra kapatılırsa, arayüz hatalarını önlemek için uygulama verilerin
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Küçültülmüş oynatıcının ekranın farklı köşelerine sürüklenmesini engeller</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Yatay sürükleme hareketini devre dışı bırak</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Mini oynatıcının yatay olarak ekran dışına kaydırılarak kapatılmasını engeller</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Yatay kaydırma ile oynatmayı devre dışı bırak</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Mini oynatıcı ekran dışına kaydırıldığında oynatma duraklatılacaktır</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Katman düğmelerini gizle</string>
   <string name="morphe_miniplayer_width_dip_title">Varsayılan boyut</string>
   <string name="morphe_miniplayer_width_dip_summary">Başlangıç ekran boyutunu piksel cinsinden ayarlayın</string>
@@ -1057,10 +1046,10 @@ DeArrow hakkında daha fazla bilgi edinmek için buraya dokunun"</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Manuel kalite seçiminizi gelecekteki tüm Shorts\'lara uygular</string>
   <string name="morphe_shorts_quality_default_wifi_title">Wi-Fi ağındaki varsayılan Shorts kalitesi</string>
   <string name="morphe_shorts_quality_default_mobile_title">Mobil ağdaki varsayılan Shorts kalitesi</string>
-  <string name="morphe_remember_video_quality_mobile">mobil ağ</string>
-  <string name="morphe_remember_video_quality_wifi">Wi-Fi</string>
-  <string name="morphe_remember_video_quality_toast">Varsayılan %1$s kalitesi, %2$s olarak ayarlandı</string>
-  <string name="morphe_remember_video_quality_toast_shorts">Shorts %1$s kalitesi, %2$s olarak ayarlandı</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Varsayılan mobil kalite şuna değiştirildi: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Varsayılan Wi-Fi kalitesi şuna değiştirildi: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_mobile">Shorts mobil kalite şuna değiştirildi: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_wifi">Shorts Wi-Fi kalitesi şuna değiştirildi: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Oynatma hızı düğmesini göster</string>
   <string name="morphe_playback_speed_dialog_button_summary">Hızı varsayılana sıfırlamak için dokunup basılı tutun</string>
@@ -1101,7 +1090,8 @@ Sınırlamalar:
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Bu özelliği kullanmak için \'Video akışlarını taklit et\'i Android VR veya Android Studio olarak ayarlayın</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Gelişmiş video kalitesi menüsünü göster</string>
+  <string name="morphe_advanced_video_quality_menu_title">\'Gelişmiş\' kalite menüsünü aç</string>
+  <string name="morphe_advanced_video_quality_menu_summary">Kalite seçim menüsünü atlar ve doğrudan Gelişmiş kalite menüsünü açar</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Premium kalite seçeneklerini gizle</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->

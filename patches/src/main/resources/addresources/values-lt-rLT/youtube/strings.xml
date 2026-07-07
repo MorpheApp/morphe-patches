@@ -29,9 +29,17 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Braukimo valdikliai</string>
   <string name="morphe_settings_screen_11_misc_title">Įvairūs</string>
   <string name="morphe_settings_screen_12_video_title">Vaizdo įrašai</string>
+  <string name="morphe_restore_old_settings_menus_title">Sugrąžinti senąjį YouTube nustatymų ekraną</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">Panaikinti foninio grojimo varžymą</string>
+  <string name="morphe_shorts_disable_background_playback_title">Išjungti foninį grojimą</string>
   <!-- layout.disableLayoutUpdatesPatch -->
+  <string name="morphe_disable_layout_updates_title">Išjungti išdėliojimo atnaujinimus</string>
+  <string name="morphe_disable_layout_updates_summary">Uždraudžia serveriui atnaujinti programėlės išdėliojimą</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_hide_community_posts_title">Slėpti bendruomenės skelbimus</string>
+  <string name="morphe_hide_expandable_card_entry_1">Rodyti visus</string>
+  <string name="morphe_hide_expandable_card_entry_5">Slėpti visus</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.

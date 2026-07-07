@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
-package app.morphe.patches.youtube.misc.textcomponent
+package app.morphe.patches.shared.misc.textcomponent
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.fieldAccess

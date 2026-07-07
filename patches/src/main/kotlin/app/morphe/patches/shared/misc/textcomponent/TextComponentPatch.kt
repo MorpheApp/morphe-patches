@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
-package app.morphe.patches.youtube.misc.textcomponent
+package app.morphe.patches.shared.misc.textcomponent
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
@@ -14,8 +14,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
-import app.morphe.patches.youtube.shared.SPANNABLE_STRING_REFERENCE
-import app.morphe.patches.youtube.shared.SpannableStringBuilderFingerprint
+import app.morphe.patches.shared.SPANNABLE_STRING_REFERENCE
+import app.morphe.patches.shared.SpannableStringBuilderFingerprint
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
 import app.morphe.util.indexOfFirstInstructionOrThrow
@@ -70,8 +70,7 @@ val textComponentPatch = bytecodePatch(
 //                indexOfFirstInstructionOrThrow {
 //                    getReference<FieldReference>()?.type == "Ljava/util/Map;"
 //                } - 1
-                val conversionContextFieldReference =
-                    getInstruction<ReferenceInstruction>(conversionContextFieldIndex).reference
+                val conversionContextFieldReference = getInstruction<ReferenceInstruction>(conversionContextFieldIndex).reference
 
                 // ~ YouTube 19.32.xx
                 val legacyCharSequenceIndex = indexOfFirstInstruction {
@@ -127,6 +126,7 @@ internal fun hookSpannableString(
             move-result-object v$spannedRegister
         """
     )
+    spannedIndex += 2
 }
 
 @Suppress("unused")

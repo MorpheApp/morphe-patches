@@ -91,7 +91,7 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
         val adultContentSetPropertiesMatches = AdultContentSetPropertiesFingerprint.instructionMatches
 
         Fingerprint(
-            definingClass = skipDialogFingerprint.method.definingClass,
+            classFingerprint = skipDialogFingerprint,
             accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
             returnType = "V",
             parameters = listOf("L"),
@@ -106,9 +106,9 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
                     location = MatchAfterWithin(3),
                     smali = adultContentSetPropertiesMatches[2]
                         .getInstruction<ReferenceInstruction>().reference.toString()
-                ),
+                )
             )
-        ).let {fingerprint ->
+        ).let { fingerprint ->
             listOf(
                 fingerprint.instructionMatches[1],
                 fingerprint.instructionMatches[0],

@@ -19,6 +19,7 @@ import app.morphe.patches.youtube.misc.playservice.is_21_21_or_greater
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.cloneParameters
 import app.morphe.util.findInstructionIndicesReversedOrThrow
+import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -103,18 +104,11 @@ val clientContextHookPatch = bytecodePatch(
             messageLiteBuilderMethodRef = WeakReference(messageLiteBuilderMethod)
         }
 
-        val osNameField : FieldReference
-        BuildClientContextBodyFingerprint.let {
-            it.method.apply {
-                val osNameIndex = it.instructionMatches[1].index
-                osNameField = getInstruction<ReferenceInstruction>(
-                    osNameIndex
-                ).reference as FieldReference
-                osNameFieldRef = WeakReference(osNameField)
-            }
-        }
-
-        val clientFormFactorOrdinalReference = ClientFormFactorEnumOrdinalFingerprint.method as MethodReference
+        osNameFieldRef = WeakReference(
+            BuildClientContextBodyFingerprint.method.getInstruction<ReferenceInstruction>(
+                BuildClientContextBodyFingerprint.instructionMatches[1].index
+            ).reference as FieldReference
+        )
 
         val setClientFormFactorFingerprint = Fingerprint(
             accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -127,21 +121,16 @@ val clientContextHookPatch = bytecodePatch(
                     type = "I"
                 ),
                 methodCall(
-                    reference = clientFormFactorOrdinalReference
+                    reference = ClientFormFactorEnumOrdinalFingerprint.method
                 )
             )
         )
 
-        val clientFormFactorField : FieldReference
-        setClientFormFactorFingerprint.let {
-            it.method.apply {
-                val clientFormFactorIndex = it.instructionMatches.first().index
-                clientFormFactorField = getInstruction<ReferenceInstruction>(
-                    clientFormFactorIndex
-                ).reference as FieldReference
-                clientFormFactorFieldRef = WeakReference(clientFormFactorField)
-            }
-        }
+        clientFormFactorFieldRef = WeakReference(
+            setClientFormFactorFingerprint.method.getInstruction<ReferenceInstruction>(
+                setClientFormFactorFingerprint.instructionMatches.first().index
+            ).reference as FieldReference
+        )
     }
 
     finalize {
@@ -186,11 +175,10 @@ val clientContextHookPatch = bytecodePatch(
                                         check-cast v0, ${clientInfoField.definingClass}
                                         iget-object v1, v0, $clientInfoField
                                         if-eqz v1, :ignore
-                                    """ + endpoint.smaliInstructions +
-                                            """
-                                                :ignore
-                                                return-void
-                                            """
+                                        ${endpoint.smaliInstructions}
+                                        :ignore
+                                        return-void
+                                    """
                                 )
                             }
                         )
@@ -209,7 +197,7 @@ val clientContextHookPatch = bytecodePatch(
 }
 
 fun addClientFormFactorHook(endPoint: Endpoint, descriptor: String) {
-    val clientFormFactorField = clientFormFactorFieldRef.get()
+    val clientFormFactorField = clientFormFactorFieldRef.get()!!
     val smaliInstructions = """
         iget v2, v1, $clientFormFactorField
         invoke-static { v2 }, $descriptor
@@ -221,7 +209,7 @@ fun addClientFormFactorHook(endPoint: Endpoint, descriptor: String) {
 }
 
 fun addClientVersionHook(endPoint: Endpoint, descriptor: String) {
-    val clientVersionField = clientVersionFieldRef.get()
+    val clientVersionField = clientVersionFieldRef.get()!!
     val smaliInstructions = """
         iget-object v2, v1, $clientVersionField
         invoke-static { v2 }, $descriptor
@@ -233,7 +221,7 @@ fun addClientVersionHook(endPoint: Endpoint, descriptor: String) {
 }
 
 fun addOSNameHook(endPoint: Endpoint, descriptor: String) {
-    val osNameField = osNameFieldRef.get()
+    val osNameField = osNameFieldRef.get()!!
     val smaliInstructions = """
         iget-object v2, v1, $osNameField
         invoke-static { v2 }, $descriptor

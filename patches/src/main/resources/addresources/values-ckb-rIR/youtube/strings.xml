@@ -163,7 +163,6 @@ Second \"item\" text"</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">دانه‌کانی دەرەکی</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
-  <string name="morphe_external_downloader_other_item">دوان</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_openrouter_model_custom">باو</string>
   <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
@@ -352,7 +351,6 @@ Second \"item\" text"</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">خۆشکردنی ئەنمیشنی پەیوەستەی دکۆی ڕەزامەندی</string>
   <string name="morphe_hide_shorts_like_button_title">خۆشکردنی دکۆی ڕەزامەندی</string>
-  <string name="morphe_hide_shorts_dislike_button_title">خەڵه‌ت کردنه‌وه‌ی دگمه‌که‌ی Dislike</string>
   <string name="morphe_hide_shorts_comments_button_title">خەڵه‌ت کردنه‌وه‌ی دگمه‌که‌ی Comments</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">خەڵه‌ت کردنه‌وه‌ی دگمه‌که‌ی Share</string>
@@ -392,7 +390,6 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_failure_ryd_enabled_while_playing_video_then_user_voted">ڤیدیۆکەوە باربکەوە بۆ دەنگدان بە بەکارهێنانی Return YouTube Dislike</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">له‌ لای خاوه‌ن ڕاگیراوه‌</string>
-  <string name="morphe_ryd_shorts_title">نەخشەکانی شوۆرن پیش بکە</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
   <string name="morphe_ryd_estimated_like_title">خۆشەکانی لێکدان کەڤم وەشاندن</string>
   <string name="morphe_ryd_toast_on_connection_error_title">نشان دادن ڕێنمایەکانی هەڵە یەکباری پەیوەندیمان</string>
@@ -530,10 +527,6 @@ Second \"item\" text"</string>
   <string name="morphe_video_quality_default_entry_1">ئۆتە</string>
   <string name="morphe_shorts_quality_default_wifi_title">کیفیتی پیش‌نیازکراوی Shorts لە تۆڕی Wi-Fi</string>
   <string name="morphe_shorts_quality_default_mobile_title">کیفیتی پیش‌نیازکراوی Shorts لە تۆڕی مۆبایل</string>
-  <string name="morphe_remember_video_quality_mobile">مۆبایل</string>
-  <string name="morphe_remember_video_quality_wifi">wifi</string>
-  <string name="morphe_remember_video_quality_toast">کیفیتی پیش‌نیازکراوی %1$s گۆڕابووە: %2$s</string>
-  <string name="morphe_remember_video_quality_toast_shorts">کیفیتی Shorts %1$s گۆڕابووە: %2$s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <!-- video.speed.custom.customPlaybackSpeedPatch -->

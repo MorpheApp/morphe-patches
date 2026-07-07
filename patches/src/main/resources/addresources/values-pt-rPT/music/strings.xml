@@ -21,6 +21,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">Logotipo do cabeçalho</string>
   <string name="morphe_header_logo_entry_1">Padrão</string>
   <string name="morphe_header_logo_entry_3">Personalizado</string>
+  <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_summary">Descarregue vídeos musicais, podcasts ou músicas com aplicações de transferência de terceiros</string>
+  <string name="morphe_external_downloader_action_button_title">Substituir botão de ação de download</string>
+  <string name="morphe_external_downloader_action_button_summary">Substitui a função de transferência integrada no YouTube pela tua aplicação externa de transferência escolhida.</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Sobre</string>

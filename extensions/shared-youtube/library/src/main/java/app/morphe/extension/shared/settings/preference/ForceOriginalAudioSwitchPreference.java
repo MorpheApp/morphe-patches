@@ -17,6 +17,7 @@ public class ForceOriginalAudioSwitchPreference extends SwitchPreference {
     private static final boolean available = !SpoofVideoStreamsPatch.isPatchIncluded()
             || !SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.get()
             || SpoofVideoStreamsPatch.getPreferredClient() == ClientType.ANDROID_REEL_AUTH
+            || SpoofVideoStreamsPatch.getPreferredClient() == ClientType.ANDROID_REEL_NO_AUTH
             || SpoofVideoStreamsPatch.getPreferredClient() == ClientType.TV;
 
     {

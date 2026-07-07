@@ -1,3 +1,27 @@
+## [1.34.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.34.0-dev.1...v1.34.0-dev.2) (2026-07-05)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Return YouTube Dislike:** Remove RYD Shorts due to YT removing Shorts dislike and RYD API no longer providing reliable Shorts dislikes data ([#1924](https://github.com/MorpheApp/morphe-patches/issues/1924)) ([fcb613a](https://github.com/MorpheApp/morphe-patches/commit/fcb613aacb28ccd319f7211282305d0c6a912874))
+* **YouTube Music - Downloads:** Add "Override feed/search flyout button" setting ([#1931](https://github.com/MorpheApp/morphe-patches/issues/1931)) ([af7cf55](https://github.com/MorpheApp/morphe-patches/commit/af7cf55a99c9ebf8e42649af4b931bb74cedf086))
+
+## [1.34.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.33.0...v1.34.0-dev.1) (2026-07-05)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Add to queue:** Patch not working for tablets on `21.xx` ([6ef2a3f](https://github.com/MorpheApp/morphe-patches/commit/6ef2a3f7aadb845b0e0ec5b839773d8e68504868))
+* **YouTube - Add to queue:** Prevent the flyout video ID reset blocking ([93d134f](https://github.com/MorpheApp/morphe-patches/commit/93d134f9df792e35f0b1e40ef933262bc40fa517))
+
+### ✨ New Features
+
+* **YouTube - Miniplayer:** Add "Disable playback with horizontal drag" setting ([#1916](https://github.com/MorpheApp/morphe-patches/issues/1916)) ([186f060](https://github.com/MorpheApp/morphe-patches/commit/186f0603352f26e30fdfab100fe0b77eb22496d6))
+* **YouTube - Theme:** Add "Modern YouTube" dark theme preset ([#1918](https://github.com/MorpheApp/morphe-patches/issues/1918)) ([0a381c8](https://github.com/MorpheApp/morphe-patches/commit/0a381c8c0cd80d1bd3cb1f339587e48798ced00f))
+* **YouTube Music:** Add `Downloads` patch ([#1881](https://github.com/MorpheApp/morphe-patches/issues/1881)) ([d078a37](https://github.com/MorpheApp/morphe-patches/commit/d078a37cd1a8ef93f9546efb24e783a7b826a8b8))
+
+### 🚀 Updated App Support
+
+* **Reddit:** Add experimental support for `2026.27.0` ([4dabc41](https://github.com/MorpheApp/morphe-patches/commit/4dabc4142664669937d47ffad7d6f768aaa48f8e))
+
 ## [1.33.0](https://github.com/MorpheApp/morphe-patches/compare/v1.32.0...v1.33.0) (2026-07-03)
 
 ### 🐛 Bug Fixes
@@ -9,18 +33,18 @@
 * **YouTube - Add to queue:** Show reload options when player is minimized ([#1879](https://github.com/MorpheApp/morphe-patches/issues/1879)) ([95c4ecf](https://github.com/MorpheApp/morphe-patches/commit/95c4ecfb4525ca0964a223fdf2c0f51a9d8d6da0))
 * **YouTube - Add to queue:** Support tablet form factor ([#1891](https://github.com/MorpheApp/morphe-patches/issues/1891)) ([f55b720](https://github.com/MorpheApp/morphe-patches/commit/f55b7206f78e6b5dbe063e6f9e39093929047f34))
 * **YouTube - Add to queue:** Use app activity for dialog to open dialog ([f3e2b2b](https://github.com/MorpheApp/morphe-patches/commit/f3e2b2b3f3350ff6bea937f9eb81da10aab14c34))
+* **YouTube - Add to queue:** Video from a playlist does not open or reload within the playlist ([fbca3e7](https://github.com/MorpheApp/morphe-patches/commit/fbca3e755a67d89026064a6c04dfbaf1bb676caf))
 * **YouTube - Bypass link redirects:** Fix potential crash and cleanup ([6a0b518](https://github.com/MorpheApp/morphe-patches/commit/6a0b518403228c5575f80abf1c3cf48159454563))
-* **YouTube - Disable player popup panels:** patch doesn't work for some users ([#1821](https://github.com/MorpheApp/morphe-patches/issues/1821)) ([2d34625](https://github.com/MorpheApp/morphe-patches/commit/2d34625cb3e6635fa5381ded1e38c464b8d9e269))
+* **YouTube - Disable player popup panels:** Patch not working for some users ([#1821](https://github.com/MorpheApp/morphe-patches/issues/1821)) ([2d34625](https://github.com/MorpheApp/morphe-patches/commit/2d34625cb3e6635fa5381ded1e38c464b8d9e269))
 * **YouTube - Hide layout components:**  Match `RD` playlist URLs to improve "Hide mix playlists" filter ([#1835](https://github.com/MorpheApp/morphe-patches/issues/1835)) ([1172ce0](https://github.com/MorpheApp/morphe-patches/commit/1172ce044f14cc842eb6390d997d7793f8e2b4c3))
-* **YouTube - Reload video button:** Use the correct URL query parameters ([9b399ec](https://github.com/MorpheApp/morphe-patches/commit/9b399ec5d240f84d7a9f2d2ffc3cb7877df1d0da))
+* **YouTube - Open system share sheet:** Add full link format along with shortener setting check ([0259b4c](https://github.com/MorpheApp/morphe-patches/commit/0259b4c50ea5502f8c7f2457a9d8522cbee4915a))
+* **YouTube - Open system share sheet:** Increase the opening speed of the system share sheet ([9cacff8](https://github.com/MorpheApp/morphe-patches/commit/9cacff89172fb05760bdae2dbbae275c0db5934c))
+* **YouTube - Open system share sheet:** Prevent consecutive attempts to close the panel ([d9c6b1b](https://github.com/MorpheApp/morphe-patches/commit/d9c6b1b08fdc290ed5f59ad80056452ca5f0d52b))
+* **YouTube - Open system share sheet:** Support older app versions ([d1ccae8](https://github.com/MorpheApp/morphe-patches/commit/d1ccae8dc396322d406134122e90fb13c6c3ae0c))
+* **YouTube - Reload video:** Use the correct URL query parameters ([9b399ec](https://github.com/MorpheApp/morphe-patches/commit/9b399ec5d240f84d7a9f2d2ffc3cb7877df1d0da))
 * **YouTube - Return YouTube Dislike:** Unnecessary RYD API requests in playlist ([#1815](https://github.com/MorpheApp/morphe-patches/issues/1815)) ([219114a](https://github.com/MorpheApp/morphe-patches/commit/219114aaa3ae0e67993457a9f706bb5f7c397257))
 * **YouTube - SponsorBlock:** Resolve missing resource dependency when patch is excluded ([3721511](https://github.com/MorpheApp/morphe-patches/commit/3721511a7e89124fe92d529399f58f3ec39b26f3))
 * **YouTube - SponsorBlock:** Send correct user agent when submitting segments ([#1903](https://github.com/MorpheApp/morphe-patches/issues/1903)) ([37cecf4](https://github.com/MorpheApp/morphe-patches/commit/37cecf4e5e87599a24178aaaa7ebcd6703591c95))
-* **YouTube - System share sheet:** Added full link format along with shortener setting check ([0259b4c](https://github.com/MorpheApp/morphe-patches/commit/0259b4c50ea5502f8c7f2457a9d8522cbee4915a))
-* **YouTube - System share sheet:** Prevents consecutive attempts to close the panel ([d9c6b1b](https://github.com/MorpheApp/morphe-patches/commit/d9c6b1b08fdc290ed5f59ad80056452ca5f0d52b))
-* **YouTube - System share sheet:** Support older app versions ([d1ccae8](https://github.com/MorpheApp/morphe-patches/commit/d1ccae8dc396322d406134122e90fb13c6c3ae0c))
-* **YouTube - System Share:** Increased the opening speed of the system share sheet ([9cacff8](https://github.com/MorpheApp/morphe-patches/commit/9cacff89172fb05760bdae2dbbae275c0db5934c))
-* **YouTube - Video queue:** A video from a playlist does not opened or reloaded within the playlist. ([fbca3e7](https://github.com/MorpheApp/morphe-patches/commit/fbca3e755a67d89026064a6c04dfbaf1bb676caf))
 * **YouTube Music - Scrobbling:** Parse artist and track from video title ([#1885](https://github.com/MorpheApp/morphe-patches/issues/1885)) ([29c8d02](https://github.com/MorpheApp/morphe-patches/commit/29c8d021426abc5d04c9cea0ae7aa9139374b38e))
 * **YouTube Music - SponsorBlock:** Support older app versions ([bb74726](https://github.com/MorpheApp/morphe-patches/commit/bb7472618b96cf6953292b8466c347a1ddd523df))
 
@@ -44,7 +68,7 @@
 
 ### 🐛 Bug Fixes
 
-* **YouTube - Open system share sheet:** Added full link format along with shortener setting check ([0259b4c](https://github.com/MorpheApp/morphe-patches/commit/0259b4c50ea5502f8c7f2457a9d8522cbee4915a))
+* **YouTube - Open system share sheet:** Add full link format along with shortener setting check ([0259b4c](https://github.com/MorpheApp/morphe-patches/commit/0259b4c50ea5502f8c7f2457a9d8522cbee4915a))
 
 ### 🚀 Updated App Support
 
@@ -127,7 +151,7 @@
 
 * **Reddit - Hide communities shelf:** Communities shelf not being hidden on experimental versions ([#1828](https://github.com/MorpheApp/morphe-patches/issues/1828)) ([0f05846](https://github.com/MorpheApp/morphe-patches/commit/0f0584668a38f7ba721a2eb9c4daec9c00de8466))
 * **Reddit - Hide Trending shelves:** Hide 'Trending communities' shelf in search suggestions ([#1785](https://github.com/MorpheApp/morphe-patches/issues/1785)) ([a9a58fb](https://github.com/MorpheApp/morphe-patches/commit/a9a58fb2069437dbcbe6613f740881ca21cfd45c))
-* **YouTube - Disable player popup panels:** Patch doesn't work for some users ([#1821](https://github.com/MorpheApp/morphe-patches/issues/1821)) ([2d34625](https://github.com/MorpheApp/morphe-patches/commit/2d34625cb3e6635fa5381ded1e38c464b8d9e269))
+* **YouTube - Disable player popup panels:** Patch not working for some users ([#1821](https://github.com/MorpheApp/morphe-patches/issues/1821)) ([2d34625](https://github.com/MorpheApp/morphe-patches/commit/2d34625cb3e6635fa5381ded1e38c464b8d9e269))
 * **YouTube - Return YouTube Dislike:** Unnecessary RYD API requests in playlist ([#1815](https://github.com/MorpheApp/morphe-patches/issues/1815)) ([219114a](https://github.com/MorpheApp/morphe-patches/commit/219114aaa3ae0e67993457a9f706bb5f7c397257))
 
 ### ✨ New Features

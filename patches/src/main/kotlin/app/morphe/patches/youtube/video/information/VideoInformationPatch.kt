@@ -116,7 +116,9 @@ val videoInformationPatch = bytecodePatch(
     )
 
     execute {
-        val playerInitMethod = PlayerInitFingerprint.classDef.methods.first { MethodUtil.isConstructor(it) }
+        val playerInitMethod = PlayerInitFingerprint.classDef.methods.first {
+            MethodUtil.isConstructor(it)
+        }
 
         playerInitMethodRef = WeakReference(playerInitMethod)
 
@@ -176,23 +178,23 @@ val videoInformationPatch = bytecodePatch(
             }
         }
 
-        val playerStatusFingerprint = Fingerprint(
-            classFingerprint = PlayerInitFingerprint,
-            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-            returnType = "V",
-            parameters = listOf(PlayerStatusEnumFingerprint.originalClassDef.type),
-            filters = listOf(
-                // The opcode for the first index of the method is sget-object.
-                // Even in sufficiently old versions, such as YT 17.34, the opcode for the first index is sget-object.
-                opcode(Opcode.SGET_OBJECT),
-                methodCall(
-                    definingClass = "Lj$/time/Instant;",
-                    name = "plus"
+        playerStatusMethodRef = WeakReference(
+            Fingerprint(
+                classFingerprint = PlayerInitFingerprint,
+                accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+                returnType = "V",
+                parameters = listOf(PlayerStatusEnumFingerprint.originalClassDef.type),
+                filters = listOf(
+                    // The opcode for the first index of the method is sget-object.
+                    // Even in sufficiently old versions, such as YT 17.34, the opcode for the first index is sget-object.
+                    opcode(Opcode.SGET_OBJECT),
+                    methodCall(
+                        definingClass = "Lj$/time/Instant;",
+                        name = "plus"
+                    )
                 )
-            )
+            ).method
         )
-
-        playerStatusMethodRef = WeakReference(playerStatusFingerprint.method)
 
         /*
          * Inject call for video IDs

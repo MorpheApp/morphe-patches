@@ -284,22 +284,12 @@ Begrænsninger:
   <string name="morphe_disable_chapter_skip_double_tap_summary">Deaktiverer double-tap-gestussen med to fingre, der springer kapitler over, hvilket utilsigtet kan udløses med én finger</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Eksterne downloads</string>
-  <string name="morphe_external_downloader_screen_summary">Download videoer med tredjeparts download-apps</string>
+  <string name="morphe_external_downloader_screen_summary">Download videoer, podcasts eller sange med tredjeparts download-apps</string>
   <string name="morphe_external_downloader_title">Vis ekstern download-knap</string>
   <string name="morphe_external_downloader_summary">Viser en overlay-knap i videoplayeren, der åbner din eksterne downloader</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">Overskriv knappen Download</string>
   <string name="morphe_external_downloader_action_button_summary">Erstatter YouTubes indbyggede downloadfunktion med din eksterne downloader</string>
-  <string name="morphe_external_downloader_name_title">Downloader pakkenavn</string>
-  <string name="morphe_external_downloader_name_summary">Pakkenavn på din installerede eksterne downloader-app</string>
-  <string name="morphe_external_downloader_other_item_hint">Indtast pakkenavnet</string>
-  <string name="morphe_external_downloader_other_item">Andet</string>
-  <string name="morphe_external_downloader_not_found_title">Appen er ikke installeret</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s er ikke installeret. Installér den.</string>
-  <string name="morphe_external_downloader_package_not_found_warning">"Kunne ikke finde installeret app med pakkenavn: %s
-
-Kontrollér at pakkenavnet er korrekt og at appen er installeret"</string>
-  <string name="morphe_external_downloader_empty_warning">Pakkenavnet må ikke være tomt</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Tekstlæsning</string>
   <string name="morphe_vot_screen_summary">Læs videoundertitler højt ved hjælp af tekst-til-tale på enheden, synkroniseret med afspilningen</string>
@@ -751,7 +741,6 @@ For at vise 'Audio Track'-menuen skal du ændre 'Spoof video streams' til 'Andro
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">Skjul knap for springvand-animation af like-knap</string>
   <string name="morphe_hide_shorts_like_button_title">Skjul knappen Like</string>
-  <string name="morphe_hide_shorts_dislike_button_title">Skjul knappen Dislike</string>
   <string name="morphe_hide_shorts_comments_button_title">Skjul knappen Kommentarer</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Skjul knappen Del</string>
@@ -813,8 +802,6 @@ Indstillinger → Afspilning (eller Automatisk afspilning) → Afspil næste vid
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Skjult af ejer</string>
   <string name="morphe_ryd_enabled_title">Aktivér Return YouTube Dislike</string>
-  <string name="morphe_ryd_shorts_title">Vis Dislikes i Shorts</string>
-  <string name="morphe_ryd_shorts_summary">Begrænsning: Dislikes vises muligvis ikke i inkognitotilstand</string>
   <string name="morphe_ryd_dislike_percentage_title">Vis dislikes som procent</string>
   <string name="morphe_ryd_dislike_percentage_summary">Viser dislikes som en procentdel af likes i stedet for et antal</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
@@ -950,6 +937,8 @@ Hvis det senere slås fra, anbefales det at rydde app-data for at forhindre UI-f
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Forhindrer trækning af den minimerede afspiller til forskellige hjørner af skærmen</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Deaktiver vandret trækbevægelse</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Forhindrer lukning af miniafspilleren ved at svajpe den vandret af skærmen</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Deaktiver afspilning med vandret træk</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Afspilning pauseres, når miniafspilleren trækkes af skærmen</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Skjul overlay-knapper</string>
   <string name="morphe_miniplayer_width_dip_title">Standardstørrelse</string>
   <string name="morphe_miniplayer_width_dip_summary">Indstil den indledende størrelse på skærmen i pixels</string>
@@ -1057,10 +1046,10 @@ Tryk her for at lære mere om DeArrow"</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Anvender din manuelle kvalitetsvalg på alle fremtidige Shorts</string>
   <string name="morphe_shorts_quality_default_wifi_title">Standard Shorts-kvalitet på Wi-Fi-netværk</string>
   <string name="morphe_shorts_quality_default_mobile_title">Standard Shorts-kvalitet på mobilnetværk</string>
-  <string name="morphe_remember_video_quality_mobile">mobil</string>
-  <string name="morphe_remember_video_quality_wifi">Wi-Fi</string>
-  <string name="morphe_remember_video_quality_toast">Ændrede standard %1$s kvalitet til: %2$s</string>
-  <string name="morphe_remember_video_quality_toast_shorts">Ændrede Shorts %1$s kvalitet til: %2$s</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Ændrede standard mobilkvalitet til: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Ændrede standard Wi-Fi-kvalitet til: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_mobile">Ændrede Shorts mobilitetskvalitet til: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_wifi">Ændrede Shorts Wi-Fi-kvalitet til: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Vis afspilningshastighedsknap</string>
   <string name="morphe_playback_speed_dialog_button_summary">Tryk og hold for at nulstille hastigheden til standard</string>
@@ -1101,12 +1090,13 @@ Begrænsninger:
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">For at bruge denne funktion skal du sætte \'Forfalsk videostreams\' til Android VR eller Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Vis avanceret menu for videokvalitet</string>
+  <string name="morphe_advanced_video_quality_menu_title">Åbn menuen \'Avanceret\' kvalitet</string>
+  <string name="morphe_advanced_video_quality_menu_summary">Springer kvalitetsvalgsmenuen over og åbner menuen \'Avanceret\' kvalitet direkte</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Skjul Premium kvalitetsindstillinger</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">Prioritering af videokvalitet</string>
-  <string name="morphe_prioritize_video_quality_summary">Prioriterer den højeste videokvalitet frem for codec-effektivitet</string>
+  <string name="morphe_prioritize_video_quality_summary">Prioriterer den højest tilgængelige videokvalitet over kodekeffektivitet</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Tillad Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Tillader software AV1-afkodning ved brug af Android VR-klienten</string>

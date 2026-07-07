@@ -21,6 +21,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">Логотип у заглављу</string>
   <string name="morphe_header_logo_entry_1">Подразумевани</string>
   <string name="morphe_header_logo_entry_3">Компюта</string>
+  <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_summary">Преузмите музичке спотове, подкасте или песме помоћу апликација за преузимање података од трећих страна</string>
+  <string name="morphe_external_downloader_action_button_title">Замени дугме радње „Преузми”</string>
+  <string name="morphe_external_downloader_action_button_summary">Замењује уграђену функцију за преузимање YouTube Music-а вашим спољашњим преузимачем</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">О програму</string>

@@ -284,22 +284,12 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">두 손가락으로 두 번 탭하여 챕터를 건너뛰는 제스처를 비활성화하여, 한 손가락으로 실수로 작동되는 것을 방지할 수 있습니다</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">외부 다운로드</string>
-  <string name="morphe_external_downloader_screen_summary">서드파티 다운로드 앱으로 동영상을 다운로드할 수 있습니다</string>
+  <string name="morphe_external_downloader_screen_summary">서드파티 다운로드 앱을 사용하여 동영상, 팟캐스트 또는 노래를 다운로드할 수 있습니다</string>
   <string name="morphe_external_downloader_title">외부 다운로드 버튼 표시하기</string>
   <string name="morphe_external_downloader_summary">외부 다운로드 앱을 실행할 수 있는 오버레이 버튼을 동영상 플레이어에 표시합니다</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">오프라인 저장 버튼 재정의하기</string>
   <string name="morphe_external_downloader_action_button_summary">YouTube의 기본 다운로드 기능을 사용자가 설정한 외부 다운로더 앱으로 대체합니다</string>
-  <string name="morphe_external_downloader_name_title">외부 다운로더 앱 패키지명</string>
-  <string name="morphe_external_downloader_name_summary">설치된 외부 다운로더 앱 패키지명을 설정하세요</string>
-  <string name="morphe_external_downloader_other_item_hint">앱 패키지명을 입력하세요</string>
-  <string name="morphe_external_downloader_other_item">기타</string>
-  <string name="morphe_external_downloader_not_found_title">앱이 설치되지 않습니다</string>
-  <string name="morphe_external_downloader_not_installed_warning">\'%s\'가 설치되어 있지 않습니다. 설치하세요</string>
-  <string name="morphe_external_downloader_package_not_found_warning">"패키지 이름이 '%s'인 설치된 앱을 찾을 수 없습니다
-
-패키지 이름이 올바르고 앱이 설치되어 있는지 확인하세요"</string>
-  <string name="morphe_external_downloader_empty_warning">패키지명은 비워둘 수 없습니다</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">음성 번역</string>
   <string name="morphe_vot_screen_summary">기기의 텍스트 음성 변환(TTS)을 사용하여 재생에 맞춰 동기화된 동영상 자막을 읽어줍니다</string>
@@ -406,7 +396,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_swap_save_and_queue_actions_title">저장과 현재 재생목록 작업 교환하기</string>
   <string name="morphe_swap_save_and_queue_actions_summary">버튼을 탭하여 현재 재생목록 옵션을 실행할 수 있고, 길게 탭하면 나중에 볼 동영상에 저장됩니다</string>
   <string name="morphe_queue_override_flyout_menu_title">피드 메뉴 현재 재생목록 버튼 재정의하기</string>
-  <string name="morphe_queue_override_flyout_menu_summary">YouTube 현재 재생목록이 아닌 Morphe 현재 재생목록을 실행합니다</string>
+  <string name="morphe_queue_override_flyout_menu_summary">\'현재 재생목록에서 다음 순서로 재생\' 메뉴를 탭하면 YouTube 현재 재생목록 대신 Morphe 현재 재생목록을 실행됩니다</string>
   <string name="morphe_queue_manager_check_failed_auth">로그인하지 않았습니다</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">재생목록 ID가 없습니다</string>
   <string name="morphe_queue_manager_check_failed_queue">현재 재생목록이 비어 있습니다</string>
@@ -449,7 +439,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
 알림: '동영상 스트림 속이기'가 활성화되어 있지 않으면 이 기능을 활성화해도 예상되지 않은 실시간 스트림 탐색 동작이 발생할 수 있습니다"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">슬라이드하여 탐색 활성화하기</string>
-  <string name="morphe_slide_to_seek_summary">동영상 플레이어를 길게 탭했을 경우에 \'2배속 재생\'이 아닌 \'슬라이드하여 탐색\'을 사용하도록 설정합니다</string>
+  <string name="morphe_slide_to_seek_summary">동영상 플레이어를 길게 탭했을 경우에 \'2배속 재생\' 대신 \'슬라이드하여 탐색\'을 사용하도록 설정합니다</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">재생바 터치 조작 활성화하기</string>
   <string name="morphe_tap_to_seek_summary">드래그하지 않고 재생바를 탭하기만 해도 해당 위치로 이동할 수 있습니다</string>
@@ -753,7 +743,6 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">좋아요 버튼 애니메이션을 비활성화하기</string>
   <string name="morphe_hide_shorts_like_button_title">좋아요 버튼 숨기기</string>
-  <string name="morphe_hide_shorts_dislike_button_title">싫어요 버튼 숨기기</string>
   <string name="morphe_hide_shorts_comments_button_title">댓글 버튼 숨기기</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">공유 버튼 숨기기</string>
@@ -815,10 +804,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">소유자에 의해 숨겨짐</string>
   <string name="morphe_ryd_enabled_title">Return YouTube Dislike 활성화하기</string>
-  <string name="morphe_ryd_shorts_title">Shorts에서 싫어요 수 표시하기</string>
-  <string name="morphe_ryd_shorts_summary">제한 사항: 시크릿 모드에서는 싫어요 수가 표시되지 않을 수 있습니다</string>
   <string name="morphe_ryd_dislike_percentage_title">싫어요 수를 백분율로 표시하기</string>
-  <string name="morphe_ryd_dislike_percentage_summary">싫어요 수를 숫자가 아닌 좋아요 수 대비 백분율로 표시합니다</string>
+  <string name="morphe_ryd_dislike_percentage_summary">싫어요 수를 숫자 대신 좋아요 수 대비 백분율로 표시합니다</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
   <string name="morphe_ryd_compact_layout_title">최소화된 좋아요 버튼 사용하기</string>
   <string name="morphe_ryd_compact_layout_summary">공간을 절약하기 위해 좋아요 버튼의 너비를 줄입니다</string>
@@ -888,12 +875,12 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - 동영상 플레이어 아래에서 채널 이름을 복원합니다</string>
   <!-- misc.sharesheet.openSystemShareSheetPatch -->
   <string name="morphe_open_system_share_sheet_title">공유 시트 변경하기</string>
-  <string name="morphe_open_system_share_sheet_summary">콘텐츠를 공유할 경우에 앱 기본 공유 시트가 아닌 시스템 공유 시트를 실행합니다</string>
+  <string name="morphe_open_system_share_sheet_summary">콘텐츠를 공유할 경우에 앱 기본 공유 시트 대신 시스템 공유 시트를 실행합니다</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">YouTube Music 버튼 재정의하기</string>
-  <string name="morphe_override_youtube_music_buttons_summary">Music 버튼을 탭했을 경우에 YouTube Music 앱이 아닌 사용자가 사용하고 싶은 Music 앱을 열 수 있도록 설정할 수 있습니다</string>
-  <string name="morphe_music_package_name_title">재정의에 사용될 Music 앱 패키지 이름</string>
-  <string name="morphe_music_package_name_summary">사용자가 사용하고 싶은 Music 앱 패키지 이름을 설정하세요</string>
+  <string name="morphe_override_youtube_music_buttons_summary">Music 버튼을 탭했을 경우에 YouTube Music 앱 대신 사용자가 사용하고 싶은 Music 앱을 열 수 있도록 설정할 수 있습니다</string>
+  <string name="morphe_music_package_name_title">재정의에 사용될 Music 앱 패키지명</string>
+  <string name="morphe_music_package_name_summary">사용자가 사용하고 싶은 Music 앱 패키지명을 설정하세요</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">시작 페이지</string>
   <string name="morphe_change_start_page_entry_default">기본값</string>
@@ -930,7 +917,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_shorts_player_type_regular_player_fullscreen">일반 플레이어 전체 화면</string>
   <!-- layout.shortsautoplay.shortsAutoplayPatch -->
   <string name="morphe_shorts_autoplay_title">Shorts 자동재생</string>
-  <string name="morphe_shorts_autoplay_summary">현재 Shorts를 반복 재생하는 것이 아닌 다음 Shorts로 자동으로 넘어갑니다</string>
+  <string name="morphe_shorts_autoplay_summary">현재 Shorts를 반복 재생하는 대신 다음 Shorts로 자동으로 넘어갑니다</string>
   <string name="morphe_shorts_autoplay_background_title">백그라운드에서 자동재생</string>
   <string name="morphe_shorts_autoplay_background_summary">백그라운드 재생 중에 다음 Shorts로 자동으로 넘어갑니다</string>
   <!-- layout.miniplayer.miniplayerPatch -->
@@ -952,6 +939,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">최소화된 플레이어를 화면의 다른 모서리로 드래그하는 것을 방지할 수 있습니다</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">수평 드래그 제스처 비활성화하기</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">미니 플레이어를 화면 밖으로 가로로 스와이프하여 닫는 것을 방지할 수 있습니다</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">수평 드래그로 동영상 재생 비활성화하기</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">미니 플레이어를 화면 밖으로 드래그하면 동영상 재생이 일시 중지됩니다</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">오버레이 버튼 숨기기</string>
   <string name="morphe_miniplayer_width_dip_title">기본 크기</string>
   <string name="morphe_miniplayer_width_dip_summary">초기 화면 크기를 설정할 수 있습니다 (픽셀)</string>
@@ -961,7 +950,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_miniplayer_opacity_invalid_toast">미니 플레이어 오버레이 불투명도는 0-100 사이여야 합니다</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_gradient_loading_screen_title">그라데이션 색상 로딩 화면 활성화하기</string>
-  <string name="morphe_gradient_loading_screen_summary">로딩 화면에 단색이 아닌 그라데이션 배경을 표시합니다</string>
+  <string name="morphe_gradient_loading_screen_summary">로딩 화면에 단색 대신 그라데이션 배경을 표시합니다</string>
   <string name="morphe_splash_screen_animation_style_title">스플래시 애니메이션 스타일</string>
   <string name="morphe_splash_screen_animation_style_entry_1">사용 안 함</string>
   <string name="morphe_splash_screen_animation_style_entry_2">컬러</string>
@@ -1045,7 +1034,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_bypass_link_redirects_summary">앱 내에서 외부 링크를 열 경우에 추적 링크(youtube.com/redirect)을 거치지 않고 연결됩니다</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">외부 브라우저 사용하기</string>
-  <string name="morphe_external_browser_summary">앱 내에서 외부 링크를 열 경우에 내부 브라우저가 아닌 외부 브라우저를 사용합니다</string>
+  <string name="morphe_external_browser_summary">앱 내에서 외부 링크를 열 경우에 내부 브라우저 대신 외부 브라우저를 사용합니다</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">자동</string>
@@ -1059,10 +1048,10 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_remember_shorts_quality_last_selected_summary">Shorts 화질 값을 변경할 때마다 기본 Shorts 화질으로 저장합니다</string>
   <string name="morphe_shorts_quality_default_wifi_title">Wi-Fi 이용 시 기본 Shorts 화질</string>
   <string name="morphe_shorts_quality_default_mobile_title">모바일 네트워크 이용 시 기본 Shorts 화질</string>
-  <string name="morphe_remember_video_quality_mobile">모바일 네트워크</string>
-  <string name="morphe_remember_video_quality_wifi">Wi-Fi</string>
-  <string name="morphe_remember_video_quality_toast">%1$s 이용 시 기본 동영상 화질 값을 %2$s 로 변경하였습니다</string>
-  <string name="morphe_remember_video_quality_toast_shorts">%1$s 이용 시 기본 Shorts 화질 값을 %2$s 로 변경하였습니다</string>
+  <string name="morphe_remember_video_quality_toast_mobile">모바일 네트워크 이용 시 기본 동영상 화질 값을 %s 로 변경하였습니다</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Wi-Fi 이용 시 기본 동영상 화질 값을 %s 로 변경하였습니다</string>
+  <string name="morphe_remember_video_quality_toast_shorts_mobile">모바일 네트워크 이용 시 기본 Shorts 화질 값을 %s 로 변경하였습니다</string>
+  <string name="morphe_remember_video_quality_toast_shorts_wifi">Wi-Fi 이용 시 기본 Shorts 화질 값을 %s 로 변경하였습니다</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">동영상 재생 속도 버튼 표시하기</string>
   <string name="morphe_playback_speed_dialog_button_summary">버튼을 길게 탭하여 동영상 재생 속도를 기본값으로 초기화할 수 있습니다</string>
@@ -1103,12 +1092,13 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">이 기능을 사용하려면, \'동영상 스트림 속이기\'에서 \'기본 클라이언트\'를 \'Android VR\' 또는 \'Android Studio\'로 변경하세요</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">고급 동영상 화질 설정 메뉴 표시하기</string>
+  <string name="morphe_advanced_video_quality_menu_title">\'고급\' 화질 메뉴 열기</string>
+  <string name="morphe_advanced_video_quality_menu_summary">화질 선택 메뉴를 건너뛰고 고급 화질 메뉴를 바로 엽니다</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Premium 화질 옵션 숨기기</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">동영상 우선순위를 화질로 지정하기</string>
-  <string name="morphe_prioritize_video_quality_summary">코덱 효율성보다 최고 화질의 동영상을 우선시합니다</string>
+  <string name="morphe_prioritize_video_quality_summary">코덱 효율성보다 사용 가능한 최고 화질을 우선합니다</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Android VR AV1 허용하기</string>
   <string name="morphe_spoof_video_streams_av1_summary">Android VR 클라이언트를 사용할 경우에 소프트웨어 AV1 디코딩을 허용합니다</string>

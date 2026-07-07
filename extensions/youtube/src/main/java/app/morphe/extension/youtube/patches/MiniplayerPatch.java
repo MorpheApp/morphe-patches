@@ -17,10 +17,13 @@ import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerTyp
 import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MODERN_4;
 import static app.morphe.extension.youtube.settings.Settings.MINIPLAYER_DISABLE_HORIZONTAL_DRAG;
 import static app.morphe.extension.youtube.settings.Settings.MINIPLAYER_DISABLE_HORIZONTAL_DRAG_PLAYBACK;
+import static app.morphe.extension.youtube.settings.Settings.MINIPLAYER_DISABLE_HORIZONTAL_REPOSITION;
 
 import android.content.res.ColorStateList;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -86,6 +89,9 @@ public final class MiniplayerPatch {
     }
 
     private static final int MINIPLAYER_SIZE;
+    private static boolean offScreenMiniplayerButtonPressed = false;
+    private static int miniplayerOffscreenState = 0;
+    private static final int horizontalPositionJump = 5;
 
     static {
         // YT appears to use the device screen dip width, plus an unknown fixed horizontal padding size.
@@ -200,6 +206,25 @@ public final class MiniplayerPatch {
             );
         }
     }
+
+    public static final class MiniplayerHorizontalRepositioningAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return Settings.MINIPLAYER_TYPE.get().isModern()
+                    && !Settings.MINIPLAYER_DISABLE_DRAG_AND_DROP.get()
+                    && !Settings.MINIPLAYER_DISABLE_HORIZONTAL_DRAG.get();
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(
+                    Settings.MINIPLAYER_TYPE,
+                    Settings.MINIPLAYER_DISABLE_DRAG_AND_DROP,
+                    Settings.MINIPLAYER_DISABLE_HORIZONTAL_DRAG
+            );
+        }
+    }
+
 
     public static final class MiniplayerHideOverlayButtonsAvailability implements Setting.Availability {
         @Override
@@ -370,6 +395,72 @@ public final class MiniplayerPatch {
      */
     public static boolean pausePlaybackWithHorizontalDrag() {
         return MINIPLAYER_HORIZONTAL_DRAG_ENABLED && !MINIPLAYER_DISABLE_HORIZONTAL_DRAG_PLAYBACK.get();
+    }
+
+    /**
+     * Injection point.
+     * Check if the button to show the miniplayer from offscreen is pressed and skip
+     * the code to change the miniplayer param offsets to prevent repositioning.
+     */
+    public static void enableOffScreenMiniplayerButtonPressed(MotionEvent motionEvent) {
+        if (!MINIPLAYER_DISABLE_HORIZONTAL_REPOSITION.get()) {
+            return;
+        }
+
+        if (miniplayerOffscreenState > 0 &&
+                motionEvent.getAction() == MotionEvent.ACTION_UP &&
+                motionEvent.getEventTime() - motionEvent.getDownTime() < 200) {
+            offScreenMiniplayerButtonPressed = true;
+        }
+    }
+
+    /**
+     * Injection point.
+     * Forcefully set the current params of miniplayer rect to the device offscreen offsets, only when the miniplayer is set
+     * offscreen, in order to prevent miniplayer from being shown itself during the user's navigation across the app.
+     */
+    public static Rect blockOffscreenMiniplayerHorizontalReposition(Rect currentRect, Rect previousRect, int screenWidth) {
+        if (!MINIPLAYER_DISABLE_HORIZONTAL_REPOSITION.get()) {
+            miniplayerOffscreenState = 0;
+            return currentRect;
+        }
+
+        if (!offScreenMiniplayerButtonPressed) {
+            int previousRectLeft = previousRect.left;
+            int originalWidth = currentRect.width();
+
+            if (previousRectLeft != screenWidth || currentRect.left >= screenWidth) {
+                // Offscreen params is forcefully set on the right side.
+                if (previousRectLeft < 0 && previousRect.right == 0 && currentRect.right > 0) {
+                    currentRect.left = -originalWidth;
+                    currentRect.right = 0;
+                    miniplayerOffscreenState = 1;
+                }
+            } else {
+                // Offscreen params is forcefully set on the left side.
+                currentRect.left = screenWidth;
+                currentRect.right = screenWidth + originalWidth;
+                miniplayerOffscreenState = 2;
+            }
+        } else {
+            // Button to show the miniplayer from its offscreen position is pressed.
+            // Move the offscreen miniplayer of 5 pixels to the center of screen, in order to allow the
+            // miniplayer animator to perform the transition to show it again.
+            int originalWidth = currentRect.width();
+
+            if (miniplayerOffscreenState == 1) {
+                currentRect.left = horizontalPositionJump;
+                currentRect.right = horizontalPositionJump + originalWidth;
+            } else if (miniplayerOffscreenState == 2) {
+                currentRect.left = screenWidth - horizontalPositionJump;
+                currentRect.right = (screenWidth - horizontalPositionJump) + originalWidth;
+            }
+
+            miniplayerOffscreenState = 0;
+            offScreenMiniplayerButtonPressed = false;
+        }
+
+        return currentRect;
     }
 
     /**

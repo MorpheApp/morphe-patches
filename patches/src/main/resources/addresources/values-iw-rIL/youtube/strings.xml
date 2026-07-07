@@ -284,22 +284,12 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">משבית את מחוות ההקשה הכפולה בשתי אצבעות שמדלגת על פרקים, שעשויה להיות מופעלת בטעות עם אצבע אחת</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">הורדות חיצוניות</string>
-  <string name="morphe_external_downloader_screen_summary">הורד סרטונים עם אפליקציות הורדה של צד שלישי</string>
+  <string name="morphe_external_downloader_screen_summary">הורד סרטונים, פודקאסטים או שירים באמצעות אפליקציות הורדה של צד שלישי</string>
   <string name="morphe_external_downloader_title">הצג לחצן הורדה חיצונית</string>
   <string name="morphe_external_downloader_summary">מציג כפתור שכבה בנגן הווידאו שפותח את הורדת הצד השלישי שלך</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">עקוף את פעולת לחצן ההורדה</string>
   <string name="morphe_external_downloader_action_button_summary">מחליף את פונקציית ההורדה המובנית של YouTube במוריד הצד השלישי שלך</string>
-  <string name="morphe_external_downloader_name_title">שם חבילת מוריד</string>
-  <string name="morphe_external_downloader_name_summary">שם החבילה של יישום ההורדות החיצוני המותקן שלך</string>
-  <string name="morphe_external_downloader_other_item_hint">הזן את שם החבילה</string>
-  <string name="morphe_external_downloader_other_item">אחר</string>
-  <string name="morphe_external_downloader_not_found_title">היישום לא מותקן</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s אינו מותקן. נא להתקין אותו.</string>
-  <string name="morphe_external_downloader_package_not_found_warning">"לא ניתן למצוא יישום מותקן עם שם חבילה: %s
-
-יש לוודא ששם החבילה נכון ושהיישום מותקן"</string>
-  <string name="morphe_external_downloader_empty_warning">שם החבילה אינו יכול להיות ריק</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">תרגום דיבוב</string>
   <string name="morphe_vot_screen_summary">קריאת כתוביות הסרטון בקול רם באמצעות טקסט לדיבור מקומי, בסנכרון עם ההפעלה</string>
@@ -751,7 +741,6 @@ Second \"item\" text"</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <string name="morphe_hide_shorts_like_fountain_title">הסתר הנפשת מזרקה של לחצן אהבתי</string>
   <string name="morphe_hide_shorts_like_button_title">הסתר לחצן אהבתי</string>
-  <string name="morphe_hide_shorts_dislike_button_title">הסתר לחצן דיסלייק</string>
   <string name="morphe_hide_shorts_comments_button_title">הסתר לחצן תגובות</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">הסתר לחצן שיתוף</string>
@@ -813,8 +802,6 @@ Second \"item\" text"</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">מוסתר על ידי הבעלים</string>
   <string name="morphe_ryd_enabled_title">הפעל Return YouTube Dislike</string>
-  <string name="morphe_ryd_shorts_title">הצג דיסלייקים ב-Shorts</string>
-  <string name="morphe_ryd_shorts_summary">מגבלה: דיסלייקים עלולים לא להופיע במצב גלישה בסתר</string>
   <string name="morphe_ryd_dislike_percentage_title">הצג דיסלייקים כאחוז</string>
   <string name="morphe_ryd_dislike_percentage_summary">מציג דיסלייקים כאחוז מהלייקים במקום מספר</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
@@ -950,6 +937,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">מונע גרירת הנגן הממוזער לפינות שונות של המסך</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">בטל מחוות גרירה אופקית</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">מונע סגירת הנגן הממוזער על ידי החלקתו אופקית מהמסך</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">השבתת השמעה באמצעות גרירה אופקית</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">ההשמעה תיעצר כאשר המיני נגן ייגרר מחוץ למסך</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">הסתר לחצני שכבת-על</string>
   <string name="morphe_miniplayer_width_dip_title">גודל ברירת מחדל</string>
   <string name="morphe_miniplayer_width_dip_summary">הגדר את הגודל הראשוני על המסך, בפיקסלים</string>
@@ -1057,10 +1046,10 @@ Second \"item\" text"</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">מחיל את הבחירה האיכותית הידנית שלך על כל ה-Shorts העתידיים</string>
   <string name="morphe_shorts_quality_default_wifi_title">איכות Shorts ברירת מחדל ברשת אלחוטית</string>
   <string name="morphe_shorts_quality_default_mobile_title">איכות Shorts ברירת מחדל ברשת סלולרית</string>
-  <string name="morphe_remember_video_quality_mobile">סלולרית</string>
-  <string name="morphe_remember_video_quality_wifi">אלחוטית</string>
-  <string name="morphe_remember_video_quality_toast">איכות %1$s ברירת מחדל שונתה ל: %2$s</string>
-  <string name="morphe_remember_video_quality_toast_shorts">איכות %1$s Shorts שונתה ל: %2$s</string>
+  <string name="morphe_remember_video_quality_toast_mobile">איכות ברירת המחדל של נייד שונתה ל: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">איכות ברירת המחדל של Wi-Fi שונתה ל: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_mobile">איכות Shorts בנייד שונתה ל: %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_wifi">איכות Shorts ב-Wi-Fi שונתה ל: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">הצג כפתור מהירות הפעלה</string>
   <string name="morphe_playback_speed_dialog_button_summary">הקש והחזק כדי לאפס למהירות ברירת מחדל</string>
@@ -1101,12 +1090,13 @@ Second \"item\" text"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">כדי להשתמש בתכונה זו, הגדר \'זיוף זרמי וידאו\' ל-Android VR או Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">הצג תפריט איכות סרטון מתקדם</string>
+  <string name="morphe_advanced_video_quality_menu_title">פתח תפריט איכות מתקדם</string>
+  <string name="morphe_advanced_video_quality_menu_summary">מדלג על תפריט בחירת האיכות ופותח ישירות את תפריט האיכות המתקדם</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">הסתר אפשרויות איכות וידאו פרימיום</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">העדיפו איכות וידאו</string>
-  <string name="morphe_prioritize_video_quality_summary">נותן עדיפות לאיכות וידאו הגבוהה ביותר על פני יעילות הקידוד</string>
+  <string name="morphe_prioritize_video_quality_summary">נותן עדיפות לאיכות הווידאו הגבוהה ביותר על פני יעילות הקידוד</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">אפשר Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">מאפשר פענוח AV1 תוכנה בעת שימוש בלקוח Android VR</string>
