@@ -19,13 +19,13 @@ import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.all.misc.resources.ResourceType
 import app.morphe.patches.all.misc.resources.getResourceId
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
-import app.morphe.patches.shared.misc.litho.addLithoFilter
-import app.morphe.patches.shared.misc.litho.lithoFilterPatch
+import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.litho.observer.layoutReloadObserverPatch
 import app.morphe.patches.youtube.misc.navigation.addBottomBarContainerHook
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
@@ -48,21 +48,21 @@ internal val hideShortsAppShortcutOption = booleanOption(
     key = "hideShortsAppShortcut",
     default = false,
     title = "Hide Shorts app shortcut",
-    description = "Permanently hides the shortcut to open Shorts when long pressing the app icon in your launcher.",
+    description = "Permanently hides the shortcut to open Shorts when long pressing the app icon in your launcher."
 )
 
 internal val hideShortsWidgetOption = booleanOption(
     key = "hideShortsWidget",
     default = false,
     title = "Hide Shorts widget",
-    description = "Permanently hides the launcher widget Shorts button.",
+    description = "Permanently hides the launcher widget Shorts button."
 )
 
 private val hideShortsComponentsResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
         resourceMappingPatch,
-        versionCheckPatch,
+        versionCheckPatch
     )
 
     execute {
@@ -78,7 +78,7 @@ private val hideShortsComponentsResourcePatch = resourcePatch {
                     SwitchPreference("morphe_hide_shorts_search"),
                     SwitchPreference("morphe_hide_shorts_subscriptions"),
                     SwitchPreference("morphe_hide_shorts_video_description"),
-                    SwitchPreference("morphe_hide_shorts_history"),
+                    SwitchPreference("morphe_hide_shorts_history")
                 )
             ),
             SwitchPreference("morphe_disable_shorts_double_tap_to_like"),
@@ -128,7 +128,7 @@ private val hideShortsComponentsResourcePatch = resourcePatch {
                     SwitchPreference("morphe_hide_shorts_full_video_link_label"),
                     SwitchPreference("morphe_hide_shorts_video_title"),
                     SwitchPreference("morphe_hide_shorts_sound_metadata_label"),
-                    SwitchPreference("morphe_hide_shorts_navigation_bar"),
+                    SwitchPreference("morphe_hide_shorts_navigation_bar")
                 )
             )
         )
@@ -137,7 +137,7 @@ private val hideShortsComponentsResourcePatch = resourcePatch {
         document("res/xml/main_shortcuts.xml").use { document ->
             val shortsItem = document.childNodes.findElementByAttributeValueOrThrow(
                 "android:shortcutId",
-                "shorts-shortcut",
+                "shorts-shortcut"
             )
 
             if (hideShortsAppShortcut == true) {
@@ -148,7 +148,7 @@ private val hideShortsComponentsResourcePatch = resourcePatch {
         document("res/layout/appwidget_two_rows.xml").use { document ->
             val shortsItem = document.childNodes.findElementByAttributeValueOrThrow(
                 "android:id",
-                "@id/button_shorts_container",
+                "@id/button_shorts_container"
             )
 
             if (hideShortsWidget == true) {

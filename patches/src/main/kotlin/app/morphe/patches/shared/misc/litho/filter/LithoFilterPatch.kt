@@ -10,7 +10,7 @@
 
 @file:Suppress("SpellCheckingInspection")
 
-package app.morphe.patches.shared.misc.litho
+package app.morphe.patches.shared.misc.litho.filter
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
@@ -20,18 +20,13 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
+import app.morphe.patcher.patch.BytecodePatch
+import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.string
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
-import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.fix.backtoexitgesture.fixBackToExitGesturePatch
-import app.morphe.patches.youtube.misc.fix.verticalscroll.fixVerticalScrollPatch
-import app.morphe.patches.youtube.misc.litho.context.EXTENSION_CONTEXT_INTERFACE
-import app.morphe.patches.youtube.misc.litho.context.conversionContextPatch
-import app.morphe.patches.youtube.misc.playservice.is_20_22_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_21_15_or_greater
-import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
+import app.morphe.patches.shared.misc.litho.context.EXTENSION_CONTEXT_INTERFACE
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getReference
@@ -68,53 +63,62 @@ fun addLithoFilter(classDescriptor: String) {
     )
 }
 
-val lithoFilterPatch = bytecodePatch(
-    description = "Hooks the method which parses the bytes into a ComponentContext to filter components.",
+/**
+ * Shared Litho component filter factory used by both YouTube and YT Music.
+ *
+ * The following patch inserts a hook into the method that parses the bytes into a ComponentContext.
+ * This method contains a StringBuilder object that represents the pathBuilder of the component.
+ * The pathBuilder is used to filter components by their path.
+ *
+ * Additionally, the method contains a reference to the component's identifier.
+ * The identifier is used to filter components by their identifier.
+ *
+ * The protobuf buffer is passed along from a different injection point before the filtering occurs.
+ * The buffer is a large byte array that represents the component tree.
+ * This byte array is searched for strings that indicate the current component.
+ *
+ * All modifications done here must allow all the original code to still execute
+ * even when filtering, otherwise memory leaks or poor app performance may occur.
+ *
+ * The following pseudocode shows how this patch works:
+ *
+ * class SomeOtherClass {
+ *    // Called before ComponentContextParser.parseComponent() method.
+ *    public void someOtherMethod(ByteBuffer byteBuffer) {
+ *        ExtensionClass.setProtoBuffer(byteBuffer); // Inserted by this patch.
+ *        ...
+ *   }
+ * }
+ *
+ * class ComponentContextParser {
+ *    public Component parseComponent() {
+ *        ...
+ *
+ *        if (extensionClass.shouldFilter()) {  // Inserted by this patch.
+ *            return emptyComponent;
+ *        }
+ *        return originalUnpatchedComponent; // Original code.
+ *    }
+ * }
+ *
+ * @param hookNonNativeBuffer Whether to also insert the non-native ByteBuffer hook.
+ *                            Older client versions push data through a non-native path; newer ones
+ *                            (YouTube 20.22+, YT Music 9.x) always use the native Upb encode path.
+ *                            Evaluated lazily inside execute so version flags are already set.
+ * @param overrideUpbFeatureFlag Whether to override the A/B feature flag that enables Upb-native
+ *                               protobuf parsing (only present on older YouTube; absent in Music).
+ * @param block Callback to add app-specific dependencies (sharedExtensionPatch, conversionContextPatch,
+ *              versionCheckPatch, and any app-specific fixes).
+ */
+internal fun sharedLithoFilterPatch(
+    hookNonNativeBuffer: () -> Boolean,
+    overrideUpbFeatureFlag: () -> Boolean,
+    block: BytecodePatchBuilder.() -> Unit,
+): BytecodePatch = bytecodePatch(
+    description = "Hooks the method which parses the bytes into a ComponentContext to filter components."
 ) {
-    dependsOn(
-        sharedExtensionPatch,
-        conversionContextPatch,
-        versionCheckPatch,
-        fixBackToExitGesturePatch,
-        fixVerticalScrollPatch,
-    )
+    block()
 
-    /**
-     * The following patch inserts a hook into the method that parses the bytes into a ComponentContext.
-     * This method contains a StringBuilder object that represents the pathBuilder of the component.
-     * The pathBuilder is used to filter components by their path.
-     *
-     * Additionally, the method contains a reference to the component's identifier.
-     * The identifier is used to filter components by their identifier.
-     *
-     * The protobuf buffer is passed along from a different injection point before the filtering occurs.
-     * The buffer is a large byte array that represents the component tree.
-     * This byte array is searched for strings that indicate the current component.
-     *
-     * All modifications done here must allow all the original code to still execute
-     * even when filtering, otherwise memory leaks or poor app performance may occur.
-     *
-     * The following pseudocode shows how this patch works:
-     *
-     * class SomeOtherClass {
-     *    // Called before ComponentContextParser.parseComponent() method.
-     *    public void someOtherMethod(ByteBuffer byteBuffer) {
-     *        ExtensionClass.setProtoBuffer(byteBuffer); // Inserted by this patch.
-     *        ...
-     *   }
-     * }
-     *
-     * class ComponentContextParser {
-     *    public Component parseComponent() {
-     *        ...
-     *
-     *        if (extensionClass.shouldFilter()) {  // Inserted by this patch.
-     *            return emptyComponent;
-     *        }
-     *        return originalUnpatchedComponent; // Original code.
-     *    }
-     * }
-     */
     execute {
         // Remove dummy filter from extenion static field
         // and add the filters included during patching.
@@ -154,7 +158,7 @@ val lithoFilterPatch = bytecodePatch(
 
         // region Pass the buffer into extension.
 
-        if (!is_20_22_or_greater) {
+        if (hookNonNativeBuffer()) {
             // Non-native buffer.
             ProtobufBufferReferenceFingerprint.method.addInstruction(
                 0,
@@ -263,14 +267,14 @@ val lithoFilterPatch = bytecodePatch(
                         invoke-static { v$contextRegister, v$bufferRegister, v$accessibilityIdRegister, v$accessibilityTextRegister }, $EXTENSION_CLASS->isFiltered(${EXTENSION_CONTEXT_INTERFACE}[BLjava/lang/String;Ljava/lang/String;)Z
                         move-result v$freeRegister
                         if-eqz v$freeRegister, :unfiltered
-                        
+
                         # Return an empty component.
                         move-object/from16 v$freeRegister, p1
                         invoke-static { v$freeRegister }, $builderMethodDescriptor
                         move-result-object v$freeRegister
                         iget-object v$freeRegister, v$freeRegister, $emptyComponentField
                         return-object v$freeRegister
-                        
+
                         :unfiltered
                         nop
                     """
@@ -283,7 +287,7 @@ val lithoFilterPatch = bytecodePatch(
                         # Get accessibilityId
                         invoke-interface { v$buttonViewModelRegister }, $accessibilityIdMethod
                         move-result-object v$accessibilityIdRegister
-                        
+
                         # Get accessibilityText
                         invoke-interface { v$buttonViewModelRegister }, $accessibilityTextMethod
                         move-result-object v$accessibilityTextRegister
@@ -323,7 +327,7 @@ val lithoFilterPatch = bytecodePatch(
         // region A/B test of new Litho native code.
 
         // Turn off a feature flag that enables native code of protobuf parsing (Upb protobuf).
-        if (!is_21_15_or_greater) {
+        if (overrideUpbFeatureFlag()) {
             LithoConverterBufferUpbFeatureFlagFingerprint.let {
                 // 20.22 the flag is still enabled in one location, but what it does is not known.
                 // Disable it anyway. Flag was removed in 21.15+

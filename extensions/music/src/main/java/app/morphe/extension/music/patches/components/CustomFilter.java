@@ -2,19 +2,16 @@
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
  *
- * Original hard forked code:
- * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
- *
- * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
 
-package app.morphe.extension.youtube.patches.components;
+package app.morphe.extension.music.patches.components;
 
+import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.patches.components.BaseCustomFilter;
-import app.morphe.extension.youtube.settings.Settings;
 
 /**
- * YouTube-side entry point for the shared custom filter. See {@link BaseCustomFilter} for the
+ * YT Music entry point for the shared custom filter. See {@link BaseCustomFilter} for the
  * expression syntax reference.
  */
 @SuppressWarnings("unused")

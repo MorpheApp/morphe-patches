@@ -215,13 +215,6 @@ Changes include:
     <string name="morphe_hide_comments_thanks_button_title">Hide Thanks button</string>
     <string name="morphe_sanitize_comments_category_bar_title">Sanitize category bar</string>
     <string name="morphe_sanitize_comments_category_bar_summary">Hides all comment sorting options except \'Top\' and \'Newest\'</string>
-    <string name="morphe_custom_filter_screen_title">Custom filter</string>
-    <string name="morphe_custom_filter_screen_summary">Configure custom filters to hide any component</string>
-    <string name="morphe_custom_filter_title">Enable custom filter</string>
-    <string name="morphe_custom_filter_strings_title">Custom filter</string>
-    <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
-    <string name="morphe_custom_filter_strings_summary">List of component path builder strings to filter, separated by new lines</string>
-    <string name="morphe_custom_filter_toast_invalid_syntax">Invalid custom filter: %s</string>
     <string name="morphe_hide_view_count_title">Hide view count</string>
     <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
     <string name="morphe_hide_view_count_summary">"Limitations:
