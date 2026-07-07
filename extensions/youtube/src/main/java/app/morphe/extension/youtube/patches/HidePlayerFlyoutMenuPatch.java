@@ -7,8 +7,8 @@
 
 package app.morphe.extension.youtube.patches;
 
-import static app.morphe.extension.youtube.shared.ConversionContext.ELEMENT_IDENTIFIER_COMPONENT;
-import static app.morphe.extension.youtube.shared.ConversionContext.ELEMENT_IDENTIFIER_CONTAINER;
+import static app.morphe.extension.shared.patches.ConversionContext.ELEMENT_IDENTIFIER_COMPONENT;
+import static app.morphe.extension.shared.patches.ConversionContext.ELEMENT_IDENTIFIER_CONTAINER;
 
 import android.view.View;
 import android.widget.ListView;

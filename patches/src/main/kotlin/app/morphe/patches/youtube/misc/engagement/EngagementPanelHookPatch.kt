@@ -11,19 +11,16 @@ import app.morphe.patches.youtube.shared.EngagementPanelControllerFingerprint
 import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
+import java.lang.ref.WeakReference
 import kotlin.properties.Delegates
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/shared/EngagementPanel;"
 
-var panelControllerMethod: MutableMethod by Delegates.notNull()
-    private set
-var panelIdIndex = 0
-    private set
-var panelIdRegister = 0
-    private set
-var panelIdSmaliInstruction = ""
-    private set
+lateinit var panelControllerMethodRef: WeakReference<MutableMethod>
+private var panelIdIndex = -1
+private var panelIdRegister = -1
+private lateinit var panelIdSmaliInstruction : String
 
 val engagementPanelHookPatch = bytecodePatch(
     description = "Hook to get the current engagement panel state.",
@@ -32,17 +29,16 @@ val engagementPanelHookPatch = bytecodePatch(
 
     execute {
         EngagementPanelControllerFingerprint.let {
-            it.clearMatch()
             it.method.apply {
                 val panelIdField = it.instructionMatches.last().instruction.getReference<FieldReference>()!!
                 val insertIndex = it.instructionMatches[5].index
 
                 val (freeRegister, panelRegister) =
                     with (getInstruction<TwoRegisterInstruction>(insertIndex)) {
-                        Pair(registerA, registerB)
+                        registerA to registerB
                     }
 
-                panelControllerMethod = this
+                panelControllerMethodRef = WeakReference(this)
                 panelIdIndex = insertIndex
                 panelIdRegister = freeRegister
                 panelIdSmaliInstruction =
@@ -66,7 +62,7 @@ val engagementPanelHookPatch = bytecodePatch(
 }
 
 fun addEngagementPanelIdHook(descriptor: String) =
-    panelControllerMethod.addInstructionsWithLabels(
+    panelControllerMethodRef.get()!!.addInstructionsWithLabels(
         panelIdIndex,
         """
             $panelIdSmaliInstruction

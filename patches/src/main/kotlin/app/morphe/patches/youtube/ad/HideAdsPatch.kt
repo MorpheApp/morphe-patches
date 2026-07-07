@@ -30,8 +30,8 @@ import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
+import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
-import app.morphe.patches.youtube.misc.proto.hookElement
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE

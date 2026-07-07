@@ -2,14 +2,14 @@
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
  *
- * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
 
-package app.morphe.patches.youtube.misc.litho.node
+package app.morphe.patches.music.misc.litho.node
 
+import app.morphe.patches.music.misc.extension.sharedExtensionPatch
+import app.morphe.patches.music.misc.litho.context.conversionContextPatch
 import app.morphe.patches.shared.misc.litho.node.createTreeNodeElementHookPatch
-import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.litho.context.conversionContextPatch
 
 val treeNodeElementHookPatch = createTreeNodeElementHookPatch(
     sharedExtensionPatch,

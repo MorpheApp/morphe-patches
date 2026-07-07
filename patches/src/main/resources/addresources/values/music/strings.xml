@@ -128,6 +128,23 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <string name="morphe_music_hide_lyrics_share_button_title">Hide Share button</string>
     <string name="morphe_music_hide_lyrics_translate_button_title">Hide Translate button</string>
 
+    <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
+    <string name="morphe_music_action_buttons_screen_title">Action buttons</string>
+    <string name="morphe_music_action_buttons_screen_summary">Choose which action buttons appear under the player</string>
+    <string name="morphe_music_hide_action_bar_title">Hide action bar</string>
+    <string name="morphe_music_hide_like_dislike_button_title">Hide Like and Dislike button</string>
+    <string name="morphe_music_hide_comments_button_title">Hide Comments button</string>
+    <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
+    <string name="morphe_music_hide_lyrics_button_title">Hide Lyrics button</string>
+    <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
+    <string name="morphe_music_hide_share_button_title">Hide Share button</string>
+    <!-- 'Save' should be translated using the same localized wording YouTube Music displays for the button. -->
+    <string name="morphe_music_hide_save_button_title">Hide Save button</string>
+    <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
+    <string name="morphe_music_hide_download_button_title">Hide Download button</string>
+    <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
+    <string name="morphe_music_hide_radio_button_title">Hide Start radio button</string>
+
     <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
     <string name="morphe_music_hide_flyout_menu_components_screen_title">Flyout menu</string>
     <string name="morphe_music_hide_flyout_menu_components_screen_summary">Choose which components appear in the player and queue flyout menus</string>

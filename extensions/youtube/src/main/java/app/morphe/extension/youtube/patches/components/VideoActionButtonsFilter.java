@@ -233,8 +233,7 @@ public final class VideoActionButtonsFilter extends Filter {
      * Injection point.
      * Called after {@link #onSingleColumnWatchNextResultsLoaded(MessageLite)}.
      */
-    public static void onLazilyConvertedElementLoaded(@NonNull String identifier,
-                                                      @NonNull List<Object> treeNodeResultList) {
+    public static void onLazilyConvertedElementLoaded(String identifier, List<Object> treeNodeResultList) {
         // Check if hide video action buttons is enabled.
         if (!HIDE_ACTION_BUTTON) {
             return;
