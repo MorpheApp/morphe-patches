@@ -83,6 +83,8 @@ private const val KEYWORD_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/KeywordContentFilter;"
 private const val SANITIZE_VIDEO_SUBTITLE_FILTER =
     "Lapp/morphe/extension/youtube/patches/spans/SanitizeVideoSubtitleFilter;"
+private const val SEARCH_LINKS_FILTER =
+    "Lapp/morphe/extension/youtube/patches/spans/SearchLinksFilter;"
 
 val hideLayoutComponentsPatch = bytecodePatch(
     name = "Hide layout components",
@@ -134,7 +136,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_subscribe_button"),
                     SwitchPreference("morphe_hide_transcript_section"),
                     SwitchPreference("morphe_hide_video_details_section")
-                ),
+                )
             ),
             PreferenceScreenPreference(
                 "morphe_comments_screen",
@@ -159,13 +161,14 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_comments_community_guidelines"),
                     SwitchPreference("morphe_hide_comments_create_a_short_button"),
                     SwitchPreference("morphe_hide_comments_emoji_and_timestamp_buttons"),
+                    SwitchPreference("morphe_hide_comments_filter_bar_options", summary = true),
                     SwitchPreference("morphe_hide_comments_info_button"),
                     SwitchPreference("morphe_hide_comments_live_chat_donators_bar"),
                     SwitchPreference("morphe_hide_comments_preview_comment", summary = true),
                     SwitchPreference("morphe_hide_comments_thanks_button"),
-                    SwitchPreference("morphe_sanitize_comments_category_bar", summary = true)
+                    SwitchPreference("morphe_sanitize_comments_highlighted_search_links", summary = true)
                 ),
-                sorting = Sorting.UNSORTED,
+                sorting = Sorting.UNSORTED
             ),
             SwitchPreference("morphe_hide_channel_bar"),
             SwitchPreference("morphe_hide_channel_watermark"),
@@ -206,10 +209,11 @@ val hideLayoutComponentsPatch = bytecodePatch(
             PreferenceScreenPreference(
                 key = "morphe_hide_filter_bar_screen",
                 preferences = setOf(
-                    SwitchPreference("morphe_hide_filter_bar_feed_in_feed"),
-                    SwitchPreference("morphe_hide_filter_bar_feed_in_related_videos"),
-                    SwitchPreference("morphe_hide_filter_bar_feed_in_search"),
-                    SwitchPreference("morphe_hide_filter_bar_feed_in_history")
+                    SwitchPreference("morphe_hide_filter_bar_in_comments"),
+                    SwitchPreference("morphe_hide_filter_bar_in_feed"),
+                    SwitchPreference("morphe_hide_filter_bar_in_related_videos"),
+                    SwitchPreference("morphe_hide_filter_bar_in_search"),
+                    SwitchPreference("morphe_hide_filter_bar_in_history")
                 )
             ),
             PreferenceScreenPreference(
@@ -229,7 +233,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_posts_shelf"),
                     SwitchPreference("morphe_hide_store_button"),
                     SwitchPreference("morphe_hide_subscribe_button_in_channel_page")
-                ),
+                )
             ),
             SwitchPreference("morphe_hide_album_cards", summary = true),
             SwitchPreference("morphe_hide_artist_cards", summary = true),
@@ -285,7 +289,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 tag = "app.morphe.extension.shared.settings.preference.BulletPointSwitchPreference"
             ),
             SwitchPreference("morphe_hide_web_search_results", summary = true),
-            SwitchPreference("morphe_hide_youtube_doodles", summary = true),
+            SwitchPreference("morphe_hide_youtube_doodles", summary = true)
         )
 
         if (is_20_21_or_greater) {
@@ -311,7 +315,8 @@ val hideLayoutComponentsPatch = bytecodePatch(
         addLithoFilter(KEYWORD_FILTER)
         addLithoFilter(CUSTOM_FILTER)
         addSpanFilter(SANITIZE_VIDEO_SUBTITLE_FILTER)
-        hookTreeNodeResult("$COMMENTS_FILTER->sanitizeCommentsCategoryBar")
+        addSpanFilter(SEARCH_LINKS_FILTER)
+        hookTreeNodeResult("$COMMENTS_FILTER->hideCommentsFilterBarOptions")
 
         // region hide mix playlists
 
@@ -640,6 +645,27 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     viewRegister,
                     LAYOUT_COMPONENTS_FILTER,
                     "hideInRelatedVideos"
+                )
+            }
+        }
+
+        PanelSubheaderFingerprint.let {
+            it.method.apply {
+                val removeAllViewsIndex = indexOfFirstInstructionReversedOrThrow {
+                    opcode == Opcode.INVOKE_VIRTUAL &&
+                            getReference<MethodReference>()?.name == "removeAllViews"
+                }
+
+                val setVisibilityIndex = indexOfFirstInstructionOrThrow(removeAllViewsIndex) {
+                    opcode == Opcode.INVOKE_VIRTUAL &&
+                            getReference<MethodReference>()?.name == "setVisibility"
+                }
+
+                val subheaderRegister = getInstruction<FiveRegisterInstruction>(setVisibilityIndex).registerC
+
+                addInstruction(
+                    setVisibilityIndex + 1,
+                    "invoke-static { v$subheaderRegister }, $COMMENTS_FILTER->hideInComments(Landroid/view/View;)V"
                 )
             }
         }

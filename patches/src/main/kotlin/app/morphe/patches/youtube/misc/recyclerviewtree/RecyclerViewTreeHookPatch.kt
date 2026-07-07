@@ -1,4 +1,4 @@
-package app.morphe.patches.youtube.misc.recyclerviewtree.hook
+package app.morphe.patches.youtube.misc.recyclerviewtree
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.bytecodePatch

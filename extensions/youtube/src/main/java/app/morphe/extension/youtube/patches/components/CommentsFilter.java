@@ -44,6 +44,7 @@ public class CommentsFilter extends Filter {
     private final StringFilterGroup comments;
     private final StringFilterGroup emojiAndTimestampButtons;
     private final StringFilterGroup previewCommentDotsSelector;
+    private final StringFilterGroup commentsFilterBar;
     
     public CommentsFilter() {
         var chatSummary = new StringFilterGroup(
@@ -66,6 +67,11 @@ public class CommentsFilter extends Filter {
                 null,
                 "video_metadata_carousel",
                 "_comments"
+        );
+
+        commentsFilterBar = new StringFilterGroup(
+                Settings.HIDE_FILTER_BAR_IN_COMMENTS,
+                CHIP_BAR_PATH_PREFIX
         );
 
         var communityGuidelines = new StringFilterGroup(
@@ -112,6 +118,7 @@ public class CommentsFilter extends Filter {
                 chatSummary,
                 comments,
                 commentsByMembers,
+                commentsFilterBar,
                 commentsPrompts,
                 communityGuidelines,
                 createAShort,
@@ -146,9 +153,29 @@ public class CommentsFilter extends Filter {
             return Settings.HIDE_COMMENTS_SECTION.get();
         } else if (matchedGroup == emojiAndTimestampButtons) {
             return path.startsWith(COMMENT_COMPOSER_PATH);
+        } else if (matchedGroup == commentsFilterBar) {
+            return Settings.HIDE_FILTER_BAR_IN_COMMENTS.get() && PlayerType.getCurrent().isMaximizedOrFullscreen();
         }
 
         return true;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideInComments(View view) {
+        if (view == null || !Settings.HIDE_FILTER_BAR_IN_COMMENTS.get()) {
+            return;
+        }
+
+        if (PlayerType.getCurrent().isMaximizedOrFullscreen()) {
+            ViewGroup.LayoutParams lp = view.getLayoutParams();
+            if (lp != null) {
+                lp.height = 0;
+                view.setLayoutParams(lp);
+            }
+            view.setVisibility(View.GONE);
+        }
     }
 
     /**
@@ -232,10 +259,10 @@ public class CommentsFilter extends Filter {
     /**
      * Injection point.
      */
-    public static void sanitizeCommentsCategoryBar(@NonNull String identifier,
+    public static void hideCommentsFilterBarOptions(@NonNull String identifier,
                                                    @NonNull List<Object> treeNodeResultList) {
         try {
-            if (Settings.SANITIZE_COMMENTS_CATEGORY_BAR.get()
+            if (Settings.HIDE_COMMENTS_FILTER_BAR_OPTIONS.get()
                     && identifier.startsWith(CHIP_BAR_PATH_PREFIX)
                     // Playlist sort button uses same components and must only filter if the player is opened.
                     && PlayerType.getCurrent().isMaximizedOrFullscreen()
@@ -246,7 +273,7 @@ public class CommentsFilter extends Filter {
                 }
             }
         } catch (Exception ex) {
-            Logger.printException(() -> "Failed to sanitize comment category bar", ex);
+            Logger.printException(() -> "Failed to hide comment filter bar options", ex);
         }
     }
 
