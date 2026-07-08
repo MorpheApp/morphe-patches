@@ -4,6 +4,7 @@ package app.morphe.patches.music.layout.miniplayer
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.all.misc.resources.ResourceType
 import app.morphe.patches.all.misc.resources.getResourceId
@@ -94,25 +95,22 @@ val changeMiniplayerColorPatch = bytecodePatch(
         // Only the 'ytm_color_grey_12' branch (visible tab bar) is patched; the
         // hidden branch uses a different color. The view is published so the
         // extension can repaint without waiting for a relayout.
-        val colorGrey12ResourceId = getResourceId(ResourceType.COLOR, "ytm_color_grey_12")
-        NavigationBarTabLayoutFingerprint.method.apply {
-            val colorLiteralIndex = indexOfFirstLiteralInstructionOrThrow(colorGrey12ResourceId)
-            val setBackgroundColorIndex = indexOfFirstInstructionOrThrow(colorLiteralIndex) {
-                opcode == Opcode.INVOKE_VIRTUAL &&
-                        getReference<MethodReference>()?.name == "setBackgroundColor"
-            }
-            val call = getInstruction<FiveRegisterInstruction>(setBackgroundColorIndex)
-            val tabLayoutRegister = call.registerC
-            val colorRegister = call.registerD
+        NavigationBarTabLayoutFingerprint.let {
+            it.method.apply {
+                val setBackgroundColorIndex = it.instructionMatches.last().index
+                val call = getInstruction<FiveRegisterInstruction>(setBackgroundColorIndex)
+                val tabLayoutRegister = call.registerC
+                val colorRegister = call.registerD
 
-            addInstructions(
-                setBackgroundColorIndex,
-                """
-                    invoke-static { v$tabLayoutRegister, v$colorRegister }, $EXTENSION_CLASS->registerNavigationBar(Landroid/view/View;I)V
-                    invoke-static { v$colorRegister }, $EXTENSION_CLASS->overrideNavigationBarColor(I)I
-                    move-result v$colorRegister
-                """
-            )
+                addInstructions(
+                    setBackgroundColorIndex,
+                    """
+                        invoke-static { v$tabLayoutRegister, v$colorRegister }, $EXTENSION_CLASS->registerNavigationBar(Landroid/view/View;I)V
+                        invoke-static { v$colorRegister }, $EXTENSION_CLASS->overrideNavigationBarColor(I)I
+                        move-result v$colorRegister
+                    """
+                )
+            }
         }
 
         // Hook the watch-while dismiss callback to drop the cached tint.

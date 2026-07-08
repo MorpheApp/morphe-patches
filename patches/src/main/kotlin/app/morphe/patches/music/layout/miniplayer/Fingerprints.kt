@@ -40,7 +40,8 @@ internal object NavigationBarTabLayoutFingerprint : Fingerprint(
     parameters = listOf(),
     filters = listOf(
         string("FEmusic_radio_builder"),
-        resourceLiteral(ResourceType.COLOR, "ytm_color_grey_12")
+        resourceLiteral(ResourceType.COLOR, "ytm_color_grey_12"),
+        methodCall(name = "setBackgroundColor")
     )
 )
 

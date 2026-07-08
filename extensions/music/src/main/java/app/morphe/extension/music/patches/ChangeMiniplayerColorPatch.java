@@ -27,8 +27,7 @@ public class ChangeMiniplayerColorPatch {
     @Nullable
     private static volatile Integer initialCapturedColor;
 
-    @Nullable
-    private static volatile WeakReference<View> navigationBarRef;
+    private static volatile WeakReference<View> navigationBarRef = new WeakReference<>(null);
 
     @Nullable
     private static volatile Integer defaultNavigationBarColor;
@@ -71,10 +70,7 @@ public class ChangeMiniplayerColorPatch {
      * Injection point. Remembers the nav bar view and its theme color for later repaints.
      */
     public static void registerNavigationBar(View view, int defaultColor) {
-        final WeakReference<View> current = navigationBarRef;
-        if (current == null || current.get() != view) {
-            navigationBarRef = new WeakReference<>(view);
-        }
+        navigationBarRef = new WeakReference<>(view);
         defaultNavigationBarColor = defaultColor;
     }
 
@@ -106,8 +102,7 @@ public class ChangeMiniplayerColorPatch {
     }
 
     private static void postNavigationBarColor(int color) {
-        final WeakReference<View> ref = navigationBarRef;
-        final View view = ref != null ? ref.get() : null;
+        View view = navigationBarRef.get();
         if (view == null) return;
         view.post(() -> view.setBackgroundColor(color));
     }
