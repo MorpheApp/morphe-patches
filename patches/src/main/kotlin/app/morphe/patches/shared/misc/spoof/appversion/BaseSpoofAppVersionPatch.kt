@@ -40,9 +40,7 @@ fun baseSpoofAppVersionPatch(
             )
         }
 
-        mutableClassDefBy("Lapp/morphe/extension/shared/settings/SharedYouTubeSettings;")
-            .methods.first { it.name == "getDefaultSpoofAppVersionTarget" }
-            .returnEarly(defaultTargetString())
+        SpoofAppVersionExtensionDefaultTargetFingerprint.method.returnEarly(defaultTargetString())
 
         preferenceScreen.addPreferences(
             noTitleUnsortedPreferenceCategory(

@@ -21,9 +21,6 @@ import app.morphe.extension.shared.spoof.js.JavaScriptVariant;
  */
 public class SharedYouTubeSettings extends BaseSettings {
 
-    public static String getDefaultSpoofAppVersionTarget() {
-        return "";
-    }
     public static final BooleanSetting SETTINGS_INITIALIZED = new BooleanSetting("morphe_settings_initialized", FALSE, false, false);
 
     public static final BooleanSetting SETTINGS_SEARCH_HISTORY = new BooleanSetting("morphe_settings_search_history", TRUE, true);
@@ -81,5 +78,9 @@ public class SharedYouTubeSettings extends BaseSettings {
     static {
         // TODO: Eventually remove these migrations
         migrateOldSettingToNew(DEPRECATED_SANITIZE_URL_QUERY, SANITIZE_SHARING_LINKS);
+    }
+
+    private static String getDefaultSpoofAppVersionTarget() {
+        return ""; // Modified during patching.
     }
 }

@@ -19,3 +19,8 @@ internal object SpoofAppVersionFingerprint : Fingerprint(
     // But, this bytecode patch is simple and it works.
     strings = listOf("pref_override_build_version_name")
 )
+
+internal object SpoofAppVersionExtensionDefaultTargetFingerprint : Fingerprint(
+    definingClass = "Lapp/morphe/extension/shared/settings/SharedYouTubeSettings;",
+    name = "getDefaultSpoofAppVersionTarget"
+)
