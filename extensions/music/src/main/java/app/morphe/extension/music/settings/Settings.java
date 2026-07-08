@@ -2,6 +2,7 @@ package app.morphe.extension.music.settings;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
+import static app.morphe.extension.shared.settings.Setting.migrateOldSettingToNew;
 import static app.morphe.extension.shared.settings.Setting.parent;
 import static app.morphe.extension.shared.settings.Setting.parentNot;
 import static app.morphe.extension.shared.settings.Setting.parentsAll;
@@ -34,7 +35,7 @@ public class Settings extends SharedYouTubeSettings {
     // General (Layout)
     public static final EnumSetting<StartPage> CHANGE_START_PAGE = new EnumSetting<>("morphe_change_start_page", StartPage.DEFAULT, true);
     public static final BooleanSetting HIDE_CAST_BUTTON = new BooleanSetting("morphe_music_hide_cast_button", TRUE, true);
-    public static final BooleanSetting HIDE_CATEGORY_BAR = new BooleanSetting("morphe_music_hide_category_bar", FALSE, true);
+    public static final BooleanSetting HIDE_FILTER_BAR = new BooleanSetting("morphe_music_hide_filter_bar", FALSE, true);
     public static final BooleanSetting HIDE_HISTORY_BUTTON = new BooleanSetting("morphe_music_hide_history_button", FALSE, true);
     public static final BooleanSetting HIDE_SEARCH_BUTTON = new BooleanSetting("morphe_music_hide_search_button", FALSE, true);
     public static final BooleanSetting HIDE_NOTIFICATION_BUTTON = new BooleanSetting("morphe_music_hide_notification_button", FALSE, true);
@@ -155,6 +156,14 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting SB_CATEGORY_FILLER_COLOR = new StringSetting("morphe_sb_filler_color", "#FF7300FF", parent(SB_ENABLED));
     public static final StringSetting SB_CATEGORY_MUSIC_OFFTOPIC = new StringSetting("morphe_sb_music_offtopic", SKIP_AUTOMATICALLY.morpheKeyValue, parent(SB_ENABLED));
     public static final StringSetting SB_CATEGORY_MUSIC_OFFTOPIC_COLOR = new StringSetting("morphe_sb_music_offtopic_color", "#FFFF9900", parent(SB_ENABLED));
+
+    // Migration
+
+    private static final BooleanSetting DEPRECATED_HIDE_CATEGORY_BAR = new BooleanSetting("morphe_music_hide_category_bar", FALSE, true);
+
+    static {
+        migrateOldSettingToNew(DEPRECATED_HIDE_CATEGORY_BAR , HIDE_FILTER_BAR);
+    }
 
     static {
         SeekBarPreference.register(new SeekBarConfig(LISTENBRAINZ_MIN_SONG_DURATION,

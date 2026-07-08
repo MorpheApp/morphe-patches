@@ -18,4 +18,14 @@ public class HideAdsPatch {
     public static boolean hideGetPremiumLabel() {
         return Settings.HIDE_GET_PREMIUM_LABEL.get();
     }
+
+    /**
+     * Injection point.
+     */
+    public static boolean hideVideoAds(boolean original) {
+        if (Settings.HIDE_VIDEO_ADS.get()) {
+            return false;
+        }
+        return original;
+    }
 }

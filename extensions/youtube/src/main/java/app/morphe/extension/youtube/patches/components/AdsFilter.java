@@ -290,4 +290,20 @@ public final class AdsFilter extends Filter {
     public static void hideMiniplayerPaidPromotionLabelView(View view) {
         Utils.hideViewBy0dpUnderCondition(Settings.HIDE_PAID_PROMOTION_LABEL, view);
     }
+
+    /**
+     * Injection point.
+     */
+    public static boolean hideVideoAds() {
+        return Settings.HIDE_VIDEO_ADS.get();
+    }
+
+    /**
+     * Injection point.
+     */
+    public static String hideVideoAds(String osName) {
+        return Settings.HIDE_VIDEO_ADS.get()
+                ? "Android Automotive"
+                : osName;
+    }
 }

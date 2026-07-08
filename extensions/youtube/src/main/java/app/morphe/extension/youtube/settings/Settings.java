@@ -644,7 +644,7 @@ public class Settings extends SharedYouTubeSettings {
     private static final StringSetting  DEPRECATED_SB_CATEGORY_UNSUBMITTED_COLOR = new StringSetting("sb_unsubmitted_color", "#FFFFFFFF", false, false);
 
     static {
-        migrateOldSettingToNew(DEPRECATED_BYPASS_URL_REDIRECTS , BYPASS_LINK_REDIRECTS );
+        migrateOldSettingToNew(DEPRECATED_BYPASS_URL_REDIRECTS , BYPASS_LINK_REDIRECTS);
         migrateOldSettingToNew(DEPRECATED_COPY_VIDEO_URL, DEPRECATED_COPY_VIDEO_URL_BUTTON);
         migrateOldSettingToNew(DEPRECATED_COPY_VIDEO_URL_TIMESTAMP, DEPRECATED_COPY_VIDEO_URL_BUTTON_TIMESTAMP);
         migrateOldSettingToNew(DEPRECATED_COPY_VIDEO_URL_BUTTON, COPY_VIDEO_LINK_BUTTON);

@@ -8,9 +8,10 @@
  * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
-package app.morphe.patches.music.ad.general
+package app.morphe.patches.music.ad
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
@@ -28,7 +29,7 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/HideAds
 @Suppress("unused")
 val hideAdsPatch = bytecodePatch(
     name = "Hide ads",
-    description = "Adds options to hide ads such as the fullscreen Premium popup and \"Get Music Premium\" label.",
+    description = "Adds options to hide fullscreen ads, Premium promotions and video ads."
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -41,6 +42,7 @@ val hideAdsPatch = bytecodePatch(
     execute {
         PreferenceScreen.ADS.addPreferences(
             SwitchPreference("morphe_music_hide_get_premium_label"),
+            SwitchPreference("morphe_music_hide_video_ads"),
         )
 
         // Hide 'Get Music Premium' label
@@ -73,6 +75,15 @@ val hideAdsPatch = bytecodePatch(
                 return-object v0
                 :show
                 nop
+            """
+        )
+
+        // Hide video ads
+        ShowVideoAdsFingerprint.instructionMatches[1].getMethodCalled().addInstructions(
+            0,
+            """
+                invoke-static { p1 }, $EXTENSION_CLASS->hideVideoAds(Z)Z
+                move-result p1
             """
         )
     }

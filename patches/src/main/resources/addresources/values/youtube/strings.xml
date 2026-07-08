@@ -260,7 +260,7 @@ Limitations:
     <string name="morphe_hide_keyword_toast_invalid_length">Keyword is too short and requires quotes: %s</string>
     <string name="morphe_hide_keyword_toast_invalid_broad">Keyword will hide all videos: %s</string>
 
-    <!-- ad.general.hideAdsPatch -->
+    <!-- ad.hideAdsPatch -->
     <string name="morphe_hide_creator_store_shelf_title">Hide creator store shelf</string>
     <string name="morphe_hide_end_screen_store_banner_title">Hide end screen store banner</string>
     <string name="morphe_hide_general_ads_title">Hide general ads</string>
@@ -270,10 +270,8 @@ Limitations:
     <string name="morphe_hide_player_popup_ads_title">Hide player popup ads</string>
     <string name="morphe_hide_self_sponsor_ads_title">Hide self sponsored cards</string>
     <string name="morphe_hide_shopping_links_title">Hide shopping links</string>
-    <string name="morphe_hide_youtube_premium_promotions_title">Hide YouTube Premium promotions</string>
-
-    <!-- ad.video.videoAdsPatch -->
     <string name="morphe_hide_video_ads_title">Hide video ads</string>
+    <string name="morphe_hide_youtube_premium_promotions_title">Hide YouTube Premium promotions</string>
 
     <!-- interaction.doubletap.doubleTapLengthPatch -->
     <string name="morphe_double_tap_length_3s" translatable="false">3</string>

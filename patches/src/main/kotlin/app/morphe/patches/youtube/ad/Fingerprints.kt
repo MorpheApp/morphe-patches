@@ -1,4 +1,14 @@
-package app.morphe.patches.youtube.ad.general
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
+package app.morphe.patches.youtube.ad
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
@@ -67,5 +77,20 @@ internal object MiniplayerPaidPromotionLabelFingerprint : Fingerprint(
         resourceLiteral(ResourceType.ID, "modern_miniplayer_subtitle_text"),
         opcode(Opcode.INVOKE_VIRTUAL, MatchAfterImmediately()),
         opcode(Opcode.MOVE_RESULT_OBJECT, MatchAfterImmediately())
+    )
+)
+
+internal object LoadVideoAdsFingerprint : Fingerprint(
+    strings = listOf(
+        "TriggerBundle doesn't have the required metadata specified by the trigger ",
+        "Ping migration no associated ping bindings for activated trigger: ",
+    )
+)
+
+internal object PlayerBytesAdLayoutFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("L"),
+    strings = listOf(
+        "Bootstrapped layout construction resulted in non PlayerBytesLayout. PlayerAds count: ",
     )
 )

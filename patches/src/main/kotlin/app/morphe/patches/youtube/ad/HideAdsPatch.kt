@@ -8,7 +8,7 @@
  * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
-package app.morphe.patches.youtube.ad.general
+package app.morphe.patches.youtube.ad
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
@@ -27,6 +27,7 @@ import app.morphe.patches.youtube.misc.contexthook.addOSNameHook
 import app.morphe.patches.youtube.misc.contexthook.clientContextHookPatch
 import app.morphe.patches.youtube.misc.engagement.addEngagementPanelIdHook
 import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
+import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
@@ -64,6 +65,7 @@ private val hideAdsResourcePatch = resourcePatch {
             SwitchPreference("morphe_hide_player_popup_ads"),
             SwitchPreference("morphe_hide_self_sponsor_ads"),
             SwitchPreference("morphe_hide_shopping_links"),
+            SwitchPreference("morphe_hide_video_ads"),
             SwitchPreference("morphe_hide_youtube_premium_promotions"),
         )
 
@@ -75,19 +77,39 @@ private val hideAdsResourcePatch = resourcePatch {
 @Suppress("unused")
 val hideAdsPatch = bytecodePatch(
     name = "Hide ads",
-    description = "Adds options to remove general ads."
+    description = "Adds options to hide general ads, Premium promotions and video ads."
 ) {
     dependsOn(
         hideAdsResourcePatch,
         elementProtoParserHookPatch,
         resourceMappingPatch,
         versionCheckPatch,
+        sharedExtensionPatch,
         hideFullscreenAdsPatch(PreferenceScreen.ADS)
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
+        // Hide video ads
+
+        setOf(
+            LoadVideoAdsFingerprint,
+            PlayerBytesAdLayoutFingerprint,
+        ).forEach { fingerprint ->
+            fingerprint.method.addInstructionsWithLabels(
+                0,
+                """
+                    invoke-static { }, $EXTENSION_CLASS->hideVideoAds()Z
+                    move-result v0
+                    if-eqz v0, :show_video_ads
+                    return-void
+                    :show_video_ads
+                    nop
+                """
+            )
+        }
+
         // Hide YouTube Premium promotions
 
         hookElement("$EXTENSION_CLASS->hideStatementBanner([B)[B")
@@ -137,6 +159,7 @@ val hideAdsPatch = bytecodePatch(
 
         // Hide player overlay view. This can be hidden with a regular litho filter
         // but an empty space remains.
+
         PlayerOverlayTimelyShelfFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches.last().index
@@ -156,7 +179,7 @@ val hideAdsPatch = bytecodePatch(
             }
         }
 
-        // Hide ad views.
+        // Hide ad views
 
         var adAttributionId = getResourceId(ResourceType.ID, "ad_attribution")
 
@@ -226,6 +249,17 @@ val hideAdsPatch = bytecodePatch(
             addOSNameHook(
                 endpoint,
                 "$EXTENSION_CLASS->hideAds(Ljava/lang/String;)Ljava/lang/String;"
+            )
+        }
+
+        setOf(
+            Endpoint.GET_WATCH,
+            Endpoint.PLAYER,
+            Endpoint.REEL,
+        ).forEach { endpoint ->
+            addOSNameHook(
+                endpoint,
+                "$EXTENSION_CLASS->hideVideoAds(Ljava/lang/String;)Ljava/lang/String;",
             )
         }
     }
