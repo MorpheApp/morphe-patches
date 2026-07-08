@@ -35,13 +35,13 @@ internal object AudioTrackOldBottomSheetFingerprint : Fingerprint(
     )
 )
 
-internal object GetOldPlaybackSpeedsFingerprint : Fingerprint(
+internal object InitializePlaybackSpeedValuesFingerprint : Fingerprint(
     parameters = listOf("[L", "I"),
     strings = listOf("menu_item_playback_speed")
 )
 
 internal object ShowOldPlaybackSpeedMenuFingerprint : Fingerprint(
-    classFingerprint = GetOldPlaybackSpeedsFingerprint,
+    classFingerprint = InitializePlaybackSpeedValuesFingerprint,
     filters = listOf(
         resourceLiteral(ResourceType.STRING, "varispeed_unavailable_message"),
         opcode(Opcode.RETURN_VOID),

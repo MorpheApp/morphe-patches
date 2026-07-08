@@ -137,19 +137,19 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
         // This is later used to call "showOldPlaybackSpeedMenu" on the instance.
 
         val instanceField = ImmutableField(
-            GetOldPlaybackSpeedsFingerprint.originalClassDef.type,
+            InitializePlaybackSpeedValuesFingerprint.originalClassDef.type,
             "INSTANCE",
-            GetOldPlaybackSpeedsFingerprint.originalClassDef.type,
+            InitializePlaybackSpeedValuesFingerprint.originalClassDef.type,
             AccessFlags.PUBLIC.value or AccessFlags.STATIC.value,
             null,
             null,
             null,
         ).toMutable()
 
-        GetOldPlaybackSpeedsFingerprint.classDef.staticFields.add(instanceField)
+        InitializePlaybackSpeedValuesFingerprint.classDef.staticFields.add(instanceField)
         // Set the INSTANCE field to the instance of the class.
         // In order to prevent a conflict with another patch, add the instruction at index 1.
-        GetOldPlaybackSpeedsFingerprint.method.addInstruction(
+        InitializePlaybackSpeedValuesFingerprint.method.addInstruction(
             1,
             "sput-object p0, $instanceField"
         )

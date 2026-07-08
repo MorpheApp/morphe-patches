@@ -32,6 +32,7 @@ import app.morphe.patches.youtube.shared.PlaybackSpeedOnItemClickParentFingerpri
 import app.morphe.patches.youtube.video.playerresponse.Hook
 import app.morphe.patches.youtube.video.playerresponse.addPlayerResponseMethodHook
 import app.morphe.patches.youtube.video.playerresponse.playerResponseMethodHookPatch
+import app.morphe.patches.youtube.video.speed.custom.InitializePlaybackSpeedValuesFingerprint
 import app.morphe.patches.youtube.video.videoid.hookBackgroundPlayVideoId
 import app.morphe.patches.youtube.video.videoid.hookPlayerResponsePlaylistId
 import app.morphe.patches.youtube.video.videoid.hookPlayerResponseVideoId
@@ -226,6 +227,19 @@ val videoInformationPatch = bytecodePatch(
         )
 
         val setPlaybackSpeedMethodReference: MethodReference
+
+        // New hook to resolve the playback speed with the new native speed playback panel.
+        // The chosen fingerprint works both on video started and once the speed
+        // is being changed from the playback speed panel.
+        // Note: The hardcoded classes are based on version 21.26.364
+       InitializePlaybackSpeedValuesFingerprint.method.addInstructions(
+            0,
+            """
+                iget-object v0, p0, Lnjy;->g:aqha
+                invoke-virtual {v0}, Laqha;->a()F
+                move-result v0
+            """
+        )
 
         /*
          * Hook the user playback speed selection.

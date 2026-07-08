@@ -25,6 +25,7 @@ import app.morphe.patches.youtube.video.information.setPlaybackSpeedContainerCla
 import app.morphe.patches.youtube.video.information.setPlaybackSpeedMethodReferenceRef
 import app.morphe.patches.youtube.video.information.userSelectedPlaybackSpeedHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
+import app.morphe.patches.youtube.video.speed.custom.InitializePlaybackSpeedValuesFingerprint
 import app.morphe.patches.youtube.video.speed.custom.customPlaybackSpeedPatch
 import app.morphe.patches.youtube.video.speed.settingsMenuVideoSpeedGroup
 import app.morphe.patches.youtube.video.videoid.hookPlayerResponseVideoId
