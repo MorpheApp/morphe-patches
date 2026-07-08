@@ -117,6 +117,10 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <!-- interaction.permanentrepeat.permanentRepeatPatch -->
     <string name="morphe_music_play_permanent_repeat_title">Enable permanent repeat</string>
 
+    <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+    <string name="morphe_music_disable_dislike_redirection_title">Disable dislike redirection</string>
+    <string name="morphe_music_disable_dislike_redirection_summary">Prevents skipping to the next track when the dislike button is pressed</string>
+
     <!-- layout.buttons.hideButtonsPatch -->
     <string name="morphe_music_hide_cast_button_title">Hide Cast button</string>
     <string name="morphe_music_hide_history_button_title">Hide History button</string>
