@@ -11,6 +11,8 @@ var is_7_16_or_greater: Boolean by Delegates.notNull()
     private set
 var is_7_33_or_greater: Boolean by Delegates.notNull()
     private set
+var is_8_03_or_greater: Boolean by Delegates.notNull()
+    private set
 var is_8_05_or_greater: Boolean by Delegates.notNull()
     private set
 var is_8_10_or_greater: Boolean by Delegates.notNull()
@@ -51,6 +53,7 @@ val versionCheckPatch = bytecodePatch {
 
         is_7_16_or_greater = isEqualsOrGreaterThan("7.16.00")
         is_7_33_or_greater = isEqualsOrGreaterThan("7.33.00")
+        is_8_03_or_greater = isEqualsOrGreaterThan("8.03.00")
         is_8_05_or_greater = isEqualsOrGreaterThan("8.05.00")
         is_8_10_or_greater = isEqualsOrGreaterThan("8.10.00")
         is_8_11_or_greater = isEqualsOrGreaterThan("8.11.00")
