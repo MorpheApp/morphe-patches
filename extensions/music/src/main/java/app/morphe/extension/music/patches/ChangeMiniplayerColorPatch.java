@@ -97,7 +97,7 @@ public class ChangeMiniplayerColorPatch {
     }
 
     private static void applyToNavigationBar(int color) {
-        if (!Settings.MATCH_NAVIGATION_BAR_COLOR.get()) return;
+        if (!Settings.CHANGE_NAVIGATION_BAR_COLOR.get()) return;
         postNavigationBarColor(color);
     }
 
@@ -109,6 +109,6 @@ public class ChangeMiniplayerColorPatch {
 
     private static boolean matchNavigationBarEnabled() {
         return Settings.CHANGE_MINIPLAYER_COLOR.get()
-                && Settings.MATCH_NAVIGATION_BAR_COLOR.get();
+                && Settings.CHANGE_NAVIGATION_BAR_COLOR.get();
     }
 }

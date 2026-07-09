@@ -5,7 +5,7 @@
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
  *
- * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
 
 package app.morphe.extension.youtube.patches.components;
@@ -289,5 +289,21 @@ public final class AdsFilter extends Filter {
      */
     public static void hideMiniplayerPaidPromotionLabelView(View view) {
         Utils.hideViewBy0dpUnderCondition(Settings.HIDE_PAID_PROMOTION_LABEL, view);
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean hideVideoAds() {
+        return Settings.HIDE_VIDEO_ADS.get();
+    }
+
+    /**
+     * Injection point.
+     */
+    public static String hideVideoAds(String osName) {
+        return Settings.HIDE_VIDEO_ADS.get()
+                ? "Android Automotive"
+                : osName;
     }
 }

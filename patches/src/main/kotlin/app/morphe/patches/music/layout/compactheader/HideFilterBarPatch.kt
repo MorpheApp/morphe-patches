@@ -10,12 +10,12 @@ import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/HideCategoryBarPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/HideFilterBarPatch;"
 
 @Suppress("unused")
-val hideCategoryBarPatch = bytecodePatch(
-    name = "Hide category bar",
-    description = "Adds an option to hide the category bar at the top of the homepage."
+val hideFilterBarPatch = bytecodePatch(
+    name = "Hide filter bar",
+    description = "Adds an option to hide the filter bar at the top of the homepage."
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -26,7 +26,7 @@ val hideCategoryBarPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("morphe_music_hide_category_bar"),
+            SwitchPreference("morphe_music_hide_filter_bar"),
         )
 
         ChipCloudFingerprint.method.apply {
@@ -35,7 +35,7 @@ val hideCategoryBarPatch = bytecodePatch(
 
             addInstruction(
                 targetIndex + 1,
-                "invoke-static { v$targetRegister }, $EXTENSION_CLASS->hideCategoryBar(Landroid/view/View;)V"
+                "invoke-static { v$targetRegister }, $EXTENSION_CLASS->hideFilterBar(Landroid/view/View;)V"
             )
         }
     }

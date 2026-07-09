@@ -2,10 +2,10 @@
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
  *
- * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
- 
-package app.morphe.patches.youtube.misc.litho.node
+
+package app.morphe.patches.shared.misc.litho.node
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.methodCall
@@ -26,7 +26,7 @@ internal object TreeNodeResultListFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
     returnType = "Ljava/util/List;",
     filters = listOf(
-        methodCall(name = "nCopies", opcode = Opcode.INVOKE_STATIC),
+        methodCall(name = "nCopies", opcode = Opcode.INVOKE_STATIC)
     )
 )
 

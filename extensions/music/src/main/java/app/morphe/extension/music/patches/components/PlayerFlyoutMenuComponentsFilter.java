@@ -2,7 +2,7 @@
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
  *
- * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.extension.music.patches.components;
@@ -47,15 +47,13 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
         bufferGroupList.addAll(
                 new ByteArrayFilterGroup(
                         Settings.HIDE_FLYOUT_MENU_DOWNLOAD,
-                        // Regular download button and the Premium-upsell "experimental"
-                        // variant. `experimental_` breaks a single prefix match, so both
-                        // are listed.
                         "yt_outline_download",
                         "yt_outline_experimental_download"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_FLYOUT_MENU_TASTE_MATCH,
-                        "yt_outline_circles_overlap"
+                        "yt_outline_circles_overlap",
+                        "yt_outline_experimental_account_link_vd_theme_24"
                 )
         );
 

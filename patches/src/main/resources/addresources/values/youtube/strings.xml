@@ -260,7 +260,7 @@ Limitations:
     <string name="morphe_hide_keyword_toast_invalid_length">Keyword is too short and requires quotes: %s</string>
     <string name="morphe_hide_keyword_toast_invalid_broad">Keyword will hide all videos: %s</string>
 
-    <!-- ad.general.hideAdsPatch -->
+    <!-- ad.hideAdsPatch -->
     <string name="morphe_hide_creator_store_shelf_title">Hide creator store shelf</string>
     <string name="morphe_hide_end_screen_store_banner_title">Hide end screen store banner</string>
     <string name="morphe_hide_general_ads_title">Hide general ads</string>
@@ -270,10 +270,8 @@ Limitations:
     <string name="morphe_hide_player_popup_ads_title">Hide player popup ads</string>
     <string name="morphe_hide_self_sponsor_ads_title">Hide self sponsored cards</string>
     <string name="morphe_hide_shopping_links_title">Hide shopping links</string>
-    <string name="morphe_hide_youtube_premium_promotions_title">Hide YouTube Premium promotions</string>
-
-    <!-- ad.video.videoAdsPatch -->
     <string name="morphe_hide_video_ads_title">Hide video ads</string>
+    <string name="morphe_hide_youtube_premium_promotions_title">Hide YouTube Premium promotions</string>
 
     <!-- interaction.doubletap.doubleTapLengthPatch -->
     <string name="morphe_double_tap_length_3s" translatable="false">3</string>
@@ -1230,6 +1228,8 @@ Video playback with AV1 may stutter or drop frames."</string>
     <string name="morphe_spoof_video_streams_about_js">• If deobfuscation fails, playback may fail</string>
     <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
     <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Force original audio is not available</string>
+    <!-- Quality refers to video quality -->
+    <string name="morphe_spoof_video_streams_about_720p_max">• Quality may be limited to 720p</string>
     <string name="morphe_spoof_video_streams_player_js_variant_title">Player JavaScript variant</string>
     <string name="morphe_spoof_video_streams_stats_for_nerds_title">Show spoofing in Stats for nerds</string>
 

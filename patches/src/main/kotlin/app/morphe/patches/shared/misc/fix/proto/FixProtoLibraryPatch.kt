@@ -2,7 +2,7 @@
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
  *
- * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.patches.shared.misc.fix.proto
@@ -13,7 +13,6 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.util.cloneMutable
-import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
@@ -22,8 +21,7 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 import java.lang.ref.WeakReference
 
-internal lateinit var parseByteArrayMethod: MutableMethod
-
+internal lateinit var parseByteArrayMethodRef: WeakReference<MutableMethod>
 internal lateinit var immutableMethodRef : WeakReference<MethodReference>
 internal lateinit var mutableCopyMethodRef : WeakReference<MethodReference>
 
@@ -78,7 +76,7 @@ internal val fixProtoLibraryPatch = bytecodePatch(
             }
         }
 
-        parseByteArrayMethod = ProtobufClassParseByteArrayFingerprint.method
+        parseByteArrayMethodRef = WeakReference(ProtobufClassParseByteArrayFingerprint.method)
 
         StreamingDataOuterClassFingerprint.let {
             it.method.apply {

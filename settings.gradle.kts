@@ -20,7 +20,7 @@ pluginManagement {
 }
 
 plugins {
-    id("app.morphe.patches") version "1.3.3-dev.1" // TODO: Change to stable
+    id("app.morphe.patches") version "1.3.3-dev.2" // TODO: Change to stable
 }
 
 settings {

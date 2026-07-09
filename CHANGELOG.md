@@ -1,3 +1,29 @@
+## [1.34.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v1.34.0-dev.6...v1.34.0-dev.7) (2026-07-09)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Spoof video streams:** Mention Android Studio 720p limitation in settings UI ([387abbf](https://github.com/MorpheApp/morphe-patches/commit/387abbf4c543a4c5ed9b6574bf792e7ce3b1c949))
+
+## [1.34.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.34.0-dev.5...v1.34.0-dev.6) (2026-07-09)
+
+### 🐛 Bug Fixes
+
+* **Spoof video streams:** Change default client to 'TV' ([ce3f496](https://github.com/MorpheApp/morphe-patches/commit/ce3f496f9013af2d4146dc0d0f86a629d9dd7d9d))
+
+### ✨ New Features
+
+* **YouTube Music:** Add `Hide music action buttons` patch ([#1953](https://github.com/MorpheApp/morphe-patches/issues/1953)) ([b142f87](https://github.com/MorpheApp/morphe-patches/commit/b142f87e39cbe30e046d8731fa2997d6a1523bf7))
+
+## [1.34.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.34.0-dev.4...v1.34.0-dev.5) (2026-07-09)
+
+### 🐛 Bug Fixes
+
+* **Reddit - Settings:** Morphe language does not change after restarting ([#1950](https://github.com/MorpheApp/morphe-patches/issues/1950)) ([fc41c27](https://github.com/MorpheApp/morphe-patches/commit/fc41c2757c1c6897e314e35de3e227adede03939))
+
+### ✨ New Features
+
+* **YouTube Music - Change miniplayer color:** Add "Change navigation bar color" setting ([#1908](https://github.com/MorpheApp/morphe-patches/issues/1908)) ([9b570cd](https://github.com/MorpheApp/morphe-patches/commit/9b570cd2cfcd0695fa38ea84541133940146e7cf))
+
 ## [1.34.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.34.0-dev.3...v1.34.0-dev.4) (2026-07-08)
 
 ### 🐛 Bug Fixes

@@ -2,13 +2,13 @@
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
  *
- * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
 
 package app.morphe.extension.youtube.patches;
 
-import static app.morphe.extension.youtube.shared.ConversionContext.ELEMENT_IDENTIFIER_COMPONENT;
-import static app.morphe.extension.youtube.shared.ConversionContext.ELEMENT_IDENTIFIER_CONTAINER;
+import static app.morphe.extension.shared.patches.ConversionContext.ELEMENT_IDENTIFIER_COMPONENT;
+import static app.morphe.extension.shared.patches.ConversionContext.ELEMENT_IDENTIFIER_CONTAINER;
 
 import android.view.View;
 import android.widget.ListView;

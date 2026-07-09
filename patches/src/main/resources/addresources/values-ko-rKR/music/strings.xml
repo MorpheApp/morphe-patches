@@ -32,9 +32,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_general_title">일반</string>
   <string name="morphe_settings_music_screen_3_player_title">플레이어</string>
   <string name="morphe_settings_music_screen_6_misc_title">기타</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Music Premium 가입 라벨 숨기기</string>
-  <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">동영상 광고 숨기기</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">크로스페이드</string>
@@ -110,8 +109,24 @@ YouTube Music 8.x에서는 크로스페이드가 작동하지 않습니다. 크�
   <string name="morphe_music_hide_search_button_title">검색 버튼 숨기기</string>
   <!-- layout.hide.general.hideMusicComponentsPatch -->
   <string name="morphe_music_hide_lyrics_panel_category_title">가사 패널</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">가사 공유 버튼 숨기기</string>
-  <string name="morphe_music_hide_lyrics_translate_button_title">가사 번역 버튼 숨기기</string>
+  <string name="morphe_music_hide_lyrics_share_button_title">공유 버튼 숨기기</string>
+  <string name="morphe_music_hide_lyrics_translate_button_title">번역 버튼 숨기기</string>
+  <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
+  <string name="morphe_music_action_buttons_screen_title">작업 버튼</string>
+  <string name="morphe_music_action_buttons_screen_summary">플레이어 아래에 표시할 작업 버튼을 선택하세요.</string>
+  <string name="morphe_music_hide_action_bar_title">작업 버튼 바 숨기기</string>
+  <string name="morphe_music_hide_like_dislike_button_title">‘좋아요’ 및 ‘싫어요’ 버튼 숨기기</string>
+  <string name="morphe_music_hide_comments_button_title">댓글 버튼 숨기기</string>
+  <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_lyrics_button_title">가사 버튼 숨기기</string>
+  <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_share_button_title">공유 버튼 숨기기</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_save_button_title">저장 버튼 숨기기</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_download_button_title">오프라인 저장 버튼 숨기기</string>
+  <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_radio_button_title">믹스 / 뮤직 스테이션 버튼 숨기기</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">메뉴 구성요소</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">플레이어 및 현재 재생목록 메뉴에 표시할 구성요소를 선택하세요</string>
@@ -144,7 +159,7 @@ YouTube Music 8.x에서는 크로스페이드가 작동하지 않습니다. 크�
   <string name="morphe_music_hide_flyout_menu_share_title">\'공유\' 메뉴 숨기기</string>
   <string name="morphe_music_hide_flyout_menu_shuffle_play_title">\'셔플 재생\' 메뉴 숨기기</string>
   <string name="morphe_music_hide_flyout_menu_sleep_timer_title">\'취침 타이머\' 메뉴 숨기기</string>
-  <string name="morphe_music_hide_flyout_menu_start_radio_title">\'믹스 시작\' 메뉴 숨기기</string>
+  <string name="morphe_music_hide_flyout_menu_start_radio_title">\'믹스 / 뮤직 스테이션 시작\' 메뉴 숨기기</string>
   <string name="morphe_music_hide_flyout_menu_stats_for_nerds_title">\'동영상 통계\' 메뉴 숨기기</string>
   <string name="morphe_music_hide_flyout_menu_subscribe_title">\'구독\' / \'구독 취소\' 메뉴 숨기기</string>
   <string name="morphe_music_hide_flyout_menu_unpin_from_speed_dial_title">\'빠른 선곡에서 고정 해제\' 메뉴 숨기기</string>
@@ -161,11 +176,13 @@ YouTube Music 8.x에서는 크로스페이드가 작동하지 않습니다. 크�
   <string name="morphe_change_start_page_entry_playlists">재생목록</string>
   <string name="morphe_change_start_page_entry_search">검색</string>
   <string name="morphe_change_start_page_entry_subscriptions">구독</string>
-  <!-- layout.compactheader.hideCategoryBarPatch -->
-  <string name="morphe_music_hide_category_bar_title">카테고리 바 숨기기</string>
+  <!-- layout.compactheader.hideFilterBarPatch -->
+  <string name="morphe_music_hide_filter_bar_title">필터 바 숨기기</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">미니 플레이어 색상 변경하기</string>
-  <string name="morphe_music_change_miniplayer_color_summary">미니 플레이어 색상을 전체 화면 플레이어와 일치시킵니다</string>
+  <string name="morphe_music_change_miniplayer_color_summary">미니 플레이어 색상을 전체 화면 플레이어와 일치하도록 변경합니다</string>
+  <string name="morphe_music_change_navigation_bar_color_title">하단바 색상 변경하기</string>
+  <string name="morphe_music_change_navigation_bar_color_summary">하단바 색상을 전체 화면 플레이어와 일치하도록 변경합니다</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
   <string name="morphe_music_miniplayer_next_button_title">미니 플레이어 다음 재생 버튼 표시하기</string>
   <string name="morphe_music_miniplayer_previous_button_title">미니 플레이어 이전 재생 버튼 표시하기</string>
@@ -190,8 +207,6 @@ YouTube Music 8.x에서는 크로스페이드가 작동하지 않습니다. 크�
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">업그레이드 버튼 숨기기</string>
   <string name="morphe_music_hide_navigation_bar_title">하단바 숨기기</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">하단바 버튼 라벨 숨기기</string>
-  <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
-  <string name="morphe_music_hide_upgrade_button_title">업그레이드 버튼 숨기기</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary">Last.fm 및 ListenBrainz 연동을 설정할 수 있습니다</string>
   <string name="morphe_music_scrobbling_summary_logged_out">로그인되어 있지 않습니다. 설정하려면 탭하세요</string>

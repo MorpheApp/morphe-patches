@@ -21,7 +21,18 @@ Second \"item\" text"</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Appnamn</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_external_downloader_screen_title">Externa nedladdningar</string>
+  <string name="morphe_external_downloader_name_title">Nedladdarens paketnamn</string>
+  <string name="morphe_external_downloader_name_summary">Paketnamn på din installerade externa nedladdningsapp</string>
+  <string name="morphe_external_downloader_flyout_button_title">Åsidosätt flyout-knapp i flöden och sökningar</string>
+  <string name="morphe_external_downloader_other_item_hint">Ange paketnamnet</string>
   <string name="morphe_external_downloader_other_item">Annat</string>
+  <string name="morphe_external_downloader_not_found_title">Appen har inte installerats</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s har inte installerats. Installera den.</string>
+  <string name="morphe_external_downloader_package_not_found_warning">"Det gick inte att hitta en installerad app med paketnamnet: %s
+
+Verifiera att paketnamnet är korrekt och att appen har installerats"</string>
+  <string name="morphe_external_downloader_empty_warning">Paketnamnet får inte vara tomt</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Anpassad</string>
   <string name="morphe_custom_branding_icon_title">Appikon</string>
@@ -46,6 +57,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_screen_title">Förfalska videostreamar</string>
   <string name="morphe_spoof_video_streams_screen_summary">Konfigurera klientförfalskning för att förhindra uppspelningsproblem</string>
   <string name="morphe_spoof_video_streams_title">Förfalska videostreamar</string>
+  <string name="morphe_spoof_video_streams_summary">"Åtgärdar uppspelningsproblem för de flesta användare genom att begära en kompatibel videostream
+
+Om du är en YouTube Premium-användare kan det hända att den här inställningen inte krävs"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Det gick inte att hämta några klientströmmar</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Om du stänger av den här inställningen kan det leda till problem med uppspelning.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
