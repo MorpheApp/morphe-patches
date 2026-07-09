@@ -214,7 +214,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Клучната реч има конфликтни декларации: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Клучната реч е премногу кратка и бара наводници: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Клучната реч ќе скрие сите видеа: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Скриј полица со продажна продавница</string>
   <string name="morphe_hide_end_screen_store_banner_title">Скриј банер од продажна продавница на крајот од екранот</string>
   <string name="morphe_hide_general_ads_title">Скриј општи реклами</string>
@@ -224,9 +224,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_popup_ads_title">Скриј реклами во прозорецот на плеер</string>
   <string name="morphe_hide_self_sponsor_ads_title">Скриј картички за само-спонзорирани реклами</string>
   <string name="morphe_hide_shopping_links_title">Скриј линкови за купување</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">Скриј промоции за YouTube Premium</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Скриј реклами во видеа</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">Скриј промоции за YouTube Premium</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_copy_video_link_with_timestamp_button_title">Копирајте го временскиот печат стандардно</string>

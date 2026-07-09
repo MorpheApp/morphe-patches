@@ -249,7 +249,7 @@ Limitazioni:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">La parola chiave ha dichiarazioni conflittuali: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">La parola chiave è troppo corta e richiede le virgolette: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">La parola chiave nasconderà tutti i video: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Nascondi sezione negozio del creatore</string>
   <string name="morphe_hide_end_screen_store_banner_title">Nascondi banner del negozio della schermata finale</string>
   <string name="morphe_hide_general_ads_title">Nascondi pubblicità generali</string>
@@ -259,9 +259,8 @@ Limitazioni:
   <string name="morphe_hide_player_popup_ads_title">Nascondi gli annunci popup del lettore</string>
   <string name="morphe_hide_self_sponsor_ads_title">Nascondi le schede autopromozionali</string>
   <string name="morphe_hide_shopping_links_title">Nascondi link per gli acquisti</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">Nascondi le promozioni di YouTube Premium</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Nascondi le pubblicità del video</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">Nascondi le promozioni di YouTube Premium</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link copiato negli appunti</string>

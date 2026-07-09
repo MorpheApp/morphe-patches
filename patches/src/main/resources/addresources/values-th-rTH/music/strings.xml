@@ -31,9 +31,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_general_title">ทั่วไป</string>
   <string name="morphe_settings_music_screen_3_player_title">เครื่องเล่น</string>
   <string name="morphe_settings_music_screen_6_misc_title">เบ็ดเตล็ด</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">ซ่อนป้าย \'รับ Music Premium\'</string>
-  <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">ซ่อนโฆษณาวิดีโอ</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Crossfade</string>
@@ -115,10 +114,17 @@ YouTube Music 8.x — การเฟดข้ามจะทำงานบน 
   <string name="morphe_music_hide_flyout_menu_components_screen_title">เมนูแบบเลื่อนลง</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">เลือกส่วนประกอบที่จะแสดงในเมนูแบบเลื่อนลงของผู้เล่นและคิว</string>
   <string name="morphe_music_hide_flyout_menu_3_column_component_title">ซ่อนส่วนประกอบ 3 คอลัมน์</string>
-  <string name="morphe_music_hide_flyout_menu_like_dislike_title">ซ่อนปุ่ม \'ถูกใจ\' และ \'ไม่ถูกใจ\'</string>
+  <string name="morphe_music_hide_flyout_menu_like_dislike_title">ซ่อนปุ่มชอบและไม่ชอบ</string>
   <string name="morphe_music_hide_flyout_menu_taste_match_title">ซ่อนเมนู \'การจับคู่รสนิยม\' </string>
   <string name="morphe_music_hide_flyout_menu_add_to_listen_later_title">ซ่อนเมนู \'เพิ่มลงในรายการเล่น \'ฟังภายหลัง\' \'</string>
   <string name="morphe_music_hide_flyout_menu_add_to_queue_title">ซ่อนเมนู \'เพิ่มลงในคิว\' </string>
+  <string name="morphe_music_hide_flyout_menu_captions_title">ซ่อนเมนูคำบรรยาย</string>
+  <string name="morphe_music_hide_flyout_menu_download_title">ซ่อนเมนูดาวน์โหลด</string>
+  <string name="morphe_music_hide_flyout_menu_help_title">ซ่อนเมนูช่วยเหลือ</string>
+  <string name="morphe_music_hide_flyout_menu_quality_title">ซ่อนเมนูคุณภาพ</string>
+  <string name="morphe_music_hide_flyout_menu_report_title">ซ่อนเมนูรายงาน</string>
+  <string name="morphe_music_hide_flyout_menu_share_title">ซ่อนเมนูแบ่งปัน</string>
+  <string name="morphe_music_hide_flyout_menu_subscribe_title">ซ่อนเมนูสมัครรับข้อมูล</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">หน้าเริ่มต้น</string>
   <string name="morphe_change_start_page_entry_default">ค่าเริ่มต้น</string>
@@ -131,11 +137,13 @@ YouTube Music 8.x — การเฟดข้ามจะทำงานบน 
   <string name="morphe_change_start_page_entry_playlists">แพล่งของ</string>
   <string name="morphe_change_start_page_entry_search">ค้นหา</string>
   <string name="morphe_change_start_page_entry_subscriptions">สมัครสมาชิก</string>
-  <!-- layout.compactheader.hideCategoryBarPatch -->
-  <string name="morphe_music_hide_category_bar_title">ซ่อนแถบหมวดหมู่</string>
+  <!-- layout.compactheader.hideFilterBarPatch -->
+  <string name="morphe_music_hide_filter_bar_title">ซ่อนแถบตัวกรอง</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">เปลี่ยนสีมินิเพลเยอร์</string>
   <string name="morphe_music_change_miniplayer_color_summary">สีมินิเพลเยอร์ตรงกับเครื่องเล่นแบบเต็มหน้าจอ</string>
+  <string name="morphe_music_change_navigation_bar_color_title">เปลี่ยนสีแถบนำทาง</string>
+  <string name="morphe_music_change_navigation_bar_color_summary">จับคู่สีของแถบนำทางกับเครื่องเล่นเต็มหน้าจอ</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
   <string name="morphe_music_miniplayer_next_button_title">แสดงปุ่มถัดไปในมินิเพลเยอร์</string>
   <string name="morphe_music_miniplayer_previous_button_title">แสดงปุ่ม ย้อนกลับใน miniplayer</string>
@@ -160,8 +168,6 @@ YouTube Music 8.x — การเฟดข้ามจะทำงานบน 
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">ซ่อนปุ่มอัปเกรด</string>
   <string name="morphe_music_hide_navigation_bar_title">ซ่อนแถบนำทาง</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">ซ่อนป้ายกำกับปุ่มนำทาง</string>
-  <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
-  <string name="morphe_music_hide_upgrade_button_title">ซ่อนปุ่มอัปเกรด</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary">ตั้งค่าการทำงานร่วมกับ Last.fm และ ListenBrainz</string>
   <string name="morphe_music_scrobbling_summary_logged_out">ยังไม่ได้เข้าสู่ระบบ แตะเพื่อตั้งค่า</string>
@@ -169,7 +175,7 @@ YouTube Music 8.x — การเฟดข้ามจะทำงานบน 
   <string name="morphe_music_scrobbling_logged_out_toast">ออกจากระบบแล้ว</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_enabled_title">เปิดใช้งาน scrobbling</string>
-  <string name="morphe_music_scrobbling_now_playing_title">ส่งสถานะ \"กำลังเล่น\"</string>
+  <string name="morphe_music_scrobbling_now_playing_title">ส่งสถานะ \'กำลังเล่น\'</string>
   <string name="morphe_music_scrobbling_min_song_duration_title">ระยะเวลาเพลงขั้นต่ำ</string>
   <!-- 'scrobbled' must be kept untranslated -->
   <string name="morphe_music_scrobbling_min_song_duration_summary">เพลงที่มีความยาวสั้นกว่านี้จะไม่ถูก scrobble</string>

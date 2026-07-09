@@ -101,7 +101,7 @@ Değişiklikler şunları içerir:
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Sınırlamalar:
 • Shorts rafları, kanal sayfaları ve arama sonuçları yine de yüklenme zamanını gösterebilir
-• Bu özellik otomotiv düzeniyle çalışmaz"</string>
+• Otomotiv düzeniyle çalışmaz"</string>
   <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_recommendation_labels_title">Video öneri etiketlerini gizle</string>
   <string name="morphe_hide_video_recommendation_labels_summary">Arama sonuçlarındaki \'İnsanların izlediği diğer videolar\' ve \'Şunlar da hoşunuza gidebilir\' etiketlerini gizler</string>
@@ -109,7 +109,7 @@ Değişiklikler şunları içerir:
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Sınırlamalar:
 • Shorts rafları, kanal sayfaları ve arama sonuçları yine de görüntülenme sayısını gösterebilir
-• Bu özellik otomotiv düzeniyle çalışmaz"</string>
+• Otomotiv düzeniyle çalışmaz"</string>
   <string name="morphe_hide_web_search_results_title">Web arama sonuçlarını gizle</string>
   <string name="morphe_hide_web_search_results_summary">Arama sonuçlarından \'Web\'den sonuçlar\' bölümünü gizler</string>
   <string name="morphe_hide_you_may_like_section_title">Aramadaki \'Hoşunuza gidebilecekler\' kısmını gizle</string>
@@ -173,7 +173,7 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_filter_bar_in_feed_title">Akışta gizle</string>
   <string name="morphe_hide_filter_bar_in_related_videos_title">İlgili videolarda gizle</string>
   <string name="morphe_hide_filter_bar_in_search_title">Arama sonuçlarında gizle</string>
-  <string name="morphe_hide_filter_bar_in_history_title">İzleme geçmişinde gizleCleLle</string>
+  <string name="morphe_hide_filter_bar_in_history_title">İzleme geçmişinde gizle</string>
   <string name="morphe_channel_screen_title">Kanal sayfası</string>
   <string name="morphe_channel_screen_summary">Kanal sayfasında hangi bileşenlerin görüneceğini seçin</string>
   <string name="morphe_hide_channel_tab_title">Kanal sekmesi filtresini etkinleştir</string>
@@ -217,8 +217,8 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_comments_preview_comment_title">Ön izlenen yorumu gizle</string>
   <string name="morphe_hide_comments_preview_comment_summary">Tam yorumlar bölümünü açmadan önce videonun altındaki yorum ön izlemesini gizler</string>
   <string name="morphe_hide_comments_thanks_button_title">Teşekkürler düğmesini gizle</string>
-  <string name="morphe_sanitize_comments_highlighted_search_links_title">Öne çıkan arama bağlantılarını düzenle</string>
-  <string name="morphe_sanitize_comments_highlighted_search_links_summary">Öne çıkan arama bağlantılarını düzenler, yalnızca orijinal düz metni bırakır</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_title">Öne çıkan arama bağlantılarını temizle</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_summary">Öne çıkan arama bağlantılarını temizler, yalnızca orijinal düz metni bırakır</string>
   <string name="morphe_hide_keyword_content_screen_title">Anahtar kelime filtresi</string>
   <string name="morphe_hide_keyword_content_screen_summary">Akışta ve aramada videoları gizlemek için belirli kelimeler veya ifadeler seçin</string>
   <string name="morphe_hide_keyword_content_home_title">Ana sayfadaki videoları anahtar kelimelerle gizle</string>
@@ -249,7 +249,7 @@ Sınırlamalar:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Anahtar kelimede çelişki var: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Kelime kısa, tırnak içine alın: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Kelime bütün videoları gizler: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">İçerik üretici mağazası rafını gizle</string>
   <string name="morphe_hide_end_screen_store_banner_title">Bitiş ekranındaki mağaza afişini gizle</string>
   <string name="morphe_hide_general_ads_title">Genel reklamları gizle</string>
@@ -259,9 +259,8 @@ Sınırlamalar:
   <string name="morphe_hide_player_popup_ads_title">Oynatıcı açılır reklamlarını gizle</string>
   <string name="morphe_hide_self_sponsor_ads_title">Kendine sponsor kartları gizle</string>
   <string name="morphe_hide_shopping_links_title">Alışveriş bağlantılarını gizle</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium promosyonlarını gizle</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Video reklamlarını gizle</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium promosyonlarını gizle</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Bağlantı panoya kopyalandı</string>

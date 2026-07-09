@@ -249,7 +249,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">矛盾する宣言があるキーワード: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">短すぎて引用符が必要なキーワード: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">全動画を除外するキーワード: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">「\"チャンネル名\" のストア」欄を非表示</string>
   <string name="morphe_hide_end_screen_store_banner_title">終了画面のストアバナーを非表示</string>
   <string name="morphe_hide_general_ads_title">一般的な広告を非表示</string>
@@ -259,9 +259,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_popup_ads_title">プレーヤーのポップアップ広告を非表示</string>
   <string name="morphe_hide_self_sponsor_ads_title">自己宣伝カードを非表示</string>
   <string name="morphe_hide_shopping_links_title">商品へのリンクを非表示</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium の広告を非表示</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">動画広告を非表示</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium の広告を非表示</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">リンクをコピーしました</string>

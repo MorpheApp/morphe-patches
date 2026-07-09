@@ -32,9 +32,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_general_title">Chung</string>
   <string name="morphe_settings_music_screen_3_player_title">Trình phát</string>
   <string name="morphe_settings_music_screen_6_misc_title">Khác</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Ẩn menu \"Mua Music Premium\"</string>
-  <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Ẩn video quảng cáo</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Chuyển bài</string>
@@ -110,13 +109,13 @@ YouTube Music 8.x – hiệu ứng chuyển tiếp chỉ chạy trên 9.x trở 
   <string name="morphe_music_hide_search_button_title">Ẩn nút tìm kiếm</string>
   <!-- layout.hide.general.hideMusicComponentsPatch -->
   <string name="morphe_music_hide_lyrics_panel_category_title">Bảng lời nhạc</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Ẩn nút chia sẻ lời nhạc</string>
+  <string name="morphe_music_hide_lyrics_share_button_title">Ẩn nút Chia sẻ</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Ẩn nút dịch lời nhạc</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Menu tuỳ chọn</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Chọn những thành phần sẽ xuất hiện trong menu tùy chọn.</string>
   <string name="morphe_music_hide_flyout_menu_3_column_component_title">Ẩn thành phần 3 cột</string>
-  <string name="morphe_music_hide_flyout_menu_like_dislike_title">Ẩn nút \'Thích\' và \'Không thích\'</string>
+  <string name="morphe_music_hide_flyout_menu_like_dislike_title">Ẩn Thích và Không thích</string>
   <string name="morphe_music_hide_flyout_menu_taste_match_title">Ẩn menu \'Kết hợp khẩu vị\'</string>
   <string name="morphe_music_hide_flyout_menu_add_to_listen_later_title">Ẩn menu Thêm vào danh sách chờ trong Các tập để nghe sau</string>
   <string name="morphe_music_hide_flyout_menu_add_to_queue_title">Ẩn menu \'Thêm vào danh sách chờ\'</string>
@@ -161,11 +160,13 @@ YouTube Music 8.x – hiệu ứng chuyển tiếp chỉ chạy trên 9.x trở 
   <string name="morphe_change_start_page_entry_playlists">Danh sách phát</string>
   <string name="morphe_change_start_page_entry_search">Tìm kiếm</string>
   <string name="morphe_change_start_page_entry_subscriptions">Kênh đăng ký</string>
-  <!-- layout.compactheader.hideCategoryBarPatch -->
-  <string name="morphe_music_hide_category_bar_title">Ẩn thanh danh mục</string>
+  <!-- layout.compactheader.hideFilterBarPatch -->
+  <string name="morphe_music_hide_filter_bar_title">Ẩn thanh điều khiển bộ lọc</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">Đổi màu trình phát thu nhỏ</string>
   <string name="morphe_music_change_miniplayer_color_summary">Màu trình phát thu nhỏ khớp với trình phát toàn màn hình</string>
+  <string name="morphe_music_change_navigation_bar_color_title">Thay đổi màu thanh điều hướng</string>
+  <string name="morphe_music_change_navigation_bar_color_summary">Khớp màu thanh điều hướng với trình phát toàn màn hình</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
   <string name="morphe_music_miniplayer_next_button_title">Hiện nút tiếp theo trong trình phát thu nhỏ</string>
   <string name="morphe_music_miniplayer_previous_button_title">Hiện nút quay lại trong trình phát thu nhỏ</string>
@@ -190,8 +191,6 @@ YouTube Music 8.x – hiệu ứng chuyển tiếp chỉ chạy trên 9.x trở 
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Ẩn nút Nâng cấp</string>
   <string name="morphe_music_hide_navigation_bar_title">Ẩn thanh điều hướng</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Ẩn tên nút điều hướng</string>
-  <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
-  <string name="morphe_music_hide_upgrade_button_title">Ẩn nút nâng cấp</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary">Cấu hình tích hợp Last.fm và ListenBrainz</string>
   <string name="morphe_music_scrobbling_summary_logged_out">Chưa đăng nhập. Chạm để cấu hình</string>
@@ -199,7 +198,7 @@ YouTube Music 8.x – hiệu ứng chuyển tiếp chỉ chạy trên 9.x trở 
   <string name="morphe_music_scrobbling_logged_out_toast">Đã đăng xuất</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_enabled_title">Bật tính năng scrobbling</string>
-  <string name="morphe_music_scrobbling_now_playing_title">Gửi trạng thái \"Đang phát\"</string>
+  <string name="morphe_music_scrobbling_now_playing_title">Gửi trạng thái \'Đang phát\' </string>
   <string name="morphe_music_scrobbling_min_song_duration_title">Thời lượng bài hát tối thiểu</string>
   <!-- 'scrobbled' must be kept untranslated -->
   <string name="morphe_music_scrobbling_min_song_duration_summary">Những bài hát ngắn hơn thời lượng này sẽ không được scrobble</string>

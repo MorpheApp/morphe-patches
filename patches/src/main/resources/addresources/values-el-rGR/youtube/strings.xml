@@ -249,7 +249,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Λέξη-κλειδί έχει αντικρουόμενες δηλώσεις: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Η λέξη-κλειδί είναι πολύ σύντομη και απαιτεί εισαγωγικά: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Θα κρυφτούν όλα τα βίντεο με την λέξη-κλειδί: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Απόκρυψη ραφιού \"Κατάστημα Δημιουργού\"</string>
   <string name="morphe_hide_end_screen_store_banner_title">Ετικέτα καταστήματος στην τελική οθόνη</string>
   <string name="morphe_hide_general_ads_title">Γενικές διαφημίσεις</string>
@@ -259,9 +259,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_popup_ads_title">Απόκρυψη διαφημίσεων παίκτη</string>
   <string name="morphe_hide_self_sponsor_ads_title">Κάρτες αυτοπροώθησης</string>
   <string name="morphe_hide_shopping_links_title">Σύνδεσμοι αγορών στην περιγραφή βίντεο</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">Προωθήσεις για απόκτηση YouTube Premium</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Διαφημίσεις βίντεο</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">Προωθήσεις για απόκτηση YouTube Premium</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Η διεύθυνση URL αντιγράφηκε στο πρόχειρο</string>

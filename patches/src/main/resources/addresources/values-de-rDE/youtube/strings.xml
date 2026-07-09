@@ -250,7 +250,7 @@ Einschränkungen:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Schlüsselwort hat widersprüchliche Erklärungen: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Keyword ist zu kurz und erfordert Anführungszeichen: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Stichwort wird alle Videos ausblenden: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Creator-Shop-Regal ausblenden</string>
   <string name="morphe_hide_end_screen_store_banner_title">Endbild-Banner ausblenden</string>
   <string name="morphe_hide_general_ads_title">Allgemeine Werbung ausblenden</string>
@@ -260,9 +260,8 @@ Einschränkungen:
   <string name="morphe_hide_player_popup_ads_title">Anzeigen im Spieler-Popup ausblenden</string>
   <string name="morphe_hide_self_sponsor_ads_title">Selbst gesponserte Karten ausblenden</string>
   <string name="morphe_hide_shopping_links_title">Shopping-Links ausblenden</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium-Aktionen ausblenden</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Videowerbung ausblenden</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium-Aktionen ausblenden</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link in Zwischenablage kopiert</string>
@@ -538,12 +537,12 @@ Hinweis: Wenn „Videostreams spoofen“ nicht aktiviert ist, kann das Aktiviere
   <string name="morphe_hide_quick_actions_ask_button_title">Schaltfläche „Fragen“ ausblenden</string>
   <string name="morphe_hide_quick_actions_comments_button_title">Schaltfläche „Kommentare“ ausblenden</string>
   <string name="morphe_hide_quick_actions_dislike_button_title">Schaltfläche „Dislike“ ausblenden</string>
-  <string name="morphe_hide_quick_actions_like_button_title">\'Like\'-Button ausblenden</string>
+  <string name="morphe_hide_quick_actions_like_button_title">Schaltfläche „Like“ ausblenden</string>
   <string name="morphe_hide_quick_actions_live_chat_button_title">Schaltfläche „Live-Chat“ ausblenden</string>
   <string name="morphe_hide_quick_actions_mix_button_title">Schaltfläche „Mix-Wiedergabeliste“ ausblenden</string>
   <string name="morphe_hide_quick_actions_more_button_title">Schaltfläche „Mehr“ ausblenden</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_title">Wählen Sie aus, welche Komponenten im Vollbildmodus angezeigt werden sollen</string>
-  <string name="morphe_hide_quick_actions_playlist_button_title">Verbirgt die automatischen Untertitel und Cookie-Einstellungen</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_title">Schaltfläche „Mehr Videos“ ausblenden</string>
+  <string name="morphe_hide_quick_actions_playlist_button_title">Schaltfläche „Playlist“ ausblenden</string>
   <string name="morphe_hide_quick_actions_save_button_title">Schaltfläche „Speichern“ ausblenden</string>
   <string name="morphe_hide_quick_actions_share_button_title">Schaltfläche „Teilen“ ausblenden</string>
   <string name="morphe_quick_actions_top_margin_title">Oberer Rand für Schnellaktionen</string>
@@ -841,13 +840,13 @@ Tippen Sie hier, um ReturnYouTubeDislike.com zu öffnen"</string>
 Tablet-Layout
 • Community-Beiträge werden ausgeblendet
 • Wiedergabe in Feeds-Einstellung ist nicht verfügbar
-• Remix-Button und Sound-Button sind in Shorts nicht verfügbar
+• Remix-Schaltfläche und Sound-Schaltfläche sind in Shorts nicht verfügbar
 • Nicht zusammengeklappte alte Video-Aktionsleiste wird angezeigt
 
 Automobil-Layout
 • Feed ist nach Themen und Kanälen organisiert
 • Wiedergabe in Feeds-Einstellung ist nicht verfügbar
-• Remix-Button und Sound-Button sind in Shorts nicht verfügbar
+• Remix-Schaltfläche und Sound-Schaltfläche sind in Shorts nicht verfügbar
 • Shorts werden im regulären Player geöffnet
 • Nicht zusammengeklappte alte Video-Aktionsleiste wird angezeigt"</string>
   <string name="morphe_tablet_layout_in_player_title">Tablet-Layout im Player aktivieren</string>
@@ -1115,7 +1114,7 @@ Die Videowiedergabe mit AV1 kann stottern oder Bilder überspringen."</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Fälschen in Statistiken für Nerds anzeigen</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Alte Video-Aktionsleiste wiederherstellen</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Behebt fehlende Dislikes und das Nichtausblenden der Video-Aktionsbuttons
+  <string name="morphe_restore_old_video_action_bar_summary">"Behebt fehlende Dislikes und das Nichtausblenden der Video-Aktionsschaltfläche
 
 Einschränkung: Zurück zum alten „Mehr Videos“-Overlay"</string>
 </resources>

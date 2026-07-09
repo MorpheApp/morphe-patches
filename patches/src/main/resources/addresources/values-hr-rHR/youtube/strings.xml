@@ -226,7 +226,7 @@ Slova iz velikih slova u sredini riječi moraju točno odgovarati (npr: iPhone, 
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Kljjuč ima proturke izjave: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Kljjuč je prekrato kratak i mora imati navlake: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Kljjuč će skriveni sve videozapise: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Sakrij policu trgovine autora</string>
   <string name="morphe_hide_end_screen_store_banner_title">Sakrij dugme za pretraživanje</string>
   <string name="morphe_hide_general_ads_title">Sakrij video oglase</string>
@@ -236,9 +236,8 @@ Slova iz velikih slova u sredini riječi moraju točno odgovarati (npr: iPhone, 
   <string name="morphe_hide_player_popup_ads_title">Sakrij skočne oglase igrača</string>
   <string name="morphe_hide_self_sponsor_ads_title">Sakrij samostalne oglase</string>
   <string name="morphe_hide_shopping_links_title">Sakrij poveznice</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">Sakrij YouTube Premium oglase</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Sakrij video oglase</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">Sakrij YouTube Premium oglase</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Poveznica kopirana u međuspremnik</string>

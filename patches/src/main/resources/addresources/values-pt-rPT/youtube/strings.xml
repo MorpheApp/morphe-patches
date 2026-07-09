@@ -249,7 +249,7 @@ Limitações:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Palavra-chave tem declarações conflitantes: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">A palavra-chave é muito curta e requer citações: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Palavra-chave irá ocultar todos os vídeos: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Ocultar prateleira da loja do criador</string>
   <string name="morphe_hide_end_screen_store_banner_title">Ocultar banner da loja na tela final</string>
   <string name="morphe_hide_general_ads_title">Esconder anúncios gerais</string>
@@ -259,9 +259,8 @@ Limitações:
   <string name="morphe_hide_player_popup_ads_title">Esconder anúncios popup do jogador</string>
   <string name="morphe_hide_self_sponsor_ads_title">Esconder cartões autopatrocinados</string>
   <string name="morphe_hide_shopping_links_title">Ocultar links de compras</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">Esconder promoções Premium do YouTube</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Esconder anúncios do vídeo</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">Esconder promoções Premium do YouTube</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link copiado para a área de transferência</string>

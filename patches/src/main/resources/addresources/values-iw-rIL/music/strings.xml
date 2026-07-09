@@ -32,9 +32,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_general_title">כללי</string>
   <string name="morphe_settings_music_screen_3_player_title">נגן</string>
   <string name="morphe_settings_music_screen_6_misc_title">שונות</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">הסתר תווית \'קבל Premium למוזיקה\'</string>
-  <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">הסתר מודעות וידאו</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">מעבר הדרגתי</string>
@@ -110,41 +109,41 @@ YouTube Music 8.x - מעבר הצלילים פועל רק בגרסה 9.x ומע�
   <string name="morphe_music_hide_search_button_title">הסתר לחצן חיפוש</string>
   <!-- layout.hide.general.hideMusicComponentsPatch -->
   <string name="morphe_music_hide_lyrics_panel_category_title">פאנל מילים</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">הסתר כפתור שיתוף</string>
-  <string name="morphe_music_hide_lyrics_translate_button_title">הסתר כפתור תרגום</string>
+  <string name="morphe_music_hide_lyrics_share_button_title">הסתר לחצן שיתוף</string>
+  <string name="morphe_music_hide_lyrics_translate_button_title">הסתר לחצן תרגום</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">תפריט נשלף</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">בחר אילו רכיבים יופיעו בתפריטים הנשלפים של הנגן והתור</string>
   <string name="morphe_music_hide_flyout_menu_3_column_component_title">הסתר רכיב 3 עמודות</string>
-  <string name="morphe_music_hide_flyout_menu_like_dislike_title">הסתר כפתורי \'אהבתי\' ו\'לא אהבתי\'</string>
+  <string name="morphe_music_hide_flyout_menu_like_dislike_title">הסתר לחצני אהבתי ודיסלייק</string>
   <string name="morphe_music_hide_flyout_menu_add_to_listen_later_title">הסתר את תפריט \'הוסף לרשימת ההשמעה \'להאזנה מאוחר יותר\'</string>
-  <string name="morphe_music_hide_flyout_menu_captions_title">הסתר תפריט \'כתוביות\'</string>
+  <string name="morphe_music_hide_flyout_menu_captions_title">הסתר תפריט כתוביות</string>
   <string name="morphe_music_hide_flyout_menu_delete_playlist_title">הסתר תפריט \'מחק רשימת השמעה\'</string>
   <string name="morphe_music_hide_flyout_menu_dismiss_queue_title">הסתר תפריט \'דחה תור\'</string>
   <string name="morphe_music_hide_flyout_menu_dont_recommend_artist_title">הסתר תפריט \'אל תמליץ על האמן הזה\'</string>
-  <string name="morphe_music_hide_flyout_menu_download_title">הסתר תפריט \'הורדה\'</string>
+  <string name="morphe_music_hide_flyout_menu_download_title">הסתר תפריט הורדה</string>
   <string name="morphe_music_hide_flyout_menu_edit_playlist_title">הסתר תפריט \'ערוך רשימת השמעה\'</string>
   <string name="morphe_music_hide_flyout_menu_go_to_album_title">הסתר תפריט \'עבור לאלבום\'</string>
   <string name="morphe_music_hide_flyout_menu_go_to_artist_title">הסתר תפריט \'עבור לאמן\'</string>
   <string name="morphe_music_hide_flyout_menu_go_to_episode_title">הסתר תפריט \'עבור לפרק\'</string>
   <string name="morphe_music_hide_flyout_menu_go_to_podcast_title">הסתר תפריט \'עבור לפודקאסט\'</string>
-  <string name="morphe_music_hide_flyout_menu_help_title">הסתר תפריט \'עזרה\'</string>
+  <string name="morphe_music_hide_flyout_menu_help_title">הסתר תפריט עזרה</string>
   <string name="morphe_music_hide_flyout_menu_mark_episode_as_played_title">הסתר תפריט \'סמן פרק כצפוי\'</string>
   <string name="morphe_music_hide_flyout_menu_not_interested_title">הסתר תפריט \'לא מעוניין\'</string>
   <string name="morphe_music_hide_flyout_menu_pin_to_speed_dial_title">הסתר תפריט \'הוסף לחיוג המהיר\'</string>
   <string name="morphe_music_hide_flyout_menu_play_next_title">הסתר תפריט \'נגן הבא\'</string>
-  <string name="morphe_music_hide_flyout_menu_quality_title">הסתר תפריט \'איכות\'</string>
+  <string name="morphe_music_hide_flyout_menu_quality_title">הסתר תפריט איכות</string>
   <string name="morphe_music_hide_flyout_menu_remove_from_library_title">הסתר תפריט \'הסר מהספרייה\'</string>
   <string name="morphe_music_hide_flyout_menu_remove_from_playlist_title">הסתר תפריט \'הסר מרשימת השמעה\'</string>
-  <string name="morphe_music_hide_flyout_menu_report_title">הסתר תפריט \'דווח\'</string>
+  <string name="morphe_music_hide_flyout_menu_report_title">הסתר תפריט דיווח</string>
   <string name="morphe_music_hide_flyout_menu_save_episode_for_later_save_to_library_title">הסתר תפריט \'שמור פרק למועד מאוחר יותר\' / \'שמור לספרייה\'</string>
   <string name="morphe_music_hide_flyout_menu_save_to_playlist_title">הסתר תפריט \'שמור לרשימת השמעה\'</string>
-  <string name="morphe_music_hide_flyout_menu_share_title">הסתר תפריט \'שתף\'</string>
+  <string name="morphe_music_hide_flyout_menu_share_title">הסתר תפריט שיתוף</string>
   <string name="morphe_music_hide_flyout_menu_shuffle_play_title">הסתר תפריט \'נגן רנדומלי\'</string>
   <string name="morphe_music_hide_flyout_menu_sleep_timer_title">הסתר תפריט \'טיימר שינה\'</string>
   <string name="morphe_music_hide_flyout_menu_start_radio_title">הסתר תפריט \'התחל רדיו\'</string>
   <string name="morphe_music_hide_flyout_menu_stats_for_nerds_title">הסתר תפריט \'סטטיסטיקות לחובבי טכנולוגיה\'</string>
-  <string name="morphe_music_hide_flyout_menu_subscribe_title">הסתר תפריט \'הירשם\'</string>
+  <string name="morphe_music_hide_flyout_menu_subscribe_title">הסתר תפריט הרשמה למינוי</string>
   <string name="morphe_music_hide_flyout_menu_unpin_from_speed_dial_title">הסתר תפריט \'הסר מחיוג מהיר\'</string>
   <string name="morphe_music_hide_flyout_menu_view_song_credit_title">הסתר תפריט \'צפה בקרדיטים של השיר\'</string>
   <!-- layout.startpage.changeStartPagePatch -->
@@ -159,11 +158,13 @@ YouTube Music 8.x - מעבר הצלילים פועל רק בגרסה 9.x ומע�
   <string name="morphe_change_start_page_entry_playlists">פלייליסטים</string>
   <string name="morphe_change_start_page_entry_search">חיפוש</string>
   <string name="morphe_change_start_page_entry_subscriptions">מינויים</string>
-  <!-- layout.compactheader.hideCategoryBarPatch -->
-  <string name="morphe_music_hide_category_bar_title">הסתר סרגל קטגוריות</string>
+  <!-- layout.compactheader.hideFilterBarPatch -->
+  <string name="morphe_music_hide_filter_bar_title">הסתר סרגל סינון</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">שנה צבע מיני-נגן</string>
   <string name="morphe_music_change_miniplayer_color_summary">צבע המיני-נגן תואם לנגן במסך מלא</string>
+  <string name="morphe_music_change_navigation_bar_color_title">שנה צבע סרגל הניווט</string>
+  <string name="morphe_music_change_navigation_bar_color_summary">מתאים את צבע סרגל הניווט לנגן במסך מלא</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
   <string name="morphe_music_miniplayer_next_button_title">הצג כפתור הבא בנגן המיני</string>
   <string name="morphe_music_miniplayer_previous_button_title">לחצן קודם בנגן מיני</string>
@@ -188,8 +189,6 @@ YouTube Music 8.x - מעבר הצלילים פועל רק בגרסה 9.x ומע�
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">הסתר כפתור שדרוג</string>
   <string name="morphe_music_hide_navigation_bar_title">הסתר סרגל ניווט</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">הסתר תוויות לחצני ניווט</string>
-  <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
-  <string name="morphe_music_hide_upgrade_button_title">הסתר לחצן שדרוג</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary">הגדרת אינטגרציה של Last.fm ו-ListenBrainz</string>
   <string name="morphe_music_scrobbling_summary_logged_out">לא מחובר. הקש להגדרה</string>
@@ -197,7 +196,7 @@ YouTube Music 8.x - מעבר הצלילים פועל רק בגרסה 9.x ומע�
   <string name="morphe_music_scrobbling_logged_out_toast">התנתקתי</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_enabled_title">הפעל scrobbling</string>
-  <string name="morphe_music_scrobbling_now_playing_title">שלח סטטוס \"מתנגן כעת\"</string>
+  <string name="morphe_music_scrobbling_now_playing_title">שלח סטטוס \'מתנגן כעת\'</string>
   <string name="morphe_music_scrobbling_min_song_duration_title">משך שיר מינימלי</string>
   <!-- 'scrobbled' must be kept untranslated -->
   <string name="morphe_music_scrobbling_min_song_duration_summary">שירים קצרים מכך לא יעברו scrobble</string>

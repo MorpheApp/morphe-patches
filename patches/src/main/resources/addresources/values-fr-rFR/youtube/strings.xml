@@ -249,7 +249,7 @@ Limitations :
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Le mot-clé présente des déclarations conflictuelles : %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Le mot-clé est trop court et nécessite des guillemets : %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Ce mot-clé va masquer toutes les vidéos : %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Masquer l\'étagère de boutique du créateur</string>
   <string name="morphe_hide_end_screen_store_banner_title">Masquer la bannière de boutique de l\'écran de fin</string>
   <string name="morphe_hide_general_ads_title">Masquer les publicités générales</string>
@@ -259,9 +259,8 @@ Limitations :
   <string name="morphe_hide_player_popup_ads_title">Masquer les pop-up publicitaires du lecteur</string>
   <string name="morphe_hide_self_sponsor_ads_title">Masquer les cartes d\'autopromotion</string>
   <string name="morphe_hide_shopping_links_title">Masquer les liens de shopping</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">Masquer les promotions YouTube Premium</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Masquer les publicités vidéo</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">Masquer les promotions YouTube Premium</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Lien copié dans le presse-papiers</string>

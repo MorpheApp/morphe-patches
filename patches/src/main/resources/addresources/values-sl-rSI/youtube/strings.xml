@@ -249,7 +249,7 @@ Omejitve:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Ključna beseda ima konfliktnih deklaracij: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Ključna beseda je prekratka in zahteva narekovaje: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Ključna beseda bo skrivala vse videoposnetke: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Skrij polico trgovine ustvarjalca</string>
   <string name="morphe_hide_end_screen_store_banner_title">Skrij vrstico trgovine na zaslonu zaključka</string>
   <string name="morphe_hide_general_ads_title">Skrij splošne oglase</string>
@@ -259,9 +259,8 @@ Omejitve:
   <string name="morphe_hide_player_popup_ads_title">Skrij reklamne vstavke v predvajalniku</string>
   <string name="morphe_hide_self_sponsor_ads_title">Skrij kartice samozainteresiranih oglasov</string>
   <string name="morphe_hide_shopping_links_title">Skrij povezanih izdelkov</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">Skrij promocije YouTube Premium</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Skrij video oglase</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">Skrij promocije YouTube Premium</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Povezava kopirana v odložišče</string>

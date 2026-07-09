@@ -249,7 +249,7 @@ Limitări:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Cuvântul-cheie are declarații contradictorii: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Cuvântul cheie este prea scurt și necesită oferte: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Cuvântul cheie va ascunde toate videoclipurile: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Ascunde raftul magazinului creatorului</string>
   <string name="morphe_hide_end_screen_store_banner_title">Ascunde bannerul magazinului de la finalul ecranului</string>
   <string name="morphe_hide_general_ads_title">Ascunde reclamele generale</string>
@@ -259,9 +259,8 @@ Limitări:
   <string name="morphe_hide_player_popup_ads_title">Ascunde anunțurile pop-up ale jucătorului</string>
   <string name="morphe_hide_self_sponsor_ads_title">Ascunde cardurile auto-sponsorizate</string>
   <string name="morphe_hide_shopping_links_title">Ascunde linkurile de cumpărături</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">Ascunde promoțiile YouTube Premium</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Ascunde reclamele video</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">Ascunde promoțiile YouTube Premium</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link copiat în clipboard</string>

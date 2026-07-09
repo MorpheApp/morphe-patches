@@ -155,11 +155,11 @@ Dit kan helpen bij het identificeren van componenten bij het maken van aangepast
 
 Als u dit inschakelt, worden echter ook bepaalde gebruikersgegevens, zoals uw IP-adres, vastgelegd."</string>
   <!-- Custom filter -->
-  <string name="morphe_custom_filter_screen_title">Aangepast filter</string>
+  <string name="morphe_custom_filter_screen_title">Aangepaste filter</string>
   <string name="morphe_custom_filter_screen_summary">Configureer aangepaste filters om elk component te verbergen</string>
   <string name="morphe_custom_filter_title">Aangepaste filter inschakelen</string>
-  <string name="morphe_custom_filter_strings_title">Aangepast filter</string>
+  <string name="morphe_custom_filter_strings_title">Aangepaste filter</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Lijst met component pad builder strings om te filteren, gescheiden door nieuwe regels</string>
-  <string name="morphe_custom_filter_toast_invalid_syntax">Ongeldig aangepast filter: %s</string>
+  <string name="morphe_custom_filter_toast_invalid_syntax">Ongeldige aangepaste filter: %s</string>
 </resources>

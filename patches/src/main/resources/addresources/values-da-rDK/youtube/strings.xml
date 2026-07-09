@@ -249,7 +249,7 @@ Begrænsninger:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Nøgleord har modstridende erklæringer: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Søgeordet er for kort og kræver citationstegn: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Nøgleord vil skjule alle videoer: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Skjul butikshylde for skabere</string>
   <string name="morphe_hide_end_screen_store_banner_title">Skjul banner fra butikken på slutskærmen</string>
   <string name="morphe_hide_general_ads_title">Skjul generelle annoncer</string>
@@ -259,9 +259,8 @@ Begrænsninger:
   <string name="morphe_hide_player_popup_ads_title">Skjul afspiller pop-up reklamer</string>
   <string name="morphe_hide_self_sponsor_ads_title">Skjul selvsponsorerede kort</string>
   <string name="morphe_hide_shopping_links_title">Skjul shoppinglinks</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">Skjul YouTube Premium reklamer</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Skjul videoannoncer</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">Skjul YouTube Premium reklamer</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link kopieret til udklipsholder</string>

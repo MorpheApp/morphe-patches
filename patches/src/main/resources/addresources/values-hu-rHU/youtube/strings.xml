@@ -249,7 +249,7 @@ Korlátozások:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Ez a kulcsszó ütközik egy másik beállítással: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">A kulcsszó túl rövid, használatához tedd idézőjelbe: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Ez a kulcsszó minden videót el fog rejteni: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Alkotói termékpolc elrejtése</string>
   <string name="morphe_hide_end_screen_store_banner_title">A befejező képernyőn lévő üzletbanner elrejtése</string>
   <string name="morphe_hide_general_ads_title">Általános hirdetések elrejtése</string>
@@ -259,9 +259,8 @@ Korlátozások:
   <string name="morphe_hide_player_popup_ads_title">Elrejtés a lejátszó előugró reklámok</string>
   <string name="morphe_hide_self_sponsor_ads_title">Önpromóciós kártyák elrejtése</string>
   <string name="morphe_hide_shopping_links_title">Vásárlási hivatkozások elrejtése</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium promóciók elrejtése</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Videóhirdetések elrejtése</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium promóciók elrejtése</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link másolva a vágólapra</string>

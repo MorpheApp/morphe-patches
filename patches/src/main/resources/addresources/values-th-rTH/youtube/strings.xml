@@ -249,7 +249,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">คำสำคัญมีการประกาศที่ขัดแย้งกัน: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">คำสำคัญสั้นเกินไปและต้องใช้เครื่องหมายคำพูด: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">คำสำคัญจะซ่อนวิดีโอทั้งหมด: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">ซ่อนชั้นวางร้านค้าของผู้สร้าง</string>
   <string name="morphe_hide_end_screen_store_banner_title">ซ่อนแบนเนอร์ร้านค้าท้ายจอ</string>
   <string name="morphe_hide_general_ads_title">ซ่อนโฆษณาโดยทั่วไป</string>
@@ -259,9 +259,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_popup_ads_title">ซ่อนโปปอัพของผู้เล่น</string>
   <string name="morphe_hide_self_sponsor_ads_title">ซ่อนการ์ดที่สนับสนุนตัวเอง</string>
   <string name="morphe_hide_shopping_links_title">ซ่อนลิงก์การช็อปปิ้ง</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">ซ่อนการโปรโมต YouTube Premium</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">ซ่อนโฆษณาวิดีโอ</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">ซ่อนการโปรโมต YouTube Premium</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">คัดลอกลิงก์ไปยังคลิปบอร์ด</string>

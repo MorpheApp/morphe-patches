@@ -246,7 +246,7 @@ Hạn chế:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Từ khóa có các định nghĩa mâu thuẫn với nhau. %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Từ khóa quá ngắn và cần phải có dấu ngoặc kép: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Từ khóa sẽ ẩn tất cả video: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Ẩn kệ cửa hàng của nhà sáng tạo</string>
   <string name="morphe_hide_end_screen_store_banner_title">Ẩn biểu ngữ cửa hàng trên màn hình kết thúc</string>
   <string name="morphe_hide_general_ads_title">Ẩn quảng cáo chung</string>
@@ -256,9 +256,8 @@ Hạn chế:
   <string name="morphe_hide_player_popup_ads_title">Ẩn quảng cáo bật lên trên trình phát</string>
   <string name="morphe_hide_self_sponsor_ads_title">Ẩn thẻ tự tài trợ</string>
   <string name="morphe_hide_shopping_links_title">Ẩn liên kết mua sắm</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">Ẩn quảng cáo YouTube Premium</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Ẩn video quảng cáo</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">Ẩn quảng cáo YouTube Premium</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Đã sao chép liên kết vào bảng nhớ tạm</string>

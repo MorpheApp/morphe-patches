@@ -249,7 +249,7 @@ Takmörk:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Leitarorð hefur andstæðar skilgreiningar: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Leitarorð er of stutt og þarf gæsafótur: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Leitarorð mun fela öll vídeó: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Fela vöruskjóta</string>
   <string name="morphe_hide_end_screen_store_banner_title">Fela endaskjá vörubanner</string>
   <string name="morphe_hide_general_ads_title">Fela almennar auglýsingar</string>
@@ -259,9 +259,8 @@ Takmörk:
   <string name="morphe_hide_player_popup_ads_title">Felaðu spilandi blaðspilspilaspilspilaspilspilaða spilaralaða reklamu</string>
   <string name="morphe_hide_self_sponsor_ads_title">Fela sjálfsstuddar kort</string>
   <string name="morphe_hide_shopping_links_title">Fela verslunarhlökki</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">Felaðu YouTube Premium kynningu</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Fela vídeó auglýsingar</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">Felaðu YouTube Premium kynningu</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Tengill kopíruðu á klippiborðið</string>

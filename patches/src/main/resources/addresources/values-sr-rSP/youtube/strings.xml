@@ -249,7 +249,7 @@ Promene uključuju:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Кључна реч има конфликтне изјаве: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Кључна реч је прекратка и захтева наводнике: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Кључна реч ће сакрити све видее: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Сакриј полицу продавнице креатора</string>
   <string name="morphe_hide_end_screen_store_banner_title">Сакриј банер продавнице на завршном екрану</string>
   <string name="morphe_hide_general_ads_title">Сакриј опште огласе</string>
@@ -259,9 +259,8 @@ Promene uključuju:
   <string name="morphe_hide_player_popup_ads_title">Сакриј рекламе у плејеру</string>
   <string name="morphe_hide_self_sponsor_ads_title">Сакриј картице самоспонзорства</string>
   <string name="morphe_hide_shopping_links_title">Сакриј линкове за куповину</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">Сакриј промоције за YouTube Premium</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Сакриј видео огласе</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">Сакриј промоције за YouTube Premium</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Линк копиран у привремену меморију</string>

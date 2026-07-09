@@ -249,7 +249,7 @@ Obmedzenia:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Kľúčové slovo má konfliktné deklarácie: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Kľúčové slovo je príliš krátke a vyžaduje úvodzovky: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Kľúčové slovo skryje všetky videá: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Skryť policu obchodu tvorcu</string>
   <string name="morphe_hide_end_screen_store_banner_title">Skryť banner obchodu na konci videa</string>
   <string name="morphe_hide_general_ads_title">Skryť všeobecné reklamy</string>
@@ -259,9 +259,8 @@ Obmedzenia:
   <string name="morphe_hide_player_popup_ads_title">Skryť vyskakovacie reklamy v prehrávači</string>
   <string name="morphe_hide_self_sponsor_ads_title">Skryť karty vlastnej reklamy</string>
   <string name="morphe_hide_shopping_links_title">Skryť odkazy na nákupy</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">Skryť YouTube Premium promo</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Skryť videoreklamy</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">Skryť YouTube Premium promo</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Odkaz skopírovaný do schránky</string>

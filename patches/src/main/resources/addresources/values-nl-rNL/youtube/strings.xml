@@ -29,10 +29,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Veegbediening</string>
   <string name="morphe_settings_screen_11_misc_title">Diversen</string>
   <string name="morphe_settings_screen_12_video_title">Video</string>
-  <string name="morphe_restore_old_settings_menus_title">Herstel oude YouTube-instellingen scherm</string>
+  <string name="morphe_restore_old_settings_menus_title">Herstel het oude YouTube instellingenscherm</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Achtergrond afspeelbeperkingen verwijderen</string>
-  <string name="morphe_shorts_disable_background_playback_title">Schakel achtergrondweergave uit</string>
+  <string name="morphe_shorts_disable_background_playback_title">Schakel afspelen in achtergrond uit</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">Layout-updates uitschakelen</string>
   <string name="morphe_disable_layout_updates_summary">Voorkomt dat de server de app-lay-out bijwerkt</string>
@@ -100,16 +100,16 @@ Wijzigingen zijn:
   <string name="morphe_hide_upload_time_title">Verberg uploadtijd</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Beperkingen:
-• Shorts-schappen, kanaalpagina's en zoekresultaten kunnen nog steeds uploadtijden tonen
-• Werkt niet met de automotive lay-out"</string>
+• Shorts, kanaalpagina's en zoekresultaten kunnen nog steeds uploadtijden tonen
+• Werkt niet met de Android Auto lay-out"</string>
   <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_recommendation_labels_title">Videobevellabels verbergen</string>
   <string name="morphe_hide_video_recommendation_labels_summary">Verbergt de labels \'Mensen keken ook\' en \'Misschien vind je dit ook leuk\' in zoekresultaten</string>
   <string name="morphe_hide_view_count_title">Aantal weergaven verbergen</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Beperkingen:
-• Shorts-planken, kanaalpagina's en zoekresultaten kunnen nog steeds het aantal weergaven tonen
-• Werkt niet met de automotive lay-out"</string>
+• Shorts, kanaalpagina's en zoekresultaten kunnen nog steeds het aantal weergaven tonen
+• Werkt niet met de Android Auto lay-out"</string>
   <string name="morphe_hide_web_search_results_title">Webzoekresultaten verbergen</string>
   <string name="morphe_hide_web_search_results_summary">Verbergt de sectie \'Resultaat van het web\' uit zoekresultaten</string>
   <string name="morphe_hide_you_may_like_section_title">Verberg \'Je kunt ook liken\' sectie</string>
@@ -217,8 +217,8 @@ Wijzigingen zijn:
   <string name="morphe_hide_comments_preview_comment_title">Reactie in preview verbergen</string>
   <string name="morphe_hide_comments_preview_comment_summary">Verbergt het commentaarvoorbeeldunder de video voordat de volledige commentaarsectie wordt geopend</string>
   <string name="morphe_hide_comments_thanks_button_title">Verberg de knop \'Bedankt\'</string>
-  <string name="morphe_sanitize_comments_highlighted_search_links_title">Sanitize highlighted search links</string>
-  <string name="morphe_sanitize_comments_highlighted_search_links_summary">Sanitizes highlighted search links, leaving only the original plain text</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_title">Schoon gehighlighte search URL\'s op</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_summary">Schoont gehighlighte search URL\'s op, zodat alleen de originele tekst overblijft</string>
   <string name="morphe_hide_keyword_content_screen_title">Trefwoordfilter</string>
   <string name="morphe_hide_keyword_content_screen_summary">Kies specifieke woorden of zinsdelen om video\'s in feeds en zoekopdrachten te verbergen</string>
   <string name="morphe_hide_keyword_content_home_title">Home-video\'s verbergen door keywords</string>
@@ -249,7 +249,7 @@ Beperkingen:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Keyword heeft tegenstrijdige verklaringen: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Keyword is te kort en vereist aanhalingstekens: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Keyword verbergt alle video\'s: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Makerswinkelplank verbergen</string>
   <string name="morphe_hide_end_screen_store_banner_title">Verberg de Store-banner op het eindscherm</string>
   <string name="morphe_hide_general_ads_title">Algemene advertenties verbergen</string>
@@ -259,9 +259,8 @@ Beperkingen:
   <string name="morphe_hide_player_popup_ads_title">Verberg speler pop-up reclames</string>
   <string name="morphe_hide_self_sponsor_ads_title">Zelf gesponsorde kaarten verbergen</string>
   <string name="morphe_hide_shopping_links_title">Winkellinks verbergen</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium promoties verbergen</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Video-advertenties verbergen</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium promoties verbergen</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link naar klembord gekopieerd</string>
@@ -579,6 +578,7 @@ Let op: als 'Video streams spoofen' niet is ingeschakeld, kan het inschakelen hi
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Verberg Microfoon-knop</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_hide_shorts_button_title">Verberg de knop \"Shorts\"</string>
   <!-- 'Create' has no display name. Translate normally. -->
   <string name="morphe_hide_create_button_title">Knop Maken verbergen</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -852,7 +852,7 @@ Automotive-layout
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Herstelt de oude player layout
 
-Beperking: Als 'Restore old video action bar' is uitgeschakeld, is de 'More videos' overlay mogelijk niet beschikbaar"</string>
+Beperking: Als 'Herstel oude video acties balk' is uitgeschakeld, is de \"Meer video's\" overlay mogelijk niet beschikbaar"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">App-versie vervalsen</string>
   <string name="morphe_spoof_app_version_summary">Misleidt de server om te denken dat je een oudere app-versie gebruikt om verouderde visuele functies terug te zetten</string>
@@ -1112,8 +1112,8 @@ Het afspelen van video met AV1 kan haperen of frames overslaan."</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Player JavaScript variant</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Toon spoofing in Stats for nerds</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">Herstel oude videobeweringsbalk</string>
+  <string name="morphe_restore_old_video_action_bar_title">Herstel oude video acties balk</string>
   <string name="morphe_restore_old_video_action_bar_summary">"Lost het probleem op waarbij dislikes niet worden weergegeven en video actieknoppen niet kunnen worden verborgen
 
-Beperking: Keert terug naar de oude stijl 'More videos' overlay"</string>
+Beperking: Keert terug naar de oude stijl van de \"Meer video's\" overlay"</string>
 </resources>

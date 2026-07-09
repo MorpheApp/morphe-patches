@@ -249,7 +249,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">कीवर्ड के घोषणाओं में संघर्ष है: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">कीवर्ड बहुत छोटा है और क्वोटेस की आवश्यकता है: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">कीवर्ड सभी वीडियो को छुपाएगा: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">छुपाएं क्रिएटर स्टोर शेल्फ</string>
   <string name="morphe_hide_end_screen_store_banner_title">छुपाएं अंत पर्दे स्टोर बैनर</string>
   <string name="morphe_hide_general_ads_title">सामान्य विज्ञापन छुपाएं</string>
@@ -259,9 +259,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_popup_ads_title">प्लेयर पॉपअप विज्ञापन छिपाएं</string>
   <string name="morphe_hide_self_sponsor_ads_title">छुपाएं स्वयं प्रायोजित कार्ड</string>
   <string name="morphe_hide_shopping_links_title">쇼핑 링크 숨기기</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">छुपाएं YouTube प्रीमियम प्रोमोशन</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">छुपाएं वीडियो विज्ञापन</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">छुपाएं YouTube प्रीमियम प्रोमोशन</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">लिंक क्लिपबोर्ड में कॉपी किया गया</string>

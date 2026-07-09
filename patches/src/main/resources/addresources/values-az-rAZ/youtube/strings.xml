@@ -233,7 +233,7 @@ Məhdudiyyətlər:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Açar sözün ziddiyyətli hissəcikləri var: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Açar söz çox qısadır və istinad tələb edir: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Açar söz, bütün videoları gizlədəcək: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Yaradıcı mağaza bölümün gizlət</string>
   <string name="morphe_hide_end_screen_store_banner_title">Son ekran mağaza afişasın gizlət</string>
   <string name="morphe_hide_general_ads_title">Ümumi reklamları gizlət</string>
@@ -243,9 +243,8 @@ Məhdudiyyətlər:
   <string name="morphe_hide_player_popup_ads_title">Oynadıcı ani açılan reklamlarını gizlət</string>
   <string name="morphe_hide_self_sponsor_ads_title">Öz-sponsorlu kartları gizlət</string>
   <string name="morphe_hide_shopping_links_title">Alış-veriş linklərini gizlət</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium reklamlarını gizlət</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Video reklamlarını gizlət</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium reklamlarını gizlət</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link buferə köçürüldü</string>

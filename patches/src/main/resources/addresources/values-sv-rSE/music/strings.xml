@@ -28,9 +28,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_1_ads_title">Annonser</string>
   <string name="morphe_settings_music_screen_2_general_title">Allmänt</string>
   <string name="morphe_settings_music_screen_3_player_title">Spelare</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Dölj etiketten Skaffa Music Premium</string>
-  <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Dölj videoannonser</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Övertoningar</string>
@@ -72,10 +71,6 @@ Second \"item\" text"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Aktivera permanent upprepning</string>
   <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">Dölj knappen Casta</string>
-  <string name="morphe_music_hide_history_button_title">Dölj historikknappen</string>
-  <string name="morphe_music_hide_notification_button_title">Dölj aviseringsknappen</string>
-  <string name="morphe_music_hide_search_button_title">Dölj sökknappen</string>
   <!-- layout.hide.general.hideMusicComponentsPatch -->
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <!-- layout.startpage.changeStartPagePatch -->
@@ -90,8 +85,7 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_playlists">Spellistor</string>
   <string name="morphe_change_start_page_entry_search">Sök</string>
   <string name="morphe_change_start_page_entry_subscriptions">Prenumerationer</string>
-  <!-- layout.compactheader.hideCategoryBarPatch -->
-  <string name="morphe_music_hide_category_bar_title">Dölj kategorifält</string>
+  <!-- layout.compactheader.hideFilterBarPatch -->
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">Ändra minispelarens färg</string>
   <string name="morphe_music_change_miniplayer_color_summary">Minispelarens färg matchar helskärmsspelaren</string>
@@ -117,8 +111,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Dölj knappen Uppgradera</string>
   <string name="morphe_music_hide_navigation_bar_title">Dölj navigeringsfältet</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Dölj etiketter för navigeringsknappar</string>
-  <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
-  <string name="morphe_music_hide_upgrade_button_title">Dölj uppgraderingsknappen</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <!-- 'scrobbling' must be kept untranslated -->
   <!-- 'scrobbled' must be kept untranslated -->

@@ -249,7 +249,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">الكلمة المفتاحية بها تعريفات متعارضة: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">الكلمة المفتاحية قصيرة جدًا وتتطلب اقتباسات: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">الكلمة المفتاحية سوف تخفي جميع الفيديوهات: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">إخفاء رف متجر المنشئ</string>
   <string name="morphe_hide_end_screen_store_banner_title">إخفاء لافتة شاشة المتجر النهائية</string>
   <string name="morphe_hide_general_ads_title">إخفاء الإعلانات العامة</string>
@@ -259,9 +259,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_popup_ads_title">إخفاء إعلانات المشغل المنبثقة</string>
   <string name="morphe_hide_self_sponsor_ads_title">إخفاء بطاقات الرعاية الذاتية</string>
   <string name="morphe_hide_shopping_links_title">إخفاء روابط التسوق</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">إخفاء عروض ترقية YouTube Premium</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">إخفاء إعلانات الفيديو</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">إخفاء عروض ترقية YouTube Premium</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">تم نسخ الرابط إلى الحافظة</string>

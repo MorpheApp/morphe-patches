@@ -101,7 +101,7 @@ Second \"item\" text"</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Обмеження:
 • Панелі Shorts, сторінки каналів та результати пошуку можуть досі показувати час завантаження
-• Ця функція не працює з автомобільним макетом інтерфейсу"</string>
+• Не працює з автомобільним макетом інтерфейсу"</string>
   <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_recommendation_labels_title">Приховати мітки відеорекомендацій</string>
   <string name="morphe_hide_video_recommendation_labels_summary">Приховує мітки \"Інші користувачі також переглядали це відео\" та \"Вам також може сподобатися\" у результатах пошуку</string>
@@ -109,7 +109,7 @@ Second \"item\" text"</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Обмеження:
 • Панелі Shorts, сторінки каналів та результати пошуку можуть досі показувати кількість переглядів
-• Ця функція не працює з автомобільним макетом інтерфейсу"</string>
+• Не працює з автомобільним макетом інтерфейсу"</string>
   <string name="morphe_hide_web_search_results_title">Приховати результати вебпошуку</string>
   <string name="morphe_hide_web_search_results_summary">Приховує секцію \"Результати з інтернету\" у результатах пошуку</string>
   <string name="morphe_hide_you_may_like_section_title">Приховати секцію \"Вам може сподобатися\"</string>
@@ -168,7 +168,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_transcript_section_title">Приховати секцію \"Текст відео\"</string>
   <string name="morphe_hide_video_details_section_title">Приховати секцію \"Інформація про відео\"</string>
   <string name="morphe_hide_filter_bar_screen_title">Панель фільтрів</string>
-  <string name="morphe_hide_filter_bar_screen_summary">Виберіть, де приховувати прокручувану панель фільтрів</string>
+  <string name="morphe_hide_filter_bar_screen_summary">Виберіть, де приховати панель фільтрів із прокруткою</string>
   <string name="morphe_hide_filter_bar_in_comments_title">Приховати в коментарях</string>
   <string name="morphe_hide_filter_bar_in_feed_title">Приховати у стрічках</string>
   <string name="morphe_hide_filter_bar_in_related_videos_title">Приховати у пов\'язаних відео</string>
@@ -211,14 +211,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Приховати кнопку \"Створити Short\"</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Приховати кнопки емодзі та позначки часу</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Приховати параметри панелі фільтрів</string>
-  <string name="morphe_hide_comments_filter_bar_options_summary">Приховує всі варіанти сортування коментарів, окрім  \"Найпопулярніші\" та \"Найновіші\"</string>
+  <string name="morphe_hide_comments_filter_bar_options_summary">Приховує всі варіанти панелі фільтрів, окрім  \"Найпопулярніші\" та \"Найновіші\"</string>
   <string name="morphe_hide_comments_info_button_title">Приховати кнопку \"Інфо\"</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Приховати панель спонсорів у живому чаті</string>
   <string name="morphe_hide_comments_preview_comment_title">Приховати прев\'ю коментар</string>
   <string name="morphe_hide_comments_preview_comment_summary">Приховує попередній перегляд коментаря під відео до повного відкриття секції коментарів</string>
   <string name="morphe_hide_comments_thanks_button_title">Приховати кнопку \"Дякую\"</string>
-  <string name="morphe_sanitize_comments_highlighted_search_links_title">Санітизувати виділені посилання пошуку</string>
-  <string name="morphe_sanitize_comments_highlighted_search_links_summary">Санітизує виділені посилання пошуку, залишаючи лише вихідний звичайний текст</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_title">Очищувати виділені пошукові посилання</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_summary">Очищує виділені пошукові посилання, залишаючи лише оригінальний звичайний текст</string>
   <string name="morphe_hide_keyword_content_screen_title">Фільтр ключових слів</string>
   <string name="morphe_hide_keyword_content_screen_summary">Виберіть слова або фрази для приховування відео у стрічках і пошуку</string>
   <string name="morphe_hide_keyword_content_home_title">Приховати відео на головній</string>
@@ -249,7 +249,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Ключове слово має конфліктні оголошення: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Ключове слово занадто коротке і потребує лапок: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Ключове слово приховає всі відео: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Приховати панель магазину автора</string>
   <string name="morphe_hide_end_screen_store_banner_title">Приховати банер магазину на кінцевому екрані</string>
   <string name="morphe_hide_general_ads_title">Приховати загальну рекламу</string>
@@ -259,9 +259,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_popup_ads_title">Приховувати спливаючу рекламу в плеєрі</string>
   <string name="morphe_hide_self_sponsor_ads_title">Приховати картки само спонсорства</string>
   <string name="morphe_hide_shopping_links_title">Приховати посилання на покупки</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">Приховати рекламу YouTube Premium</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Приховати відеорекламу</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">Приховати рекламу YouTube Premium</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Посилання скопійовано в буфер обміну</string>
@@ -297,7 +296,7 @@ Second \"item\" text"</string>
   <string name="morphe_vot_translation_volume_summary">Гучність озвученого перекладу</string>
   <string name="morphe_vot_max_speech_rate_title">Максимальна швидкість мовлення</string>
   <string name="morphe_vot_max_speech_rate_summary">Максимальний коефіцієнт прискорення мовлення для вписування у слот субтитрів</string>
-  <string name="morphe_vot_mymemory_info_summary">"Безкоштовний API перекладу, ключ API не потрібен. До 5 000 символів на день у безкоштовному тарифі, або до 50 000 символів на день із вказаною електронною поштою.
+  <string name="morphe_vot_mymemory_info_summary">"Безплатний API перекладу, ключ API не потрібен. До 5 000 символів на день у безплатному тарифі, або до 50 000 символів на день із вказаною електронною поштою.
 
 Натисніть тут, щоб відкрити MyMemory.translated.net"</string>
   <string name="morphe_vot_mymemory_email_title">Електронна пошта MyMemory</string>
@@ -311,7 +310,7 @@ Second \"item\" text"</string>
   <string name="morphe_vot_openrouter_model_custom">Власна</string>
   <string name="morphe_vot_openrouter_not_configured_title">OpenRouter не налаштовано</string>
   <string name="morphe_vot_openrouter_not_configured_message">Введіть ваш ключ API OpenRouter у налаштуваннях перед вибором цього постачальника</string>
-  <string name="morphe_vot_cost_free">Безкоштовно</string>
+  <string name="morphe_vot_cost_free">Безплатно</string>
   <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
   <string name="morphe_vot_cost_per_hour">%s за 100 годин відео</string>
   <string name="morphe_vot_tts_voice_type">Голос</string>
@@ -324,7 +323,7 @@ Second \"item\" text"</string>
   <string name="morphe_vot_http_error_title">Переклад недоступний</string>
   <string name="morphe_vot_http_error_message">"Сервіс перекладу повернув помилку HTTP %s. Ймовірно, вашу IP-адресу тимчасово обмежено на термін до 24 годин.
 
-Щоб продовжити користуватися перекладом, оберіть іншого постачальника перекладу в налаштуваннях або скористайтеся VPN"</string>
+Щоб продовжити користуватися перекладом, виберіть іншого постачальника перекладу в налаштуваннях або скористайтеся VPN"</string>
   <string name="morphe_vot_do_not_show_again">Більше не показувати</string>
   <string name="morphe_vot_export_api_key_warning">"Ваші налаштування містять ключ API OpenRouter.
 
@@ -335,8 +334,8 @@ Second \"item\" text"</string>
   <string name="morphe_vot_openrouter_error">Переклад через OpenRouter не вдався (HTTP %s)</string>
   <string name="morphe_vot_mymemory_quota_title">Досягнуто денного ліміту MyMemory</string>
   <string name="morphe_vot_mymemory_quota_next_available">Доступно знову о %s.</string>
-  <string name="morphe_vot_mymemory_quota_message_no_email">Ви використали сьогоднішню безкоштовну квоту перекладу MyMemory (5 000 символів). Додайте електронну пошту MyMemory в налаштуваннях, щоб збільшити денний ліміт до 50 000 символів, або оберіть інший сервіс перекладу</string>
-  <string name="morphe_vot_mymemory_quota_message_with_email">Ви використали сьогоднішню квоту перекладу MyMemory (50 000 символів). Оберіть інший сервіс перекладу або спробуйте знову завтра</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Ви використали сьогоднішню безплатну квоту перекладу MyMemory (5 000 символів). Додайте електронну пошту MyMemory в налаштуваннях, щоб збільшити денний ліміт до 50 000 символів, або виберіть інший сервіс перекладу</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Ви використали сьогоднішню квоту перекладу MyMemory (50 000 символів). Виберіть інший сервіс перекладу або спробуйте знову завтра</string>
   <string name="morphe_vot_mymemory_error">Переклад через MyMemory не вдався (статус %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Увімкнути повторення відео</string>

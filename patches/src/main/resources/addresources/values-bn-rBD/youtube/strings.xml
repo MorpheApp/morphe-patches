@@ -249,7 +249,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">কিওয়ার্ডের দ্বন্দ্বপূর্ণ ঘোষণা আছে: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">কিওয়ার্ড খুব ছোট এবং উদ্ধৃতি প্রয়োজন: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">কিওয়ার্ড সমস্ত ভিডিও লুকিয়ে রাখবে: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">ক্রিয়েটর স্টোর শেল্ফ লুকান</string>
   <string name="morphe_hide_end_screen_store_banner_title">শেষ পর্দার স্টোর ব্যানার লুকান</string>
   <string name="morphe_hide_general_ads_title">সাধারণ বিজ্ঞাপন লুকান</string>
@@ -259,9 +259,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_popup_ads_title">প্লেয়ার পপআপ বিজ্ঞাপন লুকান</string>
   <string name="morphe_hide_self_sponsor_ads_title">স্ব-স্পন্সর কার্ড লুকান</string>
   <string name="morphe_hide_shopping_links_title">কেনাকাটার লিঙ্ক লুকান</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">YouTube প্রিমিয়াম প্রচারণা লুকান</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">ভিডিও বিজ্ঞাপন লুকান</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">YouTube প্রিমিয়াম প্রচারণা লুকান</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">ক্লিপবোর্ডে URL অনুলিপি করা হয়েছে</string>

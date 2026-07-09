@@ -167,7 +167,7 @@ Perubahan termasuk:
   <string name="morphe_hide_transcript_section_title">Sembunyikan bagian Transkrip</string>
   <string name="morphe_hide_video_details_section_title">Sembunyikan bagian \'Detail video\'</string>
   <string name="morphe_hide_filter_bar_screen_title">Bilah saring</string>
-  <string name="morphe_hide_filter_bar_screen_summary">Pilih tempat untuk menyembunyikan bilah filter geser</string>
+  <string name="morphe_hide_filter_bar_screen_summary">Pilih di mana bilah penyaring gulir akan disembunyikan</string>
   <string name="morphe_hide_filter_bar_in_comments_title">Sembunyikan di komentar</string>
   <string name="morphe_hide_filter_bar_in_feed_title">Sembunyikan di feed</string>
   <string name="morphe_hide_filter_bar_in_related_videos_title">Sembunyikan di video terkait</string>
@@ -209,15 +209,15 @@ Perubahan termasuk:
   <string name="morphe_hide_comments_community_guidelines_title">Sembunyikan pedoman komunitas</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Sembunyikan tombol \'Buat Short\'</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Sembunyikan tombol Emoji dan Stempel waktu</string>
-  <string name="morphe_hide_comments_filter_bar_options_title">Sembunyikan opsi bilah filter</string>
-  <string name="morphe_hide_comments_filter_bar_options_summary">Menyembunyikan semua opsi bilah filter kecuali \'Teratas\' dan \'Terbaru\'</string>
+  <string name="morphe_hide_comments_filter_bar_options_title">Sembunyikan pilihan bilah penyaring</string>
+  <string name="morphe_hide_comments_filter_bar_options_summary">Menyembunyikan semua pilihan bilah penyaring kecuali \'Teratas\' dan \'Terbaru\'</string>
   <string name="morphe_hide_comments_info_button_title">Sembunyikan tombol Info</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Sembunyikan bilah donatur live chat</string>
   <string name="morphe_hide_comments_preview_comment_title">Sembunyikan pratinjau komentar</string>
   <string name="morphe_hide_comments_preview_comment_summary">Menyembunyikan pratinjau komentar di bawah video sebelum membuka bagian komentar penuh</string>
   <string name="morphe_hide_comments_thanks_button_title">Sembunyikan tombol Terima Kasih</string>
-  <string name="morphe_sanitize_comments_highlighted_search_links_title">Mensterilkan tautan pencarian yang disorot</string>
-  <string name="morphe_sanitize_comments_highlighted_search_links_summary">Mensterilkan tautan pencarian yang disorot, hanya menyisakan teks polos asli</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_title">Bersihkan tautan pencarian yang disorot</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_summary">Membersihkan tautan pencarian yang disorot, sehingga hanya menyisakan teks biasa aslinya</string>
   <string name="morphe_hide_keyword_content_screen_title">Penyaring kata kunci</string>
   <string name="morphe_hide_keyword_content_screen_summary">Pilih kata atau frasa tertentu untuk menyembunyikan video di feed dan pencarian</string>
   <string name="morphe_hide_keyword_content_home_title">Sembunyikan video beranda dengan kata kunci</string>
@@ -248,7 +248,7 @@ Batasan:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Kata kunci punya keterangan yang berkonflik: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Kata kunci terlalu pendek dan butuh tanda kutip: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Kata kunci akan menyembunyikan semua video: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Sembunyikan rak toko kreator</string>
   <string name="morphe_hide_end_screen_store_banner_title">Sembunyikan spanduk toko di layar akhir</string>
   <string name="morphe_hide_general_ads_title">Sembunyikan iklan umum</string>
@@ -258,9 +258,8 @@ Batasan:
   <string name="morphe_hide_player_popup_ads_title">Sembunyikan iklan pesan timbul pemutar</string>
   <string name="morphe_hide_self_sponsor_ads_title">Sembunyikan kartu bersponsor pribadi</string>
   <string name="morphe_hide_shopping_links_title">Sembunyikan tautan belanja</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">Sembunyikan promosi YouTube Premium</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Sembunyikan iklan video</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">Sembunyikan promosi YouTube Premium</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Tautan disalin ke papan klip</string>
@@ -1113,7 +1112,7 @@ Pemutaran video dengan AV1 mungkin tersendat atau kehilangan bingkai."</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Tampilkan pemalsuan dalam Informasi statistik</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Kembalikan bilah tindakan video lama</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Memperbaiki masalah Tidak Suka tidak ditampilkan dan tombol tindakan video tidak dapat disembunyikan
+  <string name="morphe_restore_old_video_action_bar_summary">"Memperbaiki masalah Tidak Suka tidak ditampilkan dan tombol tindakan video yang tidak dapat disembunyikan
 
 Keterbatasan: Mengembalikan tampilan hamparan 'Video lainnya' ke gaya lama"</string>
 </resources>

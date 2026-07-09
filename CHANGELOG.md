@@ -1,3 +1,13 @@
+## [1.34.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.34.0-dev.4...v1.34.0-dev.5) (2026-07-09)
+
+### 🐛 Bug Fixes
+
+* **Reddit - Settings:** Morphe language does not change after restarting ([#1950](https://github.com/MorpheApp/morphe-patches/issues/1950)) ([fc41c27](https://github.com/MorpheApp/morphe-patches/commit/fc41c2757c1c6897e314e35de3e227adede03939))
+
+### ✨ New Features
+
+* **YouTube Music - Change miniplayer color:** Add "Change navigation bar color" setting ([#1908](https://github.com/MorpheApp/morphe-patches/issues/1908)) ([9b570cd](https://github.com/MorpheApp/morphe-patches/commit/9b570cd2cfcd0695fa38ea84541133940146e7cf))
+
 ## [1.34.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.34.0-dev.3...v1.34.0-dev.4) (2026-07-08)
 
 ### 🐛 Bug Fixes

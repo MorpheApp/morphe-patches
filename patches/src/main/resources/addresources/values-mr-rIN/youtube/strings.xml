@@ -243,7 +243,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">कीवर्डची विरोधाभासी घोषणा आहे: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">कीवर्ड खूप लहान आहे आणि अवतरण आवश्यक आहेत: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">कीवर्ड सर्व व्हिडिओ लपवेल: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">क्रिएटर स्टोअर शेल्फ लपवा</string>
   <string name="morphe_hide_end_screen_store_banner_title">एंड स्क्रीन स्टोअर बॅनर लपवा</string>
   <string name="morphe_hide_general_ads_title">सामान्य जाहिराती लपवा</string>
@@ -253,9 +253,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_popup_ads_title">प्लेअर पॉपअप जाहिराती लपवा</string>
   <string name="morphe_hide_self_sponsor_ads_title">स्वयं-प्रायोजित कार्ड्स लपवा</string>
   <string name="morphe_hide_shopping_links_title">शॉपिंग लिंक्स लपवा</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium जाहिरात वृत्तपत्रे लपवा</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">व्हिडिओ जाहिराती लपवा</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium जाहिरात वृत्तपत्रे लपवा</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">लिंक क्लिपबोर्डवर कॉपी केली</string>

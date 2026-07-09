@@ -249,7 +249,7 @@ Begrensninger:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Nøkkelord har motstridende deklarasjoner: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Nøkkelordet er for kort og krever anførselstegn: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Nøkkelordet vil skjule alle videoer: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Skjul creator store shelf</string>
   <string name="morphe_hide_end_screen_store_banner_title">Skjul sluttbanner for butikk</string>
   <string name="morphe_hide_general_ads_title">Skjul generelle annonser</string>
@@ -259,9 +259,8 @@ Begrensninger:
   <string name="morphe_hide_player_popup_ads_title">Skjul popup-annonser for spilleren</string>
   <string name="morphe_hide_self_sponsor_ads_title">Skjul selv-sponsede kort</string>
   <string name="morphe_hide_shopping_links_title">Skjul shoppinglenker</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">Skjul YouTube Premium-kampanjer</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Skjul videoannonser</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">Skjul YouTube Premium-kampanjer</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Koblet til utklippstavlen</string>

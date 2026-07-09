@@ -32,9 +32,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_general_title">Általános</string>
   <string name="morphe_settings_music_screen_3_player_title">Lejátszó</string>
   <string name="morphe_settings_music_screen_6_misc_title">Egyéb</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">A „Music Premium beszerzése” címke elrejtése</string>
-  <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Videóhirdetések elrejtése</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Áttűnés</string>
@@ -116,15 +115,15 @@ YouTube Music 8.x – a keresztátmenet csak a 9.x és újabb verziókon fut."</
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Előugró menü</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Válassza ki, mely komponensek jelenjenek meg a lejátszó és a sorban lévő menükben</string>
   <string name="morphe_music_hide_flyout_menu_3_column_component_title">3 oszlopos komponens elrejtése</string>
-  <string name="morphe_music_hide_flyout_menu_like_dislike_title">A \"Tetszik\" és \"Nem tetszik\" gombok elrejtése</string>
+  <string name="morphe_music_hide_flyout_menu_like_dislike_title">Tetszik és nem tetszik gombok elrejtése</string>
   <string name="morphe_music_hide_flyout_menu_taste_match_title">\"Ízlés egyezés\" menü elrejtése</string>
   <string name="morphe_music_hide_flyout_menu_add_to_listen_later_title">Rejtse el a \"Hozzáadás a \"Később hallgatni\" lejátszási listához\" menüt</string>
   <string name="morphe_music_hide_flyout_menu_add_to_queue_title">Rejtse el a \"Hozzáadás a sorhoz\" menüt</string>
-  <string name="morphe_music_hide_flyout_menu_captions_title">Feliratok elrejtése</string>
+  <string name="morphe_music_hide_flyout_menu_captions_title">Feliratok menü elrejtése</string>
   <string name="morphe_music_hide_flyout_menu_delete_playlist_title">Lejálisták törlése menü elrejtése</string>
   <string name="morphe_music_hide_flyout_menu_dismiss_queue_title">A sor elvetése menü elrejtése</string>
   <string name="morphe_music_hide_flyout_menu_dont_recommend_artist_title">Ne ajánld ezt a művészt menü elrejtése</string>
-  <string name="morphe_music_hide_flyout_menu_download_title">Letöltés elrejtése</string>
+  <string name="morphe_music_hide_flyout_menu_download_title">Letöltés menü elrejtése</string>
   <string name="morphe_music_hide_flyout_menu_edit_playlist_title">Lejálista szerkesztése menü elrejtése</string>
   <string name="morphe_music_hide_flyout_menu_go_to_album_title">Menj a zeneszámok albumához menü elrejtése</string>
   <string name="morphe_music_hide_flyout_menu_go_to_artist_title">Menj a művészhez menü elrejtése</string>
@@ -138,7 +137,7 @@ YouTube Music 8.x – a keresztátmenet csak a 9.x és újabb verziókon fut."</
   <string name="morphe_music_hide_flyout_menu_quality_title">Minőség menü elrejtése</string>
   <string name="morphe_music_hide_flyout_menu_remove_from_library_title">Eltávolítás a könyvtárból menü elrejtése</string>
   <string name="morphe_music_hide_flyout_menu_remove_from_playlist_title">Eltávolítás a lejálistából menü elrejtése</string>
-  <string name="morphe_music_hide_flyout_menu_report_title">Bejelentés elrejtése</string>
+  <string name="morphe_music_hide_flyout_menu_report_title">Bejelentés menü elrejtése</string>
   <string name="morphe_music_hide_flyout_menu_save_episode_for_later_save_to_library_title">Epizód mentése későbbre / Mentés a könyvtárba menü elrejtése</string>
   <string name="morphe_music_hide_flyout_menu_save_to_playlist_title">Mentés lejálistába menü elrejtése</string>
   <string name="morphe_music_hide_flyout_menu_share_title">Megosztás menü elrejtése</string>
@@ -161,11 +160,13 @@ YouTube Music 8.x – a keresztátmenet csak a 9.x és újabb verziókon fut."</
   <string name="morphe_change_start_page_entry_playlists">Lejátszási listák</string>
   <string name="morphe_change_start_page_entry_search">Keresés</string>
   <string name="morphe_change_start_page_entry_subscriptions">Feliratkozások</string>
-  <!-- layout.compactheader.hideCategoryBarPatch -->
-  <string name="morphe_music_hide_category_bar_title">Kategóriasáv elrejtése</string>
+  <!-- layout.compactheader.hideFilterBarPatch -->
+  <string name="morphe_music_hide_filter_bar_title">Szűrőpanel elrejtése</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">Minilejátszó színének módosítása</string>
   <string name="morphe_music_change_miniplayer_color_summary">A minilejátszó színe illeszkedjen a teljes képernyős lejátszóhoz</string>
+  <string name="morphe_music_change_navigation_bar_color_title">Változtassa meg a navigációs sáv színét</string>
+  <string name="morphe_music_change_navigation_bar_color_summary">A navigációs sáv színe igazodik a teljes képernyős lejátszóhoz</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
   <string name="morphe_music_miniplayer_next_button_title">Következő gomb megjelenítése a mini lejátszóban</string>
   <string name="morphe_music_miniplayer_previous_button_title">Előző gomb megjelenítése a mini lejátszóban</string>
@@ -190,8 +191,6 @@ YouTube Music 8.x – a keresztátmenet csak a 9.x és újabb verziókon fut."</
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Frissítés gomb elrejtése</string>
   <string name="morphe_music_hide_navigation_bar_title">Navigációs sáv elrejtése</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Navigációs gombok feliratainak elrejtése</string>
-  <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
-  <string name="morphe_music_hide_upgrade_button_title">Frissítés gomb elrejtése</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary">Konfigurálja a Last.fm és a ListenBrainz integrációt</string>
   <string name="morphe_music_scrobbling_summary_logged_out">Nem jelentkezett be. A konfiguráláshoz koppintson ide.</string>
@@ -199,7 +198,7 @@ YouTube Music 8.x – a keresztátmenet csak a 9.x és újabb verziókon fut."</
   <string name="morphe_music_scrobbling_logged_out_toast">Kijelentkezett</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_enabled_title">Engedélyezze a scrobblingot</string>
-  <string name="morphe_music_scrobbling_now_playing_title">A \"Most játszik\" állapot elküldése</string>
+  <string name="morphe_music_scrobbling_now_playing_title">\'Most játszott\' állapot beküldése</string>
   <string name="morphe_music_scrobbling_min_song_duration_title">Minimum szám időtartama</string>
   <!-- 'scrobbled' must be kept untranslated -->
   <string name="morphe_music_scrobbling_min_song_duration_summary">A nála rövidebb számok nem lesznek scrobble-elve</string>

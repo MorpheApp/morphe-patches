@@ -250,7 +250,7 @@ Sînorkirin:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Şêwazî dlya îqdi is ihtilafî dajan: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Şêwazî xeçk di, wan pêl dahiya: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Şêwazî hemû vîdyoyên veşêre: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Daste bibin zivaniyê qewryn</string>
   <string name="morphe_hide_end_screen_store_banner_title">Bannera firoşgeya store\'yê ekranê dabezîne</string>
   <string name="morphe_hide_general_ads_title">Reklamên gelemperî veşêrin</string>
@@ -260,9 +260,8 @@ Sînorkirin:
   <string name="morphe_hide_player_popup_ads_title">Ragihîştina reklamên popup-a lîstikvanê veşêre</string>
   <string name="morphe_hide_self_sponsor_ads_title">Kartên xîzetkaran veşêrin</string>
   <string name="morphe_hide_shopping_links_title">Girêkên firotinê veşêrin</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">Promosyonên YouTube Premium veşêre</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Reklamên vîdyoyê veşêrin</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">Promosyonên YouTube Premium veşêre</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Lînkê hat kopîkirin ser klîpbordê</string>

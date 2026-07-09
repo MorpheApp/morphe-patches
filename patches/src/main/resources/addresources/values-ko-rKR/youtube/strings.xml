@@ -167,8 +167,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_subscribe_button_title">구독 버튼 숨기기</string>
   <string name="morphe_hide_transcript_section_title">스크립트 섹션 숨기기</string>
   <string name="morphe_hide_video_details_section_title">동영상 세부정보 섹션 숨기기</string>
-  <string name="morphe_hide_filter_bar_screen_title">카테고리 바</string>
-  <string name="morphe_hide_filter_bar_screen_summary">스크롤 카테고리 바를 숨길 위치를 설정할 수 있습니다</string>
+  <string name="morphe_hide_filter_bar_screen_title">필터 바</string>
+  <string name="morphe_hide_filter_bar_screen_summary">스크롤 필터 바를 숨길 위치를 설정할 수 있습니다</string>
   <string name="morphe_hide_filter_bar_in_comments_title">댓글에서 숨기기</string>
   <string name="morphe_hide_filter_bar_in_feed_title">피드에서 숨기기</string>
   <string name="morphe_hide_filter_bar_in_related_videos_title">관련 동영상에서 숨기기</string>
@@ -210,8 +210,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_community_guidelines_title">커뮤니티 가이드라인 숨기기</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Shorts 만들기 버튼 숨기기</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">이모지 및 타임스탬프 버튼 숨기기</string>
-  <string name="morphe_hide_comments_filter_bar_options_title">카테고리 바 옵션 숨기기</string>
-  <string name="morphe_hide_comments_filter_bar_options_summary">\'인기순\' 및 \'최신순\'을 제외한 모든 카테고리 바 옵션을 숨깁니다</string>
+  <string name="morphe_hide_comments_filter_bar_options_title">필터 바 옵션 숨기기</string>
+  <string name="morphe_hide_comments_filter_bar_options_summary">\'인기순\' 및 \'최신순\'을 제외한 모든 필터 바 옵션을 숨깁니다</string>
   <string name="morphe_hide_comments_info_button_title">정보 버튼 숨기기</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">실시간 채팅 후원자 섹션 숨기기</string>
   <string name="morphe_hide_comments_preview_comment_title">댓글 미리보기 숨기기</string>
@@ -249,7 +249,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">키워드에 충돌하는 선언이 있습니다: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">키워드가 너무 짧아서 따옴표가 필요합니다: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">키워드가 모든 동영상을 숨길 것입니다: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">판매자 스토어 선반 숨기기</string>
   <string name="morphe_hide_end_screen_store_banner_title">최종 화면 스토어 배너 숨기기</string>
   <string name="morphe_hide_general_ads_title">일반 레이아웃 광고 숨기기</string>
@@ -259,9 +259,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_popup_ads_title">플레이어 팝업 광고 숨기기</string>
   <string name="morphe_hide_self_sponsor_ads_title">셀프 스폰서 카드 숨기기</string>
   <string name="morphe_hide_shopping_links_title">쇼핑 링크 숨기기</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium 프로모션 숨기기</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">동영상 광고 숨기기</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium 프로모션 숨기기</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">링크를 클립보드에 복사하였습니다</string>
