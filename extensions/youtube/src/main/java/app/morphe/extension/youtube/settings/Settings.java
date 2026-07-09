@@ -153,6 +153,17 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting HIDE_KEYWORD_CONTENT_PHRASES = new StringSetting("morphe_hide_keyword_content_phrases", "",
             parentsAny(HIDE_KEYWORD_CONTENT_HOME, HIDE_KEYWORD_CONTENT_SUBSCRIPTIONS, HIDE_KEYWORD_CONTENT_COMMENTS, HIDE_KEYWORD_CONTENT_SEARCH));
 
+    // AiSList
+    public static final BooleanSetting HIDE_AISLIST_BLOCKLIST_HOME = new BooleanSetting("morphe_hide_aislist_blocklist_home", FALSE);
+    public static final BooleanSetting HIDE_AISLIST_BLOCKLIST_SEARCH = new BooleanSetting("morphe_hide_aislist_blocklist_search", FALSE);
+    public static final BooleanSetting HIDE_AISLIST_WARNLIST_HOME = new BooleanSetting("morphe_hide_aislist_warnlist_home", FALSE);
+    public static final BooleanSetting HIDE_AISLIST_WARNLIST_SEARCH = new BooleanSetting("morphe_hide_aislist_warnlist_search", FALSE);
+    public static final StringSetting AISLIST_BLOCKLIST_CACHE = new StringSetting("morphe_aislist_blocklist_cache", "", false, false);
+    public static final StringSetting AISLIST_WARNLIST_CACHE = new StringSetting("morphe_aislist_warnlist_cache", "", false, false);
+    public static final LongSetting AISLIST_LAST_FETCH_MS = new LongSetting("morphe_aislist_last_fetch_ms", 0L, false, false);
+    public static final LongSetting AISLIST_HIDE_COUNT = new LongSetting("morphe_aislist_hide_count", 0L);
+    public static final StringSetting AISLIST_HIDES_24H = new StringSetting("morphe_aislist_hides_24h", "", false, false);
+
     // Channel page
     public static final BooleanSetting HIDE_CHANNEL_TAB = new BooleanSetting("morphe_hide_channel_tab", FALSE);
     public static final StringSetting HIDE_CHANNEL_TAB_FILTER_STRINGS = new StringSetting("morphe_hide_channel_tab_filter_strings", "", true, parent(HIDE_CHANNEL_TAB));
