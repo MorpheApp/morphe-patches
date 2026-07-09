@@ -10,6 +10,8 @@
 
 package app.morphe.patches.youtube.video.speed.remember
 
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
@@ -30,6 +32,7 @@ import app.morphe.patches.youtube.video.speed.custom.customPlaybackSpeedPatch
 import app.morphe.patches.youtube.video.speed.settingsMenuVideoSpeedGroup
 import app.morphe.patches.youtube.video.videoid.hookPlayerResponseVideoId
 import app.morphe.patches.youtube.video.videoid.videoIdPatch
+import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 
 private const val EXTENSION_CLASS =
@@ -72,39 +75,57 @@ internal val rememberPlaybackSpeedPatch = bytecodePatch {
         /*
          * Hook the code that is called when the playback speeds are initialized, and sets the playback speed
          */
-        InitializePlaybackSpeedValuesFingerprint.method.apply {
-            // Infer everything necessary for calling the method setPlaybackSpeed().
-            val onItemClickListenerClassFieldReference = getInstruction<ReferenceInstruction>(0).reference
+        Fingerprint(
+            filters = OpcodesFilter.opcodesToFilters(
+                Opcode.IGET_OBJECT,
+                Opcode.IGET_OBJECT,
+                Opcode.IF_NE,
+                Opcode.IGET,
+                Opcode.IF_EQ,
+                Opcode.IPUT_OBJECT,
+                Opcode.IPUT,
+                Opcode.IGET_OBJECT,
+            ),
+            custom = { method, _ ->
+                method == InitializePlaybackSpeedValuesFingerprint.method
+            }
+        ).let { fingerprint ->
+            val targetInstructionIndex = fingerprint.instructionMatches.first().index
 
-            // Registers are not used at index 0, so they can be freely used.
-            addInstructionsWithLabels(
-                0,
-                """
-                    invoke-static { }, $EXTENSION_CLASS->getPlaybackSpeedOverride()F
-                    move-result v0
-                    
-                    # Check if the playback speed is not auto (-2.0f)
-                    const/4 v1, 0x0
-                    cmpg-float v1, v0, v1
-                    if-lez v1, :do_not_override
+            fingerprint.method.apply {
+                // Infer everything necessary for calling the method setPlaybackSpeed().
+                val onItemClickListenerClassFieldReference = getInstruction<ReferenceInstruction>(0).reference
+
+                // Registers are not used at index 0, so they can be freely used.
+                addInstructionsWithLabels(
+                    targetInstructionIndex,
+                    """
+                        invoke-static { }, $EXTENSION_CLASS->getPlaybackSpeedOverride()F
+                        move-result v0
+                        
+                        # Check if the playback speed is not auto (-2.0f)
+                        const/4 v1, 0x0
+                        cmpg-float v1, v0, v1
+                        if-lez v1, :do_not_override
+        
+                        # Get the instance of the class which has the container class field below.
+                        iget-object v1, p0, $onItemClickListenerClassFieldReference
     
-                    # Get the instance of the class which has the container class field below.
-                    iget-object v1, p0, $onItemClickListenerClassFieldReference
-
-                    # Get the container class field.
-                    iget-object v1, v1, ${setPlaybackSpeedContainerClassFieldReferenceRef.get()}
-                    
-                    # Required cast for 20.49+
-                    check-cast v1, ${setPlaybackSpeedContainerClassFieldReferenceClassTypeRef.get()}
-                    
-                    # Get the field from its class.
-                    iget-object v2, v1, ${setPlaybackSpeedClassFieldReferenceRef.get()}
-                    
-                    # Invoke setPlaybackSpeed on that class.
-                    invoke-virtual {v2, v0}, ${setPlaybackSpeedMethodReferenceRef.get()}
-                """,
-                ExternalLabel("do_not_override", getInstruction(0)),
-            )
+                        # Get the container class field.
+                        iget-object v1, v1, ${setPlaybackSpeedContainerClassFieldReferenceRef.get()}
+                        
+                        # Required cast for 20.49+
+                        check-cast v1, ${setPlaybackSpeedContainerClassFieldReferenceClassTypeRef.get()}
+                        
+                        # Get the field from its class.
+                        iget-object v2, v1, ${setPlaybackSpeedClassFieldReferenceRef.get()}
+                        
+                        # Invoke setPlaybackSpeed on that class.
+                        invoke-virtual {v2, v0}, ${setPlaybackSpeedMethodReferenceRef.get()}
+                    """,
+                    ExternalLabel("do_not_override", getInstruction(targetInstructionIndex)),
+                )
+            }
         }
     }
 }
