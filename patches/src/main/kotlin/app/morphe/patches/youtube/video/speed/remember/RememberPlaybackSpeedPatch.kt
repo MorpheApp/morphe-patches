@@ -94,7 +94,9 @@ internal val rememberPlaybackSpeedPatch = bytecodePatch {
 
             fingerprint.method.apply {
                 // Infer everything necessary for calling the method setPlaybackSpeed().
-                val onItemClickListenerClassFieldReference = getInstruction<ReferenceInstruction>(0).reference
+                val onItemClickListenerClassFieldReference = getInstruction<ReferenceInstruction>(
+                    targetInstructionIndex
+                ).reference
 
                 // Registers are not used at index 0, so they can be freely used.
                 addInstructionsWithLabels(

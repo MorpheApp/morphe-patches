@@ -15,7 +15,9 @@ import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.PatchException
@@ -220,60 +222,45 @@ val videoInformationPatch = bytecodePatch(
                 .instructionMatches.first().getMethodCalled()
         )
 
-        val setPlaybackSpeedMethodReference: MethodReference
-        val initializePlaybackSpeedValuesMethod = InitializePlaybackSpeedValuesFingerprint.method
-
-        Fingerprint(
-            filters = listOf(
-                opcode(opcode = Opcode.IGET_OBJECT),
-                methodCall(
-                    opcode = Opcode.INVOKE_VIRTUAL,
-                    returnType = "F",
-                    location = MatchAfterImmediately()
-                ),
-                opcode(opcode = Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
-                methodCall(
-                    opcode = Opcode.INVOKE_STATIC,
-                    smali = "Ljava/util/Locale;->getDefault()Ljava/util/Locale;",
-                    location = MatchAfterImmediately()
-                ),
-                opcode(opcode = Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
-                methodCall(
-                    opcode = Opcode.INVOKE_STATIC,
-                    smali = "Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;",
-                    location = MatchAfterImmediately()
-                ),
-            ),
-            custom = { method, _ ->
-                method == initializePlaybackSpeedValuesMethod
-            }
-        ).let { fingerprint ->
-            val iGetObjectReference = fingerprint.method.getInstruction<ReferenceInstruction>(
-                fingerprint.instructionMatches.first().index
-            ).reference
-            val invokeVirtualReference = fingerprint.method.getInstruction<ReferenceInstruction>(
-                fingerprint.instructionMatches[1].index
-            ).reference
-
-            fingerprint.method.let { method ->
-                speedSelectionInsertMethodRef = WeakReference(method)
-                speedSelectionInsertIndex = 3
-                speedSelectionValueRegister = 0
-
-                method.addInstructions(
-                    0,
-                    """
-                        iget-object v0, p0, $iGetObjectReference
-                        invoke-virtual {v0}, $invokeVirtualReference
-                        move-result v0
-                    """
+        InitializePlaybackSpeedValuesFingerprint.method.apply {
+            val speedFloatFieldAccess = Fingerprint(
+                parameters = listOf("[L", "F"),
+                filters = listOf(
+                    fieldAccess(opcode = Opcode.IGET, type = "F"),
+                    methodCall(
+                        opcode = Opcode.INVOKE_STATIC,
+                        smali = "Ljava/lang/Float;->compare(FF)I",
+                        location = MatchAfterImmediately()
+                    )
                 )
+            ).run {
+                method.getInstruction<ReferenceInstruction>(
+                    instructionMatches.first().index
+                ).reference
             }
+
+            addInstructionsWithLabels(
+                0,
+                """
+                    const v0, 0x3f800000
+                    const/4 v1, -0x1
+                    if-eq p2, v1, :float_null_check
+                    aget-object v1, p1, p2
+                    iget v0, v1, $speedFloatFieldAccess
+                    :float_null_check
+                    nop
+                """
+            )
+
+            speedSelectionInsertMethodRef = WeakReference(this)
+            speedSelectionInsertIndex = 6
+            speedSelectionValueRegister = 0
         }
 
         /*
          * Hook the user playback speed selection.
          */
+        val setPlaybackSpeedMethodReference: MethodReference
         PlaybackSpeedOnItemClickFingerprint.method.apply {
             val speedSelectionValueInstructionIndex = indexOfFirstInstructionOrThrow(Opcode.IGET)
 
@@ -745,7 +732,7 @@ fun videoSpeedChangedHook(targetMethodClass: String, targetMethodName: String) =
  * Hook the video speed selected by the user.
  */
 fun userSelectedPlaybackSpeedHook(targetMethodClass: String, targetMethodName: String) {
-    speedSelectionInsertMethodRef.get()!!.addInstruction(
+    speedSelectionInsertMethodRef.get()!!.addInstructionsAtControlFlowLabel(
         speedSelectionInsertIndex++,
         "invoke-static { v$speedSelectionValueRegister }, $targetMethodClass->$targetMethodName(F)V"
     )
