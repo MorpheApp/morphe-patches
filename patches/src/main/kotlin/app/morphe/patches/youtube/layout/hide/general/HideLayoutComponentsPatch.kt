@@ -213,6 +213,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                         preferences = setOf(
                             NonInteractivePreference(
                                 key = "morphe_hide_keyword_content_about",
+                                titleKey = "morphe_hide_keyword_content_screen_title",
                                 tag = "app.morphe.extension.shared.settings.preference.BulletPointPreference"
                             ),
                             NonInteractivePreference(
