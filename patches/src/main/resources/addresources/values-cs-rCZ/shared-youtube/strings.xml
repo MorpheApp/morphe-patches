@@ -160,4 +160,12 @@ Přehrávání se nezdaří, pokud je hash JavaScriptu přehrávače zastaralý.
 To může pomoci identifikovat komponenty při vytváření vlastních filtrů.
 
 Povolením této možnosti se však budou zaznamenávat i některá uživatelská data, jako je vaše IP adresa."</string>
+  <!-- Custom filter -->
+  <string name="morphe_custom_filter_screen_title">Vlastní filtr</string>
+  <string name="morphe_custom_filter_screen_summary">Konfigurujte vlastní filtry pro skrytí libovolné komponenty</string>
+  <string name="morphe_custom_filter_title">Povolit vlastní filtr</string>
+  <string name="morphe_custom_filter_strings_title">Vlastní filtr</string>
+  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+  <string name="morphe_custom_filter_strings_summary">Seznam řetězců builderu cest komponent oddělených novými řádky</string>
+  <string name="morphe_custom_filter_toast_invalid_syntax">Neplatný vlastní filtr: %s</string>
 </resources>

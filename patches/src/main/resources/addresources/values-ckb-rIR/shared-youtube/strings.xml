@@ -110,4 +110,7 @@ Da te'îl bikin, li ser berdewam bikin xwarê"</string>
 ئەمەش دەتوانێت یارمەت بدات لە دروست کردنی فیلترە سەر بەڕێوەکان. 
 
 بەڵام، چالاک کردنەوە ئەمەش ڕەنگە هەندێك لە زانیارییەکانی کاربەر تۆمار بکات وەک: ناوی IP-ت."</string>
+  <!-- Custom filter -->
+  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+  <string name="morphe_custom_filter_strings_summary">List of component path builder strings to filter, separated by new lines</string>
 </resources>

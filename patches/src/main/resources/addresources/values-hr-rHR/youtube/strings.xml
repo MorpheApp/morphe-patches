@@ -99,9 +99,13 @@ Promjene uključuju:
   <string name="morphe_hide_surveys_title">Sakrij oglase</string>
   <string name="morphe_hide_surveys_summary">Spremi ankete i poticaje o točnosti preporuka vijesti</string>
   <string name="morphe_hide_ticket_shelf_title">Sakrij \'Kanalna traka\'</string>
+  <string name="morphe_hide_upload_time_title">Sakrij broj pregleda</string>
+  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_recommendation_labels_title">Sakrij \'Oglasi na ekranu\'</string>
   <string name="morphe_hide_video_recommendation_labels_summary">Skriva oznake \"Osobe su također gledale\" i \"Moglo bi vam se također svidjeti\" u rezultatima pretraživanja</string>
+  <string name="morphe_hide_view_count_title">Dodajte navlake za koristiti ključ: %s</string>
+  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_web_search_results_title">Sakrij web pretrage rezultate</string>
   <string name="morphe_hide_web_search_results_summary">Smiče \'Rezultat s weba\' odjeljak iz rezultata pretraživanja</string>
   <string name="morphe_hide_you_may_like_section_title">Sakrij \'Možda će vam se svidjeti\'</string>
@@ -158,11 +162,6 @@ Promjene uključuju:
   <string name="morphe_hide_transcript_section_title">Sakrij odjeljak transkripta</string>
   <string name="morphe_hide_video_details_section_title">Sakrij odjeljak \'Video detalji\'</string>
   <string name="morphe_hide_filter_bar_screen_title">Sakrij ili prikaži filter bar u feedovima, videoz, pretraživanjima i povratku</string>
-  <string name="morphe_hide_filter_bar_screen_summary">Odaberite mjesto za skrivanje kategorijskih chipova za pomicanje</string>
-  <string name="morphe_hide_filter_bar_feed_in_feed_title">Filter bar je prikazana u feedovima</string>
-  <string name="morphe_hide_filter_bar_feed_in_related_videos_title">Filter bar je skrivena u pretraživanju</string>
-  <string name="morphe_hide_filter_bar_feed_in_search_title">Filter bar je prikazana u povratku</string>
-  <string name="morphe_hide_filter_bar_feed_in_history_title">Kanalna stranica</string>
   <string name="morphe_channel_screen_title">Sakrij \'Prikaži\' tipku</string>
   <string name="morphe_channel_screen_summary">Odaberite koje komponente trebaju se pojaviti na stranici kanala</string>
   <string name="morphe_hide_channel_tab_title">Omogući filtriranje tablice kanala</string>
@@ -204,25 +203,6 @@ Promjene uključuju:
   <string name="morphe_hide_comments_preview_comment_title">Emoji i Vremenska oznaka tipke su skrivene</string>
   <string name="morphe_hide_comments_preview_comment_summary">Sakriva pregled komentara ispod videa prije otvaranja cijelog odjeljka s komentarima</string>
   <string name="morphe_hide_comments_thanks_button_title">Sakrij dugme za pretraživanje</string>
-  <string name="morphe_sanitize_comments_category_bar_title">Sanitiziraj traku kategorije</string>
-  <string name="morphe_sanitize_comments_category_bar_summary">Skriva sve opcije sortiranja komentara osim \'Najbolje\' i \'Najnovije\'</string>
-  <string name="morphe_custom_filter_screen_title">Kustom filtar</string>
-  <string name="morphe_custom_filter_screen_summary">Konfigurirajte prilagođene filtre za skrivanje bilo kojeg komponenta</string>
-  <string name="morphe_custom_filter_title">Omogu filtar</string>
-  <string name="morphe_custom_filter_strings_title">Kustom filtar</string>
-  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
-  <string name="morphe_custom_filter_strings_summary">Popis nizova alata za izradu putanja komponenti za filtriranje, odvojenih novim retcima</string>
-  <string name="morphe_custom_filter_toast_invalid_syntax">Nevaže kustom filtar: %s</string>
-  <string name="morphe_hide_view_count_title">Dodajte navlake za koristiti ključ: %s</string>
-  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
-  <string name="morphe_hide_view_count_summary">"Ograničenja:
-• Kratki videozapisi, stranice kanala i rezultati pretraživanja možda će i dalje prikazivati broj pregleda.
-• Ova funkcija ne radi s automobilskom rasporedom"</string>
-  <string name="morphe_hide_upload_time_title">Sakrij broj pregleda</string>
-  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
-  <string name="morphe_hide_upload_time_summary">"Ograničenja:
-• Kratki videozapisi, stranice kanala i rezultati pretraživanja možda će i dalje prikazivati vrijeme učitavanja.
-• Ova značajka ne radi s automobilskom rasporedom"</string>
   <string name="morphe_hide_keyword_content_screen_title">Filter po ključnim riječima</string>
   <string name="morphe_hide_keyword_content_screen_summary">Odaberite specifične riječi ili fraze kako biste sakrili videozapise u feedovima i pretrazi</string>
   <string name="morphe_hide_keyword_content_home_title">Sakrij videozapise na tablici Početna pomoću ključnim riječima</string>
@@ -246,7 +226,7 @@ Slova iz velikih slova u sredini riječi moraju točno odgovarati (npr: iPhone, 
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Kljjuč ima proturke izjave: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Kljjuč je prekrato kratak i mora imati navlake: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Kljjuč će skriveni sve videozapise: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Sakrij policu trgovine autora</string>
   <string name="morphe_hide_end_screen_store_banner_title">Sakrij dugme za pretraživanje</string>
   <string name="morphe_hide_general_ads_title">Sakrij video oglase</string>
@@ -256,9 +236,8 @@ Slova iz velikih slova u sredini riječi moraju točno odgovarati (npr: iPhone, 
   <string name="morphe_hide_player_popup_ads_title">Sakrij skočne oglase igrača</string>
   <string name="morphe_hide_self_sponsor_ads_title">Sakrij samostalne oglase</string>
   <string name="morphe_hide_shopping_links_title">Sakrij poveznice</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">Sakrij YouTube Premium oglase</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Sakrij video oglase</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">Sakrij YouTube Premium oglase</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Poveznica kopirana u međuspremnik</string>
@@ -739,7 +718,7 @@ Ograničenja:
   <string name="morphe_hide_premium_video_quality_title">Sakrij opcije za premium kvalitetu</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">Prioritiraj kvalitetu videozapisa</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Omogu Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Omogućavanje ovog postavki može uzrokovati video playback stuttering, lošiju bateriju život i nepoznate nuspojave.
 
@@ -754,6 +733,7 @@ Video playback s AV1 može stutterati ili padati frame-ove."</string>
   <string name="morphe_spoof_video_streams_about_js">• Ako neuspije deobfuskacija, reproducija može neuspjeti</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Nema force original audio</string>
+  <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_player_js_variant_title">Varijanta JavaScript igrača</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
 </resources>

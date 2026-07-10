@@ -97,9 +97,19 @@ Veranderings sluit in:
   <string name="morphe_hide_surveys_title">Verberg noodbokse</string>
   <string name="morphe_hide_surveys_summary">Verberg opnames en aansporings oor voer-aanbevelings akkuraatheid</string>
   <string name="morphe_hide_ticket_shelf_title">Verberg mediese panele</string>
+  <string name="morphe_hide_upload_time_title">Verberg opylaaibody</string>
+  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
+  <string name="morphe_hide_upload_time_summary">"Beperkings:
+• Kort video-plankies, kanaalblaaie en soekresultate kan steeds oplaadtye wys
+• Werk nie met motorvoertuig-uitleg nie."</string>
   <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_recommendation_labels_title">Versteek video aanbevelingsetikette</string>
   <string name="morphe_hide_video_recommendation_labels_summary">Verberg \'People also watched\' en \'You might also like\' etikette in soekresultate</string>
+  <string name="morphe_hide_view_count_title">Verberg bekykingsaantal</string>
+  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
+  <string name="morphe_hide_view_count_summary">"Beperkings:
+• Kort video-plankies, kanaalblaaie en soekresultate kan steeds vertoon telling wys
+• Werk nie met motorvoertuig-uitleg nie."</string>
   <string name="morphe_hide_web_search_results_title">Verberg websoek resultate</string>
   <string name="morphe_hide_web_search_results_summary">Verberg die \'Resultaat van die web\' gedeelte van soekresultate</string>
   <string name="morphe_hide_you_may_like_section_title">Versteek \'Jy sal dalk soek\' afdeling</string>
@@ -158,11 +168,12 @@ Veranderings sluit in:
   <string name="morphe_hide_transcript_section_title">Verberg Transcript afdeling</string>
   <string name="morphe_hide_video_details_section_title">Verberg \'Video details\' afdeling</string>
   <string name="morphe_hide_filter_bar_screen_title">Filterbalk</string>
-  <string name="morphe_hide_filter_bar_screen_summary">Kies waar om die rol kategorie chips te verberg</string>
-  <string name="morphe_hide_filter_bar_feed_in_feed_title">Verberg in feeds</string>
-  <string name="morphe_hide_filter_bar_feed_in_related_videos_title">Verberg in verwante video\'s</string>
-  <string name="morphe_hide_filter_bar_feed_in_search_title">Verberg in soekresultate</string>
-  <string name="morphe_hide_filter_bar_feed_in_history_title">Verberg in kykgeskiedenis</string>
+  <string name="morphe_hide_filter_bar_screen_summary">Kies waar om die rolbalkfilterbalk te verberg</string>
+  <string name="morphe_hide_filter_bar_in_comments_title">Verberg in kommentaar</string>
+  <string name="morphe_hide_filter_bar_in_feed_title">Versteek in feeds</string>
+  <string name="morphe_hide_filter_bar_in_related_videos_title">Versteek in verwante video\'s</string>
+  <string name="morphe_hide_filter_bar_in_search_title">Versteek in soekresultate</string>
+  <string name="morphe_hide_filter_bar_in_history_title">Versteek in kykgeskiedenis</string>
   <string name="morphe_channel_screen_title">Kanaalblad</string>
   <string name="morphe_channel_screen_summary">Kies watter komponente op kanaalbladsy verskyn</string>
   <string name="morphe_hide_channel_tab_title">Aktiveer kanaaltab filter</string>
@@ -199,30 +210,15 @@ Veranderings sluit in:
   <string name="morphe_hide_comments_community_guidelines_title">Verberg gemeenskap riglyne</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Verberg \'Maak \'n Short\'-knoppie</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Verberg Emoji en Tydstempel knoppies</string>
+  <string name="morphe_hide_comments_filter_bar_options_title">Versteek filterbalk-opsies</string>
+  <string name="morphe_hide_comments_filter_bar_options_summary">Versteek alle filterbalk-opsies behalwe \'Beste\' en \'Nuutste\'</string>
   <string name="morphe_hide_comments_info_button_title">Verberg Info-knoppie</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Verberg lewendige geselsdonateursbalk</string>
   <string name="morphe_hide_comments_preview_comment_title">Verberg voorskou kommentaar</string>
   <string name="morphe_hide_comments_preview_comment_summary">Verberg die kommentaar voorbeskouing onder video voordat die volledige kommentaar afdeling oopmaak</string>
   <string name="morphe_hide_comments_thanks_button_title">Verberg Dankie knoppie</string>
-  <string name="morphe_sanitize_comments_category_bar_title">Saniteer kommentaar kategorie balk</string>
-  <string name="morphe_sanitize_comments_category_bar_summary">Verberg alle kommentaar sortering opsies behalwe \'Top\' en \'Newest\'</string>
-  <string name="morphe_custom_filter_screen_title">Pasgemaakte filter</string>
-  <string name="morphe_custom_filter_screen_summary">Konfigureer pasgemaakte filters om enige komponent te verberg</string>
-  <string name="morphe_custom_filter_title">Aktiveer pasgemaakte filter</string>
-  <string name="morphe_custom_filter_strings_title">Pasgemaakte filter</string>
-  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
-  <string name="morphe_custom_filter_strings_summary">Lys van komponent pad bouer strings om te filter, geskei deur nuwe reëls</string>
-  <string name="morphe_custom_filter_toast_invalid_syntax">Ongeldige pasgemaakte filter: %s</string>
-  <string name="morphe_hide_view_count_title">Verberg bekykingsaantal</string>
-  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
-  <string name="morphe_hide_view_count_summary">"Beperkings:
-• Kort video-planke, kanaalblaaie en soekresultate kan steeds besigtellings wys
-• Hierdie funksie werk nie met motorvoertuig uitleg nie."</string>
-  <string name="morphe_hide_upload_time_title">Verberg opylaaibody</string>
-  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
-  <string name="morphe_hide_upload_time_summary">"Beperkings:
-• Kort strokies, kanaalblaaie en soekresultate kan steeds oplystye wys
-• Hierdie funksie werk nie met motorlegkaart nie"</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_title">Saniteer uitgeligte soekskakels</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_summary">Saniteer uitgeligte soekskakels en laat slegs die oorspronklike platte teks oor</string>
   <string name="morphe_hide_keyword_content_screen_title">Sleutelwoord filter</string>
   <string name="morphe_hide_keyword_content_screen_summary">Kies spesifieke woorde of frases om video\'s in feeds en soek te verberg</string>
   <string name="morphe_hide_keyword_content_home_title">Verberg Tuisfideo\'s met sleutelwoorde</string>
@@ -253,7 +249,7 @@ Beperkings:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Sleutelwoord het botsende definisies: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Sleutelwoord is te kort en vereis aanhalingstekens: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Sleutelwoord sal alle video\'s verberg: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Verberg skepper se winkelrak</string>
   <string name="morphe_hide_end_screen_store_banner_title">Verberg eindskermwinkelbanier</string>
   <string name="morphe_hide_general_ads_title">Verberg algemene advertensies</string>
@@ -263,9 +259,8 @@ Beperkings:
   <string name="morphe_hide_player_popup_ads_title">Versteek speler pop-up advertensies</string>
   <string name="morphe_hide_self_sponsor_ads_title">Verberg selfgesponsorde kaarte</string>
   <string name="morphe_hide_shopping_links_title">Verberg winkel skakels</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">Verberg YouTube Premium-promosies</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Verberg video advertensies</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">Verberg YouTube Premium-promosies</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Skakel na knipbord gekopieer</string>
@@ -856,7 +851,7 @@ Motor-uitleg
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Herstel die ou speleruitleg
 
-Beperkings: Indien \"Herstel ou video-aktiwiteitsbalk\" afgeskakel is, is moontlik nie die \"Meer video's\"-laag beskikbaar nie."</string>
+Beperking: Indien 'Herstel ou video-aksiebalk' afgeskakel is, mag die 'Meer video's' oorvleueling nie beskikbaar wees nie"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Spoof app weergawe</string>
   <string name="morphe_spoof_app_version_summary">Wenke die bediener om te dink dat jy \'n ouer weergawe van die app gebruik om erfgoed UI-funksies te herstel</string>
@@ -1097,7 +1092,7 @@ Beperkings:
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">Prioriteer videokwaliteit</string>
   <string name="morphe_prioritize_video_quality_summary">Prioriteer die hoogste beskikbare videokwaliteit oor kodeerdoeltreffendheid</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Sta Android VR AV1 toe</string>
   <string name="morphe_spoof_video_streams_av1_summary">Laat sagteware AV1-ontkodering toe wanneer die Android VR-kliënt gebruik word</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Deur hierdie instelling te aktiveer kan sagteware AV1-ontkoder gebruik word.
@@ -1113,11 +1108,13 @@ Videoweergawe met AV1 kan hakkel of rame laat val."</string>
   <string name="morphe_spoof_video_streams_about_js">• Indien ontmeng misluk, kan speel misluk</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Forceer oorspronklike klank is nie beskikbaar nie</string>
+  <!-- Quality refers to video quality -->
+  <string name="morphe_spoof_video_streams_about_720p_max">• Kwaliteit kan beperk wees tot 720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Speler JavaScript variant</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Wys vervalsing in Statistiek vir nerds</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Herstel ou video-aksiebalk</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Regstel dat nie-likes nie vertoon word nie en video-aksieknoppies nie versteek kan word nie
+  <string name="morphe_restore_old_video_action_bar_summary">"Los probleme op waar nie-houters nie gewys word en video-aksieknoppies nie versteek kan word nie
 
-Beperkings: Keer terug na die ou styl 'Meer video's'-laag"</string>
+Beperking: Terugkeer na ou styl 'Meer video's' oorvleuming"</string>
 </resources>

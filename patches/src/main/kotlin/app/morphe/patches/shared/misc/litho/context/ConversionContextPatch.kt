@@ -2,7 +2,7 @@
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
  *
- * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 @file:Suppress("SpellCheckingInspection")
@@ -59,7 +59,7 @@ internal fun createConversionContextPatch(
 
             Pair(
                 method.findFieldFromToString(IDENTIFIER_PROPERTY),
-                conversionContextClassDef.fields.single { field -> field.type == STRING_BUILDER_TYPE }
+                conversionContextClassDef.fields.single { field -> field.type == "Ljava/lang/StringBuilder;" }
             )
         }
 
@@ -72,12 +72,12 @@ internal fun createConversionContextPatch(
                 arrayOf(
                     Triple(
                         "patch_getIdentifier",
-                        STRING_TYPE,
+                        "Ljava/lang/String;",
                         identifierField
                     ),
                     Triple(
                         "patch_getPathBuilder",
-                        STRING_BUILDER_TYPE,
+                        "Ljava/lang/StringBuilder;",
                         stringBuilderField
                     )
                 ).forEach { (interfaceMethodName, interfaceMethodReturnType, classFieldReference) ->
@@ -111,7 +111,7 @@ internal fun createConversionContextPatch(
             val conversionContextIdentifierFingerprint = Fingerprint(
                 definingClass = conversionContextClassDef.type,
                 parameters = listOf(),
-                returnType = STRING_TYPE,
+                returnType = "Ljava/lang/String;",
                 filters = listOf(
                     fieldAccess(
                         opcode = Opcode.IGET_OBJECT,
@@ -126,7 +126,7 @@ internal fun createConversionContextPatch(
             val conversionContextStringBuilderFingerprint = Fingerprint(
                 definingClass = conversionContextClassDef.type,
                 parameters = listOf(),
-                returnType = STRING_BUILDER_TYPE,
+                returnType = "Ljava/lang/StringBuilder;",
                 filters = listOf(
                     fieldAccess(
                         opcode = Opcode.IGET_OBJECT,
@@ -151,12 +151,12 @@ internal fun createConversionContextPatch(
                 arrayOf(
                     Triple(
                         "patch_getIdentifier",
-                        STRING_TYPE,
+                        "Ljava/lang/String;",
                         identifierMethodName
                     ),
                     Triple(
                         "patch_getPathBuilder",
-                        STRING_BUILDER_TYPE,
+                        "Ljava/lang/StringBuilder;",
                         stringBuilderMethodName
                     )
                 ).forEach { (interfaceMethodName, interfaceMethodReturnType, classMethodName) ->

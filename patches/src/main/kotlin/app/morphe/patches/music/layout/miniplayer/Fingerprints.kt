@@ -31,6 +31,20 @@ internal object MiniPlayerConstructorFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Matches the TabLayout method that assigns the navigation bar background color.
+ */
+internal object NavigationBarTabLayoutFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        string("FEmusic_radio_builder"),
+        resourceLiteral(ResourceType.COLOR, "ytm_color_grey_12"),
+        methodCall(name = "setBackgroundColor")
+    )
+)
+
 internal object SwitchToggleColorFingerprint : Fingerprint(
     classFingerprint = MiniPlayerConstructorFingerprint,
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
@@ -205,3 +219,26 @@ internal object WatchWhileLayoutFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Matches the watch-while dismiss callback (swipe-dismiss or "Dismiss queue"),
+ * identified by an IGET_OBJECT of the MusicActivity peer's AtomicBoolean and
+ * a following `AtomicBoolean.set(Z)`. Caller must supply the peer class via
+ * [MusicActivityWidgetFingerprint].
+ */
+internal fun watchWhileDismissedFingerprint(musicActivityPeerClass: String) = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf(),
+    returnType = "V",
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = musicActivityPeerClass,
+            type = "Ljava/util/concurrent/atomic/AtomicBoolean;"
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Ljava/util/concurrent/atomic/AtomicBoolean;->set(Z)V",
+            location = MatchAfterWithin(3)
+        )
+    )
+)

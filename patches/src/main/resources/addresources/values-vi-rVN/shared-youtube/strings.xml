@@ -160,4 +160,12 @@ Bạn sẽ không còn xem được video nếu mã băm hết hạn."</string>
 Điều này có thể giúp xác định các thành phần khi tạo bộ lọc tùy chỉnh.
 
 Tuy nhiên, bật tính năng này cũng sẽ ghi lại một số dữ liệu người dùng, chẳng hạn như địa chỉ IP của bạn."</string>
+  <!-- Custom filter -->
+  <string name="morphe_custom_filter_screen_title">Bộ lọc tùy chỉnh</string>
+  <string name="morphe_custom_filter_screen_summary">Cấu hình bộ lọc tùy chỉnh để ẩn bất kỳ thành phần nào</string>
+  <string name="morphe_custom_filter_title">Bật bộ lọc tùy chỉnh</string>
+  <string name="morphe_custom_filter_strings_title">Bộ lọc tùy chỉnh</string>
+  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+  <string name="morphe_custom_filter_strings_summary">Danh sách các chuỗi tạo đường dẫn thành phần cần lọc, mỗi dòng một chuỗi</string>
+  <string name="morphe_custom_filter_toast_invalid_syntax">Bộ lọc tuỳ chỉnh không hợp lệ: %s</string>
 </resources>

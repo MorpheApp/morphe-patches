@@ -7,12 +7,12 @@ import android.view.View;
 import app.morphe.extension.music.settings.Settings;
 
 @SuppressWarnings("unused")
-public class HideCategoryBarPatch {
+public class HideFilterBarPatch {
 
     /**
      * Injection point
      */
-    public static void hideCategoryBar(View view) {
-        hideViewBy0dpUnderCondition(Settings.HIDE_CATEGORY_BAR, view);
+    public static void hideFilterBar(View view) {
+        hideViewBy0dpUnderCondition(Settings.HIDE_FILTER_BAR, view);
     }
 }

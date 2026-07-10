@@ -97,9 +97,19 @@ A változások a következőket tartalmazzák:
   <string name="morphe_hide_surveys_title">Felmérések elrejtése</string>
   <string name="morphe_hide_surveys_summary">Értékelési felmérések és javaslatok elrejtése a hírcsatorna pontosságával kapcsolatban</string>
   <string name="morphe_hide_ticket_shelf_title">Jegyértékesítési polc elrejtése</string>
+  <string name="morphe_hide_upload_time_title">Feltöltési idő elrejtése</string>
+  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
+  <string name="morphe_hide_upload_time_summary">"Korlátozások:
+• A Shorts-polcok, a csatornaoldalak és a keresési találatok továbbra is megjeleníthetik a feltöltési időket.
+• Ez a funkció nem működik az autós elrendezéssel."</string>
   <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_recommendation_labels_title">Videóajánlások címkéinek elrejtése</string>
   <string name="morphe_hide_video_recommendation_labels_summary">Keresési ajánlások címkéinek elrejtése</string>
+  <string name="morphe_hide_view_count_title">Megtekintések számának elrejtése</string>
+  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
+  <string name="morphe_hide_view_count_summary">"Korlátozások:
+• A Shorts-polcok, a csatornaoldalak és a keresési találatok továbbra is megjeleníthetik a megtekintések számát.
+• Ez a funkció nem működik az autós elrendezéssel."</string>
   <string name="morphe_hide_web_search_results_title">Internetes találatok elrejtése</string>
   <string name="morphe_hide_web_search_results_summary">„A webes találatok” szakasz elrejtése a keresési eredményekből</string>
   <string name="morphe_hide_you_may_like_section_title">Ajánlott tartalom szakasz elrejtése</string>
@@ -158,11 +168,12 @@ A változások a következőket tartalmazzák:
   <string name="morphe_hide_transcript_section_title">Átirat szekció elrejtése</string>
   <string name="morphe_hide_video_details_section_title">Videó részletei szekció elrejtése</string>
   <string name="morphe_hide_filter_bar_screen_title">Szűrősáv</string>
-  <string name="morphe_hide_filter_bar_screen_summary">Válaszd ki, hol szeretnéd elrejteni a görgethető kategóriagombokat</string>
-  <string name="morphe_hide_filter_bar_feed_in_feed_title">Elrejtés a feedekben</string>
-  <string name="morphe_hide_filter_bar_feed_in_related_videos_title">Elrejtés a kapcsolódó videókban</string>
-  <string name="morphe_hide_filter_bar_feed_in_search_title">Elrejtés a keresési találatokban</string>
-  <string name="morphe_hide_filter_bar_feed_in_history_title">Elrejtés a megtekintési előzményekben</string>
+  <string name="morphe_hide_filter_bar_screen_summary">Válaszd ki, hol szeretnéd elrejteni a görgethető szűrősávot</string>
+  <string name="morphe_hide_filter_bar_in_comments_title">Elrejtés a hozzászólásokban</string>
+  <string name="morphe_hide_filter_bar_in_feed_title">Elrejtés a feedekben</string>
+  <string name="morphe_hide_filter_bar_in_related_videos_title">Elrejtés a kapcsolódó videókban</string>
+  <string name="morphe_hide_filter_bar_in_search_title">Elrejtés a keresési találatokban</string>
+  <string name="morphe_hide_filter_bar_in_history_title">Elrejtés a megtekintési előzményekben</string>
   <string name="morphe_channel_screen_title">Csatornaoldal</string>
   <string name="morphe_channel_screen_summary">Válaszd ki, mely elemek jelenjenek meg a csatornaoldalon</string>
   <string name="morphe_hide_channel_tab_title">Csatornafülek szűrésének engedélyezése</string>
@@ -199,30 +210,15 @@ A változások a következőket tartalmazzák:
   <string name="morphe_hide_comments_community_guidelines_title">Közösségi irányelvek elrejtése</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Shorts létrehozása gomb elrejtése</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Hangulatjel- és időbélyegző-gombok elrejtése</string>
+  <string name="morphe_hide_comments_filter_bar_options_title">Szűrőpanel-opciók elrejtése</string>
+  <string name="morphe_hide_comments_filter_bar_options_summary">A „Legnépszerűbb” és „Legújabb előre” opciókon kívüli összes rendezési mód elrejtése</string>
   <string name="morphe_hide_comments_info_button_title">Információ gomb elrejtése</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Élő csevegés támogatói sávjának elrejtése</string>
   <string name="morphe_hide_comments_preview_comment_title">Megjegyzés előnézet elrejtése</string>
   <string name="morphe_hide_comments_preview_comment_summary">Megjegyzések előnézetének elrejtése a teljes megjegyzések szekció megnyitása előtt</string>
   <string name="morphe_hide_comments_thanks_button_title">Köszönet gomb elrejtése</string>
-  <string name="morphe_sanitize_comments_category_bar_title">Kategóriasáv tisztítása</string>
-  <string name="morphe_sanitize_comments_category_bar_summary">A „Legnépszerűbb” és „Legújabb előre” opciókon kívüli összes rendezési mód elrejtése</string>
-  <string name="morphe_custom_filter_screen_title">Egyedi szűrő</string>
-  <string name="morphe_custom_filter_screen_summary">Saját szűrők konfigurálása komponensek elrejtéséhez</string>
-  <string name="morphe_custom_filter_title">Egyéni szűrő engedélyezése</string>
-  <string name="morphe_custom_filter_strings_title">Egyedi szűrő</string>
-  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
-  <string name="morphe_custom_filter_strings_summary">Szűrendő elemek útvonal-karakterláncainak listája, új sorokkal elválasztva</string>
-  <string name="morphe_custom_filter_toast_invalid_syntax">Érvénytelen egyedi szűrő: %s</string>
-  <string name="morphe_hide_view_count_title">Megtekintések számának elrejtése</string>
-  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
-  <string name="morphe_hide_view_count_summary">"Korlátozások:
-• A Shorts-polcok, csatornaoldalak és a keresési találatok továbbra is megjeleníthetik a megtekintések számát.
-• Ez a funkció nem működik autós elrendezéssel."</string>
-  <string name="morphe_hide_upload_time_title">Feltöltési idő elrejtése</string>
-  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
-  <string name="morphe_hide_upload_time_summary">"Korlátozások:
-• A Shorts-videók, csatornaoldalak és keresési találatok továbbra is megjeleníthetik a feltöltési időpontot.
-• Ez a funkció nem működik autóipari elrendezéssel."</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_title">A kiemelt keresési hivatkozások higiénikusabbá tétele</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_summary">A kiemelt keresési hivatkozások higiénikusabbá tétele, csak az eredeti szöveget hagyva</string>
   <string name="morphe_hide_keyword_content_screen_title">Kulcsszószűrő</string>
   <string name="morphe_hide_keyword_content_screen_summary">Videók elrejtése a hírfolyamokban és a keresésben megadott szavak vagy kifejezések alapján</string>
   <string name="morphe_hide_keyword_content_home_title">Főoldali videók elrejtése kulcsszavak alapján</string>
@@ -253,7 +249,7 @@ Korlátozások:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Ez a kulcsszó ütközik egy másik beállítással: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">A kulcsszó túl rövid, használatához tedd idézőjelbe: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Ez a kulcsszó minden videót el fog rejteni: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Alkotói termékpolc elrejtése</string>
   <string name="morphe_hide_end_screen_store_banner_title">A befejező képernyőn lévő üzletbanner elrejtése</string>
   <string name="morphe_hide_general_ads_title">Általános hirdetések elrejtése</string>
@@ -263,9 +259,8 @@ Korlátozások:
   <string name="morphe_hide_player_popup_ads_title">Elrejtés a lejátszó előugró reklámok</string>
   <string name="morphe_hide_self_sponsor_ads_title">Önpromóciós kártyák elrejtése</string>
   <string name="morphe_hide_shopping_links_title">Vásárlási hivatkozások elrejtése</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium promóciók elrejtése</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Videóhirdetések elrejtése</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium promóciók elrejtése</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link másolva a vágólapra</string>
@@ -855,9 +850,9 @@ Autós elrendezés
 • A régi videósáv nem összecsukott formában jelenik meg"</string>
   <string name="morphe_tablet_layout_in_player_title">Tablet elrendezés engedélyezése a lejátszóban</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Visszaállítja a régi lejátszó elrendezést
+  <string name="morphe_tablet_layout_in_player_summary">"A régi lejátszó elrendezés visszaállítása
 
-Korlátozások: Ha a \"Régi videósáv helyreállítása\" ki van kapcsolva, a \"További videók\" felülbélyegzés nem jelenhet meg."</string>
+Korlátozás: Ha a „Régi videós eszköztár visszaállítása” ki van kapcsolva, a „További videók” réteg nem jelenhet meg."</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Alkalmazásverzió hamisítása</string>
   <string name="morphe_spoof_app_version_summary">A szervert becsapja, hogy úgy gondolja, egy régebbi alkalmazásverziót használ a korábbi UI funkciók helyreállításához</string>
@@ -1098,7 +1093,7 @@ Korlátozások:
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">Videóminőség előnyben részesítése</string>
   <string name="morphe_prioritize_video_quality_summary">A lehető legmagasabb videóminőséget részesíti előnyben a kodek hatékonysága helyett</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Android VR AV1 engedélyezése</string>
   <string name="morphe_spoof_video_streams_av1_summary">A szoftveres AV1 dekódolás engedélyezése Android VR kliens használatakor</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Ennek a beállításnak az engedélyezése szoftveres AV1 dekódolást használhat.
@@ -1114,11 +1109,13 @@ Az AV1-es videólejátszás akadozhat vagy képkockákat ejthet."</string>
   <string name="morphe_spoof_video_streams_about_js">• Ha a deobfuszkálás sikertelen, a lejátszás is megbomolhat</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Eredeti hang kényszerítése nem érhető el</string>
+  <!-- Quality refers to video quality -->
+  <string name="morphe_spoof_video_streams_about_720p_max">• A minőség legfeljebb 720p lehet</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Lejátszó JavaScript változata</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Megmutatja a hamisítást a Statisztikákban</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Régi videós eszköztár visszaállítása</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Javítja a negatív értékelések megjelenítésének problémáját és lehetővé teszi a videós gombok elrejtését.
+  <string name="morphe_restore_old_video_action_bar_summary">"Javítja a nem megjelenő nemtetszéseket és a videós eszköztárak elrejtésének problémáját.
 
-Korlátozások: Visszatér a régi stílusú \"További videók\" átfedéshez."</string>
+Korlátozás: Visszatér a régi stílusú „További videók” réteghez."</string>
 </resources>

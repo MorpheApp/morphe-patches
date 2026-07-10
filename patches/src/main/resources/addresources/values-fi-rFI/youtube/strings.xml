@@ -96,9 +96,19 @@ Muutoksia ovat muun muassa:
   <string name="morphe_hide_surveys_title">Piilota kyselyt</string>
   <string name="morphe_hide_surveys_summary">Piilottaa kyselyt ja ehdotukset syötteen suositustarkkuudesta</string>
   <string name="morphe_hide_ticket_shelf_title">Piilota lippuhylly</string>
+  <string name="morphe_hide_upload_time_title">Piilota julkaisuaika</string>
+  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
+  <string name="morphe_hide_upload_time_summary">"Rajoitukset:
+• Shorts-hyllyt, kanavasivut ja hakutulokset saattavat edelleen näyttää julkaisuaikoja
+• Tämä ominaisuus ei toimi ajoneuvo-käyttöliittymäasettelussa"</string>
   <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_recommendation_labels_title">Piilota videosuositusten tunnisteet</string>
   <string name="morphe_hide_video_recommendation_labels_summary">Piilottaa \"Ihmiset katsoivat myös\"- ja \"Saatat pitää myös tästä\" -tunnisteet hakutuloksissa</string>
+  <string name="morphe_hide_view_count_title">Piilota katselukerrat</string>
+  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
+  <string name="morphe_hide_view_count_summary">"Rajoitukset:
+• Shorts-hyllyt, kanavasivut ja hakutulokset saattavat edelleen näyttää katselukertoja
+• Tämä ominaisuus ei toimi ajoneuvo-käyttöliittymäasettelussa"</string>
   <string name="morphe_hide_web_search_results_title">Piilota verkkohakutulokset</string>
   <string name="morphe_hide_web_search_results_summary">Piilottaa ’Tulokset verkosta’ -osion hakutuloksista</string>
   <string name="morphe_hide_you_may_like_section_title">Piilota \'Saattaisit pitää\' -osio</string>
@@ -157,11 +167,12 @@ Muutoksia ovat muun muassa:
   <string name="morphe_hide_transcript_section_title">Piilota Transkriptio-osio</string>
   <string name="morphe_hide_video_details_section_title">Piilota \"Videotiedot\" -osio</string>
   <string name="morphe_hide_filter_bar_screen_title">Suodatinpalkki</string>
-  <string name="morphe_hide_filter_bar_screen_summary">Valitse, mitkä komponentit piilotetaan tarjottimien suodattimilla</string>
-  <string name="morphe_hide_filter_bar_feed_in_feed_title">Piilota syötteissä</string>
-  <string name="morphe_hide_filter_bar_feed_in_related_videos_title">Piilota liittyvissä videoissa</string>
-  <string name="morphe_hide_filter_bar_feed_in_search_title">Piilota hakutuloksissa</string>
-  <string name="morphe_hide_filter_bar_feed_in_history_title">Piilota katseluhistoriassa</string>
+  <string name="morphe_hide_filter_bar_screen_summary">Valitse, missä piilotetaan vierityspalkin suodatin</string>
+  <string name="morphe_hide_filter_bar_in_comments_title">Piilota kommenteissa</string>
+  <string name="morphe_hide_filter_bar_in_feed_title">Piilota syötteissä</string>
+  <string name="morphe_hide_filter_bar_in_related_videos_title">Piilota liittyvissä videoissa</string>
+  <string name="morphe_hide_filter_bar_in_search_title">Piilota hakutuloksissa</string>
+  <string name="morphe_hide_filter_bar_in_history_title">Piilota katseluhistoriassa</string>
   <string name="morphe_channel_screen_title">Kanavasivu</string>
   <string name="morphe_channel_screen_summary">Valitse, mitkä komponentit näkyvät kanavasivulla</string>
   <string name="morphe_hide_channel_tab_title">Ota käyttöön kanavavälilehtien suodatin</string>
@@ -198,30 +209,15 @@ Muutoksia ovat muun muassa:
   <string name="morphe_hide_comments_community_guidelines_title">Piilota yhteisön säännöt</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Piilota \"Luo Shorts-video\" -painike</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Piilota emoji- ja aikaleima-painikkeet</string>
+  <string name="morphe_hide_comments_filter_bar_options_title">Piilota suodatinpalkin asetukset</string>
+  <string name="morphe_hide_comments_filter_bar_options_summary">Piilottaa kaikki suodatinpalkin asetukset paitsi \"Parhaat\" ja \"Uusimmat\"</string>
   <string name="morphe_hide_comments_info_button_title">Piilota Tietoja-painike</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Piilota lahjoittajien palkki suorassa chatissa</string>
   <string name="morphe_hide_comments_preview_comment_title">Piilota kommentin esikatselu</string>
   <string name="morphe_hide_comments_preview_comment_summary">Piilottaa kommenttien esikatselun videon alapuolella ennen koko kommenttiosion avaamista</string>
   <string name="morphe_hide_comments_thanks_button_title">Piilota Kiitos-painike</string>
-  <string name="morphe_sanitize_comments_category_bar_title">Puhdista kategoriapalkki</string>
-  <string name="morphe_sanitize_comments_category_bar_summary">Piilottaa kaikki kommenttilajitteluvaihtoehdot paitsi \"Suosituimmat\" ja \"Uusimmat\"</string>
-  <string name="morphe_custom_filter_screen_title">Mukautettu suodatin</string>
-  <string name="morphe_custom_filter_screen_summary">Määritä mukautetut suodattimet minkä tahansa komponentin piilottamiseksi</string>
-  <string name="morphe_custom_filter_title">Ota mukautettu suodatin käyttöön</string>
-  <string name="morphe_custom_filter_strings_title">Mukautettu suodatin</string>
-  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
-  <string name="morphe_custom_filter_strings_summary">Luettelo komponentin polun rakentajan merkkijonoista suodatettavaksi uudella rivillä erotettuna</string>
-  <string name="morphe_custom_filter_toast_invalid_syntax">Virheellinen mukautettu suodatin: %s</string>
-  <string name="morphe_hide_view_count_title">Piilota katselukerrat</string>
-  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
-  <string name="morphe_hide_view_count_summary">"Rajoitukset:
-• Shorts-hyllyt, kanavasivut ja hakutulokset saattavat edelleen näyttää katselukertoja.
-• Tämä ominaisuus ei toimi ajoneuvojen käyttöliittymäasettelussa."</string>
-  <string name="morphe_hide_upload_time_title">Piilota julkaisuaika</string>
-  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
-  <string name="morphe_hide_upload_time_summary">"Rajoitukset:
-• Shorts-hyllyt, kanavasivut ja hakutulokset saattavat edelleen näyttää julkaisuaikoja
-• Tämä ominaisuus ei toimi ajoneuvo-käyttöliittymäasettelussa"</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_title">Puhdistaa korostettujen hakulinkkien koodin</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_summary">Puhdistaa korostettujen hakulinkkien koodin jättäen jäljelle vain alkuperäisen tekstin</string>
   <string name="morphe_hide_keyword_content_screen_title">Avainsanasuodatin</string>
   <string name="morphe_hide_keyword_content_screen_summary">Valitse tietyt videot piilotettavaksi syötteissä ja hauissa käyttämällä avainsanoja</string>
   <string name="morphe_hide_keyword_content_home_title">Piilota Koti-videoita avainsanojen mukaan</string>
@@ -252,7 +248,7 @@ Rajoitukset:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Avainsanalla on ristiriitaisia määrityksiä: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Avainsana on liian lyhyt ja vaatii lainausmerkkejä: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Avainsana piilottaa kaikki videot: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Piilota sisällöntuottajan kauppahylly</string>
   <string name="morphe_hide_end_screen_store_banner_title">Piilota loppunäytön kauppabanneri</string>
   <string name="morphe_hide_general_ads_title">Piilota yleiset mainokset</string>
@@ -262,9 +258,8 @@ Rajoitukset:
   <string name="morphe_hide_player_popup_ads_title">Piilota soittimen ponnahdusmainokset</string>
   <string name="morphe_hide_self_sponsor_ads_title">Piilota tekijän omat mainoskortit</string>
   <string name="morphe_hide_shopping_links_title">Piilota ostoslinkit</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">Piilota YouTube Premium -mainokset</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Piilota videomainokset</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">Piilota YouTube Premium -mainokset</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Linkki kopioitu leikepöydälle</string>
@@ -856,7 +851,7 @@ Autonäyttö
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Palauttaa vanhan soittimen asettelun
 
-Rajoitukset: Jos \"Palauta vanha videon toimintopalkki\" on poissa käytöstä, \"Lisää videoita\" -peitto ei ehkä ole käytettävissä."</string>
+Rajoitus: Jos \"Palauta vanha videotoimintopalkki\" on poissa käytöstä, \"Lisää videoita\" -peittokuvio ei välttämättä ole käytettävissä"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Naamioi sovellusversio</string>
   <string name="morphe_spoof_app_version_summary">Huulet palvelimen luulemaan käyttäväsi vanhempaa sovellusversiota palauttaaksesi vanhat UI-ominaisuudet</string>
@@ -1097,7 +1092,7 @@ Rajoitukset:
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">Priorisoida video-laatu</string>
   <string name="morphe_prioritize_video_quality_summary">Priorisoi korkein saatavilla oleva videon laatu koodekin tehokkuuden sijaan</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Salli Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Sallii ohjelmistopohjaisen AV1-dekoodauksen, kun käytetään Android VR -asiakasohjelmaa</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Tämän asetuksen käyttöönotto saattaa käyttää ohjelmistopohjaista AV1-dekoodausta.
@@ -1113,11 +1108,13 @@ AV1-videon toisto saattaa pätkiä."</string>
   <string name="morphe_spoof_video_streams_about_js">• Jos deobfuskointi epäonnistuu, toistaminen saattaa epäonnistua</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Pakota alkuperäinen ääni ei ole käytettävissä</string>
+  <!-- Quality refers to video quality -->
+  <string name="morphe_spoof_video_streams_about_720p_max">• Laatu saattaa rajoittua 720p:hen</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Pelaajan JavaScript-versio</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Näytä peittämiset Stats for nerdseissä</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Palauta vanha videotoimintopalkki</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Korjaa tyytymättömyysnäyttöjen ongelma ja estää videotoimintopainikkeiden piilottamisen
+  <string name="morphe_restore_old_video_action_bar_summary">"Korjaa tykkäysten puuttuminen ja videotoimintopainikkeiden piilottamisen ongelmat
 
-Ominaisuudet: Palaa vanhaan 'Lisää videoita' -peittoon"</string>
+Rajoitus: Palaa vanhaan \"Lisää videoita\" -peittokuviotyyliin"</string>
 </resources>

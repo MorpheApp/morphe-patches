@@ -97,9 +97,19 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_surveys_title">Itago ang mga pagsusuri</string>
   <string name="morphe_hide_surveys_summary">Itinatago ang mga survey at mga pahiwatig tungkol sa katumpakan ng rekomendasyon ng feed</string>
   <string name="morphe_hide_ticket_shelf_title">Itago ang ticket shelf</string>
+  <string name="morphe_hide_upload_time_title">Itago ang oras ng pag-upload</string>
+  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
+  <string name="morphe_hide_upload_time_summary">"Mga Limitasyon:
+• Maaari pa ring magpakita ng mga oras ng pag-upload ang mga Short shelf, mga pahina ng channel, at mga resulta ng paghahanap.
+• Hindi gumagana sa automotive layout."</string>
   <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_recommendation_labels_title">Itago ang mga tatak ng rekomendasyon ng video</string>
   <string name="morphe_hide_video_recommendation_labels_summary">Itinatago ang mga label na \'Pinapanood din ng mga tao\' at \'Baka magustuhan mo rin\' sa mga resulta ng paghahanap</string>
+  <string name="morphe_hide_view_count_title">Itago ang bilang ng panonood</string>
+  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
+  <string name="morphe_hide_view_count_summary">"Mga Limitasyon:
+• Maaari pa ring magpakita ng mga bilang ng panonood ang mga Short shelf, mga pahina ng channel, at mga resulta sa paghahanap.
+• Hindi gumagana sa automotive layout."</string>
   <string name="morphe_hide_web_search_results_title">Itago ang mga resulta ng paghahanap sa web</string>
   <string name="morphe_hide_web_search_results_summary">Itinatago ang seksyong \'Resulta mula sa web\' mula sa mga resulta ng paghahanap</string>
   <string name="morphe_hide_you_may_like_section_title">Itago ang seksyon na \'Baka magustuhan mo rin\'</string>
@@ -158,11 +168,12 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_transcript_section_title">Itago ang seksyon ng Transcript</string>
   <string name="morphe_hide_video_details_section_title">Itago ang seksyon na \'Mga detalye ng video\'</string>
   <string name="morphe_hide_filter_bar_screen_title">Filter bar</string>
-  <string name="morphe_hide_filter_bar_screen_summary">Pumili kung saan itatago ang mga scrolling category chip</string>
-  <string name="morphe_hide_filter_bar_feed_in_feed_title">Itago sa mga feed</string>
-  <string name="morphe_hide_filter_bar_feed_in_related_videos_title">Itago sa mga kaugnay na video</string>
-  <string name="morphe_hide_filter_bar_feed_in_search_title">Itago sa mga resulta ng paghahanap</string>
-  <string name="morphe_hide_filter_bar_feed_in_history_title">Itago sa kasaysayan ng panonood</string>
+  <string name="morphe_hide_filter_bar_screen_summary">Pumili kung saan itatago ang scrolling filter bar</string>
+  <string name="morphe_hide_filter_bar_in_comments_title">Itago sa mga komento</string>
+  <string name="morphe_hide_filter_bar_in_feed_title">Itago sa mga feed</string>
+  <string name="morphe_hide_filter_bar_in_related_videos_title">Itago sa mga kaugnay na video</string>
+  <string name="morphe_hide_filter_bar_in_search_title">Itago sa mga resulta ng paghahanap</string>
+  <string name="morphe_hide_filter_bar_in_history_title">Itago sa kasaysayan ng panonood</string>
   <string name="morphe_channel_screen_title">Pahina ng channel</string>
   <string name="morphe_channel_screen_summary">Pumili kung aling mga component ang lalabas sa channel page</string>
   <string name="morphe_hide_channel_tab_title">Paganahin ang channel tab filter</string>
@@ -199,30 +210,15 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_comments_community_guidelines_title">Itago ang mga alituntunin ng komunidad</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Itago ang button na \'Gumawa ng Short\'</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Itago ang mga button na Emoji at Timestamp</string>
+  <string name="morphe_hide_comments_filter_bar_options_title">Itago ang mga opsyon ng filter bar</string>
+  <string name="morphe_hide_comments_filter_bar_options_summary">Itinatago ang lahat ng mga opsyon ng filter bar maliban sa \'Pinakamahusay\' at \'Pinakabago\'</string>
   <string name="morphe_hide_comments_info_button_title">Itago ang button na Impormasyon</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Itago ang live chat donators bar</string>
   <string name="morphe_hide_comments_preview_comment_title">Itago ang pasilip na komento</string>
   <string name="morphe_hide_comments_preview_comment_summary">Itinatago ang preview ng komento sa ilalim ng video bago buksan ang buong seksyon ng mga komento</string>
   <string name="morphe_hide_comments_thanks_button_title">Itago ang button na Salamat</string>
-  <string name="morphe_sanitize_comments_category_bar_title">Linisin ang category bar</string>
-  <string name="morphe_sanitize_comments_category_bar_summary">Itinatago ang lahat ng mga opsyon sa pag-sort ng komento maliban sa \'Pinakamataas\' at \'Pinakamabago\'</string>
-  <string name="morphe_custom_filter_screen_title">Pasadyang filter</string>
-  <string name="morphe_custom_filter_screen_summary">I-configure ang mga custom na filter upang itago ang anumang component</string>
-  <string name="morphe_custom_filter_title">Paganahin ang pasadyang filter</string>
-  <string name="morphe_custom_filter_strings_title">Pasadyang filter</string>
-  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
-  <string name="morphe_custom_filter_strings_summary">Listahan ng mga string ng component path builder upang i-filter, na pinaghihiwalay ng mga bagong linya</string>
-  <string name="morphe_custom_filter_toast_invalid_syntax">Imbalido na pasadyang filter: %s</string>
-  <string name="morphe_hide_view_count_title">Itago ang bilang ng panonood</string>
-  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
-  <string name="morphe_hide_view_count_summary">"Mga Limitasyon:
-• Maaari pa ring magpakita ng mga bilang ng panonood ang mga Short shelf, mga pahina ng channel, at mga resulta sa paghahanap
-• Ang tampok na ito ay hindi gumagana sa automotive layout"</string>
-  <string name="morphe_hide_upload_time_title">Itago ang oras ng pag-upload</string>
-  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
-  <string name="morphe_hide_upload_time_summary">"Mga Limitasyon:
-• Maaari pa ring magpakita ng mga oras ng pag-upload ang mga Short shelf, mga pahina ng channel, at mga resulta ng paghahanap.
-• Ang tampok na ito ay hindi gumagana sa automotive form factor."</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_title">Linisin ang mga naka-highlight na link sa paghahanap</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_summary">Nililinis ang mga naka-highlight na link sa paghahanap, at iniiwan lamang ang orihinal na simpleng teksto</string>
   <string name="morphe_hide_keyword_content_screen_title">Filter ng keyword</string>
   <string name="morphe_hide_keyword_content_screen_summary">Pumili ng mga partikular na salita o parirala upang itago ang mga video sa feed at paghahanap</string>
   <string name="morphe_hide_keyword_content_home_title">Itago ang mga video ng bahay sa pamamagitan ng mga keyword</string>
@@ -253,7 +249,7 @@ Mga Limitasyon:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">May magkasalungat na deklarasyon ang keyword: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Masyadong maikli at kailangan ng mga panipi ang keyword: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Itatago lahat ng mga video ang keyword: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Itago ang creator store shelf</string>
   <string name="morphe_hide_end_screen_store_banner_title">Itago ang banner ng end screen store</string>
   <string name="morphe_hide_general_ads_title">Itago ang mga pangkalahatang patalastas</string>
@@ -263,9 +259,8 @@ Mga Limitasyon:
   <string name="morphe_hide_player_popup_ads_title">Itago ang mga patalastas sa player popup</string>
   <string name="morphe_hide_self_sponsor_ads_title">Itago ang mga self sponsored card</string>
   <string name="morphe_hide_shopping_links_title">Itago ang mga link ng pagbili</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">Itago ang mga promosyon sa YouTube Premium</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Itago ang mga patalastas sa video</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">Itago ang mga promosyon sa YouTube Premium</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Nakalink sa clipboard</string>
@@ -857,7 +852,7 @@ Layout ng Automotive
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Ibinabalik ang lumang layout ng player
 
-Limitasyon: Kung naka-off ang \"Ibalik ang lumang action bar ng video\", maaaring hindi available ang overlay na \"Higit pang mga video\""</string>
+Limitasyon: Kung ang 'Ibalik ang lumang video action bar' ay naka-off, maaaring hindi magamit ang overlay na 'Higit pang mga video'"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Spoof app version</string>
   <string name="morphe_spoof_app_version_summary">Dinadaya ang server upang isipin na gumagamit ka ng mas lumang bersyon ng app upang ibalik ang legacy UI features</string>
@@ -1098,7 +1093,7 @@ Mga limitasyon:
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">Unahin ang kalidad ng video</string>
   <string name="morphe_prioritize_video_quality_summary">Inuuna ang pinakamataas na magagamit na kalidad ng video kaysa sa kahusayan ng codec</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Payagan ang Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Pinapayagan ang software AV1 decoding kapag ginagamit ang Android VR client</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Ang pag-e-enable ng setting na ito ay maaaring gumamit ng software AV1 decoding.
@@ -1114,11 +1109,13 @@ Ang pag-playback ng video gamit ang AV1 ay maaaring mag-stutter o mag-drop ng mg
   <string name="morphe_spoof_video_streams_about_js">• Kung mabigo ang deobfuscation, maaaring mabigo ang playback</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Hindi available ang Force original audio</string>
+  <!-- Quality refers to video quality -->
+  <string name="morphe_spoof_video_streams_about_720p_max">• Maaaring limitado ang kalidad sa 720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Variant ng JavaScript ng Player</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Ipakita ang spoofing sa Stats for nerds</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Ibalik ang lumang video action bar</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Inaayos ang hindi pagpapakita ng dislikes at hindi maitagong mga button ng video action
+  <string name="morphe_restore_old_video_action_bar_summary">"Inaayos ang mga hindi ipinapakitang dislike at hindi maitagong mga pindutan ng pagkilos ng video
 
-Limitasyon: Ibabalik sa lumang estilo ng 'Higit pang mga video' na overlay"</string>
+Limitasyon: Ibabalik sa lumang estilo ang 'Higit pang mga video' overlay"</string>
 </resources>

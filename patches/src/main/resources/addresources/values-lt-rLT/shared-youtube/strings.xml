@@ -40,4 +40,6 @@ Second \"item\" text"</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_summary">Pašalina sekimo užklausos parametrus iš bendrinamų nuorodų</string>
   <!-- misc.debugging.enableDebuggingPatch -->
+  <!-- Custom filter -->
+  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
 </resources>

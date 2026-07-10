@@ -97,9 +97,19 @@ Schimbari incluse:
   <string name="morphe_hide_surveys_title">Ascunde sondajele</string>
   <string name="morphe_hide_surveys_summary">Ascunde sondaje și sugestii despre acuratețea recomandărilor pentru fluxul de conținut</string>
   <string name="morphe_hide_ticket_shelf_title">Ascunde raftul de bilete</string>
+  <string name="morphe_hide_upload_time_title">Ascunde ora de încărcare</string>
+  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
+  <string name="morphe_hide_upload_time_summary">"Limitări:
+• Secțiunile Shorts, paginile canalelor și rezultatele căutării pot afișa în continuare orele de încărcare
+• Această funcție nu funcționează cu factorul de formă auto"</string>
   <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_recommendation_labels_title">Ascunde etichetele de recomandare video</string>
   <string name="morphe_hide_video_recommendation_labels_summary">Ascunde etichetele \"Persoane care au urmărit, de asemenea\" și \"S-ar putea să vă placă și\" în rezultatele căutării</string>
+  <string name="morphe_hide_view_count_title">Ascunde numărul de vizualizări</string>
+  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
+  <string name="morphe_hide_view_count_summary">"Limitări:
+• Secțiunile Shorts, paginile canalelor și rezultatele căutării pot afișa în continuare numărul de vizualizări
+• Această funcție nu funcționează cu factorul de formă auto"</string>
   <string name="morphe_hide_web_search_results_title">Ascunde rezultatele căutării web</string>
   <string name="morphe_hide_web_search_results_summary">Ascunde secțiunea „Rezultate de pe web” din rezultatele căutării</string>
   <string name="morphe_hide_you_may_like_section_title">Ascunde secțiunea ‘Poți să-ți placă’</string>
@@ -158,11 +168,12 @@ Schimbari incluse:
   <string name="morphe_hide_transcript_section_title">Ascunde secțiunea Transcriere</string>
   <string name="morphe_hide_video_details_section_title">Ascunde secțiunea \"Detalii video\"</string>
   <string name="morphe_hide_filter_bar_screen_title">Bară de filtrare</string>
-  <string name="morphe_hide_filter_bar_screen_summary">Alegeți ce componente să ascundeți folosind filtre personalizate</string>
-  <string name="morphe_hide_filter_bar_feed_in_feed_title">Ascunde în feeduri</string>
-  <string name="morphe_hide_filter_bar_feed_in_related_videos_title">Ascunde în videoclipurile asociate</string>
-  <string name="morphe_hide_filter_bar_feed_in_search_title">Ascunde în rezultatele căutării</string>
-  <string name="morphe_hide_filter_bar_feed_in_history_title">Ascunde în istoricul de vizionare</string>
+  <string name="morphe_hide_filter_bar_screen_summary">Alege unde să ascunzi bara de filtre cu derulare</string>
+  <string name="morphe_hide_filter_bar_in_comments_title">Ascunde în comentarii</string>
+  <string name="morphe_hide_filter_bar_in_feed_title">Ascunde în feeduri</string>
+  <string name="morphe_hide_filter_bar_in_related_videos_title">Ascunde în videoclipurile asociate</string>
+  <string name="morphe_hide_filter_bar_in_search_title">Ascunde în rezultatele căutării</string>
+  <string name="morphe_hide_filter_bar_in_history_title">Ascunde în istoricul de vizionare</string>
   <string name="morphe_channel_screen_title">Pagina canalului</string>
   <string name="morphe_channel_screen_summary">Alegeți ce componente să apară pe pagina canalului</string>
   <string name="morphe_hide_channel_tab_title">Activează filtru pentru tabul canalului</string>
@@ -199,30 +210,15 @@ Schimbari incluse:
   <string name="morphe_hide_comments_community_guidelines_title">Ascunde regulile comunității</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Ascunde butonul \'Creare Short\'</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Ascunde butoanele Emoji și Marcaj temporal</string>
+  <string name="morphe_hide_comments_filter_bar_options_title">Ascunde opțiunile barei de filtre</string>
+  <string name="morphe_hide_comments_filter_bar_options_summary">Ascunde toate opțiunile din bara de filtre, cu excepția \'Top\' și \'Cele mai noi\'</string>
   <string name="morphe_hide_comments_info_button_title">Ascunde butonul Info</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Ascunde bara cu donatori în chat-ul live</string>
   <string name="morphe_hide_comments_preview_comment_title">Ascunde previzualizarea comentariului</string>
   <string name="morphe_hide_comments_preview_comment_summary">Ascunde previzualizarea comentariului de sub videoclip înainte de a deschide secțiunea completă de comentarii</string>
   <string name="morphe_hide_comments_thanks_button_title">Ascunde butonul „Mulțumesc”</string>
-  <string name="morphe_sanitize_comments_category_bar_title">Curățarea barei de categorii</string>
-  <string name="morphe_sanitize_comments_category_bar_summary">Ascunde toate opțiunile de sortare a comentariilor, cu excepția \"Top\" și \"Cele mai recente\"</string>
-  <string name="morphe_custom_filter_screen_title">Filtru personalizat</string>
-  <string name="morphe_custom_filter_screen_summary">Configurează filtre personalizate pentru a ascunde orice componentă</string>
-  <string name="morphe_custom_filter_title">Activează filtru personalizat</string>
-  <string name="morphe_custom_filter_strings_title">Filtru personalizat</string>
-  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
-  <string name="morphe_custom_filter_strings_summary">Lista șirurilor constructorului traiectoriei componentei pentru a filtra, separate prin linii noi</string>
-  <string name="morphe_custom_filter_toast_invalid_syntax">Filtru personalizat nevalid: %s</string>
-  <string name="morphe_hide_view_count_title">Ascunde numărul de vizualizări</string>
-  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
-  <string name="morphe_hide_view_count_summary">"Limitări:
-• Secțiunile Shorts, paginile canalelor și rezultatele căutării pot afișa în continuare numărul de vizualizări.
-• Această funcție nu funcționează cu aspectul auto."</string>
-  <string name="morphe_hide_upload_time_title">Ascunde ora de încărcare</string>
-  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
-  <string name="morphe_hide_upload_time_summary">"Limitări:
-• Rafturile Shorts, paginile canalelor și rezultatele căutării pot afișa în continuare orele de încărcare
-• Această funcție nu funcționează cu factorul de formă auto"</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_title">Dezactivează legăturile de căutare evidențiate</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_summary">Dezactivează legăturile de căutare evidențiate, afișând doar textul original simplu</string>
   <string name="morphe_hide_keyword_content_screen_title">Filtru de cuvinte cheie</string>
   <string name="morphe_hide_keyword_content_screen_summary">Alegeți cuvinte sau fraze specifice pentru a ascunde videoclipuri în fluxuri și căutare</string>
   <string name="morphe_hide_keyword_content_home_title">Ascunde videoclipurile de acasă după cuvintele cheie</string>
@@ -253,7 +249,7 @@ Limitări:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Cuvântul-cheie are declarații contradictorii: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Cuvântul cheie este prea scurt și necesită oferte: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Cuvântul cheie va ascunde toate videoclipurile: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Ascunde raftul magazinului creatorului</string>
   <string name="morphe_hide_end_screen_store_banner_title">Ascunde bannerul magazinului de la finalul ecranului</string>
   <string name="morphe_hide_general_ads_title">Ascunde reclamele generale</string>
@@ -263,9 +259,8 @@ Limitări:
   <string name="morphe_hide_player_popup_ads_title">Ascunde anunțurile pop-up ale jucătorului</string>
   <string name="morphe_hide_self_sponsor_ads_title">Ascunde cardurile auto-sponsorizate</string>
   <string name="morphe_hide_shopping_links_title">Ascunde linkurile de cumpărături</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">Ascunde promoțiile YouTube Premium</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Ascunde reclamele video</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">Ascunde promoțiile YouTube Premium</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link copiat în clipboard</string>
@@ -857,7 +852,7 @@ Aspect auto
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Restabilește aspectul vechi al playerului
 
-Limitări: Dacă \"Restaurare bară de acțiuni video veche\" este dezactivată, suprapunerea \"Mai multe videoclipuri\" s-ar putea să nu fie disponibilă"</string>
+Limitare: Dacă 'Restaurare bara de acțiuni video veche' este dezactivată, stratul 'Mai multe videoclipuri' ar putea să nu fie disponibil"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Falsifică versiunea aplicației</string>
   <string name="morphe_spoof_app_version_summary">Păcălește serverul să creadă că utilizezi o versiune mai veche a aplicației pentru a restabili funcțiile UI moștenite</string>
@@ -1098,7 +1093,7 @@ Limitări:
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">Priorize calitatea video-ului</string>
   <string name="morphe_prioritize_video_quality_summary">Prioritizează cea mai mare calitate video disponibilă față de eficiența codec-ului.</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Permite Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Prioritizează calitatea video superioară față de eficiența codec-ului</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Activarea acestei setări poate folosi decodarea software AV1.
@@ -1114,11 +1109,13 @@ Redarea video cu AV1 poate sacada sau pierde cadre."</string>
   <string name="morphe_spoof_video_streams_about_js">• Dacă deobfuscarea eșuează, reproducerea poate eșua</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Forțarea sunetului original nu este disponibilă</string>
+  <!-- Quality refers to video quality -->
+  <string name="morphe_spoof_video_streams_about_720p_max">• Calitatea poate fi limitată la 720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Varianta JavaScript a playerului</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Extinde durata DVR pentru transmisiuni live până la 7 zile în trecut</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Restaurare bara de acțiune video veche</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Corectează problema neafisarii dislike-urilor și imposibilitatea de a ascunde butoanele de acțiune video.
+  <string name="morphe_restore_old_video_action_bar_summary">"Remediază problema dezactivării afișării numărului de dislike-uri și imposibilitatea ascunderii butoanelor de acțiune video
 
-Limitări: Revine la stilul vechi al suprapunerii „Mai multe videoclipuri”"</string>
+Limitare: Revine la aspectul vechi al stratului 'Mai multe videoclipuri'"</string>
 </resources>

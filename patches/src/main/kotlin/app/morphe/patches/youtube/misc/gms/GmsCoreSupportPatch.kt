@@ -16,7 +16,7 @@ import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 @Suppress("unused")
 val gmsCoreSupportPatch = gmsCoreSupportPatch(
     fromPackageName = YOUTUBE_PACKAGE_NAME,
-    toPackageName = MORPHE_YOUTUBE_PACKAGE_NAME,
+    toPackageNameDefault = MORPHE_YOUTUBE_PACKAGE_NAME,
     primeMethodFingerprint = PrimeMethodFingerprint,
     earlyReturnFingerprints = setOf(
         CastContextFetchFingerprint,
@@ -37,7 +37,7 @@ val gmsCoreSupportPatch = gmsCoreSupportPatch(
 private fun gmsCoreSupportResourcePatch() =
     app.morphe.patches.shared.misc.gms.gmsCoreSupportResourcePatch(
         fromPackageName = YOUTUBE_PACKAGE_NAME,
-        toPackageName = MORPHE_YOUTUBE_PACKAGE_NAME,
+        toPackageNameDefault = MORPHE_YOUTUBE_PACKAGE_NAME,
         spoofedPackageSignature = "24bb24c05e47e0aefa68a58a766179d9b613a600",
         screen = PreferenceScreen.MISC,
         block = {

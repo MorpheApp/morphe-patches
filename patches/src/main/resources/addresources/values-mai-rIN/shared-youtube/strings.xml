@@ -106,4 +106,6 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_title">शेयर लिंकके youtube.com में बदलू</string>
   <string name="morphe_replace_links_with_shortener_title">शेअर लिंकके youtu.be में बदलू</string>
   <!-- misc.debugging.enableDebuggingPatch -->
+  <!-- Custom filter -->
+  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
 </resources>

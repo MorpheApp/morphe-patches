@@ -97,9 +97,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_surveys_title">アンケートを非表示</string>
   <string name="morphe_hide_surveys_summary">フィードのおすすめ精度に関するアンケートやフィードバック要求を非表示にします</string>
   <string name="morphe_hide_ticket_shelf_title">チケット欄を非表示</string>
+  <string name="morphe_hide_upload_time_title">公開からの経過時間 / 予定時間を非表示</string>
+  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
+  <string name="morphe_hide_upload_time_summary">"制限事項:
+• ショート欄、チャンネル ページ、検索結果では、引き続き公開からの経過時間 / 予定時間が表示される場合がある
+• Automotive レイアウトでは動作しない"</string>
   <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_recommendation_labels_title">おすすめ動画のラベルを非表示</string>
   <string name="morphe_hide_video_recommendation_labels_summary">検索結果に表示される「他の人はこの動画も視聴しています」ラベルと「あなたへのおすすめ」ラベルを非表示にします</string>
+  <string name="morphe_hide_view_count_title">視聴回数を非表示</string>
+  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
+  <string name="morphe_hide_view_count_summary">"制限事項:
+• ショート欄、チャンネル ページ、検索結果では、引き続き視聴回数が表示される場合がある
+• Automotive レイアウトでは動作しない"</string>
   <string name="morphe_hide_web_search_results_title">ウェブ検索結果を非表示</string>
   <string name="morphe_hide_web_search_results_summary">検索結果の「ウェブの検索結果」セクションを非表示にします</string>
   <string name="morphe_hide_you_may_like_section_title">検索候補の「おすすめ」セクションを非表示</string>
@@ -158,11 +168,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_transcript_section_title">文字起こしセクションを非表示</string>
   <string name="morphe_hide_video_details_section_title">「動画の詳細」セクションを非表示</string>
   <string name="morphe_hide_filter_bar_screen_title">フィルタバー</string>
-  <string name="morphe_hide_filter_bar_screen_summary">横一列のスクロールするカテゴリボタン (フィルタバー) を非表示にする場所を設定します</string>
-  <string name="morphe_hide_filter_bar_feed_in_feed_title">フィードで非表示</string>
-  <string name="morphe_hide_filter_bar_feed_in_related_videos_title">関連動画で非表示</string>
-  <string name="morphe_hide_filter_bar_feed_in_search_title">検索結果で非表示</string>
-  <string name="morphe_hide_filter_bar_feed_in_history_title">再生履歴で非表示</string>
+  <string name="morphe_hide_filter_bar_screen_summary">横スクロールする横一列のボタンであるフィルタバーを非表示にする場所を設定します</string>
+  <string name="morphe_hide_filter_bar_in_comments_title">コメント欄で非表示</string>
+  <string name="morphe_hide_filter_bar_in_feed_title">フィードで非表示</string>
+  <string name="morphe_hide_filter_bar_in_related_videos_title">関連動画で非表示</string>
+  <string name="morphe_hide_filter_bar_in_search_title">検索結果で非表示</string>
+  <string name="morphe_hide_filter_bar_in_history_title">再生履歴で非表示</string>
   <string name="morphe_channel_screen_title">チャンネル ページ</string>
   <string name="morphe_channel_screen_summary">チャンネル ページに表示するコンポーネントを設定します</string>
   <string name="morphe_hide_channel_tab_title">チャンネル ページのタブのフィルタを有効化</string>
@@ -199,30 +210,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_community_guidelines_title">コミュニティ ガイドラインを非表示</string>
   <string name="morphe_hide_comments_create_a_short_button_title">「ショート動画を作成」ボタンを非表示</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">絵文字ボタンとタイムスタンプ ボタンを非表示</string>
+  <string name="morphe_hide_comments_filter_bar_options_title">コメント欄で基本のフィルタバー以外を非表示</string>
+  <string name="morphe_hide_comments_filter_bar_options_summary">「人気順」と「新しい順」以外の、コメント欄のフィルタバーをすべて非表示にします</string>
   <string name="morphe_hide_comments_info_button_title">情報ボタン (i アイコン) を非表示</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">チャット欄の投げ銭表示を無効化</string>
   <string name="morphe_hide_comments_preview_comment_title">コメントのプレビューを非表示</string>
   <string name="morphe_hide_comments_preview_comment_summary">コメント欄を開く前に動画の下に表示されるコメントのプレビューを非表示にします</string>
   <string name="morphe_hide_comments_thanks_button_title">Thanks ボタンを非表示</string>
-  <string name="morphe_sanitize_comments_category_bar_title">カテゴリバーを無害化</string>
-  <string name="morphe_sanitize_comments_category_bar_summary">「人気順」と「新しい順」以外のすべてのコメントの並べ替えオプションを非表示にします</string>
-  <string name="morphe_custom_filter_screen_title">カスタム フィルタ</string>
-  <string name="morphe_custom_filter_screen_summary">任意のコンポーネントを非表示にするフィルタであるカスタム フィルタの設定をします</string>
-  <string name="morphe_custom_filter_title">カスタム フィルタを有効化</string>
-  <string name="morphe_custom_filter_strings_title">カスタム フィルタ</string>
-  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
-  <string name="morphe_custom_filter_strings_summary">非表示にするコンポーネントの path builder string のリスト (改行区切り)</string>
-  <string name="morphe_custom_filter_toast_invalid_syntax">無効なカスタム フィルタ: %s</string>
-  <string name="morphe_hide_view_count_title">視聴回数を非表示</string>
-  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
-  <string name="morphe_hide_view_count_summary">"制限事項:
-• ショート欄、チャンネル ページ、検索結果では、引き続き視聴回数が表示される場合がある
-• この機能は Automotive レイアウトでは動作しない"</string>
-  <string name="morphe_hide_upload_time_title">公開からの経過時間 / 予定時間を非表示</string>
-  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
-  <string name="morphe_hide_upload_time_summary">"制限事項:
-• ショート欄、チャンネル ページ、検索結果では、引き続き公開からの経過時間 / 予定時間が表示される場合がある
-• この機能は Automotive レイアウトでは動作しない"</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_title">テキスト内の検索リンクを除去</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_summary">テキスト内の単語やフレーズに埋め込まれたアイコン付きの検索リンクを取り除き、普通のテキストに戻します</string>
   <string name="morphe_hide_keyword_content_screen_title">キーワード フィルタ</string>
   <string name="morphe_hide_keyword_content_screen_summary">フィードや検索結果から合致する動画を除外する単語やフレーズを設定します</string>
   <string name="morphe_hide_keyword_content_home_title">ホームの動画をキーワードで除外</string>
@@ -253,7 +249,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">矛盾する宣言があるキーワード: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">短すぎて引用符が必要なキーワード: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">全動画を除外するキーワード: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">「\"チャンネル名\" のストア」欄を非表示</string>
   <string name="morphe_hide_end_screen_store_banner_title">終了画面のストアバナーを非表示</string>
   <string name="morphe_hide_general_ads_title">一般的な広告を非表示</string>
@@ -263,9 +259,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_popup_ads_title">プレーヤーのポップアップ広告を非表示</string>
   <string name="morphe_hide_self_sponsor_ads_title">自己宣伝カードを非表示</string>
   <string name="morphe_hide_shopping_links_title">商品へのリンクを非表示</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium の広告を非表示</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">動画広告を非表示</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium の広告を非表示</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">リンクをコピーしました</string>
@@ -936,11 +931,11 @@ Automotive レイアウト
   <string name="morphe_miniplayer_disable_drag_and_drop_title">ドラッグ &amp; ドロップを無効化</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">ミニプレーヤーをドラッグして画面の四隅を移動する機能を無効にします</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">横方向ドラッグ ジェスチャーを無効化</string>
-  <string name="morphe_miniplayer_disable_horizontal_drag_summary">ミニプレーヤーを横方向に画面外までドラッグして最小化する機能を無効にします</string>
-  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">横方向ドラッグ ジェスチャーで一時停止</string>
-  <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">横方向ドラッグ ジェスチャーでミニプレーヤーを最小化したときに再生を一時停止します</string>
-  <string name="morphe_miniplayer_disable_horizontal_reposition_title">ドラッグ位置を記憶する</string>
-  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">ミニプレーヤーを画面外にドラッグすると、UIの状態が維持されます</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_summary">ミニプレーヤーを画面外まで横方向にドラッグして画面端に収納する (最小化) 機能を無効にします</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">最小化で再生を一時停止</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">横方向ドラッグ ジェスチャーでミニプレーヤーを画面端に収納して最小化したときに再生を一時停止します</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">最小化からの自動復帰を無効化</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">横方向ドラッグ ジェスチャーで画面端に収納して最小化したミニプレーヤーの自動復帰を無効にします</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">オーバーレイ ボタンを非表示</string>
   <string name="morphe_miniplayer_width_dip_title">デフォルトのサイズ</string>
   <string name="morphe_miniplayer_width_dip_summary">呼び出される際のミニプレーヤーの横幅を設定します (ピクセル)</string>
@@ -1097,7 +1092,7 @@ Automotive レイアウト
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">画質を優先</string>
   <string name="morphe_prioritize_video_quality_summary">コーデックの圧縮効率よりも利用可能な最高画質を優先します</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Android VR で AV1 を許可</string>
   <string name="morphe_spoof_video_streams_av1_summary">Android VR クライアントを使用するときに AV1 のソフトウェア デコードを許可します</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"この設定を有効にすると、AV1 のソフトウェア デコードが使用される場合があります。
@@ -1113,11 +1108,13 @@ AV1 での動画再生は、カクつくまたはコマ落ちが発生する可�
   <string name="morphe_spoof_video_streams_about_js">• 難読化の解除に失敗した場合、再生に失敗する可能性がある</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">•「オリジナルの音声を強制的に使用」が利用できない</string>
+  <!-- Quality refers to video quality -->
+  <string name="morphe_spoof_video_streams_about_720p_max">• 画質が 720p 以下に制限される場合がある</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">JavaScript 版プレーヤー</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">統計情報にクライアントを表示</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">アクションバーを旧式に戻す</string>
   <string name="morphe_restore_old_video_action_bar_summary">"低評価数が表示されない不具合とアクション ボタンを非表示にできない不具合を修正します
 
-制限事項: 「その他の動画」オーバーレイも旧スタイルに戻ります"</string>
+制限事項:「その他の動画」オーバーレイも旧スタイルに戻ります"</string>
 </resources>

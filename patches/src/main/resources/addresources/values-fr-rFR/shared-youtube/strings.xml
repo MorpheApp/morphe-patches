@@ -160,4 +160,12 @@ La lecture échouera si le hachage JavaScript du lecteur est obsolète."</string
 Cela peut aider à identifier les composants lors de la création de filtres personnalisés.
 
 Cependant, activer cette option entraînera également l'enregistrement de certaines données utilisateur, telles que votre adresse IP."</string>
+  <!-- Custom filter -->
+  <string name="morphe_custom_filter_screen_title">Filtre personnalisé</string>
+  <string name="morphe_custom_filter_screen_summary">Configurez des filtres personnalisés pour masquer n’importe quel composant</string>
+  <string name="morphe_custom_filter_title">Activer le filtre personnalisé</string>
+  <string name="morphe_custom_filter_strings_title">Filtre personnalisé</string>
+  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+  <string name="morphe_custom_filter_strings_summary">Liste des chaînes du générateur de chemins de composants à filtrer, séparées par des sauts de ligne</string>
+  <string name="morphe_custom_filter_toast_invalid_syntax">Filtre personnalisé invalide : %s</string>
 </resources>

@@ -24,7 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_title">Зовнішні завантажувачі</string>
   <string name="morphe_external_downloader_name_title">Ім\'я пакета завантажувача</string>
   <string name="morphe_external_downloader_name_summary">Назва пакета вашого встановленого зовнішнього застосунку для завантаження</string>
-  <string name="morphe_external_downloader_flyout_button_title">Замінити кнопку у спливаючому меню стрічки/пошуку</string>
+  <string name="morphe_external_downloader_flyout_button_title">Замінити кнопку у висувному меню стрічки/пошуку</string>
   <string name="morphe_external_downloader_other_item_hint">Введіть назву пакета</string>
   <string name="morphe_external_downloader_other_item">Вказати інший</string>
   <string name="morphe_external_downloader_not_found_title">Застосунок не встановлено</string>
@@ -146,7 +146,7 @@ Second \"item\" text"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Щоб використати цю функцію, змініть \"Підміна відео потоків\" на Android Reel або TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">Очищення посилань для поширення</string>
+  <string name="morphe_sanitize_sharing_links_title">Очищувати посилання для поширення</string>
   <string name="morphe_sanitize_sharing_links_summary">Видаляє параметри відстеження з посилань при поширенні</string>
   <string name="morphe_replace_music_with_youtube_title">Змінити посилання для поширення на youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Замінює music.youtube.com на youtube.com у поширених посиланнях</string>
@@ -160,4 +160,12 @@ Second \"item\" text"</string>
 Це може допомогти визначити компоненти при створенні власних фільтрів.
 
 Однак увімкнення цього також додасть до журналу деякі дані користувача, наприклад вашу IP-адресу."</string>
+  <!-- Custom filter -->
+  <string name="morphe_custom_filter_screen_title">Власний фільтр</string>
+  <string name="morphe_custom_filter_screen_summary">Налаштуйте власні фільтри для приховування будь-яких елементів</string>
+  <string name="morphe_custom_filter_title">Увімкнути власний фільтр</string>
+  <string name="morphe_custom_filter_strings_title">Власний фільтр</string>
+  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+  <string name="morphe_custom_filter_strings_summary">Список рядків конструктора шляху компонента, які потрібно приховати, кожен з нового рядка</string>
+  <string name="morphe_custom_filter_toast_invalid_syntax">Недійсний власний фільтр: %s</string>
 </resources>

@@ -57,6 +57,7 @@ import app.morphe.extension.youtube.patches.voiceovertranslation.VoiceOverTransl
 import app.morphe.extension.youtube.sponsorblock.SponsorBlockSettings;
 import app.morphe.extension.youtube.sponsorblock.YouTubeSponsorBlockConfig;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeOverlayStyle;
+import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeSpeedStep;
 import app.morphe.extension.youtube.videoplayer.PlayAllButton.PlaylistIDPrefix;
 
 public class Settings extends SharedYouTubeSettings {
@@ -474,7 +475,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting EXTERNAL_BROWSER = new BooleanSetting("morphe_external_browser", TRUE, true);
     public static final BooleanSetting SPOOF_DEVICE_DIMENSIONS = new BooleanSetting("morphe_spoof_device_dimensions", FALSE, true,
             "morphe_spoof_device_dimensions_user_dialog_message");
-    public static final EnumSetting<ClientType> SPOOF_VIDEO_STREAMS_CLIENT_TYPE = new EnumSetting<>("morphe_spoof_video_streams_client_type", ClientType.ANDROID_REEL_AUTH, true, parent(SPOOF_VIDEO_STREAMS));
+    public static final EnumSetting<ClientType> SPOOF_VIDEO_STREAMS_CLIENT_TYPE = new EnumSetting<>("morphe_spoof_video_streams_client_type", ClientType.TV, true, parent(SPOOF_VIDEO_STREAMS));
     public static final BooleanSetting SPOOF_VIDEO_STREAMS_AV1 = new BooleanSetting("morphe_spoof_video_streams_av1", FALSE, true,
             "morphe_spoof_video_streams_av1_user_dialog_message", new SpoofClientAv1Availability());
 
@@ -489,6 +490,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final IntegerSetting SWIPE_VOLUME_SENSITIVITY = new IntegerSetting("morphe_swipe_volume_sensitivity", 1, true, parent(SWIPE_VOLUME));
     public static final IntegerSetting SWIPE_BRIGHTNESS_SENSITIVITY = new IntegerSetting("morphe_swipe_brightness_sensitivity", 1, true, parent(SWIPE_BRIGHTNESS));
     public static final IntegerSetting SWIPE_SPEED_SENSITIVITY = new IntegerSetting("morphe_swipe_speed_sensitivity", 10, true, parent(SWIPE_SPEED));
+    public static final EnumSetting<SwipeSpeedStep> SWIPE_SPEED_STEP = new EnumSetting<>("morphe_swipe_speed_step", SwipeSpeedStep.STEP_005, true, parent(SWIPE_SPEED));
     public static final IntegerSetting SWIPE_SPEED_ZONE_HEIGHT = new IntegerSetting("morphe_swipe_speed_zone_height", 30, true, parent(SWIPE_SPEED));
     public static final EnumSetting<SwipeOverlayStyle> SWIPE_OVERLAY_STYLE = new EnumSetting<>("morphe_swipe_overlay_style", SwipeOverlayStyle.HORIZONTAL,true, parentsAny(SWIPE_BRIGHTNESS, SWIPE_VOLUME, SWIPE_SPEED));
     public static final IntegerSetting SWIPE_OVERLAY_TEXT_SIZE = new IntegerSetting("morphe_swipe_text_overlay_size", 14, true, parentsAny(SWIPE_BRIGHTNESS, SWIPE_VOLUME, SWIPE_SPEED));
@@ -642,7 +644,7 @@ public class Settings extends SharedYouTubeSettings {
     private static final StringSetting  DEPRECATED_SB_CATEGORY_UNSUBMITTED_COLOR = new StringSetting("sb_unsubmitted_color", "#FFFFFFFF", false, false);
 
     static {
-        migrateOldSettingToNew(DEPRECATED_BYPASS_URL_REDIRECTS , BYPASS_LINK_REDIRECTS );
+        migrateOldSettingToNew(DEPRECATED_BYPASS_URL_REDIRECTS , BYPASS_LINK_REDIRECTS);
         migrateOldSettingToNew(DEPRECATED_COPY_VIDEO_URL, DEPRECATED_COPY_VIDEO_URL_BUTTON);
         migrateOldSettingToNew(DEPRECATED_COPY_VIDEO_URL_TIMESTAMP, DEPRECATED_COPY_VIDEO_URL_BUTTON_TIMESTAMP);
         migrateOldSettingToNew(DEPRECATED_COPY_VIDEO_URL_BUTTON, COPY_VIDEO_LINK_BUTTON);
@@ -753,7 +755,7 @@ public class Settings extends SharedYouTubeSettings {
         SeekBarPreference.register(new SeekBarConfig(SWIPE_BRIGHTNESS_SENSITIVITY,
                 1, 10, 1, ""));
         SeekBarPreference.register(new SeekBarConfig(SWIPE_SPEED_SENSITIVITY,
-                1, 20, 1, ""));
+                1, 50, 1, ""));
         SeekBarPreference.register(new SeekBarConfig(SWIPE_SPEED_ZONE_HEIGHT,
                 5, 75, 1, "%"));
         SeekBarPreference.register(new SeekBarConfig(QUICK_ACTIONS_TOP_MARGIN,

@@ -24,7 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_title">Harici indirmeler</string>
   <string name="morphe_external_downloader_name_title">İndirici paket adı</string>
   <string name="morphe_external_downloader_name_summary">Yüklediğiniz harici indirici uygulamanın paket adı</string>
-  <string name="morphe_external_downloader_flyout_button_title">Akış/arama açılır düğmesini geçersiz kıl</string>
+  <string name="morphe_external_downloader_flyout_button_title">Akış/arama açılır düğmesini kullan</string>
   <string name="morphe_external_downloader_other_item_hint">Paket adını girin</string>
   <string name="morphe_external_downloader_other_item">Diğer</string>
   <string name="morphe_external_downloader_not_found_title">Uygulama yüklü değil</string>
@@ -160,4 +160,12 @@ Oynatıcı JavaScript hash'i güncel değilse oynatma başarısız olur."</strin
 Bu, özel filtreler oluştururken bileşenleri tanımlamaya yardımcı olabilir.
 
 Ancak, bunun etkinleştirilmesi IP adresiniz gibi bazı kullanıcı verilerini de günlüğe kaydeder."</string>
+  <!-- Custom filter -->
+  <string name="morphe_custom_filter_screen_title">Özel filtre</string>
+  <string name="morphe_custom_filter_screen_summary">Herhangi bir bileşeni gizlemek için özel filtreleri yapılandırın</string>
+  <string name="morphe_custom_filter_title">Özel filtreyi etkinleştir</string>
+  <string name="morphe_custom_filter_strings_title">Özel filtre</string>
+  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+  <string name="morphe_custom_filter_strings_summary">Filtrelenecek bileşen yolu oluşturucu dizelerinin yeni satırlarla ayrılmış listesi</string>
+  <string name="morphe_custom_filter_toast_invalid_syntax">Geçersiz özel filtre: %s</string>
 </resources>

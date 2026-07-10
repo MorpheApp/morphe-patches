@@ -97,9 +97,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_surveys_title">Έρευνες</string>
   <string name="morphe_hide_surveys_summary">Κρύβει έρευνες και προτάσεις σχετικά με την ακρίβεια των προτάσεων ροής</string>
   <string name="morphe_hide_ticket_shelf_title">Ενότητα εισιτηρίων</string>
+  <string name="morphe_hide_upload_time_title">Χρόνος μεταμόρφωσης στη ροή και στα αποτελέσματα αναζήτησης</string>
+  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
+  <string name="morphe_hide_upload_time_summary">"Περιορισμοί:
+• Οι ενότητες Shorts, οι σελίδες καναλιών και τα αποτελέσματα αναζήτησης ενδέχεται να εξακολουθούν να εμφανίζουν τον χρόνο μεταφόρτωσης
+• Αυτή η λειτουργία δεν λειτουργεί με τη διάταξη αυτοκινήτου"</string>
   <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_recommendation_labels_title">Ετικέτες προτάσεων βίντεο</string>
   <string name="morphe_hide_video_recommendation_labels_summary">Απόκρυψη των ετικετών \"Άνθρωποι παρακολούθησαν επίσης\" και \"Ενδέχεται επίσης να σας αρέσει\" στα αποτελέσματα αναζήτησης</string>
+  <string name="morphe_hide_view_count_title">Αριθμός προβολών στη ροή και στα αποτελέσματα αναζήτησης</string>
+  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
+  <string name="morphe_hide_view_count_summary">"Περιορισμοί:
+• Οι ενότητες Shorts, οι σελίδες καναλιών και τα αποτελέσματα αναζήτησης ενδέχεται να εξακολουθούν να εμφανίζουν τους αριθμούς προβολών
+• Αυτή η λειτουργία δεν λειτουργεί με τη διάταξη αυτοκινήτου"</string>
   <string name="morphe_hide_web_search_results_title">Αποτελέσματα αναζήτησης στο διαδίκτυο</string>
   <string name="morphe_hide_web_search_results_summary">Κρύβει την ενότητα \'Αποτέλεσμα από το διαδίκτυο\' από τα αποτελέσματα αναζήτησης</string>
   <string name="morphe_hide_you_may_like_section_title">Απόκρυψη της ενότητας ‘Μήπως σου αρέσει’</string>
@@ -158,11 +168,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_transcript_section_title">Απόκρυψη μεταγραφής</string>
   <string name="morphe_hide_video_details_section_title">Απόκρυψη τμήματος \"Λεπτομέρειες βίντεο\"</string>
   <string name="morphe_hide_filter_bar_screen_title">Γραμμή φίλτρων</string>
-  <string name="morphe_hide_filter_bar_screen_summary">Επιλέξτε ποια στοιχεία εμφανίζονται στη σελίδα καναλιού</string>
-  <string name="morphe_hide_filter_bar_feed_in_feed_title">Γραμμή φίλτρων στις ροές</string>
-  <string name="morphe_hide_filter_bar_feed_in_related_videos_title">Γραμμή φίλτρων στα σχετικά βίντεο</string>
-  <string name="morphe_hide_filter_bar_feed_in_search_title">Γραμμή φίλτρων στα αποτελέσματα αναζήτησης</string>
-  <string name="morphe_hide_filter_bar_feed_in_history_title">Γραμμή φίλτρων στο ιστορικό παρακολούθησης</string>
+  <string name="morphe_hide_filter_bar_screen_summary">Επιλέξτε πού να αποκρύψετε την μπάρα φιλτραρίσματος κύλισης</string>
+  <string name="morphe_hide_filter_bar_in_comments_title">Απόκρυψη στα σχόλια</string>
+  <string name="morphe_hide_filter_bar_in_feed_title">Κρύψτε στις ροές</string>
+  <string name="morphe_hide_filter_bar_in_related_videos_title">Κρύψτε στα σχετικά βίντεο</string>
+  <string name="morphe_hide_filter_bar_in_search_title">Κρύψτε στα αποτελέσματα αναζήτησης</string>
+  <string name="morphe_hide_filter_bar_in_history_title">Κρύψτε στο ιστορικό παρακολούθησης</string>
   <string name="morphe_channel_screen_title">Σελίδα καναλιού</string>
   <string name="morphe_channel_screen_summary">Επιλέξτε ποια στοιχεία εμφανίζονται στην οθόνη καναλιού</string>
   <string name="morphe_hide_channel_tab_title">Ενεργοποίηση φίλτρου κατηγορίες καναλιών</string>
@@ -199,30 +210,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_community_guidelines_title">Οδηγίες κοινότητας</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Κουμπί «Δημιουργία Short»</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Κουμπιά χρονοσήμανσης και emoji</string>
+  <string name="morphe_hide_comments_filter_bar_options_title">Κρύψτε επιλογές γραμμής φίλτρων</string>
+  <string name="morphe_hide_comments_filter_bar_options_summary">Κρύβει όλες τις επιλογές της γραμμής φίλτρων εκτός από τις \'Κορυφαία\' και \'Νεότερη\'</string>
   <string name="morphe_hide_comments_info_button_title">Κουμπί Απόκρυψης Πληροφοριών</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Απόκρυψη γραμμής δωρητών ζωντανής συνομιλίας</string>
   <string name="morphe_hide_comments_preview_comment_title">Προεπισκόπηση σχολίου</string>
   <string name="morphe_hide_comments_preview_comment_summary">Απόκρυψη της προεπισκόπησης σχολίων κάτω από το βίντεο πριν ανοίξετε την πλήρη ενότητα σχολίων</string>
   <string name="morphe_hide_comments_thanks_button_title">Κουμπί «Σας ευχαριστούμε»</string>
-  <string name="morphe_sanitize_comments_category_bar_title">Καθαρισμός γραμμής κατηγοριών</string>
-  <string name="morphe_sanitize_comments_category_bar_summary">Απόκρυψη όλων των επιλογών ταξινόμησης σχολίων εκτός από \"Κορυφαία\" και \"Νεότερα\"</string>
-  <string name="morphe_custom_filter_screen_title">Προσαρμοσμένο φίλτρο</string>
-  <string name="morphe_custom_filter_screen_summary">Διαμορφώστε προσαρμοσμένα φίλτρα για να αποκρύψετε οποιαδήποτε συνιστώσα</string>
-  <string name="morphe_custom_filter_title">Χρήση προσαρμοσμένου φίλτρου</string>
-  <string name="morphe_custom_filter_strings_title">Προσαρμοσμένο φίλτρο</string>
-  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
-  <string name="morphe_custom_filter_strings_summary">Λίστα συμβολοσειρών κατασκευαστή διαδρομής στοιχείου για φιλτράρισμα, χωρισμένη με νέες γραμμές</string>
-  <string name="morphe_custom_filter_toast_invalid_syntax">Μη έγκυρο προσαρμοσμένο φίλτρο: %s</string>
-  <string name="morphe_hide_view_count_title">Αριθμός προβολών στη ροή και στα αποτελέσματα αναζήτησης</string>
-  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
-  <string name="morphe_hide_view_count_summary">"Περιορισμοί:
-• Οι ενότητες Shorts, οι σελίδες καναλιών και τα αποτελέσματα αναζήτησης ενδέχεται να εξακολουθούν να εμφανίζουν τους αριθμούς προβολών
-• Αυτή η λειτουργία δεν λειτουργεί με την διάταξη αυτοκινήτου."</string>
-  <string name="morphe_hide_upload_time_title">Χρόνος μεταμόρφωσης στη ροή και στα αποτελέσματα αναζήτησης</string>
-  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
-  <string name="morphe_hide_upload_time_summary">"Περιορισμοί:
-• Οι ενότητες Shorts, οι σελίδες καναλιών και τα αποτελέσματα αναζήτησης ενδέχεται να εξακολουθούν να εμφανίζουν τον χρόνο μεταφόρτωσης
-• Αυτή η λειτουργία δεν λειτουργεί με τη διάταξη αυτοκινήτου"</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_title">Απολυμαίνετε τις διασυνδεδεμένες αναζητήσεις</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_summary">Απολυμαίνει τις διασυνδεδεμένες αναζητήσεις, αφήνοντας μόνο το αρχικό απλό κείμενο</string>
   <string name="morphe_hide_keyword_content_screen_title">Φίλτρο λέξεων-κλειδιών</string>
   <string name="morphe_hide_keyword_content_screen_summary">Επιλέξτε συγκεκριμένες λέξεις ή φράσεις για να αποκρύψετε βίντεο στις ροές και στην αναζήτηση</string>
   <string name="morphe_hide_keyword_content_home_title">Φιλτράρισμα αρχικής ροής</string>
@@ -253,7 +249,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Λέξη-κλειδί έχει αντικρουόμενες δηλώσεις: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Η λέξη-κλειδί είναι πολύ σύντομη και απαιτεί εισαγωγικά: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Θα κρυφτούν όλα τα βίντεο με την λέξη-κλειδί: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Απόκρυψη ραφιού \"Κατάστημα Δημιουργού\"</string>
   <string name="morphe_hide_end_screen_store_banner_title">Ετικέτα καταστήματος στην τελική οθόνη</string>
   <string name="morphe_hide_general_ads_title">Γενικές διαφημίσεις</string>
@@ -263,9 +259,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_popup_ads_title">Απόκρυψη διαφημίσεων παίκτη</string>
   <string name="morphe_hide_self_sponsor_ads_title">Κάρτες αυτοπροώθησης</string>
   <string name="morphe_hide_shopping_links_title">Σύνδεσμοι αγορών στην περιγραφή βίντεο</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">Προωθήσεις για απόκτηση YouTube Premium</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Διαφημίσεις βίντεο</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">Προωθήσεις για απόκτηση YouTube Premium</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Η διεύθυνση URL αντιγράφηκε στο πρόχειρο</string>
@@ -855,9 +850,9 @@ Second \"item\" text"</string>
 • Εμφανίζεται η παλιά γραμμή ενεργειών βίντεο χωρίς κατάρρευση"</string>
   <string name="morphe_tablet_layout_in_player_title">Ενεργοποίηση διάταξης για tablet στον παίκτη</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Επαναφέρει τη παλιά διάταξη του αναπαραγωγέα
+  <string name="morphe_tablet_layout_in_player_summary">"Επαναφέρει την παλιά διάταξη του παίκτη
 
-Περιορισμοί: Εάν η επιλογή \"Επαναφορά παλιάς γραμμής εργαλείων βίντεο\" είναι απενεργοποιημένη, η επικάλυψη \"Περισσότερα βίντεο\" ενδέχεται να μην είναι διαθέσιμη"</string>
+Περιορισμός: Εάν η επιλογή 'Επαναφορά παλαιού γραμμής εργαλείων βίντεο' είναι απενεργοποιημένη, η επικάλυψη 'Περισσότερα βίντεο' ενδέχεται να μην είναι διαθέσιμη"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Παραποίηση έκδοσης εφαρμογής</string>
   <string name="morphe_spoof_app_version_summary">Εξαπατά τον διακομιστή ώστε να νομίζει ότι χρησιμοποιείτε μια παλαιότερη έκδοση εφαρμογής για να επαναφέρετε τις παλιότερες λειτουργίες UI</string>
@@ -1098,7 +1093,7 @@ Second \"item\" text"</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">Προτεραιότητα ποιότητας βίντεο</string>
   <string name="morphe_prioritize_video_quality_summary">Δίνει προτεραιότητα στην υψηλότερη διαθέσιμη ποιότητα βίντεο έναντι της αποδοτικότητας του κωδικοποιητή</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Να επιτρέπεται ο κωδικοποιητής Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Επιτρέπει την αποκωδικοποίηση AV1 λογισμικού κατά τη χρήση του προγράμματος προβολής Android VR</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Η ενεργοποίηση αυτής της ρύθμισης ενδέχεται να χρησιμοποιήσει αποκωδικοποίηση λογισμικού AV1.
@@ -1114,11 +1109,13 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_about_js">• Εάν η αποπερικοπή αποτύχει, η αναπαραγωγή μπορεί να αποτύχει</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Ο εξαναγκασμός αρχικής γλώσσας ήχου δεν είναι διαθέσιμος</string>
+  <!-- Quality refers to video quality -->
+  <string name="morphe_spoof_video_streams_about_720p_max">• Η ποιότητα ενδέχεται να περιορίζεται στα 720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Παραλλαγή πρόγραμμα αναπαραγωγής JavaScript</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Εμφάνιση παραποίησης στα Στατιστικά για ιδιοφυείς</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Επαναφορά γραμμής ενεργειών βίντεο παλαιού τύπου</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Διορθώνει την μη εμφάνιση των απορρίψεων και την αδυναμία απόκρυψης των κουμπιών ενεργειών βίντεο.
+  <string name="morphe_restore_old_video_action_bar_summary">"Διορθώνει την εμφάνιση των μη εμφανιζόμενων απορρίψεων και η γραμμή εργαλείων βίντεο δεν μπορεί να κρυφτεί
 
-Περιορισμοί: Επιστρέφει στην παλιά μορφή επικάλυψης 'Περισσότερα βίντεο'"</string>
+Περιορισμός: Επιστρέφει στην παλιά στυλ επικάλυψης 'Περισσότερα βίντεο'"</string>
 </resources>

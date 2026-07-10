@@ -97,9 +97,19 @@ Zmiany obejmują:
   <string name="morphe_hide_surveys_title">Ukryj ankiety</string>
   <string name="morphe_hide_surveys_summary">Ukrywa ankiety i monity dotyczące trafności rekomendacji</string>
   <string name="morphe_hide_ticket_shelf_title">Ukryj sekcję biletów</string>
+  <string name="morphe_hide_upload_time_title">Ukryj datę publikacji</string>
+  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
+  <string name="morphe_hide_upload_time_summary">"Ograniczenia:
+• Sekcje filmów Short, strony kanałów i wyniki wyszukiwania mogą nadal pokazywać datę publikacji
+• Nie działa z interfejsem samochodowym"</string>
   <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_recommendation_labels_title">Ukryj etykiety rekomendacji filmów</string>
   <string name="morphe_hide_video_recommendation_labels_summary">Ukrywa etykiety \"Ludzie też oglądali\" i \"Może Ci się spodobać\" w wynikach wyszukiwania</string>
+  <string name="morphe_hide_view_count_title">Ukryj liczbę wyświetleń</string>
+  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
+  <string name="morphe_hide_view_count_summary">"Ograniczenia:
+• Sekcje filmów Short, strony kanałów i wyniki wyszukiwania mogą nadal pokazywać liczbę wyświetleń
+• Nie działa z interfejsem samochodowym"</string>
   <string name="morphe_hide_web_search_results_title">Ukryj wyniki wyszukiwania z sieci</string>
   <string name="morphe_hide_web_search_results_summary">Ukrywa sekcję \"Wyniki z sieci\" w wynikach wyszukiwania</string>
   <string name="morphe_hide_you_may_like_section_title">Ukryj sekcję \"Może Cię zainteresować\"</string>
@@ -158,11 +168,12 @@ Zmiany obejmują:
   <string name="morphe_hide_transcript_section_title">Ukryj sekcję Transkrypcja</string>
   <string name="morphe_hide_video_details_section_title">Ukryj sekcję \"Szczegóły filmu\"</string>
   <string name="morphe_hide_filter_bar_screen_title">Pasek filtrów</string>
-  <string name="morphe_hide_filter_bar_screen_summary">Zdecyduj, gdzie ukryć przewijane kafelki kategorii</string>
-  <string name="morphe_hide_filter_bar_feed_in_feed_title">Ukryj na stronie głównej</string>
-  <string name="morphe_hide_filter_bar_feed_in_related_videos_title">Ukryj w powiązanych filmach</string>
-  <string name="morphe_hide_filter_bar_feed_in_search_title">Ukryj w wynikach wyszukiwania</string>
-  <string name="morphe_hide_filter_bar_feed_in_history_title">Ukryj w historii oglądania</string>
+  <string name="morphe_hide_filter_bar_screen_summary">Zdecyduj, gdzie ukryć przewijany pasek filtrów</string>
+  <string name="morphe_hide_filter_bar_in_comments_title">Ukryj w komentarzach</string>
+  <string name="morphe_hide_filter_bar_in_feed_title">Ukryj na stronie głównej</string>
+  <string name="morphe_hide_filter_bar_in_related_videos_title">Ukryj w powiązanych filmach</string>
+  <string name="morphe_hide_filter_bar_in_search_title">Ukryj w wynikach wyszukiwania</string>
+  <string name="morphe_hide_filter_bar_in_history_title">Ukryj w historii oglądania</string>
   <string name="morphe_channel_screen_title">Strona kanału</string>
   <string name="morphe_channel_screen_summary">Zdecyduj, które elementy będą wyświetlane na stronie kanału</string>
   <string name="morphe_hide_channel_tab_title">Włącz filtr zakładek kanału</string>
@@ -199,30 +210,15 @@ Zmiany obejmują:
   <string name="morphe_hide_comments_community_guidelines_title">Ukryj wytyczne społeczności</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Ukryj przycisk \"Utwórz Shorts\"</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Ukryj przyciski Emoji i Znaczniki czasu</string>
+  <string name="morphe_hide_comments_filter_bar_options_title">Ukryj opcje paska filtrów</string>
+  <string name="morphe_hide_comments_filter_bar_options_summary">Ukrywa wszystkie opcje paska filtrów z wyjątkiem \"Najpopularniejsze\" i \"Najnowsze\"</string>
   <string name="morphe_hide_comments_info_button_title">Ukryj przycisk Informacje</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Ukryj pasek wspierających w czacie</string>
   <string name="morphe_hide_comments_preview_comment_title">Ukryj podgląd komentarza</string>
   <string name="morphe_hide_comments_preview_comment_summary">Ukrywa podgląd komentarza pod filmem przed otwarciem pełnej sekcji komentarzy</string>
   <string name="morphe_hide_comments_thanks_button_title">Ukryj przycisk Podziękuj</string>
-  <string name="morphe_sanitize_comments_category_bar_title">Oczyść pasek kategorii</string>
-  <string name="morphe_sanitize_comments_category_bar_summary">Ukrywa wszystkie opcje sortowania komentarzy z wyjątkiem \"Najpopularniejsze\" i \"Najnowsze\"</string>
-  <string name="morphe_custom_filter_screen_title">Własny filtr</string>
-  <string name="morphe_custom_filter_screen_summary">Skonfiguruj własne filtry, aby ukryć dowolny element</string>
-  <string name="morphe_custom_filter_title">Włącz własny filtr</string>
-  <string name="morphe_custom_filter_strings_title">Ścieżki do ukrycia</string>
-  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
-  <string name="morphe_custom_filter_strings_summary">Lista ścieżek elementów do ukrycia, każda w nowej linii</string>
-  <string name="morphe_custom_filter_toast_invalid_syntax">Nieprawidłowy własny filtr: %s</string>
-  <string name="morphe_hide_view_count_title">Ukryj liczbę wyświetleń</string>
-  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
-  <string name="morphe_hide_view_count_summary">"Ograniczenia:
-• Sekcje filmów Short, strony kanałów i wyniki wyszukiwania mogą nadal pokazywać liczbę wyświetleń
-• Ta funkcja nie działa z interfejsem samochodowym"</string>
-  <string name="morphe_hide_upload_time_title">Ukryj datę publikacji</string>
-  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
-  <string name="morphe_hide_upload_time_summary">"Ograniczenia:
-• Sekcje filmów Short, strony kanałów i wyniki wyszukiwania mogą nadal wyświetlać datę publikacji
-• Ta funkcja nie działa z interfejsem samochodowym"</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_title">Oczyść wyróżnione frazy wyszukiwania</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_summary">Oczyszcza linkowanie z wyróżnionych fraz wyszukiwania, zostawiając tylko oryginalny, zwykły tekst</string>
   <string name="morphe_hide_keyword_content_screen_title">Filtry słów</string>
   <string name="morphe_hide_keyword_content_screen_summary">Wybierz konkretne słowa lub frazy, aby ukryć filmy na stronie głównej i w wynikach wyszukiwania</string>
   <string name="morphe_hide_keyword_content_home_title">Ukryj filmy na stronie głównej</string>
@@ -253,7 +249,7 @@ Ograniczenia:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Słowo zawiera sprzeczne deklaracje: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Słowo jest za krótkie i wymaga użycia cudzysłowu: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Słowo ukryje wszystkie filmy: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Ukryj sekcję sklepu twórcy</string>
   <string name="morphe_hide_end_screen_store_banner_title">Ukryj baner sklepowy po zakończeniu filmu</string>
   <string name="morphe_hide_general_ads_title">Ukryj reklamy ogólne</string>
@@ -263,9 +259,8 @@ Ograniczenia:
   <string name="morphe_hide_player_popup_ads_title">Ukryj wyskakujące reklamy w odtwarzaczu</string>
   <string name="morphe_hide_self_sponsor_ads_title">Ukryj karty autopromocji</string>
   <string name="morphe_hide_shopping_links_title">Ukryj linki do sklepów</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">Ukryj promocje YouTube Premium</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Ukryj reklamy w filmach</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">Ukryj promocje YouTube Premium</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Skopiowano link do schowka</string>
@@ -631,8 +626,8 @@ Aby przejść do ustawień, włącz przycisk w menu: Ogólne → Pasek narzędzi
   <string name="morphe_show_toolbar_settings_button_type_title">Działanie przycisku Ustawienia</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Gdy włączone, dotknięcie otwiera ustawienia Morphe, a przytrzymanie ustawienia YouTube. Wyłącz, aby odwrócić te akcje</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
-  <string name="morphe_hide_player_flyout_title">Menu ustawień filmu</string>
-  <string name="morphe_hide_player_flyout_summary">Zdecyduj, które elementy będą wyświetlane w menu ustawień filmu</string>
+  <string name="morphe_hide_player_flyout_title">Menu wysuwane</string>
+  <string name="morphe_hide_player_flyout_summary">Zdecyduj, które elementy będą wyświetlane w menu wysuwanym filmu</string>
   <!-- 'Audio track' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_audio_track_title">Ukryj menu \"Ścieżka dźwiękowa\"</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
@@ -856,7 +851,7 @@ Układ samochodowy
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Przywraca stary układ odtwarzacza
 
-​Ograniczenia: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączona, nakładka \"Więcej filmów\" może być niedostępna"</string>
+Ograniczenia: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączona, nakładka \"Więcej filmów\" może być niedostępna"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Fałszuj wersję aplikacji</string>
   <string name="morphe_spoof_app_version_summary">Oszukuje serwer, że używasz starszej wersji aplikacji, aby przywrócić klasyczne elementy interfejsu</string>
@@ -1097,7 +1092,7 @@ Ograniczenia:
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">Nadaj priorytet jakości filmu</string>
   <string name="morphe_prioritize_video_quality_summary">Nadaje priorytet najwyższej dostępnej jakości filmu kosztem wydajności kodeka</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Zezwól na AV1 dla Android VR</string>
   <string name="morphe_spoof_video_streams_av1_summary">Umożliwia programowe dekodowanie AV1 podczas korzystania z klienta Android VR</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Włączenie tej opcji może wymusić programowe dekodowanie AV1.
@@ -1113,11 +1108,13 @@ Odtwarzanie filmu z użyciem AV1 może powodować zacinanie się lub gubienie kl
   <string name="morphe_spoof_video_streams_about_js">• Jeśli odszyfrowywanie zawiedzie, odtwarzanie może nie działać</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Wymuszanie oryginalnej ścieżki dźwiękowej nie działa</string>
+  <!-- Quality refers to video quality -->
+  <string name="morphe_spoof_video_streams_about_720p_max">• Jakość może być ograniczona do 720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Wariant skryptu JS odtwarzacza</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Pokaż fałszowanie w Statystykach dla nerdów</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Przywróć stary pasek akcji filmu</string>
   <string name="morphe_restore_old_video_action_bar_summary">"Naprawia problem z niewidocznymi łapkami w dół i brakiem możliwości ukrycia przycisków akcji
 
-​Ograniczenia: Przywraca stary wygląd nakładki \"Więcej filmów\""</string>
+Ograniczenia: Przywraca stary wygląd nakładki \"Więcej filmów\""</string>
 </resources>

@@ -160,4 +160,12 @@ Spilun mun bregðast ef Player JavaScript hash er úrelt."</string>
 Þetta getur hjálpað við að bera kennsl á hluta þegar sérsniðnar síur eru búnar til.
 
 Athugaðu að einnig kunna að vera skráð ákveðin notendagögn, svo sem IP-talan þín."</string>
+  <!-- Custom filter -->
+  <string name="morphe_custom_filter_screen_title">Sérstakur síubreyting</string>
+  <string name="morphe_custom_filter_screen_summary">Stilltu sérstakar síubreytingar til að fela þáttinn</string>
+  <string name="morphe_custom_filter_title">Virkja sérstaka síu</string>
+  <string name="morphe_custom_filter_strings_title">Sérstakur síubreyting</string>
+  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+  <string name="morphe_custom_filter_strings_summary">Listi yfir Litho UI útlitseininga strengja til að síu, aðskilin með nýjum línum</string>
+  <string name="morphe_custom_filter_toast_invalid_syntax">Ógild sérstök síubreyting: %s</string>
 </resources>

@@ -130,6 +130,12 @@ class SwipeControlsConfigurationProvider {
             return sensitivity
         }
 
+    /**
+     * Playback speed change per tick, expressed as an integer multiplied by 100 (e.g. 5 = 0.05x).
+     */
+    val speedStepInt: Int
+        get() = Settings.SWIPE_SPEED_STEP.get().stepInt
+
     //endregion
 
     //region overlay adjustments
@@ -274,9 +280,19 @@ class SwipeControlsConfigurationProvider {
      * The current style of the overlay, determining its layout and appearance.
      */
     val overlayStyle = Settings.SWIPE_OVERLAY_STYLE.get()
+
+    /**
+     * Playback speed change per tick, expressed as an integer multiplied by 100 (e.g. 5 = 0.05x).
+     */
+    @Suppress("unused")
+    enum class SwipeSpeedStep(val stepInt: Int) {
+        STEP_005(5),
+        STEP_010(10),
+        STEP_025(25),
+    }
     //endregion
 
-    //region behaviour
+    //region behavior
     /**
      * Indicates whether the brightness level should be saved and restored when entering or exiting fullscreen mode.
      */

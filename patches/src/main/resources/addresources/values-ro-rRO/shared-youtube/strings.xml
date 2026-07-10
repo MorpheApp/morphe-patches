@@ -160,4 +160,12 @@ Redarea va eșua dacă hash-ul scriptului JavaScript al playerului este depăși
 Acest lucru poate ajuta la identificarea componentelor atunci când creați filtre personalizate.
 
 Cu toate acestea, activarea acestei opțiuni va înregistra și unele date ale utilizatorului, cum ar fi adresa dvs. IP."</string>
+  <!-- Custom filter -->
+  <string name="morphe_custom_filter_screen_title">Filtru personalizat</string>
+  <string name="morphe_custom_filter_screen_summary">Configurați filtre personalizate pentru a ascunde orice componentă</string>
+  <string name="morphe_custom_filter_title">Activează filtru personalizat</string>
+  <string name="morphe_custom_filter_strings_title">Filtru personalizat</string>
+  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+  <string name="morphe_custom_filter_strings_summary">Listă de șiruri ale constructorului de cale pentru componente pentru a filtra, separate prin linii noi</string>
+  <string name="morphe_custom_filter_toast_invalid_syntax">Filtru personalizat nevalid: %s</string>
 </resources>

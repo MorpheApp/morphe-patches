@@ -97,9 +97,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_surveys_title">सर्वेक्षण छुपाएं</string>
   <string name="morphe_hide_surveys_summary">फ़ीड अनुशंसा सटीकता के बारे में सर्वेक्षण और नज़दीकी को छुपाता है</string>
   <string name="morphe_hide_ticket_shelf_title">छिपाएं टिकट शेल्फ</string>
+  <string name="morphe_hide_upload_time_title">अपलोड समय छुपाएं</string>
+  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
+  <string name="morphe_hide_upload_time_summary">"सीमाएँ:
+• शॉर्ट्स शेल्फ, चैनल पेज और खोज परिणाम अभी भी अपलोड का समय दिखा सकते हैं
+• यह सुविधा ऑटोमोटिव लेआउट के साथ काम नहीं करती है"</string>
   <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_recommendation_labels_title">छुपाएं वीडियो सिफारिश लेबल</string>
   <string name="morphe_hide_video_recommendation_labels_summary">खोज परिणामों में \'लोग भी देखे\' और \'आपको भी पसंद आ सकते हैं\' लेबल को छुपाता है</string>
+  <string name="morphe_hide_view_count_title">छुपाएं व्यू काउंट</string>
+  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
+  <string name="morphe_hide_view_count_summary">"सीमाएँ:
+• शॉर्ट्स शेल्फ, चैनल पेज और खोज परिणाम अभी भी देखे जाने की संख्या दिखा सकते हैं
+• यह सुविधा ऑटोमोटिव लेआउट के साथ काम नहीं करती है"</string>
   <string name="morphe_hide_web_search_results_title">वेब खोज परिणाम छुपाएं</string>
   <string name="morphe_hide_web_search_results_summary">सर्च परिणामों से \'वेब से परिणाम\' सेक्शन छुपाता है</string>
   <string name="morphe_hide_you_may_like_section_title">छुपाएं \'आपको पसंद हो सकता है\' अनुभाग</string>
@@ -158,11 +168,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_transcript_section_title">ट्रांस्क्रिप्‍ट अनुभाग छुपाएं</string>
   <string name="morphe_hide_video_details_section_title">\'वीडियो विवरण\' अनुभाग छुपाएं</string>
   <string name="morphe_hide_filter_bar_screen_title">फ़िल्टर बार</string>
-  <string name="morphe_hide_filter_bar_screen_summary">स्क्रॉलिंग श्रेणी चिप को कहां छुपाएं चुनें</string>
-  <string name="morphe_hide_filter_bar_feed_in_feed_title">फीड्स में छुपाएं</string>
-  <string name="morphe_hide_filter_bar_feed_in_related_videos_title">छिपाएं संबंधित वीडियो</string>
-  <string name="morphe_hide_filter_bar_feed_in_search_title">खोज परिणामों में छुपाएं</string>
-  <string name="morphe_hide_filter_bar_feed_in_history_title">इतिहास में छुपाएं</string>
+  <string name="morphe_hide_filter_bar_screen_summary">स्क्रॉलिंग फ़िल्टर बार को छिपाने के लिए स्थान चुनें</string>
+  <string name="morphe_hide_filter_bar_in_comments_title">टिप्पणियों में छिपाएं</string>
+  <string name="morphe_hide_filter_bar_in_feed_title">फ़ीड में छुपाएं</string>
+  <string name="morphe_hide_filter_bar_in_related_videos_title">संबंधित वीडियो में छुपाएं</string>
+  <string name="morphe_hide_filter_bar_in_search_title">खोज परिणामों में छुपाएं</string>
+  <string name="morphe_hide_filter_bar_in_history_title">देखने के इतिहास में छुपाएं</string>
   <string name="morphe_channel_screen_title">चैनल पेज</string>
   <string name="morphe_channel_screen_summary">चैनल पेज पर प्रदर्शित होने वाले घटकों को चुनें</string>
   <string name="morphe_hide_channel_tab_title">चैनल टैब फ़िल्टर सक्षम करें</string>
@@ -199,30 +210,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_community_guidelines_title">छुपाएं समुदाय निदेशिका</string>
   <string name="morphe_hide_comments_create_a_short_button_title">छुपाएं \'बटन बनाने के लिए छोटा\' बटन</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">इमोजी और टाइमस्टैम्प बटन को छुपाएं</string>
+  <string name="morphe_hide_comments_filter_bar_options_title">फ़िल्टर बार विकल्प छुपाएं</string>
+  <string name="morphe_hide_comments_filter_bar_options_summary">\'टॉप\' और \'नवीनतम\' के अलावा सभी फ़िल्टर बार विकल्प छुपाता है</string>
   <string name="morphe_hide_comments_info_button_title">छुपाएं जानकारी बटन</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">लाइव चैट दानदाताओं की बार छुपाएं</string>
   <string name="morphe_hide_comments_preview_comment_title">छुपाएं पूर्वावलोकन टिप्पणी</string>
   <string name="morphe_hide_comments_preview_comment_summary">संपूर्ण टिप्पणी अनुभाग खोलने से पहले वीडियो के नीचे टिप्पणी पूर्वावलोकन को छुपाता है</string>
   <string name="morphe_hide_comments_thanks_button_title">छुपाएं \'धन्यवाद\' बटन</string>
-  <string name="morphe_sanitize_comments_category_bar_title">श्रेणी बार को सैनिटाइज करें</string>
-  <string name="morphe_sanitize_comments_category_bar_summary">\'टॉप\' और \'नवीनतम\' के अलावा सभी टिप्पणी सॉर्टिंग विकल्पों को छुपाता है</string>
-  <string name="morphe_custom_filter_screen_title">कस्टम फ़िल्टर</string>
-  <string name="morphe_custom_filter_screen_summary">किसी भी घटक को छुपाने के लिए कस्टम फ़िल्टर कॉन्फ़िगर करें</string>
-  <string name="morphe_custom_filter_title">कस्टम फ़िल्टर सक्षम करें</string>
-  <string name="morphe_custom_filter_strings_title">कस्टम फ़िल्टर</string>
-  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
-  <string name="morphe_custom_filter_strings_summary">फ़िल्टर करने के लिए घटक पथ बिल्डर स्ट्रिंग्स की सूची, नई लाइनों से अलग की गई</string>
-  <string name="morphe_custom_filter_toast_invalid_syntax">अवैध कस्टम फ़िल्टर: %s</string>
-  <string name="morphe_hide_view_count_title">छुपाएं व्यू काउंट</string>
-  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
-  <string name="morphe_hide_view_count_summary">"सीमाएँ:
-• शॉर्ट्स शेल्फ्स, चैनल पेज, और खोज परिणाम अभी भी देखे गए गिनती दिखा सकते हैं।
-• यह सुविधा ऑटोमोबाइल लेआउट के साथ काम नहीं करती है।"</string>
-  <string name="morphe_hide_upload_time_title">अपलोड समय छुपाएं</string>
-  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
-  <string name="morphe_hide_upload_time_summary">"सीमाएँ:
-• शॉर्ट्स शेल्फ, चैनल पेज और खोज परिणामों में अपलोड का समय अभी भी दिख सकता है
-• यह सुविधा ऑटोमोबाइल लेआउट के साथ काम नहीं करती है"</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_title">हाइलाइट किए गए खोज लिंक सैनिटाइज़ करें</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_summary">हाइलाइट किए गए खोज लिंक सैनिटाइज़ करता है, केवल मूल सादे पाठ को छोड़ देता है</string>
   <string name="morphe_hide_keyword_content_screen_title">कीवर्ड फ़िल्टर</string>
   <string name="morphe_hide_keyword_content_screen_summary">फ़ीड और खोज में वीडियो को छिपाने के लिए विशिष्ट शब्द या वाक्यांश चुनें</string>
   <string name="morphe_hide_keyword_content_home_title">गृह वीडियो को शब्दों से छुपाएं</string>
@@ -253,7 +249,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">कीवर्ड के घोषणाओं में संघर्ष है: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">कीवर्ड बहुत छोटा है और क्वोटेस की आवश्यकता है: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">कीवर्ड सभी वीडियो को छुपाएगा: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">छुपाएं क्रिएटर स्टोर शेल्फ</string>
   <string name="morphe_hide_end_screen_store_banner_title">छुपाएं अंत पर्दे स्टोर बैनर</string>
   <string name="morphe_hide_general_ads_title">सामान्य विज्ञापन छुपाएं</string>
@@ -263,9 +259,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_popup_ads_title">प्लेयर पॉपअप विज्ञापन छिपाएं</string>
   <string name="morphe_hide_self_sponsor_ads_title">छुपाएं स्वयं प्रायोजित कार्ड</string>
   <string name="morphe_hide_shopping_links_title">쇼핑 링크 숨기기</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">छुपाएं YouTube प्रीमियम प्रोमोशन</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">छुपाएं वीडियो विज्ञापन</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">छुपाएं YouTube प्रीमियम प्रोमोशन</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">लिंक क्लिपबोर्ड में कॉपी किया गया</string>
@@ -856,7 +851,7 @@ ReturnYouTubeDislike.com खोलने के लिए यहाँ टैप
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"पुराने प्लेयर लेआउट को पुनर्स्थापित करता है
 
-सीमाएं: यदि 'पुराना वीडियो एक्शन बार पुनर्स्थापित करें' बंद कर दिया गया है, तो 'अधिक वीडियो' ओवरले उपलब्ध नहीं हो सकता है"</string>
+सीमा: यदि 'पुराने वीडियो एक्शन बार को पुनर्स्थापित करें' बंद कर दिया गया है, तो 'अधिक वीडियो' ओवरले उपलब्ध नहीं हो सकता है"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Spoof ऐप संस्करण</string>
   <string name="morphe_spoof_app_version_summary">सर्वर को यह सोचने में धोखा देता है कि आप पुराने ऐप संस्करण का उपयोग कर रहे हैं ताकि विरासत UI सुविधाओं को बहाल किया जा सके</string>
@@ -1097,7 +1092,7 @@ DeArrow.ajay.app खोलने के लिए यहां टैप कर�
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">वीडियो की गुणवत्ता को प्राथमिकता दी जाएगी</string>
   <string name="morphe_prioritize_video_quality_summary">कोडेक दक्षता से अधिक उच्चतम उपलब्ध वीडियो गुणवत्ता को प्राथमिकता देता है</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Android VR AV1 की अनुमति दें</string>
   <string name="morphe_spoof_video_streams_av1_summary">Android VR क्लाइंट का उपयोग करते समय सॉफ्टवेयर AV1 डिकोडिंग की अनुमति देता है</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"इस सेटिंग को सक्षम करने पर सॉफ्टवेयर AV1 डिकोडिंग का उपयोग किया जा सकता है।
@@ -1113,11 +1108,13 @@ AV1 के साथ वीडियो प्लेबैक स्टटर �
   <string name="morphe_spoof_video_streams_about_js">• अगर डीक्रिप्शन विफल हो जाता है, तो प्लेबैक भी विफल हो सकता है।</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• बल मूल ऑडियो उपलब्ध नहीं है</string>
+  <!-- Quality refers to video quality -->
+  <string name="morphe_spoof_video_streams_about_720p_max">• गुणवत्ता 720p तक सीमित हो सकती है</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">प्लेयर जावास्क्रिप्ट वैरिएंट</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">\'nerds के लिए आँकड़े\' में स्पूफिंग दिखाएं</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">पुराने वीडियो एक्शन बार को पुनर्स्थापित करें</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Dislike नहीं दिखना और वीडियो एक्शन बटन को छुपाने में अक्षम होने की समस्या ठीक करता है
+  <string name="morphe_restore_old_video_action_bar_summary">"डिस्लाइक्स को नहीं दिखाए जाने और वीडियो एक्शन बटन को छिपाए नहीं जा सकने की समस्या ठीक करता है
 
-सीमाएँ: पुराने शैली के 'अधिक वीडियो' ओवरले पर वापस लौटता है"</string>
+सीमा: पुराने 'अधिक वीडियो' ओवरले पर वापस लौटता है"</string>
 </resources>

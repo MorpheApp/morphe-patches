@@ -132,6 +132,7 @@ Om du inaktiverar batterioptimeringar för MicroG påverkas inte batteritiden ne
 
 Tryck på knappen Fortsätt och tillåt optimeringsändringar."</string>
   <string name="gms_core_dialog_continue_text">Fortsätt</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Visa dialogruta för MicroG-batterioptimering</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Om du inaktiverar det här döljs meddelandet om MicroG-batterioptimeringar. 
 
 Om batterioptimeringarna inte ändras kan du uppleva att
@@ -140,6 +141,7 @@ Om batterioptimeringarna inte ändras kan du uppleva att
 • uppspelning i bakgrunden inte fungerar"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Applänkhantering</string>
+  <string name="morphe_link_handling_summary">Konfigurera länkar så att de öppnas i den här appen</string>
   <string name="morphe_link_handling_step1_title">Steg 1: Inaktivera den ursprungliga appens länkar</string>
   <string name="morphe_link_handling_step1_message">Öppna inställningarna för den ursprungliga appen och inaktivera alla domänlänkar</string>
   <string name="morphe_link_handling_step2_title">Steg 2: Aktivera den modifierade appens länkar</string>

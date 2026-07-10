@@ -160,4 +160,12 @@ A lejátszás meghiúsul, ha a lejátszó JavaScript hash elavult."</string>
 ​Ez segíthet az összetevők beazonosításában egyedi szűrők készítésekor.
 
 ​Azonban a funkció bekapcsolása bizonyos felhasználói adatokat, például az IP-címedet is naplózni fogja."</string>
+  <!-- Custom filter -->
+  <string name="morphe_custom_filter_screen_title">Egyedi szűrő</string>
+  <string name="morphe_custom_filter_screen_summary">Konfigurálja az egyedi szűrőket a komponensek elrejtéséhez</string>
+  <string name="morphe_custom_filter_title">Egyéni szűrő engedélyezése</string>
+  <string name="morphe_custom_filter_strings_title">Egyedi szűrő</string>
+  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+  <string name="morphe_custom_filter_strings_summary">Szűrendő elemek útvonal-karakterláncainak listája, új sorokkal elválasztva</string>
+  <string name="morphe_custom_filter_toast_invalid_syntax">Érvénytelen egyedi szűrő: %s</string>
 </resources>

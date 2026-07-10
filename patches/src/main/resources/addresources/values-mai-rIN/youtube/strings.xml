@@ -71,8 +71,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_subscribed_channels_bar_title">सदस्यता लिइएको च्यानल बार लुकाउनुहोस्</string>
   <string name="morphe_hide_surveys_title">चिकित्सा पैनल छिपाएं</string>
   <string name="morphe_hide_ticket_shelf_title">टिकट शेल्फ छिपाएं</string>
+  <string name="morphe_hide_upload_time_title">खोज परिणाम कीवर्ड द्वारा फ़िल्टर नहीं किए गए हैं</string>
+  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_recommendation_labels_title">वीडियो अनुशंसा लेबल छिपाएं</string>
+  <string name="morphe_hide_view_count_title">होम टैब में वीडियो कीवर्ड द्वारा फ़िल्टर किए गए हैं</string>
+  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_web_search_results_title">वेब खोज परिणाम छिपाएं</string>
   <string name="morphe_hide_you_may_like_section_title">‘तपाईंले मनपर्न सक्नुहुन्छ’ खण्ड लुकाउनुहोस्</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
@@ -96,10 +100,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_hype_points_title">हाइप पॉइंट छिपाएं</string>
   <string name="morphe_hide_subscribe_button_title">सब्सक्राइब बटन छिपाइ</string>
   <string name="morphe_hide_filter_bar_screen_title">फ़िल्टर बार</string>
-  <string name="morphe_hide_filter_bar_feed_in_feed_title">फ़ीड में छिपाएं</string>
-  <string name="morphe_hide_filter_bar_feed_in_related_videos_title">संबंधित वीडियो में छिपा हुआ</string>
-  <string name="morphe_hide_filter_bar_feed_in_search_title">देखने के इतिहास में छिपाएं</string>
-  <string name="morphe_hide_filter_bar_feed_in_history_title">चैनल पेज घटकों को छिपाएं या दिखाएं</string>
   <string name="morphe_channel_screen_title">लिंक पूर्वावलोकन छिपाएं</string>
   <string name="morphe_hide_channel_tab_title">च्यानल ट्याब फिल्टर सक्षम गर्नुहोस्</string>
   <string name="morphe_hide_channel_tab_filter_strings_title">च्यानल ट्याब फिल्टर</string>
@@ -129,16 +129,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_info_button_title">जानकारी लुकाउने बटन</string>
   <string name="morphe_hide_comments_preview_comment_title">कस्टम फ़िल्टर सक्षम है</string>
   <string name="morphe_hide_comments_thanks_button_title">घटक पथ बिल्डर तारों की सूची नई लाइन से अलग करके फ़िल्टर करें</string>
-  <string name="morphe_sanitize_comments_category_bar_title">श्रेणी बारलाई व्यवस्थित पार्नुहोस्</string>
-  <string name="morphe_custom_filter_screen_title">दृश्य गणना फ़ीड और खोज परिणामों में छिपी हुई है</string>
-  <string name="morphe_custom_filter_title">अपलोड समय छिपाएं</string>
-  <string name="morphe_custom_filter_strings_title">अनुकूल फिल्टर</string>
-  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
-  <string name="morphe_custom_filter_toast_invalid_syntax">अमान्य अनुकूलन फिल्टर: %s</string>
-  <string name="morphe_hide_view_count_title">होम टैब में वीडियो कीवर्ड द्वारा फ़िल्टर किए गए हैं</string>
-  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
-  <string name="morphe_hide_upload_time_title">खोज परिणाम कीवर्ड द्वारा फ़िल्टर नहीं किए गए हैं</string>
-  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_keyword_content_screen_title">कीवर्ड फिल्टर</string>
   <string name="morphe_hide_keyword_content_home_title">होममा भिडियोहरूलाई कीवर्डबाट लुकाउनुहोस्</string>
   <string name="morphe_hide_keyword_content_search_title">कीवर्ड द्वारा खोजी परिणामहरू लुकाउनुहोस्</string>
@@ -156,7 +146,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">कीवर्ड में विरोधाभासी घोषणाएँ हैं: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">कीवर्ड बहुत छोटा है और उद्धरण की आवश्यकता है: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">कीवर्ड सभी वीडियो छिपा देगा: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">क्रिएटर स्टोर शेल्फ छिपाएं</string>
   <string name="morphe_hide_end_screen_store_banner_title">एंड स्क्रीन स्टोर बैनर छिपाएं</string>
   <string name="morphe_hide_general_ads_title">सामान्य विज्ञापन छिपाएं</string>
@@ -165,9 +155,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_popup_ads_title">प्लेयर पपअप विज्ञापनहरू लुकाउनुहोस्</string>
   <string name="morphe_hide_self_sponsor_ads_title">स्व-प्रायोजित कार्ड छिपाएं</string>
   <string name="morphe_hide_shopping_links_title">शॉपिंग लिंक छिपाएं</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium प्रमोशन छिपाइ</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">वीडियो विज्ञापन छिपाएं</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium प्रमोशन छिपाइ</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
@@ -594,7 +583,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_premium_video_quality_title">प्रीमियम गुणस्तर विकल्पहरू लुकाउनुहोस्</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">भिडियो गुणस्तरलाई प्राथमिकता दिनुहोस्</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Android VR AV1 अनुमति देब</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"यो सेटिङ सक्षम गर्नाले सफ्टवेयर AV1 डिकोडिङ प्रयोग हुन सक्छ।
 
@@ -609,6 +598,7 @@ AV1 को साथ भिडियो प्लेब्याक स्टट
   <string name="morphe_spoof_video_streams_about_js">• यदि डिओबफस्केशन असफल भयो भने, प्लेब्याक असफल हुन सक्छ</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• मूल ऑडियो फोर्स उपलब्ध नहि अछि।</string>
+  <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_player_js_variant_title">प्लेयर जावास्क्रिप्ट भिन्नता</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
 </resources>

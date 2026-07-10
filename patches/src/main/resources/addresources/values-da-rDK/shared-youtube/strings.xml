@@ -160,4 +160,12 @@ Afspilningen vil mislykkes, hvis hashen for afspiller JavaScript er forældet."<
 Det kan hjælpe med at finde komponenter til egne filtre.
 
 Det logger dog også brugerdata som din IP-adresse."</string>
+  <!-- Custom filter -->
+  <string name="morphe_custom_filter_screen_title">Brugerdefineret filter</string>
+  <string name="morphe_custom_filter_screen_summary">Konfigurer brugerdefinerede filtre for at skjule en komponent</string>
+  <string name="morphe_custom_filter_title">Aktiver brugerdefineret filter</string>
+  <string name="morphe_custom_filter_strings_title">Tilpasset filter</string>
+  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+  <string name="morphe_custom_filter_strings_summary">Liste over komponentsti-strengbyggere til filtrering, adskilt af nye linjer</string>
+  <string name="morphe_custom_filter_toast_invalid_syntax">Ugyldigt brugerdefineret filter: %s</string>
 </resources>

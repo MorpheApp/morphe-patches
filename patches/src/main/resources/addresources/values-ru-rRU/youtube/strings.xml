@@ -97,9 +97,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_surveys_title">Скрыть опросы</string>
   <string name="morphe_hide_surveys_summary">Скрывает опросы и подсказки о точности рекомендаций ленты</string>
   <string name="morphe_hide_ticket_shelf_title">Скрыть секцию билетов</string>
+  <string name="morphe_hide_upload_time_title">Скрыть время загрузки</string>
+  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
+  <string name="morphe_hide_upload_time_summary">"Ограничения:
+• Секции Shorts, страницы каналов и результаты поиска все еще могут показывать время загрузки
+• Эта функция не работает с автомобильным форм-фактором"</string>
   <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_recommendation_labels_title">Скрыть метки видеорекомендаций</string>
   <string name="morphe_hide_video_recommendation_labels_summary">Скрывает метки \"Люди также смотрели\" и \"Вам также может понравиться\" в результатах поиска</string>
+  <string name="morphe_hide_view_count_title">Скрыть количество просмотров</string>
+  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
+  <string name="morphe_hide_view_count_summary">"Ограничения:
+• Секции Shorts, страницы каналов и результаты поиска все еще могут показывать счетчики просмотров
+• Эта функция не работает с автомобильным форм-фактором"</string>
   <string name="morphe_hide_web_search_results_title">Скрыть результаты веб-поиска</string>
   <string name="morphe_hide_web_search_results_summary">Скрывает раздел «Результаты из Интернета» в результатах поиска</string>
   <string name="morphe_hide_you_may_like_section_title">Скрыть раздел \"Вам может понравиться\"</string>
@@ -158,11 +168,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_transcript_section_title">Скрыть секцию \"Транскрипт\"</string>
   <string name="morphe_hide_video_details_section_title">Скрыть секцию \"Подробности видео\"</string>
   <string name="morphe_hide_filter_bar_screen_title">Панель фильтров</string>
-  <string name="morphe_hide_filter_bar_screen_summary">Выберите, какие компоненты скрывать с помощью пользовательских фильтров</string>
-  <string name="morphe_hide_filter_bar_feed_in_feed_title">Скрыть панель фильтров в ленте</string>
-  <string name="morphe_hide_filter_bar_feed_in_related_videos_title">Скрыть панель фильтров в похожих видео</string>
-  <string name="morphe_hide_filter_bar_feed_in_search_title">Скрыть панель фильтров в поиске</string>
-  <string name="morphe_hide_filter_bar_feed_in_history_title">Скрыть в истории просмотров</string>
+  <string name="morphe_hide_filter_bar_screen_summary">Выберите, где скрыть панель фильтров прокрутки</string>
+  <string name="morphe_hide_filter_bar_in_comments_title">Скрыть в комментариях</string>
+  <string name="morphe_hide_filter_bar_in_feed_title">Скрыть панель фильтров в ленте</string>
+  <string name="morphe_hide_filter_bar_in_related_videos_title">Скрыть панель фильтров в похожих видео</string>
+  <string name="morphe_hide_filter_bar_in_search_title">Скрыть панель фильтров в поиске</string>
+  <string name="morphe_hide_filter_bar_in_history_title">Скрыть в истории просмотров</string>
   <string name="morphe_channel_screen_title">Страница канала</string>
   <string name="morphe_channel_screen_summary">Выберите, какие компоненты отображать на странице канала</string>
   <string name="morphe_hide_channel_tab_title">Включить фильтр вкладок канала</string>
@@ -199,30 +210,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_community_guidelines_title">Скрыть правила сообщества</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Скрыть кнопку \"Создать Short\"</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Скрыть кнопки эмодзи и метки времени</string>
+  <string name="morphe_hide_comments_filter_bar_options_title">Скрыть параметры панели фильтров</string>
+  <string name="morphe_hide_comments_filter_bar_options_summary">Скрывает все параметры панели фильтров, кроме «Лучшие» и «Новые»</string>
   <string name="morphe_hide_comments_info_button_title">Скрыть кнопку \"Инфо\"</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Скрыть панель донатеров в прямом чате</string>
   <string name="morphe_hide_comments_preview_comment_title">Скрыть предпросмотр комментария</string>
   <string name="morphe_hide_comments_preview_comment_summary">Скрывает предварительный просмотр комментария под видео перед открытием полного раздела комментариев</string>
   <string name="morphe_hide_comments_thanks_button_title">Скрыть кнопку \"Спасибо\"</string>
-  <string name="morphe_sanitize_comments_category_bar_title">Очистить панель категорий</string>
-  <string name="morphe_sanitize_comments_category_bar_summary">Скрывает все параметры сортировки комментариев, кроме \"Лучшие\" и \"Новые\"</string>
-  <string name="morphe_custom_filter_screen_title">Кастомный фильтр</string>
-  <string name="morphe_custom_filter_screen_summary">Настройте пользовательские фильтры для скрытия любого компонента</string>
-  <string name="morphe_custom_filter_title">Включить кастомный фильтр</string>
-  <string name="morphe_custom_filter_strings_title">Кастомный фильтр</string>
-  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
-  <string name="morphe_custom_filter_strings_summary">Список строк конструктора путей компонентов для фильтрации, разделенных новыми строками</string>
-  <string name="morphe_custom_filter_toast_invalid_syntax">Недопустимый кастомный фильтр: %s</string>
-  <string name="morphe_hide_view_count_title">Скрыть количество просмотров</string>
-  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
-  <string name="morphe_hide_view_count_summary">"Ограничения:
-• Полки Shorts, страницы каналов и результаты поиска все равно могут показывать количество просмотров.
-• Эта функция не работает с автомобильной компоновкой."</string>
-  <string name="morphe_hide_upload_time_title">Скрыть время загрузки</string>
-  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
-  <string name="morphe_hide_upload_time_summary">"Ограничения:
-• Shorts, страницы каналов и результаты поиска все еще могут показывать время загрузки
-• Эта функция не работает с автомобильным форм-фактором"</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_title">Очистить выделенные ссылки поиска</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_summary">Очищает выделенные ссылки поиска, оставляя только исходный простой текст</string>
   <string name="morphe_hide_keyword_content_screen_title">Фильтр по ключевым словам</string>
   <string name="morphe_hide_keyword_content_screen_summary">Выберите определенные слова или фразы для скрытия видео в лентах и результатах поиска</string>
   <string name="morphe_hide_keyword_content_home_title">Скрыть видео на \"Главной\" по ключевым словам</string>
@@ -253,7 +249,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Ключевое слово содержит конфликтующие заявления: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Ключевое слово слишком короткое и требует кавычки: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Ключевое слово скроет все видео: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Скрыть секцию магазина автора</string>
   <string name="morphe_hide_end_screen_store_banner_title">Скрыть баннер магазина</string>
   <string name="morphe_hide_general_ads_title">Скрыть общую рекламу</string>
@@ -263,9 +259,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_popup_ads_title">Скрыть всплывающие окна плеера</string>
   <string name="morphe_hide_self_sponsor_ads_title">Скрыть заставки саморекламы</string>
   <string name="morphe_hide_shopping_links_title">Скрыть ссылки на товары</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">Скрыть рекламу YouTube Premium</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Скрыть видеорекламу</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">Скрыть рекламу YouTube Premium</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Ссылка скопирована в буфер обмена</string>
@@ -857,9 +852,9 @@ Second \"item\" text"</string>
 • Панель действий видео не свернута"</string>
   <string name="morphe_tablet_layout_in_player_title">Включить макет для планшетов в плеере</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Восстанавливает прежний макет плеера
+  <string name="morphe_tablet_layout_in_player_summary">"Восстанавливает старый макет плеера
 
-Ограничения: Если опция \"Восстановить старую панель инструментов видео\" отключена, наложение \"Ещё видео\" может быть недоступно"</string>
+Ограничение: Если «Восстановить старую панель управления видео» отключена, наложение «Ещё видео» может быть недоступно"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Подменить версию приложения</string>
   <string name="morphe_spoof_app_version_summary">Обманывает сервер, заставляя его думать, что вы используете старую версию приложения, чтобы восстановить устаревшие элементы пользовательского интерфейса</string>
@@ -1100,7 +1095,7 @@ Second \"item\" text"</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">Приоритет видео</string>
   <string name="morphe_prioritize_video_quality_summary">Приоритезирует максимально доступное качество видео над эффективностью кодека</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Разрешить Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Разрешает программную расшифровку AV1 при использовании клиента Android VR</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Включение этой опции может использовать программное декодирование AV1.
@@ -1116,11 +1111,13 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_about_js">• Если деобфускация провалится, воспроизведение может провалиться</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Принудительная оригинальная звуковая дорожка недоступна</string>
+  <!-- Quality refers to video quality -->
+  <string name="morphe_spoof_video_streams_about_720p_max">• Качество может быть ограничено 720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Вариант JavaScript плеера</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Показать подмену в статистике для гиков</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Восстановить старую панель действий видео</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Исправляет проблему, из-за которой не отображаются отметки \"Не нравится\" и кнопки действий над видео не могут быть скрыты.
+  <string name="morphe_restore_old_video_action_bar_summary">"Исправляет проблему с не отображением отметки «Не нравится» и невозможностью скрыть кнопки управления видео
 
-Ограничения: Возврат к старому стилю наложения \"Другие видео\""</string>
+Ограничение: Возвращается к старому стилю наложения «Ещё видео»"</string>
 </resources>

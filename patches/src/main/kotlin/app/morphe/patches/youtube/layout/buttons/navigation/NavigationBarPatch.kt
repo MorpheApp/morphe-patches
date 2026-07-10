@@ -5,7 +5,7 @@
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
  *
- * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
 
 package app.morphe.patches.youtube.layout.buttons.navigation
@@ -23,7 +23,7 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMuta
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.fix.proto.immutableMethodRef
 import app.morphe.patches.shared.misc.fix.proto.mutableCopyMethodRef
-import app.morphe.patches.shared.misc.fix.proto.parseByteArrayMethod
+import app.morphe.patches.shared.misc.fix.proto.parseByteArrayMethodRef
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
@@ -258,6 +258,7 @@ val navigationBarPatch = bytecodePatch(
                 val messageLiteRegister = pivotBarRendererConstructorStartRegister + messageLiteIndex + 1
                 val insertIndex = it.instructionMatches.last().index
                 val backupRegister = getFreeRegisterProvider(insertIndex, 1).getFreeRegister()
+                val parseByteArrayMethod = parseByteArrayMethodRef.get()!!
 
                 addInstructionsAtControlFlowLabel(
                     insertIndex,
@@ -579,7 +580,7 @@ val navigationBarPatch = bytecodePatch(
 
                         # Parse bytes back into native Buttons wrapper class
                         sget-object v$protoListFreeRegister, $buttonsClass->a:$buttonsClass
-                        invoke-static { v$protoListFreeRegister, v$byteRegister }, $parseByteArrayMethod
+                        invoke-static { v$protoListFreeRegister, v$byteRegister }, ${parseByteArrayMethodRef.get()!!}
                         move-result-object v$protoListFreeRegister
                         check-cast v$protoListFreeRegister, $buttonsClass
                         

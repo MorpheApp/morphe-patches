@@ -160,4 +160,12 @@ Second \"item\" text"</string>
 এটি কাস্টম ফিল্টার তৈরি করার সময় উপাদান সনাক্ত করতে সাহায্য করতে পারে।
 
 তবে, এটি সক্রিয় করলে আপনার আইপি ঠিকানার মতো কিছু ব্যবহারকারীর ডেটাও লগ করা হবে।"</string>
+  <!-- Custom filter -->
+  <string name="morphe_custom_filter_screen_title">কাস্টম ফিল্টার</string>
+  <string name="morphe_custom_filter_screen_summary">কোনো উপাদান লুকানোর জন্য কাস্টম ফিল্টার কনফিগার করুন</string>
+  <string name="morphe_custom_filter_title">কাস্টম ফিল্টার সক্রিয় করুন</string>
+  <string name="morphe_custom_filter_strings_title">কাস্টম ফিল্টার</string>
+  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+  <string name="morphe_custom_filter_strings_summary">নতুন লাইন দ্বারা পৃথক করা ফিল্টার করার জন্য উপাদান পাথ বিল্ডার স্ট্রিং এর তালিকা</string>
+  <string name="morphe_custom_filter_toast_invalid_syntax">ত্রুটিপূর্ণ কাস্টম ফিল্টার: %s</string>
 </resources>

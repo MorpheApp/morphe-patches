@@ -116,4 +116,6 @@ Second \"item\" text"</string>
   <string name="morphe_replace_links_with_shortener_summary">Принудува видеата да го користат скратениот формат на URL youtu.be</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_protobuffer_summary">Додава дополнителни информации за евидентира ње за програмери за да ги идентификуваат компонентите на апликацијата</string>
+  <!-- Custom filter -->
+  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
 </resources>

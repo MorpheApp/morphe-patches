@@ -35,9 +35,9 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v1.34.0-dev.3](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.34.0-dev.3)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;122 patches total
+> **[v1.34.0](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.34.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;123 patches total
 <details>
-<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;73 patches</summary>
+<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;72 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -78,7 +78,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Force original audio](#force-original-audio) | Adds an option to always use the original audio track. |  |
 | [GmsCore support](#gmscore-support) | Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services. |  |
 | [Hide Shorts components](#hide-shorts-components) | Adds options to hide components related to Shorts. | • Hide Shorts app shortcut<br>• Hide Shorts widget |
-| [Hide ads](#hide-ads) | Adds options to remove general ads. |  |
+| [Hide ads](#hide-ads) | Adds options to hide general ads, Premium promotions and video ads. |  |
 | [Hide autoplay preview](#hide-autoplay-preview) | Adds an option to hide the autoplay preview at the end of videos. |  |
 | [Hide end screen cards](#hide-end-screen-cards) | Adds an option to hide suggested video cards at the end of videos. |  |
 | [Hide end screen suggested video](#hide-end-screen-suggested-video) | Adds an option to hide the suggested video at the end of videos. |  |
@@ -117,14 +117,13 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Spoof video streams](#spoof-video-streams) | Adds options to spoof the client video streams to fix playback. |  |
 | [Swipe controls](#swipe-controls) | Adds options to enable and configure volume and brightness swipe controls. |  |
 | [Theme](#theme) | Adds options for theming and applies a custom background theme (dark background theme defaults to pure black). | • Dark theme background color<br>• Light theme background color |
-| [Video ads](#video-ads) | Adds an option to remove ads in the video player. |  |
 | [Video quality](#video-quality) | Adds options to set default video qualities and always use the advanced video quality menu. |  |
 | [Voice over translation](#voice-over-translation) | Adds additional voice over languages using text-to-speech synchronized to the video playback. |  |
 
 </details>
 
 <details>
-<summary>📦 YouTube Music&nbsp;&nbsp;•&nbsp;&nbsp;30 patches</summary>
+<summary>📦 YouTube Music&nbsp;&nbsp;•&nbsp;&nbsp;32 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -149,10 +148,12 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Enable swipe to dismiss miniplayer](#enable-swipe-to-dismiss-miniplayer) | Adds an option to enable dismissing the miniplayer by swiping down on it. |  |
 | [Force original audio](#force-original-audio) | Adds an option to always use the original audio track. |  |
 | [GmsCore support](#gmscore-support) | Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services. |  |
-| [Hide ads](#hide-ads) | Adds options to hide ads such as the fullscreen Premium popup and "Get Music Premium" label. |  |
+| [Hide ads](#hide-ads) | Adds options to hide fullscreen ads, Premium promotions and video ads. |  |
 | [Hide buttons](#hide-buttons) | Adds options to hide the cast, history, notification, and search buttons. |  |
-| [Hide category bar](#hide-category-bar) | Adds an option to hide the category bar at the top of the homepage. |  |
-| [Hide music video ads](#hide-music-video-ads) | Adds an option to hide ads that appear while listening to or streaming music videos, podcasts, or songs. |  |
+| [Hide filter bar](#hide-filter-bar) | Adds an option to hide the filter bar at the top of the homepage. |  |
+| [Hide flyout menu components](#hide-flyout-menu-components) | Adds options to hide individual items from the player and queue flyout menus. |  |
+| [Hide layout components](#hide-layout-components) | Adds options to hide general layout components. |  |
+| [Hide music action buttons](#hide-music-action-buttons) | Adds options to hide action buttons under the player. |  |
 | [Miniplayer previous and next buttons](#miniplayer-previous-and-next-buttons) | Adds options to show previous and next track buttons in the miniplayer. |  |
 | [Navigation bar](#navigation-bar) | Adds options to hide navigation bar, labels and buttons. |  |
 | [Network proxy](#network-proxy) | Adds settings to route supported network requests through an HTTP or HTTPS proxy. |  |
@@ -221,9 +222,7 @@ See the [Patches template](https://github.com/morpheapp/morphe-patches-template)
 
 Morphe Patches are licensed under the [GNU General Public License v3.0](LICENSE), with additional conditions under GPLv3 Section 7:
 
-- **Attribution (7b):** Any use of this code, including derivatives, must preserve all notices.
-  
-- **Name Restriction (7c):** The name **"Morphe"** may not be used for derivative works.  
-  Derivatives must adopt a distinct identity unrelated to "Morphe".
+- **Attribution (7b):** Any use of this code, including derivative works, must preserve all original notices and disclaimers.
+- **Name & Branding Restrictions (7c & 7e):** Derivative works must use their own distinct branding. The **"Morphe"** name, logos, and trademarks may not be used for the branding or title of derivative works (e.g., names like *"Morphe Plus"*, *"Morphe Expanded"*, or *"Morphe UserXYZ"* are strictly prohibited).
 
-See the [LICENSE](LICENSE) file for the full GPLv3 terms and the [NOTICE](NOTICE) file for full conditions of GPLv3 Section 7
+See the [LICENSE](LICENSE) file for full GPLv3 terms and the [NOTICE](NOTICE) file for full conditions of GPLv3 Section 7.

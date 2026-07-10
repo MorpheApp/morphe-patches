@@ -97,9 +97,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_surveys_title">ซ่อนแบบสำรวจ</string>
   <string name="morphe_hide_surveys_summary">ซ่อนแบบสำรวจและการแนะนำเกี่ยวกับความแม่นยำของการแนะนำฟีด</string>
   <string name="morphe_hide_ticket_shelf_title">ซ่อนชั้นวางตั๋ว</string>
+  <string name="morphe_hide_upload_time_title">ซ่อนเวลาอัปโหลด</string>
+  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
+  <string name="morphe_hide_upload_time_summary">"ข้อจำกัด:
+• แถบ Shorts, หน้าช่อง และผลการค้นหา อาจยังคงแสดงเวลาอัปโหลด
+• ไม่ทำงานกับรูปแบบการแสดงผลสำหรับรถยนต์"</string>
   <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_recommendation_labels_title">ซ่อนป้ายกำกับการแนะนำวิดีโอ</string>
   <string name="morphe_hide_video_recommendation_labels_summary">ซ่อนป้ายกำกับ \'ผู้คนยังรับชม\' และ \'คุณอาจชอบ\' ในผลการค้นหา</string>
+  <string name="morphe_hide_view_count_title">ซ่อนจำนวนการดู</string>
+  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
+  <string name="morphe_hide_view_count_summary">"ข้อจำกัด:
+• ชั้นวาง Shorts, หน้าช่อง และผลการค้นหาอาจยังคงแสดงจำนวนการดู
+• ไม่ทำงานกับรูปแบบการแสดงผลสำหรับรถยนต์"</string>
   <string name="morphe_hide_web_search_results_title">ซ่อนผลลัพธ์การค้นหาบนเว็บ</string>
   <string name="morphe_hide_web_search_results_summary">ซ่อนส่วน \'ผลลัพธ์จากเว็บ\' จากผลการค้นหา</string>
   <string name="morphe_hide_you_may_like_section_title">ซ่อนส่วน \'คุณอาจชอบ\'</string>
@@ -158,11 +168,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_transcript_section_title">ซ่อนส่วน Transcript</string>
   <string name="morphe_hide_video_details_section_title">ซ่อนส่วน \'รายละเอียดวิดีโอ\'</string>
   <string name="morphe_hide_filter_bar_screen_title">แถบตัวกรอง</string>
-  <string name="morphe_hide_filter_bar_screen_summary">เลือกที่จะซ่อนชิปหมวดหมู่ที่เลื่อนได้ตรงไหน</string>
-  <string name="morphe_hide_filter_bar_feed_in_feed_title">ซ่อนในฟีด</string>
-  <string name="morphe_hide_filter_bar_feed_in_related_videos_title">ซ่อนในวิดีโอที่เกี่ยวข้อง</string>
-  <string name="morphe_hide_filter_bar_feed_in_search_title">ซ่อนในผลการค้นหา</string>
-  <string name="morphe_hide_filter_bar_feed_in_history_title">ซ่อนในประวัติการดู</string>
+  <string name="morphe_hide_filter_bar_screen_summary">เลือกตำแหน่งที่จะซ่อนแถบตัวกรองแบบเลื่อนได้</string>
+  <string name="morphe_hide_filter_bar_in_comments_title">ซ่อนในความคิดเห็น</string>
+  <string name="morphe_hide_filter_bar_in_feed_title">ซ่อนในฟีด</string>
+  <string name="morphe_hide_filter_bar_in_related_videos_title">ซ่อนในวิดีโอที่เกี่ยวข้อง</string>
+  <string name="morphe_hide_filter_bar_in_search_title">ซ่อนในผลการค้นหา</string>
+  <string name="morphe_hide_filter_bar_in_history_title">ซ่อนในประวัติการดู</string>
   <string name="morphe_channel_screen_title">หน้าช่อง</string>
   <string name="morphe_channel_screen_summary">เลือกส่วนประกอบที่จะปรากฏบนหน้าช่อง</string>
   <string name="morphe_hide_channel_tab_title">เปิดใช้งานตัวกรองแท็บช่อง</string>
@@ -199,30 +210,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_community_guidelines_title">ซ่อนแนวทางชุมชน</string>
   <string name="morphe_hide_comments_create_a_short_button_title">ซ่อนปุ่ม \'สร้าง Shorts\'</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">ซ่อนปุ่มอีโมจิและปุ่มการประทับเวลา</string>
+  <string name="morphe_hide_comments_filter_bar_options_title">ซ่อนตัวเลือกแถบกรอง</string>
+  <string name="morphe_hide_comments_filter_bar_options_summary">ซ่อนตัวเลือกแถบกรองทั้งหมด ยกเว้น \'ยอดนิยม\' และ \'ใหม่ล่าสุด\'</string>
   <string name="morphe_hide_comments_info_button_title">ซ่อนปุ่มข้อมูล</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">ซ่อนแถบผู้บริจาคแชทสด</string>
   <string name="morphe_hide_comments_preview_comment_title">ซ่อนความคิดเห็นตัวอย่าง</string>
   <string name="morphe_hide_comments_preview_comment_summary">ซ่อนตัวอย่างความคิดเห็นใต้คลิปวิดีโอ ก่อนที่จะเปิดส่วนความคิดเห็นทั้งหมด</string>
   <string name="morphe_hide_comments_thanks_button_title">ซ่อนปุ่มขอบคุณ</string>
-  <string name="morphe_sanitize_comments_category_bar_title">ลบความปลอดภัยแถบหมวดหมู่</string>
-  <string name="morphe_sanitize_comments_category_bar_summary">ซ่อนตัวเลือกการจัดเรียงความคิดเห็นทั้งหมด ยกเว้น \'ยอดนิยม\' และ \'ล่าสุด\'</string>
-  <string name="morphe_custom_filter_screen_title">ตัวกรองแบบกำหนดเอง</string>
-  <string name="morphe_custom_filter_screen_summary">กำหนดค่าตัวกรองแบบกำหนดเองเพื่อซ่อนส่วนประกอบใดๆ</string>
-  <string name="morphe_custom_filter_title">เปิดใช้งานตัวกรองแบบกำหนดเอง</string>
-  <string name="morphe_custom_filter_strings_title">ตัวกรองแบบกำหนดเอง</string>
-  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
-  <string name="morphe_custom_filter_strings_summary">รายการสตริงตัวสร้างเส้นทางส่วนประกอบที่จะกรอง โดยคั่นด้วยบรรทัดใหม่</string>
-  <string name="morphe_custom_filter_toast_invalid_syntax">ตัวกรองแบบกำหนดเองไม่ถูกต้อง: %s</string>
-  <string name="morphe_hide_view_count_title">ซ่อนจำนวนการดู</string>
-  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
-  <string name="morphe_hide_view_count_summary">"ข้อจำกัด:
-• ชั้นวาง Shorts, หน้าช่อง และผลการค้นหาอาจยังคงแสดงจำนวนการดู
-• ฟีเจอร์นี้ไม่สามารถใช้งานได้กับรูปแบบที่ใช้ในยานยนต์"</string>
-  <string name="morphe_hide_upload_time_title">ซ่อนเวลาอัปโหลด</string>
-  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
-  <string name="morphe_hide_upload_time_summary">"ข้อจำกัด:
-• แถบ Shorts, หน้าช่อง และผลการค้นหา อาจยังคงแสดงเวลาอัปโหลด
-• คุณสมบัตินี้ไม่ทำงานกับฟอร์มแฟกเตอร์ยานยนต์"</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_title">ทำให้ลิงก์การค้นหาที่ไฮไลต์เป็นรูปแบบปกติ</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_summary">เปลี่ยนลิงก์การค้นหาที่ไฮไลต์เป็นข้อความธรรมดา</string>
   <string name="morphe_hide_keyword_content_screen_title">ตัวกรองคำหลัก</string>
   <string name="morphe_hide_keyword_content_screen_summary">เลือกคำหรือวลีเฉพาะเพื่อซ่อนวิดีโอในฟีดและผลการค้นหา</string>
   <string name="morphe_hide_keyword_content_home_title">ซ่อนวิดีโอหน้าแรกตามคำสำคัญ</string>
@@ -253,7 +249,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">คำสำคัญมีการประกาศที่ขัดแย้งกัน: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">คำสำคัญสั้นเกินไปและต้องใช้เครื่องหมายคำพูด: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">คำสำคัญจะซ่อนวิดีโอทั้งหมด: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">ซ่อนชั้นวางร้านค้าของผู้สร้าง</string>
   <string name="morphe_hide_end_screen_store_banner_title">ซ่อนแบนเนอร์ร้านค้าท้ายจอ</string>
   <string name="morphe_hide_general_ads_title">ซ่อนโฆษณาโดยทั่วไป</string>
@@ -263,9 +259,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_popup_ads_title">ซ่อนโปปอัพของผู้เล่น</string>
   <string name="morphe_hide_self_sponsor_ads_title">ซ่อนการ์ดที่สนับสนุนตัวเอง</string>
   <string name="morphe_hide_shopping_links_title">ซ่อนลิงก์การช็อปปิ้ง</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">ซ่อนการโปรโมต YouTube Premium</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">ซ่อนโฆษณาวิดีโอ</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">ซ่อนการโปรโมต YouTube Premium</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">คัดลอกลิงก์ไปยังคลิปบอร์ด</string>
@@ -853,9 +848,9 @@ Second \"item\" text"</string>
 • แถบการทำงานของวิดีโอแบบเดิมที่ไม่ยุบจะแสดงขึ้น"</string>
   <string name="morphe_tablet_layout_in_player_title">เปิดใช้งานรูปแบบแท็บเล็ตในโปรแกรมเล่น</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"คืนค่ารูปแบบเครื่องเล่นเดิม
+  <string name="morphe_tablet_layout_in_player_summary">"คืนรูปแบบผู้เล่นแบบเก่า
 
-ข้อจำกัด: หากปิด 'คืนค่าแถบเครื่องมือวิดีโอแบบเก่า' แล้ว 'วิดีโอเพิ่มเติม' อาจจะไม่แสดงผล"</string>
+ข้อจำกัด: หากปิด 'คืนแถบการทำงานของวิดีโอแบบเก่า' การแสดงผล 'วิดีโอเพิ่มเติม' อาจใช้งานไม่ได้"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">ปลอมแปลงเวอร์ชันแอป</string>
   <string name="morphe_spoof_app_version_summary">หลอกลวงเซิร์ฟเวอร์เพื่อให้คิดว่าคุณกำลังใช้แอปเวอร์ชันเก่าเพื่อคืนค่าคุณสมบัติ UI เดิม</string>
@@ -1096,7 +1091,7 @@ Second \"item\" text"</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">ให้ความสำคัญกับคุณภาพวิดีโอ</string>
   <string name="morphe_prioritize_video_quality_summary">ให้ความสำคัญกับคุณภาพวิดีโอสูงสุดเหนือประสิทธิภาพของโคเดก</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">อนุญาต Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">อนุญาตให้ถอดรหัส AV1 แบบซอฟต์แวร์เมื่อใช้ไคลเอนต์ Android VR</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"การเปิดใช้งานการตั้งค่านี้อาจใช้ซอฟต์แวร์ถอดรหัส AV1
@@ -1112,11 +1107,13 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_about_js">• ถ้า Deobfuscation ล้มเหลว การเล่นอาจล้มเหลว</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• บังคับใช้เสียงต้นฉบับไม่พร้อมใช้งาน</string>
+  <!-- Quality refers to video quality -->
+  <string name="morphe_spoof_video_streams_about_720p_max">• คุณภาพอาจจำกัดที่ 720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">แปลรูปแบบ JavaScript ของเพลเยอร์</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">แสดงการปลอมแปลงในสถิติสำหรับพวกเนิร์ด</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">กู้คืนแถบการทำงานของวิดีโอแบบเดิม</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"แก้ไขปัญหาการแสดงผลที่ไม่ชอบและปุ่มการทำงานของวิดีโอซ่อนไม่ได้
+  <string name="morphe_restore_old_video_action_bar_summary">"แก้ไขปัญหาการไม่แสดงผลการไม่ชอบ และปุ่มการทำงานของวิดีโอไม่สามารถซ่อนได้
 
-ข้อจำกัด: กลับไปใช้รูปแบบ 'วิดีโอเพิ่มเติม' แบบเดิม"</string>
+ข้อจำกัด: กลับไปใช้การแสดงผล 'วิดีโอเพิ่มเติม' แบบเก่า"</string>
 </resources>

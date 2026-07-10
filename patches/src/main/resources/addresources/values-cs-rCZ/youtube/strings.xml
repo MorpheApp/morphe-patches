@@ -97,9 +97,19 @@ Změny zahrnují:
   <string name="morphe_hide_surveys_title">Skrýt průzkumy</string>
   <string name="morphe_hide_surveys_summary">Skrývá průzkumy a návrhy týkající se přesnosti doporučení kanálu</string>
   <string name="morphe_hide_ticket_shelf_title">Skrýt panel Vstupenek</string>
+  <string name="morphe_hide_upload_time_title">Skrýt čas nahrání</string>
+  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
+  <string name="morphe_hide_upload_time_summary">"Omezení:
+• Shorts, stránky kanálů a výsledky vyhledávání mohou stále zobrazovat časy nahrání
+• Tato funkce nefunguje s automobilovým provedením"</string>
   <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_recommendation_labels_title">Skrýt štítky doporučení videí</string>
   <string name="morphe_hide_video_recommendation_labels_summary">Skrývá popisky „Lidé také sledovali“ a „Mohlo by se vám také líbit“ ve výsledcích vyhledávání</string>
+  <string name="morphe_hide_view_count_title">Skrýt počet zhlédnutí</string>
+  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
+  <string name="morphe_hide_view_count_summary">"Omezení:
+• Shorts, stránky kanálů a výsledky vyhledávání mohou stále zobrazovat počty zhlédnutí
+• Tato funkce nefunguje s automobilovým provedením"</string>
   <string name="morphe_hide_web_search_results_title">Skryté webové výsledky vyhledávání</string>
   <string name="morphe_hide_web_search_results_summary">Skrývá sekci ‚Výsledek z webu‘ ve výsledcích vyhledávání</string>
   <string name="morphe_hide_you_may_like_section_title">Skrýt sekci \"Může Vás zajímat\"</string>
@@ -158,11 +168,12 @@ Změny zahrnují:
   <string name="morphe_hide_transcript_section_title">Skrýt sekci „Přepis“</string>
   <string name="morphe_hide_video_details_section_title">Skrýt sekci „Podrobnosti o videu“</string>
   <string name="morphe_hide_filter_bar_screen_title">Lišta filtrů</string>
-  <string name="morphe_hide_filter_bar_screen_summary">Vyberte, kde skrýt posouvající se čipové kategorie</string>
-  <string name="morphe_hide_filter_bar_feed_in_feed_title">Skrýt v kanálech</string>
-  <string name="morphe_hide_filter_bar_feed_in_related_videos_title">Skrýt v souvisejících videích</string>
-  <string name="morphe_hide_filter_bar_feed_in_search_title">Skrýt ve výsledcích vyhledávání</string>
-  <string name="morphe_hide_filter_bar_feed_in_history_title">Skrýt v historii sledování</string>
+  <string name="morphe_hide_filter_bar_screen_summary">Zvolte, kde skrýt posuvný filtr</string>
+  <string name="morphe_hide_filter_bar_in_comments_title">Skrýt v komentářích</string>
+  <string name="morphe_hide_filter_bar_in_feed_title">Skrýt v kanálech</string>
+  <string name="morphe_hide_filter_bar_in_related_videos_title">Skrýt v souvisejících videích</string>
+  <string name="morphe_hide_filter_bar_in_search_title">Skrýt ve výsledcích vyhledávání</string>
+  <string name="morphe_hide_filter_bar_in_history_title">Skrýt v historii sledování</string>
   <string name="morphe_channel_screen_title">Stránka kanálu</string>
   <string name="morphe_channel_screen_summary">Vyberte, které komponenty se mají zobrazit na stránce kanálu</string>
   <string name="morphe_hide_channel_tab_title">Povolit filtr záložky kanálu</string>
@@ -199,30 +210,15 @@ Změny zahrnují:
   <string name="morphe_hide_comments_community_guidelines_title">Skrýt pokyny pro komunitu</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Skrýt tlačítko \"Vytvořit Short\"</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Skrýt tlačítka emotikonů a časových značek</string>
+  <string name="morphe_hide_comments_filter_bar_options_title">Skrýt možnosti lišty filtrů</string>
+  <string name="morphe_hide_comments_filter_bar_options_summary">Skryje všechny možnosti lišty filtrů kromě \'Nejlepší\' a \'Nejnovější\'</string>
   <string name="morphe_hide_comments_info_button_title">Skrýt tlačítko Info</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Skrýt lištu dárců živého chatu</string>
   <string name="morphe_hide_comments_preview_comment_title">Skrýt náhled komentáře</string>
   <string name="morphe_hide_comments_preview_comment_summary">Skrývá náhled komentáře pod videem před otevřením celé sekce komentářů</string>
   <string name="morphe_hide_comments_thanks_button_title">Skrýt tlačítko Poděkování</string>
-  <string name="morphe_sanitize_comments_category_bar_title">Vyčistit panel kategorií</string>
-  <string name="morphe_sanitize_comments_category_bar_summary">Skrývá všechny možnosti řazení komentářů kromě „Nejlepší“ a „Nejnovější“</string>
-  <string name="morphe_custom_filter_screen_title">Vlastní filtr</string>
-  <string name="morphe_custom_filter_screen_summary">Konfigurujte vlastní filtry pro skrytí libovolné komponenty</string>
-  <string name="morphe_custom_filter_title">Povolit vlastní filtr</string>
-  <string name="morphe_custom_filter_strings_title">Vlastní filtr</string>
-  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
-  <string name="morphe_custom_filter_strings_summary">Seznam řetězců builderu cest komponent k filtrování, oddělených novými řádky</string>
-  <string name="morphe_custom_filter_toast_invalid_syntax">Neplatný vlastní filtr: %s</string>
-  <string name="morphe_hide_view_count_title">Skrýt počet zhlédnutí</string>
-  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
-  <string name="morphe_hide_view_count_summary">"Omezení:
-• Police Shorts, stránky kanálů a výsledky vyhledávání mohou stále zobrazovat počty zhlédnutí.
-• Tato funkce nefunguje s automobilovým rozložením."</string>
-  <string name="morphe_hide_upload_time_title">Skrýt čas nahrání</string>
-  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
-  <string name="morphe_hide_upload_time_summary">"Omezení:
-• Shorts, stránky kanálů a výsledky vyhledávání mohou stále zobrazovat časy nahrání
-• Tato funkce nefunguje s automobilovým provedením"</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_title">Vyčistí zvýrazněné odkazy ve vyhledávání</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_summary">Vyčistí zvýrazněné odkazy ve vyhledávání a ponechá pouze původní čistý text</string>
   <string name="morphe_hide_keyword_content_screen_title">Filtr klíčových slov</string>
   <string name="morphe_hide_keyword_content_screen_summary">Vyberte konkrétní slova nebo fráze, pomocí kterých chcete skrýt videa v kanálech a ve vyhledávání</string>
   <string name="morphe_hide_keyword_content_home_title">Skrýt domovská videa podle klíčových slov</string>
@@ -253,7 +249,7 @@ Omezení:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Klíčové slovo má konfliktní deklarace: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Klíčové slovo je příliš krátké a vyžaduje uvozovky: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Klíčové slovo skryje všechna videa: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Skrýt poličku obchodu tvůrce</string>
   <string name="morphe_hide_end_screen_store_banner_title">Skrýt koncový banner obchodu</string>
   <string name="morphe_hide_general_ads_title">Skrýt běžné reklamy</string>
@@ -263,9 +259,8 @@ Omezení:
   <string name="morphe_hide_player_popup_ads_title">Skrýt vyskakovací reklamy hráče</string>
   <string name="morphe_hide_self_sponsor_ads_title">Skrýt karty se sponzorovanými produkty</string>
   <string name="morphe_hide_shopping_links_title">Skrýt nákupní odkazy</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">Skrýt nabídky YouTube Premium</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Skrýt reklamy ve videu</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">Skrýt nabídky YouTube Premium</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Odkaz zkopírován do schránky</string>
@@ -857,7 +852,7 @@ Rozložení pro automobily
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Obnoví staré rozložení přehrávače
 
-Omezení: Pokud je vypnutá možnost \"Obnovit starou lištu nástrojů videa\", překrytí \"Další videa\" nemusí být k dispozici"</string>
+Omezení: Pokud je vypnutá možnost 'Obnovit starou lištu akcí videa', překrytí 'Další videa' nemusí být k dispozici"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Napodobit verzi aplikace</string>
   <string name="morphe_spoof_app_version_summary">Triky serveru podvede, aby si myslel, že používáte starší verzi aplikace, a obnovil tak dědictví UI funkcí</string>
@@ -1098,7 +1093,7 @@ Omezení:
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">Priorizujte kvalitu videa</string>
   <string name="morphe_prioritize_video_quality_summary">Upřednostňuje nejvyšší dostupnou kvalitu videa před efektivitou kodeku</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Povolit Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Povolí softwarové dekódování AV1 při používání klienta Android VR</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Povolení tohoto nastavení může využívat softwarové dekódování AV1.
@@ -1114,11 +1109,13 @@ Přehrávání videa s AV1 se může sekat nebo vypadávat snímky."</string>
   <string name="morphe_spoof_video_streams_about_js">• Pokud selže deobfuskace, může se také selhat přehrávání</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Vynutit původní zvuk není k dispozici</string>
+  <!-- Quality refers to video quality -->
+  <string name="morphe_spoof_video_streams_about_720p_max">• Kvalita může být omezena na 720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Varianta JavaScript pro přehrávač</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Zobrazit podvádění ve statistikách pro nadšence</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Obnovit starou akční lištu videa</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Opravuje problém se nezobrazovanými dislajky a nemožností skrýt tlačítka akcí videa.
+  <string name="morphe_restore_old_video_action_bar_summary">"Opravuje problém se nezobrazujícími se nedokonalými hodnoceními a nemožností skrýt tlačítka akcí videa
 
-Omezení: Vrací se ke staršímu překryvu 'Další videa'"</string>
+Omezení: Vrací se ke starému stylu překrytí 'Další videa'"</string>
 </resources>

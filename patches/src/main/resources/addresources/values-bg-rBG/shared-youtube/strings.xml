@@ -160,4 +160,12 @@ Second \"item\" text"</string>
 Това може да помогне за идентифициране на компоненти при създаване на персонализирани филтри.
 
 Активирането на тази настройка обаче ще регистрира и някои потребителски данни, като например вашия IP адрес."</string>
+  <!-- Custom filter -->
+  <string name="morphe_custom_filter_screen_title">Персонализиран филтър</string>
+  <string name="morphe_custom_filter_screen_summary">Конфигурирайте персонализирани филтри, за да скриете всеки компонент</string>
+  <string name="morphe_custom_filter_title">Активиране на персонализиран филтър</string>
+  <string name="morphe_custom_filter_strings_title">Персонализиран филтър</string>
+  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+  <string name="morphe_custom_filter_strings_summary">Списък на низове на градителите на пътища на компоненти за филтриране, разделени с нови редове</string>
+  <string name="morphe_custom_filter_toast_invalid_syntax">Невалиден персонализиран филтър: %s</string>
 </resources>

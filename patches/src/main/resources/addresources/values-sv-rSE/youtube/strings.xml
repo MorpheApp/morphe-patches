@@ -90,9 +90,13 @@ Vissa layouter på serversidan kanske inte återställs.
   <string name="morphe_hide_subscribed_channels_bar_title">Dölj fältet med kanaler du prenumererar på</string>
   <string name="morphe_hide_surveys_title">Dölj enkäter</string>
   <string name="morphe_hide_ticket_shelf_title">Dölj biljetthylla</string>
+  <string name="morphe_hide_upload_time_title">Dölj uppladdningstid</string>
+  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_recommendation_labels_title">Dölj etiketter för videorekommendationer</string>
   <string name="morphe_hide_video_recommendation_labels_summary">Döljer \"Andra har även tittat på\"- och \"Du kanske även gillar\"-etiketter i sökresultaten</string>
+  <string name="morphe_hide_view_count_title">Dölj antal visningar</string>
+  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_web_search_results_title">Dölj sökresultat från webben</string>
   <string name="morphe_hide_you_may_like_section_title">Dölj avsnittet Du kanske gillar</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
@@ -144,11 +148,6 @@ Vissa layouter på serversidan kanske inte återställs.
   <string name="morphe_hide_transcript_section_title">Dölj avsnittet Manuskript</string>
   <string name="morphe_hide_video_details_section_title">Dölj avsnittet Videoinformation</string>
   <string name="morphe_hide_filter_bar_screen_title">Filterfält</string>
-  <string name="morphe_hide_filter_bar_screen_summary">Välj var de skrollbara kategoribrickorna ska döljas</string>
-  <string name="morphe_hide_filter_bar_feed_in_feed_title">Dölj i flöden</string>
-  <string name="morphe_hide_filter_bar_feed_in_related_videos_title">Dölj i liknande videor</string>
-  <string name="morphe_hide_filter_bar_feed_in_search_title">Dölj i sökresultat</string>
-  <string name="morphe_hide_filter_bar_feed_in_history_title">Dölj i visningshistoriken</string>
   <string name="morphe_channel_screen_title">Kanalsida</string>
   <string name="morphe_channel_screen_summary">Välj vilka komponenter som visas på kanalsidan</string>
   <string name="morphe_hide_channel_tab_title">Aktivera kanalfliksfilter</string>
@@ -187,18 +186,6 @@ Vissa layouter på serversidan kanske inte återställs.
   <string name="morphe_hide_comments_preview_comment_title">Dölj förhandsvisad kommentar</string>
   <string name="morphe_hide_comments_preview_comment_summary">Döljer förhandsvisningen av kommentarer under videon innan det fullständiga kommentarsfältet har öppnats</string>
   <string name="morphe_hide_comments_thanks_button_title">Dölj knappen Thanks</string>
-  <string name="morphe_sanitize_comments_category_bar_title">Rensa kategorifältet </string>
-  <string name="morphe_sanitize_comments_category_bar_summary">Döljer alla sorteringsalternativ för kommentarer utom Populärast och Senaste</string>
-  <string name="morphe_custom_filter_screen_title">Anpassat filter</string>
-  <string name="morphe_custom_filter_title">Aktivera anpassat filter</string>
-  <string name="morphe_custom_filter_strings_title">Anpassat filter</string>
-  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
-  <string name="morphe_custom_filter_strings_summary">Lista över path builder-strängar för komponenter som ska filtreras bort, åtskilda av nya rader</string>
-  <string name="morphe_custom_filter_toast_invalid_syntax">Det anpassade filtret är ogiltigt: %s</string>
-  <string name="morphe_hide_view_count_title">Dölj antal visningar</string>
-  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
-  <string name="morphe_hide_upload_time_title">Dölj uppladdningstid</string>
-  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_keyword_content_screen_title">Nyckelordsfilter</string>
   <string name="morphe_hide_keyword_content_screen_summary">Välj specifika ord eller fraser som döljer videor i flöden och sökningar</string>
   <string name="morphe_hide_keyword_content_home_title">Dölj videor i Hem med nyckelord</string>
@@ -217,7 +204,7 @@ Vissa layouter på serversidan kanske inte återställs.
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Nyckelordet har motstridiga deklarationer: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Nyckelordet är för kort och kräver citattecken: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Nyckelordet döljer alla videor: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Dölj butikshylla för kreatörer</string>
   <string name="morphe_hide_end_screen_store_banner_title">Dölj butiksbanner på slutskärmen</string>
   <string name="morphe_hide_general_ads_title">Dölj allmänna annonser</string>
@@ -226,9 +213,8 @@ Vissa layouter på serversidan kanske inte återställs.
   <string name="morphe_hide_player_popup_ads_title">Dölj popup-annonser i spelaren</string>
   <string name="morphe_hide_self_sponsor_ads_title">Dölj självsponsrade kort</string>
   <string name="morphe_hide_shopping_links_title">Dölj butikslänkar</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">Dölj YouTube Premium-kampanjer</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Dölj videoannonser</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">Dölj YouTube Premium-kampanjer</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
@@ -863,7 +849,7 @@ Begränsningar:
   <string name="morphe_hide_premium_video_quality_title">Dölj Premium-kvalitetsalternativ</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">Prioritera videokvalitet</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Tillåt Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Tillåter programvaruavkodning för AV1 när du använder Android VR-klienten</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Aktivering av denna inställning kan använda programvarubaserad AV1-avkodning.
@@ -879,6 +865,7 @@ Videouppspelning med AV1 kan hacka eller tappa bildrutor."</string>
   <string name="morphe_spoof_video_streams_about_js">• Om deobfuskering misslyckas kan uppspelningen misslyckas</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Tvinga ursprungligt ljud är inte tillgängligt</string>
+  <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_player_js_variant_title">JavaScript-variant av spelaren</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Visa förfalskningen i Statistik för nördar</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->

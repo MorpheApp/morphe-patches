@@ -160,4 +160,12 @@ A reprodução falhará se o hash do JavaScript do player estiver desatualizado.
 Isto pode ajudar a identificar componentes ao criar filtros personalizados.
 
 No entanto, ativar isto também irá registar alguns dados do utilizador, como o seu endereço IP."</string>
+  <!-- Custom filter -->
+  <string name="morphe_custom_filter_screen_title">Filtro personalizado</string>
+  <string name="morphe_custom_filter_screen_summary">Configure filtros personalizados para ocultar qualquer componente</string>
+  <string name="morphe_custom_filter_title">Ativar filtro personalizado</string>
+  <string name="morphe_custom_filter_strings_title">Filtro personalizado</string>
+  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+  <string name="morphe_custom_filter_strings_summary">Lista de strings de construção de caminhos de componente para filtrar, separadas por quebras de linha</string>
+  <string name="morphe_custom_filter_toast_invalid_syntax">Filtro personalizado inválido: %s</string>
 </resources>

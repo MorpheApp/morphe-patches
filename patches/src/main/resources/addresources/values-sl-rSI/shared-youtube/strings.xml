@@ -158,4 +158,12 @@ Predvajanje se bo izvedlo neuspešno, če je hash JavaScript predvajalnika zasta
   <string name="morphe_debug_protobuffer_user_dialog_message">"Ta nastavitev bo omogočila beleženje dodatnih podatkov o razmerju med elementi, vključno z besedilom na zaslonu za nekatere UI komponente.
 
 To lahko pomaga pri prepoznavanju komponent pri ustvarjanju prilagojenih filtrov, vendar bo omogočanje te možnosti tudi beležilo nekaj uporabniških podatkov, kot je vaš IP naslov."</string>
+  <!-- Custom filter -->
+  <string name="morphe_custom_filter_screen_title">Po meri prilagoditev</string>
+  <string name="morphe_custom_filter_screen_summary">Nastavite po meri filtre, da skrijete katerokoli komponento</string>
+  <string name="morphe_custom_filter_title">Omogoči po meri filter</string>
+  <string name="morphe_custom_filter_strings_title">Po meri filter</string>
+  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+  <string name="morphe_custom_filter_strings_summary">Seznam nizov za ustvarjanje poti komponente, ki jih želite filtrirati, ločenih z novimi vrsticami</string>
+  <string name="morphe_custom_filter_toast_invalid_syntax">Neveljaven po meri filter: %s</string>
 </resources>

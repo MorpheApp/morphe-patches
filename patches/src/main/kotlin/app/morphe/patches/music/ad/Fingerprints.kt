@@ -5,15 +5,24 @@
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
  *
- * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
 
-package app.morphe.patches.music.ad.general
+package app.morphe.patches.music.ad
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+
+internal object ShowVideoAdsFingerprint : Fingerprint(
+    filters = OpcodesFilter.opcodesToFilters(
+        Opcode.MOVE_RESULT_OBJECT,
+        Opcode.INVOKE_VIRTUAL,
+        Opcode.IGET_OBJECT,
+    ),
+    strings = listOf("maybeRegenerateCpnAndStatsClient called unexpectedly, but no error.")
+)
 
 internal object HideGetPremiumFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -24,7 +33,7 @@ internal object HideGetPremiumFingerprint : Fingerprint(
         Opcode.CONST_16,
         Opcode.INVOKE_VIRTUAL,
     ),
-    strings = listOf ("FEmusic_history", "FEmusic_offline")
+    strings = listOf("FEmusic_history", "FEmusic_offline")
 )
 
 internal object MembershipSettingsFingerprint : Fingerprint(

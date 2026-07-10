@@ -160,4 +160,12 @@ Da bi se prijavili, pritisnite nastavak ispod"</string>
 Ово може помоћи у идентификацији компоненти приликом прављења прилагођених филтера.
 
 Међутим, омогућавање овога ће такође евидентирати неке корисничке податке, као што је ваша IP адреса."</string>
+  <!-- Custom filter -->
+  <string name="morphe_custom_filter_screen_title">Прилагођени филтер</string>
+  <string name="morphe_custom_filter_screen_summary">Конфигуришите прилагођене филтере да бисте сакрили било коју компоненту</string>
+  <string name="morphe_custom_filter_title">Омогући прилагођени филтер</string>
+  <string name="morphe_custom_filter_strings_title">Прилагођени филтер</string>
+  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+  <string name="morphe_custom_filter_strings_summary">Листа стрингова за изградњу путање компоненти за филтрирање, одвојена новим редовима</string>
+  <string name="morphe_custom_filter_toast_invalid_syntax">Неважећи прилагођени филтер: %s</string>
 </resources>

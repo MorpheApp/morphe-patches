@@ -160,4 +160,12 @@ Voorstelling sal misluk as die speler JavaScript hash verouder is."</string>
 Dit kan help om komponente te identifiseer wanneer pasgemaakte filters geskep word.
 
 Let wel, deur dit in te skakel, sal ook sekere gebruikerdata soos jou IP-adres gelog word."</string>
+  <!-- Custom filter -->
+  <string name="morphe_custom_filter_screen_title">Pasgestelde filter</string>
+  <string name="morphe_custom_filter_screen_summary">Konfigureer pasgestelde filters om enige komponent te verberg</string>
+  <string name="morphe_custom_filter_title">Aktiveer pasgestelde filter</string>
+  <string name="morphe_custom_filter_strings_title">Pasgestelde filter</string>
+  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+  <string name="morphe_custom_filter_strings_summary">Lys van komponentpaadbouerstringe om te filter, geskei deur nuwe reëls</string>
+  <string name="morphe_custom_filter_toast_invalid_syntax">Ongeldige pasgestelde filter: %s</string>
 </resources>

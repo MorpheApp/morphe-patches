@@ -160,4 +160,12 @@ Second \"item\" text"</string>
 ซึ่งจะช่วยระบุส่วนประกอบเมื่อสร้างตัวกรองที่กำหนดเองได้
 
 อย่างไรก็ตาม การเปิดใช้งานนี้จะบันทึกข้อมูลผู้ใช้บางอย่าง เช่น ที่อยู่ IP ของคุณด้วย"</string>
+  <!-- Custom filter -->
+  <string name="morphe_custom_filter_screen_title">ตัวกรองแบบกำหนดเอง</string>
+  <string name="morphe_custom_filter_screen_summary">กำหนดค่าตัวกรองแบบกำหนดเองเพื่อซ่อนส่วนประกอบใดๆ</string>
+  <string name="morphe_custom_filter_title">เปิดใช้งานตัวกรองแบบกำหนดเอง</string>
+  <string name="morphe_custom_filter_strings_title">ตัวกรองแบบกำหนดเอง</string>
+  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+  <string name="morphe_custom_filter_strings_summary">รายการสตริงตัวสร้างเส้นทางส่วนประกอบที่จะกรอง คั่นด้วยบรรทัดใหม่</string>
+  <string name="morphe_custom_filter_toast_invalid_syntax">ตัวกรองแบบกำหนดเองไม่ถูกต้อง: %s</string>
 </resources>

@@ -160,4 +160,12 @@ Second \"item\" text"</string>
 يمكن أن يساعد ذلك في تحديد المكونات عند إنشاء عوامل تصفية مخصصة.
 
 ومع ذلك، سيؤدي تمكين هذا الخيار أيضًا إلى تسجيل بعض بيانات المستخدم مثل عنوان IP الخاص بك."</string>
+  <!-- Custom filter -->
+  <string name="morphe_custom_filter_screen_title">فلتر مخصص</string>
+  <string name="morphe_custom_filter_screen_summary">تكوين فلاتر مخصصة لإخفاء أي مكون</string>
+  <string name="morphe_custom_filter_title">تمكين الفلتر المخصص</string>
+  <string name="morphe_custom_filter_strings_title">فلتر مخصص</string>
+  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+  <string name="morphe_custom_filter_strings_summary">قائمة بسلاسل بناء مسار المكونات المراد تصفيتها، مفصولة بأسطر جديدة</string>
+  <string name="morphe_custom_filter_toast_invalid_syntax">فلتر مخصص غير صالح: %s</string>
 </resources>

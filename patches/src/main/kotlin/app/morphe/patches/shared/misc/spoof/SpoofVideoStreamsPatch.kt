@@ -5,7 +5,7 @@
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
  *
- * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
 
 package app.morphe.patches.shared.misc.spoof
@@ -22,7 +22,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
-import app.morphe.patches.shared.misc.fix.proto.parseByteArrayMethod
+import app.morphe.patches.shared.misc.fix.proto.parseByteArrayMethodRef
 import app.morphe.util.ResourceGroup
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.copyResources
@@ -237,7 +237,7 @@ internal fun spoofVideoStreamsPatch(
     
                             # Parse streaming data.
                             sget-object v4, $playerProtoClass->a:$playerProtoClass
-                            invoke-static { v4, v3 }, $parseByteArrayMethod
+                            invoke-static { v4, v3 }, ${parseByteArrayMethodRef.get()!!}
                             move-result-object v5
                             check-cast v5, $playerProtoClass
     

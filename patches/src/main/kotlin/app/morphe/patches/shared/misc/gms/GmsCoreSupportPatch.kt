@@ -5,7 +5,7 @@
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
  *
- * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
 
 package app.morphe.patches.shared.misc.gms
@@ -57,7 +57,7 @@ internal const val GMS_CORE_VENDOR_GROUP_ID = "app.revanced"
  * by using GmsCore instead of Google Play Services.
  *
  * @param fromPackageName The package name of the original app.
- * @param toPackageName The package name to fall back to if no custom package name is specified in patch options.
+ * @param toPackageNameDefault The package name to fall back to if no custom package name is specified in patch options.
  * @param primeMethodFingerprint The fingerprint of the "prime" method that needs to be patched.
  * @param earlyReturnFingerprints The fingerprints of methods that need to be returned early.
  * @param mainActivityOnCreateFingerprint The fingerprint of the main activity onCreate method.
@@ -67,7 +67,7 @@ internal const val GMS_CORE_VENDOR_GROUP_ID = "app.revanced"
  */
 fun gmsCoreSupportPatch(
     fromPackageName: String,
-    toPackageName: String,
+    toPackageNameDefault: String,
     primeMethodFingerprint: Fingerprint? = null,
     earlyReturnFingerprints: Set<Fingerprint> = setOf(),
     mainActivityOnCreateFingerprint: Fingerprint,
@@ -88,6 +88,8 @@ fun gmsCoreSupportPatch(
     )
 
     execute {
+        val toPackageName = setOrGetFallbackPackageName(toPackageNameDefault)
+
         fun transformStringReferences(transform: (str: String) -> String?) = getAllClassesWithStrings().forEach {
             val mutableClass by lazy {
                 mutableClassDefBy(it)
@@ -196,15 +198,13 @@ fun gmsCoreSupportPatch(
 
         // endregion
 
-        val packageName = setOrGetFallbackPackageName(toPackageName)
-
         // TODO: Change this to use Fingerprint.matchAllOrNull()
         transformStringReferences transform@{ string ->
             return@transform contentUrisTransform(string)
         }
 
         // Specific method that needs to be patched.
-        primeMethodFingerprint?.let { transformPrimeMethod(packageName) }
+        primeMethodFingerprint?.let { transformPrimeMethod(toPackageName) }
 
         // Return these methods early to prevent the app from crashing.
         earlyReturnFingerprints.forEach {
@@ -217,11 +217,7 @@ fun gmsCoreSupportPatch(
             }
         }
         ServiceCheckFingerprint.method.returnEarly()
-
-        // Google Play Utility is not present in all apps, so we need to check if it's present.
-        if (GooglePlayUtilityFingerprint.methodOrNull != null) {
-            GooglePlayUtilityFingerprint.method.returnEarly(0)
-        }
+        GooglePlayUtilityFingerprint.method.returnEarly(0)
 
         // Set original and patched package names for extension to use.
         OriginalPackageNameExtensionFingerprint.method.returnEarly(fromPackageName)
@@ -517,14 +513,15 @@ private object Constants {
  * by using GmsCore instead of Google Play Services.
  *
  * @param fromPackageName The package name of the original app.
- * @param toPackageName The package name to fall back to if no custom package name is specified in patch options.
+ * @param toPackageNameDefault The package name to fall back to if no custom package name
+ *                             is specified in Change package name.
  * @param spoofedPackageSignature The signature of the package to spoof to.
  * @param executeBlock The additional execution block of the patch.
  * @param block The additional block to build the patch.
  */
 fun gmsCoreSupportResourcePatch(
     fromPackageName: String,
-    toPackageName: String,
+    toPackageNameDefault: String,
     spoofedPackageSignature: String,
     screen: BasePreferenceScreen.Screen,
     executeBlock: ResourcePatchContext.() -> Unit = {},
@@ -532,17 +529,19 @@ fun gmsCoreSupportResourcePatch(
 ) = resourcePatch {
     dependsOn(
         changePackageNamePatch,
-        linkHandlingPatch(fromPackageName, screen),
+        linkHandlingPatch(fromPackageName, screen)
     )
 
     execute {
+        val toPackageName = setOrGetFallbackPackageName(toPackageNameDefault)
+
         /**
          * Add metadata to manifest to support spoofing the package name and signature of GmsCore.
          */
         fun addSpoofingMetadata() {
             fun Node.adoptChild(
                 tagName: String,
-                block: Element.() -> Unit,
+                block: Element.() -> Unit
             ) {
                 val child = ownerDocument.createElement(tagName)
                 child.block()
@@ -550,10 +549,9 @@ fun gmsCoreSupportResourcePatch(
             }
 
             document("AndroidManifest.xml").use { document ->
-                val applicationNode =
-                    document
-                        .getElementsByTagName("application")
-                        .item(0)
+                val applicationNode = document
+                    .getElementsByTagName("application")
+                    .item(0)
 
                 // Spoof package name and signature.
                 applicationNode.adoptChild("meta-data") {
@@ -568,7 +566,6 @@ fun gmsCoreSupportResourcePatch(
 
                 // GmsCore presence detection in extension.
                 applicationNode.adoptChild("meta-data") {
-                    // TODO: The name of this metadata should be dynamic.
                     setAttribute("android:name", "app.revanced.MICROG_PACKAGE_NAME")
                     setAttribute("android:value", "$GMS_CORE_VENDOR_GROUP_ID.android.gms")
                 }
@@ -579,13 +576,11 @@ fun gmsCoreSupportResourcePatch(
          * Patch the manifest to support GmsCore.
          */
         fun patchManifest() {
-            val packageName = setOrGetFallbackPackageName(toPackageName)
-
             val transformations = mapOf(
-                "package=\"$fromPackageName" to "package=\"$packageName",
-                "android:authorities=\"$fromPackageName" to "android:authorities=\"$packageName",
-                "$fromPackageName.permission.C2D_MESSAGE" to "$packageName.permission.C2D_MESSAGE",
-                "$fromPackageName.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" to "$packageName.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+                "package=\"$fromPackageName" to "package=\"$toPackageName",
+                "android:authorities=\"$fromPackageName" to "android:authorities=\"$toPackageName",
+                "$fromPackageName.permission.C2D_MESSAGE" to "$toPackageName.permission.C2D_MESSAGE",
+                "$fromPackageName.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" to "$toPackageName.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
                 "com.google.android.c2dm" to "$GMS_CORE_VENDOR_GROUP_ID.android.c2dm",
                 "com.google.android.libraries.photos.api.mars" to "$GMS_CORE_VENDOR_GROUP_ID.android.apps.photos.api.mars",
                 "</queries>" to "<package android:name=\"$GMS_CORE_VENDOR_GROUP_ID.android.gms\"/></queries>",
@@ -598,7 +593,7 @@ fun gmsCoreSupportResourcePatch(
                         from,
                         to,
                     )
-                },
+                }
             )
         }
 

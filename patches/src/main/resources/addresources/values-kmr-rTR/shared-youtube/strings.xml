@@ -158,4 +158,12 @@ Lêkirin têk diçe eger hash-a JavaScriptê ya lîstikvanê kevn be."</string>
 Ew dikare alîkar bike ku pêkhêleyan dema çêkirina fîlterên xwerû nas bikin.
 
 Lê belê, çalak kirina wê dê hin agahiyên bikarhêner wekî navnîşana IP-ya we jî log bike."</string>
+  <!-- Custom filter -->
+  <string name="morphe_custom_filter_screen_title">Filtra niştecî</string>
+  <string name="morphe_custom_filter_screen_summary">Mîhengkirina fîltreên niştecî da ku her pêkhateyek veşêrin</string>
+  <string name="morphe_custom_filter_title">Filtra niştecî bidomîne</string>
+  <string name="morphe_custom_filter_strings_title">Filtra niştecî</string>
+  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+  <string name="morphe_custom_filter_strings_summary">Lîsteya stringên avakera rêya pêkhateyan da ku bi rêyên nû veqetandî fîltre bikin</string>
+  <string name="morphe_custom_filter_toast_invalid_syntax">Filtra niştecî ne heq e: %s</string>
 </resources>

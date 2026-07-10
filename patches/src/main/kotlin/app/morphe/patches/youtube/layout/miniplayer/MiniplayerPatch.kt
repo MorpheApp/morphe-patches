@@ -2,7 +2,7 @@
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
  *
- * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 @file:Suppress("SpellCheckingInspection")
@@ -311,15 +311,12 @@ val miniplayerPatch = bytecodePatch(
         MiniplayerHorizontalRepositionFingerprint.method.apply {
             val previousRectParamFieldAccess = MiniplayerRectDragFieldsNameFingerprint.instructionMatches[1]
                 .getInstruction<ReferenceInstruction>().reference
-            val screenWidthFieldAccess = MiniplayerRectDragFieldsNameFingerprint.instructionMatches.last()
-                .getInstruction<ReferenceInstruction>().reference
 
             addInstructions(
                 0,
                 """
                     iget-object v0, p0, $previousRectParamFieldAccess
-                    iget v1, p0, $screenWidthFieldAccess
-                    invoke-static { p1, v0, v1 }, $EXTENSION_CLASS->blockOffscreenMiniplayerHorizontalReposition(Landroid/graphics/Rect;Landroid/graphics/Rect;I)Landroid/graphics/Rect;
+                    invoke-static { p1, v0 }, $EXTENSION_CLASS->blockOffscreenMiniplayerHorizontalReposition(Landroid/graphics/Rect;Landroid/graphics/Rect;)Landroid/graphics/Rect;
                     move-result-object p1
                 """
             )

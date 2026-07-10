@@ -160,4 +160,12 @@ Die Wiedergabe schlägt fehl, wenn der Player JavaScript Hash veraltet ist."</st
 Das kann beim Erstellen benutzerdefinierter Filter helfen, Komponenten besser zu identifizieren.
 
 Allerdings werden dabei auch einige Nutzerdaten protokolliert, zum Beispiel deine IP-Adresse."</string>
+  <!-- Custom filter -->
+  <string name="morphe_custom_filter_screen_title">Eigener Filter</string>
+  <string name="morphe_custom_filter_screen_summary">Konfigurieren Sie benutzerdefinierte Filter, um Komponenten auszublenden</string>
+  <string name="morphe_custom_filter_title">Eigenen Filter aktivieren</string>
+  <string name="morphe_custom_filter_strings_title">Eigener Filter</string>
+  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+  <string name="morphe_custom_filter_strings_summary">Liste der Komponenten-Pfad-Generator-Zeichenketten zum Filtern, getrennt durch neue Zeilen</string>
+  <string name="morphe_custom_filter_toast_invalid_syntax">Ungültiger benutzerdefinierter Filter: %s</string>
 </resources>

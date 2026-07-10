@@ -2,7 +2,7 @@
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
  *
- * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.patches.music.layout.miniplayer
@@ -85,23 +85,7 @@ val enableSwipeToDismissMiniplayerPatch = bytecodePatch(
 
         val musicActivityPeerClass = (widgetReferences[0] as FieldReference).definingClass
 
-        Fingerprint(
-            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-            parameters = listOf(),
-            returnType = "V",
-            filters = listOf(
-                fieldAccess(
-                    opcode = Opcode.IGET_OBJECT,
-                    definingClass = musicActivityPeerClass,
-                    type = "Ljava/util/concurrent/atomic/AtomicBoolean;"
-                ),
-                methodCall(
-                    opcode = Opcode.INVOKE_VIRTUAL,
-                    smali = "Ljava/util/concurrent/atomic/AtomicBoolean;->set(Z)V",
-                    location = MatchAfterWithin(3)
-                )
-            )
-        ).let {
+        watchWhileDismissedFingerprint(musicActivityPeerClass).let {
             val helperMethod = ImmutableMethod(
                 it.classDef.type,
                 "patch_swipeToDismissMiniplayer",

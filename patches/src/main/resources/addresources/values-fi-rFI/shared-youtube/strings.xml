@@ -160,4 +160,12 @@ Toisto epäonnistuu, jos pelaajan JavaScript-hash on vanhentunut."</string>
 Tämä voi auttaa komponenttien tunnistamisessa, kun luot mukautettuja suodattimia.
 
 Tämän käyttöönotto kirjaa myös joitakin käyttäjätietoja, kuten IP-osoitteesi."</string>
+  <!-- Custom filter -->
+  <string name="morphe_custom_filter_screen_title">Mukautettu suodatin</string>
+  <string name="morphe_custom_filter_screen_summary">Määritä mukautetut suodattimet piilottaaksesi minkä tahansa komponentin</string>
+  <string name="morphe_custom_filter_title">Ota mukautettu suodatin käyttöön</string>
+  <string name="morphe_custom_filter_strings_title">Mukautettu suodatin</string>
+  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+  <string name="morphe_custom_filter_strings_summary">Luettelo komponentin polun rakentajan merkkijonoista suodatettavaksi, erotettuna uudella rivillä</string>
+  <string name="morphe_custom_filter_toast_invalid_syntax">Virheellinen mukautettu suodatin: %s</string>
 </resources>

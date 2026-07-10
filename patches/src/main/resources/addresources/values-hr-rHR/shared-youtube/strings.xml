@@ -116,4 +116,8 @@ Za prijavu, pritisnite nastavak ispod"</string>
 To može pomoći u identificiranju komponenti prilikom izrade prilagođenih filtera.
 
 Međutim, omogućavanjem ove postavke zabilježit će se i neki korisnički podaci poput vaše IP adrese."</string>
+  <!-- Custom filter -->
+  <string name="morphe_custom_filter_screen_summary">Konfigurirajte prilagođene filtre za skrivanje bilo kojeg komponenta</string>
+  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+  <string name="morphe_custom_filter_strings_summary">Popis nizova alata za izradu putanja komponenti za filtriranje, odvojenih novim retcima</string>
 </resources>

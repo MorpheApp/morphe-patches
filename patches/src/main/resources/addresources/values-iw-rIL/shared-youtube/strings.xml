@@ -160,4 +160,12 @@ Second \"item\" text"</string>
 זה יכול לעזור לזהות רכיבים בעת יצירת מסננים מותאמים אישית.
 
 עם זאת, הפעלת הגדרה זו תתעד גם כמה נתוני משתמש כמו כתובת ה-IP שלך."</string>
+  <!-- Custom filter -->
+  <string name="morphe_custom_filter_screen_title">מסנן מותאם אישית</string>
+  <string name="morphe_custom_filter_screen_summary">הגדר מסננים מותאמים אישית כדי להסתיר כל רכיב</string>
+  <string name="morphe_custom_filter_title">הפעל מסנן מותאם אישית</string>
+  <string name="morphe_custom_filter_strings_title">מסנן מותאם אישית</string>
+  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+  <string name="morphe_custom_filter_strings_summary">רשימה של מחרוזות בונה נתיב רכיבים לסינון מופרדות על ידי שורות חדשות</string>
+  <string name="morphe_custom_filter_toast_invalid_syntax">מסנן מותאם אישית לא חוקי: %s</string>
 </resources>

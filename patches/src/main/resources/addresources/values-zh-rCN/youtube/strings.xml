@@ -97,9 +97,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_surveys_title">隐藏调查</string>
   <string name="morphe_hide_surveys_summary">隐藏关于信息流推荐准确性的调查和提示</string>
   <string name="morphe_hide_ticket_shelf_title">隐藏票券架</string>
+  <string name="morphe_hide_upload_time_title">隐藏上传时间</string>
+  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
+  <string name="morphe_hide_upload_time_summary">"限制：
+• Shorts 专区、频道页面和搜索结果可能仍会显示上传时间
+• 此功能不适用于车载设备"</string>
   <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_recommendation_labels_title">隐藏视频推荐标签</string>
   <string name="morphe_hide_video_recommendation_labels_summary">隐藏搜索结果中的“其他人也观看”和“你可能也喜欢”标签</string>
+  <string name="morphe_hide_view_count_title">隐藏观看次数</string>
+  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
+  <string name="morphe_hide_view_count_summary">"限制：
+• Shorts 栏目、频道页面和搜索结果可能仍会显示观看次数
+• 此功能不适用于车载设备"</string>
   <string name="morphe_hide_web_search_results_title">隐藏网页搜索结果</string>
   <string name="morphe_hide_web_search_results_summary">隐藏搜索结果中的“网页搜索结果”部分</string>
   <string name="morphe_hide_you_may_like_section_title">隐藏“您可能喜欢”的部分</string>
@@ -158,11 +168,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_transcript_section_title">隐藏“字幕”部分</string>
   <string name="morphe_hide_video_details_section_title">隐藏“视频详情”部分</string>
   <string name="morphe_hide_filter_bar_screen_title">筛选栏</string>
-  <string name="morphe_hide_filter_bar_screen_summary">选择隐藏滚动类别标签的位置</string>
-  <string name="morphe_hide_filter_bar_feed_in_feed_title">在动态中隐藏</string>
-  <string name="morphe_hide_filter_bar_feed_in_related_videos_title">在相关视频中隐藏</string>
-  <string name="morphe_hide_filter_bar_feed_in_search_title">在搜索结果中隐藏</string>
-  <string name="morphe_hide_filter_bar_feed_in_history_title">在观看历史记录中隐藏</string>
+  <string name="morphe_hide_filter_bar_screen_summary">选择隐藏滚动筛选栏的位置</string>
+  <string name="morphe_hide_filter_bar_in_comments_title">在评论中隐藏</string>
+  <string name="morphe_hide_filter_bar_in_feed_title">在动态中隐藏</string>
+  <string name="morphe_hide_filter_bar_in_related_videos_title">在相关视频中隐藏</string>
+  <string name="morphe_hide_filter_bar_in_search_title">在搜索结果中隐藏</string>
+  <string name="morphe_hide_filter_bar_in_history_title">在观看历史记录中隐藏</string>
   <string name="morphe_channel_screen_title">频道页面</string>
   <string name="morphe_channel_screen_summary">选择要在频道页面上显示的组件</string>
   <string name="morphe_hide_channel_tab_title">启用频道标签过滤</string>
@@ -199,30 +210,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_community_guidelines_title">隐藏社区准则</string>
   <string name="morphe_hide_comments_create_a_short_button_title">隐藏“创建 Short”按钮</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">隐藏表情符号和时间戳按钮</string>
+  <string name="morphe_hide_comments_filter_bar_options_title">隐藏筛选栏选项</string>
+  <string name="morphe_hide_comments_filter_bar_options_summary">隐藏所有筛选栏选项，除了“热门”和“最新”</string>
   <string name="morphe_hide_comments_info_button_title">隐藏信息按钮</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">隐藏直播捐赠者栏</string>
   <string name="morphe_hide_comments_preview_comment_title">隐藏评论预览</string>
   <string name="morphe_hide_comments_preview_comment_summary">隐藏在打开完整评论部分之前，视频下方的评论预览</string>
   <string name="morphe_hide_comments_thanks_button_title">隐藏感谢按钮</string>
-  <string name="morphe_sanitize_comments_category_bar_title">清理分类栏</string>
-  <string name="morphe_sanitize_comments_category_bar_summary">隐藏除了“最热门”和“最新”之外的所有评论排序选项</string>
-  <string name="morphe_custom_filter_screen_title">自定义过滤器</string>
-  <string name="morphe_custom_filter_screen_summary">配置自定义过滤器以隐藏任何组件</string>
-  <string name="morphe_custom_filter_title">启用自定义过滤器</string>
-  <string name="morphe_custom_filter_strings_title">自定义过滤器</string>
-  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
-  <string name="morphe_custom_filter_strings_summary">用于过滤的组件路径生成器字符串列表，按换行符分隔</string>
-  <string name="morphe_custom_filter_toast_invalid_syntax">非法自定义过滤器：%s</string>
-  <string name="morphe_hide_view_count_title">隐藏观看次数</string>
-  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
-  <string name="morphe_hide_view_count_summary">"限制：
-• Shorts 栏目、频道页面和搜索结果可能仍会显示观看次数。
-• 此功能不适用于车载布局。"</string>
-  <string name="morphe_hide_upload_time_title">隐藏上传时间</string>
-  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
-  <string name="morphe_hide_upload_time_summary">"限制：
-• Shorts 专区、频道页面和搜索结果可能仍会显示上传时间
-• 此功能不适用于车载设备"</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_title">清理高亮显示的搜索链接</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_summary">清理高亮显示的搜索链接，仅保留原始纯文本</string>
   <string name="morphe_hide_keyword_content_screen_title">关键词过滤</string>
   <string name="morphe_hide_keyword_content_screen_summary">选择隐藏信息流和搜索中的视频的特定词语或短语</string>
   <string name="morphe_hide_keyword_content_home_title">过滤首页视频</string>
@@ -253,7 +249,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">关键词存在冲突声明：%s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">关键词过短，需要加上引号：%s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">关键词将隐藏所有影片：%s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">隐藏创作者商店专区</string>
   <string name="morphe_hide_end_screen_store_banner_title">商店横幅已隐藏</string>
   <string name="morphe_hide_general_ads_title">隐藏一般广告</string>
@@ -263,9 +259,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_popup_ads_title">隐藏播放器弹出广告</string>
   <string name="morphe_hide_self_sponsor_ads_title">隐藏自我推广卡片</string>
   <string name="morphe_hide_shopping_links_title">隐藏购物链接</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">隐藏 YouTube Premium 促销推广</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">隐藏视频广告</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">隐藏 YouTube Premium 促销推广</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">链接已复制到剪贴板</string>
@@ -857,7 +852,7 @@ Second \"item\" text"</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"恢复旧版播放器布局
 
-限制：如果关闭“恢复旧版视频操作栏”，则可能无法使用“更多视频”叠加层"</string>
+限制：如果关闭“恢复旧版视频操作栏”选项，则“更多视频”叠加层可能不可用"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">伪装应用程序版本</string>
   <string name="morphe_spoof_app_version_summary">欺骗服务器，使其认为您正在使用较旧的应用程序版本以恢复旧版 UI 功能</string>
@@ -919,7 +914,7 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_background_summary">在后台播放时自动前进到下一个 Shorts</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">禁用恢复迷你播放器</string>
-  <string name="morphe_miniplayer_disable_resuming_summary">禁用“继续观看”迷你播放器，这是 YouTube Premium 的一项功能，该功能会在应用启动时显示。</string>
+  <string name="morphe_miniplayer_disable_resuming_summary">禁用“继续观看”迷你播放器，这是 YouTube Premium 的一项功能，该功能会在应用启动时显示</string>
   <string name="morphe_miniplayer_screen_title">小型播放器</string>
   <string name="morphe_miniplayer_screen_summary">自定义最小化视频播放器的外观和行为</string>
   <string name="morphe_miniplayer_type_title">小型播放器类型</string>
@@ -1098,7 +1093,7 @@ Second \"item\" text"</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">优先视频画质</string>
   <string name="morphe_prioritize_video_quality_summary">优先考虑最高的视频画质而不是编解码器效率</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">允许 Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">允许在使用 Android VR 客户端时进行软件 AV1 解码</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"启用此设置可能会使用软件 AV1 解码。
@@ -1114,11 +1109,13 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_about_js">• 如果去混淆失败，播放可能会失败</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• 强制原始音频不可用</string>
+  <!-- Quality refers to video quality -->
+  <string name="morphe_spoof_video_streams_about_720p_max">• 视频质量可能限制为 720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">播放器JavaScript变种</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">在“极客统计”中显示欺骗信息</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">恢复旧版视频操作栏</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"修复无法显示不喜欢次数以及无法隐藏视频操作按钮的问题。
+  <string name="morphe_restore_old_video_action_bar_summary">"修复不喜欢数量未显示和视频操作按钮无法隐藏的问题
 
-限制：恢复到旧版“更多视频”叠加层"</string>
+限制：恢复到旧版“更多视频”叠加层样式"</string>
 </resources>

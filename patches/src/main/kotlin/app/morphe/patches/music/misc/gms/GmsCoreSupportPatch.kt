@@ -16,7 +16,7 @@ import app.morphe.patches.shared.misc.gms.gmsCoreSupportPatch
 @Suppress("unused")
 val gmsCoreSupportPatch = gmsCoreSupportPatch(
     fromPackageName = MUSIC_PACKAGE_NAME,
-    toPackageName = MORPHE_MUSIC_PACKAGE_NAME,
+    toPackageNameDefault = MORPHE_MUSIC_PACKAGE_NAME,
     primeMethodFingerprint = PrimeMethodFingerprint,
     earlyReturnFingerprints = setOf(
         CastContextFetchFingerprint,
@@ -33,7 +33,7 @@ val gmsCoreSupportPatch = gmsCoreSupportPatch(
 private fun gmsCoreSupportResourcePatch() =
     app.morphe.patches.shared.misc.gms.gmsCoreSupportResourcePatch(
         fromPackageName = MUSIC_PACKAGE_NAME,
-        toPackageName = MORPHE_MUSIC_PACKAGE_NAME,
+        toPackageNameDefault = MORPHE_MUSIC_PACKAGE_NAME,
         spoofedPackageSignature = "afb0fed5eeaebdd86f56a97742f4b6b33ef59875",
         screen = PreferenceScreen.MISC,
         block = {

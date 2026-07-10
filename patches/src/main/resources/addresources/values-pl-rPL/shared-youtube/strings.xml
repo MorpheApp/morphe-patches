@@ -160,4 +160,12 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
 Może to pomóc w identyfikacji elementów podczas tworzenia własnych filtrów.
 
 Pamiętaj jednak, że rejestrowane będą również niektóre dane użytkownika, takie jak adres IP."</string>
+  <!-- Custom filter -->
+  <string name="morphe_custom_filter_screen_title">Własny filtr</string>
+  <string name="morphe_custom_filter_screen_summary">Skonfiguruj własne filtry, aby ukryć dowolny element</string>
+  <string name="morphe_custom_filter_title">Włącz własny filtr</string>
+  <string name="morphe_custom_filter_strings_title">Ścieżki do ukrycia</string>
+  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+  <string name="morphe_custom_filter_strings_summary">Lista ścieżek elementów do ukrycia, każda w nowej linii</string>
+  <string name="morphe_custom_filter_toast_invalid_syntax">Nieprawidłowy własny filtr: %s</string>
 </resources>

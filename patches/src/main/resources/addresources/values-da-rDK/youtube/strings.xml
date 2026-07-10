@@ -97,9 +97,19 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_surveys_title">Skjul undersøgelser</string>
   <string name="morphe_hide_surveys_summary">Skjuler undersøgelser og forslag vedrørende nøjagtigheden af feedanbefalinger</string>
   <string name="morphe_hide_ticket_shelf_title">Skjul billetreolen</string>
+  <string name="morphe_hide_upload_time_title">Skjul uploadtidspunkt</string>
+  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
+  <string name="morphe_hide_upload_time_summary">"Begrænsninger:
+• Shorts hylder, kanalsider og søgeresultater kan stadig vise uploadtider
+• Denne funktion virker ikke med bilformat"</string>
   <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_recommendation_labels_title">Skjul videoforslagstekster</string>
   <string name="morphe_hide_video_recommendation_labels_summary">Skjuler \'Folk så også\' og \'Du kan også synes om\'-etiketter i søgeresultater</string>
+  <string name="morphe_hide_view_count_title">Skjul antal visninger</string>
+  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
+  <string name="morphe_hide_view_count_summary">"Begrænsninger:
+• Shorts-hylder, kanalsider og søgeresultater kan stadig vise antal visninger
+• Denne funktion virker ikke med bilformat"</string>
   <string name="morphe_hide_web_search_results_title">Skjul søgeresultater</string>
   <string name="morphe_hide_web_search_results_summary">Skjuler afsnittet \'Resultater fra internettet\' fra søgeresultaterne</string>
   <string name="morphe_hide_you_may_like_section_title">Skjul \'Du kan måske lide\' afsnit</string>
@@ -158,11 +168,12 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_transcript_section_title">Skjul Transcript sektionen</string>
   <string name="morphe_hide_video_details_section_title">Skjul sektionen \'Videodetajler\'</string>
   <string name="morphe_hide_filter_bar_screen_title">Filterbjælke</string>
-  <string name="morphe_hide_filter_bar_screen_summary">Vælg hvor du vil skjule de vandrende kategorichips</string>
-  <string name="morphe_hide_filter_bar_feed_in_feed_title">Skjul i feeds</string>
-  <string name="morphe_hide_filter_bar_feed_in_related_videos_title">Skjul i relaterede videoer</string>
-  <string name="morphe_hide_filter_bar_feed_in_search_title">Skjul i søgeresultater</string>
-  <string name="morphe_hide_filter_bar_feed_in_history_title">Skjul i afspilningshistorik</string>
+  <string name="morphe_hide_filter_bar_screen_summary">Vælg, hvor du vil skjule filtrets rullelinje</string>
+  <string name="morphe_hide_filter_bar_in_comments_title">Skjul i kommentarer</string>
+  <string name="morphe_hide_filter_bar_in_feed_title">Skjul i feeds</string>
+  <string name="morphe_hide_filter_bar_in_related_videos_title">Skjul i relaterede videoer</string>
+  <string name="morphe_hide_filter_bar_in_search_title">Skjul i søgeresultater</string>
+  <string name="morphe_hide_filter_bar_in_history_title">Skjul i afspilningshistorik</string>
   <string name="morphe_channel_screen_title">Kanalside</string>
   <string name="morphe_channel_screen_summary">Vælg hvilke komponenter der vises på kanalsiden</string>
   <string name="morphe_hide_channel_tab_title">Aktiver kanalfanefilter</string>
@@ -199,30 +210,15 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_comments_community_guidelines_title">Skjul fællesskabsretningslinjer</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Skjul knappen \'Opret en Short\'</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Skjul emoji- og tidsstempelknapper</string>
+  <string name="morphe_hide_comments_filter_bar_options_title">Skjul filterbjælkeindstillinger</string>
+  <string name="morphe_hide_comments_filter_bar_options_summary">Skjuler alle filterbjælkeindstillinger undtagen \'Top\' og \'Nyeste\'</string>
   <string name="morphe_hide_comments_info_button_title">Skjul Info-knap</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Skjul live chat donatorbjælken</string>
   <string name="morphe_hide_comments_preview_comment_title">Skjul forhåndsvisning kommentar</string>
   <string name="morphe_hide_comments_preview_comment_summary">Skjuler kommentar preview under videoen inden åbning af hele kommentarsektionen</string>
   <string name="morphe_hide_comments_thanks_button_title">Skjul \"Tak\"-knap</string>
-  <string name="morphe_sanitize_comments_category_bar_title">Rens kategorilinje</string>
-  <string name="morphe_sanitize_comments_category_bar_summary">Skjuler alle kommentar sorteringsmuligheder undtagen \'Top\' og \'Nyeste\'</string>
-  <string name="morphe_custom_filter_screen_title">Tilpasset filter</string>
-  <string name="morphe_custom_filter_screen_summary">Konfigurer brugerdefinerede filtre for at skjule enhver komponent</string>
-  <string name="morphe_custom_filter_title">Aktiver brugerdefineret filter</string>
-  <string name="morphe_custom_filter_strings_title">Tilpasset filter</string>
-  <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
-  <string name="morphe_custom_filter_strings_summary">Liste over komponentstibyggerstrenge, der skal filtreres, adskilt af nye linjer</string>
-  <string name="morphe_custom_filter_toast_invalid_syntax">Ugyldigt brugerdefineret filter: %s</string>
-  <string name="morphe_hide_view_count_title">Skjul antal visninger</string>
-  <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
-  <string name="morphe_hide_view_count_summary">"Begrænsninger:
-• Shorts-hylder, kanalsider og søgeresultater kan stadig vise antal visninger
-• Denne funktion virker ikke med bilformat"</string>
-  <string name="morphe_hide_upload_time_title">Skjul uploadtidspunkt</string>
-  <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
-  <string name="morphe_hide_upload_time_summary">"Begrænsninger:
-• Shorts hylder, kanalsider og søgeresultater kan stadig vise uploadtider
-• Denne funktion virker ikke med bilformat"</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_title">Renser fremhævede søgelinks</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_summary">Renser fremhævede søgelinks og efterlader kun den originale tekst</string>
   <string name="morphe_hide_keyword_content_screen_title">Nøgleordsfilter</string>
   <string name="morphe_hide_keyword_content_screen_summary">Vælg specifikke ord eller sætninger for at skjule videoer i feeds og søgninger</string>
   <string name="morphe_hide_keyword_content_home_title">Skjul Start videoer med søgeord</string>
@@ -253,7 +249,7 @@ Begrænsninger:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Nøgleord har modstridende erklæringer: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Søgeordet er for kort og kræver citationstegn: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Nøgleord vil skjule alle videoer: %s</string>
-  <!-- ad.general.hideAdsPatch -->
+  <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Skjul butikshylde for skabere</string>
   <string name="morphe_hide_end_screen_store_banner_title">Skjul banner fra butikken på slutskærmen</string>
   <string name="morphe_hide_general_ads_title">Skjul generelle annoncer</string>
@@ -263,9 +259,8 @@ Begrænsninger:
   <string name="morphe_hide_player_popup_ads_title">Skjul afspiller pop-up reklamer</string>
   <string name="morphe_hide_self_sponsor_ads_title">Skjul selvsponsorerede kort</string>
   <string name="morphe_hide_shopping_links_title">Skjul shoppinglinks</string>
-  <string name="morphe_hide_youtube_premium_promotions_title">Skjul YouTube Premium reklamer</string>
-  <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Skjul videoannoncer</string>
+  <string name="morphe_hide_youtube_premium_promotions_title">Skjul YouTube Premium reklamer</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link kopieret til udklipsholder</string>
@@ -855,9 +850,9 @@ Layout til bil
 • Ikke-sammenklappet gammel video-handlingslinje vises"</string>
   <string name="morphe_tablet_layout_in_player_title">Aktivér tabletlayout i afspilleren</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Gendanner den gamle afspillerlayout
+  <string name="morphe_tablet_layout_in_player_summary">"Gendanner det gamle layout for afspilleren
 
-Begrænsninger: Hvis \"Gendan gammel videoværktøjslinje\" er slået fra, er det mulige, at \"Flere videoer\"-overlay ikke er tilgængelig."</string>
+Begrænsning: Hvis 'Gendan gammel video-handlingslinje' er slået fra, er 'Flere videoer'-overlejringen muligvis ikke tilgængelig"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Spoof app-version</string>
   <string name="morphe_spoof_app_version_summary">Snyder serveren til at tro, at du bruger en ældre appversion for at genoprette brugergrænsefladen, som den så ud tidligere</string>
@@ -1098,7 +1093,7 @@ Begrænsninger:
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <string name="morphe_prioritize_video_quality_title">Prioritering af videokvalitet</string>
   <string name="morphe_prioritize_video_quality_summary">Prioriterer den højest tilgængelige videokvalitet over kodekeffektivitet</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Tillad Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Tillader software AV1-afkodning ved brug af Android VR-klienten</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Aktivering af denne indstilling kan bruge software AV1-afkodning.
@@ -1114,11 +1109,13 @@ Videoafspilning med AV1 kan hakke eller tabe billeder."</string>
   <string name="morphe_spoof_video_streams_about_js">• Hvis deobfuskering mislykkes, kan afspilning mislykkes</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Tving original lyd er ikke tilgængelig</string>
+  <!-- Quality refers to video quality -->
+  <string name="morphe_spoof_video_streams_about_720p_max">• Kvaliteten kan være begrænset til 720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Afspiller JavaScript-variant</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Vis forfalskning i Stats for nørder</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Gendan gammel videohandlingslinje</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Retter fejl hvor dislikes ikke vises og video handlingsknapper ikke kan skjules
+  <string name="morphe_restore_old_video_action_bar_summary">"Løser problemet med manglende dislikes og at video-handlingsknapper ikke kan skjules
 
-Begrænsninger: Går tilbage til den gamle stil 'Flere videoer' overlay"</string>
+Begrænsning: Vendes tilbage til den gamle stil for 'Flere videoer'-overlejringen"</string>
 </resources>
