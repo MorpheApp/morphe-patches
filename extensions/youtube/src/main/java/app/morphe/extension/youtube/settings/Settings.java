@@ -278,13 +278,15 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_COMMENTS_CREATE_A_SHORT_BUTTON = new BooleanSetting("morphe_hide_comments_create_a_short_button", TRUE);
     public static final BooleanSetting HIDE_COMMENTS_EMOJI_AND_TIMESTAMP_BUTTONS = new BooleanSetting("morphe_hide_comments_emoji_and_timestamp_buttons", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_FILTER_BAR_OPTIONS = new BooleanSetting("morphe_hide_comments_filter_bar_options", FALSE);
+    public static final BooleanSetting HIDE_COMMENTS_GIFT_ANIMATION_AND_CARDS = new BooleanSetting("morphe_hide_comments_gift_animation_and_cards", FALSE);
+    public static final BooleanSetting HIDE_COMMENTS_GIFT_BUTTON = new BooleanSetting("morphe_hide_comments_gift_button", TRUE, true);
     public static final BooleanSetting HIDE_COMMENTS_INFO_BUTTON = new BooleanSetting("morphe_hide_comments_info_button", FALSE, true);
     public static final BooleanSetting HIDE_COMMENTS_LIVE_CHAT_DONATORS_BAR = new BooleanSetting("morphe_hide_comments_live_chat_donators_bar", FALSE, true);
     public static final BooleanSetting HIDE_COMMENTS_PREVIEW_COMMENT = new BooleanSetting("morphe_hide_comments_preview_comment", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_PROMPTS = new BooleanSetting("morphe_hide_comments_prompts", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_SECTION = new BooleanSetting("morphe_hide_comments_section", FALSE);
     public static final BooleanSetting HIDE_COMMENTS_SECTION_IN_HOME_FEED = new BooleanSetting("morphe_hide_comments_section_in_home_feed", FALSE, parentNot(HIDE_COMMENTS_SECTION));
-    public static final BooleanSetting HIDE_COMMENTS_THANKS_BUTTON = new BooleanSetting("morphe_hide_comments_thanks_button", TRUE);
+    public static final BooleanSetting HIDE_COMMENTS_THANKS_BUTTON = new BooleanSetting("morphe_hide_comments_thanks_button", TRUE, true);
     public static final BooleanSetting SANITIZE_COMMENTS_HIGHLIGHTED_SEARCH_LINKS = new BooleanSetting("morphe_sanitize_comments_highlighted_search_links", FALSE, true);
 
     // Description
