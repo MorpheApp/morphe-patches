@@ -158,6 +158,16 @@
         <item>VERTICAL</item>
         <item>VERTICAL_MINIMAL</item>
     </string-array>
+    <string-array name="morphe_swipe_speed_step_entries">
+        <item>0.05x</item>
+        <item>0.10x</item>
+        <item>0.25x</item>
+    </string-array>
+    <string-array name="morphe_swipe_speed_step_entry_values">
+        <item>STEP_005</item>
+        <item>STEP_010</item>
+        <item>STEP_025</item>
+    </string-array>
 
     <!-- layout.spoofappversion.spoofAppVersionPatch -->
     <string-array name="morphe_spoof_app_version_target_entries">

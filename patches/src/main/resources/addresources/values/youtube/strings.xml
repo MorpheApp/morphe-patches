@@ -524,6 +524,8 @@ Note: If \'Spoof video streams\' is not enabled, enabling this may cause unexpec
     <string name="morphe_swipe_speed_summary">Swipe horizontally in the upper zone of the fullscreen mode to change playback speed</string>
     <string name="morphe_swipe_speed_sensitivity_title">Speed swipe sensitivity</string>
     <string name="morphe_swipe_speed_sensitivity_summary">Higher values require more swiping per speed step</string>
+    <string name="morphe_swipe_speed_step_title">Speed step</string>
+    <string name="morphe_swipe_speed_step_summary">Amount by which the playback speed changes per tick</string>
     <string name="morphe_swipe_speed_zone_height_title">Speed zone height</string>
     <string name="morphe_swipe_speed_zone_height_summary">Height of the speed gesture zone as a percentage of the player height (5-75)</string>
     <string name="morphe_swipe_zone_label_speed">Speed</string>
