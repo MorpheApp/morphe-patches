@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/1948
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.music.misc.spoof.appversion
 
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
@@ -9,7 +16,7 @@ import app.morphe.patches.shared.misc.spoof.appversion.baseSpoofAppVersionPatch
 
 @Suppress("unused")
 val spoofAppVersionPatch = baseSpoofAppVersionPatch(
-    defaultTargetString = { "7.12.52" },
+    defaultTargetString = { "7.17.52" },
     preferenceScreen = PreferenceScreen.GENERAL,
     listPreference = {
         ListPreference(
