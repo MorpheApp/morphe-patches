@@ -482,7 +482,7 @@ public abstract class BufferPhraseFilter extends Filter {
      * then pass it to their own tracker.
      */
     public enum Source {
-        HOME, SUBSCRIPTIONS, SEARCH, COMMENTS;
+        HOME, SUBSCRIPTIONS, SEARCH;
 
         public static final Source[] VALUES = values();
     }

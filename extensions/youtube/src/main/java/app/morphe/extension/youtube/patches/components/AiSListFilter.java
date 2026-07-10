@@ -28,7 +28,6 @@ import app.morphe.extension.shared.patches.components.BufferPhraseFilter;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.LongSetting;
-import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.utils.requests.AiSListRequester;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.NavigationBar;
@@ -53,18 +52,8 @@ public final class AiSListFilter extends BufferPhraseFilter {
 
     private final AtomicLong lastRefreshCheckMs = new AtomicLong(0);
 
-    /**
-     * Path-match callback for comment threads. Gate is null so the callback fires whether
-     * the blocklist or warnlist comment toggle is on; matchBuffer performs the per-list gate.
-     */
-    private final StringFilterGroup commentsFilter = new StringFilterGroup(
-            null,
-            "comment_thread.eml"
-    );
-
     public AiSListFilter() {
-        super(); // commentsFilter is added below because we need to reference it in matchBuffer.
-        addPathCallbacks(commentsFilter);
+        super();
         reparseIfNeeded();
     }
 
@@ -165,12 +154,8 @@ public final class AiSListFilter extends BufferPhraseFilter {
     @Override
     @Nullable
     protected String matchBuffer(byte[] buffer, StringFilterGroup matchedGroup) {
-        final boolean isComment = matchedGroup == commentsFilter;
-
         ByteTrieSearch bl = blocklistSearch;
-        boolean blActive = isComment
-                ? Settings.HIDE_AISLIST_BLOCKLIST_COMMENTS.get()
-                : blocklistActiveForFeedContext();
+        final boolean blActive = blocklistActiveForFeedContext();
         if (bl != null && blActive) {
             MutableReference<String> ref = new MutableReference<>();
             if (bl.matches(buffer, ref)) {
@@ -180,9 +165,7 @@ public final class AiSListFilter extends BufferPhraseFilter {
         }
 
         ByteTrieSearch wl = warnlistSearch;
-        boolean wlActive = isComment
-                ? Settings.HIDE_AISLIST_WARNLIST_COMMENTS.get()
-                : warnlistActiveForFeedContext();
+        final boolean wlActive = warnlistActiveForFeedContext();
         if (wl != null && wlActive) {
             MutableReference<String> ref = new MutableReference<>();
             if (wl.matches(buffer, ref)) {
@@ -196,7 +179,7 @@ public final class AiSListFilter extends BufferPhraseFilter {
 
     private void recordHide(StringFilterGroup matchedGroup, byte[] buffer) {
         Source source = detectSource(matchedGroup);
-        String videoId = getVideoIdForSource(source, buffer);
+        String videoId = extractVideoIdFromBuffer(buffer);
         // If ID extraction fails the hide still happens; only stats are skipped
         // to avoid double-counting the same card as it re-enters the viewport.
         if (videoId == null) return;
@@ -208,7 +191,6 @@ public final class AiSListFilter extends BufferPhraseFilter {
     }
 
     private Source detectSource(StringFilterGroup matchedGroup) {
-        if (matchedGroup == commentsFilter) return Source.COMMENTS;
         // Player fullscreen: treat under-video results as home (mirrors activeFor).
         if (PlayerType.getCurrent().isMaximizedOrFullscreen()) return Source.HOME;
         if (NavigationBar.isSearchBarActive()) return Source.SEARCH;
@@ -217,22 +199,10 @@ public final class AiSListFilter extends BufferPhraseFilter {
     }
 
     @Nullable
-    private static String getVideoIdForSource(Source source, byte[] buffer) {
-        if (source == Source.COMMENTS) {
-            // Comment threads carry no thumbnail URL for the parent video; the currently
-            // open player's video ID is authoritative.
-            String id = VideoInformation.getVideoId();
-            return id.isEmpty() ? null : id;
-        }
-        return extractVideoIdFromBuffer(buffer);
-    }
-
-    @Nullable
     private static LongSetting allTimeCounterFor(Source source) {
         return switch (source) {
             case HOME -> Settings.AISLIST_HIDE_COUNT_HOME;
             case SEARCH -> Settings.AISLIST_HIDE_COUNT_SEARCH;
-            case COMMENTS -> Settings.AISLIST_HIDE_COUNT_COMMENTS;
             // Subscription feed is not filtered by AiSList, so no counter exists.
             case SUBSCRIPTIONS -> null;
         };

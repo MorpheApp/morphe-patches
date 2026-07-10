@@ -20,7 +20,7 @@ import android.util.Pair;
 import android.widget.LinearLayout;
 
 import java.text.NumberFormat;
-import java.util.Locale;
+import java.util.List;
 import java.util.Set;
 
 import app.morphe.extension.shared.Logger;
@@ -45,17 +45,30 @@ public class AiSListStatsPreferenceCategory extends PreferenceCategory {
     private static final Set<String> REFRESH_KEYS = Set.of(
             Settings.AISLIST_HIDE_COUNT_HOME.key,
             Settings.AISLIST_HIDE_COUNT_SEARCH.key,
-            Settings.AISLIST_HIDE_COUNT_COMMENTS.key,
             Settings.AISLIST_HIDES_24H.key,
             Settings.AISLIST_BLOCKLIST_CACHE.key,
             Settings.AISLIST_WARNLIST_CACHE.key
     );
 
-    private final SharedPreferences.OnSharedPreferenceChangeListener listener = (prefs, key) -> {
-        if (REFRESH_KEYS.contains(key)) {
-            Utils.runOnMainThread(this::refresh);
-        }
-    };
+    private final SharedPreferences.OnSharedPreferenceChangeListener listener =
+            (prefs, key) -> {
+                if (REFRESH_KEYS.contains(key)) {
+                    Utils.runOnMainThread(this::refresh);
+                }
+            };
+
+    private final NumberFormat nf = NumberFormat.getInstance(Settings.MORPHE_LANGUAGE.get().getLocale());
+
+    static {
+        // Fix bad imported data
+        List.of(Settings.AISLIST_HIDE_COUNT_HOME, Settings.AISLIST_HIDE_COUNT_SEARCH).forEach(
+                setting -> {
+                    if (setting.get() < 0) {
+                        setting.resetToDefault();
+                    }
+                }
+        );
+    }
 
     public AiSListStatsPreferenceCategory(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
@@ -92,18 +105,14 @@ public class AiSListStatsPreferenceCategory extends PreferenceCategory {
     private void buildRows() {
         Context context = getContext();
 
-        Locale formatterLocale = Settings.MORPHE_LANGUAGE.get().getLocale();
-        NumberFormat nf = NumberFormat.getInstance(formatterLocale);
-
         final String homeCount24h = nf.format(AiSListFilter.hidesInLast24Hours(Source.HOME));
         final String searchCount24h = nf.format(AiSListFilter.hidesInLast24Hours(Source.SEARCH));
-        final String commentsCount24h = nf.format(AiSListFilter.hidesInLast24Hours(Source.COMMENTS));
         final String total24h = nf.format(AiSListFilter.hidesInLast24Hours());
 
         Preference hidden24h = new BulletPointPreference(context);
         hidden24h.setTitle(str("morphe_hide_aislist_stats_hidden_24h_title"));
         hidden24h.setSummary(str("morphe_hide_aislist_stats_hidden_breakdown",
-                homeCount24h, searchCount24h, commentsCount24h, total24h));
+                homeCount24h, searchCount24h, total24h));
         hidden24h.setOnPreferenceClickListener(pref -> {
             showResetDialog(
                     str("morphe_hide_aislist_stats_hidden_24h_reset_title"),
@@ -112,28 +121,21 @@ public class AiSListStatsPreferenceCategory extends PreferenceCategory {
         });
         addPreference(hidden24h);
 
-
-        final long homeAllCount = Settings.AISLIST_HIDE_COUNT_HOME.get();
-        final long searchAllCount = Settings.AISLIST_HIDE_COUNT_SEARCH.get();
-        final long commentsAllCount = Settings.AISLIST_HIDE_COUNT_COMMENTS.get();
-        final long totalAllCount = homeAllCount + searchAllCount + commentsAllCount;
-
-        final String homeAll = nf.format(homeAllCount);
-        final String searchAll = nf.format(searchAllCount);
-        final String commentsAll = nf.format(commentsAllCount);
-        final String totalAll = nf.format(totalAllCount);
+        final String homeAll = nf.format(Settings.AISLIST_HIDE_COUNT_HOME.get());
+        final String searchAll = nf.format(Settings.AISLIST_HIDE_COUNT_SEARCH.get());
+        final String totalAll = nf.format(Settings.AISLIST_HIDE_COUNT_HOME.get()
+                + Settings.AISLIST_HIDE_COUNT_SEARCH.get());
 
         Preference hiddenAllTime = new Preference(context);
         hiddenAllTime.setTitle(str("morphe_hide_aislist_stats_hidden_all_title"));
         hiddenAllTime.setSummary(str("morphe_hide_aislist_stats_hidden_breakdown",
-                homeAll, searchAll, commentsAll, totalAll));
+                homeAll, searchAll, totalAll));
         hiddenAllTime.setOnPreferenceClickListener(pref -> {
             showResetDialog(
                     str("morphe_hide_aislist_stats_hidden_all_reset_title"),
                     () -> {
                         Settings.AISLIST_HIDE_COUNT_HOME.resetToDefault();
                         Settings.AISLIST_HIDE_COUNT_SEARCH.resetToDefault();
-                        Settings.AISLIST_HIDE_COUNT_COMMENTS.resetToDefault();
                         AiSListFilter.resetHidesTracker();
                     });
             return true;
