@@ -20,7 +20,9 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
+import static app.morphe.extension.youtube.patches.components.ChannelPageFlyoutFilter.channelId;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.PlayerType;
 
 @SuppressWarnings("unused")
 public final class OpenSystemShareSheetPatch {
@@ -43,23 +45,33 @@ public final class OpenSystemShareSheetPatch {
             return;
         }
 
-        final String targetVideoId =
-                !FlyoutUtils.getFlyoutVideoId().isEmpty() ? FlyoutUtils.getFlyoutVideoId() : VideoInformation.getVideoId();
+        String id = "";
+        if (!getFlyoutVideoId().isEmpty()) {
+            id = getFlyoutVideoId();
+        } else if (PlayerType.getCurrent().isMaximizedOrFullscreen()) {
+            id = VideoInformation.getVideoId();
+        } else if (!channelId.isEmpty()) {
+            id = channelId;
+        }
 
-        final String videoURL =
-                (SharedYouTubeSettings.REPLACE_LINKS_WITH_SHORTENER.get() ? "https://youtu.be/" : "https://www.youtube.com/watch?v=") + targetVideoId;
+        if (!TextUtils.isEmpty(id)) {
+            final String url;
+            if (id.length() == 11) {
+                url = (REPLACE_LINKS_WITH_SHORTENER.get() ? "https://youtu.be/" : "https://www.youtube.com/watch?v=") + id;
+            } else {
+                url = "https://www.youtube.com/channel/" + id;
+            }
 
-        if (!TextUtils.isEmpty(videoURL)) {
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
-            shareIntent.putExtra(Intent.EXTRA_TEXT, videoURL);
+            shareIntent.putExtra(Intent.EXTRA_TEXT, url);
             Intent chooserIntent = Intent.createChooser(shareIntent, "");
             chooserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_USER_ACTION);
 
             try {
                 Utils.getContext().startActivity(chooserIntent);
             } catch (Exception ex) {
-                Logger.printException(() -> "Can not open System Share panel: " + videoURL, ex);
+                Logger.printException(() -> "Can not open System Share panel: " + url, ex);
             }
         }
     }

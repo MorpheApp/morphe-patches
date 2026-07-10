@@ -17,11 +17,13 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.string
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
+import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.hide.general.ContextualMenuItemBuilderFingerprint
 import app.morphe.patches.youtube.layout.hide.general.ContextualMenuItemBuilderOnClickFingerprint
 import app.morphe.patches.youtube.misc.auth.authHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -47,8 +49,8 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/AddToQueuePatch;"
 
-private const val EXTENSION_UTILS_CLASS =
-    "Lapp/morphe/extension/youtube/patches/utils/FlyoutUtils;"
+private const val EXTENSION_FILTER =
+    "Lapp/morphe/extension/youtube/patches/components/ChannelPageFlyoutFilter;"
 
 private const val EXTENSION_FLYOUT_MENU_VIDEO_ID_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/utils/FlyoutUtils$FlyoutMenuVideoIdInterface;"
@@ -66,6 +68,7 @@ val addToQueuePatch = bytecodePatch(
         settingsPatch,
         sharedExtensionPatch,
         settingsPatch,
+        lithoFilterPatch,
         versionCheckPatch,
         videoInformationPatch,
         authHookPatch
@@ -314,5 +317,7 @@ val addToQueuePatch = bytecodePatch(
                 )
             }
         }
+
+        addLithoFilter(EXTENSION_FILTER)
     }
 }
