@@ -9,7 +9,7 @@ package app.morphe.extension.youtube.patches.components;
 
 import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
-import androidx.annotation.NonNull;
+import androidx.annotation.GuardedBy;
 import androidx.annotation.Nullable;
 
 import org.json.JSONObject;
@@ -36,10 +36,7 @@ import app.morphe.extension.youtube.shared.PlayerType;
 public final class AiSListFilter extends BufferPhraseFilter {
 
     /** Refresh the cached list from GitHub raw after this long since last successful fetch. */
-    private static final long REFRESH_INTERVAL_MS = 4 * 60 * 60 * 1000L;
-
-    /** Throttle for how often the isFiltered-path checks whether a refresh is due. */
-    private static final long REFRESH_CHECK_INTERVAL_MS = 30 * 60 * 1000L;
+    private static final long REFRESH_CHECK_INTERVAL_MS = 4 * 60 * 1000L;
 
     /** Sliding-window horizon for the "last 24 hours" stat. */
     private static final long HIDES_24H_WINDOW_MS = 24 * 60 * 60 * 1000L;
@@ -63,27 +60,16 @@ public final class AiSListFilter extends BufferPhraseFilter {
 
     public AiSListFilter() {
         super(); // No extra path callbacks - AiSList only filters feed/search cards.
-        Utils.runOnBackgroundThread(this::maybeRefreshList);
-    }
-
-    private void maybeRefreshList() {
-        try {
-            long last = Settings.AISLIST_LAST_FETCH_MS.get();
-            if (System.currentTimeMillis() - last >= REFRESH_INTERVAL_MS) {
-                AiSListRequester.fetchAndStore();
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "AiSList refresh check failed", ex);
-        }
+        reparseIfNeeded();
     }
 
     @Override
     protected void reparseIfNeeded() {
-        long now = System.currentTimeMillis();
-        long lastCheck = lastRefreshCheckMs.get();
+        final long now = System.currentTimeMillis();
+        final long lastCheck = lastRefreshCheckMs.get();
         if (now - lastCheck > REFRESH_CHECK_INTERVAL_MS
                 && lastRefreshCheckMs.compareAndSet(lastCheck, now)) {
-            Utils.runOnBackgroundThread(this::maybeRefreshList);
+            Utils.runOnBackgroundThread(AiSListRequester::fetchAndStore);
         }
 
         String currentBlocklist = Settings.AISLIST_BLOCKLIST_CACHE.get();
@@ -138,7 +124,8 @@ public final class AiSListFilter extends BufferPhraseFilter {
         }
 
         final int total = count;
-        Logger.printDebug(() -> "AiSList " + tag + ": parsed " + total + " handles (" + search.getEstimatedMemorySize() + " KB)");
+        Logger.printDebug(() -> "AiSList " + tag + ": parsed: " + total
+                + " handles: " + search.getEstimatedMemorySize() + " KB");
         return count == 0 ? null : search;
     }
 
@@ -223,11 +210,34 @@ public final class AiSListFilter extends BufferPhraseFilter {
     }
 
     /**
+     * Returns the size of the 24h tracker after purging expired entries.
+     * Used by the stats preference UI.
+     */
+    public static int hidesInLast24Hours() {
+        return sharedTracker.size(System.currentTimeMillis());
+    }
+
+    /** Clears the 24h tracker. Called from the reset dialog. */
+    public static void resetHidesTracker() {
+        sharedTracker.reset();
+    }
+
+    /** Shared static reference so the UI can query without holding a filter instance. */
+    private static final HidesTracker sharedTracker = new HidesTracker();
+
+    @Override
+    protected void onHideConfirmed(String matched) {
+        // Stats already recorded inside matchBuffer where the buffer is available.
+    }
+
+    /**
      * Persists a JSON dict {videoId: hideTimestampMs} to AISLIST_HIDES_24H. Loads lazily on first
      * use, purges entries older than the 24h horizon on each recorded hide, and caps map size.
      */
     private static final class HidesTracker {
+        @GuardedBy("this")
         private final HashMap<String, Long> data = new HashMap<>();
+        @GuardedBy("this")
         private boolean loaded;
 
         synchronized int size(long now) {
@@ -305,26 +315,5 @@ public final class AiSListFilter extends BufferPhraseFilter {
                 Logger.printException(() -> "Failed to save AiSList 24h store", ex);
             }
         }
-    }
-
-    /**
-     * Returns the size of the 24h tracker after purging expired entries.
-     * Used by the stats preference UI.
-     */
-    public static int hidesInLast24Hours() {
-        return sharedTracker.size(System.currentTimeMillis());
-    }
-
-    /** Clears the 24h tracker. Called from the reset dialog. */
-    public static void resetHidesTracker() {
-        sharedTracker.reset();
-    }
-
-    /** Shared static reference so the UI can query without holding a filter instance. */
-    private static final HidesTracker sharedTracker = new HidesTracker();
-
-    @Override
-    protected void onHideConfirmed(@NonNull String matched) {
-        // Stats already recorded inside matchBuffer where the buffer is available.
     }
 }

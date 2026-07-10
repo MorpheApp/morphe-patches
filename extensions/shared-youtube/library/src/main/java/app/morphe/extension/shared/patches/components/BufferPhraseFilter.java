@@ -31,7 +31,6 @@ import static java.lang.Character.UnicodeBlock.MYANMAR;
 import static java.lang.Character.UnicodeBlock.THAI;
 import static java.lang.Character.UnicodeBlock.TIBETAN;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.nio.charset.StandardCharsets;
@@ -195,7 +194,7 @@ public abstract class BufferPhraseFilter extends Filter {
     /**
      * Optional hook invoked when a hide is confirmed. Subclasses can override to record stats.
      */
-    protected void onHideConfirmed(@NonNull String matched) {
+    protected void onHideConfirmed(String matched) {
         // Default no-op.
     }
 
@@ -351,7 +350,7 @@ public abstract class BufferPhraseFilter extends Filter {
      * @return If any of the given phrases would match a string in {@link #STRINGS_IN_EVERY_BUFFER}
      * (which would cause the filter to hide all videos).
      */
-    public static boolean phrasesWillHideAllVideos(@NonNull String[] phrases, boolean matchWholeWords) {
+    public static boolean phrasesWillHideAllVideos(String[] phrases, boolean matchWholeWords) {
         for (String phrase : phrases) {
             for (String commonString : STRINGS_IN_EVERY_BUFFER) {
                 if (matchWholeWords) {

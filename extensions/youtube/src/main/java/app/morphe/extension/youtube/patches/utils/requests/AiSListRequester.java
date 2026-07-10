@@ -19,6 +19,7 @@ import java.util.zip.GZIPInputStream;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
@@ -33,8 +34,8 @@ public final class AiSListRequester {
     private static final String WARNLIST_URL =
             "https://raw.githubusercontent.com/Override92/AiSList/main/AiSList/aislist_warnlist.txt";
 
-    private static final int CONNECT_TIMEOUT_MS = 7_000;
-    private static final int READ_TIMEOUT_MS = 15_000;
+    private static final int CONNECT_TIMEOUT_MS = 30_000;
+    private static final int READ_TIMEOUT_MS = 30_000;
     private static final int MAX_RESPONSE_BYTES = 5 * 1024 * 1024; // 5 MB safety cap.
 
     private AiSListRequester() {}
@@ -47,8 +48,8 @@ public final class AiSListRequester {
     public static void fetchAndStore() {
         Utils.verifyOffMainThread();
 
-        String block = fetch(BLOCKLIST_URL);
-        String warn = fetch(WARNLIST_URL);
+        String block = fetch(BLOCKLIST_URL, false);
+        String warn = fetch(WARNLIST_URL, true);
 
         boolean any = false;
         if (block != null) {
@@ -70,20 +71,20 @@ public final class AiSListRequester {
     }
 
     @Nullable
-    private static String fetch(String url) {
+    private static String fetch(String url, boolean disconnect) {
         HttpURLConnection connection = null;
-        long start = System.currentTimeMillis();
+        final long start = System.currentTimeMillis();
         try {
             connection = (HttpURLConnection) new URL(url).openConnection();
+            connection.setFixedLengthStreamingMode(0);
             connection.setConnectTimeout(CONNECT_TIMEOUT_MS);
             connection.setReadTimeout(READ_TIMEOUT_MS);
             connection.setRequestProperty("Accept-Encoding", "gzip");
             connection.setRequestProperty("User-Agent", "Morphe-AiSList");
 
-            int code = connection.getResponseCode();
+            final int code = connection.getResponseCode();
             if (code != HttpURLConnection.HTTP_OK) {
-                final int finalCode = code;
-                Logger.printDebug(() -> "AiSList fetch " + url + " HTTP " + finalCode);
+                Logger.printDebug(() -> "AiSList fetch response: " + code + " url: " + url);
                 return null;
             }
 
@@ -97,9 +98,10 @@ public final class AiSListRequester {
                     new InputStreamReader(stream, StandardCharsets.UTF_8))) {
                 char[] buf = new char[8192];
                 int read;
-                while ((read = reader.read(buf)) != -1) {
+                while ((read = reader.read(buf)) >= 0) {
                     if (sb.length() + read > MAX_RESPONSE_BYTES) {
-                        Logger.printException(() -> "AiSList response exceeded " + MAX_RESPONSE_BYTES + " bytes: " + url);
+                        Logger.printException(() -> "AiSList response exceeded "
+                                + MAX_RESPONSE_BYTES + " bytes: " + url);
                         return null;
                     }
                     sb.append(buf, 0, read);
@@ -107,11 +109,12 @@ public final class AiSListRequester {
             }
             return sb.toString();
         } catch (Exception ex) {
-            Logger.printException(() -> "AiSList fetch failed for " + url, ex);
+            Logger.printInfo(() -> "AiSList fetch failed for url: " + url, ex);
             return null;
         } finally {
-            if (connection != null) connection.disconnect();
-            Logger.printDebug(() -> "AiSList fetch " + url + " took " + (System.currentTimeMillis() - start) + "ms");
+            if (disconnect && connection != null) connection.disconnect();
+            Logger.printDebug(() -> "AiSList fetch took "
+                    + (System.currentTimeMillis() - start) + "ms url: " + url);
         }
     }
 }
