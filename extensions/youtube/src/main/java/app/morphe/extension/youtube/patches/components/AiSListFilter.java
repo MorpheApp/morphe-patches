@@ -9,21 +9,16 @@ package app.morphe.extension.youtube.patches.components;
 
 import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
-import androidx.annotation.GuardedBy;
 import androidx.annotation.Nullable;
 
-import org.json.JSONObject;
-
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
 import app.morphe.extension.shared.ByteTrieSearch;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.TrieSearch;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.patches.components.BufferHideStatsTracker;
 import app.morphe.extension.shared.patches.components.BufferPhraseFilter;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
 import app.morphe.extension.shared.settings.BooleanSetting;
@@ -38,12 +33,6 @@ public final class AiSListFilter extends BufferPhraseFilter {
 
     /** Refresh the cached list from GitHub raw after this long since last successful fetch. */
     private static final long REFRESH_CHECK_INTERVAL_MS = 4 * 60 * 1000L;
-
-    /** Sliding-window horizon for the "last 24 hours" stat. */
-    private static final long HIDES_24H_WINDOW_MS = 24 * 60 * 60 * 1000L;
-
-    /** Safety cap on the 24h map (prevents unbounded growth if extraction misfires). */
-    private static final int MAX_TRACKED_VIDEOS = 2000;
 
     private volatile ByteTrieSearch blocklistSearch;
     private volatile ByteTrieSearch warnlistSearch;
@@ -203,8 +192,8 @@ public final class AiSListFilter extends BufferPhraseFilter {
         return switch (source) {
             case HOME -> Settings.AISLIST_HIDE_COUNT_HOME;
             case SEARCH -> Settings.AISLIST_HIDE_COUNT_SEARCH;
-            // Subscription feed is not filtered by AiSList, so no counter exists.
-            case SUBSCRIPTIONS -> null;
+            // Subscription feed and comments are not filtered by AiSList, so no counter exists.
+            case SUBSCRIPTIONS, COMMENTS -> null;
         };
     }
 
@@ -224,115 +213,11 @@ public final class AiSListFilter extends BufferPhraseFilter {
     }
 
     /** Shared static reference so the UI can query without holding a filter instance. */
-    private static final HidesTracker sharedTracker = new HidesTracker();
+    private static final BufferHideStatsTracker sharedTracker =
+            new BufferHideStatsTracker(Settings.AISLIST_HIDES_24H);
 
     @Override
     protected void onHideConfirmed(String matched) {
         // Stats already recorded inside matchBuffer where the buffer and matched group are available.
-    }
-
-    /**
-     * Persists a JSON dict {"videoId":{"t":timestamp,"s":sourceOrdinal}} to AISLIST_HIDES_24H.
-     * Loads lazily on first use, purges entries older than the 24h horizon on each recorded hide,
-     * and caps map size.
-     */
-    private static final class HidesTracker {
-        @GuardedBy("this")
-        private final HashMap<String, Entry> data = new HashMap<>();
-        @GuardedBy("this")
-        private boolean loaded;
-
-        private record Entry(long timestamp, int sourceOrdinal) {}
-
-        synchronized int totalSize(long now) {
-            loadIfNeeded();
-            purgeOlderThan(now - HIDES_24H_WINDOW_MS);
-            return data.size();
-        }
-
-        synchronized int sourceSize(Source source, long now) {
-            loadIfNeeded();
-            purgeOlderThan(now - HIDES_24H_WINDOW_MS);
-            final int wanted = source.ordinal();
-            int count = 0;
-            for (Entry e : data.values()) {
-                if (e.sourceOrdinal() == wanted) count++;
-            }
-            return count;
-        }
-
-        /** @return true if the video was newly recorded, false if already present. */
-        synchronized boolean recordHide(String videoId, Source source, long now) {
-            loadIfNeeded();
-            purgeOlderThan(now - HIDES_24H_WINDOW_MS);
-
-            if (data.containsKey(videoId)) {
-                return false;
-            }
-
-            data.put(videoId, new Entry(now, source.ordinal()));
-            if (data.size() > MAX_TRACKED_VIDEOS) {
-                evictEldest();
-            }
-            save();
-            return true;
-        }
-
-        synchronized void reset() {
-            data.clear();
-            loaded = true;
-            Settings.AISLIST_HIDES_24H.resetToDefault();
-        }
-
-        private void loadIfNeeded() {
-            if (loaded) return;
-            loaded = true;
-            String raw = Settings.AISLIST_HIDES_24H.get();
-            if (raw.isEmpty()) return;
-            try {
-                JSONObject obj = new JSONObject(raw);
-                Iterator<String> keys = obj.keys();
-                while (keys.hasNext()) {
-                    String k = keys.next();
-                    JSONObject e = obj.getJSONObject(k);
-                    data.put(k, new Entry(e.getLong("t"), e.getInt("s")));
-                }
-            } catch (Exception ex) {
-                Logger.printException(() -> "AiSList 24h store is corrupt, resetting", ex);
-                data.clear();
-                Settings.AISLIST_HIDES_24H.resetToDefault();
-            }
-        }
-
-        private void purgeOlderThan(long threshold) {
-            data.entrySet().removeIf(e -> e.getValue().timestamp() < threshold);
-        }
-
-        private void evictEldest() {
-            String eldestKey = null;
-            long eldestTime = Long.MAX_VALUE;
-            for (Map.Entry<String, Entry> e : data.entrySet()) {
-                if (e.getValue().timestamp() < eldestTime) {
-                    eldestTime = e.getValue().timestamp();
-                    eldestKey = e.getKey();
-                }
-            }
-            if (eldestKey != null) data.remove(eldestKey);
-        }
-
-        private void save() {
-            try {
-                JSONObject obj = new JSONObject();
-                for (Map.Entry<String, Entry> e : data.entrySet()) {
-                    JSONObject entryObj = new JSONObject();
-                    entryObj.put("t", e.getValue().timestamp());
-                    entryObj.put("s", e.getValue().sourceOrdinal());
-                    obj.put(e.getKey(), entryObj);
-                }
-                Settings.AISLIST_HIDES_24H.save(obj.toString());
-            } catch (Exception ex) {
-                Logger.printException(() -> "Failed to save AiSList 24h store", ex);
-            }
-        }
     }
 }

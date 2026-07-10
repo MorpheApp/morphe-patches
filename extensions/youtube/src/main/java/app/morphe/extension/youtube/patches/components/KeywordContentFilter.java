@@ -36,8 +36,11 @@ import app.morphe.extension.shared.ByteTrieSearch;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.TrieSearch;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.patches.components.BufferHideStatsTracker;
 import app.morphe.extension.shared.patches.components.BufferPhraseFilter;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
+import app.morphe.extension.shared.settings.LongSetting;
+import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.NavigationBar;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -69,6 +72,11 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
      * Only applies when not using whole word syntax.
      */
     private static final int MINIMUM_KEYWORD_LENGTH = 3;
+
+    private final StringFilterGroup commentsFilter = new StringFilterGroup(
+            Settings.HIDE_KEYWORD_CONTENT_COMMENTS,
+            "comment_thread.eml"
+    );
 
     /**
      * The last value of {@link Settings#HIDE_KEYWORD_CONTENT_PHRASES}
@@ -203,10 +211,8 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
     }
 
     public KeywordContentFilter() {
-        super(new StringFilterGroup(
-                Settings.HIDE_KEYWORD_CONTENT_COMMENTS,
-                "comment_thread.eml"
-        ));
+        super(); // commentsFilter is registered below because instance fields initialize after super().
+        addPathCallbacks(commentsFilter);
         // Keywords are parsed on first call to isFiltered().
     }
 
@@ -259,11 +265,74 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
         ByteTrieSearch search = bufferSearch;
         if (search == null) return null;
         MutableReference<String> matchRef = new MutableReference<>();
-        return search.matches(buffer, matchRef) ? matchRef.value : null;
+        if (!search.matches(buffer, matchRef)) return null;
+        recordHide(matchedGroup, buffer);
+        return matchRef.value;
     }
 
     @Override
     protected void onBroadFilterDetected(@Nullable String matched) {
         Utils.showToastLong(str("morphe_hide_keyword_toast_invalid_broad", matched));
     }
+
+    private void recordHide(StringFilterGroup matchedGroup, byte[] buffer) {
+        Source source = detectSource(matchedGroup);
+        String videoId = getVideoIdForSource(source, buffer);
+        // If ID extraction fails the hide still happens; only stats are skipped
+        // to avoid double-counting the same card as it re-enters the viewport.
+        if (videoId == null) return;
+
+        if (sharedTracker.recordHide(videoId, source, System.currentTimeMillis())) {
+            LongSetting counter = allTimeCounterFor(source);
+            if (counter != null) counter.save(counter.get() + 1);
+        }
+    }
+
+    private Source detectSource(StringFilterGroup matchedGroup) {
+        if (matchedGroup == commentsFilter) return Source.COMMENTS;
+        // Player fullscreen: treat under-video results as home (mirrors isActiveForFeedContext).
+        if (PlayerType.getCurrent().isMaximizedOrFullscreen()) return Source.HOME;
+        if (NavigationBar.isSearchBarActive()) return Source.SEARCH;
+        NavigationButton nav = NavigationButton.getSelectedNavigationButton();
+        return nav == NavigationButton.SUBSCRIPTIONS ? Source.SUBSCRIPTIONS : Source.HOME;
+    }
+
+    @Nullable
+    private static String getVideoIdForSource(Source source, byte[] buffer) {
+        if (source == Source.COMMENTS) {
+            // Comment threads carry no thumbnail URL for the parent video; the currently
+            // open player's video ID is authoritative.
+            String id = VideoInformation.getVideoId();
+            return id.isEmpty() ? null : id;
+        }
+        return extractVideoIdFromBuffer(buffer);
+    }
+
+    private static LongSetting allTimeCounterFor(Source source) {
+        return switch (source) {
+            case HOME -> Settings.KEYWORD_HIDE_COUNT_HOME;
+            case SUBSCRIPTIONS -> Settings.KEYWORD_HIDE_COUNT_SUBSCRIPTIONS;
+            case SEARCH -> Settings.KEYWORD_HIDE_COUNT_SEARCH;
+            case COMMENTS -> Settings.KEYWORD_HIDE_COUNT_COMMENTS;
+        };
+    }
+
+    /** Returns the total 24h hide count across all sources. */
+    public static int hidesInLast24Hours() {
+        return sharedTracker.totalSize(System.currentTimeMillis());
+    }
+
+    /** Returns the 24h hide count for a given source. */
+    public static int hidesInLast24Hours(Source source) {
+        return sharedTracker.sourceSize(source, System.currentTimeMillis());
+    }
+
+    /** Clears the 24h tracker. Called from the reset dialogs. */
+    public static void resetHidesTracker() {
+        sharedTracker.reset();
+    }
+
+    /** Shared static reference so the UI can query without holding a filter instance. */
+    private static final BufferHideStatsTracker sharedTracker =
+            new BufferHideStatsTracker(Settings.KEYWORD_HIDES_24H);
 }

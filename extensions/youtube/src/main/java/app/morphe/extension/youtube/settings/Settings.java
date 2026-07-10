@@ -152,6 +152,11 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_KEYWORD_CONTENT_COMMENTS = new BooleanSetting("morphe_hide_keyword_content_comments", FALSE);
     public static final StringSetting HIDE_KEYWORD_CONTENT_PHRASES = new StringSetting("morphe_hide_keyword_content_phrases", "",
             parentsAny(HIDE_KEYWORD_CONTENT_HOME, HIDE_KEYWORD_CONTENT_SUBSCRIPTIONS, HIDE_KEYWORD_CONTENT_COMMENTS, HIDE_KEYWORD_CONTENT_SEARCH));
+    public static final LongSetting KEYWORD_HIDE_COUNT_HOME = new LongSetting("morphe_keyword_hide_count_home", 0L);
+    public static final LongSetting KEYWORD_HIDE_COUNT_SUBSCRIPTIONS = new LongSetting("morphe_keyword_hide_count_subscriptions", 0L);
+    public static final LongSetting KEYWORD_HIDE_COUNT_SEARCH = new LongSetting("morphe_keyword_hide_count_search", 0L);
+    public static final LongSetting KEYWORD_HIDE_COUNT_COMMENTS = new LongSetting("morphe_keyword_hide_count_comments", 0L);
+    public static final StringSetting KEYWORD_HIDES_24H = new StringSetting("morphe_keyword_hides_24h", "", false, false);
 
     // AiSList
     public static final BooleanSetting HIDE_AISLIST_BLOCKLIST_HOME = new BooleanSetting("morphe_hide_aislist_blocklist_home", FALSE);

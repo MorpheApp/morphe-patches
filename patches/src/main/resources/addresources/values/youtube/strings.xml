@@ -260,20 +260,26 @@ Limitations:
     <string name="morphe_hide_keyword_toast_invalid_length">Keyword is too short and requires quotes: %s</string>
     <string name="morphe_hide_keyword_toast_invalid_broad">Keyword will hide all videos: %s</string>
 
+    <string name="morphe_hide_stats_category_title">Stats</string>
+    <string name="morphe_hide_stats_hidden_24h_title">Videos hidden, last 24 hours</string>
+    <string name="morphe_hide_stats_hidden_all_title">Videos hidden, all time</string>
+    <string name="morphe_hide_stats_hidden_24h_reset_title">Reset last 24 hours counter?</string>
+    <string name="morphe_hide_stats_hidden_all_reset_title">Reset all time counter?</string>
+    <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Home: %s
+• Subscriptions: %s
+• Search: %s
+• Comments: %s
+• Total: %s"</string>
+
     <string name="morphe_hide_aislist_screen_title">AI channel filter</string>
     <string name="morphe_hide_aislist_screen_summary">Hide videos from channels flagged as AI-generated content by the AiSList community list</string>
     <string name="morphe_hide_aislist_blocklist_category_title">Blocklist: High confidence</string>
     <string name="morphe_hide_aislist_warnlist_category_title">Warnlist: Moderate confidence</string>
     <string name="morphe_hide_aislist_hide_home_title">Hide videos in Home</string>
     <string name="morphe_hide_aislist_hide_search_title">Hide videos in search</string>
-    <string name="morphe_hide_aislist_stats_category_title">Stats</string>
-    <string name="morphe_hide_aislist_stats_hidden_24h_title">Videos hidden, last 24 hours</string>
-    <string name="morphe_hide_aislist_stats_hidden_all_title">Videos hidden, all time</string>
     <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Home: %s
 • Search: %s
 • Total: %s"</string>
-    <string name="morphe_hide_aislist_stats_hidden_24h_reset_title">Reset last 24 hours counter?</string>
-    <string name="morphe_hide_aislist_stats_hidden_all_reset_title">Reset all time counter?</string>
     <string name="morphe_hide_aislist_stats_blocklist_title">Blocklist channels loaded: %s</string>
     <string name="morphe_hide_aislist_stats_warnlist_title">Warnlist channels loaded: %s</string>
     <string name="morphe_hide_aislist_about_category_title">About</string>

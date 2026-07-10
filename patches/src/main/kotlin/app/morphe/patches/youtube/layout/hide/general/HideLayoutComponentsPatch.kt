@@ -199,6 +199,13 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_keyword_content_search"),
                     SwitchPreference("morphe_hide_keyword_content_comments"),
                     TextPreference("morphe_hide_keyword_content_phrases", inputType = InputType.TEXT_MULTI_LINE),
+                    PreferenceCategory(
+                        key = "morphe_hide_keyword_content_stats_category",
+                        titleKey = "morphe_hide_stats_category_title",
+                        sorting = Sorting.UNSORTED,
+                        preferences = emptySet(),
+                        tag = "app.morphe.extension.youtube.settings.preference.KeywordContentStatsPreferenceCategory"
+                    ),
                     NonInteractivePreference(
                         key = "morphe_hide_keyword_content_about",
                         tag = "app.morphe.extension.shared.settings.preference.BulletPointPreference"
@@ -244,6 +251,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     ),
                     PreferenceCategory(
                         key = "morphe_hide_aislist_stats_category",
+                        titleKey = "morphe_hide_stats_category_title",
                         sorting = Sorting.UNSORTED,
                         preferences = emptySet(),
                         tag = "app.morphe.extension.youtube.settings.preference.AiSListStatsPreferenceCategory"

@@ -110,12 +110,12 @@ public class AiSListStatsPreferenceCategory extends PreferenceCategory {
         final String total24h = nf.format(AiSListFilter.hidesInLast24Hours());
 
         Preference hidden24h = new BulletPointPreference(context);
-        hidden24h.setTitle(str("morphe_hide_aislist_stats_hidden_24h_title"));
+        hidden24h.setTitle(str("morphe_hide_stats_hidden_24h_title"));
         hidden24h.setSummary(str("morphe_hide_aislist_stats_hidden_breakdown",
                 homeCount24h, searchCount24h, total24h));
         hidden24h.setOnPreferenceClickListener(pref -> {
             showResetDialog(
-                    str("morphe_hide_aislist_stats_hidden_24h_reset_title"),
+                    str("morphe_hide_stats_hidden_24h_reset_title"),
                     AiSListFilter::resetHidesTracker);
             return true;
         });
@@ -127,12 +127,12 @@ public class AiSListStatsPreferenceCategory extends PreferenceCategory {
                 + Settings.AISLIST_HIDE_COUNT_SEARCH.get());
 
         Preference hiddenAllTime = new Preference(context);
-        hiddenAllTime.setTitle(str("morphe_hide_aislist_stats_hidden_all_title"));
+        hiddenAllTime.setTitle(str("morphe_hide_stats_hidden_all_title"));
         hiddenAllTime.setSummary(str("morphe_hide_aislist_stats_hidden_breakdown",
                 homeAll, searchAll, totalAll));
         hiddenAllTime.setOnPreferenceClickListener(pref -> {
             showResetDialog(
-                    str("morphe_hide_aislist_stats_hidden_all_reset_title"),
+                    str("morphe_hide_stats_hidden_all_reset_title"),
                     () -> {
                         Settings.AISLIST_HIDE_COUNT_HOME.resetToDefault();
                         Settings.AISLIST_HIDE_COUNT_SEARCH.resetToDefault();
