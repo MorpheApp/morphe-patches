@@ -10,6 +10,7 @@ package app.morphe.extension.youtube.patches.components;
 import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
 import androidx.annotation.GuardedBy;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.json.JSONObject;
@@ -27,6 +28,8 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.BufferPhraseFilter;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
 import app.morphe.extension.shared.settings.BooleanSetting;
+import app.morphe.extension.shared.settings.LongSetting;
+import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.utils.requests.AiSListRequester;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.NavigationBar;
@@ -44,13 +47,6 @@ public final class AiSListFilter extends BufferPhraseFilter {
     /** Safety cap on the 24h map (prevents unbounded growth if extraction misfires). */
     private static final int MAX_TRACKED_VIDEOS = 2000;
 
-    /** YouTube video IDs are 11 chars from base64-url alphabet. */
-    private static final int VIDEO_ID_LENGTH = 11;
-
-    /** Prefix that precedes the 11-char video ID inside the buffer. */
-    private static final byte[] THUMBNAIL_URL_PREFIX =
-            "https://i.ytimg.com/vi/".getBytes(StandardCharsets.UTF_8);
-
     private volatile ByteTrieSearch blocklistSearch;
     private volatile ByteTrieSearch warnlistSearch;
     private volatile String lastBlocklistParsed;
@@ -58,8 +54,18 @@ public final class AiSListFilter extends BufferPhraseFilter {
 
     private final AtomicLong lastRefreshCheckMs = new AtomicLong(0);
 
+    /**
+     * Path-match callback for comment threads. Gate is null so the callback fires whether
+     * the blocklist or warnlist comment toggle is on; matchBuffer performs the per-list gate.
+     */
+    private final StringFilterGroup commentsFilter = new StringFilterGroup(
+            null,
+            "comment_thread.eml"
+    );
+
     public AiSListFilter() {
-        super(); // No extra path callbacks - AiSList only filters feed/search cards.
+        super(); // commentsFilter is added below because we need to reference it in matchBuffer.
+        addPathCallbacks(commentsFilter);
         reparseIfNeeded();
     }
 
@@ -131,8 +137,16 @@ public final class AiSListFilter extends BufferPhraseFilter {
 
     @Override
     protected boolean isActiveForFeedContext() {
-        return activeFor(Settings.HIDE_AISLIST_BLOCKLIST_HOME, Settings.HIDE_AISLIST_BLOCKLIST_SEARCH)
-                || activeFor(Settings.HIDE_AISLIST_WARNLIST_HOME, Settings.HIDE_AISLIST_WARNLIST_SEARCH);
+        // Any feed-scope toggle enables the base's guard; matchBuffer performs the per-list check.
+        return blocklistActiveForFeedContext() || warnlistActiveForFeedContext();
+    }
+
+    private static boolean blocklistActiveForFeedContext() {
+        return activeFor(Settings.HIDE_AISLIST_BLOCKLIST_HOME, Settings.HIDE_AISLIST_BLOCKLIST_SEARCH);
+    }
+
+    private static boolean warnlistActiveForFeedContext() {
+        return activeFor(Settings.HIDE_AISLIST_WARNLIST_HOME, Settings.HIDE_AISLIST_WARNLIST_SEARCH);
     }
 
     private static boolean activeFor(BooleanSetting homeSetting, BooleanSetting searchSetting) {
@@ -152,20 +166,28 @@ public final class AiSListFilter extends BufferPhraseFilter {
     @Override
     @Nullable
     protected String matchBuffer(byte[] buffer, StringFilterGroup matchedGroup) {
+        final boolean isComment = matchedGroup == commentsFilter;
+
         ByteTrieSearch bl = blocklistSearch;
-        if (bl != null && activeFor(Settings.HIDE_AISLIST_BLOCKLIST_HOME, Settings.HIDE_AISLIST_BLOCKLIST_SEARCH)) {
+        boolean blActive = isComment
+                ? Settings.HIDE_AISLIST_BLOCKLIST_COMMENTS.get()
+                : blocklistActiveForFeedContext();
+        if (bl != null && blActive) {
             MutableReference<String> ref = new MutableReference<>();
             if (bl.matches(buffer, ref)) {
-                recordHide(buffer);
+                recordHide(matchedGroup, buffer);
                 return ref.value;
             }
         }
 
         ByteTrieSearch wl = warnlistSearch;
-        if (wl != null && activeFor(Settings.HIDE_AISLIST_WARNLIST_HOME, Settings.HIDE_AISLIST_WARNLIST_SEARCH)) {
+        boolean wlActive = isComment
+                ? Settings.HIDE_AISLIST_WARNLIST_COMMENTS.get()
+                : warnlistActiveForFeedContext();
+        if (wl != null && wlActive) {
             MutableReference<String> ref = new MutableReference<>();
             if (wl.matches(buffer, ref)) {
-                recordHide(buffer);
+                recordHide(matchedGroup, buffer);
                 return ref.value;
             }
         }
@@ -173,51 +195,61 @@ public final class AiSListFilter extends BufferPhraseFilter {
         return null;
     }
 
-    private void recordHide(byte[] buffer) {
-        String videoId = extractVideoId(buffer);
+    private void recordHide(StringFilterGroup matchedGroup, byte[] buffer) {
+        Source source = detectSource(matchedGroup);
+        String videoId = getVideoIdForSource(source, buffer);
         // If ID extraction fails the hide still happens; only stats are skipped
         // to avoid double-counting the same card as it re-enters the viewport.
         if (videoId == null) return;
 
-        if (sharedTracker.recordHide(videoId, System.currentTimeMillis())) {
-            Settings.AISLIST_HIDE_COUNT.save(Settings.AISLIST_HIDE_COUNT.get() + 1);
+        if (sharedTracker.recordHide(videoId, source, System.currentTimeMillis())) {
+            LongSetting counter = allTimeCounterFor(source);
+            if (counter != null) counter.save(counter.get() + 1);
         }
+    }
+
+    private Source detectSource(StringFilterGroup matchedGroup) {
+        if (matchedGroup == commentsFilter) return Source.COMMENTS;
+        // Player fullscreen: treat under-video results as home (mirrors activeFor).
+        if (PlayerType.getCurrent().isMaximizedOrFullscreen()) return Source.HOME;
+        if (NavigationBar.isSearchBarActive()) return Source.SEARCH;
+        NavigationButton nav = NavigationButton.getSelectedNavigationButton();
+        return nav == NavigationButton.SUBSCRIPTIONS ? Source.SUBSCRIPTIONS : Source.HOME;
     }
 
     @Nullable
-    private static String extractVideoId(byte[] buffer) {
-        final byte[] prefix = THUMBNAIL_URL_PREFIX;
-        final int prefixLen = prefix.length;
-        outer:
-        for (int i = 0, max = buffer.length - prefixLen - VIDEO_ID_LENGTH; i <= max; i++) {
-            for (int j = 0; j < prefixLen; j++) {
-                if (buffer[i + j] != prefix[j]) continue outer;
-            }
-            int start = i + prefixLen;
-            for (int k = 0; k < VIDEO_ID_LENGTH; k++) {
-                if (!isVideoIdChar(buffer[start + k])) continue outer;
-            }
-            return new String(buffer, start, VIDEO_ID_LENGTH, StandardCharsets.US_ASCII);
+    private static String getVideoIdForSource(Source source, byte[] buffer) {
+        if (source == Source.COMMENTS) {
+            // Comment threads carry no thumbnail URL for the parent video; the currently
+            // open player's video ID is authoritative.
+            String id = VideoInformation.getVideoId();
+            return id.isEmpty() ? null : id;
         }
-        return null;
+        return extractVideoIdFromBuffer(buffer);
     }
 
-    private static boolean isVideoIdChar(byte b) {
-        return (b >= 'A' && b <= 'Z')
-                || (b >= 'a' && b <= 'z')
-                || (b >= '0' && b <= '9')
-                || b == '-' || b == '_';
+    @Nullable
+    private static LongSetting allTimeCounterFor(Source source) {
+        return switch (source) {
+            case HOME -> Settings.AISLIST_HIDE_COUNT_HOME;
+            case SEARCH -> Settings.AISLIST_HIDE_COUNT_SEARCH;
+            case COMMENTS -> Settings.AISLIST_HIDE_COUNT_COMMENTS;
+            // Subscription feed is not filtered by AiSList, so no counter exists.
+            case SUBSCRIPTIONS -> null;
+        };
     }
 
-    /**
-     * Returns the size of the 24h tracker after purging expired entries.
-     * Used by the stats preference UI.
-     */
+    /** Returns the total 24h hide count across all sources. */
     public static int hidesInLast24Hours() {
-        return sharedTracker.size(System.currentTimeMillis());
+        return sharedTracker.totalSize(System.currentTimeMillis());
     }
 
-    /** Clears the 24h tracker. Called from the reset dialog. */
+    /** Returns the 24h hide count for a given source. */
+    public static int hidesInLast24Hours(Source source) {
+        return sharedTracker.sourceSize(source, System.currentTimeMillis());
+    }
+
+    /** Clears the 24h tracker. Called from the reset dialogs. */
     public static void resetHidesTracker() {
         sharedTracker.reset();
     }
@@ -226,28 +258,42 @@ public final class AiSListFilter extends BufferPhraseFilter {
     private static final HidesTracker sharedTracker = new HidesTracker();
 
     @Override
-    protected void onHideConfirmed(String matched) {
-        // Stats already recorded inside matchBuffer where the buffer is available.
+    protected void onHideConfirmed(@NonNull String matched) {
+        // Stats already recorded inside matchBuffer where the buffer and matched group are available.
     }
 
     /**
-     * Persists a JSON dict {videoId: hideTimestampMs} to AISLIST_HIDES_24H. Loads lazily on first
-     * use, purges entries older than the 24h horizon on each recorded hide, and caps map size.
+     * Persists a JSON dict {"videoId":{"t":timestamp,"s":sourceOrdinal}} to AISLIST_HIDES_24H.
+     * Loads lazily on first use, purges entries older than the 24h horizon on each recorded hide,
+     * and caps map size.
      */
     private static final class HidesTracker {
         @GuardedBy("this")
-        private final HashMap<String, Long> data = new HashMap<>();
+        private final HashMap<String, Entry> data = new HashMap<>();
         @GuardedBy("this")
         private boolean loaded;
 
-        synchronized int size(long now) {
+        private record Entry(long timestamp, int sourceOrdinal) {}
+
+        synchronized int totalSize(long now) {
             loadIfNeeded();
             purgeOlderThan(now - HIDES_24H_WINDOW_MS);
             return data.size();
         }
 
+        synchronized int sourceSize(Source source, long now) {
+            loadIfNeeded();
+            purgeOlderThan(now - HIDES_24H_WINDOW_MS);
+            final int wanted = source.ordinal();
+            int count = 0;
+            for (Entry e : data.values()) {
+                if (e.sourceOrdinal() == wanted) count++;
+            }
+            return count;
+        }
+
         /** @return true if the video was newly recorded, false if already present. */
-        synchronized boolean recordHide(String videoId, long now) {
+        synchronized boolean recordHide(String videoId, Source source, long now) {
             loadIfNeeded();
             purgeOlderThan(now - HIDES_24H_WINDOW_MS);
 
@@ -255,7 +301,7 @@ public final class AiSListFilter extends BufferPhraseFilter {
                 return false;
             }
 
-            data.put(videoId, now);
+            data.put(videoId, new Entry(now, source.ordinal()));
             if (data.size() > MAX_TRACKED_VIDEOS) {
                 evictEldest();
             }
@@ -279,7 +325,8 @@ public final class AiSListFilter extends BufferPhraseFilter {
                 Iterator<String> keys = obj.keys();
                 while (keys.hasNext()) {
                     String k = keys.next();
-                    data.put(k, obj.getLong(k));
+                    JSONObject e = obj.getJSONObject(k);
+                    data.put(k, new Entry(e.getLong("t"), e.getInt("s")));
                 }
             } catch (Exception ex) {
                 Logger.printException(() -> "AiSList 24h store is corrupt, resetting", ex);
@@ -289,15 +336,15 @@ public final class AiSListFilter extends BufferPhraseFilter {
         }
 
         private void purgeOlderThan(long threshold) {
-            data.entrySet().removeIf(e -> e.getValue() < threshold);
+            data.entrySet().removeIf(e -> e.getValue().timestamp() < threshold);
         }
 
         private void evictEldest() {
             String eldestKey = null;
             long eldestTime = Long.MAX_VALUE;
-            for (Map.Entry<String, Long> e : data.entrySet()) {
-                if (e.getValue() < eldestTime) {
-                    eldestTime = e.getValue();
+            for (Map.Entry<String, Entry> e : data.entrySet()) {
+                if (e.getValue().timestamp() < eldestTime) {
+                    eldestTime = e.getValue().timestamp();
                     eldestKey = e.getKey();
                 }
             }
@@ -307,8 +354,11 @@ public final class AiSListFilter extends BufferPhraseFilter {
         private void save() {
             try {
                 JSONObject obj = new JSONObject();
-                for (Map.Entry<String, Long> e : data.entrySet()) {
-                    obj.put(e.getKey(), e.getValue());
+                for (Map.Entry<String, Entry> e : data.entrySet()) {
+                    JSONObject entryObj = new JSONObject();
+                    entryObj.put("t", e.getValue().timestamp());
+                    entryObj.put("s", e.getValue().sourceOrdinal());
+                    obj.put(e.getKey(), entryObj);
                 }
                 Settings.AISLIST_HIDES_24H.save(obj.toString());
             } catch (Exception ex) {

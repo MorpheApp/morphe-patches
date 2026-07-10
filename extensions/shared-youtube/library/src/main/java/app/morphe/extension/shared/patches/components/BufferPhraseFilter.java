@@ -477,6 +477,55 @@ public abstract class BufferPhraseFilter extends Filter {
     }
 
     /**
+     * The user-visible surface where a hide happened. Subclasses that want per-source
+     * stats determine the value from the matched group plus current player/navigation state,
+     * then pass it to their own tracker.
+     */
+    public enum Source {
+        HOME, SUBSCRIPTIONS, SEARCH, COMMENTS;
+
+        public static final Source[] VALUES = values();
+    }
+
+    /** YouTube video IDs are 11 chars from the base64-url alphabet. */
+    public static final int VIDEO_ID_LENGTH = 11;
+
+    /** Byte sequence that precedes the video ID inside the buffer's thumbnail URL. */
+    public static final byte[] THUMBNAIL_URL_PREFIX =
+            "https://i.ytimg.com/vi/".getBytes(StandardCharsets.US_ASCII);
+
+    /**
+     * @return the first video ID found in the buffer via the thumbnail URL prefix,
+     * or {@code null} if none is present (e.g. comment threads that carry no thumbnail).
+     * Callers who need a video ID in comment context should fall back to the currently
+     * open player's video ID.
+     */
+    @Nullable
+    public static String extractVideoIdFromBuffer(byte[] buffer) {
+        final byte[] prefix = THUMBNAIL_URL_PREFIX;
+        final int prefixLen = prefix.length;
+        outer:
+        for (int i = 0, max = buffer.length - prefixLen - VIDEO_ID_LENGTH; i <= max; i++) {
+            for (int j = 0; j < prefixLen; j++) {
+                if (buffer[i + j] != prefix[j]) continue outer;
+            }
+            int start = i + prefixLen;
+            for (int k = 0; k < VIDEO_ID_LENGTH; k++) {
+                if (!isVideoIdChar(buffer[start + k])) continue outer;
+            }
+            return new String(buffer, start, VIDEO_ID_LENGTH, StandardCharsets.US_ASCII);
+        }
+        return null;
+    }
+
+    private static boolean isVideoIdChar(byte b) {
+        return (b >= 'A' && b <= 'Z')
+                || (b >= 'a' && b <= 'z')
+                || (b >= '0' && b <= '9')
+                || b == '-' || b == '_';
+    }
+
+    /**
      * Simple non-atomic wrapper for capturing a match value from a trie callback.
      * Used because {@link java.util.concurrent.atomic.AtomicReference#setPlain(Object)}
      * is not available on Android 8.0.

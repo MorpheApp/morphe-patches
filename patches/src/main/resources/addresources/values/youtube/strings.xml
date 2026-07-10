@@ -266,10 +266,11 @@ Limitations:
     <string name="morphe_hide_aislist_warnlist_category_title">Warnlist (moderate confidence)</string>
     <string name="morphe_hide_aislist_hide_home_title">Hide videos in Home</string>
     <string name="morphe_hide_aislist_hide_search_title">Hide videos in search</string>
+    <string name="morphe_hide_aislist_hide_comments_title">Hide videos in comments</string>
     <string name="morphe_hide_aislist_stats_category_title">Stats</string>
     <string name="morphe_hide_aislist_stats_hidden_24h_title">Videos hidden (last 24 hours): %s</string>
     <string name="morphe_hide_aislist_stats_hidden_all_title">Videos hidden (all time): %s</string>
-    <string name="morphe_hide_aislist_stats_hidden_summary">Tap to reset the counter</string>
+    <string name="morphe_hide_aislist_stats_hidden_breakdown">Home %s · Search %s · Comments %s</string>
     <string name="morphe_hide_aislist_stats_hidden_24h_reset_title">Reset last 24 hours counter?</string>
     <string name="morphe_hide_aislist_stats_hidden_all_reset_title">Reset all time counter?</string>
     <string name="morphe_hide_aislist_stats_blocklist_title">Blocklist channels loaded: %s</string>

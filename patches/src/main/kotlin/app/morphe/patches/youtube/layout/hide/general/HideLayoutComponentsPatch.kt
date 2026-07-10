@@ -224,6 +224,10 @@ val hideLayoutComponentsPatch = bytecodePatch(
                             SwitchPreference(
                                 key = "morphe_hide_aislist_blocklist_search",
                                 titleKey = "morphe_hide_aislist_hide_search_title"
+                            ),
+                            SwitchPreference(
+                                key = "morphe_hide_aislist_blocklist_comments",
+                                titleKey = "morphe_hide_aislist_hide_comments_title"
                             )
                         )
                     ),
@@ -238,6 +242,10 @@ val hideLayoutComponentsPatch = bytecodePatch(
                             SwitchPreference(
                                 key = "morphe_hide_aislist_warnlist_search",
                                 titleKey = "morphe_hide_aislist_hide_search_title"
+                            ),
+                            SwitchPreference(
+                                key = "morphe_hide_aislist_warnlist_comments",
+                                titleKey = "morphe_hide_aislist_hide_comments_title"
                             )
                         )
                     ),

@@ -20,6 +20,7 @@ import android.util.Pair;
 import android.widget.LinearLayout;
 
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.patches.components.BufferPhraseFilter.Source;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.youtube.patches.components.AiSListFilter;
@@ -27,8 +28,8 @@ import app.morphe.extension.youtube.settings.Settings;
 
 /**
  * Populated at runtime with four rows:
- *   • videos hidden in the last 24 hours (tap to reset the 24h tracker)
- *   • videos hidden all time (tap to reset both counters)
+ *   • videos hidden in the last 24 hours (total + per-source breakdown; tap resets the 24h tracker)
+ *   • videos hidden all time (total + per-source breakdown; tap resets counters and 24h tracker)
  *   • blocklist channels loaded
  *   • warnlist channels loaded
  */
@@ -36,7 +37,9 @@ import app.morphe.extension.youtube.settings.Settings;
 public class AiSListStatsPreferenceCategory extends PreferenceCategory {
 
     private final SharedPreferences.OnSharedPreferenceChangeListener listener = (prefs, key) -> {
-        if (Settings.AISLIST_HIDE_COUNT.key.equals(key)
+        if (Settings.AISLIST_HIDE_COUNT_HOME.key.equals(key)
+                || Settings.AISLIST_HIDE_COUNT_SEARCH.key.equals(key)
+                || Settings.AISLIST_HIDE_COUNT_COMMENTS.key.equals(key)
                 || Settings.AISLIST_HIDES_24H.key.equals(key)
                 || Settings.AISLIST_BLOCKLIST_CACHE.key.equals(key)
                 || Settings.AISLIST_WARNLIST_CACHE.key.equals(key)) {
@@ -78,10 +81,15 @@ public class AiSListStatsPreferenceCategory extends PreferenceCategory {
     private void buildRows() {
         Context context = getContext();
 
+        int homeCount24h = AiSListFilter.hidesInLast24Hours(Source.HOME);
+        int searchCount24h = AiSListFilter.hidesInLast24Hours(Source.SEARCH);
+        int commentsCount24h = AiSListFilter.hidesInLast24Hours(Source.COMMENTS);
+        int total24h = AiSListFilter.hidesInLast24Hours();
+
         Preference hidden24h = new Preference(context);
-        hidden24h.setTitle(str("morphe_hide_aislist_stats_hidden_24h_title",
-                AiSListFilter.hidesInLast24Hours()));
-        hidden24h.setSummary(str("morphe_hide_aislist_stats_hidden_summary"));
+        hidden24h.setTitle(str("morphe_hide_aislist_stats_hidden_24h_title", total24h));
+        hidden24h.setSummary(str("morphe_hide_aislist_stats_hidden_breakdown",
+                homeCount24h, searchCount24h, commentsCount24h));
         hidden24h.setOnPreferenceClickListener(pref -> {
             showResetDialog(
                     str("morphe_hide_aislist_stats_hidden_24h_reset_title"),
@@ -90,15 +98,22 @@ public class AiSListStatsPreferenceCategory extends PreferenceCategory {
         });
         addPreference(hidden24h);
 
+        long homeAll = Settings.AISLIST_HIDE_COUNT_HOME.get();
+        long searchAll = Settings.AISLIST_HIDE_COUNT_SEARCH.get();
+        long commentsAll = Settings.AISLIST_HIDE_COUNT_COMMENTS.get();
+        long totalAll = homeAll + searchAll + commentsAll;
+
         Preference hiddenAllTime = new Preference(context);
-        hiddenAllTime.setTitle(str("morphe_hide_aislist_stats_hidden_all_title",
-                Settings.AISLIST_HIDE_COUNT.get()));
-        hiddenAllTime.setSummary(str("morphe_hide_aislist_stats_hidden_summary"));
+        hiddenAllTime.setTitle(str("morphe_hide_aislist_stats_hidden_all_title", totalAll));
+        hiddenAllTime.setSummary(str("morphe_hide_aislist_stats_hidden_breakdown",
+                homeAll, searchAll, commentsAll));
         hiddenAllTime.setOnPreferenceClickListener(pref -> {
             showResetDialog(
                     str("morphe_hide_aislist_stats_hidden_all_reset_title"),
                     () -> {
-                        Settings.AISLIST_HIDE_COUNT.resetToDefault();
+                        Settings.AISLIST_HIDE_COUNT_HOME.resetToDefault();
+                        Settings.AISLIST_HIDE_COUNT_SEARCH.resetToDefault();
+                        Settings.AISLIST_HIDE_COUNT_COMMENTS.resetToDefault();
                         AiSListFilter.resetHidesTracker();
                     });
             return true;
