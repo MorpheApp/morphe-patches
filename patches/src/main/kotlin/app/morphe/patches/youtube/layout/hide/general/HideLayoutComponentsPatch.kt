@@ -206,13 +206,20 @@ val hideLayoutComponentsPatch = bytecodePatch(
                         preferences = emptySet(),
                         tag = "app.morphe.extension.youtube.settings.preference.KeywordContentStatsPreferenceCategory"
                     ),
-                    NonInteractivePreference(
-                        key = "morphe_hide_keyword_content_about",
-                        tag = "app.morphe.extension.shared.settings.preference.BulletPointPreference"
-                    ),
-                    NonInteractivePreference(
-                        key = "morphe_hide_keyword_content_about_whole_words",
-                        tag = "app.morphe.extension.youtube.settings.preference.HTMLPreference"
+                    PreferenceCategory(
+                        key = "morphe_hide_keyword_content_about_category",
+                        titleKey = "morphe_hide_about_category_title",
+                        sorting = Sorting.UNSORTED,
+                        preferences = setOf(
+                            NonInteractivePreference(
+                                key = "morphe_hide_keyword_content_about",
+                                tag = "app.morphe.extension.shared.settings.preference.BulletPointPreference"
+                            ),
+                            NonInteractivePreference(
+                                key = "morphe_hide_keyword_content_about_whole_words",
+                                tag = "app.morphe.extension.youtube.settings.preference.HTMLPreference"
+                            )
+                        )
                     )
                 )
             ),
@@ -258,6 +265,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     ),
                     PreferenceCategory(
                         key = "morphe_hide_aislist_about_category",
+                        titleKey = "morphe_hide_about_category_title",
                         sorting = Sorting.UNSORTED,
                         preferences = setOf(
                             NonInteractivePreference(
