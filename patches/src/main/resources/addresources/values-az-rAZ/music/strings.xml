@@ -112,11 +112,21 @@ YouTube Music 8.x — çarpaz soldurma yalnız 9.x və daha yenisində işləyir
   <string name="morphe_music_hide_lyrics_share_button_title">Paylaş düyməsini gizlət</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Tərcümə et düyməsini gizlət</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
+  <string name="morphe_music_action_buttons_screen_title">Fəaliyyət düymələri</string>
+  <string name="morphe_music_action_buttons_screen_summary">Səsləndirici aşağısında hansı fəaliyyət düymələri görünür seç</string>
+  <string name="morphe_music_hide_action_bar_title">Fəaliyyət cərgəsin gizlət</string>
+  <string name="morphe_music_hide_like_dislike_button_title">Bəyənmə və Bəyənməmə düyməsini gizlət</string>
+  <string name="morphe_music_hide_comments_button_title">Şərhlər düyməsin gizlət</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_lyrics_button_title">Mahnı sözləri düyməsini gizlət</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_share_button_title">Paylaş düyməsini gizlət</string>
   <!-- 'Save' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_save_button_title">Saxlayın düyməsini gizlət</string>
   <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_download_button_title">Endirin düyməsini gizlət</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_radio_button_title">Miksi başladın düyməsini gizlət</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Açılan pəncərə menyusu</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Oynadıcı və növbə pəncərəsi açma menyularında hansı elementlər görünür seç</string>

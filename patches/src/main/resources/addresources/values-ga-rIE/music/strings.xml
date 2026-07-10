@@ -103,35 +103,35 @@ YouTube Music 8.x — ní ritheann an traschéimniú ach ar 9.x agus níos nuaí
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Cumasaigh athrá buan</string>
   <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">Folaigh an cnaipe teilgthe</string>
-  <string name="morphe_music_hide_history_button_title">Folaigh cnaipe na staire</string>
-  <string name="morphe_music_hide_notification_button_title">Folaigh cnaipe fógraí</string>
-  <string name="morphe_music_hide_search_button_title">Folaigh cnaipe cuardaigh</string>
+  <string name="morphe_music_hide_cast_button_title">Folaigh an cnaipe Cast</string>
+  <string name="morphe_music_hide_history_button_title">Cnaipe Folaigh Stair</string>
+  <string name="morphe_music_hide_notification_button_title">Folaigh cnaipe fógra</string>
+  <string name="morphe_music_hide_search_button_title">Folaigh an cnaipe Cuardaigh</string>
   <!-- layout.hide.general.hideMusicComponentsPatch -->
   <string name="morphe_music_hide_lyrics_panel_category_title">Painéal liricí</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Folaigh cnaipe Roinn</string>
-  <string name="morphe_music_hide_lyrics_translate_button_title">Folaigh cnaipe Aistriúcháin</string>
+  <string name="morphe_music_hide_lyrics_share_button_title">Folaigh an cnaipe Comhroinnte</string>
+  <string name="morphe_music_hide_lyrics_translate_button_title">Folaigh an cnaipe Aistrigh</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Cnaipí gníomhaíochta</string>
-  <string name="morphe_music_action_buttons_screen_summary">Roghnaigh cén cnaipí a thaispeántar faoin seinnteoir</string>
+  <string name="morphe_music_action_buttons_screen_summary">Roghnaigh cé na cnaipí gníomhaíochta a thaispeántar faoin imreoir</string>
   <string name="morphe_music_hide_action_bar_title">Folaigh barra gníomhaíochta</string>
-  <string name="morphe_music_hide_like_dislike_button_title">Folaigh cnaipe \'Is Maith Liom\' agus \'Ní Maith Liom\'</string>
-  <string name="morphe_music_hide_comments_button_title">Folaigh cnaipe na gCommentaire</string>
+  <string name="morphe_music_hide_like_dislike_button_title">Folaigh an cnaipe Is maith liom agus Ní maith liom</string>
+  <string name="morphe_music_hide_comments_button_title">Cnaipe Folaigh Tráchtanna</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_lyrics_button_title">Folaigh cnaipe na Lyrics</string>
+  <string name="morphe_music_hide_lyrics_button_title">Cnaipe Folaigh na Liricí</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_share_button_title">Folaigh cnaipe Roinn</string>
+  <string name="morphe_music_hide_share_button_title">Folaigh an cnaipe Comhroinnte</string>
   <!-- 'Save' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_save_button_title">Folaigh an cnaipe Sábháil</string>
   <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_download_button_title">Folaigh an cnaipe Íoslódála</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_radio_button_title">Folaigh cnaipe tosaithe raidió</string>
+  <string name="morphe_music_hide_radio_button_title">Folaigh cnaipe raidió Tosaigh</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Roghchlár Flyout</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Roghnaigh cé na comhpháirteanna a thaispeántar sna roghchláir eitilte seinnteora agus scuaine</string>
   <string name="morphe_music_hide_flyout_menu_3_column_component_title">Folaigh an chomhpháirt 3-cholún</string>
-  <string name="morphe_music_hide_flyout_menu_like_dislike_title">Folaigh cnaipí \'Is Maith Liom\' agus \'Ní Maith Liom\'</string>
+  <string name="morphe_music_hide_flyout_menu_like_dislike_title">Folaigh cnaipí Is maith liom agus Ní maith liom</string>
   <string name="morphe_music_hide_flyout_menu_taste_match_title">Folaigh an roghchlár \'Meaitseáil blas\'</string>
   <string name="morphe_music_hide_flyout_menu_add_to_listen_later_title">Folaigh an roghchlár \'Cuir le seinmliosta \'Éist níos déanaí\'</string>
   <string name="morphe_music_hide_flyout_menu_add_to_queue_title">Folaigh an roghchlár \'Cuir leis an scuaine\'</string>
@@ -139,29 +139,29 @@ YouTube Music 8.x — ní ritheann an traschéimniú ach ar 9.x agus níos nuaí
   <string name="morphe_music_hide_flyout_menu_delete_playlist_title">Folaigh an roghchlár \'Scrios seinmliosta\'</string>
   <string name="morphe_music_hide_flyout_menu_dismiss_queue_title">Folaigh an roghchlár \'Díbhe an scuaine\'</string>
   <string name="morphe_music_hide_flyout_menu_dont_recommend_artist_title">Folaigh an roghchlár \'Ná mol an t-ealaíontóir seo\'</string>
-  <string name="morphe_music_hide_flyout_menu_download_title">Folaigh roghchlár Íoslódáil</string>
+  <string name="morphe_music_hide_flyout_menu_download_title">Folaigh an roghchlár Íoslódála</string>
   <string name="morphe_music_hide_flyout_menu_edit_playlist_title">Folaigh an roghchlár \'Cuir seinmliosta in eagar\'</string>
   <string name="morphe_music_hide_flyout_menu_go_to_album_title">Folaigh an roghchlár \'Téigh go dtí an albam\'</string>
   <string name="morphe_music_hide_flyout_menu_go_to_artist_title">Folaigh roghchlár \'Téigh go dtí an t-ealaíontóir\'</string>
   <string name="morphe_music_hide_flyout_menu_go_to_episode_title">Folaigh an roghchlár \'Téigh go dtí an eipeasóid\'</string>
   <string name="morphe_music_hide_flyout_menu_go_to_podcast_title">Folaigh an roghchlár \'Téigh go dtí an podchraoladh\'</string>
-  <string name="morphe_music_hide_flyout_menu_help_title">Folaigh roghchlár Cabhair</string>
+  <string name="morphe_music_hide_flyout_menu_help_title">Folaigh an roghchlár Cabhrach</string>
   <string name="morphe_music_hide_flyout_menu_mark_episode_as_played_title">Folaigh an roghchlár \'Marcáil eipeasóid mar a imríodh\'</string>
   <string name="morphe_music_hide_flyout_menu_not_interested_title">Folaigh an roghchlár \'Níl suim agam ann\'</string>
   <string name="morphe_music_hide_flyout_menu_pin_to_speed_dial_title">Folaigh an roghchlár \'Pionáil le luasghéarú\'</string>
   <string name="morphe_music_hide_flyout_menu_play_next_title">Folaigh an roghchlár \'Seinn ina dhiaidh sin\'</string>
-  <string name="morphe_music_hide_flyout_menu_quality_title">Folaigh roghchlár Cáilíochta</string>
+  <string name="morphe_music_hide_flyout_menu_quality_title">Folaigh an roghchlár Cáilíochta</string>
   <string name="morphe_music_hide_flyout_menu_remove_from_library_title">Folaigh an roghchlár \'Bain as an leabharlann\'</string>
   <string name="morphe_music_hide_flyout_menu_remove_from_playlist_title">Folaigh an roghchlár \'Bain den seinmliosta\'</string>
   <string name="morphe_music_hide_flyout_menu_report_title">Folaigh roghchlár Tuairisc</string>
   <string name="morphe_music_hide_flyout_menu_save_episode_for_later_save_to_library_title">Folaigh an roghchlár \'Sábháil eipeasóid don am atá le teacht\' / \'Sábháil sa leabharlann\'</string>
   <string name="morphe_music_hide_flyout_menu_save_to_playlist_title">Folaigh an roghchlár \'Sábháil chuig seinmliosta\'</string>
-  <string name="morphe_music_hide_flyout_menu_share_title">Folaigh roghchlár Comhroinn</string>
+  <string name="morphe_music_hide_flyout_menu_share_title">Folaigh an roghchlár Comhroinnte</string>
   <string name="morphe_music_hide_flyout_menu_shuffle_play_title">Folaigh an roghchlár \'Súgradh measctha\'</string>
   <string name="morphe_music_hide_flyout_menu_sleep_timer_title">Folaigh an roghchlár \'Luasadóir codlata\'</string>
   <string name="morphe_music_hide_flyout_menu_start_radio_title">Folaigh an roghchlár \'Tosaigh raidió\'</string>
   <string name="morphe_music_hide_flyout_menu_stats_for_nerds_title">Folaigh an roghchlár \'Staitisticí do nerds\'</string>
-  <string name="morphe_music_hide_flyout_menu_subscribe_title">Folaigh roghchlár Liostáil</string>
+  <string name="morphe_music_hide_flyout_menu_subscribe_title">Folaigh an roghchlár Liostála</string>
   <string name="morphe_music_hide_flyout_menu_unpin_from_speed_dial_title">Folaigh an roghchlár \'Díphionáil ó dhiailiú luas\'</string>
   <string name="morphe_music_hide_flyout_menu_view_song_credit_title">Folaigh an roghchlár \'Féach ar chreidiúintí amhrán\'</string>
   <!-- layout.startpage.changeStartPagePatch -->
@@ -214,7 +214,7 @@ YouTube Music 8.x — ní ritheann an traschéimniú ach ar 9.x agus níos nuaí
   <string name="morphe_music_scrobbling_logged_out_toast">Logáilte amach</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_enabled_title">Cumasaigh scrobbling</string>
-  <string name="morphe_music_scrobbling_now_playing_title">Cuir isteach stádas \"Ag imirt anois\"</string>
+  <string name="morphe_music_scrobbling_now_playing_title">Cuir isteach stádas \'Ag imirt anois\'</string>
   <string name="morphe_music_scrobbling_min_song_duration_title">Fad íosta amhrán</string>
   <!-- 'scrobbled' must be kept untranslated -->
   <string name="morphe_music_scrobbling_min_song_duration_summary">Ní dhéanfar scrobble ar amhráin níos giorra ná seo</string>

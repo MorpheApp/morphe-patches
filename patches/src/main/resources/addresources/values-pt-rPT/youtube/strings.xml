@@ -1109,6 +1109,7 @@ A reprodução de vídeo com AV1 pode apresentar soluços ou perder quadros."</s
   <string name="morphe_spoof_video_streams_about_js">• Se a desobfuscação falhar, a reprodução também pode falhar</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Forçar áudio original não está disponível</string>
+  <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• A qualidade pode ser limitada a 720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Variante de JavaScript do player</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Mostrar spoofing em Stats for nerds</string>
