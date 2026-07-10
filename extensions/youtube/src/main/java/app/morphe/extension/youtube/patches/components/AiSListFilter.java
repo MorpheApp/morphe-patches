@@ -10,7 +10,6 @@ package app.morphe.extension.youtube.patches.components;
 import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
 import androidx.annotation.GuardedBy;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.json.JSONObject;
@@ -258,7 +257,7 @@ public final class AiSListFilter extends BufferPhraseFilter {
     private static final HidesTracker sharedTracker = new HidesTracker();
 
     @Override
-    protected void onHideConfirmed(@NonNull String matched) {
+    protected void onHideConfirmed(String matched) {
         // Stats already recorded inside matchBuffer where the buffer and matched group are available.
     }
 
@@ -312,7 +311,7 @@ public final class AiSListFilter extends BufferPhraseFilter {
         synchronized void reset() {
             data.clear();
             loaded = true;
-            Settings.AISLIST_HIDES_24H.save("");
+            Settings.AISLIST_HIDES_24H.resetToDefault();
         }
 
         private void loadIfNeeded() {
@@ -331,7 +330,7 @@ public final class AiSListFilter extends BufferPhraseFilter {
             } catch (Exception ex) {
                 Logger.printException(() -> "AiSList 24h store is corrupt, resetting", ex);
                 data.clear();
-                Settings.AISLIST_HIDES_24H.save("");
+                Settings.AISLIST_HIDES_24H.resetToDefault();
             }
         }
 

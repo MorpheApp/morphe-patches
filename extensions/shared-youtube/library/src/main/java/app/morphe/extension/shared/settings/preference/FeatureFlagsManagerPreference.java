@@ -620,7 +620,7 @@ public class FeatureFlagsManagerPreference extends Preference {
      * Resets all blocked flags.
      */
     private void resetFlags() {
-        SharedYouTubeSettings.DISABLED_FEATURE_FLAGS.save("");
+        SharedYouTubeSettings.DISABLED_FEATURE_FLAGS.resetToDefault();
         Utils.showToastShort(str("morphe_debug_feature_flags_manager_toast_reset"));
 
         AbstractPreferenceFragment.showRestartDialog(getContext());
