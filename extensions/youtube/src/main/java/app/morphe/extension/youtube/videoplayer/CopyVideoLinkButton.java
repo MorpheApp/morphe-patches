@@ -105,9 +105,9 @@ public class CopyVideoLinkButton {
 
     public static void copyLink(boolean withTimestamp) {
         try {
-            final String VIDEO_BASE_URL =
+            String videoBaseUrl =
                     SharedYouTubeSettings.REPLACE_LINKS_WITH_SHORTENER.get() ? "https://youtu.be/" : "https://www.youtube.com/watch?v=";
-            StringBuilder builder = new StringBuilder(VIDEO_BASE_URL);
+            StringBuilder builder = new StringBuilder(videoBaseUrl);
             builder.append(VideoInformation.getVideoId());
             final long currentVideoTimeInSeconds = appendCurrentVideoTimeInSeconds(withTimestamp, builder);
 
