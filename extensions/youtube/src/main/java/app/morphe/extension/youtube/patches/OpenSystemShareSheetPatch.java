@@ -7,6 +7,9 @@
 
 package app.morphe.extension.youtube.patches;
 
+import static app.morphe.extension.shared.settings.SharedYouTubeSettings.REPLACE_LINKS_WITH_SHORTENER;
+import static app.morphe.extension.youtube.patches.components.ChannelPageFlyoutFilter.channelId;
+
 import android.content.Intent;
 import android.os.SystemClock;
 import android.support.v7.widget.RecyclerView;
@@ -18,9 +21,7 @@ import java.lang.ref.WeakReference;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
-import static app.morphe.extension.youtube.patches.components.ChannelPageFlyoutFilter.channelId;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 
@@ -45,21 +46,24 @@ public final class OpenSystemShareSheetPatch {
             return;
         }
 
-        String id = "";
-        if (!getFlyoutVideoId().isEmpty()) {
-            id = getFlyoutVideoId();
+        String targetVideoId = "";
+        if (!FlyoutUtils.getFlyoutVideoId().isEmpty()) {
+            targetVideoId = FlyoutUtils.getFlyoutVideoId();
         } else if (PlayerType.getCurrent().isMaximizedOrFullscreen()) {
-            id = VideoInformation.getVideoId();
+            targetVideoId = VideoInformation.getVideoId();
         } else if (!channelId.isEmpty()) {
-            id = channelId;
+            targetVideoId = channelId;
         }
 
-        if (!TextUtils.isEmpty(id)) {
+        if (!TextUtils.isEmpty(targetVideoId)) {
             final String url;
-            if (id.length() == 11) {
-                url = (REPLACE_LINKS_WITH_SHORTENER.get() ? "https://youtu.be/" : "https://www.youtube.com/watch?v=") + id;
+            if (targetVideoId.length() == 11) {
+                url = (REPLACE_LINKS_WITH_SHORTENER.get()
+                        ? "https://youtu.be/"
+                        : "https://www.youtube.com/watch?v="
+                ) + targetVideoId;
             } else {
-                url = "https://www.youtube.com/channel/" + id;
+                url = "https://www.youtube.com/channel/" + targetVideoId;
             }
 
             Intent shareIntent = new Intent(Intent.ACTION_SEND);

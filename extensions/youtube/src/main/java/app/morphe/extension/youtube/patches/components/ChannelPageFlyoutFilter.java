@@ -12,7 +12,6 @@ import java.nio.charset.StandardCharsets;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
-import app.morphe.extension.shared.patches.components.ByteArrayFilterGroup;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.Filter;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
@@ -20,10 +19,6 @@ import app.morphe.extension.shared.patches.components.StringFilterGroup;
 @SuppressWarnings("unused")
 public final class ChannelPageFlyoutFilter extends Filter {
 
-    private final ByteArrayFilterGroup channelPageHeaderInner = new ByteArrayFilterGroup(
-            null,
-            "page_header_inner.eml-js-fe"
-    );
     private boolean delayedFetch = false;
     private final byte[] CHANNEL_ID_PREFIX_BYTES =
             "UC".getBytes(StandardCharsets.US_ASCII);
@@ -46,9 +41,7 @@ public final class ChannelPageFlyoutFilter extends Filter {
                               StringFilterGroup matchedGroup,
                               FilterContentType contentType,
                               int contentIndex) {
-        if (!delayedFetch && channelPageHeaderInner.check(buffer).isFiltered()) {
-            delayedFetch = true;
-
+        if (!delayedFetch) {
             final int index = indexOf(buffer, CHANNEL_ID_PREFIX_BYTES);
 
             if (index >= 0) {
@@ -63,6 +56,7 @@ public final class ChannelPageFlyoutFilter extends Filter {
                             StandardCharsets.US_ASCII
                     );
                     Logger.printDebug(() -> "Found channelId: " + channelId);
+                    delayedFetch = true;
                     Utils.runOnMainThreadDelayed(() -> delayedFetch = false, 1000);
                 }
             }

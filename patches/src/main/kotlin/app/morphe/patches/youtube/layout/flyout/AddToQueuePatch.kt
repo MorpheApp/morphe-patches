@@ -49,6 +49,9 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/AddToQueuePatch;"
 
+private const val EXTENSION_UTILS_CLASS =
+    "Lapp/morphe/extension/youtube/patches/utils/FlyoutUtils;"
+
 private const val EXTENSION_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/ChannelPageFlyoutFilter;"
 
