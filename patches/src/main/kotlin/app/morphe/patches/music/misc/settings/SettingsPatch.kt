@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.patches.music.misc.settings
 
 import app.morphe.patcher.patch.bytecodePatch
@@ -70,6 +77,8 @@ private val settingsResourcePatch = resourcePatch {
                 "morphe_settings_screen_04_general_bold.xml",
                 "morphe_settings_screen_05_player.xml",
                 "morphe_settings_screen_05_player_bold.xml",
+                "morphe_settings_screen_09_return_youtube_dislike.xml",
+                "morphe_settings_screen_09_return_youtube_dislike_bold.xml",
                 "morphe_settings_screen_10_sponsorblock.xml",
                 "morphe_settings_screen_10_sponsorblock_bold.xml",
                 "morphe_settings_screen_11_misc.xml",
@@ -228,8 +237,16 @@ object PreferenceScreen : BasePreferenceScreen() {
         layout = "@layout/morphe_preference_with_icon",
         sorting = Sorting.UNSORTED
     )
+    val RETURN_YOUTUBE_DISLIKE = Screen(
+        key = "morphe_settings_music_screen_5_return_youtube_dislike",
+        summaryKey = null,
+        icon = "@drawable/morphe_settings_screen_09_return_youtube_dislike",
+        iconBold = "@drawable/morphe_settings_screen_09_return_youtube_dislike_bold",
+        layout = "@layout/morphe_preference_with_icon",
+        sorting = Sorting.UNSORTED
+    )
     val SPONSORBLOCK = Screen(
-        key = "morphe_settings_music_screen_5_sponsorblock",
+        key = "morphe_settings_music_screen_6_sponsorblock",
         summaryKey = null,
         icon = "@drawable/morphe_settings_screen_10_sponsorblock",
         iconBold = "@drawable/morphe_settings_screen_10_sponsorblock_bold",
@@ -237,7 +254,7 @@ object PreferenceScreen : BasePreferenceScreen() {
         sorting = Sorting.UNSORTED
     )
     val MISC = Screen(
-        key = "morphe_settings_music_screen_6_misc",
+        key = "morphe_settings_music_screen_7_misc",
         summaryKey = null,
         icon = "@drawable/morphe_settings_screen_11_misc",
         iconBold = "@drawable/morphe_settings_screen_11_misc_bold",

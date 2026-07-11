@@ -10,7 +10,7 @@
 
 package app.morphe.extension.youtube.patches;
 
-import static app.morphe.extension.youtube.returnyoutubedislike.ReturnYouTubeDislike.Vote;
+import static app.morphe.extension.shared.returnyoutubedislike.ReturnYouTubeDislike.Vote;
 
 import android.graphics.drawable.ShapeDrawable;
 import android.text.SpannableString;

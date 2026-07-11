@@ -1,4 +1,11 @@
-package app.morphe.extension.youtube.returnyoutubedislike.ui;
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
+package app.morphe.extension.shared.returnyoutubedislike.ui;
 
 import android.content.Context;
 import android.util.AttributeSet;
