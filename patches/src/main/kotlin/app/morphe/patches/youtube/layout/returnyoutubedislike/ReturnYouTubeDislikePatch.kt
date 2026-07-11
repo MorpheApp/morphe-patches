@@ -85,7 +85,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
                 key = "morphe_ryd_statistics_category",
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = emptySet(), // Preferences are added by custom class at runtime.
-                tag = "app.morphe.extension.youtube.returnyoutubedislike.ui.ReturnYouTubeDislikeDebugStatsPreferenceCategory"
+                tag = "app.morphe.extension.shared.returnyoutubedislike.ui.ReturnYouTubeDislikeDebugStatsPreferenceCategory"
             )
         )
 

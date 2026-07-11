@@ -17,6 +17,8 @@ import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.video.information.musicVideoIdHook
 import app.morphe.patches.music.video.information.musicVideoInformationPatch
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
+import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
+import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.textcomponent.hookSpannableString
 import app.morphe.patches.shared.misc.textcomponent.textComponentPatch
@@ -44,6 +46,12 @@ private val returnYouTubeDislikeResourcePatch = resourcePatch {
                 tag = "app.morphe.extension.shared.returnyoutubedislike.ui.ReturnYouTubeDislikeAboutPreference",
                 selectable = true,
             ),
+            PreferenceCategory(
+                key = "morphe_ryd_statistics_category",
+                sorting = PreferenceScreenPreference.Sorting.UNSORTED,
+                preferences = emptySet(), // Preferences are added by custom class at runtime.
+                tag = "app.morphe.extension.shared.returnyoutubedislike.ui.ReturnYouTubeDislikeDebugStatsPreferenceCategory"
+            )
         )
     }
 }
