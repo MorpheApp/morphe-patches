@@ -84,7 +84,7 @@ private var timeInitInsertIndex = 2
 
 private lateinit var speedSelectionInsertMethodRef : WeakReference<MutableMethod>
 private var speedSelectionInsertIndex = -1
-private var speedSelectionValueRegister = -1
+var speedSelectionValueRegister = -1
 
 // Change playback speed method.
 private lateinit var setPlaybackSpeedMethodRef : WeakReference<MutableMethod>
@@ -222,7 +222,12 @@ val videoInformationPatch = bytecodePatch(
                 .instructionMatches.first().getMethodCalled()
         )
 
+        /*
+         * Hook the code that is called when the playback speeds are initialized, and sets the playback speed
+         */
+        InitializePlaybackSpeedValuesFingerprint.clearMatch()
         InitializePlaybackSpeedValuesFingerprint.method.apply {
+            // Get the access field of playback speed float.
             val speedFloatFieldAccess = Fingerprint(
                 parameters = listOf("[L", "F"),
                 filters = listOf(
@@ -234,27 +239,28 @@ val videoInformationPatch = bytecodePatch(
                     )
                 )
             ).run {
-                method.getInstruction<ReferenceInstruction>(
-                    instructionMatches.first().index
-                ).reference
+                method.getInstruction<ReferenceInstruction>(instructionMatches.first().index).reference
             }
+
+            val targetInstructionIndex = InitializePlaybackSpeedValuesFingerprint.instructionMatches.first().index
+
+            speedSelectionInsertMethodRef = WeakReference(this)
+            speedSelectionInsertIndex = targetInstructionIndex + 4 // Set the starting index before the first nop instruction
+            speedSelectionValueRegister = 0
 
             addInstructionsWithLabels(
                 0,
                 """
-                    const v0, 0x3f800000
+                    # Read the current set playback speed, once the playback speed panel is used (index is higher or equal 0).
                     const/4 v1, -0x1
                     if-eq p2, v1, :float_null_check
-                    aget-object v1, p1, p2
-                    iget v0, v1, $speedFloatFieldAccess
+                    aget-object v$speedSelectionValueRegister, p1, p2
+                    iget v$speedSelectionValueRegister, v$speedSelectionValueRegister, $speedFloatFieldAccess
+                    nop
                     :float_null_check
                     nop
                 """
             )
-
-            speedSelectionInsertMethodRef = WeakReference(this)
-            speedSelectionInsertIndex = 6
-            speedSelectionValueRegister = 0
         }
 
         /*

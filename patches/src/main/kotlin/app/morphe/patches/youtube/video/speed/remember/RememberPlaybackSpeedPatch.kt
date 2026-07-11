@@ -10,8 +10,6 @@
 
 package app.morphe.patches.youtube.video.speed.remember
 
-import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
@@ -22,9 +20,10 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.setPlaybackSpeedClassFieldReferenceRef
-import app.morphe.patches.youtube.video.information.setPlaybackSpeedContainerClassFieldReferenceRef
 import app.morphe.patches.youtube.video.information.setPlaybackSpeedContainerClassFieldReferenceClassTypeRef
+import app.morphe.patches.youtube.video.information.setPlaybackSpeedContainerClassFieldReferenceRef
 import app.morphe.patches.youtube.video.information.setPlaybackSpeedMethodReferenceRef
+import app.morphe.patches.youtube.video.information.speedSelectionValueRegister
 import app.morphe.patches.youtube.video.information.userSelectedPlaybackSpeedHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.patches.youtube.video.speed.custom.InitializePlaybackSpeedValuesFingerprint
@@ -32,7 +31,6 @@ import app.morphe.patches.youtube.video.speed.custom.customPlaybackSpeedPatch
 import app.morphe.patches.youtube.video.speed.settingsMenuVideoSpeedGroup
 import app.morphe.patches.youtube.video.videoid.hookPlayerResponseVideoId
 import app.morphe.patches.youtube.video.videoid.videoIdPatch
-import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 
 private const val EXTENSION_CLASS =
@@ -72,42 +70,29 @@ internal val rememberPlaybackSpeedPatch = bytecodePatch {
 
         hookPlayerResponseVideoId("$EXTENSION_CLASS->preloadMusicVideoFetch(Ljava/lang/String;Z)V")
 
+
         /*
          * Hook the code that is called when the playback speeds are initialized, and sets the playback speed
          */
-        Fingerprint(
-            filters = OpcodesFilter.opcodesToFilters(
-                Opcode.IGET_OBJECT,
-                Opcode.IGET_OBJECT,
-                Opcode.IF_NE,
-                Opcode.IGET,
-                Opcode.IF_EQ,
-                Opcode.IPUT_OBJECT,
-                Opcode.IPUT,
-                Opcode.IGET_OBJECT,
-            ),
-            custom = { method, _ ->
-                method == InitializePlaybackSpeedValuesFingerprint.method
-            }
-        ).let { fingerprint ->
-            val targetInstructionIndex = fingerprint.instructionMatches.first().index
+        InitializePlaybackSpeedValuesFingerprint.clearMatch()
+        InitializePlaybackSpeedValuesFingerprint.let {
+            val targetInstructionIndex = it.instructionMatches.first().index
 
-            fingerprint.method.apply {
+            it.method.apply {
                 // Infer everything necessary for calling the method setPlaybackSpeed().
                 val onItemClickListenerClassFieldReference = getInstruction<ReferenceInstruction>(
                     targetInstructionIndex
                 ).reference
 
-                // Registers are not used at index 0, so they can be freely used.
                 addInstructionsWithLabels(
                     targetInstructionIndex,
                     """
                         invoke-static { }, $EXTENSION_CLASS->getPlaybackSpeedOverride()F
-                        move-result v0
+                        move-result v$speedSelectionValueRegister
                         
                         # Check if the playback speed is not auto (-2.0f)
                         const/4 v1, 0x0
-                        cmpg-float v1, v0, v1
+                        cmpg-float v1, v$speedSelectionValueRegister, v1
                         if-lez v1, :do_not_override
         
                         # Get the instance of the class which has the container class field below.
@@ -123,9 +108,8 @@ internal val rememberPlaybackSpeedPatch = bytecodePatch {
                         iget-object v2, v1, ${setPlaybackSpeedClassFieldReferenceRef.get()}
                         
                         # Invoke setPlaybackSpeed on that class.
-                        invoke-virtual {v2, v0}, ${setPlaybackSpeedMethodReferenceRef.get()}
-                    """,
-                    ExternalLabel("do_not_override", getInstruction(targetInstructionIndex)),
+                        invoke-virtual {v2, v$speedSelectionValueRegister}, ${setPlaybackSpeedMethodReferenceRef.get()}
+                    """, ExternalLabel("do_not_override", getInstruction(targetInstructionIndex))
                 )
             }
         }

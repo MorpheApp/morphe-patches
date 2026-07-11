@@ -148,9 +148,8 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
 
         InitializePlaybackSpeedValuesFingerprint.classDef.staticFields.add(instanceField)
         // Set the INSTANCE field to the instance of the class.
-        // In order to prevent a conflict with another patch, add the instruction at index 1.
         InitializePlaybackSpeedValuesFingerprint.method.addInstruction(
-            1,
+            0,
             "sput-object p0, $instanceField"
         )
 

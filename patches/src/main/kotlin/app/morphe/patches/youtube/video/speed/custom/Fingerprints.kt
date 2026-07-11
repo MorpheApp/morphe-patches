@@ -1,6 +1,7 @@
 package app.morphe.patches.youtube.video.speed.custom
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
@@ -37,7 +38,17 @@ internal object AudioTrackOldBottomSheetFingerprint : Fingerprint(
 
 internal object InitializePlaybackSpeedValuesFingerprint : Fingerprint(
     parameters = listOf("[L", "I"),
-    strings = listOf("menu_item_playback_speed")
+    strings = listOf("menu_item_playback_speed"),
+    filters = listOf(
+        opcode(opcode = Opcode.IGET_OBJECT),
+        opcode(opcode = Opcode.IGET_OBJECT, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.IF_NE, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.IGET, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.IF_EQ, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.IPUT_OBJECT, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.IPUT, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.IGET_OBJECT, location = MatchAfterImmediately()),
+    )
 )
 
 internal object ShowOldPlaybackSpeedMenuFingerprint : Fingerprint(
