@@ -20,6 +20,7 @@ import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -104,7 +105,9 @@ public class CopyVideoLinkButton {
 
     public static void copyLink(boolean withTimestamp) {
         try {
-            StringBuilder builder = new StringBuilder("https://youtu.be/");
+            final String VIDEO_BASE_URL =
+                    SharedYouTubeSettings.REPLACE_LINKS_WITH_SHORTENER.get() ? "https://youtu.be/" : "https://www.youtube.com/watch?v=";
+            StringBuilder builder = new StringBuilder(VIDEO_BASE_URL);
             builder.append(VideoInformation.getVideoId());
             final long currentVideoTimeInSeconds = appendCurrentVideoTimeInSeconds(withTimestamp, builder);
 
