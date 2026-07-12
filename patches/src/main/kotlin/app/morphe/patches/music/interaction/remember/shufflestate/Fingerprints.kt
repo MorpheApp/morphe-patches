@@ -36,6 +36,7 @@ internal object ShuffleEnumFingerprint : Fingerprint(
 )
 
 internal object MusicPlaybackControlsFingerprint : Fingerprint(
+    definingClass = "/MusicPlaybackControls;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Z"),
@@ -43,8 +44,5 @@ internal object MusicPlaybackControlsFingerprint : Fingerprint(
         Opcode.IPUT_BOOLEAN,
         Opcode.INVOKE_VIRTUAL,
         Opcode.RETURN_VOID
-    ),
-    custom = { method, _ ->
-        method.definingClass.endsWith("/MusicPlaybackControls;")
-    }
+    )
 )
