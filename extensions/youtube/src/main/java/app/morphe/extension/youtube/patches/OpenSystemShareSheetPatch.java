@@ -8,7 +8,7 @@
 package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.shared.settings.SharedYouTubeSettings.REPLACE_LINKS_WITH_SHORTENER;
-import static app.morphe.extension.youtube.patches.components.ChannelPageFlyoutFilter.channelId;
+import static app.morphe.extension.youtube.patches.components.ChannelPageFlyoutFilter.getFlyoutChannelId;
 
 import android.content.Intent;
 import android.os.SystemClock;
@@ -41,41 +41,46 @@ public final class OpenSystemShareSheetPatch {
     /**
      * Injection point.
      */
+    @SuppressWarnings("ExtractMethodRecommender")
     public static void openSystemShareSheet() {
         if (!Settings.OPEN_SYSTEM_SHARE_SHEET.get()) {
             return;
         }
 
-        String targetVideoId = "";
+        final String prefixURL = (REPLACE_LINKS_WITH_SHORTENER.get()
+                ? "https://youtu.be/"
+                : "https://www.youtube.com/watch?v="
+        );
+        final String separator = (REPLACE_LINKS_WITH_SHORTENER.get()
+                ? "?"
+                : "&"
+        );
+        final String finalURL;
+
+        // Make sure to check channelId at the end, since it is never reset.
         if (!FlyoutUtils.getFlyoutVideoId().isEmpty()) {
-            targetVideoId = FlyoutUtils.getFlyoutVideoId();
+            finalURL = prefixURL + FlyoutUtils.getFlyoutVideoId();
+        } else if (!FlyoutUtils.getFlyoutCommentId().isEmpty()) {
+            finalURL = prefixURL + VideoInformation.getVideoId() + separator + "lc=" + FlyoutUtils.getFlyoutCommentId();
         } else if (PlayerType.getCurrent().isMaximizedOrFullscreen()) {
-            targetVideoId = VideoInformation.getVideoId();
-        } else if (!channelId.isEmpty()) {
-            targetVideoId = channelId;
+            finalURL = prefixURL + VideoInformation.getVideoId();
+        } else if (!getFlyoutChannelId().isEmpty()) {
+            finalURL = "https://www.youtube.com/channel/" + getFlyoutChannelId();
+        } else {
+            finalURL = "";
         }
 
-        if (!TextUtils.isEmpty(targetVideoId)) {
-            final String url;
-            if (targetVideoId.length() == 11) {
-                url = (REPLACE_LINKS_WITH_SHORTENER.get()
-                        ? "https://youtu.be/"
-                        : "https://www.youtube.com/watch?v="
-                ) + targetVideoId;
-            } else {
-                url = "https://www.youtube.com/channel/" + targetVideoId;
-            }
-
+        if (!TextUtils.isEmpty(finalURL)) {
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
-            shareIntent.putExtra(Intent.EXTRA_TEXT, url);
+            shareIntent.putExtra(Intent.EXTRA_TEXT, finalURL);
             Intent chooserIntent = Intent.createChooser(shareIntent, "");
             chooserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_USER_ACTION);
 
             try {
                 Utils.getContext().startActivity(chooserIntent);
             } catch (Exception ex) {
-                Logger.printException(() -> "Can not open System Share panel: " + url, ex);
+                Logger.printException(() -> "Can not open System Share panel: " + finalURL, ex);
             }
         }
     }

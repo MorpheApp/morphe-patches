@@ -36,7 +36,7 @@ public final class EngagementPanel {
         return getId().equals("video-description-ep-identifier");
     }
 
-    private static String getId() {
+    public static String getId() {
         return lastEngagementPanelId.get();
     }
 

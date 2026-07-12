@@ -38,6 +38,7 @@ import app.morphe.util.numberOfParameterRegisters
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
+import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction35c
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
@@ -177,6 +178,18 @@ val addToQueuePatch = bytecodePatch(
             0,
             "invoke-static/range { p2 .. p2 }, $EXTENSION_UTILS_CLASS->extractVideoId(Ljava/util/Map;)V"
         )
+
+        OnClickLithoButtonBufferObjectFingerprint.let {
+            val instructionIndex = it.instructionMatches[4].index
+            val instructionRegister = it.method.getInstruction<BuilderInstruction35c>(
+                instructionIndex
+            ).registerC
+
+            it.method.addInstruction(
+                instructionIndex + 1,
+                "invoke-static { v$instructionRegister }, $EXTENSION_UTILS_CLASS->extractIdFromLithoButton(Ljava/util/Map;)V"
+            )
+        }
 
         FullHistoryFlyoutBufferObjectFingerprint.let {
             it.method.apply {

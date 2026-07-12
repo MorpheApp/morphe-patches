@@ -13,6 +13,7 @@ import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import app.morphe.patches.all.misc.resources.ResourceType
@@ -55,6 +56,28 @@ internal object FeedFlyoutBufferObjectFingerprint : Fingerprint(
         "com.google.android.libraries.youtube.innertube.endpoint.tag",
         "com.google.android.libraries.youtube.innertube.bundle",
         "com.google.android.libraries.youtube.logging.interaction_logger"
+    )
+)
+
+internal object OnClickLithoButtonBufferObjectFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L"),
+    filters = listOf(
+        opcode(opcode = Opcode.NEW_INSTANCE),
+        opcode(opcode = Opcode.INVOKE_DIRECT, location = MatchAfterImmediately()),
+        newInstance(type = "Ljava/util/HashMap;", location = MatchAfterImmediately()),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "Ljava/util/Map;",
+            location = MatchAfterImmediately()
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT,
+            smali = "Ljava/util/HashMap;-><init>(Ljava/util/Map;)V",
+            location = MatchAfterImmediately()
+        ),
+        string("command_status_callback", location = MatchAfterImmediately())
     )
 )
 

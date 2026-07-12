@@ -22,7 +22,11 @@ public final class ChannelPageFlyoutFilter extends Filter {
     private boolean delayedFetch = false;
     private final byte[] CHANNEL_ID_PREFIX_BYTES =
             "UC".getBytes(StandardCharsets.US_ASCII);
-    public static String channelId = "";
+    private static String flyoutChannelId = "";
+
+    public static String getFlyoutChannelId() {
+        return flyoutChannelId;
+    }
 
     public ChannelPageFlyoutFilter() {
         addPathCallbacks(new StringFilterGroup(
@@ -46,16 +50,16 @@ public final class ChannelPageFlyoutFilter extends Filter {
 
             if (index >= 0) {
                 final int youTubeChannelIdLength = 24;
-                final int channelIdEnd = index + youTubeChannelIdLength;
+                final int flyoutChannelIdEnd = index + youTubeChannelIdLength;
 
-                if (channelIdEnd <= buffer.length) {
-                    channelId = new String(
+                if (flyoutChannelIdEnd <= buffer.length) {
+                    flyoutChannelId = new String(
                             buffer,
                             index,
                             youTubeChannelIdLength,
                             StandardCharsets.US_ASCII
                     );
-                    Logger.printDebug(() -> "Found channelId: " + channelId);
+                    Logger.printDebug(() -> "Found channelId: " + flyoutChannelId);
                     delayedFetch = true;
                     Utils.runOnMainThreadDelayed(() -> delayedFetch = false, 1000);
                 }

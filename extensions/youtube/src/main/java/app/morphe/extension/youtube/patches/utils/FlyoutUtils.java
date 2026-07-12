@@ -10,6 +10,7 @@ package app.morphe.extension.youtube.patches.utils;
 import android.app.Dialog;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Base64;
 import android.view.View;
 import android.view.ViewParent;
 import android.widget.PopupWindow;
@@ -24,11 +25,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
+import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.EngagementPanel;
 
 @SuppressWarnings("unused")
 public final class FlyoutUtils {
@@ -46,6 +50,7 @@ public final class FlyoutUtils {
     private static Dialog flyoutDialog = null;
     private static PopupWindow flyoutPopupWindow = null;
     private static String flyoutVideoId = "";
+    private static String flyoutCommentId = "";
 
     private static final List<byte[]> VIDEO_ID_PREFIXES_BYTES = List.of(
             ".ytimg.com/vi/".getBytes(StandardCharsets.US_ASCII),
@@ -53,6 +58,8 @@ public final class FlyoutUtils {
 
     private static final byte[] HORIZONTAL_SHELF_BYTES =
             "horizontal_shelf.e".getBytes(StandardCharsets.US_ASCII);
+    private static final byte[] LIST_ITEM_BYTES =
+            "list_item.e".getBytes(StandardCharsets.US_ASCII);
 
     public static String getFlyoutVideoId() {
         return flyoutVideoId;
@@ -116,6 +123,18 @@ public final class FlyoutUtils {
         });
     }
 
+    /**
+     * Injection point.
+     */
+    public static void extractIdFromLithoButton(Map<?, ?> map) {
+        if (Objects.equals(EngagementPanel.getId(), "comment-item-section")) {
+            extractVideoId(map);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
     public static void extractVideoId(Map<?, ?> map) {
         senderViewObjectRef = new WeakReference<>(
                 (View) map.get("com.google.android.libraries.youtube.rendering.elements.sender_view")
@@ -123,6 +142,9 @@ public final class FlyoutUtils {
         extractVideoId(map.get("com.google.android.libraries.youtube.innertube.endpoint.tag"));
     }
 
+    /**
+     * Injection point.
+     */
     public static void extractVideoId(@Nullable Object bufferObject) {
         try {
             Logger.printDebug(() -> "FlyoutBuffer class: " + ((bufferObject == null) ? null : bufferObject.getClass()));
@@ -149,32 +171,36 @@ public final class FlyoutUtils {
                 Logger.printDebug(() -> "Flyout buffer: " + new BufferAsciiStrings(debugFlyoutBuffer).getStrings());
             }
 
-            if (indexOf(flyoutBuffer, HORIZONTAL_SHELF_BYTES) >= 0) {
-                View senderViewObject = senderViewObjectRef.get();
-                if (senderViewObject != null) {
-                    ViewParent viewObjectParent = senderViewObject.getParent();
-                    while (viewObjectParent != null) {
-                        if (viewObjectParent instanceof ComponentHost componentHost) {
-                            CharSequence contentDescriptionChars = componentHost.getContentDescription();
-                            if (contentDescriptionChars != null) {
-                                flyoutBuffer = getTrimmedHorizontalShelfBuffer(flyoutBuffer, contentDescriptionChars.toString());
+            if (indexOf(flyoutBuffer, LIST_ITEM_BYTES) == -1) {
+                if (indexOf(flyoutBuffer, HORIZONTAL_SHELF_BYTES) >= 0) {
+                    View senderViewObject = senderViewObjectRef.get();
+                    if (senderViewObject != null) {
+                        ViewParent viewObjectParent = senderViewObject.getParent();
+                        while (viewObjectParent != null) {
+                            if (viewObjectParent instanceof ComponentHost componentHost) {
+                                CharSequence contentDescriptionChars = componentHost.getContentDescription();
+                                if (contentDescriptionChars != null) {
+                                    flyoutBuffer = getTrimmedHorizontalShelfBuffer(flyoutBuffer, contentDescriptionChars.toString());
+                                }
                             }
+                            viewObjectParent = viewObjectParent.getParent();
                         }
-                        viewObjectParent = viewObjectParent.getParent();
                     }
                 }
-            }
 
-            for (byte[] VIDEO_ID_PREFIX_BYTES : VIDEO_ID_PREFIXES_BYTES) {
-                final int index = indexOf(flyoutBuffer, VIDEO_ID_PREFIX_BYTES);
-                if (index >= 0) {
-                    final int videoIdStart = index + VIDEO_ID_PREFIX_BYTES.length;
-                    final int videoIdEnd = videoIdStart + 11;
-                    if (videoIdEnd <= flyoutBuffer.length) {
-                        flyoutVideoId = new String(flyoutBuffer, videoIdStart, 11, StandardCharsets.US_ASCII);
-                        break;
+                for (byte[] VIDEO_ID_PREFIX_BYTES : VIDEO_ID_PREFIXES_BYTES) {
+                    final int index = indexOf(flyoutBuffer, VIDEO_ID_PREFIX_BYTES);
+                    if (index >= 0) {
+                        final int videoIdStart = index + VIDEO_ID_PREFIX_BYTES.length;
+                        final int videoIdEnd = videoIdStart + 11;
+                        if (videoIdEnd <= flyoutBuffer.length) {
+                            flyoutVideoId = new String(flyoutBuffer, videoIdStart, 11, StandardCharsets.US_ASCII);
+                            break;
+                        }
                     }
                 }
+            } else {
+                setCommentId(flyoutBuffer);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "extractVideoId failure", ex);
@@ -182,8 +208,14 @@ public final class FlyoutUtils {
     }
 
     private static int indexOf(byte[] haystack, byte[] needle) {
+        return indexOf(haystack, needle, 0);
+    }
+    private static int indexOf(byte[] haystack, byte[] needle, int startIndex) {
+        if (startIndex < 0) {
+            startIndex = 0;
+        }
         final int needleLength = needle.length;
-        for (int i = 0, lastIndex = haystack.length - needleLength; i <= lastIndex; i++) {
+        for (int i = startIndex, lastIndex = haystack.length - needleLength; i <= lastIndex; i++) {
             boolean found = true;
             for (int j = 0; j < needleLength; j++) {
                 if (haystack[i + j] != needle[j]) {
@@ -247,5 +279,70 @@ public final class FlyoutUtils {
         }
 
         return buffer;
+    }
+
+    private static void setCommentId(byte[] buffer) {
+        try {
+            int base64StartIndex = 0;
+            int base64EndIndex;
+
+            // Ensure the string is a base64 value and not a false-positive.
+            while (true) {
+                base64StartIndex = indexOf(buffer, "kg".getBytes(StandardCharsets.UTF_8), base64StartIndex);
+                base64EndIndex = base64StartIndex;
+                if (base64StartIndex < 0) {
+                    break;
+                }
+
+                while (base64EndIndex < buffer.length) {
+                    byte b = buffer[base64EndIndex];
+                    if ((b >= 'A' && b <= 'Z') || (b >= 'a' && b <= 'z') || (b >= '0' && b <= '9')
+                            || b == '+' || b == '/' || b == '=' || b == '-' || b == '_') {
+                        base64EndIndex++;
+                    } else {
+                        break;
+                    }
+                }
+
+                if (base64EndIndex - base64StartIndex >= 100) {
+                    break;
+                }
+
+                base64StartIndex = base64EndIndex;
+            }
+
+            // Extract the Comment ID from the fetched base64 decoded buffer.
+            if (base64EndIndex > -1) {
+                byte[] byteBase64 = Base64.decode(
+                        Arrays.copyOfRange(buffer, base64StartIndex, base64EndIndex),
+                        Base64.DEFAULT
+                );
+                int base64VideoIdIndex = indexOf(
+                        byteBase64,
+                        VideoInformation.getVideoId().getBytes(StandardCharsets.UTF_8)
+                );
+
+                if (base64VideoIdIndex >= 0) {
+                    byte[] rawCommentId = Arrays.copyOfRange(byteBase64, 0, base64VideoIdIndex);
+
+                    flyoutCommentId = new String(rawCommentId, StandardCharsets.UTF_8)
+                                    .replaceAll("[^A-Za-z0-9_.-]", " ")
+                                    .trim()
+                                    .split(" ")[0];
+                    // Reset 'flyoutCommentId' immediately after its fetching (when the comment
+                    // share flyout button is pressed), to prevent unintended usage.
+                    Utils.runOnMainThreadDelayed(
+                            () -> flyoutCommentId = "",
+                            500
+                    );
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "extractCommentId failure", ex);
+        }
+    }
+
+    public static String getFlyoutCommentId() {
+        return flyoutCommentId;
     }
 }
