@@ -8,6 +8,7 @@
 package app.morphe.patches.music.interaction.dislikeredirection
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -21,7 +22,12 @@ internal object NotificationLikeButtonOnClickListenerFingerprint : Fingerprint(
         returnType = "V",
         parameters = listOf(),
         filters = listOf(
-            string("com/google/android/apps/youtube/music/player/notification/DefaultNotificationLikeButtonController")
+            anyInstruction(
+                // 7.29
+                string("com/google/android/apps/youtube/music/player/notification/NotificationLikeButtonController"),
+                // 8.x+
+                string("com/google/android/apps/youtube/music/player/notification/DefaultNotificationLikeButtonController")
+            )
         )
     ),
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
