@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.youtube.misc.playercontrols
 
 import app.morphe.patcher.Fingerprint
@@ -26,7 +36,7 @@ internal object PlayerControlsVisibilityEntityModelFingerprint : Fingerprint(
     )
 )
 
-private object YoutubeControlsOverlayFingerprint : Fingerprint(
+ object YoutubeControlsOverlayFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf(),
     filters = listOf(
@@ -36,10 +46,29 @@ private object YoutubeControlsOverlayFingerprint : Fingerprint(
     )
 )
 
-internal object MotionEventFingerprint : Fingerprint(
+// 21.26 and older.
+internal object MotionEventLegacyFingerprint : Fingerprint(
     classFingerprint = YoutubeControlsOverlayFingerprint,
     returnType = "V",
     parameters = listOf("Landroid/view/MotionEvent;"),
+    filters = listOf(
+        methodCall(name = "setTranslationY")
+    )
+)
+
+// 21.28+
+internal object MotionEventFingerprint : Fingerprint(
+    classFingerprint = Fingerprint(
+        returnType = "V",
+        parameters = listOf("L"),
+        filters = listOf(
+            resourceLiteral(ResourceType.ID, "playlist_entry_point_bar"),
+            methodCall($$"Landroid/view/View;->addOnLayoutChangeListener(Landroid/view/View$OnLayoutChangeListener;)V"),
+            methodCall("Landroid/view/View;->getViewTreeObserver()Landroid/view/ViewTreeObserver;")
+        )
+    ),
+    returnType = "V",
+    parameters = listOf(),
     filters = listOf(
         methodCall(name = "setTranslationY")
     )

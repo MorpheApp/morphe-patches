@@ -219,13 +219,13 @@ val hideShortsComponentsPatch = bytecodePatch(
         // Set the pivotBar view.
         SetPivotBarVisibilityFingerprint.let { result ->
             result.method.apply {
-                val insertIndex = result.instructionMatches.last().index
-                val viewRegister = getInstruction<OneRegisterInstruction>(insertIndex - 1).registerA
+                val index = result.instructionMatches.first().index
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
 
                 addInstruction(
-                    insertIndex,
-                    "invoke-static {v$viewRegister}," +
-                            "$EXTENSION_FILTER->setPivotBar(Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;)V",
+                    index + 1,
+                    "invoke-static { v$register }, $EXTENSION_FILTER->" +
+                            "setPivotBar(Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;)V",
                 )
             }
         }

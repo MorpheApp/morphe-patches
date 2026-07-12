@@ -12,7 +12,7 @@ package app.morphe.patches.youtube.layout.hide.shorts
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
-import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
@@ -58,12 +58,10 @@ private object SetPivotBarVisibilityParentFingerprint : Fingerprint(
 
 internal object SetPivotBarVisibilityFingerprint : Fingerprint(
     classFingerprint = SetPivotBarVisibilityParentFingerprint,
-    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Z"),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.CHECK_CAST,
-        Opcode.IF_EQZ,
+    filters = listOf(
+        checkCast("Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;")
     )
 )
 

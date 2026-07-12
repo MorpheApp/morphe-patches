@@ -26,6 +26,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_28_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_40_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_28_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -315,7 +316,8 @@ val legacyPlayerControlsPatch = bytecodePatch(
         )
         visibilityImmediateMethodRef = WeakReference(PlayerControlsExtensionHookFingerprint.method)
 
-        MotionEventFingerprint.let {
+        (if (is_21_28_or_greater) MotionEventFingerprint
+        else MotionEventLegacyFingerprint).let {
             visibilityNegatedImmediateMethodRef = WeakReference(it.method)
             visibilityNegatedImmediateInsertIndex = it.instructionMatches.first().index + 1
         }
