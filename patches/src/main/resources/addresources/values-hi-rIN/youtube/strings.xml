@@ -212,6 +212,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">इमोजी और टाइमस्टैम्प बटन को छुपाएं</string>
   <string name="morphe_hide_comments_filter_bar_options_title">फ़िल्टर बार विकल्प छुपाएं</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">\'टॉप\' और \'नवीनतम\' के अलावा सभी फ़िल्टर बार विकल्प छुपाता है</string>
+  <string name="morphe_hide_comments_gift_animation_and_cards_title">उपहार एनीमेशन और कार्ड छिपाएं</string>
+  <string name="morphe_hide_comments_gift_button_title">उपहार बटन छिपाएं</string>
   <string name="morphe_hide_comments_info_button_title">छुपाएं जानकारी बटन</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">लाइव चैट दानदाताओं की बार छुपाएं</string>
   <string name="morphe_hide_comments_preview_comment_title">छुपाएं पूर्वावलोकन टिप्पणी</string>
@@ -476,6 +478,8 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_swipe_speed_summary">फ़ुलस्क्रीन मोड में प्लेबैक गति बदलने के लिए ऊपरी क्षेत्र में क्षैतिज रूप से स्वाइप करें</string>
   <string name="morphe_swipe_speed_sensitivity_title">स्पीड स्वाइप संवेदनशीलता</string>
   <string name="morphe_swipe_speed_sensitivity_summary">उच्च मान प्रति स्पीड चरण के लिए अधिक स्वाइपिंग की आवश्यकता होती है</string>
+  <string name="morphe_swipe_speed_step_title">स्पीड स्टेप</string>
+  <string name="morphe_swipe_speed_step_summary">प्रत्येक टिक पर प्लेबैक स्पीड में बदलाव की राशि</string>
   <string name="morphe_swipe_speed_zone_height_title">स्पीड ज़ोन ऊंचाई</string>
   <string name="morphe_swipe_speed_zone_height_summary">प्लेयर ऊंचाई के प्रतिशत के रूप में स्पीड जेस्चर ज़ोन की ऊंचाई (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">स्पीड</string>
@@ -852,15 +856,7 @@ ReturnYouTubeDislike.com खोलने के लिए यहाँ टैप
   <string name="morphe_tablet_layout_in_player_summary">"पुराने प्लेयर लेआउट को पुनर्स्थापित करता है
 
 सीमा: यदि 'पुराने वीडियो एक्शन बार को पुनर्स्थापित करें' बंद कर दिया गया है, तो 'अधिक वीडियो' ओवरले उपलब्ध नहीं हो सकता है"</string>
-  <!-- layout.spoofappversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_title">Spoof ऐप संस्करण</string>
-  <string name="morphe_spoof_app_version_summary">सर्वर को यह सोचने में धोखा देता है कि आप पुराने ऐप संस्करण का उपयोग कर रहे हैं ताकि विरासत UI सुविधाओं को बहाल किया जा सके</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"ऐप संस्करण YouTube के पुराने संस्करण में Spoof किया जाएगा।
-
-यह ऐप के स्वरूप और सुविधाओं को बदल देगा, परन्तु अज्ञात दुष्प्रभाव हो सकते हैं।
-
-बाद में बंद करने पर, UI बग से बचने के लिए ऐप डेटा को साफ़ करने की अनुशंसा की जाती है।"</string>
-  <string name="morphe_spoof_app_version_target_title">Spoof ऐप संस्करण लक्ष्य</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - पुराने सेव को प्लेलिस्ट में पुन: स्थापित करें</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - डिसेबल बॉल्ड आइकॉन</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - वीडियो प्लेयर के नीचे चैनल का नाम पुनर्स्थापित करें</string>
@@ -1108,6 +1104,8 @@ AV1 के साथ वीडियो प्लेबैक स्टटर �
   <string name="morphe_spoof_video_streams_about_js">• अगर डीक्रिप्शन विफल हो जाता है, तो प्लेबैक भी विफल हो सकता है।</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• बल मूल ऑडियो उपलब्ध नहीं है</string>
+  <!-- Quality refers to video quality -->
+  <string name="morphe_spoof_video_streams_about_720p_max">• गुणवत्ता 720p तक सीमित हो सकती है</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">प्लेयर जावास्क्रिप्ट वैरिएंट</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">\'nerds के लिए आँकड़े\' में स्पूफिंग दिखाएं</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->

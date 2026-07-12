@@ -311,15 +311,12 @@ val miniplayerPatch = bytecodePatch(
         MiniplayerHorizontalRepositionFingerprint.method.apply {
             val previousRectParamFieldAccess = MiniplayerRectDragFieldsNameFingerprint.instructionMatches[1]
                 .getInstruction<ReferenceInstruction>().reference
-            val screenWidthFieldAccess = MiniplayerRectDragFieldsNameFingerprint.instructionMatches.last()
-                .getInstruction<ReferenceInstruction>().reference
 
             addInstructions(
                 0,
                 """
                     iget-object v0, p0, $previousRectParamFieldAccess
-                    iget v1, p0, $screenWidthFieldAccess
-                    invoke-static { p1, v0, v1 }, $EXTENSION_CLASS->blockOffscreenMiniplayerHorizontalReposition(Landroid/graphics/Rect;Landroid/graphics/Rect;I)Landroid/graphics/Rect;
+                    invoke-static { p1, v0 }, $EXTENSION_CLASS->blockOffscreenMiniplayerHorizontalReposition(Landroid/graphics/Rect;Landroid/graphics/Rect;)Landroid/graphics/Rect;
                     move-result-object p1
                 """
             )

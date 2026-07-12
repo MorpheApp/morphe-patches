@@ -1,14 +1,18 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.youtube.misc.spoof.appversion
 
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
-import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
-import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
+import app.morphe.patches.shared.misc.spoof.appversion.baseSpoofAppVersionPatch
 import app.morphe.patches.youtube.misc.contexthook.Endpoint
 import app.morphe.patches.youtube.misc.contexthook.addClientVersionHook
 import app.morphe.patches.youtube.misc.contexthook.clientContextHookPatch
@@ -27,45 +31,39 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/spoof/SpoofAppVersionPatch;"
 
-val spoofAppVersionPatch = bytecodePatch(
-    name = "Spoof app version",
-    description = "Adds an option to trick YouTube into thinking you are running an older version of the app. " +
-            "This can be used to restore old UI elements and features."
-) {
-    dependsOn(
-        resourceMappingPatch,
-        sharedExtensionPatch,
-        settingsPatch,
-        versionCheckPatch,
-        clientContextHookPatch
-    )
-
-    compatibleWith(COMPATIBILITY_YOUTUBE)
-
-    execute {
-        PreferenceScreen.GENERAL.addPreferences(
-            // Group the switch and list preference together, since General menu is sorted by name
-            // and the preferences can be scattered apart with non-English languages.
-            noTitleUnsortedPreferenceCategory(
-                SwitchPreference("morphe_spoof_app_version", summary = true),
-                if (is_20_40_or_greater) {
-                    ListPreference("morphe_spoof_app_version_target")
-                } else if (is_20_31_or_greater) {
-                    ListPreference(
-                        key = "morphe_spoof_app_version_target",
-                        entriesKey = "morphe_spoof_app_version_target_legacy_20_31_entries",
-                        entryValuesKey = "morphe_spoof_app_version_target_legacy_20_31_entry_values"
-                    )
-                } else {
-                    ListPreference(
-                        key = "morphe_spoof_app_version_target",
-                        entriesKey = "morphe_spoof_app_version_target_legacy_20_14_entries",
-                        entryValuesKey = "morphe_spoof_app_version_target_legacy_20_14_entry_values"
-                    )
-                }
+@Suppress("unused")
+val spoofAppVersionPatch = baseSpoofAppVersionPatch(
+    defaultTargetString = { "20.13.41" },
+    preferenceScreen = PreferenceScreen.GENERAL,
+    listPreference = {
+        if (is_20_40_or_greater) {
+            ListPreference("morphe_spoof_app_version_target")
+        } else if (is_20_31_or_greater) {
+            ListPreference(
+                key = "morphe_spoof_app_version_target",
+                entriesKey = "morphe_spoof_app_version_target_legacy_20_31_entries",
+                entryValuesKey = "morphe_spoof_app_version_target_legacy_20_31_entry_values"
             )
+        } else {
+            ListPreference(
+                key = "morphe_spoof_app_version_target",
+                entriesKey = "morphe_spoof_app_version_target_legacy_20_14_entries",
+                entryValuesKey = "morphe_spoof_app_version_target_legacy_20_14_entry_values"
+            )
+        }
+    },
+    block = {
+        dependsOn(
+            resourceMappingPatch,
+            sharedExtensionPatch,
+            settingsPatch,
+            versionCheckPatch,
+            clientContextHookPatch
         )
 
+        compatibleWith(COMPATIBILITY_YOUTUBE)
+    },
+    executeBlock = {
         /**
          * If spoofing to target 19.20 or earlier the Library tab can crash due to
          * missing image resources. As a workaround, do not set an image in the
@@ -84,19 +82,6 @@ val spoofAppVersionPatch = bytecodePatch(
                     ExternalLabel("ignore", getInstruction(jumpIndex))
                 )
             }
-        }
-
-        SpoofAppVersionFingerprint.apply {
-            val index = instructionMatches.first().index
-            val register = method.getInstruction<OneRegisterInstruction>(index).registerA
-
-            method.addInstructions(
-                index + 1,
-                """
-                    invoke-static { v$register }, $EXTENSION_CLASS->getUniversalAppVersionOverride(Ljava/lang/String;)Ljava/lang/String;
-                    move-result-object v$register
-                """
-            )
         }
 
         /**
@@ -125,6 +110,5 @@ val spoofAppVersionPatch = bytecodePatch(
                 }
             }
         }
-
     }
-}
+)

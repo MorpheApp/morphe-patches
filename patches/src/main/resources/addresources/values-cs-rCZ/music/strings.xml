@@ -111,11 +111,28 @@ YouTube Music 8.x – plynulé přecházení funguje pouze ve verzích 9.x a vy�
   <string name="morphe_music_hide_lyrics_panel_category_title">Panel s textem</string>
   <string name="morphe_music_hide_lyrics_share_button_title">Skrýt tlačítko Sdílet</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Skrýt tlačítko Přeložit</string>
+  <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
+  <string name="morphe_music_action_buttons_screen_title">Akční tlačítka</string>
+  <string name="morphe_music_action_buttons_screen_summary">Vyberte, která akční tlačítka se mají zobrazovat pod přehrávačem</string>
+  <string name="morphe_music_hide_action_bar_title">Skrýt akční panel</string>
+  <string name="morphe_music_hide_like_dislike_button_title">Skrýt tlačítko Líbí se a Nelíbí se</string>
+  <string name="morphe_music_hide_comments_button_title">Skrýt tlačítko Komentáře</string>
+  <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_lyrics_button_title">Skrýt tlačítko Texty</string>
+  <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_share_button_title">Skrýt tlačítko Sdílet</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_save_button_title">Skrýt tlačítko Uložit</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_download_button_title">Skrýt tlačítko Stáhnout</string>
+  <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_radio_button_title">Skrýt tlačítko Spustit rádio</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Menu vyskakovacích oken</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Zvolte, které komponenty se mají zobrazit v nabídkách přehrávače a fronty.</string>
   <string name="morphe_music_hide_flyout_menu_3_column_component_title">Skrýt 3sloupcovou komponentu</string>
   <string name="morphe_music_hide_flyout_menu_like_dislike_title">Skrýt tlačítka Líbí se a Nelíbí se</string>
+  <string name="morphe_music_hide_flyout_menu_taste_match_title">Skrýt nabídku \'Schoda chutí\'</string>
   <string name="morphe_music_hide_flyout_menu_add_to_listen_later_title">Skrýt nabídku \'Přidat do playlistu \'Poslech později\'</string>
   <string name="morphe_music_hide_flyout_menu_add_to_queue_title">Skrýt nabídku \'Přidat do fronty\'</string>
   <string name="morphe_music_hide_flyout_menu_captions_title">Skrýt nabídku Titulků</string>
@@ -252,4 +269,10 @@ YouTube Music 8.x – plynulé přecházení funguje pouze ve verzích 9.x a vy�
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling automaticky synchronizuje vaše používání YouTube Music s vaším profilem Last.fm nebo ListenBrainz.
 
 Pro zajištění synchronizace scrobblingu během přehrávání na pozadí se ujistěte, že využití baterie aplikace YouTube Music je nastaveno na \"Neomezené\"."</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 – Obnovit starý výsuvný panel</string>
+  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 – Zakázat texty písní v reálném čase</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 – Obnovit staré dynamické texty písní</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 – Obnovit starou akční lištu</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 – Sekce komentářů se nezobrazuje v domovské složce</string>
 </resources>

@@ -111,6 +111,22 @@ YouTube Music 8.x — estomparea încrucișată funcționează doar pe 9.x și v
   <string name="morphe_music_hide_lyrics_panel_category_title">Panou versuri</string>
   <string name="morphe_music_hide_lyrics_share_button_title">Ascunde butonul Distribuie</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Ascunde butonul Traducere</string>
+  <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
+  <string name="morphe_music_action_buttons_screen_title">Butoane de acțiune</string>
+  <string name="morphe_music_action_buttons_screen_summary">Alege ce butoane de acțiune să apară sub player</string>
+  <string name="morphe_music_hide_action_bar_title">Ascunde bara de acțiune</string>
+  <string name="morphe_music_hide_like_dislike_button_title">Ascunde butonul Like și Dislike</string>
+  <string name="morphe_music_hide_comments_button_title">Ascunde butonul Comentarii</string>
+  <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_lyrics_button_title">Ascunde butonul Versuri</string>
+  <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_share_button_title">Ascunde butonul Distribuie</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_save_button_title">Ascunde butonul Salvează</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_download_button_title">Ascunde butonul Descarcă</string>
+  <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_radio_button_title">Ascunde butonul Pornește radioul</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Meniu flyout</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Alegeți ce componente apar în meniurile flyout ale playerului și cozii.</string>
@@ -253,4 +269,10 @@ YouTube Music 8.x — estomparea încrucișată funcționează doar pe 9.x și v
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling sincronizează automat utilizarea YouTube Music cu profilul tău Last.fm sau ListenBrainz.
 
 Pentru a te asigura că scrobbling-ul este sincronizat în timpul redării în fundal, asigură-te că utilizarea bateriei aplicației YouTube Music este setată la \"Nerestrictivă\"."</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - Restaurați panoul flyout vechi</string>
+  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - Dezactivați versurile în timp real</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - Restaurați versurile dinamice vechi</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - Restaurați bara de acțiuni veche</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - Secțiunea de comentarii nu apare în fluxul principal</string>
 </resources>

@@ -7,9 +7,6 @@
 
 package app.morphe.extension.youtube.patches;
 
-import static app.morphe.extension.shared.Utils.getContext;
-import static app.morphe.extension.youtube.patches.AddToQueuePatch.getFlyoutVideoId;
-
 import android.content.Intent;
 import android.os.SystemClock;
 import android.support.v7.widget.RecyclerView;
@@ -21,7 +18,8 @@ import java.lang.ref.WeakReference;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import static app.morphe.extension.shared.settings.SharedYouTubeSettings.REPLACE_LINKS_WITH_SHORTENER;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -45,9 +43,11 @@ public final class OpenSystemShareSheetPatch {
             return;
         }
 
+        final String targetVideoId =
+                !FlyoutUtils.getFlyoutVideoId().isEmpty() ? FlyoutUtils.getFlyoutVideoId() : VideoInformation.getVideoId();
+
         final String videoURL =
-                (REPLACE_LINKS_WITH_SHORTENER.get() ? "https://youtu.be/" : "https://www.youtube.com/watch?v=") +
-                (!getFlyoutVideoId().isEmpty() ? getFlyoutVideoId() : VideoInformation.getVideoId());
+                (SharedYouTubeSettings.REPLACE_LINKS_WITH_SHORTENER.get() ? "https://youtu.be/" : "https://www.youtube.com/watch?v=") + targetVideoId;
 
         if (!TextUtils.isEmpty(videoURL)) {
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
@@ -57,7 +57,7 @@ public final class OpenSystemShareSheetPatch {
             chooserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_USER_ACTION);
 
             try {
-                getContext().startActivity(chooserIntent);
+                Utils.getContext().startActivity(chooserIntent);
             } catch (Exception ex) {
                 Logger.printException(() -> "Can not open System Share panel: " + videoURL, ex);
             }

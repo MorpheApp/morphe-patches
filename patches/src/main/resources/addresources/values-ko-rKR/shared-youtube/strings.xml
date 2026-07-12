@@ -53,7 +53,7 @@ Second \"item\" text"</string>
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe 알림</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">시청 기록이 저장되지 않습니다.&lt;br&gt;&lt;br&gt; DNS 광고 차단기 또는 네트워크 프록시로 인하여 발생한 문제일 가능성이 높습니다.&lt;br&gt;&lt;br&gt; 이 문제를 해결하려면 &lt;b&gt;s.youtube.com&lt;/b&gt;을 허용 목록에서 제외하거나 모든 DNS 차단기 및 프록시를 해제하세요.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">다시 보지 않기</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">동영상 스트림 속이기</string>
   <string name="morphe_spoof_video_streams_screen_summary">클라이언트 동영상 스트림을 속여서 재생 문제를 방지할 수 있습니다</string>
   <string name="morphe_spoof_video_streams_title">동영상 스트림 속이기</string>
@@ -168,4 +168,13 @@ YouTube Premium 사용자는 이 설정이 필요하지 않을 수 있습니다"
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">필터링할 컴포넌트 패스 빌더 문자열을 줄바꿈으로 구분하여 설정하세요</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">잘못된 사용자 정의 필터 값입니다: %s</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_title">앱 버전 속이기</string>
+  <string name="morphe_spoof_app_version_summary">서버가 사용 중인 앱 버전을 더 오래된 버전으로 인식하도록 속여, 이전 레이아웃 기능을 다시 복원합니다</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"앱 버전이 이전 앱 버전으로 속여집니다.
+
+이 경우 앱 레이아웃과 기능이 변경되지만 알려지지 않은 부작용이 발생할 수 있습니다.
+
+나중에 이 기능을 비활성화하면 앱 UI 버그를 방지하기 위해 앱 데이터를 지우는 것이 좋습니다."</string>
+  <string name="morphe_spoof_app_version_target_title">속이기에 사용될 앱 버전</string>
 </resources>

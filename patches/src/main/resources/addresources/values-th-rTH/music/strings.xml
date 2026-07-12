@@ -110,6 +110,22 @@ YouTube Music 8.x — การเฟดข้ามจะทำงานบน 
   <string name="morphe_music_hide_lyrics_panel_category_title">แผงเนื้อเพลง</string>
   <string name="morphe_music_hide_lyrics_share_button_title">ซ่อนปุ่มแชร์</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">ซ่อนปุ่มแปล</string>
+  <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
+  <string name="morphe_music_action_buttons_screen_title">ปุ่มการกระทำ</string>
+  <string name="morphe_music_action_buttons_screen_summary">เลือกปุ่มการกระทำที่จะแสดงใต้เครื่องเล่น</string>
+  <string name="morphe_music_hide_action_bar_title">ซ่อนแถบการกระทำ</string>
+  <string name="morphe_music_hide_like_dislike_button_title">ซ่อนปุ่มถูกใจและไม่ชอบ</string>
+  <string name="morphe_music_hide_comments_button_title">ซ่อนปุ่มแสดงความคิดเห็น</string>
+  <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_lyrics_button_title">ซ่อนปุ่มเนื้อเพลง</string>
+  <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_share_button_title">ซ่อนปุ่มแชร์</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_save_button_title">ซ่อนปุ่มบันทึก</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_download_button_title">ซ่อนปุ่มดาวน์โหลด</string>
+  <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_radio_button_title">ซ่อนปุ่มเริ่มวิทยุ</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">เมนูแบบเลื่อนลง</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">เลือกส่วนประกอบที่จะแสดงในเมนูแบบเลื่อนลงของผู้เล่นและคิว</string>
@@ -230,4 +246,10 @@ YouTube Music 8.x — การเฟดข้ามจะทำงานบน 
   <string name="morphe_music_scrobbling_about_summary">"การ scrobbling จะซิงค์การใช้งาน YouTube Music ของคุณกับโปรไฟล์ Last.fm หรือ ListenBrainz โดยอัตโนมัติ
 
 เพื่อให้แน่ใจว่าการ scrobbling จะซิงค์ระหว่างการเล่นในเบื้องหลัง ตรวจสอบให้แน่ใจว่าการใช้แบตเตอรี่ของแอป YouTube Music ถูกตั้งค่าเป็น \"ไม่จำกัด\""</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - กู้คืนแผงควบคุมแบบเดิม</string>
+  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - ปิดเนื้อเพลงแบบเรียลไทม์</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - กู้คืนเนื้อเพลงแบบไดนามิกแบบเดิม</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - กู้คืนแถบแอ็กชันแบบเดิม</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - ส่วนความคิดเห็นไม่ปรากฏในหน้าฟีด</string>
 </resources>

@@ -111,6 +111,22 @@ YouTube Music 8.x — pudar silang hanya berfungsi pada versi 9.x dan yang lebih
   <string name="morphe_music_hide_lyrics_panel_category_title">Panel Lirik</string>
   <string name="morphe_music_hide_lyrics_share_button_title">Sembunyikan tombol Bagikan</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Sembunyikan tombol Terjemahan</string>
+  <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
+  <string name="morphe_music_action_buttons_screen_title">Tombol tindakan</string>
+  <string name="morphe_music_action_buttons_screen_summary">Pilih tombol tindakan mana yang akan ditampilkan di bawah pemutar</string>
+  <string name="morphe_music_hide_action_bar_title">Sembunyikan bilah tindakan</string>
+  <string name="morphe_music_hide_like_dislike_button_title">Sembunyikan tombol Suka dan Tidak Suka</string>
+  <string name="morphe_music_hide_comments_button_title">Sembunyikan tombol Komentar</string>
+  <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_lyrics_button_title">Sembunyikan tombol Lirik</string>
+  <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_share_button_title">Sembunyikan tombol Bagikan</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_save_button_title">Sembunyikan tombol Simpan</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_download_button_title">Sembunyikan tombol Unduh</string>
+  <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_radio_button_title">Sembunyikan tombol Mulai radio</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Menu flyout</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Pilih komponen mana yang akan ditampilkan di menu flyout dan antrean</string>
@@ -161,7 +177,7 @@ YouTube Music 8.x — pudar silang hanya berfungsi pada versi 9.x dan yang lebih
   <string name="morphe_change_start_page_entry_search">Pencarian</string>
   <string name="morphe_change_start_page_entry_subscriptions">Subscriptions</string>
   <!-- layout.compactheader.hideFilterBarPatch -->
-  <string name="morphe_music_hide_filter_bar_title">Sembunyikan bilah filter</string>
+  <string name="morphe_music_hide_filter_bar_title">Sembunyikan bilah penyaring</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">Ubah warna pemutar mini</string>
   <string name="morphe_music_change_miniplayer_color_summary">Menyesuaikan warna pemutar mini dengan pemutar layar penuh</string>
@@ -253,4 +269,10 @@ YouTube Music 8.x — pudar silang hanya berfungsi pada versi 9.x dan yang lebih
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling secara otomatis menyinkronkan penggunaan YouTube Music Anda dengan profil Last.fm atau ListenBrainz Anda.
 
 Untuk memastikan scrobbling disinkronkan selama pemutaran latar belakang, pastikan penggunaan baterai aplikasi YouTube Music diatur ke \"Tidak Dibatasi\""</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - Kembalikan panel flyout lama</string>
+  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - Nonaktifkan lirik real-time</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - Kembalikan lirik dinamis lama</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - Pulihkan bilah tindakan lama</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - Bagian komentar tidak muncul di feed beranda</string>
 </resources>

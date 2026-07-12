@@ -111,6 +111,21 @@ YouTube Music 8.x - يعمل الانتقال التدريجي فقط على ا�
   <string name="morphe_music_hide_lyrics_panel_category_title">لوحة كلمات الأغنية</string>
   <string name="morphe_music_hide_lyrics_share_button_title">إخفاء زر المشاركة</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">إخفاء زر الترجمة</string>
+  <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
+  <string name="morphe_music_action_buttons_screen_title">أزرار الإجراء</string>
+  <string name="morphe_music_action_buttons_screen_summary">اختر الأزرار التي تظهر أسفل المشغل</string>
+  <string name="morphe_music_hide_action_bar_title">إخفاء شريط الإجراءات</string>
+  <string name="morphe_music_hide_like_dislike_button_title">إخفاء زر إعجاب وعدم إعجاب</string>
+  <string name="morphe_music_hide_comments_button_title">إخفاء زر التعليقات</string>
+  <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_lyrics_button_title">إخفاء زر كلمات الأغنية</string>
+  <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_share_button_title">إخفاء زر مشاركة</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_save_button_title">إخفاء زر حفظ</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_download_button_title">إخفاء زر التنزيل</string>
+  <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">القائمة المنبثقة</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">اختر المكونات التي تظهر في القوائم المنبثقة للمشغل والطابور</string>
@@ -253,4 +268,10 @@ YouTube Music 8.x - يعمل الانتقال التدريجي فقط على ا�
   <string name="morphe_music_scrobbling_about_summary">"يقوم التتبع التلقائي بمزامنة استخدامك لـ YouTube Music مع ملف تعريف Last.fm أو ListenBrainz الخاص بك.
 
 لضمان مزامنة التتبع أثناء التشغيل في الخلفية، تأكد من تعيين استخدام تطبيق YouTube Music للبطارية على \"غير مقيد\"."</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - استعادة لوحة النوافذ القديمة</string>
+  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - تعطيل كلمات الأغاني في الوقت الفعلي</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - استعادة كلمات الأغاني الديناميكية القديمة</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - استعادة شريط الإجراءات القديم</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - لا يظهر قسم التعليقات في موجز الصفحة الرئيسية</string>
 </resources>

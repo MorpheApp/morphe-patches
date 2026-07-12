@@ -53,7 +53,7 @@ Verast bike navê pakêtê rast e û sepan sazkirî ye"</string>
   <string name="morphe_check_watch_history_domain_name_dialog_title">Îlanê Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Sergûzastên we têne parvekirin.&lt;br&gt;&lt;br&gt;Ev bi girîngî ji hêla pêşgirê DNS an proxy-ya danînê ve tê bandor kirin.&lt;br&gt;&lt;br&gt;Ji bo çareserî, s.youtube.com veşêre an hemû pêşgirên DNS û proxy-yên vegirtêrê vanqandin.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ji nûve ne nîşan bide</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Goşiyên wîdyoyê spoof bikin</string>
   <string name="morphe_spoof_video_streams_screen_summary">Têkbirina mûşekan a serîlêdanê bicîh bîne da ku ji pirsgirêkên lêçînê pêşî bigire</string>
   <string name="morphe_spoof_video_streams_title">Goşiyên wîdyoyê spoof bikin</string>
@@ -166,4 +166,13 @@ Lê belê, çalak kirina wê dê hin agahiyên bikarhêner wekî navnîşana IP-
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Lîsteya stringên avakera rêya pêkhateyan da ku bi rêyên nû veqetandî fîltre bikin</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Filtra niştecî ne heq e: %s</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_title">Guherîna guhertoya sepanê</string>
+  <string name="morphe_spoof_app_version_summary">Serverê dixapînin ku hûn guhertoyek kevnêtir ê sepanê bikar tînin da ku taybetmendiyên berê yên navnîşê vegerînin</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"Guhertoya sepanê wê bi guhertoyek kevnêtir were guherîn.
+
+Ev ê sînorên peydakirina sepanê biguherîne, lê bandorên nediyar dikarin çêbin.
+
+Ger paşê were veqetandîn, pêşniyar dike ku daneyê sepanê were paqijkirin da ku kêmasiyên navnîşê neyên çêkirin."</string>
+  <string name="morphe_spoof_app_version_target_title">Armancê guherîna guhertoya sepanê</string>
 </resources>

@@ -162,7 +162,7 @@ Second \"item\" text"</string>
   <!-- layout.sponsorblock.sponsorBlockPatch -->
   <!-- layout.formfactor.changeFormFactorPatch -->
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <!-- layout.spoofappversion.spoofAppVersionPatch -->
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <!-- misc.sharesheet.openSystemShareSheetPatch -->
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <!-- layout.startpage.changeStartPagePatch -->
@@ -203,5 +203,6 @@ Second \"item\" text"</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
+  <!-- Quality refers to video quality -->
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
 </resources>

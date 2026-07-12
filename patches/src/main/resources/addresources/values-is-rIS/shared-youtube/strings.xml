@@ -53,7 +53,7 @@ Staðfestu að pakkanafnið er rétt og að forritið er uppsett"</string>
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe tilkynning</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Ekki er hægt að vista skoðunarhistórikuna þína.&lt;br&gt;&lt;br&gt;Þetta stafar líklega af DNS auglýsingablokkera eða nettengjum.&lt;br&gt;&lt;br&gt;Til að laga þetta skaltu bæta &lt;b&gt;s.youtube.com&lt;/b&gt; á hvítlista eða slökkva á öllum DNS blokkerum og tengjum.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ekki sýna aftur</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Spofa myndstreymi</string>
   <string name="morphe_spoof_video_streams_screen_summary">Stilltu klientakupunni til að koma í veg fyrir vandamál með spilun</string>
   <string name="morphe_spoof_video_streams_title">Spofa myndstreymi</string>
@@ -168,4 +168,13 @@ Athugaðu að einnig kunna að vera skráð ákveðin notendagögn, svo sem IP-t
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Listi yfir Litho UI útlitseininga strengja til að síu, aðskilin með nýjum línum</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Ógild sérstök síubreyting: %s</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_title">Gerðu app útgáfuna að breytast</string>
+  <string name="morphe_spoof_app_version_summary">Blekkur netþjóninn til að láta það virðast eins og þú ert að nota eldri app útgáfu til að endurheimta eldri UI eiginleika</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"App útgáfa verður gerð að eldri útgáfu.
+
+Þetta mun breyta útliti og eiginleikum appsins, en óþekktir aukaverkanir geta komið upp.
+
+Ef þú slökkvir þetta síðar er mælt með því að eyða gögnum appsins til að forðast UI villur."</string>
+  <string name="morphe_spoof_app_version_target_title">Markmið breyttrar app útgáfu</string>
 </resources>

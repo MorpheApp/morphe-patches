@@ -53,7 +53,7 @@ Second \"item\" text"</string>
   <string name="morphe_check_watch_history_domain_name_dialog_title">הודעת Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">היסטוריית הצפייה שלך לא נשמרת.&lt;br&gt;&lt;br&gt;סביר להניח שזה נגרם על ידי חוסם מודעות ברמת DNS או פרוקסי רשת.&lt;br&gt;&lt;br&gt;כדי לתקן זאת, רשום את &lt;b&gt;s.youtube.com&lt;/b&gt; ברשימת ההיתרים או כבה את כל חוסמי ה-DNS והפרוקסים.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">אל תציג שוב</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">זיוף זרמי וידאו</string>
   <string name="morphe_spoof_video_streams_screen_summary">הגדר העלמת זהות לקוח כדי למנוע בעיות בהשמעה</string>
   <string name="morphe_spoof_video_streams_title">זייף זרמי וידאו</string>
@@ -168,4 +168,13 @@ Second \"item\" text"</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">רשימה של מחרוזות בונה נתיב רכיבים לסינון מופרדות על ידי שורות חדשות</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">מסנן מותאם אישית לא חוקי: %s</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_title">זייף גרסת אפליקציה</string>
+  <string name="morphe_spoof_app_version_summary">מרמה את השרת לחשוב שאתה משתמש בגרסת אפליקציה ישנה יותר כדי לשחזר תכונות ממשק משתמש מדור קודם</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"גרסת האפליקציה תזויף לגרסה ישנה יותר.
+
+זה ישנה את המראה והתכונות של האפליקציה, אך תופעות לוואי לא ידועות עלולות להתרחש.
+
+אם נכבה מאוחר יותר, מומלץ לנקות את נתוני האפליקציה כדי למנוע באגים בממשק המשתמש."</string>
+  <string name="morphe_spoof_app_version_target_title">יעד גרסת יישום מזויפת</string>
 </resources>

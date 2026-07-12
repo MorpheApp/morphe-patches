@@ -53,7 +53,7 @@ Second \"item\" text"</string>
   <string name="morphe_check_watch_history_domain_name_dialog_title">Ειδοποίηση Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Το ιστορικό παρακολούθησης δεν αποθηκεύεται.&lt;br&gt;&lt;br&gt;Πιθανό να συμβαίνει λόγω κάποιας υπηρεσίας DNS που μπλοκάρει διαφημίσεις ή μέσω κάποιου διακομιστή μεσολάβησης δικτύου.&lt;br&gt;&lt;br&gt;Μια λύση γι\'αυτό θα ήταν να προσθέσετε σε whitelist το &lt;b&gt;s.youtube.com&lt;/b&gt; ή να απενεργοποιήστε το DNS και τους διακομιστές μεσολάβησης δικτύου.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Να μην εμφανιστεί ξανά</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Παραποίηση ροών βίντεο</string>
   <string name="morphe_spoof_video_streams_screen_summary">Παραποίηση του προγράμματος ροών βίντεο για την αποφυγή προβλημάτων αναπαραγωγής</string>
   <string name="morphe_spoof_video_streams_title">Παραποίηση ροών βίντεο</string>
@@ -168,4 +168,13 @@ Second \"item\" text"</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Λίστα συμβολοσειρών στοιχείων δημιουργού διαδρομής για φιλτράρισμα, διαχωρισμένες με νέες γραμμές</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Μη έγκυρο προσαρμοσμένο φίλτρο: %s</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_title">Παραποίηση έκδοσης εφαρμογής</string>
+  <string name="morphe_spoof_app_version_summary">Εξαπατά τον διακομιστή ώστε να νομίζει ότι χρησιμοποιείτε μια παλαιότερη έκδοση εφαρμογής για να επαναφέρετε παλαιότερα στοιχεία διεπαφής χρήστη</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"Η έκδοση της εφαρμογής θα παραποιηθεί σε μια παλαιότερη έκδοση.
+
+Αυτό θα αλλάξει την εμφάνιση και τα χαρακτηριστικά της εφαρμογής, αλλά ενδέχεται να προκύψουν άγνωστες παρενέργειες.
+
+Εάν αργότερα απενεργοποιηθεί, συνιστάται η εκκαθάριση των δεδομένων της εφαρμογής για την αποφυγή σφαλμάτων διεπαφής χρήστη."</string>
+  <string name="morphe_spoof_app_version_target_title">Έκδοση παραποίησης της εφαρμογής</string>
 </resources>

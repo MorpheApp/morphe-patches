@@ -2,10 +2,10 @@
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
  *
- * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.patches.youtube.misc.proto
+package app.morphe.patches.shared.misc.proto
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.checkCast
@@ -22,7 +22,6 @@ internal object NewElementProtoParserFingerprint : Fingerprint(
         checkCast("[B")
     ),
     custom = { method, _ ->
-        // 'static' or 'public static'
         AccessFlags.STATIC.isSet(method.accessFlags)
     }
 )

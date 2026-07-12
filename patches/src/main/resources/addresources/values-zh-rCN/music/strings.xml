@@ -111,6 +111,22 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <string name="morphe_music_hide_lyrics_panel_category_title">歌词面板</string>
   <string name="morphe_music_hide_lyrics_share_button_title">隐藏分享按钮</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">隐藏翻译按钮</string>
+  <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
+  <string name="morphe_music_action_buttons_screen_title">操作按钮</string>
+  <string name="morphe_music_action_buttons_screen_summary">选择在纵向和全屏模式下显示的哪个操作按钮</string>
+  <string name="morphe_music_hide_action_bar_title">隐藏操作栏</string>
+  <string name="morphe_music_hide_like_dislike_button_title">隐藏「赞」和「踩」按钮</string>
+  <string name="morphe_music_hide_comments_button_title">隐藏评论按钮</string>
+  <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_lyrics_button_title">隐藏歌词按钮</string>
+  <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_share_button_title">隐藏分享按钮</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_save_button_title">隐藏保存按钮</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_download_button_title">隐藏下载按钮</string>
+  <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_radio_button_title">隐藏开始电台按钮</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">弹出菜单</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">选择在播放器和队列的弹出菜单中显示哪些组件</string>
@@ -253,4 +269,10 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling 会自动将您的 YouTube Music 使用情况同步到您的 Last.fm 或 ListenBrainz 个人资料。
 
 为了确保在后台播放期间同步 scrobbling，请确保 YouTube Music 的应用电池使用量设置为“无限制”。"</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - 恢复旧版浮动面板</string>
+  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - 禁用实时歌词</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - 恢复旧版动态歌词</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - 恢复旧版操作栏</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - 主页信息流中未显示评论区</string>
 </resources>

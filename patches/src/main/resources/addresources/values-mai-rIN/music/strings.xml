@@ -101,6 +101,12 @@ YouTube Music 8.x — क्रॉसफेड केवल 9.x आ नय व�
   <string name="morphe_music_play_permanent_repeat_title">स्थायी दोहराव सक्षम करें</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <!-- layout.hide.general.hideMusicComponentsPatch -->
+  <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
+  <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <!-- 'Save' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">आरंभ पृष्ठ</string>
@@ -201,4 +207,5 @@ YouTube Music 8.x — क्रॉसफेड केवल 9.x आ नय व�
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling स्वचालित रूप सँ अहाँक YouTube Music उपयोग के अहाँक Last.fm या ListenBrainz प्रोफाइल सँ सिंक करैत छै
 
 ई सुनिश्चित करय लेल जे बैकग्राउंड प्लेबैक क दौरान scrobbling सिंक होय, ई सुनिश्चित करू जे YouTube Music क ऐप बैटरी उपयोग \"Unrestricted\" पर सेट छै"</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
 </resources>

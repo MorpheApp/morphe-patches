@@ -72,6 +72,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_play_permanent_repeat_title">Aktivera permanent upprepning</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <!-- layout.hide.general.hideMusicComponentsPatch -->
+  <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
+  <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <!-- 'Save' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Startsida</string>
@@ -122,4 +128,5 @@ Second \"item\" text"</string>
   <string name="morphe_music_lastfm_token_dialog_password_hint">Lösenord</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <!-- 'scrobbling' must be kept untranslated -->
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
 </resources>

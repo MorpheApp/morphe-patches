@@ -5,19 +5,24 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.youtube.patches;
+package app.morphe.extension.shared.patches;
 
-import static app.morphe.extension.youtube.shared.ConversionContext.ELEMENT_IDENTIFIER_COMPONENT;
-import static app.morphe.extension.youtube.shared.ConversionContext.ELEMENT_IDENTIFIER_LAZILY;
+import static app.morphe.extension.shared.patches.ConversionContext.ELEMENT_IDENTIFIER_COMPONENT;
+import static app.morphe.extension.shared.patches.ConversionContext.ELEMENT_IDENTIFIER_LAZILY;
 
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.patches.components.ContextInterface;
 
 @SuppressWarnings("unused")
 public class TreeNodeElementPatch {
+
+    public interface LithoGetBufferContainerInterface {
+        // Method is added during patching.
+        Object patch_getContainer();
+    }
 
     /**
      * Injection point.

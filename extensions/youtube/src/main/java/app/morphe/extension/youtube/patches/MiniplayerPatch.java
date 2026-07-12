@@ -411,6 +411,11 @@ public final class MiniplayerPatch {
                 motionEvent.getAction() == MotionEvent.ACTION_UP &&
                 motionEvent.getEventTime() - motionEvent.getDownTime() < 200) {
             offScreenMiniplayerButtonPressed = true;
+
+            Utils.runOnMainThreadDelayed(
+                    () -> offScreenMiniplayerButtonPressed = false,
+                    1000
+            );
         }
     }
 
@@ -419,13 +424,19 @@ public final class MiniplayerPatch {
      * Forcefully set the current params of miniplayer rect to the device offscreen offsets, only when the miniplayer is set
      * offscreen, in order to prevent miniplayer from being shown itself during the user's navigation across the app.
      */
-    public static Rect blockOffscreenMiniplayerHorizontalReposition(Rect currentRect, Rect previousRect, int screenWidth) {
+    public static Rect blockOffscreenMiniplayerHorizontalReposition(Rect currentRect, Rect previousRect) {
         if (!MINIPLAYER_DISABLE_HORIZONTAL_REPOSITION.get()) {
             miniplayerOffscreenState = 0;
             return currentRect;
         }
 
+        // Retrieve `displayMetrics` at runtime to ensure correct calculations for foldable devices.
+        DisplayMetrics displayMetrics = Utils.getContext().getResources().getDisplayMetrics();
+        int screenWidth = displayMetrics.widthPixels;
+        int screenHeight = displayMetrics.heightPixels;
+
         if (!offScreenMiniplayerButtonPressed) {
+            int previousRectTop = previousRect.top;
             int previousRectLeft = previousRect.left;
             int originalWidth = currentRect.width();
 
@@ -442,22 +453,29 @@ public final class MiniplayerPatch {
                 currentRect.right = screenWidth + originalWidth;
                 miniplayerOffscreenState = 2;
             }
-        } else {
-            // Button to show the miniplayer from its offscreen position is pressed.
-            // Move the offscreen miniplayer of 5 pixels to the center of screen, in order to allow the
-            // miniplayer animator to perform the transition to show it again.
-            int originalWidth = currentRect.width();
 
-            if (miniplayerOffscreenState == 1) {
-                currentRect.left = horizontalPositionJump;
-                currentRect.right = horizontalPositionJump + originalWidth;
-            } else if (miniplayerOffscreenState == 2) {
-                currentRect.left = screenWidth - horizontalPositionJump;
-                currentRect.right = (screenWidth - horizontalPositionJump) + originalWidth;
+            // Offscreen params is forcefully set to preserve the vertical position.
+            if (miniplayerOffscreenState > 0 && currentRect.top != previousRectTop) {
+                currentRect.top = previousRectTop;
+                currentRect.bottom = previousRect.bottom;
             }
+        } else {
+            if (miniplayerOffscreenState > 0) {
+                // Button to show the miniplayer from its offscreen position is pressed.
+                // Move the offscreen miniplayer of 5 pixels to the center of screen, in order to allow the
+                // miniplayer animator to perform the transition to show it again.
+                int originalWidth = currentRect.width();
 
-            miniplayerOffscreenState = 0;
-            offScreenMiniplayerButtonPressed = false;
+                if (miniplayerOffscreenState == 1) {
+                    currentRect.left = horizontalPositionJump;
+                    currentRect.right = horizontalPositionJump + originalWidth;
+                } else if (miniplayerOffscreenState == 2) {
+                    currentRect.left = screenWidth - horizontalPositionJump;
+                    currentRect.right = (screenWidth - horizontalPositionJump) + originalWidth;
+                }
+
+                miniplayerOffscreenState = 0;
+            }
         }
 
         return currentRect;

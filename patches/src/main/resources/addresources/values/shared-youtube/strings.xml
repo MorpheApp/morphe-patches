@@ -25,15 +25,14 @@ Second \"item\" text"</string>
     <string name="morphe_external_downloader_screen_title">External downloads</string>
     <string name="morphe_external_downloader_name_title">Downloader package name</string>
     <string name="morphe_external_downloader_name_summary">Package name of your installed external downloader app</string>
-    <string name="morphe_external_downloader_flyout_button_title">Override feed/search flyout button</string>
-    <string name="morphe_external_downloader_other_item_hint">Enter the package name</string>
+    <string name="morphe_external_downloader_other_item_hint">Enter package name</string>
     <string name="morphe_external_downloader_other_item">Other</string>
     <string name="morphe_external_downloader_not_found_title">App not installed</string>
     <string name="morphe_external_downloader_not_installed_warning">%s is not installed. Please install it.</string>
     <string name="morphe_external_downloader_package_not_found_warning">"Could not find installed app with package name: %s
 
 Verify the package name is correct and the app is installed"</string>
-    <string name="morphe_external_downloader_empty_warning">The package name cannot be empty</string>
+    <string name="morphe_external_downloader_empty_warning">Package name cannot be empty</string>
 
     <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
     <string name="morphe_custom_branding_name_entry_5">Custom</string>
@@ -58,7 +57,7 @@ Verify the package name is correct and the app is installed"</string>
     <string name="morphe_check_watch_history_domain_name_dialog_message">Your watch history is not being saved.&lt;br>&lt;br>This most likely is caused by a DNS ad blocker or network proxy.&lt;br>&lt;br>To fix this, whitelist &lt;b>s.youtube.com&lt;/b> or turn off all DNS blockers and proxies.</string>
     <string name="morphe_check_watch_history_domain_name_dialog_ignore">Do not show again</string>
 
-    <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+    <!-- misc.spoof.spoofVideoStreamsPatch -->
     <string name="morphe_spoof_video_streams_screen_title">Spoof video streams</string>
     <string name="morphe_spoof_video_streams_screen_summary">Configure client spoofing to prevent playback issues</string>
     <string name="morphe_spoof_video_streams_title">Spoof video streams</string>
@@ -182,4 +181,15 @@ However, enabling this will also log some user data such as your IP address."</s
     <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
     <string name="morphe_custom_filter_strings_summary">List of component path builder strings to filter, separated by new lines</string>
     <string name="morphe_custom_filter_toast_invalid_syntax">Invalid custom filter: %s</string>
+
+
+    <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+    <string name="morphe_spoof_app_version_title">Spoof app version</string>
+    <string name="morphe_spoof_app_version_summary">Tricks the server into thinking you are using an older app version to restore legacy UI features</string>
+    <string name="morphe_spoof_app_version_user_dialog_message">"App version will be spoofed to an older version.
+
+This will change the appearance and features of the app, but unknown side effects may occur.
+
+If later turned off, it is recommended to clear the app data to prevent UI bugs."</string>
+    <string name="morphe_spoof_app_version_target_title">Spoof app version target</string>
 </resources>

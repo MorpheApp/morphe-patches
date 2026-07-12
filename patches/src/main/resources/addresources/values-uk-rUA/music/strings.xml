@@ -111,6 +111,22 @@ YouTube Music 8.x — плавний перехід працює лише на �
   <string name="morphe_music_hide_lyrics_panel_category_title">Панель текстів пісень</string>
   <string name="morphe_music_hide_lyrics_share_button_title">Приховати кнопку \"Поділитися\"</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Приховати кнопку \"Переклад\"</string>
+  <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
+  <string name="morphe_music_action_buttons_screen_title">Кнопки дій</string>
+  <string name="morphe_music_action_buttons_screen_summary">Виберіть, які кнопки з\'являються під програвачем</string>
+  <string name="morphe_music_hide_action_bar_title">Приховати панель дій</string>
+  <string name="morphe_music_hide_like_dislike_button_title">Приховати кнопки \"Лайк\" та \"Дизлайк\"</string>
+  <string name="morphe_music_hide_comments_button_title">Приховати кнопку \"Коментарі\"</string>
+  <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_lyrics_button_title">Приховати кнопку \"Текст\"</string>
+  <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_share_button_title">Приховати кнопку \"Поділитися\"</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_save_button_title">Приховати кнопку \"Зберегти\"</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_download_button_title">Приховати кнопку \"Завантажити\"</string>
+  <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_radio_button_title">Приховати кнопку \"Мікс\"</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Висувне меню</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Виберіть, які компоненти будуть показуватися у висувному меню</string>
@@ -253,4 +269,10 @@ YouTube Music 8.x — плавний перехід працює лише на �
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling автоматично відстежує музику, яку ви відтворюєте на YouTube Music, і синхронізує її з вашим профілем на Last.fm або ListenBrainz
 
 Щоб scrobbling надійно працював у фоновому режимі, переконайтеся, що для YouTube Music у налаштуваннях використання батареї системою встановлено значення \"Без обмежень\""</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - Відновити стару спливну панель</string>
+  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - Вимкнути текст пісні в реальному часі</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - Відновити старий динамічний текст пісні</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - Відновити стару панель дій</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - Розділ коментарів не показується у головній стрічці</string>
 </resources>

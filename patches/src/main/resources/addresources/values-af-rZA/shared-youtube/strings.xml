@@ -53,7 +53,7 @@ Verifieer dat die pakketnaam korrek is en die app geïnstalleer is"</string>
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Kennisgewing</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">U kykgeskiedenis word nie gestoor nie.&lt;br&gt;&lt;br&gt;Dit word heel waarskynlik veroorsaak deur \'n DNS-advertensieblokkeerder of \'n netwerkproxy.&lt;br&gt;&lt;br&gt;Om dit op te los, voeg &lt;b&gt;s.youtube.com&lt;/b&gt; by die witlys of skakel alle DNS-blokkeerders en -proxies af.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Moenie weer wys nie</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Verfraai videostrome</string>
   <string name="morphe_spoof_video_streams_screen_summary">Konfigureer kliënt-voorgee om speelprobleme te voorkom</string>
   <string name="morphe_spoof_video_streams_title">Verfraai videostrome</string>
@@ -168,4 +168,13 @@ Let wel, deur dit in te skakel, sal ook sekere gebruikerdata soos jou IP-adres g
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Lys van komponentpaadbouerstringe om te filter, geskei deur nuwe reëls</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Ongeldige pasgestelde filter: %s</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_title">Valse weergawe van app</string>
+  <string name="morphe_spoof_app_version_summary">Mislei die bediener om te dink jy gebruik \'n ouer weergawe van die app om verstoude UI-funksies te herstel</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"Die app-weergawe sal na 'n ouer weergawe vervals word.
+
+Dit sal die voorkoms en funksies van die app verander, maar onbekende newe-effekte kan voorkom.
+
+Indien later afgeskakel, word dit aanbeveel om die app se data uit te vee om UI-foute te voorkom."</string>
+  <string name="morphe_spoof_app_version_target_title">Tegenseilweergawe van app</string>
 </resources>

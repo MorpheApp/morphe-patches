@@ -1,8 +1,9 @@
 package app.morphe.extension.youtube.patches;
 
+import static app.morphe.extension.shared.spoof.SpoofAppVersionPatch.isSpoofingToLessThan;
+
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.youtube.patches.spoof.SpoofAppVersionPatch;
 import app.morphe.extension.youtube.shared.PlayerType;
 
 @SuppressWarnings("unused")
@@ -24,7 +25,7 @@ public class FixLikeButtonPatch {
      * YouTube 20.39+ uses a bold icon in the action bar, while YouTube 20.38 uses a legacy icon in the action bar.
      */
     private static final boolean USE_LEGACY_ICON = !VersionCheckPatch.IS_20_39_OR_GREATER
-            || SpoofAppVersionPatch.isSpoofingToLessThan("20.38.00");
+            || isSpoofingToLessThan("20.38.00");
 
     /**
      * Injection point.

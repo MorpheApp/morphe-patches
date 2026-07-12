@@ -110,6 +110,22 @@ YouTube Music 8.x — prelazni efekat radi samo na 9.x i novijim verzijama"</str
   <string name="morphe_music_hide_lyrics_panel_category_title">Panel tekstova</string>
   <string name="morphe_music_hide_lyrics_share_button_title">Sakrij dugme „Deli”</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Sakrij dugme „Prevedi”</string>
+  <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
+  <string name="morphe_music_action_buttons_screen_title">Dugmad radnji</string>
+  <string name="morphe_music_action_buttons_screen_summary">Izaberite koji dugmići za akcije da se pojave ispod plejera</string>
+  <string name="morphe_music_hide_action_bar_title">Sakrij traku sa akcijama</string>
+  <string name="morphe_music_hide_like_dislike_button_title">Sakrij dugmad „Sviđanje” i „Ne sviđanje”</string>
+  <string name="morphe_music_hide_comments_button_title">Sakrij dugme „Komentari”</string>
+  <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_lyrics_button_title">Sakrij dugme „Tekstovi”</string>
+  <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_share_button_title">Sakrij dugme „Deli”</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_save_button_title">Sakrij dugme „Sačuvaj”</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_download_button_title">Sakrij dugme „Preuzmi”</string>
+  <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_radio_button_title">Sakrij dugme „Pokreni radio”</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Падајући мени</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Изаберите које компоненте ће се појављивати у плејеру и редовима падајућих менија</string>
@@ -252,4 +268,10 @@ YouTube Music 8.x — prelazni efekat radi samo na 9.x i novijim verzijama"</str
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling automatski sinhronizuje vašu upotrebu YouTube Music-a sa vašim Last.fm ili ListenBrainz profilom.
 
 Da biste obezbedili sinhronizaciju scrobbling-a tokom reprodukcije u pozadini, uverite se da je korišćenje baterije aplikacije YouTube Music podešeno na \"Nestrojeno\""</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - Vraća stari panel za lebdeće padajuće menije</string>
+  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - Isključi tekst pesama u realnom vremenu</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - Vraća stari dinamički tekst pesama</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - Vraća staru akcijsku traku</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - Sekcija komentara se ne prikazuje u glavnom feed-u</string>
 </resources>

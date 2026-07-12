@@ -53,7 +53,7 @@ Preverite, ali je ime paketa pravilno in ali je aplikacija nameščena"</string>
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe opozorilo</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Vaša zgodovina gledanja se ne shranjuje.&lt;br&gt;&lt;br&gt;To je verjetno posledica blokiranja DNS ali omrežnega posrednika.&lt;br&gt;&lt;br&gt;Da to popravite, dovolite &lt;b&gt;s.youtube.com&lt;/b&gt; ali izklopite vse blokatorje DNS in posrednike.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ne prikaži več</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Ponarejanje video pretočnih poti</string>
   <string name="morphe_spoof_video_streams_screen_summary">Konfigurirajte ponarejanje odjemalca, da preprečite težave s predvajanjem</string>
   <string name="morphe_spoof_video_streams_title">Ponarejanje video pretočnih poti</string>
@@ -166,4 +166,13 @@ To lahko pomaga pri prepoznavanju komponent pri ustvarjanju prilagojenih filtrov
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Seznam nizov za ustvarjanje poti komponente, ki jih želite filtrirati, ločenih z novimi vrsticami</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Neveljaven po meri filter: %s</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_title">Ponarejena različica aplikacije</string>
+  <string name="morphe_spoof_app_version_summary">Prevara strežnika, da misli, da uporabljate starejšo različico aplikacije za ponovno vzpostavitev funkcij starejšega uporabniškega vmesnika.</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"Različica aplikacije bo ponarejena v starejšo različico.
+
+To bo spremenilo videz in funkcije aplikacije, vendar lahko pride do neznanih stranskih učinkov.
+
+Če jo kasneje izklopite, se priporoča izbris podatkov aplikacije, da preprečite napake v uporabniškem vmesniku."</string>
+  <string name="morphe_spoof_app_version_target_title">Cilj ponarejene različice aplikacije</string>
 </resources>

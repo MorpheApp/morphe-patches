@@ -111,6 +111,22 @@ YouTube Music 8.x — geçiş yalnızca 9.x ve sonraki sürümlerde çalışır"
   <string name="morphe_music_hide_lyrics_panel_category_title">Şarkı Sözü Paneli</string>
   <string name="morphe_music_hide_lyrics_share_button_title">Paylaş düğmesini gizle</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Çevir düğmesini gizle</string>
+  <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
+  <string name="morphe_music_action_buttons_screen_title">Eylem düğmeleri</string>
+  <string name="morphe_music_action_buttons_screen_summary">Oynatıcının altında hangi işlem düğmelerinin görüneceğini seçin</string>
+  <string name="morphe_music_hide_action_bar_title">İşlem çubuğunu gizle</string>
+  <string name="morphe_music_hide_like_dislike_button_title">Beğenme ve Beğenmeme düğmesini gizle</string>
+  <string name="morphe_music_hide_comments_button_title">Yorumlar düğmesini gizle</string>
+  <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_lyrics_button_title">Şarkı sözleri düğmesini gizle</string>
+  <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_share_button_title">Paylaş düğmesini gizle</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_save_button_title">Kaydet düğmesini gizle</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_download_button_title">İndir düğmesini gizle</string>
+  <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_radio_button_title">Radyoyu başlat düğmesini gizle</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Açılır menü</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Oyuncuda ve kuyrukta görünen bileşenleri seçin</string>
@@ -253,4 +269,10 @@ YouTube Music 8.x — geçiş yalnızca 9.x ve sonraki sürümlerde çalışır"
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling, YouTube Music kullanımınızı Last.fm veya ListenBrainz profilinizle otomatik olarak senkronize eder
 
 Scrobbling'in arka planda çalma sırasında senkronize olduğundan emin olmak için, YouTube Music'in uygulama pil kullanımının \"Kısıtlanmamış\" olarak ayarlandığından emin olun"</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - Eski açılır paneli geri yükle</string>
+  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - Gerçek zamanlı şarkı sözlerini devre dışı bırak</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - Eski dinamik şarkı sözlerini geri yükle</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - Eski işlem çubuğunu geri yükle</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - Ana sayfadaki gönderi akışında yorumlar bölümü görünmüyor</string>
 </resources>

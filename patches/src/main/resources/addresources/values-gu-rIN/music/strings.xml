@@ -29,6 +29,12 @@ Second \"item\" text"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <!-- layout.buttons.hideButtonsPatch -->
   <!-- layout.hide.general.hideMusicComponentsPatch -->
+  <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
+  <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <!-- 'Save' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_entry_default">ડિફૉલ્ટ</string>
@@ -55,4 +61,5 @@ Second \"item\" text"</string>
   <string name="morphe_music_listenbrainz_token_status_invalid_unknown">અજ્ઞાત</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <!-- 'scrobbling' must be kept untranslated -->
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
 </resources>

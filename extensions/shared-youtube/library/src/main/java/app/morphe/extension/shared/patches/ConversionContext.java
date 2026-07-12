@@ -4,8 +4,8 @@
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
- 
-package app.morphe.extension.youtube.shared;
+
+package app.morphe.extension.shared.patches;
 
 public final class ConversionContext {
     public static final String ELEMENT_IDENTIFIER_COMPONENT = "ComponentType";

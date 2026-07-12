@@ -20,6 +20,7 @@ import java.util.List;
 
 import app.morphe.extension.shared.Utils;
 
+@SuppressWarnings({"deprecation", "RedundantSuppression"})
 public class LicensesDialog extends Dialog {
 
     // Licenses for all software bundled with Morphe MPP Patches.
@@ -47,8 +48,6 @@ public class LicensesDialog extends Dialog {
     public LicensesDialog(Context context) {
         super(context, android.R.style.Theme_DeviceDefault_NoActionBar);
     }
-
-    @SuppressWarnings({"deprecation", "RedundantSuppression"})
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

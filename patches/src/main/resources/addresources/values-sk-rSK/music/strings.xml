@@ -111,6 +111,22 @@ YouTube Music 8.x – crossfade funguje iba vo verzii 9.x a novších"</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Panel s textom piesne</string>
   <string name="morphe_music_hide_lyrics_share_button_title">Skryť tlačidlo Zdieľať</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Skryť tlačidlo Preložiť</string>
+  <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
+  <string name="morphe_music_action_buttons_screen_title">Tlačidlá akcie</string>
+  <string name="morphe_music_action_buttons_screen_summary">Vyberte, ktoré komponenty sa zobrazia v lište nástrojov</string>
+  <string name="morphe_music_hide_action_bar_title">Skryť akčný panel</string>
+  <string name="morphe_music_hide_like_dislike_button_title">Skryť tlačidlá Páči sa mi a Nepáči sa mi</string>
+  <string name="morphe_music_hide_comments_button_title">Skryť tlačidlo Komentáre</string>
+  <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_lyrics_button_title">Skryť tlačidlo Texty</string>
+  <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_share_button_title">Skryť tlačidlo Zdieľať</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_save_button_title">Skryť tlačidlo Uložiť</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_download_button_title">Skryť tlačidlo Stiahnuť</string>
+  <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_radio_button_title">Skryť tlačidlo Spustiť rádio</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Rozbaľovacie menu</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Vyberte, ktoré komponenty sa zobrazia v menu prehrávača a fronty</string>
@@ -253,4 +269,10 @@ YouTube Music 8.x – crossfade funguje iba vo verzii 9.x a novších"</string>
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling automaticky synchronizuje vaše používanie YouTube Music s vaším profilom Last.fm alebo ListenBrainz.
 
 Na zabezpečenie synchronizácie scrobblingu počas prehrievania na pozadí sa uistite, že používanie aplikácie YouTube Music v batérii je nastavené na \"Nekontrolované\""</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - Obnovenie staršieho vysúvacieho panelu</string>
+  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - Zakázanie textov piesní v reálnom čase</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - Obnovenie starších dynamických textov piesní</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - Obnovenie starej akčnej lišty</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - Sekcia komentárov sa nezobrazuje v hlavnom feede</string>
 </resources>

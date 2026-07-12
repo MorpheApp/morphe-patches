@@ -28,8 +28,10 @@ Second \"item\" text"</string>
 
     <!-- interaction.downloads.downloadsPatch -->
     <string name="morphe_external_downloader_screen_summary">Download music videos, podcasts, or songs with third-party downloading apps</string>
-    <string name="morphe_external_downloader_action_button_title">Override Download action button</string>
-    <string name="morphe_external_downloader_action_button_summary">Replaces YouTube Music\'s built-in download function with your external downloader</string>
+    <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+    <string name="morphe_external_downloader_action_button_title">Override Download button</string>
+    <string name="morphe_external_downloader_action_button_summary">Uses your chosen external downloader instead of YouTube Music\'s built-in download feature</string>
+    <string name="morphe_external_downloader_flyout_menu_title">Override Download menu</string>
 
     <!-- misc.settings.settingsPatch -->
 
@@ -120,6 +122,10 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
     <string name="morphe_music_remember_shuffle_state_title">Remember shuffle state</string>
 
+    <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+    <string name="morphe_music_disable_dislike_redirection_title">Disable dislike redirection</string>
+    <string name="morphe_music_disable_dislike_redirection_summary">Prevents skipping to the next track when the dislike button is pressed</string>
+
     <!-- layout.buttons.hideButtonsPatch -->
     <string name="morphe_music_hide_cast_button_title">Hide Cast button</string>
     <string name="morphe_music_hide_history_button_title">Hide History button</string>
@@ -130,6 +136,23 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <string name="morphe_music_hide_lyrics_panel_category_title">Lyrics panel</string>
     <string name="morphe_music_hide_lyrics_share_button_title">Hide Share button</string>
     <string name="morphe_music_hide_lyrics_translate_button_title">Hide Translate button</string>
+
+    <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
+    <string name="morphe_music_action_buttons_screen_title">Action buttons</string>
+    <string name="morphe_music_action_buttons_screen_summary">Choose which action buttons appear under the player</string>
+    <string name="morphe_music_hide_action_bar_title">Hide action bar</string>
+    <string name="morphe_music_hide_like_dislike_button_title">Hide Like and Dislike button</string>
+    <string name="morphe_music_hide_comments_button_title">Hide Comments button</string>
+    <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
+    <string name="morphe_music_hide_lyrics_button_title">Hide Lyrics button</string>
+    <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
+    <string name="morphe_music_hide_share_button_title">Hide Share button</string>
+    <!-- 'Save' should be translated using the same localized wording YouTube Music displays for the button. -->
+    <string name="morphe_music_hide_save_button_title">Hide Save button</string>
+    <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
+    <string name="morphe_music_hide_download_button_title">Hide Download button</string>
+    <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
+    <string name="morphe_music_hide_radio_button_title">Hide Start radio button</string>
 
     <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
     <string name="morphe_music_hide_flyout_menu_components_screen_title">Flyout menu</string>
@@ -288,4 +311,11 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <string name="morphe_music_scrobbling_about_summary">"Scrobbling automatically syncs your YouTube Music usage with your Last.fm or ListenBrainz profile
 
 To ensure scrobbling is synced during background playback, ensure that YouTube Music's app battery usage is set to \"Unrestricted\""</string>
+
+    <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+    <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - Restore old flyout panel</string>
+    <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - Disable real-time lyrics</string>
+    <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - Restore old dynamic lyrics</string>
+    <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - Restore old action bar</string>
+    <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - Comments section does not appear in home feed</string>
 </resources>

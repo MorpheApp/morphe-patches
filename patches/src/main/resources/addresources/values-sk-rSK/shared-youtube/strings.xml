@@ -53,7 +53,7 @@ Skontrolujte, či je názov balíka správny a či je aplikácia nainštalovaná
   <string name="morphe_check_watch_history_domain_name_dialog_title">Upozornenie Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Vaša história sledovania sa neukladá.&lt;br&gt;&lt;br&gt;Toto je s najväčšou pravdepodobnosťou spôsobené DNS blokovačom reklám alebo sieťovým proxy.&lt;br&gt;&lt;br&gt;Ak to chcete vyriešiť, pridajte &lt;b&gt;s.youtube.com&lt;/b&gt; do whitelistu alebo vypnite všetky DNS blokovače a proxy servery.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Už nezobrazovať</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Falšovanie toku videa</string>
   <string name="morphe_spoof_video_streams_screen_summary">Konfigurácia falšovania klienta na zabránenie problémom s prehrávaním</string>
   <string name="morphe_spoof_video_streams_title">Falšovať tok videa</string>
@@ -168,4 +168,13 @@ Zapnutie tohto nastavenia však zaznamená aj niektoré údaje o používateľov
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Zoznam reťazcov zostavovača cesty komponentu na filtrovanie, oddelených novými riadkami</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Neplatný vlastný filter: %s</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_title">Falošovať verziu aplikácie</string>
+  <string name="morphe_spoof_app_version_summary">Oklame server, aby si myslel, žoužívaš staršiu verziu aplikácie na obnovenie staršieho vzhľadu.</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"Verzia aplikácie bude falošovaná na staršiu verziu.
+
+Táto zmeni vzhľad a funkcie aplikácie, ale môžš sa vyskytnţť neznáme vedľšie õšinky.
+
+Ak ju neskôr vypnete, odporúda sa vymazať dáta aplikácie, aby ste predišli chybám v používateľskom rozhraní."</string>
+  <string name="morphe_spoof_app_version_target_title">Cieľová falošná verzia aplikácie</string>
 </resources>

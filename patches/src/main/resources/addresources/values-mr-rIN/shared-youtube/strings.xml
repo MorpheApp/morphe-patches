@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_check_watch_history_domain_name_dialog_title">मॉर्फे सूचना</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">तुमचा पाहण्याचा इतिहास जतन होत नाही.&lt;br&gt;&lt;br&gt;हे बहुधा डीएनए ब्लॉक किंवा नेटवर्क प्रॉक्सीमुळे झाले आहे.&lt;br&gt;&lt;br&gt;हे ठीक करण्यासाठी, &lt;b&gt;s.youtube.com&lt;/b&gt;ला व्हाईटलिस्ट करा किंवा सर्व डीएनए ब्लॉकर्स आणि प्रॉक्सी बंद करा.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">पुन्हा दाखवू नका</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">व्हिडिओ स्ट्रीम्सचा देखावा करा</string>
   <string name="morphe_spoof_video_streams_screen_summary">प्लेबॅक समस्या टाळण्यासाठी क्लायंट स्पूफिंग कॉन्फिगर करा</string>
   <string name="morphe_spoof_video_streams_title">व्हिडिओ स्ट्रीम्सचा देखावा करा</string>
@@ -167,4 +167,13 @@ Second \"item\" text"</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">नवीन ओळींनी विभक्त केलेल्या फिल्टर करण्यासाठी घटक मार्ग बिल्डर स्ट्रिंगची सूची</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">अवैध सानुकूल फिल्टर: %s</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_title">ॲपची आवृत्ती बदलणे</string>
+  <string name="morphe_spoof_app_version_summary">सर्व्हरला जुन्या ॲप आवृत्ती वापरत आहात असे दर्शवून जुन्या UI वैशिष्ट्यांची पुनर्संचयित करणे</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"ॲपची आवृत्ती जुनी केली जाईल.
+
+यामुळे ॲपचे स्वरूप आणि वैशिष्ट्ये बदलतील, परंतु अनपेक्षित परिणाम होऊ शकतात.
+
+नंतर हे बंद केल्यास, UI बग टाळण्यासाठी ॲप डेटा साफ करण्याची शिफारस केली जाते."</string>
+  <string name="morphe_spoof_app_version_target_title">ॲप आवृत्ती बदलण्याचे लक्ष्य</string>
 </resources>

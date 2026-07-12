@@ -24,6 +24,8 @@ import java.util.List;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
+import app.morphe.extension.shared.patches.components.ByteArrayFilterGroup;
+import app.morphe.extension.shared.patches.components.ByteArrayFilterGroupList;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.Filter;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
@@ -42,25 +44,20 @@ public class CommentsFilter extends Filter {
     private static final List<String> commentsCarouselFilterStrings = getFilterStrings(Settings.HIDE_COMMENTS_CAROUSEL_FILTER_STRINGS);
 
     private final StringFilterGroup comments;
+    private final StringFilterGroup commentComposerButtons;
+    private final ByteArrayFilterGroupList commentComposerButtonsGroupList = new ByteArrayFilterGroupList();
+    private final StringFilterGroup commentsFilterBar;
     private final StringFilterGroup emojiAndTimestampButtons;
     private final StringFilterGroup previewCommentDotsSelector;
-    private final StringFilterGroup commentsFilterBar;
-    
     public CommentsFilter() {
-        var chatSummary = new StringFilterGroup(
-                Settings.HIDE_COMMENTS_AI_CHAT_SUMMARY,
-                "live_chat_summary_banner.e"
-        );
-
         var channelGuidelines = new StringFilterGroup(
                 Settings.HIDE_COMMENTS_CHANNEL_GUIDELINES,
                 "channel_guidelines_entry_banner"
         );
 
-        var commentsByMembers = new StringFilterGroup(
-                Settings.HIDE_COMMENTS_BY_MEMBERS_HEADER,
-                "sponsorships_comments_header.e",
-                "sponsorships_comments_footer.e"
+        var chatSummary = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_AI_CHAT_SUMMARY,
+                "live_chat_summary_banner.e"
         );
 
         comments = new StringFilterGroup(
@@ -69,14 +66,32 @@ public class CommentsFilter extends Filter {
                 "_comments"
         );
 
+        var commentsByMembers = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_BY_MEMBERS_HEADER,
+                "sponsorships_comments_header.e",
+                "sponsorships_comments_footer.e"
+        );
+
+        commentComposerButtons = new StringFilterGroup(
+                null,
+                "|ContainerType|ContainerType|ContainerType|ContainerType|",
+                "composer_main_action_button.e"
+        );
+
+        commentComposerButtonsGroupList.addAll(
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_COMMENTS_CREATE_A_SHORT_BUTTON,
+                        "composer_short_creation_button.e"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_COMMENTS_THANKS_BUTTON,
+                        "super_thanks_button.e"
+                )
+        );
+
         commentsFilterBar = new StringFilterGroup(
                 Settings.HIDE_FILTER_BAR_IN_COMMENTS,
                 CHIP_BAR_PATH_PREFIX
-        );
-
-        var communityGuidelines = new StringFilterGroup(
-                Settings.HIDE_COMMENTS_COMMUNITY_GUIDELINES,
-                "community_guidelines"
         );
 
         var commentsPrompts = new StringFilterGroup(
@@ -86,14 +101,20 @@ public class CommentsFilter extends Filter {
                 "timed_comments_end.e"
         );
 
-        var createAShort = new StringFilterGroup(
-                Settings.HIDE_COMMENTS_CREATE_A_SHORT_BUTTON,
-                "composer_short_creation_button.e"
+        var communityGuidelines = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_COMMUNITY_GUIDELINES,
+                "community_guidelines"
         );
 
         emojiAndTimestampButtons = new StringFilterGroup(
                 Settings.HIDE_COMMENTS_EMOJI_AND_TIMESTAMP_BUTTONS,
                 "|CellType|ContainerType|ContainerType|ContainerType|ContainerType|ContainerType|"
+        );
+
+        var giftAnimationAndCards = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_GIFT_ANIMATION_AND_CARDS,
+                "gift_overlay.e",
+                "gift_attribution_card_classic_live.e"
         );
 
         var previewComment = new StringFilterGroup(
@@ -118,15 +139,15 @@ public class CommentsFilter extends Filter {
                 chatSummary,
                 comments,
                 commentsByMembers,
+                commentComposerButtons,
                 commentsFilterBar,
                 commentsPrompts,
                 communityGuidelines,
-                createAShort,
                 emojiAndTimestampButtons,
+                giftAnimationAndCards,
                 previewComment,
                 previewCommentDotsSelector,
                 thanksButton
-
         );
     }
 
@@ -140,21 +161,27 @@ public class CommentsFilter extends Filter {
                               StringFilterGroup matchedGroup,
                               FilterContentType contentType,
                               int contentIndex) {
-        if (matchedGroup == previewCommentDotsSelector) {
-            return path.contains("carousel_header")
-                        &&
-                    path.endsWith("|ContainerType|ContainerType|ContainerType|");
-        }
-
         if (matchedGroup == comments) {
             if (path.startsWith(VIDEO_LOCKUP_WITH_ATTACHMENT_PATH)) {
                 return Settings.HIDE_COMMENTS_SECTION_IN_HOME_FEED.get();
             }
             return Settings.HIDE_COMMENTS_SECTION.get();
-        } else if (matchedGroup == emojiAndTimestampButtons) {
-            return path.startsWith(COMMENT_COMPOSER_PATH);
-        } else if (matchedGroup == commentsFilterBar) {
+        }
+
+        if (matchedGroup == commentComposerButtons) {
+            return commentComposerButtonsGroupList.check(buffer).isFiltered();
+        }
+
+        if (matchedGroup == commentsFilterBar) {
             return Settings.HIDE_FILTER_BAR_IN_COMMENTS.get() && PlayerType.getCurrent().isMaximizedOrFullscreen();
+        }
+
+        if (matchedGroup == emojiAndTimestampButtons) {
+            return path.startsWith(COMMENT_COMPOSER_PATH);
+        }
+
+        if (matchedGroup == previewCommentDotsSelector) {
+            return path.contains("carousel_header") && path.endsWith("|ContainerType|ContainerType|ContainerType|");
         }
 
         return true;
@@ -323,6 +350,31 @@ public class CommentsFilter extends Filter {
                 lp.height = 0;
                 view.setLayoutParams(lp);
             }
+
+            view.setVisibility(View.GONE);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideLiveChatGiftButton(View view) {
+        if (Settings.HIDE_COMMENTS_GIFT_BUTTON.get() && view != null) {
+            ViewGroup.LayoutParams lp = view.getLayoutParams();
+            if (lp != null) {
+                lp.width = 0;
+                lp.height = 0;
+
+                if (lp instanceof ViewGroup.MarginLayoutParams marginLp) {
+                    marginLp.setMargins(0, 0, 0, 0);
+                    marginLp.setMarginStart(0);
+                    marginLp.setMarginEnd(0);
+                }
+
+                view.setLayoutParams(lp);
+            }
+
+            view.setPadding(0, 0, 0, 0);
             view.setVisibility(View.GONE);
         }
     }

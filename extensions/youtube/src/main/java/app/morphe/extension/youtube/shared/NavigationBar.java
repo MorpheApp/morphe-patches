@@ -10,7 +10,7 @@
 
 package app.morphe.extension.youtube.shared;
 
-import static app.morphe.extension.youtube.patches.spoof.SpoofAppVersionPatch.isSpoofingToLessThan;
+import static app.morphe.extension.shared.spoof.SpoofAppVersionPatch.isSpoofingToLessThan;
 import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton.CREATE;
 
 import android.app.Activity;

@@ -108,15 +108,32 @@ YouTube Music 8.x — クロスフェードは9.x以降でのみ実行されま�
   <string name="morphe_music_hide_notification_button_title">通知ボタンを非表示</string>
   <string name="morphe_music_hide_search_button_title">検索ボタンを非表示</string>
   <!-- layout.hide.general.hideMusicComponentsPatch -->
-  <string name="morphe_music_hide_lyrics_panel_category_title">歌詞パネル</string>
+  <string name="morphe_music_hide_lyrics_panel_category_title">歌詞欄</string>
   <string name="morphe_music_hide_lyrics_share_button_title">共有ボタンを非表示</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">翻訳ボタンを非表示</string>
+  <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
+  <string name="morphe_music_action_buttons_screen_title">アクション ボタン</string>
+  <string name="morphe_music_action_buttons_screen_summary">プレーヤー画面の下に表示するアクションボタンを設定します</string>
+  <string name="morphe_music_hide_action_bar_title">アクションバーを非表示</string>
+  <string name="morphe_music_hide_like_dislike_button_title">高評価ボタンと低評価ボタンを非表示</string>
+  <string name="morphe_music_hide_comments_button_title">コメントボタンを非表示</string>
+  <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_lyrics_button_title">歌詞ボタンを非表示</string>
+  <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_share_button_title">共有ボタンを非表示</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_save_button_title">保存ボタンを非表示</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_download_button_title">「オフラインに一時保存」ボタンを非表示</string>
+  <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_radio_button_title">「ラジオで聴く」ボタンを非表示</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">フライアウト メニュー</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">プレーヤーやキューから呼び出されるメニューに表示するコンポーネントを設定します</string>
-  <string name="morphe_music_hide_flyout_menu_3_column_component_title">横一列に並ぶ 3 ボタンを非表示</string>
+  <string name="morphe_music_hide_flyout_menu_3_column_component_title">横一列に並ぶ 3 つのボタンを非表示</string>
   <string name="morphe_music_hide_flyout_menu_like_dislike_title">高評価ボタンと低評価ボタンを非表示</string>
   <string name="morphe_music_hide_flyout_menu_taste_match_title">「テイストマッチ」を非表示</string>
+  <string name="morphe_music_hide_flyout_menu_add_to_listen_later_title">「後で視聴するエピソード でキューに追加」を非表示</string>
   <string name="morphe_music_hide_flyout_menu_add_to_queue_title">「キューに追加」を非表示</string>
   <string name="morphe_music_hide_flyout_menu_captions_title">「字幕」を非表示</string>
   <string name="morphe_music_hide_flyout_menu_delete_playlist_title">「再生リストを削除」を非表示</string>
@@ -252,4 +269,10 @@ YouTube Music 8.x — クロスフェードは9.x以降でのみ実行されま�
   <string name="morphe_music_scrobbling_about_summary">"Scrobble は、YouTube Music で再生した楽曲を Last.fm または ListenBrainz のプロフィールに記録する機能です
 
 バックグラウンドで再生した楽曲を Scrobble するには、デバイスの設定で YouTube Music を「バックグラウンド実行時に電池を使用可能」にしてください"</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - 古いフライアウト パネルを復元</string>
+  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - リアルタイム歌詞を無効にする</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - 古いダイナミック歌詞を復元</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - 古いアクションバーを復元</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - ホームフィードにコメントセクションが表示されない</string>
 </resources>

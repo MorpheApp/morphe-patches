@@ -53,7 +53,7 @@ Ellenőrizze, hogy a csomagnév helyes-e, és az alkalmazás telepítve van-e."<
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Értesítés</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">A megtekintési előzmények mentése nem történik meg.&lt;br&gt;&lt;br&gt;Ezt valószínűleg egy DNS-hirdetésblokkoló vagy hálózati proxy okozza.&lt;br&gt;&lt;br&gt;A probléma megoldásához vegye fel az engedélyezőlistára az &lt;b&gt;s.youtube.com&lt;/b&gt; domaint vagy kapcsolja ki az összes DNS-blokkolót és proxyt.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ne jelenjen meg többet</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Videó streamek hamisítása</string>
   <string name="morphe_spoof_video_streams_screen_summary">A kliens videó streamek hamisítása a lejátszási problémák elkerülése érdekében</string>
   <string name="morphe_spoof_video_streams_title">Hamis videó stream</string>
@@ -168,4 +168,13 @@ A lejátszás meghiúsul, ha a lejátszó JavaScript hash elavult."</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Szűrendő elemek útvonal-karakterláncainak listája, új sorokkal elválasztva</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Érvénytelen egyedi szűrő: %s</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_title">Alkalmazásverzió hamisítása</string>
+  <string name="morphe_spoof_app_version_summary">A szervert tévedésbe vezeti, hogy egy régebbi alkalmazásverziót használ, ezzel helyreállítva a korábbi felhasználói felület funkcióit.</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"Az alkalmazás verziója egy régebbi verzióvá lesz hamisítva.
+
+Ez megváltoztatja az alkalmazás megjelenését és funkcióit, de előfordulhatnak nem várt mellékhatások.
+
+Ha később kikapcsolja, akkor ajánlott az alkalmazás adatait törölni, hogy megakadályozza a felhasználói felület hibáit."</string>
+  <string name="morphe_spoof_app_version_target_title">Hamisított alkalmazásverzió célja</string>
 </resources>

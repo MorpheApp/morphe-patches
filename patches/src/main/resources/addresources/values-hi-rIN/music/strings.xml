@@ -111,6 +111,22 @@ YouTube Music 8.x - क्रॉसफ़ेड केवल 9.x और उस�
   <string name="morphe_music_hide_lyrics_panel_category_title">गीत के बोल पैनल</string>
   <string name="morphe_music_hide_lyrics_share_button_title">शेयर बटन छुपाएं</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">अनुवाद बटन छुपाएं</string>
+  <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
+  <string name="morphe_music_action_buttons_screen_title">क्रिया बटन</string>
+  <string name="morphe_music_action_buttons_screen_summary">प्लेयर के नीचे दिखने वाले एक्शन बटन चुनें</string>
+  <string name="morphe_music_hide_action_bar_title">एक्शन बार छिपाएँ</string>
+  <string name="morphe_music_hide_like_dislike_button_title">लाइक और डिसलाइक बटन छिपाएँ</string>
+  <string name="morphe_music_hide_comments_button_title">कमेंट बटन छिपाएँ</string>
+  <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_lyrics_button_title">गीत के बोल बटन छिपाएँ</string>
+  <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_share_button_title">शेयर बटन छुपाएं</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_save_button_title">सेव बटन छुपाएं</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_download_button_title">डाउनलोड बटन छुपाएं</string>
+  <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_radio_button_title">रेडियो शुरू करें बटन छुपाएं</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">फ़्लोटआउट मेनू</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">चुनें कि प्लेयर और क्यू फ़्लोटआउट मेनू में कौन से घटक दिखाई दें</string>
@@ -253,4 +269,10 @@ YouTube Music 8.x - क्रॉसफ़ेड केवल 9.x और उस�
   <string name="morphe_music_scrobbling_about_summary">"स्क्रोबलिंग स्वचालित रूप से आपके YouTube Music उपयोग को आपके Last.fm या ListenBrainz प्रोफ़ाइल के साथ सिंक करता है
 
 यह सुनिश्चित करने के लिए कि बैकग्राउंड प्लेबैक के दौरान स्क्रोबलिंग सिंक हो, सुनिश्चित करें कि YouTube Music के ऐप बैटरी उपयोग को \"अनियंत्रित\" पर सेट किया गया है।"</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - पुराने फ्लाईआउट पैनल को पुनर्स्थापित करें</string>
+  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - रियल-टाइम बोल को अक्षम करें</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - पुराने डायनामिक बोल को पुनर्स्थापित करें</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - पुराने एक्शन बार को पुनर्स्थापित करें</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - होम फीड में कमेंट सेक्शन दिखाई नहीं दे रहा है</string>
 </resources>

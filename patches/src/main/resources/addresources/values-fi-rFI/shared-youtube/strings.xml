@@ -53,7 +53,7 @@ Tarkista, että paketin nimi on oikein ja sovellus on asennettu"</string>
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe-huomautus</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Katseluhistoriaasi ei tallenneta.&lt;br&gt;&lt;br&gt;Tämä johtuu todennäköisesti DNS-mainostenestosta tai verkkovälityspalvelimesta.&lt;br&gt;&lt;br&gt;Korjaa ongelma lisäämällä &lt;b&gt;s.youtube.com&lt;/b&gt; sallittujen listalle tai kytke kaikki DNS-estot ja välityspalvelimet pois päältä.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Älä näytä uudelleen</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Naamioi videovirrat</string>
   <string name="morphe_spoof_video_streams_screen_summary">Asiakasohjelman videovirtojen naamiointi toisto-ongelmien estämiseksi</string>
   <string name="morphe_spoof_video_streams_title">Naamioi videovirrat</string>
@@ -168,4 +168,13 @@ Tämän käyttöönotto kirjaa myös joitakin käyttäjätietoja, kuten IP-osoit
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Luettelo komponentin polun rakentajan merkkijonoista suodatettavaksi, erotettuna uudella rivillä</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Virheellinen mukautettu suodatin: %s</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_title">Sovellusversio naamioidaan</string>
+  <string name="morphe_spoof_app_version_summary">Huijaa palvelinta luulemaan, että käytät vanhempaa sovellusversiota palauttaaksesi vanhat käyttöliittymäelementit.</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"Sovellusversio naamioidaan vanhemmaksi versioksi.
+
+Tämä muuttaa sovelluksen ulkoasua ja ominaisuuksia, mutta tuntemattomia sivuvaikutuksia saattaa esiintyä.
+
+Jos tämä poistetaan myöhemmin käytöstä, on suositeltavaa tyhjentää sovelluksen tiedot käyttöliittymävirheiden välttämiseksi."</string>
+  <string name="morphe_spoof_app_version_target_title">Naamioitava kohdeversio</string>
 </resources>

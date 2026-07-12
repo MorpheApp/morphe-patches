@@ -53,7 +53,7 @@ Second \"item\" text"</string>
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Hinweis</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Ihr Verlauf wird nicht gespeichert.&lt;br&gt;&lt;br&gt;Dies wird höchstwahrscheinlich durch einen DNS-Werbeblocker oder einen Netzwerkproxy verursacht.&lt;br&gt;&lt;br&gt;Um dies zu beheben, setzen Sie &lt;b&gt;s.youtube.com&lt;/b&gt; auf die Whitelist oder schalten Sie alle DNS-Blocker und Proxies aus.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Nicht wieder anzeigen</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Video-Streams spoofen</string>
   <string name="morphe_spoof_video_streams_screen_summary">Client-Streams spoofen, um Wiedergabeprobleme zu vermeiden</string>
   <string name="morphe_spoof_video_streams_title">Video-Streams spoofen</string>
@@ -168,4 +168,13 @@ Allerdings werden dabei auch einige Nutzerdaten protokolliert, zum Beispiel dein
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Liste der Komponenten-Pfad-Generator-Zeichenketten zum Filtern, getrennt durch neue Zeilen</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Ungültiger benutzerdefinierter Filter: %s</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_title">Spoof-App-Version</string>
+  <string name="morphe_spoof_app_version_summary">Täuscht den Server, sodass er denkt, Sie verwenden eine ältere App-Version, um alte UI-Funktionen wiederherzustellen.</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"Die App-Version wird zu einer älteren Version gefälscht.
+
+Dadurch ändert sich das Erscheinungsbild und die Funktionen der App, es können jedoch unbekannte Nebeneffekte auftreten.
+
+Wenn Sie die Funktion später deaktivieren, wird empfohlen, die App-Daten zu löschen, um UI-Fehler zu vermeiden."</string>
+  <string name="morphe_spoof_app_version_target_title">Spoof-App-Versionsziel</string>
 </resources>

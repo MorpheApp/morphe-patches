@@ -111,6 +111,22 @@ YouTube Music 8.x - crossfade werkt alleen op 9.x en nieuwer"</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Songtekst paneel</string>
   <string name="morphe_music_hide_lyrics_share_button_title">Verberg de \"Delen\" knop</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Verberg de \"Vertalen\" knop</string>
+  <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
+  <string name="morphe_music_action_buttons_screen_title">Actieknoppen</string>
+  <string name="morphe_music_action_buttons_screen_summary">Kies welke actieknoppen er onder de speler verschijnen</string>
+  <string name="morphe_music_hide_action_bar_title">Actiebalk verbergen</string>
+  <string name="morphe_music_hide_like_dislike_button_title">Vind ik leuk en vind ik niet leuk knop verbergen</string>
+  <string name="morphe_music_hide_comments_button_title">Reacties knop verbergen</string>
+  <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_lyrics_button_title">Tekst knop verbergen</string>
+  <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_share_button_title">Verberg de knop \"Delen\"</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_save_button_title">Verberg de knop \"Opslaan\"</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_download_button_title">Verberg de knop \"Downloaden\"</string>
+  <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_radio_button_title">Verberg de knop \"Start radio\"</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Uitklapmenu</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Kies welke componenten er in de speler en wachtrijmenu\'s verschijnen</string>
@@ -253,4 +269,10 @@ YouTube Music 8.x - crossfade werkt alleen op 9.x en nieuwer"</string>
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling synchroniseert automatisch jouw YouTube Music gebruik met je Last.fm of ListenBrainz profiel
 
 Om ervoor te zorgen dat scrobbling tijdens het afspelen op de achtergrond wordt gesynchroniseerd, zorg er dan voor dat de batterijgebruik van YouTube Music is ingesteld op \"Onbeperkt\""</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - Herstel oud flyout-paneel</string>
+  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - Schakel realtime songteksten uit</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - Herstel oude dynamische songteksten</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - Herstel oude actiebalk</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - Commentaren sectie verschijnt niet in de startpagina</string>
 </resources>

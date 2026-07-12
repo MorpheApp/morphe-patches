@@ -53,7 +53,7 @@ Verifiser at pakkenavnet er korrekt og appen er installert"</string>
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe-varsel</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Din seerhistorikk lagres ikke.&lt;br&gt;&lt;br&gt;Dette skyldes mest sannsynlig en DNS-annonsesblokkering eller et nettverksproxy.&lt;br&gt;&lt;br&gt;For å fikse dette, legg til &lt;b&gt;s.youtube.com&lt;/b&gt; på hvitelisten eller slå av alle DNS-blokkeringer og proxyer.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ikke vis igjen</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Forfalske videostrømmer</string>
   <string name="morphe_spoof_video_streams_screen_summary">Konfigurer klient-spoofing for å unngå avspillingsproblemer</string>
   <string name="morphe_spoof_video_streams_title">Forfalske videostrømmer</string>
@@ -168,4 +168,13 @@ Men, hvis du aktiverer dette, vil også noe brukerdata, som for eksempel IP-adre
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Liste over komponentbanebyggere som skal filtreres, separert med nye linjer</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Ugyldig egendefinert filter: %s</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_title">Forfalske app-versjon</string>
+  <string name="morphe_spoof_app_version_summary">Lurer serveren til å tro at du bruker en eldre app-versjon for å gjenopprette gamle brukergrensesnittfunksjoner</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"App-versjonen vil bli forfalsket til en eldre versjon.
+
+Dette vil endre utseendet og funksjonene til appen, men ukjente bivirkninger kan oppstå.
+
+Hvis du slår det av senere, anbefales det å slette appdataene for å forhindre brukergrensesnittfeil."</string>
+  <string name="morphe_spoof_app_version_target_title">Mål for å forfalske app-versjon</string>
 </resources>

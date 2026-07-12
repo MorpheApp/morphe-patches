@@ -53,7 +53,7 @@ Vérifiez que le nom de paquet est correct et que l'application est bien install
   <string name="morphe_check_watch_history_domain_name_dialog_title">Avis Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Les vidéos que vous regardez ne sont pas enregistrées dans votre historique.&lt;br&gt;&lt;br&gt;La cause la plus probable est l\'utilisation d\'un serveur DNS bloqueur de publicités ou d\'un proxy.&lt;br&gt;&lt;br&gt;Pour résoudre ce problème, autorisez l\'accès à &lt;b&gt;s.youtube.com&lt;/b&gt; ou désactivez tous vos bloqueurs DNS et proxys.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ne plus afficher</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Falsifier les flux vidéo</string>
   <string name="morphe_spoof_video_streams_screen_summary">Configurer la falsification du client afin d’éviter les problèmes de lecture</string>
   <string name="morphe_spoof_video_streams_title">Falsifier les flux vidéo</string>
@@ -168,4 +168,13 @@ Cependant, activer cette option entraînera également l'enregistrement de certa
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Liste des chaînes du générateur de chemins de composants à filtrer, séparées par des sauts de ligne</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Filtre personnalisé invalide : %s</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_title">Falsifier la version de l\'application</string>
+  <string name="morphe_spoof_app_version_summary">Fait croire au serveur que vous utilisez une ancienne version de l\'application afin de restaurer des fonctionnalités d\'interface héritées</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"La version de l'application sera falsifiée pour apparaître comme une version plus ancienne.
+
+Cela modifiera l'apparence et les fonctionnalités de l'application, mais des effets secondaires imprévus peuvent survenir.
+
+Si vous désactivez cette option par la suite, il est recommandé d'effacer les données de l'application afin d'éviter des bugs d'interface."</string>
+  <string name="morphe_spoof_app_version_target_title">Falsifier la version cible de l\'application</string>
 </resources>

@@ -53,7 +53,7 @@ Proverite da li je naziv paketa ispravan i da li je aplikacija instalirana"</str
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe obaveštenje</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Vaša istorija gledanja se ne čuva.&lt;br&gt;&lt;br&gt;Ovo je najverovatnije uzrokovano DNS blokatorom oglasa ili mrežnim proksijem.&lt;br&gt;&lt;br&gt;Da biste ovo popravili, stavite na belu listu &lt;b&gt;s.youtube.com&lt;/b&gt; ili isključite sve DNS blokatore i proksije.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ne prikazuj ponovo</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Lažirani video strimovi</string>
   <string name="morphe_spoof_video_streams_screen_summary">Konfigurišite lažiranje klijenta kako biste sprečili probleme sa reprodukcijom</string>
   <string name="morphe_spoof_video_streams_title">Lažirani video strimovi</string>
@@ -168,4 +168,13 @@ Međutim, omogućavanje ovoga će takođe evidentirati neke korisničke podatke,
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Lista stringova za izgradnju putanje komponente za filtriranje, odvojenih novim redom</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Nevažeći prilagođeni filter: %s</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_title">Lažirana verzija aplikacije</string>
+  <string name="morphe_spoof_app_version_summary">Prevarite server da misli da koristite stariju verziju aplikacije kako biste vratili funkcije starijeg korisničkog interfejsa</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"Verzija aplikacije će biti lažirana na stariju verziju.
+
+Ovo će promeniti izgled i funkcije aplikacije, ali se mogu pojaviti i nepoznati neželjeni efekti.
+
+Ako se kasnije isključi, preporučuje se da izbrišete podatke aplikacije da biste sprečili greške u korisničkom interfejsu."</string>
+  <string name="morphe_spoof_app_version_target_title">Ciljna verzija aplikacije za lažiranje</string>
 </resources>

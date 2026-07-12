@@ -35,6 +35,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_play_permanent_repeat_title">فعال سازی تکرار دائمی</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <!-- layout.hide.general.hideMusicComponentsPatch -->
+  <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
+  <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <!-- 'Save' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <!-- layout.startpage.changeStartPagePatch -->
   <!-- layout.compactheader.hideFilterBarPatch -->
@@ -59,4 +65,5 @@ Second \"item\" text"</string>
   <string name="morphe_music_listenbrainz_token_status_invalid_unknown">ناشناخته</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <!-- 'scrobbling' must be kept untranslated -->
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
 </resources>

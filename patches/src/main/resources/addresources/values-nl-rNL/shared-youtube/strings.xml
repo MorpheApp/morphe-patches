@@ -53,7 +53,7 @@ Controleer of de pakketnaam correct is en of de app is geïnstalleerd"</string>
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Melding</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Uw kijkgeschiedenis wordt niet opgeslagen.&lt;br&gt;&lt;br&gt;Dit wordt hoogstwaarschijnlijk veroorzaakt door een DNS-adblocker of netwerkproxy.&lt;br&gt;&lt;br&gt;Om dit te verhelpen, voegt u &lt;b&gt;s.youtube.com&lt;/b&gt; toe aan de witte lijst of schakelt u alle DNS-blokkers en proxies uit.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Niet meer weergeven</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Videostreams spoofen</string>
   <string name="morphe_spoof_video_streams_screen_summary">Spoof de client-videostreams om afspeelproblemen te voorkomen</string>
   <string name="morphe_spoof_video_streams_title">Videostreams vervalsen</string>
@@ -162,4 +162,13 @@ Als u dit inschakelt, worden echter ook bepaalde gebruikersgegevens, zoals uw IP
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Lijst met component pad builder strings om te filteren, gescheiden door nieuwe regels</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Ongeldige aangepaste filter: %s</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_title">Vervalst de app-versie</string>
+  <string name="morphe_spoof_app_version_summary">Misleidt de server om te denken dat je een oudere app-versie gebruikt om oude UI-functies te herstellen</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"De app-versie wordt gespoofed naar een oudere versie.
+
+Dit zal het uiterlijk en de functies van de app veranderen, maar er kunnen onbekende neveneffecten optreden.
+
+Als het later wordt uitgeschakeld, wordt aanbevolen om de app-gegevens te wissen om UI-fouten te voorkomen."</string>
+  <string name="morphe_spoof_app_version_target_title">Doel voor vervalsen app-versie</string>
 </resources>

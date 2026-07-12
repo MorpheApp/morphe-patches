@@ -47,11 +47,14 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/AddToQueuePatch;"
 
+private const val EXTENSION_UTILS_CLASS =
+    "Lapp/morphe/extension/youtube/patches/utils/FlyoutUtils;"
+
 private const val EXTENSION_FLYOUT_MENU_VIDEO_ID_INTERFACE =
-    $$"Lapp/morphe/extension/youtube/patches/AddToQueuePatch$FlyoutMenuVideoIdInterface;"
+    $$"Lapp/morphe/extension/youtube/patches/utils/FlyoutUtils$FlyoutMenuVideoIdInterface;"
 
 private const val EXTENSION_PROTOCOL_BUFFER_INTERFACE =
-    $$"Lapp/morphe/extension/youtube/patches/AddToQueuePatch$ProtocolBufferFieldInterface;"
+    $$"Lapp/morphe/extension/youtube/patches/utils/FlyoutUtils$ProtocolBufferFieldInterface;"
 
 
 @Suppress("unused")
@@ -166,7 +169,7 @@ val addToQueuePatch = bytecodePatch(
         // region Hook flyout menu protocol buffer object.
         FeedFlyoutBufferObjectFingerprint.method.addInstruction(
             0,
-            "invoke-static/range { p2 .. p2 }, $EXTENSION_CLASS->extractVideoId(Ljava/util/Map;)V"
+            "invoke-static/range { p2 .. p2 }, $EXTENSION_UTILS_CLASS->extractVideoId(Ljava/util/Map;)V"
         )
 
         FullHistoryFlyoutBufferObjectFingerprint.let {
@@ -178,7 +181,7 @@ val addToQueuePatch = bytecodePatch(
 
                 addInstruction(
                     instructionIndex + 1,
-                    "invoke-static { v$instructionRegister }, $EXTENSION_CLASS->extractVideoId(Ljava/lang/Object;)V"
+                    "invoke-static { v$instructionRegister }, $EXTENSION_UTILS_CLASS->extractVideoId(Ljava/lang/Object;)V"
                 )
             }
         }
@@ -293,7 +296,7 @@ val addToQueuePatch = bytecodePatch(
 
                 addInstruction(
                     index,
-                    "invoke-static { v$register }, $EXTENSION_CLASS->" +
+                    "invoke-static { v$register }, $EXTENSION_UTILS_CLASS->" +
                             "setBottomSheetFlyout(Landroid/app/Dialog;)V"
                 )
             }
@@ -306,7 +309,7 @@ val addToQueuePatch = bytecodePatch(
 
                 addInstruction(
                     instructionIndex,
-                    "invoke-static { v$instructionRegister }, $EXTENSION_CLASS->" +
+                    "invoke-static { v$instructionRegister }, $EXTENSION_UTILS_CLASS->" +
                             "setPopupWindowFlyout(Landroid/widget/PopupWindow;)V"
                 )
             }

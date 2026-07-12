@@ -53,7 +53,7 @@ Seiceáil go bhfuil an t-ainm pacáiste ceart agus go bhfuil an aip suiteáilte"
   <string name="morphe_check_watch_history_domain_name_dialog_title">Fógra Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Níl do stair faire á sábháil.&lt;br&gt;&lt;br&gt;Is dóichí gur bacadóir fógraí DNS nó seachfhreastalaí líonra is cúis leis seo.&lt;br&gt;&lt;br&gt;Chun seo a shocrú, cuir &lt;b&gt;s.youtube.com&lt;/b&gt; ar an liosta bán nó múch gach bacadóir agus seachfhreastalaí DNS.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ná taispeáin arís</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Sruthanna físe bréige</string>
   <string name="morphe_spoof_video_streams_screen_summary">Cumraigh spoofáil cliant chun fadhbanna athsheinm a chosc</string>
   <string name="morphe_spoof_video_streams_title">Sruthanna físe bréige</string>
@@ -168,4 +168,13 @@ Mar sin féin, má chumasaíonn tú é seo, logálfar roinnt sonraí úsáideora
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Liosta de theaghráin thógálaí cosáin chomhpháirte le scagadh, scartha le línte nua</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Scagaire saincheaptha neamhbhailí: %s</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_title">Leagan aip bréige</string>
+  <string name="morphe_spoof_app_version_summary">Meallann sé an freastalaí le go gceapfá go bhfuil tú ag úsáid seanleagan den aip chun gnéithe oidhreachta den chomhéadan úsáideora a athbhunú.</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"Déanfar leagan den aip a fhalsú go leagan níos sine.
+
+Athróidh sé seo cuma agus gnéithe na haipe, ach d'fhéadfadh fo-iarsmaí anaithnide tarlú.
+
+Má mhúchtar é níos déanaí, moltar sonraí na haipe a ghlanadh chun fabhtanna comhéadain úsáideora a chosc."</string>
+  <string name="morphe_spoof_app_version_target_title">Sprioc leagan aip bréige</string>
 </resources>

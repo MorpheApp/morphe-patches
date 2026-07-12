@@ -40,7 +40,7 @@ Second \"item\" text"</string>
 
 एह ठीक करबाक लेल, <b>s.youtube.com</b> whitelist करबा या सभ DNS ब्लॉकर आ प्रॉक्सी बंद करबा।</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">फेर सँ नाहीं देखाउ</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">वीडियो स्ट्रीम स्पूफ करू</string>
   <string name="morphe_spoof_video_streams_title">वीडियो स्ट्रीम स्पूफ करू</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">क्लाइंट स्ट्रीम प्राप्त कर सकल नाहीं</string>
@@ -108,4 +108,5 @@ Second \"item\" text"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <!-- Custom filter -->
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
 </resources>

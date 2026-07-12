@@ -110,6 +110,22 @@ YouTube Music 8.x – क्रॉसFade फक्त 9.x आणि त्य�
   <string name="morphe_music_hide_lyrics_panel_category_title">गीतांचे पॅनेल</string>
   <string name="morphe_music_hide_lyrics_share_button_title">शेअर बटण लपवा</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">भाषांतर बटण लपवा</string>
+  <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
+  <string name="morphe_music_action_buttons_screen_title">ॲक्शन बटणे</string>
+  <string name="morphe_music_action_buttons_screen_summary">प्लेअरच्या खाली कोणती ॲक्शन बटणे दिसू द्यायची ते निवडा</string>
+  <string name="morphe_music_hide_action_bar_title">ॲक्शन बार लपवा</string>
+  <string name="morphe_music_hide_like_dislike_button_title">लाईक आणि डिसलाईक बटण लपवा</string>
+  <string name="morphe_music_hide_comments_button_title">टिप्पण्या बटण लपवा</string>
+  <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_lyrics_button_title">गीत (Lyrics) बटण लपवा</string>
+  <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_share_button_title">शेअर बटण लपवा</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_save_button_title">सेव्ह बटण लपवा</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_download_button_title">डाउनलोड बटण लपवा</string>
+  <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_radio_button_title">रेडिओ सुरू करा बटण लपवा</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">फ्लयआउट मेनू</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">प्लेअर आणि रांगेतील फ्लयआउट मेनूमध्ये कोणते घटक दिसू द्यायचे ते निवडा</string>
@@ -245,4 +261,10 @@ YouTube Music 8.x – क्रॉसFade फक्त 9.x आणि त्य�
   <string name="morphe_music_scrobbling_about_summary">"स्क्रोब्लिंग तुमच्या YouTube Music वापराला तुमच्या Last.fm किंवा ListenBrainz प्रोफाइलसोबत आपोआप सिंक करते.
 
 पार्श्वभूमी प्लेबॅक दरम्यान स्क्रोब्लिंग सिंक होत आहे याची खात्री करण्यासाठी, YouTube Music चा ॲप बॅटरी वापर \"अनरिस्ट्रिक्टेड\" वर सेट केला आहे याची खात्री करा."</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - जुने फ्लोआउट पॅनेल पुनर्संचयित करा</string>
+  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - रिअल-टाइम लिरिक्स अक्षम करा</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - जुने डायनॅमिक लिरिक्स पुनर्संचयित करा</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - जुने ॲक्शन बार पुनर्संचयित करा</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - होम फीडमध्ये कमेंट सेक्शन दिसत नाही</string>
 </resources>

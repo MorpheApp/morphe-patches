@@ -53,7 +53,7 @@ Second \"item\" text"</string>
   <string name="morphe_check_watch_history_domain_name_dialog_title">Уведомление Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Историята ви на гледане не се запазва.&lt;br&gt;&lt;br&gt;Това най-вероятно е причинено от DNS блокиращ реклами или мрежов прокси.&lt;br&gt;&lt;br&gt;За да коригирате това, поставете &lt;b&gt;s.youtube в белия списък.com&lt;/b&gt; или изключете всички DNS блокери и проксита.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Не показвай отново</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Подправяне на видео потоци</string>
   <string name="morphe_spoof_video_streams_screen_summary">Подправете клиентските видео потоци, за да предотвратите проблеми с възпроизвеждането</string>
   <string name="morphe_spoof_video_streams_title">Подправяне на видео потоци</string>
@@ -168,4 +168,13 @@ Second \"item\" text"</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Списък на низове на градителите на пътища на компоненти за филтриране, разделени с нови редове</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Невалиден персонализиран филтър: %s</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_title">Подменя версия на приложението</string>
+  <string name="morphe_spoof_app_version_summary">Заблуждава сървъра, карайки го да мисли, че използвате по-стара версия на приложението, за да възстанови стари функции на потребителския интерфейс.</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"Версията на приложението ще бъде подменена със стара версия.
+
+Това ще промени външния вид и функциите на приложението, но могат да възникнат непредвидени странични ефекти.
+
+Ако по-късно бъде изключено, се препоръчва изчистване на данните на приложението, за да се предотвратят грешки в потребителския интерфейс."</string>
+  <string name="morphe_spoof_app_version_target_title">Цел за подмяна на версията на приложението</string>
 </resources>

@@ -53,7 +53,7 @@ Second \"item\" text"</string>
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe обавештење</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Ваша историја гледања се не чува.&lt;br&gt;&lt;br&gt;Ово је највероватније узроковано DNS блокатором огласа или мрежним проксијем.&lt;br&gt;&lt;br&gt;Да бисте ово поправили, ставите на белу листу &lt;b&gt;s.youtube.com&lt;/b&gt; или искључите све DNS блокаторе и проксије.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Не приказуј поново</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Лажирани видео стримови</string>
   <string name="morphe_spoof_video_streams_screen_summary">Конфигуришите лажирање клијента да бисте избегли проблеме са репродукцијом</string>
   <string name="morphe_spoof_video_streams_title">Лажирани видео стримови</string>
@@ -168,4 +168,13 @@ Da bi se prijavili, pritisnite nastavak ispod"</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Листа стрингова за изградњу путање компоненти за филтрирање, одвојена новим редовима</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Неважећи прилагођени филтер: %s</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_title">Лажирана верзија апликације</string>
+  <string name="morphe_spoof_app_version_summary">Превари сервер да мисли да користите старију верзију апликације како би се вратиле застареле функције корисничког интерфејса</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"Верзија апликације ће бити лажирана на старију верзију.
+
+Ово ће променити изглед и функције апликације, али могу настати непознати нуспоефекти.
+
+Ако се касније искључи, препоручује се да избришете податке апликације да бисте избегли грешке у корисничком интерфејсу."</string>
+  <string name="morphe_spoof_app_version_target_title">Циљна верзија апликације за лажирање</string>
 </resources>

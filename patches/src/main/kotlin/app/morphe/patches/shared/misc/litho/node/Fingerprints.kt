@@ -4,8 +4,8 @@
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
- 
-package app.morphe.patches.youtube.misc.litho.node
+
+package app.morphe.patches.shared.misc.litho.node
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.methodCall
@@ -26,7 +26,7 @@ internal object TreeNodeResultListFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
     returnType = "Ljava/util/List;",
     filters = listOf(
-        methodCall(name = "nCopies", opcode = Opcode.INVOKE_STATIC),
+        methodCall(name = "nCopies", opcode = Opcode.INVOKE_STATIC)
     )
 )
 
