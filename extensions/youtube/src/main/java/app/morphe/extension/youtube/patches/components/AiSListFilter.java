@@ -32,7 +32,7 @@ import app.morphe.extension.youtube.shared.PlayerType;
 public final class AiSListFilter extends BufferPhraseFilter {
 
     /** Refresh the cached list from GitHub raw after this long since last successful fetch. */
-    private static final long REFRESH_CHECK_INTERVAL_MS = 4 * 60 * 1000L;
+    private static final long REFRESH_CHECK_INTERVAL_MS = 4 * 60 * 60 * 1000L; // 4 hours.
 
     private volatile ByteTrieSearch blocklistSearch;
     private volatile ByteTrieSearch warnlistSearch;
