@@ -53,7 +53,7 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
                 new ByteArrayFilterGroup(
                         Settings.HIDE_FLYOUT_MENU_TASTE_MATCH,
                         "yt_outline_circles_overlap",
-                        "yt_outline_experimental_account_link_vd_theme_24"
+                        "yt_outline_experimental_account_link"
                 )
         );
 

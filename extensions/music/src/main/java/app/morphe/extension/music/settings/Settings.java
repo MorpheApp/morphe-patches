@@ -167,7 +167,6 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting SB_CATEGORY_MUSIC_OFFTOPIC_COLOR = new StringSetting("morphe_sb_music_offtopic_color", "#FFFF9900", parent(SB_ENABLED));
 
     // Migration
-
     private static final BooleanSetting DEPRECATED_HIDE_CATEGORY_BAR = new BooleanSetting("morphe_music_hide_category_bar", FALSE, true);
 
     static {

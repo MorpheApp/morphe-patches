@@ -63,19 +63,22 @@ public class SharedYouTubeSettings extends BaseSettings {
     public static final StringSetting PROXY_AUTH_PASSWORD = new StringSetting("morphe_proxy_auth_password", "", true, false, null, parent(PROXY_AUTH_ENABLED));
     public static final BooleanSetting PROXY_ALLOW_DIRECT_FALLBACK = new BooleanSetting("morphe_proxy_allow_direct_fallback", FALSE, true, parent(PROXY_ENABLED));
 
+    // External downloads
     public static final BooleanSetting EXTERNAL_DOWNLOADER = new BooleanSetting("morphe_external_downloader", FALSE);
     public static final BooleanSetting EXTERNAL_DOWNLOADER_ACTION_BUTTON = new BooleanSetting("morphe_external_downloader_action_button", FALSE);
-    public static final BooleanSetting EXTERNAL_DOWNLOADER_FLYOUT_BUTTON = new BooleanSetting("morphe_external_downloader_flyout_button", FALSE);
+    public static final BooleanSetting EXTERNAL_DOWNLOADER_FLYOUT_MENU = new BooleanSetting("morphe_external_downloader_flyout_menu", FALSE, parent(EXTERNAL_DOWNLOADER_ACTION_BUTTON));
     public static final StringSetting EXTERNAL_DOWNLOADER_PACKAGE_NAME = new StringSetting("morphe_external_downloader_name", "com.deniscerri.ytdl" /* YTDLnis */, parentsAny(EXTERNAL_DOWNLOADER, EXTERNAL_DOWNLOADER_ACTION_BUTTON));
 
     public static final BooleanSetting SPOOF_APP_VERSION = new BooleanSetting("morphe_spoof_app_version", FALSE, true, "morphe_spoof_app_version_user_dialog_message");
     public static final StringSetting SPOOF_APP_VERSION_TARGET = new StringSetting("morphe_spoof_app_version_target", getDefaultSpoofAppVersionTarget(), true, parent(SPOOF_APP_VERSION));
 
-    // Renamed settings
+    // Migration
+    private static final BooleanSetting DEPRECATED_EXTERNAL_DOWNLOADER_FLYOUT_BUTTON = new BooleanSetting("morphe_external_downloader_flyout_button", FALSE);
     private static final BooleanSetting DEPRECATED_SANITIZE_URL_QUERY = new BooleanSetting("morphe_sanitize_url_query", TRUE);
 
     static {
         // TODO: Eventually remove these migrations
+        migrateOldSettingToNew(DEPRECATED_EXTERNAL_DOWNLOADER_FLYOUT_BUTTON , EXTERNAL_DOWNLOADER_FLYOUT_MENU);
         migrateOldSettingToNew(DEPRECATED_SANITIZE_URL_QUERY, SANITIZE_SHARING_LINKS);
     }
 
