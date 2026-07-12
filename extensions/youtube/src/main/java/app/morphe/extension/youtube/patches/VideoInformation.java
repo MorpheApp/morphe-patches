@@ -56,6 +56,7 @@ public final class VideoInformation {
     private static final String VIDEO_QUALITY_PREMIUM_NAME = "Premium";
 
     private static final float DEFAULT_YOUTUBE_PLAYBACK_SPEED = 1.0f;
+    public static boolean savePlaybackSpeed = false;
     /**
      * Prefix present in all Short player parameters signature.
      */
@@ -130,6 +131,7 @@ public final class VideoInformation {
         try {
             Logger.printDebug(() -> "newVideoStarted");
 
+            savePlaybackSpeed = false;
             playerControllerRef = new WeakReference<>(Objects.requireNonNull(playerController));
             videoLength = 0;
             channelId = "";
@@ -144,6 +146,13 @@ public final class VideoInformation {
         } catch (Exception ex) {
             Logger.printException(() -> "initialize failure", ex);
         }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void enableSavePlaybackSpeed() {
+        Utils.runOnMainThreadDelayed(() -> savePlaybackSpeed = true, 500);
     }
 
     /**

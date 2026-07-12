@@ -28,6 +28,7 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.smali.toInstructions
 import app.morphe.patches.shared.misc.videoinformation.PlayerControllerSetTimeReferenceFingerprint
+import app.morphe.patches.youtube.layout.captions.StartVideoInformerFingerprint
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_49_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -235,21 +236,29 @@ val videoInformationPatch = bytecodePatch(
 
                 speedSelectionInsertMethodRef = WeakReference(this)
                 // Set the starting index before the first nop instruction
-                speedSelectionInsertIndex = it.instructionMatches.first().index + 4
+                speedSelectionInsertIndex = it.instructionMatches.first().index + 6
                 speedSelectionValueRegister = 0
 
                 addInstructionsWithLabels(
                     0,
                     """
                         # Read the current set playback speed, once the playback speed panel is used (index is higher or equal 0).
+                        sget-boolean v1, $EXTENSION_CLASS->savePlaybackSpeed:Z
+                        if-eqz v1, :save_playback_speed
                         const/4 v1, -0x1
                         if-eq p2, v1, :float_null_check
                         aget-object v$speedSelectionValueRegister, p1, p2
                         iget v$speedSelectionValueRegister, v$speedSelectionValueRegister, $speedFloatField
                         nop
                         :float_null_check
+                        :save_playback_speed
                         nop
                     """
+                )
+
+                StartVideoInformerFingerprint.method.addInstruction(
+                    0,
+                    "invoke-static { }, $EXTENSION_CLASS->enableSavePlaybackSpeed()V"
                 )
             }
         }
