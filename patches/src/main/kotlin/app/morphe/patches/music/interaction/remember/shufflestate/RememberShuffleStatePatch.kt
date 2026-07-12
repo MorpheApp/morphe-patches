@@ -10,6 +10,7 @@ package app.morphe.patches.music.interaction.remember.shufflestate
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
@@ -31,7 +32,6 @@ import app.morphe.util.toPublicAccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
@@ -59,21 +59,20 @@ val rememberShuffleStatePatch = bytecodePatch(
         val enumClass = ShuffleEnumFingerprint.method.definingClass
 
         ShuffleOnClickFingerprint.let { fingerprint ->
-            // TODO: Replace this manual searching with instruction filters.
             fingerprint.method.apply {
                 val startIndex = fingerprint.instructionMatches.first().index
 
                 val indexAndRegister = if (is_8_03_or_greater) {
+                    val filter = methodCall(opcode = Opcode.INVOKE_VIRTUAL, returnType = enumClass)
                     val index = indexOfFirstInstructionReversedOrThrow(startIndex) {
-                        opcode == Opcode.INVOKE_VIRTUAL &&
-                                getReference<MethodReference>()?.returnType == enumClass
+                        filter.matches(this@apply, this)
                     }
                     val register = getInstruction<OneRegisterInstruction>(index + 1).registerA
                     Pair(index + 2, register)
                 } else {
+                    val filter = methodCall(opcode = Opcode.INVOKE_DIRECT, returnType = "Ljava/lang/String;")
                     val index = indexOfFirstInstructionReversedOrThrow(startIndex) {
-                        opcode == Opcode.INVOKE_DIRECT &&
-                                getReference<MethodReference>()?.returnType == "Ljava/lang/String;"
+                        filter.matches(this@apply, this)
                     }
                     val register = getInstruction<FiveRegisterInstruction>(index).registerD
                     Pair(index, register)
@@ -94,8 +93,9 @@ val rememberShuffleStatePatch = bytecodePatch(
                 val shuffleMutableClass = this@execute.mutableClassDefBy(shuffleClass)
 
                 shuffleMutableClass.methods.filter { it.name == "<init>" }.forEach { constructor ->
+                    val initFilter = methodCall(opcode = Opcode.INVOKE_DIRECT, name = "<init>")
                     val superInitIndex = constructor.indexOfFirstInstructionOrThrow {
-                        opcode == Opcode.INVOKE_DIRECT && getReference<MethodReference>()?.name == "<init>"
+                        initFilter.matches(constructor, this)
                     }
                     constructor.addInstructions(
                         superInitIndex + 1,
@@ -121,17 +121,13 @@ val rememberShuffleStatePatch = bytecodePatch(
                     """
                 )
 
+                val ordinalFilter = methodCall(opcode = Opcode.INVOKE_VIRTUAL, definingClass = enumClass, name = "ordinal")
+                val postFilter = methodCall(opcode = Opcode.INVOKE_VIRTUAL, name = "post")
+
                 val shuffleMethod = shuffleMutableClass.methods.firstOrNull { method ->
                     method.returnType == "V" &&
-                            method.indexOfFirstInstruction {
-                                val ref = getReference<MethodReference>()
-                                opcode == Opcode.INVOKE_VIRTUAL && ref?.name == "ordinal"
-                                        && ref.definingClass == enumClass
-                            } >= 0 &&
-                            method.indexOfFirstInstruction {
-                                opcode == Opcode.INVOKE_VIRTUAL
-                                        && getReference<MethodReference>()?.name == "post"
-                            } >= 0
+                            method.indexOfFirstInstruction { ordinalFilter.matches(method, this) } >= 0 &&
+                            method.indexOfFirstInstruction { postFilter.matches(method, this) } >= 0
                 } ?: throw PatchException("Internal shuffle method not found in $shuffleClass")
 
                 val clonedMethod = shuffleMethod.cloneMutable(
@@ -145,9 +141,7 @@ val rememberShuffleStatePatch = bytecodePatch(
 
                 if (is_8_03_or_greater) {
                     val ordinalIndex = clonedMethod.indexOfFirstInstruction {
-                        val ref = getReference<MethodReference>()
-                        opcode == Opcode.INVOKE_VIRTUAL && ref?.name == "ordinal"
-                                && ref.definingClass == enumClass
+                        ordinalFilter.matches(clonedMethod, this)
                     }
                     val register = clonedMethod.getInstruction<FiveRegisterInstruction>(ordinalIndex).registerC
 
