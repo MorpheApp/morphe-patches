@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/1962
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -43,29 +43,25 @@ val disableDislikeRedirectionPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_music_disable_dislike_redirection", summary = true),
+            SwitchPreference("morphe_music_disable_dislike_redirection", summary = true)
         )
 
         // The notification and player handlers share the same onClick dispatch interface method,
         // extract its reference here to locate the twin call inside the player handler below.
-        val onClickReference = NotificationLikeButtonOnClickListenerFingerprint.method.let { method ->
-            val mapIndex = indexOfMapInstruction(method)
-            val onClickIndex = method.indexOfFirstInstructionOrThrow(mapIndex) {
-                val reference = getReference<MethodReference>()
-                opcode == Opcode.INVOKE_INTERFACE &&
-                        reference?.returnType == "V" &&
-                        reference.parameterTypes.size == 1
-            }
-            val reference = method.getInstruction<ReferenceInstruction>(onClickIndex)
-                .reference.toString()
+        val onClickReference = NotificationLikeButtonOnClickListenerFingerprint.let {
+            it.method.let { method ->
+                val onClickIndex = it.instructionMatches.last().index
+                val reference = method.getInstruction<ReferenceInstruction>(onClickIndex)
+                    .reference
 
-            method.injectRedirectionGuard(onClickIndex)
-            reference
+                method.injectRedirectionGuard(onClickIndex)
+                reference
+            }
         }
 
         DislikeButtonOnClickListenerFingerprint.method.apply {
             val onClickIndex = indexOfFirstInstructionOrThrow {
-                getReference<MethodReference>()?.toString() == onClickReference
+                getReference<MethodReference>() == onClickReference
             }
             injectRedirectionGuard(onClickIndex)
         }
