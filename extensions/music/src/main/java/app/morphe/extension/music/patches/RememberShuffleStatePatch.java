@@ -48,6 +48,7 @@ public class RememberShuffleStatePatch {
      * Injection point.
      */
     public static void shuffleTracks() {
-        Logger.printDebug(() -> "Shuffle tracks");
+        // Method is modified during patching.
+        Log.d("Morphe: RememberShuffle", "Tracks are shuffled");
     }
 }
