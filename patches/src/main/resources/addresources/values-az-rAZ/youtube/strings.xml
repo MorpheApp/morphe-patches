@@ -563,7 +563,9 @@ Qeyd: Əgər \"Video yayımlarını saxtalaşdır\" işlək deyilsə, bunu aktiv
 
 \"Titr kukiləri\" təmin edilməlidir"</string>
   <string name="morphe_caption_cookies_title">Titr bazaları</string>
+  <string name="morphe_caption_cookies_summary">Zamanlanmış Mətn API (Titr Məlumatı API-si) sorğularında təyin olunmalı kukilər</string>
   <string name="morphe_get_caption_cookies_title">Titr məlumatların əldə et</string>
+  <string name="morphe_get_caption_cookies_summary">Kukiləri əldə etmək üçün buraya kliklə</string>
   <string name="morphe_get_caption_cookies_failed">Məlumatları əldə etmək olmadı</string>
   <string name="morphe_get_caption_cookies_duplicate">Bazalar artıq var</string>
   <string name="morphe_get_caption_cookies_success">Bazalar uğurla yeniləndi</string>
@@ -589,6 +591,8 @@ Qeyd: Əgər \"Video yayımlarını saxtalaşdır\" işlək deyilsə, bunu aktiv
   <string name="morphe_show_settings_button_index_title">Ayarlar düyməsi mövqeyi</string>
   <string name="morphe_show_settings_button_type_title">Ayarlar düyməsi fəaliyyəti</string>
   <string name="morphe_show_settings_button_type_summary">İşlək olduqda Morphe tənzimləmələrin, qapadılanda YouTube tənzimləmələrin açır</string>
+  <string name="morphe_swap_create_with_notifications_button_title">Yarat düyməsi ilə Bildirişlər düyməsini əvəzlə</string>
+  <string name="morphe_swap_create_with_notifications_button_summary">Bu tənzimləməni dəyişdirmək təsir göstərmirsə, Gizli rejimə keçməyi sına</string>
   <string name="morphe_hide_navigation_button_labels_title">Fəaliyyət düymə etiketlərini gizlət</string>
   <string name="morphe_hide_navigation_bar_title">Fəaliyyət çubuğunu gizlət</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"Bu, \"Siz\" tabeli də daxil olmaqla fəaliyyət cərgəsin tamamilə gizlədir.
@@ -693,6 +697,7 @@ Tənzimləmələrə daxil olmaq üçün Ümumi → Alətlər Cərgəsi→ Tənzi
   <!-- layout.hide.seekbar.hideSeekbarPatch -->
   <string name="morphe_hide_seekbar_title">Video oynadıcı irəli-geri çəkmə cizgisin gizlət</string>
   <string name="morphe_hide_seekbar_thumbnail_title">Video miniatür irəli-geri çəkmə cizgisin gizlət</string>
+  <string name="morphe_hide_seekbar_thumbnail_summary">Artıq izlədiyiniz videoların miniatürlərində görünən izləmə irəliləyiş cizgisini gizlədir</string>
   <string name="morphe_fullscreen_large_seekbar_title">Tam ekran böyük irəli-geri çəkmə cizgisin aktivləşdir</string>
   <!-- layout.hide.shorts.hideShortsComponentsPatch -->
   <string name="morphe_shorts_player_screen_title">Shorts oynadıcı</string>
@@ -745,17 +750,34 @@ Tənzimləmələrə daxil olmaq üçün Ümumi → Alətlər Cərgəsi→ Tənzi
   <string name="morphe_hide_shorts_navigation_bar_title">Fəaliyyət çubuğunu gizlət</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_hide_end_screen_suggested_video_title">Son ekran bildirilən videonu gizlət</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary">"Video bitdikdən sonra görünən təklif olunan video örtüyünü gizlədir
+
+Bu tənzimləmə yalnız avtomatik oynatma qapadılarsa işləyir. Bunu YouTube-da dəyişə bilərsiniz: 
+Ayarlar→ Oxunuş (və ya Avtomatik oxunuş) → Növbəti videonu avtomatik oxudun"</string>
   <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
   <string name="morphe_hide_player_related_videos_title">Əlaqəli videoları gizlət</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
+  <string name="morphe_hide_player_related_videos_overlay_title">\"Daha çox video\" örtüyünü gizlət</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary">Tam ekran rejimində yuxarı sürüşdürəndə görünən \"Daha çox video\" örtüyünü gizlədir</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Video vaxt möhürünü gizlət</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
+  <string name="morphe_disable_player_popup_panels_title">Oynadıcı açılan pəncərə panellərini qapat</string>
+  <string name="morphe_disable_player_popup_panels_summary">Pleylist və canlı söhbət panellərinin avtomatik açılmasını  qapadır</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
+  <string name="morphe_exit_fullscreen_title">Video bitdikdə tam ekran rejimini sonlandır</string>
   <string name="morphe_exit_fullscreen_entry_1">Qapalı</string>
+  <string name="morphe_exit_fullscreen_entry_2">Yalnız portret</string>
+  <string name="morphe_exit_fullscreen_entry_3">Yalnız landşaft</string>
   <string name="morphe_exit_fullscreen_entry_4">Şaquli və üfüqi</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
+  <string name="morphe_disable_fullscreen_gestures_title">Tam ekran jestləri</string>
+  <string name="morphe_disable_fullscreen_gestures_summary">Tam ekran rejiminə keçmək və ya çıxmaq üçün oynadıcı jestləri</string>
+  <string name="morphe_disable_fullscreen_pulled_up_gesture_title">Portret yuxarı sürüşdürmə jestini qapat</string>
+  <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Portret aşağı sürüşdürmə jestini qapat</string>
+  <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Landşaft aşağı sürüşdürmə jestini qapat</string>
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
+  <string name="morphe_open_videos_fullscreen_title">Videoları tam ekran rejimində aç</string>
   <string name="morphe_open_videos_fullscreen_entry_1">Qapalıdı</string>
   <string name="morphe_open_videos_fullscreen_entry_2">Şaquli</string>
   <string name="morphe_open_videos_fullscreen_entry_3">Üfüqi</string>
@@ -773,6 +795,9 @@ Tənzimləmələrə daxil olmaq üçün Ümumi → Alətlər Cərgəsi→ Tənzi
   <string name="morphe_ryd_failure_ryd_enabled_while_playing_video_then_user_voted">Ryd ilə səsvermə üçün videonu yenidən yüklə</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Sahib tərəfindən gizlədilib</string>
+  <string name="morphe_ryd_enabled_title">Return YouTube Dislike-ı aktivləşdir</string>
+  <string name="morphe_ryd_dislike_percentage_title">Bəyənməmələri faiz nisbəti olaraq göstər</string>
+  <string name="morphe_ryd_dislike_percentage_summary">Bəyənməmələri rəqəm əvəzinə bəyənmələrin faiz nisbəti kimi göstərir</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
   <string name="morphe_ryd_estimated_like_title">Təxmini bəyənmələri göstər</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
@@ -974,6 +999,7 @@ Video oynatma AV1 ilə ilişə bilər və ya kadrlar buraxıla bilər."</string>
   <string name="morphe_spoof_video_streams_about_js">• Deobfuscation pozularsa, oynatma uğursuz ola bilər</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• \"Orijinal səsi zorla\" əlçatmazdır</string>
+  <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_player_js_variant_title">Oynadıcı JavaScript seçimi</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">İstək üçün Statistikada saxtalaşdırmanı göstər</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->

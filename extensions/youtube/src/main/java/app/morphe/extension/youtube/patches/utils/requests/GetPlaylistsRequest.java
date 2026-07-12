@@ -74,6 +74,7 @@ public class GetPlaylistsRequest {
         return cache.get(playlistId);
     }
 
+    @SuppressWarnings("unused")
     @Nullable
     public static GetPlaylistsRequest getRequestForPlaylistId(String playlistId) {
         return cache.get(playlistId);

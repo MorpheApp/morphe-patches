@@ -733,6 +733,7 @@ Video playback s AV1 može stutterati ili padati frame-ove."</string>
   <string name="morphe_spoof_video_streams_about_js">• Ako neuspije deobfuskacija, reproducija može neuspjeti</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Nema force original audio</string>
+  <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_player_js_variant_title">Varijanta JavaScript igrača</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
 </resources>

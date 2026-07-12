@@ -162,6 +162,8 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_comments_create_a_short_button"),
                     SwitchPreference("morphe_hide_comments_emoji_and_timestamp_buttons"),
                     SwitchPreference("morphe_hide_comments_filter_bar_options", summary = true),
+                    SwitchPreference("morphe_hide_comments_gift_animation_and_cards"),
+                    SwitchPreference("morphe_hide_comments_gift_button"),
                     SwitchPreference("morphe_hide_comments_info_button"),
                     SwitchPreference("morphe_hide_comments_live_chat_donators_bar"),
                     SwitchPreference("morphe_hide_comments_preview_comment", summary = true),
@@ -1024,6 +1026,18 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 it.instructionMatches.last().index,
                 LAYOUT_COMPONENTS_FILTER,
                 "hideSyncButton"
+            )
+        }
+
+        // endregion
+
+        // region hide live chat gift button
+
+        JewelsButtonContainerFingerprint.matchAll().forEach { match ->
+            match.method.injectHideViewCall(
+                match.instructionMatches.last().index,
+                COMMENTS_FILTER,
+                "hideLiveChatGiftButton"
             )
         }
 

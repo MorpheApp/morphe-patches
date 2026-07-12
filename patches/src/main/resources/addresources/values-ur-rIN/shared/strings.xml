@@ -17,13 +17,91 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
+  <string name="morphe_settings_submenu_title">ترتیبات</string>
+  <string name="morphe_settings_confirm_user_dialog_title">کیا آپ یقینی طور پر آگے بڑھنا چاہتے ہیں؟</string>
+  <string name="morphe_settings_save">محفوظ کریں</string>
+  <string name="morphe_settings_reset">ریسیٹ</string>
+  <string name="morphe_settings_reset_color">ریسیٹ رنگ</string>
+  <string name="morphe_settings_color_invalid">غلط رنگ</string>
+  <string name="morphe_settings_restart_title">ری اسٹارٹ درکار ہے</string>
+  <string name="morphe_settings_restart_dialog_message">مطلوبہ تبدیلیوں کے اثرانداز ہونے کے لئے ایپ کو دوبارہ شروع ہونے کی ضرورت ہے۔</string>
+  <string name="morphe_settings_restart">ری اسٹارٹ</string>
   <!-- String is also duplicated in Reddit import / export preference -->
+  <string name="morphe_settings_import">امپورٹ</string>
+  <string name="morphe_settings_import_copy">کاپی کریں</string>
+  <string name="morphe_settings_import_reset">Morphe کی ترتیبات کو ریسیٹ کریں</string>
+  <string name="morphe_settings_import_success">امپورٹ کردہ %d ترتیبات</string>
+  <string name="morphe_settings_import_failure_parse">امپورٹ ناکام: %s</string>
+  <string name="morphe_settings_search_hint">ترتیبات کو تلاش کریں</string>
+  <string name="morphe_settings_search_no_results_title">\'%s\' کے متعلق کوئی نتیجہ نہیں ملا</string>
+  <string name="morphe_settings_search_no_results_summary">کسی دوسرے لفظ سے کوشش کریں</string>
+  <string name="morphe_settings_search_recent_searches">حالیہ تلاش کردہ</string>
+  <string name="morphe_settings_search_remove_message">تلاش کردہ کے ریکارڈ سے مٹائیں؟</string>
+  <string name="morphe_settings_search_clear_history">تلاش کردہ کا ریکارڈ ختم کریں</string>
+  <string name="morphe_settings_search_clear_history_message">کیا آپ بالیقین تمام تلاش کردہ کا ریکارڈ ختم کرنا چاہتے ہیں؟</string>
+  <string name="morphe_settings_search_tips_title">تلاش کی معلومات</string>
+  <string name="morphe_settings_search_tips_summary">"• کسی پاتھ تک جانے کے لئے اس پر ٹچ کریں
+• کسی ترتیب پر جانے کے لئے لانگ پریس کریں
+• تلاش کردہ بات کو محفوظ کرنے کے لئے Enter دبائیں
+• تلاش میں کیسنگ (چھوٹے، بڑے حروف) اور اوقاف و اعراب کو نظرانداز کردیا جاتا ہے
+• اصولی ترتیبات فروعی غیر فعال ترتیبات کے اوپر نظر آئینگی"</string>
+  <string name="morphe_settings_search_empty_history_title">تلاش کا ریکارڈ خالی ہے</string>
+  <string name="morphe_settings_search_empty_history_summary">تلاش کا ریکارڈ محفوظ کرنے کے لئے اپنا مطلوبہ استفسار لکھ کر Enter دبائیں</string>
+  <string name="morphe_settings_search_history_title">ترتیبات کی تلاش کا ریکارڈ ظاہر کریں</string>
+  <string name="morphe_show_menu_icons_title">Morphe کی ترتیبات کا آئیکن ظاہر کریں</string>
+  <string name="morphe_language_title">Morphe کی زبان</string>
+  <string name="morphe_language_user_dialog_message">"کچھ زبانوں کے تراجم مفقود یا نامکمل ہو سکتے ہیں۔
+
+نئی زبانوں کا ترجمہ کرنے یا موجودہ تراجم کو بہتر بنانے کے لئے ، morphe.software/translate پر جائیں"</string>
+  <string name="morphe_language_DEFAULT">ایپ کی زبان</string>
+  <string name="morphe_pref_import_export_title">درآمد/برآمد </string>
+  <string name="morphe_pref_import_export_summary">اMorphe کی ترتیبات کی درآمد/برآمد کریں</string>
+  <string name="morphe_settings_import_file">فائل سے درآمد کریں</string>
+  <string name="morphe_settings_import_file_success">ترتیبات کی درآمدی کامیابی سے مکمل ہوگئی، اطلاق کرنے کے لئے Save دبائیں</string>
+  <string name="morphe_settings_import_file_failed">ترتیبات کی درآمدی ناکام ہو گئی</string>
+  <string name="morphe_settings_export_file">فائل میں برآمد کریں</string>
+  <string name="morphe_settings_export_file_success">ترتیبات کی برآمدی مکمل ہو چکی</string>
+  <string name="morphe_settings_export_file_failed">ترتیبات کی برآمدی ناکام ہو گئی</string>
   <!-- String is also duplicated in Reddit about preference -->
+  <string name="morphe_settings_about_links_body_version_current">آپ Morphe Patches کا جدید ورژن استعمال کر رہے ہیں &lt;i&gt;%s&lt;/i&gt;</string>
+  <string name="morphe_settings_about_links_body_version_outdated">آپ Morphe Patches کا ورژن &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt; استعمال کررہے ہیں اپڈیٹ دستیاب ہے: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt; پیچ کو اپڈیٹ کرنے کے لئے، Morphe کے استعمال سے اس ایپ کو دوبارہ پیچ کریں</string>
+  <string name="morphe_settings_about_links_dev_header">نوٹ</string>
+  <string name="morphe_settings_about_links_dev_body">یہ ورژن ایک pre-release ہے اور آپکو کچھ غیر متوقع مسائل کا سامنا کرنا پڑ سکتا ہے</string>
+  <string name="morphe_settings_about_links_header">آفیشل لنک</string>
+  <string name="morphe_settings_about_links_website">ویبسائٹ</string>
+  <string name="morphe_settings_about_links_donate">عطیہ</string>
+  <string name="morphe_settings_about_links_translations">تراجم</string>
+  <string name="morphe_settings_about_links_credits">انتسابات</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">تا تاریخ</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">اپڈیٹ دستیاب ہے</string>
+  <string name="morphe_settings_about_contributors_current">حالیہ ڈیویلپمنٹ</string>
+  <string name="morphe_settings_about_contributors_prior">گزشتہ ڈیویلپمنٹ</string>
+  <string name="morphe_settings_about_links_morphe">فعال ڈیویلپمنٹ</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">لائسنس نوٹس</string>
+  <string name="morphe_settings_about_licenses_loading">لوڈ ہو رہا ہے۔۔</string>
   <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_screen_title">ڈیبگنگ</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <!-- "Don't kill my app" should be kept in English and not translated -->
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"MicroG کی بیٹری کے آپٹیمائزیشنز کو مسائل سے بچانے کے لیے بند کردیا جانا چاہیے۔
+
+MicroG کے لیے بیٹری کے آپٹیمائزیشنز کو بند کرنے سے بیٹری کے استعمال پر منفی اثر نہیں پڑے گا۔
+
+کন্টينيو بٹن پر ٹیپ کریں اور آپٹیمائزیشن تبدیلیاں کی اجازت دیں۔"</string>
+  <string name="gms_core_dialog_continue_text">जारी रखें</string>
   <!-- misc.gms.linkHandlingPatch -->
   <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 تجربی انتباہ 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"آپ تجرباتی ایپ ورژن استعمال کر رہے ہیں ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 توقع کریں کہ اس ایپ ورژن کے لیے ہم پیچوں کو درست کر رہے ہیں، تو ایپ کا رو سلوک یا غیر شناخت شدہ بگ آئیں گے۔
+&lt;br/&gt;&lt;br/&gt;
+اگر آپ سب سے زیادہ پریشانی سے پاک تجربہ چاہتے ہیں، تو &lt;b&gt;ان انسٹال کریں&lt;/b&gt; اور ✅ &lt;b&gt;%2$s&lt;/b&gt; کے تجویز کردہ ایپ ورژن کو پیچ کریں۔"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ میں تجرباتی چاہتا ہوں</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ میں استحکام چاہتا ہوں</string>
 </resources>

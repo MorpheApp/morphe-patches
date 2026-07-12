@@ -1109,6 +1109,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_about_js">• 如果去混淆失败，播放可能会失败</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• 强制原始音频不可用</string>
+  <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• 视频质量可能限制为 720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">播放器JavaScript变种</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">在“极客统计”中显示欺骗信息</string>

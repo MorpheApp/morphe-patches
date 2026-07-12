@@ -5,18 +5,18 @@ updates:
     directory: /
     target-branch: dev
     schedule:
-      interval: monthly
+      interval: weekly
 
   - package-ecosystem: npm
     labels: []
     directory: /
     target-branch: dev
     schedule:
-      interval: monthly
+      interval: weekly
 
   - package-ecosystem: gradle
     labels: []
     directory: /
     target-branch: dev
     schedule:
-      interval: monthly
+      interval: weekly

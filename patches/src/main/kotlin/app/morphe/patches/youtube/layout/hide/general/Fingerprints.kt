@@ -715,3 +715,16 @@ internal object PanelSubheaderFingerprint : Fingerprint(
         )
     )
 )
+
+internal object JewelsButtonContainerFingerprint : Fingerprint(
+    returnType = "Landroid/view/ViewGroup;",
+    parameters = listOf(),
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "jewels_button_container"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "findViewById"
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
+    )
+)

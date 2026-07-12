@@ -1109,7 +1109,8 @@ D’fhéadfadh sé go mbeadh stad nó go gcaillfí frámaí ag athsheinm físe l
   <string name="morphe_spoof_video_streams_about_js">• Má theipeann ar an dí-dhorchadas, d\'fhéadfadh teip a bheith ar an athsheinm</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Níl an fuaim bhunaidh iallach ar fáil</string>
-  <string name="morphe_spoof_video_streams_about_720p_max">• D’fhéadfadh go mbeidh an caighdeán teoranta go 720p</string>
+  <!-- Quality refers to video quality -->
+  <string name="morphe_spoof_video_streams_about_720p_max">• D’fhéadfadh an caighdeán a bheith teoranta do 720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Leagan JavaScript an imreora</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Taispeáin spoofáil i Staitisticí do nerds</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->

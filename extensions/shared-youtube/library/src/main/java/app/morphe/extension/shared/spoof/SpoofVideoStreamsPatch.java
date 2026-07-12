@@ -25,7 +25,7 @@ public class SpoofVideoStreamsPatch {
     public static final class JavaScriptClientAvailability implements Setting.Availability {
         @Override
         public boolean isAvailable() {
-            return SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.isAvailable() && preferredClient.requireJS;
+            return SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.get() && preferredClient.requireJS;
         }
 
         @Override
@@ -37,7 +37,7 @@ public class SpoofVideoStreamsPatch {
     public static final class JavaScriptHashAvailability implements Setting.Availability {
         @Override
         public boolean isAvailable() {
-            return SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.isAvailable() && preferredClient.requireJS &&
+            return SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.get() && preferredClient.requireJS &&
                     SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_DISABLE_PLAYER_JS_UPDATE.get();
         }
 

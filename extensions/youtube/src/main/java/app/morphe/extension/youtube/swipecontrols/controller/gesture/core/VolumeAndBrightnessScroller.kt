@@ -8,6 +8,7 @@ import app.morphe.extension.youtube.swipecontrols.controller.ScreenBrightnessCon
 import app.morphe.extension.youtube.swipecontrols.misc.ScrollDistanceHelper
 import app.morphe.extension.youtube.swipecontrols.misc.SwipeControlsOverlay
 import app.morphe.extension.youtube.swipecontrols.misc.applyDimension
+import kotlin.math.roundToInt
 
 /**
  * Describes a class that controls volume, brightness, and playback speed based on scrolling events.
@@ -51,6 +52,7 @@ interface VolumeAndBrightnessScroller {
  * @param brightnessDistance Unit distance for brightness scrolling, in dp; higher = more precise.
  * @param volumeSwipeSensitivity How much volume will change per swipe.
  * @param speedDistance Unit distance for speed scrolling, in dp; higher = more precise.
+ * @param speedStepInt Playback speed change per tick, expressed as an integer multiplied by 100 (e.g. 5 = 0.05x).
  * @param enableSpeedGesture Whether the playback speed swipe gesture is enabled.
  */
 class VolumeAndBrightnessScrollerImpl(
@@ -62,6 +64,7 @@ class VolumeAndBrightnessScrollerImpl(
     brightnessDistance: Int = 1,
     private val volumeSwipeSensitivity: Int,
     speedDistance: Int = 10,
+    private val speedStepInt: Int = 5,
     private val enableSpeedGesture: Boolean = false,
 ) : VolumeAndBrightnessScroller {
 
@@ -118,8 +121,10 @@ class VolumeAndBrightnessScrollerImpl(
             ),
         ) { _, _, direction ->
             if (!enableSpeedGesture) return@ScrollDistanceHelper
-            val currentSpeed = VideoInformation.getPlaybackSpeed()
-            val newSpeed = maxOf(0.25f, minOf(8.0f, currentSpeed + direction * 0.25f))
+            // Integer math (×100) avoids float drift like 1.04999 instead of 1.05.
+            val currentSpeedInt = (VideoInformation.getPlaybackSpeed() * 100).roundToInt()
+            val newSpeedInt = maxOf(25, minOf(800, currentSpeedInt + direction * speedStepInt))
+            val newSpeed = newSpeedInt / 100f
             VideoInformation.overridePlaybackSpeed(newSpeed)
             overlayController.onSpeedChanged(newSpeed)
         }

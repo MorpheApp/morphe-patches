@@ -1106,6 +1106,7 @@ Phát video bằng AV1 có thể bị giật hoặc tụt khung hình."</string>
   <string name="morphe_spoof_video_streams_about_js">• Nếu giải mã thất bại, video có thể không phát được</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Buộc âm thanh gốc không khả dụng</string>
+  <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• Chất lượng có thể giới hạn ở 720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Biến thể JavaScript của trình phát</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Hiện thông tin giả mạo trong Thống kê chi tiết</string>

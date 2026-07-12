@@ -1108,6 +1108,7 @@ Odtwarzanie filmu z użyciem AV1 może powodować zacinanie się lub gubienie kl
   <string name="morphe_spoof_video_streams_about_js">• Jeśli odszyfrowywanie zawiedzie, odtwarzanie może nie działać</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Wymuszanie oryginalnej ścieżki dźwiękowej nie działa</string>
+  <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• Jakość może być ograniczona do 720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Wariant skryptu JS odtwarzacza</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Pokaż fałszowanie w Statystykach dla nerdów</string>

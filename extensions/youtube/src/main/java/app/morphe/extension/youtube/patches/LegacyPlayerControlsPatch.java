@@ -1,7 +1,7 @@
 package app.morphe.extension.youtube.patches;
 
+import static app.morphe.extension.shared.spoof.SpoofAppVersionPatch.isSpoofingToLessThan;
 import static app.morphe.extension.youtube.patches.VersionCheckPatch.IS_20_31_OR_GREATER;
-import static app.morphe.extension.youtube.patches.spoof.SpoofAppVersionPatch.isSpoofingToLessThan;
 
 import android.view.View;
 import android.view.ViewTreeObserver;

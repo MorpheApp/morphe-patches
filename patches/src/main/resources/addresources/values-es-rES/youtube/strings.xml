@@ -1111,6 +1111,7 @@ La reproducción de vídeo con AV1 se puede atascar o perder fotogramas."</strin
   <string name="morphe_spoof_video_streams_about_js">• Si el descifrado falla, la reproducción puede fallar</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Forzar audio original no está disponible</string>
+  <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• La calidad puede estar limitada a 720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Variante de JavaScript del reproductor</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Mostrar manipulación en Estadísticas para nerds</string>

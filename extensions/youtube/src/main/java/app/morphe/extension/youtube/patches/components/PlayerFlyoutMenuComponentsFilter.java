@@ -10,19 +10,6 @@
 
 package app.morphe.extension.youtube.patches.components;
 
-import static app.morphe.extension.youtube.settings.Settings.HIDE_PLAYER_FLYOUT_ADDITIONAL_SETTINGS;
-import static app.morphe.extension.youtube.settings.Settings.HIDE_PLAYER_FLYOUT_AMBIENT_MODE;
-import static app.morphe.extension.youtube.settings.Settings.HIDE_PLAYER_FLYOUT_AUDIO_TRACK;
-import static app.morphe.extension.youtube.settings.Settings.HIDE_PLAYER_FLYOUT_AUDIO_TRACK_FOOTER;
-import static app.morphe.extension.youtube.settings.Settings.HIDE_PLAYER_FLYOUT_CAPTIONS;
-import static app.morphe.extension.youtube.settings.Settings.HIDE_PLAYER_FLYOUT_HELP;
-import static app.morphe.extension.youtube.settings.Settings.HIDE_PLAYER_FLYOUT_LISTEN_WITH_YOUTUBE_MUSIC;
-import static app.morphe.extension.youtube.settings.Settings.HIDE_PLAYER_FLYOUT_LOCK_SCREEN;
-import static app.morphe.extension.youtube.settings.Settings.HIDE_PLAYER_FLYOUT_LOOP_VIDEO;
-import static app.morphe.extension.youtube.settings.Settings.HIDE_PLAYER_FLYOUT_QUALITY_FOOTER;
-import static app.morphe.extension.youtube.settings.Settings.HIDE_PLAYER_FLYOUT_SPEED;
-import static app.morphe.extension.youtube.settings.Settings.LOOP_VIDEO_BUTTON;
-
 import java.util.List;
 
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
@@ -66,7 +53,7 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
 
     public PlayerFlyoutMenuComponentsFilter() {
         audioTrackMenuFooter = new StringFilterGroup(
-                HIDE_PLAYER_FLYOUT_AUDIO_TRACK_FOOTER,
+                Settings.HIDE_PLAYER_FLYOUT_AUDIO_TRACK_FOOTER,
                 "audio_track_sheet_footer.e"
         );
 
@@ -76,7 +63,7 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
         );
 
         qualityMenuFooter = new StringFilterGroup(
-                HIDE_PLAYER_FLYOUT_QUALITY_FOOTER,
+                Settings.HIDE_PLAYER_FLYOUT_QUALITY_FOOTER,
                 "quality_sheet_footer.e"
         );
 
@@ -89,42 +76,42 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
 
         flyoutFilterGroupList.addAll(
                 new ByteArrayFilterGroup(
-                        HIDE_PLAYER_FLYOUT_CAPTIONS,
+                        Settings.HIDE_PLAYER_FLYOUT_CAPTIONS,
                         "closed_caption_",
                         "yt_outline_experimental_closed_captions_"
                 ),
                 new ByteArrayFilterGroup(
-                        HIDE_PLAYER_FLYOUT_LISTEN_WITH_YOUTUBE_MUSIC,
+                        Settings.HIDE_PLAYER_FLYOUT_LISTEN_WITH_YOUTUBE_MUSIC,
                         "yt_outline_youtube_music_",
                         "yt_outline_experimental_youtube_music_"
                 ),
                 new ByteArrayFilterGroup(
-                        HIDE_PLAYER_FLYOUT_HELP,
+                        Settings.HIDE_PLAYER_FLYOUT_HELP,
                         "yt_outline_question_circle_",
                         "yt_outline_experimental_help_circle_"
                 ),
                 new ByteArrayFilterGroup(
-                        HIDE_PLAYER_FLYOUT_LOCK_SCREEN,
+                        Settings.HIDE_PLAYER_FLYOUT_LOCK_SCREEN,
                         "yt_outline_lock_",
                         "yt_outline_experimental_lock_"
                 ),
                 new ByteArrayFilterGroup(
-                        HIDE_PLAYER_FLYOUT_SPEED,
+                        Settings.HIDE_PLAYER_FLYOUT_SPEED,
                         "yt_outline_play_arrow_half_circle_",
                         "yt_outline_experimental_play_circle_half_dashed_"
                 ),
                 new ByteArrayFilterGroup(
-                        HIDE_PLAYER_FLYOUT_AUDIO_TRACK,
+                        Settings.HIDE_PLAYER_FLYOUT_AUDIO_TRACK,
                         "yt_outline_person_",
                         "yt_outline_experimental_person_"
                 ),
                 new ByteArrayFilterGroup(
-                        HIDE_PLAYER_FLYOUT_ADDITIONAL_SETTINGS,
+                        Settings.HIDE_PLAYER_FLYOUT_ADDITIONAL_SETTINGS,
                         "yt_outline_gear_",
                         "yt_outline_experimental_gear_"
                 ),
                 new ByteArrayFilterGroup(
-                        HIDE_PLAYER_FLYOUT_AMBIENT_MODE,
+                        Settings.HIDE_PLAYER_FLYOUT_AMBIENT_MODE,
                         "yt_outline_screen_light_",
                         "yt_outline_experimental_ambient_mode_"
                 ),
@@ -171,7 +158,7 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
                 return Settings.HIDE_PLAYER_FLYOUT_CAPTIONS_FOOTER.get();
             }
             if (path.contains("quick_quality_sheet_content.e")) {
-                return HIDE_PLAYER_FLYOUT_QUALITY_FOOTER.get();
+                return Settings.HIDE_PLAYER_FLYOUT_QUALITY_FOOTER.get();
             }
             return path.contains("overflow_menu_item.e");
         }
@@ -190,7 +177,7 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
             return false;
         }
 
-        if (HIDE_PLAYER_FLYOUT_LOOP_VIDEO.get() || LOOP_VIDEO_BUTTON.get()) {
+        if (Settings.HIDE_PLAYER_FLYOUT_LOOP_VIDEO.get() || Settings.LOOP_VIDEO_BUTTON.get()) {
             if (flyoutLoopVideoButton.check(buffer).isFiltered()) {
                 return true;
             }

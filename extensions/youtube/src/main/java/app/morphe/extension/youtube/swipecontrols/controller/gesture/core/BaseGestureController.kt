@@ -26,6 +26,7 @@ abstract class BaseGestureController(
         controller.config.brightnessSwipeSensitivity,
         controller.config.volumeSwipeSensitivity,
         controller.config.speedSwipeSensitivity,
+        controller.config.speedStepInt,
         controller.config.enableSpeedGestureControl,
     ) {
 
