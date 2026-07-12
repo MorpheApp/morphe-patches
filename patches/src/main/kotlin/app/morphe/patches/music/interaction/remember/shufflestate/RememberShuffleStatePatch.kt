@@ -7,6 +7,7 @@
 
 package app.morphe.patches.music.interaction.remember.shufflestate
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
@@ -58,6 +59,7 @@ val rememberShuffleStatePatch = bytecodePatch(
         val enumClass = ShuffleEnumFingerprint.method.definingClass
 
         ShuffleOnClickFingerprint.let { fingerprint ->
+            // TODO: Replace this manual searching with instruction filters.
             fingerprint.method.apply {
                 val startIndex = fingerprint.instructionMatches.first().index
 
@@ -123,10 +125,12 @@ val rememberShuffleStatePatch = bytecodePatch(
                     method.returnType == "V" &&
                             method.indexOfFirstInstruction {
                                 val ref = getReference<MethodReference>()
-                                opcode == Opcode.INVOKE_VIRTUAL && ref?.name == "ordinal" && ref.definingClass == enumClass
+                                opcode == Opcode.INVOKE_VIRTUAL && ref?.name == "ordinal"
+                                        && ref.definingClass == enumClass
                             } >= 0 &&
                             method.indexOfFirstInstruction {
-                                opcode == Opcode.INVOKE_VIRTUAL && getReference<MethodReference>()?.name == "post"
+                                opcode == Opcode.INVOKE_VIRTUAL
+                                        && getReference<MethodReference>()?.name == "post"
                             } >= 0
                 } ?: throw PatchException("Internal shuffle method not found in $shuffleClass")
 
@@ -142,15 +146,14 @@ val rememberShuffleStatePatch = bytecodePatch(
                 if (is_8_03_or_greater) {
                     val ordinalIndex = clonedMethod.indexOfFirstInstruction {
                         val ref = getReference<MethodReference>()
-                        opcode == Opcode.INVOKE_VIRTUAL && ref?.name == "ordinal" && ref.definingClass == enumClass
+                        opcode == Opcode.INVOKE_VIRTUAL && ref?.name == "ordinal"
+                                && ref.definingClass == enumClass
                     }
                     val register = clonedMethod.getInstruction<FiveRegisterInstruction>(ordinalIndex).registerC
 
-                    clonedMethod.addInstructions(
+                    clonedMethod.addInstruction(
                         ordinalIndex,
-                        """
-                            move-object/from16 v$register, p1
-                        """
+                        "move-object/from16 v$register, p1"
                     )
                 }
 

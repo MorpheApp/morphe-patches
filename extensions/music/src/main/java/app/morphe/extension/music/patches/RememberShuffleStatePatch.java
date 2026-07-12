@@ -9,6 +9,7 @@ package app.morphe.extension.music.patches;
 
 import android.util.Log;
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Logger;
 
 @SuppressWarnings("unused")
 public class RememberShuffleStatePatch {
@@ -47,6 +48,6 @@ public class RememberShuffleStatePatch {
      * Injection point.
      */
     public static void shuffleTracks() {
-        Log.d("Morphe: RememberShuffle", "Tracks are shuffled");
+        Logger.printDebug(() -> "Shuffle tracks");
     }
 }
