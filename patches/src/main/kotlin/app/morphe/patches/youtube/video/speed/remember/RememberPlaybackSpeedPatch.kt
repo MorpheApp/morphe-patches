@@ -31,6 +31,8 @@ import app.morphe.patches.youtube.video.speed.custom.customPlaybackSpeedPatch
 import app.morphe.patches.youtube.video.speed.settingsMenuVideoSpeedGroup
 import app.morphe.patches.youtube.video.videoid.hookPlayerResponseVideoId
 import app.morphe.patches.youtube.video.videoid.videoIdPatch
+import app.morphe.util.findFreeRegister
+import app.morphe.util.p0Register
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 
 private const val EXTENSION_CLASS =
@@ -70,12 +72,11 @@ internal val rememberPlaybackSpeedPatch = bytecodePatch {
 
         hookPlayerResponseVideoId("$EXTENSION_CLASS->preloadMusicVideoFetch(Ljava/lang/String;Z)V")
 
-
         /*
          * Hook the code that is called when the playback speeds are initialized, and sets the playback speed
          */
-        InitializePlaybackSpeedValuesFingerprint.clearMatch()
         InitializePlaybackSpeedValuesFingerprint.let {
+            it.clearMatch()
             val targetInstructionIndex = it.instructionMatches.first().index
 
             it.method.apply {
@@ -84,32 +85,36 @@ internal val rememberPlaybackSpeedPatch = bytecodePatch {
                     targetInstructionIndex
                 ).reference
 
+                val free = findFreeRegister(targetInstructionIndex,
+                    p0Register, speedSelectionValueRegister)
+
                 addInstructionsWithLabels(
                     targetInstructionIndex,
                     """
                         invoke-static { }, $EXTENSION_CLASS->getPlaybackSpeedOverride()F
-                        move-result v$speedSelectionValueRegister
+                        move-result v$speedSelectionValueRegister      
                         
                         # Check if the playback speed is not auto (-2.0f)
-                        const/4 v1, 0x0
-                        cmpg-float v1, v$speedSelectionValueRegister, v1
-                        if-lez v1, :do_not_override
+                        const/4 v$free, 0x0      
+                        cmpg-float v$free, v$speedSelectionValueRegister, v$free
+                        if-lez v$free, :do_not_override      
         
                         # Get the instance of the class which has the container class field below.
-                        iget-object v1, p0, $onItemClickListenerClassFieldReference
+                        iget-object v$free, p0, $onItemClickListenerClassFieldReference
     
                         # Get the container class field.
-                        iget-object v1, v1, ${setPlaybackSpeedContainerClassFieldReferenceRef.get()}
+                        iget-object v$free, v$free, ${setPlaybackSpeedContainerClassFieldReferenceRef.get()!!}      
                         
                         # Required cast for 20.49+
-                        check-cast v1, ${setPlaybackSpeedContainerClassFieldReferenceClassTypeRef.get()}
+                        check-cast v$free, ${setPlaybackSpeedContainerClassFieldReferenceClassTypeRef.get()!!}
                         
                         # Get the field from its class.
-                        iget-object v2, v1, ${setPlaybackSpeedClassFieldReferenceRef.get()}
+                        iget-object v$free, v$free, ${setPlaybackSpeedClassFieldReferenceRef.get()!!}      
                         
                         # Invoke setPlaybackSpeed on that class.
-                        invoke-virtual {v2, v$speedSelectionValueRegister}, ${setPlaybackSpeedMethodReferenceRef.get()}
-                    """, ExternalLabel("do_not_override", getInstruction(targetInstructionIndex))
+                        invoke-virtual { v$free, v$speedSelectionValueRegister }, ${setPlaybackSpeedMethodReferenceRef.get()!!}
+                    """,
+                    ExternalLabel("do_not_override", getInstruction(targetInstructionIndex))
                 )
             }
         }

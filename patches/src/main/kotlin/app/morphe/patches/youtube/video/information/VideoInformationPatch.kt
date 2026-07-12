@@ -36,6 +36,7 @@ import app.morphe.patches.youtube.video.playerresponse.Hook
 import app.morphe.patches.youtube.video.playerresponse.addPlayerResponseMethodHook
 import app.morphe.patches.youtube.video.playerresponse.playerResponseMethodHookPatch
 import app.morphe.patches.youtube.video.speed.custom.InitializePlaybackSpeedValuesFingerprint
+import app.morphe.patches.youtube.video.speed.custom.SpeedFloatFieldAccessFingerprint
 import app.morphe.patches.youtube.video.videoid.hookBackgroundPlayVideoId
 import app.morphe.patches.youtube.video.videoid.hookPlayerResponsePlaylistId
 import app.morphe.patches.youtube.video.videoid.hookPlayerResponseVideoId
@@ -225,42 +226,32 @@ val videoInformationPatch = bytecodePatch(
         /*
          * Hook the code that is called when the playback speeds are initialized, and sets the playback speed
          */
-        InitializePlaybackSpeedValuesFingerprint.clearMatch()
-        InitializePlaybackSpeedValuesFingerprint.method.apply {
-            // Get the access field of playback speed float.
-            val speedFloatFieldAccess = Fingerprint(
-                parameters = listOf("[L", "F"),
-                filters = listOf(
-                    fieldAccess(opcode = Opcode.IGET, type = "F"),
-                    methodCall(
-                        opcode = Opcode.INVOKE_STATIC,
-                        smali = "Ljava/lang/Float;->compare(FF)I",
-                        location = MatchAfterImmediately()
-                    )
+        InitializePlaybackSpeedValuesFingerprint.let {
+            it.clearMatch()
+            it.method.apply {
+                // Get the access field of playback speed float.
+                val speedFloatField = SpeedFloatFieldAccessFingerprint.instructionMatches
+                    .first().getInstruction<ReferenceInstruction>().reference
+
+                speedSelectionInsertMethodRef = WeakReference(this)
+                // Set the starting index before the first nop instruction
+                speedSelectionInsertIndex = it.instructionMatches.first().index + 4
+                speedSelectionValueRegister = 0
+
+                addInstructionsWithLabels(
+                    0,
+                    """
+                        # Read the current set playback speed, once the playback speed panel is used (index is higher or equal 0).
+                        const/4 v1, -0x1
+                        if-eq p2, v1, :float_null_check
+                        aget-object v$speedSelectionValueRegister, p1, p2
+                        iget v$speedSelectionValueRegister, v$speedSelectionValueRegister, $speedFloatField
+                        nop
+                        :float_null_check
+                        nop
+                    """
                 )
-            ).run {
-                method.getInstruction<ReferenceInstruction>(instructionMatches.first().index).reference
             }
-
-            val targetInstructionIndex = InitializePlaybackSpeedValuesFingerprint.instructionMatches.first().index
-
-            speedSelectionInsertMethodRef = WeakReference(this)
-            speedSelectionInsertIndex = targetInstructionIndex + 4 // Set the starting index before the first nop instruction
-            speedSelectionValueRegister = 0
-
-            addInstructionsWithLabels(
-                0,
-                """
-                    # Read the current set playback speed, once the playback speed panel is used (index is higher or equal 0).
-                    const/4 v1, -0x1
-                    if-eq p2, v1, :float_null_check
-                    aget-object v$speedSelectionValueRegister, p1, p2
-                    iget v$speedSelectionValueRegister, v$speedSelectionValueRegister, $speedFloatFieldAccess
-                    nop
-                    :float_null_check
-                    nop
-                """
-            )
         }
 
         /*

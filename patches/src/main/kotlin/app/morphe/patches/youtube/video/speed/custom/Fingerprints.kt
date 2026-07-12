@@ -36,19 +36,30 @@ internal object AudioTrackOldBottomSheetFingerprint : Fingerprint(
     )
 )
 
+internal object SpeedFloatFieldAccessFingerprint : Fingerprint(
+    parameters = listOf("[L", "F"),
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IGET, type = "F"),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            smali = "Ljava/lang/Float;->compare(FF)I",
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
 internal object InitializePlaybackSpeedValuesFingerprint : Fingerprint(
     parameters = listOf("[L", "I"),
-    strings = listOf("menu_item_playback_speed"),
-    filters = listOf(
-        opcode(opcode = Opcode.IGET_OBJECT),
-        opcode(opcode = Opcode.IGET_OBJECT, location = MatchAfterImmediately()),
-        opcode(opcode = Opcode.IF_NE, location = MatchAfterImmediately()),
-        opcode(opcode = Opcode.IGET, location = MatchAfterImmediately()),
-        opcode(opcode = Opcode.IF_EQ, location = MatchAfterImmediately()),
-        opcode(opcode = Opcode.IPUT_OBJECT, location = MatchAfterImmediately()),
-        opcode(opcode = Opcode.IPUT, location = MatchAfterImmediately()),
-        opcode(opcode = Opcode.IGET_OBJECT, location = MatchAfterImmediately()),
-    )
+    filters = OpcodesFilter.opcodesToFilters(
+        Opcode.IGET_OBJECT,
+        Opcode.IGET_OBJECT,
+        Opcode.IF_NE,
+        Opcode.IGET,
+        Opcode.IF_EQ,
+        Opcode.IPUT_OBJECT,
+        Opcode.IPUT,
+        Opcode.IGET_OBJECT
+    ) + string("menu_item_playback_speed")
 )
 
 internal object ShowOldPlaybackSpeedMenuFingerprint : Fingerprint(
