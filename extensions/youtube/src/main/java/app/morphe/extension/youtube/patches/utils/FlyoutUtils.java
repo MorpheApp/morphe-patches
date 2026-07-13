@@ -283,60 +283,52 @@ public final class FlyoutUtils {
 
     private static void setCommentId(byte[] buffer) {
         try {
-            int base64StartIndex = 0;
-            int base64EndIndex;
+            int bestStart = -1, bestEnd = -1, maxLen = 0, curr = 0;
 
             // Ensure the string is a base64 value and not a false-positive.
-            while (true) {
-                base64StartIndex = indexOf(buffer, "kg".getBytes(StandardCharsets.UTF_8), base64StartIndex);
-                base64EndIndex = base64StartIndex;
-                if (base64StartIndex < 0) {
-                    break;
-                }
-
-                while (base64EndIndex < buffer.length) {
-                    byte b = buffer[base64EndIndex];
+            while (curr < buffer.length) {
+                int start = curr;
+                while (curr < buffer.length) {
+                    byte b = buffer[curr];
                     if ((b >= 'A' && b <= 'Z') || (b >= 'a' && b <= 'z') || (b >= '0' && b <= '9')
                             || b == '+' || b == '/' || b == '=' || b == '-' || b == '_') {
-                        base64EndIndex++;
+                        curr++;
                     } else {
                         break;
                     }
                 }
-
-                if (base64EndIndex - base64StartIndex >= 100) {
-                    break;
+                int len = curr - start;
+                if (len > maxLen) {
+                    maxLen = len;
+                    bestStart = start;
+                    bestEnd = curr;
                 }
-
-                base64StartIndex = base64EndIndex;
+                if (len == 0) curr++;
+            }
+            if (maxLen < 150) {
+                Logger.printException(() -> "extractCommentId failure: No base64 string found!");
+                return;
             }
 
             // Extract the Comment ID from the fetched base64 decoded buffer.
-            if (base64EndIndex > -1) {
-                byte[] byteBase64 = Base64.decode(
-                        Arrays.copyOfRange(buffer, base64StartIndex, base64EndIndex),
-                        Base64.DEFAULT
-                );
-                int base64VideoIdIndex = indexOf(
-                        byteBase64,
-                        VideoInformation.getVideoId().getBytes(StandardCharsets.UTF_8)
-                );
+            byte[] byteBase64 = Base64.decode(Arrays.copyOfRange(buffer, bestStart, bestEnd), Base64.URL_SAFE);
+            int base64VideoIdIndex = indexOf(byteBase64, VideoInformation.getVideoId().getBytes(StandardCharsets.UTF_8));
 
-                if (base64VideoIdIndex >= 0) {
-                    byte[] rawCommentId = Arrays.copyOfRange(byteBase64, 0, base64VideoIdIndex);
-
-                    flyoutCommentId = new String(rawCommentId, StandardCharsets.UTF_8)
-                                    .replaceAll("[^A-Za-z0-9_.-]", " ")
-                                    .trim()
-                                    .split(" ")[0];
-                    // Reset 'flyoutCommentId' immediately after its fetching (when the comment
-                    // share flyout button is pressed), to prevent unintended usage.
-                    Utils.runOnMainThreadDelayed(
-                            () -> flyoutCommentId = "",
-                            500
-                    );
-                }
+            if (base64VideoIdIndex == -1) {
+                Logger.printException(() -> "extractCommentId failure: No videoId found in the decoded base64 string!");
+                return;
             }
+
+            byte[] rawCommentId = Arrays.copyOfRange(byteBase64, 0, base64VideoIdIndex);
+
+            flyoutCommentId = new String(rawCommentId, StandardCharsets.UTF_8)
+                    .replaceAll("[^A-Za-z0-9_.-]", " ")
+                    .trim()
+                    .split(" ")[0];
+
+            // Reset 'flyoutCommentId' immediately after its fetching (when the comment
+            // share flyout button is pressed), to prevent unintended usage.
+            Utils.runOnMainThreadDelayed(() -> flyoutCommentId = "", 500);
         } catch (Exception ex) {
             Logger.printException(() -> "extractCommentId failure", ex);
         }
