@@ -24,15 +24,14 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_title">Külső letöltések</string>
   <string name="morphe_external_downloader_name_title">Letöltő csomagneve</string>
   <string name="morphe_external_downloader_name_summary">A telepített külső letöltőalkalmazás csomagneve</string>
-  <string name="morphe_external_downloader_flyout_button_title">A feed/keresés felugró panel gombjának felülírása</string>
-  <string name="morphe_external_downloader_other_item_hint">Adjon meg egy csomagnevet</string>
+  <string name="morphe_external_downloader_other_item_hint">Csomag név beírása</string>
   <string name="morphe_external_downloader_other_item">Egyéb</string>
   <string name="morphe_external_downloader_not_found_title">Az alkalmazás nincs telepítve</string>
   <string name="morphe_external_downloader_not_installed_warning">A(z) %s nincs telepítve. Kérjük, telepítse.</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Nem található telepített alkalmazás a megadott csomagnévvel: %s
 
 Ellenőrizze, hogy a csomagnév helyes-e, és az alkalmazás telepítve van-e."</string>
-  <string name="morphe_external_downloader_empty_warning">A csomagnév nem lehet üres.</string>
+  <string name="morphe_external_downloader_empty_warning">A csomag név nem lehet üres</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Egyéni</string>
   <string name="morphe_custom_branding_icon_title">Alkalmazás ikonja</string>

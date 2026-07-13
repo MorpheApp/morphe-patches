@@ -283,9 +283,9 @@ Omezení:
   <string name="morphe_external_downloader_screen_summary">Stahujte videa, podcasty nebo písně pomocí aplikací pro stahování třetích stran</string>
   <string name="morphe_external_downloader_title">Zobrazit tlačítko pro externí stahování</string>
   <string name="morphe_external_downloader_summary">Zobrazuje překryvné tlačítko v přehrávači videa, které otevře váš externí downloader</string>
-  <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
-  <string name="morphe_external_downloader_action_button_title">Přepsat tlačítko akce Stáhnout</string>
-  <string name="morphe_external_downloader_action_button_summary">Nahrazuje vestavěnou funkci stahování YouTube vaším externím downloaderem</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">Přepsat tlačítko akce Stahování &amp; menu</string>
+  <string name="morphe_external_downloader_action_button_summary">Používá vámi zvolený externí stahovač místo vestavěné funkce stahování YouTube</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Hlasový překlad</string>
   <string name="morphe_vot_screen_summary">Přečte titulky videa nahlas pomocí text-to-speech v zařízení, synchronizovaně s přehráváním</string>
@@ -866,9 +866,9 @@ Omezení: Pokud je vypnutá možnost 'Obnovit starou lištu akcí videa', překr
   <string name="morphe_open_system_share_sheet_summary">Otevře systémový sdílecí list místo toho v aplikaci, když sdílíte obsah</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Přepsání tlačítek YouTube Music</string>
-  <string name="morphe_override_youtube_music_buttons_summary">Otevře vaši preferovanou hudební aplikaci místo YouTube Music při klepnutí na hudební tlačítka</string>
-  <string name="morphe_music_package_name_title">Název balíčku cílové hudební aplikace</string>
-  <string name="morphe_music_package_name_summary">Název balíčku vaší nainstalované cílové hudební aplikace</string>
+  <string name="morphe_override_youtube_music_buttons_summary">Otevírá vaši preferovanou hudební aplikaci místo oficiální aplikace YouTube Music</string>
+  <string name="morphe_music_package_name_title">Název balíčku hudební aplikace</string>
+  <string name="morphe_music_package_name_summary">Název balíčku vaší nainstalované hudební aplikace</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Úvodní stránka</string>
   <string name="morphe_change_start_page_entry_default">Výchozí</string>
@@ -1082,7 +1082,7 @@ Omezení:
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Chcete-li tuto funkci použít, nastavte ‚Podvádění video streamů‘ na Android VR nebo Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Otevírí menu kvality ½pokročilých nastavení</string>
+  <string name="morphe_advanced_video_quality_menu_title">Otevřít nabídku pokročilého nastavení kvality</string>
   <string name="morphe_advanced_video_quality_menu_summary">Přeskočí menu pro výběr kvality a přímo otevře menu čpokročilých nastavení</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Skrýt možnosti Premium kvality</string>

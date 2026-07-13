@@ -23,8 +23,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Personalizado</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Descarga videos musicales, podcasts o canciones con aplicaciones de descarga de terceros</string>
-  <string name="morphe_external_downloader_action_button_title">Reemplazar botón de acción de descarga</string>
-  <string name="morphe_external_downloader_action_button_summary">Reemplaza la función de descarga integrada de YouTube Music con tu descargador externo</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">Reemplazar botón de descarga</string>
+  <string name="morphe_external_downloader_action_button_summary">Utiliza tu descargador externo elegido en lugar de la función de descarga integrada de YouTube Music</string>
+  <string name="morphe_external_downloader_flyout_menu_title">Reemplazar menú Descargar</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Acerca de Morphe</string>
@@ -103,6 +105,9 @@ YouTube Music 8.x: el fundido cruzado solo funciona en la versión 9.x o posteri
   <string name="morphe_music_crossfade_about_credit_summary">Función de fundido cruzado de VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Habilitar repetición permanente</string>
+  <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <string name="morphe_music_disable_dislike_redirection_title">Desactivar redirección de \'No me gusta\'</string>
+  <string name="morphe_music_disable_dislike_redirection_summary">Evita saltar a la siguiente pista cuando se pulsa el botón de \'No me gusta\'.</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Ocultar botón \"Transmitir\"</string>
   <string name="morphe_music_hide_history_button_title">Ocultar botón \"Historial\"</string>

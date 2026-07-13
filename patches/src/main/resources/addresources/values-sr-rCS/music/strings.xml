@@ -23,8 +23,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Prvi</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Preuzmite muzičke spotove, podkaste ili pesme pomoću aplikacija za preuzimanje trećih strana</string>
-  <string name="morphe_external_downloader_action_button_title">Zameni dugme radnje „Preuzmi”</string>
-  <string name="morphe_external_downloader_action_button_summary">Zamenjuje ugračenu funkciju za preuzimanje YouTube muzike spoljnim preuzimačem</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">Zameni dugme za preuzimanje</string>
+  <string name="morphe_external_downloader_action_button_summary">Koristi tvoj odabrani eksterni program za preuzimanje umesto ugrađene funkcije za preuzimanje YouTube Music</string>
+  <string name="morphe_external_downloader_flyout_menu_title">Zameni Preuzmi meni</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">O programu</string>
@@ -101,6 +103,9 @@ YouTube Music 8.x — prelazni efekat radi samo na 9.x i novijim verzijama"</str
   <string name="morphe_music_crossfade_about_credit_summary">Funkcija prelaznog efekta od strane VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Omogući trajno ponavljanje</string>
+  <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <string name="morphe_music_disable_dislike_redirection_title">Onemogući preusmerBravljenje pri negađenNji</string>
+  <string name="morphe_music_disable_dislike_redirection_summary">Sprečava preskakanje na sledeCdeću numeru kada se pritisne dugme za negaNje</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Sakrij dugme „Prebacuj”</string>
   <string name="morphe_music_hide_history_button_title">Sakrij dugme „Istorija”</string>

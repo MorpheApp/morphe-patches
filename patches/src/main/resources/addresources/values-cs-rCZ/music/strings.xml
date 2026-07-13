@@ -23,8 +23,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Vlastní</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Stahujte hudební videa, podcasty nebo písně pomocí externích aplikací pro stahování</string>
-  <string name="morphe_external_downloader_action_button_title">Přepsat tlačítko akce Stahování</string>
-  <string name="morphe_external_downloader_action_button_summary">Nahrazuje vestavěnou funkci stahování v YouTube Music vaším externím stahovatelem</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">Přepsat tlačítko Stahování</string>
+  <string name="morphe_external_downloader_action_button_summary">Používá vámi zvolený externí program pro stahování místo vestavěné funkce stahování YouTube Music</string>
+  <string name="morphe_external_downloader_flyout_menu_title">Přepsat nabídku Stahování</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">O aplikaci</string>
@@ -102,6 +104,9 @@ YouTube Music 8.x – plynulé přecházení funguje pouze ve verzích 9.x a vy�
   <string name="morphe_music_crossfade_about_credit_summary">Funkce plynulého přecházení od VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Povolit trvalé opakování</string>
+  <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <string name="morphe_music_disable_dislike_redirection_title">Vypnout přesměrování dislajků</string>
+  <string name="morphe_music_disable_dislike_redirection_summary">Zabraňuje přeskoku na další skladbu po stisknutí tlačítka \"Dislike\".</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Skrýt tlačítko Odesílat</string>
   <string name="morphe_music_hide_history_button_title">Skrýt tlačítko historie</string>

@@ -283,9 +283,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_summary">Изтегляйте видеа, подкасти или песни чрез външни приложения за изтегляне</string>
   <string name="morphe_external_downloader_title">Покажи бутон за външен свалик</string>
   <string name="morphe_external_downloader_summary">Показва бутон за наслагване в плейъра на видео, който отваря вашия външен инструмент за изтегляне</string>
-  <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
-  <string name="morphe_external_downloader_action_button_title">Презапиши действие за свалик</string>
-  <string name="morphe_external_downloader_action_button_summary">Заменя вградената функция за изтегляне на YouTube с вашия външен инструмент за изтегляне</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">Замени бутона за изтегляне &amp; менюто</string>
+  <string name="morphe_external_downloader_action_button_summary">Използва избрания от вас външен изтеглител вместо вградената функция за изтегляне на YouTube</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Превод на глас зад кадър</string>
   <string name="morphe_vot_screen_summary">Четете надписите на видеото на глас, използвайки вграден текстов говор, синхронизиран с възпроизвеждането</string>
@@ -866,9 +866,9 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_summary">Отваря дестинационните URL адреси директно, заобикаляйки връзките за проследяване на пренасочване</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Замени бутоните на YouTube Music</string>
-  <string name="morphe_override_youtube_music_buttons_summary">Отваря връзки в браузъра ви, вместо в браузъра в приложението</string>
-  <string name="morphe_music_package_name_title">Име на пакета на целевото музикално приложение</string>
-  <string name="morphe_music_package_name_summary">Име на пакета на инсталираното приложение за музика</string>
+  <string name="morphe_override_youtube_music_buttons_summary">Отваря предпочитаното от вас музикално приложение вместо официалното приложение YouTube Music</string>
+  <string name="morphe_music_package_name_title">Име на пакета на музикалното приложение</string>
+  <string name="morphe_music_package_name_summary">Име на пакета на инсталираното от вас музикално приложение</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Начална страница</string>
   <string name="morphe_change_start_page_entry_default">По подразбиране</string>
@@ -1082,7 +1082,7 @@ Second \"item\" text"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">За да използвате тази функция, задайте „Заблуда на видео потоци“ на Android VR или Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Отворете меню за качеството \'Разширени\'</string>
+  <string name="morphe_advanced_video_quality_menu_title">Отвори меню за разширени настройки за качеството на видеото</string>
   <string name="morphe_advanced_video_quality_menu_summary">Прескача менюто за избор на качество и отваря директно менюто \'Разширени\' за качеството</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Скриване на премиум опции за качество</string>

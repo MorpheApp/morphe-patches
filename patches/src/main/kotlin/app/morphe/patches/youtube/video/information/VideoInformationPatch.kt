@@ -11,10 +11,13 @@
 package app.morphe.patches.youtube.video.information
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.PatchException
@@ -25,6 +28,7 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.smali.toInstructions
 import app.morphe.patches.shared.misc.videoinformation.PlayerControllerSetTimeReferenceFingerprint
+import app.morphe.patches.youtube.layout.captions.StartVideoInformerFingerprint
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_49_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -32,6 +36,8 @@ import app.morphe.patches.youtube.shared.PlaybackSpeedOnItemClickParentFingerpri
 import app.morphe.patches.youtube.video.playerresponse.Hook
 import app.morphe.patches.youtube.video.playerresponse.addPlayerResponseMethodHook
 import app.morphe.patches.youtube.video.playerresponse.playerResponseMethodHookPatch
+import app.morphe.patches.youtube.video.speed.custom.InitializePlaybackSpeedValuesFingerprint
+import app.morphe.patches.youtube.video.speed.custom.SpeedFloatFieldAccessFingerprint
 import app.morphe.patches.youtube.video.videoid.hookBackgroundPlayVideoId
 import app.morphe.patches.youtube.video.videoid.hookPlayerResponsePlaylistId
 import app.morphe.patches.youtube.video.videoid.hookPlayerResponseVideoId
@@ -50,7 +56,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ThreeRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
@@ -79,15 +84,9 @@ private var mdxInitInsertRegister = -1
 private lateinit var timeMethodRef : WeakReference<MutableMethod>
 private var timeInitInsertIndex = 2
 
-// Old speed menu, where speeds are entries in a list. Method is also used by the player speed button.
-private lateinit var legacySpeedSelectionInsertMethodRef : WeakReference<MutableMethod>
-private var legacySpeedSelectionInsertIndex = -1
-private var legacySpeedSelectionValueRegister = -1
-
-// New speed menu, with preset buttons and 0.05x fine adjustments buttons.
 private lateinit var speedSelectionInsertMethodRef : WeakReference<MutableMethod>
 private var speedSelectionInsertIndex = -1
-private var speedSelectionValueRegister = -1
+var speedSelectionValueRegister = -1
 
 // Change playback speed method.
 private lateinit var setPlaybackSpeedMethodRef : WeakReference<MutableMethod>
@@ -225,18 +224,51 @@ val videoInformationPatch = bytecodePatch(
                 .instructionMatches.first().getMethodCalled()
         )
 
-        val setPlaybackSpeedMethodReference: MethodReference
+        /*
+         * Hook the code that is called when the playback speeds are initialized, and sets the playback speed
+         */
+        InitializePlaybackSpeedValuesFingerprint.let {
+            it.clearMatch()
+            it.method.apply {
+                // Get the access field of playback speed float.
+                val speedFloatField = SpeedFloatFieldAccessFingerprint.instructionMatches
+                    .first().getInstruction<ReferenceInstruction>().reference
+
+                speedSelectionInsertMethodRef = WeakReference(this)
+                // Set the starting index before the first nop instruction
+                speedSelectionInsertIndex = it.instructionMatches.first().index + 6
+                speedSelectionValueRegister = 0
+
+                addInstructionsWithLabels(
+                    0,
+                    """
+                        # Read the current set playback speed, once the playback speed panel is used (index is higher or equal 0).
+                        sget-boolean v1, $EXTENSION_CLASS->savePlaybackSpeed:Z
+                        if-eqz v1, :save_playback_speed
+                        const/4 v1, -0x1
+                        if-eq p2, v1, :float_null_check
+                        aget-object v$speedSelectionValueRegister, p1, p2
+                        iget v$speedSelectionValueRegister, v$speedSelectionValueRegister, $speedFloatField
+                        nop
+                        :float_null_check
+                        :save_playback_speed
+                        nop
+                    """
+                )
+
+                StartVideoInformerFingerprint.method.addInstruction(
+                    0,
+                    "invoke-static { }, $EXTENSION_CLASS->enableSavePlaybackSpeed()V"
+                )
+            }
+        }
 
         /*
          * Hook the user playback speed selection.
          */
+        val setPlaybackSpeedMethodReference: MethodReference
         PlaybackSpeedOnItemClickFingerprint.method.apply {
             val speedSelectionValueInstructionIndex = indexOfFirstInstructionOrThrow(Opcode.IGET)
-
-            legacySpeedSelectionInsertMethodRef = WeakReference(this)
-            legacySpeedSelectionInsertIndex = speedSelectionValueInstructionIndex + 1
-            legacySpeedSelectionValueRegister =
-                getInstruction<TwoRegisterInstruction>(speedSelectionValueInstructionIndex).registerA
 
             setPlaybackSpeedMethodReference = getInstruction<ReferenceInstruction>(
                 indexOfFirstInstructionOrThrow(speedSelectionValueInstructionIndex) {
@@ -362,17 +394,6 @@ val videoInformationPatch = bytecodePatch(
                 playbackSpeedClass,
                 smaliInstructions
             )
-        }
-
-        // Handle new playback speed menu.
-        PlaybackSpeedMenuSpeedChangedFingerprint.let {
-            it.method.apply {
-                val index = it.instructionMatches.first().index
-
-                speedSelectionInsertMethodRef = WeakReference(this)
-                speedSelectionInsertIndex = index + 1
-                speedSelectionValueRegister = getInstruction<TwoRegisterInstruction>(index).registerA
-            }
         }
 
         val videoQualityClassType : String
@@ -717,14 +738,9 @@ fun videoSpeedChangedHook(targetMethodClass: String, targetMethodName: String) =
  * Hook the video speed selected by the user.
  */
 fun userSelectedPlaybackSpeedHook(targetMethodClass: String, targetMethodName: String) {
-    legacySpeedSelectionInsertMethodRef.get()!!.addInstruction(
-        legacySpeedSelectionInsertIndex++,
-        "invoke-static { v$legacySpeedSelectionValueRegister }, $targetMethodClass->$targetMethodName(F)V"
-    )
-
-    speedSelectionInsertMethodRef.get()!!.addInstruction(
+    speedSelectionInsertMethodRef.get()!!.addInstructionsAtControlFlowLabel(
         speedSelectionInsertIndex++,
-        "invoke-static { v$speedSelectionValueRegister }, $targetMethodClass->$targetMethodName(F)V",
+        "invoke-static { v$speedSelectionValueRegister }, $targetMethodClass->$targetMethodName(F)V"
     )
 }
 

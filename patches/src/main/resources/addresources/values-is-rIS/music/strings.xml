@@ -23,8 +23,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Sérsniðið</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Sæktu niður tónlistarmyndbönd, þætti eða lög með þriðja aðila niðurhal forrit</string>
-  <string name="morphe_external_downloader_action_button_title">Yfirskrifa niðurhalshnappinn</string>
-  <string name="morphe_external_downloader_action_button_summary">Býtir út innbyggðu niðurhalastarfsemi YouTube Music með niðurhalastarfsemi þinni</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">Yfirskrifa niðurhalstakkann</string>
+  <string name="morphe_external_downloader_action_button_summary">Notar valinn niðurhalsskilari þinn í stað innbyggðs niðurhalakerfis YouTube Music</string>
+  <string name="morphe_external_downloader_flyout_menu_title">Yfirskrifa Niðurhal valmynd</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Um Morphe</string>
@@ -102,6 +104,9 @@ YouTube Music 8.x — crossfade virkar bara á 9.x og nýrri útgáfum"</string>
   <string name="morphe_music_crossfade_about_credit_summary">Crossfade virkni af VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Virkja endurtekningu</string>
+  <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <string name="morphe_music_disable_dislike_redirection_title">Gerðu kvíða útaf að breyta áttun þegar ólíka takkan er ýtt á</string>
+  <string name="morphe_music_disable_dislike_redirection_summary">Kemur í veg fyrir að spila næsta lag þegar ólíka takkan er ýtt á</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Fela Cast hnapp</string>
   <string name="morphe_music_hide_history_button_title">Fela Sögu hnapp</string>

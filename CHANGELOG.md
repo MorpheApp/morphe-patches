@@ -1,3 +1,14 @@
+## [1.35.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.35.0-dev.1...v1.35.0-dev.2) (2026-07-13)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Playback speed:** Support new native playback speed menu ([#1957](https://github.com/MorpheApp/morphe-patches/issues/1957)) ([a4641d6](https://github.com/MorpheApp/morphe-patches/commit/a4641d6731170e03b26abc4ecb37230193271673))
+* **YouTube Music - Downloads:** Hide Premium dialog on external download ([#2009](https://github.com/MorpheApp/morphe-patches/issues/2009)) ([4cfe552](https://github.com/MorpheApp/morphe-patches/commit/4cfe552daa946c8d4ca946aeffffb63b62ad8370))
+
+### ✨ New Features
+
+* **YouTube Music:** Add `Disable dislike redirection` patch ([#1962](https://github.com/MorpheApp/morphe-patches/issues/1962)) ([e399e05](https://github.com/MorpheApp/morphe-patches/commit/e399e05835f40e00a5efb9f311eadbee9be599a9))
+
 ## [1.35.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.34.0...v1.35.0-dev.1) (2026-07-12)
 
 ### 🐛 Bug Fixes

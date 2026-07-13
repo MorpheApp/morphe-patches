@@ -23,8 +23,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">מותג</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">הורד קליפי מוזיקה, פודקאסטים או שירים באמצעות אפליקציות הורדה של צד שלישי</string>
-  <string name="morphe_external_downloader_action_button_title">עקוף את פעולת לחצן ההורדה</string>
-  <string name="morphe_external_downloader_action_button_summary">מחליף את פונקציית ההורדה המובנית של YouTube Music במוריד החיצוני שלך</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">עקוף את פעולת הורדה</string>
+  <string name="morphe_external_downloader_action_button_summary">משתמש במוריד החיצוני שבחרת במקום בתכונת ההורדה המובנית של YouTube Music</string>
+  <string name="morphe_external_downloader_flyout_menu_title">תפריט עקיפת הורדה</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">אודות</string>
@@ -102,6 +104,9 @@ YouTube Music 8.x - מעבר הצלילים פועל רק בגרסה 9.x ומע�
   <string name="morphe_music_crossfade_about_credit_summary">תכונת מעבר הצלילים על ידי VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">אפשר חזרה קבועה</string>
+  <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <string name="morphe_music_disable_dislike_redirection_title">ביטול הפנייה בלחיצה על \"דיסלייק\"</string>
+  <string name="morphe_music_disable_dislike_redirection_summary">מניעת דילוג רצועה כאשר לוחצים על \"דיסלייק\"</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">הסתר לחצן שידור</string>
   <string name="morphe_music_hide_history_button_title">הסתר לחצן היסטוריה</string>

@@ -23,8 +23,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Personnalisé</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Téléchargez des vidéos, des podcasts ou des chansons avec des applications de téléchargement tierces</string>
-  <string name="morphe_external_downloader_action_button_title">Remplacer l\'action du bouton \'Télécharger\'</string>
-  <string name="morphe_external_downloader_action_button_summary">Remplace la fonction de téléchargement intégrée de YouTube Music par votre téléchargeur externe</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">Remplacer le bouton \'Télécharger\'</string>
+  <string name="morphe_external_downloader_action_button_summary">Utilise le téléchargeur externe de votre choix à la place de la fonctionnalité de téléchargement intégrée à YouTube Music</string>
+  <string name="morphe_external_downloader_flyout_menu_title">Remplacer le menu \'Télécharger\'</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">À propos</string>
@@ -102,6 +104,9 @@ YouTube Music 8.x — le fondu enchaîné ne fonctionne que sur les versions 9.x
   <string name="morphe_music_crossfade_about_credit_summary">Fonctionnalité de fondu enchaîné par VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Activer la lecture en boucle permanente</string>
+  <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <string name="morphe_music_disable_dislike_redirection_title">Désactiver la redirection des \'Je n\'aime pas\'</string>
+  <string name="morphe_music_disable_dislike_redirection_summary">Empêche de passer au morceau suivant lorsque le bouton \'Je n\'aime pas\' est appuyé</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Masquer le bouton \'Caster\'</string>
   <string name="morphe_music_hide_history_button_title">Masquer le bouton \'Historique\'</string>

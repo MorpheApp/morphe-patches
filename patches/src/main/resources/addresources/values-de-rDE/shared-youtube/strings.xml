@@ -24,15 +24,14 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_title">Externe Downloads</string>
   <string name="morphe_external_downloader_name_title">Paketname des Downloaders</string>
   <string name="morphe_external_downloader_name_summary">Paketname Ihrer installierten externen Downloader-App</string>
-  <string name="morphe_external_downloader_flyout_button_title">Überschreiben-Button für Feed-/Such-Flyout</string>
-  <string name="morphe_external_downloader_other_item_hint">Geben Sie zuerst einen Paketnamen ein</string>
+  <string name="morphe_external_downloader_other_item_hint">Paketname eingeben</string>
   <string name="morphe_external_downloader_other_item">Andere</string>
   <string name="morphe_external_downloader_not_found_title">App nicht installiert</string>
   <string name="morphe_external_downloader_not_installed_warning">%s ist nicht installiert. Bitte installieren Sie es zuerst.</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Es konnte keine installierte App mit dem Paketnamen %s gefunden werden.
 
 Überprüfen Sie, ob der Paketname korrekt ist und die App installiert ist"</string>
-  <string name="morphe_external_downloader_empty_warning">Der Paketname darf nicht leer sein</string>
+  <string name="morphe_external_downloader_empty_warning">Paketname darf nicht leer sein</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Benutzerdefiniert</string>
   <string name="morphe_custom_branding_icon_title">App-Icon</string>

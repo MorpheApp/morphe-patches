@@ -282,9 +282,9 @@ Rajoitukset:
   <string name="morphe_external_downloader_screen_summary">Lataa videoita, podcasteja tai kappaleita kolmannen osapuolen lataussovelluksilla</string>
   <string name="morphe_external_downloader_title">Näytä ulkoinen lataus -painike</string>
   <string name="morphe_external_downloader_summary">Näyttää päällekkäisen painikkeen videotoistimessa, joka avaa ulkoisen lataussovelluksesi</string>
-  <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
-  <string name="morphe_external_downloader_action_button_title">Korvaa Lataa-toimintopainike</string>
-  <string name="morphe_external_downloader_action_button_summary">Korvaa YouTuben sisäänrakennetun lataustoiminnon ulkoisella lataussovelluksellasi</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">Korvaa Lataa-painike ja valikko</string>
+  <string name="morphe_external_downloader_action_button_summary">Käyttää valitsemaasi ulkoista latausohjelmaa YouTuben sisäänrakennetun lataustoiminnon sijaan</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Ääniratateksti</string>
   <string name="morphe_vot_screen_summary">Lue videon tekstitykset ääneen laitteen tekstistä puheeksi -toiminnolla, synkronoitu toiston kanssa</string>
@@ -865,9 +865,9 @@ Rajoitus: Jos \"Palauta vanha videotoimintopalkki\" on poissa käytöstä, \"Lis
   <string name="morphe_open_system_share_sheet_summary">Avaa järjestelmän jakimenu sen sijaan, että käyttäisit sovelluksen omaa jakamista</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Ohita YouTube Musicin painikkeet</string>
-  <string name="morphe_override_youtube_music_buttons_summary">Avaa suosikkimusiikkisovelluksesi YouTuben Musiikin sijaan musiikkipainikkeita napautettaessa</string>
-  <string name="morphe_music_package_name_title">Kohdemusiikkisovelluksen pakkausnimi</string>
-  <string name="morphe_music_package_name_summary">Asennetun kohdemusiikkisovelluksen paketin nimi</string>
+  <string name="morphe_override_youtube_music_buttons_summary">Avaa suosikkimusiikkisovelluksesi YouTuben virallisen musiikkisovelluksen sijaan</string>
+  <string name="morphe_music_package_name_title">Musiikkisovelluksen paketin nimi</string>
+  <string name="morphe_music_package_name_summary">Asennetun musiikkisovelluksesi paketin nimi</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Aloitussivu</string>
   <string name="morphe_change_start_page_entry_default">Oletus</string>
@@ -1081,7 +1081,7 @@ Rajoitukset:
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Käyttääksesi tätä ominaisuutta, aseta \"Naamioi videovirrat\" Android VR:ksi tai Android Studioksi</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Avaa \'Laatu\'-valikon lisääsetukset</string>
+  <string name="morphe_advanced_video_quality_menu_title">Avaa parannetun laadun valikko</string>
   <string name="morphe_advanced_video_quality_menu_summary">Ohittaa laadunvalintavalikon ja avaa Laatu-valikon lisääsetukset suoraan</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Piilota kalliiden laadun valinnat</string>

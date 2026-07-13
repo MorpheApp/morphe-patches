@@ -283,9 +283,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_summary">تنزيل الفيديوهات، البودكاست، أو الأغاني باستخدام تطبيقات تنزيل خارجية</string>
   <string name="morphe_external_downloader_title">عرض زر التنزيل الخارجي</string>
   <string name="morphe_external_downloader_summary">يعرض زرًا على مشغل الفيديو يفتح أداة التنزيل الخارجية الخاصة بك</string>
-  <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
-  <string name="morphe_external_downloader_action_button_title">وظيفة زر إجراء التنزيل</string>
-  <string name="morphe_external_downloader_action_button_summary">يستبدل وظيفة التنزيل المدمجة في YouTube بتطبيق التنزيل الخارجي الذي تختاره</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">تجاوز زر التنزيل &amp; القائمة</string>
+  <string name="morphe_external_downloader_action_button_summary">يستخدم أداة التنزيل الخارجية التي اخترتها بدلًا من ميزة التنزيل المدمجة في YouTube</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">الترجمة الصوتية</string>
   <string name="morphe_vot_screen_summary">قراءة نصوص ترجمة الفيديو بصوت عالٍ باستخدام تحويل النص إلى كلام على الجهاز، بالتزامن مع التشغيل</string>
@@ -871,9 +871,9 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_open_system_share_sheet_summary">يفتح قائمة مشاركة الخاصة بالنظام بدلًا من قائمة التطبيق عند مشاركة المحتوى</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">تغيير وظيفة أزرار YouTube Music</string>
-  <string name="morphe_override_youtube_music_buttons_summary">يفتح تطبيق الموسيقى المفضل لديك بدلًا من YouTube Music عند النقر على أزرار الموسيقى</string>
-  <string name="morphe_music_package_name_title">اسم حزمة تطبيق الموسيقى المستهدف</string>
-  <string name="morphe_music_package_name_summary">اسم حزمة تطبيق الموسيقى المستهدف المثبت لديك</string>
+  <string name="morphe_override_youtube_music_buttons_summary">يفتح تطبيق الموسيقى المفضل لديك بدلًا من تطبيق YouTube Music الرسمي عند النقر على أزرار الموسيقى</string>
+  <string name="morphe_music_package_name_title">اسم حزمة تطبيق الموسيقى</string>
+  <string name="morphe_music_package_name_summary">اسم حزمة تطبيق الموسيقى المثبت لديك</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">صفحة البدء</string>
   <string name="morphe_change_start_page_entry_default">الافتراضي</string>

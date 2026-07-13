@@ -166,8 +166,7 @@ Second \"item\" text"</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_title">बाहरी डाउनलोड बटन दिखाएं</string>
-  <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
-  <string name="morphe_external_downloader_action_button_title">डाउनलोड क्रिया बटन ओवरराइड करें</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
   <!-- interaction.loop.loopVideoPatch -->
@@ -437,8 +436,6 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_title">सिस्टम सेयर शीट खोल्नुहोस्</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">YouTube संगीत बटनहरूलाई ओभरराइड गर्नुहोस्</string>
-  <string name="morphe_music_package_name_title">लक्ष्य संगीत अनुप्रयोग प्याकेज नाम</string>
-  <string name="morphe_music_package_name_summary">तपाईंको स्थापना गरिएको लक्ष्य संगीत अनुप्रयोगको प्याकेज नाम</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_entry_default">डिफ़ॉल्ट</string>
   <string name="morphe_change_start_page_entry_all_subscriptions">सब सबस्क्रिपशंस</string>

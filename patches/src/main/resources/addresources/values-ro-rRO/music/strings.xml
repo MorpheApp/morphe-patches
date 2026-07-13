@@ -23,8 +23,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Personalizat</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Descarcă videoclipuri muzicale, podcasturi sau melodii folosind aplicații de descărcare terțe</string>
-  <string name="morphe_external_downloader_action_button_title">Suprascrie butonul de acțiune Descarcă</string>
-  <string name="morphe_external_downloader_action_button_summary">Înlocuiește funcția de descărcare integrată a YouTube Music cu descărcătorul tău extern</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">Suprascrie butonul de descărcare</string>
+  <string name="morphe_external_downloader_action_button_summary">Utilizează descărcătorul extern ales în loc de funcția de descărcare integrată a aplicației YouTube Music</string>
+  <string name="morphe_external_downloader_flyout_menu_title">Meniu Suprascriere descărcare</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Despre</string>
@@ -102,6 +104,7 @@ YouTube Music 8.x — estomparea încrucișată funcționează doar pe 9.x și v
   <string name="morphe_music_crossfade_about_credit_summary">Funcția de estompare încrucișată de VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Activează repetarea permanentă</string>
+  <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Ascunde butonul de transmisie</string>
   <string name="morphe_music_hide_history_button_title">Ascunde butonul de istoric</string>

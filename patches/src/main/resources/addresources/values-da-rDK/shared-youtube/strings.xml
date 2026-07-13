@@ -24,15 +24,14 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_title">Eksterne downloads</string>
   <string name="morphe_external_downloader_name_title">Downloader pakkenavn</string>
   <string name="morphe_external_downloader_name_summary">Pakkenavn på din installerede eksterne downloader-app</string>
-  <string name="morphe_external_downloader_flyout_button_title">Overskriv feed/søge-popup-knap</string>
-  <string name="morphe_external_downloader_other_item_hint">Indtast pakkenavnet</string>
+  <string name="morphe_external_downloader_other_item_hint">Indtast pakkenavn</string>
   <string name="morphe_external_downloader_other_item">Andet</string>
   <string name="morphe_external_downloader_not_found_title">App ikke installeret</string>
   <string name="morphe_external_downloader_not_installed_warning">%s er ikke installeret. Installer den venligst.</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Kunne ikke finde installeret app med pakkenavnet: %s
 
 Kontroller, at pakkenavnet er korrekt, og at appen er installeret"</string>
-  <string name="morphe_external_downloader_empty_warning">Pakkenavnet kan ikke være tomt</string>
+  <string name="morphe_external_downloader_empty_warning">Pakkenavnet må ikke være tomt</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Brugerdefineret</string>
   <string name="morphe_custom_branding_icon_title">Appikon</string>

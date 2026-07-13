@@ -23,8 +23,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">自定义</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">使用第三方下载应用下载音乐视频、播客或歌曲</string>
-  <string name="morphe_external_downloader_action_button_title">覆盖「下载」按钮</string>
-  <string name="morphe_external_downloader_action_button_summary">用您的外部下载器替换 YouTube Music 的内置下载功能</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">覆盖下载按钮</string>
+  <string name="morphe_external_downloader_action_button_summary">使用您选择的外部下载器，而非 YouTube Music 内置的下载功能</string>
+  <string name="morphe_external_downloader_flyout_menu_title">覆盖下载菜单</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">关于</string>
@@ -102,6 +104,9 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <string name="morphe_music_crossfade_about_credit_summary">交叉淡入功能由 VazerOG 提供</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">启用永久重复播放</string>
+  <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <string name="morphe_music_disable_dislike_redirection_title">禁用不喜欢重定向</string>
+  <string name="morphe_music_disable_dislike_redirection_summary">防止按下不喜欢按钮时跳转到下一曲</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">隐藏投屏按钮</string>
   <string name="morphe_music_hide_history_button_title">隐藏历史记录按钮</string>

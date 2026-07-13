@@ -23,8 +23,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Προσαρμοσμένο</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Λήψη μουσικών βίντεο, podcast ή τραγουδιών με εφαρμογές λήψης τρίτων</string>
-  <string name="morphe_external_downloader_action_button_title">Αλλαγή λειτουργίας κουμπιού ενέργειας «Λήψη»</string>
-  <string name="morphe_external_downloader_action_button_summary">Αντικαθιστά τη λειτουργία λήψης της YouTube Music με το εξωτερικό σας πρόγραμμα λήψης</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">Αντικατάσταση κουμπιού λήψης</string>
+  <string name="morphe_external_downloader_action_button_summary">Χρησιμοποιεί τον επιλεγμένο εξωτερικό downloader αντί της ενσωματωμένης λειτουργίας λήψης του YouTube Music</string>
+  <string name="morphe_external_downloader_flyout_menu_title">Αντικατάσταση μενού λήψης</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Πληροφορίες για το</string>
@@ -102,6 +104,9 @@ YouTube Music 8.x — το crossfade λειτουργεί μόνο στις εκ
   <string name="morphe_music_crossfade_about_credit_summary">Λειτουργία Crossfade από τον VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Ενεργοποίηση μόνιμης επανάληψης</string>
+  <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <string name="morphe_music_disable_dislike_redirection_title">Απενεργοποίηση ανακατεύθυνσης αποδοκιμασίας</string>
+  <string name="morphe_music_disable_dislike_redirection_summary">Αποτρέπει τη μετάβαση στο επόμενο κομμάτι όταν πατηθεί το κουμπί αποδοκιμασίας</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Απόκρυψη κουμπιού μετάδοσης</string>
   <string name="morphe_music_hide_history_button_title">Απόκρυψη κουμπιού ιστορικού</string>

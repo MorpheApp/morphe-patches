@@ -239,9 +239,7 @@ Second \"item\" text"</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_title">Прикажи копче за преземање од надворешен извор</string>
   <string name="morphe_external_downloader_summary">Покажува копче на преклоп во видео плеер што ја отвора вашата апликација за преземање од трета страна</string>
-  <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
-  <string name="morphe_external_downloader_action_button_title">Заменете го копчето за преземање</string>
-  <string name="morphe_external_downloader_action_button_summary">Ја заменува вградената функција за преземање на YouTube со вашата апликација за преземање од трета страна</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_openrouter_model_custom">По нарачка</string>
   <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
@@ -695,9 +693,6 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_summary">Користи системски коноп на хака за вика како маст за споделување</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Замени ги копчињата на YouTube Music</string>
-  <string name="morphe_override_youtube_music_buttons_summary">Отрпи ги тврдокопните котухови, отвари ги кокоточите кога прескокнувате сензори</string>
-  <string name="morphe_music_package_name_title">Име на пакет на апликација за музика</string>
-  <string name="morphe_music_package_name_summary">Име на пакет на инсталирана апликација за музика</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Почистете датум</string>
   <string name="morphe_change_start_page_entry_default">Почетна</string>

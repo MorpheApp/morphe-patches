@@ -24,7 +24,6 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_title">Tải xuống bên ngoài</string>
   <string name="morphe_external_downloader_name_title">Tên gói trình tải xuống</string>
   <string name="morphe_external_downloader_name_summary">Tên gói của ứng dụng trình tải xuống bên ngoài đã cài đặt của bạn</string>
-  <string name="morphe_external_downloader_flyout_button_title">Ghi đè nút trong trang video/tìm kiếm</string>
   <string name="morphe_external_downloader_other_item_hint">Nhập tên gói</string>
   <string name="morphe_external_downloader_other_item">Khác</string>
   <string name="morphe_external_downloader_not_found_title">Ứng dụng chưa được cài đặt</string>
@@ -32,7 +31,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Không tìm thấy ứng dụng đã cài đặt với tên gói: %s
 
 Kiểm tra xem tên gói có chính xác không và ứng dụng đã được cài đặt chưa"</string>
-  <string name="morphe_external_downloader_empty_warning">Tên gói không được để trống</string>
+  <string name="morphe_external_downloader_empty_warning">Không được để trống tên gói</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Tùy chỉnh</string>
   <string name="morphe_custom_branding_icon_title">Biểu tượng ứng dụng</string>

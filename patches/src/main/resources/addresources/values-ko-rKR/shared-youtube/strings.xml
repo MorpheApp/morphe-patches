@@ -24,7 +24,6 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_title">외부 다운로드</string>
   <string name="morphe_external_downloader_name_title">다운로더 앱 패키지명</string>
   <string name="morphe_external_downloader_name_summary">설치된 외부 다운로더 앱 패키지명을 설정하세요</string>
-  <string name="morphe_external_downloader_flyout_button_title">피드/검색 메뉴 구성요소 버튼 재정의하기</string>
   <string name="morphe_external_downloader_other_item_hint">앱 패키지명을 입력하세요</string>
   <string name="morphe_external_downloader_other_item">기타</string>
   <string name="morphe_external_downloader_not_found_title">앱이 설치되지 않음</string>
@@ -32,7 +31,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_package_not_found_warning">"패키지명이 '%s'로 설치된 앱을 찾을 수 없습니다.
 
 패키지명이 올바른지 앱이 설치되어 있는지 확인하세요."</string>
-  <string name="morphe_external_downloader_empty_warning">패키지명을 비워둘 수 없습니다</string>
+  <string name="morphe_external_downloader_empty_warning">앱 패키지명은 비워둘 수 없습니다</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">사용자 정의</string>
   <string name="morphe_custom_branding_icon_title">앱 아이콘</string>

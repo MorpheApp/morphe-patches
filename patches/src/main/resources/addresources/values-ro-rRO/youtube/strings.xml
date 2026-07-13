@@ -283,9 +283,9 @@ Limitări:
   <string name="morphe_external_downloader_screen_summary">Descărcă videoclipuri, podcasturi sau melodii folosind aplicaţii de descărcare terţe</string>
   <string name="morphe_external_downloader_title">Arată butonul extern de descărcare</string>
   <string name="morphe_external_downloader_summary">Afișează un buton de suprapunere în playerul video care deschide aplicația ta de descărcare externă</string>
-  <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
-  <string name="morphe_external_downloader_action_button_title">Suprascrie butonul de acțiune Descarcă</string>
-  <string name="morphe_external_downloader_action_button_summary">Înlocuiește funcția de descărcare încorporată a YouTube cu aplicația ta de descărcare externă</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">Suprascrie butonul de descărcare și meniul</string>
+  <string name="morphe_external_downloader_action_button_summary">Utilizează aplicația ta de descărcare externă preferată în loc de funcția de descărcare încorporată a YouTube</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Traducere cu voce peste</string>
   <string name="morphe_vot_screen_summary">Citește cu voce tare subtitrările video folosind text-to-speech pe dispozitiv, sincronizat cu redarea</string>
@@ -866,9 +866,9 @@ Limitare: Dacă 'Restaurare bara de acțiuni video veche' este dezactivată, str
   <string name="morphe_open_system_share_sheet_summary">Deschide foaia de partajare a sistemului în loc de cea din aplicație când partajezi conținut</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Suprascrie butoanele YouTube Music</string>
-  <string name="morphe_override_youtube_music_buttons_summary">Deschide aplicația ta de muzică preferată în loc de YouTube Music când apeși butoanele de muzică</string>
-  <string name="morphe_music_package_name_title">Numele pachetului aplicației de muzică țintă</string>
-  <string name="morphe_music_package_name_summary">Numele pachetului aplicației dvs. de descărcare externă instalate</string>
+  <string name="morphe_override_youtube_music_buttons_summary">Deschide aplicația ta preferată de muzică în loc de aplicația oficială YouTube Music</string>
+  <string name="morphe_music_package_name_title">Numele pachetului aplicației de muzică</string>
+  <string name="morphe_music_package_name_summary">Numele pachetului aplicației tale de muzică instalată</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Pagină de pornire</string>
   <string name="morphe_change_start_page_entry_default">Implicit</string>
@@ -1082,7 +1082,7 @@ Limitări:
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Pentru a utiliza această funcție, setează „Falsifică stream-uri video” la Android VR sau Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Deschide meniul de calitate \"Avansat\"</string>
+  <string name="morphe_advanced_video_quality_menu_title">Deschide meniul calității avansate</string>
   <string name="morphe_advanced_video_quality_menu_summary">Sare peste meniul de selecție a calității și deschide direct meniul de calitate avansat.</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Ascunde opţiunile calitătă premium</string>

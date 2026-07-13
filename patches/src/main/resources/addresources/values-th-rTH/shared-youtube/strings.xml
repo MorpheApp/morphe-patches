@@ -24,15 +24,14 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_title">การดาวน์โหลดภายนอก</string>
   <string name="morphe_external_downloader_name_title">ชื่อแพ็คเกจโปรแกรมดาวน์โหลด</string>
   <string name="morphe_external_downloader_name_summary">ชื่อแพ็คเกจของแอปดาวน์โหลดภายนอกที่คุณติดตั้งไว้</string>
-  <string name="morphe_external_downloader_flyout_button_title">แทนที่ปุ่มการเปิด/ปิดฟีด/การค้นหา</string>
-  <string name="morphe_external_downloader_other_item_hint">ป้อนชื่อแพ็คเกจ</string>
+  <string name="morphe_external_downloader_other_item_hint">ใส่ชื่อแพ็คเกจ</string>
   <string name="morphe_external_downloader_other_item">อื่น ๆ</string>
   <string name="morphe_external_downloader_not_found_title">ไม่พบแอป</string>
   <string name="morphe_external_downloader_not_installed_warning">ไม่ได้ติดตั้ง %s โปรดติดตั้ง</string>
   <string name="morphe_external_downloader_package_not_found_warning">"ไม่พบแอปที่ติดตั้งด้วยชื่อแพ็คเกจ: %s
 
 ตรวจสอบว่าชื่อแพ็คเกจถูกต้องและแอปได้ถูกติดตั้งแล้ว"</string>
-  <string name="morphe_external_downloader_empty_warning">ชื่อแพ็คเกจต้องไม่ว่างเปล่า</string>
+  <string name="morphe_external_downloader_empty_warning">ชื่อแพ็คเกจห้ามว่าง</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">กำหนดเอง</string>
   <string name="morphe_custom_branding_icon_title">ไอคอนแอป</string>

@@ -23,8 +23,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Personalizzato</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Scarica video musicali, podcast o canzoni con app di download di terze parti</string>
-  <string name="morphe_external_downloader_action_button_title">Sovrascrivi il pulsante azione Download</string>
-  <string name="morphe_external_downloader_action_button_summary">Sostituisce la funzione di download integrata di YouTube Music con il tuo downloader esterno</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">Sostituisci il pulsante Download</string>
+  <string name="morphe_external_downloader_action_button_summary">Utilizza il downloader esterno scelto invece della funzione di download integrata di YouTube Music</string>
+  <string name="morphe_external_downloader_flyout_menu_title">Menu Sostituisci Download</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">A proposito</string>
@@ -102,6 +104,9 @@ YouTube Music 8.x: il crossfade funziona solo su 9.x e versioni successive"</str
   <string name="morphe_music_crossfade_about_credit_summary">Funzione crossfade di VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Abilita ripetizione permanente</string>
+  <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <string name="morphe_music_disable_dislike_redirection_title">Disabilita il reindirizzamento dei \"non mi piace\"</string>
+  <string name="morphe_music_disable_dislike_redirection_summary">Impedisce il passaggio alla traccia successiva quando viene premuto il pulsante \"non mi piace\"</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Nascondi pulsante trasmetti</string>
   <string name="morphe_music_hide_history_button_title">Nascondi pulsante cronologia</string>

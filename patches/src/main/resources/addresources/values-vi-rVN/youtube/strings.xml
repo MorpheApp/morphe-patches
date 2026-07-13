@@ -280,9 +280,9 @@ Hạn chế:
   <string name="morphe_external_downloader_screen_summary">Tải video, podcast hoặc nhạc bằng ứng dụng tải xuống của bên thứ ba</string>
   <string name="morphe_external_downloader_title">Hiện nút tải xuống bên ngoài</string>
   <string name="morphe_external_downloader_summary">Hiện nút mở ứng dụng trình tải xuống bên ngoài trong trình phát video</string>
-  <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
-  <string name="morphe_external_downloader_action_button_title">Ghi đè nút Tải xuống</string>
-  <string name="morphe_external_downloader_action_button_summary">Thay thế chức năng tải xuống được tích hợp trong YouTube bằng ứng dụng tải xuống bên ngoài của bạn</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">Ghi đè nút Tải xuống &amp; menu</string>
+  <string name="morphe_external_downloader_action_button_summary">Sử dụng trình tải xuống tùy chọn của bạn thay vì tính năng tải xuống tích hợp của YouTube</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Dịch giọng nói</string>
   <string name="morphe_vot_screen_summary">Đọc to phụ đề video bằng tính năng chuyển văn bản thành giọng nói trên thiết bị, đồng bộ với video</string>
@@ -863,9 +863,9 @@ Hạn chế: Nếu tùy chọn \"Khôi phục thanh thao tác video cũ\" bị t
   <string name="morphe_open_system_share_sheet_summary">Mở bảng chia sẻ của hệ thống thay vì bảng chia sẻ của ứng dụng khi chia sẻ</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Ghi đè chức năng nút YouTube Music</string>
-  <string name="morphe_override_youtube_music_buttons_summary">Mở ứng dụng phát nhạc mà bạn thích thay vì YouTube Music khi chạm vào nút nhạc</string>
-  <string name="morphe_music_package_name_title">Tên gói ứng dụng âm nhạc</string>
-  <string name="morphe_music_package_name_summary">Nhập tên gói của ứng dụng âm nhạc mà bạn muốn mở</string>
+  <string name="morphe_override_youtube_music_buttons_summary">Mở ứng dụng phát nhạc mà bạn thích thay vì ứng dụng YouTube Music chính thức</string>
+  <string name="morphe_music_package_name_title">Tên gói ứng dụng nhạc</string>
+  <string name="morphe_music_package_name_summary">Tên gói của ứng dụng nhạc đã cài đặt của bạn</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Trang bắt đầu</string>
   <string name="morphe_change_start_page_entry_default">Mặc định</string>
@@ -1079,7 +1079,7 @@ Hạn chế:
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Để dùng tính năng này, hãy đặt \"Giả mạo luồng phát video\" thành Android VR hoặc Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Mở menu chất lượng \'Nâng cao\'</string>
+  <string name="morphe_advanced_video_quality_menu_title">Mở menu chất lượng nâng cao</string>
   <string name="morphe_advanced_video_quality_menu_summary">Bỏ qua menu chọn chất lượng và mở trực tiếp menu chất lượng nâng cao</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Ẩn tùy chọn chất lượng Premium</string>

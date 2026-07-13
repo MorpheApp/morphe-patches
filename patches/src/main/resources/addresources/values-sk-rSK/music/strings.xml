@@ -23,8 +23,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Vlastné</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Stiahnite si hudobné videá, podcasty alebo piesne pomocou sťahovacích aplikácií tretích strán</string>
-  <string name="morphe_external_downloader_action_button_title">Nahradiť tlačidlo stiahnuvania</string>
-  <string name="morphe_external_downloader_action_button_summary">Nahrádza vstavanú funkciu sťahovania YouTube Music vaším externým sťahovačom</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">Prepísať tlačidlo Načítiť</string>
+  <string name="morphe_external_downloader_action_button_summary">Používa zvolený externý program na sťahovanie namiesto vstavaného sťahovania v YouTube Music</string>
+  <string name="morphe_external_downloader_flyout_menu_title">Prepísať menu Načítiť</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">O aplikácii</string>
@@ -102,6 +104,7 @@ YouTube Music 8.x – crossfade funguje iba vo verzii 9.x a novších"</string>
   <string name="morphe_music_crossfade_about_credit_summary">Funkcia Crossfade od VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Zapnúť permanentné opakovanie prehrávania</string>
+  <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Skryť tlačidlo Prenos</string>
   <string name="morphe_music_hide_history_button_title">Skryť tlačidlo histórie</string>

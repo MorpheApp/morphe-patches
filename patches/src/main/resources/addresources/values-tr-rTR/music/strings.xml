@@ -23,8 +23,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Özel</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Üçüncü taraf indirme uygulamalarıyla müzik videoları, podcast\'ler veya şarkılar indirin</string>
-  <string name="morphe_external_downloader_action_button_title">İndirme eylem düğmesini kullan</string>
-  <string name="morphe_external_downloader_action_button_summary">YouTube Music\'in yerleşik indirme işlevini harici indiricinizle değiştirir</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">İndirme Eylemini Değiştir</string>
+  <string name="morphe_external_downloader_action_button_summary">YouTube Music\'in yerleşik indirme özelliğini kullanmak yerine, seçtiğiniz harici indiriciyi kullanır.</string>
+  <string name="morphe_external_downloader_flyout_menu_title">İndirme Eylemini Değiştir menüsü</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Hakkında</string>
@@ -102,6 +104,9 @@ YouTube Music 8.x — geçiş yalnızca 9.x ve sonraki sürümlerde çalışır"
   <string name="morphe_music_crossfade_about_credit_summary">Geçiş özelliği VazerOG tarafından geliştirilmiştir</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Kalıcı tekrarı etkinleştir</string>
+  <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <string name="morphe_music_disable_dislike_redirection_title">Olumsuz oylama yönlendirmesini devre dışı bırak</string>
+  <string name="morphe_music_disable_dislike_redirection_summary">Olumsuz oy tuşuna basıldığında sonraki parçaya geçmeyi engeller</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Yayınla düğmesini gizle</string>
   <string name="morphe_music_hide_history_button_title">Geçmiş düğmesini gizle</string>

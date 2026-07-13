@@ -283,9 +283,9 @@ Ograničenja:
   <string name="morphe_external_downloader_screen_summary">Preuzmite video snimke, podkaste ili pesme pomoću aplikacija za preuzimanje trećih strana</string>
   <string name="morphe_external_downloader_title">Prikaži dugme za spoljno preuzimanje</string>
   <string name="morphe_external_downloader_summary">Prikazuje preklapajući dugme u plejeru videa koje otvara tvoju aplikaciju za preuzimanje</string>
-  <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
-  <string name="morphe_external_downloader_action_button_title">Zameni dugme radnje „Preuzmi”</string>
-  <string name="morphe_external_downloader_action_button_summary">Zamenjuje ugrađenu funkciju za preuzimanje na YouTube-u tvojom aplikacijom za preuzimanje</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">Prepiši dugme za preuzimanje &amp; meni</string>
+  <string name="morphe_external_downloader_action_button_summary">Koristi tvoj odabrani program za preuzimanje umesto ugrađene funkcije za preuzimanje na YouTube-u</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Prevod sinhronizovane titlova</string>
   <string name="morphe_vot_screen_summary">Učita titlove iz videa i izgovara ih pomoću ugrađenog pretvarača teksta u govor, sinhronizovano sa reprodukcijom</string>
@@ -866,9 +866,9 @@ Ograničenje: Ako je \"Vrati staru traku sa akcijama za video\" isključen, prek
   <string name="morphe_open_system_share_sheet_summary">Otvara sistemski listu deljenja umesto unutar aplikacije prilikom deljenja sadržaja</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Prekrivač YouTube Music dugmadi</string>
-  <string name="morphe_override_youtube_music_buttons_summary">Otvara tvoju preferiranu muzičku aplikaciju umesto YouTube Music kada pritisneš dugmad za muziku</string>
-  <string name="morphe_music_package_name_title">Ime paketa ciljane muzičke aplikacije</string>
-  <string name="morphe_music_package_name_summary">Naziv paketa vaše instalirane aplikacije za muziku</string>
+  <string name="morphe_override_youtube_music_buttons_summary">Otvara tvoju preferisanu muzičku aplikaciju umesto zvanične YouTube Music aplikacije</string>
+  <string name="morphe_music_package_name_title">Naziv paketa muzičke aplikacije</string>
+  <string name="morphe_music_package_name_summary">Naziv paketa tvoje instalirane muzičke aplikacije</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Početna stranica</string>
   <string name="morphe_change_start_page_entry_default">Podrazumevana</string>
@@ -1082,7 +1082,7 @@ Ograničenja:
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Da biste koristili ovu funkciju, postavite opciju „Lažirani video strimovi” na Android VR ili Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Otvorite meni kvaliteta \"Napredno\"</string>
+  <string name="morphe_advanced_video_quality_menu_title">Otvorite napredni meni kvaliteta</string>
   <string name="morphe_advanced_video_quality_menu_summary">Preskače meni za izbor kvaliteta i direktno otvara meni kvaliteta \"Napredno\"</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Sakrij opcije Premium kvaliteta</string>

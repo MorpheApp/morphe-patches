@@ -24,7 +24,6 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_title">Спољна преузимања</string>
   <string name="morphe_external_downloader_name_title">Назив пакета програма за преузимање</string>
   <string name="morphe_external_downloader_name_summary">Назив пакета инсталиране апликације за преузимање</string>
-  <string name="morphe_external_downloader_flyout_button_title">Прекид пребацивања/претраживачког падајућег менија</string>
   <string name="morphe_external_downloader_other_item_hint">Унесите назив пакета</string>
   <string name="morphe_external_downloader_other_item">Остало</string>
   <string name="morphe_external_downloader_not_found_title">Апликација није инсталирана</string>
@@ -32,7 +31,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Није пронађена инсталирана апликација са називом пакета: %s
 
 Проверите да ли је назив пакета исправан и да ли је апликација инсталирана"</string>
-  <string name="morphe_external_downloader_empty_warning">Назив пакета не може бити празан</string>
+  <string name="morphe_external_downloader_empty_warning">Назив пакета не сме бити празан</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Цустом</string>
   <string name="morphe_custom_branding_icon_title">Иконица апликације</string>

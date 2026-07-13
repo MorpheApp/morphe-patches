@@ -283,9 +283,9 @@ Sınırlamalar:
   <string name="morphe_external_downloader_screen_summary">Üçüncü taraf indirme uygulamalarıyla videolar, podcast\'ler veya şarkılar indirin</string>
   <string name="morphe_external_downloader_title">Harici indirme düğmesini göster</string>
   <string name="morphe_external_downloader_summary">Video oynatıcınızda harici indiricinizi açan bir katman düğmesi gösterir</string>
-  <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
-  <string name="morphe_external_downloader_action_button_title">İndirme eylem düğmesini kullan</string>
-  <string name="morphe_external_downloader_action_button_summary">YouTube\'un yerleşik indirme işlevini harici indiricinizle değiştirir</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">İndirme düğmesini ve menüsünü değiştir</string>
+  <string name="morphe_external_downloader_action_button_summary">YouTube\'un yerleşik indirme özelliğini kullanmak yerine, seçtiğiniz üçüncü taraf indirme yöneticisini kullanır</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Seslendirme çevirisi</string>
   <string name="morphe_vot_screen_summary">Cihaz üzerindeki metin-konuşma özelliğini kullanarak video altyazılarını oynatmayla senkronize bir şekilde yüksek sesle okuyun.</string>
@@ -866,9 +866,9 @@ Sınırlamalar: 'Eski video eylem çubuğunu geri yükle' kapatılırsa, 'Daha f
   <string name="morphe_open_system_share_sheet_summary">İçerik paylaşılırken uygulama içi paylaşım ekranı yerine sistem paylaşım ekranı açılır</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">YouTube Music düğmelerini değiştir</string>
-  <string name="morphe_override_youtube_music_buttons_summary">Müzik düğmelerine dokunduğunuzda YouTube Music yerine tercih ettiğiniz müzik uygulamasını açar</string>
-  <string name="morphe_music_package_name_title">Hedef müzik uygulamasının paket adı</string>
-  <string name="morphe_music_package_name_summary">Yüklü hedef müzik uygulamanızın paket adı</string>
+  <string name="morphe_override_youtube_music_buttons_summary">Resmi YouTube Music uygulaması yerine, tercih ettiğiniz müzik uygulamasını açar</string>
+  <string name="morphe_music_package_name_title">Müzik uygulaması paket adı</string>
+  <string name="morphe_music_package_name_summary">Yüklü müzik uygulamanızın paket adı</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Başlangıç sayfası</string>
   <string name="morphe_change_start_page_entry_default">Varsayılan</string>
@@ -1082,7 +1082,7 @@ Sınırlamalar:
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Bu özelliği kullanmak için \'Video akışlarını taklit et\'i Android VR veya Android Studio olarak ayarlayın</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">\'Gelişmiş\' kalite menüsünü aç</string>
+  <string name="morphe_advanced_video_quality_menu_title">Gelişmiş kalite menüsünü aç</string>
   <string name="morphe_advanced_video_quality_menu_summary">Kalite seçim menüsünü atlar ve doğrudan Gelişmiş kalite menüsünü açar</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Premium kalite seçeneklerini gizle</string>

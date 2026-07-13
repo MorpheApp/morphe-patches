@@ -283,9 +283,9 @@ Begrensninger:
   <string name="morphe_external_downloader_screen_summary">Last ned videoer, podkaster eller sanger med nedlastingsapper fra tredjeparter</string>
   <string name="morphe_external_downloader_title">Vis ekstern nedlastingsknapp</string>
   <string name="morphe_external_downloader_summary">Viser en overleggsknapp i videospilleren som åpner din eksterne nedlaster</string>
-  <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
-  <string name="morphe_external_downloader_action_button_title">Overskriv nedlastingshandlingsknapp</string>
-  <string name="morphe_external_downloader_action_button_summary">Erstatter YouTubes innebygde nedlastingsfunksjon med din eksterne nedlaster</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">Overstyr nedlastingsknapp og meny</string>
+  <string name="morphe_external_downloader_action_button_summary">Bruker din valgte eksterne nedlaster i stedet for YouTubes innebygde nedlastingsfunksjon</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Taleoversettelse</string>
   <string name="morphe_vot_screen_summary">Les opp tekstingen til videoen ved hjelp av tekst-til-tale på enheten, synkronisert med avspillingen</string>
@@ -866,9 +866,9 @@ Begrensning: Hvis 'Gjenopprett gammel videoaksjonslinje' er slått av, er det mu
   <string name="morphe_open_system_share_sheet_summary">Åpner systemets delingsark i stedet for det innebygde når du deler innhold</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Overskriv YouTube Music-knapper</string>
-  <string name="morphe_override_youtube_music_buttons_summary">Åpner din foretrukne musikkapp i stedet for YouTube Music når du trykker på musikkknapper</string>
-  <string name="morphe_music_package_name_title">Målmusikkapp pakkenavn</string>
-  <string name="morphe_music_package_name_summary">Pakkenavn til din installerte målmusikkapp</string>
+  <string name="morphe_override_youtube_music_buttons_summary">Åpner din foretrukne musikkapp i stedet for den offisielle YouTube Music-appen</string>
+  <string name="morphe_music_package_name_title">Pakkenavn for musikkapp</string>
+  <string name="morphe_music_package_name_summary">Pakkenavnet til din installerte musikkapp</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Startside</string>
   <string name="morphe_change_start_page_entry_default">Standard</string>
@@ -1080,7 +1080,7 @@ Begrensninger:
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">For å bruke denne funksjonen, sett «Forfalsk videostrømmer» til Android VR eller Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Åpne menyen for \"Avansert\" kvalitet</string>
+  <string name="morphe_advanced_video_quality_menu_title">Åpne avansert kvalitetsmeny</string>
   <string name="morphe_advanced_video_quality_menu_summary">Hoppover kvalitetselementvalgmenyen og åpner avansert kvalitetsmeny direkte</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Skjul Premium-kvalitetsalternativer</string>

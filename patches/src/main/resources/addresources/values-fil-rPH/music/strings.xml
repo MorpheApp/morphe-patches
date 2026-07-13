@@ -23,8 +23,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Pasadya</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">I-download ang mga music video, podcast, o kanta gamit ang mga app sa pag-download mula sa third-party</string>
-  <string name="morphe_external_downloader_action_button_title">Palitan ang aksyon ng Pag-download na buton</string>
-  <string name="morphe_external_downloader_action_button_summary">Pinapalitan ang built-in na function ng pag-download ng YouTube Music sa iyong panlabas na downloader</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">Palitan ang Download na button</string>
+  <string name="morphe_external_downloader_action_button_summary">Gumagamit ng iyong napiling panlabas na downloader sa halip na ang built-in na feature ng pag-download ng YouTube Music</string>
+  <string name="morphe_external_downloader_flyout_menu_title">Palitan ang Download menu</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Tungkol sa</string>
@@ -102,6 +104,9 @@ YouTube Music 8.x — tumatakbo lamang ang crossfade sa 9.x at mas bago"</string
   <string name="morphe_music_crossfade_about_credit_summary">Crossfade feature ni VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Paganahin ang permanenteng paulit-ulit</string>
+  <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <string name="morphe_music_disable_dislike_redirection_title">Huwag paganahin ang pagpapalit ng direksyon ng hindi pagka gusto</string>
+  <string name="morphe_music_disable_dislike_redirection_summary">Pinipigilan ang paglaktaw sa susunod na track kapag pinindot ang pindutang hindi pagka gusto</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Itago ang Cast button</string>
   <string name="morphe_music_hide_history_button_title">Itago ang kasaysayan na button</string>
