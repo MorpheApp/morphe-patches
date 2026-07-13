@@ -9,7 +9,6 @@ import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.all.misc.resources.localesYouTube
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.all.misc.resources.setAddResourceLocale
-import app.morphe.patches.all.misc.updates.checkPatcherUpToDatePatch
 import app.morphe.patches.music.misc.extension.hooks.youTubeMusicApplicationInitOnCreateHook
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.gms.Constants.MUSIC_PACKAGE_NAME
@@ -115,7 +114,6 @@ val settingsPatch = bytecodePatch(
     description = "Adds settings for Morphe to YouTube Music."
 ) {
     dependsOn(
-        checkPatcherUpToDatePatch,
         sharedExtensionPatch,
         settingsResourcePatch,
         addResourcesPatch,
@@ -171,7 +169,6 @@ val settingsPatch = bytecodePatch(
             true
         )
 
-        // TODO: Implement a 'Spoof app version' patch for YouTube Music.
         if (is_8_40_or_greater) {
             BoldIconsFeatureFlagFingerprint.let {
                 it.method.insertLiteralOverride(

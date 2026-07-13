@@ -19,7 +19,7 @@ import app.morphe.patches.youtube.misc.playservice.is_21_21_or_greater
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.cloneParameters
 import app.morphe.util.findInstructionIndicesReversedOrThrow
-import app.morphe.util.getReference
+import app.morphe.util.indexOfFirstInstruction
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -94,8 +94,12 @@ val clientContextHookPatch = bytecodePatch(
 
         val messageLiteBuilderMethod : MethodReference
         AuthenticationChangeListenerFingerprint.method.apply {
-            val messageLiteBuilderIndex = indexOfMessageLiteBuilderReference(
-                this, messageLiteBuilderField.definingClass
+            val messageLiteBuilderIndex = indexOfFirstInstruction(
+                filter = methodCall(
+                    opcode = Opcode.INVOKE_VIRTUAL,
+                    parameters = emptyList(),
+                    returnType = messageLiteBuilderField.definingClass
+                )
             )
 
             messageLiteBuilderMethod = getInstruction<ReferenceInstruction>(

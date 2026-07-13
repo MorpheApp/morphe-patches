@@ -1,5 +1,7 @@
 package app.morphe.extension.music.settings;
 
+import static app.morphe.extension.shared.spoof.SpoofAppVersionPatch.isSpoofingToLessThan;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.PorterDuff;
@@ -27,9 +29,9 @@ public class MusicActivityHook extends BaseActivityHook {
     @SuppressLint("StaticFieldLeak")
     public static MusicSearchViewController searchViewController;
 
-    // TODO: Implement a 'Spoof app version' patch for YouTube Music.
     private static final boolean USE_BOLD_ICONS = Settings.SETTINGS_INITIALIZED.get()
-            && VersionCheckPatch.IS_8_40_OR_GREATER;
+            && VersionCheckPatch.IS_8_40_OR_GREATER
+            && !isSpoofingToLessThan("8.40.00");
 
     static {
         Utils.setAppIsUsingBoldIcons(USE_BOLD_ICONS);

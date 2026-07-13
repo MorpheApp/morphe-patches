@@ -2,12 +2,14 @@ package app.morphe.patches.youtube.misc.fix.playbackspeed
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.util.findFreeRegister
 import app.morphe.util.indexOfFirstInstructionOrThrow
+import app.morphe.util.indexOfFirstInstructionReversed
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
@@ -35,7 +37,9 @@ val fixPlaybackSpeedWhilePlayingPatch = bytecodePatch{
 
     execute {
         PlaybackSpeedInFeedsFingerprint.method.apply {
-            val playbackSpeedIndex = indexOfGetPlaybackSpeedInstruction(this)
+            val playbackSpeedIndex = indexOfFirstInstructionReversed(
+                filter = fieldAccess(opcode = Opcode.IGET, type = "F")
+            )
             val playbackSpeedRegister = getInstruction<TwoRegisterInstruction>(playbackSpeedIndex).registerA
             val returnIndex = indexOfFirstInstructionOrThrow(playbackSpeedIndex, Opcode.RETURN_VOID)
             val insertIndex = playbackSpeedIndex + 1

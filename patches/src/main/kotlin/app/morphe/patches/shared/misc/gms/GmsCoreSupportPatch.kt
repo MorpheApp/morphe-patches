@@ -11,6 +11,7 @@
 package app.morphe.patches.shared.misc.gms
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionFilter
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
@@ -31,14 +32,13 @@ import app.morphe.patches.shared.misc.gms.Constants.PERMISSIONS
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.IntentPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
-import app.morphe.util.findMutableMethodOf
 import app.morphe.util.getReference
 import app.morphe.util.matchAllMethodIndicesForEach
 import app.morphe.util.returnEarly
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction21c
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.formats.Instruction21c
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.StringReference
 import com.android.tools.smali.dexlib2.immutable.reference.ImmutableStringReference
 import org.w3c.dom.Element
@@ -89,37 +89,6 @@ fun gmsCoreSupportPatch(
 
     execute {
         val toPackageName = setOrGetFallbackPackageName(toPackageNameDefault)
-
-        fun transformStringReferences(transform: (str: String) -> String?) = getAllClassesWithStrings().forEach {
-            val mutableClass by lazy {
-                mutableClassDefBy(it)
-            }
-
-            it.methods.forEach classLoop@{ method ->
-                val implementation = method.implementation ?: return@classLoop
-
-                val mutableMethod by lazy {
-                    mutableClass.findMutableMethodOf(method)
-                }
-
-                implementation.instructions.forEachIndexed { index, instruction ->
-                    val string = ((instruction as? Instruction21c)?.reference as? StringReference)?.string
-                        ?: return@forEachIndexed
-
-                    // Apply transformation.
-                    val transformedString = transform(string) ?: return@forEachIndexed
-
-                    mutableMethod.replaceInstruction(
-                        index,
-                        BuilderInstruction21c(
-                            Opcode.CONST_STRING,
-                            instruction.registerA,
-                            ImmutableStringReference(transformedString),
-                        )
-                    )
-                }
-            }
-        }
 
         // Exact string replacements.
 
@@ -198,9 +167,25 @@ fun gmsCoreSupportPatch(
 
         // endregion
 
-        // TODO: Change this to use Fingerprint.matchAllOrNull()
-        transformStringReferences transform@{ string ->
-            return@transform contentUrisTransform(string)
+        val contentUriFilter = InstructionFilter { _, instruction ->
+            if (instruction.opcode != Opcode.CONST_STRING) return@InstructionFilter false
+            val stringRef = (instruction as? ReferenceInstruction)?.reference as? StringReference ?: return@InstructionFilter false
+            contentUrisTransform(stringRef.string) != null
+        }
+
+        contentUriFilter.matchAllMethodIndicesForEach(requireMatches = false) { index ->
+            val instruction = getInstruction<ReferenceInstruction>(index)
+            val string = (instruction.reference as StringReference).string
+            val transformedString = contentUrisTransform(string)!!
+
+            replaceInstruction(
+                index,
+                BuilderInstruction21c(
+                    Opcode.CONST_STRING,
+                    (instruction as OneRegisterInstruction).registerA,
+                    ImmutableStringReference(transformedString),
+                )
+            )
         }
 
         // Specific method that needs to be patched.

@@ -41,12 +41,6 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/EnableSwipeToDismissMiniplayerPatch;"
-
-// #1671: notify the crossfade manager when the miniplayer is swipe-dismissed, so it
-// suppresses the phantom crossfade the dismiss's stopVideo(5) would otherwise trigger.
-// CrossfadeManager lives in the same extension module (merged via sharedExtensionPatch),
-// so this call is safe even when the "Track crossfade" bytecode hooks aren't applied —
-// onQueueDismissed() simply early-returns when crossfade is inactive.
 private const val CROSSFADE_MANAGER_CLASS = "Lapp/morphe/extension/music/patches/CrossfadeManager;"
 
 @Suppress("unused")

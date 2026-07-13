@@ -12,12 +12,8 @@ import app.morphe.patches.youtube.layout.player.overlay.CreatePlayerOverviewFing
 import app.morphe.patches.youtube.misc.playercontrols.PlayerBottomGradientScrimFingerprint
 import app.morphe.patches.youtube.shared.LayoutConstructorFingerprint
 import app.morphe.patches.youtube.shared.SeekbarFingerprint
-import app.morphe.util.getReference
-import app.morphe.util.indexOfFirstInstructionReversed
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.Method
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal object AppendTimeFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -57,16 +53,10 @@ internal object AdProgressTextViewVisibilityFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Z"),
-    custom = { method, _ ->
-        // TODO: Convert this to an instruction filter
-        indexOfAdProgressTextViewVisibilityInstruction(method) >= 0
-    }
+    filters = listOf(
+        methodCall(
+            definingClass = "Lcom/google/android/libraries/youtube/ads/player/ui/AdProgressTextView;",
+            name = "setVisibility"
+        )
+    )
 )
-
-internal fun indexOfAdProgressTextViewVisibilityInstruction(method: Method) =
-    method.indexOfFirstInstructionReversed {
-        val reference = getReference<MethodReference>()
-        reference?.definingClass ==
-                "Lcom/google/android/libraries/youtube/ads/player/ui/AdProgressTextView;"
-                && reference.name =="setVisibility"
-    }

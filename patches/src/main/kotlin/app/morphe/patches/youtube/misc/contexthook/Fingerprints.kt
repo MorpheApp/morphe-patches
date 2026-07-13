@@ -14,12 +14,8 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
-import app.morphe.util.getReference
-import app.morphe.util.indexOfFirstInstruction
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.Method
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal const val CLIENT_INFO_CLASS =
     $$"Lcom/google/protos/youtube/api/innertube/InnertubeContext$ClientInfo;"
@@ -28,19 +24,10 @@ internal object AuthenticationChangeListenerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
     returnType = "V",
     strings = listOf("Authentication changed while request was being made"),
-    custom = { method, _ ->
-        // TODO: Convert this to an instruction filter
-        indexOfMessageLiteBuilderReference(method) >= 0
-    }
+    filters = listOf(
+        methodCall(opcode = Opcode.INVOKE_VIRTUAL, parameters = emptyList())
+    )
 )
-
-internal fun indexOfMessageLiteBuilderReference(method: Method, type: String = "L") =
-    method.indexOfFirstInstruction {
-        val reference = getReference<MethodReference>()
-        opcode == Opcode.INVOKE_VIRTUAL &&
-                reference?.parameterTypes?.isEmpty() == true &&
-                reference.returnType.startsWith(type)
-    }
 
 private object BuildClientContextBodyConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),

@@ -10,6 +10,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
@@ -172,9 +173,9 @@ private val crossfadeBannerResourcePatch = resourcePatch {
 
 @Suppress("unused")
 val crossfadePatch = bytecodePatch(
-    name = "Track crossfade",
+    name = "Crossfade",
     description = "Adds a true dual-player crossfade between consecutive tracks. " +
-        "Requires YouTube Music 9.00 or newer; on older versions the patch is a no-op.",
+            "Requires YouTube Music 9.00 or newer; on older versions the patch is a no-op.",
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -189,9 +190,9 @@ val crossfadePatch = bytecodePatch(
         val log = Logger.getLogger(this::class.java.name)
         if (!is_9_00_or_greater) {
             return@execute log.warning(
-                "Track crossfade requires YouTube Music 9.00 or newer. " +
-                    "The 8.x ExoPlayer listener architecture is incompatible " +
-                    "with this patch.",
+                "Crossfade requires YouTube Music 9.00 or newer. " +
+                        "The 8.x ExoPlayer listener architecture is incompatible " +
+                        "with this patch.",
             )
         }
 
@@ -291,7 +292,7 @@ val crossfadePatch = bytecodePatch(
         }.onFailure {
             log.warning(
                 "DismissWatchEvent handler not found — dismiss handling falls back to " +
-                    "poll-STATE_IDLE recovery (#1671): ${it.message}",
+                        "poll-STATE_IDLE recovery (#1671): ${it.message}",
             )
         }
 
@@ -408,7 +409,7 @@ val crossfadePatch = bytecodePatch(
             }
         } ?: error(
             "ExoPlayer factory field not found on ${sessionClass.type} - " +
-                "no field whose type declares a ($EXO_PLAYER_TYPE, 3-param) factory method",
+                    "no field whose type declares a ($EXO_PLAYER_TYPE, 3-param) factory method",
         )
         val factoryClass = mutableClassDefBy(factoryFieldRef.type)
         val factoryMethod = Fingerprint(
@@ -522,7 +523,7 @@ val crossfadePatch = bytecodePatch(
             if (guardField == null) {
                 log.warning(
                     "9.x guard field not found in ${sharedStateClass.type} superclass chain — " +
-                        "second player creation may fail. Fields searched from superclass of ${sharedStateClass.type}",
+                            "second player creation may fail. Fields searched from superclass of ${sharedStateClass.type}",
                 )
             }
         }
@@ -574,17 +575,17 @@ val crossfadePatch = bytecodePatch(
             val looperType = "Landroid/os/Looper;"
             forwardingPlayerField9x = allFieldsInHierarchy(coordinatorType).firstOrNull { field ->
                 !AccessFlags.STATIC.isSet(field.accessFlags)
-                    && field.type.startsWith("L")
-                    && field.type != coordinatorType
-                    && try {
-                        classDefBy(field.type).methods.any { method ->
-                            !AccessFlags.CONSTRUCTOR.isSet(method.accessFlags)
+                        && field.type.startsWith("L")
+                        && field.type != coordinatorType
+                        && try {
+                    classDefBy(field.type).methods.any { method ->
+                        !AccessFlags.CONSTRUCTOR.isSet(method.accessFlags)
                                 && method.returnType == "V"
                                 && method.parameterTypes.size == 2
                                 && method.parameterTypes[1].toString() == looperType
                                 && method.parameterTypes[0].toString() in playerDelegateTypes
-                        }
-                    } catch (_: Exception) { false }
+                    }
+                } catch (_: Exception) { false }
             }.also { f ->
                 if (f == null) log.warning(
                     "9.x: Lctr (cwh interface) field not found on coordinator — crh.j fix skipped"
@@ -613,9 +614,9 @@ val crossfadePatch = bytecodePatch(
                 if (cwhListenerType != null) {
                     coordinatorCwhListenerField9x = coordinatorClass.fields.firstOrNull { f ->
                         !AccessFlags.STATIC.isSet(f.accessFlags)
-                            && f.type != exoPlayerField.type
-                            && f.type != lctrType
-                            && try { cwhListenerType in classDefBy(f.type).interfaces } catch (_: Exception) { false }
+                                && f.type != exoPlayerField.type
+                                && f.type != lctrType
+                                && try { cwhListenerType in classDefBy(f.type).interfaces } catch (_: Exception) { false }
                     }.also { f ->
                         if (f == null) log.warning("9.x: coordinator cwh listener field (auih.k) not found — crh.j fix skipped")
                         else log.fine { "9.x: coordinator cwh listener field (auih.k) = $f" }
@@ -633,19 +634,19 @@ val crossfadePatch = bytecodePatch(
                 // one adds, the other removes.  This is the listener-set wrapper pattern.
                 eventDispatchField9x = exoPlayerImplClass.fields.firstOrNull { f ->
                     !AccessFlags.STATIC.isSet(f.accessFlags)
-                        && f.type != lctrType
-                        && f.type != exoPlayerField.type
-                        && f.type != EXO_PLAYER_TYPE
-                        && try {
-                            val cls = classDefBy(f.type)
-                            val hasCopyOnWriteSet = cls.fields.any { it.type == "Ljava/util/concurrent/CopyOnWriteArraySet;" }
-                            val objectVoidMethodCount = cls.methods.count { m ->
-                                m.parameterTypes.size == 1
+                            && f.type != lctrType
+                            && f.type != exoPlayerField.type
+                            && f.type != EXO_PLAYER_TYPE
+                            && try {
+                        val cls = classDefBy(f.type)
+                        val hasCopyOnWriteSet = cls.fields.any { it.type == "Ljava/util/concurrent/CopyOnWriteArraySet;" }
+                        val objectVoidMethodCount = cls.methods.count { m ->
+                            m.parameterTypes.size == 1
                                     && m.parameterTypes[0].toString() == "Ljava/lang/Object;"
                                     && m.returnType == "V"
-                            }
-                            hasCopyOnWriteSet && objectVoidMethodCount >= 2
-                        } catch (_: Exception) { false }
+                        }
+                        hasCopyOnWriteSet && objectVoidMethodCount >= 2
+                    } catch (_: Exception) { false }
                 }.also { f ->
                     if (f == null) log.warning("9.x: crh.h (Lcgd event dispatch) not found — detach-cwh fix skipped")
                     else log.fine { "9.x: ExoPlayer event dispatch field (crh.h:Lcgd) = $f" }
@@ -693,20 +694,18 @@ val crossfadePatch = bytecodePatch(
         val getPlaybackStateName = Fingerprint(
             returnType = "I",
             parameters = emptyList(),
-            custom = { method, classDef ->
+            filters = listOf(
+                fieldAccess(
+                    opcode = Opcode.IGET_OBJECT,
+                    type = playbackInfoClass.type
+                ),
+                fieldAccess(
+                    opcode = Opcode.IGET,
+                    name = playbackStateFieldName
+                )
+            ),
+            custom = { _, classDef ->
                 isInHierarchyOf(classDef.type, startType = exoPlayerImplClass.type)
-                        // TODO: Replace this with instruction filters
-                        && method.implementation?.instructions?.let { instructions ->
-                    instructions.any { insn ->
-                        insn is ReferenceInstruction
-                                && insn.opcode == Opcode.IGET_OBJECT
-                                && (insn.reference as? FieldReference)?.type == playbackInfoClass.type
-                    } && instructions.any { insn ->
-                        insn is ReferenceInstruction
-                                && insn.opcode == Opcode.IGET
-                                && (insn.reference as? FieldReference)?.name == playbackStateFieldName
-                    }
-                } ?: false
             }
         ).method.name
 
@@ -769,27 +768,27 @@ val crossfadePatch = bytecodePatch(
             try {
                 val fieldClass = classDefBy(field.type)
                 AccessFlags.INTERFACE.isSet(fieldClass.accessFlags)
-                    && fieldClass.methods.none { it.name == "<clinit>" }
+                        && fieldClass.methods.none { it.name == "<clinit>" }
             } catch (_: Exception) { false }
         } ?: error("cqbField (interface-typed field for dlk) not found in ${sharedCallbackClass.type} hierarchy. " +
-            "Fields: ${allCallbackFields.map { "${it.definingClass}->${it.name}:${it.type}" }}")
+                "Fields: ${allCallbackFields.map { "${it.definingClass}->${it.name}:${it.type}" }}")
 
         // dltField - the dlt-typed field on the shared callback hierarchy.
         // dll.i is declared as type dlt.  Find it as the non-cqb, non-List,
         // non-session L-typed field with an abstract class type.
         val dltCallbackTypeOnShared = allCallbackFields.firstOrNull { field ->
             field != cqbField
-                && field.type.startsWith("L")
-                && field.type != "Ljava/lang/Object;"
-                && field.type != "Ljava/util/List;"
-                && field.type != sessionFieldRef.type
-                && try {
-                    val cls = classDefBy(field.type)
-                    AccessFlags.ABSTRACT.isSet(cls.accessFlags)
+                    && field.type.startsWith("L")
+                    && field.type != "Ljava/lang/Object;"
+                    && field.type != "Ljava/util/List;"
+                    && field.type != sessionFieldRef.type
+                    && try {
+                val cls = classDefBy(field.type)
+                AccessFlags.ABSTRACT.isSet(cls.accessFlags)
                         || AccessFlags.INTERFACE.isSet(cls.accessFlags)
-                } catch (_: Exception) { false }
+            } catch (_: Exception) { false }
         } ?: error("dltCallbackType not found in ${sharedCallbackClass.type} hierarchy. " +
-            "Fields: ${allCallbackFields.map { "${it.definingClass}->${it.name}:${it.type}" }}")
+                "Fields: ${allCallbackFields.map { "${it.definingClass}->${it.name}:${it.type}" }}")
 
         val dltFieldOnExo = exoPlayerImplClass.fields.firstOrNull { it.type == dltCallbackTypeOnShared.type }
             ?: error("DLT field of type ${dltCallbackTypeOnShared.type} not found on ${exoPlayerImplClass.type}")
@@ -856,8 +855,8 @@ val crossfadePatch = bytecodePatch(
             )
             val candidate = sharedStateClass.fields.firstOrNull { field ->
                 field.type.startsWith("L")
-                    && field.type !in standardTypes
-                    && !AccessFlags.STATIC.isSet(field.accessFlags)
+                        && field.type !in standardTypes
+                        && !AccessFlags.STATIC.isSet(field.accessFlags)
             }
             bxkType = candidate?.type
             if (bxkType != null) {
@@ -867,8 +866,8 @@ val crossfadePatch = bytecodePatch(
 
         if (bxkType == null) {
             error("bxk type not found on ${sharedStateClass.type} - " +
-                "no V(X,Looper) method and no concrete-field fallback. " +
-                "Fields: ${sharedStateClass.fields.map { "${it.name}:${it.type}" }}")
+                    "no V(X,Looper) method and no concrete-field fallback. " +
+                    "Fields: ${sharedStateClass.fields.map { "${it.name}:${it.type}" }}")
         }
         val timelineField = sharedStateClass.fields.firstOrNull { it.type == bxkType }
             ?: error("Timeline field of type $bxkType not found on ${sharedStateClass.type}")
@@ -876,16 +875,16 @@ val crossfadePatch = bytecodePatch(
         // MedialibPlayer fields - must be an instance field.
         val playerChainField = medialibPlayerClass.fields.first {
             !AccessFlags.STATIC.isSet(it.accessFlags)
-                && it.type.startsWith("L") && it.type != "Ljava/lang/Object;"
+                    && it.type.startsWith("L") && it.type != "Ljava/lang/Object;"
         }
 
         val playNextInQueueMethod = medialibPlayerClass.methods.first { method ->
             method.returnType == "V" && method.parameterTypes.isEmpty()
-                && method.implementation?.instructions?.any { insn ->
-                    insn is ReferenceInstruction
+                    && method.implementation?.instructions?.any { insn ->
+                insn is ReferenceInstruction
                         && insn.opcode == Opcode.CONST_STRING
                         && insn.reference.toString().contains("playNextInQueue")
-                } == true
+            } == true
         }
 
         // Delegate chain classes - every class that DIRECTLY implements the
@@ -916,7 +915,7 @@ val crossfadePatch = bytecodePatch(
         if (delegateClasses.isEmpty()) {
             error(
                 "No delegate chain class implementing $playerChainInterfaceType " +
-                    "with a self-typed field was found"
+                        "with a self-typed field was found"
             )
         }
 
@@ -1031,20 +1030,20 @@ val crossfadePatch = bytecodePatch(
         val coordinatorPlayerTransitionMethod = coordinatorClass.methods
             .filter { method ->
                 !AccessFlags.CONSTRUCTOR.isSet(method.accessFlags)
-                    && !AccessFlags.STATIC.isSet(method.accessFlags)
-                    && method.parameterTypes.size == 1
-                    && method.implementation != null
-                    && method.parameterTypes.first().toString() in exoCompatibleTypes
+                        && !AccessFlags.STATIC.isSet(method.accessFlags)
+                        && method.parameterTypes.size == 1
+                        && method.implementation != null
+                        && method.parameterTypes.first().toString() in exoCompatibleTypes
             }
             .firstOrNull { method ->
                 val insns = method.implementation!!.instructions
                 // The iput-object must write to the exact same field (match name AND defining class)
                 val hasExoFieldWrite = insns.any { insn ->
                     insn is ReferenceInstruction
-                        && insn.opcode == Opcode.IPUT_OBJECT
-                        && (insn.reference as? FieldReference)?.let { fr ->
-                            fr.name == exoFieldName && fr.definingClass == coordinatorType
-                        } == true
+                            && insn.opcode == Opcode.IPUT_OBJECT
+                            && (insn.reference as? FieldReference)?.let { fr ->
+                        fr.name == exoFieldName && fr.definingClass == coordinatorType
+                    } == true
                 }
                 val virtualCallCount = insns.count { insn ->
                     insn.opcode == Opcode.INVOKE_VIRTUAL || insn.opcode == Opcode.INVOKE_INTERFACE
@@ -1182,8 +1181,8 @@ val crossfadePatch = bytecodePatch(
         ) {
             val target = exoImplMethods.firstOrNull {
                 it.name == targetName && it.returnType == "V"
-                    && if (paramType != null) it.parameterTypes.toList() == listOf(paramType)
-                    else it.parameterTypes.isEmpty()
+                        && if (paramType != null) it.parameterTypes.toList() == listOf(paramType)
+                else it.parameterTypes.isEmpty()
             } ?: error("Bridge target $targetName(${paramType ?: ""})V not found in ${exoPlayerImplClass.type} hierarchy")
 
             val params = if (paramType != null)
@@ -1234,13 +1233,13 @@ val crossfadePatch = bytecodePatch(
         //   2. invoke-virtual cau.add(p1) to register the listener (creates fresh cat)
         val cauAddMethod = cauClass.methods.firstOrNull { method ->
             !AccessFlags.STATIC.isSet(method.accessFlags)
-                && !AccessFlags.CONSTRUCTOR.isSet(method.accessFlags)
-                && method.parameterTypes.size == 1
-                && method.implementation?.instructions?.any { insn ->
-                    insn is ReferenceInstruction
+                    && !AccessFlags.CONSTRUCTOR.isSet(method.accessFlags)
+                    && method.parameterTypes.size == 1
+                    && method.implementation?.instructions?.any { insn ->
+                insn is ReferenceInstruction
                         && insn.opcode == Opcode.NEW_INSTANCE
                         && insn.reference.toString() == listenerElementType
-                } == true
+            } == true
         }
         val cauAddParamType = cauAddMethod?.parameterTypes?.first()?.toString()
         log.fine {
@@ -1271,10 +1270,10 @@ val crossfadePatch = bytecodePatch(
                         cauAddParamType in classDefBy(field.type).interfaces
                     } catch (_: Exception) { false }
                 }
-            ).also { f ->
-                if (f == null) log.warning("9.x: coordinator listener field (type $cauAddParamType or implementor) not found on ${coordinatorClass.type}")
-                else log.fine { "9.x: coordinator listener field = $f" }
-            }
+                    ).also { f ->
+                    if (f == null) log.warning("9.x: coordinator listener field (type $cauAddParamType or implementor) not found on ${coordinatorClass.type}")
+                    else log.fine { "9.x: coordinator listener field = $f" }
+                }
         } else null
         exoPlayerImplClass.methods.add(
             ImmutableMethod(
@@ -1407,14 +1406,14 @@ val crossfadePatch = bytecodePatch(
             val cgdClass = classDefBy(cgdType)
             val cgdRemoveMethodName = cgdClass.methods.firstOrNull { m ->
                 m.parameterTypes.size == 1
-                    && m.parameterTypes[0].toString() == "Ljava/lang/Object;"
-                    && m.returnType == "V"
-                    && m.implementation?.instructions
-                        ?.filterIsInstance<ReferenceInstruction>()
-                        ?.any {
-                            val ref = it.reference.toString()
-                            ref.contains("Ljava/util/concurrent/CopyOnWriteArraySet;->remove(")
-                        } == true
+                        && m.parameterTypes[0].toString() == "Ljava/lang/Object;"
+                        && m.returnType == "V"
+                        && m.implementation?.instructions
+                    ?.filterIsInstance<ReferenceInstruction>()
+                    ?.any {
+                        val ref = it.reference.toString()
+                        ref.contains("Ljava/util/concurrent/CopyOnWriteArraySet;->remove(")
+                    } == true
             }?.name ?: "e"  // fallback to historical name if bytecode scan fails
 
             log.fine { "9.x: Lcgd remove method resolved → $cgdType->$cgdRemoveMethodName(Object):V" }
@@ -1807,7 +1806,7 @@ val crossfadePatch = bytecodePatch(
             .filterIsInstance<ReferenceInstruction>()
             .first {
                 it.opcode == Opcode.INVOKE_VIRTUAL
-                    || it.opcode == Opcode.INVOKE_INTERFACE
+                        || it.opcode == Opcode.INVOKE_INTERFACE
             }
             .reference as MethodReference
 
@@ -1834,8 +1833,8 @@ val crossfadePatch = bytecodePatch(
         // 5. Find OMV_PREFERRED - the second enum constant (ordinal 1)
         val stateEnumStaticFields = classDefBy(stateType).fields.filter { field ->
             field.type == stateType
-                && AccessFlags.STATIC.isSet(field.accessFlags)
-                && AccessFlags.FINAL.isSet(field.accessFlags)
+                    && AccessFlags.STATIC.isSet(field.accessFlags)
+                    && AccessFlags.FINAL.isSet(field.accessFlags)
         }
         val omvPreferredField = stateEnumStaticFields[1]
 

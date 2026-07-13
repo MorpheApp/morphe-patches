@@ -24,7 +24,6 @@ import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.all.misc.resources.localesYouTube
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.all.misc.resources.setAddResourceLocale
-import app.morphe.patches.all.misc.updates.checkPatcherUpToDatePatch
 import app.morphe.patches.shared.BoldIconsFeatureFlagFingerprint
 import app.morphe.patches.shared.GoogleApiActivityOnCreateFingerprint
 import app.morphe.patches.shared.layout.branding.addLicensePatch
@@ -205,7 +204,6 @@ val settingsPatch = bytecodePatch(
     description = "Adds settings for Morphe to YouTube."
 ) {
     dependsOn(
-        checkPatcherUpToDatePatch,
         sharedExtensionPatch,
         settingsResourcePatch,
         addResourcesPatch,

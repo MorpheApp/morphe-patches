@@ -42,11 +42,8 @@ val hideInfoCardsPatch = bytecodePatch(
 
         // Edit: This old non-litho code may be obsolete and no longer used by any supported versions.
         InfoCardsIncognitoFingerprint.method.apply {
-            // TODO: Add Instruction Filter indexOfFirstInstructionOrThrow method
             val filter = methodCall(smali = "Landroid/view/View;->setVisibility(I)V")
-            val invokeInstructionIndex = indexOfFirstInstructionOrThrow {
-                filter.matches(this@apply, this)
-            }
+            val invokeInstructionIndex = indexOfFirstInstructionOrThrow(filter = filter)
             val register = getInstruction<FiveRegisterInstruction>(invokeInstructionIndex).registerC
 
             addInstruction(
