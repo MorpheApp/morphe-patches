@@ -20,7 +20,6 @@ import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -621,7 +620,7 @@ public final class TranscriptTranslator {
             joined.append(seg.text);
         }
 
-        HttpURLConnection conn = (HttpURLConnection) new URL(GOOGLE_TRANSLATE_URL + targetLang).openConnection();
+        HttpURLConnection conn = Requester.openConnection(GOOGLE_TRANSLATE_URL + targetLang);
         conn.setRequestMethod("POST");
         conn.setConnectTimeout(CONNECT_TIMEOUT_MS);
         conn.setReadTimeout(READ_TIMEOUT_MS);
@@ -679,9 +678,10 @@ public final class TranscriptTranslator {
         String email = Settings.VOT_MYMEMORY_EMAIL.get();
         //noinspection CharsetObjectCanBeUsed
         String emailParam = email.isEmpty() ? "" : "&de=" + URLEncoder.encode(email, StandardCharsets.UTF_8.name());
-        HttpURLConnection conn = (HttpURLConnection) new URL(
-                "https://api.mymemory.translated.net/get?q=" + encoded + "&langpair=" + source + "|" + targetLang + emailParam)
-                .openConnection();
+        HttpURLConnection conn = Requester.openConnection(
+                "https://api.mymemory.translated.net/get?q=" + encoded
+                        + "&langpair=" + source + "|" + targetLang + emailParam
+        );
         conn.setConnectTimeout(CONNECT_TIMEOUT_MS);
         conn.setReadTimeout(READ_TIMEOUT_MS);
         conn.setRequestProperty("User-Agent", "Mozilla/5.0");
@@ -824,8 +824,9 @@ public final class TranscriptTranslator {
         byte[] bodyBytes = body.toString().getBytes(StandardCharsets.UTF_8);
 
         //noinspection ExtractMethodRecommender
-        HttpURLConnection conn = (HttpURLConnection) new URL(
-                "https://openrouter.ai/api/v1/chat/completions").openConnection();
+        HttpURLConnection conn = Requester.openConnection(
+                "https://openrouter.ai/api/v1/chat/completions"
+        );
         conn.setRequestMethod("POST");
         conn.setConnectTimeout(CONNECT_TIMEOUT_MS);
         conn.setReadTimeout(OPENROUTER_READ_TIMEOUT_MS);
@@ -956,7 +957,7 @@ public final class TranscriptTranslator {
             try {
                 synchronized (openRouterModelCosts) {
                     if (!openRouterCostsFetched) {
-                        HttpURLConnection conn = (HttpURLConnection) new URL(OPENROUTER_MODELS_URL).openConnection();
+                        HttpURLConnection conn = Requester.openConnection(OPENROUTER_MODELS_URL);
                         conn.setConnectTimeout(CONNECT_TIMEOUT_MS);
                         conn.setReadTimeout(READ_TIMEOUT_MS);
                         conn.setRequestProperty("Accept-Encoding", "identity");

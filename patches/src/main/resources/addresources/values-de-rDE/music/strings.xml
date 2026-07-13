@@ -23,8 +23,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Benutzerdefiniert</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Laden Sie Musikvideos, Podcasts oder Songs mit Anwendungen von Drittanbietern herunter</string>
-  <string name="morphe_external_downloader_action_button_title">Download-Aktionsknopf überschreiben</string>
-  <string name="morphe_external_downloader_action_button_summary">Ersetzt die integrierte Download-Funktion von YouTube durch Ihren externen Downloader</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">„Herunterladen“-Schaltfläche überschreiben</string>
+  <string name="morphe_external_downloader_action_button_summary">Verwendet Ihren gewählten externen Downloader anstelle der integrierten Download-Funktion von YouTube Music</string>
+  <string name="morphe_external_downloader_flyout_menu_title">Download-Menü überschreiben</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Über</string>
@@ -102,6 +104,9 @@ YouTube Music 8.x – der Crossfade funktioniert nur ab Version 9.x."</string>
   <string name="morphe_music_crossfade_about_credit_summary">Crossfade-Funktion von VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Dauerwiederholung aktivieren</string>
+  <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <string name="morphe_music_disable_dislike_redirection_title">Deaktivieren Sie die Weiterleitung von Nicht-Gefällt-mir-Angaben</string>
+  <string name="morphe_music_disable_dislike_redirection_summary">Verhindert das automatische Überspringen zum nächsten Titel, wenn die Taste \"Nicht gefallen\" gedrückt wird</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Schaltfläche „Cast“ ausblenden</string>
   <string name="morphe_music_hide_history_button_title">Verlauf-Button ausblenden</string>

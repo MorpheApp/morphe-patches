@@ -1,6 +1,7 @@
 package app.morphe.patches.youtube.video.speed.custom
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
@@ -35,13 +36,34 @@ internal object AudioTrackOldBottomSheetFingerprint : Fingerprint(
     )
 )
 
-internal object GetOldPlaybackSpeedsFingerprint : Fingerprint(
+internal object SpeedFloatFieldAccessFingerprint : Fingerprint(
+    parameters = listOf("[L", "F"),
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IGET, type = "F"),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            smali = "Ljava/lang/Float;->compare(FF)I",
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
+internal object InitializePlaybackSpeedValuesFingerprint : Fingerprint(
     parameters = listOf("[L", "I"),
-    strings = listOf("menu_item_playback_speed")
+    filters = OpcodesFilter.opcodesToFilters(
+        Opcode.IGET_OBJECT,
+        Opcode.IGET_OBJECT,
+        Opcode.IF_NE,
+        Opcode.IGET,
+        Opcode.IF_EQ,
+        Opcode.IPUT_OBJECT,
+        Opcode.IPUT,
+        Opcode.IGET_OBJECT
+    ) + string("menu_item_playback_speed")
 )
 
 internal object ShowOldPlaybackSpeedMenuFingerprint : Fingerprint(
-    classFingerprint = GetOldPlaybackSpeedsFingerprint,
+    classFingerprint = InitializePlaybackSpeedValuesFingerprint,
     filters = listOf(
         resourceLiteral(ResourceType.STRING, "varispeed_unavailable_message"),
         opcode(Opcode.RETURN_VOID),

@@ -24,15 +24,14 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_title">Зовнішні завантажувачі</string>
   <string name="morphe_external_downloader_name_title">Ім\'я пакета завантажувача</string>
   <string name="morphe_external_downloader_name_summary">Назва пакета вашого встановленого зовнішнього застосунку для завантаження</string>
-  <string name="morphe_external_downloader_flyout_button_title">Замінити кнопку у висувному меню стрічки/пошуку</string>
-  <string name="morphe_external_downloader_other_item_hint">Введіть назву пакета</string>
+  <string name="morphe_external_downloader_other_item_hint">Введіть назву пакету</string>
   <string name="morphe_external_downloader_other_item">Вказати інший</string>
   <string name="morphe_external_downloader_not_found_title">Застосунок не встановлено</string>
   <string name="morphe_external_downloader_not_installed_warning">%s не встановлено. Будь ласка, встановіть його.</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Не вдалося знайти встановлений застосунок з назвою пакета: %s
 
 Перевірте правильність назви пакета та встановлення застосунку"</string>
-  <string name="morphe_external_downloader_empty_warning">Назва пакета не може бути порожньою</string>
+  <string name="morphe_external_downloader_empty_warning">Назва пакету не може бути порожньою</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Власна</string>
   <string name="morphe_custom_branding_icon_title">Іконка застосунку</string>

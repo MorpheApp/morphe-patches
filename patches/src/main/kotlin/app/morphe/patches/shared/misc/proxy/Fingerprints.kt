@@ -8,7 +8,9 @@
 package app.morphe.patches.shared.misc.proxy
 
 import app.morphe.patcher.Fingerprint
+import com.android.tools.smali.dexlib2.AccessFlags
 
+internal const val CRONET_ENGINE_CLASS = "Lorg/chromium/net/CronetEngine;"
 internal const val CRONET_BUILDER_CLASS = "Lorg/chromium/net/CronetEngine\$Builder;"
 
 private const val PROXY_CLASS = "Lorg/chromium/net/Proxy;"
@@ -20,6 +22,12 @@ internal object BuildExperimentalFingerprint : Fingerprint(
     name = "buildExperimental",
     returnType = "Lorg/chromium/net/ExperimentalCronetEngine;",
     parameters = emptyList()
+)
+
+internal object MainCronetEngineFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = CRONET_ENGINE_CLASS,
+    strings = listOf("Could not create CronetEngine")
 )
 
 internal object SetProxyOptionsFingerprint : Fingerprint(

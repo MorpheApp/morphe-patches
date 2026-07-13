@@ -13,13 +13,13 @@ import org.json.JSONObject;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
 import app.morphe.extension.music.patches.scrobbling.ScrobbleManager;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.requests.Requester;
 
 public class ListenBrainz {
     private static final String BASE_URL = "https://api.listenbrainz.org/";
@@ -41,8 +41,7 @@ public class ListenBrainz {
         if (token == null || token.isBlank()) {
             throw new IllegalArgumentException("User token is missing or blank");
         }
-        URL url = new URL(BASE_URL + "1/validate-token");
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        HttpURLConnection conn = Requester.openConnection(BASE_URL + "1/validate-token");
         conn.setRequestMethod("GET");
         conn.setRequestProperty("User-Agent", USER_AGENT);
         conn.setRequestProperty("Authorization", "Token " + token);
@@ -165,8 +164,7 @@ public class ListenBrainz {
         byte[] jsonBodyBytes = jsonBody.getBytes(StandardCharsets.UTF_8);
 
         //noinspection ExtractMethodRecommender
-        URL url = new URL(BASE_URL + path);
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        HttpURLConnection conn = Requester.openConnection(BASE_URL + path);
         conn.setRequestMethod("POST");
         conn.setRequestProperty("User-Agent", USER_AGENT);
         conn.setRequestProperty("Authorization", "Token " + token);

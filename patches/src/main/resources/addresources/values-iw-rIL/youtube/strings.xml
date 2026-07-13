@@ -283,9 +283,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_summary">הורד סרטונים, פודקאסטים או שירים באמצעות אפליקציות הורדה של צד שלישי</string>
   <string name="morphe_external_downloader_title">הצג לחצן הורדה חיצונית</string>
   <string name="morphe_external_downloader_summary">מציג כפתור שכבה בנגן הווידאו שפותח את הורדת הצד השלישי שלך</string>
-  <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
-  <string name="morphe_external_downloader_action_button_title">עקוף את פעולת לחצן ההורדה</string>
-  <string name="morphe_external_downloader_action_button_summary">מחליף את פונקציית ההורדה המובנית של YouTube במוריד הצד השלישי שלך</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">עקוף את לחצן ואת תפריט ההורדה</string>
+  <string name="morphe_external_downloader_action_button_summary">משתמש במוריד החיצוני שבחרת במקום בתכונת ההורדה המובנית של YouTube</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">תרגום דיבוב</string>
   <string name="morphe_vot_screen_summary">קריאת כתוביות הסרטון בקול רם באמצעות טקסט לדיבור מקומי, בסנכרון עם ההפעלה</string>
@@ -866,9 +866,9 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_summary">פותח את גליון השיתוף של המערכת במקום את זה שבתוך האפליקציה בעת שיתוף תוכן</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">גמַהת במְירַד הכולַה</string>
-  <string name="morphe_override_youtube_music_buttons_summary">פותח את אפליקציית המוזיקה המועדפת עליך במקום את YouTube Music בעת הקשה על כפתורי מוזיקה</string>
-  <string name="morphe_music_package_name_title">שם החבילה של אפליקציית המוזיקה המיועדת</string>
-  <string name="morphe_music_package_name_summary">שם החבילה של יישום המוזיקה המותקן שלך</string>
+  <string name="morphe_override_youtube_music_buttons_summary">פותח את אפליקציית המוזיקה המועדפת עליך במקום באפליקציית YouTube Music הרשמית</string>
+  <string name="morphe_music_package_name_title">שם החבילה של אפליקציית המוזיקה</string>
+  <string name="morphe_music_package_name_summary">שם החבילה של אפליקציית המוזיקה המותקנת שלך</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">דף התחלתי</string>
   <string name="morphe_change_start_page_entry_default">ברירת מחדל</string>

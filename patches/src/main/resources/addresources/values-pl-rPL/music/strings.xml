@@ -23,8 +23,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Własne</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Pobieraj teledyski, podcasty lub utwory za pomocą zewnętrznych aplikacji do pobierania</string>
-  <string name="morphe_external_downloader_action_button_title">Zastąp przycisk akcji Pobierz</string>
-  <string name="morphe_external_downloader_action_button_summary">Zastępuje wbudowaną funkcję pobierania YouTube Music zewnętrzną aplikacją do pobierania</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">Zastąp przycisk Pobierz</string>
+  <string name="morphe_external_downloader_action_button_summary">Używa wybranej zewnętrznej aplikacji do pobierania zamiast wbudowanej funkcji pobierania YouTube Music</string>
+  <string name="morphe_external_downloader_flyout_menu_title">Zastąp menu Pobierz</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Informacje</string>
@@ -102,6 +104,9 @@ Ekran blokady lub powiadomienie może przez chwilę pokazywać nieaktualny stan 
   <string name="morphe_music_crossfade_about_credit_summary">Funkcja przenikania autorstwa VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Włącz ciągłe zapętlanie</string>
+  <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <string name="morphe_music_disable_dislike_redirection_title">Wyłącz pomijanie nielubianych piosenek</string>
+  <string name="morphe_music_disable_dislike_redirection_summary">Zapobiega przechodzeniu do następnego utworu po naciśnięciu łapki w dół</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Ukryj przycisk Przesyłaj</string>
   <string name="morphe_music_hide_history_button_title">Ukryj przycisk Historia</string>

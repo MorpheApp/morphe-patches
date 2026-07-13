@@ -116,8 +116,11 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <string name="morphe_music_crossfade_about_credit_title">Credit</string>
     <string name="morphe_music_crossfade_about_credit_summary">Crossfade feature by VazerOG</string>
 
-    <!-- interaction.permanentrepeat.permanentRepeatPatch -->
-    <string name="morphe_music_play_permanent_repeat_title">Enable permanent repeat</string>
+    <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
+    <string name="morphe_music_remember_repeat_state_title">Remember repeat state</string>
+
+    <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
+    <string name="morphe_music_remember_shuffle_state_title">Remember shuffle state</string>
 
     <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
     <string name="morphe_music_disable_dislike_redirection_title">Disable dislike redirection</string>

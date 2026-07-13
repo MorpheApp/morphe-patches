@@ -20,6 +20,7 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.textcomponent.hookSpannableString
 import app.morphe.patches.shared.misc.textcomponent.textComponentPatch
+import app.morphe.util.cloneParameters
 
 private val downloadsResourcePatch = resourcePatch {
     dependsOn(settingsPatch)
@@ -64,7 +65,7 @@ val downloadsPatch = bytecodePatch(
     execute {
         hookSpannableString(EXTENSION_CLASS, "onLithoTextLoaded")
 
-        CommandResolverFingerprint.method.apply {
+        CommandResolverFingerprint.method.cloneParameters().apply {
             // Add interface to get buffer.
             mutableClassDefBy(parameterTypes[1].toString())
                 .interfaces.add(EXTENSION_PROTOCOL_BUFFER_INTERFACE)
@@ -72,8 +73,7 @@ val downloadsPatch = bytecodePatch(
             addInstructionsWithLabels(
                 0,
                 """
-                    invoke-static { p1, p2 }, $EXTENSION_CLASS->
-                    commandResolverOnClick(${EXTENSION_PROTOCOL_BUFFER_INTERFACE}Ljava/util/Map;)Z
+                    invoke-static { p1, p2 }, $EXTENSION_CLASS->commandResolverOnClick(${EXTENSION_PROTOCOL_BUFFER_INTERFACE}Ljava/util/Map;)Z
                     move-result v0
                     if-eqz v0, :continue_resolution
                     return v0

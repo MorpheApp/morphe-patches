@@ -283,9 +283,9 @@ Beperkings:
   <string name="morphe_external_downloader_screen_summary">Laai video\'s, podkaste of liedjies af met derdeparty-aflaai-programme</string>
   <string name="morphe_external_downloader_title">Wys eksterne aflaaiknoppie</string>
   <string name="morphe_external_downloader_summary">Wys \'n oorvleiknoppie in video-speler wat jou eksterne aflaaier oopmaak</string>
-  <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
-  <string name="morphe_external_downloader_action_button_title">Oorheers aflaai aksie knoppie</string>
-  <string name="morphe_external_downloader_action_button_summary">Vervang YouTube se ingeboude aflaaifunksie met jou eksterne aflaaier</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">Oorskryf die Aflaai-knoppie &amp; spyskaart</string>
+  <string name="morphe_external_downloader_action_button_summary">Gebruik jou gekose eksterne aflaai-program in plaas van YouTube se ingeboude aflaaifunksie</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Vertaalde stem over</string>
   <string name="morphe_vot_screen_summary">Lees video-onderskrifte hardop voor met behulp van teks-na-spraak op die toestel, gesinkroniseer met die afspeel</string>
@@ -865,9 +865,9 @@ Beperking: Indien 'Herstel ou video-aksiebalk' afgeskakel is, mag die 'Meer vide
   <string name="morphe_open_system_share_sheet_summary">Maak die stelselseeldeelblad oop in plaas van die in-app-een wanneer inhoud gedeel word</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Oorheers YouTube Music knoppies</string>
-  <string name="morphe_override_youtube_music_buttons_summary">Maak jou voorkeurmusiekprogram oop in plaas van YouTube Music wanneer jy op musiekknoppies tik</string>
-  <string name="morphe_music_package_name_title">Teiken musiek app pakketnaam</string>
-  <string name="morphe_music_package_name_summary">Pakketnaam van jou geïnstalleerde teiken musiek app</string>
+  <string name="morphe_override_youtube_music_buttons_summary">Maak jou voorkeurmusiektoepassing oop in plaas van die amptelike YouTube Music-toepassing</string>
+  <string name="morphe_music_package_name_title">Musiektoepassing pakketnaam</string>
+  <string name="morphe_music_package_name_summary">Pakketnaam van jou geïnstalleerde musiektoepassing</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Beginblad</string>
   <string name="morphe_change_start_page_entry_default">Verstek</string>
@@ -1081,7 +1081,7 @@ Beperkings:
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Om hierdie funksie te gebruik, stel \'verfraai videostrome\' op Android VR of Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Open \'Gevorderd\' kwaliteit menu</string>
+  <string name="morphe_advanced_video_quality_menu_title">Maak Gevorderde kwaliteit spyskaart oop</string>
   <string name="morphe_advanced_video_quality_menu_summary">Slaan die kwaliteitkeusemenu oor en open die Gevorderde kwaliteitmenu direk</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Versteek Premium kwaliteit opsies</string>

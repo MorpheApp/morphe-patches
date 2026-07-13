@@ -8,7 +8,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
 
-package app.morphe.patches.music.interaction.permanentrepeat
+package app.morphe.patches.music.interaction.remember.repeatstate
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
@@ -20,12 +20,12 @@ import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/PermanentRepeatPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/RememberRepeatStatePatch;"
 
 @Suppress("unused")
-val permanentRepeatPatch = bytecodePatch(
-    name = "Permanent repeat",
-    description = "Adds an option to always repeat even if the playlist ends or another track is played."
+val rememberRepeatStatePatch = bytecodePatch(
+    name = "Remember repeat state",
+    description = "Adds an option to remember the repeat state when playing a new track or playlist."
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -36,7 +36,7 @@ val permanentRepeatPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_music_play_permanent_repeat"),
+            SwitchPreference("morphe_music_remember_repeat_state"),
         )
 
         val startIndex = RepeatTrackFingerprint.instructionMatches.last().index
@@ -51,7 +51,7 @@ val permanentRepeatPatch = bytecodePatch(
                 startIndex,
                 """
                     if-nez v$targetRegister, :skip_override
-                    invoke-static { }, $EXTENSION_CLASS->permanentRepeat()Z
+                    invoke-static { }, $EXTENSION_CLASS->rememberRepeatState()Z
                     move-result v$targetRegister
                     :skip_override
                     nop

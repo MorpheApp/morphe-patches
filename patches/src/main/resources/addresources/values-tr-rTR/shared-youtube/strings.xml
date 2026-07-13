@@ -24,15 +24,14 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_title">Harici indirmeler</string>
   <string name="morphe_external_downloader_name_title">İndirici paket adı</string>
   <string name="morphe_external_downloader_name_summary">Yüklediğiniz harici indirici uygulamanın paket adı</string>
-  <string name="morphe_external_downloader_flyout_button_title">Akış/arama açılır düğmesini kullan</string>
-  <string name="morphe_external_downloader_other_item_hint">Paket adını girin</string>
+  <string name="morphe_external_downloader_other_item_hint">Paket adı girin</string>
   <string name="morphe_external_downloader_other_item">Diğer</string>
   <string name="morphe_external_downloader_not_found_title">Uygulama yüklü değil</string>
   <string name="morphe_external_downloader_not_installed_warning">%s yüklü değil. Lütfen yükleyin.</string>
   <string name="morphe_external_downloader_package_not_found_warning">"%s paket adına sahip yüklü uygulama bulunamadı
 
 Paket adının doğru olduğundan ve uygulamanın yüklü olduğundan emin olun"</string>
-  <string name="morphe_external_downloader_empty_warning">Paket adı boş olamaz</string>
+  <string name="morphe_external_downloader_empty_warning">Paket adı boş bırakılamaz</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Özel</string>
   <string name="morphe_custom_branding_icon_title">Uygulama simgesi</string>

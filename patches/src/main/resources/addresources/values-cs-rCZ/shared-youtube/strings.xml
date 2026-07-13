@@ -24,15 +24,14 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_title">Externí stahování</string>
   <string name="morphe_external_downloader_name_title">Název balíčku stahovače</string>
   <string name="morphe_external_downloader_name_summary">Název balíčku vaší nainstalované externí aplikace pro stahování</string>
-  <string name="morphe_external_downloader_flyout_button_title">Přepsat tlačítko nabídky kanálu/vyhledávání</string>
-  <string name="morphe_external_downloader_other_item_hint">Zadejte název balíčku</string>
+  <string name="morphe_external_downloader_other_item_hint">Vložte jméno balíčku </string>
   <string name="morphe_external_downloader_other_item">Jiné</string>
   <string name="morphe_external_downloader_not_found_title">Aplikace není nainstalována</string>
   <string name="morphe_external_downloader_not_installed_warning">Aplikace %s není nainstalována. Prosím, nainstalujte ji.</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Nepodařilo se najít nainstalovanou aplikaci s názvem balíčku: %s
 
 Ověřte, zda je název balíčku správný a zda je aplikace nainstalována"</string>
-  <string name="morphe_external_downloader_empty_warning">Název balíčku nemůže být prázdný</string>
+  <string name="morphe_external_downloader_empty_warning">Jméno balíčku nemůže být prázdné </string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Vlastní</string>
   <string name="morphe_custom_branding_icon_title">Ikona aplikace</string>

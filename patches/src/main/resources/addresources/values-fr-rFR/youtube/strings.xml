@@ -283,9 +283,9 @@ Limitations :
   <string name="morphe_external_downloader_screen_summary">Téléchargez des vidéos, des podcasts ou des chansons avec des applications de téléchargement tierces</string>
   <string name="morphe_external_downloader_title">Afficher un bouton de téléchargeur externe</string>
   <string name="morphe_external_downloader_summary">Affiche un bouton superposé dans le lecteur vidéo qui ouvre votre téléchargeur externe</string>
-  <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
-  <string name="morphe_external_downloader_action_button_title">Remplacer l\'action du bouton \'Télécharger\'</string>
-  <string name="morphe_external_downloader_action_button_summary">Remplace la fonction de téléchargement intégrée de YouTube par votre téléchargeur externe</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">Remplacer le bouton et le menu de Téléchargement</string>
+  <string name="morphe_external_downloader_action_button_summary">Utilise le téléchargeur externe de votre choix au lieu de la fonction de téléchargement intégrée de YouTube</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Traduction en voix off</string>
   <string name="morphe_vot_screen_summary">Lisez les sous-titres de la vidéo à voix haute à l’aide de la synthèse vocale sur l’appareil, synchronisée avec la lecture</string>
@@ -867,9 +867,9 @@ Limitation : Si 'Restaurer l’ancienne barre d’actions vidéo' est désactiv�
   <string name="morphe_open_system_share_sheet_summary">Ouvre la feuille de partage du système au lieu de celle de l\'application lors du partage de contenu</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Remplacer les boutons \'YouTube Music\'</string>
-  <string name="morphe_override_youtube_music_buttons_summary">Ouvre votre application musicale préférée au lieu de YouTube Music lorsque vous appuyez sur les boutons de musique</string>
-  <string name="morphe_music_package_name_title">Nom du paquet de l\'application musicale cible</string>
-  <string name="morphe_music_package_name_summary">Nom de paquet de votre application musicale cible installée</string>
+  <string name="morphe_override_youtube_music_buttons_summary">Ouvre votre application musicale préférée au lieu de l\'application officielle YouTube Music</string>
+  <string name="morphe_music_package_name_title">Nom du paquet de l\'application musicale</string>
+  <string name="morphe_music_package_name_summary">Nom du paquet de votre application musicale installée</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Page de démarrage</string>
   <string name="morphe_change_start_page_entry_default">Par défaut</string>
@@ -1083,7 +1083,7 @@ Limitations :
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Pour utiliser cette fonctionnalité, définissez \'Falsifier les flux vidéo\' sur \'Android VR\' ou \'Android Studio\'</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Ouvrir le menu qualité \'Avancée\'</string>
+  <string name="morphe_advanced_video_quality_menu_title">Ouvrir le menu qualité Avancée</string>
   <string name="morphe_advanced_video_quality_menu_summary">Ignore le menu de sélection de qualité et ouvre directement le menu qualité \'Avancée\'</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Masquer les options de qualité Premium</string>

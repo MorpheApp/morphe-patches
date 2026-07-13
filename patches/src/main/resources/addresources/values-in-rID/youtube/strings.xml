@@ -282,9 +282,9 @@ Batasan:
   <string name="morphe_external_downloader_screen_summary">Unduh video, podcast, atau lagu menggunakan aplikasi pihak ketiga</string>
   <string name="morphe_external_downloader_title">Tampilkan tombol unduhan eksternal</string>
   <string name="morphe_external_downloader_summary">Menampilkan tombol hampaaran di pemutar video yang membuka pengunduh eksternal Anda</string>
-  <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
-  <string name="morphe_external_downloader_action_button_title">Gantikan tombol tindakan Unduh</string>
-  <string name="morphe_external_downloader_action_button_summary">Menggantikan fungsi unduh bawaan YouTube dengan pengunduh eksternal Anda</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">Gantikan tombol &amp; menu Unduh</string>
+  <string name="morphe_external_downloader_action_button_summary">Menggunakan pengunduh eksternal pilihan Anda alih-alih fitur unduhan bawaan YouTube</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Terjemahan sulih suara</string>
   <string name="morphe_vot_screen_summary">Baca teks keterangan video dengan suara keras menggunakan fitur text-to-speech bawaan perangkat, yang disinkronkan dengan pemutaran video</string>
@@ -865,9 +865,9 @@ Batasan: Jika 'Kembalikan bilah tindakan video lama' dinonaktifkan, hamparan 'Vi
   <string name="morphe_open_system_share_sheet_summary">Membuka lembar berbagi sistem, bukan yang dalam aplikasi saat membagikan konten</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Ganti tombol YouTube Music</string>
-  <string name="morphe_override_youtube_music_buttons_summary">Membuka aplikasi musik pilihan Anda daripada YouTube Music saat mengetuk tombol musik</string>
-  <string name="morphe_music_package_name_title">Nama paket aplikasi musik pilihan</string>
-  <string name="morphe_music_package_name_summary">Nama paket aplikasi musik pilihan yang telah Anda pasang</string>
+  <string name="morphe_override_youtube_music_buttons_summary">Membuka aplikasi musik pilihan Anda daripada aplikasi YouTube Music resmi</string>
+  <string name="morphe_music_package_name_title">Nama paket aplikasi musik</string>
+  <string name="morphe_music_package_name_summary">Nama paket aplikasi musik yang terinstal</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Halaman mulai</string>
   <string name="morphe_change_start_page_entry_default">Bawaan</string>
@@ -1081,7 +1081,7 @@ Batasan:
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Untuk menggunakan fitur ini, atur \'Palsukan aliran video\' ke Android VR atau Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Buka menu kualitas \'Lanjutan\'</string>
+  <string name="morphe_advanced_video_quality_menu_title">Buka menu kualitas Lanjutan</string>
   <string name="morphe_advanced_video_quality_menu_summary">Melewati menu pemilihan kualitas dan langsung membuka menu kualitas Lanjutan</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Sembunyikan pilihan kualitas premium</string>

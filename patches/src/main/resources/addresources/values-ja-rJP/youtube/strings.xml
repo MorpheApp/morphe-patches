@@ -283,9 +283,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_summary">サードパーティ製ダウンロード アプリで、動画、ポッドキャスト、楽曲をダウンロードします</string>
   <string name="morphe_external_downloader_title">外部ダウンロード ボタンを表示</string>
   <string name="morphe_external_downloader_summary">プレーヤー オーバーレイに外部ダウンローダーを開くボタンを表示します</string>
-  <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
-  <string name="morphe_external_downloader_action_button_title">オフライン ボタンの動作を上書き</string>
-  <string name="morphe_external_downloader_action_button_summary">オフライン ボタンの呼び出し先を、「YouTube 内蔵のダウンロード機能」から「設定した外部ダウンローダー」に変更します</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">ダウンロード ボタンとメニューを上書き</string>
+  <string name="morphe_external_downloader_action_button_summary">YouTube の組み込みダウンロード機能の代わりに、選択した外部ダウンローダーを使用します</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">吹き替え翻訳</string>
   <string name="morphe_vot_screen_summary">動画字幕を翻訳し、デバイス上のテキスト読み上げ機能で字幕の翻訳を字幕に同期しながら読み上げます</string>
@@ -867,9 +867,9 @@ Automotive レイアウト
   <string name="morphe_open_system_share_sheet_summary">コンテンツを共有するときにアプリ内の共有メニューではなくシステムの共有メニューを開きます</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">YouTube Music ボタンの動作を上書き</string>
-  <string name="morphe_override_youtube_music_buttons_summary">YouTube Music ボタンの呼び出し先を、「YouTube Music」から「設定した音楽アプリ」に変更します</string>
+  <string name="morphe_override_youtube_music_buttons_summary">音楽ボタンをタップした際に、公式の YouTube Music アプリの代わりに、優先する音楽アプリを開きます</string>
   <string name="morphe_music_package_name_title">音楽アプリのパッケージ名</string>
-  <string name="morphe_music_package_name_summary">YouTube Music の代わりに呼び出すインストール済みの音楽アプリのパッケージ名</string>
+  <string name="morphe_music_package_name_summary">YouTube Music の代わりに呼び出す音楽アプリのパッケージ名</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">スタート画面</string>
   <string name="morphe_change_start_page_entry_default">デフォルト</string>
@@ -1081,7 +1081,7 @@ Automotive レイアウト
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">この機能を使用するには、[動画ストリームを偽装] で Android VR または Android Studio を選択してください</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">画質の「詳細設定」メニューを開く</string>
+  <string name="morphe_advanced_video_quality_menu_title">高品質設定メニューを開く</string>
   <string name="morphe_advanced_video_quality_menu_summary">画質メニューをスキップして画質の「詳細設定」メニューを直接開きます</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Premium 画質を非表示</string>

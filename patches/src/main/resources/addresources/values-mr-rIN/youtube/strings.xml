@@ -277,9 +277,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_summary">तृतीय-पक्ष डाउनलोडिंग ॲप्स वापरून व्हिडिओ, पॉडकास्ट किंवा गाणी डाउनलोड करा</string>
   <string name="morphe_external_downloader_title">डाउनलोड बटण दाखवा</string>
   <string name="morphe_external_downloader_summary">तुमचे बाह्य डाउनलोडर उघडणारे व्हिडिओ प्लेयरमध्ये ओव्हरले बटण दर्शवते</string>
-  <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
-  <string name="morphe_external_downloader_action_button_title">डाउनलोड ॲक्शन बटण बदला</string>
-  <string name="morphe_external_downloader_action_button_summary">YouTube चे अंगभूत डाउनलोड फंक्शन तुमच्या बाह्य डाउनलोडरने बदला</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">डाऊनलोड बटण आणि मेनू ओव्हरराइड करा</string>
+  <string name="morphe_external_downloader_action_button_summary">YouTube च्या अंगभूत डाऊनलोड वैशिष्ट्याऐवजी तुमच्या निवडलेल्या बाह्य डाऊनलोडरचा वापर करा</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">व्हॉईस ओव्हर भाषांतर</string>
   <string name="morphe_vot_screen_summary">डिव्हाइसवरील टेक्स्ट-टू-स्पीच वापरून व्हिडिओ कॅप्शन मोठ्याने वाचा, जे प्लेबॅकसह सिंक्रोनाइझ केलेले असेल.</string>
@@ -858,9 +858,9 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_open_system_share_sheet_summary">सामग्री शेअर करताना इन-ॲप ब्राउझरऐवजी (In-app browser) सिस्टीम शेअरशीट (System share sheet) उघडते</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">YouTube Music बटणांना ओव्हरराइड करा</string>
-  <string name="morphe_override_youtube_music_buttons_summary">YouTube Music ऐवजी तुमच्या आवडत्या संगीत ॲपमध्ये उघडते</string>
-  <string name="morphe_music_package_name_title">लक्ष्यित संगीत ॲपचे पॅकेज नाव</string>
-  <string name="morphe_music_package_name_summary">तुमच्या स्थापित लक्ष्य संगीत ॲपचे पॅकेज नाव</string>
+  <string name="morphe_override_youtube_music_buttons_summary">अधिकृत YouTube Music ॲपऐवजी तुमचे पसंतीचे संगीत ॲप उघडा</string>
+  <string name="morphe_music_package_name_title">संगीत ॲप पॅकेज नाव</string>
+  <string name="morphe_music_package_name_summary">तुमच्या इन्स्टॉल केलेल्या संगीत ॲपचे पॅकेज नाव</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">सुरुवात पृष्ठ</string>
   <string name="morphe_change_start_page_entry_default">डीफॉल्ट</string>
@@ -1074,7 +1074,7 @@ DeArrow.ajay.app उघडण्यासाठी येथे टॅप कर
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">हे वैशिष्ट्य (Feature) वापरण्यासाठी, \'व्हिडिओ स्ट्रीम (Video streams) स्पूफ (Spoof) करा\' Android VR किंवा Android Studio वर सेट करा</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">\"Advanced\" गुणवत्ता मेनू उघडा</string>
+  <string name="morphe_advanced_video_quality_menu_title">प्रगत गुणवत्ता मेनू उघडा</string>
   <string name="morphe_advanced_video_quality_menu_summary">गुणवत्ता निवड मेनू वगळून थेट \"Advanced\" गुणवत्ता मेनू उघडतो</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">प्रीमियम गुणवत्ता पर्याय लपवा</string>

@@ -257,9 +257,7 @@ Slova iz velikih slova u sredini riječi moraju točno odgovarati (npr: iPhone, 
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_title">Prikaz dugme za pretraživanje</string>
   <string name="morphe_external_downloader_summary">Prikazuje gumb preklopa u video playeru koji otvara vaš vanjski downloader</string>
-  <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
-  <string name="morphe_external_downloader_action_button_title">Preuzmi akciju dugme</string>
-  <string name="morphe_external_downloader_action_button_summary">Zamjenjuje YouTubeovu ugrađenu funkciju preuzimanja s vaše odabrane aplikacije za preuzimanje treće strane</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_openrouter_model_custom">Prilagođeno</string>
   <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->

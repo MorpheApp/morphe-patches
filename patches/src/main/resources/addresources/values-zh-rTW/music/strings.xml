@@ -23,8 +23,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">自訂</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">使用第三方下載應用程式下載音樂影片、播客或歌曲</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">覆蓋「下載」動作按鈕</string>
-  <string name="morphe_external_downloader_action_button_summary">將 YouTube Music 的內建下載功能取代為您的外部下載器</string>
+  <string name="morphe_external_downloader_action_button_summary">使用您選擇的外部下載器，而非 YouTube Music 的內建下載功能</string>
+  <string name="morphe_external_downloader_flyout_menu_title">覆蓋「下載」選單</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">關於</string>
@@ -102,6 +104,9 @@ YouTube Music 8.x — 淡出效果僅在 9.x 及更高版本中運行"</string>
   <string name="morphe_music_crossfade_about_credit_summary">Crossfade 功能由 VazerOG 提供</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">啟用永久重複播放</string>
+  <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <string name="morphe_music_disable_dislike_redirection_title">停用取消喜歡重新導向</string>
+  <string name="morphe_music_disable_dislike_redirection_summary">防止按下取消喜歡按鈕時跳到下一首曲目</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">隱藏投放按鈕</string>
   <string name="morphe_music_hide_history_button_title">隱藏歷史記錄按鈕</string>

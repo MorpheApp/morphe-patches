@@ -23,8 +23,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Şêwazî</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Vîdyoyên muzîkê, podcast an stran bi sepanên dakêşkirina sêjiyê dakêşîne</string>
-  <string name="morphe_external_downloader_action_button_title">Dawetkirina Guherîna Dagirbûna Downloadê</string>
-  <string name="morphe_external_downloader_action_button_summary">Li şûna fonksiyona dakêşana bixêve ya YouTube Music\'ê, dakêşkera weya derva diguherîne</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">Butona Dawnekarê Guherîn</string>
+  <string name="morphe_external_downloader_action_button_summary">Li şûna fonksiyona dawnekarê ya înşaî ya YouTube Music, dawnekarê we yê dildar bikar tîne</string>
+  <string name="morphe_external_downloader_flyout_menu_title">Menuya Dawnekarê Guherîn</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Derbar</string>
@@ -102,6 +104,9 @@ YouTube Music 8.x — crossfade tenê li 9.x û nûjenertirîn de dimeşe"</stri
   <string name="morphe_music_crossfade_about_credit_summary">Taybeta crossfade ji aliyê VazerOG ve hatî çêkirin</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Tekrar davim berdewam bike</string>
+  <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <string name="morphe_music_disable_dislike_redirection_title">Rihiya kirê destûrê da veguherandina hez kirinê</string>
+  <string name="morphe_music_disable_dislike_redirection_summary">Êdî dema butonê hez kirinê kişandinê, veguherandina stranê paşê nabe</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Butona Şîrkirinê Veşêrin</string>
   <string name="morphe_music_hide_history_button_title">Butona Dîrokê Veşêrin</string>

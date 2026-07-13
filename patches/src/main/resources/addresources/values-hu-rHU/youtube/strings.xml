@@ -283,9 +283,9 @@ Korlátozások:
   <string name="morphe_external_downloader_screen_summary">Töltsön le videókat, podcastokat vagy dalokat harmadik féles alkalmazásokkal</string>
   <string name="morphe_external_downloader_title">Külső letöltés gomb megjelenítése</string>
   <string name="morphe_external_downloader_summary">Megjelenít egy átfedő gombot a videólejátszóban, amely megnyitja a külső letöltőalkalmazást</string>
-  <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
-  <string name="morphe_external_downloader_action_button_title">A Letöltés művelet gomb felülírása</string>
-  <string name="morphe_external_downloader_action_button_summary">A YouTube beépített letöltési funkcióját helyettesíti a külső letöltőalkalmazással</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">A Letöltés gomb &amp; menü felülírása</string>
+  <string name="morphe_external_downloader_action_button_summary">A választott külső letöltőprogramot használja a YouTube beépített letöltési funkciója helyett</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Hangfelirat hangos felolvasása</string>
   <string name="morphe_vot_screen_summary">Olvassa fel a videó feliratait hangosan a készüléken található szöveg-beszéddé alakító segítségével, szinkronban a lejátszással.</string>
@@ -866,9 +866,9 @@ Korlátozás: Ha a „Régi videós eszköztár visszaállítása” ki van kapc
   <string name="morphe_open_system_share_sheet_summary">Megnyitja a rendszer megosztási lapját ahelyett, hogy az alkalmazáson belüli lapot nyitná meg a tartalom megosztásakor</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">A YouTube Music gombok felülbírálása</string>
-  <string name="morphe_override_youtube_music_buttons_summary">A kedvenc zenei alkalmazás megnyitása ahelyett, hogy a YouTube Music-ot választaná a zenei gombok megérintésekor</string>
-  <string name="morphe_music_package_name_title">A célzenéldrás alkalmazás csomagnév</string>
-  <string name="morphe_music_package_name_summary">A telepített célzengealkalmazás csomagneve</string>
+  <string name="morphe_override_youtube_music_buttons_summary">A preferált zenelejátszót nyitja meg a hivatalos YouTube Music alkalmazás helyett</string>
+  <string name="morphe_music_package_name_title">A zenelejátszó csomag neve</string>
+  <string name="morphe_music_package_name_summary">A telepített zenelejátszó csomag neve</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Kezdőlap</string>
   <string name="morphe_change_start_page_entry_default">Alapértelmezett</string>
@@ -1082,7 +1082,7 @@ Korlátozások:
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">A statisztikákban mutassa a hamisítást</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Nyissa meg a \"Speciális\" minőségi menüt</string>
+  <string name="morphe_advanced_video_quality_menu_title">Nyissa meg a fejlett minőség menüt</string>
   <string name="morphe_advanced_video_quality_menu_summary">A minőségi beállítások menüt kihagyva közvetlenül megnyitja a Speciális minőségi menüt</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Premium minőség opciók elrejtése</string>

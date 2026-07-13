@@ -284,9 +284,9 @@ Sînorkirin:
   <string name="morphe_external_downloader_screen_summary">Vîdyoyê, podcastan, an stranê bi rêya sepanên downloadkirina sêjê dakêşîne.</string>
   <string name="morphe_external_downloader_title">Nîşan bide lê gava serîna bikêrkaran</string>
   <string name="morphe_external_downloader_summary">Shows an overlay button in video player that opens your external downloader</string>
-  <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
-  <string name="morphe_external_downloader_action_button_title">Serdest kirina gava veqelîna qeykan</string>
-  <string name="morphe_external_downloader_action_button_summary">Replaces YouTube\'s built-in download function with your external downloader</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">Dagirbêjkirina bişko û menuya Dakêşê &amp;</string>
+  <string name="morphe_external_downloader_action_button_summary">Bêyî karê dakêşkirina veqrasî yê YouTube, dakêşkirina we ya bijartî bikar tîne</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Wergerê dîtinî</string>
   <string name="morphe_vot_screen_summary">Jê wergirê nivîskên vîdyoyê bi teknolojîya veguherandina nivîsê ya cîhazê, bi hevdîtina lîstikê, bi dengî bixîne</string>
@@ -868,9 +868,9 @@ Sînordarî: Ger 'Restore old video action bar' veqetandibe, 'More videos' dîti
   <string name="morphe_open_system_share_sheet_summary">Vekirina çarşêfa parvekirina sistemê li şûna ya brêzî dema ku hûn navnîş parve dikin</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Butonên YouTube Music-ê serdike </string>
-  <string name="morphe_override_youtube_music_buttons_summary">Sepandin wekî serlêdana we ya muzîkê ya bijare li şûna YouTube Musicê dema ku hûn dişkinin butonên muzîkê</string>
-  <string name="morphe_music_package_name_title">Navê pakêtê sepeya muzîkê hedef</string>
-  <string name="morphe_music_package_name_summary">Navê pakêta sepanê ya muzîkê ya ku we saz kiriye</string>
+  <string name="morphe_override_youtube_music_buttons_summary">Bêyî karê muzîka fermî ya YouTube, serîlêdana muzîka bijartî ya we vedike</string>
+  <string name="morphe_music_package_name_title">Navê paketa serîlêdana muzîkê</string>
+  <string name="morphe_music_package_name_summary">Navê paketa serîlêdana muzîka ku we saz kiriye</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Rûpela Destpêkirinê</string>
   <string name="morphe_change_start_page_entry_default">Bixwe</string>
@@ -1084,7 +1084,7 @@ Sînergirên:
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Ji bo karanîna vê taybetmendiyê, \'Streaming vîdyoyê şopîn bike\' saz bike bo Android VR an Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Vebijarkirina menuya kalîteya \'Pêşkeftî\'</string>
+  <string name="morphe_advanced_video_quality_menu_title">Veke ji menuya kalîteya pêşkeftî ve bike</string>
   <string name="morphe_advanced_video_quality_menu_summary">Dibe menuya hilbijartina kalîteyê derbas dike û rasterast menuya kalîteya Pêşkeftî vekirin</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Ji asta Premium veşêre</string>

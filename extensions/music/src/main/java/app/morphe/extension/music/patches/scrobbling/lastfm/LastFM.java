@@ -12,7 +12,6 @@ import org.json.JSONObject;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -24,6 +23,7 @@ import java.util.Map;
 
 import app.morphe.extension.music.patches.scrobbling.ScrobbleManager;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.requests.Requester;
 
 public class LastFM {
     private static final String BASE_URL = "https://ws.audioscrobbler.com/2.0/";
@@ -94,8 +94,7 @@ public class LastFM {
 
         byte[] postDataBytes = postData.toString().getBytes(StandardCharsets.UTF_8);
 
-        URL url = new URL(BASE_URL);
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        HttpURLConnection conn = Requester.openConnection(BASE_URL);
         conn.setRequestMethod("POST");
         conn.setRequestProperty("User-Agent", USER_AGENT);
         conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");

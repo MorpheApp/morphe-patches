@@ -23,8 +23,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Khusus</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Unduh video musik, podcast, atau lagu dengan aplikasi pengunduh pihak ketiga</string>
-  <string name="morphe_external_downloader_action_button_title">Gantikan tombol tindakan Unduh</string>
-  <string name="morphe_external_downloader_action_button_summary">Menggantikan fungsi unduh bawaan YouTube Music dengan aplikasi pengunduhan pihak ketiga pilihan Anda</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">Gantikan tombol Unduh</string>
+  <string name="morphe_external_downloader_action_button_summary">Menggunakan pengunduh eksternal pilihan Anda, bukan fitur unduh bawaan YouTube Music</string>
+  <string name="morphe_external_downloader_flyout_menu_title">Menu Gantikan Unduh</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Tentang</string>
@@ -102,6 +104,9 @@ YouTube Music 8.x — pudar silang hanya berfungsi pada versi 9.x dan yang lebih
   <string name="morphe_music_crossfade_about_credit_summary">Fitur pudar silang oleh VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Aktifkan pengulangan permanen</string>
+  <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <string name="morphe_music_disable_dislike_redirection_title">Nonaktifkan pengalihan tidak suka</string>
+  <string name="morphe_music_disable_dislike_redirection_summary">Mencegah peralihan ke trek berikutnya saat tombol tidak suka ditekan</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Sembunyikan tombol transmisi</string>
   <string name="morphe_music_hide_history_button_title">Sembunyikan tombol Riwayat</string>

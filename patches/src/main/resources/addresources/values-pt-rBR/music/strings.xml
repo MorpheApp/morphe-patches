@@ -23,8 +23,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Personalizado</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Baixe vídeos de música, podcasts ou músicas com gerenciador de downloads externo</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Substituir botão de ação Download</string>
-  <string name="morphe_external_downloader_action_button_summary">Substitui a função de download integrada do YouTube Music pelo seu gerenciador de downloads externo</string>
+  <string name="morphe_external_downloader_action_button_summary">Usa o seu downloader externo escolhido em vez do recurso de download integrado do YouTube Music</string>
+  <string name="morphe_external_downloader_flyout_menu_title">Substituir menu Download</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Sobre</string>
@@ -102,6 +104,9 @@ YouTube Music 8.x — o Crossfade funciona apenas no YouTube Music 9.x ou mais r
   <string name="morphe_music_crossfade_about_credit_summary">Recurso de crossfade por VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Ativar repetição permanente</string>
+  <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <string name="morphe_music_disable_dislike_redirection_title">Desativar redirecionamento de não gostei</string>
+  <string name="morphe_music_disable_dislike_redirection_summary">Impede a passagem para a próxima faixa quando o botão de não gostei é pressionado</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Ocultar botão de transmissão</string>
   <string name="morphe_music_hide_history_button_title">Ocultar botão de histórico</string>

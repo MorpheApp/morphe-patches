@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/1823
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -8,6 +8,7 @@
 package app.morphe.patches.shared.misc.proxy
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
@@ -16,7 +17,10 @@ import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.returnEarly
+import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import java.util.logging.Logger
 
 internal const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/NetworkProxyPatch;"
@@ -71,10 +75,30 @@ internal fun baseNetworkProxyPatch(
             )
         )
 
-        BuildExperimentalFingerprint.method.addInstruction(
-            0,
-            "invoke-static { p0 }, $EXTENSION_CLASS->applyProxyOptions(Lorg/chromium/net/CronetEngine\$Builder;)V"
-        )
+        BuildExperimentalFingerprint.method.apply {
+            addInstruction(
+                0,
+                "invoke-static { p0 }, $EXTENSION_CLASS->applyProxyOptions(Lorg/chromium/net/CronetEngine\$Builder;)V"
+            )
+
+            findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+                addInstruction(
+                    index,
+                    "invoke-static { v$register }, $EXTENSION_CLASS->recordProxyConfiguredCronetEngine($CRONET_ENGINE_CLASS)V"
+                )
+            }
+        }
+
+        MainCronetEngineFingerprint.method.apply {
+            findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+                addInstruction(
+                    index,
+                    "invoke-static { v$register }, $EXTENSION_CLASS->setMainCronetEngine($CRONET_ENGINE_CLASS)V"
+                )
+            }
+        }
 
         executeBlock()
     }

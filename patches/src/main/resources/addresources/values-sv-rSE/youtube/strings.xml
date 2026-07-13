@@ -226,8 +226,7 @@ Vissa layouter på serversidan kanske inte återställs.
   <string name="morphe_disable_chapter_skip_double_tap_title">Inaktivera dubbeltryck för att hoppa över kapitel</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_title">Visa knapp för extern nedladdning</string>
-  <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
-  <string name="morphe_external_downloader_action_button_title">Åsidosätt åtgärdsknappen Ladda ned</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_openrouter_model_custom">Anpassad</string>
   <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
@@ -643,9 +642,6 @@ Om du vill att menyn Ljudspår ska visas ändrar du Förfalska videostreamar til
   <string name="morphe_open_system_share_sheet_summary">Öppnar systemets delningsblad istället för appens när du delar innehåll</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Åsidosätt YouTube Music-knapparna</string>
-  <string name="morphe_override_youtube_music_buttons_summary">Öppnar din föredragna musikapp istället för YouTube Music när du trycker på musikknappar</string>
-  <string name="morphe_music_package_name_title">Paketnamn på målappen för musik</string>
-  <string name="morphe_music_package_name_summary">Paketnamn på den installerade målappen för musik</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Startsida</string>
   <string name="morphe_change_start_page_entry_default">Standard</string>

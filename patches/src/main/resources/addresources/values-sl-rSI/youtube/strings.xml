@@ -283,9 +283,9 @@ Omejitve:
   <string name="morphe_external_downloader_screen_summary">Prenesite videoposnetke, podkaste ali pesmi z aplikacijami za prenos tretje osebe</string>
   <string name="morphe_external_downloader_title">Prikaži gumb za zunanji prenos</string>
   <string name="morphe_external_downloader_summary">Prikaže prekritje gumba v predvajalniku videa, ki odpre vaš program za prenos třjih oseb</string>
-  <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
-  <string name="morphe_external_downloader_action_button_title">Prepiši gumb za dejanje prenosa</string>
-  <string name="morphe_external_downloader_action_button_summary">Zamenja vgrajeno funkcijo prenosa YouTube z vašim programom za prenos třjih oseb</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">Prepiši gumb za prenos &amp; meni</string>
+  <string name="morphe_external_downloader_action_button_summary">Uporablja izbrano orodje za prenos namesto vgrajene funkcije prenosa na YouTube</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Prevajanje z glasom</string>
   <string name="morphe_vot_screen_summary">Prebiranje napisov videoposnetka v glas z uporabo pretvorbe besedila v govor v napravi, sinhronizirano s predvajanjem</string>
@@ -864,9 +864,9 @@ Omejitev: Če je možnost »Ponastavi staro vrstico za videoposnetke« izkloplje
   <string name="morphe_open_system_share_sheet_summary">Odpre sistemski deležni list namesto vgrajenega pri deljenju vsebine</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Prekrivanje gumbov za YouTube Music</string>
-  <string name="morphe_override_youtube_music_buttons_summary">Odpre vašo priljubljeno glasbeno aplikacijo namesto YouTube Music pri tapkanju gumbov za glasbo</string>
-  <string name="morphe_music_package_name_title">Ime paketa ciljne glasbene aplikacije</string>
-  <string name="morphe_music_package_name_summary">Ime paketa vaše nameščene ciljne glasbene aplikacije</string>
+  <string name="morphe_override_youtube_music_buttons_summary">Odpre vašo priljubljeno glasbeno aplikacijo namesto uradne aplikacije YouTube Music</string>
+  <string name="morphe_music_package_name_title">Ime paketa glasbene aplikacije</string>
+  <string name="morphe_music_package_name_summary">Ime paketa nameščene glasbene aplikacije</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Začetna stran</string>
   <string name="morphe_change_start_page_entry_default">Privzeto</string>
@@ -1080,7 +1080,7 @@ Omejitve:
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Za uporabo te funkcije nastavite »Ponarejanje video tokov« na Android VR ali Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Odpre meni za napredno kakovost</string>
+  <string name="morphe_advanced_video_quality_menu_title">Odpre napredno možnost nastavitve kakovosti</string>
   <string name="morphe_advanced_video_quality_menu_summary">Preskoči meni za izbiro kakovosti in neposredno odpre napredno kakovost</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Skrij možnosti premium kakovosti</string>

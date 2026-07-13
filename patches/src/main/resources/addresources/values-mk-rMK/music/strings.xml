@@ -22,6 +22,7 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_1">Стандардно</string>
   <string name="morphe_header_logo_entry_3">По нарачка</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">За апликацијата</string>
@@ -72,6 +73,7 @@ Second \"item\" text"</string>
   <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Вклучи перманентно повторување</string>
+  <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <!-- layout.buttons.hideButtonsPatch -->
   <!-- layout.hide.general.hideMusicComponentsPatch -->
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->

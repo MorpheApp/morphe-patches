@@ -22,6 +22,7 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_1">Lalai</string>
   <string name="morphe_header_logo_entry_3">Tersuai</string>
   <!-- interaction.downloads.downloadsPatch -->
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Mengenai</string>
@@ -84,6 +85,7 @@ YouTube Music 8.x — pudar silang hanya berkesan pada versi 9.x dan yang lebih 
   <string name="morphe_music_crossfade_about_credit_summary">Ciri pudar silang oleh VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Dayakan ulangan kekal</string>
+  <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <!-- layout.buttons.hideButtonsPatch -->
   <!-- layout.hide.general.hideMusicComponentsPatch -->
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->

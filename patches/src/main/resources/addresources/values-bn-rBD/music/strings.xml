@@ -23,8 +23,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">ব্যবহারকারী</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">থার্ড-পার্টি ডাউনলোড করার অ্যাপের মাধ্যমে মিউজিক ভিডিও, পডকাস্ট বা গান ডাউনলোড করুন</string>
-  <string name="morphe_external_downloader_action_button_title">ডাউনলোড অ্যাকশন বোতামটি ওভাররাইড করুন</string>
-  <string name="morphe_external_downloader_action_button_summary">আপনার বাহ্যিক ডাউনলোডার দিয়ে YouTube Music-এর বিল্টইন ডাউনলোড ফাংশন প্রতিস্থাপন করে</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">ডাউনলোড বোতামটি প্রতিস্থাপন করুন</string>
+  <string name="morphe_external_downloader_action_button_summary">YouTube Music-এর অন্তর্নির্মিত ডাউনলোড বৈশিষ্ট্যের পরিবর্তে আপনার নির্বাচিত বাহ্যিক ডাউনলোডার ব্যবহার করে</string>
+  <string name="morphe_external_downloader_flyout_menu_title">ডাউনলোড মেনু প্রতিস্থাপন করুন</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">মর্ফ সম্পর্কে</string>
@@ -102,6 +104,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_about_credit_summary">VazerOG-এর তৈরি ক্রসফেড ফিচার</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">স্থায়ী পুনরাবৃত্তি সক্ষম করুন</string>
+  <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <string name="morphe_music_disable_dislike_redirection_title">ডিসলাইক রিডাইরেকশন নিষ্ক্রিয় করুন</string>
+  <string name="morphe_music_disable_dislike_redirection_summary">ডিসলাইক বোতাম চাপলে পরবর্তী ট্র্যাকে যাওয়া বন্ধ করে</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">কাস্ট বোতাম লুকান</string>
   <string name="morphe_music_hide_history_button_title">ইতিহাস বোতাম লুকান</string>

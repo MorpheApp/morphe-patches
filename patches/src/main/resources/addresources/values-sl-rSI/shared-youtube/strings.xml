@@ -24,7 +24,6 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_title">Zunanji prenosi</string>
   <string name="morphe_external_downloader_name_title">Ime paketa programa za prenos</string>
   <string name="morphe_external_downloader_name_summary">Ime paketa vaše nameščene zunanje aplikacije za prenos</string>
-  <string name="morphe_external_downloader_flyout_button_title">Prekrij gumb za pojavno okno/iskanje</string>
   <string name="morphe_external_downloader_other_item_hint">Vnesite ime paketa</string>
   <string name="morphe_external_downloader_other_item">Drugi</string>
   <string name="morphe_external_downloader_not_found_title">Aplikacija ni nameščena</string>
@@ -32,7 +31,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Ne najdem nameščene aplikacije s paketnim imenom: %s
 
 Preverite, ali je ime paketa pravilno in ali je aplikacija nameščena"</string>
-  <string name="morphe_external_downloader_empty_warning">Ime paketa ne sme biti prazno</string>
+  <string name="morphe_external_downloader_empty_warning">Ime paketa ne more biti prazno</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Prilagoditve</string>
   <string name="morphe_custom_branding_icon_title">Ikona aplikacije</string>

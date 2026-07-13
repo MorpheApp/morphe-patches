@@ -7,13 +7,13 @@ import android.preference.Preference;
 import android.util.AttributeSet;
 
 import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
 import app.morphe.extension.youtube.settings.Settings;
@@ -91,8 +91,7 @@ public class GetCaptionCookiesPreference extends Preference implements Preferenc
             final long start = System.currentTimeMillis();
             setCookies = Utils.submitOnBackgroundThread(() -> {
                 final int connectionTimeoutMillis = 5000;
-                URL url = new URL(YOUTUBE_SERVICE_WORKER_URL);
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                HttpURLConnection connection = Requester.openConnection(YOUTUBE_SERVICE_WORKER_URL);
                 connection.setRequestMethod("GET");
                 connection.setRequestProperty("User-Agent", USER_AGENT);
                 connection.setRequestProperty("Referer", YOUTUBE_URL);

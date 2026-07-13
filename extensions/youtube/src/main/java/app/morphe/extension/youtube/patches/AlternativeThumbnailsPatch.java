@@ -20,7 +20,6 @@ import org.chromium.net.impl.CronetUrlRequest;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +27,7 @@ import java.util.concurrent.ExecutionException;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.NavigationBar;
@@ -622,7 +622,7 @@ public final class AlternativeThumbnailsPatch {
                 final long start = System.currentTimeMillis();
                 imageFileFound = Utils.submitOnBackgroundThread(() -> {
                     final int connectionTimeoutMillis = 10000; // 10 seconds.
-                    HttpURLConnection connection = (HttpURLConnection) new URL(imageURL).openConnection();
+                    HttpURLConnection connection = Requester.openConnection(imageURL);
                     connection.setConnectTimeout(connectionTimeoutMillis);
                     connection.setReadTimeout(connectionTimeoutMillis);
                     connection.setRequestMethod("HEAD");

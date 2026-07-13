@@ -23,8 +23,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Egyedi</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Töltsön le zenei videókat, podcastokat vagy dalokat külső letöltő alkalmazásokkal</string>
-  <string name="morphe_external_downloader_action_button_title">A Letöltés művelet gomb felülírása</string>
-  <string name="morphe_external_downloader_action_button_summary">A YouTube Music beépített letöltési funkcióját felváltja a külső letöltőprogramoddal</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">A Letöltés gomb felülírása</string>
+  <string name="morphe_external_downloader_action_button_summary">A választott külső letöltőprogramot használja a YouTube Music beépített letöltési funkciója helyett</string>
+  <string name="morphe_external_downloader_flyout_menu_title">Letöltés menü felülírása</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Névjegy</string>
@@ -102,6 +104,9 @@ YouTube Music 8.x – a keresztátmenet csak a 9.x és újabb verziókon fut."</
   <string name="morphe_music_crossfade_about_credit_summary">A keresztátmenet funkciót VazerOG készítette</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Állandó ismétlés bekapcsolása</string>
+  <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <string name="morphe_music_disable_dislike_redirection_title">Tiltás a nemtetszés átirányításának letiltása</string>
+  <string name="morphe_music_disable_dislike_redirection_summary">Megakadályozza, hogy a nemtetszés gomb megnyomása esetén a következő számra ugorjon</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Átküldés gomb elrejtése</string>
   <string name="morphe_music_hide_history_button_title">Előzmények gomb elrejtése</string>

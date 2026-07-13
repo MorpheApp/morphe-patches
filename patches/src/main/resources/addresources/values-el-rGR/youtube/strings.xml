@@ -283,9 +283,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_summary">Κάντε λήψη βίντεο, podcast ή τραγούδια με εφαρμογές λήψης τρίτων</string>
   <string name="morphe_external_downloader_title">Εμφάνιση κουμπιού εξωτερικής λήψης</string>
   <string name="morphe_external_downloader_summary">Εμφανίζει ένα κουμπί επικάλυψης στον πρόγραμμα αναπαραγωγής βίντεο που ανοίγει την εφαρμογή λήψης τρίτων</string>
-  <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
-  <string name="morphe_external_downloader_action_button_title">Αλλαγή λειτουργίας κουμπιού ενέργειας «Λήψη»</string>
-  <string name="morphe_external_downloader_action_button_summary">Αντικαθιστά τη λειτουργία λήψης ενσωματωμένη στο YouTube με την εφαρμογή λήψης τρίτων</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">Αντικατάσταση κουμπιού &amp; μενού «Λήψη»</string>
+  <string name="morphe_external_downloader_action_button_summary">Χρησιμοποιεί τον επιλεγμένο εξωτερικό downloader αντί της ενσωματωμένης λειτουργίας λήψης του YouTube</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Μετάφραση φωνής</string>
   <string name="morphe_vot_screen_summary">Διαβάστε τις λεζάντες του βίντεο δυνατά χρησιμοποιώντας το text-to-speech της συσκευής, συγχρονισμένα με την αναπαραγωγή</string>
@@ -866,9 +866,9 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_summary">Ανοίγει το φύλλο κοινής χρήσης του συστήματος αντί για το ενσωματωμένο όταν κοινοποιείτε περιεχόμενο</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Υπέρβαση των κουμπιών YouTube Music</string>
-  <string name="morphe_override_youtube_music_buttons_summary">Ανοίγει την αγαπημένη σας εφαρμογή μουσικής αντί για το YouTube Music όταν πατάτε κουμπιά μουσικής</string>
-  <string name="morphe_music_package_name_title">Όνομα πακέτου της εφαρμογής μουσικής στόχου</string>
-  <string name="morphe_music_package_name_summary">Το όνομα πακέτου της εγκατεστημένης σας εφαρμογής μουσικής</string>
+  <string name="morphe_override_youtube_music_buttons_summary">Ανοίγει την αγαπημένη σας εφαρμογή μουσικής αντί για την επίσημη εφαρμογή YouTube Music</string>
+  <string name="morphe_music_package_name_title">Όνομα πακέτου εφαρμογής μουσικής</string>
+  <string name="morphe_music_package_name_summary">Όνομα πακέτου της εγκατεστημένης εφαρμογής μουσικής σας</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Αρχική σελίδα</string>
   <string name="morphe_change_start_page_entry_default">Προεπιλογή</string>
@@ -1082,7 +1082,7 @@ Second \"item\" text"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Για να χρησιμοποιήσετε αυτήν τη λειτουργία, ορίστε την \'Παραποίηση ροών βίντεο\' σε Android VR ή Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Άνοιγμα μενού ποιότητας \'Προχωρημένων\'</string>
+  <string name="morphe_advanced_video_quality_menu_title">Άνοιγμα μενού προηγμένης ποιότητας</string>
   <string name="morphe_advanced_video_quality_menu_summary">Παρακάμπτει το μενού επιλογής ποιότητας και ανοίγει απευθείας το μενού ποιότητας \'Προχωρημένων\'</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Απόκρυψη επιλογών υψηλής ποιότητας</string>

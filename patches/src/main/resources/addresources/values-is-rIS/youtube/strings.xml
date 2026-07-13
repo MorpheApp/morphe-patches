@@ -283,9 +283,9 @@ Takmörk:
   <string name="morphe_external_downloader_screen_summary">Niðurhalaðu myndbönd, hlaðvarpa eða lög með niðurhalssforritum frá þriðja aðila.</string>
   <string name="morphe_external_downloader_title">Sýna utanaðkomandi niðurhalshnapp</string>
   <string name="morphe_external_downloader_summary">Sýnir hlutfalls hnatta á myndavörpun sem opnar þinn þriðja aðila niðurhal</string>
-  <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
-  <string name="morphe_external_downloader_action_button_title">Breyta niðurhalshnappi</string>
-  <string name="morphe_external_downloader_action_button_summary">Býr í stað þess sem YouTube hefur innbyggt niðurhal með þinn þriðja aðila niðurhal</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">Yfirskrifa niðhalningshnapp &amp; valmynd</string>
+  <string name="morphe_external_downloader_action_button_summary">Notar valinn niðhalningsforrit þitt í stað innbyggðrar niðhalningsaðgerðar YouTube</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Þýðing á raddsegulmagni</string>
   <string name="morphe_vot_screen_summary">Les upp undirtitla myndbandsins með texta-til-tala á tækinu, samhæmt með endursendingu</string>
@@ -862,9 +862,9 @@ Takmörkun: Ef 'Endurskapa gamla stjórnbara myndbands' er slökkt, gæti 'Fleir
   <string name="morphe_open_system_share_sheet_summary">Opnar deilistöð kerfisins í stað forritsins þegar deilt er efni</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Vírúð YouTube tónlistarnir</string>
-  <string name="morphe_override_youtube_music_buttons_summary">Opnar uppáhalds tónlistarfyrirtækið þitt í stað YouTube Music þegar þú snertir tónlistahnappi</string>
-  <string name="morphe_music_package_name_title">Pakkanamir þíns á tónlistahvímyna</string>
-  <string name="morphe_music_package_name_summary">Pakkanamir þíns á tónlistahvímyna</string>
+  <string name="morphe_override_youtube_music_buttons_summary">Opnar valda tónlistarforritið þitt í stað opinbera YouTube Music appins</string>
+  <string name="morphe_music_package_name_title">Pakkanafn tónlistarforrits</string>
+  <string name="morphe_music_package_name_summary">Pakkanafn uppsetts tónlistarforrits þíns</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Forsíðarsíða</string>
   <string name="morphe_change_start_page_entry_default">Sjálfgefið</string>
@@ -1078,7 +1078,7 @@ Takmörk:
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Til að nota þennan eiginleika þarftu að stilla „Forgeðu vídeóstreymi“ á Android VR eða Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Opnað \'Advanced\' gæðavalmynd</string>
+  <string name="morphe_advanced_video_quality_menu_title">Opnaðu Advanced gæðavalmynd</string>
   <string name="morphe_advanced_video_quality_menu_summary">Sleppur yfir valið á gæðum og opnar \'Advanced\' gæðavalmyndina beint</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Húfa Premium gæðavalmyndir</string>

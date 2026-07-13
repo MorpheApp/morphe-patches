@@ -23,8 +23,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Tùy chỉnh</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Tải xuống video nhạc, podcast hoặc bài hát bằng các ứng dụng tải xuống của bên thứ ba</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Ghi đè nút Tải xuống</string>
-  <string name="morphe_external_downloader_action_button_summary">Thay thế chức năng tải xuống được tích hợp trong YouTube bằng ứng dụng tải xuống bên ngoài của bạn</string>
+  <string name="morphe_external_downloader_action_button_summary">Sử dụng trình tải xuống bên ngoài bạn đã chọn thay vì tính năng tải xuống tích hợp của YouTube Music</string>
+  <string name="morphe_external_downloader_flyout_menu_title">Menu Ghi đè Tải xuống</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Giới thiệu</string>
@@ -102,6 +104,9 @@ YouTube Music 8.x – hiệu ứng chuyển tiếp chỉ chạy trên 9.x trở 
   <string name="morphe_music_crossfade_about_credit_summary">Hiệu ứng chuyển bài do VazerOG phát triển</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Bật lặp lại vĩnh viễn</string>
+  <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <string name="morphe_music_disable_dislike_redirection_title">Tắt tính năng chuyển hướng dislike</string>
+  <string name="morphe_music_disable_dislike_redirection_summary">Ngăn việc chuyển đến bản nhạc tiếp theo khi nhấn nút dislike</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Ẩn nút truyền</string>
   <string name="morphe_music_hide_history_button_title">Ẩn nút lịch sử</string>

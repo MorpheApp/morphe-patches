@@ -14,7 +14,6 @@ import org.json.JSONObject;
 
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
@@ -116,7 +115,7 @@ final class TranscriptFetcher {
                 + "\"videoId\":\"" + videoId + "\"}";
 
         //noinspection ExtractMethodRecommender
-        HttpURLConnection conn = (HttpURLConnection) new URL(INNERTUBE_PLAYER_URL).openConnection();
+        HttpURLConnection conn = Requester.openConnection(INNERTUBE_PLAYER_URL);
         conn.setRequestMethod("POST");
         conn.setConnectTimeout(CONNECT_TIMEOUT_MS);
         conn.setReadTimeout(READ_TIMEOUT_MS);
@@ -449,8 +448,7 @@ final class TranscriptFetcher {
     }
 
     private static String fetchUrl(String urlStr) throws Exception {
-        URL url = new URL(urlStr);
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        HttpURLConnection conn = Requester.openConnection(urlStr);
         conn.setConnectTimeout(CONNECT_TIMEOUT_MS);
         conn.setReadTimeout(READ_TIMEOUT_MS);
         conn.setRequestProperty("User-Agent", CaptionCookiesPatch.getUserAgent());

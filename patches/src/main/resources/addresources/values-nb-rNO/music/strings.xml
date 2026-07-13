@@ -23,8 +23,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Tilpasset</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Last ned musikkvideoer, podkaster eller sanger med nedlastingsapper fra tredjeparter</string>
-  <string name="morphe_external_downloader_action_button_title">Overskriv nedlastingsknapp</string>
-  <string name="morphe_external_downloader_action_button_summary">Erstatter YouTube Musics innebygde nedlastingsfunksjon med din eksterne nedlaster</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">Overskriv Nedlastingsknapp</string>
+  <string name="morphe_external_downloader_action_button_summary">Bruker din valgte eksterne nedlaster i stedet for YouTube Musics innebygde nedlastingsfunksjon</string>
+  <string name="morphe_external_downloader_flyout_menu_title">Overskriv Nedlastingsmeny</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Om</string>
@@ -102,6 +104,9 @@ YouTube Music 8.x – crossfade kjører bare på 9.x og nyere"</string>
   <string name="morphe_music_crossfade_about_credit_summary">Crossfade-funksjon av VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Aktiver permanent gjentakelse</string>
+  <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <string name="morphe_music_disable_dislike_redirection_title">Deaktiver omdirigering av misliker</string>
+  <string name="morphe_music_disable_dislike_redirection_summary">Hindrer at sporing hopper til neste spor når misliker-knappen trykkes</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Skjul Cast-knapp</string>
   <string name="morphe_music_hide_history_button_title">Skjul Historikk-knapp</string>

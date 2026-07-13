@@ -283,9 +283,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_summary">使用第三方下載應用程式下載影片、播客或歌曲</string>
   <string name="morphe_external_downloader_title">顯示外部下載按鈕</string>
   <string name="morphe_external_downloader_summary">顯示影片播放器中的疊加按鈕，以開啟您的外部下載程式</string>
-  <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
-  <string name="morphe_external_downloader_action_button_title">覆蓋「下載」動作按鈕</string>
-  <string name="morphe_external_downloader_action_button_summary">將 YouTube 的內建下載功能取代為您的外部下載程式</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">覆蓋「下載」按鈕與選單</string>
+  <string name="morphe_external_downloader_action_button_summary">使用您選擇的外部下載器，而非 YouTube 內建的下載功能</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">語音轉錄翻譯</string>
   <string name="morphe_vot_screen_summary">使用裝置上的文字轉語音功能朗讀影片字幕，並與播放同步</string>
@@ -866,9 +866,9 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_summary">分享內容時，開啟系統分享工作表，而不是應用程式內的工作表</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">覆蓋 YouTube Music 按鈕</string>
-  <string name="morphe_override_youtube_music_buttons_summary">點擊音樂按鈕時，開啟您偏好的音樂應用程式，而不是 YouTube Music</string>
-  <string name="morphe_music_package_name_title">Morphe Music 套件名稱</string>
-  <string name="morphe_music_package_name_summary">目標音樂應用程式的套件名稱</string>
+  <string name="morphe_override_youtube_music_buttons_summary">開啟您偏好的音樂應用程式，而非官方 YouTube Music 應用程式</string>
+  <string name="morphe_music_package_name_title">音樂應用程式套件名稱</string>
+  <string name="morphe_music_package_name_summary">您已安裝音樂應用程式的套件名稱</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">開始頁面</string>
   <string name="morphe_change_start_page_entry_default">預設</string>
@@ -1082,7 +1082,7 @@ Second \"item\" text"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">允許在使用 Android VR 用戶端時進行軟體 AV1 解碼</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">開啟「進階」畫質選單</string>
+  <string name="morphe_advanced_video_quality_menu_title">開啟進階畫質選單</string>
   <string name="morphe_advanced_video_quality_menu_summary">略過畫質選單，直接開啟進階畫質選單</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">隱藏 Premium 品質選項</string>

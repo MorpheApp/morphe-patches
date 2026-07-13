@@ -283,9 +283,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_summary">ดาวน์โหลดวิดีโอ พอดแคสต์ หรือเพลงด้วยแอปดาวน์โหลดของบุคคลที่สาม</string>
   <string name="morphe_external_downloader_title">แสดงปุ่มดาวน์โหลดภายนอก</string>
   <string name="morphe_external_downloader_summary">แสดงปุ่มซ้อนทับในเครื่องเล่นวิดีโอที่เปิดแอปดาวน์โหลดภายนอกของคุณ</string>
-  <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
-  <string name="morphe_external_downloader_action_button_title">แทนที่ปุ่ม \'ดาวน์โหลด\'</string>
-  <string name="morphe_external_downloader_action_button_summary">แทนที่ฟังก์ชันดาวน์โหลดในตัวของ YouTube ด้วยแอปดาวน์โหลดภายนอกของคุณ</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">แทนที่ปุ่ม \'ดาวน์โหลด\' และเมนู</string>
+  <string name="morphe_external_downloader_action_button_summary">ใช้ตัวดาวน์โหลดภายนอกที่คุณเลือกแทนคุณสมบัติการดาวน์โหลดในตัวของ YouTube</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">การแปลเสียงบรรยาย</string>
   <string name="morphe_vot_screen_summary">อ่านคำบรรยายวิดีโอออกเสียงด้วยระบบแปลงข้อความเป็นเสียงบนอุปกรณ์ โดยซิงโครไนซ์กับการเล่น</string>
@@ -864,9 +864,9 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_summary">เปิดแผ่นแบ่งปันของระบบแทนที่แผ่นในแอปเมื่อแชร์เนื้อหา</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">แทนที่ปุ่ม YouTube Music</string>
-  <string name="morphe_override_youtube_music_buttons_summary">เปิดแอปเพลงที่คุณต้องการแทนที่จะเป็น YouTube Music เมื่อแตะปุ่มเพลง</string>
-  <string name="morphe_music_package_name_title">ชื่อแพ็กเกจแอปเพลงเป้าหมาย</string>
-  <string name="morphe_music_package_name_summary">ชื่อแพ็กเกจของแอปเพลงเป้าหมายที่คุณติดตั้ง</string>
+  <string name="morphe_override_youtube_music_buttons_summary">เปิดแอปเพลงที่คุณต้องการแทนแอป YouTube Music อย่างเป็นทางการ</string>
+  <string name="morphe_music_package_name_title">ชื่อแพ็กเกจแอปเพลง</string>
+  <string name="morphe_music_package_name_summary">ชื่อแพ็กเกจของแอปเพลงที่ติดตั้งไว้ของคุณ</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">หน้าเริ่มต้น</string>
   <string name="morphe_change_start_page_entry_default">ค่าเริ่มต้น</string>
@@ -1080,7 +1080,7 @@ Second \"item\" text"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">หากต้องการใช้คุณสมบัตินี้ ให้ตั้งค่า \'Spoof video streams\' เป็น Android VR หรือ Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">เปิดเมนูคุณภาพ \'ขั้นสูง\'</string>
+  <string name="morphe_advanced_video_quality_menu_title">เปิดเมนูคุณภาพขั้นสูง</string>
   <string name="morphe_advanced_video_quality_menu_summary">ข้ามเมนูการเลือกคุณภาพและเปิดเมนูคุณภาพขั้นสูงโดยตรง</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">ซ่อนตัวเลือกคุณภาพสูงสุด</string>

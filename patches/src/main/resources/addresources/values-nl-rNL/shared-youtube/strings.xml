@@ -24,15 +24,14 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_title">Externe downloads</string>
   <string name="morphe_external_downloader_name_title">Downloader pakketnaam</string>
   <string name="morphe_external_downloader_name_summary">Pakketnaam van uw geïnstalleerde externe download-app</string>
-  <string name="morphe_external_downloader_flyout_button_title">Override feed/search flyout button</string>
-  <string name="morphe_external_downloader_other_item_hint">Voer de pakketnaam in</string>
+  <string name="morphe_external_downloader_other_item_hint">Voer pakketnaam in</string>
   <string name="morphe_external_downloader_other_item">Overige</string>
   <string name="morphe_external_downloader_not_found_title">App niet geïnstalleerd</string>
   <string name="morphe_external_downloader_not_installed_warning">%s is niet geïnstalleerd. Installeer deze alstublieft.</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Kon geen geïnstalleerde app vinden met pakketnaam: %s
 
 Controleer of de pakketnaam correct is en of de app is geïnstalleerd"</string>
-  <string name="morphe_external_downloader_empty_warning">De pakketnaam kan niet leeg zijn</string>
+  <string name="morphe_external_downloader_empty_warning">Pakketnaam mag niet leeg zijn</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Aangepast</string>
   <string name="morphe_custom_branding_icon_title">App-pictogram</string>

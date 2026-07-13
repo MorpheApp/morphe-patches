@@ -283,9 +283,9 @@ Teorainneacha:
   <string name="morphe_external_downloader_screen_summary">Íoslódáil físeáin, podchraoltaí, nó amhráin le haipeanna íoslódála tríú páirtí</string>
   <string name="morphe_external_downloader_title">Taispeáin cnaipe íoslódála seachtrach</string>
   <string name="morphe_external_downloader_summary">Taispeánann sé cnaipe forleagan sa seinnteoir físe a osclaíonn d’íoslódálaí seachtrach</string>
-  <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
-  <string name="morphe_external_downloader_action_button_title">Sáraigh an cnaipe gníomhaíochta Íoslódála</string>
-  <string name="morphe_external_downloader_action_button_summary">Cuireann sé feidhm íoslódála ionsuite YouTube in ionad d’íoslódálaí seachtrach</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">Sáraigh cnaipe &amp; roghchlár Íosluchtaigh</string>
+  <string name="morphe_external_downloader_action_button_summary">Úsáideann sé do íoslódálaí seachtrach roghnaithe in ionad gné íosluchtaithe tógtha YouTube</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Aistriúchán gutha</string>
   <string name="morphe_vot_screen_summary">Léigh fotheidil físe os ard ag baint úsáide as téacs-go-hurlabhra ar an ngléas, sioncrónaithe le hathsheinm</string>
@@ -866,9 +866,9 @@ Teorainn: Mura bhfuil 'Barra gníomhaíochta seanfhíseáin athchóirithe' múch
   <string name="morphe_open_system_share_sheet_summary">Osclaíonn sé an bhileog comhroinnte córais in ionad an cheann san aip agus ábhar á roinnt</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Sáraigh cnaipí YouTube Music</string>
-  <string name="morphe_override_youtube_music_buttons_summary">Osclaíonn sé d’aip cheoil is fearr leat in ionad YouTube Music nuair a thapaíonn tú cnaipí ceoil</string>
-  <string name="morphe_music_package_name_title">Ainm pacáiste aip ceoil spriocdhírithe</string>
-  <string name="morphe_music_package_name_summary">Ainm pacáiste d\'aip cheoil sprice suiteáilte</string>
+  <string name="morphe_override_youtube_music_buttons_summary">Osclaíonn sé d’aip cheoil is fearr leat in ionad aip oifigiúil YouTube Music</string>
+  <string name="morphe_music_package_name_title">Ainm pacáiste aip cheoil</string>
+  <string name="morphe_music_package_name_summary">Ainm pacáiste d\'aip cheoil suiteáilte</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Leathanach tosaigh</string>
   <string name="morphe_change_start_page_entry_default">Réamhshocrú</string>
@@ -1082,7 +1082,7 @@ Teorainneacha:
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Chun an ghné seo a úsáid, socraigh \'Sruthanna físe bréige\' go Android VR nó Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Oscail roghchlár cáilíochta \'Ard\'</string>
+  <string name="morphe_advanced_video_quality_menu_title">Oscail roghchlár cáilíochta Ard</string>
   <string name="morphe_advanced_video_quality_menu_summary">Léimeann sé an roghchlár um roghnú cáilíochta agus osclaíonn sé an roghchlár Ardchaighdeán go díreach</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Folaigh roghanna cáilíochta Préimhe</string>

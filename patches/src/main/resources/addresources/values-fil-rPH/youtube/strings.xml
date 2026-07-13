@@ -283,9 +283,9 @@ Mga Limitasyon:
   <string name="morphe_external_downloader_screen_summary">Mag-download ng mga video, podcast, o kanta gamit ang mga app na pang-download ng third-party</string>
   <string name="morphe_external_downloader_title">Ipakita ang button ng panlabas na pag-download</string>
   <string name="morphe_external_downloader_summary">Nagpapakita ng overlay button sa video player na nagbubukas ng iyong external downloader</string>
-  <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
-  <string name="morphe_external_downloader_action_button_title">I-override ang Download action button</string>
-  <string name="morphe_external_downloader_action_button_summary">Pinapalitan ang built-in na function ng pag-download ng YouTube gamit ang iyong external downloader</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">Palitan ang pindutan at menu ng Pag-download &amp;</string>
+  <string name="morphe_external_downloader_action_button_summary">Gumagamit ng iyong piniling panlabas na downloader sa halip na tampok sa pag-download ng YouTube</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Pagsasalin ng boses</string>
   <string name="morphe_vot_screen_summary">Basahin nang malakas ang mga caption ng video gamit ang text-to-speech sa iyong device, na naka-synchronize sa pagpapatugtog</string>
@@ -866,9 +866,9 @@ Limitasyon: Kung ang 'Ibalik ang lumang video action bar' ay naka-off, maaaring 
   <string name="morphe_open_system_share_sheet_summary">Binubuksan ang system share sheet sa halip na ang in-app na isa kapag nagbabahagi ng content</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">I-override ang mga butones ng YouTube Music</string>
-  <string name="morphe_override_youtube_music_buttons_summary">Binubuksan ang iyong ginustong music app sa halip na YouTube Music kapag pinindot ang mga button ng musika</string>
-  <string name="morphe_music_package_name_title">Pangalan ng package ng target na music app</string>
-  <string name="morphe_music_package_name_summary">Pangalan ng package ng iyong naka-install na target na music app</string>
+  <string name="morphe_override_youtube_music_buttons_summary">Binubuksan ang iyong ginustong music app sa halip na ang opisyal na YouTube Music app</string>
+  <string name="morphe_music_package_name_title">Pangalan ng pakete ng music app</string>
+  <string name="morphe_music_package_name_summary">Pangalan ng pakete ng iyong naka-install na music app</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Start page</string>
   <string name="morphe_change_start_page_entry_default">Panimula</string>
@@ -1082,7 +1082,7 @@ Mga limitasyon:
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Upang gamitin ang feature na ito, itakda ang \'Spoof video streams\' sa Android VR o Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
-  <string name="morphe_advanced_video_quality_menu_title">Buksan ang \"Advanced\" na menu ng kalidad</string>
+  <string name="morphe_advanced_video_quality_menu_title">Buksan ang menu ng kalidad na advanced</string>
   <string name="morphe_advanced_video_quality_menu_summary">Nilalaktawan ang menu ng pagpili ng kalidad at direktang binubuksan ang Advanced na menu ng kalidad</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Itago ang mga opsyon ng Premium na kalidad</string>

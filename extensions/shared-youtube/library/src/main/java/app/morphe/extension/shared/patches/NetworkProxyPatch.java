@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/1823
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -8,6 +8,7 @@
 package app.morphe.extension.shared.patches;
 
 import static app.morphe.extension.shared.settings.SharedYouTubeSettings.PROXY_ALLOW_DIRECT_FALLBACK;
+import static app.morphe.extension.shared.settings.SharedYouTubeSettings.PROXY_AUTH_ENABLED;
 import static app.morphe.extension.shared.settings.SharedYouTubeSettings.PROXY_AUTH_PASSWORD;
 import static app.morphe.extension.shared.settings.SharedYouTubeSettings.PROXY_AUTH_USERNAME;
 import static app.morphe.extension.shared.settings.SharedYouTubeSettings.PROXY_ENABLED;
@@ -23,6 +24,7 @@ import org.chromium.net.Proxy;
 import org.chromium.net.ProxyOptions;
 
 import java.io.IOException;
+import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.InetSocketAddress;
 import java.net.URL;
@@ -31,11 +33,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.Executor;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicReference;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
-import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.shared.requests.proxy.CronetFallbackHttpURLConnection;
+import app.morphe.extension.shared.requests.proxy.CronetHttpURLConnection;
+import app.morphe.extension.shared.requests.proxy.ProxyFallbackHttpURLConnection;
 
 @SuppressWarnings("unused")
 public final class NetworkProxyPatch {
@@ -43,11 +47,21 @@ public final class NetworkProxyPatch {
     private static final int ALL_PROXIES_FAILED_BEHAVIOR_ALLOW_DIRECT = 1;
     private static final String PROXY_AUTHORIZATION_HEADER = "Proxy-Authorization";
     private static final String BASIC_AUTHORIZATION_PREFIX = "Basic ";
-    private static final String HTTPS_PROXY_UNSUPPORTED_MESSAGE =
-            "HttpURLConnection proxy requests only support HTTP proxies";
+    private static final String JAVA_CRONET_ENGINE_VERSION_PREFIX = "CronetHttpURLConnection/";
     private static final Executor DIRECT_EXECUTOR = Runnable::run;
-    private static final AtomicBoolean LOGGED_HTTPS_URL_CONNECTION_PROXY =
-            new AtomicBoolean();
+    private static final AtomicReference<CronetEngine> REQUESTER_CRONET_ENGINE =
+            new AtomicReference<>();
+
+    private static final ThreadLocal<Boolean> PROXY_OPTIONS_APPLIED_ON_CURRENT_THREAD =
+            new ThreadLocal<>();
+
+    /**
+     * Last engine successfully built with proxy options on this thread. Provider selection may
+     * keep an earlier successful engine when a later provider fails, so only a newer successful
+     * build may replace this candidate. {@link #setMainCronetEngine(CronetEngine)} consumes it.
+     */
+    private static final ThreadLocal<WeakReference<CronetEngine>>
+            LAST_PROXY_CONFIGURED_ENGINE_ON_CURRENT_THREAD = new ThreadLocal<>();
 
     private static final Proxy.HttpConnectCallback CONNECT_CALLBACK = new Proxy.HttpConnectCallback() {
         @Override
@@ -75,8 +89,10 @@ public final class NetworkProxyPatch {
      * Injection point.
      */
     public static void applyProxyOptions(CronetEngine.Builder builder) {
+        PROXY_OPTIONS_APPLIED_ON_CURRENT_THREAD.remove();
+
         if (!PROXY_ENABLED.get()) {
-            Requester.setConnectionProvider(null);
+            clearProxyState();
             return;
         }
 
@@ -85,7 +101,7 @@ public final class NetworkProxyPatch {
 
             if (!config.isValid()) {
                 Logger.printException(() -> "Ignoring invalid proxy settings: " + config.host + ":" + config.port);
-                Requester.setConnectionProvider(null);
+                clearProxyState();
                 return;
             }
 
@@ -96,11 +112,75 @@ public final class NetworkProxyPatch {
             proxies.add(Proxy.createHttpProxy(scheme, config.host, config.port, DIRECT_EXECUTOR, CONNECT_CALLBACK));
 
             builder.setProxyOptions(createProxyOptions(proxies, config.allowDirectFallback));
-            Requester.setConnectionProvider(NetworkProxyPatch::openUrlConnection);
+            PROXY_OPTIONS_APPLIED_ON_CURRENT_THREAD.set(true);
+            Requester.setConnectionProvider(NetworkProxyPatch::openConnection);
         } catch (Throwable ex) {
-            Requester.setConnectionProvider(null);
             Logger.printException(() -> "applyProxyOptions failure", ex);
         }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void recordProxyConfiguredCronetEngine(CronetEngine engine) {
+        boolean proxyOptionsApplied =
+                Boolean.TRUE.equals(PROXY_OPTIONS_APPLIED_ON_CURRENT_THREAD.get());
+        PROXY_OPTIONS_APPLIED_ON_CURRENT_THREAD.remove();
+
+        if (!proxyOptionsApplied || engine == null) {
+            return;
+        }
+
+        try {
+            String version = engine.getVersionString();
+            if (version != null && version.startsWith(JAVA_CRONET_ENGINE_VERSION_PREFIX)) {
+                // This fallback delegates openConnection to URL.openConnection and ignores the
+                // ProxyOptions configured on the Cronet builder.
+                Logger.printInfo(() -> "Ignoring Java fallback Cronet engine for extension requests");
+                return;
+            }
+
+            // Do not retain every engine built by optional features. The application-wide engine
+            // factory runs synchronously on this thread and publishes only its own return value.
+            LAST_PROXY_CONFIGURED_ENGINE_ON_CURRENT_THREAD.set(new WeakReference<>(engine));
+        } catch (Throwable ex) {
+            Logger.printException(() -> "recordProxyConfiguredCronetEngine failure", ex);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setMainCronetEngine(CronetEngine engine) {
+        PROXY_OPTIONS_APPLIED_ON_CURRENT_THREAD.remove();
+        WeakReference<CronetEngine> candidateReference =
+                LAST_PROXY_CONFIGURED_ENGINE_ON_CURRENT_THREAD.get();
+        LAST_PROXY_CONFIGURED_ENGINE_ON_CURRENT_THREAD.remove();
+
+        if (engine == null
+                || candidateReference == null
+                || candidateReference.get() != engine) {
+            return;
+        }
+
+        try {
+            if (!PROXY_ENABLED.get() || !getProxyConfig().isValid()) {
+                clearProxyState();
+                return;
+            }
+
+            REQUESTER_CRONET_ENGINE.set(engine);
+            Requester.setConnectionProvider(NetworkProxyPatch::openConnection);
+        } catch (Throwable ex) {
+            Logger.printException(() -> "setMainCronetEngine failure", ex);
+        }
+    }
+
+    private static void clearProxyState() {
+        PROXY_OPTIONS_APPLIED_ON_CURRENT_THREAD.remove();
+        LAST_PROXY_CONFIGURED_ENGINE_ON_CURRENT_THREAD.remove();
+        REQUESTER_CRONET_ENGINE.set(null);
+        Requester.setConnectionProvider(null);
     }
 
     private static ProxyOptions createProxyOptions(ArrayList<Proxy> proxies, boolean allowDirectFallback) {
@@ -120,21 +200,77 @@ public final class NetworkProxyPatch {
         return ProxyOptions.fromProxyList(proxies);
     }
 
-    private static HttpURLConnection openUrlConnection(URL url) throws IOException {
+    private static HttpURLConnection openConnection(URL url) throws IOException {
         ProxyConfig config = getProxyConfig();
-        if (!config.isValid()) {
-            return (HttpURLConnection) url.openConnection();
+        if (!PROXY_ENABLED.get() || !config.isValid()) {
+            return openDirectConnection(url);
         }
 
-        if (config.httpsProxy) {
-            if (LOGGED_HTTPS_URL_CONNECTION_PROXY.compareAndSet(false, true)) {
-                Logger.printInfo(() -> HTTPS_PROXY_UNSUPPORTED_MESSAGE);
-            }
-            if (config.allowDirectFallback) {
-                return (HttpURLConnection) url.openConnection();
-            }
+        String protocol = url.getProtocol();
+        boolean httpTarget = "http".equalsIgnoreCase(protocol);
+        boolean httpsTarget = "https".equalsIgnoreCase(protocol);
+        if (!httpTarget && !httpsTarget) {
+            return openDirectConnection(url);
+        }
 
-            throw new IOException(HTTPS_PROXY_UNSUPPORTED_MESSAGE);
+        boolean proxyAuthenticationEnabled = PROXY_AUTH_ENABLED.get();
+
+        // An HTTPS proxy cannot be represented by java.net.Proxy. Cronet is also required for
+        // authenticated CONNECT requests and for applying the configured direct fallback.
+        // Authenticated plain HTTP requests stay on HttpURLConnection because they do not use
+        // CONNECT and therefore need an explicit Proxy-Authorization header.
+        if (config.httpsProxy
+                || (httpsTarget && proxyAuthenticationEnabled)
+                || (config.allowDirectFallback && !proxyAuthenticationEnabled)) {
+            return openCronetConnection(url, config);
+        }
+
+        return openHttpProxyConnection(url, config);
+    }
+
+    private static HttpURLConnection openCronetConnection(URL url, ProxyConfig config)
+            throws IOException {
+        CronetEngine engine = REQUESTER_CRONET_ENGINE.get();
+        if (engine != null) {
+            try {
+                HttpURLConnection connection = new CronetHttpURLConnection(
+                        (HttpURLConnection) engine.openConnection(url),
+                        ex -> discardCronetEngine(engine, ex)
+                );
+                if (!config.allowDirectFallback) {
+                    return connection;
+                }
+
+                return new CronetFallbackHttpURLConnection(
+                        connection,
+                        openDirectConnection(url),
+                        ex -> Logger.printInfo(
+                                () -> "Cronet engine is unavailable; using direct fallback",
+                                ex
+                        )
+                );
+            } catch (IllegalStateException ex) {
+                discardCronetEngine(engine, ex);
+            }
+        }
+
+        if (config.allowDirectFallback) {
+            return openDirectConnection(url);
+        }
+
+        throw new IOException("Proxy-configured Cronet engine is not available");
+    }
+
+    private static void discardCronetEngine(CronetEngine engine, IllegalStateException ex) {
+        if (REQUESTER_CRONET_ENGINE.compareAndSet(engine, null)) {
+            Logger.printInfo(() -> "Proxy Cronet engine is no longer available", ex);
+        }
+    }
+
+    private static HttpURLConnection openHttpProxyConnection(URL url, ProxyConfig config)
+            throws IOException {
+        if (config.httpsProxy) {
+            throw new IOException("HTTPS proxy connections require Cronet");
         }
 
         HttpURLConnection connection = (HttpURLConnection) url.openConnection(new java.net.Proxy(
@@ -144,7 +280,22 @@ public final class NetworkProxyPatch {
 
         setProxyAuthorizationHeader(connection);
 
-        return connection;
+        if (!config.allowDirectFallback) {
+            return connection;
+        }
+
+        return new ProxyFallbackHttpURLConnection(
+                connection,
+                openDirectConnection(url),
+                ex -> Logger.printInfo(
+                        () -> "HTTP proxy is unavailable; using direct fallback",
+                        ex
+                )
+        );
+    }
+
+    private static HttpURLConnection openDirectConnection(URL url) throws IOException {
+        return (HttpURLConnection) url.openConnection();
     }
 
     private static ProxyConfig getProxyConfig() {
@@ -176,7 +327,7 @@ public final class NetworkProxyPatch {
     }
 
     private static String getProxyAuthorizationHeader() {
-        if (!SharedYouTubeSettings.PROXY_AUTH_ENABLED.get()) {
+        if (!PROXY_AUTH_ENABLED.get()) {
             return null;
         }
 
@@ -200,8 +351,8 @@ public final class NetworkProxyPatch {
     private record ProxyConfig(String host, int port, boolean httpsProxy,
                                boolean allowDirectFallback) {
         @SuppressWarnings("BooleanMethodIsAlwaysInverted")
-            boolean isValid() {
-                return !host.isEmpty() && port >= 1 && port <= 65535;
-            }
+        boolean isValid() {
+            return !host.isEmpty() && port >= 1 && port <= 65535;
         }
+    }
 }

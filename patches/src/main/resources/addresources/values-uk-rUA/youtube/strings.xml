@@ -283,9 +283,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_summary">Завантажувати відео, подкасти або пісні за допомогою сторонніх застосунків для завантаження</string>
   <string name="morphe_external_downloader_title">Показувати кнопку зовнішнього завантажувача</string>
   <string name="morphe_external_downloader_summary">Показує кнопку у відеоплеєрі, яка відкриває ваш зовнішній завантажувач</string>
-  <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
-  <string name="morphe_external_downloader_action_button_title">Підмінити кнопку \"Завантажити\"</string>
-  <string name="morphe_external_downloader_action_button_summary">Замінює вбудовану функцію завантаження YouTube на ваш зовнішній завантажувач</string>
+  <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_external_downloader_action_button_title">Замінити кнопку \"Завантажити\" та меню</string>
+  <string name="morphe_external_downloader_action_button_summary">Використовує вибраний зовнішній завантажувач замість вбудованої функції завантаження YouTube</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Голосовий переклад</string>
   <string name="morphe_vot_screen_summary">Зачитує субтитри відео вголос за допомогою локального синтезу мовлення, синхронізованого з відтворенням</string>
@@ -865,9 +865,9 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_summary">Відкриває системне меню поширення замість вбудованого при поширенні контенту</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Перевизначити кнопки YouTube Music</string>
-  <string name="morphe_override_youtube_music_buttons_summary">Відкриває бажаний музичний застосунок замість YouTube Music при натисканні кнопок музики</string>
-  <string name="morphe_music_package_name_title">Назва пакета цільового музичного застосунку</string>
-  <string name="morphe_music_package_name_summary">Назва пакета встановленого вами цільового музичного застосунку</string>
+  <string name="morphe_override_youtube_music_buttons_summary">Відкриває вибраний музичний застосунок замість офіційного застосунку YouTube Music</string>
+  <string name="morphe_music_package_name_title">Назва пакету музичного застосунку</string>
+  <string name="morphe_music_package_name_summary">Назва пакету встановленого музичного застосунку</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Початкова сторінка</string>
   <string name="morphe_change_start_page_entry_default">За замовчуванням</string>

@@ -51,7 +51,7 @@ public class Requester {
         return openConnection(new URL(url));
     }
 
-    private static HttpURLConnection openConnection(URL url) throws IOException {
+    public static HttpURLConnection openConnection(URL url) throws IOException {
         ConnectionProvider provider = connectionProvider;
         if (provider != null) {
             return provider.openConnection(url);
