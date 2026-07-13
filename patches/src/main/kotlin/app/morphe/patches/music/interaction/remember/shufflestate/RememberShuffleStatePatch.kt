@@ -63,17 +63,15 @@ val rememberShuffleStatePatch = bytecodePatch(
                 val startIndex = fingerprint.instructionMatches.first().index
 
                 val indexAndRegister = if (is_8_03_or_greater) {
-                    val filter = methodCall(opcode = Opcode.INVOKE_VIRTUAL, returnType = enumClass)
-                    val index = indexOfFirstInstructionReversedOrThrow(startIndex) {
-                        filter.matches(this@apply, this)
-                    }
+                    val index = indexOfFirstInstructionReversedOrThrow(startIndex,
+                        methodCall(opcode = Opcode.INVOKE_VIRTUAL, returnType = enumClass)
+                    )
                     val register = getInstruction<OneRegisterInstruction>(index + 1).registerA
                     Pair(index + 2, register)
                 } else {
-                    val filter = methodCall(opcode = Opcode.INVOKE_DIRECT, returnType = "Ljava/lang/String;")
-                    val index = indexOfFirstInstructionReversedOrThrow(startIndex) {
-                        filter.matches(this@apply, this)
-                    }
+                    val index = indexOfFirstInstructionReversedOrThrow(startIndex,
+                        methodCall(opcode = Opcode.INVOKE_DIRECT, returnType = "Ljava/lang/String;")
+                    )
                     val register = getInstruction<FiveRegisterInstruction>(index).registerD
                     Pair(index, register)
                 }
@@ -81,22 +79,24 @@ val rememberShuffleStatePatch = bytecodePatch(
                 val enumIndex = indexAndRegister.first
                 val enumRegister = indexAndRegister.second
 
-                addInstructions(
+                addInstruction(
                     enumIndex,
-                    """
-                        invoke-static { v$enumRegister }, $EXTENSION_CLASS->saveShuffleState(Ljava/lang/Enum;)V
-                    """
+                    "invoke-static { v$enumRegister }, $EXTENSION_CLASS->saveShuffleState(Ljava/lang/Enum;)V"
                 )
 
-                val shuffleClassIndex = indexOfFirstInstructionReversedOrThrow(enumIndex, Opcode.CHECK_CAST)
+                val shuffleClassIndex = indexOfFirstInstructionReversedOrThrow(
+                    enumIndex, Opcode.CHECK_CAST
+                )
                 val shuffleClass = getInstruction(shuffleClassIndex).getReference<TypeReference>()!!.type
                 val shuffleMutableClass = this@execute.mutableClassDefBy(shuffleClass)
 
                 shuffleMutableClass.methods.filter { it.name == "<init>" }.forEach { constructor ->
-                    val initFilter = methodCall(opcode = Opcode.INVOKE_DIRECT, name = "<init>")
-                    val superInitIndex = constructor.indexOfFirstInstructionOrThrow {
-                        initFilter.matches(constructor, this)
-                    }
+                    val superInitIndex = constructor.indexOfFirstInstructionOrThrow(
+                        methodCall(
+                            opcode = Opcode.INVOKE_DIRECT,
+                            name = "<init>"
+                        )
+                    )
                     constructor.addInstructions(
                         superInitIndex + 1,
                         """
@@ -126,8 +126,8 @@ val rememberShuffleStatePatch = bytecodePatch(
 
                 val shuffleMethod = shuffleMutableClass.methods.firstOrNull { method ->
                     method.returnType == "V" &&
-                            method.indexOfFirstInstruction { ordinalFilter.matches(method, this) } >= 0 &&
-                            method.indexOfFirstInstruction { postFilter.matches(method, this) } >= 0
+                            method.indexOfFirstInstruction(ordinalFilter) >= 0 &&
+                            method.indexOfFirstInstruction(postFilter) >= 0
                 } ?: throw PatchException("Internal shuffle method not found in $shuffleClass")
 
                 val clonedMethod = shuffleMethod.cloneMutable(
@@ -140,9 +140,7 @@ val rememberShuffleStatePatch = bytecodePatch(
                 )
 
                 if (is_8_03_or_greater) {
-                    val ordinalIndex = clonedMethod.indexOfFirstInstruction {
-                        ordinalFilter.matches(clonedMethod, this)
-                    }
+                    val ordinalIndex = clonedMethod.indexOfFirstInstruction(ordinalFilter)
                     val register = clonedMethod.getInstruction<FiveRegisterInstruction>(ordinalIndex).registerC
 
                     clonedMethod.addInstruction(
