@@ -7,6 +7,7 @@
 
 package app.morphe.extension.youtube.patches.components;
 
+import static app.morphe.extension.youtube.patches.utils.FlyoutUtils.CHANNEL_ID_LENGTH;
 import static app.morphe.extension.youtube.patches.utils.FlyoutUtils.getAsciiBytes;
 
 import java.nio.charset.StandardCharsets;
@@ -56,14 +57,11 @@ public final class ChannelPageFlyoutFilter extends Filter {
             return false;
         }
 
-        final int youTubeChannelIdLength = 24;
-        final int flyoutChannelIdEnd = index + youTubeChannelIdLength;
-
-        if (flyoutChannelIdEnd <= buffer.length) {
+        if (FlyoutUtils.isValidChannelId(buffer, index)) {
             flyoutChannelId = new String(
                     buffer,
                     index,
-                    youTubeChannelIdLength,
+                    CHANNEL_ID_LENGTH,
                     StandardCharsets.US_ASCII
             );
             Logger.printDebug(() -> "Found channelId: " + flyoutChannelId);

@@ -39,13 +39,15 @@ import app.morphe.extension.youtube.shared.EngagementPanel;
 public final class FlyoutUtils {
 
     public interface ProtocolBufferFieldInterface {
+
         byte[] patch_getBuffer();
     }
-
     public interface FlyoutMenuVideoIdInterface {
         String patch_getVideoId();
+
     }
 
+    public static final int CHANNEL_ID_LENGTH = 24;
     private static final List<byte[]> VIDEO_ID_PREFIXES_BYTES = List.of(
             getAsciiBytes(".ytimg.com/vi/"),
             getAsciiBytes("youtube.com/watch?v="));
@@ -232,6 +234,36 @@ public final class FlyoutUtils {
         return -1;
     }
 
+    /**
+     * Validates if the buffer contains a valid YouTube channel ID at the given index.
+     * YouTube channel IDs are always 24 characters long, starting with the prefix "UC".
+     * The remaining 22 characters are Base64 URL-safe: A-Z, a-z, 0-9, hyphen (-), and underscore (_).
+     *
+     * @param buffer The buffer to check.
+     * @param index  The start index of the "UC" prefix.
+     * @return True if it is a valid channel ID.
+     */
+    public static boolean isValidChannelId(byte[] buffer, int index) {
+        final int lastIndex = index + CHANNEL_ID_LENGTH;
+        if (index < 0 || lastIndex > buffer.length) {
+            return false;
+        }
+
+        if (buffer[index] != 'U' || buffer[index + 1] != 'C') {
+            return false;
+        }
+
+        for (int i = index + 2; i < lastIndex; i++) {
+            final byte b = buffer[i];
+            final boolean isValid = (b >= 'A' && b <= 'Z') || (b >= 'a' && b <= 'z') ||
+                    (b >= '0' && b <= '9') || b == '-' || b == '_';
+            if (!isValid) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static byte[] getTrimmedHorizontalShelfBuffer(byte[] buffer, String description) {
         if (description == null || buffer == null || description.isEmpty()) return buffer;
 
@@ -254,12 +286,12 @@ public final class FlyoutUtils {
         final int len = buffer.length;
         final int windowSize = 200;
 
-        for (int i = 0, maxIndex = len - windowSize; i <= maxIndex; i += 20) {
+        for (int i = 0, iMaxIndex = len - windowSize; i <= iMaxIndex; i += 20) {
             int score = 0;
             for (byte[] w : words) {
                 boolean found = false;
                 final int wLength = w.length;
-                for (int j = i, maxIndexOffset = windowSize - wLength; j <= i + maxIndexOffset; j++) {
+                for (int j = i, jMaxIndex = i + windowSize - wLength; j <= jMaxIndex; j++) {
                     int k = 0;
                     while (k < wLength) {
                         byte b = buffer[j + k];
