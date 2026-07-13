@@ -47,40 +47,37 @@ public final class OpenSystemShareSheetPatch {
             return;
         }
 
-        final String prefixURL = (REPLACE_LINKS_WITH_SHORTENER.get()
+        String prefixURL = (REPLACE_LINKS_WITH_SHORTENER.get()
                 ? "https://youtu.be/"
                 : "https://www.youtube.com/watch?v="
         );
-        final String separator = (REPLACE_LINKS_WITH_SHORTENER.get()
-                ? "?"
-                : "&"
-        );
-        final String finalURL;
 
+        final String intentUrl;
         // Make sure to check channelId at the end, since it is never reset.
         if (!FlyoutUtils.getFlyoutVideoId().isEmpty()) {
-            finalURL = prefixURL + FlyoutUtils.getFlyoutVideoId();
+            intentUrl = prefixURL + FlyoutUtils.getFlyoutVideoId();
         } else if (!FlyoutUtils.getFlyoutCommentId().isEmpty()) {
-            finalURL = prefixURL + VideoInformation.getVideoId() + separator + "lc=" + FlyoutUtils.getFlyoutCommentId();
+            String separator = (REPLACE_LINKS_WITH_SHORTENER.get() ? "?" : "&");
+            intentUrl = prefixURL + VideoInformation.getVideoId() + separator + "lc=" + FlyoutUtils.getFlyoutCommentId();
         } else if (PlayerType.getCurrent().isMaximizedOrFullscreen()) {
-            finalURL = prefixURL + VideoInformation.getVideoId();
+            intentUrl = prefixURL + VideoInformation.getVideoId();
         } else if (!getFlyoutChannelId().isEmpty()) {
-            finalURL = "https://www.youtube.com/channel/" + getFlyoutChannelId();
+            intentUrl = "https://www.youtube.com/channel/" + getFlyoutChannelId();
         } else {
-            finalURL = "";
+            intentUrl = "";
         }
 
-        if (!TextUtils.isEmpty(finalURL)) {
+        if (!TextUtils.isEmpty(intentUrl)) {
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
-            shareIntent.putExtra(Intent.EXTRA_TEXT, finalURL);
+            shareIntent.putExtra(Intent.EXTRA_TEXT, intentUrl);
             Intent chooserIntent = Intent.createChooser(shareIntent, "");
             chooserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_USER_ACTION);
 
             try {
                 Utils.getContext().startActivity(chooserIntent);
             } catch (Exception ex) {
-                Logger.printException(() -> "Can not open System Share panel: " + finalURL, ex);
+                Logger.printException(() -> "Can not open System Share panel: " + intentUrl, ex);
             }
         }
     }
