@@ -50,6 +50,8 @@ public final class AdsFilter extends Filter {
 
     private final StringFilterGroup buyMovieAd;
     private final ByteArrayFilterGroup buyMovieAdBuffer;
+    private final StringFilterGroup productCard;
+    private final ByteArrayFilterGroup productCardBuffer;
 
     public AdsFilter() {
         exceptions.addPatterns(
@@ -150,6 +152,16 @@ public final class AdsFilter extends Filter {
                 "shorts_disclosures.e"
         );
 
+        productCard = new StringFilterGroup(
+                Settings.HIDE_SHOPPING_LINKS,
+                "expandable_metadata.e"
+        );
+
+        productCardBuffer = new ByteArrayFilterGroup(
+                null,
+                STORE_BANNER_DOMAIN
+        );
+
         final var productSticker = new StringFilterGroup(
                 Settings.HIDE_PLAYER_POPUP_ADS,
                 "product_sticker.e", // Product sticker that appears on Shorts.
@@ -167,6 +179,7 @@ public final class AdsFilter extends Filter {
                 merchandise,
                 movieAds,
                 paidPromotionLabel,
+                productCard,
                 productSticker,
                 selfSponsor,
                 shoppingLinks,
@@ -190,6 +203,10 @@ public final class AdsFilter extends Filter {
 
         if (matchedGroup == buyMovieAd) {
             return contentIndex == 0 && buyMovieAdBuffer.check(buffer).isFiltered();
+        }
+
+        if (matchedGroup == productCard) {
+            return productCardBuffer.check(buffer).isFiltered();
         }
 
         return !exceptions.matches(path);

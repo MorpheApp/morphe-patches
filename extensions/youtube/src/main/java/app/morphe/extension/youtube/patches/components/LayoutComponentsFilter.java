@@ -66,7 +66,6 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup singleItemInformationPanel;
     private static final AtomicInteger singleItemInformationPanelIndex = new AtomicInteger(-1);
     private final StringFilterGroup expandableMetadata;
-    private final ByteArrayFilterGroup productCardBuffer;
     private final ByteArrayFilterGroup summaryCardBuffer;
     private final StringFilterGroup compactChannelBarInner;
     private final StringFilterGroup compactChannelBarInnerButton;
@@ -79,9 +78,7 @@ public final class LayoutComponentsFilter extends Filter {
 
     public enum ExpandableCardStyle {
         SHOW_ALL,
-        HIDE_PRODUCT_ONLY,
         HIDE_SUMMARY_ONLY,
-        HIDE_PRODUCT_AND_SUMMARY,
         HIDE_ALL
     }
 
@@ -235,11 +232,6 @@ public final class LayoutComponentsFilter extends Filter {
         expandableMetadata = new StringFilterGroup(
                 null,
                 "expandable_metadata"
-        );
-
-        productCardBuffer = new ByteArrayFilterGroup(
-                null,
-                "gstatic.com/shopping"
         );
 
         summaryCardBuffer = new ByteArrayFilterGroup(
@@ -443,15 +435,8 @@ public final class LayoutComponentsFilter extends Filter {
                 case HIDE_ALL -> {
                     return true;
                 }
-                case HIDE_PRODUCT_ONLY -> {
-                    return productCardBuffer.check(buffer).isFiltered();
-                }
                 case HIDE_SUMMARY_ONLY -> {
                     return summaryCardBuffer.check(buffer).isFiltered();
-                }
-                case HIDE_PRODUCT_AND_SUMMARY -> {
-                    return summaryCardBuffer.check(buffer).isFiltered()
-                            || productCardBuffer.check(buffer).isFiltered();
                 }
                 default -> {
                     return false;

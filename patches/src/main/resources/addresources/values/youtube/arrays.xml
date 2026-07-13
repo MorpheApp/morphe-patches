@@ -230,19 +230,15 @@
         <item>@string/morphe_hide_expandable_card_entry_1</item>
         <item>@string/morphe_hide_expandable_card_entry_2</item>
         <item>@string/morphe_hide_expandable_card_entry_3</item>
-        <item>@string/morphe_hide_expandable_card_entry_4</item>
-        <item>@string/morphe_hide_expandable_card_entry_5</item>
     </string-array>
     <string-array name="morphe_hide_expandable_card_entry_values">
         <item>SHOW_ALL</item>
-        <item>HIDE_PRODUCT_ONLY</item>
         <item>HIDE_SUMMARY_ONLY</item>
-        <item>HIDE_PRODUCT_AND_SUMMARY</item>
         <item>HIDE_ALL</item>
     </string-array>
     <string-array name="morphe_hide_expandable_card_legacy_entries">
         <item>@string/morphe_hide_expandable_card_entry_1</item>
-        <item>@string/morphe_hide_expandable_card_entry_5</item>
+        <item>@string/morphe_hide_expandable_card_entry_3</item>
     </string-array>
     <string-array name="morphe_hide_expandable_card_legacy_entry_values">
         <item>SHOW_ALL</item>
