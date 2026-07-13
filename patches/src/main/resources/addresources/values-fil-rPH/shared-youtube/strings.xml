@@ -53,7 +53,7 @@ I-verify na tama ang pangalan ng pakete at naka-install ang app"</string>
   <string name="morphe_check_watch_history_domain_name_dialog_title">Paunawa ng Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Hindi sine-save ang iyong kasaysayan ng panonood.&lt;br&gt;&lt;br&gt;Malamang na ito ay sanhi ng isang DNS ad blocker o network proxy.&lt;br&gt;&lt;br&gt;Upang ayusin ito, i-whitelist ang &lt;b&gt;s.youtube.com&lt;/b&gt; o patayin ang lahat ng DNS blocker at proxy.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Huwag nang ipakita muli</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Gayahin ang mga video stream</string>
   <string name="morphe_spoof_video_streams_screen_summary">I-configure ang client spoofing upang maiwasan ang mga isyu sa pag-playback</string>
   <string name="morphe_spoof_video_streams_title">Gayahin ang mga video stream</string>
@@ -168,4 +168,13 @@ Gayunpaman, magtatala din ng ilang datos ng tagagamit ang pagpapagana nito kagay
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Ihihiwalay ng bagong linya ang listahan ng mga component path builder string na ifi-filter</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Imbalido na pasadyang filter: %s</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_title">Pekein ang bersyon ng app</string>
+  <string name="morphe_spoof_app_version_summary">Niloloko nito ang server para isipin na gumagamit ka ng mas lumang bersyon ng app upang maibalik ang mga dating feature ng UI</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"Pekein ang bersyon ng app sa mas lumang bersyon.
+
+Magbabago ang hitsura at mga feature ng app, ngunit maaaring may mga hindi inaasahang side effect.
+
+Kung patayin ito sa kalaunan, inirerekomenda na i-clear ang data ng app upang maiwasan ang mga bug sa UI."</string>
+  <string name="morphe_spoof_app_version_target_title">Target na pekein ang bersyon ng app</string>
 </resources>

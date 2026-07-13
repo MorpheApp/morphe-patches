@@ -269,4 +269,10 @@ YouTube Music 8.x – crossfade kjører bare på 9.x og nyere"</string>
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling synkroniserer automatisk din YouTube Music-bruk med din Last.fm- eller ListenBrainz-profil.
 
 For å sikre at scrobbling synkroniseres under avspilling i bakgrunnen, må du sørge for at YouTube Music sin app-batteribruk er satt til \"Ubegrenset\"."</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 – Gjenopprett gammelt flytende panel</string>
+  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 – Deaktiver sanntidsvisning av sangtekster</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 – Gjenopprett gamle dynamiske sangtekster</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 – Gjenopprett gammel handlingslinje</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 – Kommentar seksjonen vises ikke i hjemmefeeden</string>
 </resources>

@@ -686,15 +686,7 @@ Second \"item\" text"</string>
   <string name="morphe_change_form_factor_entry_3">Шопинг</string>
   <string name="morphe_change_form_factor_entry_4">Спорт</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <!-- layout.spoofappversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_title">Трендинг</string>
-  <string name="morphe_spoof_app_version_summary">Преглос на вештата и да ја врати во коврот</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"Верзијата на апликацијата ќе биде фалсификувана на постара верзија на YouTube.
-
-Ова ќе ги промени изгледот и функционалноста на апликацијата, но може да се појават непознати нуспроизводи.
-
-Ако подоцна се исклучи, се препорачува да ја исчистите кешот на апликацијата за да избегнете грешки во интерфејсот."</string>
-  <string name="morphe_spoof_app_version_target_title">Секогаш промени ја почетната страница</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Врати ја старата постава за зачувување во листа за репродукција</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Исклучи болдирани икони</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Враќање на името на каналот под видео плеер</string>

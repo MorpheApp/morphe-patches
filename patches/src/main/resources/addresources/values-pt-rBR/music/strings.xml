@@ -269,4 +269,10 @@ YouTube Music 8.x — o Crossfade funciona apenas no YouTube Music 9.x ou mais r
   <string name="morphe_music_scrobbling_about_summary">"O scrobbling sincroniza automaticamente o uso do YouTube Music com seu perfil Last.fm ou ListenBrainz
 
 Para garantir que o scrobbling seja sincronizado durante a reprodução em segundo plano, certifique-se de que o uso da bateria do aplicativo YouTube Music esteja definido como \"Sem restrição\"."</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - Restaurar painel flyout antigo</string>
+  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - Desativar letras em tempo real</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - Restaurar letras dinâmicas antigas</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - Restaurar barra de ação antiga</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - A seção de comentários não aparece no feed inicial</string>
 </resources>

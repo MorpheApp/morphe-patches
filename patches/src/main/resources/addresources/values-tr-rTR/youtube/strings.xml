@@ -212,6 +212,8 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Emoji ve Zaman damgası düğmelerini gizle</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Filtre çubuğu seçeneklerini gizle</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">\'En popüler\' ve \'En yeni\' dışındaki tüm filtre çubuğu seçeneklerini gizler</string>
+  <string name="morphe_hide_comments_gift_animation_and_cards_title">Hediye animasyonunu ve kartlarını gizle</string>
+  <string name="morphe_hide_comments_gift_button_title">Hediye düğmesini gizle</string>
   <string name="morphe_hide_comments_info_button_title">Bilgi düğmesini gizle</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Canlı sohbet bağışçıları çubuğunu gizle</string>
   <string name="morphe_hide_comments_preview_comment_title">Ön izlenen yorumu gizle</string>
@@ -477,6 +479,8 @@ Not: 'Video akışlarını taklit et' etkin değilse, bu özelliği etkinleştir
   <string name="morphe_swipe_speed_summary">Tam ekran modunda oynatma hızını değiştirmek için üst bölgede yatay olarak kaydırın</string>
   <string name="morphe_swipe_speed_sensitivity_title">Hız kaydırma hassasiyeti</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Daha yüksek değerler, her hız adımı için daha fazla kaydırma gerektirir</string>
+  <string name="morphe_swipe_speed_step_title">Hız adımı</string>
+  <string name="morphe_swipe_speed_step_summary">Oynatma hızının her tıklamada değiştiği miktar</string>
   <string name="morphe_swipe_speed_zone_height_title">Hız bölgesi yüksekliği</string>
   <string name="morphe_swipe_speed_zone_height_summary">Hız hareket bölgesinin yüksekliği, oynatıcı yüksekliğinin yüzdesi olarak (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Hız</string>
@@ -853,15 +857,7 @@ Otomotiv düzeni
   <string name="morphe_tablet_layout_in_player_summary">"Eski oynatıcı düzenini geri yükler
 
 Sınırlamalar: 'Eski video eylem çubuğunu geri yükle' kapatılırsa, 'Daha fazla video' katmanı kullanılamayabilir"</string>
-  <!-- layout.spoofappversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_title">Uygulama sürümünü taklit et</string>
-  <string name="morphe_spoof_app_version_summary">Sunucuya daha eski bir uygulama sürümü kullandığınızı düşündürerek eski arayüz özelliklerini geri yükler</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"Uygulama sürümü, YouTube'un eski bir sürümü olarak taklit edilecektir.
-
-Bu, uygulamanın görünümünü ve özelliklerini değiştirecektir, ancak bilinmeyen yan etkiler ortaya çıkabilir.
-
-Daha sonra kapatılırsa, arayüz hatalarını önlemek için uygulama verilerinin temizlenmesi önerilir."</string>
-  <string name="morphe_spoof_app_version_target_title">Uygulama sürümü taklidi hedefi</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Oynatma listesine kaydetme için eski düzeni geri getir</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Kalın simgeleri devre dışı bırak</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Video oynatıcının altındaki kanal adını geri getir</string>

@@ -39,7 +39,7 @@ Verifica que el nombre del paquete sea correcto y que la aplicación esté insta
   <string name="morphe_custom_branding_icon_entry_1">Original</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe negro</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe oscuro</string>
-  <string name="morphe_custom_branding_icon_entry_4">Morphe luz</string>
+  <string name="morphe_custom_branding_icon_entry_4">Morphe claro</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
   <string name="morphe_custom_branding_icon_entry_5">Morphe play claro</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
@@ -47,13 +47,13 @@ Verifica que el nombre del paquete sea correcto y que la aplicación esté insta
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">Personalizado</string>
   <string name="morphe_custom_branding_notification_icon_title">Icono de notificación</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">Icono de la aplicación de coincidencia</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Coincidir con el icono de la aplicación</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Aviso de Morphe</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Tu historial no está siendo guardado.&lt;br&gt;&lt;br&gt;Esto puede ser por un bloqueador de anuncios DNS o Proxy.&lt;br&gt;&lt;br&gt;Para arreglarlo, permita el dominio &lt;b&gt;s.youtube.com&lt;/b&gt; o desactive el bloqueador DNS o Proxy.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Tu historial de reproduccion no se está guardando.&lt;br&gt;&lt;br&gt;Probablemente sea por un bloqueador de anuncios DNS o proxy.&lt;br&gt;&lt;br&gt;Para solucionarlo, permite el dominio &lt;b&gt;s.youtube.com&lt;/b&gt; o desactiva los bloqueadores DNS y proxies.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">No mostrar de nuevo</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Falsificar transmisiones de vídeo</string>
   <string name="morphe_spoof_video_streams_screen_summary">Falsifica las transmisiones de vídeo del cliente para evitar problemas de reproducción</string>
   <string name="morphe_spoof_video_streams_title">Falsificar transmisiones de vídeo</string>
@@ -113,14 +113,14 @@ Para iniciar sesión, pulsa en \"Continuar\" a continuación"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"Debes proporcionar un hash de JavaScript del reproductor válido.
 
 La reproducción fallará si el hash de JavaScript del reproductor está desactualizado."</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hash JavaScript del reproductor</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Introduzca un hash JavaScript del reproductor válido</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hash de JavaScript del reproductor</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Introduzca un hash de JavaScript del reproductor válido</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Desactivar protocolo QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Desactivar audio DRC</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
-  <string name="morphe_force_original_audio_title">Forzar idioma de audio original</string>
+  <string name="morphe_force_original_audio_title">Forzar idioma original del audio</string>
   <string name="morphe_force_original_audio_summary">Siempre reproduce la pista de audio original del vídeo en lugar de una versión doblada</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Proxy de red</string>
@@ -133,23 +133,23 @@ La reproducción fallará si el hash de JavaScript del reproductor está desactu
   <string name="morphe_proxy_port_summary">Puerto del servidor proxy</string>
   <string name="morphe_proxy_https_title">Usar proxy HTTPS</string>
   <string name="morphe_proxy_https_summary">Usar HTTPS para conectarse al servidor proxy en lugar de HTTP</string>
-  <string name="morphe_proxy_auth_enabled_title">Autenticación de proxy</string>
-  <string name="morphe_proxy_auth_enabled_summary">Envía autenticación básica con las solicitudes de proxy</string>
+  <string name="morphe_proxy_auth_enabled_title">Autenticación del proxy</string>
+  <string name="morphe_proxy_auth_enabled_summary">Envía autenticación básica con las solicitudes del proxy</string>
   <string name="morphe_proxy_auth_username_title">Nombre de usuario del proxy</string>
-  <string name="morphe_proxy_auth_username_summary">Nombre de usuario para la autenticación básica de proxy</string>
+  <string name="morphe_proxy_auth_username_summary">Nombre de usuario para la autenticación básica del proxy</string>
   <string name="morphe_proxy_auth_password_title">Contraseña del proxy</string>
-  <string name="morphe_proxy_auth_password_summary">Contraseña para la autenticación básica de proxy</string>
-  <string name="morphe_proxy_allow_direct_fallback_title">Permitir copia de seguridad directa</string>
-  <string name="morphe_proxy_allow_direct_fallback_summary">Conectar directamente si falla el proxy</string>
+  <string name="morphe_proxy_auth_password_summary">Contraseña para la autenticación básica del proxy</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">Permitir recurrir a conexión directa</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">Conectar directamente si el proxy falla</string>
   <!-- ad.hideFullscreenAdsPatch -->
-  <string name="morphe_hide_fullscreen_ads_title">Ocultar anuncios en pantalla completa</string>
+  <string name="morphe_hide_fullscreen_ads_title">Ocultar anuncios a pantalla completa</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Para usar esta función, cambia \'Falsificar transmisiones de vídeo\' a Android Reel o TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Limpiar enlaces compartidos</string>
-  <string name="morphe_sanitize_sharing_links_summary">El parámetro de consulta de seguimiento se elimina de los enlaces compartidos</string>
+  <string name="morphe_sanitize_sharing_links_summary">Elimina los parámetros de consulta de seguimiento de los enlaces compartidos</string>
   <string name="morphe_replace_music_with_youtube_title">Cambiar enlaces compartidos a youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary">Reemplaza music.youtube.com con youtube.com en los enlaces compartidos</string>
+  <string name="morphe_replace_music_with_youtube_summary">Reemplaza music.youtube.com por youtube.com en los enlaces compartidos</string>
   <string name="morphe_replace_links_with_shortener_title">Cambiar enlaces compartidos a youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Fuerza a los videos a usar el formato de URL abreviada youtu.be</string>
   <!-- misc.debugging.enableDebuggingPatch -->
@@ -168,4 +168,13 @@ Sin embargo, si activas esto, también se registrarán algunos datos del usuario
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Lista de cadenas del constructor de rutas de componentes a filtrar, una por línea</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Filtro personalizado no válido: %s</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_title">Falsificar versión de la app</string>
+  <string name="morphe_spoof_app_version_summary">Engaña al servidor para que crea que estás usando una versión anterior de la aplicación, restaurando así funciones de la interfaz antigua</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"La versión de la aplicación se falsificará a una versión anterior.
+
+Esto cambiará la apariencia y las características de la aplicación, pero pueden producirse efectos secundarios desconocidos.
+
+Si se desactiva posteriormente, se recomienda borrar los datos de la aplicación para evitar errores en la interfaz de usuario."</string>
+  <string name="morphe_spoof_app_version_target_title">Versión a falsificar de la app</string>
 </resources>

@@ -211,6 +211,8 @@ As mudanças incluem:
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Ocultar botões de Emoji e Carimbo de data/hora</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Ocultar opções da barra de filtro</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Oculta todas as opções da barra de filtro, exceto \'Mais populares\' e \'Mais recentes\'</string>
+  <string name="morphe_hide_comments_gift_animation_and_cards_title">Ocultar animação e cartões de presente</string>
+  <string name="morphe_hide_comments_gift_button_title">Ocultar botão Presente</string>
   <string name="morphe_hide_comments_info_button_title">Ocultar botão Informações</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Ocultar barra de doadores do chat ao vivo</string>
   <string name="morphe_hide_comments_preview_comment_title">Ocultar prévia de comentário</string>
@@ -255,7 +257,7 @@ Limitações:
   <string name="morphe_hide_merchandise_banners_title">Ocultar banners de mercadoria</string>
   <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_paid_promotion_label_title">Ocultar o rótulo \'Inclui promoção paga\'</string>
-  <string name="morphe_hide_player_popup_ads_title">Ocultar anúncios popup do jogador</string>
+  <string name="morphe_hide_player_popup_ads_title">Ocultar anúncios pop-up no reprodutor</string>
   <string name="morphe_hide_self_sponsor_ads_title">Ocultar cartões auto-patrocinados</string>
   <string name="morphe_hide_shopping_links_title">Ocultar links de compras</string>
   <string name="morphe_hide_video_ads_title">Ocultar anúncios do vídeo</string>
@@ -274,8 +276,8 @@ Limitações:
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Desativar pop-up de fazer login na TV</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
-  <string name="morphe_disable_chapter_skip_double_tap_title">Desativa o modo de busca precisa que é ativado ao pressionar e segurar uma posição de busca</string>
-  <string name="morphe_disable_chapter_skip_double_tap_summary">Desabilita o gesto de toque duplo com dois dedos que ignora capítulos, que pode ser acionado acidentalmente com um dedo</string>
+  <string name="morphe_disable_chapter_skip_double_tap_title">Desativar toque duplo para pular capítulos</string>
+  <string name="morphe_disable_chapter_skip_double_tap_summary">Desativar toque duplo com dois dedos para pular capítulos</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Baixe vídeos, podcasts ou músicas com aplicativos de download de terceiros</string>
   <string name="morphe_external_downloader_title">Mostrar botão de download externo</string>
@@ -476,6 +478,8 @@ Observação: Se \"Simular streams de vídeo\" não estiver ativado, habilitar i
   <string name="morphe_swipe_speed_summary">Deslize horizontalmente na zona superior do modo de tela cheia para alterar a velocidade de reprodução</string>
   <string name="morphe_swipe_speed_sensitivity_title">Sensibilidade ao deslizar a velocidade</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Valores mais altos exigem mais deslizes por etapa de velocidade</string>
+  <string name="morphe_swipe_speed_step_title">Etapa da velocidade</string>
+  <string name="morphe_swipe_speed_step_summary">Quantidade pela qual a velocidade de reprodução muda a cada incremento</string>
   <string name="morphe_swipe_speed_zone_height_title">Altura da zona de velocidade</string>
   <string name="morphe_swipe_speed_zone_height_summary">Altura da zona de gesto de velocidade como uma porcentagem da altura do player (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Velocidade</string>
@@ -761,8 +765,8 @@ Configurações → Reprodução (ou Reprodução automática) → Reproduzir o 
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Ocultar tempo do vídeo</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
-  <string name="morphe_disable_player_popup_panels_title">Desativar painéis popup do jogador</string>
-  <string name="morphe_disable_player_popup_panels_summary">Sair do modo de tela cheia ao final do vídeo</string>
+  <string name="morphe_disable_player_popup_panels_title">Desativar painéis pop-up no reprodutor</string>
+  <string name="morphe_disable_player_popup_panels_summary">Desativar abertura automática de playlists e chat ao vivo</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Retrato apenas</string>
   <string name="morphe_exit_fullscreen_entry_1">Desativado</string>
@@ -852,15 +856,7 @@ Layout automotivo
   <string name="morphe_tablet_layout_in_player_summary">"Restaura o layout antigo do player
 
 Limitação: Se 'Restaurar barra de ações de vídeo antiga' estiver desativado, a sobreposição 'Mais vídeos' pode não estar disponível"</string>
-  <!-- layout.spoofappversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_title">Spoofing da versão do aplicativo</string>
-  <string name="morphe_spoof_app_version_summary">Truques no servidor para fazer você pensar que está usando uma versão mais antiga do aplicativo para restaurar recursos de interface do usuário legados</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"A versão do aplicativo será falsificada para uma versão mais antiga do YouTube.
-
-Isso mudará a aparência e os recursos do aplicativo, mas podem ocorrer efeitos colaterais desconhecidos. 
-
-Se posteriormente desativado, é recomendável limpar os dados do aplicativo para evitar bugs na IU."</string>
-  <string name="morphe_spoof_app_version_target_title">Versão de spoofing alvo</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Restaurar velho save para playlist</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Desativar ícones em negrito</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Restaurar nome do canal abaixo do reprodutor de vídeo</string>

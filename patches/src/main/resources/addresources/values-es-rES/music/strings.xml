@@ -270,4 +270,10 @@ YouTube Music 8.x: el fundido cruzado solo funciona en la versión 9.x o posteri
   <string name="morphe_music_scrobbling_about_summary">"La sincronización automática (scrobbling) sincroniza tu uso de YouTube Music con tu perfil de Last.fm o ListenBrainz.
 
 Para garantizar que la sincronización se realice durante la reproducción en segundo plano, asegúrate de que el uso de la batería de la aplicación YouTube Music esté configurado como \"Sin restricciones\"."</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - Restaura el panel desplegable antiguo</string>
+  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - Desactiva las letras de canciones en tiempo real</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - Restaura las letras dinámicas antiguas</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - Restaura la barra de acción antigua</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - La sección de comentarios no aparece en el feed de inicio</string>
 </resources>

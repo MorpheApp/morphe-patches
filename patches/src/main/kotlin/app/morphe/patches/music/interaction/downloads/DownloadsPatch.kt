@@ -7,7 +7,6 @@
 
 package app.morphe.patches.music.interaction.downloads
 
-import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
@@ -32,7 +31,7 @@ private val downloadsResourcePatch = resourcePatch {
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
                     SwitchPreference("morphe_external_downloader_action_button", summary = true),
-                    SwitchPreference("morphe_external_downloader_flyout_button"),
+                    SwitchPreference("morphe_external_downloader_flyout_menu"),
                     TextPreference(
                         "morphe_external_downloader_name",
                         tag = "app.morphe.extension.shared.settings.preference.ExternalDownloaderPreference"
@@ -70,10 +69,17 @@ val downloadsPatch = bytecodePatch(
             mutableClassDefBy(parameterTypes[1].toString())
                 .interfaces.add(EXTENSION_PROTOCOL_BUFFER_INTERFACE)
 
-            addInstruction(
+            addInstructionsWithLabels(
                 0,
-                "invoke-static { p1, p2 }, $EXTENSION_CLASS->" +
-                        "commandResolverOnClick(${EXTENSION_PROTOCOL_BUFFER_INTERFACE}Ljava/util/Map;)Z"
+                """
+                    invoke-static { p1, p2 }, $EXTENSION_CLASS->
+                    commandResolverOnClick(${EXTENSION_PROTOCOL_BUFFER_INTERFACE}Ljava/util/Map;)Z
+                    move-result v0
+                    if-eqz v0, :continue_resolution
+                    return v0
+                    :continue_resolution
+                    nop
+                """
             )
         }
 

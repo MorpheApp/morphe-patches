@@ -212,6 +212,8 @@ Schimbari incluse:
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Ascunde butoanele Emoji și Marcaj temporal</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Ascunde opțiunile barei de filtre</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Ascunde toate opțiunile din bara de filtre, cu excepția \'Top\' și \'Cele mai noi\'</string>
+  <string name="morphe_hide_comments_gift_animation_and_cards_title">Ascunde animația și felicitările cadou</string>
+  <string name="morphe_hide_comments_gift_button_title">Ascunde butonul Cadou</string>
   <string name="morphe_hide_comments_info_button_title">Ascunde butonul Info</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Ascunde bara cu donatori în chat-ul live</string>
   <string name="morphe_hide_comments_preview_comment_title">Ascunde previzualizarea comentariului</string>
@@ -477,6 +479,8 @@ Notă: Dacă „Spoof video streams” nu este activat, activarea acesteia poate
   <string name="morphe_swipe_speed_summary">Glisați orizontal în zona superioară a modului ecran complet pentru a schimba viteza de redare</string>
   <string name="morphe_swipe_speed_sensitivity_title">Sensibilitate glisare viteză</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Valorile mai mari necesită mai multe glisări pentru fiecare pas de viteză</string>
+  <string name="morphe_swipe_speed_step_title">Pas rapid</string>
+  <string name="morphe_swipe_speed_step_summary">Cantitatea cu care se modifică viteza de redare la fiecare increment</string>
   <string name="morphe_swipe_speed_zone_height_title">Înălțime zonă viteză</string>
   <string name="morphe_swipe_speed_zone_height_summary">Înălțimea zonei de gesturi pentru viteză ca procent din înălțimea player-ului (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Viteză</string>
@@ -853,15 +857,7 @@ Aspect auto
   <string name="morphe_tablet_layout_in_player_summary">"Restabilește aspectul vechi al playerului
 
 Limitare: Dacă 'Restaurare bara de acțiuni video veche' este dezactivată, stratul 'Mai multe videoclipuri' ar putea să nu fie disponibil"</string>
-  <!-- layout.spoofappversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_title">Falsifică versiunea aplicației</string>
-  <string name="morphe_spoof_app_version_summary">Păcălește serverul să creadă că utilizezi o versiune mai veche a aplicației pentru a restabili funcțiile UI moștenite</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"Versiunea aplicației va fi falsificată la o versiune mai veche de YouTube.
-
-Acest lucru va schimba aspectul și caracteristicile aplicației, dar pot apărea efecte secundare necunoscute.
-
-Dacă este dezactivat ulterior, se recomandă să ștergeți datele aplicației pentru a preveni erorile UI."</string>
-  <string name="morphe_spoof_app_version_target_title">Țintă versiune falsificată a aplicației</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Restore old save to playlist</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Dezactiva­te icoanele ­bold</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Restaurează numele canalului sub playerul video</string>

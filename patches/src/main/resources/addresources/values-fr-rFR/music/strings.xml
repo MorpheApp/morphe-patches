@@ -269,4 +269,10 @@ YouTube Music 8.x — le fondu enchaîné ne fonctionne que sur les versions 9.x
   <string name="morphe_music_scrobbling_about_summary">"Le scrobbling synchronise automatiquement votre activité sur YouTube Music avec votre profil Last.fm ou ListenBrainz.
 
 Pour que le scrobbling continue à se synchroniser pendant la lecture en arrière-plan, assurez-vous que l'utilisation de la batterie par l'application YouTube Music est définie sur \"Non restreint\""</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - Restaure l\'ancien panneau déroulant</string>
+  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - Désactive les paroles en temps réel</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - Restaure les anciennes paroles dynamiques</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - Restaure l\'ancienne barre d\'actions</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - La section des commentaires n\'apparaît pas dans le flux d\'accueil</string>
 </resources>

@@ -53,7 +53,7 @@ Second \"item\" text"</string>
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe 通知</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">你的觀看記錄未被儲存。&lt;br&gt;&lt;br&gt;這很可能是由 DNS 廣告封鎖器或網路代理所導致。&lt;br&gt;&lt;br&gt;若要解決此問題，請將 &lt;b&gt;s.youtube.com&lt;/b&gt; 加入白名單，或關閉所有 DNS 封鎖器和代理。</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">不再顯示</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">偽裝影片串流</string>
   <string name="morphe_spoof_video_streams_screen_summary">偽裝用戶端影片串流以避免播放問題</string>
   <string name="morphe_spoof_video_streams_title">偽裝影片串流</string>
@@ -168,4 +168,13 @@ Second \"item\" text"</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">以換行符號分隔的元件路徑建構器字串清單，用於篩選</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">無效的自訂篩選器：%s</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_title">偽裝應用程式版本</string>
+  <string name="morphe_spoof_app_version_summary">欺騙伺服器，使其認為您正在使用較舊的應用程式版本，以恢復舊版使用者介面功能</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"應用程式版本將被偽裝為舊版本。
+
+這將改變應用程式的外觀和功能，但可能會發生未知的副作用。
+
+如果之後關閉此設定，建議清除應用程式資料以避免 UI 錯誤。"</string>
+  <string name="morphe_spoof_app_version_target_title">應用程式偽裝目標版本</string>
 </resources>

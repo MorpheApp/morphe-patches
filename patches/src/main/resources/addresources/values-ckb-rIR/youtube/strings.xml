@@ -393,14 +393,7 @@ Second \"item\" text"</string>
   <string name="morphe_change_form_factor_entry_3">تەبلێت</string>
   <string name="morphe_change_form_factor_entry_4">ئۆتۆمۆبێل</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <!-- layout.spoofappversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_title">نسخەی سەرەکیی ئەپ وێنۆ بکە</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"نسخەی ئەپ دەگێڕدرێتەوە بۆ ئەندازەیەکی کۆتری یوتوب.
-
-ئەمە دەربارەیی ئەپ دەگۆرێت و تایبەتمەندەکانیشی دەگۆرێت، بەڵام دەکرێت لێکەوتووەکانی نادیار ڕووبەڕووبنەوە.
-
-کاتێک دواتر ڕاگیرانە دەخرێتەوە، باشترە کە دادی ئەپ پاک بکرێتەوە بۆ خۆپارێزیکردن لە گرفتەکانی UI."</string>
-  <string name="morphe_spoof_app_version_target_title">ئامانجی وێنۆ کردنی ئەپ</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - باشدانی دۆزینەوەی خەمینەڵ نیگاتە</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - کۆدی ڕەوا نەخۆش هاتبون</string>
   <!-- misc.sharesheet.openSystemShareSheetPatch -->

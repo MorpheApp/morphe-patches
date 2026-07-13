@@ -212,6 +212,8 @@ Wijzigingen zijn:
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Emoji- en tijdstempelknoppen verbergen</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Filterbalkopties verbergen</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Verbergt alle filterbalkopties, behalve \'Top\' en \'Nieuwste\'</string>
+  <string name="morphe_hide_comments_gift_animation_and_cards_title">Verberg animaties voor cadeaus en kaarten</string>
+  <string name="morphe_hide_comments_gift_button_title">Verberg cadeauknop</string>
   <string name="morphe_hide_comments_info_button_title">Verberg Info-knop</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Verberg de donateur balk van live chat</string>
   <string name="morphe_hide_comments_preview_comment_title">Reactie in preview verbergen</string>
@@ -477,6 +479,8 @@ Let op: als 'Video streams spoofen' niet is ingeschakeld, kan het inschakelen hi
   <string name="morphe_swipe_speed_summary">Veeg horizontaal in de bovenste zone van de volledigschermmodus om de afspeelsnelheid te wijzigen</string>
   <string name="morphe_swipe_speed_sensitivity_title">Veeggevoeligheid snelheid</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Hogere waarden vereisen meer vegen per snelheidsstap</string>
+  <string name="morphe_swipe_speed_step_title">Snelheid stap</string>
+  <string name="morphe_swipe_speed_step_summary">Hoeveelheid waarmee de afspeelsnelheid per stap verandert</string>
   <string name="morphe_swipe_speed_zone_height_title">Hoogte van de snelheidszone</string>
   <string name="morphe_swipe_speed_zone_height_summary">Hoogte van de snelheidsgebied als percentage van de hoogte van de speler (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Snelheid</string>
@@ -853,15 +857,7 @@ Automotive-layout
   <string name="morphe_tablet_layout_in_player_summary">"Herstelt de oude player layout
 
 Beperking: Als 'Herstel oude video acties balk' is uitgeschakeld, is de \"Meer video's\" overlay mogelijk niet beschikbaar"</string>
-  <!-- layout.spoofappversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_title">App-versie vervalsen</string>
-  <string name="morphe_spoof_app_version_summary">Misleidt de server om te denken dat je een oudere app-versie gebruikt om verouderde visuele functies terug te zetten</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"App-versie wordt gespoofed naar een oudere versie van YouTube.
-
-Dit zal het uiterlijk en de functies van de app veranderen, maar er kunnen onbekende neveneffecten optreden.
-
-Als het later wordt uitgeschakeld, wordt aanbevolen om de app-gegevens te wissen om UI-fouten te voorkomen."</string>
-  <string name="morphe_spoof_app_version_target_title">Doel voor vervalsen app-versie</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Herstel oude Shorts-speler pictogrammen</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Uitschakelen van vetgedrukte pictogrammen</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Herstel kanaalnaam onder videospeler</string>

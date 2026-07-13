@@ -212,6 +212,8 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Folaigh cnaipí Emoji agus Stampa Ama</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Folaigh roghanna barra scagaire</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Folaíonn sé gach rogha barra scagaire seachas \'Barr\' agus \'Nua\'</string>
+  <string name="morphe_hide_comments_gift_animation_and_cards_title">Ceadaigh an bhealach is fearr le comhaisíocht a bhaint as an bhealach is fearr le comhaisíocht a bhaint as an bhealach is fearr le comhaisíocht a bhaint as an bhealach is fearr le comhaisíocht a bhaint as an bhealach is fearr le comhaisíocht a bhaint as an bhealach is fearr le comhaisíocht a bhaint as an bhealach is fearr le comhaisíocht a bhaint as an bhealach is fearr le comhaisíocht a bhaint as an bhealach is fearr le comhaisíocht a bhaint as an bhealach is fearr le comhaisíocht a bhaint as</string>
+  <string name="morphe_hide_comments_gift_button_title">Folaigh cnaipe Gift</string>
   <string name="morphe_hide_comments_info_button_title">Cnaipe Folaigh Faisnéise</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Folaigh barra síntiúsóirí comhrá beo</string>
   <string name="morphe_hide_comments_preview_comment_title">Folaigh trácht réamhamharc</string>
@@ -477,6 +479,8 @@ Nóta: Mura bhfuil 'Sruthanna físe bréige' cumasaithe, d'fhéadfadh sé seo io
   <string name="morphe_swipe_speed_summary">Svaidhpeáil go cothrománach sa chrios uachtarach den mhodh lánscáileáin chun luas athsheinm a athrú</string>
   <string name="morphe_swipe_speed_sensitivity_title">Íogaireacht luas-swipeála</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Éilíonn luachanna níos airde níos mó svaidhpeála in aghaidh gach céim luais</string>
+  <string name="morphe_swipe_speed_step_title">Céim luais</string>
+  <string name="morphe_swipe_speed_step_summary">An méid a athraíonn luas an athsheinm in aghaidh gach tic</string>
   <string name="morphe_swipe_speed_zone_height_title">Airde crios luas</string>
   <string name="morphe_swipe_speed_zone_height_summary">Airde an chrios gotha ​​luais mar chéatadán d\'airde an imreora (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Luas</string>
@@ -853,15 +857,7 @@ Leagan amach na ngluaisteán
   <string name="morphe_tablet_layout_in_player_summary">"Athchóiríonn sé leagan amach an tsean-imreoir
 
 Teorainn: Mura bhfuil 'Barra gníomhaíochta seanfhíseáin athchóirithe' múchta, b'fhéidir nach mbeidh forleagan 'Tuilleadh físeáin' ar fáil"</string>
-  <!-- layout.spoofappversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_title">Leagan aip bréige</string>
-  <string name="morphe_spoof_app_version_summary">Meallann sé an freastalaí le go gceapfá go bhfuil tú ag úsáid seanleagan den aip chun gnéithe oidhreachta den chomhéadan úsáideora a athbhunú.</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"Déanfar leagan aip a bréagach chuig leagan níos sine de YouTube.
-
-Athróidh sé seo cuma agus gnéithe na haipe, ach d'fhéadfadh fo-iarsmaí anaithnide tarlú.
-
-Má mhúchtar é níos déanaí, moltar sonraí na haipe a ghlanadh chun fabhtanna UI a chosc."</string>
-  <string name="morphe_spoof_app_version_target_title">Sprioc leagan aip bréagach</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Athchóirigh an sean-shábháil chuig an seinmliosta</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Díchumasaigh deilbhíní troma</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Athchóirigh ainm an chainéil faoin seinnteoir físe</string>

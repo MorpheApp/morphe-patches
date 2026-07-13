@@ -567,14 +567,7 @@ Info: Možda neće raditi na prijenosima uživo"</string>
   <string name="morphe_change_form_factor_entry_3">Tablet</string>
   <string name="morphe_change_form_factor_entry_4">Automobil</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <!-- layout.spoofappversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_title">Imitiraj verziju aplikacije</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"Aplikacija će biti imitirana na stariju verziju YouTube-a.
-
-Ovo će promijeniti izgled i mogućnosti aplikacije, ali mogu se javiti neočekivani problemi.
-
-Ako se kasnije isključi, preporuke za UI mogu se izbjeći čišćenjem podataka aplikacije."</string>
-  <string name="morphe_spoof_app_version_target_title">Ciljana verzija aplikacije</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Vrati stari spremi u playlistu</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Onemogući deblji ikone</string>
   <!-- misc.sharesheet.openSystemShareSheetPatch -->

@@ -212,6 +212,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">إخفاء أزرار الرموز التعبيرية والطابع الزمني</string>
   <string name="morphe_hide_comments_filter_bar_options_title">إخفاء خيارات شريط التصفية</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">يخفي جميع خيارات فرز التعليقات باستثناء ‘الأهم‘ و ‘أحدث التعليقات‘</string>
+  <string name="morphe_hide_comments_gift_animation_and_cards_title">إخفاء الرسوم المتحركة وبطاقات الهدايا</string>
+  <string name="morphe_hide_comments_gift_button_title">إخفاء زر الهدايا</string>
   <string name="morphe_hide_comments_info_button_title">إخفاء زر المعلومات</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">إخفاء شريط مُتبرِّعي المحادثة المباشرة</string>
   <string name="morphe_hide_comments_preview_comment_title">إخفاء تعليق المعاينة</string>
@@ -481,6 +483,8 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_swipe_speed_summary">مرِّر أفقيًا في المنطقة العلوية بوضع ملء الشاشة لتغيير سرعة التشغيل</string>
   <string name="morphe_swipe_speed_sensitivity_title">حساسية تمرير السرعة</string>
   <string name="morphe_swipe_speed_sensitivity_summary">القيم الأعلى تتطلب التمرير أكثر لكل درجة سرعة</string>
+  <string name="morphe_swipe_speed_step_title">مستوى تغيير السرعة</string>
+  <string name="morphe_swipe_speed_step_summary">مقدار تغيّر سرعة التشغيل مع كل نقرة</string>
   <string name="morphe_swipe_speed_zone_height_title">ارتفاع منطقة السرعة</string>
   <string name="morphe_swipe_speed_zone_height_summary">ارتفاع منطقة إيماءة السرعة كنسبة مئوية من ارتفاع المشغل (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">السرعة</string>
@@ -858,15 +862,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_tablet_layout_in_player_summary">"استعادة تخطيط المشغل القديم
 
 القيود: إذا تم إيقاف تشغيل 'استعادة شريط إجراءات الفيديو القديم'، فقد لا يتوفر عنصر 'المزيد من الفيديوهات'"</string>
-  <!-- layout.spoofappversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_title">إصدار تطبيق وهمي</string>
-  <string name="morphe_spoof_app_version_summary">يجعل الخادم يعتقد أنك تستخدم إصدارًا أقدم من التطبيق لاستعادة ميزات الواجهة القديمة</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"سيتم تغيير إصدار التطبيق إلى إصدار قديم من YouTube.
-
-سيؤدي هذا إلى تغيير مظهر ومميزات التطبيق، ولكن قد تحدث تأثيرات جانبية غير معروفة.
-
-إذا تم إيقاف تشغيله لاحقًا، من المستحسن مسح بيانات التطبيق لمنع حدوث أخطاء في واجهة المستخدم."</string>
-  <string name="morphe_spoof_app_version_target_title">الهدف من تغيير إصدار التطبيق</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - استعادة الحفظ القديم إلى قائمة التشغيل</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - تعطيل الأيقونات العريضة</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - استعادة اسم القناة أسفل مشغل الفيديو</string>

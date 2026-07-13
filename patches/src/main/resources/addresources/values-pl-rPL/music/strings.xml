@@ -128,7 +128,7 @@ Ekran blokady lub powiadomienie może przez chwilę pokazywać nieaktualny stan 
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_radio_button_title">Ukryj przycisk Składanka</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
-  <string name="morphe_music_hide_flyout_menu_components_screen_title">Menu ustawień filmu</string>
+  <string name="morphe_music_hide_flyout_menu_components_screen_title">Menu wysuwane</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Zdecyduj, które elementy będą wyświetlane w menu wysuwanym odtwarzacza i kolejki</string>
   <string name="morphe_music_hide_flyout_menu_3_column_component_title">Ukryj element 3-kolumnowy</string>
   <string name="morphe_music_hide_flyout_menu_like_dislike_title">Ukryj przyciski Lubię i Nie lubię</string>
@@ -269,4 +269,10 @@ Ekran blokady lub powiadomienie może przez chwilę pokazywać nieaktualny stan 
   <string name="morphe_music_scrobbling_about_summary">"Scrobblowanie automatycznie synchronizuje Twoją aktywność w YouTube Music z profilem Last.fm lub ListenBrainz
 
 Aby zapewnić ciągłość synchronizacji podczas odtwarzania w tle, upewnij się, że zużycie baterii dla aplikacji YouTube Music jest ustawione na \"Bez ograniczeń\""</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - Przywraca stare menu wysuwane</string>
+  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - Wyłącza tekst w czasie rzeczywistym</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - Przywraca stary dynamiczny tekst</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - Przywraca stary pasek akcji</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - Sekcja komentarzy nie pojawia się na stronie głównej</string>
 </resources>

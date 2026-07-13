@@ -212,6 +212,8 @@ Změny zahrnují:
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Skrýt tlačítka emotikonů a časových značek</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Skrýt možnosti lišty filtrů</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Skryje všechny možnosti lišty filtrů kromě \'Nejlepší\' a \'Nejnovější\'</string>
+  <string name="morphe_hide_comments_gift_animation_and_cards_title">Skrýt animaci a karty dárku</string>
+  <string name="morphe_hide_comments_gift_button_title">Skrýt tlačítko Dárku</string>
   <string name="morphe_hide_comments_info_button_title">Skrýt tlačítko Info</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Skrýt lištu dárců živého chatu</string>
   <string name="morphe_hide_comments_preview_comment_title">Skrýt náhled komentáře</string>
@@ -477,6 +479,8 @@ Poznámka: Pokud není povolena možnost \"Spoof video streams\", povolení tét
   <string name="morphe_swipe_speed_summary">Přejeďte v horní části obrazovky ve fullscreen režimu vodorovně a změníte tak rychlost přehrávání</string>
   <string name="morphe_swipe_speed_sensitivity_title">Citlivost přejetí rychlosti</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Vyšší hodnoty vyžadují více přejetí pro každý krok rychlosti</string>
+  <string name="morphe_swipe_speed_step_title">Rychlost kroku</string>
+  <string name="morphe_swipe_speed_step_summary">Množství, o které se mění rychlost přehrávání na jedno kliknutí</string>
   <string name="morphe_swipe_speed_zone_height_title">Výška zóny rychlosti</string>
   <string name="morphe_swipe_speed_zone_height_summary">Výška zóny gest pro rychlost jako procento výšky přehrávače (5–75)</string>
   <string name="morphe_swipe_zone_label_speed">Rychlost</string>
@@ -853,15 +857,7 @@ Rozložení pro automobily
   <string name="morphe_tablet_layout_in_player_summary">"Obnoví staré rozložení přehrávače
 
 Omezení: Pokud je vypnutá možnost 'Obnovit starou lištu akcí videa', překrytí 'Další videa' nemusí být k dispozici"</string>
-  <!-- layout.spoofappversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_title">Napodobit verzi aplikace</string>
-  <string name="morphe_spoof_app_version_summary">Triky serveru podvede, aby si myslel, že používáte starší verzi aplikace, a obnovil tak dědictví UI funkcí</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"Verze aplikace bude napodobena na starší verzi YouTube.
-
-To změní vzhled a funkce aplikace, ale mohou se objevit neznámé vedlejší efekty.
-
-Pokud bude později vypnuta, doporučujeme vymazat data aplikace, aby se zabránilo chybám uživatelského rozhraní."</string>
-  <string name="morphe_spoof_app_version_target_title">Cíl napodobení verze aplikace</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Obnoví staré uložení zpět do seznamu přehrávání</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Vypnout tučné ikony</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 – Obnovit název kanálu pod přehrávačem videa</string>

@@ -430,14 +430,7 @@ Second \"item\" text"</string>
   <string name="morphe_change_form_factor_entry_3">टैबलेट</string>
   <string name="morphe_change_form_factor_entry_4">ऑटोमोटिव</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <!-- layout.spoofappversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_title">ऐप संस्करण स्पूफ करी</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"एप संस्करण युट्युबको पुरानो संस्करणमा स्पूफ गरिएको हुनेछ।
-
-यसले एपको उपस्थिति र सुविधाहरू परिवर्तन गर्नेछ, तर अज्ञात साइड प्रभावहरू हुन सक्छन्।
-
-छिमेकमा बन्द गरिएको खण्डमा, UI बगहरू रोक्न एप डेटा सफा गर्न सिफारिस गरिन्छ।"</string>
-  <string name="morphe_spoof_app_version_target_title">ऐप संस्करण स्पूफ लक्ष्य</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - पुरानो बचतलाई प्लेलिस्टमा पुनर्स्थापित गर्नुहोस्</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - बोल्ड आइकनहरू अक्षम गर्नुहोस्</string>
   <!-- misc.sharesheet.openSystemShareSheetPatch -->

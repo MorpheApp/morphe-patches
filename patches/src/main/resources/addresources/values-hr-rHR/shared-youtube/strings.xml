@@ -41,7 +41,7 @@ Second \"item\" text"</string>
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe patches</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Vaša povijest gledanja nije spremljena.&lt;br&gt;&lt;br&gt;Ovo je vjerojatno uzrokovano DNS ad blokerom ili mrežnim proxyjem.&lt;br&gt;&lt;br&gt;Da bi to popravili, dodajte u bjelu listu \"s.youtube.com\" ili isključite sve DNS blokere i proxyje.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ne prikazuj ponovno</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Falsificiraj video toke</string>
   <string name="morphe_spoof_video_streams_screen_summary">Konfigurirajte spoofing klijenta kako biste spriječili probleme s reprodukcijom</string>
   <string name="morphe_spoof_video_streams_title">Falsificiraj video toke</string>
@@ -120,4 +120,5 @@ Međutim, omogućavanjem ove postavke zabilježit će se i neki korisnički poda
   <string name="morphe_custom_filter_screen_summary">Konfigurirajte prilagođene filtre za skrivanje bilo kojeg komponenta</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Popis nizova alata za izradu putanja komponenti za filtriranje, odvojenih novim retcima</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
 </resources>

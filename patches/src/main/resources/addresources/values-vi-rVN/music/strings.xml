@@ -269,4 +269,10 @@ YouTube Music 8.x – hiệu ứng chuyển tiếp chỉ chạy trên 9.x trở 
   <string name="morphe_music_scrobbling_about_summary">"Scrobble giúp tự động đồng bộ lịch sử nghe nhạc từ YouTube Music lên Last.fm hoặc ListenBrainz
 
 Để đảm bảo scrobbling vẫn được đồng bộ hóa khi phát nhạc trong nền, hãy đặt mức sử dụng pin của YouTube Music thành \"Không hạn chế\""</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - Khôi phục giao diện flyout cũ</string>
+  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - Tắt lời bài hát theo thời gian thực</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - Khôi phục lời bài hát động cũ</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - Khôi phục thanh hành động cũ</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - Mục bình luận không hiển thị trong nguồn cấp dữ liệu</string>
 </resources>

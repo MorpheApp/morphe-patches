@@ -213,6 +213,8 @@ Guherînan têne xistine:
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Bişkoka Emoji û Demreya veşêrin</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Vebijarkên barekê veşêre</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Vebijarkên barekê ji bilî \'Herî jor\' û \'Nûترین\' veşêre</string>
+  <string name="morphe_hide_comments_gift_animation_and_cards_title">Şîrkirina animasyonê û kartên hediyê veşêrin</string>
+  <string name="morphe_hide_comments_gift_button_title">Butona Hediyê veşêrin</string>
   <string name="morphe_hide_comments_info_button_title">Dîmena Butona Agahî</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Barê xwerasên chatê veşêre</string>
   <string name="morphe_hide_comments_preview_comment_title">Pêşbîna şîroveyê veşêrin</string>
@@ -478,6 +480,8 @@ Not: Ger 'Herikînên vîdyoyê' nebe, vekirina vê dikare têkiliyên nehevdît
   <string name="morphe_swipe_speed_summary">Bi lezê li gorî herêmê yê moda tevahî, lezê biçivîne da ku leza xemgîniyê biguherîne</string>
   <string name="morphe_swipe_speed_sensitivity_title">Hêsîtîya swipe ya lezê</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Nirxên bilindtir pêdivî bi swipe zêdetir her gav lezê hewînin</string>
+  <string name="morphe_swipe_speed_step_title">Hêmaniya lezê</string>
+  <string name="morphe_swipe_speed_step_summary">Mîqdarê ku bi her tikê lezê diguhere</string>
   <string name="morphe_swipe_speed_zone_height_title">Bilindahiya herêma lezê</string>
   <string name="morphe_swipe_speed_zone_height_summary">Bilindahiya herêma gestê ya lezê wekî sedîyek ji bilindahiya lîstikvan (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Lez</string>
@@ -855,15 +859,7 @@ Saziya otomobîlan
   <string name="morphe_tablet_layout_in_player_summary">"Sêwîna lîstikvanê kevnarî dîsa çê bike
 
 Sînordarî: Ger 'Restore old video action bar' veqetandibe, 'More videos' dîtin ne mumkin e"</string>
-  <!-- layout.spoofappversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_title">Versona asayî</string>
-  <string name="morphe_spoof_app_version_summary">Serverê qedexe dike ku bi hesinkirina guhertoyek kevnertirîn ya app-ê, taybetmendiyên berê yên UI-yê vegerîne</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"Versona serrote bi versona kevnaretir a YouTube-yê asayîkirin wê behre.
-
-Ev xwendinê û taybetmendeyê peşêbiya ava bibe, lê pêgeyên zanere nabe va kerin.
-
-Hatin binveşirin, ew tê mesêr kirin ka danayê peşêbîyê şêniyel ki bug-ê kerdesten ava bin."</string>
-  <string name="morphe_spoof_app_version_target_title">Hevraî Video asayî</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Dabeşîna kevnayî pêl vekişîne ser lîste</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Nexalînetî ikonên giran</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Restore channel name below video player</string>

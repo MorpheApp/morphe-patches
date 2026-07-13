@@ -212,6 +212,8 @@ Zmeny zahŕňajú:
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Skryť tlačidlá emotikonov a časových pečiatok</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Skryť možnosti panela filtrov</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Skryje všetky možnosti panela filtrov okrem položiek \'Najlepšie\' a \'Najnovšie\'</string>
+  <string name="morphe_hide_comments_gift_animation_and_cards_title">Skryť animáciu a karty darčeka</string>
+  <string name="morphe_hide_comments_gift_button_title">Skryť tlačidlo Darovať</string>
   <string name="morphe_hide_comments_info_button_title">Skryť tlačidlo Info</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Skryť panel donátorov živého chatu</string>
   <string name="morphe_hide_comments_preview_comment_title">Skryť predhliadku komentára</string>
@@ -477,6 +479,8 @@ Poznámka: Ak nie je povolené \"Maskovanie streamov videa\", povolenie tejto fu
   <string name="morphe_swipe_speed_summary">Prechádzajte horizontálne v hornej zóne režimu celej obrazovky a zmeňte rýchlosť prehrávania</string>
   <string name="morphe_swipe_speed_sensitivity_title">Citlivosť posúvania rýchlosti</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Vyššie hodnoty vyžadujú viac posúvania pre každý krok rýchlosti</string>
+  <string name="morphe_swipe_speed_step_title">Rýchlosť kroku</string>
+  <string name="morphe_swipe_speed_step_summary">Množstvo, o ktoré sa mení rýchlosť prehrávania pri každom kroku</string>
   <string name="morphe_swipe_speed_zone_height_title">Výška zóny rýchlosti</string>
   <string name="morphe_swipe_speed_zone_height_summary">Výška zóny gesta rýchlosti v percentách výšky prehrávača (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Rýchlosť</string>
@@ -853,15 +857,7 @@ Rozloženie pre automobil
   <string name="morphe_tablet_layout_in_player_summary">"Obnoví staré rozloženie prehrávača
 
 Obmedzenie: Ak je vypnutá možnosť 'Obnoviť starú lištu akcií videa', vrstva 'Ďalšie videá' nemusí byť k dispozícii"</string>
-  <!-- layout.spoofappversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_title">Sfalšovať verziu aplikácie</string>
-  <string name="morphe_spoof_app_version_summary">Oklame server, aby si myslel, že používate staršiu verziu aplikácie na obnovenie starších funkcií používateľského rozhrania</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"Verzia aplikácie bude falšovaná na staršiu verziu YouTube.
-
-Táto zmena ovplyvní vzhľad a funkcie aplikácie, no môžu sa vyskytnúť neznáme následky.
-
-Ak ju neskôr vypnete, odporúča sa vymazať dáta aplikácie, aby sa predišlo chybám v používateľskom rozhraní."</string>
-  <string name="morphe_spoof_app_version_target_title">Cieľová falošná verzia aplikácie</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Obnoví staré ukladanie do zoznamu videí</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 – zakázať tučné ikony</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Obnoviť názov kanála pod prehrávačom videa</string>

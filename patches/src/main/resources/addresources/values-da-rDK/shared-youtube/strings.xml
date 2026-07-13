@@ -53,7 +53,7 @@ Kontroller, at pakkenavnet er korrekt, og at appen er installeret"</string>
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Meddelelse</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Din afspilningshistorik gemmes ikke.&lt;br&gt;&lt;br&gt;Dette skyldes sandsynligvis en DNS-annonceblokker eller netværksproxy.&lt;br&gt;&lt;br&gt;For at løse dette, whitelist &lt;b&gt;s.youtube.com&lt;/b&gt; eller slå alle DNS-blokkere og proxyservere fra.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Vis ikke igen</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Spoof videostreams</string>
   <string name="morphe_spoof_video_streams_screen_summary">Spoof klientens videostreams for at forhindre afspilningsproblemer</string>
   <string name="morphe_spoof_video_streams_title">Spoof videostreams</string>
@@ -168,4 +168,13 @@ Det logger dog også brugerdata som din IP-adresse."</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Liste over komponentsti-strengbyggere til filtrering, adskilt af nye linjer</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Ugyldigt brugerdefineret filter: %s</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_title">Spoof app-version</string>
+  <string name="morphe_spoof_app_version_summary">Snyder serveren til at tro, at du bruger en ældre app-version for at gendanne tidligere brugergrænsefladefunktioner.</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"App-versionen spoofes til en ældre version.
+
+Dette ændrer appens udseende og funktioner, men ukendte bivirkninger kan forekomme.
+
+Hvis det senere slås fra, anbefales det at rydde app-data for at forhindre UI-fejl."</string>
+  <string name="morphe_spoof_app_version_target_title">Spoof app version mål</string>
 </resources>

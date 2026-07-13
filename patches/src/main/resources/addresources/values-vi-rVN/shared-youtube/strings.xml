@@ -53,7 +53,7 @@ Kiểm tra xem tên gói có chính xác không và ứng dụng đã được c
   <string name="morphe_check_watch_history_domain_name_dialog_title">Thông báo Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Nhật ký xem của bạn hiện không được lưu lại.&lt;br&gt;&lt;br&gt;Nguyên nhân thường là do DNS chặn quảng cáo hoặc proxy mạng.&lt;br&gt;&lt;br&gt;Vì vậy, hãy thử thêm &lt;b&gt;s.youtube.com&lt;/b&gt; vào danh sách cho phép, hoặc tắt tất cả DNS và proxy.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Không hiện lại</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Giả mạo luồng phát video</string>
   <string name="morphe_spoof_video_streams_screen_summary">Cấu hình giả mạo client nhằm tránh lỗi khi phát</string>
   <string name="morphe_spoof_video_streams_title">Giả mạo luồng phát video</string>
@@ -168,4 +168,13 @@ Tuy nhiên, bật tính năng này cũng sẽ ghi lại một số dữ liệu n
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Danh sách các chuỗi tạo đường dẫn thành phần cần lọc, mỗi dòng một chuỗi</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Bộ lọc tuỳ chỉnh không hợp lệ: %s</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_title">Giả mạo phiên bản ứng dụng</string>
+  <string name="morphe_spoof_app_version_summary">Khiến server nghĩ rằng bạn đang sử dụng phiên bản cũ để khôi phục giao diện cũ</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"Phiên bản ứng dụng sẽ được giả mạo thành một phiên bản cũ hơn.
+
+Điều này sẽ thay đổi giao diện và tính năng của ứng dụng, nhưng cũng có thể xảy ra các tác dụng phụ không mong muốn.
+
+Nếu tắt sau đó, bạn nên xóa dữ liệu ứng dụng để tránh các lỗi giao diện."</string>
+  <string name="morphe_spoof_app_version_target_title">Mục tiêu phiên bản giả mạo</string>
 </resources>

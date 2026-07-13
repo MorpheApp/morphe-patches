@@ -477,6 +477,8 @@ Qeyd: Əgər \"Video yayımlarını saxtalaşdır\" işlək deyilsə, bunu aktiv
   <string name="morphe_swipe_speed_summary">Oynadılma sürətini dəyişmək üçün tam ekran rejiminin yuxarı sahəsində üfüqi sürüşdür</string>
   <string name="morphe_swipe_speed_sensitivity_title">Sürət sürüşdürmə həssaslığı</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Daha yüksək dəyərlər hər sürət pilləsi üzrə daha çox sürüşdürmə tələb edir</string>
+  <string name="morphe_swipe_speed_step_title">Sürət pilləsi</string>
+  <string name="morphe_swipe_speed_step_summary">Hər klikləməyə görə oynatma sürətinin dəyişmə vahidi</string>
   <string name="morphe_swipe_speed_zone_height_title">Sürət sahəsi hündürlüyü</string>
   <string name="morphe_swipe_speed_zone_height_summary">Sürət jesti sahəsinin hündürlüyünün oynadıcı hündürlüyünə olan faiz nisbəti (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Sürət</string>
@@ -799,7 +801,15 @@ Ayarlar→ Oxunuş (və ya Avtomatik oxunuş) → Növbəti videonu avtomatik ox
   <string name="morphe_ryd_dislike_percentage_title">Bəyənməmələri faiz nisbəti olaraq göstər</string>
   <string name="morphe_ryd_dislike_percentage_summary">Bəyənməmələri rəqəm əvəzinə bəyənmələrin faiz nisbəti kimi göstərir</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
+  <string name="morphe_ryd_compact_layout_title">Yığcam Bəyənmə düyməsini istifadə et</string>
+  <string name="morphe_ryd_compact_layout_summary">Yerə qənaət etmək üçün Bəyən düyməsinin enini azaldır</string>
   <string name="morphe_ryd_estimated_like_title">Təxmini bəyənmələri göstər</string>
+  <string name="morphe_ryd_estimated_like_summary">Müəllif bəyənmələri qapatdığı videolarda təxmini bəyənmə sayını göstərir</string>
+  <string name="morphe_ryd_toast_on_connection_error_title">Bağlantı xətası xəbərdarlıqlarını göstər</string>
+  <string name="morphe_ryd_toast_on_connection_error_summary">Return YouTube Dislike serveri əlçatmaz olduqda bildiriş göstərir</string>
+  <string name="morphe_ryd_attribution_summary">"Məlumat Return YouTube Dislike API tərəfindən təmin olunur
+
+ReturnYouTubeDislike.com 'u açmaq üçün buraya toxun"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Bu cihazda Return YouTube Dislike API statistikası</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Orta hesabla API cavab müddəti</string>
@@ -821,22 +831,42 @@ Ayarlar→ Oxunuş (və ya Avtomatik oxunuş) → Növbəti videonu avtomatik ox
   <string name="morphe_wide_searchbar_title">Geniş axtarış cizgisin aktivləşdir</string>
   <!-- layout.sponsorblock.sponsorBlockPatch -->
   <!-- layout.formfactor.changeFormFactorPatch -->
+  <string name="morphe_change_form_factor_title">Cihaz tərtibatı</string>
   <string name="morphe_change_form_factor_entry_1">İlkin</string>
   <string name="morphe_change_form_factor_entry_2">Telefon</string>
   <string name="morphe_change_form_factor_entry_3">Planşet</string>
   <string name="morphe_change_form_factor_entry_4">Avtomobil</string>
+  <string name="morphe_change_form_factor_user_dialog_message">"Dəyişikliklər ehtiva edir:
+
+Planşet tərtibatı
+• İcma postları gizlədilir
+• Axınlarda oynatma seçimi mövcud deyil
+• Shorts-da Remiks düyməsi və Səs düyməsi mövcud deyil
+• Yığılmamış köhnə video fəaliyyət cizgisi göstərilir
+
+Avtomobil tərtibatı
+• Axın mövzular və kanallara görə qruplaşdırılır
+• Axınlarda oynatma seçimi mövcud deyil
+• Shorts-da Remiks düyməsi və Səs düyməsi mövcud deyil
+• Shorts müntəzəm oynadıcıda açılır
+• Yığılmamış köhnə video fəaliyyət cizgisi göstərilir"</string>
+  <string name="morphe_tablet_layout_in_player_title">Oynadıcıda planşet tərtibatın aktivləşdir</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <!-- layout.spoofappversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_title">Tətbiq versiyasını saxtalaşdır</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"Tətbiq versiyası köhnə YouTube versiyasına saxtalaşdırılacaq.
+  <string name="morphe_tablet_layout_in_player_summary">"Köhnə oynadıcı tərtibatını bərpa edir
 
-Bu tətbiqin görünüşün və xüsusiyyətlərin dəyişdirəcək, lakin bilinməyən yan təsirlər ola bilər.
-
-Sonradan qapadılarsa, UI səhvlərin önləmək üçün tətbiq məlumatların silmək tövsiyə olunur."</string>
-  <string name="morphe_spoof_app_version_target_title">Saxta tətbiq versiyası hədəfi</string>
+Məhdudiyyət: 'Köhnə video fəaliyyət cizgisini bərpa et' qapadılıbsa, 'Daha çox video' örtüyü mövcud olmaya bilər"</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Köhnə pleylistdə saxlanı bərpa et</string>
+  <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Qalın simvolları qeyri-aktiv et</string>
+  <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Video oynadıcı aşağısında kanal adını bərpa et</string>
   <!-- misc.sharesheet.openSystemShareSheetPatch -->
   <string name="morphe_open_system_share_sheet_title">Sistem paylaşım səhifəsin aç</string>
+  <string name="morphe_open_system_share_sheet_summary">Məzmun paylaşanda tətbiqdaxili menyu əvəzinə sistem paylaşım cildini açır</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">YouTube Music düymələrini nəzərə alma</string>
+  <string name="morphe_override_youtube_music_buttons_summary">Musiqi düymələrinə toxunduqda YouTube Music əvəzinə üstünlük verdiyiniz musiqi tətbiqini açır</string>
+  <string name="morphe_music_package_name_title">Hədəf musiqi tətbiqi paketinin adı</string>
+  <string name="morphe_music_package_name_summary">Quraşdırdığınız hədəf musiqi tətbiqinin paket adı</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Başlanğıc səhifəsi</string>
   <string name="morphe_change_start_page_entry_default">İlkin</string>
@@ -865,6 +895,7 @@ Sonradan qapadılarsa, UI səhvlərin önləmək üçün tətbiq məlumatların 
   <string name="morphe_change_start_page_entry_watch_later">Sonra izlə</string>
   <string name="morphe_change_start_page_entry_your_clips">Klipləriniz</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Açılışda davam etdirməyi qapat</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Shorts-u bununla aç</string>
   <string name="morphe_shorts_player_type_shorts">Shorts oynadıcı</string>
@@ -872,8 +903,14 @@ Sonradan qapadılarsa, UI səhvlərin önləmək üçün tətbiq məlumatların 
   <string name="morphe_shorts_player_type_regular_player_fullscreen">Müntəzəm oynadıcı tam ekran</string>
   <!-- layout.shortsautoplay.shortsAutoplayPatch -->
   <string name="morphe_shorts_autoplay_title">Shorts-ları avto-oynatma</string>
+  <string name="morphe_shorts_autoplay_summary">Hazırkın təkrarlamaq əvəzinə, avtomatik olaraq növbəti Shorts-a keçir</string>
+  <string name="morphe_shorts_autoplay_background_title">Fonda avtomatik oynatma</string>
+  <string name="morphe_shorts_autoplay_background_summary">Fonda səsləndirmə ərzində avtomatik olaraq növbəti Shorts-a keçir</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">Kiçik oynadıcı davam etdirilməsini qapat</string>
+  <string name="morphe_miniplayer_disable_resuming_summary">Tətbiqin açılışında görünən, YouTube Premium xüsusiyyəti olan \"İzləməyə davam et\" kiçik oynadıcısını qapadır</string>
   <string name="morphe_miniplayer_screen_title">Kiçik oynadıcı</string>
+  <string name="morphe_miniplayer_screen_summary">Kiçildilmiş video oynadıcı görünüşünü və davranışını fərdiləşdir</string>
   <string name="morphe_miniplayer_type_title">Kiçik oynadıcı növü</string>
   <string name="morphe_miniplayer_type_entry_0">Qeyri-aktivdir</string>
   <string name="morphe_miniplayer_type_entry_1">İlkin</string>
@@ -885,19 +922,32 @@ Sonradan qapadılarsa, UI səhvlərin önləmək üçün tətbiq məlumatların 
   <string name="morphe_miniplayer_type_entry_7">Müasir 4</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">Dəyirmi küncləri qapat</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Sürüklə və burax-ı qapat</string>
+  <string name="morphe_miniplayer_disable_drag_and_drop_summary">Kiçildilmiş oynadıcını ekranın müxtəlif künclərinə sürükləməyə mane olur</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Üfüqi sürükləmə jestini qapat</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_summary">Kiçik oynadıcını üfüqi şəkildə ekrandan kənara sürüşdürərək bağlamağa mane olur</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_title">Üfüqi sürükləmə ilə oynatmanı dayandır</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_playback_summary">Kiçik oynadıcı ekrandan kənara sürükləndikdə oynatma dayandırılacaq</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_title">Sürükləmə vəziyyəti mövqeyini xatırla</string>
+  <string name="morphe_miniplayer_disable_horizontal_reposition_summary">Kiçik oynadıcını ekrandan kənara sürükləmək onun UI vəziyyətini saxlayacaq</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Örtük düymələrini gizlət</string>
+  <string name="morphe_miniplayer_width_dip_title">İlkin ölçü</string>
+  <string name="morphe_miniplayer_width_dip_summary">​Ekrandakı başlanğıc ölçüsünü piksel olaraq təyin et</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">Piksel ölçüsü, %1$s - %2$s arası olmalıdır</string>
   <string name="morphe_miniplayer_opacity_title">Örtük qeyri-şəffaflığı</string>
   <string name="morphe_miniplayer_opacity_summary">Şəffaflıq səviyyəsini tənzimlə (0 şəffafdır, 100 qeyri-şəffafdır)</string>
   <string name="morphe_miniplayer_opacity_invalid_toast">Kiçik Oynadıcı örtük qeyri-şəffaflığı 0-100 arası olmalıdır</string>
   <!-- layout.theme.themePatch -->
-  <string name="morphe_gradient_loading_screen_title">Dəyişkən yükləmə ekranını aktivləşdir</string>
+  <string name="morphe_gradient_loading_screen_title">Axarlı yükləmə ekranını aktivləşdir</string>
+  <string name="morphe_gradient_loading_screen_summary">Yüklənilmə ekranında bütöv rəng əvəzinə axarlı fonu göstərir</string>
   <string name="morphe_splash_screen_animation_style_title">Sıçrama ekran üslubu</string>
   <string name="morphe_splash_screen_animation_style_entry_1">Qapalıdı</string>
   <string name="morphe_splash_screen_animation_style_entry_2">Rəng</string>
   <string name="morphe_splash_screen_animation_style_entry_3">Saya</string>
   <string name="morphe_seekbar_custom_color_title">Fərdi çevirmə cizgisi rəngini aktivləşdir</string>
+  <string name="morphe_seekbar_custom_color_primary_title">Çəkmə cizgisi rəngi</string>
+  <string name="morphe_seekbar_custom_color_primary_summary">Videonun çəkmə cizgisinin ilkin rəngini təyin et</string>
+  <string name="morphe_seekbar_custom_color_accent_title">İrəliləyiş cizgisi cila rəngi</string>
+  <string name="morphe_seekbar_custom_color_accent_summary">Videonun çəkmə cizgisinin ikinci dərəcəli rəngini təyin et</string>
   <string name="morphe_seekbar_custom_color_invalid">Etibarsız çevirmə cizgisi rəng dəyəri</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
@@ -908,19 +958,34 @@ Sonradan qapadılarsa, UI səhvlərin önləmək üçün tətbiq məlumatların 
   <string name="morphe_header_logo_entry_5">Məxluq</string>
   <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <string name="morphe_bypass_image_region_restrictions_title">Təsvir bölgə məhdudiyyətlərini ötür</string>
+  <string name="morphe_bypass_image_region_restrictions_summary">Məhdudlaşdırılmış ölkələrdə çatışmayan şəkilləri düzəltmək üçün miniatür sorğularını alternativ serverə yönləndirir</string>
   <!-- layout.thumbnails.alternativeThumbnailsPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_alt_thumbnail_home_title">Ev tabeli üçün</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_alt_thumbnail_subscription_title">Abunəliklər tabeli üçün</string>
   <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_alt_thumbnail_library_title">Siz tabeli üçün</string>
+  <string name="morphe_alt_thumbnail_player_title">Oynadıcı pleylistləri &amp; tövsiyələri üçün</string>
+  <string name="morphe_alt_thumbnail_search_title">Axtarış nəticələri üçün</string>
   <string name="morphe_alt_thumbnail_options_entry_1">Orijinal miniatürlər</string>
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow &amp; Orijinal miniatürlər</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow &amp; Kadr çəkilişlər</string>
   <string name="morphe_alt_thumbnail_options_entry_4">Kadr çəkilişləri</string>
+  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow, YouTube videoları üçün kütləvi mənbəli miniatürlər təmin edir. Bu miniatürlər çox vaxt YouTube tərəfindən təmin edilənlərdən daha uyğundur
+
+Aktivləşdirildikdə, video URL-ləri API serverinə göndəriləcək və başqa heç bir məlumat göndərilməyəcək. Əgər videonun DeArrow miniatürləri yoxdursa, orijinal və ya kadr çəkilişləri görünür
+
+DeArrow.ajay.app 'i açmaq üçün buraya toxun"</string>
+  <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Bağlantı xətası xəbərdarlıqlarını göstər</string>
+  <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary">DeArrow serveri əlçatmaz olduqda bildiriş göstərir</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">DeArrow API\'nin sonuncu əlaqəsi</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_summary">DeArrow miniatür keşinin son əlaqəsinin URL-si</string>
   <string name="morphe_alt_thumbnail_stills_about_title">Statik video kadrları</string>
   <string name="morphe_alt_thumbnail_stills_about_summary">Durğun kadrlar, hər videonun əvvəlindən/ortasından/sonundan götürülür. Bu təsvirlər YouTube-da qurulu gəlir və xarici API istifadə edilmir</string>
   <string name="morphe_alt_thumbnail_stills_fast_title">Sürətli kadr çəkilişləri istifadə et</string>
+  <string name="morphe_alt_thumbnail_stills_fast_summary">Orta keyfiyyətli şəkillər istifadə etməklə yüklənilmə sürətini yaxşılaşdırır. Canlı yayımlar, buraxılmamış və daha köhnə videolar boş miniatürlər göstərə bilər</string>
+  <string name="morphe_alt_thumbnail_stills_time_title">Video kadrını buradan çıxar</string>
   <string name="morphe_alt_thumbnail_stills_time_entry_1">Başlanğıc</string>
   <string name="morphe_alt_thumbnail_stills_time_entry_2">Orta</string>
   <string name="morphe_alt_thumbnail_stills_time_entry_3">Bitmə</string>
@@ -933,9 +998,11 @@ Sonradan qapadılarsa, UI səhvlərin önləmək üçün tətbiq məlumatların 
   <string name="morphe_restore_old_player_buttons_summary">Qalın video oynadıcı tənzimləyicilərin köhnə, daha nazik görüntü üslubuna qaytarır</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Cihaz ölçülərini saxtalaşdır</string>
+  <string name="morphe_spoof_device_dimensions_summary">Bunun aktiv edilməsi daha yüksək video keyfiyyətlərinin kilidini aça bilər</string>
   <string name="morphe_spoof_device_dimensions_user_dialog_message">Bunu aktivləşdirmə, video oynatma donmalarına, daha pis batareya istismarına və bilinməyən yan təsirlərə səbəb ola bilər.</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">Əks-əlaqə reaksiyası</string>
+  <string name="morphe_disable_haptic_feedback_summary">Cihazın titrəməsinə səbəb olacaq əks toxunuşları seç</string>
   <string name="morphe_disable_haptic_feedback_chapters_title">Fəsillər reaksiyasın qapat</string>
   <string name="morphe_disable_haptic_feedback_precise_seeking_title">Dəqiq irəli-geri çəkmə toxunuş hissin qapat</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_title">Geriyə çevirmə toxunuş hissini qapat</string>
@@ -955,6 +1022,7 @@ Sonradan qapadılarsa, UI səhvlərin önləmək üçün tətbiq məlumatların 
   <string name="morphe_shorts_quality_default_mobile_title">Mobil şəbəkədə ilkin Shorts keyfiyyəti</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
+  <string name="morphe_video_quality_dialog_button_title">Keyfiyyət düyməsini göstər</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Fərdi oynatma sürəti siyahısı</string>
   <string name="morphe_restore_old_speed_menu_title">Köhnə oynatma sürəti menyusunu bərpa et</string>
@@ -965,6 +1033,7 @@ Sonradan qapadılarsa, UI səhvlərin önləmək üçün tətbiq məlumatların 
   <string name="morphe_remember_playback_speed_last_selected_title">Oynatma sürətin xatırla</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Sürət dəyişikliyi bildirişləri</string>
   <string name="morphe_playback_speed_default_title">İlkin oynatma sürəti</string>
+  <string name="morphe_disable_playback_speed_music_title">Musiqi üçün normal sürət istifadə et</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR Videonu Qapat</string>
   <string name="morphe_force_avc_codec_title">AVC (H.264) kodlayıcıya zorla</string>
@@ -978,11 +1047,15 @@ Məhdudiyyətlər:
 • HDR videoları AVC istifadə etməyəcək
 • Bəzi cihazlar AVC-ni zorlaya bilməz"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Bu xüsusiyyəti istifadə etmək üçün \"Video yayımların saxtalaşdır\"-ı Android VR-a və ya Android Studio-ya təyin et</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
+  <string name="morphe_advanced_video_quality_menu_title">\"Təkmil\" keyfiyyət menyusunu aç</string>
+  <string name="morphe_advanced_video_quality_menu_summary">Keyfiyyət seçimi menyusunu ötürür və birbaşa Təkmil keyfiyyət menyusunu açır</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Premium keyfiyyət seçimlərini gizlət</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Video keyfiyyətini üstələ</string>
+  <string name="morphe_prioritize_video_quality_title">Video keyfiyyətinə üstünlük ver</string>
+  <string name="morphe_prioritize_video_quality_summary">Kodek səmərəliliyindən artıq mövcud ən yüksək video keyfiyyətinə üstünlük verir</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Android VR AV1-ə icazə ver</string>
   <string name="morphe_spoof_video_streams_av1_summary">Android VR qəbuledici istifadə edərkən AV1 təminatını dekodlamağa icazə verir</string>
@@ -1000,7 +1073,12 @@ Video oynatma AV1 ilə ilişə bilər və ya kadrlar buraxıla bilər."</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• \"Orijinal səsi zorla\" əlçatmazdır</string>
   <!-- Quality refers to video quality -->
+  <string name="morphe_spoof_video_streams_about_720p_max">• Keyfiyyət 720p ilə məhdudlaşdırıla bilər</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Oynadıcı JavaScript seçimi</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">İstək üçün Statistikada saxtalaşdırmanı göstər</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <string name="morphe_restore_old_video_action_bar_title">Köhnə video fəaliyyət cizgisin bərpa et</string>
+  <string name="morphe_restore_old_video_action_bar_summary">"Bəyənməmələrin görünməməsini və video fəaliyyət düymələrinin gizlədilə bilməməsini düzəldir
+
+Məhdudiyyət: \"Daha çox video\" örtüyünü köhnə üsluba qaytarır"</string>
 </resources>

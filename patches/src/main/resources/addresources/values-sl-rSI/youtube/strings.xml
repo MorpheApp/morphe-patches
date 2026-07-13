@@ -212,6 +212,8 @@ Spremembe vključujejo:
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Skrij gumbe \'Emotikoni in časovni žig\'</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Skrij možnosti vrstice filtrov</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Skrije vse možnosti vrstice filtrov, razen »Najboljši« in »Novejši«</string>
+  <string name="morphe_hide_comments_gift_animation_and_cards_title">Skrij animacijo daril in kartice</string>
+  <string name="morphe_hide_comments_gift_button_title">Skrij gumb za darila</string>
   <string name="morphe_hide_comments_info_button_title">Skrij gumb Info</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Skrij vrstico donatorjev v živem klepetu</string>
   <string name="morphe_hide_comments_preview_comment_title">Skrij predogled komentarja</string>
@@ -475,6 +477,8 @@ Opomba: Če »Ponarejanje video tokov« ni omogočeno, lahko omogočenje tega po
   <string name="morphe_swipe_speed_summary">Podrsajte vodoravno v zgornjem delu celozaslonskega načina za spremembo hitrosti predvajanja</string>
   <string name="morphe_swipe_speed_sensitivity_title">Občutljivost geste za hitrost</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Višje vrednosti zahtevajo več pomikov za vsako stopnjo hitrosti</string>
+  <string name="morphe_swipe_speed_step_title">Hitrost koraka</string>
+  <string name="morphe_swipe_speed_step_summary">Znesek, za katerega se hitrost predvajanja spremeni na vsak korak</string>
   <string name="morphe_swipe_speed_zone_height_title">Višina cone hitrosti</string>
   <string name="morphe_swipe_speed_zone_height_summary">Višina gest za hitrost kot odstotek višine predvajalnika (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Hitrost</string>
@@ -851,15 +855,7 @@ Postava za avtomobilski zaslon
   <string name="morphe_tablet_layout_in_player_summary">"Ponastavi prejšnjo postavitev predvajalnika
 
 Omejitev: Če je možnost »Ponastavi staro vrstico za videoposnetke« izklopljena, »Več videoposnetkov« morda ne bo na voljo"</string>
-  <!-- layout.spoofappversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_title">Posnami različico aplikacije</string>
-  <string name="morphe_spoof_app_version_summary">Triki strežnika, da misli, da uporabljate starejšo različico aplikacije, da obnovite funkcije starejše uporabniške izkušnje</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"Različica aplikacije bo posneta na starejšo različico YouTube.
-
-To bo spremenilo videz in funkcije aplikacije, vendar lahko pride do neznanih stranskih učinkov.
-
-Če jo kasneje izklopite, priporočljivo je, da izbrišete podatke aplikacije, da preprečite napake uporabniškega vmesnika."</string>
-  <string name="morphe_spoof_app_version_target_title">Cilj posnemanja aplikacije</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Ponastavi staro shranjevanje v seznam predvajanja</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Onemogoči privzete ikone</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Povrni ime kanala pod predvajalnikom videa</string>

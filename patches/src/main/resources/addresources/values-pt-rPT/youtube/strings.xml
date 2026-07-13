@@ -212,6 +212,8 @@ As mudanças incluem:
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Ocultar botões de Emoji e Carimbo de data/hora</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Ocultar opções da barra de filtros</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Oculta todas as opções da barra de filtros, exceto \'Mais relevantes\' e \'Mais recentes\'</string>
+  <string name="morphe_hide_comments_gift_animation_and_cards_title">Ocultar animação e cartões de presente</string>
+  <string name="morphe_hide_comments_gift_button_title">Ocultar botão de Presente</string>
   <string name="morphe_hide_comments_info_button_title">Ocultar botão de Informação</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Ocultar barra de doadores do chat ao vivo</string>
   <string name="morphe_hide_comments_preview_comment_title">Esconder comentário de pré-visualização</string>
@@ -477,6 +479,8 @@ Observação: se \"Simular streams de vídeo\" não estiver ativado, ativar isso
   <string name="morphe_swipe_speed_summary">Deslize horizontalmente na zona superior do modo de tela cheia para alterar a velocidade de reprodução</string>
   <string name="morphe_swipe_speed_sensitivity_title">Sensibilidade ao deslizar da velocidade</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Valores mais altos exigem mais deslizes por etapa de velocidade</string>
+  <string name="morphe_swipe_speed_step_title">Passo de velocidade</string>
+  <string name="morphe_swipe_speed_step_summary">Quantidade pela qual a velocidade de reprodução muda a cada toque</string>
   <string name="morphe_swipe_speed_zone_height_title">Altura da zona de velocidade</string>
   <string name="morphe_swipe_speed_zone_height_summary">Altura da zona de gesto de velocidade como porcentagem da altura do player (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Velocidade</string>
@@ -853,15 +857,7 @@ Layout automotivo
   <string name="morphe_tablet_layout_in_player_summary">"Restaura o layout antigo do player
 
 Limitação: Se 'Restaurar a barra de ação de vídeo antiga' estiver desativado, a sobreposição de 'Mais vídeos' pode não estar disponível"</string>
-  <!-- layout.spoofappversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_title">Versão do Spoof app</string>
-  <string name="morphe_spoof_app_version_summary">Truques no servidor para fazer você pensar que está usando uma versão mais antiga do aplicativo para restaurar recursos de interface do usuário herdados</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"Phiên bản ứng dụng sẽ được giả mạo thành phiên bản YouTube cũ hơn.
-
-Điều này sẽ thay đổi giao diện và tính năng của ứng dụng, nhưng có thể xảy ra các tác dụng phụ không xác định.
-
-Nếu sau này tắt, bạn nên xóa dữ liệu ứng dụng để tránh lỗi UI."</string>
-  <string name="morphe_spoof_app_version_target_title">Destaque de versão do app</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Restaurar a versão antiga do Morphe Spoof para a playlist</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Desativar Ã­cones em negrito</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Restaurar nome do canal abaixo do reprodutor de vídeo</string>

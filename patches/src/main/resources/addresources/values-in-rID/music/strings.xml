@@ -269,4 +269,10 @@ YouTube Music 8.x — pudar silang hanya berfungsi pada versi 9.x dan yang lebih
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling secara otomatis menyinkronkan penggunaan YouTube Music Anda dengan profil Last.fm atau ListenBrainz Anda.
 
 Untuk memastikan scrobbling disinkronkan selama pemutaran latar belakang, pastikan penggunaan baterai aplikasi YouTube Music diatur ke \"Tidak Dibatasi\""</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - Kembalikan panel flyout lama</string>
+  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - Nonaktifkan lirik real-time</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - Kembalikan lirik dinamis lama</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - Pulihkan bilah tindakan lama</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - Bagian komentar tidak muncul di feed beranda</string>
 </resources>

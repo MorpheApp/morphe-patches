@@ -212,6 +212,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">इमोजी आणि टाइमस्टॅम्प बटणे लपवा</string>
   <string name="morphe_hide_comments_filter_bar_options_title"> फिल्टर बार पर्याय लपवा</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">\'टॉप\' आणि \'नवीनतम\' वगळता सर्व फिल्टर बार पर्याय लपवते</string>
+  <string name="morphe_hide_comments_gift_animation_and_cards_title">\',\'उपहार ॲनिमेशन आणि कार्ड्स लपवा\',\'</string>
+  <string name="morphe_hide_comments_gift_button_title">\',\'\'गिफ्ट\' बटण लपवा\',\'</string>
   <string name="morphe_hide_comments_info_button_title">माहिती बटण लपवा</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">लाइव्ह चॅट देणगीदारांचा बार लपवा</string>
   <string name="morphe_hide_comments_preview_comment_title">पूर्वावलोकन टिप्पणी लपवा</string>
@@ -470,6 +472,8 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_swipe_speed_summary">फुलस्क्रीन मोडमध्ये प्लेबॅक स्पीड बदलण्यासाठी वरच्या झोनमध्येHorizontal स्वाइप करा</string>
   <string name="morphe_swipe_speed_sensitivity_title">वेग स्वाइप संवेदनशीलता</string>
   <string name="morphe_swipe_speed_sensitivity_summary">जास्त व्हॅल्यू प्रत्येक वेग बदलासाठी जास्त स्वाइपिंगची आवश्यकता असते</string>
+  <string name="morphe_swipe_speed_step_title">गती पायरी</string>
+  <string name="morphe_swipe_speed_step_summary">प्रत्येक टिकवर प्लेबॅक गतीमध्ये होणारा बदल</string>
   <string name="morphe_swipe_speed_zone_height_title">वेग झोन उंची</string>
   <string name="morphe_swipe_speed_zone_height_summary">प्लेअर उंचीच्या टक्केवारीत वेग इशारा झोनची उंची (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">वेग</string>
@@ -845,15 +849,7 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_tablet_layout_in_player_summary">"जुना प्लेयर लेआउट पुनर्स्थापित करते
 
  मर्यादा: जर 'जुना व्हिडिओ ॲक्शन बार पुनर्स्थापित करा' बंद केले असेल, तर 'अधिक व्हिडिओ' ओव्हरले उपलब्ध नसू शकते"</string>
-  <!-- layout.spoofappversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_title">ॲप आवृत्तीSpoof करा</string>
-  <string name="morphe_spoof_app_version_summary">ॲप (App) आवृत्तीमध्ये बदल करा</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"ॲपची आवृत्ती YouTube च्या जुन्या आवृत्तीमध्ये Spoof केली जाईल.
-
-हे ॲपचीAppearance आणि Features बदलेल, परंतु अनपेक्षित दुष्परिणाम होऊ शकतात.
-
-नंतर बंद केल्यास, UI बग टाळण्यासाठी ॲप डेटा साफ करण्याची शिफारस केली जाते."</string>
-  <string name="morphe_spoof_app_version_target_title">ॲप आवृत्ती लक्ष्य Spoof करा</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - प्लेलिस्टमध्ये जुने सेव्ह वैशिष्ट्य परत आणा</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - बोल्ड आयकॉन अक्षम करा</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - व्हिडिओ प्लेयरच्या खाली चॅनेलचे नाव पुन्हा स्थापित करा</string>

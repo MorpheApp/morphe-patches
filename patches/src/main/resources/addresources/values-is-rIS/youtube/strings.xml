@@ -212,6 +212,8 @@ Breytingarnar fela í sér:
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Fela Emoj og Tímamerki hnappana</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Fela valmöguleika stjórnibarans</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Félur alla valmöguleika stjórnibarans nema \'Efst\' og \'Nýjast\'</string>
+  <string name="morphe_hide_comments_gift_animation_and_cards_title">Fela gjöfanið og kortin</string>
+  <string name="morphe_hide_comments_gift_button_title">Fela gjafaknappinn</string>
   <string name="morphe_hide_comments_info_button_title">Fela Info hnapp</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Hylja „Paramert í lausnir“ ummerki</string>
   <string name="morphe_hide_comments_preview_comment_title">Fela forsýningu athugasemda</string>
@@ -475,6 +477,8 @@ Athugið: Ef 'Spoofa myndband streymi' er ekki virkjað getur þetta valkosti va
   <string name="morphe_swipe_speed_summary">Hrekk og stillið á hraða á yfir skránum</string>
   <string name="morphe_swipe_speed_sensitivity_title">Hraðafræðilegar áhrif</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Hærri skilvirki krefjast meira dýfbjarg á hraða</string>
+  <string name="morphe_swipe_speed_step_title">Hraði stig</string>
+  <string name="morphe_swipe_speed_step_summary">Magn sem playback hraðinn breytist um á hvert stig</string>
   <string name="morphe_swipe_speed_zone_height_title">Hæð hraðabaksyðrufskipanna</string>
   <string name="morphe_swipe_speed_zone_height_summary">Hæð hraðastjórnunarhlutfalls sem hlutfall af hæð leikmannsins (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Hraði</string>
@@ -849,15 +853,7 @@ Bílstýringastíll
   <string name="morphe_tablet_layout_in_player_summary">"Endurskipar gamla útlit spilarans
 
 Takmörkun: Ef 'Endurskapa gamla stjórnbara myndbands' er slökkt, gæti 'Fleiri myndbönd' lagskiptarinn ekki verið tiltæk"</string>
-  <!-- layout.spoofappversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_title">Spofta útgáfu forritsins</string>
-  <string name="morphe_spoof_app_version_summary">Breytir netþjóninum til að halda í hugan það að þú ert að nota eldri útgáfu af forritinu til að endurheimta gamla notendaviðmóti</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"Útgáfa forritsins verður fölsuð til eldri útgáfu af YouTube.
-
-Þetta breytir útliti og eiginleikum forritsins, en óþekktir áhrif gætu átt sér stað.
-
-Ef kveikt á því síðar er mælt með því að hreinsa gögn forritsins til að forðast UI villur."</string>
-  <string name="morphe_spoof_app_version_target_title">Spofta útgáfu markmiðsins</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Endursafnaðu gamla vistun á spilalista</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Gerðu leturstöðva óvirka</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Endurheimtu rásarnafnið undir myndavörpun</string>

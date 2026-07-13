@@ -40,7 +40,7 @@ Second \"item\" text"</string>
   <string name="morphe_check_watch_history_domain_name_dialog_title">ڕاگەیاندنی Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">جوتیان تۆمارە نەکراوە. &lt;br&gt;&lt;br&gt;ئەگەری زۆرە کە ئەمەش بەهۆی مسرەفەکانی DNS یان ناوتۆکی کاربێت.&lt;br&gt;&lt;br&gt;چۆنیەت بە ڕێگای سڕینەوە &lt;b&gt;s.youtube.com&lt;/b&gt; یان خەڵادانەوەی هەموو مسرەفەکانی DNS ناوتۆکی و پرووکسێکان.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">نیشانی مەدەوە دووبارە</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">گەڕانەوە سەر ڕاستەقینەی ڕاستگۆ</string>
   <string name="morphe_spoof_video_streams_screen_summary">شێوەپێدانی spoofing کلایەنت بۆ ڕێگرتن لە کێشەکانی پەخش کردنەوە</string>
   <string name="morphe_spoof_video_streams_title">گەڕانەوە سەر ڕاستەقینەی ڕاستگۆ</string>
@@ -113,4 +113,6 @@ Da te'îl bikin, li ser berdewam bikin xwarê"</string>
   <!-- Custom filter -->
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">List of component path builder strings to filter, separated by new lines</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_summary">Tricks the server into thinking you are using an older app version to restore legacy UI features</string>
 </resources>

@@ -212,6 +212,8 @@ Los cambios incluyen:
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Ocultar botones de emoji y marca de tiempo</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Ocultar opciones de la barra de filtro</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Oculta todas las opciones de la barra de filtro excepto \"Principales\" y \"Más recientes\"</string>
+  <string name="morphe_hide_comments_gift_animation_and_cards_title">Ocultar animación de regalo y tarjetas</string>
+  <string name="morphe_hide_comments_gift_button_title">Ocultar botón \"Regalo\"</string>
   <string name="morphe_hide_comments_info_button_title">Ocultar botón de información</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Ocultar barra de donantes del chat en directo</string>
   <string name="morphe_hide_comments_preview_comment_title">Ocultar vista previa de comentarios</string>
@@ -479,6 +481,8 @@ Nota: Si no se ha activado \"Falsificar transmisiones de vídeo\", activar esta 
   <string name="morphe_swipe_speed_summary">Desliza horizontalmente en la zona superior del modo de pantalla completa para cambiar la velocidad de reproducción</string>
   <string name="morphe_swipe_speed_sensitivity_title">Sensibilidad del deslizamiento de velocidad</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Los valores más altos requieren más deslizamiento por cada nivel de velocidad</string>
+  <string name="morphe_swipe_speed_step_title">Paso de velocidad</string>
+  <string name="morphe_swipe_speed_step_summary">Cantidad en la que cambia la velocidad de reproducción en cada paso</string>
   <string name="morphe_swipe_speed_zone_height_title">Altura de la zona de gesto de velocidad</string>
   <string name="morphe_swipe_speed_zone_height_summary">Altura de la zona de gesto de velocidad como porcentaje de la altura del reproductor (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Velocidad</string>
@@ -855,15 +859,7 @@ Diseño para automóviles
   <string name="morphe_tablet_layout_in_player_summary">"Restaura el diseño antiguo del reproductor
 
 Limitación: si la opción \"Restaurar la antigua barra de acciones de vídeo\" está desactivada, es posible que la superposición \"Más vídeos\" no esté disponible"</string>
-  <!-- layout.spoofappversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_title">Falsificar versión de la app</string>
-  <string name="morphe_spoof_app_version_summary">Engaña al servidor para que piense que estás usando una versión más antigua de la aplicación para restaurar funciones de la IU heredadas</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"La versión de la aplicación se falsificará a una versión anterior de YouTube.
-
-Esto cambiará la apariencia y las características de la aplicación, pero pueden producirse efectos secundarios desconocidos.
-
-Si se desactiva posteriormente, se recomienda borrar los datos de la aplicación para evitar errores en la interfaz de usuario."</string>
-  <string name="morphe_spoof_app_version_target_title">Versión a falsificar de la app</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Restaurar guardado antiguo de lista de reproducción</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Desactivar iconos en negrita</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Restaurar nombre del canal debajo del reproductor de vídeo</string>

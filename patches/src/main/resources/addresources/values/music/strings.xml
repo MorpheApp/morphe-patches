@@ -28,8 +28,10 @@ Second \"item\" text"</string>
 
     <!-- interaction.downloads.downloadsPatch -->
     <string name="morphe_external_downloader_screen_summary">Download music videos, podcasts, or songs with third-party downloading apps</string>
-    <string name="morphe_external_downloader_action_button_title">Override Download action button</string>
-    <string name="morphe_external_downloader_action_button_summary">Replaces YouTube Music\'s built-in download function with your external downloader</string>
+    <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
+    <string name="morphe_external_downloader_action_button_title">Override Download button</string>
+    <string name="morphe_external_downloader_action_button_summary">Uses your chosen external downloader instead of YouTube Music\'s built-in download feature</string>
+    <string name="morphe_external_downloader_flyout_menu_title">Override Download menu</string>
 
     <!-- misc.settings.settingsPatch -->
 
@@ -116,6 +118,10 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
 
     <!-- interaction.permanentrepeat.permanentRepeatPatch -->
     <string name="morphe_music_play_permanent_repeat_title">Enable permanent repeat</string>
+
+    <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+    <string name="morphe_music_disable_dislike_redirection_title">Disable dislike redirection</string>
+    <string name="morphe_music_disable_dislike_redirection_summary">Prevents skipping to the next track when the dislike button is pressed</string>
 
     <!-- layout.buttons.hideButtonsPatch -->
     <string name="morphe_music_hide_cast_button_title">Hide Cast button</string>

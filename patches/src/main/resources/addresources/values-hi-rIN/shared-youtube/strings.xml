@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_check_watch_history_domain_name_dialog_title">मorphe नोटिस</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">आपकी देखने की जानकारी सहेजी नहीं जा रही है.&lt;br&gt;&lt;br&gt;यह बहुत अधिक संभावना है कि यह DNS विज्ञापन अवरोधक या नेटवर्क प्रॉक्सी के कारण है.&lt;br&gt;&lt;br&gt;इस समस्या को ठीक करने के लिए, &lt;b&gt;s.youtube.com&lt;/b&gt; को व्हाइटलिस्ट करें या सभी DNS अवरोधकों और प्रॉक्सी को बंद कर दें।</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">दोबारा दिखाएं मत</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">वीडियो स्ट्रीम्स को फर्ज़ करें</string>
   <string name="morphe_spoof_video_streams_screen_summary">प्लेबैक समस्याओं को रोकने के लिए क्लाइंट स्पूफिंग को कॉन्फ़िगर करें</string>
   <string name="morphe_spoof_video_streams_title">वीडियो स्ट्रीम्स को फर्ज़ करें</string>
@@ -167,4 +167,13 @@ Second \"item\" text"</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">नई लाइनों से अलग किए गए फ़िल्टर करने के लिए घटक पाथ बिल्डर स्ट्रिंग की सूची</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">अवैध कस्टम फ़िल्टर: %s</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_title">ऐप का स्पूफ संस्करण</string>
+  <string name="morphe_spoof_app_version_summary">यह सर्वर को धोखा देता है कि आप पुराने ऐप संस्करण का उपयोग कर रहे हैं ताकि पुरानी यूआई सुविधाओं को बहाल किया जा सके।</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"ऐप का संस्करण एक पुराने संस्करण में स्पूफ किया जाएगा।
+
+इससे ऐप की दिखावट और सुविधाओं में बदलाव होगा, लेकिन अज्ञात दुष्प्रभाव हो सकते हैं।
+
+यदि बाद में बंद कर दिया जाए, तो यूआई बग को रोकने के लिए ऐप डेटा साफ़ करने की अनुशंसा की जाती है।"</string>
+  <string name="morphe_spoof_app_version_target_title">ऐप संस्करण को स्पूफ करने का लक्ष्य</string>
 </resources>

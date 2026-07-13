@@ -53,7 +53,7 @@ Verificați dacă numele pachetului este corect și aplicația este instalată"<
   <string name="morphe_check_watch_history_domain_name_dialog_title">Notificare Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Istoricul de vizionare nu este salvat.&lt;br&gt;&lt;br&gt;Cel mai probabil este cauzată de un DNS de blocare a anunțurilor sau de un proxy de rețea.&lt;br&gt;&lt;br&gt;Pentru a remedia acest lucru, lista albă &lt;b&gt;s.youtube.com&lt;/b&gt; sau pentru a opri toate blocantele DNS și proxy-urile.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Nu mai afișa</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Falsifică fluxurile video</string>
   <string name="morphe_spoof_video_streams_screen_summary">Configurează falsificarea clientului pentru a preveni problemele de redare</string>
   <string name="morphe_spoof_video_streams_title">Spoof video stream-uri</string>
@@ -168,4 +168,13 @@ Cu toate acestea, activarea acestei opțiuni va înregistra și unele date ale u
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Listă de șiruri ale constructorului de cale pentru componente pentru a filtra, separate prin linii noi</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Filtru personalizat nevalid: %s</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_title">Falsifică versiunea aplicației</string>
+  <string name="morphe_spoof_app_version_summary">Păcălește serverul să creadă că folosești o versiune mai veche a aplicației pentru a restabili funcționalități UI vechi</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"Versiunea aplicației va fi falsificată la o versiune mai veche.
+
+Acest lucru va schimba aspectul și caracteristicile aplicației, dar pot apărea efecte secundare necunoscute.
+
+Dacă este dezactivat ulterior, se recomandă să ștergeți datele aplicației pentru a preveni erorile UI."</string>
+  <string name="morphe_spoof_app_version_target_title">Țintă versiune falsificată a aplicației</string>
 </resources>

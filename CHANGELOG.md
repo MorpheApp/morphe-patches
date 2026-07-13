@@ -1,3 +1,20 @@
+## [1.35.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.34.0...v1.35.0-dev.1) (2026-07-12)
+
+### 🐛 Bug Fixes
+
+* **Spoof video streams:** Check setting value instead of availability for JavaScript toggles ([1d92650](https://github.com/MorpheApp/morphe-patches/commit/1d926503bf9ef29d8e135786479ecef1de20adbc))
+* **YouTube - Copy video link:** Copied video link is always shortened ([#1993](https://github.com/MorpheApp/morphe-patches/issues/1993)) ([ff0e8cc](https://github.com/MorpheApp/morphe-patches/commit/ff0e8ccb935ca3e267c625778ad93f2db213c367))
+
+### ✨ New Features
+
+* **YouTube - Hide layout components:** Add "Hide gift animation and cards" and "Hide gift button" settings ([#1991](https://github.com/MorpheApp/morphe-patches/issues/1991)) ([83451d9](https://github.com/MorpheApp/morphe-patches/commit/83451d95249b4e951b466c3b7ff8a64b3d7f1a4d))
+* **YouTube - Swipe controls:** Add playback speed step preference ([#1977](https://github.com/MorpheApp/morphe-patches/issues/1977)) ([25927d1](https://github.com/MorpheApp/morphe-patches/commit/25927d12ec5d5a1c0bba570a70ba09fe1e28497c))
+* **YouTube Music:** Add `Spoof app version` patch ([#1948](https://github.com/MorpheApp/morphe-patches/issues/1948)) ([46a86d3](https://github.com/MorpheApp/morphe-patches/commit/46a86d3106e9e00d718e5410ef0c03fb6b228f90))
+
+### 🚀 Updated App Support
+
+* **Reddit:** Add experimental support for `2026.28.0` ([9f18957](https://github.com/MorpheApp/morphe-patches/commit/9f18957acd350db0180cb2c66521e8b83b598558))
+
 ## [1.34.0](https://github.com/MorpheApp/morphe-patches/compare/v1.33.0...v1.34.0) (2026-07-10)
 
 ### 🐛 Bug Fixes

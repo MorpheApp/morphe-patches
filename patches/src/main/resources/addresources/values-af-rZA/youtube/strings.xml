@@ -212,6 +212,8 @@ Veranderings sluit in:
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Verberg Emoji en Tydstempel knoppies</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Versteek filterbalk-opsies</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Versteek alle filterbalk-opsies behalwe \'Beste\' en \'Nuutste\'</string>
+  <string name="morphe_hide_comments_gift_animation_and_cards_title">Verberg geskenkanimasie en kaarte</string>
+  <string name="morphe_hide_comments_gift_button_title">Verberg Geskenk-knoppie</string>
   <string name="morphe_hide_comments_info_button_title">Verberg Info-knoppie</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Verberg lewendige geselsdonateursbalk</string>
   <string name="morphe_hide_comments_preview_comment_title">Verberg voorskou kommentaar</string>
@@ -477,6 +479,8 @@ Let wel: As 'Spoof video streams' nie geaktiveer is nie, kan die aktivering hier
   <string name="morphe_swipe_speed_summary">Swiep horisontaal in die boonste sone van die volskermmodus om die afspeelkrag te verander</string>
   <string name="morphe_swipe_speed_sensitivity_title">Spoed swiepsensitiwiteit</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Hoër waardes vereis meer swiep per spoedvlak</string>
+  <string name="morphe_swipe_speed_step_title">Spoedstap</string>
+  <string name="morphe_swipe_speed_step_summary">Bedrag waarmee die afspeelspoed per tik verander</string>
   <string name="morphe_swipe_speed_zone_height_title">Spoed sone hoogte</string>
   <string name="morphe_swipe_speed_zone_height_summary">Hoogte van die spoed gebaar sone as \'n persentasie van die speler se hoogte (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Spoed</string>
@@ -852,15 +856,7 @@ Motor-uitleg
   <string name="morphe_tablet_layout_in_player_summary">"Herstel die ou speleruitleg
 
 Beperking: Indien 'Herstel ou video-aksiebalk' afgeskakel is, mag die 'Meer video's' oorvleueling nie beskikbaar wees nie"</string>
-  <!-- layout.spoofappversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_title">Spoof app weergawe</string>
-  <string name="morphe_spoof_app_version_summary">Wenke die bediener om te dink dat jy \'n ouer weergawe van die app gebruik om erfgoed UI-funksies te herstel</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"App weergawe sal gespoof word na 'n ouer weergawe van YouTube.
-
-Dit sal die voorkoms en funksies van die app verander, maar onbekende newe-effekte kan voorkom.
-
-Indien later afgeskakel, word dit aanbeveel om die app se data uit te vee om UI-foute te voorkom."</string>
-  <string name="morphe_spoof_app_version_target_title">Spoof app weergawe teiken</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Herstel ou stoor na snelys</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Deaktiveer vet ikone</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Herstel kanaalnaam onder videospeler</string>

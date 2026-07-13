@@ -113,20 +113,20 @@ YouTube Music 8.x — το crossfade λειτουργεί μόνο στις εκ
   <string name="morphe_music_hide_lyrics_translate_button_title">Κρύψε το κουμπί «Μετάφραση»</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Κουμπιά ενεργειών</string>
-  <string name="morphe_music_action_buttons_screen_summary">Επιλέξτε ποια κουμπιά ενεργειών θα εμφανίζονται κάτω από τον αναπαραγωγέα</string>
-  <string name="morphe_music_hide_action_bar_title">Απόκρυψη γραμμής εργαλείων</string>
-  <string name="morphe_music_hide_like_dislike_button_title">Κρυψη κουμπιών «Μου αρέσει» και «Δεν μου αρέσει»</string>
-  <string name="morphe_music_hide_comments_button_title">Κρυψη κουμπιού σχολίων</string>
+  <string name="morphe_music_action_buttons_screen_summary">Επιλέξτε ποια κουμπιά ενεργειών θα εμφανίζονται κάτω από το πρόγραμμα αναπαραγωγής</string>
+  <string name="morphe_music_hide_action_bar_title">Απόκρυψη γραμμής ενεργειών</string>
+  <string name="morphe_music_hide_like_dislike_button_title">Απόκρυψη κουμπιών μου αρέσει και δεν μου αρέσει</string>
+  <string name="morphe_music_hide_comments_button_title">Απόκρυψη κουμπιού σχολίων</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_lyrics_button_title">Κρυψη κουμπιού στίχων</string>
+  <string name="morphe_music_hide_lyrics_button_title">Απόκρυψη κουμπιού στίχων</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_share_button_title">Κρύψτε το κουμπί «Κοινοποίηση»</string>
+  <string name="morphe_music_hide_share_button_title">Απόκρυψη κουμπιού κοινοποίησης</string>
   <!-- 'Save' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_save_button_title">Κρύψτε το κουμπί «Αποθήκευση»</string>
+  <string name="morphe_music_hide_save_button_title">Απόκρυψη κουμπιού αποθήκευσης</string>
   <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_download_button_title">Κρύψτε το κουμπί «Λήψη»</string>
+  <string name="morphe_music_hide_download_button_title">Απόκρυψη κουμπιού λήψης</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_radio_button_title">Κρύψτε το κουμπί «Έναρξη ραδιοφώνου»</string>
+  <string name="morphe_music_hide_radio_button_title">Απόκρυψη κουμπιού έναρξης ραδιοφώνου</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Αναδυόμενο μενού ρυθμίσεων</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Επιλέξτε ποια στοιχεία θα εμφανίζονται στα αναδυόμενα μενού του προγράμματος αναπαραγωγής και της ουράς αναμονής</string>
@@ -269,4 +269,10 @@ YouTube Music 8.x — το crossfade λειτουργεί μόνο στις εκ
   <string name="morphe_music_scrobbling_about_summary">"Το scrobbling συγχρονίζει αυτόματα τη χρήση του YouTube Music με το προφίλ σας στο Last.fm ή ListenBrainz.
 
 Για να διασφαλίσετε ότι το scrobbling συγχρονίζεται κατά την αναπαραγωγή στο παρασκήνιο, βεβαιωθείτε ότι η χρήση μπαταρίας της εφαρμογής YouTube Music έχει ρυθμιστεί σε \"Μη περιορισμένη\"."</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - Επαναφορά παλαιού flyout panel</string>
+  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - Απενεργοποίηση στίχων σε πραγματικό χρόνο</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - Επαναφορά παλιών δυναμικών στίχων</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - Επαναφορά παλαιού action bar</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - Η ενότητα σχολίων δεν εμφανίζεται στην αρχική σελίδα</string>
 </resources>

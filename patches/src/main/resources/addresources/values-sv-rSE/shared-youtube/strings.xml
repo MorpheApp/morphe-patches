@@ -53,7 +53,7 @@ Verifiera att paketnamnet är korrekt och att appen har installerats"</string>
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe-meddelande</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Din visningshistorik sparas inte.&lt;br&gt;&lt;br&gt;Detta orsakas troligen av en DNS-annonsblockerare eller nätverksproxy.&lt;br&gt;&lt;br&gt;För att åtgärda detta, vitlista &lt;b&gt;s.youtube.com&lt;/b&gt; eller stäng av alla DNS-blockerare och proxyer.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Visa inte igen</string>
-  <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Förfalska videostreamar</string>
   <string name="morphe_spoof_video_streams_screen_summary">Konfigurera klientförfalskning för att förhindra uppspelningsproblem</string>
   <string name="morphe_spoof_video_streams_title">Förfalska videostreamar</string>
@@ -138,4 +138,7 @@ Men om du aktiverar detta kommer även vissa användardata, t.ex. din IP-adress,
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Lista över path builder-strängar för komponenter som ska filtreras bort, åtskilda av nya rader</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Det anpassade filtret är ogiltigt: %s</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_summary">Lurar servern att tro att du använder en äldre appversion för att återställa äldre funktioner i användargränssnittet</string>
+  <string name="morphe_spoof_app_version_target_title">Mål för Förfalska appversionen</string>
 </resources>

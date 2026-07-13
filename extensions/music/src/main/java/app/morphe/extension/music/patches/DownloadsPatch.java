@@ -206,7 +206,7 @@ public final class DownloadsPatch {
                 return true;
             }
 
-            if (!SharedYouTubeSettings.EXTERNAL_DOWNLOADER_FLYOUT_BUTTON.get()) {
+            if (!SharedYouTubeSettings.EXTERNAL_DOWNLOADER_FLYOUT_MENU.get()) {
                 return false;
             }
 

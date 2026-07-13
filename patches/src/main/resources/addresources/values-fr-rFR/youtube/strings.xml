@@ -143,7 +143,7 @@ Les changements incluent :
   <string name="morphe_hide_description_components_screen_title">Description vidéo</string>
   <string name="morphe_hide_description_components_screen_summary">Choisissez les composants qui apparaissent dans la description de la vidéo</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Masquer la section \'Résumé de la vidéo généré par IA\'</string>
-  <string name="morphe_hide_ask_section_title">Masquer la section \'Poser une question\'</string>
+  <string name="morphe_hide_ask_section_title">Masquer la section \'Posez une question\'</string>
   <string name="morphe_hide_attributes_section_title">Masquer la section \'Mentions\'</string>
   <string name="morphe_hide_attributes_section_summary">Masque les sections \'Lieux Populaires\', \'Jeux\' et \'Musique\' et \'Personnes mentionnées\'</string>
   <string name="morphe_hide_chapters_section_title">Masquer la section \'Chapitres\'</string>
@@ -212,6 +212,8 @@ Les changements incluent :
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Masquer le sélecteur d\'émoji et horodatage</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Masquer les options de la barre de filtres</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Masque toutes les options de la barre de filtres, à l\'exception de \'Les plus populaires\' et \'Les plus récents\'</string>
+  <string name="morphe_hide_comments_gift_animation_and_cards_title">Masquer l\'animation des cadeaux et les cartes</string>
+  <string name="morphe_hide_comments_gift_button_title">Masquer le bouton \'Cadeau\'</string>
   <string name="morphe_hide_comments_info_button_title">Masquer le bouton \'Info\'</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Masquer la barre des donateurs du chat en direct</string>
   <string name="morphe_hide_comments_preview_comment_title">Masquer l\'aperçu des commentaires</string>
@@ -477,6 +479,8 @@ Remarque : si l'option 'Falsifier les flux vidéo' n'est pas activée, l'activat
   <string name="morphe_swipe_speed_summary">Balayez horizontalement dans la zone supérieure du mode plein écran pour modifier la vitesse de lecture</string>
   <string name="morphe_swipe_speed_sensitivity_title">Sensibilité du balayage de vitesse</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Des valeurs plus élevées nécessitent plus de balayages par palier de vitesse</string>
+  <string name="morphe_swipe_speed_step_title">Incrément de vitesse</string>
+  <string name="morphe_swipe_speed_step_summary">Valeur de modification de la vitesse de lecture à chaque cran</string>
   <string name="morphe_swipe_speed_zone_height_title">Hauteur de la zone de vitesse</string>
   <string name="morphe_swipe_speed_zone_height_summary">Hauteur de la zone de geste de vitesse en pourcentage de la hauteur du lecteur (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Vitesse</string>
@@ -522,7 +526,7 @@ Remarque : si l'option 'Falsifier les flux vidéo' n'est pas activée, l'activat
   <string name="morphe_hide_thanks_button_title">Masquer le bouton \'Merci\'</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears if the user IP is from a specific region such as the USA or EU. -->
-  <string name="morphe_hide_ask_button_title">Masquer le bouton \'Demander\'</string>
+  <string name="morphe_hide_ask_button_title">Masquer le bouton \'Posez une question\'</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Masquer le bouton \'Clip\'</string>
   <string name="morphe_hide_clip_button_summary">Peut ne pas fonctionner avec certains comptes utilisateurs</string>
@@ -533,7 +537,7 @@ Remarque : si l'option 'Falsifier les flux vidéo' n'est pas activée, l'activat
   <string name="morphe_hide_more_button_title">Masquer le bouton \'Plus\'</string>
   <string name="morphe_fullscreen_buttons">Boutons en plein écran</string>
   <string name="morphe_hide_quick_actions_title">Masquer la barre d\'action</string>
-  <string name="morphe_hide_quick_actions_ask_button_title">Masquer le bouton \'Demander\'</string>
+  <string name="morphe_hide_quick_actions_ask_button_title">Masquer le bouton \'Posez une question\'</string>
   <string name="morphe_hide_quick_actions_comments_button_title">Masquer le bouton \'Commentaires\'</string>
   <string name="morphe_hide_quick_actions_dislike_button_title">Masquer le bouton \'Je n\'aime pas\'</string>
   <string name="morphe_hide_quick_actions_like_button_title">Masquer le bouton \'J\'aime\'</string>
@@ -854,15 +858,7 @@ Disposition automobile
   <string name="morphe_tablet_layout_in_player_summary">"Restaure l’ancienne disposition du lecteur
 
 Limitation : Si 'Restaurer l’ancienne barre d’actions vidéo' est désactivé, l'overlay 'Plus de vidéos' peut ne pas être disponible"</string>
-  <!-- layout.spoofappversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_title">Falsifier la version de l\'application</string>
-  <string name="morphe_spoof_app_version_summary">Fait croire au serveur que vous utilisez une ancienne version de l\'application afin de restaurer des fonctionnalités d\'interface héritées</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"La version de l'application sera falsifiée par une ancienne version de YouTube.
-
-Cela modifie l'apparence et les fonctionnalités de l'application, mais des effets inconnus peuvent se produire.
-
-Si cette option est désactivée ultérieurement, il est recommandé de vider les données de l'application pour éviter des bugs d'interface."</string>
-  <string name="morphe_spoof_app_version_target_title">Choisir la version à falsifier</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Restaure l\'ancien enregistrement dans la playlist</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Désactive les icônes en gras</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 – Restaure le nom des chaînes sous le lecteur vidéo</string>

@@ -269,4 +269,10 @@ YouTube Music 8.x — geçiş yalnızca 9.x ve sonraki sürümlerde çalışır"
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling, YouTube Music kullanımınızı Last.fm veya ListenBrainz profilinizle otomatik olarak senkronize eder
 
 Scrobbling'in arka planda çalma sırasında senkronize olduğundan emin olmak için, YouTube Music'in uygulama pil kullanımının \"Kısıtlanmamış\" olarak ayarlandığından emin olun"</string>
+  <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - Eski açılır paneli geri yükle</string>
+  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - Gerçek zamanlı şarkı sözlerini devre dışı bırak</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - Eski dinamik şarkı sözlerini geri yükle</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - Eski işlem çubuğunu geri yükle</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - Ana sayfadaki gönderi akışında yorumlar bölümü görünmüyor</string>
 </resources>
