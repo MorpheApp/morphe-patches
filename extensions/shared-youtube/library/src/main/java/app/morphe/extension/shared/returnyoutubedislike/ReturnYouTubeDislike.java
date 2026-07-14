@@ -91,6 +91,9 @@ public class ReturnYouTubeDislike {
 
     /**
      * Maximum amount of time to block the UI from updates while waiting for network call to complete.
+     *
+     * Must be less than 5 seconds, as per:
+     * https://developer.android.com/topic/performance/vitals/anr
      */
     private static final long MAX_MILLISECONDS_TO_BLOCK_UI_WAITING_FOR_FETCH = 4000;
 
@@ -107,6 +110,7 @@ public class ReturnYouTubeDislike {
 
     /**
      * Unique placeholder character, used to detect if a segmented span already has dislikes added to it.
+     * Must be something YouTube is unlikely to use, as it's searched for in all usage of Rolling Number.
      */
     private static final char MIDDLE_SEPARATOR_CHARACTER = '◎'; // 'bullseye'
 
@@ -160,6 +164,7 @@ public class ReturnYouTubeDislike {
 
     /**
      * Stores the results of the vote api fetch, and used as a barrier to wait until fetch completes.
+     * Absolutely cannot be holding any lock during calls to {@link Future#get()}.
      */
     private final Future<RYDVoteData> future;
 
@@ -194,24 +199,6 @@ public class ReturnYouTubeDislike {
     @Nullable
     @GuardedBy("this")
     private SpannableString replacementLikeDislikeSpan;
-
-    private static int getSeparatorColor() {
-        if (isMusic) {
-            return Utils.isDarkModeEnabled()
-                    ? 0x29AAAAAA
-                    : 0x33FFFFFF;
-        } else {
-            return Utils.isDarkModeEnabled()
-                    ? 0x33FFFFFF
-                    : 0xFFD9D9D9;
-        }
-    }
-
-    public ReturnYouTubeDislike(String videoId) {
-        this.videoId = Objects.requireNonNull(videoId);
-        this.timeFetched = System.currentTimeMillis();
-        this.future = Utils.submitOnBackgroundThread(() -> ReturnYouTubeDislikeAPI.fetchVotes(videoId));
-    }
 
     public static ReturnYouTubeDislike getFetchForVideoId(String videoId) {
         return getFetchForVideoId(videoId, true);
@@ -253,6 +240,18 @@ public class ReturnYouTubeDislike {
         }
     }
 
+    private static int getSeparatorColor() {
+        if (isMusic) {
+            return Utils.isDarkModeEnabled()
+                    ? 0x29AAAAAA
+                    : 0x33FFFFFF;
+        } else {
+            return Utils.isDarkModeEnabled()
+                    ? 0x33FFFFFF
+                    : 0xFFD9D9D9;
+        }
+    }
+
     public static ShapeDrawable getLeftSeparatorDrawable() {
         leftSeparatorShape.getPaint().setColor(getSeparatorColor());
         return leftSeparatorShape;
@@ -265,10 +264,15 @@ public class ReturnYouTubeDislike {
         this.isShort = isShort;
     }
 
+    public ReturnYouTubeDislike(String videoId) {
+        this.videoId = Objects.requireNonNull(videoId);
+        this.timeFetched = System.currentTimeMillis();
+        this.future = Utils.submitOnBackgroundThread(() -> ReturnYouTubeDislikeAPI.fetchVotes(videoId));
+    }
+
     /**
      * @return the replacement span containing dislikes, or the original span if RYD is not available.
      */
-    @NonNull
     public synchronized Spanned getDislikesSpanForRegularVideo(Spanned original,
                                                                boolean isSegmentedButton,
                                                                boolean isRollingNumber) {
@@ -279,7 +283,6 @@ public class ReturnYouTubeDislike {
     /**
      * Called when a Shorts like Spannable is created.
      */
-    @NonNull
     public synchronized Spanned getLikeSpanForShort(Spanned original) {
         return waitForFetchAndUpdateReplacementSpan(original, false,
                 false, false, true, true);
@@ -288,7 +291,6 @@ public class ReturnYouTubeDislike {
     /**
      * Called when a Shorts dislike Spannable is created.
      */
-    @NonNull
     public synchronized Spanned getDislikeSpanForShort(Spanned original) {
         return waitForFetchAndUpdateReplacementSpan(original, false,
                 false, false, true, false);
@@ -297,12 +299,10 @@ public class ReturnYouTubeDislike {
     /**
      * For Music compatibility.
      */
-    @NonNull
     public synchronized Spanned getDislikesSpan(Spanned original, boolean isLithoText) {
         return waitForFetchAndUpdateReplacementSpan(original, true, false, isLithoText, false, false);
     }
 
-    @NonNull
     private Spanned waitForFetchAndUpdateReplacementSpan(Spanned original,
                                                          boolean isSegmentedButton,
                                                          boolean isRollingNumber,
@@ -384,7 +384,6 @@ public class ReturnYouTubeDislike {
         return original;
     }
 
-    @NonNull
     private SpannableString createDislikeSpan(Spanned oldSpannable,
                                               RYDVoteData voteData,
                                               boolean isSegmentedButton,
