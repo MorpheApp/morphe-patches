@@ -2,16 +2,24 @@
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
  *
- * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
 
 package app.morphe.patches.youtube.layout.returnyoutubedislike
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.newInstance
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
+import app.morphe.patches.shared.layout.returnyoutubedislike.DislikeFingerprint
+import app.morphe.patches.shared.layout.returnyoutubedislike.EndpointServiceNameFingerprint
+import app.morphe.patches.shared.layout.returnyoutubedislike.likeEndpointParserFingerprint
+import app.morphe.patches.shared.layout.returnyoutubedislike.requestParameterCheckFingerprint
 import app.morphe.patches.shared.misc.litho.context.EXTENSION_CONTEXT_INTERFACE
 import app.morphe.patches.shared.misc.litho.context.conversionContextClassDef
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
@@ -21,7 +29,6 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.fix.videoactionbar.restoreOldVideoActionBarPatch
 import app.morphe.patches.youtube.misc.litho.context.conversionContextPatch
-import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_25_or_greater
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -46,13 +53,9 @@ import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
-import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/ReturnYouTubeDislikePatch;"
-
-private const val EXTENSION_FILTER =
-    "Lapp/morphe/extension/youtube/patches/components/ReturnYouTubeDislikeFilter;"
 
 val returnYouTubeDislikePatch = bytecodePatch(
     name = "Return YouTube Dislike",
@@ -148,16 +151,16 @@ val returnYouTubeDislikePatch = bytecodePatch(
             // Add additional registers so all parameters including p0 are free to use anywhere in the method.
             it.method.cloneParameters().apply {
                 // Find the instruction for creating the text data object.
-                val textDataClassType = TextComponentDataFingerprint.originalClassDef.type
-                val insertIndex: Int = indexOfFirstInstructionOrThrow {
-                    opcode == Opcode.NEW_INSTANCE &&
-                            getReference<TypeReference>()?.type == textDataClassType
-                }
-
-                val charSequenceIndex = indexOfFirstInstructionOrThrow(insertIndex) {
-                    opcode == Opcode.IPUT_OBJECT &&
-                            getReference<FieldReference>()?.type == "Ljava/lang/CharSequence;"
-                }
+                val insertIndex = indexOfFirstInstructionOrThrow(
+                    newInstance(TextComponentDataFingerprint.originalClassDef.type)
+                )
+                val charSequenceIndex = indexOfFirstInstructionOrThrow(
+                    insertIndex,
+                    fieldAccess(
+                        opcode = Opcode.IPUT_OBJECT,
+                        type = "Ljava/lang/CharSequence;"
+                    )
+                )
                 val charSequenceRegister = getInstruction<TwoRegisterInstruction>(charSequenceIndex).registerA
                 val conversionContext = findFreeRegister(insertIndex, charSequenceRegister)
 

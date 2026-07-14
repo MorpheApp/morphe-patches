@@ -2,24 +2,26 @@
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
  *
- * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
 
-package app.morphe.extension.music.patches.utils;
+package app.morphe.extension.music.patches;
 
 import static app.morphe.extension.shared.returnyoutubedislike.ReturnYouTubeDislike.Vote;
 
 import android.text.SpannableString;
 import android.text.Spanned;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import app.morphe.extension.music.returnyoutubedislike.ReturnYouTubeDislike;
 import app.morphe.extension.music.settings.Settings;
-import app.morphe.extension.shared.returnyoutubedislike.requests.ReturnYouTubeDislikeAPI;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.returnyoutubedislike.ReturnYouTubeDislike;
+import app.morphe.extension.shared.returnyoutubedislike.requests.ReturnYouTubeDislikeAPI;
 
 /**
  * Handles all interaction of UI patch components for Return YouTube Dislike, in YouTube Music.
@@ -28,6 +30,10 @@ import app.morphe.extension.shared.Utils;
  */
 @SuppressWarnings("unused")
 public class ReturnYouTubeDislikePatch {
+
+    static {
+        ReturnYouTubeDislike.setIsMusic(true);
+    }
 
     /**
      * RYD data for the current track on screen.
@@ -47,8 +53,7 @@ public class ReturnYouTubeDislikePatch {
      * @param original Original char sequence was created or reused by Litho.
      * @return The original char sequence (if nothing should change), or a replacement char sequence that contains dislikes.
      */
-    public static CharSequence onLithoTextLoaded(@NonNull Object conversionContext,
-                                                 @NonNull CharSequence original) {
+    public static CharSequence onLithoTextLoaded(Object conversionContext, CharSequence original) {
         try {
             if (!Settings.RYD_ENABLED.get()) {
                 return original;

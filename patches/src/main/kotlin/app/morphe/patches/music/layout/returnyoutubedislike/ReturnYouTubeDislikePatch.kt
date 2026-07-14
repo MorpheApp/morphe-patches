@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/1994
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -16,20 +16,20 @@ import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.video.information.musicVideoIdHook
 import app.morphe.patches.music.video.information.musicVideoInformationPatch
+import app.morphe.patches.shared.layout.returnyoutubedislike.DislikeFingerprint
+import app.morphe.patches.shared.layout.returnyoutubedislike.EndpointServiceNameFingerprint
+import app.morphe.patches.shared.layout.returnyoutubedislike.likeEndpointParserFingerprint
+import app.morphe.patches.shared.layout.returnyoutubedislike.requestParameterCheckFingerprint
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.textcomponent.hookSpannableString
 import app.morphe.patches.shared.misc.textcomponent.textComponentPatch
-import app.morphe.patches.youtube.layout.returnyoutubedislike.DislikeFingerprint
-import app.morphe.patches.youtube.layout.returnyoutubedislike.EndpointServiceNameFingerprint
-import app.morphe.patches.youtube.layout.returnyoutubedislike.likeEndpointParserFingerprint
-import app.morphe.patches.youtube.layout.returnyoutubedislike.requestParameterCheckFingerprint
 import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getReference
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 private val returnYouTubeDislikeResourcePatch = resourcePatch {
     dependsOn(settingsPatch)
@@ -57,7 +57,7 @@ private val returnYouTubeDislikeResourcePatch = resourcePatch {
 }
 
 private const val EXTENSION_CLASS =
-    "Lapp/morphe/extension/music/patches/utils/ReturnYouTubeDislikePatch;"
+    "Lapp/morphe/extension/music/patches/ReturnYouTubeDislikePatch;"
 
 @Suppress("unused")
 val returnYouTubeDislikePatch = bytecodePatch(

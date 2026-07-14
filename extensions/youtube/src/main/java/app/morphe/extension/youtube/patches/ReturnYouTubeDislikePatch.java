@@ -23,7 +23,7 @@ import androidx.annotation.Nullable;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.ContextInterface;
-import app.morphe.extension.youtube.returnyoutubedislike.ReturnYouTubeDislike;
+import app.morphe.extension.shared.returnyoutubedislike.ReturnYouTubeDislike;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 
@@ -32,6 +32,13 @@ import app.morphe.extension.youtube.shared.PlayerType;
  */
 @SuppressWarnings("unused")
 public class ReturnYouTubeDislikePatch {
+
+    static {
+        ReturnYouTubeDislike.setVoteValidator(isShort -> {
+            PlayerType currentType = PlayerType.getCurrent();
+            return isShort == currentType.isNoneHiddenOrMinimized();
+        });
+    }
 
     /**
      * RYD data for the current video on screen.
