@@ -180,7 +180,7 @@ public class ReturnYouTubeDislikePatch {
                     }
 
                     return measuredTextWidth + 1
-                            + ReturnYouTubeDislike.leftSeparatorBounds.right
+                            + ReturnYouTubeDislike.leftSeparatorBoundsYouTube.right
                             + ReturnYouTubeDislike.leftSeparatorShapePaddingPixels;
                 }
             }

@@ -69,7 +69,7 @@ public class ReturnYouTubeDislikePatch {
             if (!(original instanceof Spanned)) {
                 original = new SpannableString(original);
             }
-            return videoData.getDislikesSpan((Spanned) original, true);
+            return videoData.getDislikesSpanForRegularVideo((Spanned) original, true, false);
         } catch (Exception ex) {
             Logger.printException(() -> "onLithoTextLoaded failure", ex);
         }

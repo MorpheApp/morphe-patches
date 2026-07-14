@@ -93,7 +93,7 @@ public class ReturnYouTubeDislike {
      * Maximum amount of time to block the UI from updates while waiting for network call to complete.
      *
      * Must be less than 5 seconds, as per:
-     * https://developer.android.com/topic/performance/vitals/anr
+     * <a href="https://developer.android.com/topic/performance/vitals/anr">Android guidelines</a>
      */
     private static final long MAX_MILLISECONDS_TO_BLOCK_UI_WAITING_FOR_FETCH = 4000;
 
@@ -138,7 +138,8 @@ public class ReturnYouTubeDislike {
     private static NumberFormat dislikePercentageFormatter;
 
     // Used for segmented dislike spans.
-    public static final Rect leftSeparatorBounds;
+    public static final Rect leftSeparatorBoundsYouTube;
+    public static final Rect leftSeparatorBoundsMusic;
     private static final Rect middleSeparatorBounds;
 
     /**
@@ -148,16 +149,16 @@ public class ReturnYouTubeDislike {
     private static final ShapeDrawable leftSeparatorShape;
 
     static {
-        leftSeparatorBounds = new Rect(0, 0,
-                Dim.dp(1.2f),
-                Dim.dp(14f));
+        leftSeparatorBoundsYouTube = new Rect(0, 0, Dim.dp(1.2f), Dim.dp(14));
+        leftSeparatorBoundsMusic = new Rect(0, 0, Dim.dp(1.2f), Dim.dp(23));
+
         final int middleSeparatorSize = Dim.dp(3.7f);
         middleSeparatorBounds = new Rect(0, 0, middleSeparatorSize, middleSeparatorSize);
 
         leftSeparatorShapePaddingPixels = Dim.dp(8.4f);
 
         leftSeparatorShape = new ShapeDrawable(new RectShape());
-        leftSeparatorShape.setBounds(leftSeparatorBounds);
+        leftSeparatorShape.setBounds(leftSeparatorBoundsYouTube);
     }
 
     private final String videoId;
@@ -241,15 +242,9 @@ public class ReturnYouTubeDislike {
     }
 
     private static int getSeparatorColor() {
-        if (isMusic) {
-            return Utils.isDarkModeEnabled()
-                    ? 0x29AAAAAA
-                    : 0x33FFFFFF;
-        } else {
-            return Utils.isDarkModeEnabled()
-                    ? 0x33FFFFFF
-                    : 0xFFD9D9D9;
-        }
+        return isMusic || Utils.isDarkModeEnabled()
+                ? 0x33FFFFFF
+                : 0xFFD9D9D9;
     }
 
     public static ShapeDrawable getLeftSeparatorDrawable() {
@@ -277,7 +272,7 @@ public class ReturnYouTubeDislike {
                                                                boolean isSegmentedButton,
                                                                boolean isRollingNumber) {
         return waitForFetchAndUpdateReplacementSpan(original, isSegmentedButton,
-                isRollingNumber, false, false, false);
+                isRollingNumber, false, false);
     }
 
     /**
@@ -285,28 +280,12 @@ public class ReturnYouTubeDislike {
      */
     public synchronized Spanned getLikeSpanForShort(Spanned original) {
         return waitForFetchAndUpdateReplacementSpan(original, false,
-                false, false, true, true);
-    }
-
-    /**
-     * Called when a Shorts dislike Spannable is created.
-     */
-    public synchronized Spanned getDislikeSpanForShort(Spanned original) {
-        return waitForFetchAndUpdateReplacementSpan(original, false,
-                false, false, true, false);
-    }
-
-    /**
-     * For Music compatibility.
-     */
-    public synchronized Spanned getDislikesSpan(Spanned original, boolean isLithoText) {
-        return waitForFetchAndUpdateReplacementSpan(original, true, false, isLithoText, false, false);
+                false, true, true);
     }
 
     private Spanned waitForFetchAndUpdateReplacementSpan(Spanned original,
                                                          boolean isSegmentedButton,
                                                          boolean isRollingNumber,
-                                                         boolean isLithoText,
                                                          boolean spanIsForShort,
                                                          boolean spanIsForLikes) {
         try {
@@ -345,24 +324,12 @@ public class ReturnYouTubeDislike {
                 }
 
                 if (originalDislikeSpan != null && replacementLikeDislikeSpan != null) {
-                    if (isMusic && spansHaveEqualTextAndColor(original, replacementLikeDislikeSpan)) {
-                        Logger.printDebug(() -> "Ignoring previously created dislikes span of data: " + videoId);
-                        return original;
-                    }
                     if (spansHaveEqualTextAndColor(original, originalDislikeSpan)) {
-                        final Spanned originalSpanForLog = original;
-                        Logger.printDebug(() -> "Replacing span: " + originalSpanForLog + " with " +
+                        final Spanned originalSpanFinal = original;
+                        Logger.printDebug(() -> "Replacing span: " + originalSpanFinal + " with " +
                                 "previously created dislike span of data: " + videoId);
                         return replacementLikeDislikeSpan;
                     }
-                }
-
-                if (isMusic && isPreviouslyCreatedSegmentedSpan(original.toString())) {
-                    if (originalDislikeSpan == null) {
-                        Logger.printDebug(() -> "Cannot add dislikes - original span is null. videoId: " + videoId);
-                        return original;
-                    }
-                    original = originalDislikeSpan;
                 }
 
                 // No replacement span exist, create it now.
@@ -371,7 +338,8 @@ public class ReturnYouTubeDislike {
                     votingData.updateUsingVote(userVote);
                 }
                 originalDislikeSpan = original;
-                replacementLikeDislikeSpan = createDislikeSpan(original, votingData, isSegmentedButton, isRollingNumber, isLithoText);
+                replacementLikeDislikeSpan = createDislikeSpan(original, votingData,
+                        isSegmentedButton, isRollingNumber);
                 Logger.printDebug(() -> "Replaced: '" + originalDislikeSpan + "' with: '"
                         + replacementLikeDislikeSpan + "'" + " using video: " + videoId);
 
@@ -387,8 +355,7 @@ public class ReturnYouTubeDislike {
     private SpannableString createDislikeSpan(Spanned oldSpannable,
                                               RYDVoteData voteData,
                                               boolean isSegmentedButton,
-                                              boolean isRollingNumber,
-                                              boolean isLithoText) {
+                                              boolean isRollingNumber) {
         if (!isSegmentedButton) {
             // Simple replacement of 'dislike' with a number/percentage.
             return newSpannableWithDislikes(oldSpannable, voteData);
@@ -413,44 +380,22 @@ public class ReturnYouTubeDislike {
             oldLikes = formatDislikeCount(voteData.getLikeCount());
         }
 
-        SpannableStringBuilder builder;
-        if (isMusic) {
-            builder = new SpannableStringBuilder(" ");
-            if (!isLithoText) {
-                builder.append("   ");
-            }
-        } else {
-            builder = new SpannableStringBuilder();
-        }
+        SpannableStringBuilder builder = new SpannableStringBuilder();
 
         final boolean compactLayout = SharedYouTubeSettings.RYD_COMPACT_LAYOUT.get();
-
         if (!compactLayout) {
-            String leftSeparatorString;
-            if (isMusic) {
-                // u200E = left to right character
-                leftSeparatorString = isLithoText
-                        ? "\u200E    "
-                        : "\u200E     ";
-            } else {
-                leftSeparatorString = Utils.getTextDirectionString();
-            }
+            String leftSeparatorString = Utils.getTextDirectionString();
 
             final Spannable leftSeparatorSpan;
             if (isRollingNumber) {
                 leftSeparatorSpan = new SpannableString(leftSeparatorString);
             } else {
-                if (!isMusic) {
-                    leftSeparatorString += "  ";
-                }
+                leftSeparatorString += "   ";
                 leftSeparatorSpan = new SpannableString(leftSeparatorString);
-                
-                Rect localLeftSeparatorBounds = leftSeparatorBounds;
-                if (isMusic) {
-                    final int unit = isLithoText ? 23 : 25;
-                    localLeftSeparatorBounds = new Rect(0, 0, Dim.dp(1.2f), Dim.dp(unit));
-                }
-                
+
+                Rect localLeftSeparatorBounds = isMusic
+                        ? leftSeparatorBoundsMusic
+                        : leftSeparatorBoundsYouTube;
                 ShapeDrawable leftShape = new ShapeDrawable(new RectShape());
                 leftShape.getPaint().setColor(getSeparatorColor());
                 leftShape.setBounds(localLeftSeparatorBounds);
@@ -459,12 +404,9 @@ public class ReturnYouTubeDislike {
                 leftSeparatorSpan.setSpan(
                         new VerticallyCenteredImageSpan(leftShape, false),
                         1, 2, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
-                
-                if (!isMusic) {
-                    leftSeparatorSpan.setSpan(
-                            new FixedWidthEmptySpan(leftSeparatorShapePaddingPixels),
-                            2, 3, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
-                }
+                leftSeparatorSpan.setSpan(
+                        new FixedWidthEmptySpan(leftSeparatorShapePaddingPixels),
+                        2, 3, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
             }
             builder.append(leftSeparatorSpan);
         }
@@ -473,16 +415,9 @@ public class ReturnYouTubeDislike {
         builder.append(newSpanUsingStylingOfAnotherSpan(oldSpannable, oldLikes));
 
         // middle separator
-        String middleSeparatorString;
-        if (isMusic) {
-            middleSeparatorString = compactLayout
-                    ? "\u200E  " + MIDDLE_SEPARATOR_CHARACTER + "  "
-                    : "\u200E   " + MIDDLE_SEPARATOR_CHARACTER + "   "; // u2009 = 'narrow space' character
-        } else {
-            middleSeparatorString = compactLayout
-                    ? "  " + MIDDLE_SEPARATOR_CHARACTER + "  "
-                    : " \u2009\u2009" + MIDDLE_SEPARATOR_CHARACTER + "\u2009\u2009 "; // u2009 = 'narrow space'
-        }
+        String middleSeparatorString = compactLayout
+                ? "  " + MIDDLE_SEPARATOR_CHARACTER + "  "
+                : " \u2009\u2009" + MIDDLE_SEPARATOR_CHARACTER + "\u2009\u2009 "; // u2009 = 'narrow space'
 
         final int shapeInsertionIndex = middleSeparatorString.length() / 2;
         Spannable middleSeparatorSpan = new SpannableString(middleSeparatorString);
