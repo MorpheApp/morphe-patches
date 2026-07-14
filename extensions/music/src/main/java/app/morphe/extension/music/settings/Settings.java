@@ -53,6 +53,10 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting CUSTOM_FILTER = new BooleanSetting("morphe_music_custom_filter", FALSE);
     public static final StringSetting CUSTOM_FILTER_STRINGS = new StringSetting("morphe_music_custom_filter_strings", "", true, parent(CUSTOM_FILTER));
 
+    // Settings menu filter
+    public static final BooleanSetting SETTINGS_MENU_FILTER = new BooleanSetting("morphe_music_settings_menu_filter", FALSE);
+    public static final StringSetting SETTINGS_MENU_FILTER_STRINGS = new StringSetting("morphe_music_settings_menu_filter_strings", "", true, parent(SETTINGS_MENU_FILTER));
+
     // Player
     public static final BooleanSetting MINIPLAYER_NEXT_BUTTON = new BooleanSetting("morphe_music_miniplayer_next_button", TRUE, true);
     public static final BooleanSetting MINIPLAYER_PREVIOUS_BUTTON = new BooleanSetting("morphe_music_miniplayer_previous_button", TRUE, true);
@@ -60,7 +64,6 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting CHANGE_NAVIGATION_BAR_COLOR = new BooleanSetting("morphe_music_change_navigation_bar_color", FALSE, true, parent(CHANGE_MINIPLAYER_COLOR));
     public static final BooleanSetting ENABLE_FORCED_MINIPLAYER = new BooleanSetting("morphe_music_enable_forced_miniplayer", FALSE, true);
     public static final BooleanSetting ENABLE_SWIPE_TO_DISMISS_MINIPLAYER = new BooleanSetting("morphe_music_enable_swipe_to_dismiss_miniplayer", FALSE, true);
-    public static final BooleanSetting PERMANENT_REPEAT = new BooleanSetting("morphe_music_play_permanent_repeat", FALSE, true);
     public static final BooleanSetting DISABLE_DISLIKE_REDIRECTION = new BooleanSetting("morphe_music_disable_dislike_redirection", FALSE, true);
 
     // Action buttons
