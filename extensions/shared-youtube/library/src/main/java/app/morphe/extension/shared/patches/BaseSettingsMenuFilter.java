@@ -10,7 +10,6 @@ package app.morphe.extension.shared.patches;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
@@ -64,12 +63,19 @@ public abstract class BaseSettingsMenuFilter {
      * Resolved per call so the host app locale wins over the Morphe language override.
      */
     private static Set<String> reservedNeedles() {
-        return new HashSet<>(Arrays.asList(
-                ResourceUtils.getString("morphe_settings_title").toLowerCase(Locale.ROOT),
-                ResourceUtils.getString("morphe_settings_submenu_title").toLowerCase(Locale.ROOT)
-        ));
+        Set<String> result = new HashSet<>();
+        addLoweredIfPresent(result, ResourceUtils.getString("morphe_settings_title"));
+        addLoweredIfPresent(result, ResourceUtils.getString("morphe_settings_submenu_title"));
+        return result;
     }
 
+    private static void addLoweredIfPresent(Set<String> target, @Nullable String value) {
+        if (value != null) target.add(value.toLowerCase(Locale.ROOT));
+    }
+
+    /**
+     * Exact match keeps a needle from over-hiding unrelated titles that share substrings with it.
+     */
     public static boolean equalsAny(@Nullable CharSequence text, String[] needles) {
         if (text == null) return false;
         String haystack = text.toString().toLowerCase(Locale.ROOT);
