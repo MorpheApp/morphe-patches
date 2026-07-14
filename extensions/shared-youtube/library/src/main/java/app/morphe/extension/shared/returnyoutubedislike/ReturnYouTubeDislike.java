@@ -574,8 +574,10 @@ public class ReturnYouTubeDislike {
             }
 
             if (dislikePercentage >= 0.01) {
+                // at least 1%
                 dislikePercentageFormatter.setMaximumFractionDigits(0);
             } else {
+                // show up to 1 digit precision
                 dislikePercentageFormatter.setMaximumFractionDigits(1);
             }
 
@@ -612,11 +614,14 @@ public class ReturnYouTubeDislike {
         } catch (TimeoutException ex) {
             Logger.printDebug(() -> "Waited but future was not complete after: " + maxTimeToWait + "ms");
         } catch (ExecutionException | InterruptedException ex) {
-            Logger.printException(() -> "Future failure ", ex);
+            Logger.printException(() -> "Future failure ", ex); // will never happen
         }
         return null;
     }
 
+    /**
+     * @return if the RYD fetch call has completed.
+     */
     public boolean fetchCompleted() {
         return future.isDone();
     }
@@ -685,6 +690,9 @@ public class ReturnYouTubeDislike {
  */
 class FixedWidthEmptySpan extends ReplacementSpan {
     final int fixedWidth;
+    /**
+     * @param fixedWith Fixed width in screen pixels.
+     */
     public FixedWidthEmptySpan(int fixedWith) {
         this.fixedWidth = fixedWith;
         if (fixedWith < 0) throw new IllegalArgumentException();
@@ -697,6 +705,7 @@ class FixedWidthEmptySpan extends ReplacementSpan {
     @Override
     public void draw(@NonNull Canvas canvas, CharSequence text, int start, int end,
                      float x, int top, int y, int bottom, @NonNull Paint paint) {
+        // Nothing to draw.
     }
 }
 
@@ -706,6 +715,11 @@ class FixedWidthEmptySpan extends ReplacementSpan {
 class VerticallyCenteredImageSpan extends ImageSpan {
     final boolean useOriginalWidth;
 
+    /**
+     * @param useOriginalWidth Use the original layout width of the text this span is applied to,
+     * and not the bounds of the Drawable. Drawable is always displayed using its own bounds,
+     * and this setting only affects the layout width of the entire span.
+     */
     public VerticallyCenteredImageSpan(Drawable drawable, boolean useOriginalWidth) {
         super(drawable);
         this.useOriginalWidth = useOriginalWidth;
@@ -729,6 +743,7 @@ class VerticallyCenteredImageSpan extends ImageSpan {
             fontMetrics.descent = fontMetrics.bottom;
         }
         if (useOriginalWidth) {
+            // Horizontally center the drawable in the same space as the original text.
             return (int) paint.measureText(text, start, end);
         }
         return bounds.right;
