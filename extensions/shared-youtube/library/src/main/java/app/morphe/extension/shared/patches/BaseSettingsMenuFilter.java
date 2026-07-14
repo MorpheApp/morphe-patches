@@ -7,8 +7,6 @@
 
 package app.morphe.extension.shared.patches;
 
-import static app.morphe.extension.shared.StringRef.str;
-
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
@@ -19,6 +17,7 @@ import java.util.Locale;
 import java.util.Set;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.StringSetting;
 
@@ -38,9 +37,7 @@ public abstract class BaseSettingsMenuFilter {
     }
 
     /**
-     * Null return short-circuits the injected filter. Any needle that resolves to the label of
-     * the Morphe entry point (localised via {@code str()}) is silently dropped, so a user cannot
-     * accidentally hide their own way back into Morphe settings.
+     * Null short-circuits the filter; reserved labels are dropped so the Morphe entry point stays reachable.
      */
     @Nullable
     protected final String[] needles() {
@@ -63,21 +60,16 @@ public abstract class BaseSettingsMenuFilter {
         return result.isEmpty() ? null : result.toArray(new String[0]);
     }
 
-    private static volatile Set<String> reservedNeedles;
-
+    /**
+     * Resolved per call so the host app locale wins over the Morphe language override.
+     */
     private static Set<String> reservedNeedles() {
-        Set<String> cached = reservedNeedles;
-        if (cached == null) {
-            cached = new HashSet<>(Arrays.asList(
-                    str("morphe_settings_title").toLowerCase(Locale.ROOT),
-                    str("morphe_settings_submenu_title").toLowerCase(Locale.ROOT)
-            ));
-            reservedNeedles = cached;
-        }
-        return cached;
+        return new HashSet<>(Arrays.asList(
+                ResourceUtils.getString("morphe_settings_title").toLowerCase(Locale.ROOT),
+                ResourceUtils.getString("morphe_settings_submenu_title").toLowerCase(Locale.ROOT)
+        ));
     }
 
-    /** Case-insensitive exact match; user needs to type each preference name in full. */
     public static boolean equalsAny(@Nullable CharSequence text, String[] needles) {
         if (text == null) return false;
         String haystack = text.toString().toLowerCase(Locale.ROOT);
