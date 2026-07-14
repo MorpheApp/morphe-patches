@@ -61,6 +61,7 @@ public abstract class BaseSettingsMenuFilter {
             result.add(trimmed);
         }
         String[] parsed = result.isEmpty() ? null : result.toArray(new String[0]);
+        Logger.printDebug(() -> "SettingsMenuFilter active with needles=" + result);
         cachedNeedles = parsed;
         cachedRaw = raw;
         return parsed;
