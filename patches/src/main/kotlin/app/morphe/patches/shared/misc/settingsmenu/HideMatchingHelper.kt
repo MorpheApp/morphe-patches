@@ -44,8 +44,7 @@ internal fun BytecodePatchContext.injectSettingsMenuFilterHook(extensionClass: S
         addInstructionsWithLabels(
             0,
             """
-                const/4 v0, 0x0
-                invoke-static { v0, p1 }, $SETTINGS_MENU_FILTER_CLASS->capture(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)V
+                invoke-static { p0, p1 }, $SETTINGS_MENU_FILTER_CLASS->scopedCapture(Ljava/lang/Object;Ljava/lang/CharSequence;)V
 
                 invoke-static { }, $extensionClass->getNeedles()[Ljava/lang/String;
                 move-result-object v0
@@ -152,6 +151,8 @@ internal fun BytecodePatchContext.injectHideMatchingHelper() {
                     invoke-interface { v0, v6 }, Ljava/util/List;->get(I)Ljava/lang/Object;
                     move-result-object v2
                     check-cast v2, $PREFERENCE_CLASS
+
+                    invoke-static { v2 }, $SETTINGS_MENU_FILTER_CLASS->markWalked(Ljava/lang/Object;)V
 
                     # Pass 1: pick title for capture + recursion parent context.
                     const/4 v8, 0x0

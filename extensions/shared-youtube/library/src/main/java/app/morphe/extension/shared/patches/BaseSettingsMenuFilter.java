@@ -18,6 +18,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.WeakHashMap;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
@@ -46,6 +47,12 @@ public abstract class BaseSettingsMenuFilter {
      * the buffer, while post-walk assignments (async server titles) append persistently.
      */
     private static volatile boolean insideWalk;
+
+    /**
+     * Scopes setTitle capture to Preferences the helper has actually visited; weak keys
+     * let stale fragment-scoped entries GC naturally between opens.
+     */
+    private static final WeakHashMap<Object, Boolean> walkedPrefs = new WeakHashMap<>();
 
     private final StringSetting entriesSetting;
     private final StringSetting discoveredSetting;
@@ -148,7 +155,33 @@ public abstract class BaseSettingsMenuFilter {
         synchronized (currentWalk) {
             currentWalk.clear();
         }
+        synchronized (walkedPrefs) {
+            walkedPrefs.clear();
+        }
         insideWalk = true;
+    }
+
+    /**
+     * Called from the helper walk for every visited Preference so the setTitle hook can
+     * limit its capture to Preferences that actually belong to the standard settings tree.
+     */
+    public static void markWalked(Object preference) {
+        if (preference == null) return;
+        synchronized (walkedPrefs) {
+            walkedPrefs.put(preference, Boolean.TRUE);
+        }
+    }
+
+    /**
+     * setTitle capture entry point: only accepts titles for Preferences the walk has seen,
+     * which filters out unrelated Preference UI (account drawer, dialogs) from the picker.
+     */
+    public static void scopedCapture(Object preference, @Nullable CharSequence title) {
+        boolean known;
+        synchronized (walkedPrefs) {
+            known = walkedPrefs.containsKey(preference);
+        }
+        if (known) capture(null, title);
     }
 
     /**
@@ -265,6 +298,17 @@ public abstract class BaseSettingsMenuFilter {
             if (!trimmed.isEmpty()) result.add(trimmed);
         }
         return result;
+    }
+
+    /**
+     * Picker reset entry point: wipes the filter list in one shot so the user does not have
+     * to untap every row individually after selecting too much.
+     */
+    public static void clearFilter() {
+        BaseSettingsMenuFilter self = instance();
+        if (self == null) return;
+        self.entriesSetting.save("");
+        Logger.printDebug(() -> "SettingsMenuFilter cleared");
     }
 
     /**

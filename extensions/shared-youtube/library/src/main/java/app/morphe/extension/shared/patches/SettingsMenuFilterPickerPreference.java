@@ -42,7 +42,6 @@ import java.util.List;
 import java.util.Set;
 
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
 import app.morphe.extension.shared.ui.CustomDialog;
 
 /**
@@ -89,7 +88,8 @@ public class SettingsMenuFilterPickerPreference extends Preference {
         LinearLayout content = new LinearLayout(context);
         content.setOrientation(LinearLayout.VERTICAL);
 
-        boolean[] changesMade = {false};
+        Set<String> selectedLower = new HashSet<>(BaseSettingsMenuFilter.activeFilterEntries());
+        HierarchyAdapter[] adapterRef = {null};
 
         if (rows.isEmpty()) {
             TextView hint = new TextView(context);
@@ -101,12 +101,11 @@ public class SettingsMenuFilterPickerPreference extends Preference {
                     LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT));
         } else {
-            Set<String> selectedLower = new HashSet<>(BaseSettingsMenuFilter.activeFilterEntries());
-
             ListView listView = new ListView(context);
             listView.setId(android.R.id.list);
 
             HierarchyAdapter adapter = new HierarchyAdapter(context, rows, selectedLower);
+            adapterRef[0] = adapter;
             listView.setAdapter(adapter);
 
             listView.setOnItemClickListener((parent, view, position, id) -> {
@@ -117,7 +116,6 @@ public class SettingsMenuFilterPickerPreference extends Preference {
                 if (nowSelected) selectedLower.add(key);
                 else selectedLower.remove(key);
                 adapter.notifyDataSetChanged();
-                changesMade[0] = true;
             });
 
             LinearLayout.LayoutParams listViewParams = new LinearLayout.LayoutParams(
@@ -133,13 +131,15 @@ public class SettingsMenuFilterPickerPreference extends Preference {
                 null,
                 null,
                 null,
+                () -> {},
+                null,
+                str("morphe_settings_reset"),
                 () -> {
-                    if (changesMade[0]) AbstractPreferenceFragment.showRestartDialog(context);
+                    BaseSettingsMenuFilter.clearFilter();
+                    selectedLower.clear();
+                    if (adapterRef[0] != null) adapterRef[0].notifyDataSetChanged();
                 },
-                null,
-                null,
-                null,
-                true
+                false
         );
 
         LinearLayout mainLayout = dialogPair.second;
