@@ -29,6 +29,9 @@ public abstract class BaseSettingsMenuFilter {
     private final BooleanSetting enabledSetting;
     private final StringSetting entriesSetting;
 
+    private volatile String cachedRaw;
+    @Nullable private volatile String[] cachedNeedles;
+
     protected BaseSettingsMenuFilter(BooleanSetting enabledSetting,
                                      StringSetting entriesSetting) {
         this.enabledSetting = enabledSetting;
@@ -45,6 +48,8 @@ public abstract class BaseSettingsMenuFilter {
         String raw = entriesSetting.get();
         if (raw.isBlank()) return null;
 
+        if (raw.equals(cachedRaw)) return cachedNeedles;
+
         Set<String> reserved = reservedNeedles();
         List<String> result = new ArrayList<>();
         for (String line : raw.split("\n")) {
@@ -56,7 +61,10 @@ public abstract class BaseSettingsMenuFilter {
             }
             result.add(trimmed);
         }
-        return result.isEmpty() ? null : result.toArray(new String[0]);
+        String[] parsed = result.isEmpty() ? null : result.toArray(new String[0]);
+        cachedNeedles = parsed;
+        cachedRaw = raw;
+        return parsed;
     }
 
     /**
