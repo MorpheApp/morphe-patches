@@ -14,12 +14,14 @@ import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.shared.Utils.isNotEmpty;
 import static app.morphe.extension.shared.Utils.submitOnBackgroundThread;
 import static app.morphe.extension.shared.innertube.utils.AuthUtils.pageId;
+import static app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch.setCurrentVideoRequestHeader;
 import static app.morphe.extension.shared.spoof.js.JavaScriptEngineSupport.supportsJavaScriptEngine;
 import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getDeobfuscatedStreamingData;
 import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getJavaScriptHash;
 import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getJavaScriptVariant;
 import static app.morphe.extension.shared.spoof.requests.PlayerRoutes.GET_PLAYER_STREAMING_DATA;
 import static app.morphe.extension.shared.spoof.requests.PlayerRoutes.GET_REEL_STREAMING_DATA;
+import static app.morphe.extension.shared.spoof.requests.PlayerRoutes.SEND_SAVE_VIDEO_TO_WATCH_LATER;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -117,7 +119,7 @@ public class StreamOrDetailsDataRequest {
     /**
      * Any arbitrarily large value, but must be at least twice {@link #HTTP_TIMEOUT_MILLISECONDS}
      */
-    private static final int MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 20 * 1000;
+    private static int MAX_MILLISECONDS_TO_WAIT_FOR_FETCH;
 
     /**
      * Cache limit must be greater than the maximum number of videos open at once,
@@ -156,15 +158,18 @@ public class StreamOrDetailsDataRequest {
 
     private final Future<Object> future;
 
-    private StreamOrDetailsDataRequest(@Nullable Route.CompiledRoute endpoint,
+    private StreamOrDetailsDataRequest(@Nullable Route.CompiledRoute videoDetailsEndpoint,
                                        String videoId, Map<String, String> playerHeaders) {
         this.videoId = videoId;
-        // Strictly require playerHeaders only if endpoint is null (only for Stream fetching)
-        // or equals to the one used by the Save Video To Watch Later button.
-        if (endpoint == null || endpoint == PlayerRoutes.SEND_SAVE_VIDEO_TO_WATCH_LATER) {
-            Objects.requireNonNull(playerHeaders);
+        // Check if the videoDetailsEndpoint field is null (Stream fetching is enabled)
+        boolean endpointIsNull = (videoDetailsEndpoint == null);
+        // Set a different timeout for Stream fetching and Video Details fetching
+        if (endpointIsNull) {
+            MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 20 * 1000;
+        } else {
+            MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 5 * 1000;
         }
-        this.future = submitOnBackgroundThread(() -> fetch(endpoint, videoId, playerHeaders));
+        this.future = submitOnBackgroundThread(() -> fetch(videoDetailsEndpoint, videoId, playerHeaders));
     }
 
     public static void fetchStreamRequest(String videoId, Map<String, String> fetchHeaders) {
@@ -205,13 +210,19 @@ public class StreamOrDetailsDataRequest {
     @Nullable
     private static HttpURLConnection send(@Nullable ClientType clientType,
                                           @Nullable String videoId,
-                                          Map<String, String> playerHeaders,
+                                          @Nullable Map<String, String> playerHeaders,
                                           boolean showErrorToasts) {
-        Objects.requireNonNull(clientType);
-        Objects.requireNonNull(videoId);
         Utils.verifyOffMainThread();
 
+        Objects.requireNonNull(clientType);
+
         final boolean isStream = clientType.endpoint == GET_PLAYER_STREAMING_DATA || clientType.endpoint == GET_REEL_STREAMING_DATA;
+
+        Objects.requireNonNull(videoId);
+        if (isStream || clientType.endpoint == SEND_SAVE_VIDEO_TO_WATCH_LATER) {
+            Objects.requireNonNull(playerHeaders);
+        }
+
         final long startTime = System.currentTimeMillis();
 
         try {
@@ -224,6 +235,10 @@ public class StreamOrDetailsDataRequest {
             authHeadersOverrides = false;
 
             if (playerHeaders != null) {
+                if (isStream) {
+                    setCurrentVideoRequestHeader(playerHeaders);
+                }
+
                 for (String key : REQUEST_HEADER_KEYS) {
                     String value = playerHeaders.get(key);
 
@@ -395,10 +410,10 @@ public class StreamOrDetailsDataRequest {
     }
 
     private static Object fetch(@Nullable Route.CompiledRoute videoDetailsEndpoint,
-                                String videoId, Map<String, String> playerHeaders) {
+                                String videoId, @Nullable Map<String, String> playerHeaders) {
         if (videoDetailsEndpoint == null) {
-            final boolean debugEnabled = BaseSettings.DEBUG.get();
             final long fetchStartTime = System.currentTimeMillis();
+            final boolean debugEnabled = BaseSettings.DEBUG.get();
 
             // Retry with different client if empty response body is received.
             int i = 0;

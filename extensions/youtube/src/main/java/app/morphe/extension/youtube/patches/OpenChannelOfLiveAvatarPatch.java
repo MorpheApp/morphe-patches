@@ -48,8 +48,7 @@ public final class OpenChannelOfLiveAvatarPatch {
                 return false;
             }
             // Prevent a new request until the previous (if exists) is not done.
-            StreamOrDetailsDataRequest request = liveAvatarChannelRequest;
-            if (request != null && !request.fetchIsDone()) {
+            if (liveAvatarChannelRequest != null && !liveAvatarChannelRequest.fetchIsDone()) {
                 return false;
             }
             // Video was opened by clicking a playlist thumbnail.
