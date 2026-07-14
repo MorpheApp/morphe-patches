@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Locale;
 import java.util.Set;
 
 import app.morphe.extension.shared.Logger;
@@ -53,7 +52,7 @@ public abstract class BaseSettingsMenuFilter {
         Set<String> reserved = reservedNeedles();
         List<String> result = new ArrayList<>();
         for (String line : raw.split("\n")) {
-            String trimmed = line.trim().toLowerCase(Locale.ROOT);
+            String trimmed = line.trim().toLowerCase();
             if (trimmed.isEmpty()) continue;
             if (reserved.contains(trimmed)) {
                 Logger.printDebug(() -> "SettingsMenuFilter ignoring reserved needle: " + trimmed);
@@ -78,7 +77,7 @@ public abstract class BaseSettingsMenuFilter {
     }
 
     private static void addLoweredIfPresent(Set<String> target, @Nullable String value) {
-        if (value != null) target.add(value.toLowerCase(Locale.ROOT));
+        if (value != null) target.add(value.toLowerCase());
     }
 
     /**
@@ -86,7 +85,7 @@ public abstract class BaseSettingsMenuFilter {
      */
     public static boolean equalsAny(@Nullable CharSequence text, String[] needles) {
         if (text == null) return false;
-        String haystack = text.toString().toLowerCase(Locale.ROOT);
+        String haystack = text.toString().toLowerCase();
         for (String needle : needles) {
             if (haystack.equals(needle)) return true;
         }
