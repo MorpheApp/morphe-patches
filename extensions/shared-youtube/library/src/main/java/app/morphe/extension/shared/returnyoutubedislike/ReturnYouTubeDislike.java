@@ -248,6 +248,10 @@ public class ReturnYouTubeDislike {
     }
 
     public static ShapeDrawable getLeftSeparatorDrawable() {
+        Rect bounds = isMusic
+                ? leftSeparatorBoundsMusic
+                : leftSeparatorBoundsYouTube;
+        leftSeparatorShape.setBounds(bounds);
         leftSeparatorShape.getPaint().setColor(getSeparatorColor());
         return leftSeparatorShape;
     }
@@ -393,16 +397,9 @@ public class ReturnYouTubeDislike {
                 leftSeparatorString += "   ";
                 leftSeparatorSpan = new SpannableString(leftSeparatorString);
 
-                Rect localLeftSeparatorBounds = isMusic
-                        ? leftSeparatorBoundsMusic
-                        : leftSeparatorBoundsYouTube;
-                ShapeDrawable leftShape = new ShapeDrawable(new RectShape());
-                leftShape.getPaint().setColor(getSeparatorColor());
-                leftShape.setBounds(localLeftSeparatorBounds);
-
                 // Styling spans cannot overwrite RTL or LTR character.
                 leftSeparatorSpan.setSpan(
-                        new VerticallyCenteredImageSpan(leftShape, false),
+                        new VerticallyCenteredImageSpan(getLeftSeparatorDrawable(), false),
                         1, 2, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
                 leftSeparatorSpan.setSpan(
                         new FixedWidthEmptySpan(leftSeparatorShapePaddingPixels),
