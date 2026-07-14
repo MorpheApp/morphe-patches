@@ -397,8 +397,8 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting CUSTOM_FILTER_STRINGS = new StringSetting("morphe_custom_filter_strings", "", true, parent(CUSTOM_FILTER));
 
     // Settings menu filter
-    public static final BooleanSetting SETTINGS_MENU_FILTER = new BooleanSetting("morphe_settings_menu_filter", FALSE);
-    public static final StringSetting SETTINGS_MENU_FILTER_STRINGS = new StringSetting("morphe_settings_menu_filter_strings", "", true, parent(SETTINGS_MENU_FILTER));
+    public static final StringSetting SETTINGS_MENU_FILTER_STRINGS = new StringSetting("morphe_settings_menu_filter_strings", "", true);
+    public static final StringSetting SETTINGS_MENU_FILTER_DISCOVERED = new StringSetting("morphe_settings_menu_filter_discovered", "", true);
 
     // Navigation buttons
     public static final BooleanSetting HIDE_NAVIGATION_BAR = new BooleanSetting("morphe_hide_navigation_bar", FALSE, true, "morphe_hide_navigation_bar_user_dialog_message");

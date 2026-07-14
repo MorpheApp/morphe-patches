@@ -54,8 +54,8 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting CUSTOM_FILTER_STRINGS = new StringSetting("morphe_music_custom_filter_strings", "", true, parent(CUSTOM_FILTER));
 
     // Settings menu filter
-    public static final BooleanSetting SETTINGS_MENU_FILTER = new BooleanSetting("morphe_music_settings_menu_filter", FALSE);
-    public static final StringSetting SETTINGS_MENU_FILTER_STRINGS = new StringSetting("morphe_music_settings_menu_filter_strings", "", true, parent(SETTINGS_MENU_FILTER));
+    public static final StringSetting SETTINGS_MENU_FILTER_STRINGS = new StringSetting("morphe_music_settings_menu_filter_strings", "", true);
+    public static final StringSetting SETTINGS_MENU_FILTER_DISCOVERED = new StringSetting("morphe_music_settings_menu_filter_discovered", "", true);
 
     // Player
     public static final BooleanSetting MINIPLAYER_NEXT_BUTTON = new BooleanSetting("morphe_music_miniplayer_next_button", TRUE, true);

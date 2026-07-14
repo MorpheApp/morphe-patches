@@ -7,8 +7,6 @@
 
 package app.morphe.extension.music.patches;
 
-import androidx.annotation.Nullable;
-
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.patches.BaseSettingsMenuFilter;
 
@@ -18,10 +16,10 @@ public final class SettingsMenuFilterPatch extends BaseSettingsMenuFilter {
     private static final SettingsMenuFilterPatch INSTANCE = new SettingsMenuFilterPatch();
 
     private SettingsMenuFilterPatch() {
-        super(Settings.SETTINGS_MENU_FILTER, Settings.SETTINGS_MENU_FILTER_STRINGS);
+        super(Settings.SETTINGS_MENU_FILTER_STRINGS,
+                Settings.SETTINGS_MENU_FILTER_DISCOVERED);
     }
 
-    @Nullable
     public static String[] getNeedles() {
         return INSTANCE.needles();
     }

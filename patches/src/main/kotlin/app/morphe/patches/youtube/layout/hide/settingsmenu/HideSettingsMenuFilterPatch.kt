@@ -9,12 +9,9 @@ package app.morphe.patches.youtube.layout.hide.settingsmenu
 
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.shared.misc.settings.preference.InputType
-import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
-import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
-import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
-import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settingsmenu.HIDE_MATCHING_METHOD
+import app.morphe.patches.shared.misc.settingsmenu.SETTINGS_MENU_FILTER_CLASS
 import app.morphe.patches.shared.misc.settingsmenu.injectHideMatchingHelper
 import app.morphe.patches.shared.misc.settingsmenu.injectSettingsMenuFilterHook
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -43,16 +40,12 @@ val hideSettingsMenuFilterPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.GENERAL.addPreferences(
-            PreferenceScreenPreference(
-                key = "morphe_settings_menu_filter_screen",
-                sorting = Sorting.UNSORTED,
-                preferences = setOf(
-                    SwitchPreference("morphe_settings_menu_filter"),
-                    TextPreference(
-                        "morphe_settings_menu_filter_strings",
-                        inputType = InputType.TEXT_MULTI_LINE
-                    )
-                )
+            NonInteractivePreference(
+                key = "morphe_settings_menu_filter",
+                titleKey = "morphe_settings_menu_filter_screen_title",
+                summaryKey = "morphe_settings_menu_filter_screen_summary",
+                tag = "app.morphe.extension.shared.patches.SettingsMenuFilterPickerPreference",
+                selectable = true
             )
         )
 
@@ -70,6 +63,7 @@ val hideSettingsMenuFilterPatch = bytecodePatch(
 
                 val insertIndex = it.instructionMatches.last().index
                 val screenRegister = findFreeRegister(insertIndex, fragmentRegister)
+                val nullRegister = findFreeRegister(insertIndex, fragmentRegister, screenRegister)
 
                 addInstructionsAtControlFlowLabel(
                     insertIndex,
@@ -82,7 +76,12 @@ val hideSettingsMenuFilterPatch = bytecodePatch(
                         move-result-object v$fragmentRegister
                         if-eqz v$fragmentRegister, :ignore
 
-                        invoke-virtual { v$screenRegister, v$fragmentRegister }, $HIDE_MATCHING_METHOD
+                        invoke-static { }, $SETTINGS_MENU_FILTER_CLASS->beginCapture()V
+
+                        const/4 v$nullRegister, 0x0
+                        invoke-virtual { v$screenRegister, v$fragmentRegister, v$nullRegister }, $HIDE_MATCHING_METHOD
+
+                        invoke-static { }, $SETTINGS_MENU_FILTER_CLASS->endCapture()V
 
                         :ignore
                         nop

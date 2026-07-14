@@ -13,12 +13,9 @@ import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
-import app.morphe.patches.shared.misc.settings.preference.InputType
-import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
-import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
-import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
-import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settingsmenu.HIDE_MATCHING_METHOD
+import app.morphe.patches.shared.misc.settingsmenu.SETTINGS_MENU_FILTER_CLASS
 import app.morphe.patches.shared.misc.settingsmenu.injectHideMatchingHelper
 import app.morphe.patches.shared.misc.settingsmenu.injectSettingsMenuFilterHook
 import app.morphe.util.getReference
@@ -44,23 +41,12 @@ val hideSettingsMenuFilterPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.GENERAL.addPreferences(
-            PreferenceScreenPreference(
-                key = "morphe_music_settings_menu_filter_screen",
+            NonInteractivePreference(
+                key = "morphe_music_settings_menu_filter",
                 titleKey = "morphe_settings_menu_filter_screen_title",
                 summaryKey = "morphe_settings_menu_filter_screen_summary",
-                sorting = Sorting.UNSORTED,
-                preferences = setOf(
-                    SwitchPreference(
-                        key = "morphe_music_settings_menu_filter",
-                        titleKey = "morphe_settings_menu_filter_title"
-                    ),
-                    TextPreference(
-                        key = "morphe_music_settings_menu_filter_strings",
-                        titleKey = "morphe_settings_menu_filter_strings_title",
-                        summaryKey = "morphe_settings_menu_filter_strings_summary",
-                        inputType = InputType.TEXT_MULTI_LINE
-                    )
-                )
+                tag = "app.morphe.extension.shared.patches.SettingsMenuFilterPickerPreference",
+                selectable = true
             )
         )
 
@@ -87,7 +73,12 @@ val hideSettingsMenuFilterPatch = bytecodePatch(
                         move-result-object v1
                         if-eqz v1, :ignore
 
-                        invoke-virtual { v0, v1 }, $HIDE_MATCHING_METHOD
+                        invoke-static { }, $SETTINGS_MENU_FILTER_CLASS->beginCapture()V
+
+                        const/4 v2, 0x0
+                        invoke-virtual { v0, v1, v2 }, $HIDE_MATCHING_METHOD
+
+                        invoke-static { }, $SETTINGS_MENU_FILTER_CLASS->endCapture()V
 
                         :ignore
                         nop

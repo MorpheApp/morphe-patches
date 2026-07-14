@@ -185,11 +185,7 @@ However, enabling this will also log some user data such as your IP address."</s
     <!-- Settings menu filter -->
     <string name="morphe_settings_menu_filter_screen_title">Settings menu filter</string>
     <string name="morphe_settings_menu_filter_screen_summary">Hide items on the standard app settings screen by their visible name</string>
-    <string name="morphe_settings_menu_filter_title">Enable settings menu filter</string>
-    <string name="morphe_settings_menu_filter_strings_title">Items to hide</string>
-    <string name="morphe_settings_menu_filter_strings_summary">"• One item per line
-• Matching is case-insensitive and requires the exact title
-• Typing a category name hides the whole section along with every item under it"</string>
+    <string name="morphe_settings_menu_filter_picker_empty">Open the standard app settings screen once to populate the list</string>
 
     <!-- misc.spoof.appversion.spoofAppVersionPatch -->
     <string name="morphe_spoof_app_version_title">Spoof app version</string>
