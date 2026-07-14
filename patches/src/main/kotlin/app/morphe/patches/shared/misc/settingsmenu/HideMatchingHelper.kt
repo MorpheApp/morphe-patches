@@ -36,6 +36,9 @@ internal const val HIDE_MATCHING_METHOD =
  */
 internal fun BytecodePatchContext.injectSettingsMenuFilterHook(extensionClass: String) {
     val setVisible = PreferenceSetVisibleFingerprint.method
+    val visibleField = PreferenceSetVisibleFingerprint.let {
+        it.instructionMatches.first().instruction.getReference<FieldReference>()!!
+    }
 
     PreferenceSetTitleFingerprint.method.apply {
         val firstInstruction = implementation!!.instructions.first()
@@ -49,6 +52,9 @@ internal fun BytecodePatchContext.injectSettingsMenuFilterHook(extensionClass: S
 
                 invoke-static { p1, v0 }, $LOGGER_CLASS->equalsAny(Ljava/lang/CharSequence;[Ljava/lang/String;)Z
                 move-result v0
+                if-eqz v0, :original
+
+                iget-boolean v0, p0, $visibleField
                 if-eqz v0, :original
 
                 invoke-static { p1 }, $LOGGER_CLASS->logHidden(Ljava/lang/CharSequence;)V
@@ -74,7 +80,7 @@ internal fun BytecodePatchContext.injectHideMatchingHelper() {
         it.instructionMatches.last().instruction.getReference<FieldReference>()!!
     }
     val setVisible = PreferenceSetVisibleFingerprint.method
-    // Read mVisible so an empty container (all children invisible) can hide its header too.
+    // mVisible: guards against duplicate work + drives the self-hide-when-all-children-invisible rule.
     val visibleField = PreferenceSetVisibleFingerprint.let {
         it.instructionMatches.first().instruction.getReference<FieldReference>()!!
     }
@@ -137,23 +143,26 @@ internal fun BytecodePatchContext.injectHideMatchingHelper() {
 
                     $fieldChecks
 
-                    goto :after_hide
+                    goto :recurse
 
                     :match
+                    # Log + hide only if this pref is currently visible; either way, fall through
+                    # to :recurse so nested groups still get processed.
+                    iget-boolean v4, v2, $visibleField
+                    if-eqz v4, :recurse
                     invoke-static { v3 }, $LOGGER_CLASS->logHidden(Ljava/lang/CharSequence;)V
-                    const/4 v3, 0x0
-                    invoke-virtual { v2, v3 }, $setVisible
-                    add-int/lit8 v5, v5, 0x1
-                    goto :next
+                    const/4 v4, 0x0
+                    invoke-virtual { v2, v4 }, $setVisible
 
-                    :after_hide
-                    # Recurse into nested groups.
+                    :recurse
                     instance-of v4, v2, $PREFERENCE_GROUP_CLASS
-                    if-eqz v4, :next
+                    if-eqz v4, :count
                     check-cast v2, $PREFERENCE_GROUP_CLASS
                     invoke-virtual { v2, p1 }, $HIDE_MATCHING_METHOD
 
-                    # If the recursion left the group invisible (all its children hidden), count it.
+                    :count
+                    # Single counting point: pref counts as hidden if it ended up invisible,
+                    # whether we hid it, recursion hid it, or the app had it invisible already.
                     iget-boolean v4, v2, $visibleField
                     if-nez v4, :next
                     add-int/lit8 v5, v5, 0x1
