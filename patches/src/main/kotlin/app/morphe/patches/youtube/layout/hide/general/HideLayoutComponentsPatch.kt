@@ -361,6 +361,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 summary = true,
                 tag = "app.morphe.extension.shared.settings.preference.BulletPointSwitchPreference"
             ),
+            SwitchPreference("morphe_hide_video_thumbnail"),
             SwitchPreference("morphe_hide_video_recommendation_labels", summary = true),
             SwitchPreference(
                 "morphe_hide_view_count",

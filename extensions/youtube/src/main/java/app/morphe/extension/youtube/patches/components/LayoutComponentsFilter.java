@@ -297,6 +297,11 @@ public final class LayoutComponentsFilter extends Filter {
                 "endorsement_header_footer.e"
         );
 
+        final var videoThumbnail = new StringFilterGroup(
+                Settings.HIDE_VIDEO_THUMBNAIL,
+                "video_lockup_thumbnail.e"
+        );
+
         final var videoTitle = new StringFilterGroup(
                 Settings.HIDE_VIDEO_TITLE,
                 "player_overlay_video_heading.e"
@@ -379,6 +384,7 @@ public final class LayoutComponentsFilter extends Filter {
                 subscriptionsChipBar,
                 surveys,
                 timedReactions,
+                videoThumbnail,
                 videoLabels,
                 videoTitle,
                 videoRecommendationLabels,
