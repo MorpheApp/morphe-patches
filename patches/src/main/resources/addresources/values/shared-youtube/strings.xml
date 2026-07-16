@@ -215,7 +215,7 @@ If later turned off, it is recommended to clear the app data to prevent UI bugs.
     <string name="morphe_ryd_attribution_summary">"Data is provided by the Return YouTube Dislike API
 
 Tap here to open ReturnYouTubeDislike.com"</string>
-    <string name="morphe_ryd_screen_title">Return YouTube Dislike</string>
+    <string name="morphe_ryd_screen_title" translatable="false">Return YouTube Dislike</string>
     <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
     <string name="morphe_ryd_statistics_category_title">Return YouTube Dislike API statistics of this device</string>
     <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API response time, average</string>
