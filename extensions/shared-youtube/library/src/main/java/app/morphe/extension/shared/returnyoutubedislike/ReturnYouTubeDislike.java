@@ -74,19 +74,10 @@ public class ReturnYouTubeDislike {
         }
     }
 
-    public interface VoteValidator {
-        boolean isValid(boolean isShort);
-    }
-
     private static boolean isMusic;
-    private static VoteValidator voteValidator;
 
     public static void setIsMusic(boolean music) {
         isMusic = music;
-    }
-
-    public static void setVoteValidator(VoteValidator validator) {
-        voteValidator = validator;
     }
 
     /**
@@ -574,13 +565,6 @@ public class ReturnYouTubeDislike {
         Objects.requireNonNull(vote);
 
         try {
-            if (voteValidator != null && !voteValidator.isValid(isShort)) {
-                Logger.printDebug(() -> "Cannot vote for video: " + videoId
-                        + " as current player type does not match");
-                Utils.showToastLong(str("morphe_ryd_failure_ryd_enabled_while_playing_video_then_user_voted"));
-                return;
-            }
-
             Objects.requireNonNull(vote);
             try {
                 Logger.printDebug(() -> "setUserVote: " + vote);

@@ -199,8 +199,6 @@ If later turned off, it is recommended to clear the app data to prevent UI bugs.
     <string name="morphe_ryd_failure_connection_status_code">Dislikes are not available (status %d)</string>
     <string name="morphe_ryd_failure_client_rate_limit_requested">Dislikes are not available (client API limit)</string>
     <string name="morphe_ryd_failure_generic">Dislikes are not available (%s)</string>
-    <!-- Brief notification (Toast) shown if the user enables RYD while a video is opened, and then tries to vote for the video. -->
-    <string name="morphe_ryd_failure_ryd_enabled_while_playing_video_then_user_voted">Reload video to vote using Return YouTube Dislike</string>
     <!-- Video likes have been set to hidden by the video uploader. -->
     <string name="morphe_ryd_video_likes_hidden_by_video_owner">Hidden by owner</string>
     <string name="morphe_ryd_enabled_title">Enable Return YouTube Dislike</string>

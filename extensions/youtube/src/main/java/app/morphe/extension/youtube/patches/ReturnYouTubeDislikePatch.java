@@ -33,13 +33,6 @@ import app.morphe.extension.youtube.shared.PlayerType;
 @SuppressWarnings("unused")
 public class ReturnYouTubeDislikePatch {
 
-    static {
-        ReturnYouTubeDislike.setVoteValidator(isShort -> {
-            PlayerType currentType = PlayerType.getCurrent();
-            return isShort == currentType.isNoneHiddenOrMinimized();
-        });
-    }
-
     /**
      * RYD data for the current video on screen.
      */
