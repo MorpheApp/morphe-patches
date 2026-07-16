@@ -25,7 +25,7 @@ internal object AuthenticationChangeListenerFingerprint : Fingerprint(
     returnType = "V",
     strings = listOf("Authentication changed while request was being made"),
     filters = listOf(
-        methodCall(opcode = Opcode.INVOKE_VIRTUAL, parameters = emptyList())
+        methodCall(opcode = Opcode.INVOKE_VIRTUAL, parameters = emptyList(), returnType = "L")
     )
 )
 
