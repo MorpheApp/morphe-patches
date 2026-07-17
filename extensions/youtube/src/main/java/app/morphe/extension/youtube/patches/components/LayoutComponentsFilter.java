@@ -73,7 +73,7 @@ public final class LayoutComponentsFilter extends Filter {
     private final ByteArrayFilterGroup joinMembershipButton;
     private final StringFilterGroup chipBar;
     private final StringFilterGroup channelProfile;
-    private final StringFilterGroupList channelProfileGroupList;
+    private final StringFilterGroupList channelProfileGroupList = new StringFilterGroupList();
     private final StringFilterGroup videoLabels;
     private final ByteArrayFilterGroupList videoLabelsGroupList = new ByteArrayFilterGroupList();
 
@@ -336,7 +336,6 @@ public final class LayoutComponentsFilter extends Filter {
                 "channel_profile.e",
                 "page_header.e"
         );
-        channelProfileGroupList = new StringFilterGroupList();
         channelProfileGroupList.addAll(
                 new StringFilterGroup(
                         Settings.HIDE_COMMUNITY_BUTTON,

@@ -87,10 +87,11 @@ public final class ShortsFilter extends Filter {
     private final ByteArrayFilterGroup channelProfileShelfHeader;
 
     private final StringFilterGroup autoDubbedLabel;
-    private final StringFilterGroup subscribeButton;
+    private final StringFilterGroup fullVideoLinkLabel;
     private final StringFilterGroup joinButton;
     private final StringFilterGroup shelfHeaderIdentifier;
     private final StringFilterGroup shelfHeaderPath;
+    private final StringFilterGroup subscribeButton;
 
     private final StringFilterGroup reelCarousel;
     private final ByteArrayFilterGroupList reelCarouselBuffer = new ByteArrayFilterGroupList();
@@ -177,11 +178,6 @@ public final class ShortsFilter extends Filter {
                 REEL_CHANNEL_BAR_PATH
         );
 
-        StringFilterGroup fullVideoLinkLabel = new StringFilterGroup(
-                Settings.HIDE_SHORTS_FULL_VIDEO_LINK_LABEL,
-                "reel_multi_format_link"
-        );
-
         StringFilterGroup videoTitle = new StringFilterGroup(
                 Settings.HIDE_SHORTS_VIDEO_TITLE,
                 "shorts_video_title_item"
@@ -233,20 +229,14 @@ public final class ShortsFilter extends Filter {
                 "badge.e"
         );
 
+        fullVideoLinkLabel = new StringFilterGroup(
+                Settings.HIDE_SHORTS_FULL_VIDEO_LINK_LABEL,
+                "reel_multi_format_link"
+        );
+
         joinButton = new StringFilterGroup(
                 Settings.HIDE_SHORTS_JOIN_BUTTON,
                 "sponsor_button"
-        );
-
-        subscribeButton = new StringFilterGroup(
-                Settings.HIDE_SHORTS_SUBSCRIBE_BUTTON,
-                "subscribe_button"
-        );
-
-        shortsActionBar = new StringFilterGroup(
-                null,
-                "shorts_action_bar.e",
-                "reel_action_bar.e"
         );
 
         reelCarousel = new StringFilterGroup(
@@ -267,46 +257,16 @@ public final class ShortsFilter extends Filter {
                 )
         );
 
+        shortsActionBar = new StringFilterGroup(
+                null,
+                "shorts_action_bar.e",
+                "reel_action_bar.e"
+        );
+
         shortsActionButton = new StringFilterGroup(
                 null,
-                // Can be any of:
-                // button.eml
-                // shorts_video_action_button.eml
-                // reel_action_button.eml
-                // reel_pivot_button.eml
+                // Can be any of: button.eml, shorts_video_action_button.eml, reel_action_button.eml, reel_pivot_button.eml
                 "button.e"
-        );
-
-        useButtons = new StringFilterGroup(
-                null,
-                REEL_PLAYER_OVERLAY_PATH,
-                REEL_METAPANEL_PATH,
-                "floating_action_button.e"
-        );
-
-        useButtonsBuffer.addAll(
-                new ByteArrayFilterGroup(
-                        Settings.HIDE_SHORTS_USE_SOUND_BUTTON,
-                        "yt_outline_camera_",
-                        "yt_outline_experimental_camera_"
-                ),
-                new ByteArrayFilterGroup(
-                        Settings.HIDE_SHORTS_USE_TEMPLATE_BUTTON,
-                        "yt_outline_template_add_",
-                        "yt_outline_experimental_template_add_"
-                )
-        );
-
-        suggestedAction = new StringFilterGroup(
-                null,
-                "suggested_action.e"
-        );
-
-        addPathCallbacks(
-                shortsCompactFeedVideo, shelfHeaderPath, joinButton, subscribeButton, livePreview,
-                suggestedAction, pausedOverlayButtons, channelBar, infoPanel, previewComment,
-                autoDubbedLabel, fullVideoLinkLabel, videoTitle, soundButton, useButtons, likeFountain,
-                reelCarousel, reelSoundMetadata, likeButton, shortsActionBar
         );
 
         //
@@ -325,6 +285,16 @@ public final class ShortsFilter extends Filter {
                         Settings.HIDE_SHORTS_REMIX_BUTTON,
                         "id.reel_remix_button"
                 )
+        );
+
+        subscribeButton = new StringFilterGroup(
+                Settings.HIDE_SHORTS_SUBSCRIBE_BUTTON,
+                "subscribe_button"
+        );
+
+        suggestedAction = new StringFilterGroup(
+                null,
+                "suggested_action.e"
         );
 
         //
@@ -365,12 +335,16 @@ public final class ShortsFilter extends Filter {
                         Settings.HIDE_SHORTS_SEARCH_SUGGESTIONS,
                         "yt_outline_search_",
                         "yt_outline_experimental_search_"
-
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_SHORTS_SUPER_THANKS_BUTTON,
                         "yt_outline_dollar_sign_heart_",
                         "yt_outline_experimental_dollar_sign_heart_"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_SHORTS_USE_SOUND_BUTTON,
+                        "yt_outline_camera_",
+                        "yt_outline_experimental_camera_"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_SHORTS_USE_TEMPLATE_BUTTON,
@@ -402,6 +376,49 @@ public final class ShortsFilter extends Filter {
                         "yt_outline_hashtag_",
                         "yt_outline_experimental_hashtag_"
                 )
+        );
+
+        useButtons = new StringFilterGroup(
+                null,
+                REEL_PLAYER_OVERLAY_PATH,
+                REEL_METAPANEL_PATH,
+                "floating_action_button.e"
+        );
+
+        useButtonsBuffer.addAll(
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_SHORTS_USE_SOUND_BUTTON,
+                        "yt_outline_camera_",
+                        "yt_outline_experimental_camera_"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_SHORTS_USE_TEMPLATE_BUTTON,
+                        "yt_outline_template_add_",
+                        "yt_outline_experimental_template_add_"
+                )
+        );
+
+        addPathCallbacks(
+                autoDubbedLabel,
+                channelBar,
+                fullVideoLinkLabel,
+                infoPanel,
+                joinButton,
+                likeButton,
+                likeFountain,
+                livePreview,
+                pausedOverlayButtons,
+                previewComment,
+                reelCarousel,
+                reelSoundMetadata,
+                shelfHeaderPath,
+                shortsActionBar,
+                shortsCompactFeedVideo,
+                soundButton,
+                subscribeButton,
+                suggestedAction,
+                useButtons,
+                videoTitle
         );
     }
 
@@ -452,7 +469,8 @@ public final class ShortsFilter extends Filter {
             }
 
             if (matchedGroup == reelCarousel) {
-                return reelCarouselBuffer.check(buffer).isFiltered();
+                return fullVideoLinkLabel.check(accessibility).isFiltered() ||
+                        reelCarouselBuffer.check(buffer).isFiltered();
             }
 
             if (matchedGroup == shortsCompactFeedVideo) {

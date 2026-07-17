@@ -52,6 +52,8 @@ public final class AdsFilter extends Filter {
     private final ByteArrayFilterGroup buyMovieAdBuffer;
     private final StringFilterGroup productCard;
     private final ByteArrayFilterGroup productCardBuffer;
+    private final StringFilterGroup shortsPaidPromotionLabel;
+    private final ByteArrayFilterGroup shortsPaidPromotionLabelBuffer;
 
     public AdsFilter() {
         exceptions.addPatterns(
@@ -173,6 +175,16 @@ public final class AdsFilter extends Filter {
                 "cta_shelf_card"
         );
 
+        shortsPaidPromotionLabel = new StringFilterGroup(
+                Settings.HIDE_PAID_PROMOTION_LABEL,
+                "reel_carousel.e"
+        );
+
+        shortsPaidPromotionLabelBuffer = new ByteArrayFilterGroup(
+                null,
+                "/youtube?p=ppp" // https://support.google.com/youtube?p=ppp
+        );
+
         addPathCallbacks(
                 buyMovieAd,
                 generalAds,
@@ -183,6 +195,7 @@ public final class AdsFilter extends Filter {
                 productSticker,
                 selfSponsor,
                 shoppingLinks,
+                shortsPaidPromotionLabel,
                 viewProducts
         );
     }
@@ -207,6 +220,10 @@ public final class AdsFilter extends Filter {
 
         if (matchedGroup == productCard) {
             return productCardBuffer.check(buffer).isFiltered();
+        }
+
+        if (matchedGroup == shortsPaidPromotionLabel) {
+            return path.contains("|button.e") && shortsPaidPromotionLabelBuffer.check(buffer).isFiltered();
         }
 
         return !exceptions.matches(path);

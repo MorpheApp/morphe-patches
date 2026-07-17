@@ -28,7 +28,11 @@ public final class HorizontalShelvesFilter extends Filter {
     private final ByteArrayFilterGroupList generalBuffers = new ByteArrayFilterGroupList();
 
     public HorizontalShelvesFilter() {
-        StringFilterGroup horizontalShelves = new StringFilterGroup(null, "horizontal_shelf.e");
+        StringFilterGroup horizontalShelves = new StringFilterGroup(
+                null,
+                "horizontal_shelf.e"
+        );
+
         addPathCallbacks(horizontalShelves);
 
         descriptionBuffers.addAll(
