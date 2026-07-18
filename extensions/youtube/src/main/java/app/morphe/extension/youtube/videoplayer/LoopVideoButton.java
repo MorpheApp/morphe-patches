@@ -83,7 +83,7 @@ public class LoopVideoButton {
                     "morphe_loop_video_button",
                     null,
                     null,
-                    Settings.LOOP_VIDEO_BUTTON::get,
+                    Settings.LOOP_VIDEO_BUTTON,
                     LoopVideoButton::handleShortClick,
                     v -> {
                         showRangeDialog(v.getContext());

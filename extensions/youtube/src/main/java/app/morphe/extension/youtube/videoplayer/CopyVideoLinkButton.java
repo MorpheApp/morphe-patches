@@ -67,7 +67,7 @@ public class CopyVideoLinkButton {
                     COPY_VIDEO_LINK_WITH_TIMESTAMP_BUTTON
                             ? "morphe_yt_copy_timestamp"
                             : "morphe_yt_copy",
-                    Settings.COPY_VIDEO_LINK_BUTTON::get,
+                    Settings.COPY_VIDEO_LINK_BUTTON,
                     view -> copyLink(COPY_VIDEO_LINK_WITH_TIMESTAMP_BUTTON),
                     view -> {
                         copyLink(!COPY_VIDEO_LINK_WITH_TIMESTAMP_BUTTON);

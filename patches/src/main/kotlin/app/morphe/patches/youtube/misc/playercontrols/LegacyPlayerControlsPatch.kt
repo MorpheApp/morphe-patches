@@ -26,7 +26,6 @@ import app.morphe.patches.youtube.misc.playservice.is_20_28_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_40_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_21_28_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -36,7 +35,6 @@ import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.findFreeRegister
 import app.morphe.util.inputStreamFromBundledResource
 import app.morphe.util.insertLiteralOverride
-import app.morphe.util.returnEarly
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import org.w3c.dom.Node
@@ -203,34 +201,6 @@ fun initializeLegacyBottomControl(descriptor: String) {
     )
 }
 
-/**
- * Injects the code to change the visibility of controls.
- * @param descriptor The descriptor of the method which should be called.
- */
-fun injectVisibilityCheckCall(descriptor: String) {
-    if (!visibilityImmediateCallbacksExistModified) {
-        visibilityImmediateCallbacksExistModified = true
-        visibilityImmediateCallbacksExistMethodRef.get()!!.returnEarly(true)
-    }
-
-    visibilityMethodRef.get()!!.addInstruction(
-        visibilityInsertIndex++,
-        "invoke-static { p1 , p2 }, $descriptor->setVisibility(ZZ)V",
-    )
-
-    visibilityImmediateMethodRef.get()!!.addInstruction(
-        visibilityImmediateInsertIndex++,
-        "invoke-static { p0 }, $descriptor->setVisibilityImmediate(Z)V",
-    )
-
-    // Patch works without this hook, but it is needed to use the correct fade out animation
-    // duration when tapping the overlay to dismiss.
-    visibilityNegatedImmediateMethodRef.get()!!.addInstruction(
-        visibilityNegatedImmediateInsertIndex++,
-        "invoke-static { }, $descriptor->setVisibilityNegatedImmediate()V",
-    )
-}
-
 internal const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/LegacyPlayerControlsPatch;"
 
 private lateinit var inflateTopControlMethodRef : WeakReference<MutableMethod>
@@ -240,18 +210,6 @@ private var inflateTopControlRegister = -1
 private lateinit var inflateBottomControlMethodRef : WeakReference<MutableMethod>
 private var inflateBottomControlInsertIndex = -1
 private var inflateBottomControlRegister = -1
-
-private lateinit var visibilityImmediateCallbacksExistMethodRef : WeakReference<MutableMethod>
-private var visibilityImmediateCallbacksExistModified = false
-
-private lateinit var visibilityMethodRef : WeakReference<MutableMethod>
-private var visibilityInsertIndex = 0
-
-private lateinit var visibilityImmediateMethodRef : WeakReference<MutableMethod>
-private var visibilityImmediateInsertIndex = 0
-
-private lateinit var visibilityNegatedImmediateMethodRef : WeakReference<MutableMethod>
-private var visibilityNegatedImmediateInsertIndex = 0
 
 val legacyPlayerControlsPatch = bytecodePatch(
     description = "Manages the code for the player controls of the YouTube player.",
@@ -290,36 +248,6 @@ val legacyPlayerControlsPatch = bytecodePatch(
                 inflateTopControlRegister = getInstruction<OneRegisterInstruction>(inflateReturnObjectIndex).registerA
                 inflateTopControlInsertIndex = inflateReturnObjectIndex + 1
             }
-        }
-
-        visibilityMethodRef = WeakReference(ControlsOverlayVisibilityFingerprint.method)
-
-        // Hook the fullscreen close button. Used to fix visibility
-        // when seeking and other situations.
-        OverlayViewInflateFingerprint.let {
-            it.method.apply {
-                val index = it.instructionMatches.last().index
-                val register = getInstruction<OneRegisterInstruction>(index).registerA
-
-                // Must insert at cast because hide fullscreen buttons hooks after,
-                // and for legacy buttons it returns early.
-                addInstruction(
-                    index,
-                    "invoke-static { v$register }, " +
-                            "$EXTENSION_CLASS->setFullscreenCloseButton(Landroid/view/View;)V",
-                )
-            }
-        }
-
-        visibilityImmediateCallbacksExistMethodRef = WeakReference(
-            PlayerControlsExtensionHookListenersExistFingerprint.method
-        )
-        visibilityImmediateMethodRef = WeakReference(PlayerControlsExtensionHookFingerprint.method)
-
-        (if (is_21_28_or_greater) MotionEventFingerprint
-        else MotionEventLegacyFingerprint).let {
-            visibilityNegatedImmediateMethodRef = WeakReference(it.method)
-            visibilityNegatedImmediateInsertIndex = it.instructionMatches.first().index + 1
         }
 
         fun overrideExploderLayout(fingerprint: Fingerprint) {

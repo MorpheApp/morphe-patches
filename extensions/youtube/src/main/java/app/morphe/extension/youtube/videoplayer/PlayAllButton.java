@@ -60,7 +60,7 @@ public class PlayAllButton {
                     "morphe_play_all_button",
                     null,
                     "morphe_play_all_button",
-                    Settings.PLAY_ALL_BUTTON::get,
+                    Settings.PLAY_ALL_BUTTON,
                     view -> openVideo(view, Settings.PLAY_ALL_BUTTON_TYPE.get()),
                     view -> {
                         openVideo(view, null);

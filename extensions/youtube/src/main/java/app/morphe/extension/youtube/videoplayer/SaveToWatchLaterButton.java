@@ -11,8 +11,6 @@ import static app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch.RES
 
 import android.view.View;
 
-import androidx.annotation.Nullable;
-
 import java.lang.ref.WeakReference;
 import java.util.function.Function;
 
@@ -65,7 +63,7 @@ public class SaveToWatchLaterButton {
                     "morphe_save_to_watch_later_button",
                     null,
                     swapSaveAndQueue ? null : "morphe_save_to_watch_later_button",
-                    Settings.SAVE_TO_WATCH_LATER_BUTTON::get,
+                    Settings.SAVE_TO_WATCH_LATER_BUTTON,
                     v -> clickAction.apply(swapSaveAndQueue),
                     v -> {
                         clickAction.apply(!swapSaveAndQueue);

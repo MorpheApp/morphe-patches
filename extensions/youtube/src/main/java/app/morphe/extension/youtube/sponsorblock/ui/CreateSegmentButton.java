@@ -2,8 +2,6 @@ package app.morphe.extension.youtube.sponsorblock.ui;
 
 import android.view.View;
 
-import androidx.annotation.Nullable;
-
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.shared.sponsorblock.SegmentPlaybackController;
@@ -29,7 +27,9 @@ public class CreateSegmentButton {
                     "morphe_sb_create_segment_button",
                     null,
                     "morphe_sb_logo",
-                    CreateSegmentButton::isButtonEnabled,
+                    () -> CreateSegmentButton.isButtonEnabled()
+                            ? LegacyPlayerControlButton.ButtonVisibility.ENABLED
+                            : LegacyPlayerControlButton.ButtonVisibility.DISABLED,
                     v -> SponsorBlockViewController.toggleNewSegmentLayoutVisibility(),
                     v -> {
                         SponsorBlockUtils.showChannelWhitelistDialog(v.getContext());

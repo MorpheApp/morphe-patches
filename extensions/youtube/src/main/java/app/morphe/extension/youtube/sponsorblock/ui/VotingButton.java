@@ -27,7 +27,9 @@ public class VotingButton {
                     "morphe_sb_voting_button",
                     null,
                     "morphe_sb_voting",
-                    VotingButton::isButtonEnabled,
+                    () -> VotingButton.isButtonEnabled()
+                            ? LegacyPlayerControlButton.ButtonVisibility.ENABLED
+                            : LegacyPlayerControlButton.ButtonVisibility.DISABLED,
                     v -> SponsorBlockUtils.onVotingClicked(v.getContext()),
                     null
             );

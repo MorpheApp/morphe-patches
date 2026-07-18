@@ -70,7 +70,7 @@ public final class VoiceOverTranslationButton {
                     "morphe_vot_button",
                     null,
                     "morphe_yt_vot",
-                    Settings.VOT_ENABLED::get,
+                    Settings.VOT_ENABLED,
                     view -> {
                         VoiceOverTranslationPatch.toggleTranslation();
                         refreshActivatedState();

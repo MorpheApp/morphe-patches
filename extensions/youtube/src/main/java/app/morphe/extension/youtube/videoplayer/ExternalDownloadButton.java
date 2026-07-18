@@ -38,7 +38,7 @@ public class ExternalDownloadButton {
                     "morphe_external_download_button",
                     null,
                     "morphe_yt_download_button",
-                    SharedYouTubeSettings.EXTERNAL_DOWNLOADER::get,
+                    SharedYouTubeSettings.EXTERNAL_DOWNLOADER,
                     ExternalDownloadButton::onDownloadClick,
                     null
             );

@@ -26,10 +26,6 @@ public class LegacyPlayerControlsPatch {
     public static final boolean RESTORE_OLD_PLAYER_BUTTONS =
             Settings.RESTORE_OLD_PLAYER_BUTTONS.get() || !YouTubeActivityHook.useBoldIcons(true);
 
-    private static boolean fullscreenButtonVisibilityCallbacksExist() {
-        return false; // Modified during patching if needed.
-    }
-
     /**
      * Injection point.
      */
@@ -51,47 +47,6 @@ public class LegacyPlayerControlsPatch {
             });
         }
     }
-
-    /**
-     * Injection point.
-     */
-    public static void setFullscreenCloseButton(View imageButton) {
-        if (!fullscreenButtonVisibilityCallbacksExist()) {
-            return;
-        }
-
-        Logger.printDebug(() -> "Fullscreen button set");
-
-        // Add a global listener, since the protected method
-        // View#onVisibilityChanged() does not have any call backs.
-        imageButton.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            int lastVisibility = View.VISIBLE;
-
-            @Override
-            public void onGlobalLayout() {
-                try {
-                    final int visibility = imageButton.getVisibility();
-                    if (lastVisibility != visibility) {
-                        lastVisibility = visibility;
-
-                        Logger.printDebug(() -> "fullscreen button visibility: "
-                                + (visibility == View.VISIBLE ? "VISIBLE" :
-                                visibility == View.GONE ? "GONE" : "INVISIBLE"));
-
-                        fullscreenButtonVisibilityChanged(visibility == View.VISIBLE);
-                    }
-                } catch (Exception ex) {
-                    Logger.printDebug(() -> "OnGlobalLayoutListener failure", ex);
-                }
-            }
-        });
-    }
-
-    // noinspection EmptyMethod
-    private static void fullscreenButtonVisibilityChanged(boolean isVisible) {
-        // Code added during patching.
-    }
-
 
     /**
      * Injection point.
