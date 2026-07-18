@@ -2,11 +2,9 @@ package app.morphe.extension.youtube.sponsorblock.ui;
 
 import android.view.View;
 
-import androidx.annotation.Nullable;
-
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.shared.sponsorblock.SegmentPlaybackController;
+import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.sponsorblock.SponsorBlockUtils;
 import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton;
 
@@ -19,19 +17,12 @@ public class VotingButton {
         }
     }
 
-    @Nullable
-    private static LegacyPlayerControlButton instance;
-
-    public static void hideControls() {
-        if (instance != null) instance.hide();
-    }
-
     /**
      * injection point.
      */
     public static void initializeLegacyButton(View controlsView) {
         try {
-            instance = new LegacyPlayerControlButton(
+            new LegacyPlayerControlButton(
                     controlsView,
                     "morphe_sb_voting_button",
                     null,

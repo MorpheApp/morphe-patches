@@ -101,6 +101,8 @@ public class LegacyPlayerControlButton {
                                      PlayerControlButtonStatus enabledStatus,
                                      View.OnClickListener onClickListener,
                                      @Nullable View.OnLongClickListener longClickListener) {
+        this.enabledStatus = enabledStatus;
+
         View containerView = Utils.getChildViewByResourceName(controlsViewGroup, viewToHide);
         containerView.setVisibility(View.GONE);
         containerRef = new WeakReference<>(containerView);
@@ -156,18 +158,6 @@ public class LegacyPlayerControlButton {
             tempTextOverlay = Utils.getChildViewByResourceName(controlsViewGroup, textOverlayId);
         }
         textOverlayRef = new WeakReference<>(tempTextOverlay);
-
-        this.enabledStatus = enabledStatus;
-
-        // Update the visibility after the player type changes.
-        // This ensures that button animations are cleared and their states are updated correctly
-        // when switching between states like minimized, maximized, or fullscreen, preventing
-        // "stuck" animations or incorrect visibility.  Without this fix the issue is most noticeable
-        // when maximizing type 3 miniplayer.
-//        PlayerType.getOnChange().addObserver((PlayerType type) -> {
-//            playerTypeChanged(type);
-//            return Unit.INSTANCE;
-//        });
     }
 
     private void updateLayoutFromSourceButton() {
@@ -187,6 +177,7 @@ public class LegacyPlayerControlButton {
         final int sourceButtonVisibility = enabledStatus.buttonEnabled()
                 ? source.getVisibility()
                 : View.GONE;
+        isVisible = sourceButtonVisibility == View.VISIBLE;
         if (container.getVisibility() != sourceButtonVisibility) {
             container.setVisibility(sourceButtonVisibility);
         }
@@ -207,18 +198,6 @@ public class LegacyPlayerControlButton {
         } catch (Exception ex) {
             Logger.printException(() -> "animateIcon failure", ex);
         }
-    }
-
-    public void hide() {
-        Utils.verifyOnMainThread();
-        if (!isVisible) {
-            return;
-        }
-        isVisible = false;
-
-        View view = containerRef.get();
-        if (view == null) return;
-        view.setVisibility(View.GONE);
     }
 
     /**

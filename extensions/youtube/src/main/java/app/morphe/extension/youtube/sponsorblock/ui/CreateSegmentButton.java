@@ -19,19 +19,12 @@ public class CreateSegmentButton {
         }
     }
 
-    @Nullable
-    private static LegacyPlayerControlButton instance;
-
-    public static void hideControls() {
-        if (instance != null) instance.hide();
-    }
-
     /**
      * injection point.
      */
     public static void initializeLegacyButton(View controlsView) {
         try {
-            instance = new LegacyPlayerControlButton(
+            new LegacyPlayerControlButton(
                     controlsView,
                     "morphe_sb_create_segment_button",
                     null,
