@@ -15,6 +15,9 @@ import android.view.ViewTreeObserver;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.InvocationTargetException;
@@ -25,8 +28,7 @@ import app.morphe.extension.shared.Logger;
 
 @SuppressWarnings("unused")
 public final class IncognitoKeyboardPatch {
-    private static final String TAG = "IncognitoKeyboard";
-    private static boolean initialized = false;
+    private static boolean initialized;
 
     /**
      * @return If this patch was included during patching.
@@ -60,40 +62,39 @@ public final class IncognitoKeyboardPatch {
         application.registerActivityLifecycleCallbacks(
                 new Application.ActivityLifecycleCallbacks() {
                     @Override
-                    public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
+                    public void onActivityCreated(@NonNull Activity activity, Bundle savedInstanceState) {
                         activity.getWindow().getDecorView().getViewTreeObserver()
                                 .addOnGlobalFocusChangeListener(new IncognitoFocusListener(activity));
                     }
 
-                    @Override public void onActivityStarted(Activity activity) {}
-                    @Override public void onActivityResumed(Activity activity) {}
-                    @Override public void onActivityPaused(Activity activity) {}
-                    @Override public void onActivityStopped(Activity activity) {}
-                    @Override public void onActivitySaveInstanceState(Activity activity, Bundle outState) {}
-                    @Override public void onActivityDestroyed(Activity activity) {}
+                    @Override public void onActivityStarted(@NonNull Activity activity) {}
+                    @Override public void onActivityResumed(@NonNull Activity activity) {}
+                    @Override public void onActivityPaused(@NonNull Activity activity) {}
+                    @Override public void onActivityStopped(@NonNull Activity activity) {}
+                    @Override public void onActivitySaveInstanceState(@NonNull Activity activity, @NonNull Bundle outState) {}
+                    @Override public void onActivityDestroyed(@NonNull Activity activity) {}
                 }
         );
     }
 
-    private static class IncognitoFocusListener
-            implements ViewTreeObserver.OnGlobalFocusChangeListener {
-        private final WeakReference<Activity> activityRef;
+    private record IncognitoFocusListener(
+            WeakReference<Activity> activityRef) implements ViewTreeObserver.OnGlobalFocusChangeListener {
 
-        IncognitoFocusListener(Activity activity) {
-            this.activityRef = new WeakReference<>(activity);
+        private IncognitoFocusListener(Activity activityRef) {
+            this(new WeakReference<>(activityRef));
         }
 
         @Override
         public void onGlobalFocusChanged(View oldFocus, View newFocus) {
             if (newFocus == null) return;
-            if (!(newFocus instanceof android.widget.TextView)) return;
+            if (!(newFocus instanceof TextView)) return;
             if (!Settings.INCOGNITO_KEYBOARD.get()) return;
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) return;
 
-            restartInputWithIncognito((android.widget.TextView) newFocus);
+            restartInputWithIncognito((TextView) newFocus);
         }
 
-        private void restartInputWithIncognito(android.widget.TextView textView) {
+        private void restartInputWithIncognito(TextView textView) {
             Activity activity = activityRef.get();
             if (activity == null) return;
 
@@ -105,8 +106,8 @@ public final class IncognitoKeyboardPatch {
             InputConnection ic;
             try {
                 ic = textView.onCreateInputConnection(editorInfo);
-            } catch (Exception e) {
-                Logger.printException(() -> TAG + ": onCreateInputConnection failed", e);
+            } catch (Exception ex) {
+                Logger.printException(() -> "onCreateInputConnection failed", ex);
                 return;
             }
             if (ic == null) return;
@@ -119,8 +120,8 @@ public final class IncognitoKeyboardPatch {
                 } else {
                     restartInputDeprecated(imm, textView, ic, editorInfo);
                 }
-            } catch (Exception e) {
-                Logger.printException(() -> TAG + ": restartInput failed", e);
+            } catch (Exception ex) {
+                Logger.printException(() -> "restartInput failed", ex);
             }
         }
 
@@ -134,9 +135,9 @@ public final class IncognitoKeyboardPatch {
                         "startInput", View.class, InputConnection.class, EditorInfo.class
                 );
                 startInput.invoke(imm, view, ic, editorInfo);
-            } catch (NoSuchMethodException | IllegalAccessException
-                     | InvocationTargetException e) {
-                Logger.printException(() -> TAG + ": startInput reflection failed", e);
+            } catch (NoSuchMethodException | IllegalAccessException |
+                     InvocationTargetException ex) {
+                Logger.printException(() -> "startInput reflection failed", ex);
             }
         }
     }
