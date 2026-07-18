@@ -11,7 +11,6 @@ import app.morphe.patches.youtube.layout.player.buttons.playerOverlayButtonsHook
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
-import app.morphe.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsResourcePatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -66,7 +65,6 @@ internal val loopVideoButtonPatch = bytecodePatch(
         )
 
         initializeTopControl(EXTENSION_BUTTON)
-        injectVisibilityCheckCall(EXTENSION_BUTTON)
         StartVideoInformerFingerprint.method.addInstruction(
             0,
             "invoke-static { }, $EXTENSION_BUTTON->resetLoopButton()V"

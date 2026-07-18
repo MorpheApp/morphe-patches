@@ -10,7 +10,6 @@ import app.morphe.patches.youtube.layout.player.buttons.playerOverlayButtonsHook
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addLegacyBottomControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeLegacyBottomControl
-import app.morphe.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.video.information.userSelectedPlaybackSpeedHook
@@ -60,7 +59,6 @@ val playbackSpeedButtonPatch = bytecodePatch(
         addPlayerBottomButton(EXTENSION_BUTTON)
 
         initializeLegacyBottomControl(EXTENSION_BUTTON)
-        injectVisibilityCheckCall(EXTENSION_BUTTON)
 
         videoSpeedChangedHook(EXTENSION_BUTTON, "videoSpeedChanged")
         userSelectedPlaybackSpeedHook(EXTENSION_BUTTON, "videoSpeedChanged")

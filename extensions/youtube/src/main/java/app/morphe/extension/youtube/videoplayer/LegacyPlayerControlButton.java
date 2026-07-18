@@ -32,7 +32,6 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.shared.PlayerControlsVisibility;
 import app.morphe.extension.youtube.shared.PlayerType;
-import kotlin.Unit;
 
 public class LegacyPlayerControlButton {
 
@@ -43,7 +42,6 @@ public class LegacyPlayerControlButton {
         boolean buttonEnabled();
     }
 
-    public static final int buttonWidth = (int) ResourceUtils.getDimension("controls_overlay_action_button_size");
     public static final int fadeInDuration = ResourceUtils.getInteger("fade_duration_fast");
     private static final int fadeOutDuration = ResourceUtils.getInteger("fade_duration_scheduled");
 
@@ -60,10 +58,19 @@ public class LegacyPlayerControlButton {
         return totalUpperButtonCount;
     }
 
-    private final WeakReference<View> containerRef;
+    /**
+     * Injection point.
+     */
+    public static void setFullscreenButton(ImageView view) {
+        ytSourceButtonRef = new WeakReference<>(view);
+    }
+
     private final WeakReference<View> buttonRef;
     private final WeakReference<TextView> textOverlayRef;
+
+    private static WeakReference<View> ytSourceButtonRef = new WeakReference<>(null);
     private final PlayerControlButtonStatus enabledStatus;
+    private final WeakReference<View> containerRef;
     private boolean isVisible;
     private long lastTimeSetVisible;
 
@@ -97,6 +104,23 @@ public class LegacyPlayerControlButton {
         View containerView = Utils.getChildViewByResourceName(controlsViewGroup, viewToHide);
         containerView.setVisibility(View.GONE);
         containerRef = new WeakReference<>(containerView);
+
+        View ytButton = ytSourceButtonRef.get();
+        if (ytButton == null) {
+            ytButton = Utils.getChildViewByResourceName(controlsViewGroup, "player_overflow_button");
+            if (ytButton == null) {
+                // Currently only happens with SB skip button.
+                Logger.printDebug(() -> "Could not find overlay button: " + controlsViewGroup);
+            } else {
+                ytSourceButtonRef = new WeakReference<>(ytButton);
+            }
+        }
+        if (ytButton != null) {
+            ytButton.getViewTreeObserver().addOnPreDrawListener(() -> {
+                updateLayoutFromSourceButton();
+                return true;
+            });
+        }
 
         View button = Utils.getChildViewByResourceName(controlsViewGroup, buttonId);
 
@@ -134,17 +158,38 @@ public class LegacyPlayerControlButton {
         textOverlayRef = new WeakReference<>(tempTextOverlay);
 
         this.enabledStatus = enabledStatus;
-        isVisible = false;
 
         // Update the visibility after the player type changes.
         // This ensures that button animations are cleared and their states are updated correctly
         // when switching between states like minimized, maximized, or fullscreen, preventing
         // "stuck" animations or incorrect visibility.  Without this fix the issue is most noticeable
         // when maximizing type 3 miniplayer.
-        PlayerType.getOnChange().addObserver((PlayerType type) -> {
-            playerTypeChanged(type);
-            return Unit.INSTANCE;
-        });
+//        PlayerType.getOnChange().addObserver((PlayerType type) -> {
+//            playerTypeChanged(type);
+//            return Unit.INSTANCE;
+//        });
+    }
+
+    private void updateLayoutFromSourceButton() {
+        View source = ytSourceButtonRef.get();
+        View container = containerRef.get();
+
+        if (source == null || container == null) {
+            Logger.printDebug(() -> "Button views are null, source: " + source + " container: " + container);
+            return;
+        }
+
+        final float sourceButtonAlpha = source.getAlpha();
+        if (container.getAlpha() != sourceButtonAlpha) {
+            container.setAlpha(sourceButtonAlpha);
+        }
+
+        final int sourceButtonVisibility = enabledStatus.buttonEnabled()
+                ? source.getVisibility()
+                : View.GONE;
+        if (container.getVisibility() != sourceButtonVisibility) {
+            container.setVisibility(sourceButtonVisibility);
+        }
     }
 
     /**
@@ -164,6 +209,71 @@ public class LegacyPlayerControlButton {
         }
     }
 
+    public void hide() {
+        Utils.verifyOnMainThread();
+        if (!isVisible) {
+            return;
+        }
+        isVisible = false;
+
+        View view = containerRef.get();
+        if (view == null) return;
+        view.setVisibility(View.GONE);
+    }
+
+    /**
+     * Sets the icon of the button.
+     * @param resourceId Drawable identifier, or zero to hide the icon.
+     */
+    public void setIcon(int resourceId) {
+        Utils.verifyOnMainThread();
+
+        View button = buttonRef.get();
+        if (button instanceof ImageView imageButton) {
+            imageButton.setImageResource(resourceId);
+            imageButton.setImageTintList(ColorStateList.valueOf(Color.WHITE));
+        }
+    }
+
+    /**
+     * Sets the alpha of the button's image drawable (0–255).
+     * Unlike {@link View#setAlpha}, this is not overridden by visibility animations.
+     */
+    public void setImageAlpha(int alpha) {
+        Utils.verifyOnMainThread();
+
+        View button = buttonRef.get();
+        if (button instanceof ImageView imageButton) {
+            imageButton.setImageAlpha(alpha);
+        }
+    }
+
+    /**
+     * Sets the text to be displayed on the text overlay.
+     * @param text The text to set on the overlay, or null to clear the text.
+     */
+    public void setTextOverlay(CharSequence text) {
+        Utils.verifyOnMainThread();
+
+        TextView textOverlay = textOverlayRef.get();
+        if (textOverlay != null) {
+            textOverlay.setText(text);
+        }
+    }
+
+    /**
+     * Returns the appropriate dialog background color depending on the current theme.
+     */
+    public static int getDialogBackgroundColor() {
+        return ResourceUtils.getColor(
+                Utils.isDarkModeEnabled() ? "yt_black1" : "yt_white1"
+        );
+    }
+
+
+    //
+    // Legacy code. Used only for SB skip button.
+    //
     public void setVisibilityNegatedImmediate() {
         try {
             Utils.verifyOnMainThread();
@@ -293,66 +403,5 @@ public class LegacyPlayerControlButton {
         } else {
             container.setVisibility(View.GONE);
         }
-    }
-
-    public void hide() {
-        Utils.verifyOnMainThread();
-        if (!isVisible) {
-            return;
-        }
-        isVisible = false;
-
-        View view = containerRef.get();
-        if (view == null) return;
-        view.setVisibility(View.GONE);
-    }
-
-    /**
-     * Sets the icon of the button.
-     * @param resourceId Drawable identifier, or zero to hide the icon.
-     */
-    public void setIcon(int resourceId) {
-        Utils.verifyOnMainThread();
-
-        View button = buttonRef.get();
-        if (button instanceof ImageView imageButton) {
-            imageButton.setImageResource(resourceId);
-            imageButton.setImageTintList(ColorStateList.valueOf(Color.WHITE));
-        }
-    }
-
-    /**
-     * Sets the alpha of the button's image drawable (0–255).
-     * Unlike {@link View#setAlpha}, this is not overridden by visibility animations.
-     */
-    public void setImageAlpha(int alpha) {
-        Utils.verifyOnMainThread();
-
-        View button = buttonRef.get();
-        if (button instanceof ImageView imageButton) {
-            imageButton.setImageAlpha(alpha);
-        }
-    }
-
-    /**
-     * Sets the text to be displayed on the text overlay.
-     * @param text The text to set on the overlay, or null to clear the text.
-     */
-    public void setTextOverlay(CharSequence text) {
-        Utils.verifyOnMainThread();
-
-        TextView textOverlay = textOverlayRef.get();
-        if (textOverlay != null) {
-            textOverlay.setText(text);
-        }
-    }
-
-    /**
-     * Returns the appropriate dialog background color depending on the current theme.
-     */
-    public static int getDialogBackgroundColor() {
-        return ResourceUtils.getColor(
-                Utils.isDarkModeEnabled() ? "yt_black1" : "yt_white1"
-        );
     }
 }

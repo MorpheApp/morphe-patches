@@ -300,10 +300,7 @@ val sponsorBlockPatch = bytecodePatch(
 
         // Change visibility of the buttons.
         initializeTopControl(EXTENSION_CREATE_SEGMENT_BUTTON_CONTROLLER_CLASS)
-        injectVisibilityCheckCall(EXTENSION_CREATE_SEGMENT_BUTTON_CONTROLLER_CLASS)
-
         initializeTopControl(EXTENSION_VOTING_BUTTON_CONTROLLER_CLASS)
-        injectVisibilityCheckCall(EXTENSION_VOTING_BUTTON_CONTROLLER_CLASS)
 
         // Show skip button when player overlay is active.
         injectVisibilityCheckCall(EXTENSION_SPONSORBLOCK_VIEW_CONTROLLER_CLASS)

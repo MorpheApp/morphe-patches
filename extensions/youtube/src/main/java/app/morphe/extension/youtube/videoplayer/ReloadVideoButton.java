@@ -27,15 +27,12 @@ public class ReloadVideoButton {
         }
     }
 
-    @Nullable
-    private static LegacyPlayerControlButton instance;
-
     /**
      * Injection point.
      */
     public static void initializeLegacyButton(View controlsView) {
         try {
-            instance = new LegacyPlayerControlButton(
+            new LegacyPlayerControlButton(
                     controlsView,
                     "morphe_reload_video_button",
                     null,
@@ -47,26 +44,5 @@ public class ReloadVideoButton {
         } catch (Exception ex) {
             Logger.printException(() -> "initialize failure", ex);
         }
-    }
-
-    /**
-     * injection point.
-     */
-    public static void setVisibilityNegatedImmediate() {
-        if (instance != null) instance.setVisibilityNegatedImmediate();
-    }
-
-    /**
-     * injection point.
-     */
-    public static void setVisibilityImmediate(boolean visible) {
-        if (instance != null) instance.setVisibilityImmediate(visible);
-    }
-
-    /**
-     * injection point.
-     */
-    public static void setVisibility(boolean visible, boolean animated) {
-        if (instance != null) instance.setVisibility(visible, animated);
     }
 }

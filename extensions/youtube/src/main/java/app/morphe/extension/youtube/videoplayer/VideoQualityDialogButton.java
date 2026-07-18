@@ -166,33 +166,6 @@ public class VideoQualityDialogButton {
     }
 
     /**
-     * injection point.
-     */
-    public static void setVisibilityNegatedImmediate() {
-        if (legacy != null) {
-            legacy.setVisibilityNegatedImmediate();
-        }
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void setVisibilityImmediate(boolean visible) {
-        if (legacy != null) {
-            legacy.setVisibilityImmediate(visible);
-        }
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void setVisibility(boolean visible, boolean animated) {
-        if (legacy != null) {
-            legacy.setVisibility(visible, animated);
-        }
-    }
-
-    /**
      * Updates the button text based on the current video quality.
      */
     public static void updateButtonText(@Nullable VideoQualityInterface quality) {

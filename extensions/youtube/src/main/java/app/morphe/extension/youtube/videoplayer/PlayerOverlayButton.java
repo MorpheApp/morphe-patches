@@ -32,6 +32,9 @@ import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
 public class PlayerOverlayButton {
+
+    public static final int BUTTON_WIDTH = (int) ResourceUtils.getDimension("controls_overlay_action_button_size");
+
     private static boolean skipFirstExceptionLog = true;
 
     /**
@@ -256,7 +259,7 @@ public class PlayerOverlayButton {
         if (!(containerView.getParent() instanceof ViewGroup containerViewGroup)) return;
 
         videoHeadingContainer.updateContainerRef(containerViewGroup);
-        videoHeadingContainer.updateMargin(LegacyPlayerControlButton.buttonWidth, getTotalUpperButtonCount());
+        videoHeadingContainer.updateMargin(BUTTON_WIDTH, getTotalUpperButtonCount());
     }
 
     @Nullable

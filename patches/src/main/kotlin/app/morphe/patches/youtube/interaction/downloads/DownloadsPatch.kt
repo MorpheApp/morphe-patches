@@ -9,7 +9,6 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
-import app.morphe.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -77,7 +76,6 @@ val downloadsPatch = bytecodePatch(
 
     execute {
         initializeTopControl(EXTENSION_BUTTON)
-        injectVisibilityCheckCall(EXTENSION_BUTTON)
 
         OfflineVideoEndpointFingerprint.method.apply {
             addInstructionsWithLabels(

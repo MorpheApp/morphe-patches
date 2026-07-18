@@ -45,27 +45,6 @@ public class VotingButton {
         }
     }
 
-    /**
-     * injection point.
-     */
-    public static void setVisibilityNegatedImmediate() {
-        if (instance != null) instance.setVisibilityNegatedImmediate();
-    }
-
-    /**
-     * injection point.
-     */
-    public static void setVisibilityImmediate(boolean visible) {
-        if (instance != null) instance.setVisibilityImmediate(visible);
-    }
-
-    /**
-     * injection point.
-     */
-    public static void setVisibility(boolean visible, boolean animated) {
-        if (instance != null) instance.setVisibility(visible, animated);
-    }
-
     private static boolean isButtonEnabled() {
         return Settings.SB_ENABLED.get() && Settings.SB_VOTING_BUTTON.get()
                 && SegmentPlaybackController.videoHasSegments()

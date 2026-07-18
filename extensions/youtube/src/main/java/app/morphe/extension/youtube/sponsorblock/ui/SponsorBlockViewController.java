@@ -304,7 +304,7 @@ public class SponsorBlockViewController {
 
     /**
      * injection point.
-     * Only for skip button when auto hide is enbled.
+     * Only for skip button when auto hide is enabled.
      */
     public static void setVisibilityImmediate(boolean visible) {
         if (!visible && SegmentPlaybackController.shouldNotFadeOutPlayerOverlaySkipButton()) {

@@ -102,19 +102,4 @@ public final class VoiceOverTranslationButton {
             Logger.printException(() -> "refreshActivatedState failure", ex);
         }
     }
-
-    /** Injection point. */
-    public static void setVisibilityNegatedImmediate() {
-        if (legacy != null) legacy.setVisibilityNegatedImmediate();
-    }
-
-    /** Injection point. */
-    public static void setVisibilityImmediate(boolean visible) {
-        if (legacy != null) legacy.setVisibilityImmediate(visible);
-    }
-
-    /** Injection point. */
-    public static void setVisibility(boolean visible, boolean animated) {
-        if (legacy != null) legacy.setVisibility(visible, animated);
-    }
 }

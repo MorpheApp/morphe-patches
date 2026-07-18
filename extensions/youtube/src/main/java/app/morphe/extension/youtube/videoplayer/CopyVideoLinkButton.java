@@ -28,9 +28,6 @@ import app.morphe.extension.youtube.settings.Settings;
 public class CopyVideoLinkButton {
     private static final boolean COPY_VIDEO_LINK_WITH_TIMESTAMP_BUTTON = Settings.COPY_VIDEO_LINK_WITH_TIMESTAMP_BUTTON.get();
 
-    @Nullable
-    private static LegacyPlayerControlButton legacy;
-
     /**
      * Injection point.
      */
@@ -63,7 +60,7 @@ public class CopyVideoLinkButton {
                 return;
             }
 
-            legacy = new LegacyPlayerControlButton(
+            new LegacyPlayerControlButton(
                     controlsView,
                     "morphe_copy_video_link_button",
                     null,
@@ -80,27 +77,6 @@ public class CopyVideoLinkButton {
         } catch (Exception ex) {
             Logger.printException(() -> "initializeButton failure", ex);
         }
-    }
-
-    /**`
-     * injection point.
-     */
-    public static void setVisibilityNegatedImmediate() {
-        if (legacy != null) legacy.setVisibilityNegatedImmediate();
-    }
-
-    /**
-     * injection point.
-     */
-    public static void setVisibilityImmediate(boolean visible) {
-        if (legacy != null) legacy.setVisibilityImmediate(visible);
-    }
-
-    /**
-     * injection point.
-     */
-    public static void setVisibility(boolean visible, boolean animated) {
-        if (legacy != null) legacy.setVisibility(visible, animated);
     }
 
     public static void copyLink(boolean withTimestamp) {

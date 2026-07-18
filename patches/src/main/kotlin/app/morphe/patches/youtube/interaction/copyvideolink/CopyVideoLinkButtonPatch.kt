@@ -10,7 +10,6 @@ import app.morphe.patches.youtube.layout.player.buttons.addPlayerBottomButton
 import app.morphe.patches.youtube.layout.player.buttons.playerOverlayButtonsHookPatch
 import app.morphe.patches.youtube.misc.playercontrols.addLegacyBottomControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeLegacyBottomControl
-import app.morphe.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -68,6 +67,5 @@ val copyVideoLinkButtonPatch = bytecodePatch(
         addPlayerBottomButton(EXTENSION_BUTTON)
 
         initializeLegacyBottomControl(EXTENSION_BUTTON)
-        injectVisibilityCheckCall(EXTENSION_BUTTON)
     }
 }

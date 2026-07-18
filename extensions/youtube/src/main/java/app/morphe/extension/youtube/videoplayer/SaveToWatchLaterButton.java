@@ -33,9 +33,6 @@ public class SaveToWatchLaterButton {
         }
     }
 
-    @Nullable
-    private static LegacyPlayerControlButton instance;
-
     /**
      * injection point.
      */
@@ -63,7 +60,7 @@ public class SaveToWatchLaterButton {
                 return null;
             };
 
-            instance = new LegacyPlayerControlButton(
+            LegacyPlayerControlButton instance = new LegacyPlayerControlButton(
                     controlsView,
                     "morphe_save_to_watch_later_button",
                     null,
@@ -86,26 +83,5 @@ public class SaveToWatchLaterButton {
         } catch (Exception ex) {
             Logger.printException(() -> "initialize failure", ex);
         }
-    }
-
-    /**
-     * injection point.
-     */
-    public static void setVisibilityNegatedImmediate() {
-        if (instance != null) instance.setVisibilityNegatedImmediate();
-    }
-
-    /**
-     * injection point.
-     */
-    public static void setVisibilityImmediate(boolean visible) {
-        if (instance != null) instance.setVisibilityImmediate(visible);
-    }
-
-    /**
-     * injection point.
-     */
-    public static void setVisibility(boolean visible, boolean animated) {
-        if (instance != null) instance.setVisibility(visible, animated);
     }
 }

@@ -277,29 +277,6 @@ public class LoopVideoButton {
                 .start();
     }
 
-    /**
-     * Injection point.
-     */
-    public static void setVisibilityNegatedImmediate() {
-        if (legacy != null) legacy.setVisibilityNegatedImmediate();
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void setVisibilityImmediate(boolean visible) {
-        if (legacy != null) legacy.setVisibilityImmediate(visible);
-        if (visible) updateButtonIcon();
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void setVisibility(boolean visible, boolean animated) {
-        if (legacy != null) legacy.setVisibility(visible, animated);
-        if (visible) updateButtonIcon();
-    }
-
     private static String formatTime(long ms) {
         long totalSeconds = ms / 1000;
         long hours = totalSeconds / 3600;
