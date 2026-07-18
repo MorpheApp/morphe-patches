@@ -115,29 +115,13 @@ public final class IncognitoKeyboardPatch {
             editorInfo.imeOptions |= EditorInfo.IME_FLAG_NO_PERSONALIZED_LEARNING;
 
             try {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                    imm.startInputAsync(ic, editorInfo);
-                } else {
-                    restartInputDeprecated(imm, textView, ic, editorInfo);
-                }
-            } catch (Exception ex) {
-                Logger.printException(() -> "restartInput failed", ex);
-            }
-        }
-
-        @SuppressWarnings("JavaReflectionMemberAccess")
-        private void restartInputDeprecated(
-                InputMethodManager imm, View view,
-                InputConnection ic, EditorInfo editorInfo
-        ) {
-            try {
-                Method startInput = InputMethodManager.class.getMethod(
-                        "startInput", View.class, InputConnection.class, EditorInfo.class
+                Method startInputAsync = InputMethodManager.class.getMethod(
+                        "startInputAsync", View.class, EditorInfo.class
                 );
-                startInput.invoke(imm, view, ic, editorInfo);
+                startInputAsync.invoke(imm, textView, editorInfo);
             } catch (NoSuchMethodException | IllegalAccessException |
                      InvocationTargetException ex) {
-                Logger.printException(() -> "startInput reflection failed", ex);
+                Logger.printException(() -> "startInputAsync reflection failed", ex);
             }
         }
     }
