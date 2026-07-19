@@ -6,7 +6,9 @@
  */
 package app.morphe.extension.reddit.settings.preference;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.preference.PreferenceScreen;
 import android.view.View;
 import android.widget.ListView;
@@ -59,5 +61,14 @@ public class RedditPreferenceFragment extends AbstractPreferenceFragment {
         // Hide divider.
         listView.setDivider(null);
         listView.setDividerHeight(0);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == CustomFontFilePreference.READ_FONT_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            CustomFontFilePreference.handleActivityResult(getContext(), resultCode, data);
+        }
     }
 }

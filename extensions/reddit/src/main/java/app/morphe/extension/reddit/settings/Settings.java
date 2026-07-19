@@ -10,10 +10,12 @@ import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
 import static app.morphe.extension.shared.settings.Setting.migrateOldSettingToNew;
+import static app.morphe.extension.shared.settings.Setting.parent;
 
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.Setting;
+import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.shared.settings.preference.SharedPrefCategory;
 
 public class Settings extends BaseSettings {
@@ -28,6 +30,7 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_ANSWERS_BUTTON = new BooleanSetting("morphe_hide_answers_button", FALSE, true);
     public static final BooleanSetting HIDE_CHAT_BUTTON = new BooleanSetting("morphe_hide_chat_button", FALSE, true);
     public static final BooleanSetting HIDE_COMMUNITIES_SHELF = new BooleanSetting("morphe_hide_communities_shelf", FALSE, true);
+    public static final BooleanSetting FORCE_SYSTEM_FONT = new BooleanSetting("morphe_force_system_font", FALSE, true);
     public static final BooleanSetting HIDE_CREATE_BUTTON = new BooleanSetting("morphe_hide_create_button", FALSE, true);
     public static final BooleanSetting HIDE_DISCOVER_BUTTON = new BooleanSetting("morphe_hide_discover_button", FALSE, true);
     public static final BooleanSetting HIDE_GAMES_BUTTON = new BooleanSetting("morphe_hide_games_button", FALSE, true);
@@ -40,6 +43,8 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting REMOVE_NSFW_DIALOG = new BooleanSetting("morphe_remove_nsfw_dialog", FALSE, true);
     public static final BooleanSetting REMOVE_NOTIFICATION_DIALOG = new BooleanSetting("morphe_remove_notification_dialog", FALSE, true);
     public static final BooleanSetting SHOW_VIEW_COUNT = new BooleanSetting("morphe_show_view_count", FALSE, true);
+    public static final BooleanSetting CUSTOM_FONT = new BooleanSetting("morphe_custom_font", FALSE, true);
+    public static final StringSetting CUSTOM_FONT_FILE_PATH = new StringSetting("morphe_custom_font_file_path", "", true);
 
     // Miscellaneous
     public static final BooleanSetting OPEN_LINKS_DIRECTLY = new BooleanSetting("morphe_open_links_directly", TRUE);
