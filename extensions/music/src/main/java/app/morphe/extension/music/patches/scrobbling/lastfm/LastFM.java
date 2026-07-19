@@ -28,7 +28,7 @@ import app.morphe.extension.shared.requests.Requester;
 
 public class LastFM {
     private static final String BASE_URL = "https://ws.audioscrobbler.com/2.0/";
-    private static final String USER_AGENT = "Morphe/" + Utils.getAppVersionName();
+    private static final String USER_AGENT = "Morphe/" + Utils.getPatchesReleaseVersion() + " (YTMusic/" + Utils.getAppVersionName() + ")";
 
     public static final String API_KEY = "986d00852eea80eda8b2930e0abf5c46";
     public static final String SECRET = "1d802c749ccec53103400582fcaebd01";

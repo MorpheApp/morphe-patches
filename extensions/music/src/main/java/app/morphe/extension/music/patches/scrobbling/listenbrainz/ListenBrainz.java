@@ -23,8 +23,8 @@ import app.morphe.extension.shared.requests.Requester;
 
 public class ListenBrainz {
     private static final String BASE_URL = "https://api.listenbrainz.org/";
-    private static final String USER_AGENT = "Morphe/" + Utils.getAppVersionName();
-    private static final String CLIENT_VERSION = Utils.getAppVersionName();
+    private static final String USER_AGENT = "Morphe/" + Utils.getPatchesReleaseVersion() + " (YTMusic/" + Utils.getAppVersionName() + ")";
+    private static final String CLIENT_VERSION = Utils.getPatchesReleaseVersion();
     
     public static class TokenValidation {
         public boolean valid;
