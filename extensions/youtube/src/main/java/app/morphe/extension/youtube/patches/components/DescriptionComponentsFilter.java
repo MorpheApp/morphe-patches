@@ -41,6 +41,16 @@ public final class DescriptionComponentsFilter extends Filter {
                 "youchat_entrypoint.e"
         );
 
+        final StringFilterGroup correctionsSection = new StringFilterGroup(
+                Settings.HIDE_CORRECTIONS_SECTION,
+                "error_corrections_section"
+        );
+
+        final StringFilterGroup courseProgressSection = new StringFilterGroup(
+                Settings.HIDE_COURSE_PROGRESS_SECTION,
+                "course_progress"
+        );
+
         featuredSection = new StringFilterGroup(
                 null,
                 "compact_infocard.e"
@@ -58,6 +68,45 @@ public final class DescriptionComponentsFilter extends Filter {
                 new ByteArrayFilterGroup(
                         Settings.HIDE_FEATURED_VIDEOS_SECTION,
                         "structured_description_video_lockup"
+                )
+        );
+
+        final StringFilterGroup howThisWasMadeSection = new StringFilterGroup(
+                Settings.HIDE_HOW_THIS_WAS_MADE_SECTION,
+                "how_this_was_made_section"
+        );
+
+        final StringFilterGroup hypePoints = new StringFilterGroup(
+                Settings.HIDE_HYPE_POINTS,
+                "hype_points_factoid"
+        );
+
+        final StringFilterGroup infoCardsSection = new StringFilterGroup(
+                Settings.HIDE_INFO_CARDS_SECTION,
+                INFOCARDS_SECTION_PATH
+        );
+
+        final StringFilterGroup lensSection = new StringFilterGroup(
+                Settings.HIDE_SEARCH_INSIDE_THIS_VIDEO_SECTION,
+                "lens_section.e"
+        );
+
+        macroMarkersCarousel = new StringFilterGroup(
+                null,
+                "macro_markers_carousel.e"
+        );
+
+        macroMarkersCarouselGroupList.addAll(
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_CHAPTERS_SECTION,
+                        "chapters_horizontal_shelf",
+                        "auto-chapters",
+                        "description-chapters"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_KEY_CONCEPTS_SECTION,
+                        "learning_concept_macro_markers_carousel_shelf",
+                        "learning-concept"
                 )
         );
 
@@ -81,9 +130,10 @@ public final class DescriptionComponentsFilter extends Filter {
                 )
         );
 
-        final StringFilterGroup correctionsSection = new StringFilterGroup(
-                Settings.HIDE_CORRECTIONS_SECTION,
-                "error_corrections_section"
+        shortsHowThisWasMadeSection = new StringFilterGroup(
+                Settings.HIDE_HOW_THIS_WAS_MADE_SECTION,
+                "shelf_header.e",
+                "cell_video_attribute.e"
         );
 
         final StringFilterGroup transcriptSection = new StringFilterGroup(
@@ -91,54 +141,9 @@ public final class DescriptionComponentsFilter extends Filter {
                 "transcript_section"
         );
 
-        final StringFilterGroup howThisWasMadeSection = new StringFilterGroup(
-                Settings.HIDE_HOW_THIS_WAS_MADE_SECTION,
-                "how_this_was_made_section"
-        );
-
-        final StringFilterGroup courseProgressSection = new StringFilterGroup(
-                Settings.HIDE_COURSE_PROGRESS_SECTION,
-                "course_progress"
-        );
-
-        final StringFilterGroup hypePoints = new StringFilterGroup(
-                Settings.HIDE_HYPE_POINTS,
-                "hype_points_factoid"
-        );
-
-        final StringFilterGroup infoCardsSection = new StringFilterGroup(
-                Settings.HIDE_INFO_CARDS_SECTION,
-                INFOCARDS_SECTION_PATH
-        );
-
         subscribeButton = new StringFilterGroup(
                 Settings.HIDE_SUBSCRIBE_BUTTON,
                 "subscribe_button"
-        );
-
-        macroMarkersCarousel = new StringFilterGroup(
-                null,
-                "macro_markers_carousel.e"
-        );
-
-        macroMarkersCarouselGroupList.addAll(
-                new ByteArrayFilterGroup(
-                        Settings.HIDE_CHAPTERS_SECTION,
-                        "chapters_horizontal_shelf",
-                        "auto-chapters",
-                        "description-chapters"
-                ),
-                new ByteArrayFilterGroup(
-                        Settings.HIDE_KEY_CONCEPTS_SECTION,
-                        "learning_concept_macro_markers_carousel_shelf",
-                        "learning-concept"
-                )
-        );
-
-        shortsHowThisWasMadeSection = new StringFilterGroup(
-                Settings.HIDE_HOW_THIS_WAS_MADE_SECTION,
-                "shelf_header.e",
-                "cell_video_attribute.e"
         );
 
         videoDetails = new StringFilterGroup(
@@ -160,6 +165,7 @@ public final class DescriptionComponentsFilter extends Filter {
                 howThisWasMadeSection,
                 hypePoints,
                 infoCardsSection,
+                lensSection,
                 macroMarkersCarousel,
                 playlistSection,
                 shortsHowThisWasMadeSection,
