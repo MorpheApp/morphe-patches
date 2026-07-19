@@ -23,7 +23,6 @@ import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayMethodRef
-import app.morphe.patches.shared.misc.media.addMediaFetchPlayerConfigHook
 import app.morphe.patches.shared.misc.media.mediaFetchPlayerConfigPatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.addInstructionsAtControlFlowLabel
@@ -72,7 +71,6 @@ private val spoofVideoStreamsResourcePatch = resourcePatch {
 internal fun spoofVideoStreamsPatch(
     extensionClass: String,
     mainActivityOnCreateFingerprint: Fingerprint,
-    fixMediaFetchHotConfig: BytecodePatchBuilder.() -> Boolean,
     fixMediaFetchHotConfigAlternative: BytecodePatchBuilder.() -> Boolean,
     fixParsePlaybackResponseFeatureFlag: BytecodePatchBuilder.() -> Boolean,
     fixMediaSessionFeatureFlag: BytecodePatchBuilder.() -> Boolean,
@@ -89,7 +87,11 @@ internal fun spoofVideoStreamsPatch(
     dependsOn(
         fixProtoLibraryPatch,
         spoofVideoStreamsResourcePatch,
-        mediaFetchPlayerConfigPatch(fixMediaFetchHotConfig, fixMediaSessionFeatureFlag)
+        mediaFetchPlayerConfigPatch(
+            extensionClass = EXTENSION_CLASS,
+            hasMediaSessionFeatureFlag = fixMediaSessionFeatureFlag,
+            highPriority = true
+        )
     )
 
     execute {
@@ -375,11 +377,6 @@ internal fun spoofVideoStreamsPatch(
         // endregion
 
         // region turn off stream config replacement feature flag.
-
-        addMediaFetchPlayerConfigHook(
-            extensionClass = EXTENSION_CLASS,
-            highPriority = true
-        )
 
         if (fixMediaFetchHotConfigAlternative()) {
             MediaFetchHotConfigAlternativeFingerprint.let {

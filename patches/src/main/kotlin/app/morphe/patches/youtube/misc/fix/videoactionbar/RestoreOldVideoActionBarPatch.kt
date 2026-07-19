@@ -9,7 +9,6 @@ package app.morphe.patches.youtube.misc.fix.videoactionbar
 
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
-import app.morphe.patches.shared.misc.media.addMediaFetchPlayerConfigHook
 import app.morphe.patches.shared.misc.media.mediaFetchPlayerConfigPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -37,8 +36,8 @@ internal val restoreOldVideoActionBarPatch = bytecodePatch(
         cronetHeaderHookPatch,
         fixProtoLibraryPatch,
         mediaFetchPlayerConfigPatch(
-            fixMediaFetchHotConfig = { true } ,
-            fixMediaSessionFeatureFlag = { is_20_39_or_greater }
+            extensionClass = EXTENSION_CLASS,
+            hasMediaSessionFeatureFlag = { is_20_39_or_greater }
         )
     )
 
@@ -62,7 +61,6 @@ internal val restoreOldVideoActionBarPatch = bytecodePatch(
         }
 
         addHeaderHook("$EXTENSION_CLASS->fixVideoActionBar(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;")
-        addMediaFetchPlayerConfigHook(EXTENSION_CLASS)
         hookBuildRequest("$EXTENSION_CLASS->fetchRequest(Ljava/lang/String;Ljava/util/Map;)V")
     }
 }

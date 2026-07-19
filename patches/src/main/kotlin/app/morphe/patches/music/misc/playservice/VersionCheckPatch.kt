@@ -7,8 +7,6 @@ import kotlin.properties.Delegates
 
 // Use notNull delegate so an exception is thrown if these fields are accessed before they are set.
 
-var is_7_16_or_greater: Boolean by Delegates.notNull()
-    private set
 var is_7_33_or_greater: Boolean by Delegates.notNull()
     private set
 var is_8_03_or_greater: Boolean by Delegates.notNull()
@@ -51,7 +49,6 @@ val versionCheckPatch = bytecodePatch {
             return versionName >= version
         }
 
-        is_7_16_or_greater = isEqualsOrGreaterThan("7.16.00")
         is_7_33_or_greater = isEqualsOrGreaterThan("7.33.00")
         is_8_03_or_greater = isEqualsOrGreaterThan("8.03.00")
         is_8_05_or_greater = isEqualsOrGreaterThan("8.05.00")
