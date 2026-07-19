@@ -75,25 +75,28 @@ public enum ClientType {
             "Android Reel no auth"
     ),
     /**
-     * Video not playable in YouTube: All videos (This client requires login, but cannot log in with YouTube's access token).
-     * Video not playable in YouTube Music: None.
+     * Video not playable: None.
+     * For YouTube Music only.
      */
-    ANDROID_MUSIC_NO_SDK(
+    ANDROID_MUSIC_REEL(
             21,
             "ANDROID_MUSIC",
-            ANDROID_REEL_AUTH.deviceMake,
-            ANDROID_REEL_AUTH.deviceModel,
-            ANDROID_REEL_AUTH.osName,
-            ANDROID_REEL_AUTH.osVersion,
-            "7.12.52",
+            "com.google.android.apps.youtube.music",
+            Build.MANUFACTURER,
+            Build.MODEL,
+            "Android",
+            Build.VERSION.RELEASE,
+            String.valueOf(Build.VERSION.SDK_INT),
+            Build.ID,
+            "9.05.52",
             null,
-            "com.google.android.apps.youtube.music/7.12.52 (Linux; U; Android " + Build.VERSION.RELEASE + ") gzip",
             IS_YOUTUBE_MUSIC,
+            IS_YOUTUBE_MUSIC,
+            false,
+            false,
             true,
             false,
-            false,
-            false,
-            "Android Music No SDK"
+            "Android Music Reel auth"
     ),
     /**
      * Video not playable: Kids.
