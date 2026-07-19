@@ -361,11 +361,9 @@ public class SpoofVideoStreamsPatch {
                 if (request != null) {
                     var buffers = request.getStream();
                     if (buffers != null) {
-                        byte[] stream = buffers.first;
-                        if (stream != null) {
-                            Logger.printDebug(() -> "Overriding video stream: " + videoId);
-                            return stream;
-                        }
+                        byte[] stream = buffers.streamingData();
+                        Logger.printDebug(() -> "Overriding video stream: " + videoId);
+                        return stream;
                     }
                 }
 
@@ -391,7 +389,7 @@ public class SpoofVideoStreamsPatch {
                 if (request != null) {
                     var buffers = request.getStream();
                     if (buffers != null) {
-                        byte[] config = buffers.second;
+                        byte[] config = buffers.playerConfig();
                         if (config != null) {
                             Logger.printDebug(() -> "Overriding player config: " + videoId);
                             return config;

@@ -18,8 +18,6 @@ import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getDeobfusc
 import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getJavaScriptHash;
 import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getJavaScriptVariant;
 
-import android.util.Pair;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -59,6 +57,9 @@ import app.morphe.extension.shared.spoof.ClientType;
  * did use its own client streams.
  */
 public class StreamingDataRequest {
+
+    public record StreamData(byte[] streamingData, @Nullable byte[] playerConfig) {
+    }
 
     private static volatile ClientType[] clientOrderToUse = ClientType.values();
 
@@ -138,7 +139,7 @@ public class StreamingDataRequest {
 
     private final String videoId;
 
-    private final Future<Pair<byte[], byte[]>> future;
+    private final Future<StreamData> future;
 
     private StreamingDataRequest(String videoId, Map<String, String> playerHeaders) {
         this.videoId = videoId;
@@ -260,8 +261,8 @@ public class StreamingDataRequest {
     }
 
     @Nullable
-    private static Pair<byte[], byte[]> buildPlayerResponseBuffer(ClientType clientType,
-                                                    HttpURLConnection connection) {
+    private static StreamData buildPlayerResponseBuffer(ClientType clientType,
+                                                        HttpURLConnection connection) {
         // gzip encoding doesn't response with content length (-1),
         // but empty response body does.
         if (connection.getContentLength() == 0) {
@@ -318,7 +319,7 @@ public class StreamingDataRequest {
                 playerConfig = playerResponse.getPlayerConfig().toByteArray();
             }
 
-            return new Pair<>(streamingDataBuffer, playerConfig);
+            return new StreamData(streamingDataBuffer, playerConfig);
         } catch (IOException ex) {
             Logger.printException(() -> "Failed to write player response for video stream or details", ex);
             return null;
@@ -333,7 +334,7 @@ public class StreamingDataRequest {
         return false;
     }
 
-    private static Pair<byte[], byte[]> fetch(String videoId, @Nullable Map<String, String> playerHeaders) {
+    private static StreamData fetch(String videoId, @Nullable Map<String, String> playerHeaders) {
         final boolean debugEnabled = BaseSettings.DEBUG.get();
         final long fetchStartTime = System.currentTimeMillis();
 
@@ -350,7 +351,7 @@ public class StreamingDataRequest {
             HttpURLConnection connection = send(clientType, videoId, playerHeaders, showErrorToast);
             Logger.printDebug(() -> "Connection result: " + connection);
             if (connection != null) {
-                Pair<byte[], byte[]> playerResponseBuffers = buildPlayerResponseBuffer(clientType, connection);
+                StreamData playerResponseBuffers = buildPlayerResponseBuffer(clientType, connection);
 
                 if (playerResponseBuffers != null) {
                     lastSpoofedClientType = clientType;
@@ -385,7 +386,7 @@ public class StreamingDataRequest {
     }
 
     @Nullable
-    public Pair<byte[], byte[]> getStream() {
+    public StreamData getStream() {
         try {
             // This hook is always called off the main thread,
             // but this can later be called for the same video ID from the main thread.

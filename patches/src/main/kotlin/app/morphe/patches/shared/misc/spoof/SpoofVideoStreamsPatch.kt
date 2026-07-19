@@ -16,6 +16,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
@@ -339,17 +340,17 @@ internal fun spoofVideoStreamsPatch(
             addInstructions(
                 targetIndex,
                 """
-                        # Field a: Stream uri.
-                        # Field c: Http method.
-                        # Field d: Post data.
-                        move-object v0, p0  # method has over 15 registers and must copy p0 to a lower register.
-                        iget-object v1, v0, $definingClass->a:Landroid/net/Uri;
-                        iget v2, v0, $definingClass->c:I
-                        iget-object v3, v0, $definingClass->d:[B
-                        invoke-static { v1, v2, v3 }, $EXTENSION_CLASS->removeVideoPlaybackPostBody(Landroid/net/Uri;I[B)[B
-                        move-result-object v1
-                        iput-object v1, v0, $definingClass->d:[B
-                    """,
+                    # Field a: Stream uri.
+                    # Field c: Http method.
+                    # Field d: Post data.
+                    move-object v0, p0  # method has over 15 registers and must copy p0 to a lower register.
+                    iget-object v1, v0, $definingClass->a:Landroid/net/Uri;
+                    iget v2, v0, $definingClass->c:I
+                    iget-object v3, v0, $definingClass->d:[B
+                    invoke-static { v1, v2, v3 }, $EXTENSION_CLASS->removeVideoPlaybackPostBody(Landroid/net/Uri;I[B)[B
+                    move-result-object v1
+                    iput-object v1, v0, $definingClass->d:[B
+                """
             )
         }
 
@@ -388,16 +389,15 @@ internal fun spoofVideoStreamsPatch(
         // If SABR is disabled, it seems 'MediaFetchHotConfig' may no longer need an override (not confirmed).
 
         with(MediaFetchEnumConstructorFingerprint.method) {
-            val mediaFetchEnumClass = definingClass
-            val stringIndex = MediaFetchEnumConstructorFingerprint.stringMatches.last().index
-            val sabrFieldIndex = indexOfFirstInstructionOrThrow(stringIndex) {
-                opcode == Opcode.SPUT_OBJECT &&
-                        getReference<FieldReference>()?.type == mediaFetchEnumClass
-            }
-            val sabrFieldReference = getInstruction<ReferenceInstruction>(sabrFieldIndex).reference as FieldReference
+            val sabrFieldIndex = indexOfFirstInstructionOrThrow(
+                MediaFetchEnumConstructorFingerprint.stringMatches.last().index,
+                fieldAccess(opcode = Opcode.SPUT_OBJECT, type = definingClass)
+            )
+            val sabrFieldReference = getInstruction<ReferenceInstruction>(sabrFieldIndex)
+                .reference as FieldReference
 
             Fingerprint(
-                returnType = mediaFetchEnumClass,
+                returnType = definingClass,
                 filters = opcodesToFilters(
                     Opcode.SGET_OBJECT,
                     Opcode.RETURN_OBJECT,
