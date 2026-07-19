@@ -99,14 +99,14 @@ public enum ClientType {
             false,
             true,
             false,
-            "Android Music Reel auth"
+            "Android Music Reel"
     ),
     /**
      * Video not playable: Kids.
      * AV1 codec available.
      */
     // https://dumps.tadiphone.dev/dumps/oculus/eureka
-    ANDROID_VR_1_81(
+    ANDROID_VR_1_74(
             28,
             "ANDROID_VR",
             "com.google.android.apps.youtube.vr.oculus",
@@ -116,7 +116,7 @@ public enum ClientType {
             "14",
             "34",
             "UP1A.231005.007.A1",
-            "1.81.10",
+            "1.74.19",
             null,
             false,
             false,
@@ -125,33 +125,33 @@ public enum ClientType {
             true,
             true,
             true,
-            "Android VR 1.81"
+            "Android VR 1.74"
     ),
     /**
      * Video not playable: Kids.
      * AV1 codec not available.
      */
     // https://dumps.tadiphone.dev/dumps/oculus/monterey
-    ANDROID_VR_1_80(
-            ANDROID_VR_1_81.id,
-            ANDROID_VR_1_81.clientName,
-            Objects.requireNonNull(ANDROID_VR_1_81.packageName),
-            ANDROID_VR_1_81.deviceMake,
+    ANDROID_VR_1_73(
+            ANDROID_VR_1_74.id,
+            ANDROID_VR_1_74.clientName,
+            Objects.requireNonNull(ANDROID_VR_1_74.packageName),
+            ANDROID_VR_1_74.deviceMake,
             "Quest",
-            ANDROID_VR_1_81.osName,
+            ANDROID_VR_1_74.osName,
             "10",
             "29",
             "QQ3A.200805.001",
-            "1.80.09",
-            ANDROID_VR_1_81.clientPlatform,
-            ANDROID_VR_1_81.canLogin,
-            ANDROID_VR_1_81.requireLogin,
-            ANDROID_VR_1_81.supportsMultiAudioTracks,
-            ANDROID_VR_1_81.supportsOAuth2,
-            ANDROID_VR_1_81.supportsVRImmersiveMode,
-            ANDROID_VR_1_81.requireSABR,
-            ANDROID_VR_1_81.usePlayerEndpoint,
-            "Android VR 1.80"
+            "1.73.24",
+            ANDROID_VR_1_74.clientPlatform,
+            ANDROID_VR_1_74.canLogin,
+            ANDROID_VR_1_74.requireLogin,
+            ANDROID_VR_1_74.supportsMultiAudioTracks,
+            ANDROID_VR_1_74.supportsOAuth2,
+            ANDROID_VR_1_74.supportsVRImmersiveMode,
+            ANDROID_VR_1_74.requireSABR,
+            ANDROID_VR_1_74.usePlayerEndpoint,
+            "Android VR 1.73"
     ),
     /**
      * Video not playable: Livestream.

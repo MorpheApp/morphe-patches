@@ -101,8 +101,8 @@ public class SpoofVideoStreamsSideEffectsPreference extends Preference {
                             + '\n' + str("morphe_spoof_video_streams_about_no_force_original_audio");
             case ANDROID_REEL_AUTH, ANDROID_REEL_NO_AUTH ->
                     summary = str("morphe_spoof_video_streams_about_playback_failure");
-            // VR 1.81 is not exposed in the UI and should never be reached here.
-            case ANDROID_VR_1_80, ANDROID_VR_1_81 ->
+            // VR 1.74 is not exposed in the UI and should never be reached here.
+            case ANDROID_VR_1_73, ANDROID_VR_1_74 ->
                     summary = str("morphe_spoof_video_streams_about_no_audio_tracks")
                             + '\n' + str("morphe_spoof_video_streams_about_no_stable_volume");
             case TV ->

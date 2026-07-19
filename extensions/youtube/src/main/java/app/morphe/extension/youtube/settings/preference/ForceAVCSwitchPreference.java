@@ -24,8 +24,8 @@ public class ForceAVCSwitchPreference extends SwitchPreference {
     private static final boolean available = !SpoofVideoStreamsPatch.isPatchIncluded()
             || !SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.get() || List.of(
             ClientType.ANDROID_CREATOR,
-            ClientType.ANDROID_VR_1_81,
-            ClientType.ANDROID_VR_1_80,
+            ClientType.ANDROID_VR_1_74,
+            ClientType.ANDROID_VR_1_73,
             ClientType.VISIONOS).contains(SpoofVideoStreamsPatch.getPreferredClient());
 
     {
