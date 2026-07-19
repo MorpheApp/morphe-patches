@@ -20,8 +20,6 @@ import android.util.AttributeSet;
 
 import androidx.annotation.Nullable;
 
-import org.apache.commons.lang3.StringUtils;
-
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
@@ -115,8 +113,7 @@ public class SpoofVideoStreamsSideEffectsPreference extends Preference {
             default -> Logger.printException(() -> "Unknown client: " + clientType);
         }
 
-        // Only Android Reel and Android VR supports 360° VR immersive mode.
-        if (!StringUtils.startsWithAny(clientType.name(), "ANDROID_VR", "ANDROID_REEL")) {
+        if (!clientType.supportsVRImmersiveMode) {
             summary += '\n' + str("morphe_spoof_video_streams_about_no_immersive_mode");
         }
 

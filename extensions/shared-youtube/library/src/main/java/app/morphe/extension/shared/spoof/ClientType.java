@@ -47,6 +47,7 @@ public enum ClientType {
             true,
             false,
             true,
+            true,
             false,
             "Android Reel auth"
     ),
@@ -70,6 +71,7 @@ public enum ClientType {
             false,
             ANDROID_REEL_AUTH.supportsMultiAudioTracks,
             ANDROID_REEL_AUTH.supportsOAuth2,
+            ANDROID_REEL_AUTH.supportsVRImmersiveMode,
             ANDROID_REEL_AUTH.requireSABR,
             ANDROID_REEL_AUTH.usePlayerEndpoint,
             "Android Reel no auth"
@@ -92,6 +94,7 @@ public enum ClientType {
             null,
             IS_YOUTUBE_MUSIC,
             IS_YOUTUBE_MUSIC,
+            false,
             false,
             false,
             true,
@@ -121,6 +124,7 @@ public enum ClientType {
             true,
             true,
             true,
+            true,
             "Android VR 1.81"
     ),
     /**
@@ -144,6 +148,7 @@ public enum ClientType {
             ANDROID_VR_1_81.requireLogin,
             ANDROID_VR_1_81.supportsMultiAudioTracks,
             ANDROID_VR_1_81.supportsOAuth2,
+            ANDROID_VR_1_81.supportsVRImmersiveMode,
             ANDROID_VR_1_81.requireSABR,
             ANDROID_VR_1_81.usePlayerEndpoint,
             "Android VR 1.80"
@@ -167,6 +172,7 @@ public enum ClientType {
             null,
             true,
             true,
+            false,
             false,
             false,
             false,
@@ -211,7 +217,7 @@ public enum ClientType {
             false,
             false,
             true,
-            false,
+            true,
             false,
             "visionOS"
     );
@@ -298,6 +304,11 @@ public enum ClientType {
     public final boolean supportsMultiAudioTracks;
 
     /**
+     * If the client supports 360° VR immersive mode.
+     */
+    public final boolean supportsVRImmersiveMode;
+
+    /**
      * The streaming url has an obfuscated 'n' parameter.
      * If true, JavaScript must be fetched to decrypt the 'n' parameter.
      */
@@ -336,6 +347,7 @@ public enum ClientType {
                boolean requireLogin,
                boolean supportsMultiAudioTracks,
                boolean supportsOAuth2,
+               boolean supportsVRImmersiveMode,
                boolean requireSABR,
                boolean usePlayerEndpoint,
                String friendlyName) {
@@ -355,6 +367,7 @@ public enum ClientType {
         this.requireSABR = requireSABR;
         this.supportsMultiAudioTracks = supportsMultiAudioTracks;
         this.supportsOAuth2 = supportsOAuth2;
+        this.supportsVRImmersiveMode = supportsVRImmersiveMode;
         this.usePlayerEndpoint = usePlayerEndpoint;
         this.friendlyName = friendlyName;
 
@@ -385,7 +398,7 @@ public enum ClientType {
                boolean canLogin,
                boolean requireLogin,
                boolean supportsMultiAudioTracks,
-               boolean supportsOAuth2,
+               boolean supportsVRImmersiveMode,
                boolean requireJS,
                String friendlyName) {
         this.id = id;
@@ -400,7 +413,7 @@ public enum ClientType {
         this.canLogin = canLogin;
         this.requireLogin = requireLogin;
         this.supportsMultiAudioTracks = supportsMultiAudioTracks;
-        this.supportsOAuth2 = supportsOAuth2;
+        this.supportsVRImmersiveMode = supportsVRImmersiveMode;
         this.requireJS = requireJS;
         this.friendlyName = friendlyName;
 
@@ -408,6 +421,7 @@ public enum ClientType {
         buildID = null;
         packageName = null;
         requireSABR = false;
+        supportsOAuth2 = false;
         usePlayerEndpoint = true;
     }
 }
