@@ -75,7 +75,6 @@ internal fun spoofVideoStreamsPatch(
     fixParsePlaybackResponseFeatureFlag: BytecodePatchBuilder.() -> Boolean,
     fixMediaSessionFeatureFlag: BytecodePatchBuilder.() -> Boolean,
     fixReelItemWatchResponseFeatureFlag: BytecodePatchBuilder.() -> Boolean,
-    @Suppress("unused") hookAccountIdentity: BytecodePatchBuilder.() -> Boolean,
     useNewRequestBuilderFingerprint: BytecodePatchBuilder.() -> Boolean,
     block: BytecodePatchBuilder.() -> Unit,
     executeBlock: BytecodePatchContext.() -> Unit = {},

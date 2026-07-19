@@ -28,7 +28,6 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
     fixParsePlaybackResponseFeatureFlag = { is_7_33_or_greater && !is_9_24_or_greater },
     fixMediaSessionFeatureFlag = { is_8_40_or_greater },
     fixReelItemWatchResponseFeatureFlag = { false },
-    hookAccountIdentity = { false },
     useNewRequestBuilderFingerprint = { is_9_19_or_greater },
 
     block = {

@@ -37,7 +37,6 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
         // but only recently has been causing issues.
         is_20_31_or_greater
     },
-    hookAccountIdentity = { true },
     useNewRequestBuilderFingerprint = { is_21_21_or_greater },
 
     block = {
