@@ -153,8 +153,9 @@ Playback will fail if the Player JavaScript hash is outdated."</string>
     <!-- ad.hideFullscreenAdsPatch -->
     <string name="morphe_hide_fullscreen_ads_title">Hide fullscreen ads</string>
 
-    <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-    <string name="morphe_force_original_audio_not_available">To use this feature, change \'Spoof video streams\' to Android Reel or TV</string>
+    <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
+          'Android Studio' must be kept untranslated. -->
+    <string name="morphe_force_original_audio_not_available">To use this feature, change \'Spoof video streams\' to any client except \'Android Studio\'</string>
 
     <!-- misc.privacy.sanitizeSharingLinksPatch -->
     <string name="morphe_sanitize_sharing_links_title">Sanitize sharing links</string>
