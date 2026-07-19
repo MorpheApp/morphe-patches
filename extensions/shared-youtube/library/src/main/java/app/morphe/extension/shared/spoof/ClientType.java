@@ -120,7 +120,7 @@ public enum ClientType {
             null,
             false,
             false,
-            false,
+            true,
             true,
             true,
             true,
@@ -201,7 +201,7 @@ public enum ClientType {
             "TV"
     ),
     /**
-     * Video not playable: Kids.
+     * Video not playable: Kids, Paid, Movie, Private, Age-restricted.
      * AV1 codec available.
      * May stop working at any time.
      */
