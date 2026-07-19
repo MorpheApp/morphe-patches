@@ -23,12 +23,13 @@ import java.util.Map;
 
 import app.morphe.extension.music.patches.scrobbling.ScrobbleManager;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 
 public class LastFM {
     private static final String BASE_URL = "https://ws.audioscrobbler.com/2.0/";
-    private static final String USER_AGENT = "YT Music Morphe (https://github.com/MorpheApp/morphe-patches)";
-    
+    private static final String USER_AGENT = "Morphe/" + Utils.getAppVersionName();
+
     public static final String API_KEY = "986d00852eea80eda8b2930e0abf5c46";
     public static final String SECRET = "1d802c749ccec53103400582fcaebd01";
 

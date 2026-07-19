@@ -23,7 +23,8 @@ import app.morphe.extension.shared.requests.Requester;
 
 public class ListenBrainz {
     private static final String BASE_URL = "https://api.listenbrainz.org/";
-    private static final String USER_AGENT = "YT Music Morphe (https://github.com/MorpheApp/morphe-patches)";
+    private static final String USER_AGENT = "Morphe/" + Utils.getAppVersionName();
+    private static final String CLIENT_VERSION = Utils.getAppVersionName();
     
     public static class TokenValidation {
         public boolean valid;
@@ -152,8 +153,8 @@ public class ListenBrainz {
         if (songId != null && !songId.isBlank()) {
             info.put("origin_url", "https://music.youtube.com/watch?v=" + songId);
         }
-        info.put("submission_client", "YT Music Morphe");
-        info.put("submission_client_version", "1.0.0");
+        info.put("submission_client", "Morphe");
+        info.put("submission_client_version", CLIENT_VERSION);
         
         metadata.put("additional_info", info);
         return metadata;
