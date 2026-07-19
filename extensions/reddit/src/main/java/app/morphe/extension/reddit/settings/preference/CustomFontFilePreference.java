@@ -9,19 +9,21 @@ package app.morphe.extension.reddit.settings.preference;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.app.Activity;
-import android.database.Cursor;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.preference.Preference;
 import android.provider.DocumentsContract;
 import android.provider.OpenableColumns;
 
+import androidx.annotation.Nullable;
+
 import java.lang.ref.WeakReference;
 import java.util.Locale;
 
 import app.morphe.extension.reddit.settings.Settings;
-import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
@@ -32,20 +34,17 @@ public final class CustomFontFilePreference extends Preference {
 
     private static WeakReference<CustomFontFilePreference> pendingPreference = new WeakReference<>(null);
 
-    private final StringSetting setting;
+    private final StringSetting filePathSetting;
     private final String defaultSummary;
 
-    public CustomFontFilePreference(Context context, StringSetting setting) {
+    public CustomFontFilePreference(Context context, StringSetting filePathSetting) {
         super(context);
-        this.setting = setting;
+        this.filePathSetting = filePathSetting;
 
-        setTitle(str(setting.key + "_title"));
-        setKey(setting.key);
+        setTitle(str(filePathSetting.key + "_title"));
+        setKey(filePathSetting.key);
 
-        String summaryKey = setting.key + "_summary";
-        this.defaultSummary = ResourceUtils.getStringIdentifier(summaryKey) != 0
-                ? str(summaryKey).toString()
-                : "Select a TTF or OTF font file";
+        this.defaultSummary = str(filePathSetting.key + "_summary");
         refreshSummary();
 
         setOnPreferenceClickListener(preference -> openPicker());
@@ -80,36 +79,32 @@ public final class CustomFontFilePreference extends Preference {
         if (uri == null) return;
 
         if (!isSupportedFontSelection(context, uri)) {
-            if (ResourceUtils.getStringIdentifier("morphe_custom_font_invalid_file") != 0) {
-                Utils.showToastLong(str("morphe_custom_font_invalid_file"));
-            } else {
-                Utils.showToastLong("Please select a .ttf or .otf font file.");
-            }
+            Utils.showToastLong(str("morphe_custom_font_invalid_file"));
             return;
         }
 
-        int readFlag = data.getFlags() & Intent.FLAG_GRANT_READ_URI_PERMISSION;
+        final int readFlag = data.getFlags() & Intent.FLAG_GRANT_READ_URI_PERMISSION;
         if (readFlag != 0) {
             try {
-                context.getContentResolver().takePersistableUriPermission(uri, readFlag);
-            } catch (Exception ignored) {
+                context.getContentResolver().takePersistableUriPermission(
+                        uri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            } catch (Exception ex) {
                 // Some providers do not support persistable grants.
+                Logger.printDebug(() -> "Failed to take persistable URI permission", ex);
             }
         }
-
-        // Restart is only needed if custom font rendering is currently active.
-        boolean customFontEnabled = Settings.CUSTOM_FONT.get();
 
         // Suppress automatic restart prompts from the shared preference change listener.
         AbstractPreferenceFragment.settingImportInProgress = true;
         try {
-            preference.setting.save(uri.toString());
+            preference.filePathSetting.save(uri.toString());
             preference.refreshSummary();
         } finally {
             AbstractPreferenceFragment.settingImportInProgress = false;
         }
 
-        if (customFontEnabled) {
+        // Restart is only needed if custom font rendering is currently active.
+        if (Settings.CUSTOM_FONT.get()) {
             AbstractPreferenceFragment.showRestartDialog(context);
         }
     }
@@ -129,8 +124,10 @@ public final class CustomFontFilePreference extends Preference {
         return lower.endsWith(".ttf") || lower.endsWith(".otf");
     }
 
+    @Nullable
     private static String getDisplayName(Context context, Uri uri) {
-        try (Cursor cursor = context.getContentResolver().query(uri, null, null, null, null)) {
+        try (Cursor cursor = context.getContentResolver().query(
+                uri, null, null, null, null)) {
             if (cursor == null || !cursor.moveToFirst()) {
                 return null;
             }
@@ -141,14 +138,12 @@ public final class CustomFontFilePreference extends Preference {
             }
 
             return cursor.getString(nameColumn);
-        } catch (Exception ignored) {
-            return null;
         }
     }
 
     private void refreshSummary() {
-        String configured = setting.get();
-        if (configured == null || configured.trim().isEmpty()) {
+        String configured = filePathSetting.get().trim();
+        if (configured.isBlank()) {
             setSummary(defaultSummary);
             return;
         }
@@ -156,10 +151,7 @@ public final class CustomFontFilePreference extends Preference {
         Uri uri = Uri.parse(configured);
         String friendlyPath = getFriendlyPath(uri, configured);
 
-        String selectedFontLabel = ResourceUtils.getStringIdentifier("morphe_custom_font_selected_font") != 0
-                ? str("morphe_custom_font_selected_font").toString()
-                : "Selected font";
-        setSummary(selectedFontLabel + " - " + friendlyPath);
+        setSummary(str("morphe_custom_font_selected_font", friendlyPath));
     }
 
     private static String getFriendlyPath(Uri uri, String configured) {
@@ -173,8 +165,9 @@ public final class CustomFontFilePreference extends Preference {
             if (!documentId.isEmpty()) {
                 return documentId;
             }
-        } catch (Exception ignored) {
+        } catch (Exception ex) {
             // Ignore and fall back to URI path parsing.
+            Logger.printDebug(() -> "Failed to parse document ID", ex);
         }
 
         String tail = uri.getLastPathSegment();

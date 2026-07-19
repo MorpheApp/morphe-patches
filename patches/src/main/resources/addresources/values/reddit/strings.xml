@@ -45,7 +45,7 @@ Second \"item\" text"</string>
     <string name="morphe_custom_font_summary">Load a custom TTF or OTF font file from the path below. Enabling this also turns off Force system font.</string>
     <string name="morphe_custom_font_file_path_title">Custom font file</string>
     <string name="morphe_custom_font_file_path_summary">Tap to pick a TTF or OTF font file</string>
-    <string name="morphe_custom_font_selected_font">Selected font</string>
+    <string name="morphe_custom_font_selected_font">Selected font - %s</string>
     <string name="morphe_custom_font_pick_file_first">Pick a custom font file first.</string>
     <string name="morphe_custom_font_invalid_file">Please select a .ttf or .otf font file.</string>
     <string name="morphe_custom_font_failed_to_load">Failed to load custom font. Pick a different file.</string>
