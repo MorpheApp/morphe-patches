@@ -35,8 +35,7 @@ internal object MediaFetchHotConfigFingerprint : Fingerprint(
                 opcode = Opcode.IPUT_BOOLEAN,
                 definingClass = "this"
             )
-        ),
-
+        )
     )
 )
 
