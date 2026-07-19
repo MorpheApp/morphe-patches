@@ -26,8 +26,7 @@ import app.morphe.extension.shared.Logger;
 @SuppressWarnings({"ConstantLocale", "deprecation"})
 public enum ClientType {
     /**
-     * Video not playable: Paid, Movie, Private, Age-restricted.
-     * Uses non-adaptive bitrate.
+     * Video not playable: None.
      * AV1 codec available.
      */
     ANDROID_REEL_AUTH(
@@ -41,19 +40,20 @@ public enum ClientType {
             String.valueOf(Build.VERSION.SDK_INT),
             Build.ID,
             // A hardcoded client version is used for YouTube Music.
-            "20.26.46",
+            "21.05.265",
             null,
-            // This client has been used by most open-source YouTube stream extraction tools since 2024, including NewPipe Extractor, SmartTube, and Grayjay.
-            // This client can log in, but if an access token is used in the request, GVS can more easily identify the request as coming from Morphe.
-            // This means that the GVS server can strengthen its validation of the ANDROID_REEL client.
-            // For this reason, ANDROID_REEL is used as a logout client.
             IS_YOUTUBE,
             IS_YOUTUBE,
             true,
             false,
+            true,
             false,
             "Android Reel auth"
     ),
+    /**
+     * Video not playable: Paid, Movie, Private, Age-restricted.
+     * AV1 codec available.
+     */
     ANDROID_REEL_NO_AUTH(
             ANDROID_REEL_AUTH.id,
             ANDROID_REEL_AUTH.clientName,
@@ -70,13 +70,13 @@ public enum ClientType {
             false,
             ANDROID_REEL_AUTH.supportsMultiAudioTracks,
             ANDROID_REEL_AUTH.supportsOAuth2,
+            ANDROID_REEL_AUTH.requireSABR,
             ANDROID_REEL_AUTH.usePlayerEndpoint,
             "Android Reel no auth"
     ),
     /**
      * Video not playable in YouTube: All videos (This client requires login, but cannot log in with YouTube's access token).
      * Video not playable in YouTube Music: None.
-     * Uses non-adaptive bitrate.
      */
     ANDROID_MUSIC_NO_SDK(
             21,
@@ -96,12 +96,11 @@ public enum ClientType {
             "Android Music No SDK"
     ),
     /**
-     * Video not playable: Kids, Paid, Movie, Private, Age-restricted.
-     * Uses non-adaptive bitrate.
+     * Video not playable: Kids.
      * AV1 codec available.
      */
     // https://dumps.tadiphone.dev/dumps/oculus/eureka
-    ANDROID_VR_1_65(
+    ANDROID_VR_1_81(
             28,
             "ANDROID_VR",
             "com.google.android.apps.youtube.vr.oculus",
@@ -111,42 +110,43 @@ public enum ClientType {
             "14",
             "34",
             "UP1A.231005.007.A1",
-            "1.65.10",
+            "1.81.10",
             null,
             false,
             false,
             false,
             true,
             true,
-            "Android VR 1.65"
+            true,
+            "Android VR 1.81"
     ),
     /**
-     * Uses non adaptive bitrate.
+     * Video not playable: Kids.
      * AV1 codec not available.
      */
     // https://dumps.tadiphone.dev/dumps/oculus/monterey
-    ANDROID_VR_1_64(
-            ANDROID_VR_1_65.id,
-            ANDROID_VR_1_65.clientName,
-            Objects.requireNonNull(ANDROID_VR_1_65.packageName),
-            ANDROID_VR_1_65.deviceMake,
+    ANDROID_VR_1_80(
+            ANDROID_VR_1_81.id,
+            ANDROID_VR_1_81.clientName,
+            Objects.requireNonNull(ANDROID_VR_1_81.packageName),
+            ANDROID_VR_1_81.deviceMake,
             "Quest",
-            ANDROID_VR_1_65.osName,
+            ANDROID_VR_1_81.osName,
             "10",
             "29",
             "QQ3A.200805.001",
-            "1.64.34",
-            ANDROID_VR_1_65.clientPlatform,
-            ANDROID_VR_1_65.canLogin,
-            ANDROID_VR_1_65.requireLogin,
-            ANDROID_VR_1_65.supportsMultiAudioTracks,
-            ANDROID_VR_1_65.supportsOAuth2,
-            ANDROID_VR_1_65.usePlayerEndpoint,
-            "Android VR 1.64"
+            "1.80.09",
+            ANDROID_VR_1_81.clientPlatform,
+            ANDROID_VR_1_81.canLogin,
+            ANDROID_VR_1_81.requireLogin,
+            ANDROID_VR_1_81.supportsMultiAudioTracks,
+            ANDROID_VR_1_81.supportsOAuth2,
+            ANDROID_VR_1_81.requireSABR,
+            ANDROID_VR_1_81.usePlayerEndpoint,
+            "Android VR 1.80"
     ),
     /**
      * Video not playable: Livestream.
-     * Uses non-adaptive bitrate.
      * AV1 codec and HDR codec are not available, and the maximum resolution is 720p.
      */
     // https://dumps.tadiphone.dev/dumps/google/mustang
@@ -166,12 +166,12 @@ public enum ClientType {
             true,
             false,
             false,
+            false,
             true,
             "Android Studio"
     ),
     /**
      * Video not playable: None.
-     * Uses non adaptive bitrate.
      * AV1 codec available.
      */
     TV(7,
@@ -301,6 +301,11 @@ public enum ClientType {
     public final boolean requireJS;
 
     /**
+     * If the client require SABR.
+     */
+    public final boolean requireSABR;
+
+    /**
      * Whether to use the '/player' endpoint.
      */
     public final boolean usePlayerEndpoint;
@@ -328,6 +333,7 @@ public enum ClientType {
                boolean requireLogin,
                boolean supportsMultiAudioTracks,
                boolean supportsOAuth2,
+               boolean requireSABR,
                boolean usePlayerEndpoint,
                String friendlyName) {
         this.id = id;
@@ -343,6 +349,7 @@ public enum ClientType {
         this.clientPlatform = clientPlatform;
         this.canLogin = canLogin;
         this.requireLogin = requireLogin;
+        this.requireSABR = requireSABR;
         this.supportsMultiAudioTracks = supportsMultiAudioTracks;
         this.supportsOAuth2 = supportsOAuth2;
         this.usePlayerEndpoint = usePlayerEndpoint;
@@ -397,6 +404,7 @@ public enum ClientType {
         androidSdkVersion = null;
         buildID = null;
         packageName = null;
+        requireSABR = false;
         usePlayerEndpoint = true;
     }
 }

@@ -32,14 +32,14 @@ public final class PlayerRoutes {
     private static final Route.CompiledRoute GET_PLAYER_STREAMING_DATA = new Route(
             Route.Method.POST,
             "player" +
-                    "?fields=playabilityStatus,streamingData" +
+                    "?fields=playabilityStatus,streamingData,playerConfig.mediaCommonConfig" +
                     "&alt=proto"
     ).compile();
 
     private static final Route.CompiledRoute GET_REEL_STREAMING_DATA = new Route(
             Route.Method.POST,
             "reel/reel_item_watch" +
-                    "?fields=playerResponse.playabilityStatus,playerResponse.streamingData" +
+                    "?fields=playerResponse.playabilityStatus,playerResponse.streamingData,playerResponse.playerConfig.mediaCommonConfig" +
                     "&alt=proto"
     ).compile();
 

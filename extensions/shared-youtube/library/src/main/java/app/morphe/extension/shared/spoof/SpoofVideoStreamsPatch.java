@@ -237,7 +237,7 @@ public class SpoofVideoStreamsPatch {
      * Fix audio stuttering in YouTube Music.
      */
     public static boolean disableSABR() {
-        return SPOOF_VIDEO_STREAMS;
+        return SPOOF_VIDEO_STREAMS && !StreamingDataRequest.getLastSpoofedClientUseSABR();
     }
 
     /**
@@ -346,16 +346,49 @@ public class SpoofVideoStreamsPatch {
             try {
                 StreamingDataRequest request = StreamingDataRequest.getRequestForVideoId(videoId);
                 if (request != null) {
-                    var stream = request.getStream();
-                    if (stream != null) {
-                        Logger.printDebug(() -> "Overriding video stream: " + videoId);
-                        return stream;
+                    var buffers = request.getStream();
+                    if (buffers != null) {
+                        byte[] stream = buffers.first;
+                        if (stream != null) {
+                            Logger.printDebug(() -> "Overriding video stream: " + videoId);
+                            return stream;
+                        }
                     }
                 }
 
                 Logger.printDebug(() -> "Not overriding streaming data (video stream is null): " + videoId);
             } catch (Exception ex) {
                 Logger.printException(() -> "getStreamingData failure", ex);
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Injection point.
+     * Fix playback by replace the player config.
+     * Called after {@link #getStreamingData(String)}.
+     */
+    @Nullable
+    public static byte[] getPlayerConfig(String videoId) {
+        if (SPOOF_VIDEO_STREAMS) {
+            try {
+                StreamingDataRequest request = StreamingDataRequest.getRequestForVideoId(videoId);
+                if (request != null) {
+                    var buffers = request.getStream();
+                    if (buffers != null) {
+                        byte[] config = buffers.second;
+                        if (config != null) {
+                            Logger.printDebug(() -> "Overriding player config: " + videoId);
+                            return config;
+                        }
+                    }
+                }
+
+                Logger.printDebug(() -> "Not overriding player config: " + videoId);
+            } catch (Exception ex) {
+                Logger.printException(() -> "getPlayerConfig failure", ex);
             }
         }
 

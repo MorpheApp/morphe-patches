@@ -42,6 +42,8 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
+import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
@@ -184,44 +186,56 @@ internal fun spoofVideoStreamsPatch(
         // endregion
 
         // region Replace the streaming data with the replacement streams.
-        
-        CreateStreamingDataFingerprint.method.apply {
-            val setStreamDataMethodName = "patch_setStreamingData"
-            val resultMethodType = CreateStreamingDataFingerprint.classDef.type
-            val videoDetailsIndex = CreateStreamingDataFingerprint.instructionMatches.last().index
-            val videoDetailsRegister = getInstruction<TwoRegisterInstruction>(videoDetailsIndex).registerA
-            val videoDetailsClass = getInstruction(videoDetailsIndex).getReference<FieldReference>()!!.type
 
-            addInstruction(
-                videoDetailsIndex + 1,
-                "invoke-direct { p0, v$videoDetailsRegister }, " +
-                    "$resultMethodType->$setStreamDataMethodName($videoDetailsClass)V",
-            )
+        CreateStreamingDataFingerprint.let {
+            it.method.apply {
+                val videoDetailsMatch = it.instructionMatches[5]
+                val videoDetailsIndex = videoDetailsMatch.index
+                val videoDetailsRegister = getInstruction<TwoRegisterInstruction>(videoDetailsIndex).registerA
+                val videoDetailsClass = videoDetailsMatch.instruction.getReference<FieldReference>()!!.type
 
-            val setStreamingDataIndex = CreateStreamingDataFingerprint.instructionMatches.first().index
+                val playerProtoClass = parameterTypes.first().toString()
+                val getStreamingDataField = it.instructionMatches.first().instruction.getReference<FieldReference>()!!
+                val setStreamingDataField = it.instructionMatches[1].instruction.getReference<FieldReference>()!!
+                val setPlayerConfigField = it.instructionMatches.last().instruction.getReference<FieldReference>()!!
+                val playerConfigClass = setPlayerConfigField.type
+                val mediaCommonConfigField = abrStateDataFingerprint(playerConfigClass)
+                    .instructionMatches[1].instruction.getReference<FieldReference>()!!
 
-            val playerProtoClass = getInstruction(setStreamingDataIndex + 1)
-                .getReference<FieldReference>()!!.definingClass
+                val (createBuilderMethod, mergeFromMethod) =
+                    with(PlayerConfigBuilderFingerprint) {
+                        Pair(
+                            instructionMatches[2].instruction.getReference<MethodReference>()!!,
+                            instructionMatches[4].instruction.getReference<MethodReference>()!!,
+                        )
+                    }
 
-            val setStreamingDataField = getInstruction(setStreamingDataIndex).getReference<FieldReference>()
+                val (castReference, buildMethod) =
+                    with(PlayerConfigBuilderFingerprint) {
+                        Pair(
+                            instructionMatches[5].instruction.getReference<TypeReference>()!!,
+                            instructionMatches[6].instruction.getReference<MethodReference>()!!
+                        )
+                    }
 
-            val getStreamingDataField = getInstruction(
-                indexOfFirstInstructionOrThrow {
-                    opcode == Opcode.IGET_OBJECT && getReference<FieldReference>()?.definingClass == playerProtoClass
-                },
-            ).getReference<FieldReference>()
+                val castInstruction = if (castReference.type != buildMethod.definingClass) """
+                    check-cast v4, $castReference
+                """ else """
+                    nop
+                """
 
-            // Use a helper method to avoid the need of picking out multiple free registers from the hooked code.
-            CreateStreamingDataFingerprint.classDef.methods.add(
-                ImmutableMethod(
-                    resultMethodType,
-                    setStreamDataMethodName,
-                    listOf(ImmutableMethodParameter(videoDetailsClass, null, "videoDetails")),
+                val helperMethod = ImmutableMethod(
+                    it.classDef.type,
+                    "patch_setStreamingData",
+                    listOf(
+                        ImmutableMethodParameter(videoDetailsClass, null, null),
+                        ImmutableMethodParameter(playerProtoClass, null, null)
+                    ),
                     "V",
                     AccessFlags.PRIVATE.value or AccessFlags.FINAL.value,
                     null,
                     null,
-                    MutableMethodImplementation(9),
+                    MutableMethodImplementation(11),
                 ).toMutable().apply {
                     addInstructionsWithLabels(
                         0,
@@ -249,13 +263,44 @@ internal fun spoofVideoStreamsPatch(
                             iget-object v6, v5, $getStreamingDataField
                             if-eqz v6, :disabled
                             iput-object v6, p0, $setStreamingDataField
-                            
+
+                            # Get player config.
+                            invoke-static { v2 }, $EXTENSION_CLASS->getPlayerConfig(Ljava/lang/String;)[B
+                            move-result-object v3
+                            if-eqz v3, :disabled
+                            sget-object v4, $playerConfigClass->a:$playerConfigClass
+                            invoke-virtual { v4 }, $createBuilderMethod
+                            move-result-object v4
+                            $castInstruction
+                            invoke-static { }, Lcom/google/protobuf/ExtensionRegistryLite;->getGeneratedRegistry()Lcom/google/protobuf/ExtensionRegistryLite;
+                            move-result-object v5
+                            invoke-virtual { v4, v3, v5 }, $mergeFromMethod
+                            move-result-object v5
+                            check-cast v5, $castReference
+                            invoke-virtual { v5 }, $buildMethod
+                            move-result-object v5
+                            check-cast v5, $playerConfigClass
+                            iget-object v6, v5, $mediaCommonConfigField
+                            if-eqz v6, :disabled
+
+                            # Set media common config.
+                            iget-object v5, p2, $setPlayerConfigField
+                            iput-object v6, v5, $mediaCommonConfigField
+                            iput-object v5, p2, $setPlayerConfigField
+
                             :disabled
                             return-void
                         """
                     )
                 }
-            )
+
+                it.classDef.methods.add(helperMethod)
+
+                addInstruction(
+                    videoDetailsIndex + 1,
+                    "invoke-direct { p0, v$videoDetailsRegister, p1 }, $helperMethod"
+                )
+            }
         }
 
         // endregion

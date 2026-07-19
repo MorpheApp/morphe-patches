@@ -8,6 +8,7 @@ option java_package = "app.morphe.extension.shared.innertube";
 message PlayerResponse {
   PlayabilityStatus playability_status = 2;
   optional StreamingData streaming_data = 4;
+  optional PlayerConfig player_config = 15;
 }
 
 message PlayabilityStatus {
@@ -39,3 +40,9 @@ message Format {
     string signatureCipher = 48;
 }
 
+message PlayerConfig {
+  optional MediaCommonConfig mediaCommonConfig = 215771584;
+}
+
+message MediaCommonConfig {
+}
