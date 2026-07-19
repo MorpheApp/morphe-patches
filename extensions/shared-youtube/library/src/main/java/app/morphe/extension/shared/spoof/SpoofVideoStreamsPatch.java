@@ -123,9 +123,12 @@ public class SpoofVideoStreamsPatch {
     }
 
     public static boolean spoofingToClientWithNoMultiAudioStreams() {
-        return isPatchIncluded()
-                && SPOOF_VIDEO_STREAMS
+        return isPatchIncluded() && SPOOF_VIDEO_STREAMS
                 && !preferredClient.supportsMultiAudioTracks;
+    }
+
+    public static boolean spoofingToClientWithSABROrSpoofingDisabled() {
+        return !isPatchIncluded() || !SPOOF_VIDEO_STREAMS || preferredClient.requireSABR;
     }
 
     /**

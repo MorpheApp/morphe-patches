@@ -34,8 +34,16 @@ val livestreamDVRPatch = bytecodePatch(
     execute {
         PreferenceScreen.SEEKBAR.addPreferences(
             noTitleUnsortedPreferenceCategory(
-                SwitchPreference("morphe_livestream_dvr", summary = true),
-                SwitchPreference("morphe_expand_livestream_dvr_duration", summary = true)
+                SwitchPreference(
+                    key = "morphe_livestream_dvr",
+                    summary = true,
+                    tag = "app.morphe.extension.youtube.settings.preference.LivestreamDVRPreference"
+                ),
+                SwitchPreference(
+                    key = "morphe_expand_livestream_dvr_duration",
+                    summary = true,
+                    tag = "app.morphe.extension.youtube.settings.preference.LivestreamDVRDurationPreference"
+                )
             )
         )
 
