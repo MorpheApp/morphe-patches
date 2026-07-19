@@ -727,7 +727,7 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
     <!-- 'Audio track' should be translated using the same localized wording YouTube displays for the menu item. -->
     <string name="morphe_hide_player_flyout_audio_track_title">Hide \'Audio Track\' menu</string>
     <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Reel' and 'TV' must be kept untranslated. -->
+          'Android Studio' must be kept untranslated. -->
     <string name="morphe_hide_player_flyout_audio_track_not_available">"\'Audio Track\' menu is hidden
 
 To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client except \'Android Studio\'"</string>
