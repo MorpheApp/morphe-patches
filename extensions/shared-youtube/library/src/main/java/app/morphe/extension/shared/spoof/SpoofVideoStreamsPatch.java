@@ -66,27 +66,12 @@ public class SpoofVideoStreamsPatch {
 
     private static final boolean SPOOF_VIDEO_STREAMS = SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.get();
 
-    private static volatile Map<String, String> currentVideoRequestHeader;
-
-    private static boolean overrideSpoofStreamFlagsForHeaders = SPOOF_VIDEO_STREAMS;
-
     @Nullable
     private static volatile AppLanguage languageOverride;
 
     private static volatile ClientType preferredClient = ClientType.ANDROID_REEL_AUTH;
 
     private static WeakReference<Application> mainActivityRef = new WeakReference<>(null);
-
-    public static void setOverrideSpoofStreamFlagsForHeaders() {
-        if (!overrideSpoofStreamFlagsForHeaders) {
-            Logger.printDebug(() -> "Forcing override of spoof stream flags with spoofing off");
-            overrideSpoofStreamFlagsForHeaders = true;
-        }
-    }
-
-    public static void setCurrentVideoRequestHeader(Map<String, String> newlyVideoRequestHeader) {
-        currentVideoRequestHeader = newlyVideoRequestHeader;
-    }
 
     /**
      * Injection point.
@@ -264,7 +249,7 @@ public class SpoofVideoStreamsPatch {
             Logger.printDebug(() -> "useMediaFetchHotConfigReplacement is set on");
         }
 
-        if (overrideSpoofStreamFlagsForHeaders) {
+        if (SPOOF_VIDEO_STREAMS) {
             return false;
         }
         return original;
@@ -279,10 +264,10 @@ public class SpoofVideoStreamsPatch {
             Logger.printDebug(() -> "usePlaybackStartFeatureFlag is set on");
         }
 
-        if (!SPOOF_VIDEO_STREAMS) {
-            return original;
+        if (SPOOF_VIDEO_STREAMS) {
+            return false;
         }
-        return false;
+        return original;
     }
 
     /**
@@ -294,10 +279,10 @@ public class SpoofVideoStreamsPatch {
             Logger.printDebug(() -> "useReelItemWatchResponse is set on");
         }
 
-        if (!SPOOF_VIDEO_STREAMS) {
-            return original;
+        if (SPOOF_VIDEO_STREAMS) {
+            return false;
         }
-        return false;
+        return original;
     }
 
     /**
@@ -309,7 +294,7 @@ public class SpoofVideoStreamsPatch {
             Logger.printDebug(() -> "useMediaSessionFeatureFlag is set on");
         }
 
-        if (overrideSpoofStreamFlagsForHeaders) {
+        if (SPOOF_VIDEO_STREAMS) {
             return false;
         }
         return original;

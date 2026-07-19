@@ -159,16 +159,6 @@ internal object NerdsStatsVideoFormatBuilderFingerprint : Fingerprint(
     )
 )
 
-// Feature flag that turns on Platypus programming language code compiled to native C++.
-// This code appears to replace the player config after the streams are loaded.
-// Flag is present in YouTube 19.34, but is missing Platypus stream replacement code until 19.43.
-// Flag and Platypus code is also present in newer versions of YouTube Music.
-internal object MediaFetchHotConfigFingerprint : Fingerprint(
-    filters = listOf(
-        literal(45645570L)
-    )
-)
-
 // YT 20.10+, YT Music 8.11 - 8.14.
 // Flag is missing in YT Music 8.15+, and it is not known if a replacement flag/feature exists.
 internal object MediaFetchHotConfigAlternativeFingerprint : Fingerprint(
@@ -184,14 +174,6 @@ internal object MediaFetchHotConfigAlternativeFingerprint : Fingerprint(
 internal object PlaybackStartDescriptorFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
         literal(45665455L)
-    )
-)
-
-internal object MediaSessionFeatureFlagFingerprint : Fingerprint(
-    parameters = listOf(),
-    returnType = "Z",
-    filters = listOf(
-        literal(45640404L)
     )
 )
 
