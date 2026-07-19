@@ -9,6 +9,8 @@ package app.morphe.patches.shared.misc.media
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.anyInstruction
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.opcode
 import com.android.tools.smali.dexlib2.Opcode
@@ -24,10 +26,17 @@ internal object MediaFetchHotConfigFingerprint : Fingerprint(
             opcode = Opcode.MOVE_RESULT,
             location = MatchAfterWithin(3)
         ),
-        opcode(
-            opcode = Opcode.IF_EQZ,
-            location = MatchAfterWithin(5)
-        )
+        anyInstruction(
+            opcode(
+                opcode = Opcode.IF_EQZ,
+                location = MatchAfterWithin(5)
+            ),
+            fieldAccess( // Only for YouTube Music 7.29.52
+                opcode = Opcode.IPUT_BOOLEAN,
+                definingClass = "this"
+            )
+        ),
+
     )
 )
 
