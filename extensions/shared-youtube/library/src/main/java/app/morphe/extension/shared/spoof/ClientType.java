@@ -22,10 +22,8 @@ import java.util.Locale;
 import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.requests.Route;
-import app.morphe.extension.shared.spoof.requests.PlayerRoutes;
 
-@SuppressWarnings("ConstantLocale")
+@SuppressWarnings({"ConstantLocale", "deprecation"})
 public enum ClientType {
     /**
      * Video not playable: Paid, Movie, Private, Age-restricted.
@@ -54,7 +52,6 @@ public enum ClientType {
             true,
             false,
             false,
-            PlayerRoutes.GET_REEL_STREAMING_DATA,
             "Android Reel auth"
     ),
     ANDROID_REEL_NO_AUTH(
@@ -73,8 +70,7 @@ public enum ClientType {
             false,
             ANDROID_REEL_AUTH.supportsMultiAudioTracks,
             ANDROID_REEL_AUTH.supportsOAuth2,
-            ANDROID_REEL_AUTH.requireJS,
-            ANDROID_REEL_AUTH.endpoint,
+            ANDROID_REEL_AUTH.usePlayerEndpoint,
             "Android Reel no auth"
     ),
     /**
@@ -97,7 +93,6 @@ public enum ClientType {
             false,
             false,
             false,
-            PlayerRoutes.GET_PLAYER_STREAMING_DATA,
             "Android Music No SDK"
     ),
     /**
@@ -122,8 +117,7 @@ public enum ClientType {
             false,
             false,
             true,
-            false,
-            PlayerRoutes.GET_PLAYER_STREAMING_DATA,
+            true,
             "Android VR 1.65"
     ),
     /**
@@ -147,8 +141,7 @@ public enum ClientType {
             ANDROID_VR_1_65.requireLogin,
             ANDROID_VR_1_65.supportsMultiAudioTracks,
             ANDROID_VR_1_65.supportsOAuth2,
-            ANDROID_VR_1_65.requireJS,
-            ANDROID_VR_1_65.endpoint,
+            ANDROID_VR_1_65.usePlayerEndpoint,
             "Android VR 1.64"
     ),
     /**
@@ -173,8 +166,7 @@ public enum ClientType {
             true,
             false,
             false,
-            false,
-            PlayerRoutes.GET_PLAYER_STREAMING_DATA,
+            true,
             "Android Studio"
     ),
     /**
@@ -197,7 +189,6 @@ public enum ClientType {
             true,
             false,
             true,
-            PlayerRoutes.GET_PLAYER_STREAMING_DATA,
             "TV"
     ),
     /**
@@ -217,48 +208,7 @@ public enum ClientType {
             false,
             false,
             false,
-            PlayerRoutes.GET_PLAYER_STREAMING_DATA,
             "visionOS"
-    ),
-    GET_CHANNEL_FROM_ID(
-            ANDROID_REEL_AUTH.id,
-            ANDROID_REEL_AUTH.clientName,
-            Objects.requireNonNull(ANDROID_REEL_AUTH.packageName),
-            ANDROID_REEL_AUTH.deviceMake,
-            ANDROID_REEL_AUTH.deviceModel,
-            ANDROID_REEL_AUTH.osName,
-            ANDROID_REEL_AUTH.osVersion,
-            Objects.requireNonNull(ANDROID_REEL_AUTH.androidSdkVersion),
-            ANDROID_REEL_AUTH.buildID,
-            ANDROID_REEL_AUTH.clientVersion,
-            ANDROID_REEL_AUTH.clientPlatform,
-            false,
-            false,
-            false,
-            ANDROID_REEL_AUTH.supportsOAuth2,
-            ANDROID_REEL_AUTH.requireJS,
-            PlayerRoutes.GET_CHANNEL_FROM_ID,
-            "Get Channel From ID"
-    ),
-    SAVE_TO_WATCH_LATER(
-            ANDROID_REEL_AUTH.id,
-            ANDROID_REEL_AUTH.clientName,
-            Objects.requireNonNull(ANDROID_REEL_AUTH.packageName),
-            ANDROID_REEL_AUTH.deviceMake,
-            ANDROID_REEL_AUTH.deviceModel,
-            ANDROID_REEL_AUTH.osName,
-            ANDROID_REEL_AUTH.osVersion,
-            Objects.requireNonNull(ANDROID_REEL_AUTH.androidSdkVersion),
-            ANDROID_REEL_AUTH.buildID,
-            ANDROID_REEL_AUTH.clientVersion,
-            ANDROID_REEL_AUTH.clientPlatform,
-            true,
-            true,
-            false,
-            ANDROID_REEL_AUTH.supportsOAuth2,
-            ANDROID_REEL_AUTH.requireJS,
-            PlayerRoutes.SEND_SAVE_VIDEO_TO_WATCH_LATER,
-            "Save To Watch Later"
     );
 
     /**
@@ -351,7 +301,7 @@ public enum ClientType {
     /**
      * Whether to use the '/player' endpoint.
      */
-    public final Route.CompiledRoute endpoint;
+    public final boolean usePlayerEndpoint;
 
     /**
      * Friendly name displayed in stats for nerds.
@@ -376,8 +326,7 @@ public enum ClientType {
                boolean requireLogin,
                boolean supportsMultiAudioTracks,
                boolean supportsOAuth2,
-               boolean requireJS,
-               Route.CompiledRoute endpoint,
+               boolean usePlayerEndpoint,
                String friendlyName) {
         this.id = id;
         this.clientName = clientName;
@@ -394,8 +343,7 @@ public enum ClientType {
         this.requireLogin = requireLogin;
         this.supportsMultiAudioTracks = supportsMultiAudioTracks;
         this.supportsOAuth2 = supportsOAuth2;
-        this.requireJS = requireJS;
-        this.endpoint = endpoint;
+        this.usePlayerEndpoint = usePlayerEndpoint;
         this.friendlyName = friendlyName;
 
         Locale defaultLocale = Locale.getDefault();
@@ -409,6 +357,8 @@ public enum ClientType {
                 buildId
         );
         Logger.printDebug(() -> "userAgent: " + this.userAgent);
+
+        requireJS = false;
     }
 
     ClientType(int id,
@@ -425,7 +375,6 @@ public enum ClientType {
                boolean supportsMultiAudioTracks,
                boolean supportsOAuth2,
                boolean requireJS,
-               Route.CompiledRoute endpoint,
                String friendlyName) {
         this.id = id;
         this.clientName = clientName;
@@ -433,7 +382,6 @@ public enum ClientType {
         this.deviceModel = deviceModel;
         this.osName = osName;
         this.osVersion = osVersion;
-        buildID = null;
         this.clientVersion = clientVersion;
         this.clientPlatform = clientPlatform;
         this.userAgent = userAgent;
@@ -442,10 +390,11 @@ public enum ClientType {
         this.supportsMultiAudioTracks = supportsMultiAudioTracks;
         this.supportsOAuth2 = supportsOAuth2;
         this.requireJS = requireJS;
-        this.endpoint = endpoint;
         this.friendlyName = friendlyName;
 
-        packageName = null;
         androidSdkVersion = null;
+        buildID = null;
+        packageName = null;
+        usePlayerEndpoint = true;
     }
 }

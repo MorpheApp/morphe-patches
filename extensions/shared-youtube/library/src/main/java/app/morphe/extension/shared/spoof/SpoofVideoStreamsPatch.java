@@ -13,11 +13,10 @@ import java.util.Map;
 import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.requests.Route;
 import app.morphe.extension.shared.settings.AppLanguage;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
-import app.morphe.extension.shared.spoof.requests.StreamOrDetailsDataRequest;
+import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
 
 @SuppressWarnings("unused")
 public class SpoofVideoStreamsPatch {
@@ -121,7 +120,7 @@ public class SpoofVideoStreamsPatch {
 
     public static void setClientsToUse(List<ClientType> availableClients, ClientType client) {
         preferredClient = Objects.requireNonNull(client);
-        StreamOrDetailsDataRequest.setClientOrderToUse(availableClients, client);
+        StreamingDataRequest.setClientOrderToUse(availableClients, client);
     }
 
     public static ClientType getPreferredClient() {
@@ -344,7 +343,7 @@ public class SpoofVideoStreamsPatch {
                     return;
                 }
 
-                StreamOrDetailsDataRequest.fetchStreamRequest(id, requestHeaders);
+                StreamingDataRequest.fetchRequest(id, requestHeaders);
             } catch (Exception ex) {
                 Logger.printException(() -> "buildRequest failure", ex);
             }
@@ -360,9 +359,9 @@ public class SpoofVideoStreamsPatch {
     public static byte[] getStreamingData(String videoId) {
         if (SPOOF_VIDEO_STREAMS) {
             try {
-                StreamOrDetailsDataRequest request = StreamOrDetailsDataRequest.getStreamRequestForVideoId(videoId);
+                StreamingDataRequest request = StreamingDataRequest.getRequestForVideoId(videoId);
                 if (request != null) {
-                    var stream = (byte[]) request.getStreamDetails();
+                    var stream = request.getStream();
                     if (stream != null) {
                         Logger.printDebug(() -> "Overriding video stream: " + videoId);
                         return stream;
@@ -376,10 +375,6 @@ public class SpoofVideoStreamsPatch {
         }
 
         return null;
-    }
-
-    public static StreamOrDetailsDataRequest fetchDetails(Route.CompiledRoute videoDetailsEndpoint, String videoId) {
-        return StreamOrDetailsDataRequest.getDetailsRequest(videoDetailsEndpoint, videoId, currentVideoRequestHeader);
     }
 
     /**
@@ -414,7 +409,7 @@ public class SpoofVideoStreamsPatch {
                     && !TextUtils.isEmpty(videoFormat)) {
                 // Force LTR layout, to match the same LTR video time/length layout YouTube uses for all languages.
                 return "\u202D" + videoFormat + "\u2009(" // u202D = left to right override
-                        + StreamOrDetailsDataRequest.getLastSpoofedClientName() + ")";
+                        + StreamingDataRequest.getLastSpoofedClientName() + ")";
             }
         } catch (Exception ex) {
             Logger.printException(() -> "appendSpoofedClient failure", ex);

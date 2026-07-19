@@ -25,7 +25,7 @@ public class AuthUtils {
     @NonNull
     private static String authorization = "";
     @NonNull
-    public static String pageId = "";
+    private static String pageId = "";
     @NonNull
     private static String visitorId = "";
     private static boolean incognitoStatus = false;
