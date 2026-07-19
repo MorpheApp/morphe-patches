@@ -192,6 +192,8 @@ public enum ClientType {
             "TV"
     ),
     /**
+     * Video not playable: Kids.
+     * AV1 codec available.
      * May stop working at any time.
      */
     VISIONOS(101,
@@ -200,12 +202,12 @@ public enum ClientType {
             "RealityDevice17,1",
             "visionOS",
             "26.5.23O471",
-            "1.02",
+            "1.03",
             null,
             "Mozilla/5.0 (Macintosh; Intel Mac OS X 15_7_3) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0 Safari/605.1.15",
             false,
             false,
-            false,
+            true,
             false,
             false,
             "visionOS"
