@@ -50,6 +50,14 @@ internal object BoldIconsFeatureFlagFingerprint : Fingerprint(
     )
 )
 
+internal object CurrentAudioVideoFormatToStringFingerprint : Fingerprint(
+    name = "toString",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(),
+    strings = listOf("currentVideoFormat=")
+)
+
 internal object SpannableStringBuilderFingerprint : Fingerprint(
     returnType = "Ljava/lang/CharSequence;",
     filters = listOf(

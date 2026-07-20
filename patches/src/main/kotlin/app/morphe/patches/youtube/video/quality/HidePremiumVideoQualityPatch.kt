@@ -1,9 +1,7 @@
 package app.morphe.patches.youtube.video.quality
 
-import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -11,8 +9,6 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.video.information.EXTENSION_VIDEO_QUALITY_INTERFACE
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.getReference
-import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
@@ -44,18 +40,7 @@ internal val hidePremiumVideoQualityPatch = bytecodePatch {
             """
         )
 
-        Fingerprint(
-            classFingerprint = CurrentVideoFormatToStringFingerprint,
-            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-            returnType = "V",
-            filters = listOf(
-                fieldAccess(
-                    opcode = Opcode.IPUT_OBJECT,
-                    definingClass = "this",
-                    type = videoQualityArray
-                )
-            )
-        ).let {
+        getCurrentVideoFormatConstructorFingerprint(videoQualityArray).let {
             it.method.apply {
                 val index = it.instructionMatches.last().index
                 val register = getInstruction<TwoRegisterInstruction>(index).registerA

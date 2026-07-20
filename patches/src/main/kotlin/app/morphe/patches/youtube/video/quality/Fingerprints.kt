@@ -20,6 +20,7 @@ import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import app.morphe.patches.all.misc.resources.ResourceType
 import app.morphe.patches.all.misc.resources.resourceLiteral
+import app.morphe.patches.shared.CurrentAudioVideoFormatToStringFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -30,13 +31,20 @@ internal object NewAdvancedQualityMenuStyleFlyout : Fingerprint(
     )
 )
 
-internal object CurrentVideoFormatToStringFingerprint : Fingerprint(
-    name = "toString",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Ljava/lang/String;",
-    parameters = listOf(),
-    strings = listOf("currentVideoFormat=")
-)
+internal fun getCurrentVideoFormatConstructorFingerprint(
+    videoQualityArray: String
+) = object : Fingerprint(
+    classFingerprint = CurrentAudioVideoFormatToStringFingerprint,
+    name = "<init>",
+    returnType = "V",
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = videoQualityArray
+        )
+    )
+) {}
 
 internal object DefaultOverflowOverlayOnClickFingerprint : Fingerprint(
     definingClass = "Lcom/google/android/libraries/youtube/player/features/overlay/overflow/ui/DefaultOverflowOverlay;",
