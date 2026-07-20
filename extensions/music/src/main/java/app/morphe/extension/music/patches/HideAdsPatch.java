@@ -7,7 +7,13 @@
 
 package app.morphe.extension.music.patches;
 
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Logger;
 
 @SuppressWarnings("unused")
 public class HideAdsPatch {
@@ -27,5 +33,34 @@ public class HideAdsPatch {
             return false;
         }
         return original;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hidePremiumPromotionBottomSheet(View view) {
+        if (Settings.HIDE_MUSIC_PREMIUM_PROMOTIONS.get()) {
+            view.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
+                try {
+                    if (!(view instanceof ViewGroup viewGroup)) {
+                        return;
+                    }
+                    if (!(viewGroup.getChildAt(0) instanceof ViewGroup mealBarLayoutRoot)) {
+                        return;
+                    }
+                    if (!(mealBarLayoutRoot.getChildAt(0) instanceof LinearLayout linearLayout)) {
+                        return;
+                    }
+                    if (!(linearLayout.getChildAt(0) instanceof ImageView imageView)) {
+                        return;
+                    }
+                    if (imageView.getVisibility() == View.VISIBLE) {
+                        view.setVisibility(View.GONE);
+                    }
+                } catch (Exception ex) {
+                    Logger.printException(() -> "hidePremiumPromotionBottomSheet failure", ex);
+                }
+            });
+        }
     }
 }
