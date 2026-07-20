@@ -951,20 +951,24 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         CreateSearchSuggestionsFingerprint.let {
             it.method.apply {
-                val insertIndex = it.instructionMatches[2].index - 1
-                val freeRegister = findFreeRegister(insertIndex)
-                val jumpIndex = it.instructionMatches.last().index
+                val methodCalls = findInstructionIndicesReversedOrThrow {
+                    (opcode == Opcode.INVOKE_INTERFACE || opcode == Opcode.INVOKE_VIRTUAL) &&
+                            (getReference<MethodReference>()?.parameterTypes == listOf("Landroid/widget/ImageView;", "Landroid/net/Uri;"))
+                }
 
-                addInstructionsWithLabels(
-                    insertIndex,
-                    """
-                        invoke-static { }, $LAYOUT_COMPONENTS_FILTER->hideSearchTermThumbnails()Z
-                        move-result v$freeRegister
-                        
-                        if-nez v$freeRegister, :hidden
-                    """,
-                    ExternalLabel("hidden", getInstruction(jumpIndex))
-                )
+                methodCalls.forEach { insertIndex ->
+                    val invokeInstruction = getInstruction<FiveRegisterInstruction>(insertIndex)
+                    val imageViewRegister = invokeInstruction.registerD
+                    val uriRegister = invokeInstruction.registerE
+
+                    addInstructions(
+                        insertIndex,
+                        """
+                            invoke-static { v$imageViewRegister, v$uriRegister }, $LAYOUT_COMPONENTS_FILTER->hideSearchTermThumbnails(Landroid/view/View;Landroid/net/Uri;)Landroid/net/Uri;
+                            move-result-object v$uriRegister
+                        """
+                    )
+                }
             }
         }
 

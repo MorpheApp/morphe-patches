@@ -14,6 +14,7 @@ import static app.morphe.extension.shared.Utils.getFilterStrings;
 import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
@@ -828,8 +829,14 @@ public final class LayoutComponentsFilter extends Filter {
     /**
      * Injection point.
      */
-    public static boolean hideSearchTermThumbnails() {
-        return Settings.HIDE_SEARCH_TERM_THUMBNAILS.get();
+    public static Uri hideSearchTermThumbnails(View view, Uri uri) {
+        if (Settings.HIDE_SEARCH_TERM_THUMBNAILS.get()) {
+            if (view != null) {
+                Utils.hideViewByLayoutParams(view);
+            }
+            return null;
+        }
+        return uri;
     }
 
     /**
