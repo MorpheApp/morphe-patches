@@ -31,9 +31,11 @@ internal object MediaFetchHotConfigFingerprint : Fingerprint(
                 opcode = Opcode.IF_EQZ,
                 location = MatchAfterWithin(5)
             ),
-            fieldAccess( // Only for YouTube Music 7.29.52
+            // Only for YouTube Music 7.29.52
+            fieldAccess(
                 opcode = Opcode.IPUT_BOOLEAN,
                 definingClass = "this"
+                location = MatchAfterWithin(5)
             )
         )
     )

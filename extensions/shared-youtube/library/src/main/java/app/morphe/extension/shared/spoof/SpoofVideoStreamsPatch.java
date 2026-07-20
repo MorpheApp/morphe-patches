@@ -23,7 +23,6 @@ import java.util.Map;
 import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.settings.AppLanguage;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
@@ -76,9 +75,6 @@ public class SpoofVideoStreamsPatch {
 
     private static final boolean SPOOF_VIDEO_STREAMS = SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.get();
 
-    @Nullable
-    private static volatile AppLanguage languageOverride;
-
     private static volatile ClientType preferredClient = ClientType.ANDROID_REEL_AUTH;
 
     private static WeakReference<Application> mainActivityRef = new WeakReference<>(null);
@@ -99,18 +95,6 @@ public class SpoofVideoStreamsPatch {
      */
     public static boolean isPatchIncluded() {
         return false;  // Modified during patching.
-    }
-
-    @Nullable
-    public static AppLanguage getLanguageOverride() {
-        return languageOverride;
-    }
-
-    /**
-     * @param language Language override for non-authenticated requests.
-     */
-    public static void setLanguageOverride(@Nullable AppLanguage language) {
-        languageOverride = language;
     }
 
     public static void setClientsToUse(List<ClientType> availableClients, ClientType client) {
