@@ -40,7 +40,7 @@ public enum ClientType {
             String.valueOf(Build.VERSION.SDK_INT),
             Build.ID,
             // A hardcoded client version is used for YouTube Music.
-            "21.05.265",
+            "20.47.62",
             null,
             IS_YOUTUBE,
             IS_YOUTUBE,
