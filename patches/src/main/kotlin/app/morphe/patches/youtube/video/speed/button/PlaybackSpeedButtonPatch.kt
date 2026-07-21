@@ -16,6 +16,7 @@ import app.morphe.patches.youtube.video.information.userSelectedPlaybackSpeedHoo
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.patches.youtube.video.information.videoSpeedChangedHook
 import app.morphe.patches.youtube.video.speed.custom.customPlaybackSpeedPatch
+import app.morphe.patches.youtube.video.speed.custom.playbackRateSetHook
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 
@@ -39,7 +40,7 @@ private const val EXTENSION_BUTTON =
     "Lapp/morphe/extension/youtube/videoplayer/PlaybackSpeedDialogButton;"
 
 val playbackSpeedButtonPatch = bytecodePatch(
-    description = "Adds the option to display playback speed dialog button in the video player.",
+    description = "Adds the option to display playback speed dialog button in the video player."
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -62,5 +63,13 @@ val playbackSpeedButtonPatch = bytecodePatch(
 
         videoSpeedChangedHook(EXTENSION_BUTTON, "videoSpeedChanged")
         userSelectedPlaybackSpeedHook(EXTENSION_BUTTON, "videoSpeedChanged")
+
+        // The modern flyout menu (21.12+) bypasses the onItemClick setter hooked above.
+        // VideoInformation must run first so the button reads a fresh cached speed.
+        playbackRateSetHook(
+            "Lapp/morphe/extension/youtube/patches/VideoInformation;",
+            "videoSpeedChanged"
+        )
+        playbackRateSetHook(EXTENSION_BUTTON, "videoSpeedChanged")
     }
 }

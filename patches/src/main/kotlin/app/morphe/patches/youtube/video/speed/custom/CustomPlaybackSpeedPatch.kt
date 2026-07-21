@@ -19,6 +19,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
@@ -48,12 +49,16 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableField
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
+import java.lang.ref.WeakReference
 
 internal const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/playback/speed/CustomPlaybackSpeedPatch;"
 
 private const val EXTENSION_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/PlaybackSpeedMenuFilter;"
+
+private lateinit var playbackRateSetMethodRef: WeakReference<MutableMethod>
+private var playbackRateSetMethodInsertIndex = 0
 
 internal val customPlaybackSpeedPatch = bytecodePatch(
     description = "Adds custom playback speed options.",
@@ -84,7 +89,9 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
         )
 
         // Override the min/max speeds that can be used.
-        (if (is_20_34_or_greater) SpeedLimiterFingerprint else SpeedLimiterLegacyFingerprint).method.apply {
+        val speedLimiterMethod =
+            (if (is_20_34_or_greater) SpeedLimiterFingerprint else SpeedLimiterLegacyFingerprint).method
+        speedLimiterMethod.apply {
             val limitMinIndex = indexOfFirstLiteralInstructionOrThrow(0.25f)
             // Older unsupported targets use 2.0f and not 4.0f
             val limitMaxIndex = indexOfFirstLiteralInstructionOrThrow(4.0f)
@@ -95,6 +102,7 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
             replaceInstruction(limitMinIndex, "const/high16 v$limitMinRegister, 0.0f")
             replaceInstruction(limitMaxIndex, "const/high16 v$limitMaxRegister, 8.0f")
         }
+        playbackRateSetMethodRef = WeakReference(speedLimiterMethod)
 
         // Turn off client side flag that use server provided min/max speeds.
         if (is_20_34_or_greater) {
@@ -341,3 +349,13 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
         // endregion
     }
 }
+
+/**
+ * Hook every playback rate change. Use over 'videoSpeedChangedHook' when observers must
+ * also react to the modern flyout menu, which bypasses the old onItemClick setter.
+ */
+fun playbackRateSetHook(targetMethodClass: String, targetMethodName: String) =
+    playbackRateSetMethodRef.get()!!.addInstruction(
+        playbackRateSetMethodInsertIndex++,
+        "invoke-static { p1 }, $targetMethodClass->$targetMethodName(F)V"
+    )
