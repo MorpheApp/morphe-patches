@@ -231,15 +231,6 @@ internal object HlsCurrentTimeFingerprint : Fingerprint(
     )
 )
 
-internal object MediaFetchEnumConstructorFingerprint : Fingerprint(
-    returnType = "V",
-    strings = listOf(
-        "ENABLED",
-        "DISABLED_FOR_PLAYBACK",
-        "DISABLED_BY_SABR_STREAMING_URI"
-    )
-)
-
 internal object NerdsStatsVideoFormatBuilderFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "Ljava/lang/String;",
