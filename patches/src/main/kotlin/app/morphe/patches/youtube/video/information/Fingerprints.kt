@@ -3,15 +3,19 @@
 package app.morphe.patches.youtube.video.information
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.InstructionLocation.MatchFirst
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.anyInstruction
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import app.morphe.patches.youtube.shared.PlaybackSpeedOnItemClickParentFingerprint
+import app.morphe.patches.youtube.shared.VideoQualityChangedFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -20,7 +24,18 @@ internal object PlaybackSpeedOnItemClickFingerprint : Fingerprint(
     name = "onItemClick",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf("L", "L", "I", "J")
+    parameters = listOf("L", "L", "I", "J"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET,
+            type = "F"
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf("F"),
+            returnType = "V"
+        )
+    )
 )
 
 internal object PlayerInitFingerprint : Fingerprint(
@@ -36,6 +51,33 @@ internal object ChannelInformationFingerprint : Fingerprint(
     )
 )
 
+internal fun getChannelIdFingerprint(playerResponseType: String) = object : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Ljava/lang/Object;"),
+    filters = listOf(
+        methodCall(
+            definingClass = playerResponseType,
+            returnType = "Ljava/lang/String;"
+        ),
+        string(
+            string = "com.google.android.apps.youtube.mdx.watch.LAST_MEALBAR_PROMOTED_LIVE_FEED_CHANNELS",
+            location = MatchAfterWithin(20)
+        )
+    )
+) {}
+
+internal fun getChannelNameFingerprint(playerResponseType: String) = object : Fingerprint(
+    filters = listOf(
+        string("setMetadata may only be called once"),
+        methodCall(
+            definingClass = playerResponseType,
+            returnType = "Ljava/lang/String;",
+            location = MatchAfterWithin(30)
+        )
+    )
+) {}
+
 internal object PlayerStatusEnumFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
     strings = listOf(
@@ -49,6 +91,22 @@ internal object PlayerStatusEnumFingerprint : Fingerprint(
         "ENDED",
     )
 )
+
+internal fun getPlayerStatusFingerprint(playerStatusEnumClass: String) = object : Fingerprint(
+    classFingerprint = PlayerInitFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(playerStatusEnumClass),
+    filters = listOf(
+        // The opcode for the first index of the method is sget-object.
+        // Even in sufficiently old versions, such as YT 17.34, the opcode for the first index is sget-object.
+        opcode(Opcode.SGET_OBJECT),
+        methodCall(
+            definingClass = "Lj$/time/Instant;",
+            name = "plus"
+        )
+    )
+) {}
 
 internal object SeekFingerprint : Fingerprint(
     classFingerprint = PlayerInitFingerprint,
@@ -152,14 +210,14 @@ internal object GetVideoTimeFingerprint : Fingerprint(
     )
 )
 
-internal object PlaybackSpeedClassFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+internal object PlaybackSpeedMenuSpeedChangedFingerprint : Fingerprint(
+    classFingerprint = VideoQualityChangedFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf("L"),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.RETURN_OBJECT
-    ),
-    strings = listOf("PLAYBACK_RATE_MENU_BOTTOM_SHEET_FRAGMENT")
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IGET, type = "F")
+    )
 )
 
 internal object PlaybackStartDescriptorToStringFingerprint : Fingerprint(
@@ -171,6 +229,19 @@ internal object PlaybackStartDescriptorToStringFingerprint : Fingerprint(
         // First method call after Locale is the video ID.
         methodCall(returnType = "Ljava/lang/String;", parameters = listOf()),
         string("PlaybackStartDescriptor:", comparison = StringComparisonType.STARTS_WITH)
+    )
+)
+
+internal object SetPlaybackSpeedFormattedStringFingerprint : Fingerprint(
+    definingClass = EXTENSION_CLASS,
+    name = "setPlaybackSpeedFormattedString",
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            definingClass = EXTENSION_CLASS,
+            name = "userSelectedPlaybackSpeed",
+            parameters = listOf("F")
+        )
     )
 )
 
@@ -207,10 +278,21 @@ internal object SetVideoQualityFingerprint : Fingerprint(
     classFingerprint = VideoQualitySetterFingerprint,
     returnType = "V",
     parameters = listOf("L"),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.IGET_OBJECT,
-        Opcode.IPUT_OBJECT,
-        Opcode.IGET_OBJECT,
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            location = MatchFirst()
+        ),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            location = MatchAfterImmediately()
+        ),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            location = MatchAfterImmediately()
+        ),
     )
 )
 

@@ -34,6 +34,7 @@ import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.recyclerviewtree.addRecyclerViewTreeHook
 import app.morphe.patches.youtube.misc.recyclerviewtree.recyclerViewTreeHookPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.patches.youtube.shared.InitializePlaybackSpeedValuesFingerprint
 import app.morphe.patches.youtube.shared.PlaybackSpeedOnItemClickParentFingerprint
 import app.morphe.patches.youtube.video.speed.settingsMenuVideoSpeedGroup
 import app.morphe.util.addInstructionsAtControlFlowLabel

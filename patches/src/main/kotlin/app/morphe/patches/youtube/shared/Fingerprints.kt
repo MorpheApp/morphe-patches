@@ -72,6 +72,13 @@ internal object EngagementPanelControllerFingerprint : Fingerprint(
     )
 )
 
+internal object InitializePlaybackSpeedValuesFingerprint : Fingerprint(
+    parameters = listOf("[L", "I"),
+    filters = listOf(
+        string("menu_item_playback_speed"),
+    )
+)
+
 internal object LayoutConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",

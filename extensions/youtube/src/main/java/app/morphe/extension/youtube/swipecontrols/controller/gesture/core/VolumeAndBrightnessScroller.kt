@@ -125,7 +125,7 @@ class VolumeAndBrightnessScrollerImpl(
             val currentSpeedInt = (VideoInformation.getPlaybackSpeed() * 100).roundToInt()
             val newSpeedInt = maxOf(25, minOf(800, currentSpeedInt + direction * speedStepInt))
             val newSpeed = newSpeedInt / 100f
-            VideoInformation.overridePlaybackSpeed(newSpeed)
+            VideoInformation.changePlaybackSpeed(newSpeed)
             overlayController.onSpeedChanged(newSpeed)
         }
 

@@ -48,7 +48,7 @@ public final class DownloadsPatch {
      * Injection point.
      * Usually is called of the main thread.
      */
-    public static CharSequence onLithoTextLoaded(Object conversionContext, CharSequence original) {
+    public static void onLithoTextLoaded(Object conversionContext, CharSequence original) {
         try {
             if (SharedYouTubeSettings.EXTERNAL_DOWNLOADER_ACTION_BUTTON.get() &&
                     downloadButtonLabel.isEmpty() &&
@@ -59,7 +59,6 @@ public final class DownloadsPatch {
         } catch (Exception ex) {
             Logger.printDebug(() -> "Could not parse litho text", ex);
         }
-        return original;
     }
 
     private static void launchExternalDownloader() {

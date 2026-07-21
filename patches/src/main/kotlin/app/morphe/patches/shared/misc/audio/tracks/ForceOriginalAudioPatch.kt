@@ -231,7 +231,7 @@ internal fun forceOriginalAudioPatch(
                         null,
                         MutableMethodImplementation(3),
                     ).toMutable().apply {
-                        val playerControllerType = it.classDef.fields.single { field ->
+                        val playerControllerField = it.classDef.fields.single { field ->
                             field.type == playerControllerClass
                         }
                         addInstructionsWithLabels(
@@ -239,7 +239,7 @@ internal fun forceOriginalAudioPatch(
                             """
                                 # Check if the audio track id is null.
                                 if-eqz p1, :ignore
-                                iget-object v0, p0, $playerControllerType
+                                iget-object v0, p0, $playerControllerField
                                 
                                 # Check if the player controller class is null.
                                 if-eqz v0, :ignore

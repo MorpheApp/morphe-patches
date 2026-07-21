@@ -53,7 +53,7 @@ public final class RememberPlaybackSpeedPatch {
                 // With the 0.05x menu, if the speed is set by a patch to higher than 2.0x
                 // then the menu will allow increasing without bounds but the max speed is
                 // still capped to 8.0x.
-                playbackSpeed = Math.min(playbackSpeed, CustomPlaybackSpeedPatch.PLAYBACK_SPEED_MAXIMUM);
+                playbackSpeed = Math.min(playbackSpeed, VideoInformation.PLAYBACK_SPEED_MAXIMUM);
 
                 // Prevent toast spamming if using the 0.05x adjustments.
                 // Show exactly one toast after the user stops interacting with the speed menu.
@@ -88,31 +88,28 @@ public final class RememberPlaybackSpeedPatch {
      * Overrides the video speed.  Called after video loads,
      * and immediately after the user selects a different playback speed.
      */
-    public static float getPlaybackSpeedOverride() {
+    public static void setDefaultPlaybackSpeed(VideoInformation.PlaybackSpeedMenuInterface menu) {
         if (newVideoStarted) {
             newVideoStarted = false;
 
-            final float defaultSpeed = Settings.PLAYBACK_SPEED_DEFAULT.get();
-            if (DISABLE_PLAYBACK_SPEED_MUSIC) {
-                if (defaultSpeed == 1.0f) {
-                    return 1.0f;
-                }
+            VideoInformation.setPlaybackSpeedMenu(menu);
 
+            float defaultSpeed = Settings.PLAYBACK_SPEED_DEFAULT.get();
+            if (defaultSpeed < 0) {
+                return;
+            }
+            if (DISABLE_PLAYBACK_SPEED_MUSIC && defaultSpeed != 1.0f) {
                 String videoId = VideoInformation.getVideoId();
                 GetMixPlaylistRequest request = GetMixPlaylistRequest.getRequestForVideoId(videoId);
                 final boolean isMusic = request != null && Boolean.TRUE.equals(request.getResult());
                 if (isMusic) {
                     Logger.printDebug(() -> "Overriding music video speed to 1.0x: " + videoId);
-                    return 1.0f;
+                    defaultSpeed = 1.0f;
                 }
             }
 
-            if (defaultSpeed > 0) {
-                return defaultSpeed;
-            }
+            VideoInformation.changePlaybackSpeed(defaultSpeed);
         }
-
-        return -2.0f;
     }
 
     public static void preloadMusicVideoFetch(String videoId, boolean isShortAndOpeningOrPlaying) {

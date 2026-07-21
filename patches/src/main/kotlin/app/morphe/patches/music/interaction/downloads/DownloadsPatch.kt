@@ -63,7 +63,7 @@ val downloadsPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
 
     execute {
-        hookSpannableString(EXTENSION_CLASS, "onLithoTextLoaded")
+        hookSpannableString(EXTENSION_CLASS)
 
         CommandResolverFingerprint.method.cloneParameters().apply {
             // Add interface to get buffer.

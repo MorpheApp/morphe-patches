@@ -174,9 +174,8 @@ public final class InclusiveSpanPatch {
      *
      * @param conversionContext ConversionContext is used to identify whether it is a comment thread or not.
      */
-    public static CharSequence setConversionContext(Object conversionContext, CharSequence original) {
+    public static void setConversionContext(Object conversionContext, CharSequence original) {
         conversionContextThreadLocal.set(conversionContext.toString());
-        return original;
     }
 
     private static boolean returnEarly(SpannableString spannableString, Object span, int start, int end, int flags) {

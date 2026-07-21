@@ -11,6 +11,7 @@
 package app.morphe.extension.youtube.patches.playback.speed;
 
 import static app.morphe.extension.shared.StringRef.str;
+import static app.morphe.extension.youtube.patches.VideoInformation.PLAYBACK_SPEED_MAXIMUM;
 import static app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton.fadeInDuration;
 import static app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton.getDialogBackgroundColor;
 
@@ -53,15 +54,6 @@ import app.morphe.extension.youtube.shared.PipDismissHelper;
 
 @SuppressWarnings("unused")
 public class CustomPlaybackSpeedPatch {
-
-    /**
-     * Maximum playback speed, inclusive.  Custom speeds must be this or less.
-     * <p>
-     * Going over 8x does not increase the actual playback speed any higher,
-     * and the UI selector starts flickering and acting weird.
-     * Over 10x and the speeds show up out of order in the UI selector.
-     */
-    public static final float PLAYBACK_SPEED_MAXIMUM = 8;
 
     /**
      * How much +/- speed adjustment buttons change the current speed.
@@ -364,7 +356,7 @@ public class CustomPlaybackSpeedPatch {
                 speedSlider.setProgress(speedToProgressValue(roundedSpeed)); // Update slider.
 
                 RememberPlaybackSpeedPatch.userSelectedPlaybackSpeed(roundedSpeed);
-                VideoInformation.overridePlaybackSpeed(roundedSpeed);
+                VideoInformation.changePlaybackSpeed(roundedSpeed);
                 return null;
             };
 

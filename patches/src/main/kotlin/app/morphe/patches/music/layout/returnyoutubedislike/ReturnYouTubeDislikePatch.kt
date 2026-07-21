@@ -108,7 +108,10 @@ val returnYouTubeDislikePatch = bytecodePatch(
 
         // region Hook code for creation and cached lookup of text Spans.
 
-        hookSpannableString(EXTENSION_CLASS, "onLithoTextLoaded")
+        hookSpannableString(
+            classDescriptor = EXTENSION_CLASS,
+            overrideSpan = true
+        )
 
         // endregion
 

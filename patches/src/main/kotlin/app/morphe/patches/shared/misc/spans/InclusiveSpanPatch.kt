@@ -62,8 +62,8 @@ val inclusiveSpanPatch = bytecodePatch(
 
     execute {
         hookSpannableString(
-            EXTENSION_SPANS_CLASS,
-            "setConversionContext"
+            classDescriptor = EXTENSION_SPANS_CLASS,
+            methodName = "setConversionContext"
         )
 
         SpannableStringBuilderFingerprint.instructionMatches[1].getMethodCalled().apply {
