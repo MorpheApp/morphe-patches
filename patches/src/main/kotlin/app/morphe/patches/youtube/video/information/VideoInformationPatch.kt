@@ -15,8 +15,11 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
+import app.morphe.patcher.util.proxy.mutableTypes.MutableField
+import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.smali.toInstructions
@@ -47,6 +50,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.ThreeRegisterInstructio
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
+import com.android.tools.smali.dexlib2.immutable.ImmutableField
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodImplementation
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
@@ -249,6 +253,43 @@ val videoInformationPatch = bytecodePatch(
                 // Add interface and helper methods to allow extension code to call obfuscated methods.
                 interfaces.add(EXTENSION_PLAYBACK_SPEED_MENU_INTERFACE)
 
+                // Player controller field does not exist in YouTube 20.x, add the field.
+                val playerControllerField: MutableField
+
+                methods.first { method ->
+                    MethodUtil.isConstructor(method)
+                }.apply {
+                    val playerControllerClass = setPlaybackSpeedMethodReference.definingClass
+                    val playerControllerClassIndex = parameterTypes.indexOfFirst { parameterType ->
+                        parameterType == playerControllerClass
+                    }
+                    if (playerControllerClassIndex < 0) {
+                        throw PatchException("Could not find player controller index")
+                    }
+                    playerControllerField = ImmutableField(
+                        type,
+                        "patch_playerController",
+                        playerControllerClass,
+                        AccessFlags.PRIVATE.value or AccessFlags.FINAL.value,
+                        null,
+                        null,
+                        null,
+                    ).toMutable()
+
+                    instanceFields.add(playerControllerField)
+
+                    val playerControllerClassRegister =
+                        implementation!!.registerCount - parameters.size + playerControllerClassIndex
+
+                    addInstructions(
+                        2,
+                        """
+                            invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->setPlaybackSpeedMenu($EXTENSION_PLAYBACK_SPEED_MENU_INTERFACE)V                            
+                            iput-object v$playerControllerClassRegister, p0, $playerControllerField
+                        """
+                    )
+                }
+
                 methods.add(
                     ImmutableMethod(
                         type,
@@ -262,10 +303,6 @@ val videoInformationPatch = bytecodePatch(
                         null,
                         MutableMethodImplementation(3),
                     ).toMutable().apply {
-                        val playerControllerField = fields.single { field ->
-                            field.type == setPlaybackSpeedMethodReference.definingClass
-                        }
-
                         addInstructionsWithLabels(
                             0,
                             """
@@ -280,13 +317,6 @@ val videoInformationPatch = bytecodePatch(
                             """
                         )
                     }
-                )
-
-                methods.first { method ->
-                    MethodUtil.isConstructor(method)
-                }.addInstruction(
-                    1,
-                    "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->setPlaybackSpeedMenu($EXTENSION_PLAYBACK_SPEED_MENU_INTERFACE)V"
                 )
             }
         }
