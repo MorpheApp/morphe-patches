@@ -33,6 +33,7 @@ import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.preference.TwoStatePreference;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.util.Pair;
 import android.util.TypedValue;
 import android.os.Build;
@@ -165,10 +166,62 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
                     if (originalListener != null && !(originalListener instanceof DebouncedItemClickListener)) {
                         listView.setOnItemClickListener(new DebouncedItemClickListener(originalListener));
                     }
+                    if (listView.getOnItemLongClickListener() == null) {
+                        listView.setOnItemLongClickListener(this::onPreferenceLongClick);
+                    }
                 }
             }
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
+    }
+
+    // Path is resolved by walking from the root PreferenceScreen because
+    // android.preference.Preference does not expose getParent().
+    private boolean onPreferenceLongClick(AdapterView<?> parent, View view, int position, long id) {
+        try {
+            Object item = parent.getAdapter().getItem(position);
+            if (!(item instanceof Preference preference)) return false;
+
+            List<CharSequence> path = findPreferencePath(preference);
+            if (path == null || path.isEmpty()) return false;
+
+            String text = TextUtils.join(" > ", path);
+            Utils.setClipboard(text);
+            Utils.showToastShort(str("morphe_settings_menu_copy_path", text));
+            view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
+            return true;
+        } catch (Exception ex) {
+            Logger.printException(() -> "onPreferenceLongClick failure", ex);
+            return false;
+        }
+    }
+
+    @Nullable
+    private List<CharSequence> findPreferencePath(Preference target) {
+        PreferenceScreen root = getPreferenceScreen();
+        if (root == null) return null;
+        List<CharSequence> path = new ArrayList<>();
+        path.add(str("morphe_settings_title"));
+        if (target == root) return path;
+        return searchPreferencePath(root, target, path) ? path : null;
+    }
+
+    private static boolean searchPreferencePath(PreferenceGroup group, Preference target, List<CharSequence> path) {
+        for (int i = 0, n = group.getPreferenceCount(); i < n; i++) {
+            Preference p = group.getPreference(i);
+            CharSequence title = p.getTitle();
+            if (p == target) {
+                if (title != null) path.add(title);
+                return true;
+            }
+            if (p instanceof PreferenceGroup subGroup) {
+                int sizeBefore = path.size();
+                if (title != null) path.add(title);
+                if (searchPreferencePath(subGroup, target, path)) return true;
+                while (path.size() > sizeBefore) path.remove(path.size() - 1);
+            }
+        }
+        return false;
     }
 
     // Cached Collator instance with its locale.
@@ -616,7 +669,9 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return new DebouncedListView(getActivity());
+        DebouncedListView listView = new DebouncedListView(getActivity());
+        listView.setOnItemLongClickListener(this::onPreferenceLongClick);
+        return listView;
     }
 
     @Override
