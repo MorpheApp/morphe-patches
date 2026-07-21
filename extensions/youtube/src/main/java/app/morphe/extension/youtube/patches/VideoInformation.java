@@ -102,6 +102,7 @@ public final class VideoInformation {
     private static float playbackSpeed = DEFAULT_PLAYBACK_SPEED;
     /**
      * The current playback speed in native panel.
+     * This value is updated only when the native playback speed panel is opened.
      */
     private static String playbackSpeedFormattedString = "";
 
@@ -568,6 +569,9 @@ public final class VideoInformation {
         }
 
         currentPlaybackSpeedMenuInterface.patch_setSpeed(playbackSpeed);
+
+        // If the playback speed is changed by extension, the formatted string cache must be cleared.
+        playbackSpeedFormattedString = "";
     }
 
     /**

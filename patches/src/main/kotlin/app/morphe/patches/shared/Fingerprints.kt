@@ -63,7 +63,7 @@ internal object SpannableStringBuilderFingerprint : Fingerprint(
     filters = listOf(
         methodCall(
             opcode = Opcode.INVOKE_STATIC,
-            smali = SPANNABLE_STRING_REFERENCE
+            smali = "Landroid/text/SpannableString;->valueOf(Ljava/lang/CharSequence;)Landroid/text/SpannableString;"
         ),
         methodCall(
             opcode = Opcode.INVOKE_STATIC,
@@ -82,6 +82,3 @@ internal object SpannableStringBuilderFingerprint : Fingerprint(
         )
     )
 )
-
-const val SPANNABLE_STRING_REFERENCE =
-    "Landroid/text/SpannableString;->valueOf(Ljava/lang/CharSequence;)Landroid/text/SpannableString;"
