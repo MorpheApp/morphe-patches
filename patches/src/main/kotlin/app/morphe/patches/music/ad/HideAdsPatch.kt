@@ -16,6 +16,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -36,6 +37,7 @@ val hideAdsPatch = bytecodePatch(
         sharedExtensionPatch,
         hideFullscreenAdsPatch(PreferenceScreen.ADS),
         settingsPatch,
+        resourceMappingPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
@@ -91,12 +93,13 @@ val hideAdsPatch = bytecodePatch(
 
         // Hide Music Premium promotions
         FloatingLayoutFingerprint.method.apply {
-            val insertIndex = FloatingLayoutFingerprint.instructionMatches[2].index
+            val insertIndex = FloatingLayoutFingerprint.instructionMatches.last().index
             val viewRegister = getInstruction<OneRegisterInstruction>(insertIndex).registerA
 
             addInstruction(
                 insertIndex + 1,
-                "invoke-static { v$viewRegister }, $EXTENSION_CLASS->hidePremiumPromotionBottomSheet(Landroid/view/View;)V"
+                "invoke-static { v$viewRegister }, $EXTENSION_CLASS->" +
+                        "hidePremiumPromotionBottomSheet(Landroid/view/View;)V"
             )
         }
     }
