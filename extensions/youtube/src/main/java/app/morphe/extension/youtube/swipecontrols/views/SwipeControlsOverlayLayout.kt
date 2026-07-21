@@ -17,14 +17,12 @@ import android.view.HapticFeedbackConstants
 import android.view.View
 import android.widget.RelativeLayout
 import app.morphe.extension.shared.ResourceType
-import app.morphe.extension.shared.ui.ViewAnimations
 import app.morphe.extension.shared.ResourceUtils.getIdentifierOrThrow
 import app.morphe.extension.shared.StringRef.str
+import app.morphe.extension.shared.ui.ViewAnimations
+import app.morphe.extension.youtube.patches.VideoInformation
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider
 import app.morphe.extension.youtube.swipecontrols.misc.SwipeControlsOverlay
-import java.text.DecimalFormat
-import java.text.DecimalFormatSymbols
-import java.util.Locale
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.round
@@ -45,12 +43,6 @@ class SwipeControlsOverlayLayout(
 ) : RelativeLayout(context), SwipeControlsOverlay {
 
     constructor(context: Context) : this(context, SwipeControlsConfigurationProvider())
-
-    private val speedFormatter = DecimalFormat().also {
-        it.decimalFormatSymbols = DecimalFormatSymbols(Locale.US)
-        it.minimumFractionDigits = 1
-        it.maximumFractionDigits = 2
-    }
 
     // Drawable icons for brightness and volume.
     private val autoBrightnessIcon: Drawable = getDrawable("morphe_ic_sc_brightness_auto")
@@ -214,7 +206,7 @@ class SwipeControlsOverlayLayout(
         feedbackHideHandler.removeCallbacks(feedbackHideCallback)
         feedbackHideHandler.postDelayed(feedbackHideCallback, config.overlayShowTimeoutMillis)
 
-        val displayText = speedFormatter.format(speed)
+        val displayText = VideoInformation.formatSpeedStringX(speed, 2, false)
         val progress = maxOf(0, minOf(100, ((speed - 0.25f) / (8.0f - 0.25f) * 100).toInt()))
 
         val viewToShow = if (config.overlayStyle.isCircular) circularProgressView else horizontalProgressView

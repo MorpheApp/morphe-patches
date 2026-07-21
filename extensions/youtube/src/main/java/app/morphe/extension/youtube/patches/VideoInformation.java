@@ -321,11 +321,35 @@ public final class VideoInformation {
     }
 
     /**
-     * @param speed The playback speed value to format.
+     * @param speed The playback speed value to format using minimum of 2 fractional digits.
      * @return A string representation of the speed with 'x' (e.g. "1.25x" or "1.00x").
      */
-    private static String formatSpeedStringX(float speed) {
-        return speedFormatter.format(speed) + 'x';
+    public static String formatSpeedStringX(float speed) {
+        return formatSpeedStringX(speed, 2);
+    }
+
+    /**
+     * @param speed The playback speed value to format
+     * @param minFractionalDigits The minimum number of fractional digits to use.
+     * @return A string representation of the speed with 'x' (e.g. "1.25x" or "1.00x").
+     */
+    public static String formatSpeedStringX(float speed, int minFractionalDigits) {
+        return formatSpeedStringX(speed, minFractionalDigits, true);
+    }
+
+    /**
+     * @param speed The playback speed value to format.
+     * @param minFractionalDigits The minimum number of fractional digits to use.
+     * @param includeX If 'x' character is appended to the speed.
+     */
+    public static String formatSpeedStringX(float speed, int minFractionalDigits, boolean includeX) {
+        Utils.verifyOnMainThread();
+        speedFormatter.setMinimumFractionDigits(minFractionalDigits);
+
+        String speedFormatted = speedFormatter.format(speed);
+        return includeX
+                ? speedFormatted + 'x'
+                : speedFormatted;
     }
 
     /**
