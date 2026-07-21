@@ -1,5 +1,7 @@
 package app.morphe.extension.youtube.patches;
 
+import android.icu.text.NumberFormat;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -102,13 +104,20 @@ public final class VideoInformation {
     private static float playbackSpeed = DEFAULT_PLAYBACK_SPEED;
     /**
      * The current playback speed in native panel.
-     * This value is updated only when the native playback speed panel is opened.
      */
     private static String playbackSpeedFormattedString = "";
 
     private static int desiredVideoResolution = AUTOMATIC_VIDEO_QUALITY_VALUE;
 
     private static boolean qualityNeedsUpdating;
+
+    private static final NumberFormat speedFormatter = NumberFormat.getNumberInstance();
+
+    static {
+        // Use same 2 digit format as built in speed picker,
+        speedFormatter.setMinimumFractionDigits(2);
+        speedFormatter.setMaximumFractionDigits(2);
+    }
 
     /**
      * The current VideoQualityMenuInterface, set during setPlaybackSpeedMenu.
@@ -289,6 +298,10 @@ public final class VideoInformation {
         if (playbackSpeed != currentVideoSpeed) {
             Logger.printDebug(() -> "Video speed changed: " + currentVideoSpeed);
             playbackSpeed = currentVideoSpeed;
+
+            // An exception occurs when the playback speed dialog is opened by an overlay button while 'Restore old playback speed menu' is off.
+            // Update the formatted string value to avoid the exception.
+            playbackSpeedFormattedString = formatSpeedStringX(currentVideoSpeed);
         }
     }
 
@@ -301,6 +314,18 @@ public final class VideoInformation {
     public static void userSelectedPlaybackSpeed(float userSelectedPlaybackSpeed) {
         Logger.printDebug(() -> "User selected playback speed: " + userSelectedPlaybackSpeed);
         playbackSpeed = userSelectedPlaybackSpeed;
+
+        // An exception occurs when the playback speed dialog is opened by an overlay button while 'Restore old playback speed menu' is off.
+        // Update the formatted string value to avoid the exception.
+        playbackSpeedFormattedString = formatSpeedStringX(userSelectedPlaybackSpeed);
+    }
+
+    /**
+     * @param speed The playback speed value to format.
+     * @return A string representation of the speed with 'x' (e.g. "1.25x" or "1.00x").
+     */
+    private static String formatSpeedStringX(float speed) {
+        return speedFormatter.format(speed) + 'x';
     }
 
     /**
@@ -569,9 +594,6 @@ public final class VideoInformation {
         }
 
         currentPlaybackSpeedMenuInterface.patch_setSpeed(playbackSpeed);
-
-        // If the playback speed is changed by extension, the formatted string cache must be cleared.
-        playbackSpeedFormattedString = "";
     }
 
     /**
@@ -609,13 +631,13 @@ public final class VideoInformation {
     }
 
     /**
+     * Called when the native playback speed panel is opened.
      * @param newlyLoadedPlaybackSpeedFormattedString The current formatted playback speed string.
      */
     private static void setPlaybackSpeedFormattedString(
             String newlyLoadedPlaybackSpeedFormattedString,
             float newlyLoadedPlaybackSpeed
     ) {
-        // After the video started, the native playback speed panel opened for the first time.
         if (playbackSpeedFormattedString.isEmpty()) {
             // The user has not yet changed the playback speed in the native playback speed panel.
             // Save the string to the field (playbackSpeedFormattedString) and do nothing.
@@ -623,7 +645,7 @@ public final class VideoInformation {
             return;
         }
 
-        // The playback speed changed (by user) after the native playback speed panel was opened.
+        // Playback speed changed in native playback speed panel.
         if (!playbackSpeedFormattedString.equals(newlyLoadedPlaybackSpeedFormattedString)) {
             playbackSpeedFormattedString = newlyLoadedPlaybackSpeedFormattedString;
 

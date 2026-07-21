@@ -213,7 +213,7 @@ val videoInformationPatch = bytecodePatch(
                 val index = it.instructionMatches.first().index
 
                 formattedSpeedStringInsertMethodRef = WeakReference(this)
-                formattedSpeedStringInsertIndex = index + 1
+                formattedSpeedStringInsertIndex = index
                 formattedSpeedStringValueRegister =
                     getInstruction<FiveRegisterInstruction>(index).registerC
 
