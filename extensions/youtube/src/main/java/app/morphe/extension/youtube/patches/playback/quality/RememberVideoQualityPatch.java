@@ -141,12 +141,11 @@ public class RememberVideoQualityPatch {
     /**
      * Injection point.
      */
-    public static boolean overrideMediaSegmentHolderVideoQualityFlag(boolean originalValue) {
+    public static boolean overridePlatypusVideoQualityFlag(boolean originalValue) {
         int preferredQuality = getDefaultQualityResolution();
         if (preferredQuality != VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE && originalValue) {
-            final boolean disabled = false;
-            Logger.printDebug(() -> "mediaSegmentHolderVideoQualityFlag new value: " + disabled);
-            return disabled;
+            Logger.printDebug(() -> "overridePlatypusVideoQualityFlag new value: " + false);
+            return false;
         }
         return originalValue;
     }

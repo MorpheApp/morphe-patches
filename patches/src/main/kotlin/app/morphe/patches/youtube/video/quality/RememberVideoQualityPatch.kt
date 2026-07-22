@@ -22,13 +22,13 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.MediaSegmentHolderVideoQualityFlagFingerprint
+import app.morphe.patches.youtube.shared.PlatypusVideoQualityFlagFingerprint
 import app.morphe.patches.youtube.shared.VideoQualityChangedFingerprint
 import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.findFieldFromToString
+import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS =
@@ -120,19 +120,11 @@ val rememberVideoQualityPatch = bytecodePatch {
             }
         }
 
-        MediaSegmentHolderVideoQualityFlagFingerprint.let {
-            it.method.apply {
-                val index = it.instructionMatches.last().index
-                val register = getInstruction<OneRegisterInstruction>(index).registerA
-
-                addInstructions(
-                    index + 1,
-                    """
-                        invoke-static { v$register }, $EXTENSION_CLASS->overrideMediaSegmentHolderVideoQualityFlag(Z)Z
-                        move-result v$register
-                    """,
-                )
-            }
+        PlatypusVideoQualityFlagFingerprint.let {
+            it.method.insertLiteralOverride(
+                it.instructionMatches.last().index,
+                "$EXTENSION_CLASS->overridePlatypusVideoQualityFlag(Z)Z"
+            )
         }
     }
 }

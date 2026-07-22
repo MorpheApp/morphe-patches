@@ -265,7 +265,7 @@ internal object WatchNextResponseParserFingerprint : Fingerprint(
     )
 )
 
-internal object MediaSegmentHolderVideoQualityFlagFingerprint : Fingerprint(
+internal object PlatypusVideoQualityFlagFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     returnType = "V",
     filters = listOf(
