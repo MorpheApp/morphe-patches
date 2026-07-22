@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-07-21T08:46:04",
-  "description": "## [1.36.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v1.36.0-dev.6...v1.36.0-dev.7) (2026-07-21)\n\n### 🐛 Bug Fixes\n\n* **YouTube:** Update compatibility version name ([ca4dd01](https://github.com/MorpheApp/morphe-patches/commit/ca4dd01fa78bdb921e701cf14267a2d787034d25))\n\n### ✨ New Features\n\n* **YouTube Music - Hide ads:** Add \"Hide Music Premium promotions\" setting ([#2122](https://github.com/MorpheApp/morphe-patches/issues/2122)) ([671f24c](https://github.com/MorpheApp/morphe-patches/commit/671f24cca071639deb293a740ce3a4bd79e9db3a))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.36.0-dev.7/patches-1.36.0-dev.7.mpp",
+  "created_at": "2026-07-22T05:16:53",
+  "description": "## [1.36.0-dev.8](https://github.com/MorpheApp/morphe-patches/compare/v1.36.0-dev.7...v1.36.0-dev.8) (2026-07-22)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Playback speed:** Playback speed is remembered even if the user does not change it manually ([#2134](https://github.com/MorpheApp/morphe-patches/issues/2134)) ([b6dbe4f](https://github.com/MorpheApp/morphe-patches/commit/b6dbe4f294f124d7b7d84db3360249deda150bf0))\n\n### ✨ New Features\n\n* **Settings:** Long-press a Morphe setting to copy its breadcrumb ([#2130](https://github.com/MorpheApp/morphe-patches/issues/2130)) ([622ef54](https://github.com/MorpheApp/morphe-patches/commit/622ef54e1dafeb1456ec6fd3616106c2592eca11))\n* **YouTube - Hide layout components:** Add \"Hide featured palylists section\" setting ([59d7196](https://github.com/MorpheApp/morphe-patches/commit/59d7196fa37cc26205c26405eea119ebb3c66cbb))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.36.0-dev.8/patches-1.36.0-dev.8.mpp",
   "signature_download_url": "",
-  "version": "1.36.0-dev.7"
+  "version": "1.36.0-dev.8"
 }

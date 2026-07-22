@@ -36,6 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_7_misc_title">Lain-lain</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Sembunyikan label \'Dapatkan Music Premium\'</string>
+  <string name="morphe_music_hide_music_premium_promotions_title">Sembunyikan promosi Music Premium</string>
   <string name="morphe_music_hide_video_ads_title">Sembunyikan iklan video</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Pudar silang</string>
@@ -167,8 +168,8 @@ YouTube Music 8.x — pudar silang hanya berfungsi pada versi 9.x dan yang lebih
   <string name="morphe_music_hide_flyout_menu_shuffle_play_title">Sembunyikan menu \'Putar acak\'</string>
   <string name="morphe_music_hide_flyout_menu_sleep_timer_title">Sembunyikan menu \'Pewaktu tidur\'</string>
   <string name="morphe_music_hide_flyout_menu_start_radio_title">Sembunyikan menu \'Mulai radio\'</string>
-  <string name="morphe_music_hide_flyout_menu_stats_for_nerds_title">Sembunyikan menu \'Statistik untuk ahli\'</string>
-  <string name="morphe_music_hide_flyout_menu_subscribe_title">Sembunyikan menu Berlangganan</string>
+  <string name="morphe_music_hide_flyout_menu_stats_for_nerds_title">Sembunyikan menu \'Informasi statistik\'</string>
+  <string name="morphe_music_hide_flyout_menu_subscribe_title">Sembunyikan tombol Subscribe</string>
   <string name="morphe_music_hide_flyout_menu_unpin_from_speed_dial_title">Sembunyikan menu \'Lepaskan dari panggilan cepat\'</string>
   <string name="morphe_music_hide_flyout_menu_view_song_credit_title">Sembunyikan menu \'Lihat kredit lagu\'</string>
   <!-- layout.startpage.changeStartPagePatch -->

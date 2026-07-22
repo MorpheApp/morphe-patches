@@ -155,6 +155,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_featured_channels_section_title">隱藏精選頻道區段</string>
   <string name="morphe_hide_featured_links_section_title">隱藏精選連結區段</string>
   <string name="morphe_hide_featured_places_section_title">隱藏「精選地點」區段</string>
+  <string name="morphe_hide_featured_playlists_section_title">隱藏精選歌單區段</string>
   <string name="morphe_hide_featured_videos_section_title">隱藏精選影片區段</string>
   <string name="morphe_hide_gaming_section_title">隱藏「遊戲」區段</string>
   <string name="morphe_hide_how_this_was_made_section_title">隱藏「這項內容的製作方式」區段</string>
@@ -906,6 +907,7 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_resuming_summary">停用「繼續觀看」迷你播放器，這是 YouTube Premium 的功能，會在應用程式啟動時顯示</string>
   <string name="morphe_miniplayer_screen_title">迷你播放器</string>
   <string name="morphe_miniplayer_screen_summary">自訂迷你影片播放器的外觀和行為</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube 已移除所有額外的迷你播放器。若要變更迷你播放器類型，請修補 YouTube 21.28.207 或更舊版本</string>
   <string name="morphe_miniplayer_type_title">迷你播放器類型</string>
   <string name="morphe_miniplayer_type_entry_0">停用</string>
   <string name="morphe_miniplayer_type_entry_1">預設</string>

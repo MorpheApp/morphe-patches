@@ -154,6 +154,7 @@ Muutoksia ovat muun muassa:
   <string name="morphe_hide_featured_channels_section_title">Piilota esiteltyjen kanavien osio</string>
   <string name="morphe_hide_featured_links_section_title">Piilota Tietoja-linkit -osio</string>
   <string name="morphe_hide_featured_places_section_title">Piilota \"Esitellyt paikat\" -osio</string>
+  <string name="morphe_hide_featured_playlists_section_title">Piilota suositellut soittolistat -osio</string>
   <string name="morphe_hide_featured_videos_section_title">Piilota Esitellyt videot -osio</string>
   <string name="morphe_hide_gaming_section_title">Piilota Pelaaminen-osio</string>
   <string name="morphe_hide_how_this_was_made_section_title">Piilota \"Miten tämä sisältö on luotu\" -osio</string>
@@ -905,6 +906,7 @@ Rajoitus: Jos \"Palauta vanha videotoimintopalkki\" on poissa käytöstä, \"Lis
   <string name="morphe_miniplayer_disable_resuming_summary">Poistaa käytöstä ’Jatka katselua’ -minisoittimen, YouTube Premium -ominaisuuden, joka ilmestyy sovelluksen käynnistyessä</string>
   <string name="morphe_miniplayer_screen_title">Minisoitin</string>
   <string name="morphe_miniplayer_screen_summary">Muokkaa pienennetyn videotoistimen ulkoasua ja toimintaa</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube poisti kaikki lisäminisoittimet. Muuttaaksesi minisoittimen tyyppiä, paikkaa YouTube 21.28.207 tai vanhempi versio</string>
   <string name="morphe_miniplayer_type_title">Minisoittimen tyyppi</string>
   <string name="morphe_miniplayer_type_entry_0">Pois käytöstä</string>
   <string name="morphe_miniplayer_type_entry_1">Oletus</string>

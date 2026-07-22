@@ -1,3 +1,14 @@
+## [1.36.0-dev.8](https://github.com/MorpheApp/morphe-patches/compare/v1.36.0-dev.7...v1.36.0-dev.8) (2026-07-22)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Playback speed:** Playback speed is remembered even if the user does not change it manually ([#2134](https://github.com/MorpheApp/morphe-patches/issues/2134)) ([b6dbe4f](https://github.com/MorpheApp/morphe-patches/commit/b6dbe4f294f124d7b7d84db3360249deda150bf0))
+
+### ✨ New Features
+
+* **Settings:** Long-press a Morphe setting to copy its breadcrumb ([#2130](https://github.com/MorpheApp/morphe-patches/issues/2130)) ([622ef54](https://github.com/MorpheApp/morphe-patches/commit/622ef54e1dafeb1456ec6fd3616106c2592eca11))
+* **YouTube - Hide layout components:** Add "Hide featured palylists section" setting ([59d7196](https://github.com/MorpheApp/morphe-patches/commit/59d7196fa37cc26205c26405eea119ebb3c66cbb))
+
 ## [1.36.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v1.36.0-dev.6...v1.36.0-dev.7) (2026-07-21)
 
 ### 🐛 Bug Fixes

@@ -8,7 +8,10 @@
 package app.morphe.patches.music.layout.hide.settingsmenu
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.methodCall
+import app.morphe.patcher.opcode
 import com.android.tools.smali.dexlib2.Opcode
 
 private const val SETTINGS_HEADERS_FRAGMENT_CLASS =
@@ -24,6 +27,11 @@ internal object SettingsHeadersOnCreatePreferencesFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Landroid/os/Bundle;", "Ljava/lang/String;"),
     filters = listOf(
+        methodCall(
+            definingClass = "this",
+            name = "internalPeer"
+        ),
+        opcode(opcode = Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
             type = SETTINGS_HEADERS_FRAGMENT_CLASS

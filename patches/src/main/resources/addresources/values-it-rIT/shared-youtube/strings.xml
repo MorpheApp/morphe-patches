@@ -211,8 +211,10 @@ Tocca qui per aprire ReturnYouTubeDislike.com"</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">I \"Non Mi Piace\" temporaneamente non disponibili - limite di frequenza API client attivo</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">Fetch API, numero di chiamate</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Nessuna chiamata di rete effettuata</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">Effettuate %d chiamate di rete</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">Fetch voti API, numero di timeout</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Nessuna chiamata di rete in timeout</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d chiamate di rete hanno superato il tempo di attesa</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">Limiti di frequenza client API</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Nessun limite di frequenza client riscontrato</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Limite di frequenza client riscontrato %d volte</string>

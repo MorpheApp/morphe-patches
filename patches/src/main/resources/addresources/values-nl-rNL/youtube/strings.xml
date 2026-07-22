@@ -155,6 +155,7 @@ Wijzigingen zijn:
   <string name="morphe_hide_featured_channels_section_title">Verberg Uitgelichte kanalen sectie</string>
   <string name="morphe_hide_featured_links_section_title">Verberg Uitgelichte links sectie</string>
   <string name="morphe_hide_featured_places_section_title">Verberg \'Uitgelichte plaatsen\' sectie</string>
+  <string name="morphe_hide_featured_playlists_section_title">Verberg Featured afspeellijsten sectie</string>
   <string name="morphe_hide_featured_videos_section_title">Verberg Uitgelichte video\'s sectie</string>
   <string name="morphe_hide_gaming_section_title">Verberg Gaming sectie</string>
   <string name="morphe_hide_how_this_was_made_section_title">Verberg \'Hoe deze content is gemaakt\' sectie</string>
@@ -906,6 +907,7 @@ Beperking: Als 'Herstel oude video acties balk' is uitgeschakeld, is de \"Meer v
   <string name="morphe_miniplayer_disable_resuming_summary">Schakelt de \'Doorgaan met kijken\'-minispeler uit, een functie van YouTube Premium die verschijnt bij het opstarten van de app</string>
   <string name="morphe_miniplayer_screen_title">Minispeler</string>
   <string name="morphe_miniplayer_screen_summary">Pas het uiterlijk en het gedrag van de geminimaliseerde videospeler aan</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube heeft alle extra mini-spelers verwijderd. Om het type mini-speler te wijzigen, patch dan YouTube 21.28.207 of ouder</string>
   <string name="morphe_miniplayer_type_title">\"miniplayer\"-type</string>
   <string name="morphe_miniplayer_type_entry_0">Uitgeschakeld</string>
   <string name="morphe_miniplayer_type_entry_1">Standaard</string>

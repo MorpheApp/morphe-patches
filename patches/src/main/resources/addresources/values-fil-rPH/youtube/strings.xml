@@ -155,6 +155,7 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_featured_channels_section_title">Itago ang seksyon ng mga Featured channel</string>
   <string name="morphe_hide_featured_links_section_title">Itago ang seksyon ng Featured links</string>
   <string name="morphe_hide_featured_places_section_title">Itago ang seksyon na \'Mga Itinatampok na lugar\'</string>
+  <string name="morphe_hide_featured_playlists_section_title">Itago ang seksyon ng mga piniling playlist</string>
   <string name="morphe_hide_featured_videos_section_title">Itago ang seksyon ng Featured videos</string>
   <string name="morphe_hide_gaming_section_title">Itago ang seksyon ng Gaming</string>
   <string name="morphe_hide_how_this_was_made_section_title">Itago ang seksyon na \'Paano ginawa ang kontentong ito\'</string>
@@ -906,6 +907,7 @@ Limitasyon: Kung ang 'Ibalik ang lumang video action bar' ay naka-off, maaaring 
   <string name="morphe_miniplayer_disable_resuming_summary">Hindi pinapagana ang \'Continue watching\' miniplayer, isang tampok ng YouTube Premium na lumalabas sa paglunsad ng app.</string>
   <string name="morphe_miniplayer_screen_title">Miniplayer</string>
   <string name="morphe_miniplayer_screen_summary">I-customize ang hitsura at pag-uugali ng minimize video player</string>
+  <string name="morphe_miniplayer_not_available_summary">Inalis ng YouTube ang lahat ng karagdagang miniplayer. Para baguhin ang uri ng miniplayer, i-patch ang YouTube 21.28.207 o mas maaga.</string>
   <string name="morphe_miniplayer_type_title">Uri ng miniplayer</string>
   <string name="morphe_miniplayer_type_entry_0">Na-disable</string>
   <string name="morphe_miniplayer_type_entry_1">Default</string>

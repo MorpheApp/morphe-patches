@@ -18,7 +18,9 @@ import app.morphe.patches.shared.misc.settingsmenu.HIDE_MATCHING_METHOD
 import app.morphe.patches.shared.misc.settingsmenu.SETTINGS_MENU_FILTER_CLASS
 import app.morphe.patches.shared.misc.settingsmenu.injectHideMatchingHelper
 import app.morphe.patches.shared.misc.settingsmenu.injectSettingsMenuFilterHook
+import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getReference
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 private const val EXTENSION_CLASS =
@@ -55,28 +57,34 @@ val hideSettingsMenuFilterPatch = bytecodePatch(
 
         // p0 is reassigned to the peer at method entry, so recover the fragment via peer.fragment.
         SettingsHeadersOnCreatePreferencesFingerprint.let {
-            val fragmentField = it.instructionMatches.first()
+            val fragmentField = it.instructionMatches.last()
                 .instruction.getReference<FieldReference>()!!
 
             it.method.apply {
                 val insertIndex = implementation!!.instructions.size - 1
+                val peerRegister = it.instructionMatches[1].getInstruction<OneRegisterInstruction>().registerA
+                val registerProvider = getFreeRegisterProvider(insertIndex,
+                    3, peerRegister)
+                val free1 = registerProvider.getFreeRegister()
+                val free2 = registerProvider.getFreeRegister()
+                val free3 = registerProvider.getFreeRegister()
 
                 addInstructionsWithLabels(
                     insertIndex,
                     """
-                        iget-object v0, p0, $fragmentField
-                        invoke-virtual { v0 }, $SETTINGS_HEADERS_FRAGMENT_CLASS->getPreferenceScreen()Landroidx/preference/PreferenceScreen;
-                        move-result-object v0
-                        if-eqz v0, :ignore
+                        iget-object v$free1, v$peerRegister, $fragmentField
+                        invoke-virtual { v$free1 }, $SETTINGS_HEADERS_FRAGMENT_CLASS->getPreferenceScreen()Landroidx/preference/PreferenceScreen;
+                        move-result-object v$free1
+                        if-eqz v$free1, :ignore
 
                         invoke-static { }, $EXTENSION_CLASS->getNeedles()[Ljava/lang/String;
-                        move-result-object v1
-                        if-eqz v1, :ignore
+                        move-result-object v$free2
+                        if-eqz v$free2, :ignore
 
                         invoke-static { }, $SETTINGS_MENU_FILTER_CLASS->beginCapture()V
 
-                        const/4 v2, 0x0
-                        invoke-virtual { v0, v1, v2 }, $HIDE_MATCHING_METHOD
+                        const/4 v$free3, 0x0
+                        invoke-virtual { v$free1, v$free2, v$free3 }, $HIDE_MATCHING_METHOD
 
                         invoke-static { }, $SETTINGS_MENU_FILTER_CLASS->endCapture()V
 

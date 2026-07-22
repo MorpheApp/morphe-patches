@@ -154,6 +154,7 @@ As mudanças incluem:
   <string name="morphe_hide_featured_channels_section_title">Ocultar seção de canais em destaque</string>
   <string name="morphe_hide_featured_links_section_title">Ocultar seção \'Links em destaque\'</string>
   <string name="morphe_hide_featured_places_section_title">Ocultar seção \'Lugares em destaque\'</string>
+  <string name="morphe_hide_featured_playlists_section_title">Ocultar seção de playlists em destaque</string>
   <string name="morphe_hide_featured_videos_section_title">Ocultar seção \'Vídeos em destaque\'</string>
   <string name="morphe_hide_gaming_section_title">Ocultar seção \"Jogos\"</string>
   <string name="morphe_hide_how_this_was_made_section_title">Ocultar seção \"Como este conteúdo foi criado\"</string>
@@ -905,6 +906,7 @@ Limitação: Se 'Restaurar barra de ações de vídeo antiga' estiver desativado
   <string name="morphe_miniplayer_disable_resuming_summary">Desativa o miniplayer \"Continuar assistindo\", um recurso do YouTube Premium que aparece na inicialização do aplicativo</string>
   <string name="morphe_miniplayer_screen_title">Miniplayer</string>
   <string name="morphe_miniplayer_screen_summary">Personalize a aparência e o comportamento do mini player minimizado</string>
+  <string name="morphe_miniplayer_not_available_summary">O YouTube removeu todos os miniplayers adicionais. Para alterar o tipo de miniplayer, use a versão 21.28.207 ou anterior do YouTube</string>
   <string name="morphe_miniplayer_type_title">Tipo de miniplayer</string>
   <string name="morphe_miniplayer_type_entry_0">Desativado</string>
   <string name="morphe_miniplayer_type_entry_1">Padrão</string>

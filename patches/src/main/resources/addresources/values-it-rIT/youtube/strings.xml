@@ -155,6 +155,7 @@ I cambiamenti riguarderanno:
   <string name="morphe_hide_featured_channels_section_title">Nascondi la sezione Canali in evidenza</string>
   <string name="morphe_hide_featured_links_section_title">Nascondi la sezione Link in evidenza</string>
   <string name="morphe_hide_featured_places_section_title">Nascondi la sezione \'Luoghi in evidenza\'</string>
+  <string name="morphe_hide_featured_playlists_section_title">Nascondi la sezione Playlist in evidenza</string>
   <string name="morphe_hide_featured_videos_section_title">Nascondi la sezione Video in evidenza</string>
   <string name="morphe_hide_gaming_section_title">Nascondi la sezione Gaming</string>
   <string name="morphe_hide_how_this_was_made_section_title">Nascondi la sezione \'Come è stato realizzato questo contenuto\'</string>
@@ -906,6 +907,7 @@ Limitazione: se \"Ripristina la vecchia barra delle azioni video\" è disattivat
   <string name="morphe_miniplayer_disable_resuming_summary">Impedisce al lettore minimizzato \'Continua a guardare\' di essere mostrato all\'avvio dell\'app</string>
   <string name="morphe_miniplayer_screen_title">Lettore minimizzato</string>
   <string name="morphe_miniplayer_screen_summary">Personalizza l\'aspetto e il comportamento del lettore minimizzato</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube ha rimosso tutti i miniplayer aggiuntivi. Per cambiare il tipo di miniplayer, applica una patch a YouTube 21.28.207 o a una versione precedente</string>
   <string name="morphe_miniplayer_type_title">Tipo di Lettore minimizzato</string>
   <string name="morphe_miniplayer_type_entry_0">Disattivato</string>
   <string name="morphe_miniplayer_type_entry_1">Predefinito</string>

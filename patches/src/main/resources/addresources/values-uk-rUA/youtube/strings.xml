@@ -155,6 +155,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_featured_channels_section_title">Приховати секцію \"Рекомендовані канали\"</string>
   <string name="morphe_hide_featured_links_section_title">Приховати секцію \"Рекомендований контент\"</string>
   <string name="morphe_hide_featured_places_section_title">Приховати секцію \"Рекомендовані місця\"</string>
+  <string name="morphe_hide_featured_playlists_section_title">Приховати розділ \"Рекомендовані списки відтворення\"</string>
   <string name="morphe_hide_featured_videos_section_title">Приховати секцію \"Рекомендовані відео\"</string>
   <string name="morphe_hide_gaming_section_title">Приховати секцію \"Ігри\"</string>
   <string name="morphe_hide_how_this_was_made_section_title">Приховати секцію \"Як створювався цей контент\"</string>
@@ -905,6 +906,7 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Вимикає мініплеєр \"Продовжити перегляд\", функцію YouTube Premium, що з\'являється при запуску застосунку</string>
   <string name="morphe_miniplayer_screen_title">Мініплеєр</string>
   <string name="morphe_miniplayer_screen_summary">Налаштування вигляду та поведінки мінімізованого відеоплеєра</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube видалив усі додаткові типи мініплеєра. Щоб змінити тип мініплеєра, пропатчіть YouTube версії 21.28.207 або старішої</string>
   <string name="morphe_miniplayer_type_title">Тип мініплеєра</string>
   <string name="morphe_miniplayer_type_entry_0">Вимкнено</string>
   <string name="morphe_miniplayer_type_entry_1">Стандартний</string>
@@ -1021,13 +1023,13 @@ Second \"item\" text"</string>
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Авто</string>
   <string name="morphe_remember_video_quality_last_selected_title">Запам’ятовувати якість відео</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">Застосовує обраний рівень якості до всіх наступних відео</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Застосовує вибраний рівень якості до всіх наступних відео</string>
   <string name="morphe_remember_video_quality_last_selected_toast_title">Сповіщення про зміну якості</string>
   <string name="morphe_remember_video_quality_last_selected_toast_summary">Показує сповіщення при збереженні нової типової якості</string>
   <string name="morphe_video_quality_default_wifi_title">Типова якість відео у мережі Wi-Fi</string>
   <string name="morphe_video_quality_default_mobile_title">Типова якість відео у мобільній мережі</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Запам’ятовувати якість Shorts</string>
-  <string name="morphe_remember_shorts_quality_last_selected_summary">Застосовує обраний рівень якості до всіх наступних Shorts</string>
+  <string name="morphe_remember_shorts_quality_last_selected_summary">Застосовує вибраний рівень якості до всіх наступних Shorts</string>
   <string name="morphe_shorts_quality_default_wifi_title">Типова якість Shorts у мережі Wi-Fi</string>
   <string name="morphe_shorts_quality_default_mobile_title">Типова якість Shorts у мобільній мережі</string>
   <string name="morphe_remember_video_quality_toast_mobile">Змінено типову якість для мобільної мережі на: %s</string>
@@ -1052,7 +1054,7 @@ Second \"item\" text"</string>
   <string name="morphe_speed_tap_and_hold_summary">Встановлює множник швидкості при натисканні та утриманні екрана, встановіть 0 для вимкнення</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Запам’ятати швидкість відтворення</string>
-  <string name="morphe_remember_playback_speed_last_selected_summary">Застосовує обраний рівень швидкості до всіх наступних відео</string>
+  <string name="morphe_remember_playback_speed_last_selected_summary">Застосовує вибраний рівень якості до всіх наступних Shorts</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Сповіщення про зміну швидкості</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Показує сповіщення при збереженні нової типової швидкості відтворення</string>
   <string name="morphe_playback_speed_default_title">Типова швидкість відтворення</string>

@@ -155,6 +155,7 @@ A változások a következőket tartalmazzák:
   <string name="morphe_hide_featured_channels_section_title">Kiemelt csatornák szekció elrejtése</string>
   <string name="morphe_hide_featured_links_section_title">Kiemelt hivatkozások szekció elrejtése</string>
   <string name="morphe_hide_featured_places_section_title">Kiemelt helyek szekció elrejtése</string>
+  <string name="morphe_hide_featured_playlists_section_title">Kiemelt lejálisták szakasz elrejtése</string>
   <string name="morphe_hide_featured_videos_section_title">Kiemelt videók szekció elrejtése</string>
   <string name="morphe_hide_gaming_section_title">Játékok szekció elrejtése</string>
   <string name="morphe_hide_how_this_was_made_section_title">A „Hogyan készült ez a tartalom?” szekció elrejtése</string>
@@ -897,6 +898,7 @@ Korlátozás: Ha a „Régi videós eszköztár visszaállítása” ki van kapc
   <string name="morphe_miniplayer_disable_resuming_summary">Letiltja a „Folytatás” minilejátszót, a YouTube Premium funkciót, amely az alkalmazás indításakor jelenik meg.</string>
   <string name="morphe_miniplayer_screen_title">Minilejátszó</string>
   <string name="morphe_miniplayer_screen_summary">A minimalizált videólejátszó megjelenésének és viselkedésének testreszabása</string>
+  <string name="morphe_miniplayer_not_available_summary">A YouTube eltávolították az összes kiegyszítő miniablakot. A miniablak típusa változtatásához a YouTube 21.28.207-es vagy annál ösibb verziójavítását kell alkalmazni.</string>
   <string name="morphe_miniplayer_type_title">Minilejátszó típus</string>
   <string name="morphe_miniplayer_type_entry_0">Kikapcsolva</string>
   <string name="morphe_miniplayer_type_entry_1">Alapértelmezett</string>

@@ -156,6 +156,7 @@ Folgende Änderungen werden vorgenommen:
   <string name="morphe_hide_featured_channels_section_title">Ausblenden des Bereichs „Empfohlene Kanäle“</string>
   <string name="morphe_hide_featured_links_section_title">Empfohlene Links-Bereich ausblenden</string>
   <string name="morphe_hide_featured_places_section_title">Empfohlene Orte-Bereich ausblenden</string>
+  <string name="morphe_hide_featured_playlists_section_title">Empfohlene Playlists-Bereich ausblenden</string>
   <string name="morphe_hide_featured_videos_section_title">Empfohlene Videos-Bereich ausblenden</string>
   <string name="morphe_hide_gaming_section_title">Gaming-Bereich ausblenden</string>
   <string name="morphe_hide_how_this_was_made_section_title">Wie dieser Inhalt erstellt wurde-Bereich ausblenden</string>
@@ -907,6 +908,7 @@ Einschränkung: Wenn \"Alte Video-Aktionsleiste wiederherstellen\" deaktiviert i
   <string name="morphe_miniplayer_disable_resuming_summary">Deaktiviert den Miniplayer „Weiter ansehen“, ein YouTube Premium-Feature, das beim Starten der App angezeigt wird.</string>
   <string name="morphe_miniplayer_screen_title">Minispieler</string>
   <string name="morphe_miniplayer_screen_summary">Passen Sie das Erscheinungsbild und das Verhalten des minimierten Videoplayers an</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube hat alle zusätzlichen Miniplayer entfernt. Um den Miniplayer-Typ zu ändern, patchen Sie YouTube 21.28.207 oder eine ältere Version.</string>
   <string name="morphe_miniplayer_type_title">Minispielertyp</string>
   <string name="morphe_miniplayer_type_entry_0">Deaktiviert</string>
   <string name="morphe_miniplayer_type_entry_1">Standard</string>

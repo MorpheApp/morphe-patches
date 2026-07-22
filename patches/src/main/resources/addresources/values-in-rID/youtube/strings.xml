@@ -154,6 +154,7 @@ Perubahan termasuk:
   <string name="morphe_hide_featured_channels_section_title">Sembunyikan bagian saluran Unggulan</string>
   <string name="morphe_hide_featured_links_section_title">Sembunyikan bagian tautan Unggulan</string>
   <string name="morphe_hide_featured_places_section_title">Sembunyikan bagian \'Tempat unggulan\'</string>
+  <string name="morphe_hide_featured_playlists_section_title">Sembunyikan bagian Daftar putar unggulan</string>
   <string name="morphe_hide_featured_videos_section_title">Sembunyikan bagian video Unggulan</string>
   <string name="morphe_hide_gaming_section_title">Sembunyikan bagian Game</string>
   <string name="morphe_hide_how_this_was_made_section_title">Sembunyikan bagian \'Cara konten ini dibuat\'</string>
@@ -905,6 +906,7 @@ Batasan: Jika 'Kembalikan bilah tindakan video lama' dinonaktifkan, hamparan 'Vi
   <string name="morphe_miniplayer_disable_resuming_summary">Menonaktifkan pemutar mini \'Lanjutkan menonton\', fitur YouTube Premium yang muncul saat aplikasi dimulai</string>
   <string name="morphe_miniplayer_screen_title">Pemutar Mini</string>
   <string name="morphe_miniplayer_screen_summary">Kustomisasi tampilan dan perilaku pemutar video yang diperkecil</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube telah menghapus semua pemutar mini tambahan. Untuk mengubah jenis pemutar mini, terapkan tambalan pada YouTube 21.28.207 atau yang lebih lama</string>
   <string name="morphe_miniplayer_type_title">Jenis pemutar mini</string>
   <string name="morphe_miniplayer_type_entry_0">Dinonaktifkan</string>
   <string name="morphe_miniplayer_type_entry_1">Bawaan</string>
@@ -924,7 +926,7 @@ Batasan: Jika 'Kembalikan bilah tindakan video lama' dinonaktifkan, hamparan 'Vi
   <string name="morphe_miniplayer_disable_horizontal_reposition_title">Ingat posisi seret</string>
   <string name="morphe_miniplayer_disable_horizontal_reposition_summary">Menyeret miniplayer keluar layar akan mempertahankan status UI-nya</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Sembunyikan tombol hamparan</string>
-  <string name="morphe_miniplayer_width_dip_title">Ukuran default</string>
+  <string name="morphe_miniplayer_width_dip_title">Ukuran bawaan</string>
   <string name="morphe_miniplayer_width_dip_summary">Atur ukuran awal di layar, dalam piksel</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">Ukuran piksel harus antara %1$s dan %2$s</string>
   <string name="morphe_miniplayer_opacity_title">Opasitas hamparan</string>
@@ -1010,7 +1012,7 @@ Ketuk di sini untuk membuka DeArrow.ajay.app"</string>
   <string name="morphe_disable_notification_media_seekbar_title">Nonaktifkan bilah pencari</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Mencegah penyeretan bilah pencarian di layar kunci dan panel pemberitahuan</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
-  <string name="microg_offline_account_login_error">Jika Anda baru saja mengubah detail login akun Anda, copot pemasangan dan ulangi memasang MicroG.</string>
+  <string name="microg_offline_account_login_error">Jika Anda baru saja mengubah detail login akun Anda, hapus pemasangan dan ulangi memasang MicroG.</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Lewati pengalihan tautan</string>
   <string name="morphe_bypass_link_redirects_summary">Membuka tautan asli secara langsung, melewati tautan pelacakan (youtube.com/redirect)</string>

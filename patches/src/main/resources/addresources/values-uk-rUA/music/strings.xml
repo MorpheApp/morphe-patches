@@ -36,6 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_7_misc_title">Різне</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Приховати пункт \"Підписатися на Music Premium\"</string>
+  <string name="morphe_music_hide_music_premium_promotions_title">Приховати рекламу Music Premium</string>
   <string name="morphe_music_hide_video_ads_title">Приховати відеорекламу</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Плавний перехід</string>
@@ -76,16 +77,16 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Режим відео недоступний, коли ввімкнено плавний перехід</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Плавний перехід призупинено під час трансляції або дублювання звуку. Плавний перехід через трансляцію/дублювання нестабільний, і можливо, ніколи не бути виправленим</string>
   <string name="morphe_music_crossfade_about_title">Інформація</string>
-  <string name="morphe_music_crossfade_about_summary">Як працює плавний перехід — і коли він не працює</string>
+  <string name="morphe_music_crossfade_about_summary">Як працює плавний перехід - і коли він не працює</string>
   <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
   <string name="morphe_music_crossfade_about_how_title">Як це працює</string>
-  <string name="morphe_music_crossfade_about_how_summary">"Плавний перехід накладає кінець однієї пісні на початок наступної, поступово знижуючи звук однієї та підвищуючи звук іншої впродовж обраної тривалості та за обраною кривою.
+  <string name="morphe_music_crossfade_about_how_summary">"Плавний перехід накладає кінець однієї пісні на початок наступної, поступово знижуючи звук однієї та підвищуючи звук іншої впродовж вибраної тривалості та за вибраною кривою.
 
-Він працює як при автоматичному переході (коли пісня завершується сама), так і при ручному перемиканні — для кожного є власний перемикач вище. При автоматичному переході змішування починається за кілька секунд до завершення пісні.
+Він працює як при автоматичному переході (коли пісня завершується сама), так і при ручному перемиканні - для кожного є власний перемикач вище. При автоматичному переході змішування починається за кілька секунд до завершення пісні.
 
 Потребує YouTube Music 9.x або новішої версії."</string>
   <string name="morphe_music_crossfade_about_best_title">Найкраще працює з</string>
-  <string name="morphe_music_crossfade_about_best_summary">Звичайне відтворення треку за треком та автоперехід, повтор одного треку (трек плавно переходить сам у себе) і локальний звук — динамік телефону, дротові навушники, Bluetooth або USB.</string>
+  <string name="morphe_music_crossfade_about_best_summary">Звичайне відтворення треку за треком та автоперехід, повтор одного треку (трек плавно переходить сам у себе) і локальний звук - динамік телефону, дротові навушники, Bluetooth або USB.</string>
   <string name="morphe_music_crossfade_about_quirks_title">Працює не зовсім правильно</string>
   <string name="morphe_music_crossfade_about_quirks_summary">"Музичні відео відтворюються лише як аудіо, коли увімкнено плавний перехід (довге натискання на перемішування для призупинення, якщо потрібне відео)
 
@@ -93,13 +94,13 @@ Second \"item\" text"</string>
 
 Екран блокування або сповіщення можуть короткочасно показувати застарілий стан під час переходу"</string>
   <string name="morphe_music_crossfade_about_known_title">Відомі проблеми</string>
-  <string name="morphe_music_crossfade_about_known_summary">"Музичне відео, встановлене першим треком — або запущене не з поточної черги — може на короткий час показуватися як відео, перш ніж увімкнеться режим лише аудіо
+  <string name="morphe_music_crossfade_about_known_summary">"Музичне відео, встановлене першим треком - або запущене не з поточної черги - може на короткий час показуватися як відео, перш ніж увімкнеться режим лише аудіо
 
 Призупинення плавного переходу для перегляду музичного відео може залишити деякі відео чорними (ті, чий звук надходить із самого відео). Призупинення плавного переходу перед вибором треку допомагає уникнути цього"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">Не працює взагалі</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Трансляція або дублювання звуку (Chromecast, дублювання екрана чи звуку) — плавний перехід призупиняється, оскільки він нестабільний у цьому випадку, і можливо, ніколи не бути виправленим
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Трансляція або дублювання звуку (Chromecast, дублювання екрана чи звуку) - плавний перехід призупиняється, оскільки він нестабільний у цьому випадку, і можливо, ніколи не бути виправленим
 
-YouTube Music 8.x — плавний перехід працює лише на версії 9.x і новіших"</string>
+YouTube Music 8.x - плавний перехід працює лише на версії 9.x і новіших"</string>
   <string name="morphe_music_crossfade_about_credit_title">Подяки</string>
   <string name="morphe_music_crossfade_about_credit_summary">Функція плавного переходу від VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
