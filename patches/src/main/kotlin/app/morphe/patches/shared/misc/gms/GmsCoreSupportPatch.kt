@@ -18,7 +18,9 @@ import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.InstallerType
 import app.morphe.patcher.patch.Patch
+import app.morphe.patcher.patch.PatchAvailability
 import app.morphe.patcher.patch.ResourcePatchBuilder
 import app.morphe.patcher.patch.ResourcePatchContext
 import app.morphe.patcher.patch.bytecodePatch
@@ -80,6 +82,13 @@ fun gmsCoreSupportPatch(
     description = "Allows the app to work without root by using a different package name when patched " +
             "using a GmsCore instead of Google Play Services.",
 ) {
+
+    availability { installer, _ ->
+        when (installer) {
+            InstallerType.MOUNT -> PatchAvailability.UNAVAILABLE
+            InstallerType.STANDARD, InstallerType.SHIZUKU -> PatchAvailability.REQUIRED
+        }
+    }
 
     dependsOn(
         changePackageNamePatch,

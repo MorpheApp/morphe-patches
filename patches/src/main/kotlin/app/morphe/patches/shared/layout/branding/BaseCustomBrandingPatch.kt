@@ -14,6 +14,8 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.patch.InstallerType
+import app.morphe.patcher.patch.PatchAvailability
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.ResourcePatch
 import app.morphe.patcher.patch.ResourcePatchBuilder
@@ -111,6 +113,14 @@ internal fun baseCustomBrandingPatch(
     description = "Adds options to change the app icon and app name. " +
             "Branding cannot be changed for mounted (root) installations."
 ) {
+
+    availability { installer, _ ->
+        when (installer) {
+            InstallerType.MOUNT -> PatchAvailability.DISABLED
+            else -> PatchAvailability.ENABLED
+        }
+    }
+
     val customName by stringOption(
         key = "customName",
         title = "App name",
