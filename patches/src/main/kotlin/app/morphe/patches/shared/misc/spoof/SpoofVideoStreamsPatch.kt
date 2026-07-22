@@ -385,6 +385,42 @@ internal fun spoofVideoStreamsPatch(
 
         // endregion
 
+        // region Disable SABR playback.
+        // If SABR is disabled, it seems 'MediaFetchHotConfig' may no longer need an override (not confirmed).
+
+        with(MediaFetchEnumConstructorFingerprint.method) {
+            val sabrFieldIndex = indexOfFirstInstructionOrThrow(
+                MediaFetchEnumConstructorFingerprint.stringMatches.last().index,
+                fieldAccess(opcode = Opcode.SPUT_OBJECT, type = definingClass)
+            )
+            val sabrFieldReference = getInstruction<ReferenceInstruction>(sabrFieldIndex)
+                .reference as FieldReference
+
+            Fingerprint(
+                returnType = definingClass,
+                filters = opcodesToFilters(
+                    Opcode.SGET_OBJECT,
+                    Opcode.RETURN_OBJECT,
+                ),
+                custom = { method, _ ->
+                    !method.parameterTypes.isEmpty()
+                }
+            ).method.addInstructionsWithLabels(
+                0,
+                """
+                    invoke-static { }, $EXTENSION_CLASS->disableSABR()Z
+                    move-result v0
+                    if-eqz v0, :ignore
+                    sget-object v0, $sabrFieldReference
+                    return-object v0
+                    :ignore
+                    nop
+                """
+            )
+        }
+
+        //endregion
+
         // region turn off stream config replacement feature flag.
 
         if (fixMediaFetchHotConfigAlternative()) {

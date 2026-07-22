@@ -264,3 +264,12 @@ internal object WatchNextResponseParserFingerprint : Fingerprint(
         literal(46659098L),
     )
 )
+
+internal object MediaSegmentHolderVideoQualityFlagFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    returnType = "V",
+    filters = listOf(
+        literal(45624008L),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterWithin(2))
+    )
+)

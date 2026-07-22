@@ -231,6 +231,14 @@ public class SpoofVideoStreamsPatch {
 
     /**
      * Injection point.
+     * Fix audio stuttering in YouTube Music.
+     */
+    public static boolean disableSABR() {
+        return SPOOF_VIDEO_STREAMS && !StreamingDataRequest.getLastSpoofedClientUseSABR();
+    }
+
+    /**
+     * Injection point.
      * Turns off a feature flag that interferes with spoofing.
      */
     public static boolean useMediaFetchHotConfigReplacement(boolean original) {

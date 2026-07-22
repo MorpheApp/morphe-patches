@@ -137,4 +137,17 @@ public class RememberVideoQualityPatch {
     public static void newVideoStarted(VideoInformation.PlaybackController ignoredPlayerController) {
         VideoInformation.setDesiredVideoResolution(getDefaultQualityResolution());
     }
+
+    /**
+     * Injection point.
+     */
+    public static boolean overrideMediaSegmentHolderVideoQualityFlag(boolean originalValue) {
+        int preferredQuality = getDefaultQualityResolution();
+        if (preferredQuality != VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE && originalValue) {
+            final boolean disabled = false;
+            Logger.printDebug(() -> "mediaSegmentHolderVideoQualityFlag new value: " + disabled);
+            return disabled;
+        }
+        return originalValue;
+    }
 }

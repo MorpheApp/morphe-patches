@@ -132,6 +132,11 @@ public class StreamingDataRequest {
         }
     }
 
+    public static boolean getLastSpoofedClientUseSABR() {
+        ClientType client = lastSpoofedClientType;
+        return client != null && client.requireSABR;
+    }
+
     private final String videoId;
 
     private final Future<StreamData> future;
