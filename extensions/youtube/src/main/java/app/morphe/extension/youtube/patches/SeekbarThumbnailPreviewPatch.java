@@ -90,6 +90,9 @@ public class SeekbarThumbnailPreviewPatch {
         LinearLayout containerLayout = new LinearLayout(context);
         containerLayout.setOrientation(LinearLayout.VERTICAL);
         containerLayout.setGravity(Gravity.CENTER_HORIZONTAL);
+        // Hidden until the first bitmap arrives so the preview does not flash the default 16:9 frame
+        // before we know the true video aspect ratio.
+        containerLayout.setVisibility(View.INVISIBLE);
 
         FrameLayout previewFrame = createPreviewFrame(context, cornerRadiusPx, borderWidthPx);
         ImageView thumbnailPreview = createThumbnailImageView(context, cornerRadiusPx, borderWidthPx);
@@ -227,6 +230,7 @@ public class SeekbarThumbnailPreviewPatch {
                     views.thumbnailPreview.setImageBitmap(currentScrubbedPreviewBitmap);
                     lastAppliedBitmap = currentScrubbedPreviewBitmap;
                     applyBitmapAspectRatio(views.previewFrame, currentScrubbedPreviewBitmap);
+                    views.thumbnailPreviewPopup.getContentView().setVisibility(View.VISIBLE);
                 }
 
                 if (fineScrubbingTimeMillis >= 0) {
