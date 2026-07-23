@@ -195,8 +195,7 @@ internal object SeekbarTrackballPosXAndTimeMillisFingerprint : Fingerprint (
             parameters = listOf("I"),
             returnType = "I",
             location = MatchAfterWithin(5)
-        ),
-        opcode(opcode = Opcode.MOVE_RESULT, location = MatchAfterImmediately())
+        )
     )
 )
 

@@ -41,12 +41,9 @@ val seekbarThumbnailPreviewPatch = bytecodePatch(
         )
 
         SeekbarTrackballPosXAndTimeMillisFingerprint.apply {
-            val timeInstructionIndex = instructionMatches.last().index
-            val timeInstructionRegister = method.getInstruction<OneRegisterInstruction>(timeInstructionIndex).registerA
-
-            method.addInstructions(
-                timeInstructionIndex + 1,
-                "invoke-static { v$timeInstructionRegister }, $EXTENSION_CLASS->setFineScrubbingTimeMillis(I)V"
+            instructionMatches.last().getMethodCalled().addInstruction(
+                0,
+                "invoke-static { p1 }, $EXTENSION_CLASS->setFineScrubbingTimeMillis(I)V"
             )
 
             val posXInstructionIndex = instructionMatches.first().index
