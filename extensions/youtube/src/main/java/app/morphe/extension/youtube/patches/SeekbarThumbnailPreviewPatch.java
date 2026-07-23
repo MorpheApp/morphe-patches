@@ -49,7 +49,7 @@ public class SeekbarThumbnailPreviewPatch {
 
     @SuppressLint("StaticFieldLeak")
     private static SeekbarViews seekbarViews;
-    private static WeakReference<Bitmap> fineScrubbingPreviewBitmapRef = new WeakReference<>(null);
+    private static Bitmap fineScrubbingPreviewBitmap;
     private static Bitmap lastAppliedBitmap;
     private static int fineScrubbingTimeMillis;
     private static int lastX = -1;
@@ -62,7 +62,7 @@ public class SeekbarThumbnailPreviewPatch {
             return;
         }
 
-        fineScrubbingPreviewBitmapRef = new WeakReference<>(bitmap);
+        fineScrubbingPreviewBitmap = bitmap;
     }
 
     /**
@@ -203,11 +203,11 @@ public class SeekbarThumbnailPreviewPatch {
             }
 
             if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL) {
-                lastX = -1;
                 if (views.thumbnailPreviewPopup.isShowing()) {
                     views.thumbnailPreviewPopup.dismiss();
                 }
-                fineScrubbingPreviewBitmapRef = new WeakReference<>(null);
+                lastX = -1;
+                fineScrubbingPreviewBitmap = null;
                 lastAppliedBitmap = null;
                 seekbarViews = null;
                 return;
@@ -221,7 +221,7 @@ public class SeekbarThumbnailPreviewPatch {
 
                 View rootView = trackBall.getRootView();
 
-                Bitmap currentScrubbedPreviewBitmap = fineScrubbingPreviewBitmapRef.get();
+                Bitmap currentScrubbedPreviewBitmap = fineScrubbingPreviewBitmap;
                 if (currentScrubbedPreviewBitmap != null && currentScrubbedPreviewBitmap != lastAppliedBitmap) {
                     views.thumbnailPreview.setImageBitmap(currentScrubbedPreviewBitmap);
                     lastAppliedBitmap = currentScrubbedPreviewBitmap;
