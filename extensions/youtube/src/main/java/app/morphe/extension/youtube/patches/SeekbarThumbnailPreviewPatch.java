@@ -113,14 +113,13 @@ public class SeekbarThumbnailPreviewPatch {
         return seekbarViews = new SeekbarViews(previewFrame, thumbnailPreview, timestampPreview, thumbnailPreviewPopup);
     }
 
-    // Wrapper draws the black fill and white rounded border without clipping the stroke.
+    // Border is a filled rounded rect + padding (not a stroke) to keep outer/inner corners concentric.
     @SuppressWarnings("SuspiciousNameCombination")
     private static FrameLayout createPreviewFrame(Context context, int cornerRadiusPx, int borderWidthPx) {
         FrameLayout previewFrame = new FrameLayout(context);
         GradientDrawable frameBackground = new GradientDrawable();
-        frameBackground.setColor(Color.BLACK);
+        frameBackground.setColor(THUMBNAIL_PREVIEW_BORDER_COLOR);
         frameBackground.setCornerRadius(cornerRadiusPx);
-        frameBackground.setStroke(borderWidthPx, THUMBNAIL_PREVIEW_BORDER_COLOR);
         previewFrame.setBackground(frameBackground);
         previewFrame.setPadding(borderWidthPx, borderWidthPx, borderWidthPx, borderWidthPx);
         return previewFrame;
