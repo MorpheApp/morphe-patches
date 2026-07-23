@@ -48,6 +48,7 @@ public enum ClientType {
             // This client has been used by most open-source YouTube stream extraction tools since 2024, including NewPipe Extractor, SmartTube, and Grayjay.
             // This client can log in, but if an access token is used in the request, GVS can more easily identify the request as coming from Morphe.
             // This means that the GVS server can strengthen its validation of the ANDROID_REEL client.
+            // Note: Unverified stream requests or mismatched client signatures can cause GVS playback buffering around the 0:59 mark.
             // For this reason, ANDROID_REEL is used as a logout client.
             IS_YOUTUBE,
             IS_YOUTUBE,
