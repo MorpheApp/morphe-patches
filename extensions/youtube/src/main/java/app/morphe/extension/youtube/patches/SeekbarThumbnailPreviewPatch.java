@@ -11,7 +11,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.util.Pair;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,11 +19,8 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
-
 import java.lang.ref.WeakReference;
 import java.util.Locale;
-import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ui.Dim;
@@ -33,14 +29,15 @@ import app.morphe.extension.youtube.settings.Settings;
 @SuppressWarnings("unused")
 public class SeekbarThumbnailPreviewPatch {
 
+    private record SeekbarViews(ImageView thumbnailPreview, TextView timestampPreview,
+                                PopupWindow thumbnailPreviewPopup) {
+    }
+
     private static final int THUMBNAIL_PREVIEW_SIZE_DP = 120;
     private static final int THUMBNAIL_PREVIEW_DISTANCE_DP = 10;
     private static final ColorDrawable previewPopupBackGroundDrawable = new ColorDrawable(Color.TRANSPARENT);
 
-    @Nullable
-    private static PopupWindow thumbnailPreviewPopup;
-    private static WeakReference<ImageView> thumbnailPreviewRef = new WeakReference<>(null);
-    private static WeakReference<TextView> thumbnailPreviewTimestampRef = new WeakReference<>(null);
+    private static WeakReference<SeekbarViews> seekbarViewsRef = new WeakReference<>(null);
     private static WeakReference<Bitmap> fineScrubbingPreviewBitmapRef = new WeakReference<>(null);
     private static int fineScrubbingTimeMillis;
     private static int lastX = -1;
@@ -67,12 +64,10 @@ public class SeekbarThumbnailPreviewPatch {
         fineScrubbingTimeMillis = newlyTimeMillis;
     }
 
-    private static Pair<ImageView, TextView> initializeThumbnailPreviewContainer(View trackBall) {
-        ImageView thumbnailPreview = thumbnailPreviewRef.get();
-        TextView timestampPreview = thumbnailPreviewTimestampRef.get();
-
-        if (thumbnailPreview != null && timestampPreview != null) {
-            return new Pair<>(thumbnailPreview, timestampPreview);
+    private static SeekbarViews initializeThumbnailPreviewContainer(View trackBall) {
+        SeekbarViews views = seekbarViewsRef.get();
+        if (views != null) {
+            return views;
         }
 
         final int sizeInPixels = Dim.dp(THUMBNAIL_PREVIEW_SIZE_DP);
@@ -82,15 +77,14 @@ public class SeekbarThumbnailPreviewPatch {
         containerLayout.setOrientation(LinearLayout.VERTICAL);
         containerLayout.setGravity(Gravity.CENTER_HORIZONTAL);
 
-        thumbnailPreview = new ImageView(context);
+        ImageView thumbnailPreview = new ImageView(context);
         thumbnailPreview.setScaleType(ImageView.ScaleType.CENTER_CROP);
         thumbnailPreview.setBackgroundColor(Color.BLACK);
         LinearLayout.LayoutParams imgParams = new LinearLayout.LayoutParams(sizeInPixels, sizeInPixels);
         thumbnailPreview.setLayoutParams(imgParams);
-        thumbnailPreviewRef = new WeakReference<>(thumbnailPreview);
         containerLayout.addView(thumbnailPreview);
 
-        timestampPreview = new TextView(context);
+        TextView timestampPreview = new TextView(context);
         timestampPreview.setTextColor(Color.WHITE);
         timestampPreview.setTextSize(12);
         timestampPreview.setPadding(0, Dim.dp(4), 0, 0);
@@ -100,18 +94,16 @@ public class SeekbarThumbnailPreviewPatch {
                 LinearLayout.LayoutParams.WRAP_CONTENT
         );
         timestampPreview.setLayoutParams(textParams);
-        thumbnailPreviewTimestampRef = new WeakReference<>(timestampPreview);
         containerLayout.addView(timestampPreview);
 
-        if (thumbnailPreviewPopup == null) {
-            thumbnailPreviewPopup = new PopupWindow(containerLayout, LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT, false);
-            thumbnailPreviewPopup.setTouchable(false);
-            thumbnailPreviewPopup.setBackgroundDrawable(previewPopupBackGroundDrawable);
-        } else {
-            thumbnailPreviewPopup.setContentView(containerLayout);
-        }
-        return new Pair<>(thumbnailPreview, timestampPreview);
+        PopupWindow thumbnailPreviewPopup = new PopupWindow(containerLayout, LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT, false);
+        thumbnailPreviewPopup.setTouchable(false);
+        thumbnailPreviewPopup.setBackgroundDrawable(previewPopupBackGroundDrawable);
+
+        views = new SeekbarViews(thumbnailPreview, timestampPreview, thumbnailPreviewPopup);
+        seekbarViewsRef = new WeakReference<>(views);
+        return views;
     }
 
     /**
@@ -123,7 +115,7 @@ public class SeekbarThumbnailPreviewPatch {
                 return;
             }
 
-            Pair<ImageView, TextView> views = initializeThumbnailPreviewContainer(trackBall);
+            SeekbarViews views = initializeThumbnailPreviewContainer(trackBall);
 
             final int action = trackBallMotionEvent.getAction();
             if (action == MotionEvent.ACTION_DOWN) {
@@ -133,9 +125,9 @@ public class SeekbarThumbnailPreviewPatch {
             if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL) {
                 lastX = -1;
                 fineScrubbingPreviewBitmapRef = new WeakReference<>(null);
-                if (thumbnailPreviewPopup != null && thumbnailPreviewPopup.isShowing()) {
-                    thumbnailPreviewPopup.dismiss();
-                    thumbnailPreviewPopup = null;
+                views.thumbnailPreview.setImageBitmap(null);
+                if (views.thumbnailPreviewPopup.isShowing()) {
+                    views.thumbnailPreviewPopup.dismiss();
                 }
                 return;
             }
@@ -151,28 +143,24 @@ public class SeekbarThumbnailPreviewPatch {
 
                 Bitmap currentScrubbedPreviewBitmap = fineScrubbingPreviewBitmapRef.get();
                 if (currentScrubbedPreviewBitmap != null) {
-                    views.first.setImageBitmap(currentScrubbedPreviewBitmap);
+                    views.thumbnailPreview.setImageBitmap(currentScrubbedPreviewBitmap);
                 }
 
-                TextView thumbnailPreviewTimestamp = thumbnailPreviewTimestampRef.get();
-                if (thumbnailPreviewTimestamp != null && fineScrubbingTimeMillis > 0) {
-                    int maxPixel = Dim.getScreenWidth();
-                    long totalVideoMillis = VideoInformation.getVideoLength();
+                if (fineScrubbingTimeMillis >= 0) {
+                    final int maxPixel = Dim.getScreenWidth();
+                    final long totalVideoMillis = VideoInformation.getVideoLength();
 
                     if (totalVideoMillis > 0 && maxPixel > 0) {
-                        int totalSeconds = (int) ((((long) fineScrubbingTimeMillis * totalVideoMillis) / maxPixel) / 1000);
-                        int hours = totalSeconds / 3600;
-                        int minutes = (totalSeconds % 3600) / 60;
-                        int seconds = totalSeconds % 60;
+                        final int totalSeconds = (int) ((((long) fineScrubbingTimeMillis * totalVideoMillis) / maxPixel) / 1000);
+                        final int hours = totalSeconds / 3600;
+                        final int minutes = (totalSeconds % 3600) / 60;
+                        final int seconds = totalSeconds % 60;
 
-                        final String currentSeekTime;
-                        if (hours > 0) {
-                            currentSeekTime = String.format(Locale.getDefault(), "%d:%02d:%02d", hours, minutes, seconds);
-                        } else {
-                            currentSeekTime = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
-                        }
+                        String currentSeekTime = (hours > 0)
+                                ? String.format(Locale.getDefault(), "%d:%02d:%02d", hours, minutes, seconds)
+                                : String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
 
-                        thumbnailPreviewTimestamp.setText(currentSeekTime);
+                        views.timestampPreview.setText(currentSeekTime);
                     }
                 }
 
@@ -193,7 +181,8 @@ public class SeekbarThumbnailPreviewPatch {
                     targetX = screenWidth - sizeInPixels;
                 }
 
-                if (!Objects.requireNonNull(thumbnailPreviewPopup).isShowing()) {
+                PopupWindow thumbnailPreviewPopup = views.thumbnailPreviewPopup;
+                if (!thumbnailPreviewPopup.isShowing()) {
                     if (rootView.getWindowToken() != null) {
                         thumbnailPreviewPopup.showAtLocation(rootView, Gravity.NO_GRAVITY, targetX, targetY);
                     }
