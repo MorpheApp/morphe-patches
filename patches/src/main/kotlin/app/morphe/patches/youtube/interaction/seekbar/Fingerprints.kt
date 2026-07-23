@@ -10,6 +10,7 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
+import app.morphe.patches.youtube.shared.SeekbarFingerprint
 import app.morphe.patches.youtube.video.quality.VideoStreamingDataToStringFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -158,5 +159,65 @@ internal object FormatStreamModelMaxDVRDurationFingerprint : Fingerprint(
         opcode(Opcode.IGET_OBJECT),
         fieldAccess(opcode = Opcode.IGET_WIDE, type = "D", location = MatchAfterImmediately()),
         opcode(Opcode.RETURN_WIDE, location = MatchAfterImmediately()),
+    )
+)
+
+internal object SeekbarTrackballPosXAndTimeMillisFingerprint : Fingerprint (
+    classFingerprint = SeekbarFingerprint,
+    name = "onTouchEvent",
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IGET, smali = "Landroid/graphics/Point;->x:I"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;"
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            smali = "Ljava/lang/Math;->abs(I)I"
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            smali = "Lj$/util/Optional;->of(Ljava/lang/Object;)Lj$/util/Optional;",
+            location = MatchAfterWithin(10)
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT,
+            parameters = listOf("I"),
+            returnType = "I",
+            location = MatchAfterWithin(5)
+        ),
+        opcode(opcode = Opcode.MOVE_RESULT, location = MatchAfterImmediately())
+    )
+)
+
+internal object SeekbarFineScrubbingBitmapFingerprint : Fingerprint (
+    classFingerprint = Fingerprint (
+        returnType = "Landroid/graphics/Bitmap;",
+        parameters = listOf("L", "I", "Landroid/graphics/Bitmap;"),
+        filters = listOf(
+            string("Storyboard regionDecoder.decodeRegion exception - ")
+        )
+    ),
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL, AccessFlags.DECLARED_SYNCHRONIZED),
+    returnType = "V",
+    parameters = listOf("Landroid/graphics/Bitmap;")
+)
+
+internal object SeekbarBigBoardsUpdateFingerprint : Fingerprint (
+    classFingerprint = Fingerprint(
+        accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+        returnType = "Ljava/lang/String;",
+        parameters = listOf(),
+        filters = listOf(
+            string("player_overlay_big_boards")
+        )
+    ),
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        literal(1),
+        opcode(opcode = Opcode.IF_NEZ, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.RETURN, location = MatchAfterImmediately())
     )
 )
