@@ -11,7 +11,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.util.Log;
 import android.util.Pair;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -46,19 +45,6 @@ public class SeekbarThumbnailPreviewPatch {
     private static int fineScrubbingTimeMillis;
     private static int lastX = -1;
 
-    private static String formatTime(int millis) {
-        final int seconds = (millis / 1000) % 60;
-        final int minutes = (millis / (1000 * 60)) % 60;
-        final int hours = (millis / (1000 * 60 * 60)) % 24;
-
-        if (hours > 0) {
-            return String.format(Locale.US, "%d:%02d:%02d", hours, minutes, seconds);
-        } else {
-            return String.format(Locale.US, "%02d:%02d", minutes, seconds);
-        }
-    }
-
-
     /**
      * Injection point.
      */
@@ -77,8 +63,6 @@ public class SeekbarThumbnailPreviewPatch {
         if (!Settings.THUMBNAIL_PREVIEW.get()) {
             return;
         }
-
-        Log.d("LOLOLOLOLO", String.valueOf(newlyTimeMillis));
 
         fineScrubbingTimeMillis = newlyTimeMillis;
     }
@@ -170,8 +154,26 @@ public class SeekbarThumbnailPreviewPatch {
                     views.first.setImageBitmap(currentScrubbedPreviewBitmap);
                 }
 
-                if (fineScrubbingTimeMillis > 0) {
-                    views.second.setText(formatTime(fineScrubbingTimeMillis));
+                TextView thumbnailPreviewTimestamp = thumbnailPreviewTimestampRef.get();
+                if (thumbnailPreviewTimestamp != null && fineScrubbingTimeMillis > 0) {
+                    int maxPixel = Dim.getScreenWidth();
+                    long totalVideoMillis = VideoInformation.getVideoLength();
+
+                    if (totalVideoMillis > 0 && maxPixel > 0) {
+                        int totalSeconds = (int) ((((long) fineScrubbingTimeMillis * totalVideoMillis) / maxPixel) / 1000);
+                        int hours = totalSeconds / 3600;
+                        int minutes = (totalSeconds % 3600) / 60;
+                        int seconds = totalSeconds % 60;
+
+                        final String currentSeekTime;
+                        if (hours > 0) {
+                            currentSeekTime = String.format(Locale.getDefault(), "%d:%02d:%02d", hours, minutes, seconds);
+                        } else {
+                            currentSeekTime = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
+                        }
+
+                        thumbnailPreviewTimestamp.setText(currentSeekTime);
+                    }
                 }
 
                 final int[] locationOnScreen = new int[2];
