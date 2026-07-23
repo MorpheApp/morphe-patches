@@ -183,17 +183,12 @@ internal object SeekbarTrackballPosXAndTimeMillisFingerprint : Fingerprint (
         ),
         methodCall(
             opcode = Opcode.INVOKE_STATIC,
-            smali = "Ljava/lang/Math;->abs(I)I"
+            smali = "Ljava/lang/Math;->min(II)I"
         ),
         methodCall(
-            opcode = Opcode.INVOKE_STATIC,
-            smali = "Lj$/util/Optional;->of(Ljava/lang/Object;)Lj$/util/Optional;",
-            location = MatchAfterWithin(10)
-        ),
-        methodCall(
-            opcode = Opcode.INVOKE_DIRECT,
+            opcode = Opcode.INVOKE_VIRTUAL,
             parameters = listOf("I"),
-            returnType = "I",
+            returnType = "V",
             location = MatchAfterWithin(5)
         )
     )
