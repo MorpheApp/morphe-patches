@@ -4,6 +4,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
@@ -209,7 +210,10 @@ internal object SeekbarBigBoardsUpdateFingerprint : Fingerprint (
         returnType = "Ljava/lang/String;",
         parameters = listOf(),
         filters = listOf(
-            string("player_overlay_big_boards")
+            anyInstruction(
+                string("player_overlay_playback_controls"), // 20.21.37
+                string("player_overlay_big_boards")
+            )
         )
     ),
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
