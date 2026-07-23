@@ -14,6 +14,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.playservice.is_21_12_or_greater
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -22,14 +24,13 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/SeekbarThumbnailPreviewPatch;"
 
-@Suppress("unused")
 val seekbarThumbnailPreviewPatch = bytecodePatch(
-    name = "Seekbar thumbnail preview",
     description = "Adds an option to restore the seekbar thumbnail preview."
 ) {
     dependsOn(
         sharedExtensionPatch,
-        settingsPatch
+        settingsPatch,
+        versionCheckPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -64,15 +65,19 @@ val seekbarThumbnailPreviewPatch = bytecodePatch(
                     "setFineScrubbingPreviewBitmap(Landroid/graphics/Bitmap;)V"
         )
 
-        SeekbarBigBoardsUpdateFingerprint.method.addInstructionsWithLabels(
+        if (is_21_12_or_greater) {
+            SeekbarBigBoardsUpdateFingerprint
+        } else {
+            SeekbarBigBoardsUpdateLegacyFingerprint
+        }.method.addInstructionsWithLabels(
             0,
             """
                 invoke-static { }, $EXTENSION_CLASS->disableBigBoardUpdate()Z
                 move-result v0
-                if-eqz v0, :disable_big_board_update
+                if-eqz v0, :allow_big_board_update
                 const/4 v0, 0x0
                 return v0
-                :disable_big_board_update
+                :allow_big_board_update
                 nop
             """
         )
