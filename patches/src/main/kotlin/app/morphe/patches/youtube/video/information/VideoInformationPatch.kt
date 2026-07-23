@@ -23,6 +23,7 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutab
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.smali.toInstructions
+import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.textcomponent.hookSpannableString
 import app.morphe.patches.shared.misc.textcomponent.textComponentPatch
 import app.morphe.patches.shared.misc.videoinformation.PlayerControllerSetTimeReferenceFingerprint
@@ -96,6 +97,10 @@ private var formattedSpeedStringValueRegister = -1
 private lateinit var setPlaybackSpeedMethodRef : WeakReference<MutableMethod>
 private var setPlaybackSpeedMethodIndex = -1
 
+private lateinit var setPlaybackSpeedProtoMessageMethodRef : WeakReference<MutableMethod>
+private var setPlaybackSpeedProtoMessageMethodIndex = -1
+private var setPlaybackSpeedProtoMessageMethodRegister = -1
+
 internal lateinit var playerStatusMethodRef : WeakReference<MutableMethod>
 
 val videoInformationPatch = bytecodePatch(
@@ -106,6 +111,7 @@ val videoInformationPatch = bytecodePatch(
         videoIdPatch,
         playerResponseMethodHookPatch,
         conversionContextPatch,
+        fixProtoLibraryPatch,
         textComponentPatch,
         versionCheckPatch,
     )
@@ -226,6 +232,20 @@ val videoInformationPatch = bytecodePatch(
             }
         }
 
+        SetPlaybackSpeedProtoMessageFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches.first().index
+
+                setPlaybackSpeedProtoMessageMethodRef = WeakReference(this)
+                setPlaybackSpeedProtoMessageMethodIndex = index
+                setPlaybackSpeedProtoMessageMethodRegister =
+                    getInstruction<FiveRegisterInstruction>(index).registerC
+
+                // Prevent duplicate hooking.
+                replaceInstruction(index, "nop")
+            }
+        }
+
         val setPlaybackSpeedMethodReference = with(PlaybackSpeedOnItemClickFingerprint) {
             val index = instructionMatches.first().index
 
@@ -319,6 +339,11 @@ val videoInformationPatch = bytecodePatch(
                     }
                 )
             }
+
+            it.method.addInstruction(
+                0,
+                "invoke-static/range { p1 .. p2 }, ${setPlaybackSpeedProtoMessageMethodRef.get()!!}"
+            )
         }
 
         // endregion.
@@ -668,11 +693,17 @@ fun videoTimeHook(targetMethodClass: String, targetMethodName: String) =
 /**
  * Hook when the video speed is changed for any reason _except when the user manually selects a new speed_.
  */
-fun videoSpeedChangedHook(targetMethodClass: String, targetMethodName: String) =
+fun videoSpeedChangedHook(targetMethodClass: String, targetMethodName: String) {
     setPlaybackSpeedMethodRef.get()!!.addInstruction(
         setPlaybackSpeedMethodIndex++,
         "invoke-static { p1 }, $targetMethodClass->$targetMethodName(F)V"
     )
+
+    setPlaybackSpeedProtoMessageMethodRef.get()!!.addInstruction(
+        setPlaybackSpeedProtoMessageMethodIndex++,
+        "invoke-static { v$setPlaybackSpeedProtoMessageMethodRegister }, $targetMethodClass->$targetMethodName(F)V"
+    )
+}
 
 /**
  * Hook the video speed selected by the user.

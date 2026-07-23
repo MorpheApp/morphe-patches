@@ -95,9 +95,6 @@ public final class RememberPlaybackSpeedPatch {
             VideoInformation.setPlaybackSpeedMenu(menu);
 
             float defaultSpeed = Settings.PLAYBACK_SPEED_DEFAULT.get();
-            if (defaultSpeed < 0) {
-                return;
-            }
             if (DISABLE_PLAYBACK_SPEED_MUSIC && defaultSpeed != 1.0f) {
                 String videoId = VideoInformation.getVideoId();
                 GetMixPlaylistRequest request = GetMixPlaylistRequest.getRequestForVideoId(videoId);
@@ -108,7 +105,9 @@ public final class RememberPlaybackSpeedPatch {
                 }
             }
 
-            VideoInformation.changePlaybackSpeed(defaultSpeed);
+            if (defaultSpeed > 0) {
+                VideoInformation.changePlaybackSpeed(defaultSpeed);
+            }
         }
     }
 

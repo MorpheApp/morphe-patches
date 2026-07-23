@@ -141,13 +141,13 @@ Perubahan termasuk:
   <string name="morphe_hide_description_components_screen_title">Keterangan video</string>
   <string name="morphe_hide_description_components_screen_summary">Bagian tempat Unggulan, Game, Musik, dan disebutkan Orang ditampilkan</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Sembunyikan \'Ringkasan video yang dibuat AI\'</string>
-  <string name="morphe_hide_ask_section_title">Sembunyikan bagian film</string>
-  <string name="morphe_hide_attributes_section_title">Sembunyikan bagian film</string>
+  <string name="morphe_hide_ask_section_title">Sembunyikan bagian Tanya</string>
+  <string name="morphe_hide_attributes_section_title">Sembunyikan bagian Atribut</string>
   <string name="morphe_hide_attributes_section_summary">Bagian tempat Unggulan, Game, Musik, dan disebutkan Orang ditampilkan</string>
-  <string name="morphe_hide_chapters_section_title">Sembunyikan bagian film</string>
+  <string name="morphe_hide_chapters_section_title">Sembunyikan bagian Bab</string>
   <string name="morphe_hide_corrections_section_title">Sembunyikan bagian komentar</string>
   <string name="morphe_hide_course_progress_section_title">Sembunyikan bagian \'Kemajuan kursus\'</string>
-  <string name="morphe_hide_explore_section_title">Sembunyikan bagian film</string>
+  <string name="morphe_hide_explore_section_title">Sembunyikan bagian Jelajah</string>
   <string name="morphe_hide_explore_section_summary">Bagian Jelajahi kursus ini dan Jelajahi podcast ditampilkan</string>
   <string name="morphe_hide_explore_course_section_title">Sembunyikan \'Jelajahi kursus ini\'</string>
   <string name="morphe_hide_explore_podcast_section_title">Sembunyikan bagian \'Jelajahi podcast\'</string>
@@ -157,6 +157,7 @@ Perubahan termasuk:
   <string name="morphe_hide_featured_playlists_section_title">Sembunyikan bagian Daftar putar unggulan</string>
   <string name="morphe_hide_featured_videos_section_title">Sembunyikan bagian video Unggulan</string>
   <string name="morphe_hide_gaming_section_title">Sembunyikan bagian Game</string>
+  <string name="morphe_hide_hashtag_section_title">Sembunyikan bagian Hashtag</string>
   <string name="morphe_hide_how_this_was_made_section_title">Sembunyikan bagian \'Cara konten ini dibuat\'</string>
   <string name="morphe_hide_hype_points_title">Sembunyikan Poin Hype</string>
   <string name="morphe_hide_info_cards_section_title">Sembunyikan bagian kartu info</string>
@@ -186,7 +187,7 @@ Perubahan termasuk:
   <string name="morphe_hide_links_preview_title">Sembunyikan pratinjau tautan</string>
   <string name="morphe_hide_links_preview_summary">Menyembunyikan tautan web yang dapat diklik di header saluran</string>
   <string name="morphe_hide_members_shelf_title">Sembunyikan rak pelanggan</string>
-  <string name="morphe_hide_members_shelf_summary">Menyembunyikan daftar anggota pelanggan</string>
+  <string name="morphe_hide_members_shelf_summary">Menyembunyikan daftar pelanggan saluran</string>
   <string name="morphe_hide_posts_shelf_title">Sembunyikan rak postingan</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Sembunyikan tombol Toko</string>
@@ -455,15 +456,15 @@ Info: Mungkin tidak berfungsi pada siaran langsung"</string>
   <string name="morphe_livestream_dvr_title">Aktifkan siaran langsung DVR</string>
   <string name="morphe_livestream_dvr_summary">Mengizinkan pencarian di semua siaran langsung, bahkan yang biasanya membatasi fitur tersebut</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"'Aktifkan DVR siaran langsung' mungkin tidak tersedia
+  <string name="morphe_livestream_dvr_not_available">"'Aktifkan siaran langsung DVR' mungkin tidak tersedia
 
-Untuk memperbaikinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien default' menjadi 'TV'"</string>
+Untuk memperbaikinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' menjadi 'TV'"</string>
   <string name="morphe_expand_livestream_dvr_duration_title">Perluas durasi siaran langsung DVR</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">Mengizinkan Anda untuk memutar ulang siaran langsung hingga 7 hari ke masa lalu</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Perluas durasi DVR siaran langsung' mungkin tidak tersedia
+  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Perluas durasi siaran langsung DVR' mungkin tidak tersedia
 
-Untuk memperbaikinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien default' menjadi 'TV'"</string>
+Untuk memperbaikinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' menjadi 'TV'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Aktifkan geser untuk mencari</string>
   <string name="morphe_slide_to_seek_summary">Aktifkan geser untuk mencari daripada memutar pada kecepatan 2x saat menekan dan menahan pemutar video</string>
@@ -753,7 +754,7 @@ Untuk menampilkan 'Menu Trek Audio', ubah 'Palsukan aliran video' menjadi klien 
   <string name="morphe_hide_shorts_super_thanks_button_title">Sembunyikan tombol \'Beli Super Thanks\'</string>
   <string name="morphe_hide_shorts_effect_button_title">Sembunyikan tombol Efek</string>
   <string name="morphe_hide_shorts_green_screen_button_title">Sembunyikan tombol \'Layar Hijau\'</string>
-  <string name="morphe_hide_shorts_hashtag_button_title">Sembunyikan tombol tagar</string>
+  <string name="morphe_hide_shorts_hashtag_button_title">Sembunyikan tombol Hashtag</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_join_button_title">Sembunyikan tombol Gabung</string>
   <string name="morphe_hide_shorts_live_preview_title">Sembunyikan pratinjau siaran langsung</string>

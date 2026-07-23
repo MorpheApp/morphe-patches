@@ -4,8 +4,8 @@ import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.colorOption
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patcher.patch.stringOption
 import app.morphe.patches.shared.misc.settings.overrideThemeColors
 import app.morphe.util.childElementsSequence
 import app.morphe.util.forEachChildElement
@@ -105,7 +105,7 @@ internal fun validateColorName(colorString: String): Boolean {
 /**
  * Dark theme color options for YouTube and YT Music Theme patch.
  */
-internal val darkThemeBackgroundColorOption = stringOption(
+internal val darkThemeBackgroundColorOption = colorOption(
     key = "darkThemeBackgroundColor",
     default = "@android:color/black",
     values = mapOf(
@@ -131,7 +131,7 @@ internal val darkThemeBackgroundColorOption = stringOption(
 /**
  * Light theme color options for YouTube Theme patch.
  */
-internal val lightThemeBackgroundColorOption = stringOption(
+internal val lightThemeBackgroundColorOption = colorOption(
     key = "lightThemeBackgroundColor",
     default = "@android:color/white",
     values =  mapOf(

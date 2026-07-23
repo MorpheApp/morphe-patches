@@ -70,7 +70,7 @@ Si vous êtes un utilisateur YouTube Premium, ce paramètre peut ne pas être n�
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Non connecté à Android VR. Appuyez pour vous connecter</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Actuellement connecté à Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Pour utiliser cette fonction, changez le \'Client par défaut\' en Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Pour utiliser cette fonctionnalité, définissez \'Client par défaut\' sur \'Android VR\'</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Se connecter à Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Se connecter à Android VR peut résoudre les problèmes de lecture pour certains utilisateurs.
 
@@ -144,13 +144,13 @@ La lecture échouera si le hachage JavaScript du lecteur est obsolète."</string
   <string name="morphe_hide_fullscreen_ads_title">Masquer les publicités en plein écran</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
           'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">Pour utiliser cette fonctionnalité, changez \'Falsifier les flux vidéo\' vers n’importe quel client sauf \'Android Studio\'</string>
+  <string name="morphe_force_original_audio_not_available">Pour utiliser cette fonctionnalité, définissez \'Falsifier les flux vidéo\' sur un client autre que \'Android Studio\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Nettoyer les liens partagés</string>
   <string name="morphe_sanitize_sharing_links_summary">Supprime les paramètres de suivi des liens partagés</string>
-  <string name="morphe_replace_music_with_youtube_title">Rediriger les liens de partage vers youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_title">Changer les liens de partage vers youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Remplace music.youtube.com par youtube.com dans les liens partagés</string>
-  <string name="morphe_replace_links_with_shortener_title">Modifier les liens de partage vers youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_title">Changer les liens de partage vers youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Force les vidéos à utiliser le format d\'URL raccourcie youtu.be</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_protobuffer_title">Journal de débogage du protocol buffer</string>

@@ -158,6 +158,7 @@ Les changements incluent :
   <string name="morphe_hide_featured_playlists_section_title">Masquer la section \'Playlists populaires\'</string>
   <string name="morphe_hide_featured_videos_section_title">Masquer la section \'Vidéos populaires\'</string>
   <string name="morphe_hide_gaming_section_title">Masquer la section \'Jeux\'</string>
+  <string name="morphe_hide_hashtag_section_title">Masquer la section des hashtags</string>
   <string name="morphe_hide_how_this_was_made_section_title">Masquer la section \'Comment la vidéo a été créée\'</string>
   <string name="morphe_hide_hype_points_title">Masquer les points hype</string>
   <string name="morphe_hide_info_cards_section_title">Masquer la section \'Fiches d\'informations\'</string>
@@ -1034,10 +1035,10 @@ Appuyez ici pour ouvrir DeArrow.ajay.app"</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Applique votre sélection de qualité manuelle à tous les Shorts futurs</string>
   <string name="morphe_shorts_quality_default_wifi_title">Qualité par défaut des Shorts sur le réseau Wi-Fi</string>
   <string name="morphe_shorts_quality_default_mobile_title">Qualité par défaut des Shorts sur le réseau mobile</string>
-  <string name="morphe_remember_video_quality_toast_mobile">Qualité mobile par défaut modifiée en : %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">Qualité Wi-Fi par défaut modifiée en : %s</string>
-  <string name="morphe_remember_video_quality_toast_shorts_mobile">Qualité mobile des Shorts modifiée en : %s</string>
-  <string name="morphe_remember_video_quality_toast_shorts_wifi">Qualité Wi-Fi des Shorts modifiée en : %s</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Qualité mobile par défaut définie sur : %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Qualité Wi-Fi par défaut définie sur : %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_mobile">Qualité mobile des Shorts définie sur : %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_wifi">Qualité Wi-Fi des Shorts définie sur : %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Afficher un bouton de \'Vitesse de lecture\'</string>
   <string name="morphe_playback_speed_dialog_button_summary">Appuyez longuement pour réinitialiser la vitesse par défaut</string>
@@ -1060,7 +1061,7 @@ Appuyez ici pour ouvrir DeArrow.ajay.app"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Notifications de changement de vitesse</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Affiche une notification lorsqu’une nouvelle vitesse de lecture par défaut est enregistrée</string>
   <string name="morphe_playback_speed_default_title">Vitesse de lecture par défaut</string>
-  <string name="morphe_remember_playback_speed_toast">Vitesse de lecture par défaut modifiée en : %s</string>
+  <string name="morphe_remember_playback_speed_toast">Vitesse de lecture par défaut définie sur : %s</string>
   <string name="morphe_disable_playback_speed_music_title">Utiliser la vitesse normale pour la musique</string>
   <string name="morphe_disable_playback_speed_music_summary">Toujours lire les clips musicaux à une vitesse de 1,0×</string>
   <!-- video.codecs.disableVideoCodecsPatch -->

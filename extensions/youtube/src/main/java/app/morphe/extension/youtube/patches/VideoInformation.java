@@ -2,8 +2,11 @@ package app.morphe.extension.youtube.patches;
 
 import android.icu.text.NumberFormat;
 
+import androidx.annotation.GuardedBy;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.google.protobuf.MessageLite;
 
 import java.lang.ref.WeakReference;
 import java.util.Arrays;
@@ -14,6 +17,7 @@ import java.util.regex.Pattern;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.ContextInterface;
+import app.morphe.extension.youtube.innertube.AvailablePlaybackSpeedsOuterClass.AvailablePlaybackSpeeds;
 import app.morphe.extension.youtube.patches.voiceovertranslation.VoiceOverTranslationPatch;
 import app.morphe.extension.youtube.shared.Event;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
@@ -111,6 +115,7 @@ public final class VideoInformation {
 
     private static boolean qualityNeedsUpdating;
 
+    @GuardedBy("itself")
     private static final NumberFormat speedFormatter = NumberFormat.getNumberInstance();
 
     static {
@@ -307,6 +312,30 @@ public final class VideoInformation {
 
     /**
      * Injection point.
+     */
+    public static void videoSpeedChanged(MessageLite[] availablePlaybackSpeeds, int newIndex) {
+        if (availablePlaybackSpeeds != null && newIndex > -1) {
+            MessageLite messageLite = availablePlaybackSpeeds[newIndex];
+            if (messageLite != null) {
+                try {
+                    var availablePlaybackSpeed = AvailablePlaybackSpeeds.parseFrom(messageLite.toByteArray());
+                    float currentVideoSpeed = availablePlaybackSpeed.getValue();
+
+                    if (currentVideoSpeed > 0) {
+                        VideoInformation.videoSpeedChanged(currentVideoSpeed);
+
+                        // Rest of the implementation added by patch.
+                        // PlaybackSpeedDialogButton.videoSpeedChanged(newlyLoadedPlaybackSpeed);
+                    }
+                } catch (Exception ex) {
+                    Logger.printException(() -> "videoSpeedChanged failed", ex);
+                }
+            }
+        }
+    }
+
+    /**
+     * Injection point.
      * Called when user selects a playback speed.
      *
      * @param userSelectedPlaybackSpeed The playback speed the user selected
@@ -343,13 +372,14 @@ public final class VideoInformation {
      * @param includeX If 'x' character is appended to the speed.
      */
     public static String formatSpeedStringX(float speed, int minFractionalDigits, boolean includeX) {
-        Utils.verifyOnMainThread();
-        speedFormatter.setMinimumFractionDigits(minFractionalDigits);
+        synchronized (speedFormatter) {
+            speedFormatter.setMinimumFractionDigits(minFractionalDigits);
 
-        String speedFormatted = speedFormatter.format(speed);
-        return includeX
-                ? speedFormatted + 'x'
-                : speedFormatted;
+            String speedFormatted = speedFormatter.format(speed);
+            return includeX
+                    ? speedFormatted + 'x'
+                    : speedFormatted;
+        }
     }
 
     /**

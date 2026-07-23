@@ -108,7 +108,7 @@ public class CopyVideoLinkButton {
             final long hour = currentVideoTimeInSeconds / (60 * 60);
             final long minute = (currentVideoTimeInSeconds / 60) % 60;
             final long second = currentVideoTimeInSeconds % 60;
-            builder.append("?t=");
+            builder.append(builder.indexOf("?") >= 0 ? "&t=" : "?t=");
             if (hour > 0) {
                 builder.append(hour).append("h");
             }

@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package app.morphe.extension.youtube.innertube;
+
+option optimize_for = LITE_RUNTIME;
+option java_package = "app.morphe.extension.youtube.innertube";
+
+message AvailablePlaybackSpeeds {
+    float value = 2;
+}

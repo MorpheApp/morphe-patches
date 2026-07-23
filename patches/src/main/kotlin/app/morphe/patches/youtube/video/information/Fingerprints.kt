@@ -245,6 +245,20 @@ internal object SetPlaybackSpeedFormattedStringFingerprint : Fingerprint(
     )
 )
 
+internal object SetPlaybackSpeedProtoMessageFingerprint : Fingerprint(
+    definingClass = EXTENSION_CLASS,
+    name = "videoSpeedChanged",
+    parameters = listOf("[Lcom/google/protobuf/MessageLite;", "I"),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            definingClass = EXTENSION_CLASS,
+            name = "videoSpeedChanged",
+            parameters = listOf("F")
+        )
+    )
+)
+
 // Class name is un-obfuscated in targets before 21.01
 internal object VideoQualityFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
