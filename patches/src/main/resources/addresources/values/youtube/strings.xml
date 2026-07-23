@@ -502,6 +502,9 @@ Info: May not work on live streams"</string>
     <!-- interaction.seekbar.livestreamDVRPatch -->
     <string name="morphe_livestream_dvr_title">Enable livestream DVR</string>
     <string name="morphe_livestream_dvr_summary">Allows seeking on all livestreams, even those that normally restrict it</string>
+    <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+    <string name="morphe_seekbar_thumbnail_preview_title">Show thumbnail preview</string>
+    <string name="morphe_seekbar_thumbnail_preview_summary">Enable the display of a preview thumbnail, while seeking through the video</string>
     <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
     <string name="morphe_livestream_dvr_not_available">"\'Enable livestream DVR\' may not be available
 
