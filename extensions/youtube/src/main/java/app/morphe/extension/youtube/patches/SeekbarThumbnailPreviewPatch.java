@@ -7,6 +7,7 @@
 
 package app.morphe.extension.youtube.patches;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -37,7 +38,8 @@ public class SeekbarThumbnailPreviewPatch {
     private static final int THUMBNAIL_PREVIEW_DISTANCE_DP = 10;
     private static final ColorDrawable previewPopupBackGroundDrawable = new ColorDrawable(Color.TRANSPARENT);
 
-    private static WeakReference<SeekbarViews> seekbarViewsRef = new WeakReference<>(null);
+    @SuppressLint("StaticFieldLeak")
+    private static SeekbarViews seekbarViews;
     private static WeakReference<Bitmap> fineScrubbingPreviewBitmapRef = new WeakReference<>(null);
     private static int fineScrubbingTimeMillis;
     private static int lastX = -1;
@@ -65,7 +67,7 @@ public class SeekbarThumbnailPreviewPatch {
     }
 
     private static SeekbarViews initializeThumbnailPreviewContainer(View trackBall) {
-        SeekbarViews views = seekbarViewsRef.get();
+        SeekbarViews views = seekbarViews;
         if (views != null) {
             return views;
         }
@@ -101,9 +103,7 @@ public class SeekbarThumbnailPreviewPatch {
         thumbnailPreviewPopup.setTouchable(false);
         thumbnailPreviewPopup.setBackgroundDrawable(previewPopupBackGroundDrawable);
 
-        views = new SeekbarViews(thumbnailPreview, timestampPreview, thumbnailPreviewPopup);
-        seekbarViewsRef = new WeakReference<>(views);
-        return views;
+        return seekbarViews = new SeekbarViews(thumbnailPreview, timestampPreview, thumbnailPreviewPopup);
     }
 
     /**
@@ -124,11 +124,11 @@ public class SeekbarThumbnailPreviewPatch {
 
             if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL) {
                 lastX = -1;
-                fineScrubbingPreviewBitmapRef = new WeakReference<>(null);
-                views.thumbnailPreview.setImageBitmap(null);
                 if (views.thumbnailPreviewPopup.isShowing()) {
                     views.thumbnailPreviewPopup.dismiss();
                 }
+                fineScrubbingPreviewBitmapRef = new WeakReference<>(null);
+                seekbarViews = null;
                 return;
             }
 
