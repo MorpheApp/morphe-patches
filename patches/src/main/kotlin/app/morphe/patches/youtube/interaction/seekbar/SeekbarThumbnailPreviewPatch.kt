@@ -17,7 +17,7 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.patches.youtube.shared.SeekbarBigboardUpdateFingerprint
+import app.morphe.patches.youtube.shared.SeekbarBigBoardsUpdateFingerprint
 import app.morphe.patches.youtube.shared.SeekbarFineScrubbingBitmapFingerprint
 import app.morphe.patches.youtube.shared.SeekbarTrackballPosXAndTimeMillisFingerprint
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -39,7 +39,7 @@ val seekbarThumbnailPreviewPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.SEEKBAR.addPreferences(
-            SwitchPreference("morphe_seekbar_thumbnail_preview"),
+            SwitchPreference("morphe_seekbar_thumbnail_preview")
         )
 
         SeekbarTrackballPosXAndTimeMillisFingerprint.apply {
@@ -54,21 +54,20 @@ val seekbarThumbnailPreviewPatch = bytecodePatch(
             val posXInstructionIndex = instructionMatches.first().index
             val posXInstructionRegister = method.getInstruction<TwoRegisterInstruction>(posXInstructionIndex).registerA
 
-            method.addInstructions(
+            method.addInstruction(
                 posXInstructionIndex + 1,
-                """
-                    invoke-static { p0 }, $EXTENSION_CLASS->initializeThumbnailPreviewContainer(Landroid/view/View;)V
-                    invoke-static { p1, v$posXInstructionRegister }, $EXTENSION_CLASS->updateThumbnailPreview(Landroid/view/MotionEvent;I)V
-                """
+                "invoke-static { p0, p1, v$posXInstructionRegister }, $EXTENSION_CLASS->" +
+                        "updateThumbnailPreview(Landroid/view/View;Landroid/view/MotionEvent;I)V"
             )
         }
 
         SeekbarFineScrubbingBitmapFingerprint.method.addInstruction(
             1,
-            "invoke-static { p1 }, $EXTENSION_CLASS->setFineScrubbingPreviewBitmap(Landroid/graphics/Bitmap;)V"
+            "invoke-static { p1 }, $EXTENSION_CLASS->" +
+                    "setFineScrubbingPreviewBitmap(Landroid/graphics/Bitmap;)V"
         )
 
-        SeekbarBigboardUpdateFingerprint.method.addInstructionsWithLabels(
+        SeekbarBigBoardsUpdateFingerprint.method.addInstructionsWithLabels(
             0,
             """
                 invoke-static { }, $EXTENSION_CLASS->disableBigBoardUpdate()Z

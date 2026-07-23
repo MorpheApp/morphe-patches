@@ -274,7 +274,7 @@ internal object PlatypusVideoQualityFlagFingerprint : Fingerprint(
     )
 )
 
-// region Seekbar preview patch
+
 internal object SeekbarTrackballPosXAndTimeMillisFingerprint : Fingerprint (
     classFingerprint = SeekbarFingerprint,
     name = "onTouchEvent",
@@ -291,13 +291,13 @@ internal object SeekbarTrackballPosXAndTimeMillisFingerprint : Fingerprint (
         methodCall(
             opcode = Opcode.INVOKE_STATIC,
             smali = "Lj$/util/Optional;->of(Ljava/lang/Object;)Lj$/util/Optional;",
-            location = MatchAfterWithin(8)
+            location = MatchAfterWithin(10)
         ),
         methodCall(
             opcode = Opcode.INVOKE_DIRECT,
             parameters = listOf("I"),
             returnType = "I",
-            location = MatchAfterWithin(3)
+            location = MatchAfterWithin(5)
         ),
         opcode(opcode = Opcode.MOVE_RESULT, location = MatchAfterImmediately())
     )
@@ -307,31 +307,31 @@ internal object SeekbarFineScrubbingBitmapFingerprint : Fingerprint (
     classFingerprint = Fingerprint (
         returnType = "Landroid/graphics/Bitmap;",
         parameters = listOf("L", "I", "Landroid/graphics/Bitmap;"),
-        strings = listOf("Storyboard regionDecoder.decodeRegion exception - ")
+        filters = listOf(
+            string("Storyboard regionDecoder.decodeRegion exception - ")
+        )
     ),
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL, AccessFlags.DECLARED_SYNCHRONIZED),
     returnType = "V",
     parameters = listOf("Landroid/graphics/Bitmap;")
 )
 
-
-internal object SeekbarBigboardUpdateFingerprint : Fingerprint (
+internal object SeekbarBigBoardsUpdateFingerprint : Fingerprint (
     classFingerprint = Fingerprint(
-        accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
-        returnType = "V",
+        accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+        returnType = "Ljava/lang/String;",
+        parameters = listOf(),
         filters = listOf(
-            resourceLiteral(ResourceType.LAYOUT, "big_boards_overlay")
+            string("player_overlay_big_boards")
         )
     ),
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf(),
     filters = listOf(
-        opcode(opcode = Opcode.IGET_OBJECT),
-        opcode(opcode = Opcode.IGET_OBJECT, location = MatchAfterImmediately()),
-        opcode(opcode = Opcode.CONST_4, location = MatchAfterImmediately())
+        literal(1),
+        opcode(opcode = Opcode.IF_NEZ, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.RETURN, location = MatchAfterImmediately())
     )
 )
 
-
-// endregion
