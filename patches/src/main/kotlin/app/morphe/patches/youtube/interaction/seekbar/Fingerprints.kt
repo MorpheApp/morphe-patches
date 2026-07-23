@@ -210,9 +210,32 @@ internal object SeekbarBigBoardsUpdateFingerprint : Fingerprint (
         returnType = "Ljava/lang/String;",
         parameters = listOf(),
         filters = listOf(
-            anyInstruction(
-                string("player_overlay_playback_controls"), // 20.21.37
-                string("player_overlay_big_boards")
+            string("player_overlay_big_boards")
+        )
+    ),
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        literal(1),
+        opcode(opcode = Opcode.IF_NEZ, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.RETURN, location = MatchAfterImmediately())
+    )
+)
+
+internal object SeekbarBigBoardsUpdateLegacyFingerprint : Fingerprint (
+    classFingerprint = Fingerprint(
+        accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+        returnType = "V",
+        parameters = listOf("Z"),
+        filters = listOf(
+            fieldAccess(
+                opcode = Opcode.SGET_OBJECT,
+                smali = $$"Landroid/widget/ImageView$ScaleType;->CENTER_CROP:Landroid/widget/ImageView$ScaleType;"
+            ),
+            fieldAccess(
+                opcode = Opcode.SGET_OBJECT,
+                smali = $$"Landroid/widget/ImageView$ScaleType;->FIT_CENTER:Landroid/widget/ImageView$ScaleType;"
             )
         )
     ),
