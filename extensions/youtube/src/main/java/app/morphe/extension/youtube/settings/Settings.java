@@ -486,6 +486,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting FULLSCREEN_LARGE_SEEKBAR = new BooleanSetting("morphe_fullscreen_large_seekbar", FALSE);
     public static final BooleanSetting HIDE_TIMESTAMP = new BooleanSetting("morphe_hide_timestamp", FALSE);
     public static final BooleanSetting LIVESTREAM_DVR = new BooleanSetting("morphe_livestream_dvr", FALSE);
+    public static final BooleanSetting THUMBNAIL_PREVIEW = new BooleanSetting("morphe_seekbar_thumbnail_preview", TRUE);
     public static final BooleanSetting EXPAND_LIVESTREAM_DVR_DURATION = new BooleanSetting("morphe_expand_livestream_dvr_duration", FALSE);
     public static final BooleanSetting SLIDE_TO_SEEK = new BooleanSetting("morphe_slide_to_seek", FALSE, true);
     public static final BooleanSetting TAP_TO_SEEK = new BooleanSetting("morphe_tap_to_seek", FALSE);

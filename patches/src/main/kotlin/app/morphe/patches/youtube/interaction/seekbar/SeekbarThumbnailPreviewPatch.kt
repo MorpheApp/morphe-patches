@@ -1,0 +1,84 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
+package app.morphe.patches.youtube.interaction.seekbar
+
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.settings.PreferenceScreen
+import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.patches.youtube.shared.SeekbarBigboardUpdateFingerprint
+import app.morphe.patches.youtube.shared.SeekbarFineScrubbingBitmapFingerprint
+import app.morphe.patches.youtube.shared.SeekbarTrackballPosXAndTimeMillisFingerprint
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
+
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/SeekbarThumbnailPreviewPatch;"
+
+@Suppress("unused")
+val seekbarThumbnailPreviewPatch = bytecodePatch(
+    name = "Seekbar thumbnail preview",
+    description = "Adds an option to restore the seekbar thumbnail preview."
+) {
+    dependsOn(
+        sharedExtensionPatch,
+        settingsPatch
+    )
+
+    compatibleWith(COMPATIBILITY_YOUTUBE)
+
+    execute {
+        PreferenceScreen.SEEKBAR.addPreferences(
+            SwitchPreference("morphe_seekbar_thumbnail_preview"),
+        )
+
+        SeekbarTrackballPosXAndTimeMillisFingerprint.apply {
+            val timeInstructionIndex = instructionMatches.last().index
+            val timeInstructionRegister = method.getInstruction<OneRegisterInstruction>(timeInstructionIndex).registerA
+
+            method.addInstructions(
+                timeInstructionIndex + 1,
+                "invoke-static { v$timeInstructionRegister }, $EXTENSION_CLASS->setFineScrubbingTimeMillis(I)V"
+            )
+
+            val posXInstructionIndex = instructionMatches.first().index
+            val posXInstructionRegister = method.getInstruction<TwoRegisterInstruction>(posXInstructionIndex).registerA
+
+            method.addInstructions(
+                posXInstructionIndex + 1,
+                """
+                    invoke-static { p0 }, $EXTENSION_CLASS->initializeThumbnailPreviewContainer(Landroid/view/View;)V
+                    invoke-static { p1, v$posXInstructionRegister }, $EXTENSION_CLASS->updateThumbnailPreview(Landroid/view/MotionEvent;I)V
+                """
+            )
+        }
+
+        SeekbarFineScrubbingBitmapFingerprint.method.addInstruction(
+            1,
+            "invoke-static { p1 }, $EXTENSION_CLASS->setFineScrubbingPreviewBitmap(Landroid/graphics/Bitmap;)V"
+        )
+
+        SeekbarBigboardUpdateFingerprint.method.addInstructionsWithLabels(
+            0,
+            """
+                invoke-static { }, $EXTENSION_CLASS->disableBigBoardUpdate()Z
+                move-result v0
+                if-eqz v0, :disable_big_board_update
+                const/4 v0, 0x0
+                return v0
+                :disable_big_board_update
+                nop
+            """
+        )
+    }
+}

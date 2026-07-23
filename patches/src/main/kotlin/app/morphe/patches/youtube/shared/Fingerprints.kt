@@ -273,3 +273,65 @@ internal object PlatypusVideoQualityFlagFingerprint : Fingerprint(
         opcode(Opcode.MOVE_RESULT, location = MatchAfterWithin(2))
     )
 )
+
+// region Seekbar preview patch
+internal object SeekbarTrackballPosXAndTimeMillisFingerprint : Fingerprint (
+    classFingerprint = SeekbarFingerprint,
+    name = "onTouchEvent",
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IGET, smali = "Landroid/graphics/Point;->x:I"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;"
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            smali = "Ljava/lang/Math;->abs(I)I"
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            smali = "Lj$/util/Optional;->of(Ljava/lang/Object;)Lj$/util/Optional;",
+            location = MatchAfterWithin(8)
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT,
+            parameters = listOf("I"),
+            returnType = "I",
+            location = MatchAfterWithin(3)
+        ),
+        opcode(opcode = Opcode.MOVE_RESULT, location = MatchAfterImmediately())
+    )
+)
+
+internal object SeekbarFineScrubbingBitmapFingerprint : Fingerprint (
+    classFingerprint = Fingerprint (
+        returnType = "Landroid/graphics/Bitmap;",
+        parameters = listOf("L", "I", "Landroid/graphics/Bitmap;"),
+        strings = listOf("Storyboard regionDecoder.decodeRegion exception - ")
+    ),
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL, AccessFlags.DECLARED_SYNCHRONIZED),
+    returnType = "V",
+    parameters = listOf("Landroid/graphics/Bitmap;")
+)
+
+
+internal object SeekbarBigboardUpdateFingerprint : Fingerprint (
+    classFingerprint = Fingerprint(
+        accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+        returnType = "V",
+        filters = listOf(
+            resourceLiteral(ResourceType.LAYOUT, "big_boards_overlay")
+        )
+    ),
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        opcode(opcode = Opcode.IGET_OBJECT),
+        opcode(opcode = Opcode.IGET_OBJECT, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.CONST_4, location = MatchAfterImmediately())
+    )
+)
+
+
+// endregion
