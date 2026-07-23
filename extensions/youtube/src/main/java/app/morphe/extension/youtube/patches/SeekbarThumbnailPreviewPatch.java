@@ -90,9 +90,6 @@ public class SeekbarThumbnailPreviewPatch {
         LinearLayout containerLayout = new LinearLayout(context);
         containerLayout.setOrientation(LinearLayout.VERTICAL);
         containerLayout.setGravity(Gravity.CENTER_HORIZONTAL);
-        // Hidden until the first bitmap arrives so the preview does not flash the default 16:9 frame
-        // before we know the true video aspect ratio.
-        containerLayout.setVisibility(View.INVISIBLE);
 
         FrameLayout previewFrame = createPreviewFrame(context, cornerRadiusPx, borderWidthPx);
         ImageView thumbnailPreview = createThumbnailImageView(context, cornerRadiusPx, borderWidthPx);
@@ -229,7 +226,6 @@ public class SeekbarThumbnailPreviewPatch {
                     views.thumbnailPreview.setImageBitmap(currentScrubbedPreviewBitmap);
                     lastAppliedBitmap = currentScrubbedPreviewBitmap;
                     applyBitmapAspectRatio(views.previewFrame, currentScrubbedPreviewBitmap);
-                    views.thumbnailPreviewPopup.getContentView().setVisibility(View.VISIBLE);
                 }
 
                 if (fineScrubbingTimeMillis >= 0) {
@@ -266,7 +262,9 @@ public class SeekbarThumbnailPreviewPatch {
 
                 PopupWindow thumbnailPreviewPopup = views.thumbnailPreviewPopup;
                 if (!thumbnailPreviewPopup.isShowing()) {
-                    if (rootView.getWindowToken() != null) {
+                    // Wait until the first bitmap so the popup shows immediately with the correct
+                    // aspect ratio and Y offset, avoiding a jump from a default 16:9 position.
+                    if (rootView.getWindowToken() != null && lastAppliedBitmap != null) {
                         thumbnailPreviewPopup.showAtLocation(rootView, Gravity.NO_GRAVITY, targetX, targetY);
                     }
                 } else {
