@@ -24,7 +24,6 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import java.lang.ref.WeakReference;
 import java.util.Locale;
 
 import app.morphe.extension.shared.Logger;
