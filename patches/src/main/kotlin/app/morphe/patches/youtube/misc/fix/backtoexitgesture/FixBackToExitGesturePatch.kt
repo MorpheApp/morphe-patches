@@ -46,7 +46,7 @@ internal val fixBackToExitGesturePatch = bytecodePatch(
 
         // Flag that seems to change the back button to not
         // exit the app but instead scrolls to the top of the home feed.
-        BackToRefreshFeatureFlagFingerprint.let {
+        BackToRefreshFeatureFlagFingerprint.matchAll().forEach {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
                 false

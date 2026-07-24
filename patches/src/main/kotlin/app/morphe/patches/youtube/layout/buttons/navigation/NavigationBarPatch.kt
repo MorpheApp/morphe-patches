@@ -152,28 +152,29 @@ val navigationBarPatch = bytecodePatch(
         addBottomBarContainerHook("$EXTENSION_CLASS->hideNavigationBar(Landroid/view/View;)V")
 
         // Force on/off translucent effect on status bar and navigation buttons.
-        TranslucentNavigationStatusBarFeatureFlagFingerprint.let {
+        TranslucentNavigationStatusBarFeatureFlagFingerprint.matchAll().forEach {
+            // 21.30+ inlines the flag lookup and must patch ~60 places.
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
                 "$EXTENSION_CLASS->useTranslucentNavigationStatusBar(Z)Z",
             )
         }
 
-        TranslucentNavigationButtonsFeatureFlagFingerprint.let {
+        TranslucentNavigationButtonsFeatureFlagFingerprint.matchAll().forEach {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
                 "$EXTENSION_CLASS->useTranslucentNavigationButtons(Z)Z",
             )
         }
 
-        TranslucentNavigationButtonsSystemFeatureFlagFingerprint.let {
+        TranslucentNavigationButtonsSystemFeatureFlagFingerprint.matchAll().forEach {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
                 "$EXTENSION_CLASS->useTranslucentNavigationButtons(Z)Z",
             )
         }
 
-        AnimatedNavigationTabsFeatureFlagFingerprint.let {
+        AnimatedNavigationTabsFeatureFlagFingerprint.matchAll().forEach {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
                 "$EXTENSION_CLASS->useAnimatedNavigationButtons(Z)Z"
@@ -182,7 +183,7 @@ val navigationBarPatch = bytecodePatch(
 
         if (is_20_46_or_greater) {
             // Feature interferes with translucent status bar and must be forced off.
-            CollapsingToolbarLayoutFeatureFlagFingerprint.let {
+            CollapsingToolbarLayoutFeatureFlagFingerprint.matchAll().forEach {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
                     "$EXTENSION_CLASS->allowCollapsingToolbarLayout(Z)Z"

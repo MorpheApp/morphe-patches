@@ -30,6 +30,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_37_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_17_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_29_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -87,8 +88,16 @@ val miniplayerPatch = bytecodePatch(
         }
 
         preferences += SwitchPreference("morphe_miniplayer_disable_resuming", summary = true)
-        preferences += SwitchPreference("morphe_miniplayer_disable_drag_and_drop", summary = true)
-        preferences += SwitchPreference("morphe_miniplayer_disable_horizontal_drag", summary = true)
+        if (!is_21_30_or_greater) {
+            preferences += SwitchPreference(
+                "morphe_miniplayer_disable_drag_and_drop",
+                summary = true
+            )
+            preferences += SwitchPreference(
+                "morphe_miniplayer_disable_horizontal_drag",
+                summary = true
+            )
+        }
         preferences += SwitchPreference("morphe_miniplayer_disable_rounded_corners")
         if (!is_21_29_or_greater) {
             preferences += SwitchPreference("morphe_miniplayer_hide_overlay_buttons")
@@ -230,17 +239,24 @@ val miniplayerPatch = bytecodePatch(
                     }
                 }
             }
+
+            MiniplayerModernConstructorFingerprint.matchAll().forEach {
+                it.method.insertLiteralOverride(
+                    MINIPLAYER_MODERN_FEATURE_LEGACY_KEY,
+                    "$EXTENSION_CLASS->getModernMiniplayerOverride(Z)Z"
+                )
+            }
+
+            MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
+                MINIPLAYER_DOUBLE_TAP_FEATURE_KEY,
+                "getMiniplayerDoubleTapAction",
+            )
         }
 
-        MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
-            MINIPLAYER_DRAG_DROP_FEATURE_KEY,
-            "getMiniplayerDragAndDrop",
-        )
-
-        if (!is_21_29_or_greater) {
+        if (!is_21_30_or_greater) {
             MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
-                MINIPLAYER_MODERN_FEATURE_LEGACY_KEY,
-                "getModernMiniplayerOverride",
+                MINIPLAYER_DRAG_DROP_FEATURE_KEY,
+                "getMiniplayerDragAndDrop",
             )
         }
 
@@ -248,13 +264,6 @@ val miniplayerPatch = bytecodePatch(
             MINIPLAYER_MODERN_FEATURE_KEY,
             "getModernFeatureFlagsActiveOverride",
         )
-
-        if (!is_21_29_or_greater) {
-            MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
-                MINIPLAYER_DOUBLE_TAP_FEATURE_KEY,
-                "getMiniplayerDoubleTapAction",
-            )
-        }
 
         MiniplayerModernConstructorFingerprint.method.apply {
             val literalIndex = indexOfFirstLiteralInstructionOrThrow(
@@ -290,15 +299,25 @@ val miniplayerPatch = bytecodePatch(
             "getRoundedCorners",
         )
 
-        MiniplayerOnCloseHandlerFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
-            MINIPLAYER_DISABLED_FEATURE_KEY,
-            "getMiniplayerOnCloseHandler"
-        )
+        MiniplayerOnCloseHandlerFingerprint.matchAll().forEach {
+            // 21.30+ inlines the flag lookup and must patch ~2 places.
+            it.method.insertLiteralOverride(
+                MINIPLAYER_DISABLED_FEATURE_KEY,
+                "$EXTENSION_CLASS->getMiniplayerOnCloseHandler(Z)Z"
+            )
+        }
 
-        MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
-            MINIPLAYER_HORIZONTAL_DRAG_FEATURE_KEY,
-            "getHorizontalDrag",
-        )
+        if (!is_21_30_or_greater) {
+            MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
+                MINIPLAYER_HORIZONTAL_DRAG_FEATURE_KEY,
+                "getHorizontalDrag",
+            )
+
+            MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
+                MINIPLAYER_ANIMATED_EXPAND_FEATURE_KEY,
+                "getMaximizeAnimation",
+            )
+        }
 
         Fingerprint(
             definingClass = MiniplayerHorizontalDragPlaybackFingerprint.instructionMatches[2]
@@ -334,11 +353,6 @@ val miniplayerPatch = bytecodePatch(
             0,
             "invoke-static { p1 }, $EXTENSION_CLASS->" +
                     "enableOffScreenMiniplayerButtonPressed(Landroid/view/MotionEvent;)V"
-        )
-
-        MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
-            MINIPLAYER_ANIMATED_EXPAND_FEATURE_KEY,
-            "getMaximizeAnimation",
         )
 
         // endregion

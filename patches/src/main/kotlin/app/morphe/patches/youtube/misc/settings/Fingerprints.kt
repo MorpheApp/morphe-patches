@@ -19,8 +19,6 @@ internal object SetThemeFingerprint : Fingerprint(
 )
 
 internal object CairoFragmentConfigFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Z",
     filters = listOf(
         literal(45532100L),
         opcode(Opcode.MOVE_RESULT, location = MatchAfterWithin(10))

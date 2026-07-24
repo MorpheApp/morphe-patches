@@ -100,7 +100,8 @@ val ambientModePatch = bytecodePatch(
         //
         // Disable ambient mode.
         //
-        AmbientModeFeatureFlagFingerprint.let {
+        AmbientModeFeatureFlagFingerprint.matchAll().forEach {
+            // 21.30+ inlines the flag lookup and must patch ~5 places.
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
                 "$EXTENSION_CLASS->disableAmbientMode(Z)Z"

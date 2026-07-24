@@ -48,7 +48,7 @@ internal object MiniplayerModernFeatureFingerprint : Fingerprint(
 internal object MiniplayerModernConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     filters = listOf(
-        literal(MINIPLAYER_DRAG_DROP_FEATURE_KEY)
+        literal(MINIPLAYER_ROUNDED_CORNERS_FEATURE_KEY)
     )
 )
 
@@ -252,8 +252,6 @@ internal object MiniplayerResponseModelSizeCheckFingerprint : Fingerprint(
 )
 
 internal object MiniplayerOnCloseHandlerFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Z",
     filters = listOf(
         literal(MINIPLAYER_DISABLED_FEATURE_KEY)
     )

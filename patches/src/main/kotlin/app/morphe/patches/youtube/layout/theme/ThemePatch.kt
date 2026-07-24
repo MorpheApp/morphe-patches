@@ -285,7 +285,7 @@ val themePatch = baseThemePatch(
             ListPreference("morphe_splash_screen_animation_style")
         )
 
-        UseGradientLoadingScreenFingerprint.let {
+        UseGradientLoadingScreenFingerprint.matchAll().forEach {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
                 "$EXTENSION_CLASS->gradientLoadingScreenEnabled(Z)Z"
@@ -293,7 +293,7 @@ val themePatch = baseThemePatch(
         }
 
         if (is_21_08_or_greater) {
-            CarbonColorThemeFeatureFlagFingerprint.let {
+            CarbonColorThemeFeatureFlagFingerprint.matchAll().forEach {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
                     false

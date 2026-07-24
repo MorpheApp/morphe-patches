@@ -52,9 +52,8 @@ public class AutoCaptionsPatch {
      * because it's only related to 'disableAutoCaptions()' method
      * in order to prevent auto-captioning with volume enabled
      */
-    public static boolean disableMuteAutoCaptions() {
-        AutoCaptionsStyle style =
-            Settings.AUTO_CAPTIONS_STYLE.get();
+    public static boolean disableMuteAutoCaptions(boolean original) {
+        AutoCaptionsStyle style = Settings.AUTO_CAPTIONS_STYLE.get();
 
         return style == AutoCaptionsStyle.BOTH_ENABLED || style == AutoCaptionsStyle.WITHOUT_VOLUME_ONLY;
     }

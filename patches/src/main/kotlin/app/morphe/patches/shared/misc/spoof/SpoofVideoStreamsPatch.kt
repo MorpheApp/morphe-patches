@@ -357,11 +357,16 @@ internal fun spoofVideoStreamsPatch(
 
         // region Fix iOS livestream current time.
 
-        HlsCurrentTimeFingerprint.let {
-            it.method.insertLiteralOverride(
-                it.instructionMatches.first().index,
-                "$EXTENSION_CLASS->fixHLSCurrentTime(Z)Z"
-            )
+        HlsCurrentTimeFingerprint.method.apply {
+            // Flag can exist in multiple places in the method.
+            findInstructionIndicesReversedOrThrow(
+                HlsCurrentTimeFingerprint.filters!!.first()
+            ).forEach { match ->
+                insertLiteralOverride(
+                    match,
+                    "$EXTENSION_CLASS->fixHLSCurrentTime(Z)Z"
+                )
+            }
         }
 
         // endregion
@@ -423,7 +428,7 @@ internal fun spoofVideoStreamsPatch(
         }
 
         if (fixReelItemWatchResponseFeatureFlag()) {
-            ReelItemWatchResponseFeatureFlagFingerprint.let {
+            ReelItemWatchResponseFeatureFlagFingerprint.matchAll().forEach {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
                     "$EXTENSION_CLASS->useReelItemWatchResponseFeatureFlag(Z)Z"

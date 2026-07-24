@@ -105,7 +105,7 @@ internal fun disableDRCAudioPatch(
         }
 
         if (useNormalizationFlag()) {
-            VolumeNormalizationConfigFingerprint.let {
+            VolumeNormalizationConfigFingerprint.matchAll().forEach {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
                     setConfigDisabledMethod

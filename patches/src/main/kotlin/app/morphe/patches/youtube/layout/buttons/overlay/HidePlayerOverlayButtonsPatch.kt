@@ -112,7 +112,7 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
                 CastButtonPlayerFeatureFlagFingerprint,
                 CastButtonActionFeatureFlagFingerprint // Cast button in the feed.
             ).forEach { fingerprint ->
-                fingerprint.let {
+                fingerprint.matchAll().forEach {
                     it.method.insertLiteralOverride(
                         it.instructionMatches.first().index,
                         "$EXTENSION_CLASS->getCastButtonOverride(Z)Z"

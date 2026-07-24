@@ -3,6 +3,7 @@ package app.morphe.patches.youtube.layout.shortsnoresume
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation
 import app.morphe.patcher.StringComparisonType
+import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
@@ -21,11 +22,19 @@ internal object UserWasInShortsEvaluateFingerprint : Fingerprint(
             name = "<init>",
             parameters = listOf("L", "Z", "Z", "L", "Z")
         ),
-        methodCall(
-            opcode = Opcode.INVOKE_DIRECT_RANGE,
-            name = "<init>",
-            parameters = listOf("L", "L", "L", "L", "L", "I"),
-            location = InstructionLocation.MatchAfterWithin(50)
+        anyInstruction(
+            methodCall(
+                opcode = Opcode.INVOKE_DIRECT_RANGE,
+                name = "<init>",
+                parameters = listOf("L", "L", "L", "L", "L", "I"),
+                location = InstructionLocation.MatchAfterWithin(50)
+            ),
+            methodCall( // 21.30+
+                opcode = Opcode.INVOKE_DIRECT_RANGE,
+                name = "<init>",
+                parameters = listOf("L", "L", "L", "L", "L", "L",  "Ljava/lang/String;"),
+                location = InstructionLocation.MatchAfterWithin(50)
+            )
         )
     )
 )
@@ -48,9 +57,6 @@ internal object UserWasInShortsListenerFingerprint : Fingerprint(
  * 18.15.40+
  */
 internal object UserWasInShortsConfigFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Z",
-    parameters = listOf(),
     filters = listOf(
         literal(45358360L)
     )

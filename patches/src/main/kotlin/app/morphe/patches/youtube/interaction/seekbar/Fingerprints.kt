@@ -133,9 +133,6 @@ internal object SlideToSeekFingerprint : Fingerprint(
 )
 
 internal object FullscreenLargeSeekbarFeatureFlagFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Z",
-    parameters = listOf(),
     filters = listOf(
         literal(45691569)
     )

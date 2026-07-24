@@ -21,6 +21,7 @@ import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
+import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS =
@@ -72,15 +73,11 @@ internal val autoCaptionsPatch = bytecodePatch(
         )
 
         if (is_20_26_or_greater) {
-            NoVolumeCaptionsFeatureFlagFingerprint.method.apply {
-                addInstructions(
-                    0,
-                    """
-                        invoke-static {}, $EXTENSION_CLASS->disableMuteAutoCaptions()Z
-                        move-result v0
-                        return v0
-                        nop
-                    """
+            NoVolumeCaptionsFeatureFlagFingerprint.matchAll().forEach {
+                // 21.30+ inlines the flag lookup and must patch ~4 places.
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    "$EXTENSION_CLASS->disableMuteAutoCaptions(Z)Z"
                 )
             }
         }

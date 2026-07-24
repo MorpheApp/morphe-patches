@@ -52,7 +52,7 @@ internal val restoreOldVideoActionBarPatch = bytecodePatch(
             ModernRelateVideoOverlayFingerprint,
             RelateVideoOverlayLayoutParamFingerprint
         ).forEach { fingerprint ->
-            fingerprint.let {
+            fingerprint.matchAll().forEach {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
                     "$EXTENSION_CLASS->fixRelatedVideoOverlay(Z)Z"

@@ -21,14 +21,12 @@ internal object PlayerButtonFingerprint : Fingerprint(
 )
 
 internal object CastButtonPlayerFeatureFlagFingerprint : Fingerprint(
-    returnType = "Z",
     filters = listOf(
         literal(45690091)
     )
 )
 
 internal object CastButtonActionFeatureFlagFingerprint : Fingerprint(
-    returnType = "Z",
     filters = listOf(
         literal(45690090)
     )

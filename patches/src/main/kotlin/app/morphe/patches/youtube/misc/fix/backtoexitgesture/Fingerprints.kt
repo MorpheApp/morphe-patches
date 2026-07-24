@@ -49,8 +49,6 @@ internal object RecyclerViewTopScrollingFingerprint : Fingerprint(
 )
 
 internal object BackToRefreshFeatureFlagFingerprint : Fingerprint(
-    returnType = "Z",
-    parameters = listOf(),
     filters = listOf(
         literal(45359221)
     )

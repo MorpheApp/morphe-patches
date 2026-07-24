@@ -120,7 +120,7 @@ val rememberVideoQualityPatch = bytecodePatch {
             }
         }
 
-        PlatypusVideoQualityFlagFingerprint.let {
+        PlatypusVideoQualityFlagFingerprint.matchAll().forEach {
             it.method.insertLiteralOverride(
                 it.instructionMatches.last().index,
                 "$EXTENSION_CLASS->overridePlatypusVideoQualityFlag(Z)Z"

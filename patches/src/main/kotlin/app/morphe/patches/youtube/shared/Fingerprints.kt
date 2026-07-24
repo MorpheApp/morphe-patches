@@ -304,8 +304,6 @@ internal object WatchNextResponseParserFingerprint : Fingerprint(
 )
 
 internal object PlatypusVideoQualityFlagFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    returnType = "V",
     filters = listOf(
         literal(45624008L),
         opcode(Opcode.MOVE_RESULT, location = MatchAfterWithin(2))

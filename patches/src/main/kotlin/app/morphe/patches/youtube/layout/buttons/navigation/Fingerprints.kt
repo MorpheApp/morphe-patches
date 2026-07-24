@@ -64,17 +64,12 @@ internal object CastMenuItemVisibilityFingerprint : Fingerprint(
 )
 
 internal object AnimatedNavigationTabsFeatureFlagFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Z",
     filters = listOf(
         literal(45680008L)
     )
 )
 
 internal object CollapsingToolbarLayoutFeatureFlagFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Z",
-    parameters = listOf(),
     filters = listOf(
         literal(45736608L)
     )
@@ -140,8 +135,6 @@ internal object PivotBarChangedFingerprint : Fingerprint(
 )
 
 internal object TranslucentNavigationStatusBarFeatureFlagFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Z",
     filters = listOf(
         literal(45400535L) // Translucent status bar feature flag.
     )
@@ -151,8 +144,6 @@ internal object TranslucentNavigationStatusBarFeatureFlagFingerprint : Fingerpri
  * YouTube nav buttons.
  */
 internal object TranslucentNavigationButtonsFeatureFlagFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
     filters = listOf(
         literal(45630927L) // Translucent navigation bar buttons feature flag.
     )
@@ -162,8 +153,6 @@ internal object TranslucentNavigationButtonsFeatureFlagFingerprint : Fingerprint
  * Device on screen back/home/recent buttons.
  */
 internal object TranslucentNavigationButtonsSystemFeatureFlagFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Z",
     filters = listOf(
         literal(45632194L) // Translucent system buttons feature flag.
     )

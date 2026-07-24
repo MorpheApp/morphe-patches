@@ -55,9 +55,6 @@ internal object VolumeNormalizationConfigLegacyFingerprint : Fingerprint(
 
 // TY 21.19+, Music 9.19+
 internal object VolumeNormalizationConfigFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Z",
-    parameters = listOf(),
     filters = listOf(
         literal(45784793L)
     )

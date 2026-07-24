@@ -13,6 +13,7 @@ import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
+import app.morphe.patcher.parametersMatch
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -28,9 +29,7 @@ internal object MiniAppOpenYtContentCommandEndpointFingerprint : Fingerprint(
             )
         )
     ),
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf("L"),
     filters = listOf(
         opcode(Opcode.CHECK_CAST),
         methodCall(
@@ -40,7 +39,17 @@ internal object MiniAppOpenYtContentCommandEndpointFingerprint : Fingerprint(
             location = MatchAfterImmediately()
         )
     ),
-    strings = listOf("no error message")
+    strings = listOf("no error message"),
+    custom = { method, _ ->
+        !AccessFlags.STATIC.isSet(method.accessFlags) &&
+                parametersMatch(
+                    method.parameters,
+                    listOf("L")
+                ) || parametersMatch(
+            method.parameters,
+            listOf("L", "Ljava/util/Map;") // 21.30+
+        )
+    }
 )
 
 internal object OpenNewVideoIntentParcelableFingerprint : Fingerprint(
