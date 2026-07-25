@@ -153,14 +153,12 @@ public class CustomPlaybackSpeedPatch {
                 && context instanceof ContextInterface contextInterface) {
             try {
                 String identifier = contextInterface.patch_getIdentifier();
-                if (identifier == null || !identifier.startsWith("seek_edu_overlay_v2.e")) {
-                    return original;
+                if (identifier != null && identifier.startsWith("seek_edu_overlay_v2.e")) {
+                    // 2.00x → 2x, 1.50x → 1.5x.
+                    return VideoInformation.formatSpeedStringX(TAP_AND_HOLD_SPEED)
+                            .replace(".00x", "x")
+                            .replace("0x", "x") + ' ';
                 }
-
-                // 2.00x → 2x, 1.50x → 1.5x.
-                return VideoInformation.formatSpeedStringX(TAP_AND_HOLD_SPEED)
-                        .replace(".00x", "x")
-                        .replace("0x", "x") + ' ';
             } catch (Exception ex) {
                 Logger.printException(() -> "onSeekEduOverlayLoaded failed", ex);
             }

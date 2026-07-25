@@ -358,7 +358,6 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
             overrideSpan = true
         )
 
-
         // endregion
     }
 }
