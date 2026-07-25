@@ -42,22 +42,6 @@ public class SpoofVideoStreamsPatch {
         }
     }
 
-    public static final class JavaScriptHashAvailability implements Setting.Availability {
-        @Override
-        public boolean isAvailable() {
-            return SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.get() && preferredClient.requireJS &&
-                    SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_DISABLE_PLAYER_JS_UPDATE.get();
-        }
-
-        @Override
-        public List<Setting<?>> getParentSettings() {
-            return List.of(
-                    SharedYouTubeSettings.SPOOF_VIDEO_STREAMS,
-                    SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_DISABLE_PLAYER_JS_UPDATE
-            );
-        }
-    }
-
     /**
      * Domain used for internet connectivity verification.
      * It has an empty response body and is only used to check for a 204 response code.

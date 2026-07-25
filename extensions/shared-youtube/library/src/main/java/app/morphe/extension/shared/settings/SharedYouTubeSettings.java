@@ -10,7 +10,6 @@ import app.morphe.extension.shared.patches.CustomBrandingPatch;
 import app.morphe.extension.shared.patches.CustomBrandingPatch.BrandingTheme;
 import app.morphe.extension.shared.patches.CustomBrandingPatch.NotificationIconTheme;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch.JavaScriptClientAvailability;
-import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch.JavaScriptHashAvailability;
 import app.morphe.extension.shared.spoof.js.JavaScriptVariant;
 
 /**
@@ -37,8 +36,7 @@ public class SharedYouTubeSettings extends BaseSettings {
     public static final BooleanSetting SPOOF_VIDEO_STREAMS = new BooleanSetting("morphe_spoof_video_streams", TRUE, true, "morphe_spoof_video_streams_user_dialog_message");
     public static final BooleanSetting SPOOF_VIDEO_STREAMS_STATS_FOR_NERDS = new BooleanSetting("morphe_spoof_video_streams_stats_for_nerds", TRUE, parent(SPOOF_VIDEO_STREAMS));
     public static final EnumSetting<JavaScriptVariant> SPOOF_VIDEO_STREAMS_PLAYER_JS_VARIANT = new EnumSetting<>("morphe_spoof_video_streams_player_js_variant", JavaScriptVariant.HOUSE_BRAND, true, new JavaScriptClientAvailability());
-    public static final BooleanSetting SPOOF_VIDEO_STREAMS_DISABLE_PLAYER_JS_UPDATE = new BooleanSetting("morphe_spoof_video_streams_disable_player_js_update", FALSE, true, "morphe_spoof_video_streams_disable_player_js_update_user_dialog_message", new JavaScriptClientAvailability());
-    public static final StringSetting SPOOF_VIDEO_STREAMS_PLAYER_JS_HASH_VALUE = new StringSetting("morphe_spoof_video_streams_player_js_hash_value", "", true, new JavaScriptHashAvailability());
+    public static final StringSetting SPOOF_VIDEO_STREAMS_PLAYER_JS_HASH_VALUE = new StringSetting("morphe_spoof_video_streams_player_js_hash_value", "", true, false);
     public static final LongSetting SPOOF_VIDEO_STREAMS_PLAYER_JS_SAVED_MILLISECONDS = new LongSetting("morphe_spoof_video_streams_player_js_saved_milliseconds", -1L, false, false);
     public static final StringSetting OAUTH2_REFRESH_TOKEN = new StringSetting("morphe_oauth2_refresh_token", "", false, false);
 

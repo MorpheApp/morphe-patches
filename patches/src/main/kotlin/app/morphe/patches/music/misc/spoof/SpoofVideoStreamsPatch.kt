@@ -16,7 +16,6 @@ import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
-import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.spoof.spoofVideoStreamsPatch
 
 val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
@@ -52,12 +51,6 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
                         tag = "app.morphe.extension.music.settings.preference.SpoofVideoStreamsSignInPreference",
                         selectable = true,
                     ),
-                    SwitchPreference(
-                        "morphe_spoof_video_streams_disable_player_js_update",
-                        summary = true,
-                        tag = "app.morphe.extension.shared.settings.preference.BulletPointSwitchPreference",
-                    ),
-                    TextPreference("morphe_spoof_video_streams_player_js_hash_value"),
                 )
             )
         )
