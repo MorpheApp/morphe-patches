@@ -10,7 +10,6 @@ package app.morphe.patches.youtube.interaction.seekbar
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -19,7 +18,9 @@ import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/SeekbarThumbnailPreviewPatch;"
 
@@ -39,13 +40,16 @@ val seekbarThumbnailPreviewPatch = bytecodePatch(
             SwitchPreference("morphe_seekbar_thumbnail_preview")
         )
 
+        val updatePointMethodRef = SeekbarUpdatePointFingerprint.instructionMatches[1]
+            .getInstruction<ReferenceInstruction>().getReference<MethodReference>()!!
+
         // To show the thumbnail during the seeking straight on seekbar.
         SeekbarHandlerOnTouchFingerprint.method.addInstructions(
             0,
             """
                 new-instance v0, Landroid/graphics/Point;
-                invoke-direct {v0}, Landroid/graphics/Point;-><init>()V
-                invoke-virtual {p0, v0}, Lkri;->g(Landroid/graphics/Point;)V
+                invoke-direct { v0 }, Landroid/graphics/Point;-><init>()V
+                invoke-interface { p0, v0 }, $updatePointMethodRef
                 iget v1, v0, Landroid/graphics/Point;->x:I
                 iget v2, v0, Landroid/graphics/Point;->y:I
                 invoke-static { p0, p1, v1, v2 }, $EXTENSION_CLASS->updateThumbnailPreview(Landroid/view/View;Landroid/view/MotionEvent;II)V
@@ -60,8 +64,8 @@ val seekbarThumbnailPreviewPatch = bytecodePatch(
                 iget-object v0, v0, Loyx;->a:Lown;
                 iget-object v0, v0, Lown;->a:Lkrx;
                 new-instance v1, Landroid/graphics/Point;
-                invoke-direct {v1}, Landroid/graphics/Point;-><init>()V
-                invoke-interface {v0, v1}, Lkrx;->g(Landroid/graphics/Point;)V
+                invoke-direct { v1 }, Landroid/graphics/Point;-><init>()V
+                invoke-interface { v0, v1 }, $updatePointMethodRef
                 iget v2, v1, Landroid/graphics/Point;->x:I
                 iget v3, v1, Landroid/graphics/Point;->y:I
                 invoke-static { p1, p2, v2, v3 }, $EXTENSION_CLASS->updateThumbnailPreview(Landroid/view/View;Landroid/view/MotionEvent;II)V

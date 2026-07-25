@@ -179,6 +179,35 @@ internal object SeekbarHandlerOnTouchFingerprint : Fingerprint (
     name = "onTouchEvent"
 )
 
+internal object SeekbarUpdatePointFingerprint : Fingerprint (
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf(),
+    returnType = "V",
+    filters = listOf(
+        fieldAccess(
+            definingClass = "this",
+            type = "Landroid/graphics/Point;"
+        ),
+        methodCall( // Get seekbar point.
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf("Landroid/graphics/Point;"),
+            returnType = "V",
+            location = MatchAfterWithin(5)
+        ),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = "Landroid/graphics/Rect;",
+            location = MatchAfterWithin(10)
+        ),
+        fieldAccess(
+            opcode = Opcode.IGET,
+            smali = "Landroid/graphics/Rect;->left:I",
+            location = MatchAfterWithin(5)
+        )
+    )
+)
+
 internal object SlideSeekbarHandlerOnTouchFingerprint : Fingerprint (
     classFingerprint = Fingerprint (
         accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),

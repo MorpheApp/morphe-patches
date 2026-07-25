@@ -246,11 +246,9 @@ public class SeekbarThumbnailPreviewPatch {
                 final int previewHeightPx = currentFrameParams.height;
 
                 int targetX = trackBallPosX - (previewWidthPx / 2);
-                final int targetY =
-                        trackBallPosY -
-                        previewHeightPx -
-                        Dim.dp(THUMBNAIL_PREVIEW_DISTANCE_DP) -
-                        Dim.dp(THUMBNAIL_PREVIEW_TIMESTAMP_HEIGHT_DP);
+                final int targetY = trackBallPosY - previewHeightPx
+                        - Dim.dp(THUMBNAIL_PREVIEW_DISTANCE_DP)
+                        - Dim.dp(THUMBNAIL_PREVIEW_TIMESTAMP_HEIGHT_DP);
 
                 final int screenWidth = Dim.getScreenWidth();
                 if (targetX < 0) {
