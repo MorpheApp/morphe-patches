@@ -28,8 +28,8 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
-import android.icu.text.NumberFormat;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +45,7 @@ import java.util.function.Function;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
 import app.morphe.extension.youtube.patches.VideoInformation;
@@ -74,6 +75,11 @@ public class CustomPlaybackSpeedPatch {
      * Tap and hold speed.
      */
     private static final float TAP_AND_HOLD_SPEED;
+
+    /**
+     * Tap and hold speed label.
+     */
+    private static final String tapAndHoldEduText = str("speedmaster_edu_text");
 
     /**
      * Custom playback speeds.
@@ -137,6 +143,30 @@ public class CustomPlaybackSpeedPatch {
      */
     public static float getTapAndHoldSpeed() {
         return TAP_AND_HOLD_SPEED;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static CharSequence onSeekEduOverlayLoaded(Object context, CharSequence original) {
+        if (!DISABLE_TAP_AND_HOLD_SPEED && TextUtils.equals(tapAndHoldEduText, original)
+                && context instanceof ContextInterface contextInterface) {
+            try {
+                String identifier = contextInterface.patch_getIdentifier();
+                if (identifier == null || !identifier.startsWith("seek_edu_overlay_v2.e")) {
+                    return original;
+                }
+
+                // 2.00x → 2x, 1.50x → 1.5x.
+                return VideoInformation.formatSpeedStringX(TAP_AND_HOLD_SPEED)
+                        .replace(".00x", "x")
+                        .replace("0x", "x") + ' ';
+            } catch (Exception ex) {
+                Logger.printException(() -> "onSeekEduOverlayLoaded failed", ex);
+            }
+        }
+
+        return original;
     }
 
     private static void showInvalidCustomSpeedToast() {
