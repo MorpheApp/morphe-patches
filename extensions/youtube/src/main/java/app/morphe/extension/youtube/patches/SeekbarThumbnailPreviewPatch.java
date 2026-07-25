@@ -42,8 +42,8 @@ public class SeekbarThumbnailPreviewPatch {
                                 TextView chapterPreview, PopupWindow thumbnailPreviewPopup) {
     }
 
-    private static final int THUMBNAIL_PREVIEW_LONG_SIDE = 160;
-    private static final int THUMBNAIL_PREVIEW_DEFAULT_SHORT_SIDE = THUMBNAIL_PREVIEW_LONG_SIDE * 9 / 16;
+    private static final int THUMBNAIL_PREVIEW_LONG_SIDE = Dim.dp(160);
+    private static final int THUMBNAIL_PREVIEW_DEFAULT_SHORT_SIDE = Dim.dp(160 * 9.0f / 16);
     private static final int THUMBNAIL_PREVIEW_DISTANCE_FULLSCREEN_DP = Dim.dp10;
     private static final int THUMBNAIL_PREVIEW_DISTANCE_PORTRAIT_DP = -1 * Dim.dp20;
     private static final int THUMBNAIL_PREVIEW_TEXT_ONLY_HEIGHT_DP = Dim.dp24;
@@ -79,21 +79,18 @@ public class SeekbarThumbnailPreviewPatch {
             return views;
         }
 
-        final int longSidePx = Dim.dp(THUMBNAIL_PREVIEW_LONG_SIDE);
-        final int shortSidePx = Dim.dp(THUMBNAIL_PREVIEW_DEFAULT_SHORT_SIDE);
-        final int cornerRadiusPx = THUMBNAIL_PREVIEW_CORNER_RADIUS_DP;
-        final int borderWidthPx = THUMBNAIL_PREVIEW_BORDER_WIDTH_DP;
         Context context = trackBall.getRootView().getContext();
         LinearLayout containerLayout = new LinearLayout(context);
         containerLayout.setOrientation(LinearLayout.VERTICAL);
         containerLayout.setGravity(Gravity.CENTER_HORIZONTAL);
 
-        FrameLayout previewFrame = createPreviewFrame(context, cornerRadiusPx, borderWidthPx);
-        ImageView thumbnailPreview = createThumbnailImageView(context, cornerRadiusPx, borderWidthPx);
+        FrameLayout previewFrame = createPreviewFrame(context,
+                THUMBNAIL_PREVIEW_CORNER_RADIUS_DP, THUMBNAIL_PREVIEW_BORDER_WIDTH_DP);
+        previewFrame.setLayoutParams(new LinearLayout.LayoutParams(
+                THUMBNAIL_PREVIEW_LONG_SIDE, THUMBNAIL_PREVIEW_DEFAULT_SHORT_SIDE));
+        ImageView thumbnailPreview = createThumbnailImageView(context,
+                THUMBNAIL_PREVIEW_CORNER_RADIUS_DP, THUMBNAIL_PREVIEW_BORDER_WIDTH_DP);
         previewFrame.addView(thumbnailPreview);
-
-        LinearLayout.LayoutParams frameParams = new LinearLayout.LayoutParams(longSidePx, shortSidePx);
-        previewFrame.setLayoutParams(frameParams);
         containerLayout.addView(previewFrame);
 
         TextView timestampPreview = createTimestampPreview(context);
@@ -111,7 +108,7 @@ public class SeekbarThumbnailPreviewPatch {
     }
 
     // Border is a filled rounded rect + padding (not a stroke) to keep outer/inner corners concentric.
-    @SuppressWarnings("SuspiciousNameCombination")
+    @SuppressWarnings("SameParameterValue")
     private static FrameLayout createPreviewFrame(Context context, int cornerRadiusPx, int borderWidthPx) {
         FrameLayout previewFrame = new FrameLayout(context);
         GradientDrawable frameBackground = new GradientDrawable();
@@ -122,6 +119,7 @@ public class SeekbarThumbnailPreviewPatch {
         return previewFrame;
     }
 
+    @SuppressWarnings("SameParameterValue")
     private static ImageView createThumbnailImageView(Context context, int cornerRadiusPx, int borderWidthPx) {
         ImageView thumbnailPreview = new ImageView(context);
         thumbnailPreview.setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -158,8 +156,11 @@ public class SeekbarThumbnailPreviewPatch {
         chapterPreview.setTextSize(12);
         chapterPreview.setPadding(0, Dim.dp2, 0, 0);
         chapterPreview.setShadowLayer(3, 1, 1, Color.BLACK);
+        chapterPreview.setSingleLine(true);
+        chapterPreview.setEllipsize(android.text.TextUtils.TruncateAt.END);
+        chapterPreview.setGravity(Gravity.CENTER_HORIZONTAL);
         chapterPreview.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
+                THUMBNAIL_PREVIEW_LONG_SIDE,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
         return chapterPreview;
     }
@@ -172,15 +173,14 @@ public class SeekbarThumbnailPreviewPatch {
             return;
         }
 
-        final int longSidePx = Dim.dp(THUMBNAIL_PREVIEW_LONG_SIDE);
         final int newWidth;
         final int newHeight;
         if (bitmapWidth >= bitmapHeight) {
-            newWidth = longSidePx;
-            newHeight = (int) ((long) longSidePx * bitmapHeight / bitmapWidth);
+            newWidth = THUMBNAIL_PREVIEW_LONG_SIDE;
+            newHeight = THUMBNAIL_PREVIEW_LONG_SIDE * bitmapHeight / bitmapWidth;
         } else {
-            newHeight = longSidePx;
-            newWidth = (int) ((long) longSidePx * bitmapWidth / bitmapHeight);
+            newHeight = THUMBNAIL_PREVIEW_LONG_SIDE;
+            newWidth = THUMBNAIL_PREVIEW_LONG_SIDE * bitmapWidth / bitmapHeight;
         }
         LinearLayout.LayoutParams frameParams = (LinearLayout.LayoutParams) previewFrame.getLayoutParams();
         if (frameParams.width != newWidth || frameParams.height != newHeight) {
