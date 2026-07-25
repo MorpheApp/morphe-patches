@@ -20,6 +20,8 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.resourceLiteral
 import app.morphe.patches.youtube.shared.SeekbarFingerprint
 import app.morphe.patches.youtube.video.quality.VideoStreamingDataToStringFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -172,26 +174,22 @@ internal object FormatStreamModelMaxDVRDurationFingerprint : Fingerprint(
     )
 )
 
-internal object SeekbarTrackballPosXAndTimeMillisFingerprint : Fingerprint (
+internal object SeekbarHandlerOnTouchFingerprint : Fingerprint (
     classFingerprint = SeekbarFingerprint,
-    name = "onTouchEvent",
-    filters = listOf(
-        fieldAccess(opcode = Opcode.IGET, smali = "Landroid/graphics/Point;->x:I"),
-        methodCall(
-            opcode = Opcode.INVOKE_VIRTUAL,
-            smali = "Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;"
-        ),
-        methodCall(
-            opcode = Opcode.INVOKE_STATIC,
-            smali = "Ljava/lang/Math;->min(II)I"
-        ),
-        methodCall(
-            opcode = Opcode.INVOKE_VIRTUAL,
-            parameters = listOf("I"),
-            returnType = "V",
-            location = MatchAfterWithin(5)
+    name = "onTouchEvent"
+)
+
+internal object SlideSeekbarHandlerOnTouchFingerprint : Fingerprint (
+    classFingerprint = Fingerprint (
+        accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+        returnType = "V",
+        filters = listOf(
+            resourceLiteral(ResourceType.DIMEN, "seek_easy_horizontal_touch_offset_to_start_scrubbing")
         )
-    )
+    ),
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf("Landroid/view/View;", "Landroid/view/MotionEvent;")
 )
 
 internal object SeekbarFineScrubbingBitmapFingerprint : Fingerprint (

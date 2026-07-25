@@ -29,6 +29,8 @@ import java.util.Locale;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.PlayerType;
+import app.morphe.extension.youtube.shared.ShortsPlayerState;
 
 @SuppressWarnings("unused")
 public class SeekbarThumbnailPreviewPatch {
@@ -50,29 +52,20 @@ public class SeekbarThumbnailPreviewPatch {
     private static SeekbarViews seekbarViews;
     private static Bitmap fineScrubbingPreviewBitmap;
     private static Bitmap lastAppliedBitmap;
-    private static int fineScrubbingTimeMillis;
     private static int lastX = -1;
+    private static float touchEventInitialY = -1;
 
     /**
      * Injection point.
      */
     public static void setFineScrubbingPreviewBitmap(Bitmap bitmap) {
-        if (!Settings.THUMBNAIL_PREVIEW.get()) {
+        if (!Settings.THUMBNAIL_PREVIEW.get() ||
+                !PlayerType.getCurrent().isMaximizedOrFullscreen() ||
+                ShortsPlayerState.isOpen()) {
             return;
         }
 
         fineScrubbingPreviewBitmap = bitmap;
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void setFineScrubbingTimeMillis(int newlyTimeMillis) {
-        if (!Settings.THUMBNAIL_PREVIEW.get()) {
-            return;
-        }
-
-        fineScrubbingTimeMillis = newlyTimeMillis;
     }
 
     private static SeekbarViews initializeThumbnailPreviewContainer(View trackBall) {
@@ -188,20 +181,26 @@ public class SeekbarThumbnailPreviewPatch {
     /**
      * Injection point.
      */
-    public static void updateThumbnailPreview(View trackBall, MotionEvent trackBallMotionEvent, int trackBallPosX) {
+    public static void updateThumbnailPreview(View container, MotionEvent containerMotionEvent, int trackBallPosX, int trackBallPosY) {
         try {
-            if (!Settings.THUMBNAIL_PREVIEW.get()) {
+            if (!Settings.THUMBNAIL_PREVIEW.get() ||
+                    !PlayerType.getCurrent().isMaximizedOrFullscreen() ||
+                    ShortsPlayerState.isOpen()) {
                 return;
             }
 
-            SeekbarViews views = initializeThumbnailPreviewContainer(trackBall);
+            SeekbarViews views = initializeThumbnailPreviewContainer(container);
 
-            final int action = trackBallMotionEvent.getAction();
+            final int action = containerMotionEvent.getAction();
             if (action == MotionEvent.ACTION_DOWN) {
+                touchEventInitialY = containerMotionEvent.getY();
                 return;
             }
 
-            if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL) {
+            if (action == MotionEvent.ACTION_UP ||
+                    action == MotionEvent.ACTION_CANCEL ||
+                    (action == MotionEvent.ACTION_MOVE && (touchEventInitialY - containerMotionEvent.getY()) > Dim.dp(15))
+            ) {
                 if (views.thumbnailPreviewPopup.isShowing()) {
                     views.thumbnailPreviewPopup.dismiss();
                 }
@@ -218,7 +217,7 @@ public class SeekbarThumbnailPreviewPatch {
                 }
                 lastX = trackBallPosX;
 
-                View rootView = trackBall.getRootView();
+                View rootView = container.getRootView();
 
                 Bitmap currentScrubbedPreviewBitmap = fineScrubbingPreviewBitmap;
                 if (currentScrubbedPreviewBitmap != null && currentScrubbedPreviewBitmap != lastAppliedBitmap) {
@@ -227,19 +226,17 @@ public class SeekbarThumbnailPreviewPatch {
                     applyBitmapAspectRatio(views.previewFrame, currentScrubbedPreviewBitmap);
                 }
 
-                if (fineScrubbingTimeMillis >= 0) {
+                if (trackBallPosX >= 0) {
                     final int maxPixel = Dim.getScreenWidth();
                     final long totalVideoMillis = VideoInformation.getVideoLength();
 
                     if (totalVideoMillis > 0 && maxPixel > 0) {
-                        final int totalSeconds = (int) ((((long) fineScrubbingTimeMillis * totalVideoMillis) / maxPixel) / 1000);
+                        final int totalSeconds = (int) ((((long) trackBallPosX * totalVideoMillis) / maxPixel) / 1000);
                         views.timestampPreview.setText(formatSeekTime(totalSeconds));
                     }
                 }
 
-                final int[] locationOnScreen = new int[2];
-                trackBall.getLocationOnScreen(locationOnScreen);
-                if (locationOnScreen[0] == 0 && locationOnScreen[1] == 0) {
+                if (trackBallPosX == 0 && trackBallPosY == 0) {
                     return;
                 }
 
@@ -248,9 +245,12 @@ public class SeekbarThumbnailPreviewPatch {
                 final int previewWidthPx = currentFrameParams.width;
                 final int previewHeightPx = currentFrameParams.height;
 
-                int targetX = locationOnScreen[0] + trackBallPosX - (previewWidthPx / 2);
-                final int targetY = locationOnScreen[1] - previewHeightPx
-                        - Dim.dp(THUMBNAIL_PREVIEW_DISTANCE_DP) - Dim.dp(THUMBNAIL_PREVIEW_TIMESTAMP_HEIGHT_DP);
+                int targetX = trackBallPosX - (previewWidthPx / 2);
+                final int targetY =
+                        trackBallPosY -
+                        previewHeightPx -
+                        Dim.dp(THUMBNAIL_PREVIEW_DISTANCE_DP) -
+                        Dim.dp(THUMBNAIL_PREVIEW_TIMESTAMP_HEIGHT_DP);
 
                 final int screenWidth = Dim.getScreenWidth();
                 if (targetX < 0) {
