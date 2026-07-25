@@ -49,6 +49,23 @@ public enum ClientType {
             false,
             "Android Music Reel"
     ),
+    ANDROID_MUSIC_NO_SDK(
+            21,
+            "ANDROID_MUSIC",
+            ANDROID_MUSIC_REEL.deviceMake,
+            ANDROID_MUSIC_REEL.deviceModel,
+            ANDROID_MUSIC_REEL.osName,
+            ANDROID_MUSIC_REEL.osVersion,
+            "7.12.52",
+            null,
+            "com.google.android.apps.youtube.music/7.12.52 (Linux; U; Android " + Build.VERSION.RELEASE + ") gzip",
+            IS_YOUTUBE_MUSIC,
+            IS_YOUTUBE_MUSIC,
+            false,
+            false,
+            false,
+            "Android Music No SDK"
+    ),
     /**
      * Video not playable: Kids.
      * AV1 codec available.
