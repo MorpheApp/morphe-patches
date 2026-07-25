@@ -1195,7 +1195,7 @@ Limitations:
 • HDR videos will not use AVC
 • Some devices cannot force AVC"</string>
     <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-    <string name="morphe_force_avc_codec_not_available">To use this feature, set \'Spoof video streams\' to Android VR or Android Studio</string>
+    <string name="morphe_force_avc_codec_not_available">To use this feature, set \'Spoof video streams\' to \'Android VR or \'Android Studio\'</string>
 
     <!-- video.quality.advancedVideoQualityMenuPatch -->
     <string name="morphe_advanced_video_quality_menu_title">Open Advanced quality menu</string>
@@ -1209,8 +1209,8 @@ Limitations:
     <string name="morphe_prioritize_video_quality_summary">Prioritizes the highest available video quality over codec efficiency</string>
 
     <!-- misc.spoof.spoofVideoStreamsPatch -->
-    <string name="morphe_spoof_video_streams_av1_title">Allow Android VR AV1</string>
-    <string name="morphe_spoof_video_streams_av1_summary">Permits software AV1 decoding when using the Android VR client</string>
+    <string name="morphe_spoof_video_streams_av1_title">Allow Android VR / visionOS AV1</string>
+    <string name="morphe_spoof_video_streams_av1_summary">Permits software AV1 decoding when using the Android VR / visionOS client</string>
     <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Enabling this setting may use software AV1 decoding.
 
 Video playback with AV1 may stutter or drop frames."</string>

@@ -148,7 +148,8 @@ public enum ClientType {
      * Video not playable: None.
      * AV1 codec available.
      */
-    TV(7,
+    TV(
+            7,
             "TVHTML5",
             "Samsung",
             "SmartTV",
@@ -170,7 +171,8 @@ public enum ClientType {
      * AV1 codec available.
      * May stop working at any time.
      */
-    VISIONOS(101,
+    VISIONOS_1_03(
+            101,
             "VISIONOS",
             "Apple",
             "RealityDevice17,1",
@@ -184,7 +186,29 @@ public enum ClientType {
             true,
             true,
             false,
-            "visionOS"
+            "visionOS 1.03"
+    ),
+    /**
+     * Video not playable: Kids, Paid, Movie, Private, Age-restricted.
+     * AV1 codec not available.
+     * May stop working at any time.
+     */
+    VISIONOS_1_02(
+            VISIONOS_1_03.id,
+            VISIONOS_1_03.clientName,
+            VISIONOS_1_03.deviceMake,
+            "RealityDevice14,1",
+            VISIONOS_1_03.osName,
+            "2.6.22O785",
+            "1.02",
+            VISIONOS_1_03.clientPlatform,
+            VISIONOS_1_03.userAgent,
+            VISIONOS_1_03.canLogin,
+            VISIONOS_1_03.requireLogin,
+            VISIONOS_1_03.supportsMultiAudioTracks,
+            VISIONOS_1_03.supportsVRImmersiveMode,
+            VISIONOS_1_03.requireJS,
+            "visionOS 1.02"
     );
 
     /**
