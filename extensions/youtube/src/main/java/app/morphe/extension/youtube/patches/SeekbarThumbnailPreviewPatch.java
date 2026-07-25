@@ -337,6 +337,13 @@ public class SeekbarThumbnailPreviewPatch {
     /**
      * Injection point.
      */
+    public static void newVideoLoaded(@Nullable String videoId) {
+        chapterMarkers = null;
+    }
+
+    /**
+     * Injection point.
+     */
     public static void setTimelineMarkers(TimelineMarker[] markers) {
         if (markers.length > 0 && markers[0].patch_getTitle() == null) {
             // Chapters array can alternate between an array with

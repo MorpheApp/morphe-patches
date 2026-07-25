@@ -21,10 +21,10 @@ import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.patches.youtube.video.videoid.hookVideoId
+import app.morphe.patches.youtube.video.videoid.videoIdPatch
 import app.morphe.util.findFieldFromToString
-import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
-import app.morphe.util.indexOfFirstInstruction
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -46,7 +46,8 @@ val seekbarThumbnailPreviewPatch = bytecodePatch(
         sharedExtensionPatch,
         settingsPatch,
         versionCheckPatch,
-        resourceMappingPatch
+        resourceMappingPatch,
+        videoIdPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -112,6 +113,8 @@ val seekbarThumbnailPreviewPatch = bytecodePatch(
                 nop
             """
         )
+
+        hookVideoId("$EXTENSION_CLASS->newVideoLoaded(Ljava/lang/String;)V")
 
         getTimelineMarkersArrayFingerprint(
             TimelineMarkerFingerprint.classDef.type
