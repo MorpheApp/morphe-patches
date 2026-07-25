@@ -221,6 +221,29 @@ internal object SlideSeekbarHandlerOnTouchFingerprint : Fingerprint (
     parameters = listOf("Landroid/view/View;", "Landroid/view/MotionEvent;")
 )
 
+internal object SlideSeekbarGetViewControllerFingerprint : Fingerprint (
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/view/View;", "F"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            location = MatchAfterWithin(10) // Match close to start of method.
+        ),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            location = MatchAfterWithin(10)
+        ),
+        literal(124587, location = MatchAfterWithin(20)),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            location = MatchAfterWithin(10)
+        ),
+        literal(67108864)
+    )
+)
+
 internal object SeekbarFineScrubbingBitmapFingerprint : Fingerprint (
     classFingerprint = Fingerprint (
         returnType = "Landroid/graphics/Bitmap;",

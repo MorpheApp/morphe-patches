@@ -20,6 +20,7 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/SeekbarThumbnailPreviewPatch;"
@@ -57,20 +58,30 @@ val seekbarThumbnailPreviewPatch = bytecodePatch(
         )
 
         // To show the thumbnail during the use of slide to seek feature.
-        SlideSeekbarHandlerOnTouchFingerprint.method.addInstructions(
-            0,
-            """
-                iget-object v0, p0, Loyz;->m:Loyx;
-                iget-object v0, v0, Loyx;->a:Lown;
-                iget-object v0, v0, Lown;->a:Lkrx;
-                new-instance v1, Landroid/graphics/Point;
-                invoke-direct { v1 }, Landroid/graphics/Point;-><init>()V
-                invoke-interface { v0, v1 }, $updatePointMethodRef
-                iget v2, v1, Landroid/graphics/Point;->x:I
-                iget v3, v1, Landroid/graphics/Point;->y:I
-                invoke-static { p1, p2, v2, v3 }, $EXTENSION_CLASS->updateThumbnailPreview(Landroid/view/View;Landroid/view/MotionEvent;II)V
-            """
-        )
+        SlideSeekbarHandlerOnTouchFingerprint.method.apply {
+            val controllerInstructionMatches = SlideSeekbarGetViewControllerFingerprint.instructionMatches
+            val getViewControllerFieldRef1 = controllerInstructionMatches[0]
+                .getInstruction<ReferenceInstruction>().getReference<FieldReference>()
+            val getViewControllerFieldRef2 = controllerInstructionMatches[1]
+                .getInstruction<ReferenceInstruction>().getReference<FieldReference>()
+            val getViewControllerFieldRef3 = controllerInstructionMatches[3]
+                .getInstruction<ReferenceInstruction>().getReference<FieldReference>()
+
+            addInstructions(
+                0,
+                """
+                    iget-object v0, p0, $getViewControllerFieldRef1
+                    iget-object v0, v0, $getViewControllerFieldRef2
+                    iget-object v0, v0, $getViewControllerFieldRef3
+                    new-instance v1, Landroid/graphics/Point;
+                    invoke-direct { v1 }, Landroid/graphics/Point;-><init>()V
+                    invoke-interface { v0, v1 }, $updatePointMethodRef
+                    iget v2, v1, Landroid/graphics/Point;->x:I
+                    iget v3, v1, Landroid/graphics/Point;->y:I
+                    invoke-static { p1, p2, v2, v3 }, $EXTENSION_CLASS->updateThumbnailPreview(Landroid/view/View;Landroid/view/MotionEvent;II)V
+                """
+            )
+        }
 
         SeekbarFineScrubbingBitmapFingerprint.method.addInstruction(
             1,
