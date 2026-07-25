@@ -88,10 +88,10 @@ public class SeekbarThumbnailPreviewPatch {
         }
 
         seekbarRectangle = new Rect(
-                seekbarView.getPaddingLeft(),
-                seekbarView.getPaddingTop(),
-                seekbarView.getWidth() - seekbarView.getPaddingRight(),
-                seekbarView.getHeight() - seekbarView.getPaddingBottom()
+                seekbarView.getLeft(),
+                seekbarView.getTop(),
+                seekbarView.getRight(),
+                seekbarView.getBottom()
         );
     }
 
@@ -282,10 +282,13 @@ public class SeekbarThumbnailPreviewPatch {
 
                     if (totalVideoMillis > 0 && seekbarWidth > 0) {
                         final int relativeTrackballPosX = Utils.clamp(
-                                trackballPosX - seekbarRectangle.left, 0, seekbarWidth);
+                                trackballPosX - seekbarRectangle.left,
+                                0,
+                                seekbarWidth
+                        );
 
-                        final long currentMillis = ((long) relativeTrackballPosX * totalVideoMillis) / seekbarWidth;
-                        final int totalSeconds = (int) (currentMillis / 1000);
+                        final long currentMillis = (((long) relativeTrackballPosX) * totalVideoMillis) / seekbarWidth;
+                        final int totalSeconds = Math.round((float) currentMillis / 1000.0f);
 
                         views.timestampPreview.setText(formatSeekTime(totalSeconds));
 
