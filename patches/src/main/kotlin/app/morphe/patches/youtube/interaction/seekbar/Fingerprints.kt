@@ -301,21 +301,3 @@ internal object SeekbarBigBoardsUpdateLegacyFingerprint : Fingerprint (
         opcode(opcode = Opcode.RETURN, location = MatchAfterImmediately())
     )
 )
-
-internal object TimelineMarkerFingerprint : Fingerprint (
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    name = "toString",
-    returnType = "Ljava/lang/String;",
-    parameters = listOf(),
-    strings = listOf("TimelineMarker[title=",  ", startMillis=", ", endMillis=")
-)
-
-internal fun getTimelineMarkersArrayFingerprint(timelineMarkerClassName: String) = object : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "[$timelineMarkerClassName",
-    parameters = listOf("L"),
-    filters = listOf(
-        checkCast("[$timelineMarkerClassName")
-    )
-) {}
-

@@ -26,14 +26,10 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
-
-import java.util.Arrays;
 import java.util.Locale;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -41,12 +37,6 @@ import app.morphe.extension.youtube.shared.ShortsPlayerState;
 
 @SuppressWarnings("unused")
 public class SeekbarThumbnailPreviewPatch {
-
-    public interface TimelineMarker {
-        long patch_getStartMillis();
-        long patch_getEndMillis();
-        CharSequence patch_getTitle();
-    }
 
     private record SeekbarViews(FrameLayout previewFrame, ImageView thumbnailPreview, TextView timestampPreview,
                                 TextView chapterPreview, PopupWindow thumbnailPreviewPopup) {
@@ -56,7 +46,8 @@ public class SeekbarThumbnailPreviewPatch {
     private static final int THUMBNAIL_PREVIEW_DEFAULT_SHORT_SIDE = THUMBNAIL_PREVIEW_LONG_SIDE * 9 / 16;
     private static final int THUMBNAIL_PREVIEW_DISTANCE_FULLSCREEN_DP = Dim.dp10;
     private static final int THUMBNAIL_PREVIEW_DISTANCE_PORTRAIT_DP = -1 * Dim.dp20;
-    private static final int THUMBNAIL_PREVIEW_TEXT_HEIGHT_DP = Dim.dp(44);
+    private static final int THUMBNAIL_PREVIEW_TEXT_ONLY_HEIGHT_DP = Dim.dp24;
+    private static final int THUMBNAIL_PREVIEW_TEXT_WITH_CHAPTER_HEIGHT_DP = Dim.dp(44);
     private static final int THUMBNAIL_PREVIEW_CORNER_RADIUS_DP = Dim.dp8;
     private static final int THUMBNAIL_PREVIEW_BORDER_WIDTH_DP = Dim.dp2;
     private static final int THUMBNAIL_PREVIEW_BORDER_COLOR = 0xB3FFFFFF;
@@ -68,9 +59,6 @@ public class SeekbarThumbnailPreviewPatch {
     private static Bitmap lastAppliedBitmap;
     private static int lastX = -1;
     private static float touchEventInitialY = -1;
-
-    @Nullable
-    private static volatile TimelineMarker[] chapterMarkers;
 
     /**
      * Injection point.
@@ -271,20 +259,10 @@ public class SeekbarThumbnailPreviewPatch {
                         final int totalSeconds = (int) (currentMillis / 1000);
                         views.timestampPreview.setText(formatSeekTime(totalSeconds));
 
-                        TimelineMarker[] markers = chapterMarkers;
-                        if (markers != null) {
-                            views.chapterPreview.setVisibility(View.GONE);
-                            for (TimelineMarker marker : markers) {
-                                if (currentMillis >= marker.patch_getStartMillis() &&
-                                        currentMillis < marker.patch_getEndMillis()) {
-                                    CharSequence title = marker.patch_getTitle();
-                                    if (title != null && title.length() > 0) {
-                                        views.chapterPreview.setText(title);
-                                        views.chapterPreview.setVisibility(View.VISIBLE);
-                                    }
-                                    break;
-                                }
-                            }
+                        CharSequence chapterTitle = ChaptersHookPatch.getChapterTitleAtTime(currentMillis);
+                        if (chapterTitle != null) {
+                            views.chapterPreview.setText(chapterTitle);
+                            views.chapterPreview.setVisibility(View.VISIBLE);
                         } else {
                             views.chapterPreview.setVisibility(View.GONE);
                         }
@@ -304,11 +282,17 @@ public class SeekbarThumbnailPreviewPatch {
                         0,
                         Dim.getScreenWidth() - previewWidthPx
                 );
+                //noinspection ExtractMethodRecommender
                 final int previewDistance = PlayerType.getCurrent() == PlayerType.WATCH_WHILE_FULLSCREEN
                         ? THUMBNAIL_PREVIEW_DISTANCE_FULLSCREEN_DP
                         : THUMBNAIL_PREVIEW_DISTANCE_PORTRAIT_DP;
+
+                final int textHeight = views.chapterPreview.getVisibility() == View.VISIBLE
+                        ? THUMBNAIL_PREVIEW_TEXT_WITH_CHAPTER_HEIGHT_DP
+                        : THUMBNAIL_PREVIEW_TEXT_ONLY_HEIGHT_DP;
+
                 final int targetY = trackballPosY - previewHeightPx
-                        - previewDistance - THUMBNAIL_PREVIEW_TEXT_HEIGHT_DP;
+                        - previewDistance - textHeight;
 
                 PopupWindow thumbnailPreviewPopup = views.thumbnailPreviewPopup;
                 if (!thumbnailPreviewPopup.isShowing()) {
@@ -332,29 +316,5 @@ public class SeekbarThumbnailPreviewPatch {
      */
     public static boolean disableBigBoardUpdate() {
         return Settings.THUMBNAIL_PREVIEW.get();
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void newVideoLoaded(@Nullable String videoId) {
-        chapterMarkers = null;
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void setTimelineMarkers(TimelineMarker[] markers) {
-        if (markers.length > 0 && markers[0].patch_getTitle() == null) {
-            // Chapters array can alternate between an array with
-            // no titles and an identical array with titles.
-            // Ignore the no title array as it's of no use here.
-            return;
-        }
-
-        if (BaseSettings.DEBUG.get() && !Arrays.equals(markers, chapterMarkers)) {
-            Logger.printDebug(() -> "TimelineMarkers: " + Arrays.toString(markers));
-        }
-        chapterMarkers = markers;
     }
 }
