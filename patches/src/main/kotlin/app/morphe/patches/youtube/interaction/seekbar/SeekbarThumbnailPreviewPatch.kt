@@ -86,11 +86,10 @@ val seekbarThumbnailPreviewPatch = bytecodePatch(
                     "setFineScrubbingPreviewBitmap(Landroid/graphics/Bitmap;)V"
         )
 
-        SeekbarOnDrawFingerprint.method.addInstructions(
+        SeekbarOnDrawFingerprint.method.addInstruction(
             0,
-            """
-                invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->setSeekbarRectangle(Landroid/view/View;)V
-            """
+            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->" +
+                    "setSeekbarRectangle(Landroid/view/View;)V"
         )
 
         if (is_21_12_or_greater) {
