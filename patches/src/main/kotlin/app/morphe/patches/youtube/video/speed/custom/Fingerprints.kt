@@ -85,45 +85,18 @@ internal object SpeedArrayGeneratorFingerprint : Fingerprint(
     returnType = "[L",
     parameters = listOf("L"),
     filters = listOf(
-        methodCall(name = "size", returnType = "I"),
+        methodCall(
+            name = "size",
+            returnType = "I"
+        ),
         newInstance("Ljava/text/DecimalFormat;"),
         string("0.0#"),
         literal(7),
         opcode(Opcode.NEW_ARRAY),
-        fieldAccess(type = "[F")
-    )
-)
-
-/**
- * 20.34+
- */
-internal object SpeedLimiterFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = listOf("F", "L"),
-    filters = listOf(
-        string("setPlaybackRate"),
-        literal(0.25f),
-        literal(4.0f)
-    )
-)
-
-/**
- * 20.33 and lower.
- */
-internal object SpeedLimiterLegacyFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = listOf("F"),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.INVOKE_STATIC,
-        Opcode.MOVE_RESULT,
-        Opcode.IF_EQZ,
-        Opcode.CONST_HIGH16,
-        Opcode.GOTO,
-        Opcode.CONST_HIGH16,
-        Opcode.CONST_HIGH16,
-        Opcode.INVOKE_STATIC,
+        fieldAccess(
+            opcode = Opcode.SGET_OBJECT,
+            type = "[F"
+        )
     )
 )
 

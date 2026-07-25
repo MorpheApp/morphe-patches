@@ -6,8 +6,6 @@ import androidx.annotation.GuardedBy;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.google.protobuf.MessageLite;
-
 import java.lang.ref.WeakReference;
 import java.util.Arrays;
 import java.util.Objects;
@@ -17,7 +15,6 @@ import java.util.regex.Pattern;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.ContextInterface;
-import app.morphe.extension.youtube.innertube.AvailablePlaybackSpeedsOuterClass.AvailablePlaybackSpeeds;
 import app.morphe.extension.youtube.patches.voiceovertranslation.VoiceOverTranslationPatch;
 import app.morphe.extension.youtube.shared.Event;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
@@ -307,30 +304,6 @@ public final class VideoInformation {
             // An exception occurs when the playback speed dialog is opened by an overlay button while 'Restore old playback speed menu' is off.
             // Update the formatted string value to avoid the exception.
             playbackSpeedFormattedString = formatSpeedStringX(currentVideoSpeed);
-        }
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void videoSpeedChanged(MessageLite[] availablePlaybackSpeeds, int newIndex) {
-        if (availablePlaybackSpeeds != null && newIndex > -1) {
-            MessageLite messageLite = availablePlaybackSpeeds[newIndex];
-            if (messageLite != null) {
-                try {
-                    var availablePlaybackSpeed = AvailablePlaybackSpeeds.parseFrom(messageLite.toByteArray());
-                    float currentVideoSpeed = availablePlaybackSpeed.getValue();
-
-                    if (currentVideoSpeed > 0) {
-                        VideoInformation.videoSpeedChanged(currentVideoSpeed);
-
-                        // Rest of the implementation added by patch.
-                        // PlaybackSpeedDialogButton.videoSpeedChanged(newlyLoadedPlaybackSpeed);
-                    }
-                } catch (Exception ex) {
-                    Logger.printException(() -> "videoSpeedChanged failed", ex);
-                }
-            }
         }
     }
 
