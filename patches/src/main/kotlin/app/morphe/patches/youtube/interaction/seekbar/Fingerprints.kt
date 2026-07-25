@@ -211,7 +211,6 @@ internal object SeekbarUpdatePointFingerprint : Fingerprint (
 internal object SlideSeekbarHandlerOnTouchFingerprint : Fingerprint (
     classFingerprint = Fingerprint (
         accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-        returnType = "V",
         filters = listOf(
             resourceLiteral(ResourceType.DIMEN, "seek_easy_horizontal_touch_offset_to_start_scrubbing")
         )

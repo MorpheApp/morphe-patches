@@ -11,6 +11,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_12_or_greater
@@ -31,7 +32,8 @@ val seekbarThumbnailPreviewPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        versionCheckPatch
+        versionCheckPatch,
+        resourceMappingPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -59,26 +61,21 @@ val seekbarThumbnailPreviewPatch = bytecodePatch(
 
         // To show the thumbnail during the use of slide to seek feature.
         SlideSeekbarHandlerOnTouchFingerprint.method.apply {
-            val controllerInstructionMatches = SlideSeekbarGetViewControllerFingerprint.instructionMatches
-            val getViewControllerFieldRef1 = controllerInstructionMatches[0]
-                .getInstruction<ReferenceInstruction>().getReference<FieldReference>()
-            val getViewControllerFieldRef2 = controllerInstructionMatches[1]
-                .getInstruction<ReferenceInstruction>().getReference<FieldReference>()
-            val getViewControllerFieldRef3 = controllerInstructionMatches[3]
-                .getInstruction<ReferenceInstruction>().getReference<FieldReference>()
+            fun getSeekbarReference(index: Int): FieldReference = SlideSeekbarGetViewControllerFingerprint
+                .instructionMatches[index].getInstruction<ReferenceInstruction>().getReference<FieldReference>()!!
 
             addInstructions(
                 0,
                 """
-                    iget-object v0, p0, $getViewControllerFieldRef1
-                    iget-object v0, v0, $getViewControllerFieldRef2
-                    iget-object v0, v0, $getViewControllerFieldRef3
-                    new-instance v1, Landroid/graphics/Point;
-                    invoke-direct { v1 }, Landroid/graphics/Point;-><init>()V
-                    invoke-interface { v0, v1 }, $updatePointMethodRef
-                    iget v2, v1, Landroid/graphics/Point;->x:I
-                    iget v3, v1, Landroid/graphics/Point;->y:I
-                    invoke-static { p1, p2, v2, v3 }, $EXTENSION_CLASS->updateThumbnailPreview(Landroid/view/View;Landroid/view/MotionEvent;II)V
+                    iget-object v3, p0, ${getSeekbarReference(0)}
+                    iget-object v3, v3, ${getSeekbarReference(1)}
+                    iget-object v3, v3, ${getSeekbarReference(3)}
+                    new-instance v0, Landroid/graphics/Point;
+                    invoke-direct { v0 }, Landroid/graphics/Point;-><init>()V
+                    invoke-interface { v3, v0 }, $updatePointMethodRef
+                    iget v1, v0, Landroid/graphics/Point;->x:I
+                    iget v2, v0, Landroid/graphics/Point;->y:I
+                    invoke-static { p1, p2, v1, v2 }, $EXTENSION_CLASS->updateThumbnailPreview(Landroid/view/View;Landroid/view/MotionEvent;II)V
                 """
             )
         }
