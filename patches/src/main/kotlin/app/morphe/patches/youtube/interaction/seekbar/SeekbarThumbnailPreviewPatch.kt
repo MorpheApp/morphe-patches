@@ -53,29 +53,25 @@ val seekbarThumbnailPreviewPatch = bytecodePatch(
                 new-instance v0, Landroid/graphics/Point;
                 invoke-direct { v0 }, Landroid/graphics/Point;-><init>()V
                 invoke-interface { p0, v0 }, $updatePointMethodRef
-                iget v1, v0, Landroid/graphics/Point;->x:I
-                iget v2, v0, Landroid/graphics/Point;->y:I
-                invoke-static { p0, p1, v1, v2 }, $EXTENSION_CLASS->updateThumbnailPreview(Landroid/view/View;Landroid/view/MotionEvent;II)V
+                invoke-static { p0, p1, v0 }, $EXTENSION_CLASS->updateThumbnailPreview(Landroid/view/View;Landroid/view/MotionEvent;Landroid/graphics/Point;)V
             """
         )
 
         // To show the thumbnail during the use of slide to seek feature.
         SlideSeekbarHandlerOnTouchFingerprint.method.apply {
-            fun getSeekbarReference(index: Int): FieldReference = SlideSeekbarGetViewControllerFingerprint
+            fun getSeekbarReference(index: Int) = SlideSeekbarGetViewControllerFingerprint
                 .instructionMatches[index].getInstruction<ReferenceInstruction>().getReference<FieldReference>()!!
 
             addInstructions(
                 0,
                 """
-                    iget-object v3, p0, ${getSeekbarReference(0)}
-                    iget-object v3, v3, ${getSeekbarReference(1)}
-                    iget-object v3, v3, ${getSeekbarReference(3)}
-                    new-instance v0, Landroid/graphics/Point;
-                    invoke-direct { v0 }, Landroid/graphics/Point;-><init>()V
-                    invoke-interface { v3, v0 }, $updatePointMethodRef
-                    iget v1, v0, Landroid/graphics/Point;->x:I
-                    iget v2, v0, Landroid/graphics/Point;->y:I
-                    invoke-static { p1, p2, v1, v2 }, $EXTENSION_CLASS->updateThumbnailPreview(Landroid/view/View;Landroid/view/MotionEvent;II)V
+                    iget-object v0, p0, ${getSeekbarReference(0)}
+                    iget-object v0, v0, ${getSeekbarReference(1)}
+                    iget-object v0, v0, ${getSeekbarReference(3)}
+                    new-instance v1, Landroid/graphics/Point;
+                    invoke-direct { v1 }, Landroid/graphics/Point;-><init>()V
+                    invoke-interface { v0, v1 }, $updatePointMethodRef
+                    invoke-static { p1, p2, v1 }, $EXTENSION_CLASS->updateThumbnailPreview(Landroid/view/View;Landroid/view/MotionEvent;Landroid/graphics/Point;)V
                 """
             )
         }

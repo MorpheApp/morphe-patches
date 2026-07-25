@@ -12,11 +12,13 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Outline;
+import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -27,6 +29,7 @@ import android.widget.TextView;
 import java.util.Locale;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -39,12 +42,13 @@ public class SeekbarThumbnailPreviewPatch {
                                 PopupWindow thumbnailPreviewPopup) {
     }
 
-    private static final int THUMBNAIL_PREVIEW_LONG_SIDE_DP = 160;
-    private static final int THUMBNAIL_PREVIEW_DEFAULT_SHORT_SIDE_DP = THUMBNAIL_PREVIEW_LONG_SIDE_DP * 9 / 16;
-    private static final int THUMBNAIL_PREVIEW_DISTANCE_DP = 10;
-    private static final int THUMBNAIL_PREVIEW_TIMESTAMP_HEIGHT_DP = 24;
-    private static final int THUMBNAIL_PREVIEW_CORNER_RADIUS_DP = 8;
-    private static final int THUMBNAIL_PREVIEW_BORDER_WIDTH_DP = 2;
+    private static final int THUMBNAIL_PREVIEW_LONG_SIDE = 160;
+    private static final int THUMBNAIL_PREVIEW_DEFAULT_SHORT_SIDE = THUMBNAIL_PREVIEW_LONG_SIDE * 9 / 16;
+    private static final int THUMBNAIL_PREVIEW_DISTANCE_FULLSCREEN_DP = Dim.dp10;
+    private static final int THUMBNAIL_PREVIEW_DISTANCE_PORTRAIT_DP = -1 * Dim.dp20;
+    private static final int THUMBNAIL_PREVIEW_TIMESTAMP_HEIGHT_DP = Dim.dp24;
+    private static final int THUMBNAIL_PREVIEW_CORNER_RADIUS_DP = Dim.dp8;
+    private static final int THUMBNAIL_PREVIEW_BORDER_WIDTH_DP = Dim.dp2;
     private static final int THUMBNAIL_PREVIEW_BORDER_COLOR = 0xB3FFFFFF;
     private static final ColorDrawable previewPopupBackgroundDrawable = new ColorDrawable(Color.TRANSPARENT);
 
@@ -74,10 +78,10 @@ public class SeekbarThumbnailPreviewPatch {
             return views;
         }
 
-        final int longSidePx = Dim.dp(THUMBNAIL_PREVIEW_LONG_SIDE_DP);
-        final int shortSidePx = Dim.dp(THUMBNAIL_PREVIEW_DEFAULT_SHORT_SIDE_DP);
-        final int cornerRadiusPx = Dim.dp(THUMBNAIL_PREVIEW_CORNER_RADIUS_DP);
-        final int borderWidthPx = Dim.dp(THUMBNAIL_PREVIEW_BORDER_WIDTH_DP);
+        final int longSidePx = Dim.dp(THUMBNAIL_PREVIEW_LONG_SIDE);
+        final int shortSidePx = Dim.dp(THUMBNAIL_PREVIEW_DEFAULT_SHORT_SIDE);
+        final int cornerRadiusPx = THUMBNAIL_PREVIEW_CORNER_RADIUS_DP;
+        final int borderWidthPx = THUMBNAIL_PREVIEW_BORDER_WIDTH_DP;
         Context context = trackBall.getRootView().getContext();
         LinearLayout containerLayout = new LinearLayout(context);
         containerLayout.setOrientation(LinearLayout.VERTICAL);
@@ -151,7 +155,8 @@ public class SeekbarThumbnailPreviewPatch {
         if (bitmapWidth <= 0 || bitmapHeight <= 0) {
             return;
         }
-        final int longSidePx = Dim.dp(THUMBNAIL_PREVIEW_LONG_SIDE_DP);
+
+        final int longSidePx = Dim.dp(THUMBNAIL_PREVIEW_LONG_SIDE);
         final int newWidth;
         final int newHeight;
         if (bitmapWidth >= bitmapHeight) {
@@ -181,7 +186,7 @@ public class SeekbarThumbnailPreviewPatch {
     /**
      * Injection point.
      */
-    public static void updateThumbnailPreview(View container, MotionEvent containerMotionEvent, int trackBallPosX, int trackBallPosY) {
+    public static void updateThumbnailPreview(View container, MotionEvent containerMotionEvent, Point trackballPos) {
         try {
             if (!Settings.THUMBNAIL_PREVIEW.get() ||
                     !PlayerType.getCurrent().isMaximizedOrFullscreen() ||
@@ -211,11 +216,14 @@ public class SeekbarThumbnailPreviewPatch {
                 return;
             }
 
+            final int trackballPosX = trackballPos.x;
+            final int trackballPosY = trackballPos.y;
+
             if (action == MotionEvent.ACTION_MOVE) {
-                if (trackBallPosX == lastX) {
+                if (trackballPosX == lastX) {
                     return;
                 }
-                lastX = trackBallPosX;
+                lastX = trackballPosX;
 
                 View rootView = container.getRootView();
 
@@ -226,36 +234,34 @@ public class SeekbarThumbnailPreviewPatch {
                     applyBitmapAspectRatio(views.previewFrame, currentScrubbedPreviewBitmap);
                 }
 
-                if (trackBallPosX >= 0) {
+                if (trackballPosX >= 0) {
                     final int maxPixel = Dim.getScreenWidth();
                     final long totalVideoMillis = VideoInformation.getVideoLength();
 
                     if (totalVideoMillis > 0 && maxPixel > 0) {
-                        final int totalSeconds = (int) ((((long) trackBallPosX * totalVideoMillis) / maxPixel) / 1000);
+                        final int totalSeconds = (int) ((((long) trackballPosX * totalVideoMillis) / maxPixel) / 1000);
                         views.timestampPreview.setText(formatSeekTime(totalSeconds));
                     }
                 }
 
-                if (trackBallPosX == 0 && trackBallPosY == 0) {
+                if (trackballPosX == 0 && trackballPosY == 0) {
                     return;
                 }
 
-                final LinearLayout.LayoutParams currentFrameParams =
-                        (LinearLayout.LayoutParams) views.previewFrame.getLayoutParams();
-                final int previewWidthPx = currentFrameParams.width;
-                final int previewHeightPx = currentFrameParams.height;
+                ViewGroup.LayoutParams previewParams = views.previewFrame.getLayoutParams();
+                final int previewWidthPx = previewParams.width;
+                final int previewHeightPx = previewParams.height;
 
-                int targetX = trackBallPosX - (previewWidthPx / 2);
-                final int targetY = trackBallPosY - previewHeightPx
-                        - Dim.dp(THUMBNAIL_PREVIEW_DISTANCE_DP)
-                        - Dim.dp(THUMBNAIL_PREVIEW_TIMESTAMP_HEIGHT_DP);
-
-                final int screenWidth = Dim.getScreenWidth();
-                if (targetX < 0) {
-                    targetX = 0;
-                } else if (targetX + previewWidthPx > screenWidth) {
-                    targetX = screenWidth - previewWidthPx;
-                }
+                final int targetX = Utils.clamp(
+                        trackballPosX - (previewWidthPx / 2),
+                        0,
+                        Dim.getScreenWidth() - previewWidthPx
+                );
+                final int previewDistance = PlayerType.getCurrent() == PlayerType.WATCH_WHILE_FULLSCREEN
+                        ? THUMBNAIL_PREVIEW_DISTANCE_FULLSCREEN_DP
+                        : THUMBNAIL_PREVIEW_DISTANCE_PORTRAIT_DP;
+                final int targetY = trackballPosY - previewHeightPx
+                        - previewDistance - THUMBNAIL_PREVIEW_TIMESTAMP_HEIGHT_DP;
 
                 PopupWindow thumbnailPreviewPopup = views.thumbnailPreviewPopup;
                 if (!thumbnailPreviewPopup.isShowing()) {
