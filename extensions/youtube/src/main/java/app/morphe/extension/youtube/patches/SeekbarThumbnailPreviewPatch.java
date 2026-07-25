@@ -49,14 +49,14 @@ public class SeekbarThumbnailPreviewPatch {
     }
 
     private record SeekbarViews(FrameLayout previewFrame, ImageView thumbnailPreview, TextView timestampPreview,
-                                PopupWindow thumbnailPreviewPopup) {
+                                TextView chapterPreview, PopupWindow thumbnailPreviewPopup) {
     }
 
     private static final int THUMBNAIL_PREVIEW_LONG_SIDE = 160;
     private static final int THUMBNAIL_PREVIEW_DEFAULT_SHORT_SIDE = THUMBNAIL_PREVIEW_LONG_SIDE * 9 / 16;
     private static final int THUMBNAIL_PREVIEW_DISTANCE_FULLSCREEN_DP = Dim.dp10;
     private static final int THUMBNAIL_PREVIEW_DISTANCE_PORTRAIT_DP = -1 * Dim.dp20;
-    private static final int THUMBNAIL_PREVIEW_TIMESTAMP_HEIGHT_DP = Dim.dp24;
+    private static final int THUMBNAIL_PREVIEW_TEXT_HEIGHT_DP = Dim.dp(44);
     private static final int THUMBNAIL_PREVIEW_CORNER_RADIUS_DP = Dim.dp8;
     private static final int THUMBNAIL_PREVIEW_BORDER_WIDTH_DP = Dim.dp2;
     private static final int THUMBNAIL_PREVIEW_BORDER_COLOR = 0xB3FFFFFF;
@@ -111,12 +111,15 @@ public class SeekbarThumbnailPreviewPatch {
         TextView timestampPreview = createTimestampPreview(context);
         containerLayout.addView(timestampPreview);
 
+        TextView chapterPreview = createChapterPreview(context);
+        containerLayout.addView(chapterPreview);
+
         PopupWindow thumbnailPreviewPopup = new PopupWindow(containerLayout, LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT, false);
         thumbnailPreviewPopup.setTouchable(false);
         thumbnailPreviewPopup.setBackgroundDrawable(previewPopupBackgroundDrawable);
 
-        return seekbarViews = new SeekbarViews(previewFrame, thumbnailPreview, timestampPreview, thumbnailPreviewPopup);
+        return seekbarViews = new SeekbarViews(previewFrame, thumbnailPreview, timestampPreview, chapterPreview, thumbnailPreviewPopup);
     }
 
     // Border is a filled rounded rect + padding (not a stroke) to keep outer/inner corners concentric.
@@ -159,6 +162,18 @@ public class SeekbarThumbnailPreviewPatch {
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
         return timestampPreview;
+    }
+
+    private static TextView createChapterPreview(Context context) {
+        TextView chapterPreview = new TextView(context);
+        chapterPreview.setTextColor(Color.WHITE);
+        chapterPreview.setTextSize(12);
+        chapterPreview.setPadding(0, Dim.dp2, 0, 0);
+        chapterPreview.setShadowLayer(3, 1, 1, Color.BLACK);
+        chapterPreview.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
+        return chapterPreview;
     }
 
     // Match the preview's aspect ratio to the bitmap (which mirrors the video).
@@ -252,8 +267,27 @@ public class SeekbarThumbnailPreviewPatch {
                     final long totalVideoMillis = VideoInformation.getVideoLength();
 
                     if (totalVideoMillis > 0 && maxPixel > 0) {
-                        final int totalSeconds = (int) ((((long) trackballPosX * totalVideoMillis) / maxPixel) / 1000);
+                        final long currentMillis = ((long) trackballPosX * totalVideoMillis) / maxPixel;
+                        final int totalSeconds = (int) (currentMillis / 1000);
                         views.timestampPreview.setText(formatSeekTime(totalSeconds));
+
+                        TimelineMarker[] markers = chapterMarkers;
+                        if (markers != null) {
+                            views.chapterPreview.setVisibility(View.GONE);
+                            for (TimelineMarker marker : markers) {
+                                if (currentMillis >= marker.patch_getStartMillis() &&
+                                        currentMillis < marker.patch_getEndMillis()) {
+                                    CharSequence title = marker.patch_getTitle();
+                                    if (title != null && title.length() > 0) {
+                                        views.chapterPreview.setText(title);
+                                        views.chapterPreview.setVisibility(View.VISIBLE);
+                                    }
+                                    break;
+                                }
+                            }
+                        } else {
+                            views.chapterPreview.setVisibility(View.GONE);
+                        }
                     }
                 }
 
@@ -274,7 +308,7 @@ public class SeekbarThumbnailPreviewPatch {
                         ? THUMBNAIL_PREVIEW_DISTANCE_FULLSCREEN_DP
                         : THUMBNAIL_PREVIEW_DISTANCE_PORTRAIT_DP;
                 final int targetY = trackballPosY - previewHeightPx
-                        - previewDistance - THUMBNAIL_PREVIEW_TIMESTAMP_HEIGHT_DP;
+                        - previewDistance - THUMBNAIL_PREVIEW_TEXT_HEIGHT_DP;
 
                 PopupWindow thumbnailPreviewPopup = views.thumbnailPreviewPopup;
                 if (!thumbnailPreviewPopup.isShowing()) {
