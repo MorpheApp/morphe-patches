@@ -304,27 +304,16 @@ public class SeekbarThumbnailPreviewPatch {
      * Injection point.
      */
     public static void setTimelineMarkers(TimelineMarker[] markers) {
-        if (BaseSettings.DEBUG.get() && !arrayReferencesEqual(markers, chapterMarkers)) {
+        if (markers.length > 0 && markers[0].patch_getTitle() == null) {
+            // Chapters array can alternate between an array with
+            // no titles and an identical array with titles.
+            // Ignore the no title array as it's of no use here.
+            return;
+        }
+
+        if (BaseSettings.DEBUG.get() && !Arrays.equals(markers, chapterMarkers)) {
             Logger.printDebug(() -> "TimelineMarkers: " + Arrays.toString(markers));
         }
         chapterMarkers = markers;
-    }
-
-    private static boolean arrayReferencesEqual(Object[] first, Object[] second) {
-        if (first == null || second == null) {
-            return false;
-        }
-
-        int length = first.length;
-        if (second.length != length) {
-            return false;
-        }
-
-        for (int i = 0; i < length; i++) {
-            if (first[i] != second[i])
-                return false;
-        }
-
-        return true;
     }
 }
