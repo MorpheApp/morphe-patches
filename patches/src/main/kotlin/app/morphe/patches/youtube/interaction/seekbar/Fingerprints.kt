@@ -14,6 +14,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
@@ -300,3 +301,21 @@ internal object SeekbarBigBoardsUpdateLegacyFingerprint : Fingerprint (
         opcode(opcode = Opcode.RETURN, location = MatchAfterImmediately())
     )
 )
+
+internal object TimelineMarkerFingerprint : Fingerprint (
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    name = "toString",
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(),
+    strings = listOf("TimelineMarker[title=",  ", startMillis=", ", endMillis=")
+)
+
+internal fun getTimelineMarkersArrayFingerprint(timelineMarkerClassName: String) = object : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "[$timelineMarkerClassName",
+    parameters = listOf("L"),
+    filters = listOf(
+        checkCast("[$timelineMarkerClassName")
+    )
+) {}
+

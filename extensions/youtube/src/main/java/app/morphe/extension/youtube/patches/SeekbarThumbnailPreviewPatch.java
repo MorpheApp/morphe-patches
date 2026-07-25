@@ -26,10 +26,14 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
+import java.util.Arrays;
 import java.util.Locale;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -37,6 +41,12 @@ import app.morphe.extension.youtube.shared.ShortsPlayerState;
 
 @SuppressWarnings("unused")
 public class SeekbarThumbnailPreviewPatch {
+
+    public interface TimelineMarker {
+        long patch_getStartMillis();
+        long patch_getEndMillis();
+        CharSequence patch_getTitle();
+    }
 
     private record SeekbarViews(FrameLayout previewFrame, ImageView thumbnailPreview, TextView timestampPreview,
                                 PopupWindow thumbnailPreviewPopup) {
@@ -58,6 +68,9 @@ public class SeekbarThumbnailPreviewPatch {
     private static Bitmap lastAppliedBitmap;
     private static int lastX = -1;
     private static float touchEventInitialY = -1;
+
+    @Nullable
+    private static volatile TimelineMarker[] chapterMarkers;
 
     /**
      * Injection point.
@@ -285,5 +298,33 @@ public class SeekbarThumbnailPreviewPatch {
      */
     public static boolean disableBigBoardUpdate() {
         return Settings.THUMBNAIL_PREVIEW.get();
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setTimelineMarkers(TimelineMarker[] markers) {
+        if (BaseSettings.DEBUG.get() && !arrayReferencesEqual(markers, chapterMarkers)) {
+            Logger.printDebug(() -> "TimelineMarkers: " + Arrays.toString(markers));
+        }
+        chapterMarkers = markers;
+    }
+
+    private static boolean arrayReferencesEqual(Object[] first, Object[] second) {
+        if (first == null || second == null) {
+            return false;
+        }
+
+        int length = first.length;
+        if (second.length != length) {
+            return false;
+        }
+
+        for (int i = 0; i < length; i++) {
+            if (first[i] != second[i])
+                return false;
+        }
+
+        return true;
     }
 }
