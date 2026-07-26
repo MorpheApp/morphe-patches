@@ -21,6 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.lang.ref.WeakReference;
+import java.util.List;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -37,6 +38,7 @@ public class WideSearchbarPatch {
     private static final int ID_MENU_ITEM = getIdentifier(ResourceType.ID, "menu_item_view");
     private static final int ID_SEARCH_ICON = getIdentifier(ResourceType.DRAWABLE, "quantum_ic_search_grey600_24");
     private static final String SEARCH_HINT = ResourceUtils.getString("search_hint");
+    private static final List<String> SEARCH_BUTTON_NAMES = List.of("SEARCH", "SEARCH_BOLD", "SEARCH_CAIRO");
     private static final int DP115 = Dim.dp(115);
 
     public static WeakReference<ImageView> searchImageViewRef = new WeakReference<>(null);
@@ -44,26 +46,22 @@ public class WideSearchbarPatch {
     /**
      * Injection point.
      */
-    public static void setSearchImageView(View parentView) {
-        if (WIDE_SEARCHBAR_ENABLED && parentView instanceof ViewGroup parentGroup) {
-            View view = parentGroup.findViewById(ID_MENU_ITEM);
-            if (view instanceof ImageView searchImageView) {
-                searchImageViewRef = new WeakReference<>(searchImageView);
-                searchImageView.setVisibility(View.GONE);
-            }
+    public static void setSearchImageView(String enumName, View parentView, ImageView imageView) {
+        if (WIDE_SEARCHBAR_ENABLED && SEARCH_BUTTON_NAMES.contains(enumName)) {
+            searchImageViewRef = new WeakReference<>(imageView);
         }
     }
 
     /**
      * Injection point.
      */
-    public static void initializeContainer(View rootToolbar) {
+    public static void initializeContainer(View toolbar) {
         try {
             if (!WIDE_SEARCHBAR_ENABLED) {
                 return;
             }
 
-            if (!(rootToolbar instanceof ViewGroup toolbarContainer)) {
+            if (!(toolbar instanceof ViewGroup toolbarViewGroup)) {
                 return;
             }
 
@@ -75,7 +73,7 @@ public class WideSearchbarPatch {
                     ? "#808080"
                     : "#606060");
 
-            TextView wideSearchBox = new TextView(toolbarContainer.getContext());
+            TextView wideSearchBox = new TextView(toolbarViewGroup.getContext());
             wideSearchBox.setText(SEARCH_HINT);
             wideSearchBox.setTextColor(textColor);
             wideSearchBox.setGravity(Gravity.CENTER_VERTICAL | Gravity.START);
@@ -97,12 +95,12 @@ public class WideSearchbarPatch {
                 wideSearchBox.setCompoundDrawablePadding(Dim.dp8);
             }
 
-            View logoView = toolbarContainer.findViewById(ID_YOUTUBE_LOGO);
+            View logoView = toolbarViewGroup.findViewById(ID_YOUTUBE_LOGO);
             ViewGroup.MarginLayoutParams currentViewGroupParams;
             final int sideMargin = Dim.dp16;
             final int searchBarHeight = Dim.dp36;
 
-            if (toolbarContainer instanceof LinearLayout) {
+            if (toolbarViewGroup instanceof LinearLayout) {
                 LinearLayout.LayoutParams linearParams = new LinearLayout.LayoutParams(
                         0, searchBarHeight);
                 linearParams.weight = 1.0f;
@@ -137,14 +135,14 @@ public class WideSearchbarPatch {
                 context.startActivity(intent);
             });
 
-            int targetIndex = toolbarContainer.getChildCount();
+            int targetIndex = toolbarViewGroup.getChildCount();
             if (logoView != null) {
-                final int logoIndex = toolbarContainer.indexOfChild(logoView);
+                final int logoIndex = toolbarViewGroup.indexOfChild(logoView);
                 if (logoIndex >= 0) {
                     targetIndex = logoIndex + 1;
                 }
             }
-            toolbarContainer.addView(wideSearchBox, targetIndex);
+            toolbarViewGroup.addView(wideSearchBox, targetIndex);
         } catch (Exception ex) {
             Logger.printException(() -> "initializeContainer failure", ex);
         }
