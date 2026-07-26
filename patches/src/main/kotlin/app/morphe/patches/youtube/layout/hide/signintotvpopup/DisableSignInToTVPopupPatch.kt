@@ -36,7 +36,7 @@ val disableSignInToTVPopupPatch = bytecodePatch(
                 move-result v0
                 if-eqz v0, :allow_sign_in_popup
                 const/4 v0, 0x0
-                return v0
+                return-object v0
                 :allow_sign_in_popup
                 nop
             """

@@ -5,12 +5,11 @@ import app.morphe.patches.all.misc.resources.ResourceType
 import app.morphe.patches.all.misc.resources.resourceLiteral
 
 internal object SignInToTVPopupFingerprint : Fingerprint(
-    returnType = "Z",
-    parameters = listOf("Ljava/lang/String;", "Z", "L"),
+    returnType = "Landroid/view/View;",
     filters = listOf(
         resourceLiteral(
-            ResourceType.STRING,
-            "mdx_seamless_tv_sign_in_drawer_fragment_title"
+            ResourceType.ID,
+            "express_sign_in_modal"
         )
     )
 )
