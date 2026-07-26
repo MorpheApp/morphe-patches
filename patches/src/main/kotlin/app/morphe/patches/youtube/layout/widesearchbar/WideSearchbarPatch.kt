@@ -52,5 +52,16 @@ val wideSearchbarPatch = bytecodePatch(
                 )
             }
         }
+
+        MobileTopBarFingerprint.let {
+            val index = it.instructionMatches[2].index
+            val register = it.instructionMatches[2].getInstruction<OneRegisterInstruction>().registerA
+
+            it.method.addInstruction(
+                index + 1,
+                "invoke-static { v$register }, $EXTENSION_CLASS->" +
+                        "setSearchImageView(Landroid/view/View;)V"
+            )
+        }
     }
 }
