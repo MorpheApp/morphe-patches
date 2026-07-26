@@ -32,13 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">Haqqında səhifəsin gizlət</string>
   <string name="morphe_hide_resources_shelf_title">Mənbələr səhifəsin gizlət</string>
   <string name="morphe_screen_layout_title">Tərtibat</string>
-  <string name="morphe_disable_modern_home_title">Müasir əsas səhifə UI-ın qapat</string>
-  <string name="morphe_disable_screenshot_popup_title">Ekran görüntüsü ani görüntüsün qapat</string>
-  <string name="morphe_disable_screenshot_popup_summary">Ekran görüntüsü çəkərkən görünən ani görüntünü qapadır</string>
-  <string name="morphe_hide_ask_button_title">Soruş düyməsini gizlət</string>
-  <string name="morphe_hide_ask_button_summary">Axtarış cərgəsindəki Soruş düyməsi gizlədilir</string>
-  <string name="morphe_force_system_font_title">Sistem şriftinə zorla</string>
-  <string name="morphe_force_system_font_summary">Reddit Sans və ya Roboto əvəzinə cihaz sistemi şriftini istifadə et. Bunu aktivləşdirmək Fərdi şrifti də qapadır</string>
   <string name="morphe_custom_font_title">Fərdi şrift</string>
   <string name="morphe_custom_font_summary">Aşağıdakı yoldan xüsusi TTF və ya OTF şrift faylını yüklə. Bunu aktivləşdirmək sistem şriftini zorlanı da qapadır</string>
   <string name="morphe_custom_font_file_path_title">Fərdi şrift faylı</string>
@@ -47,6 +40,13 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_pick_file_first">Əvvəlcə fərdi şrift faylı seç</string>
   <string name="morphe_custom_font_invalid_file">Xahiş olunur, .ttf və ya .otf şrift faylı seç</string>
   <string name="morphe_custom_font_failed_to_load">Fərdi şrifti yükləmək olmadı. Başqa fayl seç</string>
+  <string name="morphe_disable_modern_home_title">Müasir əsas səhifə UI-ın qapat</string>
+  <string name="morphe_disable_screenshot_popup_title">Ekran görüntüsü ani görüntüsün qapat</string>
+  <string name="morphe_disable_screenshot_popup_summary">Ekran görüntüsü çəkərkən görünən ani görüntünü qapadır</string>
+  <string name="morphe_force_system_font_title">Sistem şriftinə zorla</string>
+  <string name="morphe_force_system_font_summary">Reddit Sans və ya Roboto əvəzinə cihaz sistemi şriftini istifadə et. Bunu aktivləşdirmək Fərdi şrifti də qapadır</string>
+  <string name="morphe_hide_ask_button_title">Soruş düyməsini gizlət</string>
+  <string name="morphe_hide_ask_button_summary">Axtarış cərgəsindəki Soruş düyməsi gizlədilir</string>
   <string name="morphe_hide_communities_shelf_title">İcmalar bölməsin gizlət</string>
   <string name="morphe_hide_communities_shelf_summary">Subredditlərdə əlaqəli və ya təklif olunan icmalar bölməsin gizlədir</string>
   <string name="morphe_hide_trending_shelves_title">Trenddə olan bölmələrin gizlət</string>

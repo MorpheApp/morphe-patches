@@ -32,13 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">隐藏“关于”专栏</string>
   <string name="morphe_hide_resources_shelf_title">隐藏“资源”专栏</string>
   <string name="morphe_screen_layout_title">布局</string>
-  <string name="morphe_disable_modern_home_title">禁用现代主界面</string>
-  <string name="morphe_disable_screenshot_popup_title">禁用截图弹窗</string>
-  <string name="morphe_disable_screenshot_popup_summary">禁用在截屏时出现的弹窗</string>
-  <string name="morphe_hide_ask_button_title">隐藏询问按钮</string>
-  <string name="morphe_hide_ask_button_summary">隐藏搜索栏中的询问按钮</string>
-  <string name="morphe_force_system_font_title">强制系统字体</string>
-  <string name="morphe_force_system_font_summary">使用设备系统字体，而不是 Reddit Sans 或 Roboto。启用此选项也会关闭自定义字体。</string>
   <string name="morphe_custom_font_title">自定义字体</string>
   <string name="morphe_custom_font_summary">从以下路径加载自定义 TTF 或 OTF 字体文件。启用此选项也会关闭强制系统字体。</string>
   <string name="morphe_custom_font_file_path_title">自定义字体文件</string>
@@ -47,6 +40,13 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_pick_file_first">请先选择一个自定义字体文件。</string>
   <string name="morphe_custom_font_invalid_file">请选择一个 .ttf 或 .otf 字体文件。</string>
   <string name="morphe_custom_font_failed_to_load">无法加载自定义字体。请选择其他文件</string>
+  <string name="morphe_disable_modern_home_title">禁用现代主界面</string>
+  <string name="morphe_disable_screenshot_popup_title">禁用截图弹窗</string>
+  <string name="morphe_disable_screenshot_popup_summary">禁用在截屏时出现的弹窗</string>
+  <string name="morphe_force_system_font_title">强制系统字体</string>
+  <string name="morphe_force_system_font_summary">使用设备系统字体，而不是 Reddit Sans 或 Roboto。启用此选项也会关闭自定义字体。</string>
+  <string name="morphe_hide_ask_button_title">隐藏询问按钮</string>
+  <string name="morphe_hide_ask_button_summary">隐藏搜索栏中的询问按钮</string>
   <string name="morphe_hide_communities_shelf_title">隐藏社区展示栏</string>
   <string name="morphe_hide_communities_shelf_summary">隐藏 Reddit 页面中相关的或推荐的社区展示栏</string>
   <string name="morphe_hide_trending_shelves_title">隐藏热门书架</string>

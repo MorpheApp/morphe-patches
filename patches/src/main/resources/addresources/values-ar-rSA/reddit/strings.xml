@@ -32,13 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">إخفاء رف \"حول\"</string>
   <string name="morphe_hide_resources_shelf_title">إخفاء رف \"الموارد\"</string>
   <string name="morphe_screen_layout_title">التخطيط</string>
-  <string name="morphe_disable_modern_home_title">تعطيل الصفحة الرئيسية الحديثة</string>
-  <string name="morphe_disable_screenshot_popup_title">تعطيل نافذة التقاط الشاشة المنبثقة</string>
-  <string name="morphe_disable_screenshot_popup_summary">يُعطل النافذة المنبثقة التي تظهر عند التقاط لقطة شاشة</string>
-  <string name="morphe_hide_ask_button_title">إخفاء زر طرح سؤال</string>
-  <string name="morphe_hide_ask_button_summary">يخفي زر طرح سؤال في شريط البحث</string>
-  <string name="morphe_force_system_font_title">فرض خط النظام</string>
-  <string name="morphe_force_system_font_summary">استخدم خط النظام الخاص بالجهاز بدلًا من Reddit Sans أو Roboto. وتمكين هذا يؤدي أيضًا إلى إيقاف تشغيل الخط المخصص</string>
   <string name="morphe_custom_font_title">خط مخصص</string>
   <string name="morphe_custom_font_summary">حمّل ملف خط TTF أو OTF مخصص من المسار أدناه. وتمكين هذا يؤدي أيضًا إلى إيقاف تشغيل خط النظام</string>
   <string name="morphe_custom_font_file_path_title">ملف الخط المخصص</string>
@@ -47,6 +40,13 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_pick_file_first">اختر ملف خط مخصص أولًا</string>
   <string name="morphe_custom_font_invalid_file">الرجاء تحديد ملف خط بامتداد .ttf أو .otf</string>
   <string name="morphe_custom_font_failed_to_load">فشل تحميل الخط المخصص. اختر ملفًا مختلفًا</string>
+  <string name="morphe_disable_modern_home_title">تعطيل الصفحة الرئيسية الحديثة</string>
+  <string name="morphe_disable_screenshot_popup_title">تعطيل نافذة التقاط الشاشة المنبثقة</string>
+  <string name="morphe_disable_screenshot_popup_summary">يُعطل النافذة المنبثقة التي تظهر عند التقاط لقطة شاشة</string>
+  <string name="morphe_force_system_font_title">فرض خط النظام</string>
+  <string name="morphe_force_system_font_summary">استخدم خط النظام الخاص بالجهاز بدلًا من Reddit Sans أو Roboto. وتمكين هذا يؤدي أيضًا إلى إيقاف تشغيل الخط المخصص</string>
+  <string name="morphe_hide_ask_button_title">إخفاء زر طرح سؤال</string>
+  <string name="morphe_hide_ask_button_summary">يخفي زر طرح سؤال في شريط البحث</string>
   <string name="morphe_hide_communities_shelf_title">إخفاء رف المجتمعات</string>
   <string name="morphe_hide_communities_shelf_summary">يخفي رفوف المجتمعات ذات الصلة أو المقترحة في subreddits</string>
   <string name="morphe_hide_trending_shelves_title">إخفاء الرفوف الرائجة</string>

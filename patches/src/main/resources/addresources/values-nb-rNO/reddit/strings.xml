@@ -32,13 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">Skjul Om-hyllen</string>
   <string name="morphe_hide_resources_shelf_title">Skjul Ressurser-hyllen</string>
   <string name="morphe_screen_layout_title">Oppsett</string>
-  <string name="morphe_disable_modern_home_title">Deaktiver moderne brukergrensesnitt for hjem</string>
-  <string name="morphe_disable_screenshot_popup_title">Deaktiver skjermbilde-popup</string>
-  <string name="morphe_disable_screenshot_popup_summary">Deaktiverer popup-vinduet som vises når du tar et skjermbilde</string>
-  <string name="morphe_hide_ask_button_title">Skjul Spør-knapp</string>
-  <string name="morphe_hide_ask_button_summary">Skjuler Spør-knappen i søkefeltet</string>
-  <string name="morphe_force_system_font_title">Bruk systemfont</string>
-  <string name="morphe_force_system_font_summary">Bruk systemfonen til enheten i stedet for Reddit Sans eller Roboto. Å aktivere dette slår også av egendefinert skrift.</string>
   <string name="morphe_custom_font_title">Egendefinert font</string>
   <string name="morphe_custom_font_summary">Last inn en egendefinert TTF- eller OTF-fontfil fra banen nedenfor. Å aktivere dette slår også av bruk av systemfont.</string>
   <string name="morphe_custom_font_file_path_title">Egendefinert fontfil</string>
@@ -47,6 +40,13 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_pick_file_first">Velg en egendefinert fontfil først</string>
   <string name="morphe_custom_font_invalid_file">Vennligst velg en .ttf- eller .otf-fontfil</string>
   <string name="morphe_custom_font_failed_to_load">Kunne ikke laste inn egendefinert skrifttype. Velg en annen fil</string>
+  <string name="morphe_disable_modern_home_title">Deaktiver moderne brukergrensesnitt for hjem</string>
+  <string name="morphe_disable_screenshot_popup_title">Deaktiver skjermbilde-popup</string>
+  <string name="morphe_disable_screenshot_popup_summary">Deaktiverer popup-vinduet som vises når du tar et skjermbilde</string>
+  <string name="morphe_force_system_font_title">Bruk systemfont</string>
+  <string name="morphe_force_system_font_summary">Bruk systemfonen til enheten i stedet for Reddit Sans eller Roboto. Å aktivere dette slår også av egendefinert skrift.</string>
+  <string name="morphe_hide_ask_button_title">Skjul Spør-knapp</string>
+  <string name="morphe_hide_ask_button_summary">Skjuler Spør-knappen i søkefeltet</string>
   <string name="morphe_hide_communities_shelf_title">Skjul fellesskap-hyllen</string>
   <string name="morphe_hide_communities_shelf_summary">Skjuler den relaterte eller foreslåtte fellesskap-hyllen i subreddits</string>
   <string name="morphe_hide_trending_shelves_title">Skjul Trending-hyller</string>

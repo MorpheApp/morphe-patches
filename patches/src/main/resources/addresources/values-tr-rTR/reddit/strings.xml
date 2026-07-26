@@ -32,13 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">Hakkında rafını gizle</string>
   <string name="morphe_hide_resources_shelf_title">Kaynaklar rafını gizle</string>
   <string name="morphe_screen_layout_title">Düzen</string>
-  <string name="morphe_disable_modern_home_title">Modern ana sayfa arayüzünü devre dışı bırak</string>
-  <string name="morphe_disable_screenshot_popup_title">Ekran görüntüsü açılır penceresini devre dışı bırak</string>
-  <string name="morphe_disable_screenshot_popup_summary">Ekran görüntüsü alındığında görünen açılır pencereyi devre dışı bırakır</string>
-  <string name="morphe_hide_ask_button_title">Sor düğmesini gizle</string>
-  <string name="morphe_hide_ask_button_summary">Arama çubuğundaki \"Sor\" düğmesini gizler</string>
-  <string name="morphe_force_system_font_title">Sistem yazı tipini zorla</string>
-  <string name="morphe_force_system_font_summary">Reddit Sans veya Roboto yerine cihaz sistem fontunu kullanın. Bunu etkinleştirmek aynı zamanda özel fontu da kapatır.</string>
   <string name="morphe_custom_font_title">Özel yazı tipi</string>
   <string name="morphe_custom_font_summary">Aşağıdaki yoldan özel bir TTF veya OTF font dosyası yükleyin. Bunu etkinleştirmek aynı zamanda zorunlu sistem fontunu da kapatır.</string>
   <string name="morphe_custom_font_file_path_title">Özel yazı tipi dosyası</string>
@@ -47,6 +40,13 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_pick_file_first">Önce özel bir font dosyası seçin</string>
   <string name="morphe_custom_font_invalid_file">Lütfen bir .ttf veya .otf font dosyası seçin</string>
   <string name="morphe_custom_font_failed_to_load">Özel yazı tipi yüklenemedi. Farklı bir dosya seçin</string>
+  <string name="morphe_disable_modern_home_title">Modern ana sayfa arayüzünü devre dışı bırak</string>
+  <string name="morphe_disable_screenshot_popup_title">Ekran görüntüsü açılır penceresini devre dışı bırak</string>
+  <string name="morphe_disable_screenshot_popup_summary">Ekran görüntüsü alındığında görünen açılır pencereyi devre dışı bırakır</string>
+  <string name="morphe_force_system_font_title">Sistem yazı tipini zorla</string>
+  <string name="morphe_force_system_font_summary">Reddit Sans veya Roboto yerine cihaz sistem fontunu kullanın. Bunu etkinleştirmek aynı zamanda özel fontu da kapatır.</string>
+  <string name="morphe_hide_ask_button_title">Sor düğmesini gizle</string>
+  <string name="morphe_hide_ask_button_summary">Arama çubuğundaki \"Sor\" düğmesini gizler</string>
   <string name="morphe_hide_communities_shelf_title">Topluluklar rafını gizle</string>
   <string name="morphe_hide_communities_shelf_summary">Subreddit\'lerdeki ilgili veya önerilen topluluklar rafını gizler</string>
   <string name="morphe_hide_trending_shelves_title">Trendler rafını gizle</string>

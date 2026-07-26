@@ -406,6 +406,7 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_play_all_button_type_entry_8">सिर्फ़ स्ट्रीम किए गए वीडियो (लोकप्रियता के अनुसार क्रमबद्ध करें)</string>
   <string name="morphe_play_all_button_type_entry_9">सभी सदस्यों की सामग्री केवल</string>
   <string name="morphe_play_all_button_type_entry_10">केवल सदस्यों के वीडियो</string>
+  <string name="morphe_play_all_button_type_entry_11">केवल सदस्यों के लिए Shorts</string>
   <string name="morphe_play_all_button_type_entry_12">केवल सदस्यों के लाइव स्ट्रीम</string>
   <string name="morphe_play_all_button_not_available_toast">चैनल आईडी मिसमैच के कारण प्लेलिस्ट जेनरेट करने में असमर्थ</string>
   <!-- interaction.reload.reloadVideoPatch -->
@@ -1090,6 +1091,7 @@ DeArrow.ajay.app खोलने के लिए यहां टैप कर�
   <string name="morphe_video_quality_prioritize_dialog">यदि यह सेटिंग बंद है, तो पुराने वीडियो में कोई वीडियो गुणवत्ता विकल्प नहीं दिख सकता है।</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Android VR / visionOS AV1 की अनुमति दें</string>
+  <string name="morphe_spoof_video_streams_av1_summary">एंड्रॉइड वीआर / visionOS क्लाइंट का उपयोग करते समय सॉफ्टवेयर AV1 डिकोडिंग की अनुमति देता है</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"इस सेटिंग को सक्षम करने पर सॉफ्टवेयर AV1 डिकोडिंग का उपयोग किया जा सकता है।
 
 AV1 के साथ वीडियो प्लेबैक स्टटर या फ़्रेम छोड़ सकता है।"</string>

@@ -32,13 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">정보 선반 숨기기</string>
   <string name="morphe_hide_resources_shelf_title">리소스 선반 숨기기</string>
   <string name="morphe_screen_layout_title">레이아웃</string>
-  <string name="morphe_disable_modern_home_title">모던 홈 비활성화하기</string>
-  <string name="morphe_disable_screenshot_popup_title">스크린샷 팝업 비활성화하기</string>
-  <string name="morphe_disable_screenshot_popup_summary">스크린샷 촬영 시 나타나는 팝업을 비활성화합니다</string>
-  <string name="morphe_hide_ask_button_title">Ask (Reddit Answers) 버튼 숨기기</string>
-  <string name="morphe_hide_ask_button_summary">검색창에서 Ask (Reddit Answers) 버튼을 숨깁니다</string>
-  <string name="morphe_force_system_font_title">시스템 글꼴 강제 사용</string>
-  <string name="morphe_force_system_font_summary">Reddit Sans 또는 Roboto 대신 기기 시스템 글꼴을 사용합니다. 이 기능을 활성화하면 사용자 정의 글꼴이 비활성화됩니다</string>
   <string name="morphe_custom_font_title">사용자 정의 글꼴</string>
   <string name="morphe_custom_font_summary">아래 경로에 있는 사용자 정의 TTF 또는 OTF 글꼴 파일을 불러옵니다. 이 옵션을 활성화하면 \'시스템 글꼴 강제 사용\'이 자동으로 비활성화됩니다</string>
   <string name="morphe_custom_font_file_path_title">사용자 정의 글꼴 파일</string>
@@ -47,6 +40,13 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_pick_file_first">먼저 사용자 정의 글꼴 파일을 선택하세요</string>
   <string name="morphe_custom_font_invalid_file">.ttf 또는 .otf 글꼴 파일을 선택하세요</string>
   <string name="morphe_custom_font_failed_to_load">사용자 정의 글꼴을 불러올 수 없습니다. 다른 파일을 선택하세요</string>
+  <string name="morphe_disable_modern_home_title">모던 홈 비활성화하기</string>
+  <string name="morphe_disable_screenshot_popup_title">스크린샷 팝업 비활성화하기</string>
+  <string name="morphe_disable_screenshot_popup_summary">스크린샷 촬영 시 나타나는 팝업을 비활성화합니다</string>
+  <string name="morphe_force_system_font_title">시스템 글꼴 강제 사용</string>
+  <string name="morphe_force_system_font_summary">Reddit Sans 또는 Roboto 대신 기기 시스템 글꼴을 사용합니다. 이 기능을 활성화하면 사용자 정의 글꼴이 비활성화됩니다</string>
+  <string name="morphe_hide_ask_button_title">Ask (Reddit Answers) 버튼 숨기기</string>
+  <string name="morphe_hide_ask_button_summary">검색창에서 Ask (Reddit Answers) 버튼을 숨깁니다</string>
   <string name="morphe_hide_communities_shelf_title">커뮤니티 선반 숨기기</string>
   <string name="morphe_hide_communities_shelf_summary">서브레딧에서 관련 커뮤니티 또는 추천 커뮤니티 섹션을 숨깁니다</string>
   <string name="morphe_hide_trending_shelves_title">\'인기 급상승 중\' 선반 숨기기</string>

@@ -32,13 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">Sembunyikan rak Tentang</string>
   <string name="morphe_hide_resources_shelf_title">Sembunyikan rak Sumber Daya</string>
   <string name="morphe_screen_layout_title">Tata Letak</string>
-  <string name="morphe_disable_modern_home_title">Nonaktifkan tampilan beranda modern</string>
-  <string name="morphe_disable_screenshot_popup_title">Nonaktifkan kotak dialog tangkapan layar</string>
-  <string name="morphe_disable_screenshot_popup_summary">Menonaktifkan kotak dialog yang muncul saat mengambil tangkapan layar</string>
-  <string name="morphe_hide_ask_button_title">Sembunyikan tombol Tanya</string>
-  <string name="morphe_hide_ask_button_summary">Menyembunyikan tombol Tanya di bilah pencarian</string>
-  <string name="morphe_force_system_font_title">Paksa font sistem</string>
-  <string name="morphe_force_system_font_summary">Gunakan font sistem perangkat, bukan Reddit Sans atau Roboto. Mengaktifkan ini juga menonaktifkan Font kustom.</string>
   <string name="morphe_custom_font_title">Font khusus</string>
   <string name="morphe_custom_font_summary">Muat file font TTF atau OTF kustom dari jalur di bawah ini. Mengaktifkan ini juga menonaktifkan Paksa font sistem.</string>
   <string name="morphe_custom_font_file_path_title">Berkas font khusus</string>
@@ -47,6 +40,13 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_pick_file_first">Pilih file font kustom terlebih dahulu.</string>
   <string name="morphe_custom_font_invalid_file">Silakan pilih file font .ttf atau .otf.</string>
   <string name="morphe_custom_font_failed_to_load">Gagal memuat font kustom. Pilih file yang berbeda</string>
+  <string name="morphe_disable_modern_home_title">Nonaktifkan tampilan beranda modern</string>
+  <string name="morphe_disable_screenshot_popup_title">Nonaktifkan kotak dialog tangkapan layar</string>
+  <string name="morphe_disable_screenshot_popup_summary">Menonaktifkan kotak dialog yang muncul saat mengambil tangkapan layar</string>
+  <string name="morphe_force_system_font_title">Paksa font sistem</string>
+  <string name="morphe_force_system_font_summary">Gunakan font sistem perangkat, bukan Reddit Sans atau Roboto. Mengaktifkan ini juga menonaktifkan Font kustom.</string>
+  <string name="morphe_hide_ask_button_title">Sembunyikan tombol Tanya</string>
+  <string name="morphe_hide_ask_button_summary">Menyembunyikan tombol Tanya di bilah pencarian</string>
   <string name="morphe_hide_communities_shelf_title">Sembunyikan rak komunitas</string>
   <string name="morphe_hide_communities_shelf_summary">Menyembunyikan rak komunitas terkait atau yang disarankan di subreddit</string>
   <string name="morphe_hide_trending_shelves_title">Sembunyikan rak-rak Trending</string>

@@ -1091,6 +1091,7 @@ Second \"item\" text"</string>
   <string name="morphe_video_quality_prioritize_dialog">Ако тази настройка е изключена, по-старите видеа може да не показват опции за качество на видеото</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Разрешаване на Android VR / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Позволява софтуерно декодиране на AV1 при използване на Android VR / visionOS клиента</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Активиране на това настройка може да използва софтуерно AV1 дешифриране.
 
 Видео преглед с AV1 може да се качне или да има падане на кадри."</string>

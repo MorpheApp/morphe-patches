@@ -32,13 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">Ẩn kệ Giới thiệu</string>
   <string name="morphe_hide_resources_shelf_title">Ẩn kệ Tài nguyên</string>
   <string name="morphe_screen_layout_title">Bố cục</string>
-  <string name="morphe_disable_modern_home_title">Tắt chế độ hiện đại</string>
-  <string name="morphe_disable_screenshot_popup_title">Tắt hộp thoại chụp màn hình</string>
-  <string name="morphe_disable_screenshot_popup_summary">Vô hiệu hộp thoại xuất hiện khi chụp màn hình</string>
-  <string name="morphe_hide_ask_button_title">Ẩn nút Đặt câu hỏi</string>
-  <string name="morphe_hide_ask_button_summary">Ẩn nút Đặt câu hỏi trên thanh tìm kiếm</string>
-  <string name="morphe_force_system_font_title">Sử dụng phông chữ hệ thống bắt buộc</string>
-  <string name="morphe_force_system_font_summary">Sử dụng phông chữ hệ thống của thiết bị thay vì Reddit Sans hoặc Roboto. Bật tùy chọn này cũng sẽ tắt phông chữ tùy chỉnh.</string>
   <string name="morphe_custom_font_title">Phông chữ tùy chỉnh</string>
   <string name="morphe_custom_font_summary">Tải tệp phông chữ TTF hoặc OTF tùy chỉnh từ đường dẫn bên dưới. Bật tùy chọn này cũng sẽ tắt phông chữ hệ thống.</string>
   <string name="morphe_custom_font_file_path_title">Tệp phông chữ tùy chỉnh</string>
@@ -47,6 +40,13 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_pick_file_first">Vui lòng chọn tệp phông chữ tùy chỉnh trước.</string>
   <string name="morphe_custom_font_invalid_file">Vui lòng chọn tệp phông chữ .ttf hoặc .otf.</string>
   <string name="morphe_custom_font_failed_to_load">Không tải được phông chữ tùy chỉnh. Vui lòng chọn một tệp khác</string>
+  <string name="morphe_disable_modern_home_title">Tắt chế độ hiện đại</string>
+  <string name="morphe_disable_screenshot_popup_title">Tắt hộp thoại chụp màn hình</string>
+  <string name="morphe_disable_screenshot_popup_summary">Vô hiệu hộp thoại xuất hiện khi chụp màn hình</string>
+  <string name="morphe_force_system_font_title">Sử dụng phông chữ hệ thống bắt buộc</string>
+  <string name="morphe_force_system_font_summary">Sử dụng phông chữ hệ thống của thiết bị thay vì Reddit Sans hoặc Roboto. Bật tùy chọn này cũng sẽ tắt phông chữ tùy chỉnh.</string>
+  <string name="morphe_hide_ask_button_title">Ẩn nút Đặt câu hỏi</string>
+  <string name="morphe_hide_ask_button_summary">Ẩn nút Đặt câu hỏi trên thanh tìm kiếm</string>
   <string name="morphe_hide_communities_shelf_title">Ẩn kệ cộng đồng</string>
   <string name="morphe_hide_communities_shelf_summary">Ẩn kệ cộng đồng liên quan hoặc được đề xuất trong subreddit</string>
   <string name="morphe_hide_trending_shelves_title">Ẩn kệ Xu hướng</string>

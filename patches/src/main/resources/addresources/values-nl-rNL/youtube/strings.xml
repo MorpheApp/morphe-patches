@@ -1091,6 +1091,7 @@ Beperkingen:
   <string name="morphe_video_quality_prioritize_dialog">Als deze instelling is uitgeschakeld, kunnen oudere video\'s geen video kwaliteit opties weergeven</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Sta Android VR / visionOS AV1 toe</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Maakt software AV1-decodering mogelijk bij gebruik van de Android VR / visionOS-client</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Het inschakelen van deze instelling kan gebruikmaken van softwarematige AV1-decodering.
 
 Het afspelen van video met AV1 kan haperen of frames overslaan."</string>

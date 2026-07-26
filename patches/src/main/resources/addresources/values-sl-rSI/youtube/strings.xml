@@ -155,6 +155,7 @@ Spremembe vključujejo:
   <string name="morphe_hide_featured_channels_section_title">Skrij odsek s priljubljenimi kanali</string>
   <string name="morphe_hide_featured_links_section_title">Skrij odsek \'Predstavljeni povezave\'</string>
   <string name="morphe_hide_featured_places_section_title">Skrij odsek \'Predstavljeni kraji\'</string>
+  <string name="morphe_hide_featured_playlists_section_title">Skrij oddelek s priljubljenimi seznami predvajanja</string>
   <string name="morphe_hide_featured_videos_section_title">Skrij odsek \'Predstavljeni videoposnetki\'</string>
   <string name="morphe_hide_gaming_section_title">Skrij odsek \'Igre\'</string>
   <string name="morphe_hide_hashtag_section_title">Skrij razdelek s hashtagi</string>
@@ -399,6 +400,8 @@ Opozorilo: morda ne deluje na prenosih v živo"</string>
   <string name="morphe_play_all_button_type_entry_2">Vse vsebine (Razvrsti po priljubljenosti)</string>
   <string name="morphe_play_all_button_type_entry_3">Samo videoposnetki (Razvrsti po času)</string>
   <string name="morphe_play_all_button_type_entry_4">Samo videoposnetki (Razvrsti po priljubljenosti)</string>
+  <string name="morphe_play_all_button_type_entry_5">Samo kratki videoposnetki (razvrščeno po času)</string>
+  <string name="morphe_play_all_button_type_entry_6">Samo kratki videoposnetki (razvrščeno po priljubljenosti)</string>
   <string name="morphe_play_all_button_type_entry_7">Samo pretočni videoposnetki (Razvrsti po času)</string>
   <string name="morphe_play_all_button_type_entry_8">Samo pretočni videoposnetki (Razvrsti po priljubljenosti)</string>
   <string name="morphe_play_all_button_type_entry_9">Vsebina samo za člane</string>
@@ -454,6 +457,8 @@ Opozorilo: morda ne deluje na prenosih v živo"</string>
   <string name="morphe_livestream_dvr_title">Omogoči DVR za pretočni video</string>
   <string name="morphe_livestream_dvr_summary">Omogoča predvajanje v živo tudi za prenose, ki sicer to preprečujejo</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">Vklopi sličice predogleda na vrstici za iskanje</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">Prikazuje sličico videoposnetka med vlečenjem drsnika</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'Omogočanje snemanja v živo' morda ni na voljo
 
@@ -906,6 +911,7 @@ Omejitev: Če je možnost »Ponastavi staro vrstico za videoposnetke« izkloplje
   <string name="morphe_miniplayer_disable_resuming_summary">Onemogoči mini predvajalnik »Nadaljuj z gledanjem«, funkcijo YouTube Premium, ki se prikaže ob zagonu aplikacije</string>
   <string name="morphe_miniplayer_screen_title">Mini predvajalnik</string>
   <string name="morphe_miniplayer_screen_summary">Prilagodite videz in obnašanje minimiziranega predajalnika videa</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube je odstranil vse dodatne predvajalnike v majhnem oknu. Spremenite vrsto predvajalnika v majhnem oknu tako, da posodobite YouTube na različico 21.28.207 ali starejšo</string>
   <string name="morphe_miniplayer_type_title">Vrsta predvajalnika</string>
   <string name="morphe_miniplayer_type_entry_0">Onemogočen</string>
   <string name="morphe_miniplayer_type_entry_1">Privzeta</string>
@@ -1073,6 +1079,7 @@ Omejitve:
 • HDR videoposnetki ne bodo uporabljali AVC
 • Nekatere naprave ne morejo prisiliti AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Za uporabo te funkcije nastavite \'Ponarejanje video tokov\' na \'Android VR\' ali \'Android Studio\'</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Odpre napredno možnost nastavitve kakovosti</string>
   <string name="morphe_advanced_video_quality_menu_summary">Preskoči meni za izbiro kakovosti in neposredno odpre napredno kakovost</string>

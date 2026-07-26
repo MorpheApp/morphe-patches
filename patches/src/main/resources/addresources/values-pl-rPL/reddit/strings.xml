@@ -32,13 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">Ukryj sekcję informacji</string>
   <string name="morphe_hide_resources_shelf_title">Ukryj sekcję zasobów</string>
   <string name="morphe_screen_layout_title">Układ</string>
-  <string name="morphe_disable_modern_home_title">Wyłącz nowoczesną stronę główną</string>
-  <string name="morphe_disable_screenshot_popup_title">Wyłącz okienko zrzutu ekranu</string>
-  <string name="morphe_disable_screenshot_popup_summary">Wyłącza okienko pojawiające się po zrobieniu zrzutu ekranu</string>
-  <string name="morphe_hide_ask_button_title">Ukryj przycisk Zapytaj</string>
-  <string name="morphe_hide_ask_button_summary">Ukrywa przycisk Zapytaj w pasku wyszukiwania</string>
-  <string name="morphe_force_system_font_title">Wymuś czcionkę systemową</string>
-  <string name="morphe_force_system_font_summary">Używa czcionki systemowej urządzenia zamiast Reddit Sans lub Roboto. Włączenie tej opcji wyłącza również niestandardową czcionkę</string>
   <string name="morphe_custom_font_title">Niestandardowa czcionka</string>
   <string name="morphe_custom_font_summary">Wczytuje niestandardowy plik czcionki TTF lub OTF ze wskazanej ścieżki. Włączenie tej opcji wyłącza również wymuszanie czcionki systemowej</string>
   <string name="morphe_custom_font_file_path_title">Plik niestandardowej czcionki</string>
@@ -47,6 +40,13 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_pick_file_first">Najpierw wybierz plik z czcionką</string>
   <string name="morphe_custom_font_invalid_file">Wybierz plik czcionki w formacie .ttf lub .otf</string>
   <string name="morphe_custom_font_failed_to_load">Nie udało się wczytać czcionki. Wybierz inny plik</string>
+  <string name="morphe_disable_modern_home_title">Wyłącz nowoczesną stronę główną</string>
+  <string name="morphe_disable_screenshot_popup_title">Wyłącz okienko zrzutu ekranu</string>
+  <string name="morphe_disable_screenshot_popup_summary">Wyłącza okienko pojawiające się po zrobieniu zrzutu ekranu</string>
+  <string name="morphe_force_system_font_title">Wymuś czcionkę systemową</string>
+  <string name="morphe_force_system_font_summary">Używa czcionki systemowej urządzenia zamiast Reddit Sans lub Roboto. Włączenie tej opcji wyłącza również niestandardową czcionkę</string>
+  <string name="morphe_hide_ask_button_title">Ukryj przycisk Zapytaj</string>
+  <string name="morphe_hide_ask_button_summary">Ukrywa przycisk Zapytaj w pasku wyszukiwania</string>
   <string name="morphe_hide_communities_shelf_title">Ukryj sekcję społeczności</string>
   <string name="morphe_hide_communities_shelf_summary">Ukrywa sekcję powiązanych lub sugerowanych społeczności w subredditach</string>
   <string name="morphe_hide_trending_shelves_title">Ukryj sekcje \"Zyskujące popularność\"</string>

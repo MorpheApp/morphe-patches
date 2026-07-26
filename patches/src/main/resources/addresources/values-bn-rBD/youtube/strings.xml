@@ -429,6 +429,7 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_queue_manager_check_failed_queue">সারিবদ্ধ তালিকা খালি</string>
   <string name="morphe_queue_manager_check_failed_video_id">ভিডিও আইডি নেই</string>
   <string name="morphe_queue_manager_check_failed_generic">ব্যর্থ: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">ভিডিও তালিকা সংরক্ষণ করা যায়নি</string>
   <string name="morphe_queue_manager_fetch_failed_create">queue তৈরি করতে ব্যর্থ</string>
   <string name="morphe_queue_manager_fetch_failed_remove">queue থেকে অপসারণ করতে ব্যর্থ</string>
   <string name="morphe_queue_manager_fetch_failed_save">ভিডিও তালিকা সংরক্ষণ করা যায়নি</string>
@@ -583,6 +584,7 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_hide_quick_actions_more_button_title">\'আরো দেখুন\' বাটনটি লুকিয়ে রাখুন</string>
   <string name="morphe_hide_quick_actions_more_videos_button_title">\'আরও ভিডিও\' বোতামটি লুকিয়ে রাখুন</string>
   <string name="morphe_hide_quick_actions_playlist_button_title">প্লেলিস্ট লুকান</string>
+  <string name="morphe_hide_quick_actions_save_button_title">সেভ বোতামটি লুকান</string>
   <string name="morphe_hide_quick_actions_share_button_title">শেয়ার বোতামটি লুকান</string>
   <string name="morphe_quick_actions_top_margin_title">কুইক অ্যাকশনগুলির উপরের মার্জিন</string>
   <string name="morphe_quick_actions_top_margin_summary">কুইক অ্যাকশন বার-এর উপরের মার্জিন সেট করুন (০-৩২ dp)</string>
@@ -618,6 +620,7 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">\'আরো দেখুন\' বাটনটি লুকিয়ে রাখুন</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_hide_shorts_button_title">Shorts বোতামটি লুকান</string>
   <!-- 'Create' has no display name. Translate normally. -->
   <string name="morphe_hide_create_button_title">শেয়ার বোতামটি লুকান</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1088,6 +1091,7 @@ DeArrow.ajay.app ওপেন করতে এখানে ট্যাপ ক�
   <string name="morphe_video_quality_prioritize_dialog">যদি এই সেটিংস বন্ধ করা হয়, তাহলে পুরোনো ভিডিওতে ভিডিওর গুণমানের কোনো বিকল্প নাও দেখাতে পারে</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">অ্যান্ড্রয়েড VR / visionOS AV1 এর অনুমতি দিন</string>
+  <string name="morphe_spoof_video_streams_av1_summary">অ্যান্ড্রয়েড ভিআর / visionOS ক্লায়েন্ট ব্যবহার করার সময় সফ্টওয়্যার AV1 ডিকোডিংয়ের অনুমতি দেয়</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"এই সেটিংটি চালু করলে সফটওয়্যার AV1 ডিকোডিং ব্যবহার হতে পারে।
 
 AV1 সহ ভিডিও প্লেব্যাক আটকে যেতে পারে বা ফ্রেম বাদ দিতে পারে।"</string>

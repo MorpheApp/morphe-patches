@@ -32,13 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">Ocultar prateleira Sobre</string>
   <string name="morphe_hide_resources_shelf_title">Ocultar prateleira de Recursos</string>
   <string name="morphe_screen_layout_title">Layout</string>
-  <string name="morphe_disable_modern_home_title">Desativar IU moderna da página inicial</string>
-  <string name="morphe_disable_screenshot_popup_title">Desativar janela pop-up de captura de tela</string>
-  <string name="morphe_disable_screenshot_popup_summary">Desativa a janela pop-up que aparece ao tirar uma captura de tela</string>
-  <string name="morphe_hide_ask_button_title">Ocultar botão de Perguntar</string>
-  <string name="morphe_hide_ask_button_summary">Oculta o botão de Perguntar na barra de pesquisa</string>
-  <string name="morphe_force_system_font_title">Fonte do sistema forçada</string>
-  <string name="morphe_force_system_font_summary">Use o sistema de fonte padrão do dispositivo em vez de Reddit Sans ou Roboto. Ativar isso também desativa a fonte personalizada.</string>
   <string name="morphe_custom_font_title">Fonte personalizada</string>
   <string name="morphe_custom_font_summary">Carregue um arquivo de fonte TTF ou OTF personalizado do caminho abaixo. Ativar isso também desativa a fonte do sistema.</string>
   <string name="morphe_custom_font_file_path_title">Arquivo de fonte personalizada</string>
@@ -47,6 +40,13 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_pick_file_first">Selecione um arquivo de fonte personalizado primeiro</string>
   <string name="morphe_custom_font_invalid_file">Por favor, selecione um arquivo de fonte .ttf ou .otf</string>
   <string name="morphe_custom_font_failed_to_load">Falha ao carregar a fonte personalizada. Escolha um arquivo diferente</string>
+  <string name="morphe_disable_modern_home_title">Desativar IU moderna da página inicial</string>
+  <string name="morphe_disable_screenshot_popup_title">Desativar janela pop-up de captura de tela</string>
+  <string name="morphe_disable_screenshot_popup_summary">Desativa a janela pop-up que aparece ao tirar uma captura de tela</string>
+  <string name="morphe_force_system_font_title">Fonte do sistema forçada</string>
+  <string name="morphe_force_system_font_summary">Use o sistema de fonte padrão do dispositivo em vez de Reddit Sans ou Roboto. Ativar isso também desativa a fonte personalizada.</string>
+  <string name="morphe_hide_ask_button_title">Ocultar botão de Perguntar</string>
+  <string name="morphe_hide_ask_button_summary">Oculta o botão de Perguntar na barra de pesquisa</string>
   <string name="morphe_hide_communities_shelf_title">Ocultar prateleira de comunidades</string>
   <string name="morphe_hide_communities_shelf_summary">Oculta a prateleira de comunidades relacionadas ou sugeridas em subreddits</string>
   <string name="morphe_hide_trending_shelves_title">Ocultar prateleiras em alta</string>

@@ -152,7 +152,7 @@ YouTube Music 8.x — çarpaz soldurma yalnız 9.x və daha yenisində işləyir
   <string name="morphe_music_hide_flyout_menu_go_to_album_title">\"Alboma keçin\" menyusunu gizlət</string>
   <string name="morphe_music_hide_flyout_menu_go_to_artist_title">\"İfaçıya daxil olun\" menyusunu gizlət</string>
   <string name="morphe_music_hide_flyout_menu_go_to_episode_title">\"Epizoda keçin\" menyusunu gizlət</string>
-  <string name="morphe_music_hide_flyout_menu_go_to_podcast_title">\"Podkasta keçin\" menyusunu gizlət</string>
+  <string name="morphe_music_hide_flyout_menu_go_to_podcast_title">\'Podkasta keçin\' menyusunu gizlət</string>
   <string name="morphe_music_hide_flyout_menu_help_title">Kömək menyusunu gizlət</string>
   <string name="morphe_music_hide_flyout_menu_mark_episode_as_played_title">\"Epizodu oxudulub olaraq işarələyin\" menyusunu gizlət</string>
   <string name="morphe_music_hide_flyout_menu_not_interested_title">\"Maraqlı deyil\" menyusunu gizlət</string>
@@ -167,7 +167,7 @@ YouTube Music 8.x — çarpaz soldurma yalnız 9.x və daha yenisində işləyir
   <string name="morphe_music_hide_flyout_menu_share_title">Paylaşın menyusunu gizlət</string>
   <string name="morphe_music_hide_flyout_menu_shuffle_play_title">\"İfaları qarışdırın\" menyusunu gizlət</string>
   <string name="morphe_music_hide_flyout_menu_sleep_timer_title">\"Yuxu taymeri\" seçimin gizlət</string>
-  <string name="morphe_music_hide_flyout_menu_start_radio_title">\"Miksi başladın\" menyusunu gizlət</string>
+  <string name="morphe_music_hide_flyout_menu_start_radio_title">\'Miksi başladın\' menyusunu gizlət</string>
   <string name="morphe_music_hide_flyout_menu_stats_for_nerds_title">\"Statistikanı göstərin\" menyusunu gizlət</string>
   <string name="morphe_music_hide_flyout_menu_subscribe_title">Abunə olun seçimin gizlət</string>
   <string name="morphe_music_hide_flyout_menu_unpin_from_speed_dial_title">\"Sürətli zəngetməni çıxarın\" menyusunu gizlət</string>
@@ -237,7 +237,7 @@ YouTube Music 8.x — çarpaz soldurma yalnız 9.x və daha yenisində işləyir
   <string name="morphe_music_listenbrainz_token_title">ListenBrainz Hesabı</string>
   <string name="morphe_music_listenbrainz_token_summary_logged_in">Daxil olmusunuz. Hesabı idarə etmək üçün toxun</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_listenbrainz_token_dialog_instruction">Analizi aktivləşdirmək üçün ListenBrainz İstifadəçi Tokeninizi qeyd edin</string>
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">Scrobbling-i aktivləşdirmək üçün ListenBrainz İstifadəçi Tokeninizi qeyd edin</string>
   <string name="morphe_music_listenbrainz_token_dialog_hint">Token</string>
   <string name="morphe_music_listenbrainz_token_dialog_get_token">Tokeni əldə et</string>
   <string name="morphe_music_listenbrainz_token_dialog_verify">Yoxla</string>
@@ -272,7 +272,7 @@ YouTube Music 8.x — çarpaz soldurma yalnız 9.x və daha yenisində işləyir
   <string name="morphe_music_scrobbling_parse_title_title">Başlıqdan ifaçı və treki təhlil et</string>
   <string name="morphe_music_scrobbling_parse_title_summary">\"-\" ayırıcısından istifadə edərək video başlığından ifaçı və trek adını çıxar. Kanal adının ifaçı kimi istifadə edilə biləcəyi yerdə yenidən yüklənilmiş məzmun üçün faydalıdır.</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_about_title">Analiz haqqında</string>
+  <string name="morphe_music_scrobbling_about_title">Scrobbling haqqında</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_summary">"Analiz avtomatik şəkildə YouTube Music istifadənizi Last.fm və ya ListenBrainz profilinizlə sinxronlaşdırır
 

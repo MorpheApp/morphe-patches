@@ -155,8 +155,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_featured_channels_section_title">チャンネル カード セクション内のおすすめチャンネルを非表示</string>
   <string name="morphe_hide_featured_links_section_title">チャンネル カード セクション内のおすすめリンクを非表示</string>
   <string name="morphe_hide_featured_places_section_title">「注目の場所」セクションを非表示</string>
+  <string name="morphe_hide_featured_playlists_section_title">チャンネル カード セクション内のおすすめ再生リストを非表示</string>
   <string name="morphe_hide_featured_videos_section_title">チャンネル カード セクション内のおすすめ動画を非表示</string>
   <string name="morphe_hide_gaming_section_title">ゲーム セクションを非表示</string>
+  <string name="morphe_hide_hashtag_section_title">ハッシュタグ セクションを非表示</string>
   <string name="morphe_hide_how_this_was_made_section_title">「作成の裏側」セクションを非表示</string>
   <string name="morphe_hide_hype_points_title">ハイプポイントを非表示</string>
   <string name="morphe_hide_info_cards_section_title">チャンネル カード セクションを非表示</string>
@@ -455,8 +457,8 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_livestream_dvr_title">すべてのライブ配信で DVR を有効化</string>
   <string name="morphe_livestream_dvr_summary">本来はシーク機能が制限される場合も含め、すべてのライブ配信でシーク機能が利用可能になります</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
-  <string name="morphe_seekbar_thumbnail_preview_title">シーク中のサムネイルをシークバーの上に表示</string>
-  <string name="morphe_seekbar_thumbnail_preview_summary">シークバーをドラッグしてシークしているときにシーク位置の映像のサムネイルを縮小してシークバーの上に表示します</string>
+  <string name="morphe_seekbar_thumbnail_preview_title">シーク位置の映像を縮小表示</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">シークバーをドラッグしてシークしているときに、シーク位置の映像を縮小した画像をシークバーの上に表示します</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"[すべてのライブ配信で DVR を有効化] をオンにしたときに正常に動作しない場合があります
 
@@ -910,6 +912,7 @@ Automotive レイアウト
   <string name="morphe_miniplayer_disable_resuming_summary">アプリの起動にミニプレーヤーで動画を再開する YouTube Premium 機能「続きを見る」を無効にします</string>
   <string name="morphe_miniplayer_screen_title">ミニプレーヤー</string>
   <string name="morphe_miniplayer_screen_summary">アプリ内に表示される小さな画面のプレーヤーの外観と動作をカスタマイズします</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube によって純正アプリで利用可能なミニプレーヤー以外は削除されました。ミニプレーヤーの種類を変更するには、21.28.207 またはより古いバージョンの YouTube  アプリにパッチを適用してください</string>
   <string name="morphe_miniplayer_type_title">ミニプレーヤーの種類</string>
   <string name="morphe_miniplayer_type_entry_0">無効</string>
   <string name="morphe_miniplayer_type_entry_1">デフォルト</string>
@@ -1066,22 +1069,28 @@ Automotive レイアウト
   <string name="morphe_disable_hdr_video_title">HDR 動画を無効化</string>
   <string name="morphe_force_avc_codec_title">AVC (H.264) を強制的に使用</string>
   <string name="morphe_force_avc_codec_user_dialog_message">"利点:
-• バッテリー消費が良くなる可能性がある
+• バッテリー持ちが良くなる可能性がある
 • 古いデバイスで失われた動画解像度を復元できる場合がある
 
 制限事項:
 • 最大解像度が 1080p
 • 動画再生時に VP9 または AV1 よりも多くの通信量を使用する
-• HDR 動画では AVC は使用されない
+• HDR 動画では AVC が使用されない
 • 一部のデバイスでは AVC を強制できない"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">この機能を使用するには、[動画ストリームを偽装] のクライアントを「Android VR」または「Android Studio」に設定してください</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">画質の詳細設定メニューを開く</string>
   <string name="morphe_advanced_video_quality_menu_summary">画質メニューをスキップして画質の「詳細設定」メニューを直接開きます</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Premium 画質を非表示</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_video_quality_prioritize_title">画質を優先</string>
+  <string name="morphe_video_quality_prioritize_summary">コーデックの圧縮効率よりも利用可能な最高画質を優先します</string>
+  <string name="morphe_video_quality_prioritize_dialog">この設定をオフにすると、古い動画で画質を手動で選択できなくなる場合があります</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_av1_title">Android VR / visionOS で AV1 を許可</string>
+  <string name="morphe_spoof_video_streams_av1_summary">クライアントが Android VR または visionOS のときに AV1 のソフトウェア デコードを許可します</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"この設定を有効にすると、AV1 のソフトウェア デコードが使用される場合があります。
 
 AV1 での動画再生は、カクつくまたはコマ落ちが発生する可能性があります。"</string>

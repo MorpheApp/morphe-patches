@@ -32,13 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">Itago ang About shelf</string>
   <string name="morphe_hide_resources_shelf_title">Itago ang Resources shelf</string>
   <string name="morphe_screen_layout_title">Layout</string>
-  <string name="morphe_disable_modern_home_title">I-disable ang modernong UI ng home screen</string>
-  <string name="morphe_disable_screenshot_popup_title">I-disable ang screenshot popup</string>
-  <string name="morphe_disable_screenshot_popup_summary">Hindi pinapagana ang popup na lumalabas kapag kumukuha ng screenshot</string>
-  <string name="morphe_hide_ask_button_title">Itago ang Ask button</string>
-  <string name="morphe_hide_ask_button_summary">Itinatago ang Ask button sa search bar</string>
-  <string name="morphe_force_system_font_title">Pilitin ang sistemang font</string>
-  <string name="morphe_force_system_font_summary">Gumamit ng system font ng device sa halip na Reddit Sans o Roboto. Ang pagpapagana nito ay nagpapahinto din sa Custom font.</string>
   <string name="morphe_custom_font_title">Pasadyang font</string>
   <string name="morphe_custom_font_summary">Mag-load ng custom na TTF o OTF font file mula sa path sa ibaba. Ang pagpapagana nito ay nagpapahinto din sa Force system font.</string>
   <string name="morphe_custom_font_file_path_title">Pasadyang font file</string>
@@ -47,6 +40,13 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_pick_file_first">Pumili muna ng custom font file.</string>
   <string name="morphe_custom_font_invalid_file">Mangyaring pumili ng .ttf o .otf font file.</string>
   <string name="morphe_custom_font_failed_to_load">Hindi ma-load ang custom font. Pumili ng ibang file.</string>
+  <string name="morphe_disable_modern_home_title">I-disable ang modernong UI ng home screen</string>
+  <string name="morphe_disable_screenshot_popup_title">I-disable ang screenshot popup</string>
+  <string name="morphe_disable_screenshot_popup_summary">Hindi pinapagana ang popup na lumalabas kapag kumukuha ng screenshot</string>
+  <string name="morphe_force_system_font_title">Pilitin ang sistemang font</string>
+  <string name="morphe_force_system_font_summary">Gumamit ng system font ng device sa halip na Reddit Sans o Roboto. Ang pagpapagana nito ay nagpapahinto din sa Custom font.</string>
+  <string name="morphe_hide_ask_button_title">Itago ang Ask button</string>
+  <string name="morphe_hide_ask_button_summary">Itinatago ang Ask button sa search bar</string>
   <string name="morphe_hide_communities_shelf_title">Itago ang mga komunidad na shelf</string>
   <string name="morphe_hide_communities_shelf_summary">Itinatago ang mga kaugnay o iminungkahing komunidad na shelf sa mga subreddit</string>
   <string name="morphe_hide_trending_shelves_title">Itago ang mga trending shelf</string>

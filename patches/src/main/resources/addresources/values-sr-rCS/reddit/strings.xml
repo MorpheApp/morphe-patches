@@ -32,13 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">Sakrij policu „O nama”</string>
   <string name="morphe_hide_resources_shelf_title">Sakrij policu „Resursi”</string>
   <string name="morphe_screen_layout_title">Izgled</string>
-  <string name="morphe_disable_modern_home_title">Isključi moderni UI početnog ekrana</string>
-  <string name="morphe_disable_screenshot_popup_title">Onemogući pojavni prozor za snimanje ekrana</string>
-  <string name="morphe_disable_screenshot_popup_summary">Onemogućava pojavni prozor koji se pojavljuje prilikom snimanja snimka ekrana</string>
-  <string name="morphe_hide_ask_button_title">Sakrij dugme Zahtev</string>
-  <string name="morphe_hide_ask_button_summary">Skriva dugme Zahtev u traci za pretragu</string>
-  <string name="morphe_force_system_font_title">Font sistema</string>
-  <string name="morphe_force_system_font_summary">Koristite sistemski font uređaja umesto Reddit Sans ili Roboto. Omogućavanjem ove opcije isključuje se i prilagođeni font.</string>
   <string name="morphe_custom_font_title">Prilagođeni font</string>
   <string name="morphe_custom_font_summary">Učitavanje prilagođenog TTF ili OTF fonta sa sledeće putanje. Omogućavanjem ove opcije isključuje se i opcija korišćenja sistemskog fonta.</string>
   <string name="morphe_custom_font_file_path_title">Datoteka prilagođenog fonta</string>
@@ -47,6 +40,13 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_pick_file_first">Prvo odaberite prilagođeni font.</string>
   <string name="morphe_custom_font_invalid_file">Molimo vas da odaberete .ttf ili .otf font.</string>
   <string name="morphe_custom_font_failed_to_load">Nije uspelo učitavanje prilagođenog fonta. Izaberite drugu datoteku</string>
+  <string name="morphe_disable_modern_home_title">Isključi moderni UI početnog ekrana</string>
+  <string name="morphe_disable_screenshot_popup_title">Onemogući pojavni prozor za snimanje ekrana</string>
+  <string name="morphe_disable_screenshot_popup_summary">Onemogućava pojavni prozor koji se pojavljuje prilikom snimanja snimka ekrana</string>
+  <string name="morphe_force_system_font_title">Font sistema</string>
+  <string name="morphe_force_system_font_summary">Koristite sistemski font uređaja umesto Reddit Sans ili Roboto. Omogućavanjem ove opcije isključuje se i prilagođeni font.</string>
+  <string name="morphe_hide_ask_button_title">Sakrij dugme Zahtev</string>
+  <string name="morphe_hide_ask_button_summary">Skriva dugme Zahtev u traci za pretragu</string>
   <string name="morphe_hide_communities_shelf_title">Sakrij policu zajednica</string>
   <string name="morphe_hide_communities_shelf_summary">Sakriva policu povezanih ili predloženih zajednica u subredditovima</string>
   <string name="morphe_hide_trending_shelves_title">Sakrij popularne police</string>
