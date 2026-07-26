@@ -169,29 +169,6 @@ internal object TranslucentNavigationButtonsSystemFeatureFlagFingerprint : Finge
     )
 )
 
-internal object SetWordmarkHeaderFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = listOf("Landroid/widget/ImageView;"),
-    filters = listOf(
-        methodCall(returnType = "Z"),
-        resourceLiteral(ResourceType.ATTR, "ytPremiumWordmarkHeader"),
-        resourceLiteral(ResourceType.ATTR, "ytWordmarkHeader")
-    )
-)
-
-/**
- * Matches the same method as [YouTubeDoodlesImageViewFingerprint].
- */
-internal object WideSearchbarLayoutFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Landroid/view/View;",
-    parameters = listOf("L", "L"),
-    filters = listOf(
-        resourceLiteral(ResourceType.LAYOUT, "action_bar_ringo")
-    )
-)
-
 private object OldSearchButtonAccessibilityLabelFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/CharSequence;",

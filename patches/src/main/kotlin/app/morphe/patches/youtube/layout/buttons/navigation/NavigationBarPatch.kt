@@ -371,9 +371,6 @@ val navigationBarPatch = bytecodePatch(
             ListPreference("morphe_show_toolbar_settings_button_index"),
             SwitchPreference("morphe_show_toolbar_settings_button_type", summary = true)
         )
-        if (!is_20_31_or_greater) {
-            toolbarPreferences += SwitchPreference("morphe_wide_searchbar")
-        }
 
         PreferenceScreen.GENERAL.addPreferences(
             PreferenceScreenPreference(
@@ -594,46 +591,6 @@ val navigationBarPatch = bytecodePatch(
                         nop
                     """
                 )
-            }
-        }
-
-        //
-        // Wide searchbar
-        //
-
-        // YT removed the legacy text search text field all code required to use it.
-        // This functionality could be restored by adding a search text field to the toolbar
-        // with a listener that artificially clicks the toolbar search button.
-        if (!is_20_31_or_greater) {
-            SetWordmarkHeaderFingerprint.instructionMatches.first().getMethodCalled().apply {
-                findInstructionIndicesReversedOrThrow(Opcode.RETURN).forEach { index ->
-                    val register = getInstruction<OneRegisterInstruction>(index).registerA
-
-                    addInstructionsAtControlFlowLabel(
-                        index,
-                        """
-                            invoke-static { v$register }, ${EXTENSION_CLASS}->enableWideSearchbar(Z)Z
-                            move-result v$register
-                        """
-                    )
-                }
-            }
-
-            // Fix missing left padding when using wide searchbar.
-            WideSearchbarLayoutFingerprint.method.apply {
-                findInstructionIndicesReversedOrThrow(
-                    methodCall(
-                        definingClass = "Landroid/view/LayoutInflater;",
-                        name = "inflate"
-                    )
-                ).forEach { inflateIndex ->
-                    val register = getInstruction<OneRegisterInstruction>(inflateIndex + 1).registerA
-
-                    addInstruction(
-                        inflateIndex + 2,
-                        "invoke-static { v$register }, $EXTENSION_CLASS->setActionBar(Landroid/view/View;)V"
-                    )
-                }
             }
         }
     }
