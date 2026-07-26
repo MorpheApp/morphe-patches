@@ -140,24 +140,14 @@ public class WideSearchbarPatch {
                 context.startActivity(intent);
             });
 
-            int targetIndex = 1;
+            int targetIndex = toolbarContainer.getChildCount();
             if (logoView != null) {
                 final int logoIndex = toolbarContainer.indexOfChild(logoView);
                 if (logoIndex >= 0) {
                     targetIndex = logoIndex + 1;
                 }
             }
-            try {
-                toolbarContainer.addView(wideSearchBox, targetIndex);
-            } catch (Exception ex1) {
-                final int targetIndexFinal = targetIndex;
-                Logger.printDebug(() -> "Could not add search box at index: " + targetIndexFinal, ex1);
-                try {
-                    toolbarContainer.addView(wideSearchBox);
-                } catch (Exception ex2) {
-                    Logger.printDebug(() -> "Could not add search box view", ex2);
-                }
-            }
+            toolbarContainer.addView(wideSearchBox, targetIndex);
         } catch (Exception ex) {
             Logger.printException(() -> "initializeContainer failure", ex);
         }
