@@ -1,56 +1,54 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/2221
  *
- * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.patches.youtube.layout.widesearchbar
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.misc.settings.PreferenceScreen
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.settings.PreferenceScreen
+import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import java.util.logging.Logger
 
-private const val EXTENSION_CLASS =
-    "Lapp/morphe/extension/youtube/patches/WideSearchbarPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/WideSearchbarPatch;"
 
 val wideSearchbarPatch = bytecodePatch(
-    name = "Add wide search bar",
-    description = "Adds a wide search bar to the homepage, between the logo and the toolbar buttons."
+    name = "Wide search bar",
+    description = "Adds a wide search bar to the top of the home and subscription feed."
 ) {
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
+        resourceMappingPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
         PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("morphe_wide_searchbar"),
+            SwitchPreference("morphe_wide_searchbar")
         )
 
         ActionbarRingoViewFingerprint.apply {
-            listOf(
-                instructionMatches[1],
+            arrayOf(
+                instructionMatches[5],
                 instructionMatches[3],
-                instructionMatches[5]
-            ).reversed().forEach { match ->
-                val instructionIndex = match.index
-                val instructionRegister = method.getInstruction<OneRegisterInstruction>(
-                    instructionIndex
-                ).registerA
+                instructionMatches[1]
+            ).forEach { match ->
+                val index = match.index
+                val register = match.getInstruction<OneRegisterInstruction>().registerA
 
                 method.addInstruction(
-                    instructionIndex,
-                    "invoke-static { v$instructionRegister }, $EXTENSION_CLASS->initializeContainer(Landroid/view/View;)V"
+                    index,
+                    "invoke-static { v$register }, $EXTENSION_CLASS->" +
+                            "initializeContainer(Landroid/view/View;)V"
                 )
             }
         }

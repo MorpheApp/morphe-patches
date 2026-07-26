@@ -16,7 +16,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -45,7 +44,6 @@ import app.morphe.patches.youtube.misc.toolbar.toolBarHookPatch
 import app.morphe.patches.youtube.shared.ActionBarSearchResultsFingerprint
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getReference
 import app.morphe.util.insertLiteralOverride
@@ -72,7 +70,7 @@ private const val EXTENSION_SETTING_INTERFACE =
 val navigationBarPatch = bytecodePatch(
     name = "Navigation bar",
     description = "Adds options to hide and change the bottom navigation bar (such as the Shorts button) "
-            + " and the upper navigation toolbar. Patching version 20.21.37 and lower also adds a setting to use a wide searchbar."
+            + " and the upper navigation toolbar."
 ) {
     dependsOn(
         sharedExtensionPatch,
