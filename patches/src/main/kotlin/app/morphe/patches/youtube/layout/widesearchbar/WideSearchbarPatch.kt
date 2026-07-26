@@ -12,6 +12,9 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_20_34_or_greater
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -26,7 +29,9 @@ val wideSearchbarPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        resourceMappingPatch
+        resourceMappingPatch,
+        versionCheckPatch
+
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -35,6 +40,11 @@ val wideSearchbarPatch = bytecodePatch(
         PreferenceScreen.GENERAL.addPreferences(
             SwitchPreference("morphe_wide_searchbar")
         )
+
+        if (!is_20_31_or_greater) {
+            applyLegacyWideSearchBar()
+            return@execute
+        }
 
         ActionbarRingoViewFingerprint.apply {
             arrayOf(
@@ -53,15 +63,17 @@ val wideSearchbarPatch = bytecodePatch(
             }
         }
 
-        MobileTopBarFingerprint.let {
-            val index = it.instructionMatches[2].index
-            val register = it.instructionMatches[2].getInstruction<OneRegisterInstruction>().registerA
+        if (is_20_34_or_greater) { // Code is different with 20.31.37.
+            MobileTopBarFingerprint.let {
+                val index = it.instructionMatches[2].index
+                val register = it.instructionMatches[2].getInstruction<OneRegisterInstruction>().registerA
 
-            it.method.addInstruction(
-                index + 1,
-                "invoke-static { v$register }, $EXTENSION_CLASS->" +
-                        "setSearchImageView(Landroid/view/View;)V"
-            )
+                it.method.addInstruction(
+                    index + 1,
+                    "invoke-static { v$register }, $EXTENSION_CLASS->" +
+                            "setSearchImageView(Landroid/view/View;)V"
+                )
+            }
         }
     }
 }

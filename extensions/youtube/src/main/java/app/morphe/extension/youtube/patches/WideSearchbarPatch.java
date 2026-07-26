@@ -26,14 +26,13 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
 public class WideSearchbarPatch {
 
-    private static final Boolean WIDE_SEARCH_BAR_ENABLED = Settings.WIDE_SEARCHBAR.get();
+    private static final Boolean WIDE_SEARCHBAR_ENABLED = Settings.WIDE_SEARCHBAR.get();
     private static final int ID_YOUTUBE_LOGO = getIdentifier(ResourceType.ID, "youtube_logo");
     private static final int ID_MENU_ITEM = getIdentifier(ResourceType.ID, "menu_item_view");
     private static final int ID_SEARCH_ICON = getIdentifier(ResourceType.DRAWABLE, "quantum_ic_search_grey600_24");
@@ -46,7 +45,7 @@ public class WideSearchbarPatch {
      * Injection point.
      */
     public static void setSearchImageView(View parentView) {
-        if (WIDE_SEARCH_BAR_ENABLED && parentView instanceof ViewGroup parentGroup) {
+        if (WIDE_SEARCHBAR_ENABLED && parentView instanceof ViewGroup parentGroup) {
             View view = parentGroup.findViewById(ID_MENU_ITEM);
             if (view instanceof ImageView searchImageView) {
                 searchImageViewRef = new WeakReference<>(searchImageView);
@@ -60,7 +59,7 @@ public class WideSearchbarPatch {
      */
     public static void initializeContainer(View rootToolbar) {
         try {
-            if (!WIDE_SEARCH_BAR_ENABLED) {
+            if (!WIDE_SEARCHBAR_ENABLED) {
                 return;
             }
 
@@ -129,10 +128,8 @@ public class WideSearchbarPatch {
                     searchView.callOnClick();
                     return;
                 }
-                // Fallback to using an intent. This code should never be reached.
-                if (BaseSettings.DEBUG.get()) {
-                    Utils.showToastShort("Debug: Falling back to search intent");
-                }
+                // Fallback to using an intent. Only used with 20.40 and older.
+                Logger.printDebug(() -> "Falling back to search intent");
                 Context context = Utils.getActivity();
                 Intent intent = new Intent();
                 intent.setAction("com.google.android.youtube.action.open.search");
