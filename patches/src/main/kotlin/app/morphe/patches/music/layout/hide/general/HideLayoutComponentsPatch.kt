@@ -10,6 +10,7 @@ package app.morphe.patches.music.layout.hide.general
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.litho.filter.lithoFilterPatch
+import app.morphe.patches.music.misc.playservice.is_8_51_or_greater
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
@@ -20,6 +21,7 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.util.injectHideViewCall
 
 private const val LAYOUT_COMPONENTS_FILTER =
     "Lapp/morphe/extension/music/patches/components/LayoutComponentsFilter;"
@@ -40,14 +42,14 @@ val hideLayoutComponentsPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
 
     execute {
-        PreferenceScreen.PLAYER.addPreferences(
-            PreferenceCategory(
-                titleKey = "morphe_music_hide_lyrics_panel_category_title",
-                preferences = setOf(
-                    SwitchPreference("morphe_music_hide_lyrics_share_button"),
-                    SwitchPreference("morphe_music_hide_lyrics_translate_button")
-                )
-            )
+        PreferenceScreen.FEED.addPreferences(
+            SwitchPreference("morphe_music_hide_explore_shelf"),
+            SwitchPreference("morphe_music_hide_grid_shelves"),
+            SwitchPreference("morphe_music_hide_horizontal_shelves"),
+            SwitchPreference("morphe_music_hide_list_shelves"),
+            SwitchPreference("morphe_music_hide_new_from_shelf"),
+            SwitchPreference("morphe_music_hide_playlist_shelves"),
+            SwitchPreference("morphe_music_hide_speed_dial_shelf")
         )
 
         PreferenceScreen.GENERAL.addPreferences(
@@ -71,7 +73,72 @@ val hideLayoutComponentsPatch = bytecodePatch(
             )
         )
 
+        PreferenceScreen.PLAYER.addPreferences(
+            SwitchPreference("morphe_music_hide_audio_video_toggle"),
+            PreferenceCategory(
+                titleKey = "morphe_music_hide_lyrics_panel_category_title",
+                preferences = setOf(
+                    SwitchPreference("morphe_music_hide_lyrics_share_button"),
+                    SwitchPreference("morphe_music_hide_lyrics_translate_button")
+                )
+            ),
+            SwitchPreference("morphe_music_hide_repeat_button"),
+            SwitchPreference("morphe_music_hide_shuffle_button"),
+        )
+
         addLithoFilter(LAYOUT_COMPONENTS_FILTER)
         addLithoFilter(CUSTOM_FILTER)
+
+        // region hide audio / video toggle
+        AudioVideoSwitchPillContainerFingerprint.matchAll().forEach { match ->
+            match.method.injectHideViewCall(
+                match.instructionMatches.last().index,
+                LAYOUT_COMPONENTS_FILTER,
+                "hideAudioVideoToggle"
+            )
+        }
+        // endregion
+
+        // region hide repeat button
+        val repeatFingerprints = if (is_8_51_or_greater) {
+            listOf(
+                OverlayQueueLoopButtonFingerprint,
+                PlaybackQueueLoopButtonFingerprint
+            )
+        } else {
+            listOf(QueueLoopButtonFingerprint)
+        }
+
+        repeatFingerprints.forEach { fingerprint ->
+            fingerprint.matchAllOrNull()?.forEach { match ->
+                match.method.injectHideViewCall(
+                    match.instructionMatches.last().index,
+                    LAYOUT_COMPONENTS_FILTER,
+                    "hideRepeatButton"
+                )
+            }
+        }
+        // endregion
+
+        // region hide shuffle button
+        val shuffleFingerprints = if (is_8_51_or_greater) {
+            listOf(
+                OverlayQueueShuffleButtonFingerprint,
+                PlaybackQueueShuffleButtonFingerprint
+            )
+        } else {
+            listOf(QueueShuffleButtonFingerprint)
+        }
+
+        shuffleFingerprints.forEach { fingerprint ->
+            fingerprint.matchAllOrNull()?.forEach { match ->
+                match.method.injectHideViewCall(
+                    match.instructionMatches.last().index,
+                    LAYOUT_COMPONENTS_FILTER,
+                    "hideShuffleButton"
+                )
+            }
+        }
+        // endregion
     }
 }
