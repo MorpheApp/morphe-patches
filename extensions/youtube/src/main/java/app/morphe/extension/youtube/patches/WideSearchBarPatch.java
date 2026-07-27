@@ -9,22 +9,23 @@ package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.shared.ResourceUtils.getIdentifier;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.view.Gravity;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
-import java.util.List;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -41,12 +42,10 @@ public class WideSearchBarPatch {
     private static final Boolean WIDE_SEARCHBAR_ENABLED = Settings.WIDE_SEARCHBAR.get();
     private static final int ID_YOUTUBE_LOGO = getIdentifier(ResourceType.ID, "youtube_logo");
     private static final int ID_SEARCH_ICON = getIdentifier(ResourceType.DRAWABLE, "morphe_settings_search_icon_bold");
-    private static final int ID_MENU_PRIVACY_POLICY = getIdentifier(ResourceType.ID, "menu_privacy_policy");
+    private static final int ID_MENU_BUTTON_NOTIFICATIONS = getIdentifier(ResourceType.ID, "menu_item_1");
     private static final String SEARCH_HINT = ResourceUtils.getString("search_hint");
-    private static final List<String> SEARCH_BUTTON_NAMES = List.of("SEARCH", "SEARCH_BOLD", "SEARCH_CAIRO");
     private static final int DP115 = Dim.dp(115);
 
-    private static WeakReference<ImageView> searchButtonViewRef = new WeakReference<>(null);
     private static WeakReference<Menu> buttonMenuRef = new WeakReference<>(null);
 
     static {
@@ -80,19 +79,16 @@ public class WideSearchBarPatch {
             }
 
             for (int i = 0, buttonsMenuSize = buttonsMenu.size(); i < buttonsMenuSize; i++) {
-                buttonsMenu.getItem(i).setVisible(false);
+                MenuItem buttonMenu = buttonsMenu.getItem(i);
+
+                if (!Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON.get() &&
+                        !Settings.HIDE_TOOLBAR_NOTIFICATION_BUTTON.get() &&
+                        buttonMenu.getItemId() != ID_MENU_BUTTON_NOTIFICATIONS) {
+                    buttonsMenu.getItem(i).setVisible(false);
+                }
             }
         } catch (Exception ex) {
             Logger.printException(() -> "hideButtonMenuItems failure", ex);
-        }
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void setSearchButtonView(String enumName, View parentView, ImageView imageView) {
-        if (WIDE_SEARCHBAR_ENABLED && SEARCH_BUTTON_NAMES.contains(enumName)) {
-            searchButtonViewRef = new WeakReference<>(imageView);
         }
     }
 
@@ -117,7 +113,7 @@ public class WideSearchBarPatch {
                     ? "#1A1A1A"
                     : "#F2F2F2");
 
-            TextView wideSearchBox = new TextView(toolbarViewGroup.getContext());
+            final TextView wideSearchBox = new TextView(toolbarViewGroup.getContext());
             wideSearchBox.setPadding(Dim.dp12, 0, Dim.dp12, 0);
             wideSearchBox.setText(SEARCH_HINT);
             wideSearchBox.setTextSize(16);
@@ -126,7 +122,7 @@ public class WideSearchBarPatch {
             wideSearchBox.setFocusable(false);
             wideSearchBox.setClickable(true);
 
-            GradientDrawable searchBackground = new GradientDrawable();
+            final GradientDrawable searchBackground = new GradientDrawable();
             searchBackground.setShape(GradientDrawable.RECTANGLE);
             searchBackground.setCornerRadius(Dim.dp24);
             searchBackground.setColor(backgroundColor);
@@ -151,7 +147,7 @@ public class WideSearchBarPatch {
 
             ViewGroup.MarginLayoutParams currentViewGroupParams;
             if (toolbarViewGroup instanceof LinearLayout) {
-                LinearLayout.LayoutParams linearParams = new LinearLayout.LayoutParams(
+                final LinearLayout.LayoutParams linearParams = new LinearLayout.LayoutParams(
                         0, searchBarHeight
                 );
                 linearParams.weight = 1.0f;
@@ -188,13 +184,16 @@ public class WideSearchBarPatch {
             }
             wideSearchBox.setLayoutParams(currentViewGroupParams);
 
-            ImageView searchButtonView = searchButtonViewRef.get();
-            wideSearchBox.setOnClickListener(view -> {
-                if (searchButtonView != null) {
-                    searchButtonView.callOnClick();
-                } else {
-                    Logger.printException(() -> "Could not find wide searchbar button");
-                }
+            wideSearchBox.setOnClickListener(v -> {
+                // To solve the lack of click listener for the search button in some
+                // circumstances, always use the following reliable solution
+                // to call up the search view.
+                Logger.printDebug(() -> "Run search intent");
+                Context context = Utils.getActivity();
+                Intent intent = new Intent();
+                intent.setAction("com.google.android.youtube.action.open.search");
+                intent.setPackage(context.getPackageName());
+                context.startActivity(intent);
             });
 
             int targetIndex = toolbarViewGroup.getChildCount();
