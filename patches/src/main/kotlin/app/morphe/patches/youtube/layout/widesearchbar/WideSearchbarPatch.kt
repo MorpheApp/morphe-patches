@@ -58,7 +58,7 @@ val wideSearchbarPatch = bytecodePatch(
                 method.addInstructionsAtControlFlowLabel(
                     index,
                     "invoke-static { v$register }, $EXTENSION_CLASS->" +
-                            "initializeContainer(Landroid/view/View;)V"
+                            "initializeWideSearchbar(Landroid/view/View;)V"
                 )
             }
         }

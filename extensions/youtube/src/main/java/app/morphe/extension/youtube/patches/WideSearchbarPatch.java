@@ -98,7 +98,7 @@ public class WideSearchbarPatch {
     /**
      * Injection point.
      */
-    public static void initializeContainer(View toolbar) {
+    public static void initializeWideSearchbar(View toolbar) {
         try {
             if (!WIDE_SEARCHBAR_ENABLED) {
                 return;
@@ -140,7 +140,7 @@ public class WideSearchbarPatch {
             }
 
             View logoView = toolbarViewGroup.findViewById(ID_YOUTUBE_LOGO);
-            final int sideMargin = Dim.dp16;
+            final int sideMargin = Dim.dp10;
             final int searchBarHeight = Dim.dp28;
 
             ViewGroup.MarginLayoutParams currentViewGroupParams;
