@@ -30,6 +30,8 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.NavigationBar;
+import app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
 @SuppressWarnings("unused")
 public class WideSearchbarPatch {
@@ -49,18 +51,22 @@ public class WideSearchbarPatch {
      */
     public static void setButtonsMenu(Menu buttonsMenu) {
         if (WIDE_SEARCHBAR_ENABLED && buttonsMenu != null) {
-            final int buttonsMenuSize = buttonsMenu.size();
-
-            if (buttonsMenuSize > 0) {
-                final boolean tabAccountVisible = buttonsMenu.findItem(ID_MENU_PRIVACY_POLICY) != null;
-
-                for (int i = 0; i < buttonsMenuSize; i++) {
-                    final MenuItem buttonMenuItem = buttonsMenu.getItem(i);
-                    if (buttonMenuItem != null) {
-                        buttonMenuItem.setVisible(tabAccountVisible);
+            Utils.runOnMainThread(() -> {
+                try {
+                    // Hide the setting menu if the user has not navigated into a channel or other subpage,
+                    // and the current tab is home or subscription.
+                    if (!NavigationBar.isBackButtonVisible()) {
+                        NavigationButton button = NavigationButton.getSelectedNavigationButton();
+                        if (button == NavigationButton.HOME || button == NavigationButton.SUBSCRIPTIONS) {
+                            for (int i = 0, buttonsMenuSize = buttonsMenu.size(); i < buttonsMenuSize; i++) {
+                                buttonsMenu.getItem(i).setVisible(false);
+                            }
+                        }
                     }
+                } catch (Exception ex) {
+                    Logger.printException(() -> "setButtonsMenu failure", ex);
                 }
-            }
+            });
         }
     }
 
@@ -94,14 +100,14 @@ public class WideSearchbarPatch {
                     ? "#1F1F1F"
                     : "#F1F1F1");
 
-            final TextView wideSearchBox = new TextView(toolbarViewGroup.getContext());
+            TextView wideSearchBox = new TextView(toolbarViewGroup.getContext());
             wideSearchBox.setText(SEARCH_HINT);
             wideSearchBox.setTextColor(textColor);
             wideSearchBox.setGravity(Gravity.CENTER_VERTICAL | Gravity.START);
             wideSearchBox.setFocusable(false);
             wideSearchBox.setClickable(true);
 
-            final GradientDrawable searchBackground = new GradientDrawable();
+            GradientDrawable searchBackground = new GradientDrawable();
             searchBackground.setShape(GradientDrawable.RECTANGLE);
             searchBackground.setCornerRadius(Dim.dp24);
             searchBackground.setColor(backgroundColor);
@@ -116,13 +122,13 @@ public class WideSearchbarPatch {
                 wideSearchBox.setCompoundDrawablePadding(Dim.dp8);
             }
 
-            final View logoView = toolbarViewGroup.findViewById(ID_YOUTUBE_LOGO);
+            View logoView = toolbarViewGroup.findViewById(ID_YOUTUBE_LOGO);
             final int sideMargin = Dim.dp16;
             final int searchBarHeight = Dim.dp28;
 
             ViewGroup.MarginLayoutParams currentViewGroupParams;
             if (toolbarViewGroup instanceof LinearLayout) {
-                final LinearLayout.LayoutParams linearParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams linearParams = new LinearLayout.LayoutParams(
                         0, searchBarHeight
                 );
                 linearParams.weight = 1.0f;
@@ -142,14 +148,14 @@ public class WideSearchbarPatch {
                 }
 
                 if (toolbarViewGroup instanceof FrameLayout) {
-                    final FrameLayout.LayoutParams frameParams = new FrameLayout.LayoutParams(currentViewGroupParams);
+                    FrameLayout.LayoutParams frameParams = new FrameLayout.LayoutParams(currentViewGroupParams);
                     frameParams.gravity = Gravity.CENTER_VERTICAL;
                     currentViewGroupParams = frameParams;
                 }
             }
             wideSearchBox.setLayoutParams(currentViewGroupParams);
 
-            final ImageView searchButtonView = searchButtonViewRef.get();
+            ImageView searchButtonView = searchButtonViewRef.get();
             wideSearchBox.setOnClickListener(view -> {
                 if (searchButtonView != null) {
                     searchButtonView.callOnClick();

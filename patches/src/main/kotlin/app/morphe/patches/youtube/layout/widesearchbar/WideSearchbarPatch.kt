@@ -7,7 +7,6 @@
 
 package app.morphe.patches.youtube.layout.widesearchbar
 
-import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -65,7 +64,7 @@ val wideSearchbarPatch = bytecodePatch(
         }
 
         // Set search button
-        hookToolBar("${EXTENSION_CLASS}->setSearchButtonView")
+        hookToolBar("$EXTENSION_CLASS->setSearchButtonView")
 
         ToolbarButtonsMenuFingerprint.apply {
             method.addInstructionsAtControlFlowLabel(
