@@ -47,3 +47,12 @@ internal object ActionbarRingoViewFingerprint : Fingerprint(
         )
     )
 )
+
+internal object ToolbarButtonsMenuFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "V",
+    strings = listOf("Unhandled menu item %s"),
+    filters = listOf(
+        opcode(opcode = Opcode.RETURN_VOID)
+    )
+)

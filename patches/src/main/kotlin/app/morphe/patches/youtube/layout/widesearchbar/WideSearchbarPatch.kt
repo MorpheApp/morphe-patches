@@ -7,6 +7,7 @@
 
 package app.morphe.patches.youtube.layout.widesearchbar
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -63,6 +64,15 @@ val wideSearchbarPatch = bytecodePatch(
             }
         }
 
-        hookToolBar("${EXTENSION_CLASS}->setSearchImageView")
+        // Set search button
+        hookToolBar("${EXTENSION_CLASS}->setSearchButtonView")
+
+        ToolbarButtonsMenuFingerprint.apply {
+            method.addInstructionsAtControlFlowLabel(
+                instructionMatches.first().index,
+                "invoke-static { p0 }, $EXTENSION_CLASS->" +
+                        "setButtonsMenu(Landroid/view/Menu;)V"
+            )
+        }
     }
 }

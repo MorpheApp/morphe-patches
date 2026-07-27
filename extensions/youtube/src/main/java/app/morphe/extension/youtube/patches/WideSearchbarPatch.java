@@ -9,13 +9,14 @@ package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.shared.ResourceUtils.getIdentifier;
 
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -35,20 +36,40 @@ public class WideSearchbarPatch {
 
     private static final Boolean WIDE_SEARCHBAR_ENABLED = Settings.WIDE_SEARCHBAR.get();
     private static final int ID_YOUTUBE_LOGO = getIdentifier(ResourceType.ID, "youtube_logo");
-    private static final int ID_MENU_ITEM = getIdentifier(ResourceType.ID, "menu_item_view");
     private static final int ID_SEARCH_ICON = getIdentifier(ResourceType.DRAWABLE, "quantum_ic_search_grey600_24");
+    private static final int ID_MENU_PRIVACY_POLICY = getIdentifier(ResourceType.ID, "menu_privacy_policy");
     private static final String SEARCH_HINT = ResourceUtils.getString("search_hint");
     private static final List<String> SEARCH_BUTTON_NAMES = List.of("SEARCH", "SEARCH_BOLD", "SEARCH_CAIRO");
     private static final int DP115 = Dim.dp(115);
 
-    public static WeakReference<ImageView> searchImageViewRef = new WeakReference<>(null);
+    private static WeakReference<ImageView> searchButtonViewRef = new WeakReference<>(null);
 
     /**
      * Injection point.
      */
-    public static void setSearchImageView(String enumName, View parentView, ImageView imageView) {
+    public static void setButtonsMenu(Menu buttonsMenu) {
+        if (WIDE_SEARCHBAR_ENABLED && buttonsMenu != null) {
+            final int buttonsMenuSize = buttonsMenu.size();
+
+            if (buttonsMenuSize > 0) {
+                final boolean tabAccountVisible = buttonsMenu.findItem(ID_MENU_PRIVACY_POLICY) != null;
+
+                for (int i = 0; i < buttonsMenuSize; i++) {
+                    final MenuItem buttonMenuItem = buttonsMenu.getItem(i);
+                    if (buttonMenuItem != null) {
+                        buttonMenuItem.setVisible(tabAccountVisible);
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setSearchButtonView(String enumName, View parentView, ImageView imageView) {
         if (WIDE_SEARCHBAR_ENABLED && SEARCH_BUTTON_NAMES.contains(enumName)) {
-            searchImageViewRef = new WeakReference<>(imageView);
+            searchButtonViewRef = new WeakReference<>(imageView);
         }
     }
 
@@ -66,21 +87,21 @@ public class WideSearchbarPatch {
             }
 
             final boolean isDarkModeEnabled = Utils.isDarkModeEnabled();
-            final int backgroundColor = Color.parseColor(isDarkModeEnabled
-                    ? "#1F1F1F"
-                    : "#F1F1F1");
             final int textColor = Color.parseColor(isDarkModeEnabled
                     ? "#808080"
                     : "#606060");
+            final int backgroundColor = Color.parseColor(isDarkModeEnabled
+                    ? "#1F1F1F"
+                    : "#F1F1F1");
 
-            TextView wideSearchBox = new TextView(toolbarViewGroup.getContext());
+            final TextView wideSearchBox = new TextView(toolbarViewGroup.getContext());
             wideSearchBox.setText(SEARCH_HINT);
             wideSearchBox.setTextColor(textColor);
             wideSearchBox.setGravity(Gravity.CENTER_VERTICAL | Gravity.START);
             wideSearchBox.setFocusable(false);
             wideSearchBox.setClickable(true);
 
-            GradientDrawable searchBackground = new GradientDrawable();
+            final GradientDrawable searchBackground = new GradientDrawable();
             searchBackground.setShape(GradientDrawable.RECTANGLE);
             searchBackground.setCornerRadius(Dim.dp24);
             searchBackground.setColor(backgroundColor);
@@ -95,44 +116,44 @@ public class WideSearchbarPatch {
                 wideSearchBox.setCompoundDrawablePadding(Dim.dp8);
             }
 
-            View logoView = toolbarViewGroup.findViewById(ID_YOUTUBE_LOGO);
-            ViewGroup.MarginLayoutParams currentViewGroupParams;
+            final View logoView = toolbarViewGroup.findViewById(ID_YOUTUBE_LOGO);
             final int sideMargin = Dim.dp16;
-            final int searchBarHeight = Dim.dp36;
+            final int searchBarHeight = Dim.dp28;
 
+            ViewGroup.MarginLayoutParams currentViewGroupParams;
             if (toolbarViewGroup instanceof LinearLayout) {
-                LinearLayout.LayoutParams linearParams = new LinearLayout.LayoutParams(
-                        0, searchBarHeight);
+                final LinearLayout.LayoutParams linearParams = new LinearLayout.LayoutParams(
+                        0, searchBarHeight
+                );
                 linearParams.weight = 1.0f;
                 linearParams.gravity = Gravity.CENTER_VERTICAL;
                 currentViewGroupParams = linearParams;
                 currentViewGroupParams.setMargins(sideMargin, 0, sideMargin, 0);
             } else {
                 currentViewGroupParams = new ViewGroup.MarginLayoutParams(
-                        ViewGroup.LayoutParams.MATCH_PARENT, searchBarHeight);
+                        ViewGroup.LayoutParams.MATCH_PARENT, searchBarHeight
+                );
                 if (logoView != null) {
                     final int measuredWidth = logoView.getMeasuredWidth();
                     final int logoWidth = measuredWidth > 0 ? measuredWidth : DP115;
-                    currentViewGroupParams.setMargins(logoWidth + Dim.dp6, Dim.dp8, sideMargin, 0);
+                    currentViewGroupParams.setMargins(logoWidth + Dim.dp6, 0, sideMargin, 0);
                 } else {
-                    currentViewGroupParams.setMargins(sideMargin, Dim.dp8, sideMargin, 0);
+                    currentViewGroupParams.setMargins(sideMargin, 0, sideMargin, 0);
+                }
+
+                if (toolbarViewGroup instanceof FrameLayout) {
+                    final FrameLayout.LayoutParams frameParams = new FrameLayout.LayoutParams(currentViewGroupParams);
+                    frameParams.gravity = Gravity.CENTER_VERTICAL;
+                    currentViewGroupParams = frameParams;
                 }
             }
             wideSearchBox.setLayoutParams(currentViewGroupParams);
 
+            final ImageView searchButtonView = searchButtonViewRef.get();
             wideSearchBox.setOnClickListener(view -> {
-                ImageView searchView = searchImageViewRef.get();
-                if (searchView != null) {
-                    searchView.callOnClick();
-                    return;
+                if (searchButtonView != null) {
+                    searchButtonView.callOnClick();
                 }
-                // Fallback to using an intent. Only used with 20.40 and older.
-                Logger.printDebug(() -> "Falling back to search intent");
-                Context context = Utils.getActivity();
-                Intent intent = new Intent();
-                intent.setAction("com.google.android.youtube.action.open.search");
-                intent.setPackage(context.getPackageName());
-                context.startActivity(intent);
             });
 
             int targetIndex = toolbarViewGroup.getChildCount();
@@ -142,6 +163,7 @@ public class WideSearchbarPatch {
                     targetIndex = logoIndex + 1;
                 }
             }
+
             toolbarViewGroup.addView(wideSearchBox, targetIndex);
         } catch (Exception ex) {
             Logger.printException(() -> "initializeContainer failure", ex);
