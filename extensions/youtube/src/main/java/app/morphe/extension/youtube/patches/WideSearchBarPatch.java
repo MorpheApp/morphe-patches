@@ -10,6 +10,7 @@ package app.morphe.extension.youtube.patches;
 import static app.morphe.extension.shared.ResourceUtils.getIdentifier;
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.view.Gravity;
 import android.view.Menu;
@@ -39,7 +40,7 @@ public class WideSearchBarPatch {
 
     private static final Boolean WIDE_SEARCHBAR_ENABLED = Settings.WIDE_SEARCHBAR.get();
     private static final int ID_YOUTUBE_LOGO = getIdentifier(ResourceType.ID, "youtube_logo");
-    private static final int ID_SEARCH_ICON = getIdentifier(ResourceType.DRAWABLE, "quantum_ic_search_grey600_24");
+    private static final int ID_SEARCH_ICON = getIdentifier(ResourceType.DRAWABLE, "morphe_settings_search_icon_bold");
     private static final int ID_MENU_PRIVACY_POLICY = getIdentifier(ResourceType.ID, "menu_privacy_policy");
     private static final String SEARCH_HINT = ResourceUtils.getString("search_hint");
     private static final List<String> SEARCH_BUTTON_NAMES = List.of("SEARCH", "SEARCH_BOLD", "SEARCH_CAIRO");
@@ -110,15 +111,16 @@ public class WideSearchBarPatch {
 
             final boolean isDarkModeEnabled = Utils.isDarkModeEnabled();
             final int textColor = Color.parseColor(isDarkModeEnabled
-                    ? "#808080"
+                    ? "#AAAAAA"
                     : "#606060");
             final int backgroundColor = Color.parseColor(isDarkModeEnabled
-                    ? "#1F1F1F"
-                    : "#F1F1F1");
+                    ? "#1A1A1A"
+                    : "#F2F2F2");
 
             TextView wideSearchBox = new TextView(toolbarViewGroup.getContext());
-            wideSearchBox.setPadding(Dim.dp16, 0, Dim.dp16, 0);
+            wideSearchBox.setPadding(Dim.dp12, 0, Dim.dp12, 0);
             wideSearchBox.setText(SEARCH_HINT);
+            wideSearchBox.setTextSize(16);
             wideSearchBox.setTextColor(textColor);
             wideSearchBox.setGravity(Gravity.CENTER_VERTICAL | Gravity.START);
             wideSearchBox.setFocusable(false);
@@ -130,18 +132,22 @@ public class WideSearchBarPatch {
             searchBackground.setColor(backgroundColor);
             wideSearchBox.setBackground(searchBackground);
 
-            if (ID_SEARCH_ICON != 0) {
+            Drawable searchIcon = wideSearchBox.getContext().getDrawable(ID_SEARCH_ICON);
+            if (searchIcon != null) {
+                searchIcon = searchIcon.mutate();
+                searchIcon.setTint(textColor);
+
                 if (Utils.isRightToLeftLocale()) {
-                    wideSearchBox.setCompoundDrawablesWithIntrinsicBounds(0, 0, ID_SEARCH_ICON, 0);
+                    wideSearchBox.setCompoundDrawablesWithIntrinsicBounds(null, null, searchIcon, null);
                 } else {
-                    wideSearchBox.setCompoundDrawablesWithIntrinsicBounds(ID_SEARCH_ICON, 0, 0, 0);
+                    wideSearchBox.setCompoundDrawablesWithIntrinsicBounds(searchIcon, null, null, null);
                 }
                 wideSearchBox.setCompoundDrawablePadding(Dim.dp8);
             }
 
             View logoView = toolbarViewGroup.findViewById(ID_YOUTUBE_LOGO);
             final int sideMargin = Dim.dp10;
-            final int searchBarHeight = Dim.dp28;
+            final int searchBarHeight = Dim.dp32;
 
             ViewGroup.MarginLayoutParams currentViewGroupParams;
             if (toolbarViewGroup instanceof LinearLayout) {
