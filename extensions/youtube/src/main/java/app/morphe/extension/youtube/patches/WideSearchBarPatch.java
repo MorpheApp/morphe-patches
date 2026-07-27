@@ -81,8 +81,8 @@ public class WideSearchBarPatch {
             for (int i = 0, buttonsMenuSize = buttonsMenu.size(); i < buttonsMenuSize; i++) {
                 MenuItem buttonMenu = buttonsMenu.getItem(i);
 
-                if (!Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON.get() &&
-                        !Settings.HIDE_TOOLBAR_NOTIFICATION_BUTTON.get() &&
+                if (Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON.get() ||
+                        Settings.HIDE_TOOLBAR_NOTIFICATION_BUTTON.get() ||
                         buttonMenu.getItemId() != ID_MENU_BUTTON_NOTIFICATIONS) {
                     buttonsMenu.getItem(i).setVisible(false);
                 }
