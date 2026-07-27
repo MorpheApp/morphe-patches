@@ -20,5 +20,12 @@ val bypassCertificateChecksPatch = bytecodePatch(
 
     execute {
         CheckCertificateFingerprint.method.returnEarly(true)
+
+        // Devices with real Google Play services installed alongside microG crash inside
+        // the Dynamite-based Google signature verifier (IllegalStateException:
+        // "Missing DynamiteApplicationContext") before the fingerprint check above is
+        // even evaluated.  Report "not Google-signed" immediately, without touching
+        // Dynamite; authorization still succeeds via the fingerprint patch above.
+        IsGoogleSignedFingerprint.method.returnEarly(false)
     }
 }
