@@ -117,6 +117,7 @@ public class WideSearchbarPatch {
                     : "#F1F1F1");
 
             TextView wideSearchBox = new TextView(toolbarViewGroup.getContext());
+            wideSearchBox.setPadding(Dim.dp16, 0, Dim.dp16, 0);
             wideSearchBox.setText(SEARCH_HINT);
             wideSearchBox.setTextColor(textColor);
             wideSearchBox.setGravity(Gravity.CENTER_VERTICAL | Gravity.START);
@@ -129,12 +130,12 @@ public class WideSearchbarPatch {
             searchBackground.setColor(backgroundColor);
             wideSearchBox.setBackground(searchBackground);
 
-            final int paddingHorizontal = Dim.dp16;
-            final int paddingVertical = 0;
-            wideSearchBox.setPadding(paddingHorizontal, paddingVertical, paddingHorizontal, paddingVertical);
-
             if (ID_SEARCH_ICON != 0) {
-                wideSearchBox.setCompoundDrawablesWithIntrinsicBounds(ID_SEARCH_ICON, 0, 0, 0);
+                if (Utils.isRightToLeftLocale()) {
+                    wideSearchBox.setCompoundDrawablesWithIntrinsicBounds(0, 0, ID_SEARCH_ICON, 0);
+                } else {
+                    wideSearchBox.setCompoundDrawablesWithIntrinsicBounds(ID_SEARCH_ICON, 0, 0, 0);
+                }
                 wideSearchBox.setCompoundDrawablePadding(Dim.dp8);
             }
 
@@ -155,13 +156,23 @@ public class WideSearchbarPatch {
                 currentViewGroupParams = new ViewGroup.MarginLayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT, searchBarHeight
                 );
+
+                int leftMargin = sideMargin;
+                int rightMargin = sideMargin;
+
                 if (logoView != null) {
                     final int measuredWidth = logoView.getMeasuredWidth();
                     final int logoWidth = measuredWidth > 0 ? measuredWidth : DP115;
-                    currentViewGroupParams.setMargins(logoWidth + Dim.dp6, 0, sideMargin, 0);
-                } else {
-                    currentViewGroupParams.setMargins(sideMargin, 0, sideMargin, 0);
+                    final int logoMargin = logoWidth + Dim.dp16;
+
+                    if (Utils.isRightToLeftLocale()) {
+                        rightMargin = logoMargin;
+                    } else {
+                        leftMargin = logoMargin;
+                    }
                 }
+
+                currentViewGroupParams.setMargins(leftMargin, 0, rightMargin, 0);
 
                 if (toolbarViewGroup instanceof FrameLayout) {
                     FrameLayout.LayoutParams frameParams = new FrameLayout.LayoutParams(currentViewGroupParams);
@@ -175,6 +186,8 @@ public class WideSearchbarPatch {
             wideSearchBox.setOnClickListener(view -> {
                 if (searchButtonView != null) {
                     searchButtonView.callOnClick();
+                } else {
+                    Logger.printException(() -> "Could not find wide searchbar button");
                 }
             });
 
