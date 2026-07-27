@@ -13,13 +13,14 @@ import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.view.Gravity;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -45,28 +46,43 @@ public class WideSearchbarPatch {
     private static final int DP115 = Dim.dp(115);
 
     private static WeakReference<ImageView> searchButtonViewRef = new WeakReference<>(null);
+    private static WeakReference<Menu> buttonMenuRef = new WeakReference<>(null);
+
+    static {
+        // Change listener is needed to handle YT hardware back button handler
+        // that runs out of order with UI update code.
+        NavigationBar.addOnNavigationButtonChangedListener(activeButton ->
+                hideButtonMenuItems(buttonMenuRef.get(), activeButton)
+        );
+    }
 
     /**
      * Injection point.
      */
     public static void setButtonsMenu(Menu buttonsMenu) {
         if (WIDE_SEARCHBAR_ENABLED && buttonsMenu != null) {
-            Utils.runOnMainThread(() -> {
-                try {
-                    // Hide the setting menu if the user has not navigated into a channel or other subpage,
-                    // and the current tab is home or subscription.
-                    if (!NavigationBar.isBackButtonVisible()) {
-                        NavigationButton button = NavigationButton.getSelectedNavigationButton();
-                        if (button == NavigationButton.HOME || button == NavigationButton.SUBSCRIPTIONS) {
-                            for (int i = 0, buttonsMenuSize = buttonsMenu.size(); i < buttonsMenuSize; i++) {
-                                buttonsMenu.getItem(i).setVisible(false);
-                            }
-                        }
-                    }
-                } catch (Exception ex) {
-                    Logger.printException(() -> "setButtonsMenu failure", ex);
-                }
-            });
+            buttonMenuRef = new WeakReference<>(buttonsMenu);
+            hideButtonMenuItems(buttonsMenu, NavigationButton.getSelectedNavigationButton());
+        }
+    }
+
+    private static void hideButtonMenuItems(Menu buttonsMenu, @Nullable NavigationButton activeButton) {
+        try {
+            if (buttonsMenu == null) {
+                return;
+            }
+            if (activeButton != NavigationButton.HOME && activeButton != NavigationButton.SUBSCRIPTIONS) {
+                return;
+            }
+            if (NavigationBar.isBackButtonVisible()) {
+                return; // User has navigated into a channel page or other subpage.
+            }
+
+            for (int i = 0, buttonsMenuSize = buttonsMenu.size(); i < buttonsMenuSize; i++) {
+                buttonsMenu.getItem(i).setVisible(false);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "hideButtonMenuItems failure", ex);
         }
     }
 
