@@ -31,7 +31,6 @@ val wideSearchbarPatch = bytecodePatch(
         settingsPatch,
         resourceMappingPatch,
         versionCheckPatch
-
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
