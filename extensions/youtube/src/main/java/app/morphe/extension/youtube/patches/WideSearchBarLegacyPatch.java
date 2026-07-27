@@ -8,7 +8,7 @@ import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
-public class WideSearchbarLegacyPatch {
+public class WideSearchBarLegacyPatch {
 
     private static final Boolean WIDE_SEARCHBAR_ENABLED = Settings.WIDE_SEARCHBAR.get();
 

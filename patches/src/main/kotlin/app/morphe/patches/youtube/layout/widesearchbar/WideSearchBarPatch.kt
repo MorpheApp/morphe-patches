@@ -20,9 +20,10 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/WideSearchbarPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/WideSearchBarPatch;"
 
-val wideSearchbarPatch = bytecodePatch(
+@Suppress("unused")
+val wideSearchBarPatch = bytecodePatch(
     name = "Wide search bar",
     description = "Adds a wide search bar to the top of the home and subscription feed."
 ) {

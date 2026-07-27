@@ -35,7 +35,7 @@ import app.morphe.extension.youtube.shared.NavigationBar;
 import app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
 @SuppressWarnings("unused")
-public class WideSearchbarPatch {
+public class WideSearchBarPatch {
 
     private static final Boolean WIDE_SEARCHBAR_ENABLED = Settings.WIDE_SEARCHBAR.get();
     private static final int ID_YOUTUBE_LOGO = getIdentifier(ResourceType.ID, "youtube_logo");

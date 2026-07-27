@@ -37,7 +37,7 @@ private object SetWordmarkHeaderFingerprint : Fingerprint(
 /**
  * Matches the same method as [app.morphe.patches.youtube.layout.hide.general.YouTubeDoodlesImageViewFingerprint].
  */
-private object WideSearchbarLayoutFingerprint : Fingerprint(
+private object WideSearchBarLayoutFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Landroid/view/View;",
     parameters = listOf("L", "L"),
@@ -46,7 +46,7 @@ private object WideSearchbarLayoutFingerprint : Fingerprint(
     )
 )
 
-private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/WideSearchbarPatchLegacy;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/WideSearchBarPatchLegacy;"
 
 context(patchContext: BytecodePatchContext)
 internal fun applyLegacyWideSearchBar() {
@@ -65,7 +65,7 @@ internal fun applyLegacyWideSearchBar() {
     }
 
     // Fix missing left padding when using wide searchbar.
-    WideSearchbarLayoutFingerprint.method.apply {
+    WideSearchBarLayoutFingerprint.method.apply {
         findInstructionIndicesReversedOrThrow(
             methodCall(
                 definingClass = "Landroid/view/LayoutInflater;",
