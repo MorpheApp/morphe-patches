@@ -11,6 +11,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
+import app.morphe.patcher.string
 import app.morphe.patches.youtube.layout.hide.general.YouTubeDoodlesImageViewFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -51,8 +52,8 @@ internal object ActionbarRingoViewFingerprint : Fingerprint(
 internal object ToolbarButtonsMenuFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "V",
-    strings = listOf("Unhandled menu item %s"),
     filters = listOf(
+        string("Unhandled menu item %s"),
         opcode(opcode = Opcode.RETURN_VOID)
     )
 )
