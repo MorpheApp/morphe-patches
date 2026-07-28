@@ -57,7 +57,7 @@ internal object MembershipSettingsFingerprint : Fingerprint(
 )
 
 internal object FloatingLayoutFingerprint : Fingerprint(
-    definingClass = YOUTUBE_MUSIC_MAIN_ACTIVITY_CLASS_TYPE  ,
+    definingClass = YOUTUBE_MUSIC_MAIN_ACTIVITY_CLASS_TYPE,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Landroid/view/View;",
     parameters = listOf(),
