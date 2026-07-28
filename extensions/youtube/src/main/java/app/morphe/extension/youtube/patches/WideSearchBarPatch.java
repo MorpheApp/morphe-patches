@@ -156,6 +156,8 @@ public class WideSearchBarPatch {
             wideSearchBox.setTextSize(16);
             wideSearchBox.setTextColor(textColor);
             wideSearchBox.setGravity(Gravity.CENTER_VERTICAL | Gravity.START);
+            wideSearchBox.setSingleLine(true);
+            wideSearchBox.setEllipsize(TextUtils.TruncateAt.END);
             wideSearchBox.setFocusable(false);
             wideSearchBox.setClickable(true);
 
