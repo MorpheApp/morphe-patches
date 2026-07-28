@@ -14,9 +14,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.text.TextUtils;
 import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -27,8 +26,6 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -45,23 +42,17 @@ public class WideSearchBarPatch {
     private static final Boolean WIDE_SEARCHBAR_ENABLED = Settings.WIDE_SEARCHBAR.get();
     private static final int ID_YOUTUBE_LOGO = getIdentifier(ResourceType.ID, "youtube_logo");
     private static final int ID_SEARCH_ICON = getIdentifier(ResourceType.DRAWABLE, "morphe_settings_search_icon_bold");
-    private static final List<String> NOTIFICATION_BUTTON_ENUMS = List.of(
-            "TAB_ACTIVITY_CAIRO", // New layout.
-            "TAB_ACTIVITY" // Old layout.
-    );
     private static final String SEARCH_HINT = ResourceUtils.getString("search_hint");
     private static final int DP115 = Dim.dp(115);
 
-    private static final List<String> buttonsName = new ArrayList<>();
-    private static WeakReference<ImageView> searchButtonViewRef = new WeakReference<>(null);
-    private static WeakReference<Menu> buttonMenuRef = new WeakReference<>(null);
-    private static boolean clearButtonsName;
+    private static WeakReference<View> searchButtonViewParentRef = new WeakReference<>(null);
+    private static WeakReference<View> searchButtonViewRef = new WeakReference<>(null);
 
     static {
         // Change listener is needed to handle YT hardware back button handler
         // that runs out of order with UI update code.
         NavigationBar.addOnNavigationButtonChangedListener(activeButton ->
-                hideButtonMenuItems(buttonMenuRef.get(), activeButton)
+                hideSearchButton(searchButtonViewParentRef.get(), activeButton)
         );
     }
 
@@ -69,43 +60,16 @@ public class WideSearchBarPatch {
      * Injection point.
      */
     public static void setSearchButtonView(String enumName, View parentView, ImageView imageView) {
-        if (WIDE_SEARCHBAR_ENABLED) {
+        if (WIDE_SEARCHBAR_ENABLED && NavigationButton.SEARCH.ytEnumNames.contains(enumName)) {
+            searchButtonViewParentRef = new WeakReference<>(parentView);
             searchButtonViewRef = new WeakReference<>(imageView);
+            hideSearchButton(parentView, NavigationButton.getSelectedNavigationButton());
         }
     }
 
-    /**
-     * Injection point.
-     */
-    public static void setButtonsName(String enumString, View parentView, ImageView imageView) {
-        if (clearButtonsName) {
-            buttonsName.clear();
-            clearButtonsName = false;
-        }
-
-        buttonsName.add(enumString);
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void setButtonsMenu(Menu buttonsMenu) {
-        if (WIDE_SEARCHBAR_ENABLED && buttonsMenu != null) {
-            clearButtonsName = true; // At this point, the layout will regenerate.
-            buttonMenuRef = new WeakReference<>(buttonsMenu);
-            hideButtonMenuItems(buttonsMenu, NavigationButton.getSelectedNavigationButton());
-        }
-    }
-
-    private static void hideButtonMenuItems(Menu buttonsMenu, @Nullable NavigationButton activeButton) {
+    private static void hideSearchButton(@Nullable View searchParentView, @Nullable NavigationButton activeButton) {
         try {
-            if (buttonsMenu == null) {
-                return;
-            }
-
-            final int buttonsMenuSize = buttonsMenu.size();
-
-            if (buttonsName.size() != buttonsMenuSize) {
+            if (searchParentView == null) {
                 return;
             }
             if (activeButton != NavigationButton.HOME && activeButton != NavigationButton.SUBSCRIPTIONS) {
@@ -115,17 +79,9 @@ public class WideSearchBarPatch {
                 return; // User has navigated into a channel page or other subpage.
             }
 
-            for (int i = 0; i < buttonsMenuSize; i++) {
-                String buttonName = buttonsName.get(i);
-                MenuItem buttonMenu = buttonsMenu.getItem(i);
-
-                // Hide every button, except notifications button.
-                if (!NOTIFICATION_BUTTON_ENUMS.contains(buttonName)) {
-                    buttonsMenu.getItem(i).setVisible(false);
-                }
-            }
+            searchParentView.setVisibility(View.GONE);
         } catch (Exception ex) {
-            Logger.printException(() -> "hideButtonMenuItems failure", ex);
+            Logger.printException(() -> "hideSearchButton failure", ex);
         }
     }
 
@@ -142,6 +98,7 @@ public class WideSearchBarPatch {
                 return;
             }
 
+            final boolean rightToLeftLocale = Utils.isRightToLeftLocale();
             final boolean isDarkModeEnabled = Utils.isDarkModeEnabled();
             final int textColor = Color.parseColor(isDarkModeEnabled
                     ? "#AAAAAA"
@@ -150,7 +107,7 @@ public class WideSearchBarPatch {
                     ? "#1A1A1A"
                     : "#F2F2F2");
 
-            final TextView wideSearchBox = new TextView(toolbarViewGroup.getContext());
+            TextView wideSearchBox = new TextView(toolbarViewGroup.getContext());
             wideSearchBox.setPadding(Dim.dp12, 0, Dim.dp12, 0);
             wideSearchBox.setText(SEARCH_HINT);
             wideSearchBox.setTextSize(16);
@@ -161,7 +118,7 @@ public class WideSearchBarPatch {
             wideSearchBox.setFocusable(false);
             wideSearchBox.setClickable(true);
 
-            final GradientDrawable searchBackground = new GradientDrawable();
+            GradientDrawable searchBackground = new GradientDrawable();
             searchBackground.setShape(GradientDrawable.RECTANGLE);
             searchBackground.setCornerRadius(Dim.dp24);
             searchBackground.setColor(backgroundColor);
@@ -172,7 +129,7 @@ public class WideSearchBarPatch {
                 searchIcon = searchIcon.mutate();
                 searchIcon.setTint(textColor);
 
-                if (Utils.isRightToLeftLocale()) {
+                if (rightToLeftLocale) {
                     wideSearchBox.setCompoundDrawablesWithIntrinsicBounds(null, null, searchIcon, null);
                 } else {
                     wideSearchBox.setCompoundDrawablesWithIntrinsicBounds(searchIcon, null, null, null);
@@ -186,7 +143,7 @@ public class WideSearchBarPatch {
 
             ViewGroup.MarginLayoutParams currentViewGroupParams;
             if (toolbarViewGroup instanceof LinearLayout) {
-                final LinearLayout.LayoutParams linearParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams linearParams = new LinearLayout.LayoutParams(
                         0, searchBarHeight
                 );
                 linearParams.weight = 1.0f;
@@ -206,7 +163,7 @@ public class WideSearchBarPatch {
                     final int logoWidth = measuredWidth > 0 ? measuredWidth : DP115;
                     final int logoMargin = logoWidth + Dim.dp16;
 
-                    if (Utils.isRightToLeftLocale()) {
+                    if (rightToLeftLocale) {
                         rightMargin = logoMargin;
                     } else {
                         leftMargin = logoMargin;
@@ -225,7 +182,7 @@ public class WideSearchBarPatch {
             wideSearchBox.setLayoutParams(currentViewGroupParams);
 
             wideSearchBox.setOnClickListener(view -> {
-                ImageView searchButtonView = searchButtonViewRef.get();
+                View searchButtonView = searchButtonViewRef.get();
                 if (searchButtonView != null) {
                     searchButtonView.callOnClick();
                 } else {

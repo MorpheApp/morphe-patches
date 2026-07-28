@@ -48,6 +48,8 @@ val wideSearchBarPatch = bytecodePatch(
             return@execute
         }
 
+        hookToolBar("$EXTENSION_CLASS->setSearchButtonView")
+
         ActionbarRingoViewFingerprint.apply {
             arrayOf(
                 instructionMatches[5],
@@ -64,18 +66,5 @@ val wideSearchBarPatch = bytecodePatch(
                 )
             }
         }
-
-        // Set search button
-        hookToolBar("$EXTENSION_CLASS->setSearchButtonView")
-
-        ToolbarButtonsMenuFingerprint.apply {
-            method.addInstructionsAtControlFlowLabel(
-                instructionMatches.first().index,
-                "invoke-static { p0 }, $EXTENSION_CLASS->" +
-                        "setButtonsMenu(Landroid/view/Menu;)V"
-            )
-        }
-
-        hookToolBar("$EXTENSION_CLASS->setButtonsName")
     }
 }
