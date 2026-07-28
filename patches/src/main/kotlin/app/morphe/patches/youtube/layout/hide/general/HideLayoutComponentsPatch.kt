@@ -199,28 +199,32 @@ val hideLayoutComponentsPatch = bytecodePatch(
             PreferenceScreenPreference(
                 key = "morphe_explore_menu_screen",
                 sorting = Sorting.UNSORTED,
-                preferences = setOf(
-                    SwitchPreference("morphe_hide_explore_button"),
-                    SwitchPreference("morphe_hide_shopping_menu"),
-                    SwitchPreference("morphe_hide_music_menu"),
-                    SwitchPreference("morphe_hide_movies_menu"),
-                    SwitchPreference("morphe_hide_hype_menu"),
-                    SwitchPreference("morphe_hide_live_menu"),
-                    SwitchPreference("morphe_hide_gaming_menu"),
-                    SwitchPreference("morphe_hide_news_menu"),
-                    SwitchPreference("morphe_hide_sports_menu"),
-                    SwitchPreference("morphe_hide_courses_menu"),
-                    SwitchPreference("morphe_hide_fashion_menu"),
-                    SwitchPreference("morphe_hide_podcasts_menu"),
-                    SwitchPreference("morphe_hide_playables_menu"),
-                    SwitchPreference("morphe_hide_memberships_menu"),
-                    SwitchPreference("morphe_hide_youtube_premium_menu"),
-                    SwitchPreference("morphe_hide_youtube_studio_menu"),
-                    SwitchPreference("morphe_hide_youtube_music_menu"),
-                    SwitchPreference("morphe_hide_youtube_kids_menu"),
-                    SwitchPreference("morphe_hide_youtube_create_menu"),
-                    SwitchPreference("morphe_hide_privacy_tos_footer")
-                )
+                preferences = if (is_20_31_or_greater) {
+                    setOf(
+                        SwitchPreference("morphe_hide_explore_button"),
+                        SwitchPreference("morphe_hide_shopping_menu"),
+                        SwitchPreference("morphe_hide_music_menu"),
+                        SwitchPreference("morphe_hide_movies_menu"),
+                        SwitchPreference("morphe_hide_hype_menu"),
+                        SwitchPreference("morphe_hide_live_menu"),
+                        SwitchPreference("morphe_hide_gaming_menu"),
+                        SwitchPreference("morphe_hide_news_menu"),
+                        SwitchPreference("morphe_hide_sports_menu"),
+                        SwitchPreference("morphe_hide_courses_menu"),
+                        SwitchPreference("morphe_hide_fashion_menu"),
+                        SwitchPreference("morphe_hide_podcasts_menu"),
+                        SwitchPreference("morphe_hide_playables_menu"),
+                        SwitchPreference("morphe_hide_memberships_menu"),
+                        SwitchPreference("morphe_hide_youtube_premium_menu"),
+                        SwitchPreference("morphe_hide_youtube_studio_menu"),
+                        SwitchPreference("morphe_hide_youtube_music_menu"),
+                        SwitchPreference("morphe_hide_youtube_kids_menu"),
+                        SwitchPreference("morphe_hide_youtube_create_menu"),
+                        SwitchPreference("morphe_hide_privacy_tos_footer")
+                    )
+                } else {
+                    emptySet()
+                }
             ),
             PreferenceScreenPreference(
                 key = "morphe_hide_keyword_content_screen",
