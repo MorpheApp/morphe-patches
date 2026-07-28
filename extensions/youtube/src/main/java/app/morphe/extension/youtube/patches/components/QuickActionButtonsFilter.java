@@ -24,12 +24,11 @@ public final class QuickActionButtonsFilter extends Filter {
     private static final String QUICK_ACTIONS_PATH = "quick_actions.e";
 
     private final StringTrieSearch exceptions = new StringTrieSearch();
-    private final StringFilterGroup quickActions;
     private final StringFilterGroup buttonFilterPath;
     private final ByteArrayFilterGroupList bufferButtonsGroupList = new ByteArrayFilterGroupList();
 
     public QuickActionButtonsFilter() {
-        quickActions = new StringFilterGroup(
+        final StringFilterGroup quickActions = new StringFilterGroup(
                 Settings.HIDE_QUICK_ACTIONS,
                 QUICK_ACTIONS_PATH
         );
@@ -121,10 +120,6 @@ public final class QuickActionButtonsFilter extends Filter {
 
         if (!path.startsWith(QUICK_ACTIONS_PATH)) {
             return false;
-        }
-
-        if (matchedGroup == quickActions) {
-            return true;
         }
 
         if (matchedGroup == buttonFilterPath) {

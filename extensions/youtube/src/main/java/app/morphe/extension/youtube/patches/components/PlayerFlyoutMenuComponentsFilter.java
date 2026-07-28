@@ -47,12 +47,10 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
             "yt_outline_experimental_play_circle_black_"
     );
     private final ByteArrayFilterGroupList flyoutFilterGroupList = new ByteArrayFilterGroupList();
-    private final StringFilterGroup audioTrackMenuFooter;
     private final StringFilterGroup divider;
-    private final StringFilterGroup qualityMenuFooter;
 
     public PlayerFlyoutMenuComponentsFilter() {
-        audioTrackMenuFooter = new StringFilterGroup(
+        final StringFilterGroup audioTrackMenuFooter = new StringFilterGroup(
                 Settings.HIDE_PLAYER_FLYOUT_AUDIO_TRACK_FOOTER,
                 "audio_track_sheet_footer.e"
         );
@@ -62,7 +60,7 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
                 "|divider.e"
         );
 
-        qualityMenuFooter = new StringFilterGroup(
+        final StringFilterGroup qualityMenuFooter = new StringFilterGroup(
                 Settings.HIDE_PLAYER_FLYOUT_QUALITY_FOOTER,
                 "quality_sheet_footer.e"
         );
@@ -149,10 +147,6 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
                               StringFilterGroup matchedGroup,
                               FilterContentType contentType,
                               int contentIndex) {
-        if (matchedGroup == audioTrackMenuFooter || matchedGroup == qualityMenuFooter) {
-            return true;
-        }
-
         if (matchedGroup == divider) {
             if (path.contains("captions_sheet_content.e")) {
                 return Settings.HIDE_PLAYER_FLYOUT_CAPTIONS_FOOTER.get();

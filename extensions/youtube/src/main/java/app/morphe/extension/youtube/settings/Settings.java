@@ -334,6 +334,28 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_TRANSCRIPT_SECTION = new BooleanSetting("morphe_hide_transcript_section", FALSE);
     public static final BooleanSetting HIDE_VIDEO_DETAILS_SECTION = new BooleanSetting("morphe_hide_video_details_section", FALSE);
 
+    // Explore menu
+    public static final BooleanSetting HIDE_EXPLORE_BUTTON = new BooleanSetting("morphe_hide_explore_button", FALSE);
+    public static final BooleanSetting HIDE_COURSES_MENU = new BooleanSetting("morphe_hide_courses_menu", FALSE, parentNot(HIDE_EXPLORE_BUTTON));
+    public static final BooleanSetting HIDE_FASHION_MENU = new BooleanSetting("morphe_hide_fashion_menu", FALSE, parentNot(HIDE_EXPLORE_BUTTON));
+    public static final BooleanSetting HIDE_GAMING_MENU = new BooleanSetting("morphe_hide_gaming_menu", FALSE, parentNot(HIDE_EXPLORE_BUTTON));
+    public static final BooleanSetting HIDE_HYPE_MENU = new BooleanSetting("morphe_hide_hype_menu", FALSE, parentNot(HIDE_EXPLORE_BUTTON));
+    public static final BooleanSetting HIDE_LIVE_MENU = new BooleanSetting("morphe_hide_live_menu", FALSE, parentNot(HIDE_EXPLORE_BUTTON));
+    public static final BooleanSetting HIDE_MEMBERSHIPS_MENU = new BooleanSetting("morphe_hide_memberships_menu", FALSE, parentNot(HIDE_EXPLORE_BUTTON));
+    public static final BooleanSetting HIDE_MOVIES_MENU = new BooleanSetting("morphe_hide_movies_menu", FALSE, parentNot(HIDE_EXPLORE_BUTTON));
+    public static final BooleanSetting HIDE_MUSIC_MENU = new BooleanSetting("morphe_hide_music_menu", FALSE, parentNot(HIDE_EXPLORE_BUTTON));
+    public static final BooleanSetting HIDE_NEWS_MENU = new BooleanSetting("morphe_hide_news_menu", FALSE, parentNot(HIDE_EXPLORE_BUTTON));
+    public static final BooleanSetting HIDE_PLAYABLES_MENU = new BooleanSetting("morphe_hide_playables_menu", FALSE, parentNot(HIDE_EXPLORE_BUTTON));
+    public static final BooleanSetting HIDE_PODCASTS_MENU = new BooleanSetting("morphe_hide_podcasts_menu", FALSE, parentNot(HIDE_EXPLORE_BUTTON));
+    public static final BooleanSetting HIDE_SHOPPING_MENU = new BooleanSetting("morphe_hide_shopping_menu", FALSE, parentNot(HIDE_EXPLORE_BUTTON));
+    public static final BooleanSetting HIDE_SPORTS_MENU = new BooleanSetting("morphe_hide_sports_menu", FALSE, parentNot(HIDE_EXPLORE_BUTTON));
+    public static final BooleanSetting HIDE_YOUTUBE_PREMIUM_MENU = new BooleanSetting("morphe_hide_youtube_premium_menu", FALSE, parentNot(HIDE_EXPLORE_BUTTON));
+    public static final BooleanSetting HIDE_YOUTUBE_STUDIO_MENU = new BooleanSetting("morphe_hide_youtube_studio_menu", FALSE, parentNot(HIDE_EXPLORE_BUTTON));
+    public static final BooleanSetting HIDE_YOUTUBE_MUSIC_MENU = new BooleanSetting("morphe_hide_youtube_music_menu", FALSE, parentNot(HIDE_EXPLORE_BUTTON));
+    public static final BooleanSetting HIDE_YOUTUBE_KIDS_MENU = new BooleanSetting("morphe_hide_youtube_kids_menu", FALSE, parentNot(HIDE_EXPLORE_BUTTON));
+    public static final BooleanSetting HIDE_YOUTUBE_CREATE_MENU = new BooleanSetting("morphe_hide_youtube_create_menu", FALSE, parentNot(HIDE_EXPLORE_BUTTON));
+    public static final BooleanSetting HIDE_PRIVACY_TOS_FOOTER = new BooleanSetting("morphe_hide_privacy_tos_footer", FALSE, parentNot(HIDE_EXPLORE_BUTTON));
+
     // Action buttons
     public static final BooleanSetting DISABLE_LIKE_SUBSCRIBE_GLOW = new BooleanSetting("morphe_disable_like_subscribe_glow", FALSE);
     public static final BooleanSetting HIDE_ACTION_BAR = new BooleanSetting("morphe_hide_action_bar", FALSE);
