@@ -308,17 +308,15 @@ public final class NavigationBar {
                 return;
             }
 
-            if (button == oldButton) {
-                return;
-            }
-
             NavigationButton.selectedNavigationButton = button;
-            Logger.printDebug(() -> "Changed to navigation button: " + button);
 
             // Release any threads waiting for the selected nav button.
             releaseNavButtonLatch();
 
-            notifyNavigationButtonChangedListeners(button);
+            if (button != oldButton) {
+                Logger.printDebug(() -> "Changed to navigation button: " + button);
+                notifyNavigationButtonChangedListeners(button);
+            }
         } catch (Exception ex) {
             Logger.printException(() -> "navigationTabSelected failure", ex);
         }
