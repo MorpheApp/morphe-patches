@@ -120,9 +120,7 @@ public class WideSearchBarPatch {
                 MenuItem buttonMenu = buttonsMenu.getItem(i);
 
                 // Hide every button, except notifications button.
-                if (Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON.get() ||
-                        Settings.HIDE_TOOLBAR_NOTIFICATION_BUTTON.get() ||
-                        !NOTIFICATION_BUTTON_ENUMS.contains(buttonName)) {
+                if (!NOTIFICATION_BUTTON_ENUMS.contains(buttonName)) {
                     buttonsMenu.getItem(i).setVisible(false);
                 }
             }
