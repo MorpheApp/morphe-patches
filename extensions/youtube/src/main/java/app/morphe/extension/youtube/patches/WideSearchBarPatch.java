@@ -20,12 +20,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -42,10 +45,15 @@ public class WideSearchBarPatch {
     private static final Boolean WIDE_SEARCHBAR_ENABLED = Settings.WIDE_SEARCHBAR.get();
     private static final int ID_YOUTUBE_LOGO = getIdentifier(ResourceType.ID, "youtube_logo");
     private static final int ID_SEARCH_ICON = getIdentifier(ResourceType.DRAWABLE, "morphe_settings_search_icon_bold");
-    private static final int ID_MENU_BUTTON_NOTIFICATIONS = getIdentifier(ResourceType.ID, "menu_item_1");
+    private static final List<String> NOTIFICATION_BUTTON_ENUMS = List.of(
+            "TAB_ACTIVITY_CAIRO", // New layout.
+            "TAB_ACTIVITY" // Old layout.
+    );
     private static final String SEARCH_HINT = ResourceUtils.getString("search_hint");
     private static final int DP115 = Dim.dp(115);
 
+    private static final List<String> buttonsName = new ArrayList<>();
+    private static boolean clearButtonsName = false;
     private static WeakReference<Menu> buttonMenuRef = new WeakReference<>(null);
 
     static {
@@ -59,8 +67,21 @@ public class WideSearchBarPatch {
     /**
      * Injection point.
      */
+    public static void setButtonsName(String enumString, View parentView, ImageView imageView) {
+        if (clearButtonsName) {
+            buttonsName.clear();
+            clearButtonsName = false;
+        }
+
+        buttonsName.add(enumString);
+    }
+
+    /**
+     * Injection point.
+     */
     public static void setButtonsMenu(Menu buttonsMenu) {
         if (WIDE_SEARCHBAR_ENABLED && buttonsMenu != null) {
+            clearButtonsName = true; // At this point, the layout will regenerate.
             buttonMenuRef = new WeakReference<>(buttonsMenu);
             hideButtonMenuItems(buttonsMenu, NavigationButton.getSelectedNavigationButton());
         }
@@ -71,6 +92,12 @@ public class WideSearchBarPatch {
             if (buttonsMenu == null) {
                 return;
             }
+
+            final int buttonsMenuSize = buttonsMenu.size();
+
+            if (buttonsName.size() != buttonsMenuSize) {
+                return;
+            }
             if (activeButton != NavigationButton.HOME && activeButton != NavigationButton.SUBSCRIPTIONS) {
                 return;
             }
@@ -78,12 +105,14 @@ public class WideSearchBarPatch {
                 return; // User has navigated into a channel page or other subpage.
             }
 
-            for (int i = 0, buttonsMenuSize = buttonsMenu.size(); i < buttonsMenuSize; i++) {
+            for (int i = 0; i < buttonsMenuSize; i++) {
+                String buttonName = buttonsName.get(i);
                 MenuItem buttonMenu = buttonsMenu.getItem(i);
 
+                // Hide every button, except notifications button.
                 if (Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON.get() ||
                         Settings.HIDE_TOOLBAR_NOTIFICATION_BUTTON.get() ||
-                        buttonMenu.getItemId() != ID_MENU_BUTTON_NOTIFICATIONS) {
+                        !NOTIFICATION_BUTTON_ENUMS.contains(buttonName)) {
                     buttonsMenu.getItem(i).setVisible(false);
                 }
             }

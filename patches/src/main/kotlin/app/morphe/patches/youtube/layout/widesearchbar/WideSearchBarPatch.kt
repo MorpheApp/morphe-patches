@@ -15,6 +15,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.patches.youtube.misc.toolbar.hookToolBar
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -69,5 +70,7 @@ val wideSearchBarPatch = bytecodePatch(
                         "setButtonsMenu(Landroid/view/Menu;)V"
             )
         }
+
+        hookToolBar("$EXTENSION_CLASS->setButtonsName")
     }
 }
