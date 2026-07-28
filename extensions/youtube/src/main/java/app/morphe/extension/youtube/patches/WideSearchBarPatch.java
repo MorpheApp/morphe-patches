@@ -53,8 +53,9 @@ public class WideSearchBarPatch {
     private static final int DP115 = Dim.dp(115);
 
     private static final List<String> buttonsName = new ArrayList<>();
-    private static boolean clearButtonsName = false;
+    private static WeakReference<ImageView> searchButtonViewRef = new WeakReference<>(null);
     private static WeakReference<Menu> buttonMenuRef = new WeakReference<>(null);
+    private static boolean clearButtonsName;
 
     static {
         // Change listener is needed to handle YT hardware back button handler
@@ -62,6 +63,15 @@ public class WideSearchBarPatch {
         NavigationBar.addOnNavigationButtonChangedListener(activeButton ->
                 hideButtonMenuItems(buttonMenuRef.get(), activeButton)
         );
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setSearchButtonView(String enumName, View parentView, ImageView imageView) {
+        if (WIDE_SEARCHBAR_ENABLED) {
+            searchButtonViewRef = new WeakReference<>(imageView);
+        }
     }
 
     /**
@@ -206,23 +216,26 @@ public class WideSearchBarPatch {
                 currentViewGroupParams.setMargins(leftMargin, 0, rightMargin, 0);
 
                 if (toolbarViewGroup instanceof FrameLayout) {
-                    FrameLayout.LayoutParams frameParams = new FrameLayout.LayoutParams(currentViewGroupParams);
+                    FrameLayout.LayoutParams frameParams = new FrameLayout.LayoutParams(
+                            currentViewGroupParams);
                     frameParams.gravity = Gravity.CENTER_VERTICAL;
                     currentViewGroupParams = frameParams;
                 }
             }
             wideSearchBox.setLayoutParams(currentViewGroupParams);
 
-            wideSearchBox.setOnClickListener(v -> {
-                // To solve the lack of click listener for the search button in some
-                // circumstances, always use the following reliable solution
-                // to call up the search view.
-                Logger.printDebug(() -> "Run search intent");
-                Context context = Utils.getActivity();
-                Intent intent = new Intent();
-                intent.setAction("com.google.android.youtube.action.open.search");
-                intent.setPackage(context.getPackageName());
-                context.startActivity(intent);
+            wideSearchBox.setOnClickListener(view -> {
+                ImageView searchButtonView = searchButtonViewRef.get();
+                if (searchButtonView != null) {
+                    searchButtonView.callOnClick();
+                } else {
+                    Logger.printDebug(() -> "Using search intent");
+                    Intent intent = new Intent();
+                    intent.setAction("com.google.android.youtube.action.open.search");
+                    Context context = Utils.getActivity();
+                    intent.setPackage(context.getPackageName());
+                    context.startActivity(intent);
+                }
             });
 
             int targetIndex = toolbarViewGroup.getChildCount();
