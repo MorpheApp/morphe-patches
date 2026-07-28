@@ -65,6 +65,15 @@ Second \"item\" text"</string>
     <string name="morphe_music_hide_repeat_button_title">Hide Repeat button</string>
     <string name="morphe_music_hide_shuffle_button_title">Hide Shuffle button</string>
     <string name="morphe_music_hide_speed_dial_shelf_title">Hide \'Speed dial\' shelf</string>
+    <string name="morphe_music_hide_suggested_for_you_shelf_title">Hide \'Suggested for you\' shelf</string>
+
+    <string name="morphe_music_comments_screen_title">Comments</string>
+    <string name="morphe_music_comments_screen_summary">Choose which components appear in the comments section</string>
+    <string name="morphe_music_hide_comments_community_guidelines_title">Hide Community Guidelines</string>
+    <string name="morphe_music_hide_comments_context_title">Hide context messages</string>
+    <string name="morphe_music_hide_comments_emoji_button_title">Hide Emoji button</string>
+    <string name="morphe_music_hide_comments_info_button_title">Hide Info button</string>
+    <string name="morphe_music_hide_comments_timestamp_button_title">Hide Timestamp button</string>
 
     <!-- interaction.crossfade.crossfadePatch -->
     <string name="morphe_music_crossfade_screen_title">Crossfade</string>

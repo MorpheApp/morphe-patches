@@ -26,6 +26,14 @@ internal object AudioVideoSwitchPillContainerFingerprint : Fingerprint(
     )
 )
 
+internal object InformationButtonFingerprint : Fingerprint(
+    parameters = listOf("Landroid/content/Context;"),
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "information_button"),
+        opcode(Opcode.CHECK_CAST)
+    )
+)
+
 internal object OverlayQueueLoopButtonFingerprint : Fingerprint(
     filters = listOf(
         resourceLiteral(ResourceType.ID, "overlay_queue_loop_button_view"),

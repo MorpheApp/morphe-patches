@@ -236,14 +236,13 @@ Changes include:
     <string name="morphe_hide_comments_carousel_filter_strings_summary">Enter the comments carousel names to filter by, separated by new lines</string>
     <string name="morphe_hide_comments_ai_chat_summary_title">Hide AI chat summary</string>
     <string name="morphe_hide_comments_channel_guidelines_title">Hide channel guidelines</string>
-    <string name="morphe_hide_comments_prompts_title">Hide comment prompts</string>
-    <string name="morphe_hide_comments_prompts_summary">Hides contextual information messages in the comments section</string>
+    <string name="morphe_hide_comments_contexts_title">Hide context messages</string>
     <string name="morphe_hide_comments_by_members_header_title">Hide \'Comments by members\' header</string>
     <string name="morphe_hide_comments_section_title">Hide comments section</string>
     <string name="morphe_hide_comments_section_in_home_feed_title">Hide comments section in Home feed</string>
-    <string name="morphe_hide_comments_community_guidelines_title">Hide community guidelines</string>
+    <string name="morphe_hide_comments_community_guidelines_title">Hide Community Guidelines</string>
     <string name="morphe_hide_comments_create_a_short_button_title">Hide \'Create a Short\' button</string>
-    <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Hide Emoji and Timestamp buttons</string>
+    <string name="morphe_hide_comments_emoji_button_title">Hide Emoji button</string>
     <string name="morphe_hide_comments_filter_bar_options_title">Hide filter bar options</string>
     <string name="morphe_hide_comments_filter_bar_options_summary">Hides all filter bar options except \'Top\' and \'Newest\'</string>
     <string name="morphe_hide_comments_gift_animation_and_cards_title">Hide gift animation and cards</string>
@@ -253,6 +252,7 @@ Changes include:
     <string name="morphe_hide_comments_preview_comment_title">Hide preview comment</string>
     <string name="morphe_hide_comments_preview_comment_summary">Hides the comment preview under video before opening the full comments section</string>
     <string name="morphe_hide_comments_thanks_button_title">Hide Thanks button</string>
+    <string name="morphe_hide_comments_timestamp_button_title">Hide Timestamp button</string>
     <string name="morphe_sanitize_comments_highlighted_search_links_title">Sanitize highlighted search links</string>
     <string name="morphe_sanitize_comments_highlighted_search_links_summary">Sanitizes highlighted search links, leaving only the original plain text</string>
 

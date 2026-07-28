@@ -45,10 +45,11 @@ public class CommentsFilter extends Filter {
     private static final List<String> commentsCarouselFilterStrings = getFilterStrings(Settings.HIDE_COMMENTS_CAROUSEL_FILTER_STRINGS);
 
     private final StringFilterGroup comments;
+    private final StringFilterGroup commentComposer;
     private final StringFilterGroup commentComposerButtons;
     private final ByteArrayFilterGroupList commentComposerButtonsGroupList = new ByteArrayFilterGroupList();
     private final StringFilterGroup commentsFilterBar;
-    private final StringFilterGroup emojiAndTimestampButtons;
+    private final StringFilterGroup emojiButton;
     private final StringFilterGroup previewCommentDotsSelector;
     public CommentsFilter() {
         var channelGuidelines = new StringFilterGroup(
@@ -73,6 +74,11 @@ public class CommentsFilter extends Filter {
                 "sponsorships_comments_footer.e"
         );
 
+        commentComposer = new StringFilterGroup(
+                null,
+                COMMENT_COMPOSER_PATH
+        );
+
         commentComposerButtons = new StringFilterGroup(
                 null,
                 "|ContainerType|ContainerType|ContainerType|ContainerType|",
@@ -95,8 +101,8 @@ public class CommentsFilter extends Filter {
                 CHIP_BAR_PATH_PREFIX
         );
 
-        var commentsPrompts = new StringFilterGroup(
-                Settings.HIDE_COMMENTS_PROMPTS,
+        var commentsContexts = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_CONTEXTS,
                 "comment_filter_context.e",
                 "timed_comments_welcome.e",
                 "timed_comments_end.e"
@@ -112,9 +118,9 @@ public class CommentsFilter extends Filter {
                 "composer_short_creation_button.e"
         );
 
-        emojiAndTimestampButtons = new StringFilterGroup(
-                Settings.HIDE_COMMENTS_EMOJI_AND_TIMESTAMP_BUTTONS,
-                "|CellType|ContainerType|ContainerType|ContainerType|ContainerType|ContainerType|"
+        emojiButton = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_EMOJI_BUTTON,
+                "id.comment.quick_emoji.button"
         );
 
         var giftAnimationAndCards = new StringFilterGroup(
@@ -140,21 +146,28 @@ public class CommentsFilter extends Filter {
                 "super_thanks_button.e"
         );
 
+        var timestampButton = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_TIMESTAMP_BUTTON,
+                "composer_timestamp_button.e"
+        );
+
         addPathCallbacks(
                 channelGuidelines,
                 chatSummary,
                 comments,
                 commentsByMembers,
+                commentComposer,
                 commentComposerButtons,
+                commentsContexts,
                 commentsFilterBar,
-                commentsPrompts,
                 communityGuidelines,
                 createAShortButton,
-                emojiAndTimestampButtons,
+                emojiButton,
                 giftAnimationAndCards,
                 previewComment,
                 previewCommentDotsSelector,
-                thanksButton
+                thanksButton,
+                timestampButton
         );
     }
 
@@ -175,6 +188,10 @@ public class CommentsFilter extends Filter {
             return Settings.HIDE_COMMENTS_SECTION.get();
         }
 
+        if (matchedGroup == commentComposer) {
+            return emojiButton.check(accessibility).isFiltered();
+        }
+
         if (matchedGroup == commentComposerButtons) {
             if (!VersionCheckPatch.IS_20_31_OR_GREATER) {
                 return false;
@@ -184,10 +201,6 @@ public class CommentsFilter extends Filter {
 
         if (matchedGroup == commentsFilterBar) {
             return Settings.HIDE_FILTER_BAR_IN_COMMENTS.get() && PlayerType.getCurrent().isMaximizedOrFullscreen();
-        }
-
-        if (matchedGroup == emojiAndTimestampButtons) {
-            return path.startsWith(COMMENT_COMPOSER_PATH);
         }
 
         if (matchedGroup == previewCommentDotsSelector) {
@@ -338,7 +351,7 @@ public class CommentsFilter extends Filter {
      * Injection point.
      */
     public static void hideLiveChatEmojiButton(View view) {
-        if (Settings.HIDE_COMMENTS_EMOJI_AND_TIMESTAMP_BUTTONS.get() && view != null) {
+        if (Settings.HIDE_COMMENTS_EMOJI_BUTTON.get() && view != null) {
             ViewGroup.LayoutParams lp = view.getLayoutParams();
             if (lp != null) {
                 lp.width = 0;

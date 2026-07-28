@@ -487,7 +487,7 @@ internal object ChannelTabAddFingerprint : Fingerprint(
     )
 )
 
-internal object EngagementPanelInformationButtonFingerprint : Fingerprint(
+internal object InformationButtonFingerprint : Fingerprint(
     parameters = listOf("Landroid/content/Context;"),
     filters = listOf(
         resourceLiteral(ResourceType.ID, "information_button"),

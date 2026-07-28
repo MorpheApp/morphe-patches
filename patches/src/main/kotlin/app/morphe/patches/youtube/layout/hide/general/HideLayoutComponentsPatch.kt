@@ -162,13 +162,13 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     ),
                     SwitchPreference("morphe_hide_comments_ai_chat_summary"),
                     SwitchPreference("morphe_hide_comments_channel_guidelines"),
-                    SwitchPreference("morphe_hide_comments_prompts", summary = true),
                     SwitchPreference("morphe_hide_comments_by_members_header"),
                     SwitchPreference("morphe_hide_comments_section"),
                     SwitchPreference("morphe_hide_comments_section_in_home_feed"),
                     SwitchPreference("morphe_hide_comments_community_guidelines"),
+                    SwitchPreference("morphe_hide_comments_contexts"),
                     SwitchPreference("morphe_hide_comments_create_a_short_button"),
-                    SwitchPreference("morphe_hide_comments_emoji_and_timestamp_buttons"),
+                    SwitchPreference("morphe_hide_comments_emoji_button"),
                     SwitchPreference("morphe_hide_comments_filter_bar_options", summary = true),
                     SwitchPreference("morphe_hide_comments_gift_animation_and_cards"),
                     SwitchPreference("morphe_hide_comments_gift_button"),
@@ -176,6 +176,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_comments_live_chat_donators_bar"),
                     SwitchPreference("morphe_hide_comments_preview_comment", summary = true),
                     SwitchPreference("morphe_hide_comments_thanks_button"),
+                    SwitchPreference("morphe_hide_comments_timestamp_button"),
                     SwitchPreference("morphe_sanitize_comments_highlighted_search_links", summary = true)
                 ),
                 sorting = Sorting.UNSORTED
@@ -594,7 +595,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // region hide comments info button
 
-        EngagementPanelInformationButtonFingerprint.let {
+        InformationButtonFingerprint.let {
             it.method.apply {
                 val checkCastIndex = it.instructionMatches[1].index
                 val viewRegister = getInstruction<OneRegisterInstruction>(checkCastIndex).registerA

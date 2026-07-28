@@ -46,6 +46,19 @@ public final class LayoutComponentsFilter extends Filter {
                 "music_list_item_carousel.e"
         );
 
+        // Lyrics engagement panel chips. Share is a plain `button.e`; Translate is a
+        // `toggle_button.e`. The `identifier` check in isFiltered scopes both callbacks
+        // to the timed-lyrics container so unrelated buttons elsewhere are unaffected.
+        lyricsShareButton = new StringFilterGroup(
+                Settings.HIDE_LYRICS_SHARE_BUTTON,
+                "button.e"
+        );
+
+        lyricsTranslateButton = new StringFilterGroup(
+                Settings.HIDE_LYRICS_TRANSLATE_BUTTON,
+                TOGGLE_BUTTON_PATH
+        );
+
         final StringFilterGroup newFromShelf = new StringFilterGroup(
                 Settings.HIDE_NEW_FROM_SHELF,
                 "music_action_card_shelf.e"
@@ -61,17 +74,10 @@ public final class LayoutComponentsFilter extends Filter {
                 "music_speed_dial_shelf.e"
         );
 
-        // Lyrics engagement panel chips. Share is a plain `button.e`; Translate is a
-        // `toggle_button.e`. The `identifier` check in isFiltered scopes both callbacks
-        // to the timed-lyrics container so unrelated buttons elsewhere are unaffected.
-        lyricsShareButton = new StringFilterGroup(
-                Settings.HIDE_LYRICS_SHARE_BUTTON,
-                "button.e"
-        );
-
-        lyricsTranslateButton = new StringFilterGroup(
-                Settings.HIDE_LYRICS_TRANSLATE_BUTTON,
-                TOGGLE_BUTTON_PATH
+        final StringFilterGroup suggestedForYouShelf = new StringFilterGroup(
+                Settings.HIDE_SUGGESTED_FOR_YOU_SHELF,
+                "music_shelf_header_wrapper.e",
+                "music_list_item_wrapper.e"
         );
 
         addPathCallbacks(
@@ -83,7 +89,8 @@ public final class LayoutComponentsFilter extends Filter {
                 lyricsTranslateButton,
                 newFromShelf,
                 playlistShelves,
-                speedDialShelf
+                speedDialShelf,
+                suggestedForYouShelf
         );
     }
 
