@@ -158,6 +158,7 @@ As mudanças incluem:
   <string name="morphe_hide_featured_playlists_section_title">Ocultar seção de playlists destacadas</string>
   <string name="morphe_hide_featured_videos_section_title">Ocultar seção \'Vídeos em destaque\'</string>
   <string name="morphe_hide_gaming_section_title">Ocultar seção \'Jogos\'</string>
+  <string name="morphe_hide_hashtag_section_title">Ocultar seção de hashtag</string>
   <string name="morphe_hide_how_this_was_made_section_title">Ocultar seção \'Como este conteúdo foi criado\'</string>
   <string name="morphe_hide_hype_points_title">Ocultar pontos de Hype</string>
   <string name="morphe_hide_info_cards_section_title">Ocultar seção \'Cartões de informações\'</string>
@@ -455,6 +456,9 @@ Informação: Pode não funcionar em transmissões ao vivo"</string>
   <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Habilitar DVR de livestream</string>
   <string name="morphe_livestream_dvr_summary">Permite procurar em todas as transmissões ao vivo, mesmo naquelas que normalmente restringem isso</string>
+  <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">Ativar miniaturas da barra de pesquisa</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">Mostra uma miniatura do vídeo enquanto arrasta a barra de pesquisa</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'Ativar DVR de transmissão ao vivo' pode não estar disponível
 
@@ -1075,23 +1079,23 @@ Limitações:
 • Vídeos HDR não usarão AVC
 • Alguns dispositivos não conseguem forçar AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Para usar este recurso, defina \"Falsificar streams de vídeo\" como Android VR ou Android Studio</string>
+  <string name="morphe_force_avc_codec_not_available">Para usar este recurso, defina \'Falsificar streams de vídeo\' como \'Android VR\' ou \'Android Studio\'</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Abrir menu de qualidade avançada</string>
   <string name="morphe_advanced_video_quality_menu_summary">Ignora o menu de seleção de qualidade e abre o menu de qualidade Avançado diretamente</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Ocultar opções de vídeo de alta qualidade</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Priorizar a qualidade do vídeo</string>
-  <string name="morphe_prioritize_video_quality_summary">Prioriza a maior qualidade de vídeo disponível em relação à eficiência do codec</string>
+  <string name="morphe_video_quality_prioritize_title">Priorizar qualidade de vídeo</string>
+  <string name="morphe_video_quality_prioritize_summary">Prioriza a mais alta qualidade de vídeo disponível em relação à eficiência do codec</string>
+  <string name="morphe_video_quality_prioritize_dialog">Se esta configuração estiver desativada, vídeos mais antigos podem não exibir opções de qualidade de vídeo</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Permitir Android VR AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Permite a decodificação AV1 de software ao usar o cliente Android VR</string>
+  <string name="morphe_spoof_video_streams_av1_title">Permitir Android VR / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Permite a decodificação de software AV1 ao usar o cliente Android VR / visionOS</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Ativar esta configuração pode usar descodificação AV1 por software.
 
 A reprodução de vídeo com AV1 pode apresentar soluços ou perder quadros."</string>
   <string name="morphe_spoof_video_streams_about_title">Efeitos colaterais da falsificação</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• O vídeo pode parar em 1:00, ou pode não estar disponível em algumas regiões</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• O menu da faixa de áudio está faltando</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Nenhum codec de vídeo AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Modo imersivo 360° VR não está disponível</string>

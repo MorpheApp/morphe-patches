@@ -30,6 +30,7 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.context.conversionContextPatch
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.shared.InitializePlaybackSpeedValuesFingerprint
+import app.morphe.patches.youtube.shared.SpeedLimiterFingerprint
 import app.morphe.patches.youtube.video.playerresponse.Hook
 import app.morphe.patches.youtube.video.playerresponse.addPlayerResponseMethodHook
 import app.morphe.patches.youtube.video.playerresponse.playerResponseMethodHookPatch
@@ -95,6 +96,9 @@ private var formattedSpeedStringValueRegister = -1
 // Change playback speed method.
 private lateinit var setPlaybackSpeedMethodRef : WeakReference<MutableMethod>
 private var setPlaybackSpeedMethodIndex = -1
+
+private lateinit var setPlaybackRateMethodRef : WeakReference<MutableMethod>
+private var setPlaybackRateMethodIndex = -1
 
 internal lateinit var playerStatusMethodRef : WeakReference<MutableMethod>
 
@@ -224,6 +228,11 @@ val videoInformationPatch = bytecodePatch(
                 // Prevent duplicate hooking.
                 replaceInstruction(index, "nop")
             }
+        }
+
+        SpeedLimiterFingerprint.method.apply {
+            setPlaybackRateMethodRef = WeakReference(this)
+            setPlaybackRateMethodIndex = 0
         }
 
         val setPlaybackSpeedMethodReference = with(PlaybackSpeedOnItemClickFingerprint) {
@@ -668,11 +677,17 @@ fun videoTimeHook(targetMethodClass: String, targetMethodName: String) =
 /**
  * Hook when the video speed is changed for any reason _except when the user manually selects a new speed_.
  */
-fun videoSpeedChangedHook(targetMethodClass: String, targetMethodName: String) =
+fun videoSpeedChangedHook(targetMethodClass: String, targetMethodName: String) {
     setPlaybackSpeedMethodRef.get()!!.addInstruction(
         setPlaybackSpeedMethodIndex++,
         "invoke-static { p1 }, $targetMethodClass->$targetMethodName(F)V"
     )
+
+    setPlaybackRateMethodRef.get()!!.addInstruction(
+        setPlaybackRateMethodIndex++,
+        "invoke-static { p1 }, $targetMethodClass->$targetMethodName(F)V"
+    )
+}
 
 /**
  * Hook the video speed selected by the user.

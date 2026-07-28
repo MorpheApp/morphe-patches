@@ -4,6 +4,7 @@
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
+
 package app.morphe.patches.reddit.misc.settings
 
 import app.morphe.patcher.Fingerprint
@@ -79,4 +80,3 @@ internal object WebBrowserActivityOnCreateFingerprint : Fingerprint(
     ),
     strings = listOf("com.reddit.extra.initial_url")
 )
-

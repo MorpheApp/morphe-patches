@@ -4,6 +4,7 @@
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
+
 @file:Suppress("ClassName")
 
 package app.morphe.patches.reddit.layout.communities

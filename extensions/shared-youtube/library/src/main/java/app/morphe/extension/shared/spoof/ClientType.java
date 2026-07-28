@@ -10,7 +10,6 @@
 
 package app.morphe.extension.shared.spoof;
 
-import static app.morphe.extension.shared.patches.AppCheckPatch.IS_YOUTUBE;
 import static app.morphe.extension.shared.patches.AppCheckPatch.IS_YOUTUBE_MUSIC;
 
 import android.os.Build;
@@ -25,57 +24,6 @@ import app.morphe.extension.shared.Logger;
 
 @SuppressWarnings({"ConstantLocale", "deprecation"})
 public enum ClientType {
-    /**
-     * Video not playable: None.
-     * AV1 codec available.
-     */
-    ANDROID_REEL_AUTH(
-            3,
-            "ANDROID",
-            "com.google.android.youtube",
-            Build.MANUFACTURER,
-            Build.MODEL,
-            "Android",
-            Build.VERSION.RELEASE,
-            String.valueOf(Build.VERSION.SDK_INT),
-            Build.ID,
-            // A hardcoded client version is used for YouTube Music.
-            "20.47.62",
-            null,
-            IS_YOUTUBE,
-            IS_YOUTUBE,
-            true,
-            false,
-            true,
-            true,
-            false,
-            "Android Reel auth"
-    ),
-    /**
-     * Video not playable: Paid, Movie, Private, Age-restricted.
-     * AV1 codec available.
-     */
-    ANDROID_REEL_NO_AUTH(
-            ANDROID_REEL_AUTH.id,
-            ANDROID_REEL_AUTH.clientName,
-            Objects.requireNonNull(ANDROID_REEL_AUTH.packageName),
-            ANDROID_REEL_AUTH.deviceMake,
-            ANDROID_REEL_AUTH.deviceModel,
-            ANDROID_REEL_AUTH.osName,
-            ANDROID_REEL_AUTH.osVersion,
-            Objects.requireNonNull(ANDROID_REEL_AUTH.androidSdkVersion),
-            ANDROID_REEL_AUTH.buildID,
-            ANDROID_REEL_AUTH.clientVersion,
-            ANDROID_REEL_AUTH.clientPlatform,
-            false,
-            false,
-            ANDROID_REEL_AUTH.supportsMultiAudioTracks,
-            ANDROID_REEL_AUTH.supportsOAuth2,
-            ANDROID_REEL_AUTH.supportsVRImmersiveMode,
-            ANDROID_REEL_AUTH.requireSABR,
-            ANDROID_REEL_AUTH.usePlayerEndpoint,
-            "Android Reel no auth"
-    ),
     /**
      * Video not playable: None.
      * For YouTube Music only.
@@ -100,6 +48,23 @@ public enum ClientType {
             true,
             false,
             "Android Music Reel"
+    ),
+    ANDROID_MUSIC_NO_SDK(
+            21,
+            "ANDROID_MUSIC",
+            ANDROID_MUSIC_REEL.deviceMake,
+            ANDROID_MUSIC_REEL.deviceModel,
+            ANDROID_MUSIC_REEL.osName,
+            ANDROID_MUSIC_REEL.osVersion,
+            "7.12.52",
+            null,
+            "com.google.android.apps.youtube.music/7.12.52 (Linux; U; Android " + Build.VERSION.RELEASE + ") gzip",
+            IS_YOUTUBE_MUSIC,
+            IS_YOUTUBE_MUSIC,
+            false,
+            false,
+            false,
+            "Android Music No SDK"
     ),
     /**
      * Video not playable: Kids.
@@ -183,7 +148,8 @@ public enum ClientType {
      * Video not playable: None.
      * AV1 codec available.
      */
-    TV(7,
+    TV(
+            7,
             "TVHTML5",
             "Samsung",
             "SmartTV",
@@ -205,7 +171,8 @@ public enum ClientType {
      * AV1 codec available.
      * May stop working at any time.
      */
-    VISIONOS(101,
+    VISIONOS_1_03(
+            101,
             "VISIONOS",
             "Apple",
             "RealityDevice17,1",
@@ -219,7 +186,29 @@ public enum ClientType {
             true,
             true,
             false,
-            "visionOS"
+            "visionOS 1.03"
+    ),
+    /**
+     * Video not playable: Kids, Paid, Movie, Private, Age-restricted.
+     * AV1 codec not available.
+     * May stop working at any time.
+     */
+    VISIONOS_1_02(
+            VISIONOS_1_03.id,
+            VISIONOS_1_03.clientName,
+            VISIONOS_1_03.deviceMake,
+            "RealityDevice14,1",
+            VISIONOS_1_03.osName,
+            "2.6.22O785",
+            "1.02",
+            VISIONOS_1_03.clientPlatform,
+            VISIONOS_1_03.userAgent,
+            VISIONOS_1_03.canLogin,
+            VISIONOS_1_03.requireLogin,
+            VISIONOS_1_03.supportsMultiAudioTracks,
+            VISIONOS_1_03.supportsVRImmersiveMode,
+            VISIONOS_1_03.requireJS,
+            "visionOS 1.02"
     );
 
     /**
@@ -373,7 +362,7 @@ public enum ClientType {
 
         Locale defaultLocale = Locale.getDefault();
         this.userAgent = String.format(Locale.ENGLISH,
-                "%s/%s (Linux; U; Android %s; %s; %s; Build/%s)",
+                "%s/%s (Linux; U; Android %s; %s; %s Build/%s)",
                 packageName,
                 clientVersion,
                 osVersion,

@@ -85,7 +85,7 @@ Um neue Sprachen zu übersetzen oder die vorhandenen Übersetzungen zu verbesser
   <string name="morphe_settings_about_licenses_loading">Laden…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debugging</string>
-  <string name="morphe_debug_screen_summary">Konfigurieren Sie erweiterte Entwickleroptionen und Diagnoseprotokolle</string>
+  <string name="morphe_debug_screen_summary">Erweiterte Entwickleroptionen und Diagnoseprotokolle konfigurieren</string>
   <string name="morphe_debug_title">Debug-Protokollierung aktivieren</string>
   <string name="morphe_debug_stacktrace_title">Debug-Log Stack-Trace</string>
   <string name="morphe_debug_stacktrace_summary">Enthält Stacktraces in Debugprotokollen, um Fehler zu identifizieren</string>
@@ -127,19 +127,19 @@ Folgen Sie der Anleitung “Don't kill my app” für Ihr Telefon und wenden Sie
 
 Dies ist erforderlich, damit die App funktioniert."</string>
   <string name="gms_core_dialog_open_website_text">Website öffnen</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Die Batterieoptimierungen für MicroG müssen deaktiviert werden, um Probleme zu vermeiden.
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Die Akkuoptimierung muss für MicroG deaktiviert werden, um Probleme zu vermeiden.
 
-Die Deaktivierung der Batterieoptimierungen für MicroG beeinflusst nicht negativ den Akkuverbrauch.
+Die Deaktivierung der Akkuoptimierung von MicroG hat keinen negativen Einfluss auf den Akkuverbrauch.
 
-Tippen Sie auf die Schaltfläche „Weiter“ und erlauben Sie die Optimierungsänderungen."</string>
+Tippe auf die Schaltfläche „Weiter“ und erlaube die Änderungen."</string>
   <string name="gms_core_dialog_continue_text">Weiter</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Dialog zur MicroG-Batterieoptimierung anzeigen</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Das Deaktivieren verbirgt die MicroG-Batterieoptimierungsaufforderung.
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Dialog zur MicroG-Akkuoptimierung anzeigen</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Das Deaktivieren verbirgt die Aufforderung zur Akkuoptimierung von MicroG.
 
-Wenn die Batterieoptimierungen nicht geändert werden, kann es zu folgenden Problemen kommen:
-• Die App kann unerwartet geschlossen werden
+Wird die Akkuoptimierung nicht geändert, kann es zu folgenden Problemen kommen:
+• Die App kann sich unerwartet schließen
 • Benachrichtigungen funktionieren möglicherweise nicht
-• Die Wiedergabe im Hintergrund funktioniert möglicherweise nicht"</string>
+• Wiedergabe im Hintergrund funktioniert möglicherweise nicht"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">App-Link-Behandlung</string>
   <string name="morphe_link_handling_summary">Links konfigurieren, um sie in dieser App zu öffnen</string>

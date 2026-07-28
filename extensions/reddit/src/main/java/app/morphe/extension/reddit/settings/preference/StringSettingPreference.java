@@ -4,6 +4,7 @@
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
+
 package app.morphe.extension.reddit.settings.preference;
 
 import static app.morphe.extension.shared.StringRef.str;
@@ -14,7 +15,7 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.shared.settings.preference.ResettableEditTextPreference;
 
-@SuppressWarnings("deprecation")
+@SuppressWarnings({"deprecation", "unused"})
 public class StringSettingPreference extends ResettableEditTextPreference {
 
     public StringSettingPreference(Context context, StringSetting setting) {

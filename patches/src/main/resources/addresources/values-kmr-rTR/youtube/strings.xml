@@ -159,6 +159,7 @@ Guherînan têne xistine:
   <string name="morphe_hide_featured_playlists_section_title">Li ser şûşeyê veşêre jinavkirina stranlisteyên taybet</string>
   <string name="morphe_hide_featured_videos_section_title">Bêjeya Lîstik veşêrin</string>
   <string name="morphe_hide_gaming_section_title">Bêjeya \'Çawa ev hat çêkirin\' veşêrin</string>
+  <string name="morphe_hide_hashtag_section_title">Bêjê rêja hashtagê veşêre</string>
   <string name="morphe_hide_how_this_was_made_section_title">Bêjeya Kartên Agahî veşêrin</string>
   <string name="morphe_hide_hype_points_title">Zorîyên Heyecan ve nebînîne.</string>
   <string name="morphe_hide_info_cards_section_title">Bêjeya \'Dîtinên sereke\' veşêrin</string>
@@ -456,6 +457,9 @@ Info: May not work on live streams"</string>
   <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Stêrkirina DVR-ya pêşandanê serdest bike</string>
   <string name="morphe_livestream_dvr_summary">Hêlî dibe ku li ser hemû weşînên zindî lêgerînê bike, tewra yên ku normal têkbirinê qedexe dikin</string>
+  <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">Mîhengkirina hûrimên şopê ji bo dîtina hêsantirî</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">Nîşana vîdyoyê dema ku şopa dîtinê diherikînê da dîmenê</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'Zêdekirina DVR-a livestreamek' neyê bikar anîn
 
@@ -1077,23 +1081,23 @@ Sînergirên:
 • Video yan HDR dê AVC bikar nebin
 • Hin alav nikarên AVC zor bike"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Ji bo karanîna vê taybetmendiyê, \'Streaming vîdyoyê şopîn bike\' saz bike bo Android VR an Android Studio</string>
+  <string name="morphe_force_avc_codec_not_available">Daku rê vê taybetê bikar bînin, \'Hêmanên vîdyoyê yên sûnî\' hilbijêrin wek \'Android VR\' an \'Android Studio\'</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Veke ji menuya kalîteya pêşkeftî ve bike</string>
   <string name="morphe_advanced_video_quality_menu_summary">Dibe menuya hilbijartina kalîteyê derbas dike û rasterast menuya kalîteya Pêşkeftî vekirin</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Ji asta Premium veşêre</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Kalîteya Vîdyoyê pêşandanî bike</string>
-  <string name="morphe_prioritize_video_quality_summary">Kalîteya herî bilind a vîdyoyê li ser karbidestiya kodekê parêz dike</string>
+  <string name="morphe_video_quality_prioritize_title">Kalîteya vîdyoyê parêz bike</string>
+  <string name="morphe_video_quality_prioritize_summary">Kalîteya herî bilind a vîdyoyê li ser karbidestiya kodekê parêz dike</string>
+  <string name="morphe_video_quality_prioritize_dialog">Heke ev rêgezirîn veqetandibe, wêrên vîdyoyên kevnar nizanin ku veguhêzên kalîteya vîdyoyê nîşan bidin</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Hilbijartina AV1 ya Android VR ji bo</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Hêza kodêkirina AV1 ya nermalavê dema ku hûn cîhazê Android VR bikar tînin</string>
+  <string name="morphe_spoof_video_streams_av1_title">Destûrê bidin Android VR / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Destûr dide bernameyê ku veguhêzkerê AV1 bikar bîne dema ku serîlêdana Android VR / visionOS-ê tê bikar anîn</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Çalak kirina vê sazkare dikare ji dekodkirina AV1 ya nermalê bikar bîne.
 
 Lêxistina video bi AV1 dikare kîzbirin an kêmuçêkî framean bike."</string>
   <string name="morphe_spoof_video_streams_about_title">Efectê spoofingê</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• Vîdyo dikare di 1:00 de raweste, an jî di hin herêmên cuda de nedibe.</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Menuya rêgirên audio kêman e </string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Kodeka vîdyoyê ya AV1 tune</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Moda berfireh a VRê 360° niye.</string>

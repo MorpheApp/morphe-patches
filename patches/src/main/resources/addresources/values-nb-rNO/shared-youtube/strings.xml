@@ -103,17 +103,6 @@ Trykk på Fortsett nedenfor for å logge på"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Kan ikke logge på VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Logget ut av Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Ugyldig VR-påloggingstoken, prøv å logge inn på VR igjen</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Deaktiver oppdatering av spiller JavaScript</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Låser JavaScript-koden for avspilleren til en bestemt versjon
-
-• En gyldig hash for JavaScript-koden til avspilleren kreves
-• Hash-verdier for JavaScript-koden til avspilleren er gyldige i omtrent én måned, og utdaterte hash-verdier vil bli tilbakekalt av GVS
-• Avspillingen vil mislykkes hvis hash-verdien er tilbakekalt"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"Du må oppgi en gyldig hash for JavaScript-koden til avspilleren.
-
-Avspillingen vil mislykkes hvis hash-verdien for JavaScript-koden til avspilleren er utdatert."</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Spiller JavaScript-hash</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Skriv inn en gyldig spiller JavaScript-hash</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Deaktiver QUIC-protokollen</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

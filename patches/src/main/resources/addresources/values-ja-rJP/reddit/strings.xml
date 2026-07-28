@@ -32,13 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">About 欄を非表示</string>
   <string name="morphe_hide_resources_shelf_title">リソース欄を非表示</string>
   <string name="morphe_screen_layout_title">レイアウト</string>
-  <string name="morphe_disable_modern_home_title">モダンホーム UI を無効化</string>
-  <string name="morphe_disable_screenshot_popup_title">スクリーンショットポップアップを無効化</string>
-  <string name="morphe_disable_screenshot_popup_summary">スクリーンショットを撮影したときに表示されるポップアップを無効にします</string>
-  <string name="morphe_hide_ask_button_title">質問ボタンを非表示</string>
-  <string name="morphe_hide_ask_button_summary">検索バー内の質問ボタンを非表示にします</string>
-  <string name="morphe_force_system_font_title">システム フォントを使用</string>
-  <string name="morphe_force_system_font_summary">Reddit Sans または Roboto の代わりに、デバイスのシステム フォントを使用します。この設定を有効にすると、[カスタム フォント] が自動的に無効になります</string>
   <string name="morphe_custom_font_title">カスタム フォント</string>
   <string name="morphe_custom_font_summary">設定した TTF フォント ファイルまたは OTF フォント ファイルを読み込みます。この設定を有効にすると、[システム フォント] が自動的に無効になります</string>
   <string name="morphe_custom_font_file_path_title">カスタム フォント ファイル</string>
@@ -47,6 +40,13 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_pick_file_first">先にカスタム フォント ファイルを設定してください</string>
   <string name="morphe_custom_font_invalid_file">拡張子が .ttf または .otf のフォントファイルを選択してください</string>
   <string name="morphe_custom_font_failed_to_load">カスタム フォントの読み込みに失敗しました。別のファイルを選択してください</string>
+  <string name="morphe_disable_modern_home_title">モダンホーム UI を無効化</string>
+  <string name="morphe_disable_screenshot_popup_title">スクリーンショットポップアップを無効化</string>
+  <string name="morphe_disable_screenshot_popup_summary">スクリーンショットを撮影したときに表示されるポップアップを無効にします</string>
+  <string name="morphe_force_system_font_title">システム フォントを使用</string>
+  <string name="morphe_force_system_font_summary">Reddit Sans または Roboto の代わりに、デバイスのシステム フォントを使用します。この設定を有効にすると、[カスタム フォント] が自動的に無効になります</string>
+  <string name="morphe_hide_ask_button_title">質問ボタンを非表示</string>
+  <string name="morphe_hide_ask_button_summary">検索バー内の質問ボタンを非表示にします</string>
   <string name="morphe_hide_communities_shelf_title">コミュニティ欄を非表示</string>
   <string name="morphe_hide_communities_shelf_summary">subreddit の関連コミュニティ欄とおすすめコミュニティ欄を非表示にします</string>
   <string name="morphe_hide_trending_shelves_title">トレンド欄を非表示</string>

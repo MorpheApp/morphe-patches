@@ -32,13 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">Felja Um hillu</string>
   <string name="morphe_hide_resources_shelf_title">Felja Auðlinda hillu</string>
   <string name="morphe_screen_layout_title">Útlaga</string>
-  <string name="morphe_disable_modern_home_title">Gerja nýjara heimili af virkni</string>
-  <string name="morphe_disable_screenshot_popup_title">Gerja af virkni skjásnaps glugga</string>
-  <string name="morphe_disable_screenshot_popup_summary">Gerir af virkni gluggann sem birtist þegar skjásnaps er tekinn</string>
-  <string name="morphe_hide_ask_button_title">Felja Spyrja hnappinn</string>
-  <string name="morphe_hide_ask_button_summary">Felur Spyrja hnappinn í leitastiku</string>
-  <string name="morphe_force_system_font_title">Kerfi leturstíll</string>
-  <string name="morphe_force_system_font_summary">Notaðu kerfont tækisins í stað Reddit Sans eða Roboto. Ef þetta er virkt þá er einnig lokað sérsniðinni leturgerð</string>
   <string name="morphe_custom_font_title">Sérsniðin leturstíll</string>
   <string name="morphe_custom_font_summary">Hlaðið sérsniðinni TTF eða OTF leturskriftarskránni frá slóðinni hér að neðan. Ef þetta er virkt þá er einnig lokað því að nota kerfont</string>
   <string name="morphe_custom_font_file_path_title">Sérsniðin leturstíllarskrá</string>
@@ -47,6 +40,13 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_pick_file_first">Veldu sérsniðna leturskrift fyrst</string>
   <string name="morphe_custom_font_invalid_file">Vinsamlegast veldu .ttf eða .otf leturskriftarskrá</string>
   <string name="morphe_custom_font_failed_to_load">Misstóðst að hlaða sérsniðna leturfonta. Vinsamlegast veldu aðra skrá</string>
+  <string name="morphe_disable_modern_home_title">Gerja nýjara heimili af virkni</string>
+  <string name="morphe_disable_screenshot_popup_title">Gerja af virkni skjásnaps glugga</string>
+  <string name="morphe_disable_screenshot_popup_summary">Gerir af virkni gluggann sem birtist þegar skjásnaps er tekinn</string>
+  <string name="morphe_force_system_font_title">Kerfi leturstíll</string>
+  <string name="morphe_force_system_font_summary">Notaðu kerfont tækisins í stað Reddit Sans eða Roboto. Ef þetta er virkt þá er einnig lokað sérsniðinni leturgerð</string>
+  <string name="morphe_hide_ask_button_title">Felja Spyrja hnappinn</string>
+  <string name="morphe_hide_ask_button_summary">Felur Spyrja hnappinn í leitastiku</string>
   <string name="morphe_hide_communities_shelf_title">Fela samfélagasafna</string>
   <string name="morphe_hide_communities_shelf_summary">Felur tengda eða tillögð samfélagasafna á undirredditum</string>
   <string name="morphe_hide_trending_shelves_title">Fela vinsælu hillur</string>

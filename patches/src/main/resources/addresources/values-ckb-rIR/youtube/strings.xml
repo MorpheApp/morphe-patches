@@ -168,6 +168,7 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_summary">Allows seeking on all livestreams, even those that normally restrict it</string>
+  <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_expand_livestream_dvr_duration_summary">Allows you to rewind live broadcasts up to 7 days into the past</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
@@ -512,12 +513,9 @@ Second \"item\" text"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">به‌هۆی باوه‌ڕی به‌رهه‌می ڤیدۆ، خاڵه‌کان پێشێل بکه‌.</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">إﺫۆنێ ڤێڕ Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"چالاکی کردنی ئەم ڕێکخستنە دەکرێت بەکارهێنانێک لە دەربڕەخستنی نەرمەکاری AV1."</string>
   <string name="morphe_spoof_video_streams_about_title">لائەكانی دروستكردن</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• ڤیدێو دەتووانێت لە 1:00 راوەستێت، یان لە هەندێ ناحیەیەکیشدا پێچەوانەی ئەوە دەبێت.</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• خوله‌یا قوڵفه‌ی دەربونه‌ت</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• ناکۆكی كۆدێكی ڤیدیۆ ڤێ (AV1) نییه</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• دەربارەی پێشبڕکێی دەنگی پاوەستادار، ئەو پێشبڕکێی پێشبڕکێ دەست نەکەوێت</string>

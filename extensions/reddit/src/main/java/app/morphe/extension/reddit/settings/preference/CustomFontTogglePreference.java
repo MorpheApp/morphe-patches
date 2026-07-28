@@ -4,6 +4,7 @@
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
+
 package app.morphe.extension.reddit.settings.preference;
 
 import static app.morphe.extension.shared.StringRef.str;
@@ -30,7 +31,7 @@ public final class CustomFontTogglePreference extends BooleanSettingPreference {
 
             // Enabling custom fonts without a selected file would be a no-op at runtime.
             String configuredPath = Settings.CUSTOM_FONT_FILE_PATH.get();
-            if (configuredPath == null || configuredPath.trim().isEmpty()) {
+            if (configuredPath.trim().isEmpty()) {
                 if (ResourceUtils.getStringIdentifier("morphe_custom_font_pick_file_first") != 0) {
                     Utils.showToastLong(str("morphe_custom_font_pick_file_first"));
                 } else {

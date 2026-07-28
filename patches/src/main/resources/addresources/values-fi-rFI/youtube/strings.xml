@@ -32,6 +32,7 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_title">Palauta vanhat YouTube-asetusvalikot</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Poista taustatoiston rajoitukset</string>
+  <string name="morphe_shorts_disable_background_playback_title">Poista Shortsien taustatoisto käytöstä</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">Poista asettelupäivitykset käytöstä</string>
   <string name="morphe_disable_layout_updates_summary">Estää palvelinta päivittämästä sovelluksen asettelua</string>
@@ -157,6 +158,7 @@ Muutoksia ovat muun muassa:
   <string name="morphe_hide_featured_playlists_section_title">Piilota suositellut soittolistat -osio</string>
   <string name="morphe_hide_featured_videos_section_title">Piilota Esitellyt videot -osio</string>
   <string name="morphe_hide_gaming_section_title">Piilota Pelaaminen-osio</string>
+  <string name="morphe_hide_hashtag_section_title">Piilota Hashtag-osio</string>
   <string name="morphe_hide_how_this_was_made_section_title">Piilota \"Miten tämä sisältö on luotu\" -osio</string>
   <string name="morphe_hide_hype_points_title">Piilota Hype-pisteet</string>
   <string name="morphe_hide_info_cards_section_title">Piilota Info-kortit -osio</string>
@@ -454,6 +456,9 @@ Tieto: Ei välttämättä toimi suoratoistoissa"</string>
   <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Ota suoratoistinauhoitus käyttöön</string>
   <string name="morphe_livestream_dvr_summary">Mahdollistaa etsimisen kaikista suoralähetyksistä, myös niistä, jotka yleensä rajoittavat sitä</string>
+  <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">Ota etenemispalkin pikkukuvien esikatselu käyttöön</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">Näyttää videon pikkukuvan vedettäessä hakupalkkia</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'Livestream-tallennuksen' tallennus ei ehkä ole käytettävissä
 
@@ -1074,23 +1079,23 @@ Rajoitukset:
 • HDR-videot eivät käytä AVC:tä
 • Jotkin laitteet eivät voi pakottaa AVC:tä"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Käyttääksesi tätä ominaisuutta, aseta \"Naamioi videovirrat\" Android VR:ksi tai Android Studioksi</string>
+  <string name="morphe_force_avc_codec_not_available">Käyttääksesi tätä ominaisuutta, aseta \"Naamioi videovirrat\" arvoon \"Android VR\" tai \"Android Studio\".</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Avaa parannetun laadun valikko</string>
   <string name="morphe_advanced_video_quality_menu_summary">Ohittaa laadunvalintavalikon ja avaa Laatu-valikon lisääsetukset suoraan</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Piilota kalliiden laadun valinnat</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Priorisoida video-laatu</string>
-  <string name="morphe_prioritize_video_quality_summary">Priorisoi korkein saatavilla oleva videon laatu koodekin tehokkuuden sijaan</string>
+  <string name="morphe_video_quality_prioritize_title">Priorisoi videon laatua</string>
+  <string name="morphe_video_quality_prioritize_summary">Priorisoi korkein saatavilla oleva videon laatu koodaustehostavuuden sijaan</string>
+  <string name="morphe_video_quality_prioritize_dialog">Jos tämä asetus on pois päältä, vanhemmat videot eivät ehkä näytä videon laatuvaihtoehtoja</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Salli Android VR AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Sallii ohjelmistopohjaisen AV1-dekoodauksen, kun käytetään Android VR -asiakasohjelmaa</string>
+  <string name="morphe_spoof_video_streams_av1_title">Salli Android VR / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Sallii AV1-videon dekoodauksen, kun käytetään Android VR- tai visionOS-asiakasta</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Tämän asetuksen käyttöönotto saattaa käyttää ohjelmistopohjaista AV1-dekoodausta.
 
 AV1-videon toisto saattaa pätkiä."</string>
   <string name="morphe_spoof_video_streams_about_title">Naamioimisen sivuvaikutukset</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• Video saattaa pysähtyä aikaan 1:00, tai ei välttämättä ole saatavilla joillakin alueilla</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Ääniraitavalikko puuttuu</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Ei AV1-videokoodekkia</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR-immersiivinen tila ei ole käytettävissä</string>

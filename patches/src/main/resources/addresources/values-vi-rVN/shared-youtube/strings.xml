@@ -56,9 +56,9 @@ Kiểm tra xem tên gói có chính xác không và ứng dụng đã được c
   <string name="morphe_spoof_video_streams_screen_title">Giả mạo luồng phát video</string>
   <string name="morphe_spoof_video_streams_screen_summary">Cấu hình giả mạo client nhằm tránh lỗi khi phát</string>
   <string name="morphe_spoof_video_streams_title">Giả mạo luồng phát video</string>
-  <string name="morphe_spoof_video_streams_summary">"Sửa lỗi phát cho hầu hết người dùng bằng cách đổi luồng video tương thích.
+  <string name="morphe_spoof_video_streams_summary">"Sửa lỗi phát cho hầu hết người dùng bằng cách đổi luồng video tương thích
 
-Nếu bạn đã mua gói Premium, có thể không cần phải bật cài đặt này."</string>
+Nếu bạn đã mua gói Premium, có thể không cần thiết phải bật cài đặt này"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Không thể lấy bất kỳ luồng phát nào</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Tắt cài đặt này có thể gây ra lỗi khi phát.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -103,17 +103,6 @@ Bấm tiếp tục bên dưới để đăng nhập"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Không thể đăng nhập vào VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Đã đăng xuất khỏi Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Mã đăng nhập VR không hợp lệ, hãy thử đăng nhập lại vào VR</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Tắt cập nhật JavaScript của trình phát</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Cố định phiên bản JavaScript của trình phát
-
-• Yêu cầu mã băm JavaScript hợp lệ
-• Mỗi mã băm thường chỉ có hiệu lực trong khoảng một tháng và bị GVS thu hồi khi hết hạn
-• Khi bị thu hồi, video sẽ không còn phát được nữa"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"Bạn cần cung cấp một mã băm JavaScript của trình phát còn hiệu lực.
-
-Bạn sẽ không còn xem được video nếu mã băm hết hạn."</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Mã băm JavaScript của trình phát</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Nhập mã băm JavaScript hợp lệ của trình phát</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Tắt giao thức QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -153,20 +142,20 @@ Bạn sẽ không còn xem được video nếu mã băm hết hạn."</string>
   <string name="morphe_replace_links_with_shortener_title">Đổi liên kết chia sẻ thành youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Buộc các video dùng định dạng youtu.be</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Bộ đệm giao thức nhật ký gỡ lỗi</string>
+  <string name="morphe_debug_protobuffer_title">Ghi nhật ký gỡ lỗi protocol buffer</string>
   <string name="morphe_debug_protobuffer_summary">Bổ sung thông tin chi tiết hơn giúp nhà phát triển xác định các thành phần trong ứng dụng</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Bật cài đặt này sẽ ghi lại dữ liệu bố cục bổ sung, bao gồm cả văn bản trên màn hình cho một số thành phần giao diện người dùng.
+  <string name="morphe_debug_protobuffer_user_dialog_message">"Bật cài đặt này để ghi thêm dữ liệu bố cục, bao gồm cả văn bản trên màn hình của một số thành phần giao diện.
 
-Điều này có thể giúp xác định các thành phần khi tạo bộ lọc tùy chỉnh.
+Giúp xác định các thành phần dễ hơn khi tạo bộ lọc tùy chỉnh.
 
-Tuy nhiên, bật tính năng này cũng sẽ ghi lại một số dữ liệu người dùng, chẳng hạn như địa chỉ IP của bạn."</string>
+Tuy nhiên, một số dữ liệu người dùng cũng được ghi lại như địa chỉ IP của bạn."</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Bộ lọc tùy chỉnh</string>
   <string name="morphe_custom_filter_screen_summary">Cấu hình bộ lọc tùy chỉnh để ẩn bất kỳ thành phần nào</string>
   <string name="morphe_custom_filter_title">Bật bộ lọc tùy chỉnh</string>
   <string name="morphe_custom_filter_strings_title">Bộ lọc tùy chỉnh</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
-  <string name="morphe_custom_filter_strings_summary">Danh sách các chuỗi tạo đường dẫn thành phần cần lọc, mỗi dòng một chuỗi</string>
+  <string name="morphe_custom_filter_strings_summary">Danh sách các string tạo đường dẫn thành phần mà bạn muốn lọc, mỗi dòng một string</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Bộ lọc tuỳ chỉnh không hợp lệ: %s</string>
   <!-- Settings menu filter -->
   <string name="morphe_settings_menu_filter_screen_title">Bộ lọc menu Cài đặt</string>
@@ -177,9 +166,9 @@ Tuy nhiên, bật tính năng này cũng sẽ ghi lại một số dữ liệu n
   <string name="morphe_spoof_app_version_summary">Khiến server nghĩ rằng bạn đang sử dụng phiên bản cũ để khôi phục giao diện cũ</string>
   <string name="morphe_spoof_app_version_user_dialog_message">"Phiên bản ứng dụng sẽ được giả mạo thành một phiên bản cũ hơn.
 
-Điều này sẽ thay đổi giao diện và tính năng của ứng dụng, nhưng cũng có thể xảy ra các tác dụng phụ không mong muốn.
+Giúp thay đổi giao diện và tính năng của ứng dụng, nhưng đồng thời cũng có thể xảy ra một số lỗi không xác định.
 
-Nếu tắt sau đó, bạn nên xóa dữ liệu ứng dụng để tránh các lỗi giao diện."</string>
+Nếu muốn tắt tính năng này sau đó, bạn nên xóa dữ liệu ứng dụng để tránh vỡ giao diện."</string>
   <string name="morphe_spoof_app_version_target_title">Mục tiêu phiên bản giả mạo</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->

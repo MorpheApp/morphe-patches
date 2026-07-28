@@ -197,6 +197,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">सटीक अनुरोध जेस्चर अक्षम करें</string>
   <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">लाइभस्ट्रिम DVR सक्षम गर्नुहोस्</string>
+  <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_expand_livestream_dvr_duration_title">लाइभस्ट्रिम DVR अवधिलाई विस्तार गर्नुहोस्</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
@@ -542,14 +543,11 @@ Second \"item\" text"</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">प्रीमियम गुणस्तर विकल्पहरू लुकाउनुहोस्</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">भिडियो गुणस्तरलाई प्राथमिकता दिनुहोस्</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Android VR AV1 अनुमति देब</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"यो सेटिङ सक्षम गर्नाले सफ्टवेयर AV1 डिकोडिङ प्रयोग हुन सक्छ।
 
 AV1 को साथ भिडियो प्लेब्याक स्टटर हुन सक्छ वा फ्रेमहरू छाड्न सक्छ।"</string>
   <string name="morphe_spoof_video_streams_about_title">स्पूफिंग साइड इफेक्ट</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• भिडियो १:०० मिनेटमा रोकिन सक्छ, वा केही क्षेत्रहरूमा उपलब्ध नहुन सक्छ</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• ऑडियो ट्रैक मेनू गुम अछि।</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• AV1 वीडियो कोडेक नहि अछि।</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• ३६०° VR इमर्सिभ मोड उपलब्ध छैन</string>

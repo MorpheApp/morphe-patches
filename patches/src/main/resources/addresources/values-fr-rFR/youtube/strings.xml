@@ -158,6 +158,7 @@ Les changements incluent :
   <string name="morphe_hide_featured_playlists_section_title">Masquer la section \'Playlists populaires\'</string>
   <string name="morphe_hide_featured_videos_section_title">Masquer la section \'Vidéos populaires\'</string>
   <string name="morphe_hide_gaming_section_title">Masquer la section \'Jeux\'</string>
+  <string name="morphe_hide_hashtag_section_title">Masquer la section des hashtags</string>
   <string name="morphe_hide_how_this_was_made_section_title">Masquer la section \'Comment la vidéo a été créée\'</string>
   <string name="morphe_hide_hype_points_title">Masquer les points hype</string>
   <string name="morphe_hide_info_cards_section_title">Masquer la section \'Fiches d\'informations\'</string>
@@ -455,6 +456,9 @@ Info : Peut ne pas fonctionner sur les diffusions en direct"</string>
   <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Activer le DVR des diffusions en direct</string>
   <string name="morphe_livestream_dvr_summary">Permet d’afficher la barre de progression sur toutes les diffusions en directs, même ceux qui la restreignent normalement</string>
+  <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">Activer les miniatures sur la barre de progression</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">Affiche une miniature de la vidéo lors du déplacement sur la barre de progression</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'Activer le DVR des diffusions en direct' peut ne pas être disponible
 
@@ -1034,10 +1038,10 @@ Appuyez ici pour ouvrir DeArrow.ajay.app"</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Applique votre sélection de qualité manuelle à tous les Shorts futurs</string>
   <string name="morphe_shorts_quality_default_wifi_title">Qualité par défaut des Shorts sur le réseau Wi-Fi</string>
   <string name="morphe_shorts_quality_default_mobile_title">Qualité par défaut des Shorts sur le réseau mobile</string>
-  <string name="morphe_remember_video_quality_toast_mobile">Qualité mobile par défaut modifiée en : %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">Qualité Wi-Fi par défaut modifiée en : %s</string>
-  <string name="morphe_remember_video_quality_toast_shorts_mobile">Qualité mobile des Shorts modifiée en : %s</string>
-  <string name="morphe_remember_video_quality_toast_shorts_wifi">Qualité Wi-Fi des Shorts modifiée en : %s</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Qualité mobile par défaut définie sur : %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Qualité Wi-Fi par défaut définie sur : %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_mobile">Qualité mobile des Shorts définie sur : %s</string>
+  <string name="morphe_remember_video_quality_toast_shorts_wifi">Qualité Wi-Fi des Shorts définie sur : %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Afficher un bouton de \'Vitesse de lecture\'</string>
   <string name="morphe_playback_speed_dialog_button_summary">Appuyez longuement pour réinitialiser la vitesse par défaut</string>
@@ -1060,7 +1064,7 @@ Appuyez ici pour ouvrir DeArrow.ajay.app"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Notifications de changement de vitesse</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Affiche une notification lorsqu’une nouvelle vitesse de lecture par défaut est enregistrée</string>
   <string name="morphe_playback_speed_default_title">Vitesse de lecture par défaut</string>
-  <string name="morphe_remember_playback_speed_toast">Vitesse de lecture par défaut modifiée en : %s</string>
+  <string name="morphe_remember_playback_speed_toast">Vitesse de lecture par défaut définie sur : %s</string>
   <string name="morphe_disable_playback_speed_music_title">Utiliser la vitesse normale pour la musique</string>
   <string name="morphe_disable_playback_speed_music_summary">Toujours lire les clips musicaux à une vitesse de 1,0×</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
@@ -1083,16 +1087,16 @@ Limitations :
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Masquer les options de qualité Premium</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Prioriser la qualité vidéo</string>
-  <string name="morphe_prioritize_video_quality_summary">Privilégie la qualité vidéo la plus élevée disponible plutôt que l\'efficacité du codec</string>
+  <string name="morphe_video_quality_prioritize_title">Prioriser la qualité vidéo</string>
+  <string name="morphe_video_quality_prioritize_summary">Privilégie la qualité vidéo la plus élevée disponible plutôt que l\'efficacité du codec</string>
+  <string name="morphe_video_quality_prioritize_dialog">Si ce paramètre est désactivé, les vidéos plus anciennes peuvent ne proposer aucune option de qualité vidéo</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Autoriser AV1 sur Android VR</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Autorise le décodage logiciel AV1 lors de l\'utilisation du client Android VR</string>
+  <string name="morphe_spoof_video_streams_av1_title">Autoriser AV1 sur Android VR / visionOS</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Autorise le décodage logiciel du codec AV1 lors de l\'utilisation du client Android VR ou visionOS</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"L'activation de ce paramètre peut utiliser le décodage logiciel AV1.
 
 La lecture de vidéos en AV1 peut présenter des saccades ou des pertes d'images."</string>
   <string name="morphe_spoof_video_streams_about_title">Effets secondaires de la falsification</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• La vidéo peut s’arrêter à 1:00, ou ne pas être disponible dans certaines régions</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Le menu \'Piste Audio\' est manquant</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Codec vidéo AV1 indisponible</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Le mode 360° VR immersif n\'est pas disponible</string>

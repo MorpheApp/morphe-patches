@@ -103,17 +103,6 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Δεν είναι δυνατή η σύνδεση στο VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Αποσυνδεθήκατε από το Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Άκυρο κλειδί εισόδου VR, συνδεθείτε ξανά στο VR</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Απενεργοποίηση ενημέρωσης του προγράμματος αναπαραγωγής JavaScript</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Κλειδώνει το JavaScript του player σε μια συγκεκριμένη έκδοση
-
-• Απαιτείται ένα έγκυρο hash JavaScript του player
-• Τα hash JavaScript του player είναι έγκυρα για περίπου ένα μήνα, και τα παρωχημένα hash θα ανακληθούν από το GVS
-• Η αναπαραγωγή αποτυγχάνει εάν το hash έχει ανακληθεί"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"Πρέπει να παρέχετε ένα έγκυρο hash JavaScript του player.
-
-Η αναπαραγωγή θα αποτύχει εάν το hash JavaScript του player είναι παρωχημένο."</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hash προγράμματος αναπαραγωγής JavaScript</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Εισάγετε ένα έγκυρο hash για το πρόγραμμα αναπαραγωγής JavaScript</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Απενεργοποίηση πρωτοκόλλου QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

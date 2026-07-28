@@ -103,17 +103,6 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">无法登录 VR：%s</string>
   <string name="morphe_oauth2_toast_reset">已从 Android VR 登出</string>
   <string name="morphe_oauth2_toast_invalid">无效的 VR 登录令牌，请重新登录 VR</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">禁用播放器 JavaScript 更新</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"将播放器 JavaScript 锁定到特定版本
-
-• 需要有效的播放器 JavaScript 哈希值
-• 播放器 JavaScript 哈希值有效期约为一个月，过期的哈希值将被 GVS 取消
-• 如果哈希值被取消，播放将失败"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"您需要提供有效的播放器 JavaScript 哈希值。
-
-如果播放器 JavaScript 哈希值已过期，播放将失败。"</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Player JavaScript hash</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">输入有效的 Player JavaScript 哈希</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">禁用QUIC协议</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

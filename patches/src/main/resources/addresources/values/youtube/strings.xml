@@ -525,6 +525,9 @@ Info: May not work on live streams"</string>
     <!-- interaction.seekbar.livestreamDVRPatch -->
     <string name="morphe_livestream_dvr_title">Enable livestream DVR</string>
     <string name="morphe_livestream_dvr_summary">Allows seeking on all livestreams, even those that normally restrict it</string>
+    <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+    <string name="morphe_seekbar_thumbnail_preview_title">Enable seekbar thumbnails</string>
+    <string name="morphe_seekbar_thumbnail_preview_summary">Shows a video thumbnail while dragging the seekbar</string>
     <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
     <string name="morphe_livestream_dvr_not_available">"\'Enable livestream DVR\' may not be available
 
@@ -1215,7 +1218,7 @@ Limitations:
 • HDR videos will not use AVC
 • Some devices cannot force AVC"</string>
     <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-    <string name="morphe_force_avc_codec_not_available">To use this feature, set \'Spoof video streams\' to Android VR or Android Studio</string>
+    <string name="morphe_force_avc_codec_not_available">To use this feature, set \'Spoof video streams\' to \'Android VR or \'Android Studio\'</string>
 
     <!-- video.quality.advancedVideoQualityMenuPatch -->
     <string name="morphe_advanced_video_quality_menu_title">Open Advanced quality menu</string>
@@ -1225,17 +1228,17 @@ Limitations:
     <string name="morphe_hide_premium_video_quality_title">Hide Premium quality options</string>
 
     <!-- video.quality.prioritizeVideoQualityPatch -->
-    <string name="morphe_prioritize_video_quality_title">Prioritize video quality</string>
-    <string name="morphe_prioritize_video_quality_summary">Prioritizes the highest available video quality over codec efficiency</string>
+    <string name="morphe_video_quality_prioritize_title">Prioritize video quality</string>
+    <string name="morphe_video_quality_prioritize_summary">Prioritizes the highest available video quality over codec efficiency</string>
+    <string name="morphe_video_quality_prioritize_dialog">If this setting is turned off, then older videos can show no video quality options</string>
 
     <!-- misc.spoof.spoofVideoStreamsPatch -->
-    <string name="morphe_spoof_video_streams_av1_title">Allow Android VR AV1</string>
-    <string name="morphe_spoof_video_streams_av1_summary">Permits software AV1 decoding when using the Android VR client</string>
+    <string name="morphe_spoof_video_streams_av1_title">Allow Android VR / visionOS AV1</string>
+    <string name="morphe_spoof_video_streams_av1_summary">Permits software AV1 decoding when using the Android VR / visionOS client</string>
     <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Enabling this setting may use software AV1 decoding.
 
 Video playback with AV1 may stutter or drop frames."</string>
     <string name="morphe_spoof_video_streams_about_title">Spoofing side effects</string>
-    <string name="morphe_spoof_video_streams_about_playback_failure">• Video may stop at 1:00, or may not be available in some regions</string>
     <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Audio track menu is missing</string>
     <string name="morphe_spoof_video_streams_about_no_av1">• No AV1 video codec</string>
     <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR immersive mode is not available</string>

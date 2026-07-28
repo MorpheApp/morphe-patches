@@ -157,6 +157,7 @@ Zmeny zahŕňajú:
   <string name="morphe_hide_featured_places_section_title">Skryť sekciu \'Odporúčané miesta\'</string>
   <string name="morphe_hide_featured_videos_section_title">Skryť sekciu Odporúčaných videí</string>
   <string name="morphe_hide_gaming_section_title">Skryť sekciu Hry</string>
+  <string name="morphe_hide_hashtag_section_title">Skryť sekciu hashtagov</string>
   <string name="morphe_hide_how_this_was_made_section_title">Skryť sekciu \'Ako bol tento obsah vytvorený\'</string>
   <string name="morphe_hide_hype_points_title">Skryť hype body</string>
   <string name="morphe_hide_info_cards_section_title">Skryť sekciu Informačné karty</string>
@@ -454,6 +455,9 @@ Poznámka: Možno nebude fungovať na živých prenosoch"</string>
   <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Povoliť nahrávanie živého prenosu DVR</string>
   <string name="morphe_livestream_dvr_summary">Umožňuje prehľadávanie vo všetkých živých prenosoch, dokonca aj v tých, ktoré to zvyčajne obmedzujú</string>
+  <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">Povoliť miniatúry na posúvači</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">Zobrazuje miniatúru videa počas ťahania posúvača</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"Možno nie je dostupná funkcia 'Nahrávanie živého vysielania'
 
@@ -1073,23 +1077,17 @@ Obmedzenia:
 • HDR videá nebudú využívať AVC
 • Niektoré zariadenia nemôžu vynútiť AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Na používanie tejto funkcie nastavte \'Falsifikácia streamov videa\' na Android VR alebo Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Otvoriť menu pokročilých nastavení kvality</string>
   <string name="morphe_advanced_video_quality_menu_summary">Preskočí menu výberu kvality a otvorí priamo menu kvality \'Pokročilé\'</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Skryť možnosti kvality videa Premium</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Uprednostniť kvalitu videa</string>
-  <string name="morphe_prioritize_video_quality_summary">Uprednostňuje najvyššiu dostupnú kvalitu videa pred efektivitou kodeku</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Povoliť Android VR AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Umožňuje dekódovanie softvéru AV1 pri používaní klienta Android VR</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Povolením tohto nastavenia sa môže využívať softvérové dekódovanie AV1.
 
 Pri prehrávaní pomocou AV1 sa video môže zasekávať alebo vynechávať snímky."</string>
   <string name="morphe_spoof_video_streams_about_title">Možné následky falšovania</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• Video sa môže zastaviť na 1:00, alebo nemusí byť dostupné v niektorých oblastiach</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Chýba ponuka zvukových stôp</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Video kodek AV1 nie je podporovaný</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR ponorenie nie je k dispozícii</string>

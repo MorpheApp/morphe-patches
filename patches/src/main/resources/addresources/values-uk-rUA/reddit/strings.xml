@@ -32,13 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">Приховати панель \"Інформація\"</string>
   <string name="morphe_hide_resources_shelf_title">Приховати панель \"Ресурси\"</string>
   <string name="morphe_screen_layout_title">Макет</string>
-  <string name="morphe_disable_modern_home_title">Вимкнути сучасний домашній екран</string>
-  <string name="morphe_disable_screenshot_popup_title">Вимкнути спливаюче вікно знімку екрана</string>
-  <string name="morphe_disable_screenshot_popup_summary">Вимикає спливаюче вікно, яке з\'являється під час створення знімка екрана</string>
-  <string name="morphe_hide_ask_button_title">Приховати кнопку \"Запитати\"</string>
-  <string name="morphe_hide_ask_button_summary">Приховує кнопку \"Запитати\" у рядку пошуку</string>
-  <string name="morphe_force_system_font_title">Використовувати системний шрифт</string>
-  <string name="morphe_force_system_font_summary">Використовувати системний шрифт пристрою замість Reddit Sans або Roboto. Увімкнення цього також вимикає власний шрифт</string>
   <string name="morphe_custom_font_title">Власний шрифт</string>
   <string name="morphe_custom_font_summary">Завантажити файл власного шрифту TTF або OTF за шляхом нижче. Увімкнення цього також вимикає примусове використання системного шрифту</string>
   <string name="morphe_custom_font_file_path_title">Файл власного шрифту</string>
@@ -47,6 +40,13 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_pick_file_first">Спочатку виберіть файл власного шрифту</string>
   <string name="morphe_custom_font_invalid_file">Будь ласка, виберіть файл шрифту .ttf або .otf</string>
   <string name="morphe_custom_font_failed_to_load">Не вдалося завантажити власний шрифт. Виберіть інший файл</string>
+  <string name="morphe_disable_modern_home_title">Вимкнути сучасний домашній екран</string>
+  <string name="morphe_disable_screenshot_popup_title">Вимкнути спливаюче вікно знімку екрана</string>
+  <string name="morphe_disable_screenshot_popup_summary">Вимикає спливаюче вікно, яке з\'являється під час створення знімка екрана</string>
+  <string name="morphe_force_system_font_title">Використовувати системний шрифт</string>
+  <string name="morphe_force_system_font_summary">Використовувати системний шрифт пристрою замість Reddit Sans або Roboto. Увімкнення цього також вимикає власний шрифт</string>
+  <string name="morphe_hide_ask_button_title">Приховати кнопку \"Запитати\"</string>
+  <string name="morphe_hide_ask_button_summary">Приховує кнопку \"Запитати\" у рядку пошуку</string>
   <string name="morphe_hide_communities_shelf_title">Приховати панель спільнот</string>
   <string name="morphe_hide_communities_shelf_summary">Приховує панель пов\'язаних або рекомендованих спільнот у сабредітах</string>
   <string name="morphe_hide_trending_shelves_title">Приховати панелі \"Популярне\"</string>

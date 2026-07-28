@@ -103,17 +103,6 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">לא ניתן להתחבר ל-VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Вышли из Android VR</string>
   <string name="morphe_oauth2_toast_invalid">טוקן התחברות ל-VR לא חוקי, נסה להתחבר ל-VR שוב</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">לשבט את עדכוני JavaScript של הנגן</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"נעילת סקריפט JavaScript של הנגן לגרסה ספציפית
-
-• יש לספק hash תקין של סקריפט JavaScript של הנגן
-• ה-hash של סקריפט JavaScript של הנגן תקף בערך חודש אחד, ו-GVS תבטל hashים מיושנים
-• ההפעלה תיכשל אם ה-hash בוטל"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"עליך לספק hash תקין של סקריפט JavaScript של הנגן.
-
-ההפעלה תיכשל אם ה-hash של סקריפט JavaScript של הנגן מיושן."</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">‌Ԓ԰՞ԑ JavaScript ԲՈԴ</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">\"הזן hash JavaScript תקף של השחקן</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">השבת פרוטוקול QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

@@ -158,6 +158,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_featured_playlists_section_title">Απόκρυψη ενότητας με προτεινόμενες λίστες αναπαραγωγής</string>
   <string name="morphe_hide_featured_videos_section_title">Απόκρυψη τμήματος Προτεινόμενων βίντεο</string>
   <string name="morphe_hide_gaming_section_title">Απόκρυψη τμήματος Gaming</string>
+  <string name="morphe_hide_hashtag_section_title">Απόκρυψη ενότητας hashtag</string>
   <string name="morphe_hide_how_this_was_made_section_title">Απόκρυψη τμήματος «Πώς δημιουργήθηκε αυτό το περιεχόμενο»</string>
   <string name="morphe_hide_hype_points_title">Πόντοι Hype</string>
   <string name="morphe_hide_info_cards_section_title">Απόκρυψη τμήματος Καρτών πληροφοριών</string>
@@ -455,6 +456,9 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Ενεργοποίηση εγγραφής ζωντανής μετάδοσης DVR</string>
   <string name="morphe_livestream_dvr_summary">Επιτρέπει την αναζήτηση σε όλες τις ζωντανές μεταδόσεις, ακόμη και σε αυτές που συνήθως την περιορίζουν</string>
+  <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">Ενεργοποίηση μικρογραφιών γραμμής αναζήτησης</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">Εμφανίζει μια μικρογραφία βίντεο κατά τη μετακίνηση της γραμμής αναζήτησης</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'Η ενεργοποίηση εγγραφής ζωντανής ροής (DVR) ενδέχεται να μην είναι διαθέσιμη
 
@@ -1075,23 +1079,23 @@ Second \"item\" text"</string>
 • Τα βίντεο HDR δεν θα χρησιμοποιούν τον κωδικοποιητή AVC
 • Ορισμένες συσκευές δεν μπορούν να επιβάλλουν τον κωδικοποιητή AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Για να χρησιμοποιήσετε αυτήν τη λειτουργία, ορίστε την \'Παραποίηση ροών βίντεο\' σε Android VR ή Android Studio</string>
+  <string name="morphe_force_avc_codec_not_available">Για να χρησιμοποιήσετε αυτήν τη λειτουργία, αλλάξτε την \"Παραποίηση ροών βίντεο\" σε Android VR ή Android Studio\'</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Άνοιγμα μενού προηγμένης ποιότητας</string>
   <string name="morphe_advanced_video_quality_menu_summary">Παρακάμπτει το μενού επιλογής ποιότητας και ανοίγει απευθείας το μενού ποιότητας \'Προχωρημένων\'</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Απόκρυψη επιλογών υψηλής ποιότητας</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Προτεραιότητα ποιότητας βίντεο</string>
-  <string name="morphe_prioritize_video_quality_summary">Δίνει προτεραιότητα στην υψηλότερη διαθέσιμη ποιότητα βίντεο έναντι της αποδοτικότητας του κωδικοποιητή</string>
+  <string name="morphe_video_quality_prioritize_title">Προτεραιότητα στην ποιότητα βίντεο</string>
+  <string name="morphe_video_quality_prioritize_summary">Δίνει προτεραιότητα στην υψηλότερη διαθέσιμη ποιότητα βίντεο έναντι της αποδοτικότητας του κωδικοποιητή</string>
+  <string name="morphe_video_quality_prioritize_dialog">Εάν αυτή η ρύθμιση είναι απενεργοποιημένη, τότε παλαιότερα βίντεο ενδέχεται να μην εμφανίζουν επιλογές ποιότητας βίντεο</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Να επιτρέπεται ο κωδικοποιητής Android VR AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Επιτρέπει την αποκωδικοποίηση AV1 λογισμικού κατά τη χρήση του προγράμματος προβολής Android VR</string>
+  <string name="morphe_spoof_video_streams_av1_title">Να επιτρέπεται ο κωδικοποιητής Android VR / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Επιτρέπει την αποκωδικοποίηση βίντεο AV1 όταν χρησιμοποιείται ο Android VR / visionOS client</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Η ενεργοποίηση αυτής της ρύθμισης ενδέχεται να χρησιμοποιήσει αποκωδικοποίηση λογισμικού AV1.
 
 Η αναπαραγωγή βίντεο μπορεί να κομπιάζει ή να χάνει καρέ."</string>
   <string name="morphe_spoof_video_streams_about_title">Παρενέργειες παραποίησης</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• Το βίντεο μπορεί να σταματήσει στο 1:00 ή να μην είναι διαθέσιμο σε ορισμένες περιοχές</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Το μενού «Κομμάτι ήχου» λείπει</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Δεν υπάρχει ο κωδικοποιητής βίντεο AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Η 360° VR βιωματική λειτουργία δεν είναι διαθέσιμη</string>

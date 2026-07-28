@@ -158,6 +158,7 @@ Veranderings sluit in:
   <string name="morphe_hide_featured_playlists_section_title">Verberg Afgelaaide sn lys afdeling</string>
   <string name="morphe_hide_featured_videos_section_title">Verberg Featured videos afdeling</string>
   <string name="morphe_hide_gaming_section_title">Verberg Gaming afdeling</string>
+  <string name="morphe_hide_hashtag_section_title">Verberg Afdeling-herhalingsymbool</string>
   <string name="morphe_hide_how_this_was_made_section_title">Verberg \'How this content was made\' afdeling</string>
   <string name="morphe_hide_hype_points_title">Verberg Hype punte</string>
   <string name="morphe_hide_info_cards_section_title">Verberg Info cards afdeling</string>
@@ -455,6 +456,9 @@ Info: Werk moontlik nie op regstreekse uitsendings nie"</string>
   <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Aktiveer livestream DVR</string>
   <string name="morphe_livestream_dvr_summary">Laat soek op alle regstreekse uitsendings toe, selfs dié wat dit normaalweg beperk</string>
+  <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">Aktiveer seekbar-miniature</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">Wys \'n videominiatuur terwyl die seekbar gesleep word</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'Maak livestream DVR moontlik' is moontlik nie beskikbaar nie
 
@@ -616,6 +620,7 @@ Om dit reg te stel, skakel 'Spoof video streams' aan en verander die 'Default cl
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Hide Cast button</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_hide_shorts_button_title">Verberg Shorts-knoppie</string>
   <!-- 'Create' has no display name. Translate normally. -->
   <string name="morphe_hide_create_button_title">Verberg Skep-knoppie</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1074,23 +1079,23 @@ Beperkings:
 • HDR video's sal nie AVC gebruik nie
 • Sommige toestelle kan nie AVC forceer nie"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Om hierdie funksie te gebruik, stel \'verfraai videostrome\' op Android VR of Android Studio</string>
+  <string name="morphe_force_avc_codec_not_available">Om hierdie funksie te gebruik, stel \'Verfraai videostrome\' op \'Android VR\' of \'Android Studio\'</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Maak Gevorderde kwaliteit spyskaart oop</string>
   <string name="morphe_advanced_video_quality_menu_summary">Slaan die kwaliteitkeusemenu oor en open die Gevorderde kwaliteitmenu direk</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Versteek Premium kwaliteit opsies</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Prioriteer videokwaliteit</string>
-  <string name="morphe_prioritize_video_quality_summary">Prioriteer die hoogste beskikbare videokwaliteit oor kodeerdoeltreffendheid</string>
+  <string name="morphe_video_quality_prioritize_title">Prioriteer videokwaliteit</string>
+  <string name="morphe_video_quality_prioritize_summary">Prioriteer die hoogste beskikbare videokwaliteit bo kodekdoeltreffendheid</string>
+  <string name="morphe_video_quality_prioritize_dialog">As hierdie instelling afgeskakel is, kan ouer video\'s geen videokwaliteitsopsies vertoon nie</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Sta Android VR AV1 toe</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Laat sagteware AV1-ontkodering toe wanneer die Android VR-kliënt gebruik word</string>
+  <string name="morphe_spoof_video_streams_av1_title">Laat Android VR / visionOS AV1 toe</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Laat sagteware AV1-ontkodering toe wanneer die Android VR / visionOS-kliënt gebruik word</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Deur hierdie instelling te aktiveer kan sagteware AV1-ontkoder gebruik word.
 
 Videoweergawe met AV1 kan hakkel of rame laat val."</string>
   <string name="morphe_spoof_video_streams_about_title">Spoef-newe-effekte</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• Video kan om 1:00 stop, of is moontlik nie in sommige streke beskikbaar nie</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Oudiospoor menu ontbreek</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Geen AV1 videokodek</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR meeslepende modus is nie beskikbaar nie</string>

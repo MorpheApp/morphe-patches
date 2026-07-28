@@ -103,17 +103,6 @@ Kirjaudu sisään painamalla alta Jatka-painiketta."</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Kirjautuminen VR-tilaan epäonnistui: %s</string>
   <string name="morphe_oauth2_toast_reset">Kirjauduttu ulos Android VR -tilasta</string>
   <string name="morphe_oauth2_toast_invalid">Virheellinen VR-kirjautumistunniste, yritä kirjautua uudelleen VR-tilaan</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Poista käytöstä pelaajan JavaScript-päivitys</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Lukitsee pelaajan JavaScript-version tiettyyn versioon
-
-• Kelvollinen pelaajan JavaScript-hash on vaadittu
-• Pelaajan JavaScript-hashet ovat voimassa noin kuukauden, jonka jälkeen GVS mitätöi vanhentuneet hashet
-• Toisto epäonnistuu, jos hash on mitätöity"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"Sinun on annettava kelvollinen pelaajan JavaScript-hash.
-
-Toisto epäonnistuu, jos pelaajan JavaScript-hash on vanhentunut."</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Pelaajan JavaScript-hash</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Anna kelpoinen pelaajan JavaScript-hash</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Poista QUIC-protokolla käytöstä</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

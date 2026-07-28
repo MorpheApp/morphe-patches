@@ -16,7 +16,7 @@ import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
 public final class PrioritizeVideoQualityPatch {
-    private static final boolean PRIORITIZE_VIDEO_QUALITY = Settings.PRIORITIZE_VIDEO_QUALITY.get();
+    private static final boolean PRIORITIZE_VIDEO_QUALITY = Settings.VIDEO_QUALITY_PRIORITIZE.get();
 
     /**
      * Injection point.

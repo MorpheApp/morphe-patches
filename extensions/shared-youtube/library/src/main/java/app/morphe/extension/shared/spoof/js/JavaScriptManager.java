@@ -205,10 +205,7 @@ public final class JavaScriptManager {
             long lastSavedTime = PLAYER_JS_SAVED_MILLISECONDS.get();
 
             if (!PLAYER_JS_HASH.get().isEmpty()
-                    // If 'Disable player JavaScript update' is enabled, the 'Player JavaScript hash' will always be used.
-                    // In other words, the cache expiration is not checked, and the YouTube iframe API is not fetched either.
-                    && (SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_DISABLE_PLAYER_JS_UPDATE.get()
-                    || currentTime - lastSavedTime < PLAYER_JS_CACHE_EXPIRATION_MILLISECONDS)) {
+                    && currentTime - lastSavedTime < PLAYER_JS_CACHE_EXPIRATION_MILLISECONDS) {
                 // There is a hash saved in the settings and it was saved within 3 days.
                 // Use the hash saved in the settings.
                 cachedPlayerJsHash = PLAYER_JS_HASH.get();

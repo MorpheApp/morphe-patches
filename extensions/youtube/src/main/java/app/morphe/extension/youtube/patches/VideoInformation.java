@@ -2,6 +2,7 @@ package app.morphe.extension.youtube.patches;
 
 import android.icu.text.NumberFormat;
 
+import androidx.annotation.GuardedBy;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -111,6 +112,7 @@ public final class VideoInformation {
 
     private static boolean qualityNeedsUpdating;
 
+    @GuardedBy("itself")
     private static final NumberFormat speedFormatter = NumberFormat.getNumberInstance();
 
     static {
@@ -343,13 +345,14 @@ public final class VideoInformation {
      * @param includeX If 'x' character is appended to the speed.
      */
     public static String formatSpeedStringX(float speed, int minFractionalDigits, boolean includeX) {
-        Utils.verifyOnMainThread();
-        speedFormatter.setMinimumFractionDigits(minFractionalDigits);
+        synchronized (speedFormatter) {
+            speedFormatter.setMinimumFractionDigits(minFractionalDigits);
 
-        String speedFormatted = speedFormatter.format(speed);
-        return includeX
-                ? speedFormatted + 'x'
-                : speedFormatted;
+            String speedFormatted = speedFormatter.format(speed);
+            return includeX
+                    ? speedFormatted + 'x'
+                    : speedFormatted;
+        }
     }
 
     /**

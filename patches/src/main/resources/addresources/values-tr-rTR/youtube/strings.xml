@@ -158,6 +158,7 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_featured_playlists_section_title">Öne Çıkan Oynatma Listeleri bölümünü gizle</string>
   <string name="morphe_hide_featured_videos_section_title">Öne çıkan videolar bölümünü gizle</string>
   <string name="morphe_hide_gaming_section_title">Oyun bölümünü gizle</string>
+  <string name="morphe_hide_hashtag_section_title">Hashtag bölümünü gizle</string>
   <string name="morphe_hide_how_this_was_made_section_title">\'Bu içerik nasıl oluşturuldu\' bölümünü gizle</string>
   <string name="morphe_hide_hype_points_title">Hype puanlarını gizle</string>
   <string name="morphe_hide_info_cards_section_title">Bilgi kartları bölümünü gizle</string>
@@ -455,6 +456,9 @@ Bilgi: Canlı yayınlarda çalışmayabilir"</string>
   <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Canlı yayın DVR\'ı etkinleştir</string>
   <string name="morphe_livestream_dvr_summary">Normalde kısıtlama getiren canlı yayınlar da dahil olmak üzere tüm canlı yayınlarda gezinmeye izin verir</string>
+  <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">Zaman çubuğu küçük resimlerini etkinleştir</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">Arama çubuğunu sürüklerken video küçük resmini gösterir</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'Canlı yayın DVR'ı etkinleştir' özelliği kullanılamıyor olabilir
 
@@ -1082,16 +1086,16 @@ Sınırlamalar:
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Premium kalite seçeneklerini gizle</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Video kalitesini öncelikle</string>
-  <string name="morphe_prioritize_video_quality_summary">Kodek verimliliğinden ziyade en yüksek video kalitesine öncelik verir</string>
+  <string name="morphe_video_quality_prioritize_title">Video kalitesine öncelik ver</string>
+  <string name="morphe_video_quality_prioritize_summary">Kodek verimliliğinden ziyade en yüksek video kalitesine öncelik verir</string>
+  <string name="morphe_video_quality_prioritize_dialog">Bu ayar devre dışı bırakılırsa, eski videolar için video kalitesi seçenekleri görüntülenmeyebilir</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Android VR AV1\'e izin ver</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Android VR istemcisi kullanılırken yazılımsal AV1 kod çözmeye izin verir</string>
+  <string name="morphe_spoof_video_streams_av1_title">Android VR / visionOS AV1\'e izin ver</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Android VR / visionOS istemcisi kullanılırken yazılımsal AV1 kod çözmeye izin verir</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Bu ayarı etkinleştirmek yazılım tabanlı AV1 kod çözmeyi kullanabilir.
 
 AV1 ile video oynatma takılabilir veya kare atlayabilir."</string>
   <string name="morphe_spoof_video_streams_about_title">Taklit yan etkileri</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• Video 1:00\'da durabilir veya bazı bölgelerde kullanılamayabilir</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Ses Parçası menüsü eksik</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• AV1 video kodeği yok</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR immersif modu mevcut değil</string>

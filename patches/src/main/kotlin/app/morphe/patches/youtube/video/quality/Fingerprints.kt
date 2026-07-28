@@ -21,6 +21,7 @@ import app.morphe.patcher.string
 import app.morphe.patches.all.misc.resources.ResourceType
 import app.morphe.patches.all.misc.resources.resourceLiteral
 import app.morphe.patches.shared.CurrentAudioVideoFormatToStringFingerprint
+import app.morphe.patches.youtube.shared.VideoStreamingDataToStringFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -106,15 +107,6 @@ internal object VideoStreamingDataConstructorFingerprint : Fingerprint(
             definingClass = $$"Lcom/google/protos/youtube/api/innertube/StreamingDataOuterClass$StreamingData;"
         )
     ),
-)
-
-internal object VideoStreamingDataToStringFingerprint : Fingerprint(
-    name = "toString",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Ljava/lang/String;",
-    filters = listOf(
-        string("VideoStreamingData(itags=")
-    )
 )
 
 private object VideoQualityItemOnClickParentFingerprint : Fingerprint(

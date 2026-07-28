@@ -108,17 +108,6 @@ To sign in, press continue below"</string>
     <string name="morphe_oauth2_connection_failure_auth_error">Cannot sign in to VR: %s</string>
     <string name="morphe_oauth2_toast_reset">Logged out of Android VR</string>
     <string name="morphe_oauth2_toast_invalid">Invalid VR sign in token, try signing in to VR again</string>
-    <string name="morphe_spoof_video_streams_disable_player_js_update_title">Disable player JavaScript update</string>
-    <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Locks the player JavaScript to a specific version
-
-• A valid player JavaScript hash is required
-• Player JavaScript hashes are valid for approximately one month, and outdated hashes will be revoked by GVS
-• Playback fails if the hash is revoked"</string>
-    <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"You need to provide a valid player JavaScript hash.
-
-Playback will fail if the Player JavaScript hash is outdated."</string>
-    <string name="morphe_spoof_video_streams_player_js_hash_value_title">Player JavaScript hash</string>
-    <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Enter a valid player JavaScript hash</string>
 
     <!-- misc.quic.disableQUICProtocolPatch -->
     <string name="morphe_disable_quic_protocol_title">Disable QUIC protocol</string>

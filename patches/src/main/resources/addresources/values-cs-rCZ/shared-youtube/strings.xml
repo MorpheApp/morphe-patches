@@ -103,17 +103,6 @@ Pro přihlášení stiskněte pokračovat níže"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nemůže se přihlásit do VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Odhlášení z Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Neplatný token pro přihlášení do VR, zkuste se přihlásit do VR znovu</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Vypnout aktualizaci JavaScriptu přehrávače</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Uzamkne JavaScript přehrávače na konkrétní verzi
-
-• Je vyžadován platný hash JavaScriptu přehrávače
-• Hash JavaScriptu přehrávače jsou platné přibližně jeden měsíc a GVS zruší platnost zastaralých hashů
-• Přehrávání se nezdaří, pokud je hash zrušen."</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"Musíte zadat platný hash JavaScriptu přehrávače.
-
-Přehrávání se nezdaří, pokud je hash JavaScriptu přehrávače zastaralý."</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Haš JavaScript přehrávače</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Zadejte platný hash JavaScript přehrávače</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Vypnout protokol QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

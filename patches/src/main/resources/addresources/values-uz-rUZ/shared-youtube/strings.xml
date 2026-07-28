@@ -103,15 +103,6 @@ Kirish uchun quyida 'Davom etish' tugmasini bosing"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">VR ga kirishning iloji yo‘q: %s</string>
   <string name="morphe_oauth2_toast_reset">Android VR dan chiqib ketdi</string>
   <string name="morphe_oauth2_toast_invalid">Yaroqsiz VR kirish tokeni, VR ga yana kirishni sinab ko‘ring</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Pleyer JavaScript yangilanishini o‘chirish</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Pleyer JavaScriptni ma’lum bir versiyaga bloklaydi
-
-• Yaroqli pleer JavaScript hashini kiritishingiz kerak
-• Pleyer JavaScript hashlari taxminan bir oy davomida amal qiladi va eskirgan hashlar GVS tomonidan bekor qilinadi
-• Hash bekor qilinilsa, o‘ynatish amalga oshmaydi"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"Pleyer JavaScript hashining muddati o‘tganligi sababli, o‘ynatishning iloji yo‘q."</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Pleyer JavaScript hash</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Yaroqli pleer JavaScript hashini kiriting</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC protokolini o‘chirish</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

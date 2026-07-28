@@ -32,13 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">Skrij polico O nas</string>
   <string name="morphe_hide_resources_shelf_title">Skrij polico Viri</string>
   <string name="morphe_screen_layout_title">Postavitev</string>
-  <string name="morphe_disable_modern_home_title">Onemogoči moderno domačo stran</string>
-  <string name="morphe_disable_screenshot_popup_title">Onemogoči pojavno okno o posnetku zaslona</string>
-  <string name="morphe_disable_screenshot_popup_summary">Onemogoči pojavno okno, ki se pojavi ob zajetju zaslona</string>
-  <string name="morphe_hide_ask_button_title">Skrij gumb Vprašanja</string>
-  <string name="morphe_hide_ask_button_summary">Skrije gumb Vprašanja v vrstici za iskanje</string>
-  <string name="morphe_force_system_font_title">Prisili sistemsko pisavo</string>
-  <string name="morphe_force_system_font_summary">Uporabite sistemsko pisavo naprave namesto Reddit Sans ali Roboto. Omogočanje te možnosti onemogoči tudi možnost po meri pisave.</string>
   <string name="morphe_custom_font_title">Poželjna pisava</string>
   <string name="morphe_custom_font_summary">Naložite datoteko pisave TTF ali OTF po spodnji poti. Omogočanje te možnosti onemogoči tudi možnost uporabe sistemske pisave.</string>
   <string name="morphe_custom_font_file_path_title">Datoteka s pożyelnjo pisavo</string>
@@ -47,6 +40,13 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_pick_file_first">Najprej izberite datoteko pisave.</string>
   <string name="morphe_custom_font_invalid_file">Prosimo, izberite datoteko pisave s končnico .ttf ali .otf.</string>
   <string name="morphe_custom_font_failed_to_load">Napaka pri nalaganju pisave po meri. Izberite drugo datoteko</string>
+  <string name="morphe_disable_modern_home_title">Onemogoči moderno domačo stran</string>
+  <string name="morphe_disable_screenshot_popup_title">Onemogoči pojavno okno o posnetku zaslona</string>
+  <string name="morphe_disable_screenshot_popup_summary">Onemogoči pojavno okno, ki se pojavi ob zajetju zaslona</string>
+  <string name="morphe_force_system_font_title">Prisili sistemsko pisavo</string>
+  <string name="morphe_force_system_font_summary">Uporabite sistemsko pisavo naprave namesto Reddit Sans ali Roboto. Omogočanje te možnosti onemogoči tudi možnost po meri pisave.</string>
+  <string name="morphe_hide_ask_button_title">Skrij gumb Vprašanja</string>
+  <string name="morphe_hide_ask_button_summary">Skrije gumb Vprašanja v vrstici za iskanje</string>
   <string name="morphe_hide_communities_shelf_title">Skrij polico skupnosti</string>
   <string name="morphe_hide_communities_shelf_summary">Skrije povezane ali predlagane skupnosti v podbralnikih</string>
   <string name="morphe_hide_trending_shelves_title">Skrij priljubljene police</string>

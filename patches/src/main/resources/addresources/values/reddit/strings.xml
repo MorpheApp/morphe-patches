@@ -34,13 +34,6 @@ Second \"item\" text"</string>
     <string name="morphe_hide_resources_shelf_title">Hide Resources shelf</string>
 
     <string name="morphe_screen_layout_title">Layout</string>
-    <string name="morphe_disable_modern_home_title">Disable modern home UI</string>
-    <string name="morphe_disable_screenshot_popup_title">Disable screenshot popup</string>
-    <string name="morphe_disable_screenshot_popup_summary">Disables the popup that appears when taking a screenshot</string>
-    <string name="morphe_hide_ask_button_title">Hide Ask button</string>
-    <string name="morphe_hide_ask_button_summary">Hides the Ask button in the search bar</string>
-    <string name="morphe_force_system_font_title">Force system font</string>
-    <string name="morphe_force_system_font_summary">Use the device system font instead of Reddit Sans or Roboto. Enabling this also turns off Custom font</string>
     <string name="morphe_custom_font_title">Custom font</string>
     <string name="morphe_custom_font_summary">Load a custom TTF or OTF font file from the path below. Enabling this also turns off Force system font</string>
     <string name="morphe_custom_font_file_path_title">Custom font file</string>
@@ -49,6 +42,13 @@ Second \"item\" text"</string>
     <string name="morphe_custom_font_pick_file_first">Pick a custom font file first</string>
     <string name="morphe_custom_font_invalid_file">Please select a .ttf or .otf font file</string>
     <string name="morphe_custom_font_failed_to_load">Failed to load custom font. Pick a different file</string>
+    <string name="morphe_disable_modern_home_title">Disable modern home UI</string>
+    <string name="morphe_disable_screenshot_popup_title">Disable screenshot popup</string>
+    <string name="morphe_disable_screenshot_popup_summary">Disables the popup that appears when taking a screenshot</string>
+    <string name="morphe_force_system_font_title">Force system font</string>
+    <string name="morphe_force_system_font_summary">Use the device system font instead of Reddit Sans or Roboto. Enabling this also turns off Custom font</string>
+    <string name="morphe_hide_ask_button_title">Hide Ask button</string>
+    <string name="morphe_hide_ask_button_summary">Hides the Ask button in the search bar</string>
     <string name="morphe_hide_communities_shelf_title">Hide communities shelf</string>
     <string name="morphe_hide_communities_shelf_summary">Hides the related or suggested communities shelf in subreddits</string>
     <string name="morphe_hide_trending_shelves_title">Hide Trending shelves</string>

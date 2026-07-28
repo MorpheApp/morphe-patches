@@ -99,15 +99,11 @@ public class SpoofVideoStreamsSideEffectsPreference extends Preference {
                             + '\n' + str("morphe_spoof_video_streams_about_no_av1")
                             + '\n' + str("morphe_spoof_video_streams_about_720p_max")
                             + '\n' + str("morphe_spoof_video_streams_about_no_force_original_audio");
-            case ANDROID_REEL_AUTH, ANDROID_REEL_NO_AUTH ->
-                    summary = str("morphe_spoof_video_streams_about_playback_failure");
-            // VR 1.74 is not exposed in the UI and should never be reached here.
-            case ANDROID_VR_1_73, ANDROID_VR_1_74 ->
+            // Android VR 1.74 and visonOS 1.03 are not exposed in the UI and should never be reached here.
+            case ANDROID_VR_1_73, ANDROID_VR_1_74, VISIONOS_1_02, VISIONOS_1_03 ->
                     summary = str("morphe_spoof_video_streams_about_no_stable_volume");
             case TV ->
                     summary = str("morphe_spoof_video_streams_about_js");
-            case VISIONOS ->
-                    summary = str("morphe_spoof_video_streams_about_no_stable_volume");
             default -> Logger.printException(() -> "Unknown client: " + clientType);
         }
 

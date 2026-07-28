@@ -103,17 +103,6 @@ Pentru a te apăsa, apăsă butonul Continu de mai jos"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nu puteți vă conecta la VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Delogat din Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Tokenul de autentificare pentru VR este invalid, încercați să vă conectați la VR din nou</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Dezactivează actualizarea JavaScript a player-ului</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Blochează scriptul JavaScript al playerului la o versiune specifică
-
-• Este necesar un hash valid al scriptului JavaScript al playerului
-• Hash-urile scriptului JavaScript al playerului sunt valide timp de aproximativ o lună, iar hash-urile depășite vor fi revocate de GVS
-• Redarea eșuează dacă hash-ul este revocat"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"Trebuie să furnizați un hash valid al scriptului JavaScript al playerului.
-
-Redarea va eșua dacă hash-ul scriptului JavaScript al playerului este depășit."</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hash JavaScript al juc\u00e3torului</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Introduceți un hash JavaScript al jucătorului valid</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Dezactivați protocolul QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

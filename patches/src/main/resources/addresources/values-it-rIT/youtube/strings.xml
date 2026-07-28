@@ -158,6 +158,7 @@ I cambiamenti riguarderanno:
   <string name="morphe_hide_featured_playlists_section_title">Nascondi la sezione Playlist in evidenza</string>
   <string name="morphe_hide_featured_videos_section_title">Nascondi la sezione Video in evidenza</string>
   <string name="morphe_hide_gaming_section_title">Nascondi la sezione Gaming</string>
+  <string name="morphe_hide_hashtag_section_title">Nascondi la sezione hashtag</string>
   <string name="morphe_hide_how_this_was_made_section_title">Nascondi la sezione \'Come è stato realizzato questo contenuto\'</string>
   <string name="morphe_hide_hype_points_title">Nascondi i punti Hype</string>
   <string name="morphe_hide_info_cards_section_title">Nascondi la sezione Schede informative</string>
@@ -455,6 +456,9 @@ Avviso: Potrebbe non funzionare sui video in diretta"</string>
   <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Abilita DVR sui video in diretta</string>
   <string name="morphe_livestream_dvr_summary">Consente l\'avanzamento su tutti i video in diretta, anche su quelli che normalmente lo limitano</string>
+  <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">Abilita miniature della barra di avanzamento</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">Mostra un\'anteprima in miniatura del video durante il trascinamento della barra di ricerca</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'Abilita registrazione DVR in diretta' potrebbe non essere disponibile
 
@@ -1082,16 +1086,16 @@ Limitazioni:
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Nascondi opzioni di qualità premium</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Prioritizza la qualità del video</string>
-  <string name="morphe_prioritize_video_quality_summary">Dà priorità alla qualità video più elevata anziché all\'efficienza del codec</string>
+  <string name="morphe_video_quality_prioritize_title">Prioritizza la qualità del video</string>
+  <string name="morphe_video_quality_prioritize_summary">Dà priorità alla qualità video più elevata anziché all\'efficienza del codec</string>
+  <string name="morphe_video_quality_prioritize_dialog">Se questa impostazione è disattivata, i video più vecchi potrebbero non mostrare opzioni di qualità video</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Consenti Android VR AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Consente la decodifica AV1 software quando si utilizza il client Android VR</string>
+  <string name="morphe_spoof_video_streams_av1_title">Consenti Android VR / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Consente la decodifica AV1 software quando si utilizza il client Android VR / visionOS</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Abilitando questa impostazione potrebbe essere utilizzata la decodifica AV1 via software.
 
 La riproduzione video con AV1 potrebbe rallentare o perdere fotogrammi."</string>
   <string name="morphe_spoof_video_streams_about_title">Effetti collaterali della falsificazione</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• Il video potrebbe interrompersi al minuto 1:00, o potrebbe non essere disponibile in alcune regioni</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Manca il menù delle tracce audio</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Nessun codec video AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Modalità immersiva a 360° VR non disponibile</string>

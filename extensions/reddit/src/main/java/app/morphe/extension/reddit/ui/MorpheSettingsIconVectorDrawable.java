@@ -1,37 +1,37 @@
 /**
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
- *
+ * <p>
  * File-Specific License Notice (GPLv3 Section 7 Terms)
- *
+ * <p>
  * This file is part of the Morphe patches project and is licensed under
  * the GNU General Public License version 3 (GPLv3), with the Additional
  * Terms under Section 7 described in the Morphe patches
  * LICENSE file: https://github.com/MorpheApp/morphe-patches/blob/main/NOTICE
- *
+ * <p>
  * https://www.gnu.org/licenses/gpl-3.0.html
- *
+ * <p>
  * Trademark Notice (GPLv3 Section 7(e)):
  * ----------------------------------------------------
  * This file programmatically renders the Morphe logo.
- *
+ * <p>
  * “Morphe” and associated logos are trademarks and copyrighted
  * works owned by Morphe. No rights under trademark law are
  * granted by this license.
- *
+ * <p>
  * Distribution or modification of this file does not grant
  * permission to use the Morphe name, logo, or branding in a
  * manner that implies endorsement, affiliation, or official status.
- *
+ * <p>
  * For official branding assets and usage guidelines, see:
  * https://github.com/MorpheApp/morphe-branding
- *
+ * <p>
  * Distribution and Derivative Works:
  * ----------------------------------
  * This comment block MUST be preserved in all copies, distributions,
  * and derivative works of this file, whether in source or modified
  * form.
- *
+ * <p>
  * All other terms of the Morphe Patches LICENSE, including Section 7c
  * (Project Name Restriction) and the GPLv3 itself, remain fully
  * applicable to this file.

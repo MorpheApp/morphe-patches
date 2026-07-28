@@ -32,13 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">Nascondi lo scaffale Informazioni</string>
   <string name="morphe_hide_resources_shelf_title">Nascondi lo scaffale Risorse</string>
   <string name="morphe_screen_layout_title">Layout</string>
-  <string name="morphe_disable_modern_home_title">Disabilita la schermata principale moderna</string>
-  <string name="morphe_disable_screenshot_popup_title">Disabilita la notifica di salvataggio schermata</string>
-  <string name="morphe_disable_screenshot_popup_summary">Disabilita la notifica che appare quando si esegue la cattura di una schermata</string>
-  <string name="morphe_hide_ask_button_title">Nascondi il pulsante Chiedi</string>
-  <string name="morphe_hide_ask_button_summary">Nasconde il pulsante Chiedi nella barra di ricerca</string>
-  <string name="morphe_force_system_font_title">Carattere di sistema forzato</string>
-  <string name="morphe_force_system_font_summary">Usa il font di sistema del dispositivo invece di Reddit Sans o Roboto. Abilitando questa opzione, si disattiva anche il font personalizzato.</string>
   <string name="morphe_custom_font_title">Carattere personalizzato</string>
   <string name="morphe_custom_font_summary">Carica un file font TTF o OTF personalizzato dal percorso sottostante. Abilitando questa opzione, si disattiva anche l\'uso del font di sistema.</string>
   <string name="morphe_custom_font_file_path_title">File del carattere personalizzato</string>
@@ -47,6 +40,13 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_pick_file_first">Seleziona prima un file font personalizzato.</string>
   <string name="morphe_custom_font_invalid_file">Seleziona un file font .ttf o .otf.</string>
   <string name="morphe_custom_font_failed_to_load">Impossibile caricare il font personalizzato. Scegli un file diverso</string>
+  <string name="morphe_disable_modern_home_title">Disabilita la schermata principale moderna</string>
+  <string name="morphe_disable_screenshot_popup_title">Disabilita la notifica di salvataggio schermata</string>
+  <string name="morphe_disable_screenshot_popup_summary">Disabilita la notifica che appare quando si esegue la cattura di una schermata</string>
+  <string name="morphe_force_system_font_title">Carattere di sistema forzato</string>
+  <string name="morphe_force_system_font_summary">Usa il font di sistema del dispositivo invece di Reddit Sans o Roboto. Abilitando questa opzione, si disattiva anche il font personalizzato.</string>
+  <string name="morphe_hide_ask_button_title">Nascondi il pulsante Chiedi</string>
+  <string name="morphe_hide_ask_button_summary">Nasconde il pulsante Chiedi nella barra di ricerca</string>
   <string name="morphe_hide_communities_shelf_title">Nascondi lo scaffale delle community</string>
   <string name="morphe_hide_communities_shelf_summary">Nasconde lo scaffale delle community correlate o suggerite nei subreddit</string>
   <string name="morphe_hide_trending_shelves_title">Nascondi gli scaffali di tendenza</string>

@@ -103,17 +103,6 @@ Oturum açmak için, devam et butonuna basın."</string>
   <string name="morphe_oauth2_connection_failure_auth_error">VR oturumu açılamadı: %s</string>
   <string name="morphe_oauth2_toast_reset">Android VR oturumu kapatıldı</string>
   <string name="morphe_oauth2_toast_invalid">Geçersiz VR oturum açma belirteci, VR\'da tekrar oturum açmayı deneyin</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Oynatıcı JavaScript güncellemesini devre dışı bırak</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Oynatıcı JavaScript'ini belirli bir sürüme kilitler
-
-• Geçerli bir oynatıcı JavaScript hash'i gereklidir
-• Oynatıcı JavaScript hash'leri yaklaşık bir ay geçerlidir ve eski hash'ler GVS tarafından iptal edilir
-• Hash iptal edilirse oynatma başarısız olur"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"Geçerli bir oynatıcı JavaScript hash'i sağlamanız gerekir.
-
-Oynatıcı JavaScript hash'i güncel değilse oynatma başarısız olur."</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Oynatıcı JavaScript hash</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Geçerli bir oynatıcı JavaScript hash değeri girin</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC protokolünü devre dışı bırak</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

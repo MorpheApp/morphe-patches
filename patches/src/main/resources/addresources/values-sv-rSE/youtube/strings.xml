@@ -266,6 +266,7 @@ Vissa layouter på serversidan kanske inte återställs.
   <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Aktivera DVR för livestreamar</string>
   <string name="morphe_livestream_dvr_summary">Gör det möjligt att söka i alla livestreamar, även de som normalt sett begränsar det</string>
+  <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_expand_livestream_dvr_duration_title">Förläng varaktighet för DVR för livestreamar</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">Gör det möjligt att spola tillbaka livesändningar upp till 7 dagar bakåt i tiden</string>
@@ -788,20 +789,15 @@ Begränsningar:
 • HDR-videor använder inte AVC
 • Vissa enheter kan inte tvinga AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Om du vill använda den här funktionen anger du Förfalska videostreamar som Android VR eller Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Dölj Premium-kvalitetsalternativ</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Prioritera videokvalitet</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Tillåt Android VR AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Tillåter programvaruavkodning för AV1 när du använder Android VR-klienten</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Aktivering av denna inställning kan använda programvarubaserad AV1-avkodning.
 
 Videouppspelning med AV1 kan hacka eller tappa bildrutor."</string>
   <string name="morphe_spoof_video_streams_about_title">Bieffekter av förfalskning</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• Videor kan stanna vid 1:00 eller kanske inte är tillgängliga i vissa regioner</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Menyn Ljudspår saknas</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Ingen AV1-videokodek</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR-integrerat läge is not available</string>

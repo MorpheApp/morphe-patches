@@ -103,17 +103,6 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Не може да се впишете в VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Излезли сте от Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Невалиден токен за VR, опитайте се да се влезете в VR отново</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Деактивиране на актуализацията на JavaScript за плейъра</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Заключва JavaScript на плейъра към конкретна версия
-
-• Необходим е валиден хеш на JavaScript на плейъра
-• Хешовете на JavaScript на плейъра са валидни приблизително един месец, а остарелите хешове ще бъдат отменени от GVS
-• Възпроизвеждането ще се провали, ако хешът бъде отменен."</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"Трябва да предоставите валиден хеш на JavaScript на плейъра.
-
-Възпроизвеждането ще се провали, ако хешът на JavaScript на плейъра е остарял."</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">JavaScript хеш на играча</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Въведете валиден JavaScript хеш на плейъра</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Изключи протокола QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

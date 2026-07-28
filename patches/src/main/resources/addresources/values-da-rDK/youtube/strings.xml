@@ -158,6 +158,7 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_featured_playlists_section_title">Skjul sektionen \'Fremhævede afspilningslister\'</string>
   <string name="morphe_hide_featured_videos_section_title">Skjul Fremhævede videoer sektionen</string>
   <string name="morphe_hide_gaming_section_title">Skjul Gaming sektionen</string>
+  <string name="morphe_hide_hashtag_section_title">Skjul Hashtag sektionen</string>
   <string name="morphe_hide_how_this_was_made_section_title">Skjul sektionen \'Sådan er dette indhold blevet lavet\'</string>
   <string name="morphe_hide_hype_points_title">Skjul Hype-point</string>
   <string name="morphe_hide_info_cards_section_title">Skjul Info cards sektionen</string>
@@ -455,6 +456,9 @@ Info: Virker muligvis ikke på live streams"</string>
   <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Aktivér livestream DVR</string>
   <string name="morphe_livestream_dvr_summary">Giver mulighed for at spole i alle livestreams, selv dem der normalt begrænser det</string>
+  <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">Aktiver miniaturer på søgelinjen</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">Viser et videominiaturebillede, når du trækker i søgelinjen</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'Aktiver optagelse af livestream' er muligvis ikke tilgængelig
 
@@ -1075,23 +1079,23 @@ Begrænsninger:
 • HDR-videoer vil ikke bruge AVC
 • Nogle enheder kan ikke tvinge AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">For at bruge denne funktion skal du sætte \'Forfalsk videostreams\' til Android VR eller Android Studio</string>
+  <string name="morphe_force_avc_codec_not_available">For at bruge denne funktion skal du indstille \"Forfalsk videostreams\" til \"Android VR\" eller \"Android Studio\"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Åbn Avanceret kvalitetsmenu</string>
   <string name="morphe_advanced_video_quality_menu_summary">Springer kvalitetsvalgsmenuen over og åbner menuen \'Avanceret\' kvalitet direkte</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Skjul Premium kvalitetsindstillinger</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Prioritering af videokvalitet</string>
-  <string name="morphe_prioritize_video_quality_summary">Prioriterer den højest tilgængelige videokvalitet over kodekeffektivitet</string>
+  <string name="morphe_video_quality_prioritize_title">Prioritering af videokvalitet</string>
+  <string name="morphe_video_quality_prioritize_summary">Prioriterer den højest tilgængelige videokvalitet over codec-effektivitet</string>
+  <string name="morphe_video_quality_prioritize_dialog">Hvis denne indstilling er slået fra, kan ældre videoer vise ingen videokvalitetsmuligheder</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Tillad Android VR AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Tillader software AV1-afkodning ved brug af Android VR-klienten</string>
+  <string name="morphe_spoof_video_streams_av1_title">Tillad Android VR / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Tillader software AV1-dekodning ved brug af Android VR / visionOS-klienten</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Aktivering af denne indstilling kan bruge software AV1-afkodning.
 
 Videoafspilning med AV1 kan hakke eller tabe billeder."</string>
   <string name="morphe_spoof_video_streams_about_title">Bivirkninger ved spoofing</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• Videoen kan stoppe ved 1:00, eller er muligvis ikke tilgængelig i visse regioner</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Lydspormenu mangler</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Intet AV1-videocodec</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR-immersiv tilstand er ikke tilgængelig</string>

@@ -51,18 +51,18 @@ Los cambios incluyen:
   <string name="morphe_hide_feed_flyout_menu_title">Activar filtro del menú desplegable del feed</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Filtro del menú desplegable del feed</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">Introduce los nombres de los menús desplegables por los que filtrar, separados por nuevas líneas</string>
-  <string name="morphe_hide_account_menu_title">Activar filtro del menú inferior Biblioteca / Tú</string>
-  <string name="morphe_hide_account_menu_filter_strings_title">Filtro del menú inferior Biblioteca / Tú</string>
+  <string name="morphe_hide_account_menu_title">Activar filtro del menú inferior de Biblioteca / Tú</string>
+  <string name="morphe_hide_account_menu_filter_strings_title">Filtro del menú inferior de Biblioteca / Tú</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Introduce los nombres del menú inferior Biblioteca / Tú para filtrar, separados por nuevas líneas</string>
   <string name="morphe_hide_album_cards_title">Ocultar tarjetas de álbum</string>
   <string name="morphe_hide_album_cards_summary">Oculta las tarjetas del álbum debajo de la descripción del artista</string>
   <string name="morphe_hide_artist_cards_title">Ocultar tarjetas de artista</string>
-  <string name="morphe_hide_artist_cards_summary">Oculta la tarjeta del artista en la parte superior de los resultados de búsqueda</string>
+  <string name="morphe_hide_artist_cards_summary">Oculta la tarjeta del artista sobre los resultados de búsqueda</string>
   <string name="morphe_hide_auto_dubbed_label_title">Ocultar etiqueta \"Doblaje automático\"</string>
   <string name="morphe_hide_community_posts_title">Ocultar publicaciones de comunidad</string>
   <string name="morphe_hide_compact_banner_title">Ocultar banners compactos</string>
   <string name="morphe_hide_compact_banner_summary">Oculta los banners compactos y el espaciado entre algunos componentes</string>
-  <string name="morphe_hide_expandable_card_title">Tarjetas expandibles debajo de los vídeos</string>
+  <string name="morphe_hide_expandable_card_title">Tarjetas expandibles bajo los vídeos</string>
   <string name="morphe_hide_expandable_card_entry_1">Mostrar todo</string>
   <string name="morphe_hide_expandable_card_entry_2">Ocultar solo la tarjeta de resumen</string>
   <string name="morphe_hide_expandable_card_entry_3">Ocultar todo</string>
@@ -158,6 +158,7 @@ Los cambios incluyen:
   <string name="morphe_hide_featured_playlists_section_title">Ocultar sección \"Listas de reproducción destacadas\"</string>
   <string name="morphe_hide_featured_videos_section_title">Ocultar sección \"Vídeos destacados\"</string>
   <string name="morphe_hide_gaming_section_title">Ocultar sección \"Juegos\"</string>
+  <string name="morphe_hide_hashtag_section_title">Ocultar sección \"Hashtag\"</string>
   <string name="morphe_hide_how_this_was_made_section_title">Ocultar sección \"Cómo se ha hecho este contenido\"</string>
   <string name="morphe_hide_hype_points_title">Ocultar puntos de Hype</string>
   <string name="morphe_hide_info_cards_section_title">Ocultar sección \"Tarjetas de información\"</string>
@@ -457,6 +458,9 @@ Información: Es posible que no funcione en transmisiones en directo"</string>
   <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Activar DVR de transmisión en vivo</string>
   <string name="morphe_livestream_dvr_summary">Permite buscar en todas las transmisiones en vivo, incluso en aquellas que normalmente restringen esta función</string>
+  <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">Activar miniaturas de la barra de progreso</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">Muestra una miniatura del vídeo mientras se arrastra la barra de progreso</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"Es posible que \"Activar DVR para transmisiones en directo\" no esté disponible
 
@@ -1077,23 +1081,23 @@ Limitaciones:
 • Los vídeos HDR no utilizarán AVC
 • Algunos dispositivos no pueden forzar AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Para usar esta función, establece \'Manipular transmisiones de vídeo\' a Android VR o Android Studio</string>
+  <string name="morphe_force_avc_codec_not_available">Para usar esta función, cambia \"Falsificar transmisiones de vídeo\" a \"Android VR\" o \"Android Studio\"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Abrir menú de calidad avanzada</string>
   <string name="morphe_advanced_video_quality_menu_summary">Omite el menú de selección de calidad y abre el menú de calidad Avanzada directamente</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Ocultar opciones de calidad premium</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Priorizar la calidad del vídeo</string>
-  <string name="morphe_prioritize_video_quality_summary">Prioriza la calidad de video más alta sobre la eficiencia del códec</string>
+  <string name="morphe_video_quality_prioritize_title">Priorizar la calidad del vídeo</string>
+  <string name="morphe_video_quality_prioritize_summary">Prioriza la calidad de vídeo más alta sobre la eficiencia del códec</string>
+  <string name="morphe_video_quality_prioritize_dialog">Si este ajuste está desactivado, los vídeos más antiguos podrían no mostrar opciones de calidad de vídeo</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Permitir Android VR AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Permite la decodificación AV1 por software al usar el cliente Android VR</string>
+  <string name="morphe_spoof_video_streams_av1_title">Permitir Android VR / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Permite la decodificación de software AV1 al usar el cliente Android VR / visionOS</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Al activar este ajuste, es posible que se utilice la decodificación AV1 del software.
 
 La reproducción de vídeo con AV1 se puede atascar o perder fotogramas."</string>
   <string name="morphe_spoof_video_streams_about_title">Efectos secundarios de la falsificación</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• El vídeo puede detenerse en 1:00, o puede no estar disponible en algunas regiones</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Falta el menú de la pista de audio</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Sin códec de vídeo AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• El modo inmersivo 360° VR no está disponible</string>

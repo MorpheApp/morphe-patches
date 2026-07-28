@@ -42,22 +42,6 @@ public class SpoofVideoStreamsPatch {
         }
     }
 
-    public static final class JavaScriptHashAvailability implements Setting.Availability {
-        @Override
-        public boolean isAvailable() {
-            return SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.get() && preferredClient.requireJS &&
-                    SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_DISABLE_PLAYER_JS_UPDATE.get();
-        }
-
-        @Override
-        public List<Setting<?>> getParentSettings() {
-            return List.of(
-                    SharedYouTubeSettings.SPOOF_VIDEO_STREAMS,
-                    SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_DISABLE_PLAYER_JS_UPDATE
-            );
-        }
-    }
-
     /**
      * Domain used for internet connectivity verification.
      * It has an empty response body and is only used to check for a 204 response code.
@@ -75,7 +59,7 @@ public class SpoofVideoStreamsPatch {
 
     private static final boolean SPOOF_VIDEO_STREAMS = SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.get();
 
-    private static volatile ClientType preferredClient = ClientType.ANDROID_REEL_AUTH;
+    private static volatile ClientType preferredClient = ClientType.VISIONOS_1_02;
 
     private static WeakReference<Application> mainActivityRef = new WeakReference<>(null);
 
@@ -156,35 +140,6 @@ public class SpoofVideoStreamsPatch {
         }
 
         return playerRequestBuilder;
-    }
-
-    /**
-     * Injection point.
-     * <p>
-     * Blocks /get_watch requests by returning an unreachable URI.
-     * /att/get requests are used to obtain a PoToken challenge.
-     * See: <a href="https://github.com/FreeTubeApp/FreeTube/blob/4b7208430bc1032019a35a35eb7c8a84987ddbd7/src/botGuardScript.js#L15">botGuardScript.js#L15</a>
-     * <p>
-     * Since the Spoof streaming data patch was implemented because a valid PoToken cannot be obtained,
-     * Blocking /att/get requests are not a problem.
-     */
-    public static String blockGetAttRequest(String originalUrlString) {
-        if (SPOOF_VIDEO_STREAMS) {
-            try {
-                var originalUri = Uri.parse(originalUrlString);
-                String path = originalUri.getPath();
-
-                if (path != null && path.contains("att/get")) {
-                    Logger.printDebug(() -> "Blocking 'att/get' by returning internet connection check URI");
-
-                    return INTERNET_CONNECTION_CHECK_URI_STRING;
-                }
-            } catch (Exception ex) {
-                Logger.printException(() -> "blockGetAttRequest failure", ex);
-            }
-        }
-
-        return originalUrlString;
     }
 
     /**

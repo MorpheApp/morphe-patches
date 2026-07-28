@@ -157,6 +157,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_featured_places_section_title">Скрыть секцию \"Упомянутые места\"</string>
   <string name="morphe_hide_featured_videos_section_title">Скрыть секцию \"Рекомендуемые видео\"</string>
   <string name="morphe_hide_gaming_section_title">Скрыть секцию \"Игры\"</string>
+  <string name="morphe_hide_hashtag_section_title">Скрыть раздел хэштегов</string>
   <string name="morphe_hide_how_this_was_made_section_title">Скрыть секцию «Как был создан этот контент»</string>
   <string name="morphe_hide_hype_points_title">Скрыть очки голосов</string>
   <string name="morphe_hide_info_cards_section_title">Скрыть секцию \"Информационные карточки\"</string>
@@ -456,6 +457,9 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Включить прямую трансляцию DVR</string>
   <string name="morphe_livestream_dvr_summary">Разрешает перемотку на всех прямых трансляциях, даже на тех, которые обычно это ограничивают</string>
+  <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">Включить миниатюры на полосе прокрутки</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">Показывает миниатюру видео во время перетаскивания полосы прокрутки</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"«Включить DVR для прямой трансляции» может быть недоступно
 
@@ -1075,23 +1079,17 @@ Second \"item\" text"</string>
 • HDR-видео не будут использовать AVC
 • Некоторые устройства не могут принудительно использовать AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Чтобы использовать эту функцию, установите «Подмена видеопотоков» на Android VR или Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Открыть меню расширенных настроек качества</string>
   <string name="morphe_advanced_video_quality_menu_summary">Пропускает меню выбора качества и сразу открывает меню расширенных настроек качества</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Скрыть параметры Premium качества</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Приоритет видео</string>
-  <string name="morphe_prioritize_video_quality_summary">Приоритезирует максимально доступное качество видео над эффективностью кодека</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Разрешить Android VR AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Разрешает программную расшифровку AV1 при использовании клиента Android VR</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Включение этой опции может использовать программное декодирование AV1.
 
 Воспроизведение видео с AV1 может прерываться или пропускать кадры."</string>
   <string name="morphe_spoof_video_streams_about_title">Побочные эффекты подмены</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• Видео может остановиться на 1:00 или может быть недоступно в некоторых регионах</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Пункт \"Звуковая дорожка\" отсутствует</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Отсутствует видеокодек AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Режим погружения 360° VR недоступен</string>

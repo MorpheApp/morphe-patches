@@ -32,13 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">\"Über\"-Bereich ausblenden</string>
   <string name="morphe_hide_resources_shelf_title">\"Ressourcen\"-Bereich ausblenden</string>
   <string name="morphe_screen_layout_title">Layout</string>
-  <string name="morphe_disable_modern_home_title">Modernes \"Home\" deaktivieren</string>
-  <string name="morphe_disable_screenshot_popup_title">Screenshot-Pop-up deaktivieren</string>
-  <string name="morphe_disable_screenshot_popup_summary">Deaktiviert das Pop-up bei einem Screenshot</string>
-  <string name="morphe_hide_ask_button_title">Frage-Button ausblenden</string>
-  <string name="morphe_hide_ask_button_summary">Blendet den Frage-Button in der Suchleiste aus</string>
-  <string name="morphe_force_system_font_title">Systemschrift erzwingen</string>
-  <string name="morphe_force_system_font_summary">Verwenden Sie die Standardschriftart des Geräts anstelle von Reddit Sans oder Roboto. Durch Aktivieren dieser Option wird auch die benutzerdefinierte Schriftart deaktiviert.</string>
   <string name="morphe_custom_font_title">Benutzerspezifische Schrift</string>
   <string name="morphe_custom_font_summary">Laden Sie eine benutzerdefinierte TTF- oder OTF-Schriftdatei vom folgenden Pfad. Durch Aktivieren dieser Option wird auch die Option \"Standardschriftart erzwingen\" deaktiviert.</string>
   <string name="morphe_custom_font_file_path_title">Benutzerspezifische Schriftdatei</string>
@@ -47,6 +40,13 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_pick_file_first">Wählen Sie zuerst eine benutzerdefinierte Schriftdatei aus.</string>
   <string name="morphe_custom_font_invalid_file">Bitte wählen Sie eine .ttf- oder .otf-Schriftdatei aus.</string>
   <string name="morphe_custom_font_failed_to_load">Fehler beim Laden der benutzerdefinierten Schriftart. Bitte wählen Sie eine andere Datei.</string>
+  <string name="morphe_disable_modern_home_title">Modernes \"Home\" deaktivieren</string>
+  <string name="morphe_disable_screenshot_popup_title">Screenshot-Pop-up deaktivieren</string>
+  <string name="morphe_disable_screenshot_popup_summary">Deaktiviert das Pop-up bei einem Screenshot</string>
+  <string name="morphe_force_system_font_title">Systemschrift erzwingen</string>
+  <string name="morphe_force_system_font_summary">Verwenden Sie die Standardschriftart des Geräts anstelle von Reddit Sans oder Roboto. Durch Aktivieren dieser Option wird auch die benutzerdefinierte Schriftart deaktiviert.</string>
+  <string name="morphe_hide_ask_button_title">Frage-Button ausblenden</string>
+  <string name="morphe_hide_ask_button_summary">Blendet den Frage-Button in der Suchleiste aus</string>
   <string name="morphe_hide_communities_shelf_title">Communities-Bereich ausblenden</string>
   <string name="morphe_hide_communities_shelf_summary">Blendet die Bereiche der zugehörigen oder vorgeschlagenen Communities in Subreddits aus</string>
   <string name="morphe_hide_trending_shelves_title">\"Im Trend\"-Bereich ausblenden</string>

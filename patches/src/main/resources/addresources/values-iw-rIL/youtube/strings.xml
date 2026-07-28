@@ -158,6 +158,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_featured_playlists_section_title">הסתר את סעיף פלייליסטים מומלצים</string>
   <string name="morphe_hide_featured_videos_section_title">הסתר סעיף \'סרטונים מומלצים\'</string>
   <string name="morphe_hide_gaming_section_title">הסתר סעיף \'גיימינג\'</string>
+  <string name="morphe_hide_hashtag_section_title">הסתר סעיף Hashtag</string>
   <string name="morphe_hide_how_this_was_made_section_title">הסתר את סעיף \'איך התוכן הזה נוצר\'</string>
   <string name="morphe_hide_hype_points_title">הסתר נקודות הייפ</string>
   <string name="morphe_hide_info_cards_section_title">הסתר סעיף \'כרטיסי מידע\'</string>
@@ -455,6 +456,9 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">הפעל DVR לשידור חי</string>
   <string name="morphe_livestream_dvr_summary">מאפשר חיפוש בכל הזרמות החיות, גם באלו שמגבילות זאת בדרך כלל</string>
+  <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">אפשר תמונות ממוזערות בסרגל החיפוש</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">מציג תמונה ממוזערת של הסרטון בזמן גרירת סרגל החיפוש</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'הפעלת הקלטת שידור חי' ייתכן ולא תהיה זמינה
 
@@ -907,6 +911,7 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_resuming_summary">משבית את הנגן המיני \'המשך לצפות\', תכונה בתשלום של YouTube Premium שמופיעה בעת הפעלת האפליקציה</string>
   <string name="morphe_miniplayer_screen_title">מיני-נגן</string>
   <string name="morphe_miniplayer_screen_summary">התאם אישית את המראה וההתנהגות של נגן הווידאו הממוזער</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube הסיר את כל הנגני המיני הנוספים. כדי לשנות את סוג נגן המיני, יש לבצע תיקון (patch) ל-YouTube 21.28.207 או גרסה ישנה יותר</string>
   <string name="morphe_miniplayer_type_title">סוג מיני-נגן</string>
   <string name="morphe_miniplayer_type_entry_0">מושבת</string>
   <string name="morphe_miniplayer_type_entry_1">ברירת מחדל</string>
@@ -1074,23 +1079,23 @@ Second \"item\" text"</string>
 • סרטוני HDR לא ישתמשו ב-AVC
 • התקנים מסוימים אינם יכולים לאכוף AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">כדי להשתמש בתכונה זו, הגדר \'זיוף זרמי וידאו\' ל-Android VR או Android Studio</string>
+  <string name="morphe_force_avc_codec_not_available">כדי להשתמש בתכונה זו, הגדר את \"זיוף זרמי וידאו\" ל-\"Android VR\" או \"Android Studio\"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">פתח תפריט איכות מתקדם</string>
   <string name="morphe_advanced_video_quality_menu_summary">מדלג על תפריט בחירת האיכות ופותח ישירות את תפריט האיכות המתקדם</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">הסתר אפשרויות איכות וידאו פרימיום</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">העדיפו איכות וידאו</string>
-  <string name="morphe_prioritize_video_quality_summary">נותן עדיפות לאיכות הווידאו הגבוהה ביותר על פני יעילות הקידוד</string>
+  <string name="morphe_video_quality_prioritize_title">תעדוף איכות וידאו</string>
+  <string name="morphe_video_quality_prioritize_summary">מתעדף את איכות הווידאו הגבוהה ביותר הזמינה על פני יעילות הקידוד</string>
+  <string name="morphe_video_quality_prioritize_dialog">אם ההגדרה הזו כבויה, ייתכן שסרטונים ישנים לא יציגו אפשרויות איכות וידאו</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">אפשר Android VR AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">מאפשר פענוח AV1 תוכנה בעת שימוש בלקוח Android VR</string>
+  <string name="morphe_spoof_video_streams_av1_title">אפשר Android VR / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">מאפשר פענוח AV1 תוכנה בעת שימוש בלקוח Android VR / visionOS</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"הפעלת הגדרה זו עשויה להשתמש בפענוח תוכנה של AV1.
 
 הפעלת וידאו עם AV1 עלולה לגרום לגמגום או לדלוג על פריימים."</string>
   <string name="morphe_spoof_video_streams_about_title">תופעות לוואי של התחזות</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• הווידאו עשוי להיעצר בדקה 1:00, או ייתכן שלא יהיה זמין באזורים מסוימים</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• תפריט ערוץ השמע חסר</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• אין קודק וידאו מסוג AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• מצב 360° VR אינו זמין</string>

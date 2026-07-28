@@ -4,6 +4,7 @@
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
+
 package app.morphe.patches.reddit.misc.privacy
 
 import app.morphe.patcher.Fingerprint
@@ -15,6 +16,6 @@ internal object ShareLinkFormatterFingerprint : Fingerprint(
     returnType = "Ljava/lang/String;",
     parameters = listOf("Ljava/lang/String;", "Ljava/util/Map;"),
     filters = listOf(
-        methodCall(smali = "Landroid/net/Uri${'$'}Builder;->clearQuery()Landroid/net/Uri${'$'}Builder;")
+        methodCall(smali = $$"Landroid/net/Uri$Builder;->clearQuery()Landroid/net/Uri$Builder;")
     )
 )

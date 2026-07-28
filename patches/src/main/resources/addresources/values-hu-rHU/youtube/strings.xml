@@ -158,6 +158,7 @@ A változások a következőket tartalmazzák:
   <string name="morphe_hide_featured_playlists_section_title">Kiemelt lejálisták szakasz elrejtése</string>
   <string name="morphe_hide_featured_videos_section_title">Kiemelt videók szekció elrejtése</string>
   <string name="morphe_hide_gaming_section_title">Játékok szekció elrejtése</string>
+  <string name="morphe_hide_hashtag_section_title">Hashtag szekció elrejtése</string>
   <string name="morphe_hide_how_this_was_made_section_title">A „Hogyan készült ez a tartalom?” szekció elrejtése</string>
   <string name="morphe_hide_hype_points_title">Hájp pontok elrejtése</string>
   <string name="morphe_hide_info_cards_section_title">Információs kártyák szekció elrejtése</string>
@@ -455,10 +456,19 @@ Figyelem: Lehet, hogy az élő közvetítéseknél nem működik"</string>
   <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Engedélyezze az élsőségi DVR-t</string>
   <string name="morphe_livestream_dvr_summary">Lehetővé teszi a keresést minden élő streamen, még azoknál is, amelyek normál esetben korlátozzák azt.</string>
+  <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">Engedélyezze a keresősáv bélyegképeit</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">Videó bélyegképet jelenít meg a keresősáv húzásakor</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_livestream_dvr_not_available">"A \"Livestream DVR engedélyezése\" funkció nem áll rendelkezésre.
+
+Ennek kijavításához kapcsolja be a \"Videóstreamek hamisítása\" lehetőséget, és módosítsa az \"Alapértelmezett kliens\" beállítást \"TV\"-re."</string>
   <string name="morphe_expand_livestream_dvr_duration_title">Bővítsd a közvetítés DVR idejét</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">Lehetővé teszi élő adások visszatekerését a múltba maximum 7 nappal</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_expand_livestream_dvr_duration_not_available">"A \"Livestream DVR időtartamának növelése\" funkció nem áll rendelkezésre.
+
+Ennek kijavításához kapcsolja be a \"Videóstreamek hamisítása\" lehetőséget, és módosítsa az \"Alapértelmezett kliens\" beállítást \"TV\"-re."</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Csúsztatás engedélyezése a kereséshez</string>
   <string name="morphe_slide_to_seek_summary">Engedélyezi a videólejátszó megnyomása és tartása közbeni csúsztatást a kétszeres sebességű lejátszás helyett</string>
@@ -664,6 +674,9 @@ A Beállítások eléréséhez engedje a Beállítások gombot a Általános →
   <string name="morphe_hide_player_flyout_audio_track_title">Hangszám menü elrejtése</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
           'Android Studio' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Az \"Audiósáv\" menü el van rejtve.
+
+Az \"Audiósáv\" menü megjelenítéséhez módosítsa a \"Videóstreamek hamisítása\" beállítást bármely kliensre, kivéve az \"Android Studio\"-t."</string>
   <string name="morphe_hide_player_flyout_audio_track_footer_title">Hangszám menü lábléc elrejtése</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Feliratok menü elrejtése</string>
@@ -1066,23 +1079,23 @@ Korlátozások:
 • A HDR videók nem fogják használni az AVC-t
 • Néhány eszköz nem tudja kikényszeríteni az AVC-t"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">A statisztikákban mutassa a hamisítást</string>
+  <string name="morphe_force_avc_codec_not_available">A funkció használatához állítsa a \"Videóstreamek hamisítása\" beállítást \"Android VR\" vagy \"Android Studio\" értékre.</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Nyissa meg a fejlett minőség menüt</string>
   <string name="morphe_advanced_video_quality_menu_summary">A minőségi beállítások menüt kihagyva közvetlenül megnyitja a Speciális minőségi menüt</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Premium minőség opciók elrejtése</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Videóminőség előnyben részesítése</string>
-  <string name="morphe_prioritize_video_quality_summary">A lehető legmagasabb videóminőséget részesíti előnyben a kodek hatékonysága helyett</string>
+  <string name="morphe_video_quality_prioritize_title">Videóminőség prioritása</string>
+  <string name="morphe_video_quality_prioritize_summary">A legmagasabb elérhető videóminőség részesít előnyben a kodek hatékonyságával szemben.</string>
+  <string name="morphe_video_quality_prioritize_dialog">Ha ez a beállítás ki van kapcsolva, akkor a régebbi videóknál nem jelenik meg videóminőségi opció.</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Android VR AV1 engedélyezése</string>
-  <string name="morphe_spoof_video_streams_av1_summary">A szoftveres AV1 dekódolás engedélyezése Android VR kliens használatakor</string>
+  <string name="morphe_spoof_video_streams_av1_title">Android VR / visionOS AV1 engedélyezése</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Engedélyezi a szoftveres AV1 dekódolást Android VR / visionOS kliens használata esetén</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Ennek a beállításnak az engedélyezése szoftveres AV1 dekódolást használhat.
 
 Az AV1-es videólejátszás akadozhat vagy képkockákat ejthet."</string>
   <string name="morphe_spoof_video_streams_about_title">Hamisítás mellékhatásai</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• A videó megállhat 1:00-nál, vagy előfordulhat, hogy egyes régiókban nem elérhető</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Hiányzik az hangsáv menü</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Nincs AV1 videokodek</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR merőleges mód nem elérhető</string>

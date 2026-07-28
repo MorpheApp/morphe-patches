@@ -25,7 +25,10 @@ import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.shared.misc.textcomponent.hookSpannableString
+import app.morphe.patches.shared.misc.textcomponent.textComponentPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.litho.context.conversionContextPatch
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
@@ -36,6 +39,8 @@ import app.morphe.patches.youtube.misc.recyclerviewtree.recyclerViewTreeHookPatc
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.InitializePlaybackSpeedValuesFingerprint
 import app.morphe.patches.youtube.shared.PlaybackSpeedOnItemClickParentFingerprint
+import app.morphe.patches.youtube.shared.SpeedLimiterFingerprint
+import app.morphe.patches.youtube.shared.SpeedLimiterParentFingerprint
 import app.morphe.patches.youtube.video.speed.settingsMenuVideoSpeedGroup
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.getReference
@@ -64,6 +69,8 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
         settingsPatch,
         lithoFilterPatch,
         versionCheckPatch,
+        conversionContextPatch,
+        textComponentPatch,
         recyclerViewTreeHookPatch,
         resourceMappingPatch
     )
@@ -85,16 +92,21 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
         )
 
         // Override the min/max speeds that can be used.
-        (if (is_20_34_or_greater) SpeedLimiterFingerprint else SpeedLimiterLegacyFingerprint).method.apply {
-            val limitMinIndex = indexOfFirstLiteralInstructionOrThrow(0.25f)
-            // Older unsupported targets use 2.0f and not 4.0f
-            val limitMaxIndex = indexOfFirstLiteralInstructionOrThrow(4.0f)
+        setOf(
+            SpeedLimiterFingerprint,
+            SpeedLimiterParentFingerprint
+        ).forEach { fingerprint ->
+            fingerprint.method.apply {
+                val limitMinIndex = indexOfFirstLiteralInstructionOrThrow(0.25f)
+                // Older unsupported targets use 2.0f and not 4.0f
+                val limitMaxIndex = indexOfFirstLiteralInstructionOrThrow(4.0f)
 
-            val limitMinRegister = getInstruction<OneRegisterInstruction>(limitMinIndex).registerA
-            val limitMaxRegister = getInstruction<OneRegisterInstruction>(limitMaxIndex).registerA
+                val limitMinRegister = getInstruction<OneRegisterInstruction>(limitMinIndex).registerA
+                val limitMaxRegister = getInstruction<OneRegisterInstruction>(limitMaxIndex).registerA
 
-            replaceInstruction(limitMinIndex, "const/high16 v$limitMinRegister, 0.0f")
-            replaceInstruction(limitMaxIndex, "const/high16 v$limitMaxRegister, 8.0f")
+                replaceInstruction(limitMinIndex, "const/high16 v$limitMinRegister, 0.0f")
+                replaceInstruction(limitMaxIndex, "const/high16 v$limitMaxRegister, 8.0f")
+            }
         }
 
         // Turn off client side flag that use server provided min/max speeds.
@@ -106,13 +118,14 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
 
         // Replace the speeds float array with custom speeds.
         SpeedArrayGeneratorFingerprint.let {
-            val matches = it.instructionMatches
             it.method.apply {
+                val matches = it.instructionMatches
                 val playbackSpeedsArrayType = "$EXTENSION_CLASS->customPlaybackSpeeds:[F"
-                // Apply changes from last index to first to preserve indexes.
 
+                // Apply changes from last index to first to preserve indexes.
                 val originalArrayFetchIndex = matches[5].index
-                val originalArrayFetchDestination = matches[5].getInstruction<OneRegisterInstruction>().registerA
+                val originalArrayFetchDestination =
+                    getInstruction<OneRegisterInstruction>(originalArrayFetchIndex).registerA
                 replaceInstruction(
                     originalArrayFetchIndex,
                     "sget-object v$originalArrayFetchDestination, $playbackSpeedsArrayType"
@@ -338,6 +351,12 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
                 )
             }
         }
+
+        hookSpannableString(
+            classDescriptor = EXTENSION_CLASS,
+            methodName = "onSeekEduOverlayLoaded",
+            overrideSpan = true
+        )
 
         // endregion
     }

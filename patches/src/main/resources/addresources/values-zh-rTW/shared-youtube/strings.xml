@@ -103,17 +103,6 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">無法登入 VR：%s</string>
   <string name="morphe_oauth2_toast_reset">已登出 Android VR</string>
   <string name="morphe_oauth2_toast_invalid">VR 登入憑證無效，請再次登入 VR</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">停用播放器 JavaScript 更新</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"鎖定播放器 JavaScript 到特定版本
-
-• 需要有效的播放器 JavaScript 雜湊值
-• 播放器 JavaScript 雜湊值有效約一個月，過時的雜湊值將被 GVS 撤銷
-• 如果雜湊值被撤銷，播放將會失敗"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"您需要提供有效的播放器 JavaScript 雜湊值。
-
-如果播放器 JavaScript 雜湊值已過時，播放將會失敗。"</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">播放器 JavaScript 雜湊值</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">請輸入有效的播放器 JavaScript 雜湊值</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">停用 QUIC 協定</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

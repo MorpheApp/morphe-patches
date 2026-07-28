@@ -120,7 +120,7 @@ public class PlaybackSpeedDialogButton {
      * Injection point.
      */
     public static void videoSpeedChanged(float currentVideoSpeed) {
-        updateButtonAppearance();
+        Utils.runOnMainThread(PlaybackSpeedDialogButton::updateButtonAppearance);
     }
 
     /**

@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-07-22T11:41:39",
-  "description": "## [1.36.0-dev.10](https://github.com/MorpheApp/morphe-patches/compare/v1.36.0-dev.9...v1.36.0-dev.10) (2026-07-22)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Hide Shorts components:** \"Hide video link label\" not working on old layouts ([56c8292](https://github.com/MorpheApp/morphe-patches/commit/56c82923db252cf242fa2aea8a4722a64ddabd6f))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.36.0-dev.10/patches-1.36.0-dev.10.mpp",
+  "created_at": "2026-07-28T08:02:15",
+  "description": "## [1.37.1-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.37.0...v1.37.1-dev.1) (2026-07-28)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Swipe controls:** Evaluate swipe zone before recycling MotionEvent ([#2238](https://github.com/MorpheApp/morphe-patches/issues/2238)) ([e398514](https://github.com/MorpheApp/morphe-patches/commit/e39851427ca240c6474df275e553bad18ecda8ac))\n\n### 🚀 Updated App Support\n\n* **YouTube Music:** Add experimental support for `9.29.54` ([4945ac4](https://github.com/MorpheApp/morphe-patches/commit/4945ac46c87817f9b1fa1cc99adc24bc966308c1))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.37.1-dev.1/patches-1.37.1-dev.1.mpp",
   "signature_download_url": "",
-  "version": "1.36.0-dev.10"
+  "version": "1.37.1-dev.1"
 }

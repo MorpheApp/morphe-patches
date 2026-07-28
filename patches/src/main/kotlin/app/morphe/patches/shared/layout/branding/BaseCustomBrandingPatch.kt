@@ -19,6 +19,7 @@ import app.morphe.patcher.patch.ResourcePatch
 import app.morphe.patcher.patch.ResourcePatchBuilder
 import app.morphe.patcher.patch.ResourcePatchContext
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.folderOption
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.stringOption
 import app.morphe.patches.all.misc.packagename.setOrGetFallbackPackageName
@@ -116,7 +117,7 @@ internal fun baseCustomBrandingPatch(
         description = "Custom app name."
     )
 
-    val customIcon by stringOption(
+    val customIcon by folderOption(
         key = "customIcon",
         title = "Custom icon",
         description = """

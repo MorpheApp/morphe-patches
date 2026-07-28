@@ -158,6 +158,7 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_featured_playlists_section_title">Itago ang seksyon ng mga piniling playlist</string>
   <string name="morphe_hide_featured_videos_section_title">Itago ang seksyon ng Featured videos</string>
   <string name="morphe_hide_gaming_section_title">Itago ang seksyon ng Gaming</string>
+  <string name="morphe_hide_hashtag_section_title">Itago ang seksyon ng Hashtag</string>
   <string name="morphe_hide_how_this_was_made_section_title">Itago ang seksyon na \'Paano ginawa ang kontentong ito\'</string>
   <string name="morphe_hide_hype_points_title">Itago ang mga puntos ng Hype</string>
   <string name="morphe_hide_info_cards_section_title">Itago ang seksyon ng Info cards</string>
@@ -455,6 +456,9 @@ Impormasyon: Maaaring hindi gumana sa mga live stream"</string>
   <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">I-enable ang livestream DVR</string>
   <string name="morphe_livestream_dvr_summary">Pinapayagan ang paghahanap sa lahat ng livestream, kahit na ang mga normal na naghihigpit nito</string>
+  <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">Paganahin ang mga thumbnail ng seekbar</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">Nagpapakita ng thumbnail ng video habang hinihila ang seekbar</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"Maaaring hindi magamit ang 'I-enable ang DVR ng livestream'
 
@@ -1075,23 +1079,23 @@ Mga limitasyon:
 • Ang HDR video ay hindi gagamit ng AVC
 • Ang ilang device ay hindi mapipilitan ng AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Upang gamitin ang feature na ito, itakda ang \'Spoof video streams\' sa Android VR o Android Studio</string>
+  <string name="morphe_force_avc_codec_not_available">Upang gamitin ang tampok na ito, itakda ang \'Gayahin ang mga video stream\' sa \'Android VR\' o \'Android Studio\'</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Buksan ang menu ng kalidad na advanced</string>
   <string name="morphe_advanced_video_quality_menu_summary">Nilalaktawan ang menu ng pagpili ng kalidad at direktang binubuksan ang Advanced na menu ng kalidad</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Itago ang mga opsyon ng Premium na kalidad</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Unahin ang kalidad ng video</string>
-  <string name="morphe_prioritize_video_quality_summary">Inuuna ang pinakamataas na magagamit na kalidad ng video kaysa sa kahusayan ng codec</string>
+  <string name="morphe_video_quality_prioritize_title">Unahin ang kalidad ng video</string>
+  <string name="morphe_video_quality_prioritize_summary">Inuuna ang pinakamataas na magagamit na kalidad ng video kaysa sa kahusayan ng codec</string>
+  <string name="morphe_video_quality_prioritize_dialog">Kung naka-patay ang setting na ito, maaaring walang opsyon sa kalidad ng video ang mga lumang video</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Payagan ang Android VR AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Pinapayagan ang software AV1 decoding kapag ginagamit ang Android VR client</string>
+  <string name="morphe_spoof_video_streams_av1_title">Payagan ang Android VR / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Pinapayagan ang software AV1 decoding kapag ginagamit ang Android VR / visionOS client</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Ang pag-e-enable ng setting na ito ay maaaring gumamit ng software AV1 decoding.
 
 Ang pag-playback ng video gamit ang AV1 ay maaaring mag-stutter o mag-drop ng mga frame."</string>
   <string name="morphe_spoof_video_streams_about_title">Mga epekto ng spoofing</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• Maaaring tumigil ang video sa 1:00, o maaaring hindi ito magagamit sa ilang rehiyon</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Nawawala ang menu ng audio track</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Walang codec ng video AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Ang 360° VR na immersive mode ay hindi magagamit</string>

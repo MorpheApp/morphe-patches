@@ -103,17 +103,6 @@ YouTube Premiumのユーザーの場合、この設定は必要ない場合が�
   <string name="morphe_oauth2_connection_failure_auth_error">VR にログインできません: %s</string>
   <string name="morphe_oauth2_toast_reset">Android VR からログアウトしました</string>
   <string name="morphe_oauth2_toast_invalid">無効な VR ログイン トークンです。再度ログインしてください</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">JavaScript 版プレーヤーの更新を無効化</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"JavaScript 版プレーヤーを特定のバージョンに固定します
-
-• 有効な「JavaScript 版プレーヤーのハッシュ」を設定する必要がある
-• JavaScript 版プレーヤーのハッシュは約 1 ヶ月間有効であり、期限が切れたハッシュは GVS 側で無効にされる
-• 設定したハッシュが GVS 側で無効にされた場合、再生に失敗する"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"有効な「JavaScript 版プレーヤーのハッシュ」を設定する必要があります。
-
-設定した「JavaScript 版プレーヤーのハッシュ」が期限切れの場合、動画の再生に失敗します。"</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">JavaScript 版プレーヤーのハッシュ</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">有効な「JavaScript 版プレーヤーのハッシュ」を入力してください</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC プロトコルを無効化</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -144,7 +133,7 @@ YouTube Premiumのユーザーの場合、この設定は必要ない場合が�
   <string name="morphe_hide_fullscreen_ads_title">全画面広告を非表示</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
           'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">この機能を使用するには、[動画ストリームを偽装] のクライアントを「Android Studio」以外のクライアントに変更してください</string>
+  <string name="morphe_force_original_audio_not_available">この機能を使用するには、[動画ストリームを偽装] のクライアントを「Android Studio」以外に変更してください</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">共有リンクを無害化</string>
   <string name="morphe_sanitize_sharing_links_summary">共有リンクから追跡パラメータを削除します</string>

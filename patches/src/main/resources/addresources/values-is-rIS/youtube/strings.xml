@@ -158,6 +158,7 @@ Breytingarnar fela í sér:
   <string name="morphe_hide_featured_playlists_section_title">Fela valda spilunarlista hluta</string>
   <string name="morphe_hide_featured_videos_section_title">Felur Sérstaka vídeó hluta</string>
   <string name="morphe_hide_gaming_section_title">Felur Leikjahluta</string>
+  <string name="morphe_hide_hashtag_section_title">Fela Hashtag hluta</string>
   <string name="morphe_hide_how_this_was_made_section_title">Felur \'Hvernig þessi efni var búið til\' hluta</string>
   <string name="morphe_hide_hype_points_title">Fela Hype stig</string>
   <string name="morphe_hide_info_cards_section_title">Felur Upplýsingakort hluta</string>
@@ -453,6 +454,9 @@ API lykillinn þinn ætti aldrei að deila. Allir með aðgang að honum geta no
   <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Vírúð lífvídeós DVR</string>
   <string name="morphe_livestream_dvr_summary">Leyfir að spila áfram og aftur á öllum streimum, jafnvel þeim sem venjulega takmarka það</string>
+  <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">Gera kleift myndataska myndum á dragslá</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">Sýnir myndataska mynd á meðan dragð er á dragslá</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'Gerðu líkama DVR streymi' gæti ekki verið tiltækt
 
@@ -1071,23 +1075,23 @@ Takmörk:
 • HDR myndbönd munu ekki nota AVC
 • Sum tæki geta ekki neyðt AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Til að nota þennan eiginleika þarftu að stilla „Forgeðu vídeóstreymi“ á Android VR eða Android Studio</string>
+  <string name="morphe_force_avc_codec_not_available">Til að nota þennan eiginleika, stilltu \"Spoof video streams\" á \"Android VR\" eða \"Android Studio\"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Opnaðu Advanced gæðavalmynd</string>
   <string name="morphe_advanced_video_quality_menu_summary">Sleppur yfir valið á gæðum og opnar \'Advanced\' gæðavalmyndina beint</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Húfa Premium gæðavalmyndir</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Forganga vídeógæði</string>
-  <string name="morphe_prioritize_video_quality_summary">Forgangur er gefinn hæsta mögulega vídeó gæði frekar en samræmikanlegni</string>
+  <string name="morphe_video_quality_prioritize_title">Forgangsraða myndgæði</string>
+  <string name="morphe_video_quality_prioritize_summary">Forgangsraðar hæstu tiltæku myndgæðunum yfir kóðunargetni</string>
+  <string name="morphe_video_quality_prioritize_dialog">Ef þessi stilling er slökkt, geta eldri myndbönd sýnt enga valkosti fyrir myndgæði</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Leyfa Android VR AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Leyfir hugbúnaðar AV1 afkóðun þegar þú notar Android VR viðskiptavininn</string>
+  <string name="morphe_spoof_video_streams_av1_title">Leyfa Android VR / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Leyfir hugbúnaðinum AV1 afkóðun þegar unnið er með Android VR / visionOS viðeigandi forrit</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Vírúð þessa stillingarinnar getur notað hugbúnað AV1 kóðun.
 
 Myndbandsspilun með AV1 getur hakka eða orðið með rammalegsfall."</string>
   <string name="morphe_spoof_video_streams_about_title">Umráðareitur áhrifa</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• Vídeó getur stoppað á 1:00, eða gæti ekki verið fáanlegt í sumum löndum</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Hljóðrásavalmynd vantar</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Enginn AV1 myndbandakód</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR innlifunhamur er ekki í boði</string>

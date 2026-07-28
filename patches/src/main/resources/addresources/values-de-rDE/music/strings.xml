@@ -22,10 +22,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_1">Standard</string>
   <string name="morphe_header_logo_entry_3">Benutzerdefiniert</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_summary">Laden Sie Musikvideos, Podcasts oder Songs mit Anwendungen von Drittanbietern herunter</string>
+  <string name="morphe_external_downloader_screen_summary">Lade Musikvideos, Podcasts oder Songs mit Anwendungen von Drittanbietern herunter</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">„Herunterladen“-Schaltfläche überschreiben</string>
-  <string name="morphe_external_downloader_action_button_summary">Verwendet Ihren gewählten externen Downloader anstelle der integrierten Download-Funktion von YouTube Music</string>
+  <string name="morphe_external_downloader_action_button_summary">Verwendet den von dir gewählten externen Downloader anstelle der integrierten Download-Funktion von YouTube Music</string>
   <string name="morphe_external_downloader_flyout_menu_title">Download-Menü überschreiben</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
@@ -42,15 +42,15 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_title">Nahtlose Wiedergabe</string>
   <string name="morphe_music_crossfade_screen_summary">Gib die Titel nahtlos wieder</string>
   <string name="morphe_music_crossfade_enabled_title">Nahtlose Wiedergabe aktivieren</string>
-  <string name="morphe_music_crossfade_curve_title">Einblend-Niveau</string>
+  <string name="morphe_music_crossfade_curve_title">Überblendungsmodus</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Gleiche Lautstärke</string>
-  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Sanftes Anhalten</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Sanftes Halten</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Sanfter Übergang</string>
   <string name="morphe_music_crossfade_curve_entry_smoothstep">Glatte S-Kurve</string>
   <!-- Empty string because custom preference handles the title itself -->
   <string name="morphe_music_crossfade_curve_preview_outgoing">Ausgehend</string>
   <string name="morphe_music_crossfade_curve_preview_incoming">Eingehend</string>
-  <string name="morphe_music_crossfade_duration_title">Nahtlose Wiedergabe-Dauer</string>
+  <string name="morphe_music_crossfade_duration_title">Überblendungsdauer</string>
   <string name="morphe_crossfade_duration_250ms">250 Millisekunden</string>
   <string name="morphe_crossfade_duration_500ms">500 Millisekunden</string>
   <string name="morphe_crossfade_duration_750ms">750 Millisekunden</string>
@@ -67,40 +67,40 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_11000ms">11 Sekunden</string>
   <string name="morphe_crossfade_duration_12000ms">12 Sekunden</string>
   <string name="morphe_music_crossfade_on_skip_title">Nahtlose Wiedergabe bei manuellem Überspringen</string>
-  <string name="morphe_music_crossfade_on_skip_summary">Wendet den Crossfade-Effekt an, wenn Sie manuell zum nächsten Titel springen</string>
+  <string name="morphe_music_crossfade_on_skip_summary">Überblendung wird auch verwendet, wenn du manuell zum nächsten Titel springst</string>
   <string name="morphe_music_crossfade_on_auto_advance_title">Nahtlose Wiedergabe bei automatischer Wiedergabe</string>
-  <string name="morphe_music_crossfade_on_auto_advance_summary">Wendet den Crossfade-Effekt an, wenn ein Titel natürlich endet</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary">Überblendung wird am Ende eines Titels angewendet</string>
   <string name="morphe_music_crossfade_session_control_title">Sitzungssteuerung</string>
   <string name="morphe_music_crossfade_session_control_summary">Langes Drücken der Shuffle-Taste zum Anhalten oder Fortsetzen der nahtlosen Wiedergabe</string>
-  <string name="morphe_music_crossfade_paused_toast">Übergang pausiert für diese Sitzung</string>
+  <string name="morphe_music_crossfade_paused_toast">Nahtloser Übergang für diese Sitzung pausiert</string>
   <string name="morphe_music_crossfade_resumed_toast">Nahtlose Wiedergabe fortgesetzt</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Der Videomodus ist nicht verfügbar, während die nahtlose Wiedergabe aktiviert ist</string>
-  <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade ist während des Castings oder Mirrorings von Audio pausiert. Crossfade über Cast/Mirror ist instabil und kann möglicherweise nicht behoben werden.</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Nahtlose Wiedergabe ist während der Audioausgabe auf anderen Geräten pausiert. Nahtlose Wiedergabe über Miracast/Audio-Broadcast ist instabil und möglicherweise nicht umsetzbar.</string>
   <string name="morphe_music_crossfade_about_title">Über</string>
-  <string name="morphe_music_crossfade_about_summary">Wie Crossfade funktioniert – und wann es nicht funktioniert</string>
+  <string name="morphe_music_crossfade_about_summary">Wie nahtlose Wiedergabe funktioniert – und wann es nicht klappt</string>
   <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
   <string name="morphe_music_crossfade_about_how_title">Wie es funktioniert</string>
-  <string name="morphe_music_crossfade_about_how_summary">"Crossfade überlagert das Ende eines Songs mit dem Anfang des nächsten, wobei einer ausfadet, während der andere über Ihre gewählte Dauer und Kurve einblendet.
+  <string name="morphe_music_crossfade_about_how_summary">"Nahtlose Wiedergabe überlappt das Ende des aktuellen Songs mit dem Anfang des nächsten entsprechend des von dir gewählten Überblendungsmodus über die eingestellte Dauer. In der Fachsprache nennt man dies auch Crossfade.
 
-Es läuft auf Auto-Weiter (wenn ein Song von selbst endet) und auf manuelle Übersprünge – jeder hat einen eigenen Umschalter oben. Bei Auto-Weiter beginnt das Blenden ein paar Sekunden bevor der Song endet.
+Die Funktion lässt sich sowohl bei der normalen Wiedergabe (wenn ein Song von selbst zu Ende geht) als auch beim manuellen Überspringen mit den jeweiligen Schaltern separat aktivieren. Bei automatischem Titelwechsel beginnt die Überblendung gemäß der Einstellung schon vor dem Ende des Titels.
 
-Benötigt YouTube Music 9.x oder neuer."</string>
-  <string name="morphe_music_crossfade_about_best_title">Funktioniert am besten mit</string>
-  <string name="morphe_music_crossfade_about_best_summary">Normaler Song-zu-Song-Wiedergabe und Auto-Weiter, Wiederholung eines Songs (der Song blendet in sich selbst ein) und lokales Audio – Smartphone-Lautsprecher, kabelgebundene Kopfhörer, Bluetooth oder USB.</string>
-  <string name="morphe_music_crossfade_about_quirks_title">Funktioniert nicht ganz richtig</string>
-  <string name="morphe_music_crossfade_about_quirks_summary">"Musikvideos werden als Audio-only wiedergegeben, während der Crossfade aktiv ist (halten Sie die Shuffle-Taste gedrückt, um die Wiedergabe anzuhalten, falls Sie das Video sehen möchten).
+Nahtlose Wiedergabe benötigt YouTube Music 9.x oder neuer."</string>
+  <string name="morphe_music_crossfade_about_best_title">Was am besten funktioniert</string>
+  <string name="morphe_music_crossfade_about_best_summary">Normale Song-zu-Song-Wiedergabe und automatischer Titelwechsel, Wiederholung eines Songs (dabei blendet der Song in sich selbst über) und lokale Audioausgabe über Smartphone-Lautsprecher, kabelgebundene Kopfhörer, Bluetooth oder USB.</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Was nicht richtig funktioniert</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Bei Musikvideos wird während aktivierter nahtloser Wiedergabe nur der Ton wiedergegeben. Über langes Drücken der Shuffle-Taste lässt sich die Funktion pausieren, falls man das Video sehen möchte.
 
-Songs, die kürzer sind als Ihre Fade-Dauer, überspringen möglicherweise den Fade.
+Titel, die kürzer sind als die eingestellte Überblendungsdauer werden möglicherweise nicht überblendet.
 
-Der Sperrbildschirm oder die Benachrichtigung können kurz einen veralteten Zustand während des Übergangs anzeigen."</string>
+Sperrbildschirm und Wiedergabebenachrichtigung kann während der Überblendung kurzzeitig einen veralteten Zustand anzeigen."</string>
   <string name="morphe_music_crossfade_about_known_title">Bekannte Probleme</string>
-  <string name="morphe_music_crossfade_about_known_summary">"Ein Musikvideo, das als erster Song festgelegt wurde – oder das von außerhalb der aktuellen Warteschlange gestartet wurde – kann kurz als Video angezeigt werden, bevor der Audio-only-Modus aktiviert wird.
+  <string name="morphe_music_crossfade_about_known_summary">"Ist der erste Titel einer Wiedergabe (oder außerhalb der aktuellen Warteschlange gestartet) ein Musikvideo, kann dieses kurz als Video angezeigt werden, bevor der Audio-only-Modus aktiviert wird.
 
-Das Anhalten des Crossfades zum Ansehen eines Musikvideos kann dazu führen, dass einige Videos schwarz bleiben (diejenigen, deren Audio aus dem Video selbst stammt). Vermeiden Sie dies, indem Sie den Crossfade pausieren, bevor Sie den Song auswählen."</string>
-  <string name="morphe_music_crossfade_about_unsupported_title">Funktioniert überhaupt nicht</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Casting oder Spiegelung von Audio (Chromecast, Bildschirm- oder Audiospiegelung) – der Crossfade wird pausiert, da er dort instabil ist und möglicherweise nie behoben wird.
+Das Anhalten der nahtlosen Wiedergabe zum Ansehen eines Musikvideos kann dazu führen, dass einige Videos schwarz bleiben (solche, deren Audio aus dem Video selbst stammt). Dies lässt sich vermeiden, indem die nahtlose Wiedergabe pausiert wird, bevor ein Song ausgewählt wird."</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Was überhaupt nicht funktioniert</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Übertragung oder Spiegelung von Audio (Chromecast, Bildschirm- oder Audiospiegelung) – nahtlose Wiedergabe wird währenddessen wegen Instabilität pausiert und wird möglicherweise nie funktionieren.
 
-YouTube Music 8.x – der Crossfade funktioniert nur ab Version 9.x."</string>
+YouTube Music 8.x – Nahtlose Wiedergabe funktioniert erst ab Version 9.x."</string>
   <string name="morphe_music_crossfade_about_credit_title">Credits</string>
   <string name="morphe_music_crossfade_about_credit_summary">Crossfade-Funktion von VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -111,22 +111,22 @@ YouTube Music 8.x – der Crossfade funktioniert nur ab Version 9.x."</string>
   <string name="morphe_music_disable_dislike_redirection_title">Deaktivieren Sie die Weiterleitung von Nicht-Gefällt-mir-Angaben</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Verhindert das automatische Überspringen zum nächsten Titel, wenn die Taste \"Nicht gefallen\" gedrückt wird</string>
   <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">Schaltfläche „Cast“ ausblenden</string>
+  <string name="morphe_music_hide_cast_button_title">Cast-Button ausblenden</string>
   <string name="morphe_music_hide_history_button_title">Verlauf-Button ausblenden</string>
-  <string name="morphe_music_hide_notification_button_title">Schaltfläche „Benachrichtigungen“ ausblenden</string>
-  <string name="morphe_music_hide_search_button_title">Schaltfläche „Suche“ ausblenden</string>
+  <string name="morphe_music_hide_notification_button_title">Benachrichtigungs-Button ausblenden</string>
+  <string name="morphe_music_hide_search_button_title">Suche-Button ausblenden</string>
   <!-- layout.hide.general.hideMusicComponentsPatch -->
-  <string name="morphe_music_hide_lyrics_panel_category_title">Lyrics Panel</string>
+  <string name="morphe_music_hide_lyrics_panel_category_title">Songtext-Fenster</string>
   <string name="morphe_music_hide_lyrics_share_button_title">Schaltfläche „Teilen“ ausblenden</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Schaltfläche „Übersetzen“ ausblenden</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Aktionsschaltflächen</string>
-  <string name="morphe_music_action_buttons_screen_summary">Wähle aus, welche Aktionsschaltflächen unter dem Player angezeigt werden sollen.</string>
+  <string name="morphe_music_action_buttons_screen_summary">Wähle aus, welche Schaltflächen im Player angezeigt werden sollen.</string>
   <string name="morphe_music_hide_action_bar_title">Aktionsleiste ausblenden</string>
   <string name="morphe_music_hide_like_dislike_button_title">„Gefällt mir“- und „Gefällt mir nicht“-Schaltfläche ausblenden</string>
-  <string name="morphe_music_hide_comments_button_title">„Kommentare“-Schaltfläche ausblenden</string>
+  <string name="morphe_music_hide_comments_button_title">Schaltfläche „Kommentare“ ausblenden</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_lyrics_button_title">„Songtexte“-Schaltfläche ausblenden</string>
+  <string name="morphe_music_hide_lyrics_button_title">Schaltfläche „Songtexte“ ausblenden</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_share_button_title">Schaltfläche „Teilen“ ausblenden</string>
   <!-- 'Save' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -134,7 +134,7 @@ YouTube Music 8.x – der Crossfade funktioniert nur ab Version 9.x."</string>
   <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_download_button_title">Schaltfläche „Herunterladen“ ausblenden</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_radio_button_title">„Radio starten“-Schaltfläche ausblenden</string>
+  <string name="morphe_music_hide_radio_button_title">Schaltfläche „Radio/Mix“ ausblenden</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Einstellungs-Menü</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Wähle aus, welche Komponenten im Flyout-Menü angezeigt werden</string>
@@ -156,7 +156,7 @@ YouTube Music 8.x – der Crossfade funktioniert nur ab Version 9.x."</string>
   <string name="morphe_music_hide_flyout_menu_help_title">Hilfemenü ausblenden</string>
   <string name="morphe_music_hide_flyout_menu_mark_episode_as_played_title">Menü „Episode als abgespielt markieren“ ausblenden</string>
   <string name="morphe_music_hide_flyout_menu_not_interested_title">Menü „Nicht interessiert“ ausblenden</string>
-  <string name="morphe_music_hide_flyout_menu_pin_to_speed_dial_title">Menü „Zur Speed Dial hinzufügen“ ausblenden</string>
+  <string name="morphe_music_hide_flyout_menu_pin_to_speed_dial_title">Menü „Zum Schnellzugriff hinzufügen“ ausblenden</string>
   <string name="morphe_music_hide_flyout_menu_play_next_title">Menü „Als Nächstes abspielen“ ausblenden</string>
   <string name="morphe_music_hide_flyout_menu_quality_title">Qualitätsmenü ausblenden</string>
   <string name="morphe_music_hide_flyout_menu_remove_from_library_title">Menü „Aus Bibliothek entfernen“ ausblenden</string>
@@ -187,10 +187,10 @@ YouTube Music 8.x – der Crossfade funktioniert nur ab Version 9.x."</string>
   <!-- layout.compactheader.hideFilterBarPatch -->
   <string name="morphe_music_hide_filter_bar_title">Filterleiste ausblenden</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
-  <string name="morphe_music_change_miniplayer_color_title">Miniplayer-Farbe ändern</string>
+  <string name="morphe_music_change_miniplayer_color_title">Farbe des Miniplayers ändern</string>
   <string name="morphe_music_change_miniplayer_color_summary">Miniplayer-Farbe entspricht dem Vollbild-Player</string>
-  <string name="morphe_music_change_navigation_bar_color_title">Navigationsleistenfarbe ändern</string>
-  <string name="morphe_music_change_navigation_bar_color_summary">Passt die Farbe der Navigationsleiste an den Vollbild-Player an</string>
+  <string name="morphe_music_change_navigation_bar_color_title">Farbe der Navigationsleiste ändern</string>
+  <string name="morphe_music_change_navigation_bar_color_summary">Farbe der Navigationsleiste passt sich an den Vollbild-Player an</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
   <string name="morphe_music_miniplayer_next_button_title">\"Nächstes\"-Button im Miniplayer anzeigen</string>
   <string name="morphe_music_miniplayer_previous_button_title">\"Vorheriges\"-Button im Miniplayer anzeigen</string>

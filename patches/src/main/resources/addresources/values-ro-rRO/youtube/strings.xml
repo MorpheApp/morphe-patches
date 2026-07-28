@@ -157,6 +157,7 @@ Schimbari incluse:
   <string name="morphe_hide_featured_places_section_title">Ascunde secțiunea \"Locuri recomandate\"</string>
   <string name="morphe_hide_featured_videos_section_title">Ascunde secțiunea Videoclipuri recomandate</string>
   <string name="morphe_hide_gaming_section_title">Ascunde secțiunea Jocuri</string>
+  <string name="morphe_hide_hashtag_section_title">Ascunde secțiunea Hashtag</string>
   <string name="morphe_hide_how_this_was_made_section_title">Ascunde secțiunea \"Cum a fost realizat acest conținut\"</string>
   <string name="morphe_hide_hype_points_title">Ascunde Puncte Hype</string>
   <string name="morphe_hide_info_cards_section_title">Ascunde secțiunea Carduri info</string>
@@ -454,6 +455,9 @@ Info: S-ar putea să nu funcționeze pe transmisiuni live"</string>
   <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Activare DVR livestream</string>
   <string name="morphe_livestream_dvr_summary">Permite căutarea în toate transmisiunile live, chiar și în cele care restricționează în mod normal această funcție</string>
+  <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">Activează miniaturile barei de căutare</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">Afișează o miniatură video în timpul glisării pe bara de căutare</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'Activarea înregistrării DVR pentru fluxuri live' este posibil să nu fie disponibilă
 
@@ -1073,23 +1077,17 @@ Limitări:
 • Videoclipurile HDR nu vor utiliza AVC
 • Unele dispozitive nu pot forța AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Pentru a utiliza această funcție, setează „Falsifică stream-uri video” la Android VR sau Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Deschide meniul calității avansate</string>
   <string name="morphe_advanced_video_quality_menu_summary">Sare peste meniul de selecție a calității și deschide direct meniul de calitate avansat.</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Ascunde opţiunile calitătă premium</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Priorize calitatea video-ului</string>
-  <string name="morphe_prioritize_video_quality_summary">Prioritizează cea mai mare calitate video disponibilă față de eficiența codec-ului.</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Permite Android VR AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Prioritizează calitatea video superioară față de eficiența codec-ului</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Activarea acestei setări poate folosi decodarea software AV1.
 
 Redarea video cu AV1 poate sacada sau pierde cadre."</string>
   <string name="morphe_spoof_video_streams_about_title">Efecte secundare ale simulării</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• Videoclipul se poate opri la 1:00, sau poate să nu fie disponibil în unele regiuni</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Meniul pistei audio lipsește</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Fara codec video AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Mod 360° VR immersiv nu este disponibil</string>

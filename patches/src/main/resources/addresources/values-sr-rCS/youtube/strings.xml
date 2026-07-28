@@ -157,6 +157,7 @@ Promene uključuju:
   <string name="morphe_hide_featured_places_section_title">Sakrij odeljak „Istaknuta mesta”</string>
   <string name="morphe_hide_featured_videos_section_title">Sakrij odeljak „Istaknuti video zapisi”</string>
   <string name="morphe_hide_gaming_section_title">Sakrij odeljak „Igre”</string>
+  <string name="morphe_hide_hashtag_section_title">Sakrij sekciju heš-oznaka</string>
   <string name="morphe_hide_how_this_was_made_section_title">Sakrij odeljak „Kako je napravljen ovaj sadržaj”</string>
   <string name="morphe_hide_hype_points_title">Sakrij hajp poene</string>
   <string name="morphe_hide_info_cards_section_title">Sakrij odeljak „Info kartice”</string>
@@ -453,6 +454,7 @@ Napomena: Možda neće raditi na direktnim prenosima"</string>
   <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Uključi livestream DVR</string>
   <string name="morphe_livestream_dvr_summary">Omogućava preskakanje na svim prenosima uživo, čak i na onima koji to normalno ograničavaju</string>
+  <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'Omogući DVR za direktan prenos' možda nije dostupno
 
@@ -1072,23 +1074,23 @@ Ograničenja:
 • HDR videi neće koristiti AVC
 • Neki uređaji ne mogu prisiliti AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Da biste koristili ovu funkciju, postavite opciju „Lažirani video strimovi” na Android VR ili Android Studio</string>
+  <string name="morphe_force_avc_codec_not_available">Da biste koristili ovu funkciju, podesite opciju „Lažirani video strimovi” na „Android VR” ili „Android Studio”</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Otvorite napredni meni kvaliteta</string>
   <string name="morphe_advanced_video_quality_menu_summary">Preskače meni za izbor kvaliteta i direktno otvara meni kvaliteta \"Napredno\"</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Sakrij opcije Premium kvaliteta</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Prioritiziraj kvalitet videoa</string>
-  <string name="morphe_prioritize_video_quality_summary">Prioritet daje najvišem dostupnom kvalitetu videa u odnosu na efikasnost kodeka</string>
+  <string name="morphe_video_quality_prioritize_title">Prioritizuj kvalitet videa</string>
+  <string name="morphe_video_quality_prioritize_summary">Prioritizuje najviši dostupni kvalitet videa u odnosu na efikasnost kodeka</string>
+  <string name="morphe_video_quality_prioritize_dialog">Ako je ova postavka isključena, stariji video snimci mogu da nemaju opcije kvaliteta videa</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Dozvoli Android VR AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Omogućava softversko dekodiranje AV1 kada se koristi Android VR klijent</string>
+  <string name="morphe_spoof_video_streams_av1_title">Dozvoli Android VR / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Omogućava softversko AV1 dekodiranje prilikom korišćenja Android VR / visionOS klijenta</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Omogućavanje ove opcije može koristiti softversko dekodiranje AV1.
 
 Reprodukcija videa s AV1 može zastajkivati ili preskakati kadrove."</string>
   <string name="morphe_spoof_video_streams_about_title">Neželjeni efekti lažiranja</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• Video se može zaustaviti u 1:00 ili možda neće biti dostupan u nekim regionima</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Meni „Audio snimak” nedostaje</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Nema video kodeka AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR imersivni režim nije dostupan</string>

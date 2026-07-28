@@ -1,3 +1,121 @@
+## [1.37.1-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.37.0...v1.37.1-dev.1) (2026-07-28)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Swipe controls:** Evaluate swipe zone before recycling MotionEvent ([#2238](https://github.com/MorpheApp/morphe-patches/issues/2238)) ([e398514](https://github.com/MorpheApp/morphe-patches/commit/e39851427ca240c6474df275e553bad18ecda8ac))
+
+### 🚀 Updated App Support
+
+* **YouTube Music:** Add experimental support for `9.29.54` ([4945ac4](https://github.com/MorpheApp/morphe-patches/commit/4945ac46c87817f9b1fa1cc99adc24bc966308c1))
+
+## [1.37.0](https://github.com/MorpheApp/morphe-patches/compare/v1.36.0...v1.37.0) (2026-07-26)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Copy video link:** Use correct timestamp query delimiter when link shortener is disabled ([#2172](https://github.com/MorpheApp/morphe-patches/issues/2172)) ([c3affe2](https://github.com/MorpheApp/morphe-patches/commit/c3affe2bfaf208a267b216d2d40a9ba149a4877e))
+* **YouTube - Playback speed:** "Use normal speed for music" does not work when default playback speed is "Auto" ([#2171](https://github.com/MorpheApp/morphe-patches/issues/2171)) ([5c1538a](https://github.com/MorpheApp/morphe-patches/commit/5c1538ad2acbd3275da28b255a2aa7c906a96404))
+* **YouTube - Playback speed:** Playback speed button sometimes does not update ([#2206](https://github.com/MorpheApp/morphe-patches/issues/2206)) ([e2c08fc](https://github.com/MorpheApp/morphe-patches/commit/e2c08fcfed94454f9b28138ac22627693c389287))
+* **YouTube - Remember video quality:** Added new buffering quality flag override ([3585811](https://github.com/MorpheApp/morphe-patches/commit/3585811a3ad2d5448a840d6ca52383c18e5f6800))
+* **YouTube - Remember video quality:** Improved platypus quality flag override logic ([2682d43](https://github.com/MorpheApp/morphe-patches/commit/2682d43110a03296d8f7af63dab1f8d9d73a5f11))
+
+### ✨ New Features
+
+* **Spoof video streams:** Default client maintenance ([#2208](https://github.com/MorpheApp/morphe-patches/issues/2208)) ([4e93ec9](https://github.com/MorpheApp/morphe-patches/commit/4e93ec983847ef4ab76fcfd9e52875e418fc205d))
+* **YouTube - Seekbar:** Add "Enable seekbar thumbnails" setting ([#2182](https://github.com/MorpheApp/morphe-patches/issues/2182)) ([32575ea](https://github.com/MorpheApp/morphe-patches/commit/32575ea9bcd6ff7b135a598799c969c15b4bfadd))
+* **YouTube - Seekbar:** Show video chapter title below seekbar thumbnail ([#2214](https://github.com/MorpheApp/morphe-patches/issues/2214)) ([bf3cde6](https://github.com/MorpheApp/morphe-patches/commit/bf3cde65389060bdf18a65525015fe56776e24cb))
+
+## [1.37.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.37.0-dev.2...v1.37.0-dev.3) (2026-07-26)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Remember video quality:** Added new buffering quality flag override ([3585811](https://github.com/MorpheApp/morphe-patches/commit/3585811a3ad2d5448a840d6ca52383c18e5f6800))
+
+### ✨ New Features
+
+* **YouTube - Seekbar:** Show video chapter title below seekbar thumbnail ([#2214](https://github.com/MorpheApp/morphe-patches/issues/2214)) ([bf3cde6](https://github.com/MorpheApp/morphe-patches/commit/bf3cde65389060bdf18a65525015fe56776e24cb))
+
+## [1.37.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.37.0-dev.1...v1.37.0-dev.2) (2026-07-25)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Playback speed:** Playback speed button sometimes does not update ([#2206](https://github.com/MorpheApp/morphe-patches/issues/2206)) ([e2c08fc](https://github.com/MorpheApp/morphe-patches/commit/e2c08fcfed94454f9b28138ac22627693c389287))
+* **YouTube - Remember video quality:** Improved platypus quality flag override logic ([2682d43](https://github.com/MorpheApp/morphe-patches/commit/2682d43110a03296d8f7af63dab1f8d9d73a5f11))
+
+### ✨ New Features
+
+* **Spoof video streams:** Default client maintenance ([#2208](https://github.com/MorpheApp/morphe-patches/issues/2208)) ([4e93ec9](https://github.com/MorpheApp/morphe-patches/commit/4e93ec983847ef4ab76fcfd9e52875e418fc205d))
+
+## [1.37.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.36.0...v1.37.0-dev.1) (2026-07-24)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Copy video link:** Use correct timestamp query delimiter when link shortener is disabled ([#2172](https://github.com/MorpheApp/morphe-patches/issues/2172)) ([c3affe2](https://github.com/MorpheApp/morphe-patches/commit/c3affe2bfaf208a267b216d2d40a9ba149a4877e))
+* **YouTube - Playback speed:** "Use normal speed for music" does not work when default playback speed is "Auto" ([#2171](https://github.com/MorpheApp/morphe-patches/issues/2171)) ([5c1538a](https://github.com/MorpheApp/morphe-patches/commit/5c1538ad2acbd3275da28b255a2aa7c906a96404))
+
+### ✨ New Features
+
+* **YouTube - Seekbar:** Add "Enable seekbar thumbnails" setting ([#2182](https://github.com/MorpheApp/morphe-patches/issues/2182)) ([32575ea](https://github.com/MorpheApp/morphe-patches/commit/32575ea9bcd6ff7b135a598799c969c15b4bfadd))
+
+## [1.36.0](https://github.com/MorpheApp/morphe-patches/compare/v1.35.0...v1.36.0) (2026-07-23)
+
+### 🐛 Bug Fixes
+
+* **Force original audio:** Not working in SABR playback ([#2117](https://github.com/MorpheApp/morphe-patches/issues/2117)) ([f2f73f3](https://github.com/MorpheApp/morphe-patches/commit/f2f73f358f67c69ab20be6e2b55fb4a35c934a0c))
+* **YouTube - AI channel filter:** Skip list fetch and parse while all toggles are off ([a35a429](https://github.com/MorpheApp/morphe-patches/commit/a35a429f971d97c6179af8a76c19c235bf2ca1e8))
+* **YouTube - Engagement Panel:** Implemented a queue of open panels ([079b23f](https://github.com/MorpheApp/morphe-patches/commit/079b23f343f67554b82a8c64457ac2c19d670749))
+* **YouTube - FlyoutUtils:** Added compatibility with other video shelf types ([ce7c0b0](https://github.com/MorpheApp/morphe-patches/commit/ce7c0b070feaa5de1c865642657a5e00922c9281))
+* **YouTube - Force original audio track:** Disable setting toggle for Android Creator only ([60ff67b](https://github.com/MorpheApp/morphe-patches/commit/60ff67b57cb83fa91cb91135bb7a30afefe0fc94))
+* **YouTube - Hide filter bar:** Related videos filter bar is not correctly hidden ([0245d6b](https://github.com/MorpheApp/morphe-patches/commit/0245d6bd0b4092a2121e397002f99cd21c22e5f4))
+* **YouTube - Hide layout components:** Hide all the thumbnails when using "Hide search term thumbnails" ([#2108](https://github.com/MorpheApp/morphe-patches/issues/2108)) ([8abb927](https://github.com/MorpheApp/morphe-patches/commit/8abb927bec2e9f3c1776b4279f5a2a944586e781))
+* **YouTube - Hide layout components:** Hide new type of community post ([35ae5e9](https://github.com/MorpheApp/morphe-patches/commit/35ae5e972d353a4119954a7ffcb8fb399980b4fa))
+* **YouTube - Hide layout components:** Related videos filter bar not hidden on older versions ([#2086](https://github.com/MorpheApp/morphe-patches/issues/2086)) ([21035f7](https://github.com/MorpheApp/morphe-patches/commit/21035f77e49f5c58b752b32473ba31fb86125ec4))
+* **YouTube - Hide Shorts components:** "Hide video link label" not working on old layouts ([56c8292](https://github.com/MorpheApp/morphe-patches/commit/56c82923db252cf242fa2aea8a4722a64ddabd6f))
+* **YouTube - Hide Shorts components:** Hide new type of labels ([#2069](https://github.com/MorpheApp/morphe-patches/issues/2069)) ([befe786](https://github.com/MorpheApp/morphe-patches/commit/befe786470525c7b72a1a357c4539f06496452a8))
+* **YouTube - LegacyPlayerControlButton:** Fixed some issues following the add of support for version 21.28.204 ([318d691](https://github.com/MorpheApp/morphe-patches/commit/318d691dc0ce31a92c69ac856cad7e0b1d797255))
+* **YouTube - Playback speed:** Playback speed is remembered even if the user does not change it manually ([#2134](https://github.com/MorpheApp/morphe-patches/issues/2134)) ([b6dbe4f](https://github.com/MorpheApp/morphe-patches/commit/b6dbe4f294f124d7b7d84db3360249deda150bf0))
+* **YouTube - Remember video quality:** Default video quality may not be applied ([#2144](https://github.com/MorpheApp/morphe-patches/issues/2144)) ([dcb3cbc](https://github.com/MorpheApp/morphe-patches/commit/dcb3cbc798dbaed0739718c529e675e49cbaa764))
+* **YouTube - SponsorBlock:** Show segment when 21.28+ auto-hide is off ([bbc171c](https://github.com/MorpheApp/morphe-patches/commit/bbc171cc99c2f42390e2fdc1b4cbf1cb1aee5b1e))
+* **YouTube - Spoof video streams:** Updated visionOS spoof user agent to support AV1 ([acfafc8](https://github.com/MorpheApp/morphe-patches/commit/acfafc82145804a570cdf6e3f2503731ff58ff06))
+* **YouTube - System share sheet:** Fetch the commentId only when the share button is pressed ([ee8df69](https://github.com/MorpheApp/morphe-patches/commit/ee8df69c50c5906d635222fc1e188350eda779a5))
+* **YouTube - System share sheet:** Share sheet doesn't works in Shorts ([a8ff805](https://github.com/MorpheApp/morphe-patches/commit/a8ff80576bd94561b4a2d631e911a684022c807d))
+* **YouTube Music - Force original audio:** Patch applied to old version where SABR is not enforced ([daa9582](https://github.com/MorpheApp/morphe-patches/commit/daa95828950af97c5b3ec898e72f9c537e06daeb))
+* **YouTube Music - Remember shuffle state:** Remove conflicting playback controls fingerprint ([f78e195](https://github.com/MorpheApp/morphe-patches/commit/f78e19576eb2c81fb9c26143d6ae611f68839b27))
+* **YouTube Music - Settings menu filter:** Support version `8.51.51` ([bb733ec](https://github.com/MorpheApp/morphe-patches/commit/bb733ec297c5cffb5346cc19100a7accffb1b966))
+* **YouTube Music:** Resolve patching experimental app versions ([b6b2b15](https://github.com/MorpheApp/morphe-patches/commit/b6b2b15dc63e6a1e6ace7fbfc07cc366d5b25127))
+* **YouTube:** Update compatibility version name ([ca4dd01](https://github.com/MorpheApp/morphe-patches/commit/ca4dd01fa78bdb921e701cf14267a2d787034d25))
+
+### ✨ New Features
+
+* Add `Settings menu filter` patch ([#2029](https://github.com/MorpheApp/morphe-patches/issues/2029)) ([8880421](https://github.com/MorpheApp/morphe-patches/commit/88804215819b3de2bd7736047fa0b65e514c58aa))
+* Add typed patch options ([#1971](https://github.com/MorpheApp/morphe-patches/issues/1971)) ([242318c](https://github.com/MorpheApp/morphe-patches/commit/242318c86c842a7bdf2ab364223003637edae20f))
+* **Reddit:** Add `Custom font` patch ([#2100](https://github.com/MorpheApp/morphe-patches/issues/2100)) ([b242ad9](https://github.com/MorpheApp/morphe-patches/commit/b242ad94ec560ac030f64ce602f3571d2c93a887))
+* **Settings:** Long-press a Morphe setting to copy its breadcrumb ([#2130](https://github.com/MorpheApp/morphe-patches/issues/2130)) ([622ef54](https://github.com/MorpheApp/morphe-patches/commit/622ef54e1dafeb1456ec6fd3616106c2592eca11))
+* **Spoof video streams:** Default client maintenance ([#2094](https://github.com/MorpheApp/morphe-patches/issues/2094)) ([f321bda](https://github.com/MorpheApp/morphe-patches/commit/f321bda0455b1b45334679083066474a77d35442))
+* **YouTube - Hide layout components:** Add "Hide 'Search inside this video' section" setting ([#2097](https://github.com/MorpheApp/morphe-patches/issues/2097)) ([e4adb52](https://github.com/MorpheApp/morphe-patches/commit/e4adb5278a983248b0da7e1167bc4cc971332cdc))
+* **YouTube - Hide layout components:** Add "Hide featured palylists section" setting ([59d7196](https://github.com/MorpheApp/morphe-patches/commit/59d7196fa37cc26205c26405eea119ebb3c66cbb))
+* **YouTube - Hide layout components:** Add "Hide hashtag section" setting ([95710b1](https://github.com/MorpheApp/morphe-patches/commit/95710b18e7a92c02e904c1ba4cc6f0c0aef87ff0))
+* **YouTube Music - Hide ads:** Add "Hide Music Premium promotions" setting ([#2122](https://github.com/MorpheApp/morphe-patches/issues/2122)) ([671f24c](https://github.com/MorpheApp/morphe-patches/commit/671f24cca071639deb293a740ce3a4bd79e9db3a))
+* **YouTube Music:** Add `Return YouTube Dislike` patch ([#1994](https://github.com/MorpheApp/morphe-patches/issues/1994)) ([8f58725](https://github.com/MorpheApp/morphe-patches/commit/8f587259ba8fb4dade3a44eabcdead1948c53945))
+
+### 🚀 Updated App Support
+
+* **Reddit:** Add experimental support for `2026.29.0` ([e0629fc](https://github.com/MorpheApp/morphe-patches/commit/e0629fcdc4edce25db8124d279142bcfd14cb8d8))
+* **YouTube Music:** Add experimental support for `9.28.51` ([39e85de](https://github.com/MorpheApp/morphe-patches/commit/39e85de5574832e2c282f9dd6e75c1ff3fb5d616))
+* **YouTube:** Add experimental support for `21.28.204` ([#2008](https://github.com/MorpheApp/morphe-patches/issues/2008)) ([44a0e67](https://github.com/MorpheApp/morphe-patches/commit/44a0e67c9c22e6251d0786e031fdb5b16a5b9c13))
+* **YouTube:** Add experimental support for `21.29.363` ([#2084](https://github.com/MorpheApp/morphe-patches/issues/2084)) ([048880e](https://github.com/MorpheApp/morphe-patches/commit/048880e01b868be9280ed2cc295b4dfd42fbe60f))
+
+## [1.36.0-dev.12](https://github.com/MorpheApp/morphe-patches/compare/v1.36.0-dev.11...v1.36.0-dev.12) (2026-07-23)
+
+### ✨ New Features
+
+* Add typed patch options ([#1971](https://github.com/MorpheApp/morphe-patches/issues/1971)) ([242318c](https://github.com/MorpheApp/morphe-patches/commit/242318c86c842a7bdf2ab364223003637edae20f))
+
+## [1.36.0-dev.11](https://github.com/MorpheApp/morphe-patches/compare/v1.36.0-dev.10...v1.36.0-dev.11) (2026-07-23)
+
+### ✨ New Features
+
+* **YouTube - Hide layout components:** Add "Hide hashtag section" setting ([95710b1](https://github.com/MorpheApp/morphe-patches/commit/95710b18e7a92c02e904c1ba4cc6f0c0aef87ff0))
+
 ## [1.36.0-dev.10](https://github.com/MorpheApp/morphe-patches/compare/v1.36.0-dev.9...v1.36.0-dev.10) (2026-07-22)
 
 ### 🐛 Bug Fixes

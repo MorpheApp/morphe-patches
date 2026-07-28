@@ -158,6 +158,7 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_featured_playlists_section_title">Folaigh an rannóg seinmliostaí Réadmhaoine</string>
   <string name="morphe_hide_featured_videos_section_title">Folaigh an rannóg Físeáin Réadmhaoine</string>
   <string name="morphe_hide_gaming_section_title">Folaigh an rannóg Cearrbhachais</string>
+  <string name="morphe_hide_hashtag_section_title">Folaigh an chuid haischlib</string>
   <string name="morphe_hide_how_this_was_made_section_title">Folaigh an chuid \'Conas a cruthaíodh an t-ábhar seo\'</string>
   <string name="morphe_hide_hype_points_title">Folaigh pointí Hype</string>
   <string name="morphe_hide_info_cards_section_title">Folaigh an chuid Cártaí Faisnéise</string>
@@ -455,6 +456,9 @@ Eolas: Seans nach n-oibreoidh sé ar shruthanna beo"</string>
   <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Cumasaigh DVR sruthú beo</string>
   <string name="morphe_livestream_dvr_summary">Ceadaíonn sé cuardach a dhéanamh ar gach sruth beo, fiú iad siúd a chuireann srian air de ghnáth</string>
+  <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">Cumasaigh mionsamhlacha an bharra cuardaigh</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">Taispeánann mionsamhail físe agus an barra cuardaigh á tharraingt</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"B’fhéidir nach bhfuil ‘Cumasaigh DVR sruthú beo’ ar fáil
 
@@ -1075,23 +1079,17 @@ Teorainneacha:
 • Ní úsáidfidh físeáin HDR AVC
 • Ní féidir le roinnt gléasanna AVC a bhrú"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Chun an ghné seo a úsáid, socraigh \'Sruthanna físe bréige\' go Android VR nó Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Oscail an roghchlár Ardchaighdeáin</string>
   <string name="morphe_advanced_video_quality_menu_summary">Léimeann sé an roghchlár um roghnú cáilíochta agus osclaíonn sé an roghchlár Ardchaighdeán go díreach</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Folaigh roghanna cáilíochta Préimhe</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Tabhair tús áite do cháilíocht físe</string>
-  <string name="morphe_prioritize_video_quality_summary">Tugann sé tosaíocht don chaighdeán físeáin is airde atá ar fáil thar éifeachtúlacht codec</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Ceadaigh Android VR AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Ceadaíonn sé díchódú bogearraí AV1 agus cliant VR Android á úsáid</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"D’fhéadfadh sé go n-úsáidfí díchódú bogearraí AV1 agus an socrú seo á chumasú.
 
 D’fhéadfadh sé go mbeadh stad nó go gcaillfí frámaí ag athsheinm físe le AV1."</string>
   <string name="morphe_spoof_video_streams_about_title">Fo-iarsmaí spóifithe</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• Is féidir go stopfaidh an físeán ag 1:00, nó b\'fhéidir nach mbeidh sé ar fáil i réigiúin áirithe</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Tá roghchlár na rianta fuaime ar iarraidh</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Gan aon chóideic físe AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Níl mód tumtha VR 360° ar fáil</string>

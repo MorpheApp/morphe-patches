@@ -158,6 +158,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_featured_playlists_section_title">إخفاء قسم  قوائم التشغيل المميزة</string>
   <string name="morphe_hide_featured_videos_section_title">إخفاء قسم الفيديوهات المميزة</string>
   <string name="morphe_hide_gaming_section_title">إخفاء قسم الألعاب</string>
+  <string name="morphe_hide_hashtag_section_title">إخفاء قسم الهاشتاغ</string>
   <string name="morphe_hide_how_this_was_made_section_title">إخفاء قسم \'طريقة صناعة هذا المحتوى\'</string>
   <string name="morphe_hide_hype_points_title">إخفاء نقاط التشجيع</string>
   <string name="morphe_hide_info_cards_section_title">إخفاء قسم بطاقات المعلومات</string>
@@ -459,6 +460,9 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">تمكين التنقل في البث المباشر</string>
   <string name="morphe_livestream_dvr_summary">يسمح بالتنقل في كل البثوث المباشرة، حتى تلك التي تفرض قيودًا عليها عادةً</string>
+  <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">تمكين مصغرات شريط التقدم</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">يعرض صورة مصغرة للفيديو أثناء سحب شريط التقدم</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"قد لا يكون 'تمكين التنقل في البث المباشر' متاحًا
 
@@ -759,7 +763,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_hide_shorts_super_thanks_button_title">إخفاء زر \'شراء Super Thanks\'</string>
   <string name="morphe_hide_shorts_effect_button_title">إخفاء زر التأثير</string>
   <string name="morphe_hide_shorts_green_screen_button_title">إخفاء زر \'الشاشة الخضراء\'</string>
-  <string name="morphe_hide_shorts_hashtag_button_title">إخفاء زر هاشتاج</string>
+  <string name="morphe_hide_shorts_hashtag_button_title">إخفاء زر هاشتاغ</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_join_button_title">إخفاء زر الانضمام</string>
   <string name="morphe_hide_shorts_live_preview_title">إخفاء مشاهدة البث المباشر</string>
@@ -1080,23 +1084,23 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
 • لن تستخدم فيديوهات HDR ترميز AVC
 • لا يمكن لبعض الأجهزة فرض AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">لاستخدام هذه الميزة، اضبط \'Spoof Video Streams\' على Android VR أو Android Studio</string>
+  <string name="morphe_force_avc_codec_not_available">لاستخدام هذه الميزة، قم بضبط \'Spoof Video Streams\' على \'Android VR\' أو \'Android Studio\'</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">فتح قائمة \'الجودة المتقدمة\'</string>
   <string name="morphe_advanced_video_quality_menu_summary">يتخطى قائمة تحديد الجودة ويفتح قائمة الجودة المتقدمة مباشرة</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">إخفاء خيارات جودة Premium</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">إعطاء الأولوية لجودة فيديو</string>
-  <string name="morphe_prioritize_video_quality_summary">يعطي الأولوية لأعلى جودة فيديو متاحة على كفاءة الترميز</string>
+  <string name="morphe_video_quality_prioritize_title">إعطاء الأولوية لجودة فيديو</string>
+  <string name="morphe_video_quality_prioritize_summary">يُعطي الأولوية لأعلى جودة فيديو متاحة على حساب كفاءة الترميز</string>
+  <string name="morphe_video_quality_prioritize_dialog">إذا تم إيقاف هذا الإعداد، فقد لا تعرض الفيديوهات القديمة خيارات جودة الفيديو</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">السماح بـ Android VR AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">يسمح بفك ترميز AV1 برمجيًا عند استخدام العميل Android VR</string>
+  <string name="morphe_spoof_video_streams_av1_title">السماح بترميز AV1 لـ Android VR / visionOS</string>
+  <string name="morphe_spoof_video_streams_av1_summary">يسمح بفك ترميز AV1 برمجيًا عند استخدام العميل Android VR / visionOS</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"قد يؤدي تمكين هذا الإعداد إلى استخدام فك تشفير AV1 البرمجي.
 
 قد يتسبب تشغيل الفيديو باستخدام AV1 في التقطيع أو إسقاط الإطارات."</string>
   <string name="morphe_spoof_video_streams_about_title">الآثار المترتبة على التمويه</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• قد يتوقف الفيديو عند 1:00، أو قد لا يكون متاحًا في بعض المناطق</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• قائمة المقطع الصوتي مفقودة</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• لا يوجد ترميز الفيديو AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• وضع 360° VR immersive غير متوفر</string>

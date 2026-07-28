@@ -17,7 +17,7 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.initialization.initializationPatch -->
-  <string name="morphe_restart_first_run">Neustart, um die Einrichtung abzuschließen</string>
+  <string name="morphe_restart_first_run">Starte die App neu, um die Einrichtung abzuschließen</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">App-Name</string>
   <!-- interaction.downloads.downloadsPatch -->
@@ -56,9 +56,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_screen_title">Video-Streams spoofen</string>
   <string name="morphe_spoof_video_streams_screen_summary">Client-Streams spoofen, um Wiedergabeprobleme zu vermeiden</string>
   <string name="morphe_spoof_video_streams_title">Video-Streams spoofen</string>
-  <string name="morphe_spoof_video_streams_summary">"Behebt Wiedergabeprobleme für die meisten Nutzer, indem ein kompatibler Videostream angefordert wird
+  <string name="morphe_spoof_video_streams_summary">"Behebt Wiedergabeprobleme für die meisten Nutzer, indem ein kompatibler Videostream angefordert wird.
 
-Wenn Sie ein YouTube Premium-Nutzer sind, ist diese Einstellung möglicherweise nicht erforderlich"</string>
+Als Nutzer von YouTube Premium ist diese Einstellung möglicherweise nicht erforderlich."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Es konnten keine Client-Streams abgerufen werden</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Das Deaktivieren dieser Einstellung kann Wiedergabeprobleme verursachen.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -103,23 +103,12 @@ Um sich anzumelden, drücken Sie unten auf \"Weiter\""</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Eine Anmeldung bei VR ist nicht möglich: %s</string>
   <string name="morphe_oauth2_toast_reset">Von Android VR abgemeldet</string>
   <string name="morphe_oauth2_toast_invalid">Ungültiger VR-Anmelde-Token, melden Sie sich erneut in VR an</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">JavaScript-Update des Players deaktivieren</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Sperrt das Player JavaScript auf eine bestimmte Version fest.
-
-• Es ist ein gültiger Hash des Player JavaScript erforderlich.
-• Player JavaScript Hashes sind etwa einen Monat gültig. Veraltete Hashes werden von GVS widerrufen.
-• Die Wiedergabe schlägt fehl, wenn der Hash widerrufen wurde."</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"Sie müssen einen gültigen Player JavaScript Hash angeben.
-
-Die Wiedergabe schlägt fehl, wenn der Player JavaScript Hash veraltet ist."</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Player-JavaScript-Hash</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Geben Sie einen gültigen Player-JavaScript-Hash ein</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC-Protokoll deaktivieren </string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">DRC-Audio deaktivieren</string>
+  <string name="morphe_disable_drc_audio_title">Audiokompression (DRC) deaktivieren</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
-  <string name="morphe_force_original_audio_title">Original Audio erzwingen</string>
+  <string name="morphe_force_original_audio_title">Original-Audiotrack erzwingen</string>
   <string name="morphe_force_original_audio_summary">Spielt immer die Original-Audiospur des Videos ab, anstatt eine synchronisierte Version</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Netzwerkproxy</string>
@@ -147,11 +136,11 @@ Die Wiedergabe schlägt fehl, wenn der Player JavaScript Hash veraltet ist."</st
   <string name="morphe_force_original_audio_not_available">Um diese Funktion zu nutzen, ändere \"Video-Streams fälschen\" auf einen beliebigen Client außer Android Studio\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Freigabelinks bereinigen</string>
-  <string name="morphe_sanitize_sharing_links_summary">Tracking-Abfrageparameter wird aus freigegebenen Links entfernt</string>
+  <string name="morphe_sanitize_sharing_links_summary">Entfernt Tracking-Parameter aus geteilten Links</string>
   <string name="morphe_replace_music_with_youtube_title">Freigabe-Links zu youtube.com ändern</string>
   <string name="morphe_replace_music_with_youtube_summary">Ersetzt music.youtube.com durch youtube.com in geteilten Links</string>
   <string name="morphe_replace_links_with_shortener_title">Freigabe-Links zu youtu.be ändern</string>
-  <string name="morphe_replace_links_with_shortener_summary">Erzwingt die Verwendung des gekürzten URL-Formats youtu.be für Videos</string>
+  <string name="morphe_replace_links_with_shortener_summary">Sorgt dafür, dass geteilte Links das kürzere youtu.be URL-Format nutzen</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_protobuffer_title">Debug-Protokollpuffer</string>
   <string name="morphe_debug_protobuffer_summary">Fügt zusätzliche Protokollierungsinformationen für Entwickler hinzu, um App-Komponenten zu identifizieren</string>
@@ -173,31 +162,31 @@ Allerdings werden dabei auch einige Nutzerdaten protokolliert, zum Beispiel dein
   <string name="morphe_settings_menu_filter_screen_summary">Elemente auf dem Bildschirm der Standard-App-Einstellungen anhand ihres sichtbaren Namens ausblenden</string>
   <string name="morphe_settings_menu_filter_picker_empty">Öffnen Sie den Bildschirm der Standard-App-Einstellungen einmal, um die Liste zu befüllen</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_title">Spoof-App-Version</string>
-  <string name="morphe_spoof_app_version_summary">Täuscht den Server, sodass er denkt, Sie verwenden eine ältere App-Version, um alte UI-Funktionen wiederherzustellen.</string>
+  <string name="morphe_spoof_app_version_title">App-Version spoofen</string>
+  <string name="morphe_spoof_app_version_summary">Täuscht dem Server eine ältere App-Version vor, um ältere UI-Funktionen wiederherzustellen</string>
   <string name="morphe_spoof_app_version_user_dialog_message">"Die App-Version wird zu einer älteren Version gefälscht.
 
 Dadurch ändert sich das Erscheinungsbild und die Funktionen der App, es können jedoch unbekannte Nebeneffekte auftreten.
 
-Wenn Sie die Funktion später deaktivieren, wird empfohlen, die App-Daten zu löschen, um UI-Fehler zu vermeiden."</string>
-  <string name="morphe_spoof_app_version_target_title">Spoof-App-Versionsziel</string>
+Sollte die Funktion später deaktiviert werden, wird empfohlen, die App-Daten zu löschen, um Fehler in der Benutzeroberfläche zu vermeiden."</string>
+  <string name="morphe_spoof_app_version_target_title">Angestrebte App-Version</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Dislikes sind vorübergehend nicht verfügbar (API Timeout)</string>
-  <string name="morphe_ryd_failure_connection_status_code">Dislikes nicht verfügbar (Status %d)</string>
+  <string name="morphe_ryd_failure_connection_status_code">Dislikes sind nicht verfügbar (Status %d)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">Dislikes sind nicht verfügbar (Limit der Client-API)</string>
-  <string name="morphe_ryd_failure_generic">Dislikes nicht verfügbar (%s)</string>
+  <string name="morphe_ryd_failure_generic">Dislikes sind nicht verfügbar (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
-  <string name="morphe_ryd_video_likes_hidden_by_video_owner">Vom Eigentümer verborgen</string>
+  <string name="morphe_ryd_video_likes_hidden_by_video_owner">Vom Ersteller deaktiviert</string>
   <string name="morphe_ryd_enabled_title">Return YouTube Dislike aktivieren</string>
-  <string name="morphe_ryd_dislike_percentage_title">Ablehnen als Prozentsatz anzeigen</string>
-  <string name="morphe_ryd_dislike_percentage_summary">Zeigt Ablehnungen als Prozentsatz der Likes anstelle einer Zahl an</string>
+  <string name="morphe_ryd_dislike_percentage_title">Dislikes prozentual anzeigen</string>
+  <string name="morphe_ryd_dislike_percentage_summary">Zeigt anstelle eines Zahlenwerts die Dislikes prozentual zur Anzahl der Likes an</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
   <string name="morphe_ryd_compact_layout_title">Schaltfläche „Like“ in kompakter Darstellung verwenden</string>
   <string name="morphe_ryd_compact_layout_summary">Verringert die Breite der „Like“-Schaltfläche, um Platz zu sparen</string>
   <string name="morphe_ryd_estimated_like_title">Geschätzte \"Gefällt mir\"-Angaben anzeigen</string>
-  <string name="morphe_ryd_estimated_like_summary">Zeigt bei Videos mit deaktivierten Likes eine geschätzte Like-Anzahl an.</string>
-  <string name="morphe_ryd_toast_on_connection_error_title">Verbindungfehler-Warnungen anzeigen</string>
+  <string name="morphe_ryd_estimated_like_summary">Zeigt bei Videos mit deaktivierten Likes eine geschätzte Anzahl an</string>
+  <string name="morphe_ryd_toast_on_connection_error_title">Warnungen zu Verbindungfehlern anzeigen</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Zeigt eine Benachrichtigung an, wenn der Return YouTube Dislike-Server nicht verfügbar ist</string>
   <string name="morphe_ryd_attribution_summary">"Daten werden von der Return YouTube Dislike API bereitgestellt
 

@@ -333,6 +333,7 @@ Info: Možda neće raditi na prijenosima uživo"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">Onemogu precizan pritisak</string>
   <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Omogući livestream DVR</string>
+  <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
@@ -674,14 +675,11 @@ Ograničenja:
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Sakrij opcije za premium kvalitetu</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Prioritiraj kvalitetu videozapisa</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Omogu Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Omogućavanje ovog postavki može uzrokovati video playback stuttering, lošiju bateriju život i nepoznate nuspojave.
 
 Video playback s AV1 može stutterati ili padati frame-ove."</string>
   <string name="morphe_spoof_video_streams_about_title">Simuliranje nuspojava</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• Video može prestati na 1:00 ili može biti nedostupan u nekim regijama</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Audio track menu je odsutan</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Nema AV1 video codec</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR imersivni mod nije dostupan</string>
