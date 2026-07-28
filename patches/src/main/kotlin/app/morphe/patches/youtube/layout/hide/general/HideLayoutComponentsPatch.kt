@@ -48,6 +48,7 @@ import app.morphe.patches.youtube.misc.playservice.is_21_20_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_25_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.shared.misc.proto.hookElement
+import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -195,12 +196,12 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_sanitize_video_subtitle", summary = true)
         )
 
-        PreferenceScreen.FEED.addPreferences(
-            PreferenceScreenPreference(
-                key = "morphe_explore_menu_screen",
-                sorting = Sorting.UNSORTED,
-                preferences = if (is_20_31_or_greater) {
-                    setOf(
+        if (is_20_31_or_greater) {
+            PreferenceScreen.FEED.addPreferences(
+                PreferenceScreenPreference(
+                    key = "morphe_explore_menu_screen",
+                    sorting = Sorting.UNSORTED,
+                    preferences = setOf(
                         SwitchPreference("morphe_hide_explore_button"),
                         SwitchPreference("morphe_hide_shopping_menu"),
                         SwitchPreference("morphe_hide_music_menu"),
@@ -222,10 +223,11 @@ val hideLayoutComponentsPatch = bytecodePatch(
                         SwitchPreference("morphe_hide_youtube_create_menu"),
                         SwitchPreference("morphe_hide_privacy_tos_footer")
                     )
-                } else {
-                    emptySet()
-                }
-            ),
+                )
+            )
+        }
+
+        PreferenceScreen.FEED.addPreferences(
             PreferenceScreenPreference(
                 key = "morphe_hide_keyword_content_screen",
                 sorting = Sorting.UNSORTED,
@@ -425,7 +427,9 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         addLithoFilter(LAYOUT_COMPONENTS_FILTER)
         addLithoFilter(DESCRIPTION_COMPONENTS_FILTER)
-        addLithoFilter(EXPLORE_MENU_FILTER)
+        if (is_20_31_or_greater) {
+            addLithoFilter(EXPLORE_MENU_FILTER)
+        }
         addLithoFilter(COMMENTS_FILTER)
         addLithoFilter(KEYWORD_FILTER)
         addLithoFilter(AISLIST_FILTER)
