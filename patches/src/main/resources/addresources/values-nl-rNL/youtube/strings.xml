@@ -204,14 +204,13 @@ Wijzigingen zijn:
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Voer de namen van de commentaarcarrusel in om op te filteren, gescheiden door nieuwe regels</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">AI-chatsamenvatting verbergen</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Kanaalrichtlijnen verbergen</string>
-  <string name="morphe_hide_comments_prompts_title">Verberg commentaarprompten</string>
-  <string name="morphe_hide_comments_prompts_summary">Verbergt contextuele informatieberichten in de commentaarsectie</string>
+  <string name="morphe_hide_comments_contexts_title">Verberg contextberichten</string>
   <string name="morphe_hide_comments_by_members_header_title">Verberg kop \'Comments by members\'</string>
   <string name="morphe_hide_comments_section_title">Reacties sectie verbergen</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Verberg reactiessectie in Home-feed</string>
   <string name="morphe_hide_comments_community_guidelines_title">Communityrichtlijnen verbergen</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Verberg \'Create a Short\' knop</string>
-  <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Emoji- en tijdstempelknoppen verbergen</string>
+  <string name="morphe_hide_comments_emoji_button_title">Emoji-knop verbergen</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Filterbalkopties verbergen</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Verbergt alle filterbalkopties, behalve \'Top\' en \'Nieuwste\'</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Verberg animaties voor cadeaus en kaarten</string>
@@ -221,6 +220,7 @@ Wijzigingen zijn:
   <string name="morphe_hide_comments_preview_comment_title">Reactie in preview verbergen</string>
   <string name="morphe_hide_comments_preview_comment_summary">Verbergt het commentaarvoorbeeldunder de video voordat de volledige commentaarsectie wordt geopend</string>
   <string name="morphe_hide_comments_thanks_button_title">Verberg de knop \'Bedankt\'</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Tijdstempelknop verbergen</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Schoon gehighlighte search URL\'s op</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Schoont gehighlighte search URL\'s op, zodat alleen de originele tekst overblijft</string>
   <string name="morphe_hide_keyword_content_screen_title">Trefwoordfilter</string>

@@ -157,7 +157,7 @@ Mar sin féin, má chumasaíonn tú é seo, logálfar roinnt sonraí úsáideora
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Liosta de theaghráin thógálaí cosáin chomhpháirte le scagadh, scartha le línte nua</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Scagaire saincheaptha neamhbhailí: %s</string>
-  <!-- Settings menu filter -->
+  <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">Scagaire roghchláir socruithe</string>
   <string name="morphe_settings_menu_filter_screen_summary">Folaigh míreanna ar scáileán socruithe caighdeánacha an aip de réir a n-ainm infheicthe</string>
   <string name="morphe_settings_menu_filter_picker_empty">Oscail an scáileán socruithe caighdeánacha aip uair amháin chun an liosta a líonadh</string>

@@ -31,13 +31,31 @@ Second \"item\" text"</string>
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Om</string>
   <string name="morphe_settings_music_screen_1_ads_title">Annoncer</string>
-  <string name="morphe_settings_music_screen_2_general_title">Generelt</string>
-  <string name="morphe_settings_music_screen_3_player_title">Afspiller</string>
-  <string name="morphe_settings_music_screen_7_misc_title">Diverse</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Skjul \"Få Music Premium\"-tekst</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Skjul Music Premium tilbud</string>
   <string name="morphe_music_hide_video_ads_title">Skjul videoannoncer</string>
+  <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_music_hide_audio_video_toggle_title">Skjul lyd/video-skift</string>
+  <string name="morphe_music_hide_explore_shelf_title">Skjul Udforsk-hylden</string>
+  <string name="morphe_music_hide_grid_shelves_title">Skjul gitterhylder</string>
+  <string name="morphe_music_hide_horizontal_shelves_title">Skjul vandrette hylder</string>
+  <string name="morphe_music_hide_list_shelves_title">Skjul listevisning hylder</string>
+  <string name="morphe_music_hide_lyrics_panel_category_title">Tekstpanel</string>
+  <string name="morphe_music_hide_lyrics_share_button_title">Skjul Del-knappen</string>
+  <string name="morphe_music_hide_lyrics_translate_button_title">Skjul Oversæt-knappen</string>
+  <string name="morphe_music_hide_new_from_shelf_title">Skjul \'Fra\' hylden</string>
+  <string name="morphe_music_hide_playlist_shelves_title">Skjul playlistehylder</string>
+  <string name="morphe_music_hide_repeat_button_title">Skjul gentagelsesknap</string>
+  <string name="morphe_music_hide_shuffle_button_title">Skjul blandingsknap</string>
+  <string name="morphe_music_hide_speed_dial_shelf_title">Skjul \'Hurtigvalg\'-hylden</string>
+  <string name="morphe_music_hide_suggested_for_you_shelf_title">Skjul \'Foreslået til dig\'-hylden</string>
+  <string name="morphe_music_comments_screen_title">Kommentarer</string>
+  <string name="morphe_music_comments_screen_summary">Vælg hvilke elementer der vises i kommentarfeltet</string>
+  <string name="morphe_music_hide_comments_community_guidelines_title">Skjul Community Guidelines</string>
+  <string name="morphe_music_hide_comments_emoji_button_title">Skjul Emoji-knap</string>
+  <string name="morphe_music_hide_comments_info_button_title">Skjul Info-knap</string>
+  <string name="morphe_music_hide_comments_timestamp_button_title">Skjul tidsstempelknap</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Crossfade</string>
   <string name="morphe_music_crossfade_screen_summary">Bland glatnumre sammen</string>
@@ -115,10 +133,6 @@ YouTube Music 8.x – crossfade kører kun på 9.x og nyere"</string>
   <string name="morphe_music_hide_history_button_title">Skjul historikknap</string>
   <string name="morphe_music_hide_notification_button_title">Skjul notifikationsknap</string>
   <string name="morphe_music_hide_search_button_title">Skjul søgeknap</string>
-  <!-- layout.hide.general.hideMusicComponentsPatch -->
-  <string name="morphe_music_hide_lyrics_panel_category_title">Tekstpanel</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Skjul Del-knappen</string>
-  <string name="morphe_music_hide_lyrics_translate_button_title">Skjul Oversæt-knappen</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Handlingsknapper</string>
   <string name="morphe_music_action_buttons_screen_summary">Vælg hvilke handlingsknapper der vises under afspilleren</string>

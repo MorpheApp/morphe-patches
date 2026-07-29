@@ -2,21 +2,18 @@
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
  *
- * Original hard forked code:
- * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
- *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
 
 package app.morphe.extension.youtube.patches.components;
 
+import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
 import app.morphe.extension.shared.patches.components.ByteArrayFilterGroup;
 import app.morphe.extension.shared.patches.components.ByteArrayFilterGroupList;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.Filter;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
-import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -24,23 +21,16 @@ public final class QuickActionButtonsFilter extends Filter {
     private static final String QUICK_ACTIONS_PATH = "quick_actions.e";
 
     private final StringTrieSearch exceptions = new StringTrieSearch();
-    private final StringFilterGroup quickActions;
-    private final StringFilterGroup buttonFilterPath;
-    private final ByteArrayFilterGroupList bufferButtonsGroupList = new ByteArrayFilterGroupList();
+    private final StringFilterGroup quickActionButtons;
+    private final ByteArrayFilterGroupList quickActionButtonsBufferGroupList = new ByteArrayFilterGroupList();
 
     public QuickActionButtonsFilter() {
-        quickActions = new StringFilterGroup(
+        final StringFilterGroup quickActions = new StringFilterGroup(
                 Settings.HIDE_QUICK_ACTIONS,
                 QUICK_ACTIONS_PATH
         );
 
         addIdentifierCallbacks(quickActions);
-
-        buttonFilterPath = new StringFilterGroup(
-                null,
-                "|ContainerType|button.e",
-                "|fullscreen_video_action_button.e"
-        );
 
         exceptions.addPatterns(
                 "|like_button",
@@ -50,31 +40,47 @@ public final class QuickActionButtonsFilter extends Filter {
                 "|fullscreen_related_videos"
         );
 
-        addPathCallbacks(
-                new StringFilterGroup(
-                        Settings.HIDE_QUICK_ACTIONS_LIKE_BUTTON,
-                        "|like_button"
-                ),
-                new StringFilterGroup(
-                        Settings.HIDE_QUICK_ACTIONS_DISLIKE_BUTTON,
-                        "|dislike_button"
-                ),
-                new StringFilterGroup(
-                        Settings.HIDE_QUICK_ACTIONS_SAVE_BUTTON,
-                        "|save_to_playlist_button"
-                ),
-                new StringFilterGroup(
-                        Settings.HIDE_QUICK_ACTIONS_MORE_BUTTON,
-                        "|overflow_menu_button"
-                ),
-                new StringFilterGroup(
-                        Settings.HIDE_QUICK_ACTIONS_MORE_VIDEOS_BUTTON,
-                        "|fullscreen_related_videos"
-                ),
-                buttonFilterPath
+        final StringFilterGroup dislikeButton = new StringFilterGroup(
+                Settings.HIDE_QUICK_ACTIONS_DISLIKE_BUTTON,
+                "|dislike_button"
         );
 
-        bufferButtonsGroupList.addAll(
+        final StringFilterGroup likeButton = new StringFilterGroup(
+                Settings.HIDE_QUICK_ACTIONS_LIKE_BUTTON,
+                "|like_button"
+        );
+
+        final StringFilterGroup moreButton = new StringFilterGroup(
+                Settings.HIDE_QUICK_ACTIONS_MORE_BUTTON,
+                "|overflow_menu_button"
+        );
+
+        final StringFilterGroup moreVideosButton = new StringFilterGroup(
+                Settings.HIDE_QUICK_ACTIONS_MORE_VIDEOS_BUTTON,
+                "|fullscreen_related_videos"
+        );
+
+        quickActionButtons = new StringFilterGroup(
+                null,
+                "|ContainerType|button.e",
+                "|fullscreen_video_action_button.e"
+        );
+
+        final StringFilterGroup saveButton = new StringFilterGroup(
+                Settings.HIDE_QUICK_ACTIONS_SAVE_BUTTON,
+                "|save_to_playlist_button"
+        );
+
+        addPathCallbacks(
+                dislikeButton,
+                likeButton,
+                moreButton,
+                moreVideosButton,
+                quickActionButtons,
+                saveButton
+        );
+
+        quickActionButtonsBufferGroupList.addAll(
                 new ByteArrayFilterGroup(
                         Settings.HIDE_QUICK_ACTIONS_ASK_BUTTON,
                         "yt_fill_experimental_spark",
@@ -123,15 +129,11 @@ public final class QuickActionButtonsFilter extends Filter {
             return false;
         }
 
-        if (matchedGroup == quickActions) {
-            return true;
-        }
-
-        if (matchedGroup == buttonFilterPath) {
+        if (matchedGroup == quickActionButtons) {
             if (exceptions.matches(path)) {
                 return false;
             }
-            return bufferButtonsGroupList.check(buffer).isFiltered();
+            return quickActionButtonsBufferGroupList.check(buffer).isFiltered();
         }
 
         return true;

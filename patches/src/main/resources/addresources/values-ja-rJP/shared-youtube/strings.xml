@@ -157,13 +157,13 @@ YouTube Premiumのユーザーの場合、この設定は必要ない場合が�
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">非表示にするコンポーネントの path builder string のリスト (改行区切り)</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">無効なカスタム フィルタ: %s</string>
-  <!-- Settings menu filter -->
+  <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">設定メニューのフィルタ</string>
   <string name="morphe_settings_menu_filter_screen_summary">アプリ側の設定メニューの項目を、表示される項目名で指定して非表示にします</string>
   <string name="morphe_settings_menu_filter_picker_empty">項目の一覧を取得するため、アプリ側の設定メニューを一度開いてください</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">アプリのバージョンを偽装</string>
-  <string name="morphe_spoof_app_version_summary">古いバージョンのアプリを使用しているとサーバーに認識させて、以前の UI 機能を復元します</string>
+  <string name="morphe_spoof_app_version_summary">古いバージョンのアプリを使用しているとサーバーに認識させて、以前の UI デザインや機能を復元します</string>
   <string name="morphe_spoof_app_version_user_dialog_message">"アプリのバージョンを古いバージョンに偽装します。
 
 これにより、アプリの表示と機能が変更されますが、予期せぬ副作用が発生する可能性があります。

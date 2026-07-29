@@ -27,11 +27,10 @@ Second \"item\" text"</string>
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Apie</string>
   <string name="morphe_settings_music_screen_1_ads_title">Reklamos</string>
-  <string name="morphe_settings_music_screen_2_general_title">Bendri</string>
-  <string name="morphe_settings_music_screen_3_player_title">Leistuvas</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Paslėpti \"Gauti Music Premium\" etiketę</string>
   <string name="morphe_music_hide_video_ads_title">Paslėpti vaizdo reklamas</string>
+  <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Kryžminis išnykimas</string>
   <string name="morphe_music_crossfade_screen_summary">Sklandžiai susijungti takelius vienas su kitu</string>
@@ -83,7 +82,6 @@ Second \"item\" text"</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <!-- layout.buttons.hideButtonsPatch -->
-  <!-- layout.hide.general.hideMusicComponentsPatch -->
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->

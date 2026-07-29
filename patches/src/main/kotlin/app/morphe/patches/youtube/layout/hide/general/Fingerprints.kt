@@ -24,7 +24,6 @@ import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import app.morphe.patches.all.misc.resources.ResourceType
 import app.morphe.patches.all.misc.resources.resourceLiteral
-import app.morphe.patches.youtube.layout.buttons.navigation.WideSearchbarLayoutFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -136,9 +135,6 @@ internal object ShowWatermarkFingerprint : Fingerprint(
     parameters = listOf("L", "L")
 )
 
-/**
- * Matches same method as [WideSearchbarLayoutFingerprint].
- */
 internal object YouTubeDoodlesImageViewFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Landroid/view/View;",
@@ -487,7 +483,7 @@ internal object ChannelTabAddFingerprint : Fingerprint(
     )
 )
 
-internal object EngagementPanelInformationButtonFingerprint : Fingerprint(
+internal object InformationButtonFingerprint : Fingerprint(
     parameters = listOf("Landroid/content/Context;"),
     filters = listOf(
         resourceLiteral(ResourceType.ID, "information_button"),

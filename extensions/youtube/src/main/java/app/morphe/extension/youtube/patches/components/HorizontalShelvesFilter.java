@@ -78,13 +78,6 @@ public final class HorizontalShelvesFilter extends Filter {
         );
     }
 
-    private boolean isPlayerOrDescription() {
-        return EngagementPanel.isDescription()
-                || PlayerType.getCurrent().isMaximizedOrFullscreen()
-                || isActionBarVisible.get()
-                || ShortsPlayerState.isOpen();
-    }
-
     private boolean hideShelves(ContextInterface contextInterface) {
         if (!Settings.HIDE_HORIZONTAL_SHELVES.get() || isPlayerOrDescription()) {
             return false;
@@ -93,6 +86,13 @@ public final class HorizontalShelvesFilter extends Filter {
                 || NavigationBar.isSearchBarActive()
                 || NavigationBar.isBackButtonVisible()
                 || NavigationButton.getSelectedNavigationButton() != NavigationButton.LIBRARY;
+    }
+
+    private boolean isPlayerOrDescription() {
+        return EngagementPanel.isDescription()
+                || PlayerType.getCurrent().isMaximizedOrFullscreen()
+                || isActionBarVisible.get()
+                || ShortsPlayerState.isOpen();
     }
 
     @Override

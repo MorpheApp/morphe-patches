@@ -204,14 +204,13 @@ Oʻzgarishlar:
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Filtlash uchun izohlar karusel nomlarini yangi qatorga kiriting</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">AI chat xulosasini yashirish</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Kanal qoidalari</string>
-  <string name="morphe_hide_comments_prompts_title">Izohlar so\'rovlarini yashirish</string>
-  <string name="morphe_hide_comments_prompts_summary">Izohlardagi kontekstli maʼlumot xabarlarini yashiradi</string>
+  <string name="morphe_hide_comments_contexts_title">Xabar kontekstini yashirish</string>
   <string name="morphe_hide_comments_by_members_header_title">“A\'zolar izohlar” sarlavhasini yashirish</string>
   <string name="morphe_hide_comments_section_title">Izohlar bo\'limini yashirish</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Uy sahifasidagi izohlar bo\'limini yashirish</string>
-  <string name="morphe_hide_comments_community_guidelines_title">Hamjamiyat qoidalari</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Jamoa yo‘riqnomasini yashirish</string>
   <string name="morphe_hide_comments_create_a_short_button_title">“Qisqa video yaratish” tugmasini yashirish</string>
-  <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Emoji va vaqt belgilash tugmalarini yashirish</string>
+  <string name="morphe_hide_comments_emoji_button_title">Emoji tugmasini yashirish</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Filtruvar panelidagi variantlarni yashirish</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Faqat \'Yuqori\' va \'Eng so\'nggi\' variantlari qoldiriladi</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Sovg\'a animatsiyasi va kartochkalarini yashirish</string>
@@ -221,6 +220,7 @@ Oʻzgarishlar:
   <string name="morphe_hide_comments_preview_comment_title">Oldindan ko\'rsatish izohini yashirish</string>
   <string name="morphe_hide_comments_preview_comment_summary">Toʻliq izohlar boʻlimini ochishdan oldin videoning ostidagi sharh old koʻrinishini yashiradi</string>
   <string name="morphe_hide_comments_thanks_button_title">“Rahmat” tugmasini yashirish</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Vaqt belgisi tugmasini yashirish</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Sanitarlangan ajratilgan havola</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Faqat asl matnni qoldirib, sanatlangan ajratilgan havola</string>
   <string name="morphe_hide_keyword_content_screen_title">Kalit soʻz filtri</string>

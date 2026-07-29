@@ -203,6 +203,29 @@ Changes include:
     <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_subscribe_button_in_channel_page_title">Hide Subscribe button</string>
 
+    <string name="morphe_explore_menu_screen_title">Explore menu</string>
+    <string name="morphe_explore_menu_screen_summary">Choose which components appear in the explore menu</string>
+    <string name="morphe_hide_courses_menu_title">Hide Courses menu</string>
+    <string name="morphe_hide_explore_button_title">Hide Explore button</string>
+    <string name="morphe_hide_fashion_menu_title">Hide \'Fashion &amp; Beauty\' menu</string>
+    <string name="morphe_hide_gaming_menu_title">Hide Gaming menu</string>
+    <string name="morphe_hide_hype_menu_title">Hide Hype menu</string>
+    <string name="morphe_hide_live_menu_title">Hide Live menu</string>
+    <string name="morphe_hide_memberships_menu_title">Hide Memberships menu</string>
+    <string name="morphe_hide_movies_menu_title">Hide Movies menu</string>
+    <string name="morphe_hide_music_menu_title">Hide \'Music &amp; TV\' menu</string>
+    <string name="morphe_hide_news_menu_title">Hide News menu</string>
+    <string name="morphe_hide_playables_menu_title">Hide Playables menu</string>
+    <string name="morphe_hide_podcasts_menu_title">Hide Podcasts menu</string>
+    <string name="morphe_hide_shopping_menu_title">Hide Shopping menu</string>
+    <string name="morphe_hide_sports_menu_title">Hide Sports menu</string>
+    <string name="morphe_hide_youtube_premium_menu_title">Hide YouTube Premium menu</string>
+    <string name="morphe_hide_youtube_studio_menu_title">Hide YouTube Studio menu</string>
+    <string name="morphe_hide_youtube_music_menu_title">Hide YouTube Music menu</string>
+    <string name="morphe_hide_youtube_kids_menu_title">Hide YouTube Kids menu</string>
+    <string name="morphe_hide_youtube_create_menu_title">Hide YouTube Create menu</string>
+    <string name="morphe_hide_privacy_tos_footer_title">Hide \'Privacy Policy • Terms of Service\' footer</string>
+
     <string name="morphe_comments_screen_title">Comments</string>
     <string name="morphe_comments_screen_summary">Choose which components appear in the comments section</string>
     <string name="morphe_hide_comments_carousel_title">Enable comments carousel filter</string>
@@ -213,14 +236,13 @@ Changes include:
     <string name="morphe_hide_comments_carousel_filter_strings_summary">Enter the comments carousel names to filter by, separated by new lines</string>
     <string name="morphe_hide_comments_ai_chat_summary_title">Hide AI chat summary</string>
     <string name="morphe_hide_comments_channel_guidelines_title">Hide channel guidelines</string>
-    <string name="morphe_hide_comments_prompts_title">Hide comment prompts</string>
-    <string name="morphe_hide_comments_prompts_summary">Hides contextual information messages in the comments section</string>
+    <string name="morphe_hide_comments_contexts_title">Hide context messages</string>
     <string name="morphe_hide_comments_by_members_header_title">Hide \'Comments by members\' header</string>
     <string name="morphe_hide_comments_section_title">Hide comments section</string>
     <string name="morphe_hide_comments_section_in_home_feed_title">Hide comments section in Home feed</string>
-    <string name="morphe_hide_comments_community_guidelines_title">Hide community guidelines</string>
+    <string name="morphe_hide_comments_community_guidelines_title">Hide Community Guidelines</string>
     <string name="morphe_hide_comments_create_a_short_button_title">Hide \'Create a Short\' button</string>
-    <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Hide Emoji and Timestamp buttons</string>
+    <string name="morphe_hide_comments_emoji_button_title">Hide Emoji button</string>
     <string name="morphe_hide_comments_filter_bar_options_title">Hide filter bar options</string>
     <string name="morphe_hide_comments_filter_bar_options_summary">Hides all filter bar options except \'Top\' and \'Newest\'</string>
     <string name="morphe_hide_comments_gift_animation_and_cards_title">Hide gift animation and cards</string>
@@ -230,6 +252,7 @@ Changes include:
     <string name="morphe_hide_comments_preview_comment_title">Hide preview comment</string>
     <string name="morphe_hide_comments_preview_comment_summary">Hides the comment preview under video before opening the full comments section</string>
     <string name="morphe_hide_comments_thanks_button_title">Hide Thanks button</string>
+    <string name="morphe_hide_comments_timestamp_button_title">Hide Timestamp button</string>
     <string name="morphe_sanitize_comments_highlighted_search_links_title">Sanitize highlighted search links</string>
     <string name="morphe_sanitize_comments_highlighted_search_links_summary">Sanitizes highlighted search links, leaving only the original plain text</string>
 

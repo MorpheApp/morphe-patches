@@ -38,11 +38,11 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_1">ต้นฉบับ</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe ดำ</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe มืด</string>
-  <string name="morphe_custom_branding_icon_entry_4">Morphe แสง</string>
+  <string name="morphe_custom_branding_icon_entry_4">Morphe สว่าง</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
-  <string name="morphe_custom_branding_icon_entry_5">Morphe play light</string>
+  <string name="morphe_custom_branding_icon_entry_5">Morphe play สว่าง</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
-  <string name="morphe_custom_branding_icon_entry_6">Morphe play black</string>
+  <string name="morphe_custom_branding_icon_entry_6">Morphe play มืด</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">กำหนดเอง</string>
   <string name="morphe_custom_branding_notification_icon_title">ไอคอนการแจ้งเตือน</string>
@@ -55,26 +55,26 @@ Second \"item\" text"</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">ปลอมแปลงสตรีมวิดีโอ</string>
   <string name="morphe_spoof_video_streams_screen_summary">ปลอมแปลงสตรีมวิดีโอของไคลเอนต์เพื่อป้องกันปัญหาการเล่น</string>
-  <string name="morphe_spoof_video_streams_title">วิดีโอปลอม</string>
+  <string name="morphe_spoof_video_streams_title">ปลอมแปลงสตรีมวิดีโอ</string>
   <string name="morphe_spoof_video_streams_summary">"แก้ไขปัญหาการเล่นวิดีโอสำหรับผู้ใช้ส่วนใหญ่ โดยการขอสตรีมวิดีโอที่เข้ากันได้
 
 หากคุณเป็นผู้ใช้ YouTube Premium การตั้งค่านี้อาจไม่จำเป็น"</string>
-  <string name="morphe_spoof_video_streams_no_clients_toast">ไม่สามารถดึงข้อมูล clinets ทั้งหมดได้</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">ไม่สามารถดึงข้อมูลไคลเอ็นต์ทั้งหมดได้</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">การปิดการตั้งค่านี้อาจทำให้เกิดปัญหาในการเล่น</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
-  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">ลองเปิดใช้วิธี: Spoof video streams > Android VR sign in</string>
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">ลองเปิดใช้งาน: ปลอมแปลงสตรีมวิดีโอ &gt; เข้าสู่ระบบ Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">ไคลเอ็นต์เริ่มต้น</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">เข้าสู่ระบบ Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">ยังไม่ได้เข้าสู่ระบบ Android VR กดที่นี่เพื่อเข้าสู่ระบบ</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">อยู่ในส่วนของ Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">เปลี่ยน \'Default client\' เป็น Android VR เพื่อใช้งานคุณสมบัติ</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">เปลี่ยน \'ไคลเอ็นต์เริ่มต้น\' เป็น Android VR เพื่อใช้งานคุณสมบัติ</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">เข้าสู่ระบบ Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"กดต่อไปเพื่อลงชื่อเข้าใช้ใน Android VR เพื่อแก้ปัญหาการเล่นกลับบางครั้ง
 
-ลงชื่อเข้าใช้เพื่อลงชื่อเข้าใช้"</string>
+กดดำเนินการต่อเพื่อลงชื่อเข้าใช้"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">ดำเนินการต่อ</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">ออกจากระบบ</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">คำแนะนำ</string>
@@ -87,21 +87,21 @@ Second \"item\" text"</string>
 4. กด 'Metadata API'
 5. กลับมาที่แอปนี้หลังจากเห็นข้อความ 'อุปกรณ์ได้เชื่อมต่อแล้ว'"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">เปิดเว็บไซต์</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">ล้มเหลวในการออกฤทธิ์ของรหัสเข้าสู่ระบบ</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">ล้มเหลวในการออกฤทธิ์ของโทเค็นเข้าสู่ระบบ</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">ไม่สามารถออกรหัสเปิดใช้งานได้</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">ไม่สามารถออกโทเค็นการตรวจสอบสิทธิ์ได้</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">เข้าสู่ระบบสำเร็จ</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"โทเค็นเข้าสู่ระบบสำเร็จ
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"บันทึกการตรวจสอบสิทธิ์แล้ว
 
-• ตั้งแตนี้ต่อไป Morphe รับ batery meter ข้อมูลฉบับเต็มจาก Android VR กลับสู่ระบบจะไม่สามารถทำได้
-• ถ้าแอปนี้มิได้ใช้เป็นระยะเวลา 6 เดือน Google จะลบทोเค็นนี้ไป
-• ถ้าคุณเปลี่ยนรหัสผ่าน Google หรือลบที่นี้ออกจากตั้งค่า Google คุณก็ต้องเข้าสู่ระบบอีกครั้ง"</string>
-  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 นั้นล่าช้าชั่วคราว (API หมดเวลา)</string>
+• การตั้งค่า Morphe ของคุณจะไม่นำเข้า/ส่งออกการตรวจสอบสิทธิ์ Android VR
+• หากไม่มีการใช้แอปนี้เป็นเวลา 6 เดือน Google จะลบการตรวจสอบสิทธิ์นี้
+• คุณจะต้องลงชื่อเข้าใช้อีกครั้งหากคุณเปลี่ยนรหัสผ่าน Google หรือยกเลิกการลงทะเบียนอุปกรณ์นี้จากการตั้งค่า Google"</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 ไม่สามารถใช้งานได้ชั่วคราว (API หมดเวลา)</string>
   <string name="morphe_oauth2_connection_failure_status_400">การลงชื่อเข้าใช้ Android VR หมดอายุแล้ว กรุณาลงชื่อเข้าใช้ VR อีกครั้ง</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 นั้นล่าช้าชั่วคราว (%d)</string>
-  <string name="morphe_oauth2_connection_failure_generic">OAuth2 นั้นล่าช้าชั่วคราว</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 ไม่สามารถใช้งานได้ชั่วคราว (รหัสสถานะ %d)</string>
+  <string name="morphe_oauth2_connection_failure_generic">OAuth2 ไม่สามารถใช้งานได้ชั่วคราว</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">ไม่สามารถลงชื่อเข้าใช้ VR ได้ เว็บไซต์ยังไม่ได้อนุมัติการรับรอง</string>
   <string name="morphe_oauth2_connection_failure_auth_error">ไม่สามารถเข้าสู่ระบบ VR: %s</string>
-  <string name="morphe_oauth2_toast_reset">ออกจากระบสเวล VR</string>
+  <string name="morphe_oauth2_toast_reset">ออกจากระบบ VR แล้ว</string>
   <string name="morphe_oauth2_toast_invalid">โทเค็นเข้าสู่ระบบ VR ไม่ถูกต้อง กรุณาลองเข้าสู่ระบบ VR อีกครั้ง</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">ปิดใช้งานโพรโทคอล QUIC</string>
@@ -127,13 +127,13 @@ Second \"item\" text"</string>
   <string name="morphe_proxy_auth_username_summary">ชื่อผู้ใช้สำหรับการยืนยันตัวตนพร็อกซีแบบ Basic</string>
   <string name="morphe_proxy_auth_password_title">รหัสผ่านพร็อกซี</string>
   <string name="morphe_proxy_auth_password_summary">รหัสผ่านสำหรับการยืนยันตัวตนพร็อกซีแบบ Basic</string>
-  <string name="morphe_proxy_allow_direct_fallback_title">อนุญาตให้Fallbackโดยตรง</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">อนุญาตให้ใช้ทางเลือกโดยตรง</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">เชื่อมต่อโดยตรงหากพร็อกซีล้มเหลว</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">ซ่อนโฆษณาแบบเต็มหน้าจอ</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
           'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">หากต้องการใช้คุณสมบัตินี้ ให้เปลี่ยน \'Spoof video streams\' เป็นไคลเอ็นต์อื่น ๆ ยกเว้น Android Studio\'</string>
+  <string name="morphe_force_original_audio_not_available">หากต้องการใช้คุณสมบัตินี้ ให้เปลี่ยน \'ปลอมแปลงสตรีมวิดีโอ\' เป็นไคลเอ็นต์อื่น ๆ ยกเว้น Android Studio\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">ล้างข้อมูลลิงก์ที่แชร์</string>
   <string name="morphe_sanitize_sharing_links_summary">พารามิเตอร์การติดตามจะถูกลบออกจากลิงก์ที่แชร์</string>
@@ -157,7 +157,7 @@ Second \"item\" text"</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">รายการสตริงตัวสร้างเส้นทางส่วนประกอบที่จะกรอง คั่นด้วยบรรทัดใหม่</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">ตัวกรองแบบกำหนดเองไม่ถูกต้อง: %s</string>
-  <!-- Settings menu filter -->
+  <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">ตัวกรองเมนูการตั้งค่า</string>
   <string name="morphe_settings_menu_filter_screen_summary">ซ่อนรายการบนหน้าจอการตั้งค่าแอปมาตรฐานตามชื่อที่แสดง</string>
   <string name="morphe_settings_menu_filter_picker_empty">เปิดหน้าจอการตั้งค่าแอปมาตรฐานหนึ่งครั้งเพื่อสร้างรายการ</string>
@@ -174,8 +174,8 @@ Second \"item\" text"</string>
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">ไม่สามารถแสดงความไม่ชอบชั่วคราว (API หมดเวลา)</string>
   <string name="morphe_ryd_failure_connection_status_code">ไม่สามารถแสดงความไม่ชอบได้ (รหัสสถานะ %d)</string>
-  <string name="morphe_ryd_failure_client_rate_limit_requested">ไม่สามารถใช้งานการไม่ถูกใจได้ (ข้อจำกัดของ Client API)</string>
-  <string name="morphe_ryd_failure_generic">ไม่สามารถใช้งาน \"ไม่ชอบ\" ได้ (%s)</string>
+  <string name="morphe_ryd_failure_client_rate_limit_requested">ไม่สามารถแสดงความไม่ชอบได้ (ข้อจำกัดของ Client API)</string>
+  <string name="morphe_ryd_failure_generic">ไม่สามารถแสดงความไม่ชอบได้ (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">ซ่อนโดยเจ้าของ</string>
   <string name="morphe_ryd_enabled_title">เปิดใช้งาน Return YouTube Dislike</string>
@@ -207,5 +207,5 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">ข้อจำกัดอัตราของไคลเอนต์ API</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">ไม่พบข้อจำกัดอัตราของไคลเอนต์</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">พบข้อจำกัดอัตราของไคลเอนต์ %d ครั้ง</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d มิกเวฮราธี</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%d มิลลิวินาที</string>
 </resources>

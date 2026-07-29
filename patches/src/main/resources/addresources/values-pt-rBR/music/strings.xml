@@ -31,13 +31,35 @@ Second \"item\" text"</string>
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Sobre</string>
   <string name="morphe_settings_music_screen_1_ads_title">Anúncios</string>
-  <string name="morphe_settings_music_screen_2_general_title">Geral</string>
-  <string name="morphe_settings_music_screen_3_player_title">Player</string>
-  <string name="morphe_settings_music_screen_7_misc_title">Diversos</string>
+  <string name="morphe_settings_music_screen_2_feed_title">Feed</string>
+  <string name="morphe_settings_music_screen_3_general_title">General</string>
+  <string name="morphe_settings_music_screen_4_player_title">Player</string>
+  <string name="morphe_settings_music_screen_8_misc_title">Miscellaneous</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Ocultar o rótulo \'Obter Music Premium\'</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Ocultar promoções do Music Premium</string>
   <string name="morphe_music_hide_video_ads_title">Ocultar anúncios em vídeo</string>
+  <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_music_hide_audio_video_toggle_title">Ocultar alternância de áudio/vídeo</string>
+  <string name="morphe_music_hide_explore_shelf_title">Ocultar prateleira Explorar</string>
+  <string name="morphe_music_hide_grid_shelves_title">Ocultar prateleiras de grade</string>
+  <string name="morphe_music_hide_horizontal_shelves_title">Ocultar prateleiras horizontais</string>
+  <string name="morphe_music_hide_list_shelves_title">Ocultar prateleiras em lista</string>
+  <string name="morphe_music_hide_lyrics_panel_category_title">Painel de letras</string>
+  <string name="morphe_music_hide_lyrics_share_button_title">Ocultar botão Compartilhar</string>
+  <string name="morphe_music_hide_lyrics_translate_button_title">Ocultar botão Traduzir</string>
+  <string name="morphe_music_hide_new_from_shelf_title">Ocultar prateleira \"Novo de\"</string>
+  <string name="morphe_music_hide_playlist_shelves_title">Ocultar prateleiras de playlist</string>
+  <string name="morphe_music_hide_repeat_button_title">Ocultar botão Repetir</string>
+  <string name="morphe_music_hide_shuffle_button_title">Ocultar botão Aleatório</string>
+  <string name="morphe_music_hide_speed_dial_shelf_title">Ocultar prateleira \"Discagem rápida\"</string>
+  <string name="morphe_music_hide_suggested_for_you_shelf_title">Ocultar prateleira \"Sugerido para você\"</string>
+  <string name="morphe_music_comments_screen_title">Comentários</string>
+  <string name="morphe_music_comments_screen_summary">Escolha quais componentes aparecem na seção de comentários</string>
+  <string name="morphe_music_hide_comments_community_guidelines_title">Ocultar Diretrizes da comunidade</string>
+  <string name="morphe_music_hide_comments_emoji_button_title">Ocultar botão Emoji</string>
+  <string name="morphe_music_hide_comments_info_button_title">Ocultar botão Info</string>
+  <string name="morphe_music_hide_comments_timestamp_button_title">Ocultar botão Marcação de tempo</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Crossfade</string>
   <string name="morphe_music_crossfade_screen_summary">Misture as faixas de forma suave</string>
@@ -115,10 +137,6 @@ YouTube Music 8.x — o Crossfade funciona apenas no YouTube Music 9.x ou mais r
   <string name="morphe_music_hide_history_button_title">Ocultar botão de histórico</string>
   <string name="morphe_music_hide_notification_button_title">Ocultar botão de notificação</string>
   <string name="morphe_music_hide_search_button_title">Ocultar botão de pesquisa</string>
-  <!-- layout.hide.general.hideMusicComponentsPatch -->
-  <string name="morphe_music_hide_lyrics_panel_category_title">Painel de letras</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Ocultar botão Compartilhar</string>
-  <string name="morphe_music_hide_lyrics_translate_button_title">Ocultar botão Traduzir</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Botões de ação</string>
   <string name="morphe_music_action_buttons_screen_summary">Escolha quais botões de ação aparecem abaixo do player</string>

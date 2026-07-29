@@ -31,13 +31,36 @@ Second \"item\" text"</string>
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Про Morphe</string>
   <string name="morphe_settings_music_screen_1_ads_title">Реклама</string>
-  <string name="morphe_settings_music_screen_2_general_title">Загальні</string>
-  <string name="morphe_settings_music_screen_3_player_title">Плеєр</string>
-  <string name="morphe_settings_music_screen_7_misc_title">Різне</string>
+  <string name="morphe_settings_music_screen_2_feed_title">Стрічка</string>
+  <string name="morphe_settings_music_screen_3_general_title">Загальні</string>
+  <string name="morphe_settings_music_screen_4_player_title">Плеєр</string>
+  <string name="morphe_settings_music_screen_8_misc_title">Різне</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Приховати пункт \"Підписатися на Music Premium\"</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Приховати рекламу Music Premium</string>
   <string name="morphe_music_hide_video_ads_title">Приховати відеорекламу</string>
+  <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_music_hide_audio_video_toggle_title">Приховати перемикач \"Пісня | Відео\"</string>
+  <string name="morphe_music_hide_explore_shelf_title">Приховати панель \"Навігація\"</string>
+  <string name="morphe_music_hide_grid_shelves_title">Приховати панелі сіток</string>
+  <string name="morphe_music_hide_horizontal_shelves_title">Приховати горизонтальні панелі</string>
+  <string name="morphe_music_hide_list_shelves_title">Приховати панелі-списки</string>
+  <string name="morphe_music_hide_lyrics_panel_category_title">Панель текстів пісень</string>
+  <string name="morphe_music_hide_lyrics_share_button_title">Приховати кнопку \"Поділитися\"</string>
+  <string name="morphe_music_hide_lyrics_translate_button_title">Приховати кнопку \"Переклад\"</string>
+  <string name="morphe_music_hide_new_from_shelf_title">Приховати панель \"Нове від\"</string>
+  <string name="morphe_music_hide_playlist_shelves_title">Приховати панелі списків відтворення</string>
+  <string name="morphe_music_hide_repeat_button_title">Приховати кнопку \"Повторювати\"</string>
+  <string name="morphe_music_hide_shuffle_button_title">Приховати кнопку \"Перемішати\"</string>
+  <string name="morphe_music_hide_speed_dial_shelf_title">Приховати панель \"Швидкий вибір\"</string>
+  <string name="morphe_music_hide_suggested_for_you_shelf_title">Приховати панель \"Рекомендовано для вас\"</string>
+  <string name="morphe_music_comments_screen_title">Коментарі</string>
+  <string name="morphe_music_comments_screen_summary">Виберіть, які компоненти будуть показуватися в секції коментарів</string>
+  <string name="morphe_music_hide_comments_community_guidelines_title">Приховати правила спільноти</string>
+  <string name="morphe_music_hide_comments_context_title">Приховати контекстне повідомлення</string>
+  <string name="morphe_music_hide_comments_emoji_button_title">Приховати кнопку \"Емодзі\"</string>
+  <string name="morphe_music_hide_comments_info_button_title">Приховати кнопку \"Інфо\"</string>
+  <string name="morphe_music_hide_comments_timestamp_button_title">Приховати кнопку позначки часу</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Плавний перехід</string>
   <string name="morphe_music_crossfade_screen_summary">Плавно зводити треки один в інший</string>
@@ -115,10 +138,6 @@ YouTube Music 8.x - плавний перехід працює лише на в�
   <string name="morphe_music_hide_history_button_title">Приховати кнопку \"Історія\"</string>
   <string name="morphe_music_hide_notification_button_title">Приховати кнопку \"Сповіщення\"</string>
   <string name="morphe_music_hide_search_button_title">Приховати кнопку \"Пошук\"</string>
-  <!-- layout.hide.general.hideMusicComponentsPatch -->
-  <string name="morphe_music_hide_lyrics_panel_category_title">Панель текстів пісень</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Приховати кнопку \"Поділитися\"</string>
-  <string name="morphe_music_hide_lyrics_translate_button_title">Приховати кнопку \"Переклад\"</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Кнопки дій</string>
   <string name="morphe_music_action_buttons_screen_summary">Виберіть, які кнопки з\'являються під програвачем</string>

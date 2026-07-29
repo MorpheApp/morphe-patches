@@ -31,13 +31,31 @@ Second \"item\" text"</string>
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">O programu</string>
   <string name="morphe_settings_music_screen_1_ads_title">Oglasi</string>
-  <string name="morphe_settings_music_screen_2_general_title">Opšte</string>
-  <string name="morphe_settings_music_screen_3_player_title">Plejer</string>
-  <string name="morphe_settings_music_screen_7_misc_title">Razno</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Sakrij oznaku „Nabavite Music Premium”</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Sakrij promocije za Music Premium</string>
   <string name="morphe_music_hide_video_ads_title">Sakrij video oglase</string>
+  <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_music_hide_audio_video_toggle_title">Sakrij audio / video prekidač</string>
+  <string name="morphe_music_hide_explore_shelf_title">Sakrij policu sa otkrićima</string>
+  <string name="morphe_music_hide_grid_shelves_title">Sakrij police</string>
+  <string name="morphe_music_hide_horizontal_shelves_title">Sakrij horizontalne police</string>
+  <string name="morphe_music_hide_list_shelves_title">Sakrij police sa listom</string>
+  <string name="morphe_music_hide_lyrics_panel_category_title">Panel tekstova</string>
+  <string name="morphe_music_hide_lyrics_share_button_title">Sakrij dugme „Deli”</string>
+  <string name="morphe_music_hide_lyrics_translate_button_title">Sakrij dugme „Prevedi”</string>
+  <string name="morphe_music_hide_new_from_shelf_title">Sakrij policu „Novi od”</string>
+  <string name="morphe_music_hide_playlist_shelves_title">Sakrij police sa plejliztama</string>
+  <string name="morphe_music_hide_repeat_button_title">Sakrij dugme za ponavljanje</string>
+  <string name="morphe_music_hide_shuffle_button_title">Sakrij dugme za nasumičan red</string>
+  <string name="morphe_music_hide_speed_dial_shelf_title">Sakrij policu „Brzi broj”</string>
+  <string name="morphe_music_hide_suggested_for_you_shelf_title">Sakrij policu „Predloženo za vas”</string>
+  <string name="morphe_music_comments_screen_title">Komentari</string>
+  <string name="morphe_music_comments_screen_summary">Odaberite koje komponente se pojavljuju u sekciji komentara</string>
+  <string name="morphe_music_hide_comments_community_guidelines_title">Sakrij smernice zajednice</string>
+  <string name="morphe_music_hide_comments_emoji_button_title">Sakrij dugme za emodžije</string>
+  <string name="morphe_music_hide_comments_info_button_title">Sakrij dugme za informacije</string>
+  <string name="morphe_music_hide_comments_timestamp_button_title">Sakrij dugme za vremensku oznaku</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Prelaženje boja</string>
   <string name="morphe_music_crossfade_screen_summary">Glako spajanje numera jedna u drugu</string>
@@ -114,10 +132,6 @@ YouTube Music 8.x — prelazni efekat radi samo na 9.x i novijim verzijama"</str
   <string name="morphe_music_hide_history_button_title">Sakrij dugme „Istorija”</string>
   <string name="morphe_music_hide_notification_button_title">Sakrij dugme „Obaveštenje”</string>
   <string name="morphe_music_hide_search_button_title">Sakrij dugme „Pretraga”</string>
-  <!-- layout.hide.general.hideMusicComponentsPatch -->
-  <string name="morphe_music_hide_lyrics_panel_category_title">Panel tekstova</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Sakrij dugme „Deli”</string>
-  <string name="morphe_music_hide_lyrics_translate_button_title">Sakrij dugme „Prevedi”</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Dugmad radnji</string>
   <string name="morphe_music_action_buttons_screen_summary">Izaberite koji dugmići za akcije da se pojave ispod plejera</string>

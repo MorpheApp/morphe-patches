@@ -157,7 +157,7 @@ Second \"item\" text"</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">নতুন লাইন দ্বারা পৃথক করা ফিল্টার করার জন্য উপাদান পাথ বিল্ডার স্ট্রিং এর তালিকা</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">ত্রুটিপূর্ণ কাস্টম ফিল্টার: %s</string>
-  <!-- Settings menu filter -->
+  <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">সেটিংস মেনু ফিল্টার</string>
   <string name="morphe_settings_menu_filter_screen_summary">видиমান নামের মাধ্যমে স্ট্যান্ডার্ড অ্যাপ সেটিংস স্ক্রিনে আইটেম লুকান</string>
   <string name="morphe_settings_menu_filter_picker_empty">তালিকাটি পপুলেট করার জন্য স্ট্যান্ডার্ড অ্যাপ সেটিংস স্ক্রিনটি একবার খুলুন</string>

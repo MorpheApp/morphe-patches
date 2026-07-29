@@ -157,7 +157,7 @@ Sin embargo, si activas esto, también se registrarán algunos datos del usuario
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Lista de cadenas del constructor de rutas de componentes a filtrar, una por línea</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Filtro personalizado no válido: %s</string>
-  <!-- Settings menu filter -->
+  <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">Filtro del menú de configuración</string>
   <string name="morphe_settings_menu_filter_screen_summary">Ocultar elementos en la pantalla de configuración de la aplicación estándar por su nombre visible</string>
   <string name="morphe_settings_menu_filter_picker_empty">Abrir la pantalla de configuración de la aplicación estándar una vez para completar la lista</string>
@@ -182,7 +182,7 @@ Si se desactiva posteriormente, se recomienda borrar los datos de la aplicación
   <string name="morphe_ryd_dislike_percentage_title">Mostrar \"No me gusta\" como porcentaje</string>
   <string name="morphe_ryd_dislike_percentage_summary">Muestra los \"No me gusta\" como un porcentaje de las reacciones positivas en lugar de un número</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">Usar botón compacto de \"Me gusta\"</string>
+  <string name="morphe_ryd_compact_layout_title">Usar botón de \"Me gusta\" compacto</string>
   <string name="morphe_ryd_compact_layout_summary">Reduce el ancho del botón de \"Me gusta\" para ahorrar espacio</string>
   <string name="morphe_ryd_estimated_like_title">Mostrar estimación de \"Me gusta\"</string>
   <string name="morphe_ryd_estimated_like_summary">Muestra una estimación del número de \"Me gusta\" en los videos donde el creador ha desactivado las reacciones</string>

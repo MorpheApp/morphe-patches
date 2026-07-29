@@ -24,6 +24,7 @@ import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.litho.node.hookTreeNodeResult
+import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
@@ -43,11 +44,11 @@ import app.morphe.patches.youtube.misc.litho.node.treeNodeElementHookPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_21_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_26_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_11_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_20_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_25_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
-import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -75,6 +76,8 @@ private const val LAYOUT_COMPONENTS_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/LayoutComponentsFilter;"
 private const val DESCRIPTION_COMPONENTS_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/DescriptionComponentsFilter;"
+private const val EXPLORE_MENU_FILTER =
+    "Lapp/morphe/extension/youtube/patches/components/ExploreMenuFilter;"
 private const val COMMENTS_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/CommentsFilter;"
 private const val CUSTOM_FILTER =
@@ -159,13 +162,13 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     ),
                     SwitchPreference("morphe_hide_comments_ai_chat_summary"),
                     SwitchPreference("morphe_hide_comments_channel_guidelines"),
-                    SwitchPreference("morphe_hide_comments_prompts", summary = true),
                     SwitchPreference("morphe_hide_comments_by_members_header"),
                     SwitchPreference("morphe_hide_comments_section"),
                     SwitchPreference("morphe_hide_comments_section_in_home_feed"),
                     SwitchPreference("morphe_hide_comments_community_guidelines"),
+                    SwitchPreference("morphe_hide_comments_contexts"),
                     SwitchPreference("morphe_hide_comments_create_a_short_button"),
-                    SwitchPreference("morphe_hide_comments_emoji_and_timestamp_buttons"),
+                    SwitchPreference("morphe_hide_comments_emoji_button"),
                     SwitchPreference("morphe_hide_comments_filter_bar_options", summary = true),
                     SwitchPreference("morphe_hide_comments_gift_animation_and_cards"),
                     SwitchPreference("morphe_hide_comments_gift_button"),
@@ -173,6 +176,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_comments_live_chat_donators_bar"),
                     SwitchPreference("morphe_hide_comments_preview_comment", summary = true),
                     SwitchPreference("morphe_hide_comments_thanks_button"),
+                    SwitchPreference("morphe_hide_comments_timestamp_button"),
                     SwitchPreference("morphe_sanitize_comments_highlighted_search_links", summary = true)
                 ),
                 sorting = Sorting.UNSORTED
@@ -192,6 +196,37 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_video_title", summary = true),
             SwitchPreference("morphe_sanitize_video_subtitle", summary = true)
         )
+
+        if (is_20_31_or_greater) {
+            PreferenceScreen.FEED.addPreferences(
+                PreferenceScreenPreference(
+                    key = "morphe_explore_menu_screen",
+                    sorting = Sorting.UNSORTED,
+                    preferences = setOf(
+                        SwitchPreference("morphe_hide_explore_button"),
+                        SwitchPreference("morphe_hide_shopping_menu"),
+                        SwitchPreference("morphe_hide_music_menu"),
+                        SwitchPreference("morphe_hide_movies_menu"),
+                        SwitchPreference("morphe_hide_hype_menu"),
+                        SwitchPreference("morphe_hide_live_menu"),
+                        SwitchPreference("morphe_hide_gaming_menu"),
+                        SwitchPreference("morphe_hide_news_menu"),
+                        SwitchPreference("morphe_hide_sports_menu"),
+                        SwitchPreference("morphe_hide_courses_menu"),
+                        SwitchPreference("morphe_hide_fashion_menu"),
+                        SwitchPreference("morphe_hide_podcasts_menu"),
+                        SwitchPreference("morphe_hide_playables_menu"),
+                        SwitchPreference("morphe_hide_memberships_menu"),
+                        SwitchPreference("morphe_hide_youtube_premium_menu"),
+                        SwitchPreference("morphe_hide_youtube_studio_menu"),
+                        SwitchPreference("morphe_hide_youtube_music_menu"),
+                        SwitchPreference("morphe_hide_youtube_kids_menu"),
+                        SwitchPreference("morphe_hide_youtube_create_menu"),
+                        SwitchPreference("morphe_hide_privacy_tos_footer")
+                    )
+                )
+            )
+        }
 
         PreferenceScreen.FEED.addPreferences(
             PreferenceScreenPreference(
@@ -393,6 +428,9 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         addLithoFilter(LAYOUT_COMPONENTS_FILTER)
         addLithoFilter(DESCRIPTION_COMPONENTS_FILTER)
+        if (is_20_31_or_greater) {
+            addLithoFilter(EXPLORE_MENU_FILTER)
+        }
         addLithoFilter(COMMENTS_FILTER)
         addLithoFilter(KEYWORD_FILTER)
         addLithoFilter(AISLIST_FILTER)
@@ -557,7 +595,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // region hide comments info button
 
-        EngagementPanelInformationButtonFingerprint.let {
+        InformationButtonFingerprint.let {
             it.method.apply {
                 val checkCastIndex = it.instructionMatches[1].index
                 val viewRegister = getInstruction<OneRegisterInstruction>(checkCastIndex).registerA

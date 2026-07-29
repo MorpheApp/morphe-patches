@@ -123,15 +123,15 @@ public final class AdsFilter extends Filter {
                 "video_lockup_with_attachment.e"
         );
 
-        buyMovieAdBuffer =  new ByteArrayFilterGroup(
+        buyMovieAdBuffer = new ByteArrayFilterGroup(
                 null,
                 "FEstorefront"
         );
 
         final var viewProducts = new StringFilterGroup(
                 Settings.HIDE_PLAYER_POPUP_ADS,
-                "products_in_video",
                 "product_item",
+                "products_in_video",
                 "shopping_overlay.e" // Video player overlay shopping links.
         );
 
@@ -232,28 +232,18 @@ public final class AdsFilter extends Filter {
     /**
      * Injection point.
      */
-    public static byte[] hideStatementBanner(byte[] bytes) {
-        try {
-            if (statementBannerSearch.matches(bytes)) {
-                final boolean isDoodle = yoodleSearch.matches(bytes);
+    public static boolean allowAds(boolean original) {
+        if (Settings.HIDE_GENERAL_ADS.get()) return false;
+        return original;
+    }
 
-                if (isDoodle) {
-                    if (Settings.HIDE_YOUTUBE_DOODLES.get()) {
-                        Logger.printDebug(() -> "Hiding YouTube Doodles");
-                        return EMPTY_BYTE_ARRAY;
-                    }
-                } else {
-                    if (Settings.HIDE_YOUTUBE_PREMIUM_PROMOTIONS.get()) {
-                        Logger.printDebug(() -> "Hiding YouTube Premium promotions");
-                        return EMPTY_BYTE_ARRAY;
-                    }
-                }
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "hideStatementBanner failure", ex);
-        }
-
-        return bytes;
+    /**
+     * Hide the view, which shows ads in the homepage.
+     *
+     * @param view The view, which shows ads.
+     */
+    public static void hideAdAttributionView(View view) {
+        Utils.hideViewBy0dpUnderCondition(Settings.HIDE_GENERAL_ADS, view);
     }
 
     /**
@@ -266,27 +256,10 @@ public final class AdsFilter extends Filter {
     /**
      * Injection point.
      */
-    public static boolean allowAds(boolean original) {
-        if (Settings.HIDE_GENERAL_ADS.get()) return false;
-        return original;
-    }
-
-    /**
-     * Injection point.
-     */
     public static String hideAds(String osName) {
         return Settings.HIDE_GENERAL_ADS.get()
                 ? "Android Automotive"
                 : osName;
-    }
-
-    /**
-     * Hide the view, which shows ads in the homepage.
-     *
-     * @param view The view, which shows ads.
-     */
-    public static void hideAdAttributionView(View view) {
-        Utils.hideViewBy0dpUnderCondition(Settings.HIDE_GENERAL_ADS, view);
     }
 
     /**
@@ -314,6 +287,13 @@ public final class AdsFilter extends Filter {
     /**
      * Injection point.
      */
+    public static void hideMiniplayerPaidPromotionLabelView(View view) {
+        Utils.hideViewBy0dpUnderCondition(Settings.HIDE_PAID_PROMOTION_LABEL, view);
+    }
+
+    /**
+     * Injection point.
+     */
     public static boolean hidePlayerPopupAds(String panelId) {
         return Settings.HIDE_PLAYER_POPUP_ADS.get()
                 && Utils.containsAny(panelId, PLAYER_POPUP_AD_PANEL_IDS);
@@ -322,8 +302,28 @@ public final class AdsFilter extends Filter {
     /**
      * Injection point.
      */
-    public static void hideMiniplayerPaidPromotionLabelView(View view) {
-        Utils.hideViewBy0dpUnderCondition(Settings.HIDE_PAID_PROMOTION_LABEL, view);
+    public static byte[] hideStatementBanner(byte[] bytes) {
+        try {
+            if (statementBannerSearch.matches(bytes)) {
+                final boolean isDoodle = yoodleSearch.matches(bytes);
+
+                if (isDoodle) {
+                    if (Settings.HIDE_YOUTUBE_DOODLES.get()) {
+                        Logger.printDebug(() -> "Hiding YouTube Doodles");
+                        return EMPTY_BYTE_ARRAY;
+                    }
+                } else {
+                    if (Settings.HIDE_YOUTUBE_PREMIUM_PROMOTIONS.get()) {
+                        Logger.printDebug(() -> "Hiding YouTube Premium promotions");
+                        return EMPTY_BYTE_ARRAY;
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "hideStatementBanner failure", ex);
+        }
+
+        return bytes;
     }
 
     /**

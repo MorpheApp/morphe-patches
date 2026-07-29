@@ -31,13 +31,35 @@ Second \"item\" text"</string>
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">关于</string>
   <string name="morphe_settings_music_screen_1_ads_title">广告</string>
-  <string name="morphe_settings_music_screen_2_general_title">通用</string>
-  <string name="morphe_settings_music_screen_3_player_title">播放器</string>
-  <string name="morphe_settings_music_screen_7_misc_title">其他</string>
+  <string name="morphe_settings_music_screen_2_feed_title">订阅源</string>
+  <string name="morphe_settings_music_screen_3_general_title">常规</string>
+  <string name="morphe_settings_music_screen_4_player_title">播放器</string>
+  <string name="morphe_settings_music_screen_8_misc_title">其他</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">隐藏“订阅 Music Premium”标签</string>
   <string name="morphe_music_hide_music_premium_promotions_title">隐藏 Music Premium 促销推广</string>
   <string name="morphe_music_hide_video_ads_title">隐藏视频广告</string>
+  <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_music_hide_audio_video_toggle_title">隐藏音视频切换开关</string>
+  <string name="morphe_music_hide_explore_shelf_title">隐藏探索区域</string>
+  <string name="morphe_music_hide_grid_shelves_title">隐藏网格展示区域</string>
+  <string name="morphe_music_hide_horizontal_shelves_title">隐藏横向展示区域</string>
+  <string name="morphe_music_hide_list_shelves_title">隐藏列表展示区域</string>
+  <string name="morphe_music_hide_lyrics_panel_category_title">歌词面板</string>
+  <string name="morphe_music_hide_lyrics_share_button_title">隐藏分享按钮</string>
+  <string name="morphe_music_hide_lyrics_translate_button_title">隐藏翻译按钮</string>
+  <string name="morphe_music_hide_new_from_shelf_title">隐藏“最新”区域</string>
+  <string name="morphe_music_hide_playlist_shelves_title">隐藏歌单展示区域</string>
+  <string name="morphe_music_hide_repeat_button_title">隐藏重复播放按钮</string>
+  <string name="morphe_music_hide_shuffle_button_title">隐藏随机播放按钮</string>
+  <string name="morphe_music_hide_speed_dial_shelf_title">隐藏“快速拨号”区域</string>
+  <string name="morphe_music_hide_suggested_for_you_shelf_title">隐藏“为你推荐”区域</string>
+  <string name="morphe_music_comments_screen_title">评论</string>
+  <string name="morphe_music_comments_screen_summary">选择评论区中显示哪些组件</string>
+  <string name="morphe_music_hide_comments_community_guidelines_title">隐藏社区规范</string>
+  <string name="morphe_music_hide_comments_emoji_button_title">隐藏表情按钮</string>
+  <string name="morphe_music_hide_comments_info_button_title">隐藏信息按钮</string>
+  <string name="morphe_music_hide_comments_timestamp_button_title">隐藏时间戳按钮</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">淡入淡出</string>
   <string name="morphe_music_crossfade_screen_summary">平滑地将曲目混合在一起</string>
@@ -115,10 +137,6 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <string name="morphe_music_hide_history_button_title">隐藏历史记录按钮</string>
   <string name="morphe_music_hide_notification_button_title">隐藏通知按钮</string>
   <string name="morphe_music_hide_search_button_title">隐藏搜索按钮</string>
-  <!-- layout.hide.general.hideMusicComponentsPatch -->
-  <string name="morphe_music_hide_lyrics_panel_category_title">歌词面板</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">隐藏分享按钮</string>
-  <string name="morphe_music_hide_lyrics_translate_button_title">隐藏翻译按钮</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">操作按钮</string>
   <string name="morphe_music_action_buttons_screen_summary">选择在纵向和全屏模式下显示的哪个操作按钮</string>

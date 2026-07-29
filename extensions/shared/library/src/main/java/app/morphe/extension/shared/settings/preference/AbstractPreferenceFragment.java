@@ -209,7 +209,9 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     private static boolean searchPreferencePath(PreferenceGroup group, Preference target, List<CharSequence> path) {
         for (int i = 0, n = group.getPreferenceCount(); i < n; i++) {
             Preference p = group.getPreference(i);
-            CharSequence title = p.getTitle();
+            // NoTitlePreferenceCategory reports its first child title so it can be sorted,
+            // but that title is never shown to the user and must not appear in the path.
+            CharSequence title = (p instanceof NoTitlePreferenceCategory) ? null : p.getTitle();
             if (p == target) {
                 if (title != null) path.add(title);
                 return true;

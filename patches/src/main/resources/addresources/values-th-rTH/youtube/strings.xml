@@ -69,7 +69,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_floating_microphone_button_title">ซ่อนปุ่มไมโครโฟนแบบลอย</string>
   <string name="morphe_hide_floating_microphone_button_summary">ซ่อนปุ่มไมโครโฟนลอยที่มุมล่างขวาของหน้าจอคำแนะนำการค้นหา</string>
   <string name="morphe_hide_horizontal_shelves_title">ซ่อนชั้นวางแนวนอน</string>
-  <string name="morphe_hide_horizontal_shelves_summary">ซ่อนชั้นวางแนวนอน เช่น ข่าวเด่น, โพสต์จากคอมมูนิตี้ที่คุณอาจชอบ, รับชมต่อ, สำรวจช่องเพิ่มเติม, สำรวจหัวข้อเพิ่มเติม, สำหรับคุณ, วิดีโอล่าสุด, ที่เกี่ยวข้องมากที่สุด, โพสต์จากคอมมูนิตี้ของผู้สร้าง, ช้อปปิ้ง และ ดูอีกครั้ง</string>
+  <string name="morphe_hide_horizontal_shelves_summary">ซ่อนชั้นวางแนวนอน เช่น ข่าวเด่น, โพสต์จากชุมชนที่คุณอาจชอบ, รับชมต่อ, สำรวจช่องเพิ่มเติม, สำรวจหัวข้อเพิ่มเติม, สำหรับคุณ, วิดีโอล่าสุด, ที่เกี่ยวข้องมากที่สุด, โพสต์จากชุมชนของผู้สร้าง, ร้านค้า และ ดูอีกครั้ง</string>
   <string name="morphe_hide_hyped_label_title">ซ่อนป้ายกำกับ \'กำลังเป็นที่นิยม\'</string>
   <string name="morphe_hide_image_shelf_title">ซ่อนชั้นวางรูปภาพ</string>
   <string name="morphe_hide_image_shelf_summary">ซ่อนชั้นวางรูปภาพในผลการค้นหา</string>
@@ -184,7 +184,7 @@ Second \"item\" text"</string>
   <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_community_button_title">ซ่อนปุ่มแสดงความคิดเห็น</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_join_button_title">ซ่อนปุ่มเข้าร่วม</string>
+  <string name="morphe_hide_join_button_title">ซ่อนปุ่มสมัคร</string>
   <string name="morphe_hide_links_preview_title">ซ่อนตัวอย่างลิงก์</string>
   <string name="morphe_hide_links_preview_summary">ซ่อนลิงก์เว็บที่คลิกได้ในส่วนหัวของช่อง</string>
   <string name="morphe_hide_members_shelf_title">ซ่อนชั้นวางสมาชิก</string>
@@ -204,14 +204,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">ป้อนชื่อ carousel ความคิดเห็นเพื่อกรอง โดยคั่นด้วยบรรทัดใหม่</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">ซ่อนสรุปแชท AI</string>
   <string name="morphe_hide_comments_channel_guidelines_title">ซ่อนแนวทางปฏิบัติของช่อง</string>
-  <string name="morphe_hide_comments_prompts_title">ซ่อนคำถามความคิดเห็น</string>
-  <string name="morphe_hide_comments_prompts_summary">ซ่อนข้อความแจ้งข้อมูลบริบทในส่วนความคิดเห็น</string>
   <string name="morphe_hide_comments_by_members_header_title">ซ่อนส่วนหัว \'ความคิดเห็นโดยสมาชิก\'</string>
   <string name="morphe_hide_comments_section_title">ซ่อนส่วนความคิดเห็น</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">ซ่อนส่วนความคิดเห็นในหน้าแชทหลัก</string>
-  <string name="morphe_hide_comments_community_guidelines_title">ซ่อนแนวทางชุมชน</string>
   <string name="morphe_hide_comments_create_a_short_button_title">ซ่อนปุ่ม \'สร้าง Shorts\'</string>
-  <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">ซ่อนปุ่มอีโมจิและปุ่มการประทับเวลา</string>
   <string name="morphe_hide_comments_filter_bar_options_title">ซ่อนตัวเลือกแถบกรอง</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">ซ่อนตัวเลือกแถบกรองทั้งหมด ยกเว้น \'ยอดนิยม\' และ \'ใหม่ล่าสุด\'</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">ซ่อนแอนิเมชันและบัตรของขวัญ</string>
@@ -317,7 +313,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_title">แสดงปุ่มดาวน์โหลดภายนอก</string>
   <string name="morphe_external_downloader_summary">แสดงปุ่มซ้อนทับในเครื่องเล่นวิดีโอที่เปิดแอปดาวน์โหลดภายนอกของคุณ</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">แทนที่ปุ่ม \'ดาวน์โหลด\' และ&amp;เมนู</string>
+  <string name="morphe_external_downloader_action_button_title">แทนที่ปุ่ม \'ดาวน์โหลด\' &amp; เมนู</string>
   <string name="morphe_external_downloader_action_button_summary">ใช้ตัวดาวน์โหลดภายนอกที่คุณเลือกแทนคุณสมบัติการดาวน์โหลดในตัวของ YouTube</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">การแปลเสียงบรรยาย</string>
@@ -794,8 +790,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_end_screen_suggested_video_title">ซ่อนวิดีโอแนะนำในหน้าจอสิ้นสุด</string>
   <string name="morphe_hide_end_screen_suggested_video_summary">"ซ่อนภาพซ้อนทับวิดีโอแนะนำที่ปรากฏขึ้นหลังจากวิดีโอสิ้นสุดลง
 
-การตั้งค่านี้จะใช้งานได้เฉพาะเมื่อปิดautoplay ไว้ คุณสามารถเปลี่ยนได้ใน YouTube:
-การตั้งค่า → การเล่น (หรือ Autoplay) → เล่นวิดีโอถัดไปโดยอัตโนมัติ"</string>
+การตั้งค่านี้จะใช้งานได้เฉพาะเมื่อปิดการเล่นอัตโนมัติไว้ คุณสามารถเปลี่ยนได้ใน YouTube:
+การตั้งค่า → การเล่น (หรือ การเล่นอัตโนมัติ) → เล่นวิดีโอถัดไปโดยอัตโนมัติ"</string>
   <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
   <string name="morphe_hide_player_related_videos_title">ซ่อนวิดีโอที่เกี่ยวข้อง</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->

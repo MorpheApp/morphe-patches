@@ -204,14 +204,13 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Ilagay ang mga pangalan ng comments carousel na ifi-filter by, na pinaghihiwalay ng mga bagong linya</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Itago ang buod ng AI chat</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Itago ang mga alituntunin sa channel</string>
-  <string name="morphe_hide_comments_prompts_title">Itago ang mga hudyat ng komento</string>
-  <string name="morphe_hide_comments_prompts_summary">Itinatago ang mga mensahe ng kontekstwal na impormasyon sa seksyon ng mga komento</string>
+  <string name="morphe_hide_comments_contexts_title">Itago ang mga mensahe ng konteksto</string>
   <string name="morphe_hide_comments_by_members_header_title">Itago ang \'Mga komento ng mga miyembro\' na header</string>
   <string name="morphe_hide_comments_section_title">Itago ang seksyon ng mga komento</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Itago ang seksyon ng mga komento sa feed ng Bahay</string>
   <string name="morphe_hide_comments_community_guidelines_title">Itago ang mga alituntunin ng komunidad</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Itago ang button na \'Gumawa ng Short\'</string>
-  <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Itago ang mga button na Emoji at Timestamp</string>
+  <string name="morphe_hide_comments_emoji_button_title">Itago ang Emoji button</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Itago ang mga opsyon ng filter bar</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Itinatago ang lahat ng mga opsyon ng filter bar maliban sa \'Pinakamahusay\' at \'Pinakabago\'</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Itago ang animasyon at mga card ng regalo</string>
@@ -221,6 +220,7 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_comments_preview_comment_title">Itago ang pasilip na komento</string>
   <string name="morphe_hide_comments_preview_comment_summary">Itinatago ang preview ng komento sa ilalim ng video bago buksan ang buong seksyon ng mga komento</string>
   <string name="morphe_hide_comments_thanks_button_title">Itago ang button na Salamat</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Itago ang Timestamp button</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Linisin ang mga naka-highlight na link sa paghahanap</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Nililinis ang mga naka-highlight na link sa paghahanap, at iniiwan lamang ang orihinal na simpleng teksto</string>
   <string name="morphe_hide_keyword_content_screen_title">Filter ng keyword</string>

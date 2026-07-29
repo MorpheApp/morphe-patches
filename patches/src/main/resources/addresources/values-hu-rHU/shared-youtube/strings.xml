@@ -157,7 +157,7 @@ Belépéshez nyomd meg a folytatást alul"</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Szűrendő elemek útvonal-karakterláncainak listája, új sorokkal elválasztva</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Érvénytelen egyedi szűrő: %s</string>
-  <!-- Settings menu filter -->
+  <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">Beállítások menü szűrője</string>
   <string name="morphe_settings_menu_filter_screen_summary">Rejtse el az elemeket a standard alkalmazásbeállítások képernyőn a látható nevük alapján</string>
   <string name="morphe_settings_menu_filter_picker_empty">Nyissa meg a standard alkalmazásbeállítások képernyőjét egyszer a lista feltöltéséhez</string>

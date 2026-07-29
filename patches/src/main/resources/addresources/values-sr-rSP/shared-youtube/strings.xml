@@ -157,7 +157,7 @@ Da bi se prijavili, pritisnite nastavak ispod"</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Листа стрингова за изградњу путање компоненти за филтрирање, одвојена новим редовима</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Неважећи прилагођени филтер: %s</string>
-  <!-- Settings menu filter -->
+  <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">Филтер менија подешавања</string>
   <string name="morphe_settings_menu_filter_screen_summary">Прикриј ставке на екрану подешавања апликације по њиховом видљивом имену</string>
   <string name="morphe_settings_menu_filter_picker_empty">Отворите стандардни екран подешавања апликације једном да бисте попунили листу</string>

@@ -44,12 +44,14 @@ public class CommentsFilter extends Filter {
 
     private static final List<String> commentsCarouselFilterStrings = getFilterStrings(Settings.HIDE_COMMENTS_CAROUSEL_FILTER_STRINGS);
 
-    private final StringFilterGroup comments;
+    private final StringFilterGroup commentComposer;
     private final StringFilterGroup commentComposerButtons;
     private final ByteArrayFilterGroupList commentComposerButtonsGroupList = new ByteArrayFilterGroupList();
+    private final StringFilterGroup comments;
     private final StringFilterGroup commentsFilterBar;
-    private final StringFilterGroup emojiAndTimestampButtons;
+    private final StringFilterGroup emojiButton;
     private final StringFilterGroup previewCommentDotsSelector;
+
     public CommentsFilter() {
         var channelGuidelines = new StringFilterGroup(
                 Settings.HIDE_COMMENTS_CHANNEL_GUIDELINES,
@@ -61,16 +63,9 @@ public class CommentsFilter extends Filter {
                 "live_chat_summary_banner.e"
         );
 
-        comments = new StringFilterGroup(
+        commentComposer = new StringFilterGroup(
                 null,
-                "video_metadata_carousel",
-                "_comments"
-        );
-
-        var commentsByMembers = new StringFilterGroup(
-                Settings.HIDE_COMMENTS_BY_MEMBERS_HEADER,
-                "sponsorships_comments_header.e",
-                "sponsorships_comments_footer.e"
+                COMMENT_COMPOSER_PATH
         );
 
         commentComposerButtons = new StringFilterGroup(
@@ -90,16 +85,28 @@ public class CommentsFilter extends Filter {
                 )
         );
 
-        commentsFilterBar = new StringFilterGroup(
-                Settings.HIDE_FILTER_BAR_IN_COMMENTS,
-                CHIP_BAR_PATH_PREFIX
+        comments = new StringFilterGroup(
+                null,
+                "video_metadata_carousel",
+                "_comments"
         );
 
-        var commentsPrompts = new StringFilterGroup(
-                Settings.HIDE_COMMENTS_PROMPTS,
+        var commentsByMembers = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_BY_MEMBERS_HEADER,
+                "sponsorships_comments_header.e",
+                "sponsorships_comments_footer.e"
+        );
+
+        var commentsContexts = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_CONTEXTS,
                 "comment_filter_context.e",
                 "timed_comments_welcome.e",
                 "timed_comments_end.e"
+        );
+
+        commentsFilterBar = new StringFilterGroup(
+                Settings.HIDE_FILTER_BAR_IN_COMMENTS,
+                CHIP_BAR_PATH_PREFIX
         );
 
         var communityGuidelines = new StringFilterGroup(
@@ -112,9 +119,9 @@ public class CommentsFilter extends Filter {
                 "composer_short_creation_button.e"
         );
 
-        emojiAndTimestampButtons = new StringFilterGroup(
-                Settings.HIDE_COMMENTS_EMOJI_AND_TIMESTAMP_BUTTONS,
-                "|CellType|ContainerType|ContainerType|ContainerType|ContainerType|ContainerType|"
+        emojiButton = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_EMOJI_BUTTON,
+                "id.comment.quick_emoji.button"
         );
 
         var giftAnimationAndCards = new StringFilterGroup(
@@ -140,21 +147,28 @@ public class CommentsFilter extends Filter {
                 "super_thanks_button.e"
         );
 
+        var timestampButton = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_TIMESTAMP_BUTTON,
+                "composer_timestamp_button.e"
+        );
+
         addPathCallbacks(
                 channelGuidelines,
                 chatSummary,
+                commentComposer,
+                commentComposerButtons,
                 comments,
                 commentsByMembers,
-                commentComposerButtons,
+                commentsContexts,
                 commentsFilterBar,
-                commentsPrompts,
                 communityGuidelines,
                 createAShortButton,
-                emojiAndTimestampButtons,
+                emojiButton,
                 giftAnimationAndCards,
                 previewComment,
                 previewCommentDotsSelector,
-                thanksButton
+                thanksButton,
+                timestampButton
         );
     }
 
@@ -175,6 +189,10 @@ public class CommentsFilter extends Filter {
             return Settings.HIDE_COMMENTS_SECTION.get();
         }
 
+        if (matchedGroup == commentComposer) {
+            return emojiButton.check(accessibility).isFiltered();
+        }
+
         if (matchedGroup == commentComposerButtons) {
             if (!VersionCheckPatch.IS_20_31_OR_GREATER) {
                 return false;
@@ -186,15 +204,43 @@ public class CommentsFilter extends Filter {
             return Settings.HIDE_FILTER_BAR_IN_COMMENTS.get() && PlayerType.getCurrent().isMaximizedOrFullscreen();
         }
 
-        if (matchedGroup == emojiAndTimestampButtons) {
-            return path.startsWith(COMMENT_COMPOSER_PATH);
-        }
-
         if (matchedGroup == previewCommentDotsSelector) {
             return path.contains("carousel_header") && path.endsWith("|ContainerType|ContainerType|ContainerType|");
         }
 
         return true;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideCommentsFilterBarOptions(@NonNull String identifier,
+                                                    @NonNull List<Object> treeNodeResultList) {
+        try {
+            if (Settings.HIDE_COMMENTS_FILTER_BAR_OPTIONS.get()
+                    && identifier.startsWith(CHIP_BAR_PATH_PREFIX)
+                    // Playlist sort button uses same components and must only filter if the player is opened.
+                    && PlayerType.getCurrent().isMaximizedOrFullscreen()
+            ) {
+                int treeNodeResultListSize = treeNodeResultList.size();
+                if (treeNodeResultListSize > 2) {
+                    treeNodeResultList.subList(1, treeNodeResultListSize - 1).clear();
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "Failed to hide comment filter bar options", ex);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideCommentsInfoButton(View view) {
+        if (Settings.HIDE_COMMENTS_INFO_BUTTON.get()) {
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(0, 0);
+            view.setLayoutParams(lp);
+            view.setVisibility(View.GONE);
+        }
     }
 
     /**
@@ -211,6 +257,81 @@ public class CommentsFilter extends Filter {
                 lp.height = 0;
                 view.setLayoutParams(lp);
             }
+            view.setVisibility(View.GONE);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideLiveChatDonatorsBar(View view) {
+        if (view == null || !Settings.HIDE_COMMENTS_LIVE_CHAT_DONATORS_BAR.get()) {
+            return;
+        }
+
+        view.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                view.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+
+                if (view.getParent() instanceof RecyclerView shelfContainerRecycleView) {
+                    shelfContainerRecycleView.setVisibility(RecyclerView.GONE);
+                }
+            }
+        });
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideLiveChatEmojiButton(View view) {
+        if (Settings.HIDE_COMMENTS_EMOJI_BUTTON.get() && view != null) {
+            ViewGroup.LayoutParams lp = view.getLayoutParams();
+            if (lp != null) {
+                lp.width = 0;
+                view.setLayoutParams(lp);
+            }
+
+            view.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideLiveChatGiftButton(View view) {
+        if (Settings.HIDE_COMMENTS_GIFT_BUTTON.get() && view != null) {
+            ViewGroup.LayoutParams lp = view.getLayoutParams();
+            if (lp != null) {
+                lp.width = 0;
+                lp.height = 0;
+
+                if (lp instanceof ViewGroup.MarginLayoutParams marginLp) {
+                    marginLp.setMargins(0, 0, 0, 0);
+                    marginLp.setMarginStart(0);
+                    marginLp.setMarginEnd(0);
+                }
+
+                view.setLayoutParams(lp);
+            }
+
+            view.setPadding(0, 0, 0, 0);
+            view.setVisibility(View.GONE);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideLiveChatThanksButton(View view) {
+        if (Settings.HIDE_COMMENTS_THANKS_BUTTON.get() && view != null) {
+            ViewGroup.LayoutParams lp = view.getLayoutParams();
+            if (lp != null) {
+                lp.width = 0;
+                lp.height = 0;
+                view.setLayoutParams(lp);
+            }
+
             view.setVisibility(View.GONE);
         }
     }
@@ -280,112 +401,5 @@ public class CommentsFilter extends Filter {
         }
 
         return bytes;
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void hideCommentsInfoButton(View view) {
-        if (Settings.HIDE_COMMENTS_INFO_BUTTON.get()) {
-            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(0, 0);
-            view.setLayoutParams(lp);
-            view.setVisibility(View.GONE);
-        }
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void hideCommentsFilterBarOptions(@NonNull String identifier,
-                                                   @NonNull List<Object> treeNodeResultList) {
-        try {
-            if (Settings.HIDE_COMMENTS_FILTER_BAR_OPTIONS.get()
-                    && identifier.startsWith(CHIP_BAR_PATH_PREFIX)
-                    // Playlist sort button uses same components and must only filter if the player is opened.
-                    && PlayerType.getCurrent().isMaximizedOrFullscreen()
-            ) {
-                int treeNodeResultListSize = treeNodeResultList.size();
-                if (treeNodeResultListSize > 2) {
-                    treeNodeResultList.subList(1, treeNodeResultListSize - 1).clear();
-                }
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "Failed to hide comment filter bar options", ex);
-        }
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void hideLiveChatDonatorsBar(View view) {
-        if (view == null || !Settings.HIDE_COMMENTS_LIVE_CHAT_DONATORS_BAR.get()) {
-            return;
-        }
-
-        view.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                view.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-
-                if (view.getParent() instanceof RecyclerView shelfContainerRecycleView) {
-                    shelfContainerRecycleView.setVisibility(RecyclerView.GONE);
-                }
-            }
-        });
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void hideLiveChatEmojiButton(View view) {
-        if (Settings.HIDE_COMMENTS_EMOJI_AND_TIMESTAMP_BUTTONS.get() && view != null) {
-            ViewGroup.LayoutParams lp = view.getLayoutParams();
-            if (lp != null) {
-                lp.width = 0;
-                view.setLayoutParams(lp);
-            }
-
-            view.setVisibility(View.INVISIBLE);
-        }
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void hideLiveChatThanksButton(View view) {
-        if (Settings.HIDE_COMMENTS_THANKS_BUTTON.get() && view != null) {
-            ViewGroup.LayoutParams lp = view.getLayoutParams();
-            if (lp != null) {
-                lp.width = 0;
-                lp.height = 0;
-                view.setLayoutParams(lp);
-            }
-
-            view.setVisibility(View.GONE);
-        }
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void hideLiveChatGiftButton(View view) {
-        if (Settings.HIDE_COMMENTS_GIFT_BUTTON.get() && view != null) {
-            ViewGroup.LayoutParams lp = view.getLayoutParams();
-            if (lp != null) {
-                lp.width = 0;
-                lp.height = 0;
-
-                if (lp instanceof ViewGroup.MarginLayoutParams marginLp) {
-                    marginLp.setMargins(0, 0, 0, 0);
-                    marginLp.setMarginStart(0);
-                    marginLp.setMarginEnd(0);
-                }
-
-                view.setLayoutParams(lp);
-            }
-
-            view.setPadding(0, 0, 0, 0);
-            view.setVisibility(View.GONE);
-        }
     }
 }

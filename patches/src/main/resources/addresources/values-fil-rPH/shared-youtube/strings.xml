@@ -157,7 +157,7 @@ Gayunpaman, magtatala din ng ilang datos ng tagagamit ang pagpapagana nito kagay
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Ihihiwalay ng bagong linya ang listahan ng mga component path builder string na ifi-filter</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Imbalido na pasadyang filter: %s</string>
-  <!-- Settings menu filter -->
+  <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">Salain ng menu ng mga setting</string>
   <string name="morphe_settings_menu_filter_screen_summary">Itago ang mga item sa standard screen ng mga setting ng app ayon sa kanilang nakikitang pangalan</string>
   <string name="morphe_settings_menu_filter_picker_empty">Buksan ang standard screen ng mga setting ng app nang isang beses upang mapunan ang listahan</string>

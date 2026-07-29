@@ -66,6 +66,9 @@ abstract class BaseGestureController(
         // if we force intercept events, the event is always consumed
         val consumed = detector.onTouchEvent(me) || shouldForceInterceptEvents
 
+        // evaluate swipe zone before recycling
+        val inSwipeZone = isInSwipeZone(me)
+
         // invoke the custom onUp handler
         if (me.action == MotionEvent.ACTION_UP || me.action == MotionEvent.ACTION_CANCEL) {
             onUp(me)
@@ -76,7 +79,7 @@ abstract class BaseGestureController(
 
         // do not consume dropped events
         // or events outside any swipe zone
-        return !dropped && consumed && isInSwipeZone(me)
+        return !dropped && consumed && inSwipeZone
     }
 
     /**

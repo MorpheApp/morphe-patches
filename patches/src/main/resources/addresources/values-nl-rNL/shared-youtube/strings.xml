@@ -151,7 +151,7 @@ Als u dit inschakelt, worden echter ook bepaalde gebruikersgegevens, zoals uw IP
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Lijst met component pad builder strings om te filteren, gescheiden door nieuwe regels</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Ongeldige aangepaste filter: %s</string>
-  <!-- Settings menu filter -->
+  <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">Instellingenmenu filter</string>
   <string name="morphe_settings_menu_filter_screen_summary">Verberg items op het standaard apps-instellingenscherm op basis van hun zichtbare naam</string>
   <string name="morphe_settings_menu_filter_picker_empty">Open het standaard apps-instellingenscherm eenmaal om de lijst in te vullen</string>

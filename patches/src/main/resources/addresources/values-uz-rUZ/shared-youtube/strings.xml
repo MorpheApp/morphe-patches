@@ -156,7 +156,7 @@ Shu bilan birga, bu sizning IP-manzilingiz kabi ba'zi foydalanuvchi ma'lumotlari
   <string name="morphe_custom_filter_strings_title">Maxsus filtr</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_toast_invalid_syntax">Noto\'g\'ri maxsus filtr: %s</string>
-  <!-- Settings menu filter -->
+  <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">Sozlamalar menyusi filtri</string>
   <string name="morphe_settings_menu_filter_screen_summary">Standart ilova sozlamalari ekranida ko\'rinadigan nomiga ko\'ra ob\'yektlarni yashirish</string>
   <string name="morphe_settings_menu_filter_picker_empty">Ro\'yxatni to\'ldirish uchun standart ilova sozlamalari ekranini bir marta oching</string>

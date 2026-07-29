@@ -31,13 +31,18 @@ Second \"item\" text"</string>
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Biz haqimizda</string>
   <string name="morphe_settings_music_screen_1_ads_title">Reklama</string>
-  <string name="morphe_settings_music_screen_2_general_title">Umumiy</string>
-  <string name="morphe_settings_music_screen_3_player_title">Player</string>
-  <string name="morphe_settings_music_screen_7_misc_title">Qo‘shimcha</string>
+  <string name="morphe_settings_music_screen_2_feed_title">Oqim</string>
+  <string name="morphe_settings_music_screen_3_general_title">Umumiy</string>
+  <string name="morphe_settings_music_screen_4_player_title">Player</string>
+  <string name="morphe_settings_music_screen_8_misc_title">Qo‘shimcha</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">\'Premiumga ulanish\' yozuvini yashirish</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Musiqa Premium aksiyalarini yashirish</string>
   <string name="morphe_music_hide_video_ads_title">Reklamalarni yashirish</string>
+  <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_music_hide_lyrics_panel_category_title">Qo‘shiq matni paneli</string>
+  <string name="morphe_music_hide_lyrics_share_button_title">Baham ko‘rish tugmasini yashirish</string>
+  <string name="morphe_music_hide_lyrics_translate_button_title">Tarjima tugmasini yashirish</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Krosfeyd</string>
   <string name="morphe_music_crossfade_screen_summary">Treklarni bir-biriga silliq ulash</string>
@@ -115,10 +120,6 @@ Krosfeyd YouTube Music'ning 8.x va 9.x undan yuqori versiyalarda ishlaydi"</stri
   <string name="morphe_music_hide_history_button_title">Ko‘rishlar tarixi tugmasini yashirish</string>
   <string name="morphe_music_hide_notification_button_title">Bildirishnoma tugmasini yashirish</string>
   <string name="morphe_music_hide_search_button_title">Qidiruv tugmasini yashirish</string>
-  <!-- layout.hide.general.hideMusicComponentsPatch -->
-  <string name="morphe_music_hide_lyrics_panel_category_title">Qo‘shiq matni paneli</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Baham ko‘rish tugmasini yashirish</string>
-  <string name="morphe_music_hide_lyrics_translate_button_title">Tarjima tugmasini yashirish</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Amallar tugmalari</string>
   <string name="morphe_music_action_buttons_screen_summary">Pleyer ostida qaysi amal tugmalari ko‘rinishini tanlang</string>

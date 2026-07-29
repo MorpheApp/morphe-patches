@@ -31,13 +31,15 @@ Second \"item\" text"</string>
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">O aplikaci</string>
   <string name="morphe_settings_music_screen_1_ads_title">Reklamy</string>
-  <string name="morphe_settings_music_screen_2_general_title">Obecné</string>
-  <string name="morphe_settings_music_screen_3_player_title">Přehrávač</string>
-  <string name="morphe_settings_music_screen_7_misc_title">Různé</string>
+  <string name="morphe_settings_music_screen_2_feed_title">Domovská stránka</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Skrýt štítek „Získat Music Premium“</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Skrýt nabídky Music Premium</string>
   <string name="morphe_music_hide_video_ads_title">Skrýt reklamy ve videu</string>
+  <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_music_hide_lyrics_panel_category_title">Panel s textem</string>
+  <string name="morphe_music_hide_lyrics_share_button_title">Skrýt tlačítko Sdílet</string>
+  <string name="morphe_music_hide_lyrics_translate_button_title">Skrýt tlačítko Přeložit</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Přechodné rozpínání</string>
   <string name="morphe_music_crossfade_screen_summary">Hladce prolínejte skladby do sebe</string>
@@ -115,10 +117,6 @@ YouTube Music 8.x – plynulé přecházení funguje pouze ve verzích 9.x a vy�
   <string name="morphe_music_hide_history_button_title">Skrýt tlačítko historie</string>
   <string name="morphe_music_hide_notification_button_title">Skrýt tlačítko oznámení</string>
   <string name="morphe_music_hide_search_button_title">Skrýt tlačítko vyhledávání</string>
-  <!-- layout.hide.general.hideMusicComponentsPatch -->
-  <string name="morphe_music_hide_lyrics_panel_category_title">Panel s textem</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Skrýt tlačítko Sdílet</string>
-  <string name="morphe_music_hide_lyrics_translate_button_title">Skrýt tlačítko Přeložit</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Akční tlačítka</string>
   <string name="morphe_music_action_buttons_screen_summary">Vyberte, která akční tlačítka se mají zobrazovat pod přehrávačem</string>

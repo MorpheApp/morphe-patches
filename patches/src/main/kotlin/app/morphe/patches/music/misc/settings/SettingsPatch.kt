@@ -72,6 +72,8 @@ private val settingsResourcePatch = resourcePatch {
                 "morphe_settings_screen_00_about_bold.xml",
                 "morphe_settings_screen_01_ads.xml",
                 "morphe_settings_screen_01_ads_bold.xml",
+                "morphe_settings_screen_03_feed.xml",
+                "morphe_settings_screen_03_feed_bold.xml",
                 "morphe_settings_screen_04_general.xml",
                 "morphe_settings_screen_04_general_bold.xml",
                 "morphe_settings_screen_05_player.xml",
@@ -212,22 +214,29 @@ object PreferenceScreen : BasePreferenceScreen() {
         iconBold = "@drawable/morphe_settings_screen_01_ads_bold",
         layout = "@layout/morphe_preference_with_icon"
     )
+    val FEED = Screen(
+        key = "morphe_settings_music_screen_2_feed",
+        summaryKey = null,
+        icon = "@drawable/morphe_settings_screen_03_feed",
+        iconBold = "@drawable/morphe_settings_screen_03_feed_bold",
+        layout = "@layout/morphe_preference_with_icon"
+    )
     val GENERAL = Screen(
-        key = "morphe_settings_music_screen_2_general",
+        key = "morphe_settings_music_screen_3_general",
         summaryKey = null,
         icon = "@drawable/morphe_settings_screen_04_general",
         iconBold = "@drawable/morphe_settings_screen_04_general_bold",
         layout = "@layout/morphe_preference_with_icon"
     )
     val PLAYER = Screen(
-        key = "morphe_settings_music_screen_3_player",
+        key = "morphe_settings_music_screen_4_player",
         summaryKey = null,
         icon = "@drawable/morphe_settings_screen_05_player",
         iconBold = "@drawable/morphe_settings_screen_05_player_bold",
         layout = "@layout/morphe_preference_with_icon"
     )
     val SCROBBLING = Screen(
-        key = "morphe_settings_music_screen_4_scrobbling",
+        key = "morphe_settings_music_screen_5_scrobbling",
         summaryKey = null,
         icon = "@drawable/morphe_settings_screen_13_scrobbling",
         iconBold = "@drawable/morphe_settings_screen_13_scrobbling_bold",
@@ -235,7 +244,7 @@ object PreferenceScreen : BasePreferenceScreen() {
         sorting = Sorting.UNSORTED
     )
     val RETURN_YOUTUBE_DISLIKE = Screen(
-        key = "morphe_settings_music_screen_5_return_youtube_dislike",
+        key = "morphe_settings_music_screen_6_return_youtube_dislike",
         summaryKey = null,
         icon = "@drawable/morphe_settings_screen_09_return_youtube_dislike",
         iconBold = "@drawable/morphe_settings_screen_09_return_youtube_dislike_bold",
@@ -243,7 +252,7 @@ object PreferenceScreen : BasePreferenceScreen() {
         sorting = Sorting.UNSORTED
     )
     val SPONSORBLOCK = Screen(
-        key = "morphe_settings_music_screen_6_sponsorblock",
+        key = "morphe_settings_music_screen_7_sponsorblock",
         summaryKey = null,
         icon = "@drawable/morphe_settings_screen_10_sponsorblock",
         iconBold = "@drawable/morphe_settings_screen_10_sponsorblock_bold",
@@ -251,7 +260,7 @@ object PreferenceScreen : BasePreferenceScreen() {
         sorting = Sorting.UNSORTED
     )
     val MISC = Screen(
-        key = "morphe_settings_music_screen_7_misc",
+        key = "morphe_settings_music_screen_8_misc",
         summaryKey = null,
         icon = "@drawable/morphe_settings_screen_11_misc",
         iconBold = "@drawable/morphe_settings_screen_11_misc_bold",

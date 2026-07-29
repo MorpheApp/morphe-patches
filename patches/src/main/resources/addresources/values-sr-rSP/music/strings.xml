@@ -31,13 +31,35 @@ Second \"item\" text"</string>
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">О програму</string>
   <string name="morphe_settings_music_screen_1_ads_title">Огласи</string>
-  <string name="morphe_settings_music_screen_2_general_title">Опште</string>
-  <string name="morphe_settings_music_screen_3_player_title">Плејер</string>
-  <string name="morphe_settings_music_screen_7_misc_title">Разно</string>
+  <string name="morphe_settings_music_screen_2_feed_title">Фид</string>
+  <string name="morphe_settings_music_screen_3_general_title">Опште</string>
+  <string name="morphe_settings_music_screen_4_player_title">Плејер</string>
+  <string name="morphe_settings_music_screen_8_misc_title">Разно</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Сакриј ознаку „Набавите Music Premium”</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Сакриј промоције за Music Premium</string>
   <string name="morphe_music_hide_video_ads_title">Сакриј видео огласе</string>
+  <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_music_hide_audio_video_toggle_title">Сакриј преклопну функцију Аудио / Видео</string>
+  <string name="morphe_music_hide_explore_shelf_title">Сакриј полицу „Прегледај“</string>
+  <string name="morphe_music_hide_grid_shelves_title">Сакриј полице у мрежи</string>
+  <string name="morphe_music_hide_horizontal_shelves_title">Сакриј хоризонталне полице</string>
+  <string name="morphe_music_hide_list_shelves_title">Сакриј полице са листом</string>
+  <string name="morphe_music_hide_lyrics_panel_category_title">Панел са текстовима</string>
+  <string name="morphe_music_hide_lyrics_share_button_title">Сакриј дугме „Дели”</string>
+  <string name="morphe_music_hide_lyrics_translate_button_title">Сакриј дугме „Преведи”</string>
+  <string name="morphe_music_hide_new_from_shelf_title">Сакриј полицу „Ново“</string>
+  <string name="morphe_music_hide_playlist_shelves_title">Сакриј полице плејлиста</string>
+  <string name="morphe_music_hide_repeat_button_title">Сакриј дугме „Понови“</string>
+  <string name="morphe_music_hide_shuffle_button_title">Сакриј дугме „Насумично“</string>
+  <string name="morphe_music_hide_speed_dial_shelf_title">Сакриј полицу „Брзи бирач“</string>
+  <string name="morphe_music_hide_suggested_for_you_shelf_title">Сакриј полицу „Предложено за вас“</string>
+  <string name="morphe_music_comments_screen_title">Коментари</string>
+  <string name="morphe_music_comments_screen_summary">Изаберите које компоненте ће се појавити у одељку за коментаре</string>
+  <string name="morphe_music_hide_comments_community_guidelines_title">Сакриј смернице заједнице</string>
+  <string name="morphe_music_hide_comments_emoji_button_title">Сакриј дугме емоџија</string>
+  <string name="morphe_music_hide_comments_info_button_title">Сакриј дугме Инфо</string>
+  <string name="morphe_music_hide_comments_timestamp_button_title">Сакриј дугме са временом</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Прелазак са превлачењем</string>
   <string name="morphe_music_crossfade_screen_summary">Нежно спојите нумере једна у другу</string>
@@ -115,10 +137,6 @@ YouTube Music 8.x — прелазак ради само на 9.x и новиј�
   <string name="morphe_music_hide_history_button_title">Сакриј дугме „Историја”</string>
   <string name="morphe_music_hide_notification_button_title">Сакриј дугме „Обавештење”</string>
   <string name="morphe_music_hide_search_button_title">Сакриј дугме „Претрага”</string>
-  <!-- layout.hide.general.hideMusicComponentsPatch -->
-  <string name="morphe_music_hide_lyrics_panel_category_title">Панел са текстовима</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Сакриј дугме „Дели”</string>
-  <string name="morphe_music_hide_lyrics_translate_button_title">Сакриј дугме „Преведи”</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Дугмад радњи</string>
   <string name="morphe_music_action_buttons_screen_summary">Изаберите које дугмад радњи ће се појавити испод плејера</string>
