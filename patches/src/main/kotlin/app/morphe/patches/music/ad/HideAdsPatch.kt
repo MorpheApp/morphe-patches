@@ -25,6 +25,7 @@ import app.morphe.patches.shared.ad.hideFullscreenAdsPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/HideAdsPatch;"
 
@@ -51,7 +52,10 @@ val hideAdsPatch = bytecodePatch(
 
         // Hide 'Get Music Premium' label
         HideGetPremiumFingerprint.method.apply {
-            val insertIndex = HideGetPremiumFingerprint.instructionMatches.last().index
+            val insertIndex = implementation!!.instructions.toList().indexOfFirst {
+                (it as? ReferenceInstruction)
+                    ?.reference?.toString()?.contains("setVisibility") == true
+            }
 
             val setVisibilityInstruction = getInstruction<FiveRegisterInstruction>(insertIndex)
             val getPremiumViewRegister = setVisibilityInstruction.registerC

@@ -11,19 +11,22 @@
 package app.morphe.patches.shared.layout.theme
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import java.lang.ref.WeakReference
 
 private lateinit var lithoColorOverrideHookRef : WeakReference<MutableMethod>
 private var lithoColorOverrideHookInsertIndex = -1
+private var lithoColorRegister = "p1"
 
 fun lithoColorOverrideHook(targetMethodClass: String, targetMethodName: String) {
     lithoColorOverrideHookRef.get()!!.addInstructions(
         lithoColorOverrideHookInsertIndex,
         """
-            invoke-static { p1 }, $targetMethodClass->$targetMethodName(I)I
-            move-result p1
+            invoke-static { $lithoColorRegister }, $targetMethodClass->$targetMethodName(I)I
+            move-result $lithoColorRegister
         """
     )
     lithoColorOverrideHookInsertIndex += 2
@@ -34,7 +37,13 @@ val lithoColorHookPatch = bytecodePatch(
 ) {
 
     execute {
-        lithoColorOverrideHookRef = WeakReference(LithoOnBoundsChangeFingerprint.method)
-        lithoColorOverrideHookInsertIndex = LithoOnBoundsChangeFingerprint.instructionMatches.last().index - 1
+        val method = LithoOnBoundsChangeFingerprint.method
+        lithoColorOverrideHookRef = WeakReference(method)
+
+        val setColorIndex = LithoOnBoundsChangeFingerprint.instructionMatches.last().index
+        val setColorInstruction = method.getInstruction<FiveRegisterInstruction>(setColorIndex)
+        lithoColorRegister = "v${setColorInstruction.registerD}"
+
+        lithoColorOverrideHookInsertIndex = setColorIndex
     }
 }
