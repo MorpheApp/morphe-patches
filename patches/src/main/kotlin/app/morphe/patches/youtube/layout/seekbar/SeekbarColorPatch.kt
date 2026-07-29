@@ -14,6 +14,7 @@ import app.morphe.patches.shared.layout.theme.lithoColorOverrideHook
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 import app.morphe.util.findInstructionIndicesReversedOrThrow
@@ -33,9 +34,9 @@ val seekbarColorPatch = bytecodePatch(
 ) {
     dependsOn(
         sharedExtensionPatch,
-        lithoColorHookPatch,
+        versionCheckPatch,
         resourceMappingPatch,
-        versionCheckPatch
+        lithoColorHookPatch({ is_21_30_or_greater })
     )
 
     execute {

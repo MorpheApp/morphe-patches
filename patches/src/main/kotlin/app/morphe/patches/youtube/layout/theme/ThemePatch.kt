@@ -22,6 +22,7 @@ import app.morphe.patches.youtube.layout.seekbar.seekbarColorPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_06_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_08_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -37,6 +38,9 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/theme
 val themePatch = baseThemePatch(
     extensionClassDescriptor = EXTENSION_CLASS,
     includeLightThemeOption = true,
+    useModernLithoColorHook = {
+        is_21_30_or_greater
+    },
     block = {
         val themeResourcePatch = resourcePatch {
             lightThemeBackgroundColorOption()
