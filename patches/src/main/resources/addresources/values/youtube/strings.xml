@@ -1016,6 +1016,12 @@ Limitation: If 'Restore old video action bar' is turned off, 'More videos' overl
     <string name="morphe_shorts_autoplay_background_title">Autoplay in background</string>
     <string name="morphe_shorts_autoplay_background_summary">Advances to the next Short automatically during background playback</string>
 
+    <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+    <string name="morphe_playback_in_feeds_title">Playback in feeds</string>
+    <string name="morphe_playback_in_feeds_entry_always_on">Always on</string>
+    <string name="morphe_playback_in_feeds_entry_wifi_only">Wi-Fi only</string>
+    <string name="morphe_playback_in_feeds_entry_off">Off</string>
+
     <!-- layout.miniplayer.miniplayerPatch -->
     <string name="morphe_miniplayer_disable_resuming_title">Disable resuming miniplayer</string>
     <string name="morphe_miniplayer_disable_resuming_summary">Disables the \'Continue watching\' miniplayer, a YouTube Premium feature that appears on app startup</string>
