@@ -7,10 +7,10 @@
 
 package app.morphe.extension.youtube.patches;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
@@ -41,23 +41,11 @@ public final class PlaybackInFeedsPatch {
     @Nullable
     private static volatile PlaybackInFeedsController controller;
 
-    /** Mode selected in the Morphe settings while {@link #controller} was not set yet. */
-    private static volatile int pendingMode = -1;
-
     /**
      * Injection point.
      */
-    public static void setController(PlaybackInFeedsController instance) {
+    public static void setController(@NonNull PlaybackInFeedsController instance) {
         controller = instance;
-
-        final int mode = pendingMode;
-        if (mode < 0) {
-            return;
-        }
-        pendingMode = -1;
-
-        // Do not call back into YouTube from its own constructor.
-        Utils.runOnMainThread(() -> setMode(mode));
     }
 
     /**
@@ -97,8 +85,7 @@ public final class PlaybackInFeedsPatch {
 
             PlaybackInFeedsController instance = controller;
             if (instance == null) {
-                Logger.printDebug(() -> "Controller is not set, applying mode later: " + mode);
-                pendingMode = mode;
+                Logger.printDebug(() -> "Cannot set mode, controller is not set: " + mode);
                 return;
             }
 
