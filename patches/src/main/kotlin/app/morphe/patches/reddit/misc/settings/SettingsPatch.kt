@@ -23,6 +23,9 @@ import app.morphe.patches.all.misc.updates.disablePlayStoreUpdatesPatch
 import app.morphe.patches.reddit.misc.extension.hooks.redditActivityOnCreateHook
 import app.morphe.patches.reddit.misc.extension.sharedExtensionPatch
 import app.morphe.patches.reddit.misc.fix.signature.spoofSignaturePatch
+import app.morphe.patches.reddit.misc.version.is_2026_25_0_or_greater
+import app.morphe.patches.reddit.misc.version.is_2026_30_0_or_greater
+import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.patches.shared.misc.checks.experimentalAppNoticePatch
 import app.morphe.util.ResourceGroup
@@ -46,6 +49,7 @@ val settingsPatch = bytecodePatch(
         spoofSignaturePatch,
         removeLinkVerification,
         addResourcesPatch,
+        versionCheckPatch,
         experimentalAppNoticePatch(
             mainActivityFingerprint = redditActivityOnCreateHook.fingerprint,
             recommendedAppVersion = COMPATIBILITY_REDDIT.targets.first { !it.isExperimental }.version!!
@@ -75,7 +79,7 @@ val settingsPatch = bytecodePatch(
         /**
          * Replace settings label and icon
          */
-        PreferenceManagerFingerprint.let {
+        if (!is_2026_30_0_or_greater) /* FIXME */ PreferenceManagerFingerprint.let {
             it.method.apply {
                 val labelIndex = it.instructionMatches[5].index
                 val labelRegister =
@@ -103,7 +107,29 @@ val settingsPatch = bytecodePatch(
             }
         }
 
-        PreferenceDestinationFingerprint.let {
+        if (is_2026_25_0_or_greater) {
+            PreferenceDestinationFingerprint.method.addInstructionsWithLabels(
+                0,
+                """
+                    invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->openMorpheSettings(Ljava/lang/Enum;)Z
+                    move-result v0
+                    if-eqz v0, :ignore
+                    sget-object v0, Lkotlin/Unit;->a:Lkotlin/Unit;
+                    return-object v0
+                    
+                    :ignore
+                    nop
+                """
+            )
+        }
+
+        if (is_2026_30_0_or_greater) {
+            return@execute
+        }
+
+        // Legacy patching.
+
+        PreferenceDestinationLegacyFingerprint.let {
             val getActivityMethod = Fingerprint(
                 accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
                 returnType = RedditActivityFingerprint.originalClassDef.type,

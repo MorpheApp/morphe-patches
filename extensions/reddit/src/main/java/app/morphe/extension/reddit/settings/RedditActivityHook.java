@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 
 import app.morphe.extension.reddit.settings.preference.RedditPreferenceFragment;
 import app.morphe.extension.reddit.ui.MorpheSettingsIconVectorDrawable;
+import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings({"deprecation", "unused"})
 public class RedditActivityHook {
@@ -79,6 +80,17 @@ public class RedditActivityHook {
      */
     public static boolean isAcknowledgment(Enum<?> e) {
         return e != null && "ACKNOWLEDGMENTS".equals(e.name());
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean openMorpheSettings(Enum<?> e) {
+        if (isAcknowledgment(e)) {
+            initialize(Utils.getActivity());
+            return true;
+        }
+        return false;
     }
 
     /**
