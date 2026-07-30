@@ -11,6 +11,7 @@
 package app.morphe.patches.shared.layout.theme
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import java.lang.ref.WeakReference
@@ -29,12 +30,16 @@ fun lithoColorOverrideHook(targetMethodClass: String, targetMethodName: String) 
     lithoColorOverrideHookInsertIndex += 2
 }
 
-val lithoColorHookPatch = bytecodePatch(
-    description = "Adds a hook to set color of Litho components.",
-) {
-
+internal fun lithoColorHookPatch(
+    useModernHook: BytecodePatchBuilder.() -> Boolean
+) = bytecodePatch {
     execute {
-        lithoColorOverrideHookRef = WeakReference(LithoOnBoundsChangeFingerprint.method)
-        lithoColorOverrideHookInsertIndex = LithoOnBoundsChangeFingerprint.instructionMatches.last().index - 1
+        val fingerprint = if (useModernHook()) {
+            LithoOnBoundsChangeFingerprint
+        } else {
+            LithoOnBoundsChangeLegacyFingerprint
+        }
+        lithoColorOverrideHookRef = WeakReference(fingerprint.method)
+        lithoColorOverrideHookInsertIndex = fingerprint.instructionMatches.last().index - 1
     }
 }
