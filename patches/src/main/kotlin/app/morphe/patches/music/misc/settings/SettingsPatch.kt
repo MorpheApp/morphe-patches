@@ -85,7 +85,9 @@ private val settingsResourcePatch = resourcePatch {
                 "morphe_settings_screen_11_misc.xml",
                 "morphe_settings_screen_11_misc_bold.xml",
                 "morphe_settings_screen_13_scrobbling.xml",
-                "morphe_settings_screen_13_scrobbling_bold.xml"
+                "morphe_settings_screen_13_scrobbling_bold.xml",
+                "morphe_settings_screen_14_lyrics.xml",
+                "morphe_settings_screen_14_lyrics_bold.xml"
             ),
             ResourceGroup("layout",
                 "morphe_preference_with_icon.xml",
@@ -240,6 +242,14 @@ object PreferenceScreen : BasePreferenceScreen() {
         summaryKey = null,
         icon = "@drawable/morphe_settings_screen_13_scrobbling",
         iconBold = "@drawable/morphe_settings_screen_13_scrobbling_bold",
+        layout = "@layout/morphe_preference_with_icon",
+        sorting = Sorting.UNSORTED
+    )
+    val LYRICS = Screen(
+        key = "morphe_settings_music_screen_9_lyrics",
+        summaryKey = null,
+        icon = "@drawable/morphe_settings_screen_14_lyrics",
+        iconBold = "@drawable/morphe_settings_screen_14_lyrics_bold",
         layout = "@layout/morphe_preference_with_icon",
         sorting = Sorting.UNSORTED
     )

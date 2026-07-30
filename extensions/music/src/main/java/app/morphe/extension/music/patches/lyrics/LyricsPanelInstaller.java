@@ -1,0 +1,194 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/2269
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
+package app.morphe.extension.music.patches.lyrics;
+
+import android.app.Activity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import java.lang.ref.WeakReference;
+
+import app.morphe.extension.music.patches.lyrics.ui.LyricsPanelView;
+import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.Utils;
+
+/**
+ * Puts the third party lyrics panel into the lyrics engagement panel.
+ *
+ * <p>It is laid over the built-in content rather than replacing it, so that a track
+ * without third party lyrics still shows the built-in ones.
+ */
+public final class LyricsPanelInstaller {
+
+    /** Container the built-in panel content lives in. */
+    private static final String PANEL_CONTENT_ID = "panel_content";
+
+    /** Panel heading, which tells the lyrics panel from the other engagement panels. */
+    private static final String PANEL_TITLE_ID = "modern_title";
+
+    /** Resource name of the app string used for the lyrics panel heading. */
+    private static final String LYRICS_TITLE_RESOURCE = "lyrics_tab_title";
+
+    /** Time given to the panel to attach its views after the component is built. */
+    private static final long INSTALL_DELAY_MILLISECONDS = 150;
+
+    @Nullable
+    private static WeakReference<LyricsPanelView> panelReference;
+
+    /** Collapses the many component callbacks of one panel opening into one attempt. */
+    private static boolean installPending;
+
+    @Nullable
+    private static String lyricsTitle;
+
+    private LyricsPanelInstaller() {
+    }
+
+    /**
+     * Called by the litho filter when the lyrics panel is being built.
+     */
+    public static void onLyricsPanelDetected() {
+        if (installPending || !Settings.LYRICS_ENABLED.get()) {
+            return;
+        }
+
+        installPending = true;
+        Utils.runOnMainThreadDelayed(() -> {
+            installPending = false;
+            try {
+                install();
+            } catch (Exception ex) {
+                Logger.printException(() -> "Could not install the lyrics panel", ex);
+            }
+        }, INSTALL_DELAY_MILLISECONDS);
+    }
+
+    private static void install() {
+        Activity activity = Utils.getActivity();
+        if (activity == null) {
+            return;
+        }
+
+        View root = activity.getWindow().getDecorView();
+        TextView title = findVisibleTitle(root);
+        if (title == null) {
+            Logger.printDebug(() -> "No open engagement panel found");
+            return;
+        }
+
+        String expectedTitle = lyricsTitle();
+        String actualTitle = String.valueOf(title.getText());
+        if (expectedTitle == null || !expectedTitle.equalsIgnoreCase(actualTitle)) {
+            Logger.printDebug(() -> "Open panel is '" + actualTitle
+                    + "', not the lyrics panel '" + expectedTitle + "'");
+            return;
+        }
+
+        // The heading and the content live in the same panel, so the container is
+        // looked up from the panel the heading belongs to rather than globally.
+        ViewGroup panel = findPanelContent(title);
+        if (panel == null) {
+            Logger.printDebug(() -> "Lyrics panel has no " + PANEL_CONTENT_ID);
+            return;
+        }
+
+        LyricsPanelView existing = panelReference == null ? null : panelReference.get();
+        if (existing != null && existing.getParent() == panel) {
+            // Reopening the panel makes the app restore its own content, so the
+            // overlay state has to be reapplied rather than assumed still correct.
+            existing.syncOverlay();
+            return;
+        }
+
+        if (existing != null && existing.getParent() instanceof ViewGroup previousParent) {
+            previousParent.removeView(existing);
+        }
+
+        LyricsPanelView panelView = new LyricsPanelView(panel.getContext());
+        panel.addView(panelView, new FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.MATCH_PARENT,
+                FrameLayout.LayoutParams.MATCH_PARENT));
+        panelReference = new WeakReference<>(panelView);
+
+        Logger.printDebug(() -> "Installed the lyrics panel");
+    }
+
+    /**
+     * Walks up from the heading to the panel, then back down to its content container.
+     */
+    @Nullable
+    private static ViewGroup findPanelContent(@NonNull View title) {
+        final int panelContentId = ResourceUtils.getIdentifier(ResourceType.ID, PANEL_CONTENT_ID);
+        if (panelContentId == 0) {
+            return null;
+        }
+
+        View node = title;
+        while (node.getParent() instanceof ViewGroup parent) {
+            if (parent.findViewById(panelContentId) instanceof ViewGroup content) {
+                return content;
+            }
+            node = parent;
+        }
+        return null;
+    }
+
+    /**
+     * @return The heading of the engagement panel currently on screen, if any.
+     */
+    @Nullable
+    private static TextView findVisibleTitle(@NonNull View root) {
+        final int titleId = ResourceUtils.getIdentifier(ResourceType.ID, PANEL_TITLE_ID);
+        if (titleId == 0) {
+            Logger.printException(() -> "App is missing " + PANEL_TITLE_ID);
+            return null;
+        }
+        return findVisibleTitle(root, titleId);
+    }
+
+    @Nullable
+    private static TextView findVisibleTitle(@NonNull View view, int titleId) {
+        if (view.getVisibility() != View.VISIBLE) {
+            return null;
+        }
+
+        if (view.getId() == titleId && view instanceof TextView title) {
+            return title;
+        }
+
+        if (view instanceof ViewGroup group) {
+            for (int i = 0; i < group.getChildCount(); i++) {
+                TextView found = findVisibleTitle(group.getChildAt(i), titleId);
+                if (found != null) {
+                    return found;
+                }
+            }
+        }
+        return null;
+    }
+
+    @Nullable
+    private static String lyricsTitle() {
+        if (lyricsTitle == null) {
+            if (ResourceUtils.getStringIdentifier(LYRICS_TITLE_RESOURCE) == 0) {
+                Logger.printException(() -> "App is missing " + LYRICS_TITLE_RESOURCE);
+                return null;
+            }
+            lyricsTitle = ResourceUtils.getString(LYRICS_TITLE_RESOURCE);
+        }
+        return lyricsTitle;
+    }
+}

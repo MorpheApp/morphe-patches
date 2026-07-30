@@ -14,6 +14,7 @@ import app.morphe.extension.music.patches.ChangeHeaderPatch.HeaderLogo;
 import app.morphe.extension.music.patches.ChangeStartPagePatch.StartPage;
 import app.morphe.extension.music.patches.CrossfadeManager.CrossFadeDuration;
 import app.morphe.extension.music.patches.CrossfadeManager.FadeCurve;
+import app.morphe.extension.music.patches.lyrics.LyricsSource;
 import app.morphe.extension.music.sponsorblock.MusicSponsorBlockConfig;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.EnumSetting;
@@ -168,6 +169,13 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting SCROBBLING_CUSTOM_REGEX = new StringSetting("morphe_music_scrobbling_custom_regex", "", true, parentsAll(parent(SCROBBLING_METADATA_CLEANUP), parentsAny(LISTENBRAINZ_SCROBBLING, LASTFM_SCROBBLING)));
     public static final BooleanSetting SCROBBLING_PARSE_TITLE = new BooleanSetting("morphe_music_scrobbling_parse_title", FALSE, true, parentsAny(LISTENBRAINZ_SCROBBLING, LASTFM_SCROBBLING));
 
+    // Lyrics
+    public static final BooleanSetting LYRICS_ENABLED = new BooleanSetting("morphe_music_lyrics_enabled", FALSE, true);
+    public static final EnumSetting<LyricsSource> LYRICS_SOURCE = new EnumSetting<>("morphe_music_lyrics_source", LyricsSource.LRCLIB_THEN_KUGOU, true, parent(LYRICS_ENABLED));
+    public static final BooleanSetting LYRICS_TAP_TO_SEEK = new BooleanSetting("morphe_music_lyrics_tap_to_seek", TRUE, true, parent(LYRICS_ENABLED));
+    public static final IntegerSetting LYRICS_TEXT_SIZE = new IntegerSetting("morphe_music_lyrics_text_size", 24, true, parent(LYRICS_ENABLED));
+    public static final IntegerSetting LYRICS_OFFSET_MS = new IntegerSetting("morphe_music_lyrics_offset_ms", 0, true, parent(LYRICS_ENABLED));
+
     // SponsorBlock
     public static final BooleanSetting SB_ENABLED = new BooleanSetting("morphe_sb_enabled", TRUE);
     public static final BooleanSetting SB_TOAST_ON_SKIP = new BooleanSetting("morphe_sb_toast_on_skip", TRUE, parent(SB_ENABLED));
@@ -214,6 +222,10 @@ public class Settings extends SharedYouTubeSettings {
                 30, 95, 5, "%"));
         SeekBarPreference.register(new SeekBarConfig(LASTFM_DELAY_SECONDS,
                 30, 360, 10, "s"));
+        SeekBarPreference.register(new SeekBarConfig(LYRICS_TEXT_SIZE,
+                14, 40, 2, "sp"));
+        SeekBarPreference.register(new SeekBarConfig(LYRICS_OFFSET_MS,
+                -2000, 2000, 100, "ms"));
 
         // Must run before any code reads a SegmentCategory setting.
         MusicSponsorBlockConfig.install();
