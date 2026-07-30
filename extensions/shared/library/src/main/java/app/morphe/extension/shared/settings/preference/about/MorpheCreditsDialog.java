@@ -62,215 +62,55 @@ class MorpheCreditsDialog extends Dialog {
     }
 
     private String createDialogHtml() {
-        // Get theme colors.
-        String foregroundColorHex = Utils.getColorHexString(Utils.getAppForegroundColor());
-        String backgroundColorHex = Utils.getColorHexString(Utils.getDialogBackgroundColor());
+        StringBuilder html = new StringBuilder(AboutDialogStyle.documentStart());
 
-        // Morphe brand colors from logo.
-        String morpheBlue = "#1E5AA8";
-        String morpheTeal = "#00AFAE";
+        html.append("<div class=\"dialog-header\"><div class=\"dialog-title\">")
+                .append(str("morphe_settings_about_links_credits"))
+                .append("</div></div>");
 
-        StringBuilder html = new StringBuilder(String.format("""
-                         <html>
-                         <head>
-                             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                         </head>
-                         <body>
-                         <style>
-                             * {
-                                 margin: 0;
-                                 padding: 0;
-                                 box-sizing: border-box;
-                             }
-                             body {
-                                 background: %s;
-                                 color: %s;
-                                 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-                                 padding: 0;
-                             }
-                             /* Header */
-                             .credits-header {
-                                 padding: 22px 20px 16px;
-                                 text-align: center;
-                                 border-bottom: 1px solid rgba(128, 128, 128, 0.12);
-                             }
-                             .credits-title {
-                                 font-size: 17px;
-                                 font-weight: 600;
-                                 color: %s;
-                             }
-                             /* Sections */
-                             .credits-section {
-                                 padding: 14px 16px;
-                             }
-                             .credits-section + .credits-section {
-                                 border-top: 1px solid rgba(128, 128, 128, 0.12);
-                             }
-                             .section-label {
-                                 font-size: 11px;
-                                 font-weight: 600;
-                                 color: %s;
-                                 opacity: 0.5;
-                                 text-transform: uppercase;
-                                 letter-spacing: 0.07em;
-                                 margin-bottom: 8px;
-                                 padding: 0 4px;
-                             }
-                             /* Contributor rows - same style as About */
-                             .link-button {
-                                 display: flex;
-                                 align-items: center;
-                                 gap: 10px;
-                                 text-decoration: none;
-                                 color: %s;
-                                 background: linear-gradient(135deg, rgba(30, 90, 168, 0.07) 0%%, rgba(0, 175, 174, 0.07) 100%%);
-                                 border: 1px solid rgba(30, 90, 168, 0.2);
-                                 border-radius: 12px;
-                                 padding: 11px 14px;
-                                 margin-bottom: 6px;
-                                 font-size: 14px;
-                                 font-weight: 500;
-                                 -webkit-tap-highlight-color: transparent;
-                                 -webkit-touch-callout: none;
-                                 -webkit-user-select: none;
-                                 user-select: none;
-                             }
-                             .link-button:last-child {
-                                 margin-bottom: 0;
-                             }
-                             .link-button:active {
-                                 background: linear-gradient(135deg, rgba(30, 90, 168, 0.14) 0%%, rgba(0, 175, 174, 0.14) 100%%);
-                                 border-color: rgba(30, 90, 168, 0.35);
-                             }
-                             .avatar {
-                                 width: 28px;
-                                 height: 28px;
-                                 border-radius: 50%%;
-                                 background: linear-gradient(135deg, %s 0%%, %s 100%%);
-                                 display: flex;
-                                 align-items: center;
-                                 justify-content: center;
-                                 font-size: 12px;
-                                 font-weight: 700;
-                                 color: #ffffff;
-                                 flex-shrink: 0;
-                             }
-                             .contributor-info {
-                                 flex: 1;
-                             }
-                             .contributor-name {
-                                 font-size: 14px;
-                                 font-weight: 500;
-                                 color: %s;
-                             }
-                             .contributor-role {
-                                 font-size: 11px;
-                                 color: %s;
-                                 opacity: 0.5;
-                                 margin-top: 1px;
-                             }
-                             .link-chevron {
-                                 font-size: 24px;
-                                 color: %s;
-                                 opacity: 0.3;
-                                 line-height: 1;
-                             }
-                             .link-icon {
-                                 width: 28px;
-                                 height: 28px;
-                                 border-radius: 8px;
-                                 background: linear-gradient(135deg, rgba(30, 90, 168, 0.12) 0%%, rgba(0, 175, 174, 0.12) 100%%);
-                                 display: flex;
-                                 align-items: center;
-                                 justify-content: center;
-                                 flex-shrink: 0;
-                             }
-                             .link-icon svg {
-                                 width: 16px;
-                                 height: 16px;
-                                 fill: none;
-                                 stroke: %s;
-                                 stroke-width: 1.6;
-                                 stroke-linecap: round;
-                                 stroke-linejoin: round;
-                             }
-                         </style>
-                        """,
-                backgroundColorHex, foregroundColorHex,
-                foregroundColorHex, foregroundColorHex,
-                foregroundColorHex, morpheBlue, morpheTeal,
-                foregroundColorHex, foregroundColorHex, foregroundColorHex,
-                foregroundColorHex
-        ));
-
-        // Header.
-        html.append(String.format("""
-                        <div class="credits-header">
-                            <div class="credits-title">%s</div>
-                        </div>
-                        """,
-                str("morphe_settings_about_links_credits")
-        ));
-
-        // Current contributors section.
-        html.append(String.format("""
-                <div class="credits-section">
-                    <div class="section-label">%s</div>
-                """, str("morphe_settings_about_contributors_current")));
-        for (MorpheAboutPreference.WebLink link : WORKS_LINKS_CURRENT) {
-            String initial = link.name.substring(0, 1).toUpperCase(Locale.getDefault());
-            html.append("<a href=\"").append(link.url).append("\" class=\"link-button\">")
-                    .append("<div class=\"avatar\">").append(initial).append("</div>")
-                    .append("<div class=\"contributor-info\">")
-                    .append("<div class=\"contributor-name\">").append(link.name).append("</div>")
-                    .append("<div class=\"contributor-role\">").append(link.subText).append("</div>")
-                    .append("</div>")
-                    .append("<span class=\"link-chevron\">&#x203A;</span>")
-                    .append("</a>");
-        }
-        html.append("</div>");
-
-        // Prior contributors section.
-        html.append(String.format("""
-                <div class="credits-section">
-                    <div class="section-label">%s</div>
-                """, str("morphe_settings_about_contributors_prior")));
-        for (MorpheAboutPreference.WebLink link : getWorksLinksPrior()) {
-            String initial = link.name.substring(0, 1).toUpperCase(Locale.getDefault());
-            html.append("<a href=\"").append(link.url).append("\" class=\"link-button\">")
-                    .append("<div class=\"avatar\">").append(initial).append("</div>")
-                    .append("<div class=\"contributor-info\">")
-                    .append("<div class=\"contributor-name\">").append(link.name).append("</div>");
-            if (link.subText != null) {
-                html.append("<div class=\"contributor-role\">").append(link.subText).append("</div>");
-            }
-            html.append("</div>")
-                    .append("<span class=\"link-chevron\">&#x203A;</span>")
-                    .append("</a>");
-        }
-        html.append("</div>");
+        appendContributors(html, str("morphe_settings_about_contributors_current"), WORKS_LINKS_CURRENT);
+        appendContributors(html, str("morphe_settings_about_contributors_prior"), getWorksLinksPrior());
 
         // In-app user-facing attribution of licenses and notices (Apache 2.0 criteria).
-        html.append("<div class=\"credits-section\">");
-        html.append("<a href=\"").append(ABOUT_LICENSE.url).append("\" class=\"link-button\">")
-                .append("<span class=\"link-icon\">")
-                .append("<svg viewBox='0 0 16 16'><path d='M4 1h6l3 3v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z'/><path d='M10 1v3h3'/><line x1='5' y1='7' x2='11' y2='7'/><line x1='5' y1='10' x2='11' y2='10'/><line x1='5' y1='13' x2='8' y2='13'/></svg>")
+        html.append("<div class=\"section\"><div class=\"settings-group\">")
+                .append("<a href=\"").append(ABOUT_LICENSE.url).append("\" class=\"settings-item\">")
+                .append("<span class=\"item-icon\">")
+                .append(AboutDialogStyle.linkIcon(ABOUT_LICENSE.url))
                 .append("</span>")
-                .append("<div class=\"contributor-info\">")
-                .append("<div class=\"contributor-name\">")
+                .append("<div class=\"item-text\"><div class=\"item-title\">")
                 .append(str("morphe_settings_about_links_licenses"))
-                .append("</div>");
-        html.append("</div>")
-                .append("<span class=\"link-chevron\">&#x203A;</span>")
-                .append("</a>");
-        html.append("</div>");
+                .append("</div></div>")
+                .append(AboutDialogStyle.chevron())
+                .append("</a>")
+                .append("</div></div>");
 
-        html.append("""
-                </body>
-                </html>
-            """);
+        html.append(AboutDialogStyle.DOCUMENT_END);
 
         return html.toString();
+    }
+
+    private static void appendContributors(StringBuilder html, String title,
+                                           List<MorpheAboutPreference.WebLink> links) {
+        html.append("<div class=\"section\">")
+                .append(AboutDialogStyle.sectionTitle(title))
+                .append("<div class=\"settings-group\">");
+
+        for (MorpheAboutPreference.WebLink link : links) {
+            String initial = link.name.substring(0, 1).toUpperCase(Locale.getDefault());
+            html.append("<a href=\"").append(link.url).append("\" class=\"settings-item\">")
+                    .append("<span class=\"avatar\">").append(initial).append("</span>")
+                    .append("<div class=\"item-text\"><div class=\"item-title\">")
+                    .append(link.name)
+                    .append("</div>");
+            if (link.subText != null) {
+                html.append("<div class=\"item-subtitle\">").append(link.subText).append("</div>");
+            }
+            html.append("</div>")
+                    .append(AboutDialogStyle.chevron())
+                    .append("</a>");
+        }
+
+        html.append("</div></div>");
     }
 
     private final String htmlContent;
