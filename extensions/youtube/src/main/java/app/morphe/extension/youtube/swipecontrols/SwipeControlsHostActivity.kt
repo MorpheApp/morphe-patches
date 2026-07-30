@@ -86,6 +86,11 @@ class SwipeControlsHostActivity : Activity() {
         reAttachOverlays()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        PlayerType.onChange -= this::onPlayerTypeChanged
+    }
+
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
         ensureInitialized()
         return if ((ev != null) && gesture.submitTouchEvent(ev)) {
