@@ -194,6 +194,28 @@ Second \"item\" text"</string>
   <string name="morphe_hide_store_button_title">Скриване на бутона \'Магазин\'</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_subscribe_button_in_channel_page_title">Скриване на бутона \'Абонамент\' на страницата на канала</string>
+  <string name="morphe_explore_menu_screen_title">Разгледайте менюто</string>
+  <string name="morphe_explore_menu_screen_summary">Изберете кои компоненти да се показват в менюто за разглеждане</string>
+  <string name="morphe_hide_courses_menu_title">Скриване на менюто \"Курсове\"</string>
+  <string name="morphe_hide_explore_button_title">Скрийте бутона \"Разгледайте\"</string>
+  <string name="morphe_hide_fashion_menu_title">Скриване на менюто \"Мода и красота\"</string>
+  <string name="morphe_hide_gaming_menu_title">Скриване на менюто \"Игри\"</string>
+  <string name="morphe_hide_hype_menu_title">Скриване на менюто \"Hype\"</string>
+  <string name="morphe_hide_live_menu_title">Скриване на менюто \"На живо\"</string>
+  <string name="morphe_hide_memberships_menu_title">Скриване на менюто \"Абонаменти\"</string>
+  <string name="morphe_hide_movies_menu_title">Скриване на менюто \"Филми\"</string>
+  <string name="morphe_hide_music_menu_title">Скриване на менюто \"Музика и телевизия\"</string>
+  <string name="morphe_hide_news_menu_title">Скриване на менюто \"Новини\"</string>
+  <string name="morphe_hide_playables_menu_title">Скриване на менюто \"Playables\"</string>
+  <string name="morphe_hide_podcasts_menu_title">Скриване на менюто \"Подкасти\"</string>
+  <string name="morphe_hide_shopping_menu_title">Скриване на менюто \"Пазаруване\"</string>
+  <string name="morphe_hide_sports_menu_title">Скриване на менюто \"Спорт\"</string>
+  <string name="morphe_hide_youtube_premium_menu_title">Скриване на менюто \"YouTube Premium\"</string>
+  <string name="morphe_hide_youtube_studio_menu_title">Скриване на менюто \"YouTube Studio\"</string>
+  <string name="morphe_hide_youtube_music_menu_title">Скриване на менюто \"YouTube Music\"</string>
+  <string name="morphe_hide_youtube_kids_menu_title">Скриване на менюто \"YouTube Kids\"</string>
+  <string name="morphe_hide_youtube_create_menu_title">Скриване на менюто \"YouTube Create\"</string>
+  <string name="morphe_hide_privacy_tos_footer_title">Скриване на долния колонтитул \"Декларация за поверителност • Условия за ползване\"</string>
   <string name="morphe_comments_screen_title">Коментари</string>
   <string name="morphe_comments_screen_summary">Изберете кои компоненти да се показват в секцията с коментари</string>
   <string name="morphe_hide_comments_carousel_title">Активиране на филтър за кръгли прегледи на коментари</string>
@@ -204,14 +226,13 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Въведете имената на каруселите с коментари, за да филтрирате, разделени с нови редове</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Скрийте или покажете AI чат сумари</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Скрийте или покажете канал указания</string>
-  <string name="morphe_hide_comments_prompts_title">Скриване на коментарни подсказки</string>
-  <string name="morphe_hide_comments_prompts_summary">Скрива контекстните информационни съобщения в секцията с коментари</string>
+  <string name="morphe_hide_comments_contexts_title">Скриване на съобщенията от контекста</string>
   <string name="morphe_hide_comments_by_members_header_title">Скрийте или покажете \'Коментари от членове\' заглавие</string>
   <string name="morphe_hide_comments_section_title">Скрийте раздел за коментари</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Скриване на коментарите в лентата</string>
-  <string name="morphe_hide_comments_community_guidelines_title">Скрийте общи указания</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Скриване на правилата на общността</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Скрийте или покажете бутона \'Създай краток видеоклип\'</string>
-  <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Скрийте бутони за емоджи и времевамки</string>
+  <string name="morphe_hide_comments_emoji_button_title">Скриване на бутона за емотикони</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Скриване на опциите на филтърната лента</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Скрива всички опции на филтърната лента, с изключение на „Най-нови“ и „Най-добри“</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Скрий анимацията и картите за подаръци</string>
@@ -221,6 +242,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_preview_comment_title">Скрийте предварителен коментар</string>
   <string name="morphe_hide_comments_preview_comment_summary">Скрива предварителния преглед на коментара под видеото, преди да се отвори пълната секция с коментари</string>
   <string name="morphe_hide_comments_thanks_button_title">Скрийте бутона \'Благодаряне\'</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Скриване на бутона за времето</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Пречистване на подчертаните връзки от търсенето</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Пречиства връзките от търсенето, оставяйки само оригиналния обикновен текст</string>
   <string name="morphe_hide_keyword_content_screen_title">Филтър по ключова дума</string>
@@ -457,6 +479,8 @@ Second \"item\" text"</string>
   <string name="morphe_livestream_dvr_title">Активиране на livestream DVR</string>
   <string name="morphe_livestream_dvr_summary">Позволява превъртане на всички потоци на живо, дори и тези, които обикновено го ограничават</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">Активиране на миниатюри на лентата за търсене</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">Показва миниатюра на видеото, докато плъзгате лентата за търсене</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'Активиране на DVR за запис на живо' може да не е налично
 
@@ -1077,23 +1101,23 @@ Second \"item\" text"</string>
 • HDR видеа не ще използват AVC
 • Някои устройства не могат да принудят AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">За да използвате тази функция, задайте „Заблуда на видео потоци“ на Android VR или Android Studio</string>
+  <string name="morphe_force_avc_codec_not_available">За да използвате тази функция, променете \'Имитиране на видео потоци\' на Android VR или Android Studio\'</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Отвори меню за разширени настройки за качеството на видеото</string>
   <string name="morphe_advanced_video_quality_menu_summary">Прескача менюто за избор на качество и отваря директно менюто \'Разширени\' за качеството</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Скриване на премиум опции за качество</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Приоритизирайте качество на видеото</string>
-  <string name="morphe_prioritize_video_quality_summary">Приоритезира най-високото налично качество на видеото пред ефективността на кодека</string>
+  <string name="morphe_video_quality_prioritize_title">Приоритет на качеството на видеото</string>
+  <string name="morphe_video_quality_prioritize_summary">Приоритизира най-високото налично качество на видеото пред кодекната ефективност</string>
+  <string name="morphe_video_quality_prioritize_dialog">Ако тази настройка е изключена, по-старите видеа може да не показват опции за качество на видеото</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Черно и бяло</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Позволява софтуерно декодиране на AV1 при използване на клиента Android VR</string>
+  <string name="morphe_spoof_video_streams_av1_title">Разрешаване на Android VR / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Позволява софтуерно декодиране на AV1 при използване на Android VR / visionOS клиента</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Активиране на това настройка може да използва софтуерно AV1 дешифриране.
 
 Видео преглед с AV1 може да се качне или да има падане на кадри."</string>
   <string name="morphe_spoof_video_streams_about_title">Манипулиране на ефекти на видео</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• Видеото може да спира на 1:00, или може да не е налично в някои региони</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Меню за аудио трак не е налично</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Отсъства AV1 кодек на видео</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR иммерсивен режим не е наличен</string>

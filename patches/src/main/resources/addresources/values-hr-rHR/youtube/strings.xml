@@ -186,14 +186,10 @@ Promjene uključuju:
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Unesite nazive carousel kanala prema kojima želite filtrirati, odvojene novim redcima</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Komentari su skriveni</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Sakrij \'Korisnički uputi\' odjel</string>
-  <string name="morphe_hide_comments_prompts_title">Sakrij podsticaje za komentare</string>
-  <string name="morphe_hide_comments_prompts_summary">Skriva poruke kontekstualnih informacija u odjeljku komentara</string>
   <string name="morphe_hide_comments_by_members_header_title">Sakrij \'Prikaži\' odjel</string>
   <string name="morphe_hide_comments_section_title">Sakrij \'Prikaži\' odjel</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Sakrij odjeljak komentara u Home feed-u</string>
-  <string name="morphe_hide_comments_community_guidelines_title">Sakrij \'Prikaži\' odjel</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Sakrij \'Prikaži\' odjel</string>
-  <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Sakrij \'Prikaži\' odjel</string>
   <string name="morphe_hide_comments_info_button_title">Sakrij tipku Info</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Skriva traku donatora izravnog chata</string>
   <string name="morphe_hide_comments_preview_comment_title">Emoji i Vremenska oznaka tipke su skrivene</string>
@@ -675,14 +671,11 @@ Ograničenja:
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Sakrij opcije za premium kvalitetu</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Prioritiraj kvalitetu videozapisa</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Omogu Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Omogućavanje ovog postavki može uzrokovati video playback stuttering, lošiju bateriju život i nepoznate nuspojave.
 
 Video playback s AV1 može stutterati ili padati frame-ove."</string>
   <string name="morphe_spoof_video_streams_about_title">Simuliranje nuspojava</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• Video može prestati na 1:00 ili može biti nedostupan u nekim regijama</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Audio track menu je odsutan</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Nema AV1 video codec</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR imersivni mod nije dostupan</string>

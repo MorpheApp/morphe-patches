@@ -21,7 +21,9 @@ import android.widget.FrameLayout;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
@@ -45,6 +47,40 @@ public final class NavigationBar {
      */
     public interface AppCompatToolbarPatchInterface {
         Drawable patch_getNavigationIcon();
+    }
+
+    /**
+     * Interface to be notified when the navigation button changes.
+     */
+    public interface OnNavigationButtonChangedListener {
+        /**
+         * @param activeButton Currently selected button. Is null only if the navigation button
+         *                     is a new and unidentified type.
+         */
+        void onNavigationButtonChanged(@Nullable NavigationButton activeButton);
+    }
+
+    private static final List<OnNavigationButtonChangedListener> onNavigationButtonChangedListeners
+            = Collections.synchronizedList(new ArrayList<>());
+
+    /**
+     * Registers a listener to be notified when the navigation button changes.
+     */
+    public static void addOnNavigationButtonChangedListener(OnNavigationButtonChangedListener listener) {
+        onNavigationButtonChangedListeners.add(listener);
+    }
+
+    /**
+     * Unregisters a listener from being notified when the navigation button changes.
+     */
+    public static void removeOnNavigationButtonChangedListener(OnNavigationButtonChangedListener listener) {
+        onNavigationButtonChangedListeners.remove(listener);
+    }
+
+    private static void notifyNavigationButtonChangedListeners(@Nullable NavigationButton button) {
+        for (OnNavigationButtonChangedListener listener : onNavigationButtonChangedListeners) {
+            listener.onNavigationButtonChanged(button);
+        }
     }
 
     //
@@ -256,6 +292,7 @@ public final class NavigationBar {
             }
 
             NavigationButton button = viewToButtonMap.get(navButtonImageView);
+            NavigationButton oldButton = NavigationButton.selectedNavigationButton;
 
             if (button == null) { // An unknown tab was selected.
                 // Show a toast only if debug mode is enabled.
@@ -264,14 +301,22 @@ public final class NavigationBar {
                 }
 
                 NavigationButton.selectedNavigationButton = null;
+
+                if (oldButton != null) {
+                    notifyNavigationButtonChangedListeners(null);
+                }
                 return;
             }
 
             NavigationButton.selectedNavigationButton = button;
-            Logger.printDebug(() -> "Changed to navigation button: " + button);
 
             // Release any threads waiting for the selected nav button.
             releaseNavButtonLatch();
+
+            if (button != oldButton) {
+                Logger.printDebug(() -> "Changed to navigation button: " + button);
+                notifyNavigationButtonChangedListeners(button);
+            }
         } catch (Exception ex) {
             Logger.printException(() -> "navigationTabSelected failure", ex);
         }

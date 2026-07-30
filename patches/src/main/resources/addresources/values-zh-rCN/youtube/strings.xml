@@ -155,8 +155,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_featured_channels_section_title">隐藏精选频道版块</string>
   <string name="morphe_hide_featured_links_section_title">隐藏“精选链接”部分</string>
   <string name="morphe_hide_featured_places_section_title">隐藏“精选地点”部分</string>
+  <string name="morphe_hide_featured_playlists_section_title">隐藏精选播放列表部分</string>
   <string name="morphe_hide_featured_videos_section_title">隐藏“精选视频”部分</string>
   <string name="morphe_hide_gaming_section_title">隐藏“游戏”部分</string>
+  <string name="morphe_hide_hashtag_section_title">隐藏话题标签部分</string>
   <string name="morphe_hide_how_this_was_made_section_title">隐藏“内容制作说明”部分</string>
   <string name="morphe_hide_hype_points_title">隐藏热推积分</string>
   <string name="morphe_hide_info_cards_section_title">隐藏“信息卡片”部分</string>
@@ -202,14 +204,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">输入要过滤的评论轮播图名称，以换行符分隔，每行一个</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">隐藏 AI 聊天摘要</string>
   <string name="morphe_hide_comments_channel_guidelines_title">隐藏频道准则</string>
-  <string name="morphe_hide_comments_prompts_title">隐藏评论提示</string>
-  <string name="morphe_hide_comments_prompts_summary">隐藏评论部分中的上下文信息消息</string>
   <string name="morphe_hide_comments_by_members_header_title">隐藏“会员的评论”标题</string>
   <string name="morphe_hide_comments_section_title">隐藏评论区</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">隐藏主页动态的评论区</string>
-  <string name="morphe_hide_comments_community_guidelines_title">隐藏社区准则</string>
   <string name="morphe_hide_comments_create_a_short_button_title">隐藏“创建 Short”按钮</string>
-  <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">隐藏表情符号和时间戳按钮</string>
   <string name="morphe_hide_comments_filter_bar_options_title">隐藏筛选栏选项</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">隐藏所有筛选栏选项，除了“热门”和“最新”</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">隐藏礼物动画和卡片</string>
@@ -455,6 +453,8 @@ Second \"item\" text"</string>
   <string name="morphe_livestream_dvr_title">启用直播 DVR 功能</string>
   <string name="morphe_livestream_dvr_summary">允许在所有直播中寻求，即使那些通常限制它的直播</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">启用进度条缩略图</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">拖动进度条时显示视频缩略图</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'启用直播录制'可能不可用
 
@@ -907,6 +907,7 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_resuming_summary">禁用“继续观看”迷你播放器，这是 YouTube Premium 的一项功能，该功能会在应用启动时显示</string>
   <string name="morphe_miniplayer_screen_title">小型播放器</string>
   <string name="morphe_miniplayer_screen_summary">自定义最小化视频播放器的外观和行为</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube 移除了所有额外的迷你播放器。要更改迷你播放器类型，请补丁 YouTube 21.28.207 或更早版本</string>
   <string name="morphe_miniplayer_type_title">小型播放器类型</string>
   <string name="morphe_miniplayer_type_entry_0">已禁用</string>
   <string name="morphe_miniplayer_type_entry_1">默认</string>
@@ -1074,23 +1075,23 @@ Second \"item\" text"</string>
 • HDR 视频将不使用 AVC
 • 某些设备无法强制使用 AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">使用此功能时，将“欺骗视频流”设置为 Android VR 或 Android Studio</string>
+  <string name="morphe_force_avc_codec_not_available">要使用此功能，请将“伪造视频流”设置为“Android VR”或“Android Studio”</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">打开高级画质菜单</string>
   <string name="morphe_advanced_video_quality_menu_summary">跳过画质选择菜单，直接打开高级画质菜单</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">隐藏 Premium 画质选项</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">优先视频画质</string>
-  <string name="morphe_prioritize_video_quality_summary">优先考虑最高的视频画质而不是编解码器效率</string>
+  <string name="morphe_video_quality_prioritize_title">优先视频画质</string>
+  <string name="morphe_video_quality_prioritize_summary">优先考虑最高视频画质而不是编解码器效率</string>
+  <string name="morphe_video_quality_prioritize_dialog">如果关闭此设置，旧视频可能不显示视频质量选项</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">允许 Android VR AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">允许在使用 Android VR 客户端时进行软件 AV1 解码</string>
+  <string name="morphe_spoof_video_streams_av1_title">允许 Android VR / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">允许在 Android VR / visionOS 客户端中使用软件 AV1 解码</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"启用此设置可能会使用软件 AV1 解码。
 
 使用 AV1 播放视频可能会卡顿或丢帧。"</string>
   <string name="morphe_spoof_video_streams_about_title">欺骗的副作用</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• 视频可能会在 1:00 停止，或者在某些地区可能无法播放</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• 音轨菜单缺失</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• 不支持 AV1 视频编解码器</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360°VR全景模式不可用</string>

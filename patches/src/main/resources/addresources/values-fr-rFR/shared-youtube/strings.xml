@@ -103,17 +103,6 @@ Pour vous connecter, appuyez sur 'Continuer' ci-dessous."</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Impossible de se connecter à VR : %s</string>
   <string name="morphe_oauth2_toast_reset">Déconnexion de Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Jeton de connexion à VR invalide, veuillez réessayer la connexion à VR</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Désactiver la mise à jour JavaScript du lecteur</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Verrouille le JavaScript du lecteur sur une version spécifique
-
-• Un hachage JavaScript valide du lecteur est nécessaire
-• Les hachages JavaScript du lecteur sont valides pendant environ un mois, et les hachages obsolètes sont révoqués par GVS
-• La lecture échoue si le hachage est révoqué"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"Vous devez fournir un hachage JavaScript valide du lecteur.
-
-La lecture échouera si le hachage JavaScript du lecteur est obsolète."</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hachage JavaScript du lecteur</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Entrez un hachage JavaScript valide du lecteur</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Désactiver le protocole QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -168,7 +157,7 @@ Cependant, activer cette option entraînera également l'enregistrement de certa
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Liste des chaînes du générateur de chemins de composants à filtrer, séparées par des sauts de ligne</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Filtre personnalisé invalide : %s</string>
-  <!-- Settings menu filter -->
+  <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">Filtre du menu des paramètres</string>
   <string name="morphe_settings_menu_filter_screen_summary">Masquer les éléments sur l’écran standard des paramètres de l’application par leur nom visible</string>
   <string name="morphe_settings_menu_filter_picker_empty">Ouvrez l’écran standard des paramètres de l’application une fois pour remplir la liste</string>

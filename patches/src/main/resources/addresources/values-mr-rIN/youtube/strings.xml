@@ -194,6 +194,28 @@ Second \"item\" text"</string>
   <string name="morphe_hide_store_button_title">स्टोअर बटण लपवा</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_subscribe_button_in_channel_page_title">सदस्यता बटण लपवा</string>
+  <string name="morphe_explore_menu_screen_title">मेनू एक्सप्लोर करा</string>
+  <string name="morphe_explore_menu_screen_summary">एक्सप्लोर मेनूमध्ये कोणते घटक दिसतील ते निवडा</string>
+  <string name="morphe_hide_courses_menu_title">कोर्सेस मेनू लपवा</string>
+  <string name="morphe_hide_explore_button_title">एक्सप्लोर बटण लपवा</string>
+  <string name="morphe_hide_fashion_menu_title">\'फॅशन आणि सौंदर्य\' मेनू लपवा</string>
+  <string name="morphe_hide_gaming_menu_title">गेमिंग मेनू लपवा</string>
+  <string name="morphe_hide_hype_menu_title">हायप मेनू लपवा</string>
+  <string name="morphe_hide_live_menu_title">लाइव्ह मेनू लपवा</string>
+  <string name="morphe_hide_memberships_menu_title">सदस्यता मेनू लपवा</string>
+  <string name="morphe_hide_movies_menu_title">मूव्हीज मेनू लपवा</string>
+  <string name="morphe_hide_music_menu_title">\'म्युझिक आणि टीव्ही\' मेनू लपवा</string>
+  <string name="morphe_hide_news_menu_title">न्यूज मेनू लपवा</string>
+  <string name="morphe_hide_playables_menu_title">प्लेएबल्स मेनू लपवा</string>
+  <string name="morphe_hide_podcasts_menu_title">पॉडकास्ट मेनू लपवा</string>
+  <string name="morphe_hide_shopping_menu_title">शॉपिंग मेनू लपवा</string>
+  <string name="morphe_hide_sports_menu_title">स्पोर्ट्स मेनू लपवा</string>
+  <string name="morphe_hide_youtube_premium_menu_title">YouTube Premium मेनू लपवा</string>
+  <string name="morphe_hide_youtube_studio_menu_title">YouTube Studio मेनू लपवा</string>
+  <string name="morphe_hide_youtube_music_menu_title">YouTube Music मेनू लपवा</string>
+  <string name="morphe_hide_youtube_kids_menu_title">YouTube Kids मेनू लपवा</string>
+  <string name="morphe_hide_youtube_create_menu_title">YouTube Create मेनू लपवा</string>
+  <string name="morphe_hide_privacy_tos_footer_title">\'प्रायव्हसी पॉलिसी • सेवा अटी\'footer लपवा</string>
   <string name="morphe_comments_screen_title">टिप्पण्या</string>
   <string name="morphe_comments_screen_summary">टिप्पणी विभागात कोणते घटक दिसतात ते निवडा</string>
   <string name="morphe_hide_comments_carousel_title">टिप्पणी कॅरोसेल फिल्टर सक्षम करा</string>
@@ -204,14 +226,13 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">टिप्पणी कॅरोसेल नावांची फिल्टर करण्यासाठी प्रविष्ट करा, प्रत्येक ओळ नवीन ओळीने विभाजित करा</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">एआय चॅट सारांश लपवा</string>
   <string name="morphe_hide_comments_channel_guidelines_title">चॅनेल मार्गदर्शक तत्त्वे लपवा</string>
-  <string name="morphe_hide_comments_prompts_title">टिप्पणी प्रॉम्प्ट लपवा</string>
-  <string name="morphe_hide_comments_prompts_summary">टिप्पणी विभागात माहितीपूर्ण संदर्भ संदेश लपवते</string>
+  <string name="morphe_hide_comments_contexts_title">संदेश संदर्भ लपवा</string>
   <string name="morphe_hide_comments_by_members_header_title">\'टिप्पण्यांद्वारे सदस्य\' हेडर लपवा</string>
   <string name="morphe_hide_comments_section_title">टिप्पणी विभाग लपवा</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">होम फीडमध्ये कमेंट सेक्शन लपवा</string>
-  <string name="morphe_hide_comments_community_guidelines_title">सामुदायिक मार्गदर्शक तत्त्वे लपवा</string>
+  <string name="morphe_hide_comments_community_guidelines_title">समुदाय मार्गदर्शक तत्त्वे लपवा</string>
   <string name="morphe_hide_comments_create_a_short_button_title">\'शॉर्ट तयार करा\' बटण लपवा</string>
-  <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">इमोजी आणि टाइमस्टॅम्प बटणे लपवा</string>
+  <string name="morphe_hide_comments_emoji_button_title">इमोजी बटण लपवा</string>
   <string name="morphe_hide_comments_filter_bar_options_title"> फिल्टर बार पर्याय लपवा</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">\'टॉप\' आणि \'नवीनतम\' वगळता सर्व फिल्टर बार पर्याय लपवते</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">\',\'उपहार ॲनिमेशन आणि कार्ड्स लपवा\',\'</string>
@@ -221,6 +242,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_preview_comment_title">पूर्वावलोकन टिप्पणी लपवा</string>
   <string name="morphe_hide_comments_preview_comment_summary">पूर्ण टिप्पणी विभाग उघडण्यापूर्वी व्हिडिओच्या खाली टिप्पणी पूर्वावलोकन लपवते</string>
   <string name="morphe_hide_comments_thanks_button_title">धन्यवाद बटण लपवा</string>
+  <string name="morphe_hide_comments_timestamp_button_title">टाइमस्टॅम्प बटण लपवा</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">हायलाइट केलेल्या शोध दुव्यांचे शुद्धीकरण करा</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">हायलाइट केलेले शोध दुवे शुद्ध करते, फक्त मूळ साधा मजकूर ठेवून</string>
   <string name="morphe_hide_keyword_content_screen_title">कीवर्ड फिल्टर</string>
@@ -450,6 +472,8 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_livestream_dvr_title">लाइव्हस्ट्रीम DVR सक्षम करा</string>
   <string name="morphe_livestream_dvr_summary">लाइव्हस्ट्रीममध्ये, सामान्यतः निर्बंध असलेल्या लाइव्हस्ट्रीमवर देखील शोध घेण्यास अनुमती देते.</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">सीकबार थंबनेल सक्षम करा</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">सीकबार ड्रॅग करताना व्हिडिओ थंबनेल दर्शवते</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'लाइव्हस्ट्रीम DVR सक्षम करा' उपलब्ध नसेल
 
@@ -1069,23 +1093,23 @@ DeArrow.ajay.app उघडण्यासाठी येथे टॅप कर
 • HDR व्हिडिओ AVC वापरणार नाहीत
 • काही उपकरणे AVC ला सक्ती करू शकत नाहीत"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">हे वैशिष्ट्य (Feature) वापरण्यासाठी, \'व्हिडिओ स्ट्रीम (Video streams) स्पूफ (Spoof) करा\' Android VR किंवा Android Studio वर सेट करा</string>
+  <string name="morphe_force_avc_codec_not_available">हे वैशिष्ट्य वापरण्यासाठी, \'व्हिडिओ स्ट्रीम्स स्पूफ करा\' हे \'Android VR\' किंवा \'Android Studio\' वर सेट करा।</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">प्रगत गुणवत्ता मेनू उघडा</string>
   <string name="morphe_advanced_video_quality_menu_summary">गुणवत्ता निवड मेनू वगळून थेट \"Advanced\" गुणवत्ता मेनू उघडतो</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">प्रीमियम गुणवत्ता पर्याय लपवा</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">व्हिडिओ गुणवत्ताला प्राधान्य द्या</string>
-  <string name="morphe_prioritize_video_quality_summary">कोडेक कार्यक्षमतेपेक्षा उच्च व्हिडिओ गुणवत्तेला प्राधान्य देते</string>
+  <string name="morphe_video_quality_prioritize_title">व्हिडिओ गुणवत्तेला प्राधान्य द्या</string>
+  <string name="morphe_video_quality_prioritize_summary">कोडेक कार्यक्षमतेपेक्षा उच्च प्रतीची व्हिडिओ गुणवत्ता दर्शवते.</string>
+  <string name="morphe_video_quality_prioritize_dialog">हे सेटिंग बंद केल्यास, जुन्या व्हिडिओमध्ये व्हिडिओ गुणवत्तेचे पर्याय दिसणार नाहीत.</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Android VR AV1 ला अनुमती द्या</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Android VR क्लायंट वापरताना सॉफ्टवेअर AV1 डिकोडिंगला परवानगी देते.</string>
+  <string name="morphe_spoof_video_streams_av1_title">Android VR / visionOS AV1 ला अनुमती द्या</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Android VR / visionOS क्लायंट वापरताना सॉफ्टवेअर AV1 डीकोडिंगला परवानगी देते</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"हे सेटिंग सक्षम केल्यास सॉफ्टवेअर AV1 डिकोडिंग वापरले जाऊ शकते.
 
 AV1 सह व्हिडिओ प्लेबॅक स्टटर किंवा फ्रेम ड्रॉप होऊ शकते."</string>
   <string name="morphe_spoof_video_streams_about_title">स्पूफिंगचे दुष्परिणाम</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• व्हिडिओ 1:00 मिनीटवर थांबू शकतो किंवा काही प्रदेशांमध्ये उपलब्ध नसू शकतो</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• ऑडिओ ट्रैक मेनू गहाळ आहे</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• AV1 व्हिडिओ कोडेक नाही</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR इमर्सिव्ह मोड उपलब्ध नाही</string>

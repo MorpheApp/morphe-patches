@@ -103,17 +103,6 @@ YouTube Premium 사용자는 이 설정이 필요하지 않을 수 있습니다"
   <string name="morphe_oauth2_connection_failure_auth_error">VR에 로그인할 수 없습니다: %s</string>
   <string name="morphe_oauth2_toast_reset">Android VR에서 로그아웃되었습니다</string>
   <string name="morphe_oauth2_toast_invalid">잘못된 VR 로그인 토큰입니다. 다시 VR에 로그인하세요</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">플레이어 자바스크립트 업데이트 비활성화하기</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"플레이어 자바스크립트 버전을 특정 버전으로 고정합니다
-
-• 유효한 플레이어 자바스크립트 해시가 필요합니다
-• 플레이어 자바스크립트 해시는 대략 한 달 동안 유효하며, 오래된 해시는 GVS에서 취소됩니다
-• 해시가 취소된 경우에는 재생이 실패합니다"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"유효한 플레이어 자바스크립트 해시를 설정해야 합니다
-
-플레이어 자바스크립트 해시가 오래되면 재생이 실패합니다"</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">플레이어 자바스크립트 해시</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">유효한 플레이어 자바스크립트 해시를 입력하세요</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC 프로토콜 비활성화하기</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -168,7 +157,7 @@ YouTube Premium 사용자는 이 설정이 필요하지 않을 수 있습니다"
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">필터링할 컴포넌트 패스 빌더 문자열을 줄바꿈으로 구분하여 설정하세요</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">잘못된 사용자 정의 필터 값입니다: %s</string>
-  <!-- Settings menu filter -->
+  <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">설정 메뉴 필터</string>
   <string name="morphe_settings_menu_filter_screen_summary">일반 앱 설정 화면에서 표시되는 이름을 기준으로 항목을 숨깁니다</string>
   <string name="morphe_settings_menu_filter_picker_empty">목록을 생성하려면 일반 앱 설정 화면을 한 번 실행해야 합니다</string>

@@ -194,6 +194,28 @@ Veranderings sluit in:
   <string name="morphe_hide_store_button_title">Verberg Winkel knoppie</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_subscribe_button_in_channel_page_title">Verberg Inteken knoppie</string>
+  <string name="morphe_explore_menu_screen_title">Verken spyskaart</string>
+  <string name="morphe_explore_menu_screen_summary">Kies watter komponente in die verken-menu verskyn</string>
+  <string name="morphe_hide_courses_menu_title">Verberg Kursse-menu</string>
+  <string name="morphe_hide_explore_button_title">Verberg Verken-knoppie</string>
+  <string name="morphe_hide_fashion_menu_title">Verberg \'Mode &amp; Skoonheid\' menu</string>
+  <string name="morphe_hide_gaming_menu_title">Verberg Speletjies-menu</string>
+  <string name="morphe_hide_hype_menu_title">Verberg Hype-menu</string>
+  <string name="morphe_hide_live_menu_title">Verberg Regstreekse-menu</string>
+  <string name="morphe_hide_memberships_menu_title">Verberg Lidmaatskap-menu</string>
+  <string name="morphe_hide_movies_menu_title">Verberg Rolprente-menu</string>
+  <string name="morphe_hide_music_menu_title">Verberg \'Musiek &amp; TV\' menu</string>
+  <string name="morphe_hide_news_menu_title">Verberg Nuus-menu</string>
+  <string name="morphe_hide_playables_menu_title">Verberg Playables-menu</string>
+  <string name="morphe_hide_podcasts_menu_title">Verberg Podcast-menu</string>
+  <string name="morphe_hide_shopping_menu_title">Verberg Winkels-menu</string>
+  <string name="morphe_hide_sports_menu_title">Verberg Sport-menu</string>
+  <string name="morphe_hide_youtube_premium_menu_title">Verberg YouTube Premium-menu</string>
+  <string name="morphe_hide_youtube_studio_menu_title">Verberg YouTube Studio-menu</string>
+  <string name="morphe_hide_youtube_music_menu_title">Verberg YouTube Music-menu</string>
+  <string name="morphe_hide_youtube_kids_menu_title">Verberg YouTube Kids-menu</string>
+  <string name="morphe_hide_youtube_create_menu_title">Verberg YouTube Create-menu</string>
+  <string name="morphe_hide_privacy_tos_footer_title">Verberg \'Privaatheidsbeleid • Dienstevoorwaardes\' voetnoot</string>
   <string name="morphe_comments_screen_title">Kommentare</string>
   <string name="morphe_comments_screen_summary">Kies watter komponente in die kommentaar afdeling verskyn</string>
   <string name="morphe_hide_comments_carousel_title">Aktiveer kommentaar draaibaar filter</string>
@@ -204,14 +226,10 @@ Veranderings sluit in:
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Voer die kommentaar carousel name in om te filter, geskei deur nuwe reëls</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Verberg AI-chat opsomming</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Verberg kanaal riglyne</string>
-  <string name="morphe_hide_comments_prompts_title">Versteek kommentaar-prompte</string>
-  <string name="morphe_hide_comments_prompts_summary">Verberg kontekstuele informasie boodskappe in die kommentaar afdeling</string>
   <string name="morphe_hide_comments_by_members_header_title">Verberg \'Kommentare by lede\'-opskrif</string>
   <string name="morphe_hide_comments_section_title">Verberg kommentaarafdeling</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Versteek kommentaar-afdeling in Tuisvoedsel</string>
-  <string name="morphe_hide_comments_community_guidelines_title">Verberg gemeenskap riglyne</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Verberg \'Maak \'n Short\'-knoppie</string>
-  <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Verberg Emoji en Tydstempel knoppies</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Versteek filterbalk-opsies</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Versteek alle filterbalk-opsies behalwe \'Beste\' en \'Nuutste\'</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Verberg geskenkanimasie en kaarte</string>
@@ -1079,23 +1097,23 @@ Beperkings:
 • HDR video's sal nie AVC gebruik nie
 • Sommige toestelle kan nie AVC forceer nie"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Om hierdie funksie te gebruik, stel \'verfraai videostrome\' op Android VR of Android Studio</string>
+  <string name="morphe_force_avc_codec_not_available">Om hierdie funksie te gebruik, stel \'Verfraai videostrome\' op \'Android VR\' of \'Android Studio\'</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Maak Gevorderde kwaliteit spyskaart oop</string>
   <string name="morphe_advanced_video_quality_menu_summary">Slaan die kwaliteitkeusemenu oor en open die Gevorderde kwaliteitmenu direk</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Versteek Premium kwaliteit opsies</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Prioriteer videokwaliteit</string>
-  <string name="morphe_prioritize_video_quality_summary">Prioriteer die hoogste beskikbare videokwaliteit oor kodeerdoeltreffendheid</string>
+  <string name="morphe_video_quality_prioritize_title">Prioriteer videokwaliteit</string>
+  <string name="morphe_video_quality_prioritize_summary">Prioriteer die hoogste beskikbare videokwaliteit bo kodekdoeltreffendheid</string>
+  <string name="morphe_video_quality_prioritize_dialog">As hierdie instelling afgeskakel is, kan ouer video\'s geen videokwaliteitsopsies vertoon nie</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Sta Android VR AV1 toe</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Laat sagteware AV1-ontkodering toe wanneer die Android VR-kliënt gebruik word</string>
+  <string name="morphe_spoof_video_streams_av1_title">Laat Android VR / visionOS AV1 toe</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Laat sagteware AV1-ontkodering toe wanneer die Android VR / visionOS-kliënt gebruik word</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Deur hierdie instelling te aktiveer kan sagteware AV1-ontkoder gebruik word.
 
 Videoweergawe met AV1 kan hakkel of rame laat val."</string>
   <string name="morphe_spoof_video_streams_about_title">Spoef-newe-effekte</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• Video kan om 1:00 stop, of is moontlik nie in sommige streke beskikbaar nie</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Oudiospoor menu ontbreek</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Geen AV1 videokodek</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR meeslepende modus is nie beskikbaar nie</string>

@@ -103,17 +103,6 @@ Pro přihlášení stiskněte pokračovat níže"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nemůže se přihlásit do VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Odhlášení z Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Neplatný token pro přihlášení do VR, zkuste se přihlásit do VR znovu</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Vypnout aktualizaci JavaScriptu přehrávače</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Uzamkne JavaScript přehrávače na konkrétní verzi
-
-• Je vyžadován platný hash JavaScriptu přehrávače
-• Hash JavaScriptu přehrávače jsou platné přibližně jeden měsíc a GVS zruší platnost zastaralých hashů
-• Přehrávání se nezdaří, pokud je hash zrušen."</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"Musíte zadat platný hash JavaScriptu přehrávače.
-
-Přehrávání se nezdaří, pokud je hash JavaScriptu přehrávače zastaralý."</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Haš JavaScript přehrávače</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Zadejte platný hash JavaScript přehrávače</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Vypnout protokol QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -168,7 +157,7 @@ Povolením této možnosti se však budou zaznamenávat i některá uživatelsk�
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Seznam řetězců builderu cest komponent oddělených novými řádky</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Neplatný vlastní filtr: %s</string>
-  <!-- Settings menu filter -->
+  <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">Filtr nabídky nastavení</string>
   <string name="morphe_settings_menu_filter_screen_summary">Skrýt položky na obrazovce standardních nastavení aplikace podle jejich viditelného názvu</string>
   <string name="morphe_settings_menu_filter_picker_empty">Otevřete obrazovku standardních nastavení aplikace jednou a načtěte seznam</string>

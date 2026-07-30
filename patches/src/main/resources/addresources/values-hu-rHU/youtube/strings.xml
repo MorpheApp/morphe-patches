@@ -194,6 +194,28 @@ A változások a következőket tartalmazzák:
   <string name="morphe_hide_store_button_title">Bolt gomb elrejtése</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_subscribe_button_in_channel_page_title">Feliratkozás gomb elrejtése</string>
+  <string name="morphe_explore_menu_screen_title">Felfedezés menü</string>
+  <string name="morphe_explore_menu_screen_summary">Válaszd ki, mely elemek jelenjenek meg a felfedezés menüben</string>
+  <string name="morphe_hide_courses_menu_title">Kurzusok menü elrejtése</string>
+  <string name="morphe_hide_explore_button_title">Felfedezés gomb elrejtése</string>
+  <string name="morphe_hide_fashion_menu_title">\"Divat és szépség\" menü elrejtése</string>
+  <string name="morphe_hide_gaming_menu_title">Játékok menü elrejtése</string>
+  <string name="morphe_hide_hype_menu_title">Hype menü elrejtése</string>
+  <string name="morphe_hide_live_menu_title">Élő menü elrejtése</string>
+  <string name="morphe_hide_memberships_menu_title">Tagságok menü elrejtése</string>
+  <string name="morphe_hide_movies_menu_title">Filmek menü elrejtése</string>
+  <string name="morphe_hide_music_menu_title">\"Zene és TV\" menü elrejtése</string>
+  <string name="morphe_hide_news_menu_title">Hírek menü elrejtése</string>
+  <string name="morphe_hide_playables_menu_title">Lejátszható elemek menü elrejtése</string>
+  <string name="morphe_hide_podcasts_menu_title">Podcastok menü elrejtése</string>
+  <string name="morphe_hide_shopping_menu_title">Vásárlás menü elrejtése</string>
+  <string name="morphe_hide_sports_menu_title">Sport menü elrejtése</string>
+  <string name="morphe_hide_youtube_premium_menu_title">YouTube Premium menü elrejtése</string>
+  <string name="morphe_hide_youtube_studio_menu_title">YouTube Studio menü elrejtése</string>
+  <string name="morphe_hide_youtube_music_menu_title">YouTube Zene menü elrejtése</string>
+  <string name="morphe_hide_youtube_kids_menu_title">YouTube Kids menü elrejtése</string>
+  <string name="morphe_hide_youtube_create_menu_title">YouTube létrehozás menü elrejtése</string>
+  <string name="morphe_hide_privacy_tos_footer_title">\"Adatvédelmi szabályzat • Felhasználási feltételek\" lábléc elrejtése</string>
   <string name="morphe_comments_screen_title">Megjegyzések</string>
   <string name="morphe_comments_screen_summary">Válaszd ki, mely elemek jelenjenek meg a megjegyzéseknél</string>
   <string name="morphe_hide_comments_carousel_title">Kiemelt megjegyzések szűrője</string>
@@ -204,14 +226,13 @@ A változások a következőket tartalmazzák:
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Add meg a szűrni kívánt gördíthető hozzászólásszűrők nevét, új sorokkal elválasztva</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">AI-csevegésösszefoglaló elrejtése</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Csatornaszabályzat elrejtése</string>
-  <string name="morphe_hide_comments_prompts_title">Hozzászólás-javaslatok elrejtése</string>
-  <string name="morphe_hide_comments_prompts_summary">Környezetfüggő üzenetek elrejtése a hozzászólásoknál</string>
+  <string name="morphe_hide_comments_contexts_title">Kontextusüzenetek elrejtése</string>
   <string name="morphe_hide_comments_by_members_header_title">„Tagok megjegyzései” fejléc elrejtése</string>
   <string name="morphe_hide_comments_section_title">Megjegyzések elrejtése</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Megjegyzések szekció elrejtése a Kezdőlapon</string>
   <string name="morphe_hide_comments_community_guidelines_title">Közösségi irányelvek elrejtése</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Shorts létrehozása gomb elrejtése</string>
-  <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Hangulatjel- és időbélyegző-gombok elrejtése</string>
+  <string name="morphe_hide_comments_emoji_button_title">Emoji gomb elrejtése</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Szűrőpanel-opciók elrejtése</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">A „Legnépszerűbb” és „Legújabb előre” opciókon kívüli összes rendezési mód elrejtése</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Elrejti az ajándék animációt és kártyákat</string>
@@ -221,6 +242,7 @@ A változások a következőket tartalmazzák:
   <string name="morphe_hide_comments_preview_comment_title">Megjegyzés előnézet elrejtése</string>
   <string name="morphe_hide_comments_preview_comment_summary">Megjegyzések előnézetének elrejtése a teljes megjegyzések szekció megnyitása előtt</string>
   <string name="morphe_hide_comments_thanks_button_title">Köszönet gomb elrejtése</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Időbélyeg gomb elrejtése</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">A kiemelt keresési hivatkozások higiénikusabbá tétele</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">A kiemelt keresési hivatkozások higiénikusabbá tétele, csak az eredeti szöveget hagyva</string>
   <string name="morphe_hide_keyword_content_screen_title">Kulcsszószűrő</string>
@@ -457,10 +479,18 @@ Figyelem: Lehet, hogy az élő közvetítéseknél nem működik"</string>
   <string name="morphe_livestream_dvr_title">Engedélyezze az élsőségi DVR-t</string>
   <string name="morphe_livestream_dvr_summary">Lehetővé teszi a keresést minden élő streamen, még azoknál is, amelyek normál esetben korlátozzák azt.</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">Engedélyezze a keresősáv bélyegképeit</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">Videó bélyegképet jelenít meg a keresősáv húzásakor</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_livestream_dvr_not_available">"A \"Livestream DVR engedélyezése\" funkció nem áll rendelkezésre.
+
+Ennek kijavításához kapcsolja be a \"Videóstreamek hamisítása\" lehetőséget, és módosítsa az \"Alapértelmezett kliens\" beállítást \"TV\"-re."</string>
   <string name="morphe_expand_livestream_dvr_duration_title">Bővítsd a közvetítés DVR idejét</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">Lehetővé teszi élő adások visszatekerését a múltba maximum 7 nappal</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_expand_livestream_dvr_duration_not_available">"A \"Livestream DVR időtartamának növelése\" funkció nem áll rendelkezésre.
+
+Ennek kijavításához kapcsolja be a \"Videóstreamek hamisítása\" lehetőséget, és módosítsa az \"Alapértelmezett kliens\" beállítást \"TV\"-re."</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Csúsztatás engedélyezése a kereséshez</string>
   <string name="morphe_slide_to_seek_summary">Engedélyezi a videólejátszó megnyomása és tartása közbeni csúsztatást a kétszeres sebességű lejátszás helyett</string>
@@ -666,6 +696,9 @@ A Beállítások eléréséhez engedje a Beállítások gombot a Általános →
   <string name="morphe_hide_player_flyout_audio_track_title">Hangszám menü elrejtése</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
           'Android Studio' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Az \"Audiósáv\" menü el van rejtve.
+
+Az \"Audiósáv\" menü megjelenítéséhez módosítsa a \"Videóstreamek hamisítása\" beállítást bármely kliensre, kivéve az \"Android Studio\"-t."</string>
   <string name="morphe_hide_player_flyout_audio_track_footer_title">Hangszám menü lábléc elrejtése</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Feliratok menü elrejtése</string>
@@ -1068,23 +1101,23 @@ Korlátozások:
 • A HDR videók nem fogják használni az AVC-t
 • Néhány eszköz nem tudja kikényszeríteni az AVC-t"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">A statisztikákban mutassa a hamisítást</string>
+  <string name="morphe_force_avc_codec_not_available">A funkció használatához állítsa a \"Videóstreamek hamisítása\" beállítást \"Android VR\" vagy \"Android Studio\" értékre.</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Nyissa meg a fejlett minőség menüt</string>
   <string name="morphe_advanced_video_quality_menu_summary">A minőségi beállítások menüt kihagyva közvetlenül megnyitja a Speciális minőségi menüt</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Premium minőség opciók elrejtése</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Videóminőség előnyben részesítése</string>
-  <string name="morphe_prioritize_video_quality_summary">A lehető legmagasabb videóminőséget részesíti előnyben a kodek hatékonysága helyett</string>
+  <string name="morphe_video_quality_prioritize_title">Videóminőség prioritása</string>
+  <string name="morphe_video_quality_prioritize_summary">A legmagasabb elérhető videóminőség részesít előnyben a kodek hatékonyságával szemben.</string>
+  <string name="morphe_video_quality_prioritize_dialog">Ha ez a beállítás ki van kapcsolva, akkor a régebbi videóknál nem jelenik meg videóminőségi opció.</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Android VR AV1 engedélyezése</string>
-  <string name="morphe_spoof_video_streams_av1_summary">A szoftveres AV1 dekódolás engedélyezése Android VR kliens használatakor</string>
+  <string name="morphe_spoof_video_streams_av1_title">Android VR / visionOS AV1 engedélyezése</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Engedélyezi a szoftveres AV1 dekódolást Android VR / visionOS kliens használata esetén</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Ennek a beállításnak az engedélyezése szoftveres AV1 dekódolást használhat.
 
 Az AV1-es videólejátszás akadozhat vagy képkockákat ejthet."</string>
   <string name="morphe_spoof_video_streams_about_title">Hamisítás mellékhatásai</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• A videó megállhat 1:00-nál, vagy előfordulhat, hogy egyes régiókban nem elérhető</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Hiányzik az hangsáv menü</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Nincs AV1 videokodek</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR merőleges mód nem elérhető</string>

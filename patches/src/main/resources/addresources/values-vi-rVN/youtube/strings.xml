@@ -154,6 +154,7 @@ Ví dụ:
   <string name="morphe_hide_featured_channels_section_title">Ẩn phần kênh nổi bật</string>
   <string name="morphe_hide_featured_links_section_title">Ẩn phần Liên kết nổi bật</string>
   <string name="morphe_hide_featured_places_section_title">Ẩn phần \"Địa điểm nổi bật\"</string>
+  <string name="morphe_hide_featured_playlists_section_title">Ẩn phần danh sách phát nổi bật</string>
   <string name="morphe_hide_featured_videos_section_title">Ẩn phần Video nổi bật</string>
   <string name="morphe_hide_gaming_section_title">Ẩn phần Trò chơi</string>
   <string name="morphe_hide_hashtag_section_title">Ẩn phần Hashtag</string>
@@ -202,14 +203,10 @@ Ví dụ:
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Nhập tên mục bình luận mà bạn muốn lọc, mỗi dòng một mục</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Ẩn tóm tắt cuộc trò chuyện do AI tạo</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Ẩn nguyên tắc kênh</string>
-  <string name="morphe_hide_comments_prompts_title">Ẩn nhắc nhở trong bình luận</string>
-  <string name="morphe_hide_comments_prompts_summary">Ẩn các thông báo thông tin ngữ cảnh trong phần bình luận</string>
   <string name="morphe_hide_comments_by_members_header_title">Ẩn tiêu đề \"Bình luận của hội viên\"</string>
   <string name="morphe_hide_comments_section_title">Ẩn phần bình luận</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Ẩn phần bình luận trong thẻ Trang chủ</string>
-  <string name="morphe_hide_comments_community_guidelines_title">Ẩn nguyên tắc cộng đồng</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Ẩn nút \"Tạo video ngắn\"</string>
-  <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Ẩn nút Biểu tượng cảm xúc và Dấu thời gian</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Ẩn các tùy chọn thanh bộ lọc</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Ẩn tất cả các tùy chọn sắp xếp bình luận ngoại trừ \'Nổi bật nhất\' và \'Mới nhất\'</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Ẩn hiệu ứng và danh sách quà tặng</string>
@@ -455,6 +452,8 @@ Lưu ý: Có thể không hoạt động với video phát trực tiếp"</strin
   <string name="morphe_livestream_dvr_title">Bật DVR phát trực tiếp</string>
   <string name="morphe_livestream_dvr_summary">Cho phép tua trên mọi các buổi phát trực tiếp, kể cả khi bình thường không được phép</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">Bật hình thu nhỏ trên thanh tìm kiếm</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">Shows a video thumbnail while dragging the seekbar</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'Bật DVR phát trực tiếp' có thể không khả dụng
 
@@ -1082,16 +1081,16 @@ Hạn chế:
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Ẩn tùy chọn chất lượng Premium</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Ưu tiên chất lượng video</string>
-  <string name="morphe_prioritize_video_quality_summary">Ưu tiên chất lượng video cao nhất hơn là tối ưu codec</string>
+  <string name="morphe_video_quality_prioritize_title">Ưu tiên chất lượng video</string>
+  <string name="morphe_video_quality_prioritize_summary">Ưu tiên chất lượng video cao nhất hơn là tối ưu codec</string>
+  <string name="morphe_video_quality_prioritize_dialog">Nếu tắt tính năng này, các video cũ có thể không hiển thị tùy chọn chất lượng video</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Cho phép AV1 trên Android VR</string>
+  <string name="morphe_spoof_video_streams_av1_title">Cho phép Android VR / visionOS AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary">Cho phép giải mã AV1 bằng phần mềm khi sử dụng client Android VR</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Bật cài đặt này có thể sử dụng giải mã AV1 bằng phần mềm.
 
 Phát video bằng AV1 có thể bị giật hoặc tụt khung hình."</string>
   <string name="morphe_spoof_video_streams_about_title">Hạn chế khi giả mạo</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• Video có thể dừng ở 1:00, hoặc có thể không khả dụng ở một số khu vực</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Menu bản âm thanh bị thiếu</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Không có codec video AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Không hỗ trợ chế độ trải nhiệm VR 360°</string>

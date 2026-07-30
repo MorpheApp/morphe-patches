@@ -31,12 +31,30 @@ Second \"item\" text"</string>
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">O aplikácii</string>
   <string name="morphe_settings_music_screen_1_ads_title">Reklamy</string>
-  <string name="morphe_settings_music_screen_2_general_title">Všeobecné</string>
-  <string name="morphe_settings_music_screen_3_player_title">Prehrávač</string>
-  <string name="morphe_settings_music_screen_7_misc_title">Ostatné</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Skryť tlačidlo \'Získať Music Premium\'</string>
   <string name="morphe_music_hide_video_ads_title">Skryť videoreklamy</string>
+  <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_music_hide_audio_video_toggle_title">Skryť prepínač zvuku/videa</string>
+  <string name="morphe_music_hide_explore_shelf_title">Skryť poličku Preskúmať</string>
+  <string name="morphe_music_hide_grid_shelves_title">Skryť mriežkové poličky</string>
+  <string name="morphe_music_hide_horizontal_shelves_title">Skryť horizontálne poličky</string>
+  <string name="morphe_music_hide_list_shelves_title">Skryť zoznamové poličky</string>
+  <string name="morphe_music_hide_lyrics_panel_category_title">Panel s textom piesne</string>
+  <string name="morphe_music_hide_lyrics_share_button_title">Skryť tlačidlo Zdieľať</string>
+  <string name="morphe_music_hide_lyrics_translate_button_title">Skryť tlačidlo Preložiť</string>
+  <string name="morphe_music_hide_new_from_shelf_title">Skryť poličku \'Novinky od\'</string>
+  <string name="morphe_music_hide_playlist_shelves_title">Skryť poličky zoznamov skladieb</string>
+  <string name="morphe_music_hide_repeat_button_title">Skryť tlačidlo Opakovať</string>
+  <string name="morphe_music_hide_shuffle_button_title">Skryť tlačidlo Náhodné prehrávanie</string>
+  <string name="morphe_music_hide_speed_dial_shelf_title">Skryť poličku \'Rýchla voľba\'</string>
+  <string name="morphe_music_hide_suggested_for_you_shelf_title">Skryť poličku \'Odporúčané pre vás\'</string>
+  <string name="morphe_music_comments_screen_title">Komentáre</string>
+  <string name="morphe_music_comments_screen_summary">Vyberte, ktoré komponenty sa zobrazia v sekcii komentárov</string>
+  <string name="morphe_music_hide_comments_community_guidelines_title">Skryť pravidlá komunity</string>
+  <string name="morphe_music_hide_comments_emoji_button_title">Skryť tlačidlo Emoji</string>
+  <string name="morphe_music_hide_comments_info_button_title">Skryť tlačidlo Info</string>
+  <string name="morphe_music_hide_comments_timestamp_button_title">Skryť tlačidlo Časová pečiatka</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Prechádzanie skladieb</string>
   <string name="morphe_music_crossfade_screen_summary">Hravo prechádzajte medzi skladbami</string>
@@ -114,10 +132,6 @@ YouTube Music 8.x – crossfade funguje iba vo verzii 9.x a novších"</string>
   <string name="morphe_music_hide_history_button_title">Skryť tlačidlo histórie</string>
   <string name="morphe_music_hide_notification_button_title">Skryť tlačidlo upozornení</string>
   <string name="morphe_music_hide_search_button_title">Skryť tlačidlo vyhľadávania</string>
-  <!-- layout.hide.general.hideMusicComponentsPatch -->
-  <string name="morphe_music_hide_lyrics_panel_category_title">Panel s textom piesne</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Skryť tlačidlo Zdieľať</string>
-  <string name="morphe_music_hide_lyrics_translate_button_title">Skryť tlačidlo Preložiť</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Tlačidlá akcie</string>
   <string name="morphe_music_action_buttons_screen_summary">Vyberte, ktoré komponenty sa zobrazia v lište nástrojov</string>

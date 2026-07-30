@@ -103,17 +103,6 @@ Um sich anzumelden, drücken Sie unten auf \"Weiter\""</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Eine Anmeldung bei VR ist nicht möglich: %s</string>
   <string name="morphe_oauth2_toast_reset">Von Android VR abgemeldet</string>
   <string name="morphe_oauth2_toast_invalid">Ungültiger VR-Anmelde-Token, melden Sie sich erneut in VR an</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">JavaScript-Update des Players deaktivieren</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Sperrt das Player JavaScript auf eine bestimmte Version fest.
-
-• Es ist ein gültiger Hash des Player JavaScript erforderlich.
-• Player JavaScript Hashes sind etwa einen Monat gültig. Veraltete Hashes werden von GVS widerrufen.
-• Die Wiedergabe schlägt fehl, wenn der Hash widerrufen wurde."</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"Sie müssen einen gültigen Player JavaScript Hash angeben.
-
-Die Wiedergabe schlägt fehl, wenn der Player JavaScript Hash veraltet ist."</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Player-JavaScript-Hash</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Geben Sie einen gültigen Player-JavaScript-Hash ein</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC-Protokoll deaktivieren </string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -168,7 +157,7 @@ Allerdings werden dabei auch einige Nutzerdaten protokolliert, zum Beispiel dein
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Liste der Komponenten-Pfad-Generator-Zeichenketten zum Filtern, getrennt durch neue Zeilen</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Ungültiger benutzerdefinierter Filter: %s</string>
-  <!-- Settings menu filter -->
+  <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">Filter für das Einstellungsmenü</string>
   <string name="morphe_settings_menu_filter_screen_summary">Elemente auf dem Bildschirm der Standard-App-Einstellungen anhand ihres sichtbaren Namens ausblenden</string>
   <string name="morphe_settings_menu_filter_picker_empty">Öffnen Sie den Bildschirm der Standard-App-Einstellungen einmal, um die Liste zu befüllen</string>
@@ -190,13 +179,13 @@ Sollte die Funktion später deaktiviert werden, wird empfohlen, die App-Daten zu
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Vom Ersteller deaktiviert</string>
   <string name="morphe_ryd_enabled_title">Return YouTube Dislike aktivieren</string>
-  <string name="morphe_ryd_dislike_percentage_title">Ablehnen als Prozentsatz anzeigen</string>
-  <string name="morphe_ryd_dislike_percentage_summary">Zeigt Ablehnungen als Prozentsatz der Likes anstelle einer Zahl an</string>
+  <string name="morphe_ryd_dislike_percentage_title">Dislikes prozentual anzeigen</string>
+  <string name="morphe_ryd_dislike_percentage_summary">Zeigt anstelle eines Zahlenwerts die Dislikes prozentual zur Anzahl der Likes an</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
   <string name="morphe_ryd_compact_layout_title">Schaltfläche „Like“ in kompakter Darstellung verwenden</string>
   <string name="morphe_ryd_compact_layout_summary">Verringert die Breite der „Like“-Schaltfläche, um Platz zu sparen</string>
   <string name="morphe_ryd_estimated_like_title">Geschätzte \"Gefällt mir\"-Angaben anzeigen</string>
-  <string name="morphe_ryd_estimated_like_summary">Zeigt bei Videos mit deaktivierten Likes eine geschätzte Like-Anzahl an.</string>
+  <string name="morphe_ryd_estimated_like_summary">Zeigt bei Videos mit deaktivierten Likes eine geschätzte Anzahl an</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Warnungen zu Verbindungfehlern anzeigen</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Zeigt eine Benachrichtigung an, wenn der Return YouTube Dislike-Server nicht verfügbar ist</string>
   <string name="morphe_ryd_attribution_summary">"Daten werden von der Return YouTube Dislike API bereitgestellt

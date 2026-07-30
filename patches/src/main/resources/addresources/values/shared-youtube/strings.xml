@@ -172,7 +172,7 @@ However, enabling this will also log some user data such as your IP address."</s
     <string name="morphe_custom_filter_strings_summary">List of component path builder strings to filter, separated by new lines</string>
     <string name="morphe_custom_filter_toast_invalid_syntax">Invalid custom filter: %s</string>
 
-    <!-- Settings menu filter -->
+    <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
     <string name="morphe_settings_menu_filter_screen_title">Settings menu filter</string>
     <string name="morphe_settings_menu_filter_screen_summary">Hide items on the standard app settings screen by their visible name</string>
     <string name="morphe_settings_menu_filter_picker_empty">Open the standard app settings screen once to populate the list</string>

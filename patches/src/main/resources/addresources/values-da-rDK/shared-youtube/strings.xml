@@ -103,17 +103,6 @@ For at logge ind, tryk på fortsæt nedenfor"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Kan ikke logge ind på VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Logget ud af Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Ugyldigt VR-logge-ind token, prøv at logge ind i VR igen</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Deaktiver JavaScript-opdatering for afspiller</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Låser JavaScript for afspilleren til en bestemt version
-
-• Der kræves en gyldig hash for afspiller JavaScript
-• Hashes for afspiller JavaScript er gyldige i cirka en måned, og ugyldige hashes vil blive tilbagekaldt af GVS
-• Afspilningen mislykkes, hvis hashen er blevet tilbagekaldt"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"Du skal angive en gyldig hash for afspiller JavaScript.
-
-Afspilningen vil mislykkes, hvis hashen for afspiller JavaScript er forældet."</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Afspillerens JavaScript hash</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Indtast en gyldig afspiller JavaScript hash</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Deaktiver QUIC-protokol</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -168,7 +157,7 @@ Det logger dog også brugerdata som din IP-adresse."</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Liste over komponentsti-strengbyggere til filtrering, adskilt af nye linjer</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Ugyldigt brugerdefineret filter: %s</string>
-  <!-- Settings menu filter -->
+  <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">Indstillingsmenu filter</string>
   <string name="morphe_settings_menu_filter_screen_summary">Skjul elementer på standard app-indstillingsskærmen efter deres synlige navn</string>
   <string name="morphe_settings_menu_filter_picker_empty">Åbn standard app-indstillingsskærmen én gang for at udfylde listen</string>

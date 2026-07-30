@@ -163,7 +163,7 @@ public abstract class BaseSearchViewController {
         AppLanguage appLanguage = BaseSettings.MORPHE_LANGUAGE.get();
         if (Utils.isRightToLeftLocale(appLanguage.getLocale())) {
             searchView.setTextDirection(View.TEXT_DIRECTION_RTL);
-            searchView.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
+            searchView.setTextAlignment(View.TEXT_ALIGNMENT_INHERIT);
         }
     }
 

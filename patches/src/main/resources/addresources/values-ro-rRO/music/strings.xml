@@ -31,12 +31,14 @@ Second \"item\" text"</string>
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Despre</string>
   <string name="morphe_settings_music_screen_1_ads_title">Anunțuri</string>
-  <string name="morphe_settings_music_screen_2_general_title">Generalități</string>
-  <string name="morphe_settings_music_screen_3_player_title">Jucător</string>
-  <string name="morphe_settings_music_screen_7_misc_title">Diverse</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Ascunde eticheta „Obține Music Premium”</string>
+  <string name="morphe_music_hide_music_premium_promotions_title">Ascunde promoțiile Music Premium</string>
   <string name="morphe_music_hide_video_ads_title">Ascunde anunțurile video</string>
+  <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_music_hide_lyrics_panel_category_title">Panou versuri</string>
+  <string name="morphe_music_hide_lyrics_share_button_title">Ascunde butonul Distribuie</string>
+  <string name="morphe_music_hide_lyrics_translate_button_title">Ascunde butonul Traducere</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Estompare încrucișată</string>
   <string name="morphe_music_crossfade_screen_summary">Amestecă lin piesele una în alta</string>
@@ -114,10 +116,6 @@ YouTube Music 8.x — estomparea încrucișată funcționează doar pe 9.x și v
   <string name="morphe_music_hide_history_button_title">Ascunde butonul de istoric</string>
   <string name="morphe_music_hide_notification_button_title">Ascunde butonul de notificare</string>
   <string name="morphe_music_hide_search_button_title">Ascunde butonul de căutare</string>
-  <!-- layout.hide.general.hideMusicComponentsPatch -->
-  <string name="morphe_music_hide_lyrics_panel_category_title">Panou versuri</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Ascunde butonul Distribuie</string>
-  <string name="morphe_music_hide_lyrics_translate_button_title">Ascunde butonul Traducere</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Butoane de acțiune</string>
   <string name="morphe_music_action_buttons_screen_summary">Alege ce butoane de acțiune să apară sub player</string>

@@ -155,8 +155,10 @@ Promene uključuju:
   <string name="morphe_hide_featured_channels_section_title">Сакриј истакнуте канале</string>
   <string name="morphe_hide_featured_links_section_title">Саскриј одељак „Истакнути линкови”</string>
   <string name="morphe_hide_featured_places_section_title">Саскриј одељак „Истакнута места”</string>
+  <string name="morphe_hide_featured_playlists_section_title">Прикажи одељак са истакнутим плејлистама</string>
   <string name="morphe_hide_featured_videos_section_title">Саскриј одељак „Истакнути видео снимци”</string>
   <string name="morphe_hide_gaming_section_title">Саскриј одељак „Игре”</string>
+  <string name="morphe_hide_hashtag_section_title">Сакриј одељак са хеш-ознакама</string>
   <string name="morphe_hide_how_this_was_made_section_title">Саскриј одељак „Како је направљен овај садржај”</string>
   <string name="morphe_hide_hype_points_title">Сакриј хајп поене</string>
   <string name="morphe_hide_info_cards_section_title">Саскриј одељак „Инфо картице”</string>
@@ -192,6 +194,28 @@ Promene uključuju:
   <string name="morphe_hide_store_button_title">Сакриј дугме „Магазин”</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_subscribe_button_in_channel_page_title">Сакриј дугме „Запрати”</string>
+  <string name="morphe_explore_menu_screen_title">Истражи мени</string>
+  <string name="morphe_explore_menu_screen_summary">Изаберите које компоненте ће се појавити у менију за истраживање</string>
+  <string name="morphe_hide_courses_menu_title">Сакриј мени Курсева</string>
+  <string name="morphe_hide_explore_button_title">Сакриј дугме „Дели”</string>
+  <string name="morphe_hide_fashion_menu_title">Сакриј мени „Мода и лепота”</string>
+  <string name="morphe_hide_gaming_menu_title">Сакриј мени Игара</string>
+  <string name="morphe_hide_hype_menu_title">Сакриј мени Хајп-а</string>
+  <string name="morphe_hide_live_menu_title">Сакриј мени Уживо</string>
+  <string name="morphe_hide_memberships_menu_title">Сакриј мени Чланства</string>
+  <string name="morphe_hide_movies_menu_title">Сакриј мени Филмова</string>
+  <string name="morphe_hide_music_menu_title">Сакриј мени „Музика и ТВ”</string>
+  <string name="morphe_hide_news_menu_title">Сакриј мени Вести</string>
+  <string name="morphe_hide_playables_menu_title">Сакриј мени Сали за игру</string>
+  <string name="morphe_hide_podcasts_menu_title">Сакриј мени Подкаста</string>
+  <string name="morphe_hide_shopping_menu_title">Сакриј мени Куповине</string>
+  <string name="morphe_hide_sports_menu_title">Сакриј мени Спортова</string>
+  <string name="morphe_hide_youtube_premium_menu_title">Сакриј мени YouTube Премиум</string>
+  <string name="morphe_hide_youtube_studio_menu_title">Сакриј мени YouTube Studio</string>
+  <string name="morphe_hide_youtube_music_menu_title">Сакриј мени YouTube Music</string>
+  <string name="morphe_hide_youtube_kids_menu_title">Сакриј мени YouTube Kids</string>
+  <string name="morphe_hide_youtube_create_menu_title">Сакриј мени YouTube Create</string>
+  <string name="morphe_hide_privacy_tos_footer_title">Сакриј подножник „Политика приватности • Услови коришћења”</string>
   <string name="morphe_comments_screen_title">Коментари</string>
   <string name="morphe_comments_screen_summary">Изаберите које компоненте се појављују у одељку за коментаре</string>
   <string name="morphe_hide_comments_carousel_title">Омогући филтер за ротирајућу траку коментара</string>
@@ -202,14 +226,10 @@ Promene uključuju:
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Унесите називе карусела коментара да бисте филтрирали по њима, одвојене новим редовима</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Сакриј „Резиме ћаскања који је генерисала вештачка интелигенција”</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Сакриј смернице канала</string>
-  <string name="morphe_hide_comments_prompts_title">Сакриј коментаре</string>
-  <string name="morphe_hide_comments_prompts_summary">Саскрива информационе контекстуалне поруке у одељку за коментаре</string>
   <string name="morphe_hide_comments_by_members_header_title">Сакриј заглавље „Коментари од чланова”</string>
   <string name="morphe_hide_comments_section_title">Сакриј одељак за коментаре</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Сакриј одељак за коментаре у Хом фуд</string>
-  <string name="morphe_hide_comments_community_guidelines_title">Сакриј смернице заједнице</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Сакриј дугме „Направи Short”</string>
-  <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Сакриј дугмад емоџија и временске ознаке</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Сакиј опције траке филтера</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Сакиј све опције траке филтера осим ‘Најбоље’ и ‘Најновије’</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Сакриј анимацију и картице поклона</string>
@@ -455,6 +475,8 @@ Promene uključuju:
   <string name="morphe_livestream_dvr_title">Омогућите снимање преко директног преноса</string>
   <string name="morphe_livestream_dvr_summary">Дозвољава премотавање унапред и уназад на свим преносима уживо, чак и на онима који то обично ограничавају</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">Омогући минијатуре на траци за премотавање</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">Приказује минијатуру видеа док се премотава трака за премотавање</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'Омогући снимање преноса уживо' можда неће бити доступно
 
@@ -907,6 +929,7 @@ Promene uključuju:
   <string name="morphe_miniplayer_disable_resuming_summary">Онемогућава мини-плејер „Настави гледање“, функцију YouTube Premium која се појављује при покретању апликације</string>
   <string name="morphe_miniplayer_screen_title">Мини-плејер</string>
   <string name="morphe_miniplayer_screen_summary">Прилагодите изглед и понашање мини-плејера</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube је уклонио све додатне мини-плејере. Да бисте променили тип мини-плејера, примените закрпу за YouTube 21.28.207 или старију верзију</string>
   <string name="morphe_miniplayer_type_title">Тип мини-плејера</string>
   <string name="morphe_miniplayer_type_entry_0">Онемогућен</string>
   <string name="morphe_miniplayer_type_entry_1">Подразумеван</string>
@@ -1074,23 +1097,23 @@ Promene uključuju:
 • HDR видеи неће користити AVC
 • Неки уређаји не могу присилити AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Да бисте користили ову функцију, подесите „Лажирани видео стримови” на Android VR или Android Studio</string>
+  <string name="morphe_force_avc_codec_not_available">Да бисте користили ову функцију, подесите опцију „Лажирани видео стримови” на „Android VR” или „Android Studio”</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Отвори мени за побољшани квалитет</string>
   <string name="morphe_advanced_video_quality_menu_summary">Прескаче мени за избор квалитета и директно отвара Напредне опције квалитета</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Sakrij opcije premium kvaliteta</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Priorizujte kvalitet video-a</string>
-  <string name="morphe_prioritize_video_quality_summary">Даје предност највишем доступном квалитету видеа у односу на ефикасност кодека</string>
+  <string name="morphe_video_quality_prioritize_title">Приоритет видео квалитету</string>
+  <string name="morphe_video_quality_prioritize_summary">Даје предност највишем доступном видео квалитету у односу на ефикасност кодека</string>
+  <string name="morphe_video_quality_prioritize_dialog">Ако је ова поставка искључена, старији видео снимци можда неће приказивати опције видео квалитета</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Дозволи Android VR AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Омогућава софтверско декодирање AV1 када се користи Android VR клијент</string>
+  <string name="morphe_spoof_video_streams_av1_title">Дозволи Android VR / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Омогућава софтверско декодирање AV1 када се користи Android VR / visionOS клијент</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Омогућавање ове опцијеможе користити софтверско декодирање AV1.
 
 Репродукција видеа с AV1 може застајкивати или прескакати кадрове."</string>
   <string name="morphe_spoof_video_streams_about_title">Нежељени ефекти лажирања</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• Видео се може зауставити на 1:00 или можда неће бити доступан у неким регионима</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Мени „Аудио снимак” недостаје</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Нема видео кодека AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR imersivni režim nije dostupan</string>

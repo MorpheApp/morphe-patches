@@ -31,13 +31,35 @@ Second \"item\" text"</string>
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Acerca de Morphe</string>
   <string name="morphe_settings_music_screen_1_ads_title">Anuncios</string>
-  <string name="morphe_settings_music_screen_2_general_title">General</string>
-  <string name="morphe_settings_music_screen_3_player_title">Reproductor</string>
-  <string name="morphe_settings_music_screen_7_misc_title">Otros</string>
+  <string name="morphe_settings_music_screen_2_feed_title">Feed</string>
+  <string name="morphe_settings_music_screen_3_general_title">General</string>
+  <string name="morphe_settings_music_screen_4_player_title">Reproductor</string>
+  <string name="morphe_settings_music_screen_8_misc_title">Otros</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Ocultar la etiqueta \'Obtener Music Premium\'</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Ocultar promociones de Music Premium</string>
   <string name="morphe_music_hide_video_ads_title">Ocultar anuncios de vídeo</string>
+  <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_music_hide_audio_video_toggle_title">Ocultar selector Audio / Vídeo</string>
+  <string name="morphe_music_hide_explore_shelf_title">Ocultar sección \"Explorar\"</string>
+  <string name="morphe_music_hide_grid_shelves_title">Ocultar secciones en cuadrícula</string>
+  <string name="morphe_music_hide_horizontal_shelves_title">Ocultar secciones horizontales</string>
+  <string name="morphe_music_hide_list_shelves_title">Ocultar secciones en lista</string>
+  <string name="morphe_music_hide_lyrics_panel_category_title">Panel de letras</string>
+  <string name="morphe_music_hide_lyrics_share_button_title">Ocultar botón \"Compartir\"</string>
+  <string name="morphe_music_hide_lyrics_translate_button_title">Ocultar botón \"Traducir\"</string>
+  <string name="morphe_music_hide_new_from_shelf_title">Ocultar sección \"Novedades de\"</string>
+  <string name="morphe_music_hide_playlist_shelves_title">Ocultar secciones de listas de reproducción</string>
+  <string name="morphe_music_hide_repeat_button_title">Ocultar botón \"Repetir\"</string>
+  <string name="morphe_music_hide_shuffle_button_title">Ocultar botón \"Aleatorio\"</string>
+  <string name="morphe_music_hide_speed_dial_shelf_title">Ocultar sección \"Acceso rápido\"</string>
+  <string name="morphe_music_hide_suggested_for_you_shelf_title">Ocultar sección \"Sugerencias para ti\"</string>
+  <string name="morphe_music_comments_screen_title">Comentarios</string>
+  <string name="morphe_music_comments_screen_summary">Elija qué componentes aparecen en la sección de comentarios</string>
+  <string name="morphe_music_hide_comments_community_guidelines_title">Ocultar normas de la comunidad</string>
+  <string name="morphe_music_hide_comments_emoji_button_title">Ocultar botón Emoji</string>
+  <string name="morphe_music_hide_comments_info_button_title">Ocultar botón \"Información\"</string>
+  <string name="morphe_music_hide_comments_timestamp_button_title">Ocultar botón de marca de tiempo</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Desvanecimiento cruzado</string>
   <string name="morphe_music_crossfade_screen_summary">Mezcla las pistas suavemente entre sí</string>
@@ -76,7 +98,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_resumed_toast">Desvanecimiento cruzado reanudado</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">El modo de vídeo no está disponible mientras el desvanecimiento cruzado está activado</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">La transición cruzada se pausa al reproducir o duplicar audio. La transición cruzada al reproducir/duplicar es inestable y es posible que nunca se pueda solucionar.</string>
-  <string name="morphe_music_crossfade_about_title">Información</string>
+  <string name="morphe_music_crossfade_about_title">Acerca de</string>
   <string name="morphe_music_crossfade_about_summary">Cómo funciona la transición cruzada, y cuándo no.</string>
   <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
   <string name="morphe_music_crossfade_about_how_title">Cómo funciona</string>
@@ -116,10 +138,6 @@ YouTube Music 8.x: el fundido cruzado solo funciona en la versión 9.x o posteri
   <string name="morphe_music_hide_history_button_title">Ocultar botón \"Historial\"</string>
   <string name="morphe_music_hide_notification_button_title">Ocultar botón de Notificaciones</string>
   <string name="morphe_music_hide_search_button_title">Ocultar el botón de búsqueda</string>
-  <!-- layout.hide.general.hideMusicComponentsPatch -->
-  <string name="morphe_music_hide_lyrics_panel_category_title">Panel de letras</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Ocultar botón \"Compartir\"</string>
-  <string name="morphe_music_hide_lyrics_translate_button_title">Ocultar botón \"Traducir\"</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Botones de acción</string>
   <string name="morphe_music_action_buttons_screen_summary">Elige qué botones de acción aparecen debajo del reproductor</string>
@@ -157,7 +175,7 @@ YouTube Music 8.x: el fundido cruzado solo funciona en la versión 9.x o posteri
   <string name="morphe_music_hide_flyout_menu_help_title">Ocultar menú \"Ayuda\"</string>
   <string name="morphe_music_hide_flyout_menu_mark_episode_as_played_title">Ocultar el menú \'Marcar episodio como reproducido\'</string>
   <string name="morphe_music_hide_flyout_menu_not_interested_title">Ocultar el menú \'No me interesa\'</string>
-  <string name="morphe_music_hide_flyout_menu_pin_to_speed_dial_title">Ocultar el menú \'Fijar en la esfera rápida\'</string>
+  <string name="morphe_music_hide_flyout_menu_pin_to_speed_dial_title">Ocultar el menú \'Fijar al acceso rápido\'</string>
   <string name="morphe_music_hide_flyout_menu_play_next_title">Ocultar el menú \'Reproducir siguiente\'</string>
   <string name="morphe_music_hide_flyout_menu_quality_title">Ocultar menú \"Calidad\"</string>
   <string name="morphe_music_hide_flyout_menu_remove_from_library_title">Ocultar el menú \'Eliminar de la biblioteca\'</string>
@@ -226,7 +244,7 @@ YouTube Music 8.x: el fundido cruzado solo funciona en la versión 9.x o posteri
   <string name="morphe_music_scrobbling_now_playing_title">Enviar estado \"Reproduciendo ahora\"</string>
   <string name="morphe_music_scrobbling_min_song_duration_title">Duración mínima de la canción</string>
   <!-- 'scrobbled' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_min_song_duration_summary">Las canciones más cortas que esta no serán scrobbleadas</string>
+  <string name="morphe_music_scrobbling_min_song_duration_summary">No se hará scrobble para canciones con duración menor que este valor</string>
   <!-- 'scrobble' must be kept untranslated -->
   <string name="morphe_music_scrobbling_delay_percent_title">Retraso de scrobble en porcentaje</string>
   <!-- 'scrobble' must be kept untranslated -->

@@ -103,17 +103,6 @@ Chun síniú isteach, brúigh lean ar aghaidh thíos"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Ní féidir síniú isteach i VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Logáilte amach as Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Comhartha síniú isteach VR neamhbhailí, déan iarracht síniú isteach i VR arís</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Díchumasaigh nuashonrú JavaScript an imreora</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Glasálann sé JavaScript an imreora go leagan ar leith
-
-• Tá hais JavaScript bailí ag teastáil don imreoir
-• Tá haiseanna JavaScript an imreora bailí ar feadh thart ar mhí amháin, agus cuirfidh GVS haiseanna atá as dáta ar ceal
-• Teipeann ar an athsheinm má chuirtear an hais ar ceal"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"Ní mór duit hais JavaScript bailí don imreoir a sholáthar.
-
-Teipfidh ar an athsheinm má tá hais JavaScript an imreora as dáta."</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hais JavaScript an imreora</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Cuir isteach hais JavaScript imreora bailí</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Díchumasaigh prótacal QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -168,7 +157,7 @@ Mar sin féin, má chumasaíonn tú é seo, logálfar roinnt sonraí úsáideora
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Liosta de theaghráin thógálaí cosáin chomhpháirte le scagadh, scartha le línte nua</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Scagaire saincheaptha neamhbhailí: %s</string>
-  <!-- Settings menu filter -->
+  <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">Scagaire roghchláir socruithe</string>
   <string name="morphe_settings_menu_filter_screen_summary">Folaigh míreanna ar scáileán socruithe caighdeánacha an aip de réir a n-ainm infheicthe</string>
   <string name="morphe_settings_menu_filter_picker_empty">Oscail an scáileán socruithe caighdeánacha aip uair amháin chun an liosta a líonadh</string>

@@ -48,7 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_create_segment_category_title">Neue Segmente erstellen</string>
   <string name="morphe_sb_create_new_segment_title">Schaltfläche zum Erstellen neuer Segmente anzeigen</string>
   <string name="morphe_sb_create_new_segment_summary">Fügt dem Videoplayer eine Schaltfläche zum Einreichen neuer SponsorBlock-Segmente hinzu</string>
-  <string name="morphe_sb_create_new_segment_step_title">Zeitliche Anpassungsstufe</string>
+  <string name="morphe_sb_create_new_segment_step_title">Zeitschrittweite</string>
   <string name="morphe_sb_create_new_segment_step_summary">Suchbetrag der Zeitstellungs-Tasten (in Millisekunden)</string>
   <string name="morphe_sb_create_new_segment_step_invalid">Wert muss eine positive Zahl sein</string>
   <string name="morphe_sb_guidelines_title">Richtlinien für Einreichungen</string>
@@ -139,7 +139,7 @@ Ihre Benutzer-ID ist wie ein Passwort und sollte niemals weitergegeben werden."<
   <string name="morphe_sb_skipped_sponsor">Sponsor übersprungen</string>
   <string name="morphe_sb_skipped_selfpromo">Eigenwerbung übersprungen</string>
   <string name="morphe_sb_skipped_interaction">Nervige Erinnerung übersprungen</string>
-  <string name="morphe_sb_skipped_highlight">Zum Hervorheben übersprungen</string>
+  <string name="morphe_sb_skipped_highlight">Zum Highlight gesprungen</string>
   <string name="morphe_sb_skipped_intro_beginning">Intro übersprungen</string>
   <string name="morphe_sb_skipped_intro_middle">Übersprungene Unterbrechung</string>
   <string name="morphe_sb_skipped_intro_end">Übersprungene Unterbrechung</string>

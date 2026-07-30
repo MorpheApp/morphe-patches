@@ -119,13 +119,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">कमेन्ट क्यारोसेल फिल्टर</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">\'सदस्यों द्वारा टिप्पणियाँ\' हेडर छिपाएं</string>
   <string name="morphe_hide_comments_channel_guidelines_title">समुदाय दिशानिर्देश छिपाएं</string>
-  <string name="morphe_hide_comments_prompts_title">कमेन्ट प्रम्प्टहरू लुकाउनुहोस्</string>
   <string name="morphe_hide_comments_by_members_header_title">\'एक शॉर्ट बनाएं\' बटन छिपाएं</string>
   <string name="morphe_hide_comments_section_title">इमोजी और टाइमस्टैम्प बटन छिपाएं</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">होममा भिडियोहरूमा कमेन्ट खण्ड लुकाउनुहोस्</string>
-  <string name="morphe_hide_comments_community_guidelines_title">पूर्वावलोकन टिप्पणी छिपाएं</string>
   <string name="morphe_hide_comments_create_a_short_button_title">धन्यवाद बटन छिपाएं</string>
-  <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">कस्टम फ़िल्टर</string>
   <string name="morphe_hide_comments_info_button_title">जानकारी लुकाउने बटन</string>
   <string name="morphe_hide_comments_preview_comment_title">कस्टम फ़िल्टर सक्षम है</string>
   <string name="morphe_hide_comments_thanks_button_title">घटक पथ बिल्डर तारों की सूची नई लाइन से अलग करके फ़िल्टर करें</string>
@@ -543,14 +540,11 @@ Second \"item\" text"</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">प्रीमियम गुणस्तर विकल्पहरू लुकाउनुहोस्</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">भिडियो गुणस्तरलाई प्राथमिकता दिनुहोस्</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Android VR AV1 अनुमति देब</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"यो सेटिङ सक्षम गर्नाले सफ्टवेयर AV1 डिकोडिङ प्रयोग हुन सक्छ।
 
 AV1 को साथ भिडियो प्लेब्याक स्टटर हुन सक्छ वा फ्रेमहरू छाड्न सक्छ।"</string>
   <string name="morphe_spoof_video_streams_about_title">स्पूफिंग साइड इफेक्ट</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• भिडियो १:०० मिनेटमा रोकिन सक्छ, वा केही क्षेत्रहरूमा उपलब्ध नहुन सक्छ</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• ऑडियो ट्रैक मेनू गुम अछि।</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• AV1 वीडियो कोडेक नहि अछि।</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• ३६०° VR इमर्सिभ मोड उपलब्ध छैन</string>

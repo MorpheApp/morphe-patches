@@ -32,10 +32,12 @@ public final class ChannelPageFlyoutFilter extends Filter {
     }
 
     public ChannelPageFlyoutFilter() {
-        addPathCallbacks(new StringFilterGroup(
+        final StringFilterGroup pageHeader = new StringFilterGroup(
                 null,
                 "page_header.e"
-        ));
+        );
+
+        addPathCallbacks(pageHeader);
     }
 
     @Override

@@ -204,14 +204,13 @@ Wijzigingen zijn:
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Voer de namen van de commentaarcarrusel in om op te filteren, gescheiden door nieuwe regels</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">AI-chatsamenvatting verbergen</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Kanaalrichtlijnen verbergen</string>
-  <string name="morphe_hide_comments_prompts_title">Verberg commentaarprompten</string>
-  <string name="morphe_hide_comments_prompts_summary">Verbergt contextuele informatieberichten in de commentaarsectie</string>
+  <string name="morphe_hide_comments_contexts_title">Verberg contextberichten</string>
   <string name="morphe_hide_comments_by_members_header_title">Verberg kop \'Comments by members\'</string>
   <string name="morphe_hide_comments_section_title">Reacties sectie verbergen</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Verberg reactiessectie in Home-feed</string>
   <string name="morphe_hide_comments_community_guidelines_title">Communityrichtlijnen verbergen</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Verberg \'Create a Short\' knop</string>
-  <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Emoji- en tijdstempelknoppen verbergen</string>
+  <string name="morphe_hide_comments_emoji_button_title">Emoji-knop verbergen</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Filterbalkopties verbergen</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Verbergt alle filterbalkopties, behalve \'Top\' en \'Nieuwste\'</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Verberg animaties voor cadeaus en kaarten</string>
@@ -221,6 +220,7 @@ Wijzigingen zijn:
   <string name="morphe_hide_comments_preview_comment_title">Reactie in preview verbergen</string>
   <string name="morphe_hide_comments_preview_comment_summary">Verbergt het commentaarvoorbeeldunder de video voordat de volledige commentaarsectie wordt geopend</string>
   <string name="morphe_hide_comments_thanks_button_title">Verberg de knop \'Bedankt\'</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Tijdstempelknop verbergen</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Schoon gehighlighte search URL\'s op</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Schoont gehighlighte search URL\'s op, zodat alleen de originele tekst overblijft</string>
   <string name="morphe_hide_keyword_content_screen_title">Trefwoordfilter</string>
@@ -457,6 +457,8 @@ Info: Werkt mogelijk niet op livestreams"</string>
   <string name="morphe_livestream_dvr_title">Livestream DVR inschakelen</string>
   <string name="morphe_livestream_dvr_summary">Hiermee kan je op alle livestreams zoeken, zelfs op die waar dat normaal gesproken niet mogelijk is</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">Activeer zoekbalk miniaturen</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">Toont een video miniatuur terwijl je de zoekbalk versleept</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'Livestream DVR inschakelen' is mogelijk niet beschikbaar
 
@@ -1077,23 +1079,23 @@ Beperkingen:
 • HDR-video's gebruiken geen AVC
 • Sommige apparaten kunnen AVC niet forceren"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Om deze functie te gebruiken, stel \'Videostreams spoofen\' in op Android VR of Android Studio</string>
+  <string name="morphe_force_avc_codec_not_available">Om deze functie te gebruiken, zet \'Videostreams spoofen\' op \'Android VR\' of \'Android Studio\'</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Open geavanceerd kwaliteit menu</string>
   <string name="morphe_advanced_video_quality_menu_summary">Slaat het kwaliteitsselectiemenu over en opent het Geavanceerde kwaliteitsmenu direct</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Verberg Premiumkwaliteitopties</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Videokwaliteit wordt prioriteit gegeven</string>
-  <string name="morphe_prioritize_video_quality_summary">Prioriteert de hoogst beschikbare video kwaliteit boven codecefficiëntie</string>
+  <string name="morphe_video_quality_prioritize_title">Prioriteer videokwaliteit</string>
+  <string name="morphe_video_quality_prioritize_summary">Prioriteert de hoogste beschikbare videokwaliteit boven codec-efficiëntie</string>
+  <string name="morphe_video_quality_prioritize_dialog">Als deze instelling is uitgeschakeld, kunnen oudere video\'s geen video kwaliteit opties weergeven</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Sta Android VR AV1 toe</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Toestaat software AV1 decodering bij gebruik van de Android VR client</string>
+  <string name="morphe_spoof_video_streams_av1_title">Sta Android VR / visionOS AV1 toe</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Maakt software AV1-decodering mogelijk bij gebruik van de Android VR / visionOS-client</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Het inschakelen van deze instelling kan gebruikmaken van softwarematige AV1-decodering.
 
 Het afspelen van video met AV1 kan haperen of frames overslaan."</string>
   <string name="morphe_spoof_video_streams_about_title">Spoofing-neveneffecten</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• Video kan stoppen om 1:00, of is mogelijk niet beschikbaar in sommige regio\'s</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Audiotrack-menu ontbreekt</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Geen AV1-videocodec</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR-ervaring is niet beschikbaar</string>

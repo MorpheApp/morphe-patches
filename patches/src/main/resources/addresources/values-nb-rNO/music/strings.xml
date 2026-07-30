@@ -31,13 +31,35 @@ Second \"item\" text"</string>
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Om</string>
   <string name="morphe_settings_music_screen_1_ads_title">Annonser</string>
-  <string name="morphe_settings_music_screen_2_general_title">Generelt</string>
-  <string name="morphe_settings_music_screen_3_player_title">Spiller</string>
-  <string name="morphe_settings_music_screen_7_misc_title">Diverse</string>
+  <string name="morphe_settings_music_screen_2_feed_title">Strøm</string>
+  <string name="morphe_settings_music_screen_3_general_title">Generelt</string>
+  <string name="morphe_settings_music_screen_4_player_title">Spiller</string>
+  <string name="morphe_settings_music_screen_8_misc_title">Diverse</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Skjul «Skaff Music Premium»-etikett</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Skjul Music Premium-kampanjer</string>
   <string name="morphe_music_hide_video_ads_title">Skjul videoannonser</string>
+  <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_music_hide_audio_video_toggle_title">Skjul Lyd-/Video-bryter</string>
+  <string name="morphe_music_hide_explore_shelf_title">Skjul Utforsk-hyllen</string>
+  <string name="morphe_music_hide_grid_shelves_title">Skjul rutehyller</string>
+  <string name="morphe_music_hide_horizontal_shelves_title">Skjul horisontale hyller</string>
+  <string name="morphe_music_hide_list_shelves_title">Skjul listevisning hyller</string>
+  <string name="morphe_music_hide_lyrics_panel_category_title">Tekstpanel</string>
+  <string name="morphe_music_hide_lyrics_share_button_title">Skjul Del-knapp</string>
+  <string name="morphe_music_hide_lyrics_translate_button_title">Skjul Oversett-knapp</string>
+  <string name="morphe_music_hide_new_from_shelf_title">Skjul \'Nytt fra\'-hyllen</string>
+  <string name="morphe_music_hide_playlist_shelves_title">Skjul spillelistehyller</string>
+  <string name="morphe_music_hide_repeat_button_title">Skjul gjenta-knappen</string>
+  <string name="morphe_music_hide_shuffle_button_title">Skjul bland-knappen</string>
+  <string name="morphe_music_hide_speed_dial_shelf_title">Skjul \'Raskt valg\'-hyllen</string>
+  <string name="morphe_music_hide_suggested_for_you_shelf_title">Skjul \'Anbefalt for deg\'-hyllen</string>
+  <string name="morphe_music_comments_screen_title">Kommentarer</string>
+  <string name="morphe_music_comments_screen_summary">Velg hvilke komponenter som skal vises i kommentarfeltet</string>
+  <string name="morphe_music_hide_comments_community_guidelines_title">Skjul retningslinjer for fellesskapet</string>
+  <string name="morphe_music_hide_comments_emoji_button_title">Skjul emoji-knappen</string>
+  <string name="morphe_music_hide_comments_info_button_title">Skjul info-knappen</string>
+  <string name="morphe_music_hide_comments_timestamp_button_title">Skjul tidsstempel-knapp</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Overgang</string>
   <string name="morphe_music_crossfade_screen_summary">Bland sporene sømløst inn i hverandre</string>
@@ -115,10 +137,6 @@ YouTube Music 8.x – crossfade kjører bare på 9.x og nyere"</string>
   <string name="morphe_music_hide_history_button_title">Skjul Historikk-knapp</string>
   <string name="morphe_music_hide_notification_button_title">Skjul Varsel-knapp</string>
   <string name="morphe_music_hide_search_button_title">Skjul Søk-knapp</string>
-  <!-- layout.hide.general.hideMusicComponentsPatch -->
-  <string name="morphe_music_hide_lyrics_panel_category_title">Tekstpanel</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Skjul Del-knapp</string>
-  <string name="morphe_music_hide_lyrics_translate_button_title">Skjul Oversett-knapp</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Handlingsknapper</string>
   <string name="morphe_music_action_buttons_screen_summary">Velg hvilke handlingsknapper som skal vises under spilleren</string>

@@ -32,13 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">Скриване на рафта \"Информация\"</string>
   <string name="morphe_hide_resources_shelf_title">Скриване на рафта \"Ресурси\"</string>
   <string name="morphe_screen_layout_title">Оформление</string>
-  <string name="morphe_disable_modern_home_title">Деактивиране на модерен потребителски интерфейс на началния екран</string>
-  <string name="morphe_disable_screenshot_popup_title">Изключване на изскачащия прозорец за екранна снимка</string>
-  <string name="morphe_disable_screenshot_popup_summary">Изключва изскачащия прозорец, който се появява при правене на екранна снимка</string>
-  <string name="morphe_hide_ask_button_title">Скрий бутона \"Попитай\"</string>
-  <string name="morphe_hide_ask_button_summary">Скрива бутона \"Попитай\" в лентата за търсене</string>
-  <string name="morphe_force_system_font_title">Използване на системния шрифт</string>
-  <string name="morphe_force_system_font_summary">Използвайте системния шрифт на устройството вместо Reddit Sans или Roboto. Активирането на тази опция също изключва персонализиран шрифт.</string>
   <string name="morphe_custom_font_title">Потребителски шрифт</string>
   <string name="morphe_custom_font_summary">Заредете потребителски TTF или OTF шрифтов файл от посочения път. Активирането на тази опция също изключва използването на системния шрифт.</string>
   <string name="morphe_custom_font_file_path_title">Файл с потребителски шрифт</string>
@@ -47,6 +40,13 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_pick_file_first">Изберете потребителски шрифтов файл първо.</string>
   <string name="morphe_custom_font_invalid_file">Моля, изберете .ttf или .otf шрифтов файл.</string>
   <string name="morphe_custom_font_failed_to_load">Неуспешно зареждане на потребителски шрифт. Изберете друг файл</string>
+  <string name="morphe_disable_modern_home_title">Деактивиране на модерен потребителски интерфейс на началния екран</string>
+  <string name="morphe_disable_screenshot_popup_title">Изключване на изскачащия прозорец за екранна снимка</string>
+  <string name="morphe_disable_screenshot_popup_summary">Изключва изскачащия прозорец, който се появява при правене на екранна снимка</string>
+  <string name="morphe_force_system_font_title">Използване на системния шрифт</string>
+  <string name="morphe_force_system_font_summary">Използвайте системния шрифт на устройството вместо Reddit Sans или Roboto. Активирането на тази опция също изключва персонализиран шрифт.</string>
+  <string name="morphe_hide_ask_button_title">Скрий бутона \"Попитай\"</string>
+  <string name="morphe_hide_ask_button_summary">Скрива бутона \"Попитай\" в лентата за търсене</string>
   <string name="morphe_hide_communities_shelf_title">Скриване на секцията с общности</string>
   <string name="morphe_hide_communities_shelf_summary">Скрива секцията с препоръчани или свързани общности в подредитите</string>
   <string name="morphe_hide_trending_shelves_title">Скрий популярните секции</string>

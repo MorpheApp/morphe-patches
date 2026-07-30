@@ -169,14 +169,10 @@ Vissa layouter på serversidan kanske inte återställs.
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Ange namnen på de objekt i kommentarsfältets karusell som ska filtreras bort, åtskilda av nya rader</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Dölj AI-sammanfattning av chatt</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Dölj kanalriktlinjer</string>
-  <string name="morphe_hide_comments_prompts_title">Dölj ledtexter för kommentarerna</string>
-  <string name="morphe_hide_comments_prompts_summary">Döljer kontextuella informationsmeddelanden i kommentarsfältet</string>
   <string name="morphe_hide_comments_by_members_header_title">Dölj rubriken Kommentarer från medlemmar</string>
   <string name="morphe_hide_comments_section_title">Dölj kommentarsfältet</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Dölj kommentarsfältet i hemflödet</string>
-  <string name="morphe_hide_comments_community_guidelines_title">Dölj riktlinjerna för communityn</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Dölj knappen Skapa en Shorts-video</string>
-  <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Dölj knappar för emoji och tidsstämpel</string>
   <string name="morphe_hide_comments_info_button_title">Dölj knappen Info</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Dölj fält för donatorer i livechatt</string>
   <string name="morphe_hide_comments_preview_comment_title">Dölj förhandsvisad kommentar</string>
@@ -789,20 +785,15 @@ Begränsningar:
 • HDR-videor använder inte AVC
 • Vissa enheter kan inte tvinga AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Om du vill använda den här funktionen anger du Förfalska videostreamar som Android VR eller Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Dölj Premium-kvalitetsalternativ</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Prioritera videokvalitet</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Tillåt Android VR AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Tillåter programvaruavkodning för AV1 när du använder Android VR-klienten</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Aktivering av denna inställning kan använda programvarubaserad AV1-avkodning.
 
 Videouppspelning med AV1 kan hacka eller tappa bildrutor."</string>
   <string name="morphe_spoof_video_streams_about_title">Bieffekter av förfalskning</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• Videor kan stanna vid 1:00 eller kanske inte är tillgängliga i vissa regioner</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Menyn Ljudspår saknas</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Ingen AV1-videokodek</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR-integrerat läge is not available</string>

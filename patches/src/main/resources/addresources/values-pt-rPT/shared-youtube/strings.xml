@@ -103,17 +103,6 @@ Para entrar, pressione continuar abaixo"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Não é possível fazer login no VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Desconectado do Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Token de login do VR inválido, tente fazer login no VR novamente</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Desativar atualização JavaScript do player</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Bloqueia o JavaScript do player para uma versão específica
-
-• É necessário um hash de JavaScript do player válido
-• Os hashes do JavaScript do player são válidos por aproximadamente um mês, e hashes desatualizados serão revogados pelo GVS
-• A reprodução falha se o hash for revogado"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"Você precisa fornecer um hash de JavaScript do player válido.
-
-A reprodução falhará se o hash do JavaScript do player estiver desatualizado."</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hash JavaScript do jogador</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Insira um hash JavaScript do jogador válido</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Desativar protocolo QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -168,7 +157,7 @@ No entanto, ativar isto também irá registar alguns dados do utilizador, como o
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Lista de strings de construção de caminhos de componente para filtrar, separadas por quebras de linha</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Filtro personalizado inválido: %s</string>
-  <!-- Settings menu filter -->
+  <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">Filtro do menu de configurações</string>
   <string name="morphe_settings_menu_filter_screen_summary">Ocultar itens na tela de configurações do aplicativo padrão pelo nome visível</string>
   <string name="morphe_settings_menu_filter_picker_empty">Abrir a tela de configurações do aplicativo padrão uma vez para preencher a lista</string>

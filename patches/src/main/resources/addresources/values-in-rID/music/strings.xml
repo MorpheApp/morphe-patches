@@ -31,13 +31,18 @@ Second \"item\" text"</string>
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Tentang</string>
   <string name="morphe_settings_music_screen_1_ads_title">Iklan</string>
-  <string name="morphe_settings_music_screen_2_general_title">Umum</string>
-  <string name="morphe_settings_music_screen_3_player_title">Pemutar</string>
-  <string name="morphe_settings_music_screen_7_misc_title">Lain-lain</string>
+  <string name="morphe_settings_music_screen_2_feed_title">Feed</string>
+  <string name="morphe_settings_music_screen_3_general_title">Umum</string>
+  <string name="morphe_settings_music_screen_4_player_title">Pemutar</string>
+  <string name="morphe_settings_music_screen_8_misc_title">Lain-lain</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Sembunyikan label \'Dapatkan Music Premium\'</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Sembunyikan promosi Music Premium</string>
   <string name="morphe_music_hide_video_ads_title">Sembunyikan iklan video</string>
+  <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_music_hide_lyrics_panel_category_title">Panel Lirik</string>
+  <string name="morphe_music_hide_lyrics_share_button_title">Sembunyikan tombol Bagikan</string>
+  <string name="morphe_music_hide_lyrics_translate_button_title">Sembunyikan tombol Terjemahan</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Pudar silang</string>
   <string name="morphe_music_crossfade_screen_summary">Padukan trek satu sama lain dengan mulus</string>
@@ -115,10 +120,6 @@ YouTube Music 8.x — pudar silang hanya berfungsi pada versi 9.x dan yang lebih
   <string name="morphe_music_hide_history_button_title">Sembunyikan tombol Riwayat</string>
   <string name="morphe_music_hide_notification_button_title">Sembunyikan tombol Notifikasi</string>
   <string name="morphe_music_hide_search_button_title">Sembunyikan tombol pencarian</string>
-  <!-- layout.hide.general.hideMusicComponentsPatch -->
-  <string name="morphe_music_hide_lyrics_panel_category_title">Panel Lirik</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Sembunyikan tombol Bagikan</string>
-  <string name="morphe_music_hide_lyrics_translate_button_title">Sembunyikan tombol Terjemahan</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Tombol tindakan</string>
   <string name="morphe_music_action_buttons_screen_summary">Pilih tombol tindakan mana yang akan ditampilkan di bawah pemutar</string>

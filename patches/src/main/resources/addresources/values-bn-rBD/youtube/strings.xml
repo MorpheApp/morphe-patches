@@ -194,6 +194,27 @@ Second \"item\" text"</string>
   <string name="morphe_hide_store_button_title">\'স্টোর\' বোতামটি লুকান</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_subscribe_button_in_channel_page_title">সাবস্ক্রাইব  বোতামটি লুকান</string>
+  <string name="morphe_explore_menu_screen_title">মেনু অন্বেষণ করুন</string>
+  <string name="morphe_explore_menu_screen_summary">অন্বেষণ মেনুতে কোন উপাদানগুলো দেখাতে চান তা নির্বাচন করুন</string>
+  <string name="morphe_hide_courses_menu_title">কোর্স মেনু লুকান</string>
+  <string name="morphe_hide_explore_button_title">\'আরো দেখুন\' বাটনটি লুকিয়ে রাখুন</string>
+  <string name="morphe_hide_fashion_menu_title">\'ফ্যাশন ও সৌন্দর্য\' মেনু লুকান</string>
+  <string name="morphe_hide_gaming_menu_title">গেমস্‌ মেনু লুকান</string>
+  <string name="morphe_hide_hype_menu_title">হাইপ মেনু লুকান</string>
+  <string name="morphe_hide_live_menu_title">লাইভ মেনু লুকান</string>
+  <string name="morphe_hide_memberships_menu_title">সদস্যতা মেনু লুকান</string>
+  <string name="morphe_hide_movies_menu_title">মুভি মেনু লুকান</string>
+  <string name="morphe_hide_music_menu_title">\'সংগীত ও টিভি\' মেনু লুকান</string>
+  <string name="morphe_hide_news_menu_title">খবর মেনু লুকান</string>
+  <string name="morphe_hide_playables_menu_title">খেলার উপযুক্ত লুকান</string>
+  <string name="morphe_hide_podcasts_menu_title">পডকাস্ট মেনু লুকান</string>
+  <string name="morphe_hide_shopping_menu_title">শপিং মেনু লুকান</string>
+  <string name="morphe_hide_sports_menu_title">স্পোর্টস মেনু লুকান</string>
+  <string name="morphe_hide_youtube_premium_menu_title">YouTube প্রিমিয়াম প্রচারণা লুকান</string>
+  <string name="morphe_hide_youtube_studio_menu_title">YouTube স্টুডিও মেনু লুকান</string>
+  <string name="morphe_hide_youtube_music_menu_title">YouTube Music মেনু লুকান</string>
+  <string name="morphe_hide_youtube_kids_menu_title">YouTube Kids মেনু লুকান</string>
+  <string name="morphe_hide_youtube_create_menu_title">YouTube তৈরি করুন মেনু লুকান</string>
   <string name="morphe_comments_screen_title">মন্তব্য</string>
   <string name="morphe_comments_screen_summary">মন্তব্য বিভাগে কোন উপাদানগুলি প্রদর্শিত হবে তা নির্বাচন করুন</string>
   <string name="morphe_hide_comments_carousel_title">Enable comments carousel filter</string>
@@ -204,14 +225,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">মন্তব্য ক্যারোসেল নামগুলি ফিল্টার করতে নতুন লাইন দ্বারা পৃথক করুন</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">এআই চ্যাট সারাংশ লুকান</string>
   <string name="morphe_hide_comments_channel_guidelines_title">চ্যানেল নির্দেশিকা লুকান</string>
-  <string name="morphe_hide_comments_prompts_title">সম্প্রদায় কমেন্ট প্রম্প্ট লুকান</string>
-  <string name="morphe_hide_comments_prompts_summary">মন্তব্য বিভাগে প্রসঙ্গপূর্ণ তথ্য বার্তাগুলি লুকায়</string>
   <string name="morphe_hide_comments_by_members_header_title">\'মেম্বারদের মন্তব্য\' হেডার লুকান</string>
   <string name="morphe_hide_comments_section_title">মন্তব্য বিভাগ লুকান</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">মন্তব্য বিভাগ লুকান</string>
-  <string name="morphe_hide_comments_community_guidelines_title">কমিউনিটি নির্দেশিকা লুকান</string>
   <string name="morphe_hide_comments_create_a_short_button_title">\'Short তৈরি করুন\' বোতাম লুকান</string>
-  <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">ইমোজি এবং টাইমস্ট্যাম্প বোতামগুলি লুকান</string>
   <string name="morphe_hide_comments_filter_bar_options_title">ফিল্টার বার অপশন লুকান</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">\"Top\" এবং \"Newest\" ছাড়া ফিল্টার বার-এর সমস্ত অপশন লুকায়</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">গिफ्ट অ্যানিমেশন এবং কার্ড লুকান</string>
@@ -429,6 +446,7 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_queue_manager_check_failed_queue">সারিবদ্ধ তালিকা খালি</string>
   <string name="morphe_queue_manager_check_failed_video_id">ভিডিও আইডি নেই</string>
   <string name="morphe_queue_manager_check_failed_generic">ব্যর্থ: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">ভিডিও তালিকা সংরক্ষণ করা যায়নি</string>
   <string name="morphe_queue_manager_fetch_failed_create">queue তৈরি করতে ব্যর্থ</string>
   <string name="morphe_queue_manager_fetch_failed_remove">queue থেকে অপসারণ করতে ব্যর্থ</string>
   <string name="morphe_queue_manager_fetch_failed_save">ভিডিও তালিকা সংরক্ষণ করা যায়নি</string>
@@ -456,6 +474,8 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_livestream_dvr_title">লাইভস্ট্রিম ডিভিআর সক্রিয় করুন</string>
   <string name="morphe_livestream_dvr_summary">লাইভস্ট্রিমগুলিতে যেগুলি সাধারণত সীমাবদ্ধ, সেগুলিতেও সিকিং করার অনুমতি দেয়</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">সিকবার থাম্বনেইল সক্ষম করুন</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">সীকবಾರ್ টেনে আনার সময় একটি ভিডিও থাম্বনেইল দেখায়</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'লাইভস্ট্রিম ডিভিআর' উপলব্ধ নাও হতে পারে
 
@@ -581,6 +601,7 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_hide_quick_actions_more_button_title">\'আরো দেখুন\' বাটনটি লুকিয়ে রাখুন</string>
   <string name="morphe_hide_quick_actions_more_videos_button_title">\'আরও ভিডিও\' বোতামটি লুকিয়ে রাখুন</string>
   <string name="morphe_hide_quick_actions_playlist_button_title">প্লেলিস্ট লুকান</string>
+  <string name="morphe_hide_quick_actions_save_button_title">সেভ বোতামটি লুকান</string>
   <string name="morphe_hide_quick_actions_share_button_title">শেয়ার বোতামটি লুকান</string>
   <string name="morphe_quick_actions_top_margin_title">কুইক অ্যাকশনগুলির উপরের মার্জিন</string>
   <string name="morphe_quick_actions_top_margin_summary">কুইক অ্যাকশন বার-এর উপরের মার্জিন সেট করুন (০-৩২ dp)</string>
@@ -616,6 +637,7 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">\'আরো দেখুন\' বাটনটি লুকিয়ে রাখুন</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_hide_shorts_button_title">Shorts বোতামটি লুকান</string>
   <!-- 'Create' has no display name. Translate normally. -->
   <string name="morphe_hide_create_button_title">শেয়ার বোতামটি লুকান</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1074,23 +1096,23 @@ DeArrow.ajay.app ওপেন করতে এখানে ট্যাপ ক�
 • HDR ভিডিও AVC ব্যবহার করবে না
 • কিছু ডিভাইস AVC জোর করে ব্যবহার করতে পারে না"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">এই বৈশিষ্ট্যটি ব্যবহার করার জন্য, \'Spoof video streams\'-কে Android VR বা Android Studio-তে সেট করুন</string>
+  <string name="morphe_force_avc_codec_not_available">এই বৈশিষ্ট্যটি ব্যবহার করতে, \'ভিডিও স্ট্রিম স্পুফ করুন\'-কে \'Android VR\' অথবা \'Android Studio\'-তে সেট করুন।</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">অ্যাডভান্সড কোয়ালিটি মেনু খুলুন</string>
   <string name="morphe_advanced_video_quality_menu_summary">মানের নির্বাচন মেনু এড়িয়ে সরাসরি \"অ্যাডভান্সড\" মানের মেনু খুলুন</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">প্রিমিয়াম গুণমান বিকল্প গোপন করুন</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">ভিডিও গুণমানকে প্রাধান্য দিন</string>
-  <string name="morphe_prioritize_video_quality_summary">কোডেক দক্ষতার চেয়ে সর্বোচ্চ উপলব্ধ ভিডিও গুণমানকে অগ্রাধিকার দেয়</string>
+  <string name="morphe_video_quality_prioritize_title">ভিডিওর গুণমানকে অগ্রাধিকার দিন</string>
+  <string name="morphe_video_quality_prioritize_summary">কোডেক দক্ষতার চেয়ে সর্বোচ্চ উপলব্ধ ভিডিও গুণমানকে অগ্রাধিকার দেয়</string>
+  <string name="morphe_video_quality_prioritize_dialog">যদি এই সেটিংস বন্ধ করা হয়, তাহলে পুরোনো ভিডিওতে ভিডিওর গুণমানের কোনো বিকল্প নাও দেখাতে পারে</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">অ্যান্ড্রয়েড VR AV1 অনুমতি দিন</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Android VR ক্লায়েন্ট ব্যবহার করার সময় সফ্টওয়্যার AV1 ডিকোডিংয়ের অনুমতি দেয়</string>
+  <string name="morphe_spoof_video_streams_av1_title">অ্যান্ড্রয়েড VR / visionOS AV1 এর অনুমতি দিন</string>
+  <string name="morphe_spoof_video_streams_av1_summary">অ্যান্ড্রয়েড ভিআর / visionOS ক্লায়েন্ট ব্যবহার করার সময় সফ্টওয়্যার AV1 ডিকোডিংয়ের অনুমতি দেয়</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"এই সেটিংটি চালু করলে সফটওয়্যার AV1 ডিকোডিং ব্যবহার হতে পারে।
 
 AV1 সহ ভিডিও প্লেব্যাক আটকে যেতে পারে বা ফ্রেম বাদ দিতে পারে।"</string>
   <string name="morphe_spoof_video_streams_about_title">স্পুফিংয়ের পার্শ্বপ্রতিক্রিয়া</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• ভিডিও ১:০০ মিনিটে বন্ধ হতে পারে, অথবা কিছু অঞ্চলে উপলব্ধ নাও হতে পারে</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• অডিও ট্র্যাক মেনু অনুপস্থিত</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• কোনো AV1 ভিডিও কোডেক নেই</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• ৩৬০° ভিএআর ইমার্সিভ মোড উপলব্ধ নয়</string>

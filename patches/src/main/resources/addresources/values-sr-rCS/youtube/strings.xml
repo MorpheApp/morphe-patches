@@ -192,6 +192,28 @@ Promene uključuju:
   <string name="morphe_hide_store_button_title">Sakrij dugme „Deli”</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_subscribe_button_in_channel_page_title">Sakrij dugme „Zaprati”</string>
+  <string name="morphe_explore_menu_screen_title">Pregled menija</string>
+  <string name="morphe_explore_menu_screen_summary">Odaberite koje komponente da se pojave u meniju za pregled</string>
+  <string name="morphe_hide_courses_menu_title">Sakrij meni Kurseva</string>
+  <string name="morphe_hide_explore_button_title">Sakrij dugme „Pregled“</string>
+  <string name="morphe_hide_fashion_menu_title">Sakrij meni „Moda i lepota“</string>
+  <string name="morphe_hide_gaming_menu_title">Sakrij meni Igrice</string>
+  <string name="morphe_hide_hype_menu_title">Sakrij meni Hype</string>
+  <string name="morphe_hide_live_menu_title">Sakrij meni Uživao</string>
+  <string name="morphe_hide_memberships_menu_title">Sakrij meni Članstva</string>
+  <string name="morphe_hide_movies_menu_title">Sakrij meni Filmova</string>
+  <string name="morphe_hide_music_menu_title">Sakrij meni „Muzika i TV“</string>
+  <string name="morphe_hide_news_menu_title">Sakrij meni Vestı</string>
+  <string name="morphe_hide_playables_menu_title">Sakrij meni Materijala za reprodukciju</string>
+  <string name="morphe_hide_podcasts_menu_title">Sakrij meni Podcast-a</string>
+  <string name="morphe_hide_shopping_menu_title">Sakrij meni Kupovine</string>
+  <string name="morphe_hide_sports_menu_title">Sakrij meni Sporta</string>
+  <string name="morphe_hide_youtube_premium_menu_title">Sakrij meni YouTube Premium</string>
+  <string name="morphe_hide_youtube_studio_menu_title">Sakrij meni YouTube Studio</string>
+  <string name="morphe_hide_youtube_music_menu_title">Sakrij meni YouTube Music</string>
+  <string name="morphe_hide_youtube_kids_menu_title">Sakrij meni YouTube Kids</string>
+  <string name="morphe_hide_youtube_create_menu_title">Sakrij meni YouTube Create</string>
+  <string name="morphe_hide_privacy_tos_footer_title">Sakrij podnožje „Politika privatnosti • Uslovi korišćenja“</string>
   <string name="morphe_comments_screen_title">Komentari</string>
   <string name="morphe_comments_screen_summary">Izaberite koje komponente će se pojaviti u odeljku za komentare</string>
   <string name="morphe_hide_comments_carousel_title">Omogući filter karusela komentara</string>
@@ -202,14 +224,13 @@ Promene uključuju:
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Unesite nazive karusela komentara po kojima želite da filtrirate, odvojene novim redovima</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Sakrij „Rezime ćaskanja koji je generisala veštačka inteligencija”</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Sakrij smernice kanala</string>
-  <string name="morphe_hide_comments_prompts_title">Sakrij komentare</string>
-  <string name="morphe_hide_comments_prompts_summary">Sakriva informativne poruke konteksta u odeljku za komentare</string>
+  <string name="morphe_hide_comments_contexts_title">Sakrij poruke konteksta</string>
   <string name="morphe_hide_comments_by_members_header_title">Sakrij zaglavlje „Komentari od članova”</string>
   <string name="morphe_hide_comments_section_title">Sakrij odeljak za komentare</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Sakrij odeljak za komentare u Feed-u</string>
   <string name="morphe_hide_comments_community_guidelines_title">Sakrij smernice zajednice</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Sakrij dugme „Napravi Short”</string>
-  <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Sakrij dugmad emodžija i vremenske oznake</string>
+  <string name="morphe_hide_comments_emoji_button_title">Sakrij dugme za emoji</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Sakrij opcije trake filtera</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Sakriva sve opcije trake filtera, osim \"Najbolje\" i \"Najnovije\"</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Sakrij animaciju poklona i kartice</string>
@@ -219,6 +240,7 @@ Promene uključuju:
   <string name="morphe_hide_comments_preview_comment_title">Sakrij komentar za pregled</string>
   <string name="morphe_hide_comments_preview_comment_summary">Sakriva pregled komentara ispod videa pre otvaranja celog odeljka za komentare</string>
   <string name="morphe_hide_comments_thanks_button_title">Sakrij dugme „Hvala”</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Sakrij dugme za vremensku oznaku</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Dezinfikuje naglašene linkove za pretragu</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Dezinfikuje naglašene linkove za pretragu, ostavljajući samo originalni tekst</string>
   <string name="morphe_hide_keyword_content_screen_title">Filtriranje po ključnim rečima</string>
@@ -1074,23 +1096,23 @@ Ograničenja:
 • HDR videi neće koristiti AVC
 • Neki uređaji ne mogu prisiliti AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Da biste koristili ovu funkciju, postavite opciju „Lažirani video strimovi” na Android VR ili Android Studio</string>
+  <string name="morphe_force_avc_codec_not_available">Da biste koristili ovu funkciju, podesite opciju „Lažirani video strimovi” na „Android VR” ili „Android Studio”</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Otvorite napredni meni kvaliteta</string>
   <string name="morphe_advanced_video_quality_menu_summary">Preskače meni za izbor kvaliteta i direktno otvara meni kvaliteta \"Napredno\"</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Sakrij opcije Premium kvaliteta</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Prioritiziraj kvalitet videoa</string>
-  <string name="morphe_prioritize_video_quality_summary">Prioritet daje najvišem dostupnom kvalitetu videa u odnosu na efikasnost kodeka</string>
+  <string name="morphe_video_quality_prioritize_title">Prioritizuj kvalitet videa</string>
+  <string name="morphe_video_quality_prioritize_summary">Prioritizuje najviši dostupni kvalitet videa u odnosu na efikasnost kodeka</string>
+  <string name="morphe_video_quality_prioritize_dialog">Ako je ova postavka isključena, stariji video snimci mogu da nemaju opcije kvaliteta videa</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Dozvoli Android VR AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Omogućava softversko dekodiranje AV1 kada se koristi Android VR klijent</string>
+  <string name="morphe_spoof_video_streams_av1_title">Dozvoli Android VR / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Omogućava softversko AV1 dekodiranje prilikom korišćenja Android VR / visionOS klijenta</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Omogućavanje ove opcije može koristiti softversko dekodiranje AV1.
 
 Reprodukcija videa s AV1 može zastajkivati ili preskakati kadrove."</string>
   <string name="morphe_spoof_video_streams_about_title">Neželjeni efekti lažiranja</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• Video se može zaustaviti u 1:00 ili možda neće biti dostupan u nekim regionima</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Meni „Audio snimak” nedostaje</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Nema video kodeka AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR imersivni režim nije dostupan</string>

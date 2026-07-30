@@ -194,6 +194,28 @@ Les changements incluent :
   <string name="morphe_hide_store_button_title">Masquer le bouton \'Boutique\'</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_subscribe_button_in_channel_page_title">Masquer le bouton \'S\'abonner\'</string>
+  <string name="morphe_explore_menu_screen_title">Menu \'Explorer\'</string>
+  <string name="morphe_explore_menu_screen_summary">Choisissez les composants qui apparaissent dans le menu \'Explorer\'</string>
+  <string name="morphe_hide_courses_menu_title">Masquer le menu \'Cours\'</string>
+  <string name="morphe_hide_explore_button_title">Masquer le bouton \'Explorer\'</string>
+  <string name="morphe_hide_fashion_menu_title">Masquer le menu \'Mode et beauté\'</string>
+  <string name="morphe_hide_gaming_menu_title">Masquer le menu \'Jeux vidéo\'</string>
+  <string name="morphe_hide_hype_menu_title">Masquer le menu \'Boost\'</string>
+  <string name="morphe_hide_live_menu_title">Masquer le menu \'Direct\'</string>
+  <string name="morphe_hide_memberships_menu_title">Masquer le menu \'Souscriptions\'</string>
+  <string name="morphe_hide_movies_menu_title">Masquer le menu \'Films et séries TV\'</string>
+  <string name="morphe_hide_music_menu_title">Masquer le menu \'Musique\'</string>
+  <string name="morphe_hide_news_menu_title">Masquer le menu \'Actualités\'</string>
+  <string name="morphe_hide_playables_menu_title">Masquer le menu \'Jeux intégrés\'</string>
+  <string name="morphe_hide_podcasts_menu_title">Masquer le menu \'Podcasts\'</string>
+  <string name="morphe_hide_shopping_menu_title">Masquer le menu \'Shopping\'</string>
+  <string name="morphe_hide_sports_menu_title">Masquer le menu \'Sport\'</string>
+  <string name="morphe_hide_youtube_premium_menu_title">Masquer le menu \'YouTube Premium\'</string>
+  <string name="morphe_hide_youtube_studio_menu_title">Masquer le menu \'YouTube Studio\'</string>
+  <string name="morphe_hide_youtube_music_menu_title">Masquer le menu \'YouTube Music\'</string>
+  <string name="morphe_hide_youtube_kids_menu_title">Masquer le menu \'YouTube Kids\'</string>
+  <string name="morphe_hide_youtube_create_menu_title">Masquer le menu \'YouTube Create\'</string>
+  <string name="morphe_hide_privacy_tos_footer_title">Masquer le pied de page \'Règles de confidentialité • Conditions d\'utilisation\'</string>
   <string name="morphe_comments_screen_title">Commentaires</string>
   <string name="morphe_comments_screen_summary">Choisissez les composants qui apparaissent dans la section des commentaires</string>
   <string name="morphe_hide_comments_carousel_title">Activer le filtre du carrousel de commentaires</string>
@@ -204,14 +226,13 @@ Les changements incluent :
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Entrez les noms des carrousels de commentaires à filtrer, séparés par des sauts de ligne</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Masquer le résumé IA du chat</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Masquer les consignes de la chaîne</string>
-  <string name="morphe_hide_comments_prompts_title">Masquer les messages liés aux commentaires</string>
-  <string name="morphe_hide_comments_prompts_summary">Masque les messages d\'information contextuels dans la section des commentaires</string>
+  <string name="morphe_hide_comments_contexts_title">Masquer les messages de contexte</string>
   <string name="morphe_hide_comments_by_members_header_title">Masquer l\'en tête \'Commentaires postés par des membres\'</string>
   <string name="morphe_hide_comments_section_title">Masquer la section \'Commentaires\'</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Masquer la section \'Commentaires\' sur la page d\'accueil</string>
   <string name="morphe_hide_comments_community_guidelines_title">Masquer les règles de la communauté</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Masquer le bouton \'Créer un Short\'</string>
-  <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Masquer le sélecteur d\'émoji et horodatage</string>
+  <string name="morphe_hide_comments_emoji_button_title">Masquer le bouton \'Émoji\'</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Masquer les options de la barre de filtres</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Masque toutes les options de la barre de filtres, à l\'exception de \'Les plus populaires\' et \'Les plus récents\'</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Masquer l\'animation des cadeaux et les cartes</string>
@@ -221,6 +242,7 @@ Les changements incluent :
   <string name="morphe_hide_comments_preview_comment_title">Masquer l\'aperçu des commentaires</string>
   <string name="morphe_hide_comments_preview_comment_summary">Masque l\'aperçu des commentaires sous la vidéo avant d\'ouvrir la section complète des commentaires</string>
   <string name="morphe_hide_comments_thanks_button_title">Masquer le bouton \'Merci\'</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Masquer le bouton \'Horodatage\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Nettoyer les liens de recherche en surbrillance</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Nettoie les liens de recherche en surbrillance, en laissant uniquement le texte brut d\'origine</string>
   <string name="morphe_hide_keyword_content_screen_title">Filtre par mots clés</string>
@@ -457,6 +479,8 @@ Info : Peut ne pas fonctionner sur les diffusions en direct"</string>
   <string name="morphe_livestream_dvr_title">Activer le DVR des diffusions en direct</string>
   <string name="morphe_livestream_dvr_summary">Permet d’afficher la barre de progression sur toutes les diffusions en directs, même ceux qui la restreignent normalement</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">Activer les miniatures sur la barre de progression</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">Affiche une miniature de la vidéo lors du déplacement sur la barre de progression</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'Activer le DVR des diffusions en direct' peut ne pas être disponible
 
@@ -1085,16 +1109,16 @@ Limitations :
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Masquer les options de qualité Premium</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Prioriser la qualité vidéo</string>
-  <string name="morphe_prioritize_video_quality_summary">Privilégie la qualité vidéo la plus élevée disponible plutôt que l\'efficacité du codec</string>
+  <string name="morphe_video_quality_prioritize_title">Prioriser la qualité vidéo</string>
+  <string name="morphe_video_quality_prioritize_summary">Privilégie la qualité vidéo la plus élevée disponible plutôt que l\'efficacité du codec</string>
+  <string name="morphe_video_quality_prioritize_dialog">Si ce paramètre est désactivé, les vidéos plus anciennes peuvent ne proposer aucune option de qualité vidéo</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Autoriser AV1 sur Android VR</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Autorise le décodage logiciel AV1 lors de l\'utilisation du client Android VR</string>
+  <string name="morphe_spoof_video_streams_av1_title">Autoriser AV1 sur Android VR / visionOS</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Autorise le décodage logiciel du codec AV1 lors de l\'utilisation du client Android VR ou visionOS</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"L'activation de ce paramètre peut utiliser le décodage logiciel AV1.
 
 La lecture de vidéos en AV1 peut présenter des saccades ou des pertes d'images."</string>
   <string name="morphe_spoof_video_streams_about_title">Effets secondaires de la falsification</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• La vidéo peut s’arrêter à 1:00, ou ne pas être disponible dans certaines régions</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Le menu \'Piste Audio\' est manquant</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Codec vidéo AV1 indisponible</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Le mode 360° VR immersif n\'est pas disponible</string>

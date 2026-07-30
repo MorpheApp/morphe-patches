@@ -13,12 +13,14 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.misc.chapters.chaptersHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_12_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.patches.youtube.shared.SeekbarOnDrawFingerprint
 import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
@@ -33,7 +35,8 @@ val seekbarThumbnailPreviewPatch = bytecodePatch(
         sharedExtensionPatch,
         settingsPatch,
         versionCheckPatch,
-        resourceMappingPatch
+        resourceMappingPatch,
+        chaptersHookPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -60,7 +63,8 @@ val seekbarThumbnailPreviewPatch = bytecodePatch(
         // To show the thumbnail during the use of slide to seek feature.
         SlideSeekbarHandlerOnTouchFingerprint.method.apply {
             fun getSeekbarReference(index: Int) = SlideSeekbarGetViewControllerFingerprint
-                .instructionMatches[index].getInstruction<ReferenceInstruction>().getReference<FieldReference>()!!
+                .instructionMatches[index].getInstruction<ReferenceInstruction>()
+                .getReference<FieldReference>()!!
 
             addInstructions(
                 0,
@@ -80,6 +84,12 @@ val seekbarThumbnailPreviewPatch = bytecodePatch(
             1,
             "invoke-static { p1 }, $EXTENSION_CLASS->" +
                     "setFineScrubbingPreviewBitmap(Landroid/graphics/Bitmap;)V"
+        )
+
+        SeekbarOnDrawFingerprint.method.addInstruction(
+            0,
+            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->" +
+                    "setSeekbarRectangle(Landroid/view/View;)V"
         )
 
         if (is_21_12_or_greater) {

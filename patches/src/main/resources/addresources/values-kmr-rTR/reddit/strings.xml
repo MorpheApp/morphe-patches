@@ -32,13 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">Şefirê \'Derbarê\' veşêre</string>
   <string name="morphe_hide_resources_shelf_title">Şefirê \'Zanyarî\' veşêre</string>
   <string name="morphe_screen_layout_title">Sazî</string>
-  <string name="morphe_disable_modern_home_title">Nexşeya nû ya malê bêçalak bike</string>
-  <string name="morphe_disable_screenshot_popup_title">Dema çêkirina ekranê, ragihîner azad bike</string>
-  <string name="morphe_disable_screenshot_popup_summary">Dema çêkirina ekranê, ragihîner azad bike</string>
-  <string name="morphe_hide_ask_button_title">Dîmena Butona Pirsîn</string>
-  <string name="morphe_hide_ask_button_summary">Butona Pirsînê di çendera lêgerînê de veşartin</string>
-  <string name="morphe_force_system_font_title">Çîroka fontek sistêm</string>
-  <string name="morphe_force_system_font_summary">Çêreyê fontiya sîstemê ya cîhazê berî Reddit Sans an Roboto bikar bîne. Çalak kirina vê jî fontiya xwerû yê winda dike.</string>
   <string name="morphe_custom_font_title">Fonta xwerû</string>
   <string name="morphe_custom_font_summary">Pelgeya fontê ya TTF an OTF ya xwerû ji peldanka jêrîn barke. Çalak kirina vê jî fontiya sîstemê yê qehre kirin winda dike.</string>
   <string name="morphe_custom_font_file_path_title">Pelgeka fonta xwerû</string>
@@ -47,6 +40,13 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_pick_file_first">Pêşî pelgeya fontê ya xwerû hilbijêre.</string>
   <string name="morphe_custom_font_invalid_file">Ji kerem pelgeyek fontê ya .ttf an .otf hilbijêre.</string>
   <string name="morphe_custom_font_failed_to_load">Neşka fontê barkirin. Ji bo wê yekê pelgek din hilbijêre</string>
+  <string name="morphe_disable_modern_home_title">Nexşeya nû ya malê bêçalak bike</string>
+  <string name="morphe_disable_screenshot_popup_title">Dema çêkirina ekranê, ragihîner azad bike</string>
+  <string name="morphe_disable_screenshot_popup_summary">Dema çêkirina ekranê, ragihîner azad bike</string>
+  <string name="morphe_force_system_font_title">Çîroka fontek sistêm</string>
+  <string name="morphe_force_system_font_summary">Çêreyê fontiya sîstemê ya cîhazê berî Reddit Sans an Roboto bikar bîne. Çalak kirina vê jî fontiya xwerû yê winda dike.</string>
+  <string name="morphe_hide_ask_button_title">Dîmena Butona Pirsîn</string>
+  <string name="morphe_hide_ask_button_summary">Butona Pirsînê di çendera lêgerînê de veşartin</string>
   <string name="morphe_hide_communities_shelf_title">Şerûfa komînên veşêrin</string>
   <string name="morphe_hide_communities_shelf_summary">Şerûfa komînên têkildar an ên pêşniyar kirin di binredîtên de veşêrin</string>
   <string name="morphe_hide_trending_shelves_title">Trending shelfên modayî veşêre</string>

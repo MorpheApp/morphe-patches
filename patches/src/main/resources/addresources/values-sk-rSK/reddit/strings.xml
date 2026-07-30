@@ -32,13 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">Skryť ponuku \'About\'</string>
   <string name="morphe_hide_resources_shelf_title">Skryť ponuku \'Resources\'</string>
   <string name="morphe_screen_layout_title">Rozloženie</string>
-  <string name="morphe_disable_modern_home_title">Vypnúť modernú domovskú obrazovku</string>
-  <string name="morphe_disable_screenshot_popup_title">Vypnúť zobrazovanie upozornenia na snímku obrazovky</string>
-  <string name="morphe_disable_screenshot_popup_summary">Vypne upozornenie, ktoré sa zobrazí pri vytváraní snímky obrazovky</string>
-  <string name="morphe_hide_ask_button_title">Skryť tlačidlo \'Opýtať sa\'</string>
-  <string name="morphe_hide_ask_button_summary">Skryje tlačidlo \'Opýtať sa\' v vyhľadávacom paneli</string>
-  <string name="morphe_force_system_font_title">Použiť systémové písmo</string>
-  <string name="morphe_force_system_font_summary">Použite systémové písmo zariadenia namiesto Reddit Sans alebo Roboto. Zapnutie tejto možnosti tiež vypne vlastné písmo.</string>
   <string name="morphe_custom_font_title">Vlastné písmo</string>
   <string name="morphe_custom_font_summary">Načítať vlastný TTF alebo OTF fontový súbor z nižšie uvedenej cesty. Zapnutie tejto možnosti tiež vypne Používanie systémového písma.</string>
   <string name="morphe_custom_font_file_path_title">Súbor vlastného písma</string>
@@ -47,6 +40,13 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_pick_file_first">Najprv vyberte vlastný fontový súbor.</string>
   <string name="morphe_custom_font_invalid_file">Prosím, vyberte .ttf alebo .otf fontový súbor.</string>
   <string name="morphe_custom_font_failed_to_load">Nepodarilo sa naítaž vlastné písmo. Vyberte inú súbbore.</string>
+  <string name="morphe_disable_modern_home_title">Vypnúť modernú domovskú obrazovku</string>
+  <string name="morphe_disable_screenshot_popup_title">Vypnúť zobrazovanie upozornenia na snímku obrazovky</string>
+  <string name="morphe_disable_screenshot_popup_summary">Vypne upozornenie, ktoré sa zobrazí pri vytváraní snímky obrazovky</string>
+  <string name="morphe_force_system_font_title">Použiť systémové písmo</string>
+  <string name="morphe_force_system_font_summary">Použite systémové písmo zariadenia namiesto Reddit Sans alebo Roboto. Zapnutie tejto možnosti tiež vypne vlastné písmo.</string>
+  <string name="morphe_hide_ask_button_title">Skryť tlačidlo \'Opýtať sa\'</string>
+  <string name="morphe_hide_ask_button_summary">Skryje tlačidlo \'Opýtať sa\' v vyhľadávacom paneli</string>
   <string name="morphe_hide_communities_shelf_title">Skryť poličku komunít</string>
   <string name="morphe_hide_communities_shelf_summary">Skryje poličku súvisiacich alebo navrhovaných komunít v subredditoch</string>
   <string name="morphe_hide_trending_shelves_title">Skryť populárne police</string>

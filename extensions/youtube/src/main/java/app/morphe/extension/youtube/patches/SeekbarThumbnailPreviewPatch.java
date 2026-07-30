@@ -13,6 +13,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Outline;
 import android.graphics.Point;
+import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.view.Gravity;
@@ -39,14 +40,16 @@ import app.morphe.extension.youtube.shared.ShortsPlayerState;
 public class SeekbarThumbnailPreviewPatch {
 
     private record SeekbarViews(FrameLayout previewFrame, ImageView thumbnailPreview, TextView timestampPreview,
-                                PopupWindow thumbnailPreviewPopup) {
+                                TextView chapterPreview, PopupWindow thumbnailPreviewPopup) {
     }
 
-    private static final int THUMBNAIL_PREVIEW_LONG_SIDE = 160;
-    private static final int THUMBNAIL_PREVIEW_DEFAULT_SHORT_SIDE = THUMBNAIL_PREVIEW_LONG_SIDE * 9 / 16;
+    private static final int DIP15 = Dim.dp(15);
+    private static final int THUMBNAIL_PREVIEW_LONG_SIDE = Dim.dp(160);
+    private static final int THUMBNAIL_PREVIEW_DEFAULT_SHORT_SIDE = Dim.dp(160 * 9.0f / 16);
     private static final int THUMBNAIL_PREVIEW_DISTANCE_FULLSCREEN_DP = Dim.dp10;
     private static final int THUMBNAIL_PREVIEW_DISTANCE_PORTRAIT_DP = -1 * Dim.dp20;
-    private static final int THUMBNAIL_PREVIEW_TIMESTAMP_HEIGHT_DP = Dim.dp24;
+    private static final int THUMBNAIL_PREVIEW_TEXT_ONLY_HEIGHT_DP = Dim.dp24;
+    private static final int THUMBNAIL_PREVIEW_TEXT_WITH_CHAPTER_HEIGHT_DP = Dim.dp(44);
     private static final int THUMBNAIL_PREVIEW_CORNER_RADIUS_DP = Dim.dp8;
     private static final int THUMBNAIL_PREVIEW_BORDER_WIDTH_DP = Dim.dp2;
     private static final int THUMBNAIL_PREVIEW_BORDER_COLOR = 0xB3FFFFFF;
@@ -55,6 +58,7 @@ public class SeekbarThumbnailPreviewPatch {
     @SuppressLint("StaticFieldLeak")
     private static SeekbarViews seekbarViews;
     private static Bitmap fineScrubbingPreviewBitmap;
+    private static Rect seekbarRectangle;
     private static Bitmap lastAppliedBitmap;
     private static int lastX = -1;
     private static float touchEventInitialY = -1;
@@ -72,55 +76,80 @@ public class SeekbarThumbnailPreviewPatch {
         fineScrubbingPreviewBitmap = bitmap;
     }
 
+    /**
+     * Injection point.
+     */
+    public static void setSeekbarRectangle(View seekbarView) {
+        if (!Settings.THUMBNAIL_PREVIEW.get() ||
+                seekbarView == null ||
+                !PlayerType.getCurrent().isMaximizedOrFullscreen() ||
+                ShortsPlayerState.isOpen()) {
+            return;
+        }
+
+        seekbarRectangle = new Rect(
+                seekbarView.getLeft(),
+                seekbarView.getTop(),
+                seekbarView.getRight(),
+                seekbarView.getBottom()
+        );
+    }
+
     private static SeekbarViews initializeThumbnailPreviewContainer(View trackBall) {
         SeekbarViews views = seekbarViews;
         if (views != null) {
             return views;
         }
 
-        final int longSidePx = Dim.dp(THUMBNAIL_PREVIEW_LONG_SIDE);
-        final int shortSidePx = Dim.dp(THUMBNAIL_PREVIEW_DEFAULT_SHORT_SIDE);
-        final int cornerRadiusPx = THUMBNAIL_PREVIEW_CORNER_RADIUS_DP;
-        final int borderWidthPx = THUMBNAIL_PREVIEW_BORDER_WIDTH_DP;
         Context context = trackBall.getRootView().getContext();
         LinearLayout containerLayout = new LinearLayout(context);
         containerLayout.setOrientation(LinearLayout.VERTICAL);
         containerLayout.setGravity(Gravity.CENTER_HORIZONTAL);
 
-        FrameLayout previewFrame = createPreviewFrame(context, cornerRadiusPx, borderWidthPx);
-        ImageView thumbnailPreview = createThumbnailImageView(context, cornerRadiusPx, borderWidthPx);
+        FrameLayout previewFrame = createPreviewFrame(context,
+                THUMBNAIL_PREVIEW_CORNER_RADIUS_DP, THUMBNAIL_PREVIEW_BORDER_WIDTH_DP);
+        previewFrame.setLayoutParams(new LinearLayout.LayoutParams(
+                THUMBNAIL_PREVIEW_LONG_SIDE, THUMBNAIL_PREVIEW_DEFAULT_SHORT_SIDE));
+        ImageView thumbnailPreview = createThumbnailImageView(context,
+                THUMBNAIL_PREVIEW_CORNER_RADIUS_DP, THUMBNAIL_PREVIEW_BORDER_WIDTH_DP);
         previewFrame.addView(thumbnailPreview);
-
-        LinearLayout.LayoutParams frameParams = new LinearLayout.LayoutParams(longSidePx, shortSidePx);
-        previewFrame.setLayoutParams(frameParams);
         containerLayout.addView(previewFrame);
 
         TextView timestampPreview = createTimestampPreview(context);
         containerLayout.addView(timestampPreview);
 
-        PopupWindow thumbnailPreviewPopup = new PopupWindow(containerLayout, LinearLayout.LayoutParams.WRAP_CONTENT,
+        TextView chapterPreview = createChapterPreview(context);
+        containerLayout.addView(chapterPreview);
+
+        PopupWindow thumbnailPreviewPopup = new PopupWindow(containerLayout,
+                LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT, false);
         thumbnailPreviewPopup.setTouchable(false);
         thumbnailPreviewPopup.setBackgroundDrawable(previewPopupBackgroundDrawable);
 
-        return seekbarViews = new SeekbarViews(previewFrame, thumbnailPreview, timestampPreview, thumbnailPreviewPopup);
+        return seekbarViews = new SeekbarViews(previewFrame, thumbnailPreview, timestampPreview, chapterPreview, thumbnailPreviewPopup);
     }
 
     // Border is a filled rounded rect + padding (not a stroke) to keep outer/inner corners concentric.
-    @SuppressWarnings("SuspiciousNameCombination")
+    @SuppressWarnings({"SameParameterValue", "SuspiciousNameCombination"})
     private static FrameLayout createPreviewFrame(Context context, int cornerRadiusPx, int borderWidthPx) {
         FrameLayout previewFrame = new FrameLayout(context);
         GradientDrawable frameBackground = new GradientDrawable();
+
         frameBackground.setColor(THUMBNAIL_PREVIEW_BORDER_COLOR);
         frameBackground.setCornerRadius(cornerRadiusPx);
+
         previewFrame.setBackground(frameBackground);
         previewFrame.setPadding(borderWidthPx, borderWidthPx, borderWidthPx, borderWidthPx);
+
         return previewFrame;
     }
 
+    @SuppressWarnings("SameParameterValue")
     private static ImageView createThumbnailImageView(Context context, int cornerRadiusPx, int borderWidthPx) {
         ImageView thumbnailPreview = new ImageView(context);
         thumbnailPreview.setScaleType(ImageView.ScaleType.CENTER_CROP);
+
         // Inner radius = outer radius minus the border width so the clipped image hugs the border.
         final int innerRadiusPx = Math.max(0, cornerRadiusPx - borderWidthPx);
         thumbnailPreview.setOutlineProvider(new ViewOutlineProvider() {
@@ -148,6 +177,21 @@ public class SeekbarThumbnailPreviewPatch {
         return timestampPreview;
     }
 
+    private static TextView createChapterPreview(Context context) {
+        TextView chapterPreview = new TextView(context);
+        chapterPreview.setTextColor(Color.WHITE);
+        chapterPreview.setTextSize(12);
+        chapterPreview.setPadding(0, Dim.dp2, 0, 0);
+        chapterPreview.setShadowLayer(3, 1, 1, Color.BLACK);
+        chapterPreview.setSingleLine(true);
+        chapterPreview.setEllipsize(android.text.TextUtils.TruncateAt.END);
+        chapterPreview.setGravity(Gravity.CENTER_HORIZONTAL);
+        chapterPreview.setLayoutParams(new LinearLayout.LayoutParams(
+                THUMBNAIL_PREVIEW_LONG_SIDE,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
+        return chapterPreview;
+    }
+
     // Match the preview's aspect ratio to the bitmap (which mirrors the video).
     private static void applyBitmapAspectRatio(FrameLayout previewFrame, Bitmap bitmap) {
         final int bitmapWidth = bitmap.getWidth();
@@ -156,17 +200,16 @@ public class SeekbarThumbnailPreviewPatch {
             return;
         }
 
-        final int longSidePx = Dim.dp(THUMBNAIL_PREVIEW_LONG_SIDE);
         final int newWidth;
         final int newHeight;
         if (bitmapWidth >= bitmapHeight) {
-            newWidth = longSidePx;
-            newHeight = (int) ((long) longSidePx * bitmapHeight / bitmapWidth);
+            newWidth = THUMBNAIL_PREVIEW_LONG_SIDE;
+            newHeight = THUMBNAIL_PREVIEW_LONG_SIDE * bitmapHeight / bitmapWidth;
         } else {
-            newHeight = longSidePx;
-            newWidth = (int) ((long) longSidePx * bitmapWidth / bitmapHeight);
+            newHeight = THUMBNAIL_PREVIEW_LONG_SIDE;
+            newWidth = THUMBNAIL_PREVIEW_LONG_SIDE * bitmapWidth / bitmapHeight;
         }
-        LinearLayout.LayoutParams frameParams = (LinearLayout.LayoutParams) previewFrame.getLayoutParams();
+        ViewGroup.LayoutParams frameParams = previewFrame.getLayoutParams();
         if (frameParams.width != newWidth || frameParams.height != newHeight) {
             frameParams.width = newWidth;
             frameParams.height = newHeight;
@@ -186,7 +229,8 @@ public class SeekbarThumbnailPreviewPatch {
     /**
      * Injection point.
      */
-    public static void updateThumbnailPreview(View container, MotionEvent containerMotionEvent, Point trackballPos) {
+    public static void updateThumbnailPreview(View container, MotionEvent containerMotionEvent,
+                                              Point trackballPos) {
         try {
             if (!Settings.THUMBNAIL_PREVIEW.get() ||
                     !PlayerType.getCurrent().isMaximizedOrFullscreen() ||
@@ -202,9 +246,10 @@ public class SeekbarThumbnailPreviewPatch {
                 return;
             }
 
-            if (action == MotionEvent.ACTION_UP ||
-                    action == MotionEvent.ACTION_CANCEL ||
-                    (action == MotionEvent.ACTION_MOVE && (touchEventInitialY - containerMotionEvent.getY()) > Dim.dp(15))
+            if (action == MotionEvent.ACTION_UP
+                    || action == MotionEvent.ACTION_CANCEL
+                    || (action == MotionEvent.ACTION_MOVE
+                    && (touchEventInitialY - containerMotionEvent.getY()) > DIP15)
             ) {
                 if (views.thumbnailPreviewPopup.isShowing()) {
                     views.thumbnailPreviewPopup.dismiss();
@@ -216,16 +261,13 @@ public class SeekbarThumbnailPreviewPatch {
                 return;
             }
 
-            final int trackballPosX = trackballPos.x;
-            final int trackballPosY = trackballPos.y;
-
             if (action == MotionEvent.ACTION_MOVE) {
+                final int trackballPosX = trackballPos.x;
+                final int trackballPosY = trackballPos.y;
                 if (trackballPosX == lastX) {
                     return;
                 }
                 lastX = trackballPosX;
-
-                View rootView = container.getRootView();
 
                 Bitmap currentScrubbedPreviewBitmap = fineScrubbingPreviewBitmap;
                 if (currentScrubbedPreviewBitmap != null && currentScrubbedPreviewBitmap != lastAppliedBitmap) {
@@ -235,12 +277,28 @@ public class SeekbarThumbnailPreviewPatch {
                 }
 
                 if (trackballPosX >= 0) {
-                    final int maxPixel = Dim.getScreenWidth();
+                    final int seekbarWidth = seekbarRectangle.width();
                     final long totalVideoMillis = VideoInformation.getVideoLength();
 
-                    if (totalVideoMillis > 0 && maxPixel > 0) {
-                        final int totalSeconds = (int) ((((long) trackballPosX * totalVideoMillis) / maxPixel) / 1000);
+                    if (totalVideoMillis > 0 && seekbarWidth > 0) {
+                        final int relativeTrackballPosX = Utils.clamp(
+                                trackballPosX - seekbarRectangle.left,
+                                0,
+                                seekbarWidth
+                        );
+
+                        final long currentMillis = (((long) relativeTrackballPosX) * totalVideoMillis) / seekbarWidth;
+                        final int totalSeconds = Math.round((float) currentMillis / 1000.0f);
+
                         views.timestampPreview.setText(formatSeekTime(totalSeconds));
+
+                        CharSequence chapterTitle = ChaptersHookPatch.getChapterTitleAtTime(currentMillis);
+                        if (chapterTitle != null) {
+                            views.chapterPreview.setText(chapterTitle);
+                            views.chapterPreview.setVisibility(View.VISIBLE);
+                        } else {
+                            views.chapterPreview.setVisibility(View.GONE);
+                        }
                     }
                 }
 
@@ -257,14 +315,21 @@ public class SeekbarThumbnailPreviewPatch {
                         0,
                         Dim.getScreenWidth() - previewWidthPx
                 );
+                //noinspection ExtractMethodRecommender
                 final int previewDistance = PlayerType.getCurrent() == PlayerType.WATCH_WHILE_FULLSCREEN
                         ? THUMBNAIL_PREVIEW_DISTANCE_FULLSCREEN_DP
                         : THUMBNAIL_PREVIEW_DISTANCE_PORTRAIT_DP;
+
+                final int textHeight = views.chapterPreview.getVisibility() == View.VISIBLE
+                        ? THUMBNAIL_PREVIEW_TEXT_WITH_CHAPTER_HEIGHT_DP
+                        : THUMBNAIL_PREVIEW_TEXT_ONLY_HEIGHT_DP;
+
                 final int targetY = trackballPosY - previewHeightPx
-                        - previewDistance - THUMBNAIL_PREVIEW_TIMESTAMP_HEIGHT_DP;
+                        - previewDistance - textHeight;
 
                 PopupWindow thumbnailPreviewPopup = views.thumbnailPreviewPopup;
                 if (!thumbnailPreviewPopup.isShowing()) {
+                    View rootView = container.getRootView();
                     // Wait until the first bitmap so the popup shows immediately with the correct
                     // aspect ratio and Y offset, avoiding a jump from a default 16:9 position.
                     if (rootView.getWindowToken() != null && lastAppliedBitmap != null) {

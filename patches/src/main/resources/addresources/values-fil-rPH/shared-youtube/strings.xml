@@ -103,17 +103,6 @@ Upang mag-sign in, pindutin ang magpatuloy sa ibaba"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Hindi maka-sign in sa VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Nag-log out sa Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Imbalido ang sign in token ng VR, subukang mag-sign in muli sa VR</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Huwag paganahin ang pag-update ng JavaScript ng player</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Iki-lock ng player JavaScript sa isang partikular na bersyon
-
-• Kinakailangan ang isang valid na player JavaScript hash
-• Ang mga player JavaScript hash ay valid sa loob ng humigit-kumulang isang buwan, at ang mga outdated na hash ay ipapalabas ng GVS
-• Mabibigo ang playback kung ang hash ay ipinalabas"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"Kailangan mong magbigay ng isang valid na player JavaScript hash.
-
-Ang playback ay mabibigo kung ang Player JavaScript hash ay outdated."</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hash ng JavaScript ng Player</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Ilagay ang isang wastong hash ng JavaScript ng player</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Patayin ang QUIC protocol</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -168,7 +157,7 @@ Gayunpaman, magtatala din ng ilang datos ng tagagamit ang pagpapagana nito kagay
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Ihihiwalay ng bagong linya ang listahan ng mga component path builder string na ifi-filter</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Imbalido na pasadyang filter: %s</string>
-  <!-- Settings menu filter -->
+  <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">Salain ng menu ng mga setting</string>
   <string name="morphe_settings_menu_filter_screen_summary">Itago ang mga item sa standard screen ng mga setting ng app ayon sa kanilang nakikitang pangalan</string>
   <string name="morphe_settings_menu_filter_picker_empty">Buksan ang standard screen ng mga setting ng app nang isang beses upang mapunan ang listahan</string>

@@ -32,13 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">Skrýt panel O nás</string>
   <string name="morphe_hide_resources_shelf_title">Skrýt panel Zdroje</string>
   <string name="morphe_screen_layout_title">Rozložení</string>
-  <string name="morphe_disable_modern_home_title">Zakázat moderní uživatelské rozhraní domovské stránky</string>
-  <string name="morphe_disable_screenshot_popup_title">Zakázat vyskakovací okno pro screenshot</string>
-  <string name="morphe_disable_screenshot_popup_summary">Zakáže vyskakovací okno, které se zobrazí při pořízení screenshotu</string>
-  <string name="morphe_hide_ask_button_title">Skrýt tlačítko Zeptej se</string>
-  <string name="morphe_hide_ask_button_summary">Skryje tlačítko Zeptej se v vyhledávacím řádku</string>
-  <string name="morphe_force_system_font_title">Použít systémové písmo</string>
-  <string name="morphe_force_system_font_summary">Použijte systémové písmo zařízení namísto Reddit Sans nebo Roboto. Povolení této možnosti také vypne vlastní písmo.</string>
   <string name="morphe_custom_font_title">Vlastní písmo</string>
   <string name="morphe_custom_font_summary">Načte vlastní soubor písma TTF nebo OTF z cesty níže. Povolení této možnosti také vypne použití systémového písma.</string>
   <string name="morphe_custom_font_file_path_title">Soubor vlastního písma</string>
@@ -47,6 +40,13 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_pick_file_first">Nejprve vyberte vlastní soubor písma.</string>
   <string name="morphe_custom_font_invalid_file">Vyberte prosím soubor písma ve formátu .ttf nebo .otf.</string>
   <string name="morphe_custom_font_failed_to_load">Nepodařilo se načíst vlastní písmo. Vyberte jiný soubor</string>
+  <string name="morphe_disable_modern_home_title">Zakázat moderní uživatelské rozhraní domovské stránky</string>
+  <string name="morphe_disable_screenshot_popup_title">Zakázat vyskakovací okno pro screenshot</string>
+  <string name="morphe_disable_screenshot_popup_summary">Zakáže vyskakovací okno, které se zobrazí při pořízení screenshotu</string>
+  <string name="morphe_force_system_font_title">Použít systémové písmo</string>
+  <string name="morphe_force_system_font_summary">Použijte systémové písmo zařízení namísto Reddit Sans nebo Roboto. Povolení této možnosti také vypne vlastní písmo.</string>
+  <string name="morphe_hide_ask_button_title">Skrýt tlačítko Zeptej se</string>
+  <string name="morphe_hide_ask_button_summary">Skryje tlačítko Zeptej se v vyhledávacím řádku</string>
   <string name="morphe_hide_communities_shelf_title">Skrýt panel komunit</string>
   <string name="morphe_hide_communities_shelf_summary">Skryje panel souvisejících nebo doporučených komunit v subredditech</string>
   <string name="morphe_hide_trending_shelves_title">Skrýt oblíbené regály</string>

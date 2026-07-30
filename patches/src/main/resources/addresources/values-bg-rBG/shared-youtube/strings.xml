@@ -103,17 +103,6 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Не може да се впишете в VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Излезли сте от Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Невалиден токен за VR, опитайте се да се влезете в VR отново</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Деактивиране на актуализацията на JavaScript за плейъра</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Заключва JavaScript на плейъра към конкретна версия
-
-• Необходим е валиден хеш на JavaScript на плейъра
-• Хешовете на JavaScript на плейъра са валидни приблизително един месец, а остарелите хешове ще бъдат отменени от GVS
-• Възпроизвеждането ще се провали, ако хешът бъде отменен."</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"Трябва да предоставите валиден хеш на JavaScript на плейъра.
-
-Възпроизвеждането ще се провали, ако хешът на JavaScript на плейъра е остарял."</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">JavaScript хеш на играча</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Въведете валиден JavaScript хеш на плейъра</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Изключи протокола QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -168,7 +157,7 @@ Second \"item\" text"</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Списък на низове на градителите на пътища на компоненти за филтриране, разделени с нови редове</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Невалиден персонализиран филтър: %s</string>
-  <!-- Settings menu filter -->
+  <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">Филтър на менюто с настройки</string>
   <string name="morphe_settings_menu_filter_screen_summary">Скрий елементи от екрана с настройки на приложението по тяхното видимо име</string>
   <string name="morphe_settings_menu_filter_picker_empty">Отвори екрана с настройки на приложението веднъж, за да попълниш списъка</string>

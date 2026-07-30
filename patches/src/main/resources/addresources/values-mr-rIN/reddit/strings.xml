@@ -32,13 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">अबाउट शेल्फ लपवा</string>
   <string name="morphe_hide_resources_shelf_title">संसाधने शेल्फ लपवा</string>
   <string name="morphe_screen_layout_title">मांडणी</string>
-  <string name="morphe_disable_modern_home_title">आधुनिक होम UI अक्षम करा</string>
-  <string name="morphe_disable_screenshot_popup_title">स्क्रीनशॉट पॉपअप अक्षम करा</string>
-  <string name="morphe_disable_screenshot_popup_summary">स्क्रीनशॉट काढताना दिसणारा पॉपअप अक्षम करते</string>
-  <string name="morphe_hide_ask_button_title">\'विचारा\' (Ask) बटण लपवा</string>
-  <string name="morphe_hide_ask_button_summary">सर्च बारमधील \'Ask\' बटण लपवते</string>
-  <string name="morphe_force_system_font_title">सिस्टम फॉन्ट सक्तीत लावा</string>
-  <string name="morphe_force_system_font_summary">सिस्टम फॉन्ट वापरा, रेडिट सॅन्स किंवा रोबोटो नाही. हे सक्षम केल्याने कस्टम फॉन्ट देखील बंद होईल.</string>
   <string name="morphe_custom_font_title">कस्टम फॉन्ट</string>
   <string name="morphe_custom_font_summary">खालील मार्गावरून कस्टम TTF किंवा OTF फॉन्ट फाइल लोड करा. हे सक्षम केल्याने फोर्स सिस्टम फॉन्ट देखील बंद होईल.</string>
   <string name="morphe_custom_font_file_path_title">कस्टम फॉन्ट फाइल</string>
@@ -47,6 +40,13 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_pick_file_first">प्रथम कस्टम फॉन्ट फाइल निवडा.</string>
   <string name="morphe_custom_font_invalid_file">कृपया .ttf किंवा .otf फॉन्ट फाइल निवडा.</string>
   <string name="morphe_custom_font_failed_to_load">कस्टम फॉन्ट लोड करण्यात अयशस्वी. दुसरा फाइल निवडा</string>
+  <string name="morphe_disable_modern_home_title">आधुनिक होम UI अक्षम करा</string>
+  <string name="morphe_disable_screenshot_popup_title">स्क्रीनशॉट पॉपअप अक्षम करा</string>
+  <string name="morphe_disable_screenshot_popup_summary">स्क्रीनशॉट काढताना दिसणारा पॉपअप अक्षम करते</string>
+  <string name="morphe_force_system_font_title">सिस्टम फॉन्ट सक्तीत लावा</string>
+  <string name="morphe_force_system_font_summary">सिस्टम फॉन्ट वापरा, रेडिट सॅन्स किंवा रोबोटो नाही. हे सक्षम केल्याने कस्टम फॉन्ट देखील बंद होईल.</string>
+  <string name="morphe_hide_ask_button_title">\'विचारा\' (Ask) बटण लपवा</string>
+  <string name="morphe_hide_ask_button_summary">सर्च बारमधील \'Ask\' बटण लपवते</string>
   <string name="morphe_hide_communities_shelf_title">समुदाय शेल्फ लपवा</string>
   <string name="morphe_hide_communities_shelf_summary">सबरेडिट्समध्ये संबंधित किंवा प्रस्तावित समुदाय शेल्फ लपवते</string>
   <string name="morphe_hide_trending_shelves_title">ट्रेंडिंग शेल्फ लपवा</string>

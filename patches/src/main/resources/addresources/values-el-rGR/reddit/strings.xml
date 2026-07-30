@@ -32,13 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">Απόκρυψη ραφιού \"Σχετικά με\"</string>
   <string name="morphe_hide_resources_shelf_title">Απόκρυψη ραφιού \"Πόροι\"</string>
   <string name="morphe_screen_layout_title">Διάταξη</string>
-  <string name="morphe_disable_modern_home_title">Απενεργοποίηση σύγχρονου περιβάλλοντος εργασίας</string>
-  <string name="morphe_disable_screenshot_popup_title">Απενεργοποίηση αναδυόμενου παραθύρου στη λήψη στιγμιότυπου οθόνης</string>
-  <string name="morphe_disable_screenshot_popup_summary">Απενεργοποιεί το αναδυόμενο παράθυρο που εμφανίζεται κατά τη λήψη στιγμιότυπου της οθόνης</string>
-  <string name="morphe_hide_ask_button_title">Απόκρυψη κουμπιού</string>
-  <string name="morphe_hide_ask_button_summary">Αποκρύπτει το κουμπί στην γραμμή αναζήτησης</string>
-  <string name="morphe_force_system_font_title">Επιβολή γραμματοσειράς συστήματος</string>
-  <string name="morphe_force_system_font_summary">Χρήση της γραμματοσειράς συστήματος της συσκευής αντί του Reddit Sans ή του Roboto. Η ενεργοποίηση αυτή απενεργοποιεί επίσης την Προσαρμοσμένη γραμματοσειρά.</string>
   <string name="morphe_custom_font_title">Προσαρμοσμένη γραμματοσειρά</string>
   <string name="morphe_custom_font_summary">Φόρτωση ενός προσαρμοσμένου αρχείου γραμματοσειράς TTF ή OTF από την παρακάτω διαδρομή. Η ενεργοποίηση αυτή απενεργοποιεί επίσης την Χρήση γραμματοσειράς συστήματος.</string>
   <string name="morphe_custom_font_file_path_title">Αρχείο προσαρμοσμένης γραμματοσειράς</string>
@@ -47,6 +40,13 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_pick_file_first">Επιλέξτε πρώτα ένα προσαρμοσμένο αρχείο γραμματοσειράς.</string>
   <string name="morphe_custom_font_invalid_file">Παρακαλώ επιλέξτε ένα αρχείο γραμματοσειράς .ttf ή .otf.</string>
   <string name="morphe_custom_font_failed_to_load">Αποfailedη φόρτωση της προσαρμοσμένης γραμματοσειράς. Επιλέξτε ένα διαφορετικό αρχείο.</string>
+  <string name="morphe_disable_modern_home_title">Απενεργοποίηση σύγχρονου περιβάλλοντος εργασίας</string>
+  <string name="morphe_disable_screenshot_popup_title">Απενεργοποίηση αναδυόμενου παραθύρου στη λήψη στιγμιότυπου οθόνης</string>
+  <string name="morphe_disable_screenshot_popup_summary">Απενεργοποιεί το αναδυόμενο παράθυρο που εμφανίζεται κατά τη λήψη στιγμιότυπου της οθόνης</string>
+  <string name="morphe_force_system_font_title">Επιβολή γραμματοσειράς συστήματος</string>
+  <string name="morphe_force_system_font_summary">Χρήση της γραμματοσειράς συστήματος της συσκευής αντί του Reddit Sans ή του Roboto. Η ενεργοποίηση αυτή απενεργοποιεί επίσης την Προσαρμοσμένη γραμματοσειρά.</string>
+  <string name="morphe_hide_ask_button_title">Απόκρυψη κουμπιού</string>
+  <string name="morphe_hide_ask_button_summary">Αποκρύπτει το κουμπί στην γραμμή αναζήτησης</string>
   <string name="morphe_hide_communities_shelf_title">Απόκρυψη ράφιου κοινοτήτων</string>
   <string name="morphe_hide_communities_shelf_summary">Αποκρύπτει το ράφι με τις σχετικές ή προτεινόμενες κοινότητες στα subreddits</string>
   <string name="morphe_hide_trending_shelves_title">Απόκρυψη δημοφιλών ραφιών</string>

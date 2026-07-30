@@ -103,17 +103,6 @@ Untuk masuk, tekan lanjutkan di bawah ini"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Tidak dapat masuk ke VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Keluar dari Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Token masuk VR tidak sah, coba masuk ke VR lagi</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Nonaktifkan pembaruan pemutar JavaScript</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Mengunci pemutar JavaScript ke versi tertentu
-
-• Diperlukan hash pemutar JavaScript yang sah
-• Hash pemutar JavaScript berlaku selama sekitar satu bulan, dan hash yang kedaluwarsa akan dicabut oleh GVS
-• Pemutaran gagal jika hash dicabut"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"Anda harus memberikan hash pemutar JavaScript yang sah.
-
-Pemutaran akan gagal jika hash pemutar JavaScript sudah kedaluwarsa."</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hash pemutar JavaScript</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Masukkan hash pemutar JavaScript yang sah</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Nonaktifkan protokol QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -168,7 +157,7 @@ Namun, mengaktifkan ini juga akan mencatat beberapa data pengguna seperti alamat
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Daftar string pembuat jalur komponen yang akan disaring, dipisahkan oleh baris baru</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Penyaring khusus tidak sah: %s</string>
-  <!-- Settings menu filter -->
+  <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">Filter menu Pengaturan</string>
   <string name="morphe_settings_menu_filter_screen_summary">Sembunyikan item di layar pengaturan aplikasi standar berdasarkan nama yang terlihat</string>
   <string name="morphe_settings_menu_filter_picker_empty">Buka layar pengaturan aplikasi standar sekali untuk mengisi daftar</string>

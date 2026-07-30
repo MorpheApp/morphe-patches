@@ -158,6 +158,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_featured_playlists_section_title">隱藏精選歌單區段</string>
   <string name="morphe_hide_featured_videos_section_title">隱藏精選影片區段</string>
   <string name="morphe_hide_gaming_section_title">隱藏「遊戲」區段</string>
+  <string name="morphe_hide_hashtag_section_title">隱藏主題標籤區段</string>
   <string name="morphe_hide_how_this_was_made_section_title">隱藏「這項內容的製作方式」區段</string>
   <string name="morphe_hide_hype_points_title">隱藏Hype點數</string>
   <string name="morphe_hide_info_cards_section_title">隱藏資訊卡片區段</string>
@@ -203,14 +204,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">輸入要篩選的評論輪播名稱，每行一個</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">隱藏 AI 聊天摘要</string>
   <string name="morphe_hide_comments_channel_guidelines_title">隱藏頻道準則</string>
-  <string name="morphe_hide_comments_prompts_title">隱藏留言提示</string>
-  <string name="morphe_hide_comments_prompts_summary">隱藏評論區中的情境資訊訊息</string>
   <string name="morphe_hide_comments_by_members_header_title">隱藏「會員留言」標題</string>
   <string name="morphe_hide_comments_section_title">隱藏留言區</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">隱藏首頁推薦內容中的留言區</string>
-  <string name="morphe_hide_comments_community_guidelines_title">隱藏社群守則</string>
   <string name="morphe_hide_comments_create_a_short_button_title">隱藏「建立 Short」按鈕</string>
-  <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">隱藏表情符號和時間戳記按鈕</string>
   <string name="morphe_hide_comments_filter_bar_options_title">隱藏篩選列選項</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">隱藏篩選列選項，僅保留「熱門」和「最新」</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">隱藏禮物動畫和卡片</string>
@@ -456,6 +453,8 @@ Second \"item\" text"</string>
   <string name="morphe_livestream_dvr_title">啟用直播 DVR</string>
   <string name="morphe_livestream_dvr_summary">允許在所有直播上尋找，即使那些通常限制此功能的直播也能尋找</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">啟用跳轉列縮圖預覽</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">在拖動搜尋條時顯示影片縮圖</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"「啟用直播錄製」可能無法使用
 
@@ -1076,23 +1075,23 @@ Second \"item\" text"</string>
 • HDR 影片將不會使用 AVC
 • 部分裝置無法強制使用 AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">允許在使用 Android VR 用戶端時進行軟體 AV1 解碼</string>
+  <string name="morphe_force_avc_codec_not_available">若要使用此功能，請將「偽造視訊串流」設定為「Android VR」或「Android Studio」</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">開啟進階畫質選單</string>
   <string name="morphe_advanced_video_quality_menu_summary">略過畫質選單，直接開啟進階畫質選單</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">隱藏 Premium 品質選項</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">優先影片品質</string>
-  <string name="morphe_prioritize_video_quality_summary">優先考慮可用的最高視訊畫質，而非編碼器效率</string>
+  <string name="morphe_video_quality_prioritize_title">優先影片品質</string>
+  <string name="morphe_video_quality_prioritize_summary">優先考慮可用的最高影片品質，而非編碼器效率</string>
+  <string name="morphe_video_quality_prioritize_dialog">如果關閉此設定，則舊影片可能不會顯示任何影片品質選項</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">允許 Android VR AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">啟動 Return YouTube Dislike</string>
+  <string name="morphe_spoof_video_streams_av1_title">允許 Android VR / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">允許使用 Android VR / visionOS 用戶端時使用軟體 AV1 解碼</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"啟用此設定可能會使用軟體 AV1 解碼。
 
 AV1 視訊播放可能會卡頓或丟格。"</string>
   <string name="morphe_spoof_video_streams_about_title">偽裝副作用</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• 影片可能會在 1:00 停止，或在某些地區無法播放</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• 音軌選單遺失</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• 沒有 AV1 影片解碼器</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR 全景模式不可用</string>

@@ -32,13 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">Ascunde raftul Despre</string>
   <string name="morphe_hide_resources_shelf_title">Ascunde raftul Resurse</string>
   <string name="morphe_screen_layout_title">Aspect</string>
-  <string name="morphe_disable_modern_home_title">Dezactivează interfața utilizator modernă a paginii principale</string>
-  <string name="morphe_disable_screenshot_popup_title">Dezactivează fereastra de notificare pentru capturi de ecran</string>
-  <string name="morphe_disable_screenshot_popup_summary">Dezactivează fereastra care apare când faci o captură de ecran</string>
-  <string name="morphe_hide_ask_button_title">Ascunde butonul Ask</string>
-  <string name="morphe_hide_ask_button_summary">Ascunde butonul Ask în bara de căutare</string>
-  <string name="morphe_force_system_font_title">Forțează fontul de sistem</string>
-  <string name="morphe_force_system_font_summary">Utilizați fontul sistem al dispozitivului în loc de Reddit Sans sau Roboto. Activarea acestei opțiuni dezactivează și fontul personalizat.</string>
   <string name="morphe_custom_font_title">Font personalizat</string>
   <string name="morphe_custom_font_summary">Încarcă un fișier font TTF sau OTF personalizat din calea de mai jos. Activarea acestei opțiuni dezactivează și utilizarea fontului sistem.</string>
   <string name="morphe_custom_font_file_path_title">Fișier font personalizat</string>
@@ -47,6 +40,13 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_pick_file_first">Alegeți mai întâi un fișier font personalizat.</string>
   <string name="morphe_custom_font_invalid_file">Vă rugăm să selectați un fișier font .ttf sau .otf.</string>
   <string name="morphe_custom_font_failed_to_load">A eșuat încărcarea fontului personalizat. Alege un fișier diferit</string>
+  <string name="morphe_disable_modern_home_title">Dezactivează interfața utilizator modernă a paginii principale</string>
+  <string name="morphe_disable_screenshot_popup_title">Dezactivează fereastra de notificare pentru capturi de ecran</string>
+  <string name="morphe_disable_screenshot_popup_summary">Dezactivează fereastra care apare când faci o captură de ecran</string>
+  <string name="morphe_force_system_font_title">Forțează fontul de sistem</string>
+  <string name="morphe_force_system_font_summary">Utilizați fontul sistem al dispozitivului în loc de Reddit Sans sau Roboto. Activarea acestei opțiuni dezactivează și fontul personalizat.</string>
+  <string name="morphe_hide_ask_button_title">Ascunde butonul Ask</string>
+  <string name="morphe_hide_ask_button_summary">Ascunde butonul Ask în bara de căutare</string>
   <string name="morphe_hide_communities_shelf_title">Ascunde raftul comunităților</string>
   <string name="morphe_hide_communities_shelf_summary">Ascunde raftul comunităților asociate sau sugerate în subreddit-uri</string>
   <string name="morphe_hide_trending_shelves_title">Ascunde rafturile în tendințe</string>

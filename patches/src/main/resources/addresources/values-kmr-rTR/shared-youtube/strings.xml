@@ -101,17 +101,6 @@ Da ku teqezîya nêzîkê bikin, li jêr bidixin 'bidin pêşbaz'."</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Ne çawa teqezîya VR bikin: %s.</string>
   <string name="morphe_oauth2_toast_reset">Ji Android VR derketim.</string>
   <string name="morphe_oauth2_toast_invalid">Teqezîya VR bi derexaneyê, zî dosya teqezîya nêzîkê bî.</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Serê pêşandera JavaScriptê astive</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"JavaScriptê yê lîstikvanê bi guhertoyek taybet li ser rasterasti girê dide
-
-• Hash-a valide ya JavaScriptê ya lîstikvanê hewce ye
-• Hash-ên JavaScriptê ya lîstikvanê bi nêzîkî mehêyek derbasbûyî valide ne, û hash-ên derbasbûyî ji aliyê GVS ve têne betal kirin
-• Lêkirin têk diçe eger hash betal bibe."</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"Divê hûn hash-a valide ya JavaScriptê ya lîstikvanê peyda bikin.
-
-Lêkirin têk diçe eger hash-a JavaScriptê ya lîstikvanê kevn be."</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Lepikê JavaScript</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Dîrê dirstyê Player JavaScript vigirin.</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Protocols QUIC qut bikin</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -166,7 +155,7 @@ Lê belê, çalak kirina wê dê hin agahiyên bikarhêner wekî navnîşana IP-
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Lîsteya stringên avakera rêya pêkhateyan da ku bi rêyên nû veqetandî fîltre bikin</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Filtra niştecî ne heq e: %s</string>
-  <!-- Settings menu filter -->
+  <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">Filtra menuya ayaran</string>
   <string name="morphe_settings_menu_filter_screen_summary">Navê dîmenê yê ku li ser ekranê bi navê derbasbûyê xuya dike, li ser ekranê yê ayarên sepîn bike</string>
   <string name="morphe_settings_menu_filter_picker_empty">Carekê ekranê ayarên sepîn veke da ku navnîşê qewim bike</string>

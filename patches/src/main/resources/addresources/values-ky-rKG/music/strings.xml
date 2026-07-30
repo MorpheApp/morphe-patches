@@ -23,6 +23,7 @@ Second \"item\" text"</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <!-- ad.hideAdsPatch -->
+  <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <!-- interaction.crossfade.crossfadePatch -->
   <!-- Empty string because custom preference handles the title itself -->
   <string name="morphe_music_crossfade_about_title">Маалымат</string>
@@ -31,7 +32,6 @@ Second \"item\" text"</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <!-- layout.buttons.hideButtonsPatch -->
-  <!-- layout.hide.general.hideMusicComponentsPatch -->
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->

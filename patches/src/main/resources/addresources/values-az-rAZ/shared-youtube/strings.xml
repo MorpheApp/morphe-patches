@@ -103,17 +103,6 @@ Daxil olmaq üçün aşağıda davam et-i vurun"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">VR-a daxil olmaq olmur: %s</string>
   <string name="morphe_oauth2_toast_reset">Android VR-dan Çıxıldı</string>
   <string name="morphe_oauth2_toast_invalid">Token-dəki etibarsız VR girişi, VR-a təkrar daxil olmağa cəhd et</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Oynadıcı JavaScript yenilənməsini qapat</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Oynadıcının JavaScript-ini xüsusi versiyaya bağlayır
-
-• Etibarlı oynadıcı JavaScript hash-i tələb olunur
-• Oynadıcı JavaScript hash-ləri təqribən bir ay müddətində qüvvədədir və köhnəlmiş hash-lər GVS tərəfindən ləğv ediləcək
-• Hash ləğv edilərsə, oynatma uğursuz olur"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"Etibarlı oynadıcı JavaScript hash-i təmin etməlisiniz.
-
-Oynadıcı JavaScript hash-i köhnədirsə, oynatma uğursuz olacaq."</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Oynadıcı JavaScript hash-i</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">İşlək oynadıcı JavaScript hash-i qeyd et</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC protokolunu qeyri-aktiv et</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -168,7 +157,7 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Yeni cərgələrlə ayrılan, filtr üçün element yol qurucusu sətirlərinin siyahısı</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Etibarsız fərdi filtr: %s</string>
-  <!-- Settings menu filter -->
+  <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">Ayarlar menyusu filtri</string>
   <string name="morphe_settings_menu_filter_screen_summary">Standart tətbiq ayarları ekranındakı elementləri görünən adları ilə gizlət</string>
   <string name="morphe_settings_menu_filter_picker_empty">Siyahıya yerləşdirmək üçün standart tətbiq ayarları ekranını bir dəfə aç</string>

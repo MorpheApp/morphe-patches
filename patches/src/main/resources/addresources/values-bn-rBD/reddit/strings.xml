@@ -32,13 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">অ্যাবাউট শেল্ফ লুকান</string>
   <string name="morphe_hide_resources_shelf_title">রিসোর্স শেল্ফ লুকান</string>
   <string name="morphe_screen_layout_title">বিন্যাস</string>
-  <string name="morphe_disable_modern_home_title">আধুনিক হোম ইউআই নিষ্ক্রিয় করুন</string>
-  <string name="morphe_disable_screenshot_popup_title">স্ক্রিনশট পপআপ নিষ্ক্রিয় করুন</string>
-  <string name="morphe_disable_screenshot_popup_summary">স্ক্রিনশট নেওয়ার সময় যে পপআপটি দেখা যায় সেটি নিষ্ক্রিয় করা হয়েছে</string>
-  <string name="morphe_hide_ask_button_title">লুকানোর বোতামটি জিজ্ঞাসা করুন</string>
-  <string name="morphe_hide_ask_button_summary">সার্চ বারে জিজ্ঞাসা করার বোতামটি লুকায়</string>
-  <string name="morphe_force_system_font_title">সিস্টেম ফন্ট জোর করুন</string>
-  <string name="morphe_force_system_font_summary">রেডিট Sans বা Roboto-র পরিবর্তে ডিভাইসের সিস্টেম ফন্ট ব্যবহার করুন। এটি সক্রিয় করলে কাস্টম ফন্টও বন্ধ হয়ে যাবে।</string>
   <string name="morphe_custom_font_title">কাস্টম ফন্ট</string>
   <string name="morphe_custom_font_summary">নিচের পথ থেকে একটি কাস্টম TTF বা OTF ফন্ট ফাইল লোড করুন। এটি সক্রিয় করলে ফোর্স সিস্টেম ফন্টও বন্ধ হয়ে যাবে।</string>
   <string name="morphe_custom_font_file_path_title">কাস্টম ফন্ট ফাইল</string>
@@ -47,6 +40,13 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_pick_file_first">প্রথমে একটি কাস্টম ফন্ট ফাইল নির্বাচন করুন</string>
   <string name="morphe_custom_font_invalid_file">দয়া করে একটি .ttf অথবা .otf ফন্ট ফাইল নির্বাচন করুন</string>
   <string name="morphe_custom_font_failed_to_load">কাস্টম ফন্ট লোড করতে ব্যর্থ। অন্য ফাইল নির্বাচন করুন</string>
+  <string name="morphe_disable_modern_home_title">আধুনিক হোম ইউআই নিষ্ক্রিয় করুন</string>
+  <string name="morphe_disable_screenshot_popup_title">স্ক্রিনশট পপআপ নিষ্ক্রিয় করুন</string>
+  <string name="morphe_disable_screenshot_popup_summary">স্ক্রিনশট নেওয়ার সময় যে পপআপটি দেখা যায় সেটি নিষ্ক্রিয় করা হয়েছে</string>
+  <string name="morphe_force_system_font_title">সিস্টেম ফন্ট জোর করুন</string>
+  <string name="morphe_force_system_font_summary">রেডিট Sans বা Roboto-র পরিবর্তে ডিভাইসের সিস্টেম ফন্ট ব্যবহার করুন। এটি সক্রিয় করলে কাস্টম ফন্টও বন্ধ হয়ে যাবে।</string>
+  <string name="morphe_hide_ask_button_title">লুকানোর বোতামটি জিজ্ঞাসা করুন</string>
+  <string name="morphe_hide_ask_button_summary">সার্চ বারে জিজ্ঞাসা করার বোতামটি লুকায়</string>
   <string name="morphe_hide_communities_shelf_title">কমিউনিটি শেলফ লুকিয়ে রাখুন</string>
   <string name="morphe_hide_communities_shelf_summary">সাবরেডিটগুলোর ভেতরের সম্পর্কিত বা প্রস্তাবিত কমিউনিটি শেলফ লুকিয়ে রাখে</string>
   <string name="morphe_hide_trending_shelves_title">ট্রেন্ডিং শেলফগুলো লুকিয়ে রাখুন</string>

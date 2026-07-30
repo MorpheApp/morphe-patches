@@ -92,9 +92,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_import_successful">การตั้งค่าถูกนำเข้าเรียบร้อยแล้ว</string>
   <string name="morphe_sb_settings_import_failed">ไม่สามารถนำเข้าได้: %s</string>
   <string name="morphe_sb_settings_export_failed">ไม่สามารถส่งออกได้: %s</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning">"การตั้งค่าของคุณมี SponsorBlock userid ที่เป็นส่วนตัว
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"การตั้งค่าของคุณมี ID ผู้ใช้ SponsorBlock ที่เป็นส่วนตัว
 
-User id ของคุณเหมือนกับรหัสผ่าน และไม่ควรแชร์"</string>
+ID ผู้ใช้ของคุณเหมือนกับรหัสผ่าน และไม่ควรแชร์"</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">อย่าแสดงอีก</string>
   <string name="morphe_sb_diff_segments_title">เปลี่ยนพฤติกรรมของส่วน</string>
   <string name="morphe_sb_segments_sponsor">สปอนเซอร์</string>
@@ -137,19 +137,19 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_sb_skipped_sponsor">ข้ามสปอนเซอร์แล้ว</string>
   <string name="morphe_sb_skipped_selfpromo">ข้ามการโปรโมทตัวเองแล้ว</string>
   <string name="morphe_sb_skipped_interaction">ข้ามการแจ้งเตือนที่น่ารำคาญแล้ว</string>
-  <string name="morphe_sb_skipped_highlight">ข้ามไปยังไฮไลต์</string>
+  <string name="morphe_sb_skipped_highlight">ข้ามไปยังไฮไลต์แล้ว</string>
   <string name="morphe_sb_skipped_intro_beginning">ข้ามอินโทรแล้ว</string>
-  <string name="morphe_sb_skipped_intro_middle">ข้ามช่วงพัก</string>
-  <string name="morphe_sb_skipped_intro_end">ข้ามช่วงพัก</string>
+  <string name="morphe_sb_skipped_intro_middle">ข้ามช่วงพักแล้ว</string>
+  <string name="morphe_sb_skipped_intro_end">ข้ามช่วงพักแล้ว</string>
   <string name="morphe_sb_skipped_outro">ข้ามเอ้าท์โทรแล้ว</string>
   <string name="morphe_sb_skipped_hook">ข้ามช่วงเริ่มแล้ว</string>
   <string name="morphe_sb_skipped_preview_beginning">ข้ามตัวอย่างแล้ว</string>
   <string name="morphe_sb_skipped_preview_middle">ข้ามตัวอย่างแล้ว</string>
-  <string name="morphe_sb_skipped_preview_end">ข้ามสรุป</string>
+  <string name="morphe_sb_skipped_preview_end">ข้ามสรุปแล้ว</string>
   <string name="morphe_sb_skipped_filler">ข้ามช่วงแทรกแล้ว</string>
   <string name="morphe_sb_skipped_nomusic">ข้ามช่วงไม่มีเพลงแล้ว</string>
   <string name="morphe_sb_skipped_unsubmitted">ข้ามส่วนที่ไม่ได้รับการยืนยันแล้ว</string>
-  <string name="morphe_sb_skipped_multiple_segments">ข้ามหลายส่วน</string>
+  <string name="morphe_sb_skipped_multiple_segments">ข้ามหลายส่วนแล้ว</string>
   <string name="morphe_sb_skip_automatically">ข้ามอัตโนมัติ</string>
   <string name="morphe_sb_skip_automatically_once">ข้ามโดยอัตโนมัติหนึ่งครั้ง</string>
   <string name="morphe_sb_skip_showbutton">แสดงปุ่มข้าม</string>
@@ -177,7 +177,7 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_sb_vote_segment_time_to_from">%1$s ถึง %2$s</string>
   <string name="morphe_sb_new_segment_choose_category">กรุณาเลือกหมวดหมู่ของส่วน</string>
   <string name="morphe_sb_new_segment_disabled_category">หมวดหมู่ถูกปิดใช้งานใน การตั้งค่า เปิดใช้งานหมวดหมู่เพื่อส่ง</string>
-  <string name="morphe_sb_new_segment_title">SponsorBlockส่วนใหม่</string>
+  <string name="morphe_sb_new_segment_title">SponsorBlock ส่วนใหม่</string>
   <string name="morphe_sb_new_segment_mark_time_as_question">ตั้ง %s เป็นจุดเริ่มต้นหรือจุดสิ้นสุดของส่วนใหม่?</string>
   <string name="morphe_sb_new_segment_mark_start">เริ่มต้น</string>
   <string name="morphe_sb_new_segment_mark_end">สิ้นสุด</string>
@@ -221,10 +221,10 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_sb_stats_submissions">คุณสร้างส่วน &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_submissions_summary">แตะที่นี่เพื่อดูส่วนของคุณ</string>
   <string name="morphe_sb_stats_saved_zero">กระดานผู้นำ SponsorBlock</string>
-  <string name="morphe_sb_stats_saved">คุณช่วยคนจากส่วน &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_saved">คุณช่วยคนจาก &lt;b&gt;%s&lt;/b&gt; ส่วน</string>
   <string name="morphe_sb_stats_saved_summary_zero">แตะที่นี่เพื่อดูสถิติทั่วโลกและผู้มีส่วนร่วมสูงสุด</string>
   <string name="morphe_sb_stats_saved_summary">นั่นคือ &lt;b&gt;%s&lt;/b&gt; ของชีวิตของพวกเขา&lt;br&gt;แตะที่นี่เพื่อดูกระดานผู้นำ</string>
-  <string name="morphe_sb_stats_self_saved">คุณข้ามส่วน &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_self_saved">คุณข้ามไป &lt;b&gt;%s&lt;/b&gt; ส่วน</string>
   <string name="morphe_sb_stats_self_saved_summary">นั่นคือ &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_self_saved_reset_title">รีเซ็ตตัวนับส่วนที่ข้ามไป?</string>
   <string name="morphe_sb_stats_saved_hour_format">%1$s ชั่วโมง %2$s นาที</string>

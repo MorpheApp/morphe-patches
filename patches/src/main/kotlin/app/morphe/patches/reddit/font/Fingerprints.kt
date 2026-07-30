@@ -4,6 +4,7 @@
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
+
 package app.morphe.patches.reddit.font
 
 import app.morphe.patcher.Fingerprint
@@ -32,7 +33,7 @@ internal object LegacyTypefaceCompatCreateFromResourcesFontFileFingerprint : Fin
         "I",
     ),
     filters = listOf(
-        methodCall(smali = "Landroid/graphics/fonts/Font\$Builder;-><init>(Landroid/content/res/Resources;I)V"),
+        methodCall(smali = $$"Landroid/graphics/fonts/Font$Builder;-><init>(Landroid/content/res/Resources;I)V"),
     ),
 )
 
@@ -47,7 +48,7 @@ internal object ModernTypefaceCompatCreateFromResourcesFontFileFingerprint : Fin
         "I",
     ),
     filters = listOf(
-        methodCall(smali = "Landroid/graphics/fonts/Font\$Builder;-><init>(Landroid/content/res/Resources;I)V"),
+        methodCall(smali = $$"Landroid/graphics/fonts/Font$Builder;-><init>(Landroid/content/res/Resources;I)V"),
     ),
 )
 

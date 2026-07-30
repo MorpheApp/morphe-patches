@@ -31,13 +31,33 @@ Second \"item\" text"</string>
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Um Morphe</string>
   <string name="morphe_settings_music_screen_1_ads_title">Auglýsingar</string>
-  <string name="morphe_settings_music_screen_2_general_title">Alhliða</string>
-  <string name="morphe_settings_music_screen_3_player_title">Spilari</string>
-  <string name="morphe_settings_music_screen_7_misc_title">Ýmisslegt</string>
+  <string name="morphe_settings_music_screen_2_feed_title">Straumur</string>
+  <string name="morphe_settings_music_screen_3_general_title">Almennt</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Fela merkið \'Fá Morphe Premium\'</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Fela kynningar á Music Premium</string>
   <string name="morphe_music_hide_video_ads_title">Fela myndbandsaug lýsingar</string>
+  <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_music_hide_audio_video_toggle_title">Taktu aftur Audio / Video ákveða</string>
+  <string name="morphe_music_hide_explore_shelf_title">Fela Explore shelf</string>
+  <string name="morphe_music_hide_grid_shelves_title">Fela grid shelves</string>
+  <string name="morphe_music_hide_horizontal_shelves_title">Fela láréttar raðir</string>
+  <string name="morphe_music_hide_list_shelves_title">Fela list shelves</string>
+  <string name="morphe_music_hide_lyrics_panel_category_title">Lýríuflipull</string>
+  <string name="morphe_music_hide_lyrics_share_button_title">Fela Hlutabótun hnappinn</string>
+  <string name="morphe_music_hide_lyrics_translate_button_title">Fela Þýðingarhnappinn</string>
+  <string name="morphe_music_hide_new_from_shelf_title">Fela \'New from\' shelf</string>
+  <string name="morphe_music_hide_playlist_shelves_title">Fela playlist shelves</string>
+  <string name="morphe_music_hide_repeat_button_title">Fela Repeat button</string>
+  <string name="morphe_music_hide_shuffle_button_title">Fela Shuffle button</string>
+  <string name="morphe_music_hide_speed_dial_shelf_title">Fela \'Speed dial\' shelf</string>
+  <string name="morphe_music_hide_suggested_for_you_shelf_title">Fela \'Suggested for you\' shelf</string>
+  <string name="morphe_music_comments_screen_title">Athugasemdir</string>
+  <string name="morphe_music_comments_screen_summary">Veldu hvaða þættir koma fram í athugasemdadeildinni</string>
+  <string name="morphe_music_hide_comments_community_guidelines_title">Fela samfélagsreglur</string>
+  <string name="morphe_music_hide_comments_emoji_button_title">Fela Emoji hnapp</string>
+  <string name="morphe_music_hide_comments_info_button_title">Fela Info hnapp</string>
+  <string name="morphe_music_hide_comments_timestamp_button_title">Fela Timestamp hnapp</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Krossfade</string>
   <string name="morphe_music_crossfade_screen_summary">Blanda lagum saman á sléttan hátt</string>
@@ -115,10 +135,6 @@ YouTube Music 8.x — crossfade virkar bara á 9.x og nýrri útgáfum"</string>
   <string name="morphe_music_hide_history_button_title">Fela Sögu hnapp</string>
   <string name="morphe_music_hide_notification_button_title">Fela Tilkynninga hnapp</string>
   <string name="morphe_music_hide_search_button_title">Fela Leitarhnapp</string>
-  <!-- layout.hide.general.hideMusicComponentsPatch -->
-  <string name="morphe_music_hide_lyrics_panel_category_title">Lýríuflipull</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Fela Hlutabótun hnappinn</string>
-  <string name="morphe_music_hide_lyrics_translate_button_title">Fela Þýðingarhnappinn</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Gerðaknappar</string>
   <string name="morphe_music_action_buttons_screen_summary">Veldu hvaða gerðaknappar skulu sýndir undir spilaranum</string>

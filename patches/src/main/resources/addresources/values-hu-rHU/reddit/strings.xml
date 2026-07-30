@@ -32,13 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">Névjegysáv elrejtése</string>
   <string name="morphe_hide_resources_shelf_title">Források sáv elrejtése</string>
   <string name="morphe_screen_layout_title">Elrendezés</string>
-  <string name="morphe_disable_modern_home_title">A modern kezdőképernyő felület letiltása</string>
-  <string name="morphe_disable_screenshot_popup_title">Képernyőfotó-felugró párbeszéd letiltása</string>
-  <string name="morphe_disable_screenshot_popup_summary">Letiltja a képernyőfotó készítésekor megjelenő felugró párbeszédet</string>
-  <string name="morphe_hide_ask_button_title">Kérdezz gomb elrejtése</string>
-  <string name="morphe_hide_ask_button_summary">Elrejti a Kérdezz gombot a keresősávban</string>
-  <string name="morphe_force_system_font_title">Rendszerbetűtípus kényszerítése</string>
-  <string name="morphe_force_system_font_summary">A rendszerbetűt használja a Reddit Sans vagy Roboto helyett. Ennek engedélyezése kikapcsolja a Egyéni betűtípust is.</string>
   <string name="morphe_custom_font_title">Egyéni betűtípus</string>
   <string name="morphe_custom_font_summary">Töltse be egyéni TTF vagy OTF betűtípus-fájlt az alábbi elérési útról. Ennek engedélyezése kikapcsolja a Rendszerbetű használatát is.</string>
   <string name="morphe_custom_font_file_path_title">Egyéni betűtípus-fájl</string>
@@ -47,6 +40,13 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_pick_file_first">Először válasszon ki egy egyéni betűtípus-fájlt.</string>
   <string name="morphe_custom_font_invalid_file">Kérjük, válasszon .ttf vagy .otf betűtípus-fájlt.</string>
   <string name="morphe_custom_font_failed_to_load">Sikertelen betűtípus betöltése. Válasszon egy másik fájlt.</string>
+  <string name="morphe_disable_modern_home_title">A modern kezdőképernyő felület letiltása</string>
+  <string name="morphe_disable_screenshot_popup_title">Képernyőfotó-felugró párbeszéd letiltása</string>
+  <string name="morphe_disable_screenshot_popup_summary">Letiltja a képernyőfotó készítésekor megjelenő felugró párbeszédet</string>
+  <string name="morphe_force_system_font_title">Rendszerbetűtípus kényszerítése</string>
+  <string name="morphe_force_system_font_summary">A rendszerbetűt használja a Reddit Sans vagy Roboto helyett. Ennek engedélyezése kikapcsolja a Egyéni betűtípust is.</string>
+  <string name="morphe_hide_ask_button_title">Kérdezz gomb elrejtése</string>
+  <string name="morphe_hide_ask_button_summary">Elrejti a Kérdezz gombot a keresősávban</string>
   <string name="morphe_hide_communities_shelf_title">Közösségek polc elrejtése</string>
   <string name="morphe_hide_communities_shelf_summary">Elrejti a kapcsolódó vagy javasolt közösségek polcát a subredditeken.</string>
   <string name="morphe_hide_trending_shelves_title">Elrejtett népszerű polcok</string>

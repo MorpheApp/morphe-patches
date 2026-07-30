@@ -103,17 +103,6 @@ Para iniciar sesión, pulsa en \"Continuar\" a continuación"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">No se puede iniciar sesión en VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Desconectado de Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Token de inicio de sesión de VR no válido, intenta iniciar sesión en VR de nuevo</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Desactivar la actualización de JavaScript del reproductor</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Bloquea el JavaScript del reproductor a una versión específica
-
-• Se requiere un hash de JavaScript del reproductor válido
-• Los hashes de JavaScript del reproductor son válidos por aproximadamente un mes, y GVS revocará los hashes obsoletos
-• La reproducción fallará si el hash es revocado"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"Debes proporcionar un hash de JavaScript del reproductor válido.
-
-La reproducción fallará si el hash de JavaScript del reproductor está desactualizado."</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hash de JavaScript del reproductor</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Introduzca un hash de JavaScript del reproductor válido</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Desactivar protocolo QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -168,7 +157,7 @@ Sin embargo, si activas esto, también se registrarán algunos datos del usuario
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Lista de cadenas del constructor de rutas de componentes a filtrar, una por línea</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Filtro personalizado no válido: %s</string>
-  <!-- Settings menu filter -->
+  <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">Filtro del menú de configuración</string>
   <string name="morphe_settings_menu_filter_screen_summary">Ocultar elementos en la pantalla de configuración de la aplicación estándar por su nombre visible</string>
   <string name="morphe_settings_menu_filter_picker_empty">Abrir la pantalla de configuración de la aplicación estándar una vez para completar la lista</string>
@@ -193,7 +182,7 @@ Si se desactiva posteriormente, se recomienda borrar los datos de la aplicación
   <string name="morphe_ryd_dislike_percentage_title">Mostrar \"No me gusta\" como porcentaje</string>
   <string name="morphe_ryd_dislike_percentage_summary">Muestra los \"No me gusta\" como un porcentaje de las reacciones positivas en lugar de un número</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">Usar botón compacto de \"Me gusta\"</string>
+  <string name="morphe_ryd_compact_layout_title">Usar botón de \"Me gusta\" compacto</string>
   <string name="morphe_ryd_compact_layout_summary">Reduce el ancho del botón de \"Me gusta\" para ahorrar espacio</string>
   <string name="morphe_ryd_estimated_like_title">Mostrar estimación de \"Me gusta\"</string>
   <string name="morphe_ryd_estimated_like_summary">Muestra una estimación del número de \"Me gusta\" en los videos donde el creador ha desactivado las reacciones</string>

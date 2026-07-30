@@ -4,6 +4,7 @@
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
+
 package app.morphe.extension.reddit.settings.preference.categories;
 
 import static app.morphe.extension.shared.StringRef.str;
@@ -37,8 +38,8 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
     public boolean getSettingsStatus() {
         return DisableModernHomePatch.isPatchIncluded() ||
                 DisableScreenshotPopupPatch.isPatchIncluded() ||
-            CustomFontPatch.isPatchIncluded() ||
-            ForceSystemFontPatch.isPatchIncluded() ||
+                CustomFontPatch.isPatchIncluded() ||
+                ForceSystemFontPatch.isPatchIncluded() ||
                 HideAskButtonPatch.isPatchIncluded() ||
                 HideCommunitiesShelf.isPatchIncluded() ||
                 HideTrendingShelvesPatch.isPatchIncluded() ||
@@ -47,6 +48,14 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
 
     @Override
     public void addPreferences(Context context) {
+        if (CustomFontPatch.isPatchIncluded()) {
+            addPreference(new CustomFontTogglePreference(context));
+            addPreference(new CustomFontFilePreference(
+                    context,
+                    Settings.CUSTOM_FONT_FILE_PATH
+            ));
+        }
+
         if (DisableModernHomePatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
@@ -61,22 +70,14 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             ));
         }
 
-        if (HideAskButtonPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.HIDE_ASK_BUTTON
-            ));
-        }
-
         if (ForceSystemFontPatch.isPatchIncluded()) {
             addPreference(new ForceSystemFontPreference(context));
         }
 
-        if (CustomFontPatch.isPatchIncluded()) {
-            addPreference(new CustomFontTogglePreference(context));
-            addPreference(new CustomFontFilePreference(
-                context,
-                Settings.CUSTOM_FONT_FILE_PATH
+        if (HideAskButtonPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_ASK_BUTTON
             ));
         }
 

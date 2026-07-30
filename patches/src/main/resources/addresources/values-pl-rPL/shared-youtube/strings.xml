@@ -103,17 +103,6 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nie można zalogować się do VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Wylogowano z Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Nieprawidłowy token logowania VR, spróbuj zalogować się ponownie</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Wyłącz aktualizację JS odtwarzacza</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Blokuje JS odtwarzacza na określonej wersji
-
-• Wymagany jest prawidłowy hash JS odtwarzacza
-• Hashe są ważne przez około miesiąc, a nieaktualne hashe mogą zostać unieważnione przez GVS
-• Jeśli hash zostanie unieważniony, odtwarzanie przestanie działać"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"Musisz podać prawidłowy hash JS odtwarzacza.
-
-​Jeśli hash będzie nieaktualny, odtwarzanie przestanie działać."</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hash skryptu JS odtwarzacza</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Wprowadź poprawny hash skryptu JS odtwarzacza</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Wyłącz protokół QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -168,7 +157,7 @@ Pamiętaj jednak, że rejestrowane będą również niektóre dane użytkownika,
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Lista ścieżek elementów do ukrycia, każda w nowej linii</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Nieprawidłowy własny filtr: %s</string>
-  <!-- Settings menu filter -->
+  <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">Filtr menu ustawień</string>
   <string name="morphe_settings_menu_filter_screen_summary">Ukrywaj elementy na standardowym ekranie ustawień aplikacji na podstawie ich widocznej nazwy</string>
   <string name="morphe_settings_menu_filter_picker_empty">Otwórz standardowy ekran ustawień aplikacji raz, aby wypełnić listę</string>

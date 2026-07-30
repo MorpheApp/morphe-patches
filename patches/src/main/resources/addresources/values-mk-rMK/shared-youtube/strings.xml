@@ -92,9 +92,6 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Не може да се најавите во VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Одјавени од Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Невалиден токен за пријава во VR, обидете се да се најавите во VR повторно</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Исклучи ажурирање на JavaScript на плеер</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">JavaScript хаш на плеер</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Внесете валиден JavaScript хаш на плеер</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Исклучи QUIC протокол</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -118,7 +115,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_protobuffer_summary">Додава дополнителни информации за евидентира ње за програмери за да ги идентификуваат компонентите на апликацијата</string>
   <!-- Custom filter -->
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
-  <!-- Settings menu filter -->
+  <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->

@@ -103,17 +103,6 @@ Bấm tiếp tục bên dưới để đăng nhập"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Không thể đăng nhập vào VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Đã đăng xuất khỏi Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Mã đăng nhập VR không hợp lệ, hãy thử đăng nhập lại vào VR</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Tắt cập nhật JavaScript của trình phát</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Cố định phiên bản JavaScript của trình phát
-
-• Yêu cầu mã băm JavaScript hợp lệ
-• Mỗi mã băm thường chỉ có hiệu lực trong khoảng một tháng và bị GVS thu hồi khi hết hạn
-• Khi bị thu hồi, video sẽ không còn phát được nữa"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"Bạn cần cung cấp một mã băm JavaScript của trình phát còn hiệu lực.
-
-Bạn sẽ không còn xem được video nếu mã băm hết hạn."</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Mã băm JavaScript của trình phát</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Nhập mã băm JavaScript hợp lệ của trình phát</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Tắt giao thức QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -168,7 +157,7 @@ Tuy nhiên, một số dữ liệu người dùng cũng được ghi lại như 
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Danh sách các string tạo đường dẫn thành phần mà bạn muốn lọc, mỗi dòng một string</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Bộ lọc tuỳ chỉnh không hợp lệ: %s</string>
-  <!-- Settings menu filter -->
+  <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">Bộ lọc menu Cài đặt</string>
   <string name="morphe_settings_menu_filter_screen_summary">Ẩn các mục trên màn hình cài đặt ứng dụng tiêu chuẩn theo tên hiển thị của chúng</string>
   <string name="morphe_settings_menu_filter_picker_empty">Mở màn hình cài đặt ứng dụng tiêu chuẩn một lần để điền vào danh sách</string>

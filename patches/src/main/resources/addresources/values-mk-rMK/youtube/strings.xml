@@ -175,14 +175,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Внесете ги имињата на каруселот со коментари за филтрирање, одделени со нови редови</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Скриј сумирање на AI разговор</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Скриј ги правилата за канали</string>
-  <string name="morphe_hide_comments_prompts_title">Скриј ги прозорчињата за коментари</string>
-  <string name="morphe_hide_comments_prompts_summary">Прикри ги информативните пораки во делот со коментари</string>
   <string name="morphe_hide_comments_by_members_header_title">Скриј ги насловите „Коментари од членови“</string>
   <string name="morphe_hide_comments_section_title">Скриј дел со коментари</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Скриј дел за коментари во Feed</string>
-  <string name="morphe_hide_comments_community_guidelines_title">Скриј ги правилата за заедницата</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Скриј го копчето „Креирај Shorts“</string>
-  <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Скриј ги копчињата за емотикони и временска ознака</string>
   <string name="morphe_hide_comments_info_button_title">Скриј копче за информации</string>
   <string name="morphe_hide_comments_preview_comment_title">Скриј коментар за преглед</string>
   <string name="morphe_hide_comments_preview_comment_summary">Прикри го прегледот на коментари пред отворање на целиот дел со коментари</string>
@@ -835,20 +831,15 @@ Second \"item\" text"</string>
   <string name="morphe_force_avc_codec_user_dialog_message">"Користете подобар живот на батеријата
 • Може да го врати недостижниот квалитет на видео за постари уреди"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">За да ја користите оваа функција, поставете го „Лажирање на видео потоци“ на Android VR или Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Скриј опции за квалитет на Premium</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Дајте приоритет на квалитетот на видеото</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Овозможи AV1 за Android VR</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Овозможува софтверско декодирање AV1 кога се користи клиентот Android VR</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Вклучувањето на оваа поставка може да користи софтверско декодирање на AV1.
 
 Репродукцијата на видео со AV1 може да запие и да пропушти кадри."</string>
   <string name="morphe_spoof_video_streams_about_title">Несакани ефекти од спојување</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• Видеото може да застане на 1:00 или можеби нема да биде достапно во некои региони</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Нема траки со звук</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Нема видео кодек AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Недостапен имерзивен режим со 360° VR</string>

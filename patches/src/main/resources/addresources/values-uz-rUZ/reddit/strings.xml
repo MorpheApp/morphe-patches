@@ -32,13 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">\"Haqida\" javoni yashirish</string>
   <string name="morphe_hide_resources_shelf_title">\"Resurslar\" javoni yashirish</string>
   <string name="morphe_screen_layout_title">Tartib</string>
-  <string name="morphe_disable_modern_home_title">Zamonaviy bosh menyuni o\'chirish</string>
-  <string name="morphe_disable_screenshot_popup_title">Skrinshot olinganda paydo bo\'ladigan oynani o\'chirish</string>
-  <string name="morphe_disable_screenshot_popup_summary">Skrinshot qilinganda paydo bo\'ladigan oynani o\'chirib qo\'yish</string>
-  <string name="morphe_hide_ask_button_title">\"So\'rash\" tugmasini yashirish</string>
-  <string name="morphe_hide_ask_button_summary">Qidiruv panelidagi \"So\'rash\" tugmasini yashiradi</string>
-  <string name="morphe_force_system_font_title">Tizim shriftini majburiy usulda qo\'llash</string>
-  <string name="morphe_force_system_font_summary">Morfhe ning tizim xat uslubini ishlatish, Reddit Sans yoki Roboto emas. Buni yoqish moslashtirilgan xatni o‘chirishga olib keladi.</string>
   <string name="morphe_custom_font_title">Maxsus shrift</string>
   <string name="morphe_custom_font_summary">Quyidagi yo‘ldan moslashtirilgan TTF yoki OTF shrift faylini yuklang. Buni yoqish tizim xat uslubini majburlashni o‘chirishga olib keladi.</string>
   <string name="morphe_custom_font_file_path_title">Maxsus shrift fayli</string>
@@ -47,6 +40,13 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_pick_file_first">Avval moslashtirilgan shrift faylini tanlang.</string>
   <string name="morphe_custom_font_invalid_file">Iltimos, .ttf yoki .otf shrift faylini tanlang.</string>
   <string name="morphe_custom_font_failed_to_load">Maxsus shriftni yuklash mumkin bo\'lmadi. Boshqa faylni tanlang</string>
+  <string name="morphe_disable_modern_home_title">Zamonaviy bosh menyuni o\'chirish</string>
+  <string name="morphe_disable_screenshot_popup_title">Skrinshot olinganda paydo bo\'ladigan oynani o\'chirish</string>
+  <string name="morphe_disable_screenshot_popup_summary">Skrinshot qilinganda paydo bo\'ladigan oynani o\'chirib qo\'yish</string>
+  <string name="morphe_force_system_font_title">Tizim shriftini majburiy usulda qo\'llash</string>
+  <string name="morphe_force_system_font_summary">Morfhe ning tizim xat uslubini ishlatish, Reddit Sans yoki Roboto emas. Buni yoqish moslashtirilgan xatni o‘chirishga olib keladi.</string>
+  <string name="morphe_hide_ask_button_title">\"So\'rash\" tugmasini yashirish</string>
+  <string name="morphe_hide_ask_button_summary">Qidiruv panelidagi \"So\'rash\" tugmasini yashiradi</string>
   <string name="morphe_hide_communities_shelf_title">Hamjamiyatlar javoni yashirish</string>
   <string name="morphe_hide_communities_shelf_summary">Subredditlardagi teginishli yoki taklif etilgan hamjamiyatlar javoni yashiradi</string>
   <string name="morphe_hide_trending_shelves_title">Trending javonlarni yashirish</string>

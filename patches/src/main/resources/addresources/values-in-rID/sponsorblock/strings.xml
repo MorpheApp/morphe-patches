@@ -29,9 +29,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_auto_hide_skip_button_summary">Menyembunyikan tombol Lewati setelah beberapa detik daripada menampilkannya selama seluruh segmen</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_title">Durasi tombol Lewati</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_summary">Atur berapa lama tombol Lewati tetap terlihat</string>
-  <string name="morphe_sb_toast_on_skip_title">Tampilkan notifikasi lewati</string>
-  <string name="morphe_sb_toast_on_skip_summary">Menampilkan notifikasi saat segmen dilewati secara otomatis</string>
-  <string name="morphe_sb_toast_on_skip_duration_title">Durasi lewati pemberitahuan</string>
+  <string name="morphe_sb_toast_on_skip_title">Tampilkan pemberitahuan lewati</string>
+  <string name="morphe_sb_toast_on_skip_summary">Menampilkan pemberitahuan saat segmen dilewati secara otomatis</string>
+  <string name="morphe_sb_toast_on_skip_duration_title">Durasi pemberitahuan \'Dilewati\'</string>
   <string name="morphe_sb_toast_on_skip_duration_summary">Atur berapa lama notifikasi pembatalan tetap terlihat</string>
   <string name="morphe_sb_duration_1s">1 detik</string>
   <string name="morphe_sb_duration_2s">2 detik</string>
@@ -44,7 +44,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_duration_9s">9 detik</string>
   <string name="morphe_sb_duration_10s">10 detik</string>
   <string name="morphe_sb_video_length_without_segments_title">Tampilkan durasi video tanpa segmen</string>
-  <string name="morphe_sb_video_length_without_segments_summary">Mengurangi semua durasi segmen dari total durasi video yang ditampilkan pada bilah pencarian</string>
+  <string name="morphe_sb_video_length_without_segments_summary">Mengurangi semua durasi segmen dari total durasi video yang ditampilkan pada bilah geser</string>
   <string name="morphe_sb_create_segment_category_title">Membuat segmen baru</string>
   <string name="morphe_sb_create_new_segment_title">Tampilkan tombol \'Buat segmen baru\'</string>
   <string name="morphe_sb_create_new_segment_summary">Menambahkan tombol ke pemutar video yang memungkinkan Anda mengirimkan segmen SponsorBlock baru</string>
@@ -155,7 +155,7 @@ ID pengguna Anda seperti kata sandi dan jangan pernah dibagikan."</string>
   <string name="morphe_sb_skip_automatically">Lewati otomatis</string>
   <string name="morphe_sb_skip_automatically_once">Lewati otomatis sekali</string>
   <string name="morphe_sb_skip_showbutton">Tampilkan tombol Lewati</string>
-  <string name="morphe_sb_skip_seekbaronly">Tampilkan di seekbar</string>
+  <string name="morphe_sb_skip_seekbaronly">Tampilkan di bilah geser</string>
   <string name="morphe_sb_skip_ignore">Nonaktifkan</string>
   <string name="morphe_sb_submit_failed_invalid">Tak dapat mengirim segmen: %s</string>
   <string name="morphe_sb_submit_failed_timeout">SponsorBlock sementara tidak tersedia</string>

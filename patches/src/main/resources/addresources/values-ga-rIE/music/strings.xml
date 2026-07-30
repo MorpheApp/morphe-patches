@@ -31,13 +31,18 @@ Second \"item\" text"</string>
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Maidir</string>
   <string name="morphe_settings_music_screen_1_ads_title">Fógraí</string>
-  <string name="morphe_settings_music_screen_2_general_title">Ginearálta</string>
-  <string name="morphe_settings_music_screen_3_player_title">Seinnteoir</string>
-  <string name="morphe_settings_music_screen_7_misc_title">Ilghnéitheach</string>
+  <string name="morphe_settings_music_screen_2_feed_title">Fotha</string>
+  <string name="morphe_settings_music_screen_3_general_title">Ginearálta</string>
+  <string name="morphe_settings_music_screen_4_player_title">Seinnteoir</string>
+  <string name="morphe_settings_music_screen_8_misc_title">Ilghnéitheach</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Folaigh an lipéad \'Faigh Ceoil Préimhe\'</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Folaigh ardú céime Music Premium</string>
   <string name="morphe_music_hide_video_ads_title">Folaigh fógraí físe</string>
+  <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_music_hide_lyrics_panel_category_title">Painéal liricí</string>
+  <string name="morphe_music_hide_lyrics_share_button_title">Folaigh an cnaipe Comhroinnte</string>
+  <string name="morphe_music_hide_lyrics_translate_button_title">Folaigh an cnaipe Aistrigh</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Traschéimniú</string>
   <string name="morphe_music_crossfade_screen_summary">Cumasc rianta go réidh lena chéile</string>
@@ -115,10 +120,6 @@ YouTube Music 8.x — ní ritheann an traschéimniú ach ar 9.x agus níos nuaí
   <string name="morphe_music_hide_history_button_title">Cnaipe Folaigh Stair</string>
   <string name="morphe_music_hide_notification_button_title">Folaigh cnaipe fógra</string>
   <string name="morphe_music_hide_search_button_title">Folaigh an cnaipe Cuardaigh</string>
-  <!-- layout.hide.general.hideMusicComponentsPatch -->
-  <string name="morphe_music_hide_lyrics_panel_category_title">Painéal liricí</string>
-  <string name="morphe_music_hide_lyrics_share_button_title">Folaigh an cnaipe Comhroinnte</string>
-  <string name="morphe_music_hide_lyrics_translate_button_title">Folaigh an cnaipe Aistrigh</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Cnaipí gníomhaíochta</string>
   <string name="morphe_music_action_buttons_screen_summary">Roghnaigh cé na cnaipí gníomhaíochta a thaispeántar faoin imreoir</string>

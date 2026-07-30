@@ -203,14 +203,13 @@ Změny zahrnují:
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Zadejte názvy karet (každý na nový řádek) v komentářích, podle kterých chcete filtrovat</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Skrýt souhrn chatu pomocí AI</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Skrýt pravidla kanálu</string>
-  <string name="morphe_hide_comments_prompts_title">Skrýt výzvy ke komentování</string>
-  <string name="morphe_hide_comments_prompts_summary">Skryje kontextové informační zprávy v sekci komentářů</string>
+  <string name="morphe_hide_comments_contexts_title">Skrýt kontextové zprávy</string>
   <string name="morphe_hide_comments_by_members_header_title">Skrýt záhlaví „Komentáře od členů“</string>
   <string name="morphe_hide_comments_section_title">Skrýt sekci komentářů</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Skrýt sekci komentářů v Home feed</string>
   <string name="morphe_hide_comments_community_guidelines_title">Skrýt pokyny pro komunitu</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Skrýt tlačítko \"Vytvořit Short\"</string>
-  <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Skrýt tlačítka emotikonů a časových značek</string>
+  <string name="morphe_hide_comments_emoji_button_title">Skrýt tlačítko emoji</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Skrýt možnosti lišty filtrů</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Skryje všechny možnosti lišty filtrů kromě \'Nejlepší\' a \'Nejnovější\'</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Skrýt animaci a karty dárku</string>
@@ -220,6 +219,7 @@ Změny zahrnují:
   <string name="morphe_hide_comments_preview_comment_title">Skrýt náhled komentáře</string>
   <string name="morphe_hide_comments_preview_comment_summary">Skrývá náhled komentáře pod videem před otevřením celé sekce komentářů</string>
   <string name="morphe_hide_comments_thanks_button_title">Skrýt tlačítko Poděkování</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Skrýt tlačítko časového razítka</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Vyčistí zvýrazněné odkazy ve vyhledávání</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Vyčistí zvýrazněné odkazy ve vyhledávání a ponechá pouze původní čistý text</string>
   <string name="morphe_hide_keyword_content_screen_title">Filtr klíčových slov</string>
@@ -456,6 +456,8 @@ Upozornění: Možná nebude fungovat u živých přenosů"</string>
   <string name="morphe_livestream_dvr_title">Povolit záznam přímého přenosu</string>
   <string name="morphe_livestream_dvr_summary">Umožňuje posun v živých přenosech, dokonce i v těch, které to běžně neumožňují</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">Povolit miniatury na posuvníku</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">Zobrazuje miniaturu videa při táhnutí posuvníku</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'Äčínení zapnutí DSLR vysílání' nemusí bõt dostupné
 
@@ -1075,23 +1077,17 @@ Omezení:
 • HDR videa nebudou používat AVC
 • Některá zařízení nemohou vynutit AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Chcete-li tuto funkci použít, nastavte ‚Podvádění video streamů‘ na Android VR nebo Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Otevřít nabídku pokročilého nastavení kvality</string>
   <string name="morphe_advanced_video_quality_menu_summary">Přeskočí menu pro výběr kvality a přímo otevře menu čpokročilých nastavení</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Skrýt možnosti Premium kvality</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Priorizujte kvalitu videa</string>
-  <string name="morphe_prioritize_video_quality_summary">Upřednostňuje nejvyšší dostupnou kvalitu videa před efektivitou kodeku</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Povolit Android VR AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Povolí softwarové dekódování AV1 při používání klienta Android VR</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Povolení tohoto nastavení může využívat softwarové dekódování AV1.
 
 Přehrávání videa s AV1 se může sekat nebo vypadávat snímky."</string>
   <string name="morphe_spoof_video_streams_about_title">Vedlejší účinky maskování</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• Video se může zastavit v 1:00 nebo nemusí být dostupné v některých oblastech</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Chybí nabídka zvukových stop</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Žádný video kodek AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Režim 360° VR prohlížení není k dispozici</string>

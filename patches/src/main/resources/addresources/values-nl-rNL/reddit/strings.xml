@@ -32,13 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">Info plank verbergen</string>
   <string name="morphe_hide_resources_shelf_title">Bronnenplank verbergen</string>
   <string name="morphe_screen_layout_title">Layout</string>
-  <string name="morphe_disable_modern_home_title">Schakel moderne home-interface uit</string>
-  <string name="morphe_disable_screenshot_popup_title">Screenshot-popup uitschakelen</string>
-  <string name="morphe_disable_screenshot_popup_summary">Schakelt het popup-venster uit dat verschijnt bij het maken van een screenshot</string>
-  <string name="morphe_hide_ask_button_title">AI-knop verbergen</string>
-  <string name="morphe_hide_ask_button_summary">Verbergt de knop \'Vragen\' in de zoekbalk</string>
-  <string name="morphe_force_system_font_title">Systeemlettertype forceren</string>
-  <string name="morphe_force_system_font_summary">Gebruik het systeemlettertype van het apparaat in plaats van Reddit Sans of Roboto. Door dit in te schakelen, wordt ook het aangepaste lettertype uitgeschakeld.</string>
   <string name="morphe_custom_font_title">Aangepast lettertype</string>
   <string name="morphe_custom_font_summary">Laad een aangepast TTF- of OTF-lettertypebestand vanaf het pad hieronder. Door dit in te schakelen, wordt ook het systeemlettertype geforceerd uitgeschakeld.</string>
   <string name="morphe_custom_font_file_path_title">Aangepast lettertypebestand</string>
@@ -47,6 +40,13 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_pick_file_first">Selecteer eerst een aangepast lettertypebestand.</string>
   <string name="morphe_custom_font_invalid_file">Selecteer een .ttf- of .otf-lettertypebestand.</string>
   <string name="morphe_custom_font_failed_to_load">Kon het aangepaste lettertype niet laden. Kies een ander bestand</string>
+  <string name="morphe_disable_modern_home_title">Schakel moderne home-interface uit</string>
+  <string name="morphe_disable_screenshot_popup_title">Screenshot-popup uitschakelen</string>
+  <string name="morphe_disable_screenshot_popup_summary">Schakelt het popup-venster uit dat verschijnt bij het maken van een screenshot</string>
+  <string name="morphe_force_system_font_title">Systeemlettertype forceren</string>
+  <string name="morphe_force_system_font_summary">Gebruik het systeemlettertype van het apparaat in plaats van Reddit Sans of Roboto. Door dit in te schakelen, wordt ook het aangepaste lettertype uitgeschakeld.</string>
+  <string name="morphe_hide_ask_button_title">AI-knop verbergen</string>
+  <string name="morphe_hide_ask_button_summary">Verbergt de knop \'Vragen\' in de zoekbalk</string>
   <string name="morphe_hide_communities_shelf_title">Verberg communities plank</string>
   <string name="morphe_hide_communities_shelf_summary">Verbergt het gerelateerde of voorgestelde communities plank in subreddits</string>
   <string name="morphe_hide_trending_shelves_title">Verberg Trending planken</string>

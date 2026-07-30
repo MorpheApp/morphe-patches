@@ -9,4 +9,3 @@ val sharedExtensionPatch = sharedExtensionPatch(
     youTubeMusicApplicationInitHook,
     youTubeMusicApplicationInitOnCreateHook
 )
-

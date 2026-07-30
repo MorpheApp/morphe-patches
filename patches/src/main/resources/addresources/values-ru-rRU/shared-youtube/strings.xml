@@ -103,17 +103,6 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Не удается войти в VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Вышли из войти Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Недействительный токен входа в VR, попробуйте войти в VR еще раз</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Отключить обновление JavaScript плеера</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Блокирует JavaScript-код плеера до определенной версии
-
-• Требуется допустимый хэш JavaScript-кода плеера.
-• Хэши JavaScript-кода плеера действительны в течение примерно одного месяца, а устаревшие хэши будут отозваны GVS.
-• Воспроизведение не удастся, если хэш отозван."</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"Вам необходимо предоставить допустимый хэш JavaScript-кода плеера.
-
-Воспроизведение не удастся, если хэш JavaScript-кода плеера устарел."</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Хеш JavaScript плеера</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Введите допустимый хеш JavaScript плеера</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Отключить протокол QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -168,7 +157,7 @@ Second \"item\" text"</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Список строк конструктора путей компонентов для фильтрации, разделенных новой строкой</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Недопустимый кастомный фильтр: %s</string>
-  <!-- Settings menu filter -->
+  <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">Фильтр меню настроек</string>
   <string name="morphe_settings_menu_filter_screen_summary">Скрыть элементы на экране настроек приложения, основываясь на их видимом имени</string>
   <string name="morphe_settings_menu_filter_picker_empty">Откройте экран стандартных настроек приложения один раз, чтобы заполнить список</string>

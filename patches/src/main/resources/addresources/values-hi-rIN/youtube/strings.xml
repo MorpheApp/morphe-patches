@@ -194,6 +194,28 @@ Second \"item\" text"</string>
   <string name="morphe_hide_store_button_title">स्टोर बटन छुपाएं</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_subscribe_button_in_channel_page_title">चैनल पेज पर सबस्क्राइब बटन छुपाएं</string>
+  <string name="morphe_explore_menu_screen_title">मेनू देखें</string>
+  <string name="morphe_explore_menu_screen_summary">चुनें कि एक्सप्लोर मेनू में कौन से घटक दिखाई दें</string>
+  <string name="morphe_hide_courses_menu_title">कोर्स मेनू छिपाएं</string>
+  <string name="morphe_hide_explore_button_title">एक्सप्लोर बटन छिपाएं</string>
+  <string name="morphe_hide_fashion_menu_title">\'फैशन और ब्यूटी\' मेनू छिपाएं</string>
+  <string name="morphe_hide_gaming_menu_title">गेमिंग मेनू छिपाएं</string>
+  <string name="morphe_hide_hype_menu_title">हाइप मेनू छिपाएं</string>
+  <string name="morphe_hide_live_menu_title">लाइव मेनू छिपाएं</string>
+  <string name="morphe_hide_memberships_menu_title">सदस्यता मेनू छिपाएं</string>
+  <string name="morphe_hide_movies_menu_title">मूवी मेनू छिपाएं</string>
+  <string name="morphe_hide_music_menu_title">\'संगीत और टीवी\' मेनू छिपाएं</string>
+  <string name="morphe_hide_news_menu_title">समाचार मेनू छिपाएं</string>
+  <string name="morphe_hide_playables_menu_title">प्लेएबल मेनू छिपाएं</string>
+  <string name="morphe_hide_podcasts_menu_title">पॉडकास्ट मेनू छिपाएं</string>
+  <string name="morphe_hide_shopping_menu_title">शॉपिंग मेनू छिपाएं</string>
+  <string name="morphe_hide_sports_menu_title">स्पोर्ट्स मेनू छिपाएं</string>
+  <string name="morphe_hide_youtube_premium_menu_title">YouTube Premium मेनू छिपाएं</string>
+  <string name="morphe_hide_youtube_studio_menu_title">YouTube Studio मेनू छिपाएं</string>
+  <string name="morphe_hide_youtube_music_menu_title">YouTube Music मेनू छिपाएं</string>
+  <string name="morphe_hide_youtube_kids_menu_title">YouTube Kids मेनू छिपाएं</string>
+  <string name="morphe_hide_youtube_create_menu_title">YouTube Create मेनू छिपाएं</string>
+  <string name="morphe_hide_privacy_tos_footer_title">\'गोपनीयता नीति • सेवा की शर्तें\' पाद लेख छिपाएं</string>
   <string name="morphe_comments_screen_title">टिप्पणियाँ</string>
   <string name="morphe_comments_screen_summary">टिप्पणी अनुभाग में प्रदर्शित होने वाले घटकों को चुनें</string>
   <string name="morphe_hide_comments_carousel_title">टिप्पणी कैरोसेल फ़िल्टर</string>
@@ -204,14 +226,13 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">फ़िल्टर करने के लिए टिप्पणी कैरोसेल नाम दर्ज करें, नई लाइनों से अलग किए गए</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">छुपाएं एआई चैट सारांश</string>
   <string name="morphe_hide_comments_channel_guidelines_title">छुपाएं चैनल निदेशिका</string>
-  <string name="morphe_hide_comments_prompts_title">अक्सर टिप्पणियों को छुपाएं</string>
-  <string name="morphe_hide_comments_prompts_summary">टिप्पणी अनुभाग में प्रासंगिक सूचना संदेशों को छुपाता है</string>
+  <string name="morphe_hide_comments_contexts_title">संदेश संदर्भ छुपाएं</string>
   <string name="morphe_hide_comments_by_members_header_title">छुपाएं \'सदस्य के टिप्पणियां\' शीर्षक</string>
   <string name="morphe_hide_comments_section_title">छुपाएं टिप्पणियों का अनुभाग</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">होम फ़ीड में टिप्पणियों का अनुभाग छुपाएं</string>
   <string name="morphe_hide_comments_community_guidelines_title">छुपाएं समुदाय निदेशिका</string>
   <string name="morphe_hide_comments_create_a_short_button_title">छुपाएं \'बटन बनाने के लिए छोटा\' बटन</string>
-  <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">इमोजी और टाइमस्टैम्प बटन को छुपाएं</string>
+  <string name="morphe_hide_comments_emoji_button_title">इमोजी बटन छुपाएं</string>
   <string name="morphe_hide_comments_filter_bar_options_title">फ़िल्टर बार विकल्प छुपाएं</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">\'टॉप\' और \'नवीनतम\' के अलावा सभी फ़िल्टर बार विकल्प छुपाता है</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">उपहार एनीमेशन और कार्ड छिपाएं</string>
@@ -221,6 +242,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_preview_comment_title">छुपाएं पूर्वावलोकन टिप्पणी</string>
   <string name="morphe_hide_comments_preview_comment_summary">संपूर्ण टिप्पणी अनुभाग खोलने से पहले वीडियो के नीचे टिप्पणी पूर्वावलोकन को छुपाता है</string>
   <string name="morphe_hide_comments_thanks_button_title">छुपाएं \'धन्यवाद\' बटन</string>
+  <string name="morphe_hide_comments_timestamp_button_title">टाइमस्टैम्प बटन छुपाएं</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">हाइलाइट किए गए खोज लिंक सैनिटाइज़ करें</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">हाइलाइट किए गए खोज लिंक सैनिटाइज़ करता है, केवल मूल सादे पाठ को छोड़ देता है</string>
   <string name="morphe_hide_keyword_content_screen_title">कीवर्ड फ़िल्टर</string>
@@ -406,6 +428,7 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_play_all_button_type_entry_8">सिर्फ़ स्ट्रीम किए गए वीडियो (लोकप्रियता के अनुसार क्रमबद्ध करें)</string>
   <string name="morphe_play_all_button_type_entry_9">सभी सदस्यों की सामग्री केवल</string>
   <string name="morphe_play_all_button_type_entry_10">केवल सदस्यों के वीडियो</string>
+  <string name="morphe_play_all_button_type_entry_11">केवल सदस्यों के लिए Shorts</string>
   <string name="morphe_play_all_button_type_entry_12">केवल सदस्यों के लाइव स्ट्रीम</string>
   <string name="morphe_play_all_button_not_available_toast">चैनल आईडी मिसमैच के कारण प्लेलिस्ट जेनरेट करने में असमर्थ</string>
   <!-- interaction.reload.reloadVideoPatch -->
@@ -456,6 +479,8 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_livestream_dvr_title">लाइवस्ट्रीम DVR सक्षम करें</string>
   <string name="morphe_livestream_dvr_summary">लाइवस्ट्रीम पर सभी को तलाशने की अनुमति देता है, यहां तक कि उन लाइवस्ट्रीम को भी जो आमतौर पर इसे प्रतिबंधित करते हैं</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">सर्कबार थंबनेल सक्षम करें</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">सर्कबार को ड्रैग करते समय एक वीडियो थंबनेल दिखाता है</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'लाइवस्ट्रीम DVR' सक्षम नहीं हो सकता है
 
@@ -1076,23 +1101,23 @@ DeArrow.ajay.app खोलने के लिए यहां टैप कर�
 • HDR वीडियो AVC का उपयोग नहीं करेंगे
 • कुछ डिवाइस AVC को बल नहीं लगा सकते"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">इस सुविधा का उपयोग करने के लिए, \'वीडियो स्ट्रीम को स्पूफ करें\' को Android VR या Android Studio पर सेट करें</string>
+  <string name="morphe_force_avc_codec_not_available">इस सुविधा का उपयोग करने के लिए, \'स्पूफ वीडियो स्ट्रीम\' को \'Android VR\' या \'Android Studio\' पर सेट करें।</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">उन्नत गुणवत्ता मेनू खोलें</string>
   <string name="morphe_advanced_video_quality_menu_summary">गुणवत्ता चयन मेनू को छोड़ता है और सीधे \'उन्नत\' गुणवत्ता मेनू खोलता है</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">छुपाएं प्रीमियम गुणवत्ता विकल्प</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">वीडियो की गुणवत्ता को प्राथमिकता दी जाएगी</string>
-  <string name="morphe_prioritize_video_quality_summary">कोडेक दक्षता से अधिक उच्चतम उपलब्ध वीडियो गुणवत्ता को प्राथमिकता देता है</string>
+  <string name="morphe_video_quality_prioritize_title">वीडियो गुणवत्ता को प्राथमिकता दें</string>
+  <string name="morphe_video_quality_prioritize_summary">कोडेक दक्षता पर सबसे अच्छी उपलब्ध वीडियो गुणवत्ता को प्राथमिकता देता है।</string>
+  <string name="morphe_video_quality_prioritize_dialog">यदि यह सेटिंग बंद है, तो पुराने वीडियो में कोई वीडियो गुणवत्ता विकल्प नहीं दिख सकता है।</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Android VR AV1 की अनुमति दें</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Android VR क्लाइंट का उपयोग करते समय सॉफ्टवेयर AV1 डिकोडिंग की अनुमति देता है</string>
+  <string name="morphe_spoof_video_streams_av1_title">Android VR / visionOS AV1 की अनुमति दें</string>
+  <string name="morphe_spoof_video_streams_av1_summary">एंड्रॉइड वीआर / visionOS क्लाइंट का उपयोग करते समय सॉफ्टवेयर AV1 डिकोडिंग की अनुमति देता है</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"इस सेटिंग को सक्षम करने पर सॉफ्टवेयर AV1 डिकोडिंग का उपयोग किया जा सकता है।
 
 AV1 के साथ वीडियो प्लेबैक स्टटर या फ़्रेम छोड़ सकता है।"</string>
   <string name="morphe_spoof_video_streams_about_title">Spoofing साइड इफेक्ट</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• वीडियो 1:00 पर रुक सकता है या कुछ क्षेत्रों में उपलब्ध नहीं हो सकता है।</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• ऑडियो ट्रैक मेनू गायब है</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• कोई AV1 वीडियो कोडेक नहीं</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR इमर्सिव मोड उपलब्ध नहीं है।</string>

@@ -85,7 +85,7 @@ public class SharedYouTubeSettings extends BaseSettings {
 
     static {
         // TODO: Eventually remove these migrations
-        migrateOldSettingToNew(DEPRECATED_EXTERNAL_DOWNLOADER_FLYOUT_BUTTON , EXTERNAL_DOWNLOADER_FLYOUT_MENU);
+        migrateOldSettingToNew(DEPRECATED_EXTERNAL_DOWNLOADER_FLYOUT_BUTTON, EXTERNAL_DOWNLOADER_FLYOUT_MENU);
         migrateOldSettingToNew(DEPRECATED_SANITIZE_URL_QUERY, SANITIZE_SHARING_LINKS);
     }
 

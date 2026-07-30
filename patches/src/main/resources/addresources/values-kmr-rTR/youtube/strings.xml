@@ -195,6 +195,28 @@ Guherînan têne xistine:
   <string name="morphe_hide_store_button_title">Bişîniya butona \'Store\' veşêrin</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_subscribe_button_in_channel_page_title">Bişîniya butona \'Subscribe\' (li hejmara kanalê) veşêrin</string>
+  <string name="morphe_explore_menu_screen_title">Menûyê Explore Bike</string>
+  <string name="morphe_explore_menu_screen_summary">Hilbijêre kîjan beşên menûyê Explore xuya bibin</string>
+  <string name="morphe_hide_courses_menu_title">Menûya Kursan veşêre</string>
+  <string name="morphe_hide_explore_button_title">Dîmena Butona Explore veşêre</string>
+  <string name="morphe_hide_fashion_menu_title">Menûya \'Fashion &amp; Beauty\' veşêre</string>
+  <string name="morphe_hide_gaming_menu_title">Menûya Gaming veşêre</string>
+  <string name="morphe_hide_hype_menu_title">Menûya Hype veşêre</string>
+  <string name="morphe_hide_live_menu_title">Menûya Live veşêre</string>
+  <string name="morphe_hide_memberships_menu_title">Menûya Endamtiyê veşêre</string>
+  <string name="morphe_hide_movies_menu_title">Menûya Fîlmên veşêre</string>
+  <string name="morphe_hide_music_menu_title">Menûya \'Music &amp; TV\' veşêre</string>
+  <string name="morphe_hide_news_menu_title">Menûya Nûçeyan veşêre</string>
+  <string name="morphe_hide_playables_menu_title">Menûya Playables veşêre</string>
+  <string name="morphe_hide_podcasts_menu_title">Menûya Podcastan veşêre</string>
+  <string name="morphe_hide_shopping_menu_title">Menûya Shopping veşêre</string>
+  <string name="morphe_hide_sports_menu_title">Menûya Sporê veşêre</string>
+  <string name="morphe_hide_youtube_premium_menu_title">Menûya YouTube Premium veşêre</string>
+  <string name="morphe_hide_youtube_studio_menu_title">Menûya YouTube Studio veşêre</string>
+  <string name="morphe_hide_youtube_music_menu_title">Menûya YouTube Music veşêre</string>
+  <string name="morphe_hide_youtube_kids_menu_title">Menûya YouTube Kids veşêre</string>
+  <string name="morphe_hide_youtube_create_menu_title">Menûya YouTube Create veşêre</string>
+  <string name="morphe_hide_privacy_tos_footer_title">Pêyveya jorîn a \'Privacy Policy • Terms of Service\' veşêre</string>
   <string name="morphe_comments_screen_title">Şirove</string>
   <string name="morphe_comments_screen_summary">Navê karuselê yên şîroveyan da ku bi wan ve fîltre bikin, bi herî her rêzê de</string>
   <string name="morphe_hide_comments_carousel_title">Filtra karuselê komentaran çalak bike</string>
@@ -205,14 +227,13 @@ Guherînan têne xistine:
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Mesajên agahiyên di beşa şîroveyan de veşêrin</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Xelîza xebatî ya AI veşêrin</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Rêberiya kanala veşêrin</string>
-  <string name="morphe_hide_comments_prompts_title">Daxwazên comentan veşêre</string>
-  <string name="morphe_hide_comments_prompts_summary">Pêşnîyarê şîroveyê di bin vîdyoyê de berî vekirina beşa şîroveyan veşêrin</string>
+  <string name="morphe_hide_comments_contexts_title">Şîrkirina peyamên kontekstê</string>
   <string name="morphe_hide_comments_by_members_header_title">Serlêka \'Şiroveyên endam\' veşêrin</string>
   <string name="morphe_hide_comments_section_title">Beşa şirove veşêrin</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">سەرجەمی კომنت‌ها لە ڕه‌وشدارى سەرەكی قاىپه‌</string>
-  <string name="morphe_hide_comments_community_guidelines_title">Rêberiya civakî veşêrin</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Şîrkirina Rêgezirên Civatê</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Bişkoka \'Kurîna Short\' veşêrin</string>
-  <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Bişkoka Emoji û Demreya veşêrin</string>
+  <string name="morphe_hide_comments_emoji_button_title">Şîrkirina Butona Emojiyê</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Vebijarkên barekê veşêre</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Vebijarkên barekê ji bilî \'Herî jor\' û \'Nûترین\' veşêre</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Şîrkirina animasyonê û kartên hediyê veşêrin</string>
@@ -222,6 +243,7 @@ Guherînan têne xistine:
   <string name="morphe_hide_comments_preview_comment_title">Pêşbîna şîroveyê veşêrin</string>
   <string name="morphe_hide_comments_preview_comment_summary">Hemû vebijarkên sortkirina şîroveyan ji bilî \'Herî jor\' û \'Nûjen\' veşêrin</string>
   <string name="morphe_hide_comments_thanks_button_title">Bişkoka \'Spas\' veşêrin</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Şîrkirina Butona Demê</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Girêdên lêgerînê yên ronahîkirî paqij bike</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Girêdên lêgerînê yên ronahîkirî paqij dike, tenê nivîsa asayî tê hiştin</string>
   <string name="morphe_hide_keyword_content_screen_title">Filtreya peywirdan</string>
@@ -458,6 +480,8 @@ Info: May not work on live streams"</string>
   <string name="morphe_livestream_dvr_title">Stêrkirina DVR-ya pêşandanê serdest bike</string>
   <string name="morphe_livestream_dvr_summary">Hêlî dibe ku li ser hemû weşînên zindî lêgerînê bike, tewra yên ku normal têkbirinê qedexe dikin</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">Mîhengkirina hûrimên şopê ji bo dîtina hêsantirî</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">Nîşana vîdyoyê dema ku şopa dîtinê diherikînê da dîmenê</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'Zêdekirina DVR-a livestreamek' neyê bikar anîn
 
@@ -1079,23 +1103,23 @@ Sînergirên:
 • Video yan HDR dê AVC bikar nebin
 • Hin alav nikarên AVC zor bike"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Ji bo karanîna vê taybetmendiyê, \'Streaming vîdyoyê şopîn bike\' saz bike bo Android VR an Android Studio</string>
+  <string name="morphe_force_avc_codec_not_available">Daku rê vê taybetê bikar bînin, \'Hêmanên vîdyoyê yên sûnî\' hilbijêrin wek \'Android VR\' an \'Android Studio\'</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Veke ji menuya kalîteya pêşkeftî ve bike</string>
   <string name="morphe_advanced_video_quality_menu_summary">Dibe menuya hilbijartina kalîteyê derbas dike û rasterast menuya kalîteya Pêşkeftî vekirin</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Ji asta Premium veşêre</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Kalîteya Vîdyoyê pêşandanî bike</string>
-  <string name="morphe_prioritize_video_quality_summary">Kalîteya herî bilind a vîdyoyê li ser karbidestiya kodekê parêz dike</string>
+  <string name="morphe_video_quality_prioritize_title">Kalîteya vîdyoyê parêz bike</string>
+  <string name="morphe_video_quality_prioritize_summary">Kalîteya herî bilind a vîdyoyê li ser karbidestiya kodekê parêz dike</string>
+  <string name="morphe_video_quality_prioritize_dialog">Heke ev rêgezirîn veqetandibe, wêrên vîdyoyên kevnar nizanin ku veguhêzên kalîteya vîdyoyê nîşan bidin</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Hilbijartina AV1 ya Android VR ji bo</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Hêza kodêkirina AV1 ya nermalavê dema ku hûn cîhazê Android VR bikar tînin</string>
+  <string name="morphe_spoof_video_streams_av1_title">Destûrê bidin Android VR / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Destûr dide bernameyê ku veguhêzkerê AV1 bikar bîne dema ku serîlêdana Android VR / visionOS-ê tê bikar anîn</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Çalak kirina vê sazkare dikare ji dekodkirina AV1 ya nermalê bikar bîne.
 
 Lêxistina video bi AV1 dikare kîzbirin an kêmuçêkî framean bike."</string>
   <string name="morphe_spoof_video_streams_about_title">Efectê spoofingê</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• Vîdyo dikare di 1:00 de raweste, an jî di hin herêmên cuda de nedibe.</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Menuya rêgirên audio kêman e </string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Kodeka vîdyoyê ya AV1 tune</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Moda berfireh a VRê 360° niye.</string>

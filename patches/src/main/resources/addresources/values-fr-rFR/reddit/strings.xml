@@ -32,13 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">Masquer l\'étagère \'À propos\'</string>
   <string name="morphe_hide_resources_shelf_title">Masquer l\'étagère \'Ressources\'</string>
   <string name="morphe_screen_layout_title">Mise en page</string>
-  <string name="morphe_disable_modern_home_title">Désactiver l\'accueil moderne</string>
-  <string name="morphe_disable_screenshot_popup_title">Désactiver le pop-up de capture d\'écran</string>
-  <string name="morphe_disable_screenshot_popup_summary">Désactive le pop-up qui apparaît lors de la capture d\'écran</string>
-  <string name="morphe_hide_ask_button_title">Masquer le bouton \'Demander\'</string>
-  <string name="morphe_hide_ask_button_summary">Masque le bouton \'Demander\' dans la barre de recherche</string>
-  <string name="morphe_force_system_font_title">Forcer la police système</string>
-  <string name="morphe_force_system_font_summary">Utilisez la police système de l\'appareil au lieu de Reddit Sans ou Roboto. L\'activation de cette option désactive également \'Police personnalisée\'</string>
   <string name="morphe_custom_font_title">Police personnalisée</string>
   <string name="morphe_custom_font_summary">Chargez un fichier de police TTF ou OTF personnalisé à partir du chemin ci-dessous. L\'activation de cette option désactive également \'Forcer la police système\'</string>
   <string name="morphe_custom_font_file_path_title">Fichier de police personnalisé</string>
@@ -47,6 +40,13 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_pick_file_first">Choisissez d\'abord un fichier de police personnalisé</string>
   <string name="morphe_custom_font_invalid_file">Veuillez sélectionner un fichier de police .ttf ou .otf</string>
   <string name="morphe_custom_font_failed_to_load">Échec du chargement de la police personnalisée. Veuillez choisir un autre fichier</string>
+  <string name="morphe_disable_modern_home_title">Désactiver l\'accueil moderne</string>
+  <string name="morphe_disable_screenshot_popup_title">Désactiver le pop-up de capture d\'écran</string>
+  <string name="morphe_disable_screenshot_popup_summary">Désactive le pop-up qui apparaît lors de la capture d\'écran</string>
+  <string name="morphe_force_system_font_title">Forcer la police système</string>
+  <string name="morphe_force_system_font_summary">Utilisez la police système de l\'appareil au lieu de Reddit Sans ou Roboto. L\'activation de cette option désactive également \'Police personnalisée\'</string>
+  <string name="morphe_hide_ask_button_title">Masquer le bouton \'Demander\'</string>
+  <string name="morphe_hide_ask_button_summary">Masque le bouton \'Demander\' dans la barre de recherche</string>
   <string name="morphe_hide_communities_shelf_title">Masquer l\'étagère des communautés</string>
   <string name="morphe_hide_communities_shelf_summary">Masque l\'étagère des communautés associées ou suggérées dans les subreddits</string>
   <string name="morphe_hide_trending_shelves_title">Masquer les étagères \'Tendance\'</string>

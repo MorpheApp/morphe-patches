@@ -204,14 +204,11 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Indtast kommentar karruselnavnene, der skal filtreres efter, adskilt af nye linjer</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Skjul AI-chatsammendrag</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Skjul kanalretningslinjer</string>
-  <string name="morphe_hide_comments_prompts_title">Skjul kommentar-prompt</string>
-  <string name="morphe_hide_comments_prompts_summary">Skjuler kontekstuelle informationsmeddelelser i kommentarsektionen</string>
+  <string name="morphe_hide_comments_contexts_title">Skjul kontekstmeddelelser</string>
   <string name="morphe_hide_comments_by_members_header_title">Skjul \'Kommentarer fra medlemmer\' header</string>
   <string name="morphe_hide_comments_section_title">Skjul kommentarsektion</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Skjul kommentarer i Home-feed</string>
-  <string name="morphe_hide_comments_community_guidelines_title">Skjul fællesskabsretningslinjer</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Skjul knappen \'Opret en Short\'</string>
-  <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Skjul emoji- og tidsstempelknapper</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Skjul filterbjælkeindstillinger</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Skjuler alle filterbjælkeindstillinger undtagen \'Top\' og \'Nyeste\'</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Skjul gaveanimation og kort</string>
@@ -457,6 +454,8 @@ Info: Virker muligvis ikke på live streams"</string>
   <string name="morphe_livestream_dvr_title">Aktivér livestream DVR</string>
   <string name="morphe_livestream_dvr_summary">Giver mulighed for at spole i alle livestreams, selv dem der normalt begrænser det</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">Aktiver miniaturer på søgelinjen</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">Viser et videominiaturebillede, når du trækker i søgelinjen</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'Aktiver optagelse af livestream' er muligvis ikke tilgængelig
 
@@ -1077,23 +1076,23 @@ Begrænsninger:
 • HDR-videoer vil ikke bruge AVC
 • Nogle enheder kan ikke tvinge AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">For at bruge denne funktion skal du sætte \'Forfalsk videostreams\' til Android VR eller Android Studio</string>
+  <string name="morphe_force_avc_codec_not_available">For at bruge denne funktion skal du indstille \"Forfalsk videostreams\" til \"Android VR\" eller \"Android Studio\"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Åbn Avanceret kvalitetsmenu</string>
   <string name="morphe_advanced_video_quality_menu_summary">Springer kvalitetsvalgsmenuen over og åbner menuen \'Avanceret\' kvalitet direkte</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Skjul Premium kvalitetsindstillinger</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">Prioritering af videokvalitet</string>
-  <string name="morphe_prioritize_video_quality_summary">Prioriterer den højest tilgængelige videokvalitet over kodekeffektivitet</string>
+  <string name="morphe_video_quality_prioritize_title">Prioritering af videokvalitet</string>
+  <string name="morphe_video_quality_prioritize_summary">Prioriterer den højest tilgængelige videokvalitet over codec-effektivitet</string>
+  <string name="morphe_video_quality_prioritize_dialog">Hvis denne indstilling er slået fra, kan ældre videoer vise ingen videokvalitetsmuligheder</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Tillad Android VR AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Tillader software AV1-afkodning ved brug af Android VR-klienten</string>
+  <string name="morphe_spoof_video_streams_av1_title">Tillad Android VR / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Tillader software AV1-dekodning ved brug af Android VR / visionOS-klienten</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Aktivering af denne indstilling kan bruge software AV1-afkodning.
 
 Videoafspilning med AV1 kan hakke eller tabe billeder."</string>
   <string name="morphe_spoof_video_streams_about_title">Bivirkninger ved spoofing</string>
-  <string name="morphe_spoof_video_streams_about_playback_failure">• Videoen kan stoppe ved 1:00, eller er muligvis ikke tilgængelig i visse regioner</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Lydspormenu mangler</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Intet AV1-videocodec</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR-immersiv tilstand er ikke tilgængelig</string>
