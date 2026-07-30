@@ -37,6 +37,7 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.cloneParameters
 import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
@@ -256,11 +257,27 @@ val miniplayerPatch = bytecodePatch(
             )
         }
 
-        if (!is_21_30_or_greater) {
-            MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
-                MINIPLAYER_DRAG_DROP_FEATURE_KEY,
-                "getMiniplayerDragAndDrop",
-            )
+        MiniplayerDragAndDropFingerprint.apply {
+            method.apply {
+                val instructionIndex = instructionMatches.last().index
+                val instructionRegister = getInstruction<OneRegisterInstruction>(
+                    instructionIndex
+                ).registerA
+                val clonedParameters = 3
+
+                cloneParameters().addInstructionsAtControlFlowLabel(
+                    clonedParameters + instructionIndex + 1,
+                    """
+                        invoke-static { v$instructionRegister }, $EXTENSION_CLASS->getMiniplayerDragAndDrop(I)Z
+                        move-result p0
+                        if-eqz p0, :set_drag_and_drop
+                        const/4 p0, 0x0
+                        return p0
+                        :set_drag_and_drop
+                        nop
+                    """
+                )
+            }
         }
 
         MiniplayerModernFeatureFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
@@ -314,7 +331,7 @@ val miniplayerPatch = bytecodePatch(
                     """
                         invoke-static {}, $EXTENSION_CLASS->getRoundedCorners()Z
                         move-result v$freeRegister
-                        if-eqz v$freeRegister, :set_rounded_corners
+                        if-nez v$freeRegister, :set_rounded_corners
                     """, ExternalLabel("set_rounded_corners", getInstruction(instructionIndex + 1))
                 )
             }

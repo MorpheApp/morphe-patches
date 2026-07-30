@@ -66,6 +66,24 @@ internal object MiniplayerRoundedCornersFingerprint : Fingerprint(
     )
 )
 
+internal object MiniplayerDragAndDropFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf("Landroid/view/View;", "Landroid/view/MotionEvent;"),
+    filters = listOf(
+        opcode(opcode = Opcode.SUB_FLOAT_2ADDR),
+        opcode(opcode = Opcode.APUT, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.AGET, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.AGET, location = MatchAfterImmediately()),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Landroid/view/MotionEvent;->getActionMasked()I",
+            location = MatchAfterImmediately()
+        ),
+        opcode(opcode = Opcode.MOVE_RESULT, location = MatchAfterImmediately())
+    )
+)
+
 internal object MiniplayerHorizontalDragPlaybackFingerprint : Fingerprint (
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",

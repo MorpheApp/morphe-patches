@@ -360,12 +360,8 @@ public final class MiniplayerPatch {
     /**
      * Injection point.
      */
-    public static boolean getMiniplayerDragAndDrop(boolean original) {
-        if (CURRENT_TYPE == DEFAULT) {
-            return original;
-        }
-
-        return DRAG_AND_DROP_ENABLED;
+    public static boolean getMiniplayerDragAndDrop(int actionMasked) {
+        return DRAG_AND_DROP_ENABLED && actionMasked == 2;
     }
 
     /**
