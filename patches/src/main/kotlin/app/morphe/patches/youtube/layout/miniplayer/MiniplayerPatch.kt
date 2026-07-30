@@ -18,6 +18,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
+import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -36,6 +37,7 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
@@ -43,6 +45,7 @@ import app.morphe.util.indexOfFirstLiteralInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction35c
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
@@ -294,10 +297,31 @@ val miniplayerPatch = bytecodePatch(
             }
         }
 
-        MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
-            MINIPLAYER_ROUNDED_CORNERS_FEATURE_KEY,
-            "getRoundedCorners",
-        )
+        MiniplayerRoundedCornersFingerprint.apply {
+            method.apply {
+                val instructionIndex = instructionMatches.last().index
+                val instructionRegister = getInstruction<BuilderInstruction35c>(
+                    instructionIndex
+                )
+                val instructionRegisterA = instructionRegister.registerC
+                val instructionRegisterB = instructionRegister.registerD
+                val freeRegister = findFreeRegister(
+                    instructionIndex, instructionRegisterA, instructionRegisterB
+                )
+
+                addInstructionsAtControlFlowLabel(
+                    instructionIndex,
+                    """
+                        invoke-static {}, $EXTENSION_CLASS->getRoundedCorners()Z
+                        move-result v$freeRegister
+                        if-eqz v$freeRegister, :set_rounded_corners
+                    """, ExternalLabel("set_rounded_corners", getInstruction(instructionIndex + 1))
+                )
+            }
+
+        }
+
+        //$EXTENSION_CLASS
 
         MiniplayerOnCloseHandlerFingerprint.matchAll().forEach {
             // 21.30+ inlines the flag lookup and must patch ~2 places.

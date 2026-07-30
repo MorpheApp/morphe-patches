@@ -371,11 +371,7 @@ public final class MiniplayerPatch {
     /**
      * Injection point.
      */
-    public static boolean getRoundedCorners(boolean original) {
-        if (CURRENT_TYPE == DEFAULT) {
-            return original;
-        }
-
+    public static boolean getRoundedCorners() {
         return MINIPLAYER_ROUNDED_CORNERS_ENABLED;
     }
 

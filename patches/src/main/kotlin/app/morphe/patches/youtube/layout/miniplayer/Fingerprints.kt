@@ -26,11 +26,9 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 internal const val MINIPLAYER_MODERN_FEATURE_KEY = 45622882L
-internal const val MINIPLAYER_MODERN_TYPE_1_FEATURE_KEY = 45623000L
 internal const val MINIPLAYER_DOUBLE_TAP_FEATURE_KEY = 45628823L
 internal const val MINIPLAYER_DRAG_DROP_FEATURE_KEY = 45628752L
 internal const val MINIPLAYER_HORIZONTAL_DRAG_FEATURE_KEY = 45658112L
-internal const val MINIPLAYER_ROUNDED_CORNERS_FEATURE_KEY = 45652224L
 internal const val MINIPLAYER_INITIAL_SIZE_FEATURE_KEY = 45640023L
 internal const val MINIPLAYER_DISABLED_FEATURE_KEY = 45657015L
 internal const val MINIPLAYER_ANIMATED_EXPAND_FEATURE_KEY = 45644360L
@@ -48,7 +46,23 @@ internal object MiniplayerModernFeatureFingerprint : Fingerprint(
 internal object MiniplayerModernConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     filters = listOf(
-        literal(MINIPLAYER_ROUNDED_CORNERS_FEATURE_KEY)
+        literal(MINIPLAYER_INITIAL_SIZE_FEATURE_KEY)
+    )
+)
+
+internal object MiniplayerRoundedCornersFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/view/View;", "L"),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Landroid/view/View;->setClipToOutline(Z)V"
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Landroid/view/View;->setOutlineProvider(Landroid/view/ViewOutlineProvider;)V"
+        )
     )
 )
 
