@@ -38,75 +38,37 @@ internal object SplashScreenStyleFingerprint : Fingerprint(
 /**
  * Matches to the same method as [SplashScreenStyleFingerprint].
  */
-internal object ShowSplashScreen1Fingerprint : Fingerprint(
+internal object ShowSplashScreenFingerprint : Fingerprint(
     definingClass = YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE,
     name = "onCreate",
     returnType = "V",
     parameters = listOf("Landroid/os/Bundle;"),
     filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            returnType = "Z",
+            parameters = listOf("I")
+        ),
+        opcode(
+            opcode = Opcode.MOVE_RESULT,
+            location = MatchAfterImmediately()
+        ),
+        opcode(
+            opcode = Opcode.IF_EQZ,
+            location = MatchAfterImmediately()
+        ),
+        opcode(
+            opcode = Opcode.GOTO,
+            location = MatchAfterWithin(2)
+        ),
         anyInstruction(
             opcode(Opcode.CONST_4),
-            opcode(Opcode.CONST_16)
-        ),
-        methodCall(
-            opcode = Opcode.INVOKE_VIRTUAL,
-            parameters = listOf("L", "Ljava/lang/Runnable;"),
-            returnType = "V",
-            location = MatchAfterWithin(20)
-        ),
-        opcode(
-            opcode = Opcode.APUT_OBJECT,
-            location = MatchAfterWithin(10)
-        ),
-        methodCall(
-            parameters = listOf("[L"),
-            returnType = "V",
-            location = MatchAfterWithin(5)
-        ),
-        opcode(
-            opcode = Opcode.IGET_OBJECT,
-            location = MatchAfterImmediately()
-        ),
-        methodCall(
-            parameters = listOf(),
-            returnType = "I",
+            opcode(Opcode.CONST_16),
             location = MatchAfterImmediately()
         ),
         opcode(
-            opcode = Opcode.MOVE_RESULT,
+            opcode = Opcode.IF_NE,
             location = MatchAfterImmediately()
-        ),
-        methodCall(
-            parameters = listOf("I"),
-            returnType = "Z",
-            location = MatchAfterImmediately()
-        ),
-        opcode(
-            opcode = Opcode.MOVE_RESULT,
-            location = MatchAfterImmediately()
-        )
-    )
-)
-
-/**
- * Matches to the same method as [SplashScreenStyleFingerprint].
- */
-internal object ShowSplashScreen2Fingerprint : Fingerprint(
-    definingClass = YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE,
-    name = "onCreate",
-    returnType = "V",
-    parameters = listOf("Landroid/os/Bundle;"),
-    filters = listOf(
-        methodCall(
-            opcode = Opcode.INVOKE_VIRTUAL,
-            returnType = "V",
-            parameters = listOf("[L")
-        ),
-        opcode(
-            opcode = Opcode.IF_NE
-        ),
-        methodCall(
-            smali = "Landroid/graphics/drawable/AnimatedVectorDrawable;->start()V"
         )
     )
 )

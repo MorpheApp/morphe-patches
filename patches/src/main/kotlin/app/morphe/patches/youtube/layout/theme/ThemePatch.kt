@@ -313,33 +313,31 @@ val themePatch = baseThemePatch(
             )
         }
 
-        if (!is_21_30_or_greater) ShowSplashScreen1Fingerprint.let {
+        ShowSplashScreenFingerprint.let {
             it.method.apply {
-                val index = it.instructionMatches.last().index
-                val register = getInstruction<OneRegisterInstruction>(index).registerA
+                val firstTargetInstructionIndex = it.instructionMatches.last().index
+                val firstTargetInstruction = getInstruction<TwoRegisterInstruction>(firstTargetInstructionIndex)
+                val firstTargetInstructionRegisterA = firstTargetInstruction.registerA
+                val firstTargetInstructionRegisterB = firstTargetInstruction.registerB
 
                 addInstructions(
-                    index + 1,
+                    firstTargetInstructionIndex,
                     """
-                        invoke-static { v$register }, $EXTENSION_CLASS->showSplashScreen(Z)Z
-                        move-result v$register
+                        invoke-static { v$firstTargetInstructionRegisterA, v$firstTargetInstructionRegisterB }, $EXTENSION_CLASS->showSplashScreen(II)I
+                        move-result v$firstTargetInstructionRegisterA
                     """
                 )
-            }
-        }
 
-        ShowSplashScreen2Fingerprint.let {
-            val insertIndex = it.instructionMatches[1].index
-            it.method.apply {
-                val insertInstruction = getInstruction<TwoRegisterInstruction>(insertIndex)
-                val registerA = insertInstruction.registerA
-                val registerB = insertInstruction.registerB
+                val secondTargetInstructionIndex = it.instructionMatches[1].index
+                val secondTargetInstructionRegister = getInstruction<OneRegisterInstruction>(
+                    secondTargetInstructionIndex
+                ).registerA
 
                 addInstructions(
-                    insertIndex,
+                    secondTargetInstructionIndex + 1,
                     """
-                        invoke-static { v$registerA, v$registerB }, $EXTENSION_CLASS->showSplashScreen(II)I
-                        move-result v$registerA
+                        invoke-static { v$secondTargetInstructionRegister }, $EXTENSION_CLASS->showSplashScreen(Z)Z
+                        move-result v$secondTargetInstructionRegister
                     """
                 )
             }
