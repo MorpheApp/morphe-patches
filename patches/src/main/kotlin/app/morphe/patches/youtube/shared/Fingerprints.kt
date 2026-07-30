@@ -303,21 +303,14 @@ internal object WatchNextResponseParserFingerprint : Fingerprint(
     )
 )
 
-internal val VideoQualityBufferingFlagFingerprint = listOf(
-    Fingerprint( // Platypus
-        accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-        returnType = "V",
-        filters = listOf(
-            literal(45624008L),
-            opcode(Opcode.MOVE_RESULT, location = MatchAfterWithin(2))
-        )
-    ),
-    Fingerprint(
-        accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-        returnType = "Z",
-        parameters = listOf(),
-        filters = listOf(
-            literal(45408049L)
-        )
+internal object PlatypusVideoQualityFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45624008L)
+    )
+)
+
+internal object VideoQualityBufferingFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45408049L)
     )
 )
