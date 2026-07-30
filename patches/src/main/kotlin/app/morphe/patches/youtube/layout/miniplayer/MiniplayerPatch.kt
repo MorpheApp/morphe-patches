@@ -92,16 +92,14 @@ val miniplayerPatch = bytecodePatch(
         }
 
         preferences += SwitchPreference("morphe_miniplayer_disable_resuming", summary = true)
-        if (!is_21_30_or_greater) {
-            preferences += SwitchPreference(
-                "morphe_miniplayer_disable_drag_and_drop",
-                summary = true
-            )
-            preferences += SwitchPreference(
-                "morphe_miniplayer_disable_horizontal_drag",
-                summary = true
-            )
-        }
+        preferences += SwitchPreference(
+            "morphe_miniplayer_disable_drag_and_drop",
+            summary = true
+        )
+        preferences += SwitchPreference(
+            "morphe_miniplayer_disable_horizontal_drag",
+            summary = true
+        )
         preferences += SwitchPreference("morphe_miniplayer_disable_rounded_corners")
         if (!is_21_29_or_greater) {
             preferences += SwitchPreference("morphe_miniplayer_hide_overlay_buttons")
@@ -259,14 +257,14 @@ val miniplayerPatch = bytecodePatch(
 
         MiniplayerDragAndDropFingerprint.apply {
             method.apply {
-                val instructionIndex = instructionMatches.last().index
+                val clonedParameters = 3
+                val instructionIndex = clonedParameters + instructionMatches.last().index
                 val instructionRegister = getInstruction<OneRegisterInstruction>(
                     instructionIndex
                 ).registerA
-                val clonedParameters = 3
 
                 cloneParameters().addInstructionsAtControlFlowLabel(
-                    clonedParameters + instructionIndex + 1,
+                    instructionIndex + 1,
                     """
                         invoke-static { v$instructionRegister }, $EXTENSION_CLASS->getMiniplayerDragAndDrop(I)Z
                         move-result p0
@@ -358,6 +356,23 @@ val miniplayerPatch = bytecodePatch(
                 MINIPLAYER_ANIMATED_EXPAND_FEATURE_KEY,
                 "getMaximizeAnimation",
             )
+        } else {
+            MiniplayerAnimatedExpandFingerprint.apply {
+                method.apply {
+                    val startTargetIndex = instructionMatches[1].index
+                    val endTargetIndex = instructionMatches.last().index
+                    val freeRegister = findFreeRegister(startTargetIndex)
+
+                    addInstructionsAtControlFlowLabel(
+                        startTargetIndex,
+                        """
+                            invoke-static { }, $EXTENSION_CLASS->getMaximizeAnimation()Z
+                            move-result v$freeRegister
+                            if-eqz v$freeRegister, :set_maximize_animation
+                        """, ExternalLabel("set_maximize_animation", getInstruction(endTargetIndex))
+                    )
+                }
+            }
         }
 
         Fingerprint(

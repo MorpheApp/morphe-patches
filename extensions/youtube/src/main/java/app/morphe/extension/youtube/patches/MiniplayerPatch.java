@@ -489,6 +489,13 @@ public final class MiniplayerPatch {
     /**
      * Injection point.
      */
+    public static boolean getMaximizeAnimation() {
+        return MINIPLAYER_HORIZONTAL_DRAG_ENABLED;
+    }
+
+    /**
+     * Injection point.
+     */
     public static int getMiniplayerDefaultSize(int original) {
         if (CURRENT_TYPE.isModern()) {
             return MINIPLAYER_SIZE;

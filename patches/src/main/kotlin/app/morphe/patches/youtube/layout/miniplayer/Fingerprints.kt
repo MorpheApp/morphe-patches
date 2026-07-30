@@ -10,6 +10,7 @@
 package app.morphe.patches.youtube.layout.miniplayer
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
@@ -80,6 +81,19 @@ internal object MiniplayerDragAndDropFingerprint : Fingerprint(
             location = MatchAfterImmediately()
         ),
         opcode(opcode = Opcode.MOVE_RESULT, location = MatchAfterImmediately())
+    )
+)
+
+internal object MiniplayerAnimatedExpandFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("I"),
+    filters = listOf(
+        opcode(opcode = Opcode.CONST_4),
+        opcode(opcode = Opcode.IF_NE, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.IGET_OBJECT, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.MOVE, location = MatchAfterWithin(7)),
+        opcode(opcode = Opcode.IGET_OBJECT, location = MatchAfterImmediately())
     )
 )
 
