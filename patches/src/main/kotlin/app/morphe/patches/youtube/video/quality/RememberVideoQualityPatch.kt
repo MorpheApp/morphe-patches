@@ -121,10 +121,12 @@ val rememberVideoQualityPatch = bytecodePatch {
         }
 
         VideoQualityBufferingFlagFingerprint.forEach {
-            it.method.insertLiteralOverride(
-                it.instructionMatches.last().index,
-                "$EXTENSION_CLASS->overrideBufferingVideoQualityFlag(Z)Z"
-            )
+            it.matchAll().forEach { matchedFingerprint ->
+                matchedFingerprint.method.insertLiteralOverride(
+                    it.instructionMatches.last().index,
+                    "$EXTENSION_CLASS->overrideBufferingVideoQualityFlag(Z)Z"
+                )
+            }
         }
     }
 }
