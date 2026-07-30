@@ -313,7 +313,7 @@ val themePatch = baseThemePatch(
             )
         }
 
-        ShowSplashScreen1Fingerprint.let {
+        if (!is_21_30_or_greater) ShowSplashScreen1Fingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches.last().index
                 val register = getInstruction<OneRegisterInstruction>(index).registerA

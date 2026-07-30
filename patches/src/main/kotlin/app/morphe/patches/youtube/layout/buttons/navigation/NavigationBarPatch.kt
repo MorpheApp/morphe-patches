@@ -36,6 +36,7 @@ import app.morphe.patches.youtube.misc.navigation.hookNavigationButtonCreated
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_46_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -102,14 +103,15 @@ val navigationBarPatch = bytecodePatch(
             SwitchPreference("morphe_hide_navigation_bar"),
         )
 
-        navPreferences += SwitchPreference("morphe_disable_translucent_navigation_bar_light", summary = true)
-        navPreferences += SwitchPreference("morphe_disable_translucent_navigation_bar_dark", summary = true)
+        if (!is_21_30_or_greater) {
+            navPreferences += SwitchPreference("morphe_disable_translucent_navigation_bar_light", summary = true)
+            navPreferences += SwitchPreference("morphe_disable_translucent_navigation_bar_dark", summary = true)
 
-        PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("morphe_disable_translucent_status_bar", summary = true)
-        )
-
-        navPreferences += SwitchPreference("morphe_navigation_bar_animations", summary = true)
+            PreferenceScreen.GENERAL.addPreferences(
+                SwitchPreference("morphe_disable_translucent_status_bar", summary = true)
+            )
+            navPreferences += SwitchPreference("morphe_navigation_bar_animations", summary = true)
+        }
 
         if (is_20_31_or_greater) {
             navPreferences += SwitchPreference("morphe_disable_auto_hide_navigation_bar", summary = true)
@@ -150,33 +152,34 @@ val navigationBarPatch = bytecodePatch(
         addBottomBarContainerHook("$EXTENSION_CLASS->hideNavigationBar(Landroid/view/View;)V")
 
         // Force on/off translucent effect on status bar and navigation buttons.
-        TranslucentNavigationStatusBarFeatureFlagFingerprint.matchAll().forEach {
-            // 21.30+ inlines the flag lookup and must patch ~60 places.
-            it.method.insertLiteralOverride(
-                it.instructionMatches.first().index,
-                "$EXTENSION_CLASS->useTranslucentNavigationStatusBar(Z)Z",
-            )
-        }
+        if (!is_21_30_or_greater) {
+            TranslucentNavigationStatusBarFeatureFlagFingerprint.matchAll().forEach {
+                // 21.30+ inlines the flag lookup and must patch ~60 places.
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    "$EXTENSION_CLASS->useTranslucentNavigationStatusBar(Z)Z",
+                )
+            }
+            TranslucentNavigationButtonsFeatureFlagFingerprint.matchAll().forEach {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    "$EXTENSION_CLASS->useTranslucentNavigationButtons(Z)Z",
+                )
+            }
 
-        TranslucentNavigationButtonsFeatureFlagFingerprint.matchAll().forEach {
-            it.method.insertLiteralOverride(
-                it.instructionMatches.first().index,
-                "$EXTENSION_CLASS->useTranslucentNavigationButtons(Z)Z",
-            )
-        }
+            TranslucentNavigationButtonsSystemFeatureFlagFingerprint.matchAll().forEach {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    "$EXTENSION_CLASS->useTranslucentNavigationButtons(Z)Z",
+                )
+            }
 
-        TranslucentNavigationButtonsSystemFeatureFlagFingerprint.matchAll().forEach {
-            it.method.insertLiteralOverride(
-                it.instructionMatches.first().index,
-                "$EXTENSION_CLASS->useTranslucentNavigationButtons(Z)Z",
-            )
-        }
-
-        AnimatedNavigationTabsFeatureFlagFingerprint.matchAll().forEach {
-            it.method.insertLiteralOverride(
-                it.instructionMatches.first().index,
-                "$EXTENSION_CLASS->useAnimatedNavigationButtons(Z)Z"
-            )
+            AnimatedNavigationTabsFeatureFlagFingerprint.matchAll().forEach {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    "$EXTENSION_CLASS->useAnimatedNavigationButtons(Z)Z"
+                )
+            }
         }
 
         if (is_20_46_or_greater) {

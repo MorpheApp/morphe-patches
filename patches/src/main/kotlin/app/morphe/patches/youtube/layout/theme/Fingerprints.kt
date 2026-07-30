@@ -49,6 +49,7 @@ internal object ShowSplashScreen1Fingerprint : Fingerprint(
             opcode(Opcode.CONST_16)
         ),
         methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
             parameters = listOf("L", "Ljava/lang/Runnable;"),
             returnType = "V",
             location = MatchAfterWithin(20)
