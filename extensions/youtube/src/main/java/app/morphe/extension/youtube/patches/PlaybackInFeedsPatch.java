@@ -7,10 +7,14 @@
 
 package app.morphe.extension.youtube.patches;
 
+import android.app.Activity;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
@@ -38,6 +42,20 @@ public final class PlaybackInFeedsPatch {
     /** Videos in feeds always play automatically. */
     public static final int MODE_ALWAYS_ON = 2;
 
+    /**
+     * Imported settings only change the copy of the mode, which must be given to YouTube.
+     */
+    public static final Setting.ImportExportCallback PLAYBACK_IN_FEEDS_IMPORT_EXPORT_CALLBACK
+            = new Setting.ImportExportCallback() {
+        @Override
+        public void settingsImported(@Nullable Activity context) {
+            setMode(Settings.PLAYBACK_IN_FEEDS.get());
+        }
+
+        @Override
+        public void settingsExported(@Nullable Activity context) {}
+    };
+
     @Nullable
     private static volatile PlaybackInFeedsController controller;
 
@@ -46,6 +64,11 @@ public final class PlaybackInFeedsPatch {
      */
     public static void setController(@NonNull PlaybackInFeedsController instance) {
         controller = instance;
+
+        // Refresh the copy on startup, otherwise exporting can save a stale mode
+        // if the mode was changed using the settings of YouTube.
+        // Must not run inline, since YouTube is still inside its own constructor.
+        Utils.runOnMainThread(PlaybackInFeedsPatch::updateSettingFromApp);
     }
 
     /**
