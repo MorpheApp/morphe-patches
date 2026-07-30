@@ -7,7 +7,6 @@
 
 package app.morphe.patches.music.interaction.scrobbling
 
-import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
@@ -19,6 +18,9 @@ import app.morphe.patches.shared.layout.returnyoutubedislike.DislikeFingerprint
 import app.morphe.patches.shared.layout.returnyoutubedislike.EndpointServiceNameFingerprint
 import app.morphe.patches.shared.layout.returnyoutubedislike.likeEndpointParserFingerprint
 import app.morphe.patches.shared.layout.returnyoutubedislike.requestParameterCheckFingerprint
+import app.morphe.patches.shared.misc.media.MediaSessionSetMetadataFingerprint
+import app.morphe.patches.shared.misc.media.MediaSessionSetPlaybackStateFingerprint
+import app.morphe.patches.shared.misc.media.hookMediaSessionArgument
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
@@ -26,7 +28,6 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getReference
-import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
@@ -146,29 +147,13 @@ val scrobblingPatch = bytecodePatch(
             )
         )
 
-        MediaSessionSetPlaybackStateFingerprint.let {
-            it.method.apply {
-                val index = it.instructionMatches.first().index
-                val register = getInstruction<FiveRegisterInstruction>(index).registerD
-                addInstruction(
-                    index,
-                    "invoke-static { v$register }, $EXTENSION_CLASS->" +
-                            "onSetPlaybackState(Landroid/media/session/PlaybackState;)V"
-                )
-            }
-        }
+        MediaSessionSetPlaybackStateFingerprint.hookMediaSessionArgument(
+            "$EXTENSION_CLASS->onSetPlaybackState(Landroid/media/session/PlaybackState;)V"
+        )
 
-        MediaSessionSetMetadataFingerprint.let {
-            it.method.apply {
-                val index = it.instructionMatches.first().index
-                val register = getInstruction<FiveRegisterInstruction>(index).registerD
-                addInstruction(
-                    index,
-                    "invoke-static { v$register }, $EXTENSION_CLASS->" +
-                            "onSetMetadata(Landroid/media/MediaMetadata;)V"
-                )
-            }
-        }
+        MediaSessionSetMetadataFingerprint.hookMediaSessionArgument(
+            "$EXTENSION_CLASS->onSetMetadata(Landroid/media/MediaMetadata;)V"
+        )
 
         // Hook like/dislike/remove like button clicks.
         val endPointServiceNameField = EndpointServiceNameFingerprint
