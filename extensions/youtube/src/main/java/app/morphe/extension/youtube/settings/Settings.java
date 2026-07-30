@@ -755,12 +755,17 @@ public class Settings extends SharedYouTubeSettings {
         migrateOldSettingToNew(DEPRECATED_SB_CATEGORY_UNSUBMITTED, SB_CATEGORY_UNSUBMITTED);
         migrateOldSettingToNew(DEPRECATED_SB_CATEGORY_UNSUBMITTED_COLOR, SB_CATEGORY_UNSUBMITTED_COLOR);
 
-
         // 20.37+ YT removed parts of the code for the legacy tablet miniplayer.
         // This check must remain until the Tablet type is eventually removed.
         if (VersionCheckPatch.IS_20_37_OR_GREATER && MINIPLAYER_TYPE.get() == MiniplayerType.TABLET) {
             Logger.printInfo(() -> "Resetting miniplayer tablet type");
             MINIPLAYER_TYPE.resetToDefault();
+        }
+
+        // 21.29+ YT removed all miniplayer types, except modern_4.
+        if (VersionCheckPatch.IS_21_29_OR_GREATER) {
+            Logger.printInfo(() -> "Set miniplayer to modern_4 type");
+            MINIPLAYER_TYPE.save(MiniplayerType.MODERN_4);
         }
 
         // Old spoof versions that no longer work,
