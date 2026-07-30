@@ -7,7 +7,6 @@
 
 package app.morphe.extension.shared.patches;
 
-import static app.morphe.extension.shared.ByteTrieSearch.convertStringsToBytes;
 import static app.morphe.extension.shared.patches.AppCheckPatch.IS_YOUTUBE;
 
 import android.app.Dialog;
@@ -26,7 +25,7 @@ import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 public class HideFullscreenAdsPatch {
 
     private static final ByteTrieSearch FULLSCREEN_AD_SEARCH = new ByteTrieSearch(
-            convertStringsToBytes("_interstitial")
+            ByteTrieSearch.convertStringsToBytes("_interstitial")
     );
 
     /**

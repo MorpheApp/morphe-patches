@@ -8,8 +8,6 @@
 package app.morphe.extension.shared.oauth2.requests;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.shared.oauth2.requests.OAuth2Routes.getJsonConnectionFromRoute;
-import static app.morphe.extension.shared.oauth2.requests.OAuth2Routes.getUrlConnectionFromRoute;
 
 import android.net.Uri;
 
@@ -200,7 +198,7 @@ public class OAuth2Requester {
 
         synchronized (OAuth2Requester.class) {
             try {
-                HttpURLConnection connection = getJsonConnectionFromRoute(OAuth2Routes.DEVICE_CODE);
+                HttpURLConnection connection = OAuth2Routes.getJsonConnectionFromRoute(OAuth2Routes.DEVICE_CODE);
 
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("client_id", CLIENT_ID);
@@ -246,7 +244,7 @@ public class OAuth2Requester {
                     return null;
                 }
 
-                HttpURLConnection connection = getJsonConnectionFromRoute(OAuth2Routes.ACCESS_TOKEN);
+                HttpURLConnection connection = OAuth2Routes.getJsonConnectionFromRoute(OAuth2Routes.ACCESS_TOKEN);
 
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("client_id", CLIENT_ID);
@@ -299,7 +297,7 @@ public class OAuth2Requester {
         Objects.requireNonNull(refreshToken);
 
         try {
-            HttpURLConnection connection = getJsonConnectionFromRoute(OAuth2Routes.ACCESS_TOKEN);
+            HttpURLConnection connection = OAuth2Routes.getJsonConnectionFromRoute(OAuth2Routes.ACCESS_TOKEN);
 
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("client_id", CLIENT_ID);
@@ -351,7 +349,7 @@ public class OAuth2Requester {
         Utils.verifyOffMainThread();
 
         try {
-            HttpURLConnection connection = getUrlConnectionFromRoute(OAuth2Routes.REVOKE_TOKEN);
+            HttpURLConnection connection = OAuth2Routes.getUrlConnectionFromRoute(OAuth2Routes.REVOKE_TOKEN);
 
             Uri bodyUri = new Uri.Builder()
                     .appendQueryParameter("token", refreshToken)

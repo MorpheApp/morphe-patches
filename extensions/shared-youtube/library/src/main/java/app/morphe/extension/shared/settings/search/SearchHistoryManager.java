@@ -1,9 +1,6 @@
 package app.morphe.extension.shared.settings.search;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.shared.ResourceUtils.getIdentifierOrThrow;
-import static app.morphe.extension.shared.settings.SharedYouTubeSettings.SETTINGS_SEARCH_ENTRIES;
-import static app.morphe.extension.shared.settings.SharedYouTubeSettings.SETTINGS_SEARCH_HISTORY;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -25,7 +22,9 @@ import java.util.LinkedList;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.settings.preference.BulletPointPreference;
 import app.morphe.extension.shared.ui.CustomDialog;
 
@@ -38,35 +37,35 @@ public class SearchHistoryManager {
      */
     private static final int MAX_HISTORY_SIZE = 5;  // Maximum history items stored.
 
-    private static final int ID_CLEAR_HISTORY_BUTTON = getIdentifierOrThrow(
+    private static final int ID_CLEAR_HISTORY_BUTTON = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "clear_history_button");
-    private static final int ID_HISTORY_TEXT = getIdentifierOrThrow(
+    private static final int ID_HISTORY_TEXT = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "history_text");
-    private static final int ID_HISTORY_ICON = getIdentifierOrThrow(
+    private static final int ID_HISTORY_ICON = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "history_icon");
-    private static final int ID_DELETE_ICON = getIdentifierOrThrow(
+    private static final int ID_DELETE_ICON = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "delete_icon");
-    private static final int ID_EMPTY_HISTORY_TITLE = getIdentifierOrThrow(
+    private static final int ID_EMPTY_HISTORY_TITLE = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "empty_history_title");
-    private static final int ID_EMPTY_HISTORY_SUMMARY = getIdentifierOrThrow(
+    private static final int ID_EMPTY_HISTORY_SUMMARY = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "empty_history_summary");
-    private static final int ID_SEARCH_HISTORY_HEADER = getIdentifierOrThrow(
+    private static final int ID_SEARCH_HISTORY_HEADER = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "search_history_header");
-    private static final int ID_SEARCH_TIPS_SUMMARY = getIdentifierOrThrow(
+    private static final int ID_SEARCH_TIPS_SUMMARY = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "morphe_settings_search_tips_summary");
-    private static final int LAYOUT_MORPHE_PREFERENCE_SEARCH_HISTORY_SCREEN = getIdentifierOrThrow(
+    private static final int LAYOUT_MORPHE_PREFERENCE_SEARCH_HISTORY_SCREEN = ResourceUtils.getIdentifierOrThrow(
             ResourceType.LAYOUT, "morphe_preference_search_history_screen");
-    private static final int LAYOUT_MORPHE_PREFERENCE_SEARCH_HISTORY_ITEM = getIdentifierOrThrow(
+    private static final int LAYOUT_MORPHE_PREFERENCE_SEARCH_HISTORY_ITEM = ResourceUtils.getIdentifierOrThrow(
             ResourceType.LAYOUT, "morphe_preference_search_history_item");
-    private static final int ID_SEARCH_HISTORY_LIST = getIdentifierOrThrow(
+    private static final int ID_SEARCH_HISTORY_LIST = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "search_history_list");
-    private static final int ID_SEARCH_REMOVE_ICON = getIdentifierOrThrow(
+    private static final int ID_SEARCH_REMOVE_ICON = ResourceUtils.getIdentifierOrThrow(
             ResourceType.DRAWABLE, "morphe_settings_search_remove");
-    private static final int ID_SEARCH_REMOVE_ICON_BOLD = getIdentifierOrThrow(
+    private static final int ID_SEARCH_REMOVE_ICON_BOLD = ResourceUtils.getIdentifierOrThrow(
             ResourceType.DRAWABLE, "morphe_settings_search_remove_bold");
-    private static final int ID_SEARCH_ARROW_TIME_ICON = getIdentifierOrThrow(
+    private static final int ID_SEARCH_ARROW_TIME_ICON = ResourceUtils.getIdentifierOrThrow(
             ResourceType.DRAWABLE, "morphe_settings_arrow_time");
-    private static final int ID_SEARCH_ARROW_TIME_ICON_BOLD = getIdentifierOrThrow(
+    private static final int ID_SEARCH_ARROW_TIME_ICON_BOLD = ResourceUtils.getIdentifierOrThrow(
             ResourceType.DRAWABLE, "morphe_settings_arrow_time_bold");
 
     private final Deque<String> searchHistory;
@@ -89,18 +88,18 @@ public class SearchHistoryManager {
     SearchHistoryManager(Activity activity, FrameLayout overlayContainer,
                          OnSelectHistoryItemListener onSelectHistoryItemAction) {
         this.activity = activity;
-        this.showSettingsSearchHistory = SETTINGS_SEARCH_HISTORY.get();
+        this.showSettingsSearchHistory = SharedYouTubeSettings.SETTINGS_SEARCH_HISTORY.get();
         this.searchHistory = new LinkedList<>();
 
         // Initialize search history from settings.
         if (showSettingsSearchHistory) {
-            String entries = SETTINGS_SEARCH_ENTRIES.get();
+            String entries = SharedYouTubeSettings.SETTINGS_SEARCH_ENTRIES.get();
             if (!entries.isBlank()) {
                 searchHistory.addAll(Arrays.asList(entries.split("\n")));
             }
         } else {
             // Clear old saved history if the feature is disabled.
-            SETTINGS_SEARCH_ENTRIES.resetToDefault();
+            SharedYouTubeSettings.SETTINGS_SEARCH_ENTRIES.resetToDefault();
         }
 
         // Create search history container.
@@ -190,7 +189,7 @@ public class SearchHistoryManager {
         searchHistory.remove(query); // Remove if already exists to update position.
         searchHistory.addFirst(query); // Add to the most recent.
 
-        // Remove extra old entries.
+        // Remove ancient entries.
         while (searchHistory.size() > MAX_HISTORY_SIZE) {
             String last = searchHistory.removeLast();
             Logger.printDebug(() -> "Removing search history query: " + last);
@@ -204,7 +203,7 @@ public class SearchHistoryManager {
      */
     protected void saveSearchHistory() {
         Logger.printDebug(() -> "Saving search history: " + searchHistory);
-        SETTINGS_SEARCH_ENTRIES.save(String.join("\n", searchHistory));
+        SharedYouTubeSettings.SETTINGS_SEARCH_ENTRIES.save(String.join("\n", searchHistory));
     }
 
     /**

@@ -321,10 +321,10 @@ Toque aqui para abrir o AiSlopList.com e ver downloads para outras plataformas"<
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link copiado para a área de transferência</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Link com timestamp copiado para a área de transferência</string>
-  <string name="morphe_copy_video_link_button_title">Mostrar botão copiar URL do vídeo</string>
-  <string name="morphe_copy_video_link_button_summary">Toque para copiar o link do vídeo, toque e segure para copiar com o registro de data/hora</string>
-  <string name="morphe_copy_video_link_with_timestamp_button_title">Copiar carimbo de data/hora por padrão</string>
-  <string name="morphe_copy_video_link_with_timestamp_button_summary">Inverte as ações de toque e toque e segure do botão \'Copiar link do vídeo\'</string>
+  <string name="morphe_copy_video_link_button_title">Mostrar botão Copiar link do vídeo</string>
+  <string name="morphe_copy_video_link_button_summary">Toque para copiar o link do vídeo, toque e segure para copiar com a minutagem</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_title">Copiar a minutagem por padrão</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_summary">Inverte as ações de toque e toque-e-segure do botão \'Copiar link do vídeo\'</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Remover diálogo de restrição</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">A restrição de idade não é ignorada, apenas aceita automaticamente</string>
@@ -458,7 +458,7 @@ Informação: pode não funcionar em transmissões ao vivo"</string>
   <string name="morphe_queue_manager_fetch_succeeded_create">Fila criada</string>
   <string name="morphe_queue_manager_fetch_succeeded_remove">Removido da fila</string>
   <string name="morphe_queue_manager_fetch_succeeded_save">Fila salva em %s</string>
-  <string name="morphe_queue_manager_playlist_title">Fila Morphe</string>
+  <string name="morphe_queue_manager_playlist_title">Fila do Morphe</string>
   <string name="morphe_queue_manager_add_to_queue">Adicionar à fila</string>
   <string name="morphe_queue_manager_add_to_queue_and_open_queue">Adicionar à fila e abrir</string>
   <string name="morphe_queue_manager_add_to_queue_and_play_video">Adicionar à fila e reproduzir</string>

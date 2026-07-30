@@ -15,9 +15,6 @@ import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerTyp
 import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MODERN_2;
 import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MODERN_3;
 import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MODERN_4;
-import static app.morphe.extension.youtube.settings.Settings.MINIPLAYER_DISABLE_HORIZONTAL_DRAG;
-import static app.morphe.extension.youtube.settings.Settings.MINIPLAYER_DISABLE_HORIZONTAL_DRAG_PLAYBACK;
-import static app.morphe.extension.youtube.settings.Settings.MINIPLAYER_DISABLE_HORIZONTAL_REPOSITION;
 
 import android.content.res.ColorStateList;
 import android.graphics.Rect;
@@ -149,7 +146,7 @@ public final class MiniplayerPatch {
             CURRENT_TYPE.isModern() && !Settings.MINIPLAYER_DISABLE_ROUNDED_CORNERS.get();
 
     private static final boolean MINIPLAYER_HORIZONTAL_DRAG_ENABLED =
-            DRAG_AND_DROP_ENABLED && !MINIPLAYER_DISABLE_HORIZONTAL_DRAG.get();
+            DRAG_AND_DROP_ENABLED && !Settings.MINIPLAYER_DISABLE_HORIZONTAL_DRAG.get();
 
     private static final Map<Integer, String> MINIMAL_PLAYER_DRAWABLES = Map.of(
             ResourceUtils.getStringIdentifier("accessibility_pause"),
@@ -386,7 +383,7 @@ public final class MiniplayerPatch {
      * Injection point.
      */
     public static boolean pausePlaybackWithHorizontalDrag() {
-        return MINIPLAYER_HORIZONTAL_DRAG_ENABLED && !MINIPLAYER_DISABLE_HORIZONTAL_DRAG_PLAYBACK.get();
+        return MINIPLAYER_HORIZONTAL_DRAG_ENABLED && !Settings.MINIPLAYER_DISABLE_HORIZONTAL_DRAG_PLAYBACK.get();
     }
 
     /**
@@ -395,7 +392,7 @@ public final class MiniplayerPatch {
      * the code to change the miniplayer param offsets to prevent repositioning.
      */
     public static void enableOffScreenMiniplayerButtonPressed(MotionEvent motionEvent) {
-        if (!MINIPLAYER_DISABLE_HORIZONTAL_REPOSITION.get()) {
+        if (!Settings.MINIPLAYER_DISABLE_HORIZONTAL_REPOSITION.get()) {
             return;
         }
 
@@ -417,7 +414,7 @@ public final class MiniplayerPatch {
      * offscreen, in order to prevent miniplayer from being shown itself during the user's navigation across the app.
      */
     public static Rect blockOffscreenMiniplayerHorizontalReposition(Rect currentRect, Rect previousRect) {
-        if (!MINIPLAYER_DISABLE_HORIZONTAL_REPOSITION.get()) {
+        if (!Settings.MINIPLAYER_DISABLE_HORIZONTAL_REPOSITION.get()) {
             miniplayerOffscreenState = 0;
             return currentRect;
         }

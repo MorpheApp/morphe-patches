@@ -1,8 +1,5 @@
 package app.morphe.extension.shared.settings.preference.about;
 
-import static app.morphe.extension.shared.requests.Route.Method.GET;
-import static app.morphe.extension.shared.settings.preference.about.MorpheAboutPreference.CREDITS_LINK;
-
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
@@ -30,14 +27,14 @@ class AboutRoutes {
      */
     private static final List<MorpheAboutPreference.WebLink> NO_CONNECTION_STATIC_LINKS = List.of(
             new MorpheAboutPreference.WebLink(true, "Website", null, "https://morphe.software"),
-            CREDITS_LINK
+            MorpheAboutPreference.CREDITS_LINK
     );
 
     private static final String API_URL = "https://api.morphe.software/v2";
-    private static final Route.CompiledRoute API_ROUTE_ABOUT = new Route(GET, "/about").compile();
+    private static final Route.CompiledRoute API_ROUTE_ABOUT = new Route(Route.Method.GET, "/about").compile();
 
     private static final String GITHUB_URL = "https://raw.githubusercontent.com";
-    private static final Route.CompiledRoute GITHUB_ROUTE_PATCHES = new Route(GET,
+    private static final Route.CompiledRoute GITHUB_ROUTE_PATCHES = new Route(Route.Method.GET,
             (Utils.isPreReleasePatches()
                     ? "/MorpheApp/morphe-patches/refs/heads/dev/patches-bundle.json"
                     : "/MorpheApp/morphe-patches/refs/heads/main/patches-bundle.json")
@@ -144,7 +141,7 @@ class AboutRoutes {
             }
 
             // Add credits link.
-            links.add(CREDITS_LINK);
+            links.add(MorpheAboutPreference.CREDITS_LINK);
 
             Logger.printDebug(() -> "links: " + links);
 

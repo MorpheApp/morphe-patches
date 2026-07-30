@@ -10,14 +10,13 @@
 
 package app.morphe.extension.youtube.patches.components;
 
-import static app.morphe.extension.youtube.patches.LayoutReloadObserverPatch.isActionBarVisible;
-
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
 import app.morphe.extension.shared.patches.components.ByteArrayFilterGroup;
 import app.morphe.extension.shared.patches.components.ByteArrayFilterGroupList;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.Filter;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
+import app.morphe.extension.youtube.patches.LayoutReloadObserverPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.EngagementPanel;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -215,7 +214,7 @@ public final class DescriptionComponentsFilter extends Filter {
         // Immediately after the layout is refreshed, litho components are updated before the UI is drawn.
         // In this case, EngagementPanel.isDescription() cannot be used, and isActionBarVisible.get() should be used.
         if (!EngagementPanel.isDescription() && !(PlayerType.getCurrent().isMaximizedOrFullscreen() ||
-                isActionBarVisible.get() || ShortsPlayerState.isOpen())) {
+                LayoutReloadObserverPatch.isActionBarVisible.get() || ShortsPlayerState.isOpen())) {
             return false;
         }
 

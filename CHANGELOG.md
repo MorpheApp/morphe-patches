@@ -1,3 +1,20 @@
+## [1.38.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.38.0-dev.2...v1.38.0-dev.3) (2026-07-30)
+
+### 🐛 Bug Fixes
+
+* **YouTube:** Resolve legacy app target crash ([1df09a5](https://github.com/MorpheApp/morphe-patches/commit/1df09a5ab9c8b95c3080edff61f52f390bfce1d3))
+
+## [1.38.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.38.0-dev.1...v1.38.0-dev.2) (2026-07-30)
+
+### 🐛 Bug Fixes
+
+* **Settings:** Hidden category title is included when copying a setting breadcrumb ([f412fc8](https://github.com/MorpheApp/morphe-patches/commit/f412fc81d7bce31de9c511212d9672813ea54620))
+* **YouTube Music - Bypass certificate checks:** Resolve Android Auto crash ([#2239](https://github.com/MorpheApp/morphe-patches/issues/2239)) ([0b6a7b0](https://github.com/MorpheApp/morphe-patches/commit/0b6a7b0fd2491a8f33647bfce76ebd0a92e20225))
+
+### 🚀 Updated App Support
+
+* **YouTube Music:** Add experimental support for `9.30.52` ([#2254](https://github.com/MorpheApp/morphe-patches/issues/2254)) ([422fbf4](https://github.com/MorpheApp/morphe-patches/commit/422fbf40304842ca66d835f66889f48eee23702b))
+
 ## [1.38.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.37.1-dev.1...v1.38.0-dev.1) (2026-07-29)
 
 ### ✨ New Features

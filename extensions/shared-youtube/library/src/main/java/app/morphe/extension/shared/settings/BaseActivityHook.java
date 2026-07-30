@@ -1,7 +1,5 @@
 package app.morphe.extension.shared.settings;
 
-import static app.morphe.extension.shared.ResourceUtils.getIdentifierOrThrow;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -14,6 +12,7 @@ import android.widget.Toolbar;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.preference.ToolbarPreferenceFragment;
 import app.morphe.extension.shared.ui.Dim;
@@ -27,13 +26,13 @@ public abstract class BaseActivityHook extends Activity {
 
     public static final String MORPHE_SETTINGS_INTENT = "morphe_settings_intent";
     private static final int ID_MORPHE_SETTINGS_FRAGMENTS =
-            getIdentifierOrThrow(ResourceType.ID, "morphe_settings_fragments");
+            ResourceUtils.getIdentifierOrThrow(ResourceType.ID, "morphe_settings_fragments");
     private static final int ID_MORPHE_TOOLBAR_PARENT =
-            getIdentifierOrThrow(ResourceType.ID, "morphe_toolbar_parent");
+            ResourceUtils.getIdentifierOrThrow(ResourceType.ID, "morphe_toolbar_parent");
     public static final int LAYOUT_MORPHE_SETTINGS_WITH_TOOLBAR =
-            getIdentifierOrThrow(ResourceType.LAYOUT, "morphe_settings_with_toolbar");
+            ResourceUtils.getIdentifierOrThrow(ResourceType.LAYOUT, "morphe_settings_with_toolbar");
     private static final int STRING_MORPHE_SETTINGS_TITLE =
-            getIdentifierOrThrow(ResourceType.STRING, "morphe_settings_title");
+            ResourceUtils.getIdentifierOrThrow(ResourceType.STRING, "morphe_settings_title");
 
     /**
      * Layout parameters for the toolbar, extracted from the dummy toolbar.

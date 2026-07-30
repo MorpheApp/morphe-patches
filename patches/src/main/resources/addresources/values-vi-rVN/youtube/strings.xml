@@ -117,7 +117,7 @@ Ví dụ:
   <string name="morphe_hide_youtube_doodles_user_dialog_message">Tiêu đề tùy chỉnh có thể không xuất hiện khi YouTube Doodles được bật.</string>
   <string name="morphe_hide_channel_bar_title">Ẩn nút kênh</string>
   <string name="morphe_hide_channel_watermark_title">Ẩn hình mờ của kênh</string>
-  <string name="morphe_hide_crowdfunding_box_title">Ẩn hộp chiến dịch gây quỹ</string>
+  <string name="morphe_hide_crowdfunding_box_title">Ẩn hộp hoạt động gây quỹ</string>
   <string name="morphe_hide_emergency_box_title">Ẩn hộp khẩn cấp</string>
   <string name="morphe_hide_info_panels_title">Ẩn bảng thông tin</string>
   <string name="morphe_hide_info_panels_summary">Ẩn các bảng thông tin theo ngữ cảnh, chẳng hạn như thông tin y tế</string>
@@ -137,7 +137,7 @@ Ví dụ:
   <string name="morphe_hide_video_title_title">Ẩn tiêu đề video</string>
   <string name="morphe_hide_video_title_summary">Ẩn tiêu đề video ở chế độ toàn màn hình</string>
   <string name="morphe_sanitize_video_subtitle_title">Lọc nội dung phụ đề video</string>
-  <string name="morphe_sanitize_video_subtitle_summary">Lọc các cụm từ như \"#\", \"Chiến dịch gây quỹ\", \"Cửa hàng\" và \"sản phẩm\" ra khỏi phụ đề video</string>
+  <string name="morphe_sanitize_video_subtitle_summary">Lọc các cụm từ như \"#\", \"Hoạt động gây quỹ\", \"Cửa hàng\" và \"sản phẩm\" ra khỏi phụ đề video</string>
   <string name="morphe_hide_description_components_screen_title">Mô tả video</string>
   <string name="morphe_hide_description_components_screen_summary">Chọn những thành phần sẽ hiển thị trong phần mô tả video</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Ẩn phần \"Bản tóm tắt video do AI tạo\"</string>

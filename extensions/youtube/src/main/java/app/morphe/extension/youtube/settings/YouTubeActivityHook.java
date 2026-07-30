@@ -10,8 +10,6 @@
 
 package app.morphe.extension.youtube.settings;
 
-import static app.morphe.extension.shared.spoof.SpoofAppVersionPatch.isSpoofingToLessThan;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
@@ -25,6 +23,7 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseActivityHook;
+import app.morphe.extension.shared.spoof.SpoofAppVersionPatch;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.settings.preference.YouTubePreferenceFragment;
 import app.morphe.extension.youtube.settings.search.YouTubeSearchViewController;
@@ -38,7 +37,7 @@ public class YouTubeActivityHook extends BaseActivityHook {
 
     public static final boolean USE_BOLD_ICONS = Settings.SETTINGS_INITIALIZED.get()
             && VersionCheckPatch.IS_20_31_OR_GREATER
-            && !isSpoofingToLessThan("20.31.00")
+            && !SpoofAppVersionPatch.isSpoofingToLessThan("20.31.00")
             && !Settings.RESTORE_OLD_SETTINGS_MENUS.get();
 
     static {
@@ -141,7 +140,7 @@ public class YouTubeActivityHook extends BaseActivityHook {
             return false;
         }
         // Spoofing can cause half broken settings menus of old and new settings.
-        if (isSpoofingToLessThan("19.35.36")) {
+        if (SpoofAppVersionPatch.isSpoofingToLessThan("19.35.36")) {
             return false;
         }
 

@@ -1,10 +1,9 @@
 package app.morphe.extension.music.patches;
 
-import static app.morphe.extension.shared.Utils.hideViewBy0dpUnderCondition;
-
 import android.view.View;
 
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
 public class HideFilterBarPatch {
@@ -13,6 +12,6 @@ public class HideFilterBarPatch {
      * Injection point
      */
     public static void hideFilterBar(View view) {
-        hideViewBy0dpUnderCondition(Settings.HIDE_FILTER_BAR, view);
+        Utils.hideViewBy0dpUnderCondition(Settings.HIDE_FILTER_BAR, view);
     }
 }

@@ -7,8 +7,6 @@
 
 package app.morphe.extension.shared.oauth2.requests;
 
-import static app.morphe.extension.shared.requests.Route.Method.POST;
-
 import java.io.IOException;
 import java.net.HttpURLConnection;
 
@@ -27,9 +25,9 @@ final class OAuth2Routes {
      */
     private static final int CONNECTION_TIMEOUT_MILLISECONDS = 10 * 1000; // 10 Seconds.
 
-    static final Route ACCESS_TOKEN = new Route(POST, "token");
-    static final Route DEVICE_CODE = new Route(POST, "device/code");
-    static final Route REVOKE_TOKEN = new Route(POST, "revoke");
+    static final Route ACCESS_TOKEN = new Route(Route.Method.POST, "token");
+    static final Route DEVICE_CODE = new Route(Route.Method.POST, "device/code");
+    static final Route REVOKE_TOKEN = new Route(Route.Method.POST, "revoke");
 
     private OAuth2Routes() {
     }

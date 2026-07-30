@@ -299,7 +299,7 @@ internal object WatchNextResponseParserFingerprint : Fingerprint(
             Opcode.CHECK_CAST,
             location = MatchAfterImmediately()
         ),
-        literal(46659098L),
+        literal(46659098L)
     )
 )
 

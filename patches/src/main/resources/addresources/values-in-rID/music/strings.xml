@@ -40,9 +40,27 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Sembunyikan promosi Music Premium</string>
   <string name="morphe_music_hide_video_ads_title">Sembunyikan iklan video</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_music_hide_audio_video_toggle_title">Sembunyikan tombol pengalih Audio / Video</string>
+  <string name="morphe_music_hide_explore_shelf_title">Sembunyikan rak Jelajah</string>
+  <string name="morphe_music_hide_grid_shelves_title">Sembunyikan rak kisi</string>
+  <string name="morphe_music_hide_horizontal_shelves_title">Sembunyikan rak horizontal</string>
+  <string name="morphe_music_hide_list_shelves_title">Sembunyikan rak daftar</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Panel Lirik</string>
   <string name="morphe_music_hide_lyrics_share_button_title">Sembunyikan tombol Bagikan</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Sembunyikan tombol Terjemahan</string>
+  <string name="morphe_music_hide_new_from_shelf_title">Sembunyikan rak \'Baru dari\'</string>
+  <string name="morphe_music_hide_playlist_shelves_title">Sembunyikan deretan daftar putar</string>
+  <string name="morphe_music_hide_repeat_button_title">Sembunyikan tombol Ulangi</string>
+  <string name="morphe_music_hide_shuffle_button_title">Sembunyikan tombol Acak</string>
+  <string name="morphe_music_hide_speed_dial_shelf_title">Sembunyikan rak \'Pintasan cepat\'</string>
+  <string name="morphe_music_hide_suggested_for_you_shelf_title">Sembunyikan rak \'Disarankan untuk Anda\' </string>
+  <string name="morphe_music_comments_screen_title">Komentar</string>
+  <string name="morphe_music_comments_screen_summary">Pilih komponen mana yang akan muncul di bagian komentar</string>
+  <string name="morphe_music_hide_comments_community_guidelines_title">Sembunyikan Pedoman Komunitas</string>
+  <string name="morphe_music_hide_comments_context_title">Sembunyikan pesan konteks</string>
+  <string name="morphe_music_hide_comments_emoji_button_title">Sembunyikan tombol Emoji</string>
+  <string name="morphe_music_hide_comments_info_button_title">Sembunyikan tombol Info</string>
+  <string name="morphe_music_hide_comments_timestamp_button_title">Sembunyikan tombol Stempel Waktu</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Pudar silang</string>
   <string name="morphe_music_crossfade_screen_summary">Padukan trek satu sama lain dengan mulus</string>

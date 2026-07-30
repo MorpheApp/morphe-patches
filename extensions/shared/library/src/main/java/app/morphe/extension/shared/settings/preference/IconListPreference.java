@@ -7,8 +7,6 @@
 
 package app.morphe.extension.shared.settings.preference;
 
-import static app.morphe.extension.shared.ResourceUtils.getIdentifierOrThrow;
-
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
@@ -55,9 +53,9 @@ import app.morphe.extension.shared.ui.CustomDialog;
 @SuppressWarnings({"unused", "deprecation"})
 public class IconListPreference extends CustomDialogListPreference {
 
-    public static final int LAYOUT_MORPHE_ICON_LIST_ITEM = getIdentifierOrThrow(
+    public static final int LAYOUT_MORPHE_ICON_LIST_ITEM = ResourceUtils.getIdentifierOrThrow(
             ResourceType.LAYOUT, "morphe_icon_list_item");
-    public static final int ID_MORPHE_ITEM_ICON = getIdentifierOrThrow(
+    public static final int ID_MORPHE_ITEM_ICON = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "morphe_item_icon");
 
     static final float ICON_SIZE_DP = 48f;

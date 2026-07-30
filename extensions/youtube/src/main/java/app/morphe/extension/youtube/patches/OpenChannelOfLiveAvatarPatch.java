@@ -7,8 +7,6 @@
 
 package app.morphe.extension.youtube.patches;
 
-import static app.morphe.extension.youtube.settings.Settings.OPEN_CHANNEL_OF_LIVE_AVATAR;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -24,6 +22,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.utils.requests.ChannelIdRequest;
+import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
 public final class OpenChannelOfLiveAvatarPatch {
@@ -42,7 +41,7 @@ public final class OpenChannelOfLiveAvatarPatch {
             "VideoPresenterConstants.VIDEO_THUMBNAIL_VIEW_KEY";
     private static volatile ChannelIdRequest channelIdRequest;
     public static boolean openChannel(Map<Object, Object> playbackStartDescriptorMap, String videoId) {
-        if (OPEN_CHANNEL_OF_LIVE_AVATAR.get()) {
+        if (Settings.OPEN_CHANNEL_OF_LIVE_AVATAR.get()) {
             try {
                 // Prevent a new request until the previous (if exists) is not done.
                 if (channelIdRequest != null && !channelIdRequest.fetchIsDone()) {

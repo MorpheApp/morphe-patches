@@ -15,7 +15,6 @@ import android.preference.Preference;
 import android.util.AttributeSet;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
 
 @SuppressWarnings({"unused", "deprecation"})
 public class ImportExportPreference extends Preference implements Preference.OnPreferenceClickListener {

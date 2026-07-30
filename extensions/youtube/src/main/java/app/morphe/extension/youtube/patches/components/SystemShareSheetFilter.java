@@ -7,12 +7,11 @@
 
 package app.morphe.extension.youtube.patches.components;
 
-import static app.morphe.extension.youtube.patches.OpenSystemShareSheetPatch.closeLithoAppShareSheet;
-
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.Filter;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
+import app.morphe.extension.youtube.patches.OpenSystemShareSheetPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -35,7 +34,7 @@ public final class SystemShareSheetFilter extends Filter {
                               StringFilterGroup matchedGroup,
                               FilterContentType contentType,
                               int contentIndex) {
-        closeLithoAppShareSheet();
+        OpenSystemShareSheetPatch.closeLithoAppShareSheet();
 
         return true;
     }

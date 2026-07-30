@@ -1,7 +1,5 @@
 package app.morphe.extension.youtube.patches;
 
-import static app.morphe.extension.youtube.settings.Settings.BYPASS_IMAGE_REGION_RESTRICTIONS;
-
 import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
@@ -10,7 +8,8 @@ import app.morphe.extension.youtube.settings.Settings;
 @SuppressWarnings("unused")
 public final class BypassImageRegionRestrictionsPatch {
 
-    private static final boolean BYPASS_IMAGE_REGION_RESTRICTIONS_ENABLED = BYPASS_IMAGE_REGION_RESTRICTIONS.get();
+    private static final boolean BYPASS_IMAGE_REGION_RESTRICTIONS_ENABLED =
+            Settings.BYPASS_IMAGE_REGION_RESTRICTIONS.get();
 
     private static final String REPLACEMENT_IMAGE_DOMAIN = "https://yt4.ggpht.com";
 

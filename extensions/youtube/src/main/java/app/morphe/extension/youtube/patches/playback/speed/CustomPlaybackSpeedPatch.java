@@ -11,9 +11,6 @@
 package app.morphe.extension.youtube.patches.playback.speed;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.youtube.patches.VideoInformation.PLAYBACK_SPEED_MAXIMUM;
-import static app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton.fadeInDuration;
-import static app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton.getDialogBackgroundColor;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -52,6 +49,7 @@ import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.components.PlaybackSpeedMenuFilter;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PipDismissHelper;
+import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton;
 
 @SuppressWarnings("unused")
 public class CustomPlaybackSpeedPatch {
@@ -103,7 +101,7 @@ public class CustomPlaybackSpeedPatch {
         if (DISABLE_TAP_AND_HOLD_SPEED) {
             // A value for handling exceptions, but this is not used.
             TAP_AND_HOLD_SPEED = Settings.SPEED_TAP_AND_HOLD.defaultValue;
-        } else if (holdSpeed > 0 && holdSpeed <= PLAYBACK_SPEED_MAXIMUM) {
+        } else if (holdSpeed > 0 && holdSpeed <= VideoInformation.PLAYBACK_SPEED_MAXIMUM) {
             TAP_AND_HOLD_SPEED = holdSpeed;
         } else {
             showInvalidCustomSpeedToast();
@@ -168,7 +166,7 @@ public class CustomPlaybackSpeedPatch {
     }
 
     private static void showInvalidCustomSpeedToast() {
-        Utils.showToastLong(str("morphe_custom_playback_speeds_invalid", PLAYBACK_SPEED_MAXIMUM));
+        Utils.showToastLong(str("morphe_custom_playback_speeds_invalid", VideoInformation.PLAYBACK_SPEED_MAXIMUM));
     }
 
     private static float[] loadCustomSpeeds() {
@@ -191,7 +189,7 @@ public class CustomPlaybackSpeedPatch {
                     throw new IllegalArgumentException();
                 }
 
-                if (speedFloat > PLAYBACK_SPEED_MAXIMUM) {
+                if (speedFloat > VideoInformation.PLAYBACK_SPEED_MAXIMUM) {
                     showInvalidCustomSpeedToast();
                     Settings.CUSTOM_PLAYBACK_SPEEDS.resetToDefault();
                     return loadCustomSpeeds();
@@ -315,7 +313,7 @@ public class CustomPlaybackSpeedPatch {
         try {
             // Create main layout.
             SheetBottomDialog.DraggableLinearLayout mainLayout =
-                    SheetBottomDialog.createMainLayout(context, getDialogBackgroundColor());
+                    SheetBottomDialog.createMainLayout(context, LegacyPlayerControlButton.getDialogBackgroundColor());
 
             // Display current playback speed.
             TextView currentSpeedText = new TextView(context);
@@ -475,7 +473,8 @@ public class CustomPlaybackSpeedPatch {
             mainLayout.addView(gridLayout);
 
             // Create dialog.
-            SheetBottomDialog.SlideDialog dialog = SheetBottomDialog.createSlideDialog(context, mainLayout, fadeInDuration);
+            SheetBottomDialog.SlideDialog dialog =
+                    SheetBottomDialog.createSlideDialog(context, mainLayout, LegacyPlayerControlButton.fadeInDuration);
             PipDismissHelper.dismissOnPip(dialog);
             dialog.show();
 
@@ -528,7 +527,7 @@ public class CustomPlaybackSpeedPatch {
 
         // Round to nearest 0.05 speed.  Must use double precision otherwise rounding error can occur.
         final double roundedSpeed = Math.round(speed / SPEED_ADJUSTMENT_CHANGE) * SPEED_ADJUSTMENT_CHANGE;
-        return Utils.clamp((float) roundedSpeed, (float) SPEED_ADJUSTMENT_CHANGE, PLAYBACK_SPEED_MAXIMUM);
+        return Utils.clamp((float) roundedSpeed, (float) SPEED_ADJUSTMENT_CHANGE, VideoInformation.PLAYBACK_SPEED_MAXIMUM);
     }
 
     /**
@@ -542,7 +541,7 @@ public class CustomPlaybackSpeedPatch {
     public static int getAdjustedBackgroundColor(boolean isHandleBar) {
         final float darkThemeFactor = isHandleBar ? 1.25f : 1.115f; // 1.25f for handleBar, 1.115f for others in dark theme.
         final float lightThemeFactor = isHandleBar ? 0.9f : 0.95f; // 0.9f for handleBar, 0.95f for others in light theme.
-        return Utils.adjustColorBrightness(getDialogBackgroundColor(), lightThemeFactor, darkThemeFactor);
+        return Utils.adjustColorBrightness(LegacyPlayerControlButton.getDialogBackgroundColor(), lightThemeFactor, darkThemeFactor);
     }
 }
 

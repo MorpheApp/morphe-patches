@@ -10,9 +10,6 @@
 
 package app.morphe.extension.youtube.videoplayer;
 
-import static app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS;
-import static app.morphe.extension.youtube.videoplayer.PlayerOverlayButton.initializeHeadingFromUpperButton;
-
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.AnimatedVectorDrawable;
@@ -33,6 +30,7 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BooleanSetting;
+import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
 
 public class LegacyPlayerControlButton {
 
@@ -185,7 +183,7 @@ public class LegacyPlayerControlButton {
 
         if (imageResourceName != null) {
             final int iconResourceId = ResourceUtils.getIdentifierOrThrow(ResourceType.DRAWABLE,
-                    RESTORE_OLD_PLAYER_BUTTONS
+                    LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS
                             ? imageResourceName
                             : imageResourceName + "_bold"
             );
@@ -228,7 +226,7 @@ public class LegacyPlayerControlButton {
 
         // Ensure to call this method to ensure the correct initialization of the container
         // field, necessary for the logic that updates the fullscreen title bar margin.
-        initializeHeadingFromUpperButton(container);
+        PlayerOverlayButton.initializeHeadingFromUpperButton(container);
 
         final float sourceButtonAlpha;
         final int sourceButtonVisibility;
@@ -245,10 +243,8 @@ public class LegacyPlayerControlButton {
                 sourceButtonAlpha = 1.0f;
                 sourceButtonVisibility = View.VISIBLE;
             }
-            default -> {
-                throw new IllegalStateException("Unknown status: " + enabledStatus.status());
-            }
-        };
+            default -> throw new IllegalStateException("Unknown status: " + enabledStatus.status());
+        }
 
         if (container.getAlpha() != sourceButtonAlpha) {
             container.setAlpha(sourceButtonAlpha);

@@ -7,7 +7,6 @@
 package app.morphe.extension.shared.sponsorblock.objects;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.shared.sponsorblock.SponsorBlockHelpers.migrateOldColorString;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -26,6 +25,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.preference.ColorPickerPreference;
 import app.morphe.extension.shared.sponsorblock.SponsorBlockApi;
+import app.morphe.extension.shared.sponsorblock.SponsorBlockHelpers;
 import app.morphe.extension.shared.ui.ColorDot;
 import app.morphe.extension.shared.ui.Dim;
 
@@ -116,7 +116,8 @@ public class SegmentCategoryPreference extends ColorPickerPreference {
         try {
             // Migrate old data imported in the settings UI. This migration is needed here because
             // pasting into the settings immediately syncs the data with the preferences.
-            colorString = migrateOldColorString(colorString, SegmentCategory.CATEGORY_DEFAULT_OPACITY);
+            colorString = SponsorBlockHelpers.migrateOldColorString(colorString,
+                    SegmentCategory.CATEGORY_DEFAULT_OPACITY);
 
             if (category == null) {
                 return;

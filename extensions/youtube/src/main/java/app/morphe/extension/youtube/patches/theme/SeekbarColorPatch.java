@@ -1,8 +1,6 @@
 package app.morphe.extension.youtube.patches.theme;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.shared.Utils.clamp;
-import static app.morphe.extension.youtube.patches.theme.ThemePatch.SplashScreenAnimationStyle;
 
 import android.graphics.Color;
 
@@ -107,11 +105,11 @@ public final class SeekbarColorPatch {
      */
     public static void setSplashAnimationLottie(LottieAnimationView view, int resourceId) {
         try {
-            SplashScreenAnimationStyle animationStyle = Settings.SPLASH_SCREEN_ANIMATION_STYLE.get();
+            ThemePatch.SplashScreenAnimationStyle animationStyle = Settings.SPLASH_SCREEN_ANIMATION_STYLE.get();
             if (!SEEKBAR_CUSTOM_COLOR_ENABLED
                     // Black and white animations cannot use color replacements.
-                    || animationStyle == SplashScreenAnimationStyle.FPS_30_BLACK_AND_WHITE
-                    || animationStyle == SplashScreenAnimationStyle.FPS_60_BLACK_AND_WHITE) {
+                    || animationStyle == ThemePatch.SplashScreenAnimationStyle.FPS_30_BLACK_AND_WHITE
+                    || animationStyle == ThemePatch.SplashScreenAnimationStyle.FPS_60_BLACK_AND_WHITE) {
                 view.patch_setAnimation(resourceId);
                 return;
             }
@@ -168,10 +166,10 @@ public final class SeekbarColorPatch {
 
     /**
      * Injection point.
-     *
+     * <p>
      * Overrides all Litho components that use the YouTube seekbar color.
      * Used only for the video thumbnails' seekbar.
-     *
+     * <p>
      * If {@link Settings#HIDE_SEEKBAR_THUMBNAIL} is enabled, this returns a fully transparent color.
      */
     public static int getLithoColor(int colorValue) {
@@ -241,7 +239,7 @@ public final class SeekbarColorPatch {
 
     /**
      * Injection point.
-     *
+     * <p>
      * Overrides color when video player seekbar is clicked.
      */
     public static int getVideoPlayerSeekbarClickedColor(int colorValue) {
@@ -256,7 +254,7 @@ public final class SeekbarColorPatch {
 
     /**
      * Injection point.
-     *
+     * <p>
      * Overrides color used for the video player seekbar.
      */
     public static int getVideoPlayerSeekbarColor(int originalColor) {
@@ -281,9 +279,9 @@ public final class SeekbarColorPatch {
             // Apply the brightness difference to the custom seekbar color.
             hsv[0] = customSeekbarColorHSV[0];
             hsv[1] = customSeekbarColorHSV[1];
-            hsv[2] = clamp(customSeekbarColorHSV[2] + brightnessDifference, 0, 1);
+            hsv[2] = Utils.clamp(customSeekbarColorHSV[2] + brightnessDifference, 0, 1);
 
-            final int replacementAlpha = clamp(Color.alpha(customSeekbarColor) + alphaDifference, 0, 255);
+            final int replacementAlpha = Utils.clamp(Color.alpha(customSeekbarColor) + alphaDifference, 0, 255);
             final int replacementColor = Color.HSVToColor(replacementAlpha, hsv);
             Logger.printDebug(() -> String.format("Original color: #%08X  replacement color: #%08X",
                             originalColor, replacementColor));

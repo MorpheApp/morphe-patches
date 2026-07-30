@@ -10,11 +10,6 @@
 
 package app.morphe.extension.youtube.sponsorblock.ui;
 
-import static app.morphe.extension.shared.ResourceUtils.getColor;
-import static app.morphe.extension.shared.ResourceUtils.getDimensionPixelSize;
-import static app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS;
-import static app.morphe.extension.youtube.sponsorblock.ui.SkipSponsorButton.SB_BUTTON_EXTRA_VERTICAL_PADDING;
-
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.GradientDrawable;
@@ -32,6 +27,7 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.ViewAnimations;
+import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.sponsorblock.SponsorBlockUtils;
@@ -128,9 +124,9 @@ public final class NewSegmentLayout extends FrameLayout {
                 "Publish button clicked"
         );
 
-        defaultBottomMargin = getDimensionPixelSize("brand_interaction_default_bottom_margin")
-                + SB_BUTTON_EXTRA_VERTICAL_PADDING;
-        ctaBottomMargin = getDimensionPixelSize("brand_interaction_cta_bottom_margin");
+        defaultBottomMargin = ResourceUtils.getDimensionPixelSize("brand_interaction_default_bottom_margin")
+                + SkipSponsorButton.SB_BUTTON_EXTRA_VERTICAL_PADDING;
+        ctaBottomMargin = ResourceUtils.getDimensionPixelSize("brand_interaction_cta_bottom_margin");
     }
 
     /**
@@ -151,7 +147,7 @@ public final class NewSegmentLayout extends FrameLayout {
 
         final int background = ResourceUtils.getIdentifierOrThrow(
                 ResourceType.DRAWABLE,
-                RESTORE_OLD_PLAYER_BUTTONS
+                LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS
                         ? imageResourceName
                         : imageResourceName + "_bold");
         button.setImageResource(background);
@@ -178,7 +174,7 @@ public final class NewSegmentLayout extends FrameLayout {
         setLayoutParams(params);
 
         GradientDrawable backgroundDrawable = new GradientDrawable();
-        backgroundDrawable.setColor(getColor("skip_ad_button_background_color"));
+        backgroundDrawable.setColor(ResourceUtils.getColor("skip_ad_button_background_color"));
         final float cornerRadius = squareLayout ? 0f : Dim.dp16;
         backgroundDrawable.setCornerRadius(cornerRadius);
         setBackground(backgroundDrawable);

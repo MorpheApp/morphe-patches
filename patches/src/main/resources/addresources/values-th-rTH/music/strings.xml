@@ -40,9 +40,27 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_music_premium_promotions_title">ซ่อนโปรโมชั่น Music Premium</string>
   <string name="morphe_music_hide_video_ads_title">ซ่อนโฆษณาวิดีโอ</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_music_hide_audio_video_toggle_title">ซ่อนแถบสลับเสียง / วิดีโอ</string>
+  <string name="morphe_music_hide_explore_shelf_title">ซ่อนชั้นวาง \'สำรวจ\'</string>
+  <string name="morphe_music_hide_grid_shelves_title">ซ่อนชั้นวางกริด</string>
+  <string name="morphe_music_hide_horizontal_shelves_title">ซ่อนชั้นวางแนวนอน</string>
+  <string name="morphe_music_hide_list_shelves_title">ซ่อนชั้นวางรายการ</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">แผงเนื้อเพลง</string>
   <string name="morphe_music_hide_lyrics_share_button_title">ซ่อนปุ่มแชร์</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">ซ่อนปุ่มแปล</string>
+  <string name="morphe_music_hide_new_from_shelf_title">ซ่อนชั้นวาง \'ใหม่จาก\'</string>
+  <string name="morphe_music_hide_playlist_shelves_title">ซ่อนชั้นวางเพลย์ลิสต์</string>
+  <string name="morphe_music_hide_repeat_button_title">ซ่อนปุ่มเล่นซ้ำ</string>
+  <string name="morphe_music_hide_shuffle_button_title">ซ่อนปุ่มสุ่ม</string>
+  <string name="morphe_music_hide_speed_dial_shelf_title">ซ่อนชั้นวาง \'โทรด่วน\'</string>
+  <string name="morphe_music_hide_suggested_for_you_shelf_title">ซ่อนชั้นวาง \'แนะนำสำหรับคุณ\'</string>
+  <string name="morphe_music_comments_screen_title">ความคิดเห็น</string>
+  <string name="morphe_music_comments_screen_summary">เลือกส่วนประกอบที่จะปรากฏในส่วนความคิดเห็น</string>
+  <string name="morphe_music_hide_comments_community_guidelines_title">ซ่อนแนวทางชุมชน</string>
+  <string name="morphe_music_hide_comments_context_title">ซ่อนข้อความบริบท</string>
+  <string name="morphe_music_hide_comments_emoji_button_title">ซ่อนปุ่มอีโมจิ</string>
+  <string name="morphe_music_hide_comments_info_button_title">ซ่อนปุ่มข้อมูล</string>
+  <string name="morphe_music_hide_comments_timestamp_button_title">ซ่อนปุ่มตราประทับเวลา</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Crossfade</string>
   <string name="morphe_music_crossfade_screen_summary">ผสมแทร็กต่างๆ เข้าด้วยกันอย่างราบรื่น</string>

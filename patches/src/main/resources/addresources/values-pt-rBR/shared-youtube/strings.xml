@@ -19,7 +19,7 @@ Second \"item\" text"</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Reinicie para finalizar a configuração</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
-  <string name="morphe_custom_branding_name_title">Nome do aplicativo</string>
+  <string name="morphe_custom_branding_name_title">Nome do app</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Downloads externos</string>
   <string name="morphe_external_downloader_name_title">Nome do pacote do app de download</string>
@@ -34,7 +34,7 @@ Verifique se o nome do pacote está correto e se o app está instalado"</string>
   <string name="morphe_external_downloader_empty_warning">O nome do pacote não pode estar vazio</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Personalizado</string>
-  <string name="morphe_custom_branding_icon_title">Ícone do aplicativo</string>
+  <string name="morphe_custom_branding_icon_title">Ícone do app</string>
   <string name="morphe_custom_branding_icon_entry_1">Original</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe preto</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe escuro</string>
@@ -46,7 +46,7 @@ Verifique se o nome do pacote está correto e se o app está instalado"</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">Personalizado</string>
   <string name="morphe_custom_branding_notification_icon_title">Ícone de notificação</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">Ícone do aplicativo de correspondência</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Combinar com o ícone do app</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Aviso do Morphe</string>
@@ -92,9 +92,9 @@ Para fazer login, pressione continuar abaixo"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Login realizado com sucesso</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Autenticação salva
 
-• Suas configurações do Morphe não importar/exportar autenticação do Android VR
-• Se este aplicativo não for usado por 6 meses, o Google removerá esta autenticação
-• Você precisará se conectar novamente se alterar sua senha do Google ou desregistrar este dispositivo das configurações do Google"</string>
+• Suas configurações do Morphe não vão importar/exportar a autenticação do Android VR
+• Se este app não for usado por 6 meses, o Google removerá esta autenticação
+• Você precisará fazer o login novamente se alterar sua senha do Google ou desregistrar este dispositivo das configurações do Google"</string>
   <string name="morphe_oauth2_connection_failure_timeout">\"OAuth2 está temporariamente indisponível (API expirou)\"</string>
   <string name="morphe_oauth2_connection_failure_status_400">Entrada na Android VR expirou, tente entrar novamente na VR</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 temporariamente indisponível (status %d)</string>
@@ -159,11 +159,11 @@ No entanto, ativar isso também registrará alguns dados do usuário, como seu e
   <string name="morphe_custom_filter_toast_invalid_syntax">Filtro personalizado inválido: %s</string>
   <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">Filtro do menu de configurações</string>
-  <string name="morphe_settings_menu_filter_screen_summary">Ocultar itens na tela de configurações do aplicativo padrão pelo nome visível</string>
+  <string name="morphe_settings_menu_filter_screen_summary">Ocultar itens na tela de configurações padrões do app pelo nome visível</string>
   <string name="morphe_settings_menu_filter_picker_empty">Abra a tela de configurações do aplicativo padrão uma vez para preencher a lista</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Simular a versão do app</string>
-  <string name="morphe_spoof_app_version_summary">Engana o servidor para que ele pense que você está usando uma versão mais antiga do aplicativo para restaurar recursos de IU legados.</string>
+  <string name="morphe_spoof_app_version_summary">Faz o servidor pensar que você está usando uma versão mais antiga do app para restaurar recursos da interface antiga</string>
   <string name="morphe_spoof_app_version_user_dialog_message">"O app se identificará como uma versão mais antiga.
 
 Isso mudará a aparência e os recursos do app, mas efeitos colaterais desconhecidos podem ocorrer.

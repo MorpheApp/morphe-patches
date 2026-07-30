@@ -229,8 +229,10 @@ public class SeekbarThumbnailPreviewPatch {
     /**
      * Injection point.
      */
-    public static void updateThumbnailPreview(View container, MotionEvent containerMotionEvent,
-                                              Point trackballPos) {
+    public static void updateThumbnailPreview(
+            View container,
+            MotionEvent containerMotionEvent,
+            Point trackballPos) {
         try {
             if (!Settings.THUMBNAIL_PREVIEW.get() ||
                     !PlayerType.getCurrent().isMaximizedOrFullscreen() ||
@@ -249,8 +251,7 @@ public class SeekbarThumbnailPreviewPatch {
             if (action == MotionEvent.ACTION_UP
                     || action == MotionEvent.ACTION_CANCEL
                     || (action == MotionEvent.ACTION_MOVE
-                    && (touchEventInitialY - containerMotionEvent.getY()) > DIP15)
-            ) {
+                    && (touchEventInitialY - containerMotionEvent.getY()) > DIP15)) {
                 if (views.thumbnailPreviewPopup.isShowing()) {
                     views.thumbnailPreviewPopup.dismiss();
                 }
@@ -324,20 +325,33 @@ public class SeekbarThumbnailPreviewPatch {
                         ? THUMBNAIL_PREVIEW_TEXT_WITH_CHAPTER_HEIGHT_DP
                         : THUMBNAIL_PREVIEW_TEXT_ONLY_HEIGHT_DP;
 
-                final int targetY = trackballPosY - previewHeightPx
-                        - previewDistance - textHeight;
+                final int targetY = trackballPosY -
+                                    previewHeightPx -
+                                    previewDistance -
+                                    textHeight;
 
                 PopupWindow thumbnailPreviewPopup = views.thumbnailPreviewPopup;
+                View rootView = container.getRootView();
+
+                // Wait until the first bitmap so the previewFrame shows immediately with the correct
+                // aspect ratio and Y offset, avoiding a jump from a default 16:9 position.
+                views.previewFrame.setVisibility(
+                        lastAppliedBitmap != null
+                                ? View.VISIBLE
+                                : View.INVISIBLE
+                );
+
                 if (!thumbnailPreviewPopup.isShowing()) {
-                    View rootView = container.getRootView();
-                    // Wait until the first bitmap so the popup shows immediately with the correct
-                    // aspect ratio and Y offset, avoiding a jump from a default 16:9 position.
-                    if (rootView.getWindowToken() != null && lastAppliedBitmap != null) {
+                    if (rootView.getWindowToken() != null) {
                         thumbnailPreviewPopup.showAtLocation(rootView, Gravity.NO_GRAVITY, targetX, targetY);
                     }
                 } else {
-                    thumbnailPreviewPopup.update(targetX, targetY, thumbnailPreviewPopup.getWidth(),
-                            thumbnailPreviewPopup.getHeight());
+                    thumbnailPreviewPopup.update(
+                            targetX,
+                            targetY,
+                            thumbnailPreviewPopup.getWidth(),
+                            thumbnailPreviewPopup.getHeight()
+                    );
                 }
             }
         } catch (Exception ex) {

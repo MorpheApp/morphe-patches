@@ -1,13 +1,12 @@
 package app.morphe.extension.youtube.patches;
 
-import static app.morphe.extension.shared.ResourceUtils.getIdentifierOrThrow;
-
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -91,10 +90,10 @@ public final class HidePlayerOverlayButtonsPatch {
     private static final boolean HIDE_PLAYER_PREVIOUS_NEXT_BUTTONS_ENABLED
             = Settings.HIDE_PLAYER_PREVIOUS_NEXT_BUTTONS.get();
 
-    private static final int PLAYER_CONTROL_PREVIOUS_BUTTON_TOUCH_AREA_ID = getIdentifierOrThrow(
+    private static final int PLAYER_CONTROL_PREVIOUS_BUTTON_TOUCH_AREA_ID = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "player_control_previous_button_touch_area");
 
-    private static final int PLAYER_CONTROL_NEXT_BUTTON_TOUCH_AREA_ID = getIdentifierOrThrow(
+    private static final int PLAYER_CONTROL_NEXT_BUTTON_TOUCH_AREA_ID = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "player_control_next_button_touch_area");
 
     /**
@@ -114,7 +113,7 @@ public final class HidePlayerOverlayButtonsPatch {
     }
 
 
-    private static final int PLAYER_OVERFLOW_BUTTON_ID = getIdentifierOrThrow(
+    private static final int PLAYER_OVERFLOW_BUTTON_ID = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "player_overflow_button");
     /**
      * Injection point.

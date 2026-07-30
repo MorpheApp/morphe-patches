@@ -8,7 +8,6 @@
 package app.morphe.extension.shared.sponsorblock;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.shared.sponsorblock.objects.CategoryBehaviour.SKIP_AUTOMATICALLY;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
@@ -255,7 +254,7 @@ public class SegmentPlaybackController {
         calculateTimeWithoutSegments();
 
         if (config().includesHighlight()
-                && (SegmentCategory.HIGHLIGHT.behaviour == SKIP_AUTOMATICALLY
+                && (SegmentCategory.HIGHLIGHT.behaviour == CategoryBehaviour.SKIP_AUTOMATICALLY
                 || SegmentCategory.HIGHLIGHT.behaviour == CategoryBehaviour.MANUAL_SKIP)) {
             for (SponsorSegment segment : videoSegments) {
                 if (segment.category == SegmentCategory.HIGHLIGHT) {

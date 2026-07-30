@@ -8,9 +8,6 @@
 package app.morphe.extension.youtube.patches.utils;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.shared.innertube.utils.AuthUtils.getRequestHeader;
-import static app.morphe.extension.shared.innertube.utils.AuthUtils.isNotLoggedIn;
-import static app.morphe.extension.youtube.patches.LoadVideoPatch.openIntent;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -38,8 +35,10 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.innertube.utils.AuthUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
+import app.morphe.extension.youtube.patches.LoadVideoPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.utils.requests.CreatePlaylistRequest;
 import app.morphe.extension.youtube.patches.utils.requests.EditPlaylistRequest;
@@ -84,7 +83,7 @@ public class PlaylistPatch {
     public static void prepareDialogBuilder(Context context, String currentVideoId) {
         Utils.verifyOnMainThread();
 
-        if (isNotLoggedIn()) {
+        if (AuthUtils.isNotLoggedIn()) {
             handleCheckError(checkFailedAuth);
             return;
         }
@@ -114,7 +113,7 @@ public class PlaylistPatch {
      * Invoked by extension.
      */
     public static void syncIfNeeded() {
-        if (!playlistId.isEmpty() && !syncStarted && !isNotLoggedIn()) {
+        if (!playlistId.isEmpty() && !syncStarted && !AuthUtils.isNotLoggedIn()) {
             syncStarted = true;
             syncPlaylistItems();
         }
@@ -122,7 +121,7 @@ public class PlaylistPatch {
 
     private static void syncPlaylistItems() {
         Utils.submitOnBackgroundThread(() -> {
-            Map<String, String> items = GetPlaylistItemsRequest.fetch(playlistId, getRequestHeader());
+            Map<String, String> items = GetPlaylistItemsRequest.fetch(playlistId, AuthUtils.getRequestHeader());
             if (items != null && !items.isEmpty()) {
                 synchronized (lastVideoIds) {
                     for (Map.Entry<String, String> entry : items.entrySet()) {
@@ -203,7 +202,7 @@ public class PlaylistPatch {
         Utils.runOnBackgroundThread(() -> {
             synchronized (lastVideoIds) {
                 if (currentPlaylistId.isEmpty()) {
-                    CreatePlaylistRequest.fetchRequestIfNeeded(currentVideoId, getRequestHeader());
+                    CreatePlaylistRequest.fetchRequestIfNeeded(currentVideoId, AuthUtils.getRequestHeader());
                     CreatePlaylistRequest request = CreatePlaylistRequest.getRequestForVideoId(currentVideoId);
                     if (request != null) {
                         Pair<String, String> playlistIds = request.getPlaylistId();
@@ -230,7 +229,7 @@ public class PlaylistPatch {
                 } else {
                     String setVideoId = lastVideoIds.get(currentVideoId);
                     EditPlaylistRequest.fetchRequestIfNeeded(currentVideoId, currentPlaylistId,
-                            setVideoId, getRequestHeader());
+                            setVideoId, AuthUtils.getRequestHeader());
                     EditPlaylistRequest request = EditPlaylistRequest.getRequestForVideoId(currentVideoId);
                     if (request != null) {
                         String fetchedSetVideoId = request.getResult();
@@ -283,7 +282,7 @@ public class PlaylistPatch {
         }
         try {
             GetPlaylistsRequest request = GetPlaylistsRequest.fetchRequestIfNeeded(
-                    currentPlaylistId, getRequestHeader());
+                    currentPlaylistId, AuthUtils.getRequestHeader());
             if (request == null) {
                 return;
             }
@@ -344,7 +343,7 @@ public class PlaylistPatch {
                 return;
             }
             SavePlaylistRequest request = SavePlaylistRequest.fetchRequestIfNeeded(
-                    playlistId, libraryId, getRequestHeader());
+                    playlistId, libraryId, AuthUtils.getRequestHeader());
             if (request == null) {
                 return;
             }
@@ -399,7 +398,7 @@ public class PlaylistPatch {
                             currentPlaylistId;
                 }
 
-                openIntent(url, reload);
+                LoadVideoPatch.openIntent(url, reload);
             } catch (Exception ex) {
                 Logger.printException(() -> "openQueue failure", ex);
             }

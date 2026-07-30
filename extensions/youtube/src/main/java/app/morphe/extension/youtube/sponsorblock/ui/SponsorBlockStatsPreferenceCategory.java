@@ -1,7 +1,5 @@
 package app.morphe.extension.youtube.sponsorblock.ui;
 
-import static android.text.Html.FROM_HTML_MODE_COMPACT;
-import static android.text.Html.fromHtml;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.app.Dialog;
@@ -10,6 +8,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
+import android.text.Html;
 import android.util.AttributeSet;
 import android.util.Pair;
 import android.widget.LinearLayout;
@@ -100,7 +99,7 @@ public class SponsorBlockStatsPreferenceCategory extends PreferenceCategory {
                 // If user has not created any segments, there's no reason to set a username.
                 String userName = stats.userName;
                 ResettableEditTextPreference preference = new ResettableEditTextPreference(context);
-                preference.setTitle(fromHtml(str("morphe_sb_stats_username", userName), FROM_HTML_MODE_COMPACT));
+                preference.setTitle(Html.fromHtml(str("morphe_sb_stats_username", userName), Html.FROM_HTML_MODE_COMPACT));
                 preference.setSummary(str("morphe_sb_stats_username_change"));
                 preference.setText(userName);
                 preference.setOnPreferenceChangeListener((preference1, value) -> {
@@ -109,7 +108,7 @@ public class SponsorBlockStatsPreferenceCategory extends PreferenceCategory {
                         String errorMessage = SBRequester.setUsername(newUserName);
                         Utils.runOnMainThread(() -> {
                             if (errorMessage == null) {
-                                preference.setTitle(fromHtml(str("morphe_sb_stats_username", newUserName), FROM_HTML_MODE_COMPACT));
+                                preference.setTitle(Html.fromHtml(str("morphe_sb_stats_username", newUserName), Html.FROM_HTML_MODE_COMPACT));
                                 preference.setText(newUserName);
                                 Utils.showToastLong(str("morphe_sb_stats_username_changed"));
                             } else {
@@ -129,7 +128,7 @@ public class SponsorBlockStatsPreferenceCategory extends PreferenceCategory {
                 Preference preference = new Preference(context);
                 preference.setSingleLineTitle(false);
                 String formatted = SponsorBlockUtils.getNumberOfSkipsString(stats.segmentCount);
-                preference.setTitle(fromHtml(str("morphe_sb_stats_submissions", formatted), FROM_HTML_MODE_COMPACT));
+                preference.setTitle(Html.fromHtml(str("morphe_sb_stats_submissions", formatted), Html.FROM_HTML_MODE_COMPACT));
                 preference.setSummary(str("morphe_sb_stats_submissions_summary"));
                 if (stats.totalSegmentCountIncludingIgnored == 0) {
                     preference.setSelectable(false);
@@ -150,7 +149,7 @@ public class SponsorBlockStatsPreferenceCategory extends PreferenceCategory {
                 // But if there is a reputation then show it here.
                 Preference preference = new Preference(context);
                 preference.setSingleLineTitle(false);
-                preference.setTitle(fromHtml(str("morphe_sb_stats_reputation", stats.reputation), FROM_HTML_MODE_COMPACT));
+                preference.setTitle(Html.fromHtml(str("morphe_sb_stats_reputation", stats.reputation), Html.FROM_HTML_MODE_COMPACT));
                 preference.setSelectable(false);
                 preference.setEnabled(Settings.SB_ENABLED.isAvailable());
                 if (stats.reputation != 0) {
@@ -174,8 +173,8 @@ public class SponsorBlockStatsPreferenceCategory extends PreferenceCategory {
                     stats_saved_sum = str("morphe_sb_stats_saved_summary",
                             SponsorBlockUtils.getTimeSavedString((long) (60 * stats.minutesSaved)));
                 }
-                preference.setTitle(fromHtml(stats_saved, FROM_HTML_MODE_COMPACT));
-                preference.setSummary(fromHtml(stats_saved_sum, FROM_HTML_MODE_COMPACT));
+                preference.setTitle(Html.fromHtml(stats_saved, Html.FROM_HTML_MODE_COMPACT));
+                preference.setSummary(Html.fromHtml(stats_saved_sum, Html.FROM_HTML_MODE_COMPACT));
                 preference.setOnPreferenceClickListener(preference1 -> {
                     Intent i = new Intent(Intent.ACTION_VIEW);
                     i.setData(Uri.parse("https://sponsor.ajay.app/stats/"));
@@ -197,11 +196,11 @@ public class SponsorBlockStatsPreferenceCategory extends PreferenceCategory {
         Runnable updateStatsSelfSaved = () -> {
             String formatted = SponsorBlockUtils.getNumberOfSkipsString(
                     Settings.SB_LOCAL_TIME_SAVED_NUMBER_SEGMENTS.get());
-            preference.setTitle(fromHtml(str("morphe_sb_stats_self_saved", formatted), FROM_HTML_MODE_COMPACT));
+            preference.setTitle(Html.fromHtml(str("morphe_sb_stats_self_saved", formatted), Html.FROM_HTML_MODE_COMPACT));
 
             String formattedSaved = SponsorBlockUtils.getTimeSavedString(
                     Settings.SB_LOCAL_TIME_SAVED_MILLISECONDS.get() / 1000);
-            preference.setSummary(fromHtml(str("morphe_sb_stats_self_saved_summary", formattedSaved), FROM_HTML_MODE_COMPACT));
+            preference.setSummary(Html.fromHtml(str("morphe_sb_stats_self_saved_summary", formattedSaved), Html.FROM_HTML_MODE_COMPACT));
         };
         updateStatsSelfSaved.run();
 

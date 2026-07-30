@@ -7,8 +7,6 @@
 
 package app.morphe.extension.youtube.videoplayer;
 
-import static app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS;
-
 import android.view.View;
 import android.widget.ImageView;
 
@@ -18,6 +16,7 @@ import java.lang.ref.WeakReference;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
 import app.morphe.extension.youtube.patches.voiceovertranslation.VoiceOverTranslationPatch;
 import app.morphe.extension.youtube.patches.voiceovertranslation.VotBottomSheet;
 import app.morphe.extension.youtube.settings.Settings;
@@ -34,7 +33,7 @@ public final class VoiceOverTranslationButton {
     /** Injection point. */
     public static void initializeButton(View controlsView) {
         try {
-            if (RESTORE_OLD_PLAYER_BUTTONS || !Settings.VOT_ENABLED.get()) return;
+            if (LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS || !Settings.VOT_ENABLED.get()) return;
 
             VoiceOverTranslationPatch.setOnTranslationStateChangeCallback(
                     VoiceOverTranslationButton::refreshActivatedState);
@@ -60,7 +59,7 @@ public final class VoiceOverTranslationButton {
     /** Injection point. */
     public static void initializeLegacyButton(View controlsView) {
         try {
-            if (!RESTORE_OLD_PLAYER_BUTTONS) return;
+            if (!LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS) return;
 
             VoiceOverTranslationPatch.setOnTranslationStateChangeCallback(
                     VoiceOverTranslationButton::refreshActivatedState);

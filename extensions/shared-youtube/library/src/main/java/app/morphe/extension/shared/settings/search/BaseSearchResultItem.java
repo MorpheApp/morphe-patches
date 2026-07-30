@@ -1,6 +1,7 @@
 package app.morphe.extension.shared.settings.search;
 
 import android.graphics.Color;
+import android.os.Build;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.SwitchPreference;
@@ -223,7 +224,12 @@ public abstract class BaseSearchResultItem {
          */
         private void appendText(StringBuilder builder, CharSequence text) {
             if (!TextUtils.isEmpty(text)) {
-                if (builder.length() > 0) builder.append(" ");
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+                    if (!builder.isEmpty()) builder.append(" ");
+                } else {
+                    //noinspection SizeReplaceableByIsEmpty
+                    if (builder.length() > 0) builder.append(" ");
+                }
                 builder.append(Utils.normalizeTextToLowercase(text));
             }
         }

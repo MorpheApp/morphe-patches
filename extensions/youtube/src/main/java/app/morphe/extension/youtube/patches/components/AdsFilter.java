@@ -10,8 +10,6 @@
 
 package app.morphe.extension.youtube.patches.components;
 
-import static app.morphe.extension.shared.ByteTrieSearch.convertStringsToBytes;
-
 import android.view.View;
 
 import java.util.List;
@@ -42,9 +40,9 @@ public final class AdsFilter extends Filter {
 
     private static final byte[] EMPTY_BYTE_ARRAY = new byte[0];
     private static final ByteTrieSearch statementBannerSearch = new ByteTrieSearch(
-            convertStringsToBytes("statement_banner"));
+            ByteTrieSearch.convertStringsToBytes("statement_banner"));
     private static final ByteTrieSearch yoodleSearch = new ByteTrieSearch(
-            convertStringsToBytes("EgliaWd5b29kbGU")); // Base64 chunk that decodes to 'bigyoodle'
+            ByteTrieSearch.convertStringsToBytes("EgliaWd5b29kbGU")); // Base64 chunk that decodes to 'bigyoodle'
 
     private final StringTrieSearch exceptions = new StringTrieSearch();
 

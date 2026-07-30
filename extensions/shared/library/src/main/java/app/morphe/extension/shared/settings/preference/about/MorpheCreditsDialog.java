@@ -1,7 +1,6 @@
 package app.morphe.extension.shared.settings.preference.about;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.shared.settings.preference.about.MorpheAboutPreference.WebLink;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
@@ -19,44 +18,43 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import app.morphe.extension.shared.StringRef;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.Dim;
 
 class MorpheCreditsDialog extends Dialog {
 
-    private static final List<WebLink> WORKS_LINKS_CURRENT = List.of(
-            new WebLink("Morphe",
+    private static final List<MorpheAboutPreference.WebLink> WORKS_LINKS_CURRENT = List.of(
+            new MorpheAboutPreference.WebLink("Morphe",
                     str("morphe_settings_about_links_morphe"),
                     "https://github.com/morpheapp/morphe-patches/graphs/contributors"
             )
     );
 
-    private static final List<WebLink> WORKS_LINKS_PRIOR = List.of(
-            new WebLink("RVX",
+    private static final List<MorpheAboutPreference.WebLink> WORKS_LINKS_PRIOR = List.of(
+            new MorpheAboutPreference.WebLink("RVX",
                     str("morphe_settings_about_links_rvx"),
                     "https://github.com/inotia00/revanced-patches/graphs/contributors?from=3%2F1%2F2022&to=12%2F1%2F2025"
             ),
-            new WebLink("ReVanced",
+            new MorpheAboutPreference.WebLink("ReVanced",
                     str("morphe_settings_about_links_rv"),
                     "https://revanced.app/contributors"
             )
     );
 
-    private static final WebLink WORKS_VANCED = new WebLink("Vanced",
+    private static final MorpheAboutPreference.WebLink WORKS_VANCED = new MorpheAboutPreference.WebLink("Vanced",
             str("morphe_settings_about_links_vanced"),
             "https://github.com/TeamVanced"
     );
 
-    static final WebLink ABOUT_LICENSE = new WebLink("license",
+    static final MorpheAboutPreference.WebLink ABOUT_LICENSE = new MorpheAboutPreference.WebLink("license",
             str("morphe_settings_about_links_licenses"),
             "https://license/"
     );
 
     static boolean showVancedAsPastContributor = true;
 
-    private static List<WebLink> getWorksLinksPrior() {
-        List<WebLink> prior = new ArrayList<>(WORKS_LINKS_PRIOR);
+    private static List<MorpheAboutPreference.WebLink> getWorksLinksPrior() {
+        List<MorpheAboutPreference.WebLink> prior = new ArrayList<>(WORKS_LINKS_PRIOR);
         if (showVancedAsPastContributor) {
             prior.add(WORKS_VANCED);
         }
@@ -211,15 +209,15 @@ class MorpheCreditsDialog extends Dialog {
                             <div class="credits-title">%s</div>
                         </div>
                         """,
-                StringRef.str("morphe_settings_about_links_credits")
+                str("morphe_settings_about_links_credits")
         ));
 
         // Current contributors section.
         html.append(String.format("""
                 <div class="credits-section">
                     <div class="section-label">%s</div>
-                """, StringRef.str("morphe_settings_about_contributors_current")));
-        for (WebLink link : WORKS_LINKS_CURRENT) {
+                """, str("morphe_settings_about_contributors_current")));
+        for (MorpheAboutPreference.WebLink link : WORKS_LINKS_CURRENT) {
             String initial = link.name.substring(0, 1).toUpperCase(Locale.getDefault());
             html.append("<a href=\"").append(link.url).append("\" class=\"link-button\">")
                     .append("<div class=\"avatar\">").append(initial).append("</div>")
@@ -236,8 +234,8 @@ class MorpheCreditsDialog extends Dialog {
         html.append(String.format("""
                 <div class="credits-section">
                     <div class="section-label">%s</div>
-                """, StringRef.str("morphe_settings_about_contributors_prior")));
-        for (WebLink link : getWorksLinksPrior()) {
+                """, str("morphe_settings_about_contributors_prior")));
+        for (MorpheAboutPreference.WebLink link : getWorksLinksPrior()) {
             String initial = link.name.substring(0, 1).toUpperCase(Locale.getDefault());
             html.append("<a href=\"").append(link.url).append("\" class=\"link-button\">")
                     .append("<div class=\"avatar\">").append(initial).append("</div>")

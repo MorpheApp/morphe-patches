@@ -1,7 +1,5 @@
 package app.morphe.extension.youtube.sponsorblock.ui;
 
-import static app.morphe.extension.shared.ResourceUtils.getIdentifierOrThrow;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -71,7 +69,7 @@ public class SponsorBlockViewController {
             RelativeLayout layout = new RelativeLayout(context);
             layout.setLayoutParams(new RelativeLayout.LayoutParams(
                     RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
-            LayoutInflater.from(context).inflate(getIdentifierOrThrow(
+            LayoutInflater.from(context).inflate(ResourceUtils.getIdentifierOrThrow(
                     ResourceType.LAYOUT, "morphe_sb_inline_sponsor_overlay"), layout);
             inlineSponsorOverlayRef = new WeakReference<>(layout);
 

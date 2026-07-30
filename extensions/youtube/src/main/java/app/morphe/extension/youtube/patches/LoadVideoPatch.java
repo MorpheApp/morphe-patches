@@ -8,7 +8,6 @@
 package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.shared.Utils.getContext;
 
 import android.app.Activity;
 import android.content.ComponentName;
@@ -122,7 +121,7 @@ public final class LoadVideoPatch {
 
         // Reopens the video after 0ms or 500ms.
         Utils.runOnMainThreadDelayed(() -> {
-            Context context = getContext();
+            Context context = Utils.getContext();
 
             if (context == null) {
                 return;

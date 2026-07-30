@@ -10,8 +10,6 @@
 
 package app.morphe.extension.youtube.patches;
 
-import static app.morphe.extension.youtube.patches.VersionCheckPatch.IS_21_10_OR_GREATER;
-
 import android.app.Activity;
 
 import java.lang.ref.WeakReference;
@@ -108,7 +106,7 @@ public class ShortsAutoplayPatch {
                     ? Settings.SHORTS_AUTOPLAY_BACKGROUND.get()
                     : Settings.SHORTS_AUTOPLAY.get();
 
-            ShortsLoopBehavior autoPlayBehavior = IS_21_10_OR_GREATER
+            ShortsLoopBehavior autoPlayBehavior = VersionCheckPatch.IS_21_10_OR_GREATER
                     ? ShortsLoopBehavior.AUTO_ADVANCE
                     : ShortsLoopBehavior.SINGLE_PLAY;
 

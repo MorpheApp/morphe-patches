@@ -10,8 +10,6 @@
 
 package app.morphe.extension.youtube.patches.components;
 
-import static app.morphe.extension.shared.Utils.getFilterStrings;
-
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +21,7 @@ import androidx.annotation.NonNull;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
 import app.morphe.extension.shared.patches.components.ByteArrayFilterGroup;
 import app.morphe.extension.shared.patches.components.ByteArrayFilterGroupList;
@@ -42,7 +41,8 @@ public class CommentsFilter extends Filter {
     private static final String VIDEO_LOCKUP_WITH_ATTACHMENT_PATH = "video_lockup_with_attachment.e";
     private static final String VIDEO_METADATA_CAROUSEL_PATH = "video_metadata_carousel.e";
 
-    private static final List<String> commentsCarouselFilterStrings = getFilterStrings(Settings.HIDE_COMMENTS_CAROUSEL_FILTER_STRINGS);
+    private static final List<String> commentsCarouselFilterStrings =
+            Utils.getFilterStrings(Settings.HIDE_COMMENTS_CAROUSEL_FILTER_STRINGS);
 
     private final StringFilterGroup commentComposer;
     private final StringFilterGroup commentComposerButtons;

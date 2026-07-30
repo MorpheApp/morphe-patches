@@ -1,13 +1,12 @@
 package app.morphe.extension.youtube.patches;
 
-import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
-
 import android.app.Activity;
 
 import java.lang.ref.WeakReference;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.NavigationBar;
 
 @SuppressWarnings("unused")
 public class OpenShortsInRegularPlayerPatch {
@@ -18,15 +17,13 @@ public class OpenShortsInRegularPlayerPatch {
         REGULAR_PLAYER_FULLSCREEN
     }
 
-    private static WeakReference<Activity> mainActivityRef = new WeakReference<>(null);
-
     private static volatile boolean overrideBackPressToExit;
 
     /**
      * Injection point.
      */
     public static void setMainActivity(Activity activity) {
-        mainActivityRef = new WeakReference<>(activity);
+        WeakReference<Activity> mainActivityRef = new WeakReference<>(activity);
     }
 
     /**
@@ -69,7 +66,8 @@ public class OpenShortsInRegularPlayerPatch {
                 return false;
             }
 
-            if (NavigationButton.getSelectedNavigationButton() == NavigationButton.SHORTS) {
+            if (NavigationBar.NavigationButton.getSelectedNavigationButton() ==
+                    NavigationBar.NavigationButton.SHORTS) {
                 overrideBackPressToExit = false;
                 return false; // Always use Shorts player for the Shorts nav button.
             }
