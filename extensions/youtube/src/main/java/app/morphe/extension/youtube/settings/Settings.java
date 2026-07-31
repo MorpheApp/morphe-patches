@@ -274,7 +274,7 @@ public class Settings extends SharedYouTubeSettings {
 
     // Miniplayer
     public static final BooleanSetting MINIPLAYER_DISABLE_RESUMING = new BooleanSetting("morphe_miniplayer_disable_resuming", FALSE, true);
-    public static final EnumSetting<MiniplayerType> MINIPLAYER_TYPE = new EnumSetting<>("morphe_miniplayer_type", MiniplayerType.DEFAULT, true);
+    public static final EnumSetting<MiniplayerType> MINIPLAYER_TYPE = new EnumSetting<>("morphe_miniplayer_type", VersionCheckPatch.IS_21_29_OR_GREATER ? MiniplayerType.MODERN_4 : MiniplayerType.DEFAULT, true);
     public static final BooleanSetting MINIPLAYER_DISABLE_DRAG_AND_DROP = new BooleanSetting("morphe_miniplayer_disable_drag_and_drop", FALSE, true, new MiniplayerAnyModernAvailability());
     public static final BooleanSetting MINIPLAYER_DISABLE_HORIZONTAL_DRAG = new BooleanSetting("morphe_miniplayer_disable_horizontal_drag", FALSE, true, new MiniplayerHorizontalDragAvailability());
     public static final BooleanSetting MINIPLAYER_DISABLE_HORIZONTAL_DRAG_PLAYBACK = new BooleanSetting("morphe_miniplayer_disable_horizontal_drag_playback", FALSE, true, new MiniplayerHorizontalDragPlaybackAvailability());
@@ -762,9 +762,8 @@ public class Settings extends SharedYouTubeSettings {
         }
 
         // 21.29+ YT removed all miniplayer types, except modern_4.
-        if (VersionCheckPatch.IS_21_29_OR_GREATER && MINIPLAYER_TYPE.get() != MiniplayerType.MODERN_4) {
-            Logger.printInfo(() -> "Set miniplayer type to MODERN_4");
-            MINIPLAYER_TYPE.save(MiniplayerType.MODERN_4);
+        if (VersionCheckPatch.IS_21_29_OR_GREATER && !MINIPLAYER_TYPE.isSetToDefault()) {
+            MINIPLAYER_TYPE.resetToDefault();
         }
 
         // Android VR 1.74 and visionOS 1.03 are not selectable in the settings and are selected by spoof stream patch if needed.
