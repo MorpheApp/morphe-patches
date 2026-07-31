@@ -14,6 +14,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.removeInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.removeInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.PatchException
@@ -48,6 +49,7 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ThreeRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
@@ -565,6 +567,23 @@ val videoInformationPatch = bytecodePatch(
                     new-instance v1, ${classRef.type}
                     invoke-direct {v1, p1}, ${initRef.definingClass}->${initRef.name}($initParams)${initRef.returnType}
                     invoke-interface {v2, v1}, ${kMethodRef.definingClass}->${kMethodRef.name}($kMethodParams)${kMethodRef.returnType}
+                """
+            )
+        }
+
+        // Instead of passing 1.0f, pitch is retrieved from extension.
+        PlaybackParametersConstructorFingerprint.method.apply {
+            val constHigh16Index = PlaybackParametersConstructorFingerprint.instructionMatches[0].index
+            val constHigh16Instr = getInstruction<OneRegisterInstruction>(constHigh16Index)
+            val register = constHigh16Instr.registerA
+
+            removeInstruction(constHigh16Index)
+
+            addInstructionsAtControlFlowLabel(
+                constHigh16Index,
+                """
+                    invoke-static {}, $EXTENSION_CLASS->getPlaybackAudioPitch()F
+                    move-result v$register
                 """
             )
         }

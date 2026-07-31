@@ -323,3 +323,21 @@ internal object SetPlaybackSpeedFingerprint : Fingerprint(
         ),
     )
 )
+
+internal object PlaybackParametersToStringFingerprint : Fingerprint(
+    name = "toString",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/String;",
+    strings = listOf("PlaybackParameters(speed=%.2f, pitch=%.2f)")
+)
+
+internal object PlaybackParametersConstructorFingerprint : Fingerprint(
+    classFingerprint = PlaybackParametersToStringFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    returnType = "V",
+    parameters = listOf("F"),
+    filters = OpcodesFilter.opcodesToFilters(
+        Opcode.CONST_HIGH16,
+        Opcode.INVOKE_DIRECT
+    )
+)

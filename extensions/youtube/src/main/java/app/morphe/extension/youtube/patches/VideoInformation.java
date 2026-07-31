@@ -82,6 +82,9 @@ public final class VideoInformation {
      * Over 10x and the speeds show up out of order in the UI selector.
      */
     public static final float PLAYBACK_SPEED_MAXIMUM = 8;
+
+    private static final float DEFAULT_YOUTUBE_PLAYBACK_AUDIO_PITCH = 1.0f;
+
     /**
      * Prefix present in all Short player parameters signature.
      */
@@ -107,6 +110,15 @@ public final class VideoInformation {
      * The current playback speed in native panel.
      */
     private static String playbackSpeedFormattedString = "";
+
+    /**
+     * The current playback audio pitch
+     */
+    private static float playbackAudioPitch = DEFAULT_YOUTUBE_PLAYBACK_AUDIO_PITCH;
+    /**
+     * The current playback speed in native panel.
+     */
+    private static String playbackAudioPitchFormattedString = "";
 
     private static int desiredVideoResolution = AUTOMATIC_VIDEO_QUALITY_VALUE;
 
@@ -183,6 +195,8 @@ public final class VideoInformation {
             boolean isLive = false;
             playbackSpeed = DEFAULT_PLAYBACK_SPEED;
             playbackSpeedFormattedString = "";
+            playbackAudioPitch = DEFAULT_YOUTUBE_PLAYBACK_AUDIO_PITCH;
+            playbackAudioPitchFormattedString = "";
             desiredVideoResolution = AUTOMATIC_VIDEO_QUALITY_VALUE;
             currentQualities = null;
             currentQualityMenuInterface = null;
@@ -304,6 +318,19 @@ public final class VideoInformation {
             // An exception occurs when the playback speed dialog is opened by an overlay button while 'Restore old playback speed menu' is off.
             // Update the formatted string value to avoid the exception.
             playbackSpeedFormattedString = formatSpeedStringX(currentVideoSpeed);
+        }
+    }
+
+    /**
+     * The only method to be called from CustomPlaybackInterface to set audio pitch.
+     * Not injected.
+     */
+    public static void audioPitchChanged(float currentAudioPitch) {
+        if (playbackAudioPitch != currentAudioPitch) {
+            Logger.printDebug(() -> "Audio pitch changed: " + currentAudioPitch);
+            playbackAudioPitch = currentAudioPitch;
+
+            playbackAudioPitchFormattedString = formatSpeedStringX(currentAudioPitch);
         }
     }
 
@@ -538,6 +565,13 @@ public final class VideoInformation {
      */
     public static float getPlaybackSpeed() {
         return playbackSpeed;
+    }
+
+    /**
+     * @return The current playback audio pitch.
+     */
+    public static float getPlaybackAudioPitch() {
+        return playbackAudioPitch;
     }
 
     /**
