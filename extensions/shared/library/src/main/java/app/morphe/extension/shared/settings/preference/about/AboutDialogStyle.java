@@ -300,6 +300,35 @@ final class AboutDialogStyle {
                         transform: scaleX(-1);
                     }
 
+                    /* Bundled license text. Kept selectable, since users do copy legal notices. */
+                    .license-body {
+                        padding: 16px;
+                        -webkit-user-select: text;
+                        user-select: text;
+                    }
+                    .license-body h2 {
+                        font-size: 13px;
+                        font-weight: 600;
+                        color: {accent};
+                        word-break: break-all;
+                        border-bottom: 1px solid rgba(128, 128, 128, 0.20);
+                        padding-bottom: 6px;
+                        margin-top: 24px;
+                    }
+                    .license-body h2:first-of-type {
+                        margin-top: 0;
+                    }
+                    .license-body pre {
+                        margin: 0;
+                        font-family: monospace;
+                        font-size: 13px;
+                        line-height: 1.6;
+                        white-space: pre;
+                    }
+                    .license-body a {
+                        color: {accent};
+                    }
+
                     /* Credits contributor initial. */
                     .avatar {
                         width: 30px;
