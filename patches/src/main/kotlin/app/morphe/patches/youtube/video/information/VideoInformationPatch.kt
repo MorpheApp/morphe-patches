@@ -14,6 +14,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.removeInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
@@ -51,6 +52,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.ThreeRegisterInstructio
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
+import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableField
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodImplementation
@@ -536,6 +538,35 @@ val videoInformationPatch = bytecodePatch(
                     )
                 }
             }
+        }
+
+        SetPlaybackSpeedFingerprint.method.apply {
+            val invokeVirtualIndex = SetPlaybackSpeedFingerprint.instructionMatches[0].index
+            val igetObjectIndex = SetPlaybackSpeedFingerprint.instructionMatches[4].index
+
+            val exoPlayerField = getInstruction(igetObjectIndex).getReference<FieldReference>()!!
+            val classRef = getInstruction(igetObjectIndex + 1).getReference<TypeReference>()!!
+            val initRef = getInstruction(igetObjectIndex + 2).getReference<MethodReference>()!!
+            val kMethodRef = getInstruction(igetObjectIndex + 3).getReference<MethodReference>()!!
+
+            // Remove the original instructions.
+            removeInstructions(igetObjectIndex, 4)
+
+            // Re-insert them before the 'if' block.
+            // so the ExoPlayer command is dispatched unconditionally.
+            // It is checked by ExoPlayer properly.
+            val initParams = initRef.parameterTypes.joinToString("")
+            val kMethodParams = kMethodRef.parameterTypes.joinToString("")
+
+            addInstructionsAtControlFlowLabel(
+                invokeVirtualIndex,
+                """
+                    iget-object v2, p0, ${exoPlayerField.definingClass}->${exoPlayerField.name}:${exoPlayerField.type}
+                    new-instance v1, ${classRef.type}
+                    invoke-direct {v1, p1}, ${initRef.definingClass}->${initRef.name}($initParams)${initRef.returnType}
+                    invoke-interface {v2, v1}, ${kMethodRef.definingClass}->${kMethodRef.name}($kMethodParams)${kMethodRef.returnType}
+                """
+            )
         }
 
         // endregion.

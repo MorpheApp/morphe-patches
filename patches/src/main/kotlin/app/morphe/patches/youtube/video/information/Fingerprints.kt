@@ -296,3 +296,30 @@ internal object SetVideoQualityFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Responsible to communicate playback speed from YT to ExoPlayer.
+ * The actual code is similar to this setPlaybackParameters(new PlaybackParameters(speed));
+ */
+internal object SetPlaybackSpeedFingerprint : Fingerprint(
+    parameters = listOf("F", "Z"),
+    returnType = "V",
+    filters = listOf(
+        // The `getPlaybackParameters()F` block the speed is compared against, which is also the insertion point.
+        opcode(Opcode.INVOKE_VIRTUAL),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        opcode(Opcode.CMPL_FLOAT, location = MatchAfterImmediately()),
+        opcode(Opcode.IF_EQZ, location = MatchAfterImmediately()),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "Landroidx/media3/exoplayer/ExoPlayer;",
+            location = MatchAfterImmediately()
+        ),
+        opcode(Opcode.NEW_INSTANCE, location = MatchAfterImmediately()),
+        opcode(Opcode.INVOKE_DIRECT, location = MatchAfterImmediately()),
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            definingClass = "Landroidx/media3/exoplayer/ExoPlayer;",
+            location = MatchAfterImmediately()
+        ),
+    )
+)
