@@ -69,6 +69,56 @@ final class LyricsCache {
         writeToDisk(key, lyrics);
     }
 
+    /**
+     * @return Cached translation, or {@code null} if the track was not translated into
+     * this language yet, or if the cached line count no longer matches the lyrics.
+     */
+    @Nullable
+    static synchronized List<String> getTranslation(@NonNull TrackInfo track,
+                                                    @NonNull String language,
+                                                    int expectedLineCount) {
+        File file = translationFile(track, language);
+        if (file == null || !file.exists()) {
+            return null;
+        }
+
+        try {
+            List<String> lines = Files.readAllLines(file.toPath(), StandardCharsets.UTF_8);
+            // The lyrics may have been refetched from another provider since, in which
+            // case the stored translation no longer lines up and has to be discarded.
+            return lines.size() == expectedLineCount ? lines : null;
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not read cached translation: " + file, ex);
+            return null;
+        }
+    }
+
+    static synchronized void putTranslation(@NonNull TrackInfo track,
+                                            @NonNull String language,
+                                            @NonNull List<String> lines) {
+        File file = translationFile(track, language);
+        if (file == null) {
+            return;
+        }
+
+        try {
+            Files.write(file.toPath(), lines, StandardCharsets.UTF_8);
+            trimDiskCache();
+        } catch (IOException ex) {
+            Logger.printDebug(() -> "Could not cache translation: " + file, ex);
+        }
+    }
+
+    @Nullable
+    private static File translationFile(@NonNull TrackInfo track, @NonNull String language) {
+        File directory = cacheDirectory();
+        if (directory == null) {
+            return null;
+        }
+        return new File(directory,
+                Integer.toHexString(track.cacheKey().hashCode()) + "." + language + ".txt");
+    }
+
     @Nullable
     private static Lyrics readFromDisk(@NonNull String key) {
         File file = cacheFile(key);

@@ -97,6 +97,11 @@ public final class LyricsManager {
         listeners.remove(listener);
     }
 
+    @Nullable
+    public TrackInfo getCurrentTrack() {
+        return currentTrack;
+    }
+
     /** Whether lyrics for the current track are loaded and ready to show. */
     public boolean hasLyrics() {
         return state == State.LOADED && currentLyrics != null && !currentLyrics.isEmpty();

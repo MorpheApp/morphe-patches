@@ -351,6 +351,11 @@ To ensure scrobbling is synced during background playback, ensure that YouTube M
     <string name="morphe_music_lyrics_offset_ms_summary">Shift synced lyrics forwards or backwards. Use a positive value if the lyrics run ahead of the song</string>
     <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
     <string name="morphe_music_lyrics_source_label">Source: %s</string>
+    <!-- Tappable label under the lyrics that turns the translation on. -->
+    <string name="morphe_music_lyrics_translate_show">Translate</string>
+    <string name="morphe_music_lyrics_translate_hide">Show original</string>
+    <string name="morphe_music_lyrics_translating">Translating…</string>
+    <string name="morphe_music_lyrics_translate_failed">Could not translate the lyrics</string>
     <string name="morphe_music_lyrics_about_title">About third-party lyrics</string>
     <string name="morphe_music_lyrics_about_summary">"Lyrics are looked up by track title and artist, so a track with unusual metadata may find nothing, or find the wrong version
 

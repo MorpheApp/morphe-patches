@@ -9,9 +9,15 @@ package app.morphe.extension.music.patches.lyrics.ui;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -32,6 +38,8 @@ import java.util.List;
 import app.morphe.extension.music.patches.lyrics.Lyrics;
 import app.morphe.extension.music.patches.lyrics.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
+import app.morphe.extension.music.patches.lyrics.LyricsTranslator;
+import app.morphe.extension.music.patches.lyrics.TrackInfo;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
@@ -77,12 +85,30 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     /** Color the app uses for primary text. */
     private static final String APP_PRIMARY_TEXT_COLOR = "ytm_text_color_primary";
 
+    /** Color the app uses for secondary text, applied to the translation. */
+    private static final String APP_SECONDARY_TEXT_COLOR = "ytm_text_color_secondary_translucent";
+
+    /** Background the app uses for the pill buttons under its own lyrics. */
+    private static final String APP_BUTTON_BACKGROUND_COLOR = "ytm_color_white_at_20pct";
+
+    /** Icon the app puts on its own translate button. */
+    private static final String APP_TRANSLATE_ICON = "yt_outline_translate_vd_theme_24";
+
+    /** Translation size relative to the lyrics line it belongs to. */
+    private static final float TRANSLATION_RELATIVE_SIZE = 0.7f;
+
     private final Handler handler = new Handler(Looper.getMainLooper());
 
     private final ScrollView scrollView;
     private final LinearLayout linesContainer;
     private final TextView footerView;
+    private final TextView translateView;
+    private final LinearLayout footerContainer;
     private final ProgressBar progressBar;
+
+    /** One translated line per lyrics line, or {@code null} when showing the original only. */
+    @Nullable
+    private List<String> translatedLines;
 
     private final List<TextView> lineViews = new ArrayList<>();
 
@@ -129,9 +155,36 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
         footerView = new TextView(context);
         applyFooterStyle(footerView);
-        footerView.setPadding(0, dp(24), 0, dp(48));
         footerView.setVisibility(GONE);
-        linesContainer.addView(footerView, new LinearLayout.LayoutParams(
+
+        translateView = new TextView(context);
+        applyTranslateButtonStyle(translateView);
+        translateView.setVisibility(GONE);
+        translateView.setOnClickListener(view -> {
+            try {
+                onTranslateClicked();
+            } catch (Exception ex) {
+                Logger.printException(() -> "Translate failure", ex);
+            }
+        });
+
+        // The source line and the button live in one container, so that lyrics lines
+        // can be inserted before it without depending on how many views it holds.
+        footerContainer = new LinearLayout(context);
+        footerContainer.setOrientation(LinearLayout.VERTICAL);
+        footerContainer.setPadding(0, dp(24), 0, dp(48));
+        footerContainer.addView(footerView, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
+
+        LinearLayout.LayoutParams buttonParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        buttonParams.gravity = Gravity.CENTER_HORIZONTAL;
+        buttonParams.topMargin = dp(16);
+        footerContainer.addView(translateView, buttonParams);
+
+        linesContainer.addView(footerContainer, new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
 
@@ -180,6 +233,8 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             lyrics = newLyrics;
             highlightedIndex = -1;
             userScrollUntilUptimeMs = 0;
+            // The previous translation belongs to the previous track.
+            translatedLines = null;
 
             switch (state) {
                 case LOADING:
@@ -192,6 +247,9 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                     } else {
                         showLyrics(newLyrics);
                         setOverlayVisible(true);
+                        if (Settings.LYRICS_TRANSLATE.get()) {
+                            onTranslateClicked();
+                        }
                     }
                     break;
                 case NOT_FOUND:
@@ -249,7 +307,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
     private void showLoading() {
         clearLines();
-        footerView.setVisibility(GONE);
+        footerContainer.setVisibility(GONE);
         scrollView.setVisibility(GONE);
         progressBar.setVisibility(VISIBLE);
     }
@@ -269,7 +327,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
             TextView lineView = new TextView(context);
             // An empty line is an instrumental break, which a note shows better than a gap.
-            lineView.setText(line.text().isEmpty() ? "♪" : line.text());
+            lineView.setText(line.text().isEmpty() ? "♪" : lineText(line.text(), i));
             lineView.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
             lineView.setTextColor(foregroundColor);
             lineView.setAlpha(newLyrics.synced() ? INACTIVE_LINE_ALPHA : 1f);
@@ -296,9 +354,78 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         }
 
         footerView.setText(sourceText(newLyrics.providerName()));
+        footerContainer.setVisibility(VISIBLE);
         footerView.setVisibility(VISIBLE);
+        translateView.setVisibility(VISIBLE);
+        updateTranslateLabel();
 
         scrollView.scrollTo(0, 0);
+    }
+
+    /**
+     * Line text, with the translation appended below the original in a smaller,
+     * dimmer style. Both live in one view so that highlighting, fading and auto
+     * scrolling keep working on whole lines.
+     */
+    @NonNull
+    private CharSequence lineText(@NonNull String original, int index) {
+        List<String> translated = translatedLines;
+        if (translated == null || index >= translated.size()) {
+            return original;
+        }
+
+        String translation = translated.get(index).trim();
+        if (translation.isEmpty() || translation.equals(original)) {
+            return original;
+        }
+
+        SpannableString text = new SpannableString(original + "\n" + translation);
+        final int start = original.length() + 1;
+        text.setSpan(new RelativeSizeSpan(TRANSLATION_RELATIVE_SIZE), start, text.length(),
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        text.setSpan(new ForegroundColorSpan(translationTextColor()), start, text.length(),
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        return text;
+    }
+
+    private void onTranslateClicked() {
+        Lyrics current = lyrics;
+        TrackInfo track = LyricsManager.getInstance().getCurrentTrack();
+        if (current == null || track == null) {
+            return;
+        }
+
+        if (translatedLines != null) {
+            Settings.LYRICS_TRANSLATE.save(false);
+            translatedLines = null;
+            showLyrics(current);
+            return;
+        }
+
+        Settings.LYRICS_TRANSLATE.save(true);
+        translateView.setEnabled(false);
+        translateView.setText(str("morphe_music_lyrics_translating"));
+
+        LyricsTranslator.translate(track, current, lines -> {
+            translateView.setEnabled(true);
+
+            // The track may have changed while the translation was in flight.
+            if (lyrics != current) {
+                return;
+            }
+
+            translatedLines = lines;
+            if (lines == null) {
+                Utils.showToastShort(str("morphe_music_lyrics_translate_failed"));
+            }
+            showLyrics(current);
+        });
+    }
+
+    private void updateTranslateLabel() {
+        translateView.setText(translatedLines == null
+                ? str("morphe_music_lyrics_translate_show")
+                : str("morphe_music_lyrics_translate_hide"));
     }
 
     private void clearLines() {
@@ -374,6 +501,47 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         Logger.printDebug(() -> "App is missing " + APP_FOOTER_STYLE);
         footer.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
         footer.setTextColor(Utils.getAppForegroundColor());
+    }
+
+    /**
+     * Styles the button as a pill, the shape the app uses for the buttons under its
+     * own lyrics, with the background taken from the app palette so it follows the theme.
+     */
+    private void applyTranslateButtonStyle(@NonNull TextView button) {
+        button.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
+        button.setTextColor(lineTextColor());
+        button.setGravity(Gravity.CENTER);
+        button.setPadding(dp(24), dp(10), dp(24), dp(10));
+
+        GradientDrawable background = new GradientDrawable();
+        background.setShape(GradientDrawable.RECTANGLE);
+        background.setCornerRadius(dp(20));
+        background.setColor(ResourceUtils.getColor(APP_BUTTON_BACKGROUND_COLOR, 0x33FFFFFF));
+        button.setBackground(background);
+
+        Drawable icon = ResourceUtils.getDrawable(APP_TRANSLATE_ICON);
+        if (icon == null) {
+            Logger.printDebug(() -> "App is missing " + APP_TRANSLATE_ICON);
+            return;
+        }
+
+        // The drawable is themed with an attribute the panel context does not carry,
+        // so it is tinted explicitly to match the button label.
+        icon = icon.mutate();
+        icon.setTint(lineTextColor());
+        final int iconSize = dp(20);
+        icon.setBounds(0, 0, iconSize, iconSize);
+        button.setCompoundDrawablesRelative(icon, null, null, null);
+        button.setCompoundDrawablePadding(dp(8));
+    }
+
+    @NonNull
+    private static String str(@NonNull String key) {
+        return StringRef.str(key);
+    }
+
+    private static int translationTextColor() {
+        return ResourceUtils.getColor(APP_SECONDARY_TEXT_COLOR, lineTextColor());
     }
 
     /**
