@@ -5,6 +5,7 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Insets;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.ViewGroup;
@@ -58,10 +59,12 @@ public class LicensesDialog extends Dialog {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        // Apply the background color to the navigation bar.
+        // The window fills the screen, so its own background and the navigation bar are painted the
+        // same color the pages are, rather than whatever the device theme happens to be.
         Window window = getWindow();
         if (window != null) {
-            window.setNavigationBarColor(Utils.getAppBackgroundColor());
+            window.setBackgroundDrawable(new ColorDrawable(Utils.getDialogBackgroundColor()));
+            window.setNavigationBarColor(Utils.getDialogBackgroundColor());
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 window.setNavigationBarContrastEnforced(true);
             }
@@ -104,6 +107,8 @@ public class LicensesDialog extends Dialog {
         webView.getSettings().setSupportZoom(legalText);
         webView.getSettings().setBuiltInZoomControls(legalText);
         webView.getSettings().setDisplayZoomControls(false);
+        // A WebView paints white until the page is parsed, which flashes on every navigation here.
+        webView.setBackgroundColor(Utils.getDialogBackgroundColor());
         webView.setWebViewClient(new LicensesWebClient(getContext(), this));
 
         webView.loadDataWithBaseURL(null, html, "text/html", "UTF-8", null);
