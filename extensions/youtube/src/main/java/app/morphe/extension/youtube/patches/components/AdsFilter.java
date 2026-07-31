@@ -72,6 +72,16 @@ public final class AdsFilter extends Filter {
 
         // Paths.
 
+        buyMovieAd = new StringFilterGroup(
+                Settings.HIDE_MOVIES_SECTION,
+                "video_lockup_with_attachment.e"
+        );
+
+        buyMovieAdBuffer = new ByteArrayFilterGroup(
+                null,
+                "FEstorefront"
+        );
+
         final var generalAds = new StringFilterGroup(
                 Settings.HIDE_GENERAL_ADS,
                 "_ad_with",
@@ -106,6 +116,12 @@ public final class AdsFilter extends Filter {
                 "watch_metadata_app_promo"
         );
 
+        final var merchandise = new StringFilterGroup(
+                Settings.HIDE_MERCHANDISE_BANNERS,
+                "product_carousel",
+                "shopping_carousel.e" // Channel profile shopping shelf.
+        );
+
         final var movieAds = new StringFilterGroup(
                 Settings.HIDE_MOVIES_SECTION,
                 "browsy_bar",
@@ -116,37 +132,8 @@ public final class AdsFilter extends Filter {
                 "offer_module_root"
         );
 
-        buyMovieAd = new StringFilterGroup(
-                Settings.HIDE_MOVIES_SECTION,
-                "video_lockup_with_attachment.e"
-        );
-
-        buyMovieAdBuffer = new ByteArrayFilterGroup(
-                null,
-                "FEstorefront"
-        );
-
-        final var viewProducts = new StringFilterGroup(
-                Settings.HIDE_PLAYER_POPUP_ADS,
-                "product_item",
-                "products_in_video",
-                "shopping_overlay.e" // Video player overlay shopping links.
-        );
-
-        final var shoppingLinks = new StringFilterGroup(
-                Settings.HIDE_SHOPPING_LINKS,
-                "shopping_description_item.e",
-                "shopping_description_shelf.e"
-        );
-
-        final var merchandise = new StringFilterGroup(
-                Settings.HIDE_MERCHANDISE_BANNERS,
-                "product_carousel",
-                "shopping_carousel.e" // Channel profile shopping shelf.
-        );
-
         final var paidPromotionLabel = new StringFilterGroup(
-                Settings.HIDE_PAID_PROMOTION_LABEL,
+                Settings.HIDE_PAID_PROMOTION_LABELS,
                 "paid_content_overlay",
                 "reel_player_disclosure.e",
                 "shorts_disclosures.e"
@@ -173,14 +160,27 @@ public final class AdsFilter extends Filter {
                 "cta_shelf_card"
         );
 
+        final var shoppingLinks = new StringFilterGroup(
+                Settings.HIDE_SHOPPING_LINKS,
+                "shopping_description_item.e",
+                "shopping_description_shelf.e"
+        );
+
         shortsPaidPromotionLabel = new StringFilterGroup(
-                Settings.HIDE_PAID_PROMOTION_LABEL,
+                Settings.HIDE_PAID_PROMOTION_LABELS,
                 "reel_carousel.e"
         );
 
         shortsPaidPromotionLabelBuffer = new ByteArrayFilterGroup(
                 null,
                 "/youtube?p=ppp" // https://support.google.com/youtube?p=ppp
+        );
+
+        final var viewProducts = new StringFilterGroup(
+                Settings.HIDE_PLAYER_POPUP_ADS,
+                "product_item",
+                "products_in_video",
+                "shopping_overlay.e" // Video player overlay shopping links.
         );
 
         addPathCallbacks(
@@ -286,7 +286,7 @@ public final class AdsFilter extends Filter {
      * Injection point.
      */
     public static void hideMiniplayerPaidPromotionLabelView(View view) {
-        Utils.hideViewBy0dpUnderCondition(Settings.HIDE_PAID_PROMOTION_LABEL, view);
+        Utils.hideViewBy0dpUnderCondition(Settings.HIDE_PAID_PROMOTION_LABELS, view);
     }
 
     /**

@@ -90,7 +90,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_END_SCREEN_STORE_BANNER = new BooleanSetting("morphe_hide_end_screen_store_banner", TRUE, true);
     public static final BooleanSetting HIDE_GENERAL_ADS = new BooleanSetting("morphe_hide_general_ads", TRUE);
     public static final BooleanSetting HIDE_MERCHANDISE_BANNERS = new BooleanSetting("morphe_hide_merchandise_banners", TRUE);
-    public static final BooleanSetting HIDE_PAID_PROMOTION_LABEL = new BooleanSetting("morphe_hide_paid_promotion_label", TRUE, true);
+    public static final BooleanSetting HIDE_PAID_PROMOTION_LABELS = new BooleanSetting("morphe_hide_paid_promotion_labels", TRUE, true);
     public static final BooleanSetting HIDE_PLAYER_POPUP_ADS = new BooleanSetting("morphe_hide_player_popup_ads", TRUE);
     public static final BooleanSetting HIDE_SELF_SPONSOR = new BooleanSetting("morphe_hide_self_sponsor_ads", TRUE);
     public static final BooleanSetting HIDE_SHOPPING_LINKS = new BooleanSetting("morphe_hide_shopping_links", TRUE);
@@ -114,6 +114,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_FILTER_BAR_IN_RELATED_VIDEOS = new BooleanSetting("morphe_hide_filter_bar_in_related_videos", FALSE, true);
     public static final BooleanSetting HIDE_FILTER_BAR_IN_SEARCH = new BooleanSetting("morphe_hide_filter_bar_in_search", FALSE, true);
     public static final BooleanSetting HIDE_FLOATING_MICROPHONE_BUTTON = new BooleanSetting("morphe_hide_floating_microphone_button", TRUE, true);
+    public static final BooleanSetting HIDE_GET_PREMIUM_BUTTON = new BooleanSetting("morphe_hide_get_premium_button", FALSE);
     public static final BooleanSetting HIDE_HORIZONTAL_SHELVES = new BooleanSetting("morphe_hide_horizontal_shelves", TRUE);
     public static final BooleanSetting HIDE_HYPED_LABEL = new BooleanSetting("morphe_hide_hyped_label", FALSE);
     public static final BooleanSetting HIDE_IMAGE_SHELF = new BooleanSetting("morphe_hide_image_shelf", TRUE);
@@ -633,12 +634,13 @@ public class Settings extends SharedYouTubeSettings {
     private static final BooleanSetting DEPRECATED_DISABLE_SIGNIN_TO_TV_POPUP = new BooleanSetting("morphe_disable_signin_to_tv_popup", FALSE);
     private static final BooleanSetting DEPRECATED_HIDE_COMMENTS_EMOJI_AND_TIMESTAMP_BUTTONS = new BooleanSetting("morphe_hide_comments_emoji_and_timestamp_buttons", FALSE);
     private static final BooleanSetting DEPRECATED_HIDE_COMMENTS_PROMPTS = new BooleanSetting("morphe_hide_comments_prompts", FALSE);
+    private static final BooleanSetting DEPRECATED_HIDE_DOODLES = new BooleanSetting("morphe_hide_doodles", FALSE);
     private static final BooleanSetting DEPRECATED_HIDE_ENDSCREEN_CARDS = new BooleanSetting("morphe_hide_endscreen_cards", FALSE);
     private static final BooleanSetting DEPRECATED_HIDE_FILTER_BAR_FEED_IN_FEED = new BooleanSetting("morphe_hide_filter_bar_feed_in_feed", FALSE, true);
     private static final BooleanSetting DEPRECATED_HIDE_FILTER_BAR_FEED_IN_HISTORY = new BooleanSetting("morphe_hide_filter_bar_feed_in_history", FALSE);
     private static final BooleanSetting DEPRECATED_HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS = new BooleanSetting("morphe_hide_filter_bar_feed_in_related_videos", FALSE, true);
     private static final BooleanSetting DEPRECATED_HIDE_FILTER_BAR_FEED_IN_SEARCH = new BooleanSetting("morphe_hide_filter_bar_feed_in_search", FALSE, true);
-    private static final BooleanSetting DEPRECATED_HIDE_DOODLES = new BooleanSetting("morphe_hide_doodles", FALSE);
+    private static final BooleanSetting DEPRECATED_HIDE_PAID_PROMOTION_LABEL = new BooleanSetting("morphe_hide_paid_promotion_label", TRUE, true);
     private static final BooleanSetting DEPRECATED_OVERRIDE_YOUTUBE_MUSIC_BUTTON = new BooleanSetting("morphe_override_youtube_music_button", FALSE, true);
     private static final BooleanSetting DEPRECATED_RELOAD_VIDEO = new BooleanSetting("morphe_reload_video", FALSE);
     private static final BooleanSetting DEPRECATED_SANITIZE_COMMENTS_CATEGORY_BAR = new BooleanSetting("morphe_sanitize_comments_category_bar", FALSE);
@@ -699,12 +701,13 @@ public class Settings extends SharedYouTubeSettings {
         migrateOldSettingToNew(DEPRECATED_DISABLE_SIGNIN_TO_TV_POPUP, DISABLE_SIGN_IN_TO_TV_POPUP);
         migrateOldSettingToNew(DEPRECATED_HIDE_COMMENTS_EMOJI_AND_TIMESTAMP_BUTTONS, HIDE_COMMENTS_EMOJI_BUTTON);
         migrateOldSettingToNew(DEPRECATED_HIDE_COMMENTS_PROMPTS, HIDE_COMMENTS_CONTEXTS);
+        migrateOldSettingToNew(DEPRECATED_HIDE_DOODLES, HIDE_YOUTUBE_DOODLES);
         migrateOldSettingToNew(DEPRECATED_HIDE_ENDSCREEN_CARDS, HIDE_END_SCREEN_CARDS);
         migrateOldSettingToNew(DEPRECATED_HIDE_FILTER_BAR_FEED_IN_FEED, HIDE_FILTER_BAR_IN_FEED);
         migrateOldSettingToNew(DEPRECATED_HIDE_FILTER_BAR_FEED_IN_HISTORY, HIDE_FILTER_BAR_IN_HISTORY);
         migrateOldSettingToNew(DEPRECATED_HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS, HIDE_FILTER_BAR_IN_RELATED_VIDEOS);
         migrateOldSettingToNew(DEPRECATED_HIDE_FILTER_BAR_FEED_IN_SEARCH, HIDE_FILTER_BAR_IN_SEARCH);
-        migrateOldSettingToNew(DEPRECATED_HIDE_DOODLES, HIDE_YOUTUBE_DOODLES);
+        migrateOldSettingToNew(DEPRECATED_HIDE_PAID_PROMOTION_LABEL, HIDE_PAID_PROMOTION_LABELS);
         migrateOldSettingToNew(DEPRECATED_OVERRIDE_YOUTUBE_MUSIC_BUTTON, OVERRIDE_YOUTUBE_MUSIC_BUTTONS);
         migrateOldSettingToNew(DEPRECATED_RELOAD_VIDEO, RELOAD_VIDEO_BUTTON);
         migrateOldSettingToNew(DEPRECATED_SANITIZE_COMMENTS_CATEGORY_BAR, HIDE_COMMENTS_FILTER_BAR_OPTIONS);
