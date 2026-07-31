@@ -17,6 +17,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -42,7 +43,9 @@ import app.morphe.patches.youtube.shared.PlaybackSpeedOnItemClickParentFingerpri
 import app.morphe.patches.youtube.shared.SpeedLimiterFingerprint
 import app.morphe.patches.youtube.shared.SpeedLimiterParentFingerprint
 import app.morphe.patches.youtube.video.speed.settingsMenuVideoSpeedGroup
+import app.morphe.util.ResourceGroup
 import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.copyResources
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstLiteralInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
@@ -61,6 +64,19 @@ internal const val EXTENSION_CLASS =
 private const val EXTENSION_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/PlaybackSpeedMenuFilter;"
 
+private val customPlaybackSpeedResourcePatch = resourcePatch {
+    execute {
+        copyResources(
+            "customplaybackspeedmenu",
+            ResourceGroup(
+                "drawable",
+                "morphe_ic_link.xml",
+                "morphe_ic_link_off.xml"
+            )
+        )
+    }
+}
+
 internal val customPlaybackSpeedPatch = bytecodePatch(
     description = "Adds custom playback speed options.",
 ) {
@@ -72,6 +88,7 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
         conversionContextPatch,
         textComponentPatch,
         recyclerViewTreeHookPatch,
+        customPlaybackSpeedResourcePatch,
         resourceMappingPatch
     )
 

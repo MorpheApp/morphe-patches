@@ -41,6 +41,8 @@ import java.util.Arrays;
 import java.util.function.Function;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.ui.Dim;
@@ -63,6 +65,16 @@ public class CustomPlaybackSpeedPatch {
      * How much +/- pitch adjustment buttons change the current audio pitch.
      */
     private static final double PITCH_ADJUSTMENT_CHANGE = 0.05;
+
+    private static final int LINK_ICON = ResourceUtils.getIdentifierOrThrow(
+            ResourceType.DRAWABLE,
+            "morphe_ic_link"
+    );
+
+    private static final int LINK_OFF_ICON = ResourceUtils.getIdentifierOrThrow(
+            ResourceType.DRAWABLE,
+            "morphe_ic_link_off"
+    );
 
     /**
      * One musical semitone ratio: 2^(1/12).
@@ -379,18 +391,62 @@ public class CustomPlaybackSpeedPatch {
             // Add slider layout to main layout.
             mainLayout.addView(sliderLayout);
 
+            // ── Pitch UI elements (declared early for use in callbacks) ─────────────
+            TextView currentPitchText = new TextView(context);
+            float currentPitch = VideoInformation.getPlaybackAudioPitch();
+            currentPitchText.setText(VideoInformation.formatAudioPitchStringX(currentPitch));
+            currentPitchText.setTextColor(Utils.getAppForegroundColor());
+            currentPitchText.setTextSize(16);
+            currentPitchText.setTypeface(Typeface.DEFAULT_BOLD);
+            currentPitchText.setGravity(Gravity.CENTER);
+            LinearLayout.LayoutParams pitchTextParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            pitchTextParams.setMargins(0, Dim.dp20, 0, 0);
+            currentPitchText.setLayoutParams(pitchTextParams);
+
+            LinearLayout pitchSliderLayout = new LinearLayout(context);
+            pitchSliderLayout.setOrientation(LinearLayout.HORIZONTAL);
+            pitchSliderLayout.setGravity(Gravity.CENTER_VERTICAL);
+
+            Button pitchMinusButton = createStyledButton(context, false);
+            Button pitchPlusButton = createStyledButton(context, true);
+
+            SeekBar pitchSlider = new SeekBar(context);
+            pitchSlider.setFocusable(true);
+            pitchSlider.setFocusableInTouchMode(true);
+            pitchSlider.setMax(pitchToProgressValue(customPlaybackSpeedsMax));
+            pitchSlider.setProgress(pitchToProgressValue(currentPitch));
+            pitchSlider.getProgressDrawable().setColorFilter(
+                    new PorterDuffColorFilter(Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN));
+            pitchSlider.getThumb().setColorFilter(
+                    new PorterDuffColorFilter(Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN));
+            LinearLayout.LayoutParams pitchSliderParams = new LinearLayout.LayoutParams(
+                    0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
+            pitchSlider.setLayoutParams(pitchSliderParams);
+
+            pitchSliderLayout.addView(pitchMinusButton);
+            pitchSliderLayout.addView(pitchSlider);
+            pitchSliderLayout.addView(pitchPlusButton);
+
             Function<Float, Void> userSelectedSpeed = newSpeed -> {
                 final float roundedSpeed = roundSpeedToNearestIncrement(newSpeed);
                 if (VideoInformation.getPlaybackSpeed() == roundedSpeed) {
-                    // Nothing has changed. New speed rounds to the current speed.
                     return null;
                 }
 
-                currentSpeedText.setText(VideoInformation.formatSpeedStringX(roundedSpeed)); // Update display.
-                speedSlider.setProgress(speedToProgressValue(roundedSpeed)); // Update slider.
+                currentSpeedText.setText(VideoInformation.formatSpeedStringX(roundedSpeed));
+                speedSlider.setProgress(speedToProgressValue(roundedSpeed));
 
                 RememberPlaybackSpeedPatch.userSelectedPlaybackSpeed(roundedSpeed);
                 VideoInformation.changePlaybackSpeed(roundedSpeed);
+
+                if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
+                    float syncedPitch = VideoInformation.getPlaybackAudioPitch();
+                    currentPitchText.setText(VideoInformation.formatAudioPitchStringX(syncedPitch));
+                    pitchSlider.setProgress(pitchToProgressValue(syncedPitch));
+                    RememberPlaybackSpeedPatch.userSelectedPlaybackAudioPitch(syncedPitch);
+                }
+
                 return null;
             };
 
@@ -490,64 +546,89 @@ public class CustomPlaybackSpeedPatch {
             // Add in-rows speed buttons layout to main layout.
             mainLayout.addView(gridLayout);
 
+            // ── Link toggle button ───────────────────────────────────────────────────
+            LinearLayout linkLayout = new LinearLayout(context);
+            linkLayout.setOrientation(LinearLayout.HORIZONTAL);
+            linkLayout.setGravity(Gravity.CENTER);
+
+            Button linkButton = new Button(context, null, 0);
+            boolean isTimeStretching = Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get();
+            linkButton.setForeground(context.getDrawable(isTimeStretching ? LINK_OFF_ICON : LINK_ICON));
+            ShapeDrawable linkBackground = new ShapeDrawable(new RoundRectShape(
+                    Dim.roundedCorners(20), null, null));
+            linkBackground.getPaint().setColor(getAdjustedBackgroundColor(false));
+            linkButton.setBackground(linkBackground);
+            final int linkSize = Utils.appIsUsingBoldIcons() ? Dim.dp40 : Dim.dp36;
+            LinearLayout.LayoutParams linkParams = new LinearLayout.LayoutParams(linkSize, linkSize);
+            linkParams.setMargins(Dim.dp8, 0, Dim.dp8, 0);
+            linkButton.setLayoutParams(linkParams);
+            linkButton.setOnClickListener(v -> {
+                boolean newValue = !Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get();
+                Settings.PLAYBACK_AUDIO_TIME_STRETCHING.save(newValue);
+                linkButton.setForeground(context.getDrawable(newValue ? LINK_OFF_ICON : LINK_ICON));
+
+                // When switching from unlinked to linked, sync audio pitch to the video speed.
+                if (!newValue && VideoInformation.getPlaybackAudioPitch() != VideoInformation.getPlaybackSpeed()) {
+                    float syncedPitch = VideoInformation.getPlaybackSpeed();
+                    VideoInformation.setAudioPitch(syncedPitch);
+                    currentPitchText.setText(VideoInformation.formatAudioPitchStringX(syncedPitch));
+                    pitchSlider.setProgress(pitchToProgressValue(syncedPitch));
+                    RememberPlaybackSpeedPatch.userSelectedPlaybackAudioPitch(syncedPitch);
+                }
+            });
+            linkLayout.addView(linkButton);
+            mainLayout.addView(linkLayout);
+
             // ── Row 4: Current playback audio pitch display ──────────────────────────
-            TextView currentPitchText = new TextView(context);
-            float currentPitch = VideoInformation.getPlaybackAudioPitch();
-            currentPitchText.setText(VideoInformation.formatSpeedStringX(currentPitch));
-            currentPitchText.setTextColor(Utils.getAppForegroundColor());
-            currentPitchText.setTextSize(16);
-            currentPitchText.setTypeface(Typeface.DEFAULT_BOLD);
-            currentPitchText.setGravity(Gravity.CENTER);
-            LinearLayout.LayoutParams pitchTextParams = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            pitchTextParams.setMargins(0, Dim.dp20, 0, 0);
-            currentPitchText.setLayoutParams(pitchTextParams);
             mainLayout.addView(currentPitchText);
 
             // ── Row 5: Pitch slider with +/- buttons ─────────────────────────────────
-            LinearLayout pitchSliderLayout = new LinearLayout(context);
-            pitchSliderLayout.setOrientation(LinearLayout.HORIZONTAL);
-            pitchSliderLayout.setGravity(Gravity.CENTER_VERTICAL);
-
-            Button pitchMinusButton = createStyledButton(context, false);
-            Button pitchPlusButton = createStyledButton(context, true);
-
-            SeekBar pitchSlider = new SeekBar(context);
-            pitchSlider.setFocusable(true);
-            pitchSlider.setFocusableInTouchMode(true);
-            pitchSlider.setMax(pitchToProgressValue(customPlaybackSpeedsMax));
-            pitchSlider.setProgress(pitchToProgressValue(currentPitch));
-            pitchSlider.getProgressDrawable().setColorFilter(
-                    new PorterDuffColorFilter(Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN)); // Theme progress bar.
-            pitchSlider.getThumb().setColorFilter(
-                    new PorterDuffColorFilter(Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN)); // Theme slider thumb.
-            LinearLayout.LayoutParams pitchSliderParams = new LinearLayout.LayoutParams(
-                    0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
-            pitchSlider.setLayoutParams(pitchSliderParams);
-
-            pitchSliderLayout.addView(pitchMinusButton);
-            pitchSliderLayout.addView(pitchSlider);
-            pitchSliderLayout.addView(pitchPlusButton);
             mainLayout.addView(pitchSliderLayout);
 
             // Callback when user picks a new audio pitch.
             Function<Float, Void> userSelectedPitch = newPitch -> {
-                // final float clampedPitch = Utils.clamp(newPitch, customPlaybackSpeedsMin, customPlaybackSpeedsMax);
-                // final float roundedPitch = (float) (Math.round(newPitch / PITCH_ADJUSTMENT_CHANGE) * PITCH_ADJUSTMENT_CHANGE);
                 final float roundedPitch = roundSpeedToNearestIncrement(newPitch);
                 if (VideoInformation.getPlaybackAudioPitch() == roundedPitch) {
                     return null;
                 }
 
-                currentPitchText.setText(VideoInformation.formatSpeedStringX(roundedPitch));
+                currentPitchText.setText(VideoInformation.formatAudioPitchStringX(roundedPitch));
                 pitchSlider.setProgress(pitchToProgressValue(roundedPitch));
                 
                 RememberPlaybackSpeedPatch.userSelectedPlaybackAudioPitch(roundedPitch);
-                // VideoInformation.overridePlaybackAudioPitch(roundedPitch);
 
-                // Directly notifying to VideoInformation
                 VideoInformation.setAudioPitch(roundedPitch);
-                
+
+                if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
+                    float syncedSpeed = VideoInformation.getPlaybackSpeed();
+                    currentSpeedText.setText(VideoInformation.formatSpeedStringX(syncedSpeed));
+                    speedSlider.setProgress(speedToProgressValue(syncedSpeed));
+                    RememberPlaybackSpeedPatch.userSelectedPlaybackSpeed(syncedSpeed);
+                }
+
+                return null;
+            };
+
+            // Callback for pitch preset buttons: no 0.05 rounding, no clamping to custom speeds.
+            Function<Float, Void> userSelectedPitchRaw = newPitch -> {
+                final float clampedPitch = Utils.clamp(newPitch, customPlaybackSpeedsMin, VideoInformation.PLAYBACK_AUDIO_PITCH_MAXIMUM);
+                if (VideoInformation.getPlaybackAudioPitch() == clampedPitch) {
+                    return null;
+                }
+
+                currentPitchText.setText(VideoInformation.formatAudioPitchStringX(clampedPitch));
+                pitchSlider.setProgress(pitchToProgressValue(clampedPitch));
+
+                RememberPlaybackSpeedPatch.userSelectedPlaybackAudioPitch(clampedPitch);
+
+                VideoInformation.setAudioPitch(clampedPitch);
+
+                if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
+                    float syncedSpeed = VideoInformation.getPlaybackSpeed();
+                    currentSpeedText.setText(VideoInformation.formatSpeedStringX(syncedSpeed));
+                    speedSlider.setProgress(speedToProgressValue(syncedSpeed));
+                }
+
                 return null;
             };
 
@@ -572,15 +653,8 @@ public class CustomPlaybackSpeedPatch {
                     (float) (VideoInformation.getPlaybackAudioPitch() + PITCH_ADJUSTMENT_CHANGE)));
 
             // ── Row 6: Five pitch preset buttons ─────────────────────────────────────
-            // Buttons: ×0.5 | −1st | ×1 (reset) | +1st | ×2
-            final String[] pitchButtonLabels = {"×0.5", "−1st", "×1", "+1st", "×2"};
-            final float[] pitchButtonValues = {
-                    0.5f,
-                    1.0f / ONE_SEMITONE,   // −1 semitone
-                    1.0f,                  // reset to natural pitch
-                    ONE_SEMITONE,          // +1 semitone
-                    2.0f
-            };
+            // Buttons: /2 (half) | −1st (down one semitone) | 1x (reset) | +1st (up one semitone) | ×2 (double)
+            final String[] pitchButtonLabels = {"/2", "−1st", "1x", "+1st", "×2"};
 
             GridLayout pitchPresetGrid = new GridLayout(context);
             pitchPresetGrid.setColumnCount(5);
@@ -592,7 +666,7 @@ public class CustomPlaybackSpeedPatch {
             pitchPresetGrid.setLayoutParams(pitchGridParams);
 
             for (int i = 0; i < pitchButtonLabels.length; i++) {
-                final float pitchValue = pitchButtonValues[i];
+                final int index = i;
                 final String pitchLabel = pitchButtonLabels[i];
 
                 FrameLayout pitchButtonContainer = new FrameLayout(context);
@@ -620,7 +694,18 @@ public class CustomPlaybackSpeedPatch {
                         FrameLayout.LayoutParams.MATCH_PARENT, Dim.dp32, Gravity.CENTER);
                 pitchPresetButton.setLayoutParams(pitchButtonParams);
 
-                pitchPresetButton.setOnClickListener(v -> userSelectedPitch.apply(pitchValue));
+                pitchPresetButton.setOnClickListener(v -> {
+                    float pitch = VideoInformation.getPlaybackAudioPitch();
+                    float newValue;
+                    switch (index) {
+                        case 0: newValue = pitch * 0.5f; break;
+                        case 1: newValue = pitch / ONE_SEMITONE; break;
+                        case 2: newValue = 1.0f; break;
+                        case 3: newValue = pitch * ONE_SEMITONE; break;
+                        default: newValue = pitch * 2.0f; break;
+                    }
+                    userSelectedPitchRaw.apply(newValue);
+                });
                 pitchButtonContainer.addView(pitchPresetButton);
                 pitchPresetGrid.addView(pitchButtonContainer);
             }

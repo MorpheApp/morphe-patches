@@ -2,6 +2,8 @@ package app.morphe.extension.youtube.patches;
 
 import android.icu.text.NumberFormat;
 
+import java.util.Locale;
+
 import androidx.annotation.GuardedBy;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -401,6 +403,20 @@ public final class VideoInformation {
                     ? speedFormatted + 'x'
                     : speedFormatted;
         }
+    }
+
+    /**
+     * @param pitch The playback audio pitch value to format.
+     * @return pitch formatted as "X.XXx (Nst)" with signed one-decimal semitone offset.
+     */
+    public static String formatAudioPitchStringX(float pitch) {
+        float semitones = 12.0f * (float) (Math.log(pitch) / Math.log(2.0));
+        String formatted = String.format(Locale.US, "%.1f", semitones);
+        if (formatted.equals("-0.0")) {
+            formatted = "0.0";
+        }
+        String sign = formatted.startsWith("-") ? "" : "+";
+        return String.format(Locale.US, "%s (%sst)", formatSpeedStringX(pitch), sign + formatted);
     }
 
     /**
