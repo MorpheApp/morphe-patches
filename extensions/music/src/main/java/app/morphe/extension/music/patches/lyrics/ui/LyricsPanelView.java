@@ -7,6 +7,8 @@
 
 package app.morphe.extension.music.patches.lyrics.ui;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -91,8 +93,9 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     /** Background the app uses for the pill buttons under its own lyrics. */
     private static final String APP_BUTTON_BACKGROUND_COLOR = "ytm_color_white_at_20pct";
 
-    /** Icon the app puts on its own translate button. */
-    private static final String APP_TRANSLATE_ICON = "yt_outline_translate_vd_theme_24";
+    /** Icons of the buttons the app draws under its own lyrics. */
+    private static final String APP_TRANSLATE_ICON = "yt_outline_experimental_translate_vd_theme_24";
+    private static final String APP_SHARE_ICON = "yt_outline_experimental_share_vd_theme_24";
 
     /** Translation size relative to the lyrics line it belongs to. */
     private static final float TRANSLATION_RELATIVE_SIZE = 0.7f;
@@ -104,6 +107,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     private final TextView footerView;
     private final TextView translateView;
     private final LinearLayout footerContainer;
+    private final LinearLayout buttonRow;
     private final ProgressBar progressBar;
 
     /** One translated line per lyrics line, or {@code null} when showing the original only. */
@@ -157,9 +161,19 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         applyFooterStyle(footerView);
         footerView.setVisibility(GONE);
 
+        TextView copyView = new TextView(context);
+        applyButtonStyle(copyView, APP_SHARE_ICON);
+        copyView.setText(str("morphe_music_lyrics_copy"));
+        copyView.setOnClickListener(view -> {
+            try {
+                onCopyClicked();
+            } catch (Exception ex) {
+                Logger.printException(() -> "Copy failure", ex);
+            }
+        });
+
         translateView = new TextView(context);
-        applyTranslateButtonStyle(translateView);
-        translateView.setVisibility(GONE);
+        applyButtonStyle(translateView, APP_TRANSLATE_ICON);
         translateView.setOnClickListener(view -> {
             try {
                 onTranslateClicked();
@@ -167,6 +181,21 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 Logger.printException(() -> "Translate failure", ex);
             }
         });
+
+        // Same order as the buttons the app draws under its own lyrics.
+        buttonRow = new LinearLayout(context);
+        buttonRow.setOrientation(LinearLayout.HORIZONTAL);
+        buttonRow.setGravity(Gravity.CENTER);
+        buttonRow.setVisibility(GONE);
+        buttonRow.addView(copyView, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
+
+        LinearLayout.LayoutParams translateParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        translateParams.setMarginStart(dp(12));
+        buttonRow.addView(translateView, translateParams);
 
         // The source line and the button live in one container, so that lyrics lines
         // can be inserted before it without depending on how many views it holds.
@@ -177,12 +206,11 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
 
-        LinearLayout.LayoutParams buttonParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
+        LinearLayout.LayoutParams buttonRowParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
-        buttonParams.gravity = Gravity.CENTER_HORIZONTAL;
-        buttonParams.topMargin = dp(16);
-        footerContainer.addView(translateView, buttonParams);
+        buttonRowParams.topMargin = dp(16);
+        footerContainer.addView(buttonRow, buttonRowParams);
 
         linesContainer.addView(footerContainer, new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
@@ -356,7 +384,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         footerView.setText(sourceText(newLyrics.providerName()));
         footerContainer.setVisibility(VISIBLE);
         footerView.setVisibility(VISIBLE);
-        translateView.setVisibility(VISIBLE);
+        buttonRow.setVisibility(VISIBLE);
         updateTranslateLabel();
 
         scrollView.scrollTo(0, 0);
@@ -420,6 +448,38 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             }
             showLyrics(current);
         });
+    }
+
+    /**
+     * Copies the lyrics to the clipboard, with the translation under each line when
+     * it is shown, so what is copied matches what is on screen.
+     */
+    private void onCopyClicked() {
+        Lyrics current = lyrics;
+        if (current == null) {
+            return;
+        }
+
+        List<String> translated = translatedLines;
+        StringBuilder text = new StringBuilder();
+        for (int i = 0; i < current.lines().size(); i++) {
+            if (i != 0) {
+                text.append('\n');
+            }
+            text.append(current.lines().get(i).text());
+
+            if (translated != null && i < translated.size() && !translated.get(i).isEmpty()) {
+                text.append('\n').append(translated.get(i));
+            }
+        }
+
+        ClipboardManager clipboard =
+                (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+        if (clipboard == null) {
+            return;
+        }
+        clipboard.setPrimaryClip(ClipData.newPlainText("lyrics", text.toString()));
+        Utils.showToastShort(str("morphe_music_lyrics_copied"));
     }
 
     private void updateTranslateLabel() {
@@ -507,11 +567,11 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
      * Styles the button as a pill, the shape the app uses for the buttons under its
      * own lyrics, with the background taken from the app palette so it follows the theme.
      */
-    private void applyTranslateButtonStyle(@NonNull TextView button) {
+    private void applyButtonStyle(@NonNull TextView button, @NonNull String iconName) {
         button.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
         button.setTextColor(lineTextColor());
         button.setGravity(Gravity.CENTER);
-        button.setPadding(dp(24), dp(10), dp(24), dp(10));
+        button.setPadding(dp(20), dp(10), dp(20), dp(10));
 
         GradientDrawable background = new GradientDrawable();
         background.setShape(GradientDrawable.RECTANGLE);
@@ -519,9 +579,9 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         background.setColor(ResourceUtils.getColor(APP_BUTTON_BACKGROUND_COLOR, 0x33FFFFFF));
         button.setBackground(background);
 
-        Drawable icon = ResourceUtils.getDrawable(APP_TRANSLATE_ICON);
+        Drawable icon = ResourceUtils.getDrawable(iconName);
         if (icon == null) {
-            Logger.printDebug(() -> "App is missing " + APP_TRANSLATE_ICON);
+            Logger.printDebug(() -> "Missing icon: " + iconName);
             return;
         }
 

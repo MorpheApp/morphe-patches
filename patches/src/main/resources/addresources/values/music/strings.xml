@@ -356,6 +356,8 @@ To ensure scrobbling is synced during background playback, ensure that YouTube M
     <string name="morphe_music_lyrics_translate_hide">Show original</string>
     <string name="morphe_music_lyrics_translating">Translating…</string>
     <string name="morphe_music_lyrics_translate_failed">Could not translate the lyrics</string>
+    <string name="morphe_music_lyrics_copy">Copy</string>
+    <string name="morphe_music_lyrics_copied">Copied to clipboard</string>
     <string name="morphe_music_lyrics_about_title">About third-party lyrics</string>
     <string name="morphe_music_lyrics_about_summary">"Lyrics are looked up by track title and artist, so a track with unusual metadata may find nothing, or find the wrong version
 
