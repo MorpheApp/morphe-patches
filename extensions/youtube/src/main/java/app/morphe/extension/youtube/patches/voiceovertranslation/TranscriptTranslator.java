@@ -40,6 +40,7 @@ import java.util.regex.Pattern;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.shared.translation.TextTranslator;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
@@ -50,12 +51,9 @@ public final class TranscriptTranslator {
     private static final int CONNECT_TIMEOUT_MS = 10_000;
     private static final int READ_TIMEOUT_MS = 15_000;
 
-    private static final String GOOGLE_TRANSLATE_URL =
-            "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&dt=t&tl=";
-
     // Batches are built by character budget rather than segment count, so request
     // sizes stay uniform regardless of how long the merged sentences are.
-    private static final int GOOGLE_MAX_BATCH_CHARS = 4_000;
+    private static final int GOOGLE_MAX_BATCH_CHARS = TextTranslator.MAXIMUM_BATCH_CHARACTERS;
     // Smaller batches for OpenRouter so the first batch completes faster and TTS starts sooner.
     private static final int OPENROUTER_MAX_BATCH_CHARS = 1_500;
     // Character budget for the first batch dispatched after a start or seek.
@@ -610,49 +608,21 @@ public final class TranscriptTranslator {
     private static List<String> translateBatchGoogle(String videoId,
                                                      List<TranscriptSegment> segments,
                                                      String targetLang) throws Exception {
-        Utils.verifyOffMainThread();
-        final long start = System.currentTimeMillis();
         Logger.printDebug(() -> "Google translation starting: " + videoId + " lang: " + targetLang);
 
-        StringBuilder joined = new StringBuilder(100 * segments.size());
-        for (TranscriptSegment seg : segments) {
-            if (joined.length() > 0) joined.append('\n');
-            joined.append(seg.text);
+        List<String> lines = new ArrayList<>(segments.size());
+        for (TranscriptSegment segment : segments) {
+            lines.add(segment.text);
         }
 
-        HttpURLConnection conn = Requester.openConnection(GOOGLE_TRANSLATE_URL + targetLang);
-        conn.setRequestMethod("POST");
-        conn.setConnectTimeout(CONNECT_TIMEOUT_MS);
-        conn.setReadTimeout(READ_TIMEOUT_MS);
-        conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-        conn.setRequestProperty("User-Agent", "Mozilla/5.0");
-        conn.setDoOutput(true);
-
-        //noinspection CharsetObjectCanBeUsed
-        byte[] bodyBytes = ("q=" + URLEncoder.encode(joined.toString(), StandardCharsets.UTF_8.name()))
-                .getBytes(StandardCharsets.UTF_8);
-        conn.setFixedLengthStreamingMode(bodyBytes.length);
-        try (OutputStream os = conn.getOutputStream()) {
-            os.write(bodyBytes);
+        try {
+            return TextTranslator.translate(lines, targetLang);
+        } catch (TextTranslator.TranslationHttpException ex) {
+            // Reported here rather than in the shared translator, because the toast
+            // belongs to this patch.
+            VoiceOverTranslationPatch.notifyHttpError(ex.statusCode);
+            throw ex;
         }
-
-        final int code = conn.getResponseCode();
-        if (code != 200) {
-            VoiceOverTranslationPatch.notifyHttpError(code);
-            throw new Exception("Google HTTP status: " + code + " language: " + targetLang
-                    + " response: " + Requester.parseString(conn));
-        }
-
-        // Response: [[["translated","original",...],...],null,"src_lang",...]
-        // Google splits into sentences; concatenating restores the newline-delimited lines we sent.
-        JSONArray sentences = new JSONArray(Requester.parseString(conn)).getJSONArray(0);
-        StringBuilder translatedJoined = new StringBuilder();
-        for (int i = 0, length = sentences.length(); i < length; i++) {
-            translatedJoined.append(sentences.getJSONArray(i).getString(0));
-        }
-        Logger.printDebug(() -> "Google translation complete: " + targetLang
-                + " fetchTime: " + (System.currentTimeMillis() - start) + "ms");
-        return Arrays.asList(translatedJoined.toString().split("\n", -1));
     }
 
     // MyMemory limits q to 500 bytes per request.
