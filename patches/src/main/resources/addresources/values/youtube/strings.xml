@@ -1205,6 +1205,11 @@ Tap here to open DeArrow.ajay.app"</string>
     <string name="morphe_remember_playback_speed_toast">Changed default playback speed to: %s</string>
     <string name="morphe_disable_playback_speed_music_title">Use normal speed for music</string>
     <string name="morphe_disable_playback_speed_music_summary">Always play music videos at 1.0x speed</string>
+    <string name="morphe_playback_audio_pitch_default_title">Default playback audio pitch</string>
+    <string name="morphe_remember_playback_audio_pitch_toast">Changed default audio pitch to: %s</string>
+    <string name="morphe_playback_audio_time_stretching_title">Audio time stretching</string>
+    <string name="morphe_playback_audio_time_stretching_summary_on">Audio time stretching is enabled</string>
+    <string name="morphe_playback_audio_time_stretching_summary_off">Audio time stretching is disabled</string>
 
     <!-- video.codecs.disableVideoCodecsPatch -->
     <string name="morphe_disable_hdr_video_title">Disable HDR video</string>

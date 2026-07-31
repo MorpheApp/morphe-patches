@@ -60,6 +60,16 @@ public class CustomPlaybackSpeedPatch {
     private static final double SPEED_ADJUSTMENT_CHANGE = 0.05;
 
     /**
+     * How much +/- pitch adjustment buttons change the current audio pitch.
+     */
+    private static final double PITCH_ADJUSTMENT_CHANGE = 0.05;
+
+    /**
+     * One musical semitone ratio: 2^(1/12).
+     */
+    private static final float ONE_SEMITONE = (float) Math.pow(2.0, 1.0 / 12.0);
+
+    /**
      * Scale used to convert user speed to {@link android.widget.ProgressBar#setProgress(int)}.
      */
     private static final float PROGRESS_BAR_VALUE_SCALE = 100;
@@ -68,6 +78,12 @@ public class CustomPlaybackSpeedPatch {
      * Disable tap and hold speed, true when TAP_AND_HOLD_SPEED is 0.
      */
     private static final boolean DISABLE_TAP_AND_HOLD_SPEED;
+
+    /**
+     * Enables audio time stretching, the default YT behavior that keeps pitch unchanged at any speed.
+     * Disabling this will make audio pitch change with speed.
+     */
+    private static final boolean PLAYBACK_AUDIO_TIME_STRETCHING;
 
     /**
      * Tap and hold speed.
@@ -107,6 +123,8 @@ public class CustomPlaybackSpeedPatch {
             showInvalidCustomSpeedToast();
             TAP_AND_HOLD_SPEED = Settings.SPEED_TAP_AND_HOLD.resetToDefault();
         }
+
+        PLAYBACK_AUDIO_TIME_STRETCHING = Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get();
 
         customPlaybackSpeeds = loadCustomSpeeds();
         customPlaybackSpeedsMin = customPlaybackSpeeds[0];
@@ -472,6 +490,144 @@ public class CustomPlaybackSpeedPatch {
             // Add in-rows speed buttons layout to main layout.
             mainLayout.addView(gridLayout);
 
+            // ── Row 4: Current playback audio pitch display ──────────────────────────
+            TextView currentPitchText = new TextView(context);
+            float currentPitch = VideoInformation.getPlaybackAudioPitch();
+            currentPitchText.setText(VideoInformation.formatSpeedStringX(currentPitch));
+            currentPitchText.setTextColor(Utils.getAppForegroundColor());
+            currentPitchText.setTextSize(16);
+            currentPitchText.setTypeface(Typeface.DEFAULT_BOLD);
+            currentPitchText.setGravity(Gravity.CENTER);
+            LinearLayout.LayoutParams pitchTextParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            pitchTextParams.setMargins(0, Dim.dp20, 0, 0);
+            currentPitchText.setLayoutParams(pitchTextParams);
+            mainLayout.addView(currentPitchText);
+
+            // ── Row 5: Pitch slider with +/- buttons ─────────────────────────────────
+            LinearLayout pitchSliderLayout = new LinearLayout(context);
+            pitchSliderLayout.setOrientation(LinearLayout.HORIZONTAL);
+            pitchSliderLayout.setGravity(Gravity.CENTER_VERTICAL);
+
+            Button pitchMinusButton = createStyledButton(context, false);
+            Button pitchPlusButton = createStyledButton(context, true);
+
+            SeekBar pitchSlider = new SeekBar(context);
+            pitchSlider.setFocusable(true);
+            pitchSlider.setFocusableInTouchMode(true);
+            pitchSlider.setMax(pitchToProgressValue(customPlaybackSpeedsMax));
+            pitchSlider.setProgress(pitchToProgressValue(currentPitch));
+            pitchSlider.getProgressDrawable().setColorFilter(
+                    new PorterDuffColorFilter(Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN)); // Theme progress bar.
+            pitchSlider.getThumb().setColorFilter(
+                    new PorterDuffColorFilter(Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN)); // Theme slider thumb.
+            LinearLayout.LayoutParams pitchSliderParams = new LinearLayout.LayoutParams(
+                    0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
+            pitchSlider.setLayoutParams(pitchSliderParams);
+
+            pitchSliderLayout.addView(pitchMinusButton);
+            pitchSliderLayout.addView(pitchSlider);
+            pitchSliderLayout.addView(pitchPlusButton);
+            mainLayout.addView(pitchSliderLayout);
+
+            // Callback when user picks a new audio pitch.
+            Function<Float, Void> userSelectedPitch = newPitch -> {
+                // final float clampedPitch = Utils.clamp(newPitch, customPlaybackSpeedsMin, customPlaybackSpeedsMax);
+                // final float roundedPitch = (float) (Math.round(newPitch / PITCH_ADJUSTMENT_CHANGE) * PITCH_ADJUSTMENT_CHANGE);
+                final float roundedPitch = roundSpeedToNearestIncrement(newPitch);
+                if (VideoInformation.getPlaybackAudioPitch() == roundedPitch) {
+                    return null;
+                }
+
+                currentPitchText.setText(VideoInformation.formatSpeedStringX(roundedPitch));
+                pitchSlider.setProgress(pitchToProgressValue(roundedPitch));
+                
+                RememberPlaybackSpeedPatch.userSelectedPlaybackAudioPitch(roundedPitch);
+                // VideoInformation.overridePlaybackAudioPitch(roundedPitch);
+
+                // Directly notifying to VideoInformation
+                VideoInformation.setAudioPitch(roundedPitch);
+                
+                return null;
+            };
+
+            pitchSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    if (fromUser) {
+                        userSelectedPitch.apply(customPlaybackSpeedsMin + (progress / PROGRESS_BAR_VALUE_SCALE));
+                    }
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {}
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {}
+            });
+
+            pitchMinusButton.setOnClickListener(v -> userSelectedPitch.apply(
+                    (float) (VideoInformation.getPlaybackAudioPitch() - PITCH_ADJUSTMENT_CHANGE)));
+            pitchPlusButton.setOnClickListener(v -> userSelectedPitch.apply(
+                    (float) (VideoInformation.getPlaybackAudioPitch() + PITCH_ADJUSTMENT_CHANGE)));
+
+            // ── Row 6: Five pitch preset buttons ─────────────────────────────────────
+            // Buttons: ×0.5 | −1st | ×1 (reset) | +1st | ×2
+            final String[] pitchButtonLabels = {"×0.5", "−1st", "×1", "+1st", "×2"};
+            final float[] pitchButtonValues = {
+                    0.5f,
+                    1.0f / ONE_SEMITONE,   // −1 semitone
+                    1.0f,                  // reset to natural pitch
+                    ONE_SEMITONE,          // +1 semitone
+                    2.0f
+            };
+
+            GridLayout pitchPresetGrid = new GridLayout(context);
+            pitchPresetGrid.setColumnCount(5);
+            pitchPresetGrid.setAlignmentMode(GridLayout.ALIGN_BOUNDS);
+            pitchPresetGrid.setRowCount(1);
+            LinearLayout.LayoutParams pitchGridParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            pitchGridParams.setMargins(Dim.dp4, Dim.dp12, Dim.dp4, Dim.dp12);
+            pitchPresetGrid.setLayoutParams(pitchGridParams);
+
+            for (int i = 0; i < pitchButtonLabels.length; i++) {
+                final float pitchValue = pitchButtonValues[i];
+                final String pitchLabel = pitchButtonLabels[i];
+
+                FrameLayout pitchButtonContainer = new FrameLayout(context);
+                GridLayout.LayoutParams pitchContainerParams = new GridLayout.LayoutParams();
+                pitchContainerParams.width = 0;
+                pitchContainerParams.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1, 1f);
+                pitchContainerParams.setMargins(Dim.dp4, 0, Dim.dp4, 0);
+                pitchContainerParams.height = Dim.dp(60);
+                pitchButtonContainer.setLayoutParams(pitchContainerParams);
+
+                Button pitchPresetButton = new Button(context, null, 0);
+                pitchPresetButton.setText(pitchLabel);
+                pitchPresetButton.setTextColor(Utils.getAppForegroundColor());
+                pitchPresetButton.setTextSize(12);
+                pitchPresetButton.setAllCaps(false);
+                pitchPresetButton.setGravity(Gravity.CENTER);
+
+                ShapeDrawable pitchButtonBackground = new ShapeDrawable(new RoundRectShape(
+                        Dim.roundedCorners(20), null, null));
+                pitchButtonBackground.getPaint().setColor(getAdjustedBackgroundColor(false));
+                pitchPresetButton.setBackground(pitchButtonBackground);
+                pitchPresetButton.setPadding(Dim.dp4, Dim.dp4, Dim.dp4, Dim.dp4);
+
+                FrameLayout.LayoutParams pitchButtonParams = new FrameLayout.LayoutParams(
+                        FrameLayout.LayoutParams.MATCH_PARENT, Dim.dp32, Gravity.CENTER);
+                pitchPresetButton.setLayoutParams(pitchButtonParams);
+
+                pitchPresetButton.setOnClickListener(v -> userSelectedPitch.apply(pitchValue));
+                pitchButtonContainer.addView(pitchPresetButton);
+                pitchPresetGrid.addView(pitchButtonContainer);
+            }
+
+            mainLayout.addView(pitchPresetGrid);
+
+
             // Create dialog.
             SheetBottomDialog.SlideDialog dialog =
                     SheetBottomDialog.createSlideDialog(context, mainLayout, LegacyPlayerControlButton.fadeInDuration);
@@ -510,6 +666,14 @@ public class CustomPlaybackSpeedPatch {
      */
     private static int speedToProgressValue(float speed) {
         return (int) ((speed - customPlaybackSpeedsMin) * PROGRESS_BAR_VALUE_SCALE);
+    }
+
+    /**
+     * @return audio pitch converted to a value for {@link SeekBar#setProgress(int)}.
+     * The pitch slider spans {@link #customPlaybackSpeedsMin} to {@link #customPlaybackSpeedsMax}.
+     */
+    private static int pitchToProgressValue(float pitch) {
+        return (int) ((Utils.clamp(pitch, customPlaybackSpeedsMin, customPlaybackSpeedsMax) - customPlaybackSpeedsMin) * PROGRESS_BAR_VALUE_SCALE);
     }
 
     /**

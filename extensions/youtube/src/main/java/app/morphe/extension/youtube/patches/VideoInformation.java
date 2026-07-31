@@ -19,6 +19,8 @@ import app.morphe.extension.youtube.patches.voiceovertranslation.VoiceOverTransl
 import app.morphe.extension.youtube.shared.Event;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
 import app.morphe.extension.youtube.shared.VideoState;
+import app.morphe.extension.youtube.patches.playback.speed.RememberPlaybackSpeedPatch;
+import app.morphe.extension.youtube.settings.Settings;
 
 /**
  * Hooking class for the current playing video.
@@ -84,6 +86,11 @@ public final class VideoInformation {
     public static final float PLAYBACK_SPEED_MAXIMUM = 8;
 
     private static final float DEFAULT_YOUTUBE_PLAYBACK_AUDIO_PITCH = 1.0f;
+    
+    /**
+     * Maximum playback audio pitch, inclusive.
+     */
+    public static final float PLAYBACK_AUDIO_PITCH_MAXIMUM = 8;
 
     /**
      * Prefix present in all Short player parameters signature.
@@ -193,9 +200,12 @@ public final class VideoInformation {
             channelName = "";
             String videoTitle = "";
             boolean isLive = false;
-            playbackSpeed = DEFAULT_PLAYBACK_SPEED;
+            // playbackSpeed = DEFAULT_PLAYBACK_SPEED; // Captured at video start, interferes otherwise.
             playbackSpeedFormattedString = "";
-            playbackAudioPitch = DEFAULT_YOUTUBE_PLAYBACK_AUDIO_PITCH;
+            float audioPitchOverride = RememberPlaybackSpeedPatch.getPlaybackAudioPitchOverride();
+            if (audioPitchOverride > 0.0f) {
+                playbackAudioPitch = audioPitchOverride;
+            }
             playbackAudioPitchFormattedString = "";
             desiredVideoResolution = AUTOMATIC_VIDEO_QUALITY_VALUE;
             currentQualities = null;
@@ -314,6 +324,10 @@ public final class VideoInformation {
         if (playbackSpeed != currentVideoSpeed) {
             Logger.printDebug(() -> "Video speed changed: " + currentVideoSpeed);
             playbackSpeed = currentVideoSpeed;
+            if(!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get() && playbackAudioPitch != currentVideoSpeed) {
+                Logger.printDebug(() -> "Audio pitch synced: " + currentVideoSpeed);
+                playbackAudioPitch = currentVideoSpeed;
+            }
 
             // An exception occurs when the playback speed dialog is opened by an overlay button while 'Restore old playback speed menu' is off.
             // Update the formatted string value to avoid the exception.
@@ -322,13 +336,20 @@ public final class VideoInformation {
     }
 
     /**
-     * The only method to be called from CustomPlaybackInterface to set audio pitch.
      * Not injected.
+     * Only CustomPlaybackInterface sets audio pitch.
      */
-    public static void audioPitchChanged(float currentAudioPitch) {
+    public static void setAudioPitch(float currentAudioPitch) {
         if (playbackAudioPitch != currentAudioPitch) {
-            Logger.printDebug(() -> "Audio pitch changed: " + currentAudioPitch);
+            Logger.printDebug(() -> "Audio pitch set to: " + currentAudioPitch);
             playbackAudioPitch = currentAudioPitch;
+            if(!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get() && playbackSpeed != currentAudioPitch) {
+                Logger.printDebug(() -> "Video speed synced: " + currentAudioPitch);
+                playbackSpeed = currentAudioPitch;
+            }
+            
+            // Attempt to set playback speed, new pitch will be obtained and set.
+            changePlaybackSpeed(playbackSpeed);
 
             playbackAudioPitchFormattedString = formatSpeedStringX(currentAudioPitch);
         }
