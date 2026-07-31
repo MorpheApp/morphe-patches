@@ -19,6 +19,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
 import android.widget.FrameLayout;
@@ -58,9 +59,11 @@ public class SeekbarThumbnailPreviewPatch {
     @SuppressLint("StaticFieldLeak")
     private static SeekbarViews seekbarViews;
     private static Bitmap fineScrubbingPreviewBitmap;
+    private static boolean isFineScrubbingStarted;
     private static Rect seekbarRectangle;
     private static Bitmap lastAppliedBitmap;
     private static int lastX = -1;
+    private static float touchEventInitialX;
     private static float touchEventInitialY = -1;
 
     /**
@@ -229,8 +232,10 @@ public class SeekbarThumbnailPreviewPatch {
     /**
      * Injection point.
      */
-    public static void updateThumbnailPreview(View container, MotionEvent containerMotionEvent,
-                                              Point trackballPos) {
+    public static void updateThumbnailPreview(
+            View container,
+            MotionEvent containerMotionEvent,
+            Point trackballPos) {
         try {
             if (!Settings.THUMBNAIL_PREVIEW.get() ||
                     !PlayerType.getCurrent().isMaximizedOrFullscreen() ||
@@ -242,29 +247,45 @@ public class SeekbarThumbnailPreviewPatch {
 
             final int action = containerMotionEvent.getAction();
             if (action == MotionEvent.ACTION_DOWN) {
+                touchEventInitialX = containerMotionEvent.getX();
                 touchEventInitialY = containerMotionEvent.getY();
+                isFineScrubbingStarted = false;
                 return;
             }
 
             if (action == MotionEvent.ACTION_UP
                     || action == MotionEvent.ACTION_CANCEL
                     || (action == MotionEvent.ACTION_MOVE
-                    && (touchEventInitialY - containerMotionEvent.getY()) > DIP15)
-            ) {
+                    && (touchEventInitialY - containerMotionEvent.getY()) > DIP15)) {
+                lastX = -1;
+                fineScrubbingPreviewBitmap = null;
+                isFineScrubbingStarted = false;
+                lastAppliedBitmap = null;
+                views.timestampPreview.setVisibility(View.GONE);
+                views.chapterPreview.setVisibility(View.GONE);
                 if (views.thumbnailPreviewPopup.isShowing()) {
                     views.thumbnailPreviewPopup.dismiss();
                 }
-                lastX = -1;
-                fineScrubbingPreviewBitmap = null;
-                lastAppliedBitmap = null;
                 seekbarViews = null;
                 return;
             }
 
             if (action == MotionEvent.ACTION_MOVE) {
+                if (!isFineScrubbingStarted) {
+                    int touchSlop = ViewConfiguration.get(container.getContext()).getScaledTouchSlop();
+                    float deltaTouchX = Math.abs(containerMotionEvent.getX() - touchEventInitialX);
+
+                    if (deltaTouchX > touchSlop) {
+                        isFineScrubbingStarted = true;
+                    } else {
+                        return;
+                    }
+                }
+
                 final int trackballPosX = trackballPos.x;
                 final int trackballPosY = trackballPos.y;
-                if (trackballPosX == lastX) {
+
+                if (trackballPosX == lastX || (trackballPosX == 0 && trackballPosY == 0)) {
                     return;
                 }
                 lastX = trackballPosX;
@@ -291,6 +312,7 @@ public class SeekbarThumbnailPreviewPatch {
                         final int totalSeconds = Math.round((float) currentMillis / 1000.0f);
 
                         views.timestampPreview.setText(formatSeekTime(totalSeconds));
+                        views.timestampPreview.setVisibility(View.VISIBLE);
 
                         CharSequence chapterTitle = ChaptersHookPatch.getChapterTitleAtTime(currentMillis);
                         if (chapterTitle != null) {
@@ -300,10 +322,6 @@ public class SeekbarThumbnailPreviewPatch {
                             views.chapterPreview.setVisibility(View.GONE);
                         }
                     }
-                }
-
-                if (trackballPosX == 0 && trackballPosY == 0) {
-                    return;
                 }
 
                 ViewGroup.LayoutParams previewParams = views.previewFrame.getLayoutParams();
@@ -324,20 +342,33 @@ public class SeekbarThumbnailPreviewPatch {
                         ? THUMBNAIL_PREVIEW_TEXT_WITH_CHAPTER_HEIGHT_DP
                         : THUMBNAIL_PREVIEW_TEXT_ONLY_HEIGHT_DP;
 
-                final int targetY = trackballPosY - previewHeightPx
-                        - previewDistance - textHeight;
+                final int targetY = trackballPosY -
+                                    previewHeightPx -
+                                    previewDistance -
+                                    textHeight;
 
                 PopupWindow thumbnailPreviewPopup = views.thumbnailPreviewPopup;
+                View rootView = container.getRootView();
+
+                // Wait until the first bitmap so the previewFrame shows immediately with the correct
+                // aspect ratio and Y offset, avoiding a jump from a default 16:9 position.
+                views.previewFrame.setVisibility(
+                        lastAppliedBitmap != null
+                                ? View.VISIBLE
+                                : View.INVISIBLE
+                );
+
                 if (!thumbnailPreviewPopup.isShowing()) {
-                    View rootView = container.getRootView();
-                    // Wait until the first bitmap so the popup shows immediately with the correct
-                    // aspect ratio and Y offset, avoiding a jump from a default 16:9 position.
-                    if (rootView.getWindowToken() != null && lastAppliedBitmap != null) {
+                    if (rootView.getWindowToken() != null) {
                         thumbnailPreviewPopup.showAtLocation(rootView, Gravity.NO_GRAVITY, targetX, targetY);
                     }
                 } else {
-                    thumbnailPreviewPopup.update(targetX, targetY, thumbnailPreviewPopup.getWidth(),
-                            thumbnailPreviewPopup.getHeight());
+                    thumbnailPreviewPopup.update(
+                            targetX,
+                            targetY,
+                            thumbnailPreviewPopup.getWidth(),
+                            thumbnailPreviewPopup.getHeight()
+                    );
                 }
             }
         } catch (Exception ex) {
