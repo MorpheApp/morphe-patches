@@ -4,24 +4,20 @@ import static app.morphe.extension.shared.StringRef.str;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.graphics.Insets;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
-import android.os.Bundle;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowInsets;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.Collections;
 import java.util.List;
 
-import app.morphe.extension.shared.Utils;
-
-@SuppressWarnings({"deprecation", "RedundantSuppression"})
-public class LicensesDialog extends Dialog {
+/**
+ * Lists the software bundled with the patches. Picking one opens its notices in
+ * {@link LicenseTextDialog}, which is full screen because the texts run to hundreds of lines.
+ */
+class LicensesDialog extends AboutWebViewDialog {
 
     // Licenses for all software bundled with Morphe MPP Patches.
     private static final List<License> dependencies = List.of(
@@ -36,116 +32,28 @@ public class LicensesDialog extends Dialog {
             new License("Protocol Buffers", LicenseContent.PROTOCOL_BUFFERS)
     );
 
-    private record License(String name, List<LicenseContent> staticContent) {
-        public License(String name, LicenseContent staticContent) {
+    record License(String name, List<LicenseContent> staticContent) {
+        License(String name, LicenseContent staticContent) {
             this(name, Collections.singletonList(staticContent));
         }
     }
 
     /**
-     * Dummy url opening a bundled license by its index in {@link #dependencies}, so the list rows
-     * can be ordinary links and reuse the shared row styling.
+     * Dummy url opening a bundled license by its index in {@link #dependencies}, so the rows can be
+     * ordinary links and reuse the shared row styling.
      */
     private static final String LICENSE_ROUTE_PREFIX = "https://license/";
 
-    private boolean showingLicense;
-
-    public LicensesDialog(Context context) {
-        super(context, android.R.style.Theme_DeviceDefault_NoActionBar);
+    LicensesDialog(@NonNull Context context) {
+        super(context, buildListHtml());
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-
-        // The window fills the screen, so its own background and the navigation bar are painted the
-        // same color the pages are, rather than whatever the device theme happens to be.
-        Window window = getWindow();
-        if (window != null) {
-            window.setBackgroundDrawable(new ColorDrawable(Utils.getDialogBackgroundColor()));
-            window.setNavigationBarColor(Utils.getDialogBackgroundColor());
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                window.setNavigationBarContrastEnforced(true);
-            }
-        }
-
-        showList();
+    protected WebViewClient createWebViewClient() {
+        return new LicensesWebClient(getContext(), this);
     }
 
-    @Override
-    public void onBackPressed() {
-        if (showingLicense) {
-            showList();
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-    private void showList() {
-        showingLicense = false;
-        showPage(buildListHtml(), false);
-    }
-
-    private void showDetail(License dep) {
-        showingLicense = true;
-        showPage(buildLicenseHtml(dep.staticContent()), true);
-    }
-
-    /**
-     * @param legalText Whether the page holds pre-formatted license text, which needs the wide
-     *                  viewport and the zoom controls the row list has no use for.
-     */
-    private void showPage(String html, boolean legalText) {
-        WebView webView = new WebView(getContext());
-        webView.setLayoutParams(new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT));
-        webView.getSettings().setJavaScriptEnabled(false);
-        webView.getSettings().setUseWideViewPort(legalText);
-        webView.getSettings().setLoadWithOverviewMode(legalText);
-        webView.getSettings().setSupportZoom(legalText);
-        webView.getSettings().setBuiltInZoomControls(legalText);
-        webView.getSettings().setDisplayZoomControls(false);
-        // A WebView paints white until the page is parsed, which flashes on every navigation here.
-        webView.setBackgroundColor(Utils.getDialogBackgroundColor());
-        webView.setWebViewClient(new LicensesWebClient(getContext(), this));
-
-        webView.loadDataWithBaseURL(null, html, "text/html", "UTF-8", null);
-
-        setContentView(webView);
-        applyInsetsToContentView();
-    }
-
-    /**
-     * Applies window insets to the content root view.
-     */
-    private void applyInsetsToContentView() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) return;
-
-        Window window = getWindow();
-        if (window == null) return;
-
-        ViewGroup rootView = (ViewGroup) window.getDecorView()
-                .findViewById(android.R.id.content)
-                .getParent();
-
-        rootView.setOnApplyWindowInsetsListener((v, insets) -> {
-            Insets statusInsets = insets.getInsets(WindowInsets.Type.statusBars());
-            Insets navInsets = insets.getInsets(WindowInsets.Type.navigationBars());
-            Insets cutoutInsets = insets.getInsets(WindowInsets.Type.displayCutout());
-
-            v.setPadding(
-                    cutoutInsets.left,
-                    statusInsets.top,
-                    cutoutInsets.right,
-                    navInsets.bottom
-            );
-            return insets;
-        });
-    }
-
-    private String buildListHtml() {
+    private static String buildListHtml() {
         StringBuilder html = new StringBuilder(AboutDialogStyle.documentStart());
 
         html.append("<div class=\"dialog-header\"><div class=\"dialog-title\">")
@@ -159,7 +67,7 @@ public class LicensesDialog extends Dialog {
                     .append(AboutDialogStyle.linkIcon(LICENSE_ROUTE_PREFIX))
                     .append("</span>")
                     .append("<div class=\"item-text\"><div class=\"item-title\">")
-                    .append(htmlEscape(dependencies.get(index).name()))
+                    .append(AboutDialogStyle.escapeHtml(dependencies.get(index).name()))
                     .append("</div></div>")
                     .append(AboutDialogStyle.chevron())
                     .append("</a>");
@@ -167,37 +75,6 @@ public class LicensesDialog extends Dialog {
         html.append("</div></div>").append(AboutDialogStyle.DOCUMENT_END);
 
         return html.toString();
-    }
-
-    private String buildLicenseHtml(List<LicenseContent> items) {
-        StringBuilder html = new StringBuilder(AboutDialogStyle.documentStart());
-
-        // The notices are pre-formatted English whose alignment only holds left to right, so they
-        // stay unmirrored even when the surrounding app language reads the other way.
-        html.append("<div class=\"license-body\" dir=\"ltr\">");
-        for (LicenseContent item : items) {
-            html.append("<h2>").append(htmlEscape(item.title())).append("</h2>");
-            html.append("<pre>").append(linkifyHtml(item.content())).append("</pre>");
-        }
-        html.append("</div>").append(AboutDialogStyle.DOCUMENT_END);
-
-        return html.toString();
-    }
-
-    private static String htmlEscape(String text) {
-        return text
-                .replace("&", "&amp;")
-                .replace("<", "&lt;")
-                .replace(">", "&gt;");
-    }
-
-    /**
-     * Escapes the text and turns any urls in it into links, so the addresses named inside a license
-     * can be opened.
-     */
-    private static String linkifyHtml(String text) {
-        return htmlEscape(text)
-                .replaceAll("(https?://[^\\s<>\"]+)", "<a href='$1'>$1</a>");
     }
 
     @Nullable
@@ -208,16 +85,16 @@ public class LicensesDialog extends Dialog {
                 return dependencies.get(index);
             }
         } catch (NumberFormatException ex) {
-            // Not one of the list rows, so it is handled as an ordinary link.
+            // Not one of the rows, so it is handled as an ordinary link.
         }
         return null;
     }
 
     /**
-     * Opens the list rows in place, and leaves every other link to the shared handling that sends it
-     * to a browser.
+     * Opens the rows in a license dialog on top of this one, and leaves every other link to the
+     * shared handling that sends it to a browser.
      */
-    private class LicensesWebClient extends AboutLinksWebClient {
+    private static class LicensesWebClient extends AboutLinksWebClient {
 
         LicensesWebClient(Context context, Dialog dialog) {
             super(context, dialog);
@@ -228,7 +105,7 @@ public class LicensesDialog extends Dialog {
             if (url != null && url.startsWith(LICENSE_ROUTE_PREFIX)) {
                 License license = licenseForRoute(url);
                 if (license != null) {
-                    showDetail(license);
+                    new LicenseTextDialog(context, license.staticContent()).show();
                     return true;
                 }
             }

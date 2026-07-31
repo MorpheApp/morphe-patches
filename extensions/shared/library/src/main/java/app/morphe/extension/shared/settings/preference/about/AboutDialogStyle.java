@@ -99,6 +99,25 @@ final class AboutDialogStyle {
     }
 
     /**
+     * @return The text with the characters that would otherwise be read as markup escaped.
+     */
+    static String escapeHtml(String text) {
+        return text
+                .replace("&", "&amp;")
+                .replace("<", "&lt;")
+                .replace(">", "&gt;");
+    }
+
+    /**
+     * @return The escaped text with any urls in it turned into links, so the addresses named inside
+     *         a license can be opened.
+     */
+    static String linkifyHtml(String text) {
+        return escapeHtml(text)
+                .replaceAll("(https?://[^\\s<>\"]+)", "<a href='$1'>$1</a>");
+    }
+
+    /**
      * @return A heading for the group of rows that follows it.
      */
     static String sectionTitle(String text) {

@@ -2,26 +2,13 @@ package app.morphe.extension.shared.settings.preference.about;
 
 import static app.morphe.extension.shared.StringRef.str;
 
-import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.content.Context;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RoundRectShape;
-import android.os.Bundle;
-import android.view.Gravity;
-import android.view.View;
-import android.view.Window;
-import android.webkit.WebView;
-import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.ui.Dim;
-
-class MorpheCreditsDialog extends Dialog {
+class MorpheCreditsDialog extends AboutWebViewDialog {
 
     private static final List<MorpheAboutPreference.WebLink> WORKS_LINKS_CURRENT = List.of(
             new MorpheAboutPreference.WebLink("Morphe",
@@ -61,7 +48,7 @@ class MorpheCreditsDialog extends Dialog {
         return prior;
     }
 
-    private String createDialogHtml() {
+    private static String createDialogHtml() {
         StringBuilder html = new StringBuilder(AboutDialogStyle.documentStart());
 
         html.append("<div class=\"dialog-header\"><div class=\"dialog-title\">")
@@ -113,48 +100,7 @@ class MorpheCreditsDialog extends Dialog {
         html.append("</div></div>");
     }
 
-    private final String htmlContent;
-
-    public MorpheCreditsDialog(Context context) {
-        super(context);
-        this.htmlContent = createDialogHtml();
-    }
-
-    // JS required to hide any broken images. No remote JavaScript is ever loaded.
-    @SuppressLint("SetJavaScriptEnabled")
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE); // Remove default title bar.
-
-        // Create main layout.
-        LinearLayout mainLayout = new LinearLayout(getContext());
-        mainLayout.setOrientation(LinearLayout.VERTICAL);
-
-        mainLayout.setPadding(Dim.dp10, Dim.dp10, Dim.dp10, Dim.dp10);
-        // Set rounded rectangle background.
-        ShapeDrawable mainBackground = new ShapeDrawable(new RoundRectShape(
-                Dim.roundedCorners(28), null, null));
-        mainBackground.getPaint().setColor(Utils.getDialogBackgroundColor());
-        mainLayout.setBackground(mainBackground);
-
-        // Create WebView.
-        WebView webView = new WebView(getContext());
-        webView.setVerticalScrollBarEnabled(false); // Disable the vertical scrollbar.
-        webView.setOverScrollMode(View.OVER_SCROLL_NEVER);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.setWebViewClient(new AboutLinksWebClient(getContext(), this));
-        webView.loadDataWithBaseURL(null, htmlContent, "text/html", "utf-8", null);
-
-        // Add WebView to layout.
-        mainLayout.addView(webView);
-
-        setContentView(mainLayout);
-
-        // Set dialog window attributes.
-        Window window = getWindow();
-        if (window != null) {
-            Utils.setDialogWindowParameters(window, Gravity.CENTER, 0, 90, false);
-        }
+    MorpheCreditsDialog(Context context) {
+        super(context, createDialogHtml());
     }
 }
