@@ -127,7 +127,7 @@ val navigationBarPatch = bytecodePatch(
         // Swap create with notifications button.
         addOSNameHook(
             Endpoint.GUIDE,
-            "$EXTENSION_CLASS->swapCreateWithNotificationButton(Ljava/lang/String;)Ljava/lang/String;",
+            "$EXTENSION_CLASS->swapCreateWithNotificationButton(Ljava/lang/String;)Ljava/lang/String;"
         )
 
         // Hide navigation button labels.
@@ -139,7 +139,7 @@ val navigationBarPatch = bytecodePatch(
                 addInstruction(
                     setTextIndex,
                     "invoke-static { v$targetRegister }, " +
-                            "$EXTENSION_CLASS->hideNavigationButtonLabels(Landroid/widget/TextView;)V",
+                            "$EXTENSION_CLASS->hideNavigationButtonLabels(Landroid/widget/TextView;)V"
                 )
             }
         }
@@ -155,7 +155,7 @@ val navigationBarPatch = bytecodePatch(
             // 21.30+ inlines the flag lookup and must patch ~60 places.
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
-                "$EXTENSION_CLASS->useTranslucentNavigationStatusBar(Z)Z",
+                "$EXTENSION_CLASS->useTranslucentNavigationStatusBar(Z)Z"
             )
         }
 
@@ -166,17 +166,19 @@ val navigationBarPatch = bytecodePatch(
             )
         }
 
-        TranslucentNavigationButtonsSystemFeatureFlagFingerprint.matchAll().forEach {
-            it.method.insertLiteralOverride(
-                it.instructionMatches.first().index,
-                "$EXTENSION_CLASS->useTranslucentNavigationButtons(Z)Z",
-            )
+        if (!is_21_30_or_greater) {
+            TranslucentNavigationButtonsSystemFeatureFlagFingerprint.matchAll().forEach {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    "$EXTENSION_CLASS->useTranslucentNavigationButtons(Z)Z"
+                )
+            }
         }
 
         TranslucentNavigationButtonsFeatureFlagFingerprint.matchAll().forEach {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
-                "$EXTENSION_CLASS->useTranslucentNavigationButtons(Z)Z",
+                "$EXTENSION_CLASS->useTranslucentNavigationButtons(Z)Z"
             )
         }
 
@@ -304,7 +306,7 @@ val navigationBarPatch = bytecodePatch(
                         # Restore MessageLite register one last time for safety
                         move-object/16 v$messageLiteRegister, v$backupRegister
                         nop
-                        """
+                    """
                 )
             }
         }
