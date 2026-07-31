@@ -49,6 +49,8 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.StringRef;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.ui.Dim;
+import app.morphe.extension.shared.ui.ViewAnimations;
 
 /**
  * Third party lyrics, drawn over the content of the lyrics engagement panel.
@@ -63,7 +65,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
     private static final float INACTIVE_LINE_ALPHA = 0.45f;
 
-    /** Applied on top of the footer style, which alone is brighter than the app draws it. */
+    /** Applied on top of the secondary color, which alone is brighter than the app draws it. */
     private static final float FOOTER_ALPHA = 0.6f;
 
     /** Fade length when the highlight moves from one line to the next. */
@@ -81,8 +83,10 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     /** Own string, because the app string {@code lyrics_source} exists in English only. */
     private static final String LYRICS_SOURCE_KEY = "morphe_music_lyrics_source_label";
 
-    /** App style for the source line, 14sp, as drawn by the timed lyrics panel. */
-    private static final String APP_FOOTER_STYLE = "TextAppearance.YouTubeMusic.Body3.Translucent";
+    /** Size of the source line under the lyrics. */
+    private static final float FOOTER_TEXT_SIZE_SP = 16;
+
+    private static final float BUTTON_TEXT_SIZE_SP = 14;
 
     /** Color the app uses for primary text. */
     private static final String APP_PRIMARY_TEXT_COLOR = "ytm_text_color_primary";
@@ -91,7 +95,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     private static final String APP_SECONDARY_TEXT_COLOR = "ytm_text_color_secondary_translucent";
 
     /** Background the app uses for the pill buttons under its own lyrics. */
-    private static final String APP_BUTTON_BACKGROUND_COLOR = "ytm_color_white_at_20pct";
+    private static final String APP_BUTTON_BACKGROUND_COLOR = "ytm_color_white_at_10pct";
 
     /** Icons of the buttons the app draws under its own lyrics. */
     private static final String APP_TRANSLATE_ICON = "yt_outline_experimental_translate_vd_theme_24";
@@ -150,8 +154,8 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     public LyricsPanelView(@NonNull Context context) {
         super(context);
 
-        final int horizontalPadding = dp(32);
-        final int verticalPadding = dp(16);
+        final int horizontalPadding = Dim.dp32;
+        final int verticalPadding = Dim.dp16;
 
         linesContainer = new LinearLayout(context);
         linesContainer.setOrientation(LinearLayout.VERTICAL);
@@ -194,23 +198,18 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         LinearLayout.LayoutParams translateParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
-        translateParams.setMarginStart(dp(12));
+        translateParams.setMarginStart(Dim.dp12);
         buttonRow.addView(translateView, translateParams);
 
-        // The source line and the button live in one container, so that lyrics lines
-        // can be inserted before it without depending on how many views it holds.
+        // The source line lives in a container of its own, so that lyrics lines can be
+        // inserted before it without depending on how many views it holds.
         footerContainer = new LinearLayout(context);
         footerContainer.setOrientation(LinearLayout.VERTICAL);
-        footerContainer.setPadding(0, dp(24), 0, dp(48));
+        // The bottom padding keeps the last lines clear of the pinned buttons.
+        footerContainer.setPadding(0, Dim.dp24, 0, Dim.dp(200));
         footerContainer.addView(footerView, new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
-
-        LinearLayout.LayoutParams buttonRowParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-        buttonRowParams.topMargin = dp(16);
-        footerContainer.addView(buttonRow, buttonRowParams);
 
         linesContainer.addView(footerContainer, new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
@@ -230,6 +229,15 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 LayoutParams.WRAP_CONTENT,
                 LayoutParams.WRAP_CONTENT,
                 Gravity.CENTER));
+
+        // Added last, and outside the scroll view, so the buttons stay pinned at the
+        // bottom while the lyrics scroll behind them, the way the app does it.
+        LayoutParams buttonRowParams = new LayoutParams(
+                LayoutParams.WRAP_CONTENT,
+                LayoutParams.WRAP_CONTENT,
+                Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
+        buttonRowParams.bottomMargin = Dim.dp40;
+        addView(buttonRow, buttonRowParams);
     }
 
     @Override
@@ -336,6 +344,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     private void showLoading() {
         clearLines();
         footerContainer.setVisibility(GONE);
+        buttonRow.setVisibility(GONE);
         scrollView.setVisibility(GONE);
         progressBar.setVisibility(VISIBLE);
     }
@@ -359,7 +368,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             lineView.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
             lineView.setTextColor(foregroundColor);
             lineView.setAlpha(newLyrics.synced() ? INACTIVE_LINE_ALPHA : 1f);
-            lineView.setPadding(0, dp(8), 0, dp(8));
+            lineView.setPadding(0, Dim.dp8, 0, Dim.dp8);
             lineView.setTypeface(null, Typeface.BOLD);
 
             if (tapToSeek) {
@@ -411,7 +420,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         final int start = original.length() + 1;
         text.setSpan(new RelativeSizeSpan(TRANSLATION_RELATIVE_SIZE), start, text.length(),
                 Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        text.setSpan(new ForegroundColorSpan(translationTextColor()), start, text.length(),
+        text.setSpan(new ForegroundColorSpan(secondaryTextColor()), start, text.length(),
                 Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         return text;
     }
@@ -541,26 +550,12 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 .start();
     }
 
-    private int dp(int value) {
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, value,
-                getResources().getDisplayMetrics());
-    }
-
-    /** Takes size and color from the app style instead of approximating them. */
     private static void applyFooterStyle(@NonNull TextView footer) {
-        // The style resolves to 67% white, but the built-in panel draws this line
-        // dimmer than even its inactive lyrics, which this brings it down to.
+        footer.setTextSize(TypedValue.COMPLEX_UNIT_SP, FOOTER_TEXT_SIZE_SP);
+        footer.setTextColor(secondaryTextColor());
+        // The secondary color alone is brighter than the app draws this line, which
+        // sits dimmer than even the inactive lyrics above it.
         footer.setAlpha(FOOTER_ALPHA);
-
-        final int styleId = ResourceUtils.getIdentifier(ResourceType.STYLE, APP_FOOTER_STYLE);
-        if (styleId != 0) {
-            footer.setTextAppearance(styleId);
-            return;
-        }
-
-        Logger.printDebug(() -> "App is missing " + APP_FOOTER_STYLE);
-        footer.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-        footer.setTextColor(Utils.getAppForegroundColor());
     }
 
     /**
@@ -568,16 +563,19 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
      * own lyrics, with the background taken from the app palette so it follows the theme.
      */
     private void applyButtonStyle(@NonNull TextView button, @NonNull String iconName) {
-        button.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
+        button.setTextSize(TypedValue.COMPLEX_UNIT_SP, BUTTON_TEXT_SIZE_SP);
         button.setTextColor(lineTextColor());
+        button.setTypeface(null, Typeface.BOLD);
         button.setGravity(Gravity.CENTER);
-        button.setPadding(dp(20), dp(10), dp(20), dp(10));
+        button.setPadding(Dim.dp16, Dim.dp6, Dim.dp16, Dim.dp6);
 
         GradientDrawable background = new GradientDrawable();
         background.setShape(GradientDrawable.RECTANGLE);
-        background.setCornerRadius(dp(20));
-        background.setColor(ResourceUtils.getColor(APP_BUTTON_BACKGROUND_COLOR, 0x33FFFFFF));
+        background.setCornerRadius(Dim.dp20);
+        background.setColor(ResourceUtils.getColor(APP_BUTTON_BACKGROUND_COLOR, 0x1AFFFFFF));
         button.setBackground(background);
+
+        ViewAnimations.applyPressEffect(button);
 
         Drawable icon = ResourceUtils.getDrawable(iconName);
         if (icon == null) {
@@ -589,10 +587,10 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         // so it is tinted explicitly to match the button label.
         icon = icon.mutate();
         icon.setTint(lineTextColor());
-        final int iconSize = dp(20);
+        final int iconSize = Dim.dp24;
         icon.setBounds(0, 0, iconSize, iconSize);
         button.setCompoundDrawablesRelative(icon, null, null, null);
-        button.setCompoundDrawablePadding(dp(8));
+        button.setCompoundDrawablePadding(Dim.dp8);
     }
 
     @NonNull
@@ -600,7 +598,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         return StringRef.str(key);
     }
 
-    private static int translationTextColor() {
+    private static int secondaryTextColor() {
         return ResourceUtils.getColor(APP_SECONDARY_TEXT_COLOR, lineTextColor());
     }
 
