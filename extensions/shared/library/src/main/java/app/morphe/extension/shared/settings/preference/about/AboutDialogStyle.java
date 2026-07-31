@@ -50,27 +50,12 @@ final class AboutDialogStyle {
             "M320-240h320v-80H320v80Zm0-160h320v-80H320v80ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 "
                     + "240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z";
     private static final String PATH_CHEVRON = "M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z";
-
-    // Brand marks, 24px viewBox.
-    private static final String PATH_GITHUB =
-            "M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338"
-                    + ".724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 "
-                    + "1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 "
-                    + "0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 "
-                    + "1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 "
-                    + "3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 "
-                    + "22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12";
-    private static final String PATH_REDDIT =
-            "M12 0C5.373 0 0 5.373 0 12c0 3.314 1.343 6.314 3.515 8.485l-2.286 2.286C.775 23.225 1.097 24 1.738 24H12c6.627 0 12-5.373 "
-                    + "12-12S18.627 0 12 0Zm4.388 3.199c1.104 0 1.999.895 1.999 1.999 0 1.105-.895 2-1.999 2-.946 0-1.739-.657-1.947-1.539v"
-                    + ".002c-1.147.162-2.032 1.15-2.032 2.341v.007c1.776.067 3.4.567 4.686 1.363.473-.363 1.064-.58 1.707-.58 1.547 0 2.802 "
-                    + "1.254 2.802 2.802 0 1.117-.655 2.081-1.601 2.531-.088 3.256-3.637 5.876-7.997 5.876-4.361 0-7.905-2.617-7.998-5.87-.954"
-                    + "-.447-1.614-1.415-1.614-2.538 0-1.548 1.255-2.802 2.803-2.802.645 0 1.239.218 1.712.585 1.275-.79 2.881-1.291 4.64-1.365v"
-                    + "-.01c0-1.663 1.263-3.034 2.88-3.207.188-.911.993-1.595 1.959-1.595Zm-8.085 8.376c-.784 0-1.459.78-1.506 1.797-.047 1.016"
-                    + ".64 1.429 1.426 1.429.786 0 1.371-.369 1.418-1.385.047-1.017-.553-1.841-1.338-1.841Zm7.406 0c-.786 0-1.385.824-1.338 "
-                    + "1.841.047 1.017.634 1.385 1.418 1.385.785 0 1.473-.413 1.426-1.429-.046-1.017-.721-1.797-1.506-1.797Zm-3.703 4.013c-.974 "
-                    + "0-1.907.048-2.77.135-.147.015-.241.168-.183.305.483 1.154 1.622 1.964 2.953 1.964 1.33 0 2.47-.81 2.953-1.964.057-.137"
-                    + "-.037-.29-.184-.305-.863-.087-1.795-.135-2.769-.135Z";
+    private static final String PATH_CODE =
+            "M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z";
+    private static final String PATH_FORUM =
+            "M280-240q-17 0-28.5-11.5T240-280v-80h520v-360h80q17 0 28.5 11.5T880-680v600L720-240H280ZM80-280v-560q0-17 "
+                    + "11.5-28.5T120-880h520q17 0 28.5 11.5T680-840v360q0 17-11.5 28.5T640-440H240L80-280Zm520-240v-280H160v280h440Zm-440 "
+                    + "0v-280 280Z";
 
     /**
      * Wraps text in Unicode isolate marks so a left to right token such as a version name keeps its
@@ -93,10 +78,6 @@ final class AboutDialogStyle {
         return "<svg viewBox='0 -960 960 960'><path d='" + path + "'/></svg>";
     }
 
-    private static String brandIcon(String path) {
-        return "<svg viewBox='0 0 24 24'><path d='" + path + "'/></svg>";
-    }
-
     /**
      * @return An icon for a link, matched on the URL because link names arrive localized.
      */
@@ -104,8 +85,8 @@ final class AboutDialogStyle {
         if (url == null) return materialIcon(PATH_PUBLIC);
 
         String lower = url.toLowerCase(Locale.US);
-        if (lower.contains("github.com")) return brandIcon(PATH_GITHUB);
-        if (lower.contains("reddit.com")) return brandIcon(PATH_REDDIT);
+        if (lower.contains("github.com")) return materialIcon(PATH_CODE);
+        if (lower.contains("reddit.com")) return materialIcon(PATH_FORUM);
         if (lower.contains("crowdin") || lower.contains("translate")) return materialIcon(PATH_TRANSLATE);
         if (lower.contains("donat")) return materialIcon(PATH_FAVORITE);
         if (lower.startsWith("https://license")) return materialIcon(PATH_DESCRIPTION);
