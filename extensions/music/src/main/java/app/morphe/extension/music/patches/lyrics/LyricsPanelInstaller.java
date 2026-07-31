@@ -66,6 +66,13 @@ public final class LyricsPanelInstaller {
         }
 
         installPending = true;
+        // With lyrics already loaded the panel can be covered on the next frame, which
+        // is what keeps the built-in lyrics from being visible first. Otherwise, the app
+        // is given time to attach its views, since there is nothing to show yet anyway.
+        final long delay = LyricsManager.getInstance().hasLyrics()
+                ? 0
+                : INSTALL_DELAY_MILLISECONDS;
+
         Utils.runOnMainThreadDelayed(() -> {
             installPending = false;
             try {
@@ -73,7 +80,7 @@ public final class LyricsPanelInstaller {
             } catch (Exception ex) {
                 Logger.printException(() -> "Could not install the lyrics panel", ex);
             }
-        }, INSTALL_DELAY_MILLISECONDS);
+        }, delay);
     }
 
     private static void install() {

@@ -59,6 +59,9 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     /** Fade length when the highlight moves from one line to the next. */
     private static final long HIGHLIGHT_FADE_DURATION_MILLISECONDS = 200;
 
+    /** Fade length when the panel appears over the built-in content. */
+    private static final long OVERLAY_FADE_DURATION_MILLISECONDS = 150;
+
     /** How long auto scrolling stays off after the user touches the panel. */
     private static final long MANUAL_SCROLL_PAUSE_MILLISECONDS = 5000;
 
@@ -220,7 +223,16 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     }
 
     private void applyOverlayVisibility() {
+        final boolean wasVisible = getVisibility() == VISIBLE;
         setVisibility(overlayVisible ? VISIBLE : GONE);
+
+        // Appearing is faded in, so that covering the built-in lyrics reads as a
+        // transition rather than as the panel being swapped out under the user.
+        if (overlayVisible && !wasVisible) {
+            animate().cancel();
+            setAlpha(0f);
+            animate().alpha(1f).setDuration(OVERLAY_FADE_DURATION_MILLISECONDS).start();
+        }
 
         if (!(getParent() instanceof ViewGroup parent)) {
             return;

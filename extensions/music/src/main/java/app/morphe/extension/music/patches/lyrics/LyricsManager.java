@@ -97,6 +97,11 @@ public final class LyricsManager {
         listeners.remove(listener);
     }
 
+    /** Whether lyrics for the current track are loaded and ready to show. */
+    public boolean hasLyrics() {
+        return state == State.LOADED && currentLyrics != null && !currentLyrics.isEmpty();
+    }
+
     /**
      * Current playback position including the user configured offset,
      * extrapolated from the last {@link PlaybackState} update.
