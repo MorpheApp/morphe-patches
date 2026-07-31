@@ -1,3 +1,10 @@
+/*
+ * A reminder to anyone using any code from this software project:
+ *
+ * Refer to GPLv3 Section 5(d) regarding the preservation of
+ * interactive notices such as in-app notices or in-app credits.
+ */
+
 package app.morphe.extension.shared.settings.preference.about;
 
 import android.app.Dialog;
