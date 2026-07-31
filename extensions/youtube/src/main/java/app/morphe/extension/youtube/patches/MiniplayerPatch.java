@@ -34,6 +34,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
+import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings({"unused", "SpellCheckingInspection"})
@@ -88,7 +89,6 @@ public final class MiniplayerPatch {
     private static final int MINIPLAYER_SIZE;
     private static boolean offScreenMiniplayerButtonPressed = false;
     private static int miniplayerOffscreenState = 0;
-    private static final int horizontalPositionJump = 5;
 
     static {
         // YT appears to use the device screen dip width, plus an unknown fixed horizontal padding size.
@@ -122,9 +122,6 @@ public final class MiniplayerPatch {
 
         MINIPLAYER_SIZE = dipWidth;
     }
-
-    private static final boolean DISABLE_RESUMING_MINIPLAYER =
-            Settings.MINIPLAYER_DISABLE_RESUMING.get();
 
     private static final MiniplayerType CURRENT_TYPE = Settings.MINIPLAYER_TYPE.get();
 
@@ -269,7 +266,7 @@ public final class MiniplayerPatch {
      * Injection point.
      */
     public static boolean disableResumingStartupMiniPlayer(boolean original) {
-        return !DISABLE_RESUMING_MINIPLAYER && original;
+        return !Settings.MINIPLAYER_DISABLE_RESUMING.get() && original;
     }
 
     /**
@@ -358,7 +355,7 @@ public final class MiniplayerPatch {
      * Injection point.
      */
     public static boolean getMiniplayerDragAndDrop(int actionMasked) {
-        return DRAG_AND_DROP_ENABLED && actionMasked == 2;
+        return !DRAG_AND_DROP_ENABLED && actionMasked == 2;
     }
 
     /**
@@ -371,12 +368,8 @@ public final class MiniplayerPatch {
     /**
      * Injection point.
      */
-    public static boolean getHorizontalDrag(boolean original) {
-        if (CURRENT_TYPE == DEFAULT) {
-            return original;
-        }
-
-        return MINIPLAYER_HORIZONTAL_DRAG_ENABLED;
+    public static boolean getHorizontalDrag() {
+        return !MINIPLAYER_HORIZONTAL_DRAG_ENABLED;
     }
 
     /**
@@ -454,13 +447,14 @@ public final class MiniplayerPatch {
                 // Move the offscreen miniplayer of 5 pixels to the center of screen, in order to allow the
                 // miniplayer animator to perform the transition to show it again.
                 int originalWidth = currentRect.width();
+                final int horizontalJumpPos = Dim.dp(5);
 
                 if (miniplayerOffscreenState == 1) {
-                    currentRect.left = horizontalPositionJump;
-                    currentRect.right = horizontalPositionJump + originalWidth;
+                    currentRect.left = horizontalJumpPos;
+                    currentRect.right = horizontalJumpPos + originalWidth;
                 } else if (miniplayerOffscreenState == 2) {
-                    currentRect.left = screenWidth - horizontalPositionJump;
-                    currentRect.right = (screenWidth - horizontalPositionJump) + originalWidth;
+                    currentRect.left = screenWidth - horizontalJumpPos;
+                    currentRect.right = (screenWidth - horizontalJumpPos) + originalWidth;
                 }
 
                 miniplayerOffscreenState = 0;

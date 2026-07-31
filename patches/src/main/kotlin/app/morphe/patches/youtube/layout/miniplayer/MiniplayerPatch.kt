@@ -268,10 +268,10 @@ val miniplayerPatch = bytecodePatch(
                     """
                         invoke-static { v$instructionRegister }, $EXTENSION_CLASS->getMiniplayerDragAndDrop(I)Z
                         move-result p0
-                        if-eqz p0, :set_drag_and_drop
+                        if-eqz p0, :get_drag_and_drop
                         const/4 p0, 0x0
                         return p0
-                        :set_drag_and_drop
+                        :get_drag_and_drop
                         nop
                     """
                 )
@@ -329,8 +329,8 @@ val miniplayerPatch = bytecodePatch(
                     """
                         invoke-static {}, $EXTENSION_CLASS->getRoundedCorners()Z
                         move-result v$freeRegister
-                        if-nez v$freeRegister, :set_rounded_corners
-                    """, ExternalLabel("set_rounded_corners", getInstruction(instructionIndex + 1))
+                        if-nez v$freeRegister, :get_rounded_corners
+                    """, ExternalLabel("get_rounded_corners", getInstruction(instructionIndex + 1))
                 )
             }
 
@@ -346,12 +346,45 @@ val miniplayerPatch = bytecodePatch(
             )
         }
 
-        if (!is_21_30_or_greater) {
-            MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
-                MINIPLAYER_HORIZONTAL_DRAG_FEATURE_KEY,
-                "getHorizontalDrag",
-            )
+        // region Horizontal drag
+        MiniplayerOffscreenRectValidatorFingerprint.method.addInstructions(
+            0,
+            """
+                invoke-static { }, $EXTENSION_CLASS->getHorizontalDrag()Z
+                move-result v0
+                if-eqz v0, :disable_offscreen_miniplayer
+                const/4 v0, 0x0
+                return v0
+                :disable_offscreen_miniplayer
+                nop
+            """
+        )
 
+        MiniplayerOffscreenHandlerFingerprint.apply {
+            method.apply {
+                val instructionIndex = instructionMatches.last().index
+                val instructionRegister = getInstruction<BuilderInstruction35c>(
+                    instructionIndex
+                ).registerC
+                val freeRegister = findFreeRegister(instructionIndex, instructionRegister)
+
+                addInstructionsWithLabels(
+                    instructionIndex + 1,
+                    """
+                        invoke-static { }, $EXTENSION_CLASS->getHorizontalDrag()Z
+                        move-result v$freeRegister
+                        if-eqz v$freeRegister, :disable_offscreen_handler
+                        return-void
+                        :disable_offscreen_handler
+                        nop
+                    """
+                )
+            }
+        }
+
+        // endregion
+
+        if (!is_21_30_or_greater) {
             MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
                 MINIPLAYER_ANIMATED_EXPAND_FEATURE_KEY,
                 "getMaximizeAnimation",
@@ -368,8 +401,8 @@ val miniplayerPatch = bytecodePatch(
                         """
                             invoke-static { }, $EXTENSION_CLASS->getMaximizeAnimation()Z
                             move-result v$freeRegister
-                            if-eqz v$freeRegister, :set_maximize_animation
-                        """, ExternalLabel("set_maximize_animation", getInstruction(endTargetIndex))
+                            if-eqz v$freeRegister, :get_maximize_animation
+                        """, ExternalLabel("get_maximize_animation", getInstruction(endTargetIndex))
                     )
                 }
             }

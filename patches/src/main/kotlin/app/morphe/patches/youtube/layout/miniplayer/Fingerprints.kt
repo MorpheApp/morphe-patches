@@ -19,6 +19,7 @@ import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import app.morphe.patches.all.misc.resources.ResourceType
@@ -28,7 +29,6 @@ import com.android.tools.smali.dexlib2.Opcode
 
 internal const val MINIPLAYER_MODERN_FEATURE_KEY = 45622882L
 internal const val MINIPLAYER_DOUBLE_TAP_FEATURE_KEY = 45628823L
-internal const val MINIPLAYER_HORIZONTAL_DRAG_FEATURE_KEY = 45658112L
 internal const val MINIPLAYER_INITIAL_SIZE_FEATURE_KEY = 45640023L
 internal const val MINIPLAYER_DISABLED_FEATURE_KEY = 45657015L
 internal const val MINIPLAYER_ANIMATED_EXPAND_FEATURE_KEY = 45644360L
@@ -172,7 +172,42 @@ internal object MiniplayerHorizontalRepositionFingerprint : Fingerprint(
     classFingerprint = MiniplayerRectDragFieldsNameFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf("Landroid/graphics/Rect;"),
+    parameters = listOf("Landroid/graphics/Rect;")
+)
+
+internal object MiniplayerOffscreenRectValidatorFingerprint : Fingerprint (
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf("I", "I", "I"),
+    filters = listOf(
+        opcode(opcode = Opcode.IGET_OBJECT),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "Landroid/graphics/Rect;",
+            location = MatchAfterImmediately()
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Landroid/graphics/Rect;->centerX()I",
+            location = MatchAfterImmediately()
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Landroid/graphics/Rect;->centerY()I",
+            location = MatchAfterWithin(3)
+        ),
+        newInstance(type = "Landroid/graphics/Point;", location = MatchAfterWithin(3))
+    )
+)
+
+internal object MiniplayerOffscreenHandlerFingerprint : Fingerprint(
+    classFingerprint = MiniplayerRectDragFieldsNameFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("I", "I", "I", "I"),
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IGET_OBJECT, type = "Landroid/graphics/Rect;"),
+        methodCall(opcode = Opcode.INVOKE_VIRTUAL, smali = "Landroid/graphics/Rect;->set(IIII)V")
+    )
 )
 
 internal object NextGenWatchLayoutOnInterceptTouchEventFingerprint : Fingerprint(
