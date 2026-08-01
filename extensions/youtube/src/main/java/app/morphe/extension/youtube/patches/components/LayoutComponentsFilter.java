@@ -73,6 +73,8 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup chipBar;
     private final StringFilterGroup channelProfile;
     private final StringFilterGroupList channelProfileGroupList = new StringFilterGroupList();
+    private final StringFilterGroup getPremiumButton;
+    private final ByteArrayFilterGroup getPremiumButtonBuffer;
     private final StringFilterGroup videoLabels;
     private final ByteArrayFilterGroupList videoLabelsGroupList = new ByteArrayFilterGroupList();
 
@@ -248,6 +250,16 @@ public final class LayoutComponentsFilter extends Filter {
                 "mixed_content_shelf"
         );
 
+        getPremiumButton = new StringFilterGroup(
+                Settings.HIDE_GET_PREMIUM_BUTTON,
+                "|button.e"
+        );
+
+        getPremiumButtonBuffer = new ByteArrayFilterGroup(
+                null,
+                "SPunlimited"
+        );
+
         final var imageShelf = new StringFilterGroup(
                 Settings.HIDE_IMAGE_SHELF,
                 "image_shelf"
@@ -371,6 +383,7 @@ public final class LayoutComponentsFilter extends Filter {
                 emergencyBox,
                 expandableMetadata,
                 forYouShelf,
+                getPremiumButton,
                 imageShelf,
                 infoPanel,
                 medicalPanel,
@@ -450,10 +463,6 @@ public final class LayoutComponentsFilter extends Filter {
             }
         }
 
-        if (matchedGroup == videoLabels) {
-            return videoLabelsGroupList.check(buffer).isFiltered();
-        }
-
         if (matchedGroup == channelProfile) {
             return channelProfileGroupList.check(accessibility).isFiltered();
         }
@@ -472,6 +481,14 @@ public final class LayoutComponentsFilter extends Filter {
         if (matchedGroup == chipBar) {
             return contentIndex == 0 && NavigationBar.NavigationButton.getSelectedNavigationButton()
                     == NavigationBar.NavigationButton.LIBRARY;
+        }
+
+        if (matchedGroup == getPremiumButton) {
+            return path.startsWith("page_header.e") && getPremiumButtonBuffer.check(buffer).isFiltered();
+        }
+
+        if (matchedGroup == videoLabels) {
+            return videoLabelsGroupList.check(buffer).isFiltered();
         }
 
         return true;

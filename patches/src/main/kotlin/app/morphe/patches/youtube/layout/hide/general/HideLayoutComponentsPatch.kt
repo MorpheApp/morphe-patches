@@ -380,6 +380,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 )
             ),
             SwitchPreference("morphe_hide_floating_microphone_button", summary = true),
+            SwitchPreference("morphe_hide_get_premium_button"),
             SwitchPreference("morphe_hide_horizontal_shelves", summary = true),
             SwitchPreference("morphe_hide_hyped_label"),
             SwitchPreference("morphe_hide_image_shelf", summary = true),
