@@ -474,13 +474,17 @@ internal object ChannelTabAddFingerprint : Fingerprint(
     classFingerprint = ChannelTabRendererFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf(
-        "L",
-        "I"
-    ),
     filters = listOf(
         methodCall("Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z"),
-    )
+    ),
+    custom = { method, _ ->
+        // On 21.31+ the parameters fingerprint is the same, but contains a further "L". Therefore, in
+        // order to maintain compatibility with all previous versions, we will
+        // verify the presence of at least the first two parameters.
+        method.parameters.size >= 2 &&
+                (method.parameters.first().type.startsWith("L") &&
+                        method.parameters[1].type.startsWith("I"))
+    }
 )
 
 internal object InformationButtonFingerprint : Fingerprint(
