@@ -71,7 +71,9 @@ private val customPlaybackSpeedResourcePatch = resourcePatch {
             ResourceGroup(
                 "drawable",
                 "morphe_ic_link.xml",
-                "morphe_ic_link_off.xml"
+                "morphe_ic_link_off.xml",
+                "morphe_ic_music_note.xml",
+                "morphe_ic_slow_motion_video.xml"
             )
         )
     }

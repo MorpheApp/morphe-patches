@@ -33,6 +33,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.SeekBar;
@@ -75,6 +76,16 @@ public class CustomPlaybackSpeedPatch {
     private static final int LINK_OFF_ICON = ResourceUtils.getIdentifierOrThrow(
             ResourceType.DRAWABLE,
             "morphe_ic_link_off"
+    );
+
+    private static final int VIDEO_ICON = ResourceUtils.getIdentifierOrThrow(
+            ResourceType.DRAWABLE,
+            "morphe_ic_slow_motion_video"
+    );
+
+    private static final int AUDIO_ICON = ResourceUtils.getIdentifierOrThrow(
+            ResourceType.DRAWABLE,
+            "morphe_ic_music_note"
     );
 
     /**
@@ -362,7 +373,8 @@ public class CustomPlaybackSpeedPatch {
             scrollView.addView(contentLayout);
             mainLayout.addView(scrollView);
 
-            // Display current playback speed.
+            // Display current playback speed with a leading video icon.
+            FrameLayout speedLabelRow = createLabelRow(context, VIDEO_ICON);
             TextView currentSpeedText = new TextView(context);
             float currentSpeed = VideoInformation.getPlaybackSpeed();
             currentSpeedText.setText(VideoInformation.formatSpeedStringX(currentSpeed));
@@ -370,12 +382,11 @@ public class CustomPlaybackSpeedPatch {
             currentSpeedText.setTextSize(16);
             currentSpeedText.setTypeface(Typeface.DEFAULT_BOLD);
             currentSpeedText.setGravity(Gravity.CENTER);
-            LinearLayout.LayoutParams textParams = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            textParams.setMargins(0, Dim.dp20, 0, 0);
-            currentSpeedText.setLayoutParams(textParams);
-            // Add current speed text view to main layout.
-            contentLayout.addView(currentSpeedText);
+            currentSpeedText.setLayoutParams(new FrameLayout.LayoutParams(
+                    FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT));
+            speedLabelRow.addView(currentSpeedText);
+            // Add current speed label row to main layout.
+            contentLayout.addView(speedLabelRow);
 
             // Create horizontal layout for slider and +/- buttons.
             LinearLayout sliderLayout = new LinearLayout(context);
@@ -409,6 +420,7 @@ public class CustomPlaybackSpeedPatch {
             contentLayout.addView(sliderLayout);
 
             // ── Pitch UI elements (declared early for use in callbacks) ─────────────
+            FrameLayout pitchLabelRow = createLabelRow(context, AUDIO_ICON);
             TextView currentPitchText = new TextView(context);
             float currentPitch = VideoInformation.getPlaybackAudioPitch();
             currentPitchText.setText(VideoInformation.formatAudioPitchStringX(currentPitch));
@@ -416,10 +428,9 @@ public class CustomPlaybackSpeedPatch {
             currentPitchText.setTextSize(16);
             currentPitchText.setTypeface(Typeface.DEFAULT_BOLD);
             currentPitchText.setGravity(Gravity.CENTER);
-            LinearLayout.LayoutParams pitchTextParams = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            pitchTextParams.setMargins(0, Dim.dp20, 0, 0);
-            currentPitchText.setLayoutParams(pitchTextParams);
+            currentPitchText.setLayoutParams(new FrameLayout.LayoutParams(
+                    FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT));
+            pitchLabelRow.addView(currentPitchText);
 
             LinearLayout pitchSliderLayout = new LinearLayout(context);
             pitchSliderLayout.setOrientation(LinearLayout.HORIZONTAL);
@@ -598,7 +609,7 @@ public class CustomPlaybackSpeedPatch {
             contentLayout.addView(linkLayout);
 
             // ── Row 4: Current playback audio pitch display ──────────────────────────
-            contentLayout.addView(currentPitchText);
+            contentLayout.addView(pitchLabelRow);
 
             // ── Row 5: Pitch slider with +/- buttons ─────────────────────────────────
             contentLayout.addView(pitchSliderLayout);
@@ -765,6 +776,33 @@ public class CustomPlaybackSpeedPatch {
         params.setMargins(Dim.dp8, 0, Dim.dp8, 0); // Set margins.
         button.setLayoutParams(params);
         return button;
+    }
+
+    /**
+     * Creates a row containing a leading icon and a centered value label.
+     * The icon is offset from the left edge without affecting the centered position of the value.
+     *
+     * @param context The Android context used to create the row.
+     * @param iconId  The drawable resource id of the leading icon.
+     * @return A configured {@link FrameLayout} containing the icon and centered value label.
+     */
+    private static FrameLayout createLabelRow(Context context, int iconId) {
+        FrameLayout row = new FrameLayout(context);
+        LinearLayout.LayoutParams rowParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        rowParams.setMargins(0, Dim.dp20, 0, 0);
+        row.setLayoutParams(rowParams);
+
+        ImageView icon = new ImageView(context);
+        icon.setImageResource(iconId);
+        FrameLayout.LayoutParams iconParams = new FrameLayout.LayoutParams(
+                Dim.dp20, Dim.dp20, Gravity.START | Gravity.CENTER_VERTICAL);
+        // Offset the icon so its center sits halfway between the center and the left edge of the dialog.
+        iconParams.leftMargin = Dim.pctPortraitWidth(25) - Dim.dp10;
+        icon.setLayoutParams(iconParams);
+        row.addView(icon);
+
+        return row;
     }
 
     /**
