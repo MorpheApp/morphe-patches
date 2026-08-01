@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.shared.settings.preference.about;
 
 import android.annotation.SuppressLint;
@@ -10,6 +20,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -27,6 +38,14 @@ class AboutWebViewDialog extends Dialog {
     public AboutWebViewDialog(@NonNull Context context, @NonNull String htmlContent) {
         super(context);
         this.htmlContent = htmlContent;
+    }
+
+    /**
+     * @return The client driving the page. Override to handle navigation that stays inside the app;
+     *         the default sends every link to an external browser.
+     */
+    protected WebViewClient createWebViewClient() {
+        return new AboutLinksWebClient(getContext(), this);
     }
 
     // JS required to hide any broken images. No remote JavaScript is ever loaded.
@@ -52,7 +71,7 @@ class AboutWebViewDialog extends Dialog {
         webView.setVerticalScrollBarEnabled(false); // Disable the vertical scrollbar.
         webView.setOverScrollMode(View.OVER_SCROLL_NEVER);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.setWebViewClient(new AboutLinksWebClient(getContext(), this));
+        webView.setWebViewClient(createWebViewClient());
         webView.loadDataWithBaseURL(null, htmlContent, "text/html", "utf-8", null);
 
         // Add WebView to layout.

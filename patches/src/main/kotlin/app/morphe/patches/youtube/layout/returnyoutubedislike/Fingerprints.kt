@@ -175,9 +175,6 @@ internal object TextComponentLookupFingerprint : Fingerprint(
 )
 
 internal object TextComponentFeatureFlagFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.FINAL),
-    returnType = "Z",
-    parameters = listOf(),
     filters = listOf(
         literal(45675738L)
     )

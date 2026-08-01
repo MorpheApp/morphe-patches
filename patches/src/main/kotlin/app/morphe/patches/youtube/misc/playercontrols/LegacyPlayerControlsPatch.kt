@@ -251,11 +251,12 @@ val legacyPlayerControlsPatch = bytecodePatch(
         }
 
         fun overrideExploderLayout(fingerprint: Fingerprint) {
-            fingerprint.let {
-                it.method.insertLiteralOverride(
-                    it.instructionMatches.first().index,
+            fingerprint.matchAll().forEach { match ->
+                // 21.30+ inlines the flag lookup and must patch ~6 places.
+                match.method.insertLiteralOverride(
+                    match.instructionMatches.first().index,
                     "$EXTENSION_CLASS->" +
-                            "usePlayerBottomControlsExploderLayout(Z)Z",
+                            "usePlayerBottomControlsExploderLayout(Z)Z"
                 )
             }
         }

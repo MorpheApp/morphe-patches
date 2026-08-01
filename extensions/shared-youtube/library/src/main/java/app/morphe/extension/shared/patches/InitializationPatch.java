@@ -8,7 +8,6 @@
 package app.morphe.extension.shared.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.shared.Utils.runOnMainThreadDelayed;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -38,7 +37,7 @@ public class InitializationPatch {
         // Save now in case this dialog somehow cannot be shown.
         SharedYouTubeSettings.SETTINGS_INITIALIZED.save(true);
 
-        runOnMainThreadDelayed(() -> {
+        Utils.runOnMainThreadDelayed(() -> {
             Activity activity = Utils.getActivity();
             if (activity == null) {
                 Logger.printInfo(() -> "Activity is null, skipping restart dialog");

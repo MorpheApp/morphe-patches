@@ -46,7 +46,7 @@ private object WideSearchBarLayoutFingerprint : Fingerprint(
     )
 )
 
-private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/WideSearchBarPatchLegacy;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/WideSearchBarLegacyPatch;"
 
 context(patchContext: BytecodePatchContext)
 internal fun applyLegacyWideSearchBar() {

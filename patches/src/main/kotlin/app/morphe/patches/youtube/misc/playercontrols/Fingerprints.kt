@@ -64,36 +64,24 @@ internal object PlayerBottomGradientScrimFingerprint : Fingerprint(
 )
 
 internal object PlayerBottomControlsExploderFeatureFlagFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Z",
-    parameters = listOf(),
     filters = listOf(
         literal(45643739L)
     )
 )
 
 internal object PlayerControlsLargeOverlayButtonsFeatureFlagFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Z",
-    parameters = listOf(),
     filters = listOf(
         literal(45709810L)
     )
 )
 
 internal object PlayerControlsFullscreenLargeButtonsFeatureFlagFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Z",
-    parameters = listOf(),
     filters = listOf(
         literal(45686474L)
     )
 )
 
 internal object PlayerControlsButtonStrokeFeatureFlagFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Z",
-    parameters = listOf(),
     filters = listOf(
         literal(45713296)
     )

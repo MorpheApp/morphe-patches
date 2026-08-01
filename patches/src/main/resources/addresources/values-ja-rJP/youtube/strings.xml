@@ -68,6 +68,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_expandable_card_entry_3">すべて非表示</string>
   <string name="morphe_hide_floating_microphone_button_title">音声入力のフローティング ボタンを非表示</string>
   <string name="morphe_hide_floating_microphone_button_summary">検索候補画面の右下に表示されるマイクボタンを非表示にします</string>
+  <string name="morphe_hide_get_premium_button_title">「Premium を購入」ボタンを非表示</string>
   <string name="morphe_hide_horizontal_shelves_title">横スクロール欄を非表示</string>
   <string name="morphe_hide_horizontal_shelves_summary">ニュース速報、おすすめのコミュニティ投稿、続きを見る、他のチャンネルを探す、その他のトピック、おすすめ、新着動画、関連が強い、\"チャンネル名\" のコミュニティの投稿、ショッピング、もう一度見る、などの横スクロール欄を非表示にします</string>
   <string name="morphe_hide_hyped_label_title">「大盛り上がり」ラベルを非表示</string>
@@ -194,6 +195,28 @@ Second \"item\" text"</string>
   <string name="morphe_hide_store_button_title">ストアボタンを非表示</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_subscribe_button_in_channel_page_title">チャンネル登録ボタンを非表示</string>
+  <string name="morphe_explore_menu_screen_title">探索メニュー</string>
+  <string name="morphe_explore_menu_screen_summary">方位磁針アイコンボタンから呼び出されるメニューに表示するコンポーネントを設定します</string>
+  <string name="morphe_hide_courses_menu_title">「コース」を非表示</string>
+  <string name="morphe_hide_explore_button_title">探索ボタンを非表示</string>
+  <string name="morphe_hide_fashion_menu_title">「ファッションと美容」を非表示</string>
+  <string name="morphe_hide_gaming_menu_title">「ゲーム」を非表示</string>
+  <string name="morphe_hide_hype_menu_title">「ハイプ」を非表示</string>
+  <string name="morphe_hide_live_menu_title">「ライブ」を非表示</string>
+  <string name="morphe_hide_memberships_menu_title">「メンバーシップ」を非表示</string>
+  <string name="morphe_hide_movies_menu_title">「映画とテレビ番組」を非表示</string>
+  <string name="morphe_hide_music_menu_title">「音楽」を非表示</string>
+  <string name="morphe_hide_news_menu_title">「ニュース」を非表示</string>
+  <string name="morphe_hide_playables_menu_title">「ゲームルーム」を非表示</string>
+  <string name="morphe_hide_podcasts_menu_title">「ポッドキャスト」を非表示</string>
+  <string name="morphe_hide_shopping_menu_title">「ショッピング」を非表示</string>
+  <string name="morphe_hide_sports_menu_title">「スポーツ」を非表示</string>
+  <string name="morphe_hide_youtube_premium_menu_title">「YouTube Premium」を非表示</string>
+  <string name="morphe_hide_youtube_studio_menu_title">「YouTube Studio」を非表示</string>
+  <string name="morphe_hide_youtube_music_menu_title">「YouTube Music」を非表示</string>
+  <string name="morphe_hide_youtube_kids_menu_title">「YouTube Kids」を非表示</string>
+  <string name="morphe_hide_youtube_create_menu_title">「YouTube Create」を非表示</string>
+  <string name="morphe_hide_privacy_tos_footer_title">「プライバシー ポリシー • 利用規約」を非表示</string>
   <string name="morphe_comments_screen_title">コメント</string>
   <string name="morphe_comments_screen_summary">コメント セクションに表示するコンポーネントを設定します</string>
   <string name="morphe_hide_comments_carousel_title">横スワイプ欄のフィルタを有効化</string>
@@ -204,10 +227,13 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">非表示にするコメント セクションの横スワイプ欄のタイトルを改行区切りで入力してください</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">AI による「チャットの要約」を非表示</string>
   <string name="morphe_hide_comments_channel_guidelines_title">チャンネルのガイドラインを非表示</string>
+  <string name="morphe_hide_comments_contexts_title">コメントの表示方法のヒントを非表示</string>
   <string name="morphe_hide_comments_by_members_header_title">「メンバーによるコメント」ヘッダーを非表示</string>
   <string name="morphe_hide_comments_section_title">コメント セクションを非表示</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">ホームフィードでのコメント欄を非表示</string>
+  <string name="morphe_hide_comments_community_guidelines_title">コミュニティ ガイドラインを非表示</string>
   <string name="morphe_hide_comments_create_a_short_button_title">「ショート動画を作成」ボタンを非表示</string>
+  <string name="morphe_hide_comments_emoji_button_title">絵文字ボタンを非表示</string>
   <string name="morphe_hide_comments_filter_bar_options_title">コメント欄で基本のフィルタバー以外を非表示</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">「人気順」と「新しい順」以外の、コメント欄のフィルタバーをすべて非表示にします</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">ギフト アニメーションとギフトカードを非表示</string>
@@ -217,6 +243,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_preview_comment_title">コメントのプレビューを非表示</string>
   <string name="morphe_hide_comments_preview_comment_summary">コメント欄を開く前に動画の下に表示される、コメントのプレビューを非表示にします</string>
   <string name="morphe_hide_comments_thanks_button_title">Thanks ボタンを非表示</string>
+  <string name="morphe_hide_comments_timestamp_button_title">タイムスタンプ ボタンを非表示</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">テキスト内の検索リンクを除去</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">テキスト内の単語やフレーズに埋め込まれた虫眼鏡アイコン付きの検索リンクを取り除き、通常のテキストに戻します</string>
   <string name="morphe_hide_keyword_content_screen_title">キーワード フィルタ</string>
@@ -286,7 +313,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_general_ads_title">一般的な広告を非表示</string>
   <string name="morphe_hide_merchandise_banners_title">商品バナーを非表示</string>
   <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
-  <string name="morphe_hide_paid_promotion_label_title">「プロモーションを含みます」ラベルを非表示</string>
+  <string name="morphe_hide_paid_promotion_labels_title">プロモーションの告知を非表示</string>
   <string name="morphe_hide_player_popup_ads_title">プレーヤーのポップアップ広告を非表示</string>
   <string name="morphe_hide_self_sponsor_ads_title">自己宣伝カードを非表示</string>
   <string name="morphe_hide_shopping_links_title">商品へのリンクを非表示</string>
@@ -591,8 +618,8 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_auto_captions_style_title">自動字幕表示</string>
   <string name="morphe_auto_captions_style_entry_1">常に表示</string>
   <string name="morphe_auto_captions_style_entry_2">常に非表示</string>
-  <string name="morphe_auto_captions_style_entry_3">非ミュート時に表示</string>
-  <string name="morphe_auto_captions_style_entry_4">ミュート時に表示</string>
+  <string name="morphe_auto_captions_style_entry_3">ミュート解除中に表示</string>
+  <string name="morphe_auto_captions_style_entry_4">ミュート中に表示</string>
   <string name="morphe_auto_captions_style_legacy_entry_1">自動字幕を表示</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">自動字幕を非表示</string>
   <!-- layout.captions.captionCookiesPatch -->

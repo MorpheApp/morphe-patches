@@ -1,9 +1,6 @@
 package app.morphe.extension.youtube.patches.announcements;
 
-import static android.text.Html.FROM_HTML_MODE_COMPACT;
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.youtube.patches.announcements.requests.AnnouncementsRoutes.GET_LATEST_ANNOUNCEMENTS;
-import static app.morphe.extension.youtube.patches.announcements.requests.AnnouncementsRoutes.GET_LATEST_ANNOUNCEMENT_IDS;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -33,8 +30,8 @@ public final class AnnouncementsPatch {
     }
 
     private static boolean isLatestAlready() throws IOException {
-        HttpURLConnection connection =
-                AnnouncementsRoutes.getAnnouncementsConnectionFromRoute(GET_LATEST_ANNOUNCEMENT_IDS);
+        HttpURLConnection connection = AnnouncementsRoutes.getAnnouncementsConnectionFromRoute(
+                AnnouncementsRoutes.GET_LATEST_ANNOUNCEMENT_IDS);
 
         Logger.printDebug(() -> "Get latest announcement IDs route connection URL: " + connection.getURL());
 
@@ -82,7 +79,7 @@ public final class AnnouncementsPatch {
                 if (isLatestAlready()) return;
 
                 HttpURLConnection connection = AnnouncementsRoutes
-                        .getAnnouncementsConnectionFromRoute(GET_LATEST_ANNOUNCEMENTS);
+                        .getAnnouncementsConnectionFromRoute(AnnouncementsRoutes.GET_LATEST_ANNOUNCEMENTS);
 
                 Logger.printDebug(() -> "Get latest announcements route connection URL: " + connection.getURL());
 
@@ -121,7 +118,7 @@ public final class AnnouncementsPatch {
 
                 int finalId = id;
                 final var finalTitle = title;
-                final var finalMessage = Html.fromHtml(message, FROM_HTML_MODE_COMPACT);
+                final var finalMessage = Html.fromHtml(message, Html.FROM_HTML_MODE_COMPACT);
                 final Level finalLevel = level;
 
                 Utils.runOnMainThread(() -> {

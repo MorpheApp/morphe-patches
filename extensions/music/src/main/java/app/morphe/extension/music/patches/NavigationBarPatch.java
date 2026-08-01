@@ -1,7 +1,5 @@
 package app.morphe.extension.music.patches;
 
-import static app.morphe.extension.shared.Utils.hideViewUnderCondition;
-
 import android.view.View;
 import android.widget.TextView;
 
@@ -11,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
 public class NavigationBarPatch {
@@ -23,25 +22,26 @@ public class NavigationBarPatch {
     }
 
     public static void hideNavigationLabel(TextView textview) {
-        hideViewUnderCondition(Settings.HIDE_NAVIGATION_BAR_LABEL.get(), textview);
+        Utils.hideViewUnderCondition(Settings.HIDE_NAVIGATION_BAR_LABEL.get(), textview);
     }
 
     public static void hideNavigationButton(View view) {
         // Hide entire navigation bar.
         if (Settings.HIDE_NAVIGATION_BAR.get() && view.getParent() != null) {
-            hideViewUnderCondition(true, (View) view.getParent());
+            Utils.hideViewUnderCondition(true, (View) view.getParent());
             return;
         }
 
         // Hide navigation buttons based on their type.
         for (NavigationButton button : NavigationButton.values()) {
             if (button.ytEnumNames.contains(lastYTNavigationEnumName)) {
-                hideViewUnderCondition(button.hidden, view);
+                Utils.hideViewUnderCondition(button.hidden, view);
                 break;
             }
         }
     }
 
+    @SuppressWarnings("ArraysAsListWithZeroOrOneArgument")
     private enum NavigationButton {
         HOME(
                 Arrays.asList(

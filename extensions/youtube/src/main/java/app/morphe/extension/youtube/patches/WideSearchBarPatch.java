@@ -7,8 +7,6 @@
 
 package app.morphe.extension.youtube.patches;
 
-import static app.morphe.extension.shared.ResourceUtils.getIdentifier;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -40,8 +38,10 @@ import app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 public class WideSearchBarPatch {
 
     private static final Boolean WIDE_SEARCHBAR_ENABLED = Settings.WIDE_SEARCHBAR.get();
-    private static final int ID_YOUTUBE_LOGO = getIdentifier(ResourceType.ID, "youtube_logo");
-    private static final int ID_SEARCH_ICON = getIdentifier(ResourceType.DRAWABLE, "morphe_settings_search_icon_bold");
+    private static final int ID_YOUTUBE_LOGO =
+            ResourceUtils.getIdentifier(ResourceType.ID, "youtube_logo");
+    private static final int ID_SEARCH_ICON =
+            ResourceUtils.getIdentifier(ResourceType.DRAWABLE, "morphe_settings_search_icon_bold");
     private static final String SEARCH_HINT = ResourceUtils.getString("search_hint");
     private static final int DP115 = Dim.dp(115);
 
@@ -72,7 +72,9 @@ public class WideSearchBarPatch {
             if (searchParentView == null) {
                 return;
             }
-            if (activeButton != NavigationButton.HOME && activeButton != NavigationButton.SUBSCRIPTIONS) {
+            if (activeButton != NavigationButton.HOME
+                    && activeButton != NavigationButton.SUBSCRIPTIONS
+                    && activeButton != NavigationButton.NOTIFICATIONS) {
                 return;
             }
             if (NavigationBar.isBackButtonVisible()) {

@@ -1,11 +1,10 @@
 package app.morphe.extension.music.patches;
 
-import static app.morphe.extension.shared.Utils.hideViewBy0dpUnderCondition;
-
 import android.view.View;
 import android.view.ViewGroup;
 
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
 public class HideButtonsPatch {
@@ -21,7 +20,7 @@ public class HideButtonsPatch {
      * Injection point
      */
     public static void hideCastButton(View view) {
-        hideViewBy0dpUnderCondition(Settings.HIDE_CAST_BUTTON, view);
+        Utils.hideViewBy0dpUnderCondition(Settings.HIDE_CAST_BUTTON, view);
     }
 
     /**
@@ -36,7 +35,7 @@ public class HideButtonsPatch {
      */
     public static void hideNotificationButton(View view) {
         if (view.getParent() instanceof ViewGroup viewGroup) {
-            hideViewBy0dpUnderCondition(Settings.HIDE_NOTIFICATION_BUTTON, viewGroup);
+            Utils.hideViewBy0dpUnderCondition(Settings.HIDE_NOTIFICATION_BUTTON, viewGroup);
         }
     }
 
@@ -44,6 +43,6 @@ public class HideButtonsPatch {
      * Injection point
      */
     public static void hideSearchButton(View view) {
-        hideViewBy0dpUnderCondition(Settings.HIDE_SEARCH_BUTTON, view);
+        Utils.hideViewBy0dpUnderCondition(Settings.HIDE_SEARCH_BUTTON, view);
     }
 }

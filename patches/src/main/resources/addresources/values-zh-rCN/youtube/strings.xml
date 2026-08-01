@@ -68,6 +68,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_expandable_card_entry_3">隐藏全部</string>
   <string name="morphe_hide_floating_microphone_button_title">隐藏浮动麦克风按钮</string>
   <string name="morphe_hide_floating_microphone_button_summary">隐藏在搜索建议屏幕右下角的悬浮麦克风按钮</string>
+  <string name="morphe_hide_get_premium_button_title">隐藏“获取高级版”按钮</string>
   <string name="morphe_hide_horizontal_shelves_title">隐藏横排展示架</string>
   <string name="morphe_hide_horizontal_shelves_summary">隐藏诸如“突发新闻”、“你可能喜欢的社区帖子”、“继续观看”、“探索更多频道”、“探索更多话题”、“为你推荐”、“最新视频”、“最相关”、“创作者社区帖子”、“购物”和“再次观看”等横向内容架</string>
   <string name="morphe_hide_hyped_label_title">隐藏热门标签</string>
@@ -194,6 +195,28 @@ Second \"item\" text"</string>
   <string name="morphe_hide_store_button_title">隐藏“商店”按钮</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_subscribe_button_in_channel_page_title">隐藏“订阅”按钮</string>
+  <string name="morphe_explore_menu_screen_title">探索菜单</string>
+  <string name="morphe_explore_menu_screen_summary">选择在探索菜单中显示哪些组件</string>
+  <string name="morphe_hide_courses_menu_title">隐藏课程菜单</string>
+  <string name="morphe_hide_explore_button_title">隐藏探索按钮</string>
+  <string name="morphe_hide_fashion_menu_title">隐藏“时尚与美妆”菜单</string>
+  <string name="morphe_hide_gaming_menu_title">隐藏游戏菜单</string>
+  <string name="morphe_hide_hype_menu_title">隐藏Hype菜单</string>
+  <string name="morphe_hide_live_menu_title">隐藏直播菜单</string>
+  <string name="morphe_hide_memberships_menu_title">隐藏会员菜单</string>
+  <string name="morphe_hide_movies_menu_title">隐藏电影菜单</string>
+  <string name="morphe_hide_music_menu_title">隐藏“音乐与电视”菜单</string>
+  <string name="morphe_hide_news_menu_title">隐藏新闻菜单</string>
+  <string name="morphe_hide_playables_menu_title">隐藏Playables</string>
+  <string name="morphe_hide_podcasts_menu_title">隐藏播客菜单</string>
+  <string name="morphe_hide_shopping_menu_title">隐藏购物菜单</string>
+  <string name="morphe_hide_sports_menu_title">隐藏体育菜单</string>
+  <string name="morphe_hide_youtube_premium_menu_title">隐藏YouTube Premium菜单</string>
+  <string name="morphe_hide_youtube_studio_menu_title">隐藏YouTube Studio菜单</string>
+  <string name="morphe_hide_youtube_music_menu_title">隐藏YouTube Music菜单</string>
+  <string name="morphe_hide_youtube_kids_menu_title">隐藏YouTube Kids菜单</string>
+  <string name="morphe_hide_youtube_create_menu_title">隐藏YouTube Create菜单</string>
+  <string name="morphe_hide_privacy_tos_footer_title">隐藏“隐私政策 • 服务条款”页脚</string>
   <string name="morphe_comments_screen_title">评论</string>
   <string name="morphe_comments_screen_summary">选择要在评论部分中显示的组件</string>
   <string name="morphe_hide_comments_carousel_title">启用评论轮播过滤</string>
@@ -204,10 +227,13 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">输入要过滤的评论轮播图名称，以换行符分隔，每行一个</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">隐藏 AI 聊天摘要</string>
   <string name="morphe_hide_comments_channel_guidelines_title">隐藏频道准则</string>
+  <string name="morphe_hide_comments_contexts_title">隐藏上下文消息</string>
   <string name="morphe_hide_comments_by_members_header_title">隐藏“会员的评论”标题</string>
   <string name="morphe_hide_comments_section_title">隐藏评论区</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">隐藏主页动态的评论区</string>
+  <string name="morphe_hide_comments_community_guidelines_title">隐藏社区指南</string>
   <string name="morphe_hide_comments_create_a_short_button_title">隐藏“创建 Short”按钮</string>
+  <string name="morphe_hide_comments_emoji_button_title">隐藏表情符号按钮</string>
   <string name="morphe_hide_comments_filter_bar_options_title">隐藏筛选栏选项</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">隐藏所有筛选栏选项，除了“热门”和“最新”</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">隐藏礼物动画和卡片</string>
@@ -217,6 +243,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_preview_comment_title">隐藏评论预览</string>
   <string name="morphe_hide_comments_preview_comment_summary">隐藏在打开完整评论部分之前，视频下方的评论预览</string>
   <string name="morphe_hide_comments_thanks_button_title">隐藏感谢按钮</string>
+  <string name="morphe_hide_comments_timestamp_button_title">隐藏时间戳按钮</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">清理高亮显示的搜索链接</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">清理高亮显示的搜索链接，仅保留原始纯文本</string>
   <string name="morphe_hide_keyword_content_screen_title">关键词过滤</string>
@@ -286,7 +313,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_general_ads_title">隐藏一般广告</string>
   <string name="morphe_hide_merchandise_banners_title">隐藏商品广告横幅</string>
   <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
-  <string name="morphe_hide_paid_promotion_label_title">隐藏“包含付费推广”标签</string>
+  <string name="morphe_hide_paid_promotion_labels_title">隐藏付费推广标签</string>
   <string name="morphe_hide_player_popup_ads_title">隐藏播放器弹出广告</string>
   <string name="morphe_hide_self_sponsor_ads_title">隐藏自我推广卡片</string>
   <string name="morphe_hide_shopping_links_title">隐藏购物链接</string>

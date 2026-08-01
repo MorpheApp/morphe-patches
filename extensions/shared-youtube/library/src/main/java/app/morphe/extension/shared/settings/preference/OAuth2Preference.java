@@ -1,7 +1,6 @@
 package app.morphe.extension.shared.settings.preference;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.shared.oauth2.requests.OAuth2Requester.isActivationCodeDataAvailable;
 
 import android.app.Activity;
 import android.app.Application;
@@ -73,7 +72,7 @@ public abstract class OAuth2Preference extends Preference implements Preference.
             // Instead, check when the app resumes with some logic to wait a few seconds if the
             // user is changing back and forth before auth is approved.
             Logger.printDebug(() -> "onActivityResumed");
-            if (isActivationCodeDataAvailable()) {
+            if (OAuth2Requester.isActivationCodeDataAvailable()) {
                 if (getTokenAttemptScheduled) {
                     return;
                 }

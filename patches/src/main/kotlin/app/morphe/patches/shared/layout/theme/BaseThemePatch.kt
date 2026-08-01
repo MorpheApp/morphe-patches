@@ -158,6 +158,7 @@ internal val lightThemeBackgroundColorOption = colorOption(
 internal fun baseThemePatch(
     extensionClassDescriptor: String,
     includeLightThemeOption: Boolean = false,
+    useModernLithoColorHook: BytecodePatchBuilder.() -> Boolean,
     block: BytecodePatchBuilder.() -> Unit,
     executeBlock: BytecodePatchContext.() -> Unit = {}
 ) = bytecodePatch(
@@ -173,7 +174,7 @@ internal fun baseThemePatch(
 
     block()
 
-    dependsOn(lithoColorHookPatch)
+    dependsOn(lithoColorHookPatch(useModernLithoColorHook))
 
     execute {
         overrideThemeColors(

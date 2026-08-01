@@ -10,9 +10,6 @@
 
 package app.morphe.extension.youtube.shared;
 
-import static app.morphe.extension.shared.spoof.SpoofAppVersionPatch.isSpoofingToLessThan;
-import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton.CREATE;
-
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.view.View;
@@ -36,6 +33,7 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseSettings;
+import app.morphe.extension.shared.spoof.SpoofAppVersionPatch;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -274,7 +272,7 @@ public final class NavigationBar {
     public static void navigationImageResourceTabLoaded(View view) {
         // 'You' tab has no YT enum name and the enum hook is not called for it.
         // Compare the last enum to figure out which tab this actually is.
-        if (CREATE.ytEnumNames.contains(lastYTNavigationEnumName)) {
+        if (NavigationBar.NavigationButton.CREATE.ytEnumNames.contains(lastYTNavigationEnumName)) {
             navigationTabLoaded(view);
         } else {
             lastYTNavigationEnumName = NavigationButton.LIBRARY.ytEnumNames.get(0);
@@ -339,7 +337,7 @@ public final class NavigationBar {
      * Custom cairo notification filled icon to fix unpatched app missing resource.
      */
     private static final int fillBellCairoBlack = ResourceUtils.getIdentifier(ResourceType.DRAWABLE,
-            VersionCheckPatch.IS_20_31_OR_GREATER && !isSpoofingToLessThan("20.31.00")
+            VersionCheckPatch.IS_20_31_OR_GREATER && !SpoofAppVersionPatch.isSpoofingToLessThan("20.31.00")
                     ? "yt_fill_experimental_bell_vd_theme_24"
                     : "morphe_fill_bell_cairo_black_24"
     );

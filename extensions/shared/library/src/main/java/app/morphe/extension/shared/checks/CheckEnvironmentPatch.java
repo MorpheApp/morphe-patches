@@ -1,7 +1,6 @@
 package app.morphe.extension.shared.checks;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.shared.checks.Check.debugAlwaysShowWarning;
 import static app.morphe.extension.shared.checks.PatchInfo.Build.PATCH_BOARD;
 import static app.morphe.extension.shared.checks.PatchInfo.Build.PATCH_BOOTLOADER;
 import static app.morphe.extension.shared.checks.PatchInfo.Build.PATCH_BRAND;
@@ -51,7 +50,7 @@ import app.morphe.extension.shared.Utils;
  */
 @SuppressWarnings({"unused", "deprecation"})
 public final class CheckEnvironmentPatch {
-    private static final boolean DEBUG_ALWAYS_SHOW_CHECK_FAILED_DIALOG = debugAlwaysShowWarning();
+    private static final boolean DEBUG_ALWAYS_SHOW_CHECK_FAILED_DIALOG = Check.debugAlwaysShowWarning();
 
     private enum InstallationType {
         /**

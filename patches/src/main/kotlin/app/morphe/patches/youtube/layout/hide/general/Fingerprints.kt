@@ -21,6 +21,7 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
+import app.morphe.patcher.parametersMatch
 import app.morphe.patcher.string
 import app.morphe.patches.all.misc.resources.ResourceType
 import app.morphe.patches.all.misc.resources.resourceLiteral
@@ -474,13 +475,25 @@ internal object ChannelTabAddFingerprint : Fingerprint(
     classFingerprint = ChannelTabRendererFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf(
-        "L",
-        "I"
-    ),
     filters = listOf(
-        methodCall("Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z"),
-    )
+        methodCall("Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z")
+    ),
+    custom = { method, _ ->
+        parametersMatch(
+            method.parameters,
+            listOf(
+                "L",
+                "I"
+            )
+        ) || parametersMatch( // 21.31+
+            method.parameters,
+            listOf(
+                "L",
+                "I",
+                "L"
+            )
+        )
+    }
 )
 
 internal object InformationButtonFingerprint : Fingerprint(

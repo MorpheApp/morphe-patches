@@ -68,6 +68,7 @@ Wijzigingen zijn:
   <string name="morphe_hide_expandable_card_entry_3">Alles verbergen</string>
   <string name="morphe_hide_floating_microphone_button_title">Verberg zwevende microfoonknop</string>
   <string name="morphe_hide_floating_microphone_button_summary">Verbergt de zwevende microfoonknop in de rechteronderhoek van het scherm met zoeksuggesties</string>
+  <string name="morphe_hide_get_premium_button_title">\'Get Premium\' knop verbergen</string>
   <string name="morphe_hide_horizontal_shelves_title">Horizontale planken verbergen</string>
   <string name="morphe_hide_horizontal_shelves_summary">Verbergt horizontale schappen zoals Breaking news, Community posts die je misschien leuk vindt, Verder kijken, Meer kanalen verkennen, Meer onderwerpen verkennen, Voor jou, Nieuwste video\'s, Meest relevant, Posts van de Creator\'s Community, Shopping, en Kijk opnieuw</string>
   <string name="morphe_hide_hyped_label_title">Verberg Hyped label</string>
@@ -194,6 +195,28 @@ Wijzigingen zijn:
   <string name="morphe_hide_store_button_title">Verberg \'Winkel\' knop</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_subscribe_button_in_channel_page_title">Verberg de knop \"Abonneren\"</string>
+  <string name="morphe_explore_menu_screen_title">Ontdek menu</string>
+  <string name="morphe_explore_menu_screen_summary">Kies welke componenten verschijnen in het ontdekmenu</string>
+  <string name="morphe_hide_courses_menu_title">Verberg Cursussen menu</string>
+  <string name="morphe_hide_explore_button_title">Verberg Ontdek knop</string>
+  <string name="morphe_hide_fashion_menu_title">Verberg het \'Mode &amp; Beauty\'-menu</string>
+  <string name="morphe_hide_gaming_menu_title">Verberg Gaming menu</string>
+  <string name="morphe_hide_hype_menu_title">Verberg Hype menu</string>
+  <string name="morphe_hide_live_menu_title">Verberg Live menu</string>
+  <string name="morphe_hide_memberships_menu_title">Verberg Lidmaatschappen menu</string>
+  <string name="morphe_hide_movies_menu_title">Verberg Films menu</string>
+  <string name="morphe_hide_music_menu_title">Verberg het \'Muziek &amp; TV\'-menu</string>
+  <string name="morphe_hide_news_menu_title">Verberg Nieuws menu</string>
+  <string name="morphe_hide_playables_menu_title">Verberg Speelbare items menu</string>
+  <string name="morphe_hide_podcasts_menu_title">Verberg Podcasts menu</string>
+  <string name="morphe_hide_shopping_menu_title">Verberg Shopping menu</string>
+  <string name="morphe_hide_sports_menu_title">Verberg Sport menu</string>
+  <string name="morphe_hide_youtube_premium_menu_title">Verberg YouTube Premium menu</string>
+  <string name="morphe_hide_youtube_studio_menu_title">Verberg YouTube Studio menu</string>
+  <string name="morphe_hide_youtube_music_menu_title">Verberg YouTube Music menu</string>
+  <string name="morphe_hide_youtube_kids_menu_title">Verberg YouTube Kids menu</string>
+  <string name="morphe_hide_youtube_create_menu_title">Verberg YouTube Create menu</string>
+  <string name="morphe_hide_privacy_tos_footer_title">Verberg \'Privacybeleid • Servicevoorwaarden\' voettekst</string>
   <string name="morphe_comments_screen_title">Reacties</string>
   <string name="morphe_comments_screen_summary">Kies welke componenten verschijnen in de commentaarsectie</string>
   <string name="morphe_hide_comments_carousel_title">Schakel filter voor commentaarcarrousel in</string>
@@ -290,7 +313,7 @@ Tik hier om AiSlopList.com te openen en downloads voor andere platforms te bekij
   <string name="morphe_hide_general_ads_title">Algemene advertenties verbergen</string>
   <string name="morphe_hide_merchandise_banners_title">Merchandise banners verbergen</string>
   <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
-  <string name="morphe_hide_paid_promotion_label_title">Verberg \'Bevat betaalde promotie\' label</string>
+  <string name="morphe_hide_paid_promotion_labels_title">Betaalde promotielabels verbergen</string>
   <string name="morphe_hide_player_popup_ads_title">Verberg speler pop-up reclames</string>
   <string name="morphe_hide_self_sponsor_ads_title">Zelf gesponsorde kaarten verbergen</string>
   <string name="morphe_hide_shopping_links_title">Winkellinks verbergen</string>

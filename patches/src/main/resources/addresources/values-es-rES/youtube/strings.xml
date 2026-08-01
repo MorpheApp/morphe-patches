@@ -67,7 +67,8 @@ Los cambios incluyen:
   <string name="morphe_hide_expandable_card_entry_2">Ocultar solo la tarjeta de resumen</string>
   <string name="morphe_hide_expandable_card_entry_3">Ocultar todo</string>
   <string name="morphe_hide_floating_microphone_button_title">Ocultar botón flotante del micrófono</string>
-  <string name="morphe_hide_floating_microphone_button_summary">Oculta el botón del micrófono flotante en la esquina inferior derecha de la pantalla de sugerencias de búsqueda</string>
+  <string name="morphe_hide_floating_microphone_button_summary">Oculta el botón flotante del micrófono en la esquina inferior derecha de la pantalla de sugerencias de búsqueda</string>
+  <string name="morphe_hide_get_premium_button_title">Ocultar botón \"Obtener Premium\"</string>
   <string name="morphe_hide_horizontal_shelves_title">Ocultar secciones horizontales</string>
   <string name="morphe_hide_horizontal_shelves_summary">Oculta secciones horizontales como Noticias de última hora, Publicaciones de la comunidad que te pueden gustar, Continuar viendo, Explorar más canales, Explorar más temas, Para ti, Videos más recientes, Más relevante, Publicaciones de la comunidad del Creador, Compras y Volver a ver</string>
   <string name="morphe_hide_hyped_label_title">Ocultar etiqueta \"Hypeado\"</string>
@@ -312,7 +313,7 @@ Pulsa aquí para abrir AiSlopList.com y ver las descargas para otras plataformas
   <string name="morphe_hide_general_ads_title">Ocultar anuncios generales</string>
   <string name="morphe_hide_merchandise_banners_title">Ocultar banners de merchandising</string>
   <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
-  <string name="morphe_hide_paid_promotion_label_title">Ocultar etiqueta \"Incluye promoción pagada\"</string>
+  <string name="morphe_hide_paid_promotion_labels_title">Ocultar etiquetas de promoción pagada</string>
   <string name="morphe_hide_player_popup_ads_title">Ocultar anuncios emergentes del reproductor</string>
   <string name="morphe_hide_self_sponsor_ads_title">Ocultar tarjetas autopatrocinadas</string>
   <string name="morphe_hide_shopping_links_title">Ocultar enlaces de compras</string>
@@ -642,13 +643,13 @@ Deben proporcionarse 'Cookies de subtítulos'"</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Ocultar botón Inicio</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_shorts_button_title">Ocultar botón Shorts</string>
+  <string name="morphe_hide_shorts_button_title">Ocultar botón \"Shorts\"</string>
   <!-- 'Create' has no display name. Translate normally. -->
-  <string name="morphe_hide_create_button_title">Ocultar botón Crear</string>
+  <string name="morphe_hide_create_button_title">Ocultar botón \"Crear\"</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_subscriptions_button_title">Ocultar botón Suscripciones</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_notifications_button_title">Ocultar botón Notificaciones</string>
+  <string name="morphe_hide_notifications_button_title">Ocultar botón \"Notificaciones\"</string>
   <string name="morphe_show_search_button_title">Mostrar botón de búsqueda</string>
   <string name="morphe_show_search_button_index_title">Posición del botón de búsqueda</string>
   <string name="morphe_show_settings_button_title">Mostrar botón de ajustes</string>
@@ -679,12 +680,12 @@ Para acceder a los ajustes, activa el botón de ajustes a través de General →
   <string name="morphe_disable_translucent_navigation_bar_dark_summary">Hace que la barra de navegación sea completamente opaca en modo oscuro</string>
   <string name="morphe_toolbar_screen_title">Barra de herramientas</string>
   <string name="morphe_toolbar_screen_summary">Elija qué componentes aparecen en la barra de herramientas</string>
-  <string name="morphe_hide_toolbar_cast_button_title">Ocultar botón Transmitir</string>
-  <string name="morphe_hide_toolbar_chat_button_title">Ocultar botón Chat</string>
-  <string name="morphe_hide_toolbar_create_button_title">Ocultar botón Crear</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Ocultar botón \"Transmitir\"</string>
+  <string name="morphe_hide_toolbar_chat_button_title">Ocultar botón \"Chat\"</string>
+  <string name="morphe_hide_toolbar_create_button_title">Ocultar botón \"Crear\"</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Ocultar botón Micrófono</string>
-  <string name="morphe_hide_toolbar_notification_button_title">Ocultar botón Notificaciones</string>
-  <string name="morphe_hide_toolbar_search_button_title">Ocultar botón Buscar</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Ocultar botón \"Notificaciones\"</string>
+  <string name="morphe_hide_toolbar_search_button_title">Ocultar botón \"Buscar\"</string>
   <string name="morphe_show_toolbar_settings_button_title">Mostrar botón de ajustes</string>
   <string name="morphe_show_toolbar_settings_button_index_title">Posición del botón de ajustes</string>
   <string name="morphe_show_toolbar_settings_button_type_title">Acción del botón de ajustes</string>
@@ -1128,7 +1129,7 @@ La reproducción de vídeo con AV1 se puede atascar o perder fotogramas."</strin
   <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• La calidad puede estar limitada a 720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Variante de JavaScript del reproductor</string>
-  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Mostrar manipulación en Estadísticas para nerds</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Mostrar falsificación en \'Estadísticas avanzadas\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Restaurar antigua barra de acciones de vídeo</string>
   <string name="morphe_restore_old_video_action_bar_summary">"Corrige que no se muestren los \"No me gusta\" y que no se puedan ocultar los botones de acción de vídeo

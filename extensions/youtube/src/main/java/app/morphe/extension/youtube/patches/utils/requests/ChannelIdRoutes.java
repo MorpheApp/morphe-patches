@@ -9,6 +9,8 @@ package app.morphe.extension.youtube.patches.utils.requests;
 
 import android.os.Build;
 
+import androidx.annotation.NonNull;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -44,20 +46,7 @@ public final class ChannelIdRoutes {
 
     public static byte[] createBody(String videoId) {
         try {
-            JSONObject client = new JSONObject();
-            client.put("clientName", "ANDROID");
-            client.put("clientVersion", CLIENT_VERSION);
-            client.put("deviceMake", Build.MANUFACTURER);
-            client.put("deviceModel", Build.MODEL);
-            client.put("osName", "Android");
-            client.put("osVersion", Build.VERSION.RELEASE);
-            client.put("androidSdkVersion", Build.VERSION.SDK_INT);
-            Locale localeDefault = Locale.getDefault();
-            client.put("hl", localeDefault.getLanguage());
-            client.put("gl", localeDefault.getCountry());
-
-            JSONObject context = new JSONObject();
-            context.put("client", client);
+            JSONObject context = getJsonObject();
 
             JSONObject innerTubeBody = new JSONObject();
             innerTubeBody.put("context", context);
@@ -71,6 +60,25 @@ public final class ChannelIdRoutes {
             Logger.printException(() -> "createBody failed", ex);
         }
         return new byte[0];
+    }
+
+    @NonNull
+    private static JSONObject getJsonObject() throws JSONException {
+        JSONObject client = new JSONObject();
+        client.put("clientName", "ANDROID");
+        client.put("clientVersion", CLIENT_VERSION);
+        client.put("deviceMake", Build.MANUFACTURER);
+        client.put("deviceModel", Build.MODEL);
+        client.put("osName", "Android");
+        client.put("osVersion", Build.VERSION.RELEASE);
+        client.put("androidSdkVersion", Build.VERSION.SDK_INT);
+        Locale localeDefault = Locale.getDefault();
+        client.put("hl", localeDefault.getLanguage());
+        client.put("gl", localeDefault.getCountry());
+
+        JSONObject context = new JSONObject();
+        context.put("client", client);
+        return context;
     }
 
     public static HttpURLConnection getConnection(Route.CompiledRoute route) throws IOException {

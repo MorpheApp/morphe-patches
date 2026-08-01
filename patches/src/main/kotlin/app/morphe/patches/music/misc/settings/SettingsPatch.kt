@@ -181,7 +181,7 @@ val settingsPatch = bytecodePatch(
         )
 
         if (is_8_40_or_greater) {
-            BoldIconsFeatureFlagFingerprint.let {
+            BoldIconsFeatureFlagFingerprint.matchAll().forEach {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
                     "$MUSIC_ACTIVITY_HOOK_CLASS->useBoldIcons(Z)Z"

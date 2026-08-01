@@ -1,7 +1,5 @@
 package app.morphe.extension.shared.settings.search;
 
-import static app.morphe.extension.shared.ResourceUtils.getIdentifierOrThrow;
-
 import android.animation.AnimatorSet;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
@@ -34,6 +32,7 @@ import java.util.Locale;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.preference.ColorPickerPreference;
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
@@ -54,15 +53,15 @@ public abstract class BaseSearchResultsAdapter extends ArrayAdapter<BaseSearchRe
     protected static final int BLINK_DURATION = 400;
     protected static final int PAUSE_BETWEEN_BLINKS = 100;
 
-    protected static final int ID_PREFERENCE_TITLE = getIdentifierOrThrow(
+    protected static final int ID_PREFERENCE_TITLE = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "preference_title");
-    protected static final int ID_PREFERENCE_SUMMARY = getIdentifierOrThrow(
+    protected static final int ID_PREFERENCE_SUMMARY = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "preference_summary");
-    protected static final int ID_PREFERENCE_PATH = getIdentifierOrThrow(
+    protected static final int ID_PREFERENCE_PATH = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "preference_path");
-    protected static final int ID_PREFERENCE_SWITCH = getIdentifierOrThrow(
+    protected static final int ID_PREFERENCE_SWITCH = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "preference_switch");
-    protected static final int ID_PREFERENCE_COLOR_DOT = getIdentifierOrThrow(
+    protected static final int ID_PREFERENCE_COLOR_DOT = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "preference_color_dot");
 
     protected static class RegularViewHolder {

@@ -31,6 +31,10 @@ Second \"item\" text"</string>
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">O programu</string>
   <string name="morphe_settings_music_screen_1_ads_title">Oglasi</string>
+  <string name="morphe_settings_music_screen_2_feed_title">Fid</string>
+  <string name="morphe_settings_music_screen_3_general_title">Opšte</string>
+  <string name="morphe_settings_music_screen_4_player_title">Plejer</string>
+  <string name="morphe_settings_music_screen_8_misc_title">Razno</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Sakrij oznaku „Nabavite Music Premium”</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Sakrij promocije za Music Premium</string>
@@ -53,6 +57,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_comments_screen_title">Komentari</string>
   <string name="morphe_music_comments_screen_summary">Odaberite koje komponente se pojavljuju u sekciji komentara</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Sakrij smernice zajednice</string>
+  <string name="morphe_music_hide_comments_context_title">Sakrij poruku konteksta</string>
   <string name="morphe_music_hide_comments_emoji_button_title">Sakrij dugme za emodžije</string>
   <string name="morphe_music_hide_comments_info_button_title">Sakrij dugme za informacije</string>
   <string name="morphe_music_hide_comments_timestamp_button_title">Sakrij dugme za vremensku oznaku</string>

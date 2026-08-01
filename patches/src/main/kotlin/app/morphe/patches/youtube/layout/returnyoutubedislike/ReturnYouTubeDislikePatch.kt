@@ -181,7 +181,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
         }
 
         // Hook new litho text creation code.
-        TextComponentFeatureFlagFingerprint.let {
+        TextComponentFeatureFlagFingerprint.matchAll().forEach {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
                 "$EXTENSION_CLASS->useNewLithoTextCreation(Z)Z"

@@ -10,10 +10,6 @@
 
 package app.morphe.extension.youtube.patches.components;
 
-import static app.morphe.extension.shared.ByteTrieSearch.convertStringsToBytes;
-import static app.morphe.extension.youtube.patches.LayoutReloadObserverPatch.isActionBarVisible;
-import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
-
 import android.view.View;
 import android.widget.FrameLayout;
 
@@ -32,6 +28,7 @@ import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.Filter;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
 import app.morphe.extension.shared.patches.components.StringFilterGroupList;
+import app.morphe.extension.youtube.patches.LayoutReloadObserverPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.EngagementPanel;
 import app.morphe.extension.youtube.shared.NavigationBar;
@@ -148,7 +145,8 @@ public final class ShortsFilter extends Filter {
         // Filter out items that use the 'frame0' thumbnail and other Shorts specific images.
         // 'frame0' is a valid thumbnail for both regular videos and Shorts,
         // but it appears these thumbnails are only used for Shorts.
-        shortsCompactFeedVideoBuffer = new ByteTrieSearch(convertStringsToBytes(
+        shortsCompactFeedVideoBuffer = new ByteTrieSearch(
+                ByteTrieSearch.convertStringsToBytes(
                 "/frame0.jpg",
                 "/oardefault.jpg", // Vertical orientation video.
                 "/oar1.jpg",
@@ -550,7 +548,7 @@ public final class ShortsFilter extends Filter {
         }
 
         // Must check player type first, as search bar can be active behind the player.
-        if (PlayerType.getCurrent().isMaximizedOrFullscreen() || isActionBarVisible.get()) {
+        if (PlayerType.getCurrent().isMaximizedOrFullscreen() || LayoutReloadObserverPatch.isActionBarVisible.get()) {
             return EngagementPanel.isDescription()
                     ? hideVideoDescription // Player video description panel opened.
                     : hideHome; // For now, consider Shorts under video player the same as the home feed.
@@ -567,7 +565,7 @@ public final class ShortsFilter extends Filter {
         }
 
         // Check navigation absolutely last since the check may block this thread.
-        NavigationButton selectedNavButton = NavigationButton.getSelectedNavigationButton();
+        NavigationBar.NavigationButton selectedNavButton = NavigationBar.NavigationButton.getSelectedNavigationButton();
         if (selectedNavButton == null) {
             return hideHome; // Unknown tab, treat the same as home.
         }

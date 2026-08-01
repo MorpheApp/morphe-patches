@@ -40,9 +40,27 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Скрий промоциите за Music Premium</string>
   <string name="morphe_music_hide_video_ads_title">Скриване на видео рекламите</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_music_hide_audio_video_toggle_title">Скрий превключвател за аудио/видео</string>
+  <string name="morphe_music_hide_explore_shelf_title">Скрий рафт \'Разгледай\'</string>
+  <string name="morphe_music_hide_grid_shelves_title">Скрий рафтове с мрежа</string>
+  <string name="morphe_music_hide_horizontal_shelves_title">Скрий хоризонтални рафтове</string>
+  <string name="morphe_music_hide_list_shelves_title">Скрий списъчни рафтове</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Панел с текстове</string>
   <string name="morphe_music_hide_lyrics_share_button_title">Скрий бутона за споделяне</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Скрий бутона за превод</string>
+  <string name="morphe_music_hide_new_from_shelf_title">Скрий рафт \'Нови от\'</string>
+  <string name="morphe_music_hide_playlist_shelves_title">Скрий плейлист рафтове</string>
+  <string name="morphe_music_hide_repeat_button_title">Скрий бутон \'Повтори\'</string>
+  <string name="morphe_music_hide_shuffle_button_title">Скрий бутон \'Разбъркване\'</string>
+  <string name="morphe_music_hide_speed_dial_shelf_title">Скрий рафт \'Бързи контакти\'</string>
+  <string name="morphe_music_hide_suggested_for_you_shelf_title">Скрий рафт \'Препоръчани за теб\'</string>
+  <string name="morphe_music_comments_screen_title">Коментари</string>
+  <string name="morphe_music_comments_screen_summary">Изберете кои компоненти да се показват в секцията за коментари</string>
+  <string name="morphe_music_hide_comments_community_guidelines_title">Скрий Правила на общността</string>
+  <string name="morphe_music_hide_comments_context_title">Скрий съобщението за контекст</string>
+  <string name="morphe_music_hide_comments_emoji_button_title">Скрий бутон \'Емотикон\'</string>
+  <string name="morphe_music_hide_comments_info_button_title">Скрий бутон \'Информация\'</string>
+  <string name="morphe_music_hide_comments_timestamp_button_title">Скрий бутон \'Времеви печат\'</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Превключване</string>
   <string name="morphe_music_crossfade_screen_summary">Плавно преливане на песните една в друга</string>

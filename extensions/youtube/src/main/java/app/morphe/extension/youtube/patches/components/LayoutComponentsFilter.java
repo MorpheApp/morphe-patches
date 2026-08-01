@@ -10,9 +10,6 @@
 
 package app.morphe.extension.youtube.patches.components;
 
-import static app.morphe.extension.shared.Utils.getFilterStrings;
-import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
-
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
@@ -43,6 +40,7 @@ import app.morphe.extension.shared.patches.components.StringFilterGroup;
 import app.morphe.extension.shared.patches.components.StringFilterGroupList;
 import app.morphe.extension.youtube.patches.ChangeHeaderPatch;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.NavigationBar;
 
 @SuppressWarnings("unused")
 public final class LayoutComponentsFilter extends Filter {
@@ -57,8 +55,8 @@ public final class LayoutComponentsFilter extends Filter {
             "&list=RD"
     );
 
-    private static final List<String> channelTabFilterStrings = getFilterStrings(Settings.HIDE_CHANNEL_TAB_FILTER_STRINGS);
-    private static final List<String> flyoutMenuFilterStrings = getFilterStrings(Settings.HIDE_FEED_FLYOUT_MENU_FILTER_STRINGS);
+    private static final List<String> channelTabFilterStrings = Utils.getFilterStrings(Settings.HIDE_CHANNEL_TAB_FILTER_STRINGS);
+    private static final List<String> flyoutMenuFilterStrings = Utils.getFilterStrings(Settings.HIDE_FEED_FLYOUT_MENU_FILTER_STRINGS);
 
     private final StringTrieSearch exceptions = new StringTrieSearch();
     private final StringFilterGroup communityPosts;
@@ -75,6 +73,8 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup chipBar;
     private final StringFilterGroup channelProfile;
     private final StringFilterGroupList channelProfileGroupList = new StringFilterGroupList();
+    private final StringFilterGroup getPremiumButton;
+    private final ByteArrayFilterGroup getPremiumButtonBuffer;
     private final StringFilterGroup videoLabels;
     private final ByteArrayFilterGroupList videoLabelsGroupList = new ByteArrayFilterGroupList();
 
@@ -250,6 +250,16 @@ public final class LayoutComponentsFilter extends Filter {
                 "mixed_content_shelf"
         );
 
+        getPremiumButton = new StringFilterGroup(
+                Settings.HIDE_GET_PREMIUM_BUTTON,
+                "|button.e"
+        );
+
+        getPremiumButtonBuffer = new ByteArrayFilterGroup(
+                null,
+                "SPunlimited"
+        );
+
         final var imageShelf = new StringFilterGroup(
                 Settings.HIDE_IMAGE_SHELF,
                 "image_shelf"
@@ -373,6 +383,7 @@ public final class LayoutComponentsFilter extends Filter {
                 emergencyBox,
                 expandableMetadata,
                 forYouShelf,
+                getPremiumButton,
                 imageShelf,
                 infoPanel,
                 medicalPanel,
@@ -452,10 +463,6 @@ public final class LayoutComponentsFilter extends Filter {
             }
         }
 
-        if (matchedGroup == videoLabels) {
-            return videoLabelsGroupList.check(buffer).isFiltered();
-        }
-
         if (matchedGroup == channelProfile) {
             return channelProfileGroupList.check(accessibility).isFiltered();
         }
@@ -472,7 +479,16 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         if (matchedGroup == chipBar) {
-            return contentIndex == 0 && NavigationButton.getSelectedNavigationButton() == NavigationButton.LIBRARY;
+            return contentIndex == 0 && NavigationBar.NavigationButton.getSelectedNavigationButton()
+                    == NavigationBar.NavigationButton.LIBRARY;
+        }
+
+        if (matchedGroup == getPremiumButton) {
+            return path.startsWith("page_header.e") && getPremiumButtonBuffer.check(buffer).isFiltered();
+        }
+
+        if (matchedGroup == videoLabels) {
+            return videoLabelsGroupList.check(buffer).isFiltered();
         }
 
         return true;
@@ -872,7 +888,7 @@ public final class LayoutComponentsFilter extends Filter {
         return isSearchHistory;
     }
 
-    private static final List<String> accountMenuFilterStrings = getFilterStrings(Settings.HIDE_ACCOUNT_MENU_FILTER_STRINGS);
+    private static final List<String> accountMenuFilterStrings = Utils.getFilterStrings(Settings.HIDE_ACCOUNT_MENU_FILTER_STRINGS);
     private static final int[] accountTopItemDepths = new int[]{3, 2}; // Start from the highest depth to avoid hiding the wrong parent first
     private static final int[] accountBottomItemModernDepths = new int[]{4, 3}; // Start from the highest depth to avoid hiding the wrong parent first
     private static final int[] accountBottomItemLegacyDepths = new int[]{3, 2}; // Start from the highest depth to avoid hiding the wrong parent first

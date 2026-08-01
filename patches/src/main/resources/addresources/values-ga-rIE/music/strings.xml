@@ -31,7 +31,7 @@ Second \"item\" text"</string>
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Maidir</string>
   <string name="morphe_settings_music_screen_1_ads_title">Fógraí</string>
-  <string name="morphe_settings_music_screen_2_feed_title">Fotha</string>
+  <string name="morphe_settings_music_screen_2_feed_title">Beatha</string>
   <string name="morphe_settings_music_screen_3_general_title">Ginearálta</string>
   <string name="morphe_settings_music_screen_4_player_title">Seinnteoir</string>
   <string name="morphe_settings_music_screen_8_misc_title">Ilghnéitheach</string>
@@ -40,9 +40,27 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Folaigh ardú céime Music Premium</string>
   <string name="morphe_music_hide_video_ads_title">Folaigh fógraí físe</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_music_hide_audio_video_toggle_title">Folaigh an lascán Fuaime/Físe</string>
+  <string name="morphe_music_hide_explore_shelf_title">Folaigh an seilf Iniúchta</string>
+  <string name="morphe_music_hide_grid_shelves_title">Folaigh seilfeanna greille</string>
+  <string name="morphe_music_hide_horizontal_shelves_title">Folaigh seilfeanna cothrománacha</string>
+  <string name="morphe_music_hide_list_shelves_title">Folaigh seilfeanna liosta</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Painéal liricí</string>
   <string name="morphe_music_hide_lyrics_share_button_title">Folaigh an cnaipe Comhroinnte</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Folaigh an cnaipe Aistrigh</string>
+  <string name="morphe_music_hide_new_from_shelf_title">Folaigh seilf \'Nua ó\'</string>
+  <string name="morphe_music_hide_playlist_shelves_title">Folaigh seilfeanna seinmliosta</string>
+  <string name="morphe_music_hide_repeat_button_title">Folaigh an cnaipe Athdhéanamh</string>
+  <string name="morphe_music_hide_shuffle_button_title">Folaigh an cnaipe Suaitheadh</string>
+  <string name="morphe_music_hide_speed_dial_shelf_title">Folaigh an seilf \'Diailigh luas\'</string>
+  <string name="morphe_music_hide_suggested_for_you_shelf_title">Folaigh an tseilf \'Molta duit\'</string>
+  <string name="morphe_music_comments_screen_title">Tráchtanna</string>
+  <string name="morphe_music_comments_screen_summary">Roghnaigh cé na comhpháirteanna a thaispeánfar sa chuid tuairimí</string>
+  <string name="morphe_music_hide_comments_community_guidelines_title">Folaigh Treoirlínte an Phobail</string>
+  <string name="morphe_music_hide_comments_context_title">Folaigh teachtaireacht chomhthéacsúil</string>
+  <string name="morphe_music_hide_comments_emoji_button_title">Cnaipe Folaigh Emoji</string>
+  <string name="morphe_music_hide_comments_info_button_title">Cnaipe Folaigh Faisnéise</string>
+  <string name="morphe_music_hide_comments_timestamp_button_title">Cnaipe Folaigh an Stampa Ama</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Traschéimniú</string>
   <string name="morphe_music_crossfade_screen_summary">Cumasc rianta go réidh lena chéile</string>

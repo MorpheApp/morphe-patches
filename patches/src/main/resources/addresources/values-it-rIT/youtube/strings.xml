@@ -68,6 +68,7 @@ I cambiamenti riguarderanno:
   <string name="morphe_hide_expandable_card_entry_3">Nascondi tutto</string>
   <string name="morphe_hide_floating_microphone_button_title">Nascondi il pulsante flottante del microfono</string>
   <string name="morphe_hide_floating_microphone_button_summary">Nasconde il pulsante mobile del microfono nell\'angolo in basso a destra dello schermo dei suggerimenti di ricerca</string>
+  <string name="morphe_hide_get_premium_button_title">Nascondi il pulsante \'Ottieni Premium\'</string>
   <string name="morphe_hide_horizontal_shelves_title">Nascondi sezioni orizzontali</string>
   <string name="morphe_hide_horizontal_shelves_summary">Nasconde gli scaffali orizzontali come Notizie dell\'ultima ora, Post della community che potrebbero piacerti, Continua a guardare, Esplora altri canali, Esplora altri argomenti, Per te, Video più recenti, Più rilevanti, Post dalla community del creatore, Shopping e Guarda di nuovo</string>
   <string name="morphe_hide_hyped_label_title">Nascondi etichetta Hype</string>
@@ -226,10 +227,13 @@ I cambiamenti riguarderanno:
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Inserisci i nomi degli elementi carosello dei commenti da filtrare, separati da nuove righe</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Nascondi riepilogo chat IA</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Nascondi linee guida canale</string>
+  <string name="morphe_hide_comments_contexts_title">Nascondi i messaggi di contesto</string>
   <string name="morphe_hide_comments_by_members_header_title">Nascondi l\'intestazione \'Commenti dei membri\'</string>
   <string name="morphe_hide_comments_section_title">Nascondi la sezione Commenti</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Nascondi la sezione commenti nella home</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Nascondi le linee guida della community</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Nascondi il pulsante \'Crea uno Short\'</string>
+  <string name="morphe_hide_comments_emoji_button_title">Nascondi il pulsante Emoji</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Nascondi le opzioni della barra dei filtri</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Nasconde tutte le opzioni di ordinamento dei commenti tranne \"In primo piano\" e \"Più recenti\"</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Nascondi animazione e cartoline regalo</string>
@@ -239,6 +243,7 @@ I cambiamenti riguarderanno:
   <string name="morphe_hide_comments_preview_comment_title">Nascondi il commento di anteprima</string>
   <string name="morphe_hide_comments_preview_comment_summary">Nasconde l\'anteprima del commento sotto il video prima di aprire la sezione commenti completa</string>
   <string name="morphe_hide_comments_thanks_button_title">Nascondi il pulsante Grazie</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Nascondi il pulsante Data</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Disattiva l\'evidenziazione dei link di ricerca, lasciando solo il testo originale</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Disattiva l\'evidenziazione dei link di ricerca, lasciando solo il testo originale</string>
   <string name="morphe_hide_keyword_content_screen_title">Filtro parole chiave</string>
@@ -308,7 +313,7 @@ Tocca qui per aprire AiSlopList.com e visualizzare i download per altre piattafo
   <string name="morphe_hide_general_ads_title">Nascondi pubblicità generali</string>
   <string name="morphe_hide_merchandise_banners_title">Nascondi i banner sul merchandising</string>
   <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
-  <string name="morphe_hide_paid_promotion_label_title">Nascondi l\'etichetta \'Include promozioni a pagamento\'</string>
+  <string name="morphe_hide_paid_promotion_labels_title">Nascondi l\'etichetta della promozione a pagamento</string>
   <string name="morphe_hide_player_popup_ads_title">Nascondi gli annunci popup del lettore</string>
   <string name="morphe_hide_self_sponsor_ads_title">Nascondi le schede autopromozionali</string>
   <string name="morphe_hide_shopping_links_title">Nascondi link per gli acquisti</string>

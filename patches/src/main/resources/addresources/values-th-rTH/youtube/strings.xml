@@ -68,6 +68,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_expandable_card_entry_3">ซ่อนทั้งหมด</string>
   <string name="morphe_hide_floating_microphone_button_title">ซ่อนปุ่มไมโครโฟนแบบลอย</string>
   <string name="morphe_hide_floating_microphone_button_summary">ซ่อนปุ่มไมโครโฟนลอยที่มุมล่างขวาของหน้าจอคำแนะนำการค้นหา</string>
+  <string name="morphe_hide_get_premium_button_title">ซ่อนปุ่ม \'รับสิทธิ์พิเศษ\'</string>
   <string name="morphe_hide_horizontal_shelves_title">ซ่อนชั้นวางแนวนอน</string>
   <string name="morphe_hide_horizontal_shelves_summary">ซ่อนชั้นวางแนวนอน เช่น ข่าวเด่น, โพสต์จากชุมชนที่คุณอาจชอบ, รับชมต่อ, สำรวจช่องเพิ่มเติม, สำรวจหัวข้อเพิ่มเติม, สำหรับคุณ, วิดีโอล่าสุด, ที่เกี่ยวข้องมากที่สุด, โพสต์จากชุมชนของผู้สร้าง, ร้านค้า และ ดูอีกครั้ง</string>
   <string name="morphe_hide_hyped_label_title">ซ่อนป้ายกำกับ \'กำลังเป็นที่นิยม\'</string>
@@ -194,6 +195,28 @@ Second \"item\" text"</string>
   <string name="morphe_hide_store_button_title">ซ่อนปุ่มแชร์</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_subscribe_button_in_channel_page_title">ซ่อนปุ่มติดตาม</string>
+  <string name="morphe_explore_menu_screen_title">เมนูสำรวจ</string>
+  <string name="morphe_explore_menu_screen_summary">เลือกส่วนประกอบที่จะปรากฏในเมนูสำรวจ</string>
+  <string name="morphe_hide_courses_menu_title">ซ่อนเมนูหลักสูตร</string>
+  <string name="morphe_hide_explore_button_title">ซ่อนปุ่ม \'สำรวจ\'</string>
+  <string name="morphe_hide_fashion_menu_title">ซ่อนป</string>
+  <string name="morphe_hide_gaming_menu_title">ซ่อนเมนูเกม</string>
+  <string name="morphe_hide_hype_menu_title">ซ่อนเมนู Hype</string>
+  <string name="morphe_hide_live_menu_title">ซ่อนเมนูไลฟ์สด</string>
+  <string name="morphe_hide_memberships_menu_title">ซ่อนเมนูสมาชิก</string>
+  <string name="morphe_hide_movies_menu_title">ซ่อนเมนูภาพยนตร์</string>
+  <string name="morphe_hide_music_menu_title">ซ่อนเมนู \'เพลงและทีวี\'</string>
+  <string name="morphe_hide_news_menu_title">ซ่อนเมนูข่าว</string>
+  <string name="morphe_hide_playables_menu_title">ซ่อนเมนู Playables</string>
+  <string name="morphe_hide_podcasts_menu_title">ซ่อนเมนูพอดแคสต์</string>
+  <string name="morphe_hide_shopping_menu_title">ซ่อนเมนูร้านค้า</string>
+  <string name="morphe_hide_sports_menu_title">ซ่อนเมนูกีฬา</string>
+  <string name="morphe_hide_youtube_premium_menu_title">ซ่อนเมนู YouTube Premium</string>
+  <string name="morphe_hide_youtube_studio_menu_title">ซ่อนเมนู YouTube Studio</string>
+  <string name="morphe_hide_youtube_music_menu_title">ซ่อนเมนู YouTube Music</string>
+  <string name="morphe_hide_youtube_kids_menu_title">ซ่อนเมนู YouTube Kids</string>
+  <string name="morphe_hide_youtube_create_menu_title">ซ่อนเมนู YouTube Create</string>
+  <string name="morphe_hide_privacy_tos_footer_title">ซ่อนส่วนท้าย \'นโยบายความเป็นส่วนตัว • ข้อกำหนดการให้บริการ\'</string>
   <string name="morphe_comments_screen_title">ความคิดเห็น</string>
   <string name="morphe_comments_screen_summary">เลือกส่วนประกอบที่จะปรากฏในส่วนความคิดเห็น</string>
   <string name="morphe_hide_comments_carousel_title">เปิดใช้งานตัวกรองแคโรเซิลความคิดเห็น</string>
@@ -204,10 +227,13 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">ป้อนชื่อ carousel ความคิดเห็นเพื่อกรอง โดยคั่นด้วยบรรทัดใหม่</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">ซ่อนสรุปแชท AI</string>
   <string name="morphe_hide_comments_channel_guidelines_title">ซ่อนแนวทางปฏิบัติของช่อง</string>
+  <string name="morphe_hide_comments_contexts_title">ซ่อนข้อความบริบท</string>
   <string name="morphe_hide_comments_by_members_header_title">ซ่อนส่วนหัว \'ความคิดเห็นโดยสมาชิก\'</string>
   <string name="morphe_hide_comments_section_title">ซ่อนส่วนความคิดเห็น</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">ซ่อนส่วนความคิดเห็นในหน้าแชทหลัก</string>
+  <string name="morphe_hide_comments_community_guidelines_title">ซ่อนแนวทางชุมชน</string>
   <string name="morphe_hide_comments_create_a_short_button_title">ซ่อนปุ่ม \'สร้าง Shorts\'</string>
+  <string name="morphe_hide_comments_emoji_button_title">ซ่อนปุ่มอีโมจิ</string>
   <string name="morphe_hide_comments_filter_bar_options_title">ซ่อนตัวเลือกแถบกรอง</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">ซ่อนตัวเลือกแถบกรองทั้งหมด ยกเว้น \'ยอดนิยม\' และ \'ใหม่ล่าสุด\'</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">ซ่อนแอนิเมชันและบัตรของขวัญ</string>
@@ -217,6 +243,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_preview_comment_title">ซ่อนความคิดเห็นตัวอย่าง</string>
   <string name="morphe_hide_comments_preview_comment_summary">ซ่อนตัวอย่างความคิดเห็นใต้คลิปวิดีโอ ก่อนที่จะเปิดส่วนความคิดเห็นทั้งหมด</string>
   <string name="morphe_hide_comments_thanks_button_title">ซ่อนปุ่มขอบคุณ</string>
+  <string name="morphe_hide_comments_timestamp_button_title">ซ่อนปุ่มตราประทับเวลา</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">ทำให้ลิงก์การค้นหาที่ไฮไลต์เป็นรูปแบบปกติ</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">เปลี่ยนลิงก์การค้นหาที่ไฮไลต์เป็นข้อความธรรมดา</string>
   <string name="morphe_hide_keyword_content_screen_title">ตัวกรองคำหลัก</string>
@@ -286,7 +313,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_general_ads_title">ซ่อนโฆษณาโดยทั่วไป</string>
   <string name="morphe_hide_merchandise_banners_title">ซ่อนแบนเนอร์สินค้า</string>
   <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
-  <string name="morphe_hide_paid_promotion_label_title">ซ่อนป้ายกำกับ \'มีโปรโมชั่นแบบเสียเงิน\'</string>
+  <string name="morphe_hide_paid_promotion_labels_title">ซ่อนป้ายโปรโมทแบบเสียเงิน</string>
   <string name="morphe_hide_player_popup_ads_title">ซ่อนป๊อปอัพของการเล่น</string>
   <string name="morphe_hide_self_sponsor_ads_title">ซ่อนการ์ดที่สนับสนุนตัวเอง</string>
   <string name="morphe_hide_shopping_links_title">ซ่อนลิงก์การช็อปปิ้ง</string>

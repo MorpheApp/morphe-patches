@@ -68,6 +68,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_expandable_card_entry_3">모두 숨기기</string>
   <string name="morphe_hide_floating_microphone_button_title">플로팅 마이크 버튼 숨기기</string>
   <string name="morphe_hide_floating_microphone_button_summary">검색 추천 화면 오른쪽 하단에 있는 플로팅 마이크 버튼을 숨깁니다</string>
+  <string name="morphe_hide_get_premium_button_title">Premium 구매 버튼 숨기기</string>
   <string name="morphe_hide_horizontal_shelves_title">좌우 슬라이드 선반 숨기기</string>
   <string name="morphe_hide_horizontal_shelves_summary">다음 선반을 숨깁니다:\n뉴스 속보, 내가 좋아할 만한 커뮤니티 게시물, 이어서 시청하기, 채널 더 보기, 다른 주제 더 살펴보기, 추천, 최신 동영상, 관련성, 크리에이터 커뮤니티 게시물, 라이브 쇼핑, 다시 시청하기</string>
   <string name="morphe_hide_hyped_label_title">하이프 관련 라벨 숨기기</string>
@@ -312,7 +313,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_general_ads_title">일반 레이아웃 광고 숨기기</string>
   <string name="morphe_hide_merchandise_banners_title">매장 쇼핑 배너 숨기기</string>
   <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
-  <string name="morphe_hide_paid_promotion_label_title">유료 광고 포함 라벨 숨기기</string>
+  <string name="morphe_hide_paid_promotion_labels_title">유료 프로모션 라벨 숨기기</string>
   <string name="morphe_hide_player_popup_ads_title">플레이어 팝업 광고 숨기기</string>
   <string name="morphe_hide_self_sponsor_ads_title">셀프 스폰서 카드 숨기기</string>
   <string name="morphe_hide_shopping_links_title">쇼핑 링크 숨기기</string>

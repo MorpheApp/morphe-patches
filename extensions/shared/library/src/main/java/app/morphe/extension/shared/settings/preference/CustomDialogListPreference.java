@@ -1,7 +1,5 @@
 package app.morphe.extension.shared.settings.preference;
 
-import static app.morphe.extension.shared.ResourceUtils.getIdentifierOrThrow;
-
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -21,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.CustomDialog;
 
@@ -31,17 +30,17 @@ import app.morphe.extension.shared.ui.CustomDialog;
 @SuppressWarnings({"unused", "deprecation"})
 public class CustomDialogListPreference extends ListPreference {
 
-    public static final int ID_MORPHE_CHECK_ICON = getIdentifierOrThrow(
+    public static final int ID_MORPHE_CHECK_ICON = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "morphe_check_icon");
-    public static final int ID_MORPHE_CHECK_ICON_PLACEHOLDER = getIdentifierOrThrow(
+    public static final int ID_MORPHE_CHECK_ICON_PLACEHOLDER = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "morphe_check_icon_placeholder");
-    public static final int ID_MORPHE_ITEM_TEXT = getIdentifierOrThrow(
+    public static final int ID_MORPHE_ITEM_TEXT = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "morphe_item_text");
-    public static final int LAYOUT_MORPHE_CUSTOM_LIST_ITEM_CHECKED = getIdentifierOrThrow(
+    public static final int LAYOUT_MORPHE_CUSTOM_LIST_ITEM_CHECKED = ResourceUtils.getIdentifierOrThrow(
             ResourceType.LAYOUT, "morphe_custom_list_item_checked");
-    public static final int DRAWABLE_CHECKMARK = getIdentifierOrThrow(
+    public static final int DRAWABLE_CHECKMARK = ResourceUtils.getIdentifierOrThrow(
             ResourceType.DRAWABLE, "morphe_settings_custom_checkmark");
-    public static final int DRAWABLE_CHECKMARK_BOLD = getIdentifierOrThrow(
+    public static final int DRAWABLE_CHECKMARK_BOLD = ResourceUtils.getIdentifierOrThrow(
             ResourceType.DRAWABLE, "morphe_settings_custom_checkmark_bold");
 
     private String staticSummary = null;

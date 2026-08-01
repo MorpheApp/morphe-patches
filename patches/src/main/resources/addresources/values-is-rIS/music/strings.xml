@@ -33,6 +33,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_1_ads_title">Auglýsingar</string>
   <string name="morphe_settings_music_screen_2_feed_title">Straumur</string>
   <string name="morphe_settings_music_screen_3_general_title">Almennt</string>
+  <string name="morphe_settings_music_screen_4_player_title">Spilari</string>
+  <string name="morphe_settings_music_screen_8_misc_title">Ýmislegt</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Fela merkið \'Fá Morphe Premium\'</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Fela kynningar á Music Premium</string>
@@ -55,6 +57,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_comments_screen_title">Athugasemdir</string>
   <string name="morphe_music_comments_screen_summary">Veldu hvaða þættir koma fram í athugasemdadeildinni</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Fela samfélagsreglur</string>
+  <string name="morphe_music_hide_comments_context_title">Fela samhengis skilaboð</string>
   <string name="morphe_music_hide_comments_emoji_button_title">Fela Emoji hnapp</string>
   <string name="morphe_music_hide_comments_info_button_title">Fela Info hnapp</string>
   <string name="morphe_music_hide_comments_timestamp_button_title">Fela Timestamp hnapp</string>

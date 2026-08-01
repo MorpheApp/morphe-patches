@@ -44,7 +44,7 @@ val videoQualityPatch = bytecodePatch(
         if (is_20_40_or_greater) {
             // Flag breaks opening advanced quality menu.
             // Alternatively can be fixed by using a delay when simulating the UI click.
-            NewAdvancedQualityMenuStyleFlyout.let {
+            NewAdvancedQualityMenuStyleFlyout.matchAll().forEach {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index, false
                 )

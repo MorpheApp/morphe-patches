@@ -68,6 +68,7 @@ Veranderings sluit in:
   <string name="morphe_hide_expandable_card_entry_3">Verberg alles</string>
   <string name="morphe_hide_floating_microphone_button_title">Deaktiveer mikrofoonknoppie wat vry dryf</string>
   <string name="morphe_hide_floating_microphone_button_summary">Verberg drywende mikrofoon-knoppie in die onderste regterhoek van soekvoorstelle skerm</string>
+  <string name="morphe_hide_get_premium_button_title">Verberg \'kry Premium\'-knoppie</string>
   <string name="morphe_hide_horizontal_shelves_title">Verberg horisontale rakke</string>
   <string name="morphe_hide_horizontal_shelves_summary">Verberg horisontale rakke soos Breaking news, Gemeenskapinskrywings wat jy dalk wil hê, Gaan voort om te kyk, Verken meer kanale, Verken meer onderwerpe, Vir jou, Nuutste video\'s, Mees relevante, Inskrywings van Skepper se Gemeenskap, Winkels en Kyk dit weer</string>
   <string name="morphe_hide_hyped_label_title">Versteek Hip-etiket</string>
@@ -226,10 +227,13 @@ Veranderings sluit in:
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Voer die kommentaar carousel name in om te filter, geskei deur nuwe reëls</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Verberg AI-chat opsomming</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Verberg kanaal riglyne</string>
+  <string name="morphe_hide_comments_contexts_title">Verberg konteksboodskappe</string>
   <string name="morphe_hide_comments_by_members_header_title">Verberg \'Kommentare by lede\'-opskrif</string>
   <string name="morphe_hide_comments_section_title">Verberg kommentaarafdeling</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Versteek kommentaar-afdeling in Tuisvoedsel</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Verberg Gemeenskapriglyne</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Verberg \'Maak \'n Short\'-knoppie</string>
+  <string name="morphe_hide_comments_emoji_button_title">Verberg Emoji-knoppie</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Versteek filterbalk-opsies</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Versteek alle filterbalk-opsies behalwe \'Beste\' en \'Nuutste\'</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Verberg geskenkanimasie en kaarte</string>
@@ -239,6 +243,7 @@ Veranderings sluit in:
   <string name="morphe_hide_comments_preview_comment_title">Verberg voorskou kommentaar</string>
   <string name="morphe_hide_comments_preview_comment_summary">Verberg die kommentaar voorbeskouing onder video voordat die volledige kommentaar afdeling oopmaak</string>
   <string name="morphe_hide_comments_thanks_button_title">Verberg Dankie knoppie</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Verberg Tydstempel-knoppie</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Saniteer uitgeligte soekskakels</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Saniteer uitgeligte soekskakels en laat slegs die oorspronklike platte teks oor</string>
   <string name="morphe_hide_keyword_content_screen_title">Sleutelwoord filter</string>
@@ -308,7 +313,7 @@ Tik hier om AiSlopList.com oop te maak en laai aflaai vir ander platforms"</stri
   <string name="morphe_hide_general_ads_title">Verberg algemene advertensies</string>
   <string name="morphe_hide_merchandise_banners_title">Verberg handelswarebanne</string>
   <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
-  <string name="morphe_hide_paid_promotion_label_title">Verberg \'Bevat betaalde bevordering\' etiket</string>
+  <string name="morphe_hide_paid_promotion_labels_title">Verberg betaalde promosie-etikette</string>
   <string name="morphe_hide_player_popup_ads_title">Versteek speler pop-up advertensies</string>
   <string name="morphe_hide_self_sponsor_ads_title">Verberg selfgesponsorde kaarte</string>
   <string name="morphe_hide_shopping_links_title">Verberg winkel skakels</string>

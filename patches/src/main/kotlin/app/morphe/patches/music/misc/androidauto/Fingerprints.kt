@@ -20,3 +20,25 @@ internal object CheckCertificateFingerprint : Fingerprint(
         "isPartnerSHAFingerprint"
     )
 )
+
+/**
+ * Anchors [IsGoogleSignedFingerprint] to the class that contains the remote
+ * Google-certificates fetch logic.
+ */
+internal object GoogleCertificatesRemoteFingerprint : Fingerprint(
+    returnType = "L",
+    parameters = listOf("Ljava/lang/String;"),
+    strings = listOf("Failed to get Google certificates from remote")
+)
+
+/**
+ * [GoogleSignatureVerifier.c(String)][defpackage.tcn.c] — the boolean entry-point
+ * that [AllowlistManager.g][defpackage.kxo.g] calls to decide whether the caller
+ * is Google-signed.  Scoped to [GoogleCertificatesRemoteFingerprint] so the
+ * patcher never picks up an unrelated `(String)→boolean` method.
+ */
+internal object IsGoogleSignedFingerprint : Fingerprint(
+    classFingerprint = GoogleCertificatesRemoteFingerprint,
+    returnType = "Z",
+    parameters = listOf("Ljava/lang/String;")
+)

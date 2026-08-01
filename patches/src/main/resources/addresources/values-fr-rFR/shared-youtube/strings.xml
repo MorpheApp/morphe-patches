@@ -173,7 +173,7 @@ Si vous désactivez cette option par la suite, il est recommandé d'effacer les 
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Les \'Je n\'aime pas\' sont temporairement indisponibles (délai d\'attente de l\'API dépassé)</string>
-  <string name="morphe_ryd_failure_connection_status_code">\'Je n\'aime pas\' indisponibles (statut %d)</string>
+  <string name="morphe_ryd_failure_connection_status_code">Les \'Je n\'aime pas\' indisponibles (statut %d)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">Les \'Je n\'aime pas\' ne sont pas disponibles (limite de l\'API client atteinte)</string>
   <string name="morphe_ryd_failure_generic">Les \'Je n\'aime pas\' indisponibles (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->

@@ -68,6 +68,7 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_expandable_card_entry_3">Skjul alle</string>
   <string name="morphe_hide_floating_microphone_button_title">Skjul svævende mikrofonknap</string>
   <string name="morphe_hide_floating_microphone_button_summary">Skjuler den flydende mikrofontilføjelser i nederste højre hjørne af søgeforslagsskærmen</string>
+  <string name="morphe_hide_get_premium_button_title">Skjul \'Få Premium\' knappen</string>
   <string name="morphe_hide_horizontal_shelves_title">Skjul vandrette hylder</string>
   <string name="morphe_hide_horizontal_shelves_summary">Skjuler vandrette hylder som f.eks. Breaking news, Community-opslag du måske vil lide, Fortsæt med at se, Udforsk flere kanaler, Udforsk flere emner, Til dig, Seneste videoer, Mest relevante, Opslag fra Creator\'s Community, Shopping og Se det igen</string>
   <string name="morphe_hide_hyped_label_title">Skjul \'Hyped\' label</string>
@@ -194,6 +195,28 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_store_button_title">Skjul \'Butik\' knappen</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_subscribe_button_in_channel_page_title">Skjul knappen Abonnér</string>
+  <string name="morphe_explore_menu_screen_title">Udforsk menu</string>
+  <string name="morphe_explore_menu_screen_summary">Vælg hvilke komponenter der vises i udforsk-menuen</string>
+  <string name="morphe_hide_courses_menu_title">Skjul Kurser menu</string>
+  <string name="morphe_hide_explore_button_title">Skjul Udforsk-knap</string>
+  <string name="morphe_hide_fashion_menu_title">Skjul \'Mode &amp; Skønhed\' menu</string>
+  <string name="morphe_hide_gaming_menu_title">Skjul Gaming menu</string>
+  <string name="morphe_hide_hype_menu_title">Skjul Hype menu</string>
+  <string name="morphe_hide_live_menu_title">Skjul Live menu</string>
+  <string name="morphe_hide_memberships_menu_title">Skjul Medlemskaber menu</string>
+  <string name="morphe_hide_movies_menu_title">Skjul Film menu</string>
+  <string name="morphe_hide_music_menu_title">Skjul \'Musik &amp; TV\' menu</string>
+  <string name="morphe_hide_news_menu_title">Skjul Nyheder menu</string>
+  <string name="morphe_hide_playables_menu_title">Skjul Playables menu</string>
+  <string name="morphe_hide_podcasts_menu_title">Skjul Podcasts menu</string>
+  <string name="morphe_hide_shopping_menu_title">Skjul Shopping menu</string>
+  <string name="morphe_hide_sports_menu_title">Skjul Sport menu</string>
+  <string name="morphe_hide_youtube_premium_menu_title">Skjul YouTube Premium menu</string>
+  <string name="morphe_hide_youtube_studio_menu_title">Skjul YouTube Studio menu</string>
+  <string name="morphe_hide_youtube_music_menu_title">Skjul YouTube Music menu</string>
+  <string name="morphe_hide_youtube_kids_menu_title">Skjul YouTube Kids menu</string>
+  <string name="morphe_hide_youtube_create_menu_title">Skjul YouTube Create menu</string>
+  <string name="morphe_hide_privacy_tos_footer_title">Skjul \'Privatlivspolitik • Servicevilkår\' sidefod</string>
   <string name="morphe_comments_screen_title">Kommentarer</string>
   <string name="morphe_comments_screen_summary">Vælg hvilke komponenter der vises i kommentar sektionen</string>
   <string name="morphe_hide_comments_carousel_title">Aktiver kommentarkarussel filter</string>
@@ -208,7 +231,9 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_comments_by_members_header_title">Skjul \'Kommentarer fra medlemmer\' header</string>
   <string name="morphe_hide_comments_section_title">Skjul kommentarsektion</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Skjul kommentarer i Home-feed</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Skjul Fællesskabsretningslinjer</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Skjul knappen \'Opret en Short\'</string>
+  <string name="morphe_hide_comments_emoji_button_title">Skjul Emoji-knap</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Skjul filterbjælkeindstillinger</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Skjuler alle filterbjælkeindstillinger undtagen \'Top\' og \'Nyeste\'</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Skjul gaveanimation og kort</string>
@@ -218,6 +243,7 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_comments_preview_comment_title">Skjul forhåndsvisning kommentar</string>
   <string name="morphe_hide_comments_preview_comment_summary">Skjuler kommentar preview under videoen inden åbning af hele kommentarsektionen</string>
   <string name="morphe_hide_comments_thanks_button_title">Skjul \"Tak\"-knap</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Skjul Tidsstempel-knap</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Renser fremhævede søgelinks</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Renser fremhævede søgelinks og efterlader kun den originale tekst</string>
   <string name="morphe_hide_keyword_content_screen_title">Nøgleordsfilter</string>
@@ -287,7 +313,7 @@ Tryk her for at åbne AiSlopList.com og se downloads til andre platforme"</strin
   <string name="morphe_hide_general_ads_title">Skjul generelle annoncer</string>
   <string name="morphe_hide_merchandise_banners_title">Skjul merchandise-bannere</string>
   <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
-  <string name="morphe_hide_paid_promotion_label_title">Skjul \'Indeholder betalt promovering\' label</string>
+  <string name="morphe_hide_paid_promotion_labels_title">Skjul betalt promoveringsmærker</string>
   <string name="morphe_hide_player_popup_ads_title">Skjul afspiller pop-up reklamer</string>
   <string name="morphe_hide_self_sponsor_ads_title">Skjul selvsponsorerede kort</string>
   <string name="morphe_hide_shopping_links_title">Skjul shoppinglinks</string>

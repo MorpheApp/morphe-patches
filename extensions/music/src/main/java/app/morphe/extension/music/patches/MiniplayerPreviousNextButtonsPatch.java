@@ -11,7 +11,6 @@ import static android.view.KeyEvent.ACTION_DOWN;
 import static android.view.KeyEvent.ACTION_UP;
 import static android.view.KeyEvent.KEYCODE_MEDIA_NEXT;
 import static android.view.KeyEvent.KEYCODE_MEDIA_PREVIOUS;
-import static app.morphe.extension.shared.Utils.hideViewUnderCondition;
 
 import android.content.Context;
 import android.media.AudioManager;
@@ -23,6 +22,7 @@ import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
 public class MiniplayerPreviousNextButtonsPatch {
@@ -36,13 +36,13 @@ public class MiniplayerPreviousNextButtonsPatch {
         int previousButtonViewId = getPreviousButtonId();
         if (previousButtonViewId != 0) {
             View previousButtonView = view.findViewById(previousButtonViewId);
-            hideViewUnderCondition(!Settings.MINIPLAYER_PREVIOUS_BUTTON.get(), previousButtonView);
+            Utils.hideViewUnderCondition(!Settings.MINIPLAYER_PREVIOUS_BUTTON.get(), previousButtonView);
             previousButtonView.setOnClickListener(v -> dispatchMediaKeyEvent(v.getContext(), KEYCODE_MEDIA_PREVIOUS));
         }
         int nextButtonViewId = getNextButtonId();
         if (nextButtonViewId != 0) {
             View nextButtonView = view.findViewById(nextButtonViewId);
-            hideViewUnderCondition(!Settings.MINIPLAYER_NEXT_BUTTON.get(), nextButtonView);
+            Utils.hideViewUnderCondition(!Settings.MINIPLAYER_NEXT_BUTTON.get(), nextButtonView);
             nextButtonView.setOnClickListener(v -> dispatchMediaKeyEvent(v.getContext(), KEYCODE_MEDIA_NEXT));
         }
     }

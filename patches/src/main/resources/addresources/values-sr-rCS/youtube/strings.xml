@@ -68,6 +68,7 @@ Promene uključuju:
   <string name="morphe_hide_expandable_card_entry_3">Sakrij sve</string>
   <string name="morphe_hide_floating_microphone_button_title">Sakrij plutajuće dugme mikrofona</string>
   <string name="morphe_hide_floating_microphone_button_summary">Sakriva plutajuće dugme za mikrofon u donjem desnom uglu ekrana predloga pretrage</string>
+  <string name="morphe_hide_get_premium_button_title">Sakrij dugme \'Nabavite Premium\'</string>
   <string name="morphe_hide_horizontal_shelves_title">Sakrij horizontalne police</string>
   <string name="morphe_hide_horizontal_shelves_summary">Sakriva horizontalne police kao što su Najnovije vesti, Obaveštenja zajednice koje bi vam se dopale, Nastavi sa gledanjem, Istraži više kanala, Istraži više tema, Za vas, Najnoviji video snimci, Najrelevantniji, Obaveštenja od autora, Kupovina i Pogledaj ponovo.</string>
   <string name="morphe_hide_hyped_label_title">Sakrij popularni natpis</string>
@@ -155,6 +156,7 @@ Promene uključuju:
   <string name="morphe_hide_featured_channels_section_title">Sakrij odeljke sa istaknutim kanalima</string>
   <string name="morphe_hide_featured_links_section_title">Sakrij odeljak „Istaknuti linkovi”</string>
   <string name="morphe_hide_featured_places_section_title">Sakrij odeljak „Istaknuta mesta”</string>
+  <string name="morphe_hide_featured_playlists_section_title">Sakrij sekciju \"Istaknute liste za reprodukciju\"</string>
   <string name="morphe_hide_featured_videos_section_title">Sakrij odeljak „Istaknuti video zapisi”</string>
   <string name="morphe_hide_gaming_section_title">Sakrij odeljak „Igre”</string>
   <string name="morphe_hide_hashtag_section_title">Sakrij sekciju heš-oznaka</string>
@@ -164,6 +166,7 @@ Promene uključuju:
   <string name="morphe_hide_key_concepts_section_title">Sakrij odeljak „Ključni koncepti”</string>
   <string name="morphe_hide_music_section_title">Sakrij odeljak „Muzika”</string>
   <string name="morphe_hide_quizzes_section_title">Sakrij odeljak „Kvizovi”</string>
+  <string name="morphe_hide_search_inside_this_video_section_title">Sakrij sekciju \'Pretraga unutar ovog videa\'</string>
   <string name="morphe_hide_subscribe_button_title">Sakrij dugme „Zaprati”</string>
   <string name="morphe_hide_transcript_section_title">Sakrij odeljak „Transkript”</string>
   <string name="morphe_hide_video_details_section_title">Sakrij odeljak „Detalji videa”</string>
@@ -310,7 +313,7 @@ Dodirnite ovde da biste otvorili AiSlopList.com i videli preuzimanja za druge pl
   <string name="morphe_hide_general_ads_title">Sakrij opšte oglase</string>
   <string name="morphe_hide_merchandise_banners_title">Sakrij banere za robu</string>
   <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
-  <string name="morphe_hide_paid_promotion_label_title">Sakrij oznaku \'Sadrži plaćenu promociju\'</string>
+  <string name="morphe_hide_paid_promotion_labels_title">Sakrij oznaku plaćene promocije</string>
   <string name="morphe_hide_player_popup_ads_title">Sakrij oglasne popupe u plejeru</string>
   <string name="morphe_hide_self_sponsor_ads_title">Sakrij kartice samosponzorstva</string>
   <string name="morphe_hide_shopping_links_title">Sakrij linkove za kupovinu</string>
@@ -477,6 +480,8 @@ Napomena: Možda neće raditi na direktnim prenosima"</string>
   <string name="morphe_livestream_dvr_title">Uključi livestream DVR</string>
   <string name="morphe_livestream_dvr_summary">Omogućava preskakanje na svim prenosima uživo, čak i na onima koji to normalno ograničavaju</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
+  <string name="morphe_seekbar_thumbnail_preview_title">Omogući sličice trake za premotavanje</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">Prikazuje sliku videa tokom povlačenja trake za premotavanje</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'Omogući DVR za direktan prenos' možda nije dostupno
 
@@ -929,6 +934,7 @@ Ograničenje: Ako je \"Vrati staru traku sa akcijama za video\" isključen, prek
   <string name="morphe_miniplayer_disable_resuming_summary">Onemogućava \'Nastavi gledanje\' miniplayer, YouTube Premium funkciju koja se pojavljuje pri pokretanju aplikacije</string>
   <string name="morphe_miniplayer_screen_title">Mini-plejer</string>
   <string name="morphe_miniplayer_screen_summary">Prilagodi izgled i ponašanje smanjenog video plejera</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube je uklonio sve dodatne mini plejere. Da biste promenili tip mini plejera, zakrpajte YouTube 21.28.207 ili stariju verziju</string>
   <string name="morphe_miniplayer_type_title">Tip mini-plejera</string>
   <string name="morphe_miniplayer_type_entry_0">Onemogućen</string>
   <string name="morphe_miniplayer_type_entry_1">Podrazumevan</string>

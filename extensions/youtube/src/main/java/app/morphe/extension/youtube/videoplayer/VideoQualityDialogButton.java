@@ -17,11 +17,6 @@ import static app.morphe.extension.shared.settings.preference.CustomDialogListPr
 import static app.morphe.extension.shared.settings.preference.CustomDialogListPreference.ID_MORPHE_CHECK_ICON_PLACEHOLDER;
 import static app.morphe.extension.shared.settings.preference.CustomDialogListPreference.ID_MORPHE_ITEM_TEXT;
 import static app.morphe.extension.shared.settings.preference.CustomDialogListPreference.LAYOUT_MORPHE_CUSTOM_LIST_ITEM_CHECKED;
-import static app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS;
-import static app.morphe.extension.youtube.patches.VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE;
-import static app.morphe.extension.youtube.patches.VideoInformation.isPremiumVideoQuality;
-import static app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton.fadeInDuration;
-import static app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton.getDialogBackgroundColor;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -49,6 +44,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
+import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.VideoInformation.VideoQualityInterface;
 import app.morphe.extension.youtube.patches.playback.quality.RememberVideoQualityPatch;
@@ -79,7 +75,8 @@ public class VideoQualityDialogButton {
      */
     public static void initializeButton(View controlsView) {
         try {
-            if (RESTORE_OLD_PLAYER_BUTTONS || !Settings.VIDEO_QUALITY_DIALOG_BUTTON.get()) {
+            if (LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS ||
+                    !Settings.VIDEO_QUALITY_DIALOG_BUTTON.get()) {
                 return;
             }
 
@@ -101,7 +98,7 @@ public class VideoQualityDialogButton {
      */
     public static void initializeLegacyButton(View controlsView) {
         try {
-            if (!RESTORE_OLD_PLAYER_BUTTONS) {
+            if (!LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS) {
                 return;
             }
 
@@ -147,7 +144,8 @@ public class VideoQualityDialogButton {
                 final int defaultResolution = RememberVideoQualityPatch.getDefaultQualityResolution();
                 for (VideoQualityInterface quality : qualities) {
                     final int resolution = quality.patch_getResolution();
-                    if (resolution != AUTOMATIC_VIDEO_QUALITY_VALUE && resolution <= defaultResolution) {
+                    if (resolution != VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE &&
+                            resolution <= defaultResolution) {
                         Logger.printDebug(() -> "Resetting quality to: " + quality);
                         VideoInformation.changeQuality(quality);
                         return true;
@@ -176,12 +174,12 @@ public class VideoQualityDialogButton {
             if (overlay == null && legacy == null) return;
 
             final int resolution = quality == null
-                    ? AUTOMATIC_VIDEO_QUALITY_VALUE // Video is still loading.
+                    ? VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE // Video is still loading.
                     : quality.patch_getResolution();
 
             SpannableStringBuilder text = new SpannableStringBuilder();
             String qualityText = switch (resolution) {
-                case AUTOMATIC_VIDEO_QUALITY_VALUE -> "";
+                case VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE -> "";
                 case 144, 240, 360 -> "LD";
                 case 480  -> "SD";
                 case 720  -> "HD";
@@ -192,7 +190,7 @@ public class VideoQualityDialogButton {
             };
             text.append(qualityText);
 
-            if (quality != null && isPremiumVideoQuality(quality)) {
+            if (quality != null && VideoInformation.isPremiumVideoQuality(quality)) {
                 // Underline the entire "FHD" text for 1080p Premium.
                 text.setSpan(new UnderlineSpan(), 0, qualityText.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
@@ -239,14 +237,14 @@ public class VideoQualityDialogButton {
 
             List<String> qualityLabels = new ArrayList<>(currentQualities.length - 1);
             for (VideoQualityInterface availableQuality : currentQualities) {
-                if (availableQuality.patch_getResolution() != AUTOMATIC_VIDEO_QUALITY_VALUE) {
+                if (availableQuality.patch_getResolution() != VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE) {
                     qualityLabels.add(availableQuality.patch_getQualityName());
                 }
             }
 
             // Create main layout.
             SheetBottomDialog.DraggableLinearLayout mainLayout =
-                    SheetBottomDialog.createMainLayout(context, getDialogBackgroundColor());
+                    SheetBottomDialog.createMainLayout(context, LegacyPlayerControlButton.getDialogBackgroundColor());
 
             // Create SpannableStringBuilder for formatted text.
             SpannableStringBuilder spannableTitle = new SpannableStringBuilder();
@@ -300,7 +298,8 @@ public class VideoQualityDialogButton {
             listView.setDivider(null);
 
             // Create dialog.
-            SheetBottomDialog.SlideDialog dialog = SheetBottomDialog.createSlideDialog(context, mainLayout, fadeInDuration);
+            SheetBottomDialog.SlideDialog dialog =
+                    SheetBottomDialog.createSlideDialog(context, mainLayout, LegacyPlayerControlButton.fadeInDuration);
 
             listView.setOnItemClickListener((parent, view, which, id) -> {
                 try {

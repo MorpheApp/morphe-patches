@@ -1,11 +1,12 @@
 package app.morphe.extension.music.settings;
 
-import static app.morphe.extension.shared.spoof.SpoofAppVersionPatch.isSpoofingToLessThan;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.graphics.BlendMode;
+import android.graphics.BlendModeColorFilter;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.preference.PreferenceFragment;
 import android.view.View;
 import android.widget.Toolbar;
@@ -18,6 +19,7 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseActivityHook;
+import app.morphe.extension.shared.spoof.SpoofAppVersionPatch;
 
 /**
  * Hooks {@code com.google.android.gms.common.api.GoogleApiActivity}
@@ -31,7 +33,7 @@ public class MusicActivityHook extends BaseActivityHook {
 
     private static final boolean USE_BOLD_ICONS = Settings.SETTINGS_INITIALIZED.get()
             && VersionCheckPatch.IS_8_40_OR_GREATER
-            && !isSpoofingToLessThan("8.40.00");
+            && !SpoofAppVersionPatch.isSpoofingToLessThan("8.40.00");
 
     static {
         Utils.setAppIsUsingBoldIcons(USE_BOLD_ICONS);
@@ -85,9 +87,9 @@ public class MusicActivityHook extends BaseActivityHook {
     @Override
     protected Drawable getNavigationIcon() {
         Drawable navigationIcon = MusicPreferenceFragment.getBackButtonDrawable();
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
-            navigationIcon.setColorFilter(new android.graphics.BlendModeColorFilter(
-                    Utils.getAppForegroundColor(), android.graphics.BlendMode.SRC_IN));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            navigationIcon.setColorFilter(new BlendModeColorFilter(
+                    Utils.getAppForegroundColor(), BlendMode.SRC_IN));
         } else {
             navigationIcon.setColorFilter(Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN);
         }

@@ -11,7 +11,6 @@
 package app.morphe.extension.shared.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.shared.requests.Route.Method.GET;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -53,7 +52,7 @@ public class GmsCoreSupportPatch {
     private static final String DONT_KILL_MY_APP_URL
             = "https://dontkillmyapp.com/";
     private static final Route DONT_KILL_MY_APP_MANUFACTURER_API
-            = new Route(GET, "/api/v2/{manufacturer}.json");
+            = new Route(Route.Method.GET, "/api/v2/{manufacturer}.json");
     private static final String DONT_KILL_MY_APP_NAME_PARAMETER
             = "?app=MicroG";
     private static final String BUILD_MANUFACTURER

@@ -68,6 +68,7 @@ Dəyişikliklər ehtiva edir:
   <string name="morphe_hide_expandable_card_entry_3">Hamısını gizlət</string>
   <string name="morphe_hide_floating_microphone_button_title">Üzən mikrofon düyməsini gizlət</string>
   <string name="morphe_hide_floating_microphone_button_summary">Axtarış təklifləri ekranının aşağı-sağ küncündəki üzən mikrofon düyməsin gizlədir</string>
+  <string name="morphe_hide_get_premium_button_title">\"Premium əldə edin\" düyməsini gizlət</string>
   <string name="morphe_hide_horizontal_shelves_title">Üfüqi hissələri gizlət</string>
   <string name="morphe_hide_horizontal_shelves_summary">Son xəbərlər, bəyənə biləcəyiniz icma postları, izləməyə davam edin, daha çox kanal kəşf edin, daha çox mövzu kəşf edin, sizin üçün, ən son videolar, ən uyğun, yaradıcı icmasından postlar, alış-veriş və yenidən izləyin kimi üfüqi cərgələri gizlədir</string>
   <string name="morphe_hide_hyped_label_title">Hayp edildi etiketin gizlət</string>
@@ -312,7 +313,7 @@ AiSlopList.com 'u açmaq və digər platformalar üçün yükləmələri görmə
   <string name="morphe_hide_general_ads_title">Ümumi reklamları gizlət</string>
   <string name="morphe_hide_merchandise_banners_title">Məhsul afişaların gizlət</string>
   <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
-  <string name="morphe_hide_paid_promotion_label_title">\"Ödənişli tanıtım içərir\" etiketini gizlət</string>
+  <string name="morphe_hide_paid_promotion_labels_title">Ödənişli tanıtım etiketlərini gizlət</string>
   <string name="morphe_hide_player_popup_ads_title">Oynadıcı ani açılan reklamlarını gizlət</string>
   <string name="morphe_hide_self_sponsor_ads_title">Şəxsi sponsorlu kartları gizlət</string>
   <string name="morphe_hide_shopping_links_title">Alış-veriş linklərini gizlət</string>

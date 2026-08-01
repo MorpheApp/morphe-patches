@@ -7,9 +7,6 @@
 
 package app.morphe.extension.youtube.patches;
 
-import static app.morphe.extension.shared.patches.ConversionContext.ELEMENT_IDENTIFIER_COMPONENT;
-import static app.morphe.extension.shared.patches.ConversionContext.ELEMENT_IDENTIFIER_CONTAINER;
-
 import android.view.View;
 import android.widget.ListView;
 
@@ -17,6 +14,7 @@ import java.util.List;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.patches.ConversionContext;
 import app.morphe.extension.youtube.innertube.NextResponseOuterClass.NewElement;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -67,8 +65,8 @@ public final class HidePlayerFlyoutMenuPatch {
                     if (path.startsWith(CAPTIONS_BODY_PATH) && HIDE_PLAYER_FLYOUT_CAPTIONS_FOOTER) {
                         int i = 0;
                         for (Object object : treeNodeResultList) {
-                            if (!ELEMENT_IDENTIFIER_COMPONENT.equals(object.toString())) {
-                                if (i == size - 1 && ELEMENT_IDENTIFIER_CONTAINER.equals(object.toString())) {
+                            if (!ConversionContext.ELEMENT_IDENTIFIER_COMPONENT.equals(object.toString())) {
+                                if (i == size - 1 && ConversionContext.ELEMENT_IDENTIFIER_CONTAINER.equals(object.toString())) {
                                     continue;
                                 } else {
                                     return;
@@ -81,7 +79,7 @@ public final class HidePlayerFlyoutMenuPatch {
 
                     } else if (path.startsWith(ADVANCED_VIDEO_QUALITY_BODY_PATH) && HIDE_PLAYER_FLYOUT_QUALITY_FOOTER) {
                         for (Object object : treeNodeResultList) {
-                            if (!ELEMENT_IDENTIFIER_COMPONENT.equals(object.toString())) {
+                            if (!ConversionContext.ELEMENT_IDENTIFIER_COMPONENT.equals(object.toString())) {
                                 return;
                             }
                         }

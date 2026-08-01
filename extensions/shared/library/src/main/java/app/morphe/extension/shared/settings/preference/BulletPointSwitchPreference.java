@@ -1,7 +1,5 @@
 package app.morphe.extension.shared.settings.preference;
 
-import static app.morphe.extension.shared.settings.preference.BulletPointPreference.formatIntoBulletPoints;
-
 import android.content.Context;
 import android.preference.SwitchPreference;
 import android.util.AttributeSet;
@@ -30,6 +28,6 @@ public class BulletPointSwitchPreference extends SwitchPreference {
 
     @Override
     public void setSummary(CharSequence summary) {
-        super.setSummary(formatIntoBulletPoints(summary));
+        super.setSummary(BulletPointPreference.formatIntoBulletPoints(summary));
     }
 }

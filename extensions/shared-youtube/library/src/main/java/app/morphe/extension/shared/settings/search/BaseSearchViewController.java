@@ -10,7 +10,6 @@
 
 package app.morphe.extension.shared.settings.search;
 
-import static app.morphe.extension.shared.ResourceUtils.getIdentifierOrThrow;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.app.Activity;
@@ -84,19 +83,19 @@ public abstract class BaseSearchViewController {
 
     protected static final int MAX_SEARCH_RESULTS = 50; // Maximum number of search results displayed.
 
-    protected static final int ID_MORPHE_SEARCH_VIEW = getIdentifierOrThrow(
+    protected static final int ID_MORPHE_SEARCH_VIEW = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "morphe_search_view");
-    protected static final int ID_MORPHE_SEARCH_VIEW_CONTAINER = getIdentifierOrThrow(
+    protected static final int ID_MORPHE_SEARCH_VIEW_CONTAINER = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "morphe_search_view_container");
-    protected static final int ID_ACTION_SEARCH = getIdentifierOrThrow(
+    protected static final int ID_ACTION_SEARCH = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "action_search");
-    protected static final int ID_MORPHE_SETTINGS_FRAGMENTS = getIdentifierOrThrow(
+    protected static final int ID_MORPHE_SETTINGS_FRAGMENTS = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "morphe_settings_fragments");
-    private static final int DRAWABLE_MORPHE_SETTINGS_SEARCH_ICON = getIdentifierOrThrow(
+    private static final int DRAWABLE_MORPHE_SETTINGS_SEARCH_ICON = ResourceUtils.getIdentifierOrThrow(
             ResourceType.DRAWABLE, "morphe_settings_search_icon");
-    private static final int DRAWABLE_MORPHE_SETTINGS_SEARCH_ICON_BOLD = getIdentifierOrThrow(
+    private static final int DRAWABLE_MORPHE_SETTINGS_SEARCH_ICON_BOLD = ResourceUtils.getIdentifierOrThrow(
             ResourceType.DRAWABLE, "morphe_settings_search_icon_bold");
-    protected static final int MENU_MORPHE_SEARCH_MENU = getIdentifierOrThrow(
+    protected static final int MENU_MORPHE_SEARCH_MENU = ResourceUtils.getIdentifierOrThrow(
             ResourceType.MENU, "morphe_search_menu");
 
     /**

@@ -1,6 +1,11 @@
-package app.morphe.extension.youtube.patches.playback.quality;
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
 
-import static app.morphe.extension.shared.Utils.isNotEmpty;
+package app.morphe.extension.youtube.patches.playback.quality;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.innertube.FormatOuterClass.Format;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -36,7 +42,7 @@ public final class PrioritizeVideoQualityPatch {
      * This function removes all VP9 codecs if the highest resolution video codec is AVC.
      */
     public static List<MessageLite> prioritizeVideoQuality(@Nullable String videoId, @NonNull List<MessageLite> adaptiveFormats) {
-        if (PRIORITIZE_VIDEO_QUALITY && isNotEmpty(videoId) && !"zzzzzzzzzzz".equals(videoId)) {
+        if (PRIORITIZE_VIDEO_QUALITY && Utils.isNotEmpty(videoId) && !"zzzzzzzzzzz".equals(videoId)) {
             try {
                 int maxHeightAVC = -1;
                 int maxHeightVP9 = -1;

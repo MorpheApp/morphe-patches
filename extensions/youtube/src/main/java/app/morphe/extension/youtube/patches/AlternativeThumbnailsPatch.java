@@ -1,12 +1,6 @@
 package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.youtube.settings.Settings.ALT_THUMBNAIL_HOME;
-import static app.morphe.extension.youtube.settings.Settings.ALT_THUMBNAIL_LIBRARY;
-import static app.morphe.extension.youtube.settings.Settings.ALT_THUMBNAIL_PLAYER;
-import static app.morphe.extension.youtube.settings.Settings.ALT_THUMBNAIL_SEARCH;
-import static app.morphe.extension.youtube.settings.Settings.ALT_THUMBNAIL_SUBSCRIPTIONS;
-import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
 import android.net.Uri;
 
@@ -58,11 +52,11 @@ public final class AlternativeThumbnailsPatch {
     // otherwise the app will not load due to cyclic initialization errors.
     public static final class DeArrowAvailability implements Setting.Availability {
         public static boolean usingDeArrowAnywhere() {
-            return ALT_THUMBNAIL_HOME.get().useDeArrow
-                    || ALT_THUMBNAIL_SUBSCRIPTIONS.get().useDeArrow
-                    || ALT_THUMBNAIL_LIBRARY.get().useDeArrow
-                    || ALT_THUMBNAIL_PLAYER.get().useDeArrow
-                    || ALT_THUMBNAIL_SEARCH.get().useDeArrow;
+            return Settings.ALT_THUMBNAIL_HOME.get().useDeArrow
+                    || Settings.ALT_THUMBNAIL_SUBSCRIPTIONS.get().useDeArrow
+                    || Settings.ALT_THUMBNAIL_LIBRARY.get().useDeArrow
+                    || Settings.ALT_THUMBNAIL_PLAYER.get().useDeArrow
+                    || Settings.ALT_THUMBNAIL_SEARCH.get().useDeArrow;
         }
 
         @Override
@@ -73,22 +67,22 @@ public final class AlternativeThumbnailsPatch {
         @Override
         public List<Setting<?>> getParentSettings() {
             return List.of(
-                    ALT_THUMBNAIL_HOME,
-                    ALT_THUMBNAIL_SUBSCRIPTIONS,
-                    ALT_THUMBNAIL_LIBRARY,
-                    ALT_THUMBNAIL_PLAYER,
-                    ALT_THUMBNAIL_SEARCH
+                    Settings.ALT_THUMBNAIL_HOME,
+                    Settings.ALT_THUMBNAIL_SUBSCRIPTIONS,
+                    Settings.ALT_THUMBNAIL_LIBRARY,
+                    Settings.ALT_THUMBNAIL_PLAYER,
+                    Settings.ALT_THUMBNAIL_SEARCH
             );
         }
     }
 
     public static final class StillImagesAvailability implements Setting.Availability {
         public static boolean usingStillImagesAnywhere() {
-            return ALT_THUMBNAIL_HOME.get().useStillImages
-                    || ALT_THUMBNAIL_SUBSCRIPTIONS.get().useStillImages
-                    || ALT_THUMBNAIL_LIBRARY.get().useStillImages
-                    || ALT_THUMBNAIL_PLAYER.get().useStillImages
-                    || ALT_THUMBNAIL_SEARCH.get().useStillImages;
+            return Settings.ALT_THUMBNAIL_HOME.get().useStillImages
+                    || Settings.ALT_THUMBNAIL_SUBSCRIPTIONS.get().useStillImages
+                    || Settings.ALT_THUMBNAIL_LIBRARY.get().useStillImages
+                    || Settings.ALT_THUMBNAIL_PLAYER.get().useStillImages
+                    || Settings.ALT_THUMBNAIL_SEARCH.get().useStillImages;
         }
 
         @Override
@@ -99,11 +93,11 @@ public final class AlternativeThumbnailsPatch {
         @Override
         public List<Setting<?>> getParentSettings() {
             return List.of(
-                    ALT_THUMBNAIL_HOME,
-                    ALT_THUMBNAIL_SUBSCRIPTIONS,
-                    ALT_THUMBNAIL_LIBRARY,
-                    ALT_THUMBNAIL_PLAYER,
-                    ALT_THUMBNAIL_SEARCH
+                    Settings.ALT_THUMBNAIL_HOME,
+                    Settings.ALT_THUMBNAIL_SUBSCRIPTIONS,
+                    Settings.ALT_THUMBNAIL_LIBRARY,
+                    Settings.ALT_THUMBNAIL_PLAYER,
+                    Settings.ALT_THUMBNAIL_SEARCH
             );
         }
     }
@@ -181,23 +175,23 @@ public final class AlternativeThumbnailsPatch {
     private static ThumbnailOption optionSettingForCurrentNavigation() {
         // Must check player type first, as search bar can be active behind the player.
         if (PlayerType.getCurrent().isMaximizedOrFullscreen()) {
-            return ALT_THUMBNAIL_PLAYER.get();
+            return Settings.ALT_THUMBNAIL_PLAYER.get();
         }
 
         // Must check second, as search can be from any tab.
         if (NavigationBar.isSearchBarActive()) {
-            return ALT_THUMBNAIL_SEARCH.get();
+            return Settings.ALT_THUMBNAIL_SEARCH.get();
         }
 
         // Avoid checking which navigation button is selected, if all other settings are the same.
-        ThumbnailOption homeOption = ALT_THUMBNAIL_HOME.get();
-        ThumbnailOption subscriptionsOption = ALT_THUMBNAIL_SUBSCRIPTIONS.get();
-        ThumbnailOption libraryOption = ALT_THUMBNAIL_LIBRARY.get();
+        ThumbnailOption homeOption = Settings.ALT_THUMBNAIL_HOME.get();
+        ThumbnailOption subscriptionsOption = Settings.ALT_THUMBNAIL_SUBSCRIPTIONS.get();
+        ThumbnailOption libraryOption = Settings.ALT_THUMBNAIL_LIBRARY.get();
         if ((homeOption == subscriptionsOption) && (homeOption == libraryOption)) {
             return homeOption; // All are the same option.
         }
 
-        NavigationButton selectedNavButton = NavigationButton.getSelectedNavigationButton();
+        NavigationBar.NavigationButton selectedNavButton = NavigationBar.NavigationButton.getSelectedNavigationButton();
         if (selectedNavButton == null) {
             // Unknown tab, treat as the home tab;
             return homeOption;

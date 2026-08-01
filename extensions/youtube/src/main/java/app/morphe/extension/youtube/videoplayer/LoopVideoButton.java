@@ -11,9 +11,6 @@
 package app.morphe.extension.youtube.videoplayer;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS;
-import static app.morphe.extension.youtube.settings.Settings.DO_NOT_REMEMBER_LOOP_VIDEO;
-import static app.morphe.extension.youtube.settings.Settings.LOOP_VIDEO_BUTTON;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -39,6 +36,7 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
+import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
 import app.morphe.extension.youtube.patches.LoopVideoPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
@@ -57,17 +55,17 @@ public class LoopVideoButton {
 
     private static final int LOOP_VIDEO_ON = ResourceUtils.getIdentifierOrThrow(
             ResourceType.DRAWABLE,
-            RESTORE_OLD_PLAYER_BUTTONS
+            LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS
                     ? "morphe_loop_video_button_on"
                     : "morphe_loop_video_button_on_bold");
     private static final int LOOP_VIDEO_OFF = ResourceUtils.getIdentifierOrThrow(
             ResourceType.DRAWABLE,
-            RESTORE_OLD_PLAYER_BUTTONS
+            LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS
                     ? "morphe_loop_video_button_off"
                     : "morphe_loop_video_button_off_bold");
     private static final int LOOP_VIDEO_RANGE = ResourceUtils.getIdentifierOrThrow(
             ResourceType.DRAWABLE,
-            RESTORE_OLD_PLAYER_BUTTONS
+            LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS
                     ? "morphe_loop_video_button_range"
                     : "morphe_loop_video_button_range_bold");
     private static final String videoRangeInvalidTimeStringName =
@@ -108,7 +106,7 @@ public class LoopVideoButton {
      * Injection point.
      */
     public static void resetLoopButton() {
-        if (LOOP_VIDEO_BUTTON.get() && DO_NOT_REMEMBER_LOOP_VIDEO.get()) {
+        if (Settings.LOOP_VIDEO_BUTTON.get() && Settings.DO_NOT_REMEMBER_LOOP_VIDEO.get()) {
             setLoopButton(false);
         }
         updateButtonIcon();

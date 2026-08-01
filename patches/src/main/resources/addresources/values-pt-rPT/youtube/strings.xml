@@ -68,6 +68,7 @@ As mudanças incluem:
   <string name="morphe_hide_expandable_card_entry_3">Ocultar tudo</string>
   <string name="morphe_hide_floating_microphone_button_title">Esconder o botão do microfone flutuante</string>
   <string name="morphe_hide_floating_microphone_button_summary">Oculta o botão de microfone flutuante no canto inferior direito da tela de sugestões de pesquisa</string>
+  <string name="morphe_hide_get_premium_button_title">Ocultar botão \'Obter Premium\'</string>
   <string name="morphe_hide_horizontal_shelves_title">Esconder categorias horizontais</string>
   <string name="morphe_hide_horizontal_shelves_summary">Oculta prateleiras horizontais como Notícias de última hora, Publicações da comunidade que podem te interessar, Continue assistindo, Explore mais canais, Explore mais tópicos, Para você, Vídeos mais recentes, Mais relevantes, Publicações da comunidade do criador, Compras e Assista novamente</string>
   <string name="morphe_hide_hyped_label_title">Ocultar rótulo em destaque</string>
@@ -312,7 +313,7 @@ Toque aqui para abrir AiSlopList.com e ver downloads para outras plataformas"</s
   <string name="morphe_hide_general_ads_title">Esconder anúncios gerais</string>
   <string name="morphe_hide_merchandise_banners_title">Esconder banner de mercadoria</string>
   <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
-  <string name="morphe_hide_paid_promotion_label_title">Oculta o rótulo \'Inclui promoção paga\'</string>
+  <string name="morphe_hide_paid_promotion_labels_title">Ocultar rótulos de promoção paga</string>
   <string name="morphe_hide_player_popup_ads_title">Esconder anúncios popup do jogador</string>
   <string name="morphe_hide_self_sponsor_ads_title">Esconder cartões autopatrocinados</string>
   <string name="morphe_hide_shopping_links_title">Ocultar links de compras</string>

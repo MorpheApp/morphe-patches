@@ -1,10 +1,9 @@
 package app.morphe.extension.youtube.patches.playback.quality;
 
-import static app.morphe.extension.youtube.patches.VideoInformation.isPremiumVideoQuality;
-
 import java.util.Arrays;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.VideoInformation.VideoQualityInterface;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -19,7 +18,7 @@ public final class HidePremiumVideoQualityPatch {
         if (HIDE_PREMIUM_VIDEO_QUALITY && qualities != null && qualities.length > 0) {
             try {
                 return Arrays.stream(qualities)
-                        .filter(quality -> quality != null && !isPremiumVideoQuality(quality))
+                        .filter(quality -> quality != null && !VideoInformation.isPremiumVideoQuality(quality))
                         .toArray(VideoQualityInterface[]::new);
             } catch (Exception ex) {
                 Logger.printException(() -> "Failed to hide Premium video quality", ex);

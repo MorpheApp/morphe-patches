@@ -23,7 +23,6 @@
 package app.morphe.extension.youtube.patches.components;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
 import androidx.annotation.Nullable;
 
@@ -246,7 +245,7 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
             return false;
         }
 
-        NavigationButton selectedNavButton = NavigationButton.getSelectedNavigationButton();
+        NavigationBar.NavigationButton selectedNavButton = NavigationBar.NavigationButton.getSelectedNavigationButton();
         if (selectedNavButton == null) {
             return hideHome; // Unknown tab, treat the same as home.
         }
@@ -293,8 +292,8 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
         // Player fullscreen: treat under-video results as home (mirrors isActiveForFeedContext).
         if (PlayerType.getCurrent().isMaximizedOrFullscreen()) return Source.HOME;
         if (NavigationBar.isSearchBarActive()) return Source.SEARCH;
-        NavigationButton nav = NavigationButton.getSelectedNavigationButton();
-        return nav == NavigationButton.SUBSCRIPTIONS ? Source.SUBSCRIPTIONS : Source.HOME;
+        NavigationBar.NavigationButton nav = NavigationBar.NavigationButton.getSelectedNavigationButton();
+        return nav == NavigationBar.NavigationButton.SUBSCRIPTIONS ? Source.SUBSCRIPTIONS : Source.HOME;
     }
 
     @Nullable

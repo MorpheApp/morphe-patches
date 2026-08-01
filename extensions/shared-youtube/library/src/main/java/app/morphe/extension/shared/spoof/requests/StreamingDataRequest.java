@@ -11,12 +11,6 @@
 package app.morphe.extension.shared.spoof.requests;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.shared.Utils.isNotEmpty;
-import static app.morphe.extension.shared.Utils.submitOnBackgroundThread;
-import static app.morphe.extension.shared.spoof.js.JavaScriptEngineSupport.supportsJavaScriptEngine;
-import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getDeobfuscatedStreamingData;
-import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getJavaScriptHash;
-import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getJavaScriptVariant;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -46,6 +40,8 @@ import app.morphe.extension.shared.oauth2.requests.OAuth2Requester;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.ClientType;
+import app.morphe.extension.shared.spoof.js.JavaScriptEngineSupport;
+import app.morphe.extension.shared.spoof.js.JavaScriptManager;
 
 /**
  * Video streaming data. Fetching is tied to the behavior YT uses,
@@ -70,7 +66,7 @@ public class StreamingDataRequest {
         orderToUse.add(preferredClient);
 
         for (ClientType client : availableClients) {
-            if (client.requireJS && !supportsJavaScriptEngine()) {
+            if (client.requireJS && !JavaScriptEngineSupport.supportsJavaScriptEngine()) {
                 Logger.printDebug(() -> "Could not find JavaScript engine. Skipping JavaScript client: " + client.name());
                 continue;
             }
@@ -143,7 +139,7 @@ public class StreamingDataRequest {
 
     private StreamingDataRequest(String videoId, Map<String, String> playerHeaders) {
         this.videoId = videoId;
-        this.future = submitOnBackgroundThread(() -> fetch(videoId, playerHeaders));
+        this.future = Utils.submitOnBackgroundThread(() -> fetch(videoId, playerHeaders));
     }
 
     public static void fetchRequest(String videoId, Map<String, String> fetchHeaders) {
@@ -280,7 +276,7 @@ public class StreamingDataRequest {
             if (!"OK".equals(status)) {
                 handleDebugToast("Debug: Ignoring unplayable video (%s)", clientType);
                 String reason = playabilityStatus.getReason();
-                if (isNotEmpty(reason)) {
+                if (Utils.isNotEmpty(reason)) {
                     Logger.printDebug(() -> String.format("Debug: Ignoring unplayable video (%s), reason: %s", clientType, reason));
                 }
 
@@ -304,7 +300,7 @@ public class StreamingDataRequest {
             }
 
             if (clientType.requireJS) {
-                var deobfuscatedStreamingData = getDeobfuscatedStreamingData(streamingData);
+                var deobfuscatedStreamingData = JavaScriptManager.getDeobfuscatedStreamingData(streamingData);
                 if (deobfuscatedStreamingData == null) {
                     handleDebugToast("Debug: Ignoring obfuscated streamingData (%s)", clientType);
                     return null;
@@ -327,7 +323,7 @@ public class StreamingDataRequest {
     }
 
     private static boolean skipClient(ClientType client) {
-        if (client.requireJS && !supportsJavaScriptEngine()) {
+        if (client.requireJS && !JavaScriptEngineSupport.supportsJavaScriptEngine()) {
             Logger.printDebug(() -> "Skipping JavaScript client: " + client.name());
             return true;
         }
@@ -359,8 +355,8 @@ public class StreamingDataRequest {
                     if (clientType.requireJS) {
                         Logger.printDebug(() -> "End of fetch for JavaScript required client" +
                                 ", video: " + videoId +
-                                ", hash: " + getJavaScriptHash() +
-                                ", variant: " + getJavaScriptVariant() +
+                                ", hash: " + JavaScriptManager.getJavaScriptHash() +
+                                ", variant: " + JavaScriptManager.getJavaScriptVariant() +
                                 ", took: " + (System.currentTimeMillis() - fetchStartTime) + "ms");
                     }
 
