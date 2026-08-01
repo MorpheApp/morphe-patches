@@ -1,8 +1,8 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/2261
  *
- * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.patches.youtube.layout.playbackinfeeds
@@ -110,10 +110,8 @@ val playbackInFeedsPatch = bytecodePatch(
 
             // Hook the end of the constructor, since the fields this class uses
             // are not set until then.
-            methods.first { MethodUtil.isConstructor(it) }.apply {
-                val returnIndex = indexOfFirstInstructionOrThrow {
-                    opcode == Opcode.RETURN_VOID
-                }
+            methods.single { MethodUtil.isConstructor(it) }.apply {
+                val returnIndex = indexOfFirstInstructionOrThrow(Opcode.RETURN_VOID)
 
                 addInstruction(
                     returnIndex,

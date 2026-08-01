@@ -779,7 +779,6 @@ public class Settings extends SharedYouTubeSettings {
 
         Setting.addImportExportCallback(SponsorBlockSettings.SB_IMPORT_EXPORT_CALLBACK);
         Setting.addImportExportCallback(VoiceOverTranslationPatch.VOT_IMPORT_EXPORT_CALLBACK);
-        Setting.addImportExportCallback(PlaybackInFeedsPatch.PLAYBACK_IN_FEEDS_IMPORT_EXPORT_CALLBACK);
 
         // Must run before any code reads a SegmentCategory setting.
         YouTubeSponsorBlockConfig.install();
