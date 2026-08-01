@@ -87,7 +87,7 @@ public final class VideoInformation {
      */
     public static final float PLAYBACK_SPEED_MAXIMUM = 8;
 
-    private static final float DEFAULT_YOUTUBE_PLAYBACK_AUDIO_PITCH = 1.0f;
+    private static final float DEFAULT_PLAYBACK_AUDIO_PITCH = 1.0f;
     
     /**
      * Maximum playback audio pitch, inclusive.
@@ -123,7 +123,7 @@ public final class VideoInformation {
     /**
      * The current playback audio pitch
      */
-    private static float playbackAudioPitch = DEFAULT_YOUTUBE_PLAYBACK_AUDIO_PITCH;
+    private static float playbackAudioPitch = DEFAULT_PLAYBACK_AUDIO_PITCH;
     /**
      * The current playback speed in native panel.
      */

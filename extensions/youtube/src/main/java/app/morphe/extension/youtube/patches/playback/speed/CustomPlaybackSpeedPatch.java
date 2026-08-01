@@ -34,6 +34,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -345,6 +346,22 @@ public class CustomPlaybackSpeedPatch {
             SheetBottomDialog.DraggableLinearLayout mainLayout =
                     SheetBottomDialog.createMainLayout(context, LegacyPlayerControlButton.getDialogBackgroundColor());
 
+            // Wrap the dialog content in a ScrollView capped to most of the screen height,
+            // so the dialog remains fully usable in landscape where the available height is limited.
+            LinearLayout contentLayout = new LinearLayout(context);
+            contentLayout.setOrientation(LinearLayout.VERTICAL);
+
+            ScrollView scrollView = new ScrollView(context) {
+                @Override
+                protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+                    heightMeasureSpec = MeasureSpec.makeMeasureSpec(Dim.pctHeight(75), MeasureSpec.AT_MOST);
+                    super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+                }
+            };
+            scrollView.setVerticalScrollBarEnabled(false);
+            scrollView.addView(contentLayout);
+            mainLayout.addView(scrollView);
+
             // Display current playback speed.
             TextView currentSpeedText = new TextView(context);
             float currentSpeed = VideoInformation.getPlaybackSpeed();
@@ -358,7 +375,7 @@ public class CustomPlaybackSpeedPatch {
             textParams.setMargins(0, Dim.dp20, 0, 0);
             currentSpeedText.setLayoutParams(textParams);
             // Add current speed text view to main layout.
-            mainLayout.addView(currentSpeedText);
+            contentLayout.addView(currentSpeedText);
 
             // Create horizontal layout for slider and +/- buttons.
             LinearLayout sliderLayout = new LinearLayout(context);
@@ -389,7 +406,7 @@ public class CustomPlaybackSpeedPatch {
             sliderLayout.addView(plusButton);
 
             // Add slider layout to main layout.
-            mainLayout.addView(sliderLayout);
+            contentLayout.addView(sliderLayout);
 
             // ── Pitch UI elements (declared early for use in callbacks) ─────────────
             TextView currentPitchText = new TextView(context);
@@ -544,7 +561,7 @@ public class CustomPlaybackSpeedPatch {
             }
 
             // Add in-rows speed buttons layout to main layout.
-            mainLayout.addView(gridLayout);
+            contentLayout.addView(gridLayout);
 
             // ── Link toggle button ───────────────────────────────────────────────────
             LinearLayout linkLayout = new LinearLayout(context);
@@ -558,6 +575,7 @@ public class CustomPlaybackSpeedPatch {
                     Dim.roundedCorners(20), null, null));
             linkBackground.getPaint().setColor(getAdjustedBackgroundColor(false));
             linkButton.setBackground(linkBackground);
+            linkButton.setPadding(Dim.dp4, Dim.dp4, Dim.dp4, Dim.dp4);
             final int linkSize = Utils.appIsUsingBoldIcons() ? Dim.dp40 : Dim.dp36;
             LinearLayout.LayoutParams linkParams = new LinearLayout.LayoutParams(linkSize, linkSize);
             linkParams.setMargins(Dim.dp8, 0, Dim.dp8, 0);
@@ -577,13 +595,13 @@ public class CustomPlaybackSpeedPatch {
                 }
             });
             linkLayout.addView(linkButton);
-            mainLayout.addView(linkLayout);
+            contentLayout.addView(linkLayout);
 
             // ── Row 4: Current playback audio pitch display ──────────────────────────
-            mainLayout.addView(currentPitchText);
+            contentLayout.addView(currentPitchText);
 
             // ── Row 5: Pitch slider with +/- buttons ─────────────────────────────────
-            mainLayout.addView(pitchSliderLayout);
+            contentLayout.addView(pitchSliderLayout);
 
             // Callback when user picks a new audio pitch.
             Function<Float, Void> userSelectedPitch = newPitch -> {
@@ -681,6 +699,9 @@ public class CustomPlaybackSpeedPatch {
                 pitchPresetButton.setText(pitchLabel);
                 pitchPresetButton.setTextColor(Utils.getAppForegroundColor());
                 pitchPresetButton.setTextSize(12);
+                pitchPresetButton.setTypeface(Utils.appIsUsingBoldIcons()
+                        ? Typeface.DEFAULT_BOLD
+                        : Typeface.DEFAULT);
                 pitchPresetButton.setAllCaps(false);
                 pitchPresetButton.setGravity(Gravity.CENTER);
 
@@ -710,7 +731,7 @@ public class CustomPlaybackSpeedPatch {
                 pitchPresetGrid.addView(pitchButtonContainer);
             }
 
-            mainLayout.addView(pitchPresetGrid);
+            contentLayout.addView(pitchPresetGrid);
 
 
             // Create dialog.
