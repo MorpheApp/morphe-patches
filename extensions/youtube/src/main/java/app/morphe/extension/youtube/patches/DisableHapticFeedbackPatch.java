@@ -48,6 +48,13 @@ public class DisableHapticFeedbackPatch {
     /**
      * Injection point.
      */
+    public static boolean disableBrokenZoomFlag() {
+        return Settings.DISABLE_HAPTIC_FEEDBACK_ZOOM.get();
+    }
+
+    /**
+     * Injection point.
+     */
     public static void vibrate(Vibrator vibrator, VibrationEffect vibrationEffect) {
         if (disableVibrate()) return;
         vibrator.vibrate(vibrationEffect);
