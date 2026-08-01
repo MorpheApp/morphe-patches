@@ -21,6 +21,7 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
+import app.morphe.patcher.parametersMatch
 import app.morphe.patcher.string
 import app.morphe.patches.all.misc.resources.ResourceType
 import app.morphe.patches.all.misc.resources.resourceLiteral
@@ -475,15 +476,23 @@ internal object ChannelTabAddFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     filters = listOf(
-        methodCall("Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z"),
+        methodCall("Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z")
     ),
     custom = { method, _ ->
-        // On 21.31+ the parameters fingerprint is the same, but contains a further "L". Therefore, in
-        // order to maintain compatibility with all previous versions, we will
-        // verify the presence of at least the first two parameters.
-        method.parameters.size >= 2 &&
-                (method.parameters.first().type.startsWith("L") &&
-                        method.parameters[1].type.startsWith("I"))
+        parametersMatch(
+            method.parameters,
+            listOf(
+                "L",
+                "I"
+            )
+        ) || parametersMatch( // 21.31+
+            method.parameters,
+            listOf(
+                "L",
+                "I",
+                "L"
+            )
+        )
     }
 )
 
