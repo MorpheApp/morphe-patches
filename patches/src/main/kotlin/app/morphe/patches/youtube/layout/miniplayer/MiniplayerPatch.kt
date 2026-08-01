@@ -44,9 +44,9 @@ import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstLiteralInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
+import app.morphe.util.numberOfParameterRegisters
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction35c
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
@@ -255,21 +255,20 @@ val miniplayerPatch = bytecodePatch(
             )
         }
 
-        MiniplayerDragAndDropFingerprint.apply {
-            method.apply {
-                val clonedParameters = 3
-                val instructionIndex = clonedParameters + instructionMatches.last().index
+        MiniplayerDragAndDropFingerprint.let {
+            it.method.cloneParameters().apply {
+                val instructionIndex = it.instructionMatches.last().index + numberOfParameterRegisters
                 val instructionRegister = getInstruction<OneRegisterInstruction>(
                     instructionIndex
                 ).registerA
 
-                cloneParameters().addInstructionsAtControlFlowLabel(
+                addInstructionsAtControlFlowLabel(
                     instructionIndex + 1,
                     """
                         invoke-static { v$instructionRegister }, $EXTENSION_CLASS->getMiniplayerDragAndDrop(I)Z
                         move-result p0
                         if-eqz p0, :get_drag_and_drop
-                        const/4 p0, 0x0
+                        const/4 p0, 0
                         return p0
                         :get_drag_and_drop
                         nop
@@ -312,25 +311,19 @@ val miniplayerPatch = bytecodePatch(
             }
         }
 
-        MiniplayerRoundedCornersFingerprint.apply {
-            method.apply {
-                val instructionIndex = instructionMatches.last().index
-                val instructionRegister = getInstruction<BuilderInstruction35c>(
-                    instructionIndex
-                )
-                val instructionRegisterA = instructionRegister.registerC
-                val instructionRegisterB = instructionRegister.registerD
-                val freeRegister = findFreeRegister(
-                    instructionIndex, instructionRegisterA, instructionRegisterB
-                )
+        MiniplayerRoundedCornersFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches.last().index
+                val free = findFreeRegister(index)
 
                 addInstructionsAtControlFlowLabel(
-                    instructionIndex,
+                    index,
                     """
                         invoke-static {}, $EXTENSION_CLASS->getRoundedCorners()Z
-                        move-result v$freeRegister
-                        if-nez v$freeRegister, :get_rounded_corners
-                    """, ExternalLabel("get_rounded_corners", getInstruction(instructionIndex + 1))
+                        move-result v$free
+                        if-nez v$free, :get_rounded_corners
+                    """,
+                    ExternalLabel("get_rounded_corners", getInstruction(index + 1))
                 )
             }
 
@@ -360,20 +353,17 @@ val miniplayerPatch = bytecodePatch(
             """
         )
 
-        MiniplayerOffscreenHandlerFingerprint.apply {
-            method.apply {
-                val instructionIndex = instructionMatches.last().index
-                val instructionRegister = getInstruction<BuilderInstruction35c>(
-                    instructionIndex
-                ).registerC
-                val freeRegister = findFreeRegister(instructionIndex, instructionRegister)
+        MiniplayerOffscreenHandlerFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches.last().index
+                val free = findFreeRegister(index)
 
                 addInstructionsWithLabels(
-                    instructionIndex + 1,
+                    index + 1,
                     """
                         invoke-static { }, $EXTENSION_CLASS->getHorizontalDrag()Z
-                        move-result v$freeRegister
-                        if-eqz v$freeRegister, :disable_offscreen_handler
+                        move-result v$free
+                        if-eqz v$free, :disable_offscreen_handler
                         return-void
                         :disable_offscreen_handler
                         nop
@@ -384,28 +374,29 @@ val miniplayerPatch = bytecodePatch(
 
         // endregion
 
-        if (!is_21_30_or_greater) {
+        if (is_21_30_or_greater) {
+            MiniplayerAnimatedExpandFingerprint.let {
+                it.method.apply {
+                    val insertIndex = it.instructionMatches[1].index
+                    val labelIndex = it.instructionMatches.last().index
+                    val free = findFreeRegister(insertIndex)
+
+                    addInstructionsAtControlFlowLabel(
+                        insertIndex,
+                        """
+                            invoke-static { }, $EXTENSION_CLASS->getMaximizeAnimation()Z
+                            move-result v$free
+                            if-eqz v$free, :get_maximize_animation
+                        """,
+                        ExternalLabel("get_maximize_animation", getInstruction(labelIndex))
+                    )
+                }
+            }
+        } else {
             MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
                 MINIPLAYER_ANIMATED_EXPAND_FEATURE_KEY,
                 "getMaximizeAnimation",
             )
-        } else {
-            MiniplayerAnimatedExpandFingerprint.apply {
-                method.apply {
-                    val startTargetIndex = instructionMatches[1].index
-                    val endTargetIndex = instructionMatches.last().index
-                    val freeRegister = findFreeRegister(startTargetIndex)
-
-                    addInstructionsAtControlFlowLabel(
-                        startTargetIndex,
-                        """
-                            invoke-static { }, $EXTENSION_CLASS->getMaximizeAnimation()Z
-                            move-result v$freeRegister
-                            if-eqz v$freeRegister, :get_maximize_animation
-                        """, ExternalLabel("get_maximize_animation", getInstruction(endTargetIndex))
-                    )
-                }
-            }
         }
 
         Fingerprint(
