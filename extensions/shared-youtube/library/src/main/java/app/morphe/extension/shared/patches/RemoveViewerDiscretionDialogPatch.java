@@ -10,10 +10,15 @@ package app.morphe.extension.shared.patches;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
 @SuppressWarnings("unused")
-public class DisableQUICProtocolPatch {
+public class RemoveViewerDiscretionDialogPatch {
 
-    public static boolean disableQUICProtocol(boolean original) {
-        boolean isDisabled = SharedYouTubeSettings.DISABLE_QUIC_PROTOCOL.get();
-        return !isDisabled && original;
+    /**
+     * Injection point.
+     */
+    public static boolean hideViewDiscretionDialog(boolean originalValue) {
+        if (SharedYouTubeSettings.REMOVE_VIEWER_DISCRETION_DIALOG.get()) {
+            return true;
+        }
+        return originalValue;
     }
 }

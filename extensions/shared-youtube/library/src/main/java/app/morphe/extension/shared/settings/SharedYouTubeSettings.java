@@ -27,22 +27,12 @@ public class SharedYouTubeSettings extends BaseSettings {
 
     public static final BooleanSetting DISABLE_DRC_AUDIO = new BooleanSetting("morphe_disable_drc_audio", FALSE, true);
 
-    public static final BooleanSetting DISABLE_QUIC_PROTOCOL = new BooleanSetting("morphe_disable_quic_protocol", FALSE, true);
-
     public static final BooleanSetting FORCE_ORIGINAL_AUDIO = new BooleanSetting("morphe_force_original_audio", TRUE, true);
 
+    // Ads
     public static final BooleanSetting HIDE_FULLSCREEN_ADS = new BooleanSetting("morphe_hide_fullscreen_ads", TRUE);
 
-    public static final BooleanSetting SPOOF_VIDEO_STREAMS = new BooleanSetting("morphe_spoof_video_streams", TRUE, true, "morphe_spoof_video_streams_user_dialog_message");
-    public static final BooleanSetting SPOOF_VIDEO_STREAMS_STATS_FOR_NERDS = new BooleanSetting("morphe_spoof_video_streams_stats_for_nerds", TRUE, parent(SPOOF_VIDEO_STREAMS));
-    public static final EnumSetting<JavaScriptVariant> SPOOF_VIDEO_STREAMS_PLAYER_JS_VARIANT = new EnumSetting<>("morphe_spoof_video_streams_player_js_variant", JavaScriptVariant.HOUSE_BRAND, true, new JavaScriptClientAvailability());
-    public static final StringSetting SPOOF_VIDEO_STREAMS_PLAYER_JS_HASH_VALUE = new StringSetting("morphe_spoof_video_streams_player_js_hash_value", "", true, false);
-    public static final LongSetting SPOOF_VIDEO_STREAMS_PLAYER_JS_SAVED_MILLISECONDS = new LongSetting("morphe_spoof_video_streams_player_js_saved_milliseconds", -1L, false, false);
-    public static final StringSetting OAUTH2_REFRESH_TOKEN = new StringSetting("morphe_oauth2_refresh_token", "", false, false);
-
-    public static final BooleanSetting SANITIZE_SHARING_LINKS = new BooleanSetting("morphe_sanitize_sharing_links", TRUE);
-    public static final BooleanSetting REPLACE_MUSIC_LINKS_WITH_YOUTUBE = new BooleanSetting("morphe_replace_music_with_youtube", FALSE);
-    public static final BooleanSetting REPLACE_LINKS_WITH_SHORTENER = new BooleanSetting("morphe_replace_links_with_shortener", FALSE);
+    public static final BooleanSetting REMOVE_VIEWER_DISCRETION_DIALOG = new BooleanSetting("morphe_remove_viewer_discretion_dialog", FALSE, true);
 
     public static final BooleanSetting CHECK_WATCH_HISTORY_DOMAIN_NAME = new BooleanSetting("morphe_check_watch_history_domain_name", TRUE, false, false);
 
@@ -50,9 +40,20 @@ public class SharedYouTubeSettings extends BaseSettings {
     public static final EnumSetting<NotificationIconTheme> CUSTOM_BRANDING_NOTIFICATION_ICON = new EnumSetting<>("morphe_custom_branding_notification_icon", NotificationIconTheme.FOLLOW, true);
     public static final IntegerSetting CUSTOM_BRANDING_NAME = new IntegerSetting("morphe_custom_branding_name", CustomBrandingPatch.getDefaultAppNameIndex(), true);
 
+    // Miscellaneous
     public static final BooleanSetting DEBUG_PROTOBUFFER = new BooleanSetting("morphe_debug_protobuffer", FALSE, false, "morphe_debug_protobuffer_user_dialog_message", parent(DEBUG));
     public static final BooleanSetting DEBUG_SPANNABLE = new BooleanSetting("morphe_debug_spannable", FALSE, parent(DEBUG));
     public static final StringSetting DISABLED_FEATURE_FLAGS = new StringSetting("morphe_disabled_feature_flags", "", true, parent(DEBUG));
+    public static final BooleanSetting DISABLE_QUIC_PROTOCOL = new BooleanSetting("morphe_disable_quic_protocol", FALSE, true);
+    public static final BooleanSetting SANITIZE_SHARING_LINKS = new BooleanSetting("morphe_sanitize_sharing_links", TRUE);
+    public static final BooleanSetting REPLACE_MUSIC_LINKS_WITH_YOUTUBE = new BooleanSetting("morphe_replace_music_with_youtube", FALSE);
+    public static final BooleanSetting REPLACE_LINKS_WITH_SHORTENER = new BooleanSetting("morphe_replace_links_with_shortener", FALSE);
+    public static final BooleanSetting SPOOF_VIDEO_STREAMS = new BooleanSetting("morphe_spoof_video_streams", TRUE, true, "morphe_spoof_video_streams_user_dialog_message");
+    public static final BooleanSetting SPOOF_VIDEO_STREAMS_STATS_FOR_NERDS = new BooleanSetting("morphe_spoof_video_streams_stats_for_nerds", TRUE, parent(SPOOF_VIDEO_STREAMS));
+    public static final EnumSetting<JavaScriptVariant> SPOOF_VIDEO_STREAMS_PLAYER_JS_VARIANT = new EnumSetting<>("morphe_spoof_video_streams_player_js_variant", JavaScriptVariant.HOUSE_BRAND, true, new JavaScriptClientAvailability());
+    public static final StringSetting SPOOF_VIDEO_STREAMS_PLAYER_JS_HASH_VALUE = new StringSetting("morphe_spoof_video_streams_player_js_hash_value", "", true, false);
+    public static final LongSetting SPOOF_VIDEO_STREAMS_PLAYER_JS_SAVED_MILLISECONDS = new LongSetting("morphe_spoof_video_streams_player_js_saved_milliseconds", -1L, false, false);
+    public static final StringSetting OAUTH2_REFRESH_TOKEN = new StringSetting("morphe_oauth2_refresh_token", "", false, false);
 
     public static final BooleanSetting PROXY_ENABLED = new BooleanSetting("morphe_proxy_enabled", FALSE, true);
     public static final StringSetting PROXY_HOST = new StringSetting("morphe_proxy_host", "", true, parent(PROXY_ENABLED));
@@ -72,6 +73,7 @@ public class SharedYouTubeSettings extends BaseSettings {
     public static final BooleanSetting SPOOF_APP_VERSION = new BooleanSetting("morphe_spoof_app_version", FALSE, true, "morphe_spoof_app_version_user_dialog_message");
     public static final StringSetting SPOOF_APP_VERSION_TARGET = new StringSetting("morphe_spoof_app_version_target", getDefaultSpoofAppVersionTarget(), true, parent(SPOOF_APP_VERSION));
 
+    // Return YouTube Dislike
     public static final BooleanSetting RYD_ENABLED = new BooleanSetting("morphe_ryd_enabled", TRUE);
     public static final StringSetting RYD_USER_ID = new StringSetting("morphe_ryd_user_id", "", false, false);
     public static final BooleanSetting RYD_DISLIKE_PERCENTAGE = new BooleanSetting("morphe_ryd_dislike_percentage", FALSE, true, parent(RYD_ENABLED));

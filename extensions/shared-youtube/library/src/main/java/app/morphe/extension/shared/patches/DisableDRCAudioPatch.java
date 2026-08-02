@@ -1,6 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.shared.patches;
 
-import static app.morphe.extension.shared.settings.SharedYouTubeSettings.DISABLE_DRC_AUDIO;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
 @SuppressWarnings("unused")
 public final class DisableDRCAudioPatch {
@@ -10,7 +17,7 @@ public final class DisableDRCAudioPatch {
      * Checks if DRC audio should be disabled according to user settings.
      */
     public static boolean disableDrcAudio() {
-        return DISABLE_DRC_AUDIO.get();
+        return SharedYouTubeSettings.DISABLE_DRC_AUDIO.get();
     }
 
     /**
