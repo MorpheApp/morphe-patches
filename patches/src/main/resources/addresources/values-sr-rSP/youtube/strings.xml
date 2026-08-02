@@ -68,6 +68,7 @@ Promene uključuju:
   <string name="morphe_hide_expandable_card_entry_3">сакриј све</string>
   <string name="morphe_hide_floating_microphone_button_title">Сакриј плутајуће дугме микрофона</string>
   <string name="morphe_hide_floating_microphone_button_summary">Саскрива плутајући дугме за микрофон у доњем десном углу екрана предлога за претрагу</string>
+  <string name="morphe_hide_get_premium_button_title">Сакриј дугме „Набави Премиум”</string>
   <string name="morphe_hide_horizontal_shelves_title">Сакриј хоризонталне полице</string>
   <string name="morphe_hide_horizontal_shelves_summary">Сакрива хоризонталне полице као што су „Брзе вести“, „Објаве из заједнице које би вам могле задолити“, „Настави гледање“, „Истражите више канала“, „Истражите више тема“, „За вас“, „Најновији видео снимци“, „Најрелевантнији“, „Објаве из заједнице креатора“, „Куповина“ и „Поново гледај“</string>
   <string name="morphe_hide_hyped_label_title">Сакриј ознаку \"Ускоро\"</string>
@@ -226,10 +227,13 @@ Promene uključuju:
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Унесите називе карусела коментара да бисте филтрирали по њима, одвојене новим редовима</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Сакриј „Резиме ћаскања који је генерисала вештачка интелигенција”</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Сакриј смернице канала</string>
+  <string name="morphe_hide_comments_contexts_title">Сакриј поруке контекста</string>
   <string name="morphe_hide_comments_by_members_header_title">Сакриј заглавље „Коментари од чланова”</string>
   <string name="morphe_hide_comments_section_title">Сакриј одељак за коментаре</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Сакриј одељак за коментаре у Хом фуд</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Сакриј смернице заједнице</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Сакриј дугме „Направи Short”</string>
+  <string name="morphe_hide_comments_emoji_button_title">Сакриј дугме за емоџије</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Сакиј опције траке филтера</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Сакиј све опције траке филтера осим ‘Најбоље’ и ‘Најновије’</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Сакриј анимацију и картице поклона</string>
@@ -239,6 +243,7 @@ Promene uključuju:
   <string name="morphe_hide_comments_preview_comment_title">Сакриј коментар за преглед</string>
   <string name="morphe_hide_comments_preview_comment_summary">Саскрива преглед коментара испод видеа пре отварања пуног одељка за коментаре</string>
   <string name="morphe_hide_comments_thanks_button_title">Сакриј дугме „Хвала”</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Сакриј дугме за временску ознаку</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Дезинфикуј истакнуте линкове претраге</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Дезинфикује истакнуте линкове претраге, остављајући само оригинални чисти текст</string>
   <string name="morphe_hide_keyword_content_screen_title">Филтер кључних речи</string>
@@ -308,7 +313,7 @@ Promene uključuju:
   <string name="morphe_hide_general_ads_title">Сакриј опште огласе</string>
   <string name="morphe_hide_merchandise_banners_title">Сакриј банере за робу</string>
   <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
-  <string name="morphe_hide_paid_promotion_label_title">Сакриј ознаку „Укључује плаћену промоцију“</string>
+  <string name="morphe_hide_paid_promotion_labels_title">Сакриј ознаке плаћене промоције</string>
   <string name="morphe_hide_player_popup_ads_title">Сакриј рекламе у плејеру</string>
   <string name="morphe_hide_self_sponsor_ads_title">Сакриј картице самоспонзорства</string>
   <string name="morphe_hide_shopping_links_title">Сакриј линкове за куповину</string>

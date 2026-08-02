@@ -125,10 +125,12 @@ val rememberVideoQualityPatch = bytecodePatch {
             PlatypusVideoQualityFlagFingerprint,
             VideoQualityBufferingFlagFingerprint
         ).forEach {
-            it.method.insertLiteralOverride(
-                it.instructionMatches.last().index,
-                "$EXTENSION_CLASS->overrideBufferingVideoQualityFlag(Z)Z"
-            )
+            it.matchAll().forEach { fingerprint ->
+                fingerprint.method.insertLiteralOverride(
+                    fingerprint.instructionMatches.first().index,
+                    "$EXTENSION_CLASS->overrideBufferingVideoQualityFlag(Z)Z"
+                )
+            }
         }
     }
 }

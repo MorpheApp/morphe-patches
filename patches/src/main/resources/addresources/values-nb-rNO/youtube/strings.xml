@@ -68,6 +68,7 @@ Endringer inkluderer:
   <string name="morphe_hide_expandable_card_entry_3">Skjul alle</string>
   <string name="morphe_hide_floating_microphone_button_title">Skjul flytende mikrofonknapp</string>
   <string name="morphe_hide_floating_microphone_button_summary">Skjuler flytende mikrofonknapp i nedre høyre hjørne av søkeforslags-skjermen</string>
+  <string name="morphe_hide_get_premium_button_title">Skjul \'Få Premium\'-knappen</string>
   <string name="morphe_hide_horizontal_shelves_title">Skjul horisontale hyller</string>
   <string name="morphe_hide_horizontal_shelves_summary">Skjuler horisontale hyller som Breaking news, Community-innlegg du kanskje liker, Fortsett å se på, Utforsk flere kanaler, Utforsk flere emner, For deg, Nyeste videoer, Mest relevante, Innlegg fra Creator\'s Community, Shopping og Se igjen</string>
   <string name="morphe_hide_hyped_label_title">Skjul \'Hypet\'-etikett</string>
@@ -226,10 +227,13 @@ Endringer inkluderer:
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Skriv inn navnene på kommentarkarusellen du vil filtrere etter, atskilt med nye linjer</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Skjul AI-chat-sammendrag</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Skjul kanals retningslinjer</string>
+  <string name="morphe_hide_comments_contexts_title">Skjul kontekstmeldinger</string>
   <string name="morphe_hide_comments_by_members_header_title">Skjul \'Kommentarer fra medlemmer\'-overskrift</string>
   <string name="morphe_hide_comments_section_title">Skjul kommentarseksjon</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Skjul kommentarseksjonen i Hjem-feeden</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Skjul retningslinjer for fellesskapet</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Skjul \'Opprett en Short\'-knapp</string>
+  <string name="morphe_hide_comments_emoji_button_title">Skjul emojiknapp</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Skjul filterlinjealternativer</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Skjuler alle filterlinjealternativer unntatt \'Best\' og \'Nyeste\'</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Skjul gaveanimasjon og -kort</string>
@@ -239,6 +243,7 @@ Endringer inkluderer:
   <string name="morphe_hide_comments_preview_comment_title">Skjul forhåndsvisningskommentar</string>
   <string name="morphe_hide_comments_preview_comment_summary">Skjuler kommentarforslag under videoen før du åpner hele kommentarfeltet</string>
   <string name="morphe_hide_comments_thanks_button_title">Skjul takkeknapp</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Skjul tidsstempelknapp</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Desinfiser fremhevede søkelenker</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Desinfiserer fremhevede søkelenker, og viser kun den originale, rene teksten</string>
   <string name="morphe_hide_keyword_content_screen_title">Nøkkelordfilter</string>
@@ -308,7 +313,7 @@ Trykk her for å åpne AiSlopList.com og se nedlastinger for andre plattformer"<
   <string name="morphe_hide_general_ads_title">Skjul generelle annonser</string>
   <string name="morphe_hide_merchandise_banners_title">Skjul merchandise-bannere</string>
   <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
-  <string name="morphe_hide_paid_promotion_label_title">Skjul «Inkluderer betalt promotering»-etiketten</string>
+  <string name="morphe_hide_paid_promotion_labels_title">Skjul betalte reklameetiketter</string>
   <string name="morphe_hide_player_popup_ads_title">Skjul popup-annonser for spilleren</string>
   <string name="morphe_hide_self_sponsor_ads_title">Skjul selv-sponsede kort</string>
   <string name="morphe_hide_shopping_links_title">Skjul shoppinglenker</string>

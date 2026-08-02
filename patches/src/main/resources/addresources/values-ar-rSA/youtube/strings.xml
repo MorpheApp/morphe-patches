@@ -68,6 +68,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_expandable_card_entry_3">إخفاء الكل</string>
   <string name="morphe_hide_floating_microphone_button_title">إخفاء زر الميكروفون العائم</string>
   <string name="morphe_hide_floating_microphone_button_summary">يخفي زر الميكروفون العائم في الزاوية اليمنى السفلية من شاشة اقتراحات البحث</string>
+  <string name="morphe_hide_get_premium_button_title">إخفاء زر \'احصَل على Premium\'</string>
   <string name="morphe_hide_horizontal_shelves_title">إخفاء الرفوف الأفقية</string>
   <string name="morphe_hide_horizontal_shelves_summary">يخفي الرفوف الأفقية مثل أخبار عاجلة، منشورات المجتمع التي قد تعجبك، متابعة المشاهدة، استكشاف المزيد من القنوات، استكشاف المزيد من المواضيع، من أجلك، أحدث الفيديوهات، الأكثر صلة، منشورات من مجتمع صنّاع المحتوى، التسوّق وشاهدها مرة أخرى</string>
   <string name="morphe_hide_hyped_label_title">إخفاء علامة أكبر تشجيع</string>
@@ -194,7 +195,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_store_button_title">إخفاء زر المتجر</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_subscribe_button_in_channel_page_title">إخفاء زر اشتراك</string>
-  <string name="morphe_explore_menu_screen_title">القائمة استكشاف</string>
+  <string name="morphe_explore_menu_screen_title">قائمة استكشاف</string>
   <string name="morphe_explore_menu_screen_summary">اختر المكونات التي تظهر في قائمة استكشاف</string>
   <string name="morphe_hide_courses_menu_title">إخفاء قائمة الدورات التدريبية</string>
   <string name="morphe_hide_explore_button_title">إخفاء زر استكشاف</string>
@@ -285,8 +286,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_stats_hidden_24h_reset_title">إعادة تعيين عداد آخر 24 ساعة؟</string>
   <string name="morphe_hide_stats_hidden_all_reset_title">هل تريد إعادة تعيين عداد الوقت بالكامل؟</string>
   <string name="morphe_hide_about_category_title">لمحة</string>
-  <string name="morphe_hide_aislist_screen_title">مرشح قناة الذكاء الاصطناعي</string>
-  <string name="morphe_hide_aislist_screen_summary">إخفاء الفيديوهات من القنوات التي تم تصنيفها على أنها محتوى تم إنشاؤه بواسطة الذكاء الاصطناعي من قبل قائمة مجتمع AiSList</string>
+  <string name="morphe_hide_aislist_screen_title">تصفية قنوات الذكاء الاصطناعي</string>
+  <string name="morphe_hide_aislist_screen_summary">إخفاء الفيديوهات من القنوات التي تم تصنيفها على أنها محتوى تم إنشاؤه بواسطة الذكاء الاصطناعي بواسطة قائمة مجتمع AiSList</string>
   <string name="morphe_hide_aislist_blocklist_category_title">القائمة السوداء: ثقة عالية</string>
   <string name="morphe_hide_aislist_warnlist_category_title">قائمة التحذير: ثقة متوسطة</string>
   <string name="morphe_hide_aislist_hide_home_title">إخفاء الفيديوهات في الصفحة الرئيسية</string>
@@ -312,7 +313,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_general_ads_title">إخفاء الإعلانات العامة</string>
   <string name="morphe_hide_merchandise_banners_title">إخفاء لافتات البضائع</string>
   <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
-  <string name="morphe_hide_paid_promotion_label_title">إخفاء علامة \'يتضمن إعلانًا ترويجيًا مدفوعًا\'</string>
+  <string name="morphe_hide_paid_promotion_labels_title">إخفاء علامات يتضمن إعلانًا ترويجيًا مدفوعًا</string>
   <string name="morphe_hide_player_popup_ads_title">إخفاء إعلانات المشغل المنبثقة</string>
   <string name="morphe_hide_self_sponsor_ads_title">إخفاء بطاقات الرعاية الذاتية</string>
   <string name="morphe_hide_shopping_links_title">إخفاء روابط التسوق</string>

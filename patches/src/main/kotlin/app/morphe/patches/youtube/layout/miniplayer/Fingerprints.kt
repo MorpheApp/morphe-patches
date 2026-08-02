@@ -10,6 +10,7 @@
 package app.morphe.patches.youtube.layout.miniplayer
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
@@ -18,6 +19,7 @@ import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import app.morphe.patches.all.misc.resources.ResourceType
@@ -26,11 +28,7 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 internal const val MINIPLAYER_MODERN_FEATURE_KEY = 45622882L
-internal const val MINIPLAYER_MODERN_TYPE_1_FEATURE_KEY = 45623000L
 internal const val MINIPLAYER_DOUBLE_TAP_FEATURE_KEY = 45628823L
-internal const val MINIPLAYER_DRAG_DROP_FEATURE_KEY = 45628752L
-internal const val MINIPLAYER_HORIZONTAL_DRAG_FEATURE_KEY = 45658112L
-internal const val MINIPLAYER_ROUNDED_CORNERS_FEATURE_KEY = 45652224L
 internal const val MINIPLAYER_INITIAL_SIZE_FEATURE_KEY = 45640023L
 internal const val MINIPLAYER_DISABLED_FEATURE_KEY = 45657015L
 internal const val MINIPLAYER_ANIMATED_EXPAND_FEATURE_KEY = 45644360L
@@ -48,7 +46,54 @@ internal object MiniplayerModernFeatureFingerprint : Fingerprint(
 internal object MiniplayerModernConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     filters = listOf(
-        literal(MINIPLAYER_DRAG_DROP_FEATURE_KEY)
+        literal(MINIPLAYER_INITIAL_SIZE_FEATURE_KEY)
+    )
+)
+
+internal object MiniplayerRoundedCornersFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/view/View;", "L"),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Landroid/view/View;->setClipToOutline(Z)V"
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Landroid/view/View;->setOutlineProvider(Landroid/view/ViewOutlineProvider;)V"
+        )
+    )
+)
+
+internal object MiniplayerDragAndDropFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf("Landroid/view/View;", "Landroid/view/MotionEvent;"),
+    filters = listOf(
+        opcode(opcode = Opcode.SUB_FLOAT_2ADDR),
+        opcode(opcode = Opcode.APUT, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.AGET, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.AGET, location = MatchAfterImmediately()),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Landroid/view/MotionEvent;->getActionMasked()I",
+            location = MatchAfterImmediately()
+        ),
+        opcode(opcode = Opcode.MOVE_RESULT, location = MatchAfterImmediately())
+    )
+)
+
+internal object MiniplayerAnimatedExpandFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("I"),
+    filters = listOf(
+        opcode(opcode = Opcode.CONST_4),
+        opcode(opcode = Opcode.IF_NE, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.IGET_OBJECT, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.MOVE, location = MatchAfterWithin(7)),
+        opcode(opcode = Opcode.IGET_OBJECT, location = MatchAfterImmediately())
     )
 )
 
@@ -127,7 +172,42 @@ internal object MiniplayerHorizontalRepositionFingerprint : Fingerprint(
     classFingerprint = MiniplayerRectDragFieldsNameFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf("Landroid/graphics/Rect;"),
+    parameters = listOf("Landroid/graphics/Rect;")
+)
+
+internal object MiniplayerOffscreenRectValidatorFingerprint : Fingerprint (
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf("I", "I", "I"),
+    filters = listOf(
+        opcode(opcode = Opcode.IGET_OBJECT),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "Landroid/graphics/Rect;",
+            location = MatchAfterImmediately()
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Landroid/graphics/Rect;->centerX()I",
+            location = MatchAfterImmediately()
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Landroid/graphics/Rect;->centerY()I",
+            location = MatchAfterWithin(3)
+        ),
+        newInstance(type = "Landroid/graphics/Point;", location = MatchAfterWithin(3))
+    )
+)
+
+internal object MiniplayerOffscreenHandlerFingerprint : Fingerprint(
+    classFingerprint = MiniplayerRectDragFieldsNameFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("I", "I", "I", "I"),
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IGET_OBJECT, type = "Landroid/graphics/Rect;"),
+        methodCall(opcode = Opcode.INVOKE_VIRTUAL, smali = "Landroid/graphics/Rect;->set(IIII)V")
+    )
 )
 
 internal object NextGenWatchLayoutOnInterceptTouchEventFingerprint : Fingerprint(
@@ -252,8 +332,6 @@ internal object MiniplayerResponseModelSizeCheckFingerprint : Fingerprint(
 )
 
 internal object MiniplayerOnCloseHandlerFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Z",
     filters = listOf(
         literal(MINIPLAYER_DISABLED_FEATURE_KEY)
     )

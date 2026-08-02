@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.youtube.misc.backgroundplayback
 
 import app.morphe.patcher.Fingerprint
@@ -93,11 +103,19 @@ val backgroundPlaybackPatch = bytecodePatch(
             )
         }
 
-        fun Fingerprint.addBackgroundPlaybackFeatureFlagHook(enable: Boolean) {
+        fun MutableMethod.addBackgroundPlaybackFeatureFlagHook(index: Int, enable: Boolean) {
             val methodName = if (enable) "enableFeatureFlag" else "disableFeatureFlag"
-            method.insertLiteralOverride(
-                instructionMatches.first().index,
+            insertLiteralOverride(
+                index,
                 "$EXTENSION_CLASS->$methodName(Z)Z"
+            )
+        }
+
+
+        fun Fingerprint.addBackgroundPlaybackFeatureFlagHook(enable: Boolean) {
+            method.addBackgroundPlaybackFeatureFlagHook(
+                this.instructionMatches.first().index,
+                enable
             )
         }
 
@@ -115,7 +133,9 @@ val backgroundPlaybackPatch = bytecodePatch(
         KidsBackgroundPlaybackPolicyControllerFingerprint.method.addBackgroundPlaybackIsPatchEnabledHook()
 
         // Force allowing background play for Shorts.
-        ShortsBackgroundPlaybackFeatureFlagFingerprint.addBackgroundPlaybackFeatureFlagHook(true)
+        ShortsBackgroundPlaybackFeatureFlagFingerprint.matchAll().forEach {
+            it.method.addBackgroundPlaybackFeatureFlagHook(it.instructionMatches.first().index, true)
+        }
 
         // Fix PiP buttons not working after locking/unlocking device screen.
         if (!is_21_21_or_greater) {
@@ -125,13 +145,17 @@ val backgroundPlaybackPatch = bytecodePatch(
         if (is_20_29_or_greater) {
             // Client flag that interferes with background playback of some video types.
             // Exact purpose is not clear and it's used in ~ 100 locations.
-            NewPlayerTypeEnumFeatureFlagFingerprint.addBackgroundPlaybackFeatureFlagHook(false)
+            NewPlayerTypeEnumFeatureFlagFingerprint.matchAll().forEach {
+                it.method.addBackgroundPlaybackFeatureFlagHook(it.instructionMatches.first().index, false)
+            }
         }
 
         if (is_21_04_or_greater) {
             // If NewPlayerTypeEnumFeatureFlagFingerprint is present and forced off then this flag
             // must also be disabled, otherwise the player is a black screen with no buttons and no playback.
-            NewPlayerOverlaysFeatureFlagFingerprint.addBackgroundPlaybackFeatureFlagHook(false)
+            NewPlayerOverlaysFeatureFlagFingerprint.matchAll().forEach {
+                it.method.addBackgroundPlaybackFeatureFlagHook(it.instructionMatches.first().index, false)
+            }
         }
     }
 }

@@ -63,8 +63,6 @@ internal object SubtitleManagerFingerprint : Fingerprint(
  * YouTube 20.26+
  */
 internal object NoVolumeCaptionsFeatureFlagFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Z",
     filters = listOf(
         literal(45692436L)
     )

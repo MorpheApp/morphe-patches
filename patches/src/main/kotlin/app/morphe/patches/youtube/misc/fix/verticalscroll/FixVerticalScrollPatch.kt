@@ -17,7 +17,7 @@ val fixVerticalScrollPatch = bytecodePatch(
     execute {
         if (is_21_18_or_greater) {
             // Can cause issues with scrolling.
-            ChoreographerPostFrameCallbackFeatureFlagFingerprint.let {
+            ChoreographerPostFrameCallbackFeatureFlagFingerprint.matchAll().forEach {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
                     false

@@ -68,6 +68,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_expandable_card_entry_3">すべて非表示</string>
   <string name="morphe_hide_floating_microphone_button_title">音声入力のフローティング ボタンを非表示</string>
   <string name="morphe_hide_floating_microphone_button_summary">検索候補画面の右下に表示されるマイクボタンを非表示にします</string>
+  <string name="morphe_hide_get_premium_button_title">「Premium を購入」ボタンを非表示</string>
   <string name="morphe_hide_horizontal_shelves_title">横スクロール欄を非表示</string>
   <string name="morphe_hide_horizontal_shelves_summary">ニュース速報、おすすめのコミュニティ投稿、続きを見る、他のチャンネルを探す、その他のトピック、おすすめ、新着動画、関連が強い、\"チャンネル名\" のコミュニティの投稿、ショッピング、もう一度見る、などの横スクロール欄を非表示にします</string>
   <string name="morphe_hide_hyped_label_title">「大盛り上がり」ラベルを非表示</string>
@@ -312,7 +313,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_general_ads_title">一般的な広告を非表示</string>
   <string name="morphe_hide_merchandise_banners_title">商品バナーを非表示</string>
   <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
-  <string name="morphe_hide_paid_promotion_label_title">「プロモーションを含みます」ラベルを非表示</string>
+  <string name="morphe_hide_paid_promotion_labels_title">プロモーションの告知を非表示</string>
   <string name="morphe_hide_player_popup_ads_title">プレーヤーのポップアップ広告を非表示</string>
   <string name="morphe_hide_self_sponsor_ads_title">自己宣伝カードを非表示</string>
   <string name="morphe_hide_shopping_links_title">商品へのリンクを非表示</string>
@@ -617,8 +618,8 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_auto_captions_style_title">自動字幕表示</string>
   <string name="morphe_auto_captions_style_entry_1">常に表示</string>
   <string name="morphe_auto_captions_style_entry_2">常に非表示</string>
-  <string name="morphe_auto_captions_style_entry_3">非ミュート時に表示</string>
-  <string name="morphe_auto_captions_style_entry_4">ミュート時に表示</string>
+  <string name="morphe_auto_captions_style_entry_3">ミュート解除中に表示</string>
+  <string name="morphe_auto_captions_style_entry_4">ミュート中に表示</string>
   <string name="morphe_auto_captions_style_legacy_entry_1">自動字幕を表示</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">自動字幕を非表示</string>
   <!-- layout.captions.captionCookiesPatch -->

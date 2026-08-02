@@ -213,6 +213,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                         SwitchPreference("morphe_hide_news_menu"),
                         SwitchPreference("morphe_hide_sports_menu"),
                         SwitchPreference("morphe_hide_courses_menu"),
+                        SwitchPreference("morphe_hide_learning_menu"),
                         SwitchPreference("morphe_hide_fashion_menu"),
                         SwitchPreference("morphe_hide_podcasts_menu"),
                         SwitchPreference("morphe_hide_playables_menu"),
@@ -222,6 +223,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                         SwitchPreference("morphe_hide_youtube_music_menu"),
                         SwitchPreference("morphe_hide_youtube_kids_menu"),
                         SwitchPreference("morphe_hide_youtube_create_menu"),
+                        SwitchPreference("morphe_hide_youtube_works_menu"),
                         SwitchPreference("morphe_hide_privacy_tos_footer")
                     )
                 )

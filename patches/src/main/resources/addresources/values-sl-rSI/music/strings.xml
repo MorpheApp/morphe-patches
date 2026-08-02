@@ -37,11 +37,30 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_8_misc_title">Razno</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Skrij oznako \'Get Music Premium\'</string>
+  <string name="morphe_music_hide_music_premium_promotions_title">Skrij Music Premium promocije</string>
   <string name="morphe_music_hide_video_ads_title">Skrij video oglase</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_music_hide_audio_video_toggle_title">Skrij Avdio / Video gumb za vklop/izklop</string>
+  <string name="morphe_music_hide_explore_shelf_title">Skrij polico Razišči</string>
+  <string name="morphe_music_hide_grid_shelves_title">Skrij police mrež</string>
+  <string name="morphe_music_hide_horizontal_shelves_title">Skrij horizontalne police</string>
+  <string name="morphe_music_hide_list_shelves_title">Skrij police seznamov</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Plošč plošč besedil</string>
   <string name="morphe_music_hide_lyrics_share_button_title">Skrij gumb za deljenje</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Skrij gumb za prevod</string>
+  <string name="morphe_music_hide_new_from_shelf_title">Skrij polico \'Novo od\'</string>
+  <string name="morphe_music_hide_playlist_shelves_title">Skrij police seznamov predvajanj</string>
+  <string name="morphe_music_hide_repeat_button_title">Skrij gumb Ponovi</string>
+  <string name="morphe_music_hide_shuffle_button_title">Skrij gumb Naključno</string>
+  <string name="morphe_music_hide_speed_dial_shelf_title">Skrij polico \'Hitro klicanje\'</string>
+  <string name="morphe_music_hide_suggested_for_you_shelf_title">Skrij polico \'Priporočeno zate\'</string>
+  <string name="morphe_music_comments_screen_title">Komentarji</string>
+  <string name="morphe_music_comments_screen_summary">Izberi katere komponente so prikazane v odseku s komentarji</string>
+  <string name="morphe_music_hide_comments_community_guidelines_title">Skrij Smernice skupnosti</string>
+  <string name="morphe_music_hide_comments_context_title">Skrij kontekst sporočila</string>
+  <string name="morphe_music_hide_comments_emoji_button_title">Skrij gumb Emotikon</string>
+  <string name="morphe_music_hide_comments_info_button_title">Skrij gumb Informacije</string>
+  <string name="morphe_music_hide_comments_timestamp_button_title">Skrij gumb časovnega žiga</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Prehod</string>
   <string name="morphe_music_crossfade_screen_summary">Gladko prehajanje skladb iz ene v drugo</string>

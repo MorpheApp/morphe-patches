@@ -40,10 +40,27 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Musiqa Premium aksiyalarini yashirish</string>
   <string name="morphe_music_hide_video_ads_title">Reklamalarni yashirish</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_music_hide_audio_video_toggle_title">Audio / Video ni yashirish tugmasini ko‘rsatish/yashirish</string>
+  <string name="morphe_music_hide_explore_shelf_title">Kashf qilish javoni ni yashirish</string>
+  <string name="morphe_music_hide_grid_shelves_title">Tarmoq javonlarini yashirish</string>
+  <string name="morphe_music_hide_horizontal_shelves_title">Gorizontal javonlarni yashirish</string>
+  <string name="morphe_music_hide_list_shelves_title">Ro‘yxat javonlarini yashirish</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Qo‘shiq matni paneli</string>
   <string name="morphe_music_hide_lyrics_share_button_title">Baham ko‘rish tugmasini yashirish</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Tarjima tugmasini yashirish</string>
+  <string name="morphe_music_hide_new_from_shelf_title">\'Yangi...\' javonini yashirish</string>
+  <string name="morphe_music_hide_playlist_shelves_title">Pleylista javonlarini yashirish</string>
+  <string name="morphe_music_hide_repeat_button_title">Takrorlash tugmasini yashirish</string>
+  <string name="morphe_music_hide_shuffle_button_title">Aralashtirish tugmasini yashirish</string>
+  <string name="morphe_music_hide_speed_dial_shelf_title">\'Tez dial\' javonini yashirish</string>
+  <string name="morphe_music_hide_suggested_for_you_shelf_title">\'Siz uchun tavsiya etilgan\' javonini yashirish</string>
+  <string name="morphe_music_comments_screen_title">Izohlar</string>
+  <string name="morphe_music_comments_screen_summary">Izohlardagi qismlarni ko‘rsatish/yashirish sozlamalari</string>
+  <string name="morphe_music_hide_comments_community_guidelines_title">Jamoatchilik qoidalari bo\'limini yashirish</string>
   <string name="morphe_music_hide_comments_context_title">Izohlar kontekst xabarini yashirish</string>
+  <string name="morphe_music_hide_comments_emoji_button_title">Emoji tugmasini yashirish</string>
+  <string name="morphe_music_hide_comments_info_button_title">Ma\'lumot tugmasini yashirish</string>
+  <string name="morphe_music_hide_comments_timestamp_button_title">Vaqt belgisini ko‘rsatish tugmasini yashirish</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Krosfeyd</string>
   <string name="morphe_music_crossfade_screen_summary">Treklarni bir-biriga silliq ulash</string>

@@ -1,3 +1,34 @@
+## [1.38.1-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.38.0...v1.38.1-dev.1) (2026-08-01)
+
+### 🚀 Updated App Support
+
+* **YouTube:** Add experimental support for `21.31.523` ([#2207](https://github.com/MorpheApp/morphe-patches/issues/2207)) ([061663b](https://github.com/MorpheApp/morphe-patches/commit/061663b85b76f0aabe9337de8d84970d4ca406b5))
+
+## [1.38.0](https://github.com/MorpheApp/morphe-patches/compare/v1.37.0...v1.38.0) (2026-08-01)
+
+### 🐛 Bug Fixes
+
+* Mirror in RTL locales and restyle to match the manager ([#2273](https://github.com/MorpheApp/morphe-patches/issues/2273)) ([78e4c48](https://github.com/MorpheApp/morphe-patches/commit/78e4c48fde884a922c559c4e0f8662901ed29e8b))
+* **Settings:** Hidden category title is included when copying a setting breadcrumb ([f412fc8](https://github.com/MorpheApp/morphe-patches/commit/f412fc81d7bce31de9c511212d9672813ea54620))
+* **YouTube - Seekbar thumbnail:** Always show timestamp and chapter name ([9dc0cce](https://github.com/MorpheApp/morphe-patches/commit/9dc0cceb3c09a669f6771e1b7bc5f4497b8e5e26))
+* **YouTube - Swipe controls:** Evaluate swipe zone before recycling MotionEvent ([#2238](https://github.com/MorpheApp/morphe-patches/issues/2238)) ([e398514](https://github.com/MorpheApp/morphe-patches/commit/e39851427ca240c6474df275e553bad18ecda8ac))
+* **YouTube - Swipe controls:** Resolve memory leaks in swipe controls ([#2268](https://github.com/MorpheApp/morphe-patches/issues/2268)) ([498768f](https://github.com/MorpheApp/morphe-patches/commit/498768f13a0057afdbd065760f50074f4679193e))
+* **YouTube Music - Bypass certificate checks:** Resolve Android Auto crash ([#2239](https://github.com/MorpheApp/morphe-patches/issues/2239)) ([0b6a7b0](https://github.com/MorpheApp/morphe-patches/commit/0b6a7b0fd2491a8f33647bfce76ebd0a92e20225))
+* **YouTube:** Resolve legacy app target crash ([1df09a5](https://github.com/MorpheApp/morphe-patches/commit/1df09a5ab9c8b95c3080edff61f52f390bfce1d3))
+
+### ✨ New Features
+
+* Add `Change installer source` universal patch ([#2257](https://github.com/MorpheApp/morphe-patches/issues/2257)) ([43b0992](https://github.com/MorpheApp/morphe-patches/commit/43b0992d8a801f34c943514c71aaa5357f05edcf))
+* **YouTube - Hide layout components:** Add "Hide 'Get Premium' button" setting ([#2275](https://github.com/MorpheApp/morphe-patches/issues/2275)) ([c46fcca](https://github.com/MorpheApp/morphe-patches/commit/c46fcca74379050b2a3f1df66185b4f2c1d45195))
+* **YouTube - Hide layout components:** Add "Hide explore menu components" setting ([#2159](https://github.com/MorpheApp/morphe-patches/issues/2159)) ([7dc29bc](https://github.com/MorpheApp/morphe-patches/commit/7dc29bcbd7d2927ebcc65145fb23d4f9e46581ec))
+* **YouTube Music - Hide layout components:** Add "Hide Audio / Video toggle", "Hide comment components", "Hide feed components", "Hide Repeat button", and "Hide Shuffle button" settings ([#2228](https://github.com/MorpheApp/morphe-patches/issues/2228)) ([931bb3a](https://github.com/MorpheApp/morphe-patches/commit/931bb3ac6c042b7113bd31e9fdccef9a8972ce87))
+* **YouTube:** Add `Wide search bar` patch ([#2221](https://github.com/MorpheApp/morphe-patches/issues/2221)) ([be8de15](https://github.com/MorpheApp/morphe-patches/commit/be8de1567731623f91a391bc479fab019e7b81a5))
+
+### 🚀 Updated App Support
+
+* **YouTube Music:** Add experimental support for `9.29.54` ([4945ac4](https://github.com/MorpheApp/morphe-patches/commit/4945ac46c87817f9b1fa1cc99adc24bc966308c1))
+* **YouTube Music:** Add experimental support for `9.30.52` ([#2254](https://github.com/MorpheApp/morphe-patches/issues/2254)) ([422fbf4](https://github.com/MorpheApp/morphe-patches/commit/422fbf40304842ca66d835f66889f48eee23702b))
+
 ## [1.38.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.38.0-dev.2...v1.38.0-dev.3) (2026-07-30)
 
 ### 🐛 Bug Fixes

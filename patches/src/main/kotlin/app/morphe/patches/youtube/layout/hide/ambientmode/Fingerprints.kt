@@ -15,9 +15,6 @@ internal const val IS_POWER_SAVE_MODE_METHOD_CALL = "Landroid/os/PowerManager;->
 private const val POWER_SAVE_MODE_CHANGED = "android.os.action.POWER_SAVE_MODE_CHANGED"
 
 internal object AmbientModeFeatureFlagFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Z",
-    parameters = listOf(),
     filters = listOf(
         literal(45376186L),
     )

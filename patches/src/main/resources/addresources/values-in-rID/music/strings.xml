@@ -26,7 +26,7 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Gantikan tombol Unduh</string>
   <string name="morphe_external_downloader_action_button_summary">Menggunakan pengunduh eksternal pilihan Anda, bukan fitur unduh bawaan YouTube Music</string>
-  <string name="morphe_external_downloader_flyout_menu_title">Menu Gantikan Unduh</string>
+  <string name="morphe_external_downloader_flyout_menu_title">Gantikan menu Unduh</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Tentang</string>
@@ -55,7 +55,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Sembunyikan rak \'Pintasan cepat\'</string>
   <string name="morphe_music_hide_suggested_for_you_shelf_title">Sembunyikan rak \'Disarankan untuk Anda\' </string>
   <string name="morphe_music_comments_screen_title">Komentar</string>
-  <string name="morphe_music_comments_screen_summary">Pilih komponen mana yang akan muncul di bagian komentar</string>
+  <string name="morphe_music_comments_screen_summary">Pilih komponen mana yang akan ditampilkan di bagian komentar</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Sembunyikan Pedoman Komunitas</string>
   <string name="morphe_music_hide_comments_context_title">Sembunyikan pesan konteks</string>
   <string name="morphe_music_hide_comments_emoji_button_title">Sembunyikan tombol Emoji</string>

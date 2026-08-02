@@ -45,7 +45,7 @@ val hideSeekbarPatch = bytecodePatch(
         )
 
         if (is_20_28_or_greater) {
-            FullscreenLargeSeekbarFeatureFlagFingerprint.let {
+            FullscreenLargeSeekbarFeatureFlagFingerprint.matchAll().forEach {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
                     "$EXTENSION_CLASS->useFullscreenLargeSeekbar(Z)Z"

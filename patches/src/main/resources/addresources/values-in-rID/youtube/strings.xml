@@ -67,6 +67,7 @@ Perubahan termasuk:
   <string name="morphe_hide_expandable_card_entry_3">Sembunyikan semua</string>
   <string name="morphe_hide_floating_microphone_button_title">Sembunyikan tombol mikrofon mengambang</string>
   <string name="morphe_hide_floating_microphone_button_summary">Menyembunyikan tombol mikrofon yang mengambang di sudut kanan bawah layar saran pencarian</string>
+  <string name="morphe_hide_get_premium_button_title">Sembunyikan tombol \'Dapatkan Premium\'</string>
   <string name="morphe_hide_horizontal_shelves_title">Sembunyikan rak-rak mendatar</string>
   <string name="morphe_hide_horizontal_shelves_summary">Rak horizontal disembunyikan, seperti Berita terkini, Postingan komunitas yang mungkin Anda sukai, Lanjutkan menonton, Jelajahi lebih banyak saluran, Jelajahi lebih banyak topik, Untuk Anda, Video terbaru, Paling relevan, Postingan dari Komunitas Kreator, Belanja dan Tonton lagi</string>
   <string name="morphe_hide_hyped_label_title">Sembunyikan label Hype</string>
@@ -129,7 +130,7 @@ Perubahan termasuk:
   <string name="morphe_hide_live_chat_replay_button_title">Sembunyikan tombol \'Putar ulang live chat\'</string>
   <string name="morphe_hide_live_chat_replay_button_summary">Menyembunyikan tombol putar ulang chat dalam mode layar penuh</string>
   <string name="morphe_hide_medical_panels_title">Sembunyikan panel medis</string>
-  <string name="morphe_hide_snackbar_title">Sembunyikan pemberitahuan singkat</string>
+  <string name="morphe_hide_snackbar_title">Sembunyikan snackbar</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Sembunyikan panduan subscriber</string>
   <string name="morphe_hide_sync_button_title">Sembunyikan tombol \'Sinkronkan ke video\'</string>
   <string name="morphe_hide_timed_reactions_title">Sembunyikan reaksi terjadwal</string>
@@ -194,7 +195,7 @@ Perubahan termasuk:
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_subscribe_button_in_channel_page_title">Sembunyikan tombol Subscribe</string>
   <string name="morphe_explore_menu_screen_title">Menu eksplorasi</string>
-  <string name="morphe_explore_menu_screen_summary">Pilih komponen mana yang akan muncul di menu eksplorasi</string>
+  <string name="morphe_explore_menu_screen_summary">Pilih komponen mana yang akan ditampilkan di menu eksplorasi</string>
   <string name="morphe_hide_courses_menu_title">Sembunyikan menu Kursus</string>
   <string name="morphe_hide_explore_button_title">Sembunyikan tombol Eksplorasi</string>
   <string name="morphe_hide_fashion_menu_title">Sembunyikan menu \'Fashion &amp; Kecantikan\'</string>
@@ -311,7 +312,7 @@ Ketuk di sini untuk membuka AiSlopList.com dan melihat unduhan untuk platform la
   <string name="morphe_hide_general_ads_title">Sembunyikan iklan umum</string>
   <string name="morphe_hide_merchandise_banners_title">Sembunyikan spanduk merchandise</string>
   <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
-  <string name="morphe_hide_paid_promotion_label_title">Sembunyikan label \'Termasuk promosi berbayar\'</string>
+  <string name="morphe_hide_paid_promotion_labels_title">Sembunyikan label promosi berbayar</string>
   <string name="morphe_hide_player_popup_ads_title">Sembunyikan iklan pesan timbul pemutar</string>
   <string name="morphe_hide_self_sponsor_ads_title">Sembunyikan kartu bersponsor pribadi</string>
   <string name="morphe_hide_shopping_links_title">Sembunyikan tautan belanja</string>

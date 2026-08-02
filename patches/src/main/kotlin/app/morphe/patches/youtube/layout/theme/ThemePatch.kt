@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.youtube.layout.theme
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
@@ -289,7 +299,7 @@ val themePatch = baseThemePatch(
             ListPreference("morphe_splash_screen_animation_style")
         )
 
-        UseGradientLoadingScreenFingerprint.let {
+        UseGradientLoadingScreenFingerprint.matchAll().forEach {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
                 "$EXTENSION_CLASS->gradientLoadingScreenEnabled(Z)Z"
@@ -297,7 +307,7 @@ val themePatch = baseThemePatch(
         }
 
         if (is_21_08_or_greater) {
-            CarbonColorThemeFeatureFlagFingerprint.let {
+            CarbonColorThemeFeatureFlagFingerprint.matchAll().forEach {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
                     false
@@ -313,33 +323,31 @@ val themePatch = baseThemePatch(
             )
         }
 
-        ShowSplashScreen1Fingerprint.let {
+        ShowSplashScreenFingerprint.let {
             it.method.apply {
-                val index = it.instructionMatches.last().index
-                val register = getInstruction<OneRegisterInstruction>(index).registerA
+                val lastIndex = it.instructionMatches.last().index
+                val lastInstruction = getInstruction<TwoRegisterInstruction>(lastIndex)
+                val lastRegisterA = lastInstruction.registerA
+                val lastRegisterB = lastInstruction.registerB
 
                 addInstructions(
-                    index + 1,
+                    lastIndex,
                     """
-                        invoke-static { v$register }, $EXTENSION_CLASS->showSplashScreen(Z)Z
-                        move-result v$register
+                        invoke-static { v$lastRegisterA, v$lastRegisterB }, $EXTENSION_CLASS->showSplashScreen(II)I
+                        move-result v$lastRegisterA
                     """
                 )
-            }
-        }
 
-        ShowSplashScreen2Fingerprint.let {
-            val insertIndex = it.instructionMatches[1].index
-            it.method.apply {
-                val insertInstruction = getInstruction<TwoRegisterInstruction>(insertIndex)
-                val registerA = insertInstruction.registerA
-                val registerB = insertInstruction.registerB
+                val firstIndex = it.instructionMatches[1].index
+                val firstRegister = getInstruction<OneRegisterInstruction>(
+                    firstIndex
+                ).registerA
 
                 addInstructions(
-                    insertIndex,
+                    firstIndex + 1,
                     """
-                        invoke-static { v$registerA, v$registerB }, $EXTENSION_CLASS->showSplashScreen(II)I
-                        move-result v$registerA
+                        invoke-static { v$firstRegister }, $EXTENSION_CLASS->showSplashScreen(Z)Z
+                        move-result v$firstRegister
                     """
                 )
             }

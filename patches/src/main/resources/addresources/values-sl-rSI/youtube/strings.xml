@@ -68,6 +68,7 @@ Spremembe vključujejo:
   <string name="morphe_hide_expandable_card_entry_3">Skrij vse</string>
   <string name="morphe_hide_floating_microphone_button_title">Skrij plavajoči gumb za mikrofon</string>
   <string name="morphe_hide_floating_microphone_button_summary">Skrije plavajoči gumb za mikrofon v spodnjem desnem kotu zaslona s predlogi iskanja</string>
+  <string name="morphe_hide_get_premium_button_title">Skrij gumb \'Pridobi Premium\'</string>
   <string name="morphe_hide_horizontal_shelves_title">Skrij vodoravne police</string>
   <string name="morphe_hide_horizontal_shelves_summary">Skrije horizontalne police, kot so Aktualne novice, objave skupnosti, ki so morda zanimive za vas, Nadaljujte z gledanjem, raziščite več kanalov, raziščite več tem, za vas, najnovejši videoposnetki, najbolj relevantni, objave iz skupnosti ustvarjalca, nakupovanje in ponovno oglejte si</string>
   <string name="morphe_hide_hyped_label_title">Skrij oznako \'Hype\'</string>
@@ -312,7 +313,7 @@ Tapnite tukaj, da odprete AiSlopList.com in si oglejte prenose za druge platform
   <string name="morphe_hide_general_ads_title">Skrij splošne oglase</string>
   <string name="morphe_hide_merchandise_banners_title">Skrij oznake blaga</string>
   <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
-  <string name="morphe_hide_paid_promotion_label_title">Skrij oznako \'Vključuje plačano promocijo\'</string>
+  <string name="morphe_hide_paid_promotion_labels_title">Skrij oznake plačane promocije</string>
   <string name="morphe_hide_player_popup_ads_title">Skrij reklamne vstavke v predvajalniku</string>
   <string name="morphe_hide_self_sponsor_ads_title">Skrij kartice samozainteresiranih oglasov</string>
   <string name="morphe_hide_shopping_links_title">Skrij povezanih izdelkov</string>
@@ -1108,7 +1109,12 @@ Omejitve:
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Skrij možnosti premium kakovosti</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_video_quality_prioritize_title">Daj prednost kvaliteti videa</string>
+  <string name="morphe_video_quality_prioritize_summary">Daj prednost najboljši možni kvaliteti videa preko učinkovitosti kodeka</string>
+  <string name="morphe_video_quality_prioritize_dialog">Če je ta nastavitev izklopljena, starejši videi lahko ne kažejo nastavitev za kvaliteto videa</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_av1_title">Dovoli Android VR / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Omogoča programsko dekodiranje AV1 pri uporabi odjemalca za Android VR/visionOS</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Ta nastavitev lahko omogoči programsko dekodiranje AV1.
 
 Predvajanje AV1 videa se lahko zamika ali izgublja okvirje."</string>
