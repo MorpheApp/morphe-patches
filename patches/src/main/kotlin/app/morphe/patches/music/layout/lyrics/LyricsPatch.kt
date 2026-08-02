@@ -8,6 +8,7 @@
 package app.morphe.patches.music.layout.lyrics
 
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.litho.filter.lithoFilterPatch
@@ -22,6 +23,8 @@ import app.morphe.patches.shared.misc.media.hookMediaSessionArgument
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.util.ResourceGroup
+import app.morphe.util.copyResources
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/lyrics/LyricsPatch;"
 
@@ -38,7 +41,17 @@ val lyricsPatch = bytecodePatch(
         settingsPatch,
         addResourcesPatch,
         lithoFilterPatch,
-        musicVideoInformationPatch
+        musicVideoInformationPatch,
+        // The copy button needs its icon whether or not the patch that owns
+        // these resources is applied.
+        resourcePatch {
+            execute {
+                copyResources(
+                    "copyvideolinkbutton",
+                    ResourceGroup("drawable", "morphe_yt_copy_bold.xml")
+                )
+            }
+        }
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)

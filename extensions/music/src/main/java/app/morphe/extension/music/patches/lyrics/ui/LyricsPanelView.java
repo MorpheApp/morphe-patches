@@ -100,7 +100,9 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
     /** Icons of the buttons the app draws under its own lyrics. */
     private static final String APP_TRANSLATE_ICON = "yt_outline_experimental_translate_vd_theme_24";
-    private static final String APP_SHARE_ICON = "yt_outline_experimental_share_vd_theme_24";
+
+    /** Own icon, because the app ships no copy icon of its own. */
+    private static final String COPY_ICON = "morphe_yt_copy_bold";
 
     /** Translation size relative to the lyrics line it belongs to. */
     private static final float TRANSLATION_RELATIVE_SIZE = 0.7f;
@@ -175,7 +177,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
         if (Settings.LYRICS_COPY_BUTTON.get()) {
             TextView copyView = new TextView(context);
-            applyButtonStyle(copyView, APP_SHARE_ICON);
+            applyButtonStyle(copyView, COPY_ICON);
             copyView.setText(str("morphe_music_lyrics_copy"));
             copyView.setOnClickListener(view -> onCopyClicked());
             buttonRow.addView(copyView, new LinearLayout.LayoutParams(
