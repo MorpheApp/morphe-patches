@@ -237,19 +237,19 @@ object PreferenceScreen : BasePreferenceScreen() {
         iconBold = "@drawable/morphe_settings_screen_05_player_bold",
         layout = "@layout/morphe_preference_with_icon"
     )
-    val SCROBBLING = Screen(
-        key = "morphe_settings_music_screen_5_scrobbling",
-        summaryKey = null,
-        icon = "@drawable/morphe_settings_screen_13_scrobbling",
-        iconBold = "@drawable/morphe_settings_screen_13_scrobbling_bold",
-        layout = "@layout/morphe_preference_with_icon",
-        sorting = Sorting.UNSORTED
-    )
     val LYRICS = Screen(
-        key = "morphe_settings_music_screen_6_lyrics",
+        key = "morphe_settings_music_screen_5_lyrics",
         summaryKey = null,
         icon = "@drawable/morphe_settings_screen_14_lyrics",
         iconBold = "@drawable/morphe_settings_screen_14_lyrics_bold",
+        layout = "@layout/morphe_preference_with_icon",
+        sorting = Sorting.UNSORTED
+    )
+    val SCROBBLING = Screen(
+        key = "morphe_settings_music_screen_6_scrobbling",
+        summaryKey = null,
+        icon = "@drawable/morphe_settings_screen_13_scrobbling",
+        iconBold = "@drawable/morphe_settings_screen_13_scrobbling_bold",
         layout = "@layout/morphe_preference_with_icon",
         sorting = Sorting.UNSORTED
     )
