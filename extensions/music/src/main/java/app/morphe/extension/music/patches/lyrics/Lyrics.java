@@ -17,8 +17,7 @@ import java.util.List;
  *
  * @param providerName Provider name shown to the user, for example {@code LRCLIB}.
  */
-public record Lyrics(@NonNull List<LyricsLine> lines, @NonNull String providerName,
-                     boolean synced) {
+public record Lyrics(List<LyricsLine> lines, String providerName, boolean synced) {
 
     /** Marker for a track that was looked up successfully but has no lyrics anywhere. */
     public static final Lyrics NOT_FOUND = new Lyrics(Collections.emptyList(), "", false);

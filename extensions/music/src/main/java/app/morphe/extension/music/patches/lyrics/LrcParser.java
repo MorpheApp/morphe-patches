@@ -7,7 +7,6 @@
 
 package app.morphe.extension.music.patches.lyrics;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
@@ -34,7 +33,6 @@ public final class LrcParser {
      *
      * @return Lines sorted by time, or an empty list if nothing could be parsed.
      */
-    @NonNull
     public static List<LyricsLine> parseSynced(@Nullable String lrc) {
         if (lrc == null || lrc.isEmpty()) {
             return Collections.emptyList();
@@ -97,7 +95,6 @@ public final class LrcParser {
     /**
      * Parses plain (unsynced) lyrics, one line per text line.
      */
-    @NonNull
     public static List<LyricsLine> parsePlain(@Nullable String plain) {
         if (plain == null || plain.isEmpty()) {
             return Collections.emptyList();
@@ -118,7 +115,7 @@ public final class LrcParser {
     /**
      * @return {@code true} if the tag is metadata such as {@code ti} or {@code offset}.
      */
-    private static boolean isMetadataTag(@NonNull String tag) {
+    private static boolean isMetadataTag(String tag) {
         int colon = tag.indexOf(':');
         if (colon <= 0) {
             return false;
@@ -136,7 +133,7 @@ public final class LrcParser {
      * @param tag Tag that {@link #isMetadataTag} already accepted, so it holds a colon.
      */
     @Nullable
-    private static Long parseOffsetTag(@NonNull String tag) {
+    private static Long parseOffsetTag(String tag) {
         final int colon = tag.indexOf(':');
         if (!tag.substring(0, colon).equalsIgnoreCase("offset")) {
             return null;
@@ -158,7 +155,7 @@ public final class LrcParser {
      *
      * @return Time in milliseconds, or {@link LyricsLine#NO_TIME} if the tag is not a timestamp.
      */
-    private static long parseTimestamp(@NonNull String tag) {
+    private static long parseTimestamp( String tag) {
         try {
             int colon = tag.indexOf(':');
             if (colon <= 0) {
@@ -199,8 +196,7 @@ public final class LrcParser {
     /**
      * Removes word level timestamps of enhanced LRC, such as {@code <00:12.00>}.
      */
-    @NonNull
-    private static String stripWordTimestamps(@NonNull String text) {
+    private static String stripWordTimestamps(String text) {
         if (text.indexOf('<') < 0) {
             return text;
         }

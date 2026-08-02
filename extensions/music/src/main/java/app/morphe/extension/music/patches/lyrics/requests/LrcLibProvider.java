@@ -7,7 +7,6 @@
 
 package app.morphe.extension.music.patches.lyrics.requests;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
@@ -25,6 +24,7 @@ import app.morphe.extension.music.patches.lyrics.Lyrics;
 import app.morphe.extension.music.patches.lyrics.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.TrackInfo;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.requests.Requester;
 
 /**
  * LRCLIB, the open lyrics database used by Metrolist, InnerTune and ViMusic.
@@ -35,7 +35,6 @@ public final class LrcLibProvider implements LyricsProvider {
 
     private static final String BASE_URL = "https://lrclib.net/api/";
 
-    @NonNull
     @Override
     public String name() {
         return "LRCLIB";
@@ -43,7 +42,7 @@ public final class LrcLibProvider implements LyricsProvider {
 
     @Nullable
     @Override
-    public Lyrics fetch(@NonNull TrackInfo track) throws Exception {
+    public Lyrics fetch(TrackInfo track) throws Exception {
         // The exact endpoint matches on duration as well, which gives the best timings,
         // but it fails for any track whose duration differs from the database entry.
         Lyrics exact = fetchExact(track);
@@ -54,7 +53,7 @@ public final class LrcLibProvider implements LyricsProvider {
     }
 
     @Nullable
-    private Lyrics fetchExact(@NonNull TrackInfo track) throws Exception {
+    private Lyrics fetchExact(TrackInfo track) throws Exception {
         StringBuilder url = new StringBuilder(BASE_URL);
         url.append("get?track_name=").append(encode(track.title()));
         url.append("&artist_name=").append(encode(track.artist()));
@@ -73,7 +72,7 @@ public final class LrcLibProvider implements LyricsProvider {
     }
 
     @Nullable
-    private Lyrics fetchSearch(@NonNull TrackInfo track) throws Exception {
+    private Lyrics fetchSearch(TrackInfo track) throws Exception {
         String url = BASE_URL + "search?track_name=" + encode(track.title())
                 + "&artist_name=" + encode(track.artist());
 
@@ -83,15 +82,16 @@ public final class LrcLibProvider implements LyricsProvider {
             return null;
         }
 
-        JSONArray results = LyricsRequests.parseJsonArrayAndDisconnect(connection);
-        if (results.length() == 0) {
+        JSONArray results = Requester.parseJSONArray(connection);
+        final int resultsLength = results.length();
+        if (resultsLength == 0) {
             return null;
         }
 
         // Prefer the candidate closest in duration, since same titled tracks are common.
         JSONObject best = null;
         int bestDelta = Integer.MAX_VALUE;
-        for (int i = 0; i < results.length(); i++) {
+        for (int i = 0; i < resultsLength; i++) {
             JSONObject candidate = results.optJSONObject(i);
             if (candidate == null) {
                 continue;
@@ -114,7 +114,7 @@ public final class LrcLibProvider implements LyricsProvider {
     }
 
     @Nullable
-    private Lyrics toLyrics(@NonNull JSONObject response) {
+    private Lyrics toLyrics(JSONObject response) {
         if (response.optBoolean("instrumental", false)) {
             Logger.printDebug(() -> "LRCLIB reports an instrumental track");
             return Lyrics.NOT_FOUND;
@@ -140,7 +140,7 @@ public final class LrcLibProvider implements LyricsProvider {
     }
 
     @Nullable
-    private JSONObject getJsonObject(@NonNull String url) throws IOException, JSONException {
+    private JSONObject getJsonObject(String url) throws IOException, JSONException {
         HttpURLConnection connection = LyricsRequests.openConnection(url);
         final int responseCode = connection.getResponseCode();
         if (responseCode == 404) {
@@ -151,11 +151,11 @@ public final class LrcLibProvider implements LyricsProvider {
             LyricsRequests.logFailure(name(), connection);
             return null;
         }
-        return LyricsRequests.parseJsonObjectAndDisconnect(connection);
+        return Requester.parseJSONObject(connection);
     }
 
     @Nullable
-    private static String optString(@NonNull JSONObject object, @NonNull String key) {
+    private static String optString(JSONObject object, String key) {
         if (object.isNull(key)) {
             return null;
         }
@@ -166,9 +166,8 @@ public final class LrcLibProvider implements LyricsProvider {
     /**
      * The Charset overload of encode() needs API 33, so the charset is named instead.
      */
-    @NonNull
     @SuppressWarnings("CharsetObjectCanBeUsed")
-    private static String encode(@NonNull String value) throws UnsupportedEncodingException {
+    private static String encode(String value) throws UnsupportedEncodingException {
         return URLEncoder.encode(value, "UTF-8");
     }
 }

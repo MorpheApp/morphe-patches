@@ -7,7 +7,6 @@
 
 package app.morphe.extension.music.patches.lyrics;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 /**
@@ -28,7 +27,6 @@ final class MetadataCleaner {
     private MetadataCleaner() {
     }
 
-    @NonNull
     static String cleanTitle(@Nullable String title) {
         if (title == null) {
             return "";
@@ -40,7 +38,6 @@ final class MetadataCleaner {
         return collapseWhitespace(clean);
     }
 
-    @NonNull
     static String cleanArtist(@Nullable String artist) {
         if (artist == null) {
             return "";
@@ -56,7 +53,6 @@ final class MetadataCleaner {
         return collapseWhitespace(clean);
     }
 
-    @NonNull
     static String cleanAlbum(@Nullable String album) {
         if (album == null) {
             return "";
@@ -64,7 +60,7 @@ final class MetadataCleaner {
         return collapseWhitespace(album.replaceAll(REMASTER_PATTERN, ""));
     }
 
-    private static int indexOfFirstSeparator(@NonNull String artist) {
+    private static int indexOfFirstSeparator(String artist) {
         final String[] separators = {" & ", ", ", " x ", " X ", " feat. ", " ft. ", " с "};
         int result = -1;
         for (String separator : separators) {
@@ -76,8 +72,7 @@ final class MetadataCleaner {
         return result;
     }
 
-    @NonNull
-    private static String collapseWhitespace(@NonNull String value) {
+    private static String collapseWhitespace(String value) {
         return value.replaceAll("\\s+", " ").trim();
     }
 }

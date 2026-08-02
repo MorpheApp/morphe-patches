@@ -9,7 +9,6 @@ package app.morphe.extension.music.patches.lyrics.requests;
 
 import android.util.Base64;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
@@ -27,6 +26,7 @@ import app.morphe.extension.music.patches.lyrics.Lyrics;
 import app.morphe.extension.music.patches.lyrics.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.TrackInfo;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.requests.Requester;
 
 /**
  * KuGou lyrics, used as a fallback because it covers many tracks LRCLIB does not.
@@ -44,7 +44,6 @@ public final class KuGouProvider implements LyricsProvider {
             "和声", "监制", "出品", "发行", "词：", "曲：", "唱：",
     };
 
-    @NonNull
     @Override
     public String name() {
         return "KuGou";
@@ -52,7 +51,7 @@ public final class KuGouProvider implements LyricsProvider {
 
     @Nullable
     @Override
-    public Lyrics fetch(@NonNull TrackInfo track) throws Exception {
+    public Lyrics fetch(TrackInfo track) throws Exception {
         String keyword = track.artist() + " - " + track.title();
         StringBuilder searchUrl = new StringBuilder(SEARCH_URL);
         searchUrl.append("&keyword=").append(encode(keyword));
@@ -66,7 +65,7 @@ public final class KuGouProvider implements LyricsProvider {
             return null;
         }
 
-        JSONObject searchResponse = LyricsRequests.parseJsonObjectAndDisconnect(searchConnection);
+        JSONObject searchResponse = Requester.parseJSONObject(searchConnection);
         JSONArray candidates = searchResponse.optJSONArray("candidates");
         if (candidates == null || candidates.length() == 0) {
             return null;
@@ -90,7 +89,7 @@ public final class KuGouProvider implements LyricsProvider {
             return null;
         }
 
-        JSONObject downloadResponse = LyricsRequests.parseJsonObjectAndDisconnect(downloadConnection);
+        JSONObject downloadResponse = Requester.parseJSONObject(downloadConnection);
         String content = downloadResponse.optString("content", "");
         if (content.isEmpty()) {
             return null;
@@ -110,8 +109,7 @@ public final class KuGouProvider implements LyricsProvider {
      * Drops the leading credit lines. Only leading lines are checked so that a
      * lyric that happens to contain one of the markers is kept.
      */
-    @NonNull
-    private static List<LyricsLine> removeCreditLines(@NonNull List<LyricsLine> lines) {
+    private static List<LyricsLine> removeCreditLines(List<LyricsLine> lines) {
         int firstLyric = 0;
         while (firstLyric < lines.size() && isCreditLine(lines.get(firstLyric).text())) {
             firstLyric++;
@@ -127,7 +125,7 @@ public final class KuGouProvider implements LyricsProvider {
         return new ArrayList<>(lines.subList(firstLyric, lines.size()));
     }
 
-    private static boolean isCreditLine(@NonNull String text) {
+    private static boolean isCreditLine(String text) {
         if (text.isEmpty()) {
             return true;
         }
@@ -142,9 +140,8 @@ public final class KuGouProvider implements LyricsProvider {
     /**
      * The Charset overload of encode() needs API 33, so the charset is named instead.
      */
-    @NonNull
     @SuppressWarnings("CharsetObjectCanBeUsed")
-    private static String encode(@NonNull String value) throws UnsupportedEncodingException {
+    private static String encode(String value) throws UnsupportedEncodingException {
         return URLEncoder.encode(value, "UTF-8");
     }
 }

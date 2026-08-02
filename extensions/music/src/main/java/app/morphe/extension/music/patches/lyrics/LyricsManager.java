@@ -11,7 +11,6 @@ import android.media.MediaMetadata;
 import android.media.session.PlaybackState;
 import android.os.SystemClock;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
@@ -46,7 +45,7 @@ public final class LyricsManager {
     public interface Listener {
 
         /** Called on the main thread whenever the state or the lyrics change. */
-        void onLyricsChanged(@NonNull State state, @Nullable Lyrics lyrics);
+        void onLyricsChanged(State state, @Nullable Lyrics lyrics);
     }
 
     private static final LyricsManager INSTANCE = new LyricsManager();
@@ -62,7 +61,6 @@ public final class LyricsManager {
     @Nullable
     private Lyrics currentLyrics;
 
-    @NonNull
     private State state = State.IDLE;
 
     /**
@@ -79,12 +77,11 @@ public final class LyricsManager {
     private LyricsManager() {
     }
 
-    @NonNull
     public static LyricsManager getInstance() {
         return INSTANCE;
     }
 
-    public void addListener(@NonNull Listener listener) {
+    public void addListener(Listener listener) {
         Utils.verifyOnMainThread();
         if (!listeners.contains(listener)) {
             listeners.add(listener);
@@ -92,7 +89,7 @@ public final class LyricsManager {
         listener.onLyricsChanged(state, currentLyrics);
     }
 
-    public void removeListener(@NonNull Listener listener) {
+    public void removeListener(Listener listener) {
         Utils.verifyOnMainThread();
         listeners.remove(listener);
     }
@@ -179,7 +176,7 @@ public final class LyricsManager {
         }
     }
 
-    private void load(@NonNull TrackInfo track) {
+    private void load(TrackInfo track) {
         final int id = ++requestId;
         setState(State.LOADING, null);
 
@@ -232,13 +229,13 @@ public final class LyricsManager {
                 return;
             }
 
-            final Lyrics resolved = result == null ? Lyrics.NOT_FOUND : result;
+            Lyrics resolved = result == null ? Lyrics.NOT_FOUND : result;
             LyricsCache.put(track, resolved);
             Utils.runOnMainThread(() -> publish(id, resolved));
         });
     }
 
-    private void publish(int id, @NonNull Lyrics lyrics) {
+    private void publish(int id, Lyrics lyrics) {
         if (id != requestId) {
             Logger.printDebug(() -> "Discarding lyrics of a previous track");
             return;
@@ -251,7 +248,7 @@ public final class LyricsManager {
         }
     }
 
-    private void setState(@NonNull State newState, @Nullable Lyrics lyrics) {
+    private void setState(State newState, @Nullable Lyrics lyrics) {
         state = newState;
         currentLyrics = lyrics;
 
@@ -265,7 +262,6 @@ public final class LyricsManager {
         }
     }
 
-    @NonNull
     private static List<LyricsProvider> providersInOrder() {
         List<LyricsProvider> providers = new ArrayList<>(2);
         switch (Settings.LYRICS_SOURCE.get()) {

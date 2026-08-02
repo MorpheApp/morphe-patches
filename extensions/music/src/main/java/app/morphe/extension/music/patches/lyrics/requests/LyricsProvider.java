@@ -7,7 +7,6 @@
 
 package app.morphe.extension.music.patches.lyrics.requests;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.music.patches.lyrics.Lyrics;
@@ -21,7 +20,6 @@ public interface LyricsProvider {
     /**
      * Provider name shown to the user as the lyrics source.
      */
-    @NonNull
     String name();
 
     /**
@@ -30,5 +28,5 @@ public interface LyricsProvider {
      * @return Lyrics, or {@code null} if this provider has none for the track.
      */
     @Nullable
-    Lyrics fetch(@NonNull TrackInfo track) throws Exception;
+    Lyrics fetch(TrackInfo track) throws Exception;
 }

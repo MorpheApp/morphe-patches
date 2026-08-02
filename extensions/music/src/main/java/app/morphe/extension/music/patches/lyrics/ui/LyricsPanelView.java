@@ -7,6 +7,8 @@
 
 package app.morphe.extension.music.patches.lyrics.ui;
 
+import static app.morphe.extension.shared.StringRef.str;
+
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -31,7 +33,6 @@ import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
@@ -47,7 +48,6 @@ import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
-import app.morphe.extension.shared.StringRef;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.ViewAnimations;
@@ -151,7 +151,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         }
     };
 
-    public LyricsPanelView(@NonNull Context context) {
+    public LyricsPanelView(Context context) {
         super(context);
 
         final int horizontalPadding = Dim.dp32;
@@ -241,7 +241,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     }
 
     @Override
-    public boolean onInterceptTouchEvent(@NonNull MotionEvent event) {
+    public boolean onInterceptTouchEvent(MotionEvent event) {
         // Any touch counts as manual interaction, so auto scrolling backs off
         // instead of fighting the user. The event itself is left untouched.
         userScrollUntilUptimeMs = SystemClock.uptimeMillis() + MANUAL_SCROLL_PAUSE_MILLISECONDS;
@@ -264,7 +264,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     }
 
     @Override
-    public void onLyricsChanged(@NonNull LyricsManager.State state, @Nullable Lyrics newLyrics) {
+    public void onLyricsChanged(LyricsManager.State state, @Nullable Lyrics newLyrics) {
         try {
             lyrics = newLyrics;
             highlightedIndex = -1;
@@ -349,7 +349,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         progressBar.setVisibility(VISIBLE);
     }
 
-    private void showLyrics(@NonNull Lyrics newLyrics) {
+    private void showLyrics(Lyrics newLyrics) {
         clearLines();
         progressBar.setVisibility(GONE);
         scrollView.setVisibility(VISIBLE);
@@ -404,8 +404,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
      * dimmer style. Both live in one view so that highlighting, fading and auto
      * scrolling keep working on whole lines.
      */
-    @NonNull
-    private CharSequence lineText(@NonNull String original, int index) {
+    private CharSequence lineText(String original, int index) {
         List<String> translated = translatedLines;
         if (translated == null || index >= translated.size()) {
             return original;
@@ -542,7 +541,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     }
 
     /** Eases the highlight between lines the way the built-in panel does. */
-    private static void fadeTo(@NonNull TextView lineView, float alpha) {
+    private static void fadeTo(TextView lineView, float alpha) {
         lineView.animate().cancel();
         lineView.animate()
                 .alpha(alpha)
@@ -550,7 +549,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 .start();
     }
 
-    private static void applyFooterStyle(@NonNull TextView footer) {
+    private static void applyFooterStyle(TextView footer) {
         footer.setTextSize(TypedValue.COMPLEX_UNIT_SP, FOOTER_TEXT_SIZE_SP);
         footer.setTextColor(secondaryTextColor());
         // The secondary color alone is brighter than the app draws this line, which
@@ -562,7 +561,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
      * Styles the button as a pill, the shape the app uses for the buttons under its
      * own lyrics, with the background taken from the app palette so it follows the theme.
      */
-    private void applyButtonStyle(@NonNull TextView button, @NonNull String iconName) {
+    private void applyButtonStyle(TextView button, String iconName) {
         button.setTextSize(TypedValue.COMPLEX_UNIT_SP, BUTTON_TEXT_SIZE_SP);
         button.setTextColor(lineTextColor());
         button.setTypeface(null, Typeface.BOLD);
@@ -593,11 +592,6 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         button.setCompoundDrawablePadding(Dim.dp8);
     }
 
-    @NonNull
-    private static String str(@NonNull String key) {
-        return StringRef.str(key);
-    }
-
     private static int secondaryTextColor() {
         return ResourceUtils.getColor(APP_SECONDARY_TEXT_COLOR, lineTextColor());
     }
@@ -613,8 +607,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         return ResourceUtils.getColor(APP_PRIMARY_TEXT_COLOR, Utils.getAppForegroundColor());
     }
 
-    @NonNull
-    private static String sourceText(@NonNull String providerName) {
-        return String.format(StringRef.str(LYRICS_SOURCE_KEY), providerName);
+    private static String sourceText(String providerName) {
+        return String.format(str(LYRICS_SOURCE_KEY), providerName);
     }
 }

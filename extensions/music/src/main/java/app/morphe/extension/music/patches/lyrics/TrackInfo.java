@@ -18,14 +18,12 @@ import java.util.Objects;
  *
  * @param durationSeconds Track duration in seconds, or 0 if unknown.
  */
-public record TrackInfo(@NonNull String title, @NonNull String artist, @NonNull String album,
-                        int durationSeconds) {
+public record TrackInfo(String title, String artist, String album, int durationSeconds) {
 
     /**
      * Key used for caching. Duration is left out so that a metadata update
      * that only corrects the duration still hits the cache.
      */
-    @NonNull
     public String cacheKey() {
         return artist.toLowerCase(Locale.ROOT) + " " + title.toLowerCase(Locale.ROOT);
     }

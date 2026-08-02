@@ -7,7 +7,6 @@
 
 package app.morphe.extension.music.patches.lyrics;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
@@ -39,7 +38,6 @@ public final class LyricsTranslator {
     private LyricsTranslator() {
     }
 
-    @NonNull
     public static String deviceLanguage() {
         return Locale.getDefault().getLanguage();
     }
@@ -47,9 +45,7 @@ public final class LyricsTranslator {
     /**
      * Translates the lyrics of a track, using the cache when possible.
      */
-    public static void translate(@NonNull TrackInfo track,
-                                 @NonNull Lyrics lyrics,
-                                 @NonNull Callback callback) {
+    public static void translate(TrackInfo track, Lyrics lyrics, Callback callback) {
         Utils.verifyOnMainThread();
 
         List<String> lines = new ArrayList<>(lyrics.lines().size());
@@ -78,7 +74,7 @@ public final class LyricsTranslator {
      * back with a different number of lines than it was given.
      */
     @Nullable
-    private static List<String> translateOnline(@NonNull List<String> lines, @NonNull String language) {
+    private static List<String> translateOnline(List<String> lines, String language) {
         if (!Utils.isNetworkConnected()) {
             return null;
         }

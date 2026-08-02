@@ -7,12 +7,6 @@
 
 package app.morphe.extension.music.patches.lyrics.requests;
 
-import androidx.annotation.NonNull;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
 import java.net.HttpURLConnection;
 
@@ -35,8 +29,7 @@ final class LyricsRequests {
      * Opens a GET connection. LRCLIB asks clients to identify themselves in the
      * User-Agent header, and rate limits requests that do not.
      */
-    @NonNull
-    static HttpURLConnection openConnection(@NonNull String url) throws IOException {
+    static HttpURLConnection openConnection(String url) throws IOException {
         HttpURLConnection connection = Requester.openConnection(url);
         connection.setRequestMethod("GET");
         connection.setConnectTimeout(CONNECT_TIMEOUT_MILLISECONDS);
@@ -48,22 +41,10 @@ final class LyricsRequests {
         return connection;
     }
 
-    @NonNull
-    static JSONObject parseJsonObjectAndDisconnect(@NonNull HttpURLConnection connection)
-            throws JSONException, IOException {
-        return Requester.parseJSONObjectAndDisconnect(connection);
-    }
-
-    @NonNull
-    static JSONArray parseJsonArrayAndDisconnect(@NonNull HttpURLConnection connection)
-            throws JSONException, IOException {
-        return Requester.parseJSONArrayAndDisconnect(connection);
-    }
-
-    static void logFailure(@NonNull String provider, @NonNull HttpURLConnection connection) {
+    static void logFailure(String provider, HttpURLConnection connection) {
         try {
             final int code = connection.getResponseCode();
-            final String message = connection.getResponseMessage();
+            String message = connection.getResponseMessage();
             Logger.printDebug(() -> provider + " request failed: " + code + " " + message);
         } catch (IOException ex) {
             Logger.printDebug(() -> provider + " request failed", ex);

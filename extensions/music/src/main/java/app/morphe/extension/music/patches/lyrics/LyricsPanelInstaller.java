@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
@@ -137,7 +136,7 @@ public final class LyricsPanelInstaller {
      * Walks up from the heading to the panel, then back down to its content container.
      */
     @Nullable
-    private static ViewGroup findPanelContent(@NonNull View title) {
+    private static ViewGroup findPanelContent(View title) {
         final int panelContentId = ResourceUtils.getIdentifier(ResourceType.ID, PANEL_CONTENT_ID);
         if (panelContentId == 0) {
             return null;
@@ -157,7 +156,7 @@ public final class LyricsPanelInstaller {
      * @return The heading of the engagement panel currently on screen, if any.
      */
     @Nullable
-    private static TextView findVisibleTitle(@NonNull View root) {
+    private static TextView findVisibleTitle(View root) {
         final int titleId = ResourceUtils.getIdentifier(ResourceType.ID, PANEL_TITLE_ID);
         if (titleId == 0) {
             Logger.printException(() -> "App is missing " + PANEL_TITLE_ID);
@@ -167,7 +166,7 @@ public final class LyricsPanelInstaller {
     }
 
     @Nullable
-    private static TextView findVisibleTitle(@NonNull View view, int titleId) {
+    private static TextView findVisibleTitle(View view, int titleId) {
         if (view.getVisibility() != View.VISIBLE) {
             return null;
         }
@@ -191,7 +190,7 @@ public final class LyricsPanelInstaller {
     private static String lyricsTitle() {
         if (lyricsTitle == null) {
             if (ResourceUtils.getStringIdentifier(LYRICS_TITLE_RESOURCE) == 0) {
-                Logger.printException(() -> "App is missing " + LYRICS_TITLE_RESOURCE);
+                Logger.printException(() -> "App is missing: " + LYRICS_TITLE_RESOURCE);
                 return null;
             }
             lyricsTitle = ResourceUtils.getString(LYRICS_TITLE_RESOURCE);

@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
  *
  * @param startTimeMs Start time in milliseconds, or {@link #NO_TIME} for unsynced lyrics.
  */
-public record LyricsLine(long startTimeMs, @NonNull String text) {
+public record LyricsLine(long startTimeMs, String text) {
 
     public static final long NO_TIME = -1;
 

@@ -9,7 +9,6 @@ package app.morphe.extension.music.patches.lyrics;
 
 import android.content.Context;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.io.File;
@@ -49,7 +48,7 @@ final class LyricsCache {
     }
 
     @Nullable
-    static synchronized Lyrics get(@NonNull TrackInfo track) {
+    static synchronized Lyrics get(TrackInfo track) {
         String key = track.cacheKey();
         Lyrics cached = memoryCache.get(key);
         if (cached != null) {
@@ -63,7 +62,7 @@ final class LyricsCache {
         return fromDisk;
     }
 
-    static synchronized void put(@NonNull TrackInfo track, @NonNull Lyrics lyrics) {
+    static synchronized void put(TrackInfo track, Lyrics lyrics) {
         String key = track.cacheKey();
         memoryCache.put(key, lyrics);
         writeToDisk(key, lyrics);
@@ -74,8 +73,8 @@ final class LyricsCache {
      * this language yet, or if the cached line count no longer matches the lyrics.
      */
     @Nullable
-    static synchronized List<String> getTranslation(@NonNull TrackInfo track,
-                                                    @NonNull String language,
+    static synchronized List<String> getTranslation(TrackInfo track,
+                                                    String language,
                                                     int expectedLineCount) {
         File file = translationFile(track, language);
         if (file == null || !file.exists()) {
@@ -93,9 +92,9 @@ final class LyricsCache {
         }
     }
 
-    static synchronized void putTranslation(@NonNull TrackInfo track,
-                                            @NonNull String language,
-                                            @NonNull List<String> lines) {
+    static synchronized void putTranslation(TrackInfo track,
+                                            String language,
+                                            List<String> lines) {
         File file = translationFile(track, language);
         if (file == null) {
             return;
@@ -110,7 +109,7 @@ final class LyricsCache {
     }
 
     @Nullable
-    private static File translationFile(@NonNull TrackInfo track, @NonNull String language) {
+    private static File translationFile(TrackInfo track, String language) {
         File directory = cacheDirectory();
         if (directory == null) {
             return null;
@@ -120,7 +119,7 @@ final class LyricsCache {
     }
 
     @Nullable
-    private static Lyrics readFromDisk(@NonNull String key) {
+    private static Lyrics readFromDisk(String key) {
         File file = cacheFile(key);
         if (file == null || !file.exists()) {
             return null;
@@ -164,7 +163,7 @@ final class LyricsCache {
         }
     }
 
-    private static void writeToDisk(@NonNull String key, @NonNull Lyrics lyrics) {
+    private static void writeToDisk(String key, Lyrics lyrics) {
         File file = cacheFile(key);
         if (file == null) {
             return;
@@ -217,7 +216,6 @@ final class LyricsCache {
         }
     }
 
-    @NonNull
     private static String formatTimestamp(long timeMs) {
         final long minutes = timeMs / 60_000;
         final long seconds = (timeMs / 1000) % 60;
@@ -226,7 +224,7 @@ final class LyricsCache {
     }
 
     @Nullable
-    private static File cacheFile(@NonNull String key) {
+    private static File cacheFile(String key) {
         File directory = cacheDirectory();
         if (directory == null) {
             return null;
