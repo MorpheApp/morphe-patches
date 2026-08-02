@@ -12,7 +12,6 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.TypedValue;
@@ -132,6 +131,8 @@ public class RedditActivityHook {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             Activity activity = getActivity();
+            final int appForegroundColor = Utils.getAppForegroundColor();
+            final int appBackgroundColor = Utils.getAppBackgroundColor();
 
             // Ensure the dialog window fills the screen and shows the status bar.
             Dialog dialog = getDialog();
@@ -139,7 +140,7 @@ public class RedditActivityHook {
                 Window window = dialog.getWindow();
                 if (window != null) {
                     window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-                    window.setStatusBarColor(Utils.getAppBackgroundColor());
+                    window.setStatusBarColor(appBackgroundColor);
                     window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
                 }
             }
@@ -147,7 +148,7 @@ public class RedditActivityHook {
             LinearLayout linearLayout = new LinearLayout(activity);
             linearLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
             linearLayout.setOrientation(LinearLayout.VERTICAL);
-            linearLayout.setBackgroundColor(Utils.getAppBackgroundColor());
+            linearLayout.setBackgroundColor(appBackgroundColor);
             linearLayout.setFitsSystemWindows(true);
 
             final int actionBarSize;
@@ -160,23 +161,21 @@ public class RedditActivityHook {
 
             Toolbar toolbar = new Toolbar(activity);
             toolbar.setLayoutParams(new LinearLayout.LayoutParams(-1, actionBarSize));
-            toolbar.setBackgroundColor(Utils.getAppBackgroundColor());
+            toolbar.setBackgroundColor(appBackgroundColor);
             toolbar.setTitle(MORPHE_LABEL);
-            toolbar.setTitleTextColor(Utils.getAppForegroundColor());
+            toolbar.setTitleTextColor(appForegroundColor);
             toolbar.setElevation(Dim.dp2);
 
-            // Set title to bold and reduce font size by 1 to mimic the original app settings look.
             toolbar.post(() -> {
                 TextView titleTextView = Utils.getChildView(toolbar, false,
                         view -> view instanceof TextView);
                 if (titleTextView != null) {
-                    titleTextView.setTypeface(Typeface.DEFAULT_BOLD);
-                    titleTextView.setTextSize(19);
+                    titleTextView.setTextSize(18);
                 }
             });
 
             Drawable backIcon = Objects.requireNonNull(ResourceUtils.getDrawable("icon_arrow_back"));
-            backIcon.setTint(Utils.getAppForegroundColor());
+            backIcon.setTint(appForegroundColor);
             toolbar.setNavigationIcon(backIcon);
             toolbar.setNavigationOnClickListener(v -> dismiss());
             linearLayout.addView(toolbar);
