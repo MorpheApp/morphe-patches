@@ -37,6 +37,7 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import app.morphe.extension.music.patches.lyrics.Lyrics;
 import app.morphe.extension.music.patches.lyrics.LyricsLine;
@@ -109,6 +110,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     private final ScrollView scrollView;
     private final LinearLayout linesContainer;
     private final TextView footerView;
+    @Nullable
     private final TextView translateView;
     private final LinearLayout footerContainer;
     private final LinearLayout buttonRow;
@@ -165,41 +167,34 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         applyFooterStyle(footerView);
         footerView.setVisibility(GONE);
 
-        TextView copyView = new TextView(context);
-        applyButtonStyle(copyView, APP_SHARE_ICON);
-        copyView.setText(str("morphe_music_lyrics_copy"));
-        copyView.setOnClickListener(view -> {
-            try {
-                onCopyClicked();
-            } catch (Exception ex) {
-                Logger.printException(() -> "Copy failure", ex);
-            }
-        });
-
-        translateView = new TextView(context);
-        applyButtonStyle(translateView, APP_TRANSLATE_ICON);
-        translateView.setOnClickListener(view -> {
-            try {
-                onTranslateClicked();
-            } catch (Exception ex) {
-                Logger.printException(() -> "Translate failure", ex);
-            }
-        });
-
         // Same order as the buttons the app draws under its own lyrics.
         buttonRow = new LinearLayout(context);
         buttonRow.setOrientation(LinearLayout.HORIZONTAL);
         buttonRow.setGravity(Gravity.CENTER);
         buttonRow.setVisibility(GONE);
-        buttonRow.addView(copyView, new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT));
 
-        LinearLayout.LayoutParams translateParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-        translateParams.setMarginStart(Dim.dp12);
-        buttonRow.addView(translateView, translateParams);
+        if (Settings.LYRICS_COPY_BUTTON.get()) {
+            TextView copyView = new TextView(context);
+            applyButtonStyle(copyView, APP_SHARE_ICON);
+            copyView.setText(str("morphe_music_lyrics_copy"));
+            copyView.setOnClickListener(view -> onCopyClicked());
+            buttonRow.addView(copyView, new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT));
+        }
+
+        if (Settings.LYRICS_TRANSLATE_BUTTON.get()) {
+            translateView = new TextView(context);
+            applyButtonStyle(translateView, APP_TRANSLATE_ICON);
+            translateView.setOnClickListener(view -> onTranslateClicked());
+            LinearLayout.LayoutParams translateParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT);
+            translateParams.setMarginStart(Dim.dp12);
+            buttonRow.addView(translateView, translateParams);
+        } else {
+            translateView = null;
+        }
 
         // The source line lives in a container of its own, so that lyrics lines can be
         // inserted before it without depending on how many views it holds.
@@ -425,37 +420,41 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     }
 
     private void onTranslateClicked() {
-        Lyrics current = lyrics;
-        TrackInfo track = LyricsManager.getInstance().getCurrentTrack();
-        if (current == null || track == null) {
-            return;
-        }
-
-        if (translatedLines != null) {
-            Settings.LYRICS_TRANSLATE.save(false);
-            translatedLines = null;
-            showLyrics(current);
-            return;
-        }
-
-        Settings.LYRICS_TRANSLATE.save(true);
-        translateView.setEnabled(false);
-        translateView.setText(str("morphe_music_lyrics_translating"));
-
-        LyricsTranslator.translate(track, current, lines -> {
-            translateView.setEnabled(true);
-
-            // The track may have changed while the translation was in flight.
-            if (lyrics != current) {
+        try {
+            Lyrics current = lyrics;
+            TrackInfo track = LyricsManager.getInstance().getCurrentTrack();
+            if (current == null || track == null) {
                 return;
             }
 
-            translatedLines = lines;
-            if (lines == null) {
-                Utils.showToastShort(str("morphe_music_lyrics_translate_failed"));
+            if (translatedLines != null) {
+                Settings.LYRICS_TRANSLATE.save(false);
+                translatedLines = null;
+                showLyrics(current);
+                return;
             }
-            showLyrics(current);
-        });
+
+            Settings.LYRICS_TRANSLATE.save(true);
+            Objects.requireNonNull(translateView).setEnabled(false);
+            translateView.setText(str("morphe_music_lyrics_translating"));
+
+            LyricsTranslator.translate(track, current, lines -> {
+                translateView.setEnabled(true);
+
+                // The track may have changed while the translation was in flight.
+                if (lyrics != current) {
+                    return;
+                }
+
+                translatedLines = lines;
+                if (lines == null) {
+                    Utils.showToastShort(str("morphe_music_lyrics_translate_failed"));
+                }
+                showLyrics(current);
+            });
+        } catch (Exception ex) {
+            Logger.printException(() -> "onTranslateClicked failure", ex);
+        }
     }
 
     /**
@@ -463,37 +462,45 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
      * it is shown, so what is copied matches what is on screen.
      */
     private void onCopyClicked() {
-        Lyrics current = lyrics;
-        if (current == null) {
-            return;
-        }
-
-        List<String> translated = translatedLines;
-        StringBuilder text = new StringBuilder();
-        for (int i = 0; i < current.lines().size(); i++) {
-            if (i != 0) {
-                text.append('\n');
+        try {
+            Lyrics current = lyrics;
+            if (current == null) {
+                return;
             }
-            text.append(current.lines().get(i).text());
 
-            if (translated != null && i < translated.size() && !translated.get(i).isEmpty()) {
-                text.append('\n').append(translated.get(i));
+            //noinspection ExtractMethodRecommender
+            List<String> translated = translatedLines;
+            List<LyricsLine> lines = current.lines();
+            StringBuilder text = new StringBuilder();
+            for (int i = 0, linesSize = lines.size(); i < linesSize; i++) {
+                if (i != 0) {
+                    text.append('\n');
+                }
+                text.append(lines.get(i).text());
+
+                if (translated != null && i < translated.size() && !translated.get(i).isEmpty()) {
+                    text.append('\n').append(translated.get(i));
+                }
             }
-        }
 
-        ClipboardManager clipboard =
-                (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
-        if (clipboard == null) {
-            return;
+            ClipboardManager clipboard = (ClipboardManager) getContext()
+                    .getSystemService(Context.CLIPBOARD_SERVICE);
+            if (clipboard == null) {
+                return;
+            }
+            clipboard.setPrimaryClip(ClipData.newPlainText("lyrics", text.toString()));
+            Utils.showToastShort(str("morphe_music_lyrics_copied"));
+        } catch (Exception ex) {
+            Logger.printException(() -> "onCopyClicked failure", ex);
         }
-        clipboard.setPrimaryClip(ClipData.newPlainText("lyrics", text.toString()));
-        Utils.showToastShort(str("morphe_music_lyrics_copied"));
     }
 
     private void updateTranslateLabel() {
-        translateView.setText(translatedLines == null
-                ? str("morphe_music_lyrics_translate_show")
-                : str("morphe_music_lyrics_translate_hide"));
+        if (translateView != null) {
+            translateView.setText(str(translatedLines == null
+                    ? "morphe_music_lyrics_translate_show"
+                    : "morphe_music_lyrics_translate_hide"));
+        }
     }
 
     private void clearLines() {

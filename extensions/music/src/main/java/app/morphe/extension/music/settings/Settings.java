@@ -174,6 +174,8 @@ public class Settings extends SharedYouTubeSettings {
     public static final EnumSetting<LyricsSource> LYRICS_SOURCE = new EnumSetting<>("morphe_music_lyrics_source", LyricsSource.LRCLIB_THEN_KUGOU, true, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_TRANSLATE = new BooleanSetting("morphe_music_lyrics_translate", FALSE, true, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_TAP_TO_SEEK = new BooleanSetting("morphe_music_lyrics_tap_to_seek", TRUE, true, parent(LYRICS_ENABLED));
+    public static final BooleanSetting LYRICS_COPY_BUTTON = new BooleanSetting("morphe_music_lyrics_copy_button", TRUE, true, parent(LYRICS_ENABLED));
+    public static final BooleanSetting LYRICS_TRANSLATE_BUTTON = new BooleanSetting("morphe_music_lyrics_translate_button", TRUE, true, parent(LYRICS_ENABLED));
     public static final IntegerSetting LYRICS_TEXT_SIZE = new IntegerSetting("morphe_music_lyrics_text_size", 24, true, parent(LYRICS_ENABLED));
     public static final IntegerSetting LYRICS_OFFSET_MS = new IntegerSetting("morphe_music_lyrics_offset_ms", 0, true, parent(LYRICS_ENABLED));
 
