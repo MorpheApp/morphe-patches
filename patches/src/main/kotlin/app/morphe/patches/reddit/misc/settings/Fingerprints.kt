@@ -49,9 +49,10 @@ internal object PreferenceDestinationLegacyFingerprint : Fingerprint(
     )
 )
 
-internal object PreferenceManagerFingerprint : Fingerprint(
-    returnType = "V",
+// 2026.29.0 and older
+internal object PreferenceManagerLegacyFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
     filters = listOf(
         opcode(Opcode.CONST),
         methodCall(

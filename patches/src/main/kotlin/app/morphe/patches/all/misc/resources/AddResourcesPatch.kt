@@ -47,9 +47,18 @@ import kotlin.collections.listOf
 
 /**
  * If any added string resources replace existing strings in the target app.
- * Required if using APKTool CLI patching and any added strings have the same key as the target app.
+ * If this is not enabled then ARSCLib still replaces the existing strings without any issues,
+ * but it's not clear if the behavior is intentional or coincidentally works even though the
+ * modified XML is not valid. Apktool crashes if duplicates are present and this must be enabled.
  */
-private const val PATCH_STRINGS_REPLACE_EXISTING = false
+private var patchStringsReplaceExisting = false
+
+/**
+ * Set patchStringsReplaceExisting
+ */
+fun setPatchStringsReplaceExisting(replaceExisting: Boolean) {
+    patchStringsReplaceExisting = replaceExisting
+}
 
 internal val localesYouTube = listOf(
     AppLocale("", ""), // Default English locale. Must be first.
@@ -356,7 +365,7 @@ internal val addResourcesPatch = resourcePatch(
                 document(destSubPath).use { destDoc ->
                     val destResourceNode = destDoc.getNode("resources")
 
-                    val existingNodes = if (PATCH_STRINGS_REPLACE_EXISTING) {
+                    val existingNodes = if (patchStringsReplaceExisting) {
                         val children = destResourceNode.childNodes
 
                         // Build lookup table once per destination file.
@@ -417,7 +426,7 @@ internal val addResourcesPatch = resourcePatch(
                             // Remove existing resources with the same name.
                             // ARSCLib doesn't check for duplicates and uses the last added,
                             // but Apktool crashes if duplicates exist.
-                            if (PATCH_STRINGS_REPLACE_EXISTING) {
+                            if (patchStringsReplaceExisting) {
                                 val key = srcNode.tagName to resourceName
                                 existingNodes[key]?.let { existing ->
                                     destResourceNode.removeChild(existing)

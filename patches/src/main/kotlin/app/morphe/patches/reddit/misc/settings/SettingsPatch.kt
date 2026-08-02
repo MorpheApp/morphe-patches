@@ -19,6 +19,7 @@ import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.all.misc.resources.localesReddit
 import app.morphe.patches.all.misc.resources.setAddResourceLocale
+import app.morphe.patches.all.misc.resources.setPatchStringsReplaceExisting
 import app.morphe.patches.all.misc.updates.disablePlayStoreUpdatesPatch
 import app.morphe.patches.reddit.misc.extension.hooks.redditActivityOnCreateHook
 import app.morphe.patches.reddit.misc.extension.sharedExtensionPatch
@@ -72,40 +73,11 @@ val settingsPatch = bytecodePatch(
     )
 
     execute {
+        setPatchStringsReplaceExisting(true)
         setAddResourceLocale(localesReddit)
         addAppResources("shared")
         addAppResources("reddit")
 
-        /**
-         * Replace settings label and icon
-         */
-        if (!is_2026_30_0_or_greater) /* FIXME */ PreferenceManagerFingerprint.let {
-            it.method.apply {
-                val labelIndex = it.instructionMatches[5].index
-                val labelRegister =
-                    getInstruction<OneRegisterInstruction>(labelIndex).registerA
-
-                addInstructions(
-                    labelIndex + 1,
-                    """
-                        invoke-static { }, $EXTENSION_CLASS->getSettingLabel()Ljava/lang/String;
-                        move-result-object v$labelRegister
-                    """
-                )
-
-                val iconIndex = it.instructionMatches[2].index
-                val iconRegister =
-                    getInstruction<OneRegisterInstruction>(iconIndex).registerA
-
-                addInstructions(
-                    iconIndex + 1,
-                    """
-                        invoke-static { }, $EXTENSION_CLASS->getSettingIcon()Landroid/graphics/drawable/Drawable;
-                        move-result-object v$iconRegister
-                    """
-                )
-            }
-        }
 
         if (is_2026_25_0_or_greater) {
             PreferenceDestinationFingerprint.method.addInstructionsWithLabels(
@@ -127,7 +99,34 @@ val settingsPatch = bytecodePatch(
             return@execute
         }
 
-        // Legacy patching.
+        /**
+         * Replace settings label and icon
+         */
+        PreferenceManagerLegacyFingerprint.let {
+            it.method.apply {
+                val labelIndex = it.instructionMatches[5].index
+                val labelRegister = getInstruction<OneRegisterInstruction>(labelIndex).registerA
+
+                addInstructions(
+                    labelIndex + 1,
+                    """
+                            invoke-static { }, $EXTENSION_CLASS->getSettingLabel()Ljava/lang/String;
+                            move-result-object v$labelRegister
+                        """
+                )
+
+                val iconIndex = it.instructionMatches[2].index
+                val iconRegister = getInstruction<OneRegisterInstruction>(iconIndex).registerA
+
+                addInstructions(
+                    iconIndex + 1,
+                    """
+                            invoke-static { }, $EXTENSION_CLASS->getSettingIcon()Landroid/graphics/drawable/Drawable;
+                            move-result-object v$iconRegister
+                        """
+                )
+            }
+        }
 
         PreferenceDestinationLegacyFingerprint.let {
             val getActivityMethod = Fingerprint(
