@@ -246,7 +246,7 @@ object PreferenceScreen : BasePreferenceScreen() {
         sorting = Sorting.UNSORTED
     )
     val LYRICS = Screen(
-        key = "morphe_settings_music_screen_9_lyrics",
+        key = "morphe_settings_music_screen_6_lyrics",
         summaryKey = null,
         icon = "@drawable/morphe_settings_screen_14_lyrics",
         iconBold = "@drawable/morphe_settings_screen_14_lyrics_bold",
@@ -254,7 +254,7 @@ object PreferenceScreen : BasePreferenceScreen() {
         sorting = Sorting.UNSORTED
     )
     val RETURN_YOUTUBE_DISLIKE = Screen(
-        key = "morphe_settings_music_screen_6_return_youtube_dislike",
+        key = "morphe_settings_music_screen_7_return_youtube_dislike",
         summaryKey = null,
         icon = "@drawable/morphe_settings_screen_09_return_youtube_dislike",
         iconBold = "@drawable/morphe_settings_screen_09_return_youtube_dislike_bold",
@@ -262,7 +262,7 @@ object PreferenceScreen : BasePreferenceScreen() {
         sorting = Sorting.UNSORTED
     )
     val SPONSORBLOCK = Screen(
-        key = "morphe_settings_music_screen_7_sponsorblock",
+        key = "morphe_settings_music_screen_8_sponsorblock",
         summaryKey = null,
         icon = "@drawable/morphe_settings_screen_10_sponsorblock",
         iconBold = "@drawable/morphe_settings_screen_10_sponsorblock_bold",
@@ -270,7 +270,7 @@ object PreferenceScreen : BasePreferenceScreen() {
         sorting = Sorting.UNSORTED
     )
     val MISC = Screen(
-        key = "morphe_settings_music_screen_8_misc",
+        key = "morphe_settings_music_screen_9_misc",
         summaryKey = null,
         icon = "@drawable/morphe_settings_screen_11_misc",
         iconBold = "@drawable/morphe_settings_screen_11_misc_bold",
