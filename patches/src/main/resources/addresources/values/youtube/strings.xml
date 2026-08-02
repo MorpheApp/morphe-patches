@@ -82,6 +82,10 @@ Changes include:
           This button usually appears in the Home feed for refreshing the feed. -->
     <string name="morphe_hide_latest_videos_button_title">Hide \'Latest videos\' button</string>
     <string name="morphe_hide_latest_videos_button_summary">Hides the blue \'Latest videos\' banner that appears at the top of the Home feed</string>
+    <!-- 'Messages' should be translated using the same localized wording YouTube displays
+          for the section header at the top of the Notifications tab. -->
+    <string name="morphe_hide_messages_section_title">Hide Messages section</string>
+    <string name="morphe_hide_messages_section_summary">Hides the \'Messages\' header and the \'Invite others to message\' card shown at the top of the Notifications tab</string>
     <string name="morphe_hide_mix_playlists_title">Hide mix playlists</string>
     <string name="morphe_hide_movies_section_title">Hide movies section</string>
     <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
