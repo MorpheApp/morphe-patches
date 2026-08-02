@@ -71,6 +71,10 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup compactChannelBarInnerButton;
     private final ByteArrayFilterGroup joinMembershipButton;
     private final StringFilterGroup chipBar;
+    private final StringFilterGroup messagesSectionHeader;
+    private final ByteArrayFilterGroup messagesSectionHeaderTitleBuffer;
+    private final StringFilterGroup messagesSectionInviteCard;
+    private final ByteArrayFilterGroup messagesSectionInviteCardBuffer;
     private final StringFilterGroup channelProfile;
     private final StringFilterGroupList channelProfileGroupList = new StringFilterGroupList();
     private final StringFilterGroup getPremiumButton;
@@ -110,10 +114,44 @@ public final class LayoutComponentsFilter extends Filter {
                 "live_chat_ep_entrypoint.e"
         );
 
+        // The Messages section shown at the top of the Notifications tab is made of two
+        // sibling top level components: a shelf header with the section title, and a linear
+        // layout wrapping the 'Invite others to message' card.
+        //
+        // The card is identified by a unique buffer string and is language independent.
+        //
+        // Every section header of the Notifications tab ('Messages', 'Notifications', 'Today',
+        // 'This week', 'Older') uses the exact same identifier and an otherwise byte identical
+        // buffer, so the only thing that distinguishes the messages header is its title, which
+        // is localized by the server and not backed by an app string resource. Matching the
+        // title is therefore unavoidable, and everything is scoped to the Notifications tab to
+        // keep any mismatch contained to that tab.
+        messagesSectionHeader = new StringFilterGroup(
+                Settings.HIDE_MESSAGES_SECTION,
+                "shelf_header.e"
+        );
+
+        messagesSectionHeaderTitleBuffer = new ByteArrayFilterGroup(
+                null,
+                "Messages"
+        );
+
+        messagesSectionInviteCard = new StringFilterGroup(
+                Settings.HIDE_MESSAGES_SECTION,
+                "linear_layout.e"
+        );
+
+        messagesSectionInviteCardBuffer = new ByteArrayFilterGroup(
+                null,
+                "connections_inbox_zero_state"
+        );
+
         addIdentifierCallbacks(
                 cellDivider,
                 exploreTopicsShelf,
-                liveChatReplay
+                liveChatReplay,
+                messagesSectionHeader,
+                messagesSectionInviteCard
         );
 
         // Paths.
@@ -481,6 +519,25 @@ public final class LayoutComponentsFilter extends Filter {
         if (matchedGroup == chipBar) {
             return contentIndex == 0 && NavigationBar.NavigationButton.getSelectedNavigationButton()
                     == NavigationBar.NavigationButton.LIBRARY;
+        }
+
+        if (matchedGroup == messagesSectionHeader || matchedGroup == messagesSectionInviteCard) {
+            // Both identifiers are generic and used all over the app.
+            if (contentIndex != 0) {
+                return false;
+            }
+
+            final ByteArrayFilterGroup bufferGroup = (matchedGroup == messagesSectionInviteCard)
+                    ? messagesSectionInviteCardBuffer
+                    : messagesSectionHeaderTitleBuffer;
+            if (!bufferGroup.check(buffer).isFiltered()) {
+                return false;
+            }
+
+            // Check the navigation button last and only after all buffer checks pass,
+            // since this call can block for up to 120ms if the back button was recently pressed.
+            return NavigationBar.NavigationButton.getSelectedNavigationButton()
+                    == NavigationBar.NavigationButton.NOTIFICATIONS;
         }
 
         if (matchedGroup == getPremiumButton) {
