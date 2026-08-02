@@ -13,6 +13,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.youtube.layout.miniplayer.EXTENSION_CLASS
+import app.morphe.patches.youtube.misc.addon.EXTENSION_ADD_ON_API_CLASS_DESCRIPTOR
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_29_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -56,5 +57,8 @@ internal val playerOverlayButtonsHookPatch = bytecodePatch {
                 }
             }
         }
+
+        // Buttons of add-on patch bundles, which cannot add a button of their own.
+        addPlayerBottomButton(EXTENSION_ADD_ON_API_CLASS_DESCRIPTOR)
     }
 }

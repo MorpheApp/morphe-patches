@@ -26,8 +26,10 @@ import app.morphe.patcher.util.smali.toInstructions
 import app.morphe.patches.shared.misc.textcomponent.hookSpannableString
 import app.morphe.patches.shared.misc.textcomponent.textComponentPatch
 import app.morphe.patches.shared.misc.videoinformation.PlayerControllerSetTimeReferenceFingerprint
+import app.morphe.patches.youtube.misc.addon.EXTENSION_ADD_ON_API_CLASS_DESCRIPTOR
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.context.conversionContextPatch
+import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.shared.InitializePlaybackSpeedValuesFingerprint
 import app.morphe.patches.youtube.shared.SpeedLimiterFingerprint
@@ -112,6 +114,8 @@ val videoInformationPatch = bytecodePatch(
         conversionContextPatch,
         textComponentPatch,
         versionCheckPatch,
+        // Not used here, but the video state an add-on can observe is set by it.
+        playerTypeHookPatch,
     )
 
     execute {
@@ -545,6 +549,13 @@ val videoInformationPatch = bytecodePatch(
         onCreateHook(EXTENSION_CLASS, "initialize")
         videoSpeedChangedHook(EXTENSION_CLASS, "videoSpeedChanged")
         userSelectedPlaybackSpeedHook(EXTENSION_CLASS, "userSelectedPlaybackSpeed")
+
+        // endregion.
+
+        // region Inject calls for add-on patch bundles, which cannot hook the player themselves.
+
+        onCreateHook(EXTENSION_ADD_ON_API_CLASS_DESCRIPTOR, "newVideoStarted")
+        videoTimeHook(EXTENSION_ADD_ON_API_CLASS_DESCRIPTOR, "videoTimeChanged")
 
         // endregion.
 

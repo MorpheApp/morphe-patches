@@ -36,7 +36,14 @@ message StreamingData {
 }
 
 message Format {
+    int32 itag = 1;
     string url = 2;
+    string mimeType = 5;
+    int32 bitrate = 6;
+    int32 averageBitrate = 31;
+    int64 approxDurationMs = 44;
+    int64 audioSampleRate = 45;
+    int32 audioChannels = 46;
     string signatureCipher = 48;
 }
 

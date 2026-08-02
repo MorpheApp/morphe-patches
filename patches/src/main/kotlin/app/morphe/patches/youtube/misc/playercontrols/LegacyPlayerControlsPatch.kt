@@ -21,6 +21,8 @@ import app.morphe.patcher.util.Document
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.misc.addon.EXTENSION_ADD_ON_API_CLASS_DESCRIPTOR
+import app.morphe.patches.youtube.misc.addon.LEGACY_BUTTON_SLOTS_RESOURCE_DIRECTORY
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_28_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_30_or_greater
@@ -160,6 +162,9 @@ internal val legacyPlayerControlsResourcePatch = resourcePatch {
 
             sourceDocument.close()
         }
+
+        // Button slots of add-on patch bundles, which cannot add a button of their own.
+        addLegacyBottomControl(LEGACY_BUTTON_SLOTS_RESOURCE_DIRECTORY)
     }
 
     finalize {
@@ -249,6 +254,9 @@ val legacyPlayerControlsPatch = bytecodePatch(
                 inflateTopControlInsertIndex = inflateReturnObjectIndex + 1
             }
         }
+
+        // Buttons of add-on patch bundles, which cannot add a button of their own.
+        initializeLegacyBottomControl(EXTENSION_ADD_ON_API_CLASS_DESCRIPTOR)
 
         fun overrideExploderLayout(fingerprint: Fingerprint) {
             fingerprint.matchAll().forEach { match ->
