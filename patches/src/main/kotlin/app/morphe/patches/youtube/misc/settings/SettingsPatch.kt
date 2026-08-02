@@ -50,6 +50,7 @@ import app.morphe.patches.youtube.misc.fix.likebutton.fixLikeButtonPatch
 import app.morphe.patches.youtube.misc.fix.pipchatbar.fixPipChatBarPatch
 import app.morphe.patches.youtube.misc.fix.playbackspeed.fixPlaybackSpeedWhilePlayingPatch
 import app.morphe.patches.youtube.misc.fix.preference.fixPreferenceIconPatch
+import app.morphe.patches.youtube.misc.fix.zoom.fixFullScreenZoomGesturePatch
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -208,16 +209,17 @@ val settingsPatch = bytecodePatch(
         settingsResourcePatch,
         addResourcesPatch,
         versionCheckPatch,
+        // Currently there is no easy way to make patches mandatory,
+        // so for now these are all dependents of this patch.
         fixPlaybackSpeedWhilePlayingPatch,
         fixPreferenceIconPatch,
         fixLikeButtonPatch,
         fixContentProviderPatch,
         fixPipChatBarPatch,
-        removeLinkVerification,
-        // Currently there is no easy way to make a mandatory patch,
-        // so for now this is a dependent of this patch.
-        checkEnvironmentPatch,
+        fixFullScreenZoomGesturePatch,
         addLicensePatch,
+        removeLinkVerification,
+        checkEnvironmentPatch,
         experimentalAppNoticePatch(
             mainActivityFingerprint = YouTubeActivityOnCreateFingerprint,
             recommendedAppVersion = COMPATIBILITY_YOUTUBE.targets.first { !it.isExperimental }.version!!
