@@ -8,10 +8,37 @@
 package app.morphe.patches.youtube.misc.fix.zoom
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.literal
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.methodCall
+import app.morphe.patcher.opcode
+import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
 
-internal object FullscreenGestureZoomFingerprint :Fingerprint(
+internal object FullscreenGestureZoomFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(),
     filters = listOf(
-        literal(45698813L)
+        opcode(opcode = Opcode.IF_EQZ),
+        opcode(opcode = Opcode.MOVE, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.GOTO, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.MOVE, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.IPUT_BOOLEAN, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.IGET_OBJECT, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.IGET_OBJECT, location = MatchAfterImmediately()),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf("J", "Z"),
+            returnType = "Z",
+            location = MatchAfterImmediately()
+        ),
+        opcode(opcode = Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf("J", "Z"),
+            returnType = "Z",
+            location = MatchAfterWithin(12)
+        )
     )
 )
