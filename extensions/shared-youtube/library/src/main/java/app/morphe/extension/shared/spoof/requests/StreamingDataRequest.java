@@ -300,7 +300,7 @@ public class StreamingDataRequest {
             }
 
             if (clientType.requireJS) {
-                var deobfuscatedStreamingData = JavaScriptManager.getDeobfuscatedStreamingData(streamingData);
+                var deobfuscatedStreamingData = JavaScriptManager.getDeobfuscatedStreamingData(streamingData, clientType.requireSABR);
                 if (deobfuscatedStreamingData == null) {
                     handleDebugToast("Debug: Ignoring obfuscated streamingData (%s)", clientType);
                     return null;

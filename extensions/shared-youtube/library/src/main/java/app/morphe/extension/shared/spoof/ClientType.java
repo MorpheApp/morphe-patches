@@ -64,6 +64,7 @@ public enum ClientType {
             false,
             false,
             false,
+            false,
             "Android Music No SDK"
     ),
     /**
@@ -148,21 +149,21 @@ public enum ClientType {
      * Video not playable: None.
      * AV1 codec available.
      */
-    TV(
+    TV_SABR(
             7,
             "TVHTML5",
-            "Samsung",
-            "SmartTV",
-            "Tizen",
-            "2.4.0",
-            "5.20150304",
-            "TV",
-            // Currently, it is the only User-Agent available for signed out among TV clients, but sign in is still required for certain IP bands or countries.
-            "Mozilla/5.0 (SMART-TV; Linux; Tizen 2.4.0) AppleWebKit/538.1 (KHTML, like Gecko) Version/2.4.0 TV Safari/538.1",
+            "Sony",
+            "PS4",
+            "PlayStation 4",
+            "",
+            "7.20260707.07.00",
+            "GAME_CONSOLE",
+            "Mozilla/5.0 (PS4; Leanback Shell) Gecko/20100101 Firefox/65.0 LeanbackShell/01.00.01.75 Sony PS4/ (PS4, , no, CH)",
             true,
             false,
             true,
             false,
+            true,
             true,
             "TV"
     ),
@@ -186,6 +187,7 @@ public enum ClientType {
             true,
             true,
             false,
+            false,
             "visionOS 1.03"
     ),
     /**
@@ -208,6 +210,7 @@ public enum ClientType {
             VISIONOS_1_03.supportsMultiAudioTracks,
             VISIONOS_1_03.supportsVRImmersiveMode,
             VISIONOS_1_03.requireJS,
+            VISIONOS_1_03.requireSABR,
             "visionOS 1.02"
     );
 
@@ -389,6 +392,7 @@ public enum ClientType {
                boolean supportsMultiAudioTracks,
                boolean supportsVRImmersiveMode,
                boolean requireJS,
+               boolean requireSABR,
                String friendlyName) {
         this.id = id;
         this.clientName = clientName;
@@ -404,12 +408,12 @@ public enum ClientType {
         this.supportsMultiAudioTracks = supportsMultiAudioTracks;
         this.supportsVRImmersiveMode = supportsVRImmersiveMode;
         this.requireJS = requireJS;
+        this.requireSABR = requireSABR;
         this.friendlyName = friendlyName;
 
         androidSdkVersion = null;
         buildID = null;
         packageName = null;
-        requireSABR = false;
         supportsOAuth2 = false;
         usePlayerEndpoint = true;
     }

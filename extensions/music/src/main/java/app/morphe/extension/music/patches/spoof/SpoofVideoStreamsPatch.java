@@ -13,7 +13,7 @@ public class SpoofVideoStreamsPatch {
      */
     public static void setClientOrderToUse() {
         List<ClientType> availableClients = List.of(
-                ClientType.TV,
+                ClientType.TV_SABR,
                 ClientType.ANDROID_VR_1_73,
                 ClientType.VISIONOS_1_02,
                 ClientType.ANDROID_MUSIC_NO_SDK,

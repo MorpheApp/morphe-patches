@@ -3,7 +3,7 @@ package app.morphe.extension.youtube.patches.spoof;
 import static app.morphe.extension.shared.spoof.ClientType.ANDROID_CREATOR;
 import static app.morphe.extension.shared.spoof.ClientType.ANDROID_VR_1_73;
 import static app.morphe.extension.shared.spoof.ClientType.ANDROID_VR_1_74;
-import static app.morphe.extension.shared.spoof.ClientType.TV;
+import static app.morphe.extension.shared.spoof.ClientType.TV_SABR;
 import static app.morphe.extension.shared.spoof.ClientType.VISIONOS_1_02;
 import static app.morphe.extension.shared.spoof.ClientType.VISIONOS_1_03;
 
@@ -50,7 +50,7 @@ public class SpoofVideoStreamsPatch {
         // Reels can take up to 1 minute for videos start playback.
         // Only use it if the user has selected it.
         List<ClientType> availableClients = List.of(
-                TV,
+                TV_SABR,
                 ANDROID_VR_1_73,
                 VISIONOS_1_02,
                 ANDROID_CREATOR
