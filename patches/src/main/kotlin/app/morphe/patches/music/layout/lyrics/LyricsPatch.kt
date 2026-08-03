@@ -61,8 +61,8 @@ val lyricsPatch = bytecodePatch(
             SwitchPreference("morphe_music_lyrics_enabled", summary = true),
             ListPreference("morphe_music_lyrics_source"),
             SwitchPreference("morphe_music_lyrics_tap_to_seek", summary = true),
-            SwitchPreference("morphe_music_lyrics_hide_copy_button"),
-            SwitchPreference("morphe_music_lyrics_hide_translate_button"),
+            SwitchPreference("morphe_music_lyrics_show_copy_button"),
+            SwitchPreference("morphe_music_lyrics_show_translate_button"),
             NonInteractivePreference(
                 key = "morphe_music_lyrics_text_size",
                 summaryKey = "morphe_music_lyrics_text_size_summary",

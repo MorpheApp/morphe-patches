@@ -344,8 +344,8 @@ To ensure scrobbling is synced during background playback, ensure that YouTube M
     <string name="morphe_music_lyrics_source_entry_kugou" translatable="false">KuGou</string>
     <string name="morphe_music_lyrics_tap_to_seek_title">Tap a line to seek</string>
     <string name="morphe_music_lyrics_tap_to_seek_summary">Tapping a line jumps to that moment in the song</string>
-    <string name="morphe_music_lyrics_hide_copy_button_title">Hide Copy button</string>
-    <string name="morphe_music_lyrics_hide_translate_button_title">Hide Translate button</string>
+    <string name="morphe_music_lyrics_show_copy_button_title">Show Copy button</string>
+    <string name="morphe_music_lyrics_show_translate_button_title">Show Translate button</string>
     <string name="morphe_music_lyrics_text_size_title">Text size</string>
     <string name="morphe_music_lyrics_text_size_summary">Size of the lyrics text</string>
     <string name="morphe_music_lyrics_offset_ms_title">Timing offset</string>

@@ -172,7 +172,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         buttonRow.setGravity(Gravity.CENTER);
         buttonRow.setVisibility(GONE);
 
-        if (!Settings.LYRICS_HIDE_COPY_BUTTON.get()) {
+        if (Settings.LYRICS_SHOW_COPY_BUTTON.get()) {
             TextView copyView = new TextView(context);
             applyButtonStyle(copyView, COPY_ICON);
             copyView.setText(str("morphe_music_lyrics_copy"));
@@ -182,7 +182,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                     LinearLayout.LayoutParams.WRAP_CONTENT));
         }
 
-        if (!Settings.LYRICS_HIDE_TRANSLATE_BUTTON.get()) {
+        if (Settings.LYRICS_SHOW_TRANSLATE_BUTTON.get()) {
             translateView = new TextView(context);
             applyButtonStyle(translateView, APP_TRANSLATE_ICON);
             translateView.setOnClickListener(view -> onTranslateClicked());
