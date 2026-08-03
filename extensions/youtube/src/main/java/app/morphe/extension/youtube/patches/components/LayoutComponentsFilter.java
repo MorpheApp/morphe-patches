@@ -71,10 +71,8 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup compactChannelBarInnerButton;
     private final ByteArrayFilterGroup joinMembershipButton;
     private final StringFilterGroup chipBar;
-    private final StringFilterGroup messagesSectionHeader;
-    private final ByteArrayFilterGroup messagesSectionHeaderTitleBuffer;
-    private final StringFilterGroup messagesSectionInviteCard;
-    private final ByteArrayFilterGroup messagesSectionInviteCardBuffer;
+    private final StringFilterGroup inviteToMessageCard;
+    private final ByteArrayFilterGroup inviteToMessageCardBuffer;
     private final StringFilterGroup channelProfile;
     private final StringFilterGroupList channelProfileGroupList = new StringFilterGroupList();
     private final StringFilterGroup getPremiumButton;
@@ -114,34 +112,21 @@ public final class LayoutComponentsFilter extends Filter {
                 "live_chat_ep_entrypoint.e"
         );
 
-        // The Messages section shown at the top of the Notifications tab is made of two
-        // sibling top level components: a shelf header with the section title, and a linear
-        // layout wrapping the 'Invite others to message' card.
+        // The 'Invite others to message' card of the Messages section shown at the top of
+        // the Notifications tab, wrapped in a linear layout and identified by a unique,
+        // language independent buffer string.
         //
-        // The card is identified by a unique buffer string and is language independent.
-        //
-        // Every section header of the Notifications tab ('Messages', 'Notifications', 'Today',
-        // 'This week', 'Older') uses the exact same identifier and an otherwise byte identical
-        // buffer, so the only thing that distinguishes the messages header is its title, which
-        // is localized by the server and not backed by an app string resource. Matching the
-        // title is therefore unavoidable, and everything is scoped to the Notifications tab to
-        // keep any mismatch contained to that tab.
-        messagesSectionHeader = new StringFilterGroup(
-                Settings.HIDE_MESSAGES_SECTION,
-                "shelf_header.e"
-        );
-
-        messagesSectionHeaderTitleBuffer = new ByteArrayFilterGroup(
-                null,
-                "Messages"
-        );
-
-        messagesSectionInviteCard = new StringFilterGroup(
-                Settings.HIDE_MESSAGES_SECTION,
+        // The 'Messages' shelf header above the card is deliberately not hidden: every
+        // section header of the Notifications tab ('Messages', 'Notifications', 'Today',
+        // 'This week', 'Older') uses the exact same identifier and an otherwise byte
+        // identical buffer, and the title is localized by the server without an app string
+        // resource, so there is no language independent way to match it.
+        inviteToMessageCard = new StringFilterGroup(
+                Settings.HIDE_INVITE_TO_MESSAGE_CARD,
                 "linear_layout.e"
         );
 
-        messagesSectionInviteCardBuffer = new ByteArrayFilterGroup(
+        inviteToMessageCardBuffer = new ByteArrayFilterGroup(
                 null,
                 "connections_inbox_zero_state"
         );
@@ -150,8 +135,7 @@ public final class LayoutComponentsFilter extends Filter {
                 cellDivider,
                 exploreTopicsShelf,
                 liveChatReplay,
-                messagesSectionHeader,
-                messagesSectionInviteCard
+                inviteToMessageCard
         );
 
         // Paths.
@@ -521,16 +505,13 @@ public final class LayoutComponentsFilter extends Filter {
                     == NavigationBar.NavigationButton.LIBRARY;
         }
 
-        if (matchedGroup == messagesSectionHeader || matchedGroup == messagesSectionInviteCard) {
-            // Both identifiers are generic and used all over the app.
+        if (matchedGroup == inviteToMessageCard) {
+            // The identifier is generic and used all over the app.
             if (contentIndex != 0) {
                 return false;
             }
 
-            final ByteArrayFilterGroup bufferGroup = (matchedGroup == messagesSectionInviteCard)
-                    ? messagesSectionInviteCardBuffer
-                    : messagesSectionHeaderTitleBuffer;
-            if (!bufferGroup.check(buffer).isFiltered()) {
+            if (!inviteToMessageCardBuffer.check(buffer).isFiltered()) {
                 return false;
             }
 
