@@ -33,8 +33,7 @@ import java.util.concurrent.TimeoutException;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.PlayerResponse;
-import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.StreamingData;
+import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.*;
 import app.morphe.extension.shared.innertube.ReelItemWatchResponseOuterClass.ReelItemWatchResponse;
 import app.morphe.extension.shared.oauth2.requests.OAuth2Requester;
 import app.morphe.extension.shared.settings.BaseSettings;
@@ -309,15 +308,23 @@ public class StreamingDataRequest {
             }
 
             byte[] streamingDataBuffer = responseBuilder.build().toByteArray();
-            byte[] playerConfig = null;
+            byte[] playerConfigBuffer = null;
 
             if (clientType.requireSABR && playerResponse.hasPlayerConfig()) {
-                playerConfig = playerResponse.getPlayerConfig().toByteArray();
+                PlayerConfig playerConfig = playerResponse.getPlayerConfig();
+
+                // It seems there is an issue when 'usePlatypus = true' when forcing the AVC codec.
+                // Override the 'usePlatypus' to false.
+                PlayerConfig.Builder playerConfigBuilder = playerConfig.toBuilder();
+                MediaCommonConfig.Builder mediaCommonConfigBuilder = playerConfigBuilder.getMediaCommonConfig().toBuilder();
+                mediaCommonConfigBuilder.setUsePlatypus(false);
+                playerConfigBuilder.setMediaCommonConfig(mediaCommonConfigBuilder);
+                playerConfigBuffer = playerConfigBuilder.build().toByteArray();
             }
 
-            return new StreamData(streamingDataBuffer, playerConfig);
+            return new StreamData(streamingDataBuffer, playerConfigBuffer);
         } catch (IOException ex) {
-            Logger.printException(() -> "Failed to write player response for video stream or details", ex);
+            Logger.printException(() -> "Failed to write player response for video stream", ex);
             return null;
         }
     }
@@ -345,7 +352,6 @@ public class StreamingDataRequest {
             final boolean showErrorToast = (++i == clientOrderToUse.length) || debugEnabled;
 
             HttpURLConnection connection = send(clientType, videoId, playerHeaders, showErrorToast);
-            Logger.printDebug(() -> "Connection result: " + connection);
             if (connection != null) {
                 StreamData playerResponseBuffers = buildPlayerResponseBuffer(clientType, connection);
 
@@ -394,16 +400,16 @@ public class StreamingDataRequest {
             }
             return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
         } catch (TimeoutException ex) {
-            Logger.printInfo(() -> "getStreamDetails timed out", ex);
+            Logger.printInfo(() -> "getStream timed out", ex);
             future.cancel(true);
         } catch (CancellationException ex) {
-            Logger.printInfo(() -> "getStreamDetails was previously cancelled");
+            Logger.printInfo(() -> "getStream was previously cancelled");
         } catch (InterruptedException ex) {
-            Logger.printException(() -> "getStreamDetails interrupted", ex);
+            Logger.printException(() -> "getStream interrupted", ex);
             future.cancel(true);
             Thread.currentThread().interrupt(); // Restore interrupt status flag.
         } catch (ExecutionException ex) {
-            Logger.printException(() -> "getStreamDetails failure", ex);
+            Logger.printException(() -> "getStream failure", ex);
         }
 
         return null;

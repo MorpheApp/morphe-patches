@@ -25,6 +25,8 @@ import app.morphe.patches.youtube.shared.VideoStreamingDataToStringFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
+internal const val FIXED_RESOLUTION_STRING = ", initialPlaybackVideoQualityFixedResolution="
+
 internal object NewAdvancedQualityMenuStyleFlyout : Fingerprint(
     filters = listOf(
         literal(45712556)
@@ -74,7 +76,11 @@ internal object HidePremiumVideoQualityGetArrayFingerprint : Fingerprint(
     }
 )
 
-internal const val FIXED_RESOLUTION_STRING = ", initialPlaybackVideoQualityFixedResolution="
+internal object InitialVideoQualityFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45624008L)
+    )
+)
 
 internal object PlaybackStartParametersToStringFingerprint : Fingerprint(
     name = "toString",

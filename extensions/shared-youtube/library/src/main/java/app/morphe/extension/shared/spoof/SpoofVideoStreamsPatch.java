@@ -260,7 +260,7 @@ public class SpoofVideoStreamsPatch {
             try {
                 Uri uri = Uri.parse(url);
                 String path = uri.getPath();
-                if (path == null) {
+                if (path == null || !path.contains("player")) {
                     return;
                 }
 
@@ -268,8 +268,7 @@ public class SpoofVideoStreamsPatch {
                 // 'heartbeat' has no video and appears to be only after playback has started.
                 // 'refresh' has no video ID and appears to happen when waiting for a livestream to start.
                 // 'ad_break' has no video ID.
-                if (!path.contains("player") ||
-                        path.contains("get_drm_license") ||
+                if (path.contains("get_drm_license") ||
                         path.contains("heartbeat") ||
                         path.contains("refresh") ||
                         path.contains("ad_break")) {

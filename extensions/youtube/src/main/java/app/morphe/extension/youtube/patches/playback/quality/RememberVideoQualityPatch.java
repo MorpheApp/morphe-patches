@@ -32,6 +32,9 @@ public class RememberVideoQualityPatch {
     private static final IntegerSetting shortsQualityWifi = Settings.SHORTS_QUALITY_DEFAULT_WIFI;
     private static final IntegerSetting shortsQualityMobile = Settings.SHORTS_QUALITY_DEFAULT_MOBILE;
 
+    // Set the access modifier to final to override the flag only after the state snapshot is reloaded.
+    private static final boolean SETTINGS_INITIALIZED = Settings.SETTINGS_INITIALIZED.get();
+
     public static boolean shouldRememberVideoQuality() {
         BooleanSetting preference = ShortsPlayerState.isOpen()
                 ? Settings.REMEMBER_SHORTS_QUALITY_LAST_SELECTED
@@ -148,11 +151,10 @@ public class RememberVideoQualityPatch {
     /**
      * Injection point.
      */
-    public static boolean overrideBufferingVideoQualityFlag(boolean originalValue) {
-        if ((Settings.VIDEO_QUALITY_DEFAULT_WIFI.get() != VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE ||
-                Settings.VIDEO_QUALITY_DEFAULT_MOBILE.get() != VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE) && originalValue) {
-            Logger.printDebug(() -> "overrideBufferingVideoQualityFlag new value: " + false);
-            return false;
+    public static boolean overrideInitialVideoQualityFlag(boolean originalValue) {
+        if (SETTINGS_INITIALIZED && getDefaultQualityResolution() != VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE) {
+            Logger.printDebug(() -> "Override initial video quality flag to TRUE");
+            return true;
         }
         return originalValue;
     }

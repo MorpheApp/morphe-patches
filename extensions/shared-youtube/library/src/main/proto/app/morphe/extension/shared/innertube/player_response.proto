@@ -6,14 +6,14 @@ option optimize_for = LITE_RUNTIME;
 option java_package = "app.morphe.extension.shared.innertube";
 
 message PlayerResponse {
-  PlayabilityStatus playability_status = 2;
-  optional StreamingData streaming_data = 4;
-  optional PlayerConfig player_config = 15;
+  optional PlayabilityStatus playabilityStatus = 2;
+  optional StreamingData streamingData = 4;
+  optional PlayerConfig playerConfig = 15;
 }
 
 message PlayabilityStatus {
-  Status status = 1;
-  string reason = 2;
+  optional Status status = 1;
+  optional string reason = 2;
 }
 
 enum Status {
@@ -30,14 +30,14 @@ enum Status {
 }
 
 message StreamingData {
-    repeated Format formats = 2;
-    repeated Format adaptiveFormats = 3;
-    string serverAbrStreamingUrl = 15;
+  repeated Format formats = 2;
+  repeated Format adaptiveFormats = 3;
+  optional string serverAbrStreamingUrl = 15;
 }
 
 message Format {
-    string url = 2;
-    string signatureCipher = 48;
+  optional string url = 2;
+  optional string signatureCipher = 48;
 }
 
 message PlayerConfig {
@@ -45,4 +45,85 @@ message PlayerConfig {
 }
 
 message MediaCommonConfig {
+  optional DynamicReadaheadConfig dynamicReadaheadConfig = 1;
+  optional MediaUstreamerRequestConfig mediaUstreamerRequestConfig = 2;
+  optional PredictedReadaheadConfig predictedReadaheadConfig = 4;
+  optional MediaFetchRetryConfig mediaFetchRetryConfig = 6;
+  optional int32 mediaFetchMaximumServerErrors = 7;
+  optional int32 mediaFetchMaximumNetworkErrors = 8;
+  optional int32 mediaFetchMaximumErrors = 9;
+  optional ServerReadaheadConfig serverReadaheadConfig = 10;
+  optional bool useServerDrivenAbr = 13;
+  optional SABRClientConfig sabrClientConfig = 14;
+  optional ServerPlaybackStartConfig serverPlaybackStartConfig = 15;
+  optional bool usePlatypus = 18;
+  optional MediaCacheConfig mediaCacheConfig = 22;
+  optional bool fixLivePlaybackModelDefaultPosition = 28;
+}
+
+message DynamicReadaheadConfig {
+  optional int64 maxReadAheadMediaTimeMs = 1;
+  optional int64 minReadAheadMediaTimeMs = 2;
+  optional int64 readAheadGrowthRateMs = 3;
+  optional float readAheadWatermarkMarginRatio = 4;
+  optional int64 minReadAheadWatermarkMarginMs = 5;
+  optional int64 maxReadAheadWatermarkMarginMs = 6;
+  optional bool shouldIncorporateNetworkActiveState = 7;
+}
+
+message MediaUstreamerRequestConfig {
+  optional bool enableVideoPlaybackRequest = 2;
+  optional bool videoPlaybackUseUmp = 3;
+  optional bytes videoPlaybackUstreamerConfig = 4;
+  optional bool videoPlaybackPostEmptyBody = 5;
+  optional bool isVideoPlaybackRequestIdempotent = 6;
+}
+
+message PredictedReadaheadConfig {
+  optional int64 minReadaheadMs = 3;
+  optional int64 maxReadaheadMs = 4;
+}
+
+message MediaFetchRetryConfig {
+  optional int64 initialDelayMs = 1;
+  optional float backoffFactor = 2;
+  optional int64 maximumDelayMs = 3;
+  optional float jitterFactor = 4;
+}
+
+message ServerReadaheadConfig {
+  optional NextRequestPolicy nextRequestPolicy = 2;
+}
+
+message NextRequestPolicy {
+  optional int64 targetAudioReadaheadMs = 1;
+  optional int64 targetVideoReadaheadMs = 2;
+}
+
+message SABRClientConfig {
+  optional int64 defaultBackOffTimeMs = 1;
+  optional bool enableHostFallback = 2;
+  optional int64 primaryProbingDelayMs = 3;
+  optional int32 maxFailureAttemptsBeforeFallback = 4;
+}
+
+message ServerPlaybackStartConfig {
+  optional bool enable = 1;
+  optional PlaybackStartPolicy playbackStartPolicy = 2;
+}
+
+message PlaybackStartPolicy {
+  optional StartMinReadaheadPolicy startMinReadaheadPolicy = 1;
+}
+
+message StartMinReadaheadPolicy {
+  optional int64 minReadaheadMs = 2;
+}
+
+message MediaCacheConfig {
+  optional CacheLoadPolicy cacheLoadPolicy = 1;
+}
+
+message CacheLoadPolicy {
+  optional int64 readaheadThresholdMs = 1;
 }
