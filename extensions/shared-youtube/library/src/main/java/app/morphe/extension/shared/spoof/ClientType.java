@@ -168,6 +168,30 @@ public enum ClientType {
             "TV"
     ),
     /**
+     * Video not playable: None.
+     * AV1 codec available.
+     */
+    TV_SIMPLY(
+            75,
+            "TVHTML5_SIMPLY",
+            TV_SABR.deviceMake,
+            TV_SABR.deviceModel,
+            TV_SABR.osName,
+            TV_SABR.osVersion,
+            "1.1",
+            TV_SABR.clientPlatform,
+            TV_SABR.userAgent,
+            true,
+            // This client requires a PoToken for logout.
+            // Use as a login-only client.
+            true,
+            TV_SABR.supportsMultiAudioTracks,
+            TV_SABR.supportsVRImmersiveMode,
+            TV_SABR.requireJS,
+            false,
+            "TV Simply"
+    ),
+    /**
      * Video not playable: Kids, Paid, Movie, Private, Age-restricted.
      * AV1 codec available.
      * May stop working at any time.
