@@ -61,7 +61,7 @@ public class OAuth2Requester {
      * Available values are [UNKNOWN], [QUEST1], [QUEST2], [QUEST_PRO],
      * [MOOHAN], [PICO4], [QUEST3], [QUEST3S], [PICO4_ULTRA], and [ANDROID_XR].
      */
-    private static final String DEVICE_MODEL = "QUEST1";
+    private static final String DEVICE_MODEL = "PICO4";
 
     /**
      * Access token scope.

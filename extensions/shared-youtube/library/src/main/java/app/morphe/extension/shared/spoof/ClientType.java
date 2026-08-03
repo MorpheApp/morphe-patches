@@ -18,7 +18,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.Locale;
-import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
 
@@ -69,20 +68,19 @@ public enum ClientType {
     ),
     /**
      * Video not playable: Kids.
-     * AV1 codec available.
+     * AV1 codec not available.
      */
-    // https://dumps.tadiphone.dev/dumps/oculus/eureka
-    ANDROID_VR_1_74(
+    ANDROID_VR(
             28,
             "ANDROID_VR",
-            "com.google.android.apps.youtube.vr.oculus",
-            "Oculus",
-            "Quest 3",
+            "com.google.android.apps.youtube.vr.pico",
+            "Pico",
+            "A8110", // PICO 4.
             "Android",
-            "14",
-            "34",
-            "UP1A.231005.007.A1",
-            "1.74.19",
+            "10",
+            "29",
+            "5.13.7",
+            "1.73.21",
             null,
             false,
             false,
@@ -91,33 +89,32 @@ public enum ClientType {
             true,
             true,
             true,
-            "Android VR 1.74"
+            "Android VR"
     ),
     /**
      * Video not playable: Kids.
-     * AV1 codec not available.
+     * AV1 codec available.
      */
-    // https://dumps.tadiphone.dev/dumps/oculus/monterey
-    ANDROID_VR_1_73(
-            ANDROID_VR_1_74.id,
-            ANDROID_VR_1_74.clientName,
-            Objects.requireNonNull(ANDROID_VR_1_74.packageName),
-            ANDROID_VR_1_74.deviceMake,
-            "Quest",
-            ANDROID_VR_1_74.osName,
-            "10",
-            "29",
-            "QQ3A.200805.001",
-            "1.73.24",
-            ANDROID_VR_1_74.clientPlatform,
-            ANDROID_VR_1_74.canLogin,
-            ANDROID_VR_1_74.requireLogin,
-            ANDROID_VR_1_74.supportsMultiAudioTracks,
-            ANDROID_VR_1_74.supportsOAuth2,
-            ANDROID_VR_1_74.supportsVRImmersiveMode,
-            ANDROID_VR_1_74.requireSABR,
-            ANDROID_VR_1_74.usePlayerEndpoint,
-            "Android VR 1.73"
+    ANDROID_XR(
+            28,
+            "ANDROID_VR",
+            "com.google.android.apps.youtube.xr",
+            "Samsung",
+            "SM-I610", // Galaxy XR.
+            "Android",
+            "14",
+            "34",
+            "UML1.250710.002.A1",
+            "1.73.21",
+            null,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            "Android XR"
     ),
     /**
      * Video not playable: Livestream.
