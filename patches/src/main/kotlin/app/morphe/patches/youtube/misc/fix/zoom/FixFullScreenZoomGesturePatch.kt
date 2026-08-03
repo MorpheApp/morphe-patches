@@ -11,6 +11,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.playservice.is_20_40_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
@@ -27,20 +28,22 @@ internal val fixFullScreenZoomGesturePatch = bytecodePatch(
     )
 
     execute {
-        FullscreenGestureZoomFingerprint.apply {
-            method.apply {
-                val instructionIndex = instructionMatches[8].index
-                val instructionRegister = getInstruction<OneRegisterInstruction>(
-                    instructionIndex
-                ).registerA
+        if (is_20_40_or_greater) {
+            FullscreenGestureZoomFingerprint.apply {
+                method.apply {
+                    val instructionIndex = instructionMatches[9].index
+                    val instructionRegister = getInstruction<OneRegisterInstruction>(
+                        instructionIndex
+                    ).registerA
 
-                addInstructions(
-                    instructionIndex + 1,
-                    """
-                        invoke-static { v$instructionRegister }, $EXTENSION_CLASS->disableBrokenZoomFlag(Z)Z
-                        move-result v$instructionRegister
-                    """
-                )
+                    addInstructions(
+                        instructionIndex + 1,
+                        """
+                            invoke-static { v$instructionRegister }, $EXTENSION_CLASS->disableBrokenZoomFlag(Z)Z
+                            move-result v$instructionRegister
+                        """
+                    )
+                }
             }
         }
     }
