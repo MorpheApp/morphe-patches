@@ -116,8 +116,6 @@ Perubahan termasuk:
   <string name="morphe_copy_video_link_button_title">Tunjukkan butang \'Salin pautan video\'</string>
   <string name="morphe_copy_video_link_button_summary">Ketik untuk menyalin pautan video, ketik dan tahan untuk menyalin dengan cap masa</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">Membalikkan tindakan ketik serta ketik dan tahan bagi butang \'Salin pautan video\'</string>
-  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_summary">Ini tidak akan memirau sekatan umur dan hanya menerimanya secara automatik</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsPatch -->
@@ -274,6 +272,7 @@ Tataletak automotif
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <!-- layout.shortsautoplay.shortsAutoplayPatch -->
+  <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_opacity_summary">Melaraskan tahap kelutsinaran (0 ialah lut sinar, 100 ialah legap)</string>
   <!-- layout.theme.themePatch -->

@@ -201,6 +201,7 @@ Perubahan termasuk:
   <string name="morphe_hide_fashion_menu_title">Sembunyikan menu \'Fashion &amp; Kecantikan\'</string>
   <string name="morphe_hide_gaming_menu_title">Sembunyikan menu Game</string>
   <string name="morphe_hide_hype_menu_title">Sembunyikan menu Beri hype</string>
+  <string name="morphe_hide_learning_menu_title">Sembunyikan menu Pembelajaran</string>
   <string name="morphe_hide_live_menu_title">Sembunyikan menu Live</string>
   <string name="morphe_hide_memberships_menu_title">Sembunyikan menu Pelanggan</string>
   <string name="morphe_hide_movies_menu_title">Sembunyikan menu Film</string>
@@ -215,7 +216,8 @@ Perubahan termasuk:
   <string name="morphe_hide_youtube_music_menu_title">Sembunyikan menu YouTube Music</string>
   <string name="morphe_hide_youtube_kids_menu_title">Sembunyikan menu YouTube Kids</string>
   <string name="morphe_hide_youtube_create_menu_title">Sembunyikan menu YouTube Create</string>
-  <string name="morphe_hide_privacy_tos_footer_title">Sembunyikan bagian bawah \'Kebijakan Privasi • Persyaratan Layanan\'</string>
+  <string name="morphe_hide_youtube_works_menu_title">Sembunyikan menu \'Cara YouTube bekerja\'</string>
+  <string name="morphe_hide_privacy_tos_footer_title">Sembunyikan footer hukum dan privasi</string>
   <string name="morphe_comments_screen_title">Komentar</string>
   <string name="morphe_comments_screen_summary">Pilih komponen mana yang akan ditampilkan di bagian komentar</string>
   <string name="morphe_hide_comments_carousel_title">Aktifkan penyaring komentar yang berputar</string>
@@ -326,9 +328,6 @@ Ketuk di sini untuk membuka AiSlopList.com dan melihat unduhan untuk platform la
   <string name="morphe_copy_video_link_button_summary">Ketuk untuk menyalin tautan video, ketuk dan tahan untuk menyalin dengan stempel waktu</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">Salin stempel waktu secara bawaan</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">Membalikkan tindakan ketuk dan ketuk-dan-tahan untuk tombol \'Salin tautan video\'</string>
-  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">Hapus dialog pembatasan penonton</string>
-  <string name="morphe_remove_viewer_discretion_dialog_summary">Ini tidak mengabaikan batasan usia. Ini hanya menerimanya secara otomatis</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Nonaktifkan pesan timbul \'Masuk ke TV\'</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -928,6 +927,11 @@ Batasan: Jika 'Kembalikan bilah tindakan video lama' dinonaktifkan, hamparan 'Vi
   <string name="morphe_shorts_autoplay_summary">Maju ke Short berikutnya secara otomatis daripada mengulang yang saat ini</string>
   <string name="morphe_shorts_autoplay_background_title">Putar otomatis di latar belakang</string>
   <string name="morphe_shorts_autoplay_background_summary">Beralih ke Short berikutnya secara otomatis saat pemutaran di latar belakang</string>
+  <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+  <string name="morphe_playback_in_feeds_title">Pemutaran di feed</string>
+  <string name="morphe_playback_in_feeds_entry_always_on">Selalu aktif</string>
+  <string name="morphe_playback_in_feeds_entry_wifi_only">Wi-Fi saja</string>
+  <string name="morphe_playback_in_feeds_entry_off">Nonaktif</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Nonaktifkan melanjutkan pemutar mini</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Menonaktifkan pemutar mini \'Lanjutkan menonton\', fitur YouTube Premium yang muncul saat aplikasi dimulai</string>

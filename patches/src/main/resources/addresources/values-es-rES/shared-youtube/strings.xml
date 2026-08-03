@@ -161,6 +161,9 @@ Sin embargo, si activas esto, también se registrarán algunos datos del usuario
   <string name="morphe_settings_menu_filter_screen_title">Filtro del menú de configuración</string>
   <string name="morphe_settings_menu_filter_screen_summary">Ocultar elementos en la pantalla de configuración de la aplicación estándar por su nombre visible</string>
   <string name="morphe_settings_menu_filter_picker_empty">Abrir la pantalla de configuración de la aplicación estándar una vez para completar la lista</string>
+  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
+  <string name="morphe_remove_viewer_discretion_dialog_title">Eliminar diálogo de discreción del espectador</string>
+  <string name="morphe_remove_viewer_discretion_dialog_summary">Esto no omite la restricción de edad. Simplemente la acepta automáticamente</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Falsificar versión de la app</string>
   <string name="morphe_spoof_app_version_summary">Engaña al servidor para que crea que estás usando una versión anterior de la aplicación, restaurando así funciones de la interfaz antigua</string>

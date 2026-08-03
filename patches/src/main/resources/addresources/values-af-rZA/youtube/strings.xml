@@ -202,6 +202,7 @@ Veranderings sluit in:
   <string name="morphe_hide_fashion_menu_title">Verberg \'Mode &amp; Skoonheid\' menu</string>
   <string name="morphe_hide_gaming_menu_title">Verberg Speletjies-menu</string>
   <string name="morphe_hide_hype_menu_title">Verberg Hype-menu</string>
+  <string name="morphe_hide_learning_menu_title">Versteek Leermenu</string>
   <string name="morphe_hide_live_menu_title">Verberg Regstreekse-menu</string>
   <string name="morphe_hide_memberships_menu_title">Verberg Lidmaatskap-menu</string>
   <string name="morphe_hide_movies_menu_title">Verberg Rolprente-menu</string>
@@ -216,7 +217,8 @@ Veranderings sluit in:
   <string name="morphe_hide_youtube_music_menu_title">Verberg YouTube Music-menu</string>
   <string name="morphe_hide_youtube_kids_menu_title">Verberg YouTube Kids-menu</string>
   <string name="morphe_hide_youtube_create_menu_title">Verberg YouTube Create-menu</string>
-  <string name="morphe_hide_privacy_tos_footer_title">Verberg \'Privaatheidsbeleid • Dienstevoorwaardes\' voetnoot</string>
+  <string name="morphe_hide_youtube_works_menu_title">Versteek \'Hoe YouTube werk\' menu</string>
+  <string name="morphe_hide_privacy_tos_footer_title">Versteek regskennisgewings en priva sievoetnota</string>
   <string name="morphe_comments_screen_title">Kommentare</string>
   <string name="morphe_comments_screen_summary">Kies watter komponente in die kommentaar afdeling verskyn</string>
   <string name="morphe_hide_comments_carousel_title">Aktiveer kommentaar draaibaar filter</string>
@@ -327,9 +329,6 @@ Tik hier om AiSlopList.com oop te maak en laai aflaai vir ander platforms"</stri
   <string name="morphe_copy_video_link_button_summary">Tik om die video skakel te kopieer, tik en hou vas om met tydstempel te kopieer</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">Kopieer tydstempel verstek</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">Keer die tik- en tik-en-hou-aksies van die \'Kopieer video skakel\'-knoppie om</string>
-  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">Verwyder kyker diskresie dialoog</string>
-  <string name="morphe_remove_viewer_discretion_dialog_summary">Dit omseil nie die ouderdomsbeperking nie. Dit aanvaar dit net outomaties</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Deaktiveer \'Aanmeld by TV\'-pop-up</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -929,6 +928,11 @@ Beperking: Indien 'Herstel ou video-aksiebalk' afgeskakel is, mag die 'Meer vide
   <string name="morphe_shorts_autoplay_summary">Gaan outomaties voort na die volgende Short in plaas daarvan om die huidige te herhaal</string>
   <string name="morphe_shorts_autoplay_background_title">Outoplay in agtergrond</string>
   <string name="morphe_shorts_autoplay_background_summary">Gaan outomaties voort na die volgende Short tydens agtergrondweergawe</string>
+  <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+  <string name="morphe_playback_in_feeds_title">Weergawe in feeds</string>
+  <string name="morphe_playback_in_feeds_entry_always_on">Altyd aan</string>
+  <string name="morphe_playback_in_feeds_entry_wifi_only">Slegs Wi-Fi</string>
+  <string name="morphe_playback_in_feeds_entry_off">Af</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Deaktiveer hervatting van mini-speler</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Deaktiveer die \'Gaan voort om te kyk\' minispeler, \'n YouTube Premium-funksie wat op app-opstart verskyn</string>

@@ -34,7 +34,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_feed_title">피드</string>
   <string name="morphe_settings_music_screen_3_general_title">일반</string>
   <string name="morphe_settings_music_screen_4_player_title">플레이어</string>
-  <string name="morphe_settings_music_screen_8_misc_title">기타</string>
+  <string name="morphe_settings_music_screen_5_lyrics_title">가사</string>
+  <string name="morphe_settings_music_screen_9_misc_title">기타</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Music Premium 가입 라벨 숨기기</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Music Premium 프로모션 숨기기</string>
@@ -53,7 +54,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_repeat_button_title">반복 버튼 숨기기</string>
   <string name="morphe_music_hide_shuffle_button_title">셔플 버튼 숨기기</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">빠른 선곡 선반 숨기기</string>
-  <string name="morphe_music_hide_suggested_for_you_shelf_title">추천 선반 숨기기</string>
   <string name="morphe_music_comments_screen_title">댓글</string>
   <string name="morphe_music_comments_screen_summary">댓글 섹션에 표시할 구성 요소를 선택하세요</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">커뮤니티 가이드라인 숨기기</string>
@@ -178,7 +178,7 @@ YouTube Music 8.x에서는 크로스페이드가 작동하지 않습니다. 크�
   <string name="morphe_music_hide_flyout_menu_pin_to_speed_dial_title">\'빠른 선곡에 고정\' 메뉴 숨기기</string>
   <string name="morphe_music_hide_flyout_menu_play_next_title">\'다음에 재생\' 메뉴 숨기기</string>
   <string name="morphe_music_hide_flyout_menu_quality_title">\'품질\' 메뉴 숨기기</string>
-  <string name="morphe_music_hide_flyout_menu_remove_from_library_title">\'보관함에서 삭제\' 메뉴 제거</string>
+  <string name="morphe_music_hide_flyout_menu_remove_from_library_title">\'보관함에서 삭제\' 메뉴 숨기기</string>
   <string name="morphe_music_hide_flyout_menu_remove_from_playlist_title">\'재생목록에서 삭제\' 메뉴 숨기기</string>
   <string name="morphe_music_hide_flyout_menu_report_title">\'신고\' 메뉴 숨기기</string>
   <string name="morphe_music_hide_flyout_menu_save_episode_for_later_save_to_library_title">\'나중에 볼 에피소드 저장\' / \'재생목록에 저장\' 메뉴 숨기기</string>
@@ -248,11 +248,11 @@ YouTube Music 8.x에서는 크로스페이드가 작동하지 않습니다. 크�
   <!-- 'scrobble' must be kept untranslated -->
   <string name="morphe_music_scrobbling_delay_percent_title">스크로블 지연 비율</string>
   <!-- 'scrobble' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_delay_percent_summary">노래를 이 비율이상 재생하면 스크로블됩니다</string>
+  <string name="morphe_music_scrobbling_delay_percent_summary">노래를 이 비율 이상 재생하면 스크로블됩니다</string>
   <!-- 'scrobble' must be kept untranslated -->
   <string name="morphe_music_scrobbling_delay_seconds_title">스크로블 지연 시간 (초)</string>
   <!-- 'scrobble' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_delay_seconds_summary">노래를 이 시간이상 재생하면 스크로블됩니다</string>
+  <string name="morphe_music_scrobbling_delay_seconds_summary">노래를 이 시간 이상 재생하면 스크로블됩니다</string>
   <string name="morphe_music_listenbrainz_token_title">ListenBrainz 계정</string>
   <string name="morphe_music_listenbrainz_token_summary_logged_in">로그인되어 있습니다. 계정을 관리하려면 탭하세요</string>
   <!-- 'scrobbling' must be kept untranslated -->
@@ -296,10 +296,39 @@ YouTube Music 8.x에서는 크로스페이드가 작동하지 않습니다. 크�
   <string name="morphe_music_scrobbling_about_summary">"스크로블링은 YouTube Music의 사용 기록을 Last.fm 또는 ListenBrainz 프로필과 자동으로 동기화합니다
 
 백그라운드 재생 중에도 스크로블링이 동기화되도록 하려면 YouTube Music의 앱 배터리 사용 설정을 '제한 없음'으로 설정하세요"</string>
+  <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_enabled_title">서드파티 가사 사용하기</string>
+  <string name="morphe_music_lyrics_enabled_summary">서드파티 서비스의 가사를 표시합니다. 가사를 찾을 수 없는 경우에는 내장된 가사를 대신 표시합니다</string>
+  <string name="morphe_music_lyrics_source_title">가사 서비스</string>
+  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
+  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, 그 다음 KuGou</string>
+  <string name="morphe_music_lyrics_tap_to_seek_title">가사를 탭하여 구간 이동하기</string>
+  <string name="morphe_music_lyrics_tap_to_seek_summary">가사의 한 줄을 탭하면 노래의 해당 부분으로 바로 이동합니다</string>
+  <string name="morphe_music_lyrics_copy_button_title">가사 복사 버튼 표시하기</string>
+  <string name="morphe_music_lyrics_translate_button_title">가사 번역 버튼 표시하기</string>
+  <string name="morphe_music_lyrics_text_size_title">텍스트 크기</string>
+  <string name="morphe_music_lyrics_text_size_summary">가사 텍스트 크기</string>
+  <string name="morphe_music_lyrics_offset_ms_title">타이밍 오프셋</string>
+  <string name="morphe_music_lyrics_offset_ms_summary">동기화된 가사의 타이밍을 앞이나 뒤로 조정합니다. 가사가 노래보다 먼저 표시되면 양수 값을 입력하세요</string>
+  <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
+  <string name="morphe_music_lyrics_source_label">출처: %s</string>
+  <!-- Tappable label under the lyrics that turns the translation on. -->
+  <string name="morphe_music_lyrics_translate_show">번역</string>
+  <string name="morphe_music_lyrics_translate_hide">원본 보기</string>
+  <string name="morphe_music_lyrics_translating">번역하는 중…</string>
+  <string name="morphe_music_lyrics_translate_failed">가사를 번역할 수 없습니다</string>
+  <string name="morphe_music_lyrics_copy">복사</string>
+  <string name="morphe_music_lyrics_copied">클립보드에 복사하였습니다</string>
+  <string name="morphe_music_lyrics_about_title">서드파티 가사에 대한 정보</string>
+  <string name="morphe_music_lyrics_about_summary">"가사는 곡 제목과 아티스트 정보를 기준으로 검색됩니다. 메타데이터가 비정상적이거나 정확하지 않으면 가사를 찾지 못하거나 잘못된 가사가 표시될 수 있습니다
+
+동기화된 가사는 재생에 맞춰 표시됩니다. 타이밍이 어긋나면 타이밍 오프셋을 조정하세요
+
+서드파티 가사를 찾을 수 없는 경우에는 내장된 가사가 대신 표시됩니다"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - 이전 구성요소 패널로 복원합니다</string>
   <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - 실시간 가사를 비활성화합니다</string>
   <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - 이전 동적 가사로 복원합니다</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - 이전 작업 버튼 바로 복원합니다</string>
+  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - 이전 작업 버튼 바를 복원합니다</string>
   <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - 홈 피드에서 댓글 섹션이 표시되지 않습니다</string>
 </resources>

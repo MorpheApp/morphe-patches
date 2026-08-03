@@ -202,6 +202,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_fashion_menu_title">Απόκρυψη μενού \"Μόδα &amp; ομορφιά\"</string>
   <string name="morphe_hide_gaming_menu_title">Απόκρυψη μενού \"Gaming\"</string>
   <string name="morphe_hide_hype_menu_title">Απόκρυψη μενού \"Hype\"</string>
+  <string name="morphe_hide_learning_menu_title">Απόκρυψη μενού Εκμάθησης</string>
   <string name="morphe_hide_live_menu_title">Απόκρυψη μενού \"Live\"</string>
   <string name="morphe_hide_memberships_menu_title">Απόκρυψη μενού \"Συνδρομές\"</string>
   <string name="morphe_hide_movies_menu_title">Απόκρυψη μενού \"Ταινίες\"</string>
@@ -216,7 +217,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_youtube_music_menu_title">Απόκρυψη μενού \"YouTube Music\"</string>
   <string name="morphe_hide_youtube_kids_menu_title">Απόκρυψη μενού \"YouTube Kids\"</string>
   <string name="morphe_hide_youtube_create_menu_title">Απόκρυψη μενού \"YouTube Create\"</string>
-  <string name="morphe_hide_privacy_tos_footer_title">Απόκρυψη υποσέλιδου \"Πολιτική απορρήτου • Όροι παροχής υπηρεσιών\"</string>
+  <string name="morphe_hide_youtube_works_menu_title">Απόκρυψη μενού \"Πώς λειτουργεί το YouTube\"</string>
+  <string name="morphe_hide_privacy_tos_footer_title">Απόκρυψη υποσέλιδων με νομικές πληροφορίες και απορρήτου</string>
   <string name="morphe_comments_screen_title">Σχόλια</string>
   <string name="morphe_comments_screen_summary">Επιλέξτε ποια στοιχεία εμφανίζονται στην καρουσέλα σχολίων</string>
   <string name="morphe_hide_comments_carousel_title">Ενεργοποίηση φίλτρου περιφοράς σχολίων</string>
@@ -327,9 +329,6 @@ Second \"item\" text"</string>
   <string name="morphe_copy_video_link_button_summary">Πατήστε για να αντιγράψετε τον σύνδεσμο του βίντεο, πατήστε και κρατήστε πατημένο για να αντιγράψετε με χρονική σήμανση</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">Αντιγράφει τη χρονική σήμανση από προεπιλογή</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">Αντιστρέφει τις ενέργειες πατήματος και πατήματος-κρατήματος του κουμπιού \'Αντιγραφή συνδέσμου βίντεο\'</string>
-  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">Παράθυρο ηλικιακού περιορισμού</string>
-  <string name="morphe_remove_viewer_discretion_dialog_summary">Αυτό δεν παρακάμπτει τον ηλικιακό περιορισμό. Απλώς τον αποδέχεται αυτόματα</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Απενεργοποίηση αναδυόμενου παραθύρου σύνδεσης στην τηλεόραση</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -929,6 +928,11 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_summary">Προχωρά αυτόματα στο επόμενο Short αντί να επαναλαμβάνει το τρέχον</string>
   <string name="morphe_shorts_autoplay_background_title">Αυτόματη αναπαραγωγή στο παρασκήνιο</string>
   <string name="morphe_shorts_autoplay_background_summary">Προχωρά αυτόματα στο επόμενο Short κατά την αναπαραγωγή στο παρασκήνιο</string>
+  <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+  <string name="morphe_playback_in_feeds_title">Αναπαραγωγή στις ροές</string>
+  <string name="morphe_playback_in_feeds_entry_always_on">Πάντα ενεργό</string>
+  <string name="morphe_playback_in_feeds_entry_wifi_only">Μόνο Wi-Fi</string>
+  <string name="morphe_playback_in_feeds_entry_off">Απενεργό</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Απενεργοποίηση συνέχισης του miniplayer</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Απενεργοποιεί το μίνι player \"Συνέχιση παρακολούθησης\", μια λειτουργία YouTube Premium που εμφανίζεται κατά την εκκίνηση της εφαρμογής</string>

@@ -34,7 +34,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_feed_title">Flux</string>
   <string name="morphe_settings_music_screen_3_general_title">Général</string>
   <string name="morphe_settings_music_screen_4_player_title">Lecteur</string>
-  <string name="morphe_settings_music_screen_8_misc_title">Divers</string>
+  <string name="morphe_settings_music_screen_5_lyrics_title">Paroles</string>
+  <string name="morphe_settings_music_screen_9_misc_title">Divers</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Masquer le libellé \'S\'abonner à Music Premium\'</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Masquer les promotions Music Premium</string>
@@ -53,7 +54,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_repeat_button_title">Masquer le bouton \'Répéter\'</string>
   <string name="morphe_music_hide_shuffle_button_title">Masquer le bouton \'Aléatoire\'</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Masquer l\'étagère \'Accès rapide\'</string>
-  <string name="morphe_music_hide_suggested_for_you_shelf_title">Masquer l\'étagère \'Suggestions pour vous\'</string>
   <string name="morphe_music_comments_screen_title">Commentaires</string>
   <string name="morphe_music_comments_screen_summary">Choisissez les composants qui apparaissent dans la section des commentaires</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Masquer les règles de la communauté</string>
@@ -296,6 +296,35 @@ YouTube Music 8.x — le fondu enchaîné ne fonctionne que sur les versions 9.x
   <string name="morphe_music_scrobbling_about_summary">"Le scrobbling synchronise automatiquement votre activité sur YouTube Music avec votre profil Last.fm ou ListenBrainz.
 
 Pour que le scrobbling continue à se synchroniser pendant la lecture en arrière-plan, assurez-vous que l'utilisation de la batterie par l'application YouTube Music est définie sur \"Non restreint\""</string>
+  <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_enabled_title">Utiliser les paroles de tiers</string>
+  <string name="morphe_music_lyrics_enabled_summary">Affiche les paroles d\'un service tiers, en utilisant les paroles intégrées en cas d\'absence de celles-ci</string>
+  <string name="morphe_music_lyrics_source_title">Service de paroles</string>
+  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
+  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, puis KuGou.</string>
+  <string name="morphe_music_lyrics_tap_to_seek_title">Appuyez sur une ligne pour aller à ce moment</string>
+  <string name="morphe_music_lyrics_tap_to_seek_summary">Appuyez sur une ligne pour aller directement à ce moment de la chanson</string>
+  <string name="morphe_music_lyrics_copy_button_title">Afficher un bouton de copie des paroles</string>
+  <string name="morphe_music_lyrics_translate_button_title">Afficher un bouton de traduction des paroles</string>
+  <string name="morphe_music_lyrics_text_size_title">Taille du texte</string>
+  <string name="morphe_music_lyrics_text_size_summary">Taille du texte des paroles</string>
+  <string name="morphe_music_lyrics_offset_ms_title">Décalage de synchronisation</string>
+  <string name="morphe_music_lyrics_offset_ms_summary">Décale les paroles synchronisées vers l\'avant ou vers l\'arrière. Utilisez une valeur positive si les paroles sont en avance sur la chanson</string>
+  <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
+  <string name="morphe_music_lyrics_source_label">Source: %s</string>
+  <!-- Tappable label under the lyrics that turns the translation on. -->
+  <string name="morphe_music_lyrics_translate_show">Traduire</string>
+  <string name="morphe_music_lyrics_translate_hide">Afficher l\'original</string>
+  <string name="morphe_music_lyrics_translating">Traduction…</string>
+  <string name="morphe_music_lyrics_translate_failed">Impossible de traduire les paroles</string>
+  <string name="morphe_music_lyrics_copy">Copier</string>
+  <string name="morphe_music_lyrics_copied">Copié dans le presse-papiers</string>
+  <string name="morphe_music_lyrics_about_title">À propos des paroles de tiers</string>
+  <string name="morphe_music_lyrics_about_summary">"Les paroles sont recherchées à partir du titre du morceau et de l’artiste, ainsi, un morceau avec des métadonnées inhabituelles peut ne rien trouver, ou trouver la mauvaise version
+
+Les paroles synchronisées suivent la lecture. Si elles dérivent, ajustez le décalage de synchronisation
+
+Lorsque aucune parole tierce n’est trouvée, les paroles intégrées sont affichées à la place"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - Restaure l\'ancien panneau déroulant</string>
   <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - Désactive les paroles en temps réel</string>

@@ -54,8 +54,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_music_hide_list_shelves"),
             SwitchPreference("morphe_music_hide_new_from_shelf"),
             SwitchPreference("morphe_music_hide_playlist_shelves"),
-            SwitchPreference("morphe_music_hide_speed_dial_shelf"),
-            SwitchPreference("morphe_music_hide_suggested_for_you_shelf")
+            SwitchPreference("morphe_music_hide_speed_dial_shelf")
         )
 
         PreferenceScreen.GENERAL.addPreferences(

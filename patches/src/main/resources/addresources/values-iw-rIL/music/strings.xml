@@ -34,7 +34,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_feed_title">פיד</string>
   <string name="morphe_settings_music_screen_3_general_title">כללי</string>
   <string name="morphe_settings_music_screen_4_player_title">נגן</string>
-  <string name="morphe_settings_music_screen_8_misc_title">שונות</string>
+  <string name="morphe_settings_music_screen_5_lyrics_title">מילים</string>
+  <string name="morphe_settings_music_screen_9_misc_title">שונות</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">הסתר תווית \'קבל Premium למוזיקה\'</string>
   <string name="morphe_music_hide_music_premium_promotions_title">הסתר קידומי Music Premium</string>
@@ -53,7 +54,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_repeat_button_title">הסתר לחצן חזרה</string>
   <string name="morphe_music_hide_shuffle_button_title">הסתר לחצן ערבוב</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">הסתר מדף \'חיוג מהיר\'</string>
-  <string name="morphe_music_hide_suggested_for_you_shelf_title">הסתר מדף \'מומלץ עבורך\'</string>
   <string name="morphe_music_comments_screen_title">תגובות</string>
   <string name="morphe_music_comments_screen_summary">בחר אילו רכיבים יוצגו בסעיף התגובות</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">הסתר הנחיות קהילה</string>
@@ -296,6 +296,13 @@ YouTube Music 8.x - מעבר הצלילים פועל רק בגרסה 9.x ומע�
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling מסנכרן באופן אוטומטי את השימוש שלך ב-YouTube Music עם פרופיל ה-Last.fm או ListenBrainz שלך.
 
 כדי להבטיח שה-scrobbling יסונכרן במהלך הפעלה ברקע, ודא ששימוש הסוללה של אפליקציית YouTube Music מוגדר ל\"ללא הגבלה\""</string>
+  <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_enabled_title">השתמש במילות שירים של צד שלישי</string>
+  <string name="morphe_music_lyrics_enabled_summary">מציג מילים משירות צד שלישי, עם מעבר למילים המובנות כאשר לא נמצאו מילים</string>
+  <string name="morphe_music_lyrics_source_title">שירות מילים</string>
+  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
+  <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
+  <!-- Tappable label under the lyrics that turns the translation on. -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - שחזור פאנל צד ישן</string>
   <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - השבת מילות שיר בזמן אמת</string>

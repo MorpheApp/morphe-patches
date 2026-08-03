@@ -202,6 +202,7 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_fashion_menu_title">Itago ang menu ng \'Fashion &amp; Beauty\'</string>
   <string name="morphe_hide_gaming_menu_title">Itago ang menu ng Paglalaro</string>
   <string name="morphe_hide_hype_menu_title">Itago ang menu ng Hype</string>
+  <string name="morphe_hide_learning_menu_title">Itago ang Learning menu</string>
   <string name="morphe_hide_live_menu_title">Itago ang menu ng Live</string>
   <string name="morphe_hide_memberships_menu_title">Itago ang menu ng Mga Miyembro</string>
   <string name="morphe_hide_movies_menu_title">Itago ang menu ng Mga Pelikula</string>
@@ -216,7 +217,8 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_youtube_music_menu_title">Itago ang menu ng YouTube Music</string>
   <string name="morphe_hide_youtube_kids_menu_title">Itago ang menu ng YouTube Kids</string>
   <string name="morphe_hide_youtube_create_menu_title">Itago ang menu ng YouTube Create</string>
-  <string name="morphe_hide_privacy_tos_footer_title">Itago ang footer na \'Patakaran sa Pagkapribado • Mga Tuntunin ng Serbisyo\'</string>
+  <string name="morphe_hide_youtube_works_menu_title">Itago ang \'Paano gumagana ang YouTube\' menu</string>
+  <string name="morphe_hide_privacy_tos_footer_title">Itago ang legal at privacy footers</string>
   <string name="morphe_comments_screen_title">Mga Komento</string>
   <string name="morphe_comments_screen_summary">Pumili kung aling mga component ang lalabas sa seksyon ng mga komento</string>
   <string name="morphe_hide_comments_carousel_title">Paganahin ang filter carousel ng komento</string>
@@ -327,9 +329,6 @@ I-tap dito upang buksan ang AiSlopList.com at tingnan ang mga pag-download para 
   <string name="morphe_copy_video_link_button_summary">I-tap para kopyahin ang link ng video, i-tap at pindutin nang matagal para kopyahin kasama ang timestamp</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">Kopyahin ang timestamp bilang default</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">Binabaligtad ang tap at tap-and-hold na pagkilos ng \'Kopyahin ang link ng video\' button</string>
-  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">Alisin ang diyalogo ng pagpapasya ng manonood</string>
-  <string name="morphe_remove_viewer_discretion_dialog_summary">Hindi nito nilalampasan ang paghihigpit sa edad. Awtomatiko lang itong tinatanggap</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Patayin ang popup na \'Mag-sign in sa TV\'</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -929,6 +928,11 @@ Limitasyon: Kung ang 'Ibalik ang lumang video action bar' ay naka-off, maaaring 
   <string name="morphe_shorts_autoplay_summary">Awtomatikong umuusad sa susunod na Short sa halip na ulitin ang kasalukuyang isa</string>
   <string name="morphe_shorts_autoplay_background_title">Autoplay sa background</string>
   <string name="morphe_shorts_autoplay_background_summary">Awtomatikong umuusad sa susunod na Short habang nagpe-playback sa background</string>
+  <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+  <string name="morphe_playback_in_feeds_title">Pagpapalabas sa mga feed</string>
+  <string name="morphe_playback_in_feeds_entry_always_on">Palaging naka-on</string>
+  <string name="morphe_playback_in_feeds_entry_wifi_only">Wi-Fi lamang</string>
+  <string name="morphe_playback_in_feeds_entry_off">Naka-off</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Huwag paganahin ang pagpapatuloy ng miniplayer</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Hindi pinapagana ang \'Continue watching\' miniplayer, isang tampok ng YouTube Premium na lumalabas sa paglunsad ng app.</string>

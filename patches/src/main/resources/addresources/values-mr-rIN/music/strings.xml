@@ -34,7 +34,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_feed_title">\u092b\u0947\u0926</string>
   <string name="morphe_settings_music_screen_3_general_title">\u0938\u093e\u092e\u093e</string>
   <string name="morphe_settings_music_screen_4_player_title">\u092a\u094d\u0932\u0948\u092f\u0930</string>
-  <string name="morphe_settings_music_screen_8_misc_title">\u0905\u0928\u094d\u092f \u0935\u093f\u0936\u093e</string>
+  <string name="morphe_settings_music_screen_5_lyrics_title">गीत</string>
+  <string name="morphe_settings_music_screen_9_misc_title">इतर</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">\'Get Music Premium\' लेबल लपवा</string>
   <string name="morphe_music_hide_music_premium_promotions_title">संगीत प्रीमियम जाहिराती लपवा</string>
@@ -53,7 +54,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_repeat_button_title">रीपीट बटण लपवा</string>
   <string name="morphe_music_hide_shuffle_button_title">शफल बटण लपवा</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">\'स्पीड डायल\' शेल्फ लपवा</string>
-  <string name="morphe_music_hide_suggested_for_you_shelf_title">\'तुमच्यासाठी शिफारस केलेले\' शेल्फ लपवा</string>
   <string name="morphe_music_comments_screen_title">टिप्पण्या</string>
   <string name="morphe_music_comments_screen_summary">टिप्पणी विभागात कोणते घटक दिसतील ते निवडा</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">समुदाय मार्गदर्शक तत्त्वे लपवा</string>
@@ -289,6 +289,35 @@ YouTube Music 8.x – क्रॉसFade फक्त 9.x आणि त्य�
   <string name="morphe_music_scrobbling_about_summary">"स्क्रोब्लिंग तुमच्या YouTube Music वापराला तुमच्या Last.fm किंवा ListenBrainz प्रोफाइलसोबत आपोआप सिंक करते.
 
 पार्श्वभूमी प्लेबॅक दरम्यान स्क्रोब्लिंग सिंक होत आहे याची खात्री करण्यासाठी, YouTube Music चा ॲप बॅटरी वापर \"अनरिस्ट्रिक्टेड\" वर सेट केला आहे याची खात्री करा."</string>
+  <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_enabled_title">तृतीय-पक्ष गीतांचा वापर करा</string>
+  <string name="morphe_music_lyrics_enabled_summary">तृतीय-पक्ष सेवेतून गीत दर्शवते, जेव्हा कोणतेही गीत उपलब्ध नसेल तेव्हा अंगभूत गीतांवर परत येते</string>
+  <string name="morphe_music_lyrics_source_title">गीत सेवा</string>
+  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
+  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, आणि KuGou</string>
+  <string name="morphe_music_lyrics_tap_to_seek_title">ओळ टॅप करून गाणे पुढे न्या</string>
+  <string name="morphe_music_lyrics_tap_to_seek_summary">ओळीवर टॅप केल्यास गाण्याचा तो क्षण सुरू होतो</string>
+  <string name="morphe_music_lyrics_copy_button_title">कॉपी लिरिक्स बटण दर्शवा</string>
+  <string name="morphe_music_lyrics_translate_button_title">भाषांतर लिरिक्स बटण दर्शवा</string>
+  <string name="morphe_music_lyrics_text_size_title">टेक्स्ट आकार</string>
+  <string name="morphe_music_lyrics_text_size_summary">लिरिक्स टेक्स्टचा आकार</string>
+  <string name="morphe_music_lyrics_offset_ms_title">टाइमिंग ऑफसेट</string>
+  <string name="morphe_music_lyrics_offset_ms_summary">सिंक्रोनाइझ्ड लिरिक्स पुढे किंवा मागे सरकवा. लिरिक्स गाण्यापेक्षा पुढे असतील, तर सकारात्मक मूल्य वापरा</string>
+  <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
+  <string name="morphe_music_lyrics_source_label">स्रोत: %s</string>
+  <!-- Tappable label under the lyrics that turns the translation on. -->
+  <string name="morphe_music_lyrics_translate_show">भाषांतर करा</string>
+  <string name="morphe_music_lyrics_translate_hide">मूळ दर्शवा</string>
+  <string name="morphe_music_lyrics_translating">भाषांतर करत आहे…</string>
+  <string name="morphe_music_lyrics_translate_failed">लिरिक्सचे भाषांतर करू शकलो नाही</string>
+  <string name="morphe_music_lyrics_copy">कॉपी करा</string>
+  <string name="morphe_music_lyrics_copied">क्लिपबोर्डवर कॉपी केले</string>
+  <string name="morphe_music_lyrics_about_title">थर्ड-पार्टी लिरिक्स बद्दल</string>
+  <string name="morphe_music_lyrics_about_summary">"ट्रॅक शीर्षक आणि कलाकाराने लिरिक्स शोधले जातात, त्यामुळे असामान्य मेटाडेटा असलेला ट्रॅक काहीही शोधू शकत नाही किंवा चुकीचा व्हर्जन शोधू शकतो
+
+सिंक्रोनाइझ्ड लिरिक्स प्लेबॅकचे अनुसरण करतात. ते भरकटल्यास, टाइमिंग ऑफसेट समायोजित करा
+
+जेव्हा थर्ड-पार्टी लिरिक्स उपलब्ध नाहीत, तेव्हा अंगभूत लिरिक्स दर्शविले जातात"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - जुने फ्लोआउट पॅनेल पुनर्संचयित करा</string>
   <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - रिअल-टाइम लिरिक्स अक्षम करा</string>

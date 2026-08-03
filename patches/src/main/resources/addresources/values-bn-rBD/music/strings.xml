@@ -34,7 +34,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_feed_title">ফিড</string>
   <string name="morphe_settings_music_screen_3_general_title">সাধারণ</string>
   <string name="morphe_settings_music_screen_4_player_title">প্লেয়ার</string>
-  <string name="morphe_settings_music_screen_8_misc_title">বিবিধ</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">\'গেট মিউজিক প্রিমিয়াম\' লেবেল লুকান</string>
   <string name="morphe_music_hide_music_premium_promotions_title">মিউজিক প্রিমিয়াম প্রচার লুকান</string>
@@ -53,7 +52,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_repeat_button_title">রিপিট বোতাম লুকান</string>
   <string name="morphe_music_hide_shuffle_button_title">শাফল বোতাম লুকান</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">\'স্পীড ডায়াল\' শেল্ফ লুকান</string>
-  <string name="morphe_music_hide_suggested_for_you_shelf_title">\'আপনার জন্য প্রস্তাবিত\' শেল্ফ লুকান</string>
   <string name="morphe_music_comments_screen_title">মন্তব্য</string>
   <string name="morphe_music_comments_screen_summary">মন্তব্য বিভাগে কোন উপাদানগুলো প্রদর্শিত হবে তা নির্বাচন করুন</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">কমিউনিটি নির্দেশিকা লুকান</string>
@@ -296,6 +294,32 @@ Second \"item\" text"</string>
   <string name="morphe_music_scrobbling_about_summary">"স্ক্রবিং স্বয়ংক্রিয়ভাবে আপনার YouTube Music ব্যবহার আপনার Last.fm বা ListenBrainz প্রোফাইলের সাথে সিঙ্ক করে।
 
 ব্যাকগ্রাউন্ড প্লেব্যাকের সময় স্ক্রবিং সিঙ্ক করা হয়েছে কিনা তা নিশ্চিত করতে, নিশ্চিত করুন যে YouTube Music-এর অ্যাপ ব্যাটারি ব্যবহার \"Unrestricted\" তে সেট করা আছে।"</string>
+  <!-- layout.lyrics.lyricsPatch -->
+  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
+  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, তারপর KuGou</string>
+  <string name="morphe_music_lyrics_tap_to_seek_title">লাইনটিতে ট্যাপ করে যান</string>
+  <string name="morphe_music_lyrics_tap_to_seek_summary">একটি লাইনে ট্যাপ করলে গানের সেই মুহূর্তটিতে যাওয়া যাবে</string>
+  <string name="morphe_music_lyrics_copy_button_title">কপি লিরিক্স বোতাম দেখান</string>
+  <string name="morphe_music_lyrics_translate_button_title">অনুবাদ লিরিক্স বোতাম দেখান</string>
+  <string name="morphe_music_lyrics_text_size_title">টেক্সট আকার</string>
+  <string name="morphe_music_lyrics_text_size_summary">লিরিক্স টেক্সটের আকার</string>
+  <string name="morphe_music_lyrics_offset_ms_title">সময় অফসেট</string>
+  <string name="morphe_music_lyrics_offset_ms_summary">সিঙ্ক করা লিরিক্স সামনে বা পিছনে সরিয়ে দেয়। যদি লিরিক্স গানের চেয়ে এগিয়ে থাকে তবে একটি পজিটিভ মান ব্যবহার করুন</string>
+  <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
+  <string name="morphe_music_lyrics_source_label">উৎস: %s</string>
+  <!-- Tappable label under the lyrics that turns the translation on. -->
+  <string name="morphe_music_lyrics_translate_show">অনুবাদ</string>
+  <string name="morphe_music_lyrics_translate_hide">মূল দেখান</string>
+  <string name="morphe_music_lyrics_translating">অনুবাদ করা হচ্ছে…</string>
+  <string name="morphe_music_lyrics_translate_failed">লিরিক্স অনুবাদ করা যায়নি</string>
+  <string name="morphe_music_lyrics_copy">অনুলিপি করুন</string>
+  <string name="morphe_music_lyrics_copied">ক্লিপবোর্ডে অনুলিপি করা হয়েছে</string>
+  <string name="morphe_music_lyrics_about_title">তৃতীয় পক্ষের লিরিক্স সম্পর্কে</string>
+  <string name="morphe_music_lyrics_about_summary">"ট্র্যাকের শিরোনাম এবং শিল্পীর দ্বারা লিরিক্স অনুসন্ধান করা হয়, তাই অস্বাভাবিক মেটাডেটা সহ একটি ট্র্যাক কিছুই খুঁজে পাবে না, অথবা ভুল সংস্করণ খুঁজে পেতে পারে
+
+সিঙ্ক করা লিরিক্স প্লেব্যাকের সাথে অনুসরণ করে। যদি তারা সরে যায় তবে সময় অফসেট সামঞ্জস্য করুন
+
+যখন কোনো তৃতীয় পক্ষের লিরিক্স পাওয়া যায় না, তখন বিল্ট-ইন লিরিক্স দেখানো হয়"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - পুরনো ফ্লাইআউট প্যানেল পুনরুদ্ধার করুন</string>
   <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - রিয়েল-টাইম লিরিকস নিষ্ক্রিয় করুন</string>

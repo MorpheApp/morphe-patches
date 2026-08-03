@@ -48,6 +48,8 @@ Walau bagaimanapun, mendayakan tetapan ini juga akan mencatat beberapa data peng
   <!-- Custom filter -->
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
+  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
+  <string name="morphe_remove_viewer_discretion_dialog_summary">Ini tidak akan memirau sekatan umur dan hanya menerimanya secara automatik</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->

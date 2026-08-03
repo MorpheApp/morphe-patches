@@ -202,6 +202,7 @@ Les changements incluent :
   <string name="morphe_hide_fashion_menu_title">Masquer le menu \'Mode et beauté\'</string>
   <string name="morphe_hide_gaming_menu_title">Masquer le menu \'Jeux vidéo\'</string>
   <string name="morphe_hide_hype_menu_title">Masquer le menu \'Boost\'</string>
+  <string name="morphe_hide_learning_menu_title">Masquer le menu \'Savoirs &amp; Cultures\'</string>
   <string name="morphe_hide_live_menu_title">Masquer le menu \'Direct\'</string>
   <string name="morphe_hide_memberships_menu_title">Masquer le menu \'Souscriptions\'</string>
   <string name="morphe_hide_movies_menu_title">Masquer le menu \'Films et séries TV\'</string>
@@ -216,7 +217,8 @@ Les changements incluent :
   <string name="morphe_hide_youtube_music_menu_title">Masquer le menu \'YouTube Music\'</string>
   <string name="morphe_hide_youtube_kids_menu_title">Masquer le menu \'YouTube Kids\'</string>
   <string name="morphe_hide_youtube_create_menu_title">Masquer le menu \'YouTube Create\'</string>
-  <string name="morphe_hide_privacy_tos_footer_title">Masquer le pied de page \'Règles de confidentialité • Conditions d\'utilisation\'</string>
+  <string name="morphe_hide_youtube_works_menu_title">Masquer le menu \'Premiers pas sur YouTube\'</string>
+  <string name="morphe_hide_privacy_tos_footer_title">Masquer les pieds de page juridiques et de confidentialité</string>
   <string name="morphe_comments_screen_title">Commentaires</string>
   <string name="morphe_comments_screen_summary">Choisissez les composants qui apparaissent dans la section des commentaires</string>
   <string name="morphe_hide_comments_carousel_title">Activer le filtre du carrousel de commentaires</string>
@@ -327,9 +329,6 @@ Appuyez ici pour ouvrir AiSlopList.com et voir les téléchargements disponibles
   <string name="morphe_copy_video_link_button_summary">Appuyez pour copier le lien de la vidéo, appuyez longuement pour copier avec l\'horodatage</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">Copier l\'horodatage par défaut</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">Inverse les actions d\'appui et d\'appui long du bouton \'Copier le lien de la vidéo\'</string>
-  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">Supprimer le message \'Confirmer votre âge\'</string>
-  <string name="morphe_remove_viewer_discretion_dialog_summary">Cela ne contourne pas la restriction d\'âge. Elle est simplement acceptée automatiquement</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Désactiver le pop-up \'Connectez-vous à la TV\'</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -930,6 +929,11 @@ Limitation : Si 'Restaurer l'ancienne barre d'actions vidéo' est désactivé, l
   <string name="morphe_shorts_autoplay_summary">Passe automatiquement au Short suivant au lieu de répéter le Short actuel</string>
   <string name="morphe_shorts_autoplay_background_title">Lecture automatique en arrière-plan</string>
   <string name="morphe_shorts_autoplay_background_summary">Passe automatiquement au Short suivant lors de la lecture en arrière-plan</string>
+  <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+  <string name="morphe_playback_in_feeds_title">Lecture dans les flux</string>
+  <string name="morphe_playback_in_feeds_entry_always_on">Toujours activé</string>
+  <string name="morphe_playback_in_feeds_entry_wifi_only">Wi-Fi uniquement</string>
+  <string name="morphe_playback_in_feeds_entry_off">Désactivé</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Désactiver la reprise du mini-lecteur</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Désactive le mini-lecteur \'Continuer à regarder\', une fonctionnalité de YouTube Premium qui s\'affiche au démarrage de l\'application</string>

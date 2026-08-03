@@ -16,6 +16,7 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- Overrides built in setting menu with Morphe settings. -->
   <string name="morphe_screen_ads_title">広告</string>
   <string name="morphe_hide_post_ads_title">フィード広告を非表示</string>
   <string name="morphe_hide_comment_ads_title">コメント広告を非表示</string>

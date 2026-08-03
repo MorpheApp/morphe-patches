@@ -16,6 +16,7 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- Overrides built in setting menu with Morphe settings. -->
   <string name="morphe_screen_ads_title">Reklamlar</string>
   <string name="morphe_hide_post_ads_title">Akış reklamlarını gizle</string>
   <string name="morphe_hide_comment_ads_title">Yorum reklamlarını gizle</string>

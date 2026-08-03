@@ -161,6 +161,9 @@ Tämän käyttöönotto kirjaa myös joitakin käyttäjätietoja, kuten IP-osoit
   <string name="morphe_settings_menu_filter_screen_title">Asetusten valikon suodatin</string>
   <string name="morphe_settings_menu_filter_screen_summary">Piilota kohteet vakiosovellusten asetusten näytöltä niiden näkyvän nimen perusteella</string>
   <string name="morphe_settings_menu_filter_picker_empty">Avaa vakiosovellusten asetusten näyttö kerran luettelon täyttämiseksi</string>
+  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
+  <string name="morphe_remove_viewer_discretion_dialog_title">Poista katsojan harkintaa koskeva valintaikkuna</string>
+  <string name="morphe_remove_viewer_discretion_dialog_summary">Tämä ei ohita ikärajoitusta. Se vain hyväksyy sen automaattisesti</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Sovellusversio naamioidaan</string>
   <string name="morphe_spoof_app_version_summary">Huijaa palvelinta luulemaan, että käytät vanhempaa sovellusversiota palauttaaksesi vanhat käyttöliittymäelementit.</string>

@@ -216,7 +216,6 @@ Promene uključuju:
   <string name="morphe_hide_youtube_music_menu_title">Sakrij meni YouTube Music</string>
   <string name="morphe_hide_youtube_kids_menu_title">Sakrij meni YouTube Kids</string>
   <string name="morphe_hide_youtube_create_menu_title">Sakrij meni YouTube Create</string>
-  <string name="morphe_hide_privacy_tos_footer_title">Sakrij podnožje „Politika privatnosti • Uslovi korišćenja“</string>
   <string name="morphe_comments_screen_title">Komentari</string>
   <string name="morphe_comments_screen_summary">Izaberite koje komponente će se pojaviti u odeljku za komentare</string>
   <string name="morphe_hide_comments_carousel_title">Omogući filter karusela komentara</string>
@@ -327,9 +326,6 @@ Dodirnite ovde da biste otvorili AiSlopList.com i videli preuzimanja za druge pl
   <string name="morphe_copy_video_link_button_summary">Dodirnite da biste kopirali link videa, dodirnite i zadržite da biste kopirali link s vremenskom oznakom</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">Kopiraj vremensku oznaku podrazumevano</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">Obrće akcije dodira i dodira i zadržavanja za dugme \'Kopiraj link videa\'</string>
-  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">Ukloni dijalog o diskreciji gledaoca</string>
-  <string name="morphe_remove_viewer_discretion_dialog_summary">Ovo ne zaobilazi starosno ograničenje. Samo ga automatski prihvata</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Onemogući iskačući prozor „Prijava na TV”</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -929,6 +925,11 @@ Ograničenje: Ako je \"Vrati staru traku sa akcijama za video\" isključen, prek
   <string name="morphe_shorts_autoplay_summary">Automatski prelazi na sledeći Shorts video umesto da ponavlja trenutni</string>
   <string name="morphe_shorts_autoplay_background_title">Automatska reprodukcija u pozadini</string>
   <string name="morphe_shorts_autoplay_background_summary">Automatski prelazi na sledeći Shorts video tokom reprodukcije u pozadini</string>
+  <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+  <string name="morphe_playback_in_feeds_title">Reprodukcija u izvorima</string>
+  <string name="morphe_playback_in_feeds_entry_always_on">Uvek uključen</string>
+  <string name="morphe_playback_in_feeds_entry_wifi_only">Samo preko Wi-Fi</string>
+  <string name="morphe_playback_in_feeds_entry_off">Isključen</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Onemogući nastavak reprodukcije mini plejera</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Onemogućava \'Nastavi gledanje\' miniplayer, YouTube Premium funkciju koja se pojavljuje pri pokretanju aplikacije</string>

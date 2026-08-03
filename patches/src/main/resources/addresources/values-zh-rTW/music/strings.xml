@@ -34,7 +34,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_feed_title">推薦內容</string>
   <string name="morphe_settings_music_screen_3_general_title">一般</string>
   <string name="morphe_settings_music_screen_4_player_title">播放器</string>
-  <string name="morphe_settings_music_screen_8_misc_title">其他</string>
+  <string name="morphe_settings_music_screen_5_lyrics_title">歌詞</string>
+  <string name="morphe_settings_music_screen_9_misc_title">其他</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">隱藏「取得 Music Premium」標籤</string>
   <string name="morphe_music_hide_music_premium_promotions_title">隱藏 Music Premium 促銷內容</string>
@@ -53,7 +54,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_repeat_button_title">隱藏重複按鈕</string>
   <string name="morphe_music_hide_shuffle_button_title">隱藏隨機播放按鈕</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">隱藏「快速撥號」區塊</string>
-  <string name="morphe_music_hide_suggested_for_you_shelf_title">隱藏「為你推薦」區塊</string>
   <string name="morphe_music_comments_screen_title">留言區</string>
   <string name="morphe_music_comments_screen_summary">選擇要在留言區中顯示哪些元件</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">隱藏社群守則</string>
@@ -296,6 +296,35 @@ YouTube Music 8.x — 淡出效果僅在 9.x 及更高版本中運行"</string>
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling 會自動將您的 YouTube Music 使用情況與您的 Last.fm 或 ListenBrainz 個人資料同步
 
 為了確保在背景播放期間同步 scrobbling，請確保 YouTube Music 的應用程式電池使用量設定為「無限制」。"</string>
+  <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_enabled_title">使用第三方歌詞</string>
+  <string name="morphe_music_lyrics_enabled_summary">從第三方服務顯示歌詞，若找不到則改用內建歌詞</string>
+  <string name="morphe_music_lyrics_source_title">歌詞服務</string>
+  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
+  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB，然後是酷狗</string>
+  <string name="morphe_music_lyrics_tap_to_seek_title">點擊行以尋找</string>
+  <string name="morphe_music_lyrics_tap_to_seek_summary">點擊一行會跳到歌曲的那個時間點</string>
+  <string name="morphe_music_lyrics_copy_button_title">顯示複製歌詞按鈕</string>
+  <string name="morphe_music_lyrics_translate_button_title">顯示翻譯歌詞按鈕</string>
+  <string name="morphe_music_lyrics_text_size_title">文字大小</string>
+  <string name="morphe_music_lyrics_text_size_summary">歌詞文字的大小</string>
+  <string name="morphe_music_lyrics_offset_ms_title">時間偏移</string>
+  <string name="morphe_music_lyrics_offset_ms_summary">將同步歌詞向前或向後調整。如果歌詞快於歌曲，請使用正值</string>
+  <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
+  <string name="morphe_music_lyrics_source_label">來源：%s</string>
+  <!-- Tappable label under the lyrics that turns the translation on. -->
+  <string name="morphe_music_lyrics_translate_show">翻譯</string>
+  <string name="morphe_music_lyrics_translate_hide">顯示原文</string>
+  <string name="morphe_music_lyrics_translating">正在翻譯…</string>
+  <string name="morphe_music_lyrics_translate_failed">無法翻譯歌詞</string>
+  <string name="morphe_music_lyrics_copy">複製</string>
+  <string name="morphe_music_lyrics_copied">已複製到剪貼簿</string>
+  <string name="morphe_music_lyrics_about_title">關於第三方歌詞</string>
+  <string name="morphe_music_lyrics_about_summary">"系統會根據曲目標題和藝術家來查找歌詞，因此具有異常元資料的曲目可能找不到任何內容，或者找到錯誤的版本
+
+同步歌詞會跟隨播放。如果它們漂移，請調整時間偏移
+
+當找不到第三方歌詞時，將顯示內建歌詞"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - 還原舊版浮動面板</string>
   <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - 停用即時歌詞</string>

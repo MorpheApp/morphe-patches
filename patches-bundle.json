@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-08-01T08:36:59",
-  "description": "## [1.38.1-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.38.0...v1.38.1-dev.1) (2026-08-01)\n\n### 🚀 Updated App Support\n\n* **YouTube:** Add experimental support for `21.31.523` ([#2207](https://github.com/MorpheApp/morphe-patches/issues/2207)) ([061663b](https://github.com/MorpheApp/morphe-patches/commit/061663b85b76f0aabe9337de8d84970d4ca406b5))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.38.1-dev.1/patches-1.38.1-dev.1.mpp",
+  "created_at": "2026-08-03T07:32:11",
+  "description": "## [1.39.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.39.0-dev.1...v1.39.0-dev.2) (2026-08-03)\n\n### 🐛 Bug Fixes\n\n* **Reddit:** Morphe settings menu is not localized for experimental app targets ([fefa59b](https://github.com/MorpheApp/morphe-patches/commit/fefa59b9534c2858b6b90c0a1ba7a69d70848b9a))\n* **YouTube - Disable sign in to TV popup:** Add support for newer versions ([#2226](https://github.com/MorpheApp/morphe-patches/issues/2226)) ([96716ef](https://github.com/MorpheApp/morphe-patches/commit/96716efdf6f7ddcf05a6cf642df88804e99af487))\n* **YouTube:** Remove \"Restore old YouTube settings screen\" from 21.30+ targets ([51c0af2](https://github.com/MorpheApp/morphe-patches/commit/51c0af26c9d3e2c7c351a3ce521a0e4a404d60e8))\n\n### ✨ New Features\n\n* **YouTube Music:** Add `Remove viewer discretion dialog` patch ([#2297](https://github.com/MorpheApp/morphe-patches/issues/2297)) ([f0d3ba1](https://github.com/MorpheApp/morphe-patches/commit/f0d3ba149d81f72680b571ce596eabdd8990c572))\n* **YouTube Music:** Add `Third-party lyrics` patch ([#2269](https://github.com/MorpheApp/morphe-patches/issues/2269)) ([fbf2e63](https://github.com/MorpheApp/morphe-patches/commit/fbf2e63d66be9baa4d825d986ab405a679b96df0))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.39.0-dev.2/patches-1.39.0-dev.2.mpp",
   "signature_download_url": "",
-  "version": "1.38.1-dev.1"
+  "version": "1.39.0-dev.2"
 }

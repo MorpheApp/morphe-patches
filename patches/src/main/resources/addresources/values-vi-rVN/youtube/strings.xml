@@ -194,6 +194,7 @@ Ví dụ:
   <string name="morphe_hide_store_button_title">Ẩn nút Cửa hàng</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_subscribe_button_in_channel_page_title">Ẩn nút Đăng ký</string>
+  <string name="morphe_hide_learning_menu_title">Ẩn menu Học tập</string>
   <string name="morphe_comments_screen_title">Bình luận</string>
   <string name="morphe_comments_screen_summary">Chọn những thành phần sẽ hiển thị trong phần bình luận</string>
   <string name="morphe_hide_comments_carousel_title">Bật bộ lọc bình luận</string>
@@ -299,9 +300,6 @@ Nhấn vào đây để mở AiSlopList.com và xem các bản tải xuống cho
   <string name="morphe_copy_video_link_button_summary">Bấm để sao chép liên kết video, giữ để sao chép kèm dấu thời gian</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">Sao chép dấu thời gian theo mặc định</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">Đảo chức năng giữa bấm và bấm giữ của nút “Sao chép liên kết video”</string>
-  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">Loại bỏ hộp thoại cảnh báo trước khi xem</string>
-  <string name="morphe_remove_viewer_discretion_dialog_summary">Tuỳ chọn này chỉ tự động đồng ý chứ không bỏ qua giới hạn về độ tuổi</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Tắt cửa sổ Đăng nhập vào TV</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -901,6 +899,11 @@ Hạn chế: Nếu tùy chọn \"Khôi phục thanh thao tác video cũ\" bị t
   <string name="morphe_shorts_autoplay_summary">Tự động lướt xuống Short tiếp theo thay vì lặp lại Short hiện tại</string>
   <string name="morphe_shorts_autoplay_background_title">Tự động phát trong nền</string>
   <string name="morphe_shorts_autoplay_background_summary">Tự động lướt tiếp Short kể cả khi phát nền</string>
+  <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+  <string name="morphe_playback_in_feeds_title">Phát lại trong nguồn cấp dữ liệu</string>
+  <string name="morphe_playback_in_feeds_entry_always_on">Luôn bật</string>
+  <string name="morphe_playback_in_feeds_entry_wifi_only">Chỉ Wi-Fi</string>
+  <string name="morphe_playback_in_feeds_entry_off">Tắt</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Tắt tiếp tục phát trong trình phát thu nhỏ</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Ngăn không cho trình phát thu nhỏ \"tiếp tục xem\" khi mở ứng dụng (một tính năng Premium)</string>

@@ -35,9 +35,9 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v1.38.1-dev.1](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.38.1-dev.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;133 patches total
+> **[v1.39.0-dev.2](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.39.0-dev.2)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;136 patches total
 <details>
-<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;74 patches</summary>
+<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;75 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -102,6 +102,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Open videos fullscreen](#open-videos-fullscreen) | Adds options to automatically open videos in fullscreen portrait or landscape mode. |  |
 | [Override YouTube Music buttons](#override-youtube-music-buttons) | Overrides YouTube Music buttons to open Morphe Music or any compatible third-party client. |  |
 | [Play all](#play-all) | Adds an option to play all the videos from a channel and to display play all button in the video player. |  |
+| [Playback in feeds](#playback-in-feeds) | Adds the 'Playback in feeds' setting of YouTube to the Morphe settings, where it is always available even if YouTube hides it. |  |
 | [Playback speed](#playback-speed) | Adds options to customize available playback speeds, set a default playback speed, and show a speed dialog button in the video player. |  |
 | [Reload video](#reload-video) | Adds an option to display reload video button in the video player. |  |
 | [Remove background playback restrictions](#remove-background-playback-restrictions) | Removes restrictions on background playback, including playing kids videos in the background. |  |
@@ -125,7 +126,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 </details>
 
 <details>
-<summary>📦 YouTube Music&nbsp;&nbsp;•&nbsp;&nbsp;37 patches</summary>
+<summary>📦 YouTube Music&nbsp;&nbsp;•&nbsp;&nbsp;39 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -164,6 +165,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Remember repeat state](#remember-repeat-state) | Adds an option to remember the repeat state when playing a new track or playlist. |  |
 | [Remember shuffle state](#remember-shuffle-state) | Adds an option to remember the shuffle state when playing a new track or playlist. |  |
 | [Remove background playback restrictions](#remove-background-playback-restrictions) | Removes restrictions on background playback, including playing kids videos in the background. |  |
+| [Remove viewer discretion dialog](#remove-viewer-discretion-dialog) | Adds an option to remove the dialog that appears when opening a video that has been age-restricted by accepting it automatically. This does not bypass the age restriction. |  |
 | [Return YouTube Dislike](#return-youtube-dislike) | Adds an option to show the dislike count of tracks with Return YouTube Dislike. |  |
 | [Sanitize sharing links](#sanitize-sharing-links) | Removes the tracking query parameters from shared links. |  |
 | [Scrobbling](#scrobbling) | Adds options to add played tracks to Last.fm and ListenBrainz. |  |
@@ -172,6 +174,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Spoof app version](#spoof-app-version) | Adds an option to trick the app into thinking you are running an older version. |  |
 | [Spoof video streams](#spoof-video-streams) | Adds options to spoof the client video streams to fix playback. |  |
 | [Theme](#theme) | Adds options for theming and applies a custom background theme (dark background theme defaults to pure black). | • Dark theme background color |
+| [Third-party lyrics](#third-party-lyrics) | Adds an option to show synced lyrics from LRCLIB or KuGou in the lyrics panel. |  |
 
 </details>
 
@@ -181,7 +184,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 
 **🎯 Supported versions:**
 
-| 🧪&nbsp;2026.29.0 | 🧪&nbsp;2026.28.0 | 🧪&nbsp;2026.24.0 | 2026.14.0 | 2026.04.0 |
+| 🧪&nbsp;2026.30.0 | 🧪&nbsp;2026.29.0 | 🧪&nbsp;2026.24.0 | 2026.14.0 | 2026.04.0 |
 | :---: | :---: | :---: | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |

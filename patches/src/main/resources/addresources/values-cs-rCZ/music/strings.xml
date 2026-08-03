@@ -34,7 +34,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_feed_title">Domovská stránka</string>
   <string name="morphe_settings_music_screen_3_general_title">Obecné</string>
   <string name="morphe_settings_music_screen_4_player_title">Přehrávač</string>
-  <string name="morphe_settings_music_screen_8_misc_title">Různé</string>
+  <string name="morphe_settings_music_screen_5_lyrics_title">Texty</string>
+  <string name="morphe_settings_music_screen_9_misc_title">Různé</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Skrýt štítek „Získat Music Premium“</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Skrýt nabídky Music Premium</string>
@@ -53,10 +54,10 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_repeat_button_title">Skrýt tlačítko opakování</string>
   <string name="morphe_music_hide_shuffle_button_title">Skrýt tlačítko náhodného přehrávání</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Skrýt sekci rychlé volby</string>
-  <string name="morphe_music_hide_suggested_for_you_shelf_title">Skrýt sekci „Doporučeno pro vás“</string>
   <string name="morphe_music_comments_screen_title">Komentáře</string>
   <string name="morphe_music_comments_screen_summary">Vyberte, které prvky se mají zobrazovat v sekci komentářů</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Skrýt pokyny pro komunitu</string>
+  <string name="morphe_music_hide_comments_context_title">Skrýt zprávu kontextu</string>
   <string name="morphe_music_hide_comments_emoji_button_title">Skrýt tlačítko emoji</string>
   <string name="morphe_music_hide_comments_info_button_title">Skrýt tlačítko informace</string>
   <string name="morphe_music_hide_comments_timestamp_button_title">Skrýt tlačítko časového razítka</string>
@@ -295,6 +296,35 @@ YouTube Music 8.x – plynulé přecházení funguje pouze ve verzích 9.x a vy�
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling automaticky synchronizuje vaše používání YouTube Music s vaším profilem Last.fm nebo ListenBrainz.
 
 Pro zajištění synchronizace scrobblingu během přehrávání na pozadí se ujistěte, že využití baterie aplikace YouTube Music je nastaveno na \"Neomezené\"."</string>
+  <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_enabled_title">Používat texty od třetí strany</string>
+  <string name="morphe_music_lyrics_enabled_summary">Zobrazuje texty ze služby třetí strany, s přechodem na vestavěné texty, pokud neexistují.</string>
+  <string name="morphe_music_lyrics_source_title">Služba textů</string>
+  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
+  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, poté KuGou</string>
+  <string name="morphe_music_lyrics_tap_to_seek_title">Klepnutím na řádek přejděte na daný čas</string>
+  <string name="morphe_music_lyrics_tap_to_seek_summary">Klepnutím na řádek se přeskočí do daného okamžiku v písni</string>
+  <string name="morphe_music_lyrics_copy_button_title">Zobrazit tlačítko pro kopírování textu písně</string>
+  <string name="morphe_music_lyrics_translate_button_title">Zobrazit tlačítko pro překlad textu písně</string>
+  <string name="morphe_music_lyrics_text_size_title">Velikost textu</string>
+  <string name="morphe_music_lyrics_text_size_summary">Velikost textu písně</string>
+  <string name="morphe_music_lyrics_offset_ms_title">Posun načasování</string>
+  <string name="morphe_music_lyrics_offset_ms_summary">Posuňte synchronizovaný text písně dopředu nebo dozadu. Použijte kladnou hodnotu, pokud text písně předbíhá píseň</string>
+  <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
+  <string name="morphe_music_lyrics_source_label">Zdroj: %s</string>
+  <!-- Tappable label under the lyrics that turns the translation on. -->
+  <string name="morphe_music_lyrics_translate_show">Přeložit</string>
+  <string name="morphe_music_lyrics_translate_hide">Zobrazit originál</string>
+  <string name="morphe_music_lyrics_translating">Překládání…</string>
+  <string name="morphe_music_lyrics_translate_failed">Text písně se nepodařilo přeložit</string>
+  <string name="morphe_music_lyrics_copy">Kopírovat</string>
+  <string name="morphe_music_lyrics_copied">Zkopírováno do schránky</string>
+  <string name="morphe_music_lyrics_about_title">Informace o externích textech písní</string>
+  <string name="morphe_music_lyrics_about_summary">"Texty písní se vyhledávají podle názvu skladby a interpreta, takže u skladby s neobvyklými metadaty nemusí být nic nalezeno nebo může být nalezena špatná verze
+
+Synchronizované texty následují přehrávání. Pokud se rozcházejí, upravte posun načasování
+
+Pokud nejsou nalezeny žádné externí texty písní, jsou místo nich zobrazeny vestavěné texty"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 – Obnovit starý výsuvný panel</string>
   <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 – Zakázat texty písní v reálném čase</string>

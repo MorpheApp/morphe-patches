@@ -216,7 +216,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_youtube_music_menu_title">隐藏YouTube Music菜单</string>
   <string name="morphe_hide_youtube_kids_menu_title">隐藏YouTube Kids菜单</string>
   <string name="morphe_hide_youtube_create_menu_title">隐藏YouTube Create菜单</string>
-  <string name="morphe_hide_privacy_tos_footer_title">隐藏“隐私政策 • 服务条款”页脚</string>
   <string name="morphe_comments_screen_title">评论</string>
   <string name="morphe_comments_screen_summary">选择要在评论部分中显示的组件</string>
   <string name="morphe_hide_comments_carousel_title">启用评论轮播过滤</string>
@@ -327,9 +326,6 @@ Second \"item\" text"</string>
   <string name="morphe_copy_video_link_button_summary">点击复制视频链接，长按复制带时间戳的链接</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">默认复制时间戳</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">反转“复制视频链接”按钮的点击和长按操作</string>
-  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">移除“观看须知”对话框</string>
-  <string name="morphe_remove_viewer_discretion_dialog_summary">这并不会绕过年龄限制，只是自动按下接受按钮。</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">禁用登录电视弹出窗口</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -929,6 +925,11 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_summary">自动前进到下一个 Shorts，而不是重复当前的 Shorts</string>
   <string name="morphe_shorts_autoplay_background_title">后台自动播放</string>
   <string name="morphe_shorts_autoplay_background_summary">在后台播放时自动前进到下一个 Shorts</string>
+  <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+  <string name="morphe_playback_in_feeds_title">在信息流中播放</string>
+  <string name="morphe_playback_in_feeds_entry_always_on">始终开启</string>
+  <string name="morphe_playback_in_feeds_entry_wifi_only">仅限 Wi-Fi</string>
+  <string name="morphe_playback_in_feeds_entry_off">关闭</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">禁用恢复迷你播放器</string>
   <string name="morphe_miniplayer_disable_resuming_summary">禁用“继续观看”迷你播放器，这是 YouTube Premium 的一项功能，该功能会在应用启动时显示</string>

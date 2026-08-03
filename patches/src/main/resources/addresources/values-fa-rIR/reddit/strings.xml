@@ -16,6 +16,7 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- Overrides built in setting menu with Morphe settings. -->
   <string name="morphe_screen_ads_title">تبلیغات</string>
   <string name="morphe_screen_miscellaneous_title">متفرقه</string>
   <string name="morphe_about_title">درباره</string>

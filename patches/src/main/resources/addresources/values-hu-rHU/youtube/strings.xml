@@ -202,6 +202,7 @@ A változások a következőket tartalmazzák:
   <string name="morphe_hide_fashion_menu_title">\"Divat és szépség\" menü elrejtése</string>
   <string name="morphe_hide_gaming_menu_title">Játékok menü elrejtése</string>
   <string name="morphe_hide_hype_menu_title">Hype menü elrejtése</string>
+  <string name="morphe_hide_learning_menu_title">Rejtse el a Tanulás menüt</string>
   <string name="morphe_hide_live_menu_title">Élő menü elrejtése</string>
   <string name="morphe_hide_memberships_menu_title">Tagságok menü elrejtése</string>
   <string name="morphe_hide_movies_menu_title">Filmek menü elrejtése</string>
@@ -216,7 +217,8 @@ A változások a következőket tartalmazzák:
   <string name="morphe_hide_youtube_music_menu_title">YouTube Zene menü elrejtése</string>
   <string name="morphe_hide_youtube_kids_menu_title">YouTube Kids menü elrejtése</string>
   <string name="morphe_hide_youtube_create_menu_title">YouTube létrehozás menü elrejtése</string>
-  <string name="morphe_hide_privacy_tos_footer_title">\"Adatvédelmi szabályzat • Felhasználási feltételek\" lábléc elrejtése</string>
+  <string name="morphe_hide_youtube_works_menu_title">Rejtse el a \"A YouTube működése\" menüt</string>
+  <string name="morphe_hide_privacy_tos_footer_title">Rejtse el a jogi és adatvédelmi láblécet</string>
   <string name="morphe_comments_screen_title">Megjegyzések</string>
   <string name="morphe_comments_screen_summary">Válaszd ki, mely elemek jelenjenek meg a megjegyzéseknél</string>
   <string name="morphe_hide_comments_carousel_title">Kiemelt megjegyzések szűrője</string>
@@ -327,9 +329,6 @@ Korlátozások:
   <string name="morphe_copy_video_link_button_summary">Érintse meg a videolink másolásához, hosszan nyomva tartva az időbélyeggel együtt</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">Alapértelmezés szerint másolja a videó URL-jét az időbélyeggel</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">Megfordítja a \"Videolink másolása\" gomb megérintésének és hosszan nyomva tartásának funkcióit</string>
-  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">Távolítsa el a nézői diszkréciós párbeszédpanelt</string>
-  <string name="morphe_remove_viewer_discretion_dialog_summary">Ez nem kerüli meg a korhatárt, csak automatikusan elfogadja</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">TV-bejelentkezési előugró ablak letiltása</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -929,6 +928,11 @@ Korlátozás: Ha a „Régi videós eszköztár visszaállítása” ki van kapc
   <string name="morphe_shorts_autoplay_summary">Automatikus továbbhaladás a következő Shortsra ahelyett, hogy az aktuális Shortsot ismételné </string>
   <string name="morphe_shorts_autoplay_background_title">Automatikus lejátszás háttérben</string>
   <string name="morphe_shorts_autoplay_background_summary">A következő Shorts automatikus lejátszása háttérlejátszás közben</string>
+  <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+  <string name="morphe_playback_in_feeds_title">Lejátszás a hírekben</string>
+  <string name="morphe_playback_in_feeds_entry_always_on">Mindig bekapcsolva</string>
+  <string name="morphe_playback_in_feeds_entry_wifi_only">Csak Wi-Fi esetén</string>
+  <string name="morphe_playback_in_feeds_entry_off">Ki</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">A miniplayer folytatásának letiltása</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Letiltja a „Folytatás” minilejátszót, a YouTube Premium funkciót, amely az alkalmazás indításakor jelenik meg.</string>

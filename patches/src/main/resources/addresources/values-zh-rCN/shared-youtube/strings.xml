@@ -161,6 +161,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_menu_filter_screen_title">设置菜单筛选</string>
   <string name="morphe_settings_menu_filter_screen_summary">通过可见名称隐藏标准应用设置屏幕上的项目</string>
   <string name="morphe_settings_menu_filter_picker_empty">打开标准应用设置屏幕一次以填充列表</string>
+  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">伪装应用版本</string>
   <string name="morphe_spoof_app_version_summary">欺骗服务器，使其认为您使用的是较旧的应用版本，以恢复遗留的 UI 功能</string>

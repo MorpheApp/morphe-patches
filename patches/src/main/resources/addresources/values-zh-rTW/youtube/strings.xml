@@ -202,6 +202,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_fashion_menu_title">隱藏「時尚&amp;美妝」選單</string>
   <string name="morphe_hide_gaming_menu_title">隱藏「遊戲」選單</string>
   <string name="morphe_hide_hype_menu_title">隱藏「Hype」選單</string>
+  <string name="morphe_hide_learning_menu_title">隱藏「學習」選單</string>
   <string name="morphe_hide_live_menu_title">隱藏「直播」選單</string>
   <string name="morphe_hide_memberships_menu_title">隱藏「會員資格」選單</string>
   <string name="morphe_hide_movies_menu_title">隱藏「電影」選單</string>
@@ -216,7 +217,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_youtube_music_menu_title">隱藏 YouTube Music 選單</string>
   <string name="morphe_hide_youtube_kids_menu_title">隱藏 YouTube Kids 選單</string>
   <string name="morphe_hide_youtube_create_menu_title">隱藏 YouTube Create 選單</string>
-  <string name="morphe_hide_privacy_tos_footer_title">隱藏「隱私權政策 • 服務條款」頁尾</string>
+  <string name="morphe_hide_youtube_works_menu_title">隱藏「YouTube 運作方式」選單</string>
+  <string name="morphe_hide_privacy_tos_footer_title">隱藏法律和隱私權頁尾</string>
   <string name="morphe_comments_screen_title">留言區</string>
   <string name="morphe_comments_screen_summary">選擇要在評論區中隱藏哪些元件</string>
   <string name="morphe_hide_comments_carousel_title">啟用評論輪播過濾器</string>
@@ -327,9 +329,6 @@ Second \"item\" text"</string>
   <string name="morphe_copy_video_link_button_summary">輕觸以複製影片連結，按住以複製包含時間戳記的影片連結</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">預設複製時間戳</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">反轉「複製影片連結」按鈕的輕觸和長按操作</string>
-  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">移除觀眾謹慎觀看對話方塊</string>
-  <string name="morphe_remove_viewer_discretion_dialog_summary">這不會繞過年齡限制，只會自動按下同意。</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">停用「登入電視」彈出視窗</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -929,6 +928,11 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_summary">自動進到下一個 Shorts</string>
   <string name="morphe_shorts_autoplay_background_title">背景自動播放</string>
   <string name="morphe_shorts_autoplay_background_summary">在背景播放期間自動到 Shorts</string>
+  <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+  <string name="morphe_playback_in_feeds_title">feeds 中的播放</string>
+  <string name="morphe_playback_in_feeds_entry_always_on">持續開啟</string>
+  <string name="morphe_playback_in_feeds_entry_wifi_only">僅 Wi-Fi</string>
+  <string name="morphe_playback_in_feeds_entry_off">關閉</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">停用迷你播放器恢復功能</string>
   <string name="morphe_miniplayer_disable_resuming_summary">停用「繼續觀看」迷你播放器，這是 YouTube Premium 的功能，會在應用程式啟動時顯示</string>

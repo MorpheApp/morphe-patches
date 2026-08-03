@@ -159,6 +159,9 @@ To lahko pomaga pri prepoznavanju komponent pri ustvarjanju prilagojenih filtrov
   <string name="morphe_settings_menu_filter_screen_title">Filter menija za nastavitve</string>
   <string name="morphe_settings_menu_filter_screen_summary">Skrij elemente na zaslonu z nastavitvami aplikacije glede na njihovo vidno ime</string>
   <string name="morphe_settings_menu_filter_picker_empty">Odprite zaslon z nastavitvami aplikacije enkrat, da napolnite seznam</string>
+  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
+  <string name="morphe_remove_viewer_discretion_dialog_title">Odstrani dialog o opozorilu glede primernosti gledalca</string>
+  <string name="morphe_remove_viewer_discretion_dialog_summary">To ne obide omejitev starosti. To jo le avtomatsko sprejme</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Ponarejena različica aplikacije</string>
   <string name="morphe_spoof_app_version_summary">Prevara strežnika, da misli, da uporabljate starejšo različico aplikacije za ponovno vzpostavitev funkcij starejšega uporabniškega vmesnika.</string>

@@ -202,6 +202,7 @@ Breytingarnar fela í sér:
   <string name="morphe_hide_fashion_menu_title">Fela ‚Tíski &amp; Fegurð‘ valmynd</string>
   <string name="morphe_hide_gaming_menu_title">Fela Leikjavalmynd</string>
   <string name="morphe_hide_hype_menu_title">Fela Hype valmynd</string>
+  <string name="morphe_hide_learning_menu_title">Fela Learning valmynd</string>
   <string name="morphe_hide_live_menu_title">Fela Beina valmynd</string>
   <string name="morphe_hide_memberships_menu_title">Fela Aðildavalmynd</string>
   <string name="morphe_hide_movies_menu_title">Fela Kvikmyndavalmynd</string>
@@ -216,7 +217,8 @@ Breytingarnar fela í sér:
   <string name="morphe_hide_youtube_music_menu_title">Fela YouTube Music valmynd</string>
   <string name="morphe_hide_youtube_kids_menu_title">Fela YouTube Kids valmynd</string>
   <string name="morphe_hide_youtube_create_menu_title">Fela YouTube Create valmynd</string>
-  <string name="morphe_hide_privacy_tos_footer_title">Fela fótunotkun ‚Einkaleyfisreglur • Þjónustuskilmálar‘</string>
+  <string name="morphe_hide_youtube_works_menu_title">Fela \'Hvernig YouTube virkar\' valmynd</string>
+  <string name="morphe_hide_privacy_tos_footer_title">Fela lögleg og friðhelgis fótnota</string>
   <string name="morphe_comments_screen_title">Athugasemdir</string>
   <string name="morphe_comments_screen_summary">Veldu hvaða þættir birtast í athugasmdakassanum</string>
   <string name="morphe_hide_comments_carousel_title">Vírúð athugasemda karolínum</string>
@@ -327,9 +329,6 @@ Bankaðu hér til að opna AiSlopList.com og skoða niðurhal fyrir önnur kerfi
   <string name="morphe_copy_video_link_button_summary">Hnútur til að kopíera myndbandatengilinn, haltu inni til að kopíera með tímastampu</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">Afrita puntktarmerkið sjálfgefið</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">Snýr við hnappaðgerðunum á \'Bæta við myndbandatengil\'</string>
-  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">Fjarlægja ábyrgðarskilmáli</string>
-  <string name="morphe_remove_viewer_discretion_dialog_summary">Þetta umgekkur ekki aldurstakmörkunina. Það samþykkir hana bara sjálfkrafa</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Gerðu ekki birtu „Innskráningu á sjónvarpi“ á popup glugganum</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -925,6 +924,11 @@ Takmörkun: Ef 'Endurskapa gamla stjórnbara myndbands' er slökkt, gæti 'Fleir
   <string name="morphe_shorts_autoplay_summary">Spilar sjálfkrafa á næsta Short í stað þess að endurtaka það sem er núna</string>
   <string name="morphe_shorts_autoplay_background_title">Sjálfvirk spilun í bakgrunni</string>
   <string name="morphe_shorts_autoplay_background_summary">Spilar sjálfkrafa á næsta Short á meðan á bakgrunnaspilun stendur</string>
+  <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+  <string name="morphe_playback_in_feeds_title">Spilun í straumum</string>
+  <string name="morphe_playback_in_feeds_entry_always_on">Alltaf ákveikt</string>
+  <string name="morphe_playback_in_feeds_entry_wifi_only">Aðeins Wi-Fi</string>
+  <string name="morphe_playback_in_feeds_entry_off">Slökkt</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Lokað rætingarspilarann</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Gerir óvirkt \'Halda áfram að horfa\' litla spilara, YouTube Premium eiginleika sem birtist þegar appið ræsir</string>

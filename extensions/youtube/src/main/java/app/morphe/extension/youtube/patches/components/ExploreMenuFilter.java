@@ -57,6 +57,11 @@ public final class ExploreMenuFilter extends Filter {
                         "yt_outline_experimental_hype"
                 ),
                 new ByteArrayFilterGroup(
+                        Settings.HIDE_LEARNING_MENU,
+                        "yt_outline_lightbulb",
+                        "yt_outline_experimental_lightbulb"
+                ),
+                new ByteArrayFilterGroup(
                         Settings.HIDE_LIVE_MENU,
                         "yt_outline_radar_live",
                         "yt_outline_experimental_live"
@@ -120,6 +125,11 @@ public final class ExploreMenuFilter extends Filter {
                 new ByteArrayFilterGroup(
                         Settings.HIDE_YOUTUBE_STUDIO_MENU,
                         "product_logo_youtube_studio"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_YOUTUBE_WORKS_MENU,
+                        "yt_outline_info_circle",
+                        "yt_outline_experimental_info_circle"
                 )
         );
 
@@ -139,17 +149,18 @@ public final class ExploreMenuFilter extends Filter {
                 "more_drawer_button.e"
         );
 
-        final var privacyToS = new StringFilterGroup(
+        final var legalDisclosureAndPrivacyToS = new StringFilterGroup(
                 Settings.HIDE_PRIVACY_TOS_FOOTER,
+                "legal_disclosure.e",
                 "privacy_tos.e"
         );
 
         addPathCallbacks(
                 divider,
                 exploreMenu,
+                legalDisclosureAndPrivacyToS,
                 incognitoExploreButton,
-                moreDrawerButton,
-                privacyToS
+                moreDrawerButton
         );
     }
 

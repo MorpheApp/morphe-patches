@@ -202,10 +202,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_fashion_menu_title">패션 및 뷰티 메뉴 숨기기</string>
   <string name="morphe_hide_gaming_menu_title">게임 메뉴 숨기기</string>
   <string name="morphe_hide_hype_menu_title">하이프 메뉴 숨기기</string>
+  <string name="morphe_hide_learning_menu_title">학습 메뉴 숨기기</string>
   <string name="morphe_hide_live_menu_title">라이브 메뉴 숨기기</string>
   <string name="morphe_hide_memberships_menu_title">멤버십 메뉴 숨기기</string>
-  <string name="morphe_hide_movies_menu_title">영화 메뉴 숨기기</string>
-  <string name="morphe_hide_music_menu_title">영화 및 TV 메뉴 숨기기</string>
+  <string name="morphe_hide_movies_menu_title">영화 / 영화 및 TV 메뉴 숨기기</string>
+  <string name="morphe_hide_music_menu_title">음악 메뉴 숨기기</string>
   <string name="morphe_hide_news_menu_title">뉴스 메뉴 숨기기</string>
   <string name="morphe_hide_playables_menu_title">게임 룸 메뉴 숨기기</string>
   <string name="morphe_hide_podcasts_menu_title">팟캐스트 메뉴 숨기기</string>
@@ -216,7 +217,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_youtube_music_menu_title">YouTube Music 메뉴 숨기기</string>
   <string name="morphe_hide_youtube_kids_menu_title">YouTube Kids 메뉴 숨기기</string>
   <string name="morphe_hide_youtube_create_menu_title">YouTube Create 메뉴 숨기기</string>
-  <string name="morphe_hide_privacy_tos_footer_title">\'개인정보처리방침 • 서비스 약관\' 하단 살명 숨기기</string>
+  <string name="morphe_hide_youtube_works_menu_title">\'YouTube 작동의 원리\' 메뉴 숨기기</string>
+  <string name="morphe_hide_privacy_tos_footer_title">\'법률 및 개인정보 보호\' 하단 설명 숨기기</string>
   <string name="morphe_comments_screen_title">댓글</string>
   <string name="morphe_comments_screen_summary">댓글 섹션에 표시할 구성 요소를 설정할 수 있습니다</string>
   <string name="morphe_hide_comments_carousel_title">댓글 좌우 슬라이드 필터 활성화하기</string>
@@ -327,9 +329,6 @@ Second \"item\" text"</string>
   <string name="morphe_copy_video_link_button_summary">버튼을 탭하여 동영상 링크를 복사할 수 있고, 길게 탭하면 타임스탬프가 표기된 링크가 복사됩니다</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">기본적으로 타임스탬프 복사하기</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">동영상 링크 복사 버튼의 \'탭하기\'와 \'길게 탭하기\' 작업을 서로 변경합니다</string>
-  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">시청 경고 다이얼로그 제거하기</string>
-  <string name="morphe_remove_viewer_discretion_dialog_summary">이 설정은 다이얼로그를 자동으로 허용하기만 하며 연령 제한(성인인증 절차)을 우회할 수 없습니다</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">\'TV에 로그인\' 팝업 비활성화하기</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -407,7 +406,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_loop_video_range_label_start">시작</string>
   <string name="morphe_loop_video_range_label_end">끝</string>
   <string name="morphe_loop_video_range_hint_start">[hh:]mm:ss</string>
-  <string name="morphe_loop_video_range_hint_end">[hh:]mm:ss (지정 안 함 = 동영상 끝)</string>
+  <string name="morphe_loop_video_range_hint_end">[hh:]mm:ss (지정 안함 = 동영상 끝)</string>
   <string name="morphe_loop_video_range_set">설정</string>
   <string name="morphe_loop_video_range_clear">지우기</string>
   <string name="morphe_loop_video_range_toast_on">\'%1$s ~ %2$s\' 연속 재생</string>
@@ -448,7 +447,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_swap_save_and_queue_actions_title">저장과 현재 재생목록 작업 교환하기</string>
   <string name="morphe_swap_save_and_queue_actions_summary">버튼을 탭하여 현재 재생목록 옵션을 실행할 수 있고, 길게 탭하면 나중에 볼 동영상에 저장됩니다</string>
   <string name="morphe_queue_override_flyout_menu_title">피드 메뉴 현재 재생목록 버튼 재정의하기</string>
-  <string name="morphe_queue_override_flyout_menu_summary">\'현재 재생목록에서 다음 순서로 재생\' 메뉴를 탭하면 YouTube 현재 재생목록 대신 Morphe 현재 재생목록을 실행됩니다</string>
+  <string name="morphe_queue_override_flyout_menu_summary">\'현재 재생목록에서 다음 순서로 재생\' 메뉴를 탭하면 YouTube 현재 재생목록 대신 Morphe 현재 재생목록이 실행됩니다</string>
   <string name="morphe_queue_manager_check_failed_auth">로그인하지 않았습니다</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">재생목록 ID가 없습니다</string>
   <string name="morphe_queue_manager_check_failed_queue">현재 재생목록이 비어 있습니다</string>
@@ -619,11 +618,11 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">자동 자막 표시 여부</string>
   <string name="morphe_auto_captions_style_entry_1">항상 표시</string>
-  <string name="morphe_auto_captions_style_entry_2">표시 안 함</string>
+  <string name="morphe_auto_captions_style_entry_2">표시 안함</string>
   <string name="morphe_auto_captions_style_entry_3">음소거 해제 시 표시</string>
   <string name="morphe_auto_captions_style_entry_4">음소거 시 표시</string>
   <string name="morphe_auto_captions_style_legacy_entry_1">자동 자막을 표시</string>
-  <string name="morphe_auto_captions_style_legacy_entry_2">자동 자막을 표시 안 함</string>
+  <string name="morphe_auto_captions_style_legacy_entry_2">자동 자막을 표시 안함</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">자막 쿠키 설정</string>
   <string name="morphe_set_caption_cookies_summary">"쿠키 누락으로 인해 자동 번역 자막을 사용할 수 없는 기본 YouTube의 버그를 수정할 수 있습니다
@@ -833,7 +832,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_disable_player_popup_panels_summary">재생목록 및 실시간 채팅 패널이 자동으로 열리지 않도록 비활성화합니다</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">동영상 종료 시 전체 화면 모드 나가기</string>
-  <string name="morphe_exit_fullscreen_entry_1">사용 안 함</string>
+  <string name="morphe_exit_fullscreen_entry_1">사용 안함</string>
   <string name="morphe_exit_fullscreen_entry_2">세로 모드에서만</string>
   <string name="morphe_exit_fullscreen_entry_3">가로 모드에서만</string>
   <string name="morphe_exit_fullscreen_entry_4">세로 및 가로 모드</string>
@@ -845,7 +844,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">아래로 스와이프하여 전체 화면 종료 제스처 비활성화하기 (전체 화면)</string>
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
   <string name="morphe_open_videos_fullscreen_title">전체 화면 모드로 동영상 열기</string>
-  <string name="morphe_open_videos_fullscreen_entry_1">사용 안 함</string>
+  <string name="morphe_open_videos_fullscreen_entry_1">사용 안함</string>
   <string name="morphe_open_videos_fullscreen_entry_2">세로 모드</string>
   <string name="morphe_open_videos_fullscreen_entry_3">가로 모드</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
@@ -931,6 +930,11 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_shorts_autoplay_summary">현재 Shorts를 반복 재생하는 대신 다음 Shorts로 자동으로 넘어갑니다</string>
   <string name="morphe_shorts_autoplay_background_title">백그라운드에서 자동재생</string>
   <string name="morphe_shorts_autoplay_background_summary">백그라운드 재생 중에 다음 Shorts로 자동으로 넘어갑니다</string>
+  <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+  <string name="morphe_playback_in_feeds_title">피드에서 재생</string>
+  <string name="morphe_playback_in_feeds_entry_always_on">항상 사용</string>
+  <string name="morphe_playback_in_feeds_entry_wifi_only">Wi-Fi 전용</string>
+  <string name="morphe_playback_in_feeds_entry_off">사용 안함</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">미니 플레이어 다시 시작 비활성화하기</string>
   <string name="morphe_miniplayer_disable_resuming_summary">앱 시작 시 \'이어서 시청하기\' 미니플레이어가 나타나지 않도록 합니다. 이 기능은 YouTube Premium 기능입니다</string>
@@ -938,7 +942,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_miniplayer_screen_summary">최소화된 동영상 플레이어의 레이아웃 및 동작을 설정할 수 있습니다</string>
   <string name="morphe_miniplayer_not_available_summary">YouTube에서 모든 추가 미니플레이어가 제거되었습니다. 미니플레이어 유형을 변경하려면 YouTube 21.28.207 이하 버전을 패치해야 합니다</string>
   <string name="morphe_miniplayer_type_title">미니 플레이어 유형</string>
-  <string name="morphe_miniplayer_type_entry_0">사용 안 함</string>
+  <string name="morphe_miniplayer_type_entry_0">사용 안함</string>
   <string name="morphe_miniplayer_type_entry_1">기본값</string>
   <string name="morphe_miniplayer_type_entry_2">최소화</string>
   <string name="morphe_miniplayer_type_entry_3">태블릿</string>
@@ -966,7 +970,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_gradient_loading_screen_title">그라데이션 색상 로딩 화면 활성화하기</string>
   <string name="morphe_gradient_loading_screen_summary">로딩 화면에 단색 대신 그라데이션 배경을 표시합니다</string>
   <string name="morphe_splash_screen_animation_style_title">스플래시 애니메이션 스타일</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">사용 안 함</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">사용 안함</string>
   <string name="morphe_splash_screen_animation_style_entry_2">컬러</string>
   <string name="morphe_splash_screen_animation_style_entry_3">흑백</string>
   <string name="morphe_seekbar_custom_color_title">사용자 정의 재생바 색상 활성화하기</string>

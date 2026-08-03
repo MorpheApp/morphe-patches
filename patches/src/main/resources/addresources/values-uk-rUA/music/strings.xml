@@ -34,7 +34,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_feed_title">Стрічка</string>
   <string name="morphe_settings_music_screen_3_general_title">Загальні</string>
   <string name="morphe_settings_music_screen_4_player_title">Плеєр</string>
-  <string name="morphe_settings_music_screen_8_misc_title">Різне</string>
+  <string name="morphe_settings_music_screen_5_lyrics_title">Тексти пісень</string>
+  <string name="morphe_settings_music_screen_9_misc_title">Різне</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Приховати пункт \"Підписатися на Music Premium\"</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Приховати рекламу Music Premium</string>
@@ -53,7 +54,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_repeat_button_title">Приховати кнопку \"Повторювати\"</string>
   <string name="morphe_music_hide_shuffle_button_title">Приховати кнопку \"Перемішати\"</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Приховати панель \"Швидкий вибір\"</string>
-  <string name="morphe_music_hide_suggested_for_you_shelf_title">Приховати панель \"Рекомендовано для вас\"</string>
   <string name="morphe_music_comments_screen_title">Коментарі</string>
   <string name="morphe_music_comments_screen_summary">Виберіть, які компоненти будуть показуватися в секції коментарів</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Приховати правила спільноти</string>
@@ -296,6 +296,35 @@ YouTube Music 8.x - плавний перехід працює лише на в�
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling автоматично відстежує музику, яку ви відтворюєте на YouTube Music, і синхронізує її з вашим профілем на Last.fm або ListenBrainz
 
 Щоб scrobbling надійно працював у фоновому режимі, переконайтеся, що для YouTube Music у налаштуваннях використання батареї системою встановлено значення \"Без обмежень\""</string>
+  <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_enabled_title">Використовувати сторонні тексти пісень</string>
+  <string name="morphe_music_lyrics_enabled_summary">Показує текст пісні зі стороннього сервісу, повертаючись до вбудованого тексту, якщо нічого не знайдено</string>
+  <string name="morphe_music_lyrics_source_title">Сервіс текстів пісень</string>
+  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
+  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, потім KuGou</string>
+  <string name="morphe_music_lyrics_tap_to_seek_title">Натисніть на рядок для переходу</string>
+  <string name="morphe_music_lyrics_tap_to_seek_summary">Натискання на рядок переходить до цього моменту в пісні</string>
+  <string name="morphe_music_lyrics_copy_button_title">Показувати кнопку копіювання тексту</string>
+  <string name="morphe_music_lyrics_translate_button_title">Показувати кнопку перекладу тексту</string>
+  <string name="morphe_music_lyrics_text_size_title">Розмір тексту</string>
+  <string name="morphe_music_lyrics_text_size_summary">Розмір тексту пісні</string>
+  <string name="morphe_music_lyrics_offset_ms_title">Зсув синхронізації</string>
+  <string name="morphe_music_lyrics_offset_ms_summary">Зсуває синхронізований текст уперед або назад. Використовуйте додатне значення, якщо текст випереджає пісню</string>
+  <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
+  <string name="morphe_music_lyrics_source_label">Джерело: %s</string>
+  <!-- Tappable label under the lyrics that turns the translation on. -->
+  <string name="morphe_music_lyrics_translate_show">Перекласти</string>
+  <string name="morphe_music_lyrics_translate_hide">Показати оригінал</string>
+  <string name="morphe_music_lyrics_translating">Переклад…</string>
+  <string name="morphe_music_lyrics_translate_failed">Не вдалося перекласти текст пісні</string>
+  <string name="morphe_music_lyrics_copy">Копіювати</string>
+  <string name="morphe_music_lyrics_copied">Скопійовано в буфер обміну</string>
+  <string name="morphe_music_lyrics_about_title">Про сторонні тексти пісень</string>
+  <string name="morphe_music_lyrics_about_summary">"Текст пісні шукається за назвою треку та виконавцем, тому трек з нетиповими метаданими може не знайти нічого, або знайти неправильну версію
+
+Синхронізований текст слідує за відтворенням. Якщо він розходиться, налаштуйте зсув синхронізації
+
+Якщо сторонній текст не знайдено, замість нього показується вбудований текст"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - Відновити стару спливну панель</string>
   <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - Вимкнути текст пісні в реальному часі</string>

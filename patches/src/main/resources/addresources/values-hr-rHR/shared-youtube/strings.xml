@@ -118,6 +118,8 @@ Međutim, omogućavanjem ove postavke zabilježit će se i neki korisnički poda
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Popis nizova alata za izradu putanja komponenti za filtriranje, odvojenih novim retcima</string>
   <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
+  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
+  <string name="morphe_remove_viewer_discretion_dialog_summary">Ovo ne zaobilazi ograničenje dobi. Jednostavno ga automatski prihvaća.</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->

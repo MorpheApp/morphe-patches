@@ -68,7 +68,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_expandable_card_entry_3">Приховати всі</string>
   <string name="morphe_hide_floating_microphone_button_title">Приховати плаваючу кнопку мікрофона</string>
   <string name="morphe_hide_floating_microphone_button_summary">Приховує плаваючу кнопку мікрофона в правому нижньому куті екрана пошукових підказок</string>
-  <string name="morphe_hide_get_premium_button_title">Приховати кнопку \"Отримати Premium\"</string>
+  <string name="morphe_hide_get_premium_button_title">Приховати кнопку \"Придбати підписку Premium\"</string>
   <string name="morphe_hide_horizontal_shelves_title">Приховати горизонтальні панелі</string>
   <string name="morphe_hide_horizontal_shelves_summary">Приховує горизонтальні панелі, зокрема Останні новини, Рекомендовані дописи спільноти, Продовжити перегляд, Перегляньте більше каналів, Перегляньте більше тем, Для вас, Останні відео, Найбільш релевантні, Дописи зі спільноти автора, Покупки та Переглянути знову</string>
   <string name="morphe_hide_hyped_label_title">Приховати мітку \"У тренді\"</string>
@@ -202,6 +202,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_fashion_menu_title">Приховати меню \"Мода та Краса\"</string>
   <string name="morphe_hide_gaming_menu_title">Приховати меню \"Ігри\"</string>
   <string name="morphe_hide_hype_menu_title">Приховати меню \"Hype\"</string>
+  <string name="morphe_hide_learning_menu_title">Приховати меню \"Навчання\"</string>
   <string name="morphe_hide_live_menu_title">Приховати меню \"Прямі трансляції\"</string>
   <string name="morphe_hide_memberships_menu_title">Приховати меню \"Спонсорство\"</string>
   <string name="morphe_hide_movies_menu_title">Приховати меню \"Фільми\"</string>
@@ -216,7 +217,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_youtube_music_menu_title">Приховати меню \"YouTube Music\"</string>
   <string name="morphe_hide_youtube_kids_menu_title">Приховати меню \"YouTube Kids\"</string>
   <string name="morphe_hide_youtube_create_menu_title">Приховати меню \"YouTube Create\"</string>
-  <string name="morphe_hide_privacy_tos_footer_title">Приховати нижній колонтитул \"Політика конфіденційності • Умови використання\"</string>
+  <string name="morphe_hide_youtube_works_menu_title">Приховати меню \"Як працює YouTube\"</string>
+  <string name="morphe_hide_privacy_tos_footer_title">Приховати нижні колонтитули з юридичною інформацією та конфіденційністю</string>
   <string name="morphe_comments_screen_title">Коментарі</string>
   <string name="morphe_comments_screen_summary">Виберіть, які компоненти будуть показуватися в секції коментарів</string>
   <string name="morphe_hide_comments_carousel_title">Увімкнути фільтр каруселі коментарів</string>
@@ -327,9 +329,6 @@ Second \"item\" text"</string>
   <string name="morphe_copy_video_link_button_summary">Торкніться, щоб скопіювати посилання на відео, торкніться й утримуйте, щоб скопіювати з позначкою часу</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">Копіювати мітку часу за замовчуванням</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">Змінює місцями одноразове та тривале натискання для кнопки \"Копіювати посилання на відео\"</string>
-  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">Вилучити діалог про неприйнятний контент</string>
-  <string name="morphe_remove_viewer_discretion_dialog_summary">Це не обходить вікові обмеження, а просто приймає їх автоматично</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Вимкнути вікно \"Увійти на телевізорі\"</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -928,6 +927,11 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_summary">Автоматично переходить до наступного Short замість повторення поточного</string>
   <string name="morphe_shorts_autoplay_background_title">Автоматичне відтворення у фоновому режимі</string>
   <string name="morphe_shorts_autoplay_background_summary">Автоматично переходить до наступного Short під час фонового відтворення</string>
+  <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+  <string name="morphe_playback_in_feeds_title">Відтворення в стрічках</string>
+  <string name="morphe_playback_in_feeds_entry_always_on">Завжди ввімкнено</string>
+  <string name="morphe_playback_in_feeds_entry_wifi_only">Лише Wi-Fi</string>
+  <string name="morphe_playback_in_feeds_entry_off">Вимкнено</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Вимкнути відновлення мініплеєра</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Вимикає мініплеєр \"Продовжити перегляд\", функцію YouTube Premium, що з\'являється при запуску застосунку</string>

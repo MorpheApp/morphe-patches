@@ -34,7 +34,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_feed_title">Beatha</string>
   <string name="morphe_settings_music_screen_3_general_title">Ginearálta</string>
   <string name="morphe_settings_music_screen_4_player_title">Seinnteoir</string>
-  <string name="morphe_settings_music_screen_8_misc_title">Ilghnéitheach</string>
+  <string name="morphe_settings_music_screen_5_lyrics_title">Liricí</string>
+  <string name="morphe_settings_music_screen_9_misc_title">Ilghnéitheach</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Folaigh an lipéad \'Faigh Ceoil Préimhe\'</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Folaigh ardú céime Music Premium</string>
@@ -53,7 +54,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_repeat_button_title">Folaigh an cnaipe Athdhéanamh</string>
   <string name="morphe_music_hide_shuffle_button_title">Folaigh an cnaipe Suaitheadh</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Folaigh an seilf \'Diailigh luas\'</string>
-  <string name="morphe_music_hide_suggested_for_you_shelf_title">Folaigh an tseilf \'Molta duit\'</string>
   <string name="morphe_music_comments_screen_title">Tráchtanna</string>
   <string name="morphe_music_comments_screen_summary">Roghnaigh cé na comhpháirteanna a thaispeánfar sa chuid tuairimí</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Folaigh Treoirlínte an Phobail</string>
@@ -296,6 +296,35 @@ YouTube Music 8.x — ní ritheann an traschéimniú ach ar 9.x agus níos nuaí
   <string name="morphe_music_scrobbling_about_summary">"Sincronóireann scrobbling do úsáid YouTube Music le do phróifíl Last.fm or ListenBrainz go huathoimatic
 
 Chun a chinntiú go bhfuil scrobbling i gcóir le linn imirt san chúlra, déan cinnte go bhfuil úsáid batáire aipe YouTube Music socraithe go \"Gan teorainn\""</string>
+  <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_enabled_title">Úsáid liricí tríú páirtí</string>
+  <string name="morphe_music_lyrics_enabled_summary">Taispeánann liricí ón tseirbhís tríú páirtí, agus filleann ar na liricí atá tógtha isteach nuair nach mbíonn ceann ar fáil</string>
+  <string name="morphe_music_lyrics_source_title">Seirbhís Liricí</string>
+  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
+  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, ansin KuGou</string>
+  <string name="morphe_music_lyrics_tap_to_seek_title">Tapáil líne chun lóghadh a dhéanamh</string>
+  <string name="morphe_music_lyrics_tap_to_seek_summary">Cliceáil ar líne chun bogadh go dtí an tráth sin sa ráta</string>
+  <string name="morphe_music_lyrics_copy_button_title">Taispeáin an cnaipe cóipeála líricí</string>
+  <string name="morphe_music_lyrics_translate_button_title">Taispeáin an cnaipe aistriúcháin líricí</string>
+  <string name="morphe_music_lyrics_text_size_title">Méid téacs</string>
+  <string name="morphe_music_lyrics_text_size_summary">Méid an téacs líricí</string>
+  <string name="morphe_music_lyrics_offset_ms_title">Comhluasteacht ama</string>
+  <string name="morphe_music_lyrics_offset_ms_summary">Bog líricí comhluasteacha siar nó osста. Úsáid luach dearfach má tá na líricí osclaonta in aghaidh an cheoin</string>
+  <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
+  <string name="morphe_music_lyrics_source_label">Foinse: %s</string>
+  <!-- Tappable label under the lyrics that turns the translation on. -->
+  <string name="morphe_music_lyrics_translate_show">Aistriú</string>
+  <string name="morphe_music_lyrics_translate_hide">Taispeáin an bunleagan</string>
+  <string name="morphe_music_lyrics_translating">Ag aistriú…</string>
+  <string name="morphe_music_lyrics_translate_failed">Ní féidir na líricí a aistriú</string>
+  <string name="morphe_music_lyrics_copy">Cóipeáil</string>
+  <string name="morphe_music_lyrics_copied">Cóipeáilte chuig an ghearrthaisce</string>
+  <string name="morphe_music_lyrics_about_title">Maidir le líricí aige third-party</string>
+  <string name="morphe_music_lyrics_about_summary">"Lorgtear na líricí trí théaghlach an ráta agus an t-ealaíontóir, mar sin seans nach bhfaighidh ráta le meataid eolaíoch (metadata) neamhghnách fa nada, nó go bhfaighidh sé an leagan mícheart
+
+Leanann líricí comhluasteacha an seinnimh. Má tá siad ag titim as comhluasteacht, cuir leagú ar an gcomhluasteacht ama
+
+Nuair nach aimsítear aon líricí aige third-party, taispeántar na líricí féin in ionad eachtranacha"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - Athchóirigh an seanphainéal eitilte</string>
   <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - Liricí fíor-ama a dhíchumasú</string>

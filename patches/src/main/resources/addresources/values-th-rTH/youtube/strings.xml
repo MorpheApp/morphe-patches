@@ -202,6 +202,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_fashion_menu_title">ซ่อนป</string>
   <string name="morphe_hide_gaming_menu_title">ซ่อนเมนูเกม</string>
   <string name="morphe_hide_hype_menu_title">ซ่อนเมนู Hype</string>
+  <string name="morphe_hide_learning_menu_title">ซ่อนเมนูการเรียนรู้</string>
   <string name="morphe_hide_live_menu_title">ซ่อนเมนูไลฟ์สด</string>
   <string name="morphe_hide_memberships_menu_title">ซ่อนเมนูสมาชิก</string>
   <string name="morphe_hide_movies_menu_title">ซ่อนเมนูภาพยนตร์</string>
@@ -216,7 +217,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_youtube_music_menu_title">ซ่อนเมนู YouTube Music</string>
   <string name="morphe_hide_youtube_kids_menu_title">ซ่อนเมนู YouTube Kids</string>
   <string name="morphe_hide_youtube_create_menu_title">ซ่อนเมนู YouTube Create</string>
-  <string name="morphe_hide_privacy_tos_footer_title">ซ่อนส่วนท้าย \'นโยบายความเป็นส่วนตัว • ข้อกำหนดการให้บริการ\'</string>
+  <string name="morphe_hide_youtube_works_menu_title">ซ่อนเมนู \'วิธีการทำงานของ YouTube\'</string>
+  <string name="morphe_hide_privacy_tos_footer_title">ซ่อนส่วนท้ายด้านกฎหมายและความเป็นส่วนตัว</string>
   <string name="morphe_comments_screen_title">ความคิดเห็น</string>
   <string name="morphe_comments_screen_summary">เลือกส่วนประกอบที่จะปรากฏในส่วนความคิดเห็น</string>
   <string name="morphe_hide_comments_carousel_title">เปิดใช้งานตัวกรองแคโรเซิลความคิดเห็น</string>
@@ -327,9 +329,6 @@ Second \"item\" text"</string>
   <string name="morphe_copy_video_link_button_summary">แตะเพื่อคัดลอกลิงก์วิดีโอ แตะค้างไว้เพื่อคัดลอกพร้อมตราประทับเวลา</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">คัดลอกตราประทับเวลาโดยค่าเริ่มต้น</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">สลับการทำงานของการแตะและการแตะค้างไว้สำหรับปุ่ม \'คัดลอกลิงก์วิดีโอ\'</string>
-  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">ลบกล่องโต้ตอบการพิจารณาของผู้ชม</string>
-  <string name="morphe_remove_viewer_discretion_dialog_summary">ไม่ได้หลีกเลี่ยงข้อจำกัดอายุ เพียงแต่ยอมรับโดยอัตโนมัติ</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">ปิดใช้งานป๊อปอัปเข้าสู่ระบบไปยังทีวี</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -929,6 +928,11 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_summary">เล่น Shorts ถัดไปโดยอัตโนมัติแทนที่จะเล่นซ้ำ Shorts ปัจจุบัน</string>
   <string name="morphe_shorts_autoplay_background_title">เล่นอัตโนมัติในเบื้องหลัง</string>
   <string name="morphe_shorts_autoplay_background_summary">เล่น Shorts ถัดไปโดยอัตโนมัติระหว่างการเล่นในเบื้องหลัง</string>
+  <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+  <string name="morphe_playback_in_feeds_title">การเล่นในฟีด</string>
+  <string name="morphe_playback_in_feeds_entry_always_on">เปิดตลอดเวลา</string>
+  <string name="morphe_playback_in_feeds_entry_wifi_only">Wi-Fi เท่านั้น</string>
+  <string name="morphe_playback_in_feeds_entry_off">ปิด</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">ปิดใช้งานการกลับมาเล่นต่อของมินิเพลเยอร์</string>
   <string name="morphe_miniplayer_disable_resuming_summary">ปิดใช้งานเครื่องเล่นขนาดเล็ก \'ดูต่อ\' ซึ่งเป็นคุณสมบัติพิเศษสำหรับ YouTube Premium ที่ปรากฏขึ้นเมื่อเริ่มต้นแอป</string>

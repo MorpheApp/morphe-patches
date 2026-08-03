@@ -219,8 +219,6 @@ Second \"item\" text"</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_copy_video_link_with_timestamp_button_title">Копирајте го временскиот печат стандардно</string>
-  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">Отстранете го дијалогот за дискреција на гледачите</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Исклучи прозорче за најава на ТВ</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -683,6 +681,7 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_summary">Аоларка Спот отвори</string>
   <string name="morphe_shorts_autoplay_background_title">Аотоматски оток на кошули</string>
   <string name="morphe_shorts_autoplay_background_summary">Аотоматски лор и ризик во окртна спостр</string>
+  <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Исклучи продолжување на мини-плеер</string>
   <string name="morphe_miniplayer_screen_title">Мини-плеер</string>

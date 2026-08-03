@@ -161,6 +161,9 @@ Cependant, activer cette option entraînera également l'enregistrement de certa
   <string name="morphe_settings_menu_filter_screen_title">Filtre du menu des paramètres</string>
   <string name="morphe_settings_menu_filter_screen_summary">Masquer les éléments sur l’écran standard des paramètres de l’application par leur nom visible</string>
   <string name="morphe_settings_menu_filter_picker_empty">Ouvrez l’écran standard des paramètres de l’application une fois pour remplir la liste</string>
+  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
+  <string name="morphe_remove_viewer_discretion_dialog_title">Supprimer la boîte de dialogue d’avertissement</string>
+  <string name="morphe_remove_viewer_discretion_dialog_summary">Cela ne contourne pas la restriction d\'âge. Elle est simplement acceptée automatiquement</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Falsifier la version de l\'application</string>
   <string name="morphe_spoof_app_version_summary">Fait croire au serveur que vous utilisez une ancienne version de l\'application afin de restaurer des fonctionnalités d\'interface héritées</string>

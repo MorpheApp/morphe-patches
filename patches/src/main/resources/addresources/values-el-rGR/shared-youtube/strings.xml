@@ -161,6 +161,9 @@ Second \"item\" text"</string>
   <string name="morphe_settings_menu_filter_screen_title">Φίλτρο μενού ρυθμίσεων</string>
   <string name="morphe_settings_menu_filter_screen_summary">Απόκρυψη στοιχείων στην οθόνη ρυθμίσεων της εφαρμογής βάσει του ορατού ονόματός τους</string>
   <string name="morphe_settings_menu_filter_picker_empty">Ανοίξτε την τυπική οθόνη ρυθμίσεων της εφαρμογής μία φορά για να συμπληρώσετε τη λίστα</string>
+  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
+  <string name="morphe_remove_viewer_discretion_dialog_title">Αφαίρεση διαλόγου προειδοποίησης για την προτίμηση του θεατή</string>
+  <string name="morphe_remove_viewer_discretion_dialog_summary">Αυτό δεν παρακάμπτει τον περιορισμό ηλικίας. Απλώς τον αποδέχεται αυτόματα</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Παραποίηση έκδοσης εφαρμογής</string>
   <string name="morphe_spoof_app_version_summary">Εξαπατά τον διακομιστή ώστε να νομίζει ότι χρησιμοποιείτε μια παλαιότερη έκδοση εφαρμογής για να επαναφέρετε παλαιότερα στοιχεία διεπαφής χρήστη</string>

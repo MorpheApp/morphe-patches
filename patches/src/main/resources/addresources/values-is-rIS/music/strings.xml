@@ -34,7 +34,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_feed_title">Straumur</string>
   <string name="morphe_settings_music_screen_3_general_title">Almennt</string>
   <string name="morphe_settings_music_screen_4_player_title">Spilari</string>
-  <string name="morphe_settings_music_screen_8_misc_title">Ýmislegt</string>
+  <string name="morphe_settings_music_screen_5_lyrics_title">Lýrtextar</string>
+  <string name="morphe_settings_music_screen_9_misc_title">Annað</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Fela merkið \'Fá Morphe Premium\'</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Fela kynningar á Music Premium</string>
@@ -53,7 +54,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_repeat_button_title">Fela Repeat button</string>
   <string name="morphe_music_hide_shuffle_button_title">Fela Shuffle button</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Fela \'Speed dial\' shelf</string>
-  <string name="morphe_music_hide_suggested_for_you_shelf_title">Fela \'Suggested for you\' shelf</string>
   <string name="morphe_music_comments_screen_title">Athugasemdir</string>
   <string name="morphe_music_comments_screen_summary">Veldu hvaða þættir koma fram í athugasemdadeildinni</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Fela samfélagsreglur</string>
@@ -296,6 +296,35 @@ YouTube Music 8.x — crossfade virkar bara á 9.x og nýrri útgáfum"</string>
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling samstilla sjálfkranlega notkun þína á YouTube Music með prófílinu þínu á Last.fm eða ListenBrainz
 
 Til þess að tryggja að scrobbling sé samstilla á meðan spilað er í bakgrunni, vertu viss um að notkunarstilling YouTube Music rafmagns sé stillt á \"Ótakmarkað\""</string>
+  <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_enabled_title">Nota lög frá þriðja aðila</string>
+  <string name="morphe_music_lyrics_enabled_summary">Sýnir lög frá þriðja aðila, með fallbak til innbyggðra laga þegar engin eru fundin</string>
+  <string name="morphe_music_lyrics_source_title">Lögþjónusta</string>
+  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
+  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, þá KuGou</string>
+  <string name="morphe_music_lyrics_tap_to_seek_title">Tap á línu til að flýta</string>
+  <string name="morphe_music_lyrics_tap_to_seek_summary">Að tap á línu fer í þann tíma í laginu.</string>
+  <string name="morphe_music_lyrics_copy_button_title">Sýna hnapp til að afrita texta</string>
+  <string name="morphe_music_lyrics_translate_button_title">Sýna hnapp til að þýða texta</string>
+  <string name="morphe_music_lyrics_text_size_title">Leturstærð</string>
+  <string name="morphe_music_lyrics_text_size_summary">Stærð textans.</string>
+  <string name="morphe_music_lyrics_offset_ms_title">Tímaleiðrétting</string>
+  <string name="morphe_music_lyrics_offset_ms_summary">Færðu samstilltan texta áfram eða afturábak. Notaðu jákvæða tölu ef textinn er á undan laginu.</string>
+  <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
+  <string name="morphe_music_lyrics_source_label">Uppspretta: %s</string>
+  <!-- Tappable label under the lyrics that turns the translation on. -->
+  <string name="morphe_music_lyrics_translate_show">Þýða</string>
+  <string name="morphe_music_lyrics_translate_hide">Sýna upprunalegan texta</string>
+  <string name="morphe_music_lyrics_translating">Þýðing á ferð…</string>
+  <string name="morphe_music_lyrics_translate_failed">Gat ekki þýtt textann</string>
+  <string name="morphe_music_lyrics_copy">Afrita</string>
+  <string name="morphe_music_lyrics_copied">Afritað í klemmuskrá</string>
+  <string name="morphe_music_lyrics_about_title">Um þriðja aðila texta</string>
+  <string name="morphe_music_lyrics_about_summary">"Textar eru skoðaðir eftir lagtitli og flytjanda, svo lag með óvenjulegar upplýsingar finna kann að finna engan texta, eða finna ranga útgáfu.
+
+Samstilltir textar fylgja spilun. Ef þeir detta úr gildi, stilltu tímaleiðréttingu.
+
+Þegar enginn texti frá þriðja aðila er fundinn, eru innbyggðir textar sýndir í staðinn."</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - Endurstaðsett gamlan útlitsglugga</string>
   <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - Gerja rauntímalýrik óvirkar</string>

@@ -202,6 +202,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_fashion_menu_title">إخفاء قائمة \'الموضة والجمال\'</string>
   <string name="morphe_hide_gaming_menu_title">إخفاء قائمة ألعاب فيديو</string>
   <string name="morphe_hide_hype_menu_title">إخفاء قائمة التشجيع</string>
+  <string name="morphe_hide_learning_menu_title">إخفاء قائمة محتوى تعليمي</string>
   <string name="morphe_hide_live_menu_title">إخفاء قائمة بث مباشر</string>
   <string name="morphe_hide_memberships_menu_title">إخفاء قائمة العضويات</string>
   <string name="morphe_hide_movies_menu_title">إخفاء قائمة الأفلام</string>
@@ -216,7 +217,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_youtube_music_menu_title">إخفاء قائمة YouTube Music</string>
   <string name="morphe_hide_youtube_kids_menu_title">إخفاء قائمة YouTube Kids</string>
   <string name="morphe_hide_youtube_create_menu_title">إخفاء قائمة YouTube Create</string>
-  <string name="morphe_hide_privacy_tos_footer_title">إخفاء نص \'سياسة الخصوصية • بنود الخدمة\'</string>
+  <string name="morphe_hide_youtube_works_menu_title">إخفاء قائمة \'كيف يعمل YouTube\'</string>
+  <string name="morphe_hide_privacy_tos_footer_title">إخفاء نص سياسة الخصوصية • بنود الخدمة</string>
   <string name="morphe_comments_screen_title">التعليقات</string>
   <string name="morphe_comments_screen_summary">اختر المكونات التي تظهر في قسم التعليقات</string>
   <string name="morphe_hide_comments_carousel_title">تمكين شريط تصفية التعليقات</string>
@@ -327,9 +329,6 @@ Second \"item\" text"</string>
   <string name="morphe_copy_video_link_button_summary">انقر لنسخ رابط الفيديو، واضغط مع الاستمرار لنسخه مع الطابع الزمني</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">نسخ الطابع الزمني افتراضيًا</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">يعكس إجراءات النقر والضغط المطول لزر \'نسخ رابط الفيديو\'</string>
-  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">إزالة نافذة تحذير تقدير المشاهد</string>
-  <string name="morphe_remove_viewer_discretion_dialog_summary">هذا لا يتجاوز شرط العمر. بل يقبله تلقائيًا</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">تعطيل نافذة \'تسجيل الدخول إلى التلفزيون\'</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -934,6 +933,11 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_shorts_autoplay_summary">ينتقل إلى Short التالي تلقائيًا بدلًا من تكرار Short الحالي</string>
   <string name="morphe_shorts_autoplay_background_title">التشغيل التلقائي في الخلفية</string>
   <string name="morphe_shorts_autoplay_background_summary">ينتقل إلى Short التالي تلقائيًا أثناء التشغيل في الخلفية</string>
+  <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+  <string name="morphe_playback_in_feeds_title">التشغيل في الخلاصات</string>
+  <string name="morphe_playback_in_feeds_entry_always_on">مفعّل دائمًا</string>
+  <string name="morphe_playback_in_feeds_entry_wifi_only">فقط Wi-Fi</string>
+  <string name="morphe_playback_in_feeds_entry_off">متوقف</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">تعطيل استئناف مشغل الفيديو المصغر</string>
   <string name="morphe_miniplayer_disable_resuming_summary">يعطّل مشغل \'متابعة المشاهدة\' المصغر، وهي ميزة YouTube Premium تظهر عند بدء تشغيل التطبيق</string>

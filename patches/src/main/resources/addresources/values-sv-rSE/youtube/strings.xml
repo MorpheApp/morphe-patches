@@ -208,9 +208,6 @@ Vissa layouter på serversidan kanske inte återställs.
   <string name="morphe_hide_youtube_premium_promotions_title">Dölj YouTube Premium-kampanjer</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
-  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">Ta bort dialogrutan Känsliga tittare varnas</string>
-  <string name="morphe_remove_viewer_discretion_dialog_summary">Detta kringgår inte åldersbegränsningen. Det bara godkänner automatiskt</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Inaktivera popup-fönster om att logga in på TV:n</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -635,6 +632,7 @@ Om du vill komma åt inställningarna aktiverar du knappen Inställningar via Al
   <string name="morphe_shorts_autoplay_summary">Fortsätter till nästa Shorts-video automatiskt istället för att upprepa den aktuella</string>
   <string name="morphe_shorts_autoplay_background_title">Automatisk uppspelning i bakgrunden</string>
   <string name="morphe_shorts_autoplay_background_summary">Fortsätter till nästa Shorts-video automatiskt under uppspelning i bakgrunden</string>
+  <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Inaktivera att minispelaren fortsätter</string>
   <string name="morphe_miniplayer_screen_title">Minispelare</string>

@@ -34,7 +34,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_feed_title">Oqim</string>
   <string name="morphe_settings_music_screen_3_general_title">Umumiy</string>
   <string name="morphe_settings_music_screen_4_player_title">Player</string>
-  <string name="morphe_settings_music_screen_8_misc_title">Qo‘shimcha</string>
+  <string name="morphe_settings_music_screen_5_lyrics_title">Matnlar</string>
+  <string name="morphe_settings_music_screen_9_misc_title">Qo‘shimcha</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">\'Premiumga ulanish\' yozuvini yashirish</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Musiqa Premium aksiyalarini yashirish</string>
@@ -53,7 +54,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_repeat_button_title">Takrorlash tugmasini yashirish</string>
   <string name="morphe_music_hide_shuffle_button_title">Aralashtirish tugmasini yashirish</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">\'Tez dial\' javonini yashirish</string>
-  <string name="morphe_music_hide_suggested_for_you_shelf_title">\'Siz uchun tavsiya etilgan\' javonini yashirish</string>
   <string name="morphe_music_comments_screen_title">Izohlar</string>
   <string name="morphe_music_comments_screen_summary">Izohlardagi qismlarni ko‘rsatish/yashirish sozlamalari</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Jamoatchilik qoidalari bo\'limini yashirish</string>
@@ -296,6 +296,13 @@ Krosfeyd YouTube Music'ning 8.x va 9.x undan yuqori versiyalarda ishlaydi"</stri
   <string name="morphe_music_scrobbling_about_summary">"\"Scrobbling\" sizning YouTube Music foydalanish ma'lumotlaringizni avtomatik ravishda sizning Last.fm yoki ListenBrainz profilingiz bilan sinxronlashtiradi.
 
 Foydalanish ma'lumotlari fon tartibda ham sinxronlashini ta'minlash uchun, YouTube Music ilovasining batareya sozlamalarini \"Cheklanmagan\" ga o'rnating."</string>
+  <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_enabled_title">Uchinchi tomon matnlaridan foydalanish</string>
+  <string name="morphe_music_lyrics_enabled_summary">Uchinchi tomon xizmatidan matnlar ko‘rsatiladi, agar topilmasa, o‘rnatilgan matnlarga qaytadi</string>
+  <string name="morphe_music_lyrics_source_title">Matnlar xizmati</string>
+  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
+  <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
+  <!-- Tappable label under the lyrics that turns the translation on. -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - Eski ochiq panelni tiklash</string>
   <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - Haqiqiy vaqtda matnni o’chirish</string>

@@ -16,6 +16,7 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- Overrides built in setting menu with Morphe settings. -->
   <string name="morphe_screen_ads_title">Oglasi</string>
   <string name="morphe_hide_post_ads_title">Skrij oglase v viru</string>
   <string name="morphe_hide_comment_ads_title">Skrij oglase v komentarjih</string>

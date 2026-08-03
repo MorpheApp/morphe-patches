@@ -11,6 +11,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.anyInstruction
+import app.morphe.patcher.instanceOf
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
@@ -26,7 +27,18 @@ internal object RedditActivityFingerprint : Fingerprint(
     )
 )
 
+// 2026.25.0+
 internal object PreferenceDestinationFingerprint : Fingerprint(
+    definingClass = "Lcom/reddit/settings/usersettings/",
+    parameters = listOf("Lcom/reddit/domain/settings/Destination;", "L"),
+    returnType = "Ljava/lang/Object;",
+    filters = listOf(
+        instanceOf("Lcom/reddit/settings/usersettings/RedditUserSettingsNavigator$"),
+        string("call to 'resume' before 'invoke' with coroutine")
+    )
+)
+
+internal object PreferenceDestinationLegacyFingerprint : Fingerprint(
     definingClass = "Lcom/reddit/screen/settings/preferences/",
     returnType = "V",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -37,9 +49,10 @@ internal object PreferenceDestinationFingerprint : Fingerprint(
     )
 )
 
-internal object PreferenceManagerFingerprint : Fingerprint(
-    returnType = "V",
+// 2026.29.0 and older
+internal object PreferenceManagerLegacyFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
     filters = listOf(
         opcode(Opcode.CONST),
         methodCall(

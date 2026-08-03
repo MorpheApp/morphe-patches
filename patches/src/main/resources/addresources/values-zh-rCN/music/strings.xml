@@ -34,7 +34,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_feed_title">订阅源</string>
   <string name="morphe_settings_music_screen_3_general_title">常规</string>
   <string name="morphe_settings_music_screen_4_player_title">播放器</string>
-  <string name="morphe_settings_music_screen_8_misc_title">其他</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">隐藏“订阅 Music Premium”标签</string>
   <string name="morphe_music_hide_music_premium_promotions_title">隐藏 Music Premium 促销推广</string>
@@ -53,7 +52,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_repeat_button_title">隐藏重复播放按钮</string>
   <string name="morphe_music_hide_shuffle_button_title">隐藏随机播放按钮</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">隐藏“快速拨号”区域</string>
-  <string name="morphe_music_hide_suggested_for_you_shelf_title">隐藏“为你推荐”区域</string>
   <string name="morphe_music_comments_screen_title">评论</string>
   <string name="morphe_music_comments_screen_summary">选择评论区中显示哪些组件</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">隐藏社区规范</string>
@@ -295,6 +293,10 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling 会自动将您的 YouTube Music 使用情况同步到您的 Last.fm 或 ListenBrainz 个人资料。
 
 为了确保在后台播放期间同步 scrobbling，请确保 YouTube Music 的应用电池使用量设置为“无限制”。"</string>
+  <!-- layout.lyrics.lyricsPatch -->
+  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
+  <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
+  <!-- Tappable label under the lyrics that turns the translation on. -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - 恢复旧版浮动面板</string>
   <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - 禁用实时歌词</string>

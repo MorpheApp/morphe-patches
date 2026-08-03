@@ -202,6 +202,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_fashion_menu_title">Скриване на менюто \"Мода и красота\"</string>
   <string name="morphe_hide_gaming_menu_title">Скриване на менюто \"Игри\"</string>
   <string name="morphe_hide_hype_menu_title">Скриване на менюто \"Hype\"</string>
+  <string name="morphe_hide_learning_menu_title">Скрий меню \"Обучение\"</string>
   <string name="morphe_hide_live_menu_title">Скриване на менюто \"На живо\"</string>
   <string name="morphe_hide_memberships_menu_title">Скриване на менюто \"Абонаменти\"</string>
   <string name="morphe_hide_movies_menu_title">Скриване на менюто \"Филми\"</string>
@@ -216,7 +217,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_youtube_music_menu_title">Скриване на менюто \"YouTube Music\"</string>
   <string name="morphe_hide_youtube_kids_menu_title">Скриване на менюто \"YouTube Kids\"</string>
   <string name="morphe_hide_youtube_create_menu_title">Скриване на менюто \"YouTube Create\"</string>
-  <string name="morphe_hide_privacy_tos_footer_title">Скриване на долния колонтитул \"Декларация за поверителност • Условия за ползване\"</string>
+  <string name="morphe_hide_youtube_works_menu_title">Скрий меню \"Как работят YouTube функциите\"</string>
+  <string name="morphe_hide_privacy_tos_footer_title">Скрий правни бележки и поверителност</string>
   <string name="morphe_comments_screen_title">Коментари</string>
   <string name="morphe_comments_screen_summary">Изберете кои компоненти да се показват в секцията с коментари</string>
   <string name="morphe_hide_comments_carousel_title">Активиране на филтър за кръгли прегледи на коментари</string>
@@ -327,9 +329,6 @@ Second \"item\" text"</string>
   <string name="morphe_copy_video_link_button_summary">Натиснете, за да копирате връзката към видеото, натиснете и задръжте, за да копирате с времеви печат</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">Копира времевия печат по подразбиране</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">Обръща действията с натискане и натискане и задържане за бутона „Копиране на връзка към видео“</string>
-  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">Скриване на диалог за възраст</string>
-  <string name="morphe_remove_viewer_discretion_dialog_summary">Това не заобикаля възрастовите ограничения. Просто ги приема автоматично</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Изключване на попъпа \'Въведете се в ТВ\'</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -929,6 +928,11 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_summary">Автоматично преминава към следващото Short, вместо да повтаря текущото</string>
   <string name="morphe_shorts_autoplay_background_title">Автоматично възпроизвеждане във фонов режим</string>
   <string name="morphe_shorts_autoplay_background_summary">Автоматично преминава към следващото Short по време на възпроизвеждане във фонов режим</string>
+  <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+  <string name="morphe_playback_in_feeds_title">Възпроизвеждане в емисии</string>
+  <string name="morphe_playback_in_feeds_entry_always_on">Винаги включено</string>
+  <string name="morphe_playback_in_feeds_entry_wifi_only">Само Wi-Fi</string>
+  <string name="morphe_playback_in_feeds_entry_off">Изключено</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Изключване на продължаването на мини-плеъра</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Деактивира мини плейъра „Продължи да гледаш“, функция на YouTube Premium, която се появява при стартиране на приложението</string>

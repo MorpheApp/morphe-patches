@@ -1,3 +1,34 @@
+## [1.39.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.39.0-dev.1...v1.39.0-dev.2) (2026-08-03)
+
+### 🐛 Bug Fixes
+
+* **Reddit:** Morphe settings menu is not localized for experimental app targets ([fefa59b](https://github.com/MorpheApp/morphe-patches/commit/fefa59b9534c2858b6b90c0a1ba7a69d70848b9a))
+* **YouTube - Disable sign in to TV popup:** Add support for newer versions ([#2226](https://github.com/MorpheApp/morphe-patches/issues/2226)) ([96716ef](https://github.com/MorpheApp/morphe-patches/commit/96716efdf6f7ddcf05a6cf642df88804e99af487))
+* **YouTube:** Remove "Restore old YouTube settings screen" from 21.30+ targets ([51c0af2](https://github.com/MorpheApp/morphe-patches/commit/51c0af26c9d3e2c7c351a3ce521a0e4a404d60e8))
+
+### ✨ New Features
+
+* **YouTube Music:** Add `Remove viewer discretion dialog` patch ([#2297](https://github.com/MorpheApp/morphe-patches/issues/2297)) ([f0d3ba1](https://github.com/MorpheApp/morphe-patches/commit/f0d3ba149d81f72680b571ce596eabdd8990c572))
+* **YouTube Music:** Add `Third-party lyrics` patch ([#2269](https://github.com/MorpheApp/morphe-patches/issues/2269)) ([fbf2e63](https://github.com/MorpheApp/morphe-patches/commit/fbf2e63d66be9baa4d825d986ab405a679b96df0))
+
+## [1.39.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.38.1-dev.1...v1.39.0-dev.1) (2026-08-02)
+
+### 🐛 Bug Fixes
+
+* **Reddit:** Show Morphe in-app settings with Reddit 2026.25.0+ ([#2260](https://github.com/MorpheApp/morphe-patches/issues/2260)) ([ec780c5](https://github.com/MorpheApp/morphe-patches/commit/ec780c5975f9ef3c4e578fff90ad09ba293e9b8e))
+* **YouTube - Seekbar thumbnail:** Hide thumbnail during precise seeking ([9f5848a](https://github.com/MorpheApp/morphe-patches/commit/9f5848a0120e6b472d59442d1a1e94a762b60d50))
+* **YouTube - Seekbar thumbnail:** Show slide-to-seek thumbnail when option is enabled ([174c4e6](https://github.com/MorpheApp/morphe-patches/commit/174c4e62f2c03fa5a673bff095d82b1475f8b82c))
+* **YouTube Music - Hide layout components:** Remove "Hide 'Suggested for you' shelf" setting as it hides playlist content ([c279c40](https://github.com/MorpheApp/morphe-patches/commit/c279c4054ffbb004594bc1066bb234aa0f8624b5))
+
+### ✨ New Features
+
+* **YouTube - Hide layout components:** Add "Hide Learning menu" and "Hide 'How YouTube works' menu" settings ([997f433](https://github.com/MorpheApp/morphe-patches/commit/997f4337cff8e1ba7c6bd4e36f61589e3db0e97e))
+* **YouTube:** Add `Playback in feeds` patch ([#2261](https://github.com/MorpheApp/morphe-patches/issues/2261)) ([fced431](https://github.com/MorpheApp/morphe-patches/commit/fced4313f612031bfea7d15fe341e80a7c3e4567))
+
+### 🚀 Updated App Support
+
+* **Reddit:** Add experimental support for `2026.30.0` ([f8dbf83](https://github.com/MorpheApp/morphe-patches/commit/f8dbf83a99508b3e08beb0e6061af7f1fb6880ca))
+
 ## [1.38.1-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.38.0...v1.38.1-dev.1) (2026-08-01)
 
 ### 🚀 Updated App Support

@@ -68,6 +68,7 @@ Schimbari incluse:
   <string name="morphe_hide_expandable_card_entry_3">Ascunde tot</string>
   <string name="morphe_hide_floating_microphone_button_title">Ascunderea butonului microfon plutitor</string>
   <string name="morphe_hide_floating_microphone_button_summary">Ascunde butonul plutitor al microfonului în colțul din dreapta jos al ecranului de sugestii de căutare</string>
+  <string name="morphe_hide_get_premium_button_title">Ascunde butonul \'Obține Premium\'</string>
   <string name="morphe_hide_horizontal_shelves_title">Ascunde rafturile orizontale</string>
   <string name="morphe_hide_horizontal_shelves_summary">Ascunde rafturile orizontale, cum ar fi Știri de ultimă oră, Postări din comunitate care s-ar putea să-ți placă, Continuă să urmărești, Explorează mai multe canale, Explorează mai multe subiecte, Pentru tine, Ultimele videoclipuri, Cele mai relevante, Postări din comunitatea creatorului, Cumpărături și Urmărește din nou</string>
   <string name="morphe_hide_hyped_label_title">Ascunde eticheta \"În tendințe\"</string>
@@ -155,6 +156,7 @@ Schimbari incluse:
   <string name="morphe_hide_featured_channels_section_title">Ascunde secțiunea canale recomandate</string>
   <string name="morphe_hide_featured_links_section_title">Ascunde secțiunea Linkuri recomandate</string>
   <string name="morphe_hide_featured_places_section_title">Ascunde secțiunea \"Locuri recomandate\"</string>
+  <string name="morphe_hide_featured_playlists_section_title">Ascunde secțiunea Playlist-uri recomandate</string>
   <string name="morphe_hide_featured_videos_section_title">Ascunde secțiunea Videoclipuri recomandate</string>
   <string name="morphe_hide_gaming_section_title">Ascunde secțiunea Jocuri</string>
   <string name="morphe_hide_hashtag_section_title">Ascunde secțiunea Hashtag</string>
@@ -200,6 +202,7 @@ Schimbari incluse:
   <string name="morphe_hide_fashion_menu_title">Ascunde meniul \'Modă și Frumusețe\'</string>
   <string name="morphe_hide_gaming_menu_title">Ascunde meniul Gaming</string>
   <string name="morphe_hide_hype_menu_title">Ascunde meniul Hype</string>
+  <string name="morphe_hide_learning_menu_title">Ascunde meniul Învățare</string>
   <string name="morphe_hide_live_menu_title">Ascunde meniul Live</string>
   <string name="morphe_hide_memberships_menu_title">Ascunde meniul Abonamente</string>
   <string name="morphe_hide_movies_menu_title">Ascunde meniul Filme</string>
@@ -214,7 +217,8 @@ Schimbari incluse:
   <string name="morphe_hide_youtube_music_menu_title">Ascunde meniul YouTube Music</string>
   <string name="morphe_hide_youtube_kids_menu_title">Ascunde meniul YouTube Kids</string>
   <string name="morphe_hide_youtube_create_menu_title">Ascunde meniul YouTube Create</string>
-  <string name="morphe_hide_privacy_tos_footer_title">Ascunde subsolul \'Politica de confidențialitate • Termeni de utilizare\'</string>
+  <string name="morphe_hide_youtube_works_menu_title">Ascunde meniul \'Cum funcționează YouTube\'</string>
+  <string name="morphe_hide_privacy_tos_footer_title">Ascunde subsolurile legale și de confidențialitate</string>
   <string name="morphe_comments_screen_title">Comentarii</string>
   <string name="morphe_comments_screen_summary">Alegeți ce componente să apară în secțiunea de comentarii</string>
   <string name="morphe_hide_comments_carousel_title">Activează filtru carusel comentarii</string>
@@ -225,10 +229,13 @@ Schimbari incluse:
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Introduceți numele caruselurilor de comentarii pentru a filtra, separate prin linii noi</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Ascunde rezumatul chatului AI</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Ascunde ghidurile canalului</string>
+  <string name="morphe_hide_comments_contexts_title">Ascunde mesajele de context</string>
   <string name="morphe_hide_comments_by_members_header_title">Ascunde antetul \"Comentarii de la membri\"</string>
   <string name="morphe_hide_comments_section_title">Ascunde secțiunea comentarii</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Ascunde secţiunea comentarii în fluxul principal</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Ascunde regulile comunității</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Ascunde butonul \'Creare Short\'</string>
+  <string name="morphe_hide_comments_emoji_button_title">Ascunde butonul Emoji</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Ascunde opțiunile barei de filtre</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Ascunde toate opțiunile din bara de filtre, cu excepția \'Top\' și \'Cele mai noi\'</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Ascunde animația și felicitările cadou</string>
@@ -238,6 +245,7 @@ Schimbari incluse:
   <string name="morphe_hide_comments_preview_comment_title">Ascunde previzualizarea comentariului</string>
   <string name="morphe_hide_comments_preview_comment_summary">Ascunde previzualizarea comentariului de sub videoclip înainte de a deschide secțiunea completă de comentarii</string>
   <string name="morphe_hide_comments_thanks_button_title">Ascunde butonul „Mulțumesc”</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Ascunde butonul Timestamp</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Dezactivează legăturile de căutare evidențiate</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Dezactivează legăturile de căutare evidențiate, afișând doar textul original simplu</string>
   <string name="morphe_hide_keyword_content_screen_title">Filtru de cuvinte cheie</string>
@@ -307,6 +315,7 @@ Atingeți aici pentru a deschide AiSlopList.com și a vedea descărcările pentr
   <string name="morphe_hide_general_ads_title">Ascunde reclamele generale</string>
   <string name="morphe_hide_merchandise_banners_title">Ascunde bannere de produse</string>
   <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
+  <string name="morphe_hide_paid_promotion_labels_title">Ascunde etichetele de promovare plătită</string>
   <string name="morphe_hide_player_popup_ads_title">Ascunde anunțurile pop-up ale jucătorului</string>
   <string name="morphe_hide_self_sponsor_ads_title">Ascunde cardurile auto-sponsorizate</string>
   <string name="morphe_hide_shopping_links_title">Ascunde linkurile de cumpărături</string>
@@ -320,9 +329,6 @@ Atingeți aici pentru a deschide AiSlopList.com și a vedea descărcările pentr
   <string name="morphe_copy_video_link_button_summary">Atingeți pentru a copia linkul video, atingeți și mențineți apăsat pentru a copia cu marcaj temporal</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">Copiază timestamp-ul implicit</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">Inversează acțiunile de atingere și atingere-menținere ale butonului \"Copiere link video\"</string>
-  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">Eliminați dialogul discreționar al vizualizatorului</string>
-  <string name="morphe_remove_viewer_discretion_dialog_summary">Aceasta nu ocolește restricția de vârstă. O acceptă automat</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Dezactivare pop-up Conectare la televizor</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -922,11 +928,17 @@ Limitare: Dacă 'Restaurare bara de acțiuni video veche' este dezactivată, str
   <string name="morphe_shorts_autoplay_summary">Avansază la următorul Shorts automat în loc să repete pe cel curent</string>
   <string name="morphe_shorts_autoplay_background_title">Redare automată în fundal</string>
   <string name="morphe_shorts_autoplay_background_summary">Avansază la următorul Shorts automat în timpul redării în fundal</string>
+  <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+  <string name="morphe_playback_in_feeds_title">Redare în fluxuri</string>
+  <string name="morphe_playback_in_feeds_entry_always_on">Mereu activat</string>
+  <string name="morphe_playback_in_feeds_entry_wifi_only">Doar Wi-Fi</string>
+  <string name="morphe_playback_in_feeds_entry_off">Oprit</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Dezactivează reluarea miniplayer-ului</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Dezactivează playerul mini „Urmărește mai departe”, o funcție YouTube Premium care apare la pornirea aplicației</string>
   <string name="morphe_miniplayer_screen_title">Minijucător</string>
   <string name="morphe_miniplayer_screen_summary">Personalizează aspectul și comportamentul miniplayerului mic</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube a eliminat toate mini-playerul-urile suplimentare. Pentru a schimba tipul mini-playerului, aplicați patch la YouTube 21.28.207 sau versiuni mai vechi</string>
   <string name="morphe_miniplayer_type_title">Tip minijucător</string>
   <string name="morphe_miniplayer_type_entry_0">Dezactivat</string>
   <string name="morphe_miniplayer_type_entry_1">Implicit</string>
@@ -1094,13 +1106,19 @@ Limitări:
 • Videoclipurile HDR nu vor utiliza AVC
 • Unele dispozitive nu pot forța AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Pentru a utiliza această funcție, setați \'Falsificare fluxuri video\' pe \'Android VR\' sau \'Android Studio\'</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Deschide meniul calității avansate</string>
   <string name="morphe_advanced_video_quality_menu_summary">Sare peste meniul de selecție a calității și deschide direct meniul de calitate avansat.</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Ascunde opţiunile calitătă premium</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_video_quality_prioritize_title">Prioritizează calitatea video</string>
+  <string name="morphe_video_quality_prioritize_summary">Prioritizează cea mai înaltă calitate video disponibilă în detrimentul eficienței codec-ului</string>
+  <string name="morphe_video_quality_prioritize_dialog">Dacă această setare este dezactivată, videoclipurile mai vechi pot să nu afișeze opțiuni de calitate video</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_av1_title">Permite Android VR / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Permite decodarea software AV1 atunci când se utilizează clientul Android VR / visionOS</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Activarea acestei setări poate folosi decodarea software AV1.
 
 Redarea video cu AV1 poate sacada sau pierde cadre."</string>

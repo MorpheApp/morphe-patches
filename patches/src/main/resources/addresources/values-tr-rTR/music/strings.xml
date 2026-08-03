@@ -34,7 +34,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_feed_title">Akış</string>
   <string name="morphe_settings_music_screen_3_general_title">Genel</string>
   <string name="morphe_settings_music_screen_4_player_title">Oynatıcı</string>
-  <string name="morphe_settings_music_screen_8_misc_title">Çeşitli</string>
+  <string name="morphe_settings_music_screen_5_lyrics_title">Şarkı Sözleri</string>
+  <string name="morphe_settings_music_screen_9_misc_title">Çeşitli</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">\'Music Premium üyesi olun\' etiketini gizle</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Music Premium promosyonlarını gizle</string>
@@ -53,7 +54,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_repeat_button_title">Tekrar düğmesini gizle</string>
   <string name="morphe_music_hide_shuffle_button_title">Karıştır düğmesini gizle</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">\'Hızlı Arama\' rafını gizle</string>
-  <string name="morphe_music_hide_suggested_for_you_shelf_title">\'Sizin için önerilenler\' rafını gizle</string>
   <string name="morphe_music_comments_screen_title">Yorumlar</string>
   <string name="morphe_music_comments_screen_summary">Yorumlar bölümünde hangi bileşenlerin görüneceğini seçin</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Topluluk Kurallarını Gizle</string>
@@ -296,6 +296,13 @@ YouTube Music 8.x — geçiş yalnızca 9.x ve sonraki sürümlerde çalışır"
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling, YouTube Music kullanımınızı Last.fm veya ListenBrainz profilinizle otomatik olarak senkronize eder
 
 Scrobbling'in arka planda çalma sırasında senkronize olduğundan emin olmak için, YouTube Music'in uygulama pil kullanımının \"Kısıtlanmamış\" olarak ayarlandığından emin olun"</string>
+  <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_enabled_title">Üçüncü taraf şarkı sözlerini kullan</string>
+  <string name="morphe_music_lyrics_enabled_summary">Üçüncü taraf bir servisten şarkı sözleri gösterir, bulunamadığında yerleşik şarkı sözlerine geri döner</string>
+  <string name="morphe_music_lyrics_source_title">Şarkı Sözü Servisi</string>
+  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
+  <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
+  <!-- Tappable label under the lyrics that turns the translation on. -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - Eski açılır paneli geri yükle</string>
   <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - Gerçek zamanlı şarkı sözlerini devre dışı bırak</string>

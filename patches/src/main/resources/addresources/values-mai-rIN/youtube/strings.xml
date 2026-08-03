@@ -155,8 +155,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium प्रमोशन छिपाइ</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
-  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">दर्शक विवेक संवाद हटाएं</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">\'टीव्ही में साइन इन करी\' पॉपअप अक्षम करी</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -434,6 +432,7 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_player_type_regular_player">रेगुलर प्लेयर</string>
   <string name="morphe_shorts_player_type_regular_player_fullscreen">रेगुलर प्लेयर फुलस्क्रीन</string>
   <!-- layout.shortsautoplay.shortsAutoplayPatch -->
+  <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">मिनीप्लेयरको पुन: सुरुवात अक्षम गर्नुहोस्</string>
   <string name="morphe_miniplayer_screen_title">मिनीप्लेयर</string>

@@ -52,7 +52,6 @@ Second \"item\" text"</string>
   <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
-  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsPatch -->
@@ -168,6 +167,7 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_player_type_shorts">Īso video atskaņotājs</string>
   <!-- layout.shortsautoplay.shortsAutoplayPatch -->
   <string name="morphe_shorts_autoplay_title">Automātiski atskaņot īsos video</string>
+  <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_type_entry_0">Atspējots</string>
   <!-- layout.theme.themePatch -->

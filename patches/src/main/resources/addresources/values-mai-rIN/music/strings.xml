@@ -204,5 +204,9 @@ YouTube Music 8.x — क्रॉसफेड केवल 9.x आ नय व�
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling स्वचालित रूप सँ अहाँक YouTube Music उपयोग के अहाँक Last.fm या ListenBrainz प्रोफाइल सँ सिंक करैत छै
 
 ई सुनिश्चित करय लेल जे बैकग्राउंड प्लेबैक क दौरान scrobbling सिंक होय, ई सुनिश्चित करू जे YouTube Music क ऐप बैटरी उपयोग \"Unrestricted\" पर सेट छै"</string>
+  <!-- layout.lyrics.lyricsPatch -->
+  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
+  <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
+  <!-- Tappable label under the lyrics that turns the translation on. -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
 </resources>

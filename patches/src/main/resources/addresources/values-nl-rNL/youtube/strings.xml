@@ -202,6 +202,7 @@ Wijzigingen zijn:
   <string name="morphe_hide_fashion_menu_title">Verberg het \'Mode &amp; Beauty\'-menu</string>
   <string name="morphe_hide_gaming_menu_title">Verberg Gaming menu</string>
   <string name="morphe_hide_hype_menu_title">Verberg Hype menu</string>
+  <string name="morphe_hide_learning_menu_title">Verberg \'Leer\' menu</string>
   <string name="morphe_hide_live_menu_title">Verberg Live menu</string>
   <string name="morphe_hide_memberships_menu_title">Verberg Lidmaatschappen menu</string>
   <string name="morphe_hide_movies_menu_title">Verberg Films menu</string>
@@ -216,7 +217,8 @@ Wijzigingen zijn:
   <string name="morphe_hide_youtube_music_menu_title">Verberg YouTube Music menu</string>
   <string name="morphe_hide_youtube_kids_menu_title">Verberg YouTube Kids menu</string>
   <string name="morphe_hide_youtube_create_menu_title">Verberg YouTube Create menu</string>
-  <string name="morphe_hide_privacy_tos_footer_title">Verberg \'Privacybeleid • Servicevoorwaarden\' voettekst</string>
+  <string name="morphe_hide_youtube_works_menu_title">Verberg het \'Hoe YouTube werkt\'-menu</string>
+  <string name="morphe_hide_privacy_tos_footer_title">Verberg juridische en privacy-voetnoten</string>
   <string name="morphe_comments_screen_title">Reacties</string>
   <string name="morphe_comments_screen_summary">Kies welke componenten verschijnen in de commentaarsectie</string>
   <string name="morphe_hide_comments_carousel_title">Schakel filter voor commentaarcarrousel in</string>
@@ -327,9 +329,6 @@ Tik hier om AiSlopList.com te openen en downloads voor andere platforms te bekij
   <string name="morphe_copy_video_link_button_summary">Tik om de videolink te kopiëren, tik en houd vast om met tijdstempel te kopiëren</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">Kopieer timestamp standaard</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">Keert de tik- en ingedrukte acties van de knop \'Videolink kopiëren\' om</string>
-  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">Dialog van kijker discretie verwijderen</string>
-  <string name="morphe_remove_viewer_discretion_dialog_summary">Dit omzeilt de leeftijdsbeperking niet. Het accepteert het alleen automatisch</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Pop-up \'Inloggen op tv\' uitschakelen</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -929,6 +928,11 @@ Beperking: Als 'Herstel oude video acties balk' is uitgeschakeld, is de \"Meer v
   <string name="morphe_shorts_autoplay_summary">Schakelt automatisch naar de volgende Short in plaats van de huidige te herhalen</string>
   <string name="morphe_shorts_autoplay_background_title">Automatisch afspelen op de achtergrond</string>
   <string name="morphe_shorts_autoplay_background_summary">Schakelt automatisch naar de volgende Short in tijdens het afspelen op de achtergrond</string>
+  <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+  <string name="morphe_playback_in_feeds_title">Weergave in feeds</string>
+  <string name="morphe_playback_in_feeds_entry_always_on">Altijd aan</string>
+  <string name="morphe_playback_in_feeds_entry_wifi_only">Alleen Wi-Fi</string>
+  <string name="morphe_playback_in_feeds_entry_off">Uit</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Schakel het hervatten van de miniplayer uit</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Schakelt de \'Doorgaan met kijken\'-minispeler uit, een functie van YouTube Premium die verschijnt bij het opstarten van de app</string>

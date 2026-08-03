@@ -56,7 +56,7 @@ val seekbarThumbnailPreviewPatch = bytecodePatch(
                 new-instance v0, Landroid/graphics/Point;
                 invoke-direct { v0 }, Landroid/graphics/Point;-><init>()V
                 invoke-interface { p0, v0 }, $updatePointMethodRef
-                invoke-static { p0, p1, v0 }, $EXTENSION_CLASS->updateThumbnailPreview(Landroid/view/View;Landroid/view/MotionEvent;Landroid/graphics/Point;)V
+                invoke-static { p0, p1, v0 }, $EXTENSION_CLASS->updateHandlerThumbnailPreview(Landroid/view/View;Landroid/view/MotionEvent;Landroid/graphics/Point;)V
             """
         )
 
@@ -75,7 +75,7 @@ val seekbarThumbnailPreviewPatch = bytecodePatch(
                     new-instance v1, Landroid/graphics/Point;
                     invoke-direct { v1 }, Landroid/graphics/Point;-><init>()V
                     invoke-interface { v0, v1 }, $updatePointMethodRef
-                    invoke-static { p1, p2, v1 }, $EXTENSION_CLASS->updateThumbnailPreview(Landroid/view/View;Landroid/view/MotionEvent;Landroid/graphics/Point;)V
+                    invoke-static { p1, p2, v1 }, $EXTENSION_CLASS->updateSlideThumbnailPreview(Landroid/view/View;Landroid/view/MotionEvent;Landroid/graphics/Point;)V
                 """
             )
         }
@@ -107,6 +107,11 @@ val seekbarThumbnailPreviewPatch = bytecodePatch(
                 :allow_big_board_update
                 nop
             """
+        )
+
+        PreciseSeekingRecyclerViewFingerprint.method.addInstruction(
+            0,
+            "invoke-static { p1 }, $EXTENSION_CLASS->setPreciseSeekingVisible(Landroid/support/v7/widget/RecyclerView;)V"
         )
     }
 }

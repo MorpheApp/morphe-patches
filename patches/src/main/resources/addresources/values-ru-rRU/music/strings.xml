@@ -34,7 +34,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_feed_title">Лента</string>
   <string name="morphe_settings_music_screen_3_general_title">Общие</string>
   <string name="morphe_settings_music_screen_4_player_title">Плеер</string>
-  <string name="morphe_settings_music_screen_8_misc_title">Прочие</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Скрыть ярлык \"Купить Music Premium\"</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Скрыть рекламу Music Premium</string>
@@ -53,7 +52,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_repeat_button_title">Скрыть кнопку \"Повтор\"</string>
   <string name="morphe_music_hide_shuffle_button_title">Скрыть кнопку \"Перемешать\"</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Скрыть секцию \"Быстрый набор\"</string>
-  <string name="morphe_music_hide_suggested_for_you_shelf_title">Скрыть секцию \"Рекомендации для вас\"</string>
   <string name="morphe_music_comments_screen_title">Комментарии</string>
   <string name="morphe_music_comments_screen_summary">Выберите, какие компоненты будут отображаться в разделе комментариев</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Скрыть правила сообщества</string>
@@ -296,6 +294,10 @@ YouTube Music 8.x — плавный переход работает тольк�
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling автоматически синхронизирует использование YouTube Music с вашим профилем Last.fm или ListenBrainz
 
 Чтобы обеспечить синхронизацию scrobbling во время воспроизведения в фоновом режиме, убедитесь, что использование батареи приложения YouTube Music установлено в значение \"Неограниченно\""</string>
+  <!-- layout.lyrics.lyricsPatch -->
+  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
+  <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
+  <!-- Tappable label under the lyrics that turns the translation on. -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - Восстановление старой выдвигающейся панели</string>
   <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - Отключение отображения текста песен в режиме реального времени</string>

@@ -140,8 +140,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shopping_links_title">بەستەرەکانی بازاڕکردن بشارەوە</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
-  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_summary">هقاسي نابي سفاح را مانعي تيستيًد نابي. قاس فاري قبلة ديرياحيدي</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsPatch -->
@@ -417,6 +415,7 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_player_type_regular_player_fullscreen">ئەگەر خەڵکی بەربەست نمایشە سەرەکییە</string>
   <!-- layout.shortsautoplay.shortsAutoplayPatch -->
   <string name="morphe_shorts_autoplay_title">شورتەکان خۆیان بەگشتی دەست پێ دەکەن</string>
+  <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_screen_title">خوارەوە</string>
   <string name="morphe_miniplayer_type_title">جۆرەی خوارەوە</string>

@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.patches.shared.misc.audio.drc
 
 import app.morphe.patcher.Fingerprint
@@ -66,7 +73,7 @@ internal object OptionalVolumeNormalizationConfigFingerprint : Fingerprint(
         literal(45785775L),
         opcode(Opcode.MOVE_RESULT, location = MatchAfterWithin(2)),
 
-        methodCall($$"Lj$/util/Optional;->isEmpty()Z"),
+        methodCall("Lj$/util/Optional;->isEmpty()Z"),
         opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
         literal(45783491L, location = MatchAfterWithin(5)),
     )

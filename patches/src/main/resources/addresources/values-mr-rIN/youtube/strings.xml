@@ -202,6 +202,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_fashion_menu_title">\'फॅशन आणि सौंदर्य\' मेनू लपवा</string>
   <string name="morphe_hide_gaming_menu_title">गेमिंग मेनू लपवा</string>
   <string name="morphe_hide_hype_menu_title">हायप मेनू लपवा</string>
+  <string name="morphe_hide_learning_menu_title">शिकण्याचे मेनू लपवा</string>
   <string name="morphe_hide_live_menu_title">लाइव्ह मेनू लपवा</string>
   <string name="morphe_hide_memberships_menu_title">सदस्यता मेनू लपवा</string>
   <string name="morphe_hide_movies_menu_title">मूव्हीज मेनू लपवा</string>
@@ -216,7 +217,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_youtube_music_menu_title">YouTube Music मेनू लपवा</string>
   <string name="morphe_hide_youtube_kids_menu_title">YouTube Kids मेनू लपवा</string>
   <string name="morphe_hide_youtube_create_menu_title">YouTube Create मेनू लपवा</string>
-  <string name="morphe_hide_privacy_tos_footer_title">\'प्रायव्हसी पॉलिसी • सेवा अटी\'footer लपवा</string>
+  <string name="morphe_hide_youtube_works_menu_title">\'YouTube कसे कार्य करते\' मेनू लपवा</string>
+  <string name="morphe_hide_privacy_tos_footer_title">कायदेशीर आणि गोपनीयता फुटर लपवा</string>
   <string name="morphe_comments_screen_title">टिप्पण्या</string>
   <string name="morphe_comments_screen_summary">टिप्पणी विभागात कोणते घटक दिसतात ते निवडा</string>
   <string name="morphe_hide_comments_carousel_title">टिप्पणी कॅरोसेल फिल्टर सक्षम करा</string>
@@ -321,9 +323,6 @@ Second \"item\" text"</string>
   <string name="morphe_copy_video_link_button_summary">व्हिडिओ लिंक कॉपी करण्यासाठी टॅप करा, टाइमस्टॅम्पसह कॉपी करण्यासाठी टॅप करून धरून ठेवा</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">डीफॉल्टनुसार टाइमस्टॅम्प कॉपी करा</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">\'कॉपी व्हिडिओ लिंक\' बटणाच्या टॅप आणि टॅप-अँड-होल्ड क्रिया उलटवते</string>
-  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">व्ह्यूअर डिसक्रेसन संवाद काढून टाका</string>
-  <string name="morphe_remove_viewer_discretion_dialog_summary">हे वय प्रतिबंध टाळत नाही. हे फक्त ते आपोआप स्वीकारते.</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">\'टीव्हीवर साइन इन करा\' पॉपअप अक्षम करा</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -921,6 +920,11 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_shorts_autoplay_summary">वर्तमान शॉर्ट (Short) पुन्हा न बजावता पुढील शॉर्ट (Short) वर स्वयंचलितपणे जाते</string>
   <string name="morphe_shorts_autoplay_background_title">पार्श्वभूमीवर (Background) ऑटोप्ले (Autoplay) करा</string>
   <string name="morphe_shorts_autoplay_background_summary">पार्श्वभूमीवर (Background) प्लेबॅक (Playback) करताना पुढील शॉर्ट (Short) वर स्वयंचलितपणे जाते</string>
+  <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+  <string name="morphe_playback_in_feeds_title">\u092b\u094d\u0928 \u092b\u0940\u0926\u0932\u093e\u0930\u093e\u0928 \u092e\u093e\u0926\u094d\u092e\u093e\u0932\u093f \u0926\u093e\u0938 \u092b\u094d\u0928\u093e\u0932\u093f</string>
+  <string name="morphe_playback_in_feeds_entry_always_on">\u0932\u093e\u0938\u093e\u0928\u0937\u0930\u093e \u092a\u093e\u0935\u0930</string>
+  <string name="morphe_playback_in_feeds_entry_wifi_only">\u0932\u093e\u0938\u093e\u0928\u0937\u0930 Wi-Fi \u092b\u093e\u0935\u093e\u0928\u093f</string>
+  <string name="morphe_playback_in_feeds_entry_off">\u092c\u0926\u094d\u0926</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">मिनीप्लेअर पुन्हा सुरू करणे अक्षम करा</string>
   <string name="morphe_miniplayer_disable_resuming_summary">\'Continue watching\' मिनीप्लेअर अक्षम करते, YouTube Premium चे वैशिष्ट्य जे ॲप सुरू झाल्यावर दिसते.</string>

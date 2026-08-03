@@ -255,26 +255,33 @@ val miniplayerPatch = bytecodePatch(
             )
         }
 
-        MiniplayerDragAndDropFingerprint.let {
-            it.method.cloneParameters().apply {
-                val instructionIndex = it.instructionMatches.last().index + numberOfParameterRegisters
-                val instructionRegister = getInstruction<OneRegisterInstruction>(
-                    instructionIndex
-                ).registerA
+        if (is_21_30_or_greater) {
+            MiniplayerDragAndDropFingerprint.let {
+                it.method.cloneParameters().apply {
+                    val instructionIndex = it.instructionMatches.last().index + numberOfParameterRegisters
+                    val instructionRegister = getInstruction<OneRegisterInstruction>(
+                        instructionIndex
+                    ).registerA
 
-                addInstructionsAtControlFlowLabel(
-                    instructionIndex + 1,
-                    """
-                        invoke-static { v$instructionRegister }, $EXTENSION_CLASS->getMiniplayerDragAndDrop(I)Z
-                        move-result p0
-                        if-eqz p0, :get_drag_and_drop
-                        const/4 p0, 0
-                        return p0
-                        :get_drag_and_drop
-                        nop
-                    """
-                )
+                    addInstructionsAtControlFlowLabel(
+                        instructionIndex + 1,
+                        """
+                            invoke-static { v$instructionRegister }, $EXTENSION_CLASS->getMiniplayerDragAndDrop(I)Z
+                            move-result p0
+                            if-eqz p0, :get_drag_and_drop
+                            const/4 p0, 0
+                            return p0
+                            :get_drag_and_drop
+                            nop
+                        """
+                    )
+                }
             }
+        } else {
+            MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
+                MINIPLAYER_DRAG_DROP_FEATURE_KEY,
+                "getMiniplayerDragAndDrop",
+            )
         }
 
         MiniplayerModernFeatureFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
@@ -311,22 +318,29 @@ val miniplayerPatch = bytecodePatch(
             }
         }
 
-        MiniplayerRoundedCornersFingerprint.let {
-            it.method.apply {
-                val index = it.instructionMatches.last().index
-                val free = findFreeRegister(index)
+        if (is_21_30_or_greater) {
+            MiniplayerRoundedCornersFingerprint.let {
+                it.method.apply {
+                    val index = it.instructionMatches.last().index
+                    val free = findFreeRegister(index)
 
-                addInstructionsAtControlFlowLabel(
-                    index,
-                    """
-                        invoke-static {}, $EXTENSION_CLASS->getRoundedCorners()Z
-                        move-result v$free
-                        if-nez v$free, :get_rounded_corners
-                    """,
-                    ExternalLabel("get_rounded_corners", getInstruction(index + 1))
-                )
+                    addInstructionsAtControlFlowLabel(
+                        index,
+                        """
+                            invoke-static {}, $EXTENSION_CLASS->getRoundedCorners()Z
+                            move-result v$free
+                            if-nez v$free, :get_rounded_corners
+                        """,
+                        ExternalLabel("get_rounded_corners", getInstruction(index + 1))
+                    )
+                }
+
             }
-
+        } else {
+            MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
+                MINIPLAYER_ROUNDED_CORNERS_FEATURE_KEY,
+                "getRoundedCorners",
+            )
         }
 
         //$EXTENSION_CLASS
@@ -340,18 +354,25 @@ val miniplayerPatch = bytecodePatch(
         }
 
         // region Horizontal drag
-        MiniplayerOffscreenRectValidatorFingerprint.method.addInstructions(
-            0,
-            """
-                invoke-static { }, $EXTENSION_CLASS->getHorizontalDrag()Z
-                move-result v0
-                if-eqz v0, :disable_offscreen_miniplayer
-                const/4 v0, 0x0
-                return v0
-                :disable_offscreen_miniplayer
-                nop
-            """
-        )
+        if (is_21_30_or_greater) {
+            MiniplayerOffscreenRectValidatorFingerprint.method.addInstructions(
+                0,
+                """
+                    invoke-static { }, $EXTENSION_CLASS->getHorizontalDrag()Z
+                    move-result v0
+                    if-eqz v0, :disable_offscreen_miniplayer
+                    const/4 v0, 0x0
+                    return v0
+                    :disable_offscreen_miniplayer
+                    nop
+                """
+            )
+        } else {
+            MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
+                MINIPLAYER_HORIZONTAL_DRAG_FEATURE_KEY,
+                "getHorizontalDrag",
+            )
+        }
 
         MiniplayerOffscreenHandlerFingerprint.let {
             it.method.apply {

@@ -161,6 +161,9 @@ Let wel, deur dit in te skakel, sal ook sekere gebruikerdata soos jou IP-adres g
   <string name="morphe_settings_menu_filter_screen_title">Instellingsmenu filter</string>
   <string name="morphe_settings_menu_filter_screen_summary">Versteek items op die standaard app instellings skerm volgens hul sigbare naam</string>
   <string name="morphe_settings_menu_filter_picker_empty">Maak die standaard app instellings skerm een keer oop om die lys te vul</string>
+  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
+  <string name="morphe_remove_viewer_discretion_dialog_title">Verwyder kykersdiskresie-dialoog</string>
+  <string name="morphe_remove_viewer_discretion_dialog_summary">Dit omseil nie die ouderdombeperking nie. Dit aanvaar dit net outomaties</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Valse weergawe van app</string>
   <string name="morphe_spoof_app_version_summary">Mislei die bediener om te dink jy gebruik \'n ouer weergawe van die app om verstoude UI-funksies te herstel</string>

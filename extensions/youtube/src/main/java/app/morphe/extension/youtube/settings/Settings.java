@@ -343,6 +343,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_FASHION_MENU = new BooleanSetting("morphe_hide_fashion_menu", FALSE, parentNot(HIDE_EXPLORE_BUTTON));
     public static final BooleanSetting HIDE_GAMING_MENU = new BooleanSetting("morphe_hide_gaming_menu", FALSE, parentNot(HIDE_EXPLORE_BUTTON));
     public static final BooleanSetting HIDE_HYPE_MENU = new BooleanSetting("morphe_hide_hype_menu", FALSE, parentNot(HIDE_EXPLORE_BUTTON));
+    public static final BooleanSetting HIDE_LEARNING_MENU = new BooleanSetting("morphe_hide_learning_menu", FALSE, parentNot(HIDE_EXPLORE_BUTTON));
     public static final BooleanSetting HIDE_LIVE_MENU = new BooleanSetting("morphe_hide_live_menu", FALSE, parentNot(HIDE_EXPLORE_BUTTON));
     public static final BooleanSetting HIDE_MEMBERSHIPS_MENU = new BooleanSetting("morphe_hide_memberships_menu", FALSE, parentNot(HIDE_EXPLORE_BUTTON));
     public static final BooleanSetting HIDE_MOVIES_MENU = new BooleanSetting("morphe_hide_movies_menu", FALSE, parentNot(HIDE_EXPLORE_BUTTON));
@@ -357,6 +358,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_YOUTUBE_MUSIC_MENU = new BooleanSetting("morphe_hide_youtube_music_menu", FALSE, parentNot(HIDE_EXPLORE_BUTTON));
     public static final BooleanSetting HIDE_YOUTUBE_KIDS_MENU = new BooleanSetting("morphe_hide_youtube_kids_menu", FALSE, parentNot(HIDE_EXPLORE_BUTTON));
     public static final BooleanSetting HIDE_YOUTUBE_CREATE_MENU = new BooleanSetting("morphe_hide_youtube_create_menu", FALSE, parentNot(HIDE_EXPLORE_BUTTON));
+    public static final BooleanSetting HIDE_YOUTUBE_WORKS_MENU = new BooleanSetting("morphe_hide_youtube_works_menu", FALSE, parentNot(HIDE_EXPLORE_BUTTON));
     public static final BooleanSetting HIDE_PRIVACY_TOS_FOOTER = new BooleanSetting("morphe_hide_privacy_tos_footer", FALSE, parentNot(HIDE_EXPLORE_BUTTON));
 
     // Action buttons
@@ -412,7 +414,6 @@ public class Settings extends SharedYouTubeSettings {
     public static final EnumSetting<SplashScreenAnimationStyle> SPLASH_SCREEN_ANIMATION_STYLE = new EnumSetting<>("morphe_splash_screen_animation_style", SplashScreenAnimationStyle.FPS_60_ONE_SECOND, true);
     public static final EnumSetting<HeaderLogo> HEADER_LOGO = new EnumSetting<>("morphe_header_logo", HeaderLogo.DEFAULT, true);
     public static final BooleanSetting DISABLE_SIGN_IN_TO_TV_POPUP = new BooleanSetting("morphe_disable_sign_in_to_tv_popup", FALSE);
-    public static final BooleanSetting REMOVE_VIEWER_DISCRETION_DIALOG = new BooleanSetting("morphe_remove_viewer_discretion_dialog", FALSE, true);
     public static final BooleanSetting OPEN_SYSTEM_SHARE_SHEET = new BooleanSetting("morphe_open_system_share_sheet", FALSE);
     public static final BooleanSetting OVERRIDE_YOUTUBE_MUSIC_BUTTONS = new BooleanSetting("morphe_override_youtube_music_buttons", FALSE, true);
     public static final StringSetting MORPHE_MUSIC_PACKAGE_NAME = new StringSetting("morphe_music_package_name", "app.morphe.android.apps.youtube.music", true, parent(OVERRIDE_YOUTUBE_MUSIC_BUTTONS));
@@ -769,6 +770,11 @@ public class Settings extends SharedYouTubeSettings {
         // 21.29+ YT removed all miniplayer types, except modern_4.
         if (VersionCheckPatch.IS_21_29_OR_GREATER && !MINIPLAYER_TYPE.isSetToDefault()) {
             MINIPLAYER_TYPE.resetToDefault();
+        }
+
+        // Force flag off 21.30+ causes many problems including app crashes
+        if (VersionCheckPatch.IS_21_30_OR_GREATER && !RESTORE_OLD_SETTINGS_MENUS.isSetToDefault()) {
+            RESTORE_OLD_SETTINGS_MENUS.resetToDefault();
         }
 
         // Android VR 1.74 and visionOS 1.03 are not selectable in the settings and are selected by spoof stream patch if needed.

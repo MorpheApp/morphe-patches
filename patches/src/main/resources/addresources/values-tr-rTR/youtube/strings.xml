@@ -202,6 +202,7 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_fashion_menu_title">\'Moda &amp; Güzellik\' menüsünü gizle</string>
   <string name="morphe_hide_gaming_menu_title">Oyunlar menüsünü gizle</string>
   <string name="morphe_hide_hype_menu_title">Hype menüsünü gizle</string>
+  <string name="morphe_hide_learning_menu_title">Öğrenme menüsünü gizle</string>
   <string name="morphe_hide_live_menu_title">Canlı menüsünü gizle</string>
   <string name="morphe_hide_memberships_menu_title">Üyelikler menüsünü gizle</string>
   <string name="morphe_hide_movies_menu_title">Filmler menüsünü gizle</string>
@@ -216,7 +217,8 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_youtube_music_menu_title">YouTube Music menüsünü gizle</string>
   <string name="morphe_hide_youtube_kids_menu_title">YouTube Kids menüsünü gizle</string>
   <string name="morphe_hide_youtube_create_menu_title">YouTube Oluştur menüsünü gizle</string>
-  <string name="morphe_hide_privacy_tos_footer_title">\'Gizlilik Politikası • Hizmet Şartları\' altbilgisini gizle</string>
+  <string name="morphe_hide_youtube_works_menu_title">\'YouTube\'un nasıl çalıştığı\' menüsünü gizle</string>
+  <string name="morphe_hide_privacy_tos_footer_title">Yasal ve gizlilik altbilgilerini gizle</string>
   <string name="morphe_comments_screen_title">Yorumlar</string>
   <string name="morphe_comments_screen_summary">Yorumlar bölümünde hangi bileşenlerin görüneceğini seçin</string>
   <string name="morphe_hide_comments_carousel_title">Yorumlar döngüsü filtresini etkinleştir</string>
@@ -327,9 +329,6 @@ AiSlopList.com'u açmak ve diğer platformlar için indirmeleri görmek için bu
   <string name="morphe_copy_video_link_button_summary">Video bağlantısını kopyalamak için dokunun, zaman damgasıyla kopyalamak için dokunup basılı tutun</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">Varsayılan olarak zaman damgasını kopyala</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">\"Video bağlantısını kopyala\" düğmesinin dokunma ve basılı tutma eylemlerini tersine çevirir</string>
-  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">İzleyici takdiri iletişim kutusunu kaldır</string>
-  <string name="morphe_remove_viewer_discretion_dialog_summary">Bu, yaş kısıtlamasını kaldırmaz. Sadece otomatik olarak kabul eder</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">\"TV\'ye oturum aç\" penceresini devre dışı bırak</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -929,6 +928,11 @@ Sınırlamalar: 'Eski video eylem çubuğunu geri yükle' kapatılırsa, 'Daha f
   <string name="morphe_shorts_autoplay_summary">Mevcut olanı tekrarlamak yerine otomatik olarak bir sonraki Short\'a geçer</string>
   <string name="morphe_shorts_autoplay_background_title">Arka planda otomatik oynatma</string>
   <string name="morphe_shorts_autoplay_background_summary">Arka planda oynatma sırasında otomatik olarak bir sonraki Short\'a geçer</string>
+  <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+  <string name="morphe_playback_in_feeds_title">Beslemelerde oynatma</string>
+  <string name="morphe_playback_in_feeds_entry_always_on">Her zaman açık</string>
+  <string name="morphe_playback_in_feeds_entry_wifi_only">Yalnızca Wi-Fi üzerinde</string>
+  <string name="morphe_playback_in_feeds_entry_off">Kapalı</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Mini oynatıcıyı sürdürmeyi devre dışı bırak</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Uygulama başlangıcında görünen YouTube Premium özelliği \'İzlemeye devam edin\' mini oynatıcısını devre dışı bırakır</string>

@@ -161,6 +161,9 @@ Second \"item\" text"</string>
   <string name="morphe_settings_menu_filter_screen_title">تصفية قائمة الإعدادات</string>
   <string name="morphe_settings_menu_filter_screen_summary">إخفاء العناصر في شاشة إعدادات التطبيق القياسية بالاسم المرئي</string>
   <string name="morphe_settings_menu_filter_picker_empty">افتح شاشة إعدادات التطبيق القياسية مرة واحدة لتعبئة القائمة</string>
+  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
+  <string name="morphe_remove_viewer_discretion_dialog_title">إزالة نافذة تحذير تقدير المشاهد</string>
+  <string name="morphe_remove_viewer_discretion_dialog_summary">هذا لا يتجاوز شرط العمر. بل يقبله تلقائيًا</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">إصدار تطبيق وهمي</string>
   <string name="morphe_spoof_app_version_summary">يجعل الخادم يعتقد أنك تستخدم إصدارًا أقدم من التطبيق لاستعادة ميزات الواجهة القديمة</string>

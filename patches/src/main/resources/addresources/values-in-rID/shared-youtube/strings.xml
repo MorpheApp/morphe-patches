@@ -161,6 +161,7 @@ Namun, mengaktifkan ini juga akan mencatat beberapa data pengguna seperti alamat
   <string name="morphe_settings_menu_filter_screen_title">Filter menu Pengaturan</string>
   <string name="morphe_settings_menu_filter_screen_summary">Sembunyikan item di layar pengaturan aplikasi standar berdasarkan nama yang terlihat</string>
   <string name="morphe_settings_menu_filter_picker_empty">Buka layar pengaturan aplikasi standar sekali untuk mengisi daftar</string>
+  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Palsukan versi aplikasi</string>
   <string name="morphe_spoof_app_version_summary">Mengelabui server agar mengira Anda menggunakan versi aplikasi yang lebih lama untuk mengembalikan fitur UI lama</string>

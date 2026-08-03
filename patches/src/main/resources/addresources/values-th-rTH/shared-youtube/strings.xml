@@ -161,6 +161,9 @@ Second \"item\" text"</string>
   <string name="morphe_settings_menu_filter_screen_title">ตัวกรองเมนูการตั้งค่า</string>
   <string name="morphe_settings_menu_filter_screen_summary">ซ่อนรายการบนหน้าจอการตั้งค่าแอปมาตรฐานตามชื่อที่แสดง</string>
   <string name="morphe_settings_menu_filter_picker_empty">เปิดหน้าจอการตั้งค่าแอปมาตรฐานหนึ่งครั้งเพื่อสร้างรายการ</string>
+  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
+  <string name="morphe_remove_viewer_discretion_dialog_title">ลบกล่องโต้ตอบการพิจารณาของผู้ชม</string>
+  <string name="morphe_remove_viewer_discretion_dialog_summary">ตัวเลือกนี้ไม่ได้ข้ามข้อจำกัดอายุ แค่ยอมรับอายุโดยอัตโนมัติ</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">ปลอมแปลงเวอร์ชันแอป</string>
   <string name="morphe_spoof_app_version_summary">หลอกให้เซิร์ฟเวอร์คิดว่าคุณกำลังใช้แอปเวอร์ชันเก่าเพื่อเรียกคืนคุณสมบัติ UI แบบเดิม</string>

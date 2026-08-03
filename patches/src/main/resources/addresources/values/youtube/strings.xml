@@ -211,6 +211,7 @@ Changes include:
     <string name="morphe_hide_fashion_menu_title">Hide \'Fashion &amp; Beauty\' menu</string>
     <string name="morphe_hide_gaming_menu_title">Hide Gaming menu</string>
     <string name="morphe_hide_hype_menu_title">Hide Hype menu</string>
+    <string name="morphe_hide_learning_menu_title">Hide Learning menu</string>
     <string name="morphe_hide_live_menu_title">Hide Live menu</string>
     <string name="morphe_hide_memberships_menu_title">Hide Memberships menu</string>
     <string name="morphe_hide_movies_menu_title">Hide Movies menu</string>
@@ -225,7 +226,8 @@ Changes include:
     <string name="morphe_hide_youtube_music_menu_title">Hide YouTube Music menu</string>
     <string name="morphe_hide_youtube_kids_menu_title">Hide YouTube Kids menu</string>
     <string name="morphe_hide_youtube_create_menu_title">Hide YouTube Create menu</string>
-    <string name="morphe_hide_privacy_tos_footer_title">Hide \'Privacy Policy • Terms of Service\' footer</string>
+    <string name="morphe_hide_youtube_works_menu_title">Hide \'How YouTube works\' menu</string>
+    <string name="morphe_hide_privacy_tos_footer_title">Hide legal and privacy footers</string>
 
     <string name="morphe_comments_screen_title">Comments</string>
     <string name="morphe_comments_screen_summary">Choose which components appear in the comments section</string>
@@ -354,10 +356,6 @@ Tap here to open AiSlopList.com and see downloads for other platforms"</string>
     <string name="morphe_copy_video_link_button_summary">Tap to copy the video link, tap and hold to copy with timestamp</string>
     <string name="morphe_copy_video_link_with_timestamp_button_title">Copy timestamp by default</string>
     <string name="morphe_copy_video_link_with_timestamp_button_summary">Reverses the tap and tap-and-hold actions of \'Copy video link\' button</string>
-
-    <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-    <string name="morphe_remove_viewer_discretion_dialog_title">Remove viewer discretion dialog</string>
-    <string name="morphe_remove_viewer_discretion_dialog_summary">This does not bypass the age restriction. It just accepts it automatically</string>
 
     <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
     <string name="morphe_disable_sign_in_to_tv_popup_title">Disable \'Sign in to TV\' popup</string>

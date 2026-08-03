@@ -156,6 +156,7 @@ Zmeny zahŕňajú:
   <string name="morphe_hide_featured_channels_section_title">Skryť sekciu odporúčaných kanálov</string>
   <string name="morphe_hide_featured_links_section_title">Skryť sekciu Odporúčaných odkazov</string>
   <string name="morphe_hide_featured_places_section_title">Skryť sekciu \'Odporúčané miesta\'</string>
+  <string name="morphe_hide_featured_playlists_section_title">Skryť sekciu Obľúbené playlisty</string>
   <string name="morphe_hide_featured_videos_section_title">Skryť sekciu Odporúčaných videí</string>
   <string name="morphe_hide_gaming_section_title">Skryť sekciu Hry</string>
   <string name="morphe_hide_hashtag_section_title">Skryť sekciu hashtagov</string>
@@ -194,6 +195,30 @@ Zmeny zahŕňajú:
   <string name="morphe_hide_store_button_title">Skryť tlačidlo Obchod</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_subscribe_button_in_channel_page_title">Skryť tlačidlo Odoberať</string>
+  <string name="morphe_explore_menu_screen_title">Menu Preskúmať</string>
+  <string name="morphe_explore_menu_screen_summary">Vyberte, ktoré komponenty sa zobrazia v menu Preskúmať</string>
+  <string name="morphe_hide_courses_menu_title">Skryť menu Kurzy</string>
+  <string name="morphe_hide_explore_button_title">Skryť tlačidlo Preskúmať</string>
+  <string name="morphe_hide_fashion_menu_title">Skryť menu \"Móda a krása\"</string>
+  <string name="morphe_hide_gaming_menu_title">Skryť menu Gaming</string>
+  <string name="morphe_hide_hype_menu_title">Skryť menu Hype</string>
+  <string name="morphe_hide_learning_menu_title">Skryť menu Vzdelávanie</string>
+  <string name="morphe_hide_live_menu_title">Skryť menu Live</string>
+  <string name="morphe_hide_memberships_menu_title">Skryť menu Členstvá</string>
+  <string name="morphe_hide_movies_menu_title">Skryť menu Filmy</string>
+  <string name="morphe_hide_music_menu_title">Skryť menu \"Hudba a TV\"</string>
+  <string name="morphe_hide_news_menu_title">Skryť menu Správy</string>
+  <string name="morphe_hide_playables_menu_title">Skryť menu Playables</string>
+  <string name="morphe_hide_podcasts_menu_title">Skryť menu Podcasty</string>
+  <string name="morphe_hide_shopping_menu_title">Skryť menu Nákupy</string>
+  <string name="morphe_hide_sports_menu_title">Skryť menu Šport</string>
+  <string name="morphe_hide_youtube_premium_menu_title">Skryť menu YouTube Premium</string>
+  <string name="morphe_hide_youtube_studio_menu_title">Skryť menu YouTube Studio</string>
+  <string name="morphe_hide_youtube_music_menu_title">Skryť menu YouTube Music</string>
+  <string name="morphe_hide_youtube_kids_menu_title">Skryť menu YouTube Kids</string>
+  <string name="morphe_hide_youtube_create_menu_title">Skryť menu YouTube Create</string>
+  <string name="morphe_hide_youtube_works_menu_title">Skryť menu \"Ako funguje YouTube\"</string>
+  <string name="morphe_hide_privacy_tos_footer_title">Skryť právne informácie a informácie o ochrane súkromia v pätičke</string>
   <string name="morphe_comments_screen_title">Komentáre</string>
   <string name="morphe_comments_screen_summary">Vyberte, ktoré komponenty sa zobrazia v sekcii komentárov</string>
   <string name="morphe_hide_comments_carousel_title">Povoliť filter karuzelu komentárov</string>
@@ -204,10 +229,13 @@ Zmeny zahŕňajú:
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Zadajte názvy karuzel komentárov na filtrovanie, oddelené novými riadkami</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Skryť AI súhrn četu</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Skryť pravidlá kanála</string>
+  <string name="morphe_hide_comments_contexts_title">Skryť kontextové správy</string>
   <string name="morphe_hide_comments_by_members_header_title">Skryť nadpis \'Komentáre od členov\'</string>
   <string name="morphe_hide_comments_section_title">Skryť sekciu komentárov</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Skryť sekciu komentárov vo feede Domov</string>
+  <string name="morphe_hide_comments_community_guidelines_title">Skryť Pokyny pre komunitu</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Skryť tlačidlo \'Vytvoriť Short\'</string>
+  <string name="morphe_hide_comments_emoji_button_title">Skryť tlačidlo Emoji</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Skryť možnosti panela filtrov</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Skryje všetky možnosti panela filtrov okrem položiek \'Najlepšie\' a \'Najnovšie\'</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Skryť animáciu a karty darčeka</string>
@@ -217,6 +245,7 @@ Zmeny zahŕňajú:
   <string name="morphe_hide_comments_preview_comment_title">Skryť predhliadku komentára</string>
   <string name="morphe_hide_comments_preview_comment_summary">Skryje ukážku komentára pod videami pred otvorením celej sekcie komentárov</string>
   <string name="morphe_hide_comments_thanks_button_title">Skryť tlačidlo Vďaka</string>
+  <string name="morphe_hide_comments_timestamp_button_title">Skryť tlačidlo Časové značky</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Vyčistí zvýraznené odkazy vo vyhľadávaní</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Vyčistí zvýraznené odkazy vo vyhľadávaní, ponechajúc iba pôvodný jednoduchý text</string>
   <string name="morphe_hide_keyword_content_screen_title">Filter kľúčových slov</string>
@@ -300,9 +329,6 @@ Obmedzenia:
   <string name="morphe_copy_video_link_button_summary">Ťuknite na kopírovanie odkazu na video, ťuknite a podržte na kopírovanie s časovou pečiatkou</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">Kopíruje časovú pečiatku predvolene</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">Otočí funkcie ťuknutia a ťukania a podržania tlačidla \'Kopírovať odkaz na video\'</string>
-  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">Odstrániť dialógové okno s upozornením diváka</string>
-  <string name="morphe_remove_viewer_discretion_dialog_summary">Týmto sa neobchádza overenie veku. Jednoducho ho automaticky akceptuje</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Zakázať vyskakovacie okno \'Prihlásiť sa do TV\'</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -902,11 +928,17 @@ Obmedzenie: Ak je vypnutá možnosť 'Obnoviť starú lištu akcií videa', vrst
   <string name="morphe_shorts_autoplay_summary">Automaticky prechádza na ďalší Shorts namiesto opakovania aktuálneho</string>
   <string name="morphe_shorts_autoplay_background_title">Automatické prehrávanie na pozadí</string>
   <string name="morphe_shorts_autoplay_background_summary">Automaticky prechádza na ďalší Shorts počas prehrávania na pozadí</string>
+  <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+  <string name="morphe_playback_in_feeds_title">Prehrávanie v feedoch</string>
+  <string name="morphe_playback_in_feeds_entry_always_on">Vždy zapnuté</string>
+  <string name="morphe_playback_in_feeds_entry_wifi_only">Len cez Wi-Fi</string>
+  <string name="morphe_playback_in_feeds_entry_off">Vypnuté</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Zakázať obnovovanie mini-prehrávača</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Zakáže miniplayer s pokračovaním sledovania, funkciu YouTube Premium, ktorá sa zobrazuje pri spustení aplikácie</string>
   <string name="morphe_miniplayer_screen_title">Miniprehrávač</string>
   <string name="morphe_miniplayer_screen_summary">Prispôsobte vzhľad a správanie zmenšeného prehrávača videa</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube odstránil všetky dodatočné mini prehrávače. Ak chcete zmeniť typ mini prehrávača, použite patch YouTube 21.28.207 alebo starší</string>
   <string name="morphe_miniplayer_type_title">Typ miniprehrávača</string>
   <string name="morphe_miniplayer_type_entry_0">Vypnutý</string>
   <string name="morphe_miniplayer_type_entry_1">Predvolený</string>
@@ -1074,13 +1106,19 @@ Obmedzenia:
 • HDR videá nebudú využívať AVC
 • Niektoré zariadenia nemôžu vynútiť AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Ak chcete používať túto funkciu, nastavte \"Falšovanie toku videa\" na \"Android VR\" alebo \"Android Studio\"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Otvoriť menu pokročilých nastavení kvality</string>
   <string name="morphe_advanced_video_quality_menu_summary">Preskočí menu výberu kvality a otvorí priamo menu kvality \'Pokročilé\'</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Skryť možnosti kvality videa Premium</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_video_quality_prioritize_title">Uprednostniť kvalitu videa</string>
+  <string name="morphe_video_quality_prioritize_summary">Uprednostňuje najvyššiu dostupnú kvalitu videa pred efektivitou kodeku</string>
+  <string name="morphe_video_quality_prioritize_dialog">Ak je toto nastavenie vypnuté, staršie videá môžu zobrazovať žiadne možnosti kvality videa</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_av1_title">Povoliť Android VR / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Umožňuje softvérové dekódovanie AV1 pri používaní klienta Android VR / visionOS</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Povolením tohto nastavenia sa môže využívať softvérové dekódovanie AV1.
 
 Pri prehrávaní pomocou AV1 sa video môže zasekávať alebo vynechávať snímky."</string>

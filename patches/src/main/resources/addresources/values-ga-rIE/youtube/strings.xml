@@ -68,6 +68,7 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_expandable_card_entry_3">Folaigh gach rud</string>
   <string name="morphe_hide_floating_microphone_button_title">Folaigh an cnaipe micreafón ar snámh</string>
   <string name="morphe_hide_floating_microphone_button_summary">Folaíonn sé cnaipe an mhicreafóin ar snámh sa chúinne íochtarach ar dheis de scáileán na moltaí cuardaigh</string>
+  <string name="morphe_hide_get_premium_button_title">Folaigh an cnaipe \'Get Premium\'</string>
   <string name="morphe_hide_horizontal_shelves_title">Folaigh seilfeanna cothrománacha</string>
   <string name="morphe_hide_horizontal_shelves_summary">Folaíonn sé seilfeanna cothrománacha amhail Nuacht Briste, Poist Pobail a d’fhéadfadh a bheith spéisiúil duit, Lean ort ag breathnú, Iniúchadh a dhéanamh ar níos mó bealaí, Iniúchadh a dhéanamh ar níos mó topaicí, Duitse, Físeáin is déanaí, Is ábhartha, Poist ó Phobal an Chruthaitheora, Siopadóireacht, agus Féach air arís</string>
   <string name="morphe_hide_hyped_label_title">Folaigh an lipéad \'hype\'</string>
@@ -201,6 +202,7 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_fashion_menu_title">Folaigh an roghchlár \'Faisean &amp; Áilleacht\'</string>
   <string name="morphe_hide_gaming_menu_title">Folaigh an roghchlár Cearrbhachais</string>
   <string name="morphe_hide_hype_menu_title">Folaigh an roghchlár Hype</string>
+  <string name="morphe_hide_learning_menu_title">Folaigh an roghchlár Foghlama</string>
   <string name="morphe_hide_live_menu_title">Folaigh an roghchlár Beo</string>
   <string name="morphe_hide_memberships_menu_title">Folaigh roghchlár na mBallraíochtaí</string>
   <string name="morphe_hide_movies_menu_title">Hide Movies menu</string>
@@ -215,7 +217,6 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_youtube_music_menu_title">Folaigh roghchlár YouTube Music</string>
   <string name="morphe_hide_youtube_kids_menu_title">Folaigh roghchlár YouTube Kids</string>
   <string name="morphe_hide_youtube_create_menu_title">Folaigh roghchlár Cruthaigh YouTube</string>
-  <string name="morphe_hide_privacy_tos_footer_title">Folaigh buntásc \'Polasaí Príobháideachais • Téarmaí Seirbhíse\'</string>
   <string name="morphe_comments_screen_title">Tráchtanna</string>
   <string name="morphe_comments_screen_summary">Roghnaigh cé na comhpháirteanna a thaispeánfar sa chuid tuairimí</string>
   <string name="morphe_hide_comments_carousel_title">Cumasaigh scagaire carúséil tráchtanna</string>
@@ -312,6 +313,7 @@ Tapáil anseo chun AiSlopList.com a oscailt agus íoslódálacha d'ardáin eile 
   <string name="morphe_hide_general_ads_title">Folaigh fógraí ginearálta</string>
   <string name="morphe_hide_merchandise_banners_title">Folaigh meirgí marsantas</string>
   <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
+  <string name="morphe_hide_paid_promotion_labels_title">Folaigh lipéid chur chun cinn íoctha</string>
   <string name="morphe_hide_player_popup_ads_title">Folaigh fógraí aníos an imreora</string>
   <string name="morphe_hide_self_sponsor_ads_title">Folaigh cártaí féinurraithe</string>
   <string name="morphe_hide_shopping_links_title">Folaigh naisc siopadóireachta</string>
@@ -325,9 +327,6 @@ Tapáil anseo chun AiSlopList.com a oscailt agus íoslódálacha d'ardáin eile 
   <string name="morphe_copy_video_link_button_summary">Tapáil chun an nasc físe a chóipeáil, tapáil agus coinnigh síos chun cóipeáil leis an stampa ama</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">Cóipeáil stampa ama de réir réamhshocraithe</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">Cuireann sé seo gníomhartha tapála agus tapála-agus-coinnigh an chnaipe \'Cóipeáil nasc físe\' ar ceal.</string>
-  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">Bain an dialóg rogha lucht féachana</string>
-  <string name="morphe_remove_viewer_discretion_dialog_summary">Ní théann sé seo thar an srian aoise. Glacann sé leis go huathoibríoch.</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Díchumasaigh aníos \'Sínigh isteach ar an Teilifís\'</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -927,6 +926,11 @@ Teorainn: Mura bhfuil 'Barra gníomhaíochta seanfhíseáin athchóirithe' múch
   <string name="morphe_shorts_autoplay_summary">Téann sé ar aghaidh go dtí an chéad Ghearrscannán eile go huathoibríoch in ionad an ceann reatha a athdhéanamh</string>
   <string name="morphe_shorts_autoplay_background_title">Uathsheinm sa chúlra</string>
   <string name="morphe_shorts_autoplay_background_summary">Téann sé ar aghaidh go huathoibríoch go dtí an chéad Ghearrscannán eile le linn athsheinm sa chúlra</string>
+  <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+  <string name="morphe_playback_in_feeds_title">Athsheinm i bhfothaí</string>
+  <string name="morphe_playback_in_feeds_entry_always_on">I gcónaí ar siúl</string>
+  <string name="morphe_playback_in_feeds_entry_wifi_only">Wi-Fi amháin</string>
+  <string name="morphe_playback_in_feeds_entry_off">As</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Díchumasaigh atosú an mhionimreoir</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Díchumasaíonn sé an miniplayer \'Lean ar aghaidh ag breathnú\', gné de chuid YouTube Premium a thaispeántar nuair a thosaítear an aip</string>

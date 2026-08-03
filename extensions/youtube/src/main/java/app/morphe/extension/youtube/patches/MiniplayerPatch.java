@@ -131,7 +131,6 @@ public final class MiniplayerPatch {
      */
     private static final boolean DOUBLE_TAP_ACTION_ENABLED = true;
 
-
     private static final boolean DRAG_AND_DROP_ENABLED =
             CURRENT_TYPE.isModern() && !Settings.MINIPLAYER_DISABLE_DRAG_AND_DROP.get();
 
@@ -354,8 +353,30 @@ public final class MiniplayerPatch {
     /**
      * Injection point.
      */
+    public static boolean getMiniplayerDragAndDrop(boolean original) {
+        if (CURRENT_TYPE == DEFAULT) {
+            return original;
+        }
+
+        return DRAG_AND_DROP_ENABLED;
+    }
+
+    /**
+     * Injection point.
+     */
     public static boolean getMiniplayerDragAndDrop(int actionMasked) {
         return !DRAG_AND_DROP_ENABLED && actionMasked == 2;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean getRoundedCorners(boolean original) {
+        if (CURRENT_TYPE == DEFAULT) {
+            return original;
+        }
+
+        return MINIPLAYER_ROUNDED_CORNERS_ENABLED;
     }
 
     /**
@@ -370,6 +391,17 @@ public final class MiniplayerPatch {
      */
     public static boolean getHorizontalDrag() {
         return !MINIPLAYER_HORIZONTAL_DRAG_ENABLED;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean getHorizontalDrag(boolean original) {
+        if (CURRENT_TYPE == DEFAULT) {
+            return original;
+        }
+
+        return MINIPLAYER_HORIZONTAL_DRAG_ENABLED;
     }
 
     /**

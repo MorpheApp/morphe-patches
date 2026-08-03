@@ -236,9 +236,6 @@ Slova iz velikih slova u sredini riječi moraju točno odgovarati (npr: iPhone, 
   <string name="morphe_copy_video_link_button_summary">Dodirnite za kopiranje poveznice, dodirnite i zadržite za kopiranje s vremenskim žigom</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">Kopiraj vremensku oznaku prema zadanim postavkama</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">Invertira radnje dodirivanja i pridržavanja \'Kopiraj vezu videa\' gumba</string>
-  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">Ukloni prozor za potvrdu o dozvoljenom prikazu</string>
-  <string name="morphe_remove_viewer_discretion_dialog_summary">Ovo ne zaobilazi ograničenje dobi. Jednostavno ga automatski prihvaća.</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Onemogući \'Prijava na TV\' prozor</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -568,6 +565,7 @@ Info: Možda neće raditi na prijenosima uživo"</string>
   <string name="morphe_shorts_player_type_regular_player_fullscreen">Redovni pregleđ u potpunom veličini</string>
   <!-- layout.shortsautoplay.shortsAutoplayPatch -->
   <string name="morphe_shorts_autoplay_title">Automatski Shorts</string>
+  <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_screen_title">Mini pregleđ</string>
   <string name="morphe_miniplayer_type_title">Mini pregleđ</string>
