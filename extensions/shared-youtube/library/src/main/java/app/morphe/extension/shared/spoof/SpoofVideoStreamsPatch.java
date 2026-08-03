@@ -26,6 +26,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
+import app.morphe.extension.shared.spoof.requests.VisitorIdRequester;
 
 @SuppressWarnings("unused")
 public class SpoofVideoStreamsPatch {
@@ -83,7 +84,13 @@ public class SpoofVideoStreamsPatch {
 
     public static void setClientsToUse(List<ClientType> availableClients, ClientType client) {
         preferredClient = Objects.requireNonNull(client);
-        StreamingDataRequest.setClientOrderToUse(availableClients, client);
+
+        if (isPatchIncluded() && SPOOF_VIDEO_STREAMS) {
+            StreamingDataRequest.setClientOrderToUse(availableClients, client);
+
+            // Prefetch visitorId for default client.
+            VisitorIdRequester.getVisitorId(client);
+        }
     }
 
     public static ClientType getPreferredClient() {

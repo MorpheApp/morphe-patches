@@ -80,12 +80,8 @@ public class StreamingDataRequest {
     }
 
     private static final String AUTHORIZATION_HEADER = "Authorization"; // Available only to logged-in users.
-
-    private static final String[] REQUEST_HEADER_KEYS = {
-            AUTHORIZATION_HEADER,
-            "X-GOOG-API-FORMAT-VERSION",
-            "X-Goog-Visitor-Id"
-    };
+    private static final String API_FORMAT_VERSION_HEADER = "X-GOOG-API-FORMAT-VERSION";
+    private static final String VISITOR_ID_HEADER = "X-Goog-Visitor-Id";
 
     /**
      * TCP connection and HTTP read timeout.
@@ -186,49 +182,57 @@ public class StreamingDataRequest {
             connection.setConnectTimeout(HTTP_TIMEOUT_MILLISECONDS);
             connection.setReadTimeout(HTTP_TIMEOUT_MILLISECONDS);
 
-            boolean authHeadersIncludes = false;
             authHeadersOverrides = false;
 
-            for (String key : REQUEST_HEADER_KEYS) {
-                String value = playerHeaders.get(key);
+            String authorization = playerHeaders.get(AUTHORIZATION_HEADER);
+            boolean authHeadersIncludes = Utils.isNotEmpty(authorization);
 
-                if (value != null) {
-                    if (key.equals(AUTHORIZATION_HEADER)) {
-                        if (clientType.supportsOAuth2) {
-                            String authorization = OAuth2Requester.getAndUpdateAccessTokenIfNeeded();
-                            if (authorization.isEmpty()) {
-                                // Access token is empty, the user has not signed in to VR.
-                                // YouTube/YouTube Music access tokens cannot be used with YouTube VR.
-                                // Do not set the header.
-                                Logger.printDebug(() -> "Not including request header: " + key);
-                                continue;
-                            } else {
-                                // Access token is not empty, the user has signed in to VR.
-                                // Set the header.
-                                value = authorization;
-                                authHeadersOverrides = true;
-                            }
-                        } else if (!clientType.canLogin) {
-                            Logger.printDebug(() -> "Not including request header: " + key);
-                            continue;
-                        }
-                        authHeadersIncludes = true;
-                    }
-
-                    Logger.printDebug(() -> "Including request header: " + key);
-                    connection.setRequestProperty(key, value);
-                }
-            }
-
-            if (!authHeadersIncludes && clientType.requireLogin) {
+            // Auth header is required, but the user is not logged in. These clients are skipped:
+            // ANDROID_CREATOR, TV_SIMPLY, ANDROID_MUSIC_REEL, ANDROID_MUSIC_NO_SDK.
+            if (clientType.canLogin && clientType.requireLogin && !authHeadersIncludes) {
                 Logger.printDebug(() -> "Skipping client since user is not logged in: " + clientType
                         + ", videoId: " + videoId);
                 return null;
             }
+            // If the Bearer token is compatible and the user is logged in, the header is set:
+            // ANDROID_CREATOR, ANDROID_MUSIC_REEL, ANDROID_MUSIC_NO_SDK, TV_SABR, TV_SIMPLY.
+            else if (clientType.canLogin && authHeadersIncludes) {
+                connection.setRequestProperty(AUTHORIZATION_HEADER, authorization);
+                Logger.printDebug(() -> "Set auth header: " + clientType + ", videoId: " + videoId);
+            }
+            // If oauth2 login is supported and the user is logged in via oauth2 flow, the header is set:
+            // ANDROID_VR (ANDROID_XR).
+            else if (clientType.supportsOAuth2 && authHeadersIncludes) {
+                String oauth2Authorization = OAuth2Requester.getAndUpdateAccessTokenIfNeeded();
+                if (Utils.isNotEmpty(oauth2Authorization)) {
+                    authHeadersOverrides = true;
+                    connection.setRequestProperty(AUTHORIZATION_HEADER, oauth2Authorization);
+                    Logger.printDebug(() -> "Set oauth2 auth header: " + clientType + ", videoId: " + videoId);
+                }
+            }
+            // These clients can play videos without the auth header:
+            // ANDROID_VR (ANDROID_XR), TV_SABR, VISIONOS_1_02 (VISIONOS_1_03).
+            else {
+                Logger.printDebug(() -> "Do not set auth header: " + clientType + ", videoId: " + videoId);
+            }
 
             Logger.printDebug(() -> "Fetching video stream for: " + videoId + " using client: " + clientType);
 
-            String innerTubeBody = PlayerRoutes.createInnertubeBody(clientType, videoId);
+            // Using the same visitorId across multiple clients increases the bot score.
+            // To prevent this, each client uses a different visitorId.
+            // See: https://github.com/MorpheApp/morphe-patches/issues/2283.
+            String visitorId = VisitorIdRequester.getVisitorId(clientType);
+            if (Utils.isNotEmpty(visitorId)) {
+                connection.setRequestProperty(VISITOR_ID_HEADER, visitorId);
+            } else {
+                // A few requests without visitorId are okay, but if repeated excessively, increase the bot score.
+                Logger.printDebug(() -> "Do not set visitorId: " + clientType + ", videoId: " + videoId);
+            }
+
+            // Only 'X-GOOG-API-FORMAT-VERSION = 2' can have a proto response.
+            connection.setRequestProperty(API_FORMAT_VERSION_HEADER, "2");
+
+            String innerTubeBody = PlayerRoutes.createInnertubeBody(clientType, videoId, visitorId);
             byte[] requestBody = innerTubeBody.getBytes(StandardCharsets.UTF_8);
             connection.setFixedLengthStreamingMode(requestBody.length);
             connection.getOutputStream().write(requestBody);

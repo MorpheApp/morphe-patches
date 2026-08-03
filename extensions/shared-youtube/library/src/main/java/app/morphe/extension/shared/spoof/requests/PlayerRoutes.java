@@ -47,7 +47,7 @@ public final class PlayerRoutes {
     private PlayerRoutes() {
     }
 
-    static String createInnertubeBody(ClientType clientType, String videoId) {
+    static String createInnertubeBody(ClientType clientType, String videoId, String visitorId) {
         JSONObject innerTubeBody = new JSONObject();
 
         try {
@@ -58,6 +58,9 @@ public final class PlayerRoutes {
             client.put("deviceModel", clientType.deviceModel);
             client.put("clientName", clientType.clientName);
             client.put("clientVersion", clientType.clientVersion);
+            if (!TextUtils.isEmpty(visitorId)) {
+                client.put("visitorData", visitorId);
+            }
             client.put("osName", clientType.osName);
             client.put("osVersion", clientType.osVersion);
 
