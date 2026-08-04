@@ -155,12 +155,7 @@ public class StreamingDataRequest {
     private static void handleDebugToast(String toastMessage,
                                          ClientType clientType) {
         if (BaseSettings.DEBUG.get() && BaseSettings.DEBUG_TOAST_ON_ERROR.get()) {
-            Utils.showToastShort(
-                String.format(
-                    toastMessage,
-                    clientType
-                )
-            );
+            Utils.showToastShort(String.format(toastMessage, clientType));
         }
     }
 
@@ -280,7 +275,8 @@ public class StreamingDataRequest {
                 handleDebugToast("Debug: Ignoring unplayable video (%s)", clientType);
                 String reason = playabilityStatus.getReason();
                 if (Utils.isNotEmpty(reason)) {
-                    Logger.printDebug(() -> String.format("Debug: Ignoring unplayable video (%s), reason: %s", clientType, reason));
+                    Logger.printDebug(() -> String.format(
+                            "Debug: Ignoring unplayable video (%s), reason: %s", clientType, reason));
                 }
 
                 return null;
@@ -303,7 +299,8 @@ public class StreamingDataRequest {
             }
 
             if (clientType.requireJS) {
-                var deobfuscatedStreamingData = JavaScriptManager.getDeobfuscatedStreamingData(streamingData, clientType.requireSABR);
+                var deobfuscatedStreamingData = JavaScriptManager.getDeobfuscatedStreamingData(
+                        streamingData, clientType.requireSABR);
                 if (deobfuscatedStreamingData == null) {
                     handleDebugToast("Debug: Ignoring obfuscated streamingData (%s)", clientType);
                     return null;
@@ -321,13 +318,13 @@ public class StreamingDataRequest {
                 // Override the 'usePlatypus' to false.
                 if (SharedYouTubeSettings.OVERRIDE_INITIAL_VIDEO_QUALITY.get()) {
                     PlayerConfig.Builder playerConfigBuilder = playerConfig.toBuilder();
-                    MediaCommonConfig.Builder mediaCommonConfigBuilder = playerConfigBuilder.getMediaCommonConfig().toBuilder();
+                    MediaCommonConfig.Builder mediaCommonConfigBuilder = playerConfigBuilder
+                            .getMediaCommonConfig().toBuilder();
                     mediaCommonConfigBuilder.setUsePlatypus(false);
                     playerConfigBuilder.setMediaCommonConfig(mediaCommonConfigBuilder);
-                    playerConfigBuffer = playerConfigBuilder.build().toByteArray();
-                } else {
-                    playerConfigBuffer = playerConfig.toByteArray();
+                    playerConfig = playerConfigBuilder.build();
                 }
+                playerConfigBuffer = playerConfig.toByteArray();
             }
 
             return new StreamData(streamingDataBuffer, playerConfigBuffer);

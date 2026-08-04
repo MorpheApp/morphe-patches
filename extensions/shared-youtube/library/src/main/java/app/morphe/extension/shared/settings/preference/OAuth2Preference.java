@@ -356,21 +356,20 @@ public abstract class OAuth2Preference extends Preference implements Preference.
     }
 
     // Check in-app browser availability.
+    @Nullable
     private String getDefaultCustomTabsBrowser(Context context) {
         Intent activityIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://"));
         Intent serviceIntent = new Intent("android.support.customtabs.action.CustomTabsService");
         PackageManager packageManager = context.getPackageManager();
-        List<String> packageNames = new ArrayList<>(1);
         ResolveInfo resolveInfo = packageManager.resolveActivity(activityIntent, 0);
         if (resolveInfo != null) {
-            packageNames.add(resolveInfo.activityInfo.packageName);
-        }
-        for (String packageName : packageNames) {
+            String packageName = resolveInfo.activityInfo.packageName;
             serviceIntent.setPackage(packageName);
             if (packageManager.resolveService(serviceIntent, 0) != null) {
                 return packageName;
             }
         }
+
         return null;
     }
 
@@ -382,19 +381,18 @@ public abstract class OAuth2Preference extends Preference implements Preference.
 
         try {
             // Try opening it in the in-app browser first.
-            Intent i = baseIntent.cloneFilter();
-            i.putExtra("android.support.customtabs.extra.SESSION", (Bundle) null);
-            i.putExtra("android.support.customtabs.extra.TITLE_VISIBILITY", 1);
+            Intent intent = baseIntent.cloneFilter();
+            intent.putExtra("android.support.customtabs.extra.SESSION", (Bundle) null);
+            intent.putExtra("android.support.customtabs.extra.TITLE_VISIBILITY", 1);
             String packageName = getDefaultCustomTabsBrowser(context);
             if (packageName != null) {
-                i.setPackage(packageName);
+                intent.setPackage(packageName);
             }
-            context.startActivity(i);
-        } catch (Exception ignored) {
+            context.startActivity(intent);
+        } catch (Exception ex) {
             // Fallback to legacy method.
-            Intent i = baseIntent.cloneFilter();
-            context.startActivity(i);
+            Logger.printDebug(() -> "Could not open in-app browser, using legacy method", ex);
+            context.startActivity(baseIntent.cloneFilter());
         }
     }
-
 }
