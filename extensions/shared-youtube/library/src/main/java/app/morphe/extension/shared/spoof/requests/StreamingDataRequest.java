@@ -319,11 +319,15 @@ public class StreamingDataRequest {
 
                 // It seems there is an issue when 'usePlatypus = true' when forcing the AVC codec.
                 // Override the 'usePlatypus' to false.
-                PlayerConfig.Builder playerConfigBuilder = playerConfig.toBuilder();
-                MediaCommonConfig.Builder mediaCommonConfigBuilder = playerConfigBuilder.getMediaCommonConfig().toBuilder();
-                mediaCommonConfigBuilder.setUsePlatypus(false);
-                playerConfigBuilder.setMediaCommonConfig(mediaCommonConfigBuilder);
-                playerConfigBuffer = playerConfigBuilder.build().toByteArray();
+                if (SharedYouTubeSettings.OVERRIDE_INITIAL_VIDEO_QUALITY.get()) {
+                    PlayerConfig.Builder playerConfigBuilder = playerConfig.toBuilder();
+                    MediaCommonConfig.Builder mediaCommonConfigBuilder = playerConfigBuilder.getMediaCommonConfig().toBuilder();
+                    mediaCommonConfigBuilder.setUsePlatypus(false);
+                    playerConfigBuilder.setMediaCommonConfig(mediaCommonConfigBuilder);
+                    playerConfigBuffer = playerConfigBuilder.build().toByteArray();
+                } else {
+                    playerConfigBuffer = playerConfig.toByteArray();
+                }
             }
 
             return new StreamData(streamingDataBuffer, playerConfigBuffer);

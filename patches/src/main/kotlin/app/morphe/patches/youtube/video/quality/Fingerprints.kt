@@ -24,6 +24,7 @@ import app.morphe.patches.shared.CurrentAudioVideoFormatToStringFingerprint
 import app.morphe.patches.youtube.shared.VideoStreamingDataToStringFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 internal const val FIXED_RESOLUTION_STRING = ", initialPlaybackVideoQualityFixedResolution="
 
@@ -76,9 +77,15 @@ internal object HidePremiumVideoQualityGetArrayFingerprint : Fingerprint(
     }
 )
 
-internal object InitialVideoQualityFlagFingerprint : Fingerprint(
+internal object PlatypusFeatureFlagPrimaryFingerprint : Fingerprint(
     filters = listOf(
         literal(45624008L)
+    )
+)
+
+internal object PlatypusFeatureFlagSecondaryFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45408049L)
     )
 )
 
@@ -91,6 +98,19 @@ internal object PlaybackStartParametersToStringFingerprint : Fingerprint(
         string(FIXED_RESOLUTION_STRING)
     )
 )
+
+internal fun getPlaybackStartParametersConstructorFingerprint(
+    initialResolutionField: FieldReference
+) = object : Fingerprint(
+    classFingerprint = PlaybackStartParametersToStringFingerprint,
+    name = "<init>",
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            reference = initialResolutionField
+        )
+    )
+) {}
 
 internal object VideoStreamingDataConstructorFingerprint : Fingerprint(
     classFingerprint = VideoStreamingDataToStringFingerprint,

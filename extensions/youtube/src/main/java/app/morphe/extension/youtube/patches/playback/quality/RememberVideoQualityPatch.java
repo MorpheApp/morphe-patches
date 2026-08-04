@@ -26,14 +26,14 @@ import j$.util.Optional;
 
 @SuppressWarnings({"rawtypes", "unused"})
 public class RememberVideoQualityPatch {
+    // Set the access modifier to final to override the flag only after the state snapshot is reloaded.
+    private static final boolean SETTINGS_INITIALIZED = Settings.SETTINGS_INITIALIZED.get();
+    private static final boolean OVERRIDE_INITIAL_VIDEO_QUALITY = Settings.OVERRIDE_INITIAL_VIDEO_QUALITY.get();
 
     private static final IntegerSetting videoQualityWifi = Settings.VIDEO_QUALITY_DEFAULT_WIFI;
     private static final IntegerSetting videoQualityMobile = Settings.VIDEO_QUALITY_DEFAULT_MOBILE;
     private static final IntegerSetting shortsQualityWifi = Settings.SHORTS_QUALITY_DEFAULT_WIFI;
     private static final IntegerSetting shortsQualityMobile = Settings.SHORTS_QUALITY_DEFAULT_MOBILE;
-
-    // Set the access modifier to final to override the flag only after the state snapshot is reloaded.
-    private static final boolean SETTINGS_INITIALIZED = Settings.SETTINGS_INITIALIZED.get();
 
     public static boolean shouldRememberVideoQuality() {
         BooleanSetting preference = ShortsPlayerState.isOpen()
@@ -150,11 +150,14 @@ public class RememberVideoQualityPatch {
 
     /**
      * Injection point.
+     *
+     * @return  If true, default video quality is applied without delay after the video starts.
+     *          Turn this off if you experience playback issues with the Android VR AVC codec.
      */
-    public static boolean overrideInitialVideoQualityFlag(boolean originalValue) {
-        if (SETTINGS_INITIALIZED && getDefaultQualityResolution() != VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE) {
-            Logger.printDebug(() -> "Override initial video quality flag to TRUE");
-            return true;
+    public static boolean overrideInitialVideoQualityFeatureFlag(boolean originalValue) {
+        if (SETTINGS_INITIALIZED) {
+            Logger.printDebug(() -> "Override initial video quality feature flag to " + OVERRIDE_INITIAL_VIDEO_QUALITY);
+            return OVERRIDE_INITIAL_VIDEO_QUALITY;
         }
         return originalValue;
     }
