@@ -70,20 +70,16 @@ val disableSignInToTVPopupPatch = bytecodePatch(
             }
         }
 
-        HandoffPromoCommandResolverFingerprint.method.apply {
-            val free = findFreeRegister(0)
-
-            addInstructionsWithLabels(
-                0,
-                """
-                    invoke-static { }, $EXTENSION_CLASS->disableConnectYourDevicesPopup()Z
-                    move-result v$free
-                    if-eqz v$free, :allow_connect_popup
-                    return-void
-                    :allow_connect_popup
-                    nop
-                """
-            )
-        }
+        HandoffPromoCommandResolverFingerprint.method.addInstructionsWithLabels(
+            0,
+            """
+                invoke-static { }, $EXTENSION_CLASS->disableConnectYourDevicesPopup()Z
+                move-result v0
+                if-eqz v0, :allow_connect_popup
+                return-void
+                :allow_connect_popup
+                nop
+            """
+        )
     }
 }
