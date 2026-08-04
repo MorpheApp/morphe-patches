@@ -35,7 +35,6 @@ public class DisableFullscreenGesturesPatch {
     public static boolean disableBrokenFullscreenZoomFlag(boolean original) {
         if (original) {
             Logger.printInfo(() -> "Problematic pinch to zoom flag is on: " + 45698813);
-            return !Settings.DISABLE_FIX_ZOOM_GESTURE.get();
         }
         return false;
     }
