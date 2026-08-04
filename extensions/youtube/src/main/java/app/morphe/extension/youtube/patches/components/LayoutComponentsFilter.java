@@ -132,11 +132,18 @@ public final class LayoutComponentsFilter extends Filter {
                 "connections_inbox_zero_state"
         );
 
+        // The hint shown in the player during seek gestures. The identifier is versioned.
+        final var seekEduOverlay = new StringFilterGroup(
+                Settings.HIDE_PLAYER_GESTURE_HINTS,
+                "seek_edu_overlay"
+        );
+
         addIdentifierCallbacks(
                 cellDivider,
                 exploreTopicsShelf,
                 liveChatReplay,
-                inviteToMessageCard
+                inviteToMessageCard,
+                seekEduOverlay
         );
 
         // Paths.

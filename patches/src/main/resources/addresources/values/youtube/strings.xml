@@ -136,10 +136,14 @@ Changes include:
           This button usually appears in the video player for certain videos. -->
     <string name="morphe_hide_join_membership_button_title">Hide Join button</string>
     <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears when in fullscreen for live streamed videos after opening live chat. -->
+          This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
     <string name="morphe_hide_live_chat_replay_button_title">Hide \'Live chat replay\' button</string>
     <string name="morphe_hide_live_chat_replay_button_summary">Hides the chat replay button in the fullscreen mode</string>
     <string name="morphe_hide_medical_panels_title">Hide medical panels</string>
+    <string name="morphe_hide_player_gesture_hints_title">Hide player gesture hints</string>
+    <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
+          These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
+    <string name="morphe_hide_player_gesture_hints_summary">Hides the hints shown during player gestures, such as \'Pull up for precise seeking\', \'Release to cancel\' and \'2x\'</string>
     <string name="morphe_hide_snackbar_title">Hide snackbar</string>
     <string name="morphe_hide_subscribers_community_guidelines_title">Hide subscribers guidelines</string>
     <string name="morphe_hide_sync_button_title">Hide \'Sync to video\' button</string>

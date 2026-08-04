@@ -189,6 +189,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_join_membership_button"),
             SwitchPreference("morphe_hide_live_chat_replay_button", summary = true),
             SwitchPreference("morphe_hide_medical_panels"),
+            SwitchPreference("morphe_hide_player_gesture_hints", summary = true),
             SwitchPreference("morphe_hide_snackbar"),
             SwitchPreference("morphe_hide_subscribers_community_guidelines"),
             SwitchPreference("morphe_hide_sync_button"),
