@@ -81,7 +81,7 @@ Changes include:
     <!-- 'Invite others to message' should be translated using the same localized wording YouTube displays
           for the card in the Messages section at the top of the Notifications tab. -->
     <string name="morphe_hide_invite_to_message_card_title">Hide \'Invite others to message\' card</string>
-    <string name="morphe_hide_invite_to_message_card_summary">Hides the \'Invite others to message\' card shown in the Messages section at the top of the Notifications tab</string>
+    <string name="morphe_hide_invite_to_message_card_summary">Hides the invite card shown in the Notifications tab Messages section</string>
     <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
     <string name="morphe_hide_latest_videos_button_title">Hide \'Latest videos\' button</string>
