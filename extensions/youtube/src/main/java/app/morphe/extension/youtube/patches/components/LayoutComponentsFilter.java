@@ -41,6 +41,7 @@ import app.morphe.extension.shared.patches.components.StringFilterGroupList;
 import app.morphe.extension.youtube.patches.ChangeHeaderPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.NavigationBar;
+import app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
 @SuppressWarnings("unused")
 public final class LayoutComponentsFilter extends Filter {
@@ -515,10 +516,8 @@ public final class LayoutComponentsFilter extends Filter {
                 return false;
             }
 
-            // Check the navigation button last and only after all buffer checks pass,
-            // since this call can block for up to 120ms if the back button was recently pressed.
-            return NavigationBar.NavigationButton.getSelectedNavigationButton()
-                    == NavigationBar.NavigationButton.NOTIFICATIONS;
+            // Check the navigation button last and only after all buffer checks pass.
+            return NavigationButton.getSelectedNavigationButton() == NavigationButton.NOTIFICATIONS;
         }
 
         if (matchedGroup == getPremiumButton) {
