@@ -25,6 +25,7 @@ import java.util.Map;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.ClientType;
 
@@ -194,10 +195,22 @@ public final class VisitorIdRequester {
             connection.setFixedLengthStreamingMode(requestBody.length);
             connection.getOutputStream().write(requestBody);
 
-            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+            final int responseCode = connection.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) {
                 // Parse but do not disconnect because connection may be reused in the near future.
                 JSONObject response = Requester.parseJSONObject(connection);
                 return response.getJSONObject("responseContext").getString("visitorData");
+            }
+
+            if (BaseSettings.DEBUG.get()) {
+                String responseMessage = connection.getResponseMessage();
+                Logger.LogMessage logMessage = () -> "Debug: Unexpected visitorId response code: "
+                        + responseCode + " message: " + responseMessage;
+                if (BaseSettings.DEBUG_TOAST_ON_ERROR.get()) {
+                    Logger.printException(logMessage);
+                } else {
+                    Logger.printDebug(logMessage);
+                }
             }
         } catch (IOException ex) {
             Logger.printException(() -> "Failed to fetch visitor data", ex);
