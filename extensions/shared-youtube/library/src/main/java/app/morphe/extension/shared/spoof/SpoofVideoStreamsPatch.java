@@ -23,6 +23,7 @@ import java.util.Map;
 import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
@@ -89,7 +90,7 @@ public class SpoofVideoStreamsPatch {
             StreamingDataRequest.setClientOrderToUse(availableClients, client);
 
             // Prefetch visitorId for default client.
-            VisitorIdRequester.getVisitorId(client);
+            Utils.runOnBackgroundThread(() -> VisitorIdRequester.getVisitorId(client));
         }
     }
 

@@ -233,8 +233,7 @@ public class StreamingDataRequest {
             connection.getOutputStream().write(requestBody);
 
             final int responseCode = connection.getResponseCode();
-
-            if (responseCode == 200) return connection;
+            if (responseCode == HttpURLConnection.HTTP_OK) return connection;
 
             // This situation likely means the patches are outdated.
             // Use a toast message that suggests updating.
@@ -248,7 +247,8 @@ public class StreamingDataRequest {
         } catch (Exception ex) {
             Logger.printException(() -> "send failed", ex);
         } finally {
-            Logger.printDebug(() -> "video: " + videoId + " took: " + (System.currentTimeMillis() - startTime) + "ms");
+            Logger.printDebug(() -> "video: " + videoId + " took: "
+                    + (System.currentTimeMillis() - startTime) + "ms");
         }
 
         return null;

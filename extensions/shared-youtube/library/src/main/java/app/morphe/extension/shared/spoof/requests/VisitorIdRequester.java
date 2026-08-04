@@ -7,49 +7,128 @@
 
 package app.morphe.extension.shared.spoof.requests;
 
+import androidx.annotation.GuardedBy;
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.nio.charset.StandardCharsets;
-import java.util.Collections;
+import java.time.Instant;
+import java.time.ZoneOffset;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ExecutionException;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.ClientType;
 
 public final class VisitorIdRequester {
+
+    private record VisitorData(String visitorId, long fetchedTime) {
+        private static final long VISITOR_ID_EXPIRATION_MS = 2L * 365 * 24 * 60 * 60 * 1000; // 2 years
+
+        boolean isNotExpired() {
+            return Utils.isNotEmpty(visitorId) && System.currentTimeMillis()
+                    - fetchedTime < VISITOR_ID_EXPIRATION_MS;
+        }
+
+        String getFetchedTimeFormatted() {
+            return Instant.ofEpochMilli(fetchedTime).atZone(ZoneOffset.UTC).toString();
+        }
+    }
+
     private static final String YT_API_URL_FORMAT = "https://youtubei.googleapis.com/youtubei/v1/%s" +
             "?prettyPrint=false&fields=responseContext.visitorData";
 
+
     // To prevent bot scores from increasing, a different visitorId must be used for each client.
     // Generally, the expiration date of a visitorId is quite long (over 2 years).
-    //
-    // TODO: Implement a feature to save the visitorId and fetchedTime for each client to sharedPreference.
-    private static final Map<ClientType, String> cache = Collections.synchronizedMap(
-            Utils.createSizeRestrictedMap(ClientType.values().length));
+    @GuardedBy("itself")
+    private static final Map<ClientType, VisitorData> cache = new HashMap<>(
+            2 * ClientType.values().length);
 
-    public static String getVisitorId(ClientType clientType) {
-        String cachedVisitorId = cache.get(clientType);
-        if (Utils.isNotEmpty(cachedVisitorId)) {
-            return cachedVisitorId;
-        } else if (Utils.isNetworkConnected()) {
-            String fetchedVisitorId = send(clientType);
-            if (Utils.isNotEmpty(fetchedVisitorId)) {
-                Logger.printDebug(() -> "client: " + clientType + ", visitorId: " + fetchedVisitorId);
-                cache.put(clientType, fetchedVisitorId);
+    static {
+        loadVisitorIds();
+    }
+
+    private static void loadVisitorIds() {
+        String clientIds = SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_CLIENT_IDS.get();
+        if (clientIds.isEmpty()) {
+            return;
+        }
+        try {
+            JSONObject json = new JSONObject(clientIds);
+            synchronized (cache) {
+                for (ClientType clientType : ClientType.values()) {
+                    JSONObject visitorJson = json.optJSONObject(clientType.name());
+                    if (visitorJson != null) {
+                        VisitorData visitor = new VisitorData(
+                                visitorJson.getString("visitorId"),
+                                visitorJson.getLong("fetchedTime")
+                        );
+                        final boolean isNotExpired = visitor.isNotExpired();
+                        if (isNotExpired) {
+                            cache.put(clientType, visitor);
+                        }
+                        // Don't log visitor id and use UTC timezone to not leak device timezone.
+                        Logger.printDebug(() -> (isNotExpired ? "Loaded visitorId" : "Ignoring expired")
+                                + " clientType: " + clientType
+                                + " fetchedTime: " + visitor.getFetchedTimeFormatted());
+                    }
+                }
             }
+        } catch (JSONException ex) {
+            Logger.printException(() -> "Failed to load visitor IDs from saved data", ex);
+            SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_CLIENT_IDS.resetToDefault();
+        }
+    }
 
-            return fetchedVisitorId;
+    private static void saveVisitorId(ClientType clientType, String visitorId) {
+        Logger.printDebug(() -> "Updating visitorId for clientType: " + clientType);
+
+        synchronized (cache) {
+            cache.put(clientType, new VisitorData(visitorId, System.currentTimeMillis()));
+            JSONObject json = new JSONObject();
+            try {
+                for (Map.Entry<ClientType, VisitorData> entry : cache.entrySet()) {
+                    VisitorData visitor = entry.getValue();
+                    JSONObject data = new JSONObject()
+                            .put("visitorId", visitor.visitorId)
+                            .put("fetchedTime", visitor.fetchedTime);
+                    json.put(entry.getKey().name(), data);
+                }
+                SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_CLIENT_IDS.save(json.toString());
+            } catch (JSONException ex) {
+                Logger.printException(() -> "Failed to save visitor IDs", ex);
+            }
+        }
+    }
+
+    @Nullable
+    public static String getVisitorId(ClientType clientType) {
+        VisitorData cachedData;
+        synchronized (cache) {
+            cachedData = cache.get(clientType);
+        }
+        if (cachedData != null && cachedData.isNotExpired()) {
+            return cachedData.visitorId;
         }
 
-        return null;
+        if (!Utils.isNetworkConnected()) {
+            return null;
+        }
+
+        String fetchedVisitorId = send(clientType);
+        if (Utils.isNotEmpty(fetchedVisitorId)) {
+            saveVisitorId(clientType, fetchedVisitorId);
+        }
+        return fetchedVisitorId;
     }
 
     private static String createInnertubeBody(ClientType clientType) {
@@ -75,7 +154,6 @@ public final class VisitorIdRequester {
             JSONObject request = new JSONObject();
             request.put("internalExperimentFlags", internalExperimentFlags);
             request.put("useSsl", true);
-
             context.put("request", request);
 
             JSONObject user = new JSONObject();
@@ -83,8 +161,8 @@ public final class VisitorIdRequester {
             context.put("user", user);
 
             innerTubeBody.put("context", context);
-        } catch (JSONException e) {
-            Logger.printException(() -> "Failed to create innerTubeBody", e);
+        } catch (JSONException ex) {
+            Logger.printException(() -> "Failed to create innerTubeBody", ex);
         }
 
         return innerTubeBody.toString();
@@ -92,47 +170,43 @@ public final class VisitorIdRequester {
 
     @Nullable
     private static String send(ClientType clientType) {
-        JSONObject response;
-
+        final long start = System.currentTimeMillis();
         try {
-            final long start = System.currentTimeMillis();
-            response = Utils.submitOnBackgroundThread(() -> {
-                final int connectionTimeoutMillis = 5000;
-                String url = String.format(YT_API_URL_FORMAT,
-                        // TVHTML5 does not support the '/visitor_id' endpoint.
-                        clientType.id == 7 ? "guide" : "visitor_id"
-                );
-                HttpURLConnection connection = Requester.openConnection(url);
-                connection.setRequestMethod("POST");
-                connection.setRequestProperty("Accept-Language", "en-GB, en;q=0.9");
-                connection.setRequestProperty("Content-Type", "application/json");
-                connection.setRequestProperty("User-Agent", clientType.userAgent);
-                connection.setRequestProperty("X-YouTube-Client-Name", String.valueOf(clientType.id));
-                connection.setRequestProperty("X-YouTube-Client-Version", clientType.clientVersion);
-                connection.setConnectTimeout(connectionTimeoutMillis);
-                connection.setReadTimeout(connectionTimeoutMillis);
+            Utils.verifyOffMainThread();
 
-                String innerTubeBody = createInnertubeBody(clientType);
-                byte[] requestBody = innerTubeBody.getBytes(StandardCharsets.UTF_8);
-                connection.setFixedLengthStreamingMode(requestBody.length);
-                connection.getOutputStream().write(requestBody);
+            final int connectionTimeoutMillis = 5000;
+            String url = String.format(YT_API_URL_FORMAT,
+                    // TVHTML5 does not support the '/visitor_id' endpoint.
+                    clientType.id == 7 ? "guide" : "visitor_id"
+            );
+            HttpURLConnection connection = Requester.openConnection(url);
+            connection.setRequestMethod("POST");
+            connection.setRequestProperty("Accept-Language", "en-GB, en;q=0.9");
+            connection.setRequestProperty("Content-Type", "application/json");
+            connection.setRequestProperty("User-Agent", clientType.userAgent);
+            connection.setRequestProperty("X-YouTube-Client-Name", String.valueOf(clientType.id));
+            connection.setRequestProperty("X-YouTube-Client-Version", clientType.clientVersion);
+            connection.setConnectTimeout(connectionTimeoutMillis);
+            connection.setReadTimeout(connectionTimeoutMillis);
 
-                final int responseCode = connection.getResponseCode();
-                if (responseCode == HttpURLConnection.HTTP_OK) {
-                    return Requester.parseJSONObjectAndDisconnect(connection);
-                }
-                connection.disconnect();
-                return null;
-            }).get();
+            String innerTubeBody = createInnertubeBody(clientType);
+            byte[] requestBody = innerTubeBody.getBytes(StandardCharsets.UTF_8);
+            connection.setFixedLengthStreamingMode(requestBody.length);
+            connection.getOutputStream().write(requestBody);
 
-            Logger.printDebug(() -> "Fetch took: " + (System.currentTimeMillis() - start) + "ms");
-            if (response != null) {
+            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                // Parse but do not disconnect because connection may be reused in the near future.
+                JSONObject response = Requester.parseJSONObject(connection);
                 return response.getJSONObject("responseContext").getString("visitorData");
             }
-        } catch (ExecutionException | InterruptedException ex) {
+        } catch (IOException ex) {
             Logger.printException(() -> "Failed to fetch visitor data", ex);
         } catch (JSONException ex) {
             Logger.printException(() -> "Failed to parse visitor data", ex);
+        } catch (Exception ex) {
+            Logger.printException(() -> "send failure", ex);
+        } finally {
+            Logger.printDebug(() -> "Fetch took: " + (System.currentTimeMillis() - start) + "ms");
         }
 
         return null;
