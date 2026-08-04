@@ -37,8 +37,8 @@ internal object HandoffPromoCommandResolverFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("L", "Ljava/util/Map;"),
     strings = listOf(
-        "com/google/android/apps/youtube/app/mdx/handoff/HandoffPromoCommandResolver",
-        "generateMealbarPromoRendererWithSubstitutedPlaceholders"
+        "Unsupported RunCase: ",
+        "Unspecified PlaceholderType."
     )
 )
 
