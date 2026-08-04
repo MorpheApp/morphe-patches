@@ -11,4 +11,11 @@ public class DisableSignInToTVPopupPatch {
     public static boolean disableSignInToTVPopup() {
         return Settings.DISABLE_SIGN_IN_TO_TV_POPUP.get();
     }
+
+    /**
+     * Injection point.
+     */
+    public static boolean disableConnectYourDevicesPopup() {
+        return Settings.DISABLE_CONNECT_YOUR_DEVICES_POPUP.get();
+    }
 }

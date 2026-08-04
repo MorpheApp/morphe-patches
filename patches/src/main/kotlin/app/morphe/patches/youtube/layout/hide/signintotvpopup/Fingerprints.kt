@@ -32,6 +32,16 @@ internal object SignInToTVPopupFingerprint : Fingerprint(
     )
 )
 
+internal object HandoffPromoCommandResolverFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L", "Ljava/util/Map;"),
+    strings = listOf(
+        "com/google/android/apps/youtube/app/mdx/handoff/HandoffPromoCommandResolver",
+        "generateMealbarPromoRendererWithSubstitutedPlaceholders"
+    )
+)
+
 internal object SignInToTVPopupDismissFingerprint : Fingerprint(
     classFingerprint = SignInToTVPopupFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
