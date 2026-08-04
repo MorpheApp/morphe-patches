@@ -7,6 +7,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
@@ -355,27 +356,22 @@ public abstract class OAuth2Preference extends Preference implements Preference.
     }
 
     // Check in-app browser availability.
-    private String resolveCustomTabsBrowser(Context context) {
+    private String getDefaultCustomTabsBrowser(Context context) {
+        Intent activityIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://"));
         Intent serviceIntent = new Intent("android.support.customtabs.action.CustomTabsService");
-
-        List<ResolveInfo> resolveInfos = context.getPackageManager()
-                .queryIntentServices(serviceIntent, 0);
-
-        List<String> validPackages = new ArrayList<>();
-        for (ResolveInfo info : resolveInfos) {
-            String packageName = info.serviceInfo.packageName;
-
-            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com"));
-            browserIntent.setPackage(packageName);
-            ResolveInfo browserInfo = context.getPackageManager()
-                    .resolveActivity(browserIntent, 0);
-
-            if (browserInfo != null) {
-                validPackages.add(packageName);
+        PackageManager packageManager = context.getPackageManager();
+        List<String> packageNames = new ArrayList<>(1);
+        ResolveInfo resolveInfo = packageManager.resolveActivity(activityIntent, 0);
+        if (resolveInfo != null) {
+            packageNames.add(resolveInfo.activityInfo.packageName);
+        }
+        for (String packageName : packageNames) {
+            serviceIntent.setPackage(packageName);
+            if (packageManager.resolveService(serviceIntent, 0) != null) {
+                return packageName;
             }
         }
-
-        return validPackages.isEmpty() ? null : validPackages.get(0);
+        return null;
     }
 
     private void openInBrowser(Context context, String userCode, String verificationUrl) {
@@ -389,7 +385,7 @@ public abstract class OAuth2Preference extends Preference implements Preference.
             Intent i = baseIntent.cloneFilter();
             i.putExtra("android.support.customtabs.extra.SESSION", (Bundle) null);
             i.putExtra("android.support.customtabs.extra.TITLE_VISIBILITY", 1);
-            String packageName = resolveCustomTabsBrowser(context);
+            String packageName = getDefaultCustomTabsBrowser(context);
             if (packageName != null) {
                 i.setPackage(packageName);
             }
