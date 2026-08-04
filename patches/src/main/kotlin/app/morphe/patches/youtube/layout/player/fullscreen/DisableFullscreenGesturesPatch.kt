@@ -10,17 +10,22 @@
 
 package app.morphe.patches.youtube.layout.player.fullscreen
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.playservice.is_20_40_or_greater
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFreeRegister
 import app.morphe.util.toPublicAccessFlags
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 @Suppress("unused")
 val disableFullscreenGesturesPatch = bytecodePatch(
@@ -30,6 +35,7 @@ val disableFullscreenGesturesPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
+        versionCheckPatch
     )
 
     // Cannot declare as top level since this patch is in the same package as
@@ -47,7 +53,8 @@ val disableFullscreenGesturesPatch = bytecodePatch(
                 preferences = setOf(
                     SwitchPreference("morphe_disable_fullscreen_pulled_up_gesture"),
                     SwitchPreference("morphe_disable_fullscreen_dragged_down_gesture"),
-                    SwitchPreference("morphe_disable_fullscreen_sliding_down_gesture")
+                    SwitchPreference("morphe_disable_fullscreen_sliding_down_gesture"),
+                    SwitchPreference("morphe_fix_zoom_gesture", summary = true)
                 )
             )
         )
@@ -84,6 +91,25 @@ val disableFullscreenGesturesPatch = bytecodePatch(
                         nop
                     """
                 )
+            }
+        }
+
+        if (is_20_40_or_greater) {
+            FullscreenGestureZoomFingerprint.apply {
+                method.apply {
+                    val instructionIndex = instructionMatches[9].index
+                    val instructionRegister = getInstruction<OneRegisterInstruction>(
+                        instructionIndex
+                    ).registerA
+
+                    addInstructions(
+                        instructionIndex + 1,
+                        """
+                            invoke-static { v$instructionRegister }, $EXTENSION_CLASS->disableBrokenFullscreenZoomFlag(Z)Z
+                            move-result v$instructionRegister
+                        """
+                    )
+                }
             }
         }
     }

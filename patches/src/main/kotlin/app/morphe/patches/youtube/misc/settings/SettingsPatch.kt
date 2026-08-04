@@ -50,7 +50,6 @@ import app.morphe.patches.youtube.misc.fix.likebutton.fixLikeButtonPatch
 import app.morphe.patches.youtube.misc.fix.pipchatbar.fixPipChatBarPatch
 import app.morphe.patches.youtube.misc.fix.playbackspeed.fixPlaybackSpeedWhilePlayingPatch
 import app.morphe.patches.youtube.misc.fix.preference.fixPreferenceIconPatch
-import app.morphe.patches.youtube.misc.fix.zoom.fixFullScreenZoomGesturePatch
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -217,7 +216,6 @@ val settingsPatch = bytecodePatch(
         fixLikeButtonPatch,
         fixContentProviderPatch,
         fixPipChatBarPatch,
-        fixFullScreenZoomGesturePatch,
         addLicensePatch,
         removeLinkVerification,
         checkEnvironmentPatch,

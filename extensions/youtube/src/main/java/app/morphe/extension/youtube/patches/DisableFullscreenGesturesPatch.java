@@ -28,4 +28,15 @@ public class DisableFullscreenGesturesPatch {
                 ("FULLSCREEN_DRAGGED_DOWN".equals(nextGestureType)
                         && Settings.DISABLE_FULLSCREEN_DRAGGED_DOWN_GESTURE.get());
     }
+
+    /**
+     * Injection point.
+     */
+    public static boolean disableBrokenFullscreenZoomFlag(boolean original) {
+        if (original) {
+            Logger.printInfo(() -> "Problematic pinch to zoom flag is on: " + 45698813);
+            return !Settings.DISABLE_FIX_ZOOM_GESTURE.get();
+        }
+        return false;
+    }
 }

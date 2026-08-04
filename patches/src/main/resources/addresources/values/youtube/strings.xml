@@ -914,6 +914,8 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <string name="morphe_disable_fullscreen_pulled_up_gesture_title">Disable portrait swipe-up gesture</string>
     <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Disable portrait swipe-down gesture</string>
     <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Disable landscape swipe-down gesture</string>
+    <string name="morphe_fix_zoom_gesture_title">Force zoom gesture availability</string>
+    <string name="morphe_fix_zoom_gesture_summary">Fixes zoom gesture not available for some users</string>
 
     <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
     <string name="morphe_open_videos_fullscreen_title">Open videos in fullscreen mode</string>
