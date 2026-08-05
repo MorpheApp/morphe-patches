@@ -10,12 +10,23 @@ package app.morphe.extension.youtube.patches.utils;
 import static app.morphe.extension.youtube.patches.AddToQueuePatch.injectFlyoutElements;
 
 import android.app.Dialog;
+import android.content.Context;
+import android.graphics.PorterDuff;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Base64;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.view.Window;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import com.facebook.litho.ComponentHost;
@@ -30,8 +41,11 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
+import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.EngagementPanel;
@@ -83,6 +97,14 @@ public final class FlyoutUtils {
     private static final Pattern TITLE_CLEANUP_PATTERN = Pattern.compile("[^a-zA-Z0-9\\s]");
     private static final Pattern WHITESPACE_PATTERN = Pattern.compile("\\s+");
     private static final Pattern COMMENT_ID_CLEANUP_PATTERN = Pattern.compile("[^A-Za-z0-9_.-]");
+
+    public static final int BLACK_COLOR = ResourceUtils.getColor("yt_black1");
+    public static final int GREY_COLOR = ResourceUtils.getColor("yt_grey1");
+    public static final int WHITE_COLOR = ResourceUtils.getColor("yt_white1");
+
+    public record FlyoutMenuInfo(LinearLayout menuContainer, int adjustedIndex,
+                                 boolean isPopupWindow, @Nullable PopupWindow popupWindow) {
+    }
 
     private static WeakReference<View> senderViewRef = new WeakReference<>(null);
 
@@ -167,6 +189,103 @@ public final class FlyoutUtils {
                 }
             }
         });
+    }
+
+    @Nullable
+    public static FlyoutMenuInfo getFlyoutMenuInfo(Object flyoutPanel, int initialIndex) {
+        LinearLayout menuContainer = null;
+        PopupWindow popupWindow = null;
+        boolean isPopupWindow = false;
+        int adjustedIndex = initialIndex;
+
+        if (flyoutPanel instanceof PopupWindow checkedPopupWindow) {
+            popupWindow = checkedPopupWindow;
+            if (checkedPopupWindow.getContentView() instanceof FrameLayout frameLayout) {
+                if (frameLayout.getChildAt(0) instanceof ViewGroup viewGroup &&
+                        viewGroup.getChildAt(0) instanceof LinearLayout checkedMenuContainer) {
+                    menuContainer = checkedMenuContainer;
+                }
+            }
+            isPopupWindow = true;
+        } else if (flyoutPanel instanceof Dialog checkedDialog) {
+            Window window = checkedDialog.getWindow();
+            if (window != null) {
+                View decorView = window.getDecorView();
+                final int containerId = ResourceUtils.getIdentifier(ResourceType.ID, "container");
+                if (containerId != 0) {
+                    View container = decorView.findViewById(containerId);
+                    if (container instanceof FrameLayout frameLayout) {
+                        if (frameLayout.getChildAt(0) instanceof ViewGroup coordinator &&
+                                coordinator.getChildAt(1) instanceof ViewGroup nestedFrame) {
+                            View menuRoot = nestedFrame.getChildAt(0);
+                            if (menuRoot instanceof ViewGroup group &&
+                                    group.getChildAt(0) instanceof LinearLayout linearLayout) {
+                                menuContainer = linearLayout;
+                                // Skip an index to inject the button after the bottom sheet handle.
+                                adjustedIndex += 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        if (menuContainer == null) {
+            return null;
+        }
+
+        return new FlyoutMenuInfo(menuContainer, adjustedIndex, isPopupWindow, popupWindow);
+    }
+
+    public static View createFlyoutButton(Context context, @Nullable Drawable icon,
+                                          String text, View.OnClickListener clickListener) {
+        LinearLayout customButton = new LinearLayout(context);
+        customButton.setOrientation(LinearLayout.HORIZONTAL);
+        customButton.setGravity(Gravity.CENTER_VERTICAL);
+        customButton.setPadding(Dim.dp16, Dim.dp12, Dim.dp16, Dim.dp12);
+        customButton.setClickable(true);
+        customButton.setBackgroundColor(Utils.isDarkModeEnabled()
+                ? BLACK_COLOR
+                : WHITE_COLOR
+        );
+
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(Dim.dp24, Dim.dp24);
+        layoutParams.rightMargin = Dim.dp16;
+
+        if (icon != null) {
+            ImageView iconView = new ImageView(context);
+            iconView.setLayoutParams(layoutParams);
+
+            Drawable mutableIcon = icon.mutate();
+            mutableIcon.setTint(Utils.isDarkModeEnabled() ? WHITE_COLOR : BLACK_COLOR);
+            mutableIcon.setTintMode(PorterDuff.Mode.SRC_IN);
+            iconView.setImageDrawable(mutableIcon);
+
+            customButton.addView(iconView);
+        }
+
+        TextView textView = new TextView(context);
+        textView.setText(text);
+        textView.setTextSize(16);
+        textView.setTypeface(null, Typeface.BOLD);
+
+        customButton.addView(textView);
+        customButton.setOnClickListener(clickListener);
+
+        return customButton;
+    }
+
+    public static View createFlyoutDivider(Context context) {
+        final View divider = new View(context);
+        final LinearLayout.LayoutParams dividerParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                Dim.dp1
+        );
+        dividerParams.setMargins(Dim.dp16, Dim.dp4, Dim.dp16, Dim.dp4);
+        divider.setLayoutParams(dividerParams);
+        divider.setBackgroundColor(GREY_COLOR);
+
+        return divider;
     }
 
     /**

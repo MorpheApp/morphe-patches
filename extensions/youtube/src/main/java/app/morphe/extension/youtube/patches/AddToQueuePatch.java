@@ -8,21 +8,11 @@
 package app.morphe.extension.youtube.patches;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
-import android.graphics.PorterDuff;
-import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.Pair;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
@@ -30,10 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
 import app.morphe.extension.youtube.patches.utils.PlaylistPatch;
 import app.morphe.extension.youtube.settings.Settings;
@@ -45,10 +33,6 @@ public final class AddToQueuePatch {
     private static final Drawable queueButtonDrawable =
             ResourceUtils.getDrawable("quantum_ic_playlist_add_white_24");
     private static final String shareButtonName = "SHARE_ARROW";
-
-    private static final int BLACK_COLOR = ResourceUtils.getColor("yt_black1");
-    private static final int GREY_COLOR = ResourceUtils.getColor("yt_grey1");
-    private static final int WHITE_COLOR = ResourceUtils.getColor("yt_white1");
 
     private static final List<Pair<String, Integer>> visibleFlyoutButtons = new ArrayList<>();
 
@@ -70,167 +54,51 @@ public final class AddToQueuePatch {
         }
     }
     @SuppressWarnings({"UnusedReturnValue", "SameParameterValue"})
-    private static int initializeNewButton(
-            Object flyoutPanel,
-            Drawable icon,
-            String text,
-            View.OnClickListener clickListener,
-            int index
-    ) {
-        return initializeNewElement(
-                flyoutPanel,
-                icon,
-                text,
-                clickListener,
-                index,
-                false
-        );
+    private static int initializeNewButton(Object flyoutPanel, Drawable icon, String text,
+                                           View.OnClickListener clickListener, int index) {
+        return initializeNewElement(flyoutPanel, icon, text, clickListener, index, false);
     }
+
     @SuppressWarnings({"UnusedReturnValue", "SameParameterValue"})
-    private static int initializeNewDivider(
-            Object flyoutPanel,
-            int index
-    ) {
-        return initializeNewElement(
-                flyoutPanel,
-                null,
-                null,
-                null,
-                index,
-                true
-        );
+    private static int initializeNewDivider(Object flyoutPanel, int index) {
+        return initializeNewElement(flyoutPanel, null, null, null, index, true);
     }
-    private static int initializeNewElement(
-            Object flyoutPanel,
-            Drawable icon,
-            String text,
-            View.OnClickListener clickListener,
-            int index,
-            boolean isDivider
-    ) {
+
+    private static int initializeNewElement(Object flyoutPanel, Drawable icon, String text,
+                                            View.OnClickListener clickListener, int index,
+                                            boolean isDivider) {
         try {
-            if (flyoutPanel == null) {
+            FlyoutUtils.FlyoutMenuInfo menuInfo = FlyoutUtils.getFlyoutMenuInfo(flyoutPanel, index);
+            if (menuInfo == null) {
                 return -1;
             }
 
-            PopupWindow popupWindow = null;
-            LinearLayout menuContainer = null;
-            int fixedIndex = index;
-            final boolean newLayout;
-
-            if (flyoutPanel instanceof PopupWindow checkedPopupWindow) {
-                popupWindow = checkedPopupWindow;
-                if (checkedPopupWindow.getContentView() instanceof FrameLayout frameLayout) {
-                    if (frameLayout.getChildAt(0) instanceof ViewGroup viewGroup &&
-                            viewGroup.getChildAt(0) instanceof LinearLayout checkedMenuContainer) {
-                        menuContainer = checkedMenuContainer;
-                    }
-                }
-                newLayout = true;
-            } else {
-                if (flyoutPanel instanceof Dialog checkedDialog) {
-                    Window window = checkedDialog.getWindow();
-                    if (window != null) {
-                        View decorView = window.getDecorView();
-                        int containerId = ResourceUtils.getIdentifier(ResourceType.ID, "container");
-                        if (containerId != 0) {
-                            View container = decorView.findViewById(containerId);
-                            if (container instanceof FrameLayout frameLayout) {
-                                if (frameLayout.getChildAt(0) instanceof ViewGroup coordinator &&
-                                        coordinator.getChildAt(1) instanceof ViewGroup nestedFrame) {
-                                    View menuRoot = nestedFrame.getChildAt(0);
-                                    if (menuRoot instanceof ViewGroup group &&
-                                            group.getChildAt(0) instanceof LinearLayout linearLayout) {
-                                        menuContainer = linearLayout;
-                                        // Skip an index to inject the button after the bottom sheet handle.
-                                        fixedIndex += 1;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                newLayout = false;
-            }
-
-            if (menuContainer == null) {
-                return -1;
-            }
-
-            Context context = Utils.getContext();
+            Context context = Utils.getActivity();
             if (context == null) {
                 return -1;
             }
 
-            float density = Dim.getMetrics().density;
-            int density1 = (int) (1 * density);
-            int density4 = (int) (4 * density);
-            int density12 = (int) (12 * density);
-            int density16 = (int) (16 * density);
-            int density24 = (int) (24 * density);
+            View view = isDivider
+                    ? FlyoutUtils.createFlyoutDivider(context)
+                    : FlyoutUtils.createFlyoutButton(context, icon, text, clickListener);
 
-            if (!isDivider) {
-                final LinearLayout customButton = new LinearLayout(context);
-                customButton.setOrientation(LinearLayout.HORIZONTAL);
-                customButton.setGravity(Gravity.CENTER_VERTICAL);
-                customButton.setPadding(density16, density12, density16, density12);
-                customButton.setClickable(true);
-                customButton.setBackgroundColor(
-                        Utils.isDarkModeEnabled()
-                                ? BLACK_COLOR
-                                : WHITE_COLOR
-                );
+            int fixedIndex = menuInfo.adjustedIndex();
+            menuInfo.menuContainer().addView(view, fixedIndex);
 
-                final LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(density24, density24);
-                layoutParams.rightMargin = density16;
-
-                if (icon != null) {
-                    final ImageView iconView = new ImageView(context);
-                    iconView.setLayoutParams(layoutParams);
-
-                    final Drawable mutableIcon = icon.mutate();
-                    mutableIcon.setTint(Utils.isDarkModeEnabled() ? WHITE_COLOR : BLACK_COLOR);
-                    mutableIcon.setTintMode(PorterDuff.Mode.SRC_IN);
-                    iconView.setImageDrawable(mutableIcon);
-
-                    customButton.addView(iconView);
-                }
-
-                final TextView textView = new TextView(context);
-                textView.setText(text);
-                textView.setTextSize(16);
-                textView.setTypeface(null, Typeface.BOLD);
-
-                customButton.addView(textView);
-                customButton.setOnClickListener(clickListener);
-
-                menuContainer.addView(customButton, fixedIndex);
-            } else {
-                final View divider = new View(context);
-                final LinearLayout.LayoutParams dividerParams = new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        density1
-                );
-                dividerParams.setMargins(density16, density4, density16, density4);
-                divider.setLayoutParams(dividerParams);
-                divider.setBackgroundColor(GREY_COLOR);
-
-                menuContainer.addView(divider, fixedIndex);
-            }
-
+            PopupWindow popupWindow = menuInfo.popupWindow();
             if (popupWindow != null) {
                 popupWindow.update();
             }
 
             // For new layout only:
             // Skip an index to inject the next element after the current button.
-            if (newLayout) {
+            if (menuInfo.isPopupWindow()) {
                 fixedIndex++;
             }
 
             return fixedIndex;
         } catch (Exception ex) {
-            Logger.printException(() -> "injectButton failure", ex);
+            Logger.printException(() -> "initializeNewElement failure", ex);
         }
 
         return -1;
