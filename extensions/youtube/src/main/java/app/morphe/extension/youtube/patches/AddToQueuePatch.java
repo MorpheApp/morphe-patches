@@ -116,6 +116,7 @@ public final class AddToQueuePatch {
             PopupWindow popupWindow = null;
             LinearLayout menuContainer = null;
             int fixedIndex = index;
+            final boolean newLayout;
 
             if (flyoutPanel instanceof PopupWindow checkedPopupWindow) {
                 popupWindow = checkedPopupWindow;
@@ -125,26 +126,31 @@ public final class AddToQueuePatch {
                         menuContainer = checkedMenuContainer;
                     }
                 }
-            } else if (flyoutPanel instanceof Dialog checkedDialog) {
-                Window window = checkedDialog.getWindow();
-                if (window != null) {
-                    View decorView = window.getDecorView();
-                    int containerId = ResourceUtils.getIdentifier(ResourceType.ID, "container");
-                    if (containerId != 0) {
-                        View container = decorView.findViewById(containerId);
-                        if (container instanceof FrameLayout frameLayout) {
-                            if (frameLayout.getChildAt(0) instanceof ViewGroup coordinator &&
-                                    coordinator.getChildAt(1) instanceof ViewGroup nestedFrame) {
-                                View menuRoot = nestedFrame.getChildAt(0);
-                                if (menuRoot instanceof ViewGroup group &&
-                                        group.getChildAt(0) instanceof LinearLayout linearLayout) {
-                                    menuContainer = linearLayout;
-                                    fixedIndex += 1;
+                newLayout = true;
+            } else {
+                if (flyoutPanel instanceof Dialog checkedDialog) {
+                    Window window = checkedDialog.getWindow();
+                    if (window != null) {
+                        View decorView = window.getDecorView();
+                        int containerId = ResourceUtils.getIdentifier(ResourceType.ID, "container");
+                        if (containerId != 0) {
+                            View container = decorView.findViewById(containerId);
+                            if (container instanceof FrameLayout frameLayout) {
+                                if (frameLayout.getChildAt(0) instanceof ViewGroup coordinator &&
+                                        coordinator.getChildAt(1) instanceof ViewGroup nestedFrame) {
+                                    View menuRoot = nestedFrame.getChildAt(0);
+                                    if (menuRoot instanceof ViewGroup group &&
+                                            group.getChildAt(0) instanceof LinearLayout linearLayout) {
+                                        menuContainer = linearLayout;
+                                        // Skip an index to inject the button after the bottom sheet handle.
+                                        fixedIndex += 1;
+                                    }
                                 }
                             }
                         }
                     }
                 }
+                newLayout = false;
             }
 
             if (menuContainer == null) {
@@ -214,6 +220,12 @@ public final class AddToQueuePatch {
 
             if (popupWindow != null) {
                 popupWindow.update();
+            }
+
+            // For new layout only:
+            // Skip an index to inject the next element after the current button.
+            if (newLayout) {
+                fixedIndex++;
             }
 
             return fixedIndex;
