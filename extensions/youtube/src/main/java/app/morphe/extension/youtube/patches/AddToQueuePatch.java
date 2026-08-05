@@ -7,6 +7,8 @@
 
 package app.morphe.extension.youtube.patches;
 
+import static app.morphe.extension.shared.StringRef.str;
+
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -30,8 +32,8 @@ import app.morphe.extension.youtube.settings.Settings;
 public final class AddToQueuePatch {
 
     private static final String queueButtonName = "QUEUE_PLAY_NEXT";
-    private static final Drawable queueButtonDrawable =
-            ResourceUtils.getDrawable("quantum_ic_playlist_add_white_24");
+    private static final Drawable queueButtonDrawable = ResourceUtils
+            .getDrawable("quantum_ic_playlist_add_white_24");
     private static final String shareButtonName = "SHARE_ARROW";
 
     private static final List<Pair<String, Integer>> visibleFlyoutButtons = new ArrayList<>();
@@ -43,10 +45,8 @@ public final class AddToQueuePatch {
         int currentInjectIndex = initializeNewButton(
                 flyoutPanel,
                 queueButtonDrawable,
-                "Add to queue (Morphe)",
-                v -> {
-                    flyoutButtonClickLogic(queueButtonName);
-                },
+                str("morphe_queue_flyout_title"),
+                v -> flyoutButtonClickLogic(queueButtonName),
                 0
         );
         if (currentInjectIndex > 0) {
