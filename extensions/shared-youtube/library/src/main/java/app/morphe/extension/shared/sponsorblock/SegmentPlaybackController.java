@@ -17,6 +17,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.text.TextUtils;
+import android.util.LruCache;
 import android.util.Range;
 import android.view.Gravity;
 import android.view.View;
@@ -93,6 +94,9 @@ public class SegmentPlaybackController {
      * Draw them on screen using a fixed width bar.
      */
     private static final int HIGHLIGHT_SEGMENT_DRAW_BAR_WIDTH = Dim.dp7;
+
+    private static final int SEGMENT_CACHE_CAPACITY = 30;
+    private static final LruCache<String, SponsorSegment[]> segmentCache = new LruCache<>(SEGMENT_CACHE_CAPACITY);
 
     @Nullable
     private static String currentVideoId;
@@ -250,6 +254,10 @@ public class SegmentPlaybackController {
 
     private static void setSegments(SponsorSegment[] videoSegments) {
         Arrays.sort(videoSegments);
+        for (SponsorSegment segment : videoSegments) {
+            segment.didAutoSkipped = false;
+            segment.recordedAsSkipped = false;
+        }
         segments = videoSegments;
         calculateTimeWithoutSegments();
 
@@ -329,6 +337,9 @@ public class SegmentPlaybackController {
      */
     private static void discardSegmentsForWhitelistedChannel() {
         String videoId = currentVideoId;
+        if (videoId != null) {
+            segmentCache.remove(videoId);
+        }
         clearData();
         currentVideoId = videoId;
         ui().hideAll();
@@ -346,6 +357,7 @@ public class SegmentPlaybackController {
             // API request string. Done on every initialize so behavior/color changes made in the
             // settings UI take effect on the next track without requiring an app restart.
             SegmentCategory.loadAllCategoriesFromSettings();
+            segmentCache.evictAll();
             clearData();
             ui().hideAll();
             ui().clearUnsubmittedSegmentTimes();
@@ -379,10 +391,6 @@ public class SegmentPlaybackController {
                 Logger.printDebug(() -> "Ignoring Short");
                 return;
             }
-            if (!Utils.isNetworkConnected()) {
-                Logger.printDebug(() -> "Network not connected, ignoring video");
-                return;
-            }
 
             currentVideoId = videoId;
             Logger.printDebug(() -> "New video ID: " + videoId);
@@ -391,6 +399,18 @@ public class SegmentPlaybackController {
             if (whitelist != null && whitelist.isCurrentChannelWhitelisted()) {
                 Logger.printDebug(() -> "Skipping SponsorBlock request for whitelisted channel");
                 maybeShowWhitelistToast();
+                return;
+            }
+
+            SponsorSegment[] cachedSegments = segmentCache.get(videoId);
+            if (cachedSegments != null) {
+                Logger.printDebug(() -> "SponsorBlock segments loaded from LRU cache for video: " + videoId);
+                setSegments(cachedSegments);
+                return;
+            }
+
+            if (!Utils.isNetworkConnected()) {
+                Logger.printDebug(() -> "Network not connected, ignoring video");
                 return;
             }
 
@@ -414,6 +434,10 @@ public class SegmentPlaybackController {
         Utils.verifyOffMainThread();
 
         SponsorSegment[] segments = SBRequester.getSegments(videoId);
+
+        if (segments != null && segments.length > 0) {
+            segmentCache.put(videoId, segments);
+        }
 
         Utils.runOnMainThread(() -> {
             if (!videoId.equals(currentVideoId)) {
