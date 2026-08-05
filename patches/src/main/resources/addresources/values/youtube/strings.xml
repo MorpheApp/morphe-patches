@@ -913,6 +913,24 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <string name="morphe_exit_fullscreen_entry_3">Landscape only</string>
     <string name="morphe_exit_fullscreen_entry_4">Portrait and landscape</string>
 
+    <!-- layout.player.fullscreen.fullscreenCutoutPaddingPatch -->
+    <string name="morphe_fullscreen_cutout_padding_screen_title">Camera cutout</string>
+    <string name="morphe_fullscreen_cutout_padding_screen_summary">Move the fullscreen video away from the camera on foldables and tablets</string>
+    <string name="morphe_fullscreen_cutout_padding_title">Move video away from camera cutout</string>
+    <string name="morphe_fullscreen_cutout_padding_summary">Moves the fullscreen video into the black bar so the camera no longer covers it. The video is not resized and player controls are not moved.\n\nThis is for unfolded foldables and tablets, where a wide screen leaves large black bars above and below the video. It has no effect on a normal phone screen, which leaves no room to move the video into.</string>
+    <string name="morphe_fullscreen_cutout_padding_mode_title">Cutout detection</string>
+    <string name="morphe_fullscreen_cutout_padding_mode_entry_1">Automatic</string>
+    <string name="morphe_fullscreen_cutout_padding_mode_entry_2">Manual</string>
+    <string name="morphe_fullscreen_cutout_extra_margin_title">Extra clearance</string>
+    <string name="morphe_fullscreen_cutout_extra_margin_summary">Additional gap left between the camera and the edge of the video, when the cutout is detected automatically</string>
+    <string name="morphe_fullscreen_cutout_manual_side_title">Add space on</string>
+    <string name="morphe_fullscreen_cutout_manual_side_entry_1">Follow rotation, camera in right half</string>
+    <string name="morphe_fullscreen_cutout_manual_side_entry_2">Follow rotation, camera in left half</string>
+    <string name="morphe_fullscreen_cutout_manual_side_entry_3">Always top</string>
+    <string name="morphe_fullscreen_cutout_manual_side_entry_4">Always bottom</string>
+    <string name="morphe_fullscreen_cutout_manual_amount_title">Distance to move the video</string>
+    <string name="morphe_fullscreen_cutout_manual_amount_summary">Used when the system does not report a cutout, such as on foldables with a camera under the screen. Hold the device in portrait to see which half of the screen the camera is in.</string>
+
     <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
     <string name="morphe_disable_fullscreen_gestures_title">Fullscreen gestures</string>
     <string name="morphe_disable_fullscreen_gestures_summary">Player gestures to enter or exit from fullscreen mode</string>

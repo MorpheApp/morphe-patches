@@ -289,6 +289,28 @@
         <item>PORTRAIT_LANDSCAPE</item>
     </string-array>
 
+    <!-- layout.player.fullscreen.fullscreenCutoutPaddingPatch -->
+    <string-array name="morphe_fullscreen_cutout_padding_mode_entries">
+        <item>@string/morphe_fullscreen_cutout_padding_mode_entry_1</item>
+        <item>@string/morphe_fullscreen_cutout_padding_mode_entry_2</item>
+    </string-array>
+    <string-array name="morphe_fullscreen_cutout_padding_mode_entry_values">
+        <item>AUTOMATIC</item>
+        <item>MANUAL</item>
+    </string-array>
+    <string-array name="morphe_fullscreen_cutout_manual_side_entries">
+        <item>@string/morphe_fullscreen_cutout_manual_side_entry_1</item>
+        <item>@string/morphe_fullscreen_cutout_manual_side_entry_2</item>
+        <item>@string/morphe_fullscreen_cutout_manual_side_entry_3</item>
+        <item>@string/morphe_fullscreen_cutout_manual_side_entry_4</item>
+    </string-array>
+    <string-array name="morphe_fullscreen_cutout_manual_side_entry_values">
+        <item>AUTOMATIC_CAMERA_RIGHT</item>
+        <item>AUTOMATIC_CAMERA_LEFT</item>
+        <item>TOP</item>
+        <item>BOTTOM</item>
+    </string-array>
+
     <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
     <string-array name="morphe_playback_in_feeds_entries">
         <item>@string/morphe_playback_in_feeds_entry_always_on</item>
