@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.Dim;
@@ -54,9 +55,9 @@ public final class AddToQueuePatch {
     private static String currentButtonName = "";
     private static int currentButtonIndex;
 
-    public static void injectFlyoutElements(Object popupView) {
+    public static void injectFlyoutElements(Object flyoutPanel) {
         int currentInjectIndex = initializeNewButton(
-                popupView,
+                flyoutPanel,
                 queueButtonDrawable,
                 "Add to queue (Morphe)",
                 v -> {
@@ -64,18 +65,20 @@ public final class AddToQueuePatch {
                 },
                 0
         );
-        initializeNewDivider(popupView, currentInjectIndex + 1);
+        if (currentInjectIndex > 0) {
+            initializeNewDivider(flyoutPanel, currentInjectIndex);
+        }
     }
     @SuppressWarnings({"UnusedReturnValue", "SameParameterValue"})
     private static int initializeNewButton(
-            Object popupView,
+            Object flyoutPanel,
             Drawable icon,
             String text,
             View.OnClickListener clickListener,
             int index
     ) {
         return initializeNewElement(
-                popupView,
+                flyoutPanel,
                 icon,
                 text,
                 clickListener,
@@ -85,11 +88,11 @@ public final class AddToQueuePatch {
     }
     @SuppressWarnings({"UnusedReturnValue", "SameParameterValue"})
     private static int initializeNewDivider(
-            Object popupView,
+            Object flyoutPanel,
             int index
     ) {
         return initializeNewElement(
-                popupView,
+                flyoutPanel,
                 null,
                 null,
                 null,
@@ -98,7 +101,7 @@ public final class AddToQueuePatch {
         );
     }
     private static int initializeNewElement(
-            Object popupView,
+            Object flyoutPanel,
             Drawable icon,
             String text,
             View.OnClickListener clickListener,
@@ -106,33 +109,45 @@ public final class AddToQueuePatch {
             boolean isDivider
     ) {
         try {
-            if (popupView == null) {
+            if (flyoutPanel == null) {
                 return -1;
             }
 
             PopupWindow popupWindow = null;
-            FrameLayout frameLayout = null;
+            LinearLayout menuContainer = null;
+            int fixedIndex = index;
 
-            if (popupView instanceof PopupWindow checkedPopupWindow) {
+            if (flyoutPanel instanceof PopupWindow checkedPopupWindow) {
                 popupWindow = checkedPopupWindow;
-                if (checkedPopupWindow.getContentView() instanceof FrameLayout checkFrame) {
-                    frameLayout = checkFrame;
+                if (checkedPopupWindow.getContentView() instanceof FrameLayout frameLayout) {
+                    if (frameLayout.getChildAt(0) instanceof ViewGroup viewGroup &&
+                            viewGroup.getChildAt(0) instanceof LinearLayout checkedMenuContainer) {
+                        menuContainer = checkedMenuContainer;
+                    }
                 }
-            } else if (popupView instanceof Dialog checkedDialog) {
+            } else if (flyoutPanel instanceof Dialog checkedDialog) {
                 Window window = checkedDialog.getWindow();
-                if (window != null && window.getDecorView() instanceof ViewGroup decorView) {
-                    if (decorView.getChildAt(0) instanceof FrameLayout checkFrame) {
-                        frameLayout = checkFrame;
+                if (window != null) {
+                    View decorView = window.getDecorView();
+                    int containerId = ResourceUtils.getIdentifier(ResourceType.ID, "container");
+                    if (containerId != 0) {
+                        View container = decorView.findViewById(containerId);
+                        if (container instanceof FrameLayout frameLayout) {
+                            if (frameLayout.getChildAt(0) instanceof ViewGroup coordinator &&
+                                    coordinator.getChildAt(1) instanceof ViewGroup nestedFrame) {
+                                View menuRoot = nestedFrame.getChildAt(0);
+                                if (menuRoot instanceof ViewGroup group &&
+                                        group.getChildAt(0) instanceof LinearLayout linearLayout) {
+                                    menuContainer = linearLayout;
+                                    fixedIndex += 1;
+                                }
+                            }
+                        }
                     }
                 }
             }
 
-            if (frameLayout == null ||
-                    !(frameLayout.getChildAt(0) instanceof ViewGroup viewGroup)) {
-                return -1;
-            }
-
-            if (!(viewGroup.getChildAt(0) instanceof LinearLayout menuContainer)) {
+            if (menuContainer == null) {
                 return -1;
             }
 
@@ -183,7 +198,7 @@ public final class AddToQueuePatch {
                 customButton.addView(textView);
                 customButton.setOnClickListener(clickListener);
 
-                menuContainer.addView(customButton, index);
+                menuContainer.addView(customButton, fixedIndex);
             } else {
                 final View divider = new View(context);
                 final LinearLayout.LayoutParams dividerParams = new LinearLayout.LayoutParams(
@@ -194,14 +209,14 @@ public final class AddToQueuePatch {
                 divider.setLayoutParams(dividerParams);
                 divider.setBackgroundColor(GREY_COLOR);
 
-                menuContainer.addView(divider, index);
+                menuContainer.addView(divider, fixedIndex);
             }
 
             if (popupWindow != null) {
                 popupWindow.update();
             }
 
-            return index;
+            return fixedIndex;
         } catch (Exception ex) {
             Logger.printException(() -> "injectButton failure", ex);
         }
