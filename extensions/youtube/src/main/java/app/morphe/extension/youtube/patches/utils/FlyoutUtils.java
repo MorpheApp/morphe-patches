@@ -7,7 +7,7 @@
 
 package app.morphe.extension.youtube.patches.utils;
 
-import static app.morphe.extension.youtube.patches.AddToQueuePatch.injectFlyoutElements;
+import static app.morphe.extension.shared.StringRef.str;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -17,6 +17,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Base64;
+import android.util.Pair;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +47,7 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
 import app.morphe.extension.shared.ui.Dim;
+import app.morphe.extension.youtube.patches.AddToQueuePatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.EngagementPanel;
@@ -106,6 +108,11 @@ public final class FlyoutUtils {
                                  boolean isPopupWindow, @Nullable PopupWindow popupWindow) {
     }
 
+    private static final List<Pair<String, Integer>> visibleFlyoutButtons = new ArrayList<>();
+
+    private static String currentButtonName = "";
+    private static int currentButtonIndex;
+
     private static WeakReference<View> senderViewRef = new WeakReference<>(null);
 
     private static Dialog flyoutDialog;
@@ -160,6 +167,106 @@ public final class FlyoutUtils {
         if (flyoutPopupWindow != null) {
             flyoutPopupWindow.dismiss();
         }
+    }
+
+    public static void injectFlyoutElements(Object flyoutPanel) {
+        int currentInjectIndex = injectButton(
+                flyoutPanel,
+                AddToQueuePatch.queueButtonDrawable,
+                str("morphe_queue_flyout_title"),
+                v -> AddToQueuePatch.flyoutButtonClickLogic(AddToQueuePatch.queueButtonName),
+                0
+        );
+        if (currentInjectIndex > 0) {
+            injectDivider(flyoutPanel, currentInjectIndex);
+        }
+    }
+
+    public static int injectButton(Object flyoutPanel, Drawable icon, String text,
+                                   View.OnClickListener clickListener, int index) {
+        return injectElement(flyoutPanel, icon, text, clickListener, index, false);
+    }
+
+    @SuppressWarnings("UnusedReturnValue")
+    public static int injectDivider(Object flyoutPanel, int index) {
+        return injectElement(flyoutPanel, null, null, null, index, true);
+    }
+
+    private static int injectElement(Object flyoutPanel, @Nullable Drawable icon, @Nullable String text,
+                                     @Nullable View.OnClickListener clickListener, int index,
+                                     boolean isDivider) {
+        try {
+            FlyoutMenuInfo menuInfo = getFlyoutMenuInfo(flyoutPanel, index);
+            if (menuInfo == null) {
+                return -1;
+            }
+
+            Context context = Utils.getContext();
+            if (context == null) {
+                return -1;
+            }
+
+            View view = isDivider
+                    ? createFlyoutDivider(context)
+                    : createFlyoutButton(context, icon, text, clickListener);
+
+            int fixedIndex = menuInfo.adjustedIndex();
+            menuInfo.menuContainer().addView(view, fixedIndex);
+
+            if (menuInfo.popupWindow() != null) {
+                menuInfo.popupWindow().update();
+            }
+
+            // For new layout only:
+            // Skip an index to inject the next element after the current button.
+            if (menuInfo.isPopupWindow()) {
+                fixedIndex++;
+            }
+
+            return fixedIndex;
+        } catch (Exception ex) {
+            Logger.printException(() -> "injectElement failure", ex);
+        }
+
+        return -1;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setCurrentButtonInfo(@Nullable Enum<?> buttonEnum, @Nullable Object buttonInfo) {
+        if (buttonEnum == null) {
+            return;
+        }
+
+        if (buttonInfo instanceof CharSequence charSequence && charSequence.toString().isEmpty()) {
+            return;
+        }
+
+        if (buttonInfo instanceof View view && view.getVisibility() == View.GONE) {
+            return;
+        }
+
+        if (currentButtonIndex == 0 && !visibleFlyoutButtons.isEmpty()) {
+            visibleFlyoutButtons.clear();
+        }
+
+        currentButtonName = buttonEnum.name();
+        currentButtonIndex++;
+
+        visibleFlyoutButtons.add(new Pair<>(currentButtonName, currentButtonIndex));
+    }
+
+    public static List<Pair<String, Integer>> getVisibleFlyoutButtons() {
+        return visibleFlyoutButtons;
+    }
+
+    public static String getCurrentButtonName() {
+        return currentButtonName;
+    }
+
+    public static void resetCurrentButtonIndex() {
+        currentButtonIndex = 0;
     }
 
     private static void runFlyoutPanelVisibilityHandler(Object flyoutObject) {
