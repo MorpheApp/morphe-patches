@@ -30,6 +30,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+
 import com.facebook.litho.ComponentHost;
 
 import java.lang.ref.WeakReference;
@@ -140,7 +141,7 @@ public final class FlyoutUtils {
 
         if (Settings.QUEUE_ADD_FLYOUT_MENU.get()) {
             dialog.setOnShowListener(dialogInterface -> {
-                injectFlyoutElements(dialog);
+                addFlyoutElements(dialog);
             });
         }
     }
@@ -162,7 +163,7 @@ public final class FlyoutUtils {
         runFlyoutPanelVisibilityHandler(popupWindow);
 
         if (Settings.QUEUE_ADD_FLYOUT_MENU.get()) {
-            injectFlyoutElements(popupWindow);
+            addFlyoutElements(popupWindow);
         }
     }
 
@@ -172,8 +173,8 @@ public final class FlyoutUtils {
         }
     }
 
-    public static void injectFlyoutElements(Object flyoutPanel) {
-        int currentInjectIndex = injectButton(
+    private static void addFlyoutElements(Object flyoutPanel) {
+        final int currentInjectIndex = addFlyoutButton(
                 flyoutPanel,
                 AddToQueuePatch.queueButtonDrawable,
                 str("morphe_queue_flyout_title"),
@@ -181,43 +182,45 @@ public final class FlyoutUtils {
                 0
         );
         if (currentInjectIndex > 0) {
-            injectDivider(flyoutPanel, currentInjectIndex);
+            addDivider(flyoutPanel, currentInjectIndex);
         }
     }
 
-    public static int injectButton(Object flyoutPanel, Drawable icon, String text,
-                                   View.OnClickListener clickListener, int index) {
-        return injectElement(flyoutPanel, icon, text, clickListener, index, false);
+    @SuppressWarnings("SameParameterValue")
+    private static int addFlyoutButton(Object flyoutPanel, Drawable icon, String text,
+                                       View.OnClickListener clickListener, int index) {
+        return addFlyoutMenuItem(flyoutPanel, icon, text, clickListener, index, false);
     }
 
     @SuppressWarnings("UnusedReturnValue")
-    public static int injectDivider(Object flyoutPanel, int index) {
-        return injectElement(flyoutPanel, null, null, null, index, true);
+    private static int addDivider(Object flyoutPanel, int index) {
+        return addFlyoutMenuItem(flyoutPanel, null, null, null, index, true);
     }
 
-    private static int injectElement(Object flyoutPanel, @Nullable Drawable icon, @Nullable String text,
-                                     @Nullable View.OnClickListener clickListener, int index,
-                                     boolean isDivider) {
+    private static int addFlyoutMenuItem(Object flyoutPanel, @Nullable Drawable icon, @Nullable String text,
+                                         @Nullable View.OnClickListener clickListener, int index,
+                                         boolean isDivider) {
         try {
             FlyoutMenuInfo menuInfo = getFlyoutMenuInfo(flyoutPanel, index);
             if (menuInfo == null) {
                 return -1;
             }
 
-            Context context = Utils.getContext();
+            Context context = Utils.getActivity();
             if (context == null) {
                 return -1;
             }
 
             View view = isDivider
                     ? createFlyoutDivider(context)
-                    : createFlyoutButton(context, icon, text, clickListener);
+                    : addFlyoutButton(context, icon, text, clickListener);
 
             int fixedIndex = menuInfo.adjustedIndex();
             menuInfo.menuContainer().addView(view, fixedIndex);
 
-            if (menuInfo.popupWindow() != null) {
-                menuInfo.popupWindow().update();
+            PopupWindow popupWindow = menuInfo.popupWindow();
+            if (popupWindow != null) {
+                popupWindow.update();
             }
 
             // For new layout only:
@@ -228,7 +231,7 @@ public final class FlyoutUtils {
 
             return fixedIndex;
         } catch (Exception ex) {
-            Logger.printException(() -> "injectElement failure", ex);
+            Logger.printException(() -> "addFlyoutMenuItem failure", ex);
         }
 
         return -1;
@@ -307,7 +310,7 @@ public final class FlyoutUtils {
     }
 
     @Nullable
-    public static FlyoutMenuInfo getFlyoutMenuInfo(Object flyoutPanel, int initialIndex) {
+    private static FlyoutMenuInfo getFlyoutMenuInfo(Object flyoutPanel, int initialIndex) {
         LinearLayout menuContainer = null;
         PopupWindow popupWindow = null;
         boolean isPopupWindow = false;
@@ -352,17 +355,14 @@ public final class FlyoutUtils {
         return new FlyoutMenuInfo(menuContainer, adjustedIndex, isPopupWindow, popupWindow);
     }
 
-    public static View createFlyoutButton(Context context, @Nullable Drawable icon,
-                                          String text, View.OnClickListener clickListener) {
+    private static View addFlyoutButton(Context context, @Nullable Drawable icon,
+                                        String text, View.OnClickListener clickListener) {
         LinearLayout customButton = new LinearLayout(context);
         customButton.setOrientation(LinearLayout.HORIZONTAL);
         customButton.setGravity(Gravity.CENTER_VERTICAL);
         customButton.setPadding(Dim.dp16, Dim.dp12, Dim.dp16, Dim.dp12);
         customButton.setClickable(true);
-        customButton.setBackgroundColor(Utils.isDarkModeEnabled()
-                ? BLACK_COLOR
-                : WHITE_COLOR
-        );
+        customButton.setBackgroundColor(Utils.getAppBackgroundColor());
 
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(Dim.dp24, Dim.dp24);
         layoutParams.rightMargin = Dim.dp16;
@@ -372,7 +372,7 @@ public final class FlyoutUtils {
             iconView.setLayoutParams(layoutParams);
 
             Drawable mutableIcon = icon.mutate();
-            mutableIcon.setTint(Utils.isDarkModeEnabled() ? WHITE_COLOR : BLACK_COLOR);
+            mutableIcon.setTint(Utils.getAppForegroundColor());
             mutableIcon.setTintMode(PorterDuff.Mode.SRC_IN);
             iconView.setImageDrawable(mutableIcon);
 
@@ -383,6 +383,7 @@ public final class FlyoutUtils {
         textView.setText(text);
         textView.setTextSize(16);
         textView.setTypeface(null, Typeface.BOLD);
+        textView.setTextColor(Utils.getAppForegroundColor());
 
         customButton.addView(textView);
         customButton.setOnClickListener(clickListener);
