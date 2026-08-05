@@ -24,7 +24,7 @@ public final class AddToQueuePatch {
 
     public static final String queueButtonName = "QUEUE_PLAY_NEXT";
     public static final Drawable queueButtonDrawable = ResourceUtils
-            .getDrawable("quantum_ic_playlist_add_white_24");
+            .getDrawable("yt_outline_experimental_queue_vd_theme_24");
 
     /**
      * Injection point.
