@@ -7,6 +7,8 @@
 
 package app.morphe.extension.youtube.patches.utils;
 
+import static app.morphe.extension.youtube.patches.AddToQueuePatch.injectFlyoutElements;
+
 import android.app.Dialog;
 import android.os.Handler;
 import android.os.Looper;
@@ -103,6 +105,7 @@ public final class FlyoutUtils {
         }
         flyoutDialog = dialog;
         runFlyoutPanelVisibilityHandler(dialog);
+        injectFlyoutElements(dialog);
     }
 
     public static void dismissBottomSheetFlyout() {
@@ -120,6 +123,8 @@ public final class FlyoutUtils {
         }
         flyoutPopupWindow = popupWindow;
         runFlyoutPanelVisibilityHandler(popupWindow);
+
+        injectFlyoutElements(popupWindow);
     }
 
     public static void dismissPopupWindowFlyout() {
