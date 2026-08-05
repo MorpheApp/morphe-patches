@@ -139,7 +139,8 @@ public final class FlyoutUtils {
         flyoutDialog = dialog;
         runFlyoutPanelVisibilityHandler(dialog);
 
-        if (Settings.QUEUE_ADD_FLYOUT_MENU.get()) {
+        if (Settings.QUEUE_ADD_FLYOUT_MENU.get()
+                && (!flyoutVideoId.isEmpty() || !flyoutPlaylistId.isEmpty())) {
             dialog.setOnShowListener(dialogInterface -> {
                 addFlyoutElements(dialog);
             });
