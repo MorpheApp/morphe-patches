@@ -58,24 +58,15 @@ import app.morphe.extension.youtube.shared.ShortsPlayerState;
 public final class FlyoutUtils {
 
     public interface ProtocolBufferFieldInterface {
-
         byte[] patch_getBuffer();
     }
-    public interface FlyoutMenuVideoIdInterface {
 
+    public interface FlyoutMenuVideoIdInterface {
         String patch_getVideoId();
     }
-    public static byte[] getAsciiBytes(String string) {
-        return string.getBytes(StandardCharsets.US_ASCII);
-    }
-    public static String getFlyoutVideoId() {
-        return flyoutVideoId;
-    }
-    public static String getFlyoutPlaylistId() {
-        return flyoutPlaylistId;
-    }
-    public static String getFlyoutCommentId() {
-        return flyoutCommentId;
+
+    public record FlyoutMenuInfo(LinearLayout menuContainer, int adjustedIndex,
+                                 boolean isPopupWindow, @Nullable PopupWindow popupWindow) {
     }
 
     public static final int CHANNEL_ID_LENGTH = 24;
@@ -104,10 +95,6 @@ public final class FlyoutUtils {
     public static final int GREY_COLOR = ResourceUtils.getColor("yt_grey1");
     public static final int WHITE_COLOR = ResourceUtils.getColor("yt_white1");
 
-    public record FlyoutMenuInfo(LinearLayout menuContainer, int adjustedIndex,
-                                 boolean isPopupWindow, @Nullable PopupWindow popupWindow) {
-    }
-
     private static final List<Pair<String, Integer>> visibleFlyoutButtons = new ArrayList<>();
 
     private static String currentButtonName = "";
@@ -124,6 +111,22 @@ public final class FlyoutUtils {
             "comment-item-section",
             "shorts-comments-panel"
     );
+
+    public static byte[] getAsciiBytes(String string) {
+        return string.getBytes(StandardCharsets.US_ASCII);
+    }
+
+    public static String getFlyoutVideoId() {
+        return flyoutVideoId;
+    }
+
+    public static String getFlyoutPlaylistId() {
+        return flyoutPlaylistId;
+    }
+
+    public static String getFlyoutCommentId() {
+        return flyoutCommentId;
+    }
 
     /**
      * Injection point.
@@ -672,14 +675,17 @@ public final class FlyoutUtils {
     public static int byteIndexOf(byte[] haystack, byte[] needle) {
         return byteIndexOf(haystack, needle, 0);
     }
+
     public static int byteIndexOf(byte[] haystack, byte[] needle, int startIndex) {
         if (needle == null) return -1;
         final List<Integer> indices = byteIndexesOf(haystack, List.of(needle), startIndex);
         return indices.isEmpty() ? -1 : indices.get(0);
     }
+
     public static List<Integer> byteIndexesOf(byte[] haystack, List<byte[]> needles) {
         return byteIndexesOf(haystack, needles, 0);
     }
+
     public static List<Integer> byteIndexesOf(byte[] haystack, List<byte[]> needles, int startIndex) {
         final List<Integer> indices = new ArrayList<>();
         if (haystack == null || needles == null) {
