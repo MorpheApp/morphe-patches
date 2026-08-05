@@ -19,6 +19,7 @@ import app.morphe.patcher.string
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.layout.hide.general.ContextualMenuItemBuilderFingerprint
 import app.morphe.patches.youtube.layout.hide.general.ContextualMenuItemBuilderOnClickFingerprint
 import app.morphe.patches.youtube.misc.auth.authHookPatch
@@ -81,7 +82,10 @@ val addToQueuePatch = bytecodePatch(
 
     execute {
         PreferenceScreen.FEED.addPreferences(
-            SwitchPreference("morphe_queue_override_flyout_menu", summary = true)
+            noTitleUnsortedPreferenceCategory(
+                SwitchPreference("morphe_queue_override_flyout_menu", summary = true),
+                SwitchPreference("morphe_queue_add_flyout_menu", summary = true)
+            )
         )
 
         // Add interface method to get protocol buffer.

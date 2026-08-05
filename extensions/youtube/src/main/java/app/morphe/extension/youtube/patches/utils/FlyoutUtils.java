@@ -127,9 +127,12 @@ public final class FlyoutUtils {
         }
         flyoutDialog = dialog;
         runFlyoutPanelVisibilityHandler(dialog);
-        dialog.setOnShowListener(dialogInterface -> {
-            injectFlyoutElements(dialog);
-        });
+
+        if (Settings.QUEUE_ADD_FLYOUT_MENU.get()) {
+            dialog.setOnShowListener(dialogInterface -> {
+                injectFlyoutElements(dialog);
+            });
+        }
     }
 
     public static void dismissBottomSheetFlyout() {
@@ -148,7 +151,9 @@ public final class FlyoutUtils {
         flyoutPopupWindow = popupWindow;
         runFlyoutPanelVisibilityHandler(popupWindow);
 
-        injectFlyoutElements(popupWindow);
+        if (Settings.QUEUE_ADD_FLYOUT_MENU.get()) {
+            injectFlyoutElements(popupWindow);
+        }
     }
 
     public static void dismissPopupWindowFlyout() {

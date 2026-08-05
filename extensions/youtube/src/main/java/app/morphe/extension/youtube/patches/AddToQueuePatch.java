@@ -53,6 +53,7 @@ public final class AddToQueuePatch {
             initializeNewDivider(flyoutPanel, currentInjectIndex);
         }
     }
+
     @SuppressWarnings({"UnusedReturnValue", "SameParameterValue"})
     private static int initializeNewButton(Object flyoutPanel, Drawable icon, String text,
                                            View.OnClickListener clickListener, int index) {
