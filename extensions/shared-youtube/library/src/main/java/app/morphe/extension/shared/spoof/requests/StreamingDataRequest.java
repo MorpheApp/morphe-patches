@@ -33,6 +33,7 @@ import java.util.concurrent.TimeoutException;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.innertube.ResponseContextOuterClass.*;
 import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.*;
 import app.morphe.extension.shared.innertube.ReelItemWatchResponseOuterClass.ReelItemWatchResponse;
 import app.morphe.extension.shared.oauth2.requests.OAuth2Requester;
@@ -265,10 +266,17 @@ public class StreamingDataRequest {
         }
 
         try (InputStream inputStream = connection.getInputStream()) {
-            PlayerResponse playerResponse = clientType.usePlayerEndpoint
-                    ? PlayerResponse.parseFrom(inputStream)
-                    : ReelItemWatchResponse.parseFrom(inputStream).getPlayerResponse();
-            var playabilityStatus = playerResponse.getPlayabilityStatus();
+            PlayerResponse playerResponse;
+
+            if (clientType.usePlayerEndpoint) {
+                playerResponse = PlayerResponse.parseFrom(inputStream);
+                VisitorIdRequester.updateVisitorIdIfNeed(clientType, playerResponse.getResponseContext().getVisitorData());
+            } else {
+                ReelItemWatchResponse reelItemWatchResponse = ReelItemWatchResponse.parseFrom(inputStream);
+                VisitorIdRequester.updateVisitorIdIfNeed(clientType, reelItemWatchResponse.getResponseContext().getVisitorData());
+                playerResponse = reelItemWatchResponse.getPlayerResponse();
+            }
+            PlayabilityStatus playabilityStatus = playerResponse.getPlayabilityStatus();
 
             String status = playabilityStatus.getStatus().name();
             if (!"OK".equals(status)) {
@@ -299,13 +307,13 @@ public class StreamingDataRequest {
             }
 
             if (clientType.requireJS) {
-                var deobfuscatedStreamingData = JavaScriptManager.getDeobfuscatedStreamingData(
-                        streamingData, clientType.requireSABR);
-                if (deobfuscatedStreamingData == null) {
+                StreamingData.Builder deobfuscatedStreamingDataBuilder =
+                        JavaScriptManager.getDeobfuscatedStreamingData(streamingData, clientType.requireSABR);
+                if (deobfuscatedStreamingDataBuilder == null) {
                     handleDebugToast("Debug: Ignoring obfuscated streamingData (%s)", clientType);
                     return null;
                 }
-                responseBuilder.setStreamingData(deobfuscatedStreamingData);
+                responseBuilder.setStreamingData(deobfuscatedStreamingDataBuilder);
             }
 
             byte[] streamingDataBuffer = responseBuilder.build().toByteArray();
@@ -379,7 +387,7 @@ public class StreamingDataRequest {
         lastSpoofedClientType = null;
         handleConnectionError(str("morphe_spoof_video_streams_no_clients_toast"), null, true);
 
-        var preferredClient = clientOrderToUse[0];
+        ClientType preferredClient = clientOrderToUse[0];
         if (!preferredClient.supportsOAuth2 && !SharedYouTubeSettings.OAUTH2_REFRESH_TOKEN.get().isBlank()) {
             handleConnectionError(str("morphe_spoof_video_streams_no_clients_suggest_vr_toast"), null, true);
         }

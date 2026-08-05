@@ -90,8 +90,8 @@ public final class VisitorIdRequester {
         }
     }
 
-    private static void saveVisitorId(ClientType clientType, String visitorId) {
-        Logger.printDebug(() -> "Updating visitorId for clientType: " + clientType);
+    private static void saveVisitorId(ClientType clientType, String visitorId, boolean updatedByPlayer) {
+        Logger.printDebug(() -> "Updating visitorId for clientType: " + clientType + " updated by player: " + updatedByPlayer);
 
         synchronized (cache) {
             cache.put(clientType, new VisitorData(visitorId, System.currentTimeMillis()));
@@ -127,9 +127,19 @@ public final class VisitorIdRequester {
 
         String fetchedVisitorId = send(clientType);
         if (Utils.isNotEmpty(fetchedVisitorId)) {
-            saveVisitorId(clientType, fetchedVisitorId);
+            saveVisitorId(clientType, fetchedVisitorId, false);
         }
         return fetchedVisitorId;
+    }
+
+    /**
+     * @param visitorId The visitor id included in the response from the '/player' or '/reel/reel_item_watch' endpoint.
+     */
+    public static void updateVisitorIdIfNeed(ClientType clientType, @Nullable String visitorId) {
+        // If it is not null, it means a new visitor id has been issued.
+        if (Utils.isNotEmpty(visitorId)) {
+            saveVisitorId(clientType, visitorId, true);
+        }
     }
 
     private static String createInnertubeBody(ClientType clientType) {

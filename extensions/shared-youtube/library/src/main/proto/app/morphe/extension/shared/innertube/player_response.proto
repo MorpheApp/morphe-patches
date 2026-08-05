@@ -1,11 +1,14 @@
 syntax = "proto3";
 
+import "app/morphe/extension/shared/innertube/response_context.proto";
+
 package app.morphe.extension.shared.innertube;
 
 option optimize_for = LITE_RUNTIME;
 option java_package = "app.morphe.extension.shared.innertube";
 
 message PlayerResponse {
+  optional ResponseContext responseContext = 1;
   optional PlayabilityStatus playabilityStatus = 2;
   optional StreamingData streamingData = 4;
   optional PlayerConfig playerConfig = 15;

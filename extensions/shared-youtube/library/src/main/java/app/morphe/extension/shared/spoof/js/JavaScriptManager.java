@@ -350,7 +350,7 @@ public final class JavaScriptManager {
 
         if (isNotEmpty(serverAbrStreamingUrl)) {
             fallbackParam = getNQueryParameter(serverAbrStreamingUrl);
-        } else if (formats != null && !formats.isEmpty()) {
+        } else if (!formats.isEmpty()) {
             String url = formats.get(0).getUrl();
             if (isNotEmpty(url)) {
                 fallbackParam = getNQueryParameter(url);
