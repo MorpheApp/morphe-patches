@@ -15,8 +15,6 @@ import android.os.Looper;
 import android.util.Base64;
 import android.view.View;
 import android.view.ViewParent;
-import android.view.Window;
-import android.widget.FrameLayout;
 import android.widget.PopupWindow;
 
 import androidx.annotation.Nullable;
@@ -32,8 +30,6 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.ResourceType;
-import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
 import app.morphe.extension.youtube.patches.VideoInformation;
