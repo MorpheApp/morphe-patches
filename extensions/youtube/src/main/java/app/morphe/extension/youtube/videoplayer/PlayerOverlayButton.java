@@ -376,33 +376,33 @@ public class PlayerOverlayButton {
      * Unconditionally removes YouTube's native maxWidth restrictions from the chapter title.
      */
     public static void initializeButton(View controlsViewGroup) {
-        Utils.runOnMainThread(() -> {
-            try {
-                chapterTitleContainer.updateContainerRef(controlsViewGroup);
-                controlsViewGroup.getViewTreeObserver().addOnPreDrawListener(() -> {
-                    try {
-                        int activeCustomButtons = buttonControllers.size();
-                        boolean hideFullscreen = Settings.HIDE_FULLSCREEN_BUTTON.get();
-                        int totalLowerButtons = activeCustomButtons - (hideFullscreen ? 1 : 0);
-                        if (totalLowerButtons < 0) {
-                            totalLowerButtons = 0;
-                        }
+        Utils.verifyOnMainThread();
 
-                        int buttonWidth = BUTTON_WIDTH;
-                        View ytSource = ytSourceButtonRef.get();
-                        if (ytSource != null && ytSource.getWidth() > 0) {
-                            buttonWidth = ytSource.getWidth();
-                        }
-
-                        chapterTitleContainer.updateMargin(buttonWidth, totalLowerButtons);
-
-                    } catch (Exception ignored) {
+        try {
+            chapterTitleContainer.updateContainerRef(controlsViewGroup);
+            controlsViewGroup.getViewTreeObserver().addOnPreDrawListener(() -> {
+                try {
+                    int activeCustomButtons = buttonControllers.size();
+                    boolean hideFullscreen = Settings.HIDE_FULLSCREEN_BUTTON.get();
+                    int totalLowerButtons = activeCustomButtons - (hideFullscreen ? 1 : 0);
+                    if (totalLowerButtons < 0) {
+                        totalLowerButtons = 0;
                     }
-                    return true;
-                });
-            } catch (Exception ex) {
-                Logger.printException(() -> "Failed to unrestrict chapter title", ex);
-            }
-        });
+
+                    int buttonWidth = BUTTON_WIDTH;
+                    View ytSource = ytSourceButtonRef.get();
+                    if (ytSource != null && ytSource.getWidth() > 0) {
+                        buttonWidth = ytSource.getWidth();
+                    }
+
+                    chapterTitleContainer.updateMargin(buttonWidth, totalLowerButtons);
+
+                } catch (Exception ignored) {
+                }
+                return true;
+            });
+        } catch (Exception ex) {
+            Logger.printException(() -> "Failed to unrestrict chapter title", ex);
+        }
     }
 }
