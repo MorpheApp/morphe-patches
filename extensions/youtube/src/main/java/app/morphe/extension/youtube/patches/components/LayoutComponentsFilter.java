@@ -992,6 +992,16 @@ public final class LayoutComponentsFilter extends Filter {
     /**
      * Injection point.
      */
+    public static void hideChaptersTimelineButton(View view) {
+        if (view != null && Settings.HIDE_CHAPTERS_TIMELINE_BUTTON.get()) {
+            Utils.hideViewByLayoutParams(view);
+            view.setVisibility(View.GONE);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
     public static boolean hideSnackbar() {
         return Settings.HIDE_SNACKBAR.get();
     }

@@ -128,6 +128,7 @@ Changes include:
 
     <string name="morphe_hide_channel_bar_title">Hide channel bar</string>
     <string name="morphe_hide_channel_watermark_title">Hide channel watermark</string>
+    <string name="morphe_hide_chapters_timeline_button_title">Hide Chapters and \'In this video\' buttons</string>
     <string name="morphe_hide_crowdfunding_box_title">Hide crowdfunding box</string>
     <string name="morphe_hide_emergency_box_title">Hide emergency boxes</string>
     <string name="morphe_hide_info_panels_title">Hide info panels</string>
@@ -1158,7 +1159,7 @@ Tap here to open DeArrow.ajay.app"</string>
     <!-- misc.medianotification.mediaNotificationControlsPatch -->
     <string name="morphe_notification_media_screen_title">Notification media controls</string>
     <string name="morphe_notification_media_screen_summary">Customize the playback controls shown on your lock screen and notification panel</string>
-    <string name="morphe_hide_notification_media_prev_next_title">Hide Prev &amp; Next buttons</string>
+    <string name="morphe_hide_notification_media_prev_next_title">Hide Previous &amp; Next buttons</string>
     <string name="morphe_hide_notification_media_prev_next_summary">Hides Previous and Next buttons in media notification, lock screen, and headphone controls</string>
     <string name="morphe_disable_notification_media_seekbar_title">Disable seekbar</string>
     <string name="morphe_disable_notification_media_seekbar_summary">Prevents dragging the seekbar on the lock screen and notification panel</string>
