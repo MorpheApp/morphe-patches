@@ -74,11 +74,11 @@ val miniplayerPatch = bytecodePatch(
 
         if (is_20_37_or_greater) {
             // 21.29 removed all modern miniplayers except modern 4
-            if (!is_21_29_or_greater) {
-                preferences += ListPreference("morphe_miniplayer_type")
+            preferences += if (!is_21_29_or_greater) {
+                ListPreference("morphe_miniplayer_type")
             } else {
                 // TODO: Eventually remove this message
-                preferences += NonInteractivePreference(
+                NonInteractivePreference(
                     key = "morphe_miniplayer_type",
                     summaryKey = "morphe_miniplayer_not_available_summary"
                 )

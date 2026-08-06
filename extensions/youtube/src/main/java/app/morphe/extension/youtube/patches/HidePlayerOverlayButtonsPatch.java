@@ -3,6 +3,7 @@ package app.morphe.extension.youtube.patches;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -65,8 +66,8 @@ public final class HidePlayerOverlayButtonsPatch {
 
         // Adjust layout params if RelativeLayout
         var layoutParams = imageView.getLayoutParams();
-        if (layoutParams instanceof android.widget.RelativeLayout.LayoutParams) {
-            android.widget.RelativeLayout.LayoutParams lp = new android.widget.RelativeLayout.LayoutParams(0, 0);
+        if (layoutParams instanceof RelativeLayout.LayoutParams) {
+            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(0, 0);
             imageView.setLayoutParams(lp);
         } else {
             Logger.printDebug(() -> "Unknown collapse button layout params: " + layoutParams);
@@ -80,7 +81,7 @@ public final class HidePlayerOverlayButtonsPatch {
         if (!Settings.HIDE_COLLAPSE_BUTTON.get()) return;
 
         var layoutParams = titleAnchorView.getLayoutParams();
-        if (layoutParams instanceof android.widget.RelativeLayout.LayoutParams relativeParams) {
+        if (layoutParams instanceof RelativeLayout.LayoutParams relativeParams) {
             relativeParams.setMarginStart(0);
         } else {
             Logger.printDebug(() -> "Unknown title anchor layout params: " + layoutParams);

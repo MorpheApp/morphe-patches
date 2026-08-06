@@ -7,8 +7,6 @@
 
 package app.morphe.extension.youtube.videoplayer;
 
-import static app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton.getTotalUpperButtonCount;
-
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.view.Gravity;
@@ -20,6 +18,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +26,6 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.youtube.patches.HidePlayerOverlayButtonsPatch;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.settings.Settings;
@@ -103,6 +101,19 @@ public class PlayerOverlayButton {
             View container = containerRef.get();
             if (container == null) return;
 
+            try {
+                int titleId = ResourceUtils.getIdentifier(ResourceType.ID, "time_bar_chapter_title");
+                if (titleId != 0) {
+                    View titleView = container.findViewById(titleId);
+                    if (titleView instanceof TextView tv) {
+                        if (tv.getMaxWidth() != Integer.MAX_VALUE) {
+                            tv.setMaxWidth(Integer.MAX_VALUE);
+                        }
+                    }
+                }
+            } catch (Exception ignored) {
+            }
+
             final int reservedWidth = (int) (totalButtons
                     * getButtonWidthPercentage(totalButtons)
                     * buttonWidth);
@@ -111,6 +122,15 @@ public class PlayerOverlayButton {
             lastMarginEnd = reservedWidth;
 
             if (container.getLayoutParams() instanceof ViewGroup.MarginLayoutParams params) {
+
+                try {
+                    Field maxWidthField = params.getClass().getField("matchConstraintMaxWidth");
+                    if (maxWidthField.getInt(params) != 0) {
+                        maxWidthField.setInt(params, 0);
+                    }
+                } catch (Exception ignored) {
+                }
+
                 if (params.getMarginEnd() == reservedWidth) return;
                 params.setMarginEnd(reservedWidth);
                 container.setLayoutParams(params);
@@ -262,7 +282,7 @@ public class PlayerOverlayButton {
         if (!(containerView.getParent() instanceof ViewGroup containerViewGroup)) return;
 
         videoHeadingContainer.updateContainerRef(containerViewGroup);
-        videoHeadingContainer.updateMargin(BUTTON_WIDTH, getTotalUpperButtonCount());
+        videoHeadingContainer.updateMargin(BUTTON_WIDTH, LegacyPlayerControlButton.getTotalUpperButtonCount());
     }
 
     @Nullable
@@ -350,5 +370,39 @@ public class PlayerOverlayButton {
         buttonControllers.add(new PlayerOverlayButtonController(textOverlay, textOverlay::setBackground));
 
         return textOverlay;
+    }
+
+    /**
+     * Unconditionally removes YouTube's native maxWidth restrictions from the chapter title.
+     */
+    public static void initializeButton(View controlsViewGroup) {
+        Utils.runOnMainThread(() -> {
+            try {
+                chapterTitleContainer.updateContainerRef(controlsViewGroup);
+                controlsViewGroup.getViewTreeObserver().addOnPreDrawListener(() -> {
+                    try {
+                        int activeCustomButtons = buttonControllers.size();
+                        boolean hideFullscreen = Settings.HIDE_FULLSCREEN_BUTTON.get();
+                        int totalLowerButtons = activeCustomButtons - (hideFullscreen ? 1 : 0);
+                        if (totalLowerButtons < 0) {
+                            totalLowerButtons = 0;
+                        }
+
+                        int buttonWidth = BUTTON_WIDTH;
+                        View ytSource = ytSourceButtonRef.get();
+                        if (ytSource != null && ytSource.getWidth() > 0) {
+                            buttonWidth = ytSource.getWidth();
+                        }
+
+                        chapterTitleContainer.updateMargin(buttonWidth, totalLowerButtons);
+
+                    } catch (Exception ignored) {
+                    }
+                    return true;
+                });
+            } catch (Exception ex) {
+                Logger.printException(() -> "Failed to unrestrict chapter title", ex);
+            }
+        });
     }
 }
