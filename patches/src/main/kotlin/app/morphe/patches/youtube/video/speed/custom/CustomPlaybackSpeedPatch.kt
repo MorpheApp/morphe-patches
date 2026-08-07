@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/2282
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
@@ -67,7 +68,7 @@ private const val EXTENSION_FILTER =
 private val customPlaybackSpeedResourcePatch = resourcePatch {
     execute {
         copyResources(
-            "customplaybackspeedmenu",
+            "speed",
             ResourceGroup(
                 "drawable",
                 "morphe_ic_link.xml",

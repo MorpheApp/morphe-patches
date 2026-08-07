@@ -557,16 +557,13 @@ val videoInformationPatch = bytecodePatch(
             // Re-insert them before the 'if' block.
             // so the ExoPlayer command is dispatched unconditionally.
             // It is checked by ExoPlayer properly.
-            val initParams = initRef.parameterTypes.joinToString("")
-            val kMethodParams = kMethodRef.parameterTypes.joinToString("")
-
             addInstructionsAtControlFlowLabel(
                 invokeVirtualIndex,
                 """
-                    iget-object v2, p0, ${exoPlayerField.definingClass}->${exoPlayerField.name}:${exoPlayerField.type}
+                    iget-object v2, p0, $exoPlayerField
                     new-instance v1, ${classRef.type}
-                    invoke-direct {v1, p1}, ${initRef.definingClass}->${initRef.name}($initParams)${initRef.returnType}
-                    invoke-interface {v2, v1}, ${kMethodRef.definingClass}->${kMethodRef.name}($kMethodParams)${kMethodRef.returnType}
+                    invoke-direct { v1, p1 }, $initRef
+                    invoke-interface { v2, v1 }, $kMethodRef
                 """
             )
         }

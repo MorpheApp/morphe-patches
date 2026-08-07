@@ -326,7 +326,7 @@ public final class VideoInformation {
         if (playbackSpeed != currentVideoSpeed) {
             Logger.printDebug(() -> "Video speed changed: " + currentVideoSpeed);
             playbackSpeed = currentVideoSpeed;
-            if(!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get() && playbackAudioPitch != currentVideoSpeed) {
+            if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get() && playbackAudioPitch != currentVideoSpeed) {
                 Logger.printDebug(() -> "Audio pitch synced: " + currentVideoSpeed);
                 playbackAudioPitch = currentVideoSpeed;
             }
@@ -345,7 +345,7 @@ public final class VideoInformation {
         if (playbackAudioPitch != currentAudioPitch) {
             Logger.printDebug(() -> "Audio pitch set to: " + currentAudioPitch);
             playbackAudioPitch = currentAudioPitch;
-            if(!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get() && playbackSpeed != currentAudioPitch) {
+            if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get() && playbackSpeed != currentAudioPitch) {
                 Logger.printDebug(() -> "Video speed synced: " + currentAudioPitch);
                 playbackSpeed = currentAudioPitch;
             }
@@ -410,13 +410,16 @@ public final class VideoInformation {
      * @return pitch formatted as "X.XXx (Nst)" with signed one-decimal semitone offset.
      */
     public static String formatAudioPitchStringX(float pitch) {
-        float semitones = 12.0f * (float) (Math.log(pitch) / Math.log(2.0));
+        final float semitones = (float) (12.0 * (Math.log(pitch) / Math.log(2.0)));
         String formatted = String.format(Locale.US, "%.1f", semitones);
         if (formatted.equals("-0.0")) {
             formatted = "0.0";
         }
         String sign = formatted.startsWith("-") ? "" : "+";
-        return String.format(Locale.US, "%s (%sst)", formatSpeedStringX(pitch), sign + formatted);
+
+        return Utils.isRightToLeftLocale()
+                ? String.format(Locale.US, "(%sst) %s", sign + formatted, formatSpeedStringX(pitch))
+                : String.format(Locale.US, "%s (%sst)", formatSpeedStringX(pitch), sign + formatted);
     }
 
     /**

@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/2282
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
@@ -105,12 +106,6 @@ public class CustomPlaybackSpeedPatch {
     private static final boolean DISABLE_TAP_AND_HOLD_SPEED;
 
     /**
-     * Enables audio time stretching, the default YT behavior that keeps pitch unchanged at any speed.
-     * Disabling this will make audio pitch change with speed.
-     */
-    private static final boolean PLAYBACK_AUDIO_TIME_STRETCHING;
-
-    /**
      * Tap and hold speed.
      */
     private static final float TAP_AND_HOLD_SPEED;
@@ -137,7 +132,7 @@ public class CustomPlaybackSpeedPatch {
 
     static {
         final float holdSpeed = Settings.SPEED_TAP_AND_HOLD.get();
-        DISABLE_TAP_AND_HOLD_SPEED = holdSpeed == 0;
+        DISABLE_TAP_AND_HOLD_SPEED = (holdSpeed == 0);
 
         if (DISABLE_TAP_AND_HOLD_SPEED) {
             // A value for handling exceptions, but this is not used.
@@ -148,8 +143,6 @@ public class CustomPlaybackSpeedPatch {
             showInvalidCustomSpeedToast();
             TAP_AND_HOLD_SPEED = Settings.SPEED_TAP_AND_HOLD.resetToDefault();
         }
-
-        PLAYBACK_AUDIO_TIME_STRETCHING = Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get();
 
         customPlaybackSpeeds = loadCustomSpeeds();
         customPlaybackSpeedsMin = customPlaybackSpeeds[0];
@@ -420,7 +413,7 @@ public class CustomPlaybackSpeedPatch {
             // Add slider layout to main layout.
             contentLayout.addView(sliderLayout);
 
-            // ── Pitch UI elements (declared early for use in callbacks) ─────────────
+            // Pitch UI elements
             FrameLayout pitchLabelRow = createLabelRow(context, AUDIO_ICON);
             TextView currentPitchText = new TextView(context);
             float currentPitch = VideoInformation.getPlaybackAudioPitch();
@@ -511,6 +504,8 @@ public class CustomPlaybackSpeedPatch {
             gridParams.setMargins(Dim.dp4, Dim.dp12, Dim.dp4, Dim.dp12); // Speed buttons container.
             gridLayout.setLayoutParams(gridParams);
 
+            float[] roundedCorners20 = Dim.roundedCorners(20);
+            final int adjustedBackgroundColor = getAdjustedBackgroundColor(false);
             // Add buttons for each preset playback speed.
             for (float speed : customPlaybackSpeeds) {
                 // Container for button and optional label.
@@ -536,8 +531,8 @@ public class CustomPlaybackSpeedPatch {
                 speedButton.setGravity(Gravity.CENTER);
 
                 ShapeDrawable buttonBackground = new ShapeDrawable(new RoundRectShape(
-                        Dim.roundedCorners(20), null, null));
-                buttonBackground.getPaint().setColor(getAdjustedBackgroundColor(false));
+                        roundedCorners20, null, null));
+                buttonBackground.getPaint().setColor(adjustedBackgroundColor);
                 speedButton.setBackground(buttonBackground);
                 speedButton.setPadding(Dim.dp4, Dim.dp4, Dim.dp4, Dim.dp4);
                 ViewAnimations.applyPressEffect(speedButton);
@@ -576,7 +571,6 @@ public class CustomPlaybackSpeedPatch {
             // Add in-rows speed buttons layout to main layout.
             contentLayout.addView(gridLayout);
 
-            // ── Link toggle button ───────────────────────────────────────────────────
             LinearLayout linkLayout = new LinearLayout(context);
             linkLayout.setOrientation(LinearLayout.HORIZONTAL);
             linkLayout.setGravity(Gravity.CENTER);
@@ -585,8 +579,8 @@ public class CustomPlaybackSpeedPatch {
             boolean isTimeStretching = Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get();
             linkButton.setForeground(context.getDrawable(isTimeStretching ? LINK_OFF_ICON : LINK_ICON));
             ShapeDrawable linkBackground = new ShapeDrawable(new RoundRectShape(
-                    Dim.roundedCorners(20), null, null));
-            linkBackground.getPaint().setColor(getAdjustedBackgroundColor(false));
+                    roundedCorners20, null, null));
+            linkBackground.getPaint().setColor(adjustedBackgroundColor);
             linkButton.setBackground(linkBackground);
             linkButton.setPadding(Dim.dp4, Dim.dp4, Dim.dp4, Dim.dp4);
             final int linkSize = Utils.appIsUsingBoldIcons() ? Dim.dp40 : Dim.dp36;
@@ -696,8 +690,7 @@ public class CustomPlaybackSpeedPatch {
             pitchGridParams.setMargins(Dim.dp4, Dim.dp12, Dim.dp4, Dim.dp12);
             pitchPresetGrid.setLayoutParams(pitchGridParams);
 
-            for (int i = 0; i < pitchButtonLabels.length; i++) {
-                final int index = i;
+            for (int i = 0, length = pitchButtonLabels.length; i < length; i++) {
                 final String pitchLabel = pitchButtonLabels[i];
 
                 FrameLayout pitchButtonContainer = new FrameLayout(context);
@@ -719,8 +712,8 @@ public class CustomPlaybackSpeedPatch {
                 pitchPresetButton.setGravity(Gravity.CENTER);
 
                 ShapeDrawable pitchButtonBackground = new ShapeDrawable(new RoundRectShape(
-                        Dim.roundedCorners(20), null, null));
-                pitchButtonBackground.getPaint().setColor(getAdjustedBackgroundColor(false));
+                        roundedCorners20, null, null));
+                pitchButtonBackground.getPaint().setColor(adjustedBackgroundColor);
                 pitchPresetButton.setBackground(pitchButtonBackground);
                 pitchPresetButton.setPadding(Dim.dp4, Dim.dp4, Dim.dp4, Dim.dp4);
 
@@ -728,28 +721,27 @@ public class CustomPlaybackSpeedPatch {
                         FrameLayout.LayoutParams.MATCH_PARENT, Dim.dp32, Gravity.CENTER);
                 pitchPresetButton.setLayoutParams(pitchButtonParams);
 
+                final int finalI = i;
                 pitchPresetButton.setOnClickListener(v -> {
-                    float pitch = VideoInformation.getPlaybackAudioPitch();
-                    float newValue;
-                    switch (index) {
-                        case 0: newValue = pitch * 0.5f; break;
-                        case 1: newValue = pitch / ONE_SEMITONE; break;
-                        case 2: newValue = 1.0f; break;
-                        case 3: newValue = pitch * ONE_SEMITONE; break;
-                        default: newValue = pitch * 2.0f; break;
-                    }
+                    final float pitch = VideoInformation.getPlaybackAudioPitch();
+                    final float newValue = switch (finalI) {
+                        case 0 -> pitch * 0.5f;
+                        case 1 -> pitch / ONE_SEMITONE;
+                        case 2 -> 1.0f;
+                        case 3 -> pitch * ONE_SEMITONE;
+                        default -> pitch * 2.0f;
+                    };
                     userSelectedPitchRaw.apply(newValue);
                 });
                 pitchButtonContainer.addView(pitchPresetButton);
                 pitchPresetGrid.addView(pitchButtonContainer);
             }
-
             contentLayout.addView(pitchPresetGrid);
 
 
             // Create dialog.
-            SheetBottomDialog.SlideDialog dialog =
-                    SheetBottomDialog.createSlideDialog(context, mainLayout, LegacyPlayerControlButton.fadeInDuration);
+            SheetBottomDialog.SlideDialog dialog = SheetBottomDialog.createSlideDialog(
+                    context, mainLayout, LegacyPlayerControlButton.fadeInDuration);
             PipDismissHelper.dismissOnPip(dialog);
             dialog.show();
 
@@ -850,9 +842,12 @@ public class CustomPlaybackSpeedPatch {
      *         for light themes to ensure visual contrast.
      */
     public static int getAdjustedBackgroundColor(boolean isHandleBar) {
-        final float darkThemeFactor = isHandleBar ? 1.25f : 1.115f; // 1.25f for handleBar, 1.115f for others in dark theme.
-        final float lightThemeFactor = isHandleBar ? 0.9f : 0.95f; // 0.9f for handleBar, 0.95f for others in light theme.
-        return Utils.adjustColorBrightness(LegacyPlayerControlButton.getDialogBackgroundColor(), lightThemeFactor, darkThemeFactor);
+        // 1.25f for handleBar, 1.115f for others in dark theme.
+        final float darkThemeFactor = isHandleBar ? 1.25f : 1.115f;
+        // 0.9f for handleBar, 0.95f for others in light theme.
+        final float lightThemeFactor = isHandleBar ? 0.9f : 0.95f;
+        return Utils.adjustColorBrightness(LegacyPlayerControlButton.getDialogBackgroundColor(),
+                lightThemeFactor, darkThemeFactor);
     }
 }
 
