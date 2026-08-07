@@ -7,8 +7,6 @@
 
 package app.morphe.extension.youtube.patches;
 
-import android.os.Build;
-
 import androidx.annotation.Nullable;
 
 import java.util.Arrays;
@@ -40,16 +38,10 @@ public class ChaptersHookPatch {
                 if (currentMillis >= marker.patch_getStartMillis()
                         && currentMillis < marker.patch_getEndMillis()) {
                     CharSequence title = marker.patch_getTitle();
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM) {
-                        return title != null && !title.isEmpty()
-                                ? title
-                                : null;
-                    } else {
-                        //noinspection SizeReplaceableByIsEmpty
-                        return title != null && title.length() > 0
-                                ? title
-                                : null;
-                    }
+                    //noinspection SizeReplaceableByIsEmpty
+                    return title != null && title.length() > 0
+                            ? title
+                            : null;
                 }
             }
         }
