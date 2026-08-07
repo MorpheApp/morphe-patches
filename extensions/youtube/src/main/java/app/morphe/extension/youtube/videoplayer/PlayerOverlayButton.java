@@ -44,6 +44,8 @@ public class PlayerOverlayButton {
      * current button count and width.
      */
     private static class MarginAdjustableContainer {
+        private static final int CHAPTER_TITLE_ID = ResourceUtils.getIdentifier(
+                ResourceType.ID, "time_bar_chapter_title");
         private final String resourceName;
         private WeakReference<View> containerRef = new WeakReference<>(null);
         private int lastMarginEnd = -1;
@@ -101,17 +103,12 @@ public class PlayerOverlayButton {
             View container = containerRef.get();
             if (container == null) return;
 
-            try {
-                int titleId = ResourceUtils.getIdentifier(ResourceType.ID, "time_bar_chapter_title");
-                if (titleId != 0) {
-                    View titleView = container.findViewById(titleId);
-                    if (titleView instanceof TextView tv) {
-                        if (tv.getMaxWidth() != Integer.MAX_VALUE) {
-                            tv.setMaxWidth(Integer.MAX_VALUE);
-                        }
+            if (CHAPTER_TITLE_ID != 0) {
+                if (container.findViewById(CHAPTER_TITLE_ID) instanceof TextView tv) {
+                    if (tv.getMaxWidth() != Integer.MAX_VALUE) {
+                        tv.setMaxWidth(Integer.MAX_VALUE);
                     }
                 }
-            } catch (Exception ignored) {
             }
 
             final int reservedWidth = (int) (totalButtons
@@ -122,15 +119,6 @@ public class PlayerOverlayButton {
             lastMarginEnd = reservedWidth;
 
             if (container.getLayoutParams() instanceof ViewGroup.MarginLayoutParams params) {
-
-                try {
-                    Field maxWidthField = params.getClass().getField("matchConstraintMaxWidth");
-                    if (maxWidthField.getInt(params) != 0) {
-                        maxWidthField.setInt(params, 0);
-                    }
-                } catch (Exception ignored) {
-                }
-
                 if (params.getMarginEnd() == reservedWidth) return;
                 params.setMarginEnd(reservedWidth);
                 container.setLayoutParams(params);
