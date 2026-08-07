@@ -216,7 +216,7 @@ public final class VideoInformation {
             playbackSpeedFormattedString = "";
             float audioPitchOverride = RememberPlaybackSpeedPatch.getPlaybackAudioPitchOverride();
             if (audioPitchOverride > 0.0f) {
-                playbackAudioPitch = audioPitchOverride;
+                playbackAudioPitch = effectivePlaybackAudioPitch(audioPitchOverride);
             }
             playbackAudioPitchFormattedString = "";
             desiredVideoResolution = AUTOMATIC_VIDEO_QUALITY_VALUE;
@@ -349,18 +349,27 @@ public final class VideoInformation {
     }
 
     /**
+     * @return the given pitch, forced to {@link #DEFAULT_PLAYBACK_AUDIO_PITCH}
+     *         if the audio pitch controls setting is disabled.
+     */
+    private static float effectivePlaybackAudioPitch(float pitch) {
+        return Settings.ENABLE_PLAYBACK_AUDIO_PITCH.get() ? pitch : DEFAULT_PLAYBACK_AUDIO_PITCH;
+    }
+
+    /**
      * Records a new playback audio pitch, updates the formatted string, and fires {@link #onPlaybackAudioPitchChange}.
      *
      * @return true if the pitch actually changed.
      */
     private static boolean setPlaybackAudioPitchValue(float pitch) {
-        if (playbackAudioPitch == pitch) {
+        final float effectivePitch = effectivePlaybackAudioPitch(pitch);
+        if (playbackAudioPitch == effectivePitch) {
             return false;
         }
-        Logger.printDebug(() -> "Audio pitch set to: " + pitch);
-        playbackAudioPitch = pitch;
-        playbackAudioPitchFormattedString = formatSpeedStringX(pitch);
-        onPlaybackAudioPitchChange.invoke(pitch);
+        Logger.printDebug(() -> "Audio pitch set to: " + effectivePitch);
+        playbackAudioPitch = effectivePitch;
+        playbackAudioPitchFormattedString = formatSpeedStringX(effectivePitch);
+        onPlaybackAudioPitchChange.invoke(effectivePitch);
         return true;
     }
 

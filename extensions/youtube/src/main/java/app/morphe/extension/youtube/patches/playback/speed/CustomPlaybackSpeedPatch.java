@@ -541,192 +541,196 @@ public class CustomPlaybackSpeedPatch {
             // Add in-rows speed buttons layout to main layout.
             contentLayout.addView(gridLayout);
 
-            // ## Link Button
-            LinearLayout linkLayout = new LinearLayout(context);
-            linkLayout.setOrientation(LinearLayout.HORIZONTAL);
-            linkLayout.setGravity(Gravity.CENTER);
+            // ## Audio pitch UI: link toggle and pitch controls, hidden entirely when disabled.
+            final Function1<Float, Unit> onPitchChanged;
+            if (Settings.ENABLE_PLAYBACK_AUDIO_PITCH.get()) {
+                // ## Link Button
+                LinearLayout linkLayout = new LinearLayout(context);
+                linkLayout.setOrientation(LinearLayout.HORIZONTAL);
+                linkLayout.setGravity(Gravity.CENTER);
 
-            Button linkButton = new Button(context, null, 0);
-            boolean isTimeStretching = Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get();
-            linkButton.setForeground(context.getDrawable(isTimeStretching ? LINK_OFF_ICON : LINK_ICON));
-            ShapeDrawable linkBackground = new ShapeDrawable(new RoundRectShape(
-                    roundedCorners20, null, null));
-            linkBackground.getPaint().setColor(adjustedBackgroundColor);
-            linkButton.setBackground(linkBackground);
-            linkButton.setPadding(Dim.dp4, Dim.dp4, Dim.dp4, Dim.dp4);
-            final int linkSize = Utils.appIsUsingBoldIcons() ? Dim.dp40 : Dim.dp36;
-            LinearLayout.LayoutParams linkParams = new LinearLayout.LayoutParams(linkSize, linkSize);
-            linkParams.setMargins(Dim.dp8, 0, Dim.dp8, 0);
-            linkButton.setLayoutParams(linkParams);
-            linkButton.setOnClickListener(v -> {
-                boolean newValue = !Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get();
-                Settings.PLAYBACK_AUDIO_TIME_STRETCHING.save(newValue);
-                linkButton.setForeground(context.getDrawable(newValue ? LINK_OFF_ICON : LINK_ICON));
+                Button linkButton = new Button(context, null, 0);
+                boolean isTimeStretching = Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get();
+                linkButton.setForeground(context.getDrawable(isTimeStretching ? LINK_OFF_ICON : LINK_ICON));
+                ShapeDrawable linkBackground = new ShapeDrawable(new RoundRectShape(
+                        roundedCorners20, null, null));
+                linkBackground.getPaint().setColor(adjustedBackgroundColor);
+                linkButton.setBackground(linkBackground);
+                linkButton.setPadding(Dim.dp4, Dim.dp4, Dim.dp4, Dim.dp4);
+                final int linkSize = Utils.appIsUsingBoldIcons() ? Dim.dp40 : Dim.dp36;
+                LinearLayout.LayoutParams linkParams = new LinearLayout.LayoutParams(linkSize, linkSize);
+                linkParams.setMargins(Dim.dp8, 0, Dim.dp8, 0);
+                linkButton.setLayoutParams(linkParams);
+                linkButton.setOnClickListener(v -> {
+                    boolean newValue = !Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get();
+                    Settings.PLAYBACK_AUDIO_TIME_STRETCHING.save(newValue);
+                    linkButton.setForeground(context.getDrawable(newValue ? LINK_OFF_ICON : LINK_ICON));
 
-                // When switching from unlinked to linked, sync audio pitch to the video speed.
-                if (!newValue && VideoInformation.getPlaybackAudioPitch() != VideoInformation.getPlaybackSpeed()) {
-                    VideoInformation.setAudioPitch(VideoInformation.getPlaybackSpeed());
-                }
-            });
-
-            // ## Pitch UI elements
-            // Callback when user picks a new audio pitch.
-            Function<Float, Void> userSelectedPitch = newPitch -> {
-                if (VideoInformation.getPlaybackAudioPitch() == newPitch) {
-                    return null;
-                }
-
-                RememberPlaybackSpeedPatch.userSelectedPlaybackAudioPitch(newPitch);
-
-                VideoInformation.setAudioPitch(newPitch);
-
-                if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
-                    RememberPlaybackSpeedPatch.userSelectedPlaybackSpeed(newPitch);
-                }
-
-                return null;
-            };
-
-            // Display current playback audio pitch with a leading audio icon.
-            FrameLayout pitchLabelRow = createLabelRow(context, AUDIO_ICON);
-            TextView currentPitchText = new TextView(context);
-            float currentPitch = VideoInformation.getPlaybackAudioPitch();
-            currentPitchText.setText(VideoInformation.formatAudioPitchStringX(currentPitch));
-            currentPitchText.setTextColor(Utils.getAppForegroundColor());
-            currentPitchText.setTextSize(16);
-            currentPitchText.setTypeface(Typeface.DEFAULT_BOLD);
-            currentPitchText.setGravity(Gravity.CENTER);
-            currentPitchText.setLayoutParams(new FrameLayout.LayoutParams(
-                    FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT));
-
-            // Create horizontal layout for slider and +/- buttons.
-            LinearLayout pitchSliderLayout = new LinearLayout(context);
-            pitchSliderLayout.setOrientation(LinearLayout.HORIZONTAL);
-            pitchSliderLayout.setGravity(Gravity.CENTER_VERTICAL);
-
-            // Create +/- buttons.
-            Button pitchMinusButton = createStyledButton(context, false);
-            Button pitchPlusButton = createStyledButton(context, true);
-
-            pitchMinusButton.setOnClickListener(v -> userSelectedPitch.apply(
-                    (float) (VideoInformation.getPlaybackAudioPitch() - PITCH_ADJUSTMENT_CHANGE)));
-            pitchPlusButton.setOnClickListener(v -> userSelectedPitch.apply(
-                    (float) (VideoInformation.getPlaybackAudioPitch() + PITCH_ADJUSTMENT_CHANGE)));
-
-            SeekBar pitchSlider = new SeekBar(context);
-            pitchSlider.setFocusable(true);
-            pitchSlider.setFocusableInTouchMode(true);
-            pitchSlider.setMax(pitchToProgressValue(customPlaybackSpeedsMax));
-            pitchSlider.setProgress(pitchToProgressValue(currentPitch));
-            pitchSlider.getProgressDrawable().setColorFilter(
-                    new PorterDuffColorFilter(Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN));
-            pitchSlider.getThumb().setColorFilter(
-                    new PorterDuffColorFilter(Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN));
-            LinearLayout.LayoutParams pitchSliderParams = new LinearLayout.LayoutParams(
-                    0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
-            pitchSlider.setLayoutParams(pitchSliderParams);
-
-            pitchSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-                @Override
-                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    if (fromUser) {
-                        userSelectedPitch.apply(roundSpeedToNearestIncrement(customPlaybackSpeedsMin + (progress / PROGRESS_BAR_VALUE_SCALE)));
+                    // When switching from unlinked to linked, sync audio pitch to the video speed.
+                    if (!newValue && VideoInformation.getPlaybackAudioPitch() != VideoInformation.getPlaybackSpeed()) {
+                        VideoInformation.setAudioPitch(VideoInformation.getPlaybackSpeed());
                     }
-                }
+                });
 
-                @Override
-                public void onStartTrackingTouch(SeekBar seekBar) {}
+                // ## Pitch UI elements
+                // Callback when user picks a new audio pitch.
+                Function<Float, Void> userSelectedPitch = newPitch -> {
+                    if (VideoInformation.getPlaybackAudioPitch() == newPitch) {
+                        return null;
+                    }
 
-                @Override
-                public void onStopTrackingTouch(SeekBar seekBar) {}
-            });
+                    RememberPlaybackSpeedPatch.userSelectedPlaybackAudioPitch(newPitch);
 
-            // The second observer to keep label text and slider reactive to pitch changes.
-            // observer is removed on dialog dismissal in order.
-            Function1<Float, Unit> onPitchChanged = pitch -> {
-                currentPitchText.setText(VideoInformation.formatAudioPitchStringX(pitch));
-                pitchSlider.setProgress(pitchToProgressValue(pitch));
-                return Unit.INSTANCE;
-            };
+                    VideoInformation.setAudioPitch(newPitch);
 
-            VideoInformation.onPlaybackAudioPitchChange.addObserver(onPitchChanged);
+                    if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
+                        RememberPlaybackSpeedPatch.userSelectedPlaybackSpeed(newPitch);
+                    }
+
+                    return null;
+                };
+
+                // Display current playback audio pitch with a leading audio icon.
+                FrameLayout pitchLabelRow = createLabelRow(context, AUDIO_ICON);
+                TextView currentPitchText = new TextView(context);
+                float currentPitch = VideoInformation.getPlaybackAudioPitch();
+                currentPitchText.setText(VideoInformation.formatAudioPitchStringX(currentPitch));
+                currentPitchText.setTextColor(Utils.getAppForegroundColor());
+                currentPitchText.setTextSize(16);
+                currentPitchText.setTypeface(Typeface.DEFAULT_BOLD);
+                currentPitchText.setGravity(Gravity.CENTER);
+                currentPitchText.setLayoutParams(new FrameLayout.LayoutParams(
+                        FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT));
+
+                // Create horizontal layout for slider and +/- buttons.
+                LinearLayout pitchSliderLayout = new LinearLayout(context);
+                pitchSliderLayout.setOrientation(LinearLayout.HORIZONTAL);
+                pitchSliderLayout.setGravity(Gravity.CENTER_VERTICAL);
+
+                // Create +/- buttons.
+                Button pitchMinusButton = createStyledButton(context, false);
+                Button pitchPlusButton = createStyledButton(context, true);
+
+                pitchMinusButton.setOnClickListener(v -> userSelectedPitch.apply(
+                        (float) (VideoInformation.getPlaybackAudioPitch() - PITCH_ADJUSTMENT_CHANGE)));
+                pitchPlusButton.setOnClickListener(v -> userSelectedPitch.apply(
+                        (float) (VideoInformation.getPlaybackAudioPitch() + PITCH_ADJUSTMENT_CHANGE)));
+
+                SeekBar pitchSlider = new SeekBar(context);
+                pitchSlider.setFocusable(true);
+                pitchSlider.setFocusableInTouchMode(true);
+                pitchSlider.setMax(pitchToProgressValue(customPlaybackSpeedsMax));
+                pitchSlider.setProgress(pitchToProgressValue(currentPitch));
+                pitchSlider.getProgressDrawable().setColorFilter(
+                        new PorterDuffColorFilter(Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN));
+                pitchSlider.getThumb().setColorFilter(
+                        new PorterDuffColorFilter(Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN));
+                LinearLayout.LayoutParams pitchSliderParams = new LinearLayout.LayoutParams(
+                        0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
+                pitchSlider.setLayoutParams(pitchSliderParams);
+
+                pitchSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                    @Override
+                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                        if (fromUser) {
+                            userSelectedPitch.apply(roundSpeedToNearestIncrement(customPlaybackSpeedsMin + (progress / PROGRESS_BAR_VALUE_SCALE)));
+                        }
+                    }
+
+                    @Override
+                    public void onStartTrackingTouch(SeekBar seekBar) {}
+
+                    @Override
+                    public void onStopTrackingTouch(SeekBar seekBar) {}
+                });
+
+                // Observer to keep the pitch label and slider reactive to pitch changes.
+                // Removed on dialog dismissal in order.
+                onPitchChanged = pitch -> {
+                    currentPitchText.setText(VideoInformation.formatAudioPitchStringX(pitch));
+                    pitchSlider.setProgress(pitchToProgressValue(pitch));
+                    return Unit.INSTANCE;
+                };
+
+                VideoInformation.onPlaybackAudioPitchChange.addObserver(onPitchChanged);
             
             // Create GridLayout for pitch control buttons.
-            GridLayout pitchPresetGrid = new GridLayout(context);
-            pitchPresetGrid.setColumnCount(5);
-            pitchPresetGrid.setAlignmentMode(GridLayout.ALIGN_BOUNDS);
-            pitchPresetGrid.setRowCount(1);
-            LinearLayout.LayoutParams pitchGridParams = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            pitchGridParams.setMargins(Dim.dp4, Dim.dp12, Dim.dp4, Dim.dp12);
-            pitchPresetGrid.setLayoutParams(pitchGridParams);
+                GridLayout pitchPresetGrid = new GridLayout(context);
+                pitchPresetGrid.setColumnCount(5);
+                pitchPresetGrid.setAlignmentMode(GridLayout.ALIGN_BOUNDS);
+                pitchPresetGrid.setRowCount(1);
+                LinearLayout.LayoutParams pitchGridParams = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                pitchGridParams.setMargins(Dim.dp4, Dim.dp12, Dim.dp4, Dim.dp12);
+                pitchPresetGrid.setLayoutParams(pitchGridParams);
 
-            // Buttons: /2 (half) | −1st (down one semitone) | 1x (reset) | +1st (up one semitone) | ×2 (double)    
-            final String[] pitchButtonLabels = {"/2", "−1st", "1x", "+1st", "×2"};
-            // Add buttons for the five options.
-            for (String pitchLabel : pitchButtonLabels) {
+                // Buttons: /2 (half) | −1st (down one semitone) | 1x (reset) | +1st (up one semitone) | ×2 (double)
+                final String[] pitchButtonLabels = {"/2", "−1st", "1x", "+1st", "×2"};
+                // Add buttons for the five options.
+                for (String pitchLabel : pitchButtonLabels) {
 
-                FrameLayout pitchButtonContainer = new FrameLayout(context);
-                GridLayout.LayoutParams pitchContainerParams = new GridLayout.LayoutParams();
-                pitchContainerParams.width = 0;
-                pitchContainerParams.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1, 1f);
-                pitchContainerParams.setMargins(Dim.dp4, 0, Dim.dp4, 0);
-                pitchContainerParams.height = Dim.dp(60);
-                pitchButtonContainer.setLayoutParams(pitchContainerParams);
+                    FrameLayout pitchButtonContainer = new FrameLayout(context);
+                    GridLayout.LayoutParams pitchContainerParams = new GridLayout.LayoutParams();
+                    pitchContainerParams.width = 0;
+                    pitchContainerParams.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1, 1f);
+                    pitchContainerParams.setMargins(Dim.dp4, 0, Dim.dp4, 0);
+                    pitchContainerParams.height = Dim.dp(60);
+                    pitchButtonContainer.setLayoutParams(pitchContainerParams);
 
-                Button pitchPresetButton = new Button(context, null, 0);
-                pitchPresetButton.setText(pitchLabel);
-                pitchPresetButton.setTextColor(Utils.getAppForegroundColor());
-                pitchPresetButton.setTextSize(12);
-                pitchPresetButton.setTypeface(Utils.appIsUsingBoldIcons()
-                        ? Typeface.DEFAULT_BOLD
-                        : Typeface.DEFAULT);
-                pitchPresetButton.setAllCaps(false);
-                pitchPresetButton.setGravity(Gravity.CENTER);
+                    Button pitchPresetButton = new Button(context, null, 0);
+                    pitchPresetButton.setText(pitchLabel);
+                    pitchPresetButton.setTextColor(Utils.getAppForegroundColor());
+                    pitchPresetButton.setTextSize(12);
+                    pitchPresetButton.setTypeface(Utils.appIsUsingBoldIcons()
+                            ? Typeface.DEFAULT_BOLD
+                            : Typeface.DEFAULT);
+                    pitchPresetButton.setAllCaps(false);
+                    pitchPresetButton.setGravity(Gravity.CENTER);
 
-                ShapeDrawable pitchButtonBackground = new ShapeDrawable(new RoundRectShape(
-                        roundedCorners20, null, null));
-                pitchButtonBackground.getPaint().setColor(adjustedBackgroundColor);
-                pitchPresetButton.setBackground(pitchButtonBackground);
-                pitchPresetButton.setPadding(Dim.dp4, Dim.dp4, Dim.dp4, Dim.dp4);
+                    ShapeDrawable pitchButtonBackground = new ShapeDrawable(new RoundRectShape(
+                            roundedCorners20, null, null));
+                    pitchButtonBackground.getPaint().setColor(adjustedBackgroundColor);
+                    pitchPresetButton.setBackground(pitchButtonBackground);
+                    pitchPresetButton.setPadding(Dim.dp4, Dim.dp4, Dim.dp4, Dim.dp4);
 
-                FrameLayout.LayoutParams pitchButtonParams = new FrameLayout.LayoutParams(
-                        FrameLayout.LayoutParams.MATCH_PARENT, Dim.dp32, Gravity.CENTER);
-                pitchPresetButton.setLayoutParams(pitchButtonParams);
+                    FrameLayout.LayoutParams pitchButtonParams = new FrameLayout.LayoutParams(
+                            FrameLayout.LayoutParams.MATCH_PARENT, Dim.dp32, Gravity.CENTER);
+                    pitchPresetButton.setLayoutParams(pitchButtonParams);
 
-                pitchPresetButton.setOnClickListener(v -> {
-                    final float pitch = VideoInformation.getPlaybackAudioPitch();
-                    final float newValue = switch (pitchLabel) {
-                        case "/2" -> pitch * 0.5f;
-                        case "−1st" -> (float) (pitch / ONE_SEMITONE);
-                        case "1x" -> 1.0f;
-                        case "+1st" -> (float) (pitch * ONE_SEMITONE);
-                        case "×2" -> pitch * 2.0f;
-                        default -> pitch;
-                    };
-                    userSelectedPitch.apply(newValue);
-                });
-                pitchButtonContainer.addView(pitchPresetButton);
-                pitchPresetGrid.addView(pitchButtonContainer);
+                    pitchPresetButton.setOnClickListener(v -> {
+                        final float pitch = VideoInformation.getPlaybackAudioPitch();
+                        final float newValue = switch (pitchLabel) {
+                            case "/2" -> pitch * 0.5f;
+                            case "−1st" -> (float) (pitch / ONE_SEMITONE);
+                            case "1x" -> 1.0f;
+                            case "+1st" -> (float) (pitch * ONE_SEMITONE);
+                            case "×2" -> pitch * 2.0f;
+                            default -> pitch;
+                        };
+                        userSelectedPitch.apply(newValue);
+                    });
+                    pitchButtonContainer.addView(pitchPresetButton);
+                    pitchPresetGrid.addView(pitchButtonContainer);
+                }
+
+                // Pitch UI Layout Tree
+                // Add the link button and its layout.
+                linkLayout.addView(linkButton);
+                contentLayout.addView(linkLayout);
+                // Add Text to the label row with icon and text.
+                pitchLabelRow.addView(currentPitchText);
+                contentLayout.addView(pitchLabelRow);
+                // Add -/+ and slider views to slider layout.
+                pitchSliderLayout.addView(pitchMinusButton);
+                pitchSliderLayout.addView(pitchSlider);
+                pitchSliderLayout.addView(pitchPlusButton);
+                // Add slider layout to content layout.
+                contentLayout.addView(pitchSliderLayout);
+                // Add in-rows pitch buttons layout to main layout.
+                contentLayout.addView(pitchPresetGrid);
+            } else {
+                onPitchChanged = null;
             }
-
-            // Pitch UI Layout Tree
-
-            // Add the link button and its layout.
-            linkLayout.addView(linkButton);
-            contentLayout.addView(linkLayout);
-            
-            // Add Text to the label row with icon and text.
-            pitchLabelRow.addView(currentPitchText);
-            contentLayout.addView(pitchLabelRow);
-            // Add -/+ and slider views to slider layout.
-            pitchSliderLayout.addView(pitchMinusButton);
-            pitchSliderLayout.addView(pitchSlider);
-            pitchSliderLayout.addView(pitchPlusButton);
-            // Add slider layout to content layout.
-            contentLayout.addView(pitchSliderLayout);
-            // Add in-rows speed buttons layout to main layout.
-            contentLayout.addView(pitchPresetGrid);
 
             // Add content layout to main scroll view.
             scrollView.addView(contentLayout);
@@ -739,7 +743,9 @@ public class CustomPlaybackSpeedPatch {
             // Unsubscribe from the speed and pitch events when the dialog is dismissed.
             dialog.setOnDismissListener(d -> {
                 VideoInformation.onPlaybackSpeedChange.removeObserver(onSpeedChanged);
-                VideoInformation.onPlaybackAudioPitchChange.removeObserver(onPitchChanged);
+                if (onPitchChanged != null) {
+                    VideoInformation.onPlaybackAudioPitchChange.removeObserver(onPitchChanged);
+                }
             });
 
             PipDismissHelper.dismissOnPip(dialog);
