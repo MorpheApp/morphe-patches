@@ -31,14 +31,14 @@ public final class PlayerRoutes {
     private static final Route.CompiledRoute GET_PLAYER_STREAMING_DATA = new Route(
             Route.Method.POST,
             "player" +
-                    "?fields=playabilityStatus,streamingData,playerConfig.mediaCommonConfig" +
+                    "?fields=responseContext.visitorData,playabilityStatus,streamingData,playerConfig.mediaCommonConfig" +
                     "&alt=proto"
     ).compile();
 
     private static final Route.CompiledRoute GET_REEL_STREAMING_DATA = new Route(
             Route.Method.POST,
             "reel/reel_item_watch" +
-                    "?fields=playerResponse.playabilityStatus,playerResponse.streamingData,playerResponse.playerConfig.mediaCommonConfig" +
+                    "?fields=responseContext.visitorData,playerResponse.playabilityStatus,playerResponse.streamingData,playerResponse.playerConfig.mediaCommonConfig" +
                     "&alt=proto"
     ).compile();
 
@@ -47,7 +47,7 @@ public final class PlayerRoutes {
     private PlayerRoutes() {
     }
 
-    static String createInnertubeBody(ClientType clientType, String videoId) {
+    static String createInnertubeBody(ClientType clientType, String videoId, String visitorId) {
         JSONObject innerTubeBody = new JSONObject();
 
         try {
@@ -58,6 +58,9 @@ public final class PlayerRoutes {
             client.put("deviceModel", clientType.deviceModel);
             client.put("clientName", clientType.clientName);
             client.put("clientVersion", clientType.clientVersion);
+            if (!TextUtils.isEmpty(visitorId)) {
+                client.put("visitorData", visitorId);
+            }
             client.put("osName", clientType.osName);
             client.put("osVersion", clientType.osVersion);
 

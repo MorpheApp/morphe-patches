@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Shared with YouTube and YT Music -->
 <!--
+
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -161,6 +162,9 @@ No entanto, ativar isto também irá registar alguns dados do utilizador, como o
   <string name="morphe_settings_menu_filter_screen_title">Filtro do menu de configurações</string>
   <string name="morphe_settings_menu_filter_screen_summary">Ocultar itens na tela de configurações do aplicativo padrão pelo nome visível</string>
   <string name="morphe_settings_menu_filter_picker_empty">Abrir a tela de configurações do aplicativo padrão uma vez para preencher a lista</string>
+  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
+  <string name="morphe_remove_viewer_discretion_dialog_title">Remover diálogo de aviso de conteúdo</string>
+  <string name="morphe_remove_viewer_discretion_dialog_summary">Isso não ignora a restrição de idade. Apenas a aceita automaticamente</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Versão do Spoof app</string>
   <string name="morphe_spoof_app_version_summary">Engana o servidor, fazendo com que ele pense que você está usando uma versão mais antiga do aplicativo, para restaurar recursos de interface de usuário legados.</string>

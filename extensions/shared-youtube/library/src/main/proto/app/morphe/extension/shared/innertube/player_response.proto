@@ -1,19 +1,22 @@
 syntax = "proto3";
 
+import "app/morphe/extension/shared/innertube/response_context.proto";
+
 package app.morphe.extension.shared.innertube;
 
 option optimize_for = LITE_RUNTIME;
 option java_package = "app.morphe.extension.shared.innertube";
 
 message PlayerResponse {
-  PlayabilityStatus playability_status = 2;
-  optional StreamingData streaming_data = 4;
-  optional PlayerConfig player_config = 15;
+  optional ResponseContext responseContext = 1;
+  optional PlayabilityStatus playabilityStatus = 2;
+  optional StreamingData streamingData = 4;
+  optional PlayerConfig playerConfig = 15;
 }
 
 message PlayabilityStatus {
-  Status status = 1;
-  string reason = 2;
+  optional Status status = 1;
+  optional string reason = 2;
 }
 
 enum Status {
@@ -30,21 +33,21 @@ enum Status {
 }
 
 message StreamingData {
-    repeated Format formats = 2;
-    repeated Format adaptiveFormats = 3;
-    string serverAbrStreamingUrl = 15;
+  repeated Format formats = 2;
+  repeated Format adaptiveFormats = 3;
+  optional string serverAbrStreamingUrl = 15;
 }
 
 message Format {
-    int32 itag = 1;
-    string url = 2;
-    string mimeType = 5;
-    int32 bitrate = 6;
-    int32 averageBitrate = 31;
-    int64 approxDurationMs = 44;
-    int64 audioSampleRate = 45;
-    int32 audioChannels = 46;
-    string signatureCipher = 48;
+  optional int32 itag = 1;
+  optional int32 bitrate = 6;
+  optional int32 averageBitrate = 31;
+  optional int32 audioChannels = 46;
+  optional int64 approxDurationMs = 44;
+  optional int64 audioSampleRate = 45;
+  optional string mimeType = 5;
+  optional string url = 2;
+  optional string signatureCipher = 48;
 }
 
 message PlayerConfig {
@@ -52,4 +55,5 @@ message PlayerConfig {
 }
 
 message MediaCommonConfig {
+  optional bool usePlatypus = 18;
 }

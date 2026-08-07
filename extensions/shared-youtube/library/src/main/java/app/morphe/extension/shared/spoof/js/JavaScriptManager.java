@@ -281,6 +281,11 @@ public final class JavaScriptManager {
 
     @Nullable
     public static String downloadUrl(@NonNull String url) {
+        if (!Utils.isNetworkConnected()) {
+            Logger.printDebug(() -> "No internet connection: " + url);
+            return null;
+        }
+
         try {
             Logger.printDebug(() -> "Starting download of: " + url);
             if (BaseSettings.DEBUG.get() && Utils.isCurrentlyOnMainThread()) {
@@ -333,19 +338,33 @@ public final class JavaScriptManager {
      * @return              StreamingData builder containing deobfuscated parameters.
      */
     @Nullable
-    public static StreamingData.Builder getDeobfuscatedStreamingData(StreamingData streamingData) {
+    public static StreamingData.Builder getDeobfuscatedStreamingData(StreamingData streamingData, boolean requireSABR) {
         StreamingData.Builder streamingDataBuilder = streamingData.toBuilder();
         String serverAbrStreamingUrl = streamingData.getServerAbrStreamingUrl();
+
+        List<Format> formats = streamingData.getFormatsList();
+        String fallbackParam = "";
 
         // Initialize streamingDataBuilder before adding formats.
         streamingDataBuilder.clearFormats();
 
+        if (isNotEmpty(serverAbrStreamingUrl)) {
+            fallbackParam = getNQueryParameter(serverAbrStreamingUrl);
+        } else if (!formats.isEmpty()) {
+            String url = formats.get(0).getUrl();
+            if (isNotEmpty(url)) {
+                fallbackParam = getNQueryParameter(url);
+            }
+        }
+
         // Deobfuscate formats.
         deobfuscateFormat(
                 streamingDataBuilder,
-                streamingData.getFormatsList(),
+                formats,
                 serverAbrStreamingUrl,
-                false
+                fallbackParam,
+                false,
+                requireSABR
         );
 
         // Initialize streamingDataBuilder before adding adaptiveFormats.
@@ -356,7 +375,9 @@ public final class JavaScriptManager {
                 streamingDataBuilder,
                 streamingData.getAdaptiveFormatsList(),
                 serverAbrStreamingUrl,
-                true
+                fallbackParam,
+                true,
+                requireSABR
         );
 
         if (!deobfuscateResult) {
@@ -367,9 +388,11 @@ public final class JavaScriptManager {
     }
 
     private static boolean deobfuscateFormat(StreamingData.Builder streamingDataBuilder,
-                                         List<Format> formats,
-                                         String serverAbrStreamingUrl,
-                                         boolean isAdaptiveFormats) {
+                                             List<Format> formats,
+                                             String serverAbrStreamingUrl,
+                                             String fallbackParam,
+                                             boolean isAdaptiveFormats,
+                                             boolean requireSABR) {
         PlayerDataExtractor playerDataExtractor = getPlayerDataExtractor();
 
         if (!isAdaptiveFormats) {
@@ -377,6 +400,7 @@ public final class JavaScriptManager {
             streamingDataBuilder.addFormats(Format.newBuilder().build());
             return true;
         }
+
         if (playerDataExtractor != null && formats != null && !formats.isEmpty()) {
             // In streamingData, all n-parameters have the same value.
             String obfuscatedNParameter = null;
@@ -410,12 +434,15 @@ public final class JavaScriptManager {
                             }
                         }
                     }
-                } else { // If a url is present, simply iterate over each format and replace the n-parameters.
+                } else if (!requireSABR) { // If a url is present, simply iterate over each format and replace the n-parameters.
                     String nQueryParameter = getNQueryParameter(format.getUrl());
                     if (isNotEmpty(nQueryParameter)) {
                         obfuscatedNParameter = nQueryParameter;
                         break;
                     }
+                } else if (isNotEmpty(fallbackParam)) {
+                    obfuscatedNParameter = fallbackParam;
+                    break;
                 }
             }
 
@@ -442,22 +469,26 @@ public final class JavaScriptManager {
                 int i = 0;
                 for (Format format : formats) {
                     Format.Builder formatBuilder = format.toBuilder();
-                    String obfuscatedUrl = hasSignatureCipher
-                            // Assemble the url.
-                            ? obfuscatedUrlParameters.get(i) + "&sig=" + deobfuscatedSParameters.get(i)
-                            : format.getUrl();
-                    formatBuilder.setUrl(obfuscatedUrl.replace(obfuscatedNParameter, deobfuscatedNParameter));
-                    formatBuilder.clearSignatureCipher();
+                    if (!requireSABR) {
+                        String obfuscatedUrl = hasSignatureCipher
+                                // Assemble the url.
+                                ? obfuscatedUrlParameters.get(i) + "&sig=" + deobfuscatedSParameters.get(i)
+                                : format.getUrl();
+                        String deobfuscatedUrl = obfuscatedUrl.replace(obfuscatedNParameter, deobfuscatedNParameter);
+                        formatBuilder.setUrl(deobfuscatedUrl);
+                        formatBuilder.clearSignatureCipher();
+                    }
                     Format newFormat = formatBuilder.build();
-
                     streamingDataBuilder.addAdaptiveFormats(newFormat);
                     i++;
                 }
 
-                streamingDataBuilder.setServerAbrStreamingUrl(isNotEmpty(serverAbrStreamingUrl)
-                        ? serverAbrStreamingUrl.replace(obfuscatedNParameter, deobfuscatedNParameter)
-                        : ""
-                );
+                String deobfuscatedServerAbrStreamingUrl = "";
+                if (isNotEmpty(serverAbrStreamingUrl)) {
+                    deobfuscatedServerAbrStreamingUrl = serverAbrStreamingUrl.replace(obfuscatedNParameter, deobfuscatedNParameter);
+                }
+
+                streamingDataBuilder.setServerAbrStreamingUrl(deobfuscatedServerAbrStreamingUrl);
 
                 return true;
             }

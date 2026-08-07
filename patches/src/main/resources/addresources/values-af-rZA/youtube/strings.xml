@@ -2,7 +2,7 @@
 <!--
 
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -74,6 +74,10 @@ Veranderings sluit in:
   <string name="morphe_hide_hyped_label_title">Versteek Hip-etiket</string>
   <string name="morphe_hide_image_shelf_title">Verberg prentrak</string>
   <string name="morphe_hide_image_shelf_summary">Verberg beeldrakke in soekresultate</string>
+  <!-- 'Invite others to message' should be translated using the same localized wording YouTube displays
+          for the card in the Messages section at the top of the Notifications tab. -->
+  <string name="morphe_hide_invite_to_message_card_title">Versteek \'Nooi ander om te gesels\' kaart</string>
+  <string name="morphe_hide_invite_to_message_card_summary">Versteek die nooi kaart wat in die Kennisgewings-oortjie se Gesels-afdeling vertoon word</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Versteek \'Nuutste video\'s\' knoppie</string>
@@ -119,6 +123,7 @@ Veranderings sluit in:
   <string name="morphe_hide_youtube_doodles_user_dialog_message">Die vertoon van YouTube-Doodles kan verhoed dat pasgemaakte headers vertoon word.</string>
   <string name="morphe_hide_channel_bar_title">Verberg kanaalbalk</string>
   <string name="morphe_hide_channel_watermark_title">Verberg kanaalwatermerk</string>
+  <string name="morphe_hide_chapters_timeline_button_title">Versteek hoofstukke en \'In hierdie video\'-knoppie</string>
   <string name="morphe_hide_crowdfunding_box_title">Verberg finansiële bystandboks</string>
   <string name="morphe_hide_emergency_box_title">Verberg noodhokse</string>
   <string name="morphe_hide_info_panels_title">Verberg info panele</string>
@@ -127,10 +132,13 @@ Veranderings sluit in:
           This button usually appears in the video player for certain videos. -->
   <string name="morphe_hide_join_membership_button_title">Verberg \'Aansluit\'-knoppie</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears when in fullscreen for live streamed videos after opening live chat. -->
+          This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">Versteek \'Regstreekse klets-herhaling\' knoppie</string>
   <string name="morphe_hide_live_chat_replay_button_summary">Verberg die kletsherhalingsknoppie in die volskermmodus</string>
   <string name="morphe_hide_medical_panels_title">Verberg mediese panele</string>
+  <string name="morphe_hide_player_gesture_hints_title">Versteek wenke vir spelergebare</string>
+  <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
+          These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_snackbar_title">Verberg snackbalk</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Verberg lede riglyne</string>
   <string name="morphe_hide_sync_button_title">Versteek \'Sinkroniseer met video\'-knoppie</string>
@@ -202,6 +210,7 @@ Veranderings sluit in:
   <string name="morphe_hide_fashion_menu_title">Verberg \'Mode &amp; Skoonheid\' menu</string>
   <string name="morphe_hide_gaming_menu_title">Verberg Speletjies-menu</string>
   <string name="morphe_hide_hype_menu_title">Verberg Hype-menu</string>
+  <string name="morphe_hide_learning_menu_title">Versteek Leermenu</string>
   <string name="morphe_hide_live_menu_title">Verberg Regstreekse-menu</string>
   <string name="morphe_hide_memberships_menu_title">Verberg Lidmaatskap-menu</string>
   <string name="morphe_hide_movies_menu_title">Verberg Rolprente-menu</string>
@@ -216,13 +225,14 @@ Veranderings sluit in:
   <string name="morphe_hide_youtube_music_menu_title">Verberg YouTube Music-menu</string>
   <string name="morphe_hide_youtube_kids_menu_title">Verberg YouTube Kids-menu</string>
   <string name="morphe_hide_youtube_create_menu_title">Verberg YouTube Create-menu</string>
-  <string name="morphe_hide_privacy_tos_footer_title">Verberg \'Privaatheidsbeleid • Dienstevoorwaardes\' voetnoot</string>
+  <string name="morphe_hide_youtube_works_menu_title">Versteek \'Hoe YouTube werk\' menu</string>
+  <string name="morphe_hide_privacy_tos_footer_title">Versteek regskennisgewings en priva sievoetnota</string>
   <string name="morphe_comments_screen_title">Kommentare</string>
   <string name="morphe_comments_screen_summary">Kies watter komponente in die kommentaar afdeling verskyn</string>
   <string name="morphe_hide_comments_carousel_title">Aktiveer kommentaar draaibaar filter</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Maak seker dat jy die presiese naam van die carrousel item invoer (bv. Vra, Hype hierdie video, Luister op YouTube Music, ens.)
-• Die verberging van carrousel items kan onbedoelde newe-effekte hê
-• As alle carrousel items verberg is, sal die hele kommentaar gedeelte ook verberg word."</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Maak seker om die presiese naam van die karrousel-item in te voer (bv. Ask, Hype this video, Listen on YouTube Music)
+• Om karrousel-items weg te steek kan onbedoelde newe-effekte hê
+• As alle karrousel-items weggesteek is, sal die hele kommentaar-afdeling ook weggesteek word"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Kommentaar draaibaar filter</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Voer die kommentaar carousel name in om te filter, geskei deur nuwe reëls</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Verberg AI-chat opsomming</string>
@@ -255,9 +265,9 @@ Veranderings sluit in:
   <string name="morphe_hide_keyword_content_phrases_title">Sleutelwoorde om te verberg</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"Voer sleutelwoorde en frases in om te verberg, geskei deur nuwe reëls
+  <string name="morphe_hide_keyword_content_phrases_summary">"Voer sleutelwoorde en frases in om te versteek, geskei deur nuwe lyne
 
-Sleutelwoorde kan enige teks wees wat in video-titels of kanaalname verskyn
+Sleutelwoorde kan enige teks wees wat in videotitels of kanaalname gewys word
 
 Woorde met hoofletters in die middel moet presies ooreenstem (bv. iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Tuis / Subskripsies / Soek / Kommentare word gefiltreer om inhoud te verberg wat ooreenstem met sleutelwoordfrases
@@ -312,7 +322,6 @@ Tik hier om AiSlopList.com oop te maak en laai aflaai vir ander platforms"</stri
   <string name="morphe_hide_end_screen_store_banner_title">Verberg eindskermwinkelbanier</string>
   <string name="morphe_hide_general_ads_title">Verberg algemene advertensies</string>
   <string name="morphe_hide_merchandise_banners_title">Verberg handelswarebanne</string>
-  <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_paid_promotion_labels_title">Verberg betaalde promosie-etikette</string>
   <string name="morphe_hide_player_popup_ads_title">Versteek speler pop-up advertensies</string>
   <string name="morphe_hide_self_sponsor_ads_title">Verberg selfgesponsorde kaarte</string>
@@ -327,11 +336,9 @@ Tik hier om AiSlopList.com oop te maak en laai aflaai vir ander platforms"</stri
   <string name="morphe_copy_video_link_button_summary">Tik om die video skakel te kopieer, tik en hou vas om met tydstempel te kopieer</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">Kopieer tydstempel verstek</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">Keer die tik- en tik-en-hou-aksies van die \'Kopieer video skakel\'-knoppie om</string>
-  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">Verwyder kyker diskresie dialoog</string>
-  <string name="morphe_remove_viewer_discretion_dialog_summary">Dit omseil nie die ouderdomsbeperking nie. Dit aanvaar dit net outomaties</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Deaktiveer \'Aanmeld by TV\'-pop-up</string>
+  <string name="morphe_disable_connect_your_devices_popup_title">Deaktiveer die \'Koppel jou toestelle\'-pop-up</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">Deaktiveer dubbeltik hoofstukskip</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Deaktiveer die dubbeltik gebaar met twee vinger wat hoofstukke oorslaan, wat per ongeluk met een vinger geaktiveer kan word</string>
@@ -341,7 +348,7 @@ Tik hier om AiSlopList.com oop te maak en laai aflaai vir ander platforms"</stri
   <string name="morphe_external_downloader_summary">Wys \'n oorvleiknoppie in video-speler wat jou eksterne aflaaier oopmaak</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Oorskryf die Aflaai-knoppie &amp; spyskaart</string>
-  <string name="morphe_external_downloader_action_button_summary">Gebruik jou gekose eksterne aflaai-program in plaas van YouTube se ingeboude aflaaifunksie</string>
+  <string name="morphe_external_downloader_action_button_summary">Gebruik jou gekose eksterne aflaaier in plaas van die standaard aflaai-funksie</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Vertaalde stem over</string>
   <string name="morphe_vot_screen_summary">Lees video-onderskrifte hardop voor met behulp van teks-na-spraak op die toestel, gesinkroniseer met die afspeel</string>
@@ -369,7 +376,7 @@ Tik hier om OpenRouter.ai oop te maak"</string>
   <string name="morphe_vot_openrouter_not_configured_title">OpenRouter nie gekonfigureer nie</string>
   <string name="morphe_vot_openrouter_not_configured_message">Voer jou OpenRouter API-sleutel in instellings in voordat jy hierdie verskaffer kies</string>
   <string name="morphe_vot_cost_free">Gratis</string>
-  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <!-- %s is dollar cost, e.g., $0.10 per 100 hours -->
   <string name="morphe_vot_cost_per_hour">%s per 100 video-ure</string>
   <string name="morphe_vot_tts_voice_type">Stem</string>
   <string name="morphe_vot_tts_system">Stelsel</string>
@@ -441,12 +448,15 @@ Info: Werk moontlik nie op regstreekse uitsendings nie"</string>
   <string name="morphe_save_to_watch_later_success_toast">Video is suksesvol in spaar om later te kyk snitlys gestoor</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Hierdie video is reeds in spaar om later te kyk snitlys gestoor</string>
   <string name="morphe_save_to_watch_later_error_toast">Kan hierdie video nie in spaar om later te kyk snitlys stoor nie</string>
+  <string name="morphe_queue_flyout_title">Voeg by Morphe-tou</string>
   <string name="morphe_queue_restore_title">Behou tou tussen sessies</string>
   <string name="morphe_queue_restore_summary">Tou word behou na die herbegin van die app</string>
   <string name="morphe_swap_save_and_queue_actions_title">Ruil die Spaar en Waglys-aksies</string>
   <string name="morphe_swap_save_and_queue_actions_summary">Tik vir waglys-opsies, tik en hou vas om later te kyk</string>
   <string name="morphe_queue_override_flyout_menu_title">Vervang voedingsvloei-wyser-knoppie</string>
   <string name="morphe_queue_override_flyout_menu_summary">Oop die Morphe-ry vir die YouTube-ry</string>
+  <string name="morphe_queue_add_flyout_menu_title">Voeg voer flyout-tou-menu-item by</string>
+  <string name="morphe_queue_add_flyout_menu_summary">Voeg \'n bykomende flyout-item by. Skakel dit aan as \"Voeg by tou\" nie gewys word nie</string>
   <string name="morphe_queue_manager_check_failed_auth">Nie aangemeld</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">Geen spyskaart-ID</string>
   <string name="morphe_queue_manager_check_failed_queue">Waglys is leeg</string>
@@ -483,15 +493,15 @@ Info: Werk moontlik nie op regstreekse uitsendings nie"</string>
   <string name="morphe_seekbar_thumbnail_preview_title">Aktiveer seekbar-miniature</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Wys \'n videominiatuur terwyl die seekbar gesleep word</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"'Maak livestream DVR moontlik' is moontlik nie beskikbaar nie
+  <string name="morphe_livestream_dvr_not_available">"'Aktiveer livestream DVR' is moontlik nie beskikbaar nie
 
-Om dit reg te stel, skakel 'Spoof video streams' aan en verander die 'Default client' na 'TV'"</string>
+Om dit op te los, skakel 'Vals video-stromings' aan en verander 'Standaardkliënt' na 'TV Simply' of 'visionOS'"</string>
   <string name="morphe_expand_livestream_dvr_duration_title">Brei livestream DVR duur uit</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">Laat jou toe om regstreekse uitsendings tot 7 dae terug te spoel</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Brei livestream DVR duur' is moontlik nie beskikbaar nie
+  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Brei livestream DVR-duur' uit is moontlik nie beskikbaar nie
 
-Om dit reg te stel, skakel 'Spoof video streams' aan en verander die 'Default client' na 'TV'"</string>
+Om dit op te los, skakel 'Vals video-stromings' aan en verander 'Standaardkliënt' na 'TV Simply' of 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Aktiveer gly om te soek</string>
   <string name="morphe_slide_to_seek_summary">Aktiveer gly om te soek in plaas daarvan om teen 2x snelheid te speel wanneer jy op die videospeler druk en hou</string>
@@ -509,7 +519,7 @@ Om dit reg te stel, skakel 'Spoof video streams' aan en verander die 'Default cl
   <string name="morphe_swipe_zone_label_volume">Volume</string>
   <string name="morphe_swipe_zone_label_native">Native</string>
   <string name="morphe_swipe_press_to_engage_title">Skakel druk om te swiep gebaar in</string>
-  <string name="morphe_swipe_press_to_engage_summary">Onthou helderheidsvlak wanneer die volskermmodus betree / verlaat</string>
+  <string name="morphe_swipe_press_to_engage_summary">Vereis dat jy druk en vashou voordat \'n veeggebaar herken word</string>
   <string name="morphe_swipe_haptic_feedback_title">Skakel haptiese terugvoer in</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Bewaar en herstel helderheid</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Swipe helderheid na sy laagste waarde aktiveer die stelsel outo-helderheid</string>
@@ -624,9 +634,9 @@ Om dit reg te stel, skakel 'Spoof video streams' aan en verander die 'Default cl
   <string name="morphe_auto_captions_style_legacy_entry_2">Verberg outo-onderskrifte</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Stel onderskrifkoekies in</string>
-  <string name="morphe_set_caption_cookies_summary">"Regmaak 'n fout in YouTube waar die outo-vertaal onderskrifte dalk nie beskikbaar is weens ontbrekende koekies
+  <string name="morphe_set_caption_cookies_summary">"Los 'n standaard YouTube-fout op waar die outomaties vertaalde onderskrifte dalk nie beskikbaar is nie weens ontbrekende koekies
 
-'Onderskrifkoekies' moet verskaf word"</string>
+'Onderskrif-koekies' moet verskaf word"</string>
   <string name="morphe_caption_cookies_title">Ondertitelkoekies</string>
   <string name="morphe_caption_cookies_summary">Koekies wat in Timed Text API (Caption Data API) versoeke gestel moet word</string>
   <string name="morphe_get_caption_cookies_title">Kry ondertitelkoekies</string>
@@ -693,7 +703,7 @@ Om Instellings te open, aktiveer die Instellings-knoppie via Algemeen → Toolba
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Vluglysmenu</string>
   <string name="morphe_hide_player_flyout_summary">Hide \'Ambient mode\' menu</string>
-  <!-- 'Audio track' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_audio_track_title">Hide \'Stable volume\' menu</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
           'Android Studio' must be kept untranslated. -->
@@ -887,7 +897,7 @@ Beperking: Indien 'Herstel ou video-aksiebalk' afgeskakel is, mag die 'Meer vide
   <string name="morphe_open_system_share_sheet_summary">Maak die stelselseeldeelblad oop in plaas van die in-app-een wanneer inhoud gedeel word</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Oorheers YouTube Music knoppies</string>
-  <string name="morphe_override_youtube_music_buttons_summary">Maak jou voorkeurmusiektoepassing oop in plaas van die amptelike YouTube Music-toepassing</string>
+  <string name="morphe_override_youtube_music_buttons_summary">Open jou voorkeur-musiektoepassing in plaas van die standaard YouTube Music-toepassing</string>
   <string name="morphe_music_package_name_title">Musiektoepassing pakketnaam</string>
   <string name="morphe_music_package_name_summary">Pakketnaam van jou geïnstalleerde musiektoepassing</string>
   <!-- layout.startpage.changeStartPagePatch -->
@@ -929,6 +939,11 @@ Beperking: Indien 'Herstel ou video-aksiebalk' afgeskakel is, mag die 'Meer vide
   <string name="morphe_shorts_autoplay_summary">Gaan outomaties voort na die volgende Short in plaas daarvan om die huidige te herhaal</string>
   <string name="morphe_shorts_autoplay_background_title">Outoplay in agtergrond</string>
   <string name="morphe_shorts_autoplay_background_summary">Gaan outomaties voort na die volgende Short tydens agtergrondweergawe</string>
+  <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+  <string name="morphe_playback_in_feeds_title">Weergawe in feeds</string>
+  <string name="morphe_playback_in_feeds_entry_always_on">Altyd aan</string>
+  <string name="morphe_playback_in_feeds_entry_wifi_only">Slegs Wi-Fi</string>
+  <string name="morphe_playback_in_feeds_entry_off">Af</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Deaktiveer hervatting van mini-speler</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Deaktiveer die \'Gaan voort om te kyk\' minispeler, \'n YouTube Premium-funksie wat op app-opstart verskyn</string>
@@ -1035,7 +1050,6 @@ Tik hier om DeArrow.ajay.app oop te maak"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Kennisgewing media kontroles</string>
   <string name="morphe_notification_media_screen_summary">Pas die voorkoms en gedrag van die verkleinde videospeler aan</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Verberg Vor &amp; Volgende knoppe</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Verberg Vorige en Volgende knoppies in media kennisgewing, skermsluiting en koptelefoonbeheerders</string>
   <string name="morphe_disable_notification_media_seekbar_title">Deaktiveer skyfiebalk</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Verhoed dat die seekbar op die skermsluiting en kennisgewingspaneel gesleep word</string>
@@ -1050,6 +1064,12 @@ Tik hier om DeArrow.ajay.app oop te maak"</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Onthou video kwaliteit veranderings</string>
+  <string name="morphe_override_initial_video_quality_title">Oorskryf aanvanklike videokwaliteit</string>
+  <!-- 'Force AVC (H.264) codec' should be the same translation used for 'morphe_force_avc_codec_title'. -->
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_override_initial_video_quality_summary">"Los 'n probleem op waar die verstek videokwaliteit nie onmiddellik toegepas word nadat die video begin het nie
+
+Beperking: Weergawe werk moontlik nie op sommige toestelle as 'Vals video-stromings' op 'Android VR' gestel is en 'Dwing AVC (H.264)-kodek' geaktiveer is"</string>
   <string name="morphe_remember_video_quality_last_selected_title">Onthou videokwaliteit</string>
   <string name="morphe_remember_video_quality_last_selected_summary">Pas jou handmatige kwaliteitseleksie toe op alle toekomstige video\'s</string>
   <string name="morphe_remember_video_quality_last_selected_toast_title">Kwaliteitveranderingskennisgewings</string>
@@ -1102,7 +1122,6 @@ Beperkings:
 • HDR video's sal nie AVC gebruik nie
 • Sommige toestelle kan nie AVC forceer nie"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Om hierdie funksie te gebruik, stel \'Verfraai videostrome\' op \'Android VR\' of \'Android Studio\'</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Maak Gevorderde kwaliteit spyskaart oop</string>
   <string name="morphe_advanced_video_quality_menu_summary">Slaan die kwaliteitkeusemenu oor en open die Gevorderde kwaliteitmenu direk</string>
@@ -1113,13 +1132,10 @@ Beperkings:
   <string name="morphe_video_quality_prioritize_summary">Prioriteer die hoogste beskikbare videokwaliteit bo kodekdoeltreffendheid</string>
   <string name="morphe_video_quality_prioritize_dialog">As hierdie instelling afgeskakel is, kan ouer video\'s geen videokwaliteitsopsies vertoon nie</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Laat Android VR / visionOS AV1 toe</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Laat sagteware AV1-ontkodering toe wanneer die Android VR / visionOS-kliënt gebruik word</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Deur hierdie instelling te aktiveer kan sagteware AV1-ontkoder gebruik word.
 
 Videoweergawe met AV1 kan hakkel of rame laat val."</string>
   <string name="morphe_spoof_video_streams_about_title">Spoef-newe-effekte</string>
-  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Oudiospoor menu ontbreek</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Geen AV1 videokodek</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR meeslepende modus is nie beskikbaar nie</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabile volume is nie beskikbaar nie</string>
@@ -1129,7 +1145,6 @@ Videoweergawe met AV1 kan hakkel of rame laat val."</string>
   <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• Kwaliteit kan beperk wees tot 720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Speler JavaScript variant</string>
-  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Wys vervalsing in Statistiek vir nerds</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Herstel ou video-aksiebalk</string>
   <string name="morphe_restore_old_video_action_bar_summary">"Los probleme op waar nie-houters nie gewys word en video-aksieknoppies nie versteek kan word nie

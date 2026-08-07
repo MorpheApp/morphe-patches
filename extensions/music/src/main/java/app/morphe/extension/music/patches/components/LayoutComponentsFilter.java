@@ -74,12 +74,6 @@ public final class LayoutComponentsFilter extends Filter {
                 "music_speed_dial_shelf.e"
         );
 
-        final StringFilterGroup suggestedForYouShelf = new StringFilterGroup(
-                Settings.HIDE_SUGGESTED_FOR_YOU_SHELF,
-                "music_shelf_header_wrapper.e",
-                "music_list_item_wrapper.e"
-        );
-
         addPathCallbacks(
                 exploreShelf,
                 gridShelves,
@@ -89,8 +83,7 @@ public final class LayoutComponentsFilter extends Filter {
                 lyricsTranslateButton,
                 newFromShelf,
                 playlistShelves,
-                speedDialShelf,
-                suggestedForYouShelf
+                speedDialShelf
         );
     }
 

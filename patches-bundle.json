@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-08-01T08:36:59",
-  "description": "## [1.38.1-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.38.0...v1.38.1-dev.1) (2026-08-01)\n\n### 🚀 Updated App Support\n\n* **YouTube:** Add experimental support for `21.31.523` ([#2207](https://github.com/MorpheApp/morphe-patches/issues/2207)) ([061663b](https://github.com/MorpheApp/morphe-patches/commit/061663b85b76f0aabe9337de8d84970d4ca406b5))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.38.1-dev.1/patches-1.38.1-dev.1.mpp",
+  "created_at": "2026-08-07T10:38:34",
+  "description": "## [1.39.0-dev.9](https://github.com/MorpheApp/morphe-patches/compare/v1.39.0-dev.8...v1.39.0-dev.9) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Hide layout components:** Hide trending hashtags ([7f375cc](https://github.com/MorpheApp/morphe-patches/commit/7f375ccf058f5782d0533743f5a06c6d649dbf0e))\n* **YouTube Music - Spoof app version:** Add spoof targets `8.23.51` and `9.13.51`, remove 6.x and 7.x targets that YT is shutting down support for ([74e4b1d](https://github.com/MorpheApp/morphe-patches/commit/74e4b1daae905301fc9ea9590de42637854a324e))\n* **YouTube Music:** Remove `7.29.52` app target that YouTube no longer supports ([8b453db](https://github.com/MorpheApp/morphe-patches/commit/8b453dbfe30d695458d913808c8a4bc2a6813ed4))\n\n### ✨ New Features\n\n* **YouTube - Add to queue:** Add \"Add feed flyout queue menu item\" setting ([#2333](https://github.com/MorpheApp/morphe-patches/issues/2333)) ([1c54df8](https://github.com/MorpheApp/morphe-patches/commit/1c54df894a7836c5c3764cef5eb5f14e8af5fcd5))\n* **YouTube - Hide layout components:** Add \"Hide Chapters and 'In this video' button\" setting ([#2354](https://github.com/MorpheApp/morphe-patches/issues/2354)) ([ec15b89](https://github.com/MorpheApp/morphe-patches/commit/ec15b89a9a7e33caf43f7e95a17bc771dc37ba8b))\n\n### 🚀 Updated App Support\n\n* **Reddit:** Add experimental support for `2026.31.1` ([7bf92f4](https://github.com/MorpheApp/morphe-patches/commit/7bf92f4f4ead5f28d95ff06452e1d1af376628d9))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.39.0-dev.9/patches-1.39.0-dev.9.mpp",
   "signature_download_url": "",
-  "version": "1.38.1-dev.1"
+  "version": "1.39.0-dev.9"
 }

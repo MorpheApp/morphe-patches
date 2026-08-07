@@ -2,7 +2,7 @@
 <!--
 
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -25,8 +25,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_summary">Vîdyoyên muzîkê, podcast an stran bi sepanên dakêşkirina sêjiyê dakêşîne</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Butona Dawnekarê Guherîn</string>
-  <string name="morphe_external_downloader_action_button_summary">Li şûna fonksiyona dawnekarê ya înşaî ya YouTube Music, dawnekarê we yê dildar bikar tîne</string>
-  <string name="morphe_external_downloader_flyout_menu_title">Menuya Dawnekarê Guherîn</string>
+  <string name="morphe_external_downloader_action_button_summary">Dakêşana derveyî ya hilbijartî bi kar tîne li şûna bişkoka dakêşana standard</string>
+  <string name="morphe_external_downloader_flyout_menu_title">Menuya dakêşana cîhgir</string>
+  <string name="morphe_external_downloader_flyout_menu_summary">Dakêşana derveyî ya hilbijartî bi kar tîne li şûna menuya dakêşana standard</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Derbar</string>
@@ -34,7 +35,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_feed_title">Xwarin</string>
   <string name="morphe_settings_music_screen_3_general_title">Giştî</string>
   <string name="morphe_settings_music_screen_4_player_title">Lêrîner</string>
-  <string name="morphe_settings_music_screen_8_misc_title">Cûda cûda</string>
+  <string name="morphe_settings_music_screen_5_lyrics_title">Şarkî</string>
+  <string name="morphe_settings_music_screen_9_misc_title">Dîsan</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">\'Get Music Premium\' etîketê veşêre</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Şîrketê pêşniyarên Premium-a muzîkê veşêrin</string>
@@ -53,7 +55,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_repeat_button_title">Veşartina Butona Dubarekirinê</string>
   <string name="morphe_music_hide_shuffle_button_title">Veşartina Butona Karîşkirinê</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Veşartina Refa \'Hizirsaziya Lez\'</string>
-  <string name="morphe_music_hide_suggested_for_you_shelf_title">Veşartina Refa \'Ji bo te hatî pêşnîyar kirin\'</string>
   <string name="morphe_music_comments_screen_title">Şîrovet</string>
   <string name="morphe_music_comments_screen_summary">Hilbijê ku kîjan pêkhatiyan di beşa şîrovetê de xuya bibin</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Veşartina Rêgevanên Civatê</string>
@@ -296,10 +297,35 @@ YouTube Music 8.x — crossfade tenê li 9.x û nûjenertirîn de dimeşe"</stri
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling bi xwezayî karanîna YouTube Music ya we bi profîla we ya Last.fm an ListenBrainz re hevdeng dike.
 
 Ji bo ku bêyî astengiyê scrobbling li ser lîstikên paşnavê were hevdengkirin, pê ewle bibin ku karanîna pîlê ya YouTube Music wek \"Nerêkûkirî\" hatî destnîşankirin."</string>
+  <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_enabled_title">Şarkîyên partiyê sêyemîn bikar bîne</string>
+  <string name="morphe_music_lyrics_enabled_summary">Şarkîyên ji karûbarê sêyemîn yê ku dîtin, wê demê vegere şarkîyên paşnavê yên di hundirê de</string>
+  <string name="morphe_music_lyrics_source_title">Karûbara şarkîyan</string>
+  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
+  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, paşê KuGou</string>
+  <string name="morphe_music_lyrics_tap_to_seek_title">Teke rêjeyekê da ku veguhêze</string>
+  <string name="morphe_music_lyrics_tap_to_seek_summary">Teke rêjeyekê li ser wê dema di stranê de vediguhezîne</string>
+  <string name="morphe_music_lyrics_show_copy_button_title">Nîşanê kopîkirinê bibîne</string>
+  <string name="morphe_music_lyrics_show_translate_button_title">Nîşanê wergerandinê bibîne</string>
+  <string name="morphe_music_lyrics_text_size_title">Mezinahiyê nivîsê</string>
+  <string name="morphe_music_lyrics_text_size_summary">Mezinahiyê nivîsa stranê</string>
+  <string name="morphe_music_lyrics_offset_ms_title">Veguhêztina demê</string>
+  <string name="morphe_music_lyrics_offset_ms_summary">Veguhêztina nivîsên hevdengî pêş nişîn an paş nişîn. Çekînekî serbest bikar bîne heger nivîs beriya stranê bixwe</string>
+  <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
+  <string name="morphe_music_lyrics_source_label">Çavkanî: %s</string>
+  <!-- Tappable label under the lyrics that turns the translation on. -->
+  <string name="morphe_music_lyrics_translate_show">Wergerîne</string>
+  <string name="morphe_music_lyrics_translate_hide">Nîşanîya orjînalê</string>
+  <string name="morphe_music_lyrics_translating">Wergerandin…</string>
+  <string name="morphe_music_lyrics_translate_failed">Nefibû ku nivîs were wergerandin</string>
+  <string name="morphe_music_lyrics_copy">Copî bike</string>
+  <string name="morphe_music_lyrics_copied">Li bernameyê hatî kopî kirin</string>
+  <string name="morphe_music_lyrics_about_title">Lîrîkên partiyê sêyemîn</string>
+  <string name="morphe_music_lyrics_about_summary">"Stran bi navûnişana stranê û hunermendê tê dîtin, ji ber vê yekê stranek bi metadatayê nehewladik dibe tiştekî dîtîbe, an jî ji bo guhertoyekî ne rast tiştekî bibîne.
+
+Lîvîyên hevdengî piştgirêxêkirina pêşde çûyîne. Ger wan gazî bike, veguhêztina demê saz bike.
+
+Gava ku lîvîyên derveyî ne werin dîtin, lîvîyên înşaetî nîşanî di bin de ne"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
-  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - Pêla panelê ya kevnar vegerîne</string>
-  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - Lîrîkên demî qedexe bike</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - Lîrîkên dînamîkî yên kevnar vegerîne</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - Barra çalakiyê ya kevnar vegerîne</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - Beşa şîrovanan di xwarê de xuya nabe</string>
+  <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Vegerandina tabên Player ên \'Up next\', \'Lyrics\' û \'Related\'</string>
 </resources>

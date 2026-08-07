@@ -16,7 +16,7 @@ import app.morphe.patches.shared.misc.spoof.appversion.baseSpoofAppVersionPatch
 
 @Suppress("unused")
 val spoofAppVersionPatch = baseSpoofAppVersionPatch(
-    defaultTargetString = { "7.17.52" },
+    defaultTargetString = { "8.23.51" },
     preferenceScreen = PreferenceScreen.GENERAL,
     listPreference = {
         ListPreference(

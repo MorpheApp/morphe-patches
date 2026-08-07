@@ -2,7 +2,7 @@
 <!--
 
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -27,6 +27,9 @@ Second \"item\" text"</string>
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Acerca de</string>
   <string name="morphe_settings_music_screen_1_ads_title">Anuncios</string>
+  <string name="morphe_settings_music_screen_3_general_title">Xeral</string>
+  <string name="morphe_settings_music_screen_4_player_title">Reprodutor</string>
+  <string name="morphe_settings_music_screen_9_misc_title">Miscelánea</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Ocultar etiqueta \'Obter Music Premium\'</string>
   <string name="morphe_music_hide_video_ads_title">Ocultar anuncios de vídeo</string>
@@ -83,5 +86,10 @@ Second \"item\" text"</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <!-- 'scrobbling' must be kept untranslated -->
   <!-- 'scrobbling' must be kept untranslated -->
+  <!-- layout.lyrics.lyricsPatch -->
+  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
+  <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
+  <!-- Tappable label under the lyrics that turns the translation on. -->
+  <string name="morphe_music_lyrics_copy">Copiar</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
 </resources>

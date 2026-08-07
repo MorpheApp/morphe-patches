@@ -761,3 +761,15 @@ internal object JewelsButtonContainerFingerprint : Fingerprint(
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
     )
 )
+
+internal object HideTimeBarEntryPointContainerFingerprint : Fingerprint(
+    returnType = "V",
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "time_bar_entry_point_tap_container"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "findViewById"
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
+    )
+)

@@ -31,10 +31,12 @@ import app.morphe.patches.youtube.misc.playservice.is_20_40_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.copyXmlNode
 import app.morphe.util.findElementByAttributeValue
 import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.findFreeRegister
+import app.morphe.util.getReference
 import app.morphe.util.inputStreamFromBundledResource
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -191,7 +193,8 @@ internal val legacyPlayerControlsResourcePatch = resourcePatch {
 internal fun initializeTopControl(descriptor: String) {
     inflateTopControlMethodRef.get()!!.addInstruction(
         inflateTopControlInsertIndex++,
-        "invoke-static { v$inflateTopControlRegister }, $descriptor->initializeLegacyButton(Landroid/view/View;)V",
+        "invoke-static { v$inflateTopControlRegister }, $descriptor->" +
+                "initializeLegacyButton(Landroid/view/View;)V",
     )
 }
 
@@ -202,7 +205,8 @@ internal fun initializeTopControl(descriptor: String) {
 fun initializeLegacyBottomControl(descriptor: String) {
     inflateBottomControlMethodRef.get()!!.addInstruction(
         inflateBottomControlInsertIndex++,
-        "invoke-static { v$inflateBottomControlRegister }, $descriptor->initializeLegacyButton(Landroid/view/View;)V",
+        "invoke-static { v$inflateBottomControlRegister }, $descriptor->" +
+                "initializeLegacyButton(Landroid/view/View;)V",
     )
 }
 
@@ -234,29 +238,6 @@ val legacyPlayerControlsPatch = bytecodePatch(
                 SwitchPreference("morphe_restore_old_player_buttons", summary = true)
             )
         }
-
-        PlayerBottomControlsInflateFingerprint.let {
-            it.method.apply {
-                inflateBottomControlMethodRef = WeakReference(this)
-
-                val inflateReturnObjectIndex = it.instructionMatches.last().index
-                inflateBottomControlRegister = getInstruction<OneRegisterInstruction>(inflateReturnObjectIndex).registerA
-                inflateBottomControlInsertIndex = inflateReturnObjectIndex + 1
-            }
-        }
-
-        PlayerTopControlsInflateFingerprint.let {
-            it.method.apply {
-                inflateTopControlMethodRef = WeakReference(this)
-
-                val inflateReturnObjectIndex = it.instructionMatches.last().index
-                inflateTopControlRegister = getInstruction<OneRegisterInstruction>(inflateReturnObjectIndex).registerA
-                inflateTopControlInsertIndex = inflateReturnObjectIndex + 1
-            }
-        }
-
-        // Buttons of add-on patch bundles, which cannot add a button of their own.
-        initializeLegacyBottomControl(EXTENSION_ADD_ON_API_CLASS_DESCRIPTOR)
 
         fun overrideExploderLayout(fingerprint: Fingerprint) {
             fingerprint.matchAll().forEach { match ->
@@ -323,5 +304,30 @@ val legacyPlayerControlsPatch = bytecodePatch(
                 }
             }
         }
+
+        // Must get methods after overriding flags,
+        // since flag overrides can add instructions and break the indexes used here.
+        PlayerBottomControlsInflateFingerprint.let {
+            it.method.apply {
+                inflateBottomControlMethodRef = WeakReference(this)
+
+                val inflateReturnObjectIndex = it.instructionMatches.last().index
+                inflateBottomControlRegister = getInstruction<OneRegisterInstruction>(inflateReturnObjectIndex).registerA
+                inflateBottomControlInsertIndex = inflateReturnObjectIndex + 1
+            }
+        }
+
+        PlayerTopControlsInflateFingerprint.let {
+            it.method.apply {
+                inflateTopControlMethodRef = WeakReference(this)
+
+                val inflateReturnObjectIndex = it.instructionMatches.last().index
+                inflateTopControlRegister = getInstruction<OneRegisterInstruction>(inflateReturnObjectIndex).registerA
+                inflateTopControlInsertIndex = inflateReturnObjectIndex + 1
+            }
+        }
+
+        // Buttons of add-on patch bundles, which cannot add a button of their own.
+        initializeLegacyBottomControl(EXTENSION_ADD_ON_API_CLASS_DESCRIPTOR)
     }
 }

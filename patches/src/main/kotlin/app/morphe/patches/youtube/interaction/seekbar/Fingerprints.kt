@@ -138,6 +138,12 @@ internal object FullscreenLargeSeekbarFeatureFlagFingerprint : Fingerprint(
     )
 )
 
+internal object ShortsDisableSeekbarThumbnailsFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45787901)
+    )
+)
+
 internal object VideoStreamingDataAllowSeekingFingerprint : Fingerprint(
     classFingerprint = VideoStreamingDataToStringFingerprint,
     returnType = "Z",
@@ -295,5 +301,26 @@ internal object SeekbarBigBoardsUpdateLegacyFingerprint : Fingerprint (
         literal(1),
         opcode(opcode = Opcode.IF_NEZ, location = MatchAfterImmediately()),
         opcode(opcode = Opcode.RETURN, location = MatchAfterImmediately())
+    )
+)
+
+internal object PreciseSeekingRecyclerViewFingerprint : Fingerprint (
+    classFingerprint = Fingerprint(
+        accessFlags = listOf(
+            AccessFlags.PUBLIC,
+            AccessFlags.FINAL,
+            AccessFlags.BRIDGE,
+            AccessFlags.SYNTHETIC
+        ),
+        filters = listOf(
+            resourceLiteral(ResourceType.LAYOUT, "film_strip_thumbnail_item")
+        )
+    ),
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/support/v7/widget/RecyclerView;"),
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IPUT_OBJECT, type = "Landroid/support/v7/widget/RecyclerView;"),
+        opcode(opcode = Opcode.RETURN_VOID, location = MatchAfterImmediately())
     )
 )

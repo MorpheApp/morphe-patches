@@ -51,6 +51,7 @@ import app.morphe.patches.youtube.misc.fix.pipchatbar.fixPipChatBarPatch
 import app.morphe.patches.youtube.misc.fix.playbackspeed.fixPlaybackSpeedWhilePlayingPatch
 import app.morphe.patches.youtube.misc.fix.preference.fixPreferenceIconPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
@@ -208,16 +209,16 @@ val settingsPatch = bytecodePatch(
         settingsResourcePatch,
         addResourcesPatch,
         versionCheckPatch,
+        // Currently there is no easy way to make patches mandatory,
+        // so for now these are all dependents of this patch.
         fixPlaybackSpeedWhilePlayingPatch,
         fixPreferenceIconPatch,
         fixLikeButtonPatch,
         fixContentProviderPatch,
         fixPipChatBarPatch,
-        removeLinkVerification,
-        // Currently there is no easy way to make a mandatory patch,
-        // so for now this is a dependent of this patch.
-        checkEnvironmentPatch,
         addLicensePatch,
+        removeLinkVerification,
+        checkEnvironmentPatch,
         experimentalAppNoticePatch(
             mainActivityFingerprint = YouTubeActivityOnCreateFingerprint,
             recommendedAppVersion = COMPATIBILITY_YOUTUBE.targets.first { !it.isExperimental }.version!!
@@ -243,15 +244,14 @@ val settingsPatch = bytecodePatch(
             selectable = true
         )
 
-        PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("morphe_restore_old_settings_menus")
-        )
+        if (!is_21_30_or_greater) {
+            PreferenceScreen.GENERAL.addPreferences(
+                SwitchPreference("morphe_restore_old_settings_menus")
+            )
+        }
 
         PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("morphe_settings_search_history")
-        )
-
-        PreferenceScreen.GENERAL.addPreferences(
+            SwitchPreference("morphe_settings_search_history"),
             SwitchPreference("morphe_show_menu_icons")
         )
 
@@ -283,7 +283,7 @@ val settingsPatch = bytecodePatch(
         }
 
         // Add setting to force Cairo settings fragment on/off.
-        CairoFragmentConfigFingerprint.matchAll().forEach { match ->
+        if (!is_21_30_or_greater) CairoFragmentConfigFingerprint.matchAll().forEach { match ->
             // 21.30+ inlines the flag lookup and must patch ~15 places.
             match.method.insertLiteralOverride(
                 match.instructionMatches.first().index,

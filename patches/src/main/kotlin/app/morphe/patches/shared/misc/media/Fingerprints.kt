@@ -12,6 +12,7 @@ import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -53,6 +54,26 @@ internal object MediaSessionFeatureFlagFingerprint : Fingerprint(
         opcode(
             opcode = Opcode.RETURN,
             location = MatchAfterWithin(5)
+        )
+    )
+)
+
+internal object MediaSessionSetMetadataFingerprint : Fingerprint(
+    filters = listOf(
+        methodCall(
+            definingClass = "Landroid/media/session/MediaSession;",
+            name = "setMetadata",
+            parameters = listOf("Landroid/media/MediaMetadata;")
+        )
+    )
+)
+
+internal object MediaSessionSetPlaybackStateFingerprint : Fingerprint(
+    filters = listOf(
+        methodCall(
+            definingClass = "Landroid/media/session/MediaSession;",
+            name = "setPlaybackState",
+            parameters = listOf("Landroid/media/session/PlaybackState;")
         )
     )
 )

@@ -33,7 +33,6 @@ val hideAskButtonPatch = bytecodePatch(
     )
 
     execute {
-
         hookFeatureFlag("$EXTENSION_CLASS->hideAskButton")
 
         AskButtonComposableFingerprint.method.addInstructionsWithLabels(

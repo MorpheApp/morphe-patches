@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Shared with YouTube and YT Music -->
 <!--
+
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -161,6 +162,9 @@ YouTube Premiumのユーザーの場合、この設定は必要ない場合が�
   <string name="morphe_settings_menu_filter_screen_title">設定メニューのフィルタ</string>
   <string name="morphe_settings_menu_filter_screen_summary">アプリ側の設定メニューの項目を、表示される項目名で指定して非表示にします</string>
   <string name="morphe_settings_menu_filter_picker_empty">項目の一覧を取得するため、アプリ側の設定メニューを一度開いてください</string>
+  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
+  <string name="morphe_remove_viewer_discretion_dialog_title">「ご自身の責任」ダイアログを削除</string>
+  <string name="morphe_remove_viewer_discretion_dialog_summary">この機能は、年齢制限を回避するものではありません。ダイアログによる確認に対して自動的に同意するだけです</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">アプリのバージョンを偽装</string>
   <string name="morphe_spoof_app_version_summary">古いバージョンのアプリを使用しているとサーバーに認識させて、以前の UI デザインや機能を復元します</string>

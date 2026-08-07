@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Shared with YouTube and YT Music -->
 <!--
+
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -82,9 +83,9 @@ Para fazer login, pressione continuar abaixo"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Código de ativação: %s
 
 1. Toque em 'Abrir site' abaixo para abrir o site 'Conectar um dispositivo'
-2. Cole da área de transferência (ou digite manualmente)
-3. Faça login na sua Conta do Google, se solicitado. Se você tiver várias contas, escolha a conta do YouTube usada neste app
-4. Toque em 'Permitir acesso do YouTube VR'
+2. Cole da área de transferência (ou digite) o código de ativação mostrado acima
+3. Faça login no Google se solicitado. Se você tiver várias contas, escolha a conta do YouTube usada neste app
+4. Toque em 'Permitir o acesso do YouTube VR'
 5. Volte para este app após a mensagem 'Dispositivo conectado' ser exibida"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Abrir site</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Falha ao emitir código de ativação</string>
@@ -135,8 +136,8 @@ Para fazer login, pressione continuar abaixo"</string>
           'Android Studio' must be kept untranslated. -->
   <string name="morphe_force_original_audio_not_available">Para usar este recurso, mude \'Falsificar fluxos de vídeo\' para qualquer cliente, exceto o Android Studio\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">Higienizar links de compartilhamento</string>
-  <string name="morphe_sanitize_sharing_links_summary">Remove parâmetros de consulta de rastreamento de links compartilhados</string>
+  <string name="morphe_sanitize_sharing_links_title">Limpar links de compartilhamento</string>
+  <string name="morphe_sanitize_sharing_links_summary">Remove parâmetros de rastreamento dos links compartilhados</string>
   <string name="morphe_replace_music_with_youtube_title">Alterar links de compartilhamento para youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Substitui music.youtube.com por youtube.com em links compartilhados</string>
   <string name="morphe_replace_links_with_shortener_title">Alterar links de compartilhamento para youtu.be</string>
@@ -161,6 +162,9 @@ No entanto, ativar isso também registrará alguns dados do usuário, como seu e
   <string name="morphe_settings_menu_filter_screen_title">Filtro do menu de configurações</string>
   <string name="morphe_settings_menu_filter_screen_summary">Ocultar itens na tela de configurações padrões do app pelo nome visível</string>
   <string name="morphe_settings_menu_filter_picker_empty">Abra a tela de configurações do aplicativo padrão uma vez para preencher a lista</string>
+  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
+  <string name="morphe_remove_viewer_discretion_dialog_title">Remover diálogo de discrição do espectador</string>
+  <string name="morphe_remove_viewer_discretion_dialog_summary">Isso não ignora a restrição de idade. Apenas a aceita automaticamente</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Simular a versão do app</string>
   <string name="morphe_spoof_app_version_summary">Faz o servidor pensar que você está usando uma versão mais antiga do app para restaurar recursos da interface antiga</string>
@@ -178,16 +182,16 @@ Se esta opção for desativada posteriormente, é recomendável limpar os dados 
   <string name="morphe_ryd_failure_generic">Não gostei indisponível (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Oculto pelo proprietário</string>
-  <string name="morphe_ryd_enabled_title">Ativar Contagem Regressiva do Deslike do YouTube</string>
+  <string name="morphe_ryd_enabled_title">Ativar o Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Mostrar não gostei como porcentagem</string>
   <string name="morphe_ryd_dislike_percentage_summary">Exibe não gostei como porcentagem, substituindo o número convencional</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
   <string name="morphe_ryd_compact_layout_title">Usar botão Curtir compacto</string>
   <string name="morphe_ryd_compact_layout_summary">Reduz a largura do botão Curtir para economizar espaço</string>
-  <string name="morphe_ryd_estimated_like_title">Mostrar estimativa de \"gostei\"</string>
-  <string name="morphe_ryd_estimated_like_summary">Exibe uma contagem de likes estimada em vídeos onde o criador desativou likes</string>
+  <string name="morphe_ryd_estimated_like_title">Mostrar uma estimativa de \'Gostei\'</string>
+  <string name="morphe_ryd_estimated_like_summary">Mostra uma contagem de \'Gostei\' estimada em vídeos onde o criador os desativou</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Mostrar alertas de erro de conexão</string>
-  <string name="morphe_ryd_toast_on_connection_error_summary">Mostra uma notificação quando o servidor Return YouTube Dislike estiver indisponível</string>
+  <string name="morphe_ryd_toast_on_connection_error_summary">Mostra uma notificação quando o servidor do Return YouTube Dislike estiver indisponível</string>
   <string name="morphe_ryd_attribution_summary">"Dados fornecidos pela API do Return YouTube Dislike
 
 Toque aqui para abrir ReturnYouTubeDislike.com"</string>

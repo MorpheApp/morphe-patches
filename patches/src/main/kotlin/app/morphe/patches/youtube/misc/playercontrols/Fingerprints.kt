@@ -32,7 +32,7 @@ internal object PlayerControlsVisibilityEntityModelFingerprint : Fingerprint(
     parameters = listOf(),
     filters = listOf(
         resourceLiteral(ResourceType.ID, "controls_layout_stub"),
-        methodCall(definingClass = "Landroid/view/ViewStub;", name = "inflate"),
+        methodCall(smali = "Landroid/view/ViewStub;->inflate()Landroid/view/View;"),
         opcode(Opcode.MOVE_RESULT_OBJECT, MatchAfterImmediately())
     )
 )
@@ -42,7 +42,7 @@ internal object PlayerBottomControlsInflateFingerprint : Fingerprint(
     parameters = listOf(),
     filters = listOf(
         resourceLiteral(ResourceType.ID, "bottom_ui_container_stub"),
-        methodCall(definingClass = "Landroid/view/ViewStub;", name = "inflate"),
+        methodCall(smali = "Landroid/view/ViewStub;->inflate()Landroid/view/View;"),
         opcode(Opcode.MOVE_RESULT_OBJECT, MatchAfterImmediately())
     )
 )

@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package app.morphe.extension.shared.innertube;
+
+option optimize_for = LITE_RUNTIME;
+option java_package = "app.morphe.extension.shared.innertube";
+
+message ResponseContext {
+  optional string visitorData = 2;
+}

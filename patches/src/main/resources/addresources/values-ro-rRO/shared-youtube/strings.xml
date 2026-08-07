@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Shared with YouTube and YT Music -->
 <!--
+
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -161,6 +162,9 @@ Cu toate acestea, activarea acestei opțiuni va înregistra și unele date ale u
   <string name="morphe_settings_menu_filter_screen_title">Filtru meniu setări</string>
   <string name="morphe_settings_menu_filter_screen_summary">Ascunde elementele din ecranul de setări al aplicației, după numele lor vizibil</string>
   <string name="morphe_settings_menu_filter_picker_empty">Deschide o singură dată ecranul de setări al aplicației pentru a popula lista</string>
+  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
+  <string name="morphe_remove_viewer_discretion_dialog_title">Eliminați dialogul de avertizare pentru publicul vizionator</string>
+  <string name="morphe_remove_viewer_discretion_dialog_summary">Acest lucru nu ocolește restricția de vârstă. Doar o acceptă automat</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Falsifică versiunea aplicației</string>
   <string name="morphe_spoof_app_version_summary">Păcălește serverul să creadă că folosești o versiune mai veche a aplicației pentru a restabili funcționalități UI vechi</string>

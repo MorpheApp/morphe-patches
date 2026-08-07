@@ -2,7 +2,7 @@
 <!--
 
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -25,8 +25,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_summary">Скачивайте музыкальные видео, подкасты или песни с помощью сторонних приложений для загрузки</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Заменить кнопку \"Скачать\"</string>
-  <string name="morphe_external_downloader_action_button_summary">Использует выбранный вами внешний загрузчик вместо встроенной функции загрузки YouTube Music</string>
-  <string name="morphe_external_downloader_flyout_menu_title">Меню \"Заменить скачивание\"</string>
+  <string name="morphe_external_downloader_action_button_summary">Использует выбранный внешний загрузчик вместо стандартной кнопки \"Скачать\"</string>
+  <string name="morphe_external_downloader_flyout_menu_title">Переопределить меню загрузки</string>
+  <string name="morphe_external_downloader_flyout_menu_summary">Использует выбранный внешний загрузчик вместо стандартного меню загрузки</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Информация</string>
@@ -34,7 +35,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_feed_title">Лента</string>
   <string name="morphe_settings_music_screen_3_general_title">Общие</string>
   <string name="morphe_settings_music_screen_4_player_title">Плеер</string>
-  <string name="morphe_settings_music_screen_8_misc_title">Прочие</string>
+  <string name="morphe_settings_music_screen_5_lyrics_title">Текст песни</string>
+  <string name="morphe_settings_music_screen_9_misc_title">Прочие</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Скрыть ярлык \"Купить Music Premium\"</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Скрыть рекламу Music Premium</string>
@@ -53,7 +55,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_repeat_button_title">Скрыть кнопку \"Повтор\"</string>
   <string name="morphe_music_hide_shuffle_button_title">Скрыть кнопку \"Перемешать\"</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Скрыть секцию \"Быстрый набор\"</string>
-  <string name="morphe_music_hide_suggested_for_you_shelf_title">Скрыть секцию \"Рекомендации для вас\"</string>
   <string name="morphe_music_comments_screen_title">Комментарии</string>
   <string name="morphe_music_comments_screen_summary">Выберите, какие компоненты будут отображаться в разделе комментариев</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Скрыть правила сообщества</string>
@@ -296,10 +297,35 @@ YouTube Music 8.x — плавный переход работает тольк�
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling автоматически синхронизирует использование YouTube Music с вашим профилем Last.fm или ListenBrainz
 
 Чтобы обеспечить синхронизацию scrobbling во время воспроизведения в фоновом режиме, убедитесь, что использование батареи приложения YouTube Music установлено в значение \"Неограниченно\""</string>
+  <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_enabled_title">Использовать текст песни из сторонних источников</string>
+  <string name="morphe_music_lyrics_enabled_summary">Отображает текст песни из стороннего сервиса, при его отсутствии – встроенный текст песни</string>
+  <string name="morphe_music_lyrics_source_title">Сервис текстов песен</string>
+  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
+  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, затем KuGou</string>
+  <string name="morphe_music_lyrics_tap_to_seek_title">Нажмите на строку, чтобы перейти к моменту воспроизведения</string>
+  <string name="morphe_music_lyrics_tap_to_seek_summary">Нажатие на строку переводит к соответствующему моменту в песне</string>
+  <string name="morphe_music_lyrics_show_copy_button_title">Показать кнопку копирования</string>
+  <string name="morphe_music_lyrics_show_translate_button_title">Показать кнопку перевода</string>
+  <string name="morphe_music_lyrics_text_size_title">Размер текста</string>
+  <string name="morphe_music_lyrics_text_size_summary">Размер текста песни</string>
+  <string name="morphe_music_lyrics_offset_ms_title">Смещение по времени</string>
+  <string name="morphe_music_lyrics_offset_ms_summary">Сдвиг синхронизированного текста вперёд или назад. Используйте положительное значение, если текст песни опережает воспроизведение</string>
+  <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
+  <string name="morphe_music_lyrics_source_label">Источник: %s</string>
+  <!-- Tappable label under the lyrics that turns the translation on. -->
+  <string name="morphe_music_lyrics_translate_show">Перевести</string>
+  <string name="morphe_music_lyrics_translate_hide">Показать оригинал</string>
+  <string name="morphe_music_lyrics_translating">Перевод…</string>
+  <string name="morphe_music_lyrics_translate_failed">Не удалось перевести текст песни</string>
+  <string name="morphe_music_lyrics_copy">Копировать</string>
+  <string name="morphe_music_lyrics_copied">Скопировано в буфер обмена</string>
+  <string name="morphe_music_lyrics_about_title">О стороннем тексте песен</string>
+  <string name="morphe_music_lyrics_about_summary">"Текст песни ищется по названию трека и исполнителю, поэтому, если у трека необычные метаданные, он может не найти ничего или найти неверную версию
+
+Синхронизированный текст следует за воспроизведением. Если он сбивается, настройте смещение по времени
+
+Если сторонний текст песни не найден, отображается встроенный текст песни"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
-  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - Восстановление старой выдвигающейся панели</string>
-  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - Отключение отображения текста песен в режиме реального времени</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - Восстановление старой динамической синхронизации текста песен</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - Восстановление старой панели действий</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - Раздел комментариев не отображается в ленте</string>
+  <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Восстановить вкладки \"Далее\", \"Текст песни\" и \"Похожее\" в плеере</string>
 </resources>

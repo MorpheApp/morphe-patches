@@ -9,7 +9,6 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
-import android.os.Build;
 import android.preference.Preference;
 import android.text.Editable;
 import android.text.InputType;
@@ -603,11 +602,9 @@ public class FeatureFlagsManagerPreference extends Preference {
     private void saveFlags(TreeSet<Long> blockedFlags) {
         StringBuilder flagsString = new StringBuilder();
         for (Long flag : blockedFlags) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM) {
-                if (!flagsString.isEmpty()) flagsString.append("\n");
-            } else {
-                //noinspection SizeReplaceableByIsEmpty
-                if (flagsString.length() > 0) flagsString.append("\n");
+            //noinspection SizeReplaceableByIsEmpty
+            if (flagsString.length() > 0) {
+                flagsString.append("\n");
             }
             flagsString.append(flag);
         }

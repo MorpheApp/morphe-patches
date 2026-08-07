@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Shared with YouTube and YT Music -->
 <!--
+
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -161,6 +162,9 @@ Gayunpaman, magtatala din ng ilang datos ng tagagamit ang pagpapagana nito kagay
   <string name="morphe_settings_menu_filter_screen_title">Salain ng menu ng mga setting</string>
   <string name="morphe_settings_menu_filter_screen_summary">Itago ang mga item sa standard screen ng mga setting ng app ayon sa kanilang nakikitang pangalan</string>
   <string name="morphe_settings_menu_filter_picker_empty">Buksan ang standard screen ng mga setting ng app nang isang beses upang mapunan ang listahan</string>
+  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
+  <string name="morphe_remove_viewer_discretion_dialog_title">Alisin ang dialog para sa pagpapasya ng manonood\",\"key\":\"morphe_remove_viewer_discretion_dialog_title\",\"context\":\"morphe_remove_viewer_discretion_dialog_title\ninteraction.dialog.removeViewerDiscretionDialogPatch\",\"maxLength\":null,\"tmSuggestions\":[],\"terms\":[]},{</string>
+  <string name="morphe_remove_viewer_discretion_dialog_summary">Hindi nito nilalagpasan ang age restriction. Tinatanggap lang nito ito nang awtomatiko</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Pekein ang bersyon ng app</string>
   <string name="morphe_spoof_app_version_summary">Niloloko nito ang server para isipin na gumagamit ka ng mas lumang bersyon ng app upang maibalik ang mga dating feature ng UI</string>

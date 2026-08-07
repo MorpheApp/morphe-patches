@@ -2,7 +2,7 @@
 <!--
 
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -64,12 +64,15 @@ Perubahan termasuk:
   <string name="morphe_hide_compact_banner_summary">Sorokkan sepanduk padat dan ruangan di antara beberapa komponen</string>
   <string name="morphe_hide_expandable_card_title">Kad boleh kembang di bawah video</string>
   <string name="morphe_hide_expandable_card_entry_1">Tunjukkan semua</string>
+  <string name="morphe_hide_expandable_card_entry_3">Sorokkan semua</string>
   <string name="morphe_hide_floating_microphone_button_title">Sorokkan butang mikrofon terapung</string>
   <string name="morphe_hide_floating_microphone_button_summary">Sorokkan butang mikrofon terapung di sudut kanan bawah skrin cadangan hasil</string>
   <string name="morphe_hide_horizontal_shelves_title">Sorokkan laci mengufuk</string>
   <string name="morphe_hide_hyped_label_title">Sorokkan label \'Naikkan\'</string>
   <string name="morphe_hide_image_shelf_title">Sorokkan laci imej</string>
   <string name="morphe_hide_image_shelf_summary">Menyorokkan laci imej di hasil carian</string>
+  <!-- 'Invite others to message' should be translated using the same localized wording YouTube displays
+          for the card in the Messages section at the top of the Notifications tab. -->
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Sorokkan butang \'Video terkini\'</string>
@@ -94,21 +97,22 @@ Perubahan termasuk:
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the video player for certain videos. -->
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears when in fullscreen for live streamed videos after opening live chat. -->
+          This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
+  <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
+          These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_sync_button_title">Sorokkan butang \'Segerakkan ke video\'</string>
   <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_comments_carousel_summary">"• Sila pastikan nama yang tepat dimasukkan untuk item karusel (contohnya Tanya, Naikkan video ini, Dengarkan di YouTube Music dan sebagainya)
-• Menyorokkan item karusel mungkin mempunyai kesan sampingan yang tidak diingini
-• Jika semua item karusel disorokkan, keseluruhan bahagian komen juga akan disembunyikan"</string>
+  <string name="morphe_hide_explore_button_title">Sorokkan butang \'Teroka\'</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_hide_about_category_title">Mengenai</string>
   <!-- ad.hideAdsPatch -->
-  <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
+  <string name="morphe_hide_video_ads_title">Sorokkan iklan video</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Pautan disalin ke papan keratan</string>
@@ -116,15 +120,13 @@ Perubahan termasuk:
   <string name="morphe_copy_video_link_button_title">Tunjukkan butang \'Salin pautan video\'</string>
   <string name="morphe_copy_video_link_button_summary">Ketik untuk menyalin pautan video, ketik dan tahan untuk menyalin dengan cap masa</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">Membalikkan tindakan ketik serta ketik dan tahan bagi butang \'Salin pautan video\'</string>
-  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_summary">Ini tidak akan memirau sekatan umur dan hanya menerimanya secara automatik</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsPatch -->
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_openrouter_model_custom">Tersuai</string>
-  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <!-- %s is dollar cost, e.g., $0.10 per 100 hours -->
   <string name="morphe_vot_tts_system">Sistem</string>
   <!-- interaction.loop.loopVideoPatch -->
   <!-- interaction.loop.loopVideoButtonPatch -->
@@ -151,7 +153,6 @@ Perubahan termasuk:
   <string name="morphe_swipe_zone_label_volume">Kelantangan</string>
   <string name="morphe_swipe_zone_label_native">Asli</string>
   <string name="morphe_swipe_press_to_engage_title">Dayakan gerak isyarat tekan untuk leret</string>
-  <string name="morphe_swipe_press_to_engage_summary">Memerlukan gerakan tekan dan tahan sebelum gerak isyarat leret dikenal pasti</string>
   <string name="morphe_swipe_haptic_feedback_title">Dayakan maklum balas sentuhan</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Simpan dan pulihkan kecerahan</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Ingat tahap kecerahan apabila masuk/keluar daripada mod skrin penuh</string>
@@ -187,6 +188,7 @@ Perubahan termasuk:
   <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_more_button_title">Sorokkan butang \'Lebih banyak\'</string>
+  <string name="morphe_hide_quick_actions_more_button_title">Sorokkan butang \'Lebih banyak\'</string>
   <!-- layout.captions.captionsPatch -->
   <!-- layout.captions.autoCaptionsPatch -->
   <!-- layout.captions.captionCookiesPatch -->
@@ -200,9 +202,10 @@ Perubahan termasuk:
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_swap_create_with_notifications_button_summary">Jika mengubah tetapan ini tidak berkesan, cuba tukar ke mod penyamaran</string>
+  <string name="morphe_hide_navigation_button_labels_title">Sorokkan label butang pandu arah</string>
   <string name="morphe_hide_navigation_bar_title">Sorokkan bar pandu arah</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
-  <!-- 'Audio track' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
           'Android Studio' must be kept untranslated. -->
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -232,12 +235,14 @@ Perubahan termasuk:
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_navigation_bar_title">Sorokkan bar pandu arah</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <!-- layout.hide.time.hideTimestampPatch -->
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
+  <string name="morphe_exit_fullscreen_entry_1">Dilumpuhkan</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
   <string name="morphe_open_videos_fullscreen_title">Buka video dalam mod skrin penuh</string>
@@ -249,6 +254,7 @@ Perubahan termasuk:
   <!-- layout.searchbar.wideSearchbarPatch -->
   <!-- layout.sponsorblock.sponsorBlockPatch -->
   <!-- layout.formfactor.changeFormFactorPatch -->
+  <string name="morphe_change_form_factor_entry_1">Lalai</string>
   <string name="morphe_change_form_factor_user_dialog_message">"Perubahan termasuklah:
 
 Tataletak tablet
@@ -270,16 +276,30 @@ Tataletak automotif
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Laman mula</string>
+  <string name="morphe_change_start_page_entry_default">Lalai</string>
+  <string name="morphe_change_start_page_entry_explore">Teroka</string>
+  <string name="morphe_change_start_page_entry_history">Sejarah</string>
+  <string name="morphe_change_start_page_entry_library">Pustaka</string>
+  <string name="morphe_change_start_page_entry_playlists">Senarai main</string>
+  <string name="morphe_change_start_page_entry_search">Carian</string>
   <string name="morphe_change_start_page_entry_shorts">Shorts</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Langganan</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <!-- layout.shortsautoplay.shortsAutoplayPatch -->
+  <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+  <string name="morphe_playback_in_feeds_entry_off">Mati</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_type_entry_0">Dilumpuhkan</string>
+  <string name="morphe_miniplayer_type_entry_1">Lalai</string>
   <string name="morphe_miniplayer_opacity_summary">Melaraskan tahap kelutsinaran (0 ialah lut sinar, 100 ialah legap)</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_animation_style_entry_1">Tidak dibenarkan</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Monokrom</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
+  <string name="morphe_header_logo_title">Logo pengepala</string>
+  <string name="morphe_header_logo_entry_1">Lalai</string>
   <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_3'. -->
   <string name="morphe_header_logo_entry_5">Tersuai</string>
   <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
@@ -300,9 +320,13 @@ Tataletak automotif
   <!-- misc.links.openLinksExternallyPatch -->
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Automatik</string>
+  <!-- 'Force AVC (H.264) codec' should be the same translation used for 'morphe_force_avc_codec_title'. -->
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
+  <string name="morphe_custom_playback_speeds_auto">Automatik</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_disable_playback_speed_music_title">Gunakan kelajuan biasa untuk muzik</string>
   <string name="morphe_disable_playback_speed_music_summary">Sentiasa mainkan video muzik pada kelajuan 1.0x</string>
