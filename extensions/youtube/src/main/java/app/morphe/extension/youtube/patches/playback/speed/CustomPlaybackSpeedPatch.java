@@ -372,16 +372,15 @@ public class CustomPlaybackSpeedPatch {
             // ## Speed UI Elements
             // Callback when user picks a new audio pitch.
             Function<Float, Void> userSelectedSpeed = newSpeed -> {
-                final float roundedSpeed = roundSpeedToNearestIncrement(newSpeed);
-                if (VideoInformation.getPlaybackSpeed() == roundedSpeed) {
+                if (VideoInformation.getPlaybackSpeed() == newSpeed) {
                     return null;
                 }
 
-                RememberPlaybackSpeedPatch.userSelectedPlaybackSpeed(roundedSpeed);
-                VideoInformation.changePlaybackSpeed(roundedSpeed);
+                RememberPlaybackSpeedPatch.userSelectedPlaybackSpeed(newSpeed);
+                VideoInformation.changePlaybackSpeed(newSpeed);
 
                 if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
-                    RememberPlaybackSpeedPatch.userSelectedPlaybackAudioPitch(roundedSpeed);
+                    RememberPlaybackSpeedPatch.userSelectedPlaybackAudioPitch(newSpeed);
                 }
 
                 return null;
@@ -433,7 +432,7 @@ public class CustomPlaybackSpeedPatch {
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                     if (fromUser) {
                         // Convert from progress value to video playback speed.
-                        userSelectedSpeed.apply(customPlaybackSpeedsMin + (progress / PROGRESS_BAR_VALUE_SCALE));
+                        userSelectedSpeed.apply(roundSpeedToNearestIncrement(customPlaybackSpeedsMin + (progress / PROGRESS_BAR_VALUE_SCALE)));
                     }
                 }
 
@@ -573,17 +572,16 @@ public class CustomPlaybackSpeedPatch {
             // ## Pitch UI elements
             // Callback when user picks a new audio pitch.
             Function<Float, Void> userSelectedPitch = newPitch -> {
-                final float roundedPitch = roundSpeedToNearestIncrement(newPitch);
-                if (VideoInformation.getPlaybackAudioPitch() == roundedPitch) {
+                if (VideoInformation.getPlaybackAudioPitch() == newPitch) {
                     return null;
                 }
 
-                RememberPlaybackSpeedPatch.userSelectedPlaybackAudioPitch(roundedPitch);
+                RememberPlaybackSpeedPatch.userSelectedPlaybackAudioPitch(newPitch);
 
-                VideoInformation.setAudioPitch(roundedPitch);
+                VideoInformation.setAudioPitch(newPitch);
 
                 if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
-                    RememberPlaybackSpeedPatch.userSelectedPlaybackSpeed(roundedPitch);
+                    RememberPlaybackSpeedPatch.userSelectedPlaybackSpeed(newPitch);
                 }
 
                 return null;
@@ -632,7 +630,7 @@ public class CustomPlaybackSpeedPatch {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                     if (fromUser) {
-                        userSelectedPitch.apply(customPlaybackSpeedsMin + (progress / PROGRESS_BAR_VALUE_SCALE));
+                        userSelectedPitch.apply(roundSpeedToNearestIncrement(customPlaybackSpeedsMin + (progress / PROGRESS_BAR_VALUE_SCALE)));
                     }
                 }
 
