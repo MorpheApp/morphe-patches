@@ -879,6 +879,8 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <string name="morphe_hide_shorts_like_fountain_title">Hide Like button fountain animation</string>
     <string name="morphe_hide_shorts_like_button_title">Hide Like button</string>
     <string name="morphe_hide_shorts_comments_button_title">Hide Comments button</string>
+    <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+    <string name="morphe_hide_shorts_save_button_title">Hide Save button</string>
     <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_shorts_share_button_title">Hide Share button</string>
     <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
