@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
+
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -29,9 +30,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_auto_hide_skip_button_summary">Oculta el botón \"Omitir\" después de unos segundos en lugar de mantenerlo visible durante todo el segmento</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_title">Duración del botón \"Omitir\"</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_summary">Establece durante cuánto tiempo permanece visible el botón de Saltar</string>
-  <string name="morphe_sb_toast_on_skip_title">Mostrar notificación de \"Omitir\"</string>
+  <string name="morphe_sb_toast_on_skip_title">Mostrar notificación de omisión</string>
   <string name="morphe_sb_toast_on_skip_summary">Muestra una notificación cuando un segmento es omitido automáticamente</string>
-  <string name="morphe_sb_toast_on_skip_duration_title">Duración de notificación de \"Omitir\"</string>
+  <string name="morphe_sb_toast_on_skip_duration_title">Duración de notificación de omisión</string>
   <string name="morphe_sb_toast_on_skip_duration_summary">Establece durante cuánto tiempo permanece visible la notificación de deshacer</string>
   <string name="morphe_sb_duration_1s">1 segundo</string>
   <string name="morphe_sb_duration_2s">2 segundos</string>

@@ -2,7 +2,7 @@
 <!--
 
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -25,8 +25,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_summary">Изтеглете музикални видеа, подкасти или песни с помощта на приложения за изтегляне от трети страни</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Заместване на бутона за изтегляне</string>
-  <string name="morphe_external_downloader_action_button_summary">Използва избрания от вас външен изтеглител вместо вградената функция за изтегляне на YouTube Music</string>
-  <string name="morphe_external_downloader_flyout_menu_title">Заместване на менюто за изтегляне</string>
+  <string name="morphe_external_downloader_action_button_summary">Използва избрания от вас външен изтеглящ инструмент вместо стандартния бутон за действие „Изтегляне“</string>
+  <string name="morphe_external_downloader_flyout_menu_title">Заменяне на менюто за изтегляне</string>
+  <string name="morphe_external_downloader_flyout_menu_summary">Използва избрания от вас външен изтеглящ инструмент вместо стандартното флайout меню за изтегляне</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Относно</string>
@@ -34,16 +35,33 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_feed_title">Емисия</string>
   <string name="morphe_settings_music_screen_3_general_title">Основни</string>
   <string name="morphe_settings_music_screen_4_player_title">Плейър</string>
-  <string name="morphe_settings_music_screen_8_misc_title">Други</string>
+  <string name="morphe_settings_music_screen_5_lyrics_title">Текстове</string>
+  <string name="morphe_settings_music_screen_9_misc_title">Други</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Скриване на  \'Получи премиум музика\'</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Скрий промоциите за Music Premium</string>
   <string name="morphe_music_hide_video_ads_title">Скриване на видео рекламите</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_music_hide_audio_video_toggle_title">Скрий превключвател за аудио/видео</string>
+  <string name="morphe_music_hide_explore_shelf_title">Скрий рафт \'Разгледай\'</string>
+  <string name="morphe_music_hide_grid_shelves_title">Скрий рафтове с мрежа</string>
+  <string name="morphe_music_hide_horizontal_shelves_title">Скрий хоризонтални рафтове</string>
+  <string name="morphe_music_hide_list_shelves_title">Скрий списъчни рафтове</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Панел с текстове</string>
   <string name="morphe_music_hide_lyrics_share_button_title">Скрий бутона за споделяне</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Скрий бутона за превод</string>
+  <string name="morphe_music_hide_new_from_shelf_title">Скрий рафт \'Нови от\'</string>
+  <string name="morphe_music_hide_playlist_shelves_title">Скрий плейлист рафтове</string>
+  <string name="morphe_music_hide_repeat_button_title">Скрий бутон \'Повтори\'</string>
+  <string name="morphe_music_hide_shuffle_button_title">Скрий бутон \'Разбъркване\'</string>
+  <string name="morphe_music_hide_speed_dial_shelf_title">Скрий рафт \'Бързи контакти\'</string>
+  <string name="morphe_music_comments_screen_title">Коментари</string>
+  <string name="morphe_music_comments_screen_summary">Изберете кои компоненти да се показват в секцията за коментари</string>
+  <string name="morphe_music_hide_comments_community_guidelines_title">Скрий Правила на общността</string>
   <string name="morphe_music_hide_comments_context_title">Скрий съобщението за контекст</string>
+  <string name="morphe_music_hide_comments_emoji_button_title">Скрий бутон \'Емотикон\'</string>
+  <string name="morphe_music_hide_comments_info_button_title">Скрий бутон \'Информация\'</string>
+  <string name="morphe_music_hide_comments_timestamp_button_title">Скрий бутон \'Времеви печат\'</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Превключване</string>
   <string name="morphe_music_crossfade_screen_summary">Плавно преливане на песните една в друга</string>
@@ -279,10 +297,36 @@ YouTube Music 8.x — кросфейдът работи само в 9.x и по-
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling автоматично синхронизира използването на YouTube Music с вашия профил в Last.fm или ListenBrainz
 
 За да сте сигурни, че scrobbling е синхронизиран по време на възпроизвеждане във фонов режим, се уверете, че използването на батерията от приложението YouTube Music е зададено на \"Без ограничения\"."</string>
+  <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_enabled_title">Използване на текстове от трети страни</string>
+  <string name="morphe_music_lyrics_enabled_summary">Показва текстове от външен източник, като се връща към вградените текстове, когато такива не бъдат намерени</string>
+  <string name="morphe_music_lyrics_source_title">Услуга за текстове</string>
+  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
+  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, след това KuGou</string>
+  <string name="morphe_music_lyrics_tap_to_seek_title">Докоснете ред, за да преместите</string>
+  <string name="morphe_music_lyrics_tap_to_seek_summary">Докосването на ред преминава към този момент в песента</string>
+  <string name="morphe_music_lyrics_show_copy_button_title">Покажи бутон Копиране</string>
+  <string name="morphe_music_lyrics_show_translate_button_title">Покажи бутон Превод</string>
+  <string name="morphe_music_lyrics_text_size_title">Размер на текста</string>
+  <string name="morphe_music_lyrics_text_size_summary">Размер на текста на текста на песните</string>
+  <string name="morphe_music_lyrics_offset_ms_title">Времево отместване</string>
+  <string name="morphe_music_lyrics_offset_ms_summary">Преместване на синхронизирания текст напред или назад. Използвайте положителна стойност, ако текстът изпреварва песента</string>
+  <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
+  <string name="morphe_music_lyrics_source_label">Източник: %s</string>
+  <!-- Tappable label under the lyrics that turns the translation on. -->
+  <string name="morphe_music_lyrics_translate_show">Преведи</string>
+  <string name="morphe_music_lyrics_translate_hide">Покажи оригиналния текст</string>
+  <string name="morphe_music_lyrics_translating">Превежда се…</string>
+  <string name="morphe_music_lyrics_translate_failed">Не може да преведе текста</string>
+  <string name="morphe_music_lyrics_copy">Копирай</string>
+  <string name="morphe_music_lyrics_copied">Копирано в клипборда</string>
+  <string name="morphe_music_lyrics_about_title">Относно текста от трети страни</string>
+  <string name="morphe_music_lyrics_about_summary">"Текстовете се търсят по заглавие на песента и изпълнител, така че песен с необичайни метаданни може да не намери нищо или да намери грешната версия
+
+Синхронизираният текст следва възпроизвеждането. Ако се разминава, коригирайте времевото отместване
+
+Когато не бъдат намерени текстове от трети страни, вместо тях се показва вграденият текст"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
-  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - Възстановяване на стария падащ панел</string>
-  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - Деактивиране на текстовете на песните в реално време</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - Възстановяване на стария динамичен текст на песните</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - Възстановяване на старата лента за действия</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - Секцията за коментари не се показва в началния поток</string>
+  <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Деактивиране на удебелени икони</string>
+  <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Възстановяване на разделите Up next, Lyrics и Related</string>
 </resources>

@@ -14,7 +14,7 @@ internal object LithoOnBoundsChangeFingerprint : Fingerprint(
         returnType = "V",
         parameters = listOf(),
         filters = listOf(
-            methodCall(smali = "Landroid/graphics/Path;->addRoundRect(Landroid/graphics/RectF;[FLandroid/graphics/Path\$Direction;)V"),
+            methodCall(smali = $$"Landroid/graphics/Path;->addRoundRect(Landroid/graphics/RectF;[FLandroid/graphics/Path$Direction;)V"),
             fieldAccess(
                 opcode = Opcode.IPUT_OBJECT,
                 definingClass = "this",
@@ -65,4 +65,3 @@ internal object LithoOnBoundsChangeLegacyFingerprint : Fingerprint(
         )
     )
 )
-

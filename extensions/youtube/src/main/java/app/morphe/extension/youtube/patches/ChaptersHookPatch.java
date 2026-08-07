@@ -38,6 +38,7 @@ public class ChaptersHookPatch {
                 if (currentMillis >= marker.patch_getStartMillis()
                         && currentMillis < marker.patch_getEndMillis()) {
                     CharSequence title = marker.patch_getTitle();
+                    //noinspection SizeReplaceableByIsEmpty
                     return title != null && title.length() > 0
                             ? title
                             : null;

@@ -2,7 +2,7 @@
 <!--
 
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -28,7 +28,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_restart">Uruchom ponownie</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importuj</string>
-  <string name="morphe_settings_import_copy">Skopiuj</string>
+  <string name="morphe_settings_import_copy">Kopiuj</string>
   <string name="morphe_settings_import_reset">Przywrócono domyślne ustawienia Morphe</string>
   <string name="morphe_settings_import_success">Zaimportowano %d ustawień</string>
   <string name="morphe_settings_import_failure_parse">Importowanie nie powiodło się: %s</string>

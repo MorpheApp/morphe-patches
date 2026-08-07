@@ -23,9 +23,11 @@ import java.util.Map;
 import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
+import app.morphe.extension.shared.spoof.requests.VisitorIdRequester;
 
 @SuppressWarnings("unused")
 public class SpoofVideoStreamsPatch {
@@ -83,7 +85,13 @@ public class SpoofVideoStreamsPatch {
 
     public static void setClientsToUse(List<ClientType> availableClients, ClientType client) {
         preferredClient = Objects.requireNonNull(client);
-        StreamingDataRequest.setClientOrderToUse(availableClients, client);
+
+        if (isPatchIncluded() && SPOOF_VIDEO_STREAMS) {
+            StreamingDataRequest.setClientOrderToUse(availableClients, client);
+
+            // Prefetch visitorId for default client.
+            Utils.runOnBackgroundThread(() -> VisitorIdRequester.getVisitorId(client));
+        }
     }
 
     public static ClientType getPreferredClient() {
@@ -260,7 +268,7 @@ public class SpoofVideoStreamsPatch {
             try {
                 Uri uri = Uri.parse(url);
                 String path = uri.getPath();
-                if (path == null) {
+                if (path == null || !path.contains("player")) {
                     return;
                 }
 
@@ -268,8 +276,7 @@ public class SpoofVideoStreamsPatch {
                 // 'heartbeat' has no video and appears to be only after playback has started.
                 // 'refresh' has no video ID and appears to happen when waiting for a livestream to start.
                 // 'ad_break' has no video ID.
-                if (!path.contains("player") ||
-                        path.contains("get_drm_license") ||
+                if (path.contains("get_drm_license") ||
                         path.contains("heartbeat") ||
                         path.contains("refresh") ||
                         path.contains("ad_break")) {

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
+
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -193,6 +194,7 @@ Om du inte vill skicka in en höjdpunkt trycker du på Avbryt och markerar den a
   <string name="morphe_sb_stats_title">Statistik</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Statistik är för tillfället inte tillgänglig (API ligger nere)</string>
+  <string name="morphe_sb_stats_loading">Läser in …</string>
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock är inaktiverad</string>
   <string name="morphe_sb_stats_username">Ditt användarnamn: &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_username_change">Tryck här för att ändra ditt användarnamn</string>

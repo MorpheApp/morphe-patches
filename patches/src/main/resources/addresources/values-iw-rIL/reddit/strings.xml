@@ -2,7 +2,7 @@
 <!--
 
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -16,6 +16,7 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- Overrides built in setting menu with Morphe settings. -->
   <string name="morphe_screen_ads_title">מודעות</string>
   <string name="morphe_hide_post_ads_title">הסתר מודעות פיד</string>
   <string name="morphe_hide_comment_ads_title">הסתר מודעות תגובות</string>
@@ -39,7 +40,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_selected_font">גופן נבחר - %s</string>
   <string name="morphe_custom_font_pick_file_first">בחר קובץ גופן מותאם אישית קודם</string>
   <string name="morphe_custom_font_invalid_file">אנא בחר קובץ גופן ‎.ttf או ‎.otf</string>
-  <string name="morphe_custom_font_failed_to_load">נ failed to load custom font. Pick a different file</string>
+  <string name="morphe_custom_font_failed_to_load">שגיאה בטעינת גופן מותאם אישית. בחר קובץ אחר.</string>
   <string name="morphe_disable_modern_home_title">השבת ממשק ביתי מודרני</string>
   <string name="morphe_disable_screenshot_popup_title">השבתת חלון הצידודית של צילום מסך</string>
   <string name="morphe_disable_screenshot_popup_summary">משביתה את החלון הצידודית שמופיע בעת לקיחת צילום מסך</string>

@@ -2,7 +2,7 @@
 <!--
 
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -25,12 +25,18 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_summary">Download musikvideoer, podcasts eller sange med tredjeparts download-apps</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Overskriv Download-handling</string>
-  <string name="morphe_external_downloader_action_button_summary">Bruger din valgte eksterne downloader i stedet for YouTube Musics indbyggede downloadfunktion</string>
-  <string name="morphe_external_downloader_flyout_menu_title">Overskriv Download menu</string>
+  <string name="morphe_external_downloader_action_button_summary">Bruger din valgte eksterne downloader i stedet for standardknappen Download-handling</string>
+  <string name="morphe_external_downloader_flyout_menu_title">Overskriv download-flyout-menu</string>
+  <string name="morphe_external_downloader_flyout_menu_summary">Bruger din valgte eksterne downloader i stedet for standardflyout-menuen Download</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Om</string>
   <string name="morphe_settings_music_screen_1_ads_title">Annoncer</string>
+  <string name="morphe_settings_music_screen_2_feed_title">Feed</string>
+  <string name="morphe_settings_music_screen_3_general_title">Generelt</string>
+  <string name="morphe_settings_music_screen_4_player_title">Afspiller</string>
+  <string name="morphe_settings_music_screen_5_lyrics_title">Tekster</string>
+  <string name="morphe_settings_music_screen_9_misc_title">Diverse</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Skjul \"Få Music Premium\"-tekst</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Skjul Music Premium tilbud</string>
@@ -49,7 +55,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_repeat_button_title">Skjul gentagelsesknap</string>
   <string name="morphe_music_hide_shuffle_button_title">Skjul blandingsknap</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Skjul \'Hurtigvalg\'-hylden</string>
-  <string name="morphe_music_hide_suggested_for_you_shelf_title">Skjul \'Foreslået til dig\'-hylden</string>
   <string name="morphe_music_comments_screen_title">Kommentarer</string>
   <string name="morphe_music_comments_screen_summary">Vælg hvilke elementer der vises i kommentarfeltet</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Skjul Community Guidelines</string>
@@ -292,10 +297,35 @@ YouTube Music 8.x – crossfade kører kun på 9.x og nyere"</string>
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling synkroniserer automatisk din YouTube Music-brug med din Last.fm- eller ListenBrainz-profil
 
 For at sikre, at scrobbling synkroniseres under afspilning i baggrunden, skal du sikre dig, at YouTube Musics app-batteriforbrug er indstillet til \"Ubegrænset\""</string>
+  <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_enabled_title">Brug tredjeparts-tekster</string>
+  <string name="morphe_music_lyrics_enabled_summary">Viser tekster fra en tredjepartstjeneste, og falder tilbage til de indbyggede tekster, når der ikke findes nogen</string>
+  <string name="morphe_music_lyrics_source_title">Tekstservice</string>
+  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
+  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, derefter KuGou</string>
+  <string name="morphe_music_lyrics_tap_to_seek_title">Tryk på en linje for at søge</string>
+  <string name="morphe_music_lyrics_tap_to_seek_summary">Ved at trykke på en linje springer du til det tidspunkt i sangen</string>
+  <string name="morphe_music_lyrics_show_copy_button_title">Vis Kopier-knap</string>
+  <string name="morphe_music_lyrics_show_translate_button_title">Vis Oversæt-knap</string>
+  <string name="morphe_music_lyrics_text_size_title">Tekststørrelse</string>
+  <string name="morphe_music_lyrics_text_size_summary">Størrelse på sangteksten</string>
+  <string name="morphe_music_lyrics_offset_ms_title">Timingforskel</string>
+  <string name="morphe_music_lyrics_offset_ms_summary">Forskyd synkroniserede tekster frem eller tilbage. Brug en positiv værdi, hvis teksten er foran sangen</string>
+  <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
+  <string name="morphe_music_lyrics_source_label">Kilde: %s</string>
+  <!-- Tappable label under the lyrics that turns the translation on. -->
+  <string name="morphe_music_lyrics_translate_show">Oversæt</string>
+  <string name="morphe_music_lyrics_translate_hide">Vis original</string>
+  <string name="morphe_music_lyrics_translating">Oversætter…</string>
+  <string name="morphe_music_lyrics_translate_failed">Kunne ikke oversætte teksten</string>
+  <string name="morphe_music_lyrics_copy">Kopiér</string>
+  <string name="morphe_music_lyrics_copied">Kopieret til udklipsholder</string>
+  <string name="morphe_music_lyrics_about_title">Om tredjeparts-tekster</string>
+  <string name="morphe_music_lyrics_about_summary">"Tekster søges efter sangtitel og kunstner, så en sang med usædvanlige metadata finder måske intet eller finder en forkert version
+
+Synkroniserede tekster følger afspilningen. Hvis de afviger, justér timingforskellen
+
+Hvis der ikke findes tredjeparts-tekster, vises de indbyggede tekster i stedet"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
-  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - Gendan gammelt flyout panel</string>
-  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - Deaktiver realtids-tekster</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - Gendan gamle dynamiske tekster</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - Gendan gammel aktionslinje</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - Kommentarsektionen vises ikke i hjemme-feed</string>
+  <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Deaktiver fede ikoner</string>
 </resources>

@@ -16,12 +16,14 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.chapters.chaptersHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_12_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_21_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.SeekbarOnDrawFingerprint
 import app.morphe.util.getReference
+import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
@@ -56,7 +58,7 @@ val seekbarThumbnailPreviewPatch = bytecodePatch(
                 new-instance v0, Landroid/graphics/Point;
                 invoke-direct { v0 }, Landroid/graphics/Point;-><init>()V
                 invoke-interface { p0, v0 }, $updatePointMethodRef
-                invoke-static { p0, p1, v0 }, $EXTENSION_CLASS->updateThumbnailPreview(Landroid/view/View;Landroid/view/MotionEvent;Landroid/graphics/Point;)V
+                invoke-static { p0, p1, v0 }, $EXTENSION_CLASS->updateHandlerThumbnailPreview(Landroid/view/View;Landroid/view/MotionEvent;Landroid/graphics/Point;)V
             """
         )
 
@@ -75,7 +77,7 @@ val seekbarThumbnailPreviewPatch = bytecodePatch(
                     new-instance v1, Landroid/graphics/Point;
                     invoke-direct { v1 }, Landroid/graphics/Point;-><init>()V
                     invoke-interface { v0, v1 }, $updatePointMethodRef
-                    invoke-static { p1, p2, v1 }, $EXTENSION_CLASS->updateThumbnailPreview(Landroid/view/View;Landroid/view/MotionEvent;Landroid/graphics/Point;)V
+                    invoke-static { p1, p2, v1 }, $EXTENSION_CLASS->updateSlideThumbnailPreview(Landroid/view/View;Landroid/view/MotionEvent;Landroid/graphics/Point;)V
                 """
             )
         }
@@ -108,5 +110,19 @@ val seekbarThumbnailPreviewPatch = bytecodePatch(
                 nop
             """
         )
+
+        PreciseSeekingRecyclerViewFingerprint.method.addInstruction(
+            0,
+            "invoke-static { p1 }, $EXTENSION_CLASS->setPreciseSeekingVisible(Landroid/support/v7/widget/RecyclerView;)V"
+        )
+
+        if (is_21_21_or_greater) {
+            ShortsDisableSeekbarThumbnailsFeatureFlagFingerprint.matchAll().forEach {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    "$EXTENSION_CLASS->disableShortsSeekbarThumbnails(Z)Z"
+                )
+            }
+        }
     }
 }

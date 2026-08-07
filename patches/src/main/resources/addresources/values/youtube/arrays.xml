@@ -110,12 +110,14 @@
         <item>Android Studio</item>
         <item>Android VR</item>
         <item>TV</item>
+        <item>TV Simply</item>
         <item>visionOS</item>
     </string-array>
     <string-array name="morphe_spoof_video_streams_client_type_entry_values">
         <item>ANDROID_CREATOR</item>
-        <item>ANDROID_VR_1_73</item>
-        <item>TV</item>
+        <item>ANDROID_VR</item>
+        <item>TV_SABR</item>
+        <item>TV_SIMPLY</item>
         <item>VISIONOS_1_02</item>
     </string-array>
     <string-array name="morphe_spoof_video_streams_player_js_variant_entries">
@@ -287,6 +289,19 @@
         <item>PORTRAIT</item>
         <item>LANDSCAPE</item>
         <item>PORTRAIT_LANDSCAPE</item>
+    </string-array>
+
+    <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+    <string-array name="morphe_playback_in_feeds_entries">
+        <item>@string/morphe_playback_in_feeds_entry_always_on</item>
+        <item>@string/morphe_playback_in_feeds_entry_wifi_only</item>
+        <item>@string/morphe_playback_in_feeds_entry_off</item>
+    </string-array>
+    <!-- Values are the modes used by YouTube. -->
+    <string-array name="morphe_playback_in_feeds_entry_values">
+        <item>2</item>
+        <item>1</item>
+        <item>0</item>
     </string-array>
 
     <!-- layout.miniplayer.miniplayerPatch -->

@@ -49,6 +49,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
+import app.morphe.extension.shared.ui.ViewAnimations;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.components.PlaybackSpeedMenuFilter;
 import app.morphe.extension.youtube.settings.Settings;
@@ -539,6 +540,7 @@ public class CustomPlaybackSpeedPatch {
                 buttonBackground.getPaint().setColor(getAdjustedBackgroundColor(false));
                 speedButton.setBackground(buttonBackground);
                 speedButton.setPadding(Dim.dp4, Dim.dp4, Dim.dp4, Dim.dp4);
+                ViewAnimations.applyPressEffect(speedButton);
 
                 // Center button vertically and stretch horizontally in container.
                 FrameLayout.LayoutParams buttonParams = new FrameLayout.LayoutParams(
@@ -771,6 +773,7 @@ public class CustomPlaybackSpeedPatch {
         background.getPaint().setColor(getAdjustedBackgroundColor(false));
         button.setBackground(background);
         button.setForeground(new OutlineSymbolDrawable(isPlus)); // Plus or minus symbol.
+        ViewAnimations.applyPressEffect(button);
         final int size = Utils.appIsUsingBoldIcons() ? Dim.dp40 : Dim.dp36;
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(size, size);
         params.setMargins(Dim.dp8, 0, Dim.dp8, 0); // Set margins.

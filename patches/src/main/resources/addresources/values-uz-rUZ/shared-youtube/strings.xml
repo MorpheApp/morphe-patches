@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Shared with YouTube and YT Music -->
 <!--
+
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -155,11 +156,15 @@ Shu bilan birga, bu sizning IP-manzilingiz kabi ba'zi foydalanuvchi ma'lumotlari
   <string name="morphe_custom_filter_title">Maxsus filtrni yoqish</string>
   <string name="morphe_custom_filter_strings_title">Maxsus filtr</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
+  <string name="morphe_custom_filter_strings_summary">Yangi qatorlar bilan ajratilgan komponent yo\'l quruvchi satrlar ro\'yxati</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Noto\'g\'ri maxsus filtr: %s</string>
   <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">Sozlamalar menyusi filtri</string>
   <string name="morphe_settings_menu_filter_screen_summary">Standart ilova sozlamalari ekranida ko\'rinadigan nomiga ko\'ra ob\'yektlarni yashirish</string>
   <string name="morphe_settings_menu_filter_picker_empty">Ro\'yxatni to\'ldirish uchun standart ilova sozlamalari ekranini bir marta oching</string>
+  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
+  <string name="morphe_remove_viewer_discretion_dialog_title">Tomoshabinlar uchun ogohlantirish dialogini olib tashlash</string>
+  <string name="morphe_remove_viewer_discretion_dialog_summary">Bu yosh chegarasini chetlab o\'tmaydi. U shunchaki avtomatik ravishda rozilik bildiradi</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Ilova versiyasini buzish</string>
   <string name="morphe_spoof_app_version_summary">Serverni eski ilova versiyasidan foydalanayotganingizni o\'ylashga majburlaydi, bu esa eski UI xususiyatlarini qaytarish uchun</string>

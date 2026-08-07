@@ -6,19 +6,27 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.Preference;
+import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.oauth2.object.AccessTokenData;
 import app.morphe.extension.shared.oauth2.object.ActivationCodeData;
 import app.morphe.extension.shared.oauth2.requests.OAuth2Requester;
+import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.shared.ui.CustomDialog;
@@ -29,6 +37,15 @@ public abstract class OAuth2Preference extends Preference implements Preference.
     {
         setOnPreferenceClickListener(this);
     }
+
+    private final SharedPreferences.OnSharedPreferenceChangeListener listener = (sharedPreferences, str) -> {
+        // Because this listener may run before the Morphe settings fragment updates Settings,
+        // this could show the prior config and not the current.
+        //
+        // Push this call to the end of the main run queue,
+        // so all other listeners are done and Settings is up to date.
+        Utils.runOnMainThread(this::updateUI);
+    };
 
     /**
      * How many times to try to get a refresh token after the user returns to the app.
@@ -116,10 +133,26 @@ public abstract class OAuth2Preference extends Preference implements Preference.
     }
 
     @Override
+    protected void onAttachedToHierarchy(PreferenceManager preferenceManager) {
+        super.onAttachedToHierarchy(preferenceManager);
+        updateUI();
+        addChangeListener();
+    }
+
+    @Override
     protected void onPrepareForRemoval() {
         super.onPrepareForRemoval();
+        removeChangeListener();
         // Remove just in case the user never finished signing in.
         unregisterApplicationOnResumeCallback();
+    }
+
+    private void addChangeListener() {
+        Setting.preferences.preferences.registerOnSharedPreferenceChangeListener(listener);
+    }
+
+    private void removeChangeListener() {
+        Setting.preferences.preferences.unregisterOnSharedPreferenceChangeListener(listener);
     }
 
     protected boolean isRefreshTokenSaved() {
@@ -248,15 +281,7 @@ public abstract class OAuth2Preference extends Preference implements Preference.
                         // OK button text.
                         str("morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website"),
                         // OK button action.
-                        () -> {
-                            // Automatically fetch the auth token after the user returns.
-                            registerApplicationOnResumeCallback();
-
-                            Utils.setClipboard(userCode);
-                            Intent i = new Intent(Intent.ACTION_VIEW);
-                            i.setData(Uri.parse(verificationUrl));
-                            context.startActivity(i);
-                        },
+                        () -> openInBrowser(context, userCode, verificationUrl),
                         // Cancel button action (dismiss only).
                         null,
                         // Neutral button text.
@@ -290,7 +315,7 @@ public abstract class OAuth2Preference extends Preference implements Preference.
                     return;
                 }
                 String refreshToken = accessTokenData.refreshToken;
-                if (refreshToken == null || refreshToken.isEmpty()) {
+                if (!Utils.isNotEmpty(refreshToken)) {
                     Logger.printException(() -> "No refresh token found");
                     return;
                 }
@@ -328,5 +353,46 @@ public abstract class OAuth2Preference extends Preference implements Preference.
                 ).first.show();
             });
         });
+    }
+
+    // Check in-app browser availability.
+    @Nullable
+    private String getDefaultCustomTabsBrowser(Context context) {
+        Intent activityIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://"));
+        Intent serviceIntent = new Intent("android.support.customtabs.action.CustomTabsService");
+        PackageManager packageManager = context.getPackageManager();
+        ResolveInfo resolveInfo = packageManager.resolveActivity(activityIntent, 0);
+        if (resolveInfo != null) {
+            String packageName = resolveInfo.activityInfo.packageName;
+            serviceIntent.setPackage(packageName);
+            if (packageManager.resolveService(serviceIntent, 0) != null) {
+                return packageName;
+            }
+        }
+
+        return null;
+    }
+
+    private void openInBrowser(Context context, String userCode, String verificationUrl) {
+        // Automatically fetch the auth token after the user returns.
+        registerApplicationOnResumeCallback();
+        Utils.setClipboard(userCode);
+        Intent baseIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(verificationUrl));
+
+        try {
+            // Try opening it in the in-app browser first.
+            Intent intent = baseIntent.cloneFilter();
+            intent.putExtra("android.support.customtabs.extra.SESSION", (Bundle) null);
+            intent.putExtra("android.support.customtabs.extra.TITLE_VISIBILITY", 1);
+            String packageName = getDefaultCustomTabsBrowser(context);
+            if (packageName != null) {
+                intent.setPackage(packageName);
+            }
+            context.startActivity(intent);
+        } catch (Exception ex) {
+            // Fallback to legacy method.
+            Logger.printDebug(() -> "Could not open in-app browser, using legacy method", ex);
+            context.startActivity(baseIntent.cloneFilter());
+        }
     }
 }

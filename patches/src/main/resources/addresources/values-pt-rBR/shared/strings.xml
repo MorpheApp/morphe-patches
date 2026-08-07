@@ -2,7 +2,7 @@
 <!--
 
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -24,7 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">Redefinir cor</string>
   <string name="morphe_settings_color_invalid">Cor inválida</string>
   <string name="morphe_settings_restart_title">Reinício necessário</string>
-  <string name="morphe_settings_restart_dialog_message">Reinicie o aplicativo para que esta alteração tenha efeito.</string>
+  <string name="morphe_settings_restart_dialog_message">Reinicie o app para que esta alteração tenha efeito.</string>
   <string name="morphe_settings_restart">Reiniciar</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importar</string>
@@ -65,7 +65,7 @@ Para traduzir novos idiomas ou melhorar as traduções existentes, visite morphe
   <string name="morphe_settings_export_file_failed">Falha ao exportar as configurações</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Você está usando a última versão dos Patches Morphe &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Você está usando os Patches Morphe versão &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Atualização disponível: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Para atualizar seus patches, use o Morphe para reaplicá-los neste app</string>
+  <string name="morphe_settings_about_links_body_version_outdated">Você está usando os Patches Morphe versão &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Atualização disponível: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Para atualizar seus patches, use o Morphe para repatchear este app</string>
   <string name="morphe_settings_about_links_dev_header">Observação</string>
   <string name="morphe_settings_about_links_dev_body">Esta versão é um pré-lançamento e você pode ter problemas inesperados</string>
   <string name="morphe_settings_about_links_header">Links oficiais</string>
@@ -113,7 +113,7 @@ Você não será notificado sobre nenhum evento inesperado."</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Flags de recurso salvas</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Flags de recurso redefinidas</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Flags de recurso copiadas para a área de transferência</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reinicie o aplicativo para usar esta configuração</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reinicie o app para usar esta configuração</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Abrir as configurações do MicroG</string>
@@ -121,11 +121,11 @@ Você não será notificado sobre nenhum evento inesperado."</string>
   <string name="gms_core_toast_not_installed_message">MicroG não está instalado. Instale-o.</string>
   <string name="gms_core_dialog_title">Ação necessária</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
-  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG não tem permissão para rodar em segundo plano.
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"O MicroG não tem permissão para ser executado em segundo plano.
 
-Siga o guia \"Don't kill my app\" para seu telefone e aplique as instruções na sua instalação do MicroG.
+Siga o guia do \"Don't kill my app\" para o seu telefone e aplique as instruções à sua instalação do MicroG.
 
-Isso é necessário para o aplicativo funcionar."</string>
+Isso é necessário para o app funcionar."</string>
   <string name="gms_core_dialog_open_website_text">Abrir site</string>
   <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"As otimizações de bateria do MicroG devem ser desabilitadas para evitar problemas.
 
@@ -137,16 +137,16 @@ Toque no botão continuar e permita as mudanças de otimização."</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Desativar isso ocultará o prompt de otimização da bateria do MicroG.
 
 Se as otimizações de bateria não forem alteradas, você poderá ter:
-• O aplicativo pode fechar aleatoriamente
+• O app pode fechar aleatoriamente
 • As notificações podem não funcionar
 • A reprodução em segundo plano pode não funcionar"</string>
   <!-- misc.gms.linkHandlingPatch -->
-  <string name="morphe_link_handling_title">Manipulação de links do aplicativo</string>
-  <string name="morphe_link_handling_summary">Configurar links para abrir neste aplicativo</string>
-  <string name="morphe_link_handling_step1_title">Etapa 1: Desativar links do aplicativo original</string>
-  <string name="morphe_link_handling_step1_message">Abra as configurações do aplicativo original e desative todos os links de domínio</string>
-  <string name="morphe_link_handling_step2_title">Etapa 2: Habilitar links do aplicativo corrigido</string>
-  <string name="morphe_link_handling_step2_message">Abra as configurações do aplicativo corrigido e habilite todos os links de domínio</string>
+  <string name="morphe_link_handling_title">Gerenciamento de links do app</string>
+  <string name="morphe_link_handling_summary">Configurar links para abrir neste app</string>
+  <string name="morphe_link_handling_step1_title">Passo 1: Desative links do app original</string>
+  <string name="morphe_link_handling_step1_message">Abra as configurações do app original e desative todos os links de domínio</string>
+  <string name="morphe_link_handling_step2_title">Passo 2: Ative links do app patcheado</string>
+  <string name="morphe_link_handling_step2_message">Abra as configurações do app patcheado e ative todos os links de domínio</string>
   <string name="morphe_link_handling_open">Abrir configurações</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Alerta Experimental 🚨</string>

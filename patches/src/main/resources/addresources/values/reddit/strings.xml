@@ -1,7 +1,7 @@
 <!--
 
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -15,6 +15,9 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+    <!-- Overrides built in setting menu with Morphe settings. -->
+    <string name="acknowledgements_title" translatable="false">Morphe</string>
+
     <string name="morphe_screen_ads_title">Ads</string>
     <string name="morphe_hide_post_ads_title">Hide feed ads</string>
     <string name="morphe_hide_comment_ads_title">Hide comment ads</string>

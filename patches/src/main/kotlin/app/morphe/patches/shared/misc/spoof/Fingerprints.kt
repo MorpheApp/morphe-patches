@@ -270,9 +270,6 @@ internal object PlaybackStartDescriptorFeatureFlagFingerprint : Fingerprint(
 // Feature flag that causes Shorts content to freeze and fail to load when scrolling.
 // Flag does not seem to affect Shorts if spoofing is off.
 internal object ReelItemWatchResponseFeatureFlagFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Z",
-    parameters = listOf(),
     filters = listOf(
         literal(45638126L)
     )

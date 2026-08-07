@@ -85,7 +85,9 @@ private val settingsResourcePatch = resourcePatch {
                 "morphe_settings_screen_11_misc.xml",
                 "morphe_settings_screen_11_misc_bold.xml",
                 "morphe_settings_screen_13_scrobbling.xml",
-                "morphe_settings_screen_13_scrobbling_bold.xml"
+                "morphe_settings_screen_13_scrobbling_bold.xml",
+                "morphe_settings_screen_14_lyrics.xml",
+                "morphe_settings_screen_14_lyrics_bold.xml"
             ),
             ResourceGroup("layout",
                 "morphe_preference_with_icon.xml",
@@ -181,7 +183,7 @@ val settingsPatch = bytecodePatch(
         )
 
         if (is_8_40_or_greater) {
-            BoldIconsFeatureFlagFingerprint.let {
+            BoldIconsFeatureFlagFingerprint.matchAll().forEach {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
                     "$MUSIC_ACTIVITY_HOOK_CLASS->useBoldIcons(Z)Z"
@@ -235,8 +237,16 @@ object PreferenceScreen : BasePreferenceScreen() {
         iconBold = "@drawable/morphe_settings_screen_05_player_bold",
         layout = "@layout/morphe_preference_with_icon"
     )
+    val LYRICS = Screen(
+        key = "morphe_settings_music_screen_5_lyrics",
+        summaryKey = null,
+        icon = "@drawable/morphe_settings_screen_14_lyrics",
+        iconBold = "@drawable/morphe_settings_screen_14_lyrics_bold",
+        layout = "@layout/morphe_preference_with_icon",
+        sorting = Sorting.UNSORTED
+    )
     val SCROBBLING = Screen(
-        key = "morphe_settings_music_screen_5_scrobbling",
+        key = "morphe_settings_music_screen_6_scrobbling",
         summaryKey = null,
         icon = "@drawable/morphe_settings_screen_13_scrobbling",
         iconBold = "@drawable/morphe_settings_screen_13_scrobbling_bold",
@@ -244,7 +254,7 @@ object PreferenceScreen : BasePreferenceScreen() {
         sorting = Sorting.UNSORTED
     )
     val RETURN_YOUTUBE_DISLIKE = Screen(
-        key = "morphe_settings_music_screen_6_return_youtube_dislike",
+        key = "morphe_settings_music_screen_7_return_youtube_dislike",
         summaryKey = null,
         icon = "@drawable/morphe_settings_screen_09_return_youtube_dislike",
         iconBold = "@drawable/morphe_settings_screen_09_return_youtube_dislike_bold",
@@ -252,7 +262,7 @@ object PreferenceScreen : BasePreferenceScreen() {
         sorting = Sorting.UNSORTED
     )
     val SPONSORBLOCK = Screen(
-        key = "morphe_settings_music_screen_7_sponsorblock",
+        key = "morphe_settings_music_screen_8_sponsorblock",
         summaryKey = null,
         icon = "@drawable/morphe_settings_screen_10_sponsorblock",
         iconBold = "@drawable/morphe_settings_screen_10_sponsorblock_bold",
@@ -260,7 +270,7 @@ object PreferenceScreen : BasePreferenceScreen() {
         sorting = Sorting.UNSORTED
     )
     val MISC = Screen(
-        key = "morphe_settings_music_screen_8_misc",
+        key = "morphe_settings_music_screen_9_misc",
         summaryKey = null,
         icon = "@drawable/morphe_settings_screen_11_misc",
         iconBold = "@drawable/morphe_settings_screen_11_misc_bold",

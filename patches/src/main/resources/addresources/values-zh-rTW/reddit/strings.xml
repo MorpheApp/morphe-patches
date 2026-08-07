@@ -2,7 +2,7 @@
 <!--
 
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -16,6 +16,7 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- Overrides built in setting menu with Morphe settings. -->
   <string name="morphe_screen_ads_title">廣告</string>
   <string name="morphe_hide_post_ads_title">隱藏動態廣告</string>
   <string name="morphe_hide_comment_ads_title">隱藏留言廣告</string>
@@ -32,19 +33,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">隱藏關於區塊</string>
   <string name="morphe_hide_resources_shelf_title">隱藏資源區塊</string>
   <string name="morphe_screen_layout_title">版面配置</string>
-  <string name="morphe_custom_font_title">自訂字體</string>
-  <string name="morphe_custom_font_summary">從以下路徑載入自訂的 TTF 或 OTF 字體檔案。啟用此選項也會關閉強制系統字體。</string>
-  <string name="morphe_custom_font_file_path_title">自訂字體檔案</string>
-  <string name="morphe_custom_font_file_path_summary">點擊以選擇 TTF 或 OTF 字體檔案</string>
-  <string name="morphe_custom_font_selected_font">選定的字體 - %s</string>
-  <string name="morphe_custom_font_pick_file_first">請先選擇自訂字體檔案。</string>
-  <string name="morphe_custom_font_invalid_file">請選擇 .ttf 或 .otf 字體檔案。</string>
-  <string name="morphe_custom_font_failed_to_load">無法載入自訂字體。請選擇不同的檔案</string>
+  <string name="morphe_custom_font_title">自訂字型</string>
+  <string name="morphe_custom_font_summary">從以下路徑載入自訂的 TTF 或 OTF 字型檔案。啟用這項選項也會關閉強制系統字型。</string>
+  <string name="morphe_custom_font_file_path_title">自訂字型檔案</string>
+  <string name="morphe_custom_font_file_path_summary">輕觸以選擇 TTF 或 OTF 字型檔案</string>
+  <string name="morphe_custom_font_selected_font">選取的字型 - %s</string>
+  <string name="morphe_custom_font_pick_file_first">請先選擇自訂字型檔案。</string>
+  <string name="morphe_custom_font_invalid_file">請選擇 .ttf 或 .otf 字型檔案。</string>
+  <string name="morphe_custom_font_failed_to_load">無法載入自訂字型。請選擇不同的檔案</string>
   <string name="morphe_disable_modern_home_title">停用現代首頁</string>
   <string name="morphe_disable_screenshot_popup_title">停用截圖彈出視窗</string>
   <string name="morphe_disable_screenshot_popup_summary">停用截圖彈出視窗</string>
-  <string name="morphe_force_system_font_title">強制系統字體</string>
-  <string name="morphe_force_system_font_summary">使用設備系統字體，而非 Reddit Sans 或 Roboto。啟用此選項也會關閉自訂字體。</string>
+  <string name="morphe_force_system_font_title">強制系統字型</string>
+  <string name="morphe_force_system_font_summary">使用裝置系統字型，而非 Reddit Sans 或 Roboto。啟用這項選項也會關閉自訂字型。</string>
   <string name="morphe_hide_ask_button_title">隱藏詢問按鈕</string>
   <string name="morphe_hide_ask_button_summary">隱藏搜尋列中的詢問按鈕</string>
   <string name="morphe_hide_communities_shelf_title">隱藏社群專區</string>
@@ -63,7 +64,7 @@ Second \"item\" text"</string>
   <string name="morphe_sanitize_sharing_links_title">清理分享連結</string>
   <string name="morphe_sanitize_sharing_links_summary">已從分享連結中移除追蹤查詢參數</string>
   <string name="morphe_open_links_directly_title">直接開啟連結</string>
-  <string name="morphe_open_links_directly_summary">打開外部連結時，繞過重新導向網址</string>
+  <string name="morphe_open_links_directly_summary">開啟外部連結時，繞過重新導向網址</string>
   <string name="morphe_open_links_externally_title">開啟外部連結</string>
-  <string name="morphe_open_links_externally_summary">在您的瀏覽器中打開連結，而不是應用程式內瀏覽器</string>
+  <string name="morphe_open_links_externally_summary">在您的瀏覽器中開啟連結，而不是應用程式內瀏覽器</string>
 </resources>

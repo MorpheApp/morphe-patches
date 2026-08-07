@@ -24,10 +24,12 @@ private var exploderButtonInsertIndex = -1
 private var exploderButtonInsertRegister = -1
 
 fun addPlayerBottomButton(descriptor: String) {
-    exploderButtonMethodRef.get()!!.addInstruction(
-        exploderButtonInsertIndex++,
-        "invoke-static { v$exploderButtonInsertRegister }, $descriptor->initializeButton(Landroid/view/View;)V"
-    )
+    exploderButtonMethodRef.get()?.apply {
+        addInstruction(
+            exploderButtonInsertIndex++,
+            "invoke-static { v$exploderButtonInsertRegister }, $descriptor->initializeButton(Landroid/view/View;)V"
+        )
+    }
 }
 
 internal val playerOverlayButtonsHookPatch = bytecodePatch {
@@ -45,13 +47,21 @@ internal val playerOverlayButtonsHookPatch = bytecodePatch {
                 exploderButtonInsertRegister = getInstruction<OneRegisterInstruction>(index).registerA
                 exploderButtonInsertIndex = index + 1
 
+                addInstruction(
+                    exploderButtonInsertIndex++,
+                    "invoke-static { v$exploderButtonInsertRegister }, " +
+                            "Lapp/morphe/extension/youtube/videoplayer/PlayerOverlayButton;->" +
+                            "initializeButton(Landroid/view/View;)V"
+                )
+
                 // Fix the fullscreen button tint when the minimal miniplayer type is selected.
                 // The minimal type forces a theme where ytOverlayButtonPrimary resolves to gray
                 // instead of white, making the fullscreen button appear gray instead of white.
                 if (!is_21_29_or_greater) {
                     addInstruction(
-                        index + 1,
-                        "invoke-static { v$exploderButtonInsertRegister }, $EXTENSION_CLASS->fixMinimalMiniplayerFullscreenButtonTint(Landroid/view/View;)V"
+                        exploderButtonInsertIndex++,
+                        "invoke-static { v$exploderButtonInsertRegister }, $EXTENSION_CLASS->" +
+                                "fixMinimalMiniplayerFullscreenButtonTint(Landroid/view/View;)V"
                     )
                 }
             }

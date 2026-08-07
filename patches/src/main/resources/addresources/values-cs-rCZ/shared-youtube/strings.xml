@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Shared with YouTube and YT Music -->
 <!--
+
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -161,6 +162,9 @@ Povolením této možnosti se však budou zaznamenávat i některá uživatelsk�
   <string name="morphe_settings_menu_filter_screen_title">Filtr nabídky nastavení</string>
   <string name="morphe_settings_menu_filter_screen_summary">Skrýt položky na obrazovce standardních nastavení aplikace podle jejich viditelného názvu</string>
   <string name="morphe_settings_menu_filter_picker_empty">Otevřete obrazovku standardních nastavení aplikace jednou a načtěte seznam</string>
+  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
+  <string name="morphe_remove_viewer_discretion_dialog_title">Odstranit dialog s upozorněním na obsah</string>
+  <string name="morphe_remove_viewer_discretion_dialog_summary">Toto neobchází věkové omezení. Pouze jej automaticky přijímá</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Napodobit verzi aplikace</string>
   <string name="morphe_spoof_app_version_summary">Oklame server, aby si myslel, že používáte starší verzi aplikace a tím obnovil starší prvky uživatelského rozhraní</string>

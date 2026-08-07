@@ -2,7 +2,7 @@
 <!--
 
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -68,6 +68,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_hyped_label_title">Прикриј ознака „Популарен“</string>
   <string name="morphe_hide_image_shelf_title">Скриј ја полицата со слики</string>
   <string name="morphe_hide_image_shelf_summary">Прикриј полици со слики во резултатите од пребарувањето</string>
+  <!-- 'Invite others to message' should be translated using the same localized wording YouTube displays
+          for the card in the Messages section at the top of the Notifications tab. -->
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Скриј копче \"Последни видеа\"</string>
@@ -113,10 +115,12 @@ Second \"item\" text"</string>
           This button usually appears in the video player for certain videos. -->
   <string name="morphe_hide_join_membership_button_title">Скриј го копчето „Приклучи се“</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears when in fullscreen for live streamed videos after opening live chat. -->
+          This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">Скриј копче \"Репродукција на чат во живо\"</string>
   <string name="morphe_hide_live_chat_replay_button_summary">Прикриј го копчето за репродукција на разговор во живо во полноекрански режим</string>
   <string name="morphe_hide_medical_panels_title">Скриј ги медицинските панели</string>
+  <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
+          These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_subscribers_community_guidelines_title">Скриј ги упатствата за претплатници</string>
   <string name="morphe_hide_timed_reactions_title">Скриј ги реакциите во време</string>
   <string name="morphe_hide_timed_reactions_summary">Прикриј функција која овозможува на корисниците да реагираат со емотикони во делот со коментари и разговор во живо</string>
@@ -191,11 +195,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_phrases_title">Клучни зборови за скривање</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"Внесете клучни зборови и фрази за да ги скриете, одделени со нови редови
-
-Клучните зборови може да бидат било кој текст што се појавува во насловите на видеата или имињата на каналите
-
-Зборовите со големи букви во средината мора да одговараат точно (на пр. iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Оптимизација на целосно зборот</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Окружувањето на клучна реч/фраза со двојни наводници ќе спречи делумни совпаѓања на наслови на видеа и имиња на канали&lt;br&gt;&lt;br&gt;На пример,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; ќе го скрие видеото: &lt;b&gt;Како работи AI?&lt;/b&gt;&lt;br&gt;но нема да го скрие: &lt;b&gt;Што значи фер употреба?&lt;/b&gt;</string>
@@ -205,13 +204,13 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Клучната реч има конфликтни декларации: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Клучната реч е премногу кратка и бара наводници: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Клучната реч ќе скрие сите видеа: %s</string>
+  <string name="morphe_hide_stats_category_title">Телефон</string>
+  <string name="morphe_hide_about_category_title">Филмови</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Скриј полица со продажна продавница</string>
   <string name="morphe_hide_end_screen_store_banner_title">Скриј банер од продажна продавница на крајот од екранот</string>
   <string name="morphe_hide_general_ads_title">Скриј општи реклами</string>
   <string name="morphe_hide_merchandise_banners_title">Скриј рекламни банери за стока</string>
-  <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
-  <string name="morphe_hide_paid_promotion_label_title">Скријте ја ознаката „Вклучува платена промоција“</string>
   <string name="morphe_hide_player_popup_ads_title">Скриј реклами во прозорецот на плеер</string>
   <string name="morphe_hide_self_sponsor_ads_title">Скриј картички за само-спонзорирани реклами</string>
   <string name="morphe_hide_shopping_links_title">Скриј линкови за купување</string>
@@ -220,8 +219,6 @@ Second \"item\" text"</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_copy_video_link_with_timestamp_button_title">Копирајте го временскиот печат стандардно</string>
-  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">Отстранете го дијалогот за дискреција на гледачите</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Исклучи прозорче за најава на ТВ</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -233,8 +230,9 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_openrouter_model_custom">По нарачка</string>
-  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <!-- %s is dollar cost, e.g., $0.10 per 100 hours -->
   <string name="morphe_vot_tts_system">Систем</string>
+  <string name="morphe_vot_do_not_show_again">Не ме прашувај повторно</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Вклучи повторување на видеото</string>
   <string name="morphe_do_not_remember_loop_video_title">Не се сеќавам видео во повторување</string>
@@ -307,7 +305,6 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_zone_label_volume">Волумен</string>
   <string name="morphe_swipe_zone_label_native">Оригинален</string>
   <string name="morphe_swipe_press_to_engage_title">Овозможете гест за притискање и повлекување</string>
-  <string name="morphe_swipe_press_to_engage_summary">Потребно е да се притисне и задржи пред гестот со кликнување да биде препознаен</string>
   <string name="morphe_swipe_haptic_feedback_title">Овозможете хаптичен поврат</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Зачувајте и вратете ја светлоста</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Зачувува ниво на осветленост кога влегувате/излегувате од полноекрански режим</string>
@@ -417,9 +414,6 @@ Second \"item\" text"</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">Скриј автоматски титри</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Поставете колачиња за натписи</string>
-  <string name="morphe_set_caption_cookies_summary">"Поправува грешка на YouTube каде што автоматски преведените натписи можеби нема да бидат достапни поради недостаток на колачиња
-
-Мора да бидете доставени „Колачиња за натписи“"</string>
   <string name="morphe_caption_cookies_title">Колчиња за титри</string>
   <string name="morphe_caption_cookies_summary">Колачиња што треба да се постават во барањата на Timed Text API (Caption Data API)</string>
   <string name="morphe_get_caption_cookies_title">Преземи колчиња за титри</string>
@@ -484,7 +478,7 @@ Second \"item\" text"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Паѓачки мени</string>
   <string name="morphe_hide_player_flyout_summary">Изберете кои компоненти да се појавуваат во менито што се појавува</string>
-  <!-- 'Audio track' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_audio_track_title">Прикријте го менито Audio Track</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
           'Android Studio' must be kept untranslated. -->
@@ -684,6 +678,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_summary">Аоларка Спот отвори</string>
   <string name="morphe_shorts_autoplay_background_title">Аотоматски оток на кошули</string>
   <string name="morphe_shorts_autoplay_background_summary">Аотоматски лор и ризик во окртна спостр</string>
+  <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+  <string name="morphe_playback_in_feeds_entry_off">Исклучено</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Исклучи продолжување на мини-плеер</string>
   <string name="morphe_miniplayer_screen_title">Мини-плеер</string>
@@ -779,7 +775,6 @@ Second \"item\" text"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Медиумски контроли за известување</string>
   <string name="morphe_notification_media_screen_summary">Прилагодете ги контролите за репродукција прикажани на екранот за заклучување и панелот за известувања</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Прикриј ги копчињата за претходна и следна</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Ги крие претходните и следните копчиња во медиумски известувања, на екранот за заклучување и во контролите на слушалките</string>
   <string name="morphe_disable_notification_media_seekbar_title">Исклучи лента за барање</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Спречува влечење на лентата за премотување на заклучениот екран и панелот за известувања</string>
@@ -792,6 +787,8 @@ Second \"item\" text"</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Авто</string>
+  <!-- 'Force AVC (H.264) codec' should be the same translation used for 'morphe_force_avc_codec_title'. -->
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_remember_video_quality_last_selected_title">Запамти квалитет на видео</string>
   <string name="morphe_remember_video_quality_last_selected_summary">Ги применува вашите мануелни избори за квалитет до сите идни видеа</string>
   <string name="morphe_remember_video_quality_last_selected_toast_title">Известувања за промена на квалитет</string>
@@ -840,7 +837,6 @@ Second \"item\" text"</string>
 
 Репродукцијата на видео со AV1 може да запие и да пропушти кадри."</string>
   <string name="morphe_spoof_video_streams_about_title">Несакани ефекти од спојување</string>
-  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Нема траки со звук</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Нема видео кодек AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Недостапен имерзивен режим со 360° VR</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Недоступен стабилен волумен</string>
@@ -849,6 +845,5 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Недостапен принуден оригинален звук</string>
   <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_player_js_variant_title">Варијанта на JavaScript на плеерот</string>
-  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Прикажи лажирање во Статистика за гикови</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
 </resources>

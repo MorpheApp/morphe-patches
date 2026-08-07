@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Shared with YouTube and YT Music -->
 <!--
+
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -127,17 +128,21 @@ Detta kan hjälpa till att identifiera komponenter när du skapar anpassade filt
 
 Men om du aktiverar detta kommer även vissa användardata, t.ex. din IP-adress, att loggas."</string>
   <!-- Custom filter -->
+  <string name="morphe_custom_filter_screen_title">Anpassat filter</string>
   <string name="morphe_custom_filter_title">Aktivera anpassat filter</string>
   <string name="morphe_custom_filter_strings_title">Anpassat filter</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Lista över path builder-strängar för komponenter som ska filtreras bort, åtskilda av nya rader</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Det anpassade filtret är ogiltigt: %s</string>
   <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
+  <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_title">Förfalska appversionen</string>
   <string name="morphe_spoof_app_version_summary">Lurar servern att tro att du använder en äldre appversion för att återställa äldre funktioner i användargränssnittet</string>
   <string name="morphe_spoof_app_version_target_title">Mål för Förfalska appversionen</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_ryd_failure_connection_timeout">Ogilla-markeringar är inte tillgängliga just nu (API-tidsgräns nådd)</string>
   <string name="morphe_ryd_failure_connection_status_code">Ogilla-markeringar är inte tillgängliga (status %d)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">Ogilla-markeringar är inte tillgängliga (API-gräns för klienten)</string>
   <string name="morphe_ryd_failure_generic">Ogilla-markeringar är inte tillgängliga (%s)</string>

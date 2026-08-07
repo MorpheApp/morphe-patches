@@ -3,7 +3,6 @@ package app.morphe.extension.youtube.settings.preference;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.content.Context;
-import android.os.Build;
 import android.preference.Preference;
 import android.util.AttributeSet;
 
@@ -129,15 +128,9 @@ public class GetCaptionCookiesPreference extends Preference implements Preferenc
                     String key = entry.substring(0, equalIndex).trim();
 
                     if (COOKIES_HEADER_KEYS.contains(key)) {
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM) {
-                            if (!sb.isEmpty()) {
-                                sb.append("; ");
-                            }
-                        } else {
-                            //noinspection SizeReplaceableByIsEmpty
-                            if (sb.length() > 0) {
-                                sb.append("; ");
-                            }
+                        //noinspection SizeReplaceableByIsEmpty
+                        if (sb.length() > 0) {
+                            sb.append("; ");
                         }
                         sb.append(entry);
                     }

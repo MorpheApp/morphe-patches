@@ -1,3 +1,12 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
 package app.morphe.patches.youtube.layout.shortsnoresume
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
@@ -9,6 +18,7 @@ import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 
@@ -67,17 +77,12 @@ val disableShortsResumingOnStartupPatch = bytecodePatch(
             }
         }
 
-        UserWasInShortsConfigFingerprint.method.addInstructions(
-            0,
-            """
-                invoke-static {}, $EXTENSION_CLASS->disableShortsResumingOnStartup()Z
-                move-result v0
-                if-eqz v0, :show
-                const/4 v0, 0x0
-                return v0
-                :show
-                nop
-            """
-        )
+        UserWasInShortsConfigFingerprint.matchAll().forEach {
+            // 21.30+ inlines the flag lookup and must patch ~2 places.
+            it.method.insertLiteralOverride(
+                it.instructionMatches.first().index,
+                "$EXTENSION_CLASS->disableShortsResumingOnStartup(Z)Z"
+            )
+        }
     }
 }

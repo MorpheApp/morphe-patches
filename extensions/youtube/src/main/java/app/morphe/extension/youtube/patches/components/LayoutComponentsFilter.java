@@ -41,6 +41,7 @@ import app.morphe.extension.shared.patches.components.StringFilterGroupList;
 import app.morphe.extension.youtube.patches.ChangeHeaderPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.NavigationBar;
+import app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
 @SuppressWarnings("unused")
 public final class LayoutComponentsFilter extends Filter {
@@ -71,6 +72,8 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup compactChannelBarInnerButton;
     private final ByteArrayFilterGroup joinMembershipButton;
     private final StringFilterGroup chipBar;
+    private final StringFilterGroup inviteToMessageCard;
+    private final ByteArrayFilterGroup inviteToMessageCardBuffer;
     private final StringFilterGroup channelProfile;
     private final StringFilterGroupList channelProfileGroupList = new StringFilterGroupList();
     private final StringFilterGroup getPremiumButton;
@@ -110,10 +113,37 @@ public final class LayoutComponentsFilter extends Filter {
                 "live_chat_ep_entrypoint.e"
         );
 
+        // The 'Invite others to message' card of the Messages section shown at the top of
+        // the Notifications tab, wrapped in a linear layout and identified by a unique,
+        // language independent buffer string.
+        //
+        // The 'Messages' shelf header above the card is deliberately not hidden: every
+        // section header of the Notifications tab ('Messages', 'Notifications', 'Today',
+        // 'This week', 'Older') uses the exact same identifier and an otherwise byte
+        // identical buffer, and the title is localized by the server without an app string
+        // resource, so there is no language independent way to match it.
+        inviteToMessageCard = new StringFilterGroup(
+                Settings.HIDE_INVITE_TO_MESSAGE_CARD,
+                "linear_layout.e"
+        );
+
+        inviteToMessageCardBuffer = new ByteArrayFilterGroup(
+                null,
+                "connections_inbox_zero_state"
+        );
+
+        // The hint shown in the player during seek gestures. The identifier is versioned.
+        final var seekEduOverlay = new StringFilterGroup(
+                Settings.HIDE_PLAYER_GESTURE_HINTS,
+                "seek_edu_overlay"
+        );
+
         addIdentifierCallbacks(
                 cellDivider,
                 exploreTopicsShelf,
-                liveChatReplay
+                liveChatReplay,
+                inviteToMessageCard,
+                seekEduOverlay
         );
 
         // Paths.
@@ -481,6 +511,20 @@ public final class LayoutComponentsFilter extends Filter {
         if (matchedGroup == chipBar) {
             return contentIndex == 0 && NavigationBar.NavigationButton.getSelectedNavigationButton()
                     == NavigationBar.NavigationButton.LIBRARY;
+        }
+
+        if (matchedGroup == inviteToMessageCard) {
+            // The identifier is generic and used all over the app.
+            if (contentIndex != 0) {
+                return false;
+            }
+
+            if (!inviteToMessageCardBuffer.check(buffer).isFiltered()) {
+                return false;
+            }
+
+            // Check the navigation button last and only after all buffer checks pass.
+            return NavigationButton.getSelectedNavigationButton() == NavigationButton.NOTIFICATIONS;
         }
 
         if (matchedGroup == getPremiumButton) {
@@ -942,6 +986,16 @@ public final class LayoutComponentsFilter extends Filter {
                     current.setLayoutParams(marginParams);
                 }
             }
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideChaptersTimelineButton(View view) {
+        if (view != null && Settings.HIDE_CHAPTERS_TIMELINE_BUTTON.get()) {
+            Utils.hideViewByLayoutParams(view);
+            view.setVisibility(View.GONE);
         }
     }
 
