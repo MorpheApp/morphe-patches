@@ -26,6 +26,7 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
     fixMediaSessionFeatureFlag = { is_8_40_or_greater },
     fixReelItemWatchResponseFeatureFlag = { false },
     useNewRequestBuilderFingerprint = { is_9_19_or_greater },
+    restoreMissingCuepointMethod = { false },
 
     block = {
         dependsOn(

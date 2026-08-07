@@ -23,6 +23,8 @@ var is_20_31_or_greater : Boolean by Delegates.notNull()
     private set
 var is_20_34_or_greater : Boolean by Delegates.notNull()
     private set
+var is_20_35_or_greater : Boolean by Delegates.notNull()
+    private set
 var is_20_37_or_greater : Boolean by Delegates.notNull()
     private set
 var is_20_38_or_greater : Boolean by Delegates.notNull()
@@ -105,6 +107,7 @@ val versionCheckPatch = bytecodePatch {
         is_20_30_or_greater = isEqualsOrGreaterThan("20.30.00")
         is_20_31_or_greater = isEqualsOrGreaterThan("20.31.00")
         is_20_34_or_greater = isEqualsOrGreaterThan("20.34.00")
+        is_20_35_or_greater = isEqualsOrGreaterThan("20.35.00")
         is_20_37_or_greater = isEqualsOrGreaterThan("20.37.00")
         is_20_38_or_greater = isEqualsOrGreaterThan("20.38.00")
         is_20_39_or_greater = isEqualsOrGreaterThan("20.39.00")

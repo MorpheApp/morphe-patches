@@ -79,6 +79,7 @@ internal fun spoofVideoStreamsPatch(
     fixMediaSessionFeatureFlag: BytecodePatchBuilder.() -> Boolean,
     fixReelItemWatchResponseFeatureFlag: BytecodePatchBuilder.() -> Boolean,
     useNewRequestBuilderFingerprint: BytecodePatchBuilder.() -> Boolean,
+    restoreMissingCuepointMethod: BytecodePatchBuilder.() -> Boolean,
     block: BytecodePatchBuilder.() -> Unit,
     executeBlock: BytecodePatchContext.() -> Unit = {},
 ) = bytecodePatch(
@@ -433,6 +434,70 @@ internal fun spoofVideoStreamsPatch(
                     it.instructionMatches.first().index,
                     "$EXTENSION_CLASS->useReelItemWatchResponseFeatureFlag(Z)Z"
                 )
+            }
+        }
+
+        // Restore missing method sometimes called by
+        // com.google.android.libraries.youtube.media.interfaces.NetFetchCallbacks$CppProxy
+        // Method is present in YT 21.13+ but not older targets.
+        // https://github.com/MorpheApp/morphe-patches/pull/2284#issuecomment-5204046377
+        if (restoreMissingCuepointMethod()) {
+            CuepointListFingerprint.classDef.apply {
+                if (methods.none {
+                        it.name == "parseFrom"
+                                && it.parameterTypes.isNotEmpty()
+                                && it.parameterTypes.first() == "Ljava/nio/ByteBuffer;"
+                    }
+                ) {
+                    val cuepointListType = $$"Lcom/google/android/apps/youtube/proto/streaming/CuepointListOuterClass$CuepointList;"
+                    val cueField = fields.single {
+                        it.type == cuepointListType
+                    }
+                    val superClass = superclass!!
+
+                    // Verify the superclass method exists.
+                    Fingerprint(
+                        definingClass = superClass,
+                        name = "parseFrom",
+                        returnType = superClass,
+                        parameters = listOf(
+                            superClass,
+                            "Ljava/nio/ByteBuffer;",
+                            "Lcom/google/protobuf/ExtensionRegistryLite;"
+                        )
+                    ).method
+
+                    methods.add(
+                        ImmutableMethod(
+                            type,
+                            "parseFrom",
+                            listOf(
+                                ImmutableMethodParameter("Ljava/nio/ByteBuffer;", null, null),
+                                ImmutableMethodParameter(
+                                    "Lcom/google/protobuf/ExtensionRegistryLite;",
+                                    null,
+                                    null
+                                )
+                            ),
+                            cuepointListType,
+                            AccessFlags.PUBLIC.value or AccessFlags.STATIC.value,
+                            null,
+                            null,
+                            MutableMethodImplementation(3),
+                        ).toMutable().apply {
+                            addInstructions(
+                                0,
+                                """    
+                                    sget-object v0, $cueField
+                                    invoke-static { v0, p0, p1 }, $superClass->parseFrom(${superClass}Ljava/nio/ByteBuffer;Lcom/google/protobuf/ExtensionRegistryLite;)$superClass
+                                    move-result-object p0
+                                    check-cast p0, $cuepointListType
+                                    return-object p0
+                                """
+                            )
+                        }
+                    )
+                }
             }
         }
 
