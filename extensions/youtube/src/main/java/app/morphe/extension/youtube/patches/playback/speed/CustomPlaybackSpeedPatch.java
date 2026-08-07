@@ -97,7 +97,7 @@ public class CustomPlaybackSpeedPatch {
     /**
      * One musical semitone ratio: 2^(1/12).
      */
-    private static final float ONE_SEMITONE = (float) Math.pow(2.0, 1.0 / 12.0);
+    private static final double ONE_SEMITONE = Math.pow(2.0, 1.0 / 12.0);
 
     /**
      * Scale used to convert user speed to {@link android.widget.ProgressBar#setProgress(int)}.
@@ -694,17 +694,17 @@ public class CustomPlaybackSpeedPatch {
                         FrameLayout.LayoutParams.MATCH_PARENT, Dim.dp32, Gravity.CENTER);
                 pitchPresetButton.setLayoutParams(pitchButtonParams);
 
-                final int finalI = i;
                 pitchPresetButton.setOnClickListener(v -> {
                     final float pitch = VideoInformation.getPlaybackAudioPitch();
-                    final float newValue = switch (finalI) {
-                        case 0 -> pitch * 0.5f;
-                        case 1 -> pitch / ONE_SEMITONE;
-                        case 2 -> 1.0f;
-                        case 3 -> pitch * ONE_SEMITONE;
-                        default -> pitch * 2.0f;
+                    final float newValue = switch (pitchLabel) {
+                        case "/2" -> pitch * 0.5f;
+                        case "−1st" -> (float) (pitch / ONE_SEMITONE);
+                        case "1x" -> 1.0f;
+                        case "+1st" -> (float) (pitch * ONE_SEMITONE);
+                        case "×2" -> pitch * 2.0f;
+                        default -> pitch;
                     };
-                    userSelectedPitchRaw.apply(newValue);
+                    userSelectedPitch.apply(newValue);
                 });
                 pitchButtonContainer.addView(pitchPresetButton);
                 pitchPresetGrid.addView(pitchButtonContainer);
