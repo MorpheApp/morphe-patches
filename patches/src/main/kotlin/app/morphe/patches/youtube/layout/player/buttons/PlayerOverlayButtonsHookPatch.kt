@@ -50,7 +50,8 @@ internal val playerOverlayButtonsHookPatch = bytecodePatch {
                 addInstruction(
                     exploderButtonInsertIndex++,
                     "invoke-static { v$exploderButtonInsertRegister }, " +
-                            "Lapp/morphe/extension/youtube/videoplayer/PlayerOverlayButton;->initializeButton(Landroid/view/View;)V"
+                            "Lapp/morphe/extension/youtube/videoplayer/PlayerOverlayButton;->" +
+                            "initializeButton(Landroid/view/View;)V"
                 )
 
                 // Fix the fullscreen button tint when the minimal miniplayer type is selected.
@@ -59,7 +60,8 @@ internal val playerOverlayButtonsHookPatch = bytecodePatch {
                 if (!is_21_29_or_greater) {
                     addInstruction(
                         exploderButtonInsertIndex++,
-                        "invoke-static { v$exploderButtonInsertRegister }, $EXTENSION_CLASS->fixMinimalMiniplayerFullscreenButtonTint(Landroid/view/View;)V"
+                        "invoke-static { v$exploderButtonInsertRegister }, $EXTENSION_CLASS->" +
+                                "fixMinimalMiniplayerFullscreenButtonTint(Landroid/view/View;)V"
                     )
                 }
             }

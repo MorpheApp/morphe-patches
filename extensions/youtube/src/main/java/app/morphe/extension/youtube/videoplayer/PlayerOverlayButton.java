@@ -370,12 +370,9 @@ public class PlayerOverlayButton {
             chapterTitleContainer.updateContainerRef(controlsViewGroup);
             controlsViewGroup.getViewTreeObserver().addOnPreDrawListener(() -> {
                 try {
-                    int activeCustomButtons = buttonControllers.size();
-                    boolean hideFullscreen = Settings.HIDE_FULLSCREEN_BUTTON.get();
-                    int totalLowerButtons = activeCustomButtons - (hideFullscreen ? 1 : 0);
-                    if (totalLowerButtons < 0) {
-                        totalLowerButtons = 0;
-                    }
+                    final int activeCustomButtons = buttonControllers.size();
+                    final int totalLowerButtons = Math.max(0, activeCustomButtons
+                            - (Settings.HIDE_FULLSCREEN_BUTTON.get() ? 1 : 0));
 
                     int buttonWidth = BUTTON_WIDTH;
                     View ytSource = ytSourceButtonRef.get();
@@ -384,8 +381,8 @@ public class PlayerOverlayButton {
                     }
 
                     chapterTitleContainer.updateMargin(buttonWidth, totalLowerButtons);
-
-                } catch (Exception ignored) {
+                } catch (Exception ex) {
+                    Logger.printDebug(() -> "Could not update chapter title margin", ex);
                 }
                 return true;
             });
