@@ -43,6 +43,9 @@ import android.widget.TextView;
 import java.util.Arrays;
 import java.util.function.Function;
 
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
+
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
@@ -55,6 +58,7 @@ import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.components.PlaybackSpeedMenuFilter;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PipDismissHelper;
+import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton;
 
 @SuppressWarnings("unused")
@@ -347,15 +351,12 @@ public class CustomPlaybackSpeedPatch {
     @SuppressLint("SetTextI18n")
     public static void showModernCustomPlaybackSpeedDialog(Context context) {
         try {
-            // Create main layout.
+            // # Create main layout.
             SheetBottomDialog.DraggableLinearLayout mainLayout =
                     SheetBottomDialog.createMainLayout(context, LegacyPlayerControlButton.getDialogBackgroundColor());
 
             // Wrap the dialog content in a ScrollView capped to most of the screen height,
             // so the dialog remains fully usable in landscape where the available height is limited.
-            LinearLayout contentLayout = new LinearLayout(context);
-            contentLayout.setOrientation(LinearLayout.VERTICAL);
-
             ScrollView scrollView = new ScrollView(context) {
                 @Override
                 protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -364,8 +365,27 @@ public class CustomPlaybackSpeedPatch {
                 }
             };
             scrollView.setVerticalScrollBarEnabled(false);
-            scrollView.addView(contentLayout);
-            mainLayout.addView(scrollView);
+
+            LinearLayout contentLayout = new LinearLayout(context);
+            contentLayout.setOrientation(LinearLayout.VERTICAL);
+
+            // ## Speed UI Elements
+            // Callback when user picks a new audio pitch.
+            Function<Float, Void> userSelectedSpeed = newSpeed -> {
+                final float roundedSpeed = roundSpeedToNearestIncrement(newSpeed);
+                if (VideoInformation.getPlaybackSpeed() == roundedSpeed) {
+                    return null;
+                }
+
+                RememberPlaybackSpeedPatch.userSelectedPlaybackSpeed(roundedSpeed);
+                VideoInformation.changePlaybackSpeed(roundedSpeed);
+
+                if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
+                    RememberPlaybackSpeedPatch.userSelectedPlaybackAudioPitch(roundedSpeed);
+                }
+
+                return null;
+            };
 
             // Display current playback speed with a leading video icon.
             FrameLayout speedLabelRow = createLabelRow(context, VIDEO_ICON);
@@ -378,18 +398,20 @@ public class CustomPlaybackSpeedPatch {
             currentSpeedText.setGravity(Gravity.CENTER);
             currentSpeedText.setLayoutParams(new FrameLayout.LayoutParams(
                     FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT));
-            speedLabelRow.addView(currentSpeedText);
-            // Add current speed label row to main layout.
-            contentLayout.addView(speedLabelRow);
 
             // Create horizontal layout for slider and +/- buttons.
-            LinearLayout sliderLayout = new LinearLayout(context);
-            sliderLayout.setOrientation(LinearLayout.HORIZONTAL);
-            sliderLayout.setGravity(Gravity.CENTER_VERTICAL);
+            LinearLayout speedSliderLayout = new LinearLayout(context);
+            speedSliderLayout.setOrientation(LinearLayout.HORIZONTAL);
+            speedSliderLayout.setGravity(Gravity.CENTER_VERTICAL);
 
             // Create +/- buttons.
-            Button minusButton = createStyledButton(context, false);
-            Button plusButton = createStyledButton(context, true);
+            Button speedMinusButton = createStyledButton(context, false);
+            Button speedPlusButton = createStyledButton(context, true);
+
+            speedMinusButton.setOnClickListener(v -> userSelectedSpeed.apply(
+                    (float) (VideoInformation.getPlaybackSpeed() - SPEED_ADJUSTMENT_CHANGE)));
+            speedPlusButton.setOnClickListener(v -> userSelectedSpeed.apply(
+                    (float) (VideoInformation.getPlaybackSpeed() + SPEED_ADJUSTMENT_CHANGE)));
 
             // Create slider for speed adjustment.
             SeekBar speedSlider = new SeekBar(context);
@@ -404,73 +426,6 @@ public class CustomPlaybackSpeedPatch {
             LinearLayout.LayoutParams sliderParams = new LinearLayout.LayoutParams(
                     0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
             speedSlider.setLayoutParams(sliderParams);
-
-            // Add -/+ and slider views to slider layout.
-            sliderLayout.addView(minusButton);
-            sliderLayout.addView(speedSlider);
-            sliderLayout.addView(plusButton);
-
-            // Add slider layout to main layout.
-            contentLayout.addView(sliderLayout);
-
-            // Pitch UI elements
-            FrameLayout pitchLabelRow = createLabelRow(context, AUDIO_ICON);
-            TextView currentPitchText = new TextView(context);
-            float currentPitch = VideoInformation.getPlaybackAudioPitch();
-            currentPitchText.setText(VideoInformation.formatAudioPitchStringX(currentPitch));
-            currentPitchText.setTextColor(Utils.getAppForegroundColor());
-            currentPitchText.setTextSize(16);
-            currentPitchText.setTypeface(Typeface.DEFAULT_BOLD);
-            currentPitchText.setGravity(Gravity.CENTER);
-            currentPitchText.setLayoutParams(new FrameLayout.LayoutParams(
-                    FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT));
-            pitchLabelRow.addView(currentPitchText);
-
-            LinearLayout pitchSliderLayout = new LinearLayout(context);
-            pitchSliderLayout.setOrientation(LinearLayout.HORIZONTAL);
-            pitchSliderLayout.setGravity(Gravity.CENTER_VERTICAL);
-
-            Button pitchMinusButton = createStyledButton(context, false);
-            Button pitchPlusButton = createStyledButton(context, true);
-
-            SeekBar pitchSlider = new SeekBar(context);
-            pitchSlider.setFocusable(true);
-            pitchSlider.setFocusableInTouchMode(true);
-            pitchSlider.setMax(pitchToProgressValue(customPlaybackSpeedsMax));
-            pitchSlider.setProgress(pitchToProgressValue(currentPitch));
-            pitchSlider.getProgressDrawable().setColorFilter(
-                    new PorterDuffColorFilter(Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN));
-            pitchSlider.getThumb().setColorFilter(
-                    new PorterDuffColorFilter(Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN));
-            LinearLayout.LayoutParams pitchSliderParams = new LinearLayout.LayoutParams(
-                    0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
-            pitchSlider.setLayoutParams(pitchSliderParams);
-
-            pitchSliderLayout.addView(pitchMinusButton);
-            pitchSliderLayout.addView(pitchSlider);
-            pitchSliderLayout.addView(pitchPlusButton);
-
-            Function<Float, Void> userSelectedSpeed = newSpeed -> {
-                final float roundedSpeed = roundSpeedToNearestIncrement(newSpeed);
-                if (VideoInformation.getPlaybackSpeed() == roundedSpeed) {
-                    return null;
-                }
-
-                currentSpeedText.setText(VideoInformation.formatSpeedStringX(roundedSpeed));
-                speedSlider.setProgress(speedToProgressValue(roundedSpeed));
-
-                RememberPlaybackSpeedPatch.userSelectedPlaybackSpeed(roundedSpeed);
-                VideoInformation.changePlaybackSpeed(roundedSpeed);
-
-                if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
-                    float syncedPitch = VideoInformation.getPlaybackAudioPitch();
-                    currentPitchText.setText(VideoInformation.formatAudioPitchStringX(syncedPitch));
-                    pitchSlider.setProgress(pitchToProgressValue(syncedPitch));
-                    RememberPlaybackSpeedPatch.userSelectedPlaybackAudioPitch(syncedPitch);
-                }
-
-                return null;
-            };
 
             // Set listener for slider to update playback speed.
             speedSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -489,10 +444,15 @@ public class CustomPlaybackSpeedPatch {
                 public void onStopTrackingTouch(SeekBar seekBar) {}
             });
 
-            minusButton.setOnClickListener(v -> userSelectedSpeed.apply(
-                    (float) (VideoInformation.getPlaybackSpeed() - SPEED_ADJUSTMENT_CHANGE)));
-            plusButton.setOnClickListener(v -> userSelectedSpeed.apply(
-                    (float) (VideoInformation.getPlaybackSpeed() + SPEED_ADJUSTMENT_CHANGE)));
+            // The first observer to keep label text and slider reactive to speed changes.
+            // observer is removed on dialog dismissal in order.
+            Function1<Float, Unit> onSpeedChanged = speed -> {
+                currentSpeedText.setText(VideoInformation.formatSpeedStringX(speed));
+                speedSlider.setProgress(speedToProgressValue(speed));
+                return Unit.INSTANCE;
+            };
+
+            VideoInformation.onPlaybackSpeedChange.addObserver(onSpeedChanged);
 
             // Create GridLayout for preset speed buttons.
             GridLayout gridLayout = new GridLayout(context);
@@ -568,9 +528,21 @@ public class CustomPlaybackSpeedPatch {
                 gridLayout.addView(buttonContainer);
             }
 
+            // Speed UI Layout tree
+
+            // Add Text to the label row with icon and text.
+            speedLabelRow.addView(currentSpeedText);
+            contentLayout.addView(speedLabelRow);
+            // Add -/+ and slider views to slider layout.
+            speedSliderLayout.addView(speedMinusButton);
+            speedSliderLayout.addView(speedSlider);
+            speedSliderLayout.addView(speedPlusButton);
+            // Add slider layout to content layout.
+            contentLayout.addView(speedSliderLayout);
             // Add in-rows speed buttons layout to main layout.
             contentLayout.addView(gridLayout);
 
+            // ## Link Button
             LinearLayout linkLayout = new LinearLayout(context);
             linkLayout.setOrientation(LinearLayout.HORIZONTAL);
             linkLayout.setGravity(Gravity.CENTER);
@@ -594,22 +566,11 @@ public class CustomPlaybackSpeedPatch {
 
                 // When switching from unlinked to linked, sync audio pitch to the video speed.
                 if (!newValue && VideoInformation.getPlaybackAudioPitch() != VideoInformation.getPlaybackSpeed()) {
-                    float syncedPitch = VideoInformation.getPlaybackSpeed();
-                    VideoInformation.setAudioPitch(syncedPitch);
-                    currentPitchText.setText(VideoInformation.formatAudioPitchStringX(syncedPitch));
-                    pitchSlider.setProgress(pitchToProgressValue(syncedPitch));
-                    RememberPlaybackSpeedPatch.userSelectedPlaybackAudioPitch(syncedPitch);
+                    VideoInformation.setAudioPitch(VideoInformation.getPlaybackSpeed());
                 }
             });
-            linkLayout.addView(linkButton);
-            contentLayout.addView(linkLayout);
 
-            // ── Row 4: Current playback audio pitch display ──────────────────────────
-            contentLayout.addView(pitchLabelRow);
-
-            // ── Row 5: Pitch slider with +/- buttons ─────────────────────────────────
-            contentLayout.addView(pitchSliderLayout);
-
+            // ## Pitch UI elements
             // Callback when user picks a new audio pitch.
             Function<Float, Void> userSelectedPitch = newPitch -> {
                 final float roundedPitch = roundSpeedToNearestIncrement(newPitch);
@@ -617,45 +578,55 @@ public class CustomPlaybackSpeedPatch {
                     return null;
                 }
 
-                currentPitchText.setText(VideoInformation.formatAudioPitchStringX(roundedPitch));
-                pitchSlider.setProgress(pitchToProgressValue(roundedPitch));
-                
                 RememberPlaybackSpeedPatch.userSelectedPlaybackAudioPitch(roundedPitch);
 
                 VideoInformation.setAudioPitch(roundedPitch);
 
                 if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
-                    float syncedSpeed = VideoInformation.getPlaybackSpeed();
-                    currentSpeedText.setText(VideoInformation.formatSpeedStringX(syncedSpeed));
-                    speedSlider.setProgress(speedToProgressValue(syncedSpeed));
-                    RememberPlaybackSpeedPatch.userSelectedPlaybackSpeed(syncedSpeed);
+                    RememberPlaybackSpeedPatch.userSelectedPlaybackSpeed(roundedPitch);
                 }
 
                 return null;
             };
 
-            // Callback for pitch preset buttons: no 0.05 rounding, no clamping to custom speeds.
-            Function<Float, Void> userSelectedPitchRaw = newPitch -> {
-                final float clampedPitch = Utils.clamp(newPitch, customPlaybackSpeedsMin, VideoInformation.PLAYBACK_AUDIO_PITCH_MAXIMUM);
-                if (VideoInformation.getPlaybackAudioPitch() == clampedPitch) {
-                    return null;
-                }
+            // Display current playback audio pitch with a leading audio icon.
+            FrameLayout pitchLabelRow = createLabelRow(context, AUDIO_ICON);
+            TextView currentPitchText = new TextView(context);
+            float currentPitch = VideoInformation.getPlaybackAudioPitch();
+            currentPitchText.setText(VideoInformation.formatAudioPitchStringX(currentPitch));
+            currentPitchText.setTextColor(Utils.getAppForegroundColor());
+            currentPitchText.setTextSize(16);
+            currentPitchText.setTypeface(Typeface.DEFAULT_BOLD);
+            currentPitchText.setGravity(Gravity.CENTER);
+            currentPitchText.setLayoutParams(new FrameLayout.LayoutParams(
+                    FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT));
 
-                currentPitchText.setText(VideoInformation.formatAudioPitchStringX(clampedPitch));
-                pitchSlider.setProgress(pitchToProgressValue(clampedPitch));
+            // Create horizontal layout for slider and +/- buttons.
+            LinearLayout pitchSliderLayout = new LinearLayout(context);
+            pitchSliderLayout.setOrientation(LinearLayout.HORIZONTAL);
+            pitchSliderLayout.setGravity(Gravity.CENTER_VERTICAL);
 
-                RememberPlaybackSpeedPatch.userSelectedPlaybackAudioPitch(clampedPitch);
+            // Create +/- buttons.
+            Button pitchMinusButton = createStyledButton(context, false);
+            Button pitchPlusButton = createStyledButton(context, true);
 
-                VideoInformation.setAudioPitch(clampedPitch);
+            pitchMinusButton.setOnClickListener(v -> userSelectedPitch.apply(
+                    (float) (VideoInformation.getPlaybackAudioPitch() - PITCH_ADJUSTMENT_CHANGE)));
+            pitchPlusButton.setOnClickListener(v -> userSelectedPitch.apply(
+                    (float) (VideoInformation.getPlaybackAudioPitch() + PITCH_ADJUSTMENT_CHANGE)));
 
-                if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
-                    float syncedSpeed = VideoInformation.getPlaybackSpeed();
-                    currentSpeedText.setText(VideoInformation.formatSpeedStringX(syncedSpeed));
-                    speedSlider.setProgress(speedToProgressValue(syncedSpeed));
-                }
-
-                return null;
-            };
+            SeekBar pitchSlider = new SeekBar(context);
+            pitchSlider.setFocusable(true);
+            pitchSlider.setFocusableInTouchMode(true);
+            pitchSlider.setMax(pitchToProgressValue(customPlaybackSpeedsMax));
+            pitchSlider.setProgress(pitchToProgressValue(currentPitch));
+            pitchSlider.getProgressDrawable().setColorFilter(
+                    new PorterDuffColorFilter(Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN));
+            pitchSlider.getThumb().setColorFilter(
+                    new PorterDuffColorFilter(Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN));
+            LinearLayout.LayoutParams pitchSliderParams = new LinearLayout.LayoutParams(
+                    0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
+            pitchSlider.setLayoutParams(pitchSliderParams);
 
             pitchSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
@@ -672,15 +643,17 @@ public class CustomPlaybackSpeedPatch {
                 public void onStopTrackingTouch(SeekBar seekBar) {}
             });
 
-            pitchMinusButton.setOnClickListener(v -> userSelectedPitch.apply(
-                    (float) (VideoInformation.getPlaybackAudioPitch() - PITCH_ADJUSTMENT_CHANGE)));
-            pitchPlusButton.setOnClickListener(v -> userSelectedPitch.apply(
-                    (float) (VideoInformation.getPlaybackAudioPitch() + PITCH_ADJUSTMENT_CHANGE)));
+            // The second observer to keep label text and slider reactive to pitch changes.
+            // observer is removed on dialog dismissal in order.
+            Function1<Float, Unit> onPitchChanged = pitch -> {
+                currentPitchText.setText(VideoInformation.formatAudioPitchStringX(pitch));
+                pitchSlider.setProgress(pitchToProgressValue(pitch));
+                return Unit.INSTANCE;
+            };
 
-            // ── Row 6: Five pitch preset buttons ─────────────────────────────────────
-            // Buttons: /2 (half) | −1st (down one semitone) | 1x (reset) | +1st (up one semitone) | ×2 (double)
-            final String[] pitchButtonLabels = {"/2", "−1st", "1x", "+1st", "×2"};
-
+            VideoInformation.onPlaybackAudioPitchChange.addObserver(onPitchChanged);
+            
+            // Create GridLayout for pitch control buttons.
             GridLayout pitchPresetGrid = new GridLayout(context);
             pitchPresetGrid.setColumnCount(5);
             pitchPresetGrid.setAlignmentMode(GridLayout.ALIGN_BOUNDS);
@@ -690,8 +663,10 @@ public class CustomPlaybackSpeedPatch {
             pitchGridParams.setMargins(Dim.dp4, Dim.dp12, Dim.dp4, Dim.dp12);
             pitchPresetGrid.setLayoutParams(pitchGridParams);
 
-            for (int i = 0, length = pitchButtonLabels.length; i < length; i++) {
-                final String pitchLabel = pitchButtonLabels[i];
+            // Buttons: /2 (half) | −1st (down one semitone) | 1x (reset) | +1st (up one semitone) | ×2 (double)    
+            final String[] pitchButtonLabels = {"/2", "−1st", "1x", "+1st", "×2"};
+            // Add buttons for the five options.
+            for (String pitchLabel : pitchButtonLabels) {
 
                 FrameLayout pitchButtonContainer = new FrameLayout(context);
                 GridLayout.LayoutParams pitchContainerParams = new GridLayout.LayoutParams();
@@ -736,12 +711,39 @@ public class CustomPlaybackSpeedPatch {
                 pitchButtonContainer.addView(pitchPresetButton);
                 pitchPresetGrid.addView(pitchButtonContainer);
             }
+
+            // Pitch UI Layout Tree
+
+            // Add the link button and its layout.
+            linkLayout.addView(linkButton);
+            contentLayout.addView(linkLayout);
+            
+            // Add Text to the label row with icon and text.
+            pitchLabelRow.addView(currentPitchText);
+            contentLayout.addView(pitchLabelRow);
+            // Add -/+ and slider views to slider layout.
+            pitchSliderLayout.addView(pitchMinusButton);
+            pitchSliderLayout.addView(pitchSlider);
+            pitchSliderLayout.addView(pitchPlusButton);
+            // Add slider layout to content layout.
+            contentLayout.addView(pitchSliderLayout);
+            // Add in-rows speed buttons layout to main layout.
             contentLayout.addView(pitchPresetGrid);
 
+            // Add content layout to main scroll view.
+            scrollView.addView(contentLayout);
+            mainLayout.addView(scrollView);
 
             // Create dialog.
             SheetBottomDialog.SlideDialog dialog = SheetBottomDialog.createSlideDialog(
                     context, mainLayout, LegacyPlayerControlButton.fadeInDuration);
+
+            // Unsubscribe from the speed and pitch events when the dialog is dismissed.
+            dialog.setOnDismissListener(d -> {
+                VideoInformation.onPlaybackSpeedChange.removeObserver(onSpeedChanged);
+                VideoInformation.onPlaybackAudioPitchChange.removeObserver(onPitchChanged);
+            });
+
             PipDismissHelper.dismissOnPip(dialog);
             dialog.show();
 
@@ -795,8 +797,8 @@ public class CustomPlaybackSpeedPatch {
         // Offset the icon so its center sits halfway between the center and the left edge of the dialog.
         iconParams.leftMargin = Dim.pctPortraitWidth(25) - Dim.dp10;
         icon.setLayoutParams(iconParams);
-        row.addView(icon);
 
+        row.addView(icon);
         return row;
     }
 

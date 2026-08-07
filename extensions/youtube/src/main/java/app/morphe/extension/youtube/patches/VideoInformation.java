@@ -129,6 +129,16 @@ public final class VideoInformation {
      */
     private static String playbackAudioPitchFormattedString = "";
 
+    /**
+     * Fires whenever the playback speed changes.
+     */
+    public static final Event<Float> onPlaybackSpeedChange = new Event<>();
+
+    /**
+     * Fires whenever the playback audio pitch changes.
+     */
+    public static final Event<Float> onPlaybackAudioPitchChange = new Event<>();
+
     private static int desiredVideoResolution = AUTOMATIC_VIDEO_QUALITY_VALUE;
 
     private static boolean qualityNeedsUpdating;
@@ -320,20 +330,53 @@ public final class VideoInformation {
     }
 
     /**
+     * Records a new playback speed, updates the formatted string, and fires {@link #onPlaybackSpeedChange}.
+     *
+     * @return true if the speed actually changed.
+     */
+    private static boolean setPlaybackSpeedValue(float speed) {
+        if (playbackSpeed == speed) {
+            return false;
+        }
+        Logger.printDebug(() -> "Playback speed set to: " + speed);
+        playbackSpeed = speed;
+        // An exception occurs when the playback speed dialog is opened by an overlay button
+        // while 'Restore old playback speed menu' is off.
+        // Update the formatted string value to avoid the exception.
+        playbackSpeedFormattedString = formatSpeedStringX(speed);
+        onPlaybackSpeedChange.invoke(speed);
+        return true;
+    }
+
+    /**
+     * Records a new playback audio pitch, updates the formatted string, and fires {@link #onPlaybackAudioPitchChange}.
+     *
+     * @return true if the pitch actually changed.
+     */
+    private static boolean setPlaybackAudioPitchValue(float pitch) {
+        if (playbackAudioPitch == pitch) {
+            return false;
+        }
+        Logger.printDebug(() -> "Audio pitch set to: " + pitch);
+        playbackAudioPitch = pitch;
+        playbackAudioPitchFormattedString = formatSpeedStringX(pitch);
+        onPlaybackAudioPitchChange.invoke(pitch);
+        return true;
+    }
+
+    /**
      * Injection point.
      */
     public static void videoSpeedChanged(float currentVideoSpeed) {
-        if (playbackSpeed != currentVideoSpeed) {
-            Logger.printDebug(() -> "Video speed changed: " + currentVideoSpeed);
-            playbackSpeed = currentVideoSpeed;
-            if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get() && playbackAudioPitch != currentVideoSpeed) {
-                Logger.printDebug(() -> "Audio pitch synced: " + currentVideoSpeed);
-                playbackAudioPitch = currentVideoSpeed;
+        try {
+            if (!setPlaybackSpeedValue(currentVideoSpeed)) {
+                return;
             }
-
-            // An exception occurs when the playback speed dialog is opened by an overlay button while 'Restore old playback speed menu' is off.
-            // Update the formatted string value to avoid the exception.
-            playbackSpeedFormattedString = formatSpeedStringX(currentVideoSpeed);
+            if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
+                setPlaybackAudioPitchValue(currentVideoSpeed);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "videoSpeedChanged failure", ex);
         }
     }
 
@@ -342,18 +385,17 @@ public final class VideoInformation {
      * Only CustomPlaybackInterface sets audio pitch.
      */
     public static void setAudioPitch(float currentAudioPitch) {
-        if (playbackAudioPitch != currentAudioPitch) {
-            Logger.printDebug(() -> "Audio pitch set to: " + currentAudioPitch);
-            playbackAudioPitch = currentAudioPitch;
-            if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get() && playbackSpeed != currentAudioPitch) {
-                Logger.printDebug(() -> "Video speed synced: " + currentAudioPitch);
-                playbackSpeed = currentAudioPitch;
+        try {
+            if (!setPlaybackAudioPitchValue(currentAudioPitch)) {
+                return;
             }
-            
+            if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
+                setPlaybackSpeedValue(currentAudioPitch);
+            }
             // Attempt to set playback speed, new pitch will be obtained and set.
             changePlaybackSpeed(playbackSpeed);
-
-            playbackAudioPitchFormattedString = formatSpeedStringX(currentAudioPitch);
+        } catch (Exception ex) {
+            Logger.printException(() -> "setAudioPitch failure", ex);
         }
     }
 
@@ -365,11 +407,7 @@ public final class VideoInformation {
      */
     public static void userSelectedPlaybackSpeed(float userSelectedPlaybackSpeed) {
         Logger.printDebug(() -> "User selected playback speed: " + userSelectedPlaybackSpeed);
-        playbackSpeed = userSelectedPlaybackSpeed;
-
-        // An exception occurs when the playback speed dialog is opened by an overlay button while 'Restore old playback speed menu' is off.
-        // Update the formatted string value to avoid the exception.
-        playbackSpeedFormattedString = formatSpeedStringX(userSelectedPlaybackSpeed);
+        setPlaybackSpeedValue(userSelectedPlaybackSpeed);
     }
 
     /**
@@ -764,10 +802,7 @@ public final class VideoInformation {
      * @param newlyLoadedPlaybackSpeed The current playback speed.
      */
     public static void setPlaybackSpeed(float newlyLoadedPlaybackSpeed) {
-        if (playbackSpeed != newlyLoadedPlaybackSpeed) {
-            Logger.printDebug(() -> "Video speed set to: " + newlyLoadedPlaybackSpeed);
-            playbackSpeed = newlyLoadedPlaybackSpeed;
-        }
+        setPlaybackSpeedValue(newlyLoadedPlaybackSpeed);
     }
 
     /**
