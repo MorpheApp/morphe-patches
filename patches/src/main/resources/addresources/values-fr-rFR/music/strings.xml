@@ -25,7 +25,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_summary">Téléchargez des vidéos, des podcasts ou des chansons avec des applications de téléchargement tierces</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Remplacer le bouton \'Télécharger\'</string>
+  <string name="morphe_external_downloader_action_button_summary">Utilise le téléchargeur externe de votre choix au lieu du bouton d\'action \'Télécharger\' par défaut</string>
   <string name="morphe_external_downloader_flyout_menu_title">Remplacer le menu \'Télécharger\'</string>
+  <string name="morphe_external_downloader_flyout_menu_summary">Utilise le téléchargeur externe de votre choix au lieu du menu déroulant \'Télécharger\' par défaut</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">À propos</string>

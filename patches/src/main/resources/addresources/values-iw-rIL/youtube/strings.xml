@@ -449,12 +449,15 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_success_toast">הסרטון נשמר בהצלחה בפלייליסט \'צפייה מאוחרת\'</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">הסרטון הזה כבר שמור בפלייליסט \'צפייה מאוחרת\'</string>
   <string name="morphe_save_to_watch_later_error_toast">לא ניתן לשמור סרטון זה בפלייליסט \'צפייה מאוחרת\'.</string>
+  <string name="morphe_queue_flyout_title">הוסף לתור Morphe</string>
   <string name="morphe_queue_restore_title">שמור תור בין הפעלות</string>
   <string name="morphe_queue_restore_summary">התור נשמר גם לאחר הפעלה מחדש של האפליקציה</string>
   <string name="morphe_swap_save_and_queue_actions_title">החלף בין פעולות שמירה לתור</string>
   <string name="morphe_swap_save_and_queue_actions_summary">הקש כדי לפתוח אפשרויות בתור, הקש והחזק כדי לשמור לצפייה מאוחר יותר</string>
   <string name="morphe_queue_override_flyout_menu_title">כפתור החלפת תור הפיד</string>
   <string name="morphe_queue_override_flyout_menu_summary">פותח את תור ה-Morphe במקום את התור של YouTube</string>
+  <string name="morphe_queue_add_flyout_menu_title">הוסף הזנה לתור</string>
+  <string name="morphe_queue_add_flyout_menu_summary">מוסיף פריט תפריט מוקפץ נוסף. הפעל זאת אם \'הוסף לתור\' אינו מוצג</string>
   <string name="morphe_queue_manager_check_failed_auth">לא מחובר</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">מזהה רשימת השמעה לא נמצא</string>
   <string name="morphe_queue_manager_check_failed_queue">התור ריק</string>
@@ -491,15 +494,15 @@ Second \"item\" text"</string>
   <string name="morphe_seekbar_thumbnail_preview_title">אפשר תמונות ממוזערות בסרגל החיפוש</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">מציג תמונה ממוזערת של הסרטון בזמן גרירת סרגל החיפוש</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"ייתכן ש'הפעלת הקלטת שידור חי' אינה זמינה
+  <string name="morphe_livestream_dvr_not_available">"'הפעלת DVR בשידור חי' עשויה להיות לא זמינה
 
-כדי לתקן זאת, הפעל את 'התחזות לזרמי וידאו' ושנה את 'לקוח ברירת המחדל' ל-'TV Simply' או 'visionOS'"</string>
+כדי לתקן זאת, הפעל את 'זיוף הזרמות וידאו' ושנה את 'לקוח ברירת המחדל' ל-'TV' או ל-'visionOS'."</string>
   <string name="morphe_expand_livestream_dvr_duration_title">הרחב את משך ה-DVR בשידור חי</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">מאפשר לך להריץ לאחור שידורים חיים עד 7 ימים אחורה</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"ייתכן ש'הרחבת משך הקלטת שידור חי' אינה זמינה
+  <string name="morphe_expand_livestream_dvr_duration_not_available">"'הרחבת משך DVR בשידור חי' עשויה להיות לא זמינה
 
-כדי לתקן זאת, הפעל את 'התחזות לזרמי וידאו' ושנה את 'לקוח ברירת המחדל' ל-'TV Simply' או 'visionOS'"</string>
+כדי לתקן זאת, הפעל את 'זיוף הזרמות וידאו' ושנה את 'לקוח ברירת המחדל' ל-'TV' או ל-'visionOS'."</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">הפעל החלק כדי לדלג</string>
   <string name="morphe_slide_to_seek_summary">מאפשר החלקה לחיפוש במקום לנגן במהירות של 2x בעת לחיצה והחזקה על נגן הווידאו</string>
@@ -517,6 +520,7 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_zone_label_volume">עוצמת קול</string>
   <string name="morphe_swipe_zone_label_native">מובנה</string>
   <string name="morphe_swipe_press_to_engage_title">הפעל מחוות לחץ כדי להחליק</string>
+  <string name="morphe_swipe_press_to_engage_summary">נדרשת לחיצה והחזקה לפני שמחוות החלקה מזוהה</string>
   <string name="morphe_swipe_haptic_feedback_title">הפעל משוב ברטט</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">שמור ושחזר בהירות</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">הסתר כפתור \'אהבתי\' ו\'לא אהבתי\'</string>
@@ -808,6 +812,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_like_fountain_title">הסתר הנפשת מזרקה של לחצן אהבתי</string>
   <string name="morphe_hide_shorts_like_button_title">הסתר לחצן אהבתי</string>
   <string name="morphe_hide_shorts_comments_button_title">הסתר לחצן תגובות</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">הסתר לחצן שמירה</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">הסתר לחצן שיתוף</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
@@ -1047,6 +1053,7 @@ Second \"item\" text"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">פקדי מדיה בהתראות</string>
   <string name="morphe_notification_media_screen_summary">התאם אישית את המראה וההתנהגות של פקדי הנגן המוקטנים במסך הנעילה ובפאנל ההתראות</string>
+  <string name="morphe_hide_notification_media_prev_next_title">הסתר כפתורי קודם &amp; הבא</string>
   <string name="morphe_hide_notification_media_prev_next_summary">מסתיר את כפתורי \'הקודם\' ו\'הבא\' בהתראות מדיה, במסך הנעילה ובפקדי האוזניות</string>
   <string name="morphe_disable_notification_media_seekbar_title">השבת סרגל חיפוש</string>
   <string name="morphe_disable_notification_media_seekbar_summary">מונע גרירת סרגל החיפוש במסך הנעילה ובפאנל ההתראות</string>
@@ -1119,6 +1126,7 @@ Second \"item\" text"</string>
 • סרטוני HDR לא ישתמשו ב-AVC
 • התקנים מסוימים אינם יכולים לאכוף AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">כדי להשתמש בתכונה זו, הגדר \'זיוף זרמי וידאו\' ל\'Android VR\' או \'Android Studio\'</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">פתח תפריט איכות מתקדם</string>
   <string name="morphe_advanced_video_quality_menu_summary">מדלג על תפריט בחירת האיכות ופותח ישירות את תפריט האיכות המתקדם</string>
@@ -1129,10 +1137,13 @@ Second \"item\" text"</string>
   <string name="morphe_video_quality_prioritize_summary">מתעדף את איכות הווידאו הגבוהה ביותר הזמינה על פני יעילות הקידוד</string>
   <string name="morphe_video_quality_prioritize_dialog">אם ההגדרה הזו כבויה, ייתכן שסרטונים ישנים לא יציגו אפשרויות איכות וידאו</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_av1_title">אפשר \'Android VR\' / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">מאפשר פענוח AV1 בתוכנה בעת שימוש בלקוח \'Android VR\' / visionOS</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"הפעלת הגדרה זו עשויה להשתמש בפענוח תוכנה של AV1.
 
 הפעלת וידאו עם AV1 עלולה לגרום לגמגום או לדלוג על פריימים."</string>
   <string name="morphe_spoof_video_streams_about_title">תופעות לוואי של התחזות</string>
+  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• תפריט \'ערוץ השמע\' חסר</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• אין קודק וידאו מסוג AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• מצב 360° VR אינו זמין</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• עוצמת קול יציבה אינה זמינה</string>
@@ -1142,6 +1153,7 @@ Second \"item\" text"</string>
   <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• האיכות עשויה להיות מוגבלת ל-720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">גירסת JavaScript של השחקן</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">הצג זיוף בנתונים לגיקים</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">שחזור סרגל פעולות וידאו ישן</string>
   <string name="morphe_restore_old_video_action_bar_summary">"מתקן תצוגה לא נכונה של 'לא אהבתי' ומונע הסתרה של כפתורי הפעולה של הסרטון

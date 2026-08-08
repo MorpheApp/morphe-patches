@@ -496,13 +496,13 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'লাইভস্ট্রিম ডিভিআর সক্ষম করুন' উপলব্ধ নাও হতে পারে
 
-এটি ঠিক করতে, 'স্পুফ ভিডিও স্ট্রিম' চালু করুন এবং 'ডিফল্ট ক্লায়েন্ট' 'TV Simply' বা 'visionOS' এ পরিবর্তন করুন"</string>
+এটি ঠিক করতে, 'ভিডিও স্ট্রিম স্পুফ' চালু করুন এবং 'ডিফল্ট ক্লায়েন্ট' 'টিভি' বা 'ভিশনওএস'-এ পরিবর্তন করুন।"</string>
   <string name="morphe_expand_livestream_dvr_duration_title">লাইভস্ট্রিম ডিভিআর সময়কাল বাড়ান</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">আপনাকে লাইভ সম্প্রচারগুলি অতীতের ৭ দিন পর্যন্ত रिवाइंड করতে দেয়</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"'লাইভস্ট্রিম ডিভিআর সময়কাল প্রসারিত করুন' উপলব্ধ নাও হতে পারে
+  <string name="morphe_expand_livestream_dvr_duration_not_available">"'লাইভস্ট্রিম ডিভিআর সময়কাল বাড়ান' উপলব্ধ নাও হতে পারে
 
-এটি ঠিক করতে, 'স্পুফ ভিডিও স্ট্রিম' চালু করুন এবং 'ডিফল্ট ক্লায়েন্ট' 'TV Simply' বা 'visionOS' এ পরিবর্তন করুন"</string>
+এটি ঠিক করতে, 'স্পুফ ভিডিও স্ট্রিম' চালু করুন এবং 'ডিফল্ট ক্লায়েন্ট' কে 'টিভি' বা 'visionOS' এ পরিবর্তন করুন"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">ভিডিওর নির্দিষ্ট অংশে যেতে টানুন সক্রিয় করুন</string>
   <string name="morphe_slide_to_seek_summary">ভিডিও প্লেয়ারে প্রেস এবং ধরে রাখলে 2x গতিতে খেলার পরিবর্তে স্লাইড করতে সন্ধান চালু করে।</string>
@@ -812,6 +812,8 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_hide_shorts_like_fountain_title">লাইক বোতাম ফাউন্টেন অ্যানিমেশনটি লুকান</string>
   <string name="morphe_hide_shorts_like_button_title">লাইক বোতামটি লুকান</string>
   <string name="morphe_hide_shorts_comments_button_title">কমেন্টস বোতামটি লুকান</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">সেভ বোতামটি লুকান</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">শেয়ার বোতামটি লুকান</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->

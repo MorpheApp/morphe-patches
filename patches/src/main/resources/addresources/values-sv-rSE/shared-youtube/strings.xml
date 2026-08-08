@@ -25,12 +25,14 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_title">Externa nedladdningar</string>
   <string name="morphe_external_downloader_name_title">Nedladdarens paketnamn</string>
   <string name="morphe_external_downloader_name_summary">Paketnamn på din installerade externa nedladdningsapp</string>
+  <string name="morphe_external_downloader_other_item_hint">Ange paketnamn</string>
   <string name="morphe_external_downloader_other_item">Annat</string>
   <string name="morphe_external_downloader_not_found_title">Appen har inte installerats</string>
   <string name="morphe_external_downloader_not_installed_warning">%s har inte installerats. Installera den.</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Det gick inte att hitta en installerad app med paketnamnet: %s
 
 Verifiera att paketnamnet är korrekt och att appen har installerats"</string>
+  <string name="morphe_external_downloader_empty_warning">Paketnamnet får inte vara tomt</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Anpassad</string>
   <string name="morphe_custom_branding_icon_title">Appikon</string>
@@ -110,17 +112,38 @@ Tryck på Fortsätt nedan för att logga in"</string>
   <string name="morphe_force_original_audio_title">Tvinga ursprungligt ljudspråk</string>
   <string name="morphe_force_original_audio_summary">Spelar alltid videons ursprungliga ljudspår istället för en dubbad version</string>
   <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">Nätverksproxy</string>
+  <string name="morphe_proxy_screen_summary">Dirigera stödda nätverksförfrågningar genom en proxy</string>
+  <string name="morphe_proxy_enabled_title">Aktivera proxy</string>
+  <string name="morphe_proxy_enabled_summary">Dirigerar stödda nätverksförfrågningar genom en konfigurerad HTTP- eller HTTPS-proxy</string>
+  <string name="morphe_proxy_host_title">Proxyvärd</string>
+  <string name="morphe_proxy_host_summary">Värdnamn eller IP-adress för proxyservern</string>
+  <string name="morphe_proxy_port_title">Proxyport</string>
+  <string name="morphe_proxy_port_summary">Port för proxyservern</string>
+  <string name="morphe_proxy_https_title">Använd HTTPS-proxy</string>
+  <string name="morphe_proxy_https_summary">Använd HTTPS för att ansluta till proxyservern istället för HTTP</string>
+  <string name="morphe_proxy_auth_enabled_title">Proxyautentisering</string>
+  <string name="morphe_proxy_auth_enabled_summary">Skickar grundläggande autentisering med proxyförfrågningar</string>
+  <string name="morphe_proxy_auth_username_title">Proxyanvändarnamn</string>
+  <string name="morphe_proxy_auth_username_summary">Användarnamn för grundläggande proxyautentisering</string>
+  <string name="morphe_proxy_auth_password_title">Proxylösenord</string>
+  <string name="morphe_proxy_auth_password_summary">Lösenord för grundläggande proxyautentisering</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">Tillåt direkt reserv</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">Anslut direkt om proxyn misslyckas</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Dölj helskärmsannonser</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
           'Android Studio' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">För att använda den här funktionen ändrar du \"Förfalska videoströmmar\" till valfri klient utom \"Android Studio\"</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Rensa delningslänkar</string>
   <string name="morphe_sanitize_sharing_links_summary">Tar bort frågeparametrar för spårning från delade länkar</string>
   <string name="morphe_replace_music_with_youtube_title">Ändra delningslänkar till youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary">Ersätter music.youtube.com med youtube.com i delade länkar</string>
   <string name="morphe_replace_links_with_shortener_title">Ändra delningslänkar till youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Tvingar videor att använda det förkortade webbadressformatet youtu.be</string>
   <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_protobuffer_title">Debug-logg för protokollbuffert</string>
   <string name="morphe_debug_protobuffer_summary">Lägger till ytterligare loggningsinformation för utvecklare för att identifiera appkomponenter</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Om du aktiverar den här inställningen loggas ytterligare layoutdata, inklusive text på skärmen för vissa komponenter i användargränssnittet.
 
@@ -129,16 +152,27 @@ Detta kan hjälpa till att identifiera komponenter när du skapar anpassade filt
 Men om du aktiverar detta kommer även vissa användardata, t.ex. din IP-adress, att loggas."</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Anpassat filter</string>
+  <string name="morphe_custom_filter_screen_summary">Konfigurera anpassade filter för att dölja valfri komponent</string>
   <string name="morphe_custom_filter_title">Aktivera anpassat filter</string>
   <string name="morphe_custom_filter_strings_title">Anpassat filter</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Lista över path builder-strängar för komponenter som ska filtreras bort, åtskilda av nya rader</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Det anpassade filtret är ogiltigt: %s</string>
   <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
+  <string name="morphe_settings_menu_filter_screen_title">Inställningsmenyfilter</string>
+  <string name="morphe_settings_menu_filter_screen_summary">Dölj objekt på standardappens inställningsskärm efter deras synliga namn</string>
+  <string name="morphe_settings_menu_filter_picker_empty">Öppna standardappens inställningsskärm en gång för att fylla listan</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
+  <string name="morphe_remove_viewer_discretion_dialog_title">Ta bort dialogrutan för tittarens bedömning</string>
+  <string name="morphe_remove_viewer_discretion_dialog_summary">Detta kringgår inte åldersbegränsningen. Det accepterar den bara automatiskt</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Förfalska appversionen</string>
   <string name="morphe_spoof_app_version_summary">Lurar servern att tro att du använder en äldre appversion för att återställa äldre funktioner i användargränssnittet</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"Appversionen kommer att förfalskas till en äldre version.
+
+Detta kommer att ändra utseendet och funktionerna i appen, men okända bieffekter kan uppstå.
+
+Om du senare inaktiverar det rekommenderar vi att rensa appens data för att förhindra fel i användargränssnittet."</string>
   <string name="morphe_spoof_app_version_target_title">Mål för Förfalska appversionen</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
@@ -158,8 +192,24 @@ Men om du aktiverar detta kommer även vissa användardata, t.ex. din IP-adress,
   <string name="morphe_ryd_estimated_like_summary">Visar ett uppskattat antal gilla-markeringar för videor där kreatören har inaktiverat gilla-markeringar</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Visa meddelanden om anslutningsfel</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Visar ett meddelande när Return YouTube Dislike-servern inte är tillgänglig</string>
+  <string name="morphe_ryd_attribution_summary">"Data tillhandahålls av Return YouTube Dislike API
+
+Tryck här för att öppna ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
+  <string name="morphe_ryd_statistics_category_title">Return YouTube Dislike API-statistik för den här enheten</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API-svarstid, genomsnitt</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeMin_title">API-svarstid, minimum</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeMax_title">API-svarstid, maximum</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_title">API-svarstid, senaste media</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Ogilla-markeringar är tillfälligt inte tillgängliga – klientens API-begränsning gäller</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API-rösthämtning, antal anrop</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Inga nätverksanrop har gjorts</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%d nätverksanrop har gjorts</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API-rösthämtning, antal timeouts</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Inga nätverksanrop nådde tidsgränsen</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d nätverksanrop nådde tidsgränsen</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">API-klientbegränsningar</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Inga klientbegränsningar påträffades</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Klientbegränsning påträffades %d gånger</string>
   <string name="morphe_ryd_statistics_millisecond_text">%d millisekunder</string>
 </resources>

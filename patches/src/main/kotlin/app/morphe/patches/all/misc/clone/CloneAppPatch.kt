@@ -24,7 +24,7 @@
  * merchantability and fitness for a particular purpose, are disclaimed.
  */
 
-package app.morphe.patches.all.misc.packagename
+package app.morphe.patches.all.misc.clone
 
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
@@ -117,10 +117,12 @@ private fun applyGetPackageName(oldPackageName: String, vararg classesToChange: 
 }
 
 @Suppress("unused")
-val changePackageNamePatch = resourcePatch(
-    name = "Change package name",
-    description = "Appends \".morphe\" to the package name by default. " +
-            "Changing the package name of the app can lead to unexpected issues.",
+val cloneAppPatch = resourcePatch(
+    name = "Clone app",
+    description = "Changes the app package name to allow installing the same app multiple times. " +
+            "By default \".morphe\" is appended the package name. Each cloned install must " +
+            "use a unique package name. Cloning does not work with all apps and using this patch " +
+            "may cause app crashes or other unexpected behavior.",
     default = false
 ) {
     packageNameOption = stringOption(
@@ -128,7 +130,7 @@ val changePackageNamePatch = resourcePatch(
         default = "Default",
         values = mapOf("Default" to "Default"),
         title = "Package name",
-        description = "The name of the package to rename the app to.",
+        description = "Package name to use for the cloned app.",
         required = true,
     ) {
         it == "Default" || it!!.matches(Regex("^[a-z]\\w*(\\.[a-z]\\w*)+$"))
@@ -195,7 +197,7 @@ val changePackageNamePatch = resourcePatch(
 
         if (incompatibleAppPackages.contains(packageName)) {
             return@finalize Logger.getLogger(this::class.java.name).severe(
-                "'$packageName' does not work correctly with \"Change package name\"",
+                "'$packageName' does not work correctly with \"Clone app\", and no changes were made.",
             )
         }
 

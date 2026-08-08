@@ -494,15 +494,15 @@ Info: S-ar putea să nu funcționeze pe transmisiuni live"</string>
   <string name="morphe_seekbar_thumbnail_preview_title">Activează miniaturile barei de căutare</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Afișează o miniatură video în timpul glisării pe bara de căutare</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"'Activează DVR pentru streaming live' poate să nu fie disponibil
+  <string name="morphe_livestream_dvr_not_available">"'Activare DVR live' ar putea să nu fie disponibil
 
-Pentru a remedia acest lucru, activează 'Spoof fluxuri video' și schimbă 'Client implicit' în 'TV Simply' sau 'visionOS'"</string>
+Pentru a remedia această problemă, activați 'Falsificare fluxuri video' și schimbați 'Client implicit' în 'TV' sau 'visionOS'."</string>
   <string name="morphe_expand_livestream_dvr_duration_title">Extinde durata DVR pentru livestream</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">Vă permite să derulați înapoi emisiunile live până la 7 zile în trecut</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Extinde durata DVR pentru streaming live' poate să nu fie disponibil
+  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Extinderea duratei DVR live' ar putea să nu fie disponibil
 
-Pentru a remedia acest lucru, activează 'Spoof fluxuri video' și schimbă 'Client implicit' în 'TV Simply' sau 'visionOS'"</string>
+Pentru a remedia această problemă, activați 'Falsificare fluxuri video' și schimbați 'Client implicit' în 'TV' sau 'visionOS'."</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Activează diapozitivul pentru a căuta</string>
   <string name="morphe_slide_to_seek_summary">Activează glisarea pentru a căuta în loc să redă cu o viteză de 2x când apeși și menții apăsat playerul video</string>
@@ -520,6 +520,7 @@ Pentru a remedia acest lucru, activează 'Spoof fluxuri video' și schimbă 'Cli
   <string name="morphe_swipe_zone_label_volume">Volum</string>
   <string name="morphe_swipe_zone_label_native">Nativ</string>
   <string name="morphe_swipe_press_to_engage_title">Activează gestul de apăsare pentru a trage</string>
+  <string name="morphe_swipe_press_to_engage_summary">Necesită apăsare și menținere înainte ca un gest de glisare să fie recunoscut.</string>
   <string name="morphe_swipe_haptic_feedback_title">Activează feedback haptic</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Salvează și restaurează luminozitatea</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Ascunde butonul Like și Dislike</string>
@@ -811,6 +812,8 @@ Pentru a afișa meniul 'Pistă audio', schimbați 'Spoof video streams' la orice
   <string name="morphe_hide_shorts_like_fountain_title">Ascunde animația fântână a butonului Like</string>
   <string name="morphe_hide_shorts_like_button_title">Ascunde butonul Like</string>
   <string name="morphe_hide_shorts_comments_button_title">Ascunde butonul Comentarii</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">Ascunde butonul Salvează</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Ascunde butonul Distribuie</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
@@ -1050,6 +1053,7 @@ Atingeți aici pentru a afla mai multe despre DeArrow"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Comenzi media pentru notificări</string>
   <string name="morphe_notification_media_screen_summary">Personalizează comenzile de redare afișate pe ecranul de blocare și panoul de notificări</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Ascunde butoanele Înapoi &amp; Înainte</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Ascunde butoanele anterioare și următoare din notificarea media, pe ecranul de blocare și pe comenzile pentru căști</string>
   <string name="morphe_disable_notification_media_seekbar_title">Dezactivează bara de căutare</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Împiedică tragerea barei de căutare pe ecranul de blocare și panoul de notificări</string>
@@ -1122,6 +1126,7 @@ Limitări:
 • Videoclipurile HDR nu vor utiliza AVC
 • Unele dispozitive nu pot forța AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Pentru a utiliza această funcție, setați \'Falsificare fluxuri video\' la \'Android VR\' sau \'Android Studio\'.</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Deschide meniul calității avansate</string>
   <string name="morphe_advanced_video_quality_menu_summary">Sare peste meniul de selecție a calității și deschide direct meniul de calitate avansat.</string>
@@ -1132,10 +1137,13 @@ Limitări:
   <string name="morphe_video_quality_prioritize_summary">Prioritizează cea mai înaltă calitate video disponibilă în detrimentul eficienței codec-ului</string>
   <string name="morphe_video_quality_prioritize_dialog">Dacă această setare este dezactivată, videoclipurile mai vechi pot să nu afișeze opțiuni de calitate video</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_av1_title">Permite \'Android VR\' / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Permite decodarea software AV1 atunci când folosiți clientul \'Android VR\' / visionOS</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Activarea acestei setări poate folosi decodarea software AV1.
 
 Redarea video cu AV1 poate sacada sau pierde cadre."</string>
   <string name="morphe_spoof_video_streams_about_title">Efecte secundare ale simulării</string>
+  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Meniul \'Audio Track\' lipsește</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Fara codec video AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Mod 360° VR immersiv nu este disponibil</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Volumul stabil nu este disponibil</string>
@@ -1145,6 +1153,7 @@ Redarea video cu AV1 poate sacada sau pierde cadre."</string>
   <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• Calitatea poate fi limitată la 720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Varianta JavaScript a playerului</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Afișează falsificarea în \'Statistici pentru pasionați\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Restaurare bara de acțiune video veche</string>
   <string name="morphe_restore_old_video_action_bar_summary">"Remediază problema dezactivării afișării numărului de dislike-uri și imposibilitatea ascunderii butoanelor de acțiune video

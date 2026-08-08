@@ -489,13 +489,13 @@ Ma'lumot: Jonli efirlarda ishlamasligi mumkin"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'Jonli efir DVR-ni yoqish' mavjud bo'lmasligi mumkin
 
-Buni tuzatish uchun 'Video oqimlarini soxtalashtirish'ni yoqing va 'Standart klient'ni 'TV Simply' yoki 'visionOS'ga o'zgartiring"</string>
+Buni tuzatish uchun 'Video oqimlarini soxtalashtirish'ni yoqing va 'Standart mijoz'ni 'TV' yoki 'visionOS' ga o'zgartiring."</string>
   <string name="morphe_expand_livestream_dvr_duration_title">Jonli oqim DVR davomiyligini kengaytirish</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">Sizga jonli efirlarni 7 kungacha ortga aylantirish imkonini beradi</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_expand_livestream_dvr_duration_not_available">"'Jonli efir DVR davomiyligini kengaytirish' mavjud bo'lmasligi mumkin
 
-Buni tuzatish uchun 'Video oqimlarini soxtalashtirish'ni yoqing va 'Standart klient'ni 'TV Simply' yoki 'visionOS'ga o'zgartiring"</string>
+Buni tuzatish uchun 'Video oqimlarini soxtalashtirish'ni yoqing va 'Standart mijoz'ni 'TV' yoki 'visionOS' ga o'zgartiring."</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Sekish harakatini yoqish</string>
   <string name="morphe_slide_to_seek_summary">Video pleerni bosib ushlab turganingizda 2 barobar tezlikda ijro qilish o\'rniga siljishni yoqish</string>
@@ -804,6 +804,8 @@ Sozlamalarga kirish uchun Umumiy → Asboblar → Sozlamalarni koʻrsatish orqal
   <string name="morphe_hide_shorts_like_fountain_title">YouTube Doodles’larni yashirish</string>
   <string name="morphe_hide_shorts_like_button_title">Yoqish</string>
   <string name="morphe_hide_shorts_comments_button_title">Navigatsiya tugmalarini yashirish</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">Saqlash tugmasini yashirish</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Dialogdagi “Ko\'rishni toʻxtatish”ni oʻchirish</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->

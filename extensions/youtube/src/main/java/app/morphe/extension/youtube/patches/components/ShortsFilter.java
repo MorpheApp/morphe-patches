@@ -207,6 +207,11 @@ public final class ShortsFilter extends Filter {
                 "reel_like_toggled_button.e"
         );
 
+        StringFilterGroup saveButton = new StringFilterGroup(
+                Settings.HIDE_SHORTS_SAVE_BUTTON,
+                "reel_save_button.e"
+        );
+
         StringFilterGroup previewComment = new StringFilterGroup(
                 Settings.HIDE_SHORTS_PREVIEW_COMMENT,
                 // Preview comment that can popup while a Short is playing.
@@ -402,6 +407,7 @@ public final class ShortsFilter extends Filter {
                 infoPanel,
                 joinButton,
                 likeButton,
+                saveButton,
                 likeFountain,
                 livePreview,
                 pausedOverlayButtons,

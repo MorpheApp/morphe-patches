@@ -495,13 +495,13 @@ Lưu ý: Có thể không hoạt động với video phát trực tiếp"</strin
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'Bật DVR phát trực tiếp' có thể không khả dụng
 
-Để khắc phục, hãy bật 'Giả lập luồng video' và thay đổi 'Máy khách mặc định' thành 'TV Simply' hoặc 'visionOS'"</string>
+Để khắc phục, hãy bật 'Giả mạo luồng phát video' và thay đổi 'Client mặc định' thành 'TV' hoặc 'visionOS'"</string>
   <string name="morphe_expand_livestream_dvr_duration_title">Tăng thời lượng DVR phát trực tiếp</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">Cho phép tua lại các buổi phát trực tiếp tối đa 7 ngày trước</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_expand_livestream_dvr_duration_not_available">"'Mở rộng thời lượng DVR phát trực tiếp' có thể không khả dụng
 
-Để khắc phục, hãy bật 'Giả lập luồng video' và thay đổi 'Máy khách mặc định' thành 'TV Simply' hoặc 'visionOS'"</string>
+Để khắc phục, hãy bật 'Giả mạo luồng phát video' và thay đổi 'Client mặc định' thành 'TV' hoặc 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Bật vuốt để tua</string>
   <string name="morphe_slide_to_seek_summary">Bật vuốt để tua thay vì phát video 2x khi bấm giữ trong trình phát</string>
@@ -519,6 +519,7 @@ Lưu ý: Có thể không hoạt động với video phát trực tiếp"</strin
   <string name="morphe_swipe_zone_label_volume">Âm lượng</string>
   <string name="morphe_swipe_zone_label_native">Gốc</string>
   <string name="morphe_swipe_press_to_engage_title">Bật cử chỉ bấm giữ để vuốt</string>
+  <string name="morphe_swipe_press_to_engage_summary">Yêu cầu nhấn và giữ trước khi cử chỉ vuốt được nhận biết</string>
   <string name="morphe_swipe_haptic_feedback_title">Bật phản hồi xúc giác</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Lưu và khôi phục độ sáng</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Nhớ mức độ sáng khi vào/thoát chế độ toàn màn hình</string>
@@ -810,6 +811,8 @@ Cần cung cấp \"Cookie phụ đề\""</string>
   <string name="morphe_hide_shorts_like_fountain_title">Ẩn hiệu ứng đài phun nút Thích</string>
   <string name="morphe_hide_shorts_like_button_title">Ẩn nút Thích</string>
   <string name="morphe_hide_shorts_comments_button_title">Ẩn nút Bình luận</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">Ẩn nút Lưu</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Ẩn nút Chia sẻ</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
@@ -1049,6 +1052,7 @@ Nhấn vào đây để truy cập DeArrow.ajay.app"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Điều khiển phát nhạc/video trên thông báo</string>
   <string name="morphe_notification_media_screen_summary">Tùy chỉnh giao diện điều khiển phát nhạc/video hiển thị trên màn hình khóa và bảng thông báo</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Ẩn nút Trước &amp; Tiếp theo</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Ẩn các nút Trước và Tiếp theo trong thông báo, màn hình khóa và điều khiển tai nghe</string>
   <string name="morphe_disable_notification_media_seekbar_title">Tắt thanh tiến trình</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Ngăn không cho kéo thanh tiến trình trên màn hình khóa và bảng thông báo</string>
@@ -1121,6 +1125,7 @@ Hạn chế:
 • Video HDR sẽ không sử dụng AVC
 • Một số thiết bị không thể buộc sử dụng AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Để dùng tính năng này, hãy đặt \'Giả mạo luồng phát video\' thành \'Android VR\' hoặc \'Android Studio\'</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Mở menu chất lượng nâng cao</string>
   <string name="morphe_advanced_video_quality_menu_summary">Bỏ qua menu chọn chất lượng và mở trực tiếp menu chất lượng nâng cao</string>
@@ -1131,10 +1136,13 @@ Hạn chế:
   <string name="morphe_video_quality_prioritize_summary">Ưu tiên chất lượng video cao nhất hơn là tối ưu codec</string>
   <string name="morphe_video_quality_prioritize_dialog">Nếu tắt tính năng này, các video cũ có thể không hiển thị tùy chọn chất lượng video</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_av1_title">Cho phép \'Android VR\' / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Cho phép giải mã AV1 bằng phần mềm khi sử dụng client \'Android VR\' / visionOS</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Bật cài đặt này có thể sử dụng giải mã AV1 bằng phần mềm.
 
 Phát video bằng AV1 có thể bị giật hoặc tụt khung hình."</string>
   <string name="morphe_spoof_video_streams_about_title">Hạn chế khi giả mạo</string>
+  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• \'Menu bản âm thanh\' bị thiếu</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Không có codec video AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Không hỗ trợ chế độ trải nhiệm VR 360°</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Âm lượng ổn định không khả dụng</string>
@@ -1144,6 +1152,7 @@ Phát video bằng AV1 có thể bị giật hoặc tụt khung hình."</string>
   <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• Chất lượng có thể bị giới hạn ở 720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Biến thể JavaScript của trình phát</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Hiện thông tin giả mạo trong \'Thống kê chi tiết\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Khôi phục thanh thao tác video cũ</string>
   <string name="morphe_restore_old_video_action_bar_summary">"Sửa lỗi không hiển thị số lượt không thích và không ẩn được các nút thao tác của video

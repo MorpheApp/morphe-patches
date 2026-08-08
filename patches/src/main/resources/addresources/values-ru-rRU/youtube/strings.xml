@@ -231,9 +231,9 @@ Second \"item\" text"</string>
   <string name="morphe_comments_screen_title">Комментарии</string>
   <string name="morphe_comments_screen_summary">Выберите, какие компоненты отображать в разделе комментариев</string>
   <string name="morphe_hide_comments_carousel_title">Включить фильтр карусели комментариев</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Введите точное название элемента карусели (например, «Спросить», «Разрекламировать это видео», «Слушать на YouTube Music»)
+  <string name="morphe_hide_comments_carousel_summary">"• Введите точное название элемента карусели (например, «Спросить», «Захайпить», «Слушать на YouTube Music»)
 • Скрытие элементов карусели может иметь нежелательные побочные эффекты
-• Если все элементы карусели скрыты, весь раздел комментариев также будет скрыт"</string>
+• Если все элементы карусели скрыты, раздел комментариев также будет скрыт"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Фильтр карусели комментариев</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Введите имена карусели комментариев для фильтрации, разделенные новыми строками</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Скрыть секцию ИИ сводки чата</string>
@@ -496,11 +496,15 @@ Second \"item\" text"</string>
   <string name="morphe_seekbar_thumbnail_preview_title">Включить миниатюры на полосе прокрутки</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Показывает миниатюру видео во время перетаскивания полосы прокрутки</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"«Включить DVR для прямой трансляции» может быть недоступно\n\nЧтобы это исправить, включите «Подмену видеопотоков» и измените «Клиент по умолчанию» на «TV Simply» или «visionOS»"</string>
+  <string name="morphe_livestream_dvr_not_available">"'Включить DVR прямой трансляции' может быть недоступно
+
+Чтобы исправить это, включите 'Подмена видео потоков' и измените 'Клиент по умолчанию' на 'TV' или 'visionOS'"</string>
   <string name="morphe_expand_livestream_dvr_duration_title">Расширить длительность прямой трансляции DVR</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">Позволяет перематывать прямые трансляции в прошлое до 7 дней</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"«Расширить длительность DVR для прямой трансляции» может быть недоступно\n\nЧтобы это исправить, включите «Подмену видеопотоков» и измените «Клиент по умолчанию» на «TV Simply» или «visionOS»"</string>
+  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Расширить продолжительность DVR прямой трансляции' может быть недоступно
+
+Чтобы исправить это, включите 'Подмена видео потоков' и измените 'Клиент по умолчанию' на 'TV' или 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Включить перемотку видео слайдом</string>
   <string name="morphe_slide_to_seek_summary">Включает перемотку с помощью свайпа вместо воспроизведения с удвоенной скоростью при нажатии и удержании видеоплеера</string>
@@ -518,6 +522,7 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_zone_label_volume">Громкость</string>
   <string name="morphe_swipe_zone_label_native">Основной</string>
   <string name="morphe_swipe_press_to_engage_title">Включить нажатие для выполнения жестов</string>
+  <string name="morphe_swipe_press_to_engage_summary">Нужно нажать и удерживать прежде чем жест свайпа будет распознан</string>
   <string name="morphe_swipe_haptic_feedback_title">Включить виброотклик при жестах</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Сохранять и восстанавливать яркость</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Запоминает уровень яркости при входе / выходе из полноэкранного режима</string>
@@ -809,6 +814,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_like_fountain_title">Скрыть анимацию кнопки \"Лайк\"</string>
   <string name="morphe_hide_shorts_like_button_title">Скрыть кнопку \"Лайк\"</string>
   <string name="morphe_hide_shorts_comments_button_title">Скрыть кнопку \"Комментарии\"</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">Скрыть кнопку \"Сохранить\"</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Скрыть кнопку \"Поделиться\"</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
@@ -1048,6 +1055,7 @@ Second \"item\" text"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Элементы управления воспроизведением в уведомлениях</string>
   <string name="morphe_notification_media_screen_summary">Настройте внешний вид и поведение панели управления мини-плеером на заблокированном экране и панели уведомлений</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Скрыть предыдущий &amp; Следующие кнопки</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Скрывает кнопки «Предыдущий» и «Следующий» в уведомлениях, на заблокированном экране и в элементах управления наушниками</string>
   <string name="morphe_disable_notification_media_seekbar_title">Отключить полосу прокрутки</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Запрещает перетаскивание полосы прогресса на заблокированном экране и панели уведомлений</string>
@@ -1118,6 +1126,7 @@ Second \"item\" text"</string>
 • HDR-видео не будут использовать AVC
 • Некоторые устройства не могут принудительно использовать AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Чтобы использовать эту функцию, измените \"Подмена видео потоков\" на \"Android VR\" или \"Android Studio\"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Открыть меню расширенных настроек качества</string>
   <string name="morphe_advanced_video_quality_menu_summary">Пропускает меню выбора качества и сразу открывает меню расширенных настроек качества</string>
@@ -1128,10 +1137,13 @@ Second \"item\" text"</string>
   <string name="morphe_video_quality_prioritize_summary">Приоритет максимально доступного качества видео над эффективностью кодека</string>
   <string name="morphe_video_quality_prioritize_dialog">Если эта настройка отключена, в старых видео могут отсутствовать варианты выбора качества</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_av1_title">Разрешить \"Android VR\" / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Разрешать программное декодирование AV1 когда используется \"Android VR\" / visionOS клиент</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Включение этой опции может использовать программное декодирование AV1.
 
 Воспроизведение видео с AV1 может прерываться или пропускать кадры."</string>
   <string name="morphe_spoof_video_streams_about_title">Побочные эффекты подмены</string>
+  <string name="morphe_spoof_video_streams_about_no_audio_tracks">Меню \"Звуковая дорожка\" отсутствует</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Отсутствует видеокодек AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Режим погружения 360° VR недоступен</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Постоянный уровень громкости недоступен </string>
@@ -1141,6 +1153,7 @@ Second \"item\" text"</string>
   <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• Качество может быть ограничено 720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Вариант JavaScript плеера</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Показывать подмену в \"Статистика для продвинутых\"</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Восстановить старую панель действий видео</string>
   <string name="morphe_restore_old_video_action_bar_summary">"Исправляет проблему с не отображением отметки «Не нравится» и невозможностью скрыть кнопки управления видео

@@ -76,7 +76,6 @@ public final class FlyoutUtils {
             getAsciiBytes("youtube.com/watch?v=")
     );
     private static final byte[] PLAYLIST_ID_PREFIXES_BYTES = getAsciiBytes("youtube.com/playlist?list=");
-    private static final byte[] COMPACT_PLAYLIST_BYTES = getAsciiBytes("compact_playlist.e");
     private static final List<byte[]> SHELFS_BYTES = List.of(
             getAsciiBytes("horizontal_shelf.e"),
             getAsciiBytes("shorts_shelf.e"),
@@ -139,12 +138,9 @@ public final class FlyoutUtils {
         flyoutDialog = dialog;
         runFlyoutPanelVisibilityHandler(dialog);
 
-        if (Settings.QUEUE_ADD_FLYOUT_MENU.get()
-                && (!flyoutVideoId.isEmpty() || !flyoutPlaylistId.isEmpty())) {
-            dialog.setOnShowListener(dialogInterface -> {
-                addFlyoutElements(dialog);
-            });
-        }
+        dialog.setOnShowListener(dialogInterface -> {
+            addFlyoutElements(dialog);
+        });
     }
 
     public static void dismissBottomSheetFlyout() {
@@ -163,9 +159,7 @@ public final class FlyoutUtils {
         flyoutPopupWindow = popupWindow;
         runFlyoutPanelVisibilityHandler(popupWindow);
 
-        if (Settings.QUEUE_ADD_FLYOUT_MENU.get()) {
-            addFlyoutElements(popupWindow);
-        }
+        addFlyoutElements(popupWindow);
     }
 
     public static void dismissPopupWindowFlyout() {
@@ -175,6 +169,11 @@ public final class FlyoutUtils {
     }
 
     private static void addFlyoutElements(Object flyoutPanel) {
+        if (!Settings.QUEUE_ADD_FLYOUT_MENU.get()
+                || flyoutVideoId.isEmpty()) {
+            return;
+        }
+
         final int currentInjectIndex = addFlyoutButton(
                 flyoutPanel,
                 AddToQueuePatch.queueButtonDrawable,
@@ -358,21 +357,25 @@ public final class FlyoutUtils {
 
     private static View addFlyoutButton(Context context, @Nullable Drawable icon,
                                         String text, View.OnClickListener clickListener) {
-        LinearLayout customButton = new LinearLayout(context);
+        final LinearLayout customButton = new LinearLayout(context);
+        final LinearLayout.LayoutParams buttonParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        customButton.setLayoutParams(buttonParams);
         customButton.setOrientation(LinearLayout.HORIZONTAL);
         customButton.setGravity(Gravity.CENTER_VERTICAL);
         customButton.setPadding(Dim.dp16, Dim.dp12, Dim.dp16, Dim.dp12);
         customButton.setClickable(true);
         customButton.setBackgroundColor(Utils.getAppBackgroundColor());
 
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(Dim.dp24, Dim.dp24);
-        layoutParams.rightMargin = Dim.dp16;
-
         if (icon != null) {
-            ImageView iconView = new ImageView(context);
+            final ImageView iconView = new ImageView(context);
+            final LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(Dim.dp24, Dim.dp24);
+            layoutParams.rightMargin = Dim.dp16;
             iconView.setLayoutParams(layoutParams);
 
-            Drawable mutableIcon = icon.mutate();
+            final Drawable mutableIcon = icon.mutate();
             mutableIcon.setTint(Utils.getAppForegroundColor());
             mutableIcon.setTintMode(PorterDuff.Mode.SRC_IN);
             iconView.setImageDrawable(mutableIcon);
@@ -380,7 +383,7 @@ public final class FlyoutUtils {
             customButton.addView(iconView);
         }
 
-        TextView textView = new TextView(context);
+        final TextView textView = new TextView(context);
         textView.setText(text);
         textView.setTextSize(16);
         textView.setTypeface(null, Typeface.BOLD);
@@ -485,12 +488,13 @@ public final class FlyoutUtils {
                 return;
             }
 
-            if (byteIndexInStartRange(byteIndexOf(flyoutBuffer, COMPACT_PLAYLIST_BYTES))) {
+            // TODO: Add playlists compatibility to Morphe's queue.
+            if (byteIndexInStartRange(byteIndexOf(flyoutBuffer, PLAYLIST_ID_PREFIXES_BYTES))) {
                 setFlyoutPlaylistId(flyoutBuffer);
                 return;
             }
 
-            // Set 'flyoutVideoId' field, based on the rest of fetched litho elements.
+            // Set 'flyoutVideoId' field, based on the remaining fetched litho elements.
             setFlyoutVideoId(flyoutBuffer);
         } catch (Exception ex) {
             Logger.printException(() -> "extractFlyoutId failure", ex);

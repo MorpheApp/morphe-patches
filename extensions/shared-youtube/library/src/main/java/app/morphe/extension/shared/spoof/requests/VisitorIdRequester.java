@@ -10,7 +10,6 @@ package app.morphe.extension.shared.spoof.requests;
 import androidx.annotation.GuardedBy;
 import androidx.annotation.Nullable;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -24,6 +23,8 @@ import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.innertube.utils.AuthUtils;
+import app.morphe.extension.shared.oauth2.requests.OAuth2Requester;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
@@ -32,7 +33,7 @@ import app.morphe.extension.shared.spoof.ClientType;
 public final class VisitorIdRequester {
 
     private record VisitorData(String visitorId, long fetchedTime) {
-        private static final long VISITOR_ID_EXPIRATION_MS = 2L * 365 * 24 * 60 * 60 * 1000; // 2 years
+        private static final long VISITOR_ID_EXPIRATION_MS = (long) 365 * 24 * 60 * 60 * 1000; // 1 year
 
         boolean isNotExpired() {
             return Utils.isNotEmpty(visitorId) && System.currentTimeMillis()
@@ -92,9 +93,21 @@ public final class VisitorIdRequester {
 
     private static void saveVisitorId(ClientType clientType, String visitorId, boolean updatedByPlayer) {
         Logger.printDebug(() -> "Updating visitorId for clientType: " + clientType + " updated by player: " + updatedByPlayer);
+        updateVisitorId(clientType, visitorId, true);
+    }
 
+    public static void removeVisitorId(ClientType clientType) {
+        Logger.printDebug(() -> "Removing visitorId for clientType: " + clientType);
+        updateVisitorId(clientType, "", false);
+    }
+
+    private static void updateVisitorId(ClientType clientType, String visitorId, boolean save) {
         synchronized (cache) {
-            cache.put(clientType, new VisitorData(visitorId, System.currentTimeMillis()));
+            if (save) {
+                cache.put(clientType, new VisitorData(visitorId, System.currentTimeMillis()));
+            } else {
+                cache.remove(clientType);
+            }
             JSONObject json = new JSONObject();
             try {
                 for (Map.Entry<ClientType, VisitorData> entry : cache.entrySet()) {
@@ -106,7 +119,7 @@ public final class VisitorIdRequester {
                 }
                 SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_CLIENT_IDS.save(json.toString());
             } catch (JSONException ex) {
-                Logger.printException(() -> "Failed to save visitor IDs", ex);
+                Logger.printException(() -> "Failed to update visitor IDs", ex);
             }
         }
     }
@@ -160,10 +173,7 @@ public final class VisitorIdRequester {
             client.put("utcOffsetMinutes", 0);
             context.put("client", client);
 
-            JSONArray internalExperimentFlags = new JSONArray();
-
             JSONObject request = new JSONObject();
-            request.put("internalExperimentFlags", internalExperimentFlags);
             request.put("useSsl", true);
             context.put("request", request);
 
@@ -194,6 +204,19 @@ public final class VisitorIdRequester {
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Accept-Language", "en-GB, en;q=0.9");
             connection.setRequestProperty("Content-Type", "application/json");
+            if (clientType.canLogin) {
+                if (!AuthUtils.isNotLoggedIn()) {
+                    String authorization = AuthUtils.getAuthorization();
+                    if (Utils.isNotEmpty(authorization)) {
+                        connection.setRequestProperty("Authorization", authorization);
+                    }
+                }
+            } else if (clientType.supportsOAuth2) {
+                String oauth2Authorization = OAuth2Requester.getAndUpdateAccessTokenIfNeeded();
+                if (!AuthUtils.isNotLoggedIn() && Utils.isNotEmpty(oauth2Authorization)) {
+                    connection.setRequestProperty("Authorization", oauth2Authorization);
+                }
+            }
             connection.setRequestProperty("User-Agent", clientType.userAgent);
             connection.setRequestProperty("X-YouTube-Client-Name", String.valueOf(clientType.id));
             connection.setRequestProperty("X-YouTube-Client-Version", clientType.clientVersion);

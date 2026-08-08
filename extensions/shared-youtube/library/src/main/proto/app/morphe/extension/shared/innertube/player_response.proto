@@ -44,9 +44,5 @@ message Format {
 }
 
 message PlayerConfig {
-  optional MediaCommonConfig mediaCommonConfig = 215771584;
 }
 
-message MediaCommonConfig {
-  optional bool usePlatypus = 18;
-}

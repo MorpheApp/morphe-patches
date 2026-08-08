@@ -542,13 +542,13 @@ Info: May not work on live streams"</string>
     <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
     <string name="morphe_livestream_dvr_not_available">"\'Enable livestream DVR\' may not be available
 
-To fix this, turn on \'Spoof video streams\' and change the \'Default client\' to \'TV Simply\' or \'visionOS\'"</string>
+To fix this, turn on \'Spoof video streams\' and change the \'Default client\' to \'TV\' or \'visionOS\'"</string>
     <string name="morphe_expand_livestream_dvr_duration_title">Expand livestream DVR duration</string>
     <string name="morphe_expand_livestream_dvr_duration_summary">Allows you to rewind live broadcasts up to 7 days into the past</string>
     <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
     <string name="morphe_expand_livestream_dvr_duration_not_available">"\'Expand livestream DVR duration\' may not be available
 
-To fix this, turn on \'Spoof video streams\' and change the \'Default client\' to \'TV Simply\' or \'visionOS\'"</string>
+To fix this, turn on \'Spoof video streams\' and change the \'Default client\' to \'TV\' or \'visionOS\'"</string>
 
     <!-- interaction.seekbar.enableSlideToSeekPatch -->
     <string name="morphe_slide_to_seek_title">Enable slide to seek</string>
@@ -884,6 +884,8 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <string name="morphe_hide_shorts_like_fountain_title">Hide Like button fountain animation</string>
     <string name="morphe_hide_shorts_like_button_title">Hide Like button</string>
     <string name="morphe_hide_shorts_comments_button_title">Hide Comments button</string>
+    <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+    <string name="morphe_hide_shorts_save_button_title">Hide Save button</string>
     <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_shorts_share_button_title">Hide Share button</string>
     <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
