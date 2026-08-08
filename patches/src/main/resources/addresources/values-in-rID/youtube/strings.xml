@@ -508,10 +508,10 @@ Untuk memperbaikinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' m
   <string name="morphe_tap_to_seek_title">Aktifkan ketuk untuk mencari</string>
   <string name="morphe_tap_to_seek_summary">Cukup ketuk bilah geser untuk melompat ke posisi itu tanpa menyeretnya</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Aktifkan gerakan kecerahan</string>
-  <string name="morphe_swipe_brightness_summary">Usap ke atas atau ke bawah di sisi kiri mode layar penuh untuk mengatur kecerahan</string>
-  <string name="morphe_swipe_volume_title">Aktifkan gerakan volume</string>
-  <string name="morphe_swipe_volume_summary">Usap ke atas di sisi kanan layar penuh untuk mengatur volume</string>
+  <string name="morphe_swipe_left_zone_title">Aktifkan gerakan kecerahan</string>
+  <string name="morphe_swipe_left_zone_summary">Usap ke atas atau ke bawah di sisi kiri mode layar penuh untuk mengatur kecerahan</string>
+  <string name="morphe_swipe_right_zone_title">Aktifkan gerakan volume</string>
+  <string name="morphe_swipe_right_zone_summary">Usap ke atas di sisi kanan layar penuh untuk mengatur volume</string>
   <string name="morphe_swipe_zone_width_title">Lebar zona kecerahan/volume</string>
   <string name="morphe_swipe_zone_width_summary">Persentase dari setiap tepi layar yang disediakan untuk gerakan pengaturan kecerahan dan volume (5–50)</string>
   <string name="morphe_swipe_zone_label_brightness">Kecerahan</string>
@@ -544,8 +544,8 @@ Untuk memperbaikinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' m
   <string name="morphe_swipe_volume_sensitivity_summary">Nilai yang lebih tinggi meningkatkan perubahan volume per usapan</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Sensitivitas usap kecerahan</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Nilai yang lebih tinggi memerlukan lebih banyak usapan per langkah kecerahan</string>
-  <string name="morphe_swipe_speed_title">Aktifkan gerakan kecepatan</string>
-  <string name="morphe_swipe_speed_summary">Usap secara horizontal di zona atas mode layar penuh untuk mengubah kecepatan pemutaran</string>
+  <string name="morphe_swipe_top_zone_title">Aktifkan gerakan kecepatan</string>
+  <string name="morphe_swipe_top_zone_summary">Usap secara horizontal di zona atas mode layar penuh untuk mengubah kecepatan pemutaran</string>
   <string name="morphe_swipe_speed_sensitivity_title">Sensitivitas usap kecepatan</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Nilai yang lebih tinggi memerlukan lebih banyak usapan per langkah kecepatan</string>
   <string name="morphe_swipe_speed_step_title">Tahap kecepatan</string>

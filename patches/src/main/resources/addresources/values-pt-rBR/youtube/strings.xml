@@ -509,10 +509,10 @@ Para corrigir isso, ative 'Simular streams de vídeo' e altere o 'Cliente padrã
   <string name="morphe_tap_to_seek_title">Ativar toque para voltar / avançar</string>
   <string name="morphe_tap_to_seek_summary">Apenas toque na barra de busca para pular para essa posição sem arrastá-la</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Ativar gesto de brilho</string>
-  <string name="morphe_swipe_brightness_summary">Deslize no modo de tela cheia para ir para o próximo ou vídeo anterior</string>
-  <string name="morphe_swipe_volume_title">Ativar gesto de volume</string>
-  <string name="morphe_swipe_volume_summary">Escolha quais botões de ação aparecem nos modos retrato e tela cheia</string>
+  <string name="morphe_swipe_left_zone_title">Ativar gesto de brilho</string>
+  <string name="morphe_swipe_left_zone_summary">Deslize no modo de tela cheia para ir para o próximo ou vídeo anterior</string>
+  <string name="morphe_swipe_right_zone_title">Ativar gesto de volume</string>
+  <string name="morphe_swipe_right_zone_summary">Escolha quais botões de ação aparecem nos modos retrato e tela cheia</string>
   <string name="morphe_swipe_zone_width_title">Largura da zona de brilho/volume</string>
   <string name="morphe_swipe_zone_width_summary">Porcentagem de cada borda da tela reservada para gestos de brilho e volume (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Brilho</string>
@@ -545,8 +545,8 @@ Para corrigir isso, ative 'Simular streams de vídeo' e altere o 'Cliente padrã
   <string name="morphe_swipe_volume_sensitivity_summary">Valores maiores alteram mais a mudança de volume a cada deslize</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Sensibilidade ao deslizar o brilho</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Valores maiores exigem deslizar mais para cada mudança de brilho</string>
-  <string name="morphe_swipe_speed_title">Ativar gesto de velocidade</string>
-  <string name="morphe_swipe_speed_summary">Deslize horizontalmente na zona superior do modo de tela cheia para alterar a velocidade de reprodução</string>
+  <string name="morphe_swipe_top_zone_title">Ativar gesto de velocidade</string>
+  <string name="morphe_swipe_top_zone_summary">Deslize horizontalmente na zona superior do modo de tela cheia para alterar a velocidade de reprodução</string>
   <string name="morphe_swipe_speed_sensitivity_title">Sensibilidade ao deslizar a velocidade</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Valores maiores exigem deslizar mais para cada mudança de velocidade</string>
   <string name="morphe_swipe_speed_step_title">Intervalo de velocidade</string>

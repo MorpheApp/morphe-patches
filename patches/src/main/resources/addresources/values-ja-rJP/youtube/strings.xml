@@ -510,10 +510,10 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_tap_to_seek_title">タップによるシークを有効化</string>
   <string name="morphe_tap_to_seek_summary">シークバーをタップすると、タップした位置に移動します</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">明るさジェスチャーを有効化</string>
-  <string name="morphe_swipe_brightness_summary">全画面表示モードで画面左側を縦にスワイプして明るさを調節します</string>
-  <string name="morphe_swipe_volume_title">音量ジェスチャーを有効化</string>
-  <string name="morphe_swipe_volume_summary">全画面表示モードで画面右側を縦にスワイプして音量を調節します</string>
+  <string name="morphe_swipe_left_zone_title">明るさジェスチャーを有効化</string>
+  <string name="morphe_swipe_left_zone_summary">全画面表示モードで画面左側を縦にスワイプして明るさを調節します</string>
+  <string name="morphe_swipe_right_zone_title">音量ジェスチャーを有効化</string>
+  <string name="morphe_swipe_right_zone_summary">全画面表示モードで画面右側を縦にスワイプして音量を調節します</string>
   <string name="morphe_swipe_zone_width_title">明るさ / 音量の領域の横幅</string>
   <string name="morphe_swipe_zone_width_summary">明るさ / 音量ジェスチャーに割り当てる、画面左 / 右端を起点とする領域の横幅 (画面全体の横幅に対するパーセンテージ: 5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">明るさ</string>
@@ -546,8 +546,8 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_swipe_volume_sensitivity_summary">この値を大きくすると、スワイプによる音量の変化量が大きくなります</string>
   <string name="morphe_swipe_brightness_sensitivity_title">明るさジェスチャーのスワイプ感度</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">この値を大きくすると、明るさを変化させるために必要なスワイプ距離が大きくなり、細かい調整がスムーズになります</string>
-  <string name="morphe_swipe_speed_title">再生速度ジェスチャーを有効化</string>
-  <string name="morphe_swipe_speed_summary">全画面表示モードで画面の上側を横にスワイプして再生速度を変更します</string>
+  <string name="morphe_swipe_top_zone_title">再生速度ジェスチャーを有効化</string>
+  <string name="morphe_swipe_top_zone_summary">全画面表示モードで画面の上側を横にスワイプして再生速度を変更します</string>
   <string name="morphe_swipe_speed_sensitivity_title">再生速度ジェスチャーのスワイプ感度</string>
   <string name="morphe_swipe_speed_sensitivity_summary">この値を大きくすると、再生速度を変化させるために必要なスワイプ距離が大きくなり、細かい調整がスムーズになります</string>
   <string name="morphe_swipe_speed_step_title">速度段階</string>

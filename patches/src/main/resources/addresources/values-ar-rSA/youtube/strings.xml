@@ -514,10 +514,10 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_tap_to_seek_title">تمكين النقر للتمرير</string>
   <string name="morphe_tap_to_seek_summary">اضغط فقط على شريط التقدم للانتقال إلى ذلك الموضع دون سحبه</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">تمكين إيماءة السطوع</string>
-  <string name="morphe_swipe_brightness_summary">مرِّر عموديًا على الجانب الأيسر من وضع ملء الشاشة لضبط مستوى السطوع</string>
-  <string name="morphe_swipe_volume_title">تمكين إيماءة الصوت</string>
-  <string name="morphe_swipe_volume_summary">مرِّر عموديًا على الجانب الأيمن من وضع ملء الشاشة لضبط مستوى الصوت</string>
+  <string name="morphe_swipe_left_zone_title">تمكين إيماءة السطوع</string>
+  <string name="morphe_swipe_left_zone_summary">مرِّر عموديًا على الجانب الأيسر من وضع ملء الشاشة لضبط مستوى السطوع</string>
+  <string name="morphe_swipe_right_zone_title">تمكين إيماءة الصوت</string>
+  <string name="morphe_swipe_right_zone_summary">مرِّر عموديًا على الجانب الأيمن من وضع ملء الشاشة لضبط مستوى الصوت</string>
   <string name="morphe_swipe_zone_width_title">عرض منطقة السطوع/الصوت</string>
   <string name="morphe_swipe_zone_width_summary">نسبة كل حافة من حواف الشاشة المخصصة لإيماءات السطوع و الصوت (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">السطوع</string>
@@ -551,8 +551,8 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_swipe_volume_sensitivity_summary">القيم الأعلى تزيد من تغيُّر مستوى الصوت مع كل تمريرة</string>
   <string name="morphe_swipe_brightness_sensitivity_title">حساسية تمرير مستوى السطوع</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">القيم الأعلى تتطلب التمرير أكثر لكل مستوى سطوع</string>
-  <string name="morphe_swipe_speed_title">تمكين إيماءة السرعة</string>
-  <string name="morphe_swipe_speed_summary">مرِّر أفقيًا في المنطقة العلوية بوضع ملء الشاشة لتغيير سرعة التشغيل</string>
+  <string name="morphe_swipe_top_zone_title">تمكين إيماءة السرعة</string>
+  <string name="morphe_swipe_top_zone_summary">مرِّر أفقيًا في المنطقة العلوية بوضع ملء الشاشة لتغيير سرعة التشغيل</string>
   <string name="morphe_swipe_speed_sensitivity_title">حساسية تمرير السرعة</string>
   <string name="morphe_swipe_speed_sensitivity_summary">القيم الأعلى تتطلب التمرير أكثر لكل درجة سرعة</string>
   <string name="morphe_swipe_speed_step_title">مستوى تغيير السرعة</string>

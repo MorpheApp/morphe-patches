@@ -500,10 +500,10 @@ Second \"item\" text"</string>
   <string name="morphe_tap_to_seek_title">เปิดใช้งานแตะเพื่อค้นหา</string>
   <string name="morphe_tap_to_seek_summary">เพียงแตะที่แถบความคืบหน้าเพื่อกระโดดไปยังตำแหน่งนั้นโดยไม่ต้องลาก</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">เปิดใช้งานท่าทางความสว่าง</string>
-  <string name="morphe_swipe_brightness_summary">ปัดในแนวดิ่งที่ด้านซ้ายของโหมดเต็มหน้าจอเพื่อปรับความสว่าง</string>
-  <string name="morphe_swipe_volume_title">เปิดใช้งานท่าทางระดับเสียง</string>
-  <string name="morphe_swipe_volume_summary">ปัดในแนวดิ่งที่ด้านขวาของโหมดเต็มหน้าจอเพื่อปรับระดับเสียง</string>
+  <string name="morphe_swipe_left_zone_title">เปิดใช้งานท่าทางความสว่าง</string>
+  <string name="morphe_swipe_left_zone_summary">ปัดในแนวดิ่งที่ด้านซ้ายของโหมดเต็มหน้าจอเพื่อปรับความสว่าง</string>
+  <string name="morphe_swipe_right_zone_title">เปิดใช้งานท่าทางระดับเสียง</string>
+  <string name="morphe_swipe_right_zone_summary">ปัดในแนวดิ่งที่ด้านขวาของโหมดเต็มหน้าจอเพื่อปรับระดับเสียง</string>
   <string name="morphe_swipe_zone_width_title">ความกว้างของโซนปรับความสว่าง/ระดับเสียง</string>
   <string name="morphe_swipe_zone_width_summary">เปอร์เซ็นต์ของขอบแต่ละด้านของหน้าจอที่สงวนไว้สำหรับท่าทางปรับความสว่างและระดับเสียง (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">ความสว่าง</string>
@@ -536,8 +536,8 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_volume_sensitivity_summary">ค่าที่สูงขึ้นจะเพิ่มการเปลี่ยนแปลงระดับเสียงต่อการปัดแต่ละครั้ง</string>
   <string name="morphe_swipe_brightness_sensitivity_title">ความไวในการปัดปรับความสว่าง</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">ค่าที่สูงขึ้นต้องมีการปัดมากขึ้นต่อการปรับความสว่างแต่ละครั้ง</string>
-  <string name="morphe_swipe_speed_title">เปิดใช้งานท่าทางความเร็ว</string>
-  <string name="morphe_swipe_speed_summary">เลื่อนในแนวนอนในส่วนบนของโหมดเต็มหน้าจอเพื่อเปลี่ยนความเร็วในการเล่น</string>
+  <string name="morphe_swipe_top_zone_title">เปิดใช้งานท่าทางความเร็ว</string>
+  <string name="morphe_swipe_top_zone_summary">เลื่อนในแนวนอนในส่วนบนของโหมดเต็มหน้าจอเพื่อเปลี่ยนความเร็วในการเล่น</string>
   <string name="morphe_swipe_speed_sensitivity_title">ความไวในการปัดปรับความเร็ว</string>
   <string name="morphe_swipe_speed_sensitivity_summary">ค่าที่สูงขึ้นต้องมีการปัดมากขึ้นต่อการปรับความเร็วแต่ละครั้ง</string>
   <string name="morphe_swipe_speed_step_title">ขั้นตอนความเร็ว</string>

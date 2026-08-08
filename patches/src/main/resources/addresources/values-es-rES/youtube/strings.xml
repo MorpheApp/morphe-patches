@@ -505,10 +505,10 @@ Para solucionar esto, active \"Falsificar transmisiones de vídeo\" y cambie \"C
   <string name="morphe_tap_to_seek_title">Activar tocar para buscar</string>
   <string name="morphe_tap_to_seek_summary">Simplemente toca la barra de búsqueda para saltar a esa posición sin arrastrarla</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Activar gesto de brillo</string>
-  <string name="morphe_swipe_brightness_summary">Deslice verticalmente en el lado izquierdo del modo de pantalla completa para ajustar el brillo</string>
-  <string name="morphe_swipe_volume_title">Activar gesto de volumen</string>
-  <string name="morphe_swipe_volume_summary">Deslice verticalmente en el lado derecho del modo de pantalla completa para ajustar el volumen</string>
+  <string name="morphe_swipe_left_zone_title">Activar gesto de brillo</string>
+  <string name="morphe_swipe_left_zone_summary">Deslice verticalmente en el lado izquierdo del modo de pantalla completa para ajustar el brillo</string>
+  <string name="morphe_swipe_right_zone_title">Activar gesto de volumen</string>
+  <string name="morphe_swipe_right_zone_summary">Deslice verticalmente en el lado derecho del modo de pantalla completa para ajustar el volumen</string>
   <string name="morphe_swipe_zone_width_title">Ancho de la zona de brillo/volumen</string>
   <string name="morphe_swipe_zone_width_summary">Porcentaje de cada borde de la pantalla reservado para los gestos de brillo y volumen (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Brillo</string>
@@ -541,8 +541,8 @@ Para solucionar esto, active \"Falsificar transmisiones de vídeo\" y cambie \"C
   <string name="morphe_swipe_volume_sensitivity_summary">Cuanto más alto sea el valor, mayor será el cambio de volumen al deslizar</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Sensibilidad del deslizamiento de brillo</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Los valores más altos requieren más deslizamiento por cada nivel de brillo</string>
-  <string name="morphe_swipe_speed_title">Activar gesto de velocidad</string>
-  <string name="morphe_swipe_speed_summary">Desliza horizontalmente en la zona superior del modo de pantalla completa para cambiar la velocidad de reproducción</string>
+  <string name="morphe_swipe_top_zone_title">Activar gesto de velocidad</string>
+  <string name="morphe_swipe_top_zone_summary">Desliza horizontalmente en la zona superior del modo de pantalla completa para cambiar la velocidad de reproducción</string>
   <string name="morphe_swipe_speed_sensitivity_title">Sensibilidad del deslizamiento de velocidad</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Los valores más altos requieren más deslizamiento por cada nivel de velocidad</string>
   <string name="morphe_swipe_speed_step_title">Paso de velocidad</string>

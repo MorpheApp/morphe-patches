@@ -508,10 +508,10 @@ Second \"item\" text"</string>
   <string name="morphe_tap_to_seek_title">啟用輕觸以跳轉</string>
   <string name="morphe_tap_to_seek_summary">直接點擊尋找條即可跳到該位置，無需拖曳</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">啟用亮度手勢</string>
-  <string name="morphe_swipe_brightness_summary">在全螢幕模式的左側垂直滑動以調整亮度</string>
-  <string name="morphe_swipe_volume_title">啟用音量手勢</string>
-  <string name="morphe_swipe_volume_summary">在全螢幕模式的右側垂直滑動以調整音量</string>
+  <string name="morphe_swipe_left_zone_title">啟用亮度手勢</string>
+  <string name="morphe_swipe_left_zone_summary">在全螢幕模式的左側垂直滑動以調整亮度</string>
+  <string name="morphe_swipe_right_zone_title">啟用音量手勢</string>
+  <string name="morphe_swipe_right_zone_summary">在全螢幕模式的右側垂直滑動以調整音量</string>
   <string name="morphe_swipe_zone_width_title">亮度/音量區域寬度</string>
   <string name="morphe_swipe_zone_width_summary">保留給亮度與音量手勢的螢幕邊緣百分比（5-50）</string>
   <string name="morphe_swipe_zone_label_brightness">亮度</string>
@@ -545,8 +545,8 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_volume_sensitivity_summary">較高的數值會增加每次滑動的音量變化</string>
   <string name="morphe_swipe_brightness_sensitivity_title">亮度滑動靈敏度</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">較高的數值需要更頻繁的滑動才能改變亮度</string>
-  <string name="morphe_swipe_speed_title">啟用速度手勢</string>
-  <string name="morphe_swipe_speed_summary">向全螢幕模式的頂部區域水平滑動以更改播放速度</string>
+  <string name="morphe_swipe_top_zone_title">啟用速度手勢</string>
+  <string name="morphe_swipe_top_zone_summary">向全螢幕模式的頂部區域水平滑動以更改播放速度</string>
   <string name="morphe_swipe_speed_sensitivity_title">速度滑動靈敏度</string>
   <string name="morphe_swipe_speed_sensitivity_summary">較高的數值需要更頻繁的滑動才能改變速度</string>
   <string name="morphe_swipe_speed_step_title">速度步驟</string>

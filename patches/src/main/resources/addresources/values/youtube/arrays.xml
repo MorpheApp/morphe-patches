@@ -138,6 +138,18 @@
     </string-array>
 
     <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
+    <string-array name="morphe_swipe_zone_action_entries">
+        <item>@string/morphe_swipe_action_off</item>
+        <item>@string/morphe_swipe_action_volume</item>
+        <item>@string/morphe_swipe_action_brightness</item>
+        <item>@string/morphe_swipe_action_speed</item>
+    </string-array>
+    <string-array name="morphe_swipe_zone_action_entry_values">
+        <item>OFF</item>
+        <item>VOLUME</item>
+        <item>BRIGHTNESS</item>
+        <item>SPEED</item>
+    </string-array>
     <string-array name="morphe_swipe_overlay_style_entries">
         <item>@string/morphe_swipe_overlay_style_entry_1</item>
         <item>@string/morphe_swipe_overlay_style_entry_2</item>

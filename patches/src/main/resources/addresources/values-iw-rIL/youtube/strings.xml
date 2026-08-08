@@ -507,10 +507,10 @@ Second \"item\" text"</string>
   <string name="morphe_tap_to_seek_title">הפעל הקשה כדי לדלג</string>
   <string name="morphe_tap_to_seek_summary">הקש פשוט על פס החיפוש כדי לעבור למיקום הזה מבלי לגרור אותו</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">הפעל מחוות בהירות</string>
-  <string name="morphe_swipe_brightness_summary">החלק במצב מסך מלא כדי לדלג לסרטון הבא או הקודם</string>
-  <string name="morphe_swipe_volume_title">הפעל מחוות עוצמת קול</string>
-  <string name="morphe_swipe_volume_summary">בחר אילו כפתורים יופיעו בסרגל הניווט התחתון</string>
+  <string name="morphe_swipe_left_zone_title">הפעל מחוות בהירות</string>
+  <string name="morphe_swipe_left_zone_summary">החלק במצב מסך מלא כדי לדלג לסרטון הבא או הקודם</string>
+  <string name="morphe_swipe_right_zone_title">הפעל מחוות עוצמת קול</string>
+  <string name="morphe_swipe_right_zone_summary">בחר אילו כפתורים יופיעו בסרגל הניווט התחתון</string>
   <string name="morphe_swipe_zone_width_title">רוחב אזור בהירות/עוצמת קול</string>
   <string name="morphe_swipe_zone_width_summary">אחוז מכל קצה מסך השמור למחוות בהירות ועוצמת קול (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">בהירות</string>
@@ -543,8 +543,8 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_volume_sensitivity_summary">ערכים גבוהים יותר מגדילים את שינוי עוצמת הקול בכל החלקה</string>
   <string name="morphe_swipe_brightness_sensitivity_title">רגישות החלקה בבהירות</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">ערכים גבוהים יותר דורשים יותר החלקות לכל שלב בהירות</string>
-  <string name="morphe_swipe_speed_title">הפעל מחוות מהירות</string>
-  <string name="morphe_swipe_speed_summary">החלקו אופקית באזור העליון של מצב מסך מלא כדי לשנות את מהירות ההשמעה</string>
+  <string name="morphe_swipe_top_zone_title">הפעל מחוות מהירות</string>
+  <string name="morphe_swipe_top_zone_summary">החלקו אופקית באזור העליון של מצב מסך מלא כדי לשנות את מהירות ההשמעה</string>
   <string name="morphe_swipe_speed_sensitivity_title">רגישות החלקה במהירות</string>
   <string name="morphe_swipe_speed_sensitivity_summary">ערכים גבוהים יותר דורשים יותר החלקות לכל שלב מהירות</string>
   <string name="morphe_swipe_speed_step_title">קצב שינוי</string>

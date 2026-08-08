@@ -504,10 +504,10 @@ Second \"item\" text"</string>
   <string name="morphe_tap_to_seek_title">Увімкнути перемотування дотиком</string>
   <string name="morphe_tap_to_seek_summary">Просто натисніть на смугу відтворення, щоб перейти до потрібної позиції без перетягування</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Зміна яскравості жестом</string>
-  <string name="morphe_swipe_brightness_summary">Вертикальний свайп ліворуч у повноекранному режимі змінює яскравість</string>
-  <string name="morphe_swipe_volume_title">Зміна гучності жестом</string>
-  <string name="morphe_swipe_volume_summary">Вертикальний свайп праворуч у повноекранному режимі змінює гучність</string>
+  <string name="morphe_swipe_left_zone_title">Зміна яскравості жестом</string>
+  <string name="morphe_swipe_left_zone_summary">Вертикальний свайп ліворуч у повноекранному режимі змінює яскравість</string>
+  <string name="morphe_swipe_right_zone_title">Зміна гучності жестом</string>
+  <string name="morphe_swipe_right_zone_summary">Вертикальний свайп праворуч у повноекранному режимі змінює гучність</string>
   <string name="morphe_swipe_zone_width_title">Ширина зони яскравості/гучності</string>
   <string name="morphe_swipe_zone_width_summary">Відсоток кожного краю екрана, зарезервованого для жестів яскравості та гучності (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Яскравість</string>
@@ -540,8 +540,8 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_volume_sensitivity_summary">Вищі значення збільшують зміну гучності за один свайп</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Чутливість жесту яскравості</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Вищі значення потребують більшого свайпу на один крок яскравості</string>
-  <string name="morphe_swipe_speed_title">Увімкнути жест швидкості</string>
-  <string name="morphe_swipe_speed_summary">Горизонтальний свайп у верхній зоні повноекранного режиму змінює швидкість відтворення</string>
+  <string name="morphe_swipe_top_zone_title">Увімкнути жест швидкості</string>
+  <string name="morphe_swipe_top_zone_summary">Горизонтальний свайп у верхній зоні повноекранного режиму змінює швидкість відтворення</string>
   <string name="morphe_swipe_speed_sensitivity_title">Чутливість жесту швидкості</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Вищі значення потребують більшого свайпу на один крок швидкості</string>
   <string name="morphe_swipe_speed_step_title">Крок швидкості</string>

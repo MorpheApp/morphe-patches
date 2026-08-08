@@ -86,9 +86,24 @@ class SwipeZonesController(
         }
 
     /**
-     * The rectangle of the volume control zone.
+     * The rectangle of the left control zone.
      */
-    val volume: Rectangle
+    val left: Rectangle
+        get() {
+            val eRect = effectiveSwipeRect
+            val zoneWidth = (eRect.width * maxOf(5, minOf(50, Settings.SWIPE_ZONE_WIDTH.get()))) / 100
+            return Rectangle(
+                eRect.left,
+                eRect.top,
+                zoneWidth,
+                eRect.height,
+            )
+        }
+
+    /**
+     * The rectangle of the right control zone.
+     */
+    val right: Rectangle
         get() {
             val eRect = effectiveSwipeRect
             val zoneWidth = (eRect.width * maxOf(5, minOf(50, Settings.SWIPE_ZONE_WIDTH.get()))) / 100
@@ -101,25 +116,9 @@ class SwipeZonesController(
         }
 
     /**
-     * The rectangle of the screen brightness control zone.
+     * The rectangle of the top control zone.
      */
-    val brightness: Rectangle
-        get() {
-            val eRect = effectiveSwipeRect
-            val zoneWidth = (eRect.width * maxOf(5, minOf(50, Settings.SWIPE_ZONE_WIDTH.get()))) / 100
-            return Rectangle(
-                eRect.left,
-                eRect.top,
-                zoneWidth,
-                eRect.height,
-            )
-        }
-
-    /**
-     * The rectangle of the playback speed control zone (top strip of the effective swipe area).
-     * Height is controlled by [Settings.SWIPE_SPEED_ZONE_HEIGHT] as a percentage of the player height.
-     */
-    val speed: Rectangle
+    val top: Rectangle
         get() {
             val eRect = effectiveSwipeRect
             val zoneHeight = (eRect.height * maxOf(5, minOf(75, Settings.SWIPE_SPEED_ZONE_HEIGHT.get()))) / 100
@@ -130,6 +129,10 @@ class SwipeZonesController(
                 zoneHeight,
             )
         }
+
+    val volume: Rectangle get() = right
+    val brightness: Rectangle get() = left
+    val speed: Rectangle get() = top
 
     /**
      * Tries to attach a listener to the player_view and update the player rectangle.

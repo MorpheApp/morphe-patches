@@ -45,9 +45,9 @@ public final class SwipeZonePreference extends Preference {
 
     private ZoneView zoneView;
 
-    private boolean lastBrightnessEnabled;
-    private boolean lastVolumeEnabled;
-    private boolean lastSpeedEnabled;
+    private Settings.SwipeZoneAction lastLeftAction;
+    private Settings.SwipeZoneAction lastRightAction;
+    private Settings.SwipeZoneAction lastTopAction;
     private String lastBrightnessColor;
     private String lastVolumeColor;
     private String lastSpeedColor;
@@ -64,15 +64,15 @@ public final class SwipeZonePreference extends Preference {
         String brightnessColor = Settings.SWIPE_OVERLAY_BRIGHTNESS_COLOR.get();
         String volumeColor = Settings.SWIPE_OVERLAY_VOLUME_COLOR.get();
         String speedColor = Settings.SWIPE_OVERLAY_SPEED_COLOR.get();
-        final boolean volumeEnabled = Settings.SWIPE_VOLUME.get();
-        final boolean speedEnabled = Settings.SWIPE_SPEED.get();
-        final boolean brightnessEnabled = Settings.SWIPE_BRIGHTNESS.get();
+        final Settings.SwipeZoneAction leftAction = Settings.SWIPE_LEFT_ZONE.get();
+        final Settings.SwipeZoneAction rightAction = Settings.SWIPE_RIGHT_ZONE.get();
+        final Settings.SwipeZoneAction topAction = Settings.SWIPE_TOP_ZONE.get();
         final int zoneWidth = Settings.SWIPE_ZONE_WIDTH.get();
         final int speedZoneHeight = Settings.SWIPE_SPEED_ZONE_HEIGHT.get();
 
-        if (brightnessEnabled != lastBrightnessEnabled
-                || speedEnabled != lastSpeedEnabled
-                || volumeEnabled != lastVolumeEnabled
+        if (leftAction != lastLeftAction
+                || rightAction != lastRightAction
+                || topAction != lastTopAction
                 || zoneWidth != lastZoneWidth
                 || speedZoneHeight != lastSpeedZoneHeight
                 || !brightnessColor.equals(lastBrightnessColor)
@@ -82,9 +82,9 @@ public final class SwipeZonePreference extends Preference {
             lastBrightnessColor = brightnessColor;
             lastVolumeColor = volumeColor;
             lastSpeedColor = speedColor;
-            lastBrightnessEnabled = brightnessEnabled;
-            lastVolumeEnabled = volumeEnabled;
-            lastSpeedEnabled = speedEnabled;
+            lastLeftAction = leftAction;
+            lastRightAction = rightAction;
+            lastTopAction = topAction;
             lastSpeedZoneHeight = speedZoneHeight;
             zoneView.invalidate();
         }
@@ -183,6 +183,29 @@ public final class SwipeZonePreference extends Preference {
         private final String labelVolume = str("morphe_swipe_zone_label_volume");
         private final String labelNative = str("morphe_swipe_zone_label_native");
         private final String labelSpeed = str("morphe_swipe_zone_label_speed");
+        private final String labelOff = str("morphe_swipe_zone_label_off");
+
+        private String getActionLabel(Settings.SwipeZoneAction action) {
+            if (action == null) return labelOff;
+            switch (action) {
+                case VOLUME: return labelVolume;
+                case BRIGHTNESS: return labelBrightness;
+                case SPEED: return labelSpeed;
+                case OFF:
+                default: return labelOff;
+            }
+        }
+
+        private int getActionColor(Settings.SwipeZoneAction action, int brightnessColor, int volumeColor, int speedColor) {
+            if (action == null) return 0x1AFFFFFF;
+            switch (action) {
+                case VOLUME: return withAlpha(volumeColor, 0x55);
+                case BRIGHTNESS: return withAlpha(brightnessColor, 0x55);
+                case SPEED: return withAlpha(speedColor, 0x55);
+                case OFF:
+                default: return 0x1AFFFFFF;
+            }
+        }
 
         ZoneView(Context context) {
             super(context);
@@ -236,9 +259,13 @@ public final class SwipeZonePreference extends Preference {
 
             final int zonePercent      = Math.max(5, Math.min(50, Settings.SWIPE_ZONE_WIDTH.get()));
             final int speedZonePercent = Math.max(5, Math.min(75, Settings.SWIPE_SPEED_ZONE_HEIGHT.get()));
-            final boolean brightnessOn = Settings.SWIPE_BRIGHTNESS.get();
-            final boolean volumeOn     = Settings.SWIPE_VOLUME.get();
-            final boolean speedOn      = Settings.SWIPE_SPEED.get();
+            final Settings.SwipeZoneAction leftAction  = Settings.SWIPE_LEFT_ZONE.get();
+            final Settings.SwipeZoneAction rightAction = Settings.SWIPE_RIGHT_ZONE.get();
+            final Settings.SwipeZoneAction topAction   = Settings.SWIPE_TOP_ZONE.get();
+
+            final boolean leftOn  = leftAction != Settings.SwipeZoneAction.OFF;
+            final boolean rightOn = rightAction != Settings.SwipeZoneAction.OFF;
+            final boolean topOn   = topAction != Settings.SwipeZoneAction.OFF;
 
             final int brightnessColor = toPreviewColor(parseColor(
                     Settings.SWIPE_OVERLAY_BRIGHTNESS_COLOR.get(), 0xFF4FC3F7), 0xFF4FC3F7);
@@ -273,20 +300,20 @@ public final class SwipeZonePreference extends Preference {
             zoneRect.set(sRight - edgeW, padV, sRight, sBottom);
             canvas.drawRect(zoneRect, fillPaint);
 
-            // Brightness zone (full height).
+            // Left zone (full height).
             zoneRect.set(padH + edgeW, padV, padH + edgeW + zoneW, sBottom);
-            fillPaint.setColor(brightnessOn ? withAlpha(brightnessColor, 0x55) : 0x1AFFFFFF);
+            fillPaint.setColor(getActionColor(leftAction, brightnessColor, volumeColor, speedColor));
             canvas.drawRect(zoneRect, fillPaint);
 
-            // Volume zone (full height).
+            // Right zone (full height).
             zoneRect.set(sRight - edgeW - zoneW, padV, sRight - edgeW, sBottom);
-            fillPaint.setColor(volumeOn ? withAlpha(volumeColor, 0x55) : 0x1AFFFFFF);
+            fillPaint.setColor(getActionColor(rightAction, brightnessColor, volumeColor, speedColor));
             canvas.drawRect(zoneRect, fillPaint);
 
-            // Speed zone (top strip, full width between edge dead zones).
+            // Top zone (top strip, full width between edge dead zones).
             // Drawn last so it blends naturally over brightness/volume in the overlap areas.
             zoneRect.set(padH + edgeW, padV, sRight - edgeW, padV + speedZoneH);
-            fillPaint.setColor(speedOn ? withAlpha(speedColor, 0x55) : 0x1AFFFFFF);
+            fillPaint.setColor(getActionColor(topAction, brightnessColor, volumeColor, speedColor));
             canvas.drawRect(zoneRect, fillPaint);
 
             // Separator coordinates.
@@ -312,8 +339,8 @@ public final class SwipeZonePreference extends Preference {
             canvas.drawLine(sep2, speedBottom, sep3, speedBottom, separatorPaint);
             canvas.drawLine(sep3, speedBottom, sep4, speedBottom, dashPaint);
 
-            // Labels: brightness/volume in the non-overlapping lower portion;
-            // speed and native in the center column.
+            // Labels: left/right in the non-overlapping lower portion;
+            // top and native in the center column.
             final float lowerH       = sBottom - speedBottom;
             final float lowerCenterY = speedBottom + lowerH / 2f - Dim.dp(3);
             final float lowerPctY    = lowerCenterY + Dim.dp(13);
@@ -324,16 +351,16 @@ public final class SwipeZonePreference extends Preference {
             final float speedPctY    = speedLabelY + Dim.dp(13);
 
             if (zoneW >= Dim.dp(30)) {
-                namePaint.setColor(brightnessOn ? fgColor : dimTextColor);
-                percentPaint.setColor(brightnessOn ? fgColor : dimTextColor);
-                canvas.drawText(labelBrightness,
+                namePaint.setColor(leftOn ? fgColor : dimTextColor);
+                percentPaint.setColor(leftOn ? fgColor : dimTextColor);
+                canvas.drawText(getActionLabel(leftAction),
                         padH + edgeW + zoneW / 2f, lowerCenterY, namePaint);
                 canvas.drawText(zonePercent + "%",
                         padH + edgeW + zoneW / 2f, lowerPctY, percentPaint);
 
-                namePaint.setColor(volumeOn ? fgColor : dimTextColor);
-                percentPaint.setColor(volumeOn ? fgColor : dimTextColor);
-                canvas.drawText(labelVolume,
+                namePaint.setColor(rightOn ? fgColor : dimTextColor);
+                percentPaint.setColor(rightOn ? fgColor : dimTextColor);
+                canvas.drawText(getActionLabel(rightAction),
                         sRight - edgeW - zoneW / 2f, lowerCenterY, namePaint);
                 canvas.drawText(zonePercent + "%",
                         sRight - edgeW - zoneW / 2f, lowerPctY, percentPaint);
@@ -342,11 +369,11 @@ public final class SwipeZonePreference extends Preference {
             if (centerW >= Dim.dp(55)) {
                 float centerX = padH + edgeW + zoneW + centerW / 2f;
 
-                // Speed label (and % if strip is tall enough) centered in the speed strip.
-                final int paintColor = speedOn ? fgColor : dimTextColor;
+                // Top label (and % if strip is tall enough) centered in the top strip.
+                final int paintColor = topOn ? fgColor : dimTextColor;
                 namePaint.setColor(paintColor);
                 percentPaint.setColor(paintColor);
-                canvas.drawText(labelSpeed, centerX, speedLabelY, namePaint);
+                canvas.drawText(getActionLabel(topAction), centerX, speedLabelY, namePaint);
                 if (speedShowPct) {
                     canvas.drawText(speedZonePercent + "%", centerX, speedPctY, percentPaint);
                 }

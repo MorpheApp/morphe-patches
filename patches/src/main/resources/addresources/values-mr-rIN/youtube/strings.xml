@@ -492,10 +492,10 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_tap_to_seek_title">टॅप टू सीक सक्षम करा</string>
   <string name="morphe_tap_to_seek_summary">सिBar ला ड्रॅग न करता त्या स्थितीत जाण्यासाठी फक्त टॅप करा</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">ब्राइटनेस हावभाव सक्षम करा</string>
-  <string name="morphe_swipe_brightness_summary">फुलस्क्रीन मोडच्या डाव्या बाजूला उभ्या दिशेने स्वाइप केल्यास ब्राइटनेस ऍडजस्ट करा</string>
-  <string name="morphe_swipe_volume_title">व्हॉल्यूम हावभाव सक्षम करा</string>
-  <string name="morphe_swipe_volume_summary">फुलस्क्रीन मोडच्या उजव्या बाजूला उभ्या दिशेने स्वाइप केल्यास व्हॉल्यूम ऍडजस्ट करा</string>
+  <string name="morphe_swipe_left_zone_title">ब्राइटनेस हावभाव सक्षम करा</string>
+  <string name="morphe_swipe_left_zone_summary">फुलस्क्रीन मोडच्या डाव्या बाजूला उभ्या दिशेने स्वाइप केल्यास ब्राइटनेस ऍडजस्ट करा</string>
+  <string name="morphe_swipe_right_zone_title">व्हॉल्यूम हावभाव सक्षम करा</string>
+  <string name="morphe_swipe_right_zone_summary">फुलस्क्रीन मोडच्या उजव्या बाजूला उभ्या दिशेने स्वाइप केल्यास व्हॉल्यूम ऍडजस्ट करा</string>
   <string name="morphe_swipe_zone_width_title">उज्ज्वलता/आवाज क्षेत्राची रुंदी</string>
   <string name="morphe_swipe_zone_width_summary">उज्ज्वलता आणि आवाज हावभावांसाठी प्रत्येक स्क्रीनच्या कडेला राखीव टक्केवारी (५-५०)</string>
   <string name="morphe_swipe_zone_label_brightness">चमक</string>
@@ -528,8 +528,8 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_swipe_volume_sensitivity_summary">जास्त व्हॅल्यू प्रत्येक स्वाइपवर आवाज बदलण्याची पातळी वाढवतात</string>
   <string name="morphe_swipe_brightness_sensitivity_title">चमक स्वाइप संवेदनशीलता</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">जास्त व्हॅल्यू प्रत्येक चमक बदलासाठी जास्त स्वाइपिंगची आवश्यकता असते</string>
-  <string name="morphe_swipe_speed_title">वेग इशारा सक्षम करा</string>
-  <string name="morphe_swipe_speed_summary">फुलस्क्रीन मोडमध्ये प्लेबॅक स्पीड बदलण्यासाठी वरच्या झोनमध्येHorizontal स्वाइप करा</string>
+  <string name="morphe_swipe_top_zone_title">वेग इशारा सक्षम करा</string>
+  <string name="morphe_swipe_top_zone_summary">फुलस्क्रीन मोडमध्ये प्लेबॅक स्पीड बदलण्यासाठी वरच्या झोनमध्येHorizontal स्वाइप करा</string>
   <string name="morphe_swipe_speed_sensitivity_title">वेग स्वाइप संवेदनशीलता</string>
   <string name="morphe_swipe_speed_sensitivity_summary">जास्त व्हॅल्यू प्रत्येक वेग बदलासाठी जास्त स्वाइपिंगची आवश्यकता असते</string>
   <string name="morphe_swipe_speed_step_title">गती पायरी</string>

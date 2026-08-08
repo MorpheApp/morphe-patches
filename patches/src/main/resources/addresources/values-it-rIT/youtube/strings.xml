@@ -510,10 +510,10 @@ Per risolvere il problema, attiva 'Maschera flussi video' e modifica 'Client pre
   <string name="morphe_tap_to_seek_title">Abilita tocca per avanzare</string>
   <string name="morphe_tap_to_seek_summary">Tocca semplicemente la barra di ricerca per saltare a quella posizione senza trascinarla</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Attiva il gesto per modificare la luminosità</string>
-  <string name="morphe_swipe_brightness_summary">Scorri verticalmente sul lato sinistro della modalità a schermo intero per regolare la luminosità</string>
-  <string name="morphe_swipe_volume_title">Attiva il gesto per modificare il volume</string>
-  <string name="morphe_swipe_volume_summary">Scorri verticalmente sul lato destro della modalità a schermo intero per regolare il volume</string>
+  <string name="morphe_swipe_left_zone_title">Attiva il gesto per modificare la luminosità</string>
+  <string name="morphe_swipe_left_zone_summary">Scorri verticalmente sul lato sinistro della modalità a schermo intero per regolare la luminosità</string>
+  <string name="morphe_swipe_right_zone_title">Attiva il gesto per modificare il volume</string>
+  <string name="morphe_swipe_right_zone_summary">Scorri verticalmente sul lato destro della modalità a schermo intero per regolare il volume</string>
   <string name="morphe_swipe_zone_width_title">Larghezza zona di luminosità/volume</string>
   <string name="morphe_swipe_zone_width_summary">Percentuale di ciascun bordo dello schermo riservata ai gesti di luminosità e volume (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Luminosità</string>
@@ -546,8 +546,8 @@ Per risolvere il problema, attiva 'Maschera flussi video' e modifica 'Client pre
   <string name="morphe_swipe_volume_sensitivity_summary">Valori più alti aumentano la variazione di volume per scorrimento</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Sensibilità allo scorrimento della luminosità</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Valori più elevati richiedono più scorrimenti per ogni passo di luminosità</string>
-  <string name="morphe_swipe_speed_title">Attiva il gesto per la velocità</string>
-  <string name="morphe_swipe_speed_summary">Scorri orizzontalmente nella parte superiore della modalità a schermo intero per modificare la velocità di riproduzione</string>
+  <string name="morphe_swipe_top_zone_title">Attiva il gesto per la velocità</string>
+  <string name="morphe_swipe_top_zone_summary">Scorri orizzontalmente nella parte superiore della modalità a schermo intero per modificare la velocità di riproduzione</string>
   <string name="morphe_swipe_speed_sensitivity_title">Sensibilità allo scorrimento della velocità</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Valori più alti richiedono più scorrimenti per ogni passo di velocità</string>
   <string name="morphe_swipe_speed_step_title">Passo di velocità</string>

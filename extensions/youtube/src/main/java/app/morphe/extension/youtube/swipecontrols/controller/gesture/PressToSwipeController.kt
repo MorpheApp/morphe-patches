@@ -26,22 +26,19 @@ class PressToSwipeController(
     private var isInSpeedSwipeSession = false
 
     override val shouldForceInterceptEvents: Boolean
-        get() {
-            val swipe = currentSwipe
-            return (swipe == SwipeDetector.SwipeDirection.VERTICAL && isInSwipeSession) ||
-                    (swipe == SwipeDetector.SwipeDirection.HORIZONTAL && isInSpeedSwipeSession)
-        }
+        get() = isInSwipeSession
 
     override fun shouldDropMotion(motionEvent: MotionEvent): Boolean = false
 
     override fun isInSwipeZone(motionEvent: MotionEvent): Boolean {
-        val inVolumeZone = controller.config.enableVolumeControls &&
-            (motionEvent.toPoint() in controller.zones.volume)
-        val inBrightnessZone = controller.config.enableBrightnessControl &&
-            (motionEvent.toPoint() in controller.zones.brightness)
-        val inSpeedZone = controller.config.enableSpeedGestureControl &&
-            (motionEvent.toPoint() in controller.zones.speed)
-        return inVolumeZone || inBrightnessZone || inSpeedZone
+        val point = motionEvent.toPoint()
+        val inLeft = controller.config.leftZoneAction != app.morphe.extension.youtube.settings.Settings.SwipeZoneAction.OFF &&
+            (point in controller.zones.left)
+        val inRight = controller.config.rightZoneAction != app.morphe.extension.youtube.settings.Settings.SwipeZoneAction.OFF &&
+            (point in controller.zones.right)
+        val inTop = controller.config.topZoneAction != app.morphe.extension.youtube.settings.Settings.SwipeZoneAction.OFF &&
+            (point in controller.zones.top)
+        return inLeft || inRight || inTop
     }
 
     override fun onUp(motionEvent: MotionEvent) {
@@ -52,10 +49,10 @@ class PressToSwipeController(
 
     override fun onLongPress(motionEvent: MotionEvent) {
         // enter swipe session with feedback
-        isInSwipeSession = true
-        isInSpeedSwipeSession = controller.config.enableSpeedGestureControl &&
-            motionEvent.toPoint() in controller.zones.speed
-        controller.overlay.onEnterSwipeSession()
+        isInSwipeSession = isInSwipeZone(motionEvent)
+        if (isInSwipeSession) {
+            controller.overlay.onEnterSwipeSession()
+        }
 
         // send GestureDetector a ACTION_CANCEL event so it will handle further events
         motionEvent.action = MotionEvent.ACTION_CANCEL
@@ -70,18 +67,36 @@ class PressToSwipeController(
     ): Boolean {
         // cancel if not fullscreen
         if (!controller.config.isFullscreenVideo) return false
-        // cancel if not in swipe session or valid direction
-        if (!shouldForceInterceptEvents) return false
+        // cancel if not in swipe session
+        if (!isInSwipeSession) return false
         val swipe = currentSwipe
         val fromPoint = from.toPoint()
-        return when (swipe) {
-            SwipeDetector.SwipeDirection.VERTICAL -> when (fromPoint) {
-                in controller.zones.volume -> { scrollVolume(distanceY); true }
-                in controller.zones.brightness -> { scrollBrightness(distanceY); true }
-                else -> false
+
+        val action = when {
+            fromPoint in controller.zones.top -> controller.config.topZoneAction
+            fromPoint in controller.zones.left -> controller.config.leftZoneAction
+            fromPoint in controller.zones.right -> controller.config.rightZoneAction
+            else -> app.morphe.extension.youtube.settings.Settings.SwipeZoneAction.OFF
+        }
+
+        if (action == app.morphe.extension.youtube.settings.Settings.SwipeZoneAction.OFF) return false
+
+        return when (action) {
+            app.morphe.extension.youtube.settings.Settings.SwipeZoneAction.VOLUME -> {
+                val dist = if (swipe == SwipeDetector.SwipeDirection.HORIZONTAL) -distanceX else distanceY
+                scrollVolume(dist)
+                true
             }
-            SwipeDetector.SwipeDirection.HORIZONTAL ->
-                if (isInSpeedSwipeSession) { scrollSpeed(-distanceX); true } else false
+            app.morphe.extension.youtube.settings.Settings.SwipeZoneAction.BRIGHTNESS -> {
+                val dist = if (swipe == SwipeDetector.SwipeDirection.HORIZONTAL) -distanceX else distanceY
+                scrollBrightness(dist)
+                true
+            }
+            app.morphe.extension.youtube.settings.Settings.SwipeZoneAction.SPEED -> {
+                val dist = if (swipe == SwipeDetector.SwipeDirection.HORIZONTAL) -distanceX else distanceY
+                scrollSpeed(dist)
+                true
+            }
             else -> false
         }
     }

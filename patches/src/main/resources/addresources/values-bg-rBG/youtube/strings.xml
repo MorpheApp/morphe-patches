@@ -505,10 +505,10 @@ Second \"item\" text"</string>
   <string name="morphe_tap_to_seek_title">Прецизно сваляне на позиция е включено</string>
   <string name="morphe_tap_to_seek_summary">Просто докоснете лентата за търсене, за да отидете до тази позиция, без да я плъзгате</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Сваляне към позиция е изключено</string>
-  <string name="morphe_swipe_brightness_summary">Регулирайте колко се променя силата на звука по време на плъзгане</string>
-  <string name="morphe_swipe_volume_title">Включи сваляне на volumе</string>
-  <string name="morphe_swipe_volume_summary">Плъзнете в режим на цял екран, за да прескочите към следващото или предишното видео</string>
+  <string name="morphe_swipe_left_zone_title">Сваляне към позиция е изключено</string>
+  <string name="morphe_swipe_left_zone_summary">Регулирайте колко се променя силата на звука по време на плъзгане</string>
+  <string name="morphe_swipe_right_zone_title">Включи сваляне на volumе</string>
+  <string name="morphe_swipe_right_zone_summary">Плъзнете в режим на цял екран, за да прескочите към следващото или предишното видео</string>
   <string name="morphe_swipe_zone_width_title">Ширина на зоната за яркост/сила на звука</string>
   <string name="morphe_swipe_zone_width_summary">Процент от всеки край на екрана, запазен за жестове за яркост и сила на звука (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Яркост</string>
@@ -542,8 +542,8 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_volume_sensitivity_summary">По-високите стойности увеличават промяната в силата на звука при всяко плъзгане.</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Чувствителност при плъзгане за яркост</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">По-високите стойности изискват повече плъзгане за всяка стъпка на яркостта.</string>
-  <string name="morphe_swipe_speed_title">Активиране на жест за скорост</string>
-  <string name="morphe_swipe_speed_summary">Плъзнете хоризонтално в горната зона на режима на цял екран, за да промените скоростта на възпроизвеждане</string>
+  <string name="morphe_swipe_top_zone_title">Активиране на жест за скорост</string>
+  <string name="morphe_swipe_top_zone_summary">Плъзнете хоризонтално в горната зона на режима на цял екран, за да промените скоростта на възпроизвеждане</string>
   <string name="morphe_swipe_speed_sensitivity_title">Чувствителност при плъзгане за скорост</string>
   <string name="morphe_swipe_speed_sensitivity_summary">По-високите стойности изискват повече плъзгане за всяка стъпка на скоростта.</string>
   <string name="morphe_swipe_speed_step_title">Стъпка на скоростта</string>

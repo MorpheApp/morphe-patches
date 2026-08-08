@@ -503,10 +503,10 @@ Buni tuzatish uchun 'Video oqimlarini soxtalashtirish'ni yoqing va 'Standart kli
   <string name="morphe_tap_to_seek_title">Sekib o\'tish uchun teginishni yoqish</string>
   <string name="morphe_tap_to_seek_summary">Siljishni tortib olmasdan ma\'lum pozitsiyaga o\'tish uchun progress bargacha bosing</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Yorqinlikni boshqarish uchun sirt bilan surishni yoqish</string>
-  <string name="morphe_swipe_brightness_summary">Toʻliq ekran rejimida yorqinlikni sozlash uchun chap tomonda vertikal surish</string>
-  <string name="morphe_swipe_volume_title">Hajmni boshqarish uchun sirt bilan surishni yoqish</string>
-  <string name="morphe_swipe_volume_summary">Toʻliq ekran rejimida ovoz balandligini sozlash uchun oʻng tomonda vertikal surish</string>
+  <string name="morphe_swipe_left_zone_title">Yorqinlikni boshqarish uchun sirt bilan surishni yoqish</string>
+  <string name="morphe_swipe_left_zone_summary">Toʻliq ekran rejimida yorqinlikni sozlash uchun chap tomonda vertikal surish</string>
+  <string name="morphe_swipe_right_zone_title">Hajmni boshqarish uchun sirt bilan surishni yoqish</string>
+  <string name="morphe_swipe_right_zone_summary">Toʻliq ekran rejimida ovoz balandligini sozlash uchun oʻng tomonda vertikal surish</string>
   <string name="morphe_swipe_zone_width_title">Yorqinlik/balandlik zonasi kengligi</string>
   <string name="morphe_swipe_zone_width_summary">Yorqinlik va balandlik harakatlari uchun tayinlangan har bir ekran qismining foizi (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Yorqinlik</string>
@@ -539,8 +539,8 @@ Buni tuzatish uchun 'Video oqimlarini soxtalashtirish'ni yoqing va 'Standart kli
   <string name="morphe_swipe_volume_sensitivity_summary">Har bir siljishda ovoz balandligini oshirish qiymatlari yuqori</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Yorqinlik siljish sezgirligi</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Yorqinlik bosqichlari uchun ko\'proq siljish kerak bo\'lgan qiymatlar yuqori</string>
-  <string name="morphe_swipe_speed_title">Tezlik ishorasini yoqish</string>
-  <string name="morphe_swipe_speed_summary">To\'liq ekran rejimida o\'ynash tezligini o\'zgartirish uchun ekranda chapga yoki o\'ngga suring</string>
+  <string name="morphe_swipe_top_zone_title">Tezlik ishorasini yoqish</string>
+  <string name="morphe_swipe_top_zone_summary">To\'liq ekran rejimida o\'ynash tezligini o\'zgartirish uchun ekranda chapga yoki o\'ngga suring</string>
   <string name="morphe_swipe_speed_sensitivity_title">Tezlik siljish sezgirligi</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Tezlik bosqichlari uchun ko\'proq siljish kerak bo\'lgan qiymatlar yuqori</string>
   <string name="morphe_swipe_speed_step_title">Tezlik bosqichi</string>

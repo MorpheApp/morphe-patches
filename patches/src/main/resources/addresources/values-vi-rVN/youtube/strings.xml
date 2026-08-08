@@ -509,10 +509,10 @@ Lưu ý: Có thể không hoạt động với video phát trực tiếp"</strin
   <string name="morphe_tap_to_seek_title">Bật chạm để tua</string>
   <string name="morphe_tap_to_seek_summary">Chỉ cần chạm vào thanh tiến trình để tua tới vị trí đó chứ không cần kéo</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Bật cử chỉ độ sáng</string>
-  <string name="morphe_swipe_brightness_summary">Vuốt lên/xuống bên trái trong chế độ toàn màn hình để điều chỉnh độ sáng</string>
-  <string name="morphe_swipe_volume_title">Bật cử chỉ âm lượng</string>
-  <string name="morphe_swipe_volume_summary">Vuốt lên/xuống bên phải trong chế độ toàn màn hình để điều chỉnh âm lượng</string>
+  <string name="morphe_swipe_left_zone_title">Bật cử chỉ độ sáng</string>
+  <string name="morphe_swipe_left_zone_summary">Vuốt lên/xuống bên trái trong chế độ toàn màn hình để điều chỉnh độ sáng</string>
+  <string name="morphe_swipe_right_zone_title">Bật cử chỉ âm lượng</string>
+  <string name="morphe_swipe_right_zone_summary">Vuốt lên/xuống bên phải trong chế độ toàn màn hình để điều chỉnh âm lượng</string>
   <string name="morphe_swipe_zone_width_title">Độ rộng vùng vuốt chỉnh độ sáng/âm lượng</string>
   <string name="morphe_swipe_zone_width_summary">Phần trăm diện tích (5-50) mép màn hình dùng cho cử chỉ chỉnh độ sáng và âm lượng</string>
   <string name="morphe_swipe_zone_label_brightness">Độ sáng</string>
@@ -545,8 +545,8 @@ Lưu ý: Có thể không hoạt động với video phát trực tiếp"</strin
   <string name="morphe_swipe_volume_sensitivity_summary">Giá trị càng cao, mức âm lượng tăng/giảm càng nhanh mỗi khi vuốt</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Độ nhạy vuốt chỉnh độ sáng</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Giá trị càng cao, vuốt càng dài hơn để chỉnh độ sáng</string>
-  <string name="morphe_swipe_speed_title">Bật cử chỉ chỉnh tốc độ phát</string>
-  <string name="morphe_swipe_speed_summary">Vuốt ngang phần trên trong chế độ toàn màn hình để chỉnh tốc độ phát</string>
+  <string name="morphe_swipe_top_zone_title">Bật cử chỉ chỉnh tốc độ phát</string>
+  <string name="morphe_swipe_top_zone_summary">Vuốt ngang phần trên trong chế độ toàn màn hình để chỉnh tốc độ phát</string>
   <string name="morphe_swipe_speed_sensitivity_title">Độ nhạy vuốt chỉnh tốc độ phát</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Giá trị càng cao, vuốt càng dài hơn để chỉnh tốc độ phát</string>
   <string name="morphe_swipe_speed_step_title">Mức tốc độ</string>

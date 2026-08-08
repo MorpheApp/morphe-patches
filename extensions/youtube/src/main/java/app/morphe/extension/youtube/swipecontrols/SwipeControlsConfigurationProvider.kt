@@ -25,15 +25,30 @@ class SwipeControlsConfigurationProvider {
     val enableSwipeControls: Boolean
         get() = (enableVolumeControls || enableBrightnessControl || enableSpeedGestureControl) && (isFullscreenVideo || isVideoSliding)
 
+    val leftZoneAction: Settings.SwipeZoneAction
+        get() = Settings.SWIPE_LEFT_ZONE.get()
+
+    val rightZoneAction: Settings.SwipeZoneAction
+        get() = Settings.SWIPE_RIGHT_ZONE.get()
+
+    val topZoneAction: Settings.SwipeZoneAction
+        get() = Settings.SWIPE_TOP_ZONE.get()
+
     /**
      * Indicates whether swipe controls for adjusting volume are enabled.
      */
-    val enableVolumeControls = Settings.SWIPE_VOLUME.get()
+    val enableVolumeControls: Boolean
+        get() = leftZoneAction == Settings.SwipeZoneAction.VOLUME ||
+                rightZoneAction == Settings.SwipeZoneAction.VOLUME ||
+                topZoneAction == Settings.SwipeZoneAction.VOLUME
 
     /**
      * Indicates whether swipe controls for adjusting brightness are enabled.
      */
-    val enableBrightnessControl = Settings.SWIPE_BRIGHTNESS.get()
+    val enableBrightnessControl: Boolean
+        get() = leftZoneAction == Settings.SwipeZoneAction.BRIGHTNESS ||
+                rightZoneAction == Settings.SwipeZoneAction.BRIGHTNESS ||
+                topZoneAction == Settings.SwipeZoneAction.BRIGHTNESS
 
     /**
      * Checks if the video player is currently in fullscreen mode.
@@ -111,9 +126,12 @@ class SwipeControlsConfigurationProvider {
         }
 
     /**
-     * Indicates whether the horizontal swipe gesture for playback speed control is enabled.
+     * Indicates whether the swipe gesture for playback speed control is enabled in any zone.
      */
-    val enableSpeedGestureControl = Settings.SWIPE_SPEED.get()
+    val enableSpeedGestureControl: Boolean
+        get() = leftZoneAction == Settings.SwipeZoneAction.SPEED ||
+                rightZoneAction == Settings.SwipeZoneAction.SPEED ||
+                topZoneAction == Settings.SwipeZoneAction.SPEED
 
     /**
      * The sensitivity of speed swipe gestures, controlling how much physical movement is needed per step.

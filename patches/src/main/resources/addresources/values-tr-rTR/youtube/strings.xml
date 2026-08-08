@@ -510,10 +510,10 @@ Bunu düzeltmek için, 'Video akışlarını taklit et' özelliğini açın ve '
   <string name="morphe_tap_to_seek_title">Dokunarak sardırmayı etkinleştir</string>
   <string name="morphe_tap_to_seek_summary">Sürüklemeden o konuma atlamak için zaman çubuğuna dokunun</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Parlaklık hareketini etkinleştir</string>
-  <string name="morphe_swipe_brightness_summary">Tam ekran modunda sol tarafta dikey olarak kaydırarak parlaklığı ayarlayayın</string>
-  <string name="morphe_swipe_volume_title">Ses hareketini etkinleştir</string>
-  <string name="morphe_swipe_volume_summary">Tam ekran modunda sağ tarafa dikey olarak kaydırarak sesi ayarlayın</string>
+  <string name="morphe_swipe_left_zone_title">Parlaklık hareketini etkinleştir</string>
+  <string name="morphe_swipe_left_zone_summary">Tam ekran modunda sol tarafta dikey olarak kaydırarak parlaklığı ayarlayayın</string>
+  <string name="morphe_swipe_right_zone_title">Ses hareketini etkinleştir</string>
+  <string name="morphe_swipe_right_zone_summary">Tam ekran modunda sağ tarafa dikey olarak kaydırarak sesi ayarlayın</string>
   <string name="morphe_swipe_zone_width_title">Parlaklık/ses seviyesi bölge uzunluğu</string>
   <string name="morphe_swipe_zone_width_summary">Ekran kenarlarının her birinin parlaklık ve ses seviyesi hareketleri için ayrılan yüzdesi (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Parlaklık</string>
@@ -546,8 +546,8 @@ Bunu düzeltmek için, 'Video akışlarını taklit et' özelliğini açın ve '
   <string name="morphe_swipe_volume_sensitivity_summary">Daha yüksek değerler, kaydırma başına ses değişiklik miktarını artırır</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Parlaklık kaydırma hassasiyeti</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Daha yüksek değerler, her parlaklık adımı için daha fazla kaydırma gerektirir</string>
-  <string name="morphe_swipe_speed_title">Hız hareketini etkinleştir</string>
-  <string name="morphe_swipe_speed_summary">Tam ekran modunda oynatma hızını değiştirmek için üst bölgede yatay olarak kaydırın</string>
+  <string name="morphe_swipe_top_zone_title">Hız hareketini etkinleştir</string>
+  <string name="morphe_swipe_top_zone_summary">Tam ekran modunda oynatma hızını değiştirmek için üst bölgede yatay olarak kaydırın</string>
   <string name="morphe_swipe_speed_sensitivity_title">Hız kaydırma hassasiyeti</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Daha yüksek değerler, her hız adımı için daha fazla kaydırma gerektirir</string>
   <string name="morphe_swipe_speed_step_title">Hız adımı</string>
