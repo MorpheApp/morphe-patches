@@ -130,10 +130,6 @@ class SwipeZonesController(
             )
         }
 
-    val volume: Rectangle get() = right
-    val brightness: Rectangle get() = left
-    val speed: Rectangle get() = top
-
     /**
      * Tries to attach a listener to the player_view and update the player rectangle.
      * Once a listener is attached, this function does nothing.

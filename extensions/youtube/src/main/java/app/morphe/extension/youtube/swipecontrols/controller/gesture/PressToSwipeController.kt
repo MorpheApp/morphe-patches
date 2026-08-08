@@ -20,11 +20,6 @@ class PressToSwipeController(
      */
     private var isInSwipeSession = false
 
-    /**
-     * Indicates whether the current swipe session was initiated in the speed zone.
-     */
-    private var isInSpeedSwipeSession = false
-
     override val shouldForceInterceptEvents: Boolean
         get() = isInSwipeSession
 
@@ -44,7 +39,6 @@ class PressToSwipeController(
     override fun onUp(motionEvent: MotionEvent) {
         super.onUp(motionEvent)
         isInSwipeSession = false
-        isInSpeedSwipeSession = false
     }
 
     override fun onLongPress(motionEvent: MotionEvent) {
