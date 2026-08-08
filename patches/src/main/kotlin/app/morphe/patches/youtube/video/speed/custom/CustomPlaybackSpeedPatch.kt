@@ -101,7 +101,7 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
                 SwitchPreference("morphe_custom_speed_menu"),
                 SwitchPreference("morphe_restore_old_speed_menu"),
                 SwitchPreference("morphe_enable_playback_audio_pitch_controls"),
-                SwitchPreference("morphe_playback_audio_time_stretching"),
+                SwitchPreference("morphe_playback_audio_time_stretching", summary = true),
                 TextPreference(
                     "morphe_custom_playback_speeds",
                     inputType = InputType.TEXT_MULTI_LINE
