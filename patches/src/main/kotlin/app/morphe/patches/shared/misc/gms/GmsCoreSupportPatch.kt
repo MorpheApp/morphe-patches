@@ -24,8 +24,8 @@ import app.morphe.patcher.patch.ResourcePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.string
-import app.morphe.patches.all.misc.packagename.changePackageNamePatch
-import app.morphe.patches.all.misc.packagename.setOrGetFallbackPackageName
+import app.morphe.patches.all.misc.clone.cloneAppPatch
+import app.morphe.patches.all.misc.clone.setOrGetFallbackPackageName
 import app.morphe.patches.shared.misc.gms.Constants.ACTIONS
 import app.morphe.patches.shared.misc.gms.Constants.AUTHORITIES
 import app.morphe.patches.shared.misc.gms.Constants.PERMISSIONS
@@ -82,7 +82,7 @@ fun gmsCoreSupportPatch(
 ) {
 
     dependsOn(
-        changePackageNamePatch,
+        cloneAppPatch,
         gmsCoreSupportResourcePatchFactory(),
         extensionPatch,
     )
@@ -499,7 +499,7 @@ private object Constants {
  *
  * @param fromPackageName The package name of the original app.
  * @param toPackageNameDefault The package name to fall back to if no custom package name
- *                             is specified in Change package name.
+ *                             is specified in "Clone app".
  * @param spoofedPackageSignature The signature of the package to spoof to.
  * @param executeBlock The additional execution block of the patch.
  * @param block The additional block to build the patch.
@@ -513,7 +513,7 @@ fun gmsCoreSupportResourcePatch(
     block: ResourcePatchBuilder.() -> Unit = {},
 ) = resourcePatch {
     dependsOn(
-        changePackageNamePatch,
+        cloneAppPatch,
         linkHandlingPatch(fromPackageName, screen)
     )
 

@@ -2,7 +2,7 @@ package app.morphe.patches.music.misc.fileprovider
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.packagename.setOrGetFallbackPackageName
+import app.morphe.patches.all.misc.clone.setOrGetFallbackPackageName
 
 internal fun fileProviderPatch(
     youtubePackageName: String,
@@ -11,7 +11,7 @@ internal fun fileProviderPatch(
     description = "Fixes broken YouTube Music file provider that prevents sharing with specific apps such as Instagram."
 ) {
     finalize {
-        // Must do modification last, so change package name value is correctly set.
+        // Must do modification last, so "clone app" package name value is correctly set.
         val musicChangedPackageName = setOrGetFallbackPackageName(musicPackageName)
 
         // For some reason, if the app gets "android.support.FILE_PROVIDER_PATHS",

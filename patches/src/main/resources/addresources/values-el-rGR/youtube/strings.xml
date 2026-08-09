@@ -136,8 +136,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_live_chat_replay_button_title">Απόκρυψη κουμπιού «Επανάληψη συζήτησης ζωντανής μετάδοσης»</string>
   <string name="morphe_hide_live_chat_replay_button_summary">Απόκρυψη του κουμπιού αναπαραγωγής της συνομιλίας στην οθόνη πλήρους προβολής</string>
   <string name="morphe_hide_medical_panels_title">Πάνελ ιατρικών πληροφοριών</string>
+  <string name="morphe_hide_player_gesture_hints_title">Απόκρυψη υποδείξεων χειρονομιών στην οθόνη αναπαραγωγής</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
+  <string name="morphe_hide_player_gesture_hints_summary">Αποκρύπτει τις υποδείξεις που εμφανίζονται κατά τις χειρονομίες στην οθόνη αναπαραγωγής, όπως \'Σύρετε προς τα πάνω για ακριβή αναζήτηση\', \'Αφήστε για ακύρωση\' και \'2x\'</string>
   <string name="morphe_hide_snackbar_title">Απόκρυψη γραμμής γρήγορης ενέργειας</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Οδηγίες συνδρομητών</string>
   <string name="morphe_hide_sync_button_title">Απόκρυψη κουμπιού \"Συγχρονισμός με βίντεο\"</string>
@@ -212,8 +214,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_learning_menu_title">Απόκρυψη μενού Εκμάθησης</string>
   <string name="morphe_hide_live_menu_title">Απόκρυψη μενού \"Live\"</string>
   <string name="morphe_hide_memberships_menu_title">Απόκρυψη μενού \"Συνδρομές\"</string>
-  <string name="morphe_hide_movies_menu_title">Απόκρυψη μενού \"Ταινίες\"</string>
-  <string name="morphe_hide_music_menu_title">Απόκρυψη μενού \"Μουσική &amp; Τηλεόραση\"</string>
+  <string name="morphe_hide_movies_menu_title">Απόκρυψη μενού \'Ταινίες &amp; TV\'</string>
+  <string name="morphe_hide_music_menu_title">Απόκρυψη μενού Μουσικής</string>
   <string name="morphe_hide_news_menu_title">Απόκρυψη μενού \"Ειδήσεις\"</string>
   <string name="morphe_hide_playables_menu_title">Απόκρυψη μενού \"Playables\"</string>
   <string name="morphe_hide_podcasts_menu_title">Απόκρυψη μενού \"Podcast\"</string>
@@ -347,6 +349,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_summary">Εμφανίζει ένα κουμπί επικάλυψης στον πρόγραμμα αναπαραγωγής βίντεο που ανοίγει την εφαρμογή λήψης τρίτων</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Αντικατάσταση κουμπιού &amp; μενού «Λήψη»</string>
+  <string name="morphe_external_downloader_action_button_summary">Χρησιμοποιεί τον επιλεγμένο εξωτερικό λήπτη αντί για τη βασική λειτουργία λήψης</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Μετάφραση φωνής</string>
   <string name="morphe_vot_screen_summary">Διαβάστε τις λεζάντες του βίντεο δυνατά χρησιμοποιώντας το text-to-speech της συσκευής, συγχρονισμένα με την αναπαραγωγή</string>
@@ -491,11 +494,15 @@ Second \"item\" text"</string>
   <string name="morphe_seekbar_thumbnail_preview_title">Ενεργοποίηση μικρογραφιών γραμμής αναζήτησης</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Εμφανίζει μια μικρογραφία βίντεο κατά τη μετακίνηση της γραμμής αναζήτησης</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"Το \"Ενεργοποίηση εγγραφής livestream DVR\" ενδέχεται να μην είναι διαθέσιμο\n\nΓια να το διορθώσετε, ενεργοποιήστε το \"Αντιμετώπιση ροών βίντεο\" και αλλάξτε το \"Προεπιλεγμένος πελάτης\" σε \"TV Simply\" ή \"visionOS\""</string>
+  <string name="morphe_livestream_dvr_not_available">"'Ενεργοποίηση DVR ζωντανής μετάδοσης' μπορεί να μην είναι διαθέσιμη
+
+Για να το διορθώσετε, ενεργοποιήστε την 'Πλαστογράφηση ροών βίντεο' και αλλάξτε τον 'Προεπιλεγμένο πελάτη' σε 'TV' ή 'visionOS'"</string>
   <string name="morphe_expand_livestream_dvr_duration_title">Επέκταση της διάρκειας του DVR της ζωντανής μετάδοσης</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">Σας επιτρέπει να επανατυλίγετε ζωντανές εκπομπές έως και 7 ημέρες στο παρελθόν</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"Το \"Επέκταση διάρκειας εγγραφής livestream DVR\" ενδέχεται να μην είναι διαθέσιμο\n\nΓια να το διορθώσετε, ενεργοποιήστε το \"Αντιμετώπιση ροών βίντεο\" και αλλάξτε το \"Προεπιλεγμένος πελάτης\" σε \"TV Simply\" ή \"visionOS\""</string>
+  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Επέκταση διάρκειας DVR ζωντανής ροής' μπορεί να μην είναι διαθέσιμη
+
+Για να το διορθώσετε, ενεργοποιήστε την 'Πλαστογράφηση ροών βίντεο' και αλλάξτε τον 'Προεπιλεγμένο πελάτη' σε 'TV' ή 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Χειρονομία συρσίματος για αναζήτηση</string>
   <string name="morphe_slide_to_seek_summary">Ενεργοποιήστε την ολίσθηση για αναζήτηση αντί να παίξετε με ταχύτητα 2x όταν πατάτε και κρατάτε τον πρόγραμμα αναπαραγωγής βίντεο</string>
@@ -513,6 +520,7 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_zone_label_volume">Ένταση ήχου</string>
   <string name="morphe_swipe_zone_label_native">Εγγενές</string>
   <string name="morphe_swipe_press_to_engage_title">Παρατεταμένο πάτημα για σάρωση</string>
+  <string name="morphe_swipe_press_to_engage_summary">Απαιτείται πάτημα και κράτημα πριν αναγνωριστεί μια χειρονομία σάρωσης.</string>
   <string name="morphe_swipe_haptic_feedback_title">Απόκριση δόνησης</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Αποθήκευση και επαναφορά φωτεινότητας</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Αποτρέψτε το άναμμα των κουμπιών Like και Subscribe όταν ένας δημιουργός τα αναφέρει</string>
@@ -627,6 +635,9 @@ Second \"item\" text"</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">Απόκρυψη αυτόματων υπότιτλων</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Ορίστε cookies υποτίτλων</string>
+  <string name="morphe_set_caption_cookies_summary">"Διορθώνει ένα σφάλμα του YouTube όπου οι υπότιτλοι αυτόματης μετάφρασης ενδέχεται να μην είναι διαθέσιμοι λόγω ελλιπών cookies
+
+Πρέπει να παρέχονται 'Cookies υποτίτλων'"</string>
   <string name="morphe_caption_cookies_title">Κουκί για την κεφαλίδα</string>
   <string name="morphe_caption_cookies_summary">Cookies που θα οριστούν στις αιτήσεις Timed Text API (Caption Data API)</string>
   <string name="morphe_get_caption_cookies_title">Λήψη κουκί για την κεφαλίδα</string>
@@ -801,6 +812,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_like_fountain_title">Εφέ κουμπιού «Μου αρέσει»</string>
   <string name="morphe_hide_shorts_like_button_title">Κουμπί «Μου αρέσει»</string>
   <string name="morphe_hide_shorts_comments_button_title">Κουμπί σχολίων</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">Απόκρυψη κουμπιού αποθήκευσης</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Κουμπί «Κοινοποίηση»</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
@@ -887,6 +900,7 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_summary">Ανοίγει το φύλλο κοινής χρήσης του συστήματος αντί για το ενσωματωμένο όταν κοινοποιείτε περιεχόμενο</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Υπέρβαση των κουμπιών YouTube Music</string>
+  <string name="morphe_override_youtube_music_buttons_summary">Ανοίγει την προτιμώμενη εφαρμογή μουσικής αντί για την προεπιλεγμένη εφαρμογή YouTube Music</string>
   <string name="morphe_music_package_name_title">Όνομα πακέτου εφαρμογής μουσικής</string>
   <string name="morphe_music_package_name_summary">Όνομα πακέτου της εγκατεστημένης εφαρμογής μουσικής σας</string>
   <!-- layout.startpage.changeStartPagePatch -->
@@ -1039,6 +1053,7 @@ Second \"item\" text"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Έλεγχοι αναπαραγωγής πολυμέσων ειδοποίησης</string>
   <string name="morphe_notification_media_screen_summary">Προσαρμόστε την εμφάνιση και τη συμπεριφορά του μειωμένου μεγέθους αναπαραγωγέα βίντεο</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Απόκρυψη κουμπιών Προηγούμενο &amp; Επόμενο</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Κρύβει τα κουμπιά \'Προηγούμενο\' και \'Επόμενο\' στην ειδοποίηση πολυμέσων, στην οθόνη κλειδώματος και στα χειριστήρια ακουστικών</string>
   <string name="morphe_disable_notification_media_seekbar_title">Απενεργοποίηση γραμμής αναζήτησης</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Αποτρέπει τη μεταφορά της γραμμής προόδου στην οθόνη κλειδώματος και στο πλαίσιο ειδοποιήσεων</string>
@@ -1109,6 +1124,7 @@ Second \"item\" text"</string>
 • Τα βίντεο HDR δεν θα χρησιμοποιούν τον κωδικοποιητή AVC
 • Ορισμένες συσκευές δεν μπορούν να επιβάλλουν τον κωδικοποιητή AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Για να χρησιμοποιήσετε αυτήν τη λειτουργία, ορίστε τη \'Παραποίηση ροών βίντεο\' σε \'Android VR\' ή \'Android Studio\'.</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Άνοιγμα μενού προηγμένης ποιότητας</string>
   <string name="morphe_advanced_video_quality_menu_summary">Παρακάμπτει το μενού επιλογής ποιότητας και ανοίγει απευθείας το μενού ποιότητας \'Προχωρημένων\'</string>
@@ -1119,10 +1135,13 @@ Second \"item\" text"</string>
   <string name="morphe_video_quality_prioritize_summary">Δίνει προτεραιότητα στην υψηλότερη διαθέσιμη ποιότητα βίντεο έναντι της αποδοτικότητας του κωδικοποιητή</string>
   <string name="morphe_video_quality_prioritize_dialog">Εάν αυτή η ρύθμιση είναι απενεργοποιημένη, τότε παλαιότερα βίντεο ενδέχεται να μην εμφανίζουν επιλογές ποιότητας βίντεο</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_av1_title">Να επιτρέπεται το \'Android VR\' / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Επιτρέπει την αποκωδικοποίηση AV1 μέσω λογισμικού όταν χρησιμοποιείτε τον πελάτη \'Android VR\' / visionOS.</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Η ενεργοποίηση αυτής της ρύθμισης ενδέχεται να χρησιμοποιήσει αποκωδικοποίηση λογισμικού AV1.
 
 Η αναπαραγωγή βίντεο μπορεί να κομπιάζει ή να χάνει καρέ."</string>
   <string name="morphe_spoof_video_streams_about_title">Παρενέργειες παραποίησης</string>
+  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Το μενού «Κομμάτι ήχου» λείπει</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Δεν υπάρχει ο κωδικοποιητής βίντεο AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Η 360° VR βιωματική λειτουργία δεν είναι διαθέσιμη</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Η λειτουργία «Σταθερή ένταση» δεν είναι διαθέσιμη</string>
@@ -1132,6 +1151,7 @@ Second \"item\" text"</string>
   <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• Η ποιότητα ενδέχεται να περιορίζεται στα 720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Παραλλαγή πρόγραμμα αναπαραγωγής JavaScript</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Εμφάνιση παραποίησης στο \'Στατιστικά για σπασίκλες\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Επαναφορά γραμμής ενεργειών βίντεο παλαιού τύπου</string>
   <string name="morphe_restore_old_video_action_bar_summary">"Διορθώνει την εμφάνιση των μη εμφανιζόμενων απορρίψεων και η γραμμή εργαλείων βίντεο δεν μπορεί να κρυφτεί

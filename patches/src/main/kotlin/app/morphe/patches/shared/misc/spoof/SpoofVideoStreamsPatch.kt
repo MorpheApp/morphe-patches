@@ -79,6 +79,7 @@ internal fun spoofVideoStreamsPatch(
     fixMediaSessionFeatureFlag: BytecodePatchBuilder.() -> Boolean,
     fixReelItemWatchResponseFeatureFlag: BytecodePatchBuilder.() -> Boolean,
     useNewRequestBuilderFingerprint: BytecodePatchBuilder.() -> Boolean,
+    restoreMissingCuepointMethod: BytecodePatchBuilder.() -> Boolean,
     block: BytecodePatchBuilder.() -> Unit,
     executeBlock: BytecodePatchContext.() -> Unit = {},
 ) = bytecodePatch(
@@ -201,8 +202,13 @@ internal fun spoofVideoStreamsPatch(
                 val setStreamingDataField = it.instructionMatches[1].instruction.getReference<FieldReference>()!!
                 val setPlayerConfigField = it.instructionMatches.last().instruction.getReference<FieldReference>()!!
                 val playerConfigClass = setPlayerConfigField.type
-                val mediaCommonConfigField = abrStateDataFingerprint(playerConfigClass)
-                    .instructionMatches[1].instruction.getReference<FieldReference>()!!
+                val (mediaCommonConfigField, mediaUstreamerRequestConfig) =
+                    with(abrStateDataFingerprint(playerConfigClass)) {
+                        Pair(
+                            instructionMatches[1].instruction.getReference<FieldReference>()!!,
+                            instructionMatches[2].instruction.getReference<FieldReference>()!!,
+                        )
+                    }
 
                 val (createBuilderMethod, mergeFromMethod) =
                     with(PlayerConfigBuilderFingerprint) {
@@ -284,9 +290,13 @@ internal fun spoofVideoStreamsPatch(
                             check-cast v5, $playerConfigClass
                             iget-object v6, v5, $mediaCommonConfigField
                             if-eqz v6, :disabled
+                            iget-object v7, v6, $mediaUstreamerRequestConfig
+                            if-eqz v7, :disabled
 
-                            # Set media common config.
+                            # Set media uStreamer request config.
                             iget-object v5, p2, $setPlayerConfigField
+                            iget-object v6, v5, $mediaCommonConfigField
+                            iput-object v7, v6, $mediaUstreamerRequestConfig
                             iput-object v6, v5, $mediaCommonConfigField
                             iput-object v5, p2, $setPlayerConfigField
 
@@ -407,7 +417,7 @@ internal fun spoofVideoStreamsPatch(
 
         //endregion
 
-        // region turn off stream config replacement feature flag.
+        // region Turn off stream config replacement feature flag.
 
         if (fixMediaFetchHotConfigAlternative()) {
             MediaFetchHotConfigAlternativeFingerprint.let {
@@ -433,6 +443,77 @@ internal fun spoofVideoStreamsPatch(
                     it.instructionMatches.first().index,
                     "$EXTENSION_CLASS->useReelItemWatchResponseFeatureFlag(Z)Z"
                 )
+            }
+        }
+
+        // Restore missing method sometimes called by
+        // com.google.android.libraries.youtube.media.interfaces.NetFetchCallbacks$CppProxy
+        //
+        // The 'native_onCuepointList(long memoryAddress, CuepointListOuterClass cuepointListOuterClass)' method exists,
+        // but the 'parseFrom' method is missing from 'CuepointListOuterClass'.
+        //
+        // This seems to be because the 'GeneratedMessage' class was generated instead of the 'GeneratedMessageLite' class
+        // due to incorrect option settings in the proto file (e.g. 'option optimize_for = SPEED') when Google bulit the app.
+        //
+        // This issue was fixed in YT 21.13 and YTM 9.12.
+        // See: https://github.com/MorpheApp/morphe-patches/pull/2284#issuecomment-5204046377
+        if (restoreMissingCuepointMethod()) {
+            CuepointListFingerprint.classDef.apply {
+                if (methods.none {
+                        it.name == "parseFrom"
+                                && it.parameterTypes.isNotEmpty()
+                                && it.parameterTypes.first() == "Ljava/nio/ByteBuffer;"
+                    }
+                ) {
+                    val cuepointListType = $$"Lcom/google/android/apps/youtube/proto/streaming/CuepointListOuterClass$CuepointList;"
+                    val cueField = fields.single {
+                        it.type == cuepointListType
+                    }
+                    val superClass = superclass!!
+
+                    // Verify the superclass method exists.
+                    Fingerprint(
+                        definingClass = superClass,
+                        name = "parseFrom",
+                        returnType = superClass,
+                        parameters = listOf(
+                            superClass,
+                            "Ljava/nio/ByteBuffer;",
+                            "Lcom/google/protobuf/ExtensionRegistryLite;"
+                        )
+                    ).method
+
+                    methods.add(
+                        ImmutableMethod(
+                            type,
+                            "parseFrom",
+                            listOf(
+                                ImmutableMethodParameter("Ljava/nio/ByteBuffer;", null, null),
+                                ImmutableMethodParameter(
+                                    "Lcom/google/protobuf/ExtensionRegistryLite;",
+                                    null,
+                                    null
+                                )
+                            ),
+                            cuepointListType,
+                            AccessFlags.PUBLIC.value or AccessFlags.STATIC.value,
+                            null,
+                            null,
+                            MutableMethodImplementation(3),
+                        ).toMutable().apply {
+                            addInstructions(
+                                0,
+                                """    
+                                    sget-object v0, $cueField
+                                    invoke-static { v0, p0, p1 }, $superClass->parseFrom(${superClass}Ljava/nio/ByteBuffer;Lcom/google/protobuf/ExtensionRegistryLite;)$superClass
+                                    move-result-object p0
+                                    check-cast p0, $cuepointListType
+                                    return-object p0
+                                """
+                            )
+                        }
+                    )
+                }
             }
         }
 

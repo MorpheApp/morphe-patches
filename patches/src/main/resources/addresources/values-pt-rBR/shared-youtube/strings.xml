@@ -55,7 +55,7 @@ Verifique se o nome do pacote está correto e se o app está instalado"</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Não exibir novamente</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Simular streams de vídeo</string>
-  <string name="morphe_spoof_video_streams_screen_summary">Simular os fluxos de vídeo do cliente para evitar problemas de reprodução</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Configure a simulação de cliente para evitar problemas de reprodução</string>
   <string name="morphe_spoof_video_streams_title">Simular streams de vídeo</string>
   <string name="morphe_spoof_video_streams_summary">"Corrige problemas de reprodução para a maioria dos usuários solicitando um stream de vídeo compatível.
 
@@ -64,7 +64,7 @@ Se você for um usuário do YouTube Premium, esta configuração pode não ser n
   <string name="morphe_spoof_video_streams_user_dialog_message">Desativar esta configuração pode causar problemas de reprodução.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
-  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Tente habilitar: Simular fluxos de vídeo &gt; Android VR sign in</string>
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Tente ativar: Simular streams de vídeo e Fazer login no Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Cliente padrão</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Fazer login no Android VR</string>
@@ -134,7 +134,7 @@ Para fazer login, pressione continuar abaixo"</string>
   <string name="morphe_hide_fullscreen_ads_title">Ocultar anúncios em tela cheia</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
           'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">Para usar este recurso, mude \'Falsificar fluxos de vídeo\' para qualquer cliente, exceto o Android Studio\'</string>
+  <string name="morphe_force_original_audio_not_available">Para usar este recurso, mude \'Simular streams de vídeo\' para qualquer cliente, exceto \'Android Studio\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Limpar links de compartilhamento</string>
   <string name="morphe_sanitize_sharing_links_summary">Remove parâmetros de rastreamento dos links compartilhados</string>

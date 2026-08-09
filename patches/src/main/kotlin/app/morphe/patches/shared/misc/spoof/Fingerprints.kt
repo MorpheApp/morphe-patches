@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.shared.misc.spoof
 
 import app.morphe.patcher.Fingerprint
@@ -18,6 +28,14 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val STREAMING_DATA_OUTER_CLASS =
     $$"Lcom/google/protos/youtube/api/innertube/StreamingDataOuterClass$StreamingData;"
+
+internal object CuepointListFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/apps/youtube/proto/streaming/CuepointListOuterClass\$CuepointList;",
+    name = "<clinit>",
+    filters = listOf(
+        methodCall(name = "registerDefaultInstance")
+    )
+)
 
 internal object BuildInitPlaybackRequestFingerprint : Fingerprint(
     returnType = $$"Lorg/chromium/net/UrlRequest$Builder;",
@@ -101,7 +119,7 @@ internal object BuildRequestFingerprint : Fingerprint(
         val parameterTypesSize = parameterTypes.size
         (parameterTypesSize == 6 || parameterTypesSize == 7 || parameterTypesSize == 8) &&
                 parameterTypes[1] == "Ljava/util/Map;" // URL headers.
-                && indexOfNewUrlRequestBuilderInstruction(methodDef) >= 0
+                && indexOfNewUrlRequestBuilderExecutorInstruction(methodDef) >= 0
     }
 )
 
@@ -160,6 +178,10 @@ internal fun abrStateDataFingerprint(playerConfigClass: String) = object : Finge
             opcode = Opcode.IGET_OBJECT,
             definingClass = playerConfigClass,
             location = MatchAfterImmediately()
+        ),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            location = MatchAfterWithin(5)
         ),
         string("/videoplayback"),
         string("AbrStateDataSpec: Unexpected http body.")
@@ -275,7 +297,7 @@ internal object ReelItemWatchResponseFeatureFlagFingerprint : Fingerprint(
     )
 )
 
-internal fun indexOfNewUrlRequestBuilderInstruction(method: Method) = method.indexOfFirstInstruction {
+internal fun indexOfNewUrlRequestBuilderExecutorInstruction(method: Method) = method.indexOfFirstInstruction {
     val reference = getReference<MethodReference>()
     opcode == Opcode.INVOKE_VIRTUAL && reference?.definingClass == "Lorg/chromium/net/CronetEngine;"
             && reference.name == "newUrlRequestBuilder"

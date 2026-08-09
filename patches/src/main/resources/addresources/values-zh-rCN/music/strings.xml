@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">覆盖下载按钮</string>
   <string name="morphe_external_downloader_action_button_summary">使用您选择的外部下载器代替系统默认的「下载」操作按钮</string>
+  <string name="morphe_external_downloader_flyout_menu_title">覆盖「下载」菜单</string>
   <string name="morphe_external_downloader_flyout_menu_summary">使用您选择的外部下载器代替系统默认的「下载」弹出菜单</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
@@ -326,5 +327,6 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
 
 如果没有找到第三方歌词，则会显示内置歌词"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - 禁用粗体图标</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - 恢复播放器的「接下来播放」「歌词」和「相关」标签页</string>
 </resources>

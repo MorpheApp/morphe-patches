@@ -136,8 +136,10 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_live_chat_replay_button_title">Itago ang button na \'Live chat replay\'</string>
   <string name="morphe_hide_live_chat_replay_button_summary">Itinatago ang button ng pag-replay ng chat sa fullscreen mode</string>
   <string name="morphe_hide_medical_panels_title">Itago ang mga panel ng medikal</string>
+  <string name="morphe_hide_player_gesture_hints_title">Itago ang mga pahiwatig sa galaw ng player</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
+  <string name="morphe_hide_player_gesture_hints_summary">Itinatago ang mga pahiwatig na ipinapakita sa mga galaw ng player, tulad ng \'Hilahin pataas para sa tumpak na pag-skip\', \'Bitawan para kanselahin\' at \'2x\'</string>
   <string name="morphe_hide_snackbar_title">Itago ang snackbar</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Itago ang mga alituntunin ng mga subscriber</string>
   <string name="morphe_hide_sync_button_title">Itago ang button na \'I-sync sa video\'</string>
@@ -212,8 +214,8 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_learning_menu_title">Itago ang Learning menu</string>
   <string name="morphe_hide_live_menu_title">Itago ang menu ng Live</string>
   <string name="morphe_hide_memberships_menu_title">Itago ang menu ng Mga Miyembro</string>
-  <string name="morphe_hide_movies_menu_title">Itago ang menu ng Mga Pelikula</string>
-  <string name="morphe_hide_music_menu_title">Itago ang menu ng \'Musika &amp; TV\'</string>
+  <string name="morphe_hide_movies_menu_title">Itago ang menu na \'Movies &amp; TV\'</string>
+  <string name="morphe_hide_music_menu_title">Itago ang menu ng Musika</string>
   <string name="morphe_hide_news_menu_title">Itago ang menu ng Balita</string>
   <string name="morphe_hide_playables_menu_title">Itago ang menu ng Mga Playable</string>
   <string name="morphe_hide_podcasts_menu_title">Itago ang menu ng Mga Podcast</string>
@@ -347,6 +349,7 @@ I-tap dito upang buksan ang AiSlopList.com at tingnan ang mga pag-download para 
   <string name="morphe_external_downloader_summary">Nagpapakita ng overlay button sa video player na nagbubukas ng iyong external downloader</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Palitan ang pindutan at menu ng Pag-download &amp;</string>
+  <string name="morphe_external_downloader_action_button_summary">Ginagamit ang iyong napiling external downloader sa halip na ang default na feature sa pag-download</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Pagsasalin ng boses</string>
   <string name="morphe_vot_screen_summary">Basahin nang malakas ang mga caption ng video gamit ang text-to-speech sa iyong device, na naka-synchronize sa pagpapatugtog</string>
@@ -491,11 +494,15 @@ Impormasyon: Maaaring hindi gumana sa mga live stream"</string>
   <string name="morphe_seekbar_thumbnail_preview_title">Paganahin ang mga thumbnail ng seekbar</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Nagpapakita ng thumbnail ng video habang hinihila ang seekbar</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"Maaaring hindi magamit ang 'I-enable ang DVR ng livestream'\n\nUpang ayusin ito, i-on ang 'Gayahin ang mga stream ng video' at palitan ang 'Default na client' sa 'TV Simply' o 'visionOS'"</string>
+  <string name="morphe_livestream_dvr_not_available">"'I-enable ang livestream DVR' ay maaaring hindi available
+
+Para ayusin ito, i-on ang 'I-spoof ang video streams' at baguhin ang 'Default client' sa 'TV' o 'visionOS'"</string>
   <string name="morphe_expand_livestream_dvr_duration_title">Palawakin ang tagal ng livestream DVR</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">Pinapayagan kang i-rewind ang mga live broadcast hanggang 7 araw sa nakaraan</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"Maaaring hindi magamit ang 'Palawakin ang tagal ng DVR ng livestream'\n\nUpang ayusin ito, i-on ang 'Gayahin ang mga stream ng video' at palitan ang 'Default na client' sa 'TV Simply' o 'visionOS'"</string>
+  <string name="morphe_expand_livestream_dvr_duration_not_available">"'I-expand ang tagal ng livestream DVR' ay maaaring hindi available
+
+Para ayusin ito, i-on ang 'I-spoof ang video streams' at baguhin ang 'Default client' sa 'TV' o 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Paganahin ang slide to seek</string>
   <string name="morphe_slide_to_seek_summary">Pinapagana ang slide to seek sa halip na magpatugtog sa 2x speed kapag pinipindot at hinahawakan ang video player</string>
@@ -513,6 +520,7 @@ Impormasyon: Maaaring hindi gumana sa mga live stream"</string>
   <string name="morphe_swipe_zone_label_volume">Volume</string>
   <string name="morphe_swipe_zone_label_native">Katutubo</string>
   <string name="morphe_swipe_press_to_engage_title">I-enable ang press to swipe gesture</string>
+  <string name="morphe_swipe_press_to_engage_summary">Kinakailangan ang pagpindot at paghawak bago makilala ang isang kilos ng pag-swipe.</string>
   <string name="morphe_swipe_haptic_feedback_title">I-enable ang haptic feedback</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">I-save at i-restore ang brightness</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Naaalala ang antas ng liwanag kapag pumapasok / lumalabas sa fullscreen mode</string>
@@ -627,6 +635,9 @@ Impormasyon: Maaaring hindi gumana sa mga live stream"</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">Itago ang auto captions</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Magtakda ng mga caption cookies</string>
+  <string name="morphe_set_caption_cookies_summary">"Inaayos ang isang stock YouTube bug kung saan ang mga awtomatikong isinalin na caption ay maaaring hindi available dahil sa nawawalang cookies
+
+Dapat ibigay ang 'Caption cookies'"</string>
   <string name="morphe_caption_cookies_title">Pamagat ng mga cookie</string>
   <string name="morphe_caption_cookies_summary">Mga cookies na itatakda sa Timed Text API (Caption Data API) requests</string>
   <string name="morphe_get_caption_cookies_title">Kumuha ng caption cookies</string>
@@ -801,6 +812,8 @@ Upang ipakita ang menu ng 'Audio Track', baguhin ang 'Gayahin ang mga video stre
   <string name="morphe_hide_shorts_like_fountain_title">Itago ang animation ng bubble ng Like</string>
   <string name="morphe_hide_shorts_like_button_title">Itago ang button na Like</string>
   <string name="morphe_hide_shorts_comments_button_title">Itago ang button ng Komento</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">Itago ang button na I-save</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Itago ang button na Ibahagi</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
@@ -887,6 +900,7 @@ Limitasyon: Kung ang 'Ibalik ang lumang video action bar' ay naka-off, maaaring 
   <string name="morphe_open_system_share_sheet_summary">Binubuksan ang system share sheet sa halip na ang in-app na isa kapag nagbabahagi ng content</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">I-override ang mga butones ng YouTube Music</string>
+  <string name="morphe_override_youtube_music_buttons_summary">Binubuksan ang iyong gustong music app sa halip na ang default na YouTube Music app</string>
   <string name="morphe_music_package_name_title">Pangalan ng pakete ng music app</string>
   <string name="morphe_music_package_name_summary">Pangalan ng pakete ng iyong naka-install na music app</string>
   <!-- layout.startpage.changeStartPagePatch -->
@@ -1039,6 +1053,7 @@ I-tap dito upang buksan ang DeArrow.ajay.app"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Mga kontrol sa media ng abiso</string>
   <string name="morphe_notification_media_screen_summary">I-customize ang mga playback control na ipinapakita sa iyong lock screen at notification panel</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Itago ang mga pindutan ng Nakaraan &amp; Susunod</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Itinatago ang mga Previous at Next button sa media notification, lock screen, at headphone controls</string>
   <string name="morphe_disable_notification_media_seekbar_title">Huwag paganahin ang seekbar</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Pinipigilan ang pag-drag ng seekbar sa lock screen at notification panel</string>
@@ -1109,6 +1124,7 @@ Mga limitasyon:
 • Ang HDR video ay hindi gagamit ng AVC
 • Ang ilang device ay hindi mapipilitan ng AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Upang gamitin ang tampok na ito, itakda ang \'Gayahin ang mga video stream\' sa \'Android VR\' o \'Android Studio\'.</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Buksan ang menu ng kalidad na advanced</string>
   <string name="morphe_advanced_video_quality_menu_summary">Nilalaktawan ang menu ng pagpili ng kalidad at direktang binubuksan ang Advanced na menu ng kalidad</string>
@@ -1119,10 +1135,13 @@ Mga limitasyon:
   <string name="morphe_video_quality_prioritize_summary">Inuuna ang pinakamataas na magagamit na kalidad ng video kaysa sa kahusayan ng codec</string>
   <string name="morphe_video_quality_prioritize_dialog">Kung naka-patay ang setting na ito, maaaring walang opsyon sa kalidad ng video ang mga lumang video</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_av1_title">Payagan ang \'Android VR\' / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Pinapayagan ang software na pag-decode ng AV1 kapag ginagamit ang \'Android VR\' / visionOS client.</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Ang pag-e-enable ng setting na ito ay maaaring gumamit ng software AV1 decoding.
 
 Ang pag-playback ng video gamit ang AV1 ay maaaring mag-stutter o mag-drop ng mga frame."</string>
   <string name="morphe_spoof_video_streams_about_title">Mga epekto ng spoofing</string>
+  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Ang menu na \'Audio Track\' ay nawawala.</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Walang codec ng video AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Ang 360° VR na immersive mode ay hindi magagamit</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Hindi available ang matatag na volume</string>
@@ -1132,6 +1151,7 @@ Ang pag-playback ng video gamit ang AV1 ay maaaring mag-stutter o mag-drop ng mg
   <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• Maaaring limitado ang kalidad sa 720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Variant ng JavaScript ng Player</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Ipakita ang paggagaya sa \'Stats for nerds\'.</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Ibalik ang lumang video action bar</string>
   <string name="morphe_restore_old_video_action_bar_summary">"Inaayos ang mga hindi ipinapakitang dislike at hindi maitagong mga pindutan ng pagkilos ng video

@@ -13,6 +13,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -24,7 +25,6 @@ import androidx.annotation.GuardedBy;
 
 import org.apache.commons.collections4.BidiMap;
 import org.apache.commons.collections4.bidimap.DualHashBidiMap;
-import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.LinkedHashMap;
@@ -338,7 +338,7 @@ public class PlaylistPatch {
 
     private static void saveToPlaylist(@Nullable String libraryId, @Nullable String libraryTitle) {
         try {
-            if (StringUtils.isEmpty(libraryId)) {
+            if (TextUtils.isEmpty(libraryId)) {
                 handleCheckError(checkFailedPlaylistId);
                 return;
             }
@@ -375,7 +375,7 @@ public class PlaylistPatch {
             try {
                 String url;
                 if (openVideo) {
-                    if (StringUtils.isEmpty(currentVideoId)) {
+                    if (TextUtils.isEmpty(currentVideoId)) {
                         handleCheckError(checkFailedVideoId);
                         return;
                     }

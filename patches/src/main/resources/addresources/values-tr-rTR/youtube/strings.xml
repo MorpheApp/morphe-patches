@@ -214,8 +214,8 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_learning_menu_title">Öğrenme menüsünü gizle</string>
   <string name="morphe_hide_live_menu_title">Canlı menüsünü gizle</string>
   <string name="morphe_hide_memberships_menu_title">Üyelikler menüsünü gizle</string>
-  <string name="morphe_hide_movies_menu_title">Filmler menüsünü gizle</string>
-  <string name="morphe_hide_music_menu_title">\'Müzik &amp; TV\' menüsünü gizle</string>
+  <string name="morphe_hide_movies_menu_title">\'Filmler ve TV\' menüsünü gizle</string>
+  <string name="morphe_hide_music_menu_title">Müzik menüsünü gizle</string>
   <string name="morphe_hide_news_menu_title">Haberler menüsünü gizle</string>
   <string name="morphe_hide_playables_menu_title">Hazır Oyunlar menüsünü gizle</string>
   <string name="morphe_hide_podcasts_menu_title">Podcast\'ler menüsünü gizle</string>
@@ -494,15 +494,15 @@ Bilgi: Canlı yayınlarda çalışmayabilir"</string>
   <string name="morphe_seekbar_thumbnail_preview_title">Zaman çubuğu küçük resimlerini etkinleştir</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Arama çubuğunu sürüklerken video küçük resmini gösterir</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"'Canlı yayın DVR'ı etkinleştir' kullanılamayabilir
+  <string name="morphe_livestream_dvr_not_available">"'Canlı yayın DVR'ını etkinleştir' seçeneği kullanılamayabilir
 
-Bunu düzeltmek için, 'Video akışlarını taklit et' özelliğini açın ve 'Varsayılan istemci'yi 'TV Simply' veya 'visionOS' olarak değiştirin."</string>
+Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini açın ve 'Varsayılan istemci'yi 'TV' veya 'visionOS' olarak değiştirin"</string>
   <string name="morphe_expand_livestream_dvr_duration_title">Canlı yayın DVR süresini uzat</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">Canlı yayınları 7 güne kadar geriye sarmanıza olanak tanır</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Canlı yayın DVR süresini uzat' kullanılamayabilir
+  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Canlı yayın DVR süresini genişlet' seçeneği kullanılamayabilir
 
-Bunu düzeltmek için, 'Video akışlarını taklit et' özelliğini açın ve 'Varsayılan istemci'yi 'TV Simply' veya 'visionOS' olarak değiştirin."</string>
+Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini açın ve 'Varsayılan istemci'yi 'TV' veya 'visionOS' olarak değiştirin"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Kaydırarak sardırmayı etkinleştir</string>
   <string name="morphe_slide_to_seek_summary">Video oynatıcıya basılı tutulduğunda 2x hızda oynatmak yerine kaydırarak sardırmayı etkinleştirir</string>
@@ -520,6 +520,7 @@ Bunu düzeltmek için, 'Video akışlarını taklit et' özelliğini açın ve '
   <string name="morphe_swipe_zone_label_volume">Ses</string>
   <string name="morphe_swipe_zone_label_native">Yerel</string>
   <string name="morphe_swipe_press_to_engage_title">Basılı tutup kaydırma hareketini etkinleştir</string>
+  <string name="morphe_swipe_press_to_engage_summary">Kaydırma hareketinin algılanması için önce basılı tutulması gerekir</string>
   <string name="morphe_swipe_haptic_feedback_title">Titreşimli geri bildirimi etkinleştir</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Parlaklığı kaydet ve geri yükle</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Tam ekran moduna girerken / çıkarken parlaklık seviyesini hatırlar</string>
@@ -811,6 +812,8 @@ Ayarlara erişmek için, Genel → Araç Çubuğu → Ayarları Göster yoluyla 
   <string name="morphe_hide_shorts_like_fountain_title">Beğeni düğmesi çeşme animasyonunu gizle</string>
   <string name="morphe_hide_shorts_like_button_title">Beğen düğmesini gizle</string>
   <string name="morphe_hide_shorts_comments_button_title">Yorumlar düğmesini gizle</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">Kaydet düğmesini gizle</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Paylaş düğmesini gizle</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
@@ -1050,6 +1053,7 @@ DeArrow hakkında daha fazla bilgi edinmek için buraya dokunun"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Bildirim medya kontrolleri</string>
   <string name="morphe_notification_media_screen_summary">Kilit ekranınızda ve bildirim panelinizde görünen oynatma kontrollerini özelleştirin</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Önceki &amp; Sonraki butonlarını gizle</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Medya bildirimi, kilit ekranı ve kulaklık kontrollerinde Önceki ve Sonraki düğmelerini gizler</string>
   <string name="morphe_disable_notification_media_seekbar_title">Zaman çubuğunu devre dışı bırak</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Bildirim panelindeki ve kilit ekranındaki zaman çubuğunu sürüklemeyi engeller</string>
@@ -1122,6 +1126,7 @@ Sınırlamalar:
 • HDR videolar AVC kullanmaz
 • Bazı cihazlar AVC'yi zorlayamaz"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Bu özelliği kullanmak için \'Video akışlarını taklit et\'i Android VR veya Android Studio olarak ayarlayın</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Gelişmiş kalite menüsünü aç</string>
   <string name="morphe_advanced_video_quality_menu_summary">Kalite seçim menüsünü atlar ve doğrudan Gelişmiş kalite menüsünü açar</string>
@@ -1132,10 +1137,13 @@ Sınırlamalar:
   <string name="morphe_video_quality_prioritize_summary">Kodek verimliliğinden ziyade en yüksek video kalitesine öncelik verir</string>
   <string name="morphe_video_quality_prioritize_dialog">Bu ayar devre dışı bırakılırsa, eski videolar için video kalitesi seçenekleri görüntülenmeyebilir</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_av1_title">\'Android VR\' / visionOS AV1\'e izin ver</string>
+  <string name="morphe_spoof_video_streams_av1_summary">\'Android VR\' / visionOS istemcisi kullanılırken yazılımsal AV1 kod çözmeye izin verir</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Bu ayarı etkinleştirmek yazılım tabanlı AV1 kod çözmeyi kullanabilir.
 
 AV1 ile video oynatma takılabilir veya kare atlayabilir."</string>
   <string name="morphe_spoof_video_streams_about_title">Taklit yan etkileri</string>
+  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• \'Ses Parçası menüsü eksik</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• AV1 video kodeği yok</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR immersif modu mevcut değil</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Sabit ses mevcut değil</string>
@@ -1145,6 +1153,7 @@ AV1 ile video oynatma takılabilir veya kare atlayabilir."</string>
   <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• Kalite 720p ile sınırlı olabilir</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Oynatıcı JavaScript varyantı</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">\'Meraklısı için istatistikler\'de taklit göster</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Eski video eylem çubuğunu geri yükle</string>
   <string name="morphe_restore_old_video_action_bar_summary">"Beğenmemelerin görünmemesi ve video eylem düğmelerinin gizlenememesi sorunlarını düzeltir

@@ -215,8 +215,8 @@ Folgende Änderungen werden vorgenommen:
   <string name="morphe_hide_learning_menu_title">Lernmenü ausblenden</string>
   <string name="morphe_hide_live_menu_title">Eintrag „Live“ ausblenden</string>
   <string name="morphe_hide_memberships_menu_title">Eintrag „Mitgliedschaften“ ausblenden</string>
-  <string name="morphe_hide_movies_menu_title">Eintrag „Filme“ ausblenden</string>
-  <string name="morphe_hide_music_menu_title">Eintrag „Musik &amp; TV“ ausblenden</string>
+  <string name="morphe_hide_movies_menu_title">Eintrag „Filme &amp; TV“ ausblenden</string>
+  <string name="morphe_hide_music_menu_title">Eintrag „Musik“ ausblenden</string>
   <string name="morphe_hide_news_menu_title">Eintrag „Nachrichten“ ausblenden</string>
   <string name="morphe_hide_playables_menu_title">Eintrag „Playables“ ausblenden</string>
   <string name="morphe_hide_podcasts_menu_title">Eintrag „Podcasts“ ausblenden</string>
@@ -350,6 +350,7 @@ Tippen Sie hier, um AiSlopList.com zu öffnen und Downloads für andere Plattfor
   <string name="morphe_external_downloader_summary">Zeigt eine Overlay-Schaltfläche im Videoplayer an, die Ihren externen Downloader öffnet</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Download-Aktionsschaltfläche &amp; Menü überschreiben</string>
+  <string name="morphe_external_downloader_action_button_summary">Verwendet den von dir gewählten externen Downloader anstelle der integrierten Download-Funktion</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Sprachausgabe-Übersetzung</string>
   <string name="morphe_vot_screen_summary">Lies die Videountertitel laut mithilfe der Text-to-Speech-Funktion des Geräts, synchronisiert mit der Wiedergabe.</string>
@@ -496,13 +497,13 @@ Info: Funktioniert möglicherweise nicht bei Livestreams"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'Livestream-DVR aktivieren' ist möglicherweise nicht verfügbar
 
-Um dies zu beheben, aktivieren Sie 'Videostreams fälschen' und ändern Sie 'Standard-Client' in 'TV Simply' oder 'visionOS'."</string>
+Um das zu beheben, aktiviere 'Video-Streams spoofen' und ändere den 'Standard-Client' auf 'TV' oder 'visionOS'"</string>
   <string name="morphe_expand_livestream_dvr_duration_title">Livestream DVR-Dauer erweitern</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">Ermöglicht das Zurückspulen von Live-Sendungen um bis zu 7 Tage in der Vergangenheit</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_expand_livestream_dvr_duration_not_available">"'Livestream-DVR-Dauer erweitern' ist möglicherweise nicht verfügbar
 
-Um dies zu beheben, aktivieren Sie 'Videostreams fälschen' und ändern Sie 'Standard-Client' in 'TV Simply' oder 'visionOS'."</string>
+Um das zu beheben, aktiviere 'Video-Streams spoofen' und ändere den 'Standard-Client' auf 'TV' oder 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Ziehen zum Suchen aktivieren</string>
   <string name="morphe_slide_to_seek_summary">Aktiviert das Wischen zum Suchen anstelle des Abspielens mit 2x Geschwindigkeit, wenn Sie die Videoplayer-Taste gedrückt halten</string>
@@ -520,6 +521,7 @@ Um dies zu beheben, aktivieren Sie 'Videostreams fälschen' und ändern Sie 'Sta
   <string name="morphe_swipe_zone_label_volume">Lautstärke</string>
   <string name="morphe_swipe_zone_label_native">Nativ</string>
   <string name="morphe_swipe_press_to_engage_title">Berührungsschutz für Gesten aktivieren</string>
+  <string name="morphe_swipe_press_to_engage_summary">Erfordert Drücken und Halten, bevor eine Wischgeste erkannt wird</string>
   <string name="morphe_swipe_haptic_feedback_title">Haptisches Feedback aktivieren</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Helligkeit speichern und wiederherstellen</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Erlaubt, dass die Helligkeit beim Wechsel in den Vollbildmodus gespeichert und beim Verlassen wiederhergestellt wird</string>
@@ -634,6 +636,9 @@ Um dies zu beheben, aktivieren Sie 'Videostreams fälschen' und ändern Sie 'Sta
   <string name="morphe_auto_captions_style_legacy_entry_2">Verberge automatische Untertitel</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Caption-Cookies festlegen</string>
+  <string name="morphe_set_caption_cookies_summary">"Behebt einen Fehler in YouTube, bei dem die automatischen Untertitel aufgrund fehlender Cookies möglicherweise nicht verfügbar sind
+
+„Caption-Cookies“ müssen angegeben werden"</string>
   <string name="morphe_caption_cookies_title">Untertitel-Cookies</string>
   <string name="morphe_caption_cookies_summary">Cookies, die in Timed Text API (Caption Data API)-Anfragen festgelegt werden sollen</string>
   <string name="morphe_get_caption_cookies_title">Untertitel-Cookies abrufen</string>
@@ -808,6 +813,8 @@ Um das Menü anzuzeigen, ändern Sie 'Videostreams fälschen' in einen beliebige
   <string name="morphe_hide_shorts_like_fountain_title">Animation des „Like“-Effekts ausblenden</string>
   <string name="morphe_hide_shorts_like_button_title">Schaltfläche „Like“ ausblenden</string>
   <string name="morphe_hide_shorts_comments_button_title">Schaltfläche „Kommentare“ ausblenden</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">Schaltfläche „Speichern“ ausblenden</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Schaltfläche „Teilen“ ausblenden</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
@@ -894,6 +901,7 @@ Einschränkung: Wenn \"Alte Video-Aktionsleiste wiederherstellen\" deaktiviert i
   <string name="morphe_open_system_share_sheet_summary">Öffnet die systemeigene Freigabeansicht anstelle der In-App-Ansicht, wenn Sie Inhalte teilen</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">YouTube-Music-Schaltfläche überschreiben</string>
+  <string name="morphe_override_youtube_music_buttons_summary">Öffnet deine bevorzugte Musik-App anstelle der Standard-YouTube-Music-App</string>
   <string name="morphe_music_package_name_title">Paketname der Musik-App</string>
   <string name="morphe_music_package_name_summary">Paketname Ihrer installierten Musik-App</string>
   <!-- layout.startpage.changeStartPagePatch -->
@@ -1046,6 +1054,7 @@ Tippen Sie hier, um mehr über DeArrow zu erfahren"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Benachrichtigung Mediensteuerung</string>
   <string name="morphe_notification_media_screen_summary">Passen Sie die Anzeige der Wiedergabesteuerelemente auf Ihrem Sperrbildschirm und in Ihrem Benachrichtigungsfeld an</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Schaltflächen „Zurück“ &amp; „Weiter“ ausblenden</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Blendet Zurück- und Weiter-Schaltflächen in Medienbenachrichtigung, Sperrbildschirm und Kopfhörersteuerung aus.</string>
   <string name="morphe_disable_notification_media_seekbar_title">Videofortschrittsbalken deaktivieren</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Verhindert das Ziehen der Fortschrittsanzeige auf dem Sperrbildschirm und im Benachrichtigungsfeld</string>
@@ -1118,6 +1127,7 @@ Einschränkungen:
 • HDR-Videos verwenden kein AVC
 • Einige Geräte können AVC nicht erzwingen"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Um diese Funktion zu nutzen, setze „Video-Streams spoofen“ auf „Android VR“ oder „Android Studio“</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Erweiterte Qualitätseinstellungen öffnen</string>
   <string name="morphe_advanced_video_quality_menu_summary">Überspringt das Menü zur Qualitätsauswahl und öffnet direkt die erweiterten Qualitätseinstellungen</string>
@@ -1128,10 +1138,13 @@ Einschränkungen:
   <string name="morphe_video_quality_prioritize_summary">Priorisiert die höchstmögliche Videoqualität gegenüber der Codec-Effizienz</string>
   <string name="morphe_video_quality_prioritize_dialog">Ist diese Einstellung deaktiviert, werden bei älteren Videos möglicherweise keine Optionen zur Videoqualität angezeigt</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_av1_title">Erlaube AV1 bei „Android VR“ / visionOS</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Erlaubt softwareseitige AV1-Dekodierung, wenn der Client „Android VR“ / visionOS verwendet wird</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Durch Aktivierung dieser Einstellung kann Software-AV1-Decodierung verwendet werden.
 
 Die Videowiedergabe mit AV1 kann stottern oder Bilder überspringen."</string>
   <string name="morphe_spoof_video_streams_about_title">Nebenwirkungen des Spoofings</string>
+  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Menü „Audiotrack“ fehlt</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Kein AV1-Videocodec</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR immersiver Modus ist nicht verfügbar</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabile Lautstärke ist nicht verfügbar</string>
@@ -1141,6 +1154,7 @@ Die Videowiedergabe mit AV1 kann stottern oder Bilder überspringen."</string>
   <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• Die Qualität kann auf 720p beschränkt sein</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Player-JavaScript-Variante</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Spoofing in „Statistiken für Nerds“ anzeigen</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Alte Video-Aktionsleiste wiederherstellen</string>
   <string name="morphe_restore_old_video_action_bar_summary">"Behebt fehlende Dislikes und das Nichtausblenden der Video-Aktionsschaltfläche

@@ -214,8 +214,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_learning_menu_title">إخفاء قائمة محتوى تعليمي</string>
   <string name="morphe_hide_live_menu_title">إخفاء قائمة بث مباشر</string>
   <string name="morphe_hide_memberships_menu_title">إخفاء قائمة العضويات</string>
-  <string name="morphe_hide_movies_menu_title">إخفاء قائمة الأفلام</string>
-  <string name="morphe_hide_music_menu_title">إخفاء قائمة \'الموسيقى والتلفزيون\'</string>
+  <string name="morphe_hide_movies_menu_title">إخفاء قائمة \'الأفلام والتلفزيون\'</string>
+  <string name="morphe_hide_music_menu_title">إخفاء قائمة الموسيقى</string>
   <string name="morphe_hide_news_menu_title">إخفاء قائمة الأخبار</string>
   <string name="morphe_hide_playables_menu_title">إخفاء قائمة هيّا نلعب</string>
   <string name="morphe_hide_podcasts_menu_title">إخفاء قائمة البودكاست</string>
@@ -498,15 +498,15 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_seekbar_thumbnail_preview_title">تمكين مصغرات شريط التقدم</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">يعرض صورة مصغرة للفيديو أثناء سحب شريط التقدم</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"قد لا يكون 'تمكين التنقل في البث المباشر' متاحًا
+  <string name="morphe_livestream_dvr_not_available">"قد لا يكون 'تمكين رجوع البث المباشر' متاحًا
 
-لإصلاح ذلك، قم بتشغيل 'Spoof Video Streams' وغيّر 'العميل الافتراضي' إلى 'TV Simply' أو 'visionOS'"</string>
+لإصلاح ذلك، قم بتشغيل 'Spoof Video Streams' وغيّر 'العميل الافتراضي' إلى 'TV' أو 'visionOS'"</string>
   <string name="morphe_expand_livestream_dvr_duration_title">زيادة مدة رجوع البث المباشر</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">يسمح لك بإعادة تشغيل البث المباشر لمدة تصل إلى 7 أيام مضت</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_expand_livestream_dvr_duration_not_available">"قد لا يكون 'زيادة مدة رجوع البث المباشر' متاحًا
 
-لإصلاح ذلك، قم بتشغيل 'Spoof Video Streams' وغيّر 'العميل الافتراضي' إلى 'TV Simply' أو 'visionOS'"</string>
+لإصلاح ذلك، قم بتشغيل 'Spoof Video Streams' وغيّر 'العميل الافتراضي' إلى 'TV' أو 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">تمكين التمرير للتقديم أو الترجيع</string>
   <string name="morphe_slide_to_seek_summary">تمكين التمرير للتنقل بدلًا من التشغيل بسرعة 2x عند الضغط مع الاستمرار على مشغل الفيديو</string>
@@ -817,6 +817,8 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_hide_shorts_like_fountain_title">إخفاء التأثير الفوّار لـزر أعجبني</string>
   <string name="morphe_hide_shorts_like_button_title">إخفاء زر أعجبني</string>
   <string name="morphe_hide_shorts_comments_button_title">إخفاء زر التعليقات</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">إخفاء زر حفظ</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">إخفاء زر مشاركة</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->

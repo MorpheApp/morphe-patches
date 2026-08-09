@@ -213,8 +213,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_learning_menu_title">शिकण्याचे मेनू लपवा</string>
   <string name="morphe_hide_live_menu_title">लाइव्ह मेनू लपवा</string>
   <string name="morphe_hide_memberships_menu_title">सदस्यता मेनू लपवा</string>
-  <string name="morphe_hide_movies_menu_title">मूव्हीज मेनू लपवा</string>
-  <string name="morphe_hide_music_menu_title">\'म्युझिक आणि टीव्ही\' मेनू लपवा</string>
+  <string name="morphe_hide_movies_menu_title">\'चित्रपट आणि टीव्ही\' मेनू लपवा</string>
+  <string name="morphe_hide_music_menu_title">संगीत मेनू लपवा</string>
   <string name="morphe_hide_news_menu_title">न्यूज मेनू लपवा</string>
   <string name="morphe_hide_playables_menu_title">प्लेएबल्स मेनू लपवा</string>
   <string name="morphe_hide_podcasts_menu_title">पॉडकास्ट मेनू लपवा</string>
@@ -476,15 +476,15 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_seekbar_thumbnail_preview_title">सीकबार थंबनेल सक्षम करा</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">सीकबार ड्रॅग करताना व्हिडिओ थंबनेल दर्शवते</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"'लाइव्हस्ट्रीम DVR सक्षम करा' उपलब्ध नसेल
+  <string name="morphe_livestream_dvr_not_available">"'लाइव्हस्ट्रीम DVR सक्षम करा' उपलब्ध असू शकत नाही
 
-हे निराकरण करण्यासाठी, 'व्हिडिओ स्ट्रीम्स स्पूफ करा' चालू करा आणि 'डिफॉल्ट क्लायंट' 'टीव्ही सिम्प्ली' किंवा 'व्हिजनओएस' मध्ये बदला."</string>
+हे दुरुस्त करण्यासाठी, 'व्हिडिओ स्ट्रीम स्पूफ करा' चालू करा आणि 'डीफॉल्ट क्लायंट' बदलून 'टीव्ही' किंवा 'visionOS' करा."</string>
   <string name="morphe_expand_livestream_dvr_duration_title">लाइव्हस्ट्रीम DVR कालावधी वाढवा</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">तुम्हाला लाइव्ह ब्रॉडकास्ट मागील ७ दिवसांपर्यंत मागे घेऊन पाहण्याची परवानगी देते.</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"'लाइव्हस्ट्रीम DVR कालावधी वाढवा' उपलब्ध नसेल
+  <string name="morphe_expand_livestream_dvr_duration_not_available">"'लाइव्हस्ट्रीम DVR कालावधी वाढवा' उपलब्ध असू शकत नाही
 
-हे निराकरण करण्यासाठी, 'व्हिडिओ स्ट्रीम्स स्पूफ करा' चालू करा आणि 'डिफॉल्ट क्लायंट' 'टीव्ही सिम्प्ली' किंवा 'व्हिजनओएस' मध्ये बदला."</string>
+हे दुरुस्त करण्यासाठी, 'व्हिडिओ स्ट्रीम स्पूफ करा' चालू करा आणि 'डीफॉल्ट क्लायंट' बदलून 'टीव्ही' किंवा 'visionOS' करा."</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">स्लाइड टू सीक सक्षम करा</string>
   <string name="morphe_slide_to_seek_summary">व्हिडिओ प्लेयरवर दाबून धरल्यावर 2x वेगाने प्ले करण्याऐवजी स्लाइड टू सीक सक्षम करा</string>
@@ -792,6 +792,8 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_hide_shorts_like_fountain_title">லைக் बटण फाउंटेन ॲनिमेशन लपवा</string>
   <string name="morphe_hide_shorts_like_button_title">லைக் बटण लपवा</string>
   <string name="morphe_hide_shorts_comments_button_title">टिप्पणी बटण लपवा</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">\'जतन करा\'  बटण लपवा</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">शेअर बटण लपवा</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->

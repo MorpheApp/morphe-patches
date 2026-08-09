@@ -139,6 +139,7 @@ Wijzigingen zijn:
   <string name="morphe_hide_player_gesture_hints_title">Verberg de gebarenhints van de speler</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
+  <string name="morphe_hide_player_gesture_hints_summary">Verbergt de hints die worden weergegeven tijdens gebaren van de speler, zoals \'Veeg omhoog voor nauwkeurig zoeken\', \'Laat los om te annuleren\' en \'2x\'</string>
   <string name="morphe_hide_snackbar_title">Verberg snackbar</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Richtlijnen voor abonnees verbergen</string>
   <string name="morphe_hide_sync_button_title">Verberg knop \'Synchroniseren met video\'</string>
@@ -213,8 +214,8 @@ Wijzigingen zijn:
   <string name="morphe_hide_learning_menu_title">Verberg \'Leer\' menu</string>
   <string name="morphe_hide_live_menu_title">Verberg Live menu</string>
   <string name="morphe_hide_memberships_menu_title">Verberg Lidmaatschappen menu</string>
-  <string name="morphe_hide_movies_menu_title">Verberg Films menu</string>
-  <string name="morphe_hide_music_menu_title">Verberg het \'Muziek &amp; TV\'-menu</string>
+  <string name="morphe_hide_movies_menu_title">Verberg \'Films &amp; tv\' menu</string>
+  <string name="morphe_hide_music_menu_title">Verberg muziekmenu</string>
   <string name="morphe_hide_news_menu_title">Verberg Nieuws menu</string>
   <string name="morphe_hide_playables_menu_title">Verberg Speelbare items menu</string>
   <string name="morphe_hide_podcasts_menu_title">Verberg Podcasts menu</string>
@@ -493,15 +494,15 @@ Info: Werkt mogelijk niet op livestreams"</string>
   <string name="morphe_seekbar_thumbnail_preview_title">Activeer zoekbalk miniaturen</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Toont een video miniatuur terwijl je de zoekbalk versleept</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"'Livestream DVR inschakelen' is mogelijk niet beschikbaar
+  <string name="morphe_livestream_dvr_not_available">"'Enable livestream DVR' is mogelijk niet beschikbaar
 
-Om dit op te lossen, schakel 'Video streams spoofen' in en wijzig de 'Standaardclient' naar 'TV Simply' of 'visionOS'"</string>
+Om dit op te lossen, schakel 'Spoof videostreams' in en wijzig de 'Standaardclient' naar 'TV' of 'visionOS'"</string>
   <string name="morphe_expand_livestream_dvr_duration_title">Livestream DVR-duur uitbreiden</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">Hiermee kunt u live uitzendingen tot 7 dagen terugspoelen</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Duur livestream DVR verlengen' is mogelijk niet beschikbaar
+  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Expand livestream DVR duration' is mogelijk niet beschikbaar
 
-Om dit op te lossen, schakel 'Video streams spoofen' in en wijzig de 'Standaardclient' naar 'TV Simply' of 'visionOS'"</string>
+Om dit op te lossen, schakel 'Spoof videostreams' in en wijzig de 'Standaardclient' naar 'TV' of 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Schuiven om te zoeken inschakelen</string>
   <string name="morphe_slide_to_seek_summary">Schakelt \'Schuif om te zoeken\' in in plaats van af te spelen op 2x snelheid wanneer je op de videospeler drukt en vasthoudt</string>
@@ -519,6 +520,7 @@ Om dit op te lossen, schakel 'Video streams spoofen' in en wijzig de 'Standaardc
   <string name="morphe_swipe_zone_label_volume">Volume</string>
   <string name="morphe_swipe_zone_label_native">Native</string>
   <string name="morphe_swipe_press_to_engage_title">\"Druk om te vegen\" beweging inschakelen</string>
+  <string name="morphe_swipe_press_to_engage_summary">Vereist indrukken en vasthouden voordat een veegbeweging wordt herkend</string>
   <string name="morphe_swipe_haptic_feedback_title">Haptische feedback inschakelen</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Helderheid opslaan en herstellen</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Onthoudt het helderheidsniveau bij het in- en uitgaan van de volledig schermmodus</string>
@@ -808,6 +810,8 @@ Om het menu 'Audio Track' weer te geven, wijzig 'Video streams spoofen' naar een
   <string name="morphe_hide_shorts_like_fountain_title">Verberg de fonteinanimatie van de vind-ik-leukknop</string>
   <string name="morphe_hide_shorts_like_button_title">Verberg de knop \"Vind ik leuk\"</string>
   <string name="morphe_hide_shorts_comments_button_title">Verberg de knop \"Reacties\"</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">Verberg de knop \"Opslaan\"</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Verberg de knop \"Delen\"</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
@@ -1047,6 +1051,7 @@ Tik hier om meer te weten te komen over DeArrow"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Melding media bedieningselementen</string>
   <string name="morphe_notification_media_screen_summary">Pas het uiterlijk en het gedrag van de video speler aan op je vergrendelscherm en meldingspaneel</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Verberg Vorige &amp; Volgende knoppen</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Verbergt de Vorige en Volgende knoppen in mediasnelding, vergrendelscherm en koptelefoonbedieningselementen</string>
   <string name="morphe_disable_notification_media_seekbar_title">Zoekbalk uitschakelen</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Voorkomt dat de media voortgangsbalk op het vergrendelscherm en meldingspaneel wordt gesleept</string>
@@ -1119,6 +1124,7 @@ Beperkingen:
 • HDR-video's gebruiken geen AVC
 • Sommige apparaten kunnen AVC niet forceren"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Om deze functie te gebruiken, stel \'Videostreams spoofen\' in op \'Android VR\' of \'Android Studio\'</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Open geavanceerd kwaliteit menu</string>
   <string name="morphe_advanced_video_quality_menu_summary">Slaat het kwaliteitsselectiemenu over en opent het Geavanceerde kwaliteitsmenu direct</string>
@@ -1129,10 +1135,13 @@ Beperkingen:
   <string name="morphe_video_quality_prioritize_summary">Prioriteert de hoogste beschikbare videokwaliteit boven codec-efficiëntie</string>
   <string name="morphe_video_quality_prioritize_dialog">Als deze instelling is uitgeschakeld, kunnen oudere video\'s geen video kwaliteit opties weergeven</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_av1_title">Sta \'Android VR\' / visionOS AV1 toe</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Staat softwarematige AV1-decodering toe bij gebruik van de \'Android VR\' / visionOS-client</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Het inschakelen van deze instelling kan gebruikmaken van softwarematige AV1-decodering.
 
 Het afspelen van video met AV1 kan haperen of frames overslaan."</string>
   <string name="morphe_spoof_video_streams_about_title">Spoofing-neveneffecten</string>
+  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• \'Audiotrack-menu\' ontbreekt</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Geen AV1-videocodec</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR-ervaring is niet beschikbaar</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabiel volume is niet beschikbaar</string>
@@ -1142,6 +1151,7 @@ Het afspelen van video met AV1 kan haperen of frames overslaan."</string>
   <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• De kwaliteit kan beperkt zijn tot 720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Player JavaScript variant</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Toon spoofing in \'Stats for nerds\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Herstel oude video acties balk</string>
   <string name="morphe_restore_old_video_action_bar_summary">"Lost het probleem op waarbij dislikes niet worden weergegeven en video actieknoppen niet kunnen worden verborgen

@@ -214,8 +214,8 @@ Zmeny zahŕňajú:
   <string name="morphe_hide_learning_menu_title">Skryť menu Vzdelávanie</string>
   <string name="morphe_hide_live_menu_title">Skryť menu Live</string>
   <string name="morphe_hide_memberships_menu_title">Skryť menu Členstvá</string>
-  <string name="morphe_hide_movies_menu_title">Skryť menu Filmy</string>
-  <string name="morphe_hide_music_menu_title">Skryť menu \"Hudba a TV\"</string>
+  <string name="morphe_hide_movies_menu_title">Skryť ponuku „Filmy a TV“</string>
+  <string name="morphe_hide_music_menu_title">Skryť ponuku Hudba</string>
   <string name="morphe_hide_news_menu_title">Skryť menu Správy</string>
   <string name="morphe_hide_playables_menu_title">Skryť menu Playables</string>
   <string name="morphe_hide_podcasts_menu_title">Skryť menu Podcasty</string>
@@ -349,6 +349,7 @@ Obmedzenia:
   <string name="morphe_external_downloader_summary">Zobrazuje prekryvné tlačidlo v prehrávači videa, ktoré otvorí vaše sťahovanie tretích strán</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Nahradiť tlačidlo &amp; menu na stiahnutie</string>
+  <string name="morphe_external_downloader_action_button_summary">Používa vami zvolený externý sťahovač namiesto vstavanej funkcie sťahovania</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Preklad hlasového komentára</string>
   <string name="morphe_vot_screen_summary">Nahlas prečítajte titulky videa pomocou text-to-speech priamo v zariadení, synchronizovane s prehrávaním</string>
@@ -493,15 +494,15 @@ Poznámka: Možno nebude fungovať na živých prenosoch"</string>
   <string name="morphe_seekbar_thumbnail_preview_title">Povoliť miniatúry na posúvači</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Zobrazuje miniatúru videa počas ťahania posúvača</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"'Povoliť DVR živého vysielania' nemusí byť dostupné
+  <string name="morphe_livestream_dvr_not_available">"'Zapnúť DVR pre livestream' nemusí byť dostupné
 
-Na opravu zapnite 'Falšovať video streamy' a zmeňte 'Predvolený klient' na 'TV Simply' alebo 'visionOS'"</string>
+Ak to chcete opraviť, zapnite 'Spoofovanie video streamov' a zmeňte 'Predvolený klient' na 'TV' alebo 'visionOS'"</string>
   <string name="morphe_expand_livestream_dvr_duration_title">Rozšíriť trvanie DVR živého prenosu</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">Umožňuje vám prehliadať živé vysielania späť až o 7 dní</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Rozšíriť trvanie DVR živého vysielania' nemusí byť dostupné
+  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Rozšíriť dĺžku DVR pre livestream' nemusí byť dostupné
 
-Na opravu zapnite 'Falšovať video streamy' a zmeňte 'Predvolený klient' na 'TV Simply' alebo 'visionOS'"</string>
+Ak to chcete opraviť, zapnite 'Spoofovanie video streamov' a zmeňte 'Predvolený klient' na 'TV' alebo 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Povoliť posúvanie pre vyhľadávanie</string>
   <string name="morphe_slide_to_seek_summary">Zapne posúvanie na vyhľadávanie namiesto prehrávania 2x rýchlosťou pri podržaní prehrávača videa</string>
@@ -519,6 +520,7 @@ Na opravu zapnite 'Falšovať video streamy' a zmeňte 'Predvolený klient' na '
   <string name="morphe_swipe_zone_label_volume">Hlasitosť</string>
   <string name="morphe_swipe_zone_label_native">Natívne</string>
   <string name="morphe_swipe_press_to_engage_title">Povoliť gesto posúvania stlačením</string>
+  <string name="morphe_swipe_press_to_engage_summary">Vyžaduje stlačenie a podržanie pred rozpoznaním gesta potiahnutia.</string>
   <string name="morphe_swipe_haptic_feedback_title">Povoliť haptickú spätnú väzbu</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Uložiť a obnoviť jas</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Zapamätá si úroveň jasu pri vstupe alebo výstupe z režimu na celú obrazovku</string>
@@ -633,6 +635,9 @@ Na opravu zapnite 'Falšovať video streamy' a zmeňte 'Predvolený klient' na '
   <string name="morphe_auto_captions_style_legacy_entry_2">Skryť automatické titulky</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Nastaviť súbory cookie s titulkami</string>
+  <string name="morphe_set_caption_cookies_summary">"Opravuje chybu v pôvodnom YouTube, kde automaticky preložené titulky nemusia byť dostupné kvôli chýbajúcim cookies
+
+Je potrebné poskytnúť 'Cookies pre titulky'"</string>
   <string name="morphe_caption_cookies_title">Súbory cookie titulkov</string>
   <string name="morphe_caption_cookies_summary">Súbory cookie, ktoré sa majú nastaviť v požiadavkách Timed Text API (Caption Data API)</string>
   <string name="morphe_get_caption_cookies_title">Získať súbory cookie s titulkami</string>
@@ -807,6 +812,8 @@ Ak chcete ponuku 'Zvuková stopa' zobraziť, zmeňte 'Falsifikácia video stream
   <string name="morphe_hide_shorts_like_fountain_title">Skryť animáciu fontány \'Páči sa mi\'</string>
   <string name="morphe_hide_shorts_like_button_title">Skryť tlačidlo \'Páči sa mi\'</string>
   <string name="morphe_hide_shorts_comments_button_title">Skryť tlačidlo Komentáre</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">Skryť tlačidlo Uložiť</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Skryť tlačidlo Zdieľať</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
@@ -893,6 +900,7 @@ Obmedzenie: Ak je vypnutá možnosť 'Obnoviť starú lištu akcií videa', vrst
   <string name="morphe_open_system_share_sheet_summary">Otvára destináciu URL priamo, obchádza odkazy na sledovanie presmerovania</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Prepísať tlačidlá YouTube Music</string>
+  <string name="morphe_override_youtube_music_buttons_summary">Otvorenie vašej preferovanej hudobnej aplikácie namiesto vstavanej aplikácie YouTube Music</string>
   <string name="morphe_music_package_name_title">Názov balíka hudobnej aplikácie</string>
   <string name="morphe_music_package_name_summary">Názov balíka nainštalovanej hudobnej aplikácie</string>
   <!-- layout.startpage.changeStartPagePatch -->
@@ -1045,6 +1053,7 @@ Ak je povolené, URL adresy videí sa odošlú na server API a neodosielajú sa 
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Ovládacie prvky médií v upozorneniach</string>
   <string name="morphe_notification_media_screen_summary">Prispôsobte vzhľad a správanie prehrávača videa na obrazovke uzamknutia a v paneli upozornení</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Skryť predchádzajúce &amp; ďalšie tlačidlá</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Skryje tlačidlá Predchádzajúce a Nasledujúce v mini prehrávači, na obrazovke uzamknutia a v ovládacích prvkoch slúchadiel</string>
   <string name="morphe_disable_notification_media_seekbar_title">Zakázať ukazovateľ priebehu (seekbar)</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Zabráni ťahaniu časovej osy na obrazovke uzamknutia a v paneloch upozornení</string>
@@ -1117,6 +1126,7 @@ Obmedzenia:
 • HDR videá nebudú využívať AVC
 • Niektoré zariadenia nemôžu vynútiť AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Na používanie tejto funkcie nastavte \'Falšovanie toku videa\' na \'Android VR\' alebo \'Android Studio\'.</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Otvoriť menu pokročilých nastavení kvality</string>
   <string name="morphe_advanced_video_quality_menu_summary">Preskočí menu výberu kvality a otvorí priamo menu kvality \'Pokročilé\'</string>
@@ -1127,10 +1137,13 @@ Obmedzenia:
   <string name="morphe_video_quality_prioritize_summary">Uprednostňuje najvyššiu dostupnú kvalitu videa pred efektivitou kodeku</string>
   <string name="morphe_video_quality_prioritize_dialog">Ak je toto nastavenie vypnuté, staršie videá môžu zobrazovať žiadne možnosti kvality videa</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_av1_title">Povoliť \'Android VR\' / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Umožňuje softvérové dekódovanie AV1 pri používaní klienta \'Android VR\' / visionOS.</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Povolením tohto nastavenia sa môže využívať softvérové dekódovanie AV1.
 
 Pri prehrávaní pomocou AV1 sa video môže zasekávať alebo vynechávať snímky."</string>
   <string name="morphe_spoof_video_streams_about_title">Možné následky falšovania</string>
+  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Chýba ponuka \'Audio Track\'.</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Video kodek AV1 nie je podporovaný</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR ponorenie nie je k dispozícii</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabilná hlasitosť nie je dostupná</string>
@@ -1140,6 +1153,7 @@ Pri prehrávaní pomocou AV1 sa video môže zasekávať alebo vynechávať sní
   <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• Kvalita môže byť obmedzená na 720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Variant JavaScriptu prehrávača</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Zobraziť falšovanie v \'Stats for nerds\'.</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Obnoviť starú akčnú lištu videa</string>
   <string name="morphe_restore_old_video_action_bar_summary">"Opravuje zobrazenie počtu zlých hodnotení a umožňuje skryť tlačidlá akcií videa

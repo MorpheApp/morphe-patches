@@ -23,9 +23,9 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_02_alt_thumbnails_title">Thumbnails alternativas</string>
   <string name="morphe_settings_screen_03_feed_title">Feed</string>
   <string name="morphe_settings_screen_04_general_title">Geral</string>
-  <string name="morphe_settings_screen_05_player_title">Reprodutor</string>
+  <string name="morphe_settings_screen_05_player_title">Player</string>
   <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
-  <string name="morphe_settings_screen_07_seekbar_title">Barra de busca</string>
+  <string name="morphe_settings_screen_07_seekbar_title">Barra de progresso</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Controles por gestos</string>
   <string name="morphe_settings_screen_11_misc_title">Diversos</string>
   <string name="morphe_settings_screen_12_video_title">Vídeo</string>
@@ -41,7 +41,7 @@ Second \"item\" text"</string>
 Alguns layouts controlados pelo servidor podem não voltar.
 
 As mudanças incluem:
-• Os componentes no menu suspenso do reprodutor (ou as configurações relacionadas) podem não funcionar.
+• Os componentes no menu suspenso do player (ou as configurações relacionadas) podem não funcionar.
 • Os números animados não terão animação.
 • A aba Biblioteca é exibida.
 • A seção de música da descrição do vídeo pode não funcionar.
@@ -135,10 +135,10 @@ As mudanças incluem:
   <string name="morphe_hide_live_chat_replay_button_title">Ocultar botão \'Replay do chat ao vivo\'</string>
   <string name="morphe_hide_live_chat_replay_button_summary">Oculta o botão de repetição do chat no modo de tela cheia</string>
   <string name="morphe_hide_medical_panels_title">Ocultar painel médico</string>
-  <string name="morphe_hide_player_gesture_hints_title">Ocultar dicas de gestos do reprodutor</string>
+  <string name="morphe_hide_player_gesture_hints_title">Ocultar dicas de gestos do player</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
-  <string name="morphe_hide_player_gesture_hints_summary">Oculta as dicas exibidas durante os gestos do reprodutor, como \'Deslize para cima para buscar com precisão\', \'Solte para cancelar\' e \'2x\'.</string>
+  <string name="morphe_hide_player_gesture_hints_summary">Oculta as dicas exibidas durante os gestos do player, como \'Deslize para cima para buscar com precisão\', \'Solte para cancelar\' e \'2x\'.</string>
   <string name="morphe_hide_snackbar_title">Ocultar snackbar</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Ocultar diretrizes de inscritos</string>
   <string name="morphe_hide_sync_button_title">Ocultar botão \'Sincronizar com vídeo\'</string>
@@ -213,8 +213,8 @@ As mudanças incluem:
   <string name="morphe_hide_learning_menu_title">Ocultar menu Aprender</string>
   <string name="morphe_hide_live_menu_title">Ocultar menu Ao Vivo</string>
   <string name="morphe_hide_memberships_menu_title">Ocultar menu Assinaturas</string>
-  <string name="morphe_hide_movies_menu_title">Ocultar menu Filmes</string>
-  <string name="morphe_hide_music_menu_title">Ocultar menu \'Música e TV\'</string>
+  <string name="morphe_hide_movies_menu_title">Ocultar menu \'Filmes e TV\'</string>
+  <string name="morphe_hide_music_menu_title">Ocultar menu Música</string>
   <string name="morphe_hide_news_menu_title">Ocultar menu Notícias</string>
   <string name="morphe_hide_playables_menu_title">Ocultar menu Jogos</string>
   <string name="morphe_hide_podcasts_menu_title">Ocultar menu Podcasts</string>
@@ -323,7 +323,7 @@ Toque aqui para abrir AiSlopList.com e ver downloads para outras plataformas"</s
   <string name="morphe_hide_general_ads_title">Ocultar anúncios gerais</string>
   <string name="morphe_hide_merchandise_banners_title">Ocultar banners de produtos</string>
   <string name="morphe_hide_paid_promotion_labels_title">Ocultar rótulo de promoção paga</string>
-  <string name="morphe_hide_player_popup_ads_title">Ocultar anúncios pop-up no reprodutor</string>
+  <string name="morphe_hide_player_popup_ads_title">Ocultar anúncios pop-up no player</string>
   <string name="morphe_hide_self_sponsor_ads_title">Ocultar cartões de auto promoção</string>
   <string name="morphe_hide_shopping_links_title">Ocultar links de compras</string>
   <string name="morphe_hide_video_ads_title">Ocultar anúncios em vídeos</string>
@@ -345,10 +345,10 @@ Toque aqui para abrir AiSlopList.com e ver downloads para outras plataformas"</s
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Faça o download de vídeos, podcasts ou músicas com apps de terceiros</string>
   <string name="morphe_external_downloader_title">Mostrar botão de download externo</string>
-  <string name="morphe_external_downloader_summary">Mostra um botão de sobreposição no reprodutor de vídeo que abre seu app de download externo</string>
+  <string name="morphe_external_downloader_summary">Mostra um botão de sobreposição no player de vídeo que abre seu app de download externo</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Substituir botão e menu de download</string>
-  <string name="morphe_external_downloader_action_button_summary">Usa o baixador externo escolhido em vez do recurso oficial de download integrado padrão</string>
+  <string name="morphe_external_downloader_action_button_summary">Usa seu app de download externo escolhido em vez do recurso de download integrado do YouTube</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Tradução por voz</string>
   <string name="morphe_vot_screen_summary">Leia as legendas do vídeo em voz alta usando a conversão de texto em fala no dispositivo, sincronizada com a reprodução</string>
@@ -490,24 +490,24 @@ Informação: pode não funcionar em transmissões ao vivo"</string>
   <string name="morphe_livestream_dvr_title">Ativar o DVR em lives</string>
   <string name="morphe_livestream_dvr_summary">Permite navegar na barra de progresso em todas as lives, mesmo nas que normalmente restringem esse recurso</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
-  <string name="morphe_seekbar_thumbnail_preview_title">Ativar thumbnails na barra de busca</string>
-  <string name="morphe_seekbar_thumbnail_preview_summary">Mostra uma thumbnail do vídeo ao arrastar a barra de busca</string>
+  <string name="morphe_seekbar_thumbnail_preview_title">Ativar thumbnails na barra de progresso</string>
+  <string name="morphe_seekbar_thumbnail_preview_summary">Mostra uma thumbnail do vídeo ao arrastar a barra de progresso</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'Ativar o DVR em lives' pode não estar disponível
 
-Para corrigir isso, ative 'Simular streams de vídeo' e altere o 'Cliente padrão' para 'TV Simply' ou 'visionOS'"</string>
+Para corrigir isso, ative 'Simular streams de vídeo' e altere o 'Cliente padrão' para 'TV' ou 'visionOS'"</string>
   <string name="morphe_expand_livestream_dvr_duration_title">Expandir a duração do DVR em lives</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">Permite voltar as lives em até 7 dias no passado</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_expand_livestream_dvr_duration_not_available">"'Expandir a duração do DVR em lives' pode não estar disponível
 
-Para corrigir isso, ative 'Simular streams de vídeo' e altere o 'Cliente padrão' para 'TV Simply' ou 'visionOS'"</string>
+Para corrigir isso, ative 'Simular streams de vídeo' e altere o 'Cliente padrão' para 'TV' ou 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
-  <string name="morphe_slide_to_seek_title">Ativar gesto na barra de busca</string>
-  <string name="morphe_slide_to_seek_summary">Ativa o deslize para busca em vez de reproduzir em velocidade 2x ao pressionar e segurar o reprodutor de vídeo</string>
+  <string name="morphe_slide_to_seek_title">Ativar gesto na barra de progresso</string>
+  <string name="morphe_slide_to_seek_summary">Ativa o deslize para busca em vez de reproduzir em velocidade 2x ao pressionar e segurar o player de vídeo</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Ativar toque para voltar / avançar</string>
-  <string name="morphe_tap_to_seek_summary">Apenas toque na barra de busca para pular para essa posição sem arrastá-la</string>
+  <string name="morphe_tap_to_seek_summary">Apenas toque na barra de progresso para pular para essa posição sem arrastá-la</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_brightness_title">Ativar gesto de brilho</string>
   <string name="morphe_swipe_brightness_summary">Deslize no modo de tela cheia para ir para o próximo ou vídeo anterior</string>
@@ -519,9 +519,10 @@ Para corrigir isso, ative 'Simular streams de vídeo' e altere o 'Cliente padrã
   <string name="morphe_swipe_zone_label_volume">Volume</string>
   <string name="morphe_swipe_zone_label_native">Nativo</string>
   <string name="morphe_swipe_press_to_engage_title">Ativar gesto de pressionar para deslizar</string>
+  <string name="morphe_swipe_press_to_engage_summary">Requer pressionar e segurar antes que um gesto de deslize seja reconhecido</string>
   <string name="morphe_swipe_haptic_feedback_title">Ativar resposta tátil</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Salvar e restaurar brilho</string>
-  <string name="morphe_swipe_save_and_restore_brightness_summary">Lembra o nível de brilho ao entrar/sair do modo de tela cheia</string>
+  <string name="morphe_swipe_save_and_restore_brightness_summary">Lembra o nível de brilho ao entrar / sair do modo de tela cheia</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Ativar gesto de brilho automático</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_summary">Deslizar o brilho até o valor mais baixo ativa o brilho automático do sistema</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_overlay_text">Automático</string>
@@ -569,7 +570,7 @@ Para corrigir isso, ative 'Simular streams de vídeo' e altere o 'Cliente padrã
   <string name="morphe_action_buttons_screen_summary">Escolha quais botões de ação aparecem nos modos retrato e tela cheia</string>
   <string name="morphe_portrait_buttons">Botões retrato</string>
   <string name="morphe_disable_like_subscribe_glow_title">Desativar o brilho do botão Curtir e Inscrever-se</string>
-  <string name="morphe_disable_like_subscribe_glow_summary">Evita que os botões \"Curtir\" e \"Inscrever-se\" brilhem quando o criador os menciona</string>
+  <string name="morphe_disable_like_subscribe_glow_summary">Evita que os botões Gostei e Inscrever-se brilhem quando o criador os menciona</string>
   <string name="morphe_hide_action_bar_title">Ocultar barra de ação</string>
   <string name="morphe_hide_like_dislike_button_title">Ocultar botões Gostei e Não gostei</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
@@ -681,7 +682,7 @@ Para acessar as Configurações, ative o botão Configurações via Geral → Ba
   <string name="morphe_disable_translucent_status_bar_title">Desabilitar barra de status translúcida</string>
   <string name="morphe_disable_translucent_status_bar_summary">Torna a barra de status totalmente opaca</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Limitações:
-• Uma barra preta pode aparecer na parte superior do reprodutor de vídeo.
+• Uma barra preta pode aparecer na parte superior do player de vídeo.
 • A barra de navegação do sistema pode mudar para transparente e não será possível comentar em vídeos."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Desabilitar barra de navegação translúcida clara</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary">Torna a barra de navegação totalmente opaca no modo claro</string>
@@ -750,7 +751,7 @@ Para mostrar o menu 'Faixa de áudio', altere 'Simular streams de vídeo' para q
   <string name="morphe_hide_cast_button_title">Ocultar botão Transmitir</string>
   <string name="morphe_hide_collapse_button_title">Ocultar botão Recolher</string>
   <string name="morphe_hide_fullscreen_button_title">Ocultar botão Tela cheia</string>
-  <string name="morphe_hide_player_control_buttons_background_title">Ocultar plano de fundo dos controles do reprodutor</string>
+  <string name="morphe_hide_player_control_buttons_background_title">Ocultar plano de fundo dos controles do player</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Oculta o sombreamento escuro ao redor dos controles do player de vídeo</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Ocultar botões Anterior e Próximo</string>
   <string name="morphe_hide_settings_button_title">Ocultar botão Configurações</string>
@@ -772,10 +773,10 @@ Para mostrar o menu 'Faixa de áudio', altere 'Simular streams de vídeo' para q
   <string name="morphe_hide_seekbar_title">Ocultar barra de progresso do player de vídeo</string>
   <string name="morphe_hide_seekbar_thumbnail_title">Ocultar barra vermelha nas thumbnails dos vídeos</string>
   <string name="morphe_hide_seekbar_thumbnail_summary">Oculta a barra vermelha mostrada nas thumbnails dos vídeos que você já assistiu</string>
-  <string name="morphe_fullscreen_large_seekbar_title">Ativar barra de busca larga em tela cheia</string>
+  <string name="morphe_fullscreen_large_seekbar_title">Ativar barra de progresso larga em tela cheia</string>
   <!-- layout.hide.shorts.hideShortsComponentsPatch -->
-  <string name="morphe_shorts_player_screen_title">Reprodutor dos Shorts</string>
-  <string name="morphe_shorts_player_screen_summary">Escolha quais componentes aparecem no player de Shorts</string>
+  <string name="morphe_shorts_player_screen_title">Player dos Shorts</string>
+  <string name="morphe_shorts_player_screen_summary">Escolha quais componentes aparecem no player dos Shorts</string>
   <string name="morphe_hide_shorts_category_title">Ocultar Shorts</string>
   <string name="morphe_hide_shorts_channel_title">Ocultar na página do canal</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -810,6 +811,8 @@ Para mostrar o menu 'Faixa de áudio', altere 'Simular streams de vídeo' para q
   <string name="morphe_hide_shorts_like_fountain_title">Ocultar animação de fonte do botão Curtir</string>
   <string name="morphe_hide_shorts_like_button_title">Ocultar botão Curtir</string>
   <string name="morphe_hide_shorts_comments_button_title">Ocultar botão Comentários</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">Ocultar botão Salvar</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Ocultar botão Compartilhar</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
@@ -836,7 +839,7 @@ Configurações → Reprodução (ou Reprodução automática) → Reproduzir o 
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Ocultar tempo do vídeo</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
-  <string name="morphe_disable_player_popup_panels_title">Desativar painéis pop-up no reprodutor</string>
+  <string name="morphe_disable_player_popup_panels_title">Desativar painéis pop-up no player</string>
   <string name="morphe_disable_player_popup_panels_summary">Desativa a abertura automática dos painéis de playlist e chat ao vivo</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Sair do modo de tela cheia ao final do vídeo</string>
@@ -846,7 +849,7 @@ Configurações → Reprodução (ou Reprodução automática) → Reproduzir o 
   <string name="morphe_exit_fullscreen_entry_4">Retrato e paisagem</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Gestos de tela cheia</string>
-  <string name="morphe_disable_fullscreen_gestures_summary">Gestos do reprodutor para entrar ou sair do modo de tela cheia</string>
+  <string name="morphe_disable_fullscreen_gestures_summary">Gestos do player para entrar ou sair do modo de tela cheia</string>
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">Desativar gesto de deslizar para cima na vertical</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Desativar gesto de deslizar para baixo na vertical</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Desativar gesto de deslizar para baixo na horizontal</string>
@@ -856,7 +859,7 @@ Configurações → Reprodução (ou Reprodução automática) → Reproduzir o 
   <string name="morphe_open_videos_fullscreen_entry_2">Retrato</string>
   <string name="morphe_open_videos_fullscreen_entry_3">Paisagem</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
-  <string name="morphe_player_overlay_opacity_title">Opacidade do reprodutor</string>
+  <string name="morphe_player_overlay_opacity_title">Opacidade do player</string>
   <string name="morphe_player_overlay_opacity_summary">Ajuste o nível de transparência (0 é transparente, 100 é opaco)</string>
   <string name="morphe_player_overlay_opacity_invalid_toast">Opacidade do reprodutor deve estar entre 0-100</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
@@ -871,7 +874,7 @@ Configurações → Reprodução (ou Reprodução automática) → Reproduzir o 
   <string name="morphe_change_form_factor_user_dialog_message">"As mudanças incluem:
 
 Layout de tablet
-• Posts da comunidade estão ocultos
+• Os posts da comunidade estão ocultos
 • A configuração de reprodução em feeds não está disponível
 • O botão Remix e o botão Som não estão disponíveis nos Shorts
 • A barra de ações antiga não recolhida é mostrada
@@ -880,11 +883,11 @@ Layout automotivo
 • O feed é organizado por tópicos e canais
 • A configuração de reprodução em feeds não está disponível
 • O botão Remix e o botão Som não estão disponíveis nos Shorts
-• Os Shorts abrem no reprodutor normal
+• Os Shorts abrem no player normal
 • A barra de ações antiga não recolhida é mostrada"</string>
-  <string name="morphe_tablet_layout_in_player_title">Ativar layout de tablet no reprodutor</string>
+  <string name="morphe_tablet_layout_in_player_title">Ativar layout de tablet no player</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Restaura o layout antigo do reprodutor de vídeo
+  <string name="morphe_tablet_layout_in_player_summary">"Restaura o layout antigo do player de vídeo
 
 Limitação: Se 'Restaurar barra de ações de vídeo antiga' estiver desativado, a sobreposição 'Mais vídeos' pode não estar disponível"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
@@ -930,9 +933,9 @@ Limitação: Se 'Restaurar barra de ações de vídeo antiga' estiver desativado
   <string name="morphe_disable_shorts_resuming_on_startup_title">Desativar retomada na inicialização</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Abrir Shorts com</string>
-  <string name="morphe_shorts_player_type_shorts">Reprodutor dos Shorts</string>
-  <string name="morphe_shorts_player_type_regular_player">Reprodutor normal</string>
-  <string name="morphe_shorts_player_type_regular_player_fullscreen">Reprodutor normal em tela cheia</string>
+  <string name="morphe_shorts_player_type_shorts">Player dos Shorts</string>
+  <string name="morphe_shorts_player_type_regular_player">Player normal</string>
+  <string name="morphe_shorts_player_type_regular_player_fullscreen">Player normal em tela cheia</string>
   <!-- layout.shortsautoplay.shortsAutoplayPatch -->
   <string name="morphe_shorts_autoplay_title">Reprodução automática nos Shorts</string>
   <string name="morphe_shorts_autoplay_summary">Avança para o próximo Short automaticamente em vez de repetir o atual</string>
@@ -981,12 +984,12 @@ Limitação: Se 'Restaurar barra de ações de vídeo antiga' estiver desativado
   <string name="morphe_splash_screen_animation_style_entry_1">Desativado</string>
   <string name="morphe_splash_screen_animation_style_entry_2">Cor</string>
   <string name="morphe_splash_screen_animation_style_entry_3">Monocromático</string>
-  <string name="morphe_seekbar_custom_color_title">Ativar cor personalizada da barra de busca</string>
+  <string name="morphe_seekbar_custom_color_title">Ativar cor personalizada da barra de progresso</string>
   <string name="morphe_seekbar_custom_color_primary_title">Cor da barra de progresso</string>
   <string name="morphe_seekbar_custom_color_primary_summary">Defina a cor primária da barra de progresso do vídeo</string>
   <string name="morphe_seekbar_custom_color_accent_title">Cor de destaque da barra de progresso</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Defina a cor secundária da barra de progresso do vídeo</string>
-  <string name="morphe_seekbar_custom_color_invalid">Valor de cor da barra de busca inválido</string>
+  <string name="morphe_seekbar_custom_color_invalid">Valor de cor da barra de progresso inválido</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logo do cabeçalho</string>
@@ -1032,7 +1035,7 @@ Toque aqui para abrir DeArrow.ajay.app"</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">O DeArrow não está disponível temporariamente</string>
   <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
-  <string name="morphe_restore_old_player_buttons_title">Restaurar estilo antigo dos botões do reprodutor</string>
+  <string name="morphe_restore_old_player_buttons_title">Restaurar estilo antigo dos botões do player</string>
   <string name="morphe_restore_old_player_buttons_summary">Restaura os controles de vídeo em negrito para o estilo visual mais antigo e fino</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Simular as dimensões do dispositivo</string>
@@ -1049,8 +1052,9 @@ Toque aqui para abrir DeArrow.ajay.app"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Controles de mídia da notificação</string>
   <string name="morphe_notification_media_screen_summary">Personalize os controles de reprodução mostrados na tela de bloqueio e no painel de notificação</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Ocultar botões Anterior e Próximo</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Oculta os botões Anterior e Próximo na notificação, tela de bloqueio e controles de fone de ouvido</string>
-  <string name="morphe_disable_notification_media_seekbar_title">Desativar barra de busca</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Desativar barra de progresso</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Impede o arrasto da barra de progresso na tela de bloqueio e no painel de notificação</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Se você alterou recentemente os detalhes de login da sua conta, desinstale e reinstale o MicroG.</string>
@@ -1121,6 +1125,7 @@ Limitações:
 • Vídeos HDR não usarão AVC
 • Alguns dispositivos não conseguem forçar o AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Para usar este recurso, mude \'Simular streams de vídeo\' para \'Android VR\' ou \'Android Studio\'</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Abrir menu de qualidade avançada</string>
   <string name="morphe_advanced_video_quality_menu_summary">Ignora o menu de seleção de qualidade e abre o menu de qualidade Avançado diretamente</string>
@@ -1131,10 +1136,13 @@ Limitações:
   <string name="morphe_video_quality_prioritize_summary">Prioriza a maior qualidade de vídeo disponível em vez da eficiência do codec</string>
   <string name="morphe_video_quality_prioritize_dialog">Se esta configuração estiver desativada, vídeos antigos podem não mostrar opções de qualidade de vídeo</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_av1_title">Permitir AV1 no \'Android VR\' / visionOS</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Permite a decodificação de AV1 por software ao usar o cliente \'Android VR\' / visionOS</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Ativar esta configuração pode utilizar a decodificação por software do AV1.
 
 A reprodução de vídeos com AV1 pode apresentar travamentos ou perda de frames."</string>
   <string name="morphe_spoof_video_streams_about_title">Efeitos colaterais da simulação</string>
+  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• O menu \'Faixa de áudio\' não está disponível</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Sem codec de vídeo AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Modo imersivo 360° VR não está disponível</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Volume estável não está disponível</string>
@@ -1143,7 +1151,8 @@ A reprodução de vídeos com AV1 pode apresentar travamentos ou perda de frames
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Forçar áudio original não está disponível</string>
   <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• A qualidade pode ser limitada a 720p</string>
-  <string name="morphe_spoof_video_streams_player_js_variant_title">Variante de JavaScript do reprodutor</string>
+  <string name="morphe_spoof_video_streams_player_js_variant_title">Variante de JavaScript do player</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Mostrar cliente simulado nas \'Estatísticas para nerds\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Restaurar barra de ações de vídeo antiga</string>
   <string name="morphe_restore_old_video_action_bar_summary">"Restaura a exibição do botão 'Não gostei' e permite ocultar os botões de ação do vídeo

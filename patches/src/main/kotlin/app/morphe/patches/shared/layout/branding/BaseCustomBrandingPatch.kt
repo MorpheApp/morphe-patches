@@ -22,7 +22,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.folderOption
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.stringOption
-import app.morphe.patches.all.misc.packagename.setOrGetFallbackPackageName
+import app.morphe.patches.all.misc.clone.setOrGetFallbackPackageName
 import app.morphe.patches.shared.misc.fix.bitmap.fixRecycledBitmapPatch
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
@@ -203,7 +203,7 @@ internal fun baseCustomBrandingPatch(
                 val useCustomIcon = customIcon != null
                 val isRootInstall = setOrGetFallbackPackageName(originalAppPackageName) == originalAppPackageName
 
-                // Can only check if app is root installation by checking if change package name patch is in use.
+                // Can only check if app is root installation by checking if 'Clone app' package name patch is in use.
                 // and can only do that in the finalize block here.
                 // The UI preferences cannot be selectively added here, because the settings finalize block
                 // may have already run and the settings are already wrote to file.

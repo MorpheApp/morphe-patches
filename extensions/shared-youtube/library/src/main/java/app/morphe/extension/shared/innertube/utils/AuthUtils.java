@@ -10,12 +10,14 @@ package app.morphe.extension.shared.innertube.utils;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.apache.commons.collections4.MapUtils;
-
 import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.shared.spoof.ClientType;
+import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
+import app.morphe.extension.shared.spoof.requests.VisitorIdRequester;
 
 @SuppressWarnings("unused")
 public class AuthUtils {
@@ -34,12 +36,21 @@ public class AuthUtils {
      * Injection point.
      */
     public static void setRequestHeaders(String url, Map<String, String> requestHeaders) {
-        if (!MapUtils.isEmpty(requestHeaders)) {
+        if (requestHeaders != null && !requestHeaders.isEmpty()) {
             String newlyLoadedAuthorization = requestHeaders.get(AUTHORIZATION_HEADER);
             String newlyLoadedVisitorId = requestHeaders.get(VISITOR_ID_HEADER);
 
             if (Utils.isNotEmpty(newlyLoadedAuthorization) &&
                     Utils.isNotEmpty(newlyLoadedVisitorId)) {
+                if (!authorization.equals(newlyLoadedAuthorization)) {
+                    if (SpoofVideoStreamsPatch.isPatchIncluded() && SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.get()) {
+                        for (ClientType c : ClientType.values()) {
+                            if (c.canLogin) {
+                                VisitorIdRequester.removeVisitorId(c);
+                            }
+                        }
+                    }
+                }
                 authorization = newlyLoadedAuthorization;
                 visitorId = newlyLoadedVisitorId;
             }
@@ -70,6 +81,16 @@ public class AuthUtils {
             VISITOR_ID_HEADER, visitorId,
             PAGE_ID_HEADER, pageId
         );
+    }
+
+    @NonNull
+    public static String getAuthorization() {
+        return authorization;
+    }
+
+    @NonNull
+    public static String getVisitorId() {
+        return visitorId;
     }
 
     public static boolean isNotLoggedIn() {

@@ -93,19 +93,15 @@ val miniplayerPatch = bytecodePatch(
         }
 
         preferences += SwitchPreference("morphe_miniplayer_disable_resuming", summary = true)
-        preferences += SwitchPreference(
-            "morphe_miniplayer_disable_drag_and_drop",
-            summary = true
-        )
-        preferences += SwitchPreference(
-            "morphe_miniplayer_disable_horizontal_drag",
-            summary = true
-        )
+        preferences += SwitchPreference("morphe_miniplayer_disable_drag_and_drop", summary = true)
+        preferences += SwitchPreference("morphe_miniplayer_disable_horizontal_drag", summary = true)
         preferences += SwitchPreference("morphe_miniplayer_disable_rounded_corners")
         if (!is_21_29_or_greater) {
             preferences += SwitchPreference("morphe_miniplayer_hide_overlay_buttons")
         }
-        preferences += TextPreference("morphe_miniplayer_width_dip", inputType = InputType.NUMBER)
+        if (!is_21_32_or_greater) {
+            preferences += TextPreference("morphe_miniplayer_width_dip", inputType = InputType.NUMBER)
+        }
         if (!is_21_29_or_greater) {
             preferences += NonInteractivePreference(
                 key = "morphe_miniplayer_opacity",
@@ -293,9 +289,11 @@ val miniplayerPatch = bytecodePatch(
         if (!is_21_32_or_greater) {
             MiniplayerModernConstructorFingerprint.method.apply {
                 val literalIndex = indexOfFirstLiteralInstructionOrThrow(
-                    MINIPLAYER_INITIAL_SIZE_FEATURE_KEY,
+                    MINIPLAYER_INITIAL_SIZE_FEATURE_KEY
                 )
-                val targetIndex = indexOfFirstInstructionOrThrow(literalIndex, Opcode.LONG_TO_INT)
+                val targetIndex = indexOfFirstInstructionOrThrow(
+                    literalIndex, Opcode.LONG_TO_INT
+                )
                 val register = getInstruction<OneRegisterInstruction>(targetIndex).registerA
 
                 addInstructions(
@@ -306,35 +304,18 @@ val miniplayerPatch = bytecodePatch(
                     """
                 )
             }
-        } else {
-            MiniplayerInitialSizeFingerprint.apply {
-                method.apply {
-                    val instructionIndex = instructionMatches.first().index
-                    val instructionRegister = getInstruction<TwoRegisterInstruction>(
-                        instructionIndex
-                    ).registerA
 
-                    addInstructions(
-                        instructionIndex,
-                        """
-                            invoke-static { v$instructionRegister }, $EXTENSION_CLASS->getMiniplayerDefaultSize(I)I
-                            move-result v$instructionRegister
-                        """
-                    )
+            // Override a minimum size constant.
+            MiniplayerMinimumSizeFingerprint.let {
+                it.method.apply {
+                    val index = it.instructionMatches[1].index
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                    // Smaller sizes can be used, but the miniplayer will always start in size 170 if set any smaller.
+                    // The 170 initial limit probably could be patched to allow even smaller initial sizes,
+                    // but 170 is already half the horizontal space and smaller does not seem useful.
+                    replaceInstruction(index, "const/16 v$register, 170")
                 }
-            }
-        }
-
-        // Override a minimum size constant.
-        MiniplayerMinimumSizeFingerprint.let {
-            it.method.apply {
-                val index = it.instructionMatches[1].index
-                val register = getInstruction<OneRegisterInstruction>(index).registerA
-
-                // Smaller sizes can be used, but the miniplayer will always start in size 170 if set any smaller.
-                // The 170 initial limit probably could be patched to allow even smaller initial sizes,
-                // but 170 is already half the horizontal space and smaller does not seem useful.
-                replaceInstruction(index, "const/16 v$register, 170")
             }
         }
 

@@ -214,8 +214,6 @@ Guherînan têne xistine:
   <string name="morphe_hide_learning_menu_title">Menuya Fêrbûnê veşêrin</string>
   <string name="morphe_hide_live_menu_title">Menûya Live veşêre</string>
   <string name="morphe_hide_memberships_menu_title">Menûya Endamtiyê veşêre</string>
-  <string name="morphe_hide_movies_menu_title">Menûya Fîlmên veşêre</string>
-  <string name="morphe_hide_music_menu_title">Menûya \'Music &amp; TV\' veşêre</string>
   <string name="morphe_hide_news_menu_title">Menûya Nûçeyan veşêre</string>
   <string name="morphe_hide_playables_menu_title">Menûya Playables veşêre</string>
   <string name="morphe_hide_podcasts_menu_title">Menûya Podcastan veşêre</string>
@@ -491,15 +489,9 @@ Info: May not work on live streams"</string>
   <string name="morphe_seekbar_thumbnail_preview_title">Mîhengkirina hûrimên şopê ji bo dîtina hêsantirî</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Nîşana vîdyoyê dema ku şopa dîtinê diherikînê da dîmenê</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"'Çalakkirina DVR-ya livestream' dibe ku peyda nebe
-
-Ji bo rastkirina vê yekê, 'sextekirina vîdyo streaman' veke û 'Clienta xwerû' biguherîne bo 'TV Simply' an 'visionOS'"</string>
   <string name="morphe_expand_livestream_dvr_duration_title">Dîmendera destûra rêzê ya DVR-ê zêde bike</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">Têde bi tehiye dike da ku hûn pê veşêrin înîsiyatora livestreaman heta 7 rojan paşê veguherînin</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Dirêjkirina dema DVR-ya livestream' dibe ku peyda nebe
-
-Ji bo rastkirina vê yekê, 'sextekirina vîdyo streaman' veke û 'Clienta xwerû' biguherîne bo 'TV Simply' an 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Slide to seek çalak bike</string>
   <string name="morphe_slide_to_seek_summary">Enables slide to seek instead of playing at 2x speed when pressing and holding the video player</string>
@@ -517,6 +509,7 @@ Ji bo rastkirina vê yekê, 'sextekirina vîdyo streaman' veke û 'Clienta xwer�
   <string name="morphe_swipe_zone_label_volume">Volume</string>
   <string name="morphe_swipe_zone_label_native">Binguhî</string>
   <string name="morphe_swipe_press_to_engage_title">Gestikaya çavkaniyê veşêre</string>
+  <string name="morphe_swipe_press_to_engage_summary">Pêwîst e ku berî naskirina tevgerek swipe, pêlkirin û girtin were kirin.</string>
   <string name="morphe_swipe_haptic_feedback_title">Paşê veşêre</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Tomar bike û zerrekirina mêşê hilîne</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Berfirehiya ronahiyê dema ku biçîvê hejmara tevahiyê tê xwendin</string>
@@ -809,6 +802,8 @@ Bo nîşandina 'Menuya Şêwazê Deng', guherîna 'Perçêkirina herikên vîdyo
   <string name="morphe_hide_shorts_like_fountain_title">Şertekên pêşiyê veşêre animasyona çavkaniyê</string>
   <string name="morphe_hide_shorts_like_button_title">Şertekê bi lêzger veşêre</string>
   <string name="morphe_hide_shorts_comments_button_title">Şertekê komentar veşêre</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">Veşartina Butona Tomar</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Şertekê parvekirin veşêre</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
@@ -1048,6 +1043,7 @@ Bike li vir da vekirina DeArrow.ajay.app"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Kontrolên medyaya notifîkasyonê</string>
   <string name="morphe_notification_media_screen_summary">Kontrolên lêkirinê yên ku li ser ekrana qefilê û panela agahdarkirinê de xuya dibin, xweser bike</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Bişkokên Pêşî &amp; Paşê veşêre.</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Bişêwirîna Guherîna Pêşîn û Paşîn li ser agahdarkirina medyayê, ekrana qefilê, û kontrolên gulî</string>
   <string name="morphe_disable_notification_media_seekbar_title">Barê barkirinê neçalak bike</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Nişana rêjê li ser ekrana qefilê û panela agahdarkirinê rakîr bike</string>
@@ -1120,6 +1116,7 @@ Sînergirên:
 • Video yan HDR dê AVC bikar nebin
 • Hin alav nikarên AVC zor bike"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Ji bo bikaranîna vê taybetmendiyê, \'Sexandina streamên vîdyoyê\' li ser \'Android VR\' an \'Android Studio\' saz bikin.</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Veke ji menuya kalîteya pêşkeftî ve bike</string>
   <string name="morphe_advanced_video_quality_menu_summary">Dibe menuya hilbijartina kalîteyê derbas dike û rasterast menuya kalîteya Pêşkeftî vekirin</string>
@@ -1130,10 +1127,13 @@ Sînergirên:
   <string name="morphe_video_quality_prioritize_summary">Kalîteya herî bilind a vîdyoyê li ser karbidestiya kodekê parêz dike</string>
   <string name="morphe_video_quality_prioritize_dialog">Heke ev rêgezirîn veqetandibe, wêrên vîdyoyên kevnar nizanin ku veguhêzên kalîteya vîdyoyê nîşan bidin</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_av1_title">Destûr bide \'Android VR\' / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Dema ku xerîdarê \'Android VR\' / visionOS tê bikaranîn, destûr dide deşîfrekirina AV1 bi nermalavê.</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Çalak kirina vê sazkare dikare ji dekodkirina AV1 ya nermalê bikar bîne.
 
 Lêxistina video bi AV1 dikare kîzbirin an kêmuçêkî framean bike."</string>
   <string name="morphe_spoof_video_streams_about_title">Efectê spoofingê</string>
+  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Menûya \'Audio Track\' tune ye.</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Kodeka vîdyoyê ya AV1 tune</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Moda berfireh a VRê 360° niye.</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Volumê stabil tune</string>
@@ -1143,6 +1143,7 @@ Lêxistina video bi AV1 dikare kîzbirin an kêmuçêkî framean bike."</string>
   <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• Kalîte dibe ku bi 720p tê sînordar kirin.</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Warianta JavaScriptê lîstikvanê</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Sexandinê di \'Stats for nerds\' de nîşan bide</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Çêkirina dîskê ya pelê vîdyoya kevnê</string>
   <string name="morphe_restore_old_video_action_bar_summary">"Pirsgirêka nîşan nedana nahesibînê û nekarina veşartina bişkokên çalakiyê yê vîdeoyê çareser dike

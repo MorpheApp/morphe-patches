@@ -49,6 +49,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_summary">Om du vill spara sökhistorik, skriv en sökfråga och tryck på Retur</string>
   <string name="morphe_settings_search_history_title">Visa sökhistorik för inställningar</string>
   <string name="morphe_show_menu_icons_title">Visa ikoner för Morphe-inställningar</string>
+  <string name="morphe_settings_menu_copy_path">Kopierat: %s</string>
   <string name="morphe_language_title">Språk för Morphe</string>
   <string name="morphe_language_user_dialog_message">"Översättningar till vissa språk kan vara ofullständiga eller saknas.
 
@@ -97,6 +98,7 @@ Du kommer inte att bli meddelad om oväntade händelser."</string>
   <string name="morphe_debug_export_logs_file">Exportera till fil</string>
   <string name="morphe_debug_export_logs_success">Felsökningsloggar har exporterats</string>
   <string name="morphe_debug_export_logs_failed">Det gick inte att exportera felsökningsloggar</string>
+  <string name="morphe_debug_logs_search_hint">Sök i felsökningsloggarna…</string>
   <string name="morphe_debug_export_logs_clear">Rensa</string>
   <string name="morphe_debug_logs_disabled">Felsökningsloggar är inaktiverade</string>
   <string name="morphe_debug_logs_none_found">Inga felsökningsloggar hittades</string>
@@ -107,6 +109,7 @@ Du kommer inte att bli meddelad om oväntade händelser."</string>
   <string name="morphe_debug_feature_flags_manager_summary">Hantera booleska funktionsflaggor</string>
   <string name="morphe_debug_feature_flags_manager_active_header">Aktiva funktionsflaggor (%d)</string>
   <string name="morphe_debug_feature_flags_manager_blocked_header">Blockerade funktionsflaggor (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Sök efter funktionsflaggor…</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Funktionsflaggorna sparades</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Funktionsflaggorna återställdes</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Funktionsflaggorna kopierades till urklipp</string>

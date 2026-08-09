@@ -214,8 +214,8 @@ Oʻzgarishlar:
   <string name="morphe_hide_learning_menu_title">O‘rganish menyusini yashirish</string>
   <string name="morphe_hide_live_menu_title">Jonli menyuni yashirish</string>
   <string name="morphe_hide_memberships_menu_title">A\'zolar menyusini yashirish</string>
-  <string name="morphe_hide_movies_menu_title">Filmlar menyusini yashirish</string>
-  <string name="morphe_hide_music_menu_title">\'Music &amp; TV\' menyusini yashirish</string>
+  <string name="morphe_hide_movies_menu_title">Filmlar &amp; TV menyusini yashirish</string>
+  <string name="morphe_hide_music_menu_title">Musiqa menyusini yashirish</string>
   <string name="morphe_hide_news_menu_title">Yangiliklar menyusini yashirish</string>
   <string name="morphe_hide_playables_menu_title">Playable menyusini yashirish</string>
   <string name="morphe_hide_podcasts_menu_title">Podkasts menyusini yashirish</string>
@@ -451,6 +451,8 @@ Ma'lumot: Jonli efirlarda ishlamasligi mumkin"</string>
   <string name="morphe_swap_save_and_queue_actions_summary">Kutubxonadagi vazifalarni ko\'rish uchun bosing, keyinroq tomosha qilish uchun bosib ushlab turing</string>
   <string name="morphe_queue_override_flyout_menu_title">Oqim menyusi navbat tugmasini bekor qilish</string>
   <string name="morphe_queue_override_flyout_menu_summary">YouTube navbati o\'rniga Morphe navbatini ochadi</string>
+  <string name="morphe_queue_add_flyout_menu_title">Lenta ochiladigan menyusiga navbat bandini qo\'shish</string>
+  <string name="morphe_queue_add_flyout_menu_summary">Qo\'shimcha ochiladigan menyu bandini qo\'shadi. Agar \"Navbatga qo\'shish\" ko\'rsatilmasa, buni yoqing</string>
   <string name="morphe_queue_manager_check_failed_auth">Tizimga kirmagan</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">Navbat bo\'sh</string>
   <string name="morphe_queue_manager_check_failed_queue">Navbat boʻsh</string>
@@ -489,13 +491,13 @@ Ma'lumot: Jonli efirlarda ishlamasligi mumkin"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'Jonli efir DVR-ni yoqish' mavjud bo'lmasligi mumkin
 
-Buni tuzatish uchun 'Video oqimlarini soxtalashtirish'ni yoqing va 'Standart klient'ni 'TV Simply' yoki 'visionOS'ga o'zgartiring"</string>
+Buni tuzatish uchun 'Video oqimlarini soxtalashtirish'ni yoqing va 'Standart mijoz'ni 'TV' yoki 'visionOS' ga o'zgartiring."</string>
   <string name="morphe_expand_livestream_dvr_duration_title">Jonli oqim DVR davomiyligini kengaytirish</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">Sizga jonli efirlarni 7 kungacha ortga aylantirish imkonini beradi</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_expand_livestream_dvr_duration_not_available">"'Jonli efir DVR davomiyligini kengaytirish' mavjud bo'lmasligi mumkin
 
-Buni tuzatish uchun 'Video oqimlarini soxtalashtirish'ni yoqing va 'Standart klient'ni 'TV Simply' yoki 'visionOS'ga o'zgartiring"</string>
+Buni tuzatish uchun 'Video oqimlarini soxtalashtirish'ni yoqing va 'Standart mijoz'ni 'TV' yoki 'visionOS' ga o'zgartiring."</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Sekish harakatini yoqish</string>
   <string name="morphe_slide_to_seek_summary">Video pleerni bosib ushlab turganingizda 2 barobar tezlikda ijro qilish o\'rniga siljishni yoqish</string>
@@ -513,6 +515,7 @@ Buni tuzatish uchun 'Video oqimlarini soxtalashtirish'ni yoqing va 'Standart kli
   <string name="morphe_swipe_zone_label_volume">Volyum</string>
   <string name="morphe_swipe_zone_label_native">Asliy</string>
   <string name="morphe_swipe_press_to_engage_title">Sirt bilan surish harakatini yoqish uchun bosishni yoqish</string>
+  <string name="morphe_swipe_press_to_engage_summary">Surish imo-ishorasi tan olinishi uchun bosib ushlab turish talab qilinadi</string>
   <string name="morphe_swipe_haptic_feedback_title">Hissiy aloqani yoqish</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Yorqinlikni saqlash va tiklash</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Toʻliq ekran rejimiga kirganda / chiqqanda yorqinlik darajasini saqlaydi</string>
@@ -804,6 +807,8 @@ Sozlamalarga kirish uchun Umumiy → Asboblar → Sozlamalarni koʻrsatish orqal
   <string name="morphe_hide_shorts_like_fountain_title">YouTube Doodles’larni yashirish</string>
   <string name="morphe_hide_shorts_like_button_title">Yoqish</string>
   <string name="morphe_hide_shorts_comments_button_title">Navigatsiya tugmalarini yashirish</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">Saqlash tugmasini yashirish</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Dialogdagi “Ko\'rishni toʻxtatish”ni oʻchirish</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
@@ -1043,6 +1048,7 @@ Batafsil ma'lumot olish uchun DeArrow.ajay.app ni oching."</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Bildirishnomalar media boshqaruvlari</string>
   <string name="morphe_notification_media_screen_summary">Bloklangan ekranda va bildirishnoma panelida ko\'rsatiladigan ijro elementlarini sozlash</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Oldingi &amp; Keyingi tugmalarini yashirish</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Media bildirishnomasi, bloklangan ekran va garnitura kontrollerida oldingi va keyingi tugmalarni yashirish</string>
   <string name="morphe_disable_notification_media_seekbar_title">Tracklarni oʻzgartirish panelini oʻchirish</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Bloklangan ekranda va bildirishnoma panelida progress barni sudrishning oldini olish</string>
@@ -1117,6 +1123,7 @@ Cheklovlari:
 • HDR videolarda AVC ishlatilmaydi
 • Ba'zi qurilmalar AVCni majburlash imkoniyatiga ega emas"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Bu xususiyatdan foydalanish uchun \'Video oqimlarini soxtalashtirish\' ni \'Android VR\' yoki \'Android Studio\' ga o\'rnating</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Kengaytirilgan sifat menyusini ochish</string>
   <string name="morphe_advanced_video_quality_menu_summary">Sifat tanlash menyusini o\'tkib uzatadi va to\'g\'ridan-to\'g\'ri ilg\'or sifat menyusini ochadi</string>
@@ -1127,10 +1134,13 @@ Cheklovlari:
   <string name="morphe_video_quality_prioritize_summary">Kodek samaradorligidan ko\'ra mavjud bo\'lgan eng yuqori video sifatiga ustunlik beradi</string>
   <string name="morphe_video_quality_prioritize_dialog">Agar bu sozlama o\'chirilgan bo\'lsa, eski videolar uchun video sifatini tanlash imkoniyati ko\'rinmasligi mumkin</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_av1_title">Android VR / visionOS AV1 ruxsat berish</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Android VR / visionOS mijozidan foydalanilganda dasturiy AV1 dekodlashga ruxsat beradi</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Ushbu sozlash dasturiy ta'minot AV1 dekodini ishga tushirishi mumkin.
 
 AV1 bilan video o'ynashda lag yoki to'silishlar yuzaga kelishi mumkin."</string>
   <string name="morphe_spoof_video_streams_about_title">Manipulyatsiya qilish effektlari</string>
+  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• \'Audio Track\' menyusi mavjud emas</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• AV1 video kodeki yo\'q</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR ajoyib rejim mavjud emas</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Barqaror ovoz mavjud emas</string>
@@ -1140,6 +1150,7 @@ AV1 bilan video o'ynashda lag yoki to'silishlar yuzaga kelishi mumkin."</string>
   <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• Sifat 720p bilan cheklanishi mumkin</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Pleyer JavaScript varianti</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">\'Stats for nerds\' da soxtalashtirishni ko\'rsatish</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Eski video harakatlar panelini tiklash</string>
   <string name="morphe_restore_old_video_action_bar_summary">"Yoqtirishlar va video harakatlar tugmalarini yashirish imkoniyatini tiklaydi.
