@@ -7,6 +7,7 @@
 
 package app.morphe.extension.youtube.videoplayer;
 
+import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.view.Gravity;
@@ -112,7 +113,7 @@ public class PlayerOverlayButton {
             }
 
             final int reservedWidth = (int) (totalButtons
-                    * getButtonWidthPercentage(totalButtons)
+                    * getButtonWidthPercentage(totalButtons, container)
                     * buttonWidth);
 
             if (lastMarginEnd == reservedWidth) return;
@@ -187,7 +188,7 @@ public class PlayerOverlayButton {
             // Convert from 0 indexing to 1 indexing.
             final int buttonNumber = buttonControllers.indexOf(this) + (HIDE_FULLSCREEN_BUTTON_ENABLED ? 0 : 1);
             final float xOffset = (int) (source.getX()
-                    - (buttonNumber * (getButtonWidthPercentage(buttonControllers.size()) * source.getWidth())));
+                    - (buttonNumber * (getButtonWidthPercentage(buttonControllers.size(), source) * source.getWidth())));
             if (button.getX() != xOffset) {
                 button.setX(xOffset);
             }
@@ -251,11 +252,17 @@ public class PlayerOverlayButton {
      * Returns the button width percentage based on the total number of buttons,
      * so buttons don't overlap the video time bar.
      */
-    private static float getButtonWidthPercentage(int totalButtons) {
+    private static float getButtonWidthPercentage(int totalButtons, View view) {
         if (totalButtons <= 1) return 1.0f;
 
+        // Landscape has far more horizontal room than portrait, so buttons don't need to
+        // pack as tightly to stay clear of the time bar even as more of them are added.
+        boolean landscape = view.getResources().getConfiguration().orientation
+                == Configuration.ORIENTATION_LANDSCAPE;
+        float minPercentage = landscape ? 0.80f : 0.60f;
+
         // Keep spacing progression to avoid overlapping the time bar.
-        return Math.max(0.60f, 1.10f - totalButtons * 0.10f);
+        return Math.max(minPercentage, 1.10f - totalButtons * 0.10f);
     }
 
     /**
