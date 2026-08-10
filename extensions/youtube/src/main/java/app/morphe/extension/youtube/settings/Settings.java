@@ -587,6 +587,26 @@ public class Settings extends SharedYouTubeSettings {
         }
     }
 
+    public static final class SwipeActionAvailability implements Setting.Availability {
+        private final SwipeZoneAction action;
+
+        public SwipeActionAvailability(SwipeZoneAction action) {
+            this.action = action;
+        }
+
+        @Override
+        public boolean isAvailable() {
+            return SWIPE_LEFT_ZONE.get() == action
+                    || SWIPE_RIGHT_ZONE.get() == action
+                    || SWIPE_TOP_ZONE.get() == action;
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(SWIPE_LEFT_ZONE, SWIPE_RIGHT_ZONE, SWIPE_TOP_ZONE);
+        }
+    }
+
     public static final BooleanSetting SWIPE_CHANGE_VIDEO = new BooleanSetting("morphe_swipe_change_video", FALSE, true);
     public static final EnumSetting<SwipeZoneAction> SWIPE_LEFT_ZONE = new EnumSetting<>("morphe_swipe_left_zone", SwipeZoneAction.OFF, true);
     public static final EnumSetting<SwipeZoneAction> SWIPE_RIGHT_ZONE = new EnumSetting<>("morphe_swipe_right_zone", SwipeZoneAction.OFF, true);
@@ -594,21 +614,21 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting SWIPE_PRESS_TO_ENGAGE = new BooleanSetting("morphe_swipe_press_to_engage", FALSE, true, new AnySwipeZoneAvailability());
     public static final BooleanSetting SWIPE_HAPTIC_FEEDBACK = new BooleanSetting("morphe_swipe_haptic_feedback", TRUE, true, new AnySwipeZoneAvailability());
     public static final IntegerSetting SWIPE_MAGNITUDE_THRESHOLD = new IntegerSetting("morphe_swipe_threshold", 30, true, new AnySwipeZoneAvailability());
-    public static final IntegerSetting SWIPE_VOLUME_SENSITIVITY = new IntegerSetting("morphe_swipe_volume_sensitivity", 1, true, new AnySwipeZoneAvailability());
-    public static final IntegerSetting SWIPE_BRIGHTNESS_SENSITIVITY = new IntegerSetting("morphe_swipe_brightness_sensitivity", 1, true, new AnySwipeZoneAvailability());
-    public static final IntegerSetting SWIPE_SPEED_SENSITIVITY = new IntegerSetting("morphe_swipe_speed_sensitivity", 10, true, new AnySwipeZoneAvailability());
-    public static final EnumSetting<SwipeSpeedStep> SWIPE_SPEED_STEP = new EnumSetting<>("morphe_swipe_speed_step", SwipeSpeedStep.STEP_005, true, new AnySwipeZoneAvailability());
+    public static final IntegerSetting SWIPE_VOLUME_SENSITIVITY = new IntegerSetting("morphe_swipe_volume_sensitivity", 1, true, new SwipeActionAvailability(SwipeZoneAction.VOLUME));
+    public static final IntegerSetting SWIPE_BRIGHTNESS_SENSITIVITY = new IntegerSetting("morphe_swipe_brightness_sensitivity", 1, true, new SwipeActionAvailability(SwipeZoneAction.BRIGHTNESS));
+    public static final IntegerSetting SWIPE_SPEED_SENSITIVITY = new IntegerSetting("morphe_swipe_speed_sensitivity", 10, true, new SwipeActionAvailability(SwipeZoneAction.SPEED));
+    public static final EnumSetting<SwipeSpeedStep> SWIPE_SPEED_STEP = new EnumSetting<>("morphe_swipe_speed_step", SwipeSpeedStep.STEP_005, true, new SwipeActionAvailability(SwipeZoneAction.SPEED));
     public static final IntegerSetting SWIPE_SPEED_ZONE_HEIGHT = new IntegerSetting("morphe_swipe_speed_zone_height", 30, true, new TopSwipeZoneAvailability());
     public static final EnumSetting<SwipeOverlayStyle> SWIPE_OVERLAY_STYLE = new EnumSetting<>("morphe_swipe_overlay_style", SwipeOverlayStyle.HORIZONTAL, true, new AnySwipeZoneAvailability());
     public static final IntegerSetting SWIPE_OVERLAY_TEXT_SIZE = new IntegerSetting("morphe_swipe_text_overlay_size", 14, true, new AnySwipeZoneAvailability());
     public static final IntegerSetting SWIPE_OVERLAY_OPACITY = new IntegerSetting("morphe_swipe_overlay_background_opacity", 60, true, new AnySwipeZoneAvailability());
-    public static final StringSetting SWIPE_OVERLAY_BRIGHTNESS_COLOR = new StringSetting("morphe_swipe_overlay_progress_brightness_color", "#BFFFFFFF", true, new AnySwipeZoneAvailability());
-    public static final StringSetting SWIPE_OVERLAY_VOLUME_COLOR = new StringSetting("morphe_swipe_overlay_progress_volume_color", "#BFFFFFFF", true, new AnySwipeZoneAvailability());
-    public static final StringSetting SWIPE_OVERLAY_SPEED_COLOR = new StringSetting("morphe_swipe_overlay_progress_speed_color", "#BFFF9100", true, new AnySwipeZoneAvailability());
+    public static final StringSetting SWIPE_OVERLAY_BRIGHTNESS_COLOR = new StringSetting("morphe_swipe_overlay_progress_brightness_color", "#BFFFFFFF", true, new SwipeActionAvailability(SwipeZoneAction.BRIGHTNESS));
+    public static final StringSetting SWIPE_OVERLAY_VOLUME_COLOR = new StringSetting("morphe_swipe_overlay_progress_volume_color", "#BFFFFFFF", true, new SwipeActionAvailability(SwipeZoneAction.VOLUME));
+    public static final StringSetting SWIPE_OVERLAY_SPEED_COLOR = new StringSetting("morphe_swipe_overlay_progress_speed_color", "#BFFF9100", true, new SwipeActionAvailability(SwipeZoneAction.SPEED));
     public static final LongSetting SWIPE_OVERLAY_TIMEOUT = new LongSetting("morphe_swipe_overlay_timeout", 500L, true, new AnySwipeZoneAvailability());
-    public static final BooleanSetting SWIPE_SAVE_AND_RESTORE_BRIGHTNESS = new BooleanSetting("morphe_swipe_save_and_restore_brightness", TRUE, true, new AnySwipeZoneAvailability());
+    public static final BooleanSetting SWIPE_SAVE_AND_RESTORE_BRIGHTNESS = new BooleanSetting("morphe_swipe_save_and_restore_brightness", TRUE, true, new SwipeActionAvailability(SwipeZoneAction.BRIGHTNESS));
     public static final FloatSetting SWIPE_BRIGHTNESS_VALUE = new FloatSetting("morphe_swipe_brightness_value", -1f);
-    public static final BooleanSetting SWIPE_LOWEST_VALUE_ENABLE_AUTO_BRIGHTNESS = new BooleanSetting("morphe_swipe_lowest_value_enable_auto_brightness", FALSE, true, new AnySwipeZoneAvailability());
+    public static final BooleanSetting SWIPE_LOWEST_VALUE_ENABLE_AUTO_BRIGHTNESS = new BooleanSetting("morphe_swipe_lowest_value_enable_auto_brightness", FALSE, true, new SwipeActionAvailability(SwipeZoneAction.BRIGHTNESS));
     public static final IntegerSetting SWIPE_ZONE_WIDTH = new IntegerSetting("morphe_swipe_zone_width", 37, true, new SideSwipeZonesAvailability());
 
     // Voice over translation
