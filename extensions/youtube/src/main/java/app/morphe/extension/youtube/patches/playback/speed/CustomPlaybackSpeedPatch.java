@@ -538,7 +538,7 @@ public class CustomPlaybackSpeedPatch {
             speedSliderLayout.addView(speedPlusButton);
             // Add slider layout to content layout.
             contentLayout.addView(speedSliderLayout);
-            // Add in-rows speed buttons layout to main layout.
+            // Add in-rows speed buttons layout to content layout.
             contentLayout.addView(gridLayout);
 
             // ## Audio pitch UI: link toggle and pitch controls, hidden entirely when disabled.
@@ -654,7 +654,7 @@ public class CustomPlaybackSpeedPatch {
 
                 VideoInformation.onPlaybackAudioPitchChange.addObserver(onPitchChanged);
             
-            // Create GridLayout for pitch control buttons.
+                // Create GridLayout for pitch control buttons.
                 GridLayout pitchPresetGrid = new GridLayout(context);
                 pitchPresetGrid.setColumnCount(5);
                 pitchPresetGrid.setAlignmentMode(GridLayout.ALIGN_BOUNDS);
@@ -726,7 +726,7 @@ public class CustomPlaybackSpeedPatch {
                 pitchSliderLayout.addView(pitchPlusButton);
                 // Add slider layout to content layout.
                 contentLayout.addView(pitchSliderLayout);
-                // Add in-rows pitch buttons layout to main layout.
+                // Add in-rows pitch buttons layout to content layout.
                 contentLayout.addView(pitchPresetGrid);
             } else {
                 onPitchChanged = null;
