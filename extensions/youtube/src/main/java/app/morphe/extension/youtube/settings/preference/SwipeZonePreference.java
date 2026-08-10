@@ -33,6 +33,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeZoneAction;
 
 /**
  * Renders a live preview of the swipe gesture zones inside the preference screen.
@@ -45,9 +46,9 @@ public final class SwipeZonePreference extends Preference {
 
     private ZoneView zoneView;
 
-    private Settings.SwipeZoneAction lastLeftAction;
-    private Settings.SwipeZoneAction lastRightAction;
-    private Settings.SwipeZoneAction lastTopAction;
+    private SwipeZoneAction lastLeftAction;
+    private SwipeZoneAction lastRightAction;
+    private SwipeZoneAction lastTopAction;
     private String lastBrightnessColor;
     private String lastVolumeColor;
     private String lastSpeedColor;
@@ -64,9 +65,9 @@ public final class SwipeZonePreference extends Preference {
         String brightnessColor = Settings.SWIPE_OVERLAY_BRIGHTNESS_COLOR.get();
         String volumeColor = Settings.SWIPE_OVERLAY_VOLUME_COLOR.get();
         String speedColor = Settings.SWIPE_OVERLAY_SPEED_COLOR.get();
-        final Settings.SwipeZoneAction leftAction = Settings.SWIPE_LEFT_ZONE.get();
-        final Settings.SwipeZoneAction rightAction = Settings.SWIPE_RIGHT_ZONE.get();
-        final Settings.SwipeZoneAction topAction = Settings.SWIPE_TOP_ZONE.get();
+        final SwipeZoneAction leftAction = Settings.SWIPE_LEFT_ZONE.get();
+        final SwipeZoneAction rightAction = Settings.SWIPE_RIGHT_ZONE.get();
+        final SwipeZoneAction topAction = Settings.SWIPE_TOP_ZONE.get();
         final int zoneWidth = Settings.SWIPE_ZONE_WIDTH.get();
         final int speedZoneHeight = Settings.SWIPE_SPEED_ZONE_HEIGHT.get();
 
@@ -185,7 +186,7 @@ public final class SwipeZonePreference extends Preference {
         private final String labelSpeed = str("morphe_swipe_zone_label_speed");
         private final String labelOff = str("morphe_swipe_zone_label_off");
 
-        private String getActionLabel(Settings.SwipeZoneAction action) {
+        private String getActionLabel(SwipeZoneAction action) {
             if (action == null) return labelOff;
             switch (action) {
                 case VOLUME: return labelVolume;
@@ -196,7 +197,7 @@ public final class SwipeZonePreference extends Preference {
             }
         }
 
-        private int getActionColor(Settings.SwipeZoneAction action, int brightnessColor, int volumeColor, int speedColor) {
+        private int getActionColor(SwipeZoneAction action, int brightnessColor, int volumeColor, int speedColor) {
             if (action == null) return 0x1AFFFFFF;
             switch (action) {
                 case VOLUME: return withAlpha(volumeColor, 0x55);
@@ -259,13 +260,13 @@ public final class SwipeZonePreference extends Preference {
 
             final int zonePercent      = Math.max(5, Math.min(50, Settings.SWIPE_ZONE_WIDTH.get()));
             final int speedZonePercent = Math.max(5, Math.min(75, Settings.SWIPE_SPEED_ZONE_HEIGHT.get()));
-            final Settings.SwipeZoneAction leftAction  = Settings.SWIPE_LEFT_ZONE.get();
-            final Settings.SwipeZoneAction rightAction = Settings.SWIPE_RIGHT_ZONE.get();
-            final Settings.SwipeZoneAction topAction   = Settings.SWIPE_TOP_ZONE.get();
+            final SwipeZoneAction leftAction  = Settings.SWIPE_LEFT_ZONE.get();
+            final SwipeZoneAction rightAction = Settings.SWIPE_RIGHT_ZONE.get();
+            final SwipeZoneAction topAction   = Settings.SWIPE_TOP_ZONE.get();
 
-            final boolean leftOn  = leftAction != Settings.SwipeZoneAction.OFF;
-            final boolean rightOn = rightAction != Settings.SwipeZoneAction.OFF;
-            final boolean topOn   = topAction != Settings.SwipeZoneAction.OFF;
+            final boolean leftOn  = leftAction != SwipeZoneAction.OFF;
+            final boolean rightOn = rightAction != SwipeZoneAction.OFF;
+            final boolean topOn   = topAction != SwipeZoneAction.OFF;
 
             final int brightnessColor = toPreviewColor(parseColor(
                     Settings.SWIPE_OVERLAY_BRIGHTNESS_COLOR.get(), 0xFF4FC3F7), 0xFF4FC3F7);

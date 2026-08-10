@@ -15,6 +15,7 @@ import android.view.MotionEvent
 import app.morphe.extension.shared.Logger
 import app.morphe.extension.shared.StringRef.str
 import app.morphe.extension.shared.Utils
+import app.morphe.extension.shared.settings.Setting
 import app.morphe.extension.shared.settings.StringSetting
 import app.morphe.extension.youtube.settings.Settings
 import app.morphe.extension.youtube.shared.PlayerType
@@ -27,6 +28,65 @@ import app.morphe.extension.youtube.swipecontrols.controller.gesture.core.BaseGe
  * Manages enabling/disabling gestures, overlay appearance, and behavior preferences.
  */
 class SwipeControlsConfigurationProvider {
+    //region zone actions
+    /**
+     * The action performed by a swipe zone.
+     */
+    enum class SwipeZoneAction {
+        OFF,
+        VOLUME,
+        BRIGHTNESS,
+        SPEED,
+    }
+
+    /**
+     * Availability based on any zone having an action assigned.
+     */
+    class AnySwipeZoneAvailability : Setting.Availability {
+        override fun isAvailable() =
+            Settings.SWIPE_LEFT_ZONE.get() != SwipeZoneAction.OFF ||
+                Settings.SWIPE_RIGHT_ZONE.get() != SwipeZoneAction.OFF ||
+                Settings.SWIPE_TOP_ZONE.get() != SwipeZoneAction.OFF
+
+        override fun getParentSettings() =
+            listOf<Setting<*>>(Settings.SWIPE_LEFT_ZONE, Settings.SWIPE_RIGHT_ZONE, Settings.SWIPE_TOP_ZONE)
+    }
+
+    /**
+     * Availability based on either side zone having an action assigned.
+     */
+    class SideSwipeZonesAvailability : Setting.Availability {
+        override fun isAvailable() =
+            Settings.SWIPE_LEFT_ZONE.get() != SwipeZoneAction.OFF ||
+                Settings.SWIPE_RIGHT_ZONE.get() != SwipeZoneAction.OFF
+
+        override fun getParentSettings() =
+            listOf<Setting<*>>(Settings.SWIPE_LEFT_ZONE, Settings.SWIPE_RIGHT_ZONE)
+    }
+
+    /**
+     * Availability based on the top zone having an action assigned.
+     */
+    class TopSwipeZoneAvailability : Setting.Availability {
+        override fun isAvailable() = Settings.SWIPE_TOP_ZONE.get() != SwipeZoneAction.OFF
+
+        override fun getParentSettings() = listOf<Setting<*>>(Settings.SWIPE_TOP_ZONE)
+    }
+
+    /**
+     * Availability based on any zone being assigned the given action.
+     */
+    class SwipeActionAvailability(private val action: SwipeZoneAction) : Setting.Availability {
+        override fun isAvailable() =
+            Settings.SWIPE_LEFT_ZONE.get() == action ||
+                Settings.SWIPE_RIGHT_ZONE.get() == action ||
+                Settings.SWIPE_TOP_ZONE.get() == action
+
+        override fun getParentSettings() =
+            listOf<Setting<*>>(Settings.SWIPE_LEFT_ZONE, Settings.SWIPE_RIGHT_ZONE, Settings.SWIPE_TOP_ZONE)
+    }
+    //endregion
+
     //region swipe enable
     /**
      * Indicates whether swipe controls are enabled globally.
@@ -35,30 +95,30 @@ class SwipeControlsConfigurationProvider {
     val enableSwipeControls: Boolean
         get() = (enableVolumeControls || enableBrightnessControl || enableSpeedGestureControl) && (isFullscreenVideo || isVideoSliding)
 
-    val leftZoneAction: Settings.SwipeZoneAction
+    val leftZoneAction: SwipeZoneAction
         get() = Settings.SWIPE_LEFT_ZONE.get()
 
-    val rightZoneAction: Settings.SwipeZoneAction
+    val rightZoneAction: SwipeZoneAction
         get() = Settings.SWIPE_RIGHT_ZONE.get()
 
-    val topZoneAction: Settings.SwipeZoneAction
+    val topZoneAction: SwipeZoneAction
         get() = Settings.SWIPE_TOP_ZONE.get()
 
     /**
      * Indicates whether swipe controls for adjusting volume are enabled.
      */
     val enableVolumeControls: Boolean
-        get() = leftZoneAction == Settings.SwipeZoneAction.VOLUME ||
-                rightZoneAction == Settings.SwipeZoneAction.VOLUME ||
-                topZoneAction == Settings.SwipeZoneAction.VOLUME
+        get() = leftZoneAction == SwipeZoneAction.VOLUME ||
+                rightZoneAction == SwipeZoneAction.VOLUME ||
+                topZoneAction == SwipeZoneAction.VOLUME
 
     /**
      * Indicates whether swipe controls for adjusting brightness are enabled.
      */
     val enableBrightnessControl: Boolean
-        get() = leftZoneAction == Settings.SwipeZoneAction.BRIGHTNESS ||
-                rightZoneAction == Settings.SwipeZoneAction.BRIGHTNESS ||
-                topZoneAction == Settings.SwipeZoneAction.BRIGHTNESS
+        get() = leftZoneAction == SwipeZoneAction.BRIGHTNESS ||
+                rightZoneAction == SwipeZoneAction.BRIGHTNESS ||
+                topZoneAction == SwipeZoneAction.BRIGHTNESS
 
     /**
      * Checks if the video player is currently in fullscreen mode.
@@ -139,9 +199,9 @@ class SwipeControlsConfigurationProvider {
      * Indicates whether the swipe gesture for playback speed control is enabled in any zone.
      */
     val enableSpeedGestureControl: Boolean
-        get() = leftZoneAction == Settings.SwipeZoneAction.SPEED ||
-                rightZoneAction == Settings.SwipeZoneAction.SPEED ||
-                topZoneAction == Settings.SwipeZoneAction.SPEED
+        get() = leftZoneAction == SwipeZoneAction.SPEED ||
+                rightZoneAction == SwipeZoneAction.SPEED ||
+                topZoneAction == SwipeZoneAction.SPEED
 
     /**
      * The sensitivity of speed swipe gestures, controlling how much physical movement is needed per step.

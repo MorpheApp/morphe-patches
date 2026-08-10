@@ -12,7 +12,7 @@ package app.morphe.extension.youtube.swipecontrols.controller.gesture.core
 
 import android.view.GestureDetector
 import android.view.MotionEvent
-import app.morphe.extension.youtube.settings.Settings.SwipeZoneAction
+import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeZoneAction
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsHostActivity
 import app.morphe.extension.youtube.swipecontrols.misc.Point
 import app.morphe.extension.youtube.swipecontrols.misc.contains

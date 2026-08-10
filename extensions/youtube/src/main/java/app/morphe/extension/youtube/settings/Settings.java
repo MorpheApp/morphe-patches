@@ -12,8 +12,6 @@ import static app.morphe.extension.shared.sponsorblock.objects.CategoryBehaviour
 import static app.morphe.extension.shared.sponsorblock.objects.CategoryBehaviour.SKIP_AUTOMATICALLY;
 import static app.morphe.extension.shared.sponsorblock.objects.CategoryBehaviour.SKIP_AUTOMATICALLY_ONCE;
 
-import java.util.List;
-
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.EnumSetting;
@@ -58,8 +56,13 @@ import app.morphe.extension.youtube.patches.voiceovertranslation.VoiceOverTransl
 import app.morphe.extension.youtube.patches.voiceovertranslation.VoiceOverTranslationPatch.OpenRouterServiceAvailability;
 import app.morphe.extension.youtube.sponsorblock.SponsorBlockSettings;
 import app.morphe.extension.youtube.sponsorblock.YouTubeSponsorBlockConfig;
+import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.AnySwipeZoneAvailability;
+import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SideSwipeZonesAvailability;
+import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeActionAvailability;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeOverlayStyle;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeSpeedStep;
+import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeZoneAction;
+import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.TopSwipeZoneAvailability;
 import app.morphe.extension.youtube.videoplayer.PlayAllButton.PlaylistIDPrefix;
 
 public class Settings extends SharedYouTubeSettings {
@@ -541,72 +544,6 @@ public class Settings extends SharedYouTubeSettings {
             "morphe_spoof_video_streams_av1_user_dialog_message", new SpoofClientAv1Availability());
 
     // Swipe controls
-    public enum SwipeZoneAction {
-        OFF,
-        VOLUME,
-        BRIGHTNESS,
-        SPEED
-    }
-
-    public static final class AnySwipeZoneAvailability implements Setting.Availability {
-        @Override
-        public boolean isAvailable() {
-            return SWIPE_LEFT_ZONE.get() != SwipeZoneAction.OFF
-                    || SWIPE_RIGHT_ZONE.get() != SwipeZoneAction.OFF
-                    || SWIPE_TOP_ZONE.get() != SwipeZoneAction.OFF;
-        }
-
-        @Override
-        public List<Setting<?>> getParentSettings() {
-            return List.of(SWIPE_LEFT_ZONE, SWIPE_RIGHT_ZONE, SWIPE_TOP_ZONE);
-        }
-    }
-
-    public static final class SideSwipeZonesAvailability implements Setting.Availability {
-        @Override
-        public boolean isAvailable() {
-            return SWIPE_LEFT_ZONE.get() != SwipeZoneAction.OFF
-                    || SWIPE_RIGHT_ZONE.get() != SwipeZoneAction.OFF;
-        }
-
-        @Override
-        public List<Setting<?>> getParentSettings() {
-            return List.of(SWIPE_LEFT_ZONE, SWIPE_RIGHT_ZONE);
-        }
-    }
-
-    public static final class TopSwipeZoneAvailability implements Setting.Availability {
-        @Override
-        public boolean isAvailable() {
-            return SWIPE_TOP_ZONE.get() != SwipeZoneAction.OFF;
-        }
-
-        @Override
-        public List<Setting<?>> getParentSettings() {
-            return List.of(SWIPE_TOP_ZONE);
-        }
-    }
-
-    public static final class SwipeActionAvailability implements Setting.Availability {
-        private final SwipeZoneAction action;
-
-        public SwipeActionAvailability(SwipeZoneAction action) {
-            this.action = action;
-        }
-
-        @Override
-        public boolean isAvailable() {
-            return SWIPE_LEFT_ZONE.get() == action
-                    || SWIPE_RIGHT_ZONE.get() == action
-                    || SWIPE_TOP_ZONE.get() == action;
-        }
-
-        @Override
-        public List<Setting<?>> getParentSettings() {
-            return List.of(SWIPE_LEFT_ZONE, SWIPE_RIGHT_ZONE, SWIPE_TOP_ZONE);
-        }
-    }
-
     public static final BooleanSetting SWIPE_CHANGE_VIDEO = new BooleanSetting("morphe_swipe_change_video", FALSE, true);
     public static final EnumSetting<SwipeZoneAction> SWIPE_LEFT_ZONE = new EnumSetting<>("morphe_swipe_left_zone", SwipeZoneAction.OFF, true);
     public static final EnumSetting<SwipeZoneAction> SWIPE_RIGHT_ZONE = new EnumSetting<>("morphe_swipe_right_zone", SwipeZoneAction.OFF, true);
