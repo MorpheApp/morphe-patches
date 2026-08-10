@@ -372,17 +372,7 @@ public class CustomPlaybackSpeedPatch {
             // ## Speed UI Elements
             // Callback when user picks a new audio pitch.
             Function<Float, Void> userSelectedSpeed = newSpeed -> {
-                if (VideoInformation.getPlaybackSpeed() == newSpeed) {
-                    return null;
-                }
-
-                RememberPlaybackSpeedPatch.userSelectedPlaybackSpeed(newSpeed);
-                VideoInformation.changePlaybackSpeed(newSpeed);
-
-                if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
-                    RememberPlaybackSpeedPatch.userSelectedPlaybackAudioPitch(newSpeed);
-                }
-
+                VideoInformation.setPlaybackSpeed(newSpeed);
                 return null;
             };
 
@@ -575,18 +565,7 @@ public class CustomPlaybackSpeedPatch {
                 // ## Pitch UI elements
                 // Callback when user picks a new audio pitch.
                 Function<Float, Void> userSelectedPitch = newPitch -> {
-                    if (VideoInformation.getPlaybackAudioPitch() == newPitch) {
-                        return null;
-                    }
-
-                    RememberPlaybackSpeedPatch.userSelectedPlaybackAudioPitch(newPitch);
-
                     VideoInformation.setAudioPitch(newPitch);
-
-                    if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
-                        RememberPlaybackSpeedPatch.userSelectedPlaybackSpeed(newPitch);
-                    }
-
                     return null;
                 };
 
