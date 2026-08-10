@@ -408,9 +408,11 @@ public final class VideoInformation {
      */
     public static void userSelectedPlaybackSpeed(float userSelectedPlaybackSpeed) {
         Logger.printDebug(() -> "User selected playback speed: " + userSelectedPlaybackSpeed);
+        updatePlaybackSpeedValue(userSelectedPlaybackSpeed);
+
         // An exception occurs when the playback speed dialog is opened by an overlay button while 'Restore old playback speed menu' is off.
         // Update the formatted string value to avoid the exception.
-        updatePlaybackSpeedValue(userSelectedPlaybackSpeed);
+        playbackSpeedFormattedString = formatSpeedStringX(userSelectedPlaybackSpeed);
     }
 
     /**
