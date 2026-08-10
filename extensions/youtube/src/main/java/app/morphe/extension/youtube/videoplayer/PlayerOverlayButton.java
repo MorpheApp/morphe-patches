@@ -10,6 +10,7 @@ package app.morphe.extension.youtube.videoplayer;
 import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +20,6 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +27,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.HidePlayerOverlayButtonsPatch;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.settings.Settings;
@@ -379,7 +380,8 @@ public class PlayerOverlayButton {
         TextView textOverlay = new TextView(sourceButton.getContext());
         textOverlay.setId(View.generateViewId());
         textOverlay.setGravity(Gravity.CENTER);
-        textOverlay.setTextSize(14);
+        // Fixed size regardless of the system font-size setting, since the button has no room to grow.
+        textOverlay.setTextSize(TypedValue.COMPLEX_UNIT_PX, Dim.dp(14));
         textOverlay.setTextColor(0xFFFFFFFF);
         textOverlay.setTypeface(Typeface.create("sans-serif-condensed", Typeface.BOLD));
         textOverlay.setOnClickListener(onClickListener);
