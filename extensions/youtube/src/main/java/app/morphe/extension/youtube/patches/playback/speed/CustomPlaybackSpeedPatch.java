@@ -553,8 +553,8 @@ public class CustomPlaybackSpeedPatch {
                     Settings.PLAYBACK_AUDIO_TIME_STRETCHING.save(newValue);
                     linkButton.setForeground(context.getDrawable(newValue ? LINK_OFF_ICON : LINK_ICON));
 
-                    // When switching from unlinked to linked, sync audio pitch to the video speed.
-                    if (!newValue && VideoInformation.getPlaybackAudioPitch() != VideoInformation.getPlaybackSpeed()) {
+                    // When switching from unlinked to linked (true to false), sync audio pitch to the video speed.
+                    if (!newValue) {
                         VideoInformation.setAudioPitch(VideoInformation.getPlaybackSpeed());
                     }
                 });

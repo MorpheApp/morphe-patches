@@ -338,6 +338,7 @@ public final class VideoInformation {
         }
 
         playbackSpeed = speed;
+        Logger.printDebug(() -> "Video speed updated: " + speed);
         playbackSpeedFormattedString = formatSpeedStringX(speed);
         onPlaybackSpeedChange.invoke(speed);
         RememberPlaybackSpeedPatch.userSelectedPlaybackSpeed(speed);
@@ -359,6 +360,7 @@ public final class VideoInformation {
         }
 
         playbackAudioPitch = pitch;
+        Logger.printDebug(() -> "Audio pitch updated: " + playbackAudioPitch);
         playbackAudioPitchFormattedString = formatSpeedStringX(pitch);
         onPlaybackAudioPitchChange.invoke(pitch);
         RememberPlaybackSpeedPatch.userSelectedPlaybackAudioPitch(pitch);
@@ -385,6 +387,7 @@ public final class VideoInformation {
      * Only CustomPlaybackInterface sets audio pitch.
      */
     public static void setAudioPitch(float currentAudioPitch) {
+        Logger.printDebug(() -> "Audio pitch set to: " + currentAudioPitch);
         if (!updatePlaybackAudioPitchValue(currentAudioPitch)) {
             return;
         }
@@ -717,6 +720,7 @@ public final class VideoInformation {
      * Forcefully changes the playback speed of the currently playing video.
      */
     public static void changePlaybackSpeed(float playbackSpeed) {
+        Logger.printDebug(() -> "Video speed force changed: " + playbackSpeed);
         Utils.verifyOnMainThread();
 
         if (currentPlaybackSpeedMenuInterface == null) {
