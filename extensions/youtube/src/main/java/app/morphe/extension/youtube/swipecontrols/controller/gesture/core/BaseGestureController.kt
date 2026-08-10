@@ -12,7 +12,11 @@ package app.morphe.extension.youtube.swipecontrols.controller.gesture.core
 
 import android.view.GestureDetector
 import android.view.MotionEvent
+import app.morphe.extension.youtube.settings.Settings.SwipeZoneAction
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsHostActivity
+import app.morphe.extension.youtube.swipecontrols.misc.Point
+import app.morphe.extension.youtube.swipecontrols.misc.contains
+import app.morphe.extension.youtube.swipecontrols.misc.toPoint
 
 /**
  * The common base of all [GestureController] classes.
@@ -152,7 +156,59 @@ abstract class BaseGestureController(
      * @param motionEvent The event to check.
      * @return Whether the event is in any active swipe zone.
      */
-    abstract fun isInSwipeZone(motionEvent: MotionEvent): Boolean
+    fun isInSwipeZone(motionEvent: MotionEvent): Boolean {
+        val point = motionEvent.toPoint()
+        return (controller.config.topZoneAction != SwipeZoneAction.OFF && point in controller.zones.top) ||
+            (controller.config.leftZoneAction != SwipeZoneAction.OFF && point in controller.zones.left) ||
+            (controller.config.rightZoneAction != SwipeZoneAction.OFF && point in controller.zones.right)
+    }
+
+    /**
+     * Resolves the action of the zone a swipe belongs to.
+     *
+     * The side zones own vertical swipes and the top zone owns horizontal ones. The zones overlap,
+     * so the direction is what keeps that overlap unambiguous, and it leaves every other gesture
+     * to the player instead of swallowing it.
+     *
+     * @param origin Where the swipe started.
+     * @param direction The direction of the swipe.
+     * @return The action to apply, or [SwipeZoneAction.OFF] if the swipe belongs to no zone.
+     */
+    protected fun swipeActionAt(origin: Point, direction: SwipeDetector.SwipeDirection): SwipeZoneAction =
+        when (direction) {
+            SwipeDetector.SwipeDirection.HORIZONTAL ->
+                if (origin in controller.zones.top) controller.config.topZoneAction else SwipeZoneAction.OFF
+
+            SwipeDetector.SwipeDirection.VERTICAL -> when (origin) {
+                in controller.zones.left -> controller.config.leftZoneAction
+                in controller.zones.right -> controller.config.rightZoneAction
+                else -> SwipeZoneAction.OFF
+            }
+
+            else -> SwipeZoneAction.OFF
+        }
+
+    /**
+     * Applies the action of the zone the swipe started in.
+     *
+     * @param from Start event of the swipe.
+     * @param distanceX The horizontal distance of the swipe.
+     * @param distanceY The vertical distance of the swipe.
+     * @return Whether the swipe was consumed.
+     */
+    protected fun applySwipeAction(from: MotionEvent, distanceX: Double, distanceY: Double): Boolean {
+        val direction = currentSwipe
+        val distance = if (direction == SwipeDetector.SwipeDirection.HORIZONTAL) -distanceX else distanceY
+
+        when (swipeActionAt(from.toPoint(), direction)) {
+            SwipeZoneAction.VOLUME -> scrollVolume(distance)
+            SwipeZoneAction.BRIGHTNESS -> scrollBrightness(distance)
+            SwipeZoneAction.SPEED -> scrollSpeed(distance)
+            SwipeZoneAction.OFF -> return false
+        }
+
+        return true
+    }
 
     /**
      * Checks if a touch event should be dropped.
