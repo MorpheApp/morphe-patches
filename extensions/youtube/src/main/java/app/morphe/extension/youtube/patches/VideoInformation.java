@@ -330,7 +330,7 @@ public final class VideoInformation {
     /**
      * Records a new playback speed, updates the formatted string, and fires {@link #onPlaybackSpeedChange}.
      *
-     * @return true if the speed actually changed.
+     * @return true if the speed actually changed and changePlaybackSpeed() called.
      */
     private static boolean updatePlaybackSpeedValue(float speed) {
         if (playbackSpeed == speed) {
@@ -338,21 +338,24 @@ public final class VideoInformation {
         }
 
         playbackSpeed = speed;
-        Logger.printDebug(() -> "Video speed updated: " + speed);
+        Logger.printDebug(() -> "Video speed updated: " + playbackSpeed);
         playbackSpeedFormattedString = formatSpeedStringX(speed);
         onPlaybackSpeedChange.invoke(speed);
         RememberPlaybackSpeedPatch.userSelectedPlaybackSpeed(speed);
         if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
-            updatePlaybackAudioPitchValue(speed);
+            if(!updatePlaybackAudioPitchValue(speed)) {
+                changePlaybackSpeed(playbackSpeed);
+            }
+        } else {
+            changePlaybackSpeed(playbackSpeed);
         }
-        changePlaybackSpeed(playbackSpeed);
         return true;
     }
 
     /**
      * Records a new playback audio pitch, updates the formatted string, and fires {@link #onPlaybackAudioPitchChange}.
      *
-     * @return true if the pitch actually changed.
+     * @return true if the pitch actually changed and changePlaybackSpeed() called.
      */
     private static boolean updatePlaybackAudioPitchValue(float pitch) {
         if (!Settings.ENABLE_PLAYBACK_AUDIO_PITCH.get()) {
@@ -367,11 +370,14 @@ public final class VideoInformation {
         playbackAudioPitchFormattedString = formatSpeedStringX(pitch);
         onPlaybackAudioPitchChange.invoke(pitch);
         RememberPlaybackSpeedPatch.userSelectedPlaybackAudioPitch(pitch);
+        // Forces call to changePlaybackSpeed, new pitch will be obtained and set.
         if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
-            updatePlaybackSpeedValue(pitch);
+            if(!updatePlaybackSpeedValue(pitch)) {
+                changePlaybackSpeed(playbackSpeed);
+            };
+        } else {
+            changePlaybackSpeed(playbackSpeed);
         }
-        // Attempt to set playback speed, new pitch will be obtained and set.
-        changePlaybackSpeed(playbackSpeed);
         return true;
     }
 
