@@ -394,10 +394,10 @@ public class CustomPlaybackSpeedPatch {
             Button speedMinusButton = createStyledButton(context, false);
             Button speedPlusButton = createStyledButton(context, true);
 
-            speedMinusButton.setOnClickListener(v -> userSelectedSpeed.accept(
-                    (float) (VideoInformation.getPlaybackSpeed() - SPEED_ADJUSTMENT_CHANGE)));
-            speedPlusButton.setOnClickListener(v -> userSelectedSpeed.accept(
-                    (float) (VideoInformation.getPlaybackSpeed() + SPEED_ADJUSTMENT_CHANGE)));
+            speedMinusButton.setOnClickListener(v -> userSelectedSpeed.accept(roundSpeedToNearestIncrement(
+                    (float) (VideoInformation.getPlaybackSpeed() - SPEED_ADJUSTMENT_CHANGE))));
+            speedPlusButton.setOnClickListener(v -> userSelectedSpeed.accept(roundSpeedToNearestIncrement(
+                    (float) (VideoInformation.getPlaybackSpeed() + SPEED_ADJUSTMENT_CHANGE))));
 
             // Create slider for speed adjustment.
             SeekBar speedSlider = new SeekBar(context);
@@ -584,10 +584,10 @@ public class CustomPlaybackSpeedPatch {
                 Button pitchMinusButton = createStyledButton(context, false);
                 Button pitchPlusButton = createStyledButton(context, true);
 
-                pitchMinusButton.setOnClickListener(v -> userSelectedPitch.accept(
-                        (float) (VideoInformation.getPlaybackAudioPitch() - PITCH_ADJUSTMENT_CHANGE)));
-                pitchPlusButton.setOnClickListener(v -> userSelectedPitch.accept(
-                        (float) (VideoInformation.getPlaybackAudioPitch() + PITCH_ADJUSTMENT_CHANGE)));
+                pitchMinusButton.setOnClickListener(v -> userSelectedPitch.accept(roundSpeedToNearestIncrement(
+                        (float) (VideoInformation.getPlaybackAudioPitch() - PITCH_ADJUSTMENT_CHANGE))));
+                pitchPlusButton.setOnClickListener(v -> userSelectedPitch.accept(roundSpeedToNearestIncrement(
+                        (float) (VideoInformation.getPlaybackAudioPitch() + PITCH_ADJUSTMENT_CHANGE))));
 
                 SeekBar pitchSlider = new SeekBar(context);
                 pitchSlider.setFocusable(true);
@@ -788,10 +788,9 @@ public class CustomPlaybackSpeedPatch {
 
     /**
      * @return audio pitch converted to a value for {@link SeekBar#setProgress(int)}.
-     * The pitch slider spans {@link #customPlaybackSpeedsMin} to {@link #customPlaybackSpeedsMax}.
      */
     private static int pitchToProgressValue(float pitch) {
-        return (int) ((Utils.clamp(pitch, customPlaybackSpeedsMin, customPlaybackSpeedsMax) - customPlaybackSpeedsMin) * PROGRESS_BAR_VALUE_SCALE);
+        return (int) ((pitch - customPlaybackSpeedsMin) * PROGRESS_BAR_VALUE_SCALE);
     }
 
     /**
