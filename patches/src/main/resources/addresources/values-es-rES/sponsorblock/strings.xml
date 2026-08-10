@@ -70,9 +70,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_summary">Esto debe mantenerse privado. Es como una contraseña y no debe compartirse con nadie. Si alguien lo obtiene, podría usarlo para suplantarte</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">El ID de usuario privado debe tener al menos 30 caracteres</string>
   <string name="morphe_sb_api_url_title">Cambiar URL de la API</string>
-  <string name="morphe_sb_api_url_summary">La dirección que SponsorBlock utiliza para hacer llamadas al servidor</string>
+  <string name="morphe_sb_api_url_summary">La dirección que utiliza SponsorBlock para hacer llamadas al servidor</string>
   <string name="morphe_sb_channel_whitelist_title">Lista de canales permitidos</string>
-  <string name="morphe_sb_channel_whitelist_summary">SponsorBlock está desactivado para los canales en la lista de permitidos</string>
+  <string name="morphe_sb_channel_whitelist_summary">SponsorBlock se desactiva para los canales en la lista de permitidos</string>
   <string name="morphe_sb_channel_whitelist_current_channel">Canal actual:</string>
   <string name="morphe_sb_channel_whitelist_add">Agregar a la lista de permitidos</string>
   <string name="morphe_sb_channel_whitelist_remove">Quitar</string>

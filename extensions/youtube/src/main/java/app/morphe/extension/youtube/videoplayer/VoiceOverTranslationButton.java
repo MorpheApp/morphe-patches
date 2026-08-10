@@ -35,7 +35,7 @@ public final class VoiceOverTranslationButton {
         try {
             if (LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS || !Settings.VOT_ENABLED.get()) return;
 
-            VoiceOverTranslationPatch.setOnTranslationStateChangeCallback(
+            VoiceOverTranslationPatch.addOnTranslationStateChangeCallback(
                     VoiceOverTranslationButton::refreshActivatedState);
 
             ImageView button = PlayerOverlayButton.addButton(
@@ -61,7 +61,7 @@ public final class VoiceOverTranslationButton {
         try {
             if (!LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS) return;
 
-            VoiceOverTranslationPatch.setOnTranslationStateChangeCallback(
+            VoiceOverTranslationPatch.addOnTranslationStateChangeCallback(
                     VoiceOverTranslationButton::refreshActivatedState);
 
             legacy = new LegacyPlayerControlButton(
