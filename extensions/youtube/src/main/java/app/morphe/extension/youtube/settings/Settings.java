@@ -588,9 +588,9 @@ public class Settings extends SharedYouTubeSettings {
     }
 
     public static final BooleanSetting SWIPE_CHANGE_VIDEO = new BooleanSetting("morphe_swipe_change_video", FALSE, true);
-    public static final EnumSetting<SwipeZoneAction> SWIPE_LEFT_ZONE = new EnumSetting<>("morphe_swipe_left_zone", SwipeZoneAction.BRIGHTNESS, true);
-    public static final EnumSetting<SwipeZoneAction> SWIPE_RIGHT_ZONE = new EnumSetting<>("morphe_swipe_right_zone", SwipeZoneAction.VOLUME, true);
-    public static final EnumSetting<SwipeZoneAction> SWIPE_TOP_ZONE = new EnumSetting<>("morphe_swipe_top_zone", SwipeZoneAction.SPEED, true);
+    public static final EnumSetting<SwipeZoneAction> SWIPE_LEFT_ZONE = new EnumSetting<>("morphe_swipe_left_zone", SwipeZoneAction.OFF, true);
+    public static final EnumSetting<SwipeZoneAction> SWIPE_RIGHT_ZONE = new EnumSetting<>("morphe_swipe_right_zone", SwipeZoneAction.OFF, true);
+    public static final EnumSetting<SwipeZoneAction> SWIPE_TOP_ZONE = new EnumSetting<>("morphe_swipe_top_zone", SwipeZoneAction.OFF, true);
     public static final BooleanSetting SWIPE_PRESS_TO_ENGAGE = new BooleanSetting("morphe_swipe_press_to_engage", FALSE, true, new AnySwipeZoneAvailability());
     public static final BooleanSetting SWIPE_HAPTIC_FEEDBACK = new BooleanSetting("morphe_swipe_haptic_feedback", TRUE, true, new AnySwipeZoneAvailability());
     public static final IntegerSetting SWIPE_MAGNITUDE_THRESHOLD = new IntegerSetting("morphe_swipe_threshold", 30, true, new AnySwipeZoneAvailability());
@@ -701,9 +701,9 @@ public class Settings extends SharedYouTubeSettings {
     private static final BooleanSetting DEPRECATED_RELOAD_VIDEO = new BooleanSetting("morphe_reload_video", FALSE);
     private static final BooleanSetting DEPRECATED_SANITIZE_COMMENTS_CATEGORY_BAR = new BooleanSetting("morphe_sanitize_comments_category_bar", FALSE);
     private static final BooleanSetting DEPRECATED_SEEKBAR_TAPPING = new BooleanSetting("morphe_seekbar_tapping", FALSE);
-    private static final BooleanSetting DEPRECATED_SWIPE_BRIGHTNESS = new BooleanSetting("morphe_swipe_brightness", TRUE);
-    private static final BooleanSetting DEPRECATED_SWIPE_VOLUME = new BooleanSetting("morphe_swipe_volume", TRUE);
-    private static final BooleanSetting DEPRECATED_SWIPE_SPEED = new BooleanSetting("morphe_swipe_speed", TRUE);
+    private static final BooleanSetting DEPRECATED_SWIPE_BRIGHTNESS = new BooleanSetting("morphe_swipe_brightness", FALSE);
+    private static final BooleanSetting DEPRECATED_SWIPE_VOLUME = new BooleanSetting("morphe_swipe_volume", FALSE);
+    private static final BooleanSetting DEPRECATED_SWIPE_SPEED = new BooleanSetting("morphe_swipe_speed", FALSE);
 
     // Unified SponsorBlock keys under the morphe_sb_* namespace (previously raw sb_*).
     private static final BooleanSetting DEPRECATED_SB_ENABLED = new BooleanSetting("sb_enabled", TRUE, false, false);
@@ -772,24 +772,9 @@ public class Settings extends SharedYouTubeSettings {
         migrateOldSettingToNew(DEPRECATED_SANITIZE_COMMENTS_CATEGORY_BAR, HIDE_COMMENTS_FILTER_BAR_OPTIONS);
         migrateOldSettingToNew(DEPRECATED_SEEKBAR_TAPPING, TAP_TO_SEEK);
 
-        if (!DEPRECATED_SWIPE_BRIGHTNESS.isSetToDefault()) {
-            if (SWIPE_LEFT_ZONE.isSetToDefault() && !DEPRECATED_SWIPE_BRIGHTNESS.get()) {
-                SWIPE_LEFT_ZONE.save(SwipeZoneAction.OFF);
-            }
-            DEPRECATED_SWIPE_BRIGHTNESS.resetToDefault();
-        }
-        if (!DEPRECATED_SWIPE_VOLUME.isSetToDefault()) {
-            if (SWIPE_RIGHT_ZONE.isSetToDefault() && !DEPRECATED_SWIPE_VOLUME.get()) {
-                SWIPE_RIGHT_ZONE.save(SwipeZoneAction.OFF);
-            }
-            DEPRECATED_SWIPE_VOLUME.resetToDefault();
-        }
-        if (!DEPRECATED_SWIPE_SPEED.isSetToDefault()) {
-            if (SWIPE_TOP_ZONE.isSetToDefault() && !DEPRECATED_SWIPE_SPEED.get()) {
-                SWIPE_TOP_ZONE.save(SwipeZoneAction.OFF);
-            }
-            DEPRECATED_SWIPE_SPEED.resetToDefault();
-        }
+        migrateSwipeGestureToZone(DEPRECATED_SWIPE_BRIGHTNESS, SWIPE_LEFT_ZONE, SwipeZoneAction.BRIGHTNESS);
+        migrateSwipeGestureToZone(DEPRECATED_SWIPE_VOLUME, SWIPE_RIGHT_ZONE, SwipeZoneAction.VOLUME);
+        migrateSwipeGestureToZone(DEPRECATED_SWIPE_SPEED, SWIPE_TOP_ZONE, SwipeZoneAction.SPEED);
 
         // SponsorBlock key namespace unification (sb_* -> morphe_sb_*).
         migrateOldSettingToNew(DEPRECATED_SB_ENABLED, SB_ENABLED);
@@ -864,6 +849,22 @@ public class Settings extends SharedYouTubeSettings {
 
         // Must run before any code reads a SegmentCategory setting.
         YouTubeSponsorBlockConfig.install();
+    }
+
+    /**
+     * The old swipe gestures were off by default, so a stored value is the only
+     * proof the user turned one on. Anything else is left at the zone default.
+     */
+    private static void migrateSwipeGestureToZone(BooleanSetting oldSetting,
+                                                  EnumSetting<SwipeZoneAction> zone,
+                                                  SwipeZoneAction action) {
+        if (oldSetting.isSetToDefault()) {
+            return;
+        }
+        if (zone.isSetToDefault()) {
+            zone.save(action);
+        }
+        oldSetting.resetToDefault();
     }
 
     // Register SeekBar UI configs so the single shared SeekBarPreference class knows the
