@@ -65,7 +65,7 @@ val settingsPatch = bytecodePatch(
                         document(file.absolutePath).use { document ->
                             document.documentElement.childNodes.findElementByAttributeValue(
                                 "name",
-                                "label_user_agreement",
+                                "label_privacy_policy",
                             )?.removeFromParent()
                         }
                     }
@@ -76,8 +76,7 @@ val settingsPatch = bytecodePatch(
                     ResourceGroup("drawable",
                         "morphe_ic_dialog_alert.xml",
                         "morphe_settings_custom_checkmark.xml",
-                        "morphe_settings_custom_checkmark_bold.xml",
-                        "icon_user.xml"
+                        "morphe_settings_custom_checkmark_bold.xml"
                     ),
                     ResourceGroup("layout",
                         "morphe_custom_list_item_checked.xml"
@@ -128,9 +127,9 @@ val settingsPatch = bytecodePatch(
                 addInstructions(
                     labelIndex + 1,
                     """
-                            invoke-static { }, $EXTENSION_CLASS->getSettingLabel()Ljava/lang/String;
-                            move-result-object v$labelRegister
-                        """
+                        invoke-static { }, $EXTENSION_CLASS->getSettingLabel()Ljava/lang/String;
+                        move-result-object v$labelRegister
+                    """
                 )
 
                 val iconIndex = it.instructionMatches[2].index
@@ -139,9 +138,9 @@ val settingsPatch = bytecodePatch(
                 addInstructions(
                     iconIndex + 1,
                     """
-                            invoke-static { }, $EXTENSION_CLASS->getSettingIcon()Landroid/graphics/drawable/Drawable;
-                            move-result-object v$iconRegister
-                        """
+                        invoke-static { }, $EXTENSION_CLASS->getSettingIcon()Landroid/graphics/drawable/Drawable;
+                        move-result-object v$iconRegister
+                    """
                 )
             }
         }

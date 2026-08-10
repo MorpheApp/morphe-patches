@@ -45,16 +45,14 @@ public class SidebarPreferenceCategory extends ConditionalPreferenceCategory {
                     Settings.HIDE_REDDIT_PRO_SHELF
             ));
 
-            if (VersionCheckPatch.is_2025_52_or_greater) {
-                addPreference(new BooleanSettingPreference(
-                        context,
-                        Settings.HIDE_ABOUT_SHELF
-                ));
-                addPreference(new BooleanSettingPreference(
-                        context,
-                        Settings.HIDE_RESOURCES_SHELF
-                ));
-            }
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_ABOUT_SHELF
+            ));
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_RESOURCES_SHELF
+            ));
         }
 
     }

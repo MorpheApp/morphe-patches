@@ -38,6 +38,8 @@ import app.morphe.extension.shared.ui.Dim;
 public class RedditActivityHook {
     private static final Drawable MORPHE_ICON = MorpheSettingsIconVectorDrawable.getIcon();
     private static final String MORPHE_LABEL = "Morphe";
+    private static final String PRIVACY_POLICY_URI = Objects.requireNonNull(
+            ResourceUtils.getString("privacy_policy_uri"));
 
     /**
      * Injection point.
@@ -114,9 +116,7 @@ public class RedditActivityHook {
      */
     public static boolean openMorpheSettings(Activity activity, Uri uri) {
         Logger.printInfo(() -> "Uri: " + uri);
-        String host = uri.getHost();
-        if (("redditinc.com".equals(host) || "www.redditinc.com".equals(host)) &&
-                "/policies/user-agreement".equals(uri.getPath())) {
+        if (PRIVACY_POLICY_URI.equals(uri.toString())) {
             new MorpheSettingsDialog().show(activity.getFragmentManager(), "morphe_settings");
             return true;
         }
