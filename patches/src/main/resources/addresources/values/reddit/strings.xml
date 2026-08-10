@@ -16,7 +16,7 @@ Second \"item\" text"</string>
 -->
 <resources>
     <!-- Overrides built in setting menu with Morphe settings. -->
-    <string name="acknowledgements_title" translatable="false">Morphe</string>
+    <string name="label_user_agreement" translatable="false">Morphe</string>
 
     <string name="morphe_screen_ads_title">Ads</string>
     <string name="morphe_hide_post_ads_title">Hide feed ads</string>

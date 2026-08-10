@@ -13,6 +13,7 @@ import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -28,6 +29,7 @@ import java.util.Objects;
 
 import app.morphe.extension.reddit.settings.preference.RedditPreferenceFragment;
 import app.morphe.extension.reddit.ui.MorpheSettingsIconVectorDrawable;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.Dim;
@@ -110,13 +112,13 @@ public class RedditActivityHook {
     /**
      * Injection point.
      */
-    public static boolean openMorpheSettings(Enum<?> e) {
-        if (isAcknowledgment(e)) {
-            Activity activity = Utils.getActivity();
-            if (activity != null) {
-                new MorpheSettingsDialog().show(activity.getFragmentManager(), "morphe_settings");
-                return true;
-            }
+    public static boolean openMorpheSettings(Activity activity, Uri uri) {
+        Logger.printInfo(() -> "Uri: " + uri);
+        String host = uri.getHost();
+        if (("redditinc.com".equals(host) || "www.redditinc.com".equals(host)) &&
+                "/policies/user-agreement".equals(uri.getPath())) {
+            new MorpheSettingsDialog().show(activity.getFragmentManager(), "morphe_settings");
+            return true;
         }
         return false;
     }
