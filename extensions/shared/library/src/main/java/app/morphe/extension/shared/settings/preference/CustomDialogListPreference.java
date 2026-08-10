@@ -186,6 +186,14 @@ public class CustomDialogListPreference extends ListPreference {
         super(context);
     }
 
+    /**
+     * Opens the selection dialog, as if the preference row itself was tapped.
+     * Allows another preference to present this list on its behalf.
+     */
+    public void showSelectionDialog() {
+        showDialog(null);
+    }
+
     @Override
     protected void showDialog(Bundle state) {
         Context context = getContext();
