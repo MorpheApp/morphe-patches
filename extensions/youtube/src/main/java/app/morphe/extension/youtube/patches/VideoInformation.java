@@ -341,6 +341,7 @@ public final class VideoInformation {
         playbackSpeedFormattedString = formatSpeedStringX(speed);
         onPlaybackSpeedChange.invoke(speed);
         RememberPlaybackSpeedPatch.userSelectedPlaybackSpeed(speed);
+        changePlaybackSpeed(playbackSpeed);
         return true;
     }
 
@@ -361,6 +362,8 @@ public final class VideoInformation {
         playbackAudioPitchFormattedString = formatSpeedStringX(pitch);
         onPlaybackAudioPitchChange.invoke(pitch);
         RememberPlaybackSpeedPatch.userSelectedPlaybackAudioPitch(pitch);
+        // Attempt to set playback speed, new pitch will be obtained and set.
+        changePlaybackSpeed(playbackSpeed);
         return true;
     }
 
@@ -368,14 +371,12 @@ public final class VideoInformation {
      * Injection point.
      */
     public static void videoSpeedChanged(float currentVideoSpeed) {
-        if (playbackSpeed != currentVideoSpeed) {
-            Logger.printDebug(() -> "Video speed changed: " + currentVideoSpeed);
-            if (!updatePlaybackSpeedValue(currentVideoSpeed)) {
-                return;
-            }
-            if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
-                updatePlaybackAudioPitchValue(currentVideoSpeed);
-            }
+        Logger.printDebug(() -> "Video speed changed: " + currentVideoSpeed);
+        if (!updatePlaybackSpeedValue(currentVideoSpeed)) {
+            return;
+        }
+        if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
+            updatePlaybackAudioPitchValue(currentVideoSpeed);
         }
     }
 
@@ -390,8 +391,6 @@ public final class VideoInformation {
         if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
             updatePlaybackSpeedValue(currentAudioPitch);
         }
-        // Attempt to set playback speed, new pitch will be obtained and set.
-        changePlaybackSpeed(playbackSpeed);
     }
 
     /**
@@ -799,10 +798,8 @@ public final class VideoInformation {
      * @param newlyLoadedPlaybackSpeed The current playback speed.
      */
     public static void setPlaybackSpeed(float newlyLoadedPlaybackSpeed) {
-        if (playbackSpeed != newlyLoadedPlaybackSpeed) {
-            Logger.printDebug(() -> "Video speed set to: " + newlyLoadedPlaybackSpeed);
-            updatePlaybackSpeedValue(newlyLoadedPlaybackSpeed);
-        }
+        Logger.printDebug(() -> "Video speed set to: " + newlyLoadedPlaybackSpeed);
+        updatePlaybackSpeedValue(newlyLoadedPlaybackSpeed);
     }
 
     /**
