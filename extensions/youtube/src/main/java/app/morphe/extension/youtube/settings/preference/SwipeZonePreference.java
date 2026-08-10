@@ -37,8 +37,8 @@ import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProv
 
 /**
  * Renders a live preview of the swipe gesture zones inside the preference screen.
- * Shows the brightness (left), dead zone (center), and volume (right) zones
- * proportionally to the current SWIPE_ZONE_WIDTH setting.
+ * Shows the left, top and right zones with the action assigned to each, sized
+ * proportionally to the current zone settings.
  * Adapts colors to the active light / dark theme.
  */
 @SuppressWarnings({"unused", "deprecation"})
@@ -162,6 +162,13 @@ public final class SwipeZonePreference extends Preference {
     @SuppressLint("ViewConstructor")
     private static final class ZoneView extends View {
 
+        /**
+         * Fill of a zone with no action assigned.
+         */
+        private static final int ZONE_OFF_COLOR = 0x1AFFFFFF;
+
+        private static final int ZONE_FILL_ALPHA = 0x55;
+
         // Paints are initialized in constructor after theme is known.
         private final Paint fillPaint      = new Paint(Paint.ANTI_ALIAS_FLAG);
         private final Paint borderPaint    = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -187,24 +194,20 @@ public final class SwipeZonePreference extends Preference {
         private final String labelOff = str("morphe_swipe_zone_label_off");
 
         private String getActionLabel(SwipeZoneAction action) {
-            if (action == null) return labelOff;
             switch (action) {
                 case VOLUME: return labelVolume;
                 case BRIGHTNESS: return labelBrightness;
                 case SPEED: return labelSpeed;
-                case OFF:
                 default: return labelOff;
             }
         }
 
         private int getActionColor(SwipeZoneAction action, int brightnessColor, int volumeColor, int speedColor) {
-            if (action == null) return 0x1AFFFFFF;
             switch (action) {
-                case VOLUME: return withAlpha(volumeColor, 0x55);
-                case BRIGHTNESS: return withAlpha(brightnessColor, 0x55);
-                case SPEED: return withAlpha(speedColor, 0x55);
-                case OFF:
-                default: return 0x1AFFFFFF;
+                case VOLUME: return withAlpha(volumeColor, ZONE_FILL_ALPHA);
+                case BRIGHTNESS: return withAlpha(brightnessColor, ZONE_FILL_ALPHA);
+                case SPEED: return withAlpha(speedColor, ZONE_FILL_ALPHA);
+                default: return ZONE_OFF_COLOR;
             }
         }
 

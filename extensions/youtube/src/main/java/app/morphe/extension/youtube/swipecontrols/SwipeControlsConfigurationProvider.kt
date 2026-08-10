@@ -24,8 +24,8 @@ import app.morphe.extension.youtube.swipecontrols.controller.gesture.PressToSwip
 import app.morphe.extension.youtube.swipecontrols.controller.gesture.core.BaseGestureController
 
 /**
- * Provides configuration settings for volume and brightness swipe controls in the YouTube player.
- * Manages enabling/disabling gestures, overlay appearance, and behavior preferences.
+ * Provides configuration settings for the swipe controls in the YouTube player.
+ * Manages the action of each zone, overlay appearance, and behavior preferences.
  */
 class SwipeControlsConfigurationProvider {
     //region zone actions
@@ -105,20 +105,22 @@ class SwipeControlsConfigurationProvider {
         get() = Settings.SWIPE_TOP_ZONE.get()
 
     /**
+     * Indicates whether any zone is assigned the given action.
+     */
+    private fun isActionAssigned(action: SwipeZoneAction) =
+        leftZoneAction == action || rightZoneAction == action || topZoneAction == action
+
+    /**
      * Indicates whether swipe controls for adjusting volume are enabled.
      */
     val enableVolumeControls: Boolean
-        get() = leftZoneAction == SwipeZoneAction.VOLUME ||
-                rightZoneAction == SwipeZoneAction.VOLUME ||
-                topZoneAction == SwipeZoneAction.VOLUME
+        get() = isActionAssigned(SwipeZoneAction.VOLUME)
 
     /**
      * Indicates whether swipe controls for adjusting brightness are enabled.
      */
     val enableBrightnessControl: Boolean
-        get() = leftZoneAction == SwipeZoneAction.BRIGHTNESS ||
-                rightZoneAction == SwipeZoneAction.BRIGHTNESS ||
-                topZoneAction == SwipeZoneAction.BRIGHTNESS
+        get() = isActionAssigned(SwipeZoneAction.BRIGHTNESS)
 
     /**
      * Checks if the video player is currently in fullscreen mode.
@@ -199,9 +201,7 @@ class SwipeControlsConfigurationProvider {
      * Indicates whether the swipe gesture for playback speed control is enabled in any zone.
      */
     val enableSpeedGestureControl: Boolean
-        get() = leftZoneAction == SwipeZoneAction.SPEED ||
-                rightZoneAction == SwipeZoneAction.SPEED ||
-                topZoneAction == SwipeZoneAction.SPEED
+        get() = isActionAssigned(SwipeZoneAction.SPEED)
 
     /**
      * The sensitivity of speed swipe gestures, controlling how much physical movement is needed per step.

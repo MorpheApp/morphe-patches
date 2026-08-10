@@ -24,19 +24,21 @@ import kotlin.math.min
  *  +------------------------------------------------------------------+
  *  |                         40dp (top dead)                          |
  *  +----------+-------------+----------------+-------------+----------+
- *  |          |  brightness |     speed      |   volume    |          |
+ *  |          |    left     |      top       |    right    |          |
  *  |  20dp    |    (↑ ↓)    |     (← →)      |    (↑ ↓)    |  20dp    |
- *  |          |  + speed    |   speed_h%     |  + speed    |          |
+ *  |          |    + top    |   speed_h%     |    + top    |          |
  *  +- - - - - +- - - - - - -+- - - - - - - - +- - - - - - -+- - - - - +
- *  |  dead    |  brightness |     dead       |   volume    |  dead    |
+ *  |  dead    |    left     |     dead       |    right    |  dead    |
  *  |          |   zone_w%   |   100-2*z%     |   zone_w%   |          |
  *  +----------+-------------+----------------+-------------+----------+
  *  |                        60dp (bottom dead)                        |
  *  +------------------------------------------------------------------+
  *
- *  brightness / volume - vertical swipe (↑ ↓), span full effective height
- *  speed               - horizontal swipe (← →), top speed_h% of effective height;
- *                        overlaps with the top of brightness and volume zones
+ *  left / right - vertical swipe (↑ ↓), span full effective height
+ *  top          - horizontal swipe (← →), top speed_h% of effective height;
+ *                 overlaps with the top of the left and right zones
+ *
+ *  Each zone performs the action it is assigned in the settings.
  */
 @Suppress("PrivatePropertyName")
 class SwipeZonesController(
