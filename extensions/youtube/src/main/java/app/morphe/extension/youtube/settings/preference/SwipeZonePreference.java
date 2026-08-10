@@ -489,8 +489,8 @@ public final class SwipeZonePreference extends Preference {
             canvas.drawLine(sep2, speedBottom, sep3, speedBottom, separatorPaint);
             canvas.drawLine(sep3, speedBottom, sep4, speedBottom, dashPaint);
 
-            // Labels: left/right in the non-overlapping lower portion;
-            // top and native in the center column.
+            // Labels: left/right in the non-overlapping lower portion, top in its own strip,
+            // native in the center column.
             final float lowerH       = sBottom - speedBottom;
             final float lowerCenterY = speedBottom + lowerH / 2f - Dim.dp(3);
             final float lowerPctY    = lowerCenterY + Dim.dp(13);
@@ -516,19 +516,26 @@ public final class SwipeZonePreference extends Preference {
                         sRight - edgeW - zoneW / 2f, lowerPctY, percentPaint);
             }
 
-            if (centerW >= Dim.dp(55)) {
-                float centerX = padH + edgeW + zoneW + centerW / 2f;
+            // Centered on the whole strip, which is also the center of the middle column
+            // whenever one exists.
+            final float centerX = padH + edgeW + effectiveW / 2f;
 
-                // Top label (and % if strip is tall enough) centered in the top strip.
-                final int paintColor = topOn ? fgColor : dimTextColor;
-                namePaint.setColor(paintColor);
-                percentPaint.setColor(paintColor);
+            // The top zone spans the full width, so its label must not depend on the middle
+            // column, which disappears once both side zones reach 50%.
+            if (effectiveW >= Dim.dp(55)) {
+                final int topPaintColor = topOn ? fgColor : dimTextColor;
+                namePaint.setColor(topPaintColor);
+                percentPaint.setColor(topPaintColor);
                 canvas.drawText(getActionLabel(topAction), centerX, speedLabelY, namePaint);
                 if (speedShowPct) {
                     canvas.drawText(speedZonePercent + "%", centerX, speedPctY, percentPaint);
                 }
+            }
 
-                // Native label in the lower portion of the center column.
+            // Native label in the lower portion of the center column.
+            if (centerW >= Dim.dp(55)) {
+                namePaint.setColor(fgColor);
+                percentPaint.setColor(fgColor);
                 canvas.drawText(labelNative, centerX, lowerCenterY, namePaint);
                 canvas.drawText((100 - 2 * zonePercent) + "%", centerX, lowerPctY, percentPaint);
             }
