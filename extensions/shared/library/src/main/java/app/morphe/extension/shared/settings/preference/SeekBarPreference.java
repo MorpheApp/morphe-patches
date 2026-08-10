@@ -25,6 +25,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringRef;
 import app.morphe.extension.shared.settings.IntegerSetting;
 import app.morphe.extension.shared.ui.CustomDialog;
@@ -54,6 +55,21 @@ public class SeekBarPreference extends Preference {
     @Nullable
     public static SeekBarConfig configFor(IntegerSetting setting) {
         return REGISTRY.get(setting.key);
+    }
+
+    /**
+     * Returns the setting value clamped to the range of its seek bar, so imported or
+     * hand edited data cannot make a feature use a value the slider never offers.
+     * The registered range stays the only place the bounds are declared.
+     */
+    public static int clampToRange(IntegerSetting setting) {
+        final int value = setting.get();
+        SeekBarConfig config = configFor(setting);
+        if (config == null) {
+            Logger.printException(() -> "No seek bar range registered for: " + setting.key);
+            return value;
+        }
+        return Math.max(config.min(), Math.min(config.max(), value));
     }
 
     public SeekBarPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {

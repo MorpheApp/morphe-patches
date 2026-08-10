@@ -15,6 +15,7 @@ import android.util.TypedValue
 import android.view.View
 import app.morphe.extension.shared.ResourceType
 import app.morphe.extension.shared.ResourceUtils.getIdentifier
+import app.morphe.extension.shared.settings.preference.SeekBarPreference
 import app.morphe.extension.youtube.settings.Settings
 import app.morphe.extension.youtube.swipecontrols.misc.Rectangle
 import app.morphe.extension.youtube.swipecontrols.misc.applyDimension
@@ -93,7 +94,7 @@ class SwipeZonesController(
     val left: Rectangle
         get() {
             val eRect = effectiveSwipeRect
-            val zoneWidth = (eRect.width * maxOf(5, minOf(50, Settings.SWIPE_ZONE_WIDTH.get()))) / 100
+            val zoneWidth = (eRect.width * SeekBarPreference.clampToRange(Settings.SWIPE_ZONE_WIDTH)) / 100
             return Rectangle(
                 eRect.left,
                 eRect.top,
@@ -108,7 +109,7 @@ class SwipeZonesController(
     val right: Rectangle
         get() {
             val eRect = effectiveSwipeRect
-            val zoneWidth = (eRect.width * maxOf(5, minOf(50, Settings.SWIPE_ZONE_WIDTH.get()))) / 100
+            val zoneWidth = (eRect.width * SeekBarPreference.clampToRange(Settings.SWIPE_ZONE_WIDTH)) / 100
             return Rectangle(
                 eRect.right - zoneWidth,
                 eRect.top,
@@ -123,7 +124,7 @@ class SwipeZonesController(
     val top: Rectangle
         get() {
             val eRect = effectiveSwipeRect
-            val zoneHeight = (eRect.height * maxOf(5, minOf(75, Settings.SWIPE_SPEED_ZONE_HEIGHT.get()))) / 100
+            val zoneHeight = (eRect.height * SeekBarPreference.clampToRange(Settings.SWIPE_SPEED_ZONE_HEIGHT)) / 100
             return Rectangle(
                 eRect.left,
                 eRect.top,
