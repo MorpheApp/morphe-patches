@@ -80,7 +80,8 @@ public final class RememberPlaybackSpeedPatch {
                     Settings.PLAYBACK_SPEED_DEFAULT.save(finalPlaybackSpeed);
 
                     if (Settings.REMEMBER_PLAYBACK_SPEED_LAST_SELECTED_TOAST.get())
-                        Utils.showToastShort(str("morphe_remember_playback_speed_toast", (finalPlaybackSpeed + "x")));
+                        Utils.showToastShort(str("morphe_remember_playback_speed_toast",
+                                (String.format(java.util.Locale.US, "%.2fx", finalPlaybackSpeed))));
                 }, TOAST_DELAY_MILLISECONDS);
             }
         } catch (Exception ex) {
@@ -119,7 +120,8 @@ public final class RememberPlaybackSpeedPatch {
                     Settings.PLAYBACK_AUDIO_PITCH_DEFAULT.save(finalPlaybackAudioPitch);
 
                     if (Settings.REMEMBER_PLAYBACK_SPEED_LAST_SELECTED_TOAST.get()) // Sharing toast with video speed
-                        Utils.showToastShort(str("morphe_remember_playback_audio_pitch_toast", (finalPlaybackAudioPitch + "x")));
+                        Utils.showToastShort(str("morphe_remember_playback_audio_pitch_toast",
+                                (String.format(java.util.Locale.US, "%.2fx", finalPlaybackAudioPitch))));
                 }, TOAST_DELAY_MILLISECONDS);
             }
         } catch (Exception ex) {
