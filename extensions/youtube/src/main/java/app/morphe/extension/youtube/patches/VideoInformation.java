@@ -342,6 +342,9 @@ public final class VideoInformation {
         playbackSpeedFormattedString = formatSpeedStringX(speed);
         onPlaybackSpeedChange.invoke(speed);
         RememberPlaybackSpeedPatch.userSelectedPlaybackSpeed(speed);
+        if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
+            updatePlaybackAudioPitchValue(speed);
+        }
         changePlaybackSpeed(playbackSpeed);
         return true;
     }
@@ -364,6 +367,9 @@ public final class VideoInformation {
         playbackAudioPitchFormattedString = formatSpeedStringX(pitch);
         onPlaybackAudioPitchChange.invoke(pitch);
         RememberPlaybackSpeedPatch.userSelectedPlaybackAudioPitch(pitch);
+        if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
+            updatePlaybackSpeedValue(pitch);
+        }
         // Attempt to set playback speed, new pitch will be obtained and set.
         changePlaybackSpeed(playbackSpeed);
         return true;
@@ -374,12 +380,9 @@ public final class VideoInformation {
      */
     public static void videoSpeedChanged(float currentVideoSpeed) {
         Logger.printDebug(() -> "Video speed changed: " + currentVideoSpeed);
-        if (!updatePlaybackSpeedValue(currentVideoSpeed)) {
-            return;
-        }
-        if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
-            updatePlaybackAudioPitchValue(currentVideoSpeed);
-        }
+        // An exception occurs when the playback speed dialog is opened by an overlay button while 'Restore old playback speed menu' is off.
+        // Update the formatted string value to avoid the exception.
+        updatePlaybackSpeedValue(currentVideoSpeed);
     }
 
     /**
@@ -388,12 +391,7 @@ public final class VideoInformation {
      */
     public static void setAudioPitch(float currentAudioPitch) {
         Logger.printDebug(() -> "Audio pitch set to: " + currentAudioPitch);
-        if (!updatePlaybackAudioPitchValue(currentAudioPitch)) {
-            return;
-        }
-        if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
-            updatePlaybackSpeedValue(currentAudioPitch);
-        }
+        updatePlaybackAudioPitchValue(currentAudioPitch);
     }
 
     /**
@@ -798,7 +796,7 @@ public final class VideoInformation {
 
     /**
      * Injection point.
-     *
+     * CustomPlaybackInterface sets video speed through this.
      * @param newlyLoadedPlaybackSpeed The current playback speed.
      */
     public static void setPlaybackSpeed(float newlyLoadedPlaybackSpeed) {
