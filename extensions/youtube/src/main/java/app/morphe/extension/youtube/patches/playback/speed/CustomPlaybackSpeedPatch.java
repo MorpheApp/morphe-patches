@@ -41,7 +41,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.util.Arrays;
-import java.util.function.Function;
+import java.util.function.Consumer;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -370,11 +370,8 @@ public class CustomPlaybackSpeedPatch {
             contentLayout.setOrientation(LinearLayout.VERTICAL);
 
             // ## Speed UI Elements
-            // Callback when user picks a new audio pitch.
-            Function<Float, Void> userSelectedSpeed = newSpeed -> {
-                VideoInformation.setPlaybackSpeed(newSpeed);
-                return null;
-            };
+            // Passes value to VideoInformation when user picks a new playback speed.
+            Consumer<Float> userSelectedSpeed = VideoInformation::setPlaybackSpeed;
 
             // Display current playback speed with a leading video icon.
             FrameLayout speedLabelRow = createLabelRow(context, VIDEO_ICON);
@@ -397,9 +394,9 @@ public class CustomPlaybackSpeedPatch {
             Button speedMinusButton = createStyledButton(context, false);
             Button speedPlusButton = createStyledButton(context, true);
 
-            speedMinusButton.setOnClickListener(v -> userSelectedSpeed.apply(
+            speedMinusButton.setOnClickListener(v -> userSelectedSpeed.accept(
                     (float) (VideoInformation.getPlaybackSpeed() - SPEED_ADJUSTMENT_CHANGE)));
-            speedPlusButton.setOnClickListener(v -> userSelectedSpeed.apply(
+            speedPlusButton.setOnClickListener(v -> userSelectedSpeed.accept(
                     (float) (VideoInformation.getPlaybackSpeed() + SPEED_ADJUSTMENT_CHANGE)));
 
             // Create slider for speed adjustment.
@@ -422,7 +419,7 @@ public class CustomPlaybackSpeedPatch {
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                     if (fromUser) {
                         // Convert from progress value to video playback speed.
-                        userSelectedSpeed.apply(roundSpeedToNearestIncrement(customPlaybackSpeedsMin + (progress / PROGRESS_BAR_VALUE_SCALE)));
+                        userSelectedSpeed.accept(roundSpeedToNearestIncrement(customPlaybackSpeedsMin + (progress / PROGRESS_BAR_VALUE_SCALE)));
                     }
                 }
 
@@ -512,7 +509,7 @@ public class CustomPlaybackSpeedPatch {
                     buttonContainer.addView(normalLabel);
                 }
 
-                speedButton.setOnClickListener(v -> userSelectedSpeed.apply(speed));
+                speedButton.setOnClickListener(v -> userSelectedSpeed.accept(speed));
 
                 gridLayout.addView(buttonContainer);
             }
@@ -563,11 +560,8 @@ public class CustomPlaybackSpeedPatch {
                 });
 
                 // ## Pitch UI elements
-                // Callback when user picks a new audio pitch.
-                Function<Float, Void> userSelectedPitch = newPitch -> {
-                    VideoInformation.setAudioPitch(newPitch);
-                    return null;
-                };
+                // Passes value to VideoInformation when user picks a new audio pitch.
+                Consumer<Float> userSelectedPitch = VideoInformation::setAudioPitch;
 
                 // Display current playback audio pitch with a leading audio icon.
                 FrameLayout pitchLabelRow = createLabelRow(context, AUDIO_ICON);
@@ -590,9 +584,9 @@ public class CustomPlaybackSpeedPatch {
                 Button pitchMinusButton = createStyledButton(context, false);
                 Button pitchPlusButton = createStyledButton(context, true);
 
-                pitchMinusButton.setOnClickListener(v -> userSelectedPitch.apply(
+                pitchMinusButton.setOnClickListener(v -> userSelectedPitch.accept(
                         (float) (VideoInformation.getPlaybackAudioPitch() - PITCH_ADJUSTMENT_CHANGE)));
-                pitchPlusButton.setOnClickListener(v -> userSelectedPitch.apply(
+                pitchPlusButton.setOnClickListener(v -> userSelectedPitch.accept(
                         (float) (VideoInformation.getPlaybackAudioPitch() + PITCH_ADJUSTMENT_CHANGE)));
 
                 SeekBar pitchSlider = new SeekBar(context);
@@ -612,7 +606,7 @@ public class CustomPlaybackSpeedPatch {
                     @Override
                     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                         if (fromUser) {
-                            userSelectedPitch.apply(roundSpeedToNearestIncrement(customPlaybackSpeedsMin + (progress / PROGRESS_BAR_VALUE_SCALE)));
+                            userSelectedPitch.accept(roundSpeedToNearestIncrement(customPlaybackSpeedsMin + (progress / PROGRESS_BAR_VALUE_SCALE)));
                         }
                     }
 
@@ -686,7 +680,7 @@ public class CustomPlaybackSpeedPatch {
                             case "×2" -> pitch * 2.0f;
                             default -> pitch;
                         };
-                        userSelectedPitch.apply(newValue);
+                        userSelectedPitch.accept(newValue);
                     });
                     pitchButtonContainer.addView(pitchPresetButton);
                     pitchPresetGrid.addView(pitchButtonContainer);
