@@ -36,6 +36,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.EnumSetting;
 import app.morphe.extension.shared.settings.Setting;
+import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.settings.Settings;
@@ -413,12 +414,9 @@ public final class SwipeZonePreference extends Preference {
             final boolean rightOn = rightAction != SwipeZoneAction.OFF;
             final boolean topOn   = topAction != SwipeZoneAction.OFF;
 
-            final int brightnessColor = toPreviewColor(parseColor(
-                    Settings.SWIPE_OVERLAY_BRIGHTNESS_COLOR.get(), 0xFF4FC3F7), 0xFF4FC3F7);
-            final int volumeColor     = toPreviewColor(parseColor(
-                    Settings.SWIPE_OVERLAY_VOLUME_COLOR.get(),     0xFF81C784), 0xFF81C784);
-            final int speedColor      = toPreviewColor(parseColor(
-                    Settings.SWIPE_OVERLAY_SPEED_COLOR.get(), 0xFFFF9100), 0xFFFF9100);
+            final int brightnessColor = previewColorOf(Settings.SWIPE_OVERLAY_BRIGHTNESS_COLOR);
+            final int volumeColor     = previewColorOf(Settings.SWIPE_OVERLAY_VOLUME_COLOR);
+            final int speedColor      = previewColorOf(Settings.SWIPE_OVERLAY_SPEED_COLOR);
 
             // The 20 dp edge margins (fixed dead areas) are represented as ~6% of total width.
             final float edgeW      = sWidth * 0.06f;
@@ -544,6 +542,16 @@ public final class SwipeZonePreference extends Preference {
 
             // Screen border on top (after restore so it is unclipped).
             canvas.drawRoundRect(screenRect, radius, radius, borderPaint);
+        }
+
+        /**
+         * Resolves the color an overlay setting is previewed with. The setting default is used
+         * as the fallback, so the preview stays legible whatever the user picked.
+         */
+        @ColorInt
+        private int previewColorOf(StringSetting setting) {
+            final int fallback = parseColor(setting.defaultValue, Color.GRAY) | 0xFF000000;
+            return toPreviewColor(parseColor(setting.get(), fallback), fallback);
         }
 
         @ColorInt
