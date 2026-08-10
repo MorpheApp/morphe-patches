@@ -214,8 +214,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_learning_menu_title">à®²à®¾à®à®¨ à®®à®¨à¯</string>
   <string name="morphe_hide_live_menu_title">লাইভ মেনু লুকান</string>
   <string name="morphe_hide_memberships_menu_title">সদস্যতা মেনু লুকান</string>
-  <string name="morphe_hide_movies_menu_title">মুভি মেনু লুকান</string>
-  <string name="morphe_hide_music_menu_title">\'সংগীত ও টিভি\' মেনু লুকান</string>
+  <string name="morphe_hide_movies_menu_title">\'মুভি &amp; টিভি\' মেনু লুকান</string>
+  <string name="morphe_hide_music_menu_title">সঙ্গীত মেনু লুকান</string>
   <string name="morphe_hide_news_menu_title">খবর মেনু লুকান</string>
   <string name="morphe_hide_playables_menu_title">খেলার উপযুক্ত লুকান</string>
   <string name="morphe_hide_podcasts_menu_title">পডকাস্ট মেনু লুকান</string>
@@ -510,10 +510,10 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_tap_to_seek_title">ভিডিওর নির্দিষ্ট অংশে যেতে ট্যাপ করা সক্রিয় করুন</string>
   <string name="morphe_tap_to_seek_summary">সীকবারটি ড্র্যাগ না করে সেই অবস্থানে যেতে ট্যাপ করুন।</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_left_zone_title">উজ্জ্বলতার সোয়াইপ অঙ্গভঙ্গি সক্রিয় করুন</string>
-  <string name="morphe_swipe_left_zone_summary">ফুলস্ক্রিন মোডে বাম দিকে উল্লম্বভাবে সোয়াইপ করলে উজ্জ্বলতা সামঞ্জস্য করা যায়</string>
-  <string name="morphe_swipe_right_zone_title">ভলিউম অঙ্গভঙ্গি সক্রিয় করুন</string>
-  <string name="morphe_swipe_right_zone_summary">ফুলস্ক্রিন মোডে ডান দিকে উল্লম্বভাবে সোয়াইপ করলে ভলিউম সামঞ্জস্য করা যায়</string>
+  <string name="morphe_swipe_brightness_title">উজ্জ্বলতার সোয়াইপ অঙ্গভঙ্গি সক্রিয় করুন</string>
+  <string name="morphe_swipe_brightness_summary">ফুলস্ক্রিন মোডে বাম দিকে উল্লম্বভাবে সোয়াইপ করলে উজ্জ্বলতা সামঞ্জস্য করা যায়</string>
+  <string name="morphe_swipe_volume_title">ভলিউম অঙ্গভঙ্গি সক্রিয় করুন</string>
+  <string name="morphe_swipe_volume_summary">ফুলস্ক্রিন মোডে ডান দিকে উল্লম্বভাবে সোয়াইপ করলে ভলিউম সামঞ্জস্য করা যায়</string>
   <string name="morphe_swipe_zone_width_title">উজ্জ্বলতা/আয়তনের অঞ্চলের প্রস্থ</string>
   <string name="morphe_swipe_zone_width_summary">উজ্জ্বলতা এবং আয়তন অঙ্গভঙ্গির জন্য প্রতিটি স্ক্রিনের প্রান্তের কত শতাংশ সংরক্ষিত থাকবে (৫-৫০)</string>
   <string name="morphe_swipe_zone_label_brightness">উজ্জ্বলতা</string>
@@ -547,8 +547,8 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_swipe_volume_sensitivity_summary">প্রতি সোয়াইপে ভলিউম কতটা পরিবর্তিত হয়</string>
   <string name="morphe_swipe_brightness_sensitivity_title">উজ্জ্বলতা সোয়াইপ সংবেদনশীলতা</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">উজ্জ্বলতা বাড়ানোর জন্য প্রতিটি সোয়াইপে বেশি সোয়াইপ করতে হবে</string>
-  <string name="morphe_swipe_top_zone_title">স্পিড অঙ্গভঙ্গি সক্রিয় করুন</string>
-  <string name="morphe_swipe_top_zone_summary">ফুলস্ক্রিন মোডে উপরের অঞ্চলে অনুভূমিকভাবে সোয়াইপ করে প্লেব্যাক গতি পরিবর্তন করুন</string>
+  <string name="morphe_swipe_speed_title">স্পিড অঙ্গভঙ্গি সক্রিয় করুন</string>
+  <string name="morphe_swipe_speed_summary">ফুলস্ক্রিন মোডে উপরের অঞ্চলে অনুভূমিকভাবে সোয়াইপ করে প্লেব্যাক গতি পরিবর্তন করুন</string>
   <string name="morphe_swipe_speed_sensitivity_title">স্পিড সোয়াইপ সংবেদনশীলতা</string>
   <string name="morphe_swipe_speed_sensitivity_summary">স্পিড বাড়ানোর জন্য প্রতিটি সোয়াইপে বেশি সোয়াইপ করতে হবে</string>
   <string name="morphe_swipe_speed_step_title">গতির ধাপ</string>

@@ -214,8 +214,8 @@ Promene uključuju:
   <string name="morphe_hide_learning_menu_title">Sakrij stavku menija \'Učite\'</string>
   <string name="morphe_hide_live_menu_title">Sakrij meni Uživao</string>
   <string name="morphe_hide_memberships_menu_title">Sakrij meni Članstva</string>
-  <string name="morphe_hide_movies_menu_title">Sakrij meni Filmova</string>
-  <string name="morphe_hide_music_menu_title">Sakrij meni „Muzika i TV“</string>
+  <string name="morphe_hide_movies_menu_title">Sakrij meni Filmovi i TV</string>
+  <string name="morphe_hide_music_menu_title">Sakrij meni Muzika</string>
   <string name="morphe_hide_news_menu_title">Sakrij meni Vestı</string>
   <string name="morphe_hide_playables_menu_title">Sakrij meni Materijala za reprodukciju</string>
   <string name="morphe_hide_podcasts_menu_title">Sakrij meni Podcast-a</string>
@@ -510,10 +510,10 @@ Da biste ovo popravili, uključite 'Lažiranje video tokova' i promenite 'Podraz
   <string name="morphe_tap_to_seek_title">Omogući dodir za premotavanje</string>
   <string name="morphe_tap_to_seek_summary">Samo dodirnite traku za podešavanje da biste skočili na tu poziciju bez povlačenja</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_left_zone_title">Omogući pokret za osvetljenost</string>
-  <string name="morphe_swipe_left_zone_summary">Prevucite vertikalno po levoj strani režima celog ekrana da biste podesili osvetljenost</string>
-  <string name="morphe_swipe_right_zone_title">Omogući pokret za jačinu zvuka</string>
-  <string name="morphe_swipe_right_zone_summary">Prevucite vertikalno po desnoj strani režima celog ekrana da biste podesili jačinu zvuka</string>
+  <string name="morphe_swipe_brightness_title">Omogući pokret za osvetljenost</string>
+  <string name="morphe_swipe_brightness_summary">Prevucite vertikalno po levoj strani režima celog ekrana da biste podesili osvetljenost</string>
+  <string name="morphe_swipe_volume_title">Omogući pokret za jačinu zvuka</string>
+  <string name="morphe_swipe_volume_summary">Prevucite vertikalno po desnoj strani režima celog ekrana da biste podesili jačinu zvuka</string>
   <string name="morphe_swipe_zone_width_title">Širina zone za osvetljenost/glasnoću</string>
   <string name="morphe_swipe_zone_width_summary">Postotak svake ivice ekrana rezervisan za geste osvetljenosti i glasnoće (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Osvetljenost</string>
@@ -547,8 +547,8 @@ Da biste ovo popravili, uključite 'Lažiranje video tokova' i promenite 'Podraz
   <string name="morphe_swipe_volume_sensitivity_summary">Više vrednosti povećavaju promenu jačine zvuka po prevlačenju</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Osetljivost prevlačenja za osvetljenost</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Više vrednosti zahtevaju više prevlačenja po koraku osvetljenosti</string>
-  <string name="morphe_swipe_top_zone_title">Omogući pokret za brzinu</string>
-  <string name="morphe_swipe_top_zone_summary">Prevučite horizontalno u gornjoj zoni režima punog ekrana da biste promenili brzinu reprodukcije</string>
+  <string name="morphe_swipe_speed_title">Omogući pokret za brzinu</string>
+  <string name="morphe_swipe_speed_summary">Prevučite horizontalno u gornjoj zoni režima punog ekrana da biste promenili brzinu reprodukcije</string>
   <string name="morphe_swipe_speed_sensitivity_title">Osetljivost prevlačenja za brzinu</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Više vrednosti zahtevaju više prevlačenja po koraku brzine</string>
   <string name="morphe_swipe_speed_step_title">Brzina koraka</string>

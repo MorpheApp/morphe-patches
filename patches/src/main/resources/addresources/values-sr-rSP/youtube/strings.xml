@@ -214,8 +214,8 @@ Promene uključuju:
   <string name="morphe_hide_learning_menu_title">Сакриј мени за учење</string>
   <string name="morphe_hide_live_menu_title">Сакриј мени Уживо</string>
   <string name="morphe_hide_memberships_menu_title">Сакриј мени Чланства</string>
-  <string name="morphe_hide_movies_menu_title">Сакриј мени Филмова</string>
-  <string name="morphe_hide_music_menu_title">Сакриј мени „Музика и ТВ”</string>
+  <string name="morphe_hide_movies_menu_title">Сакриј мени „Филмови и ТВ“</string>
+  <string name="morphe_hide_music_menu_title">Сакриј мени Музика</string>
   <string name="morphe_hide_news_menu_title">Сакриј мени Вести</string>
   <string name="morphe_hide_playables_menu_title">Сакриј мени Сали за игру</string>
   <string name="morphe_hide_podcasts_menu_title">Сакриј мени Подкаста</string>
@@ -510,10 +510,10 @@ Promene uključuju:
   <string name="morphe_tap_to_seek_title">Омогући додир за премотавање</string>
   <string name="morphe_tap_to_seek_summary">Само додирните траку за тражење да бисте скочили на ту позицију без повлачења</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_left_zone_title">Омогући покрет за осветљеност</string>
-  <string name="morphe_swipe_left_zone_summary">Превуците вертикално по левој страни режима пуног екрана да подесите осветљеност</string>
-  <string name="morphe_swipe_right_zone_title">Омогући покрет за јачину звука</string>
-  <string name="morphe_swipe_right_zone_summary">Превуците вертикално по десној страни режима пуног екрана да подесите звук</string>
+  <string name="morphe_swipe_brightness_title">Омогући покрет за осветљеност</string>
+  <string name="morphe_swipe_brightness_summary">Превуците вертикално по левој страни режима пуног екрана да подесите осветљеност</string>
+  <string name="morphe_swipe_volume_title">Омогући покрет за јачину звука</string>
+  <string name="morphe_swipe_volume_summary">Превуците вертикално по десној страни режима пуног екрана да подесите звук</string>
   <string name="morphe_swipe_zone_width_title">Ширина зоне за подешавање осветљине/јачине звука</string>
   <string name="morphe_swipe_zone_width_summary">Процент сваке ивице екрана резервисан за потезе осветљине и јачине звука (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Осветљење</string>
@@ -547,8 +547,8 @@ Promene uključuju:
   <string name="morphe_swipe_volume_sensitivity_summary">Веће вредности повећавају промену јачине звука при сваком превлачењу</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Осетљивост превлачења за осветљење</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Веће вредности захтевају више превлачења по кораку осветљења</string>
-  <string name="morphe_swipe_top_zone_title">Омогући гест брзине</string>
-  <string name="morphe_swipe_top_zone_summary">Превуците хоризонтално у горњој зони режима пуног екрана да бисте променили брзину репродукције</string>
+  <string name="morphe_swipe_speed_title">Омогући гест брзине</string>
+  <string name="morphe_swipe_speed_summary">Превуците хоризонтално у горњој зони режима пуног екрана да бисте променили брзину репродукције</string>
   <string name="morphe_swipe_speed_sensitivity_title">Осетљивост превлачења за брзину</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Веће вредности захтевају више превлачења по кораку брзине</string>
   <string name="morphe_swipe_speed_step_title">Корак брзине</string>

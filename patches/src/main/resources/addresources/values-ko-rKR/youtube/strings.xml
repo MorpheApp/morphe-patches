@@ -214,7 +214,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_learning_menu_title">학습 메뉴 숨기기</string>
   <string name="morphe_hide_live_menu_title">라이브 메뉴 숨기기</string>
   <string name="morphe_hide_memberships_menu_title">멤버십 메뉴 숨기기</string>
-  <string name="morphe_hide_movies_menu_title">\'영화\' / \'영화 및 TV\' 메뉴 숨기기</string>
+  <string name="morphe_hide_movies_menu_title">\'영화 &amp; TV\' 메뉴 숨기기</string>
   <string name="morphe_hide_music_menu_title">음악 메뉴 숨기기</string>
   <string name="morphe_hide_news_menu_title">뉴스 메뉴 숨기기</string>
   <string name="morphe_hide_playables_menu_title">게임 룸 메뉴 숨기기</string>
@@ -512,10 +512,10 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_tap_to_seek_title">재생바 터치 조작 활성화하기</string>
   <string name="morphe_tap_to_seek_summary">드래그하지 않고 재생바를 탭하기만 해도 해당 위치로 이동할 수 있습니다</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_left_zone_title">스와이프 제스처로 밝기 조절하기</string>
-  <string name="morphe_swipe_left_zone_summary">전체 화면 모드 왼쪽에서 세로로 스와이프하여 밝기를 조절합니다</string>
-  <string name="morphe_swipe_right_zone_title">스와이프 제스처로 볼륨 조절하기</string>
-  <string name="morphe_swipe_right_zone_summary">전체 화면 모드 오른쪽에서 세로로 스와이프하여 볼륨을 조절합니다</string>
+  <string name="morphe_swipe_brightness_title">스와이프 제스처로 밝기 조절하기</string>
+  <string name="morphe_swipe_brightness_summary">전체 화면 모드 왼쪽에서 세로로 스와이프하여 밝기를 조절합니다</string>
+  <string name="morphe_swipe_volume_title">스와이프 제스처로 볼륨 조절하기</string>
+  <string name="morphe_swipe_volume_summary">전체 화면 모드 오른쪽에서 세로로 스와이프하여 볼륨을 조절합니다</string>
   <string name="morphe_swipe_zone_width_title">밝기/볼륨 영역 너비</string>
   <string name="morphe_swipe_zone_width_summary">밝기 및 볼륨 제스처에 지정된 각 화면 가장자리의 비율을 설정할 수 있습니다 (5~50)</string>
   <string name="morphe_swipe_zone_label_brightness">밝기</string>
@@ -549,8 +549,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_swipe_volume_sensitivity_summary">값이 높을수록 한 번의 스와이프로 변경되는 볼륨 크기가 증가합니다</string>
   <string name="morphe_swipe_brightness_sensitivity_title">밝기 스와이프 민감도</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">값이 높을수록 밝기 단계를 변경하려면 더 많이 스와이프해야 합니다</string>
-  <string name="morphe_swipe_top_zone_title">스와이프 제스처로 속도 조절하기</string>
-  <string name="morphe_swipe_top_zone_summary">전체 화면 모드 상단에서 가로로 스와이프하여 재생 속도를 조절합니다</string>
+  <string name="morphe_swipe_speed_title">스와이프 제스처로 속도 조절하기</string>
+  <string name="morphe_swipe_speed_summary">전체 화면 모드 상단에서 가로로 스와이프하여 재생 속도를 조절합니다</string>
   <string name="morphe_swipe_speed_sensitivity_title">속도 스와이프 민감도</string>
   <string name="morphe_swipe_speed_sensitivity_summary">값이 높을수록 속도 단계를 변경하려면 더 많이 스와이프해야 합니다</string>
   <string name="morphe_swipe_speed_step_title">속도 단계</string>
@@ -910,7 +910,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_change_start_page_entry_default">기본값</string>
   <string name="morphe_change_start_page_entry_all_subscriptions">모든 구독 채널</string>
   <string name="morphe_change_start_page_entry_browse">채널 둘러보기</string>
-  <string name="morphe_change_start_page_entry_courses">\'학습\' / \'학습 프로그램\'</string>
+  <string name="morphe_change_start_page_entry_courses">학습 프로그램</string>
   <string name="morphe_change_start_page_entry_explore">탐색</string>
   <string name="morphe_change_start_page_entry_fashion">패션 &amp; 뷰티</string>
   <string name="morphe_change_start_page_entry_gaming">게임</string>
@@ -918,7 +918,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_change_start_page_entry_library">내 페이지</string>
   <string name="morphe_change_start_page_entry_liked_videos">좋아요 표시한 동영상</string>
   <string name="morphe_change_start_page_entry_live">실시간</string>
-  <string name="morphe_change_start_page_entry_movies">\'영화\' / \'영화 및 TV\'</string>
+  <string name="morphe_change_start_page_entry_movies">영화</string>
   <string name="morphe_change_start_page_entry_music">음악</string>
   <string name="morphe_change_start_page_entry_news">뉴스</string>
   <string name="morphe_change_start_page_entry_notifications">알림</string>

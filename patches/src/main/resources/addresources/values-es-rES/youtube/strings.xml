@@ -214,8 +214,8 @@ Los cambios incluyen:
   <string name="morphe_hide_learning_menu_title">Ocultar menú \"Aprendizaje\"</string>
   <string name="morphe_hide_live_menu_title">Ocultar menú \"En vivo\"</string>
   <string name="morphe_hide_memberships_menu_title">Ocultar menú \"Miembros del canal\" </string>
-  <string name="morphe_hide_movies_menu_title">Ocultar menú \"Películas\"</string>
-  <string name="morphe_hide_music_menu_title">Ocultar menú \"Música y TV\"</string>
+  <string name="morphe_hide_movies_menu_title">Ocultar menú \"Películas y TV\"</string>
+  <string name="morphe_hide_music_menu_title">Ocultar menú \"Música\"</string>
   <string name="morphe_hide_news_menu_title">Ocultar menú \"Noticias\"</string>
   <string name="morphe_hide_playables_menu_title">Ocultar menú \"Jugables\"</string>
   <string name="morphe_hide_podcasts_menu_title">Ocultar menú \"Podcasts\"</string>
@@ -510,10 +510,10 @@ Para solucionar esto, activa \"Falsificar transmisiones de vídeo\" y cambia \"C
   <string name="morphe_tap_to_seek_title">Activar tocar para buscar</string>
   <string name="morphe_tap_to_seek_summary">Simplemente toca la barra de búsqueda para saltar a esa posición sin arrastrarla</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_left_zone_title">Activar gesto de brillo</string>
-  <string name="morphe_swipe_left_zone_summary">Deslice verticalmente en el lado izquierdo del modo de pantalla completa para ajustar el brillo</string>
-  <string name="morphe_swipe_right_zone_title">Activar gesto de volumen</string>
-  <string name="morphe_swipe_right_zone_summary">Deslice verticalmente en el lado derecho del modo de pantalla completa para ajustar el volumen</string>
+  <string name="morphe_swipe_brightness_title">Activar gesto de brillo</string>
+  <string name="morphe_swipe_brightness_summary">Desliza verticalmente en el lado izquierdo del modo pantalla completa para ajustar el brillo</string>
+  <string name="morphe_swipe_volume_title">Activar gesto de volumen</string>
+  <string name="morphe_swipe_volume_summary">Desliza verticalmente en el lado derecho del modo pantalla completa para ajustar el volumen</string>
   <string name="morphe_swipe_zone_width_title">Ancho de la zona de brillo/volumen</string>
   <string name="morphe_swipe_zone_width_summary">Porcentaje de cada borde de la pantalla reservado para los gestos de brillo y volumen (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Brillo</string>
@@ -547,8 +547,8 @@ Para solucionar esto, activa \"Falsificar transmisiones de vídeo\" y cambia \"C
   <string name="morphe_swipe_volume_sensitivity_summary">Cuanto más alto sea el valor, mayor será el cambio de volumen al deslizar</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Sensibilidad del deslizamiento de brillo</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Los valores más altos requieren más deslizamiento por cada nivel de brillo</string>
-  <string name="morphe_swipe_top_zone_title">Activar gesto de velocidad</string>
-  <string name="morphe_swipe_top_zone_summary">Desliza horizontalmente en la zona superior del modo de pantalla completa para cambiar la velocidad de reproducción</string>
+  <string name="morphe_swipe_speed_title">Activar gesto de velocidad</string>
+  <string name="morphe_swipe_speed_summary">Desliza horizontalmente en la zona superior del modo de pantalla completa para cambiar la velocidad de reproducción</string>
   <string name="morphe_swipe_speed_sensitivity_title">Sensibilidad del deslizamiento de velocidad</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Los valores más altos requieren más deslizamiento por cada nivel de velocidad</string>
   <string name="morphe_swipe_speed_step_title">Paso de velocidad</string>
@@ -773,7 +773,7 @@ Para mostrar el menú \"Pista de audio\", cambia \"Falsificar transmisiones de v
   <!-- layout.hide.seekbar.hideSeekbarPatch -->
   <string name="morphe_hide_seekbar_title">Ocultar barra de progreso del reproductor de vídeo</string>
   <string name="morphe_hide_seekbar_thumbnail_title">Ocultar barra de progreso de miniaturas de vídeo</string>
-  <string name="morphe_hide_seekbar_thumbnail_summary">Oculta la barra de progreso de la visualización que se muestra en las miniaturas de los vídeos que ya has visto</string>
+  <string name="morphe_hide_seekbar_thumbnail_summary">Oculta la barra de progreso que se muestra en las miniaturas de los vídeos que ya has visto</string>
   <string name="morphe_fullscreen_large_seekbar_title">Activar barra de progreso grande en pantalla completa</string>
   <!-- layout.hide.shorts.hideShortsComponentsPatch -->
   <string name="morphe_shorts_player_screen_title">Reproductor de Shorts</string>

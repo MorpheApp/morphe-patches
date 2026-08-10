@@ -214,8 +214,8 @@ Zmeny zahŕňajú:
   <string name="morphe_hide_learning_menu_title">Skryť menu Vzdelávanie</string>
   <string name="morphe_hide_live_menu_title">Skryť menu Live</string>
   <string name="morphe_hide_memberships_menu_title">Skryť menu Členstvá</string>
-  <string name="morphe_hide_movies_menu_title">Skryť menu Filmy</string>
-  <string name="morphe_hide_music_menu_title">Skryť menu \"Hudba a TV\"</string>
+  <string name="morphe_hide_movies_menu_title">Skryť ponuku „Filmy a TV“</string>
+  <string name="morphe_hide_music_menu_title">Skryť ponuku Hudba</string>
   <string name="morphe_hide_news_menu_title">Skryť menu Správy</string>
   <string name="morphe_hide_playables_menu_title">Skryť menu Playables</string>
   <string name="morphe_hide_podcasts_menu_title">Skryť menu Podcasty</string>
@@ -510,10 +510,10 @@ Ak to chcete opraviť, zapnite 'Spoofovanie video streamov' a zmeňte 'Predvolen
   <string name="morphe_tap_to_seek_title">Povoliť posúvanie na zmenu zvuku</string>
   <string name="morphe_tap_to_seek_summary">Proste ťuknite na ukazovateľ vyhľadávania a preskočte na túto pozíciu bez jeho ťahania</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_left_zone_title">Povoliť gesto na zmenu jasnosti</string>
-  <string name="morphe_swipe_left_zone_summary">Posúvaním vertikálne na ľavej strane režimu na celú obrazovku upravíte jas</string>
-  <string name="morphe_swipe_right_zone_title">Povoliť gesto na zmenu hlasitosti</string>
-  <string name="morphe_swipe_right_zone_summary">Posúvaním vertikálne na pravej strane režimu na celú obrazovku upravíte hlasitosť</string>
+  <string name="morphe_swipe_brightness_title">Povoliť gesto na zmenu jasnosti</string>
+  <string name="morphe_swipe_brightness_summary">Posúvaním vertikálne na ľavej strane režimu na celú obrazovku upravíte jas</string>
+  <string name="morphe_swipe_volume_title">Povoliť gesto na zmenu hlasitosti</string>
+  <string name="morphe_swipe_volume_summary">Posúvaním vertikálne na pravej strane režimu na celú obrazovku upravíte hlasitosť</string>
   <string name="morphe_swipe_zone_width_title">Šírka zóny jasu/hlasitosti</string>
   <string name="morphe_swipe_zone_width_summary">Percentuálny podiel okraja obrazovky vyhradený pre gestá jasu a hlasitosti (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Jas</string>
@@ -547,8 +547,8 @@ Ak to chcete opraviť, zapnite 'Spoofovanie video streamov' a zmeňte 'Predvolen
   <string name="morphe_swipe_volume_sensitivity_summary">Vyššie hodnoty zvýšia zmenu hlasitosti na jedno posunutie</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Citlivosť posúvania jasu</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Vyššie hodnoty vyžadujú viac posúvania pre každý krok jasu</string>
-  <string name="morphe_swipe_top_zone_title">Povoliť gesto pre rýchlosť</string>
-  <string name="morphe_swipe_top_zone_summary">Prechádzajte horizontálne v hornej zóne režimu celej obrazovky a zmeňte rýchlosť prehrávania</string>
+  <string name="morphe_swipe_speed_title">Povoliť gesto pre rýchlosť</string>
+  <string name="morphe_swipe_speed_summary">Prechádzajte horizontálne v hornej zóne režimu celej obrazovky a zmeňte rýchlosť prehrávania</string>
   <string name="morphe_swipe_speed_sensitivity_title">Citlivosť posúvania rýchlosti</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Vyššie hodnoty vyžadujú viac posúvania pre každý krok rýchlosti</string>
   <string name="morphe_swipe_speed_step_title">Rýchlosť kroku</string>

@@ -213,8 +213,8 @@ Perubahan termasuk:
   <string name="morphe_hide_learning_menu_title">Sembunyikan menu Pembelajaran</string>
   <string name="morphe_hide_live_menu_title">Sembunyikan menu Live</string>
   <string name="morphe_hide_memberships_menu_title">Sembunyikan menu Pelanggan</string>
-  <string name="morphe_hide_movies_menu_title">Sembunyikan menu Film</string>
-  <string name="morphe_hide_music_menu_title">Sembunyikan menu \'Musik &amp; TV\'</string>
+  <string name="morphe_hide_movies_menu_title">Sembunyikan menu \'Movies &amp; TV\'</string>
+  <string name="morphe_hide_music_menu_title">Sembunyikan menu Musik</string>
   <string name="morphe_hide_news_menu_title">Sembunyikan menu Berita</string>
   <string name="morphe_hide_playables_menu_title">Sembunyikan menu Dapat dimainkan</string>
   <string name="morphe_hide_podcasts_menu_title">Sembunyikan menu Podcast</string>
@@ -509,10 +509,10 @@ Untuk memperbaikinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' m
   <string name="morphe_tap_to_seek_title">Aktifkan ketuk untuk mencari</string>
   <string name="morphe_tap_to_seek_summary">Cukup ketuk bilah geser untuk melompat ke posisi itu tanpa menyeretnya</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_left_zone_title">Aktifkan gerakan kecerahan</string>
-  <string name="morphe_swipe_left_zone_summary">Usap ke atas atau ke bawah di sisi kiri mode layar penuh untuk mengatur kecerahan</string>
-  <string name="morphe_swipe_right_zone_title">Aktifkan gerakan volume</string>
-  <string name="morphe_swipe_right_zone_summary">Usap ke atas di sisi kanan layar penuh untuk mengatur volume</string>
+  <string name="morphe_swipe_brightness_title">Aktifkan gerakan kecerahan</string>
+  <string name="morphe_swipe_brightness_summary">Usap ke atas atau ke bawah di sisi kiri mode layar penuh untuk mengatur kecerahan</string>
+  <string name="morphe_swipe_volume_title">Aktifkan gerakan volume</string>
+  <string name="morphe_swipe_volume_summary">Usap ke atas di sisi kanan layar penuh untuk mengatur volume</string>
   <string name="morphe_swipe_zone_width_title">Lebar zona kecerahan/volume</string>
   <string name="morphe_swipe_zone_width_summary">Persentase dari setiap tepi layar yang disediakan untuk gerakan pengaturan kecerahan dan volume (5–50)</string>
   <string name="morphe_swipe_zone_label_brightness">Kecerahan</string>
@@ -546,8 +546,8 @@ Untuk memperbaikinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' m
   <string name="morphe_swipe_volume_sensitivity_summary">Nilai yang lebih tinggi meningkatkan perubahan volume per usapan</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Sensitivitas usap kecerahan</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Nilai yang lebih tinggi memerlukan lebih banyak usapan per langkah kecerahan</string>
-  <string name="morphe_swipe_top_zone_title">Aktifkan gerakan kecepatan</string>
-  <string name="morphe_swipe_top_zone_summary">Usap secara horizontal di zona atas mode layar penuh untuk mengubah kecepatan pemutaran</string>
+  <string name="morphe_swipe_speed_title">Aktifkan gerakan kecepatan</string>
+  <string name="morphe_swipe_speed_summary">Usap secara horizontal di zona atas mode layar penuh untuk mengubah kecepatan pemutaran</string>
   <string name="morphe_swipe_speed_sensitivity_title">Sensitivitas usap kecepatan</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Nilai yang lebih tinggi memerlukan lebih banyak usapan per langkah kecepatan</string>
   <string name="morphe_swipe_speed_step_title">Tahap kecepatan</string>
@@ -634,9 +634,9 @@ Untuk memperbaikinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' m
   <string name="morphe_auto_captions_style_legacy_entry_2">Sembunyikan teks otomatis</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Atur cookie teks</string>
-  <string name="morphe_set_caption_cookies_summary">"Memperbaiki bug YouTube bawaan di mana subtitle terjemahan otomatis mungkin tidak tersedia akibat hilangnya cookie
+  <string name="morphe_set_caption_cookies_summary">"Memperbaiki bug YouTube bawaan di mana teks terjemahan otomatis mungkin tidak tersedia dikarenakan cookie yang hilang
 
-'Cookie subtitle' harus disertakan"</string>
+'Cookie teks' harus disediakan"</string>
   <string name="morphe_caption_cookies_title">Cookie teks</string>
   <string name="morphe_caption_cookies_summary">Cookie yang akan disetel dalam permintaan Timed Text API (API Data Teks)</string>
   <string name="morphe_get_caption_cookies_title">Dapatkan cookie teks</string>

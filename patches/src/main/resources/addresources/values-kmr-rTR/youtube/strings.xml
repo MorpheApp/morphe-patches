@@ -214,8 +214,6 @@ Guherînan têne xistine:
   <string name="morphe_hide_learning_menu_title">Menuya Fêrbûnê veşêrin</string>
   <string name="morphe_hide_live_menu_title">Menûya Live veşêre</string>
   <string name="morphe_hide_memberships_menu_title">Menûya Endamtiyê veşêre</string>
-  <string name="morphe_hide_movies_menu_title">Menûya Fîlmên veşêre</string>
-  <string name="morphe_hide_music_menu_title">Menûya \'Music &amp; TV\' veşêre</string>
   <string name="morphe_hide_news_menu_title">Menûya Nûçeyan veşêre</string>
   <string name="morphe_hide_playables_menu_title">Menûya Playables veşêre</string>
   <string name="morphe_hide_podcasts_menu_title">Menûya Podcastan veşêre</string>
@@ -501,10 +499,10 @@ Info: May not work on live streams"</string>
   <string name="morphe_tap_to_seek_title">Kilika lêkirinê veşêre</string>
   <string name="morphe_tap_to_seek_summary">Just tap the seekbar to jump to that position without dragging it</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_left_zone_title">Gestikaya mêşê veşêre</string>
-  <string name="morphe_swipe_left_zone_summary">Li kêleka çepê ya moda tevahî, berfirehiya ronahiyê bi lîkêkirina vertîkal bi guhertin</string>
-  <string name="morphe_swipe_right_zone_title">Gestikaya dengê veşêre</string>
-  <string name="morphe_swipe_right_zone_summary">Li kêleka rastê ya moda tevahî, hejmara deng bi lîkêkirina vertîkal bi guhertin</string>
+  <string name="morphe_swipe_brightness_title">Gestikaya mêşê veşêre</string>
+  <string name="morphe_swipe_brightness_summary">Li kêleka çepê ya moda tevahî, berfirehiya ronahiyê bi lîkêkirina vertîkal bi guhertin</string>
+  <string name="morphe_swipe_volume_title">Gestikaya dengê veşêre</string>
+  <string name="morphe_swipe_volume_summary">Li kêleka rastê ya moda tevahî, hejmara deng bi lîkêkirina vertîkal bi guhertin</string>
   <string name="morphe_swipe_zone_width_title">Firehiya/dengê hejmayê firehiya herêmê</string>
   <string name="morphe_swipe_zone_width_summary">Rêjeya her du kîjan aliyê ekranê de ji bo herketên firehiya û dengê (5-50) tê parastin</string>
   <string name="morphe_swipe_zone_label_brightness">Ronahî</string>
@@ -538,8 +536,8 @@ Info: May not work on live streams"</string>
   <string name="morphe_swipe_volume_sensitivity_summary">Nirxên bilindtir guhertoya volume ya her swipe zêde dikin</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Hêsîtîya swipe ya ronahiyê</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Nirxên bilindtir pêdivî bi swipe zêdetir her gav ronahiyê hewînin</string>
-  <string name="morphe_swipe_top_zone_title">Gestê lezê aktîv bike</string>
-  <string name="morphe_swipe_top_zone_summary">Bi lezê li gorî herêmê yê moda tevahî, lezê biçivîne da ku leza xemgîniyê biguherîne</string>
+  <string name="morphe_swipe_speed_title">Gestê lezê aktîv bike</string>
+  <string name="morphe_swipe_speed_summary">Bi lezê li gorî herêmê yê moda tevahî, lezê biçivîne da ku leza xemgîniyê biguherîne</string>
   <string name="morphe_swipe_speed_sensitivity_title">Hêsîtîya swipe ya lezê</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Nirxên bilindtir pêdivî bi swipe zêdetir her gav lezê hewînin</string>
   <string name="morphe_swipe_speed_step_title">Hêmaniya lezê</string>

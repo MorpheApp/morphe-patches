@@ -214,8 +214,8 @@ Muutoksia ovat muun muassa:
   <string name="morphe_hide_learning_menu_title">Piilota Oppiminen-valikko</string>
   <string name="morphe_hide_live_menu_title">Piilota Suoratoisto-valikko</string>
   <string name="morphe_hide_memberships_menu_title">Piilota Jäsenyydet-valikko</string>
-  <string name="morphe_hide_movies_menu_title">Piilota Elokuvat-valikko</string>
-  <string name="morphe_hide_music_menu_title">Piilota \'Musiikki ja TV\' -valikko</string>
+  <string name="morphe_hide_movies_menu_title">Piilota \'Movies &amp; TV\' -valikko</string>
+  <string name="morphe_hide_music_menu_title">Piilota Musiikki-valikko</string>
   <string name="morphe_hide_news_menu_title">Piilota Uutiset-valikko</string>
   <string name="morphe_hide_playables_menu_title">Piilota Pelattavat-valikko</string>
   <string name="morphe_hide_podcasts_menu_title">Piilota Podcastit-valikko</string>
@@ -510,10 +510,10 @@ Voit korjata tämän ottamalla käyttöön 'Huijaa videovirtoja' ja vaihtamalla 
   <string name="morphe_tap_to_seek_title">Ota etsintä napauttamalla käyttöön</string>
   <string name="morphe_tap_to_seek_summary">Napauta hakupalkkia hypätäksesi kyseiseen kohtaan vetämättä sitä</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_left_zone_title">Ota kirkkausele käyttöön</string>
-  <string name="morphe_swipe_left_zone_summary">Vaatii painamista ja pitämistä ennen kuin pyyhkäisyele tunnistetaan</string>
-  <string name="morphe_swipe_right_zone_title">Ota äänenvoimakkuusele käyttöön</string>
-  <string name="morphe_swipe_right_zone_summary">Muistaa kirkkaustason siirryttäessä sisään ja ulos koko näytön tilasta</string>
+  <string name="morphe_swipe_brightness_title">Ota kirkkausele käyttöön</string>
+  <string name="morphe_swipe_brightness_summary">Vaatii painamista ja pitämistä ennen kuin pyyhkäisyele tunnistetaan</string>
+  <string name="morphe_swipe_volume_title">Ota äänenvoimakkuusele käyttöön</string>
+  <string name="morphe_swipe_volume_summary">Muistaa kirkkaustason siirryttäessä sisään ja ulos koko näytön tilasta</string>
   <string name="morphe_swipe_zone_width_title">Kirkkauden/äänenvoimakkuuden vyöhykkeen leveys</string>
   <string name="morphe_swipe_zone_width_summary">Kuinka paljon näyttöä varataan kirkkauden ja äänenvoimakkuuden eleille (5–50)</string>
   <string name="morphe_swipe_zone_label_brightness">Kirkkaus</string>
@@ -547,8 +547,8 @@ Voit korjata tämän ottamalla käyttöön 'Huijaa videovirtoja' ja vaihtamalla 
   <string name="morphe_swipe_volume_sensitivity_summary">Suuremmat arvot lisäävät äänenvoimakkuuden muutosta pyyhkäisyä kohden</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Kirkkauden pyyhkäisyn herkkyys</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Suuremmat arvot vaativat enemmän pyyhkäisyjä kirkkausaskelta kohden</string>
-  <string name="morphe_swipe_top_zone_title">Ota nopeusele käyttöön</string>
-  <string name="morphe_swipe_top_zone_summary">Pyyhkäise vaakasuunnassa täyden näytön tilan yläosassa muuttaaksesi toistonopeutta</string>
+  <string name="morphe_swipe_speed_title">Ota nopeusele käyttöön</string>
+  <string name="morphe_swipe_speed_summary">Pyyhkäise vaakasuunnassa täyden näytön tilan yläosassa muuttaaksesi toistonopeutta</string>
   <string name="morphe_swipe_speed_sensitivity_title">Nopeuden pyyhkäisyn herkkyys</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Suuremmat arvot vaativat enemmän pyyhkäisyjä nopeusaskelta kohden</string>
   <string name="morphe_swipe_speed_step_title">Nopeuden vaihe</string>

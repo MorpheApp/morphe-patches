@@ -295,10 +295,10 @@ Second \"item\" text"</string>
   <string name="morphe_tap_to_seek_title">Овозможете допир за премотување</string>
   <string name="morphe_tap_to_seek_summary">Само допрете ја лентата за премотување за да прескокнете до таа позиција без да ја влечете</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_left_zone_title">Овозможете гест за светлост</string>
-  <string name="morphe_swipe_left_zone_summary">Кликнете вертикално на левата страна на полноекранскиот режим за да ја прилагодите осветленоста</string>
-  <string name="morphe_swipe_right_zone_title">Овозможете гест за јачина на звук</string>
-  <string name="morphe_swipe_right_zone_summary">Кликнете вертикално на десната страна на полноекранскиот режим за да ја прилагодите јачината на звукот</string>
+  <string name="morphe_swipe_brightness_title">Овозможете гест за светлост</string>
+  <string name="morphe_swipe_brightness_summary">Кликнете вертикално на левата страна на полноекранскиот режим за да ја прилагодите осветленоста</string>
+  <string name="morphe_swipe_volume_title">Овозможете гест за јачина на звук</string>
+  <string name="morphe_swipe_volume_summary">Кликнете вертикално на десната страна на полноекранскиот режим за да ја прилагодите јачината на звукот</string>
   <string name="morphe_swipe_zone_width_title">Ширина на зоната за прилагодување на осветлувањето/јачината на звукот</string>
   <string name="morphe_swipe_zone_width_summary">Процент од секоја ивица на екранот резервиран за гестови за прилагодување на осветлувањето и јачината на звукот (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Осветленост</string>
@@ -331,8 +331,8 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_volume_sensitivity_summary">Поголемите вредност ги зголемуваат промените во волуменот при секое движење</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Чуствителност на движење за осветленост</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Поголемите вредности бараат повеќе движења за секое ниво на осветленост</string>
-  <string name="morphe_swipe_top_zone_title">Овозможи гест за брзина</string>
-  <string name="morphe_swipe_top_zone_summary">Лизнете хоризонтално во горниот дел од екранот во целосен режим за да ја промените брзината на репродукција</string>
+  <string name="morphe_swipe_speed_title">Овозможи гест за брзина</string>
+  <string name="morphe_swipe_speed_summary">Лизнете хоризонтално во горниот дел од екранот во целосен режим за да ја промените брзината на репродукција</string>
   <string name="morphe_swipe_speed_sensitivity_title">Чуствителност на движење за брзина</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Поголемите вредности бараат повеќе движења за секое ниво на брзина</string>
   <string name="morphe_swipe_speed_zone_height_title">Висина на зоната за брзина</string>

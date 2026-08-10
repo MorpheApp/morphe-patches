@@ -214,8 +214,8 @@ Spremembe vključujejo:
   <string name="morphe_hide_learning_menu_title">Skrij meni učenja</string>
   <string name="morphe_hide_live_menu_title">Skrij meni V živo</string>
   <string name="morphe_hide_memberships_menu_title">Skrij meni članskih prispevkov</string>
-  <string name="morphe_hide_movies_menu_title">Skrij meni Filmi</string>
-  <string name="morphe_hide_music_menu_title">Skrij meni \'Glasba in TV\'</string>
+  <string name="morphe_hide_movies_menu_title">Skrij meni \'Filmi &amp; TV\'</string>
+  <string name="morphe_hide_music_menu_title">Skrij meni Glasba</string>
   <string name="morphe_hide_news_menu_title">Skrij meni Novice</string>
   <string name="morphe_hide_playables_menu_title">Skrij meni Predvajalniki</string>
   <string name="morphe_hide_podcasts_menu_title">Skrij meni Podcasti</string>
@@ -510,10 +510,10 @@ Za odpravo te težave vklopite 'Ponaredi video tokove' in spremenite 'Privzeti o
   <string name="morphe_tap_to_seek_title">Omogoči iskanje z dotikom</string>
   <string name="morphe_tap_to_seek_summary">Samo tapnite drsnik, da skočite na to pozicijo, ne da bi ga povlekli</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_left_zone_title">Omogoči gesto za svetlost</string>
-  <string name="morphe_swipe_left_zone_summary">Drsite navpično po levi strani celozaslonskega načina za prilagoditev svetlosti</string>
-  <string name="morphe_swipe_right_zone_title">Omogoči gesto za glasnost</string>
-  <string name="morphe_swipe_right_zone_summary">Drsite navpično po desni strani celozaslonskega načina za prilagoditev glasnosti</string>
+  <string name="morphe_swipe_brightness_title">Omogoči gesto za svetlost</string>
+  <string name="morphe_swipe_brightness_summary">Drsite navpično po levi strani celozaslonskega načina za prilagoditev svetlosti</string>
+  <string name="morphe_swipe_volume_title">Omogoči gesto za glasnost</string>
+  <string name="morphe_swipe_volume_summary">Drsite navpično po desni strani celozaslonskega načina za prilagoditev glasnosti</string>
   <string name="morphe_swipe_zone_width_title">Širina območja za svetlost/glasnost</string>
   <string name="morphe_swipe_zone_width_summary">Odstotek roba zaslona, rezerviranega za geste svetlosti in glasnosti (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Svetlost</string>
@@ -547,8 +547,8 @@ Za odpravo te težave vklopite 'Ponaredi video tokove' in spremenite 'Privzeti o
   <string name="morphe_swipe_volume_sensitivity_summary">Višje vrednosti povečajo spremembo glasnosti na pomik</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Občutljivost geste za svetlost</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Višje vrednosti zahtevajo več pomikov za vsako stopnjo svetlosti</string>
-  <string name="morphe_swipe_top_zone_title">Omogoči gesto za hitrost</string>
-  <string name="morphe_swipe_top_zone_summary">Podrsajte vodoravno v zgornjem delu celozaslonskega načina za spremembo hitrosti predvajanja</string>
+  <string name="morphe_swipe_speed_title">Omogoči gesto za hitrost</string>
+  <string name="morphe_swipe_speed_summary">Podrsajte vodoravno v zgornjem delu celozaslonskega načina za spremembo hitrosti predvajanja</string>
   <string name="morphe_swipe_speed_sensitivity_title">Občutljivost geste za hitrost</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Višje vrednosti zahtevajo več pomikov za vsako stopnjo hitrosti</string>
   <string name="morphe_swipe_speed_step_title">Hitrost koraka</string>

@@ -214,8 +214,8 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_learning_menu_title">Folaigh an roghchlár Foghlama</string>
   <string name="morphe_hide_live_menu_title">Folaigh an roghchlár Beo</string>
   <string name="morphe_hide_memberships_menu_title">Folaigh roghchlár na mBallraíochtaí</string>
-  <string name="morphe_hide_movies_menu_title">Hide Movies menu</string>
-  <string name="morphe_hide_music_menu_title">Folaigh an roghchlár \'Ceol &amp; Teilifís\'</string>
+  <string name="morphe_hide_movies_menu_title">Folaigh an roghchlár \'Scannáin &amp; Teilifís\'</string>
+  <string name="morphe_hide_music_menu_title">Folaigh an roghchlár Ceol</string>
   <string name="morphe_hide_news_menu_title">Folaigh roghchlár Nuachta</string>
   <string name="morphe_hide_playables_menu_title">Folaigh an roghchlár Inimeartha</string>
   <string name="morphe_hide_podcasts_menu_title">Folaigh roghchlár na bPodchraoltaí</string>
@@ -506,10 +506,10 @@ Eolas: Seans nach n-oibreoidh sé ar shruthanna beo"</string>
   <string name="morphe_tap_to_seek_title">Cumasaigh tapáil chun cuardach a dhéanamh</string>
   <string name="morphe_tap_to_seek_summary">Níl le déanamh ach an barra cuardaigh a thapáil chun léim go dtí an suíomh sin gan é a tharraingt</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_left_zone_title">Cumasaigh gotha ​​gile</string>
-  <string name="morphe_swipe_left_zone_summary">Svaidhpeáil go hingearach ar thaobh na láimhe clé den mhodh lánscáileáin chun an gile a choigeartú</string>
-  <string name="morphe_swipe_right_zone_title">Cumasaigh gotha ​​toirte</string>
-  <string name="morphe_swipe_right_zone_summary">Svaidhpeáil go hingearach ar thaobh na láimhe deise den mhodh lánscáileáin chun an toirt a choigeartú</string>
+  <string name="morphe_swipe_brightness_title">Cumasaigh gotha ​​gile</string>
+  <string name="morphe_swipe_brightness_summary">Svaidhpeáil go hingearach ar thaobh na láimhe clé den mhodh lánscáileáin chun an gile a choigeartú</string>
+  <string name="morphe_swipe_volume_title">Cumasaigh gotha ​​toirte</string>
+  <string name="morphe_swipe_volume_summary">Svaidhpeáil go hingearach ar thaobh na láimhe deise den mhodh lánscáileáin chun an toirt a choigeartú</string>
   <string name="morphe_swipe_zone_width_title">Leithead crios gile/toirte</string>
   <string name="morphe_swipe_zone_width_summary">Céatadán de gach imeall scáileáin atá curtha in áirithe do ghluaiseachtaí gile agus toirte (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Gile</string>
@@ -543,8 +543,8 @@ Eolas: Seans nach n-oibreoidh sé ar shruthanna beo"</string>
   <string name="morphe_swipe_volume_sensitivity_summary">Méadaíonn luachanna níos airde an t-athrú toirte in aghaidh an svaidhpeála.</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Íogaireacht gile svaidhpeála</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Éilíonn luachanna níos airde níos mó svaidhpeála in aghaidh gach céim gile</string>
-  <string name="morphe_swipe_top_zone_title">Cumasaigh gotha ​​luais</string>
-  <string name="morphe_swipe_top_zone_summary">Svaidhpeáil go cothrománach sa chrios uachtarach den mhodh lánscáileáin chun luas athsheinm a athrú</string>
+  <string name="morphe_swipe_speed_title">Cumasaigh gotha ​​luais</string>
+  <string name="morphe_swipe_speed_summary">Svaidhpeáil go cothrománach sa chrios uachtarach den mhodh lánscáileáin chun luas athsheinm a athrú</string>
   <string name="morphe_swipe_speed_sensitivity_title">Íogaireacht luas-swipeála</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Éilíonn luachanna níos airde níos mó svaidhpeála in aghaidh gach céim luais</string>
   <string name="morphe_swipe_speed_step_title">Céim luais</string>

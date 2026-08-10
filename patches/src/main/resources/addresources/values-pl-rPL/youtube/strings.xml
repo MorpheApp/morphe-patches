@@ -214,7 +214,7 @@ Zmiany obejmują:
   <string name="morphe_hide_learning_menu_title">Ukryj menu Nauka</string>
   <string name="morphe_hide_live_menu_title">Ukryj menu Na żywo</string>
   <string name="morphe_hide_memberships_menu_title">Ukryj menu \"Wspieranie kanału\"</string>
-  <string name="morphe_hide_movies_menu_title">Ukryj menu Filmy</string>
+  <string name="morphe_hide_movies_menu_title">Ukryj menu Filmy i TV</string>
   <string name="morphe_hide_music_menu_title">Ukryj menu Muzyka</string>
   <string name="morphe_hide_news_menu_title">Ukryj menu Wiadomości</string>
   <string name="morphe_hide_playables_menu_title">Ukryj menu Pokój gier</string>
@@ -510,10 +510,10 @@ Aby to naprawić, włącz \"Fałszowanie strumieni filmów\" i zmień \"Domyśln
   <string name="morphe_tap_to_seek_title">Włącz przewijanie dotknięciem</string>
   <string name="morphe_tap_to_seek_summary">Wystarczy dotknąć paska postępu, aby przeskoczyć do danego momentu bez przeciągania suwaka</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_left_zone_title">Włącz gest regulacji jasności</string>
-  <string name="morphe_swipe_left_zone_summary">Przesuń pionowo po lewej stronie ekranu w trybie pełnoekranowym, aby dostosować jasność</string>
-  <string name="morphe_swipe_right_zone_title">Włącz gest regulacji głośności</string>
-  <string name="morphe_swipe_right_zone_summary">Przesuń pionowo po prawej stronie ekranu w trybie pełnoekranowym, aby dostosować głośność</string>
+  <string name="morphe_swipe_brightness_title">Włącz gest regulacji jasności</string>
+  <string name="morphe_swipe_brightness_summary">Przesuń pionowo po lewej stronie ekranu w trybie pełnoekranowym, aby dostosować jasność</string>
+  <string name="morphe_swipe_volume_title">Włącz gest regulacji głośności</string>
+  <string name="morphe_swipe_volume_summary">Przesuń pionowo po prawej stronie ekranu w trybie pełnoekranowym, aby dostosować głośność</string>
   <string name="morphe_swipe_zone_width_title">Szerokość strefy jasności i głośności</string>
   <string name="morphe_swipe_zone_width_summary">Procent krawędzi ekranu zarezerwowany dla gestów jasności i głośności (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Jasność</string>
@@ -547,8 +547,8 @@ Aby to naprawić, włącz \"Fałszowanie strumieni filmów\" i zmień \"Domyśln
   <string name="morphe_swipe_volume_sensitivity_summary">Wyższe wartości zwiększają zmianę głośności przy przesunięciu palcem</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Czułość gestu jasności</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Wyższe wartości wymagają dłuższego przesunięcia przy zmianie poziomu jasności</string>
-  <string name="morphe_swipe_top_zone_title">Włącz gest prędkości</string>
-  <string name="morphe_swipe_top_zone_summary">Przesuń poziomo w górnej strefie trybu pełnoekranowego, aby zmienić prędkość odtwarzania</string>
+  <string name="morphe_swipe_speed_title">Włącz gest prędkości</string>
+  <string name="morphe_swipe_speed_summary">Przesuń poziomo w górnej strefie trybu pełnoekranowego, aby zmienić prędkość odtwarzania</string>
   <string name="morphe_swipe_speed_sensitivity_title">Czułość gestu prędkości</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Wyższe wartości wymagają dłuższego przesunięcia przy zmianie prędkości</string>
   <string name="morphe_swipe_speed_step_title">Skok prędkości</string>

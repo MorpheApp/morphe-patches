@@ -496,13 +496,13 @@ Info : Peut ne pas fonctionner sur les diffusions en direct"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'Activer le DVR des diffusions en direct' peut ne pas être disponible
 
-Pour corriger cela, activez 'Falsifier les flux vidéo' et changez 'Client par défaut' en 'TV' ou 'visionOS'"</string>
+Pour corriger cela, activez 'Falsifier les flux vidéo' et définissez 'Client par défaut' en 'TV' ou 'visionOS'"</string>
   <string name="morphe_expand_livestream_dvr_duration_title">Étendre la durée du DVR des diffusions en direct</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">Permet de revenir en arrière dans les diffusions en direct jusqu’à 7 jours dans le passé</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_expand_livestream_dvr_duration_not_available">"'Étendre la durée du DVR des diffusions en direct' peut ne pas être disponible
 
-Pour corriger cela, activez 'Falsifier les flux vidéo' et changez 'Client par défaut' en 'TV' ou 'visionOS'"</string>
+Pour corriger cela, activez 'Falsifier les flux vidéo' et définissez 'Client par défaut' en 'TV' ou 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Activer \'Faites glisser pour rechercher\'</string>
   <string name="morphe_slide_to_seek_summary">Active le glissement pour rechercher au lieu de la lecture en 2× lors d\'un appui long sur le lecteur vidéo</string>
@@ -510,10 +510,10 @@ Pour corriger cela, activez 'Falsifier les flux vidéo' et changez 'Client par d
   <string name="morphe_tap_to_seek_title">Activer l\'appui pour rechercher</string>
   <string name="morphe_tap_to_seek_summary">Appuyez simplement sur la barre de progression pour accéder directement à cette position sans la faire glisser</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_left_zone_title">Activer les gestes de luminosité</string>
-  <string name="morphe_swipe_left_zone_summary">Balayez verticalement sur le côté gauche du mode plein écran pour régler la luminosité</string>
-  <string name="morphe_swipe_right_zone_title">Activer les gestes de volume</string>
-  <string name="morphe_swipe_right_zone_summary">Balayez verticalement sur le côté droit du mode plein écran pour régler le volume</string>
+  <string name="morphe_swipe_brightness_title">Activer les gestes de luminosité</string>
+  <string name="morphe_swipe_brightness_summary">Balayez verticalement sur le côté gauche du mode plein écran pour régler la luminosité</string>
+  <string name="morphe_swipe_volume_title">Activer les gestes de volume</string>
+  <string name="morphe_swipe_volume_summary">Balayez verticalement sur le côté droit du mode plein écran pour régler le volume</string>
   <string name="morphe_swipe_zone_width_title">Largeur de la zone de luminosité/volume</string>
   <string name="morphe_swipe_zone_width_summary">Pourcentage de chaque bord de l\'écran réservé aux gestes de luminosité et de volume (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Luminosité</string>
@@ -547,8 +547,8 @@ Pour corriger cela, activez 'Falsifier les flux vidéo' et changez 'Client par d
   <string name="morphe_swipe_volume_sensitivity_summary">Des valeurs plus élevées augmentent le changement de volume par balayage</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Sensibilité du balayage de luminosité</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Des valeurs plus élevées nécessitent plus de balayages par palier de luminosité</string>
-  <string name="morphe_swipe_top_zone_title">Activer le geste de vitesse</string>
-  <string name="morphe_swipe_top_zone_summary">Balayez horizontalement dans la zone supérieure du mode plein écran pour modifier la vitesse de lecture</string>
+  <string name="morphe_swipe_speed_title">Activer le geste de vitesse</string>
+  <string name="morphe_swipe_speed_summary">Balayez horizontalement dans la zone supérieure du mode plein écran pour modifier la vitesse de lecture</string>
   <string name="morphe_swipe_speed_sensitivity_title">Sensibilité du balayage de vitesse</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Des valeurs plus élevées nécessitent plus de balayages par palier de vitesse</string>
   <string name="morphe_swipe_speed_step_title">Incrément de vitesse</string>
