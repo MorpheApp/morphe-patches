@@ -565,10 +565,6 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_swipe_right_zone_summary">Action when swiping vertically on the right side of fullscreen mode</string>
     <string name="morphe_swipe_top_zone_title">Top swipe gesture</string>
     <string name="morphe_swipe_top_zone_summary">Action when swiping horizontally in the upper zone of fullscreen mode</string>
-    <string name="morphe_swipe_action_off">Off</string>
-    <string name="morphe_swipe_action_volume">Volume</string>
-    <string name="morphe_swipe_action_brightness">Brightness</string>
-    <string name="morphe_swipe_action_speed">Speed</string>
     <string name="morphe_swipe_zone_preview_title" translatable="false"> </string>
     <string name="morphe_swipe_zone_width_title">Left/Right zone width</string>
     <string name="morphe_swipe_zone_width_summary">Percentage of each screen edge reserved for left and right swipe gestures (5-50)</string>
