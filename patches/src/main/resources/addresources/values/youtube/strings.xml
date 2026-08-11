@@ -1231,7 +1231,7 @@ Limitation: Playback may not work on some devices if \'Spoof video streams\' is 
     <string name="morphe_playback_audio_pitch_default_title">Default playback audio pitch</string>
     <string name="morphe_remember_playback_audio_pitch_toast">Changed default audio pitch to: %s</string>
     <string name="morphe_playback_audio_time_stretching_title">Audio time stretching</string>
-    <string name="morphe_playback_audio_time_stretching_summary">Allows setting speed and pitch independently, may cause audio artifacts.</string>
+    <string name="morphe_playback_audio_time_stretching_summary">Allows setting speed and pitch independently, may cause audio artifacts</string>
 
     <!-- video.codecs.disableVideoCodecsPatch -->
     <string name="morphe_disable_hdr_video_title">Disable HDR video</string>
