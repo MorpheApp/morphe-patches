@@ -25,9 +25,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_summary">Unduh video musik, podcast, atau lagu dengan aplikasi pengunduh pihak ketiga</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Gantikan tombol Unduh</string>
-  <string name="morphe_external_downloader_action_button_summary">Menggunakan pengunduh eksternal pilihan Anda alih-alih fitur unduh bawaan</string>
+  <string name="morphe_external_downloader_action_button_summary">Menggunakan pengunduh eksternal pilihan Anda daripada tombol tindakan Unduh bawaan</string>
   <string name="morphe_external_downloader_flyout_menu_title">Gantikan menu Unduh</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">Menggunakan pengunduh eksternal pilihan Anda, bukan menu flyout Unduh bawaan</string>
+  <string name="morphe_external_downloader_flyout_menu_summary">Menggunakan pengunduh eksternal pilihan Anda, daripada menu melayang Unduh bawaan</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Tentang</string>
@@ -328,5 +328,5 @@ Lirik yang disinkronkan mengikuti pemutaran. Jika lirik melayang, sesuaikan perg
 Ketika tidak ada lirik pihak ketiga yang ditemukan, lirik bawaan ditampilkan sebagai gantinya"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Nonaktifkan ikon tebal</string>
-  <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Pulihkan tab Selanjutnya, Lirik, dan Terkait di Pemutar</string>
+  <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Kembalikan tab Pemutar Berikutnya, Lirik, dan Terkait</string>
 </resources>

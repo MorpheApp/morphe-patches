@@ -15,5 +15,5 @@ public class VersionCheckPatch {
         return Utils.getAppVersionName().compareTo(version) >= 0;
     }
 
-    public static final boolean is_2025_52_or_greater = isVersionOrGreater("2025.52.0");
+    public static final boolean is_2026_25_or_greater = isVersionOrGreater("2026.25.0");
 }

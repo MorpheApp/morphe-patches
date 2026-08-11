@@ -232,7 +232,7 @@ Second \"item\" text"</string>
   <string name="morphe_comments_screen_summary">コメント セクションに表示するコンポーネントを設定します</string>
   <string name="morphe_hide_comments_carousel_title">横スワイプ欄のフィルタを有効化</string>
   <string name="morphe_hide_comments_carousel_summary">"• 横スワイプ欄の正確なタイトルを入力してください (例:「質問する」「この動画をハイプする」「YouTube Music で聴く」)
-• 横スワイプ欄を非表示にすると予期せぬ副作用が発生する可能性がある
+• 横スワイプ欄を非表示にすると予期しない副作用が引き起こされる可能性がある
 • すべての横スワイプ欄を非表示にした場合、コメント セクションごと表示されなくなる"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">横スワイプ欄のフィルタ</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">非表示にするコメント セクションの横スワイプ欄のタイトルを改行区切りで入力してください</string>
@@ -1040,7 +1040,7 @@ Automotive レイアウト
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">デバイスの画面サイズを偽装</string>
   <string name="morphe_spoof_device_dimensions_summary">この機能を有効にすると、より高画質な映像が利用可能になる場合があります</string>
-  <string name="morphe_spoof_device_dimensions_user_dialog_message">この機能を有効にすると、動画のカクつき、バッテリー消費の悪化、および予期せぬ副作用を引き起こす可能性があります。</string>
+  <string name="morphe_spoof_device_dimensions_user_dialog_message">この機能を有効にすると、動画のカクつき、バッテリー消費の悪化、予期しない副作用を引き起こす可能性があります。</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">触覚フィードバック</string>
   <string name="morphe_disable_haptic_feedback_summary">デバイスが反応して振動するユーザー操作を設定します</string>

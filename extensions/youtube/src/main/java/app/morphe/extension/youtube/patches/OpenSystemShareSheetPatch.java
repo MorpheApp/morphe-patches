@@ -52,10 +52,10 @@ public final class OpenSystemShareSheetPatch {
 
         final String intentUrl;
         // Make sure to check channelId at the end, since it is never reset.
-        if (!FlyoutUtils.getFlyoutVideoId().isEmpty()) {
-            intentUrl = prefixURL + FlyoutUtils.getFlyoutVideoId();
-        } else if (!FlyoutUtils.getFlyoutPlaylistId().isEmpty()) {
+        if (!FlyoutUtils.getFlyoutPlaylistId().isEmpty()) {
             intentUrl = "https://www.youtube.com/playlist?list=" + FlyoutUtils.getFlyoutPlaylistId();
+        } else if (!FlyoutUtils.getFlyoutVideoId().isEmpty()) {
+            intentUrl = prefixURL + FlyoutUtils.getFlyoutVideoId();
         } else if (!FlyoutUtils.getFlyoutCommentId().isEmpty()) {
             final String separator = (Settings.REPLACE_LINKS_WITH_SHORTENER.get() ? "?" : "&");
             intentUrl = prefixURL + VideoInformation.getVideoId() + separator + "lc=" + FlyoutUtils.getFlyoutCommentId();

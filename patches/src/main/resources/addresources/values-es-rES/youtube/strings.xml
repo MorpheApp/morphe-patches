@@ -409,8 +409,8 @@ Tu clave API nunca debe compartirse. Cualquiera que tenga acceso a ella puede us
   <string name="morphe_do_not_remember_loop_video_summary">Evita que el estado de bucle del video actual se guarde para videos posteriores</string>
   <!-- interaction.loop.loopVideoButtonPatch -->
   <string name="morphe_loop_video_button_title">Mostrar botón de vídeo en bucle</string>
-  <string name="morphe_loop_video_button_toast_on">El vídeo en bucle está activado</string>
-  <string name="morphe_loop_video_button_toast_off">El vídeo en bucle está desactivado</string>
+  <string name="morphe_loop_video_button_toast_on">Vídeo en bucle activado</string>
+  <string name="morphe_loop_video_button_toast_off">Vídeo en bucle desactivado</string>
   <string name="morphe_loop_video_range_dialog_title">Rango de repetición</string>
   <string name="morphe_loop_video_range_label_start">Inicio</string>
   <string name="morphe_loop_video_range_label_end">Final</string>

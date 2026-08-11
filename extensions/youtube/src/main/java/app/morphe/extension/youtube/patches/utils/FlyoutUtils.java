@@ -67,16 +67,28 @@ public final class FlyoutUtils {
         String patch_getVideoId();
     }
 
-    public record FlyoutMenuInfo(LinearLayout menuContainer, int adjustedIndex,
-                                 boolean isPopupWindow, @Nullable PopupWindow popupWindow) {
-    }
+    public record FlyoutMenuInfo(
+            LinearLayout menuContainer,
+            int adjustedIndex,
+            boolean isPopupWindow,
+            @Nullable PopupWindow popupWindow
+    ) {}
 
     public static final int CHANNEL_ID_LENGTH = 24;
+    private static final byte[] PLAYLIST_ID_PREFIXES_BYTES =
+            getAsciiBytes("playlist?list=");
     private static final List<byte[]> VIDEO_ID_PREFIXES_BYTES = List.of(
             getAsciiBytes(".ytimg.com/vi/"),
             getAsciiBytes("youtube.com/watch?v=")
     );
-    private static final byte[] PLAYLIST_ID_PREFIXES_BYTES = getAsciiBytes("youtube.com/playlist?list=");
+    private static final List<byte[]> VIDEO_ELEMENTS_BYTES = List.of(
+            getAsciiBytes("compact_playlist.e"),
+            getAsciiBytes("compact_video.e"),
+            getAsciiBytes("grid_video.e"),
+            getAsciiBytes("shorts_pivot_item.e"),
+            getAsciiBytes("shorts_video_cell.e"),
+            getAsciiBytes("video_lockup_with_attachment.e")
+    );
     private static final List<byte[]> SHELFS_BYTES = List.of(
             getAsciiBytes("horizontal_shelf.e"),
             getAsciiBytes("shorts_shelf.e"),
@@ -92,9 +104,8 @@ public final class FlyoutUtils {
     private static final Pattern WHITESPACE_PATTERN = Pattern.compile("\\s+");
     private static final Pattern COMMENT_ID_CLEANUP_PATTERN = Pattern.compile("[^A-Za-z0-9_.-]");
 
-    public static final int BLACK_COLOR = ResourceUtils.getColor("yt_black1");
-    public static final int GREY_COLOR = ResourceUtils.getColor("yt_grey1");
-    public static final int WHITE_COLOR = ResourceUtils.getColor("yt_white1");
+    private static int FLYOUT_BACKGROUND_COLOR = 0;
+    private static final int GREY_COLOR = ResourceUtils.getColor("yt_grey1");
 
     private static final List<Pair<String, Integer>> visibleFlyoutButtons = new ArrayList<>();
 
@@ -187,8 +198,10 @@ public final class FlyoutUtils {
     }
 
     private static void addFlyoutElements(Object flyoutPanel) {
-        if (!Settings.QUEUE_ADD_FLYOUT_MENU.get()
-                || flyoutVideoId.isEmpty()) {
+        // TODO: Add playlists compatibility to Morphe's queue.
+        if (!Settings.QUEUE_ADD_FLYOUT_MENU.get() ||
+                !flyoutPlaylistId.isEmpty() ||
+                flyoutVideoId.isEmpty()) {
             return;
         }
 
@@ -205,8 +218,13 @@ public final class FlyoutUtils {
     }
 
     @SuppressWarnings("SameParameterValue")
-    private static int addFlyoutButton(Object flyoutPanel, Drawable icon, String text,
-                                       View.OnClickListener clickListener, int index) {
+    private static int addFlyoutButton(
+            Object flyoutPanel,
+            Drawable icon,
+            String text,
+            View.OnClickListener clickListener,
+            int index
+    ) {
         return addFlyoutMenuItem(flyoutPanel, icon, text, clickListener, index, false);
     }
 
@@ -215,9 +233,14 @@ public final class FlyoutUtils {
         return addFlyoutMenuItem(flyoutPanel, null, null, null, index, true);
     }
 
-    private static int addFlyoutMenuItem(Object flyoutPanel, @Nullable Drawable icon, @Nullable String text,
-                                         @Nullable View.OnClickListener clickListener, int index,
-                                         boolean isDivider) {
+    private static int addFlyoutMenuItem(
+            Object flyoutPanel,
+            @Nullable Drawable icon,
+            @Nullable String text,
+            @Nullable View.OnClickListener clickListener,
+            int index,
+            boolean isDivider
+    ) {
         try {
             FlyoutMenuInfo menuInfo = getFlyoutMenuInfo(flyoutPanel, index);
             if (menuInfo == null) {
@@ -228,6 +251,8 @@ public final class FlyoutUtils {
             if (context == null) {
                 return -1;
             }
+
+            FLYOUT_BACKGROUND_COLOR = menuInfo.menuContainer().getSolidColor();
 
             View view = isDivider
                     ? createFlyoutDivider(context)
@@ -373,35 +398,45 @@ public final class FlyoutUtils {
         return new FlyoutMenuInfo(menuContainer, adjustedIndex, isPopupWindow, popupWindow);
     }
 
-    private static View addFlyoutButton(Context context, @Nullable Drawable icon,
-                                        String text, View.OnClickListener clickListener) {
-        final LinearLayout customButton = new LinearLayout(context);
+    private static View addFlyoutButton(
+            Context context,
+            @Nullable Drawable icon,
+            String text,
+            View.OnClickListener clickListener
+    ) {
         final LinearLayout.LayoutParams buttonParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT
         );
+        buttonParams.setMargins(Dim.dp16, Dim.dp12, Dim.dp16, Dim.dp12);
+
+        final LinearLayout customButton = new LinearLayout(context);
         customButton.setLayoutParams(buttonParams);
         customButton.setOrientation(LinearLayout.HORIZONTAL);
-        customButton.setGravity(Gravity.CENTER_VERTICAL);
-        customButton.setPadding(Dim.dp16, Dim.dp12, Dim.dp16, Dim.dp12);
+        customButton.setGravity(Gravity.START);
         customButton.setClickable(true);
-        customButton.setBackgroundColor(Utils.getAppBackgroundColor());
+        customButton.setBackgroundColor(FLYOUT_BACKGROUND_COLOR);
 
         if (icon != null) {
-            final ImageView iconView = new ImageView(context);
-            final LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(Dim.dp24, Dim.dp24);
-            layoutParams.rightMargin = Dim.dp16;
-            iconView.setLayoutParams(layoutParams);
-
             final Drawable mutableIcon = icon.mutate();
             mutableIcon.setTint(Utils.getAppForegroundColor());
             mutableIcon.setTintMode(PorterDuff.Mode.SRC_IN);
+
+            final LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                    Dim.dp24,
+                    Dim.dp24
+            );
+            layoutParams.rightMargin = Dim.dp12;
+
+            final ImageView iconView = new ImageView(context);
+            iconView.setLayoutParams(layoutParams);
             iconView.setImageDrawable(mutableIcon);
 
             customButton.addView(iconView);
         }
 
         final TextView textView = new TextView(context);
+        textView.setSingleLine(true);
         textView.setText(text);
         textView.setTextSize(16);
         textView.setTypeface(null, Typeface.BOLD);
@@ -414,12 +449,13 @@ public final class FlyoutUtils {
     }
 
     public static View createFlyoutDivider(Context context) {
-        final View divider = new View(context);
         final LinearLayout.LayoutParams dividerParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 Dim.dp1
         );
         dividerParams.setMargins(Dim.dp16, Dim.dp4, Dim.dp16, Dim.dp4);
+
+        final LinearLayout divider = new LinearLayout(context);
         divider.setLayoutParams(dividerParams);
         divider.setBackgroundColor(GREY_COLOR);
 
@@ -506,14 +542,12 @@ public final class FlyoutUtils {
                 return;
             }
 
-            // TODO: Add playlists compatibility to Morphe's queue.
-            if (byteIndexInStartRange(byteIndexOf(flyoutBuffer, PLAYLIST_ID_PREFIXES_BYTES))) {
+            final List<Integer> listVideoElementsBytesIndexes = byteIndexesOf(flyoutBuffer, VIDEO_ELEMENTS_BYTES);
+            if (!listVideoElementsBytesIndexes.isEmpty() && byteIndexInStartRange(listVideoElementsBytesIndexes.get(0))) {
                 setFlyoutPlaylistId(flyoutBuffer);
-                return;
-            }
 
-            // Set 'flyoutVideoId' field, based on the remaining fetched litho elements.
-            setFlyoutVideoId(flyoutBuffer);
+                setFlyoutVideoId(flyoutBuffer);
+            }
         } catch (Exception ex) {
             Logger.printException(() -> "extractFlyoutId failure", ex);
         }
@@ -719,7 +753,7 @@ public final class FlyoutUtils {
         final int haystackLen = haystack.length;
 
         final boolean[] found = new boolean[needles.size()];
-        for (int i = startIndex; i <= haystackLen; i++) {
+        for (int i = startIndex; i < haystackLen; i++) {
             for (int k = 0; k < needles.size(); k++) {
                 final byte[] needle = needles.get(k);
                 if (found[k] || needle == null) {

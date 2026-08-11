@@ -1,3 +1,28 @@
+## [1.40.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.40.0-dev.2...v1.40.0-dev.3) (2026-08-11)
+
+### 🚀 Updated App Support
+
+* **Reddit:** Add experimental support for `2026.32.0` ([#2405](https://github.com/MorpheApp/morphe-patches/issues/2405)) ([7149c54](https://github.com/MorpheApp/morphe-patches/commit/7149c5463e7873c3e421a99b9551ee1b8308684c))
+
+## [1.40.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.40.0-dev.1...v1.40.0-dev.2) (2026-08-10)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Add to queue:** Added shorts as flyout video element ([338fc4f](https://github.com/MorpheApp/morphe-patches/commit/338fc4f6697027ada2e5eeced0b38d39c3f0732a))
+* **YouTube:** Prevent playback speed/quality UI text from wrapping at large font sizes ([#2403](https://github.com/MorpheApp/morphe-patches/issues/2403)) ([9123870](https://github.com/MorpheApp/morphe-patches/commit/912387021246c9f44312efb4900adfceb8842af4))
+
+### 🚀 Updated App Support
+
+* **YouTube Music:** Add experimental support for `9.31.51` ([bbd6f5b](https://github.com/MorpheApp/morphe-patches/commit/bbd6f5bde6af737adf2752b98c7ff9a9e3385bb9))
+
+## [1.40.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.39.1...v1.40.0-dev.1) (2026-08-09)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Add to queue:** Buttons was shown in wrong panels ([#2396](https://github.com/MorpheApp/morphe-patches/issues/2396)) ([630f31e](https://github.com/MorpheApp/morphe-patches/commit/630f31e319d5e86e1322273d59bf2dcbdf20a7e5))
+* **YouTube - Add to queue:** Fixed some injected buttons related UI issues ([#2387](https://github.com/MorpheApp/morphe-patches/issues/2387)) ([eccae81](https://github.com/MorpheApp/morphe-patches/commit/eccae814937228bda12d46e20005de8533a729bd))
+* **YouTube - Miniplayer:** Remove "Default size" setting that YouTube removed in 21.32+ ([30daf1b](https://github.com/MorpheApp/morphe-patches/commit/30daf1bdb9b9e68b7dc59d06a667bd7be0bc7b25))
+
 ## [1.39.1](https://github.com/MorpheApp/morphe-patches/compare/v1.39.0...v1.39.1) (2026-08-08)
 
 ### 🐛 Bug Fixes

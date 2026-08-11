@@ -214,7 +214,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_learning_menu_title">학습 메뉴 숨기기</string>
   <string name="morphe_hide_live_menu_title">라이브 메뉴 숨기기</string>
   <string name="morphe_hide_memberships_menu_title">멤버십 메뉴 숨기기</string>
-  <string name="morphe_hide_movies_menu_title">\'영화 &amp; TV\' 메뉴 숨기기</string>
+  <string name="morphe_hide_movies_menu_title">영화 메뉴 숨기기</string>
   <string name="morphe_hide_music_menu_title">음악 메뉴 숨기기</string>
   <string name="morphe_hide_news_menu_title">뉴스 메뉴 숨기기</string>
   <string name="morphe_hide_playables_menu_title">게임 룸 메뉴 숨기기</string>
@@ -270,7 +270,7 @@ Second \"item\" text"</string>
 
 필터링 키워드는 채널 이름 또는 동영상 제목에 표시되는 모든 텍스트가 될 수 있습니다
 
-대문자가 있는 단어는 대소문자를 함께 입력해야 합니다 (예: iPhone, TikTok, LeBlanc)"</string>
+대문자가 있는 단어는 대소문자를 함께 정확히 입력해야 합니다 (예: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_summary">"홈 / 구독 / 검색 결과 / 댓글 섹션에서 키워드 구문과 일치하는 콘텐츠가 필터링되어 숨겨집니다
 
 제한 사항:
@@ -637,7 +637,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_auto_captions_style_legacy_entry_2">자동 자막을 표시 안함</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">자막 쿠키 설정</string>
-  <string name="morphe_set_caption_cookies_summary">"쿠키가 누락되어 자동 번역 자막을 사용할 수 없는 YouTube 공식 버그를 수정합니다
+  <string name="morphe_set_caption_cookies_summary">"쿠키가 누락되어 자동 번역 자막을 사용할 수 없는 순정 YouTube 버그를 수정합니다
 
 '자막 쿠키'를 반드시 설정해야 합니다"</string>
   <string name="morphe_caption_cookies_title">자막 쿠키</string>
@@ -1055,7 +1055,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">알림 미디어 컨트롤</string>
   <string name="morphe_notification_media_screen_summary">잠금 화면 및 알림 패널에 표시되는 재생 컨트롤을 설정할 수 있습니다</string>
-  <string name="morphe_hide_notification_media_prev_next_title">이전 &amp; 다음 버튼 숨기기</string>
+  <string name="morphe_hide_notification_media_prev_next_title">이전 &amp; 다음 동영상 버튼 숨기기</string>
   <string name="morphe_hide_notification_media_prev_next_summary">미디어 알림, 잠금 화면 그리고 헤드폰 컨트롤에서 이전 및 다음 버튼을 숨깁니다</string>
   <string name="morphe_disable_notification_media_seekbar_title">재생바 비활성화하기</string>
   <string name="morphe_disable_notification_media_seekbar_summary">잠금 화면 및 알림 패널에서 재생바를 드래그하지 못하도록 합니다</string>

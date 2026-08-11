@@ -143,7 +143,7 @@ Si les optimisations de la batterie ne sont pas modifiées, vous pourriez rencon
 • La lecture en arrière-plan peut ne pas fonctionner"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Gestion des liens d\'application</string>
-  <string name="morphe_link_handling_summary">Configurer les liens pour qu’ils s’ouvrent dans cette application</string>
+  <string name="morphe_link_handling_summary">Configurer les liens pour qu\'ils s\'ouvrent dans cette application</string>
   <string name="morphe_link_handling_step1_title">Étape 1 : Désactiver les liens de l\'application d\'origine</string>
   <string name="morphe_link_handling_step1_message">Ouvrez les paramètres de l\'application d\'origine et désactivez tous les liens de domaine</string>
   <string name="morphe_link_handling_step2_title">Étape 2 : Activer les liens de l\'application patchée</string>

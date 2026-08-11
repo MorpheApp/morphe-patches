@@ -268,7 +268,7 @@ Les changements incluent :
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
   <string name="morphe_hide_keyword_content_phrases_summary">"Entrez des mots-clés et expressions à masquer, séparés par des sauts de ligne
 
-Les mots-clés peuvent être n’importe quel texte affiché dans les titres des vidéos ou les noms des chaînes
+Les mots-clés peuvent être n'importe quel texte affiché dans les titres des vidéos ou les noms des chaînes
 
 Les mots contenant des lettres majuscules au milieu doivent correspondre exactement (par ex. : iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Accueil / Abonnements / Recherche / Les commentaires sont filtrés pour masquer le contenu correspondant à des expressions-clés
@@ -374,7 +374,7 @@ Appuyez ici pour ouvrir OpenRouter.ai"</string>
   <string name="morphe_vot_openrouter_api_key_summary">Votre clé API OpenRouter. Créez une clé sur OpenRouter.ai &gt; Espace de travail &gt; Clés API</string>
   <string name="morphe_vot_openrouter_model_title">Modèle OpenRouter</string>
   <string name="morphe_vot_openrouter_model_custom">Personnalisé</string>
-  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter n’est pas configuré</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter n\'est pas configuré</string>
   <string name="morphe_vot_openrouter_not_configured_message">Entrez votre clé API OpenRouter dans les paramètres avant de sélectionner ce fournisseur</string>
   <string name="morphe_vot_cost_free">Gratuit</string>
   <!-- %s is dollar cost, e.g., $0.10 per 100 hours -->
@@ -385,9 +385,9 @@ Appuyez ici pour ouvrir OpenRouter.ai"</string>
   <string name="morphe_vot_voice_gender_female_multilingual">Femme multilingue</string>
   <string name="morphe_vot_voice_gender_male">Homme</string>
   <string name="morphe_vot_voice_gender_female">Femme</string>
-  <string name="morphe_vot_tts_sample">C’est l\'heure de la métamorphose !</string>
+  <string name="morphe_vot_tts_sample">C\'est l\'heure de la métamorphose !</string>
   <string name="morphe_vot_http_error_title">Traduction indisponible</string>
-  <string name="morphe_vot_http_error_message">"Le service de traduction a renvoyé une erreur HTTP %s. Il est probable que votre adresse IP ait été limitée temporairement jusqu’à 24 heures.
+  <string name="morphe_vot_http_error_message">"Le service de traduction a renvoyé une erreur HTTP %s. Il est probable que votre adresse IP ait été limitée temporairement jusqu'à 24 heures.
 
 Pour continuer à utiliser les traductions, changez de fournisseur de traduction dans les paramètres ou utilisez un VPN"</string>
   <string name="morphe_vot_do_not_show_again">Ne plus afficher</string>
@@ -457,7 +457,7 @@ Info : Peut ne pas fonctionner sur les diffusions en direct"</string>
   <string name="morphe_queue_override_flyout_menu_title">Remplacer le bouton de file d\'attente du menu déroulant</string>
   <string name="morphe_queue_override_flyout_menu_summary">Ouvre la file d\'attente Morphe au lieu de la file d\'attente YouTube</string>
   <string name="morphe_queue_add_flyout_menu_title">Ajouter l\'élément file d\'attente au menu déroulant du flux</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Ajoute un élément supplémentaire au menu déroulant. Activez cette option si \'Ajouter à la file d’attente\' n’est pas affiché</string>
+  <string name="morphe_queue_add_flyout_menu_summary">Ajoute un élément supplémentaire au menu déroulant. Activez cette option si \'Ajouter à la file d’attente\' n\'est pas affiché</string>
   <string name="morphe_queue_manager_check_failed_auth">Non connecté</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">Aucun ID de playlist</string>
   <string name="morphe_queue_manager_check_failed_queue">La file d\'attente est vide</string>
@@ -489,7 +489,7 @@ Info : Peut ne pas fonctionner sur les diffusions en direct"</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Désactive le mode de recherche précise qui s\'active lors d\'un glissement vers le haut sur la barre de progression</string>
   <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Activer le DVR des diffusions en direct</string>
-  <string name="morphe_livestream_dvr_summary">Permet d’afficher la barre de progression sur toutes les diffusions en directs, même ceux qui la restreignent normalement</string>
+  <string name="morphe_livestream_dvr_summary">Permet d\'afficher la barre de progression sur toutes les diffusions en directs, même ceux qui la restreignent normalement</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Activer les miniatures sur la barre de progression</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Affiche une miniature de la vidéo lors du déplacement sur la barre de progression</string>
@@ -498,7 +498,7 @@ Info : Peut ne pas fonctionner sur les diffusions en direct"</string>
 
 Pour corriger cela, activez 'Falsifier les flux vidéo' et définissez 'Client par défaut' en 'TV' ou 'visionOS'"</string>
   <string name="morphe_expand_livestream_dvr_duration_title">Étendre la durée du DVR des diffusions en direct</string>
-  <string name="morphe_expand_livestream_dvr_duration_summary">Permet de revenir en arrière dans les diffusions en direct jusqu’à 7 jours dans le passé</string>
+  <string name="morphe_expand_livestream_dvr_duration_summary">Permet de revenir en arrière dans les diffusions en direct jusqu\'à 7 jours dans le passé</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_expand_livestream_dvr_duration_not_available">"'Étendre la durée du DVR des diffusions en direct' peut ne pas être disponible
 
@@ -1078,7 +1078,7 @@ Limitation : La lecture peut ne pas fonctionner sur certains appareils si 'Falsi
   <string name="morphe_remember_video_quality_last_selected_title">Mémoriser la qualité vidéo</string>
   <string name="morphe_remember_video_quality_last_selected_summary">Applique votre sélection de qualité manuelle à toutes les vidéos futures</string>
   <string name="morphe_remember_video_quality_last_selected_toast_title">Notifications de changement de qualité</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">Affiche une notification lorsqu’une nouvelle qualité par défaut est enregistrée</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Affiche une notification lorsqu\'une nouvelle qualité par défaut est enregistrée</string>
   <string name="morphe_video_quality_default_wifi_title">Qualité vidéo par défaut sur le réseau Wi-Fi</string>
   <string name="morphe_video_quality_default_mobile_title">Qualité vidéo par défaut sur le réseau mobile</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Mémoriser la qualité des Shorts</string>
@@ -1109,7 +1109,7 @@ Limitation : La lecture peut ne pas fonctionner sur certains appareils si 'Falsi
   <string name="morphe_remember_playback_speed_last_selected_title">Mémoriser la vitesse de lecture</string>
   <string name="morphe_remember_playback_speed_last_selected_summary">Applique votre sélection de vitesse manuelle à toutes les vidéos futures</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Notifications de changement de vitesse</string>
-  <string name="morphe_remember_playback_speed_last_selected_toast_summary">Affiche une notification lorsqu’une nouvelle vitesse de lecture par défaut est enregistrée</string>
+  <string name="morphe_remember_playback_speed_last_selected_toast_summary">Affiche une notification lorsqu\'une nouvelle vitesse de lecture par défaut est enregistrée</string>
   <string name="morphe_playback_speed_default_title">Vitesse de lecture par défaut</string>
   <string name="morphe_remember_playback_speed_toast">Vitesse de lecture par défaut définie sur : %s</string>
   <string name="morphe_disable_playback_speed_music_title">Utiliser la vitesse normale pour la musique</string>

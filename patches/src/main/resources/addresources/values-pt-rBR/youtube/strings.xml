@@ -51,8 +51,8 @@ As mudanças incluem:
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Filtro no menu suspenso no feed</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">Insira os nomes do menu suspenso para filtrar, separados por novas linhas</string>
   <string name="morphe_hide_account_menu_title">Ativar filtro no menu inferior na aba Biblioteca / Você</string>
-  <string name="morphe_hide_account_menu_filter_strings_title">Filtro do menu inferior da aba Biblioteca / Você</string>
-  <string name="morphe_hide_account_menu_filter_strings_summary">Insira os nomes do menu inferior da aba Biblioteca / Você para filtrar, separados por novas linhas</string>
+  <string name="morphe_hide_account_menu_filter_strings_title">Filtro no menu inferior da aba Biblioteca / Você</string>
+  <string name="morphe_hide_account_menu_filter_strings_summary">Escreva os nomes do menu inferior da aba Biblioteca / Você para filtrar, separados por novas linhas</string>
   <string name="morphe_hide_album_cards_title">Ocultar cartões de álbum</string>
   <string name="morphe_hide_album_cards_summary">Oculta os cartões de álbuns abaixo da descrição do artista</string>
   <string name="morphe_hide_artist_cards_title">Ocultar cartões do artista</string>
@@ -348,7 +348,7 @@ Toque aqui para abrir AiSlopList.com e ver downloads para outras plataformas"</s
   <string name="morphe_external_downloader_summary">Mostra um botão de sobreposição no player de vídeo que abre seu app de download externo</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Substituir botão e menu de download</string>
-  <string name="morphe_external_downloader_action_button_summary">Usa seu app de download externo escolhido em vez do recurso de download integrado do YouTube</string>
+  <string name="morphe_external_downloader_action_button_summary">Usa o baixador externo escolhido em vez do recurso oficial de download integrado padrão</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Tradução por voz</string>
   <string name="morphe_vot_screen_summary">Leia as legendas do vídeo em voz alta usando a conversão de texto em fala no dispositivo, sincronizada com a reprodução</string>
@@ -450,7 +450,7 @@ Informação: pode não funcionar em transmissões ao vivo"</string>
   <string name="morphe_save_to_watch_later_error_toast">Não foi possível salvar este vídeo na playlist Assistir mais tarde</string>
   <string name="morphe_queue_flyout_title">Adicionar à fila do Morphe</string>
   <string name="morphe_queue_restore_title">Manter a fila entre as sessões</string>
-  <string name="morphe_queue_restore_summary">A fila é mantida após reiniciar o app</string>
+  <string name="morphe_queue_restore_summary">A fila é mantida após reiniciar o aplicativo</string>
   <string name="morphe_swap_save_and_queue_actions_title">Trocar as ações de Salvar e Fila</string>
   <string name="morphe_swap_save_and_queue_actions_summary">Toque para opções de fila, toque e segure para salvar em \'Assistir mais tarde\'</string>
   <string name="morphe_queue_override_flyout_menu_title">Substituir botão da fila no feed</string>
@@ -553,7 +553,7 @@ Para corrigir isso, ative 'Simular streams de vídeo' e altere o 'Cliente padrã
   <string name="morphe_swipe_speed_step_title">Intervalo de velocidade</string>
   <string name="morphe_swipe_speed_step_summary">Quantidade pela qual a velocidade de reprodução muda a cada incremento</string>
   <string name="morphe_swipe_speed_zone_height_title">Altura da zona de velocidade</string>
-  <string name="morphe_swipe_speed_zone_height_summary">Altura da zona de gesto de velocidade como uma porcentagem da altura do reprodutor (5-75)</string>
+  <string name="morphe_swipe_speed_zone_height_summary">Altura da zona de gesto de velocidade como uma porcentagem da altura do player (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Velocidade</string>
   <string name="morphe_swipe_overlay_style_title">Estilo de sobreposição de deslize</string>
   <string name="morphe_swipe_overlay_style_entry_1">Sobreposição horizontal</string>
@@ -901,7 +901,7 @@ Limitação: Se 'Restaurar barra de ações de vídeo antiga' estiver desativado
   <string name="morphe_override_youtube_music_buttons_title">Substituir botões do YouTube Music</string>
   <string name="morphe_override_youtube_music_buttons_summary">Abre seu app de música preferido em vez do app oficial do YouTube Music</string>
   <string name="morphe_music_package_name_title">Nome do pacote do app de música</string>
-  <string name="morphe_music_package_name_summary">Nome do pacote do seu app de música instalado</string>
+  <string name="morphe_music_package_name_summary">Nome do pacote do seu aplicativo de música instalado</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Página inicial</string>
   <string name="morphe_change_start_page_entry_default">Padrão</string>
@@ -1063,7 +1063,7 @@ Toque aqui para abrir DeArrow.ajay.app"</string>
   <string name="morphe_bypass_link_redirects_summary">Abre o link original diretamente, ignorando o link de rastreamento (youtube.com/redirect)</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Abrir links no navegador</string>
-  <string name="morphe_external_browser_summary">Abre links em um navegador externo em vez do navegador interno</string>
+  <string name="morphe_external_browser_summary">Abre links em um navegador externo em vez do navegador integrado</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automático</string>
