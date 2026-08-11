@@ -35,6 +35,7 @@ import app.morphe.util.findElementByAttributeValue
 import app.morphe.util.findFreeRegister
 import app.morphe.util.p0Register
 import app.morphe.util.removeFromParent
+import app.morphe.util.returnEarly
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
@@ -206,5 +207,8 @@ val settingsPatch = bytecodePatch(
                 )
             }
         }
+
+        // Turn off Google Play in app update prompt.
+        GooglePlayUpdateCheckFingerprint.method.returnEarly(null);
     }
 }

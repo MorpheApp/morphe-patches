@@ -11,6 +11,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.anyInstruction
+import app.morphe.patcher.checkCast
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
@@ -110,3 +111,15 @@ internal object WebBrowserActivityOnCreateFingerprint : Fingerprint(
     ),
     strings = listOf("com.reddit.extra.initial_url")
 )
+
+internal object GooglePlayUpdateCheckFingerprint : Fingerprint(
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf(
+        "Lkotlin/coroutines/jvm/internal/ContinuationImpl;"
+    ),
+    filters = listOf(
+        checkCast("Lcom/reddit/appupdate/GooglePlayImmediateUpdateCheck$"),
+        string("PlayCore")
+    )
+)
+
