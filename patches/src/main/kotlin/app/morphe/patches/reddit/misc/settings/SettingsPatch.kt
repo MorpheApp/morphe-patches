@@ -96,6 +96,9 @@ val settingsPatch = bytecodePatch(
         addAppResources("shared")
         addAppResources("reddit")
 
+        // Force Play Store Verification checks to return false
+        PlayStoreVerificationFingerprint.method.returnEarly(false)
+
         // Show toast informing that Google sign-in does not work.
         if (is_2026_14_0_or_greater) {
             // After clicking a login type, the second Google sign-in button still shows
@@ -232,5 +235,8 @@ val settingsPatch = bytecodePatch(
 
         // Turn off Google Play in app update prompt.
         GooglePlayUpdateCheckFingerprint.method.returnEarly(null);
+
+        // For Reddit-v2026.14.0
+        CheckIntegrityPlayStoreFingerprint.method.returnEarly(0)
     }
 }
