@@ -48,6 +48,14 @@ public final class VideoInformation {
     /**
      * Interface to use obfuscated methods.
      */
+    public interface ExoPlayerImpl {
+        // Method is added during patching.
+        void patch_setPlaybackParameters(float speed, float pitch);
+    }
+
+    /**
+     * Interface to use obfuscated methods.
+     */
     public interface VideoQualityMenuInterface {
         // Method is added during patching.
         void patch_setQuality(VideoQualityInterface quality);
@@ -101,6 +109,7 @@ public final class VideoInformation {
 
     private static WeakReference<PlaybackController> playerControllerRef = new WeakReference<>(null);
     private static WeakReference<PlaybackController> mdxPlayerDirectorRef = new WeakReference<>(null);
+    private static WeakReference<ExoPlayerImpl> exoPlayerImplRef = new WeakReference<>(null);
     private static String channelId = "";
     private static String channelName = "";
     private static String videoId = "";
@@ -241,6 +250,19 @@ public final class VideoInformation {
 
     /**
      * Injection point.
+     *
+     * @param ExoPlayerImpl instance that can set the playback parameters directly.
+     */
+    public static void initializeExoPlayerImpl(@NonNull ExoPlayerImpl exoPlayerImpl) {
+        try {
+            exoPlayerImplRef = new WeakReference<>(Objects.requireNonNull(exoPlayerImpl));
+        } catch (Exception ex) {
+            Logger.printException(() -> "Failed to initialize ExoPlayer", ex);
+        }
+    }
+
+    /**
+     * Injection point.
      */
     public static void setChannelId(String cId) {
         channelId = cId != null ? cId : "";
@@ -343,12 +365,9 @@ public final class VideoInformation {
         onPlaybackSpeedChange.invoke(speed);
         RememberPlaybackSpeedPatch.userSelectedPlaybackSpeed(speed);
         if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
-            if(!updatePlaybackAudioPitchValue(speed)) {
-                changePlaybackSpeed(playbackSpeed);
-            }
-        } else {
-            changePlaybackSpeed(playbackSpeed);
+            updatePlaybackAudioPitchValue(speed);
         }
+        changePlaybackSpeed(playbackSpeed);
         return true;
     }
 
@@ -370,14 +389,10 @@ public final class VideoInformation {
         playbackAudioPitchFormattedString = formatSpeedStringX(pitch);
         onPlaybackAudioPitchChange.invoke(pitch);
         RememberPlaybackSpeedPatch.userSelectedPlaybackAudioPitch(pitch);
-        // Forces call to changePlaybackSpeed, new pitch will be obtained and set.
         if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
-            if(!updatePlaybackSpeedValue(pitch)) {
-                changePlaybackSpeed(playbackSpeed);
-            };
-        } else {
-            changePlaybackSpeed(playbackSpeed);
+            updatePlaybackSpeedValue(pitch);
         }
+        setPlaybackParameters(playbackSpeed, playbackAudioPitch);
         return true;
     }
 
@@ -739,6 +754,32 @@ public final class VideoInformation {
         }
 
         currentPlaybackSpeedMenuInterface.patch_setSpeed(playbackSpeed);
+    }
+
+    /**
+     * Forcefully changes the playback parameters (speed and pitch) of the current ExoPlayerImpl instance.
+     * Avoid using this for just video speed changes, YT won't update in other places.
+     */
+    public static void setPlaybackParameters(float speed, float pitch) {
+        Utils.verifyOnMainThread();
+        
+        if (speed <= 0 || speed > PLAYBACK_SPEED_MAXIMUM) {
+            Logger.printException(() -> "Invalid playback speed: " + speed);
+            return;
+        }
+        if (pitch <= 0 || pitch > PLAYBACK_AUDIO_PITCH_MAXIMUM) {
+            Logger.printException(() -> "Invalid playback pitch: " + pitch);
+            return;
+        }
+        ExoPlayerImpl exoPlayerImpl = exoPlayerImplRef.get();
+
+        if (exoPlayerImpl != null) {
+            exoPlayerImpl.patch_setPlaybackParameters(speed, pitch);
+            Logger.printDebug(() -> "Video playbackParameters changed: Speed: " + speed + " Pitch: " + pitch);
+        } else {
+            Logger.printException(() -> "Cannot change speed, menu interface is null");
+            return;
+        }
     }
 
     /**

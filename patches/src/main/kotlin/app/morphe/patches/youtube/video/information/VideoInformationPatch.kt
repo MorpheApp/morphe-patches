@@ -66,6 +66,8 @@ private const val EXTENSION_PLAYER_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/VideoInformation$PlaybackController;"
 internal const val EXTENSION_PLAYBACK_SPEED_MENU_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/VideoInformation$PlaybackSpeedMenuInterface;"
+internal const val EXTENSION_EXOPLAYERIMPL_INTERFACE =
+    $$"Lapp/morphe/extension/youtube/patches/VideoInformation$ExoPlayerImpl;"
 private const val EXTENSION_VIDEO_QUALITY_MENU_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/VideoInformation$VideoQualityMenuInterface;"
 internal const val EXTENSION_VIDEO_QUALITY_INTERFACE =
@@ -540,22 +542,90 @@ val videoInformationPatch = bytecodePatch(
             }
         }
 
-        // Instead of passing 1.0f, pitch is retrieved from extension.
-        PlaybackParametersConstructorFingerprint.method.apply {
-            val constHigh16Index = PlaybackParametersConstructorFingerprint.instructionMatches[0].index
-            val constHigh16Instr = getInstruction<OneRegisterInstruction>(constHigh16Index)
-            val register = constHigh16Instr.registerA
+        // region ExoPlayerImpl.
 
-            removeInstruction(constHigh16Index)
+        val playbackParametersType = PlaybackParametersToStringFingerprint.classDef.type
+        val setPlaybackParametersFingerprint = getPlaybackParametersSetterFingerprint(playbackParametersType)
+        
+        // for patch_setPlaybackParameters helper method to call setPlaybackParameters(PlaybackParameters p1).
+        val setPlaybackParametersMethod = setPlaybackParametersFingerprint.method
 
-            addInstructionsAtControlFlowLabel(
-                constHigh16Index,
-                """
-                    invoke-static {}, $EXTENSION_CLASS->getPlaybackAudioPitch()F
-                    move-result v$register
-                """
-            )
-        }
+        // A reference to the setPlaybackParameters implementation, to call from the helper method.
+        val setPlaybackParametersReference = "${setPlaybackParametersMethod.definingClass}->${setPlaybackParametersMethod.name}($playbackParametersType)V"
+
+        // The PlaybackParameters type and primary constructor with 2 arguments (speed, pitch).
+        val playbackParametersConstructorReference = "$playbackParametersType-><init>(FF)V"
+
+        // for {androidx.media3.common.PlaybackParameters.speed} field.
+        // The toString() method reads the speed field before the pitch field.
+        val playbackParametersSpeedField = PlaybackParametersToStringFingerprint.method
+            .implementation!!.instructions.toList()
+            .filter { instruction ->
+                instruction.opcode == Opcode.IGET
+                    && instruction.getReference<FieldReference>()?.type == "F"
+            }[0]
+            .getReference<FieldReference>()!!
+
+        // Pitch is obtained from this Extension and force set.
+        // Need to construct new PlaybackParameters instance as it has final fields.
+        setPlaybackParametersMethod.addInstructions(
+            0,
+            """
+                iget v0, p1, $playbackParametersSpeedField
+                invoke-static {}, $EXTENSION_CLASS->getPlaybackAudioPitch()F
+                move-result v1
+                new-instance p1, $playbackParametersType
+                invoke-direct {p1, v0, v1}, $playbackParametersConstructorReference
+            """
+        )
+
+        // Capture the ExoPlayerImpl reference at its init constructor (only 1 yet)
+        // Extension is initialized (Application.onCreate) before starting to play any video.
+        // This is required for patch_setPlaybackParameters function.
+        setPlaybackParametersFingerprint.classDef.methods
+            .filter { MethodUtil.isConstructor(it) }
+            .forEach { method ->
+                val initIndex = method.indexOfFirstInstructionOrThrow {
+                    opcode == Opcode.INVOKE_DIRECT && getReference<MethodReference>()?.name == "<init>"
+                }
+                method.addInstruction(
+                    initIndex + 1,
+                    "invoke-static { v${method.getInstruction<FiveRegisterInstruction>(initIndex).registerC} }, " +
+                        "$EXTENSION_CLASS->initializeExoPlayerImpl($EXTENSION_EXOPLAYERIMPL_INTERFACE)V"
+                )
+            }
+
+        setPlaybackParametersFingerprint.classDef.apply {
+            // Add interface and helper method to allow extension code
+            // to directly set the ExoPlayer playback parameters.
+            interfaces.add(EXTENSION_EXOPLAYERIMPL_INTERFACE)
+
+            methods.add(
+                    ImmutableMethod(
+                        type,
+                        "patch_setPlaybackParameters",
+                        listOf(
+                            ImmutableMethodParameter("F", null, null),
+                            ImmutableMethodParameter("F", null, null)
+                        ),
+                        "V",
+                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                        null,
+                        null,
+                        MutableMethodImplementation(4),
+                    ).toMutable().apply {
+                        addInstructions(
+                            0,
+                            """
+                                new-instance v0, $playbackParametersType
+                                invoke-direct { v0, p1, p2 }, $playbackParametersConstructorReference
+                                invoke-virtual { p0, v0 }, $setPlaybackParametersReference
+                                return-void
+                            """
+                        )
+                    }
+                )
+            }
 
         // endregion.
 

@@ -305,20 +305,27 @@ internal object SetVideoQualityFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Matches method {androidx.media3.exoplayer.ExoPlayerImpl.setPlaybackParameters(PlaybackParameters p1)}
+ *
+ * @param playbackParametersType The PlaybackParameters type, obtained from [PlaybackParametersToStringFingerprint].
+ */
+internal fun getPlaybackParametersSetterFingerprint(playbackParametersType: String) = object : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf(playbackParametersType),
+    returnType = "V",
+    custom = { methodDef, classDef ->
+        methodDef.implementation != null
+            && classDef.interfaces.any { it.toString() == "Landroidx/media3/exoplayer/ExoPlayer;" }
+    }
+) {}
+
+/**
+ * Matches method {androidx.media3.common.PlaybackParameters}.toString()
+ */
 internal object PlaybackParametersToStringFingerprint : Fingerprint(
     name = "toString",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/String;",
     strings = listOf("PlaybackParameters(speed=%.2f, pitch=%.2f)")
-)
-
-internal object PlaybackParametersConstructorFingerprint : Fingerprint(
-    classFingerprint = PlaybackParametersToStringFingerprint,
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    returnType = "V",
-    parameters = listOf("F"),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.CONST_HIGH16,
-        Opcode.INVOKE_DIRECT
-    )
 )
