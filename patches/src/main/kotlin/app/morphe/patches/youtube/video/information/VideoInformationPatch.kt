@@ -49,12 +49,10 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ThreeRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
-import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableField
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodImplementation
@@ -540,32 +538,6 @@ val videoInformationPatch = bytecodePatch(
                     )
                 }
             }
-        }
-
-        SetPlaybackSpeedFingerprint.method.apply {
-            val invokeVirtualIndex = SetPlaybackSpeedFingerprint.instructionMatches[0].index
-            val igetObjectIndex = SetPlaybackSpeedFingerprint.instructionMatches[4].index
-
-            val exoPlayerField = getInstruction(igetObjectIndex).getReference<FieldReference>()!!
-            val classRef = getInstruction(igetObjectIndex + 1).getReference<TypeReference>()!!
-            val initRef = getInstruction(igetObjectIndex + 2).getReference<MethodReference>()!!
-            val kMethodRef = getInstruction(igetObjectIndex + 3).getReference<MethodReference>()!!
-
-            // Remove the original instructions.
-            removeInstructions(igetObjectIndex, 4)
-
-            // Re-insert them before the 'if' block.
-            // so the ExoPlayer command is dispatched unconditionally.
-            // It is checked by ExoPlayer properly.
-            addInstructionsAtControlFlowLabel(
-                invokeVirtualIndex,
-                """
-                    iget-object v2, p0, $exoPlayerField
-                    new-instance v1, ${classRef.type}
-                    invoke-direct { v1, p1 }, $initRef
-                    invoke-interface { v2, v1 }, $kMethodRef
-                """
-            )
         }
 
         // Instead of passing 1.0f, pitch is retrieved from extension.
