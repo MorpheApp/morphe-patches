@@ -31,18 +31,16 @@ public class AutoCaptionsPatch {
      * Injection point.
      */
     public static boolean disableAutoCaptions(boolean original) {
-        AutoCaptionsStyle style = Settings.AUTO_CAPTIONS_STYLE.get();
-        final boolean withVolumeAutoCaptioningEnabled = (style == AutoCaptionsStyle.BOTH_ENABLED)
-                || (style == AutoCaptionsStyle.WITH_VOLUME_ONLY);
-
-        if (!withVolumeAutoCaptioningEnabled) {
-            // Disable auto-captioning only
-            // when 'withVolumeAutoCaptioningEnabled'
-            // field is false
-            return !captionsButtonStatus.get() || original;
+        // After the guard window (150ms), respect the user's manual CC button toggle.
+        if (captionsButtonStatus.get()) {
+            return original;
         }
 
-        return original;
+        // During the initial video load window, force captions on or off based on setting.
+        AutoCaptionsStyle style = Settings.AUTO_CAPTIONS_STYLE.get();
+        boolean wantCaptions = (style == AutoCaptionsStyle.BOTH_ENABLED)
+                || (style == AutoCaptionsStyle.WITH_VOLUME_ONLY);
+        return !wantCaptions;
     }
 
     /**
