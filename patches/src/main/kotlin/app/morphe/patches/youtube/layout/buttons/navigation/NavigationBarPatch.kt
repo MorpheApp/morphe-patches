@@ -151,12 +151,13 @@ val navigationBarPatch = bytecodePatch(
         addBottomBarContainerHook("$EXTENSION_CLASS->hideNavigationBar(Landroid/view/View;)V")
 
         // Force on/off translucent effect on status bar and navigation buttons.
-        TranslucentNavigationStatusBarFeatureFlagFingerprint.matchAll().forEach {
-            // 21.30+ inlines the flag lookup and must patch ~60 places.
-            it.method.insertLiteralOverride(
-                it.instructionMatches.first().index,
-                "$EXTENSION_CLASS->useTranslucentNavigationStatusBar(Z)Z"
-            )
+        if (!is_21_30_or_greater) {
+            TranslucentNavigationStatusBarFeatureFlagFingerprint.matchAll().forEach {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    "$EXTENSION_CLASS->useTranslucentNavigationStatusBar(Z)Z"
+                )
+            }
         }
 
         AnimatedNavigationTabsFeatureFlagFingerprint.matchAll().forEach {
@@ -182,7 +183,7 @@ val navigationBarPatch = bytecodePatch(
             )
         }
 
-        if (is_20_46_or_greater) {
+        if (is_20_46_or_greater && !is_21_30_or_greater) {
             // Feature interferes with translucent status bar and must be forced off.
             CollapsingToolbarLayoutFeatureFlagFingerprint.matchAll().forEach {
                 it.method.insertLiteralOverride(

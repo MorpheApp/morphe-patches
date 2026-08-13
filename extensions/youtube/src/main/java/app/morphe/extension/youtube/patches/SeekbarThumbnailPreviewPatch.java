@@ -32,6 +32,7 @@ import android.widget.TextView;
 import java.util.Locale;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -44,6 +45,7 @@ public class SeekbarThumbnailPreviewPatch {
             FrameLayout previewFrame,
             ImageView thumbnailPreview,
             TextView timestampPreview,
+            TextView heatMapPeakPointPreview,
             TextView chapterPreview,
             PopupWindow thumbnailPreviewPopup
     ) {}
@@ -54,11 +56,16 @@ public class SeekbarThumbnailPreviewPatch {
     private static final int THUMBNAIL_PREVIEW_DISTANCE_FULLSCREEN_DP = Dim.dp10;
     private static final int THUMBNAIL_PREVIEW_DISTANCE_PORTRAIT_DP = -1 * Dim.dp20;
     private static final int THUMBNAIL_PREVIEW_TEXT_ONLY_HEIGHT_DP = Dim.dp24;
-    private static final int THUMBNAIL_PREVIEW_TEXT_WITH_CHAPTER_HEIGHT_DP = Dim.dp(44);
+    private static final int THUMBNAIL_PREVIEW_TEXT_WITH_CHAPTER_HEIGHT_DP =
+            THUMBNAIL_PREVIEW_TEXT_ONLY_HEIGHT_DP * 2;
+    private static final int THUMBNAIL_PREVIEW_TEXT_WITH_PEAK_POINT_AND_CHAPTER_HEIGHT_DP =
+            THUMBNAIL_PREVIEW_TEXT_ONLY_HEIGHT_DP * 3;
     private static final int THUMBNAIL_PREVIEW_CORNER_RADIUS_DP = Dim.dp8;
     private static final int THUMBNAIL_PREVIEW_BORDER_WIDTH_DP = Dim.dp2;
     private static final int THUMBNAIL_PREVIEW_BORDER_COLOR = 0xB3FFFFFF;
     private static final ColorDrawable previewPopupBackgroundDrawable = new ColorDrawable(Color.TRANSPARENT);
+    private static final String heatMapPeakPointDescription =
+            ResourceUtils.getString("morphe_seekbar_thumbnail_heatmap_peak_point");
     private static boolean preciseSeekingVisible = false;
 
     @SuppressLint("StaticFieldLeak")
@@ -132,6 +139,10 @@ public class SeekbarThumbnailPreviewPatch {
         final TextView timestampPreview = createTimestampPreview(context);
         containerLayout.addView(timestampPreview);
 
+        final TextView heatMapPeakPoint = createHeatMapPeakPointPreview(context);
+        heatMapPeakPoint.setText(heatMapPeakPointDescription);
+        containerLayout.addView(heatMapPeakPoint);
+
         final TextView chapterPreview = createChapterPreview(context);
         containerLayout.addView(chapterPreview);
 
@@ -141,8 +152,14 @@ public class SeekbarThumbnailPreviewPatch {
         thumbnailPreviewPopup.setTouchable(false);
         thumbnailPreviewPopup.setBackgroundDrawable(previewPopupBackgroundDrawable);
 
-        return seekbarViews =
-                new SeekbarViews(previewFrame, thumbnailPreview, timestampPreview, chapterPreview, thumbnailPreviewPopup);
+        return seekbarViews = new SeekbarViews(
+                previewFrame,
+                thumbnailPreview,
+                timestampPreview,
+                heatMapPeakPoint,
+                chapterPreview,
+                thumbnailPreviewPopup
+        );
     }
 
     // Border is a filled rounded rect + padding (not a stroke) to keep outer/inner corners concentric.
@@ -181,13 +198,17 @@ public class SeekbarThumbnailPreviewPatch {
         return thumbnailPreview;
     }
 
+    private static TextView createHeatMapPeakPointPreview(Context context) {
+        return createChapterPreview(context);
+    }
+
     private static TextView createTimestampPreview(Context context) {
         final TextView timestampPreview = new TextView(context);
 
         timestampPreview.setTextColor(Color.WHITE);
         timestampPreview.setTextSize(12);
         timestampPreview.setPadding(0, Dim.dp4, 0, 0);
-        timestampPreview.setShadowLayer(3, 1, 1, Color.BLACK);
+        timestampPreview.setShadowLayer(0.1f, 1.5f, 1.5f, Color.BLACK);
         timestampPreview.setLayoutParams(new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
@@ -201,7 +222,7 @@ public class SeekbarThumbnailPreviewPatch {
         chapterPreview.setTextColor(Color.WHITE);
         chapterPreview.setTextSize(12);
         chapterPreview.setPadding(0, Dim.dp2, 0, 0);
-        chapterPreview.setShadowLayer(3, 1, 1, Color.BLACK);
+        chapterPreview.setShadowLayer(0.1f, 1.5f, 1.5f, Color.BLACK);
         chapterPreview.setSingleLine(true);
         chapterPreview.setEllipsize(android.text.TextUtils.TruncateAt.END);
         chapterPreview.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -271,6 +292,7 @@ public class SeekbarThumbnailPreviewPatch {
         }
     }
 
+    @SuppressWarnings("ExtractMethodRecommender")
     private static void updateThumbnailPreview(
             View trackBall,
             MotionEvent trackBallMotionEvent,
@@ -304,6 +326,9 @@ public class SeekbarThumbnailPreviewPatch {
                 if (views != null) {
                     if (views.timestampPreview != null) {
                         views.timestampPreview.setVisibility(View.GONE);
+                    }
+                    if (views.heatMapPeakPointPreview != null) {
+                        views.heatMapPeakPointPreview.setVisibility(View.GONE);
                     }
                     if (views.chapterPreview != null) {
                         views.chapterPreview.setVisibility(View.GONE);
@@ -358,6 +383,10 @@ public class SeekbarThumbnailPreviewPatch {
                             !preciseSeekingVisible ? View.VISIBLE : View.GONE
                     );
 
+                    views.heatMapPeakPointPreview.setVisibility(
+                            ChaptersHookPatch.getHeatMapPeakPoint() ? View.VISIBLE : View.GONE
+                    );
+
                     final CharSequence chapterTitle = ChaptersHookPatch.getChapterTitleAtTime(currentMillis);
                     if (chapterTitle != null && !preciseSeekingVisible) {
                         views.chapterPreview.setText(chapterTitle);
@@ -374,10 +403,19 @@ public class SeekbarThumbnailPreviewPatch {
                 final int previewDistance = PlayerType.getCurrent() == PlayerType.WATCH_WHILE_FULLSCREEN
                         ? THUMBNAIL_PREVIEW_DISTANCE_FULLSCREEN_DP
                         : THUMBNAIL_PREVIEW_DISTANCE_PORTRAIT_DP;
+                final int textHeight;
+                final boolean heatPeakPointPreviewVisible =
+                        views.heatMapPeakPointPreview.getVisibility() == View.VISIBLE;
+                final boolean chapterPreviewVisible =
+                        views.chapterPreview.getVisibility() == View.VISIBLE;
 
-                final int textHeight = views.chapterPreview.getVisibility() == View.VISIBLE
-                        ? THUMBNAIL_PREVIEW_TEXT_WITH_CHAPTER_HEIGHT_DP
-                        : THUMBNAIL_PREVIEW_TEXT_ONLY_HEIGHT_DP;
+                if (heatPeakPointPreviewVisible && chapterPreviewVisible) {
+                    textHeight = THUMBNAIL_PREVIEW_TEXT_WITH_PEAK_POINT_AND_CHAPTER_HEIGHT_DP;
+                } else if (heatPeakPointPreviewVisible || chapterPreviewVisible) {
+                    textHeight = THUMBNAIL_PREVIEW_TEXT_WITH_CHAPTER_HEIGHT_DP;
+                } else {
+                    textHeight = THUMBNAIL_PREVIEW_TEXT_ONLY_HEIGHT_DP;
+                }
 
                 // Wait until the first bitmap so the previewFrame shows immediately with the correct
                 // aspect ratio and Y offset, avoiding a jump from a default 16:9 position.

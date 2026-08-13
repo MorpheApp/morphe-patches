@@ -214,8 +214,8 @@ Spremembe vključujejo:
   <string name="morphe_hide_learning_menu_title">Skrij meni učenja</string>
   <string name="morphe_hide_live_menu_title">Skrij meni V živo</string>
   <string name="morphe_hide_memberships_menu_title">Skrij meni članskih prispevkov</string>
-  <string name="morphe_hide_movies_menu_title">Skrij meni Filmi</string>
-  <string name="morphe_hide_music_menu_title">Skrij meni \'Glasba in TV\'</string>
+  <string name="morphe_hide_movies_menu_title">Skrij meni \'Filmi &amp; TV\'</string>
+  <string name="morphe_hide_music_menu_title">Skrij meni Glasba</string>
   <string name="morphe_hide_news_menu_title">Skrij meni Novice</string>
   <string name="morphe_hide_playables_menu_title">Skrij meni Predvajalniki</string>
   <string name="morphe_hide_podcasts_menu_title">Skrij meni Podcasti</string>
@@ -493,16 +493,17 @@ Opozorilo: morda ne deluje na prenosih v živo"</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Vklopi sličice predogleda na vrstici za iskanje</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Prikazuje sličico videoposnetka med vlečenjem drsnika</string>
+  <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Največkrat predvajano</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"'Omogoči DVR v živo' morda ni na voljo
+  <string name="morphe_livestream_dvr_not_available">"'Omogoči DVR za pretočne prenose' morda ni na voljo
 
-Za popravek vklopite 'Ponaredi video tokove' in spremenite 'Privzeti odjemalec' na 'TV Simply' ali 'visionOS'"</string>
+Za odpravo te težave vklopite 'Ponaredi video tokove' in spremenite 'Privzeti odjemalec' na 'TV' ali 'visionOS'."</string>
   <string name="morphe_expand_livestream_dvr_duration_title">Razširi trajanje DVR za pretočni prenos</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">Omogoča vam povratno predvajanje v živo do 7 dni v preteklost</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Razširi trajanje DVR v živo' morda ni na voljo
+  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Razširi trajanje DVR za pretočne prenose' morda ni na voljo
 
-Za popravek vklopite 'Ponaredi video tokove' in spremenite 'Privzeti odjemalec' na 'TV Simply' ali 'visionOS'"</string>
+Za odpravo te težave vklopite 'Ponaredi video tokove' in spremenite 'Privzeti odjemalec' na 'TV' ali 'visionOS'."</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Omogoči drsenje za iskanje</string>
   <string name="morphe_slide_to_seek_summary">Omogoči drsanje za iskanje namesto predvajanja pri 2-kratni hitrosti, ko pritisnete in držite predvajalnik videa</string>
@@ -520,6 +521,7 @@ Za popravek vklopite 'Ponaredi video tokove' in spremenite 'Privzeti odjemalec' 
   <string name="morphe_swipe_zone_label_volume">Glasnost</string>
   <string name="morphe_swipe_zone_label_native">Izvirno</string>
   <string name="morphe_swipe_press_to_engage_title">Omogoči gesto pritiska za drsenje</string>
+  <string name="morphe_swipe_press_to_engage_summary">Zahteva pritiskanje in držanje, preden je prepoznana poteza povleka.</string>
   <string name="morphe_swipe_haptic_feedback_title">Omogoči povratno vibracijo</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Shrani in obnovi svetlost</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Shrani raven svetlosti ob vstopu ali izstopu iz celozaslonskega načina</string>
@@ -811,6 +813,8 @@ Za prikaz menija 'Zvočna pot' spremenite 'Ponarejanje video tokov' na katerega 
   <string name="morphe_hide_shorts_like_fountain_title">Skrij animacijo vodovoda gumba Všeč mi je</string>
   <string name="morphe_hide_shorts_like_button_title">Skrij gumb Všeč mi je</string>
   <string name="morphe_hide_shorts_comments_button_title">Skrij gumb Komentarji</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">Skrij gumb Shrani</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Skrij bo gumb za deljenje</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
@@ -1050,6 +1054,7 @@ Tapnite tukaj, da odprete DeArrow.ajay.app"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Nadzorna plošča za medije v obvestilih</string>
   <string name="morphe_notification_media_screen_summary">Prilagodite videz in obnašanje minimiziranega predajalnika videa</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Skrij gumba Prejšnji &amp; Naslednji</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Skrije gumbe »Prejšnji« in »Naslednji« v medijskem obvestilu, na zaklenjenem zaslonu in nadzorih za slušalke</string>
   <string name="morphe_disable_notification_media_seekbar_title">Onemogoči drsnik</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Preprečuje vlečenje vrstice za napredovanje na zaklenjenem zaslonu in na nadzorni plošči</string>
@@ -1122,6 +1127,7 @@ Omejitve:
 • HDR videoposnetki ne bodo uporabljali AVC
 • Nekatere naprave ne morejo prisiliti AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Za uporabo te funkcije nastavite \'Spoofing video tokov\' na \'Android VR\' ali \'Android Studio\'.</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Odpre napredno možnost nastavitve kakovosti</string>
   <string name="morphe_advanced_video_quality_menu_summary">Preskoči meni za izbiro kakovosti in neposredno odpre napredno kakovost</string>
@@ -1132,10 +1138,13 @@ Omejitve:
   <string name="morphe_video_quality_prioritize_summary">Daj prednost najboljši možni kvaliteti videa preko učinkovitosti kodeka</string>
   <string name="morphe_video_quality_prioritize_dialog">Če je ta nastavitev izklopljena, starejši videi lahko ne kažejo nastavitev za kvaliteto videa</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_av1_title">Dovoli \'Android VR\' / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Omogoča programsko dekodiranje AV1 pri uporabi odjemalca za \'Android VR\' / visionOS</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Ta nastavitev lahko omogoči programsko dekodiranje AV1.
 
 Predvajanje AV1 videa se lahko zamika ali izgublja okvirje."</string>
   <string name="morphe_spoof_video_streams_about_title">Stranski učinki navideznega pretakanja</string>
+  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Meni \'Zvočni posnetek\' manjka</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Ni kodeka AV1 videa</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR poglobljeni način ni na voljo</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabilna glasnost ni na voljo</string>
@@ -1145,6 +1154,7 @@ Predvajanje AV1 videa se lahko zamika ali izgublja okvirje."</string>
   <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• Kakovost je morda omejena na 720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Različica JavaScript predvajalnika</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Pokaži spoofing v \'Statistika za norce\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Ponovni prikaz starega videoposnetka z orodjarno</string>
   <string name="morphe_restore_old_video_action_bar_summary">"Popravi, da se ne prikazujejo nezakonske ocene in možnosti za predvajanje ni mogoče skriti

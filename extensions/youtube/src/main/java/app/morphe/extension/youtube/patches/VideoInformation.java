@@ -897,7 +897,7 @@ public final class VideoInformation {
                 if (suffixIndex > 0) {
                     final int fixedQuality = Integer.parseInt(name.substring(0, suffixIndex));
                     Logger.printDebug(() -> "Fixing wrong quality resolution from: " +
-                            name + "(" + quality + ") to: " + name + ")" + fixedQuality + ")");
+                            name + "(" + quality + ") to: " + name + "(" + fixedQuality + ")");
                     return fixedQuality;
                 }
             }

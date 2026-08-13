@@ -11,7 +11,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.anyInstruction
-import app.morphe.patcher.instanceOf
+import app.morphe.patcher.checkCast
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
@@ -28,14 +28,32 @@ internal object RedditActivityFingerprint : Fingerprint(
 )
 
 // 2026.25.0+
-internal object PreferenceDestinationFingerprint : Fingerprint(
-    definingClass = "Lcom/reddit/settings/usersettings/",
-    parameters = listOf("Lcom/reddit/domain/settings/Destination;", "L"),
-    returnType = "Ljava/lang/Object;",
+internal object StartUrlActivityFingerprint : Fingerprint(
+    parameters = listOf(
+        "L",
+        "Landroid/app/Activity;",
+        "Landroid/net/Uri;",
+        "Landroid/os/Bundle;",
+        "Z",
+        "I"
+    ),
     filters = listOf(
-        instanceOf("Lcom/reddit/settings/usersettings/RedditUserSettingsNavigator$"),
-        string("call to 'resume' before 'invoke' with coroutine")
-    )
+        methodCall(smali = "Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;"),
+        string("android.intent.action.VIEW"),
+        methodCall(
+            parameters = listOf(
+                "Landroid/app/Activity;",
+                "Landroid/net/Uri;",
+                "I",
+                "Ljava/lang/String;",
+                "Landroid/os/Bundle;",
+                "Z"
+            )
+        )
+    ),
+    custom = { method, _ ->
+        AccessFlags.STATIC.isSet(method.accessFlags)
+    }
 )
 
 internal object PreferenceDestinationLegacyFingerprint : Fingerprint(
@@ -93,3 +111,15 @@ internal object WebBrowserActivityOnCreateFingerprint : Fingerprint(
     ),
     strings = listOf("com.reddit.extra.initial_url")
 )
+
+internal object GooglePlayUpdateCheckFingerprint : Fingerprint(
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf(
+        "Lkotlin/coroutines/jvm/internal/ContinuationImpl;"
+    ),
+    filters = listOf(
+        checkCast("Lcom/reddit/appupdate/GooglePlayImmediateUpdateCheck$"),
+        string("PlayCore")
+    )
+)
+

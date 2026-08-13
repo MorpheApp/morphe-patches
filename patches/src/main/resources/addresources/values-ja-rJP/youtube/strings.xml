@@ -123,7 +123,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_youtube_doodles_user_dialog_message">YouTube Doodle が表示されていると、カスタマイズしたヘッダーが表示されなくなる場合があります。</string>
   <string name="morphe_hide_channel_bar_title">チャンネルバーを非表示</string>
   <string name="morphe_hide_channel_watermark_title">チャンネルの透かしを非表示</string>
-  <string name="morphe_hide_chapters_timeline_button_title">チャプターと「この動画内」ボタンを非表示</string>
+  <string name="morphe_hide_chapters_timeline_button_title">チャプター ボタン /「この動画内」ボタンを非表示</string>
   <string name="morphe_hide_crowdfunding_box_title">クラウドファンディング欄を非表示</string>
   <string name="morphe_hide_emergency_box_title">緊急ボックスを非表示</string>
   <string name="morphe_hide_info_panels_title">情報パネルを非表示</string>
@@ -226,13 +226,13 @@ Second \"item\" text"</string>
   <string name="morphe_hide_youtube_music_menu_title">「YouTube Music」を非表示</string>
   <string name="morphe_hide_youtube_kids_menu_title">「YouTube Kids」を非表示</string>
   <string name="morphe_hide_youtube_create_menu_title">「YouTube Create」を非表示</string>
-  <string name="morphe_hide_youtube_works_menu_title">「YouTube の取り組み」を非表示</string>
+  <string name="morphe_hide_youtube_works_menu_title">「YouTube の仕組み」を非表示</string>
   <string name="morphe_hide_privacy_tos_footer_title">最下部の規約とプライバシーに関する項目を非表示</string>
   <string name="morphe_comments_screen_title">コメント</string>
   <string name="morphe_comments_screen_summary">コメント セクションに表示するコンポーネントを設定します</string>
   <string name="morphe_hide_comments_carousel_title">横スワイプ欄のフィルタを有効化</string>
-  <string name="morphe_hide_comments_carousel_summary">"• 横スワイプ欄の正確な名前を入力してください (例:「質問する」「この動画をハイプする」「YouTube Music で聴く」)
-• 横スワイプ欄を非表示にすると予期せぬ副作用が発生する可能性がある
+  <string name="morphe_hide_comments_carousel_summary">"• 横スワイプ欄の正確なタイトルを入力してください (例:「質問する」「この動画をハイプする」「YouTube Music で聴く」)
+• 横スワイプ欄を非表示にすると予期しない副作用が引き起こされる可能性がある
 • すべての横スワイプ欄を非表示にした場合、コメント セクションごと表示されなくなる"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">横スワイプ欄のフィルタ</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">非表示にするコメント セクションの横スワイプ欄のタイトルを改行区切りで入力してください</string>
@@ -493,16 +493,17 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">シーク位置の映像を縮小表示</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">シークバーをドラッグしてシークしているときに、シーク位置の映像を縮小した画像をシークバーの上に表示します</string>
+  <string name="morphe_seekbar_thumbnail_heatmap_peak_point">リプレイ回数が最も多い部分</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"[すべてのライブ配信で DVR を有効化] をオンにしたときに正常に動作しない場合があります
 
-この問題を解決するには、[動画ストリームを偽装] をオンにして [デフォルトのクライアント] を「TV Simply」または「visionOS」に変更してください"</string>
+この問題を解決するには、[動画ストリームを偽装] をオンにして [デフォルトのクライアント] を「TV」または「visionOS」に変更してください"</string>
   <string name="morphe_expand_livestream_dvr_duration_title">ライブ配信の DVR の制限を拡張</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">ライブ配信を最大 7 日前まで巻き戻し可能にします</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_expand_livestream_dvr_duration_not_available">"[ライブ配信の DVR の制限を拡張] をオンにしたときに正常に動作しない場合があります
 
-この問題を解決するには、[動画ストリームを偽装] をオンにして [デフォルトのクライアント] を「TV Simply」または「visionOS」に変更してください"</string>
+この問題を解決するには、[動画ストリームを偽装] をオンにして [デフォルトのクライアント] を「TV」または「visionOS」に変更してください"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">スライドによるシークを有効化</string>
   <string name="morphe_slide_to_seek_summary">動画プレーヤーの画面を長押ししたときに倍速再生ではなくスライドによるシークが有効になります。</string>
@@ -520,6 +521,7 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_swipe_zone_label_volume">音量</string>
   <string name="morphe_swipe_zone_label_native">通常操作</string>
   <string name="morphe_swipe_press_to_engage_title">長押しスワイプ ジェスチャーを有効化</string>
+  <string name="morphe_swipe_press_to_engage_summary">スワイプ ジェスチャーを、「画面をスワイプ」から「画面を長押ししてからスワイプ」に変更します</string>
   <string name="morphe_swipe_haptic_feedback_title">触覚フィードバックを有効化</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">明るさを保存 &amp; 復元</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">全画面表示を終了 / 開始するときに明るさを保存 / 復元します</string>
@@ -812,6 +814,8 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_hide_shorts_like_fountain_title">高評価ボタンの噴水アニメーションを非表示</string>
   <string name="morphe_hide_shorts_like_button_title">高評価ボタンを非表示</string>
   <string name="morphe_hide_shorts_comments_button_title">コメントボタンを非表示</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">保存ボタンを非表示</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">共有ボタンを非表示</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
@@ -1037,7 +1041,7 @@ Automotive レイアウト
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">デバイスの画面サイズを偽装</string>
   <string name="morphe_spoof_device_dimensions_summary">この機能を有効にすると、より高画質な映像が利用可能になる場合があります</string>
-  <string name="morphe_spoof_device_dimensions_user_dialog_message">この機能を有効にすると、動画のカクつき、バッテリー消費の悪化、および予期せぬ副作用を引き起こす可能性があります。</string>
+  <string name="morphe_spoof_device_dimensions_user_dialog_message">この機能を有効にすると、動画のカクつき、バッテリー消費の悪化、予期しない副作用を引き起こす可能性があります。</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">触覚フィードバック</string>
   <string name="morphe_disable_haptic_feedback_summary">デバイスが反応して振動するユーザー操作を設定します</string>
@@ -1049,6 +1053,7 @@ Automotive レイアウト
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">ロック画面のメディア コントロール</string>
   <string name="morphe_notification_media_screen_summary">通知パネルとロック画面に表示されるプレーヤーのコントロールをカスタマイズします</string>
+  <string name="morphe_hide_notification_media_prev_next_title">前の動画ボタンと次の動画ボタンを非表示</string>
   <string name="morphe_hide_notification_media_prev_next_summary">通知パネルとロック画面に表示されるプレーヤーの前の動画ボタンと次の動画ボタンを非表示にします。ヘッドホンからの操作によって前の動画 / 次の動画へ移動する機能も無効にします</string>
   <string name="morphe_disable_notification_media_seekbar_title">シークバーでのシーク操作を無効化</string>
   <string name="morphe_disable_notification_media_seekbar_summary">通知パネルとロック画面に表示されるプレーヤーのシークバーでのシーク操作を無効にします</string>
@@ -1121,6 +1126,7 @@ Automotive レイアウト
 • HDR 動画では AVC が使用されない
 • 一部のデバイスでは AVC を強制できない"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">この機能を使用するには、[動画ストリームを偽装] のクライアントを「Android VR」または「Android Studio」に設定してください</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">画質の詳細設定メニューを開く</string>
   <string name="morphe_advanced_video_quality_menu_summary">画質メニューをスキップして画質の「詳細設定」メニューを直接開きます</string>
@@ -1131,10 +1137,13 @@ Automotive レイアウト
   <string name="morphe_video_quality_prioritize_summary">コーデックの圧縮効率よりも利用可能な最高画質を優先します</string>
   <string name="morphe_video_quality_prioritize_dialog">この設定をオフにすると、古い動画で画質を手動で選択できなくなる場合があります</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_av1_title">Android VR / visionOS で AV1 を許可</string>
+  <string name="morphe_spoof_video_streams_av1_summary">クライアントが Android VR または visionOS のときに AV1 のソフトウェア デコードを許可します</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"この設定を有効にすると、AV1 のソフトウェア デコードが使用される場合があります。
 
 AV1 での動画再生は、カクつくまたはコマ落ちが発生する可能性があります。"</string>
   <string name="morphe_spoof_video_streams_about_title">偽装による副作用</string>
+  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• フライアウト メニューに「音声トラック」が表示されない</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• AV1 コーデックが利用できない</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR 動画では没入モードが利用できない</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">•「一定音量」が利用できない</string>
@@ -1144,6 +1153,7 @@ AV1 での動画再生は、カクつくまたはコマ落ちが発生する可�
   <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• 画質が 720p 以下に制限される場合がある</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">JavaScript 版プレーヤー</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">統計情報にクライアントを表示</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">アクションバーを旧式に戻す</string>
   <string name="morphe_restore_old_video_action_bar_summary">"低評価数が表示されない不具合とアクション ボタンを非表示にできない不具合を修正します

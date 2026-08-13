@@ -53,19 +53,6 @@ internal object MiniplayerModernConstructorFingerprint : Fingerprint(
     )
 )
 
-internal object MiniplayerInitialSizeFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    filters = listOf(
-        fieldAccess(opcode = Opcode.IPUT, type = "I"),
-        literal(128, location = MatchAfterWithin(5)),
-        resourceLiteral(
-            ResourceType.DIMEN,
-            "metadata_badge_premium_padding",
-            location = MatchAfterWithin(6)
-        )
-    )
-)
-
 internal object MiniplayerRoundedCornersFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",

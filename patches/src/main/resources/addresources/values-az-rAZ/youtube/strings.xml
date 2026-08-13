@@ -214,8 +214,8 @@ Dəyişikliklər ehtiva edir:
   <string name="morphe_hide_learning_menu_title">Öyrədici menyusunu gizlət</string>
   <string name="morphe_hide_live_menu_title">Canlı menyusunu gizlət</string>
   <string name="morphe_hide_memberships_menu_title">Üzvlüklər menyusunu gizlət</string>
-  <string name="morphe_hide_movies_menu_title">Filmlər menyusunu gizlət</string>
-  <string name="morphe_hide_music_menu_title">\"Musiqi və TV\" menyusunu gizlət</string>
+  <string name="morphe_hide_movies_menu_title">\'Filmlər &amp; TV\' menyusunu gizlət</string>
+  <string name="morphe_hide_music_menu_title">Musiqi menyusunu gizlət</string>
   <string name="morphe_hide_news_menu_title">Xəbərlər menyusunu gizlət</string>
   <string name="morphe_hide_playables_menu_title">Oynanıla bilənlər menyusunu gizlət</string>
   <string name="morphe_hide_podcasts_menu_title">Podkastlar menyusunu gizlət</string>
@@ -493,16 +493,17 @@ Məlumat: Canlı yayımlarda işləməyə bilər"</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Çəkmə cizgisinin miniatürlərini aktiv et</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Çəkmə cizgisin sürükləyərkən video miniatürün göstərir</string>
+  <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Ən çox təkrar oynadılan</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'Canlı yayım DVR-ni aktivləşdir' əlçatan olmaya bilər
 
-Bunu düzəltmək üçün 'Video yayımlarını saxtalaşdır'-ı aktivləşdir və 'İlkin qəbuledicini' 'TV Simply' və ya 'visionOS' olaraq dəyişdir"</string>
+Bunu düzəltmək üçün 'Video yayımlarını saxtalaşdır'-ı aktivləşdir və 'İlkin qəbuledicini' 'TV' və ya 'visionOS' olaraq dəyişdir"</string>
   <string name="morphe_expand_livestream_dvr_duration_title">Canlı yayım DVR müddətini genişləndir</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">Canlı yayımları 7 günə kimi keçmişə geri çevirməyə imkan verir</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_expand_livestream_dvr_duration_not_available">"'Canlı yayım DVR müddətini genişləndir' əlçatan olmaya bilər
 
-Bunu düzəltmək üçün 'Video yayımlarını saxtalaşdır'-ı aktivləşdir və 'İlkin qəbuledicini' 'TV Simply' və ya 'visionOS' olaraq dəyişdir"</string>
+Bunu düzəltmək üçün 'Video yayımlarını saxtalaşdır'-ı aktivləşdir və 'İlkin qəbuledicini' 'TV' və ya 'visionOS' olaraq dəyişdir"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Çevirmək üçün sürüşdürməni aktivləşdir</string>
   <string name="morphe_slide_to_seek_summary">Video oynadıcıya basıb saxladıqda 2x sürətlə oynatmaq əvəzinə, sürüşdürərək çevirməni aktivləşdirir</string>
@@ -812,6 +813,8 @@ Tənzimləmələrə daxil olmaq üçün Ümumi → Alət Cərgəsi→ Tənzimlə
   <string name="morphe_hide_shorts_like_fountain_title">Bəyənmə düyməsi fontan animasiyasın gizlət</string>
   <string name="morphe_hide_shorts_like_button_title">Bəyənmə düyməsini gizlət</string>
   <string name="morphe_hide_shorts_comments_button_title">Şərhlər düyməsin gizlət</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">Saxlayın düyməsini gizlət</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Paylaş düyməsini gizlət</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->

@@ -136,8 +136,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_live_chat_replay_button_title">छुपाएं \'लाइव चैट रिप्ले\' बटन</string>
   <string name="morphe_hide_live_chat_replay_button_summary">फुलस्क्रीन मोड में चैट रीप्ले बटन को छुपाता है</string>
   <string name="morphe_hide_medical_panels_title">इन्फो पैनल्स को छुपाएं</string>
+  <string name="morphe_hide_player_gesture_hints_title">प्लेयर के जेस्चर संकेत छिपाएँ</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
+  <string name="morphe_hide_player_gesture_hints_summary">प्लेयर के हावभाव के दौरान दिखाए गए संकेत छिपाता है, जैसे \'सटीक सीकिंग के लिए ऊपर खींचें\', \'रद्द करने के लिए छोड़ें\' और \'2x\'</string>
   <string name="morphe_hide_snackbar_title">स्नैकबार छिपाएं</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">छुपाएं सदस्यगणितों की निदेशिका</string>
   <string name="morphe_hide_sync_button_title">\"सिंक टू वीडियो\" बटन छिपाएं</string>
@@ -212,8 +214,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_learning_menu_title">सीखने का मेनू छुपाएं</string>
   <string name="morphe_hide_live_menu_title">लाइव मेनू छिपाएं</string>
   <string name="morphe_hide_memberships_menu_title">सदस्यता मेनू छिपाएं</string>
-  <string name="morphe_hide_movies_menu_title">मूवी मेनू छिपाएं</string>
-  <string name="morphe_hide_music_menu_title">\'संगीत और टीवी\' मेनू छिपाएं</string>
+  <string name="morphe_hide_movies_menu_title">\'Movies &amp; TV\' मेनू छुपाएं</string>
+  <string name="morphe_hide_music_menu_title">संगीत मेनू छुपाएं</string>
   <string name="morphe_hide_news_menu_title">समाचार मेनू छिपाएं</string>
   <string name="morphe_hide_playables_menu_title">प्लेएबल मेनू छिपाएं</string>
   <string name="morphe_hide_podcasts_menu_title">पॉडकास्ट मेनू छिपाएं</string>
@@ -491,16 +493,17 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">सर्कबार थंबनेल सक्षम करें</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">सर्कबार को ड्रैग करते समय एक वीडियो थंबनेल दिखाता है</string>
+  <string name="morphe_seekbar_thumbnail_heatmap_peak_point">सबसे अधिक दोहराया गया</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"'लाइवस्ट्रीम डीवीआर सक्षम करें' उपलब्ध नहीं हो सकता है
+  <string name="morphe_livestream_dvr_not_available">"'लाइव स्ट्रीम डीवीआर सक्षम करें' उपलब्ध नहीं हो सकता है
 
-इसे ठीक करने के लिए, 'वीडियो स्ट्रीम को स्पूफ करें' चालू करें और 'डिफ़ॉल्ट क्लाइंट' को 'टीवी सिम्प्ली' या 'visionOS' में बदलें"</string>
+इसे ठीक करने के लिए, 'वीडियो स्ट्रीम स्पूफ़' चालू करें और 'डिफ़ॉल्ट क्लाइंट' को 'TV' या 'visionOS' में बदलें"</string>
   <string name="morphe_expand_livestream_dvr_duration_title">लाइवस्ट्रीम DVR अवधि का विस्तार करें</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">आपको लाइव प्रसारण को 7 दिनों तक पीछे रिवाइंड करने की अनुमति देता है</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"'लाइवस्ट्रीम डीवीआर अवधि बढ़ाएं' उपलब्ध नहीं हो सकता है
+  <string name="morphe_expand_livestream_dvr_duration_not_available">"'लाइवस्ट्रीम DVR अवधि बढ़ाएँ' उपलब्ध नहीं हो सकता है
 
-इसे ठीक करने के लिए, 'वीडियो स्ट्रीम को स्पूफ करें' चालू करें और 'डिफ़ॉल्ट क्लाइंट' को 'टीवी सिम्प्ली' या 'visionOS' में बदलें"</string>
+इसे ठीक करने के लिए, 'स्पूफ वीडियो स्ट्रीम' चालू करें और 'डिफ़ॉल्ट क्लाइंट' को 'TV' या 'visionOS' में बदलें"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">स्लाइड टू सीक सक्षम करें</string>
   <string name="morphe_slide_to_seek_summary">वीडियो प्लेयर को दबाए रखने पर 2x गति पर चलाने के बजाय स्लाइड से सीक सक्षम करता है</string>
@@ -518,6 +521,7 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_swipe_zone_label_volume">वॉल्यूम</string>
   <string name="morphe_swipe_zone_label_native">मूल</string>
   <string name="morphe_swipe_press_to_engage_title">प्रेस को स्वाइप गेस्टर को एनब्ल करें</string>
+  <string name="morphe_swipe_press_to_engage_summary">स्वाइप जेस्चर को पहचानने से पहले दबाकर रखना आवश्यक है</string>
   <string name="morphe_swipe_haptic_feedback_title">हैप्टिक फीडबैक सक्षम करें</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">ब्राइटनेस को बचाएं और पुनर्स्थापित करें</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">फुलस्क्रीन मोड में प्रवेश करते/से बाहर निकलते समय चमक स्तर को याद रखता है</string>
@@ -809,6 +813,8 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_hide_shorts_like_fountain_title">फव्वारे एनिमेशन लाइक बटन छिपाएँ</string>
   <string name="morphe_hide_shorts_like_button_title">छुपाएं \'संलग्न होना\' बटन</string>
   <string name="morphe_hide_shorts_comments_button_title">समुदाय बटन छुपाएं</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">छुपाएं सेव बटन</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">छुपाएं शेयर बटन</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
@@ -1048,6 +1054,7 @@ DeArrow.ajay.app खोलने के लिए यहां टैप कर�
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">सूचना मीडिया नियंत्रण</string>
   <string name="morphe_notification_media_screen_summary">अपने लॉक स्क्रीन और अधिसूचना पैनल पर प्रदर्शित होने वाले प्लेबैक नियंत्रणों को अनुकूलित करें</string>
+  <string name="morphe_hide_notification_media_prev_next_title">पिछले &amp; अगले बटन छिपाएँ</string>
   <string name="morphe_hide_notification_media_prev_next_summary">मीडिया अधिसूचना, लॉक स्क्रीन और हेडफ़ोन नियंत्रण में पिछला और अगला बटन छुपाता है</string>
   <string name="morphe_disable_notification_media_seekbar_title">सीकबार अक्षम करें</string>
   <string name="morphe_disable_notification_media_seekbar_summary">लॉक स्क्रीन और अधिसूचना पैनल पर सीकबार को खींचने से रोकता है</string>
@@ -1120,6 +1127,7 @@ DeArrow.ajay.app खोलने के लिए यहां टैप कर�
 • HDR वीडियो AVC का उपयोग नहीं करेंगे
 • कुछ डिवाइस AVC को बल नहीं लगा सकते"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">इस सुविधा का उपयोग करने के लिए, \'वीडियो स्ट्रीम स्पूफ़िंग\' को \'Android VR\' या \'Android Studio\' पर सेट करें</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">उन्नत गुणवत्ता मेनू खोलें</string>
   <string name="morphe_advanced_video_quality_menu_summary">गुणवत्ता चयन मेनू को छोड़ता है और सीधे \'उन्नत\' गुणवत्ता मेनू खोलता है</string>
@@ -1130,10 +1138,13 @@ DeArrow.ajay.app खोलने के लिए यहां टैप कर�
   <string name="morphe_video_quality_prioritize_summary">कोडेक दक्षता पर सबसे अच्छी उपलब्ध वीडियो गुणवत्ता को प्राथमिकता देता है।</string>
   <string name="morphe_video_quality_prioritize_dialog">यदि यह सेटिंग बंद है, तो पुराने वीडियो में कोई वीडियो गुणवत्ता विकल्प नहीं दिख सकता है।</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_av1_title">\'Android VR\' / visionOS AV1 की अनुमति दें</string>
+  <string name="morphe_spoof_video_streams_av1_summary">\'Android VR\' / visionOS क्लाइंट का उपयोग करते समय सॉफ़्टवेयर AV1 डिकोडिंग की अनुमति देता है</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"इस सेटिंग को सक्षम करने पर सॉफ्टवेयर AV1 डिकोडिंग का उपयोग किया जा सकता है।
 
 AV1 के साथ वीडियो प्लेबैक स्टटर या फ़्रेम छोड़ सकता है।"</string>
   <string name="morphe_spoof_video_streams_about_title">Spoofing साइड इफेक्ट</string>
+  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• \'ऑडियो ट्रैक\' मेनू गायब है</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• कोई AV1 वीडियो कोडेक नहीं</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR इमर्सिव मोड उपलब्ध नहीं है।</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• स्थिर वॉल्यूम उपलब्ध नहीं है</string>
@@ -1143,6 +1154,7 @@ AV1 के साथ वीडियो प्लेबैक स्टटर �
   <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• गुणवत्ता 720p तक सीमित हो सकती है</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">प्लेयर जावास्क्रिप्ट वैरिएंट</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">स्पूफिंग को \'स्टैट्स फॉर नर्ड्स\' में दिखाएं</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">पुराने वीडियो एक्शन बार को पुनर्स्थापित करें</string>
   <string name="morphe_restore_old_video_action_bar_summary">"डिस्लाइक्स को नहीं दिखाए जाने और वीडियो एक्शन बटन को छिपाए नहीं जा सकने की समस्या ठीक करता है

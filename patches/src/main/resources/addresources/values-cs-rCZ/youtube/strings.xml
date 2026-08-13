@@ -214,8 +214,8 @@ Změny zahrnují:
   <string name="morphe_hide_learning_menu_title">Skrýt nabídku Učení</string>
   <string name="morphe_hide_live_menu_title">Skrýt menu Live</string>
   <string name="morphe_hide_memberships_menu_title">Skrýt menu Členství</string>
-  <string name="morphe_hide_movies_menu_title">Skrýt menu Filmy</string>
-  <string name="morphe_hide_music_menu_title">Skrýt menu \"Hudba a TV\"</string>
+  <string name="morphe_hide_movies_menu_title">Skrýt nabídku \'Filmy a TV\'</string>
+  <string name="morphe_hide_music_menu_title">Skrýt nabídku Hudba</string>
   <string name="morphe_hide_news_menu_title">Skrýt menu Zprávy</string>
   <string name="morphe_hide_playables_menu_title">Skrýt menu Playables</string>
   <string name="morphe_hide_podcasts_menu_title">Skrýt menu Podcasty</string>
@@ -493,16 +493,17 @@ Upozornění: Možná nebude fungovat u živých přenosů"</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Povolit miniatury na posuvníku</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Zobrazuje miniaturu videa při táhnutí posuvníku</string>
+  <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Nejvíce přehrávané</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"'Povolit DVR pro živé vysílání' nemusí být k dispozici
+  <string name="morphe_livestream_dvr_not_available">"'Povolit livestream DVR' nemusí být k dispozici
 
-Chcete-li to opravit, zapněte 'Spoofovat video streamy' a změňte 'Výchozího klienta' na 'TV Simply' nebo 'visionOS'"</string>
+Chcete-li to opravit, zapněte 'Podvrhnout video streamy' a změňte 'výchozí klient' na 'TV' nebo 'visionOS'."</string>
   <string name="morphe_expand_livestream_dvr_duration_title">Rozšířit dobu záznamu živého vysílání</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">Umožní vám přetáčí živé vysílání až do 7 dnů do minulosti</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Rozšířit délku DVR živého vysílání' nemusí být dostupné
+  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Rozšířit dobu trvání livestream DVR' nemusí být k dispozici
 
-Chcete-li to opravit, zapněte 'Spoofovat video streamy' a změňte 'Výchozího klienta' na 'TV Simply' nebo 'visionOS'"</string>
+Chcete-li to opravit, zapněte 'Podvrhnout video streamy' a změňte 'výchozí klient' na 'TV' nebo 'visionOS'."</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Povolit posun pro hledání</string>
   <string name="morphe_slide_to_seek_summary">Povolí posouvání pro vyhledávání namísto přehrávání 2x rychlostí při stisknutí a podržení přehrávače videa</string>
@@ -810,6 +811,8 @@ Chcete-li zobrazit 'Menu zvukový stopy', změňte 'Falsifikovat video streamy' 
   <string name="morphe_hide_shorts_like_fountain_title">Skrýt animaci s fontánou u tlačítka To se mi líbí</string>
   <string name="morphe_hide_shorts_like_button_title">Skrýt tlačítko To se mi líbí</string>
   <string name="morphe_hide_shorts_comments_button_title">Skrýt tlačítko Komentáře</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">Skrýt tlačítko Uložit</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Skrýt tlačítko Sdílet</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->

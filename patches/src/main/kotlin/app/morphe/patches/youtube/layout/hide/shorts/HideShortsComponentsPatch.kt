@@ -94,6 +94,7 @@ private val hideShortsComponentsResourcePatch = resourcePatch {
                     //SwitchPreference("morphe_hide_shorts_like_fountain"),
                     SwitchPreference("morphe_hide_shorts_like_button"),
                     SwitchPreference("morphe_hide_shorts_comments_button"),
+                    SwitchPreference("morphe_hide_shorts_save_button"),
                     SwitchPreference("morphe_hide_shorts_share_button"),
                     SwitchPreference("morphe_hide_shorts_remix_button"),
                     SwitchPreference("morphe_hide_shorts_sound_button"),

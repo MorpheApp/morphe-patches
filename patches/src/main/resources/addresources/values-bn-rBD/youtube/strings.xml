@@ -214,8 +214,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_learning_menu_title">à®²à®¾à®à®¨ à®®à®¨à¯</string>
   <string name="morphe_hide_live_menu_title">লাইভ মেনু লুকান</string>
   <string name="morphe_hide_memberships_menu_title">সদস্যতা মেনু লুকান</string>
-  <string name="morphe_hide_movies_menu_title">মুভি মেনু লুকান</string>
-  <string name="morphe_hide_music_menu_title">\'সংগীত ও টিভি\' মেনু লুকান</string>
+  <string name="morphe_hide_movies_menu_title">\'মুভি &amp; টিভি\' মেনু লুকান</string>
+  <string name="morphe_hide_music_menu_title">সঙ্গীত মেনু লুকান</string>
   <string name="morphe_hide_news_menu_title">খবর মেনু লুকান</string>
   <string name="morphe_hide_playables_menu_title">খেলার উপযুক্ত লুকান</string>
   <string name="morphe_hide_podcasts_menu_title">পডকাস্ট মেনু লুকান</string>
@@ -493,16 +493,17 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">সিকবার থাম্বনেইল সক্ষম করুন</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">সীকবಾರ್ টেনে আনার সময় একটি ভিডিও থাম্বনেইল দেখায়</string>
+  <string name="morphe_seekbar_thumbnail_heatmap_peak_point">সবচেয়ে বেশি রিপ্লে করা</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'লাইভস্ট্রিম ডিভিআর সক্ষম করুন' উপলব্ধ নাও হতে পারে
 
-এটি ঠিক করতে, 'স্পুফ ভিডিও স্ট্রিম' চালু করুন এবং 'ডিফল্ট ক্লায়েন্ট' 'TV Simply' বা 'visionOS' এ পরিবর্তন করুন"</string>
+এটি ঠিক করতে, 'ভিডিও স্ট্রিম স্পুফ' চালু করুন এবং 'ডিফল্ট ক্লায়েন্ট' 'টিভি' বা 'ভিশনওএস'-এ পরিবর্তন করুন।"</string>
   <string name="morphe_expand_livestream_dvr_duration_title">লাইভস্ট্রিম ডিভিআর সময়কাল বাড়ান</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">আপনাকে লাইভ সম্প্রচারগুলি অতীতের ৭ দিন পর্যন্ত रिवाइंड করতে দেয়</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"'লাইভস্ট্রিম ডিভিআর সময়কাল প্রসারিত করুন' উপলব্ধ নাও হতে পারে
+  <string name="morphe_expand_livestream_dvr_duration_not_available">"'লাইভস্ট্রিম ডিভিআর সময়কাল বাড়ান' উপলব্ধ নাও হতে পারে
 
-এটি ঠিক করতে, 'স্পুফ ভিডিও স্ট্রিম' চালু করুন এবং 'ডিফল্ট ক্লায়েন্ট' 'TV Simply' বা 'visionOS' এ পরিবর্তন করুন"</string>
+এটি ঠিক করতে, 'স্পুফ ভিডিও স্ট্রিম' চালু করুন এবং 'ডিফল্ট ক্লায়েন্ট' কে 'টিভি' বা 'visionOS' এ পরিবর্তন করুন"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">ভিডিওর নির্দিষ্ট অংশে যেতে টানুন সক্রিয় করুন</string>
   <string name="morphe_slide_to_seek_summary">ভিডিও প্লেয়ারে প্রেস এবং ধরে রাখলে 2x গতিতে খেলার পরিবর্তে স্লাইড করতে সন্ধান চালু করে।</string>
@@ -812,6 +813,8 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_hide_shorts_like_fountain_title">লাইক বোতাম ফাউন্টেন অ্যানিমেশনটি লুকান</string>
   <string name="morphe_hide_shorts_like_button_title">লাইক বোতামটি লুকান</string>
   <string name="morphe_hide_shorts_comments_button_title">কমেন্টস বোতামটি লুকান</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">সেভ বোতামটি লুকান</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">শেয়ার বোতামটি লুকান</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->

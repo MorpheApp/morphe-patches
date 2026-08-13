@@ -19,7 +19,6 @@ import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.all.misc.resources.localesReddit
 import app.morphe.patches.all.misc.resources.setAddResourceLocale
-import app.morphe.patches.all.misc.resources.setPatchStringsReplaceExisting
 import app.morphe.patches.all.misc.updates.disablePlayStoreUpdatesPatch
 import app.morphe.patches.reddit.misc.extension.hooks.redditActivityOnCreateHook
 import app.morphe.patches.reddit.misc.extension.sharedExtensionPatch
@@ -34,7 +33,9 @@ import app.morphe.util.cloneParameters
 import app.morphe.util.copyResources
 import app.morphe.util.findElementByAttributeValue
 import app.morphe.util.findFreeRegister
+import app.morphe.util.p0Register
 import app.morphe.util.removeFromParent
+import app.morphe.util.returnEarly
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
@@ -65,7 +66,7 @@ val settingsPatch = bytecodePatch(
                         document(file.absolutePath).use { document ->
                             document.documentElement.childNodes.findElementByAttributeValue(
                                 "name",
-                                "acknowledgements_title",
+                                "label_privacy_policy",
                             )?.removeFromParent()
                         }
                     }
@@ -76,7 +77,7 @@ val settingsPatch = bytecodePatch(
                     ResourceGroup("drawable",
                         "morphe_ic_dialog_alert.xml",
                         "morphe_settings_custom_checkmark.xml",
-                        "morphe_settings_custom_checkmark_bold.xml",
+                        "morphe_settings_custom_checkmark_bold.xml"
                     ),
                     ResourceGroup("layout",
                         "morphe_custom_list_item_checked.xml"
@@ -92,19 +93,24 @@ val settingsPatch = bytecodePatch(
         addAppResources("reddit")
 
         if (is_2026_25_0_or_greater) {
-            PreferenceDestinationFingerprint.method.addInstructionsWithLabels(
-                0,
-                """
-                    invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->openMorpheSettings(Ljava/lang/Enum;)Z
-                    move-result v0
-                    if-eqz v0, :ignore
-                    sget-object v0, Lkotlin/Unit;->a:Lkotlin/Unit;
-                    return-object v0
-                    
-                    :ignore
-                    nop
-                """
-            )
+            StartUrlActivityFingerprint.let {
+                val index = it.instructionMatches.last().index
+                it.method.apply {
+                    val p0Register = p0Register
+                    val free = findFreeRegister(index, p0Register + 1, p0Register + 2)
+                    addInstructionsWithLabels(
+                        index,
+                        """
+                            invoke-static { p1, p2 }, $EXTENSION_CLASS->openMorpheSettings(Landroid/app/Activity;Landroid/net/Uri;)Z
+                            move-result v$free
+                            if-eqz v$free, :ignore
+                            return-void
+                            :ignore
+                            nop
+                        """
+                    )
+                }
+            }
         }
 
         if (is_2026_30_0_or_greater) {
@@ -122,9 +128,9 @@ val settingsPatch = bytecodePatch(
                 addInstructions(
                     labelIndex + 1,
                     """
-                            invoke-static { }, $EXTENSION_CLASS->getSettingLabel()Ljava/lang/String;
-                            move-result-object v$labelRegister
-                        """
+                        invoke-static { }, $EXTENSION_CLASS->getSettingLabel()Ljava/lang/String;
+                        move-result-object v$labelRegister
+                    """
                 )
 
                 val iconIndex = it.instructionMatches[2].index
@@ -133,9 +139,9 @@ val settingsPatch = bytecodePatch(
                 addInstructions(
                     iconIndex + 1,
                     """
-                            invoke-static { }, $EXTENSION_CLASS->getSettingIcon()Landroid/graphics/drawable/Drawable;
-                            move-result-object v$iconRegister
-                        """
+                        invoke-static { }, $EXTENSION_CLASS->getSettingIcon()Landroid/graphics/drawable/Drawable;
+                        move-result-object v$iconRegister
+                    """
                 )
             }
         }
@@ -201,5 +207,8 @@ val settingsPatch = bytecodePatch(
                 )
             }
         }
+
+        // Turn off Google Play in app update prompt.
+        GooglePlayUpdateCheckFingerprint.method.returnEarly(null);
     }
 }

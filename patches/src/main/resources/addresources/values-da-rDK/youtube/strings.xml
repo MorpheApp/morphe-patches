@@ -214,8 +214,8 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_learning_menu_title">Skjul Læringsmenu</string>
   <string name="morphe_hide_live_menu_title">Skjul Live menu</string>
   <string name="morphe_hide_memberships_menu_title">Skjul Medlemskaber menu</string>
-  <string name="morphe_hide_movies_menu_title">Skjul Film menu</string>
-  <string name="morphe_hide_music_menu_title">Skjul \'Musik &amp; TV\' menu</string>
+  <string name="morphe_hide_movies_menu_title">Skjul menuen \'Film og TV\'</string>
+  <string name="morphe_hide_music_menu_title">Skjul musikmenuen</string>
   <string name="morphe_hide_news_menu_title">Skjul Nyheder menu</string>
   <string name="morphe_hide_playables_menu_title">Skjul Playables menu</string>
   <string name="morphe_hide_podcasts_menu_title">Skjul Podcasts menu</string>
@@ -493,16 +493,17 @@ Info: Virker muligvis ikke på live streams"</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Aktiver miniaturer på søgelinjen</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Viser et videominiaturebillede, når du trækker i søgelinjen</string>
+  <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Mest genafspillet</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'Aktivér livestream DVR' er muligvis ikke tilgængelig
 
-For at rette dette, tænd for 'Spoofe videostrømme' og skift 'Standardklient' til 'TV Simply' eller 'visionOS'"</string>
+For at løse dette skal du slå 'Spoof videostreams' til og ændre 'Standardklient' til 'TV' eller 'visionOS'"</string>
   <string name="morphe_expand_livestream_dvr_duration_title">Udvid livestream DVR-varighed</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">Giver dig mulighed for at spole direkte udsendelser op til 7 dage tilbage i tiden</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Udvid livestream DVR-varighed' er muligvis ikke tilgængelig
+  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Udvid varigheden for livestream DVR' er muligvis ikke tilgængelig
 
-For at rette dette, tænd for 'Spoofe videostrømme' og skift 'Standardklient' til 'TV Simply' eller 'visionOS'"</string>
+For at løse dette skal du slå 'Spoof videostreams' til og ændre 'Standardklient' til 'TV' eller 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Aktivér dias for at søge</string>
   <string name="morphe_slide_to_seek_summary">Aktiverer strygning for at søge i stedet for at afspille med 2x hastighed, når du trykker og holder på videoplayeren</string>
@@ -520,6 +521,7 @@ For at rette dette, tænd for 'Spoofe videostrømme' og skift 'Standardklient' t
   <string name="morphe_swipe_zone_label_volume">Lydstyrke</string>
   <string name="morphe_swipe_zone_label_native">Native</string>
   <string name="morphe_swipe_press_to_engage_title">Aktivér tryk for at swipe-bevægelse</string>
+  <string name="morphe_swipe_press_to_engage_summary">Kræver tryk og hold, før en swipe-bevægelse genkendes</string>
   <string name="morphe_swipe_haptic_feedback_title">Aktiver haptisk feedback</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Gem og gendan lysstyrke</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Forhindrer Like og Subscribe knapperne i at lyse, når en creator nævner dem</string>
@@ -809,6 +811,8 @@ For at vise 'Lydspor'-menuen skal du ændre 'Forfalsk videostreams' til enhver k
   <string name="morphe_hide_shorts_like_fountain_title">Skjul knap for springvand-animation af like-knap</string>
   <string name="morphe_hide_shorts_like_button_title">Skjul knappen Like</string>
   <string name="morphe_hide_shorts_comments_button_title">Skjul knappen Kommentarer</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">Skjul knappen Gem</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Skjul knappen Del</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
@@ -1048,6 +1052,7 @@ Tryk her for at lære mere om DeArrow"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Underretningsmedie-kontroller</string>
   <string name="morphe_notification_media_screen_summary">Tilpas udseendet og adfærden af afspilningskontrollerne vist på din låseskærm og notifikationspanel</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Skjul Forrige &amp; Næste knapper</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Skjuler tidligere og næste knapper i medienotifikationer, låseskærm og hovedtelefonkontroller</string>
   <string name="morphe_disable_notification_media_seekbar_title">Deaktiver søgefelt</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Forhindrer trækning af søgelinjen på låseskærmen og i notifikationspanelet</string>
@@ -1120,6 +1125,7 @@ Begrænsninger:
 • HDR-videoer vil ikke bruge AVC
 • Nogle enheder kan ikke tvinge AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">For at bruge denne funktion skal du indstille \'Forfalsk videostreams\' til \'Android VR\' eller \'Android Studio\'</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Åbn Avanceret kvalitetsmenu</string>
   <string name="morphe_advanced_video_quality_menu_summary">Springer kvalitetsvalgsmenuen over og åbner menuen \'Avanceret\' kvalitet direkte</string>
@@ -1130,10 +1136,13 @@ Begrænsninger:
   <string name="morphe_video_quality_prioritize_summary">Prioriterer den højest tilgængelige videokvalitet over codec-effektivitet</string>
   <string name="morphe_video_quality_prioritize_dialog">Hvis denne indstilling er slået fra, kan ældre videoer vise ingen videokvalitetsmuligheder</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_av1_title">Tillad \'Android VR\' / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Tillader software-AV1-afkodning, når du bruger \'Android VR\' / visionOS-klienten</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Aktivering af denne indstilling kan bruge software AV1-afkodning.
 
 Videoafspilning med AV1 kan hakke eller tabe billeder."</string>
   <string name="morphe_spoof_video_streams_about_title">Bivirkninger ved spoofing</string>
+  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• \'Lydspor\'-menuen mangler</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Intet AV1-videocodec</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR-immersiv tilstand er ikke tilgængelig</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabil lydstyrke er ikke tilgængelig</string>
@@ -1143,6 +1152,7 @@ Videoafspilning med AV1 kan hakke eller tabe billeder."</string>
   <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• Kvaliteten kan være begrænset til 720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Afspiller JavaScript-variant</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Vis spoofing i \'Statistik for nørder\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Gendan gammel videohandlingslinje</string>
   <string name="morphe_restore_old_video_action_bar_summary">"Løser problemet med manglende dislikes og at video-handlingsknapper ikke kan skjules

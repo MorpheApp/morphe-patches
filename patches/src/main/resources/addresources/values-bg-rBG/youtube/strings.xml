@@ -214,8 +214,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_learning_menu_title">Скрий меню \"Обучение\"</string>
   <string name="morphe_hide_live_menu_title">Скриване на менюто \"На живо\"</string>
   <string name="morphe_hide_memberships_menu_title">Скриване на менюто \"Абонаменти\"</string>
-  <string name="morphe_hide_movies_menu_title">Скриване на менюто \"Филми\"</string>
-  <string name="morphe_hide_music_menu_title">Скриване на менюто \"Музика и телевизия\"</string>
+  <string name="morphe_hide_movies_menu_title">Скриване на менюто „Филми и телевизия“</string>
+  <string name="morphe_hide_music_menu_title">Скриване на менюто „Музика“</string>
   <string name="morphe_hide_news_menu_title">Скриване на менюто \"Новини\"</string>
   <string name="morphe_hide_playables_menu_title">Скриване на менюто \"Playables\"</string>
   <string name="morphe_hide_podcasts_menu_title">Скриване на менюто \"Подкасти\"</string>
@@ -349,6 +349,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_summary">Показва бутон за наслагване в плейъра на видео, който отваря вашия външен инструмент за изтегляне</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Замени бутона за изтегляне &amp; менюто</string>
+  <string name="morphe_external_downloader_action_button_summary">Използва избрания от вас външен изтегляч вместо вградената функция за изтегляне</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Превод на глас зад кадър</string>
   <string name="morphe_vot_screen_summary">Четете надписите на видеото на глас, използвайки вграден текстов говор, синхронизиран с възпроизвеждането</string>
@@ -492,12 +493,17 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Активиране на миниатюри на лентата за търсене</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Показва миниатюра на видеото, докато плъзгате лентата за търсене</string>
+  <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Най-преигравано</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"\"Активиране на DVR за на живо излъчване\" може да не е налично\n\nЗа да отстраните това, включете \"Подменяне на видео потоци\" и променете \"По подразбиране клиент\" на \"TV Simply\" или \"visionOS\""</string>
+  <string name="morphe_livestream_dvr_not_available">"'Включване на DVR за живо предаване' може да не е налично
+
+За да коригирате това, включете 'Подправяне на видео потоци' и променете 'Клиент по подразбиране' на 'TV' или 'visionOS'"</string>
   <string name="morphe_expand_livestream_dvr_duration_title">Разширете продължителността на livestream DVR</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">Позволява ви да превъртате предавания на живо до 7 дни назад</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"\"Разширяване на продължителността на DVR за на живо излъчване\" може да не е налично\n\nЗа да отстраните това, включете \"Подменяне на видео потоци\" и променете \"По подразбиране клиент\" на \"TV Simply\" или \"visionOS\""</string>
+  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Разширяване на продължителността на DVR записа на живо' може да не е налично
+
+За да поправите това, включете 'Спуфинг на видео потоци' и променете 'Стандартен клиент' на 'TV' или 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Зареждаването ще има твърд фон</string>
   <string name="morphe_slide_to_seek_summary">Активира плъзгане за търсене вместо възпроизвеждане със скорост 2x при натискане и задържане на видео плейъра</string>
@@ -630,6 +636,9 @@ Second \"item\" text"</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">Скриване на автоматични надписи</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Задайте бисквитки за надписи</string>
+  <string name="morphe_set_caption_cookies_summary">"Коригира стандартен бъг в YouTube, при който автоматично преведените субтитри може да не са налични поради липсващи бисквитки
+
+Трябва да се предоставят „Caption cookies“"</string>
   <string name="morphe_caption_cookies_title">Капшъни куки</string>
   <string name="morphe_caption_cookies_summary">Бисквитките, които трябва да бъдат зададени в заявките към Timed Text API (Caption Data API)</string>
   <string name="morphe_get_caption_cookies_title">Получи капшъни куки</string>
@@ -804,6 +813,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_like_fountain_title">Дублирането на видеа е скрито</string>
   <string name="morphe_hide_shorts_like_button_title">Дублирането на видеа е скрито</string>
   <string name="morphe_hide_shorts_comments_button_title">Дублирането на видеа е скрито</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">Скрий бутона за запазване</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Дублирането на видеа е скрито</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
@@ -890,6 +901,7 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_summary">Отваря дестинационните URL адреси директно, заобикаляйки връзките за проследяване на пренасочване</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Замени бутоните на YouTube Music</string>
+  <string name="morphe_override_youtube_music_buttons_summary">Отваря предпочитаното от вас музикално приложение вместо стандартното приложение YouTube Music</string>
   <string name="morphe_music_package_name_title">Име на пакета на музикалното приложение</string>
   <string name="morphe_music_package_name_summary">Име на пакета на инсталираното от вас музикално приложение</string>
   <!-- layout.startpage.changeStartPagePatch -->

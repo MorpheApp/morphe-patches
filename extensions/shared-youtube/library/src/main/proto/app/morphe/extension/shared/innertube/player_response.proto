@@ -39,14 +39,17 @@ message StreamingData {
 }
 
 message Format {
+  optional int32 itag = 1;
+  optional int32 bitrate = 6;
+  optional int32 averageBitrate = 31;
+  optional int32 audioChannels = 46;
+  optional int64 approxDurationMs = 44;
+  optional int64 audioSampleRate = 45;
+  optional string mimeType = 5;
   optional string url = 2;
   optional string signatureCipher = 48;
 }
 
 message PlayerConfig {
-  optional MediaCommonConfig mediaCommonConfig = 215771584;
 }
 
-message MediaCommonConfig {
-  optional bool usePlatypus = 18;
-}

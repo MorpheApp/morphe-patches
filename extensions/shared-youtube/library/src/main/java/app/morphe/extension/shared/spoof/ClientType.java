@@ -165,6 +165,28 @@ public enum ClientType {
             "TV"
     ),
     /**
+     * It is the same as TV_SABR but supports dash streams.
+     * This client cannot be selected in the settings and is used only for livestreams.
+     */
+    TV_DASH(
+            TV_SABR.id,
+            TV_SABR.clientName,
+            "Samsung",
+            "SmartTV",
+            "Tizen",
+            "2.4.0",
+            "5.20150304",
+            "TV",
+            "Mozilla/5.0 (SMART-TV; Linux; Tizen 2.4.0) AppleWebKit/538.1 (KHTML, like Gecko) Version/2.4.0 TV Safari/538.1",
+            TV_SABR.canLogin,
+            TV_SABR.requireLogin,
+            TV_SABR.supportsMultiAudioTracks,
+            TV_SABR.supportsVRImmersiveMode,
+            TV_SABR.requireJS,
+            false,
+            "TV Downgraded"
+    ),
+    /**
      * Video not playable: None.
      * AV1 codec available.
      */

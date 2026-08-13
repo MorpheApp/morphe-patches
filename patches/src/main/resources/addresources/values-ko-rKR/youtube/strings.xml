@@ -51,9 +51,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_feed_flyout_menu_title">피드 메뉴 구성요소 필터 활성화하기</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">피드 메뉴 구성요소 필터</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">필터링할 메뉴 구성 요소 이름을 줄바꿈으로 구분하여 설정하세요</string>
-  <string name="morphe_hide_account_menu_title">보관함 / 내 페이지 하단 메뉴 필터 활성화하기</string>
-  <string name="morphe_hide_account_menu_filter_strings_title">보관함 / 내 페이지 하단 메뉴 필터</string>
-  <string name="morphe_hide_account_menu_filter_strings_summary">필터링할 보관함 / 내 페이지 하단 메뉴 이름을 줄바꿈으로 구분하여 설정하세요</string>
+  <string name="morphe_hide_account_menu_title">\'보관함\' / \'내 페이지\' 하단 메뉴 필터 활성화하기</string>
+  <string name="morphe_hide_account_menu_filter_strings_title">\'보관함\' / \'내 페이지\' 하단 메뉴 필터</string>
+  <string name="morphe_hide_account_menu_filter_strings_summary">필터링할 \'보관함\' / \'내 페이지\' 하단 메뉴 이름을 줄바꿈으로 구분하여 설정하세요</string>
   <string name="morphe_hide_album_cards_title">음악 앨범 카드 숨기기</string>
   <string name="morphe_hide_album_cards_summary">아티스트 설명 아래에서 앨범 카드를 숨깁니다</string>
   <string name="morphe_hide_artist_cards_title">아티스트 카드 숨기기</string>
@@ -123,7 +123,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_youtube_doodles_user_dialog_message">YouTube Doodles을 표시하면 사용자 정의 헤더가 표시되지 않을 수 있습니다</string>
   <string name="morphe_hide_channel_bar_title">채널바 숨기기</string>
   <string name="morphe_hide_channel_watermark_title">채널 워터마크 숨기기</string>
-  <string name="morphe_hide_chapters_timeline_button_title">챕터 및 \'동영상 정보\' 버튼 숨기기</string>
+  <string name="morphe_hide_chapters_timeline_button_title">\'챕터\' 및 \'동영상 정보\' 버튼 숨기기</string>
   <string name="morphe_hide_crowdfunding_box_title">모금 행사 패널 숨기기</string>
   <string name="morphe_hide_emergency_box_title">긴급 정보 패널 숨기기</string>
   <string name="morphe_hide_info_panels_title">정보 패널 숨기기</string>
@@ -214,7 +214,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_learning_menu_title">학습 메뉴 숨기기</string>
   <string name="morphe_hide_live_menu_title">라이브 메뉴 숨기기</string>
   <string name="morphe_hide_memberships_menu_title">멤버십 메뉴 숨기기</string>
-  <string name="morphe_hide_movies_menu_title">영화 / 영화 및 TV 메뉴 숨기기</string>
+  <string name="morphe_hide_movies_menu_title">영화 메뉴 숨기기</string>
   <string name="morphe_hide_music_menu_title">음악 메뉴 숨기기</string>
   <string name="morphe_hide_news_menu_title">뉴스 메뉴 숨기기</string>
   <string name="morphe_hide_playables_menu_title">게임 룸 메뉴 숨기기</string>
@@ -270,7 +270,7 @@ Second \"item\" text"</string>
 
 필터링 키워드는 채널 이름 또는 동영상 제목에 표시되는 모든 텍스트가 될 수 있습니다
 
-대문자가 있는 단어는 대소문자를 함께 입력해야 합니다 (예: iPhone, TikTok, LeBlanc)"</string>
+대문자가 있는 단어는 대소문자를 함께 정확히 입력해야 합니다 (예: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_summary">"홈 / 구독 / 검색 결과 / 댓글 섹션에서 키워드 구문과 일치하는 콘텐츠가 필터링되어 숨겨집니다
 
 제한 사항:
@@ -495,16 +495,17 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">재생바 썸네일 활성화하기</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">재생바를 드래그하는 동안에 동영상 썸네일을 표시합니다</string>
+  <string name="morphe_seekbar_thumbnail_heatmap_peak_point">가장 많이 다시 본 장면</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'실시간 스트림 DVR 활성화하기'를 사용할 수 없을 수 있습니다
 
-이 문제를 해결하려면, '동영상 스트림 속이기'에서 '기본 클라이언트'를 'TV Simply' 또는 'visionOS'로 변경하세요"</string>
+이 문제를 해결하려면, '동영상 스트림 속이기'에서 '기본 클라이언트'를 'TV' 또는 'visionOS'로 변경하세요"</string>
   <string name="morphe_expand_livestream_dvr_duration_title">실시간 스트림 DVR 탐색 구간 확장하기</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">실시간 스트림을 최대 7일 전까지 되감아 볼 수 있습니다</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_expand_livestream_dvr_duration_not_available">"'실시간 스트림 DVR 탐색 구간 확장하기'를 사용할 수 없을 수 있습니다
 
-이 문제를 해결하려면, '동영상 스트림 속이기'에서 '기본 클라이언트'를 'TV Simply' 또는 'visionOS'로 변경하세요"</string>
+이 문제를 해결하려면, '동영상 스트림 속이기'에서 '기본 클라이언트'를 'TV' 또는 'visionOS'로 변경하세요"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">슬라이드하여 탐색 활성화하기</string>
   <string name="morphe_slide_to_seek_summary">동영상 플레이어를 길게 탭했을 경우에 \'2배속 재생\' 대신 \'슬라이드하여 탐색\'을 사용하도록 설정합니다</string>
@@ -522,7 +523,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_swipe_zone_label_volume">볼륨</string>
   <string name="morphe_swipe_zone_label_native">기본</string>
   <string name="morphe_swipe_press_to_engage_title">길게 탭하여 스와이프 제스처 사용하기</string>
-  <string name="morphe_swipe_press_to_engage_summary">스와이프 제스처가 인식되려면 화면을 길게 해야 합니다</string>
+  <string name="morphe_swipe_press_to_engage_summary">스와이프 제스처가 인식되려면 화면을 길게 탭해야 합니다</string>
   <string name="morphe_swipe_haptic_feedback_title">진동 피드백 활성화하기</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">화면 밝기 저장 및 복원하기</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">전체 화면 모드로 들어가거나 나갈 때마다 화면 밝기 값을 저장합니다</string>
@@ -637,7 +638,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_auto_captions_style_legacy_entry_2">자동 자막을 표시 안함</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">자막 쿠키 설정</string>
-  <string name="morphe_set_caption_cookies_summary">"쿠키가 누락되어 자동 번역 자막을 사용할 수 없는 YouTube 공식 버그를 수정합니다
+  <string name="morphe_set_caption_cookies_summary">"쿠키가 누락되어 자동 번역 자막을 사용할 수 없는 순정 YouTube 버그를 수정합니다
 
 '자막 쿠키'를 반드시 설정해야 합니다"</string>
   <string name="morphe_caption_cookies_title">자막 쿠키</string>
@@ -719,7 +720,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_hide_player_flyout_captions_footer_title">자막 설정 메뉴 하단 설명 숨기기</string>
   <string name="morphe_hide_player_flyout_captions_header_title">자막 설정 메뉴 헤더 숨기기</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_additional_settings_title">추가 설정 / 더보기 메뉴 숨기기</string>
+  <string name="morphe_hide_player_flyout_additional_settings_title">\'추가 설정\' / \'더보기\' 메뉴 숨기기</string>
   <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_sleep_timer_title">취침 타이머 메뉴 숨기기</string>
   <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -814,6 +815,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_hide_shorts_like_fountain_title">좋아요 버튼 애니메이션을 비활성화하기</string>
   <string name="morphe_hide_shorts_like_button_title">좋아요 버튼 숨기기</string>
   <string name="morphe_hide_shorts_comments_button_title">댓글 버튼 숨기기</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">저장 버튼 숨기기</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">공유 버튼 숨기기</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
@@ -1053,7 +1056,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">알림 미디어 컨트롤</string>
   <string name="morphe_notification_media_screen_summary">잠금 화면 및 알림 패널에 표시되는 재생 컨트롤을 설정할 수 있습니다</string>
-  <string name="morphe_hide_notification_media_prev_next_title">이전 &amp; 다음 버튼 숨기기</string>
+  <string name="morphe_hide_notification_media_prev_next_title">이전 &amp; 다음 동영상 버튼 숨기기</string>
   <string name="morphe_hide_notification_media_prev_next_summary">미디어 알림, 잠금 화면 그리고 헤드폰 컨트롤에서 이전 및 다음 버튼을 숨깁니다</string>
   <string name="morphe_disable_notification_media_seekbar_title">재생바 비활성화하기</string>
   <string name="morphe_disable_notification_media_seekbar_summary">잠금 화면 및 알림 패널에서 재생바를 드래그하지 못하도록 합니다</string>
@@ -1137,8 +1140,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_video_quality_prioritize_summary">코덱 효율성보다 사용 가능한 최고 동영상 화질을 우선합니다</string>
   <string name="morphe_video_quality_prioritize_dialog">이 설정을 비활성화하면, 일부 오래된 동영상에서 화질 옵션이 표시되지 않을 수 있습니다</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">\'Android VR\' / visionOS AV1 허용하기</string>
-  <string name="morphe_spoof_video_streams_av1_summary">\'Android VR\' / visionOS 클라이언트를 사용할 경우에 소프트웨어 AV1 디코딩을 허용합니다</string>
+  <string name="morphe_spoof_video_streams_av1_title">\'Android VR\' / \'visionOS\' AV1 허용하기</string>
+  <string name="morphe_spoof_video_streams_av1_summary">\'Android VR\' / \'visionOS\' 클라이언트를 사용할 경우에 소프트웨어 AV1 디코딩을 허용합니다</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"이 설정을 활성화하면, 소프트웨어 AV1 디코딩이 사용될 수 있습니다.
 
 AV1이 사용된 동영상 재생이 끊기거나 프레임이 손실될 수 있습니다."</string>

@@ -47,7 +47,7 @@ Vérifiez que le nom de paquet est correct et que l'application est bien install
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">Personnalisé</string>
   <string name="morphe_custom_branding_notification_icon_title">Icône de notification</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">Faire correspondre l’icône de l’application</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Faire correspondre l\'icône de l\'application</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Avis Morphe</string>
@@ -80,7 +80,7 @@ Pour vous connecter, appuyez sur 'Continuer' ci-dessous."</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Se déconnecter</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Instructions</string>
   <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Code d’activation : %s
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Code d'activation : %s
 
 1. Appuyez sur 'Ouvrir le site web' ci-dessous pour ouvrir la page 'Connecter un appareil'
 2. Collez depuis le presse-papiers (ou saisissez manuellement) le code d'activation affiché ci-dessus
@@ -93,7 +93,7 @@ Pour vous connecter, appuyez sur 'Continuer' ci-dessous."</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Connecté avec succès</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Authentification enregistrée
 
-• Vos paramètres Morphe n’importeront/exportent pas l'authentification Android VR
+• Vos paramètres Morphe n'importeront/exportent pas l'authentification Android VR
 • Si cette application reste inutilisée pendant 6 mois, Google supprimera cette authentification
 • Vous devrez vous reconnecter si vous changez votre mot de passe Google ou si vous dissociez cet appareil de vos paramètres Google"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 est temporairement indisponible (délai d\'attente de l\'API dépassé)</string>
@@ -152,7 +152,7 @@ Cela peut aider à identifier les composants lors de la création de filtres per
 Cependant, activer cette option entraînera également l'enregistrement de certaines données utilisateur, telles que votre adresse IP."</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Filtre personnalisé</string>
-  <string name="morphe_custom_filter_screen_summary">Configurez des filtres personnalisés pour masquer n’importe quel composant</string>
+  <string name="morphe_custom_filter_screen_summary">Configurez des filtres personnalisés pour masquer n\'importe quel composant</string>
   <string name="morphe_custom_filter_title">Activer le filtre personnalisé</string>
   <string name="morphe_custom_filter_strings_title">Filtre personnalisé</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
@@ -160,10 +160,10 @@ Cependant, activer cette option entraînera également l'enregistrement de certa
   <string name="morphe_custom_filter_toast_invalid_syntax">Filtre personnalisé invalide : %s</string>
   <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">Filtre du menu des paramètres</string>
-  <string name="morphe_settings_menu_filter_screen_summary">Masquer les éléments sur l’écran standard des paramètres de l’application par leur nom visible</string>
-  <string name="morphe_settings_menu_filter_picker_empty">Ouvrez l’écran standard des paramètres de l’application une fois pour remplir la liste</string>
+  <string name="morphe_settings_menu_filter_screen_summary">Masquer les éléments de l\'écran des paramètres standard de l\'application en fonction de leur nom visible</string>
+  <string name="morphe_settings_menu_filter_picker_empty">Ouvrez une fois l\'écran des paramètres standard de l\'application pour remplir la liste</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">Supprimer la boîte de dialogue d’avertissement</string>
+  <string name="morphe_remove_viewer_discretion_dialog_title">Supprimer la boîte de dialogue d\'avertissement</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Cela ne contourne pas la restriction d\'âge. Elle est simplement acceptée automatiquement</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Falsifier la version de l\'application</string>
@@ -187,7 +187,7 @@ Si vous désactivez cette option par la suite, il est recommandé d'effacer les 
   <string name="morphe_ryd_dislike_percentage_summary">Affiche les \'Je n\'aime pas\' en pourcentage du nombre de \'J\'aime\' au lieu d\'un nombre</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
   <string name="morphe_ryd_compact_layout_title">Utiliser un bouton \'J\'aime\' compact</string>
-  <string name="morphe_ryd_compact_layout_summary">Réduit la largeur du bouton \'J’aime\' pour gagner de la place</string>
+  <string name="morphe_ryd_compact_layout_summary">Réduit la largeur du bouton \'J\'aime\' pour gagner de la place</string>
   <string name="morphe_ryd_estimated_like_title">Afficher les \'J\'aime\' estimés</string>
   <string name="morphe_ryd_estimated_like_summary">Affiche un nombre estimé de \'J\'aime\' sur les vidéos où le créateur a désactivé les \'J\'aime\'</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Afficher les alertes d\'erreur de connexion</string>

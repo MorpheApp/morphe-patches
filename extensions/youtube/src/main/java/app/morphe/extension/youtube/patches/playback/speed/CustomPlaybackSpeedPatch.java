@@ -499,6 +499,8 @@ public class CustomPlaybackSpeedPatch {
                     normalLabel.setTextColor(Utils.getAppForegroundColor());
                     normalLabel.setTextSize(10);
                     normalLabel.setGravity(Gravity.CENTER);
+                    normalLabel.setSingleLine(true);
+                    normalLabel.setEllipsize(TextUtils.TruncateAt.END);
 
                     FrameLayout.LayoutParams labelParams = new FrameLayout.LayoutParams(
                             FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT,

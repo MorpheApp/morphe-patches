@@ -105,6 +105,7 @@ public class StreamingDataRequest {
             Utils.createSizeRestrictedMap(50));
 
     private static volatile ClientType lastSpoofedClientType;
+    private static volatile boolean fallbackWithTVDash;
 
     /**
      * Used only for stats for nerds to show VR sign-in was used.
@@ -258,6 +259,9 @@ public class StreamingDataRequest {
     @Nullable
     private static StreamData buildPlayerResponseBuffer(ClientType clientType,
                                                         HttpURLConnection connection) {
+        if (connection == null) {
+            return null;
+        }
         // gzip encoding doesn't response with content length (-1),
         // but empty response body does.
         if (connection.getContentLength() == 0) {
@@ -306,6 +310,18 @@ public class StreamingDataRequest {
                 return null;
             }
 
+            // In YouTube 20.21.37, manifestless livestreams cannot be played using the SABR protocol, or there are playback issues.
+            // Until code to assemble the manifestUrl is implemented or code to override the exoPlayerConfig is ready,
+            // TV SABR clients in livestreams will be temporarily fallbacked to TV DASH clients.
+            //
+            // TODO: Override other playerConfigs such as exoPlayerConfig.
+            if (clientType.requireSABR && clientType == ClientType.TV_SABR
+                    && Utils.containsAny(streamingData.getServerAbrStreamingUrl(), "yt_live_broadcast", "yt_premiere_broadcast")) {
+                Logger.printDebug(() -> "Livestream detected, fallback to TV dash");
+                fallbackWithTVDash = true;
+                return null;
+            }
+
             if (clientType.requireJS) {
                 StreamingData.Builder deobfuscatedStreamingDataBuilder =
                         JavaScriptManager.getDeobfuscatedStreamingData(streamingData, clientType.requireSABR);
@@ -317,23 +333,9 @@ public class StreamingDataRequest {
             }
 
             byte[] streamingDataBuffer = responseBuilder.build().toByteArray();
-            byte[] playerConfigBuffer = null;
-
-            if (clientType.requireSABR && playerResponse.hasPlayerConfig()) {
-                PlayerConfig playerConfig = playerResponse.getPlayerConfig();
-
-                // It seems there is an issue when 'usePlatypus = true' when forcing the AVC codec.
-                // Override the 'usePlatypus' to false.
-                if (SharedYouTubeSettings.OVERRIDE_INITIAL_VIDEO_QUALITY.get()) {
-                    PlayerConfig.Builder playerConfigBuilder = playerConfig.toBuilder();
-                    MediaCommonConfig.Builder mediaCommonConfigBuilder = playerConfigBuilder
-                            .getMediaCommonConfig().toBuilder();
-                    mediaCommonConfigBuilder.setUsePlatypus(false);
-                    playerConfigBuilder.setMediaCommonConfig(mediaCommonConfigBuilder);
-                    playerConfig = playerConfigBuilder.build();
-                }
-                playerConfigBuffer = playerConfig.toByteArray();
-            }
+            byte[] playerConfigBuffer = clientType.requireSABR && playerResponse.hasPlayerConfig()
+                    ? playerResponse.getPlayerConfig().toByteArray()
+                    : null;
 
             return new StreamData(streamingDataBuffer, playerConfigBuffer);
         } catch (IOException ex) {
@@ -365,22 +367,27 @@ public class StreamingDataRequest {
             final boolean showErrorToast = (++i == clientOrderToUse.length) || debugEnabled;
 
             HttpURLConnection connection = send(clientType, videoId, playerHeaders, showErrorToast);
-            if (connection != null) {
-                StreamData playerResponseBuffers = buildPlayerResponseBuffer(clientType, connection);
+            StreamData streamingData = buildPlayerResponseBuffer(clientType, connection);
 
-                if (playerResponseBuffers != null) {
-                    lastSpoofedClientType = clientType;
+            if (clientType == ClientType.TV_SABR && fallbackWithTVDash) {
+                fallbackWithTVDash = false;
+                clientType = ClientType.TV_DASH;
+                HttpURLConnection fallBackConnection = send(clientType, videoId, playerHeaders, showErrorToast);
+                streamingData = buildPlayerResponseBuffer(clientType, fallBackConnection);
+            }
 
-                    if (clientType.requireJS) {
-                        Logger.printDebug(() -> "End of fetch for JavaScript required client" +
-                                ", video: " + videoId +
-                                ", hash: " + JavaScriptManager.getJavaScriptHash() +
-                                ", variant: " + JavaScriptManager.getJavaScriptVariant() +
-                                ", took: " + (System.currentTimeMillis() - fetchStartTime) + "ms");
-                    }
+            if (streamingData != null) {
+                lastSpoofedClientType = clientType;
 
-                    return playerResponseBuffers;
+                if (clientType.requireJS) {
+                    Logger.printDebug(() -> "End of fetch for JavaScript required client" +
+                            ", video: " + videoId +
+                            ", hash: " + JavaScriptManager.getJavaScriptHash() +
+                            ", variant: " + JavaScriptManager.getJavaScriptVariant() +
+                            ", took: " + (System.currentTimeMillis() - fetchStartTime) + "ms");
                 }
+
+                return streamingData;
             }
         }
 

@@ -10,5 +10,5 @@ option java_package = "app.morphe.extension.shared.innertube";
 
 message ReelItemWatchResponse {
   optional ResponseContext responseContext = 1;
-  optional PlayerResponse player_response = 4;
+  optional PlayerResponse playerResponse = 4;
 }

@@ -7,8 +7,10 @@
 
 package app.morphe.extension.youtube.videoplayer;
 
+import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +20,6 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +27,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.HidePlayerOverlayButtonsPatch;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.settings.Settings;
@@ -112,7 +114,7 @@ public class PlayerOverlayButton {
             }
 
             final int reservedWidth = (int) (totalButtons
-                    * getButtonWidthPercentage(totalButtons)
+                    * getButtonWidthPercentage(totalButtons, container)
                     * buttonWidth);
 
             if (lastMarginEnd == reservedWidth) return;
@@ -187,7 +189,7 @@ public class PlayerOverlayButton {
             // Convert from 0 indexing to 1 indexing.
             final int buttonNumber = buttonControllers.indexOf(this) + (HIDE_FULLSCREEN_BUTTON_ENABLED ? 0 : 1);
             final float xOffset = (int) (source.getX()
-                    - (buttonNumber * (getButtonWidthPercentage(buttonControllers.size()) * source.getWidth())));
+                    - (buttonNumber * (getButtonWidthPercentage(buttonControllers.size(), source) * source.getWidth())));
             if (button.getX() != xOffset) {
                 button.setX(xOffset);
             }
@@ -251,13 +253,17 @@ public class PlayerOverlayButton {
      * Returns the button width percentage based on the total number of buttons,
      * so buttons don't overlap the video time bar.
      */
-    private static float getButtonWidthPercentage(int totalButtons) {
-        return switch (totalButtons) {
-            case 2 -> 0.90f;
-            case 3 -> 0.80f;
-            case 4 -> 0.70f;
-            default -> 1.0f;
-        };
+    private static float getButtonWidthPercentage(int totalButtons, View view) {
+        if (totalButtons <= 1) return 1.0f;
+
+        // Landscape has far more horizontal room than portrait, so buttons don't need to
+        // pack as tightly to stay clear of the time bar even as more of them are added.
+        boolean landscape = view.getResources().getConfiguration().orientation
+                == Configuration.ORIENTATION_LANDSCAPE;
+        float minPercentage = landscape ? 0.80f : 0.60f;
+
+        // Keep spacing progression to avoid overlapping the time bar.
+        return Math.max(minPercentage, 1.10f - totalButtons * 0.10f);
     }
 
     /**
@@ -309,10 +315,36 @@ public class PlayerOverlayButton {
                                       String drawableName,
                                       View.OnClickListener onClickListener,
                                       View.OnLongClickListener onLongClickListener) {
+        return addButton(
+                sourceButton,
+                new ImageView(sourceButton.getContext()),
+                drawableName,
+                onClickListener,
+                onLongClickListener
+        );
+    }
+
+    /**
+     * Adds a caller provided button to the player overlay, using the same layout, background
+     * and positioning as the built-in overlay buttons. Used for buttons that draw more than
+     * an icon, such as a progress indicator.
+     *
+     * @param sourceButton        the existing player button used as a position and style anchor.
+     * @param button              the button to add.
+     * @param drawableName        resource name of the drawable to display inside the button.
+     * @param onClickListener     invoked when the button is tapped.
+     * @param onLongClickListener invoked when the button is long-pressed.
+     * @return the added button, or {@code null} if the button could not be added.
+     */
+    @Nullable
+    public static <T extends ImageView> T addButton(View sourceButton,
+                                                    T button,
+                                                    String drawableName,
+                                                    View.OnClickListener onClickListener,
+                                                    View.OnLongClickListener onLongClickListener) {
         ViewGroup sourceButtonViewGroup = updateRefsFromSourceButton(sourceButton);
         if (sourceButtonViewGroup == null) return null;
 
-        ImageView button = new ImageView(sourceButton.getContext());
         button.setId(View.generateViewId());
         button.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
         button.setImageResource(ResourceUtils.getIdentifierOrThrow(
@@ -348,7 +380,8 @@ public class PlayerOverlayButton {
         TextView textOverlay = new TextView(sourceButton.getContext());
         textOverlay.setId(View.generateViewId());
         textOverlay.setGravity(Gravity.CENTER);
-        textOverlay.setTextSize(14);
+        // Fixed size regardless of the system font-size setting, since the button has no room to grow.
+        textOverlay.setTextSize(TypedValue.COMPLEX_UNIT_PX, Dim.dp(14));
         textOverlay.setTextColor(0xFFFFFFFF);
         textOverlay.setTypeface(Typeface.create("sans-serif-condensed", Typeface.BOLD));
         textOverlay.setOnClickListener(onClickListener);

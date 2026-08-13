@@ -136,8 +136,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_live_chat_replay_button_title">隱藏「直播聊天重播」按鈕</string>
   <string name="morphe_hide_live_chat_replay_button_summary">隱藏全螢幕模式下的聊天重播按鈕</string>
   <string name="morphe_hide_medical_panels_title">隱藏醫療資訊面板</string>
+  <string name="morphe_hide_player_gesture_hints_title">隱藏播放器手勢提示</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
+  <string name="morphe_hide_player_gesture_hints_summary">隱藏播放器手勢期間顯示的提示，例如「向上滑動以精確搜尋」、「放開以取消」和「2x」</string>
   <string name="morphe_hide_snackbar_title">隱藏小訊息</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">隱藏訂閱者規範</string>
   <string name="morphe_hide_sync_button_title">隱藏「同步到影片」按鈕</string>
@@ -212,8 +214,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_learning_menu_title">隱藏「學習」選單</string>
   <string name="morphe_hide_live_menu_title">隱藏「直播」選單</string>
   <string name="morphe_hide_memberships_menu_title">隱藏「會員資格」選單</string>
-  <string name="morphe_hide_movies_menu_title">隱藏「電影」選單</string>
-  <string name="morphe_hide_music_menu_title">隱藏「音樂與電視」選單</string>
+  <string name="morphe_hide_movies_menu_title">隱藏「電影與電視」選單</string>
+  <string name="morphe_hide_music_menu_title">隱藏音樂選單</string>
   <string name="morphe_hide_news_menu_title">隱藏「新聞」選單</string>
   <string name="morphe_hide_playables_menu_title">隱藏「遊戲角落」</string>
   <string name="morphe_hide_podcasts_menu_title">隱藏「播客」選單</string>
@@ -491,16 +493,17 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">啟用跳轉列縮圖預覽</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">在拖動搜尋條時顯示影片縮圖</string>
+  <string name="morphe_seekbar_thumbnail_heatmap_peak_point">最多重播</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"'勺生疢子颛水好要' 可能不可痟訪
+  <string name="morphe_livestream_dvr_not_available">"'啟用直播 DVR'可能不可用
 
-者方神错材或要通过此到此到、努多'Spoof video streams' 和已'Default client' 變放'TV Simply' 或'visionOS'"</string>
+若要修正此問題，請開啟'偽造影片串流'並將'預設用戶端'變更為'TV'或'visionOS'"</string>
   <string name="morphe_expand_livestream_dvr_duration_title">擴展直播 DVR 錄製時長</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">可讓您將即時廣播倒退最多 7 天</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"'加锯疢子颛水好要' 可能不可痟訪
+  <string name="morphe_expand_livestream_dvr_duration_not_available">"'擴充直播 DVR 持續時間'可能不可用
 
-者方神错材或要通过此到此到、努多'Spoof video streams' 和已'Default client' 變放'TV Simply' 或'visionOS'"</string>
+若要修正此問題，請開啟'偽造影片串流'並將'預設用戶端'變更為'TV'或'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">啟用滑動預覽</string>
   <string name="morphe_slide_to_seek_summary">按住影片播放器時啟用滑動尋找，而不是以 2 倍速度播放</string>
@@ -810,6 +813,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_like_fountain_title">隱藏喜歡按鈕的噴泉動畫</string>
   <string name="morphe_hide_shorts_like_button_title">隱藏「喜歡」按鈕</string>
   <string name="morphe_hide_shorts_comments_button_title">隱藏「留言」按鈕</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">隱藏「儲存」按鈕</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">隱藏「分享」按鈕</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->

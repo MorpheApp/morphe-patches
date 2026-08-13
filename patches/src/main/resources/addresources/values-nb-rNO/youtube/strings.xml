@@ -136,8 +136,10 @@ Endringer inkluderer:
   <string name="morphe_hide_live_chat_replay_button_title">Skjul \'Direktestrøm-chat-gjennomgang\'-knappen</string>
   <string name="morphe_hide_live_chat_replay_button_summary">Skjuler chat-avspillingsknappen i fullskjermmodus</string>
   <string name="morphe_hide_medical_panels_title">Skjul medisinske paneler</string>
+  <string name="morphe_hide_player_gesture_hints_title">Skjul bevegelseshint for spiller</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
+  <string name="morphe_hide_player_gesture_hints_summary">Skjuler hintene som vises under spillerbevegelser, for eksempel «Dra opp for presis søking», «Slipp for å avbryte» og «2x»</string>
   <string name="morphe_hide_snackbar_title">Skjul snackbar</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Skjul abonnentretningslinjer</string>
   <string name="morphe_hide_sync_button_title">Skjul knappen \"Synkroniser til video\"</string>
@@ -212,8 +214,8 @@ Endringer inkluderer:
   <string name="morphe_hide_learning_menu_title">Skjul Læringsmeny</string>
   <string name="morphe_hide_live_menu_title">Skjul Direkte-menyen</string>
   <string name="morphe_hide_memberships_menu_title">Skjul Medlemskapsmeny</string>
-  <string name="morphe_hide_movies_menu_title">Skjul Filmmeny</string>
-  <string name="morphe_hide_music_menu_title">Skjul \'Musikk og TV\'-menyen</string>
+  <string name="morphe_hide_movies_menu_title">Skjul \'Filmer og TV\'-menyen</string>
+  <string name="morphe_hide_music_menu_title">Skjul musikkmenyen</string>
   <string name="morphe_hide_news_menu_title">Skjul Nyhetsmeny</string>
   <string name="morphe_hide_playables_menu_title">Skjul Spillbare-menyen</string>
   <string name="morphe_hide_podcasts_menu_title">Skjul Podcastmeny</string>
@@ -347,6 +349,7 @@ Trykk her for å åpne AiSlopList.com og se nedlastinger for andre plattformer"<
   <string name="morphe_external_downloader_summary">Viser en overleggsknapp i videospilleren som åpner din eksterne nedlaster</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Overstyr nedlastingsknapp og meny</string>
+  <string name="morphe_external_downloader_action_button_summary">Bruker din valgte eksterne nedlaster i stedet for standard nedlastingsfunksjonen</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Taleoversettelse</string>
   <string name="morphe_vot_screen_summary">Les opp tekstingen til videoen ved hjelp av tekst-til-tale på enheten, synkronisert med avspillingen</string>
@@ -446,12 +449,15 @@ Info: Fungerer kanskje ikke på direktesendinger"</string>
   <string name="morphe_save_to_watch_later_success_toast">Videoen ble lagret i Se senere-listen</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Denne videoen er allerede lagret i Se senere-listen</string>
   <string name="morphe_save_to_watch_later_error_toast">Kunne ikke lagre denne videoen i Se senere-listen</string>
+  <string name="morphe_queue_flyout_title">Legg til i Morphe-kø</string>
   <string name="morphe_queue_restore_title">Behold køen mellom øktene</string>
   <string name="morphe_queue_restore_summary">Køen beholdes etter omstart av appen</string>
   <string name="morphe_swap_save_and_queue_actions_title">Bytt om «Lagre» og «Kø»-handlinger</string>
   <string name="morphe_swap_save_and_queue_actions_summary">Trykk for køalternativer, trykk og hold for å lagre til «Se senere»</string>
   <string name="morphe_queue_override_flyout_menu_title">Overskriv kø-flyout-knappen for avspillingsliste</string>
   <string name="morphe_queue_override_flyout_menu_summary">Åpner Morphe-køen i stedet for YouTube-køen</string>
+  <string name="morphe_queue_add_flyout_menu_title">Legg til kømenyelement i feed-flyout</string>
+  <string name="morphe_queue_add_flyout_menu_summary">Legger til et ekstra flyout-element. Aktiver dette hvis «Legg til i kø» ikke vises</string>
   <string name="morphe_queue_manager_check_failed_auth">Ikke logget inn</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">Ingen spillelist-ID</string>
   <string name="morphe_queue_manager_check_failed_queue">Køen er tom</string>
@@ -487,16 +493,17 @@ Info: Fungerer kanskje ikke på direktesendinger"</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Aktiver miniatyrbilder for søkeskjermen</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Viser et videominiatyrbilde mens du drar i søkeskjermen</string>
+  <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Mest spilt om igjen</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"\"Aktiver DVR for direktesending\" er kanskje ikke tilgjengelig
+  <string name="morphe_livestream_dvr_not_available">"«Aktiver direktesending-DVR» er kanskje ikke tilgjengelig
 
-For å fikse dette, slå på \"Spoof video streams\" og endre \"Standard klient\" til \"TV Simply\" eller \"visionOS\""</string>
+For å fikse dette, slå på «Forfalsk videostrømmer» og endre «Standard klient» til «TV» eller «visionOS»"</string>
   <string name="morphe_expand_livestream_dvr_duration_title">Utvid livestream DVR varighet</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">Lar deg spole tilbake direktesendinger opptil 7 dager</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"Muligheten til å utvide DVR-varigheten for direktesendinger er kanskje ikke tilgjengelig
+  <string name="morphe_expand_livestream_dvr_duration_not_available">"«Utvid direktesending-DVR-varigheten» er kanskje ikke tilgjengelig
 
-For å fikse dette, slå på 'Forfalske videostrømmer' og endre 'Standard klient' til 'TV Simply' eller 'visionOS'"</string>
+For å fikse dette, slå på «Forfalsk videostrømmer» og endre «Standard klient» til «TV» eller «visionOS»"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Aktiver glidekontroll for søk</string>
   <string name="morphe_slide_to_seek_summary">Aktiverer sveiping for å søke i stedet for å spille med 2x hastighet når du trykker og holder videospilleren</string>
@@ -514,6 +521,7 @@ For å fikse dette, slå på 'Forfalske videostrømmer' og endre 'Standard klien
   <string name="morphe_swipe_zone_label_volume">Volum</string>
   <string name="morphe_swipe_zone_label_native">Native</string>
   <string name="morphe_swipe_press_to_engage_title">Aktiver trykk for å sveipe gest</string>
+  <string name="morphe_swipe_press_to_engage_summary">Krever at du trykker og holder før en sveipebevegelse gjenkjennes</string>
   <string name="morphe_swipe_haptic_feedback_title">Aktiver haptisk tilbakemelding</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Lagre og gjenopprett lysstyrke</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Husker lysstyrkenivået når du går inn eller ut av fullskjermmodus</string>
@@ -628,6 +636,9 @@ For å fikse dette, slå på 'Forfalske videostrømmer' og endre 'Standard klien
   <string name="morphe_auto_captions_style_legacy_entry_2">Viser automatisk undertekst</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Angi informasjonskapsler for bildetekster</string>
+  <string name="morphe_set_caption_cookies_summary">"Fikser en standard YouTube-feil der automatisk oversatte undertekster kanskje ikke er tilgjengelige på grunn av manglende informasjonskapsler
+
+«Undertekst-informasjonskapsler» må oppgis"</string>
   <string name="morphe_caption_cookies_title">Teksting-cookies</string>
   <string name="morphe_caption_cookies_summary">Informasjonskapsler som skal settes i Timed Text API (Caption Data API)-forespørsler</string>
   <string name="morphe_get_caption_cookies_title">Hent teksting-cookies</string>
@@ -802,6 +813,8 @@ For å vise ’Lydspor’-menyen, endre ’Spoof video streams’ til en hvilken
   <string name="morphe_hide_shorts_like_fountain_title">Skjul Like-knappfontene</string>
   <string name="morphe_hide_shorts_like_button_title">Skjul Like-knapp</string>
   <string name="morphe_hide_shorts_comments_button_title">Skjul Kommentar-knapp</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">Skjul Lagre-knappen</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Skjul Del-knapp</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
@@ -888,6 +901,7 @@ Begrensning: Hvis 'Gjenopprett gammel videoaksjonslinje' er slått av, er det mu
   <string name="morphe_open_system_share_sheet_summary">Åpner systemets delingsark i stedet for det innebygde når du deler innhold</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Overskriv YouTube Music-knapper</string>
+  <string name="morphe_override_youtube_music_buttons_summary">Åpner din foretrukne musikkapp i stedet for standard YouTube Music-appen</string>
   <string name="morphe_music_package_name_title">Pakkenavn for musikkapp</string>
   <string name="morphe_music_package_name_summary">Pakkenavnet til din installerte musikkapp</string>
   <!-- layout.startpage.changeStartPagePatch -->
@@ -1038,6 +1052,7 @@ Hvis aktivert, sendes videourler til API-serveren og ingen andre data sendes. Hv
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Mediekontroller for varsler</string>
   <string name="morphe_notification_media_screen_summary">Tilpass avspillingskontrollene som vises på låseskjermen og varslingspanelet</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Skjul forrige &amp; neste-knapper</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Skjuler Forrige og Neste knapper i medievarsel, låseskjerm og hodetelefonkontroller</string>
   <string name="morphe_disable_notification_media_seekbar_title">Deaktiver søkefelt</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Forhindrer at du drar i søkefeltet på låseskjermen og varslingspanelet</string>
@@ -1110,6 +1125,7 @@ Begrensninger:
 • HDR-videoer vil ikke bruke AVC
 • Noen enheter kan ikke tvinge AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">For å bruke denne funksjonen, sett «Forfalsk videostrømmer» til «Android VR» eller «Android Studio»</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Åpne avansert kvalitetsmeny</string>
   <string name="morphe_advanced_video_quality_menu_summary">Hoppover kvalitetselementvalgmenyen og åpner avansert kvalitetsmeny direkte</string>
@@ -1120,10 +1136,13 @@ Begrensninger:
   <string name="morphe_video_quality_prioritize_summary">Prioriterer høyest tilgjengelig videokvalitet fremfor kodekeffektivitet</string>
   <string name="morphe_video_quality_prioritize_dialog">Hvis denne innstillingen er slått av, kan eldre videoer vise ingen videokvalitetsalternativer</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_av1_title">Tillat «Android VR» / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Tillater programvare-AV1-dekoding når du bruker «Android VR» / visionOS-klienten</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Å aktivere denne innstillingen kan bruke programvare-AV1-dekoding.
 
 Videospilling med AV1 kan hakke eller miste bilder."</string>
   <string name="morphe_spoof_video_streams_about_title">Bivirkninger av forfalskning</string>
+  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• «Audio Track»-menyen mangler</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Ingen AV1-videokodek</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR-oppslukende modus er ikke tilgjengelig</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabil volum er ikke tilgjengelig</string>
@@ -1133,6 +1152,7 @@ Videospilling med AV1 kan hakke eller miste bilder."</string>
   <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• Kvaliteten kan være begrenset til 720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Spiller JavaScript-variant</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Vis forfalsking i «Stats for nerds»</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Gjenopprett gammel videomeny</string>
   <string name="morphe_restore_old_video_action_bar_summary">"Fikser at ikke-likte ikke vises og at videoaksjonsknapper ikke kan skjules

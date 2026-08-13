@@ -7,7 +7,9 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.spoof.spoofVideoStreamsPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_20_35_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_39_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_13_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_21_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -34,6 +36,7 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
         is_20_31_or_greater
     },
     useNewRequestBuilderFingerprint = { is_21_21_or_greater },
+    restoreMissingCuepointMethod = { is_20_35_or_greater && !is_21_13_or_greater },
 
     block = {
         compatibleWith(COMPATIBILITY_YOUTUBE)

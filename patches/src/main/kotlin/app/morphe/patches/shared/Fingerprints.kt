@@ -55,6 +55,16 @@ internal object CurrentAudioVideoFormatToStringFingerprint : Fingerprint(
     strings = listOf("currentVideoFormat=")
 )
 
+internal object MediaSessionSetPlaybackStateFingerprint : Fingerprint(
+    filters = listOf(
+        methodCall(
+            definingClass = "Landroid/media/session/MediaSession;",
+            name = "setPlaybackState",
+            parameters = listOf("Landroid/media/session/PlaybackState;")
+        )
+    )
+)
+
 internal object SpannableStringBuilderFingerprint : Fingerprint(
     returnType = "Ljava/lang/CharSequence;",
     filters = listOf(

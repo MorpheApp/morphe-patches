@@ -8,7 +8,13 @@
 package app.morphe.patches.shared.misc.litho.node
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.InstructionLocation.MatchFirst
+import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.newInstance
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -40,4 +46,56 @@ internal object LazilyConvertedElementPatchFingerprint : Fingerprint(
     definingClass = EXTENSION_CLASS,
     name = "onLazilyConvertedElementLoaded",
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC)
+)
+
+internal object TreeNodeListFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf("L"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = "L",
+            location = MatchAfterWithin(5) // Match close to start of method.
+        ),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "Ljava/util/concurrent/atomic/AtomicReference;",
+            location = MatchAfterWithin(5)
+        ),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "Ljava/util/concurrent/atomic/AtomicReference;",
+            location = MatchAfterWithin(2)
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Ljava/util/concurrent/atomic/AtomicReference;->get()Ljava/lang/Object;",
+            location = MatchAfterWithin(2)
+        )
+    )
+)
+
+private object TreeNodeListHelperParentFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf("L", "L"),
+    filters = listOf(
+        newInstance("Ljava/util/ArrayList;", location = MatchFirst()),
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT,
+            smali = "Ljava/util/ArrayList;-><init>()V",
+            location = MatchAfterImmediately(),
+        ),
+        literal(0, location = MatchAfterWithin(10))
+    ),
+    custom = { _, classDef ->
+        classDef.methods.count() == 2
+    }
+)
+
+internal object TreeNodeListHelperConstructorFingerprint : Fingerprint(
+    classFingerprint = TreeNodeListHelperParentFingerprint,
+    name = "<init>"
 )

@@ -30,6 +30,8 @@ import app.morphe.extension.shared.oauth2.object.ActivationCodeData;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.shared.spoof.ClientType;
+import app.morphe.extension.shared.spoof.requests.VisitorIdRequester;
 
 public class OAuth2Requester {
     /**
@@ -105,6 +107,8 @@ public class OAuth2Requester {
             // Bearer y29.xxx...
             authorization = accessTokenData.tokenType + " " + accessTokenData.accessToken;
         }
+
+        clearVisitorId();
     }
 
     private static void handleConnectionError(String toastMessage, @Nullable Exception ex) {
@@ -128,7 +132,16 @@ public class OAuth2Requester {
             authorization = "";
         }
 
+        clearVisitorId();
         Utils.showToastShort(str("morphe_oauth2_toast_reset"));
+    }
+
+    private static void clearVisitorId() {
+        for (ClientType c : ClientType.values()) {
+            if (c.supportsOAuth2) {
+                VisitorIdRequester.removeVisitorId(c);
+            }
+        }
     }
 
     private static boolean isActivationCodeDataAvailable(ActivationCodeData activationCodeData) {
