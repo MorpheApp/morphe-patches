@@ -6,6 +6,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.all.misc.resources.ResourceType
 import app.morphe.patches.all.misc.resources.resourceLiteral
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
@@ -13,8 +14,22 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import java.lang.ref.WeakReference
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/PlayerTypeHookPatch;"
+
+private lateinit var playerTypeMethodRef: WeakReference<MutableMethod>
+
+/**
+ * Adds a callback that is invoked whenever the regular player's type changes.
+ *
+ * @param methodDescriptor static method accepting the original player type enum.
+ */
+internal fun addPlayerTypeHook(methodDescriptor: String) =
+    playerTypeMethodRef.get()!!.addInstruction(
+        0,
+        "invoke-static { p1 }, $methodDescriptor",
+    )
 
 val playerTypeHookPatch = bytecodePatch(
     description = "Hook to get the current player type and video playback state.",
@@ -29,10 +44,13 @@ val playerTypeHookPatch = bytecodePatch(
             parameters = listOf(
                 PlayerTypeEnumFingerprint.originalClassDef.type
             )
-        ).method.addInstruction(
-            0,
-            "invoke-static { p1 }, $EXTENSION_CLASS->setPlayerType(Ljava/lang/Enum;)V",
-        )
+        ).method.apply {
+            playerTypeMethodRef = WeakReference(this)
+            addInstruction(
+                0,
+                "invoke-static { p1 }, $EXTENSION_CLASS->setPlayerType(Ljava/lang/Enum;)V",
+            )
+        }
 
         ReelWatchPagerFingerprint.let {
             it.method.apply {

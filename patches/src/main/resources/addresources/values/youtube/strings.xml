@@ -923,6 +923,10 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <string name="morphe_exit_fullscreen_entry_3">Landscape only</string>
     <string name="morphe_exit_fullscreen_entry_4">Portrait and landscape</string>
 
+    <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+    <string name="morphe_force_fullscreen_landscape_title">Force landscape in fullscreen</string>
+    <string name="morphe_force_fullscreen_landscape_summary">Rotates the regular video player to landscape whenever fullscreen mode is entered</string>
+
     <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
     <string name="morphe_disable_fullscreen_gestures_title">Fullscreen gestures</string>
     <string name="morphe_disable_fullscreen_gestures_summary">Player gestures to enter or exit from fullscreen mode</string>
