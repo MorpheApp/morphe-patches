@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.youtube.patches;
 
 import android.icu.text.NumberFormat;
@@ -218,10 +228,9 @@ public final class VideoInformation {
             channelId = "";
             channelName = "";
             String videoTitle = "";
-            boolean isLive = false;
             // playbackSpeed = DEFAULT_PLAYBACK_SPEED; // Captured at video start, interferes otherwise.
             playbackSpeedFormattedString = "";
-            float audioPitchOverride = RememberPlaybackSpeedPatch.getPlaybackAudioPitchOverride();
+            final float audioPitchOverride = RememberPlaybackSpeedPatch.getPlaybackAudioPitchOverride();
             if (audioPitchOverride > 0.0f && Settings.ENABLE_PLAYBACK_AUDIO_PITCH.get()) {
                 playbackAudioPitch = audioPitchOverride;
             }
@@ -251,7 +260,7 @@ public final class VideoInformation {
     /**
      * Injection point.
      *
-     * @param ExoPlayerImpl instance that can set the playback parameters directly.
+     * @param exoPlayerImpl instance that can set the playback parameters directly.
      */
     public static void initializeExoPlayerImpl(@NonNull ExoPlayerImpl exoPlayerImpl) {
         try {
@@ -463,21 +472,33 @@ public final class VideoInformation {
         }
     }
 
+    private static final double LOG_2 = Math.log(2.0);
+    private static final double SEMITONES_PER_OCTAVE = 12.0;
+
     /**
      * @param pitch The playback audio pitch value to format.
      * @return pitch formatted as "X.XXx (Nst)" with signed one-decimal semitone offset.
      */
     public static String formatAudioPitchStringX(float pitch) {
-        final float semitones = (float) (12.0 * (Math.log(pitch) / Math.log(2.0)));
-        String formatted = String.format(Locale.US, "%.1f", semitones);
-        if (formatted.equals("-0.0")) {
-            formatted = "0.0";
+        if (!(pitch > 0f)) {
+            throw new IllegalArgumentException("pitch must be a positive non infinite value: " + pitch);
         }
-        String sign = formatted.startsWith("-") ? "" : "+";
 
+        final double semitones = SEMITONES_PER_OCTAVE * (Math.log(pitch) / LOG_2);
+        String formattedSemitones = String.format(Locale.US, "%.1f", semitones);
+        if (formattedSemitones.equals("-0.0")) {
+            formattedSemitones = "0.0";
+        }
+        // Decide the sign from the *formatted* string, not the raw value,
+        // so values that round to zero never get a stray "+".
+        String signedSemitones = formattedSemitones.startsWith("-") || formattedSemitones.equals("0.0")
+                ? formattedSemitones
+                : "+" + formattedSemitones;
+
+        String speed = formatSpeedStringX(pitch);
         return Utils.isRightToLeftLocale()
-                ? String.format(Locale.US, "(%sst) %s", sign + formatted, formatSpeedStringX(pitch))
-                : String.format(Locale.US, "%s (%sst)", formatSpeedStringX(pitch), sign + formatted);
+                ? String.format(Locale.US, "(%sst) %s", signedSemitones, speed)
+                : String.format(Locale.US, "%s (%sst)", speed, signedSemitones);
     }
 
     /**
@@ -771,14 +792,13 @@ public final class VideoInformation {
             Logger.printException(() -> "Invalid playback pitch: " + pitch);
             return;
         }
-        ExoPlayerImpl exoPlayerImpl = exoPlayerImplRef.get();
 
+        ExoPlayerImpl exoPlayerImpl = exoPlayerImplRef.get();
         if (exoPlayerImpl != null) {
             exoPlayerImpl.patch_setPlaybackParameters(speed, pitch);
-            Logger.printDebug(() -> "Video playbackParameters changed: Speed: " + speed + " Pitch: " + pitch);
+            Logger.printDebug(() -> "Video playbackParameters changed, speed: " + speed + " pitch: " + pitch);
         } else {
             Logger.printException(() -> "Cannot change speed, menu interface is null");
-            return;
         }
     }
 
@@ -849,7 +869,6 @@ public final class VideoInformation {
      * @param newlyLoadedPlaybackSpeed The current playback speed.
      */
     public static void setPlaybackSpeed(float newlyLoadedPlaybackSpeed) {
-        Logger.printDebug(() -> "Video speed set to: " + newlyLoadedPlaybackSpeed);
         updatePlaybackSpeedValue(newlyLoadedPlaybackSpeed);
     }
 

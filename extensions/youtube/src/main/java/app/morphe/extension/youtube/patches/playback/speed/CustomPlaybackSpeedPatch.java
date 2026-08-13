@@ -608,7 +608,8 @@ public class CustomPlaybackSpeedPatch {
                     @Override
                     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                         if (fromUser) {
-                            userSelectedPitch.accept(roundSpeedToNearestIncrement(customPlaybackSpeedsMin + (progress / PROGRESS_BAR_VALUE_SCALE)));
+                            userSelectedPitch.accept(roundSpeedToNearestIncrement(
+                                    customPlaybackSpeedsMin + (progress / PROGRESS_BAR_VALUE_SCALE)));
                         }
                     }
 
@@ -630,6 +631,7 @@ public class CustomPlaybackSpeedPatch {
                 VideoInformation.onPlaybackAudioPitchChange.addObserver(onPitchChanged);
             
                 // Create GridLayout for pitch control buttons.
+                //noinspection ExtractMethodRecommender
                 GridLayout pitchPresetGrid = new GridLayout(context);
                 pitchPresetGrid.setColumnCount(5);
                 pitchPresetGrid.setAlignmentMode(GridLayout.ALIGN_BOUNDS);
@@ -639,11 +641,11 @@ public class CustomPlaybackSpeedPatch {
                 pitchGridParams.setMargins(Dim.dp4, Dim.dp12, Dim.dp4, Dim.dp12);
                 pitchPresetGrid.setLayoutParams(pitchGridParams);
 
-                // Buttons: /2 (half) | −1st (down one semitone) | 1x (reset) | +1st (up one semitone) | ×2 (double)
-                final String[] pitchButtonLabels = {"/2", "−1st", "1x", "+1st", "×2"};
+                // Buttons: /2 (half) | −1st (down one semitone) | 1x (reset)
+                // | +1st (up one semitone) | ×2 (double)
+                String[] pitchButtonLabels = {"/2", "−1st", "1x", "+1st", "×2"};
                 // Add buttons for the five options.
                 for (String pitchLabel : pitchButtonLabels) {
-
                     FrameLayout pitchButtonContainer = new FrameLayout(context);
                     GridLayout.LayoutParams pitchContainerParams = new GridLayout.LayoutParams();
                     pitchContainerParams.width = 0;

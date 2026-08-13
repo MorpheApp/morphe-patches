@@ -10,13 +10,13 @@
 
 package app.morphe.patches.youtube.video.information
 
+import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.removeInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.removeInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
@@ -557,18 +557,13 @@ val videoInformationPatch = bytecodePatch(
         // A reference to the setPlaybackParameters implementation, to call from the helper method.
         val setPlaybackParametersReference = "${setPlaybackParametersMethod.definingClass}->${setPlaybackParametersMethod.name}($playbackParametersType)V"
 
-        // The PlaybackParameters type and primary constructor with 2 arguments (speed, pitch).
-        val playbackParametersConstructorReference = "$playbackParametersType-><init>(FF)V"
-
         // for {androidx.media3.common.PlaybackParameters.speed} field.
         // The toString() method reads the speed field before the pitch field.
-        val playbackParametersSpeedField = PlaybackParametersToStringFingerprint.method
-            .implementation!!.instructions.toList()
-            .filter { instruction ->
-                instruction.opcode == Opcode.IGET
-                    && instruction.getReference<FieldReference>()?.type == "F"
-            }[0]
-            .getReference<FieldReference>()!!
+        val playbackParametersSpeedField = PlaybackParametersToStringFingerprint
+            .instructionMatches.first().getFieldAccessed()
+
+        // The PlaybackParameters type and primary constructor with 2 arguments (speed, pitch).
+        val playbackParametersConstructorReference = "$playbackParametersType-><init>(FF)V"
 
         // Pitch is obtained from this Extension and force set.
         // Need to construct new PlaybackParameters instance as it has final fields.
@@ -586,18 +581,24 @@ val videoInformationPatch = bytecodePatch(
         // Capture the ExoPlayerImpl reference at its init constructor (only 1 yet)
         // Extension is initialized (Application.onCreate) before starting to play any video.
         // This is required for patch_setPlaybackParameters function.
-        setPlaybackParametersFingerprint.classDef.methods
-            .filter { MethodUtil.isConstructor(it) }
-            .forEach { method ->
-                val initIndex = method.indexOfFirstInstructionOrThrow {
-                    opcode == Opcode.INVOKE_DIRECT && getReference<MethodReference>()?.name == "<init>"
-                }
-                method.addInstruction(
-                    initIndex + 1,
-                    "invoke-static { v${method.getInstruction<FiveRegisterInstruction>(initIndex).registerC} }, " +
-                        "$EXTENSION_CLASS->initializeExoPlayerImpl($EXTENSION_EXOPLAYERIMPL_INTERFACE)V"
+        Fingerprint(
+            classFingerprint = setPlaybackParametersFingerprint,
+            name = "<init>",
+            filters = listOf(
+                methodCall(
+                    opcode = Opcode.INVOKE_DIRECT,
+                    name = "<init>"
                 )
-            }
+            )
+        ).matchAll().forEach {
+            val firstInstructionMatch = it.instructionMatches.first()
+            val register = firstInstructionMatch.getInstruction<FiveRegisterInstruction>().registerC
+            it.method.addInstruction(
+                firstInstructionMatch.index + 1,
+                "invoke-static { v$register }, $EXTENSION_CLASS->" +
+                        "initializeExoPlayerImpl($EXTENSION_EXOPLAYERIMPL_INTERFACE)V"
+            )
+        }
 
         setPlaybackParametersFingerprint.classDef.apply {
             // Add interface and helper method to allow extension code

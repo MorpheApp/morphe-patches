@@ -27,6 +27,7 @@ import app.morphe.patches.youtube.shared.PlaybackSpeedOnItemClickParentFingerpri
 import app.morphe.patches.youtube.shared.VideoQualityChangedFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.sun.tools.javac.main.Option
 
 internal object PlaybackSpeedOnItemClickFingerprint : Fingerprint(
     classFingerprint = PlaybackSpeedOnItemClickParentFingerprint,
@@ -312,11 +313,11 @@ internal object SetVideoQualityFingerprint : Fingerprint(
  */
 internal fun getPlaybackParametersSetterFingerprint(playbackParametersType: String) = object : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    parameters = listOf(playbackParametersType),
     returnType = "V",
+    parameters = listOf(playbackParametersType),
     custom = { methodDef, classDef ->
         methodDef.implementation != null
-            && classDef.interfaces.any { it.toString() == "Landroidx/media3/exoplayer/ExoPlayer;" }
+            && classDef.interfaces.contains("Landroidx/media3/exoplayer/ExoPlayer;")
     }
 ) {}
 
@@ -327,5 +328,9 @@ internal object PlaybackParametersToStringFingerprint : Fingerprint(
     name = "toString",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/String;",
-    strings = listOf("PlaybackParameters(speed=%.2f, pitch=%.2f)")
+    parameters = listOf(),
+    filters = listOf(
+        fieldAccess(definingClass = "this", opcode = Opcode.IGET, type = "F"),
+        string("PlaybackParameters(speed=%.2f, pitch=%.2f)")
+    )
 )
