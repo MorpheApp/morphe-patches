@@ -88,6 +88,9 @@ Changes include:
     <string name="morphe_hide_latest_videos_button_summary">Hides the blue \'Latest videos\' banner that appears at the top of the Home feed</string>
     <string name="morphe_hide_mix_playlists_title">Hide mix playlists</string>
     <string name="morphe_hide_movies_section_title">Hide movies section</string>
+    <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+    <string name="morphe_hide_notifications_menu_header_title">Hide Notifications menu header</string>
+    <string name="morphe_hide_notifications_menu_header_summary">Hides the Notifications menu header when clicking the bell button</string>
     <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
     <string name="morphe_hide_notify_me_button_title">Hide \'Notify me\' button</string>
