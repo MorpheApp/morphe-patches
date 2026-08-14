@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/2451
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
@@ -16,6 +17,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -45,6 +47,7 @@ import app.morphe.patches.youtube.misc.toolbar.toolBarHookPatch
 import app.morphe.patches.youtube.shared.ActionBarSearchResultsFingerprint
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getReference
 import app.morphe.util.insertLiteralOverride
@@ -110,11 +113,9 @@ val navigationBarPatch = bytecodePatch(
             navPreferences += SwitchPreference("morphe_disable_auto_hide_navigation_bar", summary = true)
         }
 
-        if (!is_21_30_or_greater) {
-            PreferenceScreen.GENERAL.addPreferences(
-                SwitchPreference("morphe_disable_translucent_status_bar", summary = true)
-            )
-        }
+        PreferenceScreen.GENERAL.addPreferences(
+            SwitchPreference("morphe_disable_translucent_status_bar", summary = true)
+        )
 
         PreferenceScreen.GENERAL.addPreferences(
             PreferenceScreenPreference(
@@ -151,8 +152,48 @@ val navigationBarPatch = bytecodePatch(
         addBottomBarContainerHook("$EXTENSION_CLASS->hideNavigationBar(Landroid/view/View;)V")
 
         // Force on/off translucent effect on status bar and navigation buttons.
-        if (!is_21_30_or_greater) {
-            TranslucentNavigationStatusBarFeatureFlagFingerprint.matchAll().forEach {
+        if (is_20_31_or_greater) {
+            val translucentStatusBarFilter = if (is_21_30_or_greater) {
+                TRANSLUCENT_STATUS_BAR_FILTER
+            } else {
+                methodCall(TranslucentNavigationStatusBarFeatureFlagFingerprint.originalMethod)
+            }
+
+            arrayOf(
+                translucentImmersiveFingerprint(translucentStatusBarFilter),
+                translucentCheckOnTextFingerprint(translucentStatusBarFilter),
+                translucentUpdateStatusBarFingerprint(translucentStatusBarFilter),
+                translucentYouTabFingerprint(translucentStatusBarFilter)
+            ).forEach { fingerprint ->
+                fingerprint.matchAll().forEach {
+                    if (is_21_30_or_greater) {
+                        it.method.insertLiteralOverride(
+                            it.instructionMatches.last().index,
+                            "$EXTENSION_CLASS->useTranslucentNavigationStatusBar(Z)Z"
+                        )
+                        return@forEach
+                    }
+
+                    it.method.apply {
+                        findInstructionIndicesReversedOrThrow(translucentStatusBarFilter).forEach { index ->
+                            val instruction = getInstruction(index + 1)
+                            if (instruction.opcode != Opcode.MOVE_RESULT) {
+                                return@forEach
+                            }
+                            val register = (instruction as OneRegisterInstruction).registerA
+                            addInstructions(
+                                index + 2,
+                                """
+                                    invoke-static { v$register }, $EXTENSION_CLASS->useTranslucentNavigationStatusBar(Z)Z
+                                    move-result v$register
+                                """
+                            )
+                        }
+                    }
+                }
+            }
+        } else {
+            TranslucentNavigationStatusBarFeatureFlagFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
                     "$EXTENSION_CLASS->useTranslucentNavigationStatusBar(Z)Z"
@@ -167,13 +208,11 @@ val navigationBarPatch = bytecodePatch(
             )
         }
 
-        if (!is_21_30_or_greater) {
-            TranslucentNavigationButtonsSystemFeatureFlagFingerprint.matchAll().forEach {
-                it.method.insertLiteralOverride(
-                    it.instructionMatches.first().index,
-                    "$EXTENSION_CLASS->useTranslucentNavigationButtons(Z)Z"
-                )
-            }
+        TranslucentNavigationButtonsSystemFeatureFlagFingerprint.matchAll().forEach {
+            it.method.insertLiteralOverride(
+                it.instructionMatches.first().index,
+                "$EXTENSION_CLASS->useTranslucentNavigationButtons(Z)Z"
+            )
         }
 
         TranslucentNavigationButtonsFeatureFlagFingerprint.matchAll().forEach {
@@ -183,7 +222,8 @@ val navigationBarPatch = bytecodePatch(
             )
         }
 
-        if (is_20_46_or_greater && !is_21_30_or_greater) {
+        // Edit: This override may no longer be needed since the status bar changes are now more precise.
+        if (false) if (is_20_46_or_greater) {
             // Feature interferes with translucent status bar and must be forced off.
             CollapsingToolbarLayoutFeatureFlagFingerprint.matchAll().forEach {
                 it.method.insertLiteralOverride(

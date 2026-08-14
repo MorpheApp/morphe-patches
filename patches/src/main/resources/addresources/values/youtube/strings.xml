@@ -740,9 +740,6 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
     <string name="morphe_disable_auto_hide_navigation_bar_summary">Keeps the navigation bar visible while scrolling</string>
     <string name="morphe_disable_translucent_status_bar_title">Disable translucent status bar</string>
     <string name="morphe_disable_translucent_status_bar_summary">Makes the status bar fully opaque</string>
-    <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Limitations:
-• A black bar may appear at the top of the video player.
-• The system navigation bar can change to transparent, and it\'s not possible to comment on videos."</string>
     <string name="morphe_disable_translucent_navigation_bar_light_title">Disable light translucent bar</string>
     <string name="morphe_disable_translucent_navigation_bar_light_summary">Makes the navigation bar fully opaque in light mode</string>
     <string name="morphe_disable_translucent_navigation_bar_dark_title">Disable dark translucent bar</string>

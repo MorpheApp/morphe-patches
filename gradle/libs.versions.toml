@@ -1,8 +1,8 @@
 # Dependencies must also be addded to LicensesDialog.java
 
 [versions]
-morphe-patcher = "1.8.0-dev.5" # TODO: Change to stable
-morphe-patches-library = "1.6.0-dev.2"
+morphe-patcher = "1.8.0"
+morphe-patches-library = "1.6.1-dev.1"
 # Tracking https://github.com/google/smali/issues/100.
 smali = "d92701d947"
 agp = "9.1.0"
