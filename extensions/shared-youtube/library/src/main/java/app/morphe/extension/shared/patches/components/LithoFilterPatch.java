@@ -82,6 +82,9 @@ public final class LithoFilterPatch {
      */
     private static final int LITHO_LAYOUT_THREAD_POOL_SIZE = 1;
 
+    private static final boolean IS_20_22_OR_GREATER =
+            Utils.getAppVersionName().compareTo("20.22.00") >= 0;
+
     private static final byte[] EMPTY_BYTE_ARRAY = new byte[0];
 
     /**
@@ -186,7 +189,7 @@ public final class LithoFilterPatch {
                 accessibility = "";
             }
 
-            byte[] buffer = is_20_22_or_greater()
+            byte[] buffer = IS_20_22_OR_GREATER
                     ? bytes
                     : bufferThreadLocal.get();
             // Potentially the buffer may have been null or never set up until now.
@@ -207,10 +210,6 @@ public final class LithoFilterPatch {
         }
 
         return false;
-    }
-
-    private static boolean is_20_22_or_greater() {
-        return Utils.getAppVersionName().compareTo("20.22.00") >= 0;
     }
 
     /**
