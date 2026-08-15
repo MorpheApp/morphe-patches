@@ -72,6 +72,7 @@ public class SeekbarThumbnailPreviewPatch {
     }
 
     private static final int DIP15 = Dim.dp(15);
+    private static final int DIP8 = Dim.dp8;
     private static final int THUMBNAIL_PREVIEW_LONG_SIDE = Dim.dp(160);
     private static final int THUMBNAIL_PREVIEW_DEFAULT_SHORT_SIDE = Dim.dp(160 * 9.0f / 16);
     private static final LinearLayout.LayoutParams THUMBNAIL_PREVIEW_DEFAULT_PARAMS =
@@ -435,8 +436,7 @@ public class SeekbarThumbnailPreviewPatch {
                 }
                 lastX = trackballPosX;
 
-                final boolean bitmapLoaded = fineScrubbingPreviewBitmap != null;
-                if (bitmapLoaded) {
+                if (fineScrubbingPreviewBitmap != null) {
                     if (fineScrubbingPreviewBitmap != lastAppliedBitmap) {
                         views.thumbnailPreview.setImageBitmap(fineScrubbingPreviewBitmap);
                         lastAppliedBitmap = fineScrubbingPreviewBitmap;
@@ -469,9 +469,15 @@ public class SeekbarThumbnailPreviewPatch {
                             !preciseSeekingVisible ? View.VISIBLE : View.GONE
                     );
 
+                    int previewFrameHeight = views.previewFrame.getHeight();
+                    int heatMapPeakPointHeight = views.heatMapPeakPointPreview.getHeight();
                     views.heatMapPeakPointPreview.setOutlineProvider(
-                            bitmapLoaded ? heatMapPeakPointHalfOutline : heatMapPeakPointFullOutline
+                            (previewFrameHeight > 0 && heatMapPeakPointHeight > 0 &&
+                                    (previewFrameHeight - heatMapPeakPointHeight > DIP8))
+                                            ? heatMapPeakPointHalfOutline
+                                            : heatMapPeakPointFullOutline
                     );
+
                     views.heatMapPeakPointPreview.setVisibility(
                             ChaptersHookPatch.getHeatMapPeakPoint() ? View.VISIBLE : View.GONE
                     );
