@@ -513,15 +513,15 @@ Second \"item\" text"</string>
   <string name="morphe_tap_to_seek_title">Включить перемотку нажатием</string>
   <string name="morphe_tap_to_seek_summary">Просто нажмите на индикатор хода воспроизведения, чтобы перейти к этой позиции, не перетаскивая его</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Включить регулировку яркости жестом</string>
-  <string name="morphe_swipe_brightness_summary">Свайпните вертикально по левой стороне полноэкранного режима, чтобы отрегулировать яркость</string>
-  <string name="morphe_swipe_volume_title">Включить регулировку громкости жестом</string>
-  <string name="morphe_swipe_volume_summary">Свайпните вертикально по правой стороне полноэкранного режима, чтобы отрегулировать громкость</string>
-  <string name="morphe_swipe_zone_width_title">Ширина зоны регулировки яркости/громкости</string>
-  <string name="morphe_swipe_zone_width_summary">Процент экрана, зарезервированный для жестов регулировки яркости и громкости (от 5 до 50)</string>
+  <string name="morphe_swipe_left_zone_title">Жест смахивания влево</string>
+  <string name="morphe_swipe_right_zone_title">Жест смахивания вправо</string>
+  <string name="morphe_swipe_top_zone_title">Жест смахивания вверх</string>
+  <string name="morphe_swipe_zone_width_title">Ширина левой/правой зоны</string>
+  <string name="morphe_swipe_zone_width_summary">Процент каждого края экрана, зарезервированный для жестов смахивания влево и вправо (5–50)</string>
   <string name="morphe_swipe_zone_label_brightness">Яркость</string>
   <string name="morphe_swipe_zone_label_volume">Громкость</string>
   <string name="morphe_swipe_zone_label_native">Основной</string>
+  <string name="morphe_swipe_zone_label_off">Выкл</string>
   <string name="morphe_swipe_press_to_engage_title">Включить нажатие для выполнения жестов</string>
   <string name="morphe_swipe_press_to_engage_summary">Нужно нажать и удерживать прежде чем жест свайпа будет распознан</string>
   <string name="morphe_swipe_haptic_feedback_title">Включить виброотклик при жестах</string>
@@ -550,12 +550,9 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_volume_sensitivity_summary">Более высокие значения увеличивают изменение громкости при каждом жесте</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Чувствительность жеста регулировки яркости</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Более высокие значения требуют большего свайпа для каждого шага яркости</string>
-  <string name="morphe_swipe_speed_title">Включить жест скорости</string>
-  <string name="morphe_swipe_speed_summary">Проведите пальцем по горизонтали в верхней части полноэкранного режима, чтобы изменить скорость воспроизведения</string>
   <string name="morphe_swipe_speed_sensitivity_title">Чувствительность жеста скорости</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Более высокие значения требуют большего свайпа для каждого шага скорости</string>
   <string name="morphe_swipe_speed_step_title">Шаг скорости</string>
-  <string name="morphe_swipe_speed_step_summary">Величина, на которую изменяется скорость воспроизведения при каждом изменении значения</string>
   <string name="morphe_swipe_speed_zone_height_title">Высота зоны жеста скорости</string>
   <string name="morphe_swipe_speed_zone_height_summary">Высота зоны жеста скорости в процентах от высоты проигрывателя (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Скорость</string>
@@ -683,15 +680,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_summary">Анимирует переходы между вкладками</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Выключить авто скрытие панели навигации</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Не скрывать панель навигации при прокрутке</string>
-  <string name="morphe_disable_translucent_status_bar_title">Отключить полупрозрачность строки состояния</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Делает строку состояния полностью непрозрачной</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Ограничения:
-• В верхней части видеоплейера может появиться черная полоса.
-• Панель навигации может стать прозрачной, и комментировать видео будет невозможно."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Отключить полупрозрачность светлой панели навигации</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Делает панель навигации полностью непрозрачной в светлом режиме</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Отключить полупрозрачность темной панели навигации</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Делает панель навигации полностью непрозрачной в темном режиме</string>
+  <string name="morphe_disable_translucent_navigation_title">Отключить полупрозрачность панели навигации</string>
+  <string name="morphe_disable_translucent_navigation_summary">Делает панель навигации и строку состояния полностью непрозрачными</string>
   <string name="morphe_toolbar_screen_title">Панель инструментов</string>
   <string name="morphe_toolbar_screen_summary">Выберите, какие компоненты отображаются на панели инструментов</string>
   <string name="morphe_hide_toolbar_cast_button_title">Скрыть кнопку \"Трансляция\"</string>

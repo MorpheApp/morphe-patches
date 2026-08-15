@@ -509,15 +509,15 @@ Til að laga þetta, kveiktu á 'Þykjast um myndstrauma' og breyttu 'Sjálfgefi
   <string name="morphe_tap_to_seek_title">Virkja snertu til að leita</string>
   <string name="morphe_tap_to_seek_summary">Stilltu tákn kökkur</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Virkja gestur fyrir birta</string>
-  <string name="morphe_swipe_brightness_summary">Stríðu niður á vinstri hlið fullskjástillingarinnar til að stilla birta</string>
-  <string name="morphe_swipe_volume_title">Virkja gestur fyrir hljóðstyrk</string>
-  <string name="morphe_swipe_volume_summary">Stríðu niður á hægri hlið fullskjástillingarinnar til að stilla hljóðstyrk</string>
-  <string name="morphe_swipe_zone_width_title">Þykkt á lit adkóða</string>
-  <string name="morphe_swipe_zone_width_summary">Hlutfall hverrar skjárbrúar sem er áskilin fyrir ljósstyrk og hljóðnemastillingar (5-50)</string>
+  <string name="morphe_swipe_left_zone_title">Hnigun til vinstra</string>
+  <string name="morphe_swipe_right_zone_title">Hægri sveifluherðing</string>
+  <string name="morphe_swipe_top_zone_title">Efri sveifluherðing</string>
+  <string name="morphe_swipe_zone_width_title">Breidd vinstri/hægri svæðis</string>
+  <string name="morphe_swipe_zone_width_summary">Hlutfall hvers skjábruna sem er reserved fyrir vinstri og hægri sveifluherðingar (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Skær</string>
   <string name="morphe_swipe_zone_label_volume">Hljóðstyrkur</string>
   <string name="morphe_swipe_zone_label_native">Upprunalegur</string>
+  <string name="morphe_swipe_zone_label_off">Slökkt</string>
   <string name="morphe_swipe_press_to_engage_title">Virkja þrýstu til að sveipa gestur</string>
   <string name="morphe_swipe_press_to_engage_summary">Krefst þess að ýta og halda niðri áður en strjúka bending er þekkt</string>
   <string name="morphe_swipe_haptic_feedback_title">Virkja snertilega endurgjöf</string>
@@ -546,12 +546,9 @@ Til að laga þetta, kveiktu á 'Þykjast um myndstrauma' og breyttu 'Sjálfgefi
   <string name="morphe_swipe_volume_sensitivity_summary">Hærri skilvirki auka hljóðbreytingu á birtanki</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Áframbreytingar á skærleika</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Hærri skilvirki krefjast meira dýfbjarg á breytingar</string>
-  <string name="morphe_swipe_speed_title">Virkaðu hraða gest</string>
-  <string name="morphe_swipe_speed_summary">Hrekk og stillið á hraða á yfir skránum</string>
   <string name="morphe_swipe_speed_sensitivity_title">Hraðafræðilegar áhrif</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Hærri skilvirki krefjast meira dýfbjarg á hraða</string>
   <string name="morphe_swipe_speed_step_title">Hraði stig</string>
-  <string name="morphe_swipe_speed_step_summary">Magn sem playback hraðinn breytist um á hvert stig</string>
   <string name="morphe_swipe_speed_zone_height_title">Hæð hraðabaksyðrufskipanna</string>
   <string name="morphe_swipe_speed_zone_height_summary">Hæð hraðastjórnunarhlutfalls sem hlutfall af hæð leikmannsins (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Hraði</string>
@@ -679,15 +676,8 @@ Til þess að fá access til stillingarinnar skaltu koma á stillinguna í gegnu
   <string name="morphe_navigation_bar_animations_summary">Hreyfir umhverfi þegar skipt er á milli flipa</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Lokað sjálfvirkum hópum</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Geymir stjórnarborðið sýnilegt á meðan skellt er</string>
-  <string name="morphe_disable_translucent_status_bar_title">Gerðu skjálistann gagnsæan</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Gerir stöðustikuna fullopaka</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Takmörk:
-• Svarta stikurnar á neðri hluta vídeóspilunarinnar.
-• Kerfisstýribjargarinnar getur orðið gagnstætt, og ekki er hægt að bæta við myndböndum."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Gerðu ljós skjálistann óvirkan</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Gerir stjórnarborðið fullopakt í ljósum stillingu</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Gerðu dimman skjálistann óvirkan</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Gerir stjórnarborðið fullopakt í dökkum stillingu</string>
+  <string name="morphe_disable_translucent_navigation_title">Óvirkja gjálflega stýristöng</string>
+  <string name="morphe_disable_translucent_navigation_summary">Gerir stýristöngina og stöðustönguna algjörlega ógegnsæja</string>
   <string name="morphe_toolbar_screen_title">Tólaborð</string>
   <string name="morphe_toolbar_screen_summary">Veldu hvaða þættir birtast á verkfærastikunni</string>
   <string name="morphe_hide_toolbar_cast_button_title">Felur Cast hnappinn</string>
@@ -1112,6 +1102,11 @@ Takmörkun: Spilun gæti ekki virkað á sumum tækjum ef 'Herma eftir myndflæ�
   <string name="morphe_remember_playback_speed_toast">Breytt sjálfvirka hraða í: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Notaðu venjulegan hraða fyrir tónlist</string>
   <string name="morphe_disable_playback_speed_music_summary">Spila alltaf tónlistarmyndbönd á 1,0x hraða</string>
+  <string name="morphe_enable_playback_audio_pitch_controls_title">Virkja stýringu á tónhæð hljóðs</string>
+  <string name="morphe_playback_audio_pitch_default_title">Svoðu hljómtóni við spilun</string>
+  <string name="morphe_remember_playback_audio_pitch_toast">Breytt hjálpsýni hljóðs í: %s</string>
+  <string name="morphe_playback_audio_time_stretching_title">Tímapróf hljóðs</string>
+  <string name="morphe_playback_audio_time_stretching_summary">Leyfir að stilla hraða og tóna sjálfstætt, getur valdið hljóðgáttum</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Lokað HDR myndböndum</string>
   <string name="morphe_force_avc_codec_title">Þvinga AVC (H.264) kóðann</string>

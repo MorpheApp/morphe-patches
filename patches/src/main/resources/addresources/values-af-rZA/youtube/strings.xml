@@ -511,15 +511,10 @@ Om dit reg te stel, skakel 'Spoof video-strome' aan en verander die 'Standaardkl
   <string name="morphe_tap_to_seek_title">Skakel tik om te soek in</string>
   <string name="morphe_tap_to_seek_summary">Tik net op die soekbalk om na daardie posisie te spring sonder om dit te sleep</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Skakel helderheid gebaar in</string>
-  <string name="morphe_swipe_brightness_summary">Swipe vertikaal aan die regterkant van die volskermmodus om volume aan te pas</string>
-  <string name="morphe_swipe_volume_title">Skakel volume gebaar in</string>
-  <string name="morphe_swipe_volume_summary">Vereis druk en hou voordat \'n swipe gebaar herken word</string>
-  <string name="morphe_swipe_zone_width_title">Helderheid/volume sone breedte</string>
-  <string name="morphe_swipe_zone_width_summary">Persentasie van elke skermrand wat gereserveer is vir helderheid en volume gebare (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Helderheid</string>
   <string name="morphe_swipe_zone_label_volume">Volume</string>
   <string name="morphe_swipe_zone_label_native">Native</string>
+  <string name="morphe_swipe_zone_label_off">Af</string>
   <string name="morphe_swipe_press_to_engage_title">Skakel druk om te swiep gebaar in</string>
   <string name="morphe_swipe_press_to_engage_summary">Vereis dat jy druk en vashou voordat \'n veeggebaar herken word</string>
   <string name="morphe_swipe_haptic_feedback_title">Skakel haptiese terugvoer in</string>
@@ -548,12 +543,9 @@ Om dit reg te stel, skakel 'Spoof video-strome' aan en verander die 'Standaardkl
   <string name="morphe_swipe_volume_sensitivity_summary">Hoër waardes verhoog die volume verandering per swiep</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Helderheid swiepsensitiwiteit</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Hoër waardes vereis meer swiep per helderheidsvlak</string>
-  <string name="morphe_swipe_speed_title">Aktiveer spoed gebaar</string>
-  <string name="morphe_swipe_speed_summary">Swiep horisontaal in die boonste sone van die volskermmodus om die afspeelkrag te verander</string>
   <string name="morphe_swipe_speed_sensitivity_title">Spoed swiepsensitiwiteit</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Hoër waardes vereis meer swiep per spoedvlak</string>
   <string name="morphe_swipe_speed_step_title">Spoedstap</string>
-  <string name="morphe_swipe_speed_step_summary">Bedrag waarmee die afspeelspoed per tik verander</string>
   <string name="morphe_swipe_speed_zone_height_title">Spoed sone hoogte</string>
   <string name="morphe_swipe_speed_zone_height_summary">Hoogte van die spoed gebaar sone as \'n persentasie van die speler se hoogte (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Spoed</string>
@@ -681,15 +673,8 @@ Om Instellings te open, aktiveer die Instellings-knoppie via Algemeen → Toolba
   <string name="morphe_navigation_bar_animations_summary">Makes the status bar fully opaque</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Deaktiveer outomatiese verberg van navigasiebalk</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Makes the navigation bar fully opaque in light mode</string>
-  <string name="morphe_disable_translucent_status_bar_title">Deaktiveer deurskynende statusbalk</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Makes the navigation bar fully opaque in dark mode</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Beperkings:
-• 'n Swart balk kan bo-aan die videospeler verskyn.
-• Die stelselnavigasiebalk kan transparant word, en dit is nie moontlik om op video's kommentaar te lewer nie."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Deaktiveer deurskynende navigasiebalk</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Choose which components appear in the flyout menu</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Deaktiveer donker deurskynende balk</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Hide \'Audio Track\' menu</string>
+  <string name="morphe_disable_translucent_navigation_title">Deaktiveer semi-deursigtige navigasiebalk remercie</string>
+  <string name="morphe_disable_translucent_navigation_summary">Maak die navigasie- en statusbalk volledig opaak</string>
   <string name="morphe_toolbar_screen_title">Wenkbalk</string>
   <string name="morphe_toolbar_screen_summary">Kies watter komponente in die lêertooskassie vertoon moet word</string>
   <string name="morphe_hide_toolbar_cast_button_title">Hide \'Audio Track\' menu footer</string>

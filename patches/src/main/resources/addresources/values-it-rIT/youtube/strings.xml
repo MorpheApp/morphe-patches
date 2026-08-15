@@ -511,15 +511,15 @@ Per risolvere il problema, attiva 'Maschera flussi video' e modifica 'Client pre
   <string name="morphe_tap_to_seek_title">Abilita tocca per avanzare</string>
   <string name="morphe_tap_to_seek_summary">Tocca semplicemente la barra di ricerca per saltare a quella posizione senza trascinarla</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Attiva il gesto per modificare la luminosità</string>
-  <string name="morphe_swipe_brightness_summary">Scorri verticalmente sul lato sinistro della modalità a schermo intero per regolare la luminosità</string>
-  <string name="morphe_swipe_volume_title">Attiva il gesto per modificare il volume</string>
-  <string name="morphe_swipe_volume_summary">Scorri verticalmente sul lato destro della modalità a schermo intero per regolare il volume</string>
-  <string name="morphe_swipe_zone_width_title">Larghezza zona di luminosità/volume</string>
-  <string name="morphe_swipe_zone_width_summary">Percentuale di ciascun bordo dello schermo riservata ai gesti di luminosità e volume (5-50)</string>
+  <string name="morphe_swipe_left_zone_title">Gesto swipe a sinistra</string>
+  <string name="morphe_swipe_right_zone_title">Gesto swipe a destra</string>
+  <string name="morphe_swipe_top_zone_title">Gesto swipe verso l\'alto</string>
+  <string name="morphe_swipe_zone_width_title">Larghezza zona sinistra/destra</string>
+  <string name="morphe_swipe_zone_width_summary">Percentuale di ciascun bordo dello schermo riservata ai gesti swipe a sinistra e a destra (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Luminosità</string>
   <string name="morphe_swipe_zone_label_volume">Volume</string>
   <string name="morphe_swipe_zone_label_native">Nativo</string>
+  <string name="morphe_swipe_zone_label_off">Off</string>
   <string name="morphe_swipe_press_to_engage_title">Abilita gesto di premi per scorrere</string>
   <string name="morphe_swipe_press_to_engage_summary">Richiede la pressione prolungata prima che venga riconosciuto un gesto di scorrimento</string>
   <string name="morphe_swipe_haptic_feedback_title">Abilita il feedback aptico</string>
@@ -548,12 +548,9 @@ Per risolvere il problema, attiva 'Maschera flussi video' e modifica 'Client pre
   <string name="morphe_swipe_volume_sensitivity_summary">Valori più alti aumentano la variazione di volume per scorrimento</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Sensibilità allo scorrimento della luminosità</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Valori più elevati richiedono più scorrimenti per ogni passo di luminosità</string>
-  <string name="morphe_swipe_speed_title">Attiva il gesto per la velocità</string>
-  <string name="morphe_swipe_speed_summary">Scorri orizzontalmente nella parte superiore della modalità a schermo intero per modificare la velocità di riproduzione</string>
   <string name="morphe_swipe_speed_sensitivity_title">Sensibilità allo scorrimento della velocità</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Valori più alti richiedono più scorrimenti per ogni passo di velocità</string>
   <string name="morphe_swipe_speed_step_title">Passo di velocità</string>
-  <string name="morphe_swipe_speed_step_summary">Quantità di cui la velocità di riproduzione cambia per ogni tocco</string>
   <string name="morphe_swipe_speed_zone_height_title">Altezza zona velocità</string>
   <string name="morphe_swipe_speed_zone_height_summary">Altezza della zona del gesto per la velocità espressa come percentuale dell\'altezza del lettore (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Velocità</string>
@@ -681,15 +678,8 @@ Per accedere alle Impostazioni, attiva il pulsante Impostazioni tramite Generale
   <string name="morphe_navigation_bar_animations_summary">Anima le transizioni quando si passa tra le schede</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Disabilita la barra di navigazione a scomparsa automatica</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Mantiene la barra di navigazione visibile durante lo scorrimento</string>
-  <string name="morphe_disable_translucent_status_bar_title">Disabilita la barra di stato traslucida</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Rende la barra di stato completamente opaca</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Limitazioni:
-• Una barra nera potrebbe apparire in cima al lettore video.
-• La barra di navigazione del sistema potrebbe diventare trasparente e non sarà possibile commentare i video."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Disabilita la barra traslucida chiara</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Rende la barra di navigazione completamente opaca in modalità chiara</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Disabilita la barra traslucida scura</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Rende la barra di navigazione completamente opaca in modalità scura</string>
+  <string name="morphe_disable_translucent_navigation_title">Disabilita la barra di navigazione traslucida</string>
+  <string name="morphe_disable_translucent_navigation_summary">Rende la barra di navigazione e di stato completamente opache</string>
   <string name="morphe_toolbar_screen_title">Barra degli strumenti</string>
   <string name="morphe_toolbar_screen_summary">Scegli quali componenti mostrare nella barra degli strumenti</string>
   <string name="morphe_hide_toolbar_cast_button_title">Nascondi il pulsante Trasmetti</string>
@@ -1114,6 +1104,11 @@ Limitazione: la riproduzione potrebbe non funzionare su alcuni dispositivi se 'M
   <string name="morphe_remember_playback_speed_toast">Velocità di riproduzione predefinita modificata in: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Usa la velocità normale per la musica</string>
   <string name="morphe_disable_playback_speed_music_summary">Riproduci sempre i video musicali a velocità 1.0x</string>
+  <string name="morphe_enable_playback_audio_pitch_controls_title">Abilita controlli pitch audio</string>
+  <string name="morphe_playback_audio_pitch_default_title">Pitch audio di riproduzione predefinito</string>
+  <string name="morphe_remember_playback_audio_pitch_toast">Pitch audio predefinito modificato in: %s</string>
+  <string name="morphe_playback_audio_time_stretching_title">Time stretching audio</string>
+  <string name="morphe_playback_audio_time_stretching_summary">Consente di impostare velocità e pitch indipendentemente, potrebbe causare artefatti audio</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Disattiva video in HDR</string>
   <string name="morphe_force_avc_codec_title">Forza il codec AVC (H.264)</string>
@@ -1128,6 +1123,7 @@ Limitazioni:
 • Alcuni dispositivi non possono forzare l'uso di AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Per utilizzare questa funzionalità, imposta \'Falsificazione dei flussi video\' su \'Android VR\' o \'Android Studio\'</string>
+  <string name="morphe_force_av1_in_shorts_title">Forza AV1 in Shorts</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Apri il menu qualità avanzata</string>
   <string name="morphe_advanced_video_quality_menu_summary">Salta il menu di selezione della qualità e apri direttamente il menu qualità avanzate</string>

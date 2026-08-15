@@ -295,15 +295,10 @@ Second \"item\" text"</string>
   <string name="morphe_tap_to_seek_title">Овозможете допир за премотување</string>
   <string name="morphe_tap_to_seek_summary">Само допрете ја лентата за премотување за да прескокнете до таа позиција без да ја влечете</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Овозможете гест за светлост</string>
-  <string name="morphe_swipe_brightness_summary">Кликнете вертикално на левата страна на полноекранскиот режим за да ја прилагодите осветленоста</string>
-  <string name="morphe_swipe_volume_title">Овозможете гест за јачина на звук</string>
-  <string name="morphe_swipe_volume_summary">Кликнете вертикално на десната страна на полноекранскиот режим за да ја прилагодите јачината на звукот</string>
-  <string name="morphe_swipe_zone_width_title">Ширина на зоната за прилагодување на осветлувањето/јачината на звукот</string>
-  <string name="morphe_swipe_zone_width_summary">Процент од секоја ивица на екранот резервиран за гестови за прилагодување на осветлувањето и јачината на звукот (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Осветленост</string>
   <string name="morphe_swipe_zone_label_volume">Волумен</string>
   <string name="morphe_swipe_zone_label_native">Оригинален</string>
+  <string name="morphe_swipe_zone_label_off">Исклучено</string>
   <string name="morphe_swipe_press_to_engage_title">Овозможете гест за притискање и повлекување</string>
   <string name="morphe_swipe_haptic_feedback_title">Овозможете хаптичен поврат</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Зачувајте и вратете ја светлоста</string>
@@ -331,8 +326,6 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_volume_sensitivity_summary">Поголемите вредност ги зголемуваат промените во волуменот при секое движење</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Чуствителност на движење за осветленост</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Поголемите вредности бараат повеќе движења за секое ниво на осветленост</string>
-  <string name="morphe_swipe_speed_title">Овозможи гест за брзина</string>
-  <string name="morphe_swipe_speed_summary">Лизнете хоризонтално во горниот дел од екранот во целосен режим за да ја промените брзината на репродукција</string>
   <string name="morphe_swipe_speed_sensitivity_title">Чуствителност на движење за брзина</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Поголемите вредности бараат повеќе движења за секое ниво на брзина</string>
   <string name="morphe_swipe_speed_zone_height_title">Висина на зоната за брзина</string>
@@ -455,15 +448,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_summary">Анимира преоди кога се префрлувате меѓу картичките</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Исклучи автоматско скривање на навигацискиот панел</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Ја задржува лентата за навигација видлива додека лизгате</string>
-  <string name="morphe_disable_translucent_status_bar_title">Оневозможете проѕирна лента за статус</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Го прави статусната лента целосно непроѕирна</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Ограничувања:
-• Може да се појави црна лента на горниот дел од видео плеер.
-• Системската лента за навигација може да се промени во проѕирна и не е можно коментирање на видеа."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Оневозможете светла проѕирна лента</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Го прави навигациската лента целосно непроѕирна во светлиот режим</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Оневозможете темна проѕирна лента</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Го прави навигациската лента целосно непроѕирна во темниот режим</string>
   <string name="morphe_toolbar_screen_title">Toolbar</string>
   <string name="morphe_toolbar_screen_summary">Изберете кои компоненти да се појавуваат во лентата со алатки</string>
   <string name="morphe_hide_toolbar_cast_button_title">Прикријте го копчето Cast</string>

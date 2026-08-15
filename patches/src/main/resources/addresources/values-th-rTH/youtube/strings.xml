@@ -511,12 +511,6 @@ Second \"item\" text"</string>
   <string name="morphe_tap_to_seek_title">เปิดใช้งานแตะเพื่อค้นหา</string>
   <string name="morphe_tap_to_seek_summary">เพียงแตะที่แถบความคืบหน้าเพื่อกระโดดไปยังตำแหน่งนั้นโดยไม่ต้องลาก</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">เปิดใช้งานท่าทางความสว่าง</string>
-  <string name="morphe_swipe_brightness_summary">ปัดในแนวดิ่งที่ด้านซ้ายของโหมดเต็มหน้าจอเพื่อปรับความสว่าง</string>
-  <string name="morphe_swipe_volume_title">เปิดใช้งานท่าทางระดับเสียง</string>
-  <string name="morphe_swipe_volume_summary">ปัดในแนวดิ่งที่ด้านขวาของโหมดเต็มหน้าจอเพื่อปรับระดับเสียง</string>
-  <string name="morphe_swipe_zone_width_title">ความกว้างของโซนปรับความสว่าง/ระดับเสียง</string>
-  <string name="morphe_swipe_zone_width_summary">เปอร์เซ็นต์ของขอบแต่ละด้านของหน้าจอที่สงวนไว้สำหรับท่าทางปรับความสว่างและระดับเสียง (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">ความสว่าง</string>
   <string name="morphe_swipe_zone_label_volume">ระดับเสียง</string>
   <string name="morphe_swipe_zone_label_native">เนทีฟ</string>
@@ -548,12 +542,9 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_volume_sensitivity_summary">ค่าที่สูงขึ้นจะเพิ่มการเปลี่ยนแปลงระดับเสียงต่อการปัดแต่ละครั้ง</string>
   <string name="morphe_swipe_brightness_sensitivity_title">ความไวในการปัดปรับความสว่าง</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">ค่าที่สูงขึ้นต้องมีการปัดมากขึ้นต่อการปรับความสว่างแต่ละครั้ง</string>
-  <string name="morphe_swipe_speed_title">เปิดใช้งานท่าทางความเร็ว</string>
-  <string name="morphe_swipe_speed_summary">เลื่อนในแนวนอนในส่วนบนของโหมดเต็มหน้าจอเพื่อเปลี่ยนความเร็วในการเล่น</string>
   <string name="morphe_swipe_speed_sensitivity_title">ความไวในการปัดปรับความเร็ว</string>
   <string name="morphe_swipe_speed_sensitivity_summary">ค่าที่สูงขึ้นต้องมีการปัดมากขึ้นต่อการปรับความเร็วแต่ละครั้ง</string>
   <string name="morphe_swipe_speed_step_title">ขั้นตอนความเร็ว</string>
-  <string name="morphe_swipe_speed_step_summary">จำนวนที่ความเร็วในการเล่นเปลี่ยนไปต่อหนึ่งครั้ง</string>
   <string name="morphe_swipe_speed_zone_height_title">ความสูงของโซนท่าทางความเร็ว</string>
   <string name="morphe_swipe_speed_zone_height_summary">ความสูงของโซนท่าทางความเร็วคิดเป็นเปอร์เซ็นต์ของความสูงของผู้เล่น (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">ความเร็ว</string>
@@ -681,15 +672,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_summary">เคลื่อนไหวการเปลี่ยนภาพเมื่อสลับระหว่างแท็บ</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">ปิดใช้งานการซ่อนแถบนำทางอัตโนมัติ</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">ทำให้แถบนำทางมองเห็นได้ในขณะที่เลื่อน</string>
-  <string name="morphe_disable_translucent_status_bar_title">ปิดใช้งานแถบสถานะแบบโปร่งแสง</string>
-  <string name="morphe_disable_translucent_status_bar_summary">ทำให้แถบสถานะทึบแสงโดยสมบูรณ์</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"ข้อจำกัด:
-• บาร์สีดำอาจปรากฏขึ้นด้านบนของตัวเล่นวิดีโอ
-• บาร์นำทางระบบอาจเปลี่ยนเป็นโปร่งใส และไม่สามารถแสดงความคิดเห็นในวิดีโอได้"</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">ปิดใช้งานแถบนำทางแบบโปร่งแสงสีอ่อน</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">ทำให้แถบนำทางทึบแสงอย่างสมบูรณ์ในโหมดสว่าง</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">ปิดใช้แถบโปร่งแสงสีเข้ม</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">ทำให้แถบนำทางทึบแสงเต็มที่ในโหมดมืด</string>
   <string name="morphe_toolbar_screen_title">แถบเครื่องมือ</string>
   <string name="morphe_toolbar_screen_summary">เลือกส่วนประกอบที่จะปรากฏในแถบเครื่องมือ</string>
   <string name="morphe_hide_toolbar_cast_button_title">ซ่อนปุ่มแคสต์</string>

@@ -511,15 +511,15 @@ Chun seo a shocrú, cas ar ‘Sruthanna físe bréige’ agus athraigh an ‘Cli
   <string name="morphe_tap_to_seek_title">Cumasaigh tapáil chun cuardach a dhéanamh</string>
   <string name="morphe_tap_to_seek_summary">Níl le déanamh ach an barra cuardaigh a thapáil chun léim go dtí an suíomh sin gan é a tharraingt</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Cumasaigh gotha ​​gile</string>
-  <string name="morphe_swipe_brightness_summary">Svaidhpeáil go hingearach ar thaobh na láimhe clé den mhodh lánscáileáin chun an gile a choigeartú</string>
-  <string name="morphe_swipe_volume_title">Cumasaigh gotha ​​toirte</string>
-  <string name="morphe_swipe_volume_summary">Svaidhpeáil go hingearach ar thaobh na láimhe deise den mhodh lánscáileáin chun an toirt a choigeartú</string>
-  <string name="morphe_swipe_zone_width_title">Leithead crios gile/toirte</string>
-  <string name="morphe_swipe_zone_width_summary">Céatadán de gach imeall scáileáin atá curtha in áirithe do ghluaiseachtaí gile agus toirte (5-50)</string>
+  <string name="morphe_swipe_left_zone_title">Gotha svaidhpeála ar chlé</string>
+  <string name="morphe_swipe_right_zone_title">Gotha svaidhpeála ar dheis</string>
+  <string name="morphe_swipe_top_zone_title">Gotha svaidhpeála barr</string>
+  <string name="morphe_swipe_zone_width_title">Leithead crios clé/deas</string>
+  <string name="morphe_swipe_zone_width_summary">Céatadán de gach imeall scáileáin atá curtha in áirithe do ghluaiseachtaí svaidhpeála ar chlé agus ar dheis (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Gile</string>
   <string name="morphe_swipe_zone_label_volume">Toirt</string>
   <string name="morphe_swipe_zone_label_native">Dúchasach</string>
+  <string name="morphe_swipe_zone_label_off">As</string>
   <string name="morphe_swipe_press_to_engage_title">Cumasaigh gotha ​​brúigh chun svaidhpeáil</string>
   <string name="morphe_swipe_press_to_engage_summary">Éilíonn brú agus coinneáil sula n-aithnítear gotha ​​svaidhpeála</string>
   <string name="morphe_swipe_haptic_feedback_title">Cumasaigh aiseolas haptaic</string>
@@ -548,12 +548,9 @@ Chun seo a shocrú, cas ar ‘Sruthanna físe bréige’ agus athraigh an ‘Cli
   <string name="morphe_swipe_volume_sensitivity_summary">Méadaíonn luachanna níos airde an t-athrú toirte in aghaidh an svaidhpeála.</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Íogaireacht gile svaidhpeála</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Éilíonn luachanna níos airde níos mó svaidhpeála in aghaidh gach céim gile</string>
-  <string name="morphe_swipe_speed_title">Cumasaigh gotha ​​luais</string>
-  <string name="morphe_swipe_speed_summary">Svaidhpeáil go cothrománach sa chrios uachtarach den mhodh lánscáileáin chun luas athsheinm a athrú</string>
   <string name="morphe_swipe_speed_sensitivity_title">Íogaireacht luas-swipeála</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Éilíonn luachanna níos airde níos mó svaidhpeála in aghaidh gach céim luais</string>
   <string name="morphe_swipe_speed_step_title">Céim luais</string>
-  <string name="morphe_swipe_speed_step_summary">An méid a athraíonn luas an athsheinm in aghaidh gach tic</string>
   <string name="morphe_swipe_speed_zone_height_title">Airde crios luas</string>
   <string name="morphe_swipe_speed_zone_height_summary">Airde an chrios gotha ​​luais mar chéatadán d\'airde an imreora (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Luas</string>
@@ -681,15 +678,8 @@ Chun rochtain a fháil ar Socruithe, cumasaigh an cnaipe Socruithe trí Ghinear�
   <string name="morphe_navigation_bar_animations_summary">Beochan aistrithe agus tú ag aistriú idir cluaisíní</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Díchumasaigh barra nascleanúna uathoibríoch-fholaigh</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Coinníonn sé an barra nascleanúna le feiceáil agus tú ag scrollú</string>
-  <string name="morphe_disable_translucent_status_bar_title">Díchumasaigh barra stádais tréshoilseach</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Déanann sé an barra stádais go hiomlán teimhneach</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Teorainneacha:
-• D’fhéadfadh barra dubh a bheith le feiceáil ag barr an seinnteora físe.
-• Is féidir barra nascleanúna an chórais a athrú go trédhearcach, agus ní féidir trácht a dhéanamh ar fhíseáin."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Díchumasaigh barra tréshoilseach solais</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Déanann sé an barra nascleanúna go hiomlán teimhneach i mód solais</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Díchumasaigh barra tréshoilseach dorcha</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Déanann sé an barra nascleanúna go hiomlán teimhneach i mód dorcha</string>
+  <string name="morphe_disable_translucent_navigation_title">Díchumasaigh barra nascleanúna tréshoilseach</string>
+  <string name="morphe_disable_translucent_navigation_summary">Déanann sé an nascleanúint agus an barra stádais go hiomlán teimhneach</string>
   <string name="morphe_toolbar_screen_title">Barra Uirlisí</string>
   <string name="morphe_toolbar_screen_summary">Roghnaigh cé na comhpháirteanna a thaispeántar sa bharra uirlisí</string>
   <string name="morphe_hide_toolbar_cast_button_title">Folaigh an cnaipe Cast</string>
@@ -1114,6 +1104,11 @@ Teorainn: Seans nach n-oibreoidh athsheinm ar roinnt gléasanna má tá 'Sruthan
   <string name="morphe_remember_playback_speed_toast">Athraíodh an luas athsheinm réamhshocraithe go: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Úsáid gnáthluas don cheol</string>
   <string name="morphe_disable_playback_speed_music_summary">Seinn físeáin cheoil i gcónaí ag luas 1.0x</string>
+  <string name="morphe_enable_playback_audio_pitch_controls_title">Cumasaigh rialuithe páirce fuaime</string>
+  <string name="morphe_playback_audio_pitch_default_title">Páirc fuaime athsheinm réamhshocraithe</string>
+  <string name="morphe_remember_playback_audio_pitch_toast">Athraíodh an pháirc fuaime réamhshocraithe go: %s</string>
+  <string name="morphe_playback_audio_time_stretching_title">Síneadh ama fuaime</string>
+  <string name="morphe_playback_audio_time_stretching_summary">Ceadaíonn sé luas agus páirc a shocrú go neamhspleách, d\'fhéadfadh sé airteagail fuaime a chruthú</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Díchumasaigh físeán HDR</string>
   <string name="morphe_force_avc_codec_title">Códc AVC (H.264) a fhorchur</string>
@@ -1128,7 +1123,7 @@ Teorainneacha:
 • Ní féidir le roinnt gléasanna AVC a bhrú"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Chun an ghné seo a úsáid, socraigh \'Sruthanna físe bréige\' go \'Android VR\' nó \'Android Studio\'</string>
-  <string name="morphe_force_av1_in_shorts_title">Fórtú AV1 i Shorts</string>
+  <string name="morphe_force_av1_in_shorts_title">Fórsa AV1 i Shorts</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Oscail an roghchlár Ardchaighdeáin</string>
   <string name="morphe_advanced_video_quality_menu_summary">Léimeann sé an roghchlár um roghnú cáilíochta agus osclaíonn sé an roghchlár Ardchaighdeán go díreach</string>

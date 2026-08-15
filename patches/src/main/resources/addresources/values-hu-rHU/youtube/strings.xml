@@ -511,15 +511,14 @@ A javításhoz kapcsolja be a 'Videóstreamek meghamisítása' opciót, és mód
   <string name="morphe_tap_to_seek_title">Érintésre keresés engedélyezése</string>
   <string name="morphe_tap_to_seek_summary">Csak koppintson meg a lejátszósávra, hogy átugorjon arra a pozícióra anélkül, hogy azt húzná</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Fényerő kézmozdulat engedélyezése</string>
-  <string name="morphe_swipe_brightness_summary">A bal oldalon függőlegesen történő gesztus állítja a fényerőt a teljes képernyős módban</string>
-  <string name="morphe_swipe_volume_title">Hangerő kézmozdulat engedélyezése</string>
-  <string name="morphe_swipe_volume_summary">A jobb oldalon függőlegesen történő gesztus állítja a hangerőt a teljes képernyős módban</string>
-  <string name="morphe_swipe_zone_width_title">Fényerő/hangerő zóna szélessége</string>
-  <string name="morphe_swipe_zone_width_summary">A képernyő széleinek az a százaléka, amely lefoglalva van a fényerő és hangerő vezérléséhez (5-50)</string>
+  <string name="morphe_swipe_left_zone_title">Balra törölés gesztus</string>
+  <string name="morphe_swipe_right_zone_title">Jobbra törölés gesztus</string>
+  <string name="morphe_swipe_top_zone_title">Felfelé törölés gesztus</string>
+  <string name="morphe_swipe_zone_width_title">Bal/Jobb zóna szélessége</string>
   <string name="morphe_swipe_zone_label_brightness">Fényerő</string>
   <string name="morphe_swipe_zone_label_volume">Hangerő</string>
   <string name="morphe_swipe_zone_label_native">Natív</string>
+  <string name="morphe_swipe_zone_label_off">Ki</string>
   <string name="morphe_swipe_press_to_engage_title">Csúsztatáshoz nyomva tartás engedélyezése</string>
   <string name="morphe_swipe_press_to_engage_summary">A csúsztatási gesztus felismerése előtt meg kell nyomni és nyomva tartani.</string>
   <string name="morphe_swipe_haptic_feedback_title">Haptikus visszajelzés engedélyezése</string>
@@ -548,12 +547,9 @@ A javításhoz kapcsolja be a 'Videóstreamek meghamisítása' opciót, és mód
   <string name="morphe_swipe_volume_sensitivity_summary">A nagyobb értékek növelik a hangerőváltozást egy húzás során</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Fényerő-húzásérzékenység</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">A nagyobb értékek több húzást igényelnek a fényerő lépésenkénti változásához</string>
-  <string name="morphe_swipe_speed_title">A sebességkézmozdulat engedélyezése</string>
-  <string name="morphe_swipe_speed_summary">A teljes képernyős módban húzza vízszintesen az felső zónában a lejátszási sebesség módosításához</string>
   <string name="morphe_swipe_speed_sensitivity_title">Sebesség-húzásérzékenység</string>
   <string name="morphe_swipe_speed_sensitivity_summary">A nagyobb értékek több húzást igényelnek a sebesség lépésenkénti változásához</string>
   <string name="morphe_swipe_speed_step_title">Sebességlépés</string>
-  <string name="morphe_swipe_speed_step_summary">A lejátszási sebesség egy lépésenkénti változása</string>
   <string name="morphe_swipe_speed_zone_height_title">A sebesség zónájának magassága</string>
   <string name="morphe_swipe_speed_zone_height_summary">A sebességkézmozdulat zónájának magassága a lejátszó magasságának százalékában (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Sebesség</string>
@@ -681,15 +677,8 @@ A Beállítások eléréséhez engedje a Beállítások gombot a Általános →
   <string name="morphe_navigation_bar_animations_summary">Animálja az átmeneteket a lapok között váltáskor</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Kapcsold ki az automatikus elrejtést a navigációs sávra</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">A navigációs sáv látható marad a görgetés közben</string>
-  <string name="morphe_disable_translucent_status_bar_title">Átlátszó állapotsor letiltása</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Teljesen átlátszatlanná teszi az állapot sort</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Limitációk:
-• Fekete sáv jelenhet meg a videólejátszó tetején.
-• A rendszer navigációs sávja átlátszóvá válhat, és nem lehetséges a videók megjegyzése."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Világos, átlátszó sáv letiltása</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Teljesen átlátszatlanná teszi a navigációs sort világos módban</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Sötét áttetsző sáv letiltása</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Teljesen átlátszatlanná teszi a navigációs sort sötét módban</string>
+  <string name="morphe_disable_translucent_navigation_title">Átlátszó navigációs sáv letiltása</string>
+  <string name="morphe_disable_translucent_navigation_summary">Teljesen átlátszatlaná teszi a navigációs és az állapotsort</string>
   <string name="morphe_toolbar_screen_title">Eszközevek sorozata</string>
   <string name="morphe_toolbar_screen_summary">Válassza ki, mely komponensek jelenjenek meg az eszköztáron</string>
   <string name="morphe_hide_toolbar_cast_button_title">Átküldés gomb elrejtése</string>

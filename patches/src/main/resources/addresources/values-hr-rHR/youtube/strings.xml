@@ -333,9 +333,8 @@ Info: Možda neće raditi na prijenosima uživo"</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Omogu tapanje za pretraživanje</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Omogu kontrolu jakosti</string>
-  <string name="morphe_swipe_volume_title">Omogu kontrolu zvuka</string>
   <string name="morphe_swipe_zone_label_native">Izvorno</string>
+  <string name="morphe_swipe_zone_label_off">Isključeno</string>
   <string name="morphe_swipe_press_to_engage_title">Omogu pritisak za otvaranje</string>
   <string name="morphe_swipe_haptic_feedback_title">Omogu haptiku</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Spremite i obnovi jakost</string>
@@ -412,12 +411,6 @@ Info: Možda neće raditi na prijenosima uživo"</string>
   <string name="morphe_hide_navigation_bar_title">Sakrij navigacijsku traku</string>
   <string name="morphe_narrow_navigation_buttons_title">Omogući uske tipke za navigaciju</string>
   <string name="morphe_navigation_bar_animations_title">Animacije na navigacijskoj traci su animirane</string>
-  <string name="morphe_disable_translucent_status_bar_title">Status traka je opaka</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Ograničenja:
-• Moguće je da se crna traka pojavi na vrhu video plejera.
-• Navigacijska traka sustava može postati prozirna, i nije moguće komentirati videozapise."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Translucentna navigacijska traka je opaka</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Tamna transluzentna navigacijska traka je opaka</string>
   <string name="morphe_toolbar_screen_title">Traka</string>
   <string name="morphe_hide_toolbar_chat_button_title">Sakrij tipku Chat </string>
   <string name="morphe_hide_toolbar_create_button_title">Sakrij tipku Izradi</string>

@@ -511,15 +511,15 @@ Za odpravo te težave vklopite 'Ponaredi video tokove' in spremenite 'Privzeti o
   <string name="morphe_tap_to_seek_title">Omogoči iskanje z dotikom</string>
   <string name="morphe_tap_to_seek_summary">Samo tapnite drsnik, da skočite na to pozicijo, ne da bi ga povlekli</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Omogoči gesto za svetlost</string>
-  <string name="morphe_swipe_brightness_summary">Drsite navpično po levi strani celozaslonskega načina za prilagoditev svetlosti</string>
-  <string name="morphe_swipe_volume_title">Omogoči gesto za glasnost</string>
-  <string name="morphe_swipe_volume_summary">Drsite navpično po desni strani celozaslonskega načina za prilagoditev glasnosti</string>
-  <string name="morphe_swipe_zone_width_title">Širina območja za svetlost/glasnost</string>
-  <string name="morphe_swipe_zone_width_summary">Odstotek roba zaslona, rezerviranega za geste svetlosti in glasnosti (5-50)</string>
+  <string name="morphe_swipe_left_zone_title">Žestika s povlekom vlevo</string>
+  <string name="morphe_swipe_right_zone_title">Žestika s povlekom desno</string>
+  <string name="morphe_swipe_top_zone_title">Žestika s povlekom navzgor</string>
+  <string name="morphe_swipe_zone_width_title">Širina leve/desne cone</string>
+  <string name="morphe_swipe_zone_width_summary">Odstotek vsakega roba zaslona, rezerviran za žestike s povlekom vlevo in desno (5–50)</string>
   <string name="morphe_swipe_zone_label_brightness">Svetlost</string>
   <string name="morphe_swipe_zone_label_volume">Glasnost</string>
   <string name="morphe_swipe_zone_label_native">Izvirno</string>
+  <string name="morphe_swipe_zone_label_off">Izklopljeno</string>
   <string name="morphe_swipe_press_to_engage_title">Omogoči gesto pritiska za drsenje</string>
   <string name="morphe_swipe_press_to_engage_summary">Zahteva pritiskanje in držanje, preden je prepoznana poteza povleka.</string>
   <string name="morphe_swipe_haptic_feedback_title">Omogoči povratno vibracijo</string>
@@ -548,12 +548,9 @@ Za odpravo te težave vklopite 'Ponaredi video tokove' in spremenite 'Privzeti o
   <string name="morphe_swipe_volume_sensitivity_summary">Višje vrednosti povečajo spremembo glasnosti na pomik</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Občutljivost geste za svetlost</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Višje vrednosti zahtevajo več pomikov za vsako stopnjo svetlosti</string>
-  <string name="morphe_swipe_speed_title">Omogoči gesto za hitrost</string>
-  <string name="morphe_swipe_speed_summary">Podrsajte vodoravno v zgornjem delu celozaslonskega načina za spremembo hitrosti predvajanja</string>
   <string name="morphe_swipe_speed_sensitivity_title">Občutljivost geste za hitrost</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Višje vrednosti zahtevajo več pomikov za vsako stopnjo hitrosti</string>
   <string name="morphe_swipe_speed_step_title">Hitrost koraka</string>
-  <string name="morphe_swipe_speed_step_summary">Znesek, za katerega se hitrost predvajanja spremeni na vsak korak</string>
   <string name="morphe_swipe_speed_zone_height_title">Višina cone hitrosti</string>
   <string name="morphe_swipe_speed_zone_height_summary">Višina gest za hitrost kot odstotek višine predvajalnika (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Hitrost</string>
@@ -681,15 +678,8 @@ Za dostop do Nastavitev omogočite gumb Nastavitve prek Splošno → Vrstica →
   <string name="morphe_navigation_bar_animations_summary">Naredi vrstico za navigacijo popolnoma neprozorno v svetlem načinu</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Onemogoči samodejno skrivanje navigacijske vrstice</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Naredi vrstico za navigacijo popolnoma neprozorno v temnem načinu</string>
-  <string name="morphe_disable_translucent_status_bar_title">Onemogoči prosojno stanje</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Izberite, kateri elementi se pojavljajo v pojavnem meniju predvajalnika</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Omejitve:
-• Na vrhu predvajalnika videa se lahko prikaže črna vrstica.
-• Sistem navadniška vrstica se lahko spremeni v prozorno in ni mogoče komentirati videoposnetkov."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Onemogoči svetlo prosojno vrstico</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Skrij meni \'Zvok\'</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Onemogoči temno prosojno vrstico</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Omogoča popolno opaznost navigacijske vrstice v temnem načinu.</string>
+  <string name="morphe_disable_translucent_navigation_title">Onemogoči polprozorno navigacijsko vrsto</string>
+  <string name="morphe_disable_translucent_navigation_summary">Navigacijsko vrsto in vrsto stanja naredi popolnoma neprozorno</string>
   <string name="morphe_toolbar_screen_title">Orodje.</string>
   <string name="morphe_toolbar_screen_summary">Skrij podnapisna stopala menija \'Zvok\'</string>
   <string name="morphe_hide_toolbar_cast_button_title">Skrij gumb za prenos</string>

@@ -511,15 +511,15 @@ Chcete-li to opravit, zapněte 'Podvrhnout video streamy' a změňte 'výchozí 
   <string name="morphe_tap_to_seek_title">Povolit klepnutím přejít na</string>
   <string name="morphe_tap_to_seek_summary">Klepnutím na ukazatel hledání se přesunete na toto místo bez jeho táhnutí</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Povolit gesto pro jas</string>
-  <string name="morphe_swipe_brightness_summary">Posouváním vertikálně na levé straně režimu na celou obrazovku se upraví jas</string>
-  <string name="morphe_swipe_volume_title">Povolit gesto pro hlasitost</string>
-  <string name="morphe_swipe_volume_summary">Posouváním vertikálně na pravé straně režimu na celou obrazovku se upraví hlasitost</string>
-  <string name="morphe_swipe_zone_width_title">Šířka zóny pro ovládání jasu/hlasitosti</string>
-  <string name="morphe_swipe_zone_width_summary">Procento každého okraje obrazovky vyhrazené pro gesta jasu a hlasitosti (5-50)</string>
+  <string name="morphe_swipe_left_zone_title">Gesto svisku doleva</string>
+  <string name="morphe_swipe_right_zone_title">Gesto svisku doprava</string>
+  <string name="morphe_swipe_top_zone_title">Gesto svisku nahoru</string>
+  <string name="morphe_swipe_zone_width_title">Šířka zóny vlevo/vpravo</string>
+  <string name="morphe_swipe_zone_width_summary">Procento okraje každé obrazovky rezervované pro gesta pře tahu vlevo a vpravo (5–50)</string>
   <string name="morphe_swipe_zone_label_brightness">Jas</string>
   <string name="morphe_swipe_zone_label_volume">Hlasitost</string>
   <string name="morphe_swipe_zone_label_native">Výchozí</string>
+  <string name="morphe_swipe_zone_label_off">Vypnuto</string>
   <string name="morphe_swipe_press_to_engage_title">Povolit stisknutí pro aktivaci přejetí</string>
   <string name="morphe_swipe_press_to_engage_summary">Vyžaduje stisknutí a podržení před rozpoznáním gesta přejetí</string>
   <string name="morphe_swipe_haptic_feedback_title">Povolit haptickou odezvu</string>
@@ -548,12 +548,9 @@ Chcete-li to opravit, zapněte 'Podvrhnout video streamy' a změňte 'výchozí 
   <string name="morphe_swipe_volume_sensitivity_summary">Vyšší hodnoty zvyšují změnu hlasitosti na jedno přejetí</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Citlivost přejetí jasu</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Vyšší hodnoty vyžadují více přejetí pro každý krok jasu</string>
-  <string name="morphe_swipe_speed_title">Povolit gesto pro rychlost</string>
-  <string name="morphe_swipe_speed_summary">Přejeďte v horní části obrazovky ve fullscreen režimu vodorovně a změníte tak rychlost přehrávání</string>
   <string name="morphe_swipe_speed_sensitivity_title">Citlivost přejetí rychlosti</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Vyšší hodnoty vyžadují více přejetí pro každý krok rychlosti</string>
   <string name="morphe_swipe_speed_step_title">Rychlost kroku</string>
-  <string name="morphe_swipe_speed_step_summary">Množství, o které se mění rychlost přehrávání na jedno kliknutí</string>
   <string name="morphe_swipe_speed_zone_height_title">Výška zóny rychlosti</string>
   <string name="morphe_swipe_speed_zone_height_summary">Výška zóny gest pro rychlost jako procento výšky přehrávače (5–75)</string>
   <string name="morphe_swipe_zone_label_speed">Rychlost</string>
@@ -679,15 +676,8 @@ Pro přístup k Nastavení povolte tlačítko Nastavení přes Obecné → Nást
   <string name="morphe_navigation_bar_animations_summary">Způsobuje, že navigační lišta je v režimu Light zcela neprůhledná</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Vypněte automatické skrytí navigační lišty</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Způsobuje, že navigační lišta je v režimu Dark zcela neprůhledná</string>
-  <string name="morphe_disable_translucent_status_bar_title">Deaktivovat průsvitný stavový řádek</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Vyberte, které komponenty se zobrazí ve flyout menu</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Omezení:
-• Černý pruh může být vidět v horní části videopřehrávače.
-• Systémová navigace může být transparentní a není možné komentovat videa."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Deaktivovat světlý průsvitný navigační panel</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Skrýt menu Zvukové stopy</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Deaktivovat tmavý průsvitný navigační panel</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Skrýt menu Titulky</string>
+  <string name="morphe_disable_translucent_navigation_title">Deaktivovat průsvitný navigační panel</string>
+  <string name="morphe_disable_translucent_navigation_summary">Nastaví navigační panel a stavový řádek jako plně neprůhledné</string>
   <string name="morphe_toolbar_screen_title">Nárazovka</string>
   <string name="morphe_toolbar_screen_summary">Skrýt menu Další nastavení / Více</string>
   <string name="morphe_hide_toolbar_cast_button_title">Skrýt tlačítko Odeslat</string>
@@ -1131,6 +1121,7 @@ Omezení:
 • Některá zařízení nemohou vynutit AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Chcete-li použít tuto funkci, nastavte \'Zfalšovat video streamy\' na \'Android VR\' nebo \'Android Studio\'</string>
+  <string name="morphe_force_av1_in_shorts_title">Vynutit AV1 v Shorts</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Otevřít nabídku pokročilého nastavení kvality</string>
   <string name="morphe_advanced_video_quality_menu_summary">Přeskočí menu pro výběr kvality a přímo otevře menu čpokročilých nastavení</string>

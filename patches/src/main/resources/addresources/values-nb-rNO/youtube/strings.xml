@@ -511,12 +511,6 @@ For å fikse dette, slå på «Forfalsk videostrømmer» og endre «Standard kli
   <string name="morphe_tap_to_seek_title">Aktiver trykk for å søke</string>
   <string name="morphe_tap_to_seek_summary">Bare trykk på søkefeltet for å hoppe til den posisjonen uten å dra det</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Aktiver lysstyrkegest</string>
-  <string name="morphe_swipe_brightness_summary">Sveip vertikalt på venstre side av fullskjermmodusen for å justere lysstyrken</string>
-  <string name="morphe_swipe_volume_title">Aktiver volumgest</string>
-  <string name="morphe_swipe_volume_summary">Sveip vertikalt på høyre side av fullskjermmodusen for å justere volumet</string>
-  <string name="morphe_swipe_zone_width_title">Lysstyrke/volum sonebredde</string>
-  <string name="morphe_swipe_zone_width_summary">Prosentandel av hver skjermkant reservert for lysstyrke- og volumbevegelser (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Lysstyrke</string>
   <string name="morphe_swipe_zone_label_volume">Volum</string>
   <string name="morphe_swipe_zone_label_native">Native</string>
@@ -548,12 +542,9 @@ For å fikse dette, slå på «Forfalsk videostrømmer» og endre «Standard kli
   <string name="morphe_swipe_volume_sensitivity_summary">Høyere verdier øker volumendringen per sveip</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Sveipefølsomhet for lysstyrke</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Høyere verdier krever mer sveiping per lysstyrketrinn</string>
-  <string name="morphe_swipe_speed_title">Aktiver hastighetsgest</string>
-  <string name="morphe_swipe_speed_summary">Sveip horisontalt i den øvre sonen i fullskjermmodus for å endre avspillingshastighet</string>
   <string name="morphe_swipe_speed_sensitivity_title">Hastighetssveipefølsomhet</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Høyere verdier krever mer sveiping per hastighetstrinn</string>
   <string name="morphe_swipe_speed_step_title">Hastighetssteg</string>
-  <string name="morphe_swipe_speed_step_summary">Mengde som avspillingshastigheten endres per trinn</string>
   <string name="morphe_swipe_speed_zone_height_title">Høyde på hastighetssonen</string>
   <string name="morphe_swipe_speed_zone_height_summary">Høyden på hastighetsgestsonen som en prosentandel av spillerhøyden (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Hastighet</string>
@@ -681,15 +672,6 @@ For å få tilgang til Innstillinger, aktiver Innstillingsknappen via General �
   <string name="morphe_navigation_bar_animations_summary">Animerer overganger når du bytter mellom faner</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Deaktiver automatisk skjuling av navigasjonslinje</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Beholder navigeringslinjen synlig mens du ruller</string>
-  <string name="morphe_disable_translucent_status_bar_title">Deaktiver gjennomsiktig statuslinje</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Gjør statuslinjen fullstendig ugjennomsiktig</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Begrensninger:
-• En svart linje kan vises øverst i videospilleren.
-• Systemnavigasjonslinjen kan endres til gjennomsiktig, og det er ikke mulig å kommentere videoer."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Deaktiver gjennomsiktig navigasjonslinje (lys modus)</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Gjør navigeringslinjen fullstendig ugjennomsiktig i lys modus</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Deaktiver gjennomsiktig navigasjonslinje (mørk modus)</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Gjør navigeringslinjen fullstendig ugjennomsiktig i mørk modus</string>
   <string name="morphe_toolbar_screen_title">Verktøylinje</string>
   <string name="morphe_toolbar_screen_summary">Velg hvilke komponenter som vises i popup-menyen</string>
   <string name="morphe_hide_toolbar_cast_button_title">Skjul Kast-knapp</string>

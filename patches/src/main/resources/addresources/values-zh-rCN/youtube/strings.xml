@@ -511,12 +511,6 @@ Second \"item\" text"</string>
   <string name="morphe_tap_to_seek_title">启用点按进度条</string>
   <string name="morphe_tap_to_seek_summary">只需点击进度条即可跳转到该位置，而无需拖动</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">启用亮度控制手势</string>
-  <string name="morphe_swipe_brightness_summary">在全屏模式的左侧垂直滑动以调整亮度</string>
-  <string name="morphe_swipe_volume_title">启用音量手势</string>
-  <string name="morphe_swipe_volume_summary">在全屏模式的右侧垂直滑动以调整音量</string>
-  <string name="morphe_swipe_zone_width_title">亮度/音量区域宽度</string>
-  <string name="morphe_swipe_zone_width_summary">为亮度与音量手势保留的每个屏幕边缘的百分比（5-50）</string>
   <string name="morphe_swipe_zone_label_brightness">亮度</string>
   <string name="morphe_swipe_zone_label_volume">音量</string>
   <string name="morphe_swipe_zone_label_native">原生</string>
@@ -548,12 +542,9 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_volume_sensitivity_summary">较高的值会增加每次滑动的音量变化</string>
   <string name="morphe_swipe_brightness_sensitivity_title">亮度滑动灵敏度</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">较高的值需要每个亮度级别更多地滑动</string>
-  <string name="morphe_swipe_speed_title">启用速度手势</string>
-  <string name="morphe_swipe_speed_summary">在全屏模式的上方区域水平滑动以更改播放速度</string>
   <string name="morphe_swipe_speed_sensitivity_title">速度滑动灵敏度</string>
   <string name="morphe_swipe_speed_sensitivity_summary">较高的值需要每次速度步骤更多的滑动</string>
   <string name="morphe_swipe_speed_step_title">速度阶跃</string>
-  <string name="morphe_swipe_speed_step_summary">每次调整速度变化的幅度</string>
   <string name="morphe_swipe_speed_zone_height_title">速度区域高度</string>
   <string name="morphe_swipe_speed_zone_height_summary">速度手势区域高度占播放器高度的百分比 (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">速度</string>
@@ -681,15 +672,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_summary">软光上子检查些“通过”软光浩通的新闻</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">禁用自动隐藏导航栏</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">隐藏“音轨”菜单页脚</string>
-  <string name="morphe_disable_translucent_status_bar_title">禁用半透明状态栏</string>
-  <string name="morphe_disable_translucent_status_bar_summary">隐藏“字幕”菜单</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"限制：
-• 视频播放器顶部可能会出现黑条。
-• 系统导航栏可能会变为透明，无法评论视频。"</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">禁用浅色半透明导航栏</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">隐藏“字幕”菜单页脚</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">禁用深色半透明导航栏</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">在深色模式下使导航栏完全不透明</string>
   <string name="morphe_toolbar_screen_title">工具栏</string>
   <string name="morphe_toolbar_screen_summary">选择工具栏中显示哪些组件</string>
   <string name="morphe_hide_toolbar_cast_button_title">隐藏“投屏”按钮</string>

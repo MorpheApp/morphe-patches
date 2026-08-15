@@ -511,12 +511,6 @@ För att åtgärda detta, aktivera 'Förfalska videostreamar' och ändra 'Standa
   <string name="morphe_tap_to_seek_title">Aktivera Tryck för att söka</string>
   <string name="morphe_tap_to_seek_summary">Tryck bara på sökfältet för att hoppa till den positionen utan att dra i det</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Aktivera ljusstyrkegest</string>
-  <string name="morphe_swipe_brightness_summary">Svep vertikalt till vänster i helskärmsläget för att justera ljusstyrkan</string>
-  <string name="morphe_swipe_volume_title">Aktivera volymgest</string>
-  <string name="morphe_swipe_volume_summary">Svep vertikalt till höger i helskärmsläget för att justera volymen</string>
-  <string name="morphe_swipe_zone_width_title">Bredd på ljusstyrke-/volymzonen</string>
-  <string name="morphe_swipe_zone_width_summary">Procentandel av varje skärmkant som reserveras för ljusstyrke- och volymgester (5–50)</string>
   <string name="morphe_swipe_zone_label_brightness">Ljusstyrka</string>
   <string name="morphe_swipe_zone_label_volume">Volym</string>
   <string name="morphe_swipe_zone_label_native">Inbyggd</string>
@@ -548,12 +542,9 @@ För att åtgärda detta, aktivera 'Förfalska videostreamar' och ändra 'Standa
   <string name="morphe_swipe_volume_sensitivity_summary">Högre värden ökar volymändringen per svep</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Svepkänslighet för ljusstyrkegest</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Högre värden kräver mer svepande per ljusstyrkesteg</string>
-  <string name="morphe_swipe_speed_title">Aktivera hastighetsgest</string>
-  <string name="morphe_swipe_speed_summary">Svep horisontellt i den övre zonen i helskärmsläget för att ändra uppspelningshastigheten</string>
   <string name="morphe_swipe_speed_sensitivity_title">Svepkänslighet för hastighetsgest</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Högre värden kräver mer svepande per hastighetssteg</string>
   <string name="morphe_swipe_speed_step_title">Hastighetssteg</string>
-  <string name="morphe_swipe_speed_step_summary">Belopp med vilket uppspelningshastigheten ändras per steg</string>
   <string name="morphe_swipe_speed_zone_height_title">Höjd på hastighetszonen</string>
   <string name="morphe_swipe_speed_zone_height_summary">Höjd på hastighetsgestzonen i procent av spelarens höjd (5–75)</string>
   <string name="morphe_swipe_zone_label_speed">Hastighet</string>
@@ -681,15 +672,6 @@ Om du vill komma åt inställningarna aktiverar du knappen Inställningar via Al
   <string name="morphe_navigation_bar_animations_summary">Animerar övergångarna när du byter mellan flikar</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Inaktivera att navigeringsfältet döljs automatiskt</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Håller navigeringsfältet synligt när du skrollar</string>
-  <string name="morphe_disable_translucent_status_bar_title">Inaktivera genomskinligt statusfält</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Gör statusfältet helt ogenomskinligt</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Begränsningar:
-• Ett svart fält kan synas högst upp i videospelaren.
-• Systemets navigeringsfält kan bli genomskinligt och det är inte möjligt att kommentera videor."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Inaktivera ljust genomskinligt fält</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Gör navigeringsfältet helt ogenomskinligt i ljust läge</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Inaktivera mörkt genomskinligt fält</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Gör navigeringsfältet helt ogenomskinligt i mörkt läge</string>
   <string name="morphe_toolbar_screen_title">Verktygsfält</string>
   <string name="morphe_toolbar_screen_summary">Välj vilka komponenter som visas i verktygsfältet</string>
   <string name="morphe_hide_toolbar_cast_button_title">Dölj knappen Casta</string>
@@ -1114,6 +1096,7 @@ Begränsning: Uppspelning kanske inte fungerar på vissa enheter om 'Förfalska 
   <string name="morphe_remember_playback_speed_toast">Ändrade standardhastigheten till: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Använd normal hastighet för musik</string>
   <string name="morphe_disable_playback_speed_music_summary">Spela alltid musikvideor i 1,0x hastighet</string>
+  <string name="morphe_enable_playback_audio_pitch_controls_title">Aktivera kontroller för ljudtonhöjd</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Inaktivera HDR-video</string>
   <string name="morphe_force_avc_codec_title">Tvinga AVC (H.264)-kodeken</string>
@@ -1128,6 +1111,7 @@ Begränsningar:
 • Vissa enheter kan inte tvinga AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">För att använda den här funktionen anger du \'Förfalska videostreamar\' till \'Android VR\' eller \'Android Studio\'</string>
+  <string name="morphe_force_av1_in_shorts_title">Tvinga AV1 i Shorts</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Öppna menyn Avancerad kvalitet</string>
   <string name="morphe_advanced_video_quality_menu_summary">Hoppar över kvalitetsvalsmenyn och öppnar menyn Avancerad kvalitet direkt</string>

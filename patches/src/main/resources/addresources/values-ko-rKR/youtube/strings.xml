@@ -513,15 +513,15 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_tap_to_seek_title">재생바 터치 조작 활성화하기</string>
   <string name="morphe_tap_to_seek_summary">드래그하지 않고 재생바를 탭하기만 해도 해당 위치로 이동할 수 있습니다</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">스와이프 제스처로 밝기 조절하기</string>
-  <string name="morphe_swipe_brightness_summary">전체 화면 모드 왼쪽에서 세로로 스와이프하여 밝기를 조절합니다</string>
-  <string name="morphe_swipe_volume_title">스와이프 제스처로 볼륨 조절하기</string>
-  <string name="morphe_swipe_volume_summary">전체 화면 모드 오른쪽에서 세로로 스와이프하여 볼륨을 조절합니다</string>
-  <string name="morphe_swipe_zone_width_title">밝기/볼륨 영역 너비</string>
-  <string name="morphe_swipe_zone_width_summary">밝기 및 볼륨 제스처에 지정된 각 화면 가장자리의 비율을 설정할 수 있습니다 (5~50)</string>
+  <string name="morphe_swipe_left_zone_title">왼쪽 스와이프 제스처</string>
+  <string name="morphe_swipe_right_zone_title">오른쪽 스와이프 제스처</string>
+  <string name="morphe_swipe_top_zone_title">상단 스와이프 제스처</string>
+  <string name="morphe_swipe_zone_width_title">왼쪽/오른쪽 영역 너비</string>
+  <string name="morphe_swipe_zone_width_summary">왼쪽 및 오른쪽 스와이프 제스처에 할당되는 화면 양쪽 가장자리의 비율을 설정할 수 있습니다 (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">밝기</string>
   <string name="morphe_swipe_zone_label_volume">볼륨</string>
   <string name="morphe_swipe_zone_label_native">기본</string>
+  <string name="morphe_swipe_zone_label_off">사용 안함</string>
   <string name="morphe_swipe_press_to_engage_title">길게 탭하여 스와이프 제스처 사용하기</string>
   <string name="morphe_swipe_press_to_engage_summary">스와이프 제스처가 인식되려면 화면을 길게 탭해야 합니다</string>
   <string name="morphe_swipe_haptic_feedback_title">진동 피드백 활성화하기</string>
@@ -550,12 +550,9 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_swipe_volume_sensitivity_summary">값이 높을수록 한 번의 스와이프로 변경되는 볼륨 크기가 증가합니다</string>
   <string name="morphe_swipe_brightness_sensitivity_title">밝기 스와이프 민감도</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">값이 높을수록 밝기 단계를 변경하려면 더 많이 스와이프해야 합니다</string>
-  <string name="morphe_swipe_speed_title">스와이프 제스처로 속도 조절하기</string>
-  <string name="morphe_swipe_speed_summary">전체 화면 모드 상단에서 가로로 스와이프하여 재생 속도를 조절합니다</string>
   <string name="morphe_swipe_speed_sensitivity_title">속도 스와이프 민감도</string>
   <string name="morphe_swipe_speed_sensitivity_summary">값이 높을수록 속도 단계를 변경하려면 더 많이 스와이프해야 합니다</string>
   <string name="morphe_swipe_speed_step_title">속도 단계</string>
-  <string name="morphe_swipe_speed_step_summary">한 단계당 변경할 수 있는 재생 속도 값을 설정할 수 있습니다</string>
   <string name="morphe_swipe_speed_zone_height_title">속도 영역 높이</string>
   <string name="morphe_swipe_speed_zone_height_summary">플레이어 높이 대비 속도 제스처 영역의 높이 비율을 설정할 수 있습니다 (5~75)</string>
   <string name="morphe_swipe_zone_label_speed">속도</string>
@@ -683,15 +680,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_navigation_bar_animations_summary">하단바에서 탭 전환 시 애니메이션을 표시합니다</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">하단바 자동 숨기기 비활성화하기</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">피드에서 스크롤하는 경우에 하단바를 숨기지 않습니다</string>
-  <string name="morphe_disable_translucent_status_bar_title">반투명 상태바 비활성화하기</string>
-  <string name="morphe_disable_translucent_status_bar_summary">상태바를 완전히 불투명하게 만듭니다</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"제한 사항:
-• 동영상 플레이어 상단에 검은 여백이 나타날 수 있습니다.
-• 시스템 네비게이션 바가 투명하게 변경될 수 있으며, 동영상에 댓글을 달 수 없습니다."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">밝은 반투명 하단바 비활성화하기</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">밝은 테마에서 하단바를 완전히 불투명하게 만듭니다</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">어두운 반투명 하단바 비활성화하기</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">어두운 테마에서 하단바를 완전히 불투명하게 만듭니다</string>
+  <string name="morphe_disable_translucent_navigation_title">반투명 하단바 비활성화하기</string>
+  <string name="morphe_disable_translucent_navigation_summary">하단바와 상태바를 완전히 불투명하게 만듭니다</string>
   <string name="morphe_toolbar_screen_title">툴바</string>
   <string name="morphe_toolbar_screen_summary">툴바에 표시할 구성 요소를 설정할 수 있습니다</string>
   <string name="morphe_hide_toolbar_cast_button_title">크롬캐스트 버튼 숨기기</string>
@@ -1118,7 +1108,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_disable_playback_speed_music_summary">음악 동영상을 항상 1.0 배속으로 재생합니다</string>
   <string name="morphe_enable_playback_audio_pitch_controls_title">오디오 피치 컨트롤 활성화하기</string>
   <string name="morphe_playback_audio_pitch_default_title">기본 재생 오디오 피치</string>
-  <string name="morphe_remember_playback_audio_pitch_toast">기본 오디오 피치를 %s로 변경하였습니다</string>
+  <string name="morphe_remember_playback_audio_pitch_toast">기본 오디오 피치를 %s 로 변경하였습니다</string>
   <string name="morphe_playback_audio_time_stretching_title">오디오 시간 늘리기</string>
   <string name="morphe_playback_audio_time_stretching_summary">속도와 피치를 서로 독립적으로 설정할 수 있습니다. 오디오에 잡음이나 음질 저하 등의 왜곡이 발생할 수 있습니다</string>
   <!-- video.codecs.disableVideoCodecsPatch -->

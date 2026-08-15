@@ -512,15 +512,15 @@ Um das zu beheben, aktiviere 'Video-Streams spoofen' und ändere den 'Standard-C
   <string name="morphe_tap_to_seek_title">Tippen zum Suchen aktivieren</string>
   <string name="morphe_tap_to_seek_summary">Tippe ohne zu ziehen auf den Fortschrittsbalken, um an die jeweilige Stelle zu springen</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Geste für Helligkeitssteuerung aktivieren</string>
-  <string name="morphe_swipe_brightness_summary">Wische im Vollbildmodus auf der linken Seite nach oben oder unten, um die Helligkeit anzupassen</string>
-  <string name="morphe_swipe_volume_title">Geste für Lautstärkensteuerung aktivieren</string>
-  <string name="morphe_swipe_volume_summary">Wische im Vollbildmodus auf der rechten Seite nach oben oder unten, um die Lautstärke anzupassen</string>
-  <string name="morphe_swipe_zone_width_title">Breite der Helligkeits-/Lautstärkenzone</string>
-  <string name="morphe_swipe_zone_width_summary">Prozentanteil der Bildschirmseiten, die für Gesten zur Steuerung von Helligkeit und Lautstärke reserviert sind (5-50)</string>
+  <string name="morphe_swipe_left_zone_title">Wischgeste nach links</string>
+  <string name="morphe_swipe_right_zone_title">Wischgeste nach rechts</string>
+  <string name="morphe_swipe_top_zone_title">Wischgeste nach oben</string>
+  <string name="morphe_swipe_zone_width_title">Breite der linken/rechten Zone</string>
+  <string name="morphe_swipe_zone_width_summary">Prozentanteil jeder Bildschirmkante, die für Wischgesten links und rechts reserviert ist (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Helligkeit</string>
   <string name="morphe_swipe_zone_label_volume">Lautstärke</string>
   <string name="morphe_swipe_zone_label_native">Nativ</string>
+  <string name="morphe_swipe_zone_label_off">Aus</string>
   <string name="morphe_swipe_press_to_engage_title">Berührungsschutz für Gesten aktivieren</string>
   <string name="morphe_swipe_press_to_engage_summary">Erfordert Drücken und Halten, bevor eine Wischgeste erkannt wird</string>
   <string name="morphe_swipe_haptic_feedback_title">Haptisches Feedback aktivieren</string>
@@ -549,12 +549,9 @@ Um das zu beheben, aktiviere 'Video-Streams spoofen' und ändere den 'Standard-C
   <string name="morphe_swipe_volume_sensitivity_summary">Höhere Werte erhöhen die Lautstärkeveränderung pro Wischbewegung</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Empfindlichkeit der Helligkeits-Gestensteuerung</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Höhere Werte erfordern mehr Wischbewegungen pro Helligkeitsstufe</string>
-  <string name="morphe_swipe_speed_title">Geste für Geschwindigkeitssteuerung aktivieren</string>
-  <string name="morphe_swipe_speed_summary">Wische im Vollbildmodus horizontal im oberen Bereich, um die Wiedergabegeschwindigkeit zu ändern</string>
   <string name="morphe_swipe_speed_sensitivity_title">Empfindlichkeit der Wischbewegung für die Geschwindigkeit</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Höhere Werte erfordern mehr Wischbewegungen pro Geschwindigkeitsstufe</string>
   <string name="morphe_swipe_speed_step_title">Geschwindigkeitsinkrement</string>
-  <string name="morphe_swipe_speed_step_summary">Betrag, um den sich die Wiedergabegeschwindigkeit pro Schritt ändert</string>
   <string name="morphe_swipe_speed_zone_height_title">Höhe der Geschwindigkeitszone</string>
   <string name="morphe_swipe_speed_zone_height_summary">Höhe der Geschwindigkeitsgestenzone als Prozentsatz der Player-Höhe (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Geschwindigkeit</string>
@@ -682,15 +679,6 @@ Um auf die Einstellungen zuzugreifen, aktiviere den Einstellungen-Button über A
   <string name="morphe_navigation_bar_animations_summary">Audio Track-Menü-Fußzeile ausblenden</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Auto-Ausblenden der Navigationsleiste deaktivieren</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Audio Track-Menü-Header ausblenden</string>
-  <string name="morphe_disable_translucent_status_bar_title">Transluzente Statusleiste deaktivieren</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Zusätzliche Einstellungen-Menü ausblenden</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Einschränkungen:
-• Es kann ein schwarzer Balken oben im Video-Player erscheinen.
-• Die System-Navigationsleiste kann transparent werden, und es ist nicht möglich, Videos zu kommentieren."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Hellen, lichtdurchlässigen Balken deaktivieren</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Sleep-Timer-Menü ausblenden</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Deaktiviere die dunkle, durchscheinende Leiste</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Macht die Navigationsleiste im Darkmode undurchsichtig.</string>
   <string name="morphe_toolbar_screen_title">Leiste</string>
   <string name="morphe_toolbar_screen_summary">Wähle aus, welche Schaltflächen in der Toolbar erscheinen sollen</string>
   <string name="morphe_hide_toolbar_cast_button_title">Schaltfläche „Übertragen“ ausblenden</string>

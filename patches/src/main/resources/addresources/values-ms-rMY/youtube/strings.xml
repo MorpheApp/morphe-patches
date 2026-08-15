@@ -143,15 +143,10 @@ Perubahan termasuk:
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Dayakan gerak isyarat kecerahan</string>
-  <string name="morphe_swipe_brightness_summary">Leretkan secara menegak di sebelah kiri pada mod skrin penuh untuk melaraskan kecerahan</string>
-  <string name="morphe_swipe_volume_title">Dayakan gerak isyarat kelantangan</string>
-  <string name="morphe_swipe_volume_summary">Leretkan secara menegak di sebelah kanan pada mod skrin penuh untuk melaraskan kelantangan</string>
-  <string name="morphe_swipe_zone_width_title">Lebar zon kecerahan/kelantangan</string>
-  <string name="morphe_swipe_zone_width_summary">Peratusan bagi setiap sisi skrin yang disediakan untuk gerak isyarat kecerahan dan kelantangan (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Kecerahan</string>
   <string name="morphe_swipe_zone_label_volume">Kelantangan</string>
   <string name="morphe_swipe_zone_label_native">Asli</string>
+  <string name="morphe_swipe_zone_label_off">Mati</string>
   <string name="morphe_swipe_press_to_engage_title">Dayakan gerak isyarat tekan untuk leret</string>
   <string name="morphe_swipe_haptic_feedback_title">Dayakan maklum balas sentuhan</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Simpan dan pulihkan kecerahan</string>

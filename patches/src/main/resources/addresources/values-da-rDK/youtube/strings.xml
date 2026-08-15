@@ -511,15 +511,15 @@ For at løse dette skal du slå 'Spoof videostreams' til og ændre 'Standardklie
   <string name="morphe_tap_to_seek_title">Aktivér tryk for at søge</string>
   <string name="morphe_tap_to_seek_summary">Tryk blot på søgelinjen for at springe til den position uden at trække i den</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Aktivér lysstyrke-bevægelse</string>
-  <string name="morphe_swipe_brightness_summary">Juster hvor meget lydstyrken ændrer sig under en strygning</string>
-  <string name="morphe_swipe_volume_title">Aktiver lydstyrke-bevægelse</string>
-  <string name="morphe_swipe_volume_summary">Stryg i fuldskærmstilstand for at springe til næste eller forrige video</string>
-  <string name="morphe_swipe_zone_width_title">Lysstyrke/lydstyrke zonebredde</string>
-  <string name="morphe_swipe_zone_width_summary">Procentdel af hver skærmkant reserveret til lysstyrke- og lydstyrkebevægelser (5-50)</string>
+  <string name="morphe_swipe_left_zone_title">Strygebevægelse til venstre</string>
+  <string name="morphe_swipe_right_zone_title">Strygebevægelse til højre</string>
+  <string name="morphe_swipe_top_zone_title">Strygebevægelse opad</string>
+  <string name="morphe_swipe_zone_width_title">Venstre/højre zonebredde</string>
+  <string name="morphe_swipe_zone_width_summary">Procentdel af hver skærmkant reserveret til strygebevægelser til venstre og højre (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Lysstyrke</string>
   <string name="morphe_swipe_zone_label_volume">Lydstyrke</string>
   <string name="morphe_swipe_zone_label_native">Native</string>
+  <string name="morphe_swipe_zone_label_off">Fra</string>
   <string name="morphe_swipe_press_to_engage_title">Aktivér tryk for at swipe-bevægelse</string>
   <string name="morphe_swipe_press_to_engage_summary">Kræver tryk og hold, før en swipe-bevægelse genkendes</string>
   <string name="morphe_swipe_haptic_feedback_title">Aktiver haptisk feedback</string>
@@ -548,12 +548,9 @@ For at løse dette skal du slå 'Spoof videostreams' til og ændre 'Standardklie
   <string name="morphe_swipe_volume_sensitivity_summary">Højere værdier øger lydstyrkeændringen pr. strygning</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Lysstyrke strygefølsomhed</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Højere værdier kræver flere strygninger pr. lysstyrketrin</string>
-  <string name="morphe_swipe_speed_title">Aktiver hastighedsbevægelse</string>
-  <string name="morphe_swipe_speed_summary">Stryg vandret i den øverste zone i fuldskærmstilstand for at ændre afspilningshastigheden</string>
   <string name="morphe_swipe_speed_sensitivity_title">Hastigheds strygefølsomhed</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Højere værdier kræver flere strygninger pr. hastighedstrin</string>
   <string name="morphe_swipe_speed_step_title">Hastighedstrin</string>
-  <string name="morphe_swipe_speed_step_summary">Beløb, hvormed afspilningshastigheden ændres pr. trin</string>
   <string name="morphe_swipe_speed_zone_height_title">Hastighedszonens højde</string>
   <string name="morphe_swipe_speed_zone_height_summary">Højden på hastighedsbevægelseszonen som en procentdel af afspillerens højde (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Hastighed</string>
@@ -679,15 +676,8 @@ For at få adgang til Indstillinger skal du aktivere knappen Indstillinger via G
   <string name="morphe_navigation_bar_animations_summary">Animerer overgange, når der skiftes mellem faner</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Deaktiver automatisk skjuling af navigationslinjen</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Holder navigationslinjen synlig under rulning</string>
-  <string name="morphe_disable_translucent_status_bar_title">Deaktiver gennemsigtig statuslinje</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Gør statuslinjen fuldt uigennemsigtig</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Begrænsninger:
-• En sort streg kan vises øverst på videoafspilleren.
-• Systemnavigationsbaren kan blive transparent, og det er ikke muligt at kommentere videoer."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Deaktiver lys gennemsigtig linje</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Gør navigationslinjen fuldt uigennemsigtig i lys tilstand</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Deaktiver mørk gennemsigtig linje</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Gør navigationslinjen fuldt uigennemsigtig i mørk tilstand</string>
+  <string name="morphe_disable_translucent_navigation_title">Deaktiver gennemsigtig navigationslinje</string>
+  <string name="morphe_disable_translucent_navigation_summary">Gør navigations- og statuslinjen helt uigennemsigtig</string>
   <string name="morphe_toolbar_screen_title">Værktøjslinje</string>
   <string name="morphe_toolbar_screen_summary">Vælg, hvilke komponenter der vises i værktøjslinjen</string>
   <string name="morphe_hide_toolbar_cast_button_title">Skjul Cast-knappen</string>
@@ -1112,6 +1102,11 @@ Begrænsning: Afspilning fungerer muligvis ikke på nogle enheder, hvis 'Spoofe 
   <string name="morphe_remember_playback_speed_toast">Ændrede standard afspilningshastighed til: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Brug normal hastighed til musik</string>
   <string name="morphe_disable_playback_speed_music_summary">Afspil altid musikvideoer med 1,0x hastighed</string>
+  <string name="morphe_enable_playback_audio_pitch_controls_title">Aktiver styring af lydtonehøjde</string>
+  <string name="morphe_playback_audio_pitch_default_title">Standard afspilningslydens tonehøjde</string>
+  <string name="morphe_remember_playback_audio_pitch_toast">Ændrede standard tonehøjde til: %s</string>
+  <string name="morphe_playback_audio_time_stretching_title">Tidsstrækning af lyd</string>
+  <string name="morphe_playback_audio_time_stretching_summary">Gør det muligt at indstille hastighed og tonehøjde uafhængigt, hvilket kan forårsage lydartefakter</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Deaktiver HDR-video</string>
   <string name="morphe_force_avc_codec_title">Gennemtving AVC (H.264) codec</string>
@@ -1126,6 +1121,7 @@ Begrænsninger:
 • Nogle enheder kan ikke tvinge AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">For at bruge denne funktion skal du indstille \'Forfalsk videostreams\' til \'Android VR\' eller \'Android Studio\'</string>
+  <string name="morphe_force_av1_in_shorts_title">Tving AV1 i Shorts</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Åbn Avanceret kvalitetsmenu</string>
   <string name="morphe_advanced_video_quality_menu_summary">Springer kvalitetsvalgsmenuen over og åbner menuen \'Avanceret\' kvalitet direkte</string>

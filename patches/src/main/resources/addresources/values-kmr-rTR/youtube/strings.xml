@@ -512,15 +512,11 @@ Ji bo çareserkirinê, 'Spoof-ê streamingên vîdyoyê' veke û 'Klîyentê def
   <string name="morphe_tap_to_seek_title">Kilika lêkirinê veşêre</string>
   <string name="morphe_tap_to_seek_summary">Just tap the seekbar to jump to that position without dragging it</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Gestikaya mêşê veşêre</string>
-  <string name="morphe_swipe_brightness_summary">Li kêleka çepê ya moda tevahî, berfirehiya ronahiyê bi lîkêkirina vertîkal bi guhertin</string>
-  <string name="morphe_swipe_volume_title">Gestikaya dengê veşêre</string>
-  <string name="morphe_swipe_volume_summary">Li kêleka rastê ya moda tevahî, hejmara deng bi lîkêkirina vertîkal bi guhertin</string>
-  <string name="morphe_swipe_zone_width_title">Firehiya/dengê hejmayê firehiya herêmê</string>
-  <string name="morphe_swipe_zone_width_summary">Rêjeya her du kîjan aliyê ekranê de ji bo herketên firehiya û dengê (5-50) tê parastin</string>
+  <string name="morphe_swipe_zone_width_summary">Jiyê her edge-ê ekrana ku ji bo gesture-ên swipe-ê yên çep û rast hatine rezerv kirin (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Ronahî</string>
   <string name="morphe_swipe_zone_label_volume">Volume</string>
   <string name="morphe_swipe_zone_label_native">Binguhî</string>
+  <string name="morphe_swipe_zone_label_off">Dabe</string>
   <string name="morphe_swipe_press_to_engage_title">Gestikaya çavkaniyê veşêre</string>
   <string name="morphe_swipe_press_to_engage_summary">Pêwîst e ku berî naskirina tevgerek swipe, pêlkirin û girtin were kirin.</string>
   <string name="morphe_swipe_haptic_feedback_title">Paşê veşêre</string>
@@ -549,12 +545,9 @@ Ji bo çareserkirinê, 'Spoof-ê streamingên vîdyoyê' veke û 'Klîyentê def
   <string name="morphe_swipe_volume_sensitivity_summary">Nirxên bilindtir guhertoya volume ya her swipe zêde dikin</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Hêsîtîya swipe ya ronahiyê</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Nirxên bilindtir pêdivî bi swipe zêdetir her gav ronahiyê hewînin</string>
-  <string name="morphe_swipe_speed_title">Gestê lezê aktîv bike</string>
-  <string name="morphe_swipe_speed_summary">Bi lezê li gorî herêmê yê moda tevahî, lezê biçivîne da ku leza xemgîniyê biguherîne</string>
   <string name="morphe_swipe_speed_sensitivity_title">Hêsîtîya swipe ya lezê</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Nirxên bilindtir pêdivî bi swipe zêdetir her gav lezê hewînin</string>
   <string name="morphe_swipe_speed_step_title">Hêmaniya lezê</string>
-  <string name="morphe_swipe_speed_step_summary">Mîqdarê ku bi her tikê lezê diguhere</string>
   <string name="morphe_swipe_speed_zone_height_title">Bilindahiya herêma lezê</string>
   <string name="morphe_swipe_speed_zone_height_summary">Bilindahiya herêma gestê ya lezê wekî sedîyek ji bilindahiya lîstikvan (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Lez</string>
@@ -682,16 +675,6 @@ Ji bo ku derfetên sazkarî pêşero, rêzika 'Settings' zivirînin bi General �
   <string name="morphe_navigation_bar_animations_summary">Tevahîyên veşêrinî dema ku di navbera taban de guherîn</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Kêmbara otomatîk a kêmbara navîgasyonê qeybidine.</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Desteyê nivîskî bi hevsengî neşêre dema ku bi hêsanî tîkê dike</string>
-  <string name="morphe_disable_translucent_status_bar_title">Barê rewşê jîyayî saz bike</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Başiya desteyê tevahiyê tevahî dike</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Sernêxweyî:
-• Barê reş tenê dibe da nîşandinê di sirkûza lîstikvanê de.
-• Bar-a navigasyona sîstemê dibe şefaf, û nabe şîrêzek ser vîdyoyên van.
-"</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Barê devikê zixiyayî saz bike</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Bi moda ronahiyê bi tevahiyê neşkîn desteyê desteyê dibe</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Sipasirina serekî transşafî ya diravê</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Bi moda tarî desteyê desteyê tevahiyê dibe</string>
   <string name="morphe_toolbar_screen_title">Rêz</string>
   <string name="morphe_toolbar_screen_summary">Hilbijêre ku kîjan pêkhateyên di menuya veşêrîn de xuya dibe</string>
   <string name="morphe_hide_toolbar_cast_button_title">Butona birêveberînê veşêrin</string>

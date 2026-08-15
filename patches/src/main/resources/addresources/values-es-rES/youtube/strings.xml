@@ -133,8 +133,8 @@ Los cambios incluyen:
   <string name="morphe_hide_join_membership_button_title">Ocultar botón \"Unirme\"</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
-  <string name="morphe_hide_live_chat_replay_button_title">Ocultar botón \"Repetición del chat en vivo\"</string>
-  <string name="morphe_hide_live_chat_replay_button_summary">Oculta el botón de repetición del chat en vivo en el modo de pantalla completa</string>
+  <string name="morphe_hide_live_chat_replay_button_title">Ocultar botón \"Repetición del chat en directo\"</string>
+  <string name="morphe_hide_live_chat_replay_button_summary">Oculta el botón de repetición del chat en el modo de pantalla completa</string>
   <string name="morphe_hide_medical_panels_title">Ocultar paneles médicos</string>
   <string name="morphe_hide_player_gesture_hints_title">Ocultar indicaciones de gestos del reproductor</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
@@ -144,7 +144,7 @@ Los cambios incluyen:
   <string name="morphe_hide_subscribers_community_guidelines_title">Ocultar normas para suscriptores</string>
   <string name="morphe_hide_sync_button_title">Ocultar botón \"Sincronizar con video\"</string>
   <string name="morphe_hide_timed_reactions_title">Ocultar reacciones sincronizadas</string>
-  <string name="morphe_hide_timed_reactions_summary">Oculta la función que permite a los usuarios reaccionar con emojis en la sección de comentarios y el chat en vivo</string>
+  <string name="morphe_hide_timed_reactions_summary">Oculta la función que permite a los usuarios reaccionar con emojis en la sección de comentarios y el chat en directo</string>
   <string name="morphe_hide_video_title_title">Ocultar título de vídeo</string>
   <string name="morphe_hide_video_title_summary">Oculta el título del vídeo en el modo de pantalla completa</string>
   <string name="morphe_sanitize_video_subtitle_title">Desinfectar subtítulos de vídeo</string>
@@ -212,7 +212,7 @@ Los cambios incluyen:
   <string name="morphe_hide_gaming_menu_title">Ocultar menú \"Videojuegos\"</string>
   <string name="morphe_hide_hype_menu_title">Ocultar menú \"Hype\"</string>
   <string name="morphe_hide_learning_menu_title">Ocultar menú \"Aprendizaje\"</string>
-  <string name="morphe_hide_live_menu_title">Ocultar menú \"En vivo\"</string>
+  <string name="morphe_hide_live_menu_title">Ocultar menú \"En directo\"</string>
   <string name="morphe_hide_memberships_menu_title">Ocultar menú \"Miembros del canal\" </string>
   <string name="morphe_hide_movies_menu_title">Ocultar menú \"Películas y TV\"</string>
   <string name="morphe_hide_music_menu_title">Ocultar menú \"Música\"</string>
@@ -250,7 +250,7 @@ Los cambios incluyen:
   <string name="morphe_hide_comments_gift_animation_and_cards_title">Ocultar animación y tarjetas de regalo</string>
   <string name="morphe_hide_comments_gift_button_title">Ocultar botón \"Regalar\"</string>
   <string name="morphe_hide_comments_info_button_title">Ocultar botón de información</string>
-  <string name="morphe_hide_comments_live_chat_donators_bar_title">Ocultar barra de donantes del chat en vivo</string>
+  <string name="morphe_hide_comments_live_chat_donators_bar_title">Ocultar barra de donantes del chat en directo</string>
   <string name="morphe_hide_comments_preview_comment_title">Ocultar vista previa de comentarios</string>
   <string name="morphe_hide_comments_preview_comment_summary">Oculta la vista previa de comentarios debajo del vídeo antes de abrir la sección de comentarios completa</string>
   <string name="morphe_hide_comments_thanks_button_title">Ocultar botón \"Gracias\"</string>
@@ -424,7 +424,7 @@ Tu clave API nunca debe compartirse. Cualquiera que tenga acceso a ella puede us
   <string name="morphe_play_all_button_title">Mostrar botón \"Reproducir todo\"</string>
   <string name="morphe_play_all_button_summary">"Pulsa para generar una lista de reproducción de todos los vídeos del canal. Toca y mantén pulsado para deshacer.
 
-Información: Puede que no funcione en transmisiones en vivo"</string>
+Información: Puede que no funcione en transmisiones en directo"</string>
   <string name="morphe_play_all_button_type_title">Modo de generación de listas de reproducción</string>
   <string name="morphe_play_all_button_type_entry_0">Todos los contenidos (ordenados por tiempo, ascendente)</string>
   <string name="morphe_play_all_button_type_entry_1">Todos los contenidos (ordenados por tiempo)</string>
@@ -438,7 +438,7 @@ Información: Puede que no funcione en transmisiones en vivo"</string>
   <string name="morphe_play_all_button_type_entry_9">Todos los contenidos solo para miembros</string>
   <string name="morphe_play_all_button_type_entry_10">Vídeos solo para miembros</string>
   <string name="morphe_play_all_button_type_entry_11">Shorts solo para miembros</string>
-  <string name="morphe_play_all_button_type_entry_12">Transmisiones en vivo solo para miembros</string>
+  <string name="morphe_play_all_button_type_entry_12">Transmisiones en directo solo para miembros</string>
   <string name="morphe_play_all_button_not_available_toast">No se puede generar la lista de reproducción porque el ID del canal no coincide</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Mostrar botón de recarga de vídeo</string>
@@ -489,7 +489,7 @@ Información: Puede que no funcione en transmisiones en vivo"</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Desactiva el modo de búsqueda precisa que se activa al arrastrar la barra de búsqueda</string>
   <!-- interaction.seekbar.livestreamDVRPatch -->
   <string name="morphe_livestream_dvr_title">Activar DVR para transmisión en directo</string>
-  <string name="morphe_livestream_dvr_summary">Permite buscar en todas las transmisiones en vivo, incluso en aquellas que normalmente restringen esta función</string>
+  <string name="morphe_livestream_dvr_summary">Permite buscar en todas las transmisiones en directo, incluso en aquellas que normalmente restringen esta función</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Activar miniaturas de la barra de progreso</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Muestra una miniatura del vídeo mientras se arrastra la barra de progreso</string>
@@ -511,15 +511,15 @@ Para solucionar esto, activa \"Falsificar transmisiones de vídeo\" y cambia \"C
   <string name="morphe_tap_to_seek_title">Activar tocar para buscar</string>
   <string name="morphe_tap_to_seek_summary">Simplemente toca la barra de búsqueda para saltar a esa posición sin arrastrarla</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Activar gesto de brillo</string>
-  <string name="morphe_swipe_brightness_summary">Desliza verticalmente en el lado izquierdo del modo pantalla completa para ajustar el brillo</string>
-  <string name="morphe_swipe_volume_title">Activar gesto de volumen</string>
-  <string name="morphe_swipe_volume_summary">Desliza verticalmente en el lado derecho del modo pantalla completa para ajustar el volumen</string>
-  <string name="morphe_swipe_zone_width_title">Ancho de la zona de brillo/volumen</string>
-  <string name="morphe_swipe_zone_width_summary">Porcentaje de cada borde de la pantalla reservado para los gestos de brillo y volumen (5-50)</string>
+  <string name="morphe_swipe_left_zone_title">Gesto de deslizamiento izquierdo</string>
+  <string name="morphe_swipe_right_zone_title">Gesto de deslizamiento derecho</string>
+  <string name="morphe_swipe_top_zone_title">Gesto de deslizamiento superior</string>
+  <string name="morphe_swipe_zone_width_title">Ancho de zona izquierda/derecha</string>
+  <string name="morphe_swipe_zone_width_summary">Porcentaje de cada borde de la pantalla reservado para los gestos de deslizamiento izquierdo y derecho (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Brillo</string>
   <string name="morphe_swipe_zone_label_volume">Volumen</string>
   <string name="morphe_swipe_zone_label_native">Nativo</string>
+  <string name="morphe_swipe_zone_label_off">Desactivada</string>
   <string name="morphe_swipe_press_to_engage_title">Activar gesto de pulsar para deslizar</string>
   <string name="morphe_swipe_press_to_engage_summary">Requiere tocar y mantener pulsado antes de que se reconozca un gesto de deslizamiento</string>
   <string name="morphe_swipe_haptic_feedback_title">Activar vibración</string>
@@ -548,12 +548,9 @@ Para solucionar esto, activa \"Falsificar transmisiones de vídeo\" y cambia \"C
   <string name="morphe_swipe_volume_sensitivity_summary">Cuanto más alto sea el valor, mayor será el cambio de volumen al deslizar</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Sensibilidad del deslizamiento de brillo</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Los valores más altos requieren más deslizamiento por cada nivel de brillo</string>
-  <string name="morphe_swipe_speed_title">Activar gesto de velocidad</string>
-  <string name="morphe_swipe_speed_summary">Desliza horizontalmente en la zona superior del modo de pantalla completa para cambiar la velocidad de reproducción</string>
   <string name="morphe_swipe_speed_sensitivity_title">Sensibilidad del deslizamiento de velocidad</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Los valores más altos requieren más deslizamiento por cada nivel de velocidad</string>
   <string name="morphe_swipe_speed_step_title">Paso de velocidad</string>
-  <string name="morphe_swipe_speed_step_summary">Cantidad en la que cambia la velocidad de reproducción en cada paso</string>
   <string name="morphe_swipe_speed_zone_height_title">Altura de la zona de gesto de velocidad</string>
   <string name="morphe_swipe_speed_zone_height_summary">Altura de la zona de gesto de velocidad como porcentaje de la altura del reproductor (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Velocidad</string>
@@ -614,7 +611,7 @@ Para solucionar esto, activa \"Falsificar transmisiones de vídeo\" y cambia \"C
   <string name="morphe_hide_quick_actions_comments_button_title">Ocultar botón \"Comentarios\"</string>
   <string name="morphe_hide_quick_actions_dislike_button_title">Ocultar botón \"No me gusta\"</string>
   <string name="morphe_hide_quick_actions_like_button_title">Ocultar botón \"Me gusta\"</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_title">Ocultar botón \"Chat en vivo\"</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_title">Ocultar botón \"Chat en directo\"</string>
   <string name="morphe_hide_quick_actions_mix_button_title">Ocultar botón \"Mix\"</string>
   <string name="morphe_hide_quick_actions_more_button_title">Ocultar botón \"Más\"</string>
   <string name="morphe_hide_quick_actions_more_videos_button_title">Ocultar botón \"Más vídeos\"</string>
@@ -681,15 +678,8 @@ Para acceder a los ajustes, activa el botón de ajustes a través de General →
   <string name="morphe_navigation_bar_animations_summary">Anima las transiciones al cambiar entre pestañas</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Desactivar ocultación automática de la barra de navegación</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Mantiene la barra de navegación visible al hacer scroll</string>
-  <string name="morphe_disable_translucent_status_bar_title">Desactivar barra de estado translúcida</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Hace que la barra de estado sea completamente opaca</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Limitaciones:
-• Puede aparecer una barra negra en la parte superior del reproductor de video.
-• La barra de navegación del sistema puede volverse transparente y no será posible comentar los videos."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Desactivar barra translúcida clara</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Hace que la barra de navegación sea completamente opaca en modo claro</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Desactivar barra translúcida oscura</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Hace que la barra de navegación sea completamente opaca en modo oscuro</string>
+  <string name="morphe_disable_translucent_navigation_title">Desactivar barra de navegación translúcida</string>
+  <string name="morphe_disable_translucent_navigation_summary">Hace que las barras de navegación y de estado sean completamente opacas</string>
   <string name="morphe_toolbar_screen_title">Barra de herramientas</string>
   <string name="morphe_toolbar_screen_summary">Elige qué componentes aparecen en la barra de herramientas</string>
   <string name="morphe_hide_toolbar_cast_button_title">Ocultar botón \"Transmitir\"</string>
@@ -842,7 +832,7 @@ Configuración → Reproducción (o Reproducción automática) → Reproducción
   <string name="morphe_hide_timestamp_title">Ocultar fecha y hora de vídeo</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Desactivar paneles emergentes del reproductor</string>
-  <string name="morphe_disable_player_popup_panels_summary">Desactiva la apertura automática de los paneles de la lista de reproducción y del chat en vivo</string>
+  <string name="morphe_disable_player_popup_panels_summary">Desactiva la apertura automática de los paneles de la lista de reproducción y del chat en directo</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Salir del modo de pantalla completa al finalizar el vídeo</string>
   <string name="morphe_exit_fullscreen_entry_1">Desactivado</string>
@@ -1027,7 +1017,7 @@ Pulsa aquí para saber más sobre DeArrow"</string>
   <string name="morphe_alt_thumbnail_stills_about_title">Capturas de vídeo fijas</string>
   <string name="morphe_alt_thumbnail_stills_about_summary">Las capturas fijas se toman del principio, la mitad o el final de cada vídeo. Estas imágenes están integradas en YouTube y no se utiliza ninguna API externa</string>
   <string name="morphe_alt_thumbnail_stills_fast_title">Usar capturas fijas rápidas</string>
-  <string name="morphe_alt_thumbnail_stills_fast_summary">Mejora las velocidades de carga mediante el uso de imágenes de calidad media. Las transmisiones en vivo, los vídeos no publicados y los vídeos más antiguos pueden mostrar miniaturas en blanco</string>
+  <string name="morphe_alt_thumbnail_stills_fast_summary">Mejora la velocidad de carga mediante el uso de imágenes de calidad media. Las transmisiones en directo, los vídeos no publicados y los vídeos antiguos pueden mostrar miniaturas en blanco</string>
   <string name="morphe_alt_thumbnail_stills_time_title">Extrae fotograma de vídeo desde</string>
   <string name="morphe_alt_thumbnail_stills_time_entry_1">Comienzo</string>
   <string name="morphe_alt_thumbnail_stills_time_entry_2">Medio</string>

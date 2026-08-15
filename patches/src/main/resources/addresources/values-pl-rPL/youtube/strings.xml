@@ -511,15 +511,15 @@ Aby to naprawić, włącz \"Fałszowanie strumieni filmów\" i zmień \"Domyśln
   <string name="morphe_tap_to_seek_title">Włącz przewijanie dotknięciem</string>
   <string name="morphe_tap_to_seek_summary">Wystarczy dotknąć paska postępu, aby przeskoczyć do danego momentu bez przeciągania suwaka</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Włącz gest regulacji jasności</string>
-  <string name="morphe_swipe_brightness_summary">Przesuń pionowo po lewej stronie ekranu w trybie pełnoekranowym, aby dostosować jasność</string>
-  <string name="morphe_swipe_volume_title">Włącz gest regulacji głośności</string>
-  <string name="morphe_swipe_volume_summary">Przesuń pionowo po prawej stronie ekranu w trybie pełnoekranowym, aby dostosować głośność</string>
-  <string name="morphe_swipe_zone_width_title">Szerokość strefy jasności i głośności</string>
-  <string name="morphe_swipe_zone_width_summary">Procent krawędzi ekranu zarezerwowany dla gestów jasności i głośności (5-50)</string>
+  <string name="morphe_swipe_left_zone_title">Gest przesunięcia w lewo</string>
+  <string name="morphe_swipe_right_zone_title">Gest przesunięcia w prawo</string>
+  <string name="morphe_swipe_top_zone_title">Gest przesunięcia w górę</string>
+  <string name="morphe_swipe_zone_width_title">Szerokość lewej/prawej strefy</string>
+  <string name="morphe_swipe_zone_width_summary">Procent każdej krawędzi ekranu zarezerwowany na gesty przesunięcia w lewo i w prawo (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Jasność</string>
   <string name="morphe_swipe_zone_label_volume">Głośność</string>
   <string name="morphe_swipe_zone_label_native">Oryginalne</string>
+  <string name="morphe_swipe_zone_label_off">Wyłączone</string>
   <string name="morphe_swipe_press_to_engage_title">Włącz wymóg przytrzymania dla gestów</string>
   <string name="morphe_swipe_press_to_engage_summary">Wymaga przytrzymania, zanim gest przesunięcia zostanie rozpoznany</string>
   <string name="morphe_swipe_haptic_feedback_title">Włącz wibracje</string>
@@ -548,12 +548,9 @@ Aby to naprawić, włącz \"Fałszowanie strumieni filmów\" i zmień \"Domyśln
   <string name="morphe_swipe_volume_sensitivity_summary">Wyższe wartości zwiększają zmianę głośności przy przesunięciu palcem</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Czułość gestu jasności</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Wyższe wartości wymagają dłuższego przesunięcia przy zmianie poziomu jasności</string>
-  <string name="morphe_swipe_speed_title">Włącz gest prędkości</string>
-  <string name="morphe_swipe_speed_summary">Przesuń poziomo w górnej strefie trybu pełnoekranowego, aby zmienić prędkość odtwarzania</string>
   <string name="morphe_swipe_speed_sensitivity_title">Czułość gestu prędkości</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Wyższe wartości wymagają dłuższego przesunięcia przy zmianie prędkości</string>
   <string name="morphe_swipe_speed_step_title">Skok prędkości</string>
-  <string name="morphe_swipe_speed_step_summary">Wartość, o którą zmienia się prędkość odtwarzania przy każdym przeskoku</string>
   <string name="morphe_swipe_speed_zone_height_title">Wysokość strefy prędkości</string>
   <string name="morphe_swipe_speed_zone_height_summary">Wysokość strefy gestu prędkości jako procent wysokości odtwarzacza (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Prędkość</string>
@@ -681,15 +678,8 @@ Aby przejść do ustawień, włącz przycisk w menu: Ogólne → Pasek narzędzi
   <string name="morphe_navigation_bar_animations_summary">Animuje przejścia podczas przełączania między kartami</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Wyłącz automatyczne ukrywanie paska nawigacji</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Utrzymuje widoczność paska nawigacji podczas przewijania</string>
-  <string name="morphe_disable_translucent_status_bar_title">Wyłącz półprzezroczysty pasek stanu</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Sprawia, że pasek stanu staje się całkowicie nieprzezroczysty</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Ograniczenia:
-• Na górze odtwarzacza może pojawić się czarny pasek.
-• Systemowy pasek nawigacji może stać się przezroczysty, co uniemożliwi komentowanie filmów."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Wyłącz jasny półprzezroczysty pasek</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Sprawia, że pasek nawigacji staje się całkowicie nieprzezroczysty w jasnym motywie</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Wyłącz ciemny półprzezroczysty pasek</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Sprawia, że pasek nawigacji staje się całkowicie nieprzezroczysty w ciemnym motywie</string>
+  <string name="morphe_disable_translucent_navigation_title">Wyłącz półprzezroczysty pasek nawigacji</string>
+  <string name="morphe_disable_translucent_navigation_summary">Sprawia, że pasek nawigacji i stanu staje się całkowicie nieprzezroczysty</string>
   <string name="morphe_toolbar_screen_title">Pasek narzędzi</string>
   <string name="morphe_toolbar_screen_summary">Zdecyduj, które elementy będą wyświetlane na pasku narzędzi</string>
   <string name="morphe_hide_toolbar_cast_button_title">Ukryj przycisk Przesyłaj</string>
@@ -1113,11 +1103,11 @@ Ograniczenie: Odtwarzanie może nie działać na niektórych urządzeniach, jeś
   <string name="morphe_remember_playback_speed_toast">Zmieniono domyślną prędkość na: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Odtwarzaj muzykę z normalną prędkością</string>
   <string name="morphe_disable_playback_speed_music_summary">Zawsze odtwarzaj teledyski z prędkością 1x</string>
-  <string name="morphe_enable_playback_audio_pitch_controls_title">Włącz sterowanie wysokością dźwięku</string>
-  <string name="morphe_playback_audio_pitch_default_title">Domyślna wysokość dźwięku odtwarzania</string>
-  <string name="morphe_remember_playback_audio_pitch_toast">Zmieniono domyślną wysokość dźwięku na: %s</string>
-  <string name="morphe_playback_audio_time_stretching_title">Rozciąganie czasu audio</string>
-  <string name="morphe_playback_audio_time_stretching_summary">Umożliwia niezależne ustawianie prędkości i wysokości dźwięku, co może powodować artefakty dźwiękowe</string>
+  <string name="morphe_enable_playback_audio_pitch_controls_title">Włącz sterowanie tonacją dźwięku</string>
+  <string name="morphe_playback_audio_pitch_default_title">Domyślna tonacja odtwarzanego dźwięku</string>
+  <string name="morphe_remember_playback_audio_pitch_toast">Zmieniono domyślną tonację dźwięku na: %s</string>
+  <string name="morphe_playback_audio_time_stretching_title">Rozciąganie dźwięku w czasie</string>
+  <string name="morphe_playback_audio_time_stretching_summary">Umożliwia niezależne ustawianie prędkości i tonacji, może powodować zniekształcenia dźwięku</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Wyłącz filmy z HDR</string>
   <string name="morphe_force_avc_codec_title">Wymuś kodek AVC (H.264)</string>

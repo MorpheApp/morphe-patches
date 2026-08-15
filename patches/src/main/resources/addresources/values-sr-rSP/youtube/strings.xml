@@ -511,12 +511,6 @@ Promene uključuju:
   <string name="morphe_tap_to_seek_title">Омогући додир за премотавање</string>
   <string name="morphe_tap_to_seek_summary">Само додирните траку за тражење да бисте скочили на ту позицију без повлачења</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Омогући покрет за осветљеност</string>
-  <string name="morphe_swipe_brightness_summary">Превуците вертикално по левој страни режима пуног екрана да подесите осветљеност</string>
-  <string name="morphe_swipe_volume_title">Омогући покрет за јачину звука</string>
-  <string name="morphe_swipe_volume_summary">Превуците вертикално по десној страни режима пуног екрана да подесите звук</string>
-  <string name="morphe_swipe_zone_width_title">Ширина зоне за подешавање осветљине/јачине звука</string>
-  <string name="morphe_swipe_zone_width_summary">Процент сваке ивице екрана резервисан за потезе осветљине и јачине звука (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Осветљење</string>
   <string name="morphe_swipe_zone_label_volume">Јачина звука</string>
   <string name="morphe_swipe_zone_label_native">Оригинално</string>
@@ -548,12 +542,9 @@ Promene uključuju:
   <string name="morphe_swipe_volume_sensitivity_summary">Веће вредности повећавају промену јачине звука при сваком превлачењу</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Осетљивост превлачења за осветљење</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Веће вредности захтевају више превлачења по кораку осветљења</string>
-  <string name="morphe_swipe_speed_title">Омогући гест брзине</string>
-  <string name="morphe_swipe_speed_summary">Превуците хоризонтално у горњој зони режима пуног екрана да бисте променили брзину репродукције</string>
   <string name="morphe_swipe_speed_sensitivity_title">Осетљивост превлачења за брзину</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Веће вредности захтевају више превлачења по кораку брзине</string>
   <string name="morphe_swipe_speed_step_title">Корак брзине</string>
-  <string name="morphe_swipe_speed_step_summary">Износ за који се брзина репродукције мења са сваким кораком</string>
   <string name="morphe_swipe_speed_zone_height_title">Висина зоне брзине</string>
   <string name="morphe_swipe_speed_zone_height_summary">Висина зоне геста брзине као проценат висине плејера (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Брзина</string>
@@ -679,15 +670,8 @@ Promene uključuju:
   <string name="morphe_navigation_bar_animations_summary">Анимира прелазе приликом пребацивања између картица.</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Онемогућите аутоматско скривање траке навигације</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Држи навигациону траку видљивом током померања.</string>
-  <string name="morphe_disable_translucent_status_bar_title">Онемогући прозирну статусну траку</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Чини траку статуса потпуно непровидном.</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Ограничења:
-• Може да се појави црна трака на врху видео плејера.
-• Системска навигациона трака може да промени боју у провидна, и тада није могуће да се коментаришу видеа."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Онемогући светлу прозирну траку за навигацију</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Чини навигациону траку потпуно непровидном у светлом режиму.</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Онемогући тамну прозирну траку за навигацију</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Чини навигациону траку потпуно непровидном у тамном режиму.</string>
+  <string name="morphe_disable_translucent_navigation_title">Онемогући прозирну导航 траку</string>
+  <string name="morphe_disable_translucent_navigation_summary">Чини导航 и статусну траку потпуно непрозирном</string>
   <string name="morphe_toolbar_screen_title">Traka za alatke</string>
   <string name="morphe_toolbar_screen_summary">Одаберите које компоненте ће се појавити у траци са алаткама.</string>
   <string name="morphe_hide_toolbar_cast_button_title">Сакриј дугме „Пребацуј”</string>

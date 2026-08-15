@@ -16,7 +16,6 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-  <!-- Overrides built in setting menu with Morphe settings. -->
   <string name="morphe_screen_ads_title">Oglasi</string>
   <string name="morphe_hide_post_ads_title">Sakrij oglase u feedu</string>
   <string name="morphe_hide_comment_ads_title">Sakrij oglase s komentarima</string>
@@ -34,6 +33,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">Raspored</string>
   <string name="morphe_disable_screenshot_popup_title">Onemogući skočni prozor zaslona</string>
   <string name="morphe_disable_screenshot_popup_summary">Onemogućuje skočni prozor koji se pojavljuje prilikom snimanja zaslona</string>
+  <string name="morphe_hide_ask_button_title">Sakrij tipku Pitaj</string>
   <string name="morphe_remove_notification_dialog_title">Uklanja  dijalog s prijedlozima obavijesti</string>
   <string name="morphe_remove_nsfw_dialog_title">Uklanja NSFW upozorenje</string>
   <string name="morphe_screen_miscellaneous_title">Razno</string>

@@ -511,15 +511,15 @@ Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini açın ve 'V
   <string name="morphe_tap_to_seek_title">Dokunarak sardırmayı etkinleştir</string>
   <string name="morphe_tap_to_seek_summary">Sürüklemeden o konuma atlamak için zaman çubuğuna dokunun</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Parlaklık hareketini etkinleştir</string>
-  <string name="morphe_swipe_brightness_summary">Tam ekran modunda sol tarafta dikey olarak kaydırarak parlaklığı ayarlayayın</string>
-  <string name="morphe_swipe_volume_title">Ses hareketini etkinleştir</string>
-  <string name="morphe_swipe_volume_summary">Tam ekran modunda sağ tarafa dikey olarak kaydırarak sesi ayarlayın</string>
-  <string name="morphe_swipe_zone_width_title">Parlaklık/ses seviyesi bölge uzunluğu</string>
-  <string name="morphe_swipe_zone_width_summary">Ekran kenarlarının her birinin parlaklık ve ses seviyesi hareketleri için ayrılan yüzdesi (5-50)</string>
+  <string name="morphe_swipe_left_zone_title">Sola kaydırma hareketi</string>
+  <string name="morphe_swipe_right_zone_title">Sağa kaydırma hareketi</string>
+  <string name="morphe_swipe_top_zone_title">Yukarı kaydırma hareketi</string>
+  <string name="morphe_swipe_zone_width_title">Sol/Sağ bölge genişliği</string>
+  <string name="morphe_swipe_zone_width_summary">Ekran kenarlarının her birinin sola ve sağa kaydırma hareketleri için ayrılan yüzdesi (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Parlaklık</string>
   <string name="morphe_swipe_zone_label_volume">Ses</string>
   <string name="morphe_swipe_zone_label_native">Yerel</string>
+  <string name="morphe_swipe_zone_label_off">Kapalı</string>
   <string name="morphe_swipe_press_to_engage_title">Basılı tutup kaydırma hareketini etkinleştir</string>
   <string name="morphe_swipe_press_to_engage_summary">Kaydırma hareketinin algılanması için önce basılı tutulması gerekir</string>
   <string name="morphe_swipe_haptic_feedback_title">Titreşimli geri bildirimi etkinleştir</string>
@@ -548,12 +548,9 @@ Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini açın ve 'V
   <string name="morphe_swipe_volume_sensitivity_summary">Daha yüksek değerler, kaydırma başına ses değişiklik miktarını artırır</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Parlaklık kaydırma hassasiyeti</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Daha yüksek değerler, her parlaklık adımı için daha fazla kaydırma gerektirir</string>
-  <string name="morphe_swipe_speed_title">Hız hareketini etkinleştir</string>
-  <string name="morphe_swipe_speed_summary">Tam ekran modunda oynatma hızını değiştirmek için üst bölgede yatay olarak kaydırın</string>
   <string name="morphe_swipe_speed_sensitivity_title">Hız kaydırma hassasiyeti</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Daha yüksek değerler, her hız adımı için daha fazla kaydırma gerektirir</string>
   <string name="morphe_swipe_speed_step_title">Hız adımı</string>
-  <string name="morphe_swipe_speed_step_summary">Oynatma hızının her tıklamada değiştiği miktar</string>
   <string name="morphe_swipe_speed_zone_height_title">Hız bölgesi yüksekliği</string>
   <string name="morphe_swipe_speed_zone_height_summary">Hız hareket bölgesinin yüksekliği, oynatıcı yüksekliğinin yüzdesi olarak (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Hız</string>
@@ -681,15 +678,8 @@ Ayarlara erişmek için, Genel → Araç Çubuğu → Ayarları Göster yoluyla 
   <string name="morphe_navigation_bar_animations_summary">Sekmeler arasında animasyonlu geçişler yapar</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Gezinme çubuğunun otomatik gizlenmesini devre dışı bırak</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Kaydırırken gezinme çubuğunu görünür tutar</string>
-  <string name="morphe_disable_translucent_status_bar_title">Yarı saydam durum çubuğunu devre dışı bırak</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Durum çubuğunu tamamen opak yapar</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Sınırlamalar:
-• Video oynatıcısının üst kısmında siyah bir çubuk görünebilir.
-• Sistem gezinme çubuğu şeffaf hale gelebilir ve videolara yorum yapmak mümkün olmayabilir."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Açık temada yarı saydam çubuğu devre dışı bırak</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Açık modda gezinme çubuğunu tamamen opak yapar</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Koyu temada yarı saydam çubuğu devre dışı bırak</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Koyu modda gezinme çubuğunu tamamen opak yapar</string>
+  <string name="morphe_disable_translucent_navigation_title">Yarı saydam gezinti çubuğunu devre dışı bırak</string>
+  <string name="morphe_disable_translucent_navigation_summary">Gezinti ve durum çubuğunu tamamen opak hale getirir</string>
   <string name="morphe_toolbar_screen_title">Araç Çubuğu</string>
   <string name="morphe_toolbar_screen_summary">Araç çubuğunda hangi bileşenlerin görüneceğini seçin</string>
   <string name="morphe_hide_toolbar_cast_button_title">Yayınla düğmesini gizle</string>
@@ -1114,6 +1104,11 @@ Sınırlama: 'Video akışlarını taklit et' 'Android VR' olarak ayarlanmışsa
   <string name="morphe_remember_playback_speed_toast">Varsayılan oynatma hızı %s olarak değiştirildi</string>
   <string name="morphe_disable_playback_speed_music_title">Müzik için normal hızı kullan</string>
   <string name="morphe_disable_playback_speed_music_summary">Müzik videolarını her zaman 1.0x hızında oynat</string>
+  <string name="morphe_enable_playback_audio_pitch_controls_title">Ses perdesi kontrollerini etkinleştir</string>
+  <string name="morphe_playback_audio_pitch_default_title">Varsayılan oynatma ses perdesi</string>
+  <string name="morphe_remember_playback_audio_pitch_toast">Varsayılan ses perdesi %s olarak ayarlandı</string>
+  <string name="morphe_playback_audio_time_stretching_title">Ses zaman genişletme</string>
+  <string name="morphe_playback_audio_time_stretching_summary">Hızın ve perdenin birbirinden bağımsız olarak ayarlanmasına izin verir, ses bozulmalarına neden olabilir</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR videoyu devre dışı bırak</string>
   <string name="morphe_force_avc_codec_title">AVC (H.264) kodeğini zorla</string>
@@ -1128,6 +1123,7 @@ Sınırlamalar:
 • Bazı cihazlar AVC'yi zorlayamaz"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Bu özelliği kullanmak için \'Video akışlarını taklit et\'i Android VR veya Android Studio olarak ayarlayın</string>
+  <string name="morphe_force_av1_in_shorts_title">Shorts\'ta AV1\'i zorla</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Gelişmiş kalite menüsünü aç</string>
   <string name="morphe_advanced_video_quality_menu_summary">Kalite seçim menüsünü atlar ve doğrudan Gelişmiş kalite menüsünü açar</string>

@@ -515,15 +515,15 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_tap_to_seek_title">تمكين النقر للتمرير</string>
   <string name="morphe_tap_to_seek_summary">اضغط فقط على شريط التقدم للانتقال إلى ذلك الموضع دون سحبه</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">تمكين إيماءة السطوع</string>
-  <string name="morphe_swipe_brightness_summary">مرِّر عموديًا على الجانب الأيسر من وضع ملء الشاشة لضبط مستوى السطوع</string>
-  <string name="morphe_swipe_volume_title">تمكين إيماءة الصوت</string>
-  <string name="morphe_swipe_volume_summary">مرِّر عموديًا على الجانب الأيمن من وضع ملء الشاشة لضبط مستوى الصوت</string>
-  <string name="morphe_swipe_zone_width_title">عرض منطقة السطوع/الصوت</string>
-  <string name="morphe_swipe_zone_width_summary">نسبة كل حافة من حواف الشاشة المخصصة لإيماءات السطوع و الصوت (5-50)</string>
+  <string name="morphe_swipe_left_zone_title">إيماءة التمرير لليسار</string>
+  <string name="morphe_swipe_right_zone_title">إيماءة التمرير لليمين</string>
+  <string name="morphe_swipe_top_zone_title">إيماءة التمرير للأعلى</string>
+  <string name="morphe_swipe_zone_width_title">عرض منطقة اليسار/اليمين</string>
+  <string name="morphe_swipe_zone_width_summary">نسبة كل حافة من حواف الشاشة المخصصة لإيماءات التمرير لليسار واليمين (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">السطوع</string>
   <string name="morphe_swipe_zone_label_volume">الصوت</string>
   <string name="morphe_swipe_zone_label_native">الأصل</string>
+  <string name="morphe_swipe_zone_label_off">متوقف</string>
   <string name="morphe_swipe_press_to_engage_title">تمكين الضغط لتمرير الإيماءة</string>
   <string name="morphe_swipe_press_to_engage_summary">يتطلب الضغط مع الاستمرار قبل التعرف على إيماءة التمرير</string>
   <string name="morphe_swipe_haptic_feedback_title">الاهتزاز عند الضغط</string>
@@ -552,12 +552,9 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_swipe_volume_sensitivity_summary">القيم الأعلى تزيد من تغيُّر مستوى الصوت مع كل تمريرة</string>
   <string name="morphe_swipe_brightness_sensitivity_title">حساسية تمرير مستوى السطوع</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">القيم الأعلى تتطلب التمرير أكثر لكل مستوى سطوع</string>
-  <string name="morphe_swipe_speed_title">تمكين إيماءة السرعة</string>
-  <string name="morphe_swipe_speed_summary">مرِّر أفقيًا في المنطقة العلوية بوضع ملء الشاشة لتغيير سرعة التشغيل</string>
   <string name="morphe_swipe_speed_sensitivity_title">حساسية تمرير السرعة</string>
   <string name="morphe_swipe_speed_sensitivity_summary">القيم الأعلى تتطلب التمرير أكثر لكل درجة سرعة</string>
   <string name="morphe_swipe_speed_step_title">مستوى تغيير السرعة</string>
-  <string name="morphe_swipe_speed_step_summary">مقدار تغيّر سرعة التشغيل مع كل نقرة</string>
   <string name="morphe_swipe_speed_zone_height_title">ارتفاع منطقة السرعة</string>
   <string name="morphe_swipe_speed_zone_height_summary">ارتفاع منطقة إيماءة السرعة كنسبة مئوية من ارتفاع المشغل (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">السرعة</string>
@@ -686,15 +683,8 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_navigation_bar_animations_summary">يُفعّل الانتقالات المتحركة عند التبديل بين علامات التبويب</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">تعطيل إخفاء شريط التنقل تلقائيًا</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">يبقي شريط التنقل ظاهرًا أثناء التمرير</string>
-  <string name="morphe_disable_translucent_status_bar_title">تعطيل شريط الحالة الشفاف</string>
-  <string name="morphe_disable_translucent_status_bar_summary">يجعل شريط الحالة معتمًا تمامًا</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"القيود:
-• قد يظهر شريط أسود في أعلى مشغل الفيديو.
-• يمكن أن يتغير شريط التنقل في النظام إلى شفاف، ولا يمكن التعليق على الفيديوهات."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">تعطيل الشريط الشفاف الفاتح</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">يجعل شريط التنقل معتمًا تمامًا في الوضع الفاتح</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">تعطيل الشريط الشفاف الداكن</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">يجعل شريط التنقل معتمًا تمامًا في الوضع الداكن</string>
+  <string name="morphe_disable_translucent_navigation_title">تعطيل شريط التنقل الشفاف</string>
+  <string name="morphe_disable_translucent_navigation_summary">يجعل شريط التنقل وشريط الحالة معتمين تمامًا</string>
   <string name="morphe_toolbar_screen_title">شريط الأدوات</string>
   <string name="morphe_toolbar_screen_summary">اختر المكونات التي تظهر في شريط الأدوات</string>
   <string name="morphe_hide_toolbar_cast_button_title">إخفاء زر البث</string>
@@ -1119,6 +1109,11 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_remember_playback_speed_toast">تم تغيير سرعة التشغيل الافتراضية إلى: %s</string>
   <string name="morphe_disable_playback_speed_music_title">استخدام السرعة العادية للموسيقى</string>
   <string name="morphe_disable_playback_speed_music_summary">تشغيل فيديوهات الموسيقى دائمًا بسرعة 1.0x</string>
+  <string name="morphe_enable_playback_audio_pitch_controls_title">تمكين التحكم في طبقة الصوت</string>
+  <string name="morphe_playback_audio_pitch_default_title">طبقة صوت التشغيل الافتراضية</string>
+  <string name="morphe_remember_playback_audio_pitch_toast">تم تغيير طبقة الصوت الافتراضية إلى: %s</string>
+  <string name="morphe_playback_audio_time_stretching_title">تمديد زمن الصوت</string>
+  <string name="morphe_playback_audio_time_stretching_summary">يتيح ضبط السرعة والطبقة الصوتية بشكل مستقل، وقد يسبب تشوهات في الصوت</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">تعطيل فيديو HDR</string>
   <string name="morphe_force_avc_codec_title">فرض برنامج ترميز AVC (H.264)</string>

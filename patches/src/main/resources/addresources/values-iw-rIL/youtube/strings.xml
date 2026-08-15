@@ -511,15 +511,15 @@ Second \"item\" text"</string>
   <string name="morphe_tap_to_seek_title">הפעל הקשה כדי לדלג</string>
   <string name="morphe_tap_to_seek_summary">הקש פשוט על פס החיפוש כדי לעבור למיקום הזה מבלי לגרור אותו</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">הפעל מחוות בהירות</string>
-  <string name="morphe_swipe_brightness_summary">החלק במצב מסך מלא כדי לדלג לסרטון הבא או הקודם</string>
-  <string name="morphe_swipe_volume_title">הפעל מחוות עוצמת קול</string>
-  <string name="morphe_swipe_volume_summary">בחר אילו כפתורים יופיעו בסרגל הניווט התחתון</string>
-  <string name="morphe_swipe_zone_width_title">רוחב אזור בהירות/עוצמת קול</string>
-  <string name="morphe_swipe_zone_width_summary">אחוז מכל קצה מסך השמור למחוות בהירות ועוצמת קול (5-50)</string>
+  <string name="morphe_swipe_left_zone_title">מחוות החלקה שמאלה</string>
+  <string name="morphe_swipe_right_zone_title">מחוות החלקה ימינה</string>
+  <string name="morphe_swipe_top_zone_title">מחוות החלקה למעלה</string>
+  <string name="morphe_swipe_zone_width_title">רוחב אזור שמאל/ימין</string>
+  <string name="morphe_swipe_zone_width_summary">אחוז מכל קצה מסך השמור למחוות החלקה שמאלה וימינה (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">בהירות</string>
   <string name="morphe_swipe_zone_label_volume">עוצמת קול</string>
   <string name="morphe_swipe_zone_label_native">מובנה</string>
+  <string name="morphe_swipe_zone_label_off">כבוי</string>
   <string name="morphe_swipe_press_to_engage_title">הפעל מחוות לחץ כדי להחליק</string>
   <string name="morphe_swipe_press_to_engage_summary">נדרשת לחיצה והחזקה לפני שמחוות החלקה מזוהה</string>
   <string name="morphe_swipe_haptic_feedback_title">הפעל משוב ברטט</string>
@@ -548,12 +548,9 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_volume_sensitivity_summary">ערכים גבוהים יותר מגדילים את שינוי עוצמת הקול בכל החלקה</string>
   <string name="morphe_swipe_brightness_sensitivity_title">רגישות החלקה בבהירות</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">ערכים גבוהים יותר דורשים יותר החלקות לכל שלב בהירות</string>
-  <string name="morphe_swipe_speed_title">הפעל מחוות מהירות</string>
-  <string name="morphe_swipe_speed_summary">החלקו אופקית באזור העליון של מצב מסך מלא כדי לשנות את מהירות ההשמעה</string>
   <string name="morphe_swipe_speed_sensitivity_title">רגישות החלקה במהירות</string>
   <string name="morphe_swipe_speed_sensitivity_summary">ערכים גבוהים יותר דורשים יותר החלקות לכל שלב מהירות</string>
   <string name="morphe_swipe_speed_step_title">קצב שינוי</string>
-  <string name="morphe_swipe_speed_step_summary">השינוי בקצב ההשמעה בכל צעד</string>
   <string name="morphe_swipe_speed_zone_height_title">גובה אזור המהירות</string>
   <string name="morphe_swipe_speed_zone_height_summary">גובה אזור מחוות המהירות כאחוז מגובה הנגן (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">מהירות</string>
@@ -681,15 +678,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_summary">מבצע אנימציות מעברים בעת מעבר בין כרטיסיות</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">השבת הסתרת אוטומטית של סרגל הניווט</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">שומר את סרגל הניווט גלוי בזמן גלילה</string>
-  <string name="morphe_disable_translucent_status_bar_title">השבת שורת מצב שקופה</string>
-  <string name="morphe_disable_translucent_status_bar_summary">הופך את סרגל המצב לאטום לחלוטין</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"מגבלות:
-• פס שחור עשוי להופיע בחלקו העליון של נגן הווידאו.
-• סרגל הניווט של המערכת עשוי להשתנות לשקוף, ואי אפשר להגיב על סרטונים."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">השבת סרגל בהיר שקוף</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">הופך את סרגל הניווט לאטום לחלוטין במצב בהיר</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">השבת סרגל כהה שקוף</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">הופך את סרגל הניווט לאטום לחלוטין במצב כהה</string>
+  <string name="morphe_disable_translucent_navigation_title">השבת שורת ניווט שקופה</string>
+  <string name="morphe_disable_translucent_navigation_summary">הופך את שורת הניווט ושורת המצב לאטומות לחלוטין</string>
   <string name="morphe_toolbar_screen_title">סרגל כלים</string>
   <string name="morphe_toolbar_screen_summary">בחר אילו רכיבים יופיעו בסרגל הכלים</string>
   <string name="morphe_hide_toolbar_cast_button_title">הסתר לחצן העברה</string>

@@ -511,12 +511,6 @@ Voit korjata tämän ottamalla käyttöön 'Huijaa videovirtoja' ja vaihtamalla 
   <string name="morphe_tap_to_seek_title">Ota etsintä napauttamalla käyttöön</string>
   <string name="morphe_tap_to_seek_summary">Napauta hakupalkkia hypätäksesi kyseiseen kohtaan vetämättä sitä</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Ota kirkkausele käyttöön</string>
-  <string name="morphe_swipe_brightness_summary">Vaatii painamista ja pitämistä ennen kuin pyyhkäisyele tunnistetaan</string>
-  <string name="morphe_swipe_volume_title">Ota äänenvoimakkuusele käyttöön</string>
-  <string name="morphe_swipe_volume_summary">Muistaa kirkkaustason siirryttäessä sisään ja ulos koko näytön tilasta</string>
-  <string name="morphe_swipe_zone_width_title">Kirkkauden/äänenvoimakkuuden vyöhykkeen leveys</string>
-  <string name="morphe_swipe_zone_width_summary">Kuinka paljon näyttöä varataan kirkkauden ja äänenvoimakkuuden eleille (5–50)</string>
   <string name="morphe_swipe_zone_label_brightness">Kirkkaus</string>
   <string name="morphe_swipe_zone_label_volume">Äänenvoimakkuus</string>
   <string name="morphe_swipe_zone_label_native">Natiivi</string>
@@ -548,12 +542,9 @@ Voit korjata tämän ottamalla käyttöön 'Huijaa videovirtoja' ja vaihtamalla 
   <string name="morphe_swipe_volume_sensitivity_summary">Suuremmat arvot lisäävät äänenvoimakkuuden muutosta pyyhkäisyä kohden</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Kirkkauden pyyhkäisyn herkkyys</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Suuremmat arvot vaativat enemmän pyyhkäisyjä kirkkausaskelta kohden</string>
-  <string name="morphe_swipe_speed_title">Ota nopeusele käyttöön</string>
-  <string name="morphe_swipe_speed_summary">Pyyhkäise vaakasuunnassa täyden näytön tilan yläosassa muuttaaksesi toistonopeutta</string>
   <string name="morphe_swipe_speed_sensitivity_title">Nopeuden pyyhkäisyn herkkyys</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Suuremmat arvot vaativat enemmän pyyhkäisyjä nopeusaskelta kohden</string>
   <string name="morphe_swipe_speed_step_title">Nopeuden vaihe</string>
-  <string name="morphe_swipe_speed_step_summary">Määrä, jolla toistonopeus muuttuu jokaisen askeleen myötä</string>
   <string name="morphe_swipe_speed_zone_height_title">Nopeusalueen korkeus</string>
   <string name="morphe_swipe_speed_zone_height_summary">Nopeuseleelle varatun alueen korkeus prosentteina soittimen korkeudesta (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Nopeus</string>
@@ -681,15 +672,6 @@ Saadaksesi asetukset, ota Asetukset-painike käyttöön kohdasta Yleiset → Ty�
   <string name="morphe_navigation_bar_animations_summary">Animoi siirtymät välilehtien välillä</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Poista automaattisen piilottamisen käytöstä navigointipalkissa</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Pitää navigointipalkin näkyvillä vieritettäessä</string>
-  <string name="morphe_disable_translucent_status_bar_title">Poista läpikuultava tilapalkki käytöstä</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Tekee tilapalkin täysin peittäväksi</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Rajoitukset:
-• Video-soittimessa saattaa esiintyä musta juova yläosassa.
-• Järjestelmän navigointipalkki saattaa muuttua läpinäkyväksi, ja ei ole mahdollista kommentoida videoita."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Poista vaalea läpikuultava palkki käytöstä</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Tekee navigointipalkista täysin peittävän vaaleassa tilassa</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Poista tumma läpikuultava palkki käytöstä</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Tekee navigaatiopalkista täysin läpinäkymättömän tummassa tilassa</string>
   <string name="morphe_toolbar_screen_title">Työkalupalkki</string>
   <string name="morphe_toolbar_screen_summary">Valitse, mitkä komponentit näkyvät työkalupalkissa</string>
   <string name="morphe_hide_toolbar_cast_button_title">Piilota Cast-painike</string>
