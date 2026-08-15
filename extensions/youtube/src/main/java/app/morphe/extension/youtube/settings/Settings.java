@@ -413,7 +413,6 @@ public class Settings extends SharedYouTubeSettings {
 
     // General (Layout)
     public static final BooleanSetting DISABLE_LAYOUT_UPDATES = new BooleanSetting("morphe_disable_layout_updates", FALSE, true,"morphe_disable_layout_updates_user_dialog_message");
-    public static final BooleanSetting DISABLE_TRANSLUCENT_STATUS_BAR = new BooleanSetting("morphe_disable_translucent_status_bar", FALSE, true);
     public static final BooleanSetting RESTORE_OLD_SETTINGS_MENUS = new BooleanSetting("morphe_restore_old_settings_menus", FALSE, true);
     public static final EnumSetting<FormFactor> CHANGE_FORM_FACTOR = new EnumSetting<>("morphe_change_form_factor", FormFactor.DEFAULT, true, "morphe_change_form_factor_user_dialog_message");
     public static final BooleanSetting TABLET_LAYOUT_IN_PLAYER = new BooleanSetting("morphe_tablet_layout_in_player", FALSE, true, new TabletLayoutInPlayerAvailability());
@@ -453,8 +452,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting NARROW_NAVIGATION_BUTTONS = new BooleanSetting("morphe_narrow_navigation_buttons", FALSE, true, parentNot(HIDE_NAVIGATION_BAR));
     public static final BooleanSetting DISABLE_AUTO_HIDE_NAVIGATION_BAR = new BooleanSetting("morphe_disable_auto_hide_navigation_bar", FALSE, true, parentNot(HIDE_NAVIGATION_BAR));
     public static final BooleanSetting NAVIGATION_BAR_ANIMATIONS = new BooleanSetting("morphe_navigation_bar_animations", FALSE, parentNot(HIDE_NAVIGATION_BAR));
-    public static final BooleanSetting DISABLE_TRANSLUCENT_NAVIGATION_BAR_LIGHT = new BooleanSetting("morphe_disable_translucent_navigation_bar_light", FALSE, true, parentNot(HIDE_NAVIGATION_BAR));
-    public static final BooleanSetting DISABLE_TRANSLUCENT_NAVIGATION_BAR_DARK = new BooleanSetting("morphe_disable_translucent_navigation_bar_dark", FALSE, true, parentNot(HIDE_NAVIGATION_BAR));
+    public static final BooleanSetting DISABLE_TRANSLUCENT_NAVIGATION = new BooleanSetting("morphe_disable_translucent_navigation", FALSE, true, parentNot(HIDE_NAVIGATION_BAR));
 
     // Toolbar
     public static final BooleanSetting HIDE_TOOLBAR_CAST_BUTTON = new BooleanSetting("morphe_hide_toolbar_cast_button", TRUE, true);
@@ -702,6 +700,9 @@ public class Settings extends SharedYouTubeSettings {
     private static final StringSetting  DEPRECATED_SB_CATEGORY_MUSIC_OFFTOPIC_COLOR = new StringSetting("sb_music_offtopic_color", "#CCFF9900", false, false);
     private static final StringSetting  DEPRECATED_SB_CATEGORY_UNSUBMITTED = new StringSetting("sb_unsubmitted", SKIP_AUTOMATICALLY.morpheKeyValue, false, false);
     private static final StringSetting  DEPRECATED_SB_CATEGORY_UNSUBMITTED_COLOR = new StringSetting("sb_unsubmitted_color", "#FFFFFFFF", false, false);
+    private static final BooleanSetting DEPRECATED_DISABLE_TRANSLUCENT_STATUS_BAR = new BooleanSetting("morphe_disable_translucent_status_bar", FALSE);
+    private static final BooleanSetting DEPRECATED_DISABLE_TRANSLUCENT_NAVIGATION_BAR_LIGHT = new BooleanSetting("morphe_disable_translucent_navigation_bar_light", FALSE);
+    private static final BooleanSetting DEPRECATED_DISABLE_TRANSLUCENT_NAVIGATION_BAR_DARK = new BooleanSetting("morphe_disable_translucent_navigation_bar_dark", FALSE);
 
     static {
         migrateOldSettingToNew(DEPRECATED_BYPASS_URL_REDIRECTS, BYPASS_LINK_REDIRECTS);
@@ -769,6 +770,15 @@ public class Settings extends SharedYouTubeSettings {
         migrateOldSettingToNew(DEPRECATED_SB_CATEGORY_MUSIC_OFFTOPIC_COLOR, SB_CATEGORY_MUSIC_OFFTOPIC_COLOR);
         migrateOldSettingToNew(DEPRECATED_SB_CATEGORY_UNSUBMITTED, SB_CATEGORY_UNSUBMITTED);
         migrateOldSettingToNew(DEPRECATED_SB_CATEGORY_UNSUBMITTED_COLOR, SB_CATEGORY_UNSUBMITTED_COLOR);
+
+        if (DEPRECATED_DISABLE_TRANSLUCENT_STATUS_BAR.get()
+                || DEPRECATED_DISABLE_TRANSLUCENT_NAVIGATION_BAR_LIGHT.get()
+                || DEPRECATED_DISABLE_TRANSLUCENT_NAVIGATION_BAR_DARK.get()) {
+            DISABLE_TRANSLUCENT_NAVIGATION.save(true);
+            DEPRECATED_DISABLE_TRANSLUCENT_STATUS_BAR.resetToDefault();
+            DEPRECATED_DISABLE_TRANSLUCENT_NAVIGATION_BAR_LIGHT.resetToDefault();
+            DEPRECATED_DISABLE_TRANSLUCENT_NAVIGATION_BAR_DARK.resetToDefault();
+        }
 
         // 20.37+ YT removed parts of the code for the legacy tablet miniplayer.
         // This check must remain until the Tablet type is eventually removed.

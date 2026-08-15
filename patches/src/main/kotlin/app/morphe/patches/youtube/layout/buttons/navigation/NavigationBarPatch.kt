@@ -105,17 +105,12 @@ val navigationBarPatch = bytecodePatch(
             SwitchPreference("morphe_narrow_navigation_buttons", summary = true),
             SwitchPreference("morphe_hide_navigation_button_labels"),
             SwitchPreference("morphe_navigation_bar_animations", summary = true),
-            SwitchPreference("morphe_disable_translucent_navigation_bar_light", summary = true),
-            SwitchPreference("morphe_disable_translucent_navigation_bar_dark", summary = true)
+            SwitchPreference("morphe_disable_translucent_navigation", summary = true)
         )
 
         if (is_20_31_or_greater) {
             navPreferences += SwitchPreference("morphe_disable_auto_hide_navigation_bar", summary = true)
         }
-
-        PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("morphe_disable_translucent_status_bar", summary = true)
-        )
 
         PreferenceScreen.GENERAL.addPreferences(
             PreferenceScreenPreference(
@@ -162,14 +157,14 @@ val navigationBarPatch = bytecodePatch(
             arrayOf(
                 translucentImmersiveFingerprint(translucentStatusBarFilter),
                 translucentCheckOnTextFingerprint(translucentStatusBarFilter),
-                translucentUpdateStatusBarFingerprint(translucentStatusBarFilter),
-                translucentYouTabFingerprint(translucentStatusBarFilter)
+                translucentYouTabFingerprint(translucentStatusBarFilter),
+                translucentUpdateStatusBarFingerprint(translucentStatusBarFilter)
             ).forEach { fingerprint ->
                 fingerprint.matchAll().forEach {
                     if (is_21_30_or_greater) {
                         it.method.insertLiteralOverride(
                             it.instructionMatches.last().index,
-                            "$EXTENSION_CLASS->useTranslucentNavigationStatusBar(Z)Z"
+                            "$EXTENSION_CLASS->useTranslucentNavigation(Z)Z"
                         )
                         return@forEach
                     }
@@ -184,7 +179,7 @@ val navigationBarPatch = bytecodePatch(
                             addInstructions(
                                 index + 2,
                                 """
-                                    invoke-static { v$register }, $EXTENSION_CLASS->useTranslucentNavigationStatusBar(Z)Z
+                                    invoke-static { v$register }, $EXTENSION_CLASS->useTranslucentNavigation(Z)Z
                                     move-result v$register
                                 """
                             )
@@ -196,7 +191,31 @@ val navigationBarPatch = bytecodePatch(
             TranslucentNavigationStatusBarFeatureFlagFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
-                    "$EXTENSION_CLASS->useTranslucentNavigationStatusBar(Z)Z"
+                    "$EXTENSION_CLASS->useTranslucentNavigation(Z)Z"
+                )
+            }
+        }
+
+        TranslucentNavigationButtonsSystemFeatureFlagFingerprint.matchAll().forEach {
+            it.method.insertLiteralOverride(
+                it.instructionMatches.first().index,
+                "$EXTENSION_CLASS->useTranslucentNavigation(Z)Z"
+            )
+        }
+
+        TranslucentNavigationButtonsFeatureFlagFingerprint.matchAll().forEach {
+            it.method.insertLiteralOverride(
+                it.instructionMatches.first().index,
+                "$EXTENSION_CLASS->useTranslucentNavigation(Z)Z"
+            )
+        }
+
+        if (is_20_46_or_greater) {
+            // Feature interferes with translucent status bar and must be forced off.
+            CollapsingToolbarLayoutFeatureFlagFingerprint.matchAll().forEach {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    "$EXTENSION_CLASS->allowCollapsingToolbarLayout(Z)Z"
                 )
             }
         }
@@ -206,31 +225,6 @@ val navigationBarPatch = bytecodePatch(
                 it.instructionMatches.first().index,
                 "$EXTENSION_CLASS->useAnimatedNavigationButtons(Z)Z"
             )
-        }
-
-        TranslucentNavigationButtonsSystemFeatureFlagFingerprint.matchAll().forEach {
-            it.method.insertLiteralOverride(
-                it.instructionMatches.first().index,
-                "$EXTENSION_CLASS->useTranslucentNavigationButtons(Z)Z"
-            )
-        }
-
-        TranslucentNavigationButtonsFeatureFlagFingerprint.matchAll().forEach {
-            it.method.insertLiteralOverride(
-                it.instructionMatches.first().index,
-                "$EXTENSION_CLASS->useTranslucentNavigationButtons(Z)Z"
-            )
-        }
-
-        // Edit: This override may no longer be needed since the status bar changes are now more precise.
-        if (false) if (is_20_46_or_greater) {
-            // Feature interferes with translucent status bar and must be forced off.
-            CollapsingToolbarLayoutFeatureFlagFingerprint.matchAll().forEach {
-                it.method.insertLiteralOverride(
-                    it.instructionMatches.first().index,
-                    "$EXTENSION_CLASS->allowCollapsingToolbarLayout(Z)Z"
-                )
-            }
         }
 
         arrayOf(
