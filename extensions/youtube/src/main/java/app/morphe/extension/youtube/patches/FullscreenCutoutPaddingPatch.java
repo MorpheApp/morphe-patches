@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/2332
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -25,9 +25,10 @@ import java.lang.ref.WeakReference;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.Setting;
+import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
-
 import kotlin.Unit;
 
 /**
@@ -73,6 +74,22 @@ public final class FullscreenCutoutPaddingPatch {
         BOTTOM,
     }
 
+    public static final class FullscreenCutoutPaddingAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P;
+        }
+    }
+
+    public static final class FullscreenCutoutExtraMarginAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return Settings.FULLSCREEN_CUTOUT_PADDING.isAvailable()
+                    && Settings.FULLSCREEN_CUTOUT_PADDING.get()
+                    && Settings.FULLSCREEN_CUTOUT_PADDING_MODE.get() == CutoutPaddingMode.AUTOMATIC;
+        }
+    }
+
     /**
      * The view the video is rendered into.
      */
@@ -85,7 +102,7 @@ public final class FullscreenCutoutPaddingPatch {
 
     /**
      * The view an offset is currently applied to, so it can be cleared again even if a
-     * different view is used afterwards.
+     * different view is used afterward.
      */
     private static WeakReference<View> offsetAppliedToRef = new WeakReference<>(null);
 
@@ -100,9 +117,6 @@ public final class FullscreenCutoutPaddingPatch {
      * Last logged geometry, so each distinct layout is logged only once.
      */
     private static String loggedGeometry = "";
-
-    private FullscreenCutoutPaddingPatch() {
-    }
 
     /**
      * Injection point. Called at the start of MainActivity onCreate.
@@ -120,7 +134,7 @@ public final class FullscreenCutoutPaddingPatch {
                 // The cached view is stale once the player changes, as the app reuses
                 // and recreates surfaces between the regular player, Shorts and ads.
                 videoViewRef = new WeakReference<>(null);
-                Utils.runOnMainThreadNowOrLater(FullscreenCutoutPaddingPatch::update);
+                update();
                 return Unit.INSTANCE;
             });
         } catch (Exception ex) {
@@ -130,6 +144,7 @@ public final class FullscreenCutoutPaddingPatch {
 
     private static void update() {
         try {
+            Utils.verifyOnMainThread();
             if (!Settings.FULLSCREEN_CUTOUT_PADDING.get()) {
                 clearOffset();
                 return;
@@ -187,17 +202,19 @@ public final class FullscreenCutoutPaddingPatch {
         final int containerTop = location[1];
         final int containerBottom = containerTop + container.getHeight();
 
-        final String geometry = "rotation=" + getRotation(activity)
-                + " landscape=" + Utils.isLandscapeOrientation()
-                + " video=[" + videoTop + ".." + videoBottom + "]"
-                + " " + videoView.getWidth() + "x" + videoView.getHeight()
-                + " " + videoView.getClass().getSimpleName()
-                + "@" + Integer.toHexString(System.identityHashCode(videoView))
-                + " container=" + container.getClass().getSimpleName()
-                + "[" + containerTop + ".." + containerBottom + "]";
-        if (!geometry.equals(loggedGeometry)) {
-            loggedGeometry = geometry;
-            Logger.printDebug(() -> "Geometry: " + geometry);
+        if (Settings.DEBUG.get()) {
+            String geometry = "rotation=" + getRotation(activity)
+                    + " landscape=" + Utils.isLandscapeOrientation()
+                    + " video=[" + videoTop + ".." + videoBottom + "]"
+                    + " " + videoView.getWidth() + "x" + videoView.getHeight()
+                    + " " + videoView.getClass().getSimpleName()
+                    + "@" + Integer.toHexString(System.identityHashCode(videoView))
+                    + " container=" + container.getClass().getSimpleName()
+                    + "[" + containerTop + ".." + containerBottom + "]";
+            if (!geometry.equals(loggedGeometry)) {
+                loggedGeometry = geometry;
+                Logger.printDebug(() -> "Geometry: " + geometry);
+            }
         }
 
         // Slack above and below the picture. Staying inside it means the video is
@@ -208,8 +225,8 @@ public final class FullscreenCutoutPaddingPatch {
             return 0; // Video fills the container, nowhere to move it.
         }
 
-        int requestedOffset;
         Rect cutout = findCutout(activity, videoLeft, videoRight);
+        final int requestedOffset;
 
         if (cutout != null) {
             final boolean intrudesFromTop = cutout.bottom > videoTop
@@ -221,12 +238,12 @@ public final class FullscreenCutoutPaddingPatch {
                 return 0; // Already clear of the picture.
             }
 
-            final int margin = dpToPx(videoView, Settings.FULLSCREEN_CUTOUT_EXTRA_MARGIN.get());
+            final int margin = Dim.dp(Settings.FULLSCREEN_CUTOUT_EXTRA_MARGIN.get());
             requestedOffset = intrudesFromTop
                     ? cutout.bottom - videoTop + margin     // Move down, away from the top.
                     : -(videoBottom - cutout.top + margin); // Move up, away from the bottom.
         } else {
-            final int amount = dpToPx(videoView, Settings.FULLSCREEN_CUTOUT_MANUAL_AMOUNT.get());
+            final int amount = Dim.dp(Settings.FULLSCREEN_CUTOUT_MANUAL_AMOUNT.get());
             if (amount == 0) {
                 return 0;
             }
@@ -248,16 +265,14 @@ public final class FullscreenCutoutPaddingPatch {
      */
     @Nullable
     private static Rect findCutout(Activity activity, int videoLeft, int videoRight) {
-        if (Settings.FULLSCREEN_CUTOUT_PADDING_MODE.get() != CutoutPaddingMode.AUTOMATIC) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P
+                || Settings.FULLSCREEN_CUTOUT_PADDING_MODE.get() != CutoutPaddingMode.AUTOMATIC) {
             return null;
         }
 
-        DisplayCutout cutout = null;
         View decorView = activity.getWindow().getDecorView();
         WindowInsets insets = decorView.getRootWindowInsets();
-        if (insets != null) {
-            cutout = insets.getDisplayCutout();
-        }
+        DisplayCutout cutout = insets == null ? null : insets.getDisplayCutout();
 
         if (!loggedCutoutSupport) {
             loggedCutoutSupport = true;
@@ -357,7 +372,7 @@ public final class FullscreenCutoutPaddingPatch {
 
         // Compared against the view rather than the last value set, so that a change made
         // by the app is noticed and undone.
-        if (Math.round(videoView.getTranslationY()) == offset && previous == videoView) {
+        if (previous == videoView && Math.round(videoView.getTranslationY()) == offset) {
             return;
         }
 
@@ -404,13 +419,15 @@ public final class FullscreenCutoutPaddingPatch {
 
         // Reapply after the video is resized, which covers rotating the device and
         // folding or unfolding it.
-        if (found != null && found != listenerAttachedToRef.get()) {
+        if (found != null) {
             View previous = listenerAttachedToRef.get();
-            if (previous != null) {
-                previous.removeOnLayoutChangeListener(layoutListener);
+            if (found != previous) {
+                listenerAttachedToRef = new WeakReference<>(found);
+                if (previous != null) {
+                    previous.removeOnLayoutChangeListener(layoutListener);
+                }
+                found.addOnLayoutChangeListener(layoutListener);
             }
-            found.addOnLayoutChangeListener(layoutListener);
-            listenerAttachedToRef = new WeakReference<>(found);
         }
         return found;
     }
@@ -419,14 +436,16 @@ public final class FullscreenCutoutPaddingPatch {
             (v, l, t, r, b, oldL, oldT, oldR, oldB) -> update();
 
     @Nullable
-    private static View findLargestVideoSurface(ViewGroup parent, @Nullable View largest) {
+    private static View findLargestVideoSurface(ViewGroup parent, @Nullable View initialLargest) {
+        View largest = initialLargest;
         for (int i = 0, count = parent.getChildCount(); i < count; i++) {
             View child = parent.getChildAt(i);
             if (child instanceof SurfaceView || child instanceof TextureView) {
-                if (child.getWidth() > 0 && child.getHeight() > 0 && child.isShown()
-                        && (largest == null
-                        || child.getWidth() * child.getHeight()
-                        > largest.getWidth() * largest.getHeight())) {
+                final int childWidth = child.getWidth();
+                final int childHeight = child.getHeight();
+                if (childWidth > 0 && childHeight > 0 && (largest == null
+                        || childWidth * childHeight > largest.getWidth() * largest.getHeight())
+                        && child.isShown()) {
                     largest = child;
                 }
             } else if (child instanceof ViewGroup) {
@@ -447,8 +466,7 @@ public final class FullscreenCutoutPaddingPatch {
      */
     private static View findMovableVideoView(View surface) {
         View movable = surface;
-        while (movable.getParent() instanceof ViewGroup) {
-            ViewGroup parent = (ViewGroup) movable.getParent();
+        while (movable.getParent() instanceof ViewGroup parent) {
             if (parent.getHeight() != movable.getHeight()
                     || parent.getWidth() != movable.getWidth()) {
                 break; // Parent is larger than the picture, so this is where to stop.
@@ -458,7 +476,6 @@ public final class FullscreenCutoutPaddingPatch {
         return movable;
     }
 
-    @SuppressWarnings("deprecation")
     private static int getRotation(Activity activity) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             Display display = activity.getDisplay();
@@ -467,9 +484,5 @@ public final class FullscreenCutoutPaddingPatch {
             }
         }
         return activity.getWindowManager().getDefaultDisplay().getRotation();
-    }
-
-    private static int dpToPx(View view, int dp) {
-        return Math.round(dp * view.getResources().getDisplayMetrics().density);
     }
 }

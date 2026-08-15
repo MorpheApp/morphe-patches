@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/2332
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -37,9 +37,8 @@ internal val fullscreenCutoutPaddingPatch = bytecodePatch(
 
     // Cannot declare as top level since this patch is in the same package as
     // other patches that declare same constant name with internal visibility.
-    @Suppress("LocalVariableName")
-    val EXTENSION_CLASS =
-        "Lapp/morphe/extension/youtube/patches/FullscreenCutoutPaddingPatch;"
+    // noinspection LocalVariableName
+    val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/FullscreenCutoutPaddingPatch;"
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
