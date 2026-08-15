@@ -32,6 +32,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_37_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_17_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_29_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_32_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -74,11 +75,11 @@ val miniplayerPatch = bytecodePatch(
 
         if (is_20_37_or_greater) {
             // 21.29 removed all modern miniplayers except modern 4
-            if (!is_21_29_or_greater) {
-                preferences += ListPreference("morphe_miniplayer_type")
+            preferences += if (!is_21_29_or_greater) {
+                ListPreference("morphe_miniplayer_type")
             } else {
                 // TODO: Eventually remove this message
-                preferences += NonInteractivePreference(
+                NonInteractivePreference(
                     key = "morphe_miniplayer_type",
                     summaryKey = "morphe_miniplayer_not_available_summary"
                 )
@@ -92,19 +93,15 @@ val miniplayerPatch = bytecodePatch(
         }
 
         preferences += SwitchPreference("morphe_miniplayer_disable_resuming", summary = true)
-        preferences += SwitchPreference(
-            "morphe_miniplayer_disable_drag_and_drop",
-            summary = true
-        )
-        preferences += SwitchPreference(
-            "morphe_miniplayer_disable_horizontal_drag",
-            summary = true
-        )
+        preferences += SwitchPreference("morphe_miniplayer_disable_drag_and_drop", summary = true)
+        preferences += SwitchPreference("morphe_miniplayer_disable_horizontal_drag", summary = true)
         preferences += SwitchPreference("morphe_miniplayer_disable_rounded_corners")
         if (!is_21_29_or_greater) {
             preferences += SwitchPreference("morphe_miniplayer_hide_overlay_buttons")
         }
-        preferences += TextPreference("morphe_miniplayer_width_dip", inputType = InputType.NUMBER)
+        if (!is_21_32_or_greater) {
+            preferences += TextPreference("morphe_miniplayer_width_dip", inputType = InputType.NUMBER)
+        }
         if (!is_21_29_or_greater) {
             preferences += NonInteractivePreference(
                 key = "morphe_miniplayer_opacity",
@@ -255,7 +252,12 @@ val miniplayerPatch = bytecodePatch(
             )
         }
 
-        if (is_21_30_or_greater) {
+        if (!is_21_30_or_greater) {
+            MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
+                MINIPLAYER_DRAG_DROP_FEATURE_KEY,
+                "getMiniplayerDragAndDrop",
+            )
+        } else {
             MiniplayerDragAndDropFingerprint.let {
                 it.method.cloneParameters().apply {
                     val instructionIndex = it.instructionMatches.last().index + numberOfParameterRegisters
@@ -277,11 +279,6 @@ val miniplayerPatch = bytecodePatch(
                     )
                 }
             }
-        } else {
-            MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
-                MINIPLAYER_DRAG_DROP_FEATURE_KEY,
-                "getMiniplayerDragAndDrop",
-            )
         }
 
         MiniplayerModernFeatureFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
@@ -289,36 +286,45 @@ val miniplayerPatch = bytecodePatch(
             "getModernFeatureFlagsActiveOverride",
         )
 
-        MiniplayerModernConstructorFingerprint.method.apply {
-            val literalIndex = indexOfFirstLiteralInstructionOrThrow(
-                MINIPLAYER_INITIAL_SIZE_FEATURE_KEY,
-            )
-            val targetIndex = indexOfFirstInstructionOrThrow(literalIndex, Opcode.LONG_TO_INT)
-            val register = getInstruction<OneRegisterInstruction>(targetIndex).registerA
+        if (!is_21_32_or_greater) {
+            MiniplayerModernConstructorFingerprint.method.apply {
+                val literalIndex = indexOfFirstLiteralInstructionOrThrow(
+                    MINIPLAYER_INITIAL_SIZE_FEATURE_KEY
+                )
+                val targetIndex = indexOfFirstInstructionOrThrow(
+                    literalIndex, Opcode.LONG_TO_INT
+                )
+                val register = getInstruction<OneRegisterInstruction>(targetIndex).registerA
 
-            addInstructions(
-                targetIndex + 1,
-                """
-                    invoke-static { v$register }, $EXTENSION_CLASS->getMiniplayerDefaultSize(I)I
-                    move-result v$register
-                """
-            )
-        }
+                addInstructions(
+                    targetIndex + 1,
+                    """
+                        invoke-static { v$register }, $EXTENSION_CLASS->getMiniplayerDefaultSize(I)I
+                        move-result v$register
+                    """
+                )
+            }
 
-        // Override a minimum size constant.
-        MiniplayerMinimumSizeFingerprint.let {
-            it.method.apply {
-                val index = it.instructionMatches[1].index
-                val register = getInstruction<OneRegisterInstruction>(index).registerA
+            // Override a minimum size constant.
+            MiniplayerMinimumSizeFingerprint.let {
+                it.method.apply {
+                    val index = it.instructionMatches[1].index
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
 
-                // Smaller sizes can be used, but the miniplayer will always start in size 170 if set any smaller.
-                // The 170 initial limit probably could be patched to allow even smaller initial sizes,
-                // but 170 is already half the horizontal space and smaller does not seem useful.
-                replaceInstruction(index, "const/16 v$register, 170")
+                    // Smaller sizes can be used, but the miniplayer will always start in size 170 if set any smaller.
+                    // The 170 initial limit probably could be patched to allow even smaller initial sizes,
+                    // but 170 is already half the horizontal space and smaller does not seem useful.
+                    replaceInstruction(index, "const/16 v$register, 170")
+                }
             }
         }
 
-        if (is_21_30_or_greater) {
+        if (!is_21_30_or_greater) {
+            MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
+                MINIPLAYER_ROUNDED_CORNERS_FEATURE_KEY,
+                "getRoundedCorners",
+            )
+        } else {
             MiniplayerRoundedCornersFingerprint.let {
                 it.method.apply {
                     val index = it.instructionMatches.last().index
@@ -336,11 +342,6 @@ val miniplayerPatch = bytecodePatch(
                 }
 
             }
-        } else {
-            MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
-                MINIPLAYER_ROUNDED_CORNERS_FEATURE_KEY,
-                "getRoundedCorners",
-            )
         }
 
         //$EXTENSION_CLASS
@@ -354,7 +355,12 @@ val miniplayerPatch = bytecodePatch(
         }
 
         // region Horizontal drag
-        if (is_21_30_or_greater) {
+        if (!is_21_30_or_greater) {
+            MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
+                MINIPLAYER_HORIZONTAL_DRAG_FEATURE_KEY,
+                "getHorizontalDrag",
+            )
+        } else {
             MiniplayerOffscreenRectValidatorFingerprint.method.addInstructions(
                 0,
                 """
@@ -366,11 +372,6 @@ val miniplayerPatch = bytecodePatch(
                     :disable_offscreen_miniplayer
                     nop
                 """
-            )
-        } else {
-            MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
-                MINIPLAYER_HORIZONTAL_DRAG_FEATURE_KEY,
-                "getHorizontalDrag",
             )
         }
 
@@ -395,7 +396,12 @@ val miniplayerPatch = bytecodePatch(
 
         // endregion
 
-        if (is_21_30_or_greater) {
+        if (!is_21_30_or_greater) {
+            MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
+                MINIPLAYER_ANIMATED_EXPAND_FEATURE_KEY,
+                "getMaximizeAnimation",
+            )
+        } else {
             MiniplayerAnimatedExpandFingerprint.let {
                 it.method.apply {
                     val insertIndex = it.instructionMatches[1].index
@@ -413,11 +419,6 @@ val miniplayerPatch = bytecodePatch(
                     )
                 }
             }
-        } else {
-            MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
-                MINIPLAYER_ANIMATED_EXPAND_FEATURE_KEY,
-                "getMaximizeAnimation",
-            )
         }
 
         Fingerprint(

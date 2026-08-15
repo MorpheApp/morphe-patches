@@ -13,6 +13,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.youtube.layout.miniplayer.EXTENSION_CLASS
+import app.morphe.patches.youtube.misc.addon.EXTENSION_ADD_ON_API_CLASS_DESCRIPTOR
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_29_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -24,10 +25,12 @@ private var exploderButtonInsertIndex = -1
 private var exploderButtonInsertRegister = -1
 
 fun addPlayerBottomButton(descriptor: String) {
-    exploderButtonMethodRef.get()!!.addInstruction(
-        exploderButtonInsertIndex++,
-        "invoke-static { v$exploderButtonInsertRegister }, $descriptor->initializeButton(Landroid/view/View;)V"
-    )
+    exploderButtonMethodRef.get()?.apply {
+        addInstruction(
+            exploderButtonInsertIndex++,
+            "invoke-static { v$exploderButtonInsertRegister }, $descriptor->initializeButton(Landroid/view/View;)V"
+        )
+    }
 }
 
 internal val playerOverlayButtonsHookPatch = bytecodePatch {
@@ -45,16 +48,27 @@ internal val playerOverlayButtonsHookPatch = bytecodePatch {
                 exploderButtonInsertRegister = getInstruction<OneRegisterInstruction>(index).registerA
                 exploderButtonInsertIndex = index + 1
 
+                addInstruction(
+                    exploderButtonInsertIndex++,
+                    "invoke-static { v$exploderButtonInsertRegister }, " +
+                            "Lapp/morphe/extension/youtube/videoplayer/PlayerOverlayButton;->" +
+                            "initializeButton(Landroid/view/View;)V"
+                )
+
                 // Fix the fullscreen button tint when the minimal miniplayer type is selected.
                 // The minimal type forces a theme where ytOverlayButtonPrimary resolves to gray
                 // instead of white, making the fullscreen button appear gray instead of white.
                 if (!is_21_29_or_greater) {
                     addInstruction(
-                        index + 1,
-                        "invoke-static { v$exploderButtonInsertRegister }, $EXTENSION_CLASS->fixMinimalMiniplayerFullscreenButtonTint(Landroid/view/View;)V"
+                        exploderButtonInsertIndex++,
+                        "invoke-static { v$exploderButtonInsertRegister }, $EXTENSION_CLASS->" +
+                                "fixMinimalMiniplayerFullscreenButtonTint(Landroid/view/View;)V"
                     )
                 }
             }
         }
+
+        // Buttons of add-on patch bundles, which cannot add a button of their own.
+        addPlayerBottomButton(EXTENSION_ADD_ON_API_CLASS_DESCRIPTOR)
     }
 }

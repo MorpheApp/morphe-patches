@@ -2,7 +2,7 @@
 <!--
 
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -25,8 +25,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_summary">থার্ড-পার্টি ডাউনলোড করার অ্যাপের মাধ্যমে মিউজিক ভিডিও, পডকাস্ট বা গান ডাউনলোড করুন</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">ডাউনলোড বোতামটি প্রতিস্থাপন করুন</string>
-  <string name="morphe_external_downloader_action_button_summary">YouTube Music-এর অন্তর্নির্মিত ডাউনলোড বৈশিষ্ট্যের পরিবর্তে আপনার নির্বাচিত বাহ্যিক ডাউনলোডার ব্যবহার করে</string>
-  <string name="morphe_external_downloader_flyout_menu_title">ডাউনলোড মেনু প্রতিস্থাপন করুন</string>
+  <string name="morphe_external_downloader_action_button_summary">আপনার নির্বাচিত বাহ্যিক ডাউনলোডারটি স্টক ডাউনলোড অ্যাকশন বোতামের পরিবর্তে ব্যবহার করে।</string>
+  <string name="morphe_external_downloader_flyout_menu_title">ডাউনলোড মেনু ওভাররাইড করুন</string>
+  <string name="morphe_external_downloader_flyout_menu_summary">আপনার নির্বাচিত বাহ্যিক ডাউনলোডারটি স্টক ডাউনলোড ফ্লাইআউট মেনুর পরিবর্তে ব্যবহার করে।</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">মর্ফ সম্পর্কে</string>
@@ -34,6 +35,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_feed_title">ফিড</string>
   <string name="morphe_settings_music_screen_3_general_title">সাধারণ</string>
   <string name="morphe_settings_music_screen_4_player_title">প্লেয়ার</string>
+  <string name="morphe_settings_music_screen_5_lyrics_title">লিরিকস</string>
+  <string name="morphe_settings_music_screen_9_misc_title">বিবিধ</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">\'গেট মিউজিক প্রিমিয়াম\' লেবেল লুকান</string>
   <string name="morphe_music_hide_music_premium_promotions_title">মিউজিক প্রিমিয়াম প্রচার লুকান</string>
@@ -295,12 +298,15 @@ Second \"item\" text"</string>
 
 ব্যাকগ্রাউন্ড প্লেব্যাকের সময় স্ক্রবিং সিঙ্ক করা হয়েছে কিনা তা নিশ্চিত করতে, নিশ্চিত করুন যে YouTube Music-এর অ্যাপ ব্যাটারি ব্যবহার \"Unrestricted\" তে সেট করা আছে।"</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_enabled_title">তৃতীয় পক্ষের লিরিকস ব্যবহার করুন</string>
+  <string name="morphe_music_lyrics_enabled_summary">একটি তৃতীয় পক্ষের পরিষেবা থেকে লিরিকস দেখায়, যদি কিছু খুঁজে না পাওয়া যায় তবে অন্তর্নির্মিত লিরিকসে ফিরে যায়</string>
+  <string name="morphe_music_lyrics_source_title">লিরিকস পরিষেবা</string>
   <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
   <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, তারপর KuGou</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">লাইনটিতে ট্যাপ করে যান</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">একটি লাইনে ট্যাপ করলে গানের সেই মুহূর্তটিতে যাওয়া যাবে</string>
-  <string name="morphe_music_lyrics_copy_button_title">কপি লিরিক্স বোতাম দেখান</string>
-  <string name="morphe_music_lyrics_translate_button_title">অনুবাদ লিরিক্স বোতাম দেখান</string>
+  <string name="morphe_music_lyrics_show_copy_button_title">কপি বাটন দেখান</string>
+  <string name="morphe_music_lyrics_show_translate_button_title">অনুবাদ বাটন দেখান</string>
   <string name="morphe_music_lyrics_text_size_title">টেক্সট আকার</string>
   <string name="morphe_music_lyrics_text_size_summary">লিরিক্স টেক্সটের আকার</string>
   <string name="morphe_music_lyrics_offset_ms_title">সময় অফসেট</string>
@@ -321,9 +327,6 @@ Second \"item\" text"</string>
 
 যখন কোনো তৃতীয় পক্ষের লিরিক্স পাওয়া যায় না, তখন বিল্ট-ইন লিরিক্স দেখানো হয়"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
-  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - পুরনো ফ্লাইআউট প্যানেল পুনরুদ্ধার করুন</string>
-  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - রিয়েল-টাইম লিরিকস নিষ্ক্রিয় করুন</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - পুরনো ডায়নামিক লিরিকস পুনরুদ্ধার করুন</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - পুরনো অ্যাকশন বার পুনরুদ্ধার করুন</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - হোম ফিডে কমেন্ট সেকশনটি দৃশ্যমান হচ্ছে না</string>
+  <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - বোল্ড আইকন নিষ্ক্রিয় করুন</string>
+  <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - প্লেয়ার আপ নেক্সট, লিরিক্স এবং সম্পর্কিত ট্যাব পুনরুদ্ধার করুন</string>
 </resources>

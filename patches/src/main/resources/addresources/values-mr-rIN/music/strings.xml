@@ -2,7 +2,7 @@
 <!--
 
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -25,8 +25,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_summary">तृतीय-पक्ष डाउनलोडिंग ॲप्स वापरून संगीत व्हिडिओ, पॉडकास्ट किंवा गाणी डाउनलोड करा</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">डाउनलोड बटण ओव्हरराइड करा</string>
-  <string name="morphe_external_downloader_action_button_summary">युट्यूब म्युझिकच्या अंगभूत डाउनलोड वैशिष्ट्यऐवजी तुमचा निवडलेला बाह्य डाउनलोडर वापरतो</string>
+  <string name="morphe_external_downloader_action_button_summary">डाउनलोड क्रिया बटणाऐवजी तुमच्या निवडलेल्या बाह्य डाउनलोडरचा वापर करते</string>
   <string name="morphe_external_downloader_flyout_menu_title">डाउनलोड मेनू ओव्हरराइड करा</string>
+  <string name="morphe_external_downloader_flyout_menu_summary">डाउनलोड फ्लायआउट मेनूऐवजी तुमच्या निवडलेल्या बाह्य डाउनलोडरचा वापर करते</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">अबाऊट</string>
@@ -297,8 +298,8 @@ YouTube Music 8.x – क्रॉसFade फक्त 9.x आणि त्य�
   <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, आणि KuGou</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">ओळ टॅप करून गाणे पुढे न्या</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">ओळीवर टॅप केल्यास गाण्याचा तो क्षण सुरू होतो</string>
-  <string name="morphe_music_lyrics_copy_button_title">कॉपी लिरिक्स बटण दर्शवा</string>
-  <string name="morphe_music_lyrics_translate_button_title">भाषांतर लिरिक्स बटण दर्शवा</string>
+  <string name="morphe_music_lyrics_show_copy_button_title">कॉपी बटण दाखवा</string>
+  <string name="morphe_music_lyrics_show_translate_button_title">भाषांतर बटण दाखवा</string>
   <string name="morphe_music_lyrics_text_size_title">टेक्स्ट आकार</string>
   <string name="morphe_music_lyrics_text_size_summary">लिरिक्स टेक्स्टचा आकार</string>
   <string name="morphe_music_lyrics_offset_ms_title">टाइमिंग ऑफसेट</string>
@@ -319,9 +320,6 @@ YouTube Music 8.x – क्रॉसFade फक्त 9.x आणि त्य�
 
 जेव्हा थर्ड-पार्टी लिरिक्स उपलब्ध नाहीत, तेव्हा अंगभूत लिरिक्स दर्शविले जातात"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
-  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - जुने फ्लोआउट पॅनेल पुनर्संचयित करा</string>
-  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - रिअल-टाइम लिरिक्स अक्षम करा</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - जुने डायनॅमिक लिरिक्स पुनर्संचयित करा</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - जुने ॲक्शन बार पुनर्संचयित करा</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - होम फीडमध्ये कमेंट सेक्शन दिसत नाही</string>
+  <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - ठळक चिन्ह अक्षम करा</string>
+  <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - प्लेयर अप नेक्स्ट, गीत आणि संबंधित टॅब पुनर्संचयित करा</string>
 </resources>

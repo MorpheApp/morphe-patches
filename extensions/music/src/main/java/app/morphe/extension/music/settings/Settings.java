@@ -16,6 +16,7 @@ import app.morphe.extension.music.patches.CrossfadeManager.CrossFadeDuration;
 import app.morphe.extension.music.patches.CrossfadeManager.FadeCurve;
 import app.morphe.extension.music.patches.lyrics.LyricsSource;
 import app.morphe.extension.music.sponsorblock.MusicSponsorBlockConfig;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.EnumSetting;
 import app.morphe.extension.shared.settings.IntegerSetting;
@@ -212,6 +213,12 @@ public class Settings extends SharedYouTubeSettings {
     }
 
     static {
+        if (!SPOOF_APP_VERSION_TARGET.isSetToDefault() &&
+                SPOOF_APP_VERSION_TARGET.get().compareTo(SPOOF_APP_VERSION_TARGET.defaultValue) < 0) {
+            Logger.printInfo(() -> "Resetting spoof app version");
+            SPOOF_APP_VERSION_TARGET.resetToDefault();
+        }
+
         SeekBarPreference.register(new SeekBarConfig(LISTENBRAINZ_MIN_SONG_DURATION,
                 10, 60, 5, "s"));
         SeekBarPreference.register(new SeekBarConfig(LISTENBRAINZ_DELAY_PERCENT,

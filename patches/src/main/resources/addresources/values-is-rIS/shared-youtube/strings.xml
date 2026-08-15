@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Shared with YouTube and YT Music -->
 <!--
+
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -163,6 +164,7 @@ Athugaðu að einnig kunna að vera skráð ákveðin notendagögn, svo sem IP-t
   <string name="morphe_settings_menu_filter_picker_empty">Opnaðu venjulegu stillingarvalmyndarstjórnunna einu sinni til að fylla listann</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Fjarlægja spurningatexta um sjónarhátt</string>
+  <string name="morphe_remove_viewer_discretion_dialog_summary">Þetta hjálpar ekki að umfara aldurstakmarkanirnar. Það samþykkir þær bara sjálfkrafa</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Gerðu app útgáfuna að breytast</string>
   <string name="morphe_spoof_app_version_summary">Blekkur netþjóninn til að láta það virðast eins og þú ert að nota eldri app útgáfu til að endurheimta eldri UI eiginleika</string>

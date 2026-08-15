@@ -2,7 +2,7 @@
 <!--
 
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -25,8 +25,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_summary">서드파티 다운로드 앱을 사용하여 뮤직비디오, 팟캐스트 또는 노래를 다운로드할 수 있습니다</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">오프라인 저장 버튼 재정의하기</string>
-  <string name="morphe_external_downloader_action_button_summary">YouTube Music의 기본 다운로드 기능 대신 선택한 외부 다운로더를 사용합니다</string>
-  <string name="morphe_external_downloader_flyout_menu_title">오프라인 저장 메뉴 재정의하기</string>
+  <string name="morphe_external_downloader_action_button_summary">오프라인 저장 작업 버튼으로 기본 다운로더 대신 사용자가 선택한 외부 다운로더를 사용합니다</string>
+  <string name="morphe_external_downloader_flyout_menu_title">동영상 오프라인 저장 메뉴 재정의하기</string>
+  <string name="morphe_external_downloader_flyout_menu_summary">피드 \'동영상 오프라인 저장\' 메뉴로 기본 다운로더 대신 사용자가 선택한 외부 다운로더를 사용합니다</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">정보</string>
@@ -49,7 +50,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">가사 패널</string>
   <string name="morphe_music_hide_lyrics_share_button_title">공유 버튼 숨기기</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">번역 버튼 숨기기</string>
-  <string name="morphe_music_hide_new_from_shelf_title">(아티스트)의 새로운 음악 선반 숨기기</string>
+  <string name="morphe_music_hide_new_from_shelf_title">\'(아티스트)의 새로운 음악\' 선반 숨기기</string>
   <string name="morphe_music_hide_playlist_shelves_title">재생목록 선반 숨기기</string>
   <string name="morphe_music_hide_repeat_button_title">반복 버튼 숨기기</string>
   <string name="morphe_music_hide_shuffle_button_title">셔플 버튼 숨기기</string>
@@ -304,8 +305,8 @@ YouTube Music 8.x에서는 크로스페이드가 작동하지 않습니다. 크�
   <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, 그 다음 KuGou</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">가사를 탭하여 구간 이동하기</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">가사의 한 줄을 탭하면 노래의 해당 부분으로 바로 이동합니다</string>
-  <string name="morphe_music_lyrics_copy_button_title">가사 복사 버튼 표시하기</string>
-  <string name="morphe_music_lyrics_translate_button_title">가사 번역 버튼 표시하기</string>
+  <string name="morphe_music_lyrics_show_copy_button_title">복사 버튼 표시하기</string>
+  <string name="morphe_music_lyrics_show_translate_button_title">번역 버튼 표시하기</string>
   <string name="morphe_music_lyrics_text_size_title">텍스트 크기</string>
   <string name="morphe_music_lyrics_text_size_summary">가사 텍스트 크기</string>
   <string name="morphe_music_lyrics_offset_ms_title">타이밍 오프셋</string>
@@ -326,9 +327,6 @@ YouTube Music 8.x에서는 크로스페이드가 작동하지 않습니다. 크�
 
 서드파티 가사를 찾을 수 없는 경우에는 내장된 가사가 대신 표시됩니다"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
-  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - 이전 구성요소 패널로 복원합니다</string>
-  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - 실시간 가사를 비활성화합니다</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - 이전 동적 가사로 복원합니다</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - 이전 작업 버튼 바를 복원합니다</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - 홈 피드에서 댓글 섹션이 표시되지 않습니다</string>
+  <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - 굵은 아이콘을 비활성화합니다</string>
+  <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - 플레이어에서 \'다음 트랙\', \'가사\' 및 \'관련 항목\' 탭을 복원합니다</string>
 </resources>

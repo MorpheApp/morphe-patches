@@ -1,7 +1,7 @@
 <!--
 
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -30,8 +30,9 @@ Second \"item\" text"</string>
     <string name="morphe_external_downloader_screen_summary">Download music videos, podcasts, or songs with third-party downloading apps</string>
     <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_external_downloader_action_button_title">Override Download button</string>
-    <string name="morphe_external_downloader_action_button_summary">Uses your chosen external downloader instead of YouTube Music\'s built-in download feature</string>
+    <string name="morphe_external_downloader_action_button_summary">Uses your chosen external downloader instead of the stock Download action button</string>
     <string name="morphe_external_downloader_flyout_menu_title">Override Download menu</string>
+    <string name="morphe_external_downloader_flyout_menu_summary">Uses your chosen external downloader instead of the stock Download flyout menu</string>
 
     <!-- misc.settings.settingsPatch -->
 
@@ -137,7 +138,7 @@ The lock screen or notification can briefly show a stale state mid-transition"</
 
 Pausing crossfade to watch a music video can leave some videos black (the ones whose audio comes from the video itself). Pausing crossfade before you pick the song avoids it"</string>
     <string name="morphe_music_crossfade_about_unsupported_title">Doesn\'t work at all</string>
-    <string name="morphe_music_crossfade_about_unsupported_summary">"Casting or mirroring audio (Chromecast, screen or audio mirroring) — crossfade pauses because it's unstable there and may never be fixable.
+    <string name="morphe_music_crossfade_about_unsupported_summary">"Casting or mirroring audio (Chromecast, screen or audio mirroring) — crossfade pauses because it\'s unstable there and may never be fixable.
 
 YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <string name="morphe_music_crossfade_about_credit_title">Credit</string>
@@ -367,9 +368,6 @@ Synced lyrics follow playback. If they drift, adjust the timing offset
 When no third-party lyrics are found, the built-in lyrics are shown instead"</string>
 
     <!-- misc.spoof.appversion.spoofAppVersionPatch -->
-    <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - Restore old flyout panel</string>
-    <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - Disable real-time lyrics</string>
-    <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - Restore old dynamic lyrics</string>
-    <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - Restore old action bar</string>
-    <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - Comments section does not appear in home feed</string>
+    <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Disable bold icons</string>
+    <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Restore Player Up next, Lyrics, and Related tabs</string>
 </resources>

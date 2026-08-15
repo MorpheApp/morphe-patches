@@ -2,7 +2,7 @@
 <!--
 
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -25,8 +25,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_summary">Sæktu niður tónlistarmyndbönd, þætti eða lög með þriðja aðila niðurhal forrit</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Yfirskrifa niðurhalstakkann</string>
-  <string name="morphe_external_downloader_action_button_summary">Notar valinn niðurhalsskilari þinn í stað innbyggðs niðurhalakerfis YouTube Music</string>
-  <string name="morphe_external_downloader_flyout_menu_title">Yfirskrifa Niðurhal valmynd</string>
+  <string name="morphe_external_downloader_action_button_summary">Notar valið ytri niðurhalsforrit í stað venjulega niðurhalshnappsins</string>
+  <string name="morphe_external_downloader_flyout_menu_title">Hnekkja niðurhalsvalmynd</string>
+  <string name="morphe_external_downloader_flyout_menu_summary">Notar valið ytri niðurhalsforrit í stað venjulegu niðurhalsvalmyndarinnar</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Um Morphe</string>
@@ -304,8 +305,8 @@ Til þess að tryggja að scrobbling sé samstilla á meðan spilað er í bakgr
   <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, þá KuGou</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">Tap á línu til að flýta</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Að tap á línu fer í þann tíma í laginu.</string>
-  <string name="morphe_music_lyrics_copy_button_title">Sýna hnapp til að afrita texta</string>
-  <string name="morphe_music_lyrics_translate_button_title">Sýna hnapp til að þýða texta</string>
+  <string name="morphe_music_lyrics_show_copy_button_title">Sýna afritunarhnapp</string>
+  <string name="morphe_music_lyrics_show_translate_button_title">Sýna þýðingarhnapp</string>
   <string name="morphe_music_lyrics_text_size_title">Leturstærð</string>
   <string name="morphe_music_lyrics_text_size_summary">Stærð textans.</string>
   <string name="morphe_music_lyrics_offset_ms_title">Tímaleiðrétting</string>
@@ -326,9 +327,6 @@ Samstilltir textar fylgja spilun. Ef þeir detta úr gildi, stilltu tímaleiðr�
 
 Þegar enginn texti frá þriðja aðila er fundinn, eru innbyggðir textar sýndir í staðinn."</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
-  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - Endurstaðsett gamlan útlitsglugga</string>
-  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - Gerja rauntímalýrik óvirkar</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - Endurstaðsett gamlar breytilegar lýrik</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - Endurstaðsett gamlan aðgerðabarra</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - Umfjöllunardeild birtist ekki í heimaskrá</string>
+  <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Slökkva á feitletruðum táknum</string>
+  <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Endurheimta næst, texta og tengda flipa</string>
 </resources>

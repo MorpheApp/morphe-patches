@@ -1,3 +1,12 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
 @file:Suppress("SpellCheckingInspection")
 
 package app.morphe.patches.youtube.video.information
@@ -18,6 +27,7 @@ import app.morphe.patches.youtube.shared.PlaybackSpeedOnItemClickParentFingerpri
 import app.morphe.patches.youtube.shared.VideoQualityChangedFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.sun.tools.javac.main.Option
 
 internal object PlaybackSpeedOnItemClickFingerprint : Fingerprint(
     classFingerprint = PlaybackSpeedOnItemClickParentFingerprint,
@@ -296,3 +306,31 @@ internal object SetVideoQualityFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Matches method {androidx.media3.exoplayer.ExoPlayerImpl.setPlaybackParameters(PlaybackParameters p1)}
+ *
+ * @param playbackParametersType The PlaybackParameters type, obtained from [PlaybackParametersToStringFingerprint].
+ */
+internal fun getPlaybackParametersSetterFingerprint(playbackParametersType: String) = object : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(playbackParametersType),
+    custom = { methodDef, classDef ->
+        methodDef.implementation != null
+            && classDef.interfaces.contains("Landroidx/media3/exoplayer/ExoPlayer;")
+    }
+) {}
+
+/**
+ * Matches method {androidx.media3.common.PlaybackParameters}.toString()
+ */
+internal object PlaybackParametersToStringFingerprint : Fingerprint(
+    name = "toString",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(),
+    filters = listOf(
+        fieldAccess(definingClass = "this", opcode = Opcode.IGET, type = "F"),
+        string("PlaybackParameters(speed=%.2f, pitch=%.2f)")
+    )
+)

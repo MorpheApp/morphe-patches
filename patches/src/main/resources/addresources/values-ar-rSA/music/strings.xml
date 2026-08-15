@@ -2,7 +2,7 @@
 <!--
 
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -25,8 +25,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_summary">تنزيل مقاطع الفيديو الموسيقية أو البودكاست أو الأغاني باستخدام تطبيقات تنزيل خارجية</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">استبدال زر التنزيل</string>
-  <string name="morphe_external_downloader_action_button_summary">يستخدم مُنزِّلًا خارجيًا تختاره بدلًا من ميزة التنزيل المدمجة في YouTube Music</string>
-  <string name="morphe_external_downloader_flyout_menu_title">قائمة تجاوز التنزيل</string>
+  <string name="morphe_external_downloader_action_button_summary">يستخدم أداة التنزيل الخارجية التي اخترتها بدلاً من زر التنزيل الافتراضي</string>
+  <string name="morphe_external_downloader_flyout_menu_title">تجاوز قائمة التنزيل</string>
+  <string name="morphe_external_downloader_flyout_menu_summary">يستخدم أداة التنزيل الخارجية التي اخترتها بدلاً من قائمة التنزيل الافتراضية</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">لمحة</string>
@@ -34,13 +35,33 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_feed_title">الخلاصة</string>
   <string name="morphe_settings_music_screen_3_general_title">عام</string>
   <string name="morphe_settings_music_screen_4_player_title">المشغل</string>
+  <string name="morphe_settings_music_screen_5_lyrics_title">كلمات الأغاني</string>
+  <string name="morphe_settings_music_screen_9_misc_title">متنوع</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">إخفاء تسمية \'الحصول على Music Premium\'</string>
+  <string name="morphe_music_hide_music_premium_promotions_title">إخفاء عروض Premium للموسيقى</string>
   <string name="morphe_music_hide_video_ads_title">إخفاء إعلانات الفيديو</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_music_hide_audio_video_toggle_title">إخفاء زر تبديل الصوت/الفيديو</string>
+  <string name="morphe_music_hide_explore_shelf_title">إخفاء رف الاستكشاف</string>
+  <string name="morphe_music_hide_grid_shelves_title">إخفاء رفوف الشبكة</string>
+  <string name="morphe_music_hide_horizontal_shelves_title">إخفاء الرفوف الأفقية</string>
+  <string name="morphe_music_hide_list_shelves_title">إخفاء رفوف القائمة</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">لوحة كلمات الأغنية</string>
   <string name="morphe_music_hide_lyrics_share_button_title">إخفاء زر المشاركة</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">إخفاء زر الترجمة</string>
+  <string name="morphe_music_hide_new_from_shelf_title">إخفاء رف \'جديد من\'</string>
+  <string name="morphe_music_hide_playlist_shelves_title">إخفاء رفوف قوائم التشغيل</string>
+  <string name="morphe_music_hide_repeat_button_title">إخفاء زر التكرار</string>
+  <string name="morphe_music_hide_shuffle_button_title">إخفاء زر التشغيل العشوائي</string>
+  <string name="morphe_music_hide_speed_dial_shelf_title">إخفاء رف \'الاتصال السريع\'</string>
+  <string name="morphe_music_comments_screen_title">التعليقات</string>
+  <string name="morphe_music_comments_screen_summary">اختر المكونات التي تظهر في قسم التعليقات</string>
+  <string name="morphe_music_hide_comments_community_guidelines_title">إخفاء إرشادات المجتمع</string>
+  <string name="morphe_music_hide_comments_context_title">إخفاء رسالة سياق</string>
+  <string name="morphe_music_hide_comments_emoji_button_title">إخفاء زر الإيموجي</string>
+  <string name="morphe_music_hide_comments_info_button_title">إخفاء زر المعلومات</string>
+  <string name="morphe_music_hide_comments_timestamp_button_title">إخفاء زر الطابع الزمني</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">تلاشي</string>
   <string name="morphe_music_crossfade_screen_summary">امزج المسارات مع بعضها بسلاسة</string>
@@ -277,12 +298,15 @@ YouTube Music 8.x - يعمل الانتقال التدريجي فقط على ا�
 
 لضمان مزامنة التتبع أثناء التشغيل في الخلفية، تأكد من تعيين استخدام تطبيق YouTube Music للبطارية على \"غير مقيد\"."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_enabled_title">استخدام كلمات أغاني من طرف ثالث</string>
+  <string name="morphe_music_lyrics_enabled_summary">عرض كلمات الأغاني من خدمة خارجية، والرجوع إلى كلمات الأغاني المدمجة في حالة عدم العثور عليها</string>
+  <string name="morphe_music_lyrics_source_title">خدمة كلمات الأغاني</string>
   <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
   <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB، ثم KuGou</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">انقر على سطر للبحث</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">النقر على سطر يقفز إلى تلك اللحظة في الأغنية</string>
-  <string name="morphe_music_lyrics_copy_button_title">عرض زر نسخ عنوان URL للفيديو</string>
-  <string name="morphe_music_lyrics_translate_button_title">عرض زر ترجمة كلمات الأغنية</string>
+  <string name="morphe_music_lyrics_show_copy_button_title">إظهار زر النسخ</string>
+  <string name="morphe_music_lyrics_show_translate_button_title">إظهار زر الترجمة</string>
   <string name="morphe_music_lyrics_text_size_title">حجم النص</string>
   <string name="morphe_music_lyrics_text_size_summary">حجم نص كلمات الأغنية</string>
   <string name="morphe_music_lyrics_offset_ms_title">إزاحة التوقيت</string>
@@ -303,9 +327,6 @@ YouTube Music 8.x - يعمل الانتقال التدريجي فقط على ا�
 
 عندما لا يتم العثور على كلمات أغاني تابعة لجهة خارجية، يتم عرض كلمات الأغاني المضمنة بدلاً من ذلك"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
-  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - استعادة لوحة النوافذ القديمة</string>
-  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - تعطيل كلمات الأغاني في الوقت الفعلي</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - استعادة كلمات الأغاني الديناميكية القديمة</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - استعادة شريط الإجراءات القديم</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - لا يظهر قسم التعليقات في موجز الصفحة الرئيسية</string>
+  <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - تعطيل الأيقونات العريضة</string>
+  <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - استعادة علامات تبويب المشغل: التالي وكلمات الأغاني والمرتبطة</string>
 </resources>

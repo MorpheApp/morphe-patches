@@ -1,7 +1,8 @@
 <!-- Shared with YouTube and YT Music -->
 <!--
+
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -86,11 +87,11 @@ To sign in, press continue below"</string>
     <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
     <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Activation code: %s
 
-1. Tap 'Open website' below to open the 'Connect a device' website
+1. Tap \'Open website\' below to open the \'Connect a device\' website
 2. Paste from the clipboard (or type out) the activation code shown above
 3. Sign in to Google if prompted. If you have multiple accounts then choose this YouTube account
-4. Tap 'Allow YouTube VR' access
-5. Return to this app after reaching the 'Device connected' message"</string>
+4. Tap \'Allow YouTube VR\' access
+5. Return to this app after reaching the \'Device connected\' message"</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Open website</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Failed to issue an activation code</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Failed to issue an authentication token</string>

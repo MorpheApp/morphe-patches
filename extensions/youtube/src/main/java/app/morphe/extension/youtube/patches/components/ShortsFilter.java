@@ -207,6 +207,11 @@ public final class ShortsFilter extends Filter {
                 "reel_like_toggled_button.e"
         );
 
+        StringFilterGroup saveButton = new StringFilterGroup(
+                Settings.HIDE_SHORTS_SAVE_BUTTON,
+                "reel_save_button.e"
+        );
+
         StringFilterGroup previewComment = new StringFilterGroup(
                 Settings.HIDE_SHORTS_PREVIEW_COMMENT,
                 // Preview comment that can popup while a Short is playing.
@@ -402,6 +407,7 @@ public final class ShortsFilter extends Filter {
                 infoPanel,
                 joinButton,
                 likeButton,
+                saveButton,
                 likeFountain,
                 livePreview,
                 pausedOverlayButtons,
@@ -452,7 +458,7 @@ public final class ShortsFilter extends Filter {
                     return false;
                 }
             } else if (matchedGroup == channelProfile) {
-                return true;
+                return !NavigationBar.isSearchBarActive();
             }
 
             return shouldHideShortsFeedItems();
@@ -490,7 +496,7 @@ public final class ShortsFilter extends Filter {
                 // Check ConversationContext to not hide shelf header in channel profile
                 // This value does not exist in the shelf header in the channel profile
                 if (!contextInterface.isHomeFeedOrRelatedVideo()) {
-                    return channelProfileShelfHeader.check(buffer).isFiltered();
+                    return !NavigationBar.isSearchBarActive() && channelProfileShelfHeader.check(buffer).isFiltered();
                 }
 
                 return shouldHideShortsFeedItems();

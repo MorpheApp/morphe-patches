@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Shared with YouTube and YT Music -->
 <!--
+
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -156,6 +157,8 @@ Als u dit inschakelt, worden echter ook bepaalde gebruikersgegevens, zoals uw IP
   <string name="morphe_settings_menu_filter_screen_summary">Verberg items op het standaard apps-instellingenscherm op basis van hun zichtbare naam</string>
   <string name="morphe_settings_menu_filter_picker_empty">Open het standaard apps-instellingenscherm eenmaal om de lijst in te vullen</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
+  <string name="morphe_remove_viewer_discretion_dialog_title">Verwijder dialoog voor kijkersdiscretie</string>
+  <string name="morphe_remove_viewer_discretion_dialog_summary">Dit omzeilt de leeftijdsbeperking niet. Het accepteert deze alleen automatisch</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Vervalst de app-versie</string>
   <string name="morphe_spoof_app_version_summary">Misleidt de server om te denken dat je een oudere app-versie gebruikt om oude UI-functies te herstellen</string>

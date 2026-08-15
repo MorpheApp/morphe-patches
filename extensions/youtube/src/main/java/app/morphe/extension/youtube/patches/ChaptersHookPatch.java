@@ -24,6 +24,7 @@ public class ChaptersHookPatch {
 
     @Nullable
     private static volatile TimelineMarker[] chapterMarkers;
+    private static boolean heatMapPeakPoint = false;
 
     @Nullable
     public static TimelineMarker[] getChapterMarkers() {
@@ -38,6 +39,7 @@ public class ChaptersHookPatch {
                 if (currentMillis >= marker.patch_getStartMillis()
                         && currentMillis < marker.patch_getEndMillis()) {
                     CharSequence title = marker.patch_getTitle();
+                    //noinspection SizeReplaceableByIsEmpty
                     return title != null && title.length() > 0
                             ? title
                             : null;
@@ -69,5 +71,16 @@ public class ChaptersHookPatch {
             Logger.printDebug(() -> "TimelineMarkers: " + Arrays.toString(markers));
         }
         chapterMarkers = markers;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setHeatMapPeakPoint(boolean value) {
+        heatMapPeakPoint = value;
+    }
+
+    public static boolean getHeatMapPeakPoint() {
+        return heatMapPeakPoint;
     }
 }

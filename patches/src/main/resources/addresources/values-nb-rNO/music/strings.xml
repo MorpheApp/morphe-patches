@@ -2,7 +2,7 @@
 <!--
 
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -25,8 +25,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_summary">Last ned musikkvideoer, podkaster eller sanger med nedlastingsapper fra tredjeparter</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Overskriv Nedlastingsknapp</string>
-  <string name="morphe_external_downloader_action_button_summary">Bruker din valgte eksterne nedlaster i stedet for YouTube Musics innebygde nedlastingsfunksjon</string>
-  <string name="morphe_external_downloader_flyout_menu_title">Overskriv Nedlastingsmeny</string>
+  <string name="morphe_external_downloader_action_button_summary">Bruker din valgte eksterne nedlaster i stedet for standard nedlastingshandlingsknappen</string>
+  <string name="morphe_external_downloader_flyout_menu_title">Overstyr nedlastingsmenyen</string>
+  <string name="morphe_external_downloader_flyout_menu_summary">Bruker din valgte eksterne nedlaster i stedet for standard nedlastingsuttrekksmenyen</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Om</string>
@@ -304,8 +305,8 @@ For å sikre at scrobbling synkroniseres under avspilling i bakgrunnen, må du s
   <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, deretter KuGou</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">Trykk på en linje for å søke</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Å trykke på en linje hopper til det tidspunktet i sangen</string>
-  <string name="morphe_music_lyrics_copy_button_title">Vis kopier sangtekst-knapp</string>
-  <string name="morphe_music_lyrics_translate_button_title">Vis oversett sangtekst-knapp</string>
+  <string name="morphe_music_lyrics_show_copy_button_title">Vis kopier-knapp</string>
+  <string name="morphe_music_lyrics_show_translate_button_title">Vis oversettelsesknapp</string>
   <string name="morphe_music_lyrics_text_size_title">Tekststørrelse</string>
   <string name="morphe_music_lyrics_text_size_summary">Størrelse på sangteksten</string>
   <string name="morphe_music_lyrics_offset_ms_title">Tidsforskyvning</string>
@@ -326,9 +327,6 @@ Synkroniserte sangtekster følger avspillingen. Hvis de driver, juster tidsforsk
 
 Når ingen tredjeparts sangtekster blir funnet, vises de innebygde sangtekstene i stedet"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
-  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 – Gjenopprett gammelt flytende panel</string>
-  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 – Deaktiver sanntidsvisning av sangtekster</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 – Gjenopprett gamle dynamiske sangtekster</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 – Gjenopprett gammel handlingslinje</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 – Kommentar seksjonen vises ikke i hjemmefeeden</string>
+  <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Deaktiver fet ikoner</string>
+  <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 – Gjenopprett Spiller Neste, Tekster og Relaterte faner</string>
 </resources>

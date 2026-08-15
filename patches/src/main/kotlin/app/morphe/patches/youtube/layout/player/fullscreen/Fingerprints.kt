@@ -39,8 +39,7 @@ internal object AdPlayerFullscreenFingerprint : Fingerprint(
         methodCall(
             name = "getFullscreenForced", // Oddly only this method is not obfuscated.
             returnType = "Ljava/lang/Boolean;",
-            parameters = listOf(),
-            location = MatchAfterWithin(10)
+            parameters = listOf()
         ),
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,

@@ -2,7 +2,7 @@
 <!--
 
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -30,7 +30,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import">Importar</string>
   <string name="morphe_settings_import_copy">Copiar</string>
   <string name="morphe_settings_import_reset">Ajustes de Morphe restablecidos a los valores predeterminados</string>
-  <string name="morphe_settings_import_success">Configuración importada de %d</string>
+  <string name="morphe_settings_import_success">Ajustes importados: %d</string>
   <string name="morphe_settings_import_failure_parse">Importación fallida: %s</string>
   <string name="morphe_settings_search_hint">Buscar ajustes</string>
   <string name="morphe_settings_search_no_results_title">No se encontraron resultados para «%s»</string>
@@ -47,8 +47,8 @@ Second \"item\" text"</string>
 • Los ajustes principales aparecen sobre los ajustes secundarios deshabilitados"</string>
   <string name="morphe_settings_search_empty_history_title">El historial de búsqueda está vacío</string>
   <string name="morphe_settings_search_empty_history_summary">Para guardar el historial de búsqueda, escribe una consulta de búsqueda y pulsa Enter</string>
-  <string name="morphe_settings_search_history_title">Mostrar el historial de búsqueda de ajustes</string>
-  <string name="morphe_show_menu_icons_title">Mostrar iconos de configuración de Morphe</string>
+  <string name="morphe_settings_search_history_title">Mostrar historial de búsqueda de ajustes</string>
+  <string name="morphe_show_menu_icons_title">Mostrar iconos de ajustes de Morphe</string>
   <string name="morphe_settings_menu_copy_path">Copiado: %s</string>
   <string name="morphe_language_title">Idioma de Morphe</string>
   <string name="morphe_language_user_dialog_message">"Las traducciones para algunos idiomas pueden faltar o estar incompletas.
@@ -58,14 +58,14 @@ Para traducir nuevos idiomas o mejorar las traducciones existentes, visita morph
   <string name="morphe_pref_import_export_title">Importar / Exportar</string>
   <string name="morphe_pref_import_export_summary">Importar / Exportar ajustes de Morphe</string>
   <string name="morphe_settings_import_file">Importar desde archivo</string>
-  <string name="morphe_settings_import_file_success">Ajustes importados correctamente, pulse \"Guardar\" para aplicar</string>
+  <string name="morphe_settings_import_file_success">Ajustes importados correctamente, pulsa \"Guardar\" para aplicar</string>
   <string name="morphe_settings_import_file_failed">Error al importar los ajustes</string>
   <string name="morphe_settings_export_file">Exportar a archivo</string>
   <string name="morphe_settings_export_file_success">Ajustes exportados correctamente</string>
   <string name="morphe_settings_export_file_failed">Error al exportar los ajustes</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Estás usando la última versión de Morphe Patches: &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Estás usando la versión de Morphe Patches: &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Actualización disponible: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Para actualizar tus parches, usa Morphe para volver a aplicar esta aplicación</string>
+  <string name="morphe_settings_about_links_body_version_outdated">Estás usando la versión de Morphe Patches: &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Actualización disponible: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Para actualizar tus parches, usa Morphe para volver a parchear esta aplicación</string>
   <string name="morphe_settings_about_links_dev_header">Nota</string>
   <string name="morphe_settings_about_links_dev_body">Esta versión es preliminar y podrías experimentar problemas inesperados</string>
   <string name="morphe_settings_about_links_header">Enlaces oficiales</string>
@@ -85,16 +85,16 @@ Para traducir nuevos idiomas o mejorar las traducciones existentes, visita morph
   <string name="morphe_settings_about_licenses_loading">Cargando…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Depuración</string>
-  <string name="morphe_debug_screen_summary">Configurar opciones avanzadas de desarrollador y registros de diagnóstico</string>
+  <string name="morphe_debug_screen_summary">Configura opciones avanzadas de desarrollador y registros de diagnóstico</string>
   <string name="morphe_debug_title">Registro de depuración</string>
   <string name="morphe_debug_stacktrace_title">Registro de depuración de la traza de pila</string>
   <string name="morphe_debug_stacktrace_summary">Incluye rastreos de pila en los registros de depuración para ayudar a identificar errores</string>
   <string name="morphe_debug_toast_on_error_title">Mostrar aviso de error en Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Desactivar los avisos de error oculta todas las notificaciones de error de Morphe.
 
-No se le notificará de ningún evento inesperado."</string>
+No se te notificará de ningún evento inesperado."</string>
   <string name="morphe_debug_export_logs_title">Exportar registros de depuración</string>
-  <string name="morphe_debug_export_logs_summary">Exportar registros de depuración de Morphe</string>
+  <string name="morphe_debug_export_logs_summary">Exporta registros de depuración de Morphe</string>
   <string name="morphe_debug_export_logs_file">Exportar a archivo</string>
   <string name="morphe_debug_export_logs_success">Registros de depuración exportados correctamente</string>
   <string name="morphe_debug_export_logs_failed">Error al exportar los registros de depuración</string>
@@ -105,15 +105,15 @@ No se le notificará de ningún evento inesperado."</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Registros de depuración copiados</string>
   <string name="morphe_debug_logs_failed_to_export">Error al exportar los registros de depuración: %s</string>
   <string name="morphe_debug_logs_clear_toast">Registros de depuración borrados</string>
-  <string name="morphe_debug_feature_flags_manager_title">Manager de indicadores de funciones</string>
-  <string name="morphe_debug_feature_flags_manager_summary">Gestionar indicadores de funciones booleanos</string>
+  <string name="morphe_debug_feature_flags_manager_title">Gestor de indicadores de funciones</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Gestiona indicadores de funciones booleanos</string>
   <string name="morphe_debug_feature_flags_manager_active_header">Indicadores de funciones activas (%d)</string>
   <string name="morphe_debug_feature_flags_manager_blocked_header">Indicadores de funciones bloqueadas (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Buscar indicadores de funciones…</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Indicadores de funciones guardados</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Indicadores de funciones restablecidos</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Indicadores de funciones copiados al portapapeles</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reinicie la app para usar este ajuste</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reinicia la app para usar este ajuste</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Abrir la configuración de MicroG</string>
@@ -131,7 +131,7 @@ Esto es requerido para el funcionamiento de la aplicación."</string>
 
 Deshabilitar las optimizaciones de batería para MicroG no tendrá un efecto negativo en el uso de la batería.
 
-Toca el botón continuar y permite los cambios de optimización."</string>
+Toca el botón \"Continuar\" y permite los cambios de optimización."</string>
   <string name="gms_core_dialog_continue_text">Continuar</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Mostrar diálogo de optimización de batería de MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Si desactivas esta opción, se ocultará el mensaje de optimización de la batería de MicroG.
@@ -142,11 +142,11 @@ Si no se modifican las optimizaciones de la batería, es posible que se produzca
 • Es posible que la reproducción en segundo plano no funcione"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Manejo de enlaces de la aplicación</string>
-  <string name="morphe_link_handling_summary">Configurar enlaces para que se abran en esta aplicación</string>
+  <string name="morphe_link_handling_summary">Configura enlaces para que se abran en esta aplicación</string>
   <string name="morphe_link_handling_step1_title">Paso 1: Desactivar los enlaces de la aplicación original</string>
-  <string name="morphe_link_handling_step1_message">Abra la configuración de la aplicación original y desactive todos los enlaces de dominio</string>
+  <string name="morphe_link_handling_step1_message">Abre la configuración de la aplicación original y desactiva todos los enlaces de dominio</string>
   <string name="morphe_link_handling_step2_title">Paso 2: Activar los enlaces de la aplicación parcheada</string>
-  <string name="morphe_link_handling_step2_message">Abra la configuración de la aplicación parcheada y active todos los enlaces de dominio</string>
+  <string name="morphe_link_handling_step2_message">Abre la configuración de la aplicación parcheada y activa todos los enlaces de dominio</string>
   <string name="morphe_link_handling_open">Abrir configuración</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 ¡Alerta experimental! 🚨</string>

@@ -8,15 +8,12 @@
 package app.morphe.extension.youtube.patches;
 
 import android.app.Activity;
-import android.util.Pair;
-import android.view.View;
+import android.graphics.drawable.Drawable;
 
 import androidx.annotation.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
 import app.morphe.extension.youtube.patches.utils.PlaylistPatch;
@@ -25,38 +22,9 @@ import app.morphe.extension.youtube.settings.Settings;
 @SuppressWarnings("unused")
 public final class AddToQueuePatch {
 
-    private static final String queueButtonName = "QUEUE_PLAY_NEXT";
-    private static final String shareButtonName = "SHARE_ARROW";
-
-    private static final List<Pair<String, Integer>> visibleFlyoutButtons = new ArrayList<>();
-    private static String currentButtonName = "";
-    private static int currentButtonIndex;
-
-    /**
-     * Injection point.
-     */
-    public static void setCurrentButtonInfo(@Nullable Enum<?> buttonEnum, @Nullable Object buttonInfo) {
-        if (buttonEnum == null) {
-            return;
-        }
-
-        if (buttonInfo instanceof CharSequence charSequence && charSequence.toString().isEmpty()) {
-            return;
-        }
-
-        if (buttonInfo instanceof View view && view.getVisibility() == View.GONE) {
-            return;
-        }
-
-        if (currentButtonIndex == 0 && !visibleFlyoutButtons.isEmpty()) {
-            visibleFlyoutButtons.clear();
-        }
-
-        currentButtonName = buttonEnum.name();
-        currentButtonIndex++;
-
-        visibleFlyoutButtons.add(new Pair<>(currentButtonName, currentButtonIndex));
-    }
+    public static final String queueButtonName = "QUEUE_PLAY_NEXT";
+    public static final Drawable queueButtonDrawable = ResourceUtils
+            .getDrawable("yt_outline_experimental_queue_vd_theme_24");
 
     /**
      * Injection point.
@@ -71,12 +39,11 @@ public final class AddToQueuePatch {
             return original;
         }
 
-        return getNewRunnable(original, currentButtonName);
+        return getNewRunnable(original, FlyoutUtils.getCurrentButtonName());
     }
 
     /**
      * Injection point.
-     * -
      * 21.04 and older.
      */
     public static boolean replaceOnItemClick(Object object) {
@@ -99,9 +66,9 @@ public final class AddToQueuePatch {
         }
 
         try {
-            if (!visibleFlyoutButtons.isEmpty()) {
+            if (!FlyoutUtils.getVisibleFlyoutButtons().isEmpty()) {
                 if (buttonIndex >= 0) {
-                    return flyoutButtonClickLogic(visibleFlyoutButtons.get(buttonIndex).first);
+                    return flyoutButtonClickLogic(FlyoutUtils.getVisibleFlyoutButtons().get(buttonIndex).first);
                 } else if (!buttonName.isEmpty()) {
                     return flyoutButtonClickLogic(buttonName);
                 }
@@ -115,7 +82,7 @@ public final class AddToQueuePatch {
     private static Runnable getNewRunnable(@Nullable Runnable original, String buttonName) {
         return () -> {
             // Reset index logic goes here if needed between UI clicks
-            currentButtonIndex = 0;
+            FlyoutUtils.resetCurrentButtonIndex();
 
             if (flyoutButtonClickLogic(buttonName)) {
                 return;
@@ -127,7 +94,7 @@ public final class AddToQueuePatch {
         };
     }
 
-    private static boolean flyoutButtonClickLogic(String buttonName) {
+    public static boolean flyoutButtonClickLogic(String buttonName) {
         if (buttonName.equals(queueButtonName)) {
             Logger.printDebug(() -> "Opening custom queue flyout with videoId: " + FlyoutUtils.getFlyoutVideoId());
 

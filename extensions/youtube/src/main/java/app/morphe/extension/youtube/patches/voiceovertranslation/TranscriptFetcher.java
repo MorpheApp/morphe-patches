@@ -114,7 +114,6 @@ final class TranscriptFetcher {
                 + "\"clientVersion\":\"20.10.38\"}},"
                 + "\"videoId\":\"" + videoId + "\"}";
 
-        //noinspection ExtractMethodRecommender
         HttpURLConnection conn = Requester.openConnection(INNERTUBE_PLAYER_URL);
         conn.setRequestMethod("POST");
         conn.setConnectTimeout(CONNECT_TIMEOUT_MS);
@@ -328,6 +327,7 @@ final class TranscriptFetcher {
 
         for (int i = 0, size = lines.size(); i < size; i++) {
             TranscriptSegment line = lines.get(i);
+            //noinspection SizeReplaceableByIsEmpty
             if (text.length() == 0) {
                 startMs = line.startMs;
                 sentenceLang = line.lang;
@@ -415,6 +415,7 @@ final class TranscriptFetcher {
     }
 
     private static boolean endsSentence(CharSequence text) {
+        //noinspection SizeReplaceableByIsEmpty
         if (text.length() == 0) return false;
         final char c = text.charAt(text.length() - 1);
         if (c != '.' && c != '!' && c != '?' && c != '…') return false;

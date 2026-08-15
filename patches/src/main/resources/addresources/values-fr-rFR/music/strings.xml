@@ -2,7 +2,7 @@
 <!--
 
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -25,8 +25,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_summary">Téléchargez des vidéos, des podcasts ou des chansons avec des applications de téléchargement tierces</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Remplacer le bouton \'Télécharger\'</string>
-  <string name="morphe_external_downloader_action_button_summary">Utilise le téléchargeur externe de votre choix à la place de la fonctionnalité de téléchargement intégrée à YouTube Music</string>
+  <string name="morphe_external_downloader_action_button_summary">Utilise le téléchargeur externe de votre choix au lieu du bouton d\'action \'Télécharger\' par défaut</string>
   <string name="morphe_external_downloader_flyout_menu_title">Remplacer le menu \'Télécharger\'</string>
+  <string name="morphe_external_downloader_flyout_menu_summary">Utilise le téléchargeur externe de votre choix au lieu du menu déroulant \'Télécharger\' par défaut</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">À propos</string>
@@ -117,7 +118,7 @@ Les chansons plus courtes que votre durée de fondu peuvent ne pas bénéficier 
 
 L'écran de verrouillage ou la notification peut brièvement afficher un état obsolète pendant une transition"</string>
   <string name="morphe_music_crossfade_about_known_title">Problèmes connus</string>
-  <string name="morphe_music_crossfade_about_known_summary">"Une vidéo musicale définie comme première chanson — ou lancée depuis l'extérieur de la file d'attente actuelle — peut brièvement s'afficher en mode vidéo avant que le mode audio uniquement ne s’active
+  <string name="morphe_music_crossfade_about_known_summary">"Une vidéo musicale définie comme première chanson — ou lancée depuis l'extérieur de la file d'attente actuelle — peut brièvement s'afficher en mode vidéo avant que le mode audio uniquement ne s'active
 
 Mettre le fondu enchaîné en pause pour regarder une vidéo musicale peut laisser certaines vidéos avec un écran noir (celles dont l'audio provient directement de la vidéo elle-même). Mettre le fondu enchaîné en pause avant de sélectionner la chanson permet d'éviter ce problème"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">Ne fonctionne pas du tout</string>
@@ -215,7 +216,7 @@ YouTube Music 8.x — le fondu enchaîné ne fonctionne que sur les versions 9.x
   <string name="morphe_music_miniplayer_previous_button_title">Afficher le bouton \'Précédent\' sur le mini-lecteur</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">Activer le mini-lecteur forcé</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary">Empêche le lecteur de passer automatiquement en plein écran lorsqu’un nouveau morceau commence</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary">Empêche le lecteur de passer automatiquement en plein écran lorsqu\'un nouveau morceau commence</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Activer le balayage pour fermer le mini-lecteur</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Permet de fermer le mini-lecteur en effectuant un balayage vers le bas dessus</string>
@@ -270,7 +271,7 @@ YouTube Music 8.x — le fondu enchaîné ne fonctionne que sur les versions 9.x
   <string name="morphe_music_listenbrainz_token_toast_saved">Jeton enregistré</string>
   <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Avertissement : le jeton enregistré est invalide !</string>
   <string name="morphe_music_lastfm_love_on_like_title">Aimer les morceaux aimés</string>
-  <string name="morphe_music_lastfm_love_on_like_summary">Aimer automatiquement les morceaux sur Last.fm lorsque vous les aimez sur YouTube Music (et retirer le “j’aime” lorsqu’ils ne sont plus aimés ou qu’ils sont marqués comme non aimés)</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">Aimer automatiquement les morceaux sur Last.fm lorsque vous les aimez sur YouTube Music (et retirer le “j\'aime” lorsqu\'ils ne sont plus aimés ou qu\'ils sont marqués comme non aimés)</string>
   <string name="morphe_music_lastfm_token_title">Compte Last.fm</string>
   <string name="morphe_music_lastfm_token_summary_logged_in">Connecté en tant que %s. Appuyez pour gérer le compte</string>
   <string name="morphe_music_lastfm_token_dialog_instruction">Entrez vos identifiants Last.fm pour vous connecter</string>
@@ -304,8 +305,8 @@ Pour que le scrobbling continue à se synchroniser pendant la lecture en arrièr
   <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, puis KuGou.</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">Appuyez sur une ligne pour aller à ce moment</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Appuyez sur une ligne pour aller directement à ce moment de la chanson</string>
-  <string name="morphe_music_lyrics_copy_button_title">Afficher un bouton de copie des paroles</string>
-  <string name="morphe_music_lyrics_translate_button_title">Afficher un bouton de traduction des paroles</string>
+  <string name="morphe_music_lyrics_show_copy_button_title">Afficher un bouton \'Copier\'</string>
+  <string name="morphe_music_lyrics_show_translate_button_title">Afficher un bouton \'Traduire\'</string>
   <string name="morphe_music_lyrics_text_size_title">Taille du texte</string>
   <string name="morphe_music_lyrics_text_size_summary">Taille du texte des paroles</string>
   <string name="morphe_music_lyrics_offset_ms_title">Décalage de synchronisation</string>
@@ -320,15 +321,12 @@ Pour que le scrobbling continue à se synchroniser pendant la lecture en arrièr
   <string name="morphe_music_lyrics_copy">Copier</string>
   <string name="morphe_music_lyrics_copied">Copié dans le presse-papiers</string>
   <string name="morphe_music_lyrics_about_title">À propos des paroles de tiers</string>
-  <string name="morphe_music_lyrics_about_summary">"Les paroles sont recherchées à partir du titre du morceau et de l’artiste, ainsi, un morceau avec des métadonnées inhabituelles peut ne rien trouver, ou trouver la mauvaise version
+  <string name="morphe_music_lyrics_about_summary">"Les paroles sont recherchées à partir du titre du morceau et de l'artiste, ainsi, un morceau avec des métadonnées inhabituelles peut ne rien trouver, ou trouver la mauvaise version
 
 Les paroles synchronisées suivent la lecture. Si elles dérivent, ajustez le décalage de synchronisation
 
-Lorsque aucune parole tierce n’est trouvée, les paroles intégrées sont affichées à la place"</string>
+Lorsque aucune parole tierce n'est trouvée, les paroles intégrées sont affichées à la place"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
-  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - Restaure l\'ancien panneau déroulant</string>
-  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - Désactive les paroles en temps réel</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - Restaure les anciennes paroles dynamiques</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - Restaure l\'ancienne barre d\'actions</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - La section des commentaires n\'apparaît pas dans le flux d\'accueil</string>
+  <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Désactive les icônes en gras</string>
+  <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 – Restaure les onglets \'À suivre\', \'Paroles\' et \'Similaires\' du lecteur</string>
 </resources>

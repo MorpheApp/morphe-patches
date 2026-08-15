@@ -2,7 +2,7 @@
 <!--
 
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -66,6 +66,7 @@ Promjene uključuju:
   <string name="morphe_hide_compact_banner_summary">Skriva kompaktne natpise i razmake između nekih komponenti</string>
   <string name="morphe_hide_expandable_card_title">Proširive kartice ispod videozapisa</string>
   <string name="morphe_hide_expandable_card_entry_1">Prikaži sve</string>
+  <string name="morphe_hide_expandable_card_entry_3">Sakrij sve</string>
   <string name="morphe_hide_floating_microphone_button_title">Sakrij tipku plivajući mikrofon</string>
   <string name="morphe_hide_floating_microphone_button_summary">Skriva plutajuću tipku mikrofona u donjem desnom kutu zaslona s prijedlozima za pretraživanje</string>
   <string name="morphe_hide_horizontal_shelves_title">Sakrij vodoravne kartice</string>
@@ -73,6 +74,8 @@ Promjene uključuju:
   <string name="morphe_hide_hyped_label_title">Sakrij  Hype oznaku</string>
   <string name="morphe_hide_image_shelf_title">Sakrij policu slika</string>
   <string name="morphe_hide_image_shelf_summary">Skriva police sa slikama u rezultatima pretrage</string>
+  <!-- 'Invite others to message' should be translated using the same localized wording YouTube displays
+          for the card in the Messages section at the top of the Notifications tab. -->
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Sakrij dugme \'Latest videos\'</string>
@@ -119,10 +122,12 @@ Promjene uključuju:
           This button usually appears in the video player for certain videos. -->
   <string name="morphe_hide_join_membership_button_title">Sakrij tipku za pridruživanje</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears when in fullscreen for live streamed videos after opening live chat. -->
+          This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">Sakrij tipku \'Live chat replay\'</string>
   <string name="morphe_hide_live_chat_replay_button_summary">Skriva tipku za ponavljanje chata u načinu rada na punoj veličini</string>
   <string name="morphe_hide_medical_panels_title">Sakrij medicinske ploče</string>
+  <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
+          These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
   <string name="morphe_hide_snackbar_title">Sakrij poruku</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Sakrij smjernice za pretplatnike</string>
   <string name="morphe_hide_sync_button_title">Sakrij gumb \'Sinkroniziraj s videom\'</string>
@@ -176,12 +181,10 @@ Promjene uključuju:
   <string name="morphe_hide_store_button_title">Sakrij tipku \'Tržište\'</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_subscribe_button_in_channel_page_title">Sakrij tipku \'Prenesi\'</string>
+  <string name="morphe_hide_explore_button_title">Sakrij tipku Istraži</string>
   <string name="morphe_comments_screen_title">Komentari</string>
   <string name="morphe_comments_screen_summary">Odaberite koje komponente trebaju se pojaviti u rubrici komentara</string>
   <string name="morphe_hide_comments_carousel_title">Omogući filtar za carousel komentare</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Provjerite jeste li unijeli točan naziv stavke na carouselu (npr. Pitajte, Podijelite ovaj video, Slušajte na YouTube glazbi itd.)
-• Skrivanje stavki na carouselu može imati nepredviđene posljedice
-• Ako su sve stavke na carouselu skrivene, bit će skriven i cijeli odjeljak komentara"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Filter za carousel komentara</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Unesite nazive carousel kanala prema kojima želite filtrirati, odvojene novim redcima</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Komentari su skriveni</string>
@@ -203,11 +206,6 @@ Promjene uključuju:
   <string name="morphe_hide_keyword_content_phrases_title">Ključne riječi za skrivenje</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"Unesite ključne riječi i fraze za skrivanje, odvojene novim redovima
-
-Ključne riječi mogu biti bilo koji tekst prikazan u nazivima videozapisa ili nazivima kanala
-
-Slova iz velikih slova u sredini riječi moraju točno odgovarati (npr: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Pokupljati cijeli ključ/frazu</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Stavljanje ključne riječi/fraze u dvostruke navodnike spriječit će djelomična podudaranja naslova videozapisa i naziva kanala&lt;br&gt;&lt;br&gt;Na primjer,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; sakrit će videozapis: &lt;b&gt;Kako funkcionira umjetna inteligencija?&lt;/b&gt;&lt;br&gt;ali neće sakriti: &lt;b&gt;Što znači poštena upotreba?&lt;/b&gt;</string>
@@ -217,12 +215,13 @@ Slova iz velikih slova u sredini riječi moraju točno odgovarati (npr: iPhone, 
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Kljjuč ima proturke izjave: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Kljjuč je prekrato kratak i mora imati navlake: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Kljjuč će skriveni sve videozapise: %s</string>
+  <string name="morphe_hide_stats_category_title">Statistike</string>
+  <string name="morphe_hide_about_category_title">O aplikaciji</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Sakrij policu trgovine autora</string>
   <string name="morphe_hide_end_screen_store_banner_title">Sakrij dugme za pretraživanje</string>
   <string name="morphe_hide_general_ads_title">Sakrij video oglase</string>
   <string name="morphe_hide_merchandise_banners_title">Sakrij dugme za pretraživanje</string>
-  <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_player_popup_ads_title">Sakrij skočne oglase igrača</string>
   <string name="morphe_hide_self_sponsor_ads_title">Sakrij samostalne oglase</string>
   <string name="morphe_hide_shopping_links_title">Sakrij poveznice</string>
@@ -247,8 +246,9 @@ Slova iz velikih slova u sredini riječi moraju točno odgovarati (npr: iPhone, 
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_openrouter_model_custom">Prilagođeno</string>
-  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <!-- %s is dollar cost, e.g., $0.10 per 100 hours -->
   <string name="morphe_vot_tts_system">Sustav</string>
+  <string name="morphe_vot_do_not_show_again">Nije moguće podesati segment: %1$d %2$s</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Omogu petljati video</string>
   <string name="morphe_do_not_remember_loop_video_title">Ne pamtim loop video</string>
@@ -399,6 +399,7 @@ Info: Možda neće raditi na prijenosima uživo"</string>
   <string name="morphe_fix_transcript_title">Popravi transkript</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Traka navigacije</string>
+  <string name="morphe_navigation_buttons_screen_summary">Odaberite koje će tipke pojaviti u donjoj navigacijskoj traci</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">Sakrij tipku Početna</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -423,7 +424,7 @@ Info: Možda neće raditi na prijenosima uživo"</string>
   <string name="morphe_show_toolbar_settings_button_type_title">Radnja tipke Postavke</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Flyout meni</string>
-  <!-- 'Audio track' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
           'Android Studio' must be kept untranslated. -->
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -487,6 +488,7 @@ Info: Možda neće raditi na prijenosima uživo"</string>
   <string name="morphe_hide_shorts_like_fountain_title">Sakrij dugmice za Like</string>
   <string name="morphe_hide_shorts_like_button_title">Sakrij dugmice za Istraži</string>
   <string name="morphe_hide_shorts_comments_button_title">Sakrij dugmice za dijeliti</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Sakrij dugmice za pretraživanje</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
@@ -566,6 +568,7 @@ Info: Možda neće raditi na prijenosima uživo"</string>
   <!-- layout.shortsautoplay.shortsAutoplayPatch -->
   <string name="morphe_shorts_autoplay_title">Automatski Shorts</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+  <string name="morphe_playback_in_feeds_entry_off">Isključeno</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_screen_title">Mini pregleđ</string>
   <string name="morphe_miniplayer_type_title">Mini pregleđ</string>
@@ -614,6 +617,7 @@ Info: Možda neće raditi na prijenosima uživo"</string>
   <string name="morphe_alt_thumbnail_stills_about_title">Still video captures</string>
   <string name="morphe_alt_thumbnail_stills_about_summary">Slike su uzele s početka / sredine / kraja svakog videa. Ove slike su ugrađene u YouTube i ne koristi se vanjski API</string>
   <string name="morphe_alt_thumbnail_stills_fast_title">Korištenje brže still captures</string>
+  <string name="morphe_alt_thumbnail_stills_time_entry_3">Kraj</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow privremeno nije dostupan (status kod: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow privremeno nije dostupan</string>
@@ -638,6 +642,8 @@ Info: Možda neće raditi na prijenosima uživo"</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automatski</string>
+  <!-- 'Force AVC (H.264) codec' should be the same translation used for 'morphe_force_avc_codec_title'. -->
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_video_quality_default_wifi_title">Standardna kvaliteta video na mrežnoj mreži</string>
   <string name="morphe_video_quality_default_mobile_title">Standardna kvaliteta video na mobilnoj mreži</string>
   <string name="morphe_shorts_quality_default_wifi_title">Standardna kvaliteta Shorts na mrežnoj mreži</string>
@@ -673,7 +679,6 @@ Ograničenja:
 
 Video playback s AV1 može stutterati ili padati frame-ove."</string>
   <string name="morphe_spoof_video_streams_about_title">Simuliranje nuspojava</string>
-  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Audio track menu je odsutan</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Nema AV1 video codec</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR imersivni mod nije dostupan</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Nema stabilna volume</string>

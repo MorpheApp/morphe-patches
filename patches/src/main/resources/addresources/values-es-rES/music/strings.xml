@@ -2,7 +2,7 @@
 <!--
 
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -25,8 +25,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_summary">Descarga videos musicales, podcasts o canciones con aplicaciones de descarga de terceros</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Reemplazar botón \"Descargar\"</string>
-  <string name="morphe_external_downloader_action_button_summary">Utiliza tu descargador externo elegido en lugar de la función de descarga integrada de YouTube Music</string>
+  <string name="morphe_external_downloader_action_button_summary">Utiliza el descargador externo seleccionado en lugar del botón de acción de descarga original</string>
   <string name="morphe_external_downloader_flyout_menu_title">Reemplazar menú \"Descargar\"</string>
+  <string name="morphe_external_downloader_flyout_menu_summary">Utiliza el descargador externo seleccionado en lugar del menú desplegable de descarga original</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Acerca de</string>
@@ -41,7 +42,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Ocultar promociones de Music Premium</string>
   <string name="morphe_music_hide_video_ads_title">Ocultar anuncios de vídeo</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
-  <string name="morphe_music_hide_audio_video_toggle_title">Ocultar selector Audio / Vídeo</string>
+  <string name="morphe_music_hide_audio_video_toggle_title">Ocultar selector \"Audio / Vídeo\"</string>
   <string name="morphe_music_hide_explore_shelf_title">Ocultar sección \"Explorar\"</string>
   <string name="morphe_music_hide_grid_shelves_title">Ocultar secciones en cuadrícula</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Ocultar secciones horizontales</string>
@@ -55,7 +56,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_shuffle_button_title">Ocultar botón \"Aleatorio\"</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Ocultar sección \"Acceso rápido\"</string>
   <string name="morphe_music_comments_screen_title">Comentarios</string>
-  <string name="morphe_music_comments_screen_summary">Elija qué componentes aparecen en la sección de comentarios</string>
+  <string name="morphe_music_comments_screen_summary">Elige qué componentes aparecen en la sección de comentarios</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Ocultar normas de la comunidad</string>
   <string name="morphe_music_hide_comments_context_title">Ocultar mensaje de contexto</string>
   <string name="morphe_music_hide_comments_emoji_button_title">Ocultar botón \"Emoji\"</string>
@@ -131,7 +132,7 @@ YouTube Music 8.x: el fundido entre canciones solo funciona en la versión 9.x y
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Recordar estado de reproducción aleatoria</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
-  <string name="morphe_music_disable_dislike_redirection_title">Desactivar redirección de \'No me gusta\'</string>
+  <string name="morphe_music_disable_dislike_redirection_title">Desactivar redirección de \"No me gusta\"</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Evita saltar a la siguiente pista cuando se pulsa el botón de \'No me gusta\'.</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Ocultar botón \"Transmitir\"</string>
@@ -140,7 +141,7 @@ YouTube Music 8.x: el fundido entre canciones solo funciona en la versión 9.x y
   <string name="morphe_music_hide_search_button_title">Ocultar botón de búsqueda</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Botones de acción</string>
-  <string name="morphe_music_action_buttons_screen_summary">Elija qué botones de acción aparecen debajo del reproductor</string>
+  <string name="morphe_music_action_buttons_screen_summary">Elige qué botones de acción aparecen debajo del reproductor</string>
   <string name="morphe_music_hide_action_bar_title">Ocultar barra de acción</string>
   <string name="morphe_music_hide_like_dislike_button_title">Ocultar botón \"Me gusta\" y \"No me gusta\"</string>
   <string name="morphe_music_hide_comments_button_title">Ocultar botón \"Comentarios\"</string>
@@ -156,7 +157,7 @@ YouTube Music 8.x: el fundido entre canciones solo funciona en la versión 9.x y
   <string name="morphe_music_hide_radio_button_title">Ocultar botón \"Mix\"</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Menú desplegable</string>
-  <string name="morphe_music_hide_flyout_menu_components_screen_summary">Elija qué componentes aparecen en los menús desplegables del reproductor y la cola</string>
+  <string name="morphe_music_hide_flyout_menu_components_screen_summary">Elige qué componentes aparecen en los menús desplegables del reproductor y la cola</string>
   <string name="morphe_music_hide_flyout_menu_3_column_component_title">Ocultar componente de 3 columnas</string>
   <string name="morphe_music_hide_flyout_menu_like_dislike_title">Ocultar botones \"Me gusta\" y \"No me gusta\"</string>
   <string name="morphe_music_hide_flyout_menu_taste_match_title">Ocultar menú \"Match musical\"</string>
@@ -221,7 +222,7 @@ YouTube Music 8.x: el fundido entre canciones solo funciona en la versión 9.x y
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Permite cerrar el reproductor en miniatura deslizando hacia abajo sobre él</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Barra de navegación</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Elija qué botones aparecen en la barra de navegación inferior</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Elige qué botones aparecen en la barra de navegación inferior</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Ocultar botón \"Inicio\"</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -232,11 +233,11 @@ YouTube Music 8.x: el fundido entre canciones solo funciona en la versión 9.x y
   <string name="morphe_music_hide_navigation_bar_library_button_title">Ocultar botón \"Mi biblioteca\"</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Ocultar botón \"Actualizar\"</string>
-  <string name="morphe_music_hide_navigation_bar_title">Ocultar la barra de navegación</string>
+  <string name="morphe_music_hide_navigation_bar_title">Ocultar barra de navegación</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Ocultar etiquetas de botones de navegación</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
-  <string name="morphe_music_scrobbling_summary">Configurar la integración de Last.fm y ListenBrainz</string>
-  <string name="morphe_music_scrobbling_summary_logged_out">No has iniciado sesión. Toca para configurar</string>
+  <string name="morphe_music_scrobbling_summary">Configura la integración de Last.fm y ListenBrainz</string>
+  <string name="morphe_music_scrobbling_summary_logged_out">No has iniciado sesión. Pulsa para configurar</string>
   <string name="morphe_music_scrobbling_log_out">Cerrar sesión</string>
   <string name="morphe_music_scrobbling_logged_out_toast">Sesión cerrada</string>
   <!-- 'scrobbling' must be kept untranslated -->
@@ -248,13 +249,13 @@ YouTube Music 8.x: el fundido entre canciones solo funciona en la versión 9.x y
   <!-- 'scrobble' must be kept untranslated -->
   <string name="morphe_music_scrobbling_delay_percent_title">Retraso de scrobble en porcentaje</string>
   <!-- 'scrobble' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_delay_percent_summary">Activar scrobble después de escuchar este porcentaje de la canción</string>
+  <string name="morphe_music_scrobbling_delay_percent_summary">Activa scrobble después de escuchar este porcentaje de la canción</string>
   <!-- 'scrobble' must be kept untranslated -->
   <string name="morphe_music_scrobbling_delay_seconds_title">Retraso de scrobble en segundos</string>
   <!-- 'scrobble' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_delay_seconds_summary">Activar scrobble después de escuchar durante este número de segundos</string>
+  <string name="morphe_music_scrobbling_delay_seconds_summary">Activa scrobble después de escuchar durante este número de segundos</string>
   <string name="morphe_music_listenbrainz_token_title">Cuenta de ListenBrainz</string>
-  <string name="morphe_music_listenbrainz_token_summary_logged_in">Has iniciado sesión. Toca para administrar la cuenta</string>
+  <string name="morphe_music_listenbrainz_token_summary_logged_in">Has iniciado sesión. Pulsa para administrar la cuenta</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_listenbrainz_token_dialog_instruction">Introduce tu token de usuario de ListenBrainz para habilitar el registro</string>
   <string name="morphe_music_listenbrainz_token_dialog_hint">Token</string>
@@ -272,7 +273,7 @@ YouTube Music 8.x: el fundido entre canciones solo funciona en la versión 9.x y
   <string name="morphe_music_lastfm_love_on_like_title">Amar las pistas que te gustan</string>
   <string name="morphe_music_lastfm_love_on_like_summary">Amar automáticamente las pistas en Last.fm cuando te gusten en YouTube Music (y dejar de amar cuando no te gusten o no te desagraden)</string>
   <string name="morphe_music_lastfm_token_title">Cuenta de Last.fm</string>
-  <string name="morphe_music_lastfm_token_summary_logged_in">Has iniciado sesión como %s. Toca para administrar la cuenta</string>
+  <string name="morphe_music_lastfm_token_summary_logged_in">Has iniciado sesión como %s. Pulsa para administrar la cuenta</string>
   <string name="morphe_music_lastfm_token_dialog_instruction">Introduce tus credenciales de Last.fm para iniciar sesión</string>
   <string name="morphe_music_lastfm_token_dialog_username_hint">Nombre de usuario</string>
   <string name="morphe_music_lastfm_token_dialog_password_hint">Contraseña</string>
@@ -285,11 +286,11 @@ YouTube Music 8.x: el fundido entre canciones solo funciona en la versión 9.x y
   <string name="morphe_music_lastfm_token_toast_saved">¡Credenciales de Last.fm guardadas!</string>
   <string name="morphe_settings_music_scrobbling_metadata_title">Limpieza de metadatos</string>
   <string name="morphe_music_scrobbling_metadata_cleanup_title">Limpiar metadatos</string>
-  <string name="morphe_music_scrobbling_metadata_cleanup_summary">Limpiar automáticamente el desorden común (como \"Video oficial\", \"Remasterizado\", \"En vivo\") de los títulos, artistas y álbumes antes de registrar</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">Limpia automáticamente términos comunes (como \"Video oficial\", \"Remasterizado\", \"En vivo\") de los títulos, artistas y álbumes antes de hacer scrobble</string>
   <string name="morphe_music_scrobbling_custom_regex_title">Limpieza de regex personalizada</string>
-  <string name="morphe_music_scrobbling_custom_regex_summary">Ingrese una expresión regular personalizada para eliminar texto adicional de los títulos de canciones, artistas o álbumes. Ejemplo: (?i)\\s*\\((clean|explicit)\\)</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">Ingresa una expresión regular personalizada para eliminar texto adicional de los títulos de canciones, artistas o álbumes. Ejemplo: (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">Analizar artista y pista a partir del título</string>
-  <string name="morphe_music_scrobbling_parse_title_summary">Extraer el nombre del artista y de la pista del título del video utilizando el separador \" - \". Útil para contenido re-subido donde el nombre del canal puede usarse como artista.</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">Extrae el nombre del artista y de la pista a partir del título del video utilizando el separador \" - \". Útil para contenido resubido donde el nombre del canal puede usarse como artista.</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_title">Acerca del scrobbling</string>
   <!-- 'scrobbling' must be kept untranslated -->
@@ -302,10 +303,10 @@ Para garantizar que la sincronización se realice durante la reproducción en se
   <string name="morphe_music_lyrics_source_title">Servicio de letras</string>
   <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
   <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, luego KuGou</string>
-  <string name="morphe_music_lyrics_tap_to_seek_title">Toca una línea para buscar</string>
+  <string name="morphe_music_lyrics_tap_to_seek_title">Pulsa una línea para buscar</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Tocar una línea salta a ese momento de la canción</string>
-  <string name="morphe_music_lyrics_copy_button_title">Mostrar botón de copiar letras</string>
-  <string name="morphe_music_lyrics_translate_button_title">Mostrar botón de traducir letras</string>
+  <string name="morphe_music_lyrics_show_copy_button_title">Mostrar botón \"Copiar\"</string>
+  <string name="morphe_music_lyrics_show_translate_button_title">Mostrar botón \"Traducir\"</string>
   <string name="morphe_music_lyrics_text_size_title">Tamaño del texto</string>
   <string name="morphe_music_lyrics_text_size_summary">Tamaño del texto de las letras</string>
   <string name="morphe_music_lyrics_offset_ms_title">Desfase de tiempo</string>
@@ -326,9 +327,6 @@ Las letras sincronizadas siguen la reproducción. Si se desvían, ajusta el desf
 
 Cuando no se encuentran letras de terceros, se muestran las letras integradas en su lugar"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
-  <string name="morphe_music_spoof_app_version_target_entry_6_35_52">6.35.52 - Restaura el panel desplegable antiguo</string>
-  <string name="morphe_music_spoof_app_version_target_entry_6_42_55">6.42.55 - Desactiva las letras de canciones en tiempo real</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_12_52">7.12.52 - Restaura las letras dinámicas antiguas</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_16_53">7.16.53 - Restaura la barra de acción antigua</string>
-  <string name="morphe_music_spoof_app_version_target_entry_7_17_52">7.17.52 - La sección de comentarios no aparece en el feed de inicio</string>
+  <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Desactivar iconos en negrita</string>
+  <string name="morphe_music_spoof_app_version_target_entry_9_13_51">Restaurar pestañas \"A continuación\", \"Letra\" y \"Relacionado\" del reproductor</string>
 </resources>

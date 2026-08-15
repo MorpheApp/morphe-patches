@@ -31,7 +31,11 @@ public final class RememberPlaybackSpeedPatch {
 
     private static volatile boolean newVideoStarted;
 
+    private static volatile boolean newAudioStarted; // Actually video, just a flag for audio pitch
+
     private static long lastTimeSpeedChanged;
+
+    private static long lastTimePitchChanged;
 
     /**
      * Injection point.
@@ -39,6 +43,7 @@ public final class RememberPlaybackSpeedPatch {
     public static void newVideoStarted(VideoInformation.PlaybackController ignoredPlayerController) {
         Logger.printDebug(() -> "newVideoStarted");
         newVideoStarted = true;
+        newAudioStarted = true;
     }
 
     /**
@@ -49,37 +54,82 @@ public final class RememberPlaybackSpeedPatch {
      */
     public static void userSelectedPlaybackSpeed(float playbackSpeed) {
         try {
-            if (Settings.REMEMBER_PLAYBACK_SPEED_LAST_SELECTED.get()) {
-                // With the 0.05x menu, if the speed is set by a patch to higher than 2.0x
-                // then the menu will allow increasing without bounds but the max speed is
-                // still capped to 8.0x.
-                playbackSpeed = Math.min(playbackSpeed, VideoInformation.PLAYBACK_SPEED_MAXIMUM);
-
-                // Prevent toast spamming if using the 0.05x adjustments.
-                // Show exactly one toast after the user stops interacting with the speed menu.
-                final long now = System.currentTimeMillis();
-                lastTimeSpeedChanged = now;
-
-                final float finalPlaybackSpeed = playbackSpeed;
-                Utils.runOnMainThreadDelayed(() -> {
-                    if (lastTimeSpeedChanged != now) {
-                        // The user made additional speed adjustments and this call is outdated.
-                        return;
-                    }
-
-                    if (Settings.PLAYBACK_SPEED_DEFAULT.get() == finalPlaybackSpeed) {
-                        // User changed to a different speed and immediately changed back.
-                        // Or the user is going past 8.0x in the glitched out 0.05x menu.
-                        return;
-                    }
-                    Settings.PLAYBACK_SPEED_DEFAULT.save(finalPlaybackSpeed);
-
-                    if (Settings.REMEMBER_PLAYBACK_SPEED_LAST_SELECTED_TOAST.get())
-                        Utils.showToastShort(str("morphe_remember_playback_speed_toast", (finalPlaybackSpeed + "x")));
-                }, TOAST_DELAY_MILLISECONDS);
+            if (!Settings.REMEMBER_PLAYBACK_SPEED_LAST_SELECTED.get()) {
+                return;
             }
+            // With the 0.05x menu, if the speed is set by a patch to higher than 2.0x
+            // then the menu will allow increasing without bounds but the max speed is
+            // still capped to 8.0x.
+            playbackSpeed = Math.min(playbackSpeed, VideoInformation.PLAYBACK_SPEED_MAXIMUM);
+
+            // Prevent toast spamming if using the 0.05x adjustments.
+            // Show exactly one toast after the user stops interacting with the speed menu.
+            final long now = System.currentTimeMillis();
+            lastTimeSpeedChanged = now;
+
+            final float finalPlaybackSpeed = playbackSpeed;
+            Utils.runOnMainThreadDelayed(() -> {
+                if (lastTimeSpeedChanged != now) {
+                    // The user made additional speed adjustments and this call is outdated.
+                    return;
+                }
+
+                if (Settings.PLAYBACK_SPEED_DEFAULT.get() == finalPlaybackSpeed) {
+                    // User changed to a different speed and immediately changed back.
+                    // Or the user is going past 8.0x in the glitched out 0.05x menu.
+                    return;
+                }
+                Settings.PLAYBACK_SPEED_DEFAULT.save(finalPlaybackSpeed);
+
+                if (Settings.REMEMBER_PLAYBACK_SPEED_LAST_SELECTED_TOAST.get())
+                    Utils.showToastShort(str("morphe_remember_playback_speed_toast",
+                            (String.format(java.util.Locale.US, "%.2fx", finalPlaybackSpeed))));
+            }, TOAST_DELAY_MILLISECONDS);
         } catch (Exception ex) {
             Logger.printException(() -> "userSelectedPlaybackSpeed failure", ex);
+        }
+    }
+
+    /**
+     * only VideoInformation calls this, when user sets audio pitch.
+     *
+     * @param playbackAudioPitch The playback speed the user selected
+     */
+    public static void userSelectedPlaybackAudioPitch(float playbackAudioPitch) {
+        try {
+            if (!Settings.REMEMBER_PLAYBACK_SPEED_LAST_SELECTED.get()) {
+                return;
+            }
+            // Will already be in range, below line is just a fail-safe.
+            playbackAudioPitch = Math.min(playbackAudioPitch, VideoInformation.PLAYBACK_AUDIO_PITCH_MAXIMUM);
+
+            // Prevent toast spamming if using the 0.05x adjustments.
+            // Show exactly one toast after the user stops interacting with the pitch menu.
+            final long now = System.currentTimeMillis();
+            lastTimePitchChanged = now;
+
+            final float finalPlaybackAudioPitch = playbackAudioPitch;
+            Utils.runOnMainThreadDelayed(() -> {
+                if (lastTimePitchChanged != now) {
+                    // The user made additional pitch adjustments and this call is outdated.
+                    return;
+                }
+
+                if (Settings.PLAYBACK_AUDIO_PITCH_DEFAULT.get() == finalPlaybackAudioPitch) {
+                    // User changed to a different pitch and immediately changed back.
+                    // Or the user is going past 8.0x in the glitched out 0.05x menu.
+                    return;
+                }
+                Settings.PLAYBACK_AUDIO_PITCH_DEFAULT.save(finalPlaybackAudioPitch);
+
+                // Sharing toast with video speed
+                if (Settings.REMEMBER_PLAYBACK_SPEED_LAST_SELECTED_TOAST.get()) {
+                    Utils.showToastShort(str("morphe_remember_playback_audio_pitch_toast",
+                            (String.format(java.util.Locale.US, "%.2fx", finalPlaybackAudioPitch))));
+                }
+            }, TOAST_DELAY_MILLISECONDS);
+        } catch (Exception ex) {
+            Logger.printException(() -> "userSelectedPlaybackAudioPitch failure", ex);
         }
     }
 
@@ -109,6 +159,34 @@ public final class RememberPlaybackSpeedPatch {
                 VideoInformation.changePlaybackSpeed(defaultSpeed);
             }
         }
+    }
+
+    /**
+     * audio pitch state is managed only by VideoInformation
+     */
+    public static float getPlaybackAudioPitchOverride() {
+        if (newAudioStarted) {
+            newAudioStarted = false;
+            
+            final float defaultAudioPitch = Settings.PLAYBACK_AUDIO_PITCH_DEFAULT.get();
+            if (DISABLE_PLAYBACK_SPEED_MUSIC && defaultAudioPitch != 1.0f) {
+                String videoId = VideoInformation.getVideoId();
+
+                // duplicate request, needs refactor along with getPlaybackSpeedOverride
+                GetMixPlaylistRequest request = GetMixPlaylistRequest.getRequestForVideoId(videoId);
+                final boolean isMusic = request != null && Boolean.TRUE.equals(request.getResult());
+                if (isMusic) {
+                    Logger.printDebug(() -> "Overriding music audio pitch to 1.0x: " + videoId);
+                    return 1.0f;
+                }
+            }
+
+            if (defaultAudioPitch > 0) {
+                return defaultAudioPitch;
+            }
+        }
+
+        return -2.0f;
     }
 
     public static void preloadMusicVideoFetch(String videoId, boolean isShortAndOpeningOrPlaying) {

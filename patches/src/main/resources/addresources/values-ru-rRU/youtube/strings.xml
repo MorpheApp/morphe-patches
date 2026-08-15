@@ -2,7 +2,7 @@
 <!--
 
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -74,6 +74,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_hyped_label_title">Скрыть метку \"В тренде\"</string>
   <string name="morphe_hide_image_shelf_title">Скрыть секцию изображений</string>
   <string name="morphe_hide_image_shelf_summary">Скрыть изображения в результатах поиска</string>
+  <!-- 'Invite others to message' should be translated using the same localized wording YouTube displays
+          for the card in the Messages section at the top of the Notifications tab. -->
+  <string name="morphe_hide_invite_to_message_card_title">Скрыть карточку \"Пригласить в чат\"</string>
+  <string name="morphe_hide_invite_to_message_card_summary">Скрывает карточку приглашения, отображаемую в разделе \"Сообщения\" на вкладке \"Уведомления\"</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Скрыть кнопку \"Последние видео\"</string>
@@ -119,6 +123,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_youtube_doodles_user_dialog_message">Отображение Doodle от YouTube может помешать отображению пользовательских заголовков.</string>
   <string name="morphe_hide_channel_bar_title">Скрыть панель канала</string>
   <string name="morphe_hide_channel_watermark_title">Скрыть водяной знак канала</string>
+  <string name="morphe_hide_chapters_timeline_button_title">Скрыть главы и кнопку «В этом видео»</string>
   <string name="morphe_hide_crowdfunding_box_title">Скрыть колонку \"Коллективный сбор\"</string>
   <string name="morphe_hide_emergency_box_title">Скрыть экстренные колонки</string>
   <string name="morphe_hide_info_panels_title">Скрыть информационные панели</string>
@@ -127,10 +132,14 @@ Second \"item\" text"</string>
           This button usually appears in the video player for certain videos. -->
   <string name="morphe_hide_join_membership_button_title">Скрыть кнопку \"Подписаться\"</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears when in fullscreen for live streamed videos after opening live chat. -->
+          This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">Скрыть кнопку \"Повтор живого чата\"</string>
   <string name="morphe_hide_live_chat_replay_button_summary">Скрывает кнопку повтора чата в полноэкранном режиме</string>
   <string name="morphe_hide_medical_panels_title">Скрыть медицинские панели</string>
+  <string name="morphe_hide_player_gesture_hints_title">Скрыть подсказки жестов плеера</string>
+  <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
+          These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
+  <string name="morphe_hide_player_gesture_hints_summary">Скрывает подсказки, отображаемые во время жестов плеера, такие как \'Потяните вверх для точного поиска\', \'Отпустите для отмены\' и \'2x\'.</string>
   <string name="morphe_hide_snackbar_title">Скрыть всплывающие сообщения</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Скрыть правила сообщества подписчиков</string>
   <string name="morphe_hide_sync_button_title">Скрыть кнопку \"Синхронизировать с видео\"</string>
@@ -205,8 +214,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_learning_menu_title">Скрыть меню \"Обучение\"</string>
   <string name="morphe_hide_live_menu_title">Скрыть меню «Прямые трансляции»</string>
   <string name="morphe_hide_memberships_menu_title">Скрыть меню «Подписки»</string>
-  <string name="morphe_hide_movies_menu_title">Скрыть раздел фильмов</string>
-  <string name="morphe_hide_music_menu_title">Скрыть меню «Музыка и ТВ»</string>
+  <string name="morphe_hide_movies_menu_title">Скрыть меню «Фильмы и ТВ»</string>
+  <string name="morphe_hide_music_menu_title">Скрыть меню «Музыка»</string>
   <string name="morphe_hide_news_menu_title">Скрыть меню «Новости»</string>
   <string name="morphe_hide_playables_menu_title">Скрыть встроенные игры</string>
   <string name="morphe_hide_podcasts_menu_title">Скрыть меню «Подкасты»</string>
@@ -222,9 +231,9 @@ Second \"item\" text"</string>
   <string name="morphe_comments_screen_title">Комментарии</string>
   <string name="morphe_comments_screen_summary">Выберите, какие компоненты отображать в разделе комментариев</string>
   <string name="morphe_hide_comments_carousel_title">Включить фильтр карусели комментариев</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Убедитесь, что вы вводите точное название элемента карусели (например, Задать вопрос, Продвинуть это видео, Слушать на YouTube Music и т.д.).
-• Скрытие элементов карусели может иметь непредвиденные последствия.
-• Если все элементы карусели скрыты, весь раздел комментариев также будет скрыт."</string>
+  <string name="morphe_hide_comments_carousel_summary">"• Введите точное название элемента карусели (например, «Спросить», «Захайпить», «Слушать на YouTube Music»)
+• Скрытие элементов карусели может иметь нежелательные побочные эффекты
+• Если все элементы карусели скрыты, раздел комментариев также будет скрыт"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Фильтр карусели комментариев</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Введите имена карусели комментариев для фильтрации, разделенные новыми строками</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Скрыть секцию ИИ сводки чата</string>
@@ -261,7 +270,7 @@ Second \"item\" text"</string>
 
 Ключевыми словами могут быть названия каналов или любой текст, показываемый в заголовках видео
 
-Слова с заглавными буквами в середине должны содержать регистр (например: iPhone, TikTok, LeBlanc)"</string>
+Слова с заглавными буквами в середине должны совпадать точно (например, iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Вкладки \"Главная\", \"Подписки\" и результаты поиска фильтруются для скрытия контента, соответствующего ключевым фразам
 
 Ограничения:
@@ -314,7 +323,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_end_screen_store_banner_title">Скрыть баннер магазина</string>
   <string name="morphe_hide_general_ads_title">Скрыть общую рекламу</string>
   <string name="morphe_hide_merchandise_banners_title">Скрыть баннеры торговли</string>
-  <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_paid_promotion_labels_title">Скрыть метки платной рекламы</string>
   <string name="morphe_hide_player_popup_ads_title">Скрыть всплывающие окна плеера</string>
   <string name="morphe_hide_self_sponsor_ads_title">Скрыть заставки саморекламы</string>
@@ -331,6 +339,7 @@ Second \"item\" text"</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">Изменяет действие при нажатии и удержании кнопки \"Копировать ссылку на видео\" на противоположное</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Отключить всплывающее окно \"Вход на ТВ\"</string>
+  <string name="morphe_disable_connect_your_devices_popup_title">Отключить всплывающее окно «Подключите ваши устройства»</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">Отключить пропуск главы по двойному касанию</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Отключает жест двойного нажатия двумя пальцами, который пропускает главы, который может быть случайно вызван одним пальцем</string>
@@ -340,7 +349,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_summary">Отображает кнопку наложения в видеоплеере, которая открывает ваш внешний загрузчик</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Переопределить кнопку и меню \"Скачать\"</string>
-  <string name="morphe_external_downloader_action_button_summary">Использует выбранный вами сторонний загрузчик вместо встроенной функции загрузки YouTube</string>
+  <string name="morphe_external_downloader_action_button_summary">Использует выбранный вами внешний загрузчик вместо стандартной функции загрузки</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Перевод озвучивания</string>
   <string name="morphe_vot_screen_summary">Читайте субтитры видео вслух с помощью встроенного преобразования текста в речь, синхронизированного с воспроизведением</string>
@@ -368,7 +377,7 @@ Second \"item\" text"</string>
   <string name="morphe_vot_openrouter_not_configured_title">OpenRouter не настроен</string>
   <string name="morphe_vot_openrouter_not_configured_message">Введите свой ключ API OpenRouter в настройках, прежде чем выбирать этого поставщика</string>
   <string name="morphe_vot_cost_free">Бесплатно</string>
-  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <!-- %s is dollar cost, e.g., $0.10 per 100 hours -->
   <string name="morphe_vot_cost_per_hour">%s за 100 часов видео</string>
   <string name="morphe_vot_tts_voice_type">Голос</string>
   <string name="morphe_vot_tts_system">Системная</string>
@@ -442,12 +451,15 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_success_toast">Видео успешно сохранено в плейлист \"Смотреть позже\"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Это видео уже сохранено в плейлист \"Смотреть позже\"</string>
   <string name="morphe_save_to_watch_later_error_toast">Не удалось сохранить это видео в плейлист \"Смотреть позже\"</string>
+  <string name="morphe_queue_flyout_title">Добавить в очередь Morphe</string>
   <string name="morphe_queue_restore_title">Сохранять очередь между сеансами</string>
   <string name="morphe_queue_restore_summary">Очередь сохраняется после перезапуска приложения</string>
   <string name="morphe_swap_save_and_queue_actions_title">Поменять местами действия \"Сохранить\" и \"В очередь\"</string>
   <string name="morphe_swap_save_and_queue_actions_summary">Нажмите для опций очереди, нажмите и удерживайте, чтобы сохранить для просмотра позже</string>
   <string name="morphe_queue_override_flyout_menu_title">Кнопка для переопределения очереди всплывающего окна каналов</string>
   <string name="morphe_queue_override_flyout_menu_summary">Открывает очередь Morphe вместо очереди YouTube</string>
+  <string name="morphe_queue_add_flyout_menu_title">Добавить пункт меню очереди во всплывающее меню ленты</string>
+  <string name="morphe_queue_add_flyout_menu_summary">Добавляет дополнительный элемент всплывающего меню. Включите это, если пункт \"Добавить в очередь\" не отображается.</string>
   <string name="morphe_queue_manager_check_failed_auth">Не вошел в систему</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">ID плейлиста не указан</string>
   <string name="morphe_queue_manager_check_failed_queue">Очередь пуста</string>
@@ -483,16 +495,17 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Включить миниатюры на полосе прокрутки</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Показывает миниатюру видео во время перетаскивания полосы прокрутки</string>
+  <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Чаще всего пересматривают</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"«Включить DVR для прямой трансляции» может быть недоступно
+  <string name="morphe_livestream_dvr_not_available">"'Включить DVR прямой трансляции' может быть недоступно
 
-Чтобы это исправить, включите «Поддельные видеопотоки» и измените «Клиент по умолчанию» на «TV»"</string>
+Чтобы исправить это, включите 'Подмена видео потоков' и измените 'Клиент по умолчанию' на 'TV' или 'visionOS'"</string>
   <string name="morphe_expand_livestream_dvr_duration_title">Расширить длительность прямой трансляции DVR</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">Позволяет перематывать прямые трансляции в прошлое до 7 дней</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"«Расширить длительность DVR для прямой трансляции» может быть недоступно
+  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Расширить продолжительность DVR прямой трансляции' может быть недоступно
 
-Чтобы это исправить, включите «Поддельные видеопотоки» и измените «Клиент по умолчанию» на «TV»"</string>
+Чтобы исправить это, включите 'Подмена видео потоков' и измените 'Клиент по умолчанию' на 'TV' или 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Включить перемотку видео слайдом</string>
   <string name="morphe_slide_to_seek_summary">Включает перемотку с помощью свайпа вместо воспроизведения с удвоенной скоростью при нажатии и удержании видеоплеера</string>
@@ -510,7 +523,7 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_zone_label_volume">Громкость</string>
   <string name="morphe_swipe_zone_label_native">Основной</string>
   <string name="morphe_swipe_press_to_engage_title">Включить нажатие для выполнения жестов</string>
-  <string name="morphe_swipe_press_to_engage_summary">Требует нажатия и удержания перед распознаванием жеста смахивания</string>
+  <string name="morphe_swipe_press_to_engage_summary">Нужно нажать и удерживать прежде чем жест свайпа будет распознан</string>
   <string name="morphe_swipe_haptic_feedback_title">Включить виброотклик при жестах</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Сохранять и восстанавливать яркость</string>
   <string name="morphe_swipe_save_and_restore_brightness_summary">Запоминает уровень яркости при входе / выходе из полноэкранного режима</string>
@@ -625,9 +638,9 @@ Second \"item\" text"</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">Скрыть автоматические субтитры</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Установить cookie субтитров</string>
-  <string name="morphe_set_caption_cookies_summary">"Исправляет ошибку в YouTube, из-за которой субтитры с автоматическим переводом могут быть недоступны из-за отсутствия файлов cookie
+  <string name="morphe_set_caption_cookies_summary">"Исправляет ошибку стандартного YouTube, из-за которой автоматически переведенные субтитры могут быть недоступны из-за отсутствующих файлов cookie
 
-Необходимо предоставить «Файлы cookie субтитров»"</string>
+'Файлы cookie для субтитров' должны быть предоставлены"</string>
   <string name="morphe_caption_cookies_title">Субтитры cookies</string>
   <string name="morphe_caption_cookies_summary">Файлы cookie для использования в запросах Timed Text API</string>
   <string name="morphe_get_caption_cookies_title">Получить субтитры cookies</string>
@@ -694,7 +707,7 @@ Second \"item\" text"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Выдвижное меню плеера</string>
   <string name="morphe_hide_player_flyout_summary">Выберите, какие компоненты отображаются в выпадающем меню плеера</string>
-  <!-- 'Audio track' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_audio_track_title">Скрыть меню \"Аудиотреки\"</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
           'Android Studio' must be kept untranslated. -->
@@ -802,6 +815,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_like_fountain_title">Скрыть анимацию кнопки \"Лайк\"</string>
   <string name="morphe_hide_shorts_like_button_title">Скрыть кнопку \"Лайк\"</string>
   <string name="morphe_hide_shorts_comments_button_title">Скрыть кнопку \"Комментарии\"</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">Скрыть кнопку \"Сохранить\"</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Скрыть кнопку \"Поделиться\"</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
@@ -888,7 +903,7 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_summary">Открывает системный лист совместного использования вместо встроенного при совместном использовании контента</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Переопределить кнопки YouTube Music</string>
-  <string name="morphe_override_youtube_music_buttons_summary">Открывает ваше предпочтительное музыкальное приложение вместо официального приложения YouTube Music</string>
+  <string name="morphe_override_youtube_music_buttons_summary">Открывает предпочитаемое вами музыкальное приложение вместо стандартного приложения YouTube Music</string>
   <string name="morphe_music_package_name_title">Имя пакета музыкального приложения</string>
   <string name="morphe_music_package_name_summary">Имя пакета вашего установленного музыкального приложения</string>
   <!-- layout.startpage.changeStartPagePatch -->
@@ -1041,7 +1056,7 @@ Second \"item\" text"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Элементы управления воспроизведением в уведомлениях</string>
   <string name="morphe_notification_media_screen_summary">Настройте внешний вид и поведение панели управления мини-плеером на заблокированном экране и панели уведомлений</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Скрыть кнопки «Предыдущий» и «Следующий»</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Скрыть предыдущий &amp; Следующие кнопки</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Скрывает кнопки «Предыдущий» и «Следующий» в уведомлениях, на заблокированном экране и в элементах управления наушниками</string>
   <string name="morphe_disable_notification_media_seekbar_title">Отключить полосу прокрутки</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Запрещает перетаскивание полосы прогресса на заблокированном экране и панели уведомлений</string>
@@ -1056,6 +1071,10 @@ Second \"item\" text"</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Авто</string>
+  <string name="morphe_override_initial_video_quality_title">Переопределить начальное качество видео</string>
+  <!-- 'Force AVC (H.264) codec' should be the same translation used for 'morphe_force_avc_codec_title'. -->
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_override_initial_video_quality_summary">"Исправляет проблему, из-за которой качество видео по умолчанию не применяется сразу после начала видео\n\nОграничение: воспроизведение может не работать на некоторых устройствах, если для «Подмены видеопотоков» установлено значение «Android VR» и включен «Принудительный кодек AVC (H.264)»"</string>
   <string name="morphe_remember_video_quality_last_selected_title">Запомнить качество видео</string>
   <string name="morphe_remember_video_quality_last_selected_summary">Применяет выбранное вами качество вручную ко всем будущим видео</string>
   <string name="morphe_remember_video_quality_last_selected_toast_title">Уведомления об изменении качества</string>
@@ -1095,6 +1114,11 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_speed_toast">Изменена скорость воспроизведения по умолчанию на: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Использовать нормальную скорость для музыки</string>
   <string name="morphe_disable_playback_speed_music_summary">Всегда воспроизводить музыкальные видео на скорости 1.0x</string>
+  <string name="morphe_enable_playback_audio_pitch_controls_title">Включить управление высотой звука</string>
+  <string name="morphe_playback_audio_pitch_default_title">Высота звука при воспроизведении по умолчанию</string>
+  <string name="morphe_remember_playback_audio_pitch_toast">Высота звука по умолчанию изменена на: %s</string>
+  <string name="morphe_playback_audio_time_stretching_title">Растяжение времени аудио</string>
+  <string name="morphe_playback_audio_time_stretching_summary">Позволяет независимо настраивать скорость и высоту звука, что может привести к появлению аудиоартефактов</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Отключить HDR видео</string>
   <string name="morphe_force_avc_codec_title">Принудительное использование кодека AVC (H.264)</string>
@@ -1108,7 +1132,8 @@ Second \"item\" text"</string>
 • HDR-видео не будут использовать AVC
 • Некоторые устройства не могут принудительно использовать AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Чтобы использовать эту функцию, установите \"Подмена видео потоков\" на \"Android VR\" или \"Android Studio\"</string>
+  <string name="morphe_force_avc_codec_not_available">Чтобы использовать эту функцию, измените \"Подмена видео потоков\" на \"Android VR\" или \"Android Studio\"</string>
+  <string name="morphe_force_av1_in_shorts_title">Принудительно использовать AV1 в Shorts</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Открыть меню расширенных настроек качества</string>
   <string name="morphe_advanced_video_quality_menu_summary">Пропускает меню выбора качества и сразу открывает меню расширенных настроек качества</string>
@@ -1119,13 +1144,13 @@ Second \"item\" text"</string>
   <string name="morphe_video_quality_prioritize_summary">Приоритет максимально доступного качества видео над эффективностью кодека</string>
   <string name="morphe_video_quality_prioritize_dialog">Если эта настройка отключена, в старых видео могут отсутствовать варианты выбора качества</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_av1_title">Разрешить Android VR / visionOS AV1</string>
-  <string name="morphe_spoof_video_streams_av1_summary">Разрешает программное декодирование AV1 при использовании клиента Android VR / visionOS</string>
+  <string name="morphe_spoof_video_streams_av1_title">Разрешить \"Android VR\" / visionOS AV1</string>
+  <string name="morphe_spoof_video_streams_av1_summary">Разрешать программное декодирование AV1 когда используется \"Android VR\" / visionOS клиент</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Включение этой опции может использовать программное декодирование AV1.
 
 Воспроизведение видео с AV1 может прерываться или пропускать кадры."</string>
   <string name="morphe_spoof_video_streams_about_title">Побочные эффекты подмены</string>
-  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Пункт \"Звуковая дорожка\" отсутствует</string>
+  <string name="morphe_spoof_video_streams_about_no_audio_tracks">Меню \"Звуковая дорожка\" отсутствует</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Отсутствует видеокодек AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Режим погружения 360° VR недоступен</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Постоянный уровень громкости недоступен </string>
@@ -1135,7 +1160,7 @@ Second \"item\" text"</string>
   <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• Качество может быть ограничено 720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Вариант JavaScript плеера</string>
-  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Показать подмену в статистике для гиков</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_title">Показывать подмену в \"Статистика для продвинутых\"</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Восстановить старую панель действий видео</string>
   <string name="morphe_restore_old_video_action_bar_summary">"Исправляет проблему с не отображением отметки «Не нравится» и невозможностью скрыть кнопки управления видео

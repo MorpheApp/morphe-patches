@@ -302,15 +302,3 @@ internal object WatchNextResponseParserFingerprint : Fingerprint(
         literal(46659098L)
     )
 )
-
-internal object PlatypusVideoQualityFlagFingerprint : Fingerprint(
-    filters = listOf(
-        literal(45624008L)
-    )
-)
-
-internal object VideoQualityBufferingFlagFingerprint : Fingerprint(
-    filters = listOf(
-        literal(45408049L)
-    )
-)

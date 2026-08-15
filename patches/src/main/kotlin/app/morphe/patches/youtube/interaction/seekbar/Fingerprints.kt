@@ -138,6 +138,12 @@ internal object FullscreenLargeSeekbarFeatureFlagFingerprint : Fingerprint(
     )
 )
 
+internal object ShortsDisableSeekbarThumbnailsFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45787901)
+    )
+)
+
 internal object VideoStreamingDataAllowSeekingFingerprint : Fingerprint(
     classFingerprint = VideoStreamingDataToStringFingerprint,
     returnType = "Z",

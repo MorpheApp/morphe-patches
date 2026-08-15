@@ -2,7 +2,7 @@
 <!--
 
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -17,6 +17,8 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- Overrides built in setting menu with Morphe settings. -->
+  <string name="reddit_privacy_policy">Zásady ochrany soukromí Redditu</string>
+  <string name="morphe_google_signin_not_available_toast">Přihlášení přes Google není dostupné. Přihlaste se e-mailem</string>
   <string name="morphe_screen_ads_title">Reklamy</string>
   <string name="morphe_hide_post_ads_title">Skrýt reklamní obsah</string>
   <string name="morphe_hide_comment_ads_title">Skrýt reklamy v komentářích</string>

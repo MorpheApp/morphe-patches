@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
+
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -21,6 +22,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_voting_button_title">Visa röstningsknapp</string>
   <string name="morphe_sb_voting_button_summary">Lägger till en knapp för att uppåtrösta eller nedåtrösta segment</string>
   <string name="morphe_sb_square_layout_title">Använd fyrkantig layout</string>
+  <string name="morphe_sb_square_layout_summary">Använder fyrkantiga hörn för SponsorBlock-knappar och -kontroller</string>
   <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_compact_skip_button_title">Använd kompakt överhoppningsknapp</string>
   <string name="morphe_sb_compact_skip_button_summary">Minskar bredden på överhoppningsknappen för att spara utrymme</string>
@@ -28,6 +30,8 @@ Second \"item\" text"</string>
   <string name="morphe_sb_auto_hide_skip_button_summary">Döljer överhoppningsknappen efter några sekunder istället för att hålla den synlig under hela segmentet</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_title">Varaktighet för överhoppningsknappar</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_summary">Ange hur länge överhoppningsknappen är synlig</string>
+  <string name="morphe_sb_toast_on_skip_title">Visa överhoppningsmeddelande</string>
+  <string name="morphe_sb_toast_on_skip_summary">Visar ett meddelande när ett segment hoppas över automatiskt</string>
   <string name="morphe_sb_toast_on_skip_duration_title">Varaktighet för överhoppningsmeddelande</string>
   <string name="morphe_sb_toast_on_skip_duration_summary">Ange hur länge meddelandet för att ångra är synligt</string>
   <string name="morphe_sb_duration_1s">1 sekund</string>
@@ -45,6 +49,8 @@ Second \"item\" text"</string>
   <string name="morphe_sb_create_segment_category_title">Skapa nya segment</string>
   <string name="morphe_sb_create_new_segment_title">Visa knappen Skapa nytt segment</string>
   <string name="morphe_sb_create_new_segment_summary">Lägger till en knapp i videospelaren som låter dig skicka in SponsorBlock-segment</string>
+  <string name="morphe_sb_create_new_segment_step_title">Tidsjusteringssteg</string>
+  <string name="morphe_sb_create_new_segment_step_summary">Steglängden för tidsjusteringsknapparna (i millisekunder)</string>
   <string name="morphe_sb_create_new_segment_step_invalid">Värdet måste vara ett positivt tal</string>
   <string name="morphe_sb_guidelines_title">Riktlinjer för att skicka in bidrag</string>
   <string name="morphe_sb_guidelines_summary">Riktlinjerna innehåller regler och tips för att skapa nya segment</string>
@@ -65,13 +71,27 @@ Second \"item\" text"</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">Privat användar-id måste vara minst 30 tecken långt</string>
   <string name="morphe_sb_api_url_title">Ändra API-webbadress</string>
   <string name="morphe_sb_api_url_summary">Adressen SponsorBlock använder för att göra anrop till servern</string>
+  <string name="morphe_sb_channel_whitelist_title">Kanalvitlista</string>
+  <string name="morphe_sb_channel_whitelist_summary">SponsorBlock är inaktiverat för vitlistade kanaler</string>
+  <string name="morphe_sb_channel_whitelist_current_channel">Aktuell kanal:</string>
+  <string name="morphe_sb_channel_whitelist_add">Lägg till i vitlistan</string>
   <string name="morphe_sb_channel_whitelist_remove">Ta bort</string>
+  <string name="morphe_sb_channel_whitelist_channels_header">Vitlistade kanaler</string>
+  <string name="morphe_sb_channel_whitelist_empty">Inga kanaler är vitlistade</string>
+  <string name="morphe_sb_channel_whitelist_channel_added">Kanal tillagd i vitlistan</string>
+  <string name="morphe_sb_channel_whitelist_channel_removed">Kanal borttagen från vitlistan</string>
+  <string name="morphe_sb_toast_on_whitelisted_channel_title">Avisera vid vitlistad kanal</string>
+  <string name="morphe_sb_toast_on_whitelisted_channel_summary">Visar ett meddelande när SponsorBlock är inaktiverat för en vitlistad kanal</string>
+  <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock inaktiverat för den här kanalen</string>
   <string name="morphe_sb_api_url_reset">API-webbadress återställdes</string>
   <string name="morphe_sb_api_url_invalid">API-webbadress är ogiltig</string>
   <string name="morphe_sb_api_url_changed">API-webbadress ändrades</string>
   <string name="morphe_sb_settings_ie_title">Importera/exportera inställningar</string>
   <string name="morphe_sb_settings_copy">Kopiera</string>
   <string name="morphe_sb_settings_ie_summary">Din JSON-konfiguration för SponsorBlock som kan importeras/exporteras till Morphe och andra SponsorBlock-plattformar</string>
+  <string name="morphe_sb_settings_ie_summary_warning">"Din JSON-konfiguration för SponsorBlock som kan importeras/exporteras till Morphe och andra SponsorBlock-plattformar
+
+Detta inkluderar ditt privata användar-id. Se till att dela detta klokt"</string>
   <string name="morphe_sb_settings_import_successful">Inställningar har importerats</string>
   <string name="morphe_sb_settings_import_failed">Det gick inte att importera: %s</string>
   <string name="morphe_sb_settings_export_failed">Det gick inte att exportera: %s</string>
@@ -80,6 +100,7 @@ Second \"item\" text"</string>
 Ditt användar-id fungerar som ett lösenord och det bör aldrig delas."</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Visa inte igen</string>
   <string name="morphe_sb_diff_segments_title">Ändra beteende för segment</string>
+  <string name="morphe_sb_segments_sponsor">Sponsor</string>
   <string name="morphe_sb_segments_sponsor_summary">Betald marknadsföring, betalda hänvisningar och direktannonser. Inte för egenreklam eller gratis reklam för saker/kreatörer/webbplatser/produkter som de gillar</string>
   <string name="morphe_sb_segments_selfpromo">Obetald reklam/egenreklam</string>
   <string name="morphe_sb_segments_selfpromo_summary">Som Sponsor men för obetald reklam eller egenreklam. Inkluderar avsnitt om varor, donationer eller information om vem de samarbetade med</string>
@@ -162,6 +183,7 @@ Det finns redan"</string>
   <string name="morphe_sb_new_segment_disabled_category">Kategorin är inaktiverad i inställningarna. Aktivera kategorin för att skicka.</string>
   <string name="morphe_sb_new_segment_title">Nytt SponsorBlock-segment</string>
   <string name="morphe_sb_new_segment_mark_time_as_question">Ange %s som starten eller slutet av ett nytt segment?</string>
+  <string name="morphe_sb_new_segment_mark_start">Start</string>
   <string name="morphe_sb_new_segment_mark_end">Slut</string>
   <string name="morphe_sb_new_segment_now">Nu</string>
   <string name="morphe_sb_new_segment_time_start">Tiden segmentet börjar vid</string>
@@ -193,6 +215,7 @@ Om du inte vill skicka in en höjdpunkt trycker du på Avbryt och markerar den a
   <string name="morphe_sb_stats_title">Statistik</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Statistik är för tillfället inte tillgänglig (API ligger nere)</string>
+  <string name="morphe_sb_stats_loading">Läser in …</string>
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock är inaktiverad</string>
   <string name="morphe_sb_stats_username">Ditt användarnamn: &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_username_change">Tryck här för att ändra ditt användarnamn</string>
@@ -214,4 +237,7 @@ Om du inte vill skicka in en höjdpunkt trycker du på Avbryt och markerar den a
   <string name="morphe_sb_color_opacity_label">Opacitet:</string>
   <string name="morphe_sb_color_dot_label">Färg:</string>
   <string name="morphe_sb_about_title">Om</string>
+  <string name="morphe_sb_about_api_summary">"Data tillhandahålls av SponsorBlock-API:et
+
+Tryck här för att öppna Sponsor.ajay.app och se nedladdningar för andra plattformar"</string>
 </resources>

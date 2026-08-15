@@ -66,16 +66,11 @@ internal object OnClickLithoButtonBufferObjectFingerprint : Fingerprint(
     filters = listOf(
         opcode(opcode = Opcode.NEW_INSTANCE),
         opcode(opcode = Opcode.INVOKE_DIRECT, location = MatchAfterImmediately()),
-        newInstance(type = "Ljava/util/HashMap;", location = MatchAfterImmediately()),
-        fieldAccess(
-            opcode = Opcode.IGET_OBJECT,
-            type = "Ljava/util/Map;",
-            location = MatchAfterImmediately()
-        ),
+        newInstance(type = "Ljava/util/HashMap;", location = MatchAfterWithin(5)),
         methodCall(
             opcode = Opcode.INVOKE_DIRECT,
             smali = "Ljava/util/HashMap;-><init>(Ljava/util/Map;)V",
-            location = MatchAfterImmediately()
+            location = MatchAfterWithin(5)
         ),
         string("command_status_callback", location = MatchAfterImmediately())
     )

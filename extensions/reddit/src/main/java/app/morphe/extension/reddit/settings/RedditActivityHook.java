@@ -7,12 +7,15 @@
 
 package app.morphe.extension.reddit.settings;
 
+import static app.morphe.extension.shared.StringRef.str;
+
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -28,14 +31,18 @@ import java.util.Objects;
 
 import app.morphe.extension.reddit.settings.preference.RedditPreferenceFragment;
 import app.morphe.extension.reddit.ui.MorpheSettingsIconVectorDrawable;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.Dim;
+import kotlin.jvm.functions.Function0;
 
 @SuppressWarnings({"deprecation", "unused"})
 public class RedditActivityHook {
     private static final Drawable MORPHE_ICON = MorpheSettingsIconVectorDrawable.getIcon();
     private static final String MORPHE_LABEL = "Morphe";
+    private static final String PRIVACY_POLICY_URI = Objects.requireNonNull(
+            ResourceUtils.getString("privacy_policy_uri"));
 
     /**
      * Injection point.
@@ -51,6 +58,22 @@ public class RedditActivityHook {
      */
     public static String getSettingLabel() {
         return MORPHE_LABEL;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static Function0<Object> getGoogleSignInFunction() {
+        // Must use anonymous declaration.
+        // Using a lambda creates a different bytecode that doesn't work.
+        // noinspection Convert2Lambda
+        return new Function0<>() {
+            @Override
+            public Object invoke() {
+                Utils.showToastLong(str("morphe_google_signin_not_available_toast"));
+                return null;
+            }
+        };
     }
 
     /**
@@ -110,13 +133,11 @@ public class RedditActivityHook {
     /**
      * Injection point.
      */
-    public static boolean openMorpheSettings(Enum<?> e) {
-        if (isAcknowledgment(e)) {
-            Activity activity = Utils.getActivity();
-            if (activity != null) {
-                new MorpheSettingsDialog().show(activity.getFragmentManager(), "morphe_settings");
-                return true;
-            }
+    public static boolean openMorpheSettings(Activity activity, Uri uri) {
+        Logger.printInfo(() -> "Uri: " + uri);
+        if (PRIVACY_POLICY_URI.equals(uri.toString())) {
+            new MorpheSettingsDialog().show(activity.getFragmentManager(), "morphe_settings");
+            return true;
         }
         return false;
     }

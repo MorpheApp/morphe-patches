@@ -38,7 +38,6 @@ public class ListenBrainz {
      */
     public static TokenValidation validateToken(String token) throws Exception {
         Utils.verifyOffMainThread();
-        //noinspection ExtractMethodRecommender
         if (token == null || token.isBlank()) {
             throw new IllegalArgumentException("User token is missing or blank");
         }
@@ -164,7 +163,6 @@ public class ListenBrainz {
         Utils.verifyOffMainThread();
         byte[] jsonBodyBytes = jsonBody.getBytes(StandardCharsets.UTF_8);
 
-        //noinspection ExtractMethodRecommender
         HttpURLConnection conn = Requester.openConnection(BASE_URL + path);
         conn.setRequestMethod("POST");
         conn.setRequestProperty("User-Agent", USER_AGENT);

@@ -11,20 +11,10 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
-import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.cloneParameters
-import app.morphe.util.findInstructionIndicesReversedOrThrow
-import app.morphe.util.getReference
-import app.morphe.util.insertLiteralOverride
-import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/DisableDRCAudioPatch;"
 
@@ -46,95 +36,38 @@ internal fun disableDRCAudioPatch(
             SwitchPreference("morphe_disable_drc_audio")
         )
 
-        val compressionRatioInstructionMatches = CompressionRatioFingerprint.instructionMatches
-
-        val formatField =
-            compressionRatioInstructionMatches.first().instruction.getReference<FieldReference>()!!
-        val loudnessDbField =
-            compressionRatioInstructionMatches[2].instruction.getReference<FieldReference>()!!
-
-        FormatStreamModelConstructorFingerprint.let {
-            it.method.cloneParameters().apply {
-                val helperMethod = ImmutableMethod(
-                    definingClass,
-                    "patch_setLoudnessDb",
-                    listOf(),
-                    "V",
-                    AccessFlags.PRIVATE.value or AccessFlags.FINAL.value,
-                    null,
-                    null,
-                    MutableMethodImplementation(7),
-                ).toMutable().apply {
-                    addInstructionsWithLabels(
-                        0,
-                        """
-                            invoke-static {}, $EXTENSION_CLASS->disableDrcAudio()Z
-                            move-result v0
-                            if-eqz v0, :exit
-
-                            # Get format field.
-                            iget-object v0, p0, $formatField
-
-                            # Set loudnessDb to 0.
-                            const/4 v1, 0x0
-                            iput v1, v0, $loudnessDbField
-
-                            # Set format field.
-                            iput-object v0, p0, $formatField
-
-                            :exit
-                            return-void
-                        """
-                    )
-                }
-
-                it.classDef.methods.add(helperMethod)
-
-                findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
-                    addInstructionsAtControlFlowLabel(
-                        index,
-                        "invoke-direct/range { p0 .. p0 }, $helperMethod"
-                    )
-                }
-            }
-        }
-
-        val setConfigDisabledMethod = "$EXTENSION_CLASS->disableDrcAudioConfig(Z)Z"
-
-        if (useLegacyNormalizationFlag()) {
-            // If this flag is enabled, the DRC level will depend on other values besides loudnessDb.
-            VolumeNormalizationConfigLegacyFingerprint.let {
-                it.method.insertLiteralOverride(
-                    it.instructionMatches.first().index,
-                    setConfigDisabledMethod
-                )
-            }
-        }
+        // Nullifying the first parameter/check will disable the normalization.
+        fun normalizationSmali(free: String, register: String) =
+            """
+                invoke-static { }, $EXTENSION_CLASS->disableDrcAudio()Z
+                move-result $free
+                if-eqz $free, :disable_drc_audio
+                const/16 $register, 0x0
+                :disable_drc_audio
+                nop
+            """
 
         if (useNormalizationFlag()) {
-            VolumeNormalizationConfigFingerprint.matchAll().forEach {
-                it.method.insertLiteralOverride(
-                    it.instructionMatches.first().index,
-                    setConfigDisabledMethod
+            VolumeNormalizationConfigFingerprint.method.addInstructionsWithLabels(
+                0,
+                normalizationSmali(
+                    "v0",
+                    "p1"
                 )
-            }
+            )
+        } else if (useLegacyNormalizationFlag()) {
+            VolumeNormalizationConfigLegacyFingerprint.apply {
+                method.apply {
+                    val index = instructionMatches[3].index
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
+                    val free = instructionMatches[4].getInstruction<TwoRegisterInstruction>().registerA
 
-            OptionalVolumeNormalizationConfigFingerprint.let {
-                it.method.apply {
-                    val moveResultIndex = it.instructionMatches[3].index
-                    val moveResultRegister = getInstruction<OneRegisterInstruction>(moveResultIndex).registerA
-
-                    addInstructionsAtControlFlowLabel(
-                        moveResultIndex + 1,
-                        """
-                            invoke-static { v$moveResultRegister }, $EXTENSION_CLASS->enableDrcAudioConfig(Z)Z
-                            move-result v$moveResultRegister
-                        """
-                    )
-
-                    it.method.insertLiteralOverride(
-                        it.instructionMatches.first().index,
-                        setConfigDisabledMethod
+                    addInstructionsWithLabels(
+                        index,
+                        normalizationSmali(
+                            "v$free",
+                            "v$register"
+                        )
                     )
                 }
             }

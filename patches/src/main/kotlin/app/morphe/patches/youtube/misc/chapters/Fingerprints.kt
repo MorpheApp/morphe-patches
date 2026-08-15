@@ -7,8 +7,16 @@
 package app.morphe.patches.youtube.misc.chapters
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.checkCast
+import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.methodCall
+import app.morphe.patcher.opcode
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
 
 internal object TimelineMarkerFingerprint : Fingerprint (
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -27,3 +35,28 @@ internal fun getTimelineMarkersArrayFingerprint(timelineMarkerClassName: String)
     )
 ) {}
 
+internal object HeatMapPeakPointFingerprint : Fingerprint (
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Ljava/lang/Object;"),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Lj$/util/Optional;->isPresent()Z"
+        ),
+        opcode(
+            opcode = Opcode.MOVE_RESULT,
+            location = MatchAfterImmediately()
+        ),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "Lj$/util/Optional;",
+            location = MatchAfterWithin(2)
+        ),
+        resourceLiteral(
+            ResourceType.DIMEN,
+            "ic_marker_decoration_size",
+            location = MatchAfterWithin(37)
+        )
+    )
+)

@@ -29,6 +29,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
+import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.function.Consumer;
 
 import app.morphe.extension.shared.Logger;
@@ -163,7 +165,7 @@ public class VoiceOverTranslationPatch {
     private static boolean wasExplicitSeek;
     private static volatile boolean httpErrorDialogShownThisVideo;
 
-    private static Runnable onStateChangeCallback;
+    private static final Set<Runnable> stateChangeCallbacks = new CopyOnWriteArraySet<>();
 
     private static TextToSpeech tts;
     private static boolean ttsReady;
@@ -379,16 +381,30 @@ public class VoiceOverTranslationPatch {
     /** Flips the session enabled flag and either stops TTS or kicks off transcript loading. */
     public static void toggleTranslation() {
         Utils.verifyOnMainThread();
-        sessionEnabled = !sessionEnabled;
-        Settings.VOT_SESSION_ENABLED.save(sessionEnabled);
-        if (!sessionEnabled) {
-            stopTts();
-            lastSpokenIndex = -1;
-        } else {
-            if (!currentVideoId.isEmpty() && segments.isEmpty() && !isLoading) {
-                loadTranscript(currentVideoId);
-            }
+        if (sessionEnabled) {
+            deactivateTranslation();
+            return;
         }
+        sessionEnabled = true;
+        Settings.VOT_SESSION_ENABLED.save(true);
+        if (!currentVideoId.isEmpty() && segments.isEmpty() && !isLoading) {
+            loadTranscript(currentVideoId);
+        }
+        notifyStateChanged();
+    }
+
+    /**
+     * Explicitly disables the session and stops any in-progress TTS. No-op if already off.
+     * Unlike {@link #toggleTranslation()}, this never turns the session on, so it is safe for
+     * another voice-over engine to call to enforce that only one engine speaks at a time.
+     */
+    public static void deactivateTranslation() {
+        Utils.verifyOnMainThread();
+        if (!sessionEnabled) return;
+        sessionEnabled = false;
+        Settings.VOT_SESSION_ENABLED.save(false);
+        stopTts();
+        lastSpokenIndex = -1;
         notifyStateChanged();
     }
 
@@ -441,16 +457,21 @@ public class VoiceOverTranslationPatch {
         }
     }
 
-    /** Registers a callback fired whenever toggle/load state changes (used by the player button UI). */
-    public static void setOnTranslationStateChangeCallback(Runnable callback) {
+    /**
+     * Registers a callback fired whenever toggle/load state changes. Used by the player button
+     * UI, and by other voice-over engines that need to react when this one is toggled.
+     */
+    public static void addOnTranslationStateChangeCallback(Runnable callback) {
         Utils.verifyOnMainThread();
-        onStateChangeCallback = callback;
+        if (callback != null) stateChangeCallbacks.add(callback);
     }
 
     private static void notifyStateChanged() {
         Logger.printDebug(() -> "notifyStateChanged");
         Utils.verifyOnMainThread();
-        if (onStateChangeCallback != null) onStateChangeCallback.run();
+        for (Runnable callback : stateChangeCallbacks) {
+            callback.run();
+        }
     }
 
     private static void loadTranscript(String videoId) {

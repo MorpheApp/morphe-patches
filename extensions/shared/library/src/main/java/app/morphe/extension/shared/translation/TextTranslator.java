@@ -102,6 +102,7 @@ public final class TextTranslator {
 
         StringBuilder joined = new StringBuilder(100 * lines.size());
         for (String line : lines) {
+            //noinspection SizeReplaceableByIsEmpty
             if (joined.length() > 0) {
                 joined.append('\n');
             }

@@ -13,7 +13,6 @@ dependencies {
     compileOnly(project(":extensions:youtube:stub"))
 
     implementation(libs.collections4)
-    implementation(libs.lang3)
     implementation(libs.protobuf.javalite)
 }
 

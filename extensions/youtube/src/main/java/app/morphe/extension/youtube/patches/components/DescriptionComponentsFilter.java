@@ -93,7 +93,8 @@ public final class DescriptionComponentsFilter extends Filter {
 
         hashtagSectionBuffer = new ByteArrayFilterGroup(
                 null,
-                "FEhashtag"
+                "FEhashtag",
+                "/charts" // https://charts.youtube.com/charts/
         );
 
         final StringFilterGroup howThisWasMadeSection = new StringFilterGroup(

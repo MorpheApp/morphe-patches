@@ -68,6 +68,7 @@ public final class LayoutComponentsFilter extends Filter {
     private static final AtomicInteger singleItemInformationPanelIndex = new AtomicInteger(-1);
     private final StringFilterGroup expandableMetadata;
     private final ByteArrayFilterGroup summaryCardBuffer;
+    private final StringFilterGroup exploreTopicsShelf;
     private final StringFilterGroup compactChannelBarInner;
     private final StringFilterGroup compactChannelBarInnerButton;
     private final ByteArrayFilterGroup joinMembershipButton;
@@ -80,6 +81,7 @@ public final class LayoutComponentsFilter extends Filter {
     private final ByteArrayFilterGroup getPremiumButtonBuffer;
     private final StringFilterGroup videoLabels;
     private final ByteArrayFilterGroupList videoLabelsGroupList = new ByteArrayFilterGroupList();
+    private final StringFilterGroup videoRecommendationLabels;
 
     public enum ExpandableCardStyle {
         SHOW_ALL,
@@ -103,7 +105,7 @@ public final class LayoutComponentsFilter extends Filter {
                 "cell_divider"
         );
 
-        final var exploreTopicsShelf = new StringFilterGroup(
+        exploreTopicsShelf = new StringFilterGroup(
                 Settings.HIDE_HORIZONTAL_SHELVES,
                 "chips_shelf"
         );
@@ -132,11 +134,18 @@ public final class LayoutComponentsFilter extends Filter {
                 "connections_inbox_zero_state"
         );
 
+        // The hint shown in the player during seek gestures. The identifier is versioned.
+        final var seekEduOverlay = new StringFilterGroup(
+                Settings.HIDE_PLAYER_GESTURE_HINTS,
+                "seek_edu_overlay"
+        );
+
         addIdentifierCallbacks(
                 cellDivider,
                 exploreTopicsShelf,
                 liveChatReplay,
-                inviteToMessageCard
+                inviteToMessageCard,
+                seekEduOverlay
         );
 
         // Paths.
@@ -379,7 +388,7 @@ public final class LayoutComponentsFilter extends Filter {
                 "player_overlay_video_heading.e"
         );
 
-        final var videoRecommendationLabels = new StringFilterGroup(
+        videoRecommendationLabels = new StringFilterGroup(
                 Settings.HIDE_VIDEO_RECOMMENDATION_LABELS,
                 "endorsement_header_footer.e"
         );
@@ -442,6 +451,10 @@ public final class LayoutComponentsFilter extends Filter {
         // Filter them separately here.
         if (matchedGroup == notifyMe || matchedGroup == surveys) {
             return true;
+        }
+
+        if (matchedGroup == exploreTopicsShelf) {
+            return NavigationButton.getSelectedNavigationButton() != NavigationButton.LIBRARY;
         }
 
         // Exceptions are not filtered.
@@ -526,6 +539,10 @@ public final class LayoutComponentsFilter extends Filter {
 
         if (matchedGroup == videoLabels) {
             return videoLabelsGroupList.check(buffer).isFiltered();
+        }
+
+        if (matchedGroup == videoRecommendationLabels) {
+            return NavigationBar.isSearchBarActive();
         }
 
         return true;
@@ -979,6 +996,16 @@ public final class LayoutComponentsFilter extends Filter {
                     current.setLayoutParams(marginParams);
                 }
             }
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideChaptersTimelineButton(View view) {
+        if (view != null && Settings.HIDE_CHAPTERS_TIMELINE_BUTTON.get()) {
+            Utils.hideViewByLayoutParams(view);
+            view.setVisibility(View.GONE);
         }
     }
 

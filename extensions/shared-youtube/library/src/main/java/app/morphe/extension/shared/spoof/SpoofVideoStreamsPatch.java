@@ -23,9 +23,11 @@ import java.util.Map;
 import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
+import app.morphe.extension.shared.spoof.requests.VisitorIdRequester;
 
 @SuppressWarnings("unused")
 public class SpoofVideoStreamsPatch {
@@ -57,7 +59,7 @@ public class SpoofVideoStreamsPatch {
     private static final String INTERNET_CONNECTION_CHECK_URI_STRING = "https://www.google.com/gen_204";
     private static final Uri INTERNET_CONNECTION_CHECK_URI = Uri.parse(INTERNET_CONNECTION_CHECK_URI_STRING);
 
-    private static final boolean SPOOF_VIDEO_STREAMS = SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.get();
+    private static final boolean SPOOF_VIDEO_STREAMS = isPatchIncluded() && SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.get();
 
     private static volatile ClientType preferredClient = ClientType.VISIONOS_1_02;
 
@@ -83,7 +85,13 @@ public class SpoofVideoStreamsPatch {
 
     public static void setClientsToUse(List<ClientType> availableClients, ClientType client) {
         preferredClient = Objects.requireNonNull(client);
-        StreamingDataRequest.setClientOrderToUse(availableClients, client);
+
+        if (SPOOF_VIDEO_STREAMS) {
+            StreamingDataRequest.setClientOrderToUse(availableClients, client);
+
+            // Prefetch visitorId for default client.
+            Utils.runOnBackgroundThread(() -> VisitorIdRequester.getVisitorId(client));
+        }
     }
 
     public static ClientType getPreferredClient() {
@@ -91,12 +99,11 @@ public class SpoofVideoStreamsPatch {
     }
 
     public static boolean spoofingToClientWithNoMultiAudioStreams() {
-        return isPatchIncluded() && SPOOF_VIDEO_STREAMS
-                && !preferredClient.supportsMultiAudioTracks;
+        return SPOOF_VIDEO_STREAMS && !preferredClient.supportsMultiAudioTracks;
     }
 
     public static boolean spoofingToClientWithSABROrSpoofingDisabled() {
-        return !isPatchIncluded() || !SPOOF_VIDEO_STREAMS || preferredClient.requireSABR;
+        return !SPOOF_VIDEO_STREAMS || preferredClient.requireSABR;
     }
 
     /**
@@ -178,10 +185,10 @@ public class SpoofVideoStreamsPatch {
      * Only invoked when playing a livestream on an Apple client.
      */
     public static boolean fixHLSCurrentTime(boolean original) {
-        if (!SPOOF_VIDEO_STREAMS) {
-            return original;
+        if (SPOOF_VIDEO_STREAMS) {
+            return false;
         }
-        return false;
+        return original;
     }
 
     /**
@@ -260,7 +267,7 @@ public class SpoofVideoStreamsPatch {
             try {
                 Uri uri = Uri.parse(url);
                 String path = uri.getPath();
-                if (path == null) {
+                if (path == null || !path.contains("player")) {
                     return;
                 }
 
@@ -268,8 +275,7 @@ public class SpoofVideoStreamsPatch {
                 // 'heartbeat' has no video and appears to be only after playback has started.
                 // 'refresh' has no video ID and appears to happen when waiting for a livestream to start.
                 // 'ad_break' has no video ID.
-                if (!path.contains("player") ||
-                        path.contains("get_drm_license") ||
+                if (path.contains("get_drm_license") ||
                         path.contains("heartbeat") ||
                         path.contains("refresh") ||
                         path.contains("ad_break")) {

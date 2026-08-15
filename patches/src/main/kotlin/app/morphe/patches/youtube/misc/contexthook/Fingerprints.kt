@@ -11,6 +11,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
@@ -20,7 +21,29 @@ import com.android.tools.smali.dexlib2.Opcode
 internal const val CLIENT_INFO_CLASS =
     $$"Lcom/google/protos/youtube/api/innertube/InnertubeContext$ClientInfo;"
 
+// 21.33+
 internal object AuthenticationChangeListenerFingerprint : Fingerprint(
+    classFingerprint = Fingerprint(
+        returnType = "Ljava/util/List;",
+        parameters = listOf(
+            "Ljava/util/concurrent/Executor;",
+            "Lcom/google/protobuf/MessageLite;",
+            "L"
+        ),
+        filters = listOf(
+            literal(163),
+            string("processFutAsync")
+        )
+    ),
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    returnType = "V",
+    filters = listOf(
+        methodCall(opcode = Opcode.INVOKE_VIRTUAL, parameters = emptyList(), returnType = "L")
+    )
+)
+
+// 21.32 and older
+internal object AuthenticationChangeListenerLegacyFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
     returnType = "V",
     strings = listOf("Authentication changed while request was being made"),
@@ -28,6 +51,7 @@ internal object AuthenticationChangeListenerFingerprint : Fingerprint(
         methodCall(opcode = Opcode.INVOKE_VIRTUAL, parameters = emptyList(), returnType = "L")
     )
 )
+
 
 private object BuildClientContextBodyConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),

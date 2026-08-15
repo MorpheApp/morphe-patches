@@ -69,6 +69,12 @@ internal object BackgroundPlaybackSettingsFingerprint : Fingerprint(
     )
 )
 
+internal object AutomaticForegroundPlaybackResumeFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45770945L)
+    )
+)
+
 internal object KidsBackgroundPlaybackPolicyControllerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",

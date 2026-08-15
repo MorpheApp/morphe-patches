@@ -2,7 +2,7 @@
 <!--
 
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -27,6 +27,10 @@ Second \"item\" text"</string>
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Apie</string>
   <string name="morphe_settings_music_screen_1_ads_title">Reklamos</string>
+  <string name="morphe_settings_music_screen_2_feed_title">Tiekimas</string>
+  <string name="morphe_settings_music_screen_3_general_title">Bendras</string>
+  <string name="morphe_settings_music_screen_4_player_title">Leistuvas</string>
+  <string name="morphe_settings_music_screen_9_misc_title">Kiti nustatymai</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Paslėpti \"Gauti Music Premium\" etiketę</string>
   <string name="morphe_music_hide_video_ads_title">Paslėpti vaizdo reklamas</string>

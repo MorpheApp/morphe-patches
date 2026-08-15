@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
+
     Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
-    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+    Raw strings still require escaping embedded double quotes but escaping embedded single quotes is optional.
 
     Raw strings are required because Crowdin AI translations regularly gets confused and
     replace \n with an encoded new line character.
@@ -15,11 +16,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-  <string name="morphe_sb_enabled_title">Ativar SponsorBlock</string>
-  <string name="morphe_sb_enabled_summary">SponsorBlock é um sistema de crowdsourcing para pular partes irritantes de vídeos do YouTube</string>
+  <string name="morphe_sb_enabled_title">Ativar o SponsorBlock</string>
+  <string name="morphe_sb_enabled_summary">O SponsorBlock é um sistema feito pela comunidade para pular partes chatas de vídeos do YouTube</string>
   <string name="morphe_sb_appearance_category_title">Aparência</string>
   <string name="morphe_sb_voting_button_title">Mostrar botão votar</string>
-  <string name="morphe_sb_voting_button_summary">Adiciona um botão para avaliar segmentos positivamente ou negativamente</string>
+  <string name="morphe_sb_voting_button_summary">Adiciona um botão para votar nos segmentos de forma positiva ou negativa</string>
   <string name="morphe_sb_square_layout_title">Usar layout quadrado</string>
   <string name="morphe_sb_square_layout_summary">Usa cantos quadrados para botões e controles do SponsorBlock</string>
   <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
@@ -47,7 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_video_length_without_segments_summary">Subtrai todos os segmentos da duração total do vídeo exibida na barra de busca</string>
   <string name="morphe_sb_create_segment_category_title">Criando segmentos</string>
   <string name="morphe_sb_create_new_segment_title">Mostrar botão \'Criar novo segmento\'</string>
-  <string name="morphe_sb_create_new_segment_summary">Adiciona um botão ao reprodutor de vídeo que permite enviar novos segmentos do SponsorBlock</string>
+  <string name="morphe_sb_create_new_segment_summary">Adiciona um botão ao player de vídeo permitindo enviar novos segmentos do SponsorBlock</string>
   <string name="morphe_sb_create_new_segment_step_title">Etapa de ajuste de tempo</string>
   <string name="morphe_sb_create_new_segment_step_summary">Quantidade de avanço/retrocesso do tempo dos botões de ajuste (em milissegundos)</string>
   <string name="morphe_sb_create_new_segment_step_invalid">Valor deve ser um número positivo</string>
@@ -70,17 +71,17 @@ Second \"item\" text"</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">O ID do usuário privado deve ter pelo menos 30 caracteres</string>
   <string name="morphe_sb_api_url_title">Alterar URL da API</string>
   <string name="morphe_sb_api_url_summary">SponsorBlock usa esse endereço para fazer chamadas ao servidor</string>
-  <string name="morphe_sb_channel_whitelist_title">Lista de permissões de canais</string>
-  <string name="morphe_sb_channel_whitelist_summary">O SponsorBlock está desativado para canais na lista de permissões</string>
+  <string name="morphe_sb_channel_whitelist_title">Lista branca de canais</string>
+  <string name="morphe_sb_channel_whitelist_summary">O SponsorBlock está desativado para canais na lista branca</string>
   <string name="morphe_sb_channel_whitelist_current_channel">Canal atual:</string>
-  <string name="morphe_sb_channel_whitelist_add">Adicionar à lista de permissões</string>
+  <string name="morphe_sb_channel_whitelist_add">Adicionar à lista branca</string>
   <string name="morphe_sb_channel_whitelist_remove">Remover</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Canais na lista de permissões</string>
-  <string name="morphe_sb_channel_whitelist_empty">Nenhum canal na lista de permissões</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Canal adicionado à lista de permissões</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Canal removido da lista de permissões</string>
-  <string name="morphe_sb_toast_on_whitelisted_channel_title">Notificar sobre canais na lista de permissões</string>
-  <string name="morphe_sb_toast_on_whitelisted_channel_summary">Mostra uma notificação quando o SponsorBlock é desativado para um canal na lista de permissões</string>
+  <string name="morphe_sb_channel_whitelist_channels_header">Canais na lista branca</string>
+  <string name="morphe_sb_channel_whitelist_empty">Nenhum canal na lista branca</string>
+  <string name="morphe_sb_channel_whitelist_channel_added">Canal adicionado à lista branca</string>
+  <string name="morphe_sb_channel_whitelist_channel_removed">Canal removido da lista branca</string>
+  <string name="morphe_sb_toast_on_whitelisted_channel_title">Notificar sobre canais na lista branca</string>
+  <string name="morphe_sb_toast_on_whitelisted_channel_summary">Mostra uma notificação quando o SponsorBlock é desativado para um canal na lista branca</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock desativado para este canal</string>
   <string name="morphe_sb_api_url_reset">Redefinir URL da API</string>
   <string name="morphe_sb_api_url_invalid">URL da API é inválido</string>
@@ -180,7 +181,7 @@ Já existe"</string>
   <string name="morphe_sb_new_segment_disabled_category">Categoria está desativada nas configurações. Ative a categoria para enviar.</string>
   <string name="morphe_sb_new_segment_title">Novo segmento SponsorBlock</string>
   <string name="morphe_sb_new_segment_mark_time_as_question">Definir %s como início ou fim de um novo segmento?</string>
-  <string name="morphe_sb_new_segment_mark_start">Começar</string>
+  <string name="morphe_sb_new_segment_mark_start">Começo</string>
   <string name="morphe_sb_new_segment_mark_end">Fim</string>
   <string name="morphe_sb_new_segment_now">Agora</string>
   <string name="morphe_sb_new_segment_time_start">Tempo em que o segmento começa</string>
@@ -215,7 +216,7 @@ Se você não estiver enviando um destaque, toque em Cancelar e marque a segunda
   <string name="morphe_sb_stats_loading">Carregando…</string>
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock está desativado</string>
   <string name="morphe_sb_stats_username">Seu nome de usuário: &lt;b&gt;%s&lt;/b&gt;</string>
-  <string name="morphe_sb_stats_username_change">Toque aqui para alterar seu nome de usuário</string>
+  <string name="morphe_sb_stats_username_change">Toque aqui para mudar o seu nome de usuário</string>
   <string name="morphe_sb_stats_username_change_unknown_error">Não foi possível alterar o nome de usuário. Status: %1$d %2$s</string>
   <string name="morphe_sb_stats_username_changed">Nome de usuário alterado com sucesso</string>
   <string name="morphe_sb_stats_reputation">Sua reputação é &lt;b&gt;%.2f&lt;/b&gt;</string>
@@ -234,7 +235,7 @@ Se você não estiver enviando um destaque, toque em Cancelar e marque a segunda
   <string name="morphe_sb_color_opacity_label">Opacidade:</string>
   <string name="morphe_sb_color_dot_label">Cor:</string>
   <string name="morphe_sb_about_title">Sobre</string>
-  <string name="morphe_sb_about_api_summary">"Os dados são fornecidos pela API SponsorBlock.
+  <string name="morphe_sb_about_api_summary">"Os dados são fornecidos pela API do SponsorBlock.
 
 Toque aqui para abrir Sponsor.ajay.app e veja downloads para outras plataformas"</string>
 </resources>
