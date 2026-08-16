@@ -194,15 +194,14 @@ val swipeControlsPatch = bytecodePatch(
         }
 
         PlayerOverlayContainerFingerprint.let {
-            val containerClass = it.classDef
-            val overlayNameField = containerClass.fields.first { field ->
+            val overlayNameField = it.classDef.fields.first { field ->
                 field.type == "Ljava/lang/String;"
             }
 
             it.method.addInstructions(
                 0,
                 """
-                    iget-object v0, p0, ${containerClass.type}->${overlayNameField.name}:Ljava/lang/String;
+                    iget-object v0, p0, $overlayNameField
                     invoke-static { p0, v0 }, $EXTENSION_CLASS->setPlayerOverlay(Landroid/view/View;Ljava/lang/String;)V
                 """
             )
