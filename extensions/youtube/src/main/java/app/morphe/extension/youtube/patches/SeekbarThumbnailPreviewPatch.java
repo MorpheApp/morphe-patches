@@ -254,7 +254,7 @@ public class SeekbarThumbnailPreviewPatch {
         final TextView heatMapPeakPoint = new TextView(context);
         heatMapPeakPoint.setText(heatMapPeakPointDescription);
         heatMapPeakPoint.setTextColor(Color.WHITE);
-        heatMapPeakPoint.setTextSize(12);
+        heatMapPeakPoint.setTextSize(10);
         heatMapPeakPoint.setGravity(Gravity.CENTER);
         heatMapPeakPoint.setBackgroundColor(semitransparentBlackBackgroundColor);
         heatMapPeakPoint.setSingleLine(true);
