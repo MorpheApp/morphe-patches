@@ -14,5 +14,6 @@ import app.morphe.patches.youtube.misc.litho.context.conversionContextPatch
 val treeNodeElementHookPatch = createTreeNodeElementHookPatch(
     sharedExtensionPatch,
     conversionContextPatch,
-    false
+    false,
+    useLegacyContextRegister = { false }
 )

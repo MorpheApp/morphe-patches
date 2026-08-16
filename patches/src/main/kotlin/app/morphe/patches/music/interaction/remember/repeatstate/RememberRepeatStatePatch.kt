@@ -14,6 +14,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
+import app.morphe.patches.music.misc.playservice.is_9_32_or_greater
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
@@ -39,10 +40,16 @@ val rememberRepeatStatePatch = bytecodePatch(
             SwitchPreference("morphe_music_remember_repeat_state"),
         )
 
-        val startIndex = RepeatTrackFingerprint.instructionMatches.last().index
-        val moveResultIndex = RepeatTrackFingerprint.instructionMatches[4].index
+        val fingerprint = if (is_9_32_or_greater) {
+            RepeatTrackFingerprint
+        } else {
+            RepeatTrackLegacyFingerprint
+        }
 
-        RepeatTrackFingerprint.method.apply {
+        val startIndex = fingerprint.instructionMatches.last().index
+        val moveResultIndex = fingerprint.instructionMatches[4].index
+
+        fingerprint.method.apply {
             // Start index is at a branch, but the same
             // register is clobbered in both branch paths.
             val targetRegister = getInstruction<OneRegisterInstruction>(moveResultIndex).registerA

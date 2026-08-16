@@ -58,7 +58,7 @@ internal object SwitchToggleColorFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("L", "J"),
     filters = listOf(
-        methodCall(opcode = Opcode.INVOKE_STATIC, smali = $$"Lj$/time/Duration;->ofMillis(J)Lj$/time/Duration;"),
+        methodCall(opcode = Opcode.INVOKE_STATIC, smali = "Lj$/time/Duration;->ofMillis(J)Lj$/time/Duration;"),
         opcode(Opcode.IF_NE),
         opcode(Opcode.IGET_OBJECT, location = MatchAfterImmediately()),
         opcode(Opcode.GOTO, location = MatchAfterWithin(5)),
@@ -85,7 +85,6 @@ internal object SwitchToggleColorLegacyFingerprint : Fingerprint(
         opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterImmediately()),
     )
 )
-
 
 internal object MinimizedPlayerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
