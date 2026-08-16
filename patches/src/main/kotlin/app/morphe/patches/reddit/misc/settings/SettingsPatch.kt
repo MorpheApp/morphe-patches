@@ -11,6 +11,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.string
@@ -24,6 +25,7 @@ import app.morphe.patches.all.misc.updates.disablePlayStoreUpdatesPatch
 import app.morphe.patches.reddit.misc.extension.hooks.redditActivityOnCreateHook
 import app.morphe.patches.reddit.misc.extension.sharedExtensionPatch
 import app.morphe.patches.reddit.misc.fix.signature.spoofSignaturePatch
+import app.morphe.patches.reddit.misc.version.is_2024_03_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_14_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_25_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_30_0_or_greater
@@ -40,6 +42,7 @@ import app.morphe.util.registersUsed
 import app.morphe.util.returnEarly
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import java.util.logging.Logger
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/settings/RedditActivityHook;"
@@ -96,6 +99,18 @@ val settingsPatch = bytecodePatch(
         setAddResourceLocale(localesReddit)
         addAppResources("shared")
         addAppResources("reddit")
+
+        if (!is_2024_03_0_or_greater) {
+            throw PatchException(
+                """
+                    
+                    !!!
+                    !!! Reddit 2024.02.0 supports only 1 patch.
+                    !!! Select the recommended patches to patch this legacy app version.
+                    !!!
+                """
+            )
+        }
 
         // Turn off Google Play in app update prompt.
         GooglePlayUpdateCheckFingerprint.method.returnEarly(null);

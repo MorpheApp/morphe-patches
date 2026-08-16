@@ -39,4 +39,11 @@ internal object Constants {
             )
         )
     )
+
+    val COMPATIBILITY_REDDIT_INCLUDING_LEGACY = COMPATIBILITY_REDDIT.including(
+        AppTarget(
+            version = "2024.02.0",
+            minSdk = 28
+        )
+    )
 }
