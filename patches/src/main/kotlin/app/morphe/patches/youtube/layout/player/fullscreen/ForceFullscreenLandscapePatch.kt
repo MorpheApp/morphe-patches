@@ -1,8 +1,8 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/2431
  *
- * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.patches.youtube.layout.player.fullscreen
@@ -21,7 +21,7 @@ private const val FORCE_LANDSCAPE_EXTENSION_CLASS =
 @Suppress("unused")
 val forceFullscreenLandscapePatch = bytecodePatch(
     name = "Force fullscreen landscape",
-    description = "Adds an option to force landscape orientation whenever the regular video player enters fullscreen mode.",
+    description = "Adds an option to force fullscreen portrait mode when viewing videos with landscape aspect ratio.",
 ) {
     compatibleWith(COMPATIBILITY_YOUTUBE)
 

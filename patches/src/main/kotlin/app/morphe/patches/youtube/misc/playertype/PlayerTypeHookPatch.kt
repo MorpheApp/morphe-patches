@@ -37,20 +37,16 @@ val playerTypeHookPatch = bytecodePatch(
     dependsOn(sharedExtensionPatch, resourceMappingPatch)
 
     execute {
-        Fingerprint(
-            definingClass = "/YouTubePlayerOverlaysLayout;",
-            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-            returnType = "V",
-            parameters = listOf(
-                PlayerTypeEnumFingerprint.originalClassDef.type
-            )
-        ).method.apply {
-            playerTypeMethodRef = WeakReference(this)
-            addInstruction(
-                0,
-                "invoke-static { p1 }, $EXTENSION_CLASS->setPlayerType(Ljava/lang/Enum;)V",
-            )
-        }
+        playerTypeMethodRef = WeakReference(
+            Fingerprint(
+                definingClass = "/YouTubePlayerOverlaysLayout;",
+                accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+                returnType = "V",
+                parameters = listOf(PlayerTypeEnumFingerprint.originalClassDef.type)
+            ).method
+        )
+
+        addPlayerTypeHook("$EXTENSION_CLASS->setPlayerType(Ljava/lang/Enum;)V")
 
         ReelWatchPagerFingerprint.let {
             it.method.apply {
