@@ -570,6 +570,9 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_swipe_zone_label_volume">Volume</string>
     <string name="morphe_swipe_zone_label_native">Native</string>
     <string name="morphe_swipe_zone_label_off">Off</string>
+    <string name="morphe_swipe_ignore_when_locked_title">Ignore swipes when locked</string>
+    <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+    <string name="morphe_swipe_ignore_when_locked_summary">Swipe gestures are ignored while the player is locked with \'Lock screen\'</string>
     <string name="morphe_swipe_press_to_engage_title">Enable press to swipe gesture</string>
     <string name="morphe_swipe_press_to_engage_summary">Requires pressing and holding before a swipe gesture is recognized</string>
     <string name="morphe_swipe_haptic_feedback_title">Enable haptic feedback</string>

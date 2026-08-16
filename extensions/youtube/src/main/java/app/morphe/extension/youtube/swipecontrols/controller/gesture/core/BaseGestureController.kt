@@ -56,43 +56,45 @@ abstract class BaseGestureController(
     private var didCancelDownstream = false
 
     override fun submitTouchEvent(motionEvent: MotionEvent): Boolean {
-        // ignore if swipe is disabled
+        // Ignore if swipe is disabled.
         if (!controller.config.enableSwipeControls) {
             return false
         }
 
-        // ignore if status bar is visible
+        // Ignore if status bar is visible.
         if (controller.statusBarVisible) {
             return false
         }
 
-        // create a copy of the event so we can modify it
-        // without causing any issues downstream
+        // Ignore if the native lock screen is engaged.
+        if (controller.config.shouldIgnoreSwipesWhenLocked && SwipeControlsHostActivity.isPlayerLocked) {
+            return false
+        }
+
+        // Create a copy of the event so we can modify it without causing any issues downstream.
         val me = MotionEvent.obtain(motionEvent)
 
-        // check if we should drop this motion
+        // Check if we should drop this motion.
         val dropped = shouldDropMotion(me)
         if (dropped) {
             me.action = MotionEvent.ACTION_CANCEL
         }
 
-        // send the event to the detector
-        // if we force intercept events, the event is always consumed
+        // Send the event to the detector if we force intercept events, the event is always consumed.
         val consumed = detector.onTouchEvent(me) || shouldForceInterceptEvents
 
-        // evaluate swipe zone before recycling
+        // Evaluate swipe zone before recycling.
         val inSwipeZone = isInSwipeZone(me)
 
-        // invoke the custom onUp handler
+        // Invoke the custom onUp handler.
         if (me.action == MotionEvent.ACTION_UP || me.action == MotionEvent.ACTION_CANCEL) {
             onUp(me)
         }
 
-        // recycle the copy
+        // Recycle the copy.
         me.recycle()
 
-        // do not consume dropped events
-        // or events outside any swipe zone
+        // Do not consume dropped events or events outside any swipe zone.
         return !dropped && consumed && inSwipeZone
     }
 
@@ -117,10 +119,10 @@ abstract class BaseGestureController(
             return false
         }
 
-        // submit to swipe detector
+        // Submit to swipe detector.
         submitForSwipe(from, to, distanceX, distanceY)
 
-        // call swipe callback if in a swipe
+        // Call swipe callback if in a swipe.
         return if (currentSwipe != SwipeDetector.SwipeDirection.NONE) {
             val consumed = onSwipe(
                 from,

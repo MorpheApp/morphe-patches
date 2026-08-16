@@ -10,6 +10,7 @@
 
 package app.morphe.patches.youtube.interaction.swipecontrols
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -95,6 +96,7 @@ private val swipeControlsResourcePatch = resourcePatch {
                 tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference"
             ),
             ListPreference("morphe_swipe_speed_step"),
+            SwitchPreference("morphe_swipe_ignore_when_locked", summary = true),
             SwitchPreference("morphe_swipe_press_to_engage", summary = true),
             SwitchPreference("morphe_swipe_haptic_feedback"),
             SwitchPreference("morphe_swipe_save_and_restore_brightness", summary = true),
@@ -189,6 +191,21 @@ val swipeControlsPatch = bytecodePatch(
                     "$EXTENSION_CLASS->allowSwipeChangeVideo(Z)Z"
                 )
             }
+        }
+
+        PlayerOverlayContainerFingerprint.let {
+            val containerClass = it.classDef
+            val overlayNameField = containerClass.fields.first { field ->
+                field.type == "Ljava/lang/String;"
+            }
+
+            it.method.addInstructions(
+                0,
+                """
+                    iget-object v0, p0, ${containerClass.type}->${overlayNameField.name}:Ljava/lang/String;
+                    invoke-static { p0, v0 }, $EXTENSION_CLASS->setPlayerOverlay(Landroid/view/View;Ljava/lang/String;)V
+                """
+            )
         }
     }
 }

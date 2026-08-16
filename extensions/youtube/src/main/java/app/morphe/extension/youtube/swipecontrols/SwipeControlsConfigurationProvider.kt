@@ -157,6 +157,12 @@ class SwipeControlsConfigurationProvider {
 
     //region gesture adjustments
     /**
+     * Indicates whether swipe gestures should be ignored while the native lock screen is engaged.
+     */
+    val shouldIgnoreSwipesWhenLocked: Boolean
+        get() = Settings.SWIPE_IGNORE_WHEN_LOCKED.get()
+
+    /**
      * Indicates whether press-to-swipe mode is enabled, requiring a press before swiping to activate controls.
      */
     val shouldEnablePressToSwipe = Settings.SWIPE_PRESS_TO_ENGAGE.get()
