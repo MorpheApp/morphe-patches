@@ -982,8 +982,8 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
     <string name="morphe_override_youtube_music_buttons_title">Override YouTube Music buttons</string>
     <string name="morphe_override_youtube_music_buttons_summary">Opens your preferred music app instead of the stock YouTube Music app</string>
-    <string name="morphe_music_package_name_title">Music app package name</string>
-    <string name="morphe_music_package_name_summary">Package name of your installed music app</string>
+    <string name="morphe_custom_music_package_name_title">Music app package name</string>
+    <string name="morphe_custom_music_package_name_summary">Package name of your installed music app</string>
 
     <!-- layout.startpage.changeStartPagePatch -->
     <string name="morphe_change_start_page_title">Start page</string>

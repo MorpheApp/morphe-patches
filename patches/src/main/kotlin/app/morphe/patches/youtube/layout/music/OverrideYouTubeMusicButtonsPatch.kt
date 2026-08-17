@@ -56,7 +56,7 @@ val overrideYouTubeMusicButtonsPatch = bytecodePatch(
         PreferenceScreen.GENERAL.addPreferences(
             noTitleUnsortedPreferenceCategory(
                 SwitchPreference(key = "morphe_override_youtube_music_buttons", summary = true),
-                TextPreference(key = "morphe_music_package_name")
+                TextPreference(key = "morphe_custom_music_package_name")
             )
         )
 
