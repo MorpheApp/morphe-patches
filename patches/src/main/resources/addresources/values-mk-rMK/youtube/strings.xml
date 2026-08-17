@@ -76,6 +76,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_latest_videos_button_summary">Прикриј го синиот транспарент „Најнови видеа“ што се појавува на врвот од „Почетна“</string>
   <string name="morphe_hide_mix_playlists_title">Скриј ги плејлистите со микс</string>
   <string name="morphe_hide_movies_section_title">Скриј ја секцијата со филмови</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Скриј го копчето „Извести ме“</string>
@@ -299,6 +300,7 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_zone_label_volume">Волумен</string>
   <string name="morphe_swipe_zone_label_native">Оригинален</string>
   <string name="morphe_swipe_zone_label_off">Исклучено</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
   <string name="morphe_swipe_press_to_engage_title">Овозможете гест за притискање и повлекување</string>
   <string name="morphe_swipe_haptic_feedback_title">Овозможете хаптичен поврат</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Зачувајте и вратете ја светлоста</string>

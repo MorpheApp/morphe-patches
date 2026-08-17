@@ -83,6 +83,9 @@ Perubahan termasuk:
   <string name="morphe_hide_latest_videos_button_summary">Menyembunyikan spanduk biru \'Video terbaru\' yang muncul di bagian atas feed Beranda</string>
   <string name="morphe_hide_mix_playlists_title">Sembunyikan daftar putar campuran</string>
   <string name="morphe_hide_movies_section_title">Sembunyikan bagian film</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">Sembunyikan header menu Notifikasi</string>
+  <string name="morphe_hide_notifications_menu_header_summary">Menyembunyikan header menu Notifikasi saat mengeklik tombol lonceng</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Sembunyikan \'Beri tahu saya\'</string>
@@ -138,7 +141,7 @@ Perubahan termasuk:
   <string name="morphe_hide_player_gesture_hints_title">Sembunyikan petunjuk gestur pemutar</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
-  <string name="morphe_hide_player_gesture_hints_summary">Menyembunyikan petunjuk yang ditampilkan selama gestur pemutar, seperti \'Geser ke atas untuk presisi pencarian\', \'Lepaskan untuk membatalkan\', dan \'2x\'.</string>
+  <string name="morphe_hide_player_gesture_hints_summary">Menyembunyikan petunjuk yang ditampilkan selama gestur pemutar, seperti \'Geser ke atas untuk pencarian presisi\', \'Lepas untuk membatalkan\', dan \'2x\'</string>
   <string name="morphe_hide_snackbar_title">Sembunyikan snackbar</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Sembunyikan panduan subscriber</string>
   <string name="morphe_hide_sync_button_title">Sembunyikan tombol \'Sinkronkan ke video\'</string>
@@ -250,6 +253,8 @@ Perubahan termasuk:
   <string name="morphe_hide_comments_gift_button_title">Sembunyikan tombol Hadiah</string>
   <string name="morphe_hide_comments_info_button_title">Sembunyikan tombol Info</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Sembunyikan bilah donatur live chat</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Sembunyikan petunjuk live chat</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Menyembunyikan petunjuk di dekat kolom chat, seperti info chat khusus subscriber</string>
   <string name="morphe_hide_comments_preview_comment_title">Sembunyikan pratinjau komentar</string>
   <string name="morphe_hide_comments_preview_comment_summary">Menyembunyikan pratinjau komentar di bawah video sebelum membuka bagian komentar penuh</string>
   <string name="morphe_hide_comments_thanks_button_title">Sembunyikan tombol Terima Kasih</string>
@@ -519,6 +524,9 @@ Untuk memperbaikinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' m
   <string name="morphe_swipe_zone_label_volume">Volume</string>
   <string name="morphe_swipe_zone_label_native">Asli</string>
   <string name="morphe_swipe_zone_label_off">Nonaktif</string>
+  <string name="morphe_swipe_ignore_when_locked_title">Abaikan gerakan mengusap saat terkunci</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">Gerakan mengusap diabaikan saat pemutar dalam keadaan terkunci dengan \'Kunci layar\'</string>
   <string name="morphe_swipe_press_to_engage_title">Aktifkan tekan untuk gerakan usap</string>
   <string name="morphe_swipe_press_to_engage_summary">Memerlukan menekan dan menahan sebelum gerakan mengusap dikenali</string>
   <string name="morphe_swipe_haptic_feedback_title">Aktifkan umpan balik getar</string>

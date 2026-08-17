@@ -79,6 +79,7 @@ Perubahan termasuk:
   <string name="morphe_hide_latest_videos_button_summary">Menyorokkan sepanduk \'Video terkini\' biru yang muncul di bahagian atas suapan Laman Utama</string>
   <string name="morphe_hide_mix_playlists_title">Sorokkan senarai main adun</string>
   <string name="morphe_hide_movies_section_title">Sorokkan bahagian filem</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Sorokkan butang \'Beritahu saya\'</string>
@@ -147,6 +148,7 @@ Perubahan termasuk:
   <string name="morphe_swipe_zone_label_volume">Kelantangan</string>
   <string name="morphe_swipe_zone_label_native">Asli</string>
   <string name="morphe_swipe_zone_label_off">Mati</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
   <string name="morphe_swipe_press_to_engage_title">Dayakan gerak isyarat tekan untuk leret</string>
   <string name="morphe_swipe_haptic_feedback_title">Dayakan maklum balas sentuhan</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Simpan dan pulihkan kecerahan</string>

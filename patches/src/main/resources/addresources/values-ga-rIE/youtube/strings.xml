@@ -84,6 +84,9 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_latest_videos_button_summary">Folaíonn sé an meirge gorm \'Físeáin is Déanaí\' a thaispeántar ag barr an bheatha Baile</string>
   <string name="morphe_hide_mix_playlists_title">Folaigh seinmliostaí meascán</string>
   <string name="morphe_hide_movies_section_title">Folaigh an chuid scannán</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">Folaigh ceanntásc roghchláir Fógraí</string>
+  <string name="morphe_hide_notifications_menu_header_summary">Folaíonn sé ceanntásc an roghchláir Fógraí nuair a chliceálann tú ar an gcnaipe cloig</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Folaigh cnaipe \'Cuir in iúl dom\'</string>
@@ -251,6 +254,8 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_comments_gift_button_title">Folaigh cnaipe Bronntanais</string>
   <string name="morphe_hide_comments_info_button_title">Cnaipe Folaigh Faisnéise</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Folaigh barra síntiúsóirí comhrá beo</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Folaigh leideanna uirlisí comhrá beo</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Folaíonn sé seo na fuinneoga aníos a thaispeántar in aice leis an mbarra ionchuir comhrá, amhail an fógra comhrá do shíntiúsóirí amháin</string>
   <string name="morphe_hide_comments_preview_comment_title">Folaigh trácht réamhamharc</string>
   <string name="morphe_hide_comments_preview_comment_summary">Folaíonn sé réamhamharc na dtuairimí faoin bhfíseán sula n-osclaítear an chuid iomlán de na tuairimí</string>
   <string name="morphe_hide_comments_thanks_button_title">Folaigh an cnaipe Buíochais</string>
@@ -520,6 +525,9 @@ Chun seo a shocrú, cas ar ‘Sruthanna físe bréige’ agus athraigh an ‘Cli
   <string name="morphe_swipe_zone_label_volume">Toirt</string>
   <string name="morphe_swipe_zone_label_native">Dúchasach</string>
   <string name="morphe_swipe_zone_label_off">As</string>
+  <string name="morphe_swipe_ignore_when_locked_title">Déan neamhaird de svaidhpeáil nuair atá siad faoi ghlas</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">Déantar neamhaird de ghluaiseachtaí svaidhpeála agus an t-imreoir faoi ghlas le \'Scáileán glasála\'.</string>
   <string name="morphe_swipe_press_to_engage_title">Cumasaigh gotha ​​brúigh chun svaidhpeáil</string>
   <string name="morphe_swipe_press_to_engage_summary">Éilíonn brú agus coinneáil sula n-aithnítear gotha ​​svaidhpeála</string>
   <string name="morphe_swipe_haptic_feedback_title">Cumasaigh aiseolas haptaic</string>

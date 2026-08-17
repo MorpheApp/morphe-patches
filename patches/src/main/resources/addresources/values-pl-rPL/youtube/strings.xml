@@ -84,6 +84,9 @@ Zmiany obejmują:
   <string name="morphe_hide_latest_videos_button_summary">Ukrywa niebieski baner \"Najnowsze filmy\" pojawiający się na górze strony głównej</string>
   <string name="morphe_hide_mix_playlists_title">Ukryj składanki</string>
   <string name="morphe_hide_movies_section_title">Ukryj sekcję filmów kinowych</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">Ukryj nagłówek menu Powiadomienia</string>
+  <string name="morphe_hide_notifications_menu_header_summary">Ukrywa nagłówek menu Powiadomienia po kliknięciu przycisku dzwonka</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Ukryj przycisk \"Powiadom mnie\"</string>
@@ -251,6 +254,8 @@ Zmiany obejmują:
   <string name="morphe_hide_comments_gift_button_title">Ukryj przycisk Prezent</string>
   <string name="morphe_hide_comments_info_button_title">Ukryj przycisk Informacje</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Ukryj pasek wspierających w czacie</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Ukryj podpowiedzi czatu na żywo</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Ukrywa dymki z podpowiedziami wyświetlane obok pola wprowadzania czatu, takie jak powiadomienie o czacie tylko dla subskrybentów</string>
   <string name="morphe_hide_comments_preview_comment_title">Ukryj podgląd komentarza</string>
   <string name="morphe_hide_comments_preview_comment_summary">Ukrywa podgląd komentarza pod filmem przed otwarciem pełnej sekcji komentarzy</string>
   <string name="morphe_hide_comments_thanks_button_title">Ukryj przycisk Podziękuj</string>
@@ -520,6 +525,9 @@ Aby to naprawić, włącz \"Fałszowanie strumieni filmów\" i zmień \"Domyśln
   <string name="morphe_swipe_zone_label_volume">Głośność</string>
   <string name="morphe_swipe_zone_label_native">Oryginalne</string>
   <string name="morphe_swipe_zone_label_off">Wyłączone</string>
+  <string name="morphe_swipe_ignore_when_locked_title">Ignoruj przeciągnięcia przy zablokowanym ekranie</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">Gesty przeciągania są ignorowane, gdy odtwarzacz jest zablokowany funkcją \"Ekran blokady\"</string>
   <string name="morphe_swipe_press_to_engage_title">Włącz wymóg przytrzymania dla gestów</string>
   <string name="morphe_swipe_press_to_engage_summary">Wymaga przytrzymania, zanim gest przesunięcia zostanie rozpoznany</string>
   <string name="morphe_swipe_haptic_feedback_title">Włącz wibracje</string>

@@ -84,6 +84,9 @@ Los cambios incluyen:
   <string name="morphe_hide_latest_videos_button_summary">Oculta el banner azul de \"Vídeos recientes\" que aparece en la parte superior del feed Inicio</string>
   <string name="morphe_hide_mix_playlists_title">Ocultar listas de reproducción Mix</string>
   <string name="morphe_hide_movies_section_title">Ocultar sección de películas</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">Ocultar encabezado del menú \"Notificaciones\"</string>
+  <string name="morphe_hide_notifications_menu_header_summary">Oculta el encabezado del menú \"Notificaciones\" al pulsar el botón de la campana</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Ocultar botón \"Notificarme\"</string>
@@ -251,6 +254,8 @@ Los cambios incluyen:
   <string name="morphe_hide_comments_gift_button_title">Ocultar botón \"Regalar\"</string>
   <string name="morphe_hide_comments_info_button_title">Ocultar botón de información</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Ocultar barra de donantes del chat en directo</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Ocultar información emergente del chat en directo</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Oculta las ventanas emergentes de información que aparecen cerca de la barra de entrada del chat, como el aviso de chat solo para suscriptores</string>
   <string name="morphe_hide_comments_preview_comment_title">Ocultar vista previa de comentarios</string>
   <string name="morphe_hide_comments_preview_comment_summary">Oculta la vista previa de comentarios debajo del vídeo antes de abrir la sección de comentarios completa</string>
   <string name="morphe_hide_comments_thanks_button_title">Ocultar botón \"Gracias\"</string>
@@ -519,7 +524,10 @@ Para solucionar esto, activa \"Falsificar transmisiones de vídeo\" y cambia \"C
   <string name="morphe_swipe_zone_label_brightness">Brillo</string>
   <string name="morphe_swipe_zone_label_volume">Volumen</string>
   <string name="morphe_swipe_zone_label_native">Nativo</string>
-  <string name="morphe_swipe_zone_label_off">Desactivada</string>
+  <string name="morphe_swipe_zone_label_off">Desactivado</string>
+  <string name="morphe_swipe_ignore_when_locked_title">Ignorar deslizamientos en bloqueo</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">Los gestos de deslizamiento se ignoran al bloquear el reproductor con \"Bloquear pantalla\"</string>
   <string name="morphe_swipe_press_to_engage_title">Activar gesto de pulsar para deslizar</string>
   <string name="morphe_swipe_press_to_engage_summary">Requiere tocar y mantener pulsado antes de que se reconozca un gesto de deslizamiento</string>
   <string name="morphe_swipe_haptic_feedback_title">Activar vibración</string>
@@ -665,7 +673,7 @@ Se deben proporcionar \"cookies de subtítulos\""</string>
   <string name="morphe_show_settings_button_index_title">Posición del botón de ajustes</string>
   <string name="morphe_show_settings_button_type_title">Acción del botón de ajustes</string>
   <string name="morphe_show_settings_button_type_summary">Abre los ajustes de Morphe cuando está activado o los de YouTube cuando está desactivado</string>
-  <string name="morphe_swap_create_with_notifications_button_title">Cambia el botón Crear por el botón Notificaciones</string>
+  <string name="morphe_swap_create_with_notifications_button_title">Cambiar botón \"Crear\" por \"Notificaciones\"</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Si cambiar este ajuste no tiene efecto, intenta cambiar al modo incógnito</string>
   <string name="morphe_hide_navigation_button_labels_title">Ocultar etiquetas de botones de navegación</string>
   <string name="morphe_hide_navigation_bar_title">Ocultar barra de navegación</string>

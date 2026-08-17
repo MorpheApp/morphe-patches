@@ -84,6 +84,9 @@ Zmeny zahŕňajú:
   <string name="morphe_hide_latest_videos_button_summary">Skryje modrý banner \'Najnovšie videá\', ktorý sa zobrazuje v hornej časti domovskej stránky</string>
   <string name="morphe_hide_mix_playlists_title">Skryť mixy</string>
   <string name="morphe_hide_movies_section_title">Skryť sekciu filmov</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">Skryť hlavičku menu Upozornenia</string>
+  <string name="morphe_hide_notifications_menu_header_summary">Po kliknutí na tlačidlo s zvončekom skryje hlavičku menu Upozornenia</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Skryť tlačidlo \'Upozorniť ma\'</string>
@@ -251,6 +254,8 @@ Zmeny zahŕňajú:
   <string name="morphe_hide_comments_gift_button_title">Skryť tlačidlo Darovať</string>
   <string name="morphe_hide_comments_info_button_title">Skryť tlačidlo Info</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Skryť panel donátorov živého chatu</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Skryť nápovedy živého chatu</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Skryje vyskakovacie nápovedy zobrazené pri prideľovacom poli chatu, napríklad upozornenie na chat len pre odberateľov</string>
   <string name="morphe_hide_comments_preview_comment_title">Skryť predhliadku komentára</string>
   <string name="morphe_hide_comments_preview_comment_summary">Skryje ukážku komentára pod videami pred otvorením celej sekcie komentárov</string>
   <string name="morphe_hide_comments_thanks_button_title">Skryť tlačidlo Vďaka</string>
@@ -520,6 +525,9 @@ Ak to chcete opraviť, zapnite 'Spoofovanie video streamov' a zmeňte 'Predvolen
   <string name="morphe_swipe_zone_label_volume">Hlasitosť</string>
   <string name="morphe_swipe_zone_label_native">Natívne</string>
   <string name="morphe_swipe_zone_label_off">Vypnuté</string>
+  <string name="morphe_swipe_ignore_when_locked_title">Ignorovať potiahnutia pri zamknutí</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">K gesturem potiahnutia sa neprihliadá, kým je prehrávač zamknutý pomocou funkcie „Zamknúť obrazovku“</string>
   <string name="morphe_swipe_press_to_engage_title">Povoliť gesto posúvania stlačením</string>
   <string name="morphe_swipe_press_to_engage_summary">Vyžaduje stlačenie a podržanie pred rozpoznaním gesta potiahnutia.</string>
   <string name="morphe_swipe_haptic_feedback_title">Povoliť haptickú spätnú väzbu</string>

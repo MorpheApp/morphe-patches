@@ -84,6 +84,9 @@ Endringer inkluderer:
   <string name="morphe_hide_latest_videos_button_summary">Skjuler den blå «Nyeste videoer»-banneren som vises øverst på Hjem-feeden</string>
   <string name="morphe_hide_mix_playlists_title">Skjul mikse-spellister</string>
   <string name="morphe_hide_movies_section_title">Skjul filmseksjon</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">Hide Notifications menu header</string>
+  <string name="morphe_hide_notifications_menu_header_summary">Hides the Notifications menu header when clicking the bell button</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Skjul \'Varsle meg\'-knapp</string>
@@ -251,6 +254,8 @@ Endringer inkluderer:
   <string name="morphe_hide_comments_gift_button_title">Skjul gave-knapp</string>
   <string name="morphe_hide_comments_info_button_title">Skjul info-knapp</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Skjul donatorfeltet for livechat</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Hide live chat tooltips</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Hides tooltip popups shown near the chat input bar, such as the subscriber-only chat notice</string>
   <string name="morphe_hide_comments_preview_comment_title">Skjul forhåndsvisningskommentar</string>
   <string name="morphe_hide_comments_preview_comment_summary">Skjuler kommentarforslag under videoen før du åpner hele kommentarfeltet</string>
   <string name="morphe_hide_comments_thanks_button_title">Skjul takkeknapp</string>
@@ -511,9 +516,18 @@ For å fikse dette, slå på «Forfalsk videostrømmer» og endre «Standard kli
   <string name="morphe_tap_to_seek_title">Aktiver trykk for å søke</string>
   <string name="morphe_tap_to_seek_summary">Bare trykk på søkefeltet for å hoppe til den posisjonen uten å dra det</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
+  <string name="morphe_swipe_left_zone_title">Left swipe gesture</string>
+  <string name="morphe_swipe_right_zone_title">Right swipe gesture</string>
+  <string name="morphe_swipe_top_zone_title">Top swipe gesture</string>
+  <string name="morphe_swipe_zone_width_title">Left/Right zone width</string>
+  <string name="morphe_swipe_zone_width_summary">Percentage of each screen edge reserved for left and right swipe gestures (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Lysstyrke</string>
   <string name="morphe_swipe_zone_label_volume">Volum</string>
   <string name="morphe_swipe_zone_label_native">Native</string>
+  <string name="morphe_swipe_zone_label_off">Off</string>
+  <string name="morphe_swipe_ignore_when_locked_title">Ignore swipes when locked</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">Swipe gestures are ignored while the player is locked with \'Lock screen\'</string>
   <string name="morphe_swipe_press_to_engage_title">Aktiver trykk for å sveipe gest</string>
   <string name="morphe_swipe_press_to_engage_summary">Krever at du trykker og holder før en sveipebevegelse gjenkjennes</string>
   <string name="morphe_swipe_haptic_feedback_title">Aktiver haptisk tilbakemelding</string>
@@ -672,6 +686,8 @@ For å få tilgang til Innstillinger, aktiver Innstillingsknappen via General �
   <string name="morphe_navigation_bar_animations_summary">Animerer overganger når du bytter mellom faner</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Deaktiver automatisk skjuling av navigasjonslinje</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Beholder navigeringslinjen synlig mens du ruller</string>
+  <string name="morphe_disable_translucent_navigation_title">Disable translucent navigation bar</string>
+  <string name="morphe_disable_translucent_navigation_summary">Makes the navigation and status bar fully opaque</string>
   <string name="morphe_toolbar_screen_title">Verktøylinje</string>
   <string name="morphe_toolbar_screen_summary">Velg hvilke komponenter som vises i popup-menyen</string>
   <string name="morphe_hide_toolbar_cast_button_title">Skjul Kast-knapp</string>
@@ -1094,6 +1110,11 @@ Begrensning: Avspilling fungerer kanskje ikke på noen enheter hvis 'Forfalsk vi
   <string name="morphe_remember_playback_speed_toast">Endret standard avspillingshastighet til: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Bruk normal hastighet for musikk</string>
   <string name="morphe_disable_playback_speed_music_summary">Spill alltid av musikkvideoer med 1,0x hastighet</string>
+  <string name="morphe_enable_playback_audio_pitch_controls_title">Enable audio pitch controls</string>
+  <string name="morphe_playback_audio_pitch_default_title">Default playback audio pitch</string>
+  <string name="morphe_remember_playback_audio_pitch_toast">Changed default audio pitch to: %s</string>
+  <string name="morphe_playback_audio_time_stretching_title">Audio time stretching</string>
+  <string name="morphe_playback_audio_time_stretching_summary">Allows setting speed and pitch independently, may cause audio artifacts</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Deaktiver HDR-video</string>
   <string name="morphe_force_avc_codec_title">Tving AVC (H.264) kodek</string>
@@ -1108,6 +1129,7 @@ Begrensninger:
 • Noen enheter kan ikke tvinge AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">For å bruke denne funksjonen, sett «Forfalsk videostrømmer» til «Android VR» eller «Android Studio»</string>
+  <string name="morphe_force_av1_in_shorts_title">Force AV1 in Shorts</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Åpne avansert kvalitetsmeny</string>
   <string name="morphe_advanced_video_quality_menu_summary">Hoppover kvalitetselementvalgmenyen og åpner avansert kvalitetsmeny direkte</string>

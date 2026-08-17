@@ -84,6 +84,7 @@ Vissa layouter på serversidan kanske inte återställs.
   <string name="morphe_hide_latest_videos_button_summary">Döljer den blå Senaste videorna-balken som visas högst upp i hemflödet</string>
   <string name="morphe_hide_mix_playlists_title">Dölj mix-spellistor</string>
   <string name="morphe_hide_movies_section_title">Dölj filmsektion</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Dölj knappen Meddela mig</string>
@@ -514,6 +515,7 @@ För att åtgärda detta, aktivera 'Förfalska videostreamar' och ändra 'Standa
   <string name="morphe_swipe_zone_label_brightness">Ljusstyrka</string>
   <string name="morphe_swipe_zone_label_volume">Volym</string>
   <string name="morphe_swipe_zone_label_native">Inbyggd</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
   <string name="morphe_swipe_press_to_engage_title">Aktivera gesten Tryck för att svepa</string>
   <string name="morphe_swipe_press_to_engage_summary">Kräver att du trycker länge innan svepgesten känns igen</string>
   <string name="morphe_swipe_haptic_feedback_title">Aktivera haptisk återkoppling</string>
@@ -1097,6 +1099,7 @@ Begränsning: Uppspelning kanske inte fungerar på vissa enheter om 'Förfalska 
   <string name="morphe_disable_playback_speed_music_title">Använd normal hastighet för musik</string>
   <string name="morphe_disable_playback_speed_music_summary">Spela alltid musikvideor i 1,0x hastighet</string>
   <string name="morphe_enable_playback_audio_pitch_controls_title">Aktivera kontroller för ljudtonhöjd</string>
+  <string name="morphe_playback_audio_pitch_default_title">Standardtonhöjd för uppspelning</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Inaktivera HDR-video</string>
   <string name="morphe_force_avc_codec_title">Tvinga AVC (H.264)-kodeken</string>

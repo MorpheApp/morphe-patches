@@ -84,6 +84,9 @@ Spremembe vključujejo:
   <string name="morphe_hide_latest_videos_button_summary">Skrije modri pas s \'Najnovejšimi videoposnetki\', ki se pojavi na vrhu domače strani</string>
   <string name="morphe_hide_mix_playlists_title">Skrij sezname mešanih skladb</string>
   <string name="morphe_hide_movies_section_title">Skrij razdelek s filmi</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">Skrij glavo menija Obvestila</string>
+  <string name="morphe_hide_notifications_menu_header_summary">Skrije glavo menija Obvestila ob kliku na gumb zvonček</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Skrij gumb \'Obvesti me\'</string>
@@ -251,6 +254,8 @@ Spremembe vključujejo:
   <string name="morphe_hide_comments_gift_button_title">Skrij gumb za darila</string>
   <string name="morphe_hide_comments_info_button_title">Skrij gumb Info</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Skrij vrstico donatorjev v živem klepetu</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Skrij napiske za klepet v živo</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Skrije pojavna okna z napiski, ki se prikazujejo zraven vrstice za vnos klepeta, kot je obvestilo o klepetu samo za naročnike</string>
   <string name="morphe_hide_comments_preview_comment_title">Skrij predogled komentarja</string>
   <string name="morphe_hide_comments_preview_comment_summary">Skrije predogled komentarja pod videoposnetkom, preden se odpre celoten oddelek za komentarje</string>
   <string name="morphe_hide_comments_thanks_button_title">Skrij gumb \'Hvala\'</string>
@@ -520,6 +525,9 @@ Za odpravo te težave vklopite 'Ponaredi video tokove' in spremenite 'Privzeti o
   <string name="morphe_swipe_zone_label_volume">Glasnost</string>
   <string name="morphe_swipe_zone_label_native">Izvirno</string>
   <string name="morphe_swipe_zone_label_off">Izklopljeno</string>
+  <string name="morphe_swipe_ignore_when_locked_title">Prezri poteze, ko je predvajalnik zaklenjen</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">Poteze drsenja se prezrejo, ko je predvajalnik zaklenjen s funkcijo \'Zaklenjen zaslon\'</string>
   <string name="morphe_swipe_press_to_engage_title">Omogoči gesto pritiska za drsenje</string>
   <string name="morphe_swipe_press_to_engage_summary">Zahteva pritiskanje in držanje, preden je prepoznana poteza povleka.</string>
   <string name="morphe_swipe_haptic_feedback_title">Omogoči povratno vibracijo</string>

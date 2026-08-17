@@ -84,6 +84,9 @@ Breytingarnar fela í sér:
   <string name="morphe_hide_latest_videos_button_summary">Felur bláa borðann „Nýjustu myndbönd“ sem birtist efst í heimastreymi</string>
   <string name="morphe_hide_mix_playlists_title">Fela blandaða spilunarlista</string>
   <string name="morphe_hide_movies_section_title">Fela kvikmyndadeild</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">Fela yfirsögn valmyndar fyrir Tilkynningar</string>
+  <string name="morphe_hide_notifications_menu_header_summary">Felur yfirsögn valmyndar fyrir Tilkynningar þegar klukka hnappnum er smellið</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Fela \"Láttu mig vita\" hnappinn</string>
@@ -251,6 +254,8 @@ Breytingarnar fela í sér:
   <string name="morphe_hide_comments_gift_button_title">Fela gjafaknappinn</string>
   <string name="morphe_hide_comments_info_button_title">Fela Info hnapp</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Hylja „Paramert í lausnir“ ummerki</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Fela upplýsingaglugga í beinu spjalli</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Felur upplýsingaglugga sem birtast nálægt spjallstikunni, eins og tilkynningu um spjall eingöngu fyrir áskrifendur</string>
   <string name="morphe_hide_comments_preview_comment_title">Fela forsýningu athugasemda</string>
   <string name="morphe_hide_comments_preview_comment_summary">Felur athugasmd forskoðunina undir vídeó áður en full athugasmdakassinn opnast</string>
   <string name="morphe_hide_comments_thanks_button_title">Fela þakknsemishnappinn</string>
@@ -518,6 +523,9 @@ Til að laga þetta, kveiktu á 'Þykjast um myndstrauma' og breyttu 'Sjálfgefi
   <string name="morphe_swipe_zone_label_volume">Hljóðstyrkur</string>
   <string name="morphe_swipe_zone_label_native">Upprunalegur</string>
   <string name="morphe_swipe_zone_label_off">Slökkt</string>
+  <string name="morphe_swipe_ignore_when_locked_title">Hverfa sveifningar þegar læst er</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">Hreyfingar með sveiflu eru hunkaðar þegar spilarinn er læstur með \"Lása skjá\"</string>
   <string name="morphe_swipe_press_to_engage_title">Virkja þrýstu til að sveipa gestur</string>
   <string name="morphe_swipe_press_to_engage_summary">Krefst þess að ýta og halda niðri áður en strjúka bending er þekkt</string>
   <string name="morphe_swipe_haptic_feedback_title">Virkja snertilega endurgjöf</string>

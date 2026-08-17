@@ -84,6 +84,9 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_latest_videos_button_summary">Skjuler det blå \'Seneste videoer\'-banner, der vises øverst i startfeedet</string>
   <string name="morphe_hide_mix_playlists_title">Skjul mix-playlister</string>
   <string name="morphe_hide_movies_section_title">Skjul filmsektion</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">Skjul overskrift for menuen Notifikationer</string>
+  <string name="morphe_hide_notifications_menu_header_summary">Skjuler overskriften for menuen Notifikationer, når der klikkes på klokkeknappen</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Skjul knappen \'Underret mig\'</string>
@@ -251,6 +254,8 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_comments_gift_button_title">Skjul gave-knap</string>
   <string name="morphe_hide_comments_info_button_title">Skjul Info-knap</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Skjul live chat donatorbjælken</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Skjul tooltips til live-chat</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Skjuler tooltip-popups, der vises nær chat-indtastningsfeltet, såsom meddelelsen om chat kun for abonnenter</string>
   <string name="morphe_hide_comments_preview_comment_title">Skjul forhåndsvisning kommentar</string>
   <string name="morphe_hide_comments_preview_comment_summary">Skjuler kommentar preview under videoen inden åbning af hele kommentarsektionen</string>
   <string name="morphe_hide_comments_thanks_button_title">Skjul \"Tak\"-knap</string>
@@ -520,6 +525,9 @@ For at løse dette skal du slå 'Spoof videostreams' til og ændre 'Standardklie
   <string name="morphe_swipe_zone_label_volume">Lydstyrke</string>
   <string name="morphe_swipe_zone_label_native">Native</string>
   <string name="morphe_swipe_zone_label_off">Fra</string>
+  <string name="morphe_swipe_ignore_when_locked_title">Ignorer swipes, når den er låst</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">Swipe-bevægelser ignoreres, mens afspilleren er låst med \"Lås skærm\"</string>
   <string name="morphe_swipe_press_to_engage_title">Aktivér tryk for at swipe-bevægelse</string>
   <string name="morphe_swipe_press_to_engage_summary">Kræver tryk og hold, før en swipe-bevægelse genkendes</string>
   <string name="morphe_swipe_haptic_feedback_title">Aktiver haptisk feedback</string>

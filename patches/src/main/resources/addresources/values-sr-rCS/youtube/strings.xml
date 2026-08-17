@@ -84,6 +84,9 @@ Promene uključuju:
   <string name="morphe_hide_latest_videos_button_summary">Sakriva plavi banner „Najnoviji video zapisi” koji se pojavljuje na vrhu početne stranice</string>
   <string name="morphe_hide_mix_playlists_title">Sakrij miks plejliste</string>
   <string name="morphe_hide_movies_section_title">Sakrij odeljak za filmove</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">Sakrij zaglavlje menija Obaveštenja</string>
+  <string name="morphe_hide_notifications_menu_header_summary">Sakriva zaglavlje menija Obaveštenja prilikom klika na dugme sa zvonom</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Sakrij dugme „Obavesti me”</string>
@@ -251,6 +254,8 @@ Promene uključuju:
   <string name="morphe_hide_comments_gift_button_title">Sakrij dugme „Poklon”</string>
   <string name="morphe_hide_comments_info_button_title">Sakrij dugme Инфо</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Sakrij traku donatora uživo</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Sakrij alatne savete za čet uživo</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Sakriva iskačuće prozore sa alatnim savetima koji se prikazuju pored trake za unos četa, kao što je obaveštenje o četu samo za pretplatnike</string>
   <string name="morphe_hide_comments_preview_comment_title">Sakrij komentar za pregled</string>
   <string name="morphe_hide_comments_preview_comment_summary">Sakriva pregled komentara ispod videa pre otvaranja celog odeljka za komentare</string>
   <string name="morphe_hide_comments_thanks_button_title">Sakrij dugme „Hvala”</string>
@@ -515,10 +520,14 @@ Da biste ovo popravili, uključite 'Lažiranje video tokova' i promenite 'Podraz
   <string name="morphe_swipe_right_zone_title">Gest desnim prevlačenjem</string>
   <string name="morphe_swipe_top_zone_title">Gest prevlačenjem nagore</string>
   <string name="morphe_swipe_zone_width_title">Širina leve/desne zone</string>
+  <string name="morphe_swipe_zone_width_summary">Procenat svake ivice ekrana rezervisan za gestove prevlačenja levo i desno (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Osvetljenost</string>
   <string name="morphe_swipe_zone_label_volume">Jačina zvuka</string>
   <string name="morphe_swipe_zone_label_native">Autohton</string>
   <string name="morphe_swipe_zone_label_off">Isključen</string>
+  <string name="morphe_swipe_ignore_when_locked_title">Zanemari prevlačenja kada je zaključano</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">Gestovi prevlačenja se ignorišu dok je plejer zaključan pomoću opcije \"Zaključaj ekran\"</string>
   <string name="morphe_swipe_press_to_engage_title">Omogući pritisak za prevlačenje</string>
   <string name="morphe_swipe_press_to_engage_summary">Zahteva pritiskanje i držanje pre nego što se prepozna pokret prevlačenja</string>
   <string name="morphe_swipe_haptic_feedback_title">Omogući vibraciju pri dodiru</string>
@@ -677,6 +686,8 @@ Da biste pristupili Podešavanjima, omogućite dugme Podešavanja preko Opšte �
   <string name="morphe_navigation_bar_animations_summary">Animira prelaz prilikom prelaska između kartica</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Onemogući automatsko skrivanje navigacione trake</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Drži traku za navigaciju vidljivom prilikom skrolovanja</string>
+  <string name="morphe_disable_translucent_navigation_title">Onemogući prozirnu navigacionu traku</string>
+  <string name="morphe_disable_translucent_navigation_summary">Čini navigacionu i statusnu traku potpuno neprozirnim</string>
   <string name="morphe_toolbar_screen_title">Traka za alatke</string>
   <string name="morphe_toolbar_screen_summary">Izaberite koje komponente se pojavljuju u padajućem meniju</string>
   <string name="morphe_hide_toolbar_cast_button_title">Sakrij dugme „Prebacuj”</string>

@@ -84,6 +84,9 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_latest_videos_button_summary">Itinatago ang asul na \'Latest videos\' banner na lumilitaw sa itaas ng Home feed</string>
   <string name="morphe_hide_mix_playlists_title">Itago ang mga nakahalong playlist</string>
   <string name="morphe_hide_movies_section_title">Itago ang seksyon ng mga pelikula</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">Itago ang header ng menu ng Mga Abiso</string>
+  <string name="morphe_hide_notifications_menu_header_summary">Itinatago ang header ng menu ng Mga Abiso kapag nag-click sa button ng kampana</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Itago ang button na \'Abisuhan mo ako\'</string>
@@ -251,6 +254,8 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_comments_gift_button_title">Itago ang button ng Regalo</string>
   <string name="morphe_hide_comments_info_button_title">Itago ang button na Impormasyon</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Itago ang live chat donators bar</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Itago ang mga tooltip ng live chat</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Itinatago ang mga tooltip popup na ipinapakita malapit sa bar ng input ng chat, tulad ng abiso ng chat na para sa mga subscriber lamang</string>
   <string name="morphe_hide_comments_preview_comment_title">Itago ang pasilip na komento</string>
   <string name="morphe_hide_comments_preview_comment_summary">Itinatago ang preview ng komento sa ilalim ng video bago buksan ang buong seksyon ng mga komento</string>
   <string name="morphe_hide_comments_thanks_button_title">Itago ang button na Salamat</string>
@@ -511,10 +516,18 @@ Para ayusin ito, i-on ang 'I-spoof ang video streams' at baguhin ang 'Default cl
   <string name="morphe_tap_to_seek_title">I-enable ang tap to seek</string>
   <string name="morphe_tap_to_seek_summary">I-tap lamang ang seekbar upang tumalon sa posisyong iyon nang hindi ito dinadala</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
+  <string name="morphe_swipe_left_zone_title">Kumpas ng swipe pakaliwa</string>
+  <string name="morphe_swipe_right_zone_title">Kumpas ng swipe pakanan</string>
+  <string name="morphe_swipe_top_zone_title">Kumpas ng swipe pataas</string>
+  <string name="morphe_swipe_zone_width_title">Lapad ng kaliwang/kanang zone</string>
+  <string name="morphe_swipe_zone_width_summary">Porsiyento ng bawat gilid ng screen na nakalaan para sa mga kumpas ng swipe pakaliwa at pakanan (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Liwanag</string>
   <string name="morphe_swipe_zone_label_volume">Volume</string>
   <string name="morphe_swipe_zone_label_native">Katutubo</string>
   <string name="morphe_swipe_zone_label_off">Naka-off</string>
+  <string name="morphe_swipe_ignore_when_locked_title">Huwag pansinin ang mga swipe kapag naka-lock</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">Ang mga kumpas ng swipe ay hindi pinapansin habang naka-lock ang player gamit ang \'Lock screen\'</string>
   <string name="morphe_swipe_press_to_engage_title">I-enable ang press to swipe gesture</string>
   <string name="morphe_swipe_press_to_engage_summary">Kinakailangan ang pagpindot at paghawak bago makilala ang isang kilos ng pag-swipe.</string>
   <string name="morphe_swipe_haptic_feedback_title">I-enable ang haptic feedback</string>
@@ -673,6 +686,8 @@ Upang ma-access ang Settings, i-enable ang Settings button sa pamamagitan ng Gen
   <string name="morphe_navigation_bar_animations_summary">Inaanimate ang mga transisyon kapag lumilipat sa pagitan ng mga tab</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">I-disable ang auto-hiding navigation bar</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Pinapanatili ang navigation bar na visible habang nag-scroll</string>
+  <string name="morphe_disable_translucent_navigation_title">I-disable ang translucent navigation bar</string>
+  <string name="morphe_disable_translucent_navigation_summary">Ginagawang ganap na opaque ang navigation at status bar</string>
   <string name="morphe_toolbar_screen_title">Toolbar</string>
   <string name="morphe_toolbar_screen_summary">Pumili kung aling mga component ang lilitaw sa flyout menu</string>
   <string name="morphe_hide_toolbar_cast_button_title">Itago ang \'Audio Track\' menu</string>
@@ -1095,6 +1110,11 @@ I-tap dito upang buksan ang DeArrow.ajay.app"</string>
   <string name="morphe_remember_playback_speed_toast">Binago ang default playback speed sa: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Gamitin ang normal na bilis para sa musika</string>
   <string name="morphe_disable_playback_speed_music_summary">Laging patugtugin ang mga music video sa bilis na 1.0x</string>
+  <string name="morphe_enable_playback_audio_pitch_controls_title">Paganahin ang mga kontrol sa pitch ng audio</string>
+  <string name="morphe_playback_audio_pitch_default_title">Default na audio pitch para sa playback</string>
+  <string name="morphe_remember_playback_audio_pitch_toast">Binago ang default na audio pitch sa: %s</string>
+  <string name="morphe_playback_audio_time_stretching_title">Pag-unat ng oras ng audio</string>
+  <string name="morphe_playback_audio_time_stretching_summary">Pinapayagan ang pagtatakda ng bilis at pitch nang hiwalay, maaaring magdulot ng mga artifact sa audio</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Patayin ang HDR video</string>
   <string name="morphe_force_avc_codec_title">Puwersahin ang AVC (H.264) codec</string>
@@ -1109,6 +1129,7 @@ Mga limitasyon:
 • Ang ilang device ay hindi mapipilitan ng AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Upang gamitin ang tampok na ito, itakda ang \'Gayahin ang mga video stream\' sa \'Android VR\' o \'Android Studio\'.</string>
+  <string name="morphe_force_av1_in_shorts_title">Pilitin ang AV1 sa Shorts</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Buksan ang menu ng kalidad na advanced</string>
   <string name="morphe_advanced_video_quality_menu_summary">Nilalaktawan ang menu ng pagpili ng kalidad at direktang binubuksan ang Advanced na menu ng kalidad</string>

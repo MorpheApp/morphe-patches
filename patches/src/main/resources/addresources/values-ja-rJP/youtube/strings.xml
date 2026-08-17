@@ -84,6 +84,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_latest_videos_button_summary">ホームフィードの最上部に表示される青色の「新着動画」バナーを非表示にします</string>
   <string name="morphe_hide_mix_playlists_title">ミックスリストを非表示</string>
   <string name="morphe_hide_movies_section_title">映画セクションを非表示</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">通知メニューのヘッダーを非表示</string>
+  <string name="morphe_hide_notifications_menu_header_summary">鈴アイコンボタン (登録済みボタン) から呼び出される通知メニューのヘッダーを非表示にします</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">「通知を受け取る」ボタンを非表示</string>
@@ -251,6 +254,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_gift_button_title">ギフトボタンを非表示</string>
   <string name="morphe_hide_comments_info_button_title">情報ボタン (i アイコン) を非表示</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">チャット欄の投げ銭表示を無効化</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">チャット入力欄の吹き出しを非表示</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">チャット入力欄付近に吹き出し形式のポップアップで表示される、チャンネル登録者のみモードのライブ配信にチャットを送信する際の注意事項などの、チャットに関するヒントを非表示にします</string>
   <string name="morphe_hide_comments_preview_comment_title">コメントのプレビューを非表示</string>
   <string name="morphe_hide_comments_preview_comment_summary">コメント欄を開く前に動画の下に表示される、コメントのプレビューを非表示にします</string>
   <string name="morphe_hide_comments_thanks_button_title">Thanks ボタンを非表示</string>
@@ -511,10 +516,18 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_tap_to_seek_title">タップによるシークを有効化</string>
   <string name="morphe_tap_to_seek_summary">シークバーをタップすると、タップした位置に移動します</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
+  <string name="morphe_swipe_left_zone_title">左側縦スワイプ ジェスチャー</string>
+  <string name="morphe_swipe_right_zone_title">右側縦スワイプ ジェスチャー</string>
+  <string name="morphe_swipe_top_zone_title">上側横スワイプ ジェスチャー</string>
+  <string name="morphe_swipe_zone_width_title">左 / 右側縦スワイプの領域の横幅</string>
+  <string name="morphe_swipe_zone_width_summary">左 / 右側縦スワイプ ジェスチャーに割り当てる、画面左 / 右端を起点とする領域の横幅 (画面全体の横幅に対するパーセンテージ: 5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">明るさ</string>
   <string name="morphe_swipe_zone_label_volume">音量</string>
   <string name="morphe_swipe_zone_label_native">通常操作</string>
   <string name="morphe_swipe_zone_label_off">オフ</string>
+  <string name="morphe_swipe_ignore_when_locked_title">ロック中のスワイプを無効化</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">「画面のロック」でプレーヤーがロックされている間のスワイプ ジェスチャーを無効にします</string>
   <string name="morphe_swipe_press_to_engage_title">長押しスワイプ ジェスチャーを有効化</string>
   <string name="morphe_swipe_press_to_engage_summary">スワイプ ジェスチャーを、「画面をスワイプ」から「画面を長押ししてからスワイプ」に変更します</string>
   <string name="morphe_swipe_haptic_feedback_title">触覚フィードバックを有効化</string>
@@ -674,6 +687,8 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_navigation_bar_animations_summary">タブの切り替えをアニメーションで表現します</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">ナビゲーション バーの自動非表示を無効化</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">スクロール中にナビゲーション バーを常に表示します</string>
+  <string name="morphe_disable_translucent_navigation_title">半透明ナビゲーション バーを無効化</string>
+  <string name="morphe_disable_translucent_navigation_summary">ナビゲーション バーとステータスバーが透けないようになります</string>
   <string name="morphe_toolbar_screen_title">ツールバー</string>
   <string name="morphe_toolbar_screen_summary">ツールバーに表示するコンポーネントを設定します</string>
   <string name="morphe_hide_toolbar_cast_button_title">キャストボタンを非表示</string>

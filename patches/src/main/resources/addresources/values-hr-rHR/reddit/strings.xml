@@ -16,6 +16,8 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <string name="reddit_privacy_policy">Reddit politika privatnosti</string>
+  <string name="morphe_google_signin_not_available_toast">Google prijava nije dostupna. Za prijavu koristite e-poštu</string>
   <string name="morphe_screen_ads_title">Oglasi</string>
   <string name="morphe_hide_post_ads_title">Sakrij oglase u feedu</string>
   <string name="morphe_hide_comment_ads_title">Sakrij oglase s komentarima</string>
@@ -25,21 +27,45 @@ Second \"item\" text"</string>
   <string name="morphe_hide_create_button_title">Sakrij tipku Izradi</string>
   <string name="morphe_hide_discover_button_title">Sakrij tipku Otkrij ili Zajednice</string>
   <string name="morphe_hide_games_button_title">Sakrij tipku Igre</string>
+  <string name="morphe_screen_sidebar_title">Bočna traka</string>
   <string name="morphe_hide_recently_visited_shelf_title">Sakrij policu nedavno posjećeno</string>
   <string name="morphe_hide_games_on_reddit_shelf_title">Sakrij igre na polici Reddita</string>
   <string name="morphe_hide_reddit_pro_shelf_title">Sakrij policu Reddit Pro</string>
   <string name="morphe_hide_about_shelf_title">Sakrij policu O</string>
   <string name="morphe_hide_resources_shelf_title">Sakrij policu resursi</string>
   <string name="morphe_screen_layout_title">Raspored</string>
+  <string name="morphe_custom_font_title">Prilagođeni font</string>
+  <string name="morphe_custom_font_summary">Učitajte prilagođenu TTF ili OTF datoteku fonta s putanje ispod. Omogućavanjem ovoga također se isključuje Forsiraj sistemski font</string>
+  <string name="morphe_custom_font_file_path_title">Datoteka prilagođenog fonta</string>
+  <string name="morphe_custom_font_file_path_summary">Dodirnite za odabir TTF ili OTF datoteke fonta</string>
+  <string name="morphe_custom_font_selected_font">Odabrani font - %s</string>
+  <string name="morphe_custom_font_pick_file_first">Prvo odaberite datoteku prilagođenog fonta</string>
+  <string name="morphe_custom_font_invalid_file">Molimo odaberite .ttf ili .otf datoteku fonta</string>
+  <string name="morphe_custom_font_failed_to_load">Nije uspjelo učitavanje prilagođenog fonta. Odaberite drugu datoteku</string>
+  <string name="morphe_disable_modern_home_title">Onemogući moderno korisničko sučelje početne stranice</string>
   <string name="morphe_disable_screenshot_popup_title">Onemogući skočni prozor zaslona</string>
   <string name="morphe_disable_screenshot_popup_summary">Onemogućuje skočni prozor koji se pojavljuje prilikom snimanja zaslona</string>
+  <string name="morphe_force_system_font_title">Forsiraj sistemski font</string>
+  <string name="morphe_force_system_font_summary">Koristi sistemski font uređaja umjesto Reddit Sans-a ili Roboto-a. Omogućavanjem ovoga također se isključuje Prilagođeni font</string>
   <string name="morphe_hide_ask_button_title">Sakrij tipku Pitaj</string>
+  <string name="morphe_hide_ask_button_summary">Skriva tipku Pitaj u traci za pretraživanje</string>
+  <string name="morphe_hide_communities_shelf_title">Sakrij policu zajednica</string>
+  <string name="morphe_hide_communities_shelf_summary">Skriva policu povezanih ili preporučenih zajednica u subredditima</string>
+  <string name="morphe_hide_trending_shelves_title">Sakrij police Trendova</string>
+  <string name="morphe_hide_trending_shelves_summary">Skriva police Trendova iz feeda i prijedloga za pretraživanje</string>
   <string name="morphe_remove_notification_dialog_title">Uklanja  dijalog s prijedlozima obavijesti</string>
+  <string name="morphe_remove_notification_dialog_summary">Automatski zatvara dijalog s prijedlogom obavijesti pri posjetu subredditu</string>
+  <string name="morphe_show_view_count_title">Pokaži broj pregleda na objavama</string>
+  <string name="morphe_show_view_count_summary">Ograničenje: Dostupno samo ako API odgovor uključuje broj pregleda</string>
   <string name="morphe_remove_nsfw_dialog_title">Uklanja NSFW upozorenje</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Automatski prihvaća upozorenje o NSFW sadržaju pri posjetu subredditu</string>
   <string name="morphe_screen_miscellaneous_title">Razno</string>
   <string name="morphe_about_title">O aplikaciji</string>
   <string name="morphe_about_summary">Verzija patcha i službene poveznice</string>
   <string name="morphe_sanitize_sharing_links_title">Očisti poveznice za dijeljenje</string>
   <string name="morphe_sanitize_sharing_links_summary">Uklanja parametre upita za praćenje iz zajedničkih poveznica</string>
   <string name="morphe_open_links_directly_title">Otvara poveznice izravno</string>
+  <string name="morphe_open_links_directly_summary">Zaobilazi URL-ove preusmjeravanja pri otvaranju vanjskih poveznica</string>
+  <string name="morphe_open_links_externally_title">Otvori poveznice izvan aplikacije</string>
+  <string name="morphe_open_links_externally_summary">Otvara poveznice u vašem pregledniku umjesto u pregledniku unutar aplikacije</string>
 </resources>

@@ -49,6 +49,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_summary">Za spremanje povijesti pretraživanja upišite upit za pretraživanje i pritisnite Enter</string>
   <string name="morphe_settings_search_history_title">Prikaži povijest pretraživanja postavki</string>
   <string name="morphe_show_menu_icons_title">Prikaži ikone postavki Morphea</string>
+  <string name="morphe_settings_menu_copy_path">Kopirano: %s</string>
   <string name="morphe_language_title">Morphe jezik</string>
   <string name="morphe_language_user_dialog_message">"Prijevodi za neke jezike mogu nedostajati ili biti nepotpuni.
 
@@ -97,6 +98,7 @@ Nećete biti obaviješteni ni o kakvim neočekivanim događajima."</string>
   <string name="morphe_debug_export_logs_file">Izvezi u datoteku</string>
   <string name="morphe_debug_export_logs_success">Dnevnik ispisivanja pogrešaka uspješno izvezen</string>
   <string name="morphe_debug_export_logs_failed">Izvoz zapisnika nije uspio</string>
+  <string name="morphe_debug_logs_search_hint">Potraži zapisnike o otklanjanju pogrešaka…</string>
   <string name="morphe_debug_export_logs_clear">Izbriši</string>
   <string name="morphe_debug_logs_disabled">Zapisivanje otklanjanja grešaka onemogućeno</string>
   <string name="morphe_debug_logs_none_found">Nisu pronađeni zapisnici otklanjanja pogrešaka</string>
@@ -107,6 +109,7 @@ Nećete biti obaviješteni ni o kakvim neočekivanim događajima."</string>
   <string name="morphe_debug_feature_flags_manager_summary">Upravljanje zastavicama logičkih značajki</string>
   <string name="morphe_debug_feature_flags_manager_active_header">Aktivne zastavice (%d)</string>
   <string name="morphe_debug_feature_flags_manager_blocked_header">Blokirane zastave značajki (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Potraži zastavice značajki…</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Zastavice značajki spremljene</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Zastavice značajki poništene</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Zastavice značajki kopirane u međuspremnik</string>
@@ -130,6 +133,7 @@ Onemogućavanje optimizacija baterije za MicroG neće negativno utjecati na potr
 
 Dodirnite tipku za nastavak i dopustite promjene optimizacije."</string>
   <string name="gms_core_dialog_continue_text">Nastavi</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Pokaži MicroG dijaloški okvir za optimizaciju baterije</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Onemogućavanjem ove opcije sakrit ćete upit za optimizaciju baterije MicroG.
 
 Ako se optimizacija baterije ne promijeni, mogli biste doživjeti:
@@ -138,6 +142,7 @@ Ako se optimizacija baterije ne promijeni, mogli biste doživjeti:
 • Reprodukcija u pozadini možda neće raditi"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Rukovanje poveznicama aplikacije</string>
+  <string name="morphe_link_handling_summary">Konfigurirajte poveznice za otvaranje u ovoj aplikaciji</string>
   <string name="morphe_link_handling_step1_title">Korak 1: Isključite izvorne povezane aplikacije</string>
   <string name="morphe_link_handling_step1_message">Otvorite postavke izvorne aplikacije i onemogućite sve veze domene</string>
   <string name="morphe_link_handling_step2_title">Korak 2: Omogući poveznice patchane aplikacije</string>

@@ -84,6 +84,9 @@ Promene uključuju:
   <string name="morphe_hide_latest_videos_button_summary">Саскрива плави банер „Најновији видео снимци” који се појављује на врху почетне странице</string>
   <string name="morphe_hide_mix_playlists_title">Сакриј микс плејлисте</string>
   <string name="morphe_hide_movies_section_title">Сакриј одељак за филмове</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">Сакриј заглавље менија Обавештења</string>
+  <string name="morphe_hide_notifications_menu_header_summary">Сакрива заглавље менија Обавештења при клику на дугме са звоном</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Сакриј дугме „Обавести ме”</string>
@@ -251,6 +254,8 @@ Promene uključuju:
   <string name="morphe_hide_comments_gift_button_title">Сакриј дугме „Поклон”</string>
   <string name="morphe_hide_comments_info_button_title">Сакриј дугме Инфо</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Сакриј траку донатора уживо</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Сакриј помоћи за ћаскање уживо</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Сакрива прозоре са помоћу који се појављују поред поља за унос порука у ћаскању, као што је обавештење о ћаскању само за претплатнике</string>
   <string name="morphe_hide_comments_preview_comment_title">Сакриј коментар за преглед</string>
   <string name="morphe_hide_comments_preview_comment_summary">Саскрива преглед коментара испод видеа пре отварања пуног одељка за коментаре</string>
   <string name="morphe_hide_comments_thanks_button_title">Сакриј дугме „Хвала”</string>
@@ -511,9 +516,18 @@ Promene uključuju:
   <string name="morphe_tap_to_seek_title">Омогући додир за премотавање</string>
   <string name="morphe_tap_to_seek_summary">Само додирните траку за тражење да бисте скочили на ту позицију без повлачења</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
+  <string name="morphe_swipe_left_zone_title">Гест превлачења улево</string>
+  <string name="morphe_swipe_right_zone_title">Гест превлачења удесно</string>
+  <string name="morphe_swipe_top_zone_title">Гест превлачења нагоре</string>
+  <string name="morphe_swipe_zone_width_title">Ширина леве/десне зоне</string>
+  <string name="morphe_swipe_zone_width_summary">Проценат сваке ивице екрана резервисан за гестове превлачења улево и удесно (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Осветљење</string>
   <string name="morphe_swipe_zone_label_volume">Јачина звука</string>
   <string name="morphe_swipe_zone_label_native">Оригинално</string>
+  <string name="morphe_swipe_zone_label_off">Искључено</string>
+  <string name="morphe_swipe_ignore_when_locked_title">Занемари превлачење када је закључано</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">Гестови превлачења се занемарују док је плејер закључан помоћу опције „Закључај екран”</string>
   <string name="morphe_swipe_press_to_engage_title">Омогући притисак за превлачење</string>
   <string name="morphe_swipe_press_to_engage_summary">Захтева притискање и држање пре него што се препозна гест превлачења</string>
   <string name="morphe_swipe_haptic_feedback_title">Омогући вибрацију при додиру</string>

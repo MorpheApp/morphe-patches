@@ -84,6 +84,9 @@ Schimbari incluse:
   <string name="morphe_hide_latest_videos_button_summary">Ascunde bannerul albastru \"Videoclipuri recente\" care apare în partea de sus a fluxului principal</string>
   <string name="morphe_hide_mix_playlists_title">Ascunde amestecul playlisturilor</string>
   <string name="morphe_hide_movies_section_title">Ascunde secțiunea de filme</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">Ascunde antetul meniului Notificări</string>
+  <string name="morphe_hide_notifications_menu_header_summary">Ascunde antetul meniului Notificări atunci când se face clic pe butonul cu clopoțel</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Ascunde butonul \'Notifică-mă\'</string>
@@ -251,6 +254,8 @@ Schimbari incluse:
   <string name="morphe_hide_comments_gift_button_title">Ascunde butonul Cadou</string>
   <string name="morphe_hide_comments_info_button_title">Ascunde butonul Info</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Ascunde bara cu donatori în chat-ul live</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Ascunde sugestiile din chatul live</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Ascunde ferestrele de sugestii afișate lângă bara de introducere a chat-ului, cum ar fi notificarea pentru chat-ul rezervat abonaților</string>
   <string name="morphe_hide_comments_preview_comment_title">Ascunde previzualizarea comentariului</string>
   <string name="morphe_hide_comments_preview_comment_summary">Ascunde previzualizarea comentariului de sub videoclip înainte de a deschide secțiunea completă de comentarii</string>
   <string name="morphe_hide_comments_thanks_button_title">Ascunde butonul „Mulțumesc”</string>
@@ -520,6 +525,9 @@ Pentru a remedia această problemă, activați 'Falsificare fluxuri video' și s
   <string name="morphe_swipe_zone_label_volume">Volum</string>
   <string name="morphe_swipe_zone_label_native">Nativ</string>
   <string name="morphe_swipe_zone_label_off">Oprit</string>
+  <string name="morphe_swipe_ignore_when_locked_title">Ignoră glisările când este blocat</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">Gesturile de glisare sunt ignorate în timp ce playerul este blocat cu „Blocare ecran”</string>
   <string name="morphe_swipe_press_to_engage_title">Activează gestul de apăsare pentru a trage</string>
   <string name="morphe_swipe_press_to_engage_summary">Necesită apăsare și menținere înainte ca un gest de glisare să fie recunoscut.</string>
   <string name="morphe_swipe_haptic_feedback_title">Activează feedback haptic</string>

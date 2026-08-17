@@ -84,6 +84,9 @@ I cambiamenti riguarderanno:
   <string name="morphe_hide_latest_videos_button_summary">Nasconde il banner blu \'Video più recenti\' che compare in cima alla home page</string>
   <string name="morphe_hide_mix_playlists_title">Nascondi le playlist miste</string>
   <string name="morphe_hide_movies_section_title">Nascondi la sezione film</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">Nascondi l\'intestazione del menu Notifiche</string>
+  <string name="morphe_hide_notifications_menu_header_summary">Nasconde l\'intestazione del menu Notifiche quando si fa clic sul pulsante a forma di campanella</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Nascondi il pulsante \'Avvisami\'</string>
@@ -251,6 +254,8 @@ I cambiamenti riguarderanno:
   <string name="morphe_hide_comments_gift_button_title">Nascondi pulsante Regalo</string>
   <string name="morphe_hide_comments_info_button_title">Nascondi il pulsante Info</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Nascondi la barra dei donatori della chat live</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Nascondi i suggerimenti della chat live</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Nasconde i popup dei suggerimenti che appaiono vicino alla barra di input della chat, come l\'avviso della chat riservata agli abbonati</string>
   <string name="morphe_hide_comments_preview_comment_title">Nascondi il commento di anteprima</string>
   <string name="morphe_hide_comments_preview_comment_summary">Nasconde l\'anteprima del commento sotto il video prima di aprire la sezione commenti completa</string>
   <string name="morphe_hide_comments_thanks_button_title">Nascondi il pulsante Grazie</string>
@@ -520,6 +525,9 @@ Per risolvere il problema, attiva 'Maschera flussi video' e modifica 'Client pre
   <string name="morphe_swipe_zone_label_volume">Volume</string>
   <string name="morphe_swipe_zone_label_native">Nativo</string>
   <string name="morphe_swipe_zone_label_off">Off</string>
+  <string name="morphe_swipe_ignore_when_locked_title">Ignora i gesti di scorrimento quando bloccato</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">I gesti di scorrimento vengono ignorati mentre il player è bloccato con \"Blocca schermo\"</string>
   <string name="morphe_swipe_press_to_engage_title">Abilita gesto di premi per scorrere</string>
   <string name="morphe_swipe_press_to_engage_summary">Richiede la pressione prolungata prima che venga riconosciuto un gesto di scorrimento</string>
   <string name="morphe_swipe_haptic_feedback_title">Abilita il feedback aptico</string>

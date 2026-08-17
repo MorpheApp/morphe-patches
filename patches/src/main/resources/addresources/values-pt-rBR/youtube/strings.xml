@@ -83,6 +83,9 @@ As mudanças incluem:
   <string name="morphe_hide_latest_videos_button_summary">Oculta o banner azul \'Vídeos mais recentes\' que aparece no topo do feed inicial</string>
   <string name="morphe_hide_mix_playlists_title">Ocultar playlists de mix</string>
   <string name="morphe_hide_movies_section_title">Ocultar seção de filmes</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">Ocultar cabeçalho do menu Notificações</string>
+  <string name="morphe_hide_notifications_menu_header_summary">Oculta o cabeçalho do menu Notificações ao clicar no botão do sino</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Ocultar botão \'Receber notificação\'</string>
@@ -250,6 +253,8 @@ As mudanças incluem:
   <string name="morphe_hide_comments_gift_button_title">Ocultar botão Presente</string>
   <string name="morphe_hide_comments_info_button_title">Ocultar botão Informações</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Ocultar barra de doadores do chat ao vivo</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Ocultar dicas flutuantes do chat ao vivo</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Oculta pop-ups de dicas exibidos perto da barra de digitação do chat, como o aviso de chat exclusivo para inscritos</string>
   <string name="morphe_hide_comments_preview_comment_title">Ocultar prévia de comentário</string>
   <string name="morphe_hide_comments_preview_comment_summary">Oculta a pré-visualização do comentário abaixo do vídeo antes de abrir a seção completa de comentários</string>
   <string name="morphe_hide_comments_thanks_button_title">Ocultar botão Valeu</string>
@@ -519,6 +524,9 @@ Para corrigir isso, ative 'Simular streams de vídeo' e altere o 'Cliente padrã
   <string name="morphe_swipe_zone_label_volume">Volume</string>
   <string name="morphe_swipe_zone_label_native">Nativo</string>
   <string name="morphe_swipe_zone_label_off">Desativado</string>
+  <string name="morphe_swipe_ignore_when_locked_title">Ignorar deslizamentos ao bloquear</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">Gestos de deslizar são ignorados enquanto o player estiver bloqueado com o \'Bloqueio de tela\'</string>
   <string name="morphe_swipe_press_to_engage_title">Ativar gesto de pressionar para deslizar</string>
   <string name="morphe_swipe_press_to_engage_summary">Requer pressionar e segurar antes que um gesto de deslize seja reconhecido</string>
   <string name="morphe_swipe_haptic_feedback_title">Ativar resposta tátil</string>

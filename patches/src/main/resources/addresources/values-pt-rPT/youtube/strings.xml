@@ -84,6 +84,7 @@ As mudanças incluem:
   <string name="morphe_hide_latest_videos_button_summary">Oculta o banner azul \'Vídeos mais recentes\' que aparece no topo do feed inicial</string>
   <string name="morphe_hide_mix_playlists_title">Esconder mistura de playlists</string>
   <string name="morphe_hide_movies_section_title">Esconder secção de filmes</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Ocultar botão \'Notificar-me\'</string>
@@ -514,6 +515,7 @@ Para corrigir isso, ative 'Spoof video streams' e altere o 'Cliente padrão' par
   <string name="morphe_swipe_zone_label_brightness">Brilho</string>
   <string name="morphe_swipe_zone_label_volume">Volume</string>
   <string name="morphe_swipe_zone_label_native">Nativo</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
   <string name="morphe_swipe_press_to_engage_title">Ativar gesto de pressionar para deslizar</string>
   <string name="morphe_swipe_press_to_engage_summary">Requer pressionar e segurar antes que um gesto de deslizar seja reconhecido</string>
   <string name="morphe_swipe_haptic_feedback_title">Ativar resposta ao toque</string>

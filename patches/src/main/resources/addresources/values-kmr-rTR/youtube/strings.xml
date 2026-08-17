@@ -85,6 +85,9 @@ Guherînan têne xistine:
   <string name="morphe_hide_latest_videos_button_summary">Bannerên \'Vîdyoyên herî dawî\' ên şîn li jorê feeda malê de veşêrin</string>
   <string name="morphe_hide_mix_playlists_title">Lîstikên mix veşêrin</string>
   <string name="morphe_hide_movies_section_title">Beşa fîlm veşêrin</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">Sernavê menûya Agahdariyan veşêre</string>
+  <string name="morphe_hide_notifications_menu_header_summary">Dema bişkoka zengilê tê tikandin, sernavê menûya Agahdariyan vedişêre.</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Bi kurtahiya \'Agahdar bikin\' veşêrin</string>
@@ -252,6 +255,8 @@ Guherînan têne xistine:
   <string name="morphe_hide_comments_gift_button_title">Butona Hediyê veşêrin</string>
   <string name="morphe_hide_comments_info_button_title">Dîmena Butona Agahî</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Barê xwerasên chatê veşêre</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Pêşniyarên çata zindî veşêre</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Pêşniyarên ku nêzîka barê nivîsînê ya çatê têne nîşandan, wekî agahdariya çata tenê abone, vedişêre.</string>
   <string name="morphe_hide_comments_preview_comment_title">Pêşbîna şîroveyê veşêrin</string>
   <string name="morphe_hide_comments_preview_comment_summary">Hemû vebijarkên sortkirina şîroveyan ji bilî \'Herî jor\' û \'Nûjen\' veşêrin</string>
   <string name="morphe_hide_comments_thanks_button_title">Bişkoka \'Spas\' veşêrin</string>
@@ -512,11 +517,18 @@ Ji bo çareserkirinê, 'Spoof-ê streamingên vîdyoyê' veke û 'Klîyentê def
   <string name="morphe_tap_to_seek_title">Kilika lêkirinê veşêre</string>
   <string name="morphe_tap_to_seek_summary">Just tap the seekbar to jump to that position without dragging it</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
+  <string name="morphe_swipe_left_zone_title">Tevgera kişandinê ya çepê</string>
+  <string name="morphe_swipe_right_zone_title">Tevgera kişandinê ya rastê</string>
+  <string name="morphe_swipe_top_zone_title">Tevgera kişandinê ya jorê</string>
+  <string name="morphe_swipe_zone_width_title">Firehiya herêma çep/rast</string>
   <string name="morphe_swipe_zone_width_summary">Jiyê her edge-ê ekrana ku ji bo gesture-ên swipe-ê yên çep û rast hatine rezerv kirin (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Ronahî</string>
   <string name="morphe_swipe_zone_label_volume">Volume</string>
   <string name="morphe_swipe_zone_label_native">Binguhî</string>
   <string name="morphe_swipe_zone_label_off">Dabe</string>
+  <string name="morphe_swipe_ignore_when_locked_title">Dema girtî be, kişandinan paşguh bike</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">Dema lîstok bi \'Lock screen\' ve girtî be, tevgerên kişandinê têne paşguh kirin.</string>
   <string name="morphe_swipe_press_to_engage_title">Gestikaya çavkaniyê veşêre</string>
   <string name="morphe_swipe_press_to_engage_summary">Pêwîst e ku berî naskirina tevgerek swipe, pêlkirin û girtin were kirin.</string>
   <string name="morphe_swipe_haptic_feedback_title">Paşê veşêre</string>
@@ -675,6 +687,8 @@ Ji bo ku derfetên sazkarî pêşero, rêzika 'Settings' zivirînin bi General �
   <string name="morphe_navigation_bar_animations_summary">Tevahîyên veşêrinî dema ku di navbera taban de guherîn</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Kêmbara otomatîk a kêmbara navîgasyonê qeybidine.</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Desteyê nivîskî bi hevsengî neşêre dema ku bi hêsanî tîkê dike</string>
+  <string name="morphe_disable_translucent_navigation_title">Barê navîgasyonê ya nîvzelal neçalak bike</string>
+  <string name="morphe_disable_translucent_navigation_summary">Barê navîgasyonê û barê rewşê bi temamî nezelal dike</string>
   <string name="morphe_toolbar_screen_title">Rêz</string>
   <string name="morphe_toolbar_screen_summary">Hilbijêre ku kîjan pêkhateyên di menuya veşêrîn de xuya dibe</string>
   <string name="morphe_hide_toolbar_cast_button_title">Butona birêveberînê veşêrin</string>
@@ -1099,6 +1113,11 @@ Sînor: Lîstin dibe ku li ser hin cîhazan nexebite heke 'sextekirina vîdyo st
   <string name="morphe_remember_playback_speed_toast">Leza hêsîna serî ya pêşînkirina lîstikê hate guherandin: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Mûzîkê bi serîhêdîya normal bikar bine</string>
   <string name="morphe_disable_playback_speed_music_summary">Vîdyoyên muzîkê her gav bi leza 1.0x bilîzin</string>
+  <string name="morphe_enable_playback_audio_pitch_controls_title">Kontrola pîvana dengan çalak bike</string>
+  <string name="morphe_playback_audio_pitch_default_title">Pîvana dengan ya xwerû ya lîstinê</string>
+  <string name="morphe_remember_playback_audio_pitch_toast">Pîvana dengan ya xwerû hat guherandin: %s</string>
+  <string name="morphe_playback_audio_time_stretching_title">Dirêjkirina dema dengan</string>
+  <string name="morphe_playback_audio_time_stretching_summary">Dihele lez û pîvan bi serbixwe bên danîn, dibe ku qusûrên dengan çêbibin</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Ji vegirtina vîdyoyê ya HDR qut biqevîne</string>
   <string name="morphe_force_avc_codec_title">Koda AVC (H.264) bi zorê bikar bîne</string>
@@ -1113,6 +1132,7 @@ Sînergirên:
 • Hin alav nikarên AVC zor bike"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Ji bo bikaranîna vê taybetmendiyê, \'Sexandina streamên vîdyoyê\' li ser \'Android VR\' an \'Android Studio\' saz bikin.</string>
+  <string name="morphe_force_av1_in_shorts_title">Di Shorts de AV1-ê bi zorê bikar bîne</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Veke ji menuya kalîteya pêşkeftî ve bike</string>
   <string name="morphe_advanced_video_quality_menu_summary">Dibe menuya hilbijartina kalîteyê derbas dike û rasterast menuya kalîteya Pêşkeftî vekirin</string>

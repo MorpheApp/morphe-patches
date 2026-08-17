@@ -84,6 +84,9 @@ Wijzigingen zijn:
   <string name="morphe_hide_latest_videos_button_summary">Verbergt de blauwe \'Nieuwste video\'s\'-banner die bovenaan de Home-feed verschijnt</string>
   <string name="morphe_hide_mix_playlists_title">Mix-afspeellijsten verbergen</string>
   <string name="morphe_hide_movies_section_title">Verberg films sectie</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">Verberg de menukop van Meldingen</string>
+  <string name="morphe_hide_notifications_menu_header_summary">Verbergt de menukop van Meldingen wanneer je op de belknop klikt</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">\'Herinnering sturen\' knop verbergen</string>
@@ -251,6 +254,8 @@ Wijzigingen zijn:
   <string name="morphe_hide_comments_gift_button_title">Verberg cadeauknop</string>
   <string name="morphe_hide_comments_info_button_title">Verberg Info-knop</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Verberg de donateur balk van live chat</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Verberg live chat-tooltips</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Verbergt tooltippop-ups die verschijnen bij de chat-invoerbalk, zoals de melding voor alleen abonnees</string>
   <string name="morphe_hide_comments_preview_comment_title">Reactie in preview verbergen</string>
   <string name="morphe_hide_comments_preview_comment_summary">Verbergt het commentaarvoorbeeldunder de video voordat de volledige commentaarsectie wordt geopend</string>
   <string name="morphe_hide_comments_thanks_button_title">Verberg de knop \'Bedankt\'</string>
@@ -520,6 +525,9 @@ Om dit op te lossen, schakel 'Spoof videostreams' in en wijzig de 'Standaardclie
   <string name="morphe_swipe_zone_label_volume">Volume</string>
   <string name="morphe_swipe_zone_label_native">Native</string>
   <string name="morphe_swipe_zone_label_off">Uit</string>
+  <string name="morphe_swipe_ignore_when_locked_title">Veegbewegingen negeren wanneer vergrendeld</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">Veegbewegingen worden genegeerd terwijl de speler is vergrendeld met \'Vergrendelscherm\'</string>
   <string name="morphe_swipe_press_to_engage_title">\"Druk om te vegen\" beweging inschakelen</string>
   <string name="morphe_swipe_press_to_engage_summary">Vereist indrukken en vasthouden voordat een veegbeweging wordt herkend</string>
   <string name="morphe_swipe_haptic_feedback_title">Haptische feedback inschakelen</string>

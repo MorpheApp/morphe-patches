@@ -1,3 +1,17 @@
+## [1.40.0-dev.8](https://github.com/MorpheApp/morphe-patches/compare/v1.40.0-dev.7...v1.40.0-dev.8) (2026-08-17)
+
+### 🐛 Bug Fixes
+
+* **Disable Play Store updates:** Change manifest version code but preserve existing internal version code checks ([#2470](https://github.com/MorpheApp/morphe-patches/issues/2470)) ([8fc60e8](https://github.com/MorpheApp/morphe-patches/commit/8fc60e820754cbfa17576623cc7f7a0a9c035fb3))
+* **Reddit:** Add legacy app target of `2024.02.0` to allow logging in then upgrading the patched installation ([#2473](https://github.com/MorpheApp/morphe-patches/issues/2473)) ([e7c32bf](https://github.com/MorpheApp/morphe-patches/commit/e7c32bf115d1e3c71a5aed9c370e4bafb282887c))
+* **YouTube - Seekbar:** Dynamically set round edges for 'most replayed' label background ([#2462](https://github.com/MorpheApp/morphe-patches/issues/2462)) ([80791b7](https://github.com/MorpheApp/morphe-patches/commit/80791b72d93c4c606a2b87edfc2dc9b7891fd439))
+
+### ✨ New Features
+
+* **YouTube - Hide layout components:** Add "Hide live chat tooltips" setting  ([#2463](https://github.com/MorpheApp/morphe-patches/issues/2463)) ([9f95b8e](https://github.com/MorpheApp/morphe-patches/commit/9f95b8ee3ff8fbec1176f7b82e78db23ae7d5548))
+* **YouTube - Hide layout components:** Add "Hide Notifications menu header" setting ([#2445](https://github.com/MorpheApp/morphe-patches/issues/2445)) ([2fd2eb5](https://github.com/MorpheApp/morphe-patches/commit/2fd2eb5ab6ee3577a3e61d144d57827fc84fa51d))
+* **YouTube - Swipe controls:** Add "Ignore swipes when locked" setting ([#2469](https://github.com/MorpheApp/morphe-patches/issues/2469)) ([1fce673](https://github.com/MorpheApp/morphe-patches/commit/1fce673271bde7033fef98814f4704e7187e450d))
+
 ## [1.40.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v1.40.0-dev.6...v1.40.0-dev.7) (2026-08-15)
 
 ### 🐛 Bug Fixes

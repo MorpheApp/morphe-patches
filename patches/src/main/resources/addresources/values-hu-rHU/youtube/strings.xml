@@ -84,6 +84,9 @@ A változások a következőket tartalmazzák:
   <string name="morphe_hide_latest_videos_button_summary">A Kezdőlap tetején megjelenő kék „Legújabb videók” sáv elrejtése</string>
   <string name="morphe_hide_mix_playlists_title">Egyveleg lejátszási listák elrejtése</string>
   <string name="morphe_hide_movies_section_title">Filmek szekció elrejtése</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">Értesítések menüfejcsze elrejtése</string>
+  <string name="morphe_hide_notifications_menu_header_summary">Elrejti az Értesítések menüfejcszét a harang gomb megnyomásakor</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">\"Értesíts\" gomb elrejtése</string>
@@ -251,6 +254,8 @@ A változások a következőket tartalmazzák:
   <string name="morphe_hide_comments_gift_button_title">Ajándék gomb elrejtése</string>
   <string name="morphe_hide_comments_info_button_title">Információ gomb elrejtése</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Élő csevegés támogatói sávjának elrejtése</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Élő csevegés tooltippjeinek elrejtése</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Elrejti a csevegési beviteli sáv közelében megjelenő tooltipp popupokat, például a csak feliratkozottakra vonatkozó csevegési értesítést</string>
   <string name="morphe_hide_comments_preview_comment_title">Megjegyzés előnézet elrejtése</string>
   <string name="morphe_hide_comments_preview_comment_summary">Megjegyzések előnézetének elrejtése a teljes megjegyzések szekció megnyitása előtt</string>
   <string name="morphe_hide_comments_thanks_button_title">Köszönet gomb elrejtése</string>
@@ -515,10 +520,13 @@ A javításhoz kapcsolja be a 'Videóstreamek meghamisítása' opciót, és mód
   <string name="morphe_swipe_right_zone_title">Jobbra törölés gesztus</string>
   <string name="morphe_swipe_top_zone_title">Felfelé törölés gesztus</string>
   <string name="morphe_swipe_zone_width_title">Bal/Jobb zóna szélessége</string>
+  <string name="morphe_swipe_zone_width_summary">A képernyő szélének százaléka, amely a balra és jobbra történő törlési gesztusok számára reserved (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Fényerő</string>
   <string name="morphe_swipe_zone_label_volume">Hangerő</string>
   <string name="morphe_swipe_zone_label_native">Natív</string>
   <string name="morphe_swipe_zone_label_off">Ki</string>
+  <string name="morphe_swipe_ignore_when_locked_title">Kezelés figyelmen kívül hagyása zároláskor</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
   <string name="morphe_swipe_press_to_engage_title">Csúsztatáshoz nyomva tartás engedélyezése</string>
   <string name="morphe_swipe_press_to_engage_summary">A csúsztatási gesztus felismerése előtt meg kell nyomni és nyomva tartani.</string>
   <string name="morphe_swipe_haptic_feedback_title">Haptikus visszajelzés engedélyezése</string>
