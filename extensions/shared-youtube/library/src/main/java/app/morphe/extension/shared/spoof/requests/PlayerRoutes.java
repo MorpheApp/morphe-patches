@@ -17,10 +17,10 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Locale;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.requests.Route;
 import app.morphe.extension.shared.settings.AppLanguage;
 import app.morphe.extension.shared.spoof.ClientType;
@@ -137,7 +137,10 @@ public final class PlayerRoutes {
         Route.CompiledRoute route = clientType.usePlayerEndpoint
                 ? GET_PLAYER_STREAMING_DATA
                 : GET_REEL_STREAMING_DATA;
-        HttpURLConnection connection = Requester.getConnectionFromCompiledRoute(YT_API_URL, route);
+        String url = YT_API_URL + route.getCompiledRoute();
+        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+        connection.setFixedLengthStreamingMode(0);
+        connection.setRequestMethod(route.getMethod().name());
 
         connection.setRequestProperty("Content-Type", "application/json");
         connection.setRequestProperty("User-Agent", clientType.userAgent);

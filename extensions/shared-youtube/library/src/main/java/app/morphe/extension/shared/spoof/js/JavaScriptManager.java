@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
+import java.net.URL;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -294,7 +295,7 @@ public final class JavaScriptManager {
 
             final long start = System.currentTimeMillis();
             final int connectionTimeoutMillis = 5000;
-            HttpURLConnection connection = Requester.openConnection(url);
+            HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
             connection.setFixedLengthStreamingMode(0);
             connection.setRequestMethod("GET");
             connection.setRequestProperty("User-Agent", USER_AGENT);
@@ -304,7 +305,7 @@ public final class JavaScriptManager {
 
             final String content;
             if (responseCode == HttpURLConnection.HTTP_OK) {
-                content = Requester.parseStringAndDisconnect(connection);
+                content = Requester.parseString(connection);
             } else {
                 Logger.printDebug(() -> "Ignoring response code: " + responseCode);
                 content = null;

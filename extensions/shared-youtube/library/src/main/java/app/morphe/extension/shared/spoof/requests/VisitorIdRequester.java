@@ -15,6 +15,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.time.ZoneOffset;
@@ -188,7 +189,7 @@ public final class VisitorIdRequester {
                     // TVHTML5 does not support the '/visitor_id' endpoint.
                     clientType == ClientType.TV_SABR ? "guide" : "visitor_id"
             );
-            HttpURLConnection connection = Requester.openConnection(url);
+            HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Accept-Language", "en-GB, en;q=0.9");
             connection.setRequestProperty("Content-Type", "application/json");
@@ -218,8 +219,7 @@ public final class VisitorIdRequester {
 
             final int responseCode = connection.getResponseCode();
             if (responseCode == HttpURLConnection.HTTP_OK) {
-                // Parse but do not disconnect because connection may be reused in the near future.
-                JSONObject response = Requester.parseJSONObject(connection);
+                JSONObject response = Requester.parseJSONObjectAndDisconnect(connection);
                 return response.getJSONObject("responseContext").getString("visitorData");
             }
 
@@ -233,6 +233,8 @@ public final class VisitorIdRequester {
                     Logger.printDebug(logMessage);
                 }
             }
+
+            connection.disconnect();
         } catch (IOException ex) {
             Logger.printException(() -> "Failed to fetch visitor data", ex);
         } catch (JSONException ex) {
