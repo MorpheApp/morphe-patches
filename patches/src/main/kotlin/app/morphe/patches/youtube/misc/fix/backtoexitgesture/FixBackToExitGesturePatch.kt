@@ -14,13 +14,10 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
-import app.morphe.patches.youtube.misc.playservice.is_20_40_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
-import app.morphe.patches.youtube.shared.YouTubeMainActivityOnBackPressedFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
-import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
@@ -44,44 +41,33 @@ internal val fixBackToExitGesturePatch = bytecodePatch(
             )
         }
 
-        // Flag that seems to change the back button to not
-        // exit the app but instead scrolls to the top of the home feed.
-        BackToRefreshFeatureFlagFingerprint.matchAll().forEach {
-            it.method.insertLiteralOverride(
-                it.instructionMatches.first().index,
-                false
-            )
-        }
-
         ScrollPositionFingerprint.instructionMatches[1].getMethodCalled().apply {
             val index = indexOfFirstInstructionOrThrow {
                 opcode == Opcode.INVOKE_VIRTUAL && getReference<MethodReference>()?.definingClass ==
                         "Landroid/support/v7/widget/RecyclerView;"
             }
-            
+
             addInstruction(
                 index,
                 "invoke-static { }, $EXTENSION_CLASS->onScrollingViews()V"
             )
         }
 
-        YouTubeMainActivityOnBackPressedFingerprint.let {
-            it.clearMatch()
-            it.method.apply {
-                val index = it.instructionMatches.first().index + 1
+        BackToRefreshFeatureFlagFingerprint.matchAll().forEach {
+            val smali =
+                """
+                    invoke-static {}, $EXTENSION_CLASS->shouldInterceptBackPress()Z
+                    move-result v0
 
-                addInstructionsAtControlFlowLabel(
-                    index,
-                    "invoke-static { }, $EXTENSION_CLASS->onBackPressed()V"
-                )
-            }
-        }
+                    if-nez v0, :cond_continue_native
 
-        if (is_20_40_or_greater) {
-            PredictiveGesturesOnBackInvokedFingerprint.method.addInstruction(
-                0,
-                "invoke-static { }, $EXTENSION_CLASS->onBackPressed()V"
-            )
+                    const/4 v0, 1
+                    return v0
+
+                    :cond_continue_native
+                """.trimIndent()
+
+            it.method.addInstruction(0, smali)
         }
     }
 }

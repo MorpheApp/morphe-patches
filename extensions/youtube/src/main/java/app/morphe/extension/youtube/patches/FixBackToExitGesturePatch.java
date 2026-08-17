@@ -36,11 +36,11 @@ public class FixBackToExitGesturePatch {
     /**
      * Handle the event after clicking the back button.
      */
-    public static void onBackPressed() {
+    public static boolean shouldInterceptBackPress() {
         Activity activity = Utils.getActivity();
 
         if (activity == null) {
-            return;
+            return false;
         }
 
         if (isTopView) {
@@ -62,12 +62,14 @@ public class FixBackToExitGesturePatch {
                 }
             } else {
                 lastTimeBackPressed = now;
-                Utils.runOnMainThreadDelayed(() -> {
-                    // After the timeout, the user should double-click the back button again.
-                    isTopView = false;
-                }, PRESSED_TIMEOUT_MILLISECONDS);
+                // After the timeout, the user should double-click the back button again.
+                Utils.runOnMainThreadDelayed(() -> isTopView = false, PRESSED_TIMEOUT_MILLISECONDS);
             }
+
+            return true;
         }
+
+        return false;
     }
 
     /**
