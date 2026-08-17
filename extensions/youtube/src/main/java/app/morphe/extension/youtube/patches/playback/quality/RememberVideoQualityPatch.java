@@ -18,7 +18,6 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.IntegerSetting;
-import app.morphe.extension.shared.spoof.ClientType;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.VideoInformation.*;
 import app.morphe.extension.youtube.settings.Settings;
@@ -128,7 +127,7 @@ public class RememberVideoQualityPatch {
 
     /**
      * Injection point.  Regular videos.
-     * @param videoResolution Human readable resolution: 480, 720, 1080.
+     * @param videoResolution Human-readable resolution: 480, 720, 1080.
      */
     public static void userChangedQuality(int videoResolution) {
         Utils.verifyOnMainThread();
@@ -144,21 +143,5 @@ public class RememberVideoQualityPatch {
      */
     public static void newVideoStarted(VideoInformation.PlaybackController ignoredPlayerController) {
         VideoInformation.setDesiredVideoResolution(getDefaultQualityResolution());
-    }
-
-    /**
-     * Injection point.
-     *
-     * @return  If true, default video quality is applied without delay after the video starts.
-     *          Turn this off if you experience playback issues with the Android VR AVC codec.
-     */
-    public static boolean overrideInitialVideoQualityFeatureFlag(boolean originalValue) {
-        ClientType client = Settings.SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get();
-        if (client == ClientType.ANDROID_VR || Settings.FORCE_AVC_CODEC.get()) {
-            Logger.printDebug(() -> "Override initial video quality feature flag to " + false);
-            return false;
-        }
-        return originalValue;
-
     }
 }

@@ -24,7 +24,6 @@ import app.morphe.patches.youtube.shared.VideoQualityChangedFingerprint
 import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.findFieldFromToString
-import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS =
@@ -64,8 +63,7 @@ val rememberVideoQualityPatch = bytecodePatch {
                 entryValuesKey = "morphe_shorts_quality_default_entry_values"
             ),
             SwitchPreference("morphe_remember_shorts_quality_last_selected", summary = true),
-            SwitchPreference("morphe_remember_video_quality_last_selected_toast", summary = true),
-            SwitchPreference("morphe_override_initial_video_quality", summary = true),
+            SwitchPreference("morphe_remember_video_quality_last_selected_toast", summary = true)
         ))
 
         onCreateHook(EXTENSION_CLASS, "newVideoStarted")
@@ -85,19 +83,6 @@ val rememberVideoQualityPatch = bytecodePatch {
                         invoke-static { v$register }, $EXTENSION_CLASS->getInitialVideoQuality(Lj$/util/Optional;)Lj$/util/Optional;
                         move-result-object v$register
                     """
-                )
-            }
-        }
-
-        // Fix initial default video quality.
-        listOf(
-            PlatypusFeatureFlagPrimaryFingerprint,
-            PlatypusFeatureFlagSecondaryFingerprint
-        ).forEach { fingerprint ->
-            fingerprint.matchAll().forEach { fingerprint ->
-                fingerprint.method.insertLiteralOverride(
-                    fingerprint.instructionMatches.first().index,
-                    "$EXTENSION_CLASS->overrideInitialVideoQualityFeatureFlag(Z)Z"
                 )
             }
         }

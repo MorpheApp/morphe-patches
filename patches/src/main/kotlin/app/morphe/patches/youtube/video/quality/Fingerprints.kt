@@ -77,18 +77,6 @@ internal object HidePremiumVideoQualityGetArrayFingerprint : Fingerprint(
     }
 )
 
-internal object PlatypusFeatureFlagPrimaryFingerprint : Fingerprint(
-    filters = listOf(
-        literal(45624008L)
-    )
-)
-
-internal object PlatypusFeatureFlagSecondaryFingerprint : Fingerprint(
-    filters = listOf(
-        literal(45408049L)
-    )
-)
-
 internal object PlaybackStartParametersToStringFingerprint : Fingerprint(
     name = "toString",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
