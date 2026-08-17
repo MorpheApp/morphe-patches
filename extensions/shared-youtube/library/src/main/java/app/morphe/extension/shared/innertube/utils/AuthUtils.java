@@ -14,10 +14,6 @@ import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.SharedYouTubeSettings;
-import app.morphe.extension.shared.spoof.ClientType;
-import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
-import app.morphe.extension.shared.spoof.requests.VisitorIdRequester;
 
 @SuppressWarnings("unused")
 public class AuthUtils {
@@ -42,15 +38,6 @@ public class AuthUtils {
 
             if (Utils.isNotEmpty(newlyLoadedAuthorization) &&
                     Utils.isNotEmpty(newlyLoadedVisitorId)) {
-                if (!authorization.equals(newlyLoadedAuthorization)) {
-                    if (SpoofVideoStreamsPatch.isPatchIncluded() && SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.get()) {
-                        for (ClientType c : ClientType.values()) {
-                            if (c.canLogin) {
-                                VisitorIdRequester.removeVisitorId(c);
-                            }
-                        }
-                    }
-                }
                 authorization = newlyLoadedAuthorization;
                 visitorId = newlyLoadedVisitorId;
             }
