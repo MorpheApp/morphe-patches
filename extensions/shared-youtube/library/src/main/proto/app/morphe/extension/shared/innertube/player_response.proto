@@ -51,5 +51,15 @@ message Format {
 }
 
 message PlayerConfig {
+  optional AndroidMedialibConfig androidMedialibConfig = 78958444;
+  optional PlayerGestureConfig playerGestureConfig = 262192541;
 }
 
+message AndroidMedialibConfig {
+  optional bool isItag18MainProfile = 3;
+}
+
+message PlayerGestureConfig {
+  optional bool downAndOutPortraitAllowed = 1;
+  optional bool downAndOutLandscapeAllowed = 2;
+}

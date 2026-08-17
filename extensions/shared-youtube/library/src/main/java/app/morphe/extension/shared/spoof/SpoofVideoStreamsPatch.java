@@ -356,6 +356,28 @@ public class SpoofVideoStreamsPatch {
 
     /**
      * Injection point.
+     * Called after {@link #getPlayerConfig(String)}.
+     */
+    public static boolean hasAndroidMedia(String videoId) {
+        if (SPOOF_VIDEO_STREAMS) {
+            try {
+                StreamingDataRequest request = StreamingDataRequest.getRequestForVideoId(videoId);
+                if (request != null) {
+                    var buffers = request.getStream();
+                    if (buffers != null) {
+                        return buffers.hasAndroidMedia();
+                    }
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "hasAndroidMedia failure", ex);
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Injection point.
      * Called after {@link #getStreamingData(String)}.
      */
     @Nullable

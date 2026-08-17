@@ -54,7 +54,7 @@ import app.morphe.extension.shared.spoof.js.JavaScriptManager;
  */
 public class StreamingDataRequest {
 
-    public record StreamData(byte[] streamingData, @Nullable byte[] playerConfig) {
+    public record StreamData(byte[] streamingData, @Nullable byte[] playerConfig, boolean hasAndroidMedia) {
     }
 
     private static volatile ClientType[] clientOrderToUse = ClientType.values();
@@ -333,11 +333,27 @@ public class StreamingDataRequest {
             }
 
             byte[] streamingDataBuffer = responseBuilder.build().toByteArray();
-            byte[] playerConfigBuffer = clientType.requireSABR && playerResponse.hasPlayerConfig()
-                    ? playerResponse.getPlayerConfig().toByteArray()
-                    : null;
+            byte[] playerConfigBuffer = null;
+            boolean hasAndroidMedia = false;
 
-            return new StreamData(streamingDataBuffer, playerConfigBuffer);
+            if (clientType.requireSABR && playerResponse.hasPlayerConfig()) {
+                PlayerConfig.Builder playerConfigBuilder = playerResponse.getPlayerConfig().toBuilder();
+
+                // In some clients, 'playerGestureConfig' is missing from the response.
+                // Add 'playerGestureConfig' using proto builder.
+                PlayerGestureConfig.Builder playerGestureConfigBuilder = playerConfigBuilder.getPlayerGestureConfig().toBuilder();
+                playerGestureConfigBuilder.setDownAndOutPortraitAllowed(true);
+                playerGestureConfigBuilder.setDownAndOutLandscapeAllowed(true);
+                playerConfigBuilder.setPlayerGestureConfig(playerGestureConfigBuilder);
+
+                playerConfigBuffer = playerConfigBuilder.build().toByteArray();
+
+                // If 'androidMedialibConfig' exists in the response, all playerConfigs are compatible.
+                // Override all playerConfigs.
+                hasAndroidMedia = playerConfigBuilder.hasAndroidMedialibConfig();
+            }
+
+            return new StreamData(streamingDataBuffer, playerConfigBuffer, hasAndroidMedia);
         } catch (IOException ex) {
             Logger.printException(() -> "Failed to write player response for video stream", ex);
             return null;

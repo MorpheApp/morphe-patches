@@ -288,6 +288,12 @@ internal fun spoofVideoStreamsPatch(
                             invoke-virtual { v5 }, $buildMethod
                             move-result-object v5
                             check-cast v5, $playerConfigClass
+
+                            # Check if player config contains android media lib config.
+                            invoke-static { v2 }, $EXTENSION_CLASS->hasAndroidMedia(Ljava/lang/String;)Z
+                            move-result v3
+                            if-nez v3, :override_all_player_config
+
                             iget-object v6, v5, $mediaCommonConfigField
                             if-eqz v6, :disabled
                             iget-object v7, v6, $mediaUstreamerRequestConfig
@@ -298,6 +304,9 @@ internal fun spoofVideoStreamsPatch(
                             iget-object v6, v5, $mediaCommonConfigField
                             iput-object v7, v6, $mediaUstreamerRequestConfig
                             iput-object v6, v5, $mediaCommonConfigField
+
+                            :override_all_player_config
+                            # Set player config.
                             iput-object v5, p2, $setPlayerConfigField
 
                             :disabled
