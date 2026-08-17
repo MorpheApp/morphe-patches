@@ -1179,12 +1179,8 @@ Tap here to open DeArrow.ajay.app"</string>
     <!-- video.quality.rememberVideoQualityPatch -->
     <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
     <string name="morphe_video_quality_default_entry_1">Auto</string>
-    <string name="morphe_override_initial_video_quality_title">Override initial video quality</string>
     <!-- 'Force AVC (H.264) codec' should be the same translation used for 'morphe_force_avc_codec_title'. -->
     <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-    <string name="morphe_override_initial_video_quality_summary">"Fixes an issue where the default video quality is not applied immediately after the video starts
-
-Limitation: Playback may not work on some devices if \'Spoof video streams\' is set to \'Android VR\' and \'Force AVC (H.264) codec\' is enabled"</string>
     <string name="morphe_remember_video_quality_last_selected_title">Remember video quality</string>
     <string name="morphe_remember_video_quality_last_selected_summary">Applies your manual quality selection to all future videos</string>
     <string name="morphe_remember_video_quality_last_selected_toast_title">Quality change notifications</string>

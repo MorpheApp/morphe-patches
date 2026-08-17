@@ -18,6 +18,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.IntegerSetting;
+import app.morphe.extension.shared.spoof.ClientType;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.VideoInformation.*;
 import app.morphe.extension.youtube.settings.Settings;
@@ -26,9 +27,6 @@ import j$.util.Optional;
 
 @SuppressWarnings({"rawtypes", "unused"})
 public class RememberVideoQualityPatch {
-    // Set the access modifier to final to override the flag only after the state snapshot is reloaded.
-    private static final boolean SETTINGS_INITIALIZED = Settings.SETTINGS_INITIALIZED.get();
-    private static final boolean OVERRIDE_INITIAL_VIDEO_QUALITY = Settings.OVERRIDE_INITIAL_VIDEO_QUALITY.get();
 
     private static final IntegerSetting videoQualityWifi = Settings.VIDEO_QUALITY_DEFAULT_WIFI;
     private static final IntegerSetting videoQualityMobile = Settings.VIDEO_QUALITY_DEFAULT_MOBILE;
@@ -155,10 +153,12 @@ public class RememberVideoQualityPatch {
      *          Turn this off if you experience playback issues with the Android VR AVC codec.
      */
     public static boolean overrideInitialVideoQualityFeatureFlag(boolean originalValue) {
-        if (SETTINGS_INITIALIZED) {
-            Logger.printDebug(() -> "Override initial video quality feature flag to " + OVERRIDE_INITIAL_VIDEO_QUALITY);
-            return OVERRIDE_INITIAL_VIDEO_QUALITY;
+        ClientType client = Settings.SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get();
+        if (client == ClientType.ANDROID_VR || Settings.FORCE_AVC_CODEC.get()) {
+            Logger.printDebug(() -> "Override initial video quality feature flag to " + false);
+            return false;
         }
         return originalValue;
+
     }
 }
