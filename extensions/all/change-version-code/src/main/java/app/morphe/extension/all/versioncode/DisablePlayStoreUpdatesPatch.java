@@ -23,6 +23,11 @@
 
 package app.morphe.extension.all.versioncode;
 
+import android.content.pm.PackageInfo;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 @SuppressWarnings("unused")
 public class DisablePlayStoreUpdatesPatch {
 
@@ -33,7 +38,9 @@ public class DisablePlayStoreUpdatesPatch {
     /**
      * Injection point.
      */
-    public static int getVersionCode(int versionCode) {
+    public static int getVersionCode(PackageInfo info) {
+        final int versionCode = info.versionCode;
+
         if (versionCode == Integer.MAX_VALUE) {
             return originalVersionCode();
         }
@@ -43,7 +50,10 @@ public class DisablePlayStoreUpdatesPatch {
     /**
      * Injection point.
      */
-    public static long getVersionCode(long versionCode) {
+    @RequiresApi(api = Build.VERSION_CODES.P)
+    public static long getVersionCodeLong(PackageInfo info) {
+        final long versionCode = info.getLongVersionCode();
+
         final long lowerBitMask = 0x00000000FFFFFFFFL;
         if ((versionCode & lowerBitMask) == Integer.MAX_VALUE) {
             // Keep the upper 32 bits (versionCodeMajor) untouched,

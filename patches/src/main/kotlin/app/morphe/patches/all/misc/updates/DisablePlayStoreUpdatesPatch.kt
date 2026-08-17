@@ -27,22 +27,22 @@
 package app.morphe.patches.all.misc.updates
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
-import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getNode
-import app.morphe.util.instructionCodeOffsets
 import app.morphe.util.matchAllMethodIndicesForEach
 import app.morphe.util.returnEarly
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import org.w3c.dom.Element
+import java.util.logging.Logger
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/all/versioncode/DisablePlayStoreUpdatesPatch;"
 
@@ -87,92 +87,84 @@ internal val disablePlayStoreUpdatesPatch = bytecodePatch(
             name = "originalVersionCode"
         ).method.returnEarly(originalVersionCode)
 
-        fieldAccess(
-            opcode = Opcode.IGET,
-            smali = "Landroid/content/pm/PackageInfo;->versionCode:I"
+        val logger by lazy { Logger.getLogger(this::class.java.name) }
+
+        Fingerprint(
+            filters = listOf(
+                fieldAccess(
+                    opcode = Opcode.IGET,
+                    smali = "Landroid/content/pm/PackageInfo;->versionCode:I"
+                )
+            ),
+            custom = { _, classDef ->
+                !classDef.type.startsWith("Lapp/morphe/extension")
+            }
         ).matchAllMethodIndicesForEach(requireMatches = false) { index ->
             val instruction = this.getInstruction<TwoRegisterInstruction>(index)
-            val register = instruction.registerA
+            val moveResultRegister = instruction.registerA
+            val packageInfoRegister = instruction.registerB
+            val moveResultIndex = index + 1
 
-            addInstructionsOutsideTryBlock(
-                index + 1,
-                """
-                    invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->getVersionCode(I)I
-                    move-result v$register
-                """
+            if (moveResultRegister >= 16) {
+                val provider = getFreeRegisterProvider(
+                    moveResultIndex,
+                    moveResultRegister,
+                    packageInfoRegister
+                )
+                if (!provider.hasFreeRegisters()) {
+                    logger.warning("Method does not have enough free registers, version code may not be overridden for: $this")
+                    return@matchAllMethodIndicesForEach
+                }
+                val free = provider.getFreeRegister()
+                if (free >= 16) {
+                    logger.warning("No 4-bit register available, version code may not be overridden for: $this")
+                    return@matchAllMethodIndicesForEach
+                }
+
+                addInstruction(
+                    moveResultIndex,
+                    """
+                        move-result v$free
+                        move/from16 v$moveResultRegister, v$free
+                    """
+                )
+            } else {
+                addInstruction(
+                    moveResultIndex,
+                    "move-result v$moveResultRegister"
+                )
+            }
+
+            replaceInstruction(
+                index,
+                "invoke-static/range { v$packageInfoRegister .. v$packageInfoRegister }, " +
+                        "$EXTENSION_CLASS->getVersionCode(Landroid/content/pm/PackageInfo;)I"
             )
         }
 
-        // Check long version code, which is a combination of
+        // Replace long version code, which is a combination of
         // regular version code and versionCodeMajor.
-        methodCall(
-            opcode = Opcode.INVOKE_VIRTUAL,
-            smali = "Landroid/content/pm/PackageInfo;->getLongVersionCode()J"
+        Fingerprint(
+            filters = listOf(
+                methodCall(
+                    opcode = Opcode.INVOKE_VIRTUAL,
+                    smali = "Landroid/content/pm/PackageInfo;->getLongVersionCode()J"
+                )
+            ),
+            custom = { _, classDef ->
+                !classDef.type.startsWith("Lapp/morphe/extension")
+            }
         ).matchAllMethodIndicesForEach(requireMatches = false) { index ->
-            val moveResultIndex = index + 1
-            val instruction = getInstruction(moveResultIndex)
-            if (instruction.opcode != Opcode.MOVE_RESULT_WIDE) {
+            if (getInstruction(index + 1).opcode != Opcode.MOVE_RESULT_WIDE) {
                 return@matchAllMethodIndicesForEach
             }
-            val register = (instruction as OneRegisterInstruction).registerA
+            val register = getInstruction<FiveRegisterInstruction>(index).registerC
 
-            // Add between method call and move-result to avoid try/catch label issues.
-            addInstructions(
-                moveResultIndex,
-                """
-                    move-result-wide v$register
-                    invoke-static/range { v$register .. v${register + 1} }, $EXTENSION_CLASS->getVersionCode(J)J
-                """
+            replaceInstruction(
+                index,
+                "invoke-static/range { v$register .. v$register }, " +
+                        "$EXTENSION_CLASS->getVersionCodeLong(Landroid/content/pm/PackageInfo;)J"
             )
         }
-    }
-}
-
-/**
- * Inserts instructions immediately after a given index, without extending any
- * existing try/catch block that ends at that index.
- *
- * A plain addInstructions(index + 1, ...) call inserts before the instruction
- * the try block's end label is anchored to, which drags that label forward
- * and silently pulls the inserted code into the try block.
- *
- * Effectively this changes the code from:
- * (original code)
- * :try_end
- * .catch Exception; {:try_start .. :try_end} :handler
- * (following code)
- *
- * Into:
- * (original code)
- * :try_end
- * .catch Exception; {:try_start .. :try_end} :handler
- * (patch code)
- * (following code)
- *
- * Instead of the incorrect result of using [MutableMethod.addInstructions]
- * (original code)
- * (patch code)
- * :try_end
- * .catch Exception; {:try_start .. :try_end} :handler
- * (following code)
- */
-fun MutableMethod.addInstructionsOutsideTryBlock(insertIndex: Int, instructions: String) {
-    val implementation = this.implementation!!
-
-    if (insertIndex >= implementation.instructions.size) {
-        addInstructions(insertIndex, instructions)
-        return
-    }
-
-    // Only use the label-shifting logic if the instruction at insertIndex is the end of a try block.
-    // This avoids inserting code after control flow labels that might be jumped to from elsewhere.
-    val offsets = instructionCodeOffsets()
-    val nextOffset = offsets[insertIndex]
-    val isTryEnd = implementation.tryBlocks.any { it.startCodeAddress + it.codeUnitCount == nextOffset }
-
-    if (isTryEnd) {
-        addInstructionsAtControlFlowLabel(insertIndex, instructions)
-    } else {
-        addInstructions(insertIndex, instructions)
     }
 }
