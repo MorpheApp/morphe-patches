@@ -31,6 +31,7 @@ public final class DescriptionComponentsFilter extends Filter {
     private final ByteArrayFilterGroupList featuredSectionGroupList = new ByteArrayFilterGroupList();
     private final StringFilterGroup hashtagSection;
     private final ByteArrayFilterGroup hashtagSectionBuffer;
+    private final ByteArrayFilterGroup hypePointsBuffer;
     private final StringFilterGroup macroMarkersCarousel;
     private final ByteArrayFilterGroupList macroMarkersCarouselGroupList = new ByteArrayFilterGroupList();
     private final StringFilterGroup playlistSection;
@@ -87,14 +88,20 @@ public final class DescriptionComponentsFilter extends Filter {
         );
 
         hashtagSection = new StringFilterGroup(
-                Settings.HIDE_HASHTAG_SECTION,
+                null,
                 "|CellType|ScrollableContainerType|"
         );
 
         hashtagSectionBuffer = new ByteArrayFilterGroup(
-                null,
+                Settings.HIDE_HASHTAG_SECTION,
                 "FEhashtag",
                 "/charts" // https://charts.youtube.com/charts/
+        );
+
+        hypePointsBuffer = new ByteArrayFilterGroup(
+                Settings.HIDE_HYPE_POINTS,
+                "yt_outline_star_shooting",
+                "yt_fill_experimental_hype"
         );
 
         final StringFilterGroup howThisWasMadeSection = new StringFilterGroup(
@@ -224,7 +231,7 @@ public final class DescriptionComponentsFilter extends Filter {
         }
 
         if (matchedGroup == hashtagSection) {
-            return hashtagSectionBuffer.check(buffer).isFiltered();
+            return hashtagSectionBuffer.check(buffer).isFiltered() || hypePointsBuffer.check(buffer).isFiltered();
         }
 
         if (matchedGroup == macroMarkersCarousel) {
