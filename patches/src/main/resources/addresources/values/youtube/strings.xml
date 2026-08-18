@@ -1068,7 +1068,7 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
 
     <!-- misc.fix.fixBackToExitGesturePatch -->
     <string name="morphe_back_button_always_exits_feed_title">Back button exits the feed</string>
-    <string name="morphe_back_button_always_exits_feed_summary">Pressing the back button always exits the app instead of scrolling to the top of the feed</string>
+    <string name="morphe_back_button_always_exits_feed_summary">Pressing back always exits the app instead of scrolling to the top of the feed</string>
 
     <!-- layout.theme.themePatch -->
     <string name="morphe_gradient_loading_screen_title">Enable gradient loading screen</string>
