@@ -12,12 +12,18 @@ package app.morphe.patches.youtube.misc.fix.backtoexitgesture
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
+import app.morphe.patches.youtube.misc.playservice.is_20_40_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
+import app.morphe.patches.youtube.misc.settings.PreferenceScreen
+import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.patches.youtube.shared.YouTubeMainActivityOnBackPressedFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
+import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
@@ -30,14 +36,26 @@ internal val fixBackToExitGesturePatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         playerTypeHookPatch,
-        versionCheckPatch
+        versionCheckPatch,
+        settingsPatch,
     )
 
     execute {
+        PreferenceScreen.MISC.addPreferences(
+            SwitchPreference("morphe_back_button_always_exits_feed", summary = true)
+        )
+
         RecyclerViewTopScrollingFingerprint.let {
             it.method.addInstructionsAtControlFlowLabel(
                 it.instructionMatches.last().index + 1,
                 "invoke-static { }, $EXTENSION_CLASS->onTopView()V"
+            )
+        }
+
+        BackToRefreshFeatureFlagFingerprint.matchAll().forEach {
+            it.method.insertLiteralOverride(
+                it.instructionMatches.first().index,
+                "$EXTENSION_CLASS->allowBackButtonToScrollToTopOfFeed(Z)Z"
             )
         }
 
@@ -53,21 +71,23 @@ internal val fixBackToExitGesturePatch = bytecodePatch(
             )
         }
 
-        BackToRefreshFeatureFlagFingerprint.matchAll().forEach {
-            val smali =
-                """
-                    invoke-static {}, $EXTENSION_CLASS->shouldInterceptBackPress()Z
-                    move-result v0
+        YouTubeMainActivityOnBackPressedFingerprint.let {
+            it.clearMatch()
+            it.method.apply {
+                val index = it.instructionMatches.first().index + 1
 
-                    if-nez v0, :cond_continue_native
+                addInstructionsAtControlFlowLabel(
+                    index,
+                    "invoke-static { }, $EXTENSION_CLASS->onBackPressed()V"
+                )
+            }
+        }
 
-                    const/4 v0, 1
-                    return v0
-
-                    :cond_continue_native
-                """.trimIndent()
-
-            it.method.addInstruction(0, smali)
+        if (is_20_40_or_greater) {
+            PredictiveGesturesOnBackInvokedFingerprint.method.addInstruction(
+                0,
+                "invoke-static { }, $EXTENSION_CLASS->onBackPressed()V"
+            )
         }
     }
 }

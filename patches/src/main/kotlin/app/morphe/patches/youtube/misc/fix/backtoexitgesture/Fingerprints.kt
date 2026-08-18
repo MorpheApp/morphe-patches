@@ -12,8 +12,10 @@ package app.morphe.patches.youtube.misc.fix.backtoexitgesture
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.checkCast
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
@@ -50,4 +52,24 @@ internal object BackToRefreshFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
         literal(45359221)
     )
+)
+
+internal object PredictiveGesturesOnBackInvokedFingerprint : Fingerprint(
+    classFingerprint = Fingerprint(
+        name = "onBackCancelled",
+        accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+        returnType = "V",
+        parameters = listOf(),
+        filters = listOf(
+            literal(0),
+            opcode(Opcode.IF_NEZ, location = MatchAfterImmediately()),
+            fieldAccess(
+                opcode = Opcode.IGET_OBJECT,
+                type = "Ljava/lang/Object;",
+                location = MatchAfterWithin(5)
+            ),
+            literal(-1, location = MatchAfterWithin(10)),
+        )
+    ),
+    name = "onBackInvoked"
 )

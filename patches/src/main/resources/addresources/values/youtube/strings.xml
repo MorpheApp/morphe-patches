@@ -1066,6 +1066,10 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <string name="morphe_miniplayer_opacity_summary">Adjust the transparency level (0 is transparent, 100 is opaque)</string>
     <string name="morphe_miniplayer_opacity_invalid_toast">Miniplayer overlay opacity must be between 0-100</string>
 
+    <!-- misc.fix.fixBackToExitGesturePatch -->
+    <string name="morphe_back_button_always_exits_feed_title">Back button exits the feed</string>
+    <string name="morphe_back_button_always_exits_feed_summary">Pressing the back button always exits the app instead of scrolling to the top of the feed</string>
+
     <!-- layout.theme.themePatch -->
     <string name="morphe_gradient_loading_screen_title">Enable gradient loading screen</string>
     <string name="morphe_gradient_loading_screen_summary">Shows a gradient background on the loading screen instead of a solid color</string>
