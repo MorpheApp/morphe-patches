@@ -36,7 +36,6 @@ import app.morphe.util.copyResources
 import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.removeFromParent
 import app.morphe.util.returnEarly
-import app.morphe.util.trimIndentMultiline
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import org.w3c.dom.Element
@@ -150,7 +149,7 @@ internal fun baseCustomBrandingPatch(
               $USER_CUSTOM_NOTIFICATION_ICON_XML_FILE_NAME
             - PNG raster images placed in the matching 'drawable-<dpi>' folders:
               ${notificationIconPngDirectories.map { (dpi, dim) -> "- $dpi/$USER_CUSTOM_NOTIFICATION_ICON_PNG_FILE_NAME ($dim)" }.joinToString("\n")}
-        """.trimIndentMultiline()
+        """
     )
 
     block()

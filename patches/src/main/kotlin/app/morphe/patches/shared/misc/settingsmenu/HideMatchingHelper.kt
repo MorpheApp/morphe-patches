@@ -104,7 +104,7 @@ internal fun BytecodePatchContext.injectHideMatchingHelper() {
             move-object v8, v3
             goto :title_picked
             :skip_title_$i
-        """.trimIndent()
+        """
     }.joinToString("\n")
 
     val hideFieldChecks = textFields.joinToString("\n") { field ->
@@ -113,7 +113,7 @@ internal fun BytecodePatchContext.injectHideMatchingHelper() {
             invoke-static { v3, p1 }, $SETTINGS_MENU_FILTER_CLASS->equalsAny(Ljava/lang/CharSequence;[Ljava/lang/String;)Z
             move-result v4
             if-nez v4, :match
-        """.trimIndent()
+        """
     }
 
     PreferenceGroupGetPreferenceFingerprint.classDef.apply {
