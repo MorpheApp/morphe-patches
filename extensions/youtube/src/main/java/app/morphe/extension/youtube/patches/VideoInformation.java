@@ -418,17 +418,17 @@ public final class VideoInformation {
      */
     public static void setAudioPitch(float currentAudioPitch) {
         Logger.printDebug(() -> "Audio pitch set to: " + currentAudioPitch);
+        final float previousPlaybackSpeed = playbackSpeed;
         if (!updatePlaybackAudioPitchValue(currentAudioPitch)) {
             return;
         }
 
         RememberPlaybackSpeedPatch.userSelectedPlaybackAudioPitch(playbackAudioPitch);
-        if (Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
-            setPlaybackParameters(playbackSpeed, playbackAudioPitch);
-        } else {
+        if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get() && previousPlaybackSpeed != playbackSpeed) {
             RememberPlaybackSpeedPatch.userSelectedPlaybackSpeed(playbackSpeed);
             changePlaybackSpeed(playbackSpeed);
         }
+        setPlaybackParameters(playbackSpeed, playbackAudioPitch);
     }
 
     /**
