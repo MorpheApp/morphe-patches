@@ -883,6 +883,7 @@ public final class VideoInformation {
         RememberPlaybackSpeedPatch.userSelectedPlaybackSpeed(playbackSpeed);
         if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
             RememberPlaybackSpeedPatch.userSelectedPlaybackAudioPitch(playbackAudioPitch);
+            setPlaybackParameters(playbackSpeed, playbackAudioPitch);
         }
         changePlaybackSpeed(playbackSpeed);
     }
