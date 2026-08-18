@@ -20,7 +20,6 @@ import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
-import app.morphe.util.trimIndentMultiline
 import java.io.File
 
 const val CUSTOM_HEADER_RESOURCE_NAME = "morphe_header_custom"
@@ -55,7 +54,7 @@ internal fun baseChangeHeaderPatch(
 
             Required dimensions:
             ${targetResourceDirectoryNames.map { (dpi, dim) -> "- $dpi: $dim" }.joinToString("\n")}
-        """.trimIndentMultiline()
+        """
     )
 
     block()
