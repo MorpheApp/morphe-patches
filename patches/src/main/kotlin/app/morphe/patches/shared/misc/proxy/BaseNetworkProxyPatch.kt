@@ -86,7 +86,7 @@ internal fun baseNetworkProxyPatch(
                 val register = getInstruction<OneRegisterInstruction>(index).registerA
                 addInstruction(
                     index,
-                    "invoke-static { v$register }, $EXTENSION_CLASS->recordProxyConfiguredCronetEngine($CRONET_ENGINE_CLASS)V"
+                    "invoke-static { v$register }, $EXTENSION_CLASS->recordCronetEngine($CRONET_ENGINE_CLASS)V"
                 )
             }
         }

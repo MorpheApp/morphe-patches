@@ -197,10 +197,16 @@ public final class CronetHttpURLConnection extends DelegatingHttpURLConnection {
     @Override
     public synchronized OutputStream getOutputStream() throws IOException {
         if (outputStream == null) {
+            if (!getDoOutput()) {
+                setDoOutput(true);
+            }
             OutputStream delegateOutputStream = executeRequestStartWithDeadline(
                     super::getOutputStream,
                     requestStartDeadline()
             );
+            if (delegateOutputStream == null) {
+                throw new IOException("Cronet returned a null output stream");
+            }
             markRequestStarted();
             outputStream = new WriteTimeoutOutputStream(delegateOutputStream);
         }

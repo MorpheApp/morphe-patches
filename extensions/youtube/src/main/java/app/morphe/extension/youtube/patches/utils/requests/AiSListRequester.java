@@ -13,7 +13,6 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.zip.GZIPInputStream;
 
@@ -75,7 +74,7 @@ public final class AiSListRequester {
         HttpURLConnection connection = null;
         final long start = System.currentTimeMillis();
         try {
-            connection = (HttpURLConnection) new URL(url).openConnection();
+            connection = Requester.openConnection(url);
             connection.setFixedLengthStreamingMode(0);
             connection.setConnectTimeout(CONNECT_TIMEOUT_MS);
             connection.setReadTimeout(READ_TIMEOUT_MS);
