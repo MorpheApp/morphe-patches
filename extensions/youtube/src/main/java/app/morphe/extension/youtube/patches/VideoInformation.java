@@ -243,8 +243,11 @@ public final class VideoInformation {
             // playbackSpeed = DEFAULT_PLAYBACK_SPEED; // Captured at video start, interferes otherwise.
             playbackSpeedFormattedString = "";
             final float audioPitchOverride = RememberPlaybackSpeedPatch.getPlaybackAudioPitchOverride();
-            if (audioPitchOverride > 0.0f && Settings.ENABLE_PLAYBACK_AUDIO_PITCH.get()) {
+            if (audioPitchOverride > 0.0f && isPlaybackAudioPitchEnabled() &&
+                    Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
                 playbackAudioPitch = audioPitchOverride;
+            } else {
+                playbackAudioPitch = DEFAULT_PLAYBACK_AUDIO_PITCH;
             }
             playbackAudioPitchFormattedString = "";
             desiredVideoResolution = AUTOMATIC_VIDEO_QUALITY_VALUE;
@@ -797,6 +800,10 @@ public final class VideoInformation {
             return;
         }
 
+        updatePlaybackSpeedValue(playbackSpeed);
+        if (isPlaybackAudioPitchLinked()) {
+            updatePlaybackAudioPitchValue(playbackSpeed);
+        }
         currentPlaybackSpeedMenuInterface.patch_setSpeed(playbackSpeed);
     }
 
