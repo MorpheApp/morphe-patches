@@ -93,7 +93,7 @@ public final class LoadVideoPatch {
             String builderString = "https://www.youtube.com/watch?v=" + builder;
             Logger.printDebug(() -> "Opening: " + builderString);
 
-            openIntent(builderString, true);
+            openVideoIntent(builderString, true);
         } catch (Exception ex) {
             Logger.printException(() -> "Failed to reload video", ex);
         }
@@ -108,7 +108,7 @@ public final class LoadVideoPatch {
         return playerInterface;
     }
 
-    public static void openIntent(String url, boolean closeCurrentPlayerInstance) {
+    public static void openVideoIntent(String url, boolean closeCurrentPlayerInstance) {
         int loadVideoDelay = 0;
 
         // Close the current player instance.
@@ -135,7 +135,8 @@ public final class LoadVideoPatch {
     }
 
     // This method opens a video based on hardcoded parameters found in an obfuscated class.
-    public static void openVideoWithInternalIntent(String videoIDWithParams) {
+    // It is generally faster than the solution that uses 'Intent.FLAG_ACTIVITY_NEW_TASK'.
+    public static void openVideoIntentWithInternalContext(String videoIDWithParams) {
         PlayerInterface playerInterface;
         if ((playerInterface = getPlayerInterface()) != null) {
             Context context = mainActivityRef.get();

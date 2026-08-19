@@ -542,6 +542,27 @@ internal object CreateSearchSuggestionsFingerprint : Fingerprint(
     strings = listOf("ss_rds")
 )
 
+internal object TooltipAnchorViewFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "Landroid/view/View;"
+        ),
+        resourceLiteral(ResourceType.LAYOUT, "tooltip_content_view"),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            definingClass = "Landroid/view/View;",
+            name = "inflate",
+            returnType = "Landroid/view/View;",
+            location = MatchAfterWithin(10)
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
+    )
+)
+
 internal object ThumbnailAndEmojiPickerContainerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Landroid/view/View;",

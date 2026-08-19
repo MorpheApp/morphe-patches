@@ -13,6 +13,7 @@ package app.morphe.extension.youtube.patches.components;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 
@@ -21,6 +22,8 @@ import androidx.annotation.NonNull;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
 import app.morphe.extension.shared.patches.components.ByteArrayFilterGroup;
@@ -40,6 +43,8 @@ public class CommentsFilter extends Filter {
     private static final String COMMENT_COMPOSER_PATH = "comment_composer.e";
     private static final String VIDEO_LOCKUP_WITH_ATTACHMENT_PATH = "video_lockup_with_attachment.e";
     private static final String VIDEO_METADATA_CAROUSEL_PATH = "video_metadata_carousel.e";
+    private static final int ID_LIVE_CHAT_ACTION_PANEL =
+            ResourceUtils.getIdentifierOrThrow(ResourceType.ID, "live_chat_action_panel");
 
     private static final List<String> commentsCarouselFilterStrings =
             Utils.getFilterStrings(Settings.HIDE_COMMENTS_CAROUSEL_FILTER_STRINGS);
@@ -279,6 +284,23 @@ public class CommentsFilter extends Filter {
                 }
             }
         });
+    }
+
+    /**
+     * Injection point.
+     */
+    public static View hideLiveChatTooltip(View anchor) {
+        if (anchor == null || !Settings.HIDE_COMMENTS_LIVE_CHAT_TOOLTIPS.get()) {
+            return anchor;
+        }
+
+        for (ViewParent parent = anchor.getParent(); parent instanceof View view; parent = view.getParent()) {
+            if (view.getId() == ID_LIVE_CHAT_ACTION_PANEL) {
+                return null;
+            }
+        }
+
+        return anchor;
     }
 
     /**

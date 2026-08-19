@@ -84,6 +84,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_latest_videos_button_summary">হোম ফিডের শীর্ষে প্রদর্শিত নীল \'সাম্প্রতিক ভিডিও\' ব্যানারটি লুকিয়ে রাখে</string>
   <string name="morphe_hide_mix_playlists_title">মিক্স প্লেলিস্ট লুকান</string>
   <string name="morphe_hide_movies_section_title">চলচ্চিত্র বিভাগ লুকান</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">Hide Notifications menu header</string>
+  <string name="morphe_hide_notifications_menu_header_summary">Hides the Notifications menu header when clicking the bell button</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">\'আমাকে জানান\' বোতাম লুকান</string>
@@ -251,6 +254,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_gift_button_title">গिफ्ट বোতামটি লুকান</string>
   <string name="morphe_hide_comments_info_button_title">লুকান তথ্য বোতাম</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">লাইভ চ্যাট দাতা বারটি লুকান</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Hide live chat tooltips</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Hides tooltip popups shown near the chat input bar, such as the subscriber-only chat notice</string>
   <string name="morphe_hide_comments_preview_comment_title">মন্তব্যের পূর্বরূপ লুকান</string>
   <string name="morphe_hide_comments_preview_comment_summary">পুরো মন্তব্য বিভাগ খোলার আগে ভিডিওর নিচে মন্তব্য প্রিভিউ লুকায়</string>
   <string name="morphe_hide_comments_thanks_button_title">ধন্যবাদ বাটন লুকান</string>
@@ -511,15 +516,18 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_tap_to_seek_title">ভিডিওর নির্দিষ্ট অংশে যেতে ট্যাপ করা সক্রিয় করুন</string>
   <string name="morphe_tap_to_seek_summary">সীকবারটি ড্র্যাগ না করে সেই অবস্থানে যেতে ট্যাপ করুন।</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">উজ্জ্বলতার সোয়াইপ অঙ্গভঙ্গি সক্রিয় করুন</string>
-  <string name="morphe_swipe_brightness_summary">ফুলস্ক্রিন মোডে বাম দিকে উল্লম্বভাবে সোয়াইপ করলে উজ্জ্বলতা সামঞ্জস্য করা যায়</string>
-  <string name="morphe_swipe_volume_title">ভলিউম অঙ্গভঙ্গি সক্রিয় করুন</string>
-  <string name="morphe_swipe_volume_summary">ফুলস্ক্রিন মোডে ডান দিকে উল্লম্বভাবে সোয়াইপ করলে ভলিউম সামঞ্জস্য করা যায়</string>
-  <string name="morphe_swipe_zone_width_title">উজ্জ্বলতা/আয়তনের অঞ্চলের প্রস্থ</string>
-  <string name="morphe_swipe_zone_width_summary">উজ্জ্বলতা এবং আয়তন অঙ্গভঙ্গির জন্য প্রতিটি স্ক্রিনের প্রান্তের কত শতাংশ সংরক্ষিত থাকবে (৫-৫০)</string>
+  <string name="morphe_swipe_left_zone_title">Left swipe gesture</string>
+  <string name="morphe_swipe_right_zone_title">Right swipe gesture</string>
+  <string name="morphe_swipe_top_zone_title">Top swipe gesture</string>
+  <string name="morphe_swipe_zone_width_title">Left/Right zone width</string>
+  <string name="morphe_swipe_zone_width_summary">Percentage of each screen edge reserved for left and right swipe gestures (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">উজ্জ্বলতা</string>
   <string name="morphe_swipe_zone_label_volume">ভলিউম</string>
   <string name="morphe_swipe_zone_label_native">নেটিভ</string>
+  <string name="morphe_swipe_zone_label_off">Off</string>
+  <string name="morphe_swipe_ignore_when_locked_title">Ignore swipes when locked</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">Swipe gestures are ignored while the player is locked with \'Lock screen\'</string>
   <string name="morphe_swipe_press_to_engage_title">সোয়াইপ করার জন্য প্রেস করা অঙ্গভঙ্গি সক্রিয় করুন</string>
   <string name="morphe_swipe_press_to_engage_summary">সোয়াইপ অঙ্গভঙ্গি শনাক্ত হওয়ার আগে চেপে ধরে রাখা প্রয়োজন</string>
   <string name="morphe_swipe_haptic_feedback_title">কম্পন প্রতিক্রিয়া সক্রিয় করুন</string>
@@ -548,12 +556,9 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_swipe_volume_sensitivity_summary">প্রতি সোয়াইপে ভলিউম কতটা পরিবর্তিত হয়</string>
   <string name="morphe_swipe_brightness_sensitivity_title">উজ্জ্বলতা সোয়াইপ সংবেদনশীলতা</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">উজ্জ্বলতা বাড়ানোর জন্য প্রতিটি সোয়াইপে বেশি সোয়াইপ করতে হবে</string>
-  <string name="morphe_swipe_speed_title">স্পিড অঙ্গভঙ্গি সক্রিয় করুন</string>
-  <string name="morphe_swipe_speed_summary">ফুলস্ক্রিন মোডে উপরের অঞ্চলে অনুভূমিকভাবে সোয়াইপ করে প্লেব্যাক গতি পরিবর্তন করুন</string>
   <string name="morphe_swipe_speed_sensitivity_title">স্পিড সোয়াইপ সংবেদনশীলতা</string>
   <string name="morphe_swipe_speed_sensitivity_summary">স্পিড বাড়ানোর জন্য প্রতিটি সোয়াইপে বেশি সোয়াইপ করতে হবে</string>
   <string name="morphe_swipe_speed_step_title">গতির ধাপ</string>
-  <string name="morphe_swipe_speed_step_summary">প্রতিটি টিকের জন্য প্লেব্যাক গতির পরিবর্তন</string>
   <string name="morphe_swipe_speed_zone_height_title">স্পিড জোন উচ্চতা</string>
   <string name="morphe_swipe_speed_zone_height_summary">প্লেয়ার উচ্চতার শতাংশ হিসাবে স্পিড অঙ্গভঙ্গি জোনের উচ্চতা (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">স্পিড</string>
@@ -681,15 +686,8 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_navigation_bar_animations_summary">ট্যাবের মধ্যে পরিবর্তন করার সময় অ্যানিমেশন তৈরি করে</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">স্বয়ংক্রিয়ভাবে নেভিগেশন বার লুকানো নিষ্ক্রিয় করুন</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">স্ক্রোল করার সময় নেভিগেশন বারটি দৃশ্যমান রাখে</string>
-  <string name="morphe_disable_translucent_status_bar_title">অর্ধস্বচ্ছ স্থিতি বার নিষ্ক্রিয় করুন</string>
-  <string name="morphe_disable_translucent_status_bar_summary">স্ট্যাটাস বারটি সম্পূর্ণরূপে অস্বচ্ছ করে তোলে</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"সীমাবদ্ধতা:
-• ভিডিও প্লেয়ারে শীর্ষে কালো বর খুঁজে পাওয়ার পারে.
-• সিস্টেম নেভিগেশন বার ট্রান্সলুসেন্ট হয়ে যেতে পারে, এবং ভিডিওতে মন্তব্য করতে পারবেন না।"</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">অর্ধস্বচ্ছ হালকা বার নিষ্ক্রিয় করুন</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">লাইট মোডে নেভিগেশন বারকে সম্পূর্ণরূপে অস্বচ্ছ করে তোলে</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">গাঢ় স্বচ্ছ বার অক্ষম করুন</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">ডার্ক মোডে নেভিগেশন বারকে সম্পূর্ণরূপে অস্বচ্ছ করে তোলে</string>
+  <string name="morphe_disable_translucent_navigation_title">Disable translucent navigation bar</string>
+  <string name="morphe_disable_translucent_navigation_summary">Makes the navigation and status bar fully opaque</string>
   <string name="morphe_toolbar_screen_title">টুলবার</string>
   <string name="morphe_toolbar_screen_summary">টুলবারে কোন উপাদানগুলো প্রদর্শিত হবে তা নির্বাচন করুন</string>
   <string name="morphe_hide_toolbar_cast_button_title">কাস্ট বোতামটি লুকান</string>
@@ -1114,6 +1112,11 @@ DeArrow.ajay.app ওপেন করতে এখানে ট্যাপ ক�
   <string name="morphe_remember_playback_speed_toast">ডিফল্ট প্লেব্যাক স্পিড পরিবর্তন করা হয়েছে: %s</string>
   <string name="morphe_disable_playback_speed_music_title">স্বাভাবিক গতিতে গান শুনুন</string>
   <string name="morphe_disable_playback_speed_music_summary">মিউজিক ভিডিও সর্বদা স্বাভাবিক (১.০x) গতিতে প্লে করুন</string>
+  <string name="morphe_enable_playback_audio_pitch_controls_title">Enable audio pitch controls</string>
+  <string name="morphe_playback_audio_pitch_default_title">Default playback audio pitch</string>
+  <string name="morphe_remember_playback_audio_pitch_toast">Changed default audio pitch to: %s</string>
+  <string name="morphe_playback_audio_time_stretching_title">Audio time stretching</string>
+  <string name="morphe_playback_audio_time_stretching_summary">Allows setting speed and pitch independently, may cause audio artifacts</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR ভিডিও নিষ্ক্রিয় করুন</string>
   <string name="morphe_force_avc_codec_title">AVC (H.264) কোডেক জোর করুন</string>
@@ -1128,6 +1131,7 @@ DeArrow.ajay.app ওপেন করতে এখানে ট্যাপ ক�
 • কিছু ডিভাইস AVC জোর করে ব্যবহার করতে পারে না"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">এই বৈশিষ্ট্যটি ব্যবহার করতে, \'ভিডিও স্ট্রিম স্পুফ করুন\' কে \'Android VR\' বা \'Android Studio\' এ সেট করুন</string>
+  <string name="morphe_force_av1_in_shorts_title">Shorts-এ AV1 ফোর্স করুন</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">অ্যাডভান্সড কোয়ালিটি মেনু খুলুন</string>
   <string name="morphe_advanced_video_quality_menu_summary">মানের নির্বাচন মেনু এড়িয়ে সরাসরি \"অ্যাডভান্সড\" মানের মেনু খুলুন</string>

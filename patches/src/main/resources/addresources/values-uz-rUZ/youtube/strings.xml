@@ -84,6 +84,9 @@ Oʻzgarishlar:
   <string name="morphe_hide_latest_videos_button_summary">Bosh sahifa oziqlantirishning tepasida koʻrinadigan \'Eng soʻnggi videolar\' bannerini yashiradi</string>
   <string name="morphe_hide_mix_playlists_title">Miks pleyllarni yashirish</string>
   <string name="morphe_hide_movies_section_title">Filmlar bo\'limini yashirish</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">Bildirishnomalar menyusini yashirish</string>
+  <string name="morphe_hide_notifications_menu_header_summary">Qo\'ng\'iroq tugmasi bosilganda Bildirishnomalar menyu sarlavhasini yashiradi</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">“Bildirishnomalar” tugmasini yashirish</string>
@@ -251,6 +254,8 @@ Oʻzgarishlar:
   <string name="morphe_hide_comments_gift_button_title">Sovg\'a tugmasini yashirish</string>
   <string name="morphe_hide_comments_info_button_title">Maʼlumot tugmasini yashirish</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Jonli chat donorlari panelini yashiring</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Jonli chat maslahatlarini yashirish</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Chat kiritish paneli yaqinida ko\'rsatiladigan maslahat oynalarini, masalan, obunachilar chat xabarnomasini yashiradi</string>
   <string name="morphe_hide_comments_preview_comment_title">Oldindan ko\'rsatish izohini yashirish</string>
   <string name="morphe_hide_comments_preview_comment_summary">Toʻliq izohlar boʻlimini ochishdan oldin videoning ostidagi sharh old koʻrinishini yashiradi</string>
   <string name="morphe_hide_comments_thanks_button_title">“Rahmat” tugmasini yashirish</string>
@@ -506,15 +511,18 @@ Buni tuzatish uchun 'Video oqimlarini soxtalashtirish'ni yoqing va 'Standart mij
   <string name="morphe_tap_to_seek_title">Sekib o\'tish uchun teginishni yoqish</string>
   <string name="morphe_tap_to_seek_summary">Siljishni tortib olmasdan ma\'lum pozitsiyaga o\'tish uchun progress bargacha bosing</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Yorqinlikni boshqarish uchun sirt bilan surishni yoqish</string>
-  <string name="morphe_swipe_brightness_summary">Toʻliq ekran rejimida yorqinlikni sozlash uchun chap tomonda vertikal surish</string>
-  <string name="morphe_swipe_volume_title">Hajmni boshqarish uchun sirt bilan surishni yoqish</string>
-  <string name="morphe_swipe_volume_summary">Toʻliq ekran rejimida ovoz balandligini sozlash uchun oʻng tomonda vertikal surish</string>
-  <string name="morphe_swipe_zone_width_title">Yorqinlik/balandlik zonasi kengligi</string>
-  <string name="morphe_swipe_zone_width_summary">Yorqinlik va balandlik harakatlari uchun tayinlangan har bir ekran qismining foizi (5-50)</string>
+  <string name="morphe_swipe_left_zone_title">Chapga surish jesti</string>
+  <string name="morphe_swipe_right_zone_title">O\'ngga surish jesti</string>
+  <string name="morphe_swipe_top_zone_title">Yuqoriga surish jesti</string>
+  <string name="morphe_swipe_zone_width_title">Chap/O\'ng zona kengligi</string>
+  <string name="morphe_swipe_zone_width_summary">Chap va o\'ng surish jestlari uchun ajratilgan har bir ekran chetidagi foiz (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Yorqinlik</string>
   <string name="morphe_swipe_zone_label_volume">Volyum</string>
   <string name="morphe_swipe_zone_label_native">Asliy</string>
+  <string name="morphe_swipe_zone_label_off">O\'chirilgan</string>
+  <string name="morphe_swipe_ignore_when_locked_title">Qulflanganda surishlarni e\'tiborsiz qoldirish</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">Surish jestlari player \'Qulflash ekrani\' bilan qulflanganida e\'tiborsiz qoldiriladi</string>
   <string name="morphe_swipe_press_to_engage_title">Sirt bilan surish harakatini yoqish uchun bosishni yoqish</string>
   <string name="morphe_swipe_press_to_engage_summary">Surish imo-ishorasi tan olinishi uchun bosib ushlab turish talab qilinadi</string>
   <string name="morphe_swipe_haptic_feedback_title">Hissiy aloqani yoqish</string>
@@ -543,12 +551,9 @@ Buni tuzatish uchun 'Video oqimlarini soxtalashtirish'ni yoqing va 'Standart mij
   <string name="morphe_swipe_volume_sensitivity_summary">Har bir siljishda ovoz balandligini oshirish qiymatlari yuqori</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Yorqinlik siljish sezgirligi</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Yorqinlik bosqichlari uchun ko\'proq siljish kerak bo\'lgan qiymatlar yuqori</string>
-  <string name="morphe_swipe_speed_title">Tezlik ishorasini yoqish</string>
-  <string name="morphe_swipe_speed_summary">To\'liq ekran rejimida o\'ynash tezligini o\'zgartirish uchun ekranda chapga yoki o\'ngga suring</string>
   <string name="morphe_swipe_speed_sensitivity_title">Tezlik siljish sezgirligi</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Tezlik bosqichlari uchun ko\'proq siljish kerak bo\'lgan qiymatlar yuqori</string>
   <string name="morphe_swipe_speed_step_title">Tezlik bosqichi</string>
-  <string name="morphe_swipe_speed_step_summary">Har bir siljishda o\'ynash tezligini o\'zgartirish miqdori</string>
   <string name="morphe_swipe_speed_zone_height_title">Tezlik zonasining balandligi</string>
   <string name="morphe_swipe_speed_zone_height_summary">O\'yinchi balandligining foizi sifatida tezlik ishorasi zonasining balandligi (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Tezlik</string>
@@ -676,15 +681,8 @@ Sozlamalarga kirish uchun Umumiy → Asboblar → Sozlamalarni koʻrsatish orqal
   <string name="morphe_navigation_bar_animations_summary">Varaqlar oʻrtasida almashishda animatsiyali oʻtishlarni yaratadi</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Avtomatik yashiriladigan navigatsiya panelini oʻchirish</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Prokrul paytida navigatsiya panelini koʻrinishda ushlab turadi</string>
-  <string name="morphe_disable_translucent_status_bar_title">Shaffof maqom panelini o\'chirish</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Status panelini toʻliq qorongʻi qiladi</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Cheklovlar:
-• Video pleerining tepasida qora chiziq paydo boʻlishi mumkin.
-• Sistemani navigatsiya paneli shaffofga oʻtishi mumkin va videolarga izoh qoldirish mumkin emas."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Engil shaffof navigatsiya panelini oʻchirish</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Yorugʻlik rejimida navigatsiya panelini toʻliq qorongʻi qiladi</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Qorongʻu shaffof navigatsiya panelini oʻchirish</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Qorongʻi rejimda navigatsiya panelini toʻliq qorongʻi qiladi</string>
+  <string name="morphe_disable_translucent_navigation_title">Shaffof navigatsiya panelini o\'chirish</string>
+  <string name="morphe_disable_translucent_navigation_summary">Navigatsiya va holat panelini to\'liq noaniq qiladi</string>
   <string name="morphe_toolbar_screen_title">Navigatsiya panelini yashirish</string>
   <string name="morphe_toolbar_screen_summary">Pleerdagi paydo boʻladigan tugmalarni tanlang</string>
   <string name="morphe_hide_toolbar_cast_button_title">\'Audio Track\' menyusini yashirish</string>

@@ -84,6 +84,9 @@ Folgende Änderungen werden vorgenommen:
   <string name="morphe_hide_latest_videos_button_summary">Verbirgt das blaue Banner „Neueste Videos“, das oben im Home-Feed angezeigt wird</string>
   <string name="morphe_hide_mix_playlists_title">Mix-Wiedergabelisten ausblenden</string>
   <string name="morphe_hide_movies_section_title">Film-Bereich ausblenden</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">Oberen Bereich des Benachrichtigungen-Menüs ausblenden</string>
+  <string name="morphe_hide_notifications_menu_header_summary">Blendet den oberen Bereich des Benachrichtigungen-Menüs aus, wenn auf die Glocken-Schaltfläche geklickt wird</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Schaltfläche „Benachrichtigen“ ausblenden</string>
@@ -252,6 +255,8 @@ Folgende Änderungen werden vorgenommen:
   <string name="morphe_hide_comments_gift_button_title">Geschenk-Button ausblenden</string>
   <string name="morphe_hide_comments_info_button_title">Info-Schaltfläche ausblenden</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Spendenleiste im Live-Chat ausblenden</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Live-Chat-Tooltips ausblenden</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Blendet Tooltip-Popups aus, die in der Nähe der Chat-Eingabeleiste angezeigt werden, wie z. B. den Hinweis zum Chat nur für Abonnenten</string>
   <string name="morphe_hide_comments_preview_comment_title">Vorschaukommentar ausblenden</string>
   <string name="morphe_hide_comments_preview_comment_summary">Verbirgt die Kommentarvorschau unter dem Video, bevor der vollständige Kommentarbereich geöffnet wird</string>
   <string name="morphe_hide_comments_thanks_button_title">Schaltfläche \'Dankeschön\' ausblenden</string>
@@ -512,15 +517,18 @@ Um das zu beheben, aktiviere 'Video-Streams spoofen' und ändere den 'Standard-C
   <string name="morphe_tap_to_seek_title">Tippen zum Suchen aktivieren</string>
   <string name="morphe_tap_to_seek_summary">Tippe ohne zu ziehen auf den Fortschrittsbalken, um an die jeweilige Stelle zu springen</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Geste für Helligkeitssteuerung aktivieren</string>
-  <string name="morphe_swipe_brightness_summary">Wische im Vollbildmodus auf der linken Seite nach oben oder unten, um die Helligkeit anzupassen</string>
-  <string name="morphe_swipe_volume_title">Geste für Lautstärkensteuerung aktivieren</string>
-  <string name="morphe_swipe_volume_summary">Wische im Vollbildmodus auf der rechten Seite nach oben oder unten, um die Lautstärke anzupassen</string>
-  <string name="morphe_swipe_zone_width_title">Breite der Helligkeits-/Lautstärkenzone</string>
-  <string name="morphe_swipe_zone_width_summary">Prozentanteil der Bildschirmseiten, die für Gesten zur Steuerung von Helligkeit und Lautstärke reserviert sind (5-50)</string>
+  <string name="morphe_swipe_left_zone_title">Wischgeste nach links</string>
+  <string name="morphe_swipe_right_zone_title">Wischgeste nach rechts</string>
+  <string name="morphe_swipe_top_zone_title">Wischgeste nach oben</string>
+  <string name="morphe_swipe_zone_width_title">Breite der linken/rechten Zone</string>
+  <string name="morphe_swipe_zone_width_summary">Prozentanteil jeder Bildschirmkante, die für Wischgesten links und rechts reserviert ist (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Helligkeit</string>
   <string name="morphe_swipe_zone_label_volume">Lautstärke</string>
   <string name="morphe_swipe_zone_label_native">Nativ</string>
+  <string name="morphe_swipe_zone_label_off">Aus</string>
+  <string name="morphe_swipe_ignore_when_locked_title">Wischgesten bei Sperrung ignorieren</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">Wischgesten werden ignoriert, während der Player mit \"Bildschirm sperren\" gesperrt ist</string>
   <string name="morphe_swipe_press_to_engage_title">Berührungsschutz für Gesten aktivieren</string>
   <string name="morphe_swipe_press_to_engage_summary">Erfordert Drücken und Halten, bevor eine Wischgeste erkannt wird</string>
   <string name="morphe_swipe_haptic_feedback_title">Haptisches Feedback aktivieren</string>
@@ -549,12 +557,9 @@ Um das zu beheben, aktiviere 'Video-Streams spoofen' und ändere den 'Standard-C
   <string name="morphe_swipe_volume_sensitivity_summary">Höhere Werte erhöhen die Lautstärkeveränderung pro Wischbewegung</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Empfindlichkeit der Helligkeits-Gestensteuerung</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Höhere Werte erfordern mehr Wischbewegungen pro Helligkeitsstufe</string>
-  <string name="morphe_swipe_speed_title">Geste für Geschwindigkeitssteuerung aktivieren</string>
-  <string name="morphe_swipe_speed_summary">Wische im Vollbildmodus horizontal im oberen Bereich, um die Wiedergabegeschwindigkeit zu ändern</string>
   <string name="morphe_swipe_speed_sensitivity_title">Empfindlichkeit der Wischbewegung für die Geschwindigkeit</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Höhere Werte erfordern mehr Wischbewegungen pro Geschwindigkeitsstufe</string>
   <string name="morphe_swipe_speed_step_title">Geschwindigkeitsinkrement</string>
-  <string name="morphe_swipe_speed_step_summary">Betrag, um den sich die Wiedergabegeschwindigkeit pro Schritt ändert</string>
   <string name="morphe_swipe_speed_zone_height_title">Höhe der Geschwindigkeitszone</string>
   <string name="morphe_swipe_speed_zone_height_summary">Höhe der Geschwindigkeitsgestenzone als Prozentsatz der Player-Höhe (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Geschwindigkeit</string>
@@ -682,15 +687,8 @@ Um auf die Einstellungen zuzugreifen, aktiviere den Einstellungen-Button über A
   <string name="morphe_navigation_bar_animations_summary">Audio Track-Menü-Fußzeile ausblenden</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Auto-Ausblenden der Navigationsleiste deaktivieren</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Audio Track-Menü-Header ausblenden</string>
-  <string name="morphe_disable_translucent_status_bar_title">Transluzente Statusleiste deaktivieren</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Zusätzliche Einstellungen-Menü ausblenden</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Einschränkungen:
-• Es kann ein schwarzer Balken oben im Video-Player erscheinen.
-• Die System-Navigationsleiste kann transparent werden, und es ist nicht möglich, Videos zu kommentieren."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Hellen, lichtdurchlässigen Balken deaktivieren</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Sleep-Timer-Menü ausblenden</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Deaktiviere die dunkle, durchscheinende Leiste</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Macht die Navigationsleiste im Darkmode undurchsichtig.</string>
+  <string name="morphe_disable_translucent_navigation_title">Transluzente Navigationsleiste deaktivieren</string>
+  <string name="morphe_disable_translucent_navigation_summary">Macht die Navigations- und Statusleiste vollständig undurchsichtig</string>
   <string name="morphe_toolbar_screen_title">Leiste</string>
   <string name="morphe_toolbar_screen_summary">Wähle aus, welche Schaltflächen in der Toolbar erscheinen sollen</string>
   <string name="morphe_hide_toolbar_cast_button_title">Schaltfläche „Übertragen“ ausblenden</string>
@@ -1115,6 +1113,11 @@ Einschränkung: Die Wiedergabe funktioniert möglicherweise auf einigen Geräten
   <string name="morphe_remember_playback_speed_toast">Standard-Wiedergabegeschwindigkeit geändert zu: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Verwende normale Geschwindigkeit für Musik</string>
   <string name="morphe_disable_playback_speed_music_summary">Spiele Musikvideos immer mit 1,0-facher Geschwindigkeit ab</string>
+  <string name="morphe_enable_playback_audio_pitch_controls_title">Audio-Tonhöhensteuerung aktivieren</string>
+  <string name="morphe_playback_audio_pitch_default_title">Standard-Wiedergabetonhöhe</string>
+  <string name="morphe_remember_playback_audio_pitch_toast">Standard-Tonhöhe geändert zu: %s</string>
+  <string name="morphe_playback_audio_time_stretching_title">Audio-Time-Stretching</string>
+  <string name="morphe_playback_audio_time_stretching_summary">Ermöglicht die unabhängige Einstellung von Geschwindigkeit und Tonhöhe, kann jedoch zu Audioartefakten führen</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Deaktiviere HDR-Video</string>
   <string name="morphe_force_avc_codec_title">AVC (H.264)-Codec erzwingen</string>
@@ -1129,6 +1132,7 @@ Einschränkungen:
 • Einige Geräte können AVC nicht erzwingen"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Um diese Funktion zu nutzen, setze „Video-Streams spoofen“ auf „Android VR“ oder „Android Studio“</string>
+  <string name="morphe_force_av1_in_shorts_title">AV1 in Shorts erzwingen</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Erweiterte Qualitätseinstellungen öffnen</string>
   <string name="morphe_advanced_video_quality_menu_summary">Überspringt das Menü zur Qualitätsauswahl und öffnet direkt die erweiterten Qualitätseinstellungen</string>

@@ -84,6 +84,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_latest_videos_button_summary">ホームフィードの最上部に表示される青色の「新着動画」バナーを非表示にします</string>
   <string name="morphe_hide_mix_playlists_title">ミックスリストを非表示</string>
   <string name="morphe_hide_movies_section_title">映画セクションを非表示</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">通知メニューのヘッダーを非表示</string>
+  <string name="morphe_hide_notifications_menu_header_summary">鈴アイコンボタン (登録済みボタン) から呼び出される通知メニューのヘッダーを非表示にします</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">「通知を受け取る」ボタンを非表示</string>
@@ -251,6 +254,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_gift_button_title">ギフトボタンを非表示</string>
   <string name="morphe_hide_comments_info_button_title">情報ボタン (i アイコン) を非表示</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">チャット欄の投げ銭表示を無効化</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">チャット入力欄の吹き出しを非表示</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">チャット入力欄付近に吹き出し形式のポップアップで表示される、チャンネル登録者のみモードのライブ配信にチャットを送信する際の注意事項などの、チャットに関するヒントを非表示にします</string>
   <string name="morphe_hide_comments_preview_comment_title">コメントのプレビューを非表示</string>
   <string name="morphe_hide_comments_preview_comment_summary">コメント欄を開く前に動画の下に表示される、コメントのプレビューを非表示にします</string>
   <string name="morphe_hide_comments_thanks_button_title">Thanks ボタンを非表示</string>
@@ -511,15 +516,18 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_tap_to_seek_title">タップによるシークを有効化</string>
   <string name="morphe_tap_to_seek_summary">シークバーをタップすると、タップした位置に移動します</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">明るさジェスチャーを有効化</string>
-  <string name="morphe_swipe_brightness_summary">全画面表示モードで画面左側を縦にスワイプして明るさを調節します</string>
-  <string name="morphe_swipe_volume_title">音量ジェスチャーを有効化</string>
-  <string name="morphe_swipe_volume_summary">全画面表示モードで画面右側を縦にスワイプして音量を調節します</string>
-  <string name="morphe_swipe_zone_width_title">明るさ / 音量の領域の横幅</string>
-  <string name="morphe_swipe_zone_width_summary">明るさ / 音量ジェスチャーに割り当てる、画面左 / 右端を起点とする領域の横幅 (画面全体の横幅に対するパーセンテージ: 5-50)</string>
+  <string name="morphe_swipe_left_zone_title">左側縦スワイプ ジェスチャー</string>
+  <string name="morphe_swipe_right_zone_title">右側縦スワイプ ジェスチャー</string>
+  <string name="morphe_swipe_top_zone_title">上側横スワイプ ジェスチャー</string>
+  <string name="morphe_swipe_zone_width_title">左 / 右側縦スワイプの領域の横幅</string>
+  <string name="morphe_swipe_zone_width_summary">左 / 右側縦スワイプ ジェスチャーに割り当てる、画面左 / 右端を起点とする領域の横幅 (画面全体の横幅に対するパーセンテージ: 5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">明るさ</string>
   <string name="morphe_swipe_zone_label_volume">音量</string>
   <string name="morphe_swipe_zone_label_native">通常操作</string>
+  <string name="morphe_swipe_zone_label_off">オフ</string>
+  <string name="morphe_swipe_ignore_when_locked_title">ロック中のスワイプを無効化</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">「画面のロック」でプレーヤーがロックされている間のスワイプ ジェスチャーを無効にします</string>
   <string name="morphe_swipe_press_to_engage_title">長押しスワイプ ジェスチャーを有効化</string>
   <string name="morphe_swipe_press_to_engage_summary">スワイプ ジェスチャーを、「画面をスワイプ」から「画面を長押ししてからスワイプ」に変更します</string>
   <string name="morphe_swipe_haptic_feedback_title">触覚フィードバックを有効化</string>
@@ -548,12 +556,9 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_swipe_volume_sensitivity_summary">この値を大きくすると、スワイプによる音量の変化量が大きくなります</string>
   <string name="morphe_swipe_brightness_sensitivity_title">明るさジェスチャーのスワイプ感度</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">この値を大きくすると、明るさを変化させるために必要なスワイプ距離が大きくなり、細かい調整がスムーズになります</string>
-  <string name="morphe_swipe_speed_title">再生速度ジェスチャーを有効化</string>
-  <string name="morphe_swipe_speed_summary">全画面表示モードで画面の上側を横にスワイプして再生速度を変更します</string>
   <string name="morphe_swipe_speed_sensitivity_title">再生速度ジェスチャーのスワイプ感度</string>
   <string name="morphe_swipe_speed_sensitivity_summary">この値を大きくすると、再生速度を変化させるために必要なスワイプ距離が大きくなり、細かい調整がスムーズになります</string>
   <string name="morphe_swipe_speed_step_title">速度段階</string>
-  <string name="morphe_swipe_speed_step_summary">チックごとに再生速度が変化する量</string>
   <string name="morphe_swipe_speed_zone_height_title">再生速度の領域の縦幅</string>
   <string name="morphe_swipe_speed_zone_height_summary">再生速度ジェスチャーに割り当てる、画面上端を起点とする領域の縦幅 (画面全体の縦幅に対するパーセンテージ: 5-75)</string>
   <string name="morphe_swipe_zone_label_speed">再生速度</string>
@@ -682,15 +687,8 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_navigation_bar_animations_summary">タブの切り替えをアニメーションで表現します</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">ナビゲーション バーの自動非表示を無効化</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">スクロール中にナビゲーション バーを常に表示します</string>
-  <string name="morphe_disable_translucent_status_bar_title">半透明ステータスバーを無効化</string>
-  <string name="morphe_disable_translucent_status_bar_summary">ステータスバーが透けないようになります</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"制限事項：
-• 動画プレーヤーの上部に黒いバーが表示される場合がある。
-• システムのナビゲーション バーが半透明になり、動画にコメントできなくなる可能性がある。"</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">ライトモードの半透明バーを無効化</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">ライトモードでナビゲーション バーが透けないようになります</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">ダークモードの半透明バーを無効化</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">ダークモードでナビゲーション バーが透けないようになります</string>
+  <string name="morphe_disable_translucent_navigation_title">半透明ナビゲーション バーを無効化</string>
+  <string name="morphe_disable_translucent_navigation_summary">ナビゲーション バーとステータスバーが透けないようになります</string>
   <string name="morphe_toolbar_screen_title">ツールバー</string>
   <string name="morphe_toolbar_screen_summary">ツールバーに表示するコンポーネントを設定します</string>
   <string name="morphe_hide_toolbar_cast_button_title">キャストボタンを非表示</string>
@@ -1113,6 +1111,11 @@ Automotive レイアウト
   <string name="morphe_remember_playback_speed_toast">デフォルトの再生速度の変更: %s</string>
   <string name="morphe_disable_playback_speed_music_title">音楽を通常速度で再生</string>
   <string name="morphe_disable_playback_speed_music_summary">音楽動画を常に 1.0 倍速で再生します</string>
+  <string name="morphe_enable_playback_audio_pitch_controls_title">音声ピッチ コントロールを有効化</string>
+  <string name="morphe_playback_audio_pitch_default_title">デフォルトの音声ピッチ</string>
+  <string name="morphe_remember_playback_audio_pitch_toast">デフォルトの音声ピッチを %s に変更しました</string>
+  <string name="morphe_playback_audio_time_stretching_title">タイムストレッチ</string>
+  <string name="morphe_playback_audio_time_stretching_summary">再生速度と音声ピッチを個別に設定できますが、音声にノイズなどの副作用が生じる場合があります</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR 動画を無効化</string>
   <string name="morphe_force_avc_codec_title">AVC (H.264) を優先して使用</string>

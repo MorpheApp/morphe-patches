@@ -14,8 +14,10 @@ import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-// String is a substring so both `NotificationLikeButtonController` (pre-8.x) and
-// `DefaultNotificationLikeButtonController` (8.x+) match.
+/**
+ * String is a substring so both `NotificationLikeButtonController` (pre-8.x)
+ * and `DefaultNotificationLikeButtonController` (8.x+) match.
+ */
 internal object NotificationLikeButtonOnClickListenerFingerprint : Fingerprint(
     classFingerprint = Fingerprint(
         name = "<clinit>",
@@ -46,10 +48,39 @@ internal object NotificationLikeButtonOnClickListenerFingerprint : Fingerprint(
     )
 )
 
-// Field names are obfuscated in 9.x.
-// Class shape is stable: 7 fields, 5 methods, 3 of which are `V(L, Ljava/util/Map;)` interface impls
-// and only one dispatches the next-track onClick (invoke-interface V(L)).
+/**
+ * 9.32+
+ * R8 frequently merges this class with others that share the same field structure.
+ * Identify the target method by its exact parameters and its internal calls.
+ */
 internal object DislikeButtonOnClickListenerFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L", "Ljava/util/Map;"),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            returnType = "V",
+            parameters = listOf("L")
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            returnType = "Z",
+            parameters = listOf("Ljava/lang/Object;")
+        )
+    ),
+    custom = custom@{ method, _ ->
+        val instructions = method.implementation?.instructions ?: return@custom false
+        return@custom instructions.count() >= 40
+    }
+)
+
+/**
+ * Field names are obfuscated in 9.x.
+ * Class shape is stable: 7 fields, 5 methods, 3 of which are `V(L, Ljava/util/Map;)` interface
+ * impls and only one dispatches the next-track onClick (invoke-interface V(L)).
+ */
+internal object DislikeButtonOnClickListenerLegacyFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L", "Ljava/util/Map;"),

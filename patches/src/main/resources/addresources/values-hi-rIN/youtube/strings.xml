@@ -84,6 +84,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_latest_videos_button_summary">होम फ़ीड के शीर्ष पर दिखने वाले नीले \'नवीनतम वीडियो\' बैनर को छुपाता है</string>
   <string name="morphe_hide_mix_playlists_title">छुपाएं मिश्रित प्लेलिस्ट</string>
   <string name="morphe_hide_movies_section_title">छुपाएं फिल्मों का अनुभाग</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">छुपाएं \'मुझे सूचित करें\' बटन</string>
@@ -511,15 +512,10 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_tap_to_seek_title">टैप को सक्षम करें</string>
   <string name="morphe_tap_to_seek_summary">सीकबार पर खींचने के बिना उस स्थिति पर कूदने के लिए बस टैप करें</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">ब्राइटनेस गेस्टर को एनब्ल करें</string>
-  <string name="morphe_swipe_brightness_summary">फुलस्क्रीन मोड के बाईं ओर लंबवत स्वाइप करके चमक समायोजित करें</string>
-  <string name="morphe_swipe_volume_title">वॉल्यूम गेस्टर को एनब्ल करें</string>
-  <string name="morphe_swipe_volume_summary">फुलस्क्रीन मोड के दाहिनी ओर लंबवत स्वाइप करके वॉल्यूम समायोजित करें</string>
-  <string name="morphe_swipe_zone_width_title">चमक/वॉल्यूम ज़ोन की चौड़ाई</string>
-  <string name="morphe_swipe_zone_width_summary">चमक और वॉल्यूम जेस्चर के लिए प्रत्येक स्क्रीन किनारे का प्रतिशत आरक्षित (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">चमक</string>
   <string name="morphe_swipe_zone_label_volume">वॉल्यूम</string>
   <string name="morphe_swipe_zone_label_native">मूल</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
   <string name="morphe_swipe_press_to_engage_title">प्रेस को स्वाइप गेस्टर को एनब्ल करें</string>
   <string name="morphe_swipe_press_to_engage_summary">स्वाइप जेस्चर को पहचानने से पहले दबाकर रखना आवश्यक है</string>
   <string name="morphe_swipe_haptic_feedback_title">हैप्टिक फीडबैक सक्षम करें</string>
@@ -548,12 +544,9 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_swipe_volume_sensitivity_summary">उच्च मान प्रति स्वाइप वॉल्यूम परिवर्तन को बढ़ाते हैं</string>
   <string name="morphe_swipe_brightness_sensitivity_title">चमक स्वाइप संवेदनशीलता</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">उच्च मान प्रति चमक चरण के लिए अधिक स्वाइपिंग की आवश्यकता होती है</string>
-  <string name="morphe_swipe_speed_title">स्पीड जेस्चर सक्षम करें</string>
-  <string name="morphe_swipe_speed_summary">फ़ुलस्क्रीन मोड में प्लेबैक गति बदलने के लिए ऊपरी क्षेत्र में क्षैतिज रूप से स्वाइप करें</string>
   <string name="morphe_swipe_speed_sensitivity_title">स्पीड स्वाइप संवेदनशीलता</string>
   <string name="morphe_swipe_speed_sensitivity_summary">उच्च मान प्रति स्पीड चरण के लिए अधिक स्वाइपिंग की आवश्यकता होती है</string>
   <string name="morphe_swipe_speed_step_title">स्पीड स्टेप</string>
-  <string name="morphe_swipe_speed_step_summary">प्रत्येक टिक पर प्लेबैक स्पीड में बदलाव की राशि</string>
   <string name="morphe_swipe_speed_zone_height_title">स्पीड ज़ोन ऊंचाई</string>
   <string name="morphe_swipe_speed_zone_height_summary">प्लेयर ऊंचाई के प्रतिशत के रूप में स्पीड जेस्चर ज़ोन की ऊंचाई (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">स्पीड</string>
@@ -681,15 +674,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_navigation_bar_animations_summary">स्टेटस बार को पूरी तरह से अपारदर्शी बनाता है</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">ऑटो-हाइडिंग नेविगेशन बार को निष्क्रिय करें</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">लाइट मोड में नेविगेशन बार को पूरी तरह से अपारदर्शी बनाता है</string>
-  <string name="morphe_disable_translucent_status_bar_title">Filter bar</string>
-  <string name="morphe_disable_translucent_status_bar_summary">डार्क मोड में नेविगेशन बार को पूरी तरह से अपारदर्शी बनाता है</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"सीमाएँ:
-• वीडियो प्लेयर के शीर्ष पर एक काला बैंड हो सकता है।
-• प्रणाली नavigation बार ट्रांज़्पेरेंट हो सकता है, और वीडियो पर टिप्पणी करना संभव नहीं हो सकता है।"</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">हल्का पारदर्शी बार अक्षम करें</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">टूलबार में प्रदर्शित होने वाले घटकों को चुनें</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">डार्क पारदर्शी बार अक्षम करें</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">\'ऑडियो ट्रैक\' मेनू छुपाएं</string>
   <string name="morphe_toolbar_screen_title">टूलबार</string>
   <string name="morphe_toolbar_screen_summary">टूलबार में कौन से घटक दिखाई दें, यह चुनें</string>
   <string name="morphe_hide_toolbar_cast_button_title">\'ऑडियो ट्रैक\' मेनू फ़ूटर छुपाएं</string>

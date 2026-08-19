@@ -84,6 +84,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_latest_videos_button_summary">Απόκρυψη της μπλε μπάρας \"Τελευταία βίντεο\" που εμφανίζεται στο πάνω μέρος της Κεντρικής σελίδας</string>
   <string name="morphe_hide_mix_playlists_title">Απόκρυψη \"Λίστες αναπαραγωγής μίξης\"</string>
   <string name="morphe_hide_movies_section_title">Απόκρυψη \"Ενότητας ταινιών\"</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">Απόκρυψη κεφαλίδας μενού Ειδοποιήσεων</string>
+  <string name="morphe_hide_notifications_menu_header_summary">Απόκρυψη της κεφαλίδας του μενού Ειδοποιήσεων κατά το κλικ στο κουμπί με την καμπάνα</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Απόκρυψη κουμπιού \"Να λαμβάνω ειδοποιήσεις\"</string>
@@ -251,6 +254,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_gift_button_title">Απόκρυψη κουμπιού δώρου</string>
   <string name="morphe_hide_comments_info_button_title">Κουμπί Απόκρυψης Πληροφοριών</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Απόκρυψη γραμμής δωρητών ζωντανής συνομιλίας</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Απόκρυψη πληροφοριών ζωντανής συνομιλίας</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Απόκρυψη αναδυόμενων πληροφοριών που εμφανίζονται κοντά στη γραμμή εισαγωγής συνομιλίας, όπως η ειδοποίηση για συνομιλία μόνο για εγγραφέντες</string>
   <string name="morphe_hide_comments_preview_comment_title">Προεπισκόπηση σχολίου</string>
   <string name="morphe_hide_comments_preview_comment_summary">Απόκρυψη της προεπισκόπησης σχολίων κάτω από το βίντεο πριν ανοίξετε την πλήρη ενότητα σχολίων</string>
   <string name="morphe_hide_comments_thanks_button_title">Κουμπί «Σας ευχαριστούμε»</string>
@@ -511,15 +516,18 @@ Second \"item\" text"</string>
   <string name="morphe_tap_to_seek_title">Πάτημα για αναζήτηση στη γραμμή προόδου</string>
   <string name="morphe_tap_to_seek_summary">Απλά πατήστε τη γραμμή αναζήτησης για να μεταβείτε σε αυτήν τη θέση χωρίς να την σύρετε</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Σάρωση οθόνης για φωτεινότητα</string>
-  <string name="morphe_swipe_brightness_summary">Ρυθμίστε πόσο αλλάζει η ένταση κατά τη σάρωση</string>
-  <string name="morphe_swipe_volume_title">Σάρωση οθόνης για ένταση ήχου</string>
-  <string name="morphe_swipe_volume_summary">Σάρωση στην οθόνη πλήρους προβολής για να μεταβείτε στο επόμενο ή προηγούμενο βίντεο</string>
-  <string name="morphe_swipe_zone_width_title">Πλάτος ζώνης φωτεινότητας/έντασης</string>
-  <string name="morphe_swipe_zone_width_summary">Ποσοστό κάθε άκρης οθόνης που είναι δεσμευμένο για χειρονομίες φωτεινότητας και έντασης (5-50)</string>
+  <string name="morphe_swipe_left_zone_title">Κίνηση σάρωσης προς τα αριστερά</string>
+  <string name="morphe_swipe_right_zone_title">Κίνηση σάρωσης προς τα δεξιά</string>
+  <string name="morphe_swipe_top_zone_title">Κίνηση σάρωσης προς τα πάνω</string>
+  <string name="morphe_swipe_zone_width_title">Πλάτος ζώνης αριστερά/δεξιά</string>
+  <string name="morphe_swipe_zone_width_summary">Ποσοστό κάθε άκρης της οθόνης που είναι δεδονημένο για κινήσεις σάρωσης προς τα αριστερά και δεξιά (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Φωτεινότητα</string>
   <string name="morphe_swipe_zone_label_volume">Ένταση ήχου</string>
   <string name="morphe_swipe_zone_label_native">Εγγενές</string>
+  <string name="morphe_swipe_zone_label_off">Ανενεργό</string>
+  <string name="morphe_swipe_ignore_when_locked_title">Αγνόηση σαρώσεων όταν είναι κλειδωμένο</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">Οι κινήσεις σάρωσης αγνοούνται ενώ ο διακομιστής είναι κλειδωμένος με την επιλογή \'Κλείδωμα οθόνης\'</string>
   <string name="morphe_swipe_press_to_engage_title">Παρατεταμένο πάτημα για σάρωση</string>
   <string name="morphe_swipe_press_to_engage_summary">Απαιτείται πάτημα και κράτημα πριν αναγνωριστεί μια χειρονομία σάρωσης.</string>
   <string name="morphe_swipe_haptic_feedback_title">Απόκριση δόνησης</string>
@@ -548,12 +556,9 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_volume_sensitivity_summary">Υψηλότερες τιμές αυξάνουν την αλλαγή της έντασης ήχου ανά σάρωση</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Ευαισθησία σάρωσης φωτεινότητας</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Υψηλότερες τιμές απαιτούν περισσότερες σαρώσεις ανά βήμα φωτεινότητας</string>
-  <string name="morphe_swipe_speed_title">Ενεργοποίηση χειρονομίας ταχύτητας</string>
-  <string name="morphe_swipe_speed_summary">Σύρετε οριζόντια στην άνω ζώνη της λειτουργίας πλήρους οθόνης για να αλλάξετε την ταχύτητα αναπαραγωγής</string>
   <string name="morphe_swipe_speed_sensitivity_title">Ευαισθησία σάρωσης ταχύτητας</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Υψηλότερες τιμές απαιτούν περισσότερες σαρώσεις ανά βήμα ταχύτητας</string>
   <string name="morphe_swipe_speed_step_title">Βήμα ταχύτητας</string>
-  <string name="morphe_swipe_speed_step_summary">Ποσό κατά το οποίο αλλάζει η ταχύτητα αναπαραγωγής σε κάθε βήμα</string>
   <string name="morphe_swipe_speed_zone_height_title">Ύψος ζώνης ταχύτητας</string>
   <string name="morphe_swipe_speed_zone_height_summary">Ύψος της ζώνης χειρονομίας ταχύτητας ως ποσοστό του ύψους του player (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Ταχύτητα</string>
@@ -681,15 +686,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_summary">Απόκρυψη κουμπιού Πλήρης οθόνη</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Απενεργοποίηση αυτόματης απόκρυψης της γραμμής πλοήγησης</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Απόκρυψη του σκούρου shading γύρω από τα στοιχεία ελέγχου του video player</string>
-  <string name="morphe_disable_translucent_status_bar_title">Απενεργοποίηση διαφανούς γραμμής κατάστασης</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Απόκρυψη κουμπιού Ρυθμίσεων</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Περιορισμοί:
-• Μήνυμα μαύρης γραμμής μπορεί να εμφανιστεί στην κορυφή του παίκτη βίντεο.
-• Η συστοιχία διαδρομών του συστήματος μπορεί να αλλάξει σε διαφανή, και δεν είναι δυνατή η σχολή σε βίντεο."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Απενεργοποίηση διαφανούς γραμμής στο φωτεινό θέμα</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Κάνει τη γραμμή πλοήγησης πλήρως αδιαφανή σε λειτουργία φωτός</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Απενεργοποίηση διαφανούς γραμμής στο σκούρο θέμα</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Κάνει τη γραμμή πλοήγησης πλήρως αδιαφανή σε λειτουργία σκοτείνου</string>
+  <string name="morphe_disable_translucent_navigation_title">Απενεργοποίηση διαφανούς γραμμής πλοήγησης</string>
+  <string name="morphe_disable_translucent_navigation_summary">Καθιστά τη γραμμή πλοήγησης και κατάστασης πλήρως αδιαφανή</string>
   <string name="morphe_toolbar_screen_title">Γραμμή εργαλείων</string>
   <string name="morphe_toolbar_screen_summary">Επιλέξτε ποια στοιχεία εμφανίζονται στη γραμμή εργαλείων</string>
   <string name="morphe_hide_toolbar_cast_button_title">Κουμπί μετάδοσης</string>
@@ -1131,6 +1129,7 @@ Second \"item\" text"</string>
 • Ορισμένες συσκευές δεν μπορούν να επιβάλλουν τον κωδικοποιητή AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Για να χρησιμοποιήσετε αυτήν τη λειτουργία, ορίστε τη \'Παραποίηση ροών βίντεο\' σε \'Android VR\' ή \'Android Studio\'.</string>
+  <string name="morphe_force_av1_in_shorts_title">Επιβολή AV1 στα Shorts</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Άνοιγμα μενού προηγμένης ποιότητας</string>
   <string name="morphe_advanced_video_quality_menu_summary">Παρακάμπτει το μενού επιλογής ποιότητας και ανοίγει απευθείας το μενού ποιότητας \'Προχωρημένων\'</string>

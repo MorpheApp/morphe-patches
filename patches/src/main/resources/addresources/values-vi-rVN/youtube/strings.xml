@@ -83,6 +83,7 @@ Ví dụ:
   <string name="morphe_hide_latest_videos_button_summary">Ẩn banner “Video mới nhất” màu xanh xuất hiện ở đầu Trang chủ</string>
   <string name="morphe_hide_mix_playlists_title">Ẩn danh sách phát kết hợp</string>
   <string name="morphe_hide_movies_section_title">Ẩn phần phim</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Ẩn nút \"Thông báo cho tôi\"</string>
@@ -510,15 +511,11 @@ Lưu ý: Có thể không hoạt động với video phát trực tiếp"</strin
   <string name="morphe_tap_to_seek_title">Bật chạm để tua</string>
   <string name="morphe_tap_to_seek_summary">Chỉ cần chạm vào thanh tiến trình để tua tới vị trí đó chứ không cần kéo</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Bật cử chỉ độ sáng</string>
-  <string name="morphe_swipe_brightness_summary">Vuốt lên/xuống bên trái trong chế độ toàn màn hình để điều chỉnh độ sáng</string>
-  <string name="morphe_swipe_volume_title">Bật cử chỉ âm lượng</string>
-  <string name="morphe_swipe_volume_summary">Vuốt lên/xuống bên phải trong chế độ toàn màn hình để điều chỉnh âm lượng</string>
-  <string name="morphe_swipe_zone_width_title">Độ rộng vùng vuốt chỉnh độ sáng/âm lượng</string>
-  <string name="morphe_swipe_zone_width_summary">Phần trăm diện tích (5-50) mép màn hình dùng cho cử chỉ chỉnh độ sáng và âm lượng</string>
   <string name="morphe_swipe_zone_label_brightness">Độ sáng</string>
   <string name="morphe_swipe_zone_label_volume">Âm lượng</string>
   <string name="morphe_swipe_zone_label_native">Gốc</string>
+  <string name="morphe_swipe_zone_label_off">Tắt</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
   <string name="morphe_swipe_press_to_engage_title">Bật cử chỉ bấm giữ để vuốt</string>
   <string name="morphe_swipe_press_to_engage_summary">Yêu cầu nhấn và giữ trước khi cử chỉ vuốt được nhận biết</string>
   <string name="morphe_swipe_haptic_feedback_title">Bật phản hồi xúc giác</string>
@@ -547,12 +544,9 @@ Lưu ý: Có thể không hoạt động với video phát trực tiếp"</strin
   <string name="morphe_swipe_volume_sensitivity_summary">Giá trị càng cao, mức âm lượng tăng/giảm càng nhanh mỗi khi vuốt</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Độ nhạy vuốt chỉnh độ sáng</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Giá trị càng cao, vuốt càng dài hơn để chỉnh độ sáng</string>
-  <string name="morphe_swipe_speed_title">Bật cử chỉ chỉnh tốc độ phát</string>
-  <string name="morphe_swipe_speed_summary">Vuốt ngang phần trên trong chế độ toàn màn hình để chỉnh tốc độ phát</string>
   <string name="morphe_swipe_speed_sensitivity_title">Độ nhạy vuốt chỉnh tốc độ phát</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Giá trị càng cao, vuốt càng dài hơn để chỉnh tốc độ phát</string>
   <string name="morphe_swipe_speed_step_title">Mức tốc độ</string>
-  <string name="morphe_swipe_speed_step_summary">Mức thay đổi tốc độ phát trên mỗi lần điều chỉnh</string>
   <string name="morphe_swipe_speed_zone_height_title">Chiều cao vùng vuốt chỉnh tốc độ phát</string>
   <string name="morphe_swipe_speed_zone_height_summary">Độ cao vùng vuốt chỉnh tốc độ phát, tính theo phần trăm chiều cao của trình phát (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Tốc độ phát</string>
@@ -680,15 +674,6 @@ Cần cung cấp \"Cookie phụ đề\""</string>
   <string name="morphe_navigation_bar_animations_summary">Tạo hoạt ảnh khi chuyển tab</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Tắt tự động ẩn thanh điều hướng</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Giữ thanh điều hướng hiển thị khi cuộn</string>
-  <string name="morphe_disable_translucent_status_bar_title">Vô hiệu hóa thanh trạng thái trong suốt</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Làm cho thanh trạng thái hoàn toàn mờ</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Hạn chế:
-• Có thể xuất hiện một thanh màu đen trên cùng trình phát video.
-• Thanh điều hướng của hệ thống có thể trở nên trong suốt và không thể bình luận trên video."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Vô hiệu hóa thanh điều hướng trong suốt ở giao diện sáng</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Làm cho thanh điều hướng hoàn toàn mờ ở chế độ sáng</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Vô hiệu hoá thanh điều hướng trong suốt ở giao diện tối</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Làm cho thanh điều hướng hoàn toàn mờ ở chế độ tối</string>
   <string name="morphe_toolbar_screen_title">Thanh công cụ</string>
   <string name="morphe_toolbar_screen_summary">Chọn những thành phần sẽ xuất hiện trên thanh công cụ</string>
   <string name="morphe_hide_toolbar_cast_button_title">Ẩn nút truyền</string>

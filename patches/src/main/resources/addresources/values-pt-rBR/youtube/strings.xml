@@ -83,6 +83,9 @@ As mudanças incluem:
   <string name="morphe_hide_latest_videos_button_summary">Oculta o banner azul \'Vídeos mais recentes\' que aparece no topo do feed inicial</string>
   <string name="morphe_hide_mix_playlists_title">Ocultar playlists de mix</string>
   <string name="morphe_hide_movies_section_title">Ocultar seção de filmes</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">Ocultar cabeçalho do menu Notificações</string>
+  <string name="morphe_hide_notifications_menu_header_summary">Oculta o cabeçalho do menu Notificações ao clicar no botão do sino</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Ocultar botão \'Receber notificação\'</string>
@@ -250,6 +253,8 @@ As mudanças incluem:
   <string name="morphe_hide_comments_gift_button_title">Ocultar botão Presente</string>
   <string name="morphe_hide_comments_info_button_title">Ocultar botão Informações</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Ocultar barra de doadores do chat ao vivo</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Ocultar dicas flutuantes do chat ao vivo</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Oculta pop-ups de dicas exibidos perto da barra de digitação do chat, como o aviso de chat exclusivo para inscritos</string>
   <string name="morphe_hide_comments_preview_comment_title">Ocultar prévia de comentário</string>
   <string name="morphe_hide_comments_preview_comment_summary">Oculta a pré-visualização do comentário abaixo do vídeo antes de abrir a seção completa de comentários</string>
   <string name="morphe_hide_comments_thanks_button_title">Ocultar botão Valeu</string>
@@ -510,15 +515,18 @@ Para corrigir isso, ative 'Simular streams de vídeo' e altere o 'Cliente padrã
   <string name="morphe_tap_to_seek_title">Ativar toque para voltar / avançar</string>
   <string name="morphe_tap_to_seek_summary">Apenas toque na barra de progresso para pular para essa posição sem arrastá-la</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Ativar gesto de brilho</string>
-  <string name="morphe_swipe_brightness_summary">Deslize no modo de tela cheia para ir para o próximo ou vídeo anterior</string>
-  <string name="morphe_swipe_volume_title">Ativar gesto de volume</string>
-  <string name="morphe_swipe_volume_summary">Escolha quais botões de ação aparecem nos modos retrato e tela cheia</string>
-  <string name="morphe_swipe_zone_width_title">Largura da zona de brilho/volume</string>
-  <string name="morphe_swipe_zone_width_summary">Porcentagem de cada borda da tela reservada para gestos de brilho e volume (5-50)</string>
+  <string name="morphe_swipe_left_zone_title">Gesto de deslizar para a esquerda</string>
+  <string name="morphe_swipe_right_zone_title">Gesto de deslizar para a direita</string>
+  <string name="morphe_swipe_top_zone_title">Gesto de deslizar a partir do topo</string>
+  <string name="morphe_swipe_zone_width_title">Largura da zona esquerda/direita</string>
+  <string name="morphe_swipe_zone_width_summary">Porcentagem de cada borda da tela reservada para gestos de deslizar para a esquerda e para a direita (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Brilho</string>
   <string name="morphe_swipe_zone_label_volume">Volume</string>
   <string name="morphe_swipe_zone_label_native">Nativo</string>
+  <string name="morphe_swipe_zone_label_off">Desativado</string>
+  <string name="morphe_swipe_ignore_when_locked_title">Ignorar deslizamentos ao bloquear</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">Gestos de deslizar são ignorados enquanto o player estiver bloqueado com o \'Bloqueio de tela\'</string>
   <string name="morphe_swipe_press_to_engage_title">Ativar gesto de pressionar para deslizar</string>
   <string name="morphe_swipe_press_to_engage_summary">Requer pressionar e segurar antes que um gesto de deslize seja reconhecido</string>
   <string name="morphe_swipe_haptic_feedback_title">Ativar resposta tátil</string>
@@ -547,12 +555,9 @@ Para corrigir isso, ative 'Simular streams de vídeo' e altere o 'Cliente padrã
   <string name="morphe_swipe_volume_sensitivity_summary">Valores maiores alteram mais a mudança de volume a cada deslize</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Sensibilidade ao deslizar o brilho</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Valores maiores exigem deslizar mais para cada mudança de brilho</string>
-  <string name="morphe_swipe_speed_title">Ativar gesto de velocidade</string>
-  <string name="morphe_swipe_speed_summary">Deslize horizontalmente na zona superior do modo de tela cheia para alterar a velocidade de reprodução</string>
   <string name="morphe_swipe_speed_sensitivity_title">Sensibilidade ao deslizar a velocidade</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Valores maiores exigem deslizar mais para cada mudança de velocidade</string>
   <string name="morphe_swipe_speed_step_title">Intervalo de velocidade</string>
-  <string name="morphe_swipe_speed_step_summary">Quantidade pela qual a velocidade de reprodução muda a cada incremento</string>
   <string name="morphe_swipe_speed_zone_height_title">Altura da zona de velocidade</string>
   <string name="morphe_swipe_speed_zone_height_summary">Altura da zona de gesto de velocidade como uma porcentagem da altura do player (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Velocidade</string>
@@ -680,15 +685,8 @@ Para acessar as Configurações, ative o botão Configurações via Geral → Ba
   <string name="morphe_navigation_bar_animations_summary">Anima as transições ao alternar entre as abas</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Desativar ocultação automática da barra de navegação</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Mantém a barra de navegação visível durante a rolagem</string>
-  <string name="morphe_disable_translucent_status_bar_title">Desabilitar barra de status translúcida</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Torna a barra de status totalmente opaca</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Limitações:
-• Uma barra preta pode aparecer na parte superior do player de vídeo.
-• A barra de navegação do sistema pode mudar para transparente e não será possível comentar em vídeos."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Desabilitar barra de navegação translúcida clara</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Torna a barra de navegação totalmente opaca no modo claro</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Desabilitar barra translúcida escura</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Torna a barra de navegação totalmente opaca no modo escuro</string>
+  <string name="morphe_disable_translucent_navigation_title">Desativar barra de navegação translúcida</string>
+  <string name="morphe_disable_translucent_navigation_summary">Deixa a barra de navegação e a barra de status totalmente opacas</string>
   <string name="morphe_toolbar_screen_title">Barra de ferramentas</string>
   <string name="morphe_toolbar_screen_summary">Escolha quais componentes aparecem na barra de ferramentas</string>
   <string name="morphe_hide_toolbar_cast_button_title">Ocultar botão Transmitir</string>
@@ -1113,6 +1111,11 @@ Limitação: A reprodução pode não funcionar em alguns dispositivos se 'Simul
   <string name="morphe_remember_playback_speed_toast">Velocidade de reprodução padrão alterada para: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Usar velocidade normal para música</string>
   <string name="morphe_disable_playback_speed_music_summary">Sempre reproduzir videoclipes de música na velocidade de 1.0x</string>
+  <string name="morphe_enable_playback_audio_pitch_controls_title">Ativar controles de tom do áudio</string>
+  <string name="morphe_playback_audio_pitch_default_title">Tom padrão de reprodução do áudio</string>
+  <string name="morphe_remember_playback_audio_pitch_toast">Tom padrão do áudio alterado para: %s</string>
+  <string name="morphe_playback_audio_time_stretching_title">Alongamento temporal de áudio</string>
+  <string name="morphe_playback_audio_time_stretching_summary">Permite ajustar velocidade e tom de forma independente, pode causar ruídos no áudio</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Desativar vídeo HDR</string>
   <string name="morphe_force_avc_codec_title">Forçar codec AVC (H.264)</string>

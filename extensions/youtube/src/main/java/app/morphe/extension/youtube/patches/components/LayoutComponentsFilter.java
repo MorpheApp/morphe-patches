@@ -45,40 +45,43 @@ import app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
 @SuppressWarnings("unused")
 public final class LayoutComponentsFilter extends Filter {
-    private static final ByteArrayFilterGroup mixPlaylistsBuffersExceptions = new ByteArrayFilterGroup(
-            null,
-            "cell_description_body",
-            "channel_profile"
-    );
     private static final ByteArrayFilterGroup mixPlaylistUrlBuffer = new ByteArrayFilterGroup(
             null,
             "?list=RD",
             "&list=RD"
+    );
+    private static final ByteArrayFilterGroup mixPlaylistsBuffersExceptions = new ByteArrayFilterGroup(
+            null,
+            "cell_description_body",
+            "channel_profile"
     );
 
     private static final List<String> channelTabFilterStrings = Utils.getFilterStrings(Settings.HIDE_CHANNEL_TAB_FILTER_STRINGS);
     private static final List<String> flyoutMenuFilterStrings = Utils.getFilterStrings(Settings.HIDE_FEED_FLYOUT_MENU_FILTER_STRINGS);
 
     private final StringTrieSearch exceptions = new StringTrieSearch();
+
+    private final StringFilterGroup channelProfile;
+    private final StringFilterGroupList channelProfileGroupList = new StringFilterGroupList();
+    private final StringFilterGroup chipBar;
     private final StringFilterGroup communityPosts;
-    private final StringFilterGroup surveys;
+    private final StringFilterGroup compactChannelBarInner;
+    private final StringFilterGroup compactChannelBarInnerButton;
+    private final ByteArrayFilterGroup joinMembershipButton;
+    private final StringFilterGroup expandableMetadata;
+    private final ByteArrayFilterGroup summaryCardBuffer;
+    private final StringFilterGroup exploreTopicsShelf;
+    private final StringFilterGroup getPremiumButton;
+    private final ByteArrayFilterGroup getPremiumButtonBuffer;
+    private final StringFilterGroup inviteToMessageCard;
+    private final ByteArrayFilterGroup inviteToMessageCardBuffer;
+    private final StringFilterGroup notificationsMenuHeader;
+    private final ByteArrayFilterGroup notificationsMenuHeaderBuffer;
     private final StringFilterGroup notifyMe;
     private final StringFilterGroup searchFriction;
     private final StringFilterGroup singleItemInformationPanel;
     private static final AtomicInteger singleItemInformationPanelIndex = new AtomicInteger(-1);
-    private final StringFilterGroup expandableMetadata;
-    private final ByteArrayFilterGroup summaryCardBuffer;
-    private final StringFilterGroup exploreTopicsShelf;
-    private final StringFilterGroup compactChannelBarInner;
-    private final StringFilterGroup compactChannelBarInnerButton;
-    private final ByteArrayFilterGroup joinMembershipButton;
-    private final StringFilterGroup chipBar;
-    private final StringFilterGroup inviteToMessageCard;
-    private final ByteArrayFilterGroup inviteToMessageCardBuffer;
-    private final StringFilterGroup channelProfile;
-    private final StringFilterGroupList channelProfileGroupList = new StringFilterGroupList();
-    private final StringFilterGroup getPremiumButton;
-    private final ByteArrayFilterGroup getPremiumButtonBuffer;
+    private final StringFilterGroup surveys;
     private final StringFilterGroup videoLabels;
     private final ByteArrayFilterGroupList videoLabelsGroupList = new ByteArrayFilterGroupList();
     private final StringFilterGroup videoRecommendationLabels;
@@ -307,6 +310,16 @@ public final class LayoutComponentsFilter extends Filter {
                 "medical_panel"
         );
 
+        notificationsMenuHeader = new StringFilterGroup(
+                Settings.HIDE_NOTIFICATIONS_MENU_HEADER,
+                "|ContainerType|ContainerType|"
+        );
+
+        notificationsMenuHeaderBuffer = new ByteArrayFilterGroup(
+                null,
+                "/youtube/answer/" // https://support.google.com/youtube/answer/
+        );
+
         notifyMe = new StringFilterGroup(
                 Settings.HIDE_NOTIFY_ME_BUTTON,
                 "set_reminder_button"
@@ -419,6 +432,7 @@ public final class LayoutComponentsFilter extends Filter {
                 imageShelf,
                 infoPanel,
                 medicalPanel,
+                notificationsMenuHeader,
                 notifyMe,
                 playables,
                 postsShelf,
@@ -447,14 +461,14 @@ public final class LayoutComponentsFilter extends Filter {
                               StringFilterGroup matchedGroup,
                               FilterContentType contentType,
                               int contentIndex) {
+        if (matchedGroup == exploreTopicsShelf) {
+            return NavigationButton.getSelectedNavigationButton() != NavigationButton.LIBRARY;
+        }
+
         // The groups are excluded from the filter due to the exceptions list below.
         // Filter them separately here.
         if (matchedGroup == notifyMe || matchedGroup == surveys) {
             return true;
-        }
-
-        if (matchedGroup == exploreTopicsShelf) {
-            return NavigationButton.getSelectedNavigationButton() != NavigationButton.LIBRARY;
         }
 
         // Exceptions are not filtered.
@@ -462,26 +476,24 @@ public final class LayoutComponentsFilter extends Filter {
             return false;
         }
 
-        // This identifier is used not only in players but also in search results:
-        // Until 2024, medical information panels such as Covid-19 also used this identifier and were shown in the search results.
-        // From 2025, the medical information panel is no longer shown in the search results.
-        // Therefore, this identifier does not filter when the search bar is activated.
-        if (matchedGroup == searchFriction) {
-            singleItemInformationPanelIndex.set(0);
-            return false;
+        if (matchedGroup == channelProfile) {
+            return channelProfileGroupList.check(accessibility).isFiltered();
         }
-        if (matchedGroup == singleItemInformationPanel) {
-            int currentIndex = singleItemInformationPanelIndex.get();
-            if (currentIndex >= 0) {
-                if (currentIndex < 9) {
-                    singleItemInformationPanelIndex.incrementAndGet();
-                } else {
-                    singleItemInformationPanelIndex.set(-1);
-                }
-                return false;
-            } else {
-                return true;
-            }
+
+        if (matchedGroup == chipBar) {
+            return contentIndex == 0 &&
+                    NavigationButton.getSelectedNavigationButton() == NavigationBar.NavigationButton.LIBRARY;
+        }
+
+        if (matchedGroup == communityPosts) {
+            return contextInterface.isHomeFeedOrRelatedVideo() || contextInterface.isSubscriptionOrLibrary();
+        }
+
+        if (matchedGroup == compactChannelBarInner) {
+            return compactChannelBarInnerButton.check(path).isFiltered()
+                    // The filter may be broad, but in the context of a compactChannelBarInnerButton,
+                    // it's safe to assume that the button is the only thing that should be hidden.
+                    && joinMembershipButton.check(buffer).isFiltered();
         }
 
         if (matchedGroup == expandableMetadata) {
@@ -499,24 +511,8 @@ public final class LayoutComponentsFilter extends Filter {
             }
         }
 
-        if (matchedGroup == channelProfile) {
-            return channelProfileGroupList.check(accessibility).isFiltered();
-        }
-
-        if (matchedGroup == communityPosts) {
-            return contextInterface.isHomeFeedOrRelatedVideo() || contextInterface.isSubscriptionOrLibrary();
-        }
-
-        if (matchedGroup == compactChannelBarInner) {
-            return compactChannelBarInnerButton.check(path).isFiltered()
-                    // The filter may be broad, but in the context of a compactChannelBarInnerButton,
-                    // it's safe to assume that the button is the only thing that should be hidden.
-                    && joinMembershipButton.check(buffer).isFiltered();
-        }
-
-        if (matchedGroup == chipBar) {
-            return contentIndex == 0 && NavigationBar.NavigationButton.getSelectedNavigationButton()
-                    == NavigationBar.NavigationButton.LIBRARY;
+        if (matchedGroup == getPremiumButton) {
+            return path.startsWith("page_header.e") && getPremiumButtonBuffer.check(buffer).isFiltered();
         }
 
         if (matchedGroup == inviteToMessageCard) {
@@ -533,8 +529,33 @@ public final class LayoutComponentsFilter extends Filter {
             return NavigationButton.getSelectedNavigationButton() == NavigationButton.NOTIFICATIONS;
         }
 
-        if (matchedGroup == getPremiumButton) {
-            return path.startsWith("page_header.e") && getPremiumButtonBuffer.check(buffer).isFiltered();
+        if (matchedGroup == notificationsMenuHeader) {
+            return path.startsWith("subscribe_menu_notifications.e")
+                    && notificationsMenuHeaderBuffer.check(buffer).isFiltered();
+        }
+
+        // This identifier is used not only in players but also in search results:
+        // Until 2024, medical information panels such as Covid-19 also used this identifier and were shown in the search results.
+        // From 2025, the medical information panel is no longer shown in the search results.
+        // Therefore, this identifier does not filter when the search bar is activated.
+        if (matchedGroup == searchFriction) {
+            singleItemInformationPanelIndex.set(0);
+            return false;
+        }
+
+        if (matchedGroup == singleItemInformationPanel) {
+            int currentIndex = singleItemInformationPanelIndex.get();
+
+            if (currentIndex < 0) {
+                return true;
+            }
+
+            if (currentIndex < 9) {
+                singleItemInformationPanelIndex.incrementAndGet();
+            } else {
+                singleItemInformationPanelIndex.set(-1);
+            }
+            return false;
         }
 
         if (matchedGroup == videoLabels) {

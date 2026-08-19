@@ -84,6 +84,9 @@ Zmeny zahŕňajú:
   <string name="morphe_hide_latest_videos_button_summary">Skryje modrý banner \'Najnovšie videá\', ktorý sa zobrazuje v hornej časti domovskej stránky</string>
   <string name="morphe_hide_mix_playlists_title">Skryť mixy</string>
   <string name="morphe_hide_movies_section_title">Skryť sekciu filmov</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">Skryť hlavičku menu Upozornenia</string>
+  <string name="morphe_hide_notifications_menu_header_summary">Po kliknutí na tlačidlo s zvončekom skryje hlavičku menu Upozornenia</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Skryť tlačidlo \'Upozorniť ma\'</string>
@@ -251,6 +254,8 @@ Zmeny zahŕňajú:
   <string name="morphe_hide_comments_gift_button_title">Skryť tlačidlo Darovať</string>
   <string name="morphe_hide_comments_info_button_title">Skryť tlačidlo Info</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Skryť panel donátorov živého chatu</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Skryť nápovedy živého chatu</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Skryje vyskakovacie nápovedy zobrazené pri prideľovacom poli chatu, napríklad upozornenie na chat len pre odberateľov</string>
   <string name="morphe_hide_comments_preview_comment_title">Skryť predhliadku komentára</string>
   <string name="morphe_hide_comments_preview_comment_summary">Skryje ukážku komentára pod videami pred otvorením celej sekcie komentárov</string>
   <string name="morphe_hide_comments_thanks_button_title">Skryť tlačidlo Vďaka</string>
@@ -511,15 +516,18 @@ Ak to chcete opraviť, zapnite 'Spoofovanie video streamov' a zmeňte 'Predvolen
   <string name="morphe_tap_to_seek_title">Povoliť posúvanie na zmenu zvuku</string>
   <string name="morphe_tap_to_seek_summary">Proste ťuknite na ukazovateľ vyhľadávania a preskočte na túto pozíciu bez jeho ťahania</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Povoliť gesto na zmenu jasnosti</string>
-  <string name="morphe_swipe_brightness_summary">Posúvaním vertikálne na ľavej strane režimu na celú obrazovku upravíte jas</string>
-  <string name="morphe_swipe_volume_title">Povoliť gesto na zmenu hlasitosti</string>
-  <string name="morphe_swipe_volume_summary">Posúvaním vertikálne na pravej strane režimu na celú obrazovku upravíte hlasitosť</string>
-  <string name="morphe_swipe_zone_width_title">Šírka zóny jasu/hlasitosti</string>
-  <string name="morphe_swipe_zone_width_summary">Percentuálny podiel okraja obrazovky vyhradený pre gestá jasu a hlasitosti (5-50)</string>
+  <string name="morphe_swipe_left_zone_title">Gesto potiahnutia vľavo</string>
+  <string name="morphe_swipe_right_zone_title">Gesto potiahnutia vpravo</string>
+  <string name="morphe_swipe_top_zone_title">Gesto potiahnutia nahor</string>
+  <string name="morphe_swipe_zone_width_title">Šírka ľavej/праvej zóny</string>
+  <string name="morphe_swipe_zone_width_summary">Percentuálna časť každého okrajov obrazovky vyhradená pre gestá potiahnutia vľavo a vpravo (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Jas</string>
   <string name="morphe_swipe_zone_label_volume">Hlasitosť</string>
   <string name="morphe_swipe_zone_label_native">Natívne</string>
+  <string name="morphe_swipe_zone_label_off">Vypnuté</string>
+  <string name="morphe_swipe_ignore_when_locked_title">Ignorovať potiahnutia pri zamknutí</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">K gesturem potiahnutia sa neprihliadá, kým je prehrávač zamknutý pomocou funkcie „Zamknúť obrazovku“</string>
   <string name="morphe_swipe_press_to_engage_title">Povoliť gesto posúvania stlačením</string>
   <string name="morphe_swipe_press_to_engage_summary">Vyžaduje stlačenie a podržanie pred rozpoznaním gesta potiahnutia.</string>
   <string name="morphe_swipe_haptic_feedback_title">Povoliť haptickú spätnú väzbu</string>
@@ -548,12 +556,9 @@ Ak to chcete opraviť, zapnite 'Spoofovanie video streamov' a zmeňte 'Predvolen
   <string name="morphe_swipe_volume_sensitivity_summary">Vyššie hodnoty zvýšia zmenu hlasitosti na jedno posunutie</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Citlivosť posúvania jasu</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Vyššie hodnoty vyžadujú viac posúvania pre každý krok jasu</string>
-  <string name="morphe_swipe_speed_title">Povoliť gesto pre rýchlosť</string>
-  <string name="morphe_swipe_speed_summary">Prechádzajte horizontálne v hornej zóne režimu celej obrazovky a zmeňte rýchlosť prehrávania</string>
   <string name="morphe_swipe_speed_sensitivity_title">Citlivosť posúvania rýchlosti</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Vyššie hodnoty vyžadujú viac posúvania pre každý krok rýchlosti</string>
   <string name="morphe_swipe_speed_step_title">Rýchlosť kroku</string>
-  <string name="morphe_swipe_speed_step_summary">Množstvo, o ktoré sa mení rýchlosť prehrávania pri každom kroku</string>
   <string name="morphe_swipe_speed_zone_height_title">Výška zóny rýchlosti</string>
   <string name="morphe_swipe_speed_zone_height_summary">Výška zóny gesta rýchlosti v percentách výšky prehrávača (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Rýchlosť</string>
@@ -681,15 +686,8 @@ Na prístup k nastaveniam povoľte tlačidlo Nastavenia v časti Všeobecné →
   <string name="morphe_navigation_bar_animations_summary">Animuje prechody pri prechode medzi panelmi</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Zakázať automatické skrytie navigačného panela</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Udržuje navigačnú lištu viditeľnú pri posúvaní</string>
-  <string name="morphe_disable_translucent_status_bar_title">Zakázať priesvitný stavový panel</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Zabezpečí úplnú nepriehľadnosť panela stavu</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Obmedzenia:
-• Na hornej strane prehrávača videa sa môže objaviť čierny pruh.
-• Systémový navigačný panel sa môže zmeniť na priehľadný a nie je možné komentovať videá."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Zakázať priesvitný navigačný panel (svetly režim)</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Zabudúva navigačnú lištu úplne nepriehľadnú v svetlom režime</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Zakázať priesvitný navigačný panel (tmavý režim)</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Zabudúva navigačnú lištu úplne nepriehľadnú v tmavom režime</string>
+  <string name="morphe_disable_translucent_navigation_title">Zakázal polopriehľadný navigačný panel</string>
+  <string name="morphe_disable_translucent_navigation_summary">Zabezpečí úplnú nepriehľadnosť navigačného panela a panela stavu</string>
   <string name="morphe_toolbar_screen_title">Panel nástrojov</string>
   <string name="morphe_toolbar_screen_summary">Vyberte, ktoré komponenty sa zobrazia v lište nástrojov</string>
   <string name="morphe_hide_toolbar_cast_button_title">Skryť tlačidlo Prenos</string>

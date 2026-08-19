@@ -12,10 +12,13 @@ package app.morphe.patches.youtube.misc.fix.backtoexitgesture
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_40_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
+import app.morphe.patches.youtube.misc.settings.PreferenceScreen
+import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.YouTubeMainActivityOnBackPressedFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.getReference
@@ -33,10 +36,15 @@ internal val fixBackToExitGesturePatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         playerTypeHookPatch,
-        versionCheckPatch
+        versionCheckPatch,
+        settingsPatch,
     )
 
     execute {
+        PreferenceScreen.MISC.addPreferences(
+            SwitchPreference("morphe_back_button_always_exits_feed", summary = true)
+        )
+
         RecyclerViewTopScrollingFingerprint.let {
             it.method.addInstructionsAtControlFlowLabel(
                 it.instructionMatches.last().index + 1,
@@ -44,12 +52,10 @@ internal val fixBackToExitGesturePatch = bytecodePatch(
             )
         }
 
-        // Flag that seems to change the back button to not
-        // exit the app but instead scrolls to the top of the home feed.
         BackToRefreshFeatureFlagFingerprint.matchAll().forEach {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
-                false
+                "$EXTENSION_CLASS->allowBackButtonToScrollToTopOfFeed(Z)Z"
             )
         }
 
@@ -58,7 +64,7 @@ internal val fixBackToExitGesturePatch = bytecodePatch(
                 opcode == Opcode.INVOKE_VIRTUAL && getReference<MethodReference>()?.definingClass ==
                         "Landroid/support/v7/widget/RecyclerView;"
             }
-            
+
             addInstruction(
                 index,
                 "invoke-static { }, $EXTENSION_CLASS->onScrollingViews()V"

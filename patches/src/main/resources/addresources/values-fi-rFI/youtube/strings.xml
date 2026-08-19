@@ -84,6 +84,9 @@ Muutoksia ovat muun muassa:
   <string name="morphe_hide_latest_videos_button_summary">Piilottaa sinisen \"Uusimmat videot\" -bannerin, joka näkyy Aloitusnäytön yläreunassa</string>
   <string name="morphe_hide_mix_playlists_title">Piilota mix-soittolistat</string>
   <string name="morphe_hide_movies_section_title">Piilota elokuvat-osio</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">Piilota Ilmoitukset-valikon otsikko</string>
+  <string name="morphe_hide_notifications_menu_header_summary">Piilottaa Ilmoitukset-valikon otsikon, kun kello-painiketta napsautetaan</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Piilota \"Ilmoita minulle\" -painike</string>
@@ -251,6 +254,8 @@ Muutoksia ovat muun muassa:
   <string name="morphe_hide_comments_gift_button_title">Piilota lahjapainike</string>
   <string name="morphe_hide_comments_info_button_title">Piilota Tietoja-painike</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Piilota lahjoittajien palkki suorassa chatissa</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Piilota live-chatin vihjeet</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Piilottaa chat-syöttöpalkin lähellä näytettävät työkaluvihjeet, kuten vain tilaajille suunnatun chat-huomautuksen</string>
   <string name="morphe_hide_comments_preview_comment_title">Piilota kommentin esikatselu</string>
   <string name="morphe_hide_comments_preview_comment_summary">Piilottaa kommenttien esikatselun videon alapuolella ennen koko kommenttiosion avaamista</string>
   <string name="morphe_hide_comments_thanks_button_title">Piilota Kiitos-painike</string>
@@ -511,15 +516,18 @@ Voit korjata tämän ottamalla käyttöön 'Huijaa videovirtoja' ja vaihtamalla 
   <string name="morphe_tap_to_seek_title">Ota etsintä napauttamalla käyttöön</string>
   <string name="morphe_tap_to_seek_summary">Napauta hakupalkkia hypätäksesi kyseiseen kohtaan vetämättä sitä</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Ota kirkkausele käyttöön</string>
-  <string name="morphe_swipe_brightness_summary">Vaatii painamista ja pitämistä ennen kuin pyyhkäisyele tunnistetaan</string>
-  <string name="morphe_swipe_volume_title">Ota äänenvoimakkuusele käyttöön</string>
-  <string name="morphe_swipe_volume_summary">Muistaa kirkkaustason siirryttäessä sisään ja ulos koko näytön tilasta</string>
-  <string name="morphe_swipe_zone_width_title">Kirkkauden/äänenvoimakkuuden vyöhykkeen leveys</string>
-  <string name="morphe_swipe_zone_width_summary">Kuinka paljon näyttöä varataan kirkkauden ja äänenvoimakkuuden eleille (5–50)</string>
+  <string name="morphe_swipe_left_zone_title">Vasen pyyhkäisy</string>
+  <string name="morphe_swipe_right_zone_title">Oikea pyyhkäisy</string>
+  <string name="morphe_swipe_top_zone_title">Yläpyyhkäisy</string>
+  <string name="morphe_swipe_zone_width_title">Vasemman/oikean vyöhykkeen leveys</string>
+  <string name="morphe_swipe_zone_width_summary">Prosenttiosuus kummastakin näytön reunasta varattu vasemmalle ja oikealle pyyhkäisylle (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Kirkkaus</string>
   <string name="morphe_swipe_zone_label_volume">Äänenvoimakkuus</string>
   <string name="morphe_swipe_zone_label_native">Natiivi</string>
+  <string name="morphe_swipe_zone_label_off">Pois</string>
+  <string name="morphe_swipe_ignore_when_locked_title">Ohita pyyhkäisyt lukittuna</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">Pyyhkäisyeleet jätetään huomioimatta, kun soitin on lukittu \'Lukitse näyttö\' -toiminnolla</string>
   <string name="morphe_swipe_press_to_engage_title">Ota pyyhkäise painamalla -ele käyttöön</string>
   <string name="morphe_swipe_press_to_engage_summary">Vaatii painamisen ja pitämisen ennen pyyhkäisyeleen tunnistamista</string>
   <string name="morphe_swipe_haptic_feedback_title">Ota haptinen palaute käyttöön</string>
@@ -548,12 +556,9 @@ Voit korjata tämän ottamalla käyttöön 'Huijaa videovirtoja' ja vaihtamalla 
   <string name="morphe_swipe_volume_sensitivity_summary">Suuremmat arvot lisäävät äänenvoimakkuuden muutosta pyyhkäisyä kohden</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Kirkkauden pyyhkäisyn herkkyys</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Suuremmat arvot vaativat enemmän pyyhkäisyjä kirkkausaskelta kohden</string>
-  <string name="morphe_swipe_speed_title">Ota nopeusele käyttöön</string>
-  <string name="morphe_swipe_speed_summary">Pyyhkäise vaakasuunnassa täyden näytön tilan yläosassa muuttaaksesi toistonopeutta</string>
   <string name="morphe_swipe_speed_sensitivity_title">Nopeuden pyyhkäisyn herkkyys</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Suuremmat arvot vaativat enemmän pyyhkäisyjä nopeusaskelta kohden</string>
   <string name="morphe_swipe_speed_step_title">Nopeuden vaihe</string>
-  <string name="morphe_swipe_speed_step_summary">Määrä, jolla toistonopeus muuttuu jokaisen askeleen myötä</string>
   <string name="morphe_swipe_speed_zone_height_title">Nopeusalueen korkeus</string>
   <string name="morphe_swipe_speed_zone_height_summary">Nopeuseleelle varatun alueen korkeus prosentteina soittimen korkeudesta (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Nopeus</string>
@@ -681,15 +686,8 @@ Saadaksesi asetukset, ota Asetukset-painike käyttöön kohdasta Yleiset → Ty�
   <string name="morphe_navigation_bar_animations_summary">Animoi siirtymät välilehtien välillä</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Poista automaattisen piilottamisen käytöstä navigointipalkissa</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Pitää navigointipalkin näkyvillä vieritettäessä</string>
-  <string name="morphe_disable_translucent_status_bar_title">Poista läpikuultava tilapalkki käytöstä</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Tekee tilapalkin täysin peittäväksi</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Rajoitukset:
-• Video-soittimessa saattaa esiintyä musta juova yläosassa.
-• Järjestelmän navigointipalkki saattaa muuttua läpinäkyväksi, ja ei ole mahdollista kommentoida videoita."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Poista vaalea läpikuultava palkki käytöstä</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Tekee navigointipalkista täysin peittävän vaaleassa tilassa</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Poista tumma läpikuultava palkki käytöstä</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Tekee navigaatiopalkista täysin läpinäkymättömän tummassa tilassa</string>
+  <string name="morphe_disable_translucent_navigation_title">Poista läpikuultava navigointipalkki käytöstä</string>
+  <string name="morphe_disable_translucent_navigation_summary">Tekee navigointi- ja tilapalkin täysin peittäväksi</string>
   <string name="morphe_toolbar_screen_title">Työkalupalkki</string>
   <string name="morphe_toolbar_screen_summary">Valitse, mitkä komponentit näkyvät työkalupalkissa</string>
   <string name="morphe_hide_toolbar_cast_button_title">Piilota Cast-painike</string>
@@ -1114,6 +1112,11 @@ Rajoitus: Toisto ei ehkä toimi joissakin laitteissa, jos 'Väärennä videostri
   <string name="morphe_remember_playback_speed_toast">Oletusarvoinen toistonopeus muutettu: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Käytä normaalinopeutta musiikille</string>
   <string name="morphe_disable_playback_speed_music_summary">Toista musiikkivideot aina 1.0x nopeudella</string>
+  <string name="morphe_enable_playback_audio_pitch_controls_title">Ota käyttöön äänenkorkeuden säätimet</string>
+  <string name="morphe_playback_audio_pitch_default_title">Toiston oletusäänenkorkeus</string>
+  <string name="morphe_remember_playback_audio_pitch_toast">Toiston oletusäänenkorkeus muutettiin: %s</string>
+  <string name="morphe_playback_audio_time_stretching_title">Äänen aikavenytys</string>
+  <string name="morphe_playback_audio_time_stretching_summary">Mahdollistaa nopeuden ja äänenkorkeuden säätämisen toisistaan riippumatta, saattaa aiheuttaa äänihäiriöitä</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Poista HDR-video käytöstä</string>
   <string name="morphe_force_avc_codec_title">Pakota AVC (H.264) -koodekki</string>
@@ -1128,6 +1131,7 @@ Rajoitukset:
 • Jotkin laitteet eivät voi pakottaa AVC:tä"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Käyttääksesi tätä ominaisuutta, aseta \'Naamioi videovirrat\' arvoksi \'Android VR\' tai \'Android Studio\'</string>
+  <string name="morphe_force_av1_in_shorts_title">Pakota AV1 Shortseissa</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Avaa parannetun laadun valikko</string>
   <string name="morphe_advanced_video_quality_menu_summary">Ohittaa laadunvalintavalikon ja avaa Laatu-valikon lisääsetukset suoraan</string>

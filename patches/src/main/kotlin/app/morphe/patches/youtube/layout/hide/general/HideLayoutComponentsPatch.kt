@@ -174,6 +174,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_comments_gift_button"),
                     SwitchPreference("morphe_hide_comments_info_button"),
                     SwitchPreference("morphe_hide_comments_live_chat_donators_bar"),
+                    SwitchPreference("morphe_hide_comments_live_chat_tooltips", summary = true),
                     SwitchPreference("morphe_hide_comments_preview_comment", summary = true),
                     SwitchPreference("morphe_hide_comments_thanks_button"),
                     SwitchPreference("morphe_hide_comments_timestamp_button"),
@@ -392,6 +393,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_latest_videos_button", summary = true),
             SwitchPreference("morphe_hide_mix_playlists"),
             SwitchPreference("morphe_hide_movies_section"),
+            SwitchPreference("morphe_hide_notifications_menu_header", summary = true),
             SwitchPreference("morphe_hide_notify_me_button", summary = true),
             SwitchPreference("morphe_hide_playables", summary = true),
             SwitchPreference("morphe_hide_search_term_thumbnails", summary = true),
@@ -1015,6 +1017,25 @@ val hideLayoutComponentsPatch = bytecodePatch(
                         """
                     )
                 }
+            }
+        }
+
+        // endregion
+
+        // region hide live chat tooltips
+
+        TooltipAnchorViewFingerprint.let {
+            it.method.apply {
+                val anchorFieldGetIndex = it.instructionMatches.first().index
+                val anchorRegister = getInstruction<TwoRegisterInstruction>(anchorFieldGetIndex).registerA
+
+                addInstructions(
+                    anchorFieldGetIndex + 1,
+                    """
+                        invoke-static { v$anchorRegister }, $COMMENTS_FILTER->hideLiveChatTooltip(Landroid/view/View;)Landroid/view/View;
+                        move-result-object v$anchorRegister
+                    """
+                )
             }
         }
 

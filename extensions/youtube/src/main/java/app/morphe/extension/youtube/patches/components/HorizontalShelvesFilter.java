@@ -111,7 +111,9 @@ public final class HorizontalShelvesFilter extends Filter {
             return true;
         }
         if (descriptionBuffers.check(buffer).isFiltered()) {
-            return isPlayerOrDescription();
+            if (isPlayerOrDescription()) {
+                return true;
+            }
         }
         return hideShelves(contextInterface);
     }

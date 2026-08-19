@@ -286,7 +286,7 @@ YouTube Music 8.x: el fundido entre canciones solo funciona en la versión 9.x y
   <string name="morphe_music_lastfm_token_toast_saved">¡Credenciales de Last.fm guardadas!</string>
   <string name="morphe_settings_music_scrobbling_metadata_title">Limpieza de metadatos</string>
   <string name="morphe_music_scrobbling_metadata_cleanup_title">Limpiar metadatos</string>
-  <string name="morphe_music_scrobbling_metadata_cleanup_summary">Limpia automáticamente términos comunes (como \"Video oficial\", \"Remasterizado\", \"En vivo\") de los títulos, artistas y álbumes antes de hacer scrobble</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_summary">Limpia automáticamente términos comunes (como \"Video oficial\", \"Remasterizado\", \"En directo\") de los títulos, artistas y álbumes antes de hacer scrobble</string>
   <string name="morphe_music_scrobbling_custom_regex_title">Limpieza de regex personalizada</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">Ingresa una expresión regular personalizada para eliminar texto adicional de los títulos de canciones, artistas o álbumes. Ejemplo: (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">Analizar artista y pista a partir del título</string>

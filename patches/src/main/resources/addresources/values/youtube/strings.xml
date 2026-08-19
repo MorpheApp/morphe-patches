@@ -88,6 +88,9 @@ Changes include:
     <string name="morphe_hide_latest_videos_button_summary">Hides the blue \'Latest videos\' banner that appears at the top of the Home feed</string>
     <string name="morphe_hide_mix_playlists_title">Hide mix playlists</string>
     <string name="morphe_hide_movies_section_title">Hide movies section</string>
+    <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+    <string name="morphe_hide_notifications_menu_header_title">Hide Notifications menu header</string>
+    <string name="morphe_hide_notifications_menu_header_summary">Hides the Notifications menu header when clicking the bell button</string>
     <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
     <string name="morphe_hide_notify_me_button_title">Hide \'Notify me\' button</string>
@@ -261,6 +264,8 @@ Changes include:
     <string name="morphe_hide_comments_gift_button_title">Hide Gift button</string>
     <string name="morphe_hide_comments_info_button_title">Hide Info button</string>
     <string name="morphe_hide_comments_live_chat_donators_bar_title">Hide live chat donators bar</string>
+    <string name="morphe_hide_comments_live_chat_tooltips_title">Hide live chat tooltips</string>
+    <string name="morphe_hide_comments_live_chat_tooltips_summary">Hides tooltip popups shown near the chat input bar, such as the subscriber-only chat notice</string>
     <string name="morphe_hide_comments_preview_comment_title">Hide preview comment</string>
     <string name="morphe_hide_comments_preview_comment_summary">Hides the comment preview under video before opening the full comments section</string>
     <string name="morphe_hide_comments_thanks_button_title">Hide Thanks button</string>
@@ -560,16 +565,19 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_tap_to_seek_summary">Just tap the seekbar to jump to that position without dragging it</string>
 
     <!-- interaction.swipecontrols.swipeControlsPatch -->
-    <string name="morphe_swipe_brightness_title">Enable brightness gesture</string>
-    <string name="morphe_swipe_brightness_summary">Swipe vertically on the left side of the fullscreen mode to adjust brightness</string>
-    <string name="morphe_swipe_volume_title">Enable volume gesture</string>
-    <string name="morphe_swipe_volume_summary">Swipe vertically on the right side of the fullscreen mode to adjust volume</string>
+    <string name="morphe_swipe_left_zone_title">Left swipe gesture</string>
+    <string name="morphe_swipe_right_zone_title">Right swipe gesture</string>
+    <string name="morphe_swipe_top_zone_title">Top swipe gesture</string>
     <string name="morphe_swipe_zone_preview_title" translatable="false"> </string>
-    <string name="morphe_swipe_zone_width_title">Brightness/volume zone width</string>
-    <string name="morphe_swipe_zone_width_summary">Percentage of each screen edge reserved for brightness and volume gestures (5-50)</string>
+    <string name="morphe_swipe_zone_width_title">Left/Right zone width</string>
+    <string name="morphe_swipe_zone_width_summary">Percentage of each screen edge reserved for left and right swipe gestures (5-50)</string>
     <string name="morphe_swipe_zone_label_brightness">Brightness</string>
     <string name="morphe_swipe_zone_label_volume">Volume</string>
     <string name="morphe_swipe_zone_label_native">Native</string>
+    <string name="morphe_swipe_zone_label_off">Off</string>
+    <string name="morphe_swipe_ignore_when_locked_title">Ignore swipes when locked</string>
+    <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+    <string name="morphe_swipe_ignore_when_locked_summary">Swipe gestures are ignored while the player is locked with \'Lock screen\'</string>
     <string name="morphe_swipe_press_to_engage_title">Enable press to swipe gesture</string>
     <string name="morphe_swipe_press_to_engage_summary">Requires pressing and holding before a swipe gesture is recognized</string>
     <string name="morphe_swipe_haptic_feedback_title">Enable haptic feedback</string>
@@ -598,12 +606,9 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_swipe_volume_sensitivity_summary">Higher values increase the volume change per swipe</string>
     <string name="morphe_swipe_brightness_sensitivity_title">Brightness swipe sensitivity</string>
     <string name="morphe_swipe_brightness_sensitivity_summary">Higher values require more swiping per brightness step</string>
-    <string name="morphe_swipe_speed_title">Enable speed gesture</string>
-    <string name="morphe_swipe_speed_summary">Swipe horizontally in the upper zone of the fullscreen mode to change playback speed</string>
     <string name="morphe_swipe_speed_sensitivity_title">Speed swipe sensitivity</string>
     <string name="morphe_swipe_speed_sensitivity_summary">Higher values require more swiping per speed step</string>
     <string name="morphe_swipe_speed_step_title">Speed step</string>
-    <string name="morphe_swipe_speed_step_summary">Amount by which the playback speed changes per tick</string>
     <string name="morphe_swipe_speed_zone_height_title">Speed zone height</string>
     <string name="morphe_swipe_speed_zone_height_summary">Height of the speed gesture zone as a percentage of the player height (5-75)</string>
     <string name="morphe_swipe_zone_label_speed">Speed</string>
@@ -977,8 +982,8 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
     <string name="morphe_override_youtube_music_buttons_title">Override YouTube Music buttons</string>
     <string name="morphe_override_youtube_music_buttons_summary">Opens your preferred music app instead of the stock YouTube Music app</string>
-    <string name="morphe_music_package_name_title">Music app package name</string>
-    <string name="morphe_music_package_name_summary">Package name of your installed music app</string>
+    <string name="morphe_custom_music_package_name_title">Music app package name</string>
+    <string name="morphe_custom_music_package_name_summary">Package name of your installed music app</string>
 
     <!-- layout.startpage.changeStartPagePatch -->
     <string name="morphe_change_start_page_title">Start page</string>
@@ -1060,6 +1065,10 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <string name="morphe_miniplayer_opacity_title">Overlay opacity</string>
     <string name="morphe_miniplayer_opacity_summary">Adjust the transparency level (0 is transparent, 100 is opaque)</string>
     <string name="morphe_miniplayer_opacity_invalid_toast">Miniplayer overlay opacity must be between 0-100</string>
+
+    <!-- misc.fix.fixBackToExitGesturePatch -->
+    <string name="morphe_back_button_always_exits_feed_title">Back button exits the feed</string>
+    <string name="morphe_back_button_always_exits_feed_summary">Pressing back always exits the app instead of scrolling to the top of the feed</string>
 
     <!-- layout.theme.themePatch -->
     <string name="morphe_gradient_loading_screen_title">Enable gradient loading screen</string>
@@ -1243,7 +1252,6 @@ Limitations:
 • Some devices cannot force AVC"</string>
     <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
     <string name="morphe_force_avc_codec_not_available">To use this feature, set \'Spoof video streams\' to \'Android VR\' or \'Android Studio\'</string>
-    <string name="morphe_force_av1_in_shorts_title">Force AV1 in Shorts</string>
 
     <!-- video.quality.advancedVideoQualityMenuPatch -->
     <string name="morphe_advanced_video_quality_menu_title">Open Advanced quality menu</string>

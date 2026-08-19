@@ -2,14 +2,14 @@
 
 [versions]
 morphe-patcher = "1.8.0"
-morphe-patches-library = "1.6.1-dev.1"
+morphe-patches-library = "1.6.1-dev.4"
 # Tracking https://github.com/google/smali/issues/100.
 smali = "d92701d947"
 agp = "9.1.0"
 annotation = "1.10.0"
 androidx-core = "1.18.0"    # 1.19.0+ requires upgrading android compile sdk
 androidx-javascriptengine = "1.1.0"
-collections4 = "4.5.0"
+collections4 = "4.6.0"
 gson = "2.14.0"
 lang3 = "3.20.0"
 guava = "33.6.0-jre"

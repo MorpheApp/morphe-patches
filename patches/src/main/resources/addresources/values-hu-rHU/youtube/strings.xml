@@ -84,6 +84,9 @@ A változások a következőket tartalmazzák:
   <string name="morphe_hide_latest_videos_button_summary">A Kezdőlap tetején megjelenő kék „Legújabb videók” sáv elrejtése</string>
   <string name="morphe_hide_mix_playlists_title">Egyveleg lejátszási listák elrejtése</string>
   <string name="morphe_hide_movies_section_title">Filmek szekció elrejtése</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">Értesítések menüfejcsze elrejtése</string>
+  <string name="morphe_hide_notifications_menu_header_summary">Elrejti az Értesítések menüfejcszét a harang gomb megnyomásakor</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">\"Értesíts\" gomb elrejtése</string>
@@ -251,6 +254,8 @@ A változások a következőket tartalmazzák:
   <string name="morphe_hide_comments_gift_button_title">Ajándék gomb elrejtése</string>
   <string name="morphe_hide_comments_info_button_title">Információ gomb elrejtése</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Élő csevegés támogatói sávjának elrejtése</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Élő csevegés tooltippjeinek elrejtése</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Elrejti a csevegési beviteli sáv közelében megjelenő tooltipp popupokat, például a csak feliratkozottakra vonatkozó csevegési értesítést</string>
   <string name="morphe_hide_comments_preview_comment_title">Megjegyzés előnézet elrejtése</string>
   <string name="morphe_hide_comments_preview_comment_summary">Megjegyzések előnézetének elrejtése a teljes megjegyzések szekció megnyitása előtt</string>
   <string name="morphe_hide_comments_thanks_button_title">Köszönet gomb elrejtése</string>
@@ -511,15 +516,17 @@ A javításhoz kapcsolja be a 'Videóstreamek meghamisítása' opciót, és mód
   <string name="morphe_tap_to_seek_title">Érintésre keresés engedélyezése</string>
   <string name="morphe_tap_to_seek_summary">Csak koppintson meg a lejátszósávra, hogy átugorjon arra a pozícióra anélkül, hogy azt húzná</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Fényerő kézmozdulat engedélyezése</string>
-  <string name="morphe_swipe_brightness_summary">A bal oldalon függőlegesen történő gesztus állítja a fényerőt a teljes képernyős módban</string>
-  <string name="morphe_swipe_volume_title">Hangerő kézmozdulat engedélyezése</string>
-  <string name="morphe_swipe_volume_summary">A jobb oldalon függőlegesen történő gesztus állítja a hangerőt a teljes képernyős módban</string>
-  <string name="morphe_swipe_zone_width_title">Fényerő/hangerő zóna szélessége</string>
-  <string name="morphe_swipe_zone_width_summary">A képernyő széleinek az a százaléka, amely lefoglalva van a fényerő és hangerő vezérléséhez (5-50)</string>
+  <string name="morphe_swipe_left_zone_title">Balra törölés gesztus</string>
+  <string name="morphe_swipe_right_zone_title">Jobbra törölés gesztus</string>
+  <string name="morphe_swipe_top_zone_title">Felfelé törölés gesztus</string>
+  <string name="morphe_swipe_zone_width_title">Bal/Jobb zóna szélessége</string>
+  <string name="morphe_swipe_zone_width_summary">A képernyő szélének százaléka, amely a balra és jobbra történő törlési gesztusok számára reserved (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Fényerő</string>
   <string name="morphe_swipe_zone_label_volume">Hangerő</string>
   <string name="morphe_swipe_zone_label_native">Natív</string>
+  <string name="morphe_swipe_zone_label_off">Ki</string>
+  <string name="morphe_swipe_ignore_when_locked_title">Kezelés figyelmen kívül hagyása zároláskor</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
   <string name="morphe_swipe_press_to_engage_title">Csúsztatáshoz nyomva tartás engedélyezése</string>
   <string name="morphe_swipe_press_to_engage_summary">A csúsztatási gesztus felismerése előtt meg kell nyomni és nyomva tartani.</string>
   <string name="morphe_swipe_haptic_feedback_title">Haptikus visszajelzés engedélyezése</string>
@@ -548,12 +555,9 @@ A javításhoz kapcsolja be a 'Videóstreamek meghamisítása' opciót, és mód
   <string name="morphe_swipe_volume_sensitivity_summary">A nagyobb értékek növelik a hangerőváltozást egy húzás során</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Fényerő-húzásérzékenység</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">A nagyobb értékek több húzást igényelnek a fényerő lépésenkénti változásához</string>
-  <string name="morphe_swipe_speed_title">A sebességkézmozdulat engedélyezése</string>
-  <string name="morphe_swipe_speed_summary">A teljes képernyős módban húzza vízszintesen az felső zónában a lejátszási sebesség módosításához</string>
   <string name="morphe_swipe_speed_sensitivity_title">Sebesség-húzásérzékenység</string>
   <string name="morphe_swipe_speed_sensitivity_summary">A nagyobb értékek több húzást igényelnek a sebesség lépésenkénti változásához</string>
   <string name="morphe_swipe_speed_step_title">Sebességlépés</string>
-  <string name="morphe_swipe_speed_step_summary">A lejátszási sebesség egy lépésenkénti változása</string>
   <string name="morphe_swipe_speed_zone_height_title">A sebesség zónájának magassága</string>
   <string name="morphe_swipe_speed_zone_height_summary">A sebességkézmozdulat zónájának magassága a lejátszó magasságának százalékában (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Sebesség</string>
@@ -681,15 +685,8 @@ A Beállítások eléréséhez engedje a Beállítások gombot a Általános →
   <string name="morphe_navigation_bar_animations_summary">Animálja az átmeneteket a lapok között váltáskor</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Kapcsold ki az automatikus elrejtést a navigációs sávra</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">A navigációs sáv látható marad a görgetés közben</string>
-  <string name="morphe_disable_translucent_status_bar_title">Átlátszó állapotsor letiltása</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Teljesen átlátszatlanná teszi az állapot sort</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Limitációk:
-• Fekete sáv jelenhet meg a videólejátszó tetején.
-• A rendszer navigációs sávja átlátszóvá válhat, és nem lehetséges a videók megjegyzése."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Világos, átlátszó sáv letiltása</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Teljesen átlátszatlanná teszi a navigációs sort világos módban</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Sötét áttetsző sáv letiltása</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Teljesen átlátszatlanná teszi a navigációs sort sötét módban</string>
+  <string name="morphe_disable_translucent_navigation_title">Átlátszó navigációs sáv letiltása</string>
+  <string name="morphe_disable_translucent_navigation_summary">Teljesen átlátszatlaná teszi a navigációs és az állapotsort</string>
   <string name="morphe_toolbar_screen_title">Eszközevek sorozata</string>
   <string name="morphe_toolbar_screen_summary">Válassza ki, mely komponensek jelenjenek meg az eszköztáron</string>
   <string name="morphe_hide_toolbar_cast_button_title">Átküldés gomb elrejtése</string>

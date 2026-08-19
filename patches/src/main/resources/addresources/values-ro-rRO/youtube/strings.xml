@@ -84,6 +84,9 @@ Schimbari incluse:
   <string name="morphe_hide_latest_videos_button_summary">Ascunde bannerul albastru \"Videoclipuri recente\" care apare în partea de sus a fluxului principal</string>
   <string name="morphe_hide_mix_playlists_title">Ascunde amestecul playlisturilor</string>
   <string name="morphe_hide_movies_section_title">Ascunde secțiunea de filme</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">Ascunde antetul meniului Notificări</string>
+  <string name="morphe_hide_notifications_menu_header_summary">Ascunde antetul meniului Notificări atunci când se face clic pe butonul cu clopoțel</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Ascunde butonul \'Notifică-mă\'</string>
@@ -251,6 +254,8 @@ Schimbari incluse:
   <string name="morphe_hide_comments_gift_button_title">Ascunde butonul Cadou</string>
   <string name="morphe_hide_comments_info_button_title">Ascunde butonul Info</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Ascunde bara cu donatori în chat-ul live</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Ascunde sugestiile din chatul live</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Ascunde ferestrele de sugestii afișate lângă bara de introducere a chat-ului, cum ar fi notificarea pentru chat-ul rezervat abonaților</string>
   <string name="morphe_hide_comments_preview_comment_title">Ascunde previzualizarea comentariului</string>
   <string name="morphe_hide_comments_preview_comment_summary">Ascunde previzualizarea comentariului de sub videoclip înainte de a deschide secțiunea completă de comentarii</string>
   <string name="morphe_hide_comments_thanks_button_title">Ascunde butonul „Mulțumesc”</string>
@@ -511,15 +516,18 @@ Pentru a remedia această problemă, activați 'Falsificare fluxuri video' și s
   <string name="morphe_tap_to_seek_title">Activează atingerea pentru a căuta</string>
   <string name="morphe_tap_to_seek_summary">Atinge pur și simplu bara de căutare pentru a ajunge în acea poziție fără a o trage</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Activează gestul de luminozitate</string>
-  <string name="morphe_swipe_brightness_summary">Glisarea în modul ecran complet pentru a trece la videoclipul următor sau anterior</string>
-  <string name="morphe_swipe_volume_title">Activare gest volum</string>
-  <string name="morphe_swipe_volume_summary">Alegeți ce butoane apar în bara de navigare de jos</string>
-  <string name="morphe_swipe_zone_width_title">Lățime zonă luminozitate/volum</string>
-  <string name="morphe_swipe_zone_width_summary">Procentajul din fiecare margine a ecranului rezervat pentru gesturile de luminozitate și volum (5-50)</string>
+  <string name="morphe_swipe_left_zone_title">Gest de glisare stânga</string>
+  <string name="morphe_swipe_right_zone_title">Gest de glisare dreapta</string>
+  <string name="morphe_swipe_top_zone_title">Gest de glisare sus</string>
+  <string name="morphe_swipe_zone_width_title">Lățime zonă stânga/dreapta</string>
+  <string name="morphe_swipe_zone_width_summary">Procentul din fiecare margine a ecranului rezervat pentru gesturile de glisare stânga și dreapta (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Luminozitate</string>
   <string name="morphe_swipe_zone_label_volume">Volum</string>
   <string name="morphe_swipe_zone_label_native">Nativ</string>
+  <string name="morphe_swipe_zone_label_off">Oprit</string>
+  <string name="morphe_swipe_ignore_when_locked_title">Ignoră glisările când este blocat</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">Gesturile de glisare sunt ignorate în timp ce playerul este blocat cu „Blocare ecran”</string>
   <string name="morphe_swipe_press_to_engage_title">Activează gestul de apăsare pentru a trage</string>
   <string name="morphe_swipe_press_to_engage_summary">Necesită apăsare și menținere înainte ca un gest de glisare să fie recunoscut.</string>
   <string name="morphe_swipe_haptic_feedback_title">Activează feedback haptic</string>
@@ -548,12 +556,9 @@ Pentru a remedia această problemă, activați 'Falsificare fluxuri video' și s
   <string name="morphe_swipe_volume_sensitivity_summary">Valorile mai mari cresc modificarea volumului per glisare</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Sensibilitate glisare luminozitate</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Valorile mai mari necesită mai multe glisări pentru fiecare pas de luminozitate</string>
-  <string name="morphe_swipe_speed_title">Activare gest pentru viteză</string>
-  <string name="morphe_swipe_speed_summary">Glisați orizontal în zona superioară a modului ecran complet pentru a schimba viteza de redare</string>
   <string name="morphe_swipe_speed_sensitivity_title">Sensibilitate glisare viteză</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Valorile mai mari necesită mai multe glisări pentru fiecare pas de viteză</string>
   <string name="morphe_swipe_speed_step_title">Pas rapid</string>
-  <string name="morphe_swipe_speed_step_summary">Cantitatea cu care se modifică viteza de redare la fiecare increment</string>
   <string name="morphe_swipe_speed_zone_height_title">Înălțime zonă viteză</string>
   <string name="morphe_swipe_speed_zone_height_summary">Înălțimea zonei de gesturi pentru viteză ca procent din înălțimea player-ului (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Viteză</string>
@@ -681,15 +686,8 @@ Pentru a accesa Setări, activați butonul Setări prin General → Bara de inst
   <string name="morphe_navigation_bar_animations_summary">Ascunde meniul Ascultă cu YouTube Music</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Dezactivează ascunderea automată a barei de navigare</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Ascunde meniul Urmărește în VR</string>
-  <string name="morphe_disable_translucent_status_bar_title">Dezactivează bara de stare translucidă</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Ascunde meniul Calitate</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Limitâri:
-• O barâ neagrâ poate apare la ²nalul jucâtorului video.
-• bara de navigare a sistemului poate fi transparentâ, iar comântarea pe videouri nu este posibilâ."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Dezactivează bara de navigare translucidă deschisă</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Ascunde subsolul meniului Calitate</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Dezactivați bara translucidă închisă la culoare</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Ascunde antetul meniului Calitate</string>
+  <string name="morphe_disable_translucent_navigation_title">Dezactivează bara de navigare translucidă</string>
+  <string name="morphe_disable_translucent_navigation_summary">Face bara de navigare și bara de stare complet opace</string>
   <string name="morphe_toolbar_screen_title">Bara de navigare</string>
   <string name="morphe_toolbar_screen_summary">Ascunde previzualizarea videoclipului următor în ecran complet înainte de începerea redării automate</string>
   <string name="morphe_hide_toolbar_cast_button_title">Ascunde butonul Distribuție</string>

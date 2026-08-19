@@ -398,7 +398,7 @@ public class PlaylistPatch {
                             currentPlaylistId;
                 }
 
-                LoadVideoPatch.openIntent(url, reload);
+                LoadVideoPatch.openVideoIntent(url, reload);
             } catch (Exception ex) {
                 Logger.printException(() -> "openQueue failure", ex);
             }
@@ -413,7 +413,7 @@ public class PlaylistPatch {
         Utils.showToastShort(reason);
     }
 
-    private enum QueueManager {
+    public enum QueueManager {
         ADD_TO_QUEUE(
                 "morphe_queue_manager_add_to_queue",
                 "yt_outline_list_add_black_24",

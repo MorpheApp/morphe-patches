@@ -83,6 +83,9 @@ Perubahan termasuk:
   <string name="morphe_hide_latest_videos_button_summary">Menyembunyikan spanduk biru \'Video terbaru\' yang muncul di bagian atas feed Beranda</string>
   <string name="morphe_hide_mix_playlists_title">Sembunyikan daftar putar campuran</string>
   <string name="morphe_hide_movies_section_title">Sembunyikan bagian film</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">Sembunyikan header menu Notifikasi</string>
+  <string name="morphe_hide_notifications_menu_header_summary">Menyembunyikan header menu Notifikasi saat mengeklik tombol lonceng</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Sembunyikan \'Beri tahu saya\'</string>
@@ -138,7 +141,7 @@ Perubahan termasuk:
   <string name="morphe_hide_player_gesture_hints_title">Sembunyikan petunjuk gestur pemutar</string>
   <!-- 'Pull up for precise seeking', 'Release to cancel' and '2x' should be translated using the same localized wording YouTube displays for the hints.
           These hints appear in the video player while dragging the seekbar or holding to speed up playback. -->
-  <string name="morphe_hide_player_gesture_hints_summary">Menyembunyikan petunjuk yang ditampilkan selama gestur pemutar, seperti \'Geser ke atas untuk presisi pencarian\', \'Lepaskan untuk membatalkan\', dan \'2x\'.</string>
+  <string name="morphe_hide_player_gesture_hints_summary">Menyembunyikan petunjuk yang ditampilkan selama gestur pemutar, seperti \'Geser ke atas untuk pencarian presisi\', \'Lepas untuk membatalkan\', dan \'2x\'</string>
   <string name="morphe_hide_snackbar_title">Sembunyikan snackbar</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Sembunyikan panduan subscriber</string>
   <string name="morphe_hide_sync_button_title">Sembunyikan tombol \'Sinkronkan ke video\'</string>
@@ -212,7 +215,7 @@ Perubahan termasuk:
   <string name="morphe_hide_hype_menu_title">Sembunyikan menu Beri hype</string>
   <string name="morphe_hide_learning_menu_title">Sembunyikan menu Pembelajaran</string>
   <string name="morphe_hide_live_menu_title">Sembunyikan menu Live</string>
-  <string name="morphe_hide_memberships_menu_title">Sembunyikan menu Pelanggan</string>
+  <string name="morphe_hide_memberships_menu_title">Sembunyikan menu Langganan</string>
   <string name="morphe_hide_movies_menu_title">Sembunyikan menu \'Film &amp; TV\'</string>
   <string name="morphe_hide_music_menu_title">Sembunyikan menu Musik</string>
   <string name="morphe_hide_news_menu_title">Sembunyikan menu Berita</string>
@@ -250,6 +253,8 @@ Perubahan termasuk:
   <string name="morphe_hide_comments_gift_button_title">Sembunyikan tombol Hadiah</string>
   <string name="morphe_hide_comments_info_button_title">Sembunyikan tombol Info</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Sembunyikan bilah donatur live chat</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Sembunyikan petunjuk live chat</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Menyembunyikan petunjuk di dekat kolom chat, seperti info chat khusus subscriber</string>
   <string name="morphe_hide_comments_preview_comment_title">Sembunyikan pratinjau komentar</string>
   <string name="morphe_hide_comments_preview_comment_summary">Menyembunyikan pratinjau komentar di bawah video sebelum membuka bagian komentar penuh</string>
   <string name="morphe_hide_comments_thanks_button_title">Sembunyikan tombol Terima Kasih</string>
@@ -510,15 +515,18 @@ Untuk memperbaikinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' m
   <string name="morphe_tap_to_seek_title">Aktifkan ketuk untuk mencari</string>
   <string name="morphe_tap_to_seek_summary">Cukup ketuk bilah geser untuk melompat ke posisi itu tanpa menyeretnya</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Aktifkan gerakan kecerahan</string>
-  <string name="morphe_swipe_brightness_summary">Usap ke atas atau ke bawah di sisi kiri mode layar penuh untuk mengatur kecerahan</string>
-  <string name="morphe_swipe_volume_title">Aktifkan gerakan volume</string>
-  <string name="morphe_swipe_volume_summary">Usap ke atas di sisi kanan layar penuh untuk mengatur volume</string>
-  <string name="morphe_swipe_zone_width_title">Lebar zona kecerahan/volume</string>
-  <string name="morphe_swipe_zone_width_summary">Persentase dari setiap tepi layar yang disediakan untuk gerakan pengaturan kecerahan dan volume (5–50)</string>
+  <string name="morphe_swipe_left_zone_title">Gerakan mengusap ke kiri</string>
+  <string name="morphe_swipe_right_zone_title">Gerakan mengusap ke kanan</string>
+  <string name="morphe_swipe_top_zone_title">Gerakan mengusap ke atas</string>
+  <string name="morphe_swipe_zone_width_title">Lebar zona kiri/kanan</string>
+  <string name="morphe_swipe_zone_width_summary">Persentase tepi layar yang dialokasikan untuk gerakan mengusap ke kiri dan ke kanan (5–50)</string>
   <string name="morphe_swipe_zone_label_brightness">Kecerahan</string>
   <string name="morphe_swipe_zone_label_volume">Volume</string>
   <string name="morphe_swipe_zone_label_native">Asli</string>
+  <string name="morphe_swipe_zone_label_off">Nonaktif</string>
+  <string name="morphe_swipe_ignore_when_locked_title">Abaikan gerakan mengusap saat terkunci</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">Gerakan mengusap diabaikan saat pemutar dalam keadaan terkunci dengan \'Kunci layar\'</string>
   <string name="morphe_swipe_press_to_engage_title">Aktifkan tekan untuk gerakan usap</string>
   <string name="morphe_swipe_press_to_engage_summary">Memerlukan menekan dan menahan sebelum gerakan mengusap dikenali</string>
   <string name="morphe_swipe_haptic_feedback_title">Aktifkan umpan balik getar</string>
@@ -547,12 +555,9 @@ Untuk memperbaikinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' m
   <string name="morphe_swipe_volume_sensitivity_summary">Nilai yang lebih tinggi meningkatkan perubahan volume per usapan</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Sensitivitas usap kecerahan</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Nilai yang lebih tinggi memerlukan lebih banyak usapan per langkah kecerahan</string>
-  <string name="morphe_swipe_speed_title">Aktifkan gerakan kecepatan</string>
-  <string name="morphe_swipe_speed_summary">Usap secara horizontal di zona atas mode layar penuh untuk mengubah kecepatan pemutaran</string>
   <string name="morphe_swipe_speed_sensitivity_title">Sensitivitas usap kecepatan</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Nilai yang lebih tinggi memerlukan lebih banyak usapan per langkah kecepatan</string>
   <string name="morphe_swipe_speed_step_title">Tahap kecepatan</string>
-  <string name="morphe_swipe_speed_step_summary">Jumlah perubahan kecepatan pemutaran per langkah</string>
   <string name="morphe_swipe_speed_zone_height_title">Tinggi zona kecepatan</string>
   <string name="morphe_swipe_speed_zone_height_summary">Tinggi zona gerakan kecepatan sebagai persentase dari tinggi pemutar (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Kecepatan</string>
@@ -680,15 +685,8 @@ Untuk mengakses Pengaturan, aktifkan tombol Pengaturan melalui Umum → Bilah Al
   <string name="morphe_navigation_bar_animations_summary">Menganimasikan transisi saat beralih antar tab</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Nonaktifkan otomatis menyembunyikan bilah navigasi</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Menjaga bilah navigasi tetap terlihat saat menggulir</string>
-  <string name="morphe_disable_translucent_status_bar_title">Nonaktifkan bilah status tembus cahaya</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Membuat bilah status sepenuhnya buram</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Batasan:
-• Garis hitam mungkin muncul di bagian atas pemutar video.
-• Bilah navigasi sistem dapat berubah menjadi transparan, dan tidak mungkin untuk mengomentari video."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Nonaktifkan bilah tembus cahaya terang</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Membuat bilah navigasi sepenuhnya buram dalam mode terang</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Nonaktifkan bilah tembus pandang gelap</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Membuat bilah navigasi sepenuhnya buram dalam mode gelap</string>
+  <string name="morphe_disable_translucent_navigation_title">Nonaktifkan bilah navigasi transparan</string>
+  <string name="morphe_disable_translucent_navigation_summary">Membuat bilah navigasi dan bilah status menjadi sepenuhnya buram</string>
   <string name="morphe_toolbar_screen_title">Bilah alat</string>
   <string name="morphe_toolbar_screen_summary">Pilih komponen mana yang akan ditampilkan di bilah alat</string>
   <string name="morphe_hide_toolbar_cast_button_title">Sembunyikan tombol Transmisi</string>
@@ -723,7 +721,7 @@ Untuk menampilkan menu 'Trek Audio', ubah 'Palsukan aliran video' ke klien apa p
   <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_loop_video_title">Sembunyikan menu \'Putar ulang video\'</string>
   <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_ambient_mode_title">Sembunyikan menu \'Mode Sinematik\'</string>
+  <string name="morphe_hide_player_flyout_ambient_mode_title">Sembunyikan menu \'Mode pencahayaan sinematik\'</string>
   <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_stable_volume_title">Sembunyikan menu \'Volume Stabil\'</string>
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -759,12 +757,12 @@ Untuk menampilkan menu 'Trek Audio', ubah 'Palsukan aliran video' ke klien apa p
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
   <string name="morphe_hide_end_screen_cards_title">Sembunyikan kartu layar akhir</string>
   <!-- layout.hide.ambientmode.ambientModePatch -->
-  <string name="morphe_ambient_mode_screen_title">Mode Sinematik</string>
-  <string name="morphe_ambient_mode_screen_summary">Kelola visibilitas Mode Sinematik dan batasan daya</string>
-  <string name="morphe_bypass_ambient_mode_restrictions_title">Abaikan batasan mode Sinematik</string>
-  <string name="morphe_bypass_ambient_mode_restrictions_summary">Mengizinkan mode Sinematik tetap aktif saat mode hemat baterai diaktifkan</string>
-  <string name="morphe_disable_ambient_mode_title">Nonaktifkan mode Sinematik</string>
-  <string name="morphe_disable_fullscreen_ambient_mode_title">Nonaktifkan mode Senematik dalam layar penuh</string>
+  <string name="morphe_ambient_mode_screen_title">Mode pencahayaan sinematik </string>
+  <string name="morphe_ambient_mode_screen_summary">Kelola visibilitas Mode pencahayaan sinematik dan batasan penggunaan baterai</string>
+  <string name="morphe_bypass_ambient_mode_restrictions_title">Abaikan batasan Mode pencahayaan sinematik </string>
+  <string name="morphe_bypass_ambient_mode_restrictions_summary">Mengizinkan Mode pencahayaan sinematik tetap aktif saat mode hemat baterai diaktifkan</string>
+  <string name="morphe_disable_ambient_mode_title">Nonaktifkan Mode pencahayaan sinematik</string>
+  <string name="morphe_disable_fullscreen_ambient_mode_title">Nonaktifkan Mode pencahayaan sinematik  dalam layar penuh</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Sembunyikan kartu info</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -950,7 +948,7 @@ Batasan: Jika 'Kembalikan bilah tindakan video lama' dinonaktifkan, hamparan 'Vi
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Nonaktifkan melanjutkan pemutar mini</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Menonaktifkan pemutar mini \'Lanjutkan menonton\', fitur YouTube Premium yang muncul saat aplikasi dimulai</string>
-  <string name="morphe_miniplayer_screen_title">Pemutar Mini</string>
+  <string name="morphe_miniplayer_screen_title">Pemutar mini</string>
   <string name="morphe_miniplayer_screen_summary">Kustomisasi tampilan dan perilaku pemutar video yang diperkecil</string>
   <string name="morphe_miniplayer_not_available_summary">YouTube telah menghapus semua pemutar mini tambahan. Untuk mengubah jenis pemutar mini, terapkan tambalan pada YouTube 21.28.207 atau yang lebih lama</string>
   <string name="morphe_miniplayer_type_title">Jenis pemutar mini</string>

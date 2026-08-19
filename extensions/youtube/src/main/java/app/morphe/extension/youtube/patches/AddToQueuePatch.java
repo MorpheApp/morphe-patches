@@ -7,13 +7,14 @@
 
 package app.morphe.extension.youtube.patches;
 
+import static app.morphe.extension.youtube.patches.utils.PlaylistPatch.QueueManager.OPEN_QUEUE;
+
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
 
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
 import app.morphe.extension.youtube.patches.utils.PlaylistPatch;
@@ -23,8 +24,8 @@ import app.morphe.extension.youtube.settings.Settings;
 public final class AddToQueuePatch {
 
     public static final String queueButtonName = "QUEUE_PLAY_NEXT";
-    public static final Drawable queueButtonDrawable = ResourceUtils
-            .getDrawable("yt_outline_experimental_queue_vd_theme_24");
+    public static final Drawable queueButtonDrawable = Utils.getContext()
+            .getDrawable(OPEN_QUEUE.drawableId);
 
     /**
      * Injection point.

@@ -1,12 +1,21 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.youtube.swipecontrols.controller.gesture
 
 import android.view.MotionEvent
 import app.morphe.extension.youtube.shared.PlayerControlsVisibilityObserver
 import app.morphe.extension.youtube.shared.PlayerControlsVisibilityObserverImpl
+import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeZoneAction
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsHostActivity
 import app.morphe.extension.youtube.swipecontrols.controller.gesture.core.BaseGestureController
-import app.morphe.extension.youtube.swipecontrols.controller.gesture.core.SwipeDetector
-import app.morphe.extension.youtube.swipecontrols.misc.contains
 import app.morphe.extension.youtube.swipecontrols.misc.toPoint
 
 /**
@@ -25,22 +34,9 @@ class ClassicSwipeController(
 
     override val shouldForceInterceptEvents: Boolean
         get() {
-            val swipe = currentSwipe
-            return swipe == SwipeDetector.SwipeDirection.VERTICAL ||
-                    (controller.config.enableSpeedGestureControl &&
-                     swipe == SwipeDetector.SwipeDirection.HORIZONTAL &&
-                     lastOnDownEvent?.let { it.toPoint() in controller.zones.speed } == true)
+            val origin = lastOnDownEvent?.toPoint() ?: return false
+            return swipeActionAt(origin, currentSwipe) != SwipeZoneAction.OFF
         }
-
-    override fun isInSwipeZone(motionEvent: MotionEvent): Boolean {
-        val inVolumeZone = controller.config.enableVolumeControls &&
-            (motionEvent.toPoint() in controller.zones.volume)
-        val inBrightnessZone = controller.config.enableBrightnessControl &&
-            (motionEvent.toPoint() in controller.zones.brightness)
-        val inSpeedZone = controller.config.enableSpeedGestureControl &&
-            (motionEvent.toPoint() in controller.zones.speed)
-        return inVolumeZone || inBrightnessZone || inSpeedZone
-    }
 
     override fun shouldDropMotion(motionEvent: MotionEvent): Boolean {
         // ignore gestures with more than one pointer
@@ -111,17 +107,7 @@ class ClassicSwipeController(
         if (!controller.config.isFullscreenOrMultiWindowVideo) return false
         // cancel if not vertical or not a valid horizontal speed swipe
         if (!shouldForceInterceptEvents) return false
-        val swipe = currentSwipe
-        val fromPoint = from.toPoint()
-        return when (swipe) {
-            SwipeDetector.SwipeDirection.VERTICAL -> when (fromPoint) {
-                in controller.zones.volume -> { scrollVolume(distanceY); true }
-                in controller.zones.brightness -> { scrollBrightness(distanceY); true }
-                else -> false
-            }
-            SwipeDetector.SwipeDirection.HORIZONTAL ->
-                if (fromPoint in controller.zones.speed) { scrollSpeed(-distanceX); true } else false
-            else -> false
-        }
+
+        return applySwipeAction(from, distanceX, distanceY)
     }
 }

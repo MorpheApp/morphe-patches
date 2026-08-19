@@ -62,6 +62,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_latest_videos_button_title">“नवीनतम भिडियोहरू” बटन लुकाउनुहोस्</string>
   <string name="morphe_hide_mix_playlists_title">मिक प्लेलिस्ट छिपाएं</string>
   <string name="morphe_hide_movies_section_title">मूवी सेक्शन छिपाएं</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">\'मुझे सूचित करें\' बटन छिपाएं</string>
@@ -209,8 +210,7 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">टैप टू सीक सक्षम करें</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">चमक जेस्चर सक्षम करें</string>
-  <string name="morphe_swipe_volume_title">वॉल्यूम जेस्चर सक्षम करें</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
   <string name="morphe_swipe_press_to_engage_title">प्रेस टू स्वाइप जेस्चर सक्षम करें</string>
   <string name="morphe_swipe_haptic_feedback_title">हैप्टिक फीडबैक सक्षम करें</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">चमक सहेजें और पुनर्स्थापित करें</string>
@@ -293,12 +293,6 @@ Second \"item\" text"</string>
   <string name="morphe_narrow_navigation_buttons_title">संकरी नेविगेशन बटन सक्षम करी</string>
   <string name="morphe_navigation_bar_animations_title">नेभिगेशन बार एनिमेसनहरू सक्षम गर्नुहोस्</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">स्वचालित रूपमा लुकाउने नेभिगेसन बारलाई अक्षम गर्नुहोस्</string>
-  <string name="morphe_disable_translucent_status_bar_title">पारदर्शी स्थिति बारलाई अक्षम गर्नुहोस्</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"प्रतिबन्धहरू:
-• भिडियो प्लेयरको माथिल्लो भागमा कालो बार देखा पर्न सक्छ।
-• प्रणाली नेभिगेसन बार पारदर्शी हुन सक्छ, र भिडियोहरूमा टिप्पणी गर्न सम्भव हुँदैन।"</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">प्रकाश पारदर्शी बारलाई अक्षम गर्नुहोस्</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">डार्क पारदर्शी बारलाई अक्षम गर्नुहोस्</string>
   <string name="morphe_toolbar_screen_title">टूलबार</string>
   <string name="morphe_show_toolbar_settings_button_type_title">सेटिङ बटन कार्य</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->

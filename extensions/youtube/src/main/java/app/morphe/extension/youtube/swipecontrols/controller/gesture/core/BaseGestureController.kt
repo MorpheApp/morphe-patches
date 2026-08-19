@@ -1,8 +1,22 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.youtube.swipecontrols.controller.gesture.core
 
 import android.view.GestureDetector
 import android.view.MotionEvent
+import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeZoneAction
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsHostActivity
+import app.morphe.extension.youtube.swipecontrols.misc.Point
+import app.morphe.extension.youtube.swipecontrols.misc.contains
+import app.morphe.extension.youtube.swipecontrols.misc.toPoint
 
 /**
  * The common base of all [GestureController] classes.
@@ -42,7 +56,7 @@ abstract class BaseGestureController(
     private var didCancelDownstream = false
 
     override fun submitTouchEvent(motionEvent: MotionEvent): Boolean {
-        // ignore if swipe is disabled
+        // Ignore if swipe is disabled.
         if (!controller.config.enableSwipeControls) {
             return false
         }
@@ -52,33 +66,35 @@ abstract class BaseGestureController(
             return false
         }
 
-        // create a copy of the event so we can modify it
-        // without causing any issues downstream
+        // Ignore if the native lock screen is engaged.
+        if (controller.config.shouldIgnoreSwipesWhenLocked && SwipeControlsHostActivity.isPlayerLocked) {
+            return false
+        }
+
+        // Create a copy of the event so we can modify it without causing any issues downstream.
         val me = MotionEvent.obtain(motionEvent)
 
-        // check if we should drop this motion
+        // Check if we should drop this motion.
         val dropped = shouldDropMotion(me)
         if (dropped) {
             me.action = MotionEvent.ACTION_CANCEL
         }
 
-        // send the event to the detector
-        // if we force intercept events, the event is always consumed
+        // Send the event to the detector if we force intercept events, the event is always consumed.
         val consumed = detector.onTouchEvent(me) || shouldForceInterceptEvents
 
-        // evaluate swipe zone before recycling
+        // Evaluate swipe zone before recycling.
         val inSwipeZone = isInSwipeZone(me)
 
-        // invoke the custom onUp handler
+        // Invoke the custom onUp handler.
         if (me.action == MotionEvent.ACTION_UP || me.action == MotionEvent.ACTION_CANCEL) {
             onUp(me)
         }
 
-        // recycle the copy
+        // Recycle the copy.
         me.recycle()
 
-        // do not consume dropped events
-        // or events outside any swipe zone
+        // Do not consume dropped events or events outside any swipe zone.
         return !dropped && consumed && inSwipeZone
     }
 
@@ -103,10 +119,10 @@ abstract class BaseGestureController(
             return false
         }
 
-        // submit to swipe detector
+        // Submit to swipe detector.
         submitForSwipe(from, to, distanceX, distanceY)
 
-        // call swipe callback if in a swipe
+        // Call swipe callback if in a swipe.
         return if (currentSwipe != SwipeDetector.SwipeDirection.NONE) {
             val consumed = onSwipe(
                 from,
@@ -142,7 +158,59 @@ abstract class BaseGestureController(
      * @param motionEvent The event to check.
      * @return Whether the event is in any active swipe zone.
      */
-    abstract fun isInSwipeZone(motionEvent: MotionEvent): Boolean
+    fun isInSwipeZone(motionEvent: MotionEvent): Boolean {
+        val point = motionEvent.toPoint()
+        return (controller.config.topZoneAction != SwipeZoneAction.OFF && point in controller.zones.top) ||
+            (controller.config.leftZoneAction != SwipeZoneAction.OFF && point in controller.zones.left) ||
+            (controller.config.rightZoneAction != SwipeZoneAction.OFF && point in controller.zones.right)
+    }
+
+    /**
+     * Resolves the action of the zone a swipe belongs to.
+     *
+     * The side zones own vertical swipes and the top zone owns horizontal ones. The zones overlap,
+     * so the direction is what keeps that overlap unambiguous, and it leaves every other gesture
+     * to the player instead of swallowing it.
+     *
+     * @param origin Where the swipe started.
+     * @param direction The direction of the swipe.
+     * @return The action to apply, or [SwipeZoneAction.OFF] if the swipe belongs to no zone.
+     */
+    protected fun swipeActionAt(origin: Point, direction: SwipeDetector.SwipeDirection): SwipeZoneAction =
+        when (direction) {
+            SwipeDetector.SwipeDirection.HORIZONTAL ->
+                if (origin in controller.zones.top) controller.config.topZoneAction else SwipeZoneAction.OFF
+
+            SwipeDetector.SwipeDirection.VERTICAL -> when (origin) {
+                in controller.zones.left -> controller.config.leftZoneAction
+                in controller.zones.right -> controller.config.rightZoneAction
+                else -> SwipeZoneAction.OFF
+            }
+
+            else -> SwipeZoneAction.OFF
+        }
+
+    /**
+     * Applies the action of the zone the swipe started in.
+     *
+     * @param from Start event of the swipe.
+     * @param distanceX The horizontal distance of the swipe.
+     * @param distanceY The vertical distance of the swipe.
+     * @return Whether the swipe was consumed.
+     */
+    protected fun applySwipeAction(from: MotionEvent, distanceX: Double, distanceY: Double): Boolean {
+        val direction = currentSwipe
+        val distance = if (direction == SwipeDetector.SwipeDirection.HORIZONTAL) -distanceX else distanceY
+
+        when (swipeActionAt(from.toPoint(), direction)) {
+            SwipeZoneAction.VOLUME -> scrollVolume(distance)
+            SwipeZoneAction.BRIGHTNESS -> scrollBrightness(distance)
+            SwipeZoneAction.SPEED -> scrollSpeed(distance)
+            SwipeZoneAction.OFF -> return false
+        }
+
+        return true
+    }
 
     /**
      * Checks if a touch event should be dropped.
