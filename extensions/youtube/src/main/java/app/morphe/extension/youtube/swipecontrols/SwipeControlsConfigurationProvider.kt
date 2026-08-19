@@ -20,10 +20,11 @@ class SwipeControlsConfigurationProvider {
     //region swipe enable
     /**
      * Indicates whether swipe controls are enabled globally.
-     * Returns true if either volume or brightness controls are enabled and the video is in fullscreen mode.
+     * Returns true if either volume or brightness controls are enabled and the video is in fullscreen or multi-window mode.
      */
     val enableSwipeControls: Boolean
-        get() = (enableVolumeControls || enableBrightnessControl || enableSpeedGestureControl) && (isFullscreenVideo || isVideoSliding)
+        get() = (enableVolumeControls || enableBrightnessControl || enableSpeedGestureControl) &&
+                (isFullscreenOrMultiWindowVideo || isVideoSliding)
 
     /**
      * Indicates whether swipe controls for adjusting volume are enabled.
@@ -40,6 +41,19 @@ class SwipeControlsConfigurationProvider {
      */
     val isFullscreenVideo: Boolean
         get() = PlayerType.current == PlayerType.WATCH_WHILE_FULLSCREEN
+
+    /**
+     * Checks if the video player is currently in split screen / multi-window mode.
+     */
+    val isMultiWindowVideo: Boolean
+        get() = (SwipeControlsHostActivity.currentHost.get()?.isInMultiWindowMode == true) &&
+                (PlayerType.current == PlayerType.WATCH_WHILE_FULLSCREEN || PlayerType.current == PlayerType.WATCH_WHILE_MAXIMIZED)
+
+    /**
+     * Checks if the video player is in fullscreen or multi-window mode.
+     */
+    val isFullscreenOrMultiWindowVideo: Boolean
+        get() = isFullscreenVideo || isMultiWindowVideo
 
     /**
      * Checks if the video player is currently in sliding mode.
@@ -62,10 +76,10 @@ class SwipeControlsConfigurationProvider {
     //region keys enable
     /**
      * Indicates whether volume key controls should be overridden by swipe controls.
-     * Returns true if volume controls are enabled and the video is in fullscreen mode.
+     * Returns true if volume controls are enabled and the video is in fullscreen or multi-window mode.
      */
     val overwriteVolumeKeyControls: Boolean
-        get() = enableVolumeControls && isFullscreenVideo
+        get() = enableVolumeControls && isFullscreenOrMultiWindowVideo
     //endregion
 
     //region gesture adjustments

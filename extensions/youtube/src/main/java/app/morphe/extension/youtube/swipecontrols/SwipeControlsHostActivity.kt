@@ -201,9 +201,9 @@ class SwipeControlsHostActivity : Activity() {
      */
     private fun onPlayerTypeChanged(type: PlayerType) {
         when {
-            // If saving and restoring brightness is enabled, and the player type is WATCH_WHILE_FULLSCREEN,
+            // If saving and restoring brightness is enabled, and the player type is fullscreen or multi-window,
             // and brightness has already been saved, then restore the screen brightness
-            config.shouldSaveAndRestoreBrightness && type == PlayerType.WATCH_WHILE_FULLSCREEN && isBrightnessSaved -> {
+            config.shouldSaveAndRestoreBrightness && (type == PlayerType.WATCH_WHILE_FULLSCREEN || (isInMultiWindowMode && type == PlayerType.WATCH_WHILE_MAXIMIZED)) && isBrightnessSaved -> {
                 screen?.restore()
                 isBrightnessSaved = false
             }
