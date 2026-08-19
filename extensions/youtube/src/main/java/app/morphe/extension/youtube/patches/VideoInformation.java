@@ -360,10 +360,12 @@ public final class VideoInformation {
 
     /**
      * Records a new playback speed, updates the formatted string, and fires {@link #onPlaybackSpeedChange}.
+     *
+     * @return true if the speed actually changed.
      */
-    private static void updatePlaybackSpeedValue(float speed) {
+    private static boolean updatePlaybackSpeedValue(float speed) {
         if (playbackSpeed == speed) {
-            return;
+            return false;
         }
 
         playbackSpeed = speed;
@@ -374,17 +376,20 @@ public final class VideoInformation {
             updatePlaybackAudioPitchValue(speed);
         }
         changePlaybackSpeed(playbackSpeed);
+        return true;
     }
 
     /**
      * Records a new playback audio pitch, updates the formatted string, and fires {@link #onPlaybackAudioPitchChange}.
+     *
+     * @return true if the pitch actually changed.
      */
-    private static void updatePlaybackAudioPitchValue(float pitch) {
+    private static boolean updatePlaybackAudioPitchValue(float pitch) {
         if (!Settings.ENABLE_PLAYBACK_AUDIO_PITCH.get()) {
             pitch = 1.0f;
         }
         if (playbackAudioPitch == pitch) {
-            return;
+            return false;
         }
 
         playbackAudioPitch = pitch;
@@ -395,6 +400,7 @@ public final class VideoInformation {
         if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
             updatePlaybackSpeedValue(pitch);
         }
+        return true;
     }
 
     /**
