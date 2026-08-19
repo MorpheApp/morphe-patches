@@ -147,6 +147,7 @@ public final class VideoInformation {
      * The current playback audio pitch
      */
     private static float playbackAudioPitch = DEFAULT_PLAYBACK_AUDIO_PITCH;
+    private static boolean playbackAudioPitchNeedsApplying;
     /**
      * The current playback speed in native panel.
      */
@@ -243,11 +244,13 @@ public final class VideoInformation {
             // playbackSpeed = DEFAULT_PLAYBACK_SPEED; // Captured at video start, interferes otherwise.
             playbackSpeedFormattedString = "";
             final float audioPitchOverride = RememberPlaybackSpeedPatch.getPlaybackAudioPitchOverride();
-            if (audioPitchOverride > 0.0f && isPlaybackAudioPitchEnabled() &&
-                    Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
-                playbackAudioPitch = audioPitchOverride;
-            } else {
-                playbackAudioPitch = DEFAULT_PLAYBACK_AUDIO_PITCH;
+            final float newPlaybackAudioPitch = audioPitchOverride > 0.0f &&
+                    isPlaybackAudioPitchEnabled() && Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()
+                    ? audioPitchOverride
+                    : DEFAULT_PLAYBACK_AUDIO_PITCH;
+            if (playbackAudioPitch != newPlaybackAudioPitch) {
+                playbackAudioPitch = newPlaybackAudioPitch;
+                playbackAudioPitchNeedsApplying = true;
             }
             playbackAudioPitchFormattedString = "";
             desiredVideoResolution = AUTOMATIC_VIDEO_QUALITY_VALUE;
@@ -425,6 +428,11 @@ public final class VideoInformation {
         // An exception occurs when the playback speed dialog is opened by an overlay button while 'Restore old playback speed menu' is off.
         // Update the formatted string value to avoid the exception.
         updatePlaybackSpeedValue(currentVideoSpeed);
+        if (playbackAudioPitchNeedsApplying && Settings.PLAYBACK_SPEED_DEFAULT.get() <= 0.0f) {
+            playbackAudioPitchNeedsApplying = false;
+            final float pitch = playbackAudioPitch;
+            Utils.runOnMainThreadNowOrLater(() -> setPlaybackParameters(currentVideoSpeed, pitch));
+        }
     }
 
     /**
@@ -804,6 +812,7 @@ public final class VideoInformation {
         if (isPlaybackAudioPitchLinked()) {
             updatePlaybackAudioPitchValue(playbackSpeed);
         }
+        playbackAudioPitchNeedsApplying = false;
         currentPlaybackSpeedMenuInterface.patch_setSpeed(playbackSpeed);
     }
 
