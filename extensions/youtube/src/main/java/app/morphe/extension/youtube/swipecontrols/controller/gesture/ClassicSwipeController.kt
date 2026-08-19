@@ -105,7 +105,7 @@ class ClassicSwipeController(
     ): Boolean {
         // cancel if not fullscreen or multi-window
         if (!controller.config.isFullscreenOrMultiWindowVideo) return false
-        // cancel if not vertical or not a valid horizontal speed swipe
+        // cancel if the swipe does not belong to any zone
         if (!shouldForceInterceptEvents) return false
 
         return applySwipeAction(from, distanceX, distanceY)

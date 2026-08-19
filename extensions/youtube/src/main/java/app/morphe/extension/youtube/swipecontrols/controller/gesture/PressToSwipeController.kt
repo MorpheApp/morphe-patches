@@ -63,19 +63,9 @@ class PressToSwipeController(
     ): Boolean {
         // cancel if not fullscreen or multi-window
         if (!controller.config.isFullscreenOrMultiWindowVideo) return false
-        // cancel if not in swipe session or valid direction
-        if (!shouldForceInterceptEvents) return false
-        val swipe = currentSwipe
-        val fromPoint = from.toPoint()
-        return when (swipe) {
-            SwipeDetector.SwipeDirection.VERTICAL -> when (fromPoint) {
-                in controller.zones.volume -> { scrollVolume(distanceY); true }
-                in controller.zones.brightness -> { scrollBrightness(distanceY); true }
-                else -> false
-            }
-            SwipeDetector.SwipeDirection.HORIZONTAL ->
-                if (isInSpeedSwipeSession) { scrollSpeed(-distanceX); true } else false
-            else -> false
-        }
+        // cancel if not in swipe session
+        if (swipeSessionOrigin == null) return false
+
+        return applySwipeAction(from, distanceX, distanceY)
     }
 }
