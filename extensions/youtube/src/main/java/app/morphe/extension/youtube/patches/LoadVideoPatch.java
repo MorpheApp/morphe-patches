@@ -135,7 +135,7 @@ public final class LoadVideoPatch {
     }
 
     // This method opens a video based on hardcoded parameters found in an obfuscated class.
-    // It's generally more fast of the solution that use 'Intent.FLAG_ACTIVITY_NEW_TASK'.
+    // It is generally faster than the solution that uses 'Intent.FLAG_ACTIVITY_NEW_TASK'.
     public static void openVideoIntentWithInternalContext(String videoIDWithParams) {
         PlayerInterface playerInterface;
         if ((playerInterface = getPlayerInterface()) != null) {
