@@ -29,6 +29,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.youtube.patches.voiceovertranslation.VoiceOverTranslationPatch;
 import app.morphe.extension.youtube.shared.Event;
+import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
 import app.morphe.extension.youtube.shared.VideoState;
 import app.morphe.extension.youtube.patches.playback.speed.RememberPlaybackSpeedPatch;
@@ -244,11 +245,15 @@ public final class VideoInformation {
             // playbackSpeed = DEFAULT_PLAYBACK_SPEED; // Captured at video start, interferes otherwise.
             playbackSpeedFormattedString = "";
             final float audioPitchOverride = RememberPlaybackSpeedPatch.getPlaybackAudioPitchOverride();
+            final boolean noRegularVideoPlaying = PlayerType.getCurrent().isNoneOrHidden();
             final float newPlaybackAudioPitch = audioPitchOverride > 0.0f &&
                     isPlaybackAudioPitchEnabled() && Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()
                     ? audioPitchOverride
-                    : DEFAULT_PLAYBACK_AUDIO_PITCH;
-            if (playbackAudioPitch != newPlaybackAudioPitch) {
+                    : !isPlaybackAudioPitchEnabled() || noRegularVideoPlaying
+                            ? DEFAULT_PLAYBACK_AUDIO_PITCH
+                            : playbackAudioPitch;
+            if (playbackAudioPitch != newPlaybackAudioPitch ||
+                    (noRegularVideoPlaying && newPlaybackAudioPitch != DEFAULT_PLAYBACK_AUDIO_PITCH)) {
                 playbackAudioPitch = newPlaybackAudioPitch;
                 playbackAudioPitchNeedsApplying = true;
             }
