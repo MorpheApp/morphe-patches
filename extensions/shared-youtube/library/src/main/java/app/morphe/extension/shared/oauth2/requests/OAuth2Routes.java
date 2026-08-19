@@ -9,8 +9,8 @@ package app.morphe.extension.shared.oauth2.requests;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.URL;
 
+import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.requests.Route;
 
 @SuppressWarnings("unused")
@@ -43,10 +43,7 @@ final class OAuth2Routes {
     }
 
     static HttpURLConnection getJsonConnectionFromRoute(Route route, String... params) throws IOException {
-        String url = OAUTH2_YOUTUBE_API_URL + route.compile(params).getCompiledRoute();
-        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
-        connection.setFixedLengthStreamingMode(0);
-        connection.setRequestMethod(route.getMethod().name());
+        HttpURLConnection connection = Requester.getConnectionFromRoute(OAUTH2_YOUTUBE_API_URL, route, params);
         connection.setRequestProperty("Content-Type", "application/json");
         connection.setRequestProperty("Accept", "application/json");
         applyCommonPostRequestSettings(connection);
@@ -54,10 +51,7 @@ final class OAuth2Routes {
     }
 
     static HttpURLConnection getUrlConnectionFromRoute(Route route, String... params) throws IOException {
-        String url = OAUTH2_GOOGLE_API_URL + route.compile(params).getCompiledRoute();
-        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
-        connection.setFixedLengthStreamingMode(0);
-        connection.setRequestMethod(route.getMethod().name());
+        HttpURLConnection connection = Requester.getConnectionFromRoute(OAUTH2_GOOGLE_API_URL, route, params);
         connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
         applyCommonPostRequestSettings(connection);
         return connection;

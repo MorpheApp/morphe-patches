@@ -15,7 +15,6 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.time.ZoneOffset;
@@ -189,7 +188,7 @@ public final class VisitorIdRequester {
                     // TVHTML5 does not support the '/visitor_id' endpoint.
                     clientType == ClientType.TV_SABR ? "guide" : "visitor_id"
             );
-            HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+            HttpURLConnection connection = Requester.openConnection(url);
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Accept-Language", "en-GB, en;q=0.9");
             connection.setRequestProperty("Content-Type", "application/json");
