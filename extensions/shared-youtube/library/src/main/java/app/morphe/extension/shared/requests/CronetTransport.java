@@ -23,6 +23,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.proxy.CronetFallbackHttpURLConnection;
 import app.morphe.extension.shared.requests.proxy.CronetHttpURLConnection;
 import app.morphe.extension.shared.requests.proxy.DeferredHttpURLConnection;
+import app.morphe.extension.shared.requests.proxy.PlaintextHttpURLConnection;
 
 public final class CronetTransport {
     private static final String JAVA_CRONET_ENGINE_VERSION_PREFIX = "CronetHttpURLConnection/";
@@ -359,9 +360,9 @@ public final class CronetTransport {
             throw new IOException("Platform connection is restricted to plaintext HTTP");
         }
 
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setInstanceFollowRedirects(false);
-        return connection;
+        return new PlaintextHttpURLConnection(
+                (HttpURLConnection) url.openConnection()
+        );
     }
 
     private static final class EngineRegistration {

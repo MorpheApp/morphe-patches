@@ -36,6 +36,7 @@ import java.util.concurrent.Executor;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.CronetTransport;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.shared.requests.proxy.PlaintextHttpURLConnection;
 import app.morphe.extension.shared.requests.proxy.ProxyFallbackHttpURLConnection;
 
 @SuppressWarnings("unused")
@@ -184,11 +185,12 @@ public final class NetworkProxyPatch {
             throw new IOException("Java proxy transport is restricted to plaintext HTTP");
         }
 
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection(new java.net.Proxy(
-                java.net.Proxy.Type.HTTP,
-                InetSocketAddress.createUnresolved(config.host, config.port)
-        ));
-        connection.setInstanceFollowRedirects(false);
+        HttpURLConnection connection = new PlaintextHttpURLConnection(
+                (HttpURLConnection) url.openConnection(new java.net.Proxy(
+                        java.net.Proxy.Type.HTTP,
+                        InetSocketAddress.createUnresolved(config.host, config.port)
+                ))
+        );
         setProxyAuthorizationHeader(connection);
 
         if (!config.allowDirectFallback) {
@@ -210,9 +212,9 @@ public final class NetworkProxyPatch {
             throw new IOException("Platform connection is restricted to plaintext HTTP");
         }
 
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setInstanceFollowRedirects(false);
-        return connection;
+        return new PlaintextHttpURLConnection(
+                (HttpURLConnection) url.openConnection()
+        );
     }
 
     private static ProxyConfig getProxyConfig() {
