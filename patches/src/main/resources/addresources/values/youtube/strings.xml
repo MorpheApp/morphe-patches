@@ -1269,6 +1269,7 @@ Video playback with AV1 may stutter or drop frames."</string>
     <string name="morphe_spoof_video_streams_about_js">• If deobfuscation fails, playback may fail</string>
     <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
     <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Force original audio is not available</string>
+    <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Sign in to Android VR is required</string>
     <!-- Quality refers to video quality -->
     <string name="morphe_spoof_video_streams_about_720p_max">• Quality may be limited to 720p</string>
     <string name="morphe_spoof_video_streams_player_js_variant_title">Player JavaScript variant</string>

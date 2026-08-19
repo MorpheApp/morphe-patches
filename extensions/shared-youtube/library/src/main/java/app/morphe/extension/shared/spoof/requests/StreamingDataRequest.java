@@ -199,16 +199,23 @@ public class StreamingDataRequest {
             }
             // If oauth2 login is supported and the user is logged in via oauth2 flow, the header is set:
             // ANDROID_VR (ANDROID_XR).
-            else if (clientType.supportsOAuth2 && authHeadersIncludes) {
+            else if (clientType.supportsOAuth2 && clientType.requireLogin) {
                 String oauth2Authorization = OAuth2Requester.getAndUpdateAccessTokenIfNeeded();
                 if (Utils.isNotEmpty(oauth2Authorization)) {
                     authHeadersOverrides = true;
                     connection.setRequestProperty(AUTHORIZATION_HEADER, oauth2Authorization);
                     Logger.printDebug(() -> "Set oauth2 auth header: " + clientType + ", videoId: " + videoId);
                 }
+                // Oauth2 login is required, but the user is not logged in.
+                // ANDROID_VR (ANDROID_XR).
+                else {
+                    Logger.printDebug(() -> "Skipping client since user is not signed in to " + clientType
+                            + ", videoId: " + videoId);
+                    return null;
+                }
             }
             // These clients can play videos without the auth header:
-            // ANDROID_VR (ANDROID_XR), TV_SABR, VISIONOS_1_02 (VISIONOS_1_03).
+            // TV_SABR, VISIONOS_1_02 (VISIONOS_1_03).
             else {
                 Logger.printDebug(() -> "Do not set auth header: " + clientType + ", videoId: " + videoId);
             }

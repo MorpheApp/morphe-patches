@@ -102,7 +102,10 @@ public class SpoofVideoStreamsSideEffectsPreference extends Preference {
                             + '\n' + str("morphe_spoof_video_streams_about_720p_max")
                             + '\n' + str("morphe_spoof_video_streams_about_no_force_original_audio");
             // Android XR and visonOS 1.03 are not exposed in the UI and should never be reached here.
-            case ANDROID_VR, ANDROID_XR, VISIONOS_1_02, VISIONOS_1_03 ->
+            case ANDROID_VR, ANDROID_XR ->
+                    summary = str("morphe_spoof_video_streams_about_no_stable_volume")
+                            + '\n' + str("morphe_spoof_video_streams_about_sign_in_to_vr_required");
+            case VISIONOS_1_02, VISIONOS_1_03 ->
                     summary = str("morphe_spoof_video_streams_about_no_stable_volume");
             case TV_SABR, TV_DASH, TV_SIMPLY ->
                     summary = str("morphe_spoof_video_streams_about_js");

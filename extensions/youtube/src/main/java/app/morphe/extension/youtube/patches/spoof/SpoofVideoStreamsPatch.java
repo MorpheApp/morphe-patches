@@ -7,8 +7,11 @@ import static app.morphe.extension.shared.spoof.ClientType.TV_SABR;
 import static app.morphe.extension.shared.spoof.ClientType.VISIONOS_1_02;
 import static app.morphe.extension.shared.spoof.ClientType.VISIONOS_1_03;
 
+import android.text.TextUtils;
+
 import java.util.List;
 
+import app.morphe.extension.shared.oauth2.requests.OAuth2Requester;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.spoof.ClientType;
 import app.morphe.extension.youtube.settings.Settings;
@@ -47,14 +50,20 @@ public class SpoofVideoStreamsPatch {
             }
         }
 
-        // Reels can take up to 1 minute for videos start playback.
-        // Only use it if the user has selected it.
         List<ClientType> availableClients = List.of(
                 TV_SABR,
                 ANDROID_VR,
                 VISIONOS_1_02,
                 ANDROID_CREATOR
         );
+
+        // If not signed in to Android VR, there may be playback issues.
+        // If the user has not signed in to Android VR, remove them from the available clients.
+        // Only use it if the user has selected it.
+        String oauth2Authorization = OAuth2Requester.getAndUpdateAccessTokenIfNeeded();
+        if (TextUtils.isEmpty(oauth2Authorization)) {
+            availableClients.remove(ANDROID_VR);
+        }
 
         app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch.setClientsToUse(
                 availableClients, client);
