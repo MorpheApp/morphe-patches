@@ -10,6 +10,8 @@
 
 package app.morphe.patches.shared.misc.audio.tracks
 
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
@@ -51,6 +53,8 @@ internal fun forceOriginalAudioPatch(
     executeBlock: BytecodePatchContext.() -> Unit = {},
     fixUseLocalizedAudioTrackFlag: BytecodePatchContext.() -> Boolean,
     forcedServerAdaptiveStreaming: BytecodePatchContext.() -> Boolean,
+    mainActivityOnCreateFingerprint: Fingerprint,
+    subclassExtensionClassDescriptor: String,
     preferenceScreen: BasePreferenceScreen.Screen
 ) = bytecodePatch(
     name = "Force original audio",
@@ -141,6 +145,11 @@ internal fun forceOriginalAudioPatch(
                 }
             }
         }
+
+        mainActivityOnCreateFingerprint.method.addInstruction(
+            0,
+            "invoke-static { }, $subclassExtensionClassDescriptor->setEnabled()V"
+        )
 
         // Disable feature flag that ignores the default track flag
         // and instead overrides to the user region language.

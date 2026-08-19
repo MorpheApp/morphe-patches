@@ -811,9 +811,9 @@ public class Settings extends SharedYouTubeSettings {
             RESTORE_OLD_SETTINGS_MENUS.resetToDefault();
         }
 
-        // Android XR and visionOS 1.03 are not selectable in the settings and are selected by spoof stream patch if needed.
+        // Android XR, Android XR Downgraded, and visionOS 1.03 are not selectable in the settings and are selected by spoof stream patch if needed.
         ClientType client = SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get();
-        if (client == ClientType.ANDROID_XR || client == ClientType.VISIONOS_1_03) {
+        if (client == ClientType.ANDROID_XR_SABR || client == ClientType.ANDROID_XR_DASH || client == ClientType.VISIONOS_1_03) {
             SPOOF_VIDEO_STREAMS_CLIENT_TYPE.resetToDefault();
         }
 

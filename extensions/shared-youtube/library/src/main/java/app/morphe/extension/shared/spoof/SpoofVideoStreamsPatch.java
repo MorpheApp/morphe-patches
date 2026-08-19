@@ -15,15 +15,18 @@ import android.app.Application;
 import android.net.Uri;
 import android.text.TextUtils;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.AppLanguage;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
@@ -61,6 +64,9 @@ public class SpoofVideoStreamsPatch {
 
     private static final boolean SPOOF_VIDEO_STREAMS = isPatchIncluded() && SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.get();
 
+    @NonNull
+    private static volatile Locale localeOverride = AppLanguage.DEFAULT.getLocale();
+
     private static volatile ClientType preferredClient = ClientType.VISIONOS_1_02;
 
     private static WeakReference<Application> mainActivityRef = new WeakReference<>(null);
@@ -81,6 +87,20 @@ public class SpoofVideoStreamsPatch {
      */
     public static boolean isPatchIncluded() {
         return false;  // Modified during patching.
+    }
+
+    @NonNull
+    public static Locale getLocaleOverride() {
+        return localeOverride;
+    }
+
+    /**
+     * @param locale Locale override for non-authenticated requests.
+     */
+    public static void setLocaleOverride(@Nullable Locale locale) {
+        if (locale != null) {
+            localeOverride = locale;
+        }
     }
 
     public static void setClientsToUse(List<ClientType> availableClients, ClientType client) {

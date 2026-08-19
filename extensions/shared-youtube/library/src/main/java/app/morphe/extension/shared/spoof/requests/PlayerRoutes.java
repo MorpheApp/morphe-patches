@@ -22,8 +22,8 @@ import java.util.Locale;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.requests.Route;
-import app.morphe.extension.shared.settings.AppLanguage;
 import app.morphe.extension.shared.spoof.ClientType;
+import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.shared.spoof.js.JavaScriptManager;
 
 public final class PlayerRoutes {
@@ -74,9 +74,9 @@ public final class PlayerRoutes {
                 client.put("platform", platform);
             }
 
-            Locale locale = AppLanguage.DEFAULT.getLocale();
-            client.put("hl", locale.getLanguage());
-            client.put("gl", locale.getCountry());
+            Locale streamLocale = SpoofVideoStreamsPatch.getLocaleOverride();
+            client.put("hl", streamLocale.getLanguage());
+            client.put("gl", streamLocale.getCountry());
             context.put("client", client);
 
             if (clientType.usePlayerEndpoint) {

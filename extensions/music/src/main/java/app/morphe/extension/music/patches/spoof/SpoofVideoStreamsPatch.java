@@ -19,7 +19,7 @@ public class SpoofVideoStreamsPatch {
                 ClientType.ANDROID_MUSIC_REEL
                 // If not signed in to Android VR, there may be playback issues.
                 // Only use it if the user has selected it.
-                // ClientType.ANDROID_VR
+                // ClientType.ANDROID_VR_DASH
         );
 
         app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch.setClientsToUse(

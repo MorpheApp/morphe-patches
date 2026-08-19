@@ -765,10 +765,10 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
     <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
     <string name="morphe_hide_player_flyout_audio_track_title">Hide \'Audio Track\' menu</string>
     <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
     <string name="morphe_hide_player_flyout_audio_track_not_available">"\'Audio Track\' menu is hidden
 
-To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client except \'Android Studio\'"</string>
+To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client except \'Android Studio\' and \'Android VR Downgraded\'"</string>
     <string name="morphe_hide_player_flyout_audio_track_footer_title">Hide \'Audio Track\' menu footer</string>
     <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
     <string name="morphe_hide_player_flyout_captions_title">Hide Captions menu</string>

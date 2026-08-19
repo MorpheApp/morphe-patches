@@ -15,7 +15,6 @@ import static app.morphe.extension.shared.patches.AppCheckPatch.IS_YOUTUBE_MUSIC
 import android.os.Build;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import java.util.Locale;
 
@@ -70,7 +69,7 @@ public enum ClientType {
      * Video not playable: Kids.
      * AV1 codec not available.
      */
-    ANDROID_VR(
+    ANDROID_VR_SABR(
             28,
             "ANDROID_VR",
             "com.google.android.apps.youtube.vr.pico",
@@ -92,29 +91,76 @@ public enum ClientType {
             "Android VR"
     ),
     /**
-     * Video not playable: Kids.
-     * AV1 codec available.
+     * Same as {@code ANDROID_VR_SABR} but supports dash streams.
      */
-    ANDROID_XR(
-            28,
-            "ANDROID_VR",
+    ANDROID_VR_DASH(
+            ANDROID_VR_SABR.id,
+            ANDROID_VR_SABR.clientName,
+            ANDROID_VR_SABR.packageName,
+            ANDROID_VR_SABR.deviceMake,
+            ANDROID_VR_SABR.deviceModel,
+            ANDROID_VR_SABR.osName,
+            ANDROID_VR_SABR.osVersion,
+            ANDROID_VR_SABR.androidSdkVersion,
+            ANDROID_VR_SABR.buildID,
+            "1.64.34",
+            ANDROID_VR_SABR.clientPlatform,
+            ANDROID_VR_SABR.canLogin,
+            ANDROID_VR_SABR.requireLogin,
+            false,
+            ANDROID_VR_SABR.supportsOAuth2,
+            ANDROID_VR_SABR.supportsVRImmersiveMode,
+            false,
+            ANDROID_VR_SABR.usePlayerEndpoint,
+            "Android VR Downgraded"
+    ),
+    /**
+     * Same as {@code ANDROID_VR_SABR} but supports AV1 codec.
+     */
+    ANDROID_XR_SABR(
+            ANDROID_VR_SABR.id,
+            ANDROID_VR_SABR.clientName,
             "com.google.android.apps.youtube.xr",
             "Samsung",
             "SM-I610", // Galaxy XR.
-            "Android",
+            ANDROID_VR_SABR.osName,
             "14",
             "34",
             "UML1.250710.002.A1",
             "1.73.21",
-            null,
-            false,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
+            ANDROID_VR_SABR.clientPlatform,
+            ANDROID_VR_SABR.canLogin,
+            ANDROID_VR_SABR.requireLogin,
+            ANDROID_VR_SABR.supportsMultiAudioTracks,
+            ANDROID_VR_SABR.supportsOAuth2,
+            ANDROID_VR_SABR.supportsVRImmersiveMode,
+            ANDROID_VR_SABR.requireSABR,
+            ANDROID_VR_SABR.usePlayerEndpoint,
             "Android XR"
+    ),
+    /**
+     * Same as {@code ANDROID_XR_SABR} but supports dash streams.
+     */
+    ANDROID_XR_DASH(
+            ANDROID_XR_SABR.id,
+            ANDROID_XR_SABR.clientName,
+            ANDROID_XR_SABR.packageName,
+            ANDROID_XR_SABR.deviceMake,
+            ANDROID_XR_SABR.deviceModel,
+            ANDROID_XR_SABR.osName,
+            ANDROID_XR_SABR.osVersion,
+            ANDROID_XR_SABR.androidSdkVersion,
+            ANDROID_XR_SABR.buildID,
+            "1.69.27",
+            ANDROID_XR_SABR.clientPlatform,
+            ANDROID_XR_SABR.canLogin,
+            ANDROID_XR_SABR.requireLogin,
+            false,
+            ANDROID_XR_SABR.supportsOAuth2,
+            ANDROID_XR_SABR.supportsVRImmersiveMode,
+            false,
+            ANDROID_XR_SABR.usePlayerEndpoint,
+            "Android XR Downgraded"
     ),
     /**
      * Video not playable: Livestream.
@@ -165,7 +211,7 @@ public enum ClientType {
             "TV"
     ),
     /**
-     * It is the same as TV_SABR but supports dash streams.
+     * Same as {@code TV_SABR} but supports dash streams.
      * This client cannot be selected in the settings and is used only for livestreams.
      */
     TV_DASH(
@@ -267,8 +313,9 @@ public enum ClientType {
 
     /**
      * App package name.
+     * Field is empty if not applicable.
      */
-    @Nullable
+    @NonNull
     private final String packageName;
 
     /**
@@ -298,9 +345,9 @@ public enum ClientType {
 
     /**
      * Android SDK version, equivalent to {@link Build.VERSION#SDK} (System property: ro.build.version.sdk)
-     * Field is null if not applicable.
+     * Field is empty if not applicable.
      */
-    @Nullable
+    @NonNull
     public final String androidSdkVersion;
 
     /**
@@ -454,9 +501,9 @@ public enum ClientType {
         this.requireSABR = requireSABR;
         this.friendlyName = friendlyName;
 
-        androidSdkVersion = null;
+        androidSdkVersion = "";
         buildID = null;
-        packageName = null;
+        packageName = "";
         supportsOAuth2 = false;
         usePlayerEndpoint = true;
     }
