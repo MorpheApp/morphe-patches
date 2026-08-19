@@ -28,7 +28,7 @@ public class SpoofVideoStreamsPatch {
         // Only use it if the user has selected it.
         String oauth2Authorization = OAuth2Requester.getAndUpdateAccessTokenIfNeeded();
         if (TextUtils.isEmpty(oauth2Authorization)) {
-            availableClients.remove(ANDROID_VR);
+            availableClients.remove(ClientType.ANDROID_VR);
         }
 
         app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch.setClientsToUse(
