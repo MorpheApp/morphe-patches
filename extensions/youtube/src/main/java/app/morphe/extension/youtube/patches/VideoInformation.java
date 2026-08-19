@@ -156,6 +156,18 @@ public final class VideoInformation {
      */
     public static final Event<Float> onPlaybackAudioPitchChange = new Event<>();
 
+    private static boolean isPatchIncluded() {
+        return false;  // Modified during patching.
+    }
+
+    private static boolean isPlaybackAudioPitchEnabled() {
+        return isPatchIncluded() && Settings.ENABLE_PLAYBACK_AUDIO_PITCH.get();
+    }
+
+    private static boolean isPlaybackAudioPitchLinked() {
+        return isPlaybackAudioPitchEnabled() && !Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get();
+    }
+
     private static int desiredVideoResolution = AUTOMATIC_VIDEO_QUALITY_VALUE;
 
     private static boolean qualityNeedsUpdating;
@@ -372,10 +384,9 @@ public final class VideoInformation {
         Logger.printDebug(() -> "Video speed updated: " + playbackSpeed);
         playbackSpeedFormattedString = formatSpeedStringX(speed);
         Utils.runOnMainThreadNowOrLater(() -> onPlaybackSpeedChange.invoke(speed));
-        if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
+        if (isPlaybackAudioPitchLinked() || (isPatchIncluded() && !isPlaybackAudioPitchEnabled())) {
             updatePlaybackAudioPitchValue(speed);
         }
-        changePlaybackSpeed(playbackSpeed);
         return true;
     }
 
@@ -385,7 +396,7 @@ public final class VideoInformation {
      * @return true if the pitch actually changed.
      */
     private static boolean updatePlaybackAudioPitchValue(float pitch) {
-        if (!Settings.ENABLE_PLAYBACK_AUDIO_PITCH.get()) {
+        if (!isPlaybackAudioPitchEnabled()) {
             pitch = 1.0f;
         }
         if (playbackAudioPitch == pitch) {
@@ -397,7 +408,7 @@ public final class VideoInformation {
         playbackAudioPitchFormattedString = formatSpeedStringX(pitch);
         final float updatedPitch = pitch;
         Utils.runOnMainThreadNowOrLater(() -> onPlaybackAudioPitchChange.invoke(updatedPitch));
-        if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
+        if (isPlaybackAudioPitchLinked()) {
             updatePlaybackSpeedValue(pitch);
         }
         return true;
@@ -428,8 +439,9 @@ public final class VideoInformation {
         if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get() && previousPlaybackSpeed != playbackSpeed) {
             RememberPlaybackSpeedPatch.userSelectedPlaybackSpeed(playbackSpeed);
             changePlaybackSpeed(playbackSpeed);
+        } else {
+            setPlaybackParameters(playbackSpeed, playbackAudioPitch);
         }
-        setPlaybackParameters(playbackSpeed, playbackAudioPitch);
     }
 
     /**
@@ -441,6 +453,9 @@ public final class VideoInformation {
     public static void userSelectedPlaybackSpeed(float userSelectedPlaybackSpeed) {
         Logger.printDebug(() -> "User selected playback speed: " + userSelectedPlaybackSpeed);
         updatePlaybackSpeedValue(userSelectedPlaybackSpeed);
+        if (isPlaybackAudioPitchLinked()) {
+            RememberPlaybackSpeedPatch.userSelectedPlaybackAudioPitch(userSelectedPlaybackSpeed);
+        }
 
         // An exception occurs when the playback speed dialog is opened by an overlay button while 'Restore old playback speed menu' is off.
         // Update the formatted string value to avoid the exception.
@@ -863,7 +878,13 @@ public final class VideoInformation {
         if (!playbackSpeedFormattedString.equals(newlyLoadedPlaybackSpeedFormattedString)) {
             playbackSpeedFormattedString = newlyLoadedPlaybackSpeedFormattedString;
 
+            final float previousPlaybackAudioPitch = playbackAudioPitch;
             VideoInformation.userSelectedPlaybackSpeed(newlyLoadedPlaybackSpeed);
+            if (previousPlaybackAudioPitch != playbackAudioPitch) {
+                final float pitch = playbackAudioPitch;
+                Utils.runOnMainThreadNowOrLater(() ->
+                        setPlaybackParameters(newlyLoadedPlaybackSpeed, pitch));
+            }
 
             // Rest of the implementation added by patch.
             // RememberPlaybackSpeedPatch.userSelectedPlaybackSpeed(newlyLoadedPlaybackSpeed);
@@ -882,9 +903,8 @@ public final class VideoInformation {
         }
 
         RememberPlaybackSpeedPatch.userSelectedPlaybackSpeed(playbackSpeed);
-        if (!Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()) {
+        if (isPlaybackAudioPitchLinked()) {
             RememberPlaybackSpeedPatch.userSelectedPlaybackAudioPitch(playbackAudioPitch);
-            setPlaybackParameters(playbackSpeed, playbackAudioPitch);
         }
         changePlaybackSpeed(playbackSpeed);
     }

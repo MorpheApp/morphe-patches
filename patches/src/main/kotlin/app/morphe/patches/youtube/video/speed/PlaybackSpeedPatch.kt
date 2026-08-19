@@ -16,9 +16,11 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.patches.youtube.video.information.EXTENSION_CLASS
 import app.morphe.patches.youtube.video.speed.button.playbackSpeedButtonPatch
 import app.morphe.patches.youtube.video.speed.custom.customPlaybackSpeedPatch
 import app.morphe.patches.youtube.video.speed.remember.rememberPlaybackSpeedPatch
+import app.morphe.util.setExtensionIsPatchIncluded
 
 /**
  * Speed menu settings. Used to organize all speed related settings together.
@@ -40,6 +42,8 @@ val playbackSpeedPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
+        setExtensionIsPatchIncluded(EXTENSION_CLASS)
+
         PreferenceScreen.VIDEO.addPreferences(
             PreferenceCategory(
                 key = "morphe_zz_video_key", // Dummy key to force the speed settings last.
