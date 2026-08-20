@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/2528
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.music.patches.downloads;
 
 import android.app.Notification;
@@ -15,12 +22,11 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.session.MediaSession;
 import android.media.session.PlaybackState;
-import android.os.Build;
-import android.view.KeyEvent;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.PowerManager;
+import android.view.KeyEvent;
 
 import androidx.annotation.Nullable;
 
@@ -319,11 +325,11 @@ public final class OfflinePlaybackService extends Service {
                 .setOnlyAlertOnce(true)
                 .setShowWhen(false)
                 .setOngoing(true)
-                .addAction(android.R.drawable.ic_media_previous, "Precedente", previous)
+                .addAction(android.R.drawable.ic_media_previous, "Previous", previous)
                 .addAction(playing ? android.R.drawable.ic_media_pause : android.R.drawable.ic_media_play,
-                        playing ? "Pausa" : "Riproduci", toggle)
-                .addAction(android.R.drawable.ic_media_next, "Successivo", next)
-                .addAction(android.R.drawable.ic_menu_close_clear_cancel, "Chiudi", stop)
+                        playing ? "Pause" : "Play", toggle)
+                .addAction(android.R.drawable.ic_media_next, "Next", next)
+                .addAction(android.R.drawable.ic_menu_close_clear_cancel, "Close", stop)
                 .setStyle(new Notification.MediaStyle().setMediaSession(session.getSessionToken())
                         .setShowActionsInCompactView(0, 1, 2))
                 .build();
@@ -340,7 +346,7 @@ public final class OfflinePlaybackService extends Service {
     }
 
     private void createChannel() {
-        NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "Riproduzione offline",
+        NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "Offline playback",
                 NotificationManager.IMPORTANCE_LOW);
         channel.setSound(null, null);
         channel.setShowBadge(false);

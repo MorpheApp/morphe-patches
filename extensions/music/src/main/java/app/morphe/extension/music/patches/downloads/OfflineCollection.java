@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/2528
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.music.patches.downloads;
 
 import android.graphics.Bitmap;
@@ -52,7 +59,7 @@ public record OfflineCollection(String id, String type, String title, String sub
                 if (array != null) for (int i = 0; i < array.length(); i++) ids.add(array.optString(i));
                 String key = file.getName().substring(PREFIX.length(), file.getName().length() - 5);
                 result.add(new OfflineCollection(json.optString("id"), json.optString("type", "playlist"),
-                        json.optString("title", "Raccolta"), json.optString("subtitle", ""), ids,
+                        json.optString("title", "Collection"), json.optString("subtitle", ""), ids,
                         new File(directory, PREFIX + key + ".jpg"), file));
             } catch (Exception ex) {
                 Logger.printException(() -> "Could not load offline collection: " + file, ex);
@@ -60,6 +67,28 @@ public record OfflineCollection(String id, String type, String title, String sub
         }
         result.sort(java.util.Comparator.comparing(OfflineCollection::title, String.CASE_INSENSITIVE_ORDER));
         return result;
+    }
+
+    public static boolean referencedByOtherCollection(File directory, String videoId, String excludedId) {
+        for (OfflineCollection collection : loadAll(directory)) {
+            if (!collection.id.equals(excludedId) && collection.videoIds.contains(videoId)) return true;
+        }
+        return false;
+    }
+
+    public static void removeTrackFromAll(File directory, String videoId) {
+        for (OfflineCollection collection : loadAll(directory)) {
+            if (!collection.videoIds.contains(videoId)) continue;
+            List<String> remaining = new ArrayList<>(collection.videoIds);
+            remaining.removeIf(videoId::equals);
+            if (remaining.isEmpty()) {
+                collection.metadataFile.delete();
+                collection.artworkFile.delete();
+            } else {
+                save(directory, collection.id, collection.type, collection.title,
+                        collection.subtitle, remaining, collection.artwork());
+            }
+        }
     }
 
     public Bitmap artwork() {

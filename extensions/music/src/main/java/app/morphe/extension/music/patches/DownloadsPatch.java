@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import androidx.annotation.Nullable;
 
 import java.nio.charset.StandardCharsets;
+import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -49,8 +50,8 @@ public final class DownloadsPatch {
     private static volatile long lastFlyoutDownloadTime;
     private static volatile long lastMainPlayerDownloadTime;
     private static final Pattern PLAYLIST_ID = Pattern.compile(
-            "(?:OLAK5uy_|PL)[A-Za-z0-9_-]{16,}");
-    private static final Pattern ENCODED_TOKEN = Pattern.compile("[A-Za-z0-9_-]{32,}");
+            "(?:OLAK5uy_[A-Za-z0-9_-]{16,}|PL(?:[A-Za-z0-9_-]{30,}|[A-Za-z0-9_-]{11}))");
+    private static final Pattern ENCODED_TOKEN = Pattern.compile("[A-Za-z0-9_-]{24,}");
 
     /**
      * Injection point.
@@ -92,7 +93,10 @@ public final class DownloadsPatch {
     private static String extractPlaylistId(byte[] bytes) {
         String raw = new String(bytes, StandardCharsets.ISO_8859_1);
         Matcher direct = PLAYLIST_ID.matcher(raw);
-        if (direct.find()) return direct.group();
+        while (direct.find()) {
+            String candidate = direct.group();
+            if (!candidate.startsWith("PLAYLIST_")) return candidate;
+        }
         Matcher tokens = ENCODED_TOKEN.matcher(raw);
         while (tokens.find()) {
             String token = tokens.group();
@@ -100,7 +104,10 @@ public final class DownloadsPatch {
                 try {
                     byte[] decoded = Base64.decode(token.substring(offset), Base64.URL_SAFE | Base64.NO_WRAP);
                     Matcher nested = PLAYLIST_ID.matcher(new String(decoded, StandardCharsets.ISO_8859_1));
-                    if (nested.find()) return nested.group();
+                    while (nested.find()) {
+                        String candidate = nested.group();
+                        if (!candidate.startsWith("PLAYLIST_")) return candidate;
+                    }
                 } catch (Exception ignored) {}
             }
         }
@@ -208,28 +215,60 @@ public final class DownloadsPatch {
      */
     public static boolean offlineVideoEndpointOnClick(ProtocolBufferFieldInterface endpoint,
                                                        @Nullable Map<Object, Object> map) {
-        return inAppDownloadButtonOnClick(map);
+        try {
+            Utils.verifyOnMainThread();
+            byte[] endpointBytes = endpoint == null ? null : endpoint.toByteArray();
+            String playlistId = endpointBytes == null ? null : extractPlaylistId(endpointBytes);
+            if (playlistId != null) {
+                CollectionDownloadManager.enqueue(playlistId.startsWith("VL") ? playlistId.substring(2) : playlistId);
+                return true;
+            }
+            String videoId = endpoint == null ? null : extractVideoIdFromCommand(endpoint);
+            if (videoId == null || videoId.isEmpty()) videoId = VideoInformation.getVideoId();
+            if (videoId == null || videoId.isEmpty()) return false;
+
+            long now = System.currentTimeMillis();
+            if (now - lastMainPlayerDownloadTime < IGNORE_DOUBLE_CLICK_DURATION_MS) return true;
+            lastMainPlayerDownloadTime = now;
+            launchExternalDownloader(videoId);
+            return true;
+        } catch (Exception ex) {
+            Logger.printException(() -> "offlineVideoEndpointOnClick failure", ex);
+            return false;
+        }
+    }
+
+    /**
+     * The label is the localized download text litho gave us, so no hard coded language is needed.
+     */
+    private static boolean isDownloadSender(@Nullable Map<Object, Object> map) {
+        if (map == null || downloadButtonLabel.isEmpty()
+                || !(map.get(ELEMENTS_SENDER_VIEW) instanceof ViewGroup senderViewGroup)) {
+            return false;
+        }
+        CharSequence description = senderViewGroup.getContentDescription();
+        if (description == null) return false;
+        String value = description.toString().toLowerCase(Locale.ROOT);
+        String label = downloadButtonLabel.toLowerCase(Locale.ROOT);
+        return value.contains(label) || label.contains(value);
     }
 
     public static boolean inAppDownloadButtonOnClick(@Nullable Map<Object, Object> map) {
         try {
-            if (downloadButtonLabel.isEmpty() || map == null) {
+            if (map == null) {
                 return false;
             }
             Utils.verifyOnMainThread();
 
-            if (map.get(ELEMENTS_SENDER_VIEW) instanceof ViewGroup senderViewGroup) {
-                CharSequence contentDescription = senderViewGroup.getContentDescription();
-                if (contentDescription != null && downloadButtonLabel.equals(contentDescription.toString())) {
-                    final long now = System.currentTimeMillis();
-                    if (now - lastMainPlayerDownloadTime < IGNORE_DOUBLE_CLICK_DURATION_MS) {
-                        return true;
-                    }
-                    lastMainPlayerDownloadTime = now;
-
-                    launchExternalDownloader();
+            if (isDownloadSender(map)) {
+                final long now = System.currentTimeMillis();
+                if (now - lastMainPlayerDownloadTime < IGNORE_DOUBLE_CLICK_DURATION_MS) {
                     return true;
                 }
+                lastMainPlayerDownloadTime = now;
+
+                launchExternalDownloader();
+                return true;
             }
         } catch (Exception ex) {
             Logger.printException(() -> "inAppDownloadButtonOnClick failure", ex);
@@ -253,9 +292,9 @@ public final class DownloadsPatch {
                 return true;
             }
 
-            String playlistId = commandBytes == null ? null : extractPlaylistId(commandBytes);
-            if (playlistId != null) {
-                CollectionDownloadManager.enqueue(playlistId.startsWith("VL") ? playlistId.substring(2) : playlistId);
+            String collectionId = commandBytes == null ? null : extractPlaylistId(commandBytes);
+            if (collectionId != null && isDownloadSender(map)) {
+                CollectionDownloadManager.enqueue(collectionId.startsWith("VL") ? collectionId.substring(2) : collectionId);
                 return true;
             }
 

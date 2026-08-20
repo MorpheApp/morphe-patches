@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/1856
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -14,12 +14,17 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Pair;
 
+import androidx.annotation.Nullable;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import app.morphe.extension.music.patches.album.PlayAlbumSongsPatch;
+import app.morphe.extension.music.patches.album.PlaylistRequest;
 import app.morphe.extension.music.patches.scrobbling.lastfm.LastFM;
 import app.morphe.extension.music.patches.scrobbling.listenbrainz.ListenBrainz;
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
@@ -39,6 +44,9 @@ public class ScrobbleManager {
 
     private final Handler handler = new Handler(Looper.getMainLooper());
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
+
+    /** Metadata of the current track, kept so it can be read again as the song of an album. */
+    private MediaMetadata currentMetadata;
 
     private String currentTitle;
     private String currentArtist;
@@ -69,7 +77,24 @@ public class ScrobbleManager {
     private boolean lfScrobbled;
     private Runnable lfRunnable;
 
-    private ScrobbleManager() {}
+    private ScrobbleManager() {
+        PlayAlbumSongsPatch.addSubstitutionListener(
+                (videoId, resolvedVideoId) -> reloadCurrentTrack());
+        VideoInformation.addVideoIdListener(videoId -> reloadCurrentTrack());
+    }
+
+    /**
+     * The song of an album, and the video id of the app itself, can both land after the metadata
+     * of a track, so the track is read again whenever either of them arrives.
+     */
+    private void reloadCurrentTrack() {
+        Utils.runOnMainThread(() -> {
+            MediaMetadata metadata = currentMetadata;
+            if (metadata != null) {
+                onSetMetadata(metadata);
+            }
+        });
+    }
 
     private String cleanTitle(String title) {
         if (title == null) return null;
@@ -140,16 +165,27 @@ public class ScrobbleManager {
         Utils.verifyOnMainThread();
         if (metadata == null) return;
 
+        currentMetadata = metadata;
+
         try {
             String songId = metadata.getString(MediaMetadata.METADATA_KEY_MEDIA_ID);
             String album = cleanAlbum(metadata.getString(MediaMetadata.METADATA_KEY_ALBUM));
-            Pair<String, String> resolved = resolveTitleAndArtist(
-                    metadata.getString(MediaMetadata.METADATA_KEY_TITLE),
-                    metadata.getString(MediaMetadata.METADATA_KEY_ARTIST)
-            );
+            String rawTitle = metadata.getString(MediaMetadata.METADATA_KEY_TITLE);
+            String rawArtist = metadata.getString(MediaMetadata.METADATA_KEY_ARTIST);
+
+            // The metadata of a substituted track still describes the music video, which names
+            // another version of the song and is minutes longer. Only the artist is the same.
+            PlaylistRequest.Song song = PlayAlbumSongsPatch.getSong(VideoInformation.getVideoId());
+            if (song != null && !song.title().isBlank()) {
+                rawTitle = song.title();
+            }
+
+            Pair<String, String> resolved = resolveTitleAndArtist(rawTitle, rawArtist);
             String title = resolved.first;
             String artist = resolved.second;
-            final int duration = (int) (metadata.getLong(MediaMetadata.METADATA_KEY_DURATION) / 1000);
+            final int duration = song != null && song.durationSeconds() > 0
+                    ? song.durationSeconds()
+                    : (int) (metadata.getLong(MediaMetadata.METADATA_KEY_DURATION) / 1000);
             Bitmap artwork = metadata.getBitmap(MediaMetadata.METADATA_KEY_ALBUM_ART);
             if (artwork == null) artwork = metadata.getBitmap(MediaMetadata.METADATA_KEY_ART);
             if (title == null || title.isBlank() || artist == null || artist.isBlank()) {
@@ -472,6 +508,13 @@ public class ScrobbleManager {
                     currentDurationSeconds, songStartedAtSeconds);
         }
         lfScrobbled = true;
+    }
+
+    @Nullable
+    public static String getEffectiveAlbum(String artist, String track, @Nullable String album) {
+        if (album != null && !album.isBlank()) return album;
+        if (!Settings.SCROBBLING_GUESS_ALBUM.get()) return null;
+        return LastFM.fetchAlbum(artist, track);
     }
 
     /**
