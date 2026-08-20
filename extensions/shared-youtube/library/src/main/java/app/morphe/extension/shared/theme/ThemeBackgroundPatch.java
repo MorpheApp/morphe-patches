@@ -7,14 +7,17 @@
 
 package app.morphe.extension.shared.theme;
 
+import static app.morphe.extension.shared.settings.SharedYouTubeSettings.THEME_BACKGROUND_DARK;
+import static app.morphe.extension.shared.settings.SharedYouTubeSettings.THEME_BACKGROUND_DARK_CUSTOM_COLOR;
+import static app.morphe.extension.shared.settings.SharedYouTubeSettings.THEME_BACKGROUND_LIGHT;
+import static app.morphe.extension.shared.settings.SharedYouTubeSettings.THEME_BACKGROUND_LIGHT_CUSTOM_COLOR;
+
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Build;
 
 import androidx.annotation.ChecksSdkIntAtLeast;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.LinkedHashMap;
@@ -25,8 +28,9 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.EnumSetting;
 import app.morphe.extension.shared.settings.Setting;
-import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.shared.settings.StringSetting;
 
 /**
  * Changes the app background color while the app runs.
@@ -158,12 +162,12 @@ public class ThemeBackgroundPatch {
     public static final class CustomDarkBackgroundAvailability implements Setting.Availability {
         @Override
         public boolean isAvailable() {
-            return SharedYouTubeSettings.THEME_BACKGROUND_DARK.get().isCustom();
+            return THEME_BACKGROUND_DARK.get().isCustom();
         }
 
         @Override
         public List<Setting<?>> getParentSettings() {
-            return List.of(SharedYouTubeSettings.THEME_BACKGROUND_DARK);
+            return List.of(THEME_BACKGROUND_DARK);
         }
     }
 
@@ -173,37 +177,19 @@ public class ThemeBackgroundPatch {
     public static final class CustomLightBackgroundAvailability implements Setting.Availability {
         @Override
         public boolean isAvailable() {
-            return SharedYouTubeSettings.THEME_BACKGROUND_LIGHT.get().isCustom();
+            return THEME_BACKGROUND_LIGHT.get().isCustom();
         }
 
         @Override
         public List<Setting<?>> getParentSettings() {
-            return List.of(SharedYouTubeSettings.THEME_BACKGROUND_LIGHT);
+            return List.of(THEME_BACKGROUND_LIGHT);
         }
     }
-
-    public static final String SETTINGS_KEY_DARK = "morphe_theme_background_dark";
-    public static final String SETTINGS_KEY_LIGHT = "morphe_theme_background_light";
-    public static final String SETTINGS_KEY_DARK_CUSTOM_COLOR = "morphe_theme_background_dark_custom_color";
-    public static final String SETTINGS_KEY_LIGHT_CUSTOM_COLOR = "morphe_theme_background_light_custom_color";
-
-    public static final DarkThemeBackground DEFAULT_DARK = DarkThemeBackground.PURE_BLACK;
-    public static final LightThemeBackground DEFAULT_LIGHT = LightThemeBackground.WHITE;
-    public static final String DEFAULT_DARK_CUSTOM_COLOR = "#0F0F0F";
-    public static final String DEFAULT_LIGHT_CUSTOM_COLOR = "#FFFFFF";
 
     /**
      * Config value of {@code APP_DEFAULT}. No resource variant uses it, so the app colors are used.
      */
     private static final int APP_DEFAULT_CONFIG_VALUE = 1;
-
-    /**
-     * Name of the shared preferences of Morphe.
-     * <p>
-     * The settings cannot be used here because the first context is wrapped before the extension
-     * has a context of its own, and reading a setting without a context crashes the app.
-     */
-    private static final String PREFERENCES_NAME = "morphe_prefs";
 
     private static int darkConfigValue = -1;
     private static int lightConfigValue = -1;
@@ -231,6 +217,11 @@ public class ThemeBackgroundPatch {
         try {
             if (base == null) {
                 return null;
+            }
+
+            if (!Utils.isContextSet()) {
+                // Context might be used before context is set.
+                Utils.setContext(base);
             }
 
             resolveConfigValues(base);
@@ -268,58 +259,42 @@ public class ThemeBackgroundPatch {
             return;
         }
 
-        SharedPreferences preferences = null;
-        try {
-            preferences = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE);
-        } catch (Exception ex) {
-            // Preferences of the app are not available before the device is unlocked.
-            Logger.printInfo(() -> "Could not load preferences", ex);
-        }
+        Background dark = selectedBackground(THEME_BACKGROUND_DARK, DarkThemeBackground.values());
+        Background light = selectedBackground(THEME_BACKGROUND_LIGHT, LightThemeBackground.values());
 
-        Background dark = selectedBackground(preferences, SETTINGS_KEY_DARK,
-                DarkThemeBackground.values(), DEFAULT_DARK);
-        Background light = selectedBackground(preferences, SETTINGS_KEY_LIGHT,
-                LightThemeBackground.values(), DEFAULT_LIGHT);
+        darkConfigValue = configValue(dark, true);
+        lightConfigValue = configValue(light, false);
 
-        darkConfigValue = configValue(preferences, dark, true);
-        lightConfigValue = configValue(preferences, light, false);
+        Logger.printDebug(() -> "Theme background config values: " + darkConfigValue + " " + lightConfigValue);
 
-        Logger.printDebug(() -> "Theme background config values: "
-                + darkConfigValue + " " + lightConfigValue);
-
-        updateOverlay(context, preferences, dark, light);
+        updateOverlay(context, dark, light);
     }
 
-    private static Background selectedBackground(@Nullable SharedPreferences preferences, String key,
-                                                 Background[] values, @NonNull Background defaultValue) {
-        if (preferences == null) {
-            return defaultValue;
-        }
-
-        String name = preferences.getString(key, null);
-        if (name != null) {
-            for (Background value : values) {
-                if (((Enum<?>) value).name().equals(name)) {
-                    return value;
-                }
+    private static Background selectedBackground(EnumSetting<? extends Background> setting,
+                                                 Background[] values) {
+        Enum<?> name = setting.get();
+        for (Background value : values) {
+            if (value.equals(name)) {
+                return value;
             }
         }
 
-        return defaultValue;
+        return setting.defaultValue;
     }
 
-    private static int configValue(@Nullable SharedPreferences preferences, Background background, boolean dark) {
+    private static int configValue(Background background, boolean dark) {
         if (background.isMaterialYou() && Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
             // Material-You colors do not exist and resolving them crashes the app.
             return APP_DEFAULT_CONFIG_VALUE;
         }
 
         if (background.isCustom() && !isCustomBackgroundSupported()) {
-            String key = dark ? SETTINGS_KEY_DARK_CUSTOM_COLOR : SETTINGS_KEY_LIGHT_CUSTOM_COLOR;
-            String defaultColor = dark ? DEFAULT_DARK_CUSTOM_COLOR : DEFAULT_LIGHT_CUSTOM_COLOR;
-            String colorString = preferences != null ? preferences.getString(key, defaultColor) : defaultColor;
+            StringSetting setting = dark
+                    ? THEME_BACKGROUND_DARK_CUSTOM_COLOR
+                    : THEME_BACKGROUND_LIGHT_CUSTOM_COLOR;
+            String colorString = setting.get();
 
-            return 100 + get9BitColorIndex(colorString, defaultColor);
+            return 100 + get9BitColorIndex(colorString, setting.defaultValue);
         }
 
         // A custom background has no resource variant of its own,
@@ -351,9 +326,8 @@ public class ThemeBackgroundPatch {
      * Registers, updates or removes the overlay that gives the color resources of the app the
      * color the user picked.
      */
-    private static void updateOverlay(Context context, @Nullable SharedPreferences preferences,
-                                      Background dark, Background light) {
-        if (preferences == null || !isCustomBackgroundSupported()) {
+    private static void updateOverlay(Context context, Background dark, Background light) {
+        if (!isCustomBackgroundSupported()) {
             return;
         }
 
@@ -368,15 +342,11 @@ public class ThemeBackgroundPatch {
             Map<String, Integer> colors = new LinkedHashMap<>();
 
             if (dark.isCustom()) {
-                addOverlayColors(colors, darkColorResourceNames(),
-                        preferences.getString(SETTINGS_KEY_DARK_CUSTOM_COLOR, DEFAULT_DARK_CUSTOM_COLOR),
-                        DEFAULT_DARK_CUSTOM_COLOR);
+                addOverlayColors(colors, darkColorResourceNames(), THEME_BACKGROUND_DARK_CUSTOM_COLOR);
             }
 
             if (light.isCustom()) {
-                addOverlayColors(colors, lightColorResourceNames(),
-                        preferences.getString(SETTINGS_KEY_LIGHT_CUSTOM_COLOR, DEFAULT_LIGHT_CUSTOM_COLOR),
-                        DEFAULT_LIGHT_CUSTOM_COLOR);
+                addOverlayColors(colors, lightColorResourceNames(), THEME_BACKGROUND_LIGHT_CUSTOM_COLOR);
             }
 
             // The system deletes an overlay of the app when the app is installed again, so it is
@@ -389,13 +359,14 @@ public class ThemeBackgroundPatch {
     }
 
     private static void addOverlayColors(Map<String, Integer> colors, String resourceNames,
-                                         String colorString, String defaultColor) {
+                                         StringSetting colorSetting) {
+        String colorString = colorSetting.get();
         int color;
         try {
             color = Color.parseColor(colorString);
         } catch (IllegalArgumentException ex) {
-            Logger.printInfo(() -> "Using default, and ignoring invalid color: " + colorString);
-            color = Color.parseColor(defaultColor);
+            Logger.printException(() -> "Invalid custom color: " + colorString);
+            color = Color.parseColor(colorSetting.resetToDefault());
         }
 
         // A background must be opaque, otherwise the app draws over itself.
@@ -428,9 +399,9 @@ public class ThemeBackgroundPatch {
             // variant is selected the same way the app selects the background it uses.
             Configuration configuration = new Configuration(context.getResources().getConfiguration());
             if (dark) {
-                configuration.mcc = configValue(null, background, true);
+                configuration.mcc = configValue(background, true);
             } else {
-                configuration.mnc = configValue(null, background, false);
+                configuration.mnc = configValue(background, false);
             }
 
             final int identifier = ResourceUtils.getIdentifier(ResourceType.COLOR,
@@ -463,8 +434,8 @@ public class ThemeBackgroundPatch {
 
             final boolean dark = Utils.isDarkModeEnabled();
             Background background = dark
-                    ? SharedYouTubeSettings.THEME_BACKGROUND_DARK.get()
-                    : SharedYouTubeSettings.THEME_BACKGROUND_LIGHT.get();
+                    ? THEME_BACKGROUND_DARK.get()
+                    : THEME_BACKGROUND_LIGHT.get();
 
             if (!background.isMaterialYou()) {
                 return null;
@@ -493,15 +464,16 @@ public class ThemeBackgroundPatch {
     }
 
     private static int customColor(boolean dark) {
-        String colorString = dark
-                ? SharedYouTubeSettings.THEME_BACKGROUND_DARK_CUSTOM_COLOR.get()
-                : SharedYouTubeSettings.THEME_BACKGROUND_LIGHT_CUSTOM_COLOR.get();
+        StringSetting setting = dark
+                ? THEME_BACKGROUND_DARK_CUSTOM_COLOR
+                : THEME_BACKGROUND_LIGHT_CUSTOM_COLOR;
+        String colorString = setting.get();
 
         try {
             return Color.parseColor(colorString) | 0xFF000000;
         } catch (IllegalArgumentException ex) {
-            Logger.printInfo(() -> "Using default, and ignoring invalid color: " + colorString);
-            return Color.parseColor(dark ? DEFAULT_DARK_CUSTOM_COLOR : DEFAULT_LIGHT_CUSTOM_COLOR);
+            Logger.printException(() -> "Invalid custom color: " + colorString);
+            return Color.parseColor(setting.resetToDefault());
         }
     }
 

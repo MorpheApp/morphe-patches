@@ -11,7 +11,8 @@ import app.morphe.extension.shared.patches.CustomBrandingPatch.BrandingTheme;
 import app.morphe.extension.shared.patches.CustomBrandingPatch.NotificationIconTheme;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch.JavaScriptClientAvailability;
 import app.morphe.extension.shared.spoof.js.JavaScriptVariant;
-import app.morphe.extension.shared.theme.ThemeBackgroundPatch;
+import app.morphe.extension.shared.theme.ThemeBackgroundPatch.CustomDarkBackgroundAvailability;
+import app.morphe.extension.shared.theme.ThemeBackgroundPatch.CustomLightBackgroundAvailability;
 import app.morphe.extension.shared.theme.ThemeBackgroundPatch.DarkThemeBackground;
 import app.morphe.extension.shared.theme.ThemeBackgroundPatch.LightThemeBackground;
 
@@ -38,10 +39,10 @@ public class SharedYouTubeSettings extends BaseSettings {
 
     public static final BooleanSetting CHECK_WATCH_HISTORY_DOMAIN_NAME = new BooleanSetting("morphe_check_watch_history_domain_name", TRUE, false, false);
 
-    public static final EnumSetting<DarkThemeBackground> THEME_BACKGROUND_DARK = new EnumSetting<>(ThemeBackgroundPatch.SETTINGS_KEY_DARK, ThemeBackgroundPatch.DEFAULT_DARK, true);
-    public static final EnumSetting<LightThemeBackground> THEME_BACKGROUND_LIGHT = new EnumSetting<>(ThemeBackgroundPatch.SETTINGS_KEY_LIGHT, ThemeBackgroundPatch.DEFAULT_LIGHT, true);
-    public static final StringSetting THEME_BACKGROUND_DARK_CUSTOM_COLOR = new StringSetting(ThemeBackgroundPatch.SETTINGS_KEY_DARK_CUSTOM_COLOR, ThemeBackgroundPatch.DEFAULT_DARK_CUSTOM_COLOR, true, new ThemeBackgroundPatch.CustomDarkBackgroundAvailability());
-    public static final StringSetting THEME_BACKGROUND_LIGHT_CUSTOM_COLOR = new StringSetting(ThemeBackgroundPatch.SETTINGS_KEY_LIGHT_CUSTOM_COLOR, ThemeBackgroundPatch.DEFAULT_LIGHT_CUSTOM_COLOR, true, new ThemeBackgroundPatch.CustomLightBackgroundAvailability());
+    public static final EnumSetting<DarkThemeBackground> THEME_BACKGROUND_DARK = new EnumSetting<>("morphe_theme_background_dark", DarkThemeBackground.PURE_BLACK, true);
+    public static final EnumSetting<LightThemeBackground> THEME_BACKGROUND_LIGHT = new EnumSetting<>("morphe_theme_background_light", LightThemeBackground.WHITE, true);
+    public static final StringSetting THEME_BACKGROUND_DARK_CUSTOM_COLOR = new StringSetting("morphe_theme_background_dark_custom_color", "#0F0F0F", true, new CustomDarkBackgroundAvailability());
+    public static final StringSetting THEME_BACKGROUND_LIGHT_CUSTOM_COLOR = new StringSetting("morphe_theme_background_light_custom_color", "#FFFFFF", true, new CustomLightBackgroundAvailability());
 
     public static final EnumSetting<BrandingTheme> CUSTOM_BRANDING_ICON = new EnumSetting<>("morphe_custom_branding_icon", CustomBrandingPatch.getDefaultIconStyle(), true);
     public static final EnumSetting<NotificationIconTheme> CUSTOM_BRANDING_NOTIFICATION_ICON = new EnumSetting<>("morphe_custom_branding_notification_icon", NotificationIconTheme.FOLLOW, true);

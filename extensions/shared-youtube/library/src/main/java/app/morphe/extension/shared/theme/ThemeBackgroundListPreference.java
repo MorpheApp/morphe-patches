@@ -13,6 +13,7 @@ import android.util.AttributeSet;
 
 import androidx.annotation.NonNull;
 
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.settings.preference.IconListPreference;
 import app.morphe.extension.shared.ui.ColorDot;
 
@@ -46,10 +47,10 @@ public class ThemeBackgroundListPreference extends IconListPreference {
             return new Drawable[0];
         }
 
-        final boolean dark = ThemeBackgroundPatch.SETTINGS_KEY_DARK.equals(getKey());
+        final boolean dark = SharedYouTubeSettings.THEME_BACKGROUND_DARK.key.equals(getKey());
 
         Drawable[] drawables = new Drawable[values.length];
-        for (int i = 0; i < values.length; i++) {
+        for (int i = 0, length = values.length; i < length; i++) {
             drawables[i] = ColorDot.createColorDotDrawable(
                     ThemeBackgroundPatch.getBackgroundColor(getContext(), dark, i));
         }
