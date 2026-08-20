@@ -213,9 +213,11 @@ internal fun baseThemeResourcePatch(
 ) = resourcePatch {
     execute {
         addBackgroundColorVariants("mcc", THEME_DARK_BACKGROUNDS, darkColorNames())
+        add9BitColorVariants("mcc", darkColorNames())
 
         if (includeLightBackground) {
             addBackgroundColorVariants("mnc", THEME_LIGHT_BACKGROUNDS, lightColorNames())
+            add9BitColorVariants("mnc", lightColorNames())
         }
 
         declareOverlayableColors(
@@ -281,8 +283,6 @@ private fun ResourcePatchContext.addBackgroundColorVariants(
         throw PatchException("No color to replace for the app background")
     }
 
-    val resourceDirectory = get("res")
-
     backgrounds.forEachIndexed { index, color ->
         // The app default has no variant of its own.
         if (color == null) return@forEachIndexed
@@ -290,18 +290,46 @@ private fun ResourcePatchContext.addBackgroundColorVariants(
         // The configuration value of a background is its index plus one,
         // and the extension uses the same numbering.
         val variantValue = "%03d".format(index + 1)
-        val variantDirectory = resourceDirectory.resolve("values-$qualifier$variantValue")
-        variantDirectory.mkdirs()
-
-        variantDirectory.resolve("colors.xml").writeText(
-            buildString {
-                appendLine("<?xml version=\"1.0\" encoding=\"utf-8\"?>")
-                appendLine("<resources>")
-                colorNames.forEach { name ->
-                    appendLine("    <color name=\"$name\">$color</color>")
-                }
-                appendLine("</resources>")
-            }
-        )
+        writeBackgroundColorVariant(qualifier, variantValue, color, colorNames)
     }
+}
+
+private fun ResourcePatchContext.add9BitColorVariants(
+    qualifier: String,
+    colorNames: Set<String>
+) {
+    for (index in 0 until 512) {
+        val r3 = (index shr 6) and 0x7
+        val g3 = (index shr 3) and 0x7
+        val b3 = index and 0x7
+
+        val r = Math.round(r3 * 255f / 7f)
+        val g = Math.round(g3 * 255f / 7f)
+        val b = Math.round(b3 * 255f / 7f)
+
+        val color = "#%02X%02X%02X".format(r, g, b)
+        val variantValue = "%03d".format(100 + index)
+        writeBackgroundColorVariant(qualifier, variantValue, color, colorNames)
+    }
+}
+
+private fun ResourcePatchContext.writeBackgroundColorVariant(
+    qualifier: String,
+    variantValue: String,
+    color: String,
+    colorNames: Set<String>
+) {
+    val variantDirectory = get("res").resolve("values-$qualifier$variantValue")
+    variantDirectory.mkdirs()
+
+    variantDirectory.resolve("colors.xml").writeText(
+        buildString {
+            appendLine("<?xml version=\"1.0\" encoding=\"utf-8\"?>")
+            appendLine("<resources>")
+            colorNames.forEach { name ->
+                appendLine("    <color name=\"$name\">$color</color>")
+            }
+            appendLine("</resources>")
+        }
+    )
 }

@@ -158,8 +158,7 @@ public class ThemeBackgroundPatch {
     public static final class CustomDarkBackgroundAvailability implements Setting.Availability {
         @Override
         public boolean isAvailable() {
-            return isCustomBackgroundSupported()
-                    && SharedYouTubeSettings.THEME_BACKGROUND_DARK.get().isCustom();
+            return SharedYouTubeSettings.THEME_BACKGROUND_DARK.get().isCustom();
         }
 
         @Override
@@ -174,8 +173,7 @@ public class ThemeBackgroundPatch {
     public static final class CustomLightBackgroundAvailability implements Setting.Availability {
         @Override
         public boolean isAvailable() {
-            return isCustomBackgroundSupported()
-                    && SharedYouTubeSettings.THEME_BACKGROUND_LIGHT.get().isCustom();
+            return SharedYouTubeSettings.THEME_BACKGROUND_LIGHT.get().isCustom();
         }
 
         @Override
@@ -283,8 +281,8 @@ public class ThemeBackgroundPatch {
         Background light = selectedBackground(preferences, SETTINGS_KEY_LIGHT,
                 LightThemeBackground.values(), DEFAULT_LIGHT);
 
-        darkConfigValue = configValue(dark);
-        lightConfigValue = configValue(light);
+        darkConfigValue = configValue(preferences, dark, true);
+        lightConfigValue = configValue(preferences, light, false);
 
         Logger.printDebug(() -> "Theme background config values: "
                 + darkConfigValue + " " + lightConfigValue);
@@ -310,15 +308,43 @@ public class ThemeBackgroundPatch {
         return defaultValue;
     }
 
-    private static int configValue(Background background) {
+    private static int configValue(@Nullable SharedPreferences preferences, Background background, boolean dark) {
         if (background.isMaterialYou() && Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
             // Material You colors do not exist and resolving them crashes the app.
             return APP_DEFAULT_CONFIG_VALUE;
         }
 
+        if (background.isCustom() && !isCustomBackgroundSupported()) {
+            String key = dark ? SETTINGS_KEY_DARK_CUSTOM_COLOR : SETTINGS_KEY_LIGHT_CUSTOM_COLOR;
+            String defaultColor = dark ? DEFAULT_DARK_CUSTOM_COLOR : DEFAULT_LIGHT_CUSTOM_COLOR;
+            String colorString = preferences != null ? preferences.getString(key, defaultColor) : defaultColor;
+
+            return 100 + get9BitColorIndex(colorString, defaultColor);
+        }
+
         // A custom background has no resource variant of its own,
         // the color resources are replaced by the overlay instead.
         return ((Enum<?>) background).ordinal() + 1;
+    }
+
+    private static int get9BitColorIndex(String colorString, String defaultColor) {
+        int color;
+        try {
+            color = Color.parseColor(colorString);
+        } catch (IllegalArgumentException ex) {
+            Logger.printException(() -> "Invalid color: " + colorString);
+            color = Color.parseColor(defaultColor);
+        }
+
+        int r = (color >> 16) & 0xFF;
+        int g = (color >> 8) & 0xFF;
+        int b = color & 0xFF;
+
+        int r3 = Math.round(r * 7f / 255f);
+        int g3 = Math.round(g * 7f / 255f);
+        int b3 = Math.round(b * 7f / 255f);
+
+        return (r3 << 6) | (g3 << 3) | b3;
     }
 
     /**
@@ -402,9 +428,9 @@ public class ThemeBackgroundPatch {
             // variant is selected the same way the app selects the background it uses.
             Configuration configuration = new Configuration(context.getResources().getConfiguration());
             if (dark) {
-                configuration.mcc = configValue(background);
+                configuration.mcc = configValue(null, background, true);
             } else {
-                configuration.mnc = configValue(background);
+                configuration.mnc = configValue(null, background, false);
             }
 
             final int identifier = ResourceUtils.getIdentifier(ResourceType.COLOR,
