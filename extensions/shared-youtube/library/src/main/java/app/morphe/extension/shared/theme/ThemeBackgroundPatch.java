@@ -308,8 +308,13 @@ public class ThemeBackgroundPatch {
         }
         morpheColorsUpdated = true;
 
-        Utils.setThemeDarkColor(selectedBackgroundColor(context, true));
-        Utils.setThemeLightColor(selectedBackgroundColor(context, false));
+        // An app without a light theme has no light colors to replace.
+        if (!darkColorResourceNames().isEmpty()) {
+            Utils.setThemeDarkColor(selectedBackgroundColor(context, true));
+        }
+        if (!lightColorResourceNames().isEmpty()) {
+            Utils.setThemeLightColor(selectedBackgroundColor(context, false));
+        }
     }
 
     private static int selectedBackgroundColor(Context context, boolean dark) {
@@ -460,8 +465,13 @@ public class ThemeBackgroundPatch {
             Configuration configuration = new Configuration(context.getResources().getConfiguration());
             setVariantOf(configuration, configValue(background, dark));
 
-            final int identifier = ResourceUtils.getIdentifier(ResourceType.COLOR,
-                    backgroundColorResourceName(dark));
+            final String resourceName = backgroundColorResourceName(dark);
+            if (resourceName.isEmpty()) {
+                // The app has no theme of this kind, and no color of it to show.
+                return Utils.getAppBackgroundColor();
+            }
+
+            final int identifier = ResourceUtils.getIdentifier(ResourceType.COLOR, resourceName);
 
             Context variant = context.createConfigurationContext(configuration);
             if (isCustomBackgroundSupported()) {
