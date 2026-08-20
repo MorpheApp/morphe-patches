@@ -209,7 +209,21 @@ public final class DownloadsPatch {
      */
     public static boolean offlineVideoEndpointOnClick(ProtocolBufferFieldInterface endpoint,
                                                        @Nullable Map<Object, Object> map) {
-        return inAppDownloadButtonOnClick(map);
+        try {
+            Utils.verifyOnMainThread();
+            String videoId = endpoint == null ? null : extractVideoIdFromCommand(endpoint);
+            if (videoId == null || videoId.isEmpty()) videoId = VideoInformation.getVideoId();
+            if (videoId == null || videoId.isEmpty()) return false;
+
+            long now = System.currentTimeMillis();
+            if (now - lastMainPlayerDownloadTime < IGNORE_DOUBLE_CLICK_DURATION_MS) return true;
+            lastMainPlayerDownloadTime = now;
+            launchExternalDownloader(videoId);
+            return true;
+        } catch (Exception ex) {
+            Logger.printException(() -> "offlineVideoEndpointOnClick failure", ex);
+            return false;
+        }
     }
 
     public static boolean inAppDownloadButtonOnClick(@Nullable Map<Object, Object> map) {
