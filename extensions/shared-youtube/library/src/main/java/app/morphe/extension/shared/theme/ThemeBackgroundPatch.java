@@ -10,12 +10,20 @@ package app.morphe.extension.shared.theme;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.os.Build;
 
+import androidx.annotation.ChecksSdkIntAtLeast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.settings.Setting;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
 /**
  * Changes the app background color while the app runs.
@@ -32,6 +40,10 @@ import app.morphe.extension.shared.Logger;
  * <p>
  * The config value of a background is its ordinal plus one, and {@link #APP_DEFAULT_CONFIG_VALUE}
  * is used for the unpatched colors of the app. The patch relies on the same numbering.
+ * <p>
+ * Only a color that was compiled in can be selected this way, so the {@code CUSTOM} background
+ * uses {@link ThemeBackgroundOverlay} instead to give the same color resources a value of its
+ * own. That needs Android 14 or later.
  */
 @SuppressWarnings("unused")
 public class ThemeBackgroundPatch {
@@ -42,6 +54,11 @@ public class ThemeBackgroundPatch {
          * which only exists on Android 12 and later.
          */
         boolean isMaterialYou();
+
+        /**
+         * If the color of this background is picked by the user and applied with an overlay.
+         */
+        boolean isCustom();
     }
 
     /**
@@ -50,31 +67,43 @@ public class ThemeBackgroundPatch {
      * changes the background of everyone who already selected one.
      */
     public enum DarkThemeBackground implements Background {
-        APP_DEFAULT(false),
-        PURE_BLACK(false),
-        MATERIAL_YOU_NEUTRAL(true),
-        MATERIAL_YOU_PRIMARY(true),
-        MATERIAL_YOU_SECONDARY(true),
-        MATERIAL_YOU_TERTIARY(true),
-        MODERN_YOUTUBE(false),
-        CLASSIC_YOUTUBE(false),
-        CATPPUCCIN_MOCHA(false),
-        DARK_PINK(false),
-        DARK_BLUE(false),
-        DARK_GREEN(false),
-        DARK_YELLOW(false),
-        DARK_ORANGE(false),
-        DARK_RED(false);
+        APP_DEFAULT,
+        PURE_BLACK,
+        MATERIAL_YOU_NEUTRAL(true, false),
+        MATERIAL_YOU_PRIMARY(true, false),
+        MATERIAL_YOU_SECONDARY(true, false),
+        MATERIAL_YOU_TERTIARY(true, false),
+        MODERN_YOUTUBE,
+        CLASSIC_YOUTUBE,
+        CATPPUCCIN_MOCHA,
+        DARK_PINK,
+        DARK_BLUE,
+        DARK_GREEN,
+        DARK_YELLOW,
+        DARK_ORANGE,
+        DARK_RED,
+        CUSTOM(false, true);
 
         private final boolean materialYou;
+        private final boolean custom;
 
-        DarkThemeBackground(boolean materialYou) {
+        DarkThemeBackground() {
+            this(false, false);
+        }
+
+        DarkThemeBackground(boolean materialYou, boolean custom) {
             this.materialYou = materialYou;
+            this.custom = custom;
         }
 
         @Override
         public boolean isMaterialYou() {
             return materialYou;
+        }
+
+        @Override
+        public boolean isCustom() {
+            return custom;
         }
     }
 
@@ -82,37 +111,85 @@ public class ThemeBackgroundPatch {
      * @see DarkThemeBackground
      */
     public enum LightThemeBackground implements Background {
-        APP_DEFAULT(false),
-        WHITE(false),
-        MATERIAL_YOU_NEUTRAL(true),
-        MATERIAL_YOU_PRIMARY(true),
-        MATERIAL_YOU_SECONDARY(true),
-        MATERIAL_YOU_TERTIARY(true),
-        CATPPUCCIN_LATTE(false),
-        LIGHT_PINK(false),
-        LIGHT_BLUE(false),
-        LIGHT_GREEN(false),
-        LIGHT_YELLOW(false),
-        LIGHT_ORANGE(false),
-        LIGHT_RED(false);
+        APP_DEFAULT,
+        WHITE,
+        MATERIAL_YOU_NEUTRAL(true, false),
+        MATERIAL_YOU_PRIMARY(true, false),
+        MATERIAL_YOU_SECONDARY(true, false),
+        MATERIAL_YOU_TERTIARY(true, false),
+        CATPPUCCIN_LATTE,
+        LIGHT_PINK,
+        LIGHT_BLUE,
+        LIGHT_GREEN,
+        LIGHT_YELLOW,
+        LIGHT_ORANGE,
+        LIGHT_RED,
+        CUSTOM(false, true);
 
         private final boolean materialYou;
+        private final boolean custom;
 
-        LightThemeBackground(boolean materialYou) {
+        LightThemeBackground() {
+            this(false, false);
+        }
+
+        LightThemeBackground(boolean materialYou, boolean custom) {
             this.materialYou = materialYou;
+            this.custom = custom;
         }
 
         @Override
         public boolean isMaterialYou() {
             return materialYou;
         }
+
+        @Override
+        public boolean isCustom() {
+            return custom;
+        }
+    }
+
+    /**
+     * Availability of the custom dark background color.
+     */
+    public static final class CustomDarkBackgroundAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return isCustomBackgroundSupported()
+                    && SharedYouTubeSettings.THEME_BACKGROUND_DARK.get().isCustom();
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(SharedYouTubeSettings.THEME_BACKGROUND_DARK);
+        }
+    }
+
+    /**
+     * Availability of the custom light background color.
+     */
+    public static final class CustomLightBackgroundAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return isCustomBackgroundSupported()
+                    && SharedYouTubeSettings.THEME_BACKGROUND_LIGHT.get().isCustom();
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(SharedYouTubeSettings.THEME_BACKGROUND_LIGHT);
+        }
     }
 
     public static final String SETTINGS_KEY_DARK = "morphe_theme_background_dark";
     public static final String SETTINGS_KEY_LIGHT = "morphe_theme_background_light";
+    public static final String SETTINGS_KEY_DARK_CUSTOM_COLOR = "morphe_theme_background_dark_custom_color";
+    public static final String SETTINGS_KEY_LIGHT_CUSTOM_COLOR = "morphe_theme_background_light_custom_color";
 
     public static final DarkThemeBackground DEFAULT_DARK = DarkThemeBackground.PURE_BLACK;
     public static final LightThemeBackground DEFAULT_LIGHT = LightThemeBackground.WHITE;
+    public static final String DEFAULT_DARK_CUSTOM_COLOR = "#0F0F0F";
+    public static final String DEFAULT_LIGHT_CUSTOM_COLOR = "#FFFFFF";
 
     /**
      * Config value of {@code APP_DEFAULT}. No resource variant uses it, so the app colors are used.
@@ -131,6 +208,20 @@ public class ThemeBackgroundPatch {
     private static int lightConfigValue = -1;
 
     /**
+     * If a background of the user is in use and its overlay must be loaded into every context.
+     */
+    private static boolean useOverlay;
+
+    /**
+     * If a background color of the user can be applied. An overlay that an app registers for
+     * itself exists since Android 14, and no color can be added to the app on older versions.
+     */
+    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+    public static boolean isCustomBackgroundSupported() {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
+    }
+
+    /**
      * Injection point.
      * <p>
      * Called with the base context of every context of the app that attaches one.
@@ -144,16 +235,23 @@ public class ThemeBackgroundPatch {
             resolveConfigValues(base);
 
             Configuration configuration = base.getResources().getConfiguration();
+            Context context;
             if (configuration.mcc == darkConfigValue && configuration.mnc == lightConfigValue) {
                 // Context is created from a context that is already wrapped.
-                return base;
+                context = base;
+            } else {
+                Configuration override = new Configuration(configuration);
+                override.mcc = darkConfigValue;
+                override.mnc = lightConfigValue;
+
+                context = base.createConfigurationContext(override);
             }
 
-            Configuration override = new Configuration(configuration);
-            override.mcc = darkConfigValue;
-            override.mnc = lightConfigValue;
+            if (useOverlay) {
+                ThemeBackgroundOverlay.applyTo(context);
+            }
 
-            return base.createConfigurationContext(override);
+            return context;
         } catch (Exception ex) {
             Logger.printException(() -> "wrapContext failure", ex);
             return base;
@@ -177,36 +275,125 @@ public class ThemeBackgroundPatch {
             Logger.printInfo(() -> "Could not load preferences", ex);
         }
 
-        darkConfigValue = configValue(preferences, SETTINGS_KEY_DARK,
+        Background dark = selectedBackground(preferences, SETTINGS_KEY_DARK,
                 DarkThemeBackground.values(), DEFAULT_DARK);
-        lightConfigValue = configValue(preferences, SETTINGS_KEY_LIGHT,
+        Background light = selectedBackground(preferences, SETTINGS_KEY_LIGHT,
                 LightThemeBackground.values(), DEFAULT_LIGHT);
+
+        darkConfigValue = configValue(dark);
+        lightConfigValue = configValue(light);
 
         Logger.printDebug(() -> "Theme background config values: "
                 + darkConfigValue + " " + lightConfigValue);
+
+        updateOverlay(context, preferences, dark, light);
     }
 
-    private static int configValue(@Nullable SharedPreferences preferences, String key,
-                                   Background[] values, @NonNull Background defaultValue) {
-        Background selected = defaultValue;
+    private static Background selectedBackground(@Nullable SharedPreferences preferences, String key,
+                                                 Background[] values, @NonNull Background defaultValue) {
+        if (preferences == null) {
+            return defaultValue;
+        }
 
-        if (preferences != null) {
-            String name = preferences.getString(key, null);
-            if (name != null) {
-                for (Background value : values) {
-                    if (((Enum<?>) value).name().equals(name)) {
-                        selected = value;
-                        break;
-                    }
+        String name = preferences.getString(key, null);
+        if (name != null) {
+            for (Background value : values) {
+                if (((Enum<?>) value).name().equals(name)) {
+                    return value;
                 }
             }
         }
 
-        if (selected.isMaterialYou() && Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+        return defaultValue;
+    }
+
+    private static int configValue(Background background) {
+        if (background.isMaterialYou() && Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
             // Material You colors do not exist and resolving them crashes the app.
             return APP_DEFAULT_CONFIG_VALUE;
         }
 
-        return ((Enum<?>) selected).ordinal() + 1;
+        // A custom background has no resource variant of its own,
+        // the color resources are replaced by the overlay instead.
+        return ((Enum<?>) background).ordinal() + 1;
+    }
+
+    /**
+     * Registers, updates or removes the overlay that gives the color resources of the app the
+     * color the user picked.
+     */
+    private static void updateOverlay(Context context, @Nullable SharedPreferences preferences,
+                                      Background dark, Background light) {
+        if (preferences == null || !isCustomBackgroundSupported()) {
+            return;
+        }
+
+        useOverlay = dark.isCustom() || light.isCustom();
+
+        try {
+            if (!useOverlay) {
+                ThemeBackgroundOverlay.unregisterIfRegistered(context);
+                return;
+            }
+
+            Map<String, Integer> colors = new LinkedHashMap<>();
+
+            if (dark.isCustom()) {
+                addOverlayColors(colors, darkColorResourceNames(),
+                        preferences.getString(SETTINGS_KEY_DARK_CUSTOM_COLOR, DEFAULT_DARK_CUSTOM_COLOR),
+                        DEFAULT_DARK_CUSTOM_COLOR);
+            }
+
+            if (light.isCustom()) {
+                addOverlayColors(colors, lightColorResourceNames(),
+                        preferences.getString(SETTINGS_KEY_LIGHT_CUSTOM_COLOR, DEFAULT_LIGHT_CUSTOM_COLOR),
+                        DEFAULT_LIGHT_CUSTOM_COLOR);
+            }
+
+            // The system deletes an overlay of the app when the app is installed again, so it is
+            // registered on every start and not only after the user picks another color.
+            ThemeBackgroundOverlay.register(context, colors);
+        } catch (Exception ex) {
+            // Overlays are a part of the system and a manufacturer can change how they behave.
+            Logger.printException(() -> "Could not update the overlay of the app", ex);
+        }
+    }
+
+    private static void addOverlayColors(Map<String, Integer> colors, String resourceNames,
+                                         String colorString, String defaultColor) {
+        int color;
+        try {
+            color = Color.parseColor(colorString);
+        } catch (IllegalArgumentException ex) {
+            Logger.printInfo(() -> "Using default, and ignoring invalid color: " + colorString);
+            color = Color.parseColor(defaultColor);
+        }
+
+        // A background must be opaque, otherwise the app draws over itself.
+        color |= 0xFF000000;
+
+        for (String resourceName : resourceNames.split(",")) {
+            if (!resourceName.isEmpty()) {
+                colors.put(resourceName, color);
+            }
+        }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Names of the dark background color resources, separated by a comma.
+     */
+    private static String darkColorResourceNames() {
+        return ""; // Modified during patching.
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Names of the light background color resources, separated by a comma.
+     */
+    private static String lightColorResourceNames() {
+        return ""; // Modified during patching.
     }
 }

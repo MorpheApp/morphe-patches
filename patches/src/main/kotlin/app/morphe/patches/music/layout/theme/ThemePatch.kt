@@ -19,13 +19,26 @@ import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_DARK_COLOR_NAMES
 import app.morphe.patches.shared.layout.theme.baseThemePatch
 import app.morphe.patches.shared.layout.theme.baseThemeResourcePatch
+import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
+import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/theme/ThemePatch;"
+
+private val darkColorNames = {
+    THEME_DEFAULT_DARK_COLOR_NAMES + setOf(
+        "yt_black_pure",
+        "yt_black_pure_opacity80",
+        "ytm_color_grey_12",
+        "material_grey_800"
+    )
+}
 
 @Suppress("unused")
 val themePatch = baseThemePatch(
     extensionClassDescriptor = EXTENSION_CLASS,
+    darkColorNames = darkColorNames,
     useModernLithoColorHook = {
         is_9_30_or_greater
     },
@@ -35,14 +48,7 @@ val themePatch = baseThemePatch(
             settingsPatch,
             versionCheckPatch,
             baseThemeResourcePatch(
-                darkColorNames = {
-                    THEME_DEFAULT_DARK_COLOR_NAMES + setOf(
-                        "yt_black_pure",
-                        "yt_black_pure_opacity80",
-                        "ytm_color_grey_12",
-                        "material_grey_800"
-                    )
-                }
+                darkColorNames = darkColorNames
             )
         )
 
@@ -51,7 +57,14 @@ val themePatch = baseThemePatch(
 
     executeBlock = {
         PreferenceScreen.GENERAL.addPreferences(
-            ListPreference("morphe_theme_background_dark")
+            noTitleUnsortedPreferenceCategory(
+                ListPreference("morphe_theme_background_dark"),
+                TextPreference(
+                    "morphe_theme_background_dark_custom_color",
+                    tag = "app.morphe.extension.shared.settings.preference.ColorPickerPreference",
+                    inputType = InputType.TEXT_CAP_CHARACTERS
+                )
+            )
         )
     }
 )

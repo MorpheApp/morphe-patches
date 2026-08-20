@@ -42,6 +42,10 @@ public class SharedYouTubeSettings extends BaseSettings {
     public static final EnumSetting<DarkThemeBackground> THEME_BACKGROUND_DARK = new EnumSetting<>(ThemeBackgroundPatch.SETTINGS_KEY_DARK, ThemeBackgroundPatch.DEFAULT_DARK, true);
     @SuppressWarnings("unused")
     public static final EnumSetting<LightThemeBackground> THEME_BACKGROUND_LIGHT = new EnumSetting<>(ThemeBackgroundPatch.SETTINGS_KEY_LIGHT, ThemeBackgroundPatch.DEFAULT_LIGHT, true);
+    @SuppressWarnings("unused")
+    public static final StringSetting THEME_BACKGROUND_DARK_CUSTOM_COLOR = new StringSetting(ThemeBackgroundPatch.SETTINGS_KEY_DARK_CUSTOM_COLOR, ThemeBackgroundPatch.DEFAULT_DARK_CUSTOM_COLOR, true, new ThemeBackgroundPatch.CustomDarkBackgroundAvailability());
+    @SuppressWarnings("unused")
+    public static final StringSetting THEME_BACKGROUND_LIGHT_CUSTOM_COLOR = new StringSetting(ThemeBackgroundPatch.SETTINGS_KEY_LIGHT_CUSTOM_COLOR, ThemeBackgroundPatch.DEFAULT_LIGHT_CUSTOM_COLOR, true, new ThemeBackgroundPatch.CustomLightBackgroundAvailability());
 
     public static final EnumSetting<BrandingTheme> CUSTOM_BRANDING_ICON = new EnumSetting<>("morphe_custom_branding_icon", CustomBrandingPatch.getDefaultIconStyle(), true);
     public static final EnumSetting<NotificationIconTheme> CUSTOM_BRANDING_NOTIFICATION_ICON = new EnumSetting<>("morphe_custom_branding_notification_icon", NotificationIconTheme.FOLLOW, true);

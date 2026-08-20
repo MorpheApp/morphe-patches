@@ -43,9 +43,35 @@ import org.w3c.dom.Element
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/theme/ThemePatch;"
 
+private val darkColorNames = {
+    THEME_DEFAULT_DARK_COLOR_NAMES + if (is_21_06_or_greater)
+        setOf(
+            // yt_ref_color_constants_baseline_black_black0
+            // yt_ref_color_constants_baseline_black_black1
+            // yt_ref_color_constants_baseline_black_black3
+            "yt_sys_color_baseline_dark_menu_background",
+            "yt_sys_color_baseline_dark_static_black",
+            "yt_sys_color_baseline_dark_raised_background",
+            "yt_sys_color_baseline_dark_base_background",
+            "yt_sys_color_baseline_light_inverted_background",
+            "yt_sys_color_baseline_light_static_black"
+        ) else emptySet()
+}
+
+private val lightColorNames = {
+    THEME_DEFAULT_LIGHT_COLOR_NAMES + if (is_21_06_or_greater)
+        setOf(
+            "yt_sys_color_baseline_light_base_background",
+            "yt_sys_color_baseline_light_raised_background"
+        )
+    else emptySet()
+}
+
 val themePatch = baseThemePatch(
     extensionClassDescriptor = EXTENSION_CLASS,
     includeLightBackground = true,
+    darkColorNames = darkColorNames,
+    lightColorNames = lightColorNames,
     useModernLithoColorHook = {
         is_21_30_or_greater
     },
@@ -188,28 +214,8 @@ val themePatch = baseThemePatch(
             versionCheckPatch,
             baseThemeResourcePatch(
                 includeLightBackground = true,
-                darkColorNames = {
-                    THEME_DEFAULT_DARK_COLOR_NAMES + if (is_21_06_or_greater)
-                        setOf(
-                            // yt_ref_color_constants_baseline_black_black0
-                            // yt_ref_color_constants_baseline_black_black1
-                            // yt_ref_color_constants_baseline_black_black3
-                            "yt_sys_color_baseline_dark_menu_background",
-                            "yt_sys_color_baseline_dark_static_black",
-                            "yt_sys_color_baseline_dark_raised_background",
-                            "yt_sys_color_baseline_dark_base_background",
-                            "yt_sys_color_baseline_light_inverted_background",
-                            "yt_sys_color_baseline_light_static_black"
-                        ) else emptySet()
-                },
-                lightColorNames = {
-                    THEME_DEFAULT_LIGHT_COLOR_NAMES + if (is_21_06_or_greater)
-                        setOf(
-                            "yt_sys_color_baseline_light_base_background",
-                            "yt_sys_color_baseline_light_raised_background"
-                        )
-                    else emptySet()
-                }
+                darkColorNames = darkColorNames,
+                lightColorNames = lightColorNames
             ),
             themeResourcePatch
         )
@@ -221,7 +227,17 @@ val themePatch = baseThemePatch(
         PreferenceScreen.GENERAL.addPreferences(
             noTitleUnsortedPreferenceCategory(
                 ListPreference("morphe_theme_background_dark"),
-                ListPreference("morphe_theme_background_light")
+                TextPreference(
+                    "morphe_theme_background_dark_custom_color",
+                    tag = "app.morphe.extension.shared.settings.preference.ColorPickerPreference",
+                    inputType = InputType.TEXT_CAP_CHARACTERS
+                ),
+                ListPreference("morphe_theme_background_light"),
+                TextPreference(
+                    "morphe_theme_background_light_custom_color",
+                    tag = "app.morphe.extension.shared.settings.preference.ColorPickerPreference",
+                    inputType = InputType.TEXT_CAP_CHARACTERS
+                )
             ),
             SwitchPreference("morphe_gradient_loading_screen", summary = true)
         )

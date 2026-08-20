@@ -236,6 +236,7 @@
         <item>@string/morphe_theme_background_light_entry_11</item>
         <item>@string/morphe_theme_background_light_entry_12</item>
         <item>@string/morphe_theme_background_light_entry_13</item>
+        <item>@string/morphe_theme_background_light_entry_14</item>
     </string-array>
     <string-array name="morphe_theme_background_light_entry_values">
         <item>APP_DEFAULT</item>
@@ -251,6 +252,7 @@
         <item>LIGHT_YELLOW</item>
         <item>LIGHT_ORANGE</item>
         <item>LIGHT_RED</item>
+        <item>CUSTOM</item>
     </string-array>
 
     <!-- Since the 30fps looks bad, and the 2/5 second styles are not useful

@@ -1085,6 +1085,9 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <string name="morphe_theme_background_light_entry_11">Light yellow</string>
     <string name="morphe_theme_background_light_entry_12">Light orange</string>
     <string name="morphe_theme_background_light_entry_13">Light red</string>
+    <string name="morphe_theme_background_light_entry_14">Custom</string>
+    <string name="morphe_theme_background_light_custom_color_title">Custom light background</string>
+    <string name="morphe_theme_background_light_custom_color_summary">Set the background color of the light theme</string>
     <string name="morphe_gradient_loading_screen_title">Enable gradient loading screen</string>
     <string name="morphe_gradient_loading_screen_summary">Shows a gradient background on the loading screen instead of a solid color</string>
     <string name="morphe_splash_screen_animation_style_title">Splash screen style</string>

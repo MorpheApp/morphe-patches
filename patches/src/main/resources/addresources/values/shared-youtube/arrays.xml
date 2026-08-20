@@ -78,6 +78,7 @@
         <item>@string/morphe_theme_background_dark_entry_13</item>
         <item>@string/morphe_theme_background_dark_entry_14</item>
         <item>@string/morphe_theme_background_dark_entry_15</item>
+        <item>@string/morphe_theme_background_dark_entry_16</item>
     </string-array>
     <string-array name="morphe_theme_background_dark_entry_values">
         <item>APP_DEFAULT</item>
@@ -95,5 +96,6 @@
         <item>DARK_YELLOW</item>
         <item>DARK_ORANGE</item>
         <item>DARK_RED</item>
+        <item>CUSTOM</item>
     </string-array>
 </resources>

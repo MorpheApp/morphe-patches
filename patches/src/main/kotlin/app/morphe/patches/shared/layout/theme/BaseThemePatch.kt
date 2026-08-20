@@ -18,10 +18,18 @@ import app.morphe.patcher.patch.ResourcePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.overrideThemeColors
+import app.morphe.util.asSequence
 import app.morphe.util.findMutableMethodOf
+import app.morphe.util.returnEarly
+import org.w3c.dom.Element
 
-private const val THEME_BACKGROUND_EXTENSION_CLASS =
+internal const val THEME_BACKGROUND_EXTENSION_CLASS =
     "Lapp/morphe/extension/shared/theme/ThemeBackgroundPatch;"
+
+/**
+ * Must be identical to the name the extension uses with `FabricatedOverlay#setTargetOverlayable`.
+ */
+private const val THEME_BACKGROUND_OVERLAYABLE_NAME = "MorpheThemeBackground"
 
 /**
  * Background colors that can be selected in the app settings.
@@ -49,6 +57,7 @@ private val THEME_DARK_BACKGROUNDS = listOf(
     "#282900",                              // DARK_YELLOW
     "#291800",                              // DARK_ORANGE
     "#290000",                              // DARK_RED
+    null,                                   // CUSTOM
 )
 
 /**
@@ -70,6 +79,7 @@ private val THEME_LIGHT_BACKGROUNDS = listOf(
     "#FDFFCC",                              // LIGHT_YELLOW
     "#FFE6CC",                              // LIGHT_ORANGE
     "#FFD6D6",                              // LIGHT_RED
+    null,                                   // CUSTOM
 )
 
 /**
@@ -142,6 +152,8 @@ private val themeBackgroundContextHookPatch = bytecodePatch {
 internal fun baseThemePatch(
     extensionClassDescriptor: String,
     includeLightBackground: Boolean = false,
+    darkColorNames: (() -> Set<String>) = { THEME_DEFAULT_DARK_COLOR_NAMES },
+    lightColorNames: (() -> Set<String>) = { THEME_DEFAULT_LIGHT_COLOR_NAMES },
     useModernLithoColorHook: BytecodePatchBuilder.() -> Boolean,
     block: BytecodePatchBuilder.() -> Unit,
     executeBlock: BytecodePatchContext.() -> Unit = {}
@@ -165,6 +177,13 @@ internal fun baseThemePatch(
             APP_DARK_BACKGROUND_COLOR_NAME
         )
 
+        // A custom background color has no resource variant to select,
+        // so the extension replaces the same colors with an overlay of the app.
+        DarkColorResourceNamesFingerprint.method.returnEarly(darkColorNames().joinToString(","))
+        if (includeLightBackground) {
+            LightColorResourceNamesFingerprint.method.returnEarly(lightColorNames().joinToString(","))
+        }
+
         executeBlock()
 
         lithoColorOverrideHook(extensionClassDescriptor, "getValue")
@@ -187,6 +206,58 @@ internal fun baseThemeResourcePatch(
         if (includeLightBackground) {
             addBackgroundColorVariants("mnc", THEME_LIGHT_BACKGROUNDS, lightColorNames())
         }
+
+        declareOverlayableColors(
+            if (includeLightBackground) darkColorNames() + lightColorNames() else darkColorNames()
+        )
+    }
+}
+
+/**
+ * Declares the background colors as overlayable, which an overlay the app registers for itself
+ * requires. Without this the system rejects the overlay of a custom background color.
+ */
+private fun ResourcePatchContext.declareOverlayableColors(colorNames: Set<String>) {
+    // A policy item is resolved while encoding, so a color that this app version
+    // does not have must not be declared.
+    val declaredColors = mutableSetOf<String>()
+    document("res/values/colors.xml").use { document ->
+        (document.getElementsByTagName("resources").item(0) as Element)
+            .childNodes.asSequence()
+            .filterIsInstance<Element>()
+            .forEach { declaredColors += it.getAttribute("name") }
+    }
+
+    val overlayableColors = colorNames.filter { it in declaredColors }
+    if (overlayableColors.isEmpty()) {
+        throw PatchException("Could not find any background color to declare as overlayable")
+    }
+
+    val overlayable = buildString {
+        appendLine("    <overlayable name=\"$THEME_BACKGROUND_OVERLAYABLE_NAME\">")
+        appendLine("        <policy type=\"public\">")
+        overlayableColors.forEach { name ->
+            appendLine("            <item type=\"color\" name=\"$name\" />")
+        }
+        appendLine("        </policy>")
+        appendLine("    </overlayable>")
+    }
+
+    // The app can declare overlayables of its own, and those must be kept.
+    val overlayableFile = get("res").resolve("values/overlayable.xml")
+    if (overlayableFile.exists()) {
+        overlayableFile.writeText(
+            overlayableFile.readText().replaceFirst("</resources>", "$overlayable</resources>")
+        )
+    } else {
+        overlayableFile.writeText(
+            buildString {
+                appendLine("<?xml version=\"1.0\" encoding=\"utf-8\"?>")
+                appendLine("<resources>")
+                append(overlayable)
+                appendLine("</resources>")
+            }
+        )
     }
 }
 
@@ -207,9 +278,8 @@ private fun ResourcePatchContext.addBackgroundColorVariants(
 
         // The configuration value of a background is its index plus one,
         // and the extension uses the same numbering.
-        val variantDirectory = resourceDirectory.resolve(
-            "values-$qualifier" + "%03d".format(index + 1)
-        )
+        val variantValue = "%03d".format(index + 1)
+        val variantDirectory = resourceDirectory.resolve("values-$qualifier$variantValue")
         variantDirectory.mkdirs()
 
         variantDirectory.resolve("colors.xml").writeText(
