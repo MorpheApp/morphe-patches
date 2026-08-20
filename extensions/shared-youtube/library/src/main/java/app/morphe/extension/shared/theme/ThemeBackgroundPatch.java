@@ -448,6 +448,50 @@ public class ThemeBackgroundPatch {
         }
     }
 
+    /**
+     * The color of the new content indicator, or null to keep the color of the app.
+     * <p>
+     * A Material You background does not go with the red of the app, which is why the indicator
+     * follows the same palette. Every other background keeps the app color.
+     */
+    @Nullable
+    public static Integer getIndicatorColor(Context context) {
+        try {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+                return null;
+            }
+
+            final boolean dark = Utils.isDarkModeEnabled();
+            Background background = dark
+                    ? SharedYouTubeSettings.THEME_BACKGROUND_DARK.get()
+                    : SharedYouTubeSettings.THEME_BACKGROUND_LIGHT.get();
+
+            if (!background.isMaterialYou()) {
+                return null;
+            }
+
+            return context.getColor(dark
+                    ? android.R.color.system_accent1_100
+                    : android.R.color.system_accent1_200);
+        } catch (Exception ex) {
+            Logger.printException(() -> "getIndicatorColor failure", ex);
+            return null;
+        }
+    }
+
+    /**
+     * The color of the text of the new content count, which must be readable
+     * on {@link #getIndicatorColor(Context)}.
+     */
+    public static int getIndicatorTextColor(Context context) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            return context.getColor(android.R.color.system_neutral1_900);
+        }
+
+        // Never reached, an indicator color exists only with a Material You background.
+        return Color.BLACK;
+    }
+
     private static int customColor(boolean dark) {
         String colorString = dark
                 ? SharedYouTubeSettings.THEME_BACKGROUND_DARK_CUSTOM_COLOR.get()

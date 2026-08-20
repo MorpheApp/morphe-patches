@@ -10,6 +10,7 @@
 
 package app.morphe.patches.youtube.layout.theme
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
@@ -36,7 +37,9 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.forEachChildElement
+import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
+import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import org.w3c.dom.Element
@@ -210,6 +213,7 @@ val themePatch = baseThemePatch(
         dependsOn(
             sharedExtensionPatch,
             settingsPatch,
+            resourceMappingPatch,
             seekbarColorPatch,
             versionCheckPatch,
             baseThemeResourcePatch(
@@ -269,6 +273,28 @@ val themePatch = baseThemePatch(
         PreferenceScreen.GENERAL.addPreferences(
             ListPreference("morphe_splash_screen_animation_style")
         )
+
+        // Color of the new content indicator of the pivot bar, which is red in the app and does
+        // not go with a Material You background.
+        PivotBarNewContentDotFingerprint.let {
+            it.method.apply {
+                // Both the dot of a tab and the count next to it, and the count is hooked
+                // first so the index of the dot is still valid.
+                val countIndex = indexOfFirstInstructionOrThrow(it.instructionMatches[3].index) {
+                    opcode == Opcode.CHECK_CAST
+                }
+
+                arrayOf(countIndex, it.instructionMatches[2].index).forEach { checkCastIndex ->
+                    val stubRegister = getInstruction<OneRegisterInstruction>(checkCastIndex).registerA
+
+                    addInstruction(
+                        checkCastIndex + 1,
+                        "invoke-static { v$stubRegister }, $EXTENSION_CLASS" +
+                                "->onNewContentIndicator(Landroid/view/ViewStub;)V"
+                    )
+                }
+            }
+        }
 
         UseGradientLoadingScreenFingerprint.matchAll().forEach {
             it.method.insertLiteralOverride(

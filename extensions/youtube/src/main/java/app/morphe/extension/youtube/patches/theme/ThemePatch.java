@@ -1,9 +1,16 @@
 package app.morphe.extension.youtube.patches.theme;
 
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.view.View;
+import android.view.ViewStub;
+import android.widget.TextView;
+
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.theme.BaseThemePatch;
+import app.morphe.extension.shared.theme.ThemeBackgroundPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -67,6 +74,48 @@ public class ThemePatch extends BaseThemePatch {
      */
     public static int getValue(int originalValue) {
         return processColorValue(originalValue, DARK_VALUES, WHITE_VALUES);
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called with the view stub of a new content indicator of the pivot bar, which is the dot
+     * of a tab and the count next to it, before either is shown.
+     */
+    public static void onNewContentIndicator(ViewStub stub) {
+        try {
+            stub.setOnInflateListener((inflatedStub, view) -> {
+                Integer color = ThemeBackgroundPatch.getIndicatorColor(view.getContext());
+                if (color == null) {
+                    return;
+                }
+
+                setIndicatorColor(view, color);
+
+                // The pivot bar can set the background of an indicator after it is inflated,
+                // and the color is applied again after the app is done with the view.
+                view.post(() -> setIndicatorColor(view, color));
+            });
+        } catch (Exception ex) {
+            Logger.printException(() -> "onNewContentIndicator failure", ex);
+        }
+    }
+
+    private static void setIndicatorColor(View view, int color) {
+        Drawable background = view.getBackground();
+
+        // Both indicators are a shape with a stroke of the app background color, and only the
+        // fill of the shape is replaced. Mutate is needed, otherwise every user of the
+        // drawable is changed as well.
+        if (background instanceof GradientDrawable) {
+            ((GradientDrawable) background.mutate()).setColor(color);
+        }
+
+        // The count is a text view, and its text must stay readable on the new color.
+        if (view instanceof TextView) {
+            ((TextView) view).setTextColor(
+                    ThemeBackgroundPatch.getIndicatorTextColor(view.getContext()));
+        }
     }
 
     /**
