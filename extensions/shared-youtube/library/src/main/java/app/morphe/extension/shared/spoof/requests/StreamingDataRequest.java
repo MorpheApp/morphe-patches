@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.HashMap;
 import java.util.Objects;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
@@ -106,6 +107,7 @@ public class StreamingDataRequest {
 
     private static volatile ClientType lastSpoofedClientType;
     private static volatile boolean fallbackWithTVDash;
+    private static volatile Map<String, String> lastPlayerHeaders = Collections.emptyMap();
 
     /**
      * Used only for stats for nerds to show VR sign-in was used.
@@ -140,8 +142,20 @@ public class StreamingDataRequest {
     }
 
     public static void fetchRequest(String videoId, Map<String, String> fetchHeaders) {
+        // Keep the latest valid player headers so collection downloads can resolve tracks
+        // that have not been opened individually.
+        if (fetchHeaders != null && !fetchHeaders.isEmpty()) {
+            lastPlayerHeaders = new HashMap<>(fetchHeaders);
+        }
         // Always fetch, even if there is an existing request for the same video.
         cache.put(videoId, new StreamingDataRequest(videoId, fetchHeaders));
+    }
+
+    /** Resolve an arbitrary collection item using the latest YouTube Music player context. */
+    public static StreamingDataRequest fetchRequestForDownload(String videoId) {
+        StreamingDataRequest request = new StreamingDataRequest(videoId, new HashMap<>(lastPlayerHeaders));
+        cache.put(videoId, request);
+        return request;
     }
 
     @Nullable

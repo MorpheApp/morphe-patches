@@ -8,6 +8,9 @@
 package app.morphe.extension.music.patches;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
+import android.util.Base64;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -16,12 +19,15 @@ import com.facebook.litho.ComponentHost;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import app.morphe.extension.music.patches.downloads.CollectionDownloadManager;
+import app.morphe.extension.music.patches.downloads.LocalDownloadManager;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.SharedYouTubeSettings;
-import app.morphe.extension.shared.settings.preference.ExternalDownloaderPreference;
+import app.morphe.extension.shared.settings.BaseActivityHook;
 
 @SuppressWarnings("unused")
 public final class DownloadsPatch {
@@ -43,6 +49,9 @@ public final class DownloadsPatch {
 
     private static volatile long lastFlyoutDownloadTime;
     private static volatile long lastMainPlayerDownloadTime;
+    private static final Pattern PLAYLIST_ID = Pattern.compile(
+            "(?:OLAK5uy_|PL)[A-Za-z0-9_-]{16,}");
+    private static final Pattern ENCODED_TOKEN = Pattern.compile("[A-Za-z0-9_-]{32,}");
 
     /**
      * Injection point.
@@ -50,8 +59,7 @@ public final class DownloadsPatch {
      */
     public static void onLithoTextLoaded(Object conversionContext, CharSequence original) {
         try {
-            if (SharedYouTubeSettings.EXTERNAL_DOWNLOADER_ACTION_BUTTON.get() &&
-                    downloadButtonLabel.isEmpty() &&
+            if (downloadButtonLabel.isEmpty() &&
                     conversionContext.toString().contains("music_download_button.")) {
                 downloadButtonLabel = original.toString();
                 Logger.printDebug(() -> "Found download button label: " + downloadButtonLabel);
@@ -67,10 +75,48 @@ public final class DownloadsPatch {
 
     private static void launchExternalDownloader(String videoId) {
         cachedFlyoutVideoId = "";
-        // Do not clear download button label.
+        // Keep the existing click hooks, but handle the stream inside YouTube Music.
+        LocalDownloadManager.enqueue(videoId);
+    }
 
-        ExternalDownloaderPreference.launchExternalDownloader(
-                videoId, Utils.getActivity(), "https://music.youtube.com/watch?v=" + videoId);
+    private static void openLocalDownloads() {
+        Activity activity = Utils.getActivity();
+        if (activity == null) return;
+        Intent intent = new Intent();
+        intent.setClassName(activity, "com.google.android.gms.common.api.GoogleApiActivity");
+        intent.setPackage(activity.getPackageName());
+        intent.setData(Uri.parse(BaseActivityHook.MORPHE_DOWNLOADS_INTENT));
+        activity.startActivity(intent);
+    }
+
+    @Nullable
+    private static String extractPlaylistId(byte[] bytes) {
+        String raw = new String(bytes, StandardCharsets.ISO_8859_1);
+        Matcher direct = PLAYLIST_ID.matcher(raw);
+        if (direct.find()) return direct.group();
+        Matcher tokens = ENCODED_TOKEN.matcher(raw);
+        while (tokens.find()) {
+            String token = tokens.group();
+            for (int offset = 0; offset < Math.min(8, token.length()); offset++) {
+                try {
+                    byte[] decoded = Base64.decode(token.substring(offset), Base64.URL_SAFE | Base64.NO_WRAP);
+                    Matcher nested = PLAYLIST_ID.matcher(new String(decoded, StandardCharsets.ISO_8859_1));
+                    if (nested.find()) return nested.group();
+                } catch (Exception ignored) {}
+            }
+        }
+        return null;
+    }
+
+    private static boolean containsAscii(byte[] bytes, String value) {
+        byte[] target = value.getBytes(StandardCharsets.US_ASCII);
+        outer: for (int i = 0; i <= bytes.length - target.length; i++) {
+            for (int j = 0; j < target.length; j++) {
+                if (bytes[i + j] != target[j]) continue outer;
+            }
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -161,10 +207,28 @@ public final class DownloadsPatch {
     /**
      * Injection point.
      */
+    public static boolean offlineVideoEndpointOnClick(ProtocolBufferFieldInterface endpoint,
+                                                       @Nullable Map<Object, Object> map) {
+        try {
+            Utils.verifyOnMainThread();
+            String videoId = endpoint == null ? null : extractVideoIdFromCommand(endpoint);
+            if (videoId == null || videoId.isEmpty()) videoId = VideoInformation.getVideoId();
+            if (videoId == null || videoId.isEmpty()) return false;
+
+            long now = System.currentTimeMillis();
+            if (now - lastMainPlayerDownloadTime < IGNORE_DOUBLE_CLICK_DURATION_MS) return true;
+            lastMainPlayerDownloadTime = now;
+            launchExternalDownloader(videoId);
+            return true;
+        } catch (Exception ex) {
+            Logger.printException(() -> "offlineVideoEndpointOnClick failure", ex);
+            return false;
+        }
+    }
+
     public static boolean inAppDownloadButtonOnClick(@Nullable Map<Object, Object> map) {
         try {
-            if (!SharedYouTubeSettings.EXTERNAL_DOWNLOADER_ACTION_BUTTON.get()
-                    || downloadButtonLabel.isEmpty() || map == null) {
+            if (downloadButtonLabel.isEmpty() || map == null) {
                 return false;
             }
             Utils.verifyOnMainThread();
@@ -193,20 +257,27 @@ public final class DownloadsPatch {
      */
     public static boolean commandResolverOnClick(ProtocolBufferFieldInterface p1, Map<Object, Object> map) {
         try {
-            if (!SharedYouTubeSettings.EXTERNAL_DOWNLOADER_ACTION_BUTTON.get()
-                    || p1 == null || map == null) {
+            if (p1 == null || map == null) {
                 return false;
             }
             Utils.verifyOnMainThread();
+
+            byte[] commandBytes = p1.toByteArray();
+            if (commandBytes != null && containsAscii(commandBytes, "FEmusic_offline")) {
+                openLocalDownloads();
+                return true;
+            }
+
+            String playlistId = commandBytes == null ? null : extractPlaylistId(commandBytes);
+            if (playlistId != null) {
+                CollectionDownloadManager.enqueue(playlistId.startsWith("VL") ? playlistId.substring(2) : playlistId);
+                return true;
+            }
 
             if (inAppDownloadButtonOnClick(map)) {
                 Logger.printDebug(() -> "inAppDownloadButtonOnClicked");
                 cachedFlyoutVideoId = "";
                 return true;
-            }
-
-            if (!SharedYouTubeSettings.EXTERNAL_DOWNLOADER_FLYOUT_MENU.get()) {
-                return false;
             }
 
             String p1String = p1.toString();

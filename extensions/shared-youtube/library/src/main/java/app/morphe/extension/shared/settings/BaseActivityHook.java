@@ -25,6 +25,7 @@ import app.morphe.extension.shared.ui.Dim;
 public abstract class BaseActivityHook extends Activity {
 
     public static final String MORPHE_SETTINGS_INTENT = "morphe_settings_intent";
+    public static final String MORPHE_DOWNLOADS_INTENT = "morphe_downloads_intent";
     private static final int ID_MORPHE_SETTINGS_FRAGMENTS =
             ResourceUtils.getIdentifierOrThrow(ResourceType.ID, "morphe_settings_fragments");
     private static final int ID_MORPHE_TOOLBAR_PARENT =
@@ -64,7 +65,8 @@ public abstract class BaseActivityHook extends Activity {
 
             // Sanity check.
             String dataString = activity.getIntent().getDataString();
-            if (!MORPHE_SETTINGS_INTENT.equals(dataString)) {
+            if (!MORPHE_SETTINGS_INTENT.equals(dataString)
+                    && !MORPHE_DOWNLOADS_INTENT.equals(dataString)) {
                 Logger.printException(() -> "Unknown intent: " + dataString);
                 return;
             }
