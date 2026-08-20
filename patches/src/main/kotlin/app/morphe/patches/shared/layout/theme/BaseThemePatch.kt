@@ -10,6 +10,7 @@
 
 package app.morphe.patches.shared.layout.theme
 
+import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
@@ -19,8 +20,8 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.overrideThemeColors
 import app.morphe.util.asSequence
-import app.morphe.util.findMutableMethodOf
 import app.morphe.util.returnEarly
+import com.android.tools.smali.dexlib2.AccessFlags
 import org.w3c.dom.Element
 
 internal const val THEME_BACKGROUND_EXTENSION_CLASS =
@@ -117,31 +118,20 @@ internal val THEME_DEFAULT_LIGHT_COLOR_NAMES = setOf(
  */
 private val themeBackgroundContextHookPatch = bytecodePatch {
     execute {
-        var hookedContexts = 0
-
-        classDefForEach { classDef ->
-            val mutableClass by lazy { mutableClassDefBy(classDef) }
-
-            classDef.methods.forEach { method ->
-                if (method.name != "attachBaseContext" ||
-                    method.implementation == null ||
-                    method.parameterTypes.singleOrNull()?.toString() != "Landroid/content/Context;"
-                ) return@forEach
-
-                mutableClass.findMutableMethodOf(method).addInstructions(
-                    0,
-                    """
-                        invoke-static { p1 }, $THEME_BACKGROUND_EXTENSION_CLASS->wrapContext(Landroid/content/Context;)Landroid/content/Context;
-                        move-result-object p1
-                    """
-                )
-
-                hookedContexts++
+        Fingerprint(
+            name = "attachBaseContext",
+            parameters = listOf("Landroid/content/Context;"),
+            custom = { method, _ ->
+                !AccessFlags.STATIC.isSet(method.accessFlags)
             }
-        }
-
-        if (hookedContexts == 0) {
-            throw PatchException("Could not find a context to hook")
+        ).matchAll().forEach {
+            it.method.addInstructions(
+                0,
+                """
+                    invoke-static { p1 }, $THEME_BACKGROUND_EXTENSION_CLASS->wrapContext(Landroid/content/Context;)Landroid/content/Context;
+                    move-result-object p1
+                """
+            )
         }
     }
 }
@@ -159,8 +149,7 @@ internal fun baseThemePatch(
     executeBlock: BytecodePatchContext.() -> Unit = {}
 ) = bytecodePatch(
     name = "Theme",
-    description = "Adds options for theming, and adds a setting to change the app background " +
-            "color (defaults to pure black).",
+    description = "Adds options for theming, and adds a setting to change the app background color.",
 ) {
     block()
 

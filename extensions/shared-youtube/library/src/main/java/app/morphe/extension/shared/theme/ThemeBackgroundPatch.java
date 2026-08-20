@@ -310,7 +310,7 @@ public class ThemeBackgroundPatch {
 
     private static int configValue(@Nullable SharedPreferences preferences, Background background, boolean dark) {
         if (background.isMaterialYou() && Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
-            // Material You colors do not exist and resolving them crashes the app.
+            // Material-You colors do not exist and resolving them crashes the app.
             return APP_DEFAULT_CONFIG_VALUE;
         }
 
@@ -336,13 +336,13 @@ public class ThemeBackgroundPatch {
             color = Color.parseColor(defaultColor);
         }
 
-        int r = (color >> 16) & 0xFF;
-        int g = (color >> 8) & 0xFF;
-        int b = color & 0xFF;
+        final int r = (color >> 16) & 0xFF;
+        final int g = (color >> 8) & 0xFF;
+        final int b = color & 0xFF;
 
-        int r3 = Math.round(r * 7f / 255f);
-        int g3 = Math.round(g * 7f / 255f);
-        int b3 = Math.round(b * 7f / 255f);
+        final int r3 = Math.round(r * 7f / 255f);
+        final int g3 = Math.round(g * 7f / 255f);
+        final int b3 = Math.round(b * 7f / 255f);
 
         return (r3 << 6) | (g3 << 3) | b3;
     }
