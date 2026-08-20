@@ -45,7 +45,6 @@ public final class DownloadsPatch {
     private static final int IGNORE_DOUBLE_CLICK_DURATION_MS = 1000;
 
     private static volatile String cachedFlyoutVideoId = "";
-    private static volatile String cachedCollectionId = "";
     private static volatile String downloadButtonLabel = "";
 
     private static volatile long lastFlyoutDownloadTime;
@@ -291,14 +290,6 @@ public final class DownloadsPatch {
             String collectionId = commandBytes == null ? null : extractPlaylistId(commandBytes);
             if (collectionId != null && isDownloadSender(map)) {
                 CollectionDownloadManager.enqueue(collectionId.startsWith("VL") ? collectionId.substring(2) : collectionId);
-                return true;
-            }
-
-            String commandCollectionId = commandBytes == null ? null : extractPlaylistId(commandBytes);
-            if (commandCollectionId != null) cachedCollectionId = commandCollectionId.startsWith("VL")
-                    ? commandCollectionId.substring(2) : commandCollectionId;
-            if (isDownloadSender(map) && !cachedCollectionId.isEmpty()) {
-                CollectionDownloadManager.enqueue(cachedCollectionId);
                 return true;
             }
 
