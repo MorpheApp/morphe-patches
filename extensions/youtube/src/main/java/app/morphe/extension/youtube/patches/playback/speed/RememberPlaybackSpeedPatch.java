@@ -31,7 +31,7 @@ public final class RememberPlaybackSpeedPatch {
 
     private static volatile boolean newVideoStarted;
 
-    private static volatile boolean newAudioStarted; // Actually video, just a flag for audio pitch
+    private static volatile boolean newAudioStarted = true; // Actually video, just a flag for audio pitch
 
     private static long lastTimeSpeedChanged;
 

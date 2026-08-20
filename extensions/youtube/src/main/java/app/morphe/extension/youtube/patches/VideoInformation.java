@@ -245,15 +245,17 @@ public final class VideoInformation {
             // playbackSpeed = DEFAULT_PLAYBACK_SPEED; // Captured at video start, interferes otherwise.
             playbackSpeedFormattedString = "";
             final float audioPitchOverride = RememberPlaybackSpeedPatch.getPlaybackAudioPitchOverride();
-            final boolean noRegularVideoPlaying = PlayerType.getCurrent().isNoneOrHidden();
+            final PlayerType playerType = PlayerType.getCurrent();
+            final boolean noWatchWhilePlayerActive = playerType.isNoneOrHidden() ||
+                    playerType == PlayerType.INLINE_MINIMAL;
             final float newPlaybackAudioPitch = audioPitchOverride > 0.0f &&
                     isPlaybackAudioPitchEnabled() && Settings.PLAYBACK_AUDIO_TIME_STRETCHING.get()
                     ? audioPitchOverride
-                    : !isPlaybackAudioPitchEnabled() || noRegularVideoPlaying
+                    : !isPlaybackAudioPitchEnabled() || noWatchWhilePlayerActive
                             ? DEFAULT_PLAYBACK_AUDIO_PITCH
                             : playbackAudioPitch;
             if (playbackAudioPitch != newPlaybackAudioPitch ||
-                    (noRegularVideoPlaying && newPlaybackAudioPitch != DEFAULT_PLAYBACK_AUDIO_PITCH)) {
+                    (noWatchWhilePlayerActive && newPlaybackAudioPitch != DEFAULT_PLAYBACK_AUDIO_PITCH)) {
                 playbackAudioPitch = newPlaybackAudioPitch;
                 playbackAudioPitchNeedsApplying = true;
             }
@@ -813,12 +815,16 @@ public final class VideoInformation {
             return;
         }
 
-        updatePlaybackSpeedValue(playbackSpeed);
+        final boolean playbackSpeedChanged = updatePlaybackSpeedValue(playbackSpeed);
         if (isPlaybackAudioPitchLinked()) {
             updatePlaybackAudioPitchValue(playbackSpeed);
         }
-        playbackAudioPitchNeedsApplying = false;
+        final float playbackAudioPitchToApply = playbackAudioPitch;
         currentPlaybackSpeedMenuInterface.patch_setSpeed(playbackSpeed);
+        if (playbackAudioPitchNeedsApplying && !playbackSpeedChanged) {
+            setPlaybackParameters(playbackSpeed, playbackAudioPitchToApply);
+        }
+        playbackAudioPitchNeedsApplying = false;
     }
 
     /**
