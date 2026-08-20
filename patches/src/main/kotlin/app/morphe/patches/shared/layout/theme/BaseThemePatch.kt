@@ -23,6 +23,7 @@ import app.morphe.util.asSequence
 import app.morphe.util.returnEarly
 import com.android.tools.smali.dexlib2.AccessFlags
 import org.w3c.dom.Element
+import kotlin.math.roundToInt
 
 internal const val THEME_BACKGROUND_EXTENSION_CLASS =
     "Lapp/morphe/extension/shared/theme/ThemeBackgroundPatch;"
@@ -292,9 +293,9 @@ private fun ResourcePatchContext.add9BitColorVariants(
         val g3 = (index shr 3) and 0x7
         val b3 = index and 0x7
 
-        val r = Math.round(r3 * 255f / 7f)
-        val g = Math.round(g3 * 255f / 7f)
-        val b = Math.round(b3 * 255f / 7f)
+        val r = (r3 * 255f / 7f).roundToInt()
+        val g = (g3 * 255f / 7f).roundToInt()
+        val b = (b3 * 255f / 7f).roundToInt()
 
         val color = "#%02X%02X%02X".format(r, g, b)
         val variantValue = "%03d".format(100 + index)

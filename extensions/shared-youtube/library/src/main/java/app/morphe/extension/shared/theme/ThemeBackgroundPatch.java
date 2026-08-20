@@ -18,6 +18,7 @@ import android.graphics.Color;
 import android.os.Build;
 
 import androidx.annotation.ChecksSdkIntAtLeast;
+import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
 
 import java.util.LinkedHashMap;
@@ -28,7 +29,6 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.EnumSetting;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.StringSetting;
 
@@ -68,11 +68,6 @@ public class ThemeBackgroundPatch {
         boolean isCustom();
     }
 
-    /**
-     * Important: Existing values cannot be renamed or removed, and new values can only be appended.
-     * The ordinal of a value selects its resource variant, so changing the order of this enum
-     * changes the background of everyone who already selected one.
-     */
     public enum DarkThemeBackground implements Background {
         APP_DEFAULT,
         PURE_BLACK,
@@ -114,9 +109,6 @@ public class ThemeBackgroundPatch {
         }
     }
 
-    /**
-     * @see DarkThemeBackground
-     */
     public enum LightThemeBackground implements Background {
         APP_DEFAULT,
         WHITE,
@@ -259,31 +251,18 @@ public class ThemeBackgroundPatch {
             return;
         }
 
-        Background dark = selectedBackground(THEME_BACKGROUND_DARK, DarkThemeBackground.values());
-        Background light = selectedBackground(THEME_BACKGROUND_LIGHT, LightThemeBackground.values());
+        Background dark = THEME_BACKGROUND_DARK.get();
+        Background light = THEME_BACKGROUND_LIGHT.get();
+        Logger.printDebug(() -> "Theme dark: " + darkConfigValue + " light:" + lightConfigValue);
 
         darkConfigValue = configValue(dark, true);
         lightConfigValue = configValue(light, false);
 
-        Logger.printDebug(() -> "Theme background config values: " + darkConfigValue + " " + lightConfigValue);
-
         updateOverlay(context, dark, light);
     }
 
-    private static Background selectedBackground(EnumSetting<? extends Background> setting,
-                                                 Background[] values) {
-        Enum<?> name = setting.get();
-        for (Background value : values) {
-            if (value.equals(name)) {
-                return value;
-            }
-        }
-
-        return setting.defaultValue;
-    }
-
     private static int configValue(Background background, boolean dark) {
-        if (background.isMaterialYou() && Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S && background.isMaterialYou()) {
             // Material-You colors do not exist and resolving them crashes the app.
             return APP_DEFAULT_CONFIG_VALUE;
         }
@@ -292,9 +271,7 @@ public class ThemeBackgroundPatch {
             StringSetting setting = dark
                     ? THEME_BACKGROUND_DARK_CUSTOM_COLOR
                     : THEME_BACKGROUND_LIGHT_CUSTOM_COLOR;
-            String colorString = setting.get();
-
-            return 100 + get9BitColorIndex(colorString, setting.defaultValue);
+            return 100 + get9BitColorIndex(setting);
         }
 
         // A custom background has no resource variant of its own,
@@ -302,13 +279,14 @@ public class ThemeBackgroundPatch {
         return ((Enum<?>) background).ordinal() + 1;
     }
 
-    private static int get9BitColorIndex(String colorString, String defaultColor) {
+    private static int get9BitColorIndex(StringSetting colorSetting) {
+        String colorString = colorSetting.get();
         int color;
         try {
             color = Color.parseColor(colorString);
         } catch (IllegalArgumentException ex) {
             Logger.printException(() -> "Invalid color: " + colorString);
-            color = Color.parseColor(defaultColor);
+            color = Color.parseColor(colorSetting.resetToDefault());
         }
 
         final int r = (color >> 16) & 0xFF;
@@ -359,14 +337,14 @@ public class ThemeBackgroundPatch {
     }
 
     private static void addOverlayColors(Map<String, Integer> colors, String resourceNames,
-                                         StringSetting colorSetting) {
-        String colorString = colorSetting.get();
+                                         StringSetting customColorSetting) {
+        String colorString = customColorSetting.get();
         int color;
         try {
             color = Color.parseColor(colorString);
         } catch (IllegalArgumentException ex) {
             Logger.printException(() -> "Invalid custom color: " + colorString);
-            color = Color.parseColor(colorSetting.resetToDefault());
+            color = Color.parseColor(customColorSetting.resetToDefault());
         }
 
         // A background must be opaque, otherwise the app draws over itself.
@@ -385,11 +363,12 @@ public class ThemeBackgroundPatch {
      * @param dark  If the background is of the dark theme.
      * @param index Index of the background, which is the ordinal of its enum value.
      */
+    @ColorInt
     public static int getBackgroundColor(Context context, boolean dark, int index) {
         try {
-            Background background = dark
-                    ? DarkThemeBackground.values()[index]
-                    : LightThemeBackground.values()[index];
+            Background background = (dark
+                    ? DarkThemeBackground.values()
+                    : LightThemeBackground.values())[index];
 
             if (background.isCustom()) {
                 return customColor(dark);
