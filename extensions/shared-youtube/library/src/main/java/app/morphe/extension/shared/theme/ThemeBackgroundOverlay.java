@@ -126,6 +126,22 @@ final class ThemeBackgroundOverlay {
         }
     }
 
+    /**
+     * Removes the overlay from the resources of {@code context}, which is needed to read a color
+     * the app declares. An overlay replaces the color of every configuration, so a context that
+     * uses it cannot resolve the color of another background.
+     */
+    static void removeFrom(Context context) {
+        try {
+            ResourcesLoader loader = resourcesLoader;
+            if (loader != null) {
+                context.getResources().removeLoaders(loader);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "Could not remove the overlay of the app", ex);
+        }
+    }
+
     @Nullable
     private static OverlayInfo findOverlay(Context context) {
         OverlayManager overlayManager = context.getSystemService(OverlayManager.class);

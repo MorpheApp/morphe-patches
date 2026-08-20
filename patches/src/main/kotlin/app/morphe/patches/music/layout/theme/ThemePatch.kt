@@ -58,7 +58,10 @@ val themePatch = baseThemePatch(
     executeBlock = {
         PreferenceScreen.GENERAL.addPreferences(
             noTitleUnsortedPreferenceCategory(
-                ListPreference("morphe_theme_background_dark"),
+                ListPreference(
+                    "morphe_theme_background_dark",
+                    tag = "app.morphe.extension.shared.theme.ThemeBackgroundListPreference"
+                ),
                 TextPreference(
                     "morphe_theme_background_dark_custom_color",
                     tag = "app.morphe.extension.shared.settings.preference.ColorPickerPreference",

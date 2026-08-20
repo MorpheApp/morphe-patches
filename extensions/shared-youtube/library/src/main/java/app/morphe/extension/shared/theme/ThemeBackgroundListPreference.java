@@ -1,0 +1,59 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/2524
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
+package app.morphe.extension.shared.theme;
+
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.util.AttributeSet;
+
+import androidx.annotation.NonNull;
+
+import app.morphe.extension.shared.settings.preference.IconListPreference;
+import app.morphe.extension.shared.ui.ColorDot;
+
+/**
+ * Shows the color of every background next to its name, the same way the app icons are shown.
+ */
+@SuppressWarnings({"unused", "deprecation"})
+public class ThemeBackgroundListPreference extends IconListPreference {
+
+    public ThemeBackgroundListPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+    }
+
+    public ThemeBackgroundListPreference(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
+
+    public ThemeBackgroundListPreference(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    public ThemeBackgroundListPreference(Context context) {
+        super(context);
+    }
+
+    @NonNull
+    @Override
+    protected Drawable[] resolveIconDrawables() {
+        CharSequence[] values = getEntryValues();
+        if (values == null) {
+            return new Drawable[0];
+        }
+
+        final boolean dark = ThemeBackgroundPatch.SETTINGS_KEY_DARK.equals(getKey());
+
+        Drawable[] drawables = new Drawable[values.length];
+        for (int i = 0; i < values.length; i++) {
+            drawables[i] = ColorDot.createColorDotDrawable(
+                    ThemeBackgroundPatch.getBackgroundColor(getContext(), dark, i));
+        }
+
+        return drawables;
+    }
+}

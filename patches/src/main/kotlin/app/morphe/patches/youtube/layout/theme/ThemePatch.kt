@@ -226,13 +226,19 @@ val themePatch = baseThemePatch(
     executeBlock = {
         PreferenceScreen.GENERAL.addPreferences(
             noTitleUnsortedPreferenceCategory(
-                ListPreference("morphe_theme_background_dark"),
+                ListPreference(
+                    "morphe_theme_background_dark",
+                    tag = "app.morphe.extension.shared.theme.ThemeBackgroundListPreference"
+                ),
                 TextPreference(
                     "morphe_theme_background_dark_custom_color",
                     tag = "app.morphe.extension.shared.settings.preference.ColorPickerPreference",
                     inputType = InputType.TEXT_CAP_CHARACTERS
                 ),
-                ListPreference("morphe_theme_background_light"),
+                ListPreference(
+                    "morphe_theme_background_light",
+                    tag = "app.morphe.extension.shared.theme.ThemeBackgroundListPreference"
+                ),
                 TextPreference(
                     "morphe_theme_background_light_custom_color",
                     tag = "app.morphe.extension.shared.settings.preference.ColorPickerPreference",

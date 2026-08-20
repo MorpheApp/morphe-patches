@@ -179,9 +179,13 @@ internal fun baseThemePatch(
 
         // A custom background color has no resource variant to select,
         // so the extension replaces the same colors with an overlay of the app.
-        DarkColorResourceNamesFingerprint.method.returnEarly(darkColorNames().joinToString(","))
+        DarkColorResourceNamesFingerprint.method.returnEarly(
+            colorResourceNames(APP_DARK_BACKGROUND_COLOR_NAME, darkColorNames())
+        )
         if (includeLightBackground) {
-            LightColorResourceNamesFingerprint.method.returnEarly(lightColorNames().joinToString(","))
+            LightColorResourceNamesFingerprint.method.returnEarly(
+                colorResourceNames(APP_LIGHT_BACKGROUND_COLOR_NAME, lightColorNames())
+            )
         }
 
         executeBlock()
@@ -189,6 +193,13 @@ internal fun baseThemePatch(
         lithoColorOverrideHook(extensionClassDescriptor, "getValue")
     }
 }
+
+/**
+ * The extension shows the color of a background in the app settings using the first name,
+ * so the color the app uses for the background itself must be first.
+ */
+private fun colorResourceNames(appBackgroundColorName: String, colorNames: Set<String>) =
+    (listOf(appBackgroundColorName) + colorNames).distinct().joinToString(",")
 
 /**
  * Adds a color variant of the app background for every value that can be selected in the app

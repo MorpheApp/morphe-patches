@@ -22,6 +22,9 @@ import java.util.List;
 import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
@@ -247,7 +250,7 @@ public class ThemeBackgroundPatch {
                 context = base.createConfigurationContext(override);
             }
 
-            if (useOverlay) {
+            if (isCustomBackgroundSupported() && useOverlay) {
                 ThemeBackgroundOverlay.applyTo(context);
             }
 
@@ -380,9 +383,71 @@ public class ThemeBackgroundPatch {
     }
 
     /**
+     * The color of a background, used to show it next to the name in the app settings.
+     *
+     * @param dark  If the background is of the dark theme.
+     * @param index Index of the background, which is the ordinal of its enum value.
+     */
+    public static int getBackgroundColor(Context context, boolean dark, int index) {
+        try {
+            Background background = dark
+                    ? DarkThemeBackground.values()[index]
+                    : LightThemeBackground.values()[index];
+
+            if (background.isCustom()) {
+                return customColor(dark);
+            }
+
+            // The color of a background is the value its resource variant declares, and the
+            // variant is selected the same way the app selects the background it uses.
+            Configuration configuration = new Configuration(context.getResources().getConfiguration());
+            if (dark) {
+                configuration.mcc = configValue(background);
+            } else {
+                configuration.mnc = configValue(background);
+            }
+
+            final int identifier = ResourceUtils.getIdentifier(ResourceType.COLOR,
+                    backgroundColorResourceName(dark));
+
+            Context variant = context.createConfigurationContext(configuration);
+            if (isCustomBackgroundSupported()) {
+                ThemeBackgroundOverlay.removeFrom(variant);
+            }
+
+            return variant.getColor(identifier);
+        } catch (Exception ex) {
+            Logger.printException(() -> "getBackgroundColor failure", ex);
+            return Utils.getAppBackgroundColor();
+        }
+    }
+
+    private static int customColor(boolean dark) {
+        String colorString = dark
+                ? SharedYouTubeSettings.THEME_BACKGROUND_DARK_CUSTOM_COLOR.get()
+                : SharedYouTubeSettings.THEME_BACKGROUND_LIGHT_CUSTOM_COLOR.get();
+
+        try {
+            return Color.parseColor(colorString) | 0xFF000000;
+        } catch (IllegalArgumentException ex) {
+            Logger.printInfo(() -> "Using default, and ignoring invalid color: " + colorString);
+            return Color.parseColor(dark ? DEFAULT_DARK_CUSTOM_COLOR : DEFAULT_LIGHT_CUSTOM_COLOR);
+        }
+    }
+
+    /**
+     * The first name is the color the app uses for the background itself.
+     */
+    private static String backgroundColorResourceName(boolean dark) {
+        String resourceNames = dark ? darkColorResourceNames() : lightColorResourceNames();
+        return resourceNames.split(",")[0];
+    }
+
+    /**
      * Injection point.
      * <p>
      * Names of the dark background color resources, separated by a comma.
+     * The first name is the color the app uses for the background itself.
      */
     private static String darkColorResourceNames() {
         return ""; // Modified during patching.
@@ -392,6 +457,7 @@ public class ThemeBackgroundPatch {
      * Injection point.
      * <p>
      * Names of the light background color resources, separated by a comma.
+     * The first name is the color the app uses for the background itself.
      */
     private static String lightColorResourceNames() {
         return ""; // Modified during patching.
