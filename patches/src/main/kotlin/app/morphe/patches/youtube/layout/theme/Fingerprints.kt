@@ -93,7 +93,7 @@ internal object PivotBarNewContentDotFingerprint : Fingerprint(
     filters = listOf(
         resourceLiteral(ResourceType.ID, "new_content_dot"),
         methodCall(
-            smali = "Landroid/view/View;->findViewById(I)Landroid/view/View;",
+            name = "findViewById",
             location = MatchAfterImmediately()
         ),
         opcode(

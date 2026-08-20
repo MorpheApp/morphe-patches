@@ -10,12 +10,16 @@
 
 package app.morphe.patches.music.layout.theme
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.is_9_30_or_greater
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
+import app.morphe.patches.shared.layout.theme.THEME_BACKGROUND_EXTENSION_CLASS
 import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_DARK_COLOR_NAMES
 import app.morphe.patches.shared.layout.theme.baseThemePatch
 import app.morphe.patches.shared.layout.theme.baseThemeResourcePatch
@@ -23,6 +27,7 @@ import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/theme/ThemePatch;"
 
@@ -46,6 +51,7 @@ val themePatch = baseThemePatch(
         dependsOn(
             sharedExtensionPatch,
             settingsPatch,
+            resourceMappingPatch,
             versionCheckPatch,
             baseThemeResourcePatch(
                 darkColorNames = darkColorNames
@@ -56,6 +62,22 @@ val themePatch = baseThemePatch(
     },
 
     executeBlock = {
+        // Color of the new content count of the top bar, which is red in the app and does
+        // not go with a Material You background.
+        TopBarNewContentCountFingerprint.let {
+            it.method.apply {
+                // Not the last match, which is the call that inflates the stub.
+                val checkCastIndex = it.instructionMatches[2].index
+                val stubRegister = getInstruction<OneRegisterInstruction>(checkCastIndex).registerA
+
+                addInstruction(
+                    checkCastIndex + 1,
+                    "invoke-static { v$stubRegister }, $THEME_BACKGROUND_EXTENSION_CLASS" +
+                            "->onNewContentIndicator(Landroid/view/ViewStub;)V"
+                )
+            }
+        }
+
         PreferenceScreen.GENERAL.addPreferences(
             noTitleUnsortedPreferenceCategory(
                 ListPreference(

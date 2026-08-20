@@ -29,6 +29,32 @@ internal const val THEME_BACKGROUND_EXTENSION_CLASS =
     "Lapp/morphe/extension/shared/theme/ThemeBackgroundPatch;"
 
 /**
+ * Mobile country codes of 100 to 199 are not assigned to any country, so a device never reports
+ * one. Every generated variant uses a code of that range, which is the only way the system can
+ * be kept from using a variant of its own accord: the splash screen and anything else the system
+ * draws is resolved with the configuration of the device and not with the one the app asks for.
+ */
+private const val UNUSED_MOBILE_COUNTRY_CODE = 100
+
+/**
+ * Index of the first color of the 9 bit palette. The indices below it belong to the backgrounds
+ * that can be selected by name.
+ */
+private const val PALETTE_INDEX_OFFSET = 100
+
+/**
+ * A background must only be used by the theme it belongs to, otherwise a light background
+ * replaces the color of the text and the icons of the dark theme, because the app uses the
+ * light colors as its foreground while it is dark, and the other way around.
+ *
+ * The theme of the app is not the night mode of the device, the app has a setting of its own,
+ * so a variant cannot be qualified with 'night'. Instead the extension asks for the variant of
+ * the theme the app shows, and the indices of the two themes never overlap.
+ */
+private const val DARK_INDEX_OFFSET = 0
+private const val LIGHT_INDEX_OFFSET = 700
+
+/**
  * Must be identical to the name the extension uses with `FabricatedOverlay#setTargetOverlayable`.
  */
 private const val THEME_BACKGROUND_OVERLAYABLE_NAME = "MorpheThemeBackground"
@@ -50,7 +76,6 @@ private val THEME_DARK_BACKGROUNDS = listOf(
     "@android:color/system_accent1_800",    // MATERIAL_YOU_PRIMARY
     "@android:color/system_accent2_800",    // MATERIAL_YOU_SECONDARY
     "@android:color/system_accent3_800",    // MATERIAL_YOU_TERTIARY
-    "#0F0F0F",                              // MODERN_YOUTUBE
     "#212121",                              // CLASSIC_YOUTUBE
     "#181825",                              // CATPPUCCIN_MOCHA
     "#290025",                              // DARK_PINK
@@ -202,12 +227,12 @@ internal fun baseThemeResourcePatch(
     includeLightBackground: Boolean = false
 ) = resourcePatch {
     execute {
-        addBackgroundColorVariants("mcc", THEME_DARK_BACKGROUNDS, darkColorNames())
-        add9BitColorVariants("mcc", darkColorNames())
+        addBackgroundColorVariants(DARK_INDEX_OFFSET, THEME_DARK_BACKGROUNDS, darkColorNames())
+        add9BitColorVariants(DARK_INDEX_OFFSET, darkColorNames())
 
         if (includeLightBackground) {
-            addBackgroundColorVariants("mnc", THEME_LIGHT_BACKGROUNDS, lightColorNames())
-            add9BitColorVariants("mnc", lightColorNames())
+            addBackgroundColorVariants(LIGHT_INDEX_OFFSET, THEME_LIGHT_BACKGROUNDS, lightColorNames())
+            add9BitColorVariants(LIGHT_INDEX_OFFSET, lightColorNames())
         }
 
         declareOverlayableColors(
@@ -265,7 +290,7 @@ private fun ResourcePatchContext.declareOverlayableColors(colorNames: Set<String
 }
 
 private fun ResourcePatchContext.addBackgroundColorVariants(
-    qualifier: String,
+    indexOffset: Int,
     backgrounds: List<String?>,
     colorNames: Set<String>
 ) {
@@ -279,13 +304,12 @@ private fun ResourcePatchContext.addBackgroundColorVariants(
 
         // The configuration value of a background is its index plus one,
         // and the extension uses the same numbering.
-        val variantValue = "%03d".format(index + 1)
-        writeBackgroundColorVariant(qualifier, variantValue, color, colorNames)
+        writeBackgroundColorVariant(indexOffset + index + 1, color, colorNames)
     }
 }
 
 private fun ResourcePatchContext.add9BitColorVariants(
-    qualifier: String,
+    indexOffset: Int,
     colorNames: Set<String>
 ) {
     for (index in 0 until 512) {
@@ -298,18 +322,21 @@ private fun ResourcePatchContext.add9BitColorVariants(
         val b = (b3 * 255f / 7f).roundToInt()
 
         val color = "#%02X%02X%02X".format(r, g, b)
-        val variantValue = "%03d".format(100 + index)
-        writeBackgroundColorVariant(qualifier, variantValue, color, colorNames)
+        writeBackgroundColorVariant(indexOffset + PALETTE_INDEX_OFFSET + index, color, colorNames)
     }
 }
 
 private fun ResourcePatchContext.writeBackgroundColorVariant(
-    qualifier: String,
-    variantValue: String,
+    index: Int,
     color: String,
     colorNames: Set<String>
 ) {
-    val variantDirectory = get("res").resolve("values-$qualifier$variantValue")
+    // The mobile country code of a variant is never one a device can have, so the resource
+    // system uses a variant only when the app asks for it. The extension uses the same encoding.
+    val mcc = "%03d".format(UNUSED_MOBILE_COUNTRY_CODE + (index shr 5))
+    val mnc = "%03d".format(1 + (index and 31))
+
+    val variantDirectory = get("res").resolve("values-mcc$mcc-mnc$mnc")
     variantDirectory.mkdirs()
 
     variantDirectory.resolve("colors.xml").writeText(

@@ -15,7 +15,12 @@ import static app.morphe.extension.shared.settings.SharedYouTubeSettings.THEME_B
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
+import android.view.View;
+import android.view.ViewStub;
+import android.widget.TextView;
 
 import androidx.annotation.ChecksSdkIntAtLeast;
 import androidx.annotation.ColorInt;
@@ -75,7 +80,6 @@ public class ThemeBackgroundPatch {
         MATERIAL_YOU_PRIMARY(true, false),
         MATERIAL_YOU_SECONDARY(true, false),
         MATERIAL_YOU_TERTIARY(true, false),
-        MODERN_YOUTUBE,
         CLASSIC_YOUTUBE,
         CATPPUCCIN_MOCHA,
         DARK_PINK,
@@ -183,6 +187,22 @@ public class ThemeBackgroundPatch {
      */
     private static final int APP_DEFAULT_CONFIG_VALUE = 1;
 
+    /**
+     * Mobile country codes of 100 to 199 are not assigned to any country, so a device never
+     * reports one. Every variant of the patch uses a code of that range, otherwise the system
+     * uses a variant on its own while it draws the splash screen of the app, because that is
+     * resolved with the configuration of the device.
+     */
+    private static final int UNUSED_MOBILE_COUNTRY_CODE = 100;
+
+    /**
+     * Index of the first color of the 9 bit palette, and the index ranges of the two themes.
+     * The patch uses the same numbering.
+     */
+    private static final int PALETTE_INDEX_OFFSET = 100;
+    private static final int DARK_INDEX_OFFSET = 0;
+    private static final int LIGHT_INDEX_OFFSET = 700;
+
     private static int darkConfigValue = -1;
     private static int lightConfigValue = -1;
 
@@ -190,6 +210,11 @@ public class ThemeBackgroundPatch {
      * If a background of the user is in use and its overlay must be loaded into every context.
      */
     private static boolean useOverlay;
+
+    /**
+     * If the colors Morphe uses for itself were resolved with the theme they belong to.
+     */
+    private static boolean morpheColorsUpdated;
 
     /**
      * If a background color of the user can be applied. An overlay that an app registers for
@@ -219,14 +244,21 @@ public class ThemeBackgroundPatch {
             resolveConfigValues(base);
 
             Configuration configuration = base.getResources().getConfiguration();
+
+            // A variant belongs to one theme only, so the background of the theme the app shows
+            // is the one to ask for. The night mode of the device says nothing about it, the app
+            // has a theme setting of its own. A theme change recreates the activity, and the
+            // index of the other theme is used from then on.
+            final int index = Utils.isDarkModeEnabled() ? darkConfigValue : lightConfigValue;
+
             Context context;
-            if (configuration.mcc == darkConfigValue && configuration.mnc == lightConfigValue) {
+            if (configuration.mcc == mobileCountryCode(index)
+                    && configuration.mnc == mobileNetworkCode(index)) {
                 // Context is created from a context that is already wrapped.
                 context = base;
             } else {
                 Configuration override = new Configuration(configuration);
-                override.mcc = darkConfigValue;
-                override.mnc = lightConfigValue;
+                setVariantOf(override, index);
 
                 context = base.createConfigurationContext(override);
             }
@@ -234,6 +266,8 @@ public class ThemeBackgroundPatch {
             if (isCustomBackgroundSupported() && useOverlay) {
                 ThemeBackgroundOverlay.applyTo(context);
             }
+
+            updateMorpheColors(context);
 
             return context;
         } catch (Exception ex) {
@@ -261,22 +295,69 @@ public class ThemeBackgroundPatch {
         updateOverlay(context, dark, light);
     }
 
+    /**
+     * Morphe uses the background of the app for its own dialogs and settings, and it resolves
+     * the color with the context of the app. That context can be of the other theme than the one
+     * the app shows, because the app can use a theme of its own while the device uses the other,
+     * and a background belongs to one theme only. Both colors are resolved again here, with the
+     * theme each of them belongs to.
+     */
+    private static void updateMorpheColors(Context context) {
+        if (morpheColorsUpdated || !Utils.isContextSet()) {
+            return;
+        }
+        morpheColorsUpdated = true;
+
+        Utils.setThemeDarkColor(selectedBackgroundColor(context, true));
+        Utils.setThemeLightColor(selectedBackgroundColor(context, false));
+    }
+
+    private static int selectedBackgroundColor(Context context, boolean dark) {
+        Background background = dark
+                ? THEME_BACKGROUND_DARK.get()
+                : THEME_BACKGROUND_LIGHT.get();
+
+        return getBackgroundColor(context, dark, ((Enum<?>) background).ordinal());
+    }
+
+    /**
+     * Asks for the variant of a background, using a configuration a device never has.
+     *
+     * @param index Index of the background, which the patch uses with the same encoding.
+     */
+    private static void setVariantOf(Configuration configuration, int index) {
+        configuration.mcc = mobileCountryCode(index);
+        configuration.mnc = mobileNetworkCode(index);
+    }
+
+    private static int mobileCountryCode(int index) {
+        return UNUSED_MOBILE_COUNTRY_CODE + (index >> 5);
+    }
+
+    private static int mobileNetworkCode(int index) {
+        return 1 + (index & 31);
+    }
+
     private static int configValue(Background background, boolean dark) {
+        // The two themes use indices that never overlap, so that a variant of one of them
+        // is never used by the other.
+        final int offset = dark ? DARK_INDEX_OFFSET : LIGHT_INDEX_OFFSET;
+
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S && background.isMaterialYou()) {
             // Material-You colors do not exist and resolving them crashes the app.
-            return APP_DEFAULT_CONFIG_VALUE;
+            return offset + APP_DEFAULT_CONFIG_VALUE;
         }
 
         if (background.isCustom() && !isCustomBackgroundSupported()) {
             StringSetting setting = dark
                     ? THEME_BACKGROUND_DARK_CUSTOM_COLOR
                     : THEME_BACKGROUND_LIGHT_CUSTOM_COLOR;
-            return 100 + get9BitColorIndex(setting);
+            return offset + PALETTE_INDEX_OFFSET + get9BitColorIndex(setting);
         }
 
         // A custom background has no resource variant of its own,
         // the color resources are replaced by the overlay instead.
-        return ((Enum<?>) background).ordinal() + 1;
+        return offset + ((Enum<?>) background).ordinal() + 1;
     }
 
     private static int get9BitColorIndex(StringSetting colorSetting) {
@@ -377,11 +458,7 @@ public class ThemeBackgroundPatch {
             // The color of a background is the value its resource variant declares, and the
             // variant is selected the same way the app selects the background it uses.
             Configuration configuration = new Configuration(context.getResources().getConfiguration());
-            if (dark) {
-                configuration.mcc = configValue(background, true);
-            } else {
-                configuration.mnc = configValue(background, false);
-            }
+            setVariantOf(configuration, configValue(background, dark));
 
             final int identifier = ResourceUtils.getIdentifier(ResourceType.COLOR,
                     backgroundColorResourceName(dark));
@@ -395,6 +472,48 @@ public class ThemeBackgroundPatch {
         } catch (Exception ex) {
             Logger.printException(() -> "getBackgroundColor failure", ex);
             return Utils.getAppBackgroundColor();
+        }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called with the view stub of a new content indicator of the pivot bar, which is the dot
+     * of a tab and the count next to it, before either is shown.
+     */
+    public static void onNewContentIndicator(ViewStub stub) {
+        try {
+            stub.setOnInflateListener((inflatedStub, view) -> {
+                Integer color = getIndicatorColor(view.getContext());
+                if (color == null) {
+                    return;
+                }
+
+                setIndicatorColor(view, color);
+
+                // The pivot bar can set the background of an indicator after it is inflated,
+                // and the color is applied again after the app is done with the view.
+                view.post(() -> setIndicatorColor(view, color));
+            });
+        } catch (Exception ex) {
+            Logger.printException(() -> "onNewContentIndicator failure", ex);
+        }
+    }
+
+    private static void setIndicatorColor(View view, int color) {
+        Drawable background = view.getBackground();
+
+        // Both indicators are a shape with a stroke of the app background color, and only the
+        // fill of the shape is replaced. Mutate is needed, otherwise every user of the
+        // drawable is changed as well.
+        if (background instanceof GradientDrawable) {
+            ((GradientDrawable) background.mutate()).setColor(color);
+        }
+
+        // The count is a text view, and its text must stay readable on the new color.
+        if (view instanceof TextView) {
+            ((TextView) view).setTextColor(
+                    getIndicatorTextColor(view.getContext()));
         }
     }
 

@@ -18,6 +18,7 @@ import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.layout.theme.DEFAULT_DARK_THEME_BACKGROUND_COLOR
 import app.morphe.patches.shared.layout.theme.DEFAULT_LIGHT_THEME_BACKGROUND_COLOR
+import app.morphe.patches.shared.layout.theme.THEME_BACKGROUND_EXTENSION_CLASS
 import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_DARK_COLOR_NAMES
 import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_LIGHT_COLOR_NAMES
 import app.morphe.patches.shared.layout.theme.baseThemePatch
@@ -289,7 +290,7 @@ val themePatch = baseThemePatch(
 
                     addInstruction(
                         checkCastIndex + 1,
-                        "invoke-static { v$stubRegister }, $EXTENSION_CLASS" +
+                        "invoke-static { v$stubRegister }, $THEME_BACKGROUND_EXTENSION_CLASS" +
                                 "->onNewContentIndicator(Landroid/view/ViewStub;)V"
                     )
                 }
