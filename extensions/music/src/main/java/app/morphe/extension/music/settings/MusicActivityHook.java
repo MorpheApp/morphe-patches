@@ -1,13 +1,3 @@
-/*
- * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
- *
- * Original hard forked code:
- * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
- *
- * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
- */
-
 package app.morphe.extension.music.settings;
 
 import android.annotation.SuppressLint;
@@ -21,6 +11,8 @@ import android.preference.PreferenceFragment;
 import android.view.View;
 import android.widget.Toolbar;
 
+import app.morphe.extension.music.patches.VersionCheckPatch;
+import app.morphe.extension.music.patches.downloads.LocalDownloadsFragment;
 import app.morphe.extension.music.settings.preference.MusicPreferenceFragment;
 import app.morphe.extension.music.settings.search.MusicSearchViewController;
 import app.morphe.extension.shared.Logger;
@@ -29,7 +21,6 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseActivityHook;
 import app.morphe.extension.shared.spoof.SpoofAppVersionPatch;
-import app.morphe.extension.shared.theme.ThemeUtils;
 
 /**
  * Hooks {@code com.google.android.gms.common.api.GoogleApiActivity}
@@ -40,8 +31,10 @@ public class MusicActivityHook extends BaseActivityHook {
 
     @SuppressLint("StaticFieldLeak")
     public static MusicSearchViewController searchViewController;
+    private static boolean downloadsMode;
 
     private static final boolean USE_BOLD_ICONS = Settings.SETTINGS_INITIALIZED.get()
+            && VersionCheckPatch.IS_8_40_OR_GREATER
             && !SpoofAppVersionPatch.isSpoofingToLessThan("8.40.00");
 
     static {
@@ -53,6 +46,9 @@ public class MusicActivityHook extends BaseActivityHook {
      */
     @SuppressWarnings("unused")
     public static void initialize(Activity parentActivity) {
+
+        downloadsMode = BaseActivityHook.MORPHE_DOWNLOADS_INTENT.equals(
+                parentActivity.getIntent().getDataString());
 
         // Prevent opening multiple settings activities if menu is double tapped quickly.
         if (Utils.isFastClick()) {
@@ -98,9 +94,9 @@ public class MusicActivityHook extends BaseActivityHook {
         Drawable navigationIcon = MusicPreferenceFragment.getBackButtonDrawable();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             navigationIcon.setColorFilter(new BlendModeColorFilter(
-                    ThemeUtils.getAppForegroundColor(), BlendMode.SRC_IN));
+                    Utils.getAppForegroundColor(), BlendMode.SRC_IN));
         } else {
-            navigationIcon.setColorFilter(ThemeUtils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN);
+            navigationIcon.setColorFilter(Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN);
         }
 
         return navigationIcon;
@@ -129,7 +125,9 @@ public class MusicActivityHook extends BaseActivityHook {
      */
     @Override
     protected void onPostToolbarSetup(Activity activity, Toolbar toolbar, PreferenceFragment fragment) {
-        if (fragment instanceof MusicPreferenceFragment) {
+        if (fragment instanceof LocalDownloadsFragment) {
+            toolbar.setTitle("Download");
+        } else if (fragment instanceof MusicPreferenceFragment) {
             searchViewController = MusicSearchViewController.addSearchViewComponents(
                     activity, toolbar, (MusicPreferenceFragment) fragment);
         }
@@ -140,7 +138,7 @@ public class MusicActivityHook extends BaseActivityHook {
      */
     @Override
     protected PreferenceFragment createPreferenceFragment() {
-        return new MusicPreferenceFragment();
+        return downloadsMode ? new LocalDownloadsFragment() : new MusicPreferenceFragment();
     }
 
     /**
