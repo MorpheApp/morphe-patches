@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Toolbar;
 
 import app.morphe.extension.music.patches.VersionCheckPatch;
+import app.morphe.extension.music.patches.downloads.LocalDownloadsFragment;
 import app.morphe.extension.music.settings.preference.MusicPreferenceFragment;
 import app.morphe.extension.music.settings.search.MusicSearchViewController;
 import app.morphe.extension.shared.Logger;
@@ -30,6 +31,7 @@ public class MusicActivityHook extends BaseActivityHook {
 
     @SuppressLint("StaticFieldLeak")
     public static MusicSearchViewController searchViewController;
+    private static boolean downloadsMode;
 
     private static final boolean USE_BOLD_ICONS = Settings.SETTINGS_INITIALIZED.get()
             && VersionCheckPatch.IS_8_40_OR_GREATER
@@ -44,6 +46,9 @@ public class MusicActivityHook extends BaseActivityHook {
      */
     @SuppressWarnings("unused")
     public static void initialize(Activity parentActivity) {
+
+        downloadsMode = BaseActivityHook.MORPHE_DOWNLOADS_INTENT.equals(
+                parentActivity.getIntent().getDataString());
 
         // Prevent opening multiple settings activities if menu is double tapped quickly.
         if (Utils.isFastClick()) {
@@ -120,7 +125,9 @@ public class MusicActivityHook extends BaseActivityHook {
      */
     @Override
     protected void onPostToolbarSetup(Activity activity, Toolbar toolbar, PreferenceFragment fragment) {
-        if (fragment instanceof MusicPreferenceFragment) {
+        if (fragment instanceof LocalDownloadsFragment) {
+            toolbar.setTitle("Download");
+        } else if (fragment instanceof MusicPreferenceFragment) {
             searchViewController = MusicSearchViewController.addSearchViewComponents(
                     activity, toolbar, (MusicPreferenceFragment) fragment);
         }
@@ -131,7 +138,7 @@ public class MusicActivityHook extends BaseActivityHook {
      */
     @Override
     protected PreferenceFragment createPreferenceFragment() {
-        return new MusicPreferenceFragment();
+        return downloadsMode ? new LocalDownloadsFragment() : new MusicPreferenceFragment();
     }
 
     /**

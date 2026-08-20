@@ -39,7 +39,12 @@ message StreamingData {
 }
 
 message Format {
+  optional int32 itag = 1;
   optional string url = 2;
+  optional string mimeType = 5;
+  optional int32 bitrate = 6;
+  optional int64 contentLength = 10;
+  optional string audioQuality = 16;
   optional string signatureCipher = 48;
 }
 

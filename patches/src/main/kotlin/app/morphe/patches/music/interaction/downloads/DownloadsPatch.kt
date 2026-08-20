@@ -40,6 +40,26 @@ private val downloadsResourcePatch = resourcePatch {
                 )
             )
         )
+
+        val manifest = get("AndroidManifest.xml")
+        var xml = manifest.readText()
+        if (!xml.contains("android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK")) {
+            xml = xml.replace(
+                "<application",
+                "<uses-permission android:name=\"android.permission.WAKE_LOCK\" />\n" +
+                    "<uses-permission android:name=\"android.permission.FOREGROUND_SERVICE\" />\n" +
+                    "<uses-permission android:name=\"android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK\" />\n" +
+                    "<application"
+            )
+        }
+        if (!xml.contains("OfflinePlaybackService")) {
+            xml = xml.replace(
+                "</application>",
+                "<service android:name=\"app.morphe.extension.music.patches.downloads.OfflinePlaybackService\" " +
+                    "android:exported=\"false\" android:foregroundServiceType=\"mediaPlayback\" />\n</application>"
+            )
+        }
+        manifest.writeText(xml)
     }
 }
 
@@ -83,16 +103,22 @@ val downloadsPatch = bytecodePatch(
             )
         }
 
-        OfflineVideoEndpointFingerprint.method.addInstructionsWithLabels(
-            0,
-            """
-                invoke-static { p2 }, $EXTENSION_CLASS->inAppDownloadButtonOnClick(Ljava/util/Map;)Z
-                move-result v0
-                if-eqz v0, :show_native_downloader
-                return-void
-                :show_native_downloader
-                nop
-            """
-        )
+        OfflineVideoEndpointFingerprint.method.cloneParameters().apply {
+            mutableClassDefBy(parameterTypes[0].toString()).interfaces.apply {
+                if (!contains(EXTENSION_PROTOCOL_BUFFER_INTERFACE)) add(EXTENSION_PROTOCOL_BUFFER_INTERFACE)
+            }
+
+            addInstructionsWithLabels(
+                0,
+                """
+                    invoke-static { p1, p2 }, $EXTENSION_CLASS->offlineVideoEndpointOnClick(${EXTENSION_PROTOCOL_BUFFER_INTERFACE}Ljava/util/Map;)Z
+                    move-result v0
+                    if-eqz v0, :show_native_downloader
+                    return-void
+                    :show_native_downloader
+                    nop
+                """
+            )
+        }
     }
 }
