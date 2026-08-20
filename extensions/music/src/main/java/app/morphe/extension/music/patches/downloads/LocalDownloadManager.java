@@ -54,11 +54,6 @@ public final class LocalDownloadManager {
             return;
         }
 
-        if (!ACTIVE_DOWNLOADS.add(videoId)) {
-            Utils.showToastShort("Download già in corso");
-            return;
-        }
-
         ScrobbleManager metadata = ScrobbleManager.getInstance();
         String title = metadata.getCurrentTitle();
         String artist = metadata.getCurrentArtist();
@@ -67,42 +62,45 @@ public final class LocalDownloadManager {
         Bitmap artwork = metadata.getCurrentArtwork();
 
         Utils.submitOnBackgroundThread(() -> {
-            try {
-                Format format = resolveBestAudioFormat(videoId);
-                if (format == null || format.getUrl().isBlank()) {
-                    Utils.showToastShort("Impossibile recuperare il flusso audio");
-                    return null;
-                }
-
-                Context context = Utils.getContext();
-                String extension = format.getMimeType().contains("mp4") ? ".m4a" : ".webm";
-                String fileName = sanitizeFileName(videoId) + extension;
-                File directory = new File(context.getExternalFilesDir(Environment.DIRECTORY_MUSIC), "Morphe");
-                if (!directory.exists() && !directory.mkdirs()) throw new IllegalStateException("Could not create download directory");
-                File destination = new File(directory, fileName);
-                File temporary = new File(directory, fileName + ".part");
-
-                if (temporary.exists() && !temporary.delete()) throw new IllegalStateException("Could not reset partial audio file");
-                downloadWithResume(videoId, title, format.getUrl(), temporary, format.getContentLength());
-                if (destination.exists() && !destination.delete()) throw new IllegalStateException("Could not replace audio file");
-                if (!temporary.renameTo(destination)) throw new IllegalStateException("Could not finish audio file");
-                OfflineTrack.save(directory, videoId, title, artist, album, duration, artwork);
-                Logger.printDebug(() -> "Downloaded local audio: " + destination);
-                Utils.showToastShort("Download completato");
-            } catch (Exception ex) {
-                Logger.printException(() -> "Local audio download failed: " + videoId, ex);
-                showDownloadNotification(videoId, title, 0, false, "Download non riuscito");
-                Utils.showToastShort("Download non riuscito");
-            } finally {
-                ACTIVE_DOWNLOADS.remove(videoId);
-            }
+            downloadBlocking(videoId, title, artist, album, duration, artwork, true);
             return null;
         });
     }
 
+    static boolean downloadBlocking(String videoId, String title, String artist, String album,
+                                    int duration, Bitmap artwork, boolean toast) {
+        if (!ACTIVE_DOWNLOADS.add(videoId)) {
+            if (toast) Utils.showToastShort("Download già in corso");
+            return false;
+        }
+        try {
+            Context context = Utils.getContext();
+            File directory = new File(context.getExternalFilesDir(Environment.DIRECTORY_MUSIC), "Morphe");
+            if (new File(directory, videoId + ".webm").isFile() || new File(directory, videoId + ".m4a").isFile()) return true;
+            Format format = resolveBestAudioFormat(videoId);
+            if (format == null || format.getUrl().isBlank()) throw new IllegalStateException("Audio stream unavailable");
+            if (!directory.exists() && !directory.mkdirs()) throw new IllegalStateException("Could not create download directory");
+            String extension = format.getMimeType().contains("mp4") ? ".m4a" : ".webm";
+            File destination = new File(directory, sanitizeFileName(videoId) + extension);
+            File temporary = new File(directory, destination.getName() + ".part");
+            if (temporary.exists() && !temporary.delete()) throw new IllegalStateException("Could not reset partial audio file");
+            downloadWithResume(videoId, title, format.getUrl(), temporary, format.getContentLength(), toast);
+            if (destination.exists() && !destination.delete()) throw new IllegalStateException("Could not replace audio file");
+            if (!temporary.renameTo(destination)) throw new IllegalStateException("Could not finish audio file");
+            OfflineTrack.save(directory, videoId, title, artist, album, duration, artwork);
+            if (toast) Utils.showToastShort("Download completato");
+            return true;
+        } catch (Exception ex) {
+            Logger.printException(() -> "Local audio download failed: " + videoId, ex);
+            showDownloadNotification(videoId, title, 0, false, "Download non riuscito");
+            if (toast) Utils.showToastShort("Download non riuscito");
+            return false;
+        } finally { ACTIVE_DOWNLOADS.remove(videoId); }
+    }
+
     private static void downloadWithResume(String videoId, String title, String url,
-                                           File temporary, long expectedLength) throws Exception {
-        Utils.showToastShort("Download avviato");
+                                           File temporary, long expectedLength, boolean toast) throws Exception {
+        if (toast) Utils.showToastShort("Download avviato");
         showDownloadNotification(videoId, title, 0, true, "Avvio download…");
         if (expectedLength <= 0) expectedLength = probeContentLength(url);
         final long totalLength = expectedLength;

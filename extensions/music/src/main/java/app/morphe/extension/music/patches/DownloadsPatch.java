@@ -45,13 +45,14 @@ public final class DownloadsPatch {
     private static final int IGNORE_DOUBLE_CLICK_DURATION_MS = 1000;
 
     private static volatile String cachedFlyoutVideoId = "";
+    private static volatile String cachedCollectionId = "";
     private static volatile String downloadButtonLabel = "";
 
     private static volatile long lastFlyoutDownloadTime;
     private static volatile long lastMainPlayerDownloadTime;
     private static final Pattern PLAYLIST_ID = Pattern.compile(
-            "(?:OLAK5uy_|PL)[A-Za-z0-9_-]{16,}");
-    private static final Pattern ENCODED_TOKEN = Pattern.compile("[A-Za-z0-9_-]{32,}");
+            "(?:OLAK5uy_[A-Za-z0-9_-]{16,}|PL(?:[A-Za-z0-9_-]{30,}|[A-Za-z0-9_-]{11}))");
+    private static final Pattern ENCODED_TOKEN = Pattern.compile("[A-Za-z0-9_-]{24,}");
 
     /**
      * Injection point.
@@ -93,7 +94,10 @@ public final class DownloadsPatch {
     private static String extractPlaylistId(byte[] bytes) {
         String raw = new String(bytes, StandardCharsets.ISO_8859_1);
         Matcher direct = PLAYLIST_ID.matcher(raw);
-        if (direct.find()) return direct.group();
+        while (direct.find()) {
+            String candidate = direct.group();
+            if (!candidate.startsWith("PLAYLIST_")) return candidate;
+        }
         Matcher tokens = ENCODED_TOKEN.matcher(raw);
         while (tokens.find()) {
             String token = tokens.group();
@@ -101,7 +105,10 @@ public final class DownloadsPatch {
                 try {
                     byte[] decoded = Base64.decode(token.substring(offset), Base64.URL_SAFE | Base64.NO_WRAP);
                     Matcher nested = PLAYLIST_ID.matcher(new String(decoded, StandardCharsets.ISO_8859_1));
-                    if (nested.find()) return nested.group();
+                    while (nested.find()) {
+                        String candidate = nested.group();
+                        if (!candidate.startsWith("PLAYLIST_")) return candidate;
+                    }
                 } catch (Exception ignored) {}
             }
         }
@@ -211,6 +218,12 @@ public final class DownloadsPatch {
                                                        @Nullable Map<Object, Object> map) {
         try {
             Utils.verifyOnMainThread();
+            byte[] endpointBytes = endpoint == null ? null : endpoint.toByteArray();
+            String playlistId = endpointBytes == null ? null : extractPlaylistId(endpointBytes);
+            if (playlistId != null) {
+                CollectionDownloadManager.enqueue(playlistId.startsWith("VL") ? playlistId.substring(2) : playlistId);
+                return true;
+            }
             String videoId = endpoint == null ? null : extractVideoIdFromCommand(endpoint);
             if (videoId == null || videoId.isEmpty()) videoId = VideoInformation.getVideoId();
             if (videoId == null || videoId.isEmpty()) return false;
@@ -226,16 +239,24 @@ public final class DownloadsPatch {
         }
     }
 
+    private static boolean isDownloadSender(@Nullable Map<Object, Object> map) {
+        if (map == null || !(map.get(ELEMENTS_SENDER_VIEW) instanceof ComponentHost host)) return false;
+        CharSequence description = host.getContentDescription();
+        if (description == null) return false;
+        String value = description.toString();
+        return (!downloadButtonLabel.isEmpty() && downloadButtonLabel.equals(value)) ||
+                value.toLowerCase(java.util.Locale.ROOT).contains("download") ||
+                value.toLowerCase(java.util.Locale.ROOT).contains("scarica");
+    }
+
     public static boolean inAppDownloadButtonOnClick(@Nullable Map<Object, Object> map) {
         try {
-            if (downloadButtonLabel.isEmpty() || map == null) {
+            if (map == null) {
                 return false;
             }
             Utils.verifyOnMainThread();
 
-            if (map.get(ELEMENTS_SENDER_VIEW) instanceof ComponentHost componentHost) {
-                CharSequence contentDescription = componentHost.getContentDescription();
-                if (contentDescription != null && downloadButtonLabel.equals(contentDescription.toString())) {
+            if (isDownloadSender(map)) {
                     final long now = System.currentTimeMillis();
                     if (now - lastMainPlayerDownloadTime < IGNORE_DOUBLE_CLICK_DURATION_MS) {
                         return true;
@@ -244,7 +265,6 @@ public final class DownloadsPatch {
 
                     launchExternalDownloader();
                     return true;
-                }
             }
         } catch (Exception ex) {
             Logger.printException(() -> "inAppDownloadButtonOnClick failure", ex);
@@ -268,9 +288,17 @@ public final class DownloadsPatch {
                 return true;
             }
 
-            String playlistId = commandBytes == null ? null : extractPlaylistId(commandBytes);
-            if (playlistId != null) {
-                CollectionDownloadManager.enqueue(playlistId.startsWith("VL") ? playlistId.substring(2) : playlistId);
+            String collectionId = commandBytes == null ? null : extractPlaylistId(commandBytes);
+            if (collectionId != null && isDownloadSender(map)) {
+                CollectionDownloadManager.enqueue(collectionId.startsWith("VL") ? collectionId.substring(2) : collectionId);
+                return true;
+            }
+
+            String commandCollectionId = commandBytes == null ? null : extractPlaylistId(commandBytes);
+            if (commandCollectionId != null) cachedCollectionId = commandCollectionId.startsWith("VL")
+                    ? commandCollectionId.substring(2) : commandCollectionId;
+            if (isDownloadSender(map) && !cachedCollectionId.isEmpty()) {
+                CollectionDownloadManager.enqueue(cachedCollectionId);
                 return true;
             }
 

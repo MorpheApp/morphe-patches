@@ -146,10 +146,13 @@ public final class LocalDownloadsFragment extends PreferenceFragment
 
     private void deleteCollection(OfflineCollection collection) {
         for (String videoId : collection.videoIds()) {
+            if (OfflineCollection.referencedByOtherCollection(musicRoot, videoId, collection.id())) continue;
             File audio = findAudio(videoId);
             if (audio != null) audio.delete();
             new File(musicRoot, videoId + ".json").delete();
             new File(musicRoot, videoId + ".jpg").delete();
+            new File(musicRoot, videoId + ".webm.part").delete();
+            new File(musicRoot, videoId + ".m4a.part").delete();
         }
         collection.metadataFile().delete();
         collection.artworkFile().delete();
@@ -279,6 +282,9 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         boolean deleted = track.audioFile().delete();
         new File(parent, track.videoId() + ".json").delete();
         track.artworkFile().delete();
+        new File(parent, track.videoId() + ".webm.part").delete();
+        new File(parent, track.videoId() + ".m4a.part").delete();
+        OfflineCollection.removeTrackFromAll(parent, track.videoId());
         if (!deleted) {
             Utils.showToastShort("Impossibile eliminare il download");
             return;

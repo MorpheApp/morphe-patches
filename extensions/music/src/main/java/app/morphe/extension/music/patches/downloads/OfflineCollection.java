@@ -62,6 +62,28 @@ public record OfflineCollection(String id, String type, String title, String sub
         return result;
     }
 
+    public static boolean referencedByOtherCollection(File directory, String videoId, String excludedId) {
+        for (OfflineCollection collection : loadAll(directory)) {
+            if (!collection.id.equals(excludedId) && collection.videoIds.contains(videoId)) return true;
+        }
+        return false;
+    }
+
+    public static void removeTrackFromAll(File directory, String videoId) {
+        for (OfflineCollection collection : loadAll(directory)) {
+            if (!collection.videoIds.contains(videoId)) continue;
+            List<String> remaining = new ArrayList<>(collection.videoIds);
+            remaining.removeIf(videoId::equals);
+            if (remaining.isEmpty()) {
+                collection.metadataFile.delete();
+                collection.artworkFile.delete();
+            } else {
+                save(directory, collection.id, collection.type, collection.title,
+                        collection.subtitle, remaining, collection.artwork());
+            }
+        }
+    }
+
     public Bitmap artwork() {
         return artworkFile.isFile() ? BitmapFactory.decodeFile(artworkFile.getAbsolutePath()) : null;
     }

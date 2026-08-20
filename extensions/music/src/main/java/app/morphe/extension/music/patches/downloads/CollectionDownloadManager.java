@@ -1,11 +1,8 @@
 package app.morphe.extension.music.patches.downloads;
 
-import android.app.DownloadManager;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Environment;
 
 import org.json.JSONArray;
@@ -16,33 +13,34 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.Format;
-import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.PlayerResponse;
 import app.morphe.extension.shared.requests.Requester;
-import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
 
 /** Resolves and queues every track exposed by a YouTube Music album or playlist. */
 public final class CollectionDownloadManager {
     private static final String BROWSE_URL =
             "https://music.youtube.com/youtubei/v1/browse?prettyPrint=false";
     private static final String CLIENT_VERSION = "1.20250811.03.00";
+    private static final Set<String> ACTIVE_COLLECTIONS = ConcurrentHashMap.newKeySet();
 
     private CollectionDownloadManager() {}
 
     public static void enqueue(String playlistId) {
+        if (!ACTIVE_COLLECTIONS.add(playlistId)) { Utils.showToastShort("Download raccolta già in corso"); return; }
         Utils.showToastShort("Preparazione raccolta…");
         Utils.submitOnBackgroundThread(() -> {
             try {
                 Logger.printInfo(() -> "Resolving collection: " + playlistId);
-                List<Item> items = fetchItems(playlistId);
+                CollectionData data = fetchCollection(playlistId);
+                List<Item> items = data.items();
                 Logger.printInfo(() -> "Resolved collection items: " + items.size());
                 if (items.isEmpty()) {
                     Utils.showToastShort("Nessun brano trovato");
@@ -52,70 +50,37 @@ public final class CollectionDownloadManager {
                 File directory = new File(context.getExternalFilesDir(Environment.DIRECTORY_MUSIC), "Morphe");
                 Item first = items.get(0);
                 String type = playlistId.startsWith("OLAK5uy_") ? "album" : "playlist";
-                String collectionTitle = type.equals("album") && !first.album().isBlank()
-                        ? first.album() : "Playlist offline";
-                List<String> orderedIds = new ArrayList<>(items.size());
-                for (Item item : items) orderedIds.add(item.videoId());
-                OfflineCollection.save(directory, playlistId, type, collectionTitle, first.artist(),
-                        orderedIds, fetchArtwork(first.thumbnailUrl()));
-
+                String collectionTitle = !data.title().isBlank() ? data.title()
+                        : type.equals("album") && !first.album().isBlank() ? first.album() : "Playlist offline";
+                List<String> completedIds = new ArrayList<>(items.size());
                 Utils.showToastShort("Download di " + items.size() + " brani avviato");
-                int queued = 0;
+                int completed = 0;
                 for (Item item : items) {
                     Logger.printInfo(() -> "Resolving collection track: " + item.videoId);
-                    if (enqueueItem(item)) queued++;
+                    if (enqueueItem(item)) completedIds.add(item.videoId());
+                    completed++;
+                    Utils.showToastShort(completed + "/" + items.size() + " • " + collectionTitle);
                 }
-                int result = queued;
-                Utils.showToastShort(result == 0
-                        ? "Brani già scaricati o non disponibili"
-                        : result + " brani aggiunti ai download");
+                String collectionSubtitle = !data.subtitle().isBlank() ? data.subtitle() : first.artist();
+                if (!completedIds.isEmpty()) OfflineCollection.save(directory, playlistId, type, collectionTitle,
+                        collectionSubtitle, completedIds, fetchArtwork(first.thumbnailUrl()));
+                int result = completedIds.size();
+                Utils.showToastShort(result == items.size() ? "Raccolta scaricata" : result + "/" + items.size() + " brani scaricati");
             } catch (Exception ex) {
                 Logger.printException(() -> "Collection download failed: " + playlistId, ex);
                 Utils.showToastShort("Download della raccolta non riuscito");
-            }
+            } finally { ACTIVE_COLLECTIONS.remove(playlistId); }
             return null;
         });
     }
 
     private static boolean enqueueItem(Item item) {
-        try {
-            Context context = Utils.getContext();
-            File directory = new File(context.getExternalFilesDir(Environment.DIRECTORY_MUSIC), "Morphe");
-            Bitmap artwork = fetchArtwork(item.thumbnailUrl);
-            OfflineTrack.save(directory, item.videoId, item.title, item.artist,
-                    item.album, item.durationSeconds, artwork);
-            if (new File(directory, item.videoId + ".webm").isFile() ||
-                    new File(directory, item.videoId + ".m4a").isFile()) return false;
-
-            StreamingDataRequest request = StreamingDataRequest.fetchRequestForDownload(item.videoId);
-            StreamingDataRequest.StreamData stream = request.getStream();
-            if (stream == null) return false;
-            Format format = PlayerResponse.parseFrom(stream.streamingData()).getStreamingData()
-                    .getAdaptiveFormatsList().stream()
-                    .filter(f -> f.getMimeType().startsWith("audio/") && !f.getUrl().isBlank())
-                    .max(Comparator.comparingInt(Format::getBitrate)).orElse(null);
-            if (format == null) return false;
-
-            String extension = format.getMimeType().contains("mp4") ? ".m4a" : ".webm";
-            DownloadManager manager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
-            if (manager == null) return false;
-            DownloadManager.Request download = new DownloadManager.Request(Uri.parse(format.getUrl()))
-                    .setTitle(item.title)
-                    .setDescription(item.artist)
-                    .setMimeType(format.getMimeType().isBlank() ? "audio/*" : format.getMimeType())
-                    .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-                    .setAllowedOverMetered(true).setAllowedOverRoaming(false)
-                    .setDestinationInExternalFilesDir(context, Environment.DIRECTORY_MUSIC,
-                            "Morphe/" + item.videoId + extension);
-            manager.enqueue(download);
-            return true;
-        } catch (Exception ex) {
-            Logger.printInfo(() -> "Could not queue collection item " + item.videoId, ex);
-            return false;
-        }
+        Bitmap artwork = fetchArtwork(item.thumbnailUrl);
+        return LocalDownloadManager.downloadBlocking(item.videoId, item.title, item.artist,
+                item.album, item.durationSeconds, artwork, false);
     }
 
-    private static List<Item> fetchItems(String playlistId) throws Exception {
+    private static CollectionData fetchCollection(String playlistId) throws Exception {
         HttpURLConnection connection = (HttpURLConnection) new URL(BROWSE_URL).openConnection();
         connection.setRequestMethod("POST");
         connection.setDoOutput(true);
@@ -139,7 +104,61 @@ public final class CollectionDownloadManager {
         JSONObject response = Requester.parseJSONObject(connection);
         Map<String, Item> unique = new LinkedHashMap<>();
         collect(response, unique);
-        return new ArrayList<>(unique.values());
+        return new CollectionData(findCollectionTitle(response), findCollectionSubtitle(response),
+                new ArrayList<>(unique.values()));
+    }
+
+    private static String findCollectionTitle(Object node) {
+        if (node instanceof JSONObject object) {
+            for (String key : new String[]{"musicDetailHeaderRenderer", "musicResponsiveHeaderRenderer",
+                    "musicEditablePlaylistDetailHeaderRenderer"}) {
+                JSONObject header = object.optJSONObject(key);
+                if (header != null) {
+                    String title = textRuns(header.optJSONObject("title"));
+                    if (!title.isBlank()) return title;
+                    JSONObject nested = header.optJSONObject("header");
+                    if (nested != null) {
+                        title = findCollectionTitle(nested);
+                        if (!title.isBlank()) return title;
+                    }
+                }
+            }
+            java.util.Iterator<String> keys = object.keys();
+            while (keys.hasNext()) {
+                String title = findCollectionTitle(object.opt(keys.next()));
+                if (!title.isBlank()) return title;
+            }
+        } else if (node instanceof JSONArray array) {
+            for (int i = 0; i < array.length(); i++) {
+                String title = findCollectionTitle(array.opt(i));
+                if (!title.isBlank()) return title;
+            }
+        }
+        return "";
+    }
+
+    private static String findCollectionSubtitle(Object node) {
+        if (node instanceof JSONObject object) {
+            JSONObject header = object.optJSONObject("musicResponsiveHeaderRenderer");
+            if (header != null) {
+                try {
+                    String owner = header.getJSONObject("facepile").getJSONObject("avatarStackViewModel")
+                            .getJSONObject("text").optString("content");
+                    if (!owner.isBlank()) return owner;
+                } catch (Exception ignored) {}
+            }
+            java.util.Iterator<String> keys = object.keys();
+            while (keys.hasNext()) {
+                String subtitle = findCollectionSubtitle(object.opt(keys.next()));
+                if (!subtitle.isBlank()) return subtitle;
+            }
+        } else if (node instanceof JSONArray array) {
+            for (int i = 0; i < array.length(); i++) {
+                String subtitle = findCollectionSubtitle(array.opt(i));
+                if (!subtitle.isBlank()) return subtitle;
+            }
+        }
+        return "";
     }
 
     private static void collect(Object node, Map<String, Item> result) {
@@ -259,6 +278,7 @@ public final class CollectionDownloadManager {
         catch (Exception ignored) { return null; }
     }
 
+    private record CollectionData(String title, String subtitle, List<Item> items) {}
     private record Item(String videoId, String title, String artist, String album,
                         int durationSeconds, String thumbnailUrl) {}
 }
