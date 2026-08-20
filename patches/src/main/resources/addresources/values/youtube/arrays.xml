@@ -222,6 +222,37 @@
     </string-array>
 
     <!-- layout.theme.themePatch -->
+    <string-array name="morphe_theme_background_light_entries">
+        <item>@string/morphe_theme_background_light_entry_1</item>
+        <item>@string/morphe_theme_background_light_entry_2</item>
+        <item>@string/morphe_theme_background_light_entry_3</item>
+        <item>@string/morphe_theme_background_light_entry_4</item>
+        <item>@string/morphe_theme_background_light_entry_5</item>
+        <item>@string/morphe_theme_background_light_entry_6</item>
+        <item>@string/morphe_theme_background_light_entry_7</item>
+        <item>@string/morphe_theme_background_light_entry_8</item>
+        <item>@string/morphe_theme_background_light_entry_9</item>
+        <item>@string/morphe_theme_background_light_entry_10</item>
+        <item>@string/morphe_theme_background_light_entry_11</item>
+        <item>@string/morphe_theme_background_light_entry_12</item>
+        <item>@string/morphe_theme_background_light_entry_13</item>
+    </string-array>
+    <string-array name="morphe_theme_background_light_entry_values">
+        <item>APP_DEFAULT</item>
+        <item>WHITE</item>
+        <item>MATERIAL_YOU_NEUTRAL</item>
+        <item>MATERIAL_YOU_PRIMARY</item>
+        <item>MATERIAL_YOU_SECONDARY</item>
+        <item>MATERIAL_YOU_TERTIARY</item>
+        <item>CATPPUCCIN_LATTE</item>
+        <item>LIGHT_PINK</item>
+        <item>LIGHT_BLUE</item>
+        <item>LIGHT_GREEN</item>
+        <item>LIGHT_YELLOW</item>
+        <item>LIGHT_ORANGE</item>
+        <item>LIGHT_RED</item>
+    </string-array>
+
     <!-- Since the 30fps looks bad, and the 2/5 second styles are not useful
          (YouTube closes the animation as soon as the feed is loaded),
          only the 60fps 1 second styles are exposed in the settings.

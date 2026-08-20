@@ -1,32 +1,104 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/2524
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.shared.layout.theme
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.PatchException
+import app.morphe.patcher.patch.ResourcePatchContext
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.colorOption
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.overrideThemeColors
-import app.morphe.util.childElementsSequence
-import app.morphe.util.forEachChildElement
-import org.w3c.dom.Element
+import app.morphe.util.findMutableMethodOf
 import java.io.File
-import java.util.Locale
 
-internal const val THEME_COLOR_OPTION_DESCRIPTION = "Can be a hex color (#RRGGBB) or a color resource reference."
+private const val THEME_BACKGROUND_EXTENSION_CLASS =
+    "Lapp/morphe/extension/shared/theme/ThemeBackgroundPatch;"
+
+/**
+ * Background colors that can be selected in the app settings.
+ *
+ * The index of a color is the ordinal of the matching value of the extension enum
+ * `ThemeBackgroundPatch.DarkThemeBackground`, and the extension selects the color of an index
+ * using the 'mcc' resource qualifier. Existing entries cannot be reordered or removed,
+ * and new entries can only be appended.
+ *
+ * A null color is the unpatched color of the app, and has no resource variant.
+ */
+private val THEME_DARK_BACKGROUNDS = listOf(
+    null,                                   // APP_DEFAULT
+    "@android:color/black",                 // PURE_BLACK
+    "@android:color/system_neutral1_900",   // MATERIAL_YOU_NEUTRAL
+    "@android:color/system_accent1_800",    // MATERIAL_YOU_PRIMARY
+    "@android:color/system_accent2_800",    // MATERIAL_YOU_SECONDARY
+    "@android:color/system_accent3_800",    // MATERIAL_YOU_TERTIARY
+    "#0F0F0F",                              // MODERN_YOUTUBE
+    "#212121",                              // CLASSIC_YOUTUBE
+    "#181825",                              // CATPPUCCIN_MOCHA
+    "#290025",                              // DARK_PINK
+    "#001029",                              // DARK_BLUE
+    "#002905",                              // DARK_GREEN
+    "#282900",                              // DARK_YELLOW
+    "#291800",                              // DARK_ORANGE
+    "#290000",                              // DARK_RED
+)
+
+/**
+ * Selected using the 'mnc' resource qualifier.
+ *
+ * @see THEME_DARK_BACKGROUNDS
+ */
+private val THEME_LIGHT_BACKGROUNDS = listOf(
+    null,                                   // APP_DEFAULT
+    "@android:color/white",                 // WHITE
+    "@android:color/system_neutral1_100",   // MATERIAL_YOU_NEUTRAL
+    "@android:color/system_accent1_200",    // MATERIAL_YOU_PRIMARY
+    "@android:color/system_accent2_200",    // MATERIAL_YOU_SECONDARY
+    "@android:color/system_accent3_200",    // MATERIAL_YOU_TERTIARY
+    "#E6E9EF",                              // CATPPUCCIN_LATTE
+    "#FCCFF3",                              // LIGHT_PINK
+    "#D1E0FF",                              // LIGHT_BLUE
+    "#CCFFCC",                              // LIGHT_GREEN
+    "#FDFFCC",                              // LIGHT_YELLOW
+    "#FFE6CC",                              // LIGHT_ORANGE
+    "#FFD6D6",                              // LIGHT_RED
+)
+
+/**
+ * The splash screen is drawn by the system before the app can select a background,
+ * so it always uses the color of the default setting value.
+ */
+internal const val DEFAULT_DARK_THEME_BACKGROUND_COLOR = "@android:color/black"
+internal const val DEFAULT_LIGHT_THEME_BACKGROUND_COLOR = "@android:color/white"
+
+/**
+ * The color the app themes use for the 'ytBaseBackground' attribute, which is the background
+ * of the app. Morphe dialogs and settings use the same color so that both always match.
+ */
+private const val APP_DARK_BACKGROUND_COLOR_NAME = "yt_sys_color_baseline_mobile_dark_default_base_background"
+private const val APP_LIGHT_BACKGROUND_COLOR_NAME = "yt_sys_color_baseline_mobile_light_default_base_background"
 
 internal val THEME_DEFAULT_DARK_COLOR_NAMES = setOf(
     "yt_black0", "yt_black1", "yt_black2", "yt_black3", "yt_black4",
     "yt_black1_opacity95", "yt_black1_opacity98",
     "yt_status_bar_background_dark", "material_grey_850",
-    "yt_sys_color_baseline_mobile_dark_default_base_background",
+    APP_DARK_BACKGROUND_COLOR_NAME,
     "yt_sys_color_baseline_mobile_dark_default_raised_background"
 )
 
 internal val THEME_DEFAULT_LIGHT_COLOR_NAMES = setOf(
     "yt_white1", "yt_white2", "yt_white3", "yt_white4",
     "yt_white1_opacity95", "yt_white1_opacity98",
-    "yt_sys_color_baseline_mobile_light_default_base_background",
+    APP_LIGHT_BACKGROUND_COLOR_NAME,
     "yt_sys_color_baseline_mobile_light_default_raised_background",
 )
 
@@ -73,114 +145,67 @@ fun patchCountTextColor(resDir: File, color: String) {
 }
 
 /**
- * @param colorString #AARRGGBB #RRGGBB, or an Android color resource name.
+ * Hooks every context of the app so the app resources resolve
+ * with the background colors selected in the app settings.
  */
-internal fun validateColorName(colorString: String): Boolean {
-    if (colorString.startsWith("#")) {
-        // #RRGGBB or #AARRGGBB
-        val hex = colorString.substring(1).uppercase(Locale.US)
+private val themeBackgroundContextHookPatch = bytecodePatch {
+    execute {
+        var hookedContexts = 0
 
-        if (hex.length == 8) {
-            // Transparent colors will crash the app.
-            if (hex[0] != 'F' || hex[1] != 'F') {
-                return false
+        classDefForEach { classDef ->
+            val mutableClass by lazy { mutableClassDefBy(classDef) }
+
+            classDef.methods.forEach { method ->
+                if (method.name != "attachBaseContext" ||
+                    method.implementation == null ||
+                    method.parameterTypes.singleOrNull()?.toString() != "Landroid/content/Context;"
+                ) return@forEach
+
+                mutableClass.findMutableMethodOf(method).addInstructions(
+                    0,
+                    """
+                        invoke-static { p1 }, $THEME_BACKGROUND_EXTENSION_CLASS->wrapContext(Landroid/content/Context;)Landroid/content/Context;
+                        move-result-object p1
+                    """
+                )
+
+                hookedContexts++
             }
-        } else if (hex.length != 6) {
-            return false
         }
 
-        return hex.all { it.isDigit() || it in 'A'..'F' }
+        if (hookedContexts == 0) {
+            throw PatchException("Could not find a context to hook")
+        }
     }
-
-    if (colorString.startsWith("@android:color/")) {
-        // Cannot easily validate Android built-in colors, so assume it's a correct color.
-        return true
-    }
-
-    // Allow any color name, because if it's invalid it will
-    // throw an exception during resource compilation.
-    return colorString.startsWith("@color/")
 }
-
-/**
- * Dark theme color options for YouTube and YT Music Theme patch.
- */
-internal val darkThemeBackgroundColorOption = colorOption(
-    key = "darkThemeBackgroundColor",
-    default = "@android:color/black",
-    values = mapOf(
-        "Pure black" to "@android:color/black",
-        "Material You (Neutral)" to "@android:color/system_neutral1_900",
-        "Material You - Primary" to "@android:color/system_accent1_800",
-        "Material You - Secondary" to "@android:color/system_accent2_800",
-        "Material You - Tertiary" to "@android:color/system_accent3_800",
-        "Modern YouTube" to "#0F0F0F",
-        "Classic YouTube" to "#212121",
-        "Catppuccin (Mocha)" to "#181825",
-        "Dark pink" to "#290025",
-        "Dark blue" to "#001029",
-        "Dark green" to "#002905",
-        "Dark yellow" to "#282900",
-        "Dark orange" to "#291800",
-        "Dark red" to "#290000",
-    ),
-    title = "Dark theme background color",
-    description = THEME_COLOR_OPTION_DESCRIPTION
-)
-
-/**
- * Light theme color options for YouTube Theme patch.
- */
-internal val lightThemeBackgroundColorOption = colorOption(
-    key = "lightThemeBackgroundColor",
-    default = "@android:color/white",
-    values =  mapOf(
-        "White" to "@android:color/white",
-        "Material You (Neutral)" to "@android:color/system_neutral1_100",
-        "Material You - Primary" to "@android:color/system_accent1_200",
-        "Material You - Secondary" to "@android:color/system_accent2_200",
-        "Material You - Tertiary" to "@android:color/system_accent3_200",
-        "Catppuccin (Latte)" to "#E6E9EF",
-        "Light pink" to "#FCCFF3",
-        "Light blue" to "#D1E0FF",
-        "Light green" to "#CCFFCC",
-        "Light yellow" to "#FDFFCC",
-        "Light orange" to "#FFE6CC",
-        "Light red" to "#FFD6D6",
-    ),
-    title = "Light theme background color",
-    description = THEME_COLOR_OPTION_DESCRIPTION
-)
 
 /**
  * Shared theme patch for YouTube and YT Music.
  */
 internal fun baseThemePatch(
     extensionClassDescriptor: String,
-    includeLightThemeOption: Boolean = false,
+    includeLightBackground: Boolean = false,
     useModernLithoColorHook: BytecodePatchBuilder.() -> Boolean,
     block: BytecodePatchBuilder.() -> Unit,
     executeBlock: BytecodePatchContext.() -> Unit = {}
 ) = bytecodePatch(
     name = "Theme",
-    description = "Adds options for theming and applies a custom background theme " +
-            "(dark background theme defaults to pure black).",
+    description = "Adds options for theming, and adds a setting to change the app background " +
+            "color (defaults to pure black).",
 ) {
-    darkThemeBackgroundColorOption()
-
-    if (includeLightThemeOption) {
-        lightThemeBackgroundColorOption()
-    }
-
     block()
 
-    dependsOn(lithoColorHookPatch(useModernLithoColorHook))
+    dependsOn(
+        lithoColorHookPatch(useModernLithoColorHook),
+        themeBackgroundContextHookPatch
+    )
 
     execute {
+        // Morphe dialogs and settings use the background color of the app, and the color
+        // resources resolve to the background that is selected in the app settings.
         overrideThemeColors(
-            if (includeLightThemeOption)
-                lightThemeBackgroundColorOption.value!! else null,
-            darkThemeBackgroundColorOption.value!!
+            if (includeLightBackground) APP_LIGHT_BACKGROUND_COLOR_NAME else null,
+            APP_DARK_BACKGROUND_COLOR_NAME
         )
 
         executeBlock()
@@ -189,122 +214,56 @@ internal fun baseThemePatch(
     }
 }
 
+/**
+ * Adds a color variant of the app background for every value that can be selected in the app
+ * settings. The variants are qualified with 'mcc' and 'mnc' because the app itself ignores both,
+ * and the extension selects one of them by overriding the configuration of the app contexts.
+ */
 internal fun baseThemeResourcePatch(
     darkColorNames: (() -> Set<String>) = { THEME_DEFAULT_DARK_COLOR_NAMES },
     lightColorNames: (() -> Set<String>) = { THEME_DEFAULT_LIGHT_COLOR_NAMES },
-    lightColorReplacement: (() -> String)? = null
+    includeLightBackground: Boolean = false
 ) = resourcePatch {
-    darkThemeBackgroundColorOption()
-
     execute {
-        // Patch validators don't work here for unknown reason.
-        // This should be changed to a patch option validator.
-        val darkThemeBackgroundColor = darkThemeBackgroundColorOption.value!!
-        if (!validateColorName(darkThemeBackgroundColor)) {
-            throw PatchException("Invalid dark theme color: $darkThemeBackgroundColor")
+        addBackgroundColorVariants("mcc", THEME_DARK_BACKGROUNDS, darkColorNames())
+
+        if (includeLightBackground) {
+            addBackgroundColorVariants("mnc", THEME_LIGHT_BACKGROUNDS, lightColorNames())
         }
+    }
+}
 
-        val lightThemeBackgroundColor = lightColorReplacement?.invoke()
-        if (lightThemeBackgroundColor != null && !validateColorName(lightThemeBackgroundColor)) {
-            throw PatchException("Invalid light theme color: $lightThemeBackgroundColor")
-        }
+private fun ResourcePatchContext.addBackgroundColorVariants(
+    qualifier: String,
+    backgrounds: List<String?>,
+    colorNames: Set<String>
+) {
+    if (colorNames.isEmpty()) {
+        throw PatchException("No color to replace for the app background")
+    }
 
-        document("res/values/colors.xml").use { document ->
-            val resourcesNode = document.getElementsByTagName("resources").item(0) as Element
-            val resolvedDarkNames = darkColorNames()
-            val resolvedLightNames = lightColorNames()
+    val resourceDirectory = get("res")
 
-            resourcesNode.childElementsSequence().forEach { node ->
-                val name = node.getAttribute("name")
-                when {
-                    name in resolvedDarkNames -> node.textContent = darkThemeBackgroundColor
-                    lightThemeBackgroundColor != null && name in resolvedLightNames -> node.textContent = lightThemeBackgroundColor
+    backgrounds.forEachIndexed { index, color ->
+        // The app default has no variant of its own.
+        if (color == null) return@forEachIndexed
+
+        // The configuration value of a background is its index plus one,
+        // and the extension uses the same numbering.
+        val variantDirectory = resourceDirectory.resolve(
+            "values-$qualifier" + "%03d".format(index + 1)
+        )
+        variantDirectory.mkdirs()
+
+        variantDirectory.resolve("colors.xml").writeText(
+            buildString {
+                appendLine("<?xml version=\"1.0\" encoding=\"utf-8\"?>")
+                appendLine("<resources>")
+                colorNames.forEach { name ->
+                    appendLine("    <color name=\"$name\">$color</color>")
                 }
+                appendLine("</resources>")
             }
-        }
-
-        val isMaterialYouDark = darkThemeBackgroundColor.startsWith("@android:color/system_")
-
-        if (isMaterialYouDark) {
-            val resDir = get("res")
-            val darkDotColor = "@android:color/system_accent1_100"
-            val darkCountBgColor = "@android:color/system_accent1_100"
-            val darkCountTextColor = "@android:color/system_neutral1_900"
-
-            createNotifDrawable(resDir, "drawable/morphe_notif_dot_dark.xml", darkDotColor, "oval")
-            createNotifDrawable(resDir, "drawable/morphe_notif_count_dark.xml", darkCountBgColor, "rectangle", hasCorners = true)
-            patchCountTextColor(resDir, darkCountTextColor)
-
-            val ytmDrawables = listOf(
-                "new_content_dot_background.xml",
-                "new_content_dot_background_cairo.xml",
-                "new_content_count_background.xml",
-                "new_content_count_background_cairo.xml"
-            )
-            val ytmDrawableDirs = listOf("drawable", "drawable-anydpi-v26", "drawable-anydpi", "drawable-v24", "drawable-v31")
-
-            ytmDrawables.forEach { fileName ->
-                ytmDrawableDirs.forEach { dirName ->
-                    val file = resDir.resolve("$dirName/$fileName")
-                    if (file.exists()) {
-                        val patchedXml = file.readText().replace(
-                            Regex("""<solid\s+android:color="[^"]+""""),
-                            """<solid android:color="$darkDotColor""""
-                        )
-                        file.writeText(patchedXml)
-                    }
-                }
-            }
-
-            val ytmLayoutDirs = listOf("layout", "layout-v26", "layout-v31")
-            ytmLayoutDirs.forEach { dirName ->
-                val file = resDir.resolve("$dirName/new_content_count.xml")
-                if (file.exists()) {
-                    val patchedXml = file.readText().replace(
-                        Regex("""android:textColor="[^"]+""""),
-                        """android:textColor="$darkCountTextColor""""
-                    )
-                    file.writeText(patchedXml)
-                }
-            }
-
-            val stylesFile = "res/values/styles.xml"
-            if (get(stylesFile).exists()) {
-                document(stylesFile).use { document ->
-                    val resources = document.getElementsByTagName("resources").item(0) as? Element ?: return@use
-
-                    resources.forEachChildElement { style ->
-                        if (style.nodeName != "style") return@forEachChildElement
-
-                        val overrides: Map<String, String> = when (style.getAttribute("name")) {
-                            "PivotBar.Dark" -> mapOf(
-                                "dotBackground" to "@drawable/morphe_notif_dot_dark",
-                                "countBackground" to "@drawable/morphe_notif_count_dark"
-                            )
-                            "CairoDarkThemeUpdates" -> mapOf(
-                                "ytRedIndicator" to darkDotColor
-                            )
-                            else -> return@forEachChildElement
-                        }
-
-                        overrides.forEach { (attrName, attrValue) ->
-                            var found = false
-                            style.forEachChildElement { item ->
-                                if (item.nodeName == "item" && item.getAttribute("name") == attrName) {
-                                    item.textContent = attrValue
-                                    found = true
-                                }
-                            }
-                            if (!found) {
-                                style.appendChild(document.createElement("item").apply {
-                                    setAttribute("name", attrName)
-                                    textContent = attrValue
-                                })
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        )
     }
 }

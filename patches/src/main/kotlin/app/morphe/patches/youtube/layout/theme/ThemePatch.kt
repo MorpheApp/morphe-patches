@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/2524
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
@@ -15,14 +15,12 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
+import app.morphe.patches.shared.layout.theme.DEFAULT_DARK_THEME_BACKGROUND_COLOR
+import app.morphe.patches.shared.layout.theme.DEFAULT_LIGHT_THEME_BACKGROUND_COLOR
 import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_DARK_COLOR_NAMES
 import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_LIGHT_COLOR_NAMES
 import app.morphe.patches.shared.layout.theme.baseThemePatch
 import app.morphe.patches.shared.layout.theme.baseThemeResourcePatch
-import app.morphe.patches.shared.layout.theme.createNotifDrawable
-import app.morphe.patches.shared.layout.theme.darkThemeBackgroundColorOption
-import app.morphe.patches.shared.layout.theme.lightThemeBackgroundColorOption
-import app.morphe.patches.shared.layout.theme.patchCountTextColor
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -47,19 +45,17 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/theme
 
 val themePatch = baseThemePatch(
     extensionClassDescriptor = EXTENSION_CLASS,
-    includeLightThemeOption = true,
+    includeLightBackground = true,
     useModernLithoColorHook = {
         is_21_30_or_greater
     },
     block = {
         val themeResourcePatch = resourcePatch {
-            lightThemeBackgroundColorOption()
-            darkThemeBackgroundColorOption()
             dependsOn(resourceMappingPatch)
 
             execute {
-                val lightThemeBackgroundColor = lightThemeBackgroundColorOption.value!!
-                val darkThemeBackgroundColor = darkThemeBackgroundColorOption.value!!
+                val lightThemeBackgroundColor = DEFAULT_LIGHT_THEME_BACKGROUND_COLOR
+                val darkThemeBackgroundColor = DEFAULT_DARK_THEME_BACKGROUND_COLOR
 
                 fun addColorResource(
                     resourceFile: String,
@@ -182,57 +178,6 @@ val themePatch = baseThemePatch(
                     } catch (_: Exception) {
                     }
                 }
-
-                val isMaterialYouLight = lightThemeBackgroundColor.startsWith("@android:color/system_")
-
-                if (isMaterialYouLight) {
-                    val resDir = get("res")
-                    val lightDotColor = "@android:color/system_accent1_200"
-                    val lightCountBgColor = "@android:color/system_accent1_100"
-                    val lightCountTextColor = "@android:color/system_neutral1_900"
-
-                    createNotifDrawable(resDir, "drawable/morphe_notif_dot_light.xml", lightDotColor, "oval")
-                    createNotifDrawable(resDir, "drawable/morphe_notif_count_light.xml", lightCountBgColor, "rectangle", hasCorners = true)
-                    patchCountTextColor(resDir, lightCountTextColor)
-
-                    val stylesFile = "res/values/styles.xml"
-                    if (get(stylesFile).exists()) {
-                        document(stylesFile).use { document ->
-                            val resources = document.getElementsByTagName("resources").item(0) as? Element ?: return@use
-
-                            resources.forEachChildElement { style ->
-                                if (style.nodeName != "style") return@forEachChildElement
-
-                                val overrides: Map<String, String> = when (style.getAttribute("name")) {
-                                    "PivotBar.Default" -> mapOf(
-                                        "dotBackground" to "@drawable/morphe_notif_dot_light",
-                                        "countBackground" to "@drawable/morphe_notif_count_light"
-                                    )
-                                    "CairoLightThemeUpdates" -> mapOf(
-                                        "ytRedIndicator" to lightDotColor
-                                    )
-                                    else -> return@forEachChildElement
-                                }
-
-                                overrides.forEach { (attrName, attrValue) ->
-                                    var found = false
-                                    style.forEachChildElement { item ->
-                                        if (item.nodeName == "item" && item.getAttribute("name") == attrName) {
-                                            item.textContent = attrValue
-                                            found = true
-                                        }
-                                    }
-                                    if (!found) {
-                                        style.appendChild(document.createElement("item").apply {
-                                            setAttribute("name", attrName)
-                                            textContent = attrValue
-                                        })
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
             }
         }
 
@@ -242,7 +187,7 @@ val themePatch = baseThemePatch(
             seekbarColorPatch,
             versionCheckPatch,
             baseThemeResourcePatch(
-                lightColorReplacement = { lightThemeBackgroundColorOption.value!! },
+                includeLightBackground = true,
                 darkColorNames = {
                     THEME_DEFAULT_DARK_COLOR_NAMES + if (is_21_06_or_greater)
                         setOf(
@@ -274,6 +219,10 @@ val themePatch = baseThemePatch(
 
     executeBlock = {
         PreferenceScreen.GENERAL.addPreferences(
+            noTitleUnsortedPreferenceCategory(
+                ListPreference("morphe_theme_background_dark"),
+                ListPreference("morphe_theme_background_light")
+            ),
             SwitchPreference("morphe_gradient_loading_screen", summary = true)
         )
 

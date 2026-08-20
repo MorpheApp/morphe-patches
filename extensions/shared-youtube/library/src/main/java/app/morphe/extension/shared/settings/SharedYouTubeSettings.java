@@ -11,6 +11,9 @@ import app.morphe.extension.shared.patches.CustomBrandingPatch.BrandingTheme;
 import app.morphe.extension.shared.patches.CustomBrandingPatch.NotificationIconTheme;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch.JavaScriptClientAvailability;
 import app.morphe.extension.shared.spoof.js.JavaScriptVariant;
+import app.morphe.extension.shared.theme.ThemeBackgroundPatch;
+import app.morphe.extension.shared.theme.ThemeBackgroundPatch.DarkThemeBackground;
+import app.morphe.extension.shared.theme.ThemeBackgroundPatch.LightThemeBackground;
 
 /**
  * Settings shared by YouTube and YouTube Music.
@@ -34,6 +37,11 @@ public class SharedYouTubeSettings extends BaseSettings {
     public static final BooleanSetting REMOVE_VIEWER_DISCRETION_DIALOG = new BooleanSetting("morphe_remove_viewer_discretion_dialog", FALSE, true);
 
     public static final BooleanSetting CHECK_WATCH_HISTORY_DOMAIN_NAME = new BooleanSetting("morphe_check_watch_history_domain_name", TRUE, false, false);
+
+    @SuppressWarnings("unused")
+    public static final EnumSetting<DarkThemeBackground> THEME_BACKGROUND_DARK = new EnumSetting<>(ThemeBackgroundPatch.SETTINGS_KEY_DARK, ThemeBackgroundPatch.DEFAULT_DARK, true);
+    @SuppressWarnings("unused")
+    public static final EnumSetting<LightThemeBackground> THEME_BACKGROUND_LIGHT = new EnumSetting<>(ThemeBackgroundPatch.SETTINGS_KEY_LIGHT, ThemeBackgroundPatch.DEFAULT_LIGHT, true);
 
     public static final EnumSetting<BrandingTheme> CUSTOM_BRANDING_ICON = new EnumSetting<>("morphe_custom_branding_icon", CustomBrandingPatch.getDefaultIconStyle(), true);
     public static final EnumSetting<NotificationIconTheme> CUSTOM_BRANDING_NOTIFICATION_ICON = new EnumSetting<>("morphe_custom_branding_notification_icon", NotificationIconTheme.FOLLOW, true);

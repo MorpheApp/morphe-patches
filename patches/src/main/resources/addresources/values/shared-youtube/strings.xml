@@ -22,6 +22,24 @@ Second \"item\" text"</string>
     <!-- layout.branding.baseCustomBrandingPatch -->
     <string name="morphe_custom_branding_name_title">App name</string>
 
+    <!-- layout.theme.baseThemePatch -->
+    <string name="morphe_theme_background_dark_title">Dark theme background</string>
+    <string name="morphe_theme_background_dark_entry_1">App default</string>
+    <string name="morphe_theme_background_dark_entry_2">Pure black</string>
+    <string name="morphe_theme_background_dark_entry_3">Material You (Neutral)</string>
+    <string name="morphe_theme_background_dark_entry_4">Material You (Primary)</string>
+    <string name="morphe_theme_background_dark_entry_5">Material You (Secondary)</string>
+    <string name="morphe_theme_background_dark_entry_6">Material You (Tertiary)</string>
+    <string name="morphe_theme_background_dark_entry_7">Modern YouTube</string>
+    <string name="morphe_theme_background_dark_entry_8">Classic YouTube</string>
+    <string name="morphe_theme_background_dark_entry_9">Catppuccin (Mocha)</string>
+    <string name="morphe_theme_background_dark_entry_10">Dark pink</string>
+    <string name="morphe_theme_background_dark_entry_11">Dark blue</string>
+    <string name="morphe_theme_background_dark_entry_12">Dark green</string>
+    <string name="morphe_theme_background_dark_entry_13">Dark yellow</string>
+    <string name="morphe_theme_background_dark_entry_14">Dark orange</string>
+    <string name="morphe_theme_background_dark_entry_15">Dark red</string>
+
     <!-- interaction.downloads.downloadsPatch -->
     <string name="morphe_external_downloader_screen_title">External downloads</string>
     <string name="morphe_external_downloader_name_title">Downloader package name</string>
