@@ -51,8 +51,14 @@ message Format {
 }
 
 message PlayerConfig {
+  optional AudioConfig audioConfig = 55405814;
   optional AndroidMedialibConfig androidMedialibConfig = 78958444;
   optional PlayerGestureConfig playerGestureConfig = 262192541;
+  optional InlinePlaybackConfig inlinePlaybackConfig = 399288314;
+}
+
+message AudioConfig {
+  optional bool muteOnStart = 4;
 }
 
 message AndroidMedialibConfig {
@@ -62,4 +68,9 @@ message AndroidMedialibConfig {
 message PlayerGestureConfig {
   optional bool downAndOutPortraitAllowed = 1;
   optional bool downAndOutLandscapeAllowed = 2;
+}
+
+message InlinePlaybackConfig {
+  optional bool showScrubbingControls = 1;
+  optional bool showAudioControls = 2;
 }

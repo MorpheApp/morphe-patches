@@ -308,8 +308,9 @@ public class SpoofVideoStreamsPatch {
                     Logger.printException(() -> "Ignoring request with no ID: " + url);
                     return;
                 }
+                boolean isInline = "1".equals(uri.getQueryParameter("inline"));
 
-                StreamingDataRequest.fetchRequest(id, requestHeaders);
+                StreamingDataRequest.fetchRequest(id, isInline, requestHeaders);
             } catch (Exception ex) {
                 Logger.printException(() -> "buildRequest failure", ex);
             }

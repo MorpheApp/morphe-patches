@@ -131,17 +131,19 @@ public class StreamingDataRequest {
     }
 
     private final String videoId;
+    private final boolean isInline;
 
     private final Future<StreamData> future;
 
-    private StreamingDataRequest(String videoId, Map<String, String> playerHeaders) {
+    private StreamingDataRequest(String videoId, boolean isInline, Map<String, String> playerHeaders) {
         this.videoId = videoId;
-        this.future = Utils.submitOnBackgroundThread(() -> fetch(videoId, playerHeaders));
+        this.isInline = isInline;
+        this.future = Utils.submitOnBackgroundThread(() -> fetch(videoId, isInline, playerHeaders));
     }
 
-    public static void fetchRequest(String videoId, Map<String, String> fetchHeaders) {
+    public static void fetchRequest(String videoId, boolean isInline, Map<String, String> fetchHeaders) {
         // Always fetch, even if there is an existing request for the same video.
-        cache.put(videoId, new StreamingDataRequest(videoId, fetchHeaders));
+        cache.put(videoId, new StreamingDataRequest(videoId, isInline, fetchHeaders));
     }
 
     @Nullable
@@ -265,7 +267,8 @@ public class StreamingDataRequest {
 
     @Nullable
     private static StreamData buildPlayerResponseBuffer(ClientType clientType,
-                                                        HttpURLConnection connection) {
+                                                        HttpURLConnection connection,
+                                                        boolean isInline) {
         if (connection == null) {
             return null;
         }
@@ -346,18 +349,33 @@ public class StreamingDataRequest {
             if (clientType.requireSABR && playerResponse.hasPlayerConfig()) {
                 PlayerConfig.Builder playerConfigBuilder = playerResponse.getPlayerConfig().toBuilder();
 
-                // In some clients, 'playerGestureConfig' is missing from the response.
-                // Add 'playerGestureConfig' using proto builder.
-                PlayerGestureConfig.Builder playerGestureConfigBuilder = playerConfigBuilder.getPlayerGestureConfig().toBuilder();
-                playerGestureConfigBuilder.setDownAndOutPortraitAllowed(true);
-                playerGestureConfigBuilder.setDownAndOutLandscapeAllowed(true);
-                playerConfigBuilder.setPlayerGestureConfig(playerGestureConfigBuilder);
-
-                playerConfigBuffer = playerConfigBuilder.build().toByteArray();
-
                 // If 'androidMedialibConfig' exists in the response, all playerConfigs are compatible.
                 // Override all playerConfigs.
                 hasAndroidMedia = playerConfigBuilder.hasAndroidMedialibConfig();
+
+                if (hasAndroidMedia) {
+                    // In some clients, 'playerGestureConfig' is missing from the response.
+                    // Add 'playerGestureConfig' using proto builder.
+                    PlayerGestureConfig.Builder playerGestureConfigBuilder = playerConfigBuilder.getPlayerGestureConfig().toBuilder();
+                    playerGestureConfigBuilder.setDownAndOutPortraitAllowed(true);
+                    playerGestureConfigBuilder.setDownAndOutLandscapeAllowed(true);
+                    playerConfigBuilder.setPlayerGestureConfig(playerGestureConfigBuilder);
+
+                    // In autoplay in feed, 'inline' query parameters and unique player parameters are used when sending requests.
+                    // To minimize code modifications, simply add 'inlinePlaybackConfig' using proto builder.
+                    if (isInline) {
+                        AudioConfig.Builder audioConfigBuilder = playerConfigBuilder.getAudioConfig().toBuilder();
+                        audioConfigBuilder.setMuteOnStart(true);
+                        playerConfigBuilder.setAudioConfig(audioConfigBuilder);
+
+                        InlinePlaybackConfig.Builder inlinePlaybackConfigBuilder = playerConfigBuilder.getInlinePlaybackConfig().toBuilder();
+                        inlinePlaybackConfigBuilder.setShowAudioControls(true);
+                        inlinePlaybackConfigBuilder.setShowScrubbingControls(true);
+                        playerConfigBuilder.setInlinePlaybackConfig(inlinePlaybackConfigBuilder);
+                    }
+                }
+
+                playerConfigBuffer = playerConfigBuilder.build().toByteArray();
             }
 
             return new StreamData(streamingDataBuffer, playerConfigBuffer, hasAndroidMedia);
@@ -375,7 +393,7 @@ public class StreamingDataRequest {
         return false;
     }
 
-    private static StreamData fetch(String videoId, @Nullable Map<String, String> playerHeaders) {
+    private static StreamData fetch(String videoId, boolean isInline, @Nullable Map<String, String> playerHeaders) {
         final boolean debugEnabled = BaseSettings.DEBUG.get();
         final long fetchStartTime = System.currentTimeMillis();
 
@@ -390,13 +408,13 @@ public class StreamingDataRequest {
             final boolean showErrorToast = (++i == clientOrderToUse.length) || debugEnabled;
 
             HttpURLConnection connection = send(clientType, videoId, playerHeaders, showErrorToast);
-            StreamData streamingData = buildPlayerResponseBuffer(clientType, connection);
+            StreamData streamingData = buildPlayerResponseBuffer(clientType, connection, isInline);
 
             if (clientType == ClientType.TV_SABR && fallbackWithTVDash) {
                 fallbackWithTVDash = false;
                 clientType = ClientType.TV_DASH;
                 HttpURLConnection fallBackConnection = send(clientType, videoId, playerHeaders, showErrorToast);
-                streamingData = buildPlayerResponseBuffer(clientType, fallBackConnection);
+                streamingData = buildPlayerResponseBuffer(clientType, fallBackConnection, isInline);
             }
 
             if (streamingData != null) {
@@ -461,6 +479,6 @@ public class StreamingDataRequest {
     @NonNull
     @Override
     public String toString() {
-        return "StreamingDataRequest{" + "videoId='" + videoId + '\'' + '}';
+        return "StreamingDataRequest{" + "videoId='" + videoId + "', isInline='" + isInline + '\'' + '}';
     }
 }
