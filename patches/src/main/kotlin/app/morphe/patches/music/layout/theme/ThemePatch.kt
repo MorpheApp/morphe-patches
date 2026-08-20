@@ -19,8 +19,8 @@ import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
-import app.morphe.patches.shared.layout.theme.THEME_BACKGROUND_EXTENSION_CLASS
-import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_DARK_COLOR_NAMES
+import app.morphe.patches.shared.layout.theme.THEME_COLOR_EXTENSION_CLASS
+import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_COLOR_NAMES_DARK
 import app.morphe.patches.shared.layout.theme.baseThemePatch
 import app.morphe.patches.shared.layout.theme.baseThemeResourcePatch
 import app.morphe.patches.shared.misc.settings.preference.InputType
@@ -31,8 +31,8 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/theme/ThemePatch;"
 
-private val darkColorNames = {
-    THEME_DEFAULT_DARK_COLOR_NAMES + setOf(
+private val musicColorNamesDark = {
+    THEME_DEFAULT_COLOR_NAMES_DARK + setOf(
         "yt_black_pure",
         "yt_black_pure_opacity80",
         "ytm_color_grey_12",
@@ -43,7 +43,7 @@ private val darkColorNames = {
 @Suppress("unused")
 val themePatch = baseThemePatch(
     extensionClassDescriptor = EXTENSION_CLASS,
-    darkColorNames = darkColorNames,
+    colorNamesDark = musicColorNamesDark,
     useModernLithoColorHook = {
         is_9_30_or_greater
     },
@@ -54,7 +54,7 @@ val themePatch = baseThemePatch(
             resourceMappingPatch,
             versionCheckPatch,
             baseThemeResourcePatch(
-                darkColorNames = darkColorNames
+                colorNamesDark = musicColorNamesDark
             )
         )
 
@@ -72,7 +72,7 @@ val themePatch = baseThemePatch(
 
                 addInstruction(
                     checkCastIndex + 1,
-                    "invoke-static { v$stubRegister }, $THEME_BACKGROUND_EXTENSION_CLASS" +
+                    "invoke-static { v$stubRegister }, $THEME_COLOR_EXTENSION_CLASS" +
                             "->onNewContentIndicator(Landroid/view/ViewStub;)V"
                 )
             }
@@ -82,7 +82,7 @@ val themePatch = baseThemePatch(
             noTitleUnsortedPreferenceCategory(
                 ListPreference(
                     "morphe_theme_background_dark",
-                    tag = "app.morphe.extension.shared.theme.ThemeBackgroundListPreference"
+                    tag = "app.morphe.extension.shared.theme.ThemeColorListPreference"
                 ),
                 TextPreference(
                     "morphe_theme_background_dark_custom_color",

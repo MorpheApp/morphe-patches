@@ -54,11 +54,11 @@ import app.morphe.extension.shared.settings.StringSetting;
  * is used for the unpatched colors of the app. The patch relies on the same numbering.
  * <p>
  * Only a color that was compiled in can be selected this way, so the {@code CUSTOM} background
- * uses {@link ThemeBackgroundOverlay} instead to give the same color resources a value of its
+ * uses {@link ThemeColorOverlay} instead to give the same color resources a value of its
  * own. That needs Android 14 or later.
  */
 @SuppressWarnings("unused")
-public class ThemeBackgroundPatch {
+public class ThemeColorPatch {
 
     public interface Background {
         /**
@@ -73,7 +73,7 @@ public class ThemeBackgroundPatch {
         boolean isCustom();
     }
 
-    public enum DarkThemeBackground implements Background {
+    public enum ThemeColorDark implements Background {
         APP_DEFAULT,
         PURE_BLACK,
         MATERIAL_YOU_NEUTRAL(true, false),
@@ -93,11 +93,11 @@ public class ThemeBackgroundPatch {
         private final boolean materialYou;
         private final boolean custom;
 
-        DarkThemeBackground() {
+        ThemeColorDark() {
             this(false, false);
         }
 
-        DarkThemeBackground(boolean materialYou, boolean custom) {
+        ThemeColorDark(boolean materialYou, boolean custom) {
             this.materialYou = materialYou;
             this.custom = custom;
         }
@@ -113,7 +113,7 @@ public class ThemeBackgroundPatch {
         }
     }
 
-    public enum LightThemeBackground implements Background {
+    public enum ThemeColorLight implements Background {
         APP_DEFAULT,
         WHITE,
         MATERIAL_YOU_NEUTRAL(true, false),
@@ -132,11 +132,11 @@ public class ThemeBackgroundPatch {
         private final boolean materialYou;
         private final boolean custom;
 
-        LightThemeBackground() {
+        ThemeColorLight() {
             this(false, false);
         }
 
-        LightThemeBackground(boolean materialYou, boolean custom) {
+        ThemeColorLight(boolean materialYou, boolean custom) {
             this.materialYou = materialYou;
             this.custom = custom;
         }
@@ -264,7 +264,7 @@ public class ThemeBackgroundPatch {
             }
 
             if (isCustomBackgroundSupported() && useOverlay) {
-                ThemeBackgroundOverlay.applyTo(context);
+                ThemeColorOverlay.applyTo(context);
             }
 
             updateMorpheColors(context);
@@ -399,7 +399,7 @@ public class ThemeBackgroundPatch {
 
         try {
             if (!useOverlay) {
-                ThemeBackgroundOverlay.unregisterIfRegistered(context);
+                ThemeColorOverlay.unregisterIfRegistered(context);
                 return;
             }
 
@@ -415,7 +415,7 @@ public class ThemeBackgroundPatch {
 
             // The system deletes an overlay of the app when the app is installed again, so it is
             // registered on every start and not only after the user picks another color.
-            ThemeBackgroundOverlay.register(context, colors);
+            ThemeColorOverlay.register(context, colors);
         } catch (Exception ex) {
             // Overlays are a part of the system and a manufacturer can change how they behave.
             Logger.printException(() -> "Could not update the overlay of the app", ex);
@@ -453,8 +453,8 @@ public class ThemeBackgroundPatch {
     public static int getBackgroundColor(Context context, boolean dark, int index) {
         try {
             Background background = (dark
-                    ? DarkThemeBackground.values()
-                    : LightThemeBackground.values())[index];
+                    ? ThemeColorDark.values()
+                    : ThemeColorLight.values())[index];
 
             if (background.isCustom()) {
                 return customColor(dark);
@@ -475,7 +475,7 @@ public class ThemeBackgroundPatch {
 
             Context variant = context.createConfigurationContext(configuration);
             if (isCustomBackgroundSupported()) {
-                ThemeBackgroundOverlay.removeFrom(variant);
+                ThemeColorOverlay.removeFrom(variant);
             }
 
             return variant.getColor(identifier);

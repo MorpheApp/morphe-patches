@@ -16,11 +16,11 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
-import app.morphe.patches.shared.layout.theme.DEFAULT_DARK_THEME_BACKGROUND_COLOR
-import app.morphe.patches.shared.layout.theme.DEFAULT_LIGHT_THEME_BACKGROUND_COLOR
-import app.morphe.patches.shared.layout.theme.THEME_BACKGROUND_EXTENSION_CLASS
-import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_DARK_COLOR_NAMES
-import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_LIGHT_COLOR_NAMES
+import app.morphe.patches.shared.layout.theme.DEFAULT_THEME_COLOR_DARK
+import app.morphe.patches.shared.layout.theme.DEFAULT_THEME_COLOR_LIGHT
+import app.morphe.patches.shared.layout.theme.THEME_COLOR_EXTENSION_CLASS
+import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_COLOR_NAMES_DARK
+import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_COLOR_NAMES_LIGHT
 import app.morphe.patches.shared.layout.theme.baseThemePatch
 import app.morphe.patches.shared.layout.theme.baseThemeResourcePatch
 import app.morphe.patches.shared.misc.settings.preference.InputType
@@ -38,17 +38,15 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.forEachChildElement
-import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
-import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import org.w3c.dom.Element
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/theme/ThemePatch;"
 
-private val darkColorNames = {
-    THEME_DEFAULT_DARK_COLOR_NAMES + if (is_21_06_or_greater)
+private val youTubeColorNamesDark = {
+    THEME_DEFAULT_COLOR_NAMES_DARK + if (is_21_06_or_greater)
         setOf(
             // yt_ref_color_constants_baseline_black_black0
             // yt_ref_color_constants_baseline_black_black1
@@ -62,20 +60,22 @@ private val darkColorNames = {
         ) else emptySet()
 }
 
-private val lightColorNames = {
-    THEME_DEFAULT_LIGHT_COLOR_NAMES + if (is_21_06_or_greater)
+private val youTubeColorNamesLight = {
+    THEME_DEFAULT_COLOR_NAMES_LIGHT + if (is_21_06_or_greater) {
         setOf(
             "yt_sys_color_baseline_light_base_background",
             "yt_sys_color_baseline_light_raised_background"
         )
-    else emptySet()
+    } else {
+        emptySet()
+    }
 }
 
 val themePatch = baseThemePatch(
     extensionClassDescriptor = EXTENSION_CLASS,
     includeLightBackground = true,
-    darkColorNames = darkColorNames,
-    lightColorNames = lightColorNames,
+    colorNamesDark = youTubeColorNamesDark,
+    colorNamesLight = youTubeColorNamesLight,
     useModernLithoColorHook = {
         is_21_30_or_greater
     },
@@ -84,9 +84,6 @@ val themePatch = baseThemePatch(
             dependsOn(resourceMappingPatch)
 
             execute {
-                val lightThemeBackgroundColor = DEFAULT_LIGHT_THEME_BACKGROUND_COLOR
-                val darkThemeBackgroundColor = DEFAULT_DARK_THEME_BACKGROUND_COLOR
-
                 fun addColorResource(
                     resourceFile: String,
                     colorName: String,
@@ -110,12 +107,12 @@ val themePatch = baseThemePatch(
                 addColorResource(
                     "res/values/colors.xml",
                     splashBackgroundColorKey,
-                    lightThemeBackgroundColor
+                    DEFAULT_THEME_COLOR_LIGHT
                 )
                 addColorResource(
                     "res/values-night/colors.xml",
                     splashBackgroundColorKey,
-                    darkThemeBackgroundColor
+                    DEFAULT_THEME_COLOR_DARK
                 )
 
                 // Edit splash screen files and change the background color.
@@ -206,6 +203,7 @@ val themePatch = baseThemePatch(
                             }
                         }
                     } catch (_: Exception) {
+                        // Ignore?
                     }
                 }
             }
@@ -219,8 +217,8 @@ val themePatch = baseThemePatch(
             versionCheckPatch,
             baseThemeResourcePatch(
                 includeLightBackground = true,
-                darkColorNames = darkColorNames,
-                lightColorNames = lightColorNames
+                colorNamesDark = youTubeColorNamesDark,
+                colorNamesLight = youTubeColorNamesLight
             ),
             themeResourcePatch
         )
@@ -233,7 +231,7 @@ val themePatch = baseThemePatch(
             noTitleUnsortedPreferenceCategory(
                 ListPreference(
                     "morphe_theme_background_dark",
-                    tag = "app.morphe.extension.shared.theme.ThemeBackgroundListPreference"
+                    tag = "app.morphe.extension.shared.theme.ThemeColorListPreference"
                 ),
                 TextPreference(
                     "morphe_theme_background_dark_custom_color",
@@ -242,7 +240,7 @@ val themePatch = baseThemePatch(
                 ),
                 ListPreference(
                     "morphe_theme_background_light",
-                    tag = "app.morphe.extension.shared.theme.ThemeBackgroundListPreference"
+                    tag = "app.morphe.extension.shared.theme.ThemeColorListPreference"
                 ),
                 TextPreference(
                     "morphe_theme_background_light_custom_color",

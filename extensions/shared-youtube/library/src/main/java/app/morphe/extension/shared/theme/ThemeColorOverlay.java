@@ -39,7 +39,7 @@ import app.morphe.extension.shared.Logger;
  * Kept in a class of its own so the API 34 classes are never loaded on an older device.
  */
 @RequiresApi(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
-final class ThemeBackgroundOverlay {
+final class ThemeColorOverlay {
 
     private static final String OVERLAY_NAME = "morphe_theme_background";
 
@@ -47,7 +47,7 @@ final class ThemeBackgroundOverlay {
      * An overlay is rejected unless the target declares the resources it may change, so the patch
      * adds this to {@code res/values/overlayable.xml} and both names must stay identical.
      */
-    private static final String OVERLAYABLE_NAME = "MorpheThemeBackground";
+    private static final String OVERLAYABLE_NAME = "MorpheThemeColor";
 
     /**
      * Gives every color resource of {@code colors} the color it is mapped to.
@@ -168,6 +168,6 @@ final class ThemeBackgroundOverlay {
         overlayManager.commit(transaction);
     }
 
-    private ThemeBackgroundOverlay() {
+    private ThemeColorOverlay() {
     }
 }

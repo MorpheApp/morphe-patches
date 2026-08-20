@@ -25,8 +25,7 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import org.w3c.dom.Element
 import kotlin.math.roundToInt
 
-internal const val THEME_BACKGROUND_EXTENSION_CLASS =
-    "Lapp/morphe/extension/shared/theme/ThemeBackgroundPatch;"
+internal const val THEME_COLOR_EXTENSION_CLASS = "Lapp/morphe/extension/shared/theme/ThemeColorPatch;"
 
 /**
  * Mobile country codes of 100 to 199 are not assigned to any country, so a device never reports
@@ -51,25 +50,25 @@ private const val PALETTE_INDEX_OFFSET = 100
  * so a variant cannot be qualified with 'night'. Instead the extension asks for the variant of
  * the theme the app shows, and the indices of the two themes never overlap.
  */
-private const val DARK_INDEX_OFFSET = 0
-private const val LIGHT_INDEX_OFFSET = 700
+private const val THEME_INDEX_OFFSET_DARK = 0
+private const val THEME_INDEX_OFFSET_LIGHT = 700
 
 /**
  * Must be identical to the name the extension uses with `FabricatedOverlay#setTargetOverlayable`.
  */
-private const val THEME_BACKGROUND_OVERLAYABLE_NAME = "MorpheThemeBackground"
+private const val THEME_BACKGROUND_OVERLAYABLE_NAME = "MorpheThemeColor"
 
 /**
  * Background colors that can be selected in the app settings.
  *
  * The index of a color is the ordinal of the matching value of the extension enum
- * `ThemeBackgroundPatch.DarkThemeBackground`, and the extension selects the color of an index
+ * `ThemeColorPatch.ThemeColorDark`, and the extension selects the color of an index
  * using the 'mcc' resource qualifier. Existing entries cannot be reordered or removed,
  * and new entries can only be appended.
  *
  * A null color is the unpatched color of the app, and has no resource variant.
  */
-private val THEME_DARK_BACKGROUNDS = listOf(
+private val THEME_COLORS_DARK = listOf(
     null,                                   // APP_DEFAULT
     "@android:color/black",                 // PURE_BLACK
     "@android:color/system_neutral1_900",   // MATERIAL_YOU_NEUTRAL
@@ -90,9 +89,9 @@ private val THEME_DARK_BACKGROUNDS = listOf(
 /**
  * Selected using the 'mnc' resource qualifier.
  *
- * @see THEME_DARK_BACKGROUNDS
+ * @see THEME_COLORS_DARK
  */
-private val THEME_LIGHT_BACKGROUNDS = listOf(
+private val THEME_COLORS_LIGHT = listOf(
     null,                                   // APP_DEFAULT
     "@android:color/white",                 // WHITE
     "@android:color/system_neutral1_100",   // MATERIAL_YOU_NEUTRAL
@@ -113,28 +112,28 @@ private val THEME_LIGHT_BACKGROUNDS = listOf(
  * The splash screen is drawn by the system before the app can select a background,
  * so it always uses the color of the default setting value.
  */
-internal const val DEFAULT_DARK_THEME_BACKGROUND_COLOR = "@android:color/black"
-internal const val DEFAULT_LIGHT_THEME_BACKGROUND_COLOR = "@android:color/white"
+internal const val DEFAULT_THEME_COLOR_DARK = "@android:color/black"
+internal const val DEFAULT_THEME_COLOR_LIGHT = "@android:color/white"
 
 /**
  * The color the app themes use for the 'ytBaseBackground' attribute, which is the background
  * of the app. Morphe dialogs and settings use the same color so that both always match.
  */
-private const val APP_DARK_BACKGROUND_COLOR_NAME = "yt_sys_color_baseline_mobile_dark_default_base_background"
-private const val APP_LIGHT_BACKGROUND_COLOR_NAME = "yt_sys_color_baseline_mobile_light_default_base_background"
+private const val APP_COLOR_NAME_DARK = "yt_sys_color_baseline_mobile_dark_default_base_background"
+private const val APP_COLOR_NAME_LIGHT = "yt_sys_color_baseline_mobile_light_default_base_background"
 
-internal val THEME_DEFAULT_DARK_COLOR_NAMES = setOf(
+internal val THEME_DEFAULT_COLOR_NAMES_DARK = setOf(
     "yt_black0", "yt_black1", "yt_black2", "yt_black3", "yt_black4",
     "yt_black1_opacity95", "yt_black1_opacity98",
     "yt_status_bar_background_dark", "material_grey_850",
-    APP_DARK_BACKGROUND_COLOR_NAME,
+    APP_COLOR_NAME_DARK,
     "yt_sys_color_baseline_mobile_dark_default_raised_background"
 )
 
-internal val THEME_DEFAULT_LIGHT_COLOR_NAMES = setOf(
+internal val THEME_DEFAULT_COLOR_NAMES_LIGHT = setOf(
     "yt_white1", "yt_white2", "yt_white3", "yt_white4",
     "yt_white1_opacity95", "yt_white1_opacity98",
-    APP_LIGHT_BACKGROUND_COLOR_NAME,
+    APP_COLOR_NAME_LIGHT,
     "yt_sys_color_baseline_mobile_light_default_raised_background",
 )
 
@@ -142,7 +141,7 @@ internal val THEME_DEFAULT_LIGHT_COLOR_NAMES = setOf(
  * Hooks every context of the app so the app resources resolve
  * with the background colors selected in the app settings.
  */
-private val themeBackgroundContextHookPatch = bytecodePatch {
+private val themeColorContextHookPatch = bytecodePatch {
     execute {
         Fingerprint(
             name = "attachBaseContext",
@@ -154,7 +153,7 @@ private val themeBackgroundContextHookPatch = bytecodePatch {
             it.method.addInstructions(
                 0,
                 """
-                    invoke-static { p1 }, $THEME_BACKGROUND_EXTENSION_CLASS->wrapContext(Landroid/content/Context;)Landroid/content/Context;
+                    invoke-static { p1 }, $THEME_COLOR_EXTENSION_CLASS->wrapContext(Landroid/content/Context;)Landroid/content/Context;
                     move-result-object p1
                 """
             )
@@ -168,8 +167,8 @@ private val themeBackgroundContextHookPatch = bytecodePatch {
 internal fun baseThemePatch(
     extensionClassDescriptor: String,
     includeLightBackground: Boolean = false,
-    darkColorNames: (() -> Set<String>) = { THEME_DEFAULT_DARK_COLOR_NAMES },
-    lightColorNames: (() -> Set<String>) = { THEME_DEFAULT_LIGHT_COLOR_NAMES },
+    colorNamesDark: (() -> Set<String>) = { THEME_DEFAULT_COLOR_NAMES_DARK },
+    colorNamesLight: (() -> Set<String>) = { THEME_DEFAULT_COLOR_NAMES_LIGHT },
     useModernLithoColorHook: BytecodePatchBuilder.() -> Boolean,
     block: BytecodePatchBuilder.() -> Unit,
     executeBlock: BytecodePatchContext.() -> Unit = {}
@@ -181,25 +180,25 @@ internal fun baseThemePatch(
 
     dependsOn(
         lithoColorHookPatch(useModernLithoColorHook),
-        themeBackgroundContextHookPatch
+        themeColorContextHookPatch
     )
 
     execute {
         // Morphe dialogs and settings use the background color of the app, and the color
         // resources resolve to the background that is selected in the app settings.
         overrideThemeColors(
-            if (includeLightBackground) APP_LIGHT_BACKGROUND_COLOR_NAME else null,
-            APP_DARK_BACKGROUND_COLOR_NAME
+            if (includeLightBackground) APP_COLOR_NAME_LIGHT else null,
+            APP_COLOR_NAME_DARK
         )
 
         // A custom background color has no resource variant to select,
         // so the extension replaces the same colors with an overlay of the app.
         DarkColorResourceNamesFingerprint.method.returnEarly(
-            colorResourceNames(APP_DARK_BACKGROUND_COLOR_NAME, darkColorNames())
+            colorResourceNames(APP_COLOR_NAME_DARK, colorNamesDark())
         )
         if (includeLightBackground) {
             LightColorResourceNamesFingerprint.method.returnEarly(
-                colorResourceNames(APP_LIGHT_BACKGROUND_COLOR_NAME, lightColorNames())
+                colorResourceNames(APP_COLOR_NAME_LIGHT, colorNamesLight())
             )
         }
 
@@ -222,21 +221,21 @@ private fun colorResourceNames(appBackgroundColorName: String, colorNames: Set<S
  * and the extension selects one of them by overriding the configuration of the app contexts.
  */
 internal fun baseThemeResourcePatch(
-    darkColorNames: (() -> Set<String>) = { THEME_DEFAULT_DARK_COLOR_NAMES },
-    lightColorNames: (() -> Set<String>) = { THEME_DEFAULT_LIGHT_COLOR_NAMES },
+    colorNamesDark: (() -> Set<String>) = { THEME_DEFAULT_COLOR_NAMES_DARK },
+    colorNamesLight: (() -> Set<String>) = { THEME_DEFAULT_COLOR_NAMES_LIGHT },
     includeLightBackground: Boolean = false
 ) = resourcePatch {
     execute {
-        addBackgroundColorVariants(DARK_INDEX_OFFSET, THEME_DARK_BACKGROUNDS, darkColorNames())
-        add9BitColorVariants(DARK_INDEX_OFFSET, darkColorNames())
+        addBackgroundColorVariants(THEME_INDEX_OFFSET_DARK, THEME_COLORS_DARK, colorNamesDark())
+        add9BitColorVariants(THEME_INDEX_OFFSET_DARK, colorNamesDark())
 
         if (includeLightBackground) {
-            addBackgroundColorVariants(LIGHT_INDEX_OFFSET, THEME_LIGHT_BACKGROUNDS, lightColorNames())
-            add9BitColorVariants(LIGHT_INDEX_OFFSET, lightColorNames())
+            addBackgroundColorVariants(THEME_INDEX_OFFSET_LIGHT, THEME_COLORS_LIGHT, colorNamesLight())
+            add9BitColorVariants(THEME_INDEX_OFFSET_LIGHT, colorNamesLight())
         }
 
         declareOverlayableColors(
-            if (includeLightBackground) darkColorNames() + lightColorNames() else darkColorNames()
+            if (includeLightBackground) colorNamesDark() + colorNamesLight() else colorNamesDark()
         )
     }
 }

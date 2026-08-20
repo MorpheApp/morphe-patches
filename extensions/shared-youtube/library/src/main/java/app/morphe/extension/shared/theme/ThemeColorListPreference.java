@@ -21,21 +21,21 @@ import app.morphe.extension.shared.ui.ColorDot;
  * Shows the color of every background next to its name, the same way the app icons are shown.
  */
 @SuppressWarnings({"unused", "deprecation"})
-public class ThemeBackgroundListPreference extends IconListPreference {
+public class ThemeColorListPreference extends IconListPreference {
 
-    public ThemeBackgroundListPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public ThemeColorListPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-    public ThemeBackgroundListPreference(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ThemeColorListPreference(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
-    public ThemeBackgroundListPreference(Context context, AttributeSet attrs) {
+    public ThemeColorListPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public ThemeBackgroundListPreference(Context context) {
+    public ThemeColorListPreference(Context context) {
         super(context);
     }
 
@@ -53,7 +53,7 @@ public class ThemeBackgroundListPreference extends IconListPreference {
         Drawable[] drawables = new Drawable[values.length];
         for (int i = 0, length = values.length; i < length; i++) {
             drawables[i] = ColorDot.createColorDotDrawable(
-                    ThemeBackgroundPatch.getBackgroundColor(context, dark, i));
+                    ThemeColorPatch.getBackgroundColor(context, dark, i));
         }
 
         return drawables;

@@ -67,7 +67,7 @@ internal object LithoOnBoundsChangeLegacyFingerprint : Fingerprint(
 )
 
 internal object DarkColorResourceNamesFingerprint : Fingerprint(
-    definingClass = THEME_BACKGROUND_EXTENSION_CLASS,
+    definingClass = THEME_COLOR_EXTENSION_CLASS,
     name = "darkColorResourceNames",
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "Ljava/lang/String;",
@@ -75,7 +75,7 @@ internal object DarkColorResourceNamesFingerprint : Fingerprint(
 )
 
 internal object LightColorResourceNamesFingerprint : Fingerprint(
-    definingClass = THEME_BACKGROUND_EXTENSION_CLASS,
+    definingClass = THEME_COLOR_EXTENSION_CLASS,
     name = "lightColorResourceNames",
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "Ljava/lang/String;",
