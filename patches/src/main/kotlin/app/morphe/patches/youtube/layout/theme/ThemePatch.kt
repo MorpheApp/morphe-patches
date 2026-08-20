@@ -281,16 +281,16 @@ val themePatch = baseThemePatch(
             it.method.apply {
                 // Both the dot of a tab and the count next to it, and the count is hooked
                 // first so the index of the dot is still valid.
-                val countIndex = indexOfFirstInstructionOrThrow(it.instructionMatches[3].index) {
-                    opcode == Opcode.CHECK_CAST
-                }
 
-                arrayOf(countIndex, it.instructionMatches[2].index).forEach { checkCastIndex ->
+                arrayOf(
+                    it.instructionMatches.last().index,
+                    it.instructionMatches[2].index
+                ).forEach { checkCastIndex ->
                     val stubRegister = getInstruction<OneRegisterInstruction>(checkCastIndex).registerA
 
                     addInstruction(
                         checkCastIndex + 1,
-                        "invoke-static { v$stubRegister }, $THEME_BACKGROUND_EXTENSION_CLASS" +
+                        "invoke-static { v$stubRegister }, $THEME_COLOR_EXTENSION_CLASS" +
                                 "->onNewContentIndicator(Landroid/view/ViewStub;)V"
                     )
                 }

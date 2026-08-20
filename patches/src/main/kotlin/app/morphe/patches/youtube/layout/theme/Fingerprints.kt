@@ -104,6 +104,7 @@ internal object PivotBarNewContentDotFingerprint : Fingerprint(
             ResourceType.ID,
             "new_content_count",
             location = MatchAfterWithin(30)
-        )
+        ),
+        opcode(opcode = Opcode.CHECK_CAST)
     )
 )
