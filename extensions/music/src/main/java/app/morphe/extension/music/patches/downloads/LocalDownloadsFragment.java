@@ -71,7 +71,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         scroll.addView(songsList);
         root.addView(scroll, new LinearLayout.LayoutParams(-1, 0, 1));
 
-        TextView heading = text("Canzoni offline", 22, WHITE);
+        TextView heading = text("Offline songs", 22, WHITE);
         heading.setTypeface(Typeface.DEFAULT_BOLD);
         heading.setPadding(0, dp(8), 0, dp(14));
         songsList.addView(heading);
@@ -90,7 +90,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         File[] files = audioFiles();
         List<OfflineCollection> collections = OfflineCollection.loadAll(musicRoot);
         if (files.length == 0 && collections.isEmpty()) {
-            TextView empty = text("Nessun download\nI brani scaricati appariranno qui", 16, SECONDARY);
+            TextView empty = text("No downloads\nDownloaded tracks will appear here", 16, SECONDARY);
             empty.setGravity(Gravity.CENTER); empty.setPadding(0, dp(80), 0, 0); list.addView(empty); return;
         }
 
@@ -114,7 +114,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         TextView title = text(collection.title(), 16, WHITE); title.setTypeface(Typeface.DEFAULT_BOLD); title.setSingleLine(true);
         String kind = collection.type().equals("album") ? "Album" : "Playlist";
         TextView detail = text(kind + " • " + collection.subtitle() + " • " +
-                collection.videoIds().size() + " brani", 13, SECONDARY); detail.setSingleLine(true);
+                collection.videoIds().size() + " tracks", 13, SECONDARY); detail.setSingleLine(true);
         labels.addView(title); labels.addView(detail); row.addView(labels, new LinearLayout.LayoutParams(0, dp(56), 1));
         ImageButton menu = icon("yt_outline_experimental_overflow_vertical_vd_theme_24", "Azioni per " + collection.title());
         menu.setOnClickListener(v -> showCollectionMenu(menu, collection));
@@ -125,10 +125,10 @@ public final class LocalDownloadsFragment extends PreferenceFragment
 
     private void showCollectionMenu(View anchor, OfflineCollection collection) {
         PopupMenu popup = new PopupMenu(new ContextThemeWrapper(getActivity(), android.R.style.Theme_Material), anchor);
-        popup.getMenu().add("Apri");
-        popup.getMenu().add("Elimina " + (collection.type().equals("album") ? "album" : "playlist"));
+        popup.getMenu().add("Open");
+        popup.getMenu().add("Delete " + (collection.type().equals("album") ? "album" : "playlist"));
         popup.setOnMenuItemClickListener(item -> {
-            if (item.getTitle().toString().startsWith("Elimina")) confirmDeleteCollection(collection);
+            if (item.getTitle().toString().startsWith("Delete")) confirmDeleteCollection(collection);
             else showCollection(collection);
             return true;
         });
@@ -137,10 +137,10 @@ public final class LocalDownloadsFragment extends PreferenceFragment
 
     private void confirmDeleteCollection(OfflineCollection collection) {
         new AlertDialog.Builder(getActivity(), AlertDialog.THEME_DEVICE_DEFAULT_DARK)
-                .setTitle("Eliminare " + collection.title() + "?")
-                .setMessage("Tutti i brani scaricati della raccolta verranno rimossi dal dispositivo.")
-                .setNegativeButton("Annulla", null)
-                .setPositiveButton("Elimina", (dialog, which) -> deleteCollection(collection))
+                .setTitle("Delete " + collection.title() + "?")
+                .setMessage("All downloaded tracks in this collection will be removed from the device.")
+                .setNegativeButton("Cancel", null)
+                .setPositiveButton("Delete", (dialog, which) -> deleteCollection(collection))
                 .show();
     }
 
@@ -158,10 +158,10 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         collection.artworkFile().delete();
         displayQueue = null;
         songsList.removeAllViews();
-        TextView heading = text("Canzoni offline", 22, WHITE);
+        TextView heading = text("Offline songs", 22, WHITE);
         heading.setTypeface(Typeface.DEFAULT_BOLD); heading.setPadding(0, dp(8), 0, dp(14));
         songsList.addView(heading); populateSongs(songsList);
-        Utils.showToastShort("Raccolta eliminata");
+        Utils.showToastShort("Collection deleted");
     }
 
     private void showCollection(OfflineCollection collection) {
@@ -176,7 +176,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         back.setOnClickListener(v -> {
             displayQueue = null;
             songsList.removeAllViews();
-            TextView heading = text("Canzoni offline", 22, WHITE);
+            TextView heading = text("Offline songs", 22, WHITE);
             heading.setTypeface(Typeface.DEFAULT_BOLD); heading.setPadding(0, dp(8), 0, dp(14));
             songsList.addView(heading); populateSongs(songsList);
         });
@@ -229,13 +229,13 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         labels.addView(miniTitle); labels.addView(miniArtist);
         line.addView(labels, new LinearLayout.LayoutParams(0, dp(67), 1));
 
-        miniPrevious = icon("yt_fill_experimental_skip_previous_vd_theme_24", "Precedente");
+        miniPrevious = icon("yt_fill_experimental_skip_previous_vd_theme_24", "Previous");
         miniPrevious.setOnClickListener(v -> OfflinePlaybackService.skipPrevious(getActivity()));
         line.addView(miniPrevious, new LinearLayout.LayoutParams(dp(48), dp(67)));
         miniPlay = icon("yt_fill_experimental_play_vd_theme_24", "Play o pausa");
         miniPlay.setOnClickListener(v -> OfflinePlaybackService.toggle(getActivity()));
         line.addView(miniPlay, new LinearLayout.LayoutParams(dp(48), dp(67)));
-        miniNext = icon("yt_fill_experimental_skip_next_vd_theme_24", "Successivo");
+        miniNext = icon("yt_fill_experimental_skip_next_vd_theme_24", "Next");
         miniNext.setOnClickListener(v -> OfflinePlaybackService.skipNext(getActivity()));
         line.addView(miniNext, new LinearLayout.LayoutParams(dp(48), dp(67)));
         outer.addView(line, new LinearLayout.LayoutParams(-1, dp(67)));
@@ -258,10 +258,10 @@ public final class LocalDownloadsFragment extends PreferenceFragment
 
     private void showTrackMenu(View anchor, OfflineTrack track) {
         PopupMenu popup = new PopupMenu(new ContextThemeWrapper(getActivity(), android.R.style.Theme_Material), anchor);
-        popup.getMenu().add("Riproduci");
-        popup.getMenu().add("Elimina download");
+        popup.getMenu().add("Play");
+        popup.getMenu().add("Delete download");
         popup.setOnMenuItemClickListener(item -> {
-            if (item.getTitle().toString().startsWith("Elimina")) confirmDelete(track);
+            if (item.getTitle().toString().startsWith("Delete")) confirmDelete(track);
             else play(track);
             return true;
         });
@@ -270,10 +270,10 @@ public final class LocalDownloadsFragment extends PreferenceFragment
 
     private void confirmDelete(OfflineTrack track) {
         new AlertDialog.Builder(getActivity(), AlertDialog.THEME_DEVICE_DEFAULT_DARK)
-                .setTitle("Eliminare il download?")
-                .setMessage(track.displayTitle() + " verrà rimosso dal dispositivo.")
-                .setNegativeButton("Annulla", null)
-                .setPositiveButton("Elimina", (dialog, which) -> deleteTrack(track))
+                .setTitle("Delete download?")
+                .setMessage(track.displayTitle() + " will be removed from the device.")
+                .setNegativeButton("Cancel", null)
+                .setPositiveButton("Delete", (dialog, which) -> deleteTrack(track))
                 .show();
     }
 
@@ -286,12 +286,12 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         new File(parent, track.videoId() + ".m4a.part").delete();
         OfflineCollection.removeTrackFromAll(parent, track.videoId());
         if (!deleted) {
-            Utils.showToastShort("Impossibile eliminare il download");
+            Utils.showToastShort("Could not delete download");
             return;
         }
         while (songsList.getChildCount() > 1) songsList.removeViewAt(1);
         populateSongs(songsList);
-        Utils.showToastShort("Download eliminato");
+        Utils.showToastShort("Download deleted");
     }
 
     private void play(OfflineTrack track) {
@@ -317,7 +317,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
             applyTrackVisuals(track);
         } catch (Exception ex) {
             Logger.printException(() -> "Offline playback failed: " + track.audioFile(), ex);
-            Utils.showToastShort("Impossibile riprodurre il download");
+            Utils.showToastShort("Could not play download");
         }
     }
 
@@ -366,9 +366,9 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         Arrays.sort(files, Comparator
                 .comparing((File file) -> {
                     String album = OfflineTrack.load(file).album();
-                    return album.isBlank() ? "~Brani" : album.toLowerCase(Locale.ITALY);
+                    return album.isBlank() ? "~Tracks" : album.toLowerCase(Locale.ROOT);
                 })
-                .thenComparing(file -> OfflineTrack.load(file).displayTitle().toLowerCase(Locale.ITALY)));
+                .thenComparing(file -> OfflineTrack.load(file).displayTitle().toLowerCase(Locale.ROOT)));
         return files;
     }
 
@@ -386,5 +386,5 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     private TextView text(String value, int sp, int color) { TextView v=new TextView(getActivity()); v.setText(value); v.setTextSize(sp); v.setTextColor(color); v.setGravity(Gravity.CENTER_VERTICAL); return v; }
     private ImageButton icon(String drawable, String desc) { ImageButton b=new ImageButton(getActivity()); b.setImageDrawable(ResourceUtils.getDrawable(drawable)); b.setContentDescription(desc); b.setColorFilter(WHITE); b.setScaleType(ImageView.ScaleType.CENTER); b.setPadding(dp(10),dp(10),dp(10),dp(10)); b.setBackgroundColor(Color.TRANSPARENT); return b; }
     private int dp(int value) { return (int)(value*getResources().getDisplayMetrics().density+.5f); }
-    private static String formatSize(long bytes) { return String.format(Locale.ITALY,"%.1f MB",bytes/1048576.0); }
+    private static String formatSize(long bytes) { return String.format(Locale.ROOT,"%.1f MB",bytes/1048576.0); }
 }

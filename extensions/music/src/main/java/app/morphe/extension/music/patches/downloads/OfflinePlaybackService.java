@@ -319,11 +319,11 @@ public final class OfflinePlaybackService extends Service {
                 .setOnlyAlertOnce(true)
                 .setShowWhen(false)
                 .setOngoing(true)
-                .addAction(android.R.drawable.ic_media_previous, "Precedente", previous)
+                .addAction(android.R.drawable.ic_media_previous, "Previous", previous)
                 .addAction(playing ? android.R.drawable.ic_media_pause : android.R.drawable.ic_media_play,
-                        playing ? "Pausa" : "Riproduci", toggle)
-                .addAction(android.R.drawable.ic_media_next, "Successivo", next)
-                .addAction(android.R.drawable.ic_menu_close_clear_cancel, "Chiudi", stop)
+                        playing ? "Pause" : "Play", toggle)
+                .addAction(android.R.drawable.ic_media_next, "Next", next)
+                .addAction(android.R.drawable.ic_menu_close_clear_cancel, "Close", stop)
                 .setStyle(new Notification.MediaStyle().setMediaSession(session.getSessionToken())
                         .setShowActionsInCompactView(0, 1, 2))
                 .build();
@@ -340,7 +340,7 @@ public final class OfflinePlaybackService extends Service {
     }
 
     private void createChannel() {
-        NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "Riproduzione offline",
+        NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "Offline playback",
                 NotificationManager.IMPORTANCE_LOW);
         channel.setSound(null, null);
         channel.setShowBadge(false);

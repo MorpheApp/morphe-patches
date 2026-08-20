@@ -50,7 +50,7 @@ public final class LocalDownloadManager {
     /** Must be called from the main thread. Resolution and enqueueing happen in background. */
     public static void enqueue(@NonNull String videoId) {
         if (videoId.isBlank()) {
-            Utils.showToastShort("Download non disponibile: brano sconosciuto");
+            Utils.showToastShort("Download unavailable: unknown track");
             return;
         }
 
@@ -70,7 +70,7 @@ public final class LocalDownloadManager {
     static boolean downloadBlocking(String videoId, String title, String artist, String album,
                                     int duration, Bitmap artwork, boolean toast) {
         if (!ACTIVE_DOWNLOADS.add(videoId)) {
-            if (toast) Utils.showToastShort("Download già in corso");
+            if (toast) Utils.showToastShort("Download already in progress");
             return false;
         }
         try {
@@ -88,20 +88,20 @@ public final class LocalDownloadManager {
             if (destination.exists() && !destination.delete()) throw new IllegalStateException("Could not replace audio file");
             if (!temporary.renameTo(destination)) throw new IllegalStateException("Could not finish audio file");
             OfflineTrack.save(directory, videoId, title, artist, album, duration, artwork);
-            if (toast) Utils.showToastShort("Download completato");
+            if (toast) Utils.showToastShort("Download complete");
             return true;
         } catch (Exception ex) {
             Logger.printException(() -> "Local audio download failed: " + videoId, ex);
-            showDownloadNotification(videoId, title, 0, false, "Download non riuscito");
-            if (toast) Utils.showToastShort("Download non riuscito");
+            showDownloadNotification(videoId, title, 0, false, "Download failed");
+            if (toast) Utils.showToastShort("Download failed");
             return false;
         } finally { ACTIVE_DOWNLOADS.remove(videoId); }
     }
 
     private static void downloadWithResume(String videoId, String title, String url,
                                            File temporary, long expectedLength, boolean toast) throws Exception {
-        if (toast) Utils.showToastShort("Download avviato");
-        showDownloadNotification(videoId, title, 0, true, "Avvio download…");
+        if (toast) Utils.showToastShort("Download started");
+        showDownloadNotification(videoId, title, 0, true, "Starting download…");
         if (expectedLength <= 0) expectedLength = probeContentLength(url);
         final long totalLength = expectedLength;
         if (expectedLength <= 0) {
@@ -139,7 +139,7 @@ public final class LocalDownloadManager {
         }
         if (totalLength > 0 && temporary.length() != totalLength)
             throw new IllegalStateException("Incomplete audio file: " + temporary.length() + "/" + totalLength);
-        showDownloadNotification(videoId, title, 100, false, "Download completato");
+        showDownloadNotification(videoId, title, 100, false, "Download complete");
     }
 
     private interface ProgressCallback { void update(long bytes); }
@@ -224,7 +224,7 @@ public final class LocalDownloadManager {
         if (manager == null) return;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             manager.createNotificationChannel(new NotificationChannel(DOWNLOAD_CHANNEL,
-                    "Download audio", NotificationManager.IMPORTANCE_LOW));
+                    "Audio downloads", NotificationManager.IMPORTANCE_LOW));
         }
         Notification.Builder builder = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
                 ? new Notification.Builder(context, DOWNLOAD_CHANNEL) : new Notification.Builder(context);

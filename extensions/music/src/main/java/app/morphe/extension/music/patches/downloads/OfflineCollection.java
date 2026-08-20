@@ -52,7 +52,7 @@ public record OfflineCollection(String id, String type, String title, String sub
                 if (array != null) for (int i = 0; i < array.length(); i++) ids.add(array.optString(i));
                 String key = file.getName().substring(PREFIX.length(), file.getName().length() - 5);
                 result.add(new OfflineCollection(json.optString("id"), json.optString("type", "playlist"),
-                        json.optString("title", "Raccolta"), json.optString("subtitle", ""), ids,
+                        json.optString("title", "Collection"), json.optString("subtitle", ""), ids,
                         new File(directory, PREFIX + key + ".jpg"), file));
             } catch (Exception ex) {
                 Logger.printException(() -> "Could not load offline collection: " + file, ex);

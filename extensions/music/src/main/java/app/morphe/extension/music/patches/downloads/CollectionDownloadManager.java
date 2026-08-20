@@ -34,8 +34,8 @@ public final class CollectionDownloadManager {
     private CollectionDownloadManager() {}
 
     public static void enqueue(String playlistId) {
-        if (!ACTIVE_COLLECTIONS.add(playlistId)) { Utils.showToastShort("Download raccolta già in corso"); return; }
-        Utils.showToastShort("Preparazione raccolta…");
+        if (!ACTIVE_COLLECTIONS.add(playlistId)) { Utils.showToastShort("Collection download already in progress"); return; }
+        Utils.showToastShort("Preparing collection…");
         Utils.submitOnBackgroundThread(() -> {
             try {
                 Logger.printInfo(() -> "Resolving collection: " + playlistId);
@@ -43,7 +43,7 @@ public final class CollectionDownloadManager {
                 List<Item> items = data.items();
                 Logger.printInfo(() -> "Resolved collection items: " + items.size());
                 if (items.isEmpty()) {
-                    Utils.showToastShort("Nessun brano trovato");
+                    Utils.showToastShort("No tracks found");
                     return null;
                 }
                 Context context = Utils.getContext();
@@ -53,7 +53,7 @@ public final class CollectionDownloadManager {
                 String collectionTitle = !data.title().isBlank() ? data.title()
                         : type.equals("album") && !first.album().isBlank() ? first.album() : "Playlist offline";
                 List<String> completedIds = new ArrayList<>(items.size());
-                Utils.showToastShort("Download di " + items.size() + " brani avviato");
+                Utils.showToastShort("Downloading " + items.size() + " tracks");
                 int completed = 0;
                 for (Item item : items) {
                     Logger.printInfo(() -> "Resolving collection track: " + item.videoId);
@@ -65,10 +65,10 @@ public final class CollectionDownloadManager {
                 if (!completedIds.isEmpty()) OfflineCollection.save(directory, playlistId, type, collectionTitle,
                         collectionSubtitle, completedIds, fetchArtwork(first.thumbnailUrl()));
                 int result = completedIds.size();
-                Utils.showToastShort(result == items.size() ? "Raccolta scaricata" : result + "/" + items.size() + " brani scaricati");
+                Utils.showToastShort(result == items.size() ? "Collection downloaded" : result + "/" + items.size() + " tracks downloaded");
             } catch (Exception ex) {
                 Logger.printException(() -> "Collection download failed: " + playlistId, ex);
-                Utils.showToastShort("Download della raccolta non riuscito");
+                Utils.showToastShort("Collection download failed");
             } finally { ACTIVE_COLLECTIONS.remove(playlistId); }
             return null;
         });
