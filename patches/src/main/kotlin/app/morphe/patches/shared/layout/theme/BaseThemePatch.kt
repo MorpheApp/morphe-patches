@@ -19,7 +19,6 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.overrideThemeColors
 import app.morphe.util.findMutableMethodOf
-import java.io.File
 
 private const val THEME_BACKGROUND_EXTENSION_CLASS =
     "Lapp/morphe/extension/shared/theme/ThemeBackgroundPatch;"
@@ -101,48 +100,6 @@ internal val THEME_DEFAULT_LIGHT_COLOR_NAMES = setOf(
     APP_LIGHT_BACKGROUND_COLOR_NAME,
     "yt_sys_color_baseline_mobile_light_default_raised_background",
 )
-
-/**
- * Common utility to generate a notification shape drawable.
- */
-fun createNotifDrawable(
-    resDir: File,
-    resPath: String,
-    color: String,
-    shape: String,
-    hasCorners: Boolean = false,
-) {
-    val file = resDir.resolve(resPath)
-    file.parentFile?.mkdirs()
-    val cornersLine = if (hasCorners)
-        "\n    <corners android:radius=\"@dimen/new_content_count_radius\" />"
-    else ""
-    file.writeText(
-        "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
-                "<shape android:shape=\"$shape\"\n" +
-                "  xmlns:android=\"http://schemas.android.com/apk/res/android\">\n" +
-                "    <solid android:color=\"$color\" />$cornersLine\n" +
-                "</shape>"
-    )
-}
-
-/**
- * Common utility to patch the notification count text color across all API levels.
- */
-fun patchCountTextColor(resDir: File, color: String) {
-    val targetFolders = listOf("layout-v31", "layout-v26", "layout")
-
-    targetFolders.forEach { folder ->
-        val file = resDir.resolve("$folder/new_content_count.xml")
-        if (file.exists()) {
-            val patchedXml = file.readText().replace(
-                Regex("""android:textColor="[^"]+""""),
-                """android:textColor="$color""""
-            )
-            file.writeText(patchedXml)
-        }
-    }
-}
 
 /**
  * Hooks every context of the app so the app resources resolve
