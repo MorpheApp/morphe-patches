@@ -1,6 +1,12 @@
 package app.morphe.extension.shared.theme;
 
+import android.content.Context;
+import android.content.res.Resources;
+
+import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
+
+import java.util.Objects;
 
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
@@ -8,7 +14,9 @@ import app.morphe.extension.shared.Utils;
 @SuppressWarnings("unused")
 public abstract class BaseThemePatch {
     // Background colors.
+    @ColorInt
     protected static final int BLACK_COLOR = ResourceUtils.getColor("yt_black1");
+    @ColorInt
     protected static final int WHITE_COLOR = ResourceUtils.getColor("yt_white1");
 
     /**
@@ -35,6 +43,7 @@ public abstract class BaseThemePatch {
      * @param lightValues   Array of light mode color values to match.
      * @return The new or original color value.
      */
+    @ColorInt
     protected static int processColorValue(int originalValue, int[] darkValues, @Nullable int[] lightValues) {
         if (Utils.isDarkModeEnabled()) {
             if (anyEquals(originalValue, darkValues)) {

@@ -1,5 +1,7 @@
 package app.morphe.extension.music.patches.theme;
 
+import androidx.annotation.ColorInt;
+
 import app.morphe.extension.shared.theme.BaseThemePatch;
 
 @SuppressWarnings("unused")
@@ -21,7 +23,8 @@ public class ThemePatch extends BaseThemePatch {
      * @param originalValue The original color value.
      * @return The new or original color value.
      */
-    public static int getValue(int originalValue) {
+    @ColorInt
+    public static int getValue(@ColorInt int originalValue) {
         return processColorValue(originalValue, DARK_VALUES, null);
     }
 }

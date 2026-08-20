@@ -1,6 +1,6 @@
 package app.morphe.extension.youtube.patches.theme;
 
-
+import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
@@ -66,7 +66,8 @@ public class ThemePatch extends BaseThemePatch {
      * @param originalValue The original color value.
      * @return The new or original color value.
      */
-    public static int getValue(int originalValue) {
+    @ColorInt
+    public static int getValue(@ColorInt int originalValue) {
         return processColorValue(originalValue, DARK_VALUES, WHITE_VALUES);
     }
 
