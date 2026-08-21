@@ -13,6 +13,7 @@ import static app.morphe.extension.shared.settings.SharedYouTubeSettings.THEME_B
 import static app.morphe.extension.shared.settings.SharedYouTubeSettings.THEME_BACKGROUND_LIGHT_CUSTOM_COLOR;
 import static app.morphe.extension.shared.settings.SharedYouTubeSettings.THEME_LAST_USED_DARK_MODE;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -238,6 +239,14 @@ public class ThemeColorPatch {
     private static boolean backgroundColorsResolved;
 
     /**
+     * Name of the theme that draws the splash screen of a background. The patch generates one for
+     * every background it has a color of, and uses the same numbering.
+     */
+    private static final String SPLASH_THEME_NAME = "morphe_splash_theme_";
+
+    private static boolean splashScreenThemeApplied;
+
+    /**
      * If a background color of the user can be applied. An overlay that an app registers for
      * itself exists since Android 14, and no color can be added to the app on older versions.
      */
@@ -346,6 +355,36 @@ public class ThemeColorPatch {
         if (!lightColorResourceNames().isEmpty()) {
             lightBackgroundColor = selectedBackgroundColor(context, false);
             ThemeUtils.setThemeLightColor(lightBackgroundColor);
+        }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Gives the system the theme it draws the splash screen of the app with, which it uses for
+     * every launch that follows.
+     * <p>
+     * The splash screen is drawn before the app runs, with the configuration of the device, so the
+     * resource variant of the selected background is never used for it. A background of the app
+     * itself and a color the user picked have no theme, and the system is given none, which brings
+     * the splash screen of the app back.
+     */
+    public static void setSplashScreenTheme(Activity activity) {
+        try {
+            if (splashScreenThemeApplied || Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+                return;
+            }
+            splashScreenThemeApplied = true;
+
+            final int index = isDarkTheme() ? darkConfigValue : lightConfigValue;
+            final int themeId = ResourceUtils.getIdentifier(
+                    ResourceType.STYLE, SPLASH_THEME_NAME + index);
+
+            Logger.printDebug(() -> "Splash screen theme: " + SPLASH_THEME_NAME + index
+                    + " id: " + themeId);
+            SplashScreenTheme.apply(activity, themeId);
+        } catch (Exception ex) {
+            Logger.printException(() -> "setSplashScreenTheme failure", ex);
         }
     }
 

@@ -216,7 +216,9 @@ val themePatch = baseThemePatch(
             baseThemeResourcePatch(
                 includeLightBackground = true,
                 colorNamesDark = youTubeColorNamesDark,
-                colorNamesLight = youTubeColorNamesLight
+                colorNamesLight = youTubeColorNamesLight,
+                // The theme of the launcher activity, which the system draws the splash with.
+                splashScreenThemeParent = "@style/Theme.YouTube.Home"
             ),
             themeResourcePatch
         )
@@ -269,6 +271,15 @@ val themePatch = baseThemePatch(
 
         PreferenceScreen.GENERAL.addPreferences(
             ListPreference("morphe_splash_screen_animation_style")
+        )
+
+        // The splash screen is drawn by the system with the theme of the launcher activity,
+        // so the activity is handed over as soon as it exists.
+        MainActivityOnCreateFingerprint.method.addInstruction(
+            0,
+            // The register of 'this' is above v15 in this method, so the range format is needed.
+            "invoke-static/range { p0 .. p0 }, $THEME_COLOR_EXTENSION_CLASS" +
+                    "->setSplashScreenTheme(Landroid/app/Activity;)V"
         )
 
         // Color of the new content indicator of the pivot bar, which is red in the app and does

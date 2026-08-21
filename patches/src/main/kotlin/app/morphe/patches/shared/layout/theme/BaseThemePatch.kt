@@ -69,6 +69,12 @@ private const val THEME_INDEX_OFFSET_LIGHT = 700
 private const val THEME_BACKGROUND_OVERLAYABLE_NAME = "MorpheThemeColor"
 
 /**
+ * Name of the theme that draws the splash screen of a background, which the extension asks for
+ * with the same numbering.
+ */
+private const val SPLASH_THEME_NAME = "morphe_splash_theme_"
+
+/**
  * Background colors that can be selected in the app settings.
  *
  * The index of a color is the ordinal of the matching value of the extension enum
@@ -272,7 +278,8 @@ private fun ResourcePatchContext.declaredColorNames(): Set<String> {
 internal fun baseThemeResourcePatch(
     colorNamesDark: (() -> Set<String>) = { THEME_DEFAULT_COLOR_NAMES_DARK },
     colorNamesLight: (() -> Set<String>) = { THEME_DEFAULT_COLOR_NAMES_LIGHT },
-    includeLightBackground: Boolean = false
+    includeLightBackground: Boolean = false,
+    splashScreenThemeParent: String? = null
 ) = resourcePatch {
     execute {
         val declaredColors = declaredColorNames()
@@ -292,6 +299,60 @@ internal fun baseThemeResourcePatch(
         }
 
         declareOverlayableColors(darkColorNames + lightColorNames)
+
+        // An app without a launcher theme keeps the splash screen it draws itself.
+        if (splashScreenThemeParent != null) {
+            addSplashScreenThemes(splashScreenThemeParent, includeLightBackground)
+        }
+    }
+}
+
+/**
+ * Adds a theme for every background, which the system can draw the splash screen of the app with.
+ *
+ * The splash screen is drawn before the app runs and with the configuration of the device, so the
+ * resource variant of the selected background is never used for it. The extension hands one of
+ * these themes to the system instead, and the system draws the splash screen with it from then on.
+ *
+ * @param parentStyle The theme of the launcher activity, so that only the color of it differs.
+ */
+private fun ResourcePatchContext.addSplashScreenThemes(
+    parentStyle: String,
+    includeLightBackground: Boolean
+) {
+    document("res/values/styles.xml").use { document ->
+        val resources = document.getNode("resources")
+
+        buildList {
+            add(THEME_INDEX_OFFSET_DARK to THEME_COLORS_DARK)
+            if (includeLightBackground) add(THEME_INDEX_OFFSET_LIGHT to THEME_COLORS_LIGHT)
+        }.forEach { (indexOffset, backgrounds) ->
+            backgrounds.forEachIndexed { index, color ->
+                // The background of the app itself and a color the user picks have no theme of
+                // their own, and the splash screen of the app is used for both.
+                if (color == null) return@forEachIndexed
+
+                val style = document.createElement("style")
+                style.setAttribute("name", SPLASH_THEME_NAME + (indexOffset + index + 1))
+                style.setAttribute("parent", parentStyle)
+
+                // The first is used since Android 12, and the second by everything the app draws
+                // until the splash screen is gone.
+                arrayOf(
+                    "android:windowSplashScreenBackground",
+                    "android:windowBackground"
+                ).forEach { name ->
+                    style.appendChild(
+                        document.createElement("item").apply {
+                            setAttribute("name", name)
+                            textContent = color
+                        }
+                    )
+                }
+
+                resources.appendChild(style)
+            }
+        }
     }
 }
 

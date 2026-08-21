@@ -86,6 +86,17 @@ internal object ShowSplashScreenFingerprint : Fingerprint(
 )
 
 /**
+ * The system draws the splash screen with the theme of the launcher activity, so the extension is
+ * given the activity as soon as it is created.
+ */
+internal object MainActivityOnCreateFingerprint : Fingerprint(
+    definingClass = YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE,
+    name = "onCreate",
+    returnType = "V",
+    parameters = listOf("Landroid/os/Bundle;")
+)
+
+/**
  * The pivot bar creates the view stub of the new content dot, and of the count next to it.
  * The count is matched as well because the effects picker uses the same dot id.
  */

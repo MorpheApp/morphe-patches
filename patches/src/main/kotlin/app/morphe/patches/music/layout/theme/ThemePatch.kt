@@ -22,6 +22,7 @@ import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.layout.theme.THEME_COLOR_EXTENSION_CLASS
 import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_COLOR_NAMES_DARK
 import app.morphe.patches.shared.layout.theme.baseThemePatch
+import app.morphe.patches.music.shared.MusicActivityOnCreateFingerprint
 import app.morphe.patches.shared.layout.theme.baseThemeResourcePatch
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -53,7 +54,9 @@ val themePatch = baseThemePatch(
             resourceMappingPatch,
             versionCheckPatch,
             baseThemeResourcePatch(
-                colorNamesDark = musicColorNamesDark
+                colorNamesDark = musicColorNamesDark,
+                // The theme of the launcher activity, which the system draws the splash with.
+                splashScreenThemeParent = "@style/Theme.YouTubeMusic.Home"
             )
         )
 
@@ -61,6 +64,15 @@ val themePatch = baseThemePatch(
     },
 
     executeBlock = {
+        // The splash screen is drawn by the system with the theme of the launcher activity,
+        // so the activity is handed over as soon as it exists.
+        MusicActivityOnCreateFingerprint.method.addInstruction(
+            0,
+            // The register of 'this' can be above v15, so the range format is needed.
+            "invoke-static/range { p0 .. p0 }, $THEME_COLOR_EXTENSION_CLASS" +
+                    "->setSplashScreenTheme(Landroid/app/Activity;)V"
+        )
+
         // Color of the new content count of the top bar, which is red in the app and does
         // not go with a Material You background.
         TopBarNewContentCountFingerprint.let {
