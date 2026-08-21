@@ -26,6 +26,7 @@ import android.widget.TextView;
 import androidx.annotation.ChecksSdkIntAtLeast;
 import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -208,9 +209,11 @@ public class ThemeColorPatch {
     private static int lightConfigValue = -1;
 
     /**
-     * If a background of the user is in use and its overlay must be loaded into every context.
+     * If the background of a theme is one the user picked, and the overlay of that theme must be
+     * loaded into every context that shows it.
      */
-    private static boolean useOverlay;
+    private static boolean useDarkOverlay;
+    private static boolean useLightOverlay;
 
     /**
      * The color of the background that is selected for each theme, or zero for a theme the app
@@ -276,8 +279,8 @@ public class ThemeColorPatch {
                 context = base.createConfigurationContext(override);
             }
 
-            if (isCustomBackgroundSupported() && useOverlay) {
-                ThemeColorOverlay.applyTo(context);
+            if (isCustomBackgroundSupported() && useOverlay(dark)) {
+                ThemeColorOverlay.applyTo(context, dark);
             }
 
             resolveBackgroundColors(context);
@@ -446,51 +449,64 @@ public class ThemeColorPatch {
         return (r3 << 6) | (g3 << 3) | b3;
     }
 
+    private static boolean useOverlay(boolean dark) {
+        return dark ? useDarkOverlay : useLightOverlay;
+    }
+
     /**
-     * Registers, updates or removes the overlay that gives the color resources of the app the
-     * color the user picked.
+     * Registers, updates or removes the overlay of both themes.
      */
     private static void updateOverlay(Context context, Background dark, Background light) {
         if (!isCustomBackgroundSupported()) {
             return;
         }
 
-        useOverlay = dark.isCustom() || light.isCustom();
+        // A theme the app does not have declares no color resource, and has nothing to overlay.
+        useDarkOverlay = dark.isCustom() && !darkColorResourceNames().isEmpty();
+        useLightOverlay = light.isCustom() && !lightColorResourceNames().isEmpty();
 
+        updateOverlay(context, true, darkColorResourceNames(), THEME_BACKGROUND_DARK_CUSTOM_COLOR);
+        updateOverlay(context, false, lightColorResourceNames(), THEME_BACKGROUND_LIGHT_CUSTOM_COLOR);
+    }
+
+    /**
+     * Registers, updates or removes the overlay that gives the color resources of one theme the
+     * color the user picked.
+     */
+    @RequiresApi(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+    private static void updateOverlay(Context context, boolean dark, String resourceNames,
+                                      StringSetting customColorSetting) {
         try {
-            if (!useOverlay) {
-                ThemeColorOverlay.unregisterIfRegistered(context);
+            if (!useOverlay(dark)) {
+                ThemeColorOverlay.unregisterIfRegistered(context, dark);
                 return;
-            }
-
-            Map<String, Integer> colors = new LinkedHashMap<>();
-
-            if (dark.isCustom()) {
-                addOverlayColors(colors, darkColorResourceNames(), THEME_BACKGROUND_DARK_CUSTOM_COLOR);
-            }
-
-            if (light.isCustom()) {
-                addOverlayColors(colors, lightColorResourceNames(), THEME_BACKGROUND_LIGHT_CUSTOM_COLOR);
             }
 
             // The system deletes an overlay of the app when the app is installed again, so it is
             // registered on every start and not only after the user picks another color.
-            ThemeColorOverlay.register(context, colors);
+            ThemeColorOverlay.register(context, dark,
+                    overlayColors(resourceNames, customColorSetting));
         } catch (Exception ex) {
             // Overlays are a part of the system and a manufacturer can change how they behave.
             Logger.printException(() -> "Could not update the overlay of the app", ex);
         }
     }
 
-    private static void addOverlayColors(Map<String, Integer> colors, String resourceNames,
-                                         StringSetting customColorSetting) {
+    /**
+     * The color the user picked, mapped to every color resource of a theme.
+     */
+    private static Map<String, Integer> overlayColors(String resourceNames,
+                                                      StringSetting customColorSetting) {
         final int color = customColor(customColorSetting);
+        Map<String, Integer> colors = new LinkedHashMap<>();
 
         for (String resourceName : resourceNames.split(",")) {
             if (!resourceName.isEmpty()) {
                 colors.put(resourceName, color);
             }
         }
+
+        return colors;
     }
 
     /**
