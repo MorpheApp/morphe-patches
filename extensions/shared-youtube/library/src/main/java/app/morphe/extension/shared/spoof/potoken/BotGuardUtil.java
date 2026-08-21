@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/2533
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -25,7 +25,7 @@ public final class BotGuardUtil {
             String[] parts = poToken.split(",");
             byte[] bytes = new byte[parts.length];
 
-            for (int i = 0; i < parts.length; i++) {
+            for (int i = 0, length = parts.length; i < length; i++) {
                 try {
                     int val = Integer.parseInt(parts[i].trim());
                     bytes[i] = (byte) val;
@@ -36,8 +36,8 @@ public final class BotGuardUtil {
             }
 
             return Base64.encodeToString(bytes, Base64.NO_WRAP)
-                    .replace("+", "-")
-                    .replace("/", "_");
+                    .replace('+', '-')
+                    .replace('/', '_');
         }
 
         return null;
@@ -50,8 +50,8 @@ public final class BotGuardUtil {
     private static String newUint8Array(byte[] contents) {
         StringBuilder sb = new StringBuilder();
         sb.append("new Uint8Array([");
-        for (int i = 0; i < contents.length; i++) {
-            if (i > 0) sb.append(",");
+        for (int i = 0, length = contents.length; i < length; i++) {
+            if (i > 0) sb.append(',');
             sb.append(Byte.toUnsignedInt(contents[i]));
         }
         sb.append("])");

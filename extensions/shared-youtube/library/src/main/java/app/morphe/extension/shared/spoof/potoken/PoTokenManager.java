@@ -1,16 +1,13 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/2533
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.extension.shared.spoof.potoken;
 
-import java.util.concurrent.ExecutionException;
-
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.spoof.ClientType;
 import app.morphe.extension.shared.spoof.requests.VisitorIdRequester;
 
@@ -32,15 +29,10 @@ public final class PoTokenManager {
         String visitorId = VisitorIdRequester.getVisitorId(clientType);
 
         try {
-            poTokenResult = Utils.submitOnBackgroundThread(() -> {
-                PoTokenGenerator poTokenGenerator = new PoTokenGenerator();
-                return poTokenGenerator.getWebClientPoToken(videoId, visitorId);
-            }).get();
-            return poTokenResult;
-        } catch (ExecutionException | InterruptedException ex) {
-            Logger.printException(() -> "Failed to launch PoTokenGenerator", ex);
+            PoTokenGenerator poTokenGenerator = new PoTokenGenerator();
+            return poTokenResult = poTokenGenerator.getWebClientPoToken(videoId, visitorId);
         } catch (Exception ex) {
-            Logger.printException(() -> "Failed to generate PoToken");
+            Logger.printException(() -> "Failed to generate PoToken", ex);
         }
 
         return null;
@@ -49,7 +41,7 @@ public final class PoTokenManager {
     public static String getPlayerPoToken(ClientType clientType, String videoId) {
         PoTokenResult result = getAndUpdatePoTokenIfNeeded(clientType, videoId);
         if (result != null) {
-            return result.getPlayerRequestPoToken();
+            return result.playerRequestPoToken;
         }
         return null;
     }
@@ -57,7 +49,7 @@ public final class PoTokenManager {
     public static String getStreamingPoToken(ClientType clientType, String videoId) {
         PoTokenResult result = getAndUpdatePoTokenIfNeeded(clientType, videoId);
         if (result != null) {
-            return result.getStreamingDataPoToken();
+            return result.streamingDataPoToken;
         }
         return null;
     }

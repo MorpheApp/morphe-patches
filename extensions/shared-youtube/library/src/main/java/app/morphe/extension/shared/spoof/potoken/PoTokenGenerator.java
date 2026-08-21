@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/2533
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -22,12 +22,12 @@ public class PoTokenGenerator {
     private final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 
     private final ReentrantLock webPoTokenGenLock = new ReentrantLock();
-    private String webPoTokenSessionIdentifier = null;
-    private String webPoTokenStreamingPot = null;
+    private String webPoTokenSessionIdentifier;
+    private String webPoTokenStreamingPot;
+    private PoTokenWebView webPoTokenGenerator;
     private long webPoTokenExpirationMS = -1L;
-    private PoTokenWebView webPoTokenGenerator = null;
 
-    private boolean webViewBadImpl = false;
+    private volatile boolean webViewBadImpl;
 
     private record GeneratorState(PoTokenWebView generator, String sessionIdentifier,
                                   String streamingPot, long expirationMs,
@@ -41,14 +41,10 @@ public class PoTokenGenerator {
 
         try {
             return getWebClientPoToken(videoId, visitorId, false);
-        } catch (Exception ex) {
-            if (ex instanceof PoTokenException.BadWebViewException) {
-                Logger.printException(() -> "Could not obtain poToken because WebView is broken", ex);
-                webViewBadImpl = true;
-                return null;
-            } else {
-                throw ex;
-            }
+        } catch (PoTokenException.BadWebViewException ex) {
+            Logger.printException(() -> "Could not obtain poToken because WebView is broken", ex);
+            webViewBadImpl = true;
+            return null;
         }
     }
 
@@ -70,14 +66,14 @@ public class PoTokenGenerator {
                 throw new PoTokenException("Session identifier is null");
             }
 
-            boolean shouldRecreate = webPoTokenGenerator == null
+            PoTokenWebView oldGen = webPoTokenGenerator;
+            boolean shouldRecreate = oldGen == null
                                      || forceRecreate 
-                                     || webPoTokenGenerator.isExpired();
+                                     || oldGen.isExpired();
 
             if (shouldRecreate) {
                 webPoTokenSessionIdentifier = visitorId;
-                if (webPoTokenGenerator != null) {
-                    final PoTokenWebView oldGen = webPoTokenGenerator;
+                if (oldGen != null) {
                     Utils.runOnMainThread(oldGen::close);
                 }
 
@@ -89,13 +85,13 @@ public class PoTokenGenerator {
                     webPoTokenStreamingPot = webPoTokenGenerator.generatePoToken(webPoTokenSessionIdentifier).get();
                     webPoTokenExpirationMS = webPoTokenGenerator.getExpirationMs();
 
-                } catch (ExecutionException e) {
-                    Throwable cause = e.getCause();
+                } catch (ExecutionException ex) {
+                    Throwable cause = ex.getCause();
                     if (cause instanceof Exception) throw (Exception) cause;
                     throw new RuntimeException(cause);
-                } catch (InterruptedException e) {
+                } catch (InterruptedException ex) {
                     Thread.currentThread().interrupt();
-                    throw new RuntimeException("Interrupted while creating PoTokenGenerator", e);
+                    throw new RuntimeException("Interrupted while creating PoTokenGenerator", ex);
                 }
             }
             
@@ -113,20 +109,18 @@ public class PoTokenGenerator {
         try {
             String playerPot = state.generator.generatePoToken(videoId).get();
             String streamingPot = state.streamingPot;
-            long expirationMs = state.expirationMs;
-            String expirationDate = sdf.format(expirationMs);
+            final long expirationMs = state.expirationMs;
             Logger.printDebug(() -> "poToken for " + videoId + ": playerPot=" + playerPot +
                     ", streamingPot=" + streamingPot + ", sessionIdentifier=" + webPoTokenSessionIdentifier +
-                    ", expirationDate=" + expirationDate
+                    ", expirationDate=" + sdf.format(expirationMs)
             );
             return new PoTokenResult(playerPot, streamingPot, expirationMs);
         } catch (Throwable throwable) {
             if (state.hasBeenRecreated) {
                 throw throwable;
-            } else {
-                Logger.printException(() -> "Failed to obtain poToken, retrying");
-                return getWebClientPoToken(videoId, visitorId, true);
             }
+            Logger.printException(() -> "Failed to obtain poToken, retrying");
+            return getWebClientPoToken(videoId, visitorId, true);
         }
     }
 }

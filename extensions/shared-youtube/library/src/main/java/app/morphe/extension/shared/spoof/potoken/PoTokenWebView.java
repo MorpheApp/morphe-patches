@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/2533
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -95,19 +95,19 @@ public class PoTokenWebView {
 
     @JavascriptInterface
     public void launchBotGuard() {
-        String js = String.join("\n",
-                "try {",
-                "data = " + BotGuardManager.getChallengeData(),
-                "runBotGuard(data).then(function (result) {",
-                "this.webPoSignalOutput = result.webPoSignalOutput",
-                JS_INTERFACE + ".onRunBotGuardResult(result.botGuardResult)",
-                "}, function (error) {",
-                JS_INTERFACE + ".onJsInitializationError()",
-                "})",
-                "} catch (error) {",
-                JS_INTERFACE + ".onJsInitializationError()",
-                "}"
-        );
+        String js = String.format("""
+            try {
+                data = %s;
+                runBotGuard(data).then(function (result) {
+                    this.webPoSignalOutput = result.webPoSignalOutput;
+                    %s.onRunBotGuardResult(result.botGuardResult);
+                }, function (error) {
+                    %s.onJsInitializationError();
+                });
+            } catch (error) {
+                %s.onJsInitializationError();
+            }
+            """, BotGuardManager.getChallengeData(), JS_INTERFACE, JS_INTERFACE, JS_INTERFACE);
         mainHandler.post(() -> webView.evaluateJavascript(js, null));
     }
 
@@ -140,21 +140,21 @@ public class PoTokenWebView {
         poTokenContinuations.put(identifier, future);
 
         String u8Identifier = BotGuardUtil.stringToU8(identifier);
-        String js = String.join("\n",
-                "try {",
-                "identifier = \"" + identifier + "\"",
-                "u8Identifier = " + u8Identifier,
-                "poTokenU8 = obtainPoToken(webPoSignalOutput, integrityToken, u8Identifier)",
-                "poTokenU8String = \"\"",
-                "for (i = 0; i < poTokenU8.length; i++) {",
-                "if (i != 0) poTokenU8String += \",\"",
-                "poTokenU8String += poTokenU8[i]",
-                "}",
-                JS_INTERFACE + ".onObtainPoTokenResult(identifier, poTokenU8String)",
-                "} catch (error) {",
-                JS_INTERFACE + ".onObtainPoTokenError(identifier)",
-                "}"
-        );
+        String js = String.format("""
+            try {
+                identifier = "%s";
+                u8Identifier = %s;
+                poTokenU8 = obtainPoToken(webPoSignalOutput, integrityToken, u8Identifier);
+                poTokenU8String = "";
+                for (i = 0; i < poTokenU8.length; i++) {
+                    if (i != 0) poTokenU8String += ",";
+                    poTokenU8String += poTokenU8[i];
+                }
+                %s.onObtainPoTokenResult(identifier, poTokenU8String);
+            } catch (error) {
+                %s.onObtainPoTokenError(identifier);
+            }
+            """, identifier, u8Identifier, JS_INTERFACE, JS_INTERFACE);
 
         mainHandler.post(() -> webView.evaluateJavascript(js, null));
 
