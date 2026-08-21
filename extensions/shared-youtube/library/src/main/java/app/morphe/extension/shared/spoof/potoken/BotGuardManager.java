@@ -183,16 +183,16 @@ public final class BotGuardManager {
         try {
             return challengeFuture.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
         } catch (TimeoutException ex) {
-            Logger.printInfo(() -> "downloadChallengeData timed out", ex);
+            Logger.printInfo(() -> "downloadChallenge timed out", ex);
             challengeFuture.cancel(true);
         } catch (CancellationException ex) {
-            Logger.printInfo(() -> "downloadChallengeData was previously cancelled");
+            Logger.printInfo(() -> "downloadChallenge was previously cancelled");
         } catch (InterruptedException ex) {
-            Logger.printException(() -> "downloadChallengeData interrupted", ex);
+            Logger.printException(() -> "downloadChallenge interrupted", ex);
             challengeFuture.cancel(true);
             Thread.currentThread().interrupt(); // Restore interrupt status flag.
         } catch (ExecutionException ex) {
-            Logger.printException(() -> "downloadChallengeData failure", ex);
+            Logger.printException(() -> "downloadChallenge failure", ex);
         }
 
         return null;
