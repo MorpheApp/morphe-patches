@@ -44,10 +44,10 @@ public abstract class BaseThemePatch {
 
         if (Utils.isDarkModeEnabled()) {
             if (anyEquals(originalValue, darkValues)) {
-                return Utils.getAppBackgroundColor();
+                return Utils.getThemeDarkColor();
             }
         } else if (lightValues != null && anyEquals(originalValue, lightValues)) {
-            return Utils.getAppBackgroundColor();
+            return Utils.getThemeLightColor();
         }
 
         return originalValue;

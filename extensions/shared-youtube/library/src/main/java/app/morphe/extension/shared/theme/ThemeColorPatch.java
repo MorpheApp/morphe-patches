@@ -329,8 +329,10 @@ public class ThemeColorPatch {
 
         // The config value is used instead of the setting because a Material-You background
         // falls back to the app default on Android 11 and earlier.
-        return (dark ? darkConfigValue : lightConfigValue)
-                == (dark ? DARK_INDEX_OFFSET : LIGHT_INDEX_OFFSET) + APP_DEFAULT_CONFIG_VALUE;
+        if (dark) {
+            return darkConfigValue == (DARK_INDEX_OFFSET + APP_DEFAULT_CONFIG_VALUE);
+        }
+        return lightConfigValue == (LIGHT_INDEX_OFFSET + APP_DEFAULT_CONFIG_VALUE);
     }
 
     private static int selectedBackgroundColor(Context context, boolean dark) {
