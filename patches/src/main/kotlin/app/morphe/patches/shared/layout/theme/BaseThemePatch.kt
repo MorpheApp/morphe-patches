@@ -23,7 +23,6 @@ import app.morphe.util.forEachChildElement
 import app.morphe.util.getNode
 import app.morphe.util.returnEarly
 import com.android.tools.smali.dexlib2.AccessFlags
-import kotlin.math.roundToInt
 
 internal const val THEME_COLOR_EXTENSION_CLASS = "Lapp/morphe/extension/shared/theme/ThemeColorPatch;"
 
@@ -42,12 +41,23 @@ private const val UNUSED_MOBILE_COUNTRY_CODE = 100
 private const val PALETTE_INDEX_OFFSET = 100
 
 /**
+ * The value a color channel can have in the 9 bit palette, of the dark and of the light theme.
+ * The extension picks an index with the same values, and both must stay identical.
+ *
+ * A background sits at one end of the range, so the eight values of a channel are placed where the
+ * backgrounds of that theme are instead of being spread evenly. A dark background of #0F0F0F would
+ * otherwise be shown as pure black, because the nearest even value is 36 away.
+ */
+private val PALETTE_LEVELS_DARK = intArrayOf(0, 3, 15, 38, 74, 126, 187, 255)
+private val PALETTE_LEVELS_LIGHT = intArrayOf(0, 68, 129, 181, 217, 240, 252, 255)
+
+/**
  * A background must only be used by the theme it belongs to. The app uses the light colors as
  * its foreground while it is dark, and the other way around. A light background would otherwise
  * replace the color of the text and the icons of the dark theme.
  *
  * The theme of the app is not the night mode of the device, the app has a setting of its own,
- * so a variant cannot be qualified with 'night'. Instead the extension asks for the variant of
+ * so a variant cannot be qualified with 'night'. Instead, the extension asks for the variant of
  * the theme the app shows, and the indices of the two themes never overlap.
  */
 private const val THEME_INDEX_OFFSET_DARK = 0
@@ -227,11 +237,11 @@ internal fun baseThemeResourcePatch(
 ) = resourcePatch {
     execute {
         addBackgroundColorVariants(THEME_INDEX_OFFSET_DARK, THEME_COLORS_DARK, colorNamesDark())
-        add9BitColorVariants(THEME_INDEX_OFFSET_DARK, colorNamesDark())
+        add9BitColorVariants(THEME_INDEX_OFFSET_DARK, PALETTE_LEVELS_DARK, colorNamesDark())
 
         if (includeLightBackground) {
             addBackgroundColorVariants(THEME_INDEX_OFFSET_LIGHT, THEME_COLORS_LIGHT, colorNamesLight())
-            add9BitColorVariants(THEME_INDEX_OFFSET_LIGHT, colorNamesLight())
+            add9BitColorVariants(THEME_INDEX_OFFSET_LIGHT, PALETTE_LEVELS_LIGHT, colorNamesLight())
         }
 
         declareOverlayableColors(
@@ -308,16 +318,13 @@ private fun ResourcePatchContext.addBackgroundColorVariants(
 
 private fun ResourcePatchContext.add9BitColorVariants(
     indexOffset: Int,
+    levels: IntArray,
     colorNames: Set<String>
 ) {
     for (index in 0 until 512) {
-        val r3 = (index shr 6) and 0x7
-        val g3 = (index shr 3) and 0x7
-        val b3 = index and 0x7
-
-        val r = (r3 * 255f / 7f).roundToInt()
-        val g = (g3 * 255f / 7f).roundToInt()
-        val b = (b3 * 255f / 7f).roundToInt()
+        val r = levels[(index shr 6) and 0x7]
+        val g = levels[(index shr 3) and 0x7]
+        val b = levels[index and 0x7]
 
         val color = "#%02X%02X%02X".format(r, g, b)
         writeBackgroundColorVariant(indexOffset + PALETTE_INDEX_OFFSET + index, color, colorNames)

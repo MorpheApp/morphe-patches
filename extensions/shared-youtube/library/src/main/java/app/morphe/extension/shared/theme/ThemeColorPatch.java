@@ -202,6 +202,17 @@ public class ThemeColorPatch {
      * The patch uses the same numbering.
      */
     private static final int PALETTE_INDEX_OFFSET = 100;
+
+    /**
+     * The value a color channel can have in the 9 bit palette, of the dark and of the light theme.
+     * The patch generates the variants with the same values, and both must stay identical.
+     * <p>
+     * A background sits at one end of the range, so the eight values of a channel are placed where
+     * the backgrounds of that theme are instead of being spread evenly. A dark background of
+     * #0F0F0F would otherwise be shown as pure black, because the nearest even value is 36 away.
+     */
+    private static final int[] PALETTE_LEVELS_DARK = {0, 3, 15, 38, 74, 126, 187, 255};
+    private static final int[] PALETTE_LEVELS_LIGHT = {0, 68, 129, 181, 217, 240, 252, 255};
     private static final int DARK_INDEX_OFFSET = 0;
     private static final int LIGHT_INDEX_OFFSET = 700;
 
@@ -427,7 +438,7 @@ public class ThemeColorPatch {
             StringSetting setting = dark
                     ? THEME_BACKGROUND_DARK_CUSTOM_COLOR
                     : THEME_BACKGROUND_LIGHT_CUSTOM_COLOR;
-            return offset + PALETTE_INDEX_OFFSET + get9BitColorIndex(setting);
+            return offset + PALETTE_INDEX_OFFSET + get9BitColorIndex(setting, dark);
         }
 
         // A custom background has no resource variant of its own,
@@ -435,18 +446,33 @@ public class ThemeColorPatch {
         return offset + ((Enum<?>) background).ordinal() + 1;
     }
 
-    private static int get9BitColorIndex(StringSetting colorSetting) {
+    private static int get9BitColorIndex(StringSetting colorSetting, boolean dark) {
         final int color = customColor(colorSetting);
+        int[] levels = dark ? PALETTE_LEVELS_DARK : PALETTE_LEVELS_LIGHT;
 
-        final int r = (color >> 16) & 0xFF;
-        final int g = (color >> 8) & 0xFF;
-        final int b = color & 0xFF;
-
-        final int r3 = Math.round(r * 7f / 255f);
-        final int g3 = Math.round(g * 7f / 255f);
-        final int b3 = Math.round(b * 7f / 255f);
+        final int r3 = nearestPaletteLevel(levels, (color >> 16) & 0xFF);
+        final int g3 = nearestPaletteLevel(levels, (color >> 8) & 0xFF);
+        final int b3 = nearestPaletteLevel(levels, color & 0xFF);
 
         return (r3 << 6) | (g3 << 3) | b3;
+    }
+
+    /**
+     * @return The index of the palette value that is closest to a color channel.
+     */
+    private static int nearestPaletteLevel(int[] levels, int channel) {
+        int nearest = 0;
+        int smallestDistance = Integer.MAX_VALUE;
+
+        for (int i = 0, length = levels.length; i < length; i++) {
+            final int distance = Math.abs(levels[i] - channel);
+            if (distance < smallestDistance) {
+                smallestDistance = distance;
+                nearest = i;
+            }
+        }
+
+        return nearest;
     }
 
     private static boolean useOverlay(boolean dark) {
