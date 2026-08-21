@@ -137,11 +137,28 @@ public class ThemeUtils {
     }
 
     /**
-     * @return The current app foreground color.
+     * The color of the text and the icons Morphe draws on the background of the app.
+     * <p>
+     * The background of the other theme is not a foreground color. It is one the user picks, and
+     * a dark theme with a red background would give the light theme red text.
+     *
+     * @return Black or white, whichever stays readable on {@link #getAppBackgroundColor()}.
      */
     @ColorInt
     public static int getAppForegroundColor() {
-        return Utils.isDarkModeEnabled() ? getThemeLightColor() : getThemeDarkColor();
+        return isBrightColor(getAppBackgroundColor()) ? Color.BLACK : Color.WHITE;
+    }
+
+    /**
+     * @return If a color is bright enough that dark text is the readable one on it.
+     */
+    private static boolean isBrightColor(@ColorInt int color) {
+        // Rec. 601 luma, which weights a channel the way the eye responds to it.
+        final int luma = (299 * Color.red(color)
+                + 587 * Color.green(color)
+                + 114 * Color.blue(color)) / 1000;
+
+        return luma >= 128;
     }
 
     @ColorInt
