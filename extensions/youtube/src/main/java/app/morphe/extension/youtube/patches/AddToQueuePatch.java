@@ -105,7 +105,7 @@ public final class AddToQueuePatch {
             Logger.printDebug(() -> "Opening custom queue flyout with videoId: " + FlyoutUtils.getFlyoutVideoId());
 
             Activity activity = Utils.getActivity();
-            if (activity != null && !activity.isDestroyed()) {
+            if (activity != null && !activity.isFinishing() && !activity.isDestroyed()) {
                 PlaylistPatch.prepareDialogBuilder(activity, FlyoutUtils.getFlyoutVideoId());
             }
 
