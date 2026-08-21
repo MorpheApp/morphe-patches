@@ -13,8 +13,6 @@ package app.morphe.extension.shared.theme;
 import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
 
-import app.morphe.extension.shared.Utils;
-
 @SuppressWarnings("unused")
 public abstract class BaseThemePatch {
     /**
@@ -52,12 +50,13 @@ public abstract class BaseThemePatch {
             return originalValue;
         }
 
-        if (Utils.isDarkModeEnabled()) {
-            if (anyEquals(originalValue, darkValues)) {
-                return Utils.getThemeDarkColor();
-            }
-        } else if (lightValues != null && anyEquals(originalValue, lightValues)) {
-            return Utils.getThemeLightColor();
+        // The color of a background must not be read from the current context of the app, which
+        // carries the resource variant of one theme only.
+        final boolean dark = ThemeColorPatch.isDarkTheme();
+        int[] values = dark ? darkValues : lightValues;
+
+        if (values != null && anyEquals(originalValue, values)) {
+            return ThemeColorPatch.backgroundColor(dark);
         }
 
         return originalValue;

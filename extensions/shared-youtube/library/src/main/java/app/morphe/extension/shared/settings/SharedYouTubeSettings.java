@@ -6,6 +6,7 @@ import static app.morphe.extension.shared.settings.Setting.migrateOldSettingToNe
 import static app.morphe.extension.shared.settings.Setting.parent;
 import static app.morphe.extension.shared.settings.Setting.parentsAny;
 
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.CustomBrandingPatch;
 import app.morphe.extension.shared.patches.CustomBrandingPatch.BrandingTheme;
 import app.morphe.extension.shared.patches.CustomBrandingPatch.NotificationIconTheme;
@@ -44,6 +45,7 @@ public class SharedYouTubeSettings extends BaseSettings {
     public static final StringSetting THEME_BACKGROUND_DARK_CUSTOM_COLOR = new StringSetting("morphe_theme_background_dark_custom_color", "#0F0F0F", true, new CustomDarkBackgroundAvailability());
     public static final StringSetting THEME_BACKGROUND_LIGHT_CUSTOM_COLOR = new StringSetting("morphe_theme_background_light_custom_color", "#FFFFFF", true, new CustomLightBackgroundAvailability());
 
+    public static final BooleanSetting THEME_LAST_USED_DARK_MODE = new BooleanSetting("morphe_theme_last_used_dark_mode", Utils.isDarkModeEnabled(), false, false);
     public static final EnumSetting<BrandingTheme> CUSTOM_BRANDING_ICON = new EnumSetting<>("morphe_custom_branding_icon", CustomBrandingPatch.getDefaultIconStyle(), true);
     public static final EnumSetting<NotificationIconTheme> CUSTOM_BRANDING_NOTIFICATION_ICON = new EnumSetting<>("morphe_custom_branding_notification_icon", NotificationIconTheme.FOLLOW, true);
     public static final IntegerSetting CUSTOM_BRANDING_NAME = new IntegerSetting("morphe_custom_branding_name", CustomBrandingPatch.getDefaultAppNameIndex(), true);

@@ -11,6 +11,7 @@ import static app.morphe.extension.shared.settings.SharedYouTubeSettings.THEME_B
 import static app.morphe.extension.shared.settings.SharedYouTubeSettings.THEME_BACKGROUND_DARK_CUSTOM_COLOR;
 import static app.morphe.extension.shared.settings.SharedYouTubeSettings.THEME_BACKGROUND_LIGHT;
 import static app.morphe.extension.shared.settings.SharedYouTubeSettings.THEME_BACKGROUND_LIGHT_CUSTOM_COLOR;
+import static app.morphe.extension.shared.settings.SharedYouTubeSettings.THEME_LAST_USED_DARK_MODE;
 
 import android.content.Context;
 import android.content.res.Configuration;
@@ -212,9 +213,15 @@ public class ThemeColorPatch {
     private static boolean useOverlay;
 
     /**
-     * If the colors Morphe uses for itself were resolved with the theme they belong to.
+     * The color of the background that is selected for each theme, or zero for a theme the app
+     * does not have. Resolved once, with the resource variant of the theme it belongs to.
      */
-    private static boolean morpheColorsUpdated;
+    @ColorInt
+    private static int darkBackgroundColor;
+    @ColorInt
+    private static int lightBackgroundColor;
+
+    private static boolean backgroundColorsResolved;
 
     /**
      * If a background color of the user can be applied. An overlay that an app registers for
@@ -246,10 +253,16 @@ public class ThemeColorPatch {
             Configuration configuration = base.getResources().getConfiguration();
 
             // A variant belongs to one theme only, so the background of the theme the app shows
-            // is the one to ask for. The night mode of the device says nothing about it, the app
-            // has a theme setting of its own. A theme change recreates the activity, and the
-            // index of the other theme is used from then on.
-            final int index = Utils.isDarkModeEnabled() ? darkConfigValue : lightConfigValue;
+            // is the one to ask for. A theme change recreates the activity, and the index of the
+            // other theme is used from then on.
+            final boolean dark = isDarkTheme();
+            if (THEME_LAST_USED_DARK_MODE.get() != dark) {
+                // Contexts that attach before the app resolves its theme can then select the
+                // variant of the theme the app is about to show.
+                THEME_LAST_USED_DARK_MODE.save(dark);
+            }
+
+            final int index = dark ? darkConfigValue : lightConfigValue;
 
             Context context;
             if (configuration.mcc == mobileCountryCode(index)
@@ -267,7 +280,7 @@ public class ThemeColorPatch {
                 ThemeColorOverlay.applyTo(context);
             }
 
-            updateMorpheColors(context);
+            resolveBackgroundColors(context);
 
             return context;
         } catch (Exception ex) {
@@ -287,34 +300,50 @@ public class ThemeColorPatch {
 
         Background dark = THEME_BACKGROUND_DARK.get();
         Background light = THEME_BACKGROUND_LIGHT.get();
-        Logger.printDebug(() -> "Theme dark: " + darkConfigValue + " light:" + lightConfigValue);
 
         darkConfigValue = configValue(dark, true);
         lightConfigValue = configValue(light, false);
+        Logger.printDebug(() -> "Theme dark: " + darkConfigValue + " light: " + lightConfigValue);
 
         updateOverlay(context, dark, light);
     }
 
     /**
-     * Morphe uses the background of the app for its own dialogs and settings, and it resolves
-     * the color with the context of the app. That context can be of the other theme than the one
-     * the app shows, because the app can use a theme of its own while the device uses the other,
-     * and a background belongs to one theme only. Both colors are resolved again here, with the
-     * theme each of them belongs to.
+     * Resolves the color of both selected backgrounds, and hands them to Morphe, which uses the
+     * background of the app for its own dialogs and settings.
+     * <p>
+     * A context of the app carries the resource variant of the theme the app shows, so the color
+     * of the other theme cannot be read from it: it would be the unpatched color of the app. Each
+     * color is resolved here with a configuration of the theme it belongs to, and everything that
+     * follows the background of the app uses {@link #backgroundColor(boolean)} instead of a color
+     * of whichever context is current.
      */
-    private static void updateMorpheColors(Context context) {
-        if (morpheColorsUpdated || !Utils.isContextSet()) {
+    private static void resolveBackgroundColors(Context context) {
+        if (backgroundColorsResolved || !Utils.isContextSet()) {
             return;
         }
-        morpheColorsUpdated = true;
+        backgroundColorsResolved = true;
 
         // An app without a light theme has no light colors to replace.
         if (!darkColorResourceNames().isEmpty()) {
-            ThemeUtils.setThemeDarkColor(selectedBackgroundColor(context, true));
+            darkBackgroundColor = selectedBackgroundColor(context, true);
+            ThemeUtils.setThemeDarkColor(darkBackgroundColor);
         }
         if (!lightColorResourceNames().isEmpty()) {
-            ThemeUtils.setThemeLightColor(selectedBackgroundColor(context, false));
+            lightBackgroundColor = selectedBackgroundColor(context, false);
+            ThemeUtils.setThemeLightColor(lightBackgroundColor);
         }
+    }
+
+    /**
+     * The color of the background that is selected for a theme.
+     *
+     * @param dark If the background of the dark theme is wanted.
+     * @return The color, or zero for a theme the app does not have.
+     */
+    @ColorInt
+    static int backgroundColor(boolean dark) {
+        return dark ? darkBackgroundColor : lightBackgroundColor;
     }
 
     /**
@@ -325,7 +354,7 @@ public class ThemeColorPatch {
      * the unpatched app.
      */
     public static boolean isAppDefaultBackground() {
-        final boolean dark = Utils.isDarkModeEnabled();
+        final boolean dark = isDarkTheme();
 
         // The config value is used instead of the setting because a Material-You background
         // falls back to the app default on Android 11 and earlier.
@@ -333,6 +362,26 @@ public class ThemeColorPatch {
             return darkConfigValue == (DARK_INDEX_OFFSET + APP_DEFAULT_CONFIG_VALUE);
         }
         return lightConfigValue == (LIGHT_INDEX_OFFSET + APP_DEFAULT_CONFIG_VALUE);
+    }
+
+    /**
+     * If the app shows its dark theme.
+     * <p>
+     * The theme of the app is resolved after the first contexts of the app attach, and the theme
+     * of the last run is used until then. The night mode of the device is not used for it, the app
+     * has a theme setting of its own and can show the other theme than the device does.
+     *
+     * @see Utils#isDarkModeEnabled()
+     */
+    static boolean isDarkTheme() {
+        // An app without a light theme shows the dark one, whatever the device or the app report.
+        if (lightColorResourceNames().isEmpty()) {
+            return true;
+        }
+
+        return Utils.isDarkModeStatusKnown()
+                ? Utils.isDarkModeEnabled()
+                : THEME_LAST_USED_DARK_MODE.get();
     }
 
     private static int selectedBackgroundColor(Context context, boolean dark) {
