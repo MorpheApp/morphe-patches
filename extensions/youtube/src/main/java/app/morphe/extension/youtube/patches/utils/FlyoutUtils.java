@@ -209,7 +209,7 @@ public final class FlyoutUtils {
                 flyoutPanel,
                 AddToQueuePatch.queueButtonDrawable,
                 str("morphe_queue_flyout_title"),
-                v -> AddToQueuePatch.flyoutButtonClickLogic(AddToQueuePatch.queueButtonName),
+                v -> AddToQueuePatch.flyoutButtonClickLogic(AddToQueuePatch.queueButtonNames.get(0)),
                 0
         );
         if (currentInjectIndex > 0) {
