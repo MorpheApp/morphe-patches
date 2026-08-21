@@ -16,6 +16,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
@@ -95,7 +96,8 @@ public class PoTokenWebView {
 
     @JavascriptInterface
     public void launchBotGuard() {
-        String js = String.format("""
+        String js = String.format(Locale.US,
+            """
             try {
                 data = %s;
                 runBotGuard(data).then(function (result) {
@@ -140,7 +142,8 @@ public class PoTokenWebView {
         poTokenContinuations.put(identifier, future);
 
         String u8Identifier = BotGuardUtil.stringToU8(identifier);
-        String js = String.format("""
+        String js = String.format(Locale.US,
+            """
             try {
                 identifier = "%s";
                 u8Identifier = %s;

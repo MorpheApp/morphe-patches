@@ -35,7 +35,7 @@ public final class BotGuardManager {
     private static final String BOT_GUARD_REQUEST_KEY = "O43z0dpjhgX20SCx4KAo";
     private static final String YOUTUBE_CONFIG_URL = "https://www.youtube.com/tv_config?action_get_config=true";
     private static final String YOUTUBE_URL = "https://www.youtube.com/";
-    private static final String YOUTUBE_TV_URL = YOUTUBE_URL + "tv";
+    private static final String YOUTUBE_TV_URL = "https://www.youtube.com/tv";
     private static final String USER_AGENT = "Mozilla/5.0 (SMART-TV; Linux; Tizen 8.0) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/7.0 Chrome/108.0.5359.1 TV Safari/537.36";
     /**
      * TCP connection and HTTP read timeout.
@@ -47,19 +47,26 @@ public final class BotGuardManager {
      */
     private static final int MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 10 * 1000;
 
-    private static final long CHALLENGE_DATA_EXPIRATION_MS = 6 * 60 * 60 * 1000L; // 6 hours.
+    /**
+     * 5 hours 55 mins.
+     * Leave 5 minutes of margin just to be sure.
+     */
+    private static final long CHALLENGE_DATA_EXPIRATION_MS = 6 * 60 * 60 * 1000L - 5 * 60 * 1000L;
 
     @Nullable
     private volatile static String challengeData = null;
+    @NonNull
+    private volatile static String challengeRequestKey = BOT_GUARD_REQUEST_KEY;
 
-    private volatile static long challengeDataFetchedTime = -1L;
+    private volatile static long challengeFetchedTime = -1L;
 
-    private static final CompletableFuture<String> challengeDataFuture = CompletableFuture.supplyAsync(() -> downloadUrl(YOUTUBE_CONFIG_URL))
+    private static final CompletableFuture<Challenge> challengeFuture = CompletableFuture.supplyAsync(() -> downloadUrl(YOUTUBE_CONFIG_URL))
             .thenApplyAsync(jsonString -> {
                 if (jsonString != null && jsonString.startsWith(")]}'")) {
                     try {
-                        JSONObject jsonObject = new JSONObject(jsonString.substring(4));
-                        String rawData = jsonObject.getJSONObject("challengeParams").getString("R");
+                        JSONObject json = new JSONObject(jsonString.substring(4));
+                        String challengeRequestKey = json.getString("challengeRequestKey");
+                        String rawData = json.getJSONObject("challengeParams").getString("R");
                         JSONObject scrambled = new JSONObject(rawData);
                         JSONObject bgChallenge = scrambled.getJSONObject("bgChallenge");
                         String interpreterHash = bgChallenge.getString("interpreterHash");
@@ -83,7 +90,7 @@ public final class BotGuardManager {
                         challengeData.put("globalName", globalName);
                         challengeData.put("clientExperimentsStateBlob", clientExperimentsStateBlob);
 
-                        return challengeData.toString();
+                        return new Challenge(challengeRequestKey, challengeData.toString());
                     } catch (Exception ex) {
                         Logger.printException(() -> "Failed to parse challenge data", ex);
                     }
@@ -100,13 +107,23 @@ public final class BotGuardManager {
         if (isChallengeDataNotExpired()) {
             return challengeData;
         }
-        challengeData = downloadChallengeData();
-        challengeDataFetchedTime = System.currentTimeMillis();
+        Challenge challenge = downloadChallenge();
+        if (challenge != null) {
+            challengeData = challenge.data;
+            String requestKey = challenge.key;
+            if (Utils.isNotEmpty(requestKey)) {
+                challengeRequestKey = requestKey;
+            }
+            challengeFetchedTime = System.currentTimeMillis();
+        }
         return challengeData;
     }
 
     public static String getUserAgent() {
         return USER_AGENT;
+    }
+
+    public record Challenge(String key, String data) {
     }
 
     public record IntegrityToken(String token, long expirationMs) {
@@ -138,7 +155,6 @@ public final class BotGuardManager {
 
                     return null;
                 });
-
         try {
             return integrityTokenFuture.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
         } catch (TimeoutException ex) {
@@ -159,21 +175,21 @@ public final class BotGuardManager {
 
     private static boolean isChallengeDataNotExpired() {
         return Utils.isNotEmpty(challengeData) && System.currentTimeMillis()
-                - challengeDataFetchedTime < CHALLENGE_DATA_EXPIRATION_MS;
+                - challengeFetchedTime < CHALLENGE_DATA_EXPIRATION_MS;
     }
 
     @Nullable
-    private static String downloadChallengeData() {
+    private static Challenge downloadChallenge() {
         try {
-            return challengeDataFuture.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
+            return challengeFuture.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
         } catch (TimeoutException ex) {
             Logger.printInfo(() -> "downloadChallengeData timed out", ex);
-            challengeDataFuture.cancel(true);
+            challengeFuture.cancel(true);
         } catch (CancellationException ex) {
             Logger.printInfo(() -> "downloadChallengeData was previously cancelled");
         } catch (InterruptedException ex) {
             Logger.printException(() -> "downloadChallengeData interrupted", ex);
-            challengeDataFuture.cancel(true);
+            challengeFuture.cancel(true);
             Thread.currentThread().interrupt(); // Restore interrupt status flag.
         } catch (ExecutionException ex) {
             Logger.printException(() -> "downloadChallengeData failure", ex);
@@ -253,7 +269,7 @@ public final class BotGuardManager {
             connection.setRequestProperty("x-user-agent", "grpc-web-javascript/0.1");
             connection.setConnectTimeout(HTTP_TIMEOUT_MILLISECONDS);
             connection.setReadTimeout(HTTP_TIMEOUT_MILLISECONDS);
-            JSONArray body = new JSONArray(List.of(BOT_GUARD_REQUEST_KEY, botGuardResult));
+            JSONArray body = new JSONArray(List.of(challengeRequestKey, botGuardResult));
             byte[] requestBody = body.toString().getBytes(StandardCharsets.UTF_8);
             connection.setFixedLengthStreamingMode(requestBody.length);
             connection.getOutputStream().write(requestBody);

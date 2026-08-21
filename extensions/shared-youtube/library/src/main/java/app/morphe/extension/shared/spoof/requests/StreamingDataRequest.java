@@ -335,7 +335,6 @@ public class StreamingDataRequest {
             }
 
             if (clientType.requireJS) {
-                // Use PoToken only when not logged in.
                 String poToken = clientType.requirePoToken
                         ? PoTokenManager.getStreamingPoToken(clientType, videoId)
                         : "";
