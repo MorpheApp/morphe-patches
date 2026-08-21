@@ -9,7 +9,7 @@ package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.youtube.patches.utils.PlaylistPatch.QueueManager.OPEN_QUEUE;
 
-import android.content.Context;
+import android.app.Activity;
 import android.graphics.drawable.Drawable;
 
 import androidx.annotation.Nullable;
@@ -104,9 +104,9 @@ public final class AddToQueuePatch {
         if (queueButtonNames.contains(buttonName)) {
             Logger.printDebug(() -> "Opening custom queue flyout with videoId: " + FlyoutUtils.getFlyoutVideoId());
 
-            Context context = Utils.getContext();
-            if (context != null) {
-                PlaylistPatch.prepareDialogBuilder(context, FlyoutUtils.getFlyoutVideoId());
+            Activity activity = Utils.getActivity();
+            if (activity != null && !activity.isDestroyed()) {
+                PlaylistPatch.prepareDialogBuilder(activity, FlyoutUtils.getFlyoutVideoId());
             }
 
             FlyoutUtils.dismissBottomSheetFlyout(); // Must dismiss after showing dialog.
