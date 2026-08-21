@@ -310,10 +310,10 @@ public class ThemeColorPatch {
 
         // An app without a light theme has no light colors to replace.
         if (!darkColorResourceNames().isEmpty()) {
-            Utils.setThemeDarkColor(selectedBackgroundColor(context, true));
+            ThemeUtils.setThemeDarkColor(selectedBackgroundColor(context, true));
         }
         if (!lightColorResourceNames().isEmpty()) {
-            Utils.setThemeLightColor(selectedBackgroundColor(context, false));
+            ThemeUtils.setThemeLightColor(selectedBackgroundColor(context, false));
         }
     }
 
@@ -469,7 +469,7 @@ public class ThemeColorPatch {
             final String resourceName = backgroundColorResourceName(dark);
             if (resourceName.isEmpty()) {
                 // The app has no theme of this kind, and no color of it to show.
-                return Utils.getAppBackgroundColor();
+                return ThemeUtils.getAppBackgroundColor();
             }
 
             final int identifier = ResourceUtils.getIdentifier(ResourceType.COLOR, resourceName);
@@ -482,7 +482,7 @@ public class ThemeColorPatch {
             return variant.getColor(identifier);
         } catch (Exception ex) {
             Logger.printException(() -> "getBackgroundColor failure", ex);
-            return Utils.getAppBackgroundColor();
+            return ThemeUtils.getAppBackgroundColor();
         }
     }
 

@@ -38,6 +38,7 @@ import java.util.function.Function;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 
@@ -409,7 +410,7 @@ public class ExternalDownloaderPreference extends CustomDialogListPreference {
 
         ShapeDrawable editTextBackground = new ShapeDrawable(new RoundRectShape(
                 Dim.roundedCorners(10), null, null));
-        editTextBackground.getPaint().setColor(Utils.getEditTextBackground());
+        editTextBackground.getPaint().setColor(ThemeUtils.getEditTextBackground());
         editText.setPadding(Dim.dp8, Dim.dp8, Dim.dp8, Dim.dp8);
         editText.setBackground(editTextBackground);
         editText.setClipToOutline(true);

@@ -34,6 +34,7 @@ import app.morphe.extension.reddit.ui.MorpheSettingsIconVectorDrawable;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import kotlin.jvm.functions.Function0;
 
@@ -152,8 +153,8 @@ public class RedditActivityHook {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             Activity activity = getActivity();
-            final int appForegroundColor = Utils.getAppForegroundColor();
-            final int appBackgroundColor = Utils.getAppBackgroundColor();
+            final int appForegroundColor = ThemeUtils.getAppForegroundColor();
+            final int appBackgroundColor = ThemeUtils.getAppBackgroundColor();
 
             // Ensure the dialog window fills the screen and shows the status bar.
             Dialog dialog = getDialog();

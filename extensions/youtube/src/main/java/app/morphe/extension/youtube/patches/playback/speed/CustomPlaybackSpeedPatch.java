@@ -51,6 +51,7 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.ContextInterface;
+import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
 import app.morphe.extension.shared.ui.ViewAnimations;
@@ -378,7 +379,7 @@ public class CustomPlaybackSpeedPatch {
             TextView currentSpeedText = new TextView(context);
             float currentSpeed = VideoInformation.getPlaybackSpeed();
             currentSpeedText.setText(VideoInformation.formatSpeedStringX(currentSpeed));
-            currentSpeedText.setTextColor(Utils.getAppForegroundColor());
+            currentSpeedText.setTextColor(ThemeUtils.getAppForegroundColor());
             currentSpeedText.setTextSize(16);
             currentSpeedText.setTypeface(Typeface.DEFAULT_BOLD);
             currentSpeedText.setGravity(Gravity.CENTER);
@@ -406,9 +407,9 @@ public class CustomPlaybackSpeedPatch {
             speedSlider.setMax(speedToProgressValue(customPlaybackSpeedsMax));
             speedSlider.setProgress(speedToProgressValue(currentSpeed));
             speedSlider.getProgressDrawable().setColorFilter(
-                    new PorterDuffColorFilter(Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN)); // Theme progress bar.
+                    new PorterDuffColorFilter(ThemeUtils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN)); // Theme progress bar.
             speedSlider.getThumb().setColorFilter(
-                    new PorterDuffColorFilter(Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN)); // Theme slider thumb.
+                    new PorterDuffColorFilter(ThemeUtils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN)); // Theme slider thumb.
             LinearLayout.LayoutParams sliderParams = new LinearLayout.LayoutParams(
                     0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
             speedSlider.setLayoutParams(sliderParams);
@@ -468,7 +469,7 @@ public class CustomPlaybackSpeedPatch {
                 // Create speed button.
                 Button speedButton = new Button(context, null, 0);
                 speedButton.setText(VideoInformation.formatSpeedStringX(speed, 1));
-                speedButton.setTextColor(Utils.getAppForegroundColor());
+                speedButton.setTextColor(ThemeUtils.getAppForegroundColor());
                 speedButton.setTextSize(12);
                 speedButton.setTypeface(Utils.appIsUsingBoldIcons()
                         ? Typeface.DEFAULT_BOLD
@@ -496,7 +497,7 @@ public class CustomPlaybackSpeedPatch {
                     TextView normalLabel = new TextView(context);
                     // Use same 'Normal' string as stock YouTube.
                     normalLabel.setText(str("normal_playback_rate_label"));
-                    normalLabel.setTextColor(Utils.getAppForegroundColor());
+                    normalLabel.setTextColor(ThemeUtils.getAppForegroundColor());
                     normalLabel.setTextSize(10);
                     normalLabel.setGravity(Gravity.CENTER);
                     normalLabel.setSingleLine(true);
@@ -570,7 +571,7 @@ public class CustomPlaybackSpeedPatch {
                 TextView currentPitchText = new TextView(context);
                 float currentPitch = VideoInformation.getPlaybackAudioPitch();
                 currentPitchText.setText(VideoInformation.formatAudioPitchStringX(currentPitch));
-                currentPitchText.setTextColor(Utils.getAppForegroundColor());
+                currentPitchText.setTextColor(ThemeUtils.getAppForegroundColor());
                 currentPitchText.setTextSize(16);
                 currentPitchText.setTypeface(Typeface.DEFAULT_BOLD);
                 currentPitchText.setGravity(Gravity.CENTER);
@@ -597,9 +598,9 @@ public class CustomPlaybackSpeedPatch {
                 pitchSlider.setMax(pitchToProgressValue(customPlaybackSpeedsMax));
                 pitchSlider.setProgress(pitchToProgressValue(currentPitch));
                 pitchSlider.getProgressDrawable().setColorFilter(
-                        new PorterDuffColorFilter(Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN));
+                        new PorterDuffColorFilter(ThemeUtils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN));
                 pitchSlider.getThumb().setColorFilter(
-                        new PorterDuffColorFilter(Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN));
+                        new PorterDuffColorFilter(ThemeUtils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN));
                 LinearLayout.LayoutParams pitchSliderParams = new LinearLayout.LayoutParams(
                         0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
                 pitchSlider.setLayoutParams(pitchSliderParams);
@@ -656,7 +657,7 @@ public class CustomPlaybackSpeedPatch {
 
                     Button pitchPresetButton = new Button(context, null, 0);
                     pitchPresetButton.setText(pitchLabel);
-                    pitchPresetButton.setTextColor(Utils.getAppForegroundColor());
+                    pitchPresetButton.setTextColor(ThemeUtils.getAppForegroundColor());
                     pitchPresetButton.setTextSize(12);
                     pitchPresetButton.setTypeface(Utils.appIsUsingBoldIcons()
                             ? Typeface.DEFAULT_BOLD
@@ -843,7 +844,7 @@ class OutlineSymbolDrawable extends Drawable {
     OutlineSymbolDrawable(boolean isPlus) {
         this.isPlus = isPlus;
         paint = new Paint(Paint.ANTI_ALIAS_FLAG); // Enable antialiasing for smooth rendering.
-        paint.setColor(Utils.getAppForegroundColor());
+        paint.setColor(ThemeUtils.getAppForegroundColor());
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeCap(Paint.Cap.ROUND);
         paint.setStrokeWidth(Utils.appIsUsingBoldIcons() ? Dim.dp2 : Dim.dp1);

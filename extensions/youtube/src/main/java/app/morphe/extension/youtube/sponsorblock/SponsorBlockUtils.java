@@ -2,6 +2,9 @@
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
  *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
 
@@ -44,6 +47,7 @@ import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
@@ -548,7 +552,7 @@ public class SponsorBlockUtils {
             titleView.setText(str("morphe_sb_channel_whitelist_title"));
             titleView.setTextSize(18);
             titleView.setTypeface(Typeface.DEFAULT_BOLD);
-            titleView.setTextColor(Utils.getAppForegroundColor());
+            titleView.setTextColor(ThemeUtils.getAppForegroundColor());
             titleView.setGravity(Gravity.CENTER_HORIZONTAL);
             LinearLayout.LayoutParams titleParams = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -581,7 +585,7 @@ public class SponsorBlockUtils {
             TextView sectionLabel = new TextView(context);
             sectionLabel.setText(str("morphe_sb_channel_whitelist_current_channel"));
             sectionLabel.setTextSize(13);
-            sectionLabel.setTextColor(Utils.getAppForegroundColor());
+            sectionLabel.setTextColor(ThemeUtils.getAppForegroundColor());
             sectionLabel.setAlpha(0.7f);
             LinearLayout.LayoutParams labelParams = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -600,7 +604,7 @@ public class SponsorBlockUtils {
             TextView channelIdText = new TextView(context);
             channelIdText.setText(currentDisplayName);
             channelIdText.setTextSize(14);
-            channelIdText.setTextColor(Utils.getAppForegroundColor());
+            channelIdText.setTextColor(ThemeUtils.getAppForegroundColor());
             channelIdText.setLayoutParams(new LinearLayout.LayoutParams(
                     0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
             channelIdText.setEllipsize(TextUtils.TruncateAt.END);
@@ -644,7 +648,7 @@ public class SponsorBlockUtils {
         TextView channelsHeader = new TextView(context);
         channelsHeader.setText(str("morphe_sb_channel_whitelist_channels_header"));
         channelsHeader.setTextSize(13);
-        channelsHeader.setTextColor(Utils.getAppForegroundColor());
+        channelsHeader.setTextColor(ThemeUtils.getAppForegroundColor());
         channelsHeader.setAlpha(0.7f);
         LinearLayout.LayoutParams headerParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -658,7 +662,7 @@ public class SponsorBlockUtils {
             TextView emptyView = new TextView(context);
             emptyView.setText(str("morphe_sb_channel_whitelist_empty"));
             emptyView.setTextSize(14);
-            emptyView.setTextColor(Utils.getAppForegroundColor());
+            emptyView.setTextColor(ThemeUtils.getAppForegroundColor());
             emptyView.setAlpha(0.5f);
             emptyView.setGravity(Gravity.CENTER_HORIZONTAL);
             LinearLayout.LayoutParams emptyParams = new LinearLayout.LayoutParams(
@@ -701,7 +705,7 @@ public class SponsorBlockUtils {
         TextView idText = new TextView(context);
         idText.setText(displayName);
         idText.setTextSize(14);
-        idText.setTextColor(Utils.getAppForegroundColor());
+        idText.setTextColor(ThemeUtils.getAppForegroundColor());
         idText.setLayoutParams(new LinearLayout.LayoutParams(
                 0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
         idText.setEllipsize(TextUtils.TruncateAt.END);

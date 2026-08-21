@@ -54,6 +54,7 @@ import app.morphe.extension.shared.settings.IntegerSetting;
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference.SeekBarConfig;
+import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
@@ -83,7 +84,7 @@ public final class VotBottomSheet {
         SheetBottomDialog.DraggableLinearLayout root = SheetBottomDialog
                 .createMainLayout(context, getDialogBackgroundColor());
 
-        final int fg = Utils.getAppForegroundColor();
+        final int fg = ThemeUtils.getAppForegroundColor();
 
         String[] langEntries = context.getResources().getStringArray(ResourceUtils
                 .getIdentifierOrThrow(ResourceType.ARRAY, "morphe_vot_caption_language_entries"));
@@ -229,7 +230,7 @@ public final class VotBottomSheet {
         SheetBottomDialog.DraggableLinearLayout pickerRoot =
                 SheetBottomDialog.createMainLayout(context, getDialogBackgroundColor());
         pickerRoot.setPadding(Dim.dp16, 0, Dim.dp16, Dim.dp16);
-        final int fg = Utils.getAppForegroundColor();
+        final int fg = ThemeUtils.getAppForegroundColor();
         pickerRoot.addView(makeTitle(context, str("morphe_vot_translation_service_title"), fg));
 
         LayoutInflater inflater = LayoutInflater.from(context);
@@ -339,7 +340,7 @@ public final class VotBottomSheet {
                 ? TTS_ENGINE_SYSTEM
                 : VoiceCatalog.resolve(lang, voiceId);
 
-        final int fg = Utils.getAppForegroundColor();
+        final int fg = ThemeUtils.getAppForegroundColor();
 
         SheetBottomDialog.DraggableLinearLayout pickerRoot =
                 SheetBottomDialog.createMainLayout(context, getDialogBackgroundColor());
@@ -545,7 +546,7 @@ public final class VotBottomSheet {
         SheetBottomDialog.DraggableLinearLayout pickerRoot =
                 SheetBottomDialog.createMainLayout(context, getDialogBackgroundColor());
         pickerRoot.setPadding(Dim.dp16, 0, Dim.dp16, Dim.dp16);
-        pickerRoot.addView(makeTitle(context, title, Utils.getAppForegroundColor()));
+        pickerRoot.addView(makeTitle(context, title, ThemeUtils.getAppForegroundColor()));
 
         ListView listView = new ListView(context);
         listView.setDivider(null);

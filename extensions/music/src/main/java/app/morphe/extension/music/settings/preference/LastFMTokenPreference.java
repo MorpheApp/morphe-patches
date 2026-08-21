@@ -27,6 +27,7 @@ import android.widget.TextView;
 import app.morphe.extension.music.patches.scrobbling.lastfm.LastFM;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 
@@ -90,7 +91,7 @@ public class LastFMTokenPreference extends Preference {
         TextView instruction = new TextView(context);
         instruction.setText(str("morphe_music_lastfm_token_dialog_instruction"));
         instruction.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-        instruction.setTextColor(Utils.getAppForegroundColor());
+        instruction.setTextColor(ThemeUtils.getAppForegroundColor());
         LinearLayout.LayoutParams instructionParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -119,7 +120,7 @@ public class LastFMTokenPreference extends Preference {
 
         TextView status = new TextView(context);
         status.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
-        status.setTextColor(Utils.getAppForegroundColor());
+        status.setTextColor(ThemeUtils.getAppForegroundColor());
         status.setVisibility(View.GONE);
         LinearLayout.LayoutParams statusParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
@@ -158,7 +159,7 @@ public class LastFMTokenPreference extends Preference {
                         return;
                     }
                     showStatus(status, str("morphe_music_lastfm_token_status_logging_in"),
-                            Utils.getAppForegroundColor());
+                            ThemeUtils.getAppForegroundColor());
                     Utils.runOnBackgroundThread(() -> {
                         try {
                             LastFM.Session session = LastFM.getMobileSession(username, password);
@@ -210,10 +211,10 @@ public class LastFMTokenPreference extends Preference {
         EditText editText = new EditText(context);
         editText.setSingleLine(true);
         editText.setTextSize(16);
-        editText.setTextColor(Utils.getAppForegroundColor());
+        editText.setTextColor(ThemeUtils.getAppForegroundColor());
         ShapeDrawable background = new ShapeDrawable(new RoundRectShape(
                 Dim.roundedCorners(10), null, null));
-        background.getPaint().setColor(Utils.getEditTextBackground());
+        background.getPaint().setColor(ThemeUtils.getEditTextBackground());
         editText.setPadding(Dim.dp12, Dim.dp8, Dim.dp12, Dim.dp8);
         editText.setBackground(background);
         editText.setClipToOutline(true);

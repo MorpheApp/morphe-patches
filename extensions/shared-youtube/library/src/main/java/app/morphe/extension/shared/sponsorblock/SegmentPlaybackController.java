@@ -53,6 +53,7 @@ import app.morphe.extension.shared.sponsorblock.objects.CategoryBehaviour;
 import app.morphe.extension.shared.sponsorblock.objects.SegmentCategory;
 import app.morphe.extension.shared.sponsorblock.objects.SponsorSegment;
 import app.morphe.extension.shared.sponsorblock.requests.SBRequester;
+import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 
 /**
@@ -951,13 +952,13 @@ public class SegmentPlaybackController {
 
         ShapeDrawable background = new ShapeDrawable(new RoundRectShape(
                 Dim.roundedCorners(20), null, null));
-        background.getPaint().setColor(Utils.getDialogBackgroundColor());
+        background.getPaint().setColor(ThemeUtils.getDialogBackgroundColor());
         mainLayout.setBackground(background);
 
         TextView textView = new TextView(currentContext);
         textView.setText(messageToToast);
         textView.setTextSize(14);
-        textView.setTextColor(Utils.getAppForegroundColor());
+        textView.setTextColor(ThemeUtils.getAppForegroundColor());
         textView.setGravity(Gravity.CENTER);
         LinearLayout.LayoutParams textParams = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,

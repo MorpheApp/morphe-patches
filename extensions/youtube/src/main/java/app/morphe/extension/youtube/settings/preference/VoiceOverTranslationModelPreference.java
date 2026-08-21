@@ -36,6 +36,7 @@ import java.util.function.Function;
 
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
+import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.voiceovertranslation.VoiceOverTranslationPatch;
@@ -101,7 +102,7 @@ public class VoiceOverTranslationModelPreference extends CustomDialogListPrefere
         String currentModel = Settings.VOT_OPENROUTER_MODEL.get();
         final boolean isCustom = !isPreset(currentModel);
 
-        final int fg = Utils.getAppForegroundColor();
+        final int fg = ThemeUtils.getAppForegroundColor();
         final int secondaryFg = Color.argb(153, Color.red(fg), Color.green(fg), Color.blue(fg));
         final int checkmarkRes = Utils.appIsUsingBoldIcons() ? DRAWABLE_CHECKMARK_BOLD : DRAWABLE_CHECKMARK;
         LayoutInflater inflater = LayoutInflater.from(context);
@@ -267,7 +268,7 @@ public class VoiceOverTranslationModelPreference extends CustomDialogListPrefere
 
         ShapeDrawable background = new ShapeDrawable(new RoundRectShape(
                 Dim.roundedCorners(10), null, null));
-        background.getPaint().setColor(Utils.getEditTextBackground());
+        background.getPaint().setColor(ThemeUtils.getEditTextBackground());
         editText.setPadding(Dim.dp8, Dim.dp8, Dim.dp8, Dim.dp8);
         editText.setBackground(background);
         editText.setClipToOutline(true);

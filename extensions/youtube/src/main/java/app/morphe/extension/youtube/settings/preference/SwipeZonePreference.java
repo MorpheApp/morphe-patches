@@ -39,6 +39,7 @@ import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference;
+import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeZoneAction;
@@ -289,10 +290,10 @@ public final class SwipeZonePreference extends Preference {
             this.onZoneClick = onZoneClick;
             setClickable(true);
 
-            fgColor = Utils.getAppForegroundColor();
+            fgColor = ThemeUtils.getAppForegroundColor();
             final int separatorColor = withAlpha(fgColor, SEPARATOR_ALPHA);
 
-            final int bgColor = Utils.getAppBackgroundColor();
+            final int bgColor = ThemeUtils.getAppBackgroundColor();
             screenBgColor  = bgColor;
             edgeBgColor    = Utils.adjustColorBrightness(bgColor, Utils.isDarkModeEnabled() ? 0.90f : 0.97f);
             dimTextColor   = withAlpha(fgColor, DIM_TEXT_ALPHA);

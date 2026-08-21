@@ -36,6 +36,7 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.innertube.utils.AuthUtils;
+import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
 import app.morphe.extension.youtube.patches.LoadVideoPatch;
@@ -177,7 +178,7 @@ public class PlaylistPatch {
 
         ImageView icon = new ImageView(context);
         icon.setImageResource(iconId);
-        icon.setColorFilter(Utils.getAppForegroundColor());
+        icon.setColorFilter(ThemeUtils.getAppForegroundColor());
         LinearLayout.LayoutParams iconParams = new LinearLayout.LayoutParams(Dim.dp24, Dim.dp24);
         iconParams.setMarginEnd(Dim.dp16);
         icon.setLayoutParams(iconParams);
@@ -185,7 +186,7 @@ public class PlaylistPatch {
 
         TextView text = new TextView(context);
         text.setText(title);
-        text.setTextColor(Utils.getAppForegroundColor());
+        text.setTextColor(ThemeUtils.getAppForegroundColor());
         text.setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, 16);
         LinearLayout.LayoutParams textParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);

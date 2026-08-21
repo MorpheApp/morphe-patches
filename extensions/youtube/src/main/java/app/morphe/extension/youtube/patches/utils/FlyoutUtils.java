@@ -48,6 +48,7 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
+import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.AddToQueuePatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
@@ -419,7 +420,7 @@ public final class FlyoutUtils {
 
         if (icon != null) {
             final Drawable mutableIcon = icon.mutate();
-            mutableIcon.setTint(Utils.getAppForegroundColor());
+            mutableIcon.setTint(ThemeUtils.getAppForegroundColor());
             mutableIcon.setTintMode(PorterDuff.Mode.SRC_IN);
 
             final LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
@@ -440,7 +441,7 @@ public final class FlyoutUtils {
         textView.setText(text);
         textView.setTextSize(16);
         textView.setTypeface(null, Typeface.BOLD);
-        textView.setTextColor(Utils.getAppForegroundColor());
+        textView.setTextColor(ThemeUtils.getAppForegroundColor());
 
         customButton.addView(textView);
         customButton.setOnClickListener(clickListener);

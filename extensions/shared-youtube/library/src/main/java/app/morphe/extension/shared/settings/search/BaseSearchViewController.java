@@ -56,6 +56,7 @@ import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.preference.ColorPickerPreference;
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
 import app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory;
+import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 
 /**
@@ -191,7 +192,7 @@ public abstract class BaseSearchViewController {
         // Create overlay container for search results and history.
         overlayContainer = new FrameLayout(activity);
         overlayContainer.setVisibility(View.GONE);
-        overlayContainer.setBackgroundColor(Utils.getAppBackgroundColor());
+        overlayContainer.setBackgroundColor(ThemeUtils.getAppBackgroundColor());
         overlayContainer.setElevation(Dim.dp8);
 
         // Container for search results.
@@ -700,7 +701,7 @@ public abstract class BaseSearchViewController {
      */
     @ColorInt
     public static int getSearchViewBackground() {
-        return Utils.adjustColorBrightness(Utils.getDialogBackgroundColor(), Utils.isDarkModeEnabled() ? 1.11f : 0.95f);
+        return Utils.adjustColorBrightness(ThemeUtils.getDialogBackgroundColor(), Utils.isDarkModeEnabled() ? 1.11f : 0.95f);
     }
 
     /**

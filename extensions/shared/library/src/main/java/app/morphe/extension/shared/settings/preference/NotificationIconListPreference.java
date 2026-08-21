@@ -25,7 +25,7 @@ import androidx.annotation.Nullable;
 
 import java.util.Locale;
 
-import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.theme.ThemeUtils;
 
 /**
  * An {@link IconListPreference} for notification icon selection.
@@ -70,7 +70,7 @@ public class NotificationIconListPreference extends IconListPreference {
         int sizePx = Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, ICON_SIZE_DP, dm));
         float cornerRadius = sizePx * ICON_CORNER_RADIUS_FRACTION;
 
-        int fgColor = Utils.getAppForegroundColor();
+        int fgColor = ThemeUtils.getAppForegroundColor();
         int bgColor = isLightColor(fgColor) ? 0xFF000000 : 0xFFFFFFFF;
 
         // Resolve the current app icon style so FOLLOW can mirror it.
