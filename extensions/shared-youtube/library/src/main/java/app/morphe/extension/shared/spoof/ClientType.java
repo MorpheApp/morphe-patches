@@ -63,6 +63,7 @@ public enum ClientType {
             false,
             false,
             false,
+            false,
             "Android Music No SDK"
     ),
     /**
@@ -207,6 +208,7 @@ public enum ClientType {
             true,
             false,
             true,
+            false,
             true,
             "TV"
     ),
@@ -229,6 +231,7 @@ public enum ClientType {
             TV_SABR.supportsMultiAudioTracks,
             TV_SABR.supportsVRImmersiveMode,
             TV_SABR.requireJS,
+            TV_SABR.requirePoToken,
             false,
             "TV Downgraded"
     ),
@@ -248,11 +251,11 @@ public enum ClientType {
             TV_SABR.userAgent,
             true,
             // This client requires a PoToken for logout.
-            // Use as a login-only client.
-            true,
+            false,
             TV_SABR.supportsMultiAudioTracks,
             TV_SABR.supportsVRImmersiveMode,
             TV_SABR.requireJS,
+            true,
             false,
             "TV Simply"
     ),
@@ -277,6 +280,7 @@ public enum ClientType {
             true,
             false,
             false,
+            false,
             "visionOS 1.03"
     ),
     /**
@@ -299,6 +303,7 @@ public enum ClientType {
             VISIONOS_1_03.supportsMultiAudioTracks,
             VISIONOS_1_03.supportsVRImmersiveMode,
             VISIONOS_1_03.requireJS,
+            VISIONOS_1_03.requirePoToken,
             VISIONOS_1_03.requireSABR,
             "visionOS 1.02"
     );
@@ -397,6 +402,11 @@ public enum ClientType {
     public final boolean requireJS;
 
     /**
+     * If the client requires PoToken.
+     */
+    public final boolean requirePoToken;
+
+    /**
      * If the client require SABR.
      */
     public final boolean requireSABR;
@@ -466,6 +476,7 @@ public enum ClientType {
         Logger.printDebug(() -> "userAgent: " + this.userAgent);
 
         requireJS = false;
+        requirePoToken = false;
     }
 
     ClientType(int id,
@@ -482,6 +493,7 @@ public enum ClientType {
                boolean supportsMultiAudioTracks,
                boolean supportsVRImmersiveMode,
                boolean requireJS,
+               boolean requirePoToken,
                boolean requireSABR,
                String friendlyName) {
         this.id = id;
@@ -498,6 +510,7 @@ public enum ClientType {
         this.supportsMultiAudioTracks = supportsMultiAudioTracks;
         this.supportsVRImmersiveMode = supportsVRImmersiveMode;
         this.requireJS = requireJS;
+        this.requirePoToken = requirePoToken;
         this.requireSABR = requireSABR;
         this.friendlyName = friendlyName;
 

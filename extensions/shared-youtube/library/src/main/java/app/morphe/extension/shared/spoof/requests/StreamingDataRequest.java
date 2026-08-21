@@ -42,6 +42,7 @@ import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.ClientType;
 import app.morphe.extension.shared.spoof.js.JavaScriptEngineSupport;
 import app.morphe.extension.shared.spoof.js.JavaScriptManager;
+import app.morphe.extension.shared.spoof.potoken.PoTokenManager;
 
 /**
  * Video streaming data. Fetching is tied to the behavior YT uses,
@@ -187,7 +188,7 @@ public class StreamingDataRequest {
             boolean authHeadersIncludes = Utils.isNotEmpty(authorization);
 
             // Auth header is required, but the user is not logged in. These clients are skipped:
-            // ANDROID_CREATOR, TV_SIMPLY, ANDROID_MUSIC_REEL, ANDROID_MUSIC_NO_SDK.
+            // ANDROID_CREATOR, ANDROID_MUSIC_REEL, ANDROID_MUSIC_NO_SDK.
             if (clientType.canLogin && clientType.requireLogin && !authHeadersIncludes) {
                 Logger.printDebug(() -> "Skipping client since user is not logged in: " + clientType
                         + ", videoId: " + videoId);
@@ -217,7 +218,7 @@ public class StreamingDataRequest {
                 }
             }
             // These clients can play videos without the auth header:
-            // TV_SABR, VISIONOS_1_02 (VISIONOS_1_03).
+            // TV_SABR, TV_SIMPLY, VISIONOS_1_02 (VISIONOS_1_03).
             else {
                 Logger.printDebug(() -> "Do not set auth header: " + clientType + ", videoId: " + videoId);
             }
@@ -268,6 +269,7 @@ public class StreamingDataRequest {
     @Nullable
     private static StreamData buildPlayerResponseBuffer(ClientType clientType,
                                                         HttpURLConnection connection,
+                                                        String videoId,
                                                         boolean isInline) {
         if (connection == null) {
             return null;
@@ -333,8 +335,13 @@ public class StreamingDataRequest {
             }
 
             if (clientType.requireJS) {
+                // Use PoToken only when not logged in.
+                String poToken = clientType.requirePoToken
+                        ? PoTokenManager.getStreamingPoToken(clientType, videoId)
+                        : "";
+
                 StreamingData.Builder deobfuscatedStreamingDataBuilder =
-                        JavaScriptManager.getDeobfuscatedStreamingData(streamingData, clientType.requireSABR);
+                        JavaScriptManager.getDeobfuscatedStreamingData(streamingData, poToken, clientType.requireSABR);
                 if (deobfuscatedStreamingDataBuilder == null) {
                     handleDebugToast("Debug: Ignoring obfuscated streamingData (%s)", clientType);
                     return null;
@@ -408,13 +415,13 @@ public class StreamingDataRequest {
             final boolean showErrorToast = (++i == clientOrderToUse.length) || debugEnabled;
 
             HttpURLConnection connection = send(clientType, videoId, playerHeaders, showErrorToast);
-            StreamData streamingData = buildPlayerResponseBuffer(clientType, connection, isInline);
+            StreamData streamingData = buildPlayerResponseBuffer(clientType, connection, videoId, isInline);
 
             if (clientType == ClientType.TV_SABR && fallbackWithTVDash) {
                 fallbackWithTVDash = false;
                 clientType = ClientType.TV_DASH;
                 HttpURLConnection fallBackConnection = send(clientType, videoId, playerHeaders, showErrorToast);
-                streamingData = buildPlayerResponseBuffer(clientType, fallBackConnection, isInline);
+                streamingData = buildPlayerResponseBuffer(clientType, fallBackConnection, videoId, isInline);
             }
 
             if (streamingData != null) {

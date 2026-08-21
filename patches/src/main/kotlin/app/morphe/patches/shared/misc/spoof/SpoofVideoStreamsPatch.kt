@@ -64,6 +64,7 @@ private val spoofVideoStreamsResourcePatch = resourcePatch {
                 "polyfill.js",
                 "yt.solver.core.js", // yt-dlp-ejs 0.8.0: https://github.com/yt-dlp/ejs/releases/tag/0.8.0
                 "yt.solver.wrapper.js",
+                "po_token.html",
             )
         )
 

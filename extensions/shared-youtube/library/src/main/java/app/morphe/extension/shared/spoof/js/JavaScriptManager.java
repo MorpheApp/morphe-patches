@@ -338,7 +338,9 @@ public final class JavaScriptManager {
      * @return              StreamingData builder containing deobfuscated parameters.
      */
     @Nullable
-    public static StreamingData.Builder getDeobfuscatedStreamingData(StreamingData streamingData, boolean requireSABR) {
+    public static StreamingData.Builder getDeobfuscatedStreamingData(StreamingData streamingData,
+                                                                     String poToken,
+                                                                     boolean requireSABR) {
         StreamingData.Builder streamingDataBuilder = streamingData.toBuilder();
         String serverAbrStreamingUrl = streamingData.getServerAbrStreamingUrl();
 
@@ -363,6 +365,7 @@ public final class JavaScriptManager {
                 formats,
                 serverAbrStreamingUrl,
                 fallbackParam,
+                poToken,
                 false,
                 requireSABR
         );
@@ -376,6 +379,7 @@ public final class JavaScriptManager {
                 streamingData.getAdaptiveFormatsList(),
                 serverAbrStreamingUrl,
                 fallbackParam,
+                poToken,
                 true,
                 requireSABR
         );
@@ -391,6 +395,7 @@ public final class JavaScriptManager {
                                              List<Format> formats,
                                              String serverAbrStreamingUrl,
                                              String fallbackParam,
+                                             String poToken,
                                              boolean isAdaptiveFormats,
                                              boolean requireSABR) {
         PlayerDataExtractor playerDataExtractor = getPlayerDataExtractor();
@@ -475,6 +480,9 @@ public final class JavaScriptManager {
                                 ? obfuscatedUrlParameters.get(i) + "&sig=" + deobfuscatedSParameters.get(i)
                                 : format.getUrl();
                         String deobfuscatedUrl = obfuscatedUrl.replace(obfuscatedNParameter, deobfuscatedNParameter);
+                        if (isNotEmpty(poToken)) {
+                            deobfuscatedUrl = deobfuscatedUrl + "&pot=" + poToken;
+                        }
                         formatBuilder.setUrl(deobfuscatedUrl);
                         formatBuilder.clearSignatureCipher();
                     }
@@ -486,6 +494,10 @@ public final class JavaScriptManager {
                 String deobfuscatedServerAbrStreamingUrl = "";
                 if (isNotEmpty(serverAbrStreamingUrl)) {
                     deobfuscatedServerAbrStreamingUrl = serverAbrStreamingUrl.replace(obfuscatedNParameter, deobfuscatedNParameter);
+
+                    if (isNotEmpty(poToken)) {
+                        deobfuscatedServerAbrStreamingUrl = deobfuscatedServerAbrStreamingUrl + "&pot=" + poToken;
+                    }
                 }
 
                 streamingDataBuilder.setServerAbrStreamingUrl(deobfuscatedServerAbrStreamingUrl);

@@ -25,6 +25,7 @@ import app.morphe.extension.shared.requests.Route;
 import app.morphe.extension.shared.spoof.ClientType;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.shared.spoof.js.JavaScriptManager;
+import app.morphe.extension.shared.spoof.potoken.PoTokenManager;
 
 public final class PlayerRoutes {
 
@@ -47,7 +48,9 @@ public final class PlayerRoutes {
     private PlayerRoutes() {
     }
 
-    static String createInnertubeBody(ClientType clientType, String videoId, String visitorId) {
+    static String createInnertubeBody(ClientType clientType,
+                                      String videoId,
+                                      String visitorId) {
         JSONObject innerTubeBody = new JSONObject();
 
         try {
@@ -122,6 +125,15 @@ public final class PlayerRoutes {
                 playbackContext.put("devicePlaybackCapabilities", devicePlaybackCapabilities);
 
                 innerTubeBody.put("playbackContext", playbackContext);
+            }
+
+            if (clientType.requirePoToken) {
+                String poToken = PoTokenManager.getPlayerPoToken(clientType, videoId);
+                if (!TextUtils.isEmpty(poToken)) {
+                    JSONObject serviceIntegrityDimensions = new JSONObject();
+                    serviceIntegrityDimensions.put("poToken", poToken);
+                    innerTubeBody.put("serviceIntegrityDimensions", serviceIntegrityDimensions);
+                }
             }
 
             innerTubeBody.put("context", context);
