@@ -317,6 +317,22 @@ public class ThemeColorPatch {
         }
     }
 
+    /**
+     * If the theme the app shows uses the background of the app itself.
+     * <p>
+     * No color of the app is replaced then, and patch code that recolors app components to match
+     * a selected background must leave them untouched, otherwise the app looks different from
+     * the unpatched app.
+     */
+    public static boolean isAppDefaultBackground() {
+        final boolean dark = Utils.isDarkModeEnabled();
+
+        // The config value is used instead of the setting because a Material-You background
+        // falls back to the app default on Android 11 and earlier.
+        return (dark ? darkConfigValue : lightConfigValue)
+                == (dark ? DARK_INDEX_OFFSET : LIGHT_INDEX_OFFSET) + APP_DEFAULT_CONFIG_VALUE;
+    }
+
     private static int selectedBackgroundColor(Context context, boolean dark) {
         Background background = dark
                 ? THEME_BACKGROUND_DARK.get()
@@ -366,14 +382,7 @@ public class ThemeColorPatch {
     }
 
     private static int get9BitColorIndex(StringSetting colorSetting) {
-        String colorString = colorSetting.get();
-        int color;
-        try {
-            color = Color.parseColor(colorString);
-        } catch (IllegalArgumentException ex) {
-            Logger.printException(() -> "Invalid color: " + colorString);
-            color = Color.parseColor(colorSetting.resetToDefault());
-        }
+        final int color = customColor(colorSetting);
 
         final int r = (color >> 16) & 0xFF;
         final int g = (color >> 8) & 0xFF;
@@ -424,17 +433,7 @@ public class ThemeColorPatch {
 
     private static void addOverlayColors(Map<String, Integer> colors, String resourceNames,
                                          StringSetting customColorSetting) {
-        String colorString = customColorSetting.get();
-        int color;
-        try {
-            color = Color.parseColor(colorString);
-        } catch (IllegalArgumentException ex) {
-            Logger.printException(() -> "Invalid custom color: " + colorString);
-            color = Color.parseColor(customColorSetting.resetToDefault());
-        }
-
-        // A background must be opaque, otherwise the app draws over itself.
-        color |= 0xFF000000;
+        final int color = customColor(customColorSetting);
 
         for (String resourceName : resourceNames.split(",")) {
             if (!resourceName.isEmpty()) {
@@ -572,16 +571,26 @@ public class ThemeColorPatch {
     }
 
     private static int customColor(boolean dark) {
-        StringSetting setting = dark
+        return customColor(dark
                 ? THEME_BACKGROUND_DARK_CUSTOM_COLOR
-                : THEME_BACKGROUND_LIGHT_CUSTOM_COLOR;
+                : THEME_BACKGROUND_LIGHT_CUSTOM_COLOR);
+    }
+
+    /**
+     * The color a custom background setting holds, or the color of its default value if the
+     * user saved something that is not a color.
+     * <p>
+     * A background must be opaque, otherwise the app draws over itself.
+     */
+    @ColorInt
+    private static int customColor(StringSetting setting) {
         String colorString = setting.get();
 
         try {
             return Color.parseColor(colorString) | 0xFF000000;
         } catch (IllegalArgumentException ex) {
             Logger.printException(() -> "Invalid custom color: " + colorString);
-            return Color.parseColor(setting.resetToDefault());
+            return Color.parseColor(setting.resetToDefault()) | 0xFF000000;
         }
     }
 

@@ -1,24 +1,12 @@
 package app.morphe.extension.shared.theme;
 
-import android.content.Context;
-import android.content.res.Resources;
-
 import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
 
-import java.util.Objects;
-
-import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
 public abstract class BaseThemePatch {
-    // Background colors.
-    @ColorInt
-    protected static final int BLACK_COLOR = ResourceUtils.getColor("yt_black1");
-    @ColorInt
-    protected static final int WHITE_COLOR = ResourceUtils.getColor("yt_white1");
-
     /**
      * Check if a value matches any of the provided values.
      *
@@ -45,12 +33,21 @@ public abstract class BaseThemePatch {
      */
     @ColorInt
     protected static int processColorValue(int originalValue, int[] darkValues, @Nullable int[] lightValues) {
+        // The values that are replaced here are the backgrounds the app hard codes into its
+        // Litho components. They only have to follow along when the app background is changed.
+        // With the background of the app itself the app is left alone. Otherwise, a component
+        // such as the chip bar of the feed is given the color of another background of the app.
+        // It then shows as a lighter gray than it does unpatched.
+        if (ThemeColorPatch.isAppDefaultBackground()) {
+            return originalValue;
+        }
+
         if (Utils.isDarkModeEnabled()) {
             if (anyEquals(originalValue, darkValues)) {
-                return BLACK_COLOR;
+                return Utils.getAppBackgroundColor();
             }
         } else if (lightValues != null && anyEquals(originalValue, lightValues)) {
-            return WHITE_COLOR;
+            return Utils.getAppBackgroundColor();
         }
 
         return originalValue;

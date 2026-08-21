@@ -19,19 +19,19 @@ import app.morphe.patcher.patch.ResourcePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.overrideThemeColors
-import app.morphe.util.asSequence
+import app.morphe.util.forEachChildElement
+import app.morphe.util.getNode
 import app.morphe.util.returnEarly
 import com.android.tools.smali.dexlib2.AccessFlags
-import org.w3c.dom.Element
 import kotlin.math.roundToInt
 
 internal const val THEME_COLOR_EXTENSION_CLASS = "Lapp/morphe/extension/shared/theme/ThemeColorPatch;"
 
 /**
  * Mobile country codes of 100 to 199 are not assigned to any country, so a device never reports
- * one. Every generated variant uses a code of that range, which is the only way the system can
- * be kept from using a variant of its own accord: the splash screen and anything else the system
- * draws is resolved with the configuration of the device and not with the one the app asks for.
+ * one. Every generated variant uses a code of that range. That is the only way the system can be
+ * kept from using a variant of its own accord. Anything the system draws, such as the splash
+ * screen, is resolved with the configuration of the device and not with the one the app asks for.
  */
 private const val UNUSED_MOBILE_COUNTRY_CODE = 100
 
@@ -42,9 +42,9 @@ private const val UNUSED_MOBILE_COUNTRY_CODE = 100
 private const val PALETTE_INDEX_OFFSET = 100
 
 /**
- * A background must only be used by the theme it belongs to, otherwise a light background
- * replaces the color of the text and the icons of the dark theme, because the app uses the
- * light colors as its foreground while it is dark, and the other way around.
+ * A background must only be used by the theme it belongs to. The app uses the light colors as
+ * its foreground while it is dark, and the other way around. A light background would otherwise
+ * replace the color of the text and the icons of the dark theme.
  *
  * The theme of the app is not the night mode of the device, the app has a setting of its own,
  * so a variant cannot be qualified with 'night'. Instead the extension asks for the variant of
@@ -249,10 +249,9 @@ private fun ResourcePatchContext.declareOverlayableColors(colorNames: Set<String
     // does not have must not be declared.
     val declaredColors = mutableSetOf<String>()
     document("res/values/colors.xml").use { document ->
-        (document.getElementsByTagName("resources").item(0) as Element)
-            .childNodes.asSequence()
-            .filterIsInstance<Element>()
-            .forEach { declaredColors += it.getAttribute("name") }
+        document.getNode("resources").forEachChildElement {
+            declaredColors += it.getAttribute("name")
+        }
     }
 
     val overlayableColors = colorNames.filter { it in declaredColors }
