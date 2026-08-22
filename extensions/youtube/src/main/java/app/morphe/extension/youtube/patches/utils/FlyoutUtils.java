@@ -9,14 +9,15 @@ package app.morphe.extension.youtube.patches.utils;
 
 import static app.morphe.extension.shared.StringRef.str;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
-import android.graphics.PorterDuff;
-import android.graphics.Typeface;
+import android.content.res.ColorStateList;
+import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.util.Base64;
 import android.util.Pair;
-import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -103,8 +104,12 @@ public final class FlyoutUtils {
     private static final Pattern WHITESPACE_PATTERN = Pattern.compile("\\s+");
     private static final Pattern COMMENT_ID_CLEANUP_PATTERN = Pattern.compile("[^A-Za-z0-9_.-]");
 
-    private static int FLYOUT_BACKGROUND_COLOR;
-    private static final int GREY_COLOR = ResourceUtils.getColor("yt_grey1");
+    private static final int SECONDARY_CONTAINER_ID =
+            ResourceUtils.getIdentifier(ResourceType.ID, "list_item_secondary_container");
+    private static final int ITEM_TEXT_ID =
+            ResourceUtils.getIdentifier(ResourceType.ID, "list_item_text");
+
+    private static WeakReference<TextView> customItemTextRef = new WeakReference<>(null);
 
     private static final List<Pair<String, Integer>> visibleFlyoutButtons = new ArrayList<>();
 
@@ -162,6 +167,7 @@ public final class FlyoutUtils {
             viewTreeObserver.addOnGlobalLayoutListener(
                     new ViewTreeObserver.OnGlobalLayoutListener() {
                         private boolean alreadyInjectedButton;
+                        private boolean alreadyStyledItems;
 
                         @Override
                         public void onGlobalLayout() {
@@ -178,8 +184,12 @@ public final class FlyoutUtils {
                                         addFlyoutElements(dialog);
                                         alreadyInjectedButton = true;
                                     }
+                                    if (!alreadyStyledItems) {
+                                        alreadyStyledItems = onFlyoutListBound(dialog);
+                                    }
                                 } else {
                                     alreadyInjectedButton = false;
+                                    alreadyStyledItems = false;
                                 }
                             } catch (Exception ex) {
                                 Logger.printException(() -> "setBottomSheetFlyout onGlobalLayout failure", ex);
@@ -211,6 +221,7 @@ public final class FlyoutUtils {
             runFlyoutPanelVisibilityHandler(popupWindow);
 
             addFlyoutElements(popupWindow);
+            onFlyoutListBound(popupWindow);
         } catch (Exception ex) {
             Logger.printException(() -> "setPopupWindowFlyout failure", ex);
         }
@@ -241,6 +252,91 @@ public final class FlyoutUtils {
         if (currentInjectIndex > 0) {
             addDivider(flyoutPanel, currentInjectIndex);
         }
+    }
+
+    /**
+     * Applies the changes that are only possible once the menu list has bound its items.
+     *
+     * @return If the changes are applied, or there is nothing to apply.
+     *         False if the list has not bound its items yet, so the caller tries again.
+     */
+    private static boolean onFlyoutListBound(Object flyoutPanel) {
+        try {
+            FlyoutMenuInfo menuInfo = getFlyoutMenuInfo(flyoutPanel, 0);
+            if (menuInfo == null) {
+                return true;
+            }
+
+            // The items are inside the list, which is the last view of the menu container.
+            LinearLayout menuContainer = menuInfo.menuContainer();
+            View lastChild = menuContainer.getChildAt(menuContainer.getChildCount() - 1);
+            if (!(lastChild instanceof ViewGroup itemList) || itemList.getChildCount() == 0) {
+                return false;
+            }
+
+            copyListItemTypeface(itemList);
+            hideItemSecondaryIcon(itemList);
+        } catch (Exception ex) {
+            Logger.printException(() -> "onFlyoutListBound failure", ex);
+        }
+
+        return true;
+    }
+
+    /**
+     * Hides menu secondary icon.
+     */
+    private static void hideItemSecondaryIcon(ViewGroup itemList) {
+        if (!Settings.QUEUE_OVERRIDE_FLYOUT_MENU.get() || SECONDARY_CONTAINER_ID == 0) {
+            return;
+        }
+
+        int itemIndex = -1;
+        for (Pair<String, Integer> button : visibleFlyoutButtons) {
+            if (AddToQueuePatch.queueButtonNames.contains(button.first)) {
+                itemIndex = button.second - 1;
+                break;
+            }
+        }
+        if (itemIndex < 0 || itemIndex >= itemList.getChildCount()) {
+            return;
+        }
+
+        View badge = itemList.getChildAt(itemIndex).findViewById(SECONDARY_CONTAINER_ID);
+        if (badge != null) {
+            Logger.printDebug(() -> "Hiding the menu item secondary icon");
+            badge.setVisibility(View.GONE);
+        }
+    }
+
+    /**
+     * The app applies its own font weight to the menu items after they are bound,
+     * so the custom item only matches them by taking the typeface of a bound item.
+     */
+    private static void copyListItemTypeface(ViewGroup itemList) {
+        TextView customItemText = customItemTextRef.get();
+        if (customItemText == null || ITEM_TEXT_ID == 0) {
+            return;
+        }
+
+        if (itemList.getChildAt(0).findViewById(ITEM_TEXT_ID) instanceof TextView itemText) {
+            customItemText.setTypeface(itemText.getTypeface());
+        }
+    }
+
+    /**
+     * @return The height of the bottom sheet drag handle, or zero if the menu has no handle.
+     * The handle is drawn over the top of the menu instead of being laid out in it,
+     * so the first item has to be pushed down by its height.
+     */
+    private static int getDragHandleHeight(ViewGroup menuContainer) {
+        for (int i = 0, count = menuContainer.getChildCount(); i < count; i++) {
+            if (menuContainer.getChildAt(i) instanceof ImageView handle) {
+                return handle.getHeight();
+            }
+        }
+
+        return 0;
     }
 
     @SuppressWarnings("SameParameterValue")
@@ -278,11 +374,9 @@ public final class FlyoutUtils {
                 return -1;
             }
 
-            FLYOUT_BACKGROUND_COLOR = menuInfo.menuContainer().getSolidColor();
-
             View view = isDivider
                     ? createFlyoutDivider(context)
-                    : addFlyoutButton(context, icon, text, clickListener);
+                    : addFlyoutButton(context, menuInfo.menuContainer(), icon, text, clickListener);
 
             int fixedIndex = menuInfo.adjustedIndex();
             menuInfo.menuContainer().addView(view, fixedIndex);
@@ -416,66 +510,74 @@ public final class FlyoutUtils {
         return new FlyoutMenuInfo(menuContainer, adjustedIndex, isPopupWindow, popupWindow);
     }
 
+    @SuppressLint("ResourceType")
     private static View addFlyoutButton(
             Context context,
+            ViewGroup parent,
             @Nullable Drawable icon,
             String text,
             View.OnClickListener clickListener
     ) {
-        LinearLayout.LayoutParams buttonParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT
-        );
-        buttonParams.setMargins(Dim.dp16, Dim.dp12, Dim.dp16, Dim.dp12);
-
-        LinearLayout customButton = new LinearLayout(context);
-        customButton.setLayoutParams(buttonParams);
-        customButton.setOrientation(LinearLayout.HORIZONTAL);
-        customButton.setGravity(Gravity.START);
-        customButton.setClickable(true);
-        customButton.setBackgroundColor(FLYOUT_BACKGROUND_COLOR);
-
-        if (icon != null) {
-            Drawable mutableIcon = icon.mutate();
-            mutableIcon.setTint(ThemeUtils.getAppForegroundColor());
-            mutableIcon.setTintMode(PorterDuff.Mode.SRC_IN);
-
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                    Dim.dp24,
-                    Dim.dp24
-            );
-            layoutParams.rightMargin = Dim.dp12;
-
-            ImageView iconView = new ImageView(context);
-            iconView.setLayoutParams(layoutParams);
-            iconView.setImageDrawable(mutableIcon);
-
-            customButton.addView(iconView);
+        // Inflating the same layout the app uses for its own items keeps the row height,
+        // paddings, font and icon size identical to them.
+        // 20.21 has no modern layout and uses the older one for its own items.
+        int layoutId = ResourceUtils.getIdentifier(
+                ResourceType.LAYOUT, "modern_bottom_sheet_enableable_list_item");
+        if (layoutId == 0) {
+            layoutId = ResourceUtils.getIdentifier(
+                    ResourceType.LAYOUT, "bottom_sheet_enableable_list_item");
         }
 
-        TextView textView = new TextView(context);
-        textView.setSingleLine(true);
-        textView.setText(text);
-        textView.setTextSize(16);
-        textView.setTypeface(null, Typeface.BOLD);
-        textView.setTextColor(ThemeUtils.getAppForegroundColor());
+        View customButton = LayoutInflater.from(context).inflate(layoutId, parent, false);
 
-        customButton.addView(textView);
+        TextView textView = customButton.findViewById(ITEM_TEXT_ID);
+        if (textView != null) {
+            textView.setText(text);
+            customItemTextRef = new WeakReference<>(textView);
+        }
+
+        ImageView iconView = customButton.findViewById(
+                ResourceUtils.getIdentifier(ResourceType.ID, "list_item_icon_primary"));
+        if (iconView != null && icon != null) {
+            iconView.setImageDrawable(icon);
+            // The layout tints the icon with ytIconInactive, but the menu items themselves
+            // are drawn with the text color.
+            iconView.setImageTintList(ColorStateList.valueOf(textView != null
+                    ? textView.getCurrentTextColor()
+                    : ThemeUtils.getAppForegroundColor()));
+        }
+
+        if (customButton.getLayoutParams() instanceof ViewGroup.MarginLayoutParams marginParams) {
+            marginParams.topMargin = getDragHandleHeight(parent);
+        }
+
+        // The layout reserves space for a secondary icon this item does not have.
+        View secondaryContainer = customButton.findViewById(SECONDARY_CONTAINER_ID);
+        if (secondaryContainer != null) {
+            secondaryContainer.setVisibility(View.GONE);
+        }
+
+        int[] attrs = {android.R.attr.selectableItemBackground};
+        try (TypedArray typedArray = context.obtainStyledAttributes(attrs)) {
+            customButton.setForeground(typedArray.getDrawable(0));
+        }
+
         customButton.setOnClickListener(clickListener);
 
         return customButton;
     }
 
     public static View createFlyoutDivider(Context context) {
+        int height = ResourceUtils.getDimensionPixelSize("line_separator_height");
         LinearLayout.LayoutParams dividerParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
-                Dim.dp1
+                height > 0 ? height : Dim.dp1
         );
-        dividerParams.setMargins(Dim.dp16, Dim.dp4, Dim.dp16, Dim.dp4);
 
-        LinearLayout divider = new LinearLayout(context);
+        View divider = new View(context);
         divider.setLayoutParams(dividerParams);
-        divider.setBackgroundColor(GREY_COLOR);
+        // Same 20% of the foreground the app draws its own separators with.
+        divider.setBackgroundColor((ThemeUtils.getAppForegroundColor() & 0xFFFFFF) | 0x33000000);
 
         return divider;
     }
