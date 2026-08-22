@@ -376,7 +376,7 @@ public class ThemeColorPatch {
             }
             splashScreenThemeApplied = true;
 
-            final int index = isDarkTheme() ? darkConfigValue : lightConfigValue;
+            final int index = splashScreenThemeIndex(isDarkTheme());
             final int themeId = ResourceUtils.getIdentifier(
                     ResourceType.STYLE, SPLASH_THEME_NAME + index);
 
@@ -386,6 +386,29 @@ public class ThemeColorPatch {
         } catch (Exception ex) {
             Logger.printException(() -> "setSplashScreenTheme failure", ex);
         }
+    }
+
+    /**
+     * The index of the theme that draws the splash screen of the selected background.
+     * <p>
+     * A color the user picked is not known while patching and has no theme of its own, so the
+     * palette is used for it, which has one for every value it can be quantized to.
+     */
+    private static int splashScreenThemeIndex(boolean dark) {
+        Background background = dark
+                ? THEME_BACKGROUND_DARK.get()
+                : THEME_BACKGROUND_LIGHT.get();
+
+        if (!background.isCustom()) {
+            return dark ? darkConfigValue : lightConfigValue;
+        }
+
+        StringSetting setting = dark
+                ? THEME_BACKGROUND_DARK_CUSTOM_COLOR
+                : THEME_BACKGROUND_LIGHT_CUSTOM_COLOR;
+
+        return (dark ? DARK_INDEX_OFFSET : LIGHT_INDEX_OFFSET)
+                + PALETTE_INDEX_OFFSET + get9BitColorIndex(setting, dark);
     }
 
     /**

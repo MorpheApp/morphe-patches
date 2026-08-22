@@ -323,35 +323,60 @@ private fun ResourcePatchContext.addSplashScreenThemes(
     document("res/values/styles.xml").use { document ->
         val resources = document.getNode("resources")
 
-        buildList {
-            add(THEME_INDEX_OFFSET_DARK to THEME_COLORS_DARK)
-            if (includeLightBackground) add(THEME_INDEX_OFFSET_LIGHT to THEME_COLORS_LIGHT)
-        }.forEach { (indexOffset, backgrounds) ->
-            backgrounds.forEachIndexed { index, color ->
-                // The background of the app itself and a color the user picks have no theme of
-                // their own, and the splash screen of the app is used for both.
-                if (color == null) return@forEachIndexed
+        fun addTheme(index: Int, color: String) {
+            val style = document.createElement("style")
+            style.setAttribute("name", SPLASH_THEME_NAME + index)
+            style.setAttribute("parent", parentStyle)
 
-                val style = document.createElement("style")
-                style.setAttribute("name", SPLASH_THEME_NAME + (indexOffset + index + 1))
-                style.setAttribute("parent", parentStyle)
-
-                // The first is used since Android 12, and the second by everything the app draws
-                // until the splash screen is gone.
-                arrayOf(
-                    "android:windowSplashScreenBackground",
-                    "android:windowBackground"
-                ).forEach { name ->
-                    style.appendChild(
-                        document.createElement("item").apply {
-                            setAttribute("name", name)
-                            textContent = color
-                        }
-                    )
-                }
-
-                resources.appendChild(style)
+            // The first is used since Android 12, and the second by everything the app draws
+            // until the splash screen is gone.
+            arrayOf(
+                "android:windowSplashScreenBackground",
+                "android:windowBackground"
+            ).forEach { name ->
+                style.appendChild(
+                    document.createElement("item").apply {
+                        setAttribute("name", name)
+                        textContent = color
+                    }
+                )
             }
+
+            resources.appendChild(style)
+        }
+
+        fun addThemes(
+            indexOffset: Int,
+            backgrounds: List<String?>,
+            levels: IntArray,
+            colorNames: List<String>
+        ) {
+            backgrounds.forEachIndexed { index, color ->
+                if (color != null) {
+                    addTheme(indexOffset + index + 1, color)
+                } else if (index == 0) {
+                    // The background of the app itself, which keeps the color the app declares.
+                    // The system resolves the theme with the configuration of the device, where
+                    // no variant of a background applies, so this is the unpatched color.
+                    addTheme(indexOffset + index + 1, "@color/" + colorNames.first())
+                }
+                // A color the user picks is not known while patching, and the palette below is
+                // used for it instead.
+            }
+
+            for (index in 0 until 512) {
+                addTheme(
+                    indexOffset + PALETTE_INDEX_OFFSET + index,
+                    paletteColor(levels, index)
+                )
+            }
+        }
+
+        addThemes(THEME_INDEX_OFFSET_DARK, THEME_COLORS_DARK, PALETTE_LEVELS_DARK, darkColorNames)
+        if (includeLightBackground) {
+            addThemes(
+                THEME_INDEX_OFFSET_LIGHT, THEME_COLORS_LIGHT, PALETTE_LEVELS_LIGHT, lightColorNames
+            )
         }
     }
 }
@@ -419,14 +444,20 @@ private fun ResourcePatchContext.add9BitColorVariants(
     colorNames: List<String>
 ) {
     for (index in 0 until 512) {
-        val r = levels[(index shr 6) and 0x7]
-        val g = levels[(index shr 3) and 0x7]
-        val b = levels[index and 0x7]
-
-        val color = "#%02X%02X%02X".format(r, g, b)
-        writeBackgroundColorVariant(indexOffset + PALETTE_INDEX_OFFSET + index, color, colorNames)
+        writeBackgroundColorVariant(
+            indexOffset + PALETTE_INDEX_OFFSET + index, paletteColor(levels, index), colorNames
+        )
     }
 }
+
+/**
+ * The color of a value of the 9 bit palette, which the extension picks the index of.
+ */
+private fun paletteColor(levels: IntArray, index: Int) = "#%02X%02X%02X".format(
+    levels[(index shr 6) and 0x7],
+    levels[(index shr 3) and 0x7],
+    levels[index and 0x7]
+)
 
 private fun ResourcePatchContext.writeBackgroundColorVariant(
     index: Int,
