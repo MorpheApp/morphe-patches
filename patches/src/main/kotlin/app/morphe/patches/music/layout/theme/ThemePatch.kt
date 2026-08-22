@@ -89,6 +89,21 @@ val themePatch = baseThemePatch(
             }
         }
 
+        // The same button shows a dot when there is no count, and the dot is a view of the
+        // layout instead of a stub, so it is colored as soon as the top bar creates it.
+        TopBarNewContentDotFingerprint.let {
+            it.method.apply {
+                val moveResultIndex = it.instructionMatches[2].index
+                val dotRegister = getInstruction<OneRegisterInstruction>(moveResultIndex).registerA
+
+                addInstruction(
+                    moveResultIndex + 1,
+                    "invoke-static { v$dotRegister }, $THEME_COLOR_EXTENSION_CLASS" +
+                            "->onNewContentIndicator(Landroid/view/View;)V"
+                )
+            }
+        }
+
         PreferenceScreen.GENERAL.addPreferences(
             noTitleUnsortedPreferenceCategory(
                 ListPreference(

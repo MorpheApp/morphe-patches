@@ -119,3 +119,35 @@ internal object PivotBarNewContentDotFingerprint : Fingerprint(
         opcode(opcode = Opcode.CHECK_CAST)
     )
 )
+
+/**
+ * The top bar creates the view stub of the new content count of the notification button, and of
+ * the dot next to it. The count comes first, which is the other way around than the pivot bar,
+ * and that is what keeps both fingerprints from matching the same method.
+ */
+internal object TopBarNewContentCountFingerprint : Fingerprint(
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "new_content_count"),
+        methodCall(
+            name = "findViewById",
+            location = MatchAfterImmediately()
+        ),
+        opcode(
+            opcode = Opcode.CHECK_CAST,
+            location = MatchAfterWithin(3)
+        ),
+        resourceLiteral(
+            ResourceType.ID,
+            "new_content_dot",
+            location = MatchAfterWithin(30)
+        ),
+        methodCall(
+            name = "findViewById",
+            location = MatchAfterImmediately()
+        ),
+        opcode(
+            opcode = Opcode.CHECK_CAST,
+            location = MatchAfterWithin(3)
+        )
+    )
+)

@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.music.layout.theme
 
 import app.morphe.patcher.Fingerprint
@@ -28,6 +38,29 @@ internal object TopBarNewContentCountFingerprint : Fingerprint(
         methodCall(
             smali = "Landroid/view/ViewStub;->inflate()Landroid/view/View;",
             location = MatchAfterWithin(8)
+        )
+    )
+)
+
+/**
+ * The dot the same button shows when there is no count, which the layout declares as a view of
+ * its own and not as a stub. It is created right before the stub of the count.
+ */
+internal object TopBarNewContentDotFingerprint : Fingerprint(
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "new_content_dot"),
+        methodCall(
+            name = "findViewById",
+            location = MatchAfterImmediately()
+        ),
+        opcode(
+            opcode = Opcode.MOVE_RESULT_OBJECT,
+            location = MatchAfterImmediately()
+        ),
+        resourceLiteral(
+            ResourceType.ID,
+            "new_content_count",
+            location = MatchAfterWithin(5)
         )
     )
 )

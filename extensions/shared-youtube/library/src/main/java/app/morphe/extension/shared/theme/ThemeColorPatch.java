@@ -642,8 +642,9 @@ public class ThemeColorPatch {
     /**
      * Injection point.
      * <p>
-     * Called with the view stub of a new content indicator of the pivot bar, which is the dot
-     * of a tab and the count next to it, before either is shown.
+     * Called with the view stub of a new content indicator, which is the dot of a pivot bar tab
+     * or of the notification button of the top bar, and the count next to it, before either
+     * is shown.
      */
     public static void onNewContentIndicator(ViewStub stub) {
         try {
@@ -659,6 +660,29 @@ public class ThemeColorPatch {
                 // and the color is applied again after the app is done with the view.
                 view.post(() -> setIndicatorColor(view, color));
             });
+        } catch (Exception ex) {
+            Logger.printException(() -> "onNewContentIndicator failure", ex);
+        }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called with a new content indicator that the layout declares as a view of its own and not
+     * as a stub, which is the dot of the notification button of the Music top bar.
+     */
+    public static void onNewContentIndicator(View indicator) {
+        try {
+            Integer color = getIndicatorColor(indicator.getContext());
+            if (color == null) {
+                return;
+            }
+
+            setIndicatorColor(indicator, color);
+
+            // The top bar can set the background of the indicator after the layout is created,
+            // and the color is applied again after the app is done with the view.
+            indicator.post(() -> setIndicatorColor(indicator, color));
         } catch (Exception ex) {
             Logger.printException(() -> "onNewContentIndicator failure", ex);
         }

@@ -304,6 +304,28 @@ val themePatch = baseThemePatch(
             }
         }
 
+        // The notification button of the top bar has an indicator of its own, which is created
+        // by a different class than the one of the pivot bar.
+        TopBarNewContentCountFingerprint.let {
+            it.method.apply {
+                // Both the count of the button and the dot shown without one, and the dot is
+                // hooked first so the index of the count is still valid.
+
+                arrayOf(
+                    it.instructionMatches.last().index,
+                    it.instructionMatches[2].index
+                ).forEach { checkCastIndex ->
+                    val stubRegister = getInstruction<OneRegisterInstruction>(checkCastIndex).registerA
+
+                    addInstruction(
+                        checkCastIndex + 1,
+                        "invoke-static { v$stubRegister }, $THEME_COLOR_EXTENSION_CLASS" +
+                                "->onNewContentIndicator(Landroid/view/ViewStub;)V"
+                    )
+                }
+            }
+        }
+
         UseGradientLoadingScreenFingerprint.matchAll().forEach {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
