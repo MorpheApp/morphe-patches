@@ -33,9 +33,8 @@ internal const val THEME_COLOR_EXTENSION_CLASS = "Lapp/morphe/extension/shared/t
 
 /**
  * A mobile country code and a mobile network code are three digits, so a device never reports one
- * above 999. Every generated variant uses a code above it, which is the only way the system can be
- * kept from using a variant of its own accord. Anything the system draws, such as the splash
- * screen, is resolved with the configuration of the device and not with the one the app asks for.
+ * above 999. Every variant uses a code above it, otherwise the system picks one of them while it
+ * draws the splash screen, which is resolved with the configuration of the device.
  */
 private const val UNREACHABLE_MOBILE_CODE = 1000
 
@@ -69,9 +68,8 @@ private const val THEME_INDEX_OFFSET_DARK = 0
 private const val THEME_INDEX_OFFSET_LIGHT = 700
 
 /**
- * The color of the background of each theme, which every background color of the app is an alias
- * of. Only this one color is declared by a resource variant, so a variant holds a single entry
- * instead of one for every color the app uses for its background.
+ * Every background color of the app is an alias of this one, so that a resource variant declares
+ * a single entry instead of one for every name.
  */
 private const val THEME_BACKGROUND_COLOR_DARK = "morphe_theme_background_color_dark"
 private const val THEME_BACKGROUND_COLOR_LIGHT = "morphe_theme_background_color_light"
@@ -96,11 +94,9 @@ private const val SPLASH_THEME_NAME = "morphe_splash_theme_"
 private class ThemeBackground(val value: String, val color: String?)
 
 /**
- * Backgrounds that can be selected in the app settings.
- *
- * The position of a background is the ordinal of the matching value of the extension enum, and
- * the extension selects the color of a position using the 'mcc' resource qualifier. The order of
- * this list and of that enum must always be the same, which the Theme patch verifies.
+ * Backgrounds that can be selected in the app settings, which the extension selects the color of
+ * with the 'mcc' resource qualifier. The Theme patch verifies that this list, the extension enum
+ * and the setting entries are all in the same order.
  */
 private val THEME_BACKGROUNDS_DARK = listOf(
     ThemeBackground("APP_DEFAULT", null),
@@ -174,9 +170,9 @@ internal val darkThemeBackgroundColorOption = colorOption(
         "Change in the app" to THEME_COLOR_IN_APP,
         "Pure black" to "@android:color/black",
         "Material You (Neutral)" to "@android:color/system_neutral1_900",
-        "Material You - Primary" to "@android:color/system_accent1_800",
-        "Material You - Secondary" to "@android:color/system_accent2_800",
-        "Material You - Tertiary" to "@android:color/system_accent3_800",
+        "Material You (Primary)" to "@android:color/system_accent1_800",
+        "Material You (Secondary)" to "@android:color/system_accent2_800",
+        "Material You (Tertiary)" to "@android:color/system_accent3_800",
         "Modern YouTube" to "#0F0F0F",
         "Classic YouTube" to "#212121",
         "Catppuccin (Mocha)" to "#181825",
@@ -203,9 +199,9 @@ internal val lightThemeBackgroundColorOption = colorOption(
         "Change in the app" to THEME_COLOR_IN_APP,
         "White" to "@android:color/white",
         "Material You (Neutral)" to "@android:color/system_neutral1_100",
-        "Material You - Primary" to "@android:color/system_accent1_200",
-        "Material You - Secondary" to "@android:color/system_accent2_200",
-        "Material You - Tertiary" to "@android:color/system_accent3_200",
+        "Material You (Primary)" to "@android:color/system_accent1_200",
+        "Material You (Secondary)" to "@android:color/system_accent2_200",
+        "Material You (Tertiary)" to "@android:color/system_accent3_200",
         "Catppuccin (Latte)" to "#E6E9EF",
         "Light pink" to "#FCCFF3",
         "Light blue" to "#D1E0FF",
