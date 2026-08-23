@@ -12,8 +12,7 @@ import app.morphe.extension.shared.patches.CustomBrandingPatch.BrandingTheme;
 import app.morphe.extension.shared.patches.CustomBrandingPatch.NotificationIconTheme;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch.JavaScriptClientAvailability;
 import app.morphe.extension.shared.spoof.js.JavaScriptVariant;
-import app.morphe.extension.shared.theme.ThemeColorPatch.CustomDarkBackgroundAvailability;
-import app.morphe.extension.shared.theme.ThemeColorPatch.CustomLightBackgroundAvailability;
+import app.morphe.extension.shared.theme.ThemeColorPatch.CustomBackgroundAvailability;
 import app.morphe.extension.shared.theme.ThemeColorPatch.ThemeColorDark;
 import app.morphe.extension.shared.theme.ThemeColorPatch.ThemeColorLight;
 
@@ -42,8 +41,8 @@ public class SharedYouTubeSettings extends BaseSettings {
 
     public static final EnumSetting<ThemeColorDark> THEME_BACKGROUND_DARK = new EnumSetting<>("morphe_theme_background_dark", ThemeColorDark.PURE_BLACK, true);
     public static final EnumSetting<ThemeColorLight> THEME_BACKGROUND_LIGHT = new EnumSetting<>("morphe_theme_background_light", ThemeColorLight.WHITE, true);
-    public static final StringSetting THEME_BACKGROUND_DARK_CUSTOM_COLOR = new StringSetting("morphe_theme_background_dark_custom_color", "#0F0F0F", true, new CustomDarkBackgroundAvailability());
-    public static final StringSetting THEME_BACKGROUND_LIGHT_CUSTOM_COLOR = new StringSetting("morphe_theme_background_light_custom_color", "#FFFFFF", true, new CustomLightBackgroundAvailability());
+    public static final StringSetting THEME_BACKGROUND_DARK_CUSTOM_COLOR = new StringSetting("morphe_theme_background_dark_custom_color", "#0F0F0F", true, new CustomBackgroundAvailability(THEME_BACKGROUND_DARK));
+    public static final StringSetting THEME_BACKGROUND_LIGHT_CUSTOM_COLOR = new StringSetting("morphe_theme_background_light_custom_color", "#FFFFFF", true, new CustomBackgroundAvailability(THEME_BACKGROUND_LIGHT));
 
     public static final BooleanSetting THEME_LAST_USED_DARK_MODE = new BooleanSetting("morphe_theme_last_used_dark_mode", Utils.isDarkModeEnabled(), false, false);
     public static final EnumSetting<BrandingTheme> CUSTOM_BRANDING_ICON = new EnumSetting<>("morphe_custom_branding_icon", CustomBrandingPatch.getDefaultIconStyle(), true);

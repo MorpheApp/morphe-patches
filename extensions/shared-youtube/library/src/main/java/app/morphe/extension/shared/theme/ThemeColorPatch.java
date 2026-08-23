@@ -40,6 +40,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.EnumSetting;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.StringSetting;
 
@@ -70,34 +71,50 @@ import app.morphe.extension.shared.settings.StringSetting;
 public class ThemeColorPatch {
 
     public interface Background {
+        enum Kind {
+            /** A color that every Android version has. */
+            PLAIN,
+            /** A Material You system color, which only Android 12 and later has. */
+            MATERIAL_YOU,
+            /**
+             * Not a Material You color, but the accents follow the palette anyway,
+             * which is what an AMOLED display needs.
+             */
+            MATERIAL_YOU_ACCENT,
+            /** A color the user picks, which is applied with an overlay. */
+            CUSTOM
+        }
+
+        Kind kind();
+
         /**
-         * If the color of this background is a Material You system color,
-         * which only exists on Android 12 and later.
+         * If the color of this background only exists on Android 12 and later.
          */
-        boolean isMaterialYou();
+        default boolean isMaterialYou() {
+            return kind() == Kind.MATERIAL_YOU;
+        }
 
         /**
          * If what the app draws on the background with a color of its own, such as the new
-         * content indicator, follows the Material You palette. A background that is not a
-         * Material You color can do so as well, which is what an AMOLED display needs.
+         * content indicator, follows the Material You palette.
          */
-        boolean usesMaterialYouAccent();
+        default boolean usesMaterialYouAccent() {
+            return kind() == Kind.MATERIAL_YOU || kind() == Kind.MATERIAL_YOU_ACCENT;
+        }
 
-        /**
-         * If the color of this background is picked by the user and applied with an overlay.
-         */
-        boolean isCustom();
+        default boolean isCustom() {
+            return kind() == Kind.CUSTOM;
+        }
     }
 
     public enum ThemeColorDark implements Background {
         APP_DEFAULT,
         PURE_BLACK,
-        // Black exists on every Android version, only the accents need Android 12.
-        MATERIAL_YOU_PURE_BLACK(false, true, false),
-        MATERIAL_YOU_NEUTRAL(true, true, false),
-        MATERIAL_YOU_PRIMARY(true, true, false),
-        MATERIAL_YOU_SECONDARY(true, true, false),
-        MATERIAL_YOU_TERTIARY(true, true, false),
+        MATERIAL_YOU_PURE_BLACK(Kind.MATERIAL_YOU_ACCENT),
+        MATERIAL_YOU_NEUTRAL(Kind.MATERIAL_YOU),
+        MATERIAL_YOU_PRIMARY(Kind.MATERIAL_YOU),
+        MATERIAL_YOU_SECONDARY(Kind.MATERIAL_YOU),
+        MATERIAL_YOU_TERTIARY(Kind.MATERIAL_YOU),
         CLASSIC_YOUTUBE,
         CATPPUCCIN_MOCHA,
         DARK_PINK,
@@ -106,46 +123,32 @@ public class ThemeColorPatch {
         DARK_YELLOW,
         DARK_ORANGE,
         DARK_RED,
-        CUSTOM(false, false, true);
+        CUSTOM(Kind.CUSTOM);
 
-        private final boolean materialYou;
-        private final boolean materialYouAccent;
-        private final boolean custom;
+        private final Kind kind;
 
         ThemeColorDark() {
-            this(false, false, false);
+            this(Kind.PLAIN);
         }
 
-        ThemeColorDark(boolean materialYou, boolean materialYouAccent, boolean custom) {
-            this.materialYou = materialYou;
-            this.materialYouAccent = materialYouAccent;
-            this.custom = custom;
-        }
-
-        @Override
-        public boolean isMaterialYou() {
-            return materialYou;
+        ThemeColorDark(Kind kind) {
+            this.kind = kind;
         }
 
         @Override
-        public boolean usesMaterialYouAccent() {
-            return materialYouAccent;
-        }
-
-        @Override
-        public boolean isCustom() {
-            return custom;
+        public Kind kind() {
+            return kind;
         }
     }
 
     public enum ThemeColorLight implements Background {
         APP_DEFAULT,
         WHITE,
-        MATERIAL_YOU_WHITE(false, true, false),
-        MATERIAL_YOU_NEUTRAL(true, true, false),
-        MATERIAL_YOU_PRIMARY(true, true, false),
-        MATERIAL_YOU_SECONDARY(true, true, false),
-        MATERIAL_YOU_TERTIARY(true, true, false),
+        MATERIAL_YOU_WHITE(Kind.MATERIAL_YOU_ACCENT),
+        MATERIAL_YOU_NEUTRAL(Kind.MATERIAL_YOU),
+        MATERIAL_YOU_PRIMARY(Kind.MATERIAL_YOU),
+        MATERIAL_YOU_SECONDARY(Kind.MATERIAL_YOU),
+        MATERIAL_YOU_TERTIARY(Kind.MATERIAL_YOU),
         CATPPUCCIN_LATTE,
         LIGHT_PINK,
         LIGHT_BLUE,
@@ -153,65 +156,42 @@ public class ThemeColorPatch {
         LIGHT_YELLOW,
         LIGHT_ORANGE,
         LIGHT_RED,
-        CUSTOM(false, false, true);
+        CUSTOM(Kind.CUSTOM);
 
-        private final boolean materialYou;
-        private final boolean materialYouAccent;
-        private final boolean custom;
+        private final Kind kind;
 
         ThemeColorLight() {
-            this(false, false, false);
+            this(Kind.PLAIN);
         }
 
-        ThemeColorLight(boolean materialYou, boolean materialYouAccent, boolean custom) {
-            this.materialYou = materialYou;
-            this.materialYouAccent = materialYouAccent;
-            this.custom = custom;
-        }
-
-        @Override
-        public boolean isMaterialYou() {
-            return materialYou;
+        ThemeColorLight(Kind kind) {
+            this.kind = kind;
         }
 
         @Override
-        public boolean usesMaterialYouAccent() {
-            return materialYouAccent;
-        }
-
-        @Override
-        public boolean isCustom() {
-            return custom;
+        public Kind kind() {
+            return kind;
         }
     }
 
     /**
-     * Availability of the custom dark background color.
+     * Availability of the color of a custom background.
      */
-    public static class CustomDarkBackgroundAvailability implements Setting.Availability {
+    public static class CustomBackgroundAvailability implements Setting.Availability {
+        private final EnumSetting<? extends Background> setting;
+
+        public CustomBackgroundAvailability(EnumSetting<? extends Background> setting) {
+            this.setting = setting;
+        }
+
         @Override
         public boolean isAvailable() {
-            return THEME_BACKGROUND_DARK.get().isCustom();
+            return setting.get().isCustom();
         }
 
         @Override
         public List<Setting<?>> getParentSettings() {
-            return List.of(THEME_BACKGROUND_DARK);
-        }
-    }
-
-    /**
-     * Availability of the custom light background color.
-     */
-    public static class CustomLightBackgroundAvailability implements Setting.Availability {
-        @Override
-        public boolean isAvailable() {
-            return THEME_BACKGROUND_LIGHT.get().isCustom();
-        }
-
-        @Override
-        public List<Setting<?>> getParentSettings() {
-            return List.of(THEME_BACKGROUND_LIGHT);
+            return List.of(setting);
         }
     }
 
@@ -306,8 +286,6 @@ public class ThemeColorPatch {
                 Utils.setContext(base);
             }
 
-            // A patched background color is a part of the app resources,
-            // and there is no resource variant to select.
             if (isPatchedBackground()) {
                 return base;
             }
@@ -377,11 +355,9 @@ public class ThemeColorPatch {
      * Resolves the color of both selected backgrounds, and hands them to Morphe, which uses the
      * background of the app for its own dialogs and settings.
      * <p>
-     * A context of the app carries the resource variant of the theme the app shows, so the color
-     * of the other theme cannot be read from it: it would be the unpatched color of the app. Each
-     * color is resolved here with a configuration of the theme it belongs to, and everything that
-     * follows the background of the app uses {@link #backgroundColor(boolean)} instead of a color
-     * of whichever context is current.
+     * A context carries the resource variant of one theme only, so each color is resolved with
+     * a configuration of the theme it belongs to and read back with
+     * {@link #backgroundColor(boolean)}.
      */
     private static void resolveBackgroundColors(Context context) {
         if (backgroundColorsResolved || !Utils.isContextSet()) {
@@ -402,14 +378,8 @@ public class ThemeColorPatch {
 
     /**
      * Injection point.
-     * <p>
-     * Gives the system the theme it draws the splash screen of the app with, which it uses for
-     * every launch that follows.
-     * <p>
-     * The splash screen is drawn before the app runs, with the configuration of the device, so the
-     * resource variant of the selected background is never used for it. A background of the app
-     * itself and a color the user picked have no theme, and the system is given none, which brings
-     * the splash screen of the app back.
+     *
+     * @see SplashScreenTheme
      */
     public static void setSplashScreenTheme(Activity activity) {
         try {
@@ -462,7 +432,6 @@ public class ThemeColorPatch {
     @ColorInt
     static int backgroundColor(boolean dark) {
         if (isPatchedBackground()) {
-            // The color the patch gave the app, which Morphe was handed as well.
             return dark ? ThemeUtils.getThemeDarkColor() : ThemeUtils.getThemeLightColor();
         }
 
@@ -895,8 +864,7 @@ public class ThemeColorPatch {
 
     /**
      * If the background color was set with a patch option, which replaces the color resources of
-     * the app for good. Nothing of this class changes a color of the app then, and the app
-     * settings have no background to select.
+     * the app for good. Nothing of this class changes a color of the app then.
      */
     private static boolean isPatchedBackground() {
         return !patchedBackgroundColorDark().isEmpty();
@@ -915,7 +883,7 @@ public class ThemeColorPatch {
     /**
      * Injection point.
      * <p>
-     * The light background color of the patch options, empty for an app without a light theme.
+     * Empty for an app without a light theme.
      *
      * @see #patchedBackgroundColorDark()
      */
