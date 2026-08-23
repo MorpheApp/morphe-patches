@@ -17,12 +17,14 @@ import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.ResourcePatchContext
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.colorOption
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.overrideThemeColors
 import app.morphe.util.forEachChildElement
 import app.morphe.util.getNode
 import app.morphe.util.returnEarly
 import com.android.tools.smali.dexlib2.AccessFlags
+import java.util.Locale
 
 internal const val THEME_COLOR_EXTENSION_CLASS = "Lapp/morphe/extension/shared/theme/ThemeColorPatch;"
 
@@ -131,6 +133,107 @@ private val THEME_COLORS_LIGHT = listOf(
 internal const val DEFAULT_THEME_COLOR_DARK = "@android:color/black"
 internal const val DEFAULT_THEME_COLOR_LIGHT = "@android:color/white"
 
+private const val THEME_COLOR_OPTION_DESCRIPTION = "Can be a hex color (#RRGGBB) or a color " +
+        "resource reference. If a color is set, it is applied while patching and cannot be " +
+        "changed later, and the background color setting is not added to the app."
+
+/**
+ * Dark theme background color of the YouTube and YT Music Theme patch.
+ *
+ * A color that is set here is what a user of an old device needs: the splash screen the system
+ * draws uses it on every Android version, and nothing is generated for the backgrounds that
+ * could otherwise be selected in the app settings.
+ */
+internal val darkThemeBackgroundColorOption = colorOption(
+    key = "darkThemeBackgroundColor",
+    values = mapOf(
+        "Pure black" to "@android:color/black",
+        "Material You (Neutral)" to "@android:color/system_neutral1_900",
+        "Material You - Primary" to "@android:color/system_accent1_800",
+        "Material You - Secondary" to "@android:color/system_accent2_800",
+        "Material You - Tertiary" to "@android:color/system_accent3_800",
+        "Modern YouTube" to "#0F0F0F",
+        "Classic YouTube" to "#212121",
+        "Catppuccin (Mocha)" to "#181825",
+        "Dark pink" to "#290025",
+        "Dark blue" to "#001029",
+        "Dark green" to "#002905",
+        "Dark yellow" to "#282900",
+        "Dark orange" to "#291800",
+        "Dark red" to "#290000",
+    ),
+    title = "Dark theme background color",
+    description = THEME_COLOR_OPTION_DESCRIPTION
+)
+
+/**
+ * Light theme background color of the YouTube Theme patch.
+ *
+ * @see darkThemeBackgroundColorOption
+ */
+internal val lightThemeBackgroundColorOption = colorOption(
+    key = "lightThemeBackgroundColor",
+    values = mapOf(
+        "White" to "@android:color/white",
+        "Material You (Neutral)" to "@android:color/system_neutral1_100",
+        "Material You - Primary" to "@android:color/system_accent1_200",
+        "Material You - Secondary" to "@android:color/system_accent2_200",
+        "Material You - Tertiary" to "@android:color/system_accent3_200",
+        "Catppuccin (Latte)" to "#E6E9EF",
+        "Light pink" to "#FCCFF3",
+        "Light blue" to "#D1E0FF",
+        "Light green" to "#CCFFCC",
+        "Light yellow" to "#FDFFCC",
+        "Light orange" to "#FFE6CC",
+        "Light red" to "#FFD6D6",
+    ),
+    title = "Light theme background color",
+    description = THEME_COLOR_OPTION_DESCRIPTION
+)
+
+/**
+ * Setting one color of an app that has two themes applies both, otherwise one theme could still
+ * be changed while the app runs and the other one not.
+ */
+internal val usePatchedBackgroundColor: Boolean
+    get() = darkThemeBackgroundColorOption.value != null ||
+            lightThemeBackgroundColorOption.value != null
+
+internal val patchedBackgroundColorDark: String
+    get() = darkThemeBackgroundColorOption.value ?: DEFAULT_THEME_COLOR_DARK
+
+internal val patchedBackgroundColorLight: String
+    get() = lightThemeBackgroundColorOption.value ?: DEFAULT_THEME_COLOR_LIGHT
+
+/**
+ * @param colorString #AARRGGBB, #RRGGBB, or an Android color resource name.
+ */
+private fun validateColorName(colorString: String): Boolean {
+    if (colorString.startsWith("#")) {
+        val hex = colorString.substring(1).uppercase(Locale.US)
+
+        if (hex.length == 8) {
+            // Transparent colors will crash the app.
+            if (hex[0] != 'F' || hex[1] != 'F') {
+                return false
+            }
+        } else if (hex.length != 6) {
+            return false
+        }
+
+        return hex.all { it.isDigit() || it in 'A'..'F' }
+    }
+
+    if (colorString.startsWith("@android:color/")) {
+        // Cannot easily validate Android built-in colors, so assume it's a correct color.
+        return true
+    }
+
+    // Allow any color name, because if it's invalid it will
+    // throw an exception during resource compilation.
+    return colorString.startsWith("@color/")
+}
+
 /**
  * The color the app themes use for the 'ytBaseBackground' attribute, which is the background
  * of the app. Morphe dialogs and settings use the same color so that both always match.
@@ -205,6 +308,12 @@ internal fun baseThemePatch(
     name = "Theme",
     description = "Adds options for theming, and adds a setting to change the app background color.",
 ) {
+    darkThemeBackgroundColorOption()
+
+    if (includeLightBackground) {
+        lightThemeBackgroundColorOption()
+    }
+
     block()
 
     dependsOn(
@@ -213,19 +322,33 @@ internal fun baseThemePatch(
     )
 
     execute {
-        // Morphe dialogs and settings use the background color of the app, and the color
-        // resources resolve to the background that is selected in the app settings.
-        overrideThemeColors(
-            lightColorNames.firstOrNull(),
-            darkColorNames.firstOrNull()
-                ?: throw PatchException("The resource patch of the theme did not run first")
-        )
+        if (darkColorNames.isEmpty()) {
+            throw PatchException("The resource patch of the theme did not run first")
+        }
 
-        // A custom background color has no resource variant to select,
-        // so the extension replaces the same colors with an overlay of the app.
-        DarkColorResourceNamesFingerprint.method.returnEarly(darkColorNames.joinToString(","))
-        if (includeLightBackground) {
-            LightColorResourceNamesFingerprint.method.returnEarly(lightColorNames.joinToString(","))
+        if (usePatchedBackgroundColor) {
+            overrideThemeColors(
+                if (includeLightBackground) patchedBackgroundColorLight else null,
+                patchedBackgroundColorDark
+            )
+
+            PatchedBackgroundColorDarkFingerprint.method.returnEarly(patchedBackgroundColorDark)
+            if (includeLightBackground) {
+                PatchedBackgroundColorLightFingerprint.method
+                    .returnEarly(patchedBackgroundColorLight)
+            }
+        } else {
+            // Morphe dialogs and settings use the background color of the app, and the color
+            // resources resolve to the background that is selected in the app settings.
+            overrideThemeColors(lightColorNames.firstOrNull(), darkColorNames.first())
+
+            // A custom background color has no resource variant to select,
+            // so the extension replaces the same colors with an overlay of the app.
+            DarkColorResourceNamesFingerprint.method.returnEarly(darkColorNames.joinToString(","))
+            if (includeLightBackground) {
+                LightColorResourceNamesFingerprint.method
+                    .returnEarly(lightColorNames.joinToString(","))
+            }
         }
 
         executeBlock()
@@ -290,6 +413,13 @@ internal fun baseThemeResourcePatch(
             emptyList()
         }
 
+        // A color that is set while patching is the only background the app can have,
+        // so none of the variants and themes below are of any use.
+        if (usePatchedBackgroundColor) {
+            replaceBackgroundColors(includeLightBackground)
+            return@execute
+        }
+
         addBackgroundColorVariants(THEME_INDEX_OFFSET_DARK, THEME_COLORS_DARK, darkColorNames, true)
         add9BitColorVariants(THEME_INDEX_OFFSET_DARK, PALETTE_LEVELS_DARK, darkColorNames, true)
 
@@ -303,6 +433,31 @@ internal fun baseThemeResourcePatch(
         // An app without a launcher theme keeps the splash screen it draws itself.
         if (splashScreenThemeParent != null) {
             addSplashScreenThemes(splashScreenThemeParent, includeLightBackground)
+        }
+    }
+}
+
+/**
+ * Gives the background colors of the app the color that is set as a patch option, which is what
+ * the Theme patch did before the background could be changed in the app settings.
+ */
+private fun ResourcePatchContext.replaceBackgroundColors(includeLightBackground: Boolean) {
+    val darkColor = patchedBackgroundColorDark
+    if (!validateColorName(darkColor)) {
+        throw PatchException("Invalid dark theme color: $darkColor")
+    }
+
+    val lightColor = patchedBackgroundColorLight
+    if (includeLightBackground && !validateColorName(lightColor)) {
+        throw PatchException("Invalid light theme color: $lightColor")
+    }
+
+    document("res/values/colors.xml").use { document ->
+        document.getNode("resources").forEachChildElement { node ->
+            when (node.getAttribute("name")) {
+                in darkColorNames -> node.textContent = darkColor
+                in lightColorNames -> node.textContent = lightColor
+            }
         }
     }
 }
@@ -358,7 +513,7 @@ private fun ResourcePatchContext.addSplashScreenThemes(
                     // The background of the app itself, which keeps the color the app declares.
                     // The system resolves the theme with the configuration of the device, where
                     // no variant of a background applies, so this is the unpatched color.
-                    addTheme(indexOffset + index + 1, "@color/" + colorNames.first())
+                    addTheme(indexOffset + 1, "@color/" + colorNames.first())
                 }
                 // A color the user picks is not known while patching, and the palette below is
                 // used for it instead.

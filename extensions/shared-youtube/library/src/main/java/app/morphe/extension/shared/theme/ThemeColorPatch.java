@@ -62,6 +62,9 @@ import app.morphe.extension.shared.settings.StringSetting;
  * Only a color that was compiled in can be selected this way, so the {@code CUSTOM} background
  * uses {@link ThemeColorOverlay} instead to give the same color resources a value of its
  * own. That needs Android 14 or later.
+ * <p>
+ * All of this is skipped for a background color that was set with a patch option, see
+ * {@link #isPatchedBackground()}.
  */
 @SuppressWarnings("unused")
 public class ThemeColorPatch {
@@ -194,6 +197,11 @@ public class ThemeColorPatch {
     private static final int APP_DEFAULT_CONFIG_VALUE = 1;
 
     /**
+     * Resource reference every Material You color of a patch option starts with.
+     */
+    private static final String MATERIAL_YOU_COLOR_PREFIX = "@android:color/system_";
+
+    /**
      * Mobile country codes of 100 to 199 are not assigned to any country, so a device never
      * reports one. Every variant of the patch uses a code of that range, otherwise the system
      * uses a variant on its own while it draws the splash screen of the app, because that is
@@ -272,6 +280,12 @@ public class ThemeColorPatch {
             if (!Utils.isContextSet()) {
                 // Context might be used before context is set.
                 Utils.setContext(base);
+            }
+
+            // A patched background color is a part of the app resources,
+            // and there is no resource variant to select.
+            if (isPatchedBackground()) {
+                return base;
             }
 
             resolveConfigValues(base);
@@ -423,6 +437,11 @@ public class ThemeColorPatch {
      */
     @ColorInt
     static int backgroundColor(boolean dark) {
+        if (isPatchedBackground()) {
+            // The color the patch gave the app, which Morphe was handed as well.
+            return dark ? ThemeUtils.getThemeDarkColor() : ThemeUtils.getThemeLightColor();
+        }
+
         return dark ? darkBackgroundColor : lightBackgroundColor;
     }
 
@@ -434,6 +453,11 @@ public class ThemeColorPatch {
      * the unpatched app.
      */
     public static boolean isAppDefaultBackground() {
+        // A patched background color replaces the app colors, and nothing is left untouched.
+        if (isPatchedBackground()) {
+            return false;
+        }
+
         final boolean dark = isDarkTheme();
 
         // The config value is used instead of the setting because a Material-You background
@@ -454,6 +478,11 @@ public class ThemeColorPatch {
      * @see Utils#isDarkModeEnabled()
      */
     static boolean isDarkTheme() {
+        if (isPatchedBackground()) {
+            // An app without a light theme has no light color that was patched in.
+            return patchedBackgroundColorLight().isEmpty() || Utils.isDarkModeEnabled();
+        }
+
         // An app without a light theme shows the dark one, whatever the device or the app report.
         if (lightColorResourceNames().isEmpty()) {
             return true;
@@ -746,11 +775,8 @@ public class ThemeColorPatch {
             }
 
             final boolean dark = Utils.isDarkModeEnabled();
-            Background background = dark
-                    ? THEME_BACKGROUND_DARK.get()
-                    : THEME_BACKGROUND_LIGHT.get();
 
-            if (!background.isMaterialYou()) {
+            if (!isMaterialYouBackground(dark)) {
                 return null;
             }
 
@@ -761,6 +787,19 @@ public class ThemeColorPatch {
             Logger.printException(() -> "getIndicatorColor failure", ex);
             return null;
         }
+    }
+
+    /**
+     * If the background of a theme is a Material You color, whether it was selected
+     * in the app settings or set while patching.
+     */
+    private static boolean isMaterialYouBackground(boolean dark) {
+        if (isPatchedBackground()) {
+            return (dark ? patchedBackgroundColorDark() : patchedBackgroundColorLight())
+                    .startsWith(MATERIAL_YOU_COLOR_PREFIX);
+        }
+
+        return (dark ? THEME_BACKGROUND_DARK.get() : THEME_BACKGROUND_LIGHT.get()).isMaterialYou();
     }
 
     /**
@@ -825,6 +864,36 @@ public class ThemeColorPatch {
      * The first name is the color the app uses for the background itself.
      */
     private static String lightColorResourceNames() {
+        return ""; // Modified during patching.
+    }
+
+    /**
+     * If the background color was set with a patch option, which replaces the color resources of
+     * the app for good. Nothing of this class changes a color of the app then, and the app
+     * settings have no background to select.
+     */
+    private static boolean isPatchedBackground() {
+        return !patchedBackgroundColorDark().isEmpty();
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * The dark background color of the patch options, or an empty string if the background is
+     * selected in the app settings instead.
+     */
+    private static String patchedBackgroundColorDark() {
+        return ""; // Modified during patching.
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * The light background color of the patch options, empty for an app without a light theme.
+     *
+     * @see #patchedBackgroundColorDark()
+     */
+    private static String patchedBackgroundColorLight() {
         return ""; // Modified during patching.
     }
 }
