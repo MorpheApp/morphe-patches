@@ -227,13 +227,28 @@ internal val usePatchedBackgroundColor: Boolean
             lightThemeBackgroundColorOption.value != THEME_COLOR_IN_APP
 
 internal val patchedBackgroundColorDark: String
-    get() = patchedBackgroundColor(darkThemeBackgroundColorOption.value, DEFAULT_THEME_COLOR_DARK)
+    get() = patchedBackgroundColor(
+        darkThemeBackgroundColorOption.value, appBackgroundColorDark, DEFAULT_THEME_COLOR_DARK
+    )
 
 internal val patchedBackgroundColorLight: String
-    get() = patchedBackgroundColor(lightThemeBackgroundColorOption.value, DEFAULT_THEME_COLOR_LIGHT)
+    get() = patchedBackgroundColor(
+        lightThemeBackgroundColorOption.value, appBackgroundColorLight, DEFAULT_THEME_COLOR_LIGHT
+    )
 
-private fun patchedBackgroundColor(value: String?, default: String) =
-    if (value == null || value == THEME_COLOR_IN_APP) default else value
+/**
+ * @param appColor The color the app uses for the background of this theme, which the resource
+ *                 patch fills in.
+ * @param default  The value the app setting defaults to, which the splash screen has to use
+ *                 while the background can still be changed in the app.
+ */
+private fun patchedBackgroundColor(value: String?, appColor: String?, default: String) = when {
+    value != null && value != THEME_COLOR_IN_APP -> value
+    // A theme that is left to the app keeps the color of the app, so that applying the color of
+    // one theme does not change the other one as well.
+    usePatchedBackgroundColor -> appColor ?: default
+    else -> default
+}
 
 /**
  * @param colorString #AARRGGBB, #RRGGBB, or an Android color resource name.
@@ -285,6 +300,12 @@ private val APP_COLOR_NAMES_LIGHT = listOf(APP_COLOR_NAME_LIGHT, "yt_white1")
  */
 private var darkColorNames = emptyList<String>()
 private var lightColorNames = emptyList<String>()
+
+/**
+ * The color the unpatched app uses for the background of each theme, filled in with the names.
+ */
+private var appBackgroundColorDark: String? = null
+private var appBackgroundColorLight: String? = null
 
 internal val THEME_DEFAULT_COLOR_NAMES_DARK = setOf(
     "yt_black0", "yt_black1", "yt_black2", "yt_black3", "yt_black4",
@@ -437,7 +458,7 @@ private fun BytecodePatchContext.verifyBackgrounds(
 private fun themeColorNames(
     appColorNames: List<String>,
     colorNames: Set<String>,
-    declaredColors: Set<String>
+    declaredColors: Map<String, String>
 ): List<String> {
     val appColorName = appColorNames.firstOrNull { it in declaredColors }
         ?: throw PatchException("Could not find the background color of the app: $appColorNames")
@@ -446,14 +467,14 @@ private fun themeColorNames(
 }
 
 /**
- * The names of every color the app declares.
+ * Every color the app declares, mapped to its value.
  */
-private fun ResourcePatchContext.declaredColorNames(): Set<String> {
-    val declaredColors = mutableSetOf<String>()
+private fun ResourcePatchContext.declaredColors(): Map<String, String> {
+    val declaredColors = LinkedHashMap<String, String>()
 
     document("res/values/colors.xml").use { document ->
         document.getNode("resources").forEachChildElement {
-            declaredColors += it.getAttribute("name")
+            declaredColors[it.getAttribute("name")] = it.textContent
         }
     }
 
@@ -472,13 +493,16 @@ internal fun baseThemeResourcePatch(
     splashScreenThemeParent: String? = null
 ) = resourcePatch {
     execute {
-        val declaredColors = declaredColorNames()
+        val declaredColors = declaredColors()
         darkColorNames = themeColorNames(APP_COLOR_NAMES_DARK, colorNamesDark(), declaredColors)
         lightColorNames = if (includeLightBackground) {
             themeColorNames(APP_COLOR_NAMES_LIGHT, colorNamesLight(), declaredColors)
         } else {
             emptyList()
         }
+
+        appBackgroundColorDark = declaredColors[darkColorNames.first()]
+        appBackgroundColorLight = lightColorNames.firstOrNull()?.let { declaredColors[it] }
 
         // A color that is set while patching is the only background the app can have,
         // so none of the variants and themes below are of any use.
