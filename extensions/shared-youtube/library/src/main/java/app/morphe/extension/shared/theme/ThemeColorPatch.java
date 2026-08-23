@@ -161,7 +161,7 @@ public class ThemeColorPatch {
     /**
      * Availability of the custom dark background color.
      */
-    public static final class CustomDarkBackgroundAvailability implements Setting.Availability {
+    public static class CustomDarkBackgroundAvailability implements Setting.Availability {
         @Override
         public boolean isAvailable() {
             return THEME_BACKGROUND_DARK.get().isCustom();
@@ -176,7 +176,7 @@ public class ThemeColorPatch {
     /**
      * Availability of the custom light background color.
      */
-    public static final class CustomLightBackgroundAvailability implements Setting.Availability {
+    public static class CustomLightBackgroundAvailability implements Setting.Availability {
         @Override
         public boolean isAvailable() {
             return THEME_BACKGROUND_LIGHT.get().isCustom();
@@ -288,22 +288,23 @@ public class ThemeColorPatch {
                 THEME_LAST_USED_DARK_MODE.save(dark);
             }
 
-            final int index = dark ? darkConfigValue : lightConfigValue;
+            final int darkIndex = darkConfigValue;
+            final int lightIndex = lightConfigValue;
 
             Context context;
-            if (configuration.mcc == mobileCountryCode(index)
-                    && configuration.mnc == mobileNetworkCode(index)) {
+            if (configuration.mcc == mobileCountryCode(darkIndex)
+                    && configuration.mnc == mobileNetworkCode(lightIndex)) {
                 // Context is created from a context that is already wrapped.
                 context = base;
             } else {
                 Configuration override = new Configuration(configuration);
-                setVariantOf(override, index);
+                setVariantOf(override, darkIndex, lightIndex);
 
                 context = base.createConfigurationContext(override);
             }
 
-            if (isCustomBackgroundSupported() && useOverlay(dark)) {
-                ThemeColorOverlay.applyTo(context, dark);
+            if (isCustomBackgroundSupported()) {
+                ThemeColorOverlay.applyTo(context);
             }
 
             resolveBackgroundColors(context);
@@ -473,20 +474,18 @@ public class ThemeColorPatch {
 
     /**
      * Asks for the variant of a background, using a configuration a device never has.
-     *
-     * @param index Index of the background, which the patch uses with the same encoding.
      */
-    private static void setVariantOf(Configuration configuration, int index) {
-        configuration.mcc = mobileCountryCode(index);
-        configuration.mnc = mobileNetworkCode(index);
+    private static void setVariantOf(Configuration configuration, int darkIndex, int lightIndex) {
+        configuration.mcc = mobileCountryCode(darkIndex);
+        configuration.mnc = mobileNetworkCode(lightIndex);
     }
 
     private static int mobileCountryCode(int index) {
-        return UNUSED_MOBILE_COUNTRY_CODE + (index >> 5);
+        return UNUSED_MOBILE_COUNTRY_CODE + (index - DARK_INDEX_OFFSET);
     }
 
     private static int mobileNetworkCode(int index) {
-        return 1 + (index & 31);
+        return 1 + (index - LIGHT_INDEX_OFFSET);
     }
 
     private static int configValue(Background background, boolean dark) {
@@ -609,6 +608,8 @@ public class ThemeColorPatch {
     @ColorInt
     public static int getBackgroundColor(Context context, boolean dark, int index) {
         try {
+            resolveConfigValues(context);
+
             Background background = (dark
                     ? ThemeColorDark.values()
                     : ThemeColorLight.values())[index];
@@ -620,9 +621,12 @@ public class ThemeColorPatch {
             // The color of a background is the value its resource variant declares, and the
             // variant is selected the same way the app selects the background it uses.
             Configuration configuration = new Configuration(context.getResources().getConfiguration());
-            setVariantOf(configuration, configValue(background, dark));
+            final int configValue = configValue(background, dark);
+            setVariantOf(configuration,
+                    dark ? configValue : darkConfigValue,
+                    dark ? lightConfigValue : configValue);
 
-            final String resourceName = backgroundColorResourceName(dark);
+            String resourceName = backgroundColorResourceName(dark);
             if (resourceName.isEmpty()) {
                 // The app has no theme of this kind, and no color of it to show.
                 return ThemeUtils.getAppBackgroundColor();

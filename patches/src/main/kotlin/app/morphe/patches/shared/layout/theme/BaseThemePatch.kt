@@ -290,12 +290,12 @@ internal fun baseThemeResourcePatch(
             emptyList()
         }
 
-        addBackgroundColorVariants(THEME_INDEX_OFFSET_DARK, THEME_COLORS_DARK, darkColorNames)
-        add9BitColorVariants(THEME_INDEX_OFFSET_DARK, PALETTE_LEVELS_DARK, darkColorNames)
+        addBackgroundColorVariants(THEME_INDEX_OFFSET_DARK, THEME_COLORS_DARK, darkColorNames, true)
+        add9BitColorVariants(THEME_INDEX_OFFSET_DARK, PALETTE_LEVELS_DARK, darkColorNames, true)
 
         if (includeLightBackground) {
-            addBackgroundColorVariants(THEME_INDEX_OFFSET_LIGHT, THEME_COLORS_LIGHT, lightColorNames)
-            add9BitColorVariants(THEME_INDEX_OFFSET_LIGHT, PALETTE_LEVELS_LIGHT, lightColorNames)
+            addBackgroundColorVariants(THEME_INDEX_OFFSET_LIGHT, THEME_COLORS_LIGHT, lightColorNames, false)
+            add9BitColorVariants(THEME_INDEX_OFFSET_LIGHT, PALETTE_LEVELS_LIGHT, lightColorNames, false)
         }
 
         declareOverlayableColors(darkColorNames + lightColorNames)
@@ -422,7 +422,8 @@ private fun ResourcePatchContext.declareOverlayableColors(colorNames: List<Strin
 private fun ResourcePatchContext.addBackgroundColorVariants(
     indexOffset: Int,
     backgrounds: List<String?>,
-    colorNames: List<String>
+    colorNames: List<String>,
+    isDark: Boolean
 ) {
     if (colorNames.isEmpty()) {
         throw PatchException("No color to replace for the app background")
@@ -434,18 +435,19 @@ private fun ResourcePatchContext.addBackgroundColorVariants(
 
         // The configuration value of a background is its index plus one,
         // and the extension uses the same numbering.
-        writeBackgroundColorVariant(indexOffset + index + 1, color, colorNames)
+        writeBackgroundColorVariant(indexOffset + index + 1, color, colorNames, isDark)
     }
 }
 
 private fun ResourcePatchContext.add9BitColorVariants(
     indexOffset: Int,
     levels: IntArray,
-    colorNames: List<String>
+    colorNames: List<String>,
+    isDark: Boolean
 ) {
     for (index in 0 until 512) {
         writeBackgroundColorVariant(
-            indexOffset + PALETTE_INDEX_OFFSET + index, paletteColor(levels, index), colorNames
+            indexOffset + PALETTE_INDEX_OFFSET + index, paletteColor(levels, index), colorNames, isDark
         )
     }
 }
@@ -462,14 +464,18 @@ private fun paletteColor(levels: IntArray, index: Int) = "#%02X%02X%02X".format(
 private fun ResourcePatchContext.writeBackgroundColorVariant(
     index: Int,
     color: String,
-    colorNames: List<String>
+    colorNames: List<String>,
+    isDark: Boolean
 ) {
     // The mobile country code of a variant is never one a device can have, so the resource
     // system uses a variant only when the app asks for it. The extension uses the same encoding.
-    val mcc = "%03d".format(UNUSED_MOBILE_COUNTRY_CODE + (index shr 5))
-    val mnc = "%03d".format(1 + (index and 31))
+    val qualifier = if (isDark) {
+        "mcc%03d".format(UNUSED_MOBILE_COUNTRY_CODE + (index - THEME_INDEX_OFFSET_DARK))
+    } else {
+        "mnc%03d".format(1 + (index - THEME_INDEX_OFFSET_LIGHT))
+    }
 
-    val variantDirectory = get("res").resolve("values-mcc$mcc-mnc$mnc")
+    val variantDirectory = get("res").resolve("values-$qualifier")
     variantDirectory.mkdirs()
 
     variantDirectory.resolve("colors.xml").writeText(
