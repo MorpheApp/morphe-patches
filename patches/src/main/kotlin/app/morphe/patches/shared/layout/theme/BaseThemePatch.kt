@@ -25,6 +25,7 @@ import app.morphe.util.forEachChildElement
 import app.morphe.util.getNode
 import app.morphe.util.inputStreamFromBundledResource
 import app.morphe.util.returnEarly
+import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import java.util.Locale
 
@@ -342,6 +343,8 @@ internal fun baseThemePatch(
         if (darkColorNames.isEmpty()) {
             throw PatchException("The resource patch of the theme did not run first")
         }
+
+        setExtensionIsPatchIncluded(THEME_COLOR_EXTENSION_CLASS)
 
         if (usePatchedBackgroundColor) {
             overrideThemeColors(

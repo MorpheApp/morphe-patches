@@ -291,7 +291,7 @@ public class ThemeColorPatch {
      */
     public static Context wrapContext(Context base) {
         try {
-            if (base == null) {
+            if (base == null || !isPatchIncluded()) {
                 return null;
             }
 
@@ -865,6 +865,13 @@ public class ThemeColorPatch {
     private static String backgroundColorResourceName(boolean dark) {
         String resourceNames = dark ? darkColorResourceNames() : lightColorResourceNames();
         return resourceNames.split(",")[0];
+    }
+
+    /**
+     * @return If this patch was included during patching.
+     */
+    public static boolean isPatchIncluded() {
+        return false;  // Modified during patching.
     }
 
     /**
