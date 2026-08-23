@@ -20,8 +20,10 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.colorOption
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.overrideThemeColors
+import app.morphe.util.childElementsSequence
 import app.morphe.util.forEachChildElement
 import app.morphe.util.getNode
+import app.morphe.util.inputStreamFromBundledResource
 import app.morphe.util.returnEarly
 import com.android.tools.smali.dexlib2.AccessFlags
 import java.util.Locale
@@ -77,55 +79,60 @@ private const val THEME_BACKGROUND_OVERLAYABLE_NAME = "MorpheThemeColor"
 private const val SPLASH_THEME_NAME = "morphe_splash_theme_"
 
 /**
- * Background colors that can be selected in the app settings.
+ * A background that can be selected in the app settings.
  *
- * The index of a color is the ordinal of the matching value of the extension enum
- * `ThemeColorPatch.ThemeColorDark`, and the extension selects the color of an index
- * using the 'mcc' resource qualifier. This list, that enum and the setting entry values of
- * the app resources must always be in the same order.
- *
- * A null color is the unpatched color of the app, and has no resource variant.
+ * @param value Name of the matching value of the extension enum `ThemeColorPatch.ThemeColorDark`.
+ * @param color The color, or null for the unpatched color of the app, which has no variant.
  */
-private val THEME_COLORS_DARK = listOf(
-    null,                                   // APP_DEFAULT
-    "@android:color/black",                 // PURE_BLACK
-    "@android:color/black",                 // MATERIAL_YOU_PURE_BLACK
-    "@android:color/system_neutral1_900",   // MATERIAL_YOU_NEUTRAL
-    "@android:color/system_accent1_800",    // MATERIAL_YOU_PRIMARY
-    "@android:color/system_accent2_800",    // MATERIAL_YOU_SECONDARY
-    "@android:color/system_accent3_800",    // MATERIAL_YOU_TERTIARY
-    "#212121",                              // CLASSIC_YOUTUBE
-    "#181825",                              // CATPPUCCIN_MOCHA
-    "#290025",                              // DARK_PINK
-    "#001029",                              // DARK_BLUE
-    "#002905",                              // DARK_GREEN
-    "#282900",                              // DARK_YELLOW
-    "#291800",                              // DARK_ORANGE
-    "#290000",                              // DARK_RED
-    null,                                   // CUSTOM
+private class ThemeBackground(val value: String, val color: String?)
+
+/**
+ * Backgrounds that can be selected in the app settings.
+ *
+ * The position of a background is the ordinal of the matching value of the extension enum, and
+ * the extension selects the color of a position using the 'mcc' resource qualifier. The order of
+ * this list and of that enum must always be the same, which the Theme patch verifies.
+ */
+private val THEME_BACKGROUNDS_DARK = listOf(
+    ThemeBackground("APP_DEFAULT", null),
+    ThemeBackground("PURE_BLACK", "@android:color/black"),
+    ThemeBackground("MATERIAL_YOU_PURE_BLACK", "@android:color/black"),
+    ThemeBackground("MATERIAL_YOU_NEUTRAL", "@android:color/system_neutral1_900"),
+    ThemeBackground("MATERIAL_YOU_PRIMARY", "@android:color/system_accent1_800"),
+    ThemeBackground("MATERIAL_YOU_SECONDARY", "@android:color/system_accent2_800"),
+    ThemeBackground("MATERIAL_YOU_TERTIARY", "@android:color/system_accent3_800"),
+    ThemeBackground("CLASSIC_YOUTUBE", "#212121"),
+    ThemeBackground("CATPPUCCIN_MOCHA", "#181825"),
+    ThemeBackground("DARK_PINK", "#290025"),
+    ThemeBackground("DARK_BLUE", "#001029"),
+    ThemeBackground("DARK_GREEN", "#002905"),
+    ThemeBackground("DARK_YELLOW", "#282900"),
+    ThemeBackground("DARK_ORANGE", "#291800"),
+    ThemeBackground("DARK_RED", "#290000"),
+    ThemeBackground("CUSTOM", null),
 )
 
 /**
  * Selected using the 'mnc' resource qualifier.
  *
- * @see THEME_COLORS_DARK
+ * @see THEME_BACKGROUNDS_DARK
  */
-private val THEME_COLORS_LIGHT = listOf(
-    null,                                   // APP_DEFAULT
-    "@android:color/white",                 // WHITE
-    "@android:color/white",                 // MATERIAL_YOU_WHITE
-    "@android:color/system_neutral1_100",   // MATERIAL_YOU_NEUTRAL
-    "@android:color/system_accent1_200",    // MATERIAL_YOU_PRIMARY
-    "@android:color/system_accent2_200",    // MATERIAL_YOU_SECONDARY
-    "@android:color/system_accent3_200",    // MATERIAL_YOU_TERTIARY
-    "#E6E9EF",                              // CATPPUCCIN_LATTE
-    "#FCCFF3",                              // LIGHT_PINK
-    "#D1E0FF",                              // LIGHT_BLUE
-    "#CCFFCC",                              // LIGHT_GREEN
-    "#FDFFCC",                              // LIGHT_YELLOW
-    "#FFE6CC",                              // LIGHT_ORANGE
-    "#FFD6D6",                              // LIGHT_RED
-    null,                                   // CUSTOM
+private val THEME_BACKGROUNDS_LIGHT = listOf(
+    ThemeBackground("APP_DEFAULT", null),
+    ThemeBackground("WHITE", "@android:color/white"),
+    ThemeBackground("MATERIAL_YOU_WHITE", "@android:color/white"),
+    ThemeBackground("MATERIAL_YOU_NEUTRAL", "@android:color/system_neutral1_100"),
+    ThemeBackground("MATERIAL_YOU_PRIMARY", "@android:color/system_accent1_200"),
+    ThemeBackground("MATERIAL_YOU_SECONDARY", "@android:color/system_accent2_200"),
+    ThemeBackground("MATERIAL_YOU_TERTIARY", "@android:color/system_accent3_200"),
+    ThemeBackground("CATPPUCCIN_LATTE", "#E6E9EF"),
+    ThemeBackground("LIGHT_PINK", "#FCCFF3"),
+    ThemeBackground("LIGHT_BLUE", "#D1E0FF"),
+    ThemeBackground("LIGHT_GREEN", "#CCFFCC"),
+    ThemeBackground("LIGHT_YELLOW", "#FDFFCC"),
+    ThemeBackground("LIGHT_ORANGE", "#FFE6CC"),
+    ThemeBackground("LIGHT_RED", "#FFD6D6"),
+    ThemeBackground("CUSTOM", null),
 )
 
 /**
@@ -340,6 +347,11 @@ internal fun baseThemePatch(
                     .returnEarly(patchedBackgroundColorLight)
             }
         } else {
+            verifyBackgrounds("ThemeColorDark", THEME_BACKGROUNDS_DARK)
+            if (includeLightBackground) {
+                verifyBackgrounds("ThemeColorLight", THEME_BACKGROUNDS_LIGHT)
+            }
+
             // Morphe dialogs and settings use the background color of the app, and the color
             // resources resolve to the background that is selected in the app settings.
             overrideThemeColors(lightColorNames.firstOrNull(), darkColorNames.first())
@@ -356,6 +368,33 @@ internal fun baseThemePatch(
         executeBlock()
 
         lithoColorOverrideHook(extensionClassDescriptor, "getValue")
+    }
+}
+
+/**
+ * Fails the patch if a background exists in the extension enum and not in the list of the patch,
+ * or the other way around. A background is selected by its position in both, so one that is added
+ * to only one of them silently shifts every background that follows it.
+ */
+private fun BytecodePatchContext.verifyBackgrounds(
+    enumName: String,
+    backgrounds: List<ThemeBackground>
+) {
+    val enumType = THEME_COLOR_EXTENSION_CLASS.dropLast(1) + '$' + enumName + ";"
+
+    // A value of an enum is a static field of the type of the enum itself.
+    val declared = classDefBy(enumType).fields
+        .filter { it.type == enumType }
+        .map { it.name }
+        .toSet()
+
+    val expected = backgrounds.mapTo(mutableSetOf()) { it.value }
+    if (declared != expected) {
+        throw PatchException(
+            "Backgrounds of $enumName do not match the patch. " +
+                    "Only in the patch: ${expected - declared}. " +
+                    "Only in the extension: ${declared - expected}"
+        )
     }
 }
 
@@ -422,11 +461,23 @@ internal fun baseThemeResourcePatch(
             return@execute
         }
 
-        addBackgroundColorVariants(THEME_INDEX_OFFSET_DARK, THEME_COLORS_DARK, darkColorNames, true)
+        verifySettingEntries(
+            "morphe_theme_background_dark", "values/shared-youtube/arrays.xml",
+            THEME_BACKGROUNDS_DARK
+        )
+        addBackgroundColorVariants(
+            THEME_INDEX_OFFSET_DARK, THEME_BACKGROUNDS_DARK, darkColorNames, true
+        )
         add9BitColorVariants(THEME_INDEX_OFFSET_DARK, PALETTE_LEVELS_DARK, darkColorNames, true)
 
         if (includeLightBackground) {
-            addBackgroundColorVariants(THEME_INDEX_OFFSET_LIGHT, THEME_COLORS_LIGHT, lightColorNames, false)
+            verifySettingEntries(
+                "morphe_theme_background_light", "values/youtube/arrays.xml",
+                THEME_BACKGROUNDS_LIGHT
+            )
+            addBackgroundColorVariants(
+                THEME_INDEX_OFFSET_LIGHT, THEME_BACKGROUNDS_LIGHT, lightColorNames, false
+            )
             add9BitColorVariants(THEME_INDEX_OFFSET_LIGHT, PALETTE_LEVELS_LIGHT, lightColorNames, false)
         }
 
@@ -436,6 +487,39 @@ internal fun baseThemeResourcePatch(
         if (splashScreenThemeParent != null) {
             addSplashScreenThemes(splashScreenThemeParent, includeLightBackground)
         }
+    }
+}
+
+/**
+ * Fails the patch if the setting entries of a background do not match the backgrounds of the
+ * patch. The app settings show the color of a background by its position in both lists.
+ */
+private fun ResourcePatchContext.verifySettingEntries(
+    key: String,
+    resourcePath: String,
+    backgrounds: List<ThemeBackground>
+) {
+    val stream = inputStreamFromBundledResource("addresources", resourcePath)
+        ?: throw PatchException("Could not find the setting entries: $resourcePath")
+
+    val arrays = mutableMapOf<String, List<String>>()
+    stream.use {
+        document(it).use { document ->
+            document.getNode("resources").forEachChildElement { array ->
+                arrays[array.getAttribute("name")] =
+                    array.childElementsSequence().map { item -> item.textContent }.toList()
+            }
+        }
+    }
+
+    val values = backgrounds.map { it.value }
+    if (arrays["${key}_entry_values"] != values) {
+        throw PatchException("The entry values of $key do not match the patch: $values")
+    }
+
+    // The name of a background is shown by the position it has in the values.
+    if (arrays["${key}_entries"]?.size != values.size) {
+        throw PatchException("The entries of $key do not match the entry values")
     }
 }
 
@@ -504,11 +588,12 @@ private fun ResourcePatchContext.addSplashScreenThemes(
 
         fun addThemes(
             indexOffset: Int,
-            backgrounds: List<String?>,
+            backgrounds: List<ThemeBackground>,
             levels: IntArray,
             colorNames: List<String>
         ) {
-            backgrounds.forEachIndexed { index, color ->
+            backgrounds.forEachIndexed { index, background ->
+                val color = background.color
                 if (color != null) {
                     addTheme(indexOffset + index + 1, color)
                 } else if (index == 0) {
@@ -529,10 +614,13 @@ private fun ResourcePatchContext.addSplashScreenThemes(
             }
         }
 
-        addThemes(THEME_INDEX_OFFSET_DARK, THEME_COLORS_DARK, PALETTE_LEVELS_DARK, darkColorNames)
+        addThemes(
+            THEME_INDEX_OFFSET_DARK, THEME_BACKGROUNDS_DARK, PALETTE_LEVELS_DARK, darkColorNames
+        )
         if (includeLightBackground) {
             addThemes(
-                THEME_INDEX_OFFSET_LIGHT, THEME_COLORS_LIGHT, PALETTE_LEVELS_LIGHT, lightColorNames
+                THEME_INDEX_OFFSET_LIGHT, THEME_BACKGROUNDS_LIGHT, PALETTE_LEVELS_LIGHT,
+                lightColorNames
             )
         }
     }
@@ -543,7 +631,7 @@ private fun ResourcePatchContext.addSplashScreenThemes(
  * requires. Without this the system rejects the overlay of a custom background color.
  */
 private fun ResourcePatchContext.declareOverlayableColors(colorNames: List<String>) {
-    // A policy item is resolved while encoding, and every name is one the app declares.
+    // A policy item is resolved while encoding, and every name is one of the app declares.
     if (colorNames.isEmpty()) {
         throw PatchException("Could not find any background color to declare as overlayable")
     }
@@ -578,7 +666,7 @@ private fun ResourcePatchContext.declareOverlayableColors(colorNames: List<Strin
 
 private fun ResourcePatchContext.addBackgroundColorVariants(
     indexOffset: Int,
-    backgrounds: List<String?>,
+    backgrounds: List<ThemeBackground>,
     colorNames: List<String>,
     isDark: Boolean
 ) {
@@ -586,9 +674,9 @@ private fun ResourcePatchContext.addBackgroundColorVariants(
         throw PatchException("No color to replace for the app background")
     }
 
-    backgrounds.forEachIndexed { index, color ->
+    backgrounds.forEachIndexed { index, background ->
         // The app default has no variant of its own.
-        if (color == null) return@forEachIndexed
+        val color = background.color ?: return@forEachIndexed
 
         // The configuration value of a background is its index plus one,
         // and the extension uses the same numbering.
