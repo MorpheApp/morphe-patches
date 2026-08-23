@@ -42,6 +42,8 @@ public class ThemeUtils {
     private static boolean lightColorResolved;
     private static boolean darkColorResolved;
 
+    private static boolean changeForegroundColor;
+
     /**
      * Injection point.
      */
@@ -139,14 +141,24 @@ public class ThemeUtils {
     /**
      * The color of the text and the icons Morphe draws on the background of the app.
      * <p>
-     * The background of the other theme is not a foreground color. It is one the user picks, and
-     * a dark theme with a red background would give the light theme red text.
-     *
-     * @return Black or white, whichever stays readable on {@link #getAppBackgroundColor()}.
+     * The background of the other theme is only used if the app is set to do the same, because a
+     * dark theme with a red background would otherwise give the light theme red text.
      */
     @ColorInt
     public static int getAppForegroundColor() {
+        if (changeForegroundColor) {
+            return Utils.isDarkModeEnabled() ? getThemeLightColor() : getThemeDarkColor();
+        }
+
         return isBrightColor(getAppBackgroundColor()) ? Color.BLACK : Color.WHITE;
+    }
+
+    /**
+     * Sets whether the app draws its text and icons with the background color of the other theme,
+     * which Morphe follows so that its own settings match the rest of the app.
+     */
+    public static void setChangeForegroundColor(boolean enabled) {
+        changeForegroundColor = enabled;
     }
 
     /**

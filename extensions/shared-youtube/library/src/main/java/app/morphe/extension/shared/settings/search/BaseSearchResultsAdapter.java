@@ -284,7 +284,7 @@ public abstract class BaseSearchResultsAdapter extends ArrayAdapter<BaseSearchRe
         holder.titleView.setText(item.highlightedTitle);
         holder.summaryView.setText(item.highlightedSummary);
         holder.summaryView.setVisibility(TextUtils.isEmpty(item.highlightedSummary) ? View.GONE : View.VISIBLE);
-        holder.iconView.setImageResource(BaseSearchViewController.getSearchIcon());
+        holder.iconView.setImageDrawable(BaseSearchViewController.getSearchIconDrawable());
     }
 
     /**

@@ -14,6 +14,7 @@ import static app.morphe.extension.shared.StringRef.str;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
@@ -92,20 +93,24 @@ public abstract class BaseSearchViewController {
             ResourceType.ID, "action_search");
     protected static final int ID_MORPHE_SETTINGS_FRAGMENTS = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "morphe_settings_fragments");
-    private static final int DRAWABLE_MORPHE_SETTINGS_SEARCH_ICON = ResourceUtils.getIdentifierOrThrow(
-            ResourceType.DRAWABLE, "morphe_settings_search_icon");
-    private static final int DRAWABLE_MORPHE_SETTINGS_SEARCH_ICON_BOLD = ResourceUtils.getIdentifierOrThrow(
-            ResourceType.DRAWABLE, "morphe_settings_search_icon_bold");
     protected static final int MENU_MORPHE_SEARCH_MENU = ResourceUtils.getIdentifierOrThrow(
             ResourceType.MENU, "morphe_search_menu");
 
     /**
-     * @return The search icon, either bold or not bold, depending on the Morphe UI setting.
+     * @return The search icon, bold or not depending on the Morphe UI setting, and colored like
+     *         everything else Morphe draws. The drawable follows the text color of the platform,
+     *         which is not the foreground color of the app.
      */
-    public static int getSearchIcon() {
-        return Utils.appIsUsingBoldIcons()
-                ? DRAWABLE_MORPHE_SETTINGS_SEARCH_ICON_BOLD
-                : DRAWABLE_MORPHE_SETTINGS_SEARCH_ICON;
+    public static Drawable getSearchIconDrawable() {
+        Drawable icon = ResourceUtils.getDrawableOrThrow(
+                Utils.appIsUsingBoldIcons()
+                        ? "morphe_settings_search_icon_bold"
+                        : "morphe_settings_search_icon");
+
+        // Mutate, otherwise every user of the same drawable is colored as well.
+        Drawable mutated = icon.mutate();
+        mutated.setTint(ThemeUtils.getAppForegroundColor());
+        return mutated;
     }
 
     /**
@@ -280,7 +285,7 @@ public abstract class BaseSearchViewController {
 
         // Set bold icon if needed.
         MenuItem search = toolbar.getMenu().findItem(ID_ACTION_SEARCH);
-        search.setIcon(getSearchIcon());
+        search.setIcon(getSearchIconDrawable());
     }
 
     /**
@@ -555,7 +560,7 @@ public abstract class BaseSearchViewController {
             noResultsPreference.setTitle(str("morphe_settings_search_no_results_title", query));
             noResultsPreference.setSummary(str("morphe_settings_search_no_results_summary"));
             noResultsPreference.setSelectable(false);
-            noResultsPreference.setIcon(getSearchIcon());
+            noResultsPreference.setIcon(getSearchIconDrawable());
             filteredSearchItems.add(new BaseSearchResultItem.PreferenceSearchItem(noResultsPreference, "", Collections.emptyList()));
         }
 

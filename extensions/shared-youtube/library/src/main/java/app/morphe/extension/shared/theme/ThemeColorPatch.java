@@ -384,6 +384,9 @@ public class ThemeColorPatch {
         }
         backgroundColorsResolved = true;
 
+        // Morphe draws its own text and icons, and follows what the app uses for its foreground.
+        ThemeUtils.setChangeForegroundColor(THEME_BACKGROUND_CHANGE_FOREGROUND.get());
+
         // An app without a light theme has no light colors to replace.
         if (!darkColorResourceNames().isEmpty()) {
             darkBackgroundColor = selectedBackgroundColor(context, true);

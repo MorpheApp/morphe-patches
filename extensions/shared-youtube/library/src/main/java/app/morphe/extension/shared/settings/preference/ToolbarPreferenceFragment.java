@@ -59,6 +59,8 @@ public class ToolbarPreferenceFragment extends AbstractPreferenceFragment {
     protected void setPreferenceScreenToolbar(PreferenceScreen parentScreen) {
         for (int i = 0, count = parentScreen.getPreferenceCount(); i < count; i++) {
             Preference childPreference = parentScreen.getPreference(i);
+            setPreferenceIconColor(childPreference);
+
             if (childPreference instanceof PreferenceScreen) {
                 // Recursively set sub preferences.
                 setPreferenceScreenToolbar((PreferenceScreen) childPreference);
@@ -125,7 +127,7 @@ public class ToolbarPreferenceFragment extends AbstractPreferenceFragment {
 
     /**
      * Sets the system navigation bar color for the activity.
-     * Applies the background color obtained from {@link Utils#getAppBackgroundColor()} to the navigation bar.
+     * Applies the background color obtained from {@link ThemeUtils#getAppBackgroundColor()} to the navigation bar.
      * For Android 10 (API 29) and above, enforces navigation bar contrast to ensure visibility.
      */
     public static void setNavigationBarColor(@Nullable Window window) {
@@ -138,6 +140,22 @@ public class ToolbarPreferenceFragment extends AbstractPreferenceFragment {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             window.setNavigationBarContrastEnforced(true);
         }
+    }
+
+    /**
+     * Colors the icon of a preference, which is drawn with the text color of the platform and
+     * not with the color the app uses for its foreground.
+     */
+    private static void setPreferenceIconColor(Preference preference) {
+        Drawable icon = preference.getIcon();
+        if (icon == null) {
+            return;
+        }
+
+        // Mutate, otherwise every user of the same drawable is colored as well.
+        Drawable mutated = icon.mutate();
+        mutated.setTint(ThemeUtils.getAppForegroundColor());
+        preference.setIcon(mutated);
     }
 
     /**
