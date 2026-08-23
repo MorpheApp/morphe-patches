@@ -151,9 +151,14 @@ private val THEME_BACKGROUNDS_LIGHT = listOf(
 internal const val DEFAULT_THEME_COLOR_DARK = "@android:color/black"
 internal const val DEFAULT_THEME_COLOR_LIGHT = "@android:color/white"
 
+/**
+ * The default of both color options. It is not a color because an option can only hold a string.
+ */
+private const val THEME_COLOR_IN_APP = "in-app"
+
 private const val THEME_COLOR_OPTION_DESCRIPTION = "Can be a hex color (#RRGGBB) or a color " +
-        "resource reference. If a color is set, it is applied while patching and cannot be " +
-        "changed later, and the background color setting is not added to the app."
+        "resource reference. Setting a color of either theme applies both while patching and " +
+        "removes the background color setting from the app."
 
 /**
  * Dark theme background color of the YouTube and YT Music Theme patch.
@@ -164,7 +169,9 @@ private const val THEME_COLOR_OPTION_DESCRIPTION = "Can be a hex color (#RRGGBB)
  */
 internal val darkThemeBackgroundColorOption = colorOption(
     key = "darkThemeBackgroundColor",
+    default = THEME_COLOR_IN_APP,
     values = mapOf(
+        "Change in the app" to THEME_COLOR_IN_APP,
         "Pure black" to "@android:color/black",
         "Material You (Neutral)" to "@android:color/system_neutral1_900",
         "Material You - Primary" to "@android:color/system_accent1_800",
@@ -191,7 +198,9 @@ internal val darkThemeBackgroundColorOption = colorOption(
  */
 internal val lightThemeBackgroundColorOption = colorOption(
     key = "lightThemeBackgroundColor",
+    default = THEME_COLOR_IN_APP,
     values = mapOf(
+        "Change in the app" to THEME_COLOR_IN_APP,
         "White" to "@android:color/white",
         "Material You (Neutral)" to "@android:color/system_neutral1_100",
         "Material You - Primary" to "@android:color/system_accent1_200",
@@ -210,18 +219,21 @@ internal val lightThemeBackgroundColorOption = colorOption(
 )
 
 /**
- * Setting one color of an app that has two themes applies both, otherwise one theme could still
- * be changed while the app runs and the other one not.
+ * Setting the color of one theme of an app that has two applies both, otherwise one theme could
+ * still be changed while the app runs and the other one not.
  */
 internal val usePatchedBackgroundColor: Boolean
-    get() = darkThemeBackgroundColorOption.value != null ||
-            lightThemeBackgroundColorOption.value != null
+    get() = darkThemeBackgroundColorOption.value != THEME_COLOR_IN_APP ||
+            lightThemeBackgroundColorOption.value != THEME_COLOR_IN_APP
 
 internal val patchedBackgroundColorDark: String
-    get() = darkThemeBackgroundColorOption.value ?: DEFAULT_THEME_COLOR_DARK
+    get() = patchedBackgroundColor(darkThemeBackgroundColorOption.value, DEFAULT_THEME_COLOR_DARK)
 
 internal val patchedBackgroundColorLight: String
-    get() = lightThemeBackgroundColorOption.value ?: DEFAULT_THEME_COLOR_LIGHT
+    get() = patchedBackgroundColor(lightThemeBackgroundColorOption.value, DEFAULT_THEME_COLOR_LIGHT)
+
+private fun patchedBackgroundColor(value: String?, default: String) =
+    if (value == null || value == THEME_COLOR_IN_APP) default else value
 
 /**
  * @param colorString #AARRGGBB, #RRGGBB, or an Android color resource name.
