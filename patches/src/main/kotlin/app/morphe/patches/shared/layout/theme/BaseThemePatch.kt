@@ -31,12 +31,12 @@ import java.util.Locale
 internal const val THEME_COLOR_EXTENSION_CLASS = "Lapp/morphe/extension/shared/theme/ThemeColorPatch;"
 
 /**
- * Mobile country codes of 100 to 199 are not assigned to any country, so a device never reports
- * one. Every generated variant uses a code of that range. That is the only way the system can be
+ * A mobile country code and a mobile network code are three digits, so a device never reports one
+ * above 999. Every generated variant uses a code above it, which is the only way the system can be
  * kept from using a variant of its own accord. Anything the system draws, such as the splash
  * screen, is resolved with the configuration of the device and not with the one the app asks for.
  */
-private const val UNUSED_MOBILE_COUNTRY_CODE = 100
+private const val UNREACHABLE_MOBILE_CODE = 1000
 
 /**
  * Index of the first color of the 9 bit palette. The indices below it belong to the backgrounds
@@ -66,6 +66,14 @@ private val PALETTE_LEVELS_LIGHT = intArrayOf(0, 68, 129, 181, 217, 240, 252, 25
  */
 private const val THEME_INDEX_OFFSET_DARK = 0
 private const val THEME_INDEX_OFFSET_LIGHT = 700
+
+/**
+ * The color of the background of each theme, which every background color of the app is an alias
+ * of. Only this one color is declared by a resource variant, so a variant holds a single entry
+ * instead of one for every color the app uses for its background.
+ */
+private const val THEME_BACKGROUND_COLOR_DARK = "morphe_theme_background_color_dark"
+private const val THEME_BACKGROUND_COLOR_LIGHT = "morphe_theme_background_color_light"
 
 /**
  * Must be identical to the name the extension uses with `FabricatedOverlay#setTargetOverlayable`.
@@ -354,14 +362,17 @@ internal fun baseThemePatch(
 
             // Morphe dialogs and settings use the background color of the app, and the color
             // resources resolve to the background that is selected in the app settings.
-            overrideThemeColors(lightColorNames.firstOrNull(), darkColorNames.first())
+            overrideThemeColors(
+                if (includeLightBackground) THEME_BACKGROUND_COLOR_LIGHT else null,
+                THEME_BACKGROUND_COLOR_DARK
+            )
 
             // A custom background color has no resource variant to select,
             // so the extension replaces the same colors with an overlay of the app.
-            DarkColorResourceNamesFingerprint.method.returnEarly(darkColorNames.joinToString(","))
+            DarkColorResourceNamesFingerprint.method.returnEarly(THEME_BACKGROUND_COLOR_DARK)
             if (includeLightBackground) {
                 LightColorResourceNamesFingerprint.method
-                    .returnEarly(lightColorNames.joinToString(","))
+                    .returnEarly(THEME_BACKGROUND_COLOR_LIGHT)
             }
         }
 
@@ -467,7 +478,7 @@ internal fun baseThemeResourcePatch(
         )
         addBackgroundColorVariants(
             THEME_INDEX_OFFSET_DARK, THEME_BACKGROUNDS_DARK, PALETTE_LEVELS_DARK,
-            darkColorNames, true
+            THEME_BACKGROUND_COLOR_DARK, darkColorNames, true
         )
 
         if (includeLightBackground) {
@@ -477,11 +488,17 @@ internal fun baseThemeResourcePatch(
             )
             addBackgroundColorVariants(
                 THEME_INDEX_OFFSET_LIGHT, THEME_BACKGROUNDS_LIGHT, PALETTE_LEVELS_LIGHT,
-                lightColorNames, false
+                THEME_BACKGROUND_COLOR_LIGHT, lightColorNames, false
             )
         }
 
-        declareOverlayableColors(darkColorNames + lightColorNames)
+        declareOverlayableColors(
+            if (includeLightBackground) {
+                listOf(THEME_BACKGROUND_COLOR_DARK, THEME_BACKGROUND_COLOR_LIGHT)
+            } else {
+                listOf(THEME_BACKGROUND_COLOR_DARK)
+            }
+        )
 
         // An app without a launcher theme keeps the splash screen it draws itself.
         if (splashScreenThemeParent != null) {
@@ -590,22 +607,22 @@ private fun ResourcePatchContext.addSplashScreenThemes(
             indexOffset: Int,
             backgrounds: List<ThemeBackground>,
             levels: IntArray,
-            colorNames: List<String>
+            aliasName: String
         ) {
-            // The background of the app itself keeps the color the app declares. It has no
-            // resource variant, but it does need a theme, because the system resolves the
-            // splash screen with the configuration of the device.
-            themeColors(indexOffset, backgrounds, levels, "@color/" + colorNames.first())
+            // The system resolves the splash screen with the configuration of the device, where
+            // no variant applies, so the alias of the app default is the unpatched color there.
+            themeColors(indexOffset, backgrounds, levels, "@color/$aliasName")
                 .forEach { (index, color) -> addTheme(index, color) }
         }
 
         addThemes(
-            THEME_INDEX_OFFSET_DARK, THEME_BACKGROUNDS_DARK, PALETTE_LEVELS_DARK, darkColorNames
+            THEME_INDEX_OFFSET_DARK, THEME_BACKGROUNDS_DARK, PALETTE_LEVELS_DARK,
+            THEME_BACKGROUND_COLOR_DARK
         )
         if (includeLightBackground) {
             addThemes(
                 THEME_INDEX_OFFSET_LIGHT, THEME_BACKGROUNDS_LIGHT, PALETTE_LEVELS_LIGHT,
-                lightColorNames
+                THEME_BACKGROUND_COLOR_LIGHT
             )
         }
     }
@@ -679,10 +696,15 @@ private fun themeColors(
     }
 }
 
+/**
+ * @param aliasName  The color every background color of the app is made an alias of.
+ * @param colorNames The background colors of the app, which are aliased.
+ */
 private fun ResourcePatchContext.addBackgroundColorVariants(
     indexOffset: Int,
     backgrounds: List<ThemeBackground>,
     levels: IntArray,
+    aliasName: String,
     colorNames: List<String>,
     isDark: Boolean
 ) {
@@ -690,9 +712,54 @@ private fun ResourcePatchContext.addBackgroundColorVariants(
         throw PatchException("No color to replace for the app background")
     }
 
+    val originalColors = addBackgroundColorAlias(aliasName, colorNames)
+
+    // The app default is the only background that keeps the colors the app declares,
+    // so it is the only variant that has to undo the alias.
+    writeColorVariant(indexOffset + 1, originalColors, isDark)
+
     themeColors(indexOffset, backgrounds, levels).forEach { (index, color) ->
-        writeBackgroundColorVariant(index, color, colorNames, isDark)
+        writeColorVariant(index, mapOf(aliasName to color), isDark)
     }
+}
+
+/**
+ * Gives every background color of the app the value of a single color, which the generated
+ * variants then declare instead of every name.
+ *
+ * The app keeps resolving the names it always did, including the ones its own code reads by id,
+ * because only the value of a name is replaced and not the name itself.
+ *
+ * @return The color each name had, so that the app default can be restored.
+ */
+private fun ResourcePatchContext.addBackgroundColorAlias(
+    aliasName: String,
+    colorNames: List<String>
+): Map<String, String> {
+    val originalColors = LinkedHashMap<String, String>()
+
+    document("res/values/colors.xml").use { document ->
+        val resources = document.getNode("resources")
+
+        resources.forEachChildElement { color ->
+            val name = color.getAttribute("name")
+            if (name in colorNames) {
+                originalColors[name] = color.textContent
+                color.textContent = "@color/$aliasName"
+            }
+        }
+
+        // Without a variant the alias resolves to the background of the unpatched app, which is
+        // what the system draws the splash screen of the app default with.
+        resources.appendChild(
+            document.createElement("color").apply {
+                setAttribute("name", aliasName)
+                textContent = originalColors.getValue(colorNames.first())
+            }
+        )
+    }
+
+    return originalColors
 }
 
 /**
@@ -704,19 +771,16 @@ private fun paletteColor(levels: IntArray, index: Int) = "#%02X%02X%02X".format(
     levels[index and 0x7]
 )
 
-private fun ResourcePatchContext.writeBackgroundColorVariant(
+private fun ResourcePatchContext.writeColorVariant(
     index: Int,
-    color: String,
-    colorNames: List<String>,
+    colors: Map<String, String>,
     isDark: Boolean
 ) {
-    // The mobile country code of a variant is never one a device can have, so the resource
-    // system uses a variant only when the app asks for it. The extension uses the same encoding.
-    val qualifier = if (isDark) {
-        "mcc%03d".format(UNUSED_MOBILE_COUNTRY_CODE + (index - THEME_INDEX_OFFSET_DARK))
-    } else {
-        "mnc%03d".format(1 + (index - THEME_INDEX_OFFSET_LIGHT))
-    }
+    // The mobile code of a variant is never one a device can have, so the resource system uses
+    // a variant only when the app asks for it. The extension uses the same encoding.
+    val code = UNREACHABLE_MOBILE_CODE +
+            (index - if (isDark) THEME_INDEX_OFFSET_DARK else THEME_INDEX_OFFSET_LIGHT)
+    val qualifier = if (isDark) "mcc$code" else "mnc$code"
 
     val variantDirectory = get("res").resolve("values-$qualifier")
     variantDirectory.mkdirs()
@@ -725,7 +789,7 @@ private fun ResourcePatchContext.writeBackgroundColorVariant(
         buildString {
             appendLine("<?xml version=\"1.0\" encoding=\"utf-8\"?>")
             appendLine("<resources>")
-            colorNames.forEach { name ->
+            colors.forEach { (name, color) ->
                 appendLine("    <color name=\"$name\">$color</color>")
             }
             appendLine("</resources>")

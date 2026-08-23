@@ -52,8 +52,8 @@ import app.morphe.extension.shared.settings.StringSetting;
  * Nothing in the app can be hooked to change that, but the resource system picks a resource
  * variant using the {@link Configuration} of the context it is resolved with.
  * <p>
- * The patch writes one {@code values-mccNNN/colors.xml} for every dark background and one
- * {@code values-mncNNN/colors.xml} for every light background, and this class selects one of them
+ * The patch writes one {@code values-mccNNNN/colors.xml} for every dark background and one
+ * {@code values-mncNNNN/colors.xml} for every light background, and this class selects one of them
  * by overriding {@link Configuration#mcc} and {@link Configuration#mnc} of every context the app
  * attaches. Both qualifiers are ignored by the app itself and affect no other resource.
  * <p>
@@ -206,12 +206,12 @@ public class ThemeColorPatch {
     private static final String MATERIAL_YOU_COLOR_PREFIX = "@android:color/system_";
 
     /**
-     * Mobile country codes of 100 to 199 are not assigned to any country, so a device never
-     * reports one. Every variant of the patch uses a code of that range, otherwise the system
-     * uses a variant on its own while it draws the splash screen of the app, because that is
-     * resolved with the configuration of the device.
+     * A mobile country code and a mobile network code are three digits, so a device never reports
+     * one above 999. Every variant of the patch uses a code above it, otherwise the system uses a
+     * variant on its own while it draws the splash screen of the app, because that is resolved
+     * with the configuration of the device.
      */
-    private static final int UNUSED_MOBILE_COUNTRY_CODE = 100;
+    private static final int UNREACHABLE_MOBILE_CODE = 1000;
 
     /**
      * Index of the first color of the 9 bit palette, and the index ranges of the two themes.
@@ -503,11 +503,11 @@ public class ThemeColorPatch {
     }
 
     private static int mobileCountryCode(int index) {
-        return UNUSED_MOBILE_COUNTRY_CODE + (index - DARK_INDEX_OFFSET);
+        return UNREACHABLE_MOBILE_CODE + (index - DARK_INDEX_OFFSET);
     }
 
     private static int mobileNetworkCode(int index) {
-        return 1 + (index - LIGHT_INDEX_OFFSET);
+        return UNREACHABLE_MOBILE_CODE + (index - LIGHT_INDEX_OFFSET);
     }
 
     private static int configValue(Background background, boolean dark) {
