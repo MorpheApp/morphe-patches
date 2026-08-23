@@ -303,6 +303,12 @@ private var lightColorNames = emptyList<String>()
 private var appBackgroundColorDark: String? = null
 private var appBackgroundColorLight: String? = null
 
+/**
+ * The alias colors of each theme that this app version has.
+ */
+private var darkAliasNames = emptyList<String>()
+private var lightAliasNames = emptyList<String>()
+
 internal val THEME_DEFAULT_COLOR_NAMES_DARK = setOf(
     "yt_black0", "yt_black1", "yt_black2", "yt_black3", "yt_black4",
     "yt_black1_opacity95", "yt_black1_opacity98",
@@ -401,10 +407,10 @@ internal fun baseThemePatch(
 
             // A custom background color has no resource variant to select,
             // so the extension replaces the same colors with an overlay of the app.
-            DarkColorResourceNamesFingerprint.method.returnEarly(THEME_BACKGROUND_COLOR_DARK)
+            DarkColorResourceNamesFingerprint.method.returnEarly(darkAliasNames.joinToString(","))
             if (includeLightBackground) {
                 LightColorResourceNamesFingerprint.method
-                    .returnEarly(THEME_BACKGROUND_COLOR_LIGHT)
+                    .returnEarly(lightAliasNames.joinToString(","))
             }
         }
 
@@ -463,18 +469,48 @@ private fun themeColorNames(
 }
 
 /**
- * Every color the app declares, mapped to its value.
+ * The names and values of every color the app declares.
  */
-private fun ResourcePatchContext.declaredColors(): Map<String, String> {
+private fun ResourcePatchContext.declaredColors(colorFiles: List<String>): Map<String, String> {
     val declaredColors = LinkedHashMap<String, String>()
 
-    document("res/values/colors.xml").use { document ->
-        document.getNode("resources").forEachChildElement {
-            declaredColors[it.getAttribute("name")] = it.textContent
+    colorFiles.forEach { path ->
+        document(path).use { document ->
+            document.getNode("resources").forEachChildElement {
+                declaredColors[it.getAttribute("name")] = it.textContent
+            }
         }
     }
 
     return declaredColors
+}
+
+private fun ResourcePatchContext.colorFiles(): List<String> {
+    val colorFiles = mutableListOf<String>()
+    val resDir = get("res")
+    if (!resDir.exists()) return colorFiles
+
+    resDir.listFiles()?.forEach { dir ->
+        if (dir.isDirectory && dir.name.startsWith("values")) {
+            val colorsFile = dir.resolve("colors.xml")
+            if (colorsFile.exists()) {
+                colorFiles.add("res/${dir.name}/colors.xml")
+            }
+        }
+    }
+    return colorFiles
+}
+
+/**
+ * @param colorValues All colors the app declares.
+ */
+private fun resolveColorValue(color: String, colorValues: Map<String, String>): String {
+    var current = color
+    while (current.startsWith("@color/")) {
+        val name = current.substring(7)
+        current = colorValues[name] ?: break
+    }
+    return current
 }
 
 /**
@@ -489,7 +525,8 @@ internal fun baseThemeResourcePatch(
     splashScreenThemeParent: String? = null
 ) = resourcePatch {
     execute {
-        val declaredColors = declaredColors()
+        val colorFiles = colorFiles()
+        val declaredColors = declaredColors(colorFiles)
         darkColorNames = themeColorNames(APP_COLOR_NAMES_DARK, colorNamesDark(), declaredColors)
         lightColorNames = if (includeLightBackground) {
             themeColorNames(APP_COLOR_NAMES_LIGHT, colorNamesLight(), declaredColors)
@@ -503,7 +540,7 @@ internal fun baseThemeResourcePatch(
         // A color that is set while patching is the only background the app can have,
         // so none of the variants and themes below are of any use.
         if (usePatchedBackgroundColor) {
-            replaceBackgroundColors(includeLightBackground)
+            replaceBackgroundColors(colorFiles, declaredColors, includeLightBackground)
             return@execute
         }
 
@@ -511,19 +548,29 @@ internal fun baseThemeResourcePatch(
             "morphe_theme_background_dark", "values/shared-youtube/arrays.xml",
             THEME_BACKGROUNDS_DARK
         )
-        addBackgroundColorVariants(
-            THEME_INDEX_OFFSET_DARK, THEME_BACKGROUNDS_DARK, PALETTE_LEVELS_DARK,
-            THEME_BACKGROUND_COLOR_DARK, darkColorNames, true
-        )
 
         if (includeLightBackground) {
             verifySettingEntries(
                 "morphe_theme_background_light", "values/youtube/arrays.xml",
                 THEME_BACKGROUNDS_LIGHT
             )
+        }
+
+        val aliasAlphas = addBackgroundColorAliases(colorFiles, declaredColors, includeLightBackground)
+        
+        val darkAliasAlphas = aliasAlphas.filterKeys { isDarkThemeBackgroundColorAlias(it) }
+        darkAliasNames = darkAliasAlphas.keys.toList()
+        addBackgroundColorVariants(
+            THEME_INDEX_OFFSET_DARK, THEME_BACKGROUNDS_DARK, PALETTE_LEVELS_DARK,
+            darkAliasAlphas, true
+        )
+
+        if (includeLightBackground) {
+            val lightAliasAlphas = aliasAlphas.filterKeys { !isDarkThemeBackgroundColorAlias(it) }
+            lightAliasNames = lightAliasAlphas.keys.toList()
             addBackgroundColorVariants(
                 THEME_INDEX_OFFSET_LIGHT, THEME_BACKGROUNDS_LIGHT, PALETTE_LEVELS_LIGHT,
-                THEME_BACKGROUND_COLOR_LIGHT, lightColorNames, false
+                lightAliasAlphas, false
             )
         }
 
@@ -579,7 +626,11 @@ private fun ResourcePatchContext.verifySettingEntries(
  * Gives the background colors of the app the color that is set as a patch option, which is what
  * the Theme patch did before the background could be changed in the app settings.
  */
-private fun ResourcePatchContext.replaceBackgroundColors(includeLightBackground: Boolean) {
+private fun ResourcePatchContext.replaceBackgroundColors(
+    colorFiles: List<String>,
+    declaredColors: Map<String, String>,
+    includeLightBackground: Boolean
+) {
     val darkColor = patchedBackgroundColorDark
     if (!validateColorName(darkColor)) {
         throw PatchException("Invalid dark theme color: $darkColor")
@@ -590,11 +641,18 @@ private fun ResourcePatchContext.replaceBackgroundColors(includeLightBackground:
         throw PatchException("Invalid light theme color: $lightColor")
     }
 
-    document("res/values/colors.xml").use { document ->
-        document.getNode("resources").forEachChildElement { node ->
-            when (node.getAttribute("name")) {
-                in darkColorNames -> node.textContent = darkColor
-                in lightColorNames -> node.textContent = lightColor
+    colorFiles.forEach { path ->
+        document(path).use { document ->
+            document.getNode("resources").forEachChildElement { node ->
+                val name = node.getAttribute("name")
+                val color = when (name) {
+                    in darkColorNames -> darkColor
+                    in lightColorNames -> lightColor
+                    else -> return@forEachChildElement
+                }
+
+                val alpha = parseAlpha(resolveColorValue(node.textContent, declaredColors))
+                node.textContent = applyAlpha(color, alpha)
             }
         }
     }
@@ -732,29 +790,32 @@ private fun themeColors(
 }
 
 /**
- * @param aliasName  The color every background color of the app is made an alias of.
- * @param colorNames The background colors of the app, which are aliased.
+ * @param aliasAlphas The alpha channel of each alias color.
  */
 private fun ResourcePatchContext.addBackgroundColorVariants(
     indexOffset: Int,
     backgrounds: List<ThemeBackground>,
     levels: IntArray,
-    aliasName: String,
-    colorNames: List<String>,
+    aliasAlphas: Map<String, Int>,
     isDark: Boolean
 ) {
-    if (colorNames.isEmpty()) {
-        throw PatchException("No color to replace for the app background")
-    }
-
-    val originalColors = addBackgroundColorAlias(aliasName, colorNames)
-
     // The app default is the only background that keeps the colors the app declares,
     // so it is the only variant that has to undo the alias.
+    val originalColors = LinkedHashMap<String, String>()
+    document("res/values/colors.xml").use { document ->
+        val colorNames = if (isDark) darkColorNames else lightColorNames
+        document.getNode("resources").forEachChildElement { color ->
+            val name = color.getAttribute("name")
+            if (name in colorNames) {
+                originalColors[name] = color.textContent
+            }
+        }
+    }
     writeColorVariant(indexOffset + 1, originalColors, isDark)
 
     themeColors(indexOffset, backgrounds, levels).forEach { (index, color) ->
-        writeColorVariant(index, mapOf(aliasName to color), isDark)
+        val colors = aliasAlphas.mapValues { (_, alpha) -> applyAlpha(color, alpha) }
+        writeColorVariant(index, colors, isDark)
     }
 }
 
@@ -765,36 +826,95 @@ private fun ResourcePatchContext.addBackgroundColorVariants(
  * The app keeps resolving the names it always did, including the ones its own code reads by id,
  * because only the value of a name is replaced and not the name itself.
  *
- * @return The color each name had, so that the app default can be restored.
+ * @param colorFiles             All color resource files.
+ * @param declaredColors         The names and values of every color the app declares.
+ * @param includeLightBackground If the light theme has its own background color.
+ * @return The alpha channel of each alias color.
  */
-private fun ResourcePatchContext.addBackgroundColorAlias(
-    aliasName: String,
-    colorNames: List<String>
-): Map<String, String> {
-    val originalColors = LinkedHashMap<String, String>()
+private fun ResourcePatchContext.addBackgroundColorAliases(
+    colorFiles: List<String>,
+    declaredColors: Map<String, String>,
+    includeLightBackground: Boolean
+): Map<String, Int> {
+    val aliasAlphas = LinkedHashMap<String, Int>()
 
+    colorFiles.forEach { path ->
+        document(path).use { document ->
+            val resources = document.getNode("resources")
+
+            resources.forEachChildElement { color ->
+                val name = color.getAttribute("name")
+                val aliasBaseName = when (name) {
+                    in darkColorNames -> THEME_BACKGROUND_COLOR_DARK
+                    in lightColorNames -> if (includeLightBackground) THEME_BACKGROUND_COLOR_LIGHT else null
+                    else -> null
+                } ?: return@forEachChildElement
+
+                val alpha = parseAlpha(resolveColorValue(color.textContent, declaredColors))
+                val colorAlias = if (alpha == 0xFF) {
+                    aliasBaseName
+                } else {
+                    "${aliasBaseName}_opacity_${"%02X".format(alpha)}"
+                }
+
+                aliasAlphas[colorAlias] = alpha
+                color.textContent = "@color/$colorAlias"
+            }
+        }
+    }
+
+    // Without a variant the alias resolves to the background of the unpatched app, which is
+    // what the system draws the splash screen of the app default with.
     document("res/values/colors.xml").use { document ->
         val resources = document.getNode("resources")
 
-        resources.forEachChildElement { color ->
-            val name = color.getAttribute("name")
-            if (name in colorNames) {
-                originalColors[name] = color.textContent
-                color.textContent = "@color/$aliasName"
-            }
-        }
+        aliasAlphas.forEach { (name, alpha) ->
+            resources.appendChild(
+                document.createElement("color").apply {
+                    setAttribute("name", name)
 
-        // Without a variant the alias resolves to the background of the unpatched app, which is
-        // what the system draws the splash screen of the app default with.
-        resources.appendChild(
-            document.createElement("color").apply {
-                setAttribute("name", aliasName)
-                textContent = originalColors.getValue(colorNames.first())
-            }
-        )
+                    // The color is the unpatched color of the app.
+                    val originalColor = if (isDarkThemeBackgroundColorAlias(name)) {
+                        DEFAULT_THEME_COLOR_DARK
+                    } else {
+                        DEFAULT_THEME_COLOR_LIGHT
+                    }
+                    textContent = applyAlpha(originalColor, alpha)
+                }
+            )
+        }
     }
 
-    return originalColors
+    return aliasAlphas
+}
+
+private fun isDarkThemeBackgroundColorAlias(aliasName: String) =
+    aliasName.startsWith(THEME_BACKGROUND_COLOR_DARK)
+
+/**
+ * @param color #AARRGGBB, #RRGGBB, or an Android color resource reference.
+ * @return The alpha channel of the color (0-255).
+ */
+private fun parseAlpha(color: String): Int {
+    if (color.startsWith("#")) {
+        val hex = color.substring(1)
+        if (hex.length == 8) {
+            return hex.substring(0, 2).toInt(16)
+        }
+    }
+    return 0xFF
+}
+
+/**
+ * Combines a color with an alpha channel.
+ */
+private fun applyAlpha(color: String, alpha: Int): String {
+    if (alpha == 0xFF || !color.startsWith("#")) {
+        return color
+    }
+
+    val hex = color.substring(1)
+    return "#%02X%s".format(alpha, if (hex.length == 8) hex.substring(2) else hex)
 }
 
 /**

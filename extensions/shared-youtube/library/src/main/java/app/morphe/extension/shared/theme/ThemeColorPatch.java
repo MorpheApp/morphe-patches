@@ -388,11 +388,11 @@ public class ThemeColorPatch {
         ThemeUtils.setChangeForegroundColor(THEME_BACKGROUND_CHANGE_FOREGROUND.get());
 
         // An app without a light theme has no light colors to replace.
-        if (!darkColorResourceNames().isEmpty()) {
+        if (colorResourceNames(true).length > 0) {
             darkBackgroundColor = selectedBackgroundColor(context, true);
             ThemeUtils.setThemeDarkColor(darkBackgroundColor);
         }
-        if (!lightColorResourceNames().isEmpty()) {
+        if (colorResourceNames(false).length > 0) {
             lightBackgroundColor = selectedBackgroundColor(context, false);
             ThemeUtils.setThemeLightColor(lightBackgroundColor);
         }
@@ -595,12 +595,15 @@ public class ThemeColorPatch {
             return;
         }
 
-        // A theme the app does not have declares no color resource, and has nothing to overlay.
-        useDarkOverlay = dark.isCustom() && !darkColorResourceNames().isEmpty();
-        useLightOverlay = light.isCustom() && !lightColorResourceNames().isEmpty();
+        final String[] darkNames = colorResourceNames(true);
+        final String[] lightNames = colorResourceNames(false);
 
-        updateOverlay(context, true, darkColorResourceNames(), THEME_BACKGROUND_DARK_CUSTOM_COLOR);
-        updateOverlay(context, false, lightColorResourceNames(), THEME_BACKGROUND_LIGHT_CUSTOM_COLOR);
+        // A theme the app does not have declares no color resource, and has nothing to overlay.
+        useDarkOverlay = dark.isCustom() && darkNames.length > 0;
+        useLightOverlay = light.isCustom() && lightNames.length > 0;
+
+        updateOverlay(context, true, darkNames, THEME_BACKGROUND_DARK_CUSTOM_COLOR);
+        updateOverlay(context, false, lightNames, THEME_BACKGROUND_LIGHT_CUSTOM_COLOR);
     }
 
     /**
@@ -608,7 +611,7 @@ public class ThemeColorPatch {
      * color the user picked.
      */
     @RequiresApi(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
-    private static void updateOverlay(Context context, boolean dark, String resourceNames,
+    private static void updateOverlay(Context context, boolean dark, String[] resourceNames,
                                       StringSetting customColorSetting) {
         try {
             if (!useOverlay(dark)) {
@@ -629,15 +632,25 @@ public class ThemeColorPatch {
     /**
      * The color the user picked, mapped to every color resource of a theme.
      */
-    private static Map<String, Integer> overlayColors(String resourceNames,
+    private static Map<String, Integer> overlayColors(String[] resourceNames,
                                                       StringSetting customColorSetting) {
         final int color = customColor(customColorSetting);
         Map<String, Integer> colors = new LinkedHashMap<>();
 
-        for (String resourceName : resourceNames.split(",")) {
-            if (!resourceName.isEmpty()) {
-                colors.put(resourceName, color);
+        for (String resourceName : resourceNames) {
+            if (resourceName.isEmpty()) {
+                continue;
             }
+
+            int finalColor = color;
+            int opacityIndex = resourceName.indexOf("_opacity_");
+            if (opacityIndex != -1) {
+                String alphaHex = resourceName.substring(opacityIndex + 9);
+                final int alpha = Integer.parseInt(alphaHex, 16);
+                finalColor = (color & 0x00FFFFFF) | (alpha << 24);
+            }
+
+            colors.put(resourceName, finalColor);
         }
 
         return colors;
@@ -866,8 +879,13 @@ public class ThemeColorPatch {
      * The first name is the color the app uses for the background itself.
      */
     private static String backgroundColorResourceName(boolean dark) {
-        String resourceNames = dark ? darkColorResourceNames() : lightColorResourceNames();
-        return resourceNames.split(",")[0];
+        final String[] resourceNames = colorResourceNames(dark);
+        return resourceNames.length > 0 ? resourceNames[0] : "";
+    }
+
+    private static String[] colorResourceNames(boolean dark) {
+        final String resourceNames = dark ? darkColorResourceNames() : lightColorResourceNames();
+        return resourceNames.isEmpty() ? new String[0] : resourceNames.split(",");
     }
 
     /**
