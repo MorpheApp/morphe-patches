@@ -81,14 +81,15 @@ private const val SPLASH_THEME_NAME = "morphe_splash_theme_"
  *
  * The index of a color is the ordinal of the matching value of the extension enum
  * `ThemeColorPatch.ThemeColorDark`, and the extension selects the color of an index
- * using the 'mcc' resource qualifier. Existing entries cannot be reordered or removed,
- * and new entries can only be appended.
+ * using the 'mcc' resource qualifier. This list, that enum and the setting entry values of
+ * the app resources must always be in the same order.
  *
  * A null color is the unpatched color of the app, and has no resource variant.
  */
 private val THEME_COLORS_DARK = listOf(
     null,                                   // APP_DEFAULT
     "@android:color/black",                 // PURE_BLACK
+    "@android:color/black",                 // MATERIAL_YOU_PURE_BLACK
     "@android:color/system_neutral1_900",   // MATERIAL_YOU_NEUTRAL
     "@android:color/system_accent1_800",    // MATERIAL_YOU_PRIMARY
     "@android:color/system_accent2_800",    // MATERIAL_YOU_SECONDARY
@@ -112,6 +113,7 @@ private val THEME_COLORS_DARK = listOf(
 private val THEME_COLORS_LIGHT = listOf(
     null,                                   // APP_DEFAULT
     "@android:color/white",                 // WHITE
+    "@android:color/white",                 // MATERIAL_YOU_WHITE
     "@android:color/system_neutral1_100",   // MATERIAL_YOU_NEUTRAL
     "@android:color/system_accent1_200",    // MATERIAL_YOU_PRIMARY
     "@android:color/system_accent2_200",    // MATERIAL_YOU_SECONDARY

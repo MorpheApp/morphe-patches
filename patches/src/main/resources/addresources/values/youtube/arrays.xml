@@ -225,6 +225,7 @@
     <string-array name="morphe_theme_background_light_entries">
         <item>@string/morphe_theme_background_light_entry_1</item>
         <item>@string/morphe_theme_background_light_entry_2</item>
+        <item>@string/morphe_theme_background_light_entry_15</item>
         <item>@string/morphe_theme_background_light_entry_3</item>
         <item>@string/morphe_theme_background_light_entry_4</item>
         <item>@string/morphe_theme_background_light_entry_5</item>
@@ -241,6 +242,7 @@
     <string-array name="morphe_theme_background_light_entry_values">
         <item>APP_DEFAULT</item>
         <item>WHITE</item>
+        <item>MATERIAL_YOU_WHITE</item>
         <item>MATERIAL_YOU_NEUTRAL</item>
         <item>MATERIAL_YOU_PRIMARY</item>
         <item>MATERIAL_YOU_SECONDARY</item>

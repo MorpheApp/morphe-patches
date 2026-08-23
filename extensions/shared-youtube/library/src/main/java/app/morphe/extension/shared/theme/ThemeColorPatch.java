@@ -77,6 +77,13 @@ public class ThemeColorPatch {
         boolean isMaterialYou();
 
         /**
+         * If what the app draws on the background with a color of its own, such as the new
+         * content indicator, follows the Material You palette. A background that is not a
+         * Material You color can do so as well, which is what an AMOLED display needs.
+         */
+        boolean usesMaterialYouAccent();
+
+        /**
          * If the color of this background is picked by the user and applied with an overlay.
          */
         boolean isCustom();
@@ -85,10 +92,12 @@ public class ThemeColorPatch {
     public enum ThemeColorDark implements Background {
         APP_DEFAULT,
         PURE_BLACK,
-        MATERIAL_YOU_NEUTRAL(true, false),
-        MATERIAL_YOU_PRIMARY(true, false),
-        MATERIAL_YOU_SECONDARY(true, false),
-        MATERIAL_YOU_TERTIARY(true, false),
+        // Black exists on every Android version, only the accents need Android 12.
+        MATERIAL_YOU_PURE_BLACK(false, true, false),
+        MATERIAL_YOU_NEUTRAL(true, true, false),
+        MATERIAL_YOU_PRIMARY(true, true, false),
+        MATERIAL_YOU_SECONDARY(true, true, false),
+        MATERIAL_YOU_TERTIARY(true, true, false),
         CLASSIC_YOUTUBE,
         CATPPUCCIN_MOCHA,
         DARK_PINK,
@@ -97,23 +106,30 @@ public class ThemeColorPatch {
         DARK_YELLOW,
         DARK_ORANGE,
         DARK_RED,
-        CUSTOM(false, true);
+        CUSTOM(false, false, true);
 
         private final boolean materialYou;
+        private final boolean materialYouAccent;
         private final boolean custom;
 
         ThemeColorDark() {
-            this(false, false);
+            this(false, false, false);
         }
 
-        ThemeColorDark(boolean materialYou, boolean custom) {
+        ThemeColorDark(boolean materialYou, boolean materialYouAccent, boolean custom) {
             this.materialYou = materialYou;
+            this.materialYouAccent = materialYouAccent;
             this.custom = custom;
         }
 
         @Override
         public boolean isMaterialYou() {
             return materialYou;
+        }
+
+        @Override
+        public boolean usesMaterialYouAccent() {
+            return materialYouAccent;
         }
 
         @Override
@@ -125,10 +141,11 @@ public class ThemeColorPatch {
     public enum ThemeColorLight implements Background {
         APP_DEFAULT,
         WHITE,
-        MATERIAL_YOU_NEUTRAL(true, false),
-        MATERIAL_YOU_PRIMARY(true, false),
-        MATERIAL_YOU_SECONDARY(true, false),
-        MATERIAL_YOU_TERTIARY(true, false),
+        MATERIAL_YOU_WHITE(false, true, false),
+        MATERIAL_YOU_NEUTRAL(true, true, false),
+        MATERIAL_YOU_PRIMARY(true, true, false),
+        MATERIAL_YOU_SECONDARY(true, true, false),
+        MATERIAL_YOU_TERTIARY(true, true, false),
         CATPPUCCIN_LATTE,
         LIGHT_PINK,
         LIGHT_BLUE,
@@ -136,23 +153,30 @@ public class ThemeColorPatch {
         LIGHT_YELLOW,
         LIGHT_ORANGE,
         LIGHT_RED,
-        CUSTOM(false, true);
+        CUSTOM(false, false, true);
 
         private final boolean materialYou;
+        private final boolean materialYouAccent;
         private final boolean custom;
 
         ThemeColorLight() {
-            this(false, false);
+            this(false, false, false);
         }
 
-        ThemeColorLight(boolean materialYou, boolean custom) {
+        ThemeColorLight(boolean materialYou, boolean materialYouAccent, boolean custom) {
             this.materialYou = materialYou;
+            this.materialYouAccent = materialYouAccent;
             this.custom = custom;
         }
 
         @Override
         public boolean isMaterialYou() {
             return materialYou;
+        }
+
+        @Override
+        public boolean usesMaterialYouAccent() {
+            return materialYouAccent;
         }
 
         @Override
@@ -776,7 +800,7 @@ public class ThemeColorPatch {
 
             final boolean dark = Utils.isDarkModeEnabled();
 
-            if (!isMaterialYouBackground(dark)) {
+            if (!usesMaterialYouAccent(dark)) {
                 return null;
             }
 
@@ -790,16 +814,18 @@ public class ThemeColorPatch {
     }
 
     /**
-     * If the background of a theme is a Material You color, whether it was selected
-     * in the app settings or set while patching.
+     * @see Background#usesMaterialYouAccent()
      */
-    private static boolean isMaterialYouBackground(boolean dark) {
+    private static boolean usesMaterialYouAccent(boolean dark) {
         if (isPatchedBackground()) {
+            // A patch option holds a color and nothing else, so only a Material You
+            // background can be told apart.
             return (dark ? patchedBackgroundColorDark() : patchedBackgroundColorLight())
                     .startsWith(MATERIAL_YOU_COLOR_PREFIX);
         }
 
-        return (dark ? THEME_BACKGROUND_DARK.get() : THEME_BACKGROUND_LIGHT.get()).isMaterialYou();
+        return (dark ? THEME_BACKGROUND_DARK.get() : THEME_BACKGROUND_LIGHT.get())
+                .usesMaterialYouAccent();
     }
 
     /**

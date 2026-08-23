@@ -65,6 +65,7 @@
     <string-array name="morphe_theme_background_dark_entries">
         <item>@string/morphe_theme_background_dark_entry_1</item>
         <item>@string/morphe_theme_background_dark_entry_2</item>
+        <item>@string/morphe_theme_background_dark_entry_16</item>
         <item>@string/morphe_theme_background_dark_entry_3</item>
         <item>@string/morphe_theme_background_dark_entry_4</item>
         <item>@string/morphe_theme_background_dark_entry_5</item>
@@ -82,6 +83,7 @@
     <string-array name="morphe_theme_background_dark_entry_values">
         <item>APP_DEFAULT</item>
         <item>PURE_BLACK</item>
+        <item>MATERIAL_YOU_PURE_BLACK</item>
         <item>MATERIAL_YOU_NEUTRAL</item>
         <item>MATERIAL_YOU_PRIMARY</item>
         <item>MATERIAL_YOU_SECONDARY</item>
