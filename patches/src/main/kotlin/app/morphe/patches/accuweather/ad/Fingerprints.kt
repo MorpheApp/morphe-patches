@@ -45,3 +45,15 @@ internal object BannerAdViewFingerprint : Fingerprint(
         string("newSize")
     )
 )
+
+/**
+ * The Google Mobile Ads WebView (`GmaWebView`, a `WebView` subclass) that
+ * renders web/MRAID banner creatives. Resolved by the unique log string
+ * "GmaWebView.destroySafe", so its `onMeasure` can also be collapsed to a
+ * zero-size measure, hiding web-rendered banners.
+ */
+internal object BannerWebViewFingerprint : Fingerprint(
+    filters = listOf(
+        string("GmaWebView.destroySafe")
+    )
+)

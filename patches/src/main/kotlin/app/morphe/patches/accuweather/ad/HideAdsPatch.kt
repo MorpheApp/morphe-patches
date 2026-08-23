@@ -46,25 +46,31 @@ val hideAdsPatch = bytecodePatch(
 
         // region Banner / MPU ads
         //
-        // Banners render into an SDK ad-view (a FrameLayout that sizes itself to
-        // the ad in onMeasure). Force that onMeasure to report a zero-size
+        // Banners render into SDK ad-views that size themselves to the ad in
+        // onMeasure: the FrameLayout banner/MPU container and the GmaWebView that
+        // draws web/MRAID creatives. Force each onMeasure to report a zero-size
         // measure so the view - and therefore the banner - collapses to nothing.
         // setMeasuredDimension must still be called or the framework throws, so
-        // this measures 0x0 rather than simply returning. onMeasure has free low
-        // registers, so v0 is safe to use here.
-        Fingerprint(
-            definingClass = BannerAdViewFingerprint.originalClassDef.type,
-            name = "onMeasure",
-            returnType = "V",
-            parameters = listOf("I", "I"),
-        ).method.addInstructions(
-            0,
-            """
-                const/4 v0, 0x0
-                invoke-virtual { p0, v0, v0 }, Landroid/view/View;->setMeasuredDimension(II)V
-                return-void
-            """
-        )
+        // this measures 0x0 rather than simply returning. Both onMeasure methods
+        // have free low registers, so v0 is safe to use here.
+        listOf(
+            BannerAdViewFingerprint,
+            BannerWebViewFingerprint,
+        ).forEach { anchor ->
+            Fingerprint(
+                definingClass = anchor.originalClassDef.type,
+                name = "onMeasure",
+                returnType = "V",
+                parameters = listOf("I", "I"),
+            ).method.addInstructions(
+                0,
+                """
+                    const/4 v0, 0x0
+                    invoke-virtual { p0, v0, v0 }, Landroid/view/View;->setMeasuredDimension(II)V
+                    return-void
+                """
+            )
+        }
         // endregion
     }
 }
