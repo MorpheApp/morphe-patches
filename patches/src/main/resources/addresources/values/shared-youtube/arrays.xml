@@ -62,25 +62,25 @@
         <item>CUSTOM</item>
     </string-array>
     <!-- layout.theme.baseThemePatch -->
-    <string-array name="morphe_theme_background_dark_entries">
-        <item>@string/morphe_theme_background_dark_entry_1</item>
-        <item>@string/morphe_theme_background_dark_entry_2</item>
-        <item>@string/morphe_theme_background_dark_entry_16</item>
-        <item>@string/morphe_theme_background_dark_entry_3</item>
-        <item>@string/morphe_theme_background_dark_entry_4</item>
-        <item>@string/morphe_theme_background_dark_entry_5</item>
-        <item>@string/morphe_theme_background_dark_entry_6</item>
-        <item>@string/morphe_theme_background_dark_entry_7</item>
-        <item>@string/morphe_theme_background_dark_entry_8</item>
-        <item>@string/morphe_theme_background_dark_entry_9</item>
-        <item>@string/morphe_theme_background_dark_entry_10</item>
-        <item>@string/morphe_theme_background_dark_entry_11</item>
-        <item>@string/morphe_theme_background_dark_entry_12</item>
-        <item>@string/morphe_theme_background_dark_entry_13</item>
-        <item>@string/morphe_theme_background_dark_entry_14</item>
-        <item>@string/morphe_theme_background_dark_entry_15</item>
+    <string-array name="morphe_theme_color_dark_entries">
+        <item>@string/morphe_theme_color_dark_entry_1</item>
+        <item>@string/morphe_theme_color_dark_entry_2</item>
+        <item>@string/morphe_theme_color_dark_entry_3</item>
+        <item>@string/morphe_theme_color_dark_entry_4</item>
+        <item>@string/morphe_theme_color_dark_entry_5</item>
+        <item>@string/morphe_theme_color_dark_entry_6</item>
+        <item>@string/morphe_theme_color_dark_entry_7</item>
+        <item>@string/morphe_theme_color_dark_entry_8</item>
+        <item>@string/morphe_theme_color_dark_entry_9</item>
+        <item>@string/morphe_theme_color_dark_entry_10</item>
+        <item>@string/morphe_theme_color_dark_entry_11</item>
+        <item>@string/morphe_theme_color_dark_entry_12</item>
+        <item>@string/morphe_theme_color_dark_entry_13</item>
+        <item>@string/morphe_theme_color_dark_entry_14</item>
+        <item>@string/morphe_theme_color_dark_entry_15</item>
+        <item>@string/morphe_theme_color_dark_entry_16</item>
     </string-array>
-    <string-array name="morphe_theme_background_dark_entry_values">
+    <string-array name="morphe_theme_color_dark_entry_values">
         <item>APP_DEFAULT</item>
         <item>PURE_BLACK</item>
         <item>MATERIAL_YOU_PURE_BLACK</item>

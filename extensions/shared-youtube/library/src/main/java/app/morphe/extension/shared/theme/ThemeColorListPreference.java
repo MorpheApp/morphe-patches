@@ -47,13 +47,13 @@ public class ThemeColorListPreference extends IconListPreference {
             return new Drawable[0];
         }
 
-        final boolean dark = SharedYouTubeSettings.THEME_BACKGROUND_DARK.key.equals(getKey());
+        final boolean dark = SharedYouTubeSettings.THEME_COLOR_DARK.key.equals(getKey());
 
         Context context = getContext();
         Drawable[] drawables = new Drawable[values.length];
         for (int i = 0, length = values.length; i < length; i++) {
             drawables[i] = ColorDot.createColorDotDrawable(
-                    ThemeColorPatch.getBackgroundColor(context, dark, i));
+                    ThemeColorPatch.getThemeColor(context, dark, i));
         }
 
         return drawables;

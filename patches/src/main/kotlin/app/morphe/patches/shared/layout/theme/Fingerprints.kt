@@ -92,17 +92,17 @@ internal object LightColorResourceNamesFingerprint : Fingerprint(
     parameters = listOf()
 )
 
-internal object PatchedBackgroundColorDarkFingerprint : Fingerprint(
+internal object PatchedThemeColorDarkFingerprint : Fingerprint(
     definingClass = THEME_COLOR_EXTENSION_CLASS,
-    name = "patchedBackgroundColorDark",
+    name = "patchedThemeColorDark",
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "Ljava/lang/String;",
     parameters = listOf()
 )
 
-internal object PatchedBackgroundColorLightFingerprint : Fingerprint(
+internal object PatchedThemeColorLightFingerprint : Fingerprint(
     definingClass = THEME_COLOR_EXTENSION_CLASS,
-    name = "patchedBackgroundColorLight",
+    name = "patchedThemeColorLight",
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "Ljava/lang/String;",
     parameters = listOf()

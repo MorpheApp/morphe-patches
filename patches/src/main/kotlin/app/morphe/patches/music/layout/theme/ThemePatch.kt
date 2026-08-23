@@ -24,7 +24,7 @@ import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_COLOR_NAMES_DARK
 import app.morphe.patches.shared.layout.theme.baseThemePatch
 import app.morphe.patches.music.shared.MusicActivityOnCreateFingerprint
 import app.morphe.patches.shared.layout.theme.baseThemeResourcePatch
-import app.morphe.patches.shared.layout.theme.usePatchedBackgroundColor
+import app.morphe.patches.shared.layout.theme.usePatchedThemeColor
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
@@ -68,7 +68,7 @@ val themePatch = baseThemePatch(
         // The splash screen is drawn by the system with the theme of the launcher activity, so
         // the activity is handed over as soon as it exists. A patched background color is
         // already a part of that theme, and no theme is generated to hand over.
-        if (!usePatchedBackgroundColor) {
+        if (!usePatchedThemeColor) {
             MusicActivityOnCreateFingerprint.method.addInstruction(
                 0,
                 // The register of 'this' can be above v15, so the range format is needed.
@@ -109,15 +109,15 @@ val themePatch = baseThemePatch(
         }
 
         // A patched background color cannot be changed, so there is nothing to select.
-        if (!usePatchedBackgroundColor) {
+        if (!usePatchedThemeColor) {
             PreferenceScreen.GENERAL.addPreferences(
                 noTitleUnsortedPreferenceCategory(
                     ListPreference(
-                        "morphe_theme_background_dark",
+                        "morphe_theme_color_dark",
                         tag = "app.morphe.extension.shared.theme.ThemeColorListPreference"
                     ),
                     TextPreference(
-                        "morphe_theme_background_dark_custom_color",
+                        "morphe_theme_color_custom_dark",
                         tag = "app.morphe.extension.shared.settings.preference.ColorPickerPreference",
                         inputType = InputType.TEXT_CAP_CHARACTERS
                     )

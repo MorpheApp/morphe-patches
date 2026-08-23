@@ -39,7 +39,7 @@ internal const val THEME_COLOR_EXTENSION_CLASS = "Lapp/morphe/extension/shared/t
 private const val UNREACHABLE_MOBILE_CODE = 1000
 
 /**
- * Index of the first color of the 9 bit palette. The indices below it belong to the backgrounds
+ * Index of the first color of the 9 bit palette. The indices below it belong to the colors
  * that can be selected by name.
  */
 private const val PALETTE_INDEX_OFFSET = 100
@@ -48,16 +48,16 @@ private const val PALETTE_INDEX_OFFSET = 100
  * The value a color channel can have in the 9 bit palette, of the dark and of the light theme.
  * The extension picks an index with the same values, and both must stay identical.
  *
- * A background sits at one end of the range, so the eight values of a channel are placed where the
- * backgrounds of that theme are instead of being spread evenly. A dark background of #0F0F0F would
+ * A color sits at one end of the range, so the eight values of a channel are placed where the
+ * color of that theme are instead of being spread evenly. A dark color of #0F0F0F would
  * otherwise be shown as pure black, because the nearest even value is 36 away.
  */
 private val PALETTE_LEVELS_DARK = intArrayOf(0, 3, 15, 38, 74, 126, 187, 255)
 private val PALETTE_LEVELS_LIGHT = intArrayOf(0, 68, 129, 181, 217, 240, 252, 255)
 
 /**
- * A background must only be used by the theme it belongs to. The app uses the light colors as
- * its foreground while it is dark, and the other way around. A light background would otherwise
+ * A color must only be used by the theme it belongs to. The app uses the light colors as
+ * its foreground while it is dark, and the other way around. A light color would otherwise
  * replace the color of the text and the icons of the dark theme.
  *
  * The theme of the app is not the night mode of the device, the app has a setting of its own,
@@ -68,80 +68,80 @@ private const val THEME_INDEX_OFFSET_DARK = 0
 private const val THEME_INDEX_OFFSET_LIGHT = 700
 
 /**
- * Every background color of the app is an alias of this one, so that a resource variant declares
- * a single entry instead of one for every name.
- */
-private const val THEME_BACKGROUND_COLOR_DARK = "morphe_theme_background_color_dark"
-private const val THEME_BACKGROUND_COLOR_LIGHT = "morphe_theme_background_color_light"
-
-/**
  * Must be identical to the name the extension uses with `FabricatedOverlay#setTargetOverlayable`.
  */
-private const val THEME_BACKGROUND_OVERLAYABLE_NAME = "MorpheThemeColor"
+private const val THEME_COLOR_OVERLAYABLE_NAME = "MorpheThemeColor"
 
 /**
- * Name of the theme that draws the splash screen of a background, which the extension asks for
+ * Name of the theme that draws the splash screen of a theme, which the extension asks for
  * with the same numbering.
  */
 private const val SPLASH_THEME_NAME = "morphe_splash_theme_"
 
 /**
- * A background that can be selected in the app settings.
+ * A color that can be selected in the app settings.
  *
  * @param value Name of the matching value of the extension enum `ThemeColorPatch.ThemeColorDark`.
  * @param color The color, or null for the unpatched color of the app, which has no variant.
  */
-private class ThemeBackground(val value: String, val color: String?)
+private class ThemeColor(val value: String, val color: String?)
 
 /**
- * Backgrounds that can be selected in the app settings, which the extension selects the color of
+ * Colors that can be selected in the app settings, which the extension selects the color of
  * with the 'mcc' resource qualifier. The Theme patch verifies that this list, the extension enum
  * and the setting entries are all in the same order.
  */
-private val THEME_BACKGROUNDS_DARK = listOf(
-    ThemeBackground("APP_DEFAULT", null),
-    ThemeBackground("PURE_BLACK", "@android:color/black"),
-    ThemeBackground("MATERIAL_YOU_PURE_BLACK", "@android:color/black"),
-    ThemeBackground("MATERIAL_YOU_NEUTRAL", "@android:color/system_neutral1_900"),
-    ThemeBackground("MATERIAL_YOU_PRIMARY", "@android:color/system_accent1_800"),
-    ThemeBackground("MATERIAL_YOU_SECONDARY", "@android:color/system_accent2_800"),
-    ThemeBackground("MATERIAL_YOU_TERTIARY", "@android:color/system_accent3_800"),
-    ThemeBackground("CLASSIC_YOUTUBE", "#212121"),
-    ThemeBackground("CATPPUCCIN_MOCHA", "#181825"),
-    ThemeBackground("DARK_PINK", "#290025"),
-    ThemeBackground("DARK_BLUE", "#001029"),
-    ThemeBackground("DARK_GREEN", "#002905"),
-    ThemeBackground("DARK_YELLOW", "#282900"),
-    ThemeBackground("DARK_ORANGE", "#291800"),
-    ThemeBackground("DARK_RED", "#290000"),
-    ThemeBackground("CUSTOM", null),
+private val THEME_COLORS_DARK = listOf(
+    ThemeColor("APP_DEFAULT", null),
+    ThemeColor("PURE_BLACK", "@android:color/black"),
+    ThemeColor("MATERIAL_YOU_PURE_BLACK", "@android:color/black"),
+    ThemeColor("MATERIAL_YOU_NEUTRAL", "@android:color/system_neutral1_900"),
+    ThemeColor("MATERIAL_YOU_PRIMARY", "@android:color/system_accent1_800"),
+    ThemeColor("MATERIAL_YOU_SECONDARY", "@android:color/system_accent2_800"),
+    ThemeColor("MATERIAL_YOU_TERTIARY", "@android:color/system_accent3_800"),
+    ThemeColor("CLASSIC_YOUTUBE", "#212121"),
+    ThemeColor("CATPPUCCIN_MOCHA", "#181825"),
+    ThemeColor("DARK_PINK", "#290025"),
+    ThemeColor("DARK_BLUE", "#001029"),
+    ThemeColor("DARK_GREEN", "#002905"),
+    ThemeColor("DARK_YELLOW", "#282900"),
+    ThemeColor("DARK_ORANGE", "#291800"),
+    ThemeColor("DARK_RED", "#290000"),
+    ThemeColor("CUSTOM", null),
 )
 
 /**
  * Selected using the 'mnc' resource qualifier.
  *
- * @see THEME_BACKGROUNDS_DARK
+ * @see THEME_COLORS_DARK
  */
-private val THEME_BACKGROUNDS_LIGHT = listOf(
-    ThemeBackground("APP_DEFAULT", null),
-    ThemeBackground("WHITE", "@android:color/white"),
-    ThemeBackground("MATERIAL_YOU_WHITE", "@android:color/white"),
-    ThemeBackground("MATERIAL_YOU_NEUTRAL", "@android:color/system_neutral1_100"),
-    ThemeBackground("MATERIAL_YOU_PRIMARY", "@android:color/system_accent1_200"),
-    ThemeBackground("MATERIAL_YOU_SECONDARY", "@android:color/system_accent2_200"),
-    ThemeBackground("MATERIAL_YOU_TERTIARY", "@android:color/system_accent3_200"),
-    ThemeBackground("CATPPUCCIN_LATTE", "#E6E9EF"),
-    ThemeBackground("LIGHT_PINK", "#FCCFF3"),
-    ThemeBackground("LIGHT_BLUE", "#D1E0FF"),
-    ThemeBackground("LIGHT_GREEN", "#CCFFCC"),
-    ThemeBackground("LIGHT_YELLOW", "#FDFFCC"),
-    ThemeBackground("LIGHT_ORANGE", "#FFE6CC"),
-    ThemeBackground("LIGHT_RED", "#FFD6D6"),
-    ThemeBackground("CUSTOM", null),
+private val THEME_COLORS_LIGHT = listOf(
+    ThemeColor("APP_DEFAULT", null),
+    ThemeColor("WHITE", "@android:color/white"),
+    ThemeColor("MATERIAL_YOU_WHITE", "@android:color/white"),
+    ThemeColor("MATERIAL_YOU_NEUTRAL", "@android:color/system_neutral1_100"),
+    ThemeColor("MATERIAL_YOU_PRIMARY", "@android:color/system_accent1_200"),
+    ThemeColor("MATERIAL_YOU_SECONDARY", "@android:color/system_accent2_200"),
+    ThemeColor("MATERIAL_YOU_TERTIARY", "@android:color/system_accent3_200"),
+    ThemeColor("CATPPUCCIN_LATTE", "#E6E9EF"),
+    ThemeColor("LIGHT_PINK", "#FCCFF3"),
+    ThemeColor("LIGHT_BLUE", "#D1E0FF"),
+    ThemeColor("LIGHT_GREEN", "#CCFFCC"),
+    ThemeColor("LIGHT_YELLOW", "#FDFFCC"),
+    ThemeColor("LIGHT_ORANGE", "#FFE6CC"),
+    ThemeColor("LIGHT_RED", "#FFD6D6"),
+    ThemeColor("CUSTOM", null),
 )
 
 /**
- * The splash screen is drawn by the system before the app can select a background,
+ * Every theme color of the app is an alias of this one, so that a resource variant declares
+ * a single entry instead of one for every name.
+ */
+private const val THEME_COLOR_DARK = "morphe_theme_color_dark"
+private const val THEME_COLOR_LIGHT = "morphe_theme_color_light"
+
+/**
+ * The splash screen is drawn by the system before the app can select a color,
  * so it always uses the color of the default setting value.
  */
 internal const val DEFAULT_THEME_COLOR_DARK = "@android:color/black"
@@ -154,17 +154,17 @@ private const val THEME_COLOR_IN_APP = "in-app"
 
 private const val THEME_COLOR_OPTION_DESCRIPTION = "Can be a hex color (#RRGGBB) or a color " +
         "resource reference. Setting a color of either theme applies both while patching and " +
-        "removes the background color setting from the app."
+        "removes the in-app theme color settings."
 
 /**
- * Dark theme background color of the YouTube and YT Music Theme patch.
+ * Dark theme color of the YouTube and YT Music Theme patch.
  *
  * A color that is set here is what a user of an old device needs: the splash screen the system
- * draws uses it on every Android version, and nothing is generated for the backgrounds that
+ * draws uses it on every Android version, and nothing is generated for the colors that
  * could otherwise be selected in the app settings.
  */
-internal val darkThemeBackgroundColorOption = colorOption(
-    key = "darkThemeBackgroundColor",
+internal val darkThemeColorOption = colorOption(
+    key = "darkThemeColor",
     default = THEME_COLOR_IN_APP,
     values = mapOf(
         "Change in the app" to THEME_COLOR_IN_APP,
@@ -183,17 +183,17 @@ internal val darkThemeBackgroundColorOption = colorOption(
         "Dark orange" to "#291800",
         "Dark red" to "#290000",
     ),
-    title = "Dark theme background color",
+    title = "Dark theme color",
     description = THEME_COLOR_OPTION_DESCRIPTION
 )
 
 /**
- * Light theme background color of the YouTube Theme patch.
+ * Light theme color of the YouTube Theme patch.
  *
- * @see darkThemeBackgroundColorOption
+ * @see darkThemeColorOption
  */
-internal val lightThemeBackgroundColorOption = colorOption(
-    key = "lightThemeBackgroundColor",
+internal val lightThemeColorOption = colorOption(
+    key = "lightThemeColor",
     default = THEME_COLOR_IN_APP,
     values = mapOf(
         "Change in the app" to THEME_COLOR_IN_APP,
@@ -210,7 +210,7 @@ internal val lightThemeBackgroundColorOption = colorOption(
         "Light orange" to "#FFE6CC",
         "Light red" to "#FFD6D6",
     ),
-    title = "Light theme background color",
+    title = "Light theme color",
     description = THEME_COLOR_OPTION_DESCRIPTION
 )
 
@@ -218,31 +218,31 @@ internal val lightThemeBackgroundColorOption = colorOption(
  * Setting the color of one theme of an app that has two applies both, otherwise one theme could
  * still be changed while the app runs and the other one not.
  */
-internal val usePatchedBackgroundColor: Boolean
-    get() = darkThemeBackgroundColorOption.value != THEME_COLOR_IN_APP ||
-            lightThemeBackgroundColorOption.value != THEME_COLOR_IN_APP
+internal val usePatchedThemeColor: Boolean
+    get() = darkThemeColorOption.value != THEME_COLOR_IN_APP ||
+            lightThemeColorOption.value != THEME_COLOR_IN_APP
 
-internal val patchedBackgroundColorDark: String
-    get() = patchedBackgroundColor(
-        darkThemeBackgroundColorOption.value, appBackgroundColorDark, DEFAULT_THEME_COLOR_DARK
+internal val patchedThemeColorDark: String
+    get() = patchedThemeColor(
+        darkThemeColorOption.value, appThemeColorDark, DEFAULT_THEME_COLOR_DARK
     )
 
-internal val patchedBackgroundColorLight: String
-    get() = patchedBackgroundColor(
-        lightThemeBackgroundColorOption.value, appBackgroundColorLight, DEFAULT_THEME_COLOR_LIGHT
+internal val patchedThemeColorLight: String
+    get() = patchedThemeColor(
+        lightThemeColorOption.value, appThemeColorLight, DEFAULT_THEME_COLOR_LIGHT
     )
 
 /**
- * @param appColor The color the app uses for the background of this theme, which the resource
+ * @param appColor The color the app uses for the color of this theme, which the resource
  *                 patch fills in.
  * @param default  The value the app setting defaults to, which the splash screen has to use
- *                 while the background can still be changed in the app.
+ *                 while the color can still be changed in the app.
  */
-private fun patchedBackgroundColor(value: String?, appColor: String?, default: String) = when {
+private fun patchedThemeColor(value: String?, appColor: String?, default: String) = when {
     value != null && value != THEME_COLOR_IN_APP -> value
     // A theme that is left to the app keeps the color of the app, so that applying the color of
     // one theme does not change the other one as well.
-    usePatchedBackgroundColor -> appColor ?: default
+    usePatchedThemeColor -> appColor ?: default
     else -> default
 }
 
@@ -276,21 +276,21 @@ private fun validateColorName(colorString: String): Boolean {
 }
 
 /**
- * The color the app themes use for the 'ytBaseBackground' attribute, which is the background
+ * The color the app themes use for the 'ytBaseBackground' attribute, which is the color
  * of the app. Morphe dialogs and settings use the same color so that both always match.
  */
 private const val APP_COLOR_NAME_DARK = "yt_sys_color_baseline_mobile_dark_default_base_background"
 private const val APP_COLOR_NAME_LIGHT = "yt_sys_color_baseline_mobile_light_default_base_background"
 
 /**
- * The app renamed the color of its background, so the names are listed newest first and the one
+ * The app renamed the colors, so the names are listed newest first and the one
  * this app version declares is used.
  */
 private val APP_COLOR_NAMES_DARK = listOf(APP_COLOR_NAME_DARK, "yt_black3")
 private val APP_COLOR_NAMES_LIGHT = listOf(APP_COLOR_NAME_LIGHT, "yt_white1")
 
 /**
- * The color resources of each theme that this app version has, with the background of the app
+ * The color resources of each theme that this app version has, with the color of the app
  * first. Filled in by the resource patch, which the patch that hands them to the extension
  * depends on.
  */
@@ -298,10 +298,10 @@ private var darkColorNames = emptyList<String>()
 private var lightColorNames = emptyList<String>()
 
 /**
- * The color the unpatched app uses for the background of each theme, filled in with the names.
+ * The color the unpatched app uses for the color of each theme, filled in with the names.
  */
-private var appBackgroundColorDark: String? = null
-private var appBackgroundColorLight: String? = null
+private var appThemeColorDark: String? = null
+private var appThemeColorLight: String? = null
 
 /**
  * The alias colors of each theme that this app version has.
@@ -326,7 +326,7 @@ internal val THEME_DEFAULT_COLOR_NAMES_LIGHT = setOf(
 
 /**
  * Hooks every context of the app so the app resources resolve
- * with the background colors selected in the app settings.
+ * with the theme colors selected in the app settings.
  */
 private val themeColorContextHookPatch = bytecodePatch {
     execute {
@@ -353,18 +353,18 @@ private val themeColorContextHookPatch = bytecodePatch {
  */
 internal fun baseThemePatch(
     extensionClassDescriptor: String,
-    includeLightBackground: Boolean = false,
+    includeLightColor: Boolean = false,
     useModernLithoColorHook: BytecodePatchBuilder.() -> Boolean,
     block: BytecodePatchBuilder.() -> Unit,
     executeBlock: BytecodePatchContext.() -> Unit = {}
 ) = bytecodePatch(
     name = "Theme",
-    description = "Adds options for theming, and adds a setting to change the app background color.",
+    description = "Adds options for theming, and settings to change the app foreground and background colors.",
 ) {
-    darkThemeBackgroundColorOption()
+    darkThemeColorOption()
 
-    if (includeLightBackground) {
-        lightThemeBackgroundColorOption()
+    if (includeLightColor) {
+        lightThemeColorOption()
     }
 
     block()
@@ -381,34 +381,34 @@ internal fun baseThemePatch(
 
         setExtensionIsPatchIncluded(THEME_COLOR_EXTENSION_CLASS)
 
-        if (usePatchedBackgroundColor) {
+        if (usePatchedThemeColor) {
             overrideThemeColors(
-                if (includeLightBackground) patchedBackgroundColorLight else null,
-                patchedBackgroundColorDark
+                if (includeLightColor) patchedThemeColorLight else null,
+                patchedThemeColorDark
             )
 
-            PatchedBackgroundColorDarkFingerprint.method.returnEarly(patchedBackgroundColorDark)
-            if (includeLightBackground) {
-                PatchedBackgroundColorLightFingerprint.method
-                    .returnEarly(patchedBackgroundColorLight)
+            PatchedThemeColorDarkFingerprint.method.returnEarly(patchedThemeColorDark)
+            if (includeLightColor) {
+                PatchedThemeColorLightFingerprint.method
+                    .returnEarly(patchedThemeColorLight)
             }
         } else {
-            verifyBackgrounds("ThemeColorDark", THEME_BACKGROUNDS_DARK)
-            if (includeLightBackground) {
-                verifyBackgrounds("ThemeColorLight", THEME_BACKGROUNDS_LIGHT)
+            verifyColors("ThemeColorDark", THEME_COLORS_DARK)
+            if (includeLightColor) {
+                verifyColors("ThemeColorLight", THEME_COLORS_LIGHT)
             }
 
-            // Morphe dialogs and settings use the background color of the app, and the color
-            // resources resolve to the background that is selected in the app settings.
+            // Morphe dialogs and settings use the theme color of the app, and the color
+            // resources resolve to the color that is selected in the app settings.
             overrideThemeColors(
-                if (includeLightBackground) THEME_BACKGROUND_COLOR_LIGHT else null,
-                THEME_BACKGROUND_COLOR_DARK
+                if (includeLightColor) THEME_COLOR_LIGHT else null,
+                THEME_COLOR_DARK
             )
 
-            // A custom background color has no resource variant to select,
+            // A custom theme color has no resource variant to select,
             // so the extension replaces the same colors with an overlay of the app.
             DarkColorResourceNamesFingerprint.method.returnEarly(darkAliasNames.joinToString(","))
-            if (includeLightBackground) {
+            if (includeLightColor) {
                 LightColorResourceNamesFingerprint.method
                     .returnEarly(lightAliasNames.joinToString(","))
             }
@@ -421,13 +421,13 @@ internal fun baseThemePatch(
 }
 
 /**
- * Fails the patch if a background exists in the extension enum and not in the list of the patch,
- * or the other way around. A background is selected by its position in both, so one that is added
- * to only one of them silently shifts every background that follows it.
+ * Fails the patch if a color exists in the extension enum and not in the list of the patch,
+ * or the other way around. A color is selected by its position in both, so one that is added
+ * to only one of them silently shifts every color that follows it.
  */
-private fun BytecodePatchContext.verifyBackgrounds(
+private fun BytecodePatchContext.verifyColors(
     enumName: String,
-    backgrounds: List<ThemeBackground>
+    colors: List<ThemeColor>
 ) {
     val enumType = THEME_COLOR_EXTENSION_CLASS.dropLast(1) + '$' + enumName + ";"
 
@@ -437,10 +437,10 @@ private fun BytecodePatchContext.verifyBackgrounds(
         .map { it.name }
         .toSet()
 
-    val expected = backgrounds.mapTo(mutableSetOf()) { it.value }
+    val expected = colors.mapTo(mutableSetOf()) { it.value }
     if (declared != expected) {
         throw PatchException(
-            "Backgrounds of $enumName do not match the patch. " +
+            "Colors of $enumName do not match the patch. " +
                     "Only in the patch: ${expected - declared}. " +
                     "Only in the extension: ${declared - expected}"
         )
@@ -448,14 +448,14 @@ private fun BytecodePatchContext.verifyBackgrounds(
 }
 
 /**
- * The color resources of a theme that this app version has, with the background of the app first.
+ * The color resources of a theme that this app version has, with the color of the app first.
  *
  * A name the app does not declare would be added to the resources as a color of its own, which
  * then exists in the generated variants and nowhere else. The extension shows the color of a
- * background using the first name, and for the background of the app itself there is no variant
+ * theme using the first name, and for the color of the app itself there is no variant
  * to read it from, so such a color cannot be resolved at all.
  *
- * @param appColorNames The name the app uses for its own background, newest version first.
+ * @param appColorNames The name the app uses for its own color, newest version first.
  */
 private fun themeColorNames(
     appColorNames: List<String>,
@@ -463,7 +463,7 @@ private fun themeColorNames(
     declaredColors: Map<String, String>
 ): List<String> {
     val appColorName = appColorNames.firstOrNull { it in declaredColors }
-        ?: throw PatchException("Could not find the background color of the app: $appColorNames")
+        ?: throw PatchException("Could not find the theme color of the app: $appColorNames")
 
     return (listOf(appColorName) + colorNames).distinct().filter { it in declaredColors }
 }
@@ -514,89 +514,89 @@ private fun resolveColorValue(color: String, colorValues: Map<String, String>): 
 }
 
 /**
- * Adds a color variant of the app background for every value that can be selected in the app
+ * Adds a color variant of the app color for every value that can be selected in the app
  * settings. The variants are qualified with 'mcc' and 'mnc' because the app itself ignores both,
  * and the extension selects one of them by overriding the configuration of the app contexts.
  */
 internal fun baseThemeResourcePatch(
     colorNamesDark: (() -> Set<String>) = { THEME_DEFAULT_COLOR_NAMES_DARK },
     colorNamesLight: (() -> Set<String>) = { THEME_DEFAULT_COLOR_NAMES_LIGHT },
-    includeLightBackground: Boolean = false,
+    includeLightColor: Boolean = false,
     splashScreenThemeParent: String? = null
 ) = resourcePatch {
     execute {
         val colorFiles = colorFiles()
         val declaredColors = declaredColors(colorFiles)
         darkColorNames = themeColorNames(APP_COLOR_NAMES_DARK, colorNamesDark(), declaredColors)
-        lightColorNames = if (includeLightBackground) {
+        lightColorNames = if (includeLightColor) {
             themeColorNames(APP_COLOR_NAMES_LIGHT, colorNamesLight(), declaredColors)
         } else {
             emptyList()
         }
 
-        appBackgroundColorDark = declaredColors[darkColorNames.first()]
-        appBackgroundColorLight = lightColorNames.firstOrNull()?.let { declaredColors[it] }
+        appThemeColorDark = declaredColors[darkColorNames.first()]
+        appThemeColorLight = lightColorNames.firstOrNull()?.let { declaredColors[it] }
 
-        // A color that is set while patching is the only background the app can have,
+        // A color that is set while patching is the only color the app can have,
         // so none of the variants and themes below are of any use.
-        if (usePatchedBackgroundColor) {
-            replaceBackgroundColors(colorFiles, declaredColors, includeLightBackground)
+        if (usePatchedThemeColor) {
+            replaceColors(colorFiles, declaredColors, includeLightColor)
             return@execute
         }
 
         verifySettingEntries(
-            "morphe_theme_background_dark", "values/shared-youtube/arrays.xml",
-            THEME_BACKGROUNDS_DARK
+            "morphe_theme_color_dark", "values/shared-youtube/arrays.xml",
+            THEME_COLORS_DARK
         )
 
-        if (includeLightBackground) {
+        if (includeLightColor) {
             verifySettingEntries(
-                "morphe_theme_background_light", "values/youtube/arrays.xml",
-                THEME_BACKGROUNDS_LIGHT
+                "morphe_theme_color_light", "values/youtube/arrays.xml",
+                THEME_COLORS_LIGHT
             )
         }
 
-        val aliasAlphas = addBackgroundColorAliases(colorFiles, declaredColors, includeLightBackground)
+        val aliasAlphas = addColorAliases(colorFiles, declaredColors, includeLightColor)
         
-        val darkAliasAlphas = aliasAlphas.filterKeys { isDarkThemeBackgroundColorAlias(it) }
+        val darkAliasAlphas = aliasAlphas.filterKeys { isDarkThemeColorAlias(it) }
         darkAliasNames = darkAliasAlphas.keys.toList()
-        addBackgroundColorVariants(
-            THEME_INDEX_OFFSET_DARK, THEME_BACKGROUNDS_DARK, PALETTE_LEVELS_DARK,
+        addColorVariants(
+            THEME_INDEX_OFFSET_DARK, THEME_COLORS_DARK, PALETTE_LEVELS_DARK,
             darkAliasAlphas, true
         )
 
-        if (includeLightBackground) {
-            val lightAliasAlphas = aliasAlphas.filterKeys { !isDarkThemeBackgroundColorAlias(it) }
+        if (includeLightColor) {
+            val lightAliasAlphas = aliasAlphas.filterKeys { !isDarkThemeColorAlias(it) }
             lightAliasNames = lightAliasAlphas.keys.toList()
-            addBackgroundColorVariants(
-                THEME_INDEX_OFFSET_LIGHT, THEME_BACKGROUNDS_LIGHT, PALETTE_LEVELS_LIGHT,
+            addColorVariants(
+                THEME_INDEX_OFFSET_LIGHT, THEME_COLORS_LIGHT, PALETTE_LEVELS_LIGHT,
                 lightAliasAlphas, false
             )
         }
 
         declareOverlayableColors(
-            if (includeLightBackground) {
-                listOf(THEME_BACKGROUND_COLOR_DARK, THEME_BACKGROUND_COLOR_LIGHT)
+            if (includeLightColor) {
+                listOf(THEME_COLOR_DARK, THEME_COLOR_LIGHT)
             } else {
-                listOf(THEME_BACKGROUND_COLOR_DARK)
+                listOf(THEME_COLOR_DARK)
             }
         )
 
         // An app without a launcher theme keeps the splash screen it draws itself.
         if (splashScreenThemeParent != null) {
-            addSplashScreenThemes(splashScreenThemeParent, includeLightBackground)
+            addSplashScreenThemes(splashScreenThemeParent, includeLightColor)
         }
     }
 }
 
 /**
- * Fails the patch if the setting entries of a background do not match the backgrounds of the
- * patch. The app settings show the color of a background by its position in both lists.
+ * Fails the patch if the setting entries of a color do not match the colors of the
+ * patch. The app settings show the color of a color by its position in both lists.
  */
 private fun ResourcePatchContext.verifySettingEntries(
     key: String,
     resourcePath: String,
-    backgrounds: List<ThemeBackground>
+    colors: List<ThemeColor>
 ) {
     val stream = inputStreamFromBundledResource("addresources", resourcePath)
         ?: throw PatchException("Could not find the setting entries: $resourcePath")
@@ -611,33 +611,33 @@ private fun ResourcePatchContext.verifySettingEntries(
         }
     }
 
-    val values = backgrounds.map { it.value }
+    val values = colors.map { it.value }
     if (arrays["${key}_entry_values"] != values) {
         throw PatchException("The entry values of $key do not match the patch: $values")
     }
 
-    // The name of a background is shown by the position it has in the values.
+    // The name of a color is shown by the position it has in the values.
     if (arrays["${key}_entries"]?.size != values.size) {
         throw PatchException("The entries of $key do not match the entry values")
     }
 }
 
 /**
- * Gives the background colors of the app the color that is set as a patch option, which is what
- * the Theme patch did before the background could be changed in the app settings.
+ * Gives the theme colors of the app the color that is set as a patch option, which is what
+ * the Theme patch did before the color could be changed in the app settings.
  */
-private fun ResourcePatchContext.replaceBackgroundColors(
+private fun ResourcePatchContext.replaceColors(
     colorFiles: List<String>,
     declaredColors: Map<String, String>,
-    includeLightBackground: Boolean
+    includeLightCOlor: Boolean
 ) {
-    val darkColor = patchedBackgroundColorDark
+    val darkColor = patchedThemeColorDark
     if (!validateColorName(darkColor)) {
         throw PatchException("Invalid dark theme color: $darkColor")
     }
 
-    val lightColor = patchedBackgroundColorLight
-    if (includeLightBackground && !validateColorName(lightColor)) {
+    val lightColor = patchedThemeColorLight
+    if (includeLightCOlor && !validateColorName(lightColor)) {
         throw PatchException("Invalid light theme color: $lightColor")
     }
 
@@ -659,17 +659,17 @@ private fun ResourcePatchContext.replaceBackgroundColors(
 }
 
 /**
- * Adds a theme for every background, which the system can draw the splash screen of the app with.
+ * Adds a theme for every color, which the system can draw the splash screen of the app with.
  *
  * The splash screen is drawn before the app runs and with the configuration of the device, so the
- * resource variant of the selected background is never used for it. The extension hands one of
+ * resource variant of the selected color is never used for it. The extension hands one of
  * these themes to the system instead, and the system draws the splash screen with it from then on.
  *
  * @param parentStyle The theme of the launcher activity, so that only the color of it differs.
  */
 private fun ResourcePatchContext.addSplashScreenThemes(
     parentStyle: String,
-    includeLightBackground: Boolean
+    includeLightColor: Boolean
 ) {
     document("res/values/styles.xml").use { document ->
         val resources = document.getNode("resources")
@@ -698,41 +698,41 @@ private fun ResourcePatchContext.addSplashScreenThemes(
 
         fun addThemes(
             indexOffset: Int,
-            backgrounds: List<ThemeBackground>,
+            colors: List<ThemeColor>,
             levels: IntArray,
             aliasName: String
         ) {
             // The system resolves the splash screen with the configuration of the device, where
             // no variant applies, so the alias of the app default is the unpatched color there.
-            themeColors(indexOffset, backgrounds, levels, "@color/$aliasName")
+            themeColors(indexOffset, colors, levels, "@color/$aliasName")
                 .forEach { (index, color) -> addTheme(index, color) }
         }
 
         addThemes(
-            THEME_INDEX_OFFSET_DARK, THEME_BACKGROUNDS_DARK, PALETTE_LEVELS_DARK,
-            THEME_BACKGROUND_COLOR_DARK
+            THEME_INDEX_OFFSET_DARK, THEME_COLORS_DARK, PALETTE_LEVELS_DARK,
+            THEME_COLOR_DARK
         )
-        if (includeLightBackground) {
+        if (includeLightColor) {
             addThemes(
-                THEME_INDEX_OFFSET_LIGHT, THEME_BACKGROUNDS_LIGHT, PALETTE_LEVELS_LIGHT,
-                THEME_BACKGROUND_COLOR_LIGHT
+                THEME_INDEX_OFFSET_LIGHT, THEME_COLORS_LIGHT, PALETTE_LEVELS_LIGHT,
+                THEME_COLOR_LIGHT
             )
         }
     }
 }
 
 /**
- * Declares the background colors as overlayable, which an overlay the app registers for itself
- * requires. Without this the system rejects the overlay of a custom background color.
+ * Declares the theme colors as overlayable, which an overlay the app registers for itself
+ * requires. Without this the system rejects the overlay of a custom theme color.
  */
 private fun ResourcePatchContext.declareOverlayableColors(colorNames: List<String>) {
     // A policy item is resolved while encoding, and every name is one of the app declares.
     if (colorNames.isEmpty()) {
-        throw PatchException("Could not find any background color to declare as overlayable")
+        throw PatchException("Could not find any theme color to declare as overlayable")
     }
 
     val overlayable = buildString {
-        appendLine("    <overlayable name=\"$THEME_BACKGROUND_OVERLAYABLE_NAME\">")
+        appendLine("    <overlayable name=\"$THEME_COLOR_OVERLAYABLE_NAME\">")
         appendLine("        <policy type=\"public\">")
         colorNames.forEach { name ->
             appendLine("            <item type=\"color\" name=\"$name\" />")
@@ -760,24 +760,24 @@ private fun ResourcePatchContext.declareOverlayableColors(colorNames: List<Strin
 }
 
 /**
- * The color of every background the extension can ask for, mapped to the index it asks with.
+ * The color of every theme the extension can ask for, mapped to the index it asks with.
  * The color variants and the splash screen themes are both generated from this.
  *
- * @param appDefaultColor Color of the background of the app itself, or null to leave it out
+ * @param appDefaultColor Color of the theme of the app itself, or null to leave it out
  *                        because it keeps the color the app declares.
  */
 private fun themeColors(
     indexOffset: Int,
-    backgrounds: List<ThemeBackground>,
+    colors: List<ThemeColor>,
     levels: IntArray,
     appDefaultColor: String? = null
 ): Map<Int, String> = buildMap {
-    backgrounds.forEachIndexed { index, background ->
+    colors.forEachIndexed { index, themeColor ->
         // A color the user picks is not known while patching, and the palette below is used
         // for it instead.
-        val color = background.color ?: if (index == 0) appDefaultColor else null
+        val color = themeColor.color ?: if (index == 0) appDefaultColor else null
 
-        // The configuration value of a background is its index plus one,
+        // The configuration value of a theme is its index plus one,
         // and the extension uses the same numbering.
         if (color != null) {
             put(indexOffset + index + 1, color)
@@ -792,14 +792,14 @@ private fun themeColors(
 /**
  * @param aliasAlphas The alpha channel of each alias color.
  */
-private fun ResourcePatchContext.addBackgroundColorVariants(
+private fun ResourcePatchContext.addColorVariants(
     indexOffset: Int,
-    backgrounds: List<ThemeBackground>,
+    colors: List<ThemeColor>,
     levels: IntArray,
     aliasAlphas: Map<String, Int>,
     isDark: Boolean
 ) {
-    // The app default is the only background that keeps the colors the app declares,
+    // The app default is the only color that keeps the colors the app declares,
     // so it is the only variant that has to undo the alias.
     val originalColors = LinkedHashMap<String, String>()
     document("res/values/colors.xml").use { document ->
@@ -813,14 +813,14 @@ private fun ResourcePatchContext.addBackgroundColorVariants(
     }
     writeColorVariant(indexOffset + 1, originalColors, isDark)
 
-    themeColors(indexOffset, backgrounds, levels).forEach { (index, color) ->
-        val colors = aliasAlphas.mapValues { (_, alpha) -> applyAlpha(color, alpha) }
-        writeColorVariant(index, colors, isDark)
+    themeColors(indexOffset, colors, levels).forEach { (index, color) ->
+        val mappedColors = aliasAlphas.mapValues { (_, alpha) -> applyAlpha(color, alpha) }
+        writeColorVariant(index, mappedColors, isDark)
     }
 }
 
 /**
- * Gives every background color of the app the value of a single color, which the generated
+ * Gives every theme color of the app the value of a single color, which the generated
  * variants then declare instead of every name.
  *
  * The app keeps resolving the names it always did, including the ones its own code reads by id,
@@ -828,13 +828,13 @@ private fun ResourcePatchContext.addBackgroundColorVariants(
  *
  * @param colorFiles             All color resource files.
  * @param declaredColors         The names and values of every color the app declares.
- * @param includeLightBackground If the light theme has its own background color.
+ * @param includeLightColor      If the light theme has its own theme color.
  * @return The alpha channel of each alias color.
  */
-private fun ResourcePatchContext.addBackgroundColorAliases(
+private fun ResourcePatchContext.addColorAliases(
     colorFiles: List<String>,
     declaredColors: Map<String, String>,
-    includeLightBackground: Boolean
+    includeLightColor: Boolean
 ): Map<String, Int> {
     val aliasAlphas = LinkedHashMap<String, Int>()
 
@@ -845,8 +845,8 @@ private fun ResourcePatchContext.addBackgroundColorAliases(
             resources.forEachChildElement { color ->
                 val name = color.getAttribute("name")
                 val aliasBaseName = when (name) {
-                    in darkColorNames -> THEME_BACKGROUND_COLOR_DARK
-                    in lightColorNames -> if (includeLightBackground) THEME_BACKGROUND_COLOR_LIGHT else null
+                    in darkColorNames -> THEME_COLOR_DARK
+                    in lightColorNames -> if (includeLightColor) THEME_COLOR_LIGHT else null
                     else -> null
                 } ?: return@forEachChildElement
 
@@ -863,7 +863,7 @@ private fun ResourcePatchContext.addBackgroundColorAliases(
         }
     }
 
-    // Without a variant the alias resolves to the background of the unpatched app, which is
+    // Without a variant the alias resolves to the color of the unpatched app, which is
     // what the system draws the splash screen of the app default with.
     document("res/values/colors.xml").use { document ->
         val resources = document.getNode("resources")
@@ -874,7 +874,7 @@ private fun ResourcePatchContext.addBackgroundColorAliases(
                     setAttribute("name", name)
 
                     // The color is the unpatched color of the app.
-                    val originalColor = if (isDarkThemeBackgroundColorAlias(name)) {
+                    val originalColor = if (isDarkThemeColorAlias(name)) {
                         DEFAULT_THEME_COLOR_DARK
                     } else {
                         DEFAULT_THEME_COLOR_LIGHT
@@ -888,8 +888,8 @@ private fun ResourcePatchContext.addBackgroundColorAliases(
     return aliasAlphas
 }
 
-private fun isDarkThemeBackgroundColorAlias(aliasName: String) =
-    aliasName.startsWith(THEME_BACKGROUND_COLOR_DARK)
+private fun isDarkThemeColorAlias(aliasName: String) =
+    aliasName.startsWith(THEME_COLOR_DARK)
 
 /**
  * @param color #AARRGGBB, #RRGGBB, or an Android color resource reference.

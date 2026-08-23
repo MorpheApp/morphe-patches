@@ -46,7 +46,7 @@ public abstract class BaseThemePatch {
         // With the background of the app itself the app is left alone. Otherwise, a component
         // such as the chip bar of the feed is given the color of another background of the app.
         // It then shows as a lighter gray than it does unpatched.
-        if (ThemeColorPatch.isAppDefaultBackground()) {
+        if (ThemeColorPatch.isAppDefaultColor()) {
             return originalValue;
         }
 
@@ -56,7 +56,7 @@ public abstract class BaseThemePatch {
         int[] values = dark ? darkValues : lightValues;
 
         if (values != null && anyEquals(originalValue, values)) {
-            return ThemeColorPatch.backgroundColor(dark);
+            return ThemeColorPatch.themeColor(dark);
         }
 
         return originalValue;
