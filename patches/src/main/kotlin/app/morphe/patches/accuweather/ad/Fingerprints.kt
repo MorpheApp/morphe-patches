@@ -33,3 +33,15 @@ internal object AppOpenAdClassFingerprint : Fingerprint(
         string("internalAppOpenAd")
     )
 )
+
+/**
+ * The banner/MPU ad view (a `FrameLayout` that holds an `AdSize` and measures
+ * itself to the ad's size). It is resolved by the retained parameter-name
+ * string "newSize" - unique to this class - so its `onMeasure` can be collapsed
+ * to a zero-size measure, hiding the banner.
+ */
+internal object BannerAdViewFingerprint : Fingerprint(
+    filters = listOf(
+        string("newSize")
+    )
+)
