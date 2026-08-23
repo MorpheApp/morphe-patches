@@ -466,9 +466,9 @@ internal fun baseThemeResourcePatch(
             THEME_BACKGROUNDS_DARK
         )
         addBackgroundColorVariants(
-            THEME_INDEX_OFFSET_DARK, THEME_BACKGROUNDS_DARK, darkColorNames, true
+            THEME_INDEX_OFFSET_DARK, THEME_BACKGROUNDS_DARK, PALETTE_LEVELS_DARK,
+            darkColorNames, true
         )
-        add9BitColorVariants(THEME_INDEX_OFFSET_DARK, PALETTE_LEVELS_DARK, darkColorNames, true)
 
         if (includeLightBackground) {
             verifySettingEntries(
@@ -476,9 +476,9 @@ internal fun baseThemeResourcePatch(
                 THEME_BACKGROUNDS_LIGHT
             )
             addBackgroundColorVariants(
-                THEME_INDEX_OFFSET_LIGHT, THEME_BACKGROUNDS_LIGHT, lightColorNames, false
+                THEME_INDEX_OFFSET_LIGHT, THEME_BACKGROUNDS_LIGHT, PALETTE_LEVELS_LIGHT,
+                lightColorNames, false
             )
-            add9BitColorVariants(THEME_INDEX_OFFSET_LIGHT, PALETTE_LEVELS_LIGHT, lightColorNames, false)
         }
 
         declareOverlayableColors(darkColorNames + lightColorNames)
@@ -592,26 +592,11 @@ private fun ResourcePatchContext.addSplashScreenThemes(
             levels: IntArray,
             colorNames: List<String>
         ) {
-            backgrounds.forEachIndexed { index, background ->
-                val color = background.color
-                if (color != null) {
-                    addTheme(indexOffset + index + 1, color)
-                } else if (index == 0) {
-                    // The background of the app itself, which keeps the color the app declares.
-                    // The system resolves the theme with the configuration of the device, where
-                    // no variant of a background applies, so this is the unpatched color.
-                    addTheme(indexOffset + 1, "@color/" + colorNames.first())
-                }
-                // A color the user picks is not known while patching, and the palette below is
-                // used for it instead.
-            }
-
-            for (index in 0 until 512) {
-                addTheme(
-                    indexOffset + PALETTE_INDEX_OFFSET + index,
-                    paletteColor(levels, index)
-                )
-            }
+            // The background of the app itself keeps the color the app declares. It has no
+            // resource variant, but it does need a theme, because the system resolves the
+            // splash screen with the configuration of the device.
+            themeColors(indexOffset, backgrounds, levels, "@color/" + colorNames.first())
+                .forEach { (index, color) -> addTheme(index, color) }
         }
 
         addThemes(
@@ -664,9 +649,40 @@ private fun ResourcePatchContext.declareOverlayableColors(colorNames: List<Strin
     }
 }
 
+/**
+ * The color of every background the extension can ask for, mapped to the index it asks with.
+ * The color variants and the splash screen themes are both generated from this.
+ *
+ * @param appDefaultColor Color of the background of the app itself, or null to leave it out
+ *                        because it keeps the color the app declares.
+ */
+private fun themeColors(
+    indexOffset: Int,
+    backgrounds: List<ThemeBackground>,
+    levels: IntArray,
+    appDefaultColor: String? = null
+): Map<Int, String> = buildMap {
+    backgrounds.forEachIndexed { index, background ->
+        // A color the user picks is not known while patching, and the palette below is used
+        // for it instead.
+        val color = background.color ?: if (index == 0) appDefaultColor else null
+
+        // The configuration value of a background is its index plus one,
+        // and the extension uses the same numbering.
+        if (color != null) {
+            put(indexOffset + index + 1, color)
+        }
+    }
+
+    for (index in 0 until 512) {
+        put(indexOffset + PALETTE_INDEX_OFFSET + index, paletteColor(levels, index))
+    }
+}
+
 private fun ResourcePatchContext.addBackgroundColorVariants(
     indexOffset: Int,
     backgrounds: List<ThemeBackground>,
+    levels: IntArray,
     colorNames: List<String>,
     isDark: Boolean
 ) {
@@ -674,26 +690,8 @@ private fun ResourcePatchContext.addBackgroundColorVariants(
         throw PatchException("No color to replace for the app background")
     }
 
-    backgrounds.forEachIndexed { index, background ->
-        // The app default has no variant of its own.
-        val color = background.color ?: return@forEachIndexed
-
-        // The configuration value of a background is its index plus one,
-        // and the extension uses the same numbering.
-        writeBackgroundColorVariant(indexOffset + index + 1, color, colorNames, isDark)
-    }
-}
-
-private fun ResourcePatchContext.add9BitColorVariants(
-    indexOffset: Int,
-    levels: IntArray,
-    colorNames: List<String>,
-    isDark: Boolean
-) {
-    for (index in 0 until 512) {
-        writeBackgroundColorVariant(
-            indexOffset + PALETTE_INDEX_OFFSET + index, paletteColor(levels, index), colorNames, isDark
-        )
+    themeColors(indexOffset, backgrounds, levels).forEach { (index, color) ->
+        writeBackgroundColorVariant(index, color, colorNames, isDark)
     }
 }
 
