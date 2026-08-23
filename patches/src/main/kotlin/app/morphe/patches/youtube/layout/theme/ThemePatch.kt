@@ -254,7 +254,8 @@ val themePatch = baseThemePatch(
                         "morphe_theme_background_light_custom_color",
                         tag = "app.morphe.extension.shared.settings.preference.ColorPickerPreference",
                         inputType = InputType.TEXT_CAP_CHARACTERS
-                    )
+                    ),
+                    SwitchPreference("morphe_theme_background_change_foreground")
                 )
             )
         }

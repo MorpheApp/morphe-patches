@@ -7,6 +7,7 @@
 
 package app.morphe.extension.shared.theme;
 
+import static app.morphe.extension.shared.settings.SharedYouTubeSettings.THEME_BACKGROUND_CHANGE_FOREGROUND;
 import static app.morphe.extension.shared.settings.SharedYouTubeSettings.THEME_BACKGROUND_DARK;
 import static app.morphe.extension.shared.settings.SharedYouTubeSettings.THEME_BACKGROUND_DARK_CUSTOM_COLOR;
 import static app.morphe.extension.shared.settings.SharedYouTubeSettings.THEME_BACKGROUND_LIGHT;
@@ -195,6 +196,19 @@ public class ThemeColorPatch {
         }
     }
 
+    public static class ChangeForegroundColorAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return !THEME_BACKGROUND_LIGHT.isSetToDefault() || !THEME_BACKGROUND_DARK.isSetToDefault();
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(THEME_BACKGROUND_LIGHT, THEME_BACKGROUND_DARK);
+        }
+    }
+
+
     /**
      * Config value of {@code APP_DEFAULT}. No resource variant uses it, so the app colors are used.
      */
@@ -304,8 +318,13 @@ public class ThemeColorPatch {
                 THEME_LAST_USED_DARK_MODE.save(dark);
             }
 
-            final int darkIndex = darkConfigValue;
-            final int lightIndex = lightConfigValue;
+            final boolean changeForeground = THEME_BACKGROUND_CHANGE_FOREGROUND.get();
+            final int darkIndex = dark || changeForeground
+                    ? darkConfigValue
+                    : DARK_INDEX_OFFSET + APP_DEFAULT_CONFIG_VALUE;
+            final int lightIndex = !dark || changeForeground
+                    ? lightConfigValue
+                    : LIGHT_INDEX_OFFSET + APP_DEFAULT_CONFIG_VALUE;
 
             Context context;
             if (configuration.mcc == mobileCountryCode(darkIndex)
@@ -320,7 +339,7 @@ public class ThemeColorPatch {
             }
 
             if (isCustomBackgroundSupported()) {
-                ThemeColorOverlay.applyTo(context);
+                ThemeColorOverlay.applyTo(context, dark, changeForeground);
             }
 
             resolveBackgroundColors(context);
@@ -644,9 +663,15 @@ public class ThemeColorPatch {
             // variant is selected the same way the app selects the background it uses.
             Configuration configuration = new Configuration(context.getResources().getConfiguration());
             final int configValue = configValue(background, dark);
+            final boolean changeForeground = THEME_BACKGROUND_CHANGE_FOREGROUND.get();
+
             setVariantOf(configuration,
-                    dark ? configValue : darkConfigValue,
-                    dark ? lightConfigValue : configValue);
+                    dark || changeForeground
+                            ? (dark ? configValue : darkConfigValue)
+                            : DARK_INDEX_OFFSET + APP_DEFAULT_CONFIG_VALUE,
+                    !dark || changeForeground
+                            ? (!dark ? configValue : lightConfigValue)
+                            : LIGHT_INDEX_OFFSET + APP_DEFAULT_CONFIG_VALUE);
 
             String resourceName = backgroundColorResourceName(dark);
             if (resourceName.isEmpty()) {
