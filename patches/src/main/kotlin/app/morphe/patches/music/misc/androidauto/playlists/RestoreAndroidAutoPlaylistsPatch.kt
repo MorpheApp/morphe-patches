@@ -52,6 +52,8 @@ private const val EXTENSION_SECTION_LIST_INTERFACE =
     $$"Lapp/morphe/extension/music/patches/RestoreAndroidAutoPlaylistsPatch$SectionList;"
 private const val EXTENSION_PLAYLIST_GRID_INTERFACE =
     $$"Lapp/morphe/extension/music/patches/RestoreAndroidAutoPlaylistsPatch$PlaylistGrid;"
+private const val EXTENSION_PLAYLIST_SHELF_INTERFACE =
+    $$"Lapp/morphe/extension/music/patches/RestoreAndroidAutoPlaylistsPatch$PlaylistShelf;"
 private const val EXTENSION_LOAD_CHILDREN_RESULT_INTERFACE =
     $$"Lapp/morphe/extension/music/patches/RestoreAndroidAutoPlaylistsPatch$LoadChildrenResult;"
 private const val EXTENSION_MUSIC_ITEM_INTERFACE =
@@ -115,6 +117,7 @@ val restoreAndroidAutoPlaylistsPatch = bytecodePatch(
             responseTabsMethod,
             gridItemsMethod,
             gridContinuationsMethod,
+            musicItemType,
             endpointMediaIdMethod,
         )
         patchMusicItem(
@@ -217,6 +220,7 @@ private fun BytecodePatchContext.patchBrowseResponses(
     responseTabsMethod: Method,
     gridItemsMethod: Method,
     gridContinuationsMethod: Method,
+    musicItemType: String,
     endpointMediaIdMethod: Method,
 ) {
     val tabMapperNewInstance = BrowseTabsFingerprint.instructionMatches.last()
@@ -236,6 +240,9 @@ private fun BytecodePatchContext.patchBrowseResponses(
         responseTabsMethod.returnType,
     ).matchAll(2..2)
         .map { match -> match.originalMethod }
+    val playlistItemsMethod = playlistItemsFingerprint(
+        musicItemType,
+    ).originalMethod
     val gridResponseMethod = GridDecoderFingerprint.originalMethod
     val responsePayloadType = gridResponseMethod
         .parameterTypes.single().toString()
@@ -245,8 +252,12 @@ private fun BytecodePatchContext.patchBrowseResponses(
         !AccessFlags.STATIC.isSet(method.accessFlags) && method.parameterTypes.isEmpty() &&
             method.returnType == responsePayloadType
     } ?: throw PatchException("Could not resolve the Browse response payload getter")
-    // The injected PlaylistGrid methods call these private YTM methods.
-    listOf(gridItemsMethod, gridContinuationsMethod).forEach { method ->
+    // The injected PlaylistGrid and PlaylistShelf methods call these private YTM methods.
+    listOf(
+        gridItemsMethod,
+        playlistItemsMethod,
+        gridContinuationsMethod,
+    ).forEach { method ->
         mutableClassDefBy(method.definingClass).findMutableMethodOf(method).apply {
             accessFlags = accessFlags.toPublicAccessFlags()
         }
@@ -262,6 +273,7 @@ private fun BytecodePatchContext.patchBrowseResponses(
     addBrowseTabInterface(sectionListMethod)
     addSectionListInterface(sectionItemMethods)
     addPlaylistGridInterface(gridItemsMethod, gridContinuationsMethod)
+    addPlaylistShelfInterface(playlistItemsMethod)
 }
 
 private fun BytecodePatchContext.addBrowseResponseInterface(
@@ -371,6 +383,27 @@ private fun BytecodePatchContext.addPlaylistGridInterface(
         registerCount = 1,
         instructions = """
             invoke-static { p0 }, $gridContinuationsMethod
+            move-result-object p0
+            return-object p0
+        """,
+    )
+}
+
+private fun BytecodePatchContext.addPlaylistShelfInterface(
+    playlistItemsMethod: Method,
+) {
+    val playlistShelfType = playlistItemsMethod.parameterTypes.first().toString()
+    val playlistShelfClass = mutableClassDefBy(playlistShelfType)
+    playlistShelfClass.interfaces.add(EXTENSION_PLAYLIST_SHELF_INTERFACE)
+    playlistShelfClass.addInterfaceMethod(
+        name = "patch_getItems",
+        parameters = emptyList(),
+        returnType = "Ljava/lang/Iterable;",
+        registerCount = 2,
+        instructions = """
+            const/4 v0, 0x0
+            # false returns extension-161429595 track rows.
+            invoke-static { p0, v0 }, $playlistItemsMethod
             move-result-object p0
             return-object p0
         """,
@@ -546,6 +579,11 @@ private fun BytecodePatchContext.patchMusicItem(
         browseIdDecoderMethod,
         browseEndpointIdField,
     )
+    musicItemClass.addMediaIdGetter(
+        firstEndpointField,
+        secondEndpointField,
+        endpointMediaIdMethod,
+    )
     musicItemClass.addTextGetter("patch_getTitle", titleField, renderTextMethod)
     musicItemClass.addTextGetter("patch_getSubtitle", subtitleField, renderTextMethod)
     musicItemClass.addArtworkUriGetter(
@@ -604,6 +642,45 @@ private fun MutableClass.addBrowseIdGetter(
 
             :use_second_id
             move-object v0, v1
+            :return_id
+            return-object v0
+        """,
+    )
+}
+
+private fun MutableClass.addMediaIdGetter(
+    firstEndpointField: FieldReference,
+    secondEndpointField: FieldReference,
+    endpointMediaIdMethod: Method,
+) {
+    addInterfaceMethod(
+        name = "patch_getMediaId",
+        parameters = emptyList(),
+        returnType = "Ljava/lang/String;",
+        registerCount = 3,
+        instructions = """
+            iget-object v0, p0, $firstEndpointField
+            if-eqz v0, :second_endpoint
+            invoke-static { v0 }, $endpointMediaIdMethod
+            move-result-object v0
+            check-cast v0, Ljava/lang/String;
+            if-eqz v0, :second_endpoint
+            invoke-virtual { v0 }, Ljava/lang/String;->isEmpty()Z
+            move-result v1
+            if-eqz v1, :return_id
+
+            :second_endpoint
+            iget-object v0, p0, $secondEndpointField
+            if-nez v0, :decode_second_endpoint
+            # ART on 9.15.51 otherwise merges this missing-action path with decoded Strings as
+            # Object.
+            const/4 v0, 0x0
+            goto :return_id
+
+            :decode_second_endpoint
+            invoke-static { v0 }, $endpointMediaIdMethod
+            move-result-object v0
+            check-cast v0, Ljava/lang/String;
             :return_id
             return-object v0
         """,
@@ -735,6 +812,7 @@ private fun BytecodePatchContext.patchBrowseService(
             return-object p1
         """,
     )
+
     return browseServiceClass
 }
 

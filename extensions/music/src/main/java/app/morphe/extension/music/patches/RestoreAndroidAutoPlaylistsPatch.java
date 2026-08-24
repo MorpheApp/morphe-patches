@@ -40,6 +40,7 @@ import app.morphe.extension.shared.Utils;
 @SuppressWarnings("unused")
 public final class RestoreAndroidAutoPlaylistsPatch {
     private static final String LIBRARY_BROWSE_ID = "FEmusic_library_landing";
+    private static final String LIKED_MUSIC_BROWSE_ID = "VLLM";
     private static final String EPISODES_FOR_LATER_BROWSE_ID = "VLSE";
     private static final String PLAYLISTS_TITLE_RESOURCE = "library_playlists_shelf_title";
     private static final Executor REQUEST_EXECUTOR = Utils::runOnBackgroundThread;
@@ -72,6 +73,10 @@ public final class RestoreAndroidAutoPlaylistsPatch {
         @Nullable Iterable<?> patch_getContinuations();
     }
 
+    public interface PlaylistShelf {
+        @Nullable Iterable<?> patch_getItems();
+    }
+
     public interface LoadChildrenResult {
         @Nullable String patch_getParentMediaId();
         void patch_sendResult(@NonNull List<MediaBrowserCompat.MediaItem> items);
@@ -79,6 +84,7 @@ public final class RestoreAndroidAutoPlaylistsPatch {
 
     public interface MusicItem {
         @Nullable String patch_getBrowseId();
+        @Nullable String patch_getMediaId();
         @Nullable Uri patch_getArtworkUri();
         @Nullable CharSequence patch_getTitle();
         @Nullable CharSequence patch_getSubtitle();
@@ -249,7 +255,10 @@ public final class RestoreAndroidAutoPlaylistsPatch {
             request.addListener(() -> {
                 try {
                     BrowseResponse response = (BrowseResponse) request.get();
-                    String mediaId = response.patch_getPlaylistMediaId();
+                    // Liked Music (VLLM) has no ButtonRenderer Play command in response.q.
+                    String mediaId = LIKED_MUSIC_BROWSE_ID.equals(playlist.browseId)
+                            ? firstTrackMediaId(response)
+                            : response.patch_getPlaylistMediaId();
                     if (mediaId != null && !mediaId.isEmpty()) {
                         items[itemIndex] = createMediaItem(
                                 mediaId, playlist.title, playlist.subtitle, playlist.artwork);
@@ -275,6 +284,27 @@ public final class RestoreAndroidAutoPlaylistsPatch {
             if (item != null) mediaItems.add(item);
         }
         sendResult(result, mediaItems);
+    }
+
+    private static String firstTrackMediaId(BrowseResponse response) {
+        for (Object tab : response.patch_getTabs()) {
+            SectionList sectionList = (SectionList)
+                    ((BrowseTab) tab).patch_getSectionList();
+            if (sectionList == null) continue;
+            for (Iterable<?> sectionItems : sectionList.patch_getItemLists()) {
+                for (Object shelf : sectionItems) {
+                    if (!(shelf instanceof PlaylistShelf)) continue;
+                    Iterable<?> playlistTracks = ((PlaylistShelf) shelf).patch_getItems();
+                    if (playlistTracks == null) continue;
+                    for (Object track : playlistTracks) {
+                        if (!(track instanceof MusicItem)) continue;
+                        String mediaId = ((MusicItem) track).patch_getMediaId();
+                        if (mediaId != null && !mediaId.isEmpty()) return mediaId;
+                    }
+                }
+            }
+        }
+        return null;
     }
 
     private static String subtitleOrEmpty(MusicItem item) {

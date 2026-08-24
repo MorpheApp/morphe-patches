@@ -269,6 +269,19 @@ internal object GridItemsFingerprint : Fingerprint(
     ),
 )
 
+internal fun playlistItemsFingerprint(musicItemType: String) = Fingerprint(
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
+    returnType = "Ljava/util/List;",
+    parameters = listOf("L", "Z"),
+    filters = listOf(opcode(Opcode.CHECK_CAST)),
+    custom = { method, _ ->
+        method.instructions.any { instruction ->
+            instruction.opcode == Opcode.CHECK_CAST &&
+                instruction.getReference<TypeReference>()?.type == musicItemType
+        }
+    },
+)
+
 internal object GridDecoderFingerprint : Fingerprint(
     classFingerprint = MusicReloadShelfEventFingerprint,
     accessFlags = listOf(
