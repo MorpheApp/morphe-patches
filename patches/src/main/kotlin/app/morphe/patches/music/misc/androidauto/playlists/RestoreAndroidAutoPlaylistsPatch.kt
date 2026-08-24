@@ -42,37 +42,37 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/RestoreAndroidAutoPlaylistsPatch;"
-private const val EXTENSION_BROWSE_SERVICE_INTERFACE =
-    $$"Lapp/morphe/extension/music/patches/RestoreAndroidAutoPlaylistsPatch$BrowseService;"
-private const val EXTENSION_BROWSE_RESPONSE_INTERFACE =
-    $$"Lapp/morphe/extension/music/patches/RestoreAndroidAutoPlaylistsPatch$BrowseResponse;"
-private const val EXTENSION_BROWSE_TAB_INTERFACE =
-    $$"Lapp/morphe/extension/music/patches/RestoreAndroidAutoPlaylistsPatch$BrowseTab;"
-private const val EXTENSION_SECTION_LIST_INTERFACE =
-    $$"Lapp/morphe/extension/music/patches/RestoreAndroidAutoPlaylistsPatch$SectionList;"
-private const val EXTENSION_PLAYLIST_GRID_INTERFACE =
-    $$"Lapp/morphe/extension/music/patches/RestoreAndroidAutoPlaylistsPatch$PlaylistGrid;"
-private const val EXTENSION_PLAYLIST_SHELF_INTERFACE =
-    $$"Lapp/morphe/extension/music/patches/RestoreAndroidAutoPlaylistsPatch$PlaylistShelf;"
-private const val EXTENSION_LOAD_CHILDREN_RESULT_INTERFACE =
-    $$"Lapp/morphe/extension/music/patches/RestoreAndroidAutoPlaylistsPatch$LoadChildrenResult;"
-private const val EXTENSION_MUSIC_ITEM_INTERFACE =
-    $$"Lapp/morphe/extension/music/patches/RestoreAndroidAutoPlaylistsPatch$MusicItem;"
+private const val EXTENSION_PLAYLIST_LOADER_INTERFACE =
+    $$"Lapp/morphe/extension/music/patches/RestoreAndroidAutoPlaylistsPatch$PlaylistLoader;"
+private const val EXTENSION_PLAYLIST_RESPONSE_INTERFACE =
+    $$"Lapp/morphe/extension/music/patches/RestoreAndroidAutoPlaylistsPatch$PlaylistResponse;"
+private const val EXTENSION_PLAYLIST_PAGE_INTERFACE =
+    $$"Lapp/morphe/extension/music/patches/RestoreAndroidAutoPlaylistsPatch$PlaylistPage;"
+private const val EXTENSION_PLAYLIST_BODY_INTERFACE =
+    $$"Lapp/morphe/extension/music/patches/RestoreAndroidAutoPlaylistsPatch$PlaylistBody;"
+private const val EXTENSION_PLAYLIST_LISTING_INTERFACE =
+    $$"Lapp/morphe/extension/music/patches/RestoreAndroidAutoPlaylistsPatch$PlaylistListing;"
+private const val EXTENSION_PLAYLIST_TRACKS_INTERFACE =
+    $$"Lapp/morphe/extension/music/patches/RestoreAndroidAutoPlaylistsPatch$PlaylistTracks;"
+private const val EXTENSION_ANDROID_AUTO_RESULT_INTERFACE =
+    $$"Lapp/morphe/extension/music/patches/RestoreAndroidAutoPlaylistsPatch$AndroidAutoResult;"
+private const val EXTENSION_PLAYLIST_OR_TRACK_INTERFACE =
+    $$"Lapp/morphe/extension/music/patches/RestoreAndroidAutoPlaylistsPatch$PlaylistOrTrack;"
 
 // move-result can only write to registers 0-255.
-private const val EIGHT_BIT_REGISTER_LIMIT = 256
+private const val MOVE_RESULT_REGISTER_LIMIT = 256
 // iget-object can only address registers 0-15.
-private const val FOUR_BIT_REGISTER_LIMIT = 16
+private const val IGET_REGISTER_LIMIT = 16
 // A MediaDescriptionCompat constructor range starts with its receiver. Media ID and title are the
 // next two registers.
-private const val MEDIA_DESCRIPTION_MEDIA_ID_REGISTER_OFFSET = 1
-private const val MEDIA_DESCRIPTION_TITLE_REGISTER_OFFSET = 2
+private const val MEDIA_ID_REGISTER_OFFSET = 1
+private const val TITLE_REGISTER_OFFSET = 2
 
-private const val MUSIC_ITEM_ARTWORK_FIELD_NAME = "c"
-private const val MUSIC_ITEM_TITLE_FIELD_NAME = "g"
-private const val MUSIC_ITEM_SUBTITLE_FIELD_NAME = "h"
-private const val PLAYLIST_BROWSE_ID_PREFIX = "VL"
-private const val BROWSE_RESPONSE_BUTTON_CONTENT_FIELD_NAME = "q"
+private const val ARTWORK_FIELD_NAME = "c"
+private const val TITLE_FIELD_NAME = "g"
+private const val SUBTITLE_FIELD_NAME = "h"
+private const val PLAYLIST_ID_PREFIX = "VL"
+private const val PLAY_BUTTON_FIELD_NAME = "q"
 private const val LISTENABLE_FUTURE_CLASS =
     "Lcom/google/common/util/concurrent/ListenableFuture;"
 
@@ -88,55 +88,56 @@ val restoreAndroidAutoPlaylistsPatch = bytecodePatch(
     execute {
         hookPlaylistCategoryId()
 
-        val endpointMediaIdMethod = EndpointMediaIdFingerprint.originalMethod
-        val responseTabsMethod = BrowseTabsFingerprint.originalMethod
-        val gridItemsMethod = GridItemsFingerprint.originalMethod
-        val gridType = gridItemsMethod.parameterTypes.single().toString()
-        val gridContinuationsMethod = classDefBy(gridItemsMethod.definingClass).methods
+        val createPlaybackIdMethod = CreatePlaybackIdFingerprint.originalMethod
+        val responsePagesMethod = PlaylistResponseFingerprint.originalMethod
+        val extractPlaylistsMethod = ExtractPlaylistsFingerprint.originalMethod
+        val playlistListingType = extractPlaylistsMethod.parameterTypes.single().toString()
+        val loadMoreActionsMethod = classDefBy(extractPlaylistsMethod.definingClass).methods
             .single { method ->
-                method != gridItemsMethod &&
+                method != extractPlaylistsMethod &&
                     AccessFlags.PRIVATE.isSet(method.accessFlags) &&
                     AccessFlags.STATIC.isSet(method.accessFlags) &&
                     method.returnType == "Ljava/util/List;" &&
-                    method.parameterTypes.map(CharSequence::toString) == listOf(gridType)
+                    method.parameterTypes.map(CharSequence::toString) ==
+                    listOf(playlistListingType)
             }
-        val musicItemType = MusicItemExtensionFingerprint
+        val playlistOrTrackType = PlaylistOrTrackFingerprint
             .instructionMatches
             .first()
             .instruction
             .getReference<TypeReference>()!!
             .type
-        val browseEndpointIdField = BrowseEndpointRequestFingerprint.instructionMatches
+        val playlistIdField = CreatePlaylistRequestFingerprint.instructionMatches
             .first()
             .instruction
             .getReference<FieldReference>()
-            ?: throw PatchException("Could not resolve the Browse endpoint ID field")
-        val browseServiceClass = patchBrowseService(gridContinuationsMethod)
+            ?: throw PatchException("Could not resolve the playlist request ID field")
+        val playlistLoaderClass = patchPlaylistLoader(loadMoreActionsMethod)
 
-        patchBrowseResponses(
-            responseTabsMethod,
-            gridItemsMethod,
-            gridContinuationsMethod,
-            musicItemType,
-            endpointMediaIdMethod,
+        patchPlaylistResponses(
+            responsePagesMethod,
+            extractPlaylistsMethod,
+            loadMoreActionsMethod,
+            playlistOrTrackType,
+            createPlaybackIdMethod,
         )
-        patchMusicItem(
-            musicItemType,
-            browseEndpointIdField,
-            endpointMediaIdMethod,
+        patchPlaylistOrTrack(
+            playlistOrTrackType,
+            playlistIdField,
+            createPlaybackIdMethod,
         )
-        val invalidParentMediaIdMethod = InvalidParentMediaIdFingerprint.originalMethod
-        patchLoadChildrenResult(invalidParentMediaIdMethod)
-        val contentSupplierType = invalidParentMediaIdMethod.definingClass
-        val loadChildrenResultType = invalidParentMediaIdMethod.parameterTypes.first().toString()
+        val playlistLoadFallbackMethod = PlaylistLoadFallbackFingerprint.originalMethod
+        patchAndroidAutoResult(playlistLoadFallbackMethod)
+        val playlistLoadHandlerType = playlistLoadFallbackMethod.definingClass
+        val androidAutoResultType = playlistLoadFallbackMethod.parameterTypes.first().toString()
 
-        hookMusicBrowserService(browseServiceClass.type, loadChildrenResultType)
-        hookLoadChildren(contentSupplierType, loadChildrenResultType)
+        hookPlaylistLoader(playlistLoaderClass.type, androidAutoResultType)
+        hookPlaylistLoad(playlistLoadHandlerType, androidAutoResultType)
     }
 }
 
 private fun BytecodePatchContext.hookPlaylistCategoryId() {
-    val method = MediaItemFactoryFingerprint.method
+    val method = PlaylistCategoryFingerprint.method
 
     // On YTM 9.15.51, Playlists comes from the MediaDescriptionCompat call with FLAG_BROWSABLE.
     method
@@ -147,9 +148,9 @@ private fun BytecodePatchContext.hookPlaylistCategoryId() {
                     index,
                 )
             val mediaIdRegister =
-                instruction.startRegister + MEDIA_DESCRIPTION_MEDIA_ID_REGISTER_OFFSET
+                instruction.startRegister + MEDIA_ID_REGISTER_OFFSET
             val titleRegister =
-                instruction.startRegister + MEDIA_DESCRIPTION_TITLE_REGISTER_OFFSET
+                instruction.startRegister + TITLE_REGISTER_OFFSET
 
             method.addInstructions(
                 index,
@@ -160,38 +161,38 @@ private fun BytecodePatchContext.hookPlaylistCategoryId() {
         }
 }
 
-private fun BytecodePatchContext.hookMusicBrowserService(
-    browseServiceType: String,
-    loadChildrenResultType: String,
+private fun BytecodePatchContext.hookPlaylistLoader(
+    playlistLoaderType: String,
+    androidAutoResultType: String,
 ) {
-    val musicBrowserServiceType = musicBrowserServiceLoadChildrenFingerprint(
-        loadChildrenResultType,
+    val musicBrowserServiceType = musicBrowserServiceFingerprint(
+        androidAutoResultType,
     ).originalMethod.definingClass
-    val browseServiceProviders = browseServiceProviderFingerprint(browseServiceType)
+    val providerMatches = playlistLoaderProviderFingerprint(playlistLoaderType)
         .matchAll()
         .map { match ->
-            val (providerFieldMatch, providerGetterMatch) = match.instructionMatches
+            val (providerFieldMatch, providerGetMatch) = match.instructionMatches
             val providerField = providerFieldMatch.instruction.getReference<FieldReference>()!!
-            val providerGetter = providerGetterMatch.instruction.getReference<MethodReference>()!!
-            providerField to providerGetter
+            val providerGetMethod = providerGetMatch.instruction.getReference<MethodReference>()!!
+            providerField to providerGetMethod
         }
         .distinctBy { (field, _) -> field }
     // During onCreate, MusicBrowserService's generated superclass reads the Dagger provider for
     // the class containing BS_GET_BROWSE_DATA.
-    val (onCreateMethod, browseServiceProvider) = browseServiceProviders.mapNotNull { provider ->
-        musicBrowserServiceOnCreateFingerprint(
+    val (onCreateMethod, providerMatch) = providerMatches.mapNotNull { provider ->
+        playlistLoaderOnCreateFingerprint(
             musicBrowserServiceType,
             provider.first.definingClass,
         ).matchOrNull()?.originalMethod?.let { method -> method to provider }
     }.singleOrNull()
-        ?: throw PatchException("Could not resolve the Browse service used by MusicBrowserService")
-    val (browseProviderField, browseProviderGetter) = browseServiceProvider
+        ?: throw PatchException("Could not resolve the playlist loader used by MusicBrowserService")
+    val (providerField, providerGetMethod) = providerMatch
     val mutableOnCreateMethod = mutableClassDefBy(
         onCreateMethod.definingClass,
     ).findMutableMethodOf(onCreateMethod)
     val componentIndex = mutableOnCreateMethod.indexOfFirstInstructionOrThrow {
         opcode == Opcode.IGET_OBJECT &&
-            getReference<FieldReference>()?.type == browseProviderField.definingClass
+            getReference<FieldReference>()?.type == providerField.definingClass
     }
     val componentRegister = mutableOnCreateMethod
         .getInstruction<TwoRegisterInstruction>(componentIndex)
@@ -200,104 +201,104 @@ private fun BytecodePatchContext.hookMusicBrowserService(
         componentIndex + 1,
         mutableOnCreateMethod.p0Register,
     )
-    if (providerRegister >= FOUR_BIT_REGISTER_LIMIT) {
+    if (providerRegister >= IGET_REGISTER_LIMIT) {
         throw PatchException("MusicBrowserService.onCreate has no free 4-bit register")
     }
 
     mutableOnCreateMethod.addInstructions(
         componentIndex + 1,
         """
-            iget-object v$providerRegister, v$componentRegister, $browseProviderField
-            invoke-interface/range { v$providerRegister .. v$providerRegister }, $browseProviderGetter
+            iget-object v$providerRegister, v$componentRegister, $providerField
+            invoke-interface/range { v$providerRegister .. v$providerRegister }, $providerGetMethod
             move-result-object v$providerRegister
-            check-cast v$providerRegister, $EXTENSION_BROWSE_SERVICE_INTERFACE
-            invoke-static/range { v$providerRegister .. v$providerRegister }, $EXTENSION_CLASS->setBrowseService($EXTENSION_BROWSE_SERVICE_INTERFACE)V
+            check-cast v$providerRegister, $EXTENSION_PLAYLIST_LOADER_INTERFACE
+            invoke-static/range { v$providerRegister .. v$providerRegister }, $EXTENSION_CLASS->setPlaylistLoader($EXTENSION_PLAYLIST_LOADER_INTERFACE)V
         """,
     )
 }
 
-private fun BytecodePatchContext.patchBrowseResponses(
-    responseTabsMethod: Method,
-    gridItemsMethod: Method,
-    gridContinuationsMethod: Method,
-    musicItemType: String,
-    endpointMediaIdMethod: Method,
+private fun BytecodePatchContext.patchPlaylistResponses(
+    responsePagesMethod: Method,
+    extractPlaylistsMethod: Method,
+    loadMoreActionsMethod: Method,
+    playlistOrTrackType: String,
+    createPlaybackIdMethod: Method,
 ) {
-    val tabMapperNewInstance = BrowseTabsFingerprint.instructionMatches.last()
-    val tabMapperType = tabMapperNewInstance
+    val pageFactoryNewInstance = PlaylistResponseFingerprint.instructionMatches.last()
+    val pageFactoryType = pageFactoryNewInstance
         .instruction
         .getReference<TypeReference>()!!
         .type
-    val tabMapper = browseTabMapperFingerprint(tabMapperType)
-    val tabNewInstance = tabMapper.instructionMatches.first()
-    val tabType = tabNewInstance
+    val pageFactory = createPlaylistPageFingerprint(pageFactoryType)
+    val pageNewInstance = pageFactory.instructionMatches.first()
+    val pageType = pageNewInstance
         .instruction
         .getReference<TypeReference>()!!
         .type
-    val sectionListMethod = sectionListFingerprint(tabType).originalMethod
-    val sectionItemMethods = sectionItemsFingerprint(
-        sectionListMethod.returnType,
-        responseTabsMethod.returnType,
+    val getBodyMethod = getPlaylistBodyFingerprint(pageType).originalMethod
+    val bodyGroupMethods = playlistBodyGroupsFingerprint(
+        getBodyMethod.returnType,
+        responsePagesMethod.returnType,
     ).matchAll(2..2)
         .map { match -> match.originalMethod }
-    val playlistItemsMethod = playlistItemsFingerprint(
-        musicItemType,
+    val extractPlaylistTracksMethod = extractPlaylistTracksFingerprint(
+        playlistOrTrackType,
     ).originalMethod
-    val gridResponseMethod = GridDecoderFingerprint.originalMethod
-    val responsePayloadType = gridResponseMethod
+    val morePlaylistsMethod = DecodeMorePlaylistsFingerprint.originalMethod
+    val responsePayloadType = morePlaylistsMethod
         .parameterTypes.single().toString()
     val responsePayloadMethod = classDefBy(
-        responseTabsMethod.definingClass,
+        responsePagesMethod.definingClass,
     ).methods.singleOrNull { method ->
         !AccessFlags.STATIC.isSet(method.accessFlags) && method.parameterTypes.isEmpty() &&
             method.returnType == responsePayloadType
-    } ?: throw PatchException("Could not resolve the Browse response payload getter")
-    // The injected PlaylistGrid and PlaylistShelf methods call these private YTM methods.
+    } ?: throw PatchException("Could not resolve the playlist response payload")
+    // PlaylistListing and PlaylistTracks call these methods from different classes.
     listOf(
-        gridItemsMethod,
-        playlistItemsMethod,
-        gridContinuationsMethod,
+        extractPlaylistsMethod,
+        extractPlaylistTracksMethod,
+        loadMoreActionsMethod,
     ).forEach { method ->
         mutableClassDefBy(method.definingClass).findMutableMethodOf(method).apply {
             accessFlags = accessFlags.toPublicAccessFlags()
         }
     }
 
-    val gridDecoder = addGridDecoder(gridResponseMethod)
-    addBrowseResponseInterface(
-        responseTabsMethod,
+    val morePlaylistsDecoder = addMorePlaylistsDecoder(morePlaylistsMethod)
+    addPlaylistResponseInterface(
+        responsePagesMethod,
         responsePayloadMethod,
-        gridDecoder,
-        endpointMediaIdMethod,
+        morePlaylistsDecoder,
+        createPlaybackIdMethod,
     )
-    addBrowseTabInterface(sectionListMethod)
-    addSectionListInterface(sectionItemMethods)
-    addPlaylistGridInterface(gridItemsMethod, gridContinuationsMethod)
-    addPlaylistShelfInterface(playlistItemsMethod)
+    addPlaylistPageInterface(getBodyMethod)
+    addPlaylistBodyInterface(bodyGroupMethods)
+    addPlaylistListingInterface(extractPlaylistsMethod, loadMoreActionsMethod)
+    addPlaylistTracksInterface(extractPlaylistTracksMethod)
 }
 
-private fun BytecodePatchContext.addBrowseResponseInterface(
-    responseTabsMethod: Method,
+private fun BytecodePatchContext.addPlaylistResponseInterface(
+    responsePagesMethod: Method,
     responsePayloadMethod: Method,
-    gridDecoder: Method,
-    endpointMediaIdMethod: Method,
+    morePlaylistsDecoder: Method,
+    createPlaybackIdMethod: Method,
 ) {
-    val responseClass = mutableClassDefBy(responseTabsMethod.definingClass)
-    responseClass.interfaces.add(EXTENSION_BROWSE_RESPONSE_INTERFACE)
-    addPlaylistMediaIdGetter(responseClass, responseTabsMethod, endpointMediaIdMethod)
+    val responseClass = mutableClassDefBy(responsePagesMethod.definingClass)
+    responseClass.interfaces.add(EXTENSION_PLAYLIST_RESPONSE_INTERFACE)
+    addPlaylistPlaybackIdGetter(responseClass, responsePagesMethod, createPlaybackIdMethod)
     responseClass.addInterfaceMethod(
-        name = "patch_getTabs",
+        name = "patch_getPages",
         parameters = emptyList(),
         returnType = "Ljava/lang/Iterable;",
         registerCount = 1,
         instructions = """
-            invoke-virtual { p0 }, $responseTabsMethod
+            invoke-virtual { p0 }, $responsePagesMethod
             move-result-object p0
             return-object p0
         """,
     )
     responseClass.addInterfaceMethod(
-        name = "patch_getContinuationGrid",
+        name = "patch_getMorePlaylists",
         parameters = emptyList(),
         returnType = "Ljava/lang/Object;",
         registerCount = 2,
@@ -306,50 +307,50 @@ private fun BytecodePatchContext.addBrowseResponseInterface(
             move-result-object p0
             # The cloned method does not read its first argument.
             const/4 v0, 0x0
-            invoke-static { v0, p0 }, $gridDecoder
+            invoke-static { v0, p0 }, $morePlaylistsDecoder
             move-result-object p0
             return-object p0
         """,
     )
 }
 
-private fun BytecodePatchContext.addBrowseTabInterface(
-    sectionListMethod: Method,
+private fun BytecodePatchContext.addPlaylistPageInterface(
+    getBodyMethod: Method,
 ) {
-    val tabClass = mutableClassDefBy(sectionListMethod.definingClass)
-    tabClass.interfaces.add(EXTENSION_BROWSE_TAB_INTERFACE)
-    tabClass.addInterfaceMethod(
-        name = "patch_getSectionList",
+    val pageClass = mutableClassDefBy(getBodyMethod.definingClass)
+    pageClass.interfaces.add(EXTENSION_PLAYLIST_PAGE_INTERFACE)
+    pageClass.addInterfaceMethod(
+        name = "patch_getBody",
         parameters = emptyList(),
         returnType = "Ljava/lang/Object;",
         registerCount = 1,
         instructions = """
-            invoke-virtual { p0 }, $sectionListMethod
+            invoke-virtual { p0 }, $getBodyMethod
             move-result-object p0
             return-object p0
         """,
     )
 }
 
-private fun BytecodePatchContext.addSectionListInterface(
-    sectionItemMethods: List<Method>,
+private fun BytecodePatchContext.addPlaylistBodyInterface(
+    bodyGroupMethods: List<Method>,
 ) {
-    val (firstItemMethod, secondItemMethod) = sectionItemMethods
-    val sectionListClass = mutableClassDefBy(firstItemMethod.definingClass)
-    sectionListClass.interfaces.add(EXTENSION_SECTION_LIST_INTERFACE)
-    sectionListClass.addInterfaceMethod(
-        name = "patch_getItemLists",
+    val (firstGroupMethod, secondGroupMethod) = bodyGroupMethods
+    val bodyClass = mutableClassDefBy(firstGroupMethod.definingClass)
+    bodyClass.interfaces.add(EXTENSION_PLAYLIST_BODY_INTERFACE)
+    bodyClass.addInterfaceMethod(
+        name = "patch_getGroups",
         parameters = emptyList(),
         returnType = "[Ljava/lang/Iterable;",
         registerCount = 4,
         instructions = """
             const/4 v0, 0x2
             new-array v0, v0, [Ljava/lang/Iterable;
-            invoke-virtual { p0 }, $firstItemMethod
+            invoke-virtual { p0 }, $firstGroupMethod
             move-result-object v1
             const/4 v2, 0x0
             aput-object v1, v0, v2
-            invoke-virtual { p0 }, $secondItemMethod
+            invoke-virtual { p0 }, $secondGroupMethod
             move-result-object v1
             const/4 v2, 0x1
             aput-object v1, v0, v2
@@ -358,141 +359,143 @@ private fun BytecodePatchContext.addSectionListInterface(
     )
 }
 
-private fun BytecodePatchContext.addPlaylistGridInterface(
-    gridItemsMethod: Method,
-    gridContinuationsMethod: Method,
+private fun BytecodePatchContext.addPlaylistListingInterface(
+    extractPlaylistsMethod: Method,
+    loadMoreActionsMethod: Method,
 ) {
-    val gridType = gridItemsMethod.parameterTypes.single().toString()
-    val gridClass = mutableClassDefBy(gridType)
-    gridClass.interfaces.add(EXTENSION_PLAYLIST_GRID_INTERFACE)
-    gridClass.addInterfaceMethod(
-        name = "patch_getItems",
+    val playlistListingType = extractPlaylistsMethod.parameterTypes.single().toString()
+    val playlistListingClass = mutableClassDefBy(playlistListingType)
+    playlistListingClass.interfaces.add(EXTENSION_PLAYLIST_LISTING_INTERFACE)
+    playlistListingClass.addInterfaceMethod(
+        name = "patch_getPlaylists",
         parameters = emptyList(),
         returnType = "Ljava/lang/Iterable;",
         registerCount = 1,
         instructions = """
-            invoke-static { p0 }, $gridItemsMethod
+            invoke-static { p0 }, $extractPlaylistsMethod
             move-result-object p0
             return-object p0
         """,
     )
-    gridClass.addInterfaceMethod(
-        name = "patch_getContinuations",
+    playlistListingClass.addInterfaceMethod(
+        name = "patch_getLoadMoreActions",
         parameters = emptyList(),
         returnType = "Ljava/lang/Iterable;",
         registerCount = 1,
         instructions = """
-            invoke-static { p0 }, $gridContinuationsMethod
+            invoke-static { p0 }, $loadMoreActionsMethod
             move-result-object p0
             return-object p0
         """,
     )
 }
 
-private fun BytecodePatchContext.addPlaylistShelfInterface(
-    playlistItemsMethod: Method,
+private fun BytecodePatchContext.addPlaylistTracksInterface(
+    extractPlaylistTracksMethod: Method,
 ) {
-    val playlistShelfType = playlistItemsMethod.parameterTypes.first().toString()
-    val playlistShelfClass = mutableClassDefBy(playlistShelfType)
-    playlistShelfClass.interfaces.add(EXTENSION_PLAYLIST_SHELF_INTERFACE)
-    playlistShelfClass.addInterfaceMethod(
-        name = "patch_getItems",
+    val playlistTracksType = extractPlaylistTracksMethod.parameterTypes.first().toString()
+    val playlistTracksClass = mutableClassDefBy(playlistTracksType)
+    playlistTracksClass.interfaces.add(EXTENSION_PLAYLIST_TRACKS_INTERFACE)
+    playlistTracksClass.addInterfaceMethod(
+        name = "patch_getTracks",
         parameters = emptyList(),
         returnType = "Ljava/lang/Iterable;",
         registerCount = 2,
         instructions = """
             const/4 v0, 0x0
-            # false returns extension-161429595 track rows.
-            invoke-static { p0, v0 }, $playlistItemsMethod
+            # false returns tracks from protobuf field 161429595.
+            invoke-static { p0, v0 }, $extractPlaylistTracksMethod
             move-result-object p0
             return-object p0
         """,
     )
 }
 
-private fun BytecodePatchContext.addPlaylistMediaIdGetter(
+private fun BytecodePatchContext.addPlaylistPlaybackIdGetter(
     responseClass: MutableClass,
-    responseTabsMethod: Method,
-    endpointMediaIdMethod: Method,
+    responsePagesMethod: Method,
+    createPlaybackIdMethod: Method,
 ) {
-    val endpointType = endpointMediaIdMethod.parameterTypes.single().toString()
-    val initializerMethod = buttonRendererExtensionFingerprint(endpointType).originalMethod
-    val buttonRendererType = initializerMethod.instructions
+    val playActionType = createPlaybackIdMethod.parameterTypes.single().toString()
+    val playlistPlayButtonInitializerMethod = playlistPlayButtonFingerprint(
+        playActionType,
+    ).originalMethod
+    val playlistPlayButtonType = playlistPlayButtonInitializerMethod.instructions
         .first { instruction -> instruction.opcode == Opcode.CONST_CLASS }
         .getReference<TypeReference>()!!
         .type
-    val containingType = initializerMethod.instructions
+    val containingType = playlistPlayButtonInitializerMethod.instructions
         .asSequence()
         .filter { instruction -> instruction.opcode == Opcode.SGET_OBJECT }
         .mapNotNull { instruction -> instruction.getReference<FieldReference>() }
         .first { field -> field.definingClass == field.type }
         .type
-    val descriptorField = initializerMethod.instructions
+    val descriptorField = playlistPlayButtonInitializerMethod.instructions
         .first { instruction -> instruction.opcode == Opcode.SPUT_OBJECT }
         .getReference<FieldReference>()!!
-    val buttonRendererDecoderMethod = buttonRendererDecoderFingerprint(
+    val decodePlaylistPlayButtonMethod = decodePlaylistPlayButtonFingerprint(
         containingType,
-        buttonRendererType,
+        playlistPlayButtonType,
         descriptorField,
     ).originalMethod
-    val commandEndpointField = buttonRendererEndpointCopyFingerprint(
-        buttonRendererType,
-        endpointType,
+    val playlistPlayActionField = playlistPlayActionFingerprint(
+        playlistPlayButtonType,
+        playActionType,
     ).matchAll()
         .map { match ->
-            val (playEndpointReadMatch, _) = match.instructionMatches
-            playEndpointReadMatch.instruction.getReference<FieldReference>()!!
+            val (playActionReadMatch, _) = match.instructionMatches
+            playActionReadMatch.instruction.getReference<FieldReference>()!!
         }
         .distinct()
         .singleOrNull()
-        ?: throw PatchException("Could not resolve the ButtonRenderer command endpoint")
+        ?: throw PatchException("Could not resolve the playlist Play action")
 
-    val responsePayloadField = responseTabsMethod.instructions
+    val responsePayloadField = responsePagesMethod.instructions
         .asSequence()
         .filter { instruction -> instruction.opcode == Opcode.IGET_OBJECT }
         .mapNotNull { instruction -> instruction.getReference<FieldReference>() }
         .filter { field ->
-            field.definingClass == responseTabsMethod.definingClass &&
-                field.type != responseTabsMethod.returnType
+            field.definingClass == responsePagesMethod.definingClass &&
+                field.type != responsePagesMethod.returnType
         }
         .distinct()
         .singleOrNull()
-        ?: throw PatchException("Could not resolve the Browse response payload field")
-    val buttonContentField = classDefBy(responsePayloadField.type).fields.singleOrNull { field ->
+        ?: throw PatchException("Could not resolve the playlist response payload field")
+    val playButtonField = classDefBy(responsePayloadField.type).fields.singleOrNull { field ->
         !AccessFlags.STATIC.isSet(field.accessFlags) &&
-            field.name == BROWSE_RESPONSE_BUTTON_CONTENT_FIELD_NAME &&
+            field.name == PLAY_BUTTON_FIELD_NAME &&
             field.type == containingType
-    } ?: throw PatchException("Could not resolve the playlist ButtonRenderer content field")
+    } ?: throw PatchException("Could not resolve the playlist Play button field")
 
-    // response.q stores the playlist Play command in ButtonRenderer extension 65153809.
+    // response.q stores the playlist Play button in protobuf field 65153809.
     responseClass.addInterfaceMethod(
-        name = "patch_getPlaylistMediaId",
+        name = "patch_getPlaybackId",
         parameters = emptyList(),
         returnType = "Ljava/lang/String;",
         registerCount = 2,
         instructions = """
             iget-object p0, p0, $responsePayloadField
-            iget-object p0, p0, $buttonContentField
+            iget-object p0, p0, $playButtonField
             # true returns the Play ButtonRenderer or null.
             const/4 v0, 0x1
-            invoke-static { v0, p0 }, $buttonRendererDecoderMethod
+            invoke-static { v0, p0 }, $decodePlaylistPlayButtonMethod
             move-result-object p0
-            if-eqz p0, :no_play_endpoint
-            iget-object p0, p0, $commandEndpointField
-            if-eqz p0, :no_play_endpoint
-            invoke-static { p0 }, $endpointMediaIdMethod
+            if-eqz p0, :no_play_button
+            iget-object p0, p0, $playlistPlayActionField
+            if-eqz p0, :no_play_button
+            invoke-static { p0 }, $createPlaybackIdMethod
             move-result-object p0
             return-object p0
-            :no_play_endpoint
+            :no_play_button
             const/4 p0, 0x0
             return-object p0
         """,
     )
 }
 
-private fun BytecodePatchContext.addGridDecoder(method: Method): Method {
+private fun BytecodePatchContext.addMorePlaylistsDecoder(method: Method): Method {
     val decoder = method.cloneMutable(
-        name = "patch_decodeGrid",
+        name = "patch_decodeMorePlaylists",
         accessFlags = AccessFlags.PUBLIC.value or AccessFlags.STATIC.value,
         // The original method clears its receiver register before reading the response from p1.
         // The added first parameter keeps that register layout in the static clone.
@@ -504,132 +507,132 @@ private fun BytecodePatchContext.addGridDecoder(method: Method): Method {
     return decoder
 }
 
-private fun BytecodePatchContext.patchMusicItem(
-    musicItemType: String,
-    browseEndpointIdField: FieldReference,
-    endpointMediaIdMethod: Method,
+private fun BytecodePatchContext.patchPlaylistOrTrack(
+    playlistOrTrackType: String,
+    playlistIdField: FieldReference,
+    createPlaybackIdMethod: Method,
 ) {
-    val musicItemFields = classDefBy(musicItemType).fields.toList()
+    val playlistOrTrackFields = classDefBy(playlistOrTrackType).fields.toList()
 
-    fun musicItemField(name: String) = musicItemFields
+    fun playlistOrTrackField(name: String) = playlistOrTrackFields
         .first { field ->
             !AccessFlags.STATIC.isSet(field.accessFlags) && field.name == name
         }
 
-    val artworkField = musicItemField(MUSIC_ITEM_ARTWORK_FIELD_NAME)
-    val titleField = musicItemField(MUSIC_ITEM_TITLE_FIELD_NAME)
-    val subtitleField = musicItemField(MUSIC_ITEM_SUBTITLE_FIELD_NAME)
+    val artworkField = playlistOrTrackField(ARTWORK_FIELD_NAME)
+    val titleField = playlistOrTrackField(TITLE_FIELD_NAME)
+    val subtitleField = playlistOrTrackField(SUBTITLE_FIELD_NAME)
     if (artworkField.type == titleField.type || titleField.type != subtitleField.type) {
-        throw PatchException("Unexpected music item artwork, title, or subtitle fields")
+        throw PatchException("Unexpected playlist/track artwork, title, or subtitle fields")
     }
-    val artworkPayloadType = MusicThumbnailExtensionFingerprint.originalMethod.instructions
+    val playlistThumbnailPayloadType = PlaylistThumbnailFingerprint.originalMethod.instructions
         .first { instruction -> instruction.opcode == Opcode.CONST_CLASS }
         .getReference<TypeReference>()!!
         .type
-    val artworkPayloadFields = classDefBy(artworkPayloadType).fields
+    val playlistThumbnailPayloadFields = classDefBy(playlistThumbnailPayloadType).fields
         .filter { field -> !AccessFlags.STATIC.isSet(field.accessFlags) }
         .toList()
-    val artworkDecoderMethod = musicThumbnailDecoderFingerprint(
+    val decodePlaylistThumbnailMethod = decodePlaylistThumbnailFingerprint(
         artworkField.type,
     ).originalMethod
-    val artworkMethod = androidAutoArtworkFingerprint(
-        artworkPayloadFields.map(FieldReference::getType).toSet(),
+    val artworkCallsiteMethod = playlistArtworkFingerprint(
+        playlistThumbnailPayloadFields.map(FieldReference::getType).toSet(),
     ).originalMethod
-    val artworkReadTypes = artworkMethod.instructions
+    val artworkReadTypes = artworkCallsiteMethod.instructions
         .filter { instruction -> instruction.opcode == Opcode.IGET_OBJECT }
         .mapNotNull { instruction -> instruction.getReference<FieldReference>()?.type }
         .toSet()
-    val artworkUriMethod = artworkMethod.instructions
+    val artworkUriMethod = artworkCallsiteMethod.instructions
         .mapNotNull { instruction -> instruction.getReference<MethodReference>() }
         .filter { method ->
             method.returnType == "Landroid/net/Uri;" && method.parameterTypes.size == 1 &&
                 method.parameterTypes.single().toString() in artworkReadTypes
         }
         .singleOrNull { method ->
-            artworkPayloadFields.any { field ->
+            playlistThumbnailPayloadFields.any { field ->
                 field.type == method.parameterTypes.single().toString()
             }
         }
         ?: throw PatchException("Could not resolve the Android Auto artwork Uri helper")
-    val artworkPayloadField = artworkPayloadFields.singleOrNull { field ->
+    val playlistThumbnailPayloadField = playlistThumbnailPayloadFields.singleOrNull { field ->
         field.type == artworkUriMethod.parameterTypes.single().toString()
     } ?: throw PatchException("Could not resolve the artwork payload field")
-    val renderTextMethod = renderTextFingerprint(titleField.type).originalMethod
+    val formatPlaylistTextMethod = formatPlaylistTextFingerprint(titleField.type).originalMethod
 
-    val endpointType = endpointMediaIdMethod.parameterTypes.single().toString()
-    val endpointFields = musicItemFields
+    val actionType = createPlaybackIdMethod.parameterTypes.single().toString()
+    val actionFields = playlistOrTrackFields
         .filter { field ->
-            !AccessFlags.STATIC.isSet(field.accessFlags) && field.type == endpointType
+            !AccessFlags.STATIC.isSet(field.accessFlags) && field.type == actionType
+        }
+    if (actionFields.size != 2) {
+        throw PatchException("Could not resolve the two playlist/track click actions")
     }
-    if (endpointFields.size != 2) {
-        throw PatchException("Could not resolve the two music row endpoints")
-    }
-    val (firstEndpointField, secondEndpointField) = endpointFields
+    val (firstActionField, secondActionField) = actionFields
 
-    val browseIdDecoderMethod = browseEndpointDecoderFingerprint(
-        endpointType,
-        browseEndpointIdField.definingClass,
+    val decodePlaylistActionMethod = decodePlaylistActionFingerprint(
+        actionType,
+        playlistIdField.definingClass,
     ).originalMethod
 
-    val musicItemClass = mutableClassDefBy(musicItemType)
-    musicItemClass.interfaces.add(EXTENSION_MUSIC_ITEM_INTERFACE)
-    musicItemClass.addBrowseIdGetter(
-        firstEndpointField,
-        secondEndpointField,
-        browseIdDecoderMethod,
-        browseEndpointIdField,
+    val playlistOrTrackClass = mutableClassDefBy(playlistOrTrackType)
+    playlistOrTrackClass.interfaces.add(EXTENSION_PLAYLIST_OR_TRACK_INTERFACE)
+    playlistOrTrackClass.addPlaylistIdGetter(
+        firstActionField,
+        secondActionField,
+        decodePlaylistActionMethod,
+        playlistIdField,
     )
-    musicItemClass.addMediaIdGetter(
-        firstEndpointField,
-        secondEndpointField,
-        endpointMediaIdMethod,
+    playlistOrTrackClass.addPlaybackIdGetter(
+        firstActionField,
+        secondActionField,
+        createPlaybackIdMethod,
     )
-    musicItemClass.addTextGetter("patch_getTitle", titleField, renderTextMethod)
-    musicItemClass.addTextGetter("patch_getSubtitle", subtitleField, renderTextMethod)
-    musicItemClass.addArtworkUriGetter(
+    playlistOrTrackClass.addTextGetter("patch_getTitle", titleField, formatPlaylistTextMethod)
+    playlistOrTrackClass.addTextGetter("patch_getSubtitle", subtitleField, formatPlaylistTextMethod)
+    playlistOrTrackClass.addArtworkUriGetter(
         artworkField,
-        artworkDecoderMethod,
-        artworkPayloadField,
+        decodePlaylistThumbnailMethod,
+        playlistThumbnailPayloadField,
         artworkUriMethod,
     )
 }
 
-// Fields i and k can both contain Browse endpoints; conflicting VL IDs are ignored.
-private fun MutableClass.addBrowseIdGetter(
-    firstEndpointField: FieldReference,
-    secondEndpointField: FieldReference,
-    browseIdDecoderMethod: Method,
-    browseEndpointIdField: FieldReference,
+// Fields i and k can both contain click actions; conflicting VL playlist IDs are ignored.
+private fun MutableClass.addPlaylistIdGetter(
+    firstActionField: FieldReference,
+    secondActionField: FieldReference,
+    decodePlaylistActionMethod: Method,
+    playlistIdField: FieldReference,
 ) {
     addInterfaceMethod(
-        name = "patch_getBrowseId",
+        name = "patch_getPlaylistId",
         parameters = emptyList(),
         returnType = "Ljava/lang/String;",
         registerCount = 4,
         instructions = """
             const/4 v0, 0x0
-            iget-object v1, p0, $firstEndpointField
-            if-eqz v1, :second_endpoint
-            invoke-static { v1 }, $browseIdDecoderMethod
+            iget-object v1, p0, $firstActionField
+            if-eqz v1, :second_action
+            invoke-static { v1 }, $decodePlaylistActionMethod
             move-result-object v1
-            if-eqz v1, :second_endpoint
-            iget-object v1, v1, $browseEndpointIdField
-            if-eqz v1, :second_endpoint
-            const-string v2, "$PLAYLIST_BROWSE_ID_PREFIX"
+            if-eqz v1, :second_action
+            iget-object v1, v1, $playlistIdField
+            if-eqz v1, :second_action
+            const-string v2, "$PLAYLIST_ID_PREFIX"
             invoke-virtual { v1, v2 }, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
             move-result v2
-            if-eqz v2, :second_endpoint
+            if-eqz v2, :second_action
             move-object v0, v1
 
-            :second_endpoint
-            iget-object v1, p0, $secondEndpointField
+            :second_action
+            iget-object v1, p0, $secondActionField
             if-eqz v1, :return_id
-            invoke-static { v1 }, $browseIdDecoderMethod
+            invoke-static { v1 }, $decodePlaylistActionMethod
             move-result-object v1
             if-eqz v1, :return_id
-            iget-object v1, v1, $browseEndpointIdField
+            iget-object v1, v1, $playlistIdField
             if-eqz v1, :return_id
-            const-string v2, "$PLAYLIST_BROWSE_ID_PREFIX"
+            const-string v2, "$PLAYLIST_ID_PREFIX"
             invoke-virtual { v1, v2 }, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
             move-result v2
             if-eqz v2, :return_id
@@ -648,37 +651,37 @@ private fun MutableClass.addBrowseIdGetter(
     )
 }
 
-private fun MutableClass.addMediaIdGetter(
-    firstEndpointField: FieldReference,
-    secondEndpointField: FieldReference,
-    endpointMediaIdMethod: Method,
+private fun MutableClass.addPlaybackIdGetter(
+    firstActionField: FieldReference,
+    secondActionField: FieldReference,
+    createPlaybackIdMethod: Method,
 ) {
     addInterfaceMethod(
-        name = "patch_getMediaId",
+        name = "patch_getPlaybackId",
         parameters = emptyList(),
         returnType = "Ljava/lang/String;",
         registerCount = 3,
         instructions = """
-            iget-object v0, p0, $firstEndpointField
-            if-eqz v0, :second_endpoint
-            invoke-static { v0 }, $endpointMediaIdMethod
+            iget-object v0, p0, $firstActionField
+            if-eqz v0, :second_action
+            invoke-static { v0 }, $createPlaybackIdMethod
             move-result-object v0
             check-cast v0, Ljava/lang/String;
-            if-eqz v0, :second_endpoint
+            if-eqz v0, :second_action
             invoke-virtual { v0 }, Ljava/lang/String;->isEmpty()Z
             move-result v1
             if-eqz v1, :return_id
 
-            :second_endpoint
-            iget-object v0, p0, $secondEndpointField
-            if-nez v0, :decode_second_endpoint
+            :second_action
+            iget-object v0, p0, $secondActionField
+            if-nez v0, :decode_second_action
             # ART on 9.15.51 otherwise merges this missing-action path with decoded Strings as
             # Object.
             const/4 v0, 0x0
             goto :return_id
 
-            :decode_second_endpoint
-            invoke-static { v0 }, $endpointMediaIdMethod
+            :decode_second_action
+            invoke-static { v0 }, $createPlaybackIdMethod
             move-result-object v0
             check-cast v0, Ljava/lang/String;
             :return_id
@@ -690,7 +693,7 @@ private fun MutableClass.addMediaIdGetter(
 private fun MutableClass.addTextGetter(
     name: String,
     field: FieldReference,
-    renderTextMethod: Method,
+    formatTextMethod: Method,
 ) {
     addInterfaceMethod(
         name = name,
@@ -701,7 +704,7 @@ private fun MutableClass.addTextGetter(
             iget-object v0, p0, $field
             # The second argument is optional text-to-speech content.
             const/4 v1, 0x0
-            invoke-static { v0, v1 }, $renderTextMethod
+            invoke-static { v0, v1 }, $formatTextMethod
             move-result-object v0
             return-object v0
         """,
@@ -710,8 +713,8 @@ private fun MutableClass.addTextGetter(
 
 private fun MutableClass.addArtworkUriGetter(
     artworkField: FieldReference,
-    artworkDecoderMethod: Method,
-    artworkPayloadField: FieldReference,
+    decodeThumbnailMethod: Method,
+    thumbnailPayloadField: FieldReference,
     artworkUriMethod: MethodReference,
 ) {
     addInterfaceMethod(
@@ -722,11 +725,11 @@ private fun MutableClass.addArtworkUriGetter(
         instructions = """
             iget-object v0, p0, $artworkField
             if-eqz v0, :no_artwork
-            invoke-static { v0 }, $artworkDecoderMethod
+            invoke-static { v0 }, $decodeThumbnailMethod
             move-result-object v0
             if-eqz v0, :no_artwork
-            check-cast v0, ${artworkPayloadField.definingClass}
-            iget-object v0, v0, $artworkPayloadField
+            check-cast v0, ${thumbnailPayloadField.definingClass}
+            iget-object v0, v0, $thumbnailPayloadField
             invoke-static { v0 }, $artworkUriMethod
             move-result-object v0
             return-object v0
@@ -737,40 +740,45 @@ private fun MutableClass.addArtworkUriGetter(
     )
 }
 
-private fun BytecodePatchContext.patchBrowseService(
-    gridContinuationsMethod: Method,
+private fun BytecodePatchContext.patchPlaylistLoader(
+    loadMoreActionsMethod: Method,
 ): MutableClass {
-    val endpointRequestMethod = BrowseEndpointRequestFingerprint.originalMethod
-    val requestBuilderType = endpointRequestMethod.returnType
-    val requestBuilderFactoryMethod = endpointRequestMethod.instructions.asSequence()
+    val createPlaylistRequestMethod = CreatePlaylistRequestFingerprint.originalMethod
+    val playlistRequestBuilderType = createPlaylistRequestMethod.returnType
+    val playlistRequestFactoryMethod = createPlaylistRequestMethod.instructions.asSequence()
         .mapNotNull { instruction -> instruction.getReference<MethodReference>() }
         .firstOrNull { reference ->
-            reference.parameterTypes.isEmpty() && reference.returnType == requestBuilderType
+            reference.parameterTypes.isEmpty() &&
+                reference.returnType == playlistRequestBuilderType
         }
-        ?: throw PatchException("Could not resolve the Browse request factory")
-    val browseServiceType = requestBuilderFactoryMethod.definingClass
-    val continuationTypes = gridContinuationsMethod.instructions.asSequence()
+        ?: throw PatchException("Could not resolve the playlist request factory")
+    val playlistLoaderType = playlistRequestFactoryMethod.definingClass
+    val loadMoreActionTypes = loadMoreActionsMethod.instructions.asSequence()
         .mapNotNull { instruction -> instruction.getReference<MethodReference>() }
         .map { reference -> reference.returnType }
         .toSet()
-    val continuationBuilderMethod = classDefBy(browseServiceType).methods.singleOrNull { method ->
-        method.returnType == requestBuilderType &&
-            method.parameterTypes.singleOrNull()?.toString() in continuationTypes
+    val createLoadMoreRequestMethod = classDefBy(
+        playlistLoaderType,
+    ).methods.singleOrNull { method ->
+        method.returnType == playlistRequestBuilderType &&
+            method.parameterTypes.singleOrNull()?.toString() in loadMoreActionTypes
     }
-        ?: throw PatchException("Could not resolve the continuation request factory")
-    val requestFingerprint = browseRequestFingerprint(
-        browseServiceType,
-        requestBuilderType,
+        ?: throw PatchException("Could not resolve the load-more request factory")
+    val playlistRequestFingerprint = sendPlaylistRequestFingerprint(
+        playlistLoaderType,
+        playlistRequestBuilderType,
     )
-    val browseRequestMethod = requestFingerprint.originalMethod
-    val requestBrowseIdField = requestFingerprint.instructionMatches.single()
+    val sendPlaylistRequestMethod = playlistRequestFingerprint.originalMethod
+    val libraryOrPlaylistIdField = playlistRequestFingerprint.instructionMatches.single()
         .instruction
         .getReference<FieldReference>()!!
 
-    val requestBuilderMethods = generateSequence(classDefBy(requestBuilderType)) { classDef ->
+    val playlistRequestBuilderMethods = generateSequence(
+        classDefBy(playlistRequestBuilderType),
+    ) { classDef ->
         classDef.superclass?.let { superclass -> classDefByOrNull(superclass) }
     }.flatMap { classDef -> classDef.methods.asSequence() }
-    val clickTrackingParamsSetterMethod = requestBuilderMethods
+    val clickTrackingParamsSetterMethod = playlistRequestBuilderMethods
         // YTM 9.32.51 and 9.33.52 also declare a public byte[] clickTrackingParams setter.
         .firstOrNull { method ->
             AccessFlags.PROTECTED.isSet(method.accessFlags) &&
@@ -778,69 +786,72 @@ private fun BytecodePatchContext.patchBrowseService(
                 method.parameterTypes.map(CharSequence::toString) == listOf("[B")
         }
         ?: throw PatchException("Could not resolve the click tracking parameter setter")
-    val browseIdSetterMethod = browseIdSetterFingerprint(requestBrowseIdField).originalMethod
-    val browseServiceClass = mutableClassDefBy(browseServiceType)
-    browseServiceClass.interfaces.add(EXTENSION_BROWSE_SERVICE_INTERFACE)
-    browseServiceClass.addInterfaceMethod(
-        name = "patch_requestBrowse",
+    val setLibraryOrPlaylistIdMethod = setLibraryOrPlaylistIdFingerprint(
+        libraryOrPlaylistIdField,
+    ).originalMethod
+    val playlistLoaderClass = mutableClassDefBy(playlistLoaderType)
+    playlistLoaderClass.interfaces.add(EXTENSION_PLAYLIST_LOADER_INTERFACE)
+    playlistLoaderClass.addInterfaceMethod(
+        name = "patch_requestPage",
         parameters = listOf("Ljava/lang/String;", "Ljava/util/concurrent/Executor;"),
         returnType = LISTENABLE_FUTURE_CLASS,
         registerCount = 5,
         instructions = """
-            invoke-virtual { p0 }, $requestBuilderFactoryMethod
+            invoke-virtual { p0 }, $playlistRequestFactoryMethod
             move-result-object v0
-            invoke-virtual { v0, p1 }, $browseIdSetterMethod
-            # Browse requests require clickTrackingParams, even when it is empty.
+            invoke-virtual { v0, p1 }, $setLibraryOrPlaylistIdMethod
+            # Playlist requests require clickTrackingParams, even when it is empty.
             const/4 v1, 0x0
             new-array v1, v1, [B
             invoke-virtual { v0, v1 }, $clickTrackingParamsSetterMethod
-            invoke-virtual { p0, v0, p2 }, $browseRequestMethod
+            invoke-virtual { p0, v0, p2 }, $sendPlaylistRequestMethod
             move-result-object v0
             return-object v0
         """,
     )
-    val continuationType = continuationBuilderMethod.parameterTypes.single().toString()
-    browseServiceClass.addInterfaceMethod(
-        name = "patch_requestContinuation",
+    val loadMoreActionType = createLoadMoreRequestMethod
+        .parameterTypes.single().toString()
+    playlistLoaderClass.addInterfaceMethod(
+        name = "patch_requestMorePlaylists",
         parameters = listOf("Ljava/lang/Object;", "Ljava/util/concurrent/Executor;"),
         returnType = LISTENABLE_FUTURE_CLASS,
         registerCount = 3,
         instructions = """
-            check-cast p1, $continuationType
-            invoke-virtual { p0, p1 }, $continuationBuilderMethod
+            check-cast p1, $loadMoreActionType
+            invoke-virtual { p0, p1 }, $createLoadMoreRequestMethod
             move-result-object p1
-            invoke-virtual { p0, p1, p2 }, $browseRequestMethod
+            invoke-virtual { p0, p1, p2 }, $sendPlaylistRequestMethod
             move-result-object p1
             return-object p1
         """,
     )
 
-    return browseServiceClass
+    return playlistLoaderClass
 }
 
-private fun BytecodePatchContext.patchLoadChildrenResult(
-    invalidParentMediaIdMethod: Method,
+private fun BytecodePatchContext.patchAndroidAutoResult(
+    playlistLoadFallbackMethod: Method,
 ) {
-    val loadChildrenResultType = invalidParentMediaIdMethod.parameterTypes.first().toString()
-    val loadChildrenResultClass = mutableClassDefBy(loadChildrenResultType)
-    loadChildrenResultClass.interfaces.add(EXTENSION_LOAD_CHILDREN_RESULT_INTERFACE)
+    val androidAutoResultType = playlistLoadFallbackMethod.parameterTypes.first().toString()
+    val androidAutoResultClass = mutableClassDefBy(androidAutoResultType)
+    androidAutoResultClass.interfaces.add(EXTENSION_ANDROID_AUTO_RESULT_INTERFACE)
     // LoadChildrenResult.toString() labels the String read by the invalid-ID branch as parentMediaId.
-    val parentMediaIdFieldPath = invalidParentMediaIdMethod.instructions.asSequence()
+    val parentMediaIdFieldPath = playlistLoadFallbackMethod.instructions.asSequence()
         .filter { instruction -> instruction.opcode == Opcode.IGET_OBJECT }
         .mapNotNull { instruction -> instruction.getReference<FieldReference>() }
         .windowed(2)
         .first { (resultField, parentMediaIdField) ->
-            resultField.definingClass == loadChildrenResultType &&
+            resultField.definingClass == androidAutoResultType &&
                 parentMediaIdField.definingClass == resultField.type &&
                 parentMediaIdField.type == "Ljava/lang/String;"
         }
 
     // YTM 9.15.51's invalid-ID path calls b(List), which forwards to c(List, null).
-    val resultDeliveryMethod = invalidParentMediaIdMethod.instructions.asSequence()
+    val resultDeliveryMethod = playlistLoadFallbackMethod.instructions.asSequence()
         .mapNotNull { instruction -> instruction.getReference<MethodReference>() }
         .first { reference ->
             val parameters = reference.parameterTypes.map(CharSequence::toString)
-            reference.definingClass == loadChildrenResultType && reference.returnType == "V" &&
+            reference.definingClass == androidAutoResultType && reference.returnType == "V" &&
                 parameters.size in 1..2 &&
                 parameters.firstOrNull() == "Ljava/util/List;" &&
                 parameters.drop(1).all { it.startsWith("L") || it.startsWith("[") }
@@ -852,7 +863,7 @@ private fun BytecodePatchContext.patchLoadChildrenResult(
         }
         append("return-object p0")
     }
-    loadChildrenResultClass.addInterfaceMethod(
+    androidAutoResultClass.addInterfaceMethod(
         name = "patch_getParentMediaId",
         parameters = emptyList(),
         returnType = "Ljava/lang/String;",
@@ -860,7 +871,7 @@ private fun BytecodePatchContext.patchLoadChildrenResult(
         instructions = parentMediaIdInstructions,
     )
     val hasExtraDeliveryParameter = resultDeliveryMethod.parameterTypes.size == 2
-    loadChildrenResultClass.addInterfaceMethod(
+    androidAutoResultClass.addInterfaceMethod(
         name = "patch_sendResult",
         parameters = listOf("Ljava/util/List;"),
         returnType = "V",
@@ -903,27 +914,27 @@ private fun MutableClass.addInterfaceMethod(
     )
 }
 
-private fun BytecodePatchContext.hookLoadChildren(
-    contentSupplierType: String,
-    loadChildrenResultType: String,
+private fun BytecodePatchContext.hookPlaylistLoad(
+    playlistLoadHandlerType: String,
+    androidAutoResultType: String,
 ) {
-    val loadChildrenMethod = contentSupplierLoadChildrenFingerprint(
-        contentSupplierType,
-        loadChildrenResultType,
+    val playlistLoadHandlerMethod = playlistLoadHandlerFingerprint(
+        playlistLoadHandlerType,
+        androidAutoResultType,
     ).method
-    val handledRegister = loadChildrenMethod.findFreeRegister(0)
-    if (handledRegister >= EIGHT_BIT_REGISTER_LIMIT) {
-        throw PatchException("ContentSupplier load-children method has no free 8-bit register")
+    val handledRegister = playlistLoadHandlerMethod.findFreeRegister(0)
+    if (handledRegister >= MOVE_RESULT_REGISTER_LIMIT) {
+        throw PatchException("Playlist load handler has no free 8-bit register")
     }
 
-    loadChildrenMethod.addInstructionsWithLabels(
+    playlistLoadHandlerMethod.addInstructionsWithLabels(
         0,
         """
-            invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->replacePlaylists(Ljava/lang/Object;)Z
+            invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->handlePlaylistLoad(Ljava/lang/Object;)Z
             move-result v$handledRegister
             if-eqz v$handledRegister, :resume
             return-void
         """,
-        ExternalLabel("resume", loadChildrenMethod.getInstruction<Instruction>(0)),
+        ExternalLabel("resume", playlistLoadHandlerMethod.getInstruction<Instruction>(0)),
     )
 }
