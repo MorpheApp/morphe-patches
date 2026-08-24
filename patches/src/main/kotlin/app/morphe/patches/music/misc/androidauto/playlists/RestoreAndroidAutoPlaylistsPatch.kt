@@ -19,6 +19,7 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMuta
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
+import app.morphe.util.cloneMutable
 import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.findMutableMethodOf
@@ -88,6 +89,15 @@ val restoreAndroidAutoPlaylistsPatch = bytecodePatch(
         val endpointMediaIdMethod = EndpointMediaIdFingerprint.originalMethod
         val responseTabsMethod = BrowseTabsFingerprint.originalMethod
         val gridItemsMethod = GridItemsFingerprint.originalMethod
+        val gridType = gridItemsMethod.parameterTypes.single().toString()
+        val gridContinuationsMethod = classDefBy(gridItemsMethod.definingClass).methods
+            .single { method ->
+                method != gridItemsMethod &&
+                    AccessFlags.PRIVATE.isSet(method.accessFlags) &&
+                    AccessFlags.STATIC.isSet(method.accessFlags) &&
+                    method.returnType == "Ljava/util/List;" &&
+                    method.parameterTypes.map(CharSequence::toString) == listOf(gridType)
+            }
         val musicItemType = MusicItemExtensionFingerprint
             .instructionMatches
             .first()
@@ -99,11 +109,12 @@ val restoreAndroidAutoPlaylistsPatch = bytecodePatch(
             .instruction
             .getReference<FieldReference>()
             ?: throw PatchException("Could not resolve the Browse endpoint ID field")
-        val browseServiceClass = patchBrowseService()
+        val browseServiceClass = patchBrowseService(gridContinuationsMethod)
 
         patchBrowseResponses(
             responseTabsMethod,
             gridItemsMethod,
+            gridContinuationsMethod,
             endpointMediaIdMethod,
         )
         patchMusicItem(
@@ -205,6 +216,7 @@ private fun BytecodePatchContext.hookMusicBrowserService(
 private fun BytecodePatchContext.patchBrowseResponses(
     responseTabsMethod: Method,
     gridItemsMethod: Method,
+    gridContinuationsMethod: Method,
     endpointMediaIdMethod: Method,
 ) {
     val tabMapperNewInstance = BrowseTabsFingerprint.instructionMatches.last()
@@ -224,21 +236,38 @@ private fun BytecodePatchContext.patchBrowseResponses(
         responseTabsMethod.returnType,
     ).matchAll(2..2)
         .map { match -> match.originalMethod }
-    mutableClassDefBy(gridItemsMethod.definingClass).findMutableMethodOf(gridItemsMethod).apply {
-        accessFlags = accessFlags.toPublicAccessFlags()
+    val gridResponseMethod = GridDecoderFingerprint.originalMethod
+    val responsePayloadType = gridResponseMethod
+        .parameterTypes.single().toString()
+    val responsePayloadMethod = classDefBy(
+        responseTabsMethod.definingClass,
+    ).methods.singleOrNull { method ->
+        !AccessFlags.STATIC.isSet(method.accessFlags) && method.parameterTypes.isEmpty() &&
+            method.returnType == responsePayloadType
+    } ?: throw PatchException("Could not resolve the Browse response payload getter")
+    // The injected PlaylistGrid methods call these private YTM methods.
+    listOf(gridItemsMethod, gridContinuationsMethod).forEach { method ->
+        mutableClassDefBy(method.definingClass).findMutableMethodOf(method).apply {
+            accessFlags = accessFlags.toPublicAccessFlags()
+        }
     }
 
+    val gridDecoder = addGridDecoder(gridResponseMethod)
     addBrowseResponseInterface(
         responseTabsMethod,
+        responsePayloadMethod,
+        gridDecoder,
         endpointMediaIdMethod,
     )
     addBrowseTabInterface(sectionListMethod)
     addSectionListInterface(sectionItemMethods)
-    addPlaylistGridInterface(gridItemsMethod)
+    addPlaylistGridInterface(gridItemsMethod, gridContinuationsMethod)
 }
 
 private fun BytecodePatchContext.addBrowseResponseInterface(
     responseTabsMethod: Method,
+    responsePayloadMethod: Method,
+    gridDecoder: Method,
     endpointMediaIdMethod: Method,
 ) {
     val responseClass = mutableClassDefBy(responseTabsMethod.definingClass)
@@ -251,6 +280,21 @@ private fun BytecodePatchContext.addBrowseResponseInterface(
         registerCount = 1,
         instructions = """
             invoke-virtual { p0 }, $responseTabsMethod
+            move-result-object p0
+            return-object p0
+        """,
+    )
+    responseClass.addInterfaceMethod(
+        name = "patch_getContinuationGrid",
+        parameters = emptyList(),
+        returnType = "Ljava/lang/Object;",
+        registerCount = 2,
+        instructions = """
+            invoke-virtual { p0 }, $responsePayloadMethod
+            move-result-object p0
+            # The cloned method does not read its first argument.
+            const/4 v0, 0x0
+            invoke-static { v0, p0 }, $gridDecoder
             move-result-object p0
             return-object p0
         """,
@@ -304,6 +348,7 @@ private fun BytecodePatchContext.addSectionListInterface(
 
 private fun BytecodePatchContext.addPlaylistGridInterface(
     gridItemsMethod: Method,
+    gridContinuationsMethod: Method,
 ) {
     val gridType = gridItemsMethod.parameterTypes.single().toString()
     val gridClass = mutableClassDefBy(gridType)
@@ -315,6 +360,17 @@ private fun BytecodePatchContext.addPlaylistGridInterface(
         registerCount = 1,
         instructions = """
             invoke-static { p0 }, $gridItemsMethod
+            move-result-object p0
+            return-object p0
+        """,
+    )
+    gridClass.addInterfaceMethod(
+        name = "patch_getContinuations",
+        parameters = emptyList(),
+        returnType = "Ljava/lang/Iterable;",
+        registerCount = 1,
+        instructions = """
+            invoke-static { p0 }, $gridContinuationsMethod
             move-result-object p0
             return-object p0
         """,
@@ -399,6 +455,20 @@ private fun BytecodePatchContext.addPlaylistMediaIdGetter(
             return-object p0
         """,
     )
+}
+
+private fun BytecodePatchContext.addGridDecoder(method: Method): Method {
+    val decoder = method.cloneMutable(
+        name = "patch_decodeGrid",
+        accessFlags = AccessFlags.PUBLIC.value or AccessFlags.STATIC.value,
+        // The original method clears its receiver register before reading the response from p1.
+        // The added first parameter keeps that register layout in the static clone.
+        parameters = listOf(
+            ImmutableMethodParameter(method.definingClass, null, null),
+        ) + method.parameters,
+    )
+    mutableClassDefBy(method.definingClass).methods.add(decoder)
+    return decoder
 }
 
 private fun BytecodePatchContext.patchMusicItem(
@@ -590,7 +660,9 @@ private fun MutableClass.addArtworkUriGetter(
     )
 }
 
-private fun BytecodePatchContext.patchBrowseService(): MutableClass {
+private fun BytecodePatchContext.patchBrowseService(
+    gridContinuationsMethod: Method,
+): MutableClass {
     val endpointRequestMethod = BrowseEndpointRequestFingerprint.originalMethod
     val requestBuilderType = endpointRequestMethod.returnType
     val requestBuilderFactoryMethod = endpointRequestMethod.instructions.asSequence()
@@ -600,6 +672,15 @@ private fun BytecodePatchContext.patchBrowseService(): MutableClass {
         }
         ?: throw PatchException("Could not resolve the Browse request factory")
     val browseServiceType = requestBuilderFactoryMethod.definingClass
+    val continuationTypes = gridContinuationsMethod.instructions.asSequence()
+        .mapNotNull { instruction -> instruction.getReference<MethodReference>() }
+        .map { reference -> reference.returnType }
+        .toSet()
+    val continuationBuilderMethod = classDefBy(browseServiceType).methods.singleOrNull { method ->
+        method.returnType == requestBuilderType &&
+            method.parameterTypes.singleOrNull()?.toString() in continuationTypes
+    }
+        ?: throw PatchException("Could not resolve the continuation request factory")
     val requestFingerprint = browseRequestFingerprint(
         browseServiceType,
         requestBuilderType,
@@ -637,6 +718,21 @@ private fun BytecodePatchContext.patchBrowseService(): MutableClass {
             invoke-virtual { p0, v0, p2 }, $browseRequestMethod
             move-result-object v0
             return-object v0
+        """,
+    )
+    val continuationType = continuationBuilderMethod.parameterTypes.single().toString()
+    browseServiceClass.addInterfaceMethod(
+        name = "patch_requestContinuation",
+        parameters = listOf("Ljava/lang/Object;", "Ljava/util/concurrent/Executor;"),
+        returnType = LISTENABLE_FUTURE_CLASS,
+        registerCount = 3,
+        instructions = """
+            check-cast p1, $continuationType
+            invoke-virtual { p0, p1 }, $continuationBuilderMethod
+            move-result-object p1
+            invoke-virtual { p0, p1, p2 }, $browseRequestMethod
+            move-result-object p1
+            return-object p1
         """,
     )
     return browseServiceClass

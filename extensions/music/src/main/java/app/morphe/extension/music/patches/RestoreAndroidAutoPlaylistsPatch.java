@@ -19,6 +19,7 @@ import com.google.common.util.concurrent.ListenableFuture;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -48,10 +49,13 @@ public final class RestoreAndroidAutoPlaylistsPatch {
     public interface BrowseService {
         @NonNull ListenableFuture<?> patch_requestBrowse(
                 @NonNull String browseId, @NonNull Executor executor);
+        @NonNull ListenableFuture<?> patch_requestContinuation(
+                @NonNull Object continuation, @NonNull Executor executor);
     }
 
     public interface BrowseResponse {
         @NonNull Iterable<?> patch_getTabs();
+        @Nullable Object patch_getContinuationGrid();
         @Nullable String patch_getPlaylistMediaId();
     }
 
@@ -65,6 +69,7 @@ public final class RestoreAndroidAutoPlaylistsPatch {
 
     public interface PlaylistGrid {
         @Nullable Iterable<?> patch_getItems();
+        @Nullable Iterable<?> patch_getContinuations();
     }
 
     public interface LoadChildrenResult {
@@ -120,12 +125,23 @@ public final class RestoreAndroidAutoPlaylistsPatch {
 
     private static void loadPlaylists(LoadChildrenResult result) {
         LibraryState state = new LibraryState();
-        ListenableFuture<?> request = browseService.patch_requestBrowse(
-                LIBRARY_BROWSE_ID, REQUEST_EXECUTOR);
+        loadLibraryPage(result, state,
+                browseService.patch_requestBrowse(LIBRARY_BROWSE_ID, REQUEST_EXECUTOR), false);
+    }
+
+    private static void loadLibraryPage(
+            LoadChildrenResult result, LibraryState state, ListenableFuture<?> request,
+            boolean isContinuation) {
         request.addListener(() -> {
             try {
                 BrowseResponse response = (BrowseResponse) request.get();
-                collectPage(response, state);
+                Object continuation = collectPage(response, state, isContinuation);
+                if (continuation != null) {
+                    loadLibraryPage(result, state,
+                            browseService.patch_requestContinuation(
+                                    continuation, REQUEST_EXECUTOR), true);
+                    return;
+                }
                 loadPlaylistMediaItems(result, state.playlists);
             } catch (InterruptedException ex) {
                 Thread.currentThread().interrupt();
@@ -147,22 +163,42 @@ public final class RestoreAndroidAutoPlaylistsPatch {
         }
     }
 
-    private static void collectPage(BrowseResponse response, LibraryState state) {
-        for (Object tab : response.patch_getTabs()) {
-            SectionList sectionList = (SectionList)
-                    ((BrowseTab) tab).patch_getSectionList();
-            if (sectionList == null) continue;
-            for (Iterable<?> sectionItems : sectionList.patch_getItemLists()) {
-                collectPlaylists(sectionItems, state);
+    private static Object collectPage(
+            BrowseResponse response, LibraryState state, boolean isContinuation) {
+        Object continuation = null;
+        if (isContinuation) {
+            Object grid = response.patch_getContinuationGrid();
+            if (grid != null) {
+                continuation = collectPlaylists(
+                        Collections.singletonList(grid), state, null);
+            }
+        } else {
+            for (Object tab : response.patch_getTabs()) {
+                SectionList sectionList = (SectionList)
+                        ((BrowseTab) tab).patch_getSectionList();
+                if (sectionList == null) continue;
+                for (Iterable<?> sectionItems : sectionList.patch_getItemLists()) {
+                    continuation = collectPlaylists(sectionItems, state, continuation);
+                }
             }
         }
         Logger.printDebug(() -> "Found Library playlists: " + state.playlists.size());
+        return continuation;
     }
 
-    private static void collectPlaylists(Iterable<?> sectionItems, LibraryState state) {
+    private static Object collectPlaylists(
+            Iterable<?> sectionItems, LibraryState state, Object continuation) {
         for (Object sectionItem : sectionItems) {
             if (!(sectionItem instanceof PlaylistGrid)) continue;
             PlaylistGrid grid = (PlaylistGrid) sectionItem;
+            if (continuation == null) {
+                Iterable<?> continuations = grid.patch_getContinuations();
+                if (continuations != null) {
+                    Iterator<?> iterator = continuations.iterator();
+                    if (iterator.hasNext()) continuation = iterator.next();
+                }
+            }
+
             Iterable<?> playlistItems = grid.patch_getItems();
             if (playlistItems == null) continue;
             for (Object item : playlistItems) {
@@ -174,6 +210,7 @@ public final class RestoreAndroidAutoPlaylistsPatch {
                 }
             }
         }
+        return continuation;
     }
 
     private static void addPlaylist(MusicItem item, LibraryState state) {

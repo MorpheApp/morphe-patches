@@ -269,6 +269,18 @@ internal object GridItemsFingerprint : Fingerprint(
     ),
 )
 
+internal object GridDecoderFingerprint : Fingerprint(
+    classFingerprint = MusicReloadShelfEventFingerprint,
+    accessFlags = listOf(
+        AccessFlags.PROTECTED,
+        AccessFlags.FINAL,
+        AccessFlags.BRIDGE,
+        AccessFlags.SYNTHETIC,
+    ),
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf("L"),
+)
+
 // Field c on playlist and track rows contains thumbnail extension 164480666.
 internal object MusicThumbnailExtensionFingerprint : Fingerprint(
     name = "<clinit>",
