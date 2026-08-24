@@ -771,8 +771,10 @@ private fun BytecodePatchContext.patchBrowseService(
         classDef.superclass?.let { superclass -> classDefByOrNull(superclass) }
     }.flatMap { classDef -> classDef.methods.asSequence() }
     val clickTrackingParamsSetterMethod = requestBuilderMethods
+        // YTM 9.32.51 and 9.33.52 also declare a public byte[] clickTrackingParams setter.
         .firstOrNull { method ->
-            method.returnType == "V" &&
+            AccessFlags.PROTECTED.isSet(method.accessFlags) &&
+                method.returnType == "V" &&
                 method.parameterTypes.map(CharSequence::toString) == listOf("[B")
         }
         ?: throw PatchException("Could not resolve the click tracking parameter setter")
