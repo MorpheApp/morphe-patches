@@ -18,8 +18,10 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.string
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
+import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
+import app.morphe.patches.youtube.layout.captions.StartVideoInformerFingerprint
 import app.morphe.patches.youtube.layout.hide.general.ContextualMenuItemBuilderFingerprint
 import app.morphe.patches.youtube.layout.hide.general.ContextualMenuItemBuilderOnClickFingerprint
 import app.morphe.patches.youtube.misc.auth.authHookPatch
@@ -27,6 +29,7 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
+import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -73,6 +76,7 @@ val addToQueuePatch = bytecodePatch(
         sharedExtensionPatch,
         settingsPatch,
         lithoFilterPatch,
+        elementProtoParserHookPatch,
         versionCheckPatch,
         videoInformationPatch,
         authHookPatch
@@ -336,5 +340,10 @@ val addToQueuePatch = bytecodePatch(
         }
 
         addLithoFilter(EXTENSION_FILTER)
+        hookElement("$EXTENSION_UTILS_CLASS->setVideoMarkedAsForKids")
+        StartVideoInformerFingerprint.method.addInstruction(
+            0,
+            "invoke-static { }, $EXTENSION_UTILS_CLASS->setVideoMarkedAsForKids()V"
+        )
     }
 }

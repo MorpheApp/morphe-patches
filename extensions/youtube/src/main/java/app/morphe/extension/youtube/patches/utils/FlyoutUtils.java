@@ -9,7 +9,6 @@ package app.morphe.extension.youtube.patches.utils;
 
 import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.youtube.patches.utils.PlaylistPatch.QueueManager.OPEN_QUEUE;
-import static app.morphe.extension.youtube.videoplayer.SaveToWatchLaterButton.saveToWatchLaterButtonOriginalName;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
@@ -55,7 +54,6 @@ import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.AddToQueuePatch;
-import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
 import app.morphe.extension.youtube.patches.SaveToWatchLaterPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
@@ -88,6 +86,7 @@ public final class FlyoutUtils {
             getAsciiBytes(".ytimg.com/vi/"),
             getAsciiBytes("youtube.com/watch?v=")
     );
+    private static final byte[] KIDS_VIDEO_ELEMENT_BYTES = getAsciiBytes("YouTube Kids");
     private static final List<byte[]> VIDEO_ELEMENTS_BYTES = List.of(
             getAsciiBytes("compact_playlist.e"),
             getAsciiBytes("compact_video.e"),
@@ -139,6 +138,8 @@ public final class FlyoutUtils {
             "shorts-comments-panel"
     );
 
+    private static boolean videoMarkedAsForKids = false;
+
     public static byte[] getAsciiBytes(String string) {
         return string.getBytes(StandardCharsets.US_ASCII);
     }
@@ -153,6 +154,22 @@ public final class FlyoutUtils {
 
     public static String getFlyoutCommentId() {
         return flyoutCommentId;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setVideoMarkedAsForKids(byte[] bytes) {
+        if (byteIndexOf(bytes, KIDS_VIDEO_ELEMENT_BYTES) != -1) {
+            videoMarkedAsForKids = true;
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setVideoMarkedAsForKids() {
+        videoMarkedAsForKids = false;
     }
 
     /**
@@ -262,13 +279,7 @@ public final class FlyoutUtils {
 
         if (Settings.KIDS_SAVE_TO_WATCH_LATER_BUTTON.get() &&
                 PlayerType.getCurrent().isMaximizedOrFullscreen() &&
-                visibleFlyoutButtons.
-                stream().
-                noneMatch(
-                        pair
-                                ->
-                        pair.first.equals(saveToWatchLaterButtonOriginalName)
-                )) {
+                videoMarkedAsForKids) {
             nextButtonIndex = addFlyoutButton(
                     flyoutPanel,
                     saveToWatchLaterDrawable,

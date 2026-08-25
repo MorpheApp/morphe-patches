@@ -7,8 +7,6 @@
 
 package app.morphe.extension.youtube.videoplayer;
 
-import static app.morphe.extension.shared.StringRef.str;
-
 import android.view.View;
 
 import java.lang.ref.WeakReference;
@@ -32,7 +30,6 @@ public class SaveToWatchLaterButton {
                             ? "yt_outline_list_add_black_24"
                             : "yt_outline_experimental_playlist_add_vd_theme_24"
             );
-    public static final String saveToWatchLaterButtonOriginalName = "ADD_TO_WATCH_LATER";
 
     static {
         if (Settings.SAVE_TO_WATCH_LATER_BUTTON.get()) {

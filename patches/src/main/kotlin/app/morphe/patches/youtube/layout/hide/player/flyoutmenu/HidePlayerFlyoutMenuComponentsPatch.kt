@@ -21,7 +21,7 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.litho.node.treeNodeElementHookPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
-import app.morphe.patches.shared.misc.proto.hookElement
+import app.morphe.patches.shared.misc.proto.hookOverrideElement
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -82,7 +82,7 @@ val hidePlayerFlyoutMenuComponentsPatch = bytecodePatch(
         )
 
         addLithoFilter(EXTENSION_FILTER)
-        hookElement("$EXTENSION_CLASS->hideNativeBottomSheetHeader([B)[B")
+        hookOverrideElement("$EXTENSION_CLASS->hideNativeBottomSheetHeader")
         hookTreeNodeResult(
             descriptor = "$EXTENSION_CLASS->hideNativeBottomSheetFooter",
             isLazilyConvertedElement = false

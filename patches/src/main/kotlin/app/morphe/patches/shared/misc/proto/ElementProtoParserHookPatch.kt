@@ -62,12 +62,21 @@ internal fun createElementProtoParserHookPatch(
     }
 }
 
+fun hookOverrideElement(
+    methodDescriptor: String
+) = elementProtoParserMethodRef.get()!!.addInstructions(
+    2,
+    """
+        invoke-static { p0 }, $methodDescriptor([B)[B
+        move-result-object p0
+    """
+)
+
 fun hookElement(
     methodDescriptor: String
 ) = elementProtoParserMethodRef.get()!!.addInstructions(
     2,
     """
-        invoke-static { p0 }, $methodDescriptor
-        move-result-object p0
+        invoke-static { p0 }, $methodDescriptor([B)V
     """
 )
