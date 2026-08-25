@@ -50,11 +50,11 @@ public final class SaveToWatchLaterPatch {
                             ? "morphe_save_to_watch_later_success_toast"
                             : "morphe_save_to_watch_later_already_exists_toast"));
                 } else {
-                    Logger.printDebug(() -> "Could not save video, save to watch later results are null: " + videoId);
+                    Logger.printDebug(() -> "Could not save video, save to Watch later results are null: " + videoId);
                 }
             });
         } catch (Exception ex) {
-            Logger.printDebug(() -> "Could not fetch save to watch later request", ex);
+            Logger.printDebug(() -> "Could not fetch save to Watch later request", ex);
             Utils.showToastShort(str("morphe_save_to_watch_later_error_toast"));
         }
     }

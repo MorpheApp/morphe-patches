@@ -42,8 +42,8 @@ private const val EXTENSION_BUTTON =
 
 @Suppress("unused")
 val saveToWatchLaterButtonPatch = bytecodePatch(
-    name = "Save to watch later",
-    description = "Adds an option to display save to watch later button in the video player.",
+    name = "Save to Watch later",
+    description = "Adds an option to display save to Watch later button in the video player.",
 ) {
     dependsOn(
         saveToWatchLaterButtonResourcePatch,

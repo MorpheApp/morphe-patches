@@ -228,6 +228,8 @@ public final class FlyoutUtils {
     }
 
     public static void dismissFlyout() {
+        visibleFlyoutButtons.clear();
+
         if (flyoutDialog != null) {
             flyoutDialog.dismiss();
             flyoutDialog = null;
@@ -240,24 +242,25 @@ public final class FlyoutUtils {
     }
 
     private static void addFlyoutElements(Object flyoutPanel) {
-        int currentInjectIndex = 0;
+        int nextButtonIndex = 0;
 
         // TODO: Add playlists compatibility to Morphe's queue.
         if (Settings.QUEUE_ADD_FLYOUT_MENU.get() &&
                 flyoutPlaylistId.isEmpty() &&
                 !flyoutVideoId.isEmpty()) {
-            currentInjectIndex = addFlyoutButton(
+            nextButtonIndex = addFlyoutButton(
                     flyoutPanel,
                     queueButtonDrawable,
                     str("morphe_queue_flyout_title"),
                     v -> AddToQueuePatch.flyoutButtonClickLogic(
                             AddToQueuePatch.queueButtonNames.get(0)
                     ),
-                    currentInjectIndex
+                    nextButtonIndex
             );
         }
 
-        if (PlayerType.getCurrent().isMaximizedOrFullscreen() &&
+        if (Settings.KIDS_SAVE_TO_WATCH_LATER_BUTTON.get() &&
+                PlayerType.getCurrent().isMaximizedOrFullscreen() &&
                 visibleFlyoutButtons.
                 stream().
                 noneMatch(
@@ -265,7 +268,7 @@ public final class FlyoutUtils {
                                 ->
                         pair.first.equals("ADD_TO_WATCH_LATER")
                 )) {
-            currentInjectIndex = addFlyoutButton(
+            nextButtonIndex = addFlyoutButton(
                     flyoutPanel,
                     saveToWatchLaterDrawable,
                     str("morphe_save_to_watch_later_flyout_title"),
@@ -274,12 +277,12 @@ public final class FlyoutUtils {
 
                         dismissFlyout(); // Must dismiss after showing dialog.
                     },
-                    currentInjectIndex
+                    nextButtonIndex
             );
         }
 
-        if (currentInjectIndex > 0) {
-            addDivider(flyoutPanel, currentInjectIndex);
+        if (nextButtonIndex > 0) {
+            addDivider(flyoutPanel, nextButtonIndex);
         }
     }
 
@@ -443,10 +446,6 @@ public final class FlyoutUtils {
 
         if (buttonInfo instanceof View view && view.getVisibility() == View.GONE) {
             return;
-        }
-
-        if (currentButtonIndex == 0 && !visibleFlyoutButtons.isEmpty()) {
-            visibleFlyoutButtons.clear();
         }
 
         currentButtonName = buttonEnum.name();

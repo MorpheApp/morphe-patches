@@ -492,19 +492,19 @@ Info: May not work on live streams"</string>
     <string name="morphe_dismiss_player_not_available_toast">Video ID is unavailable. Please manually reload the video</string>
 
     <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
-    <string name="morphe_save_to_watch_later_button_title">Show Save to watch later button</string>
-    <string name="morphe_save_to_watch_later_button_summary">Tap to save to watch later, tap and hold for queue options</string>
+    <string name="morphe_save_to_watch_later_button_title">Show Save to Watch later button</string>
+    <string name="morphe_save_to_watch_later_button_summary">Tap to save to Watch later, tap and hold for queue options</string>
     <string name="morphe_save_to_watch_later_success_toast">Video successfully saved in watch later playlist</string>
     <string name="morphe_save_to_watch_later_already_exists_toast">This video is already saved in watch later playlist</string>
     <string name="morphe_save_to_watch_later_error_toast">Cannot save this video in watch later playlist</string>
-    <string name="morphe_save_to_watch_later_flyout_title">Save to watch later</string>
-    <string name="morphe_save_to_watch_later_kids_flyout_button_title">Show Save to watch later button in kids videos</string>
+    <string name="morphe_save_to_watch_later_flyout_title">Save to Watch later</string>
+    <string name="morphe_save_to_watch_later_kids_flyout_button_title">Show Save to Watch later button in kids videos</string>
     <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Allows to save kids related videos in the 'Watch later' playlist from the corresponding flyout menu.</string>
     <string name="morphe_queue_flyout_title">Add to Morphe queue</string>
     <string name="morphe_queue_restore_title">Keep queue between sessions</string>
     <string name="morphe_queue_restore_summary">Queue is kept after restarting the app</string>
     <string name="morphe_swap_save_and_queue_actions_title">Swap Save and Queue actions</string>
-    <string name="morphe_swap_save_and_queue_actions_summary">Tap for queue options, tap and hold to save to watch later</string>
+    <string name="morphe_swap_save_and_queue_actions_summary">Tap for queue options, tap and hold to save to Watch later</string>
     <string name="morphe_queue_override_flyout_menu_title">Override feed flyout queue button</string>
     <string name="morphe_queue_override_flyout_menu_summary">Opens the Morphe queue instead of the YouTube queue</string>
     <string name="morphe_queue_add_flyout_menu_title">Add feed flyout queue menu item</string>
