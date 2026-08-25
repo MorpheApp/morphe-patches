@@ -22,7 +22,7 @@ import app.morphe.extension.youtube.settings.Settings;
 @SuppressWarnings("unused")
 public final class AddToQueuePatch {
 
-    public static final List<String> queueButtonNames = List.of(
+    public static final List<String> queueButtonOriginalNames = List.of(
             "QUEUE_PLAY_NEXT",
             "QUEUE_PLAY_LAST"
     );
@@ -100,7 +100,7 @@ public final class AddToQueuePatch {
 
     public static boolean flyoutButtonClickLogic(String buttonName) {
         try {
-            if (queueButtonNames.contains(buttonName)) {
+            if (queueButtonOriginalNames.contains(buttonName)) {
                 String flyoutVideoId = FlyoutUtils.getFlyoutVideoId();
                 Logger.printDebug(() -> "Opening custom queue flyout with videoId: " + flyoutVideoId);
 

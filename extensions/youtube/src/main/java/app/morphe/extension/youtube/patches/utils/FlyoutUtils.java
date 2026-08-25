@@ -9,7 +9,7 @@ package app.morphe.extension.youtube.patches.utils;
 
 import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.youtube.patches.utils.PlaylistPatch.QueueManager.OPEN_QUEUE;
-import static app.morphe.extension.youtube.videoplayer.SaveToWatchLaterButton.saveToWatchLaterResourceName;
+import static app.morphe.extension.youtube.videoplayer.SaveToWatchLaterButton.saveToWatchLaterButtonOriginalName;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
@@ -55,6 +55,7 @@ import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.AddToQueuePatch;
+import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
 import app.morphe.extension.youtube.patches.SaveToWatchLaterPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
@@ -115,8 +116,10 @@ public final class FlyoutUtils {
             ResourceUtils.getIdentifier(ResourceType.ID, "list_item_text");
     private static final Drawable queueButtonDrawable = Utils.getContext()
             .getDrawable(OPEN_QUEUE.drawableId);
+    private static final String queueButtonName = str("morphe_queue_flyout_title");
     private static final Drawable saveToWatchLaterDrawable =
-            ResourceUtils.getDrawable(saveToWatchLaterResourceName);
+            ResourceUtils.getDrawable("yt_outline_clock_black_24");
+    private static final String saveToWatchLaterButtonName = str("morphe_save_to_watch_later_flyout_title");
 
     private static WeakReference<TextView> customItemTextRef = new WeakReference<>(null);
 
@@ -249,9 +252,9 @@ public final class FlyoutUtils {
             nextButtonIndex = addFlyoutButton(
                     flyoutPanel,
                     queueButtonDrawable,
-                    str("morphe_queue_flyout_title"),
+                    queueButtonName,
                     v -> AddToQueuePatch.flyoutButtonClickLogic(
-                            AddToQueuePatch.queueButtonNames.get(0)
+                            AddToQueuePatch.queueButtonOriginalNames.get(0)
                     ),
                     nextButtonIndex
             );
@@ -264,12 +267,12 @@ public final class FlyoutUtils {
                 noneMatch(
                         pair
                                 ->
-                        pair.first.equals("ADD_TO_WATCH_LATER")
+                        pair.first.equals(saveToWatchLaterButtonOriginalName)
                 )) {
             nextButtonIndex = addFlyoutButton(
                     flyoutPanel,
                     saveToWatchLaterDrawable,
-                    str("morphe_save_to_watch_later_flyout_title"),
+                    saveToWatchLaterButtonName,
                     v -> {
                         SaveToWatchLaterPatch.saveVideo(getFlyoutVideoId());
 
@@ -320,7 +323,7 @@ public final class FlyoutUtils {
 
         int itemIndex = -1;
         for (Pair<String, Integer> button : visibleFlyoutButtons) {
-            if (AddToQueuePatch.queueButtonNames.contains(button.first)) {
+            if (AddToQueuePatch.queueButtonOriginalNames.contains(button.first)) {
                 itemIndex = button.second - 1;
                 break;
             }
