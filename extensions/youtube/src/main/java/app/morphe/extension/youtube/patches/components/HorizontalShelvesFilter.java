@@ -37,23 +37,7 @@ public final class HorizontalShelvesFilter extends Filter {
         descriptionBuffers.addAll(
                 new ByteArrayFilterGroup(
                         Settings.HIDE_ATTRIBUTES_SECTION,
-                        // May no longer work on v20.31+, even though the component is still there.
                         "cell_video_attribute"
-                ),
-                new ByteArrayFilterGroup(
-                        Settings.HIDE_FEATURED_PLACES_SECTION,
-                        "yt_fill_experimental_star",
-                        "yt_fill_star"
-                ),
-                new ByteArrayFilterGroup(
-                        Settings.HIDE_GAMING_SECTION,
-                        "yt_outline_experimental_gaming",
-                        "yt_outline_gaming"
-                ),
-                new ByteArrayFilterGroup(
-                        Settings.HIDE_MUSIC_SECTION,
-                        "yt_outline_experimental_audio",
-                        "yt_outline_audio"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_QUIZZES_SECTION,
