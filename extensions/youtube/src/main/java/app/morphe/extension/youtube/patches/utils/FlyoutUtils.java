@@ -54,6 +54,7 @@ import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.AddToQueuePatch;
+import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
 import app.morphe.extension.youtube.patches.SaveToWatchLaterPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
@@ -120,7 +121,11 @@ public final class FlyoutUtils {
             .getDrawable(OPEN_QUEUE.drawableId);
     private static final String queueButtonName = str("morphe_queue_flyout_title");
     private static final Drawable saveToWatchLaterDrawable =
-            ResourceUtils.getDrawable("yt_outline_clock_black_24");
+            ResourceUtils.getDrawable(
+                    LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS
+                            ? "yt_outline_clock_black_24"
+                            : "yt_outline_experimental_clock_vd_theme_24"
+            );
     private static final String saveToWatchLaterButtonName = str("morphe_save_to_watch_later_flyout_title");
 
     private static WeakReference<TextView> customItemTextRef = new WeakReference<>(null);
@@ -159,9 +164,6 @@ public final class FlyoutUtils {
         return flyoutCommentId;
     }
 
-    /**
-     * Injection point.
-     */
     public static void setVideoMarkedAsForKids(byte[] bytes) {
         List<Integer> kidsVideoElementsBytesIndexes = byteIndexesOf(bytes, KIDS_VIDEO_ELEMENTS_BYTES);
         if (!kidsVideoElementsBytesIndexes.isEmpty() && kidsVideoElementsBytesIndexes.size() == KIDS_VIDEO_ELEMENTS_BYTES.size()) {

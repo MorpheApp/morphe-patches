@@ -24,7 +24,7 @@ import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.litho.node.hookTreeNodeResult
-import app.morphe.patches.shared.misc.proto.hookOverrideElement
+import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
@@ -597,7 +597,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // region hide comments carousel
 
-        hookOverrideElement("$COMMENTS_FILTER->onCommentsLoaded")
+        hookElement("$COMMENTS_FILTER->onCommentsLoaded")
 
         // endregion
 

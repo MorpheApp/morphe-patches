@@ -10,6 +10,8 @@
 
 package app.morphe.extension.youtube.patches.components;
 
+import static app.morphe.extension.youtube.patches.utils.FlyoutUtils.setVideoMarkedAsForKids;
+
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -362,6 +364,8 @@ public class CommentsFilter extends Filter {
      * Injection point.
      */
     public static byte[] onCommentsLoaded(byte[] bytes) {
+        setVideoMarkedAsForKids(bytes);
+
         if (Settings.HIDE_COMMENTS_CAROUSEL.get() && !commentsCarouselFilterStrings.isEmpty()) {
             try {
                 var newElement = NewElement.parseFrom(bytes).toBuilder();
