@@ -23,6 +23,7 @@ import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.youtube.patches.playback.speed.RememberPlaybackSpeedPatch;
 import app.morphe.extension.youtube.shared.PlayerType;
 
 @SuppressWarnings("unused")
@@ -113,6 +114,9 @@ public final class LoadVideoPatch {
 
         // Close the current player instance.
         PlayerInterface playerInterface;
+        if (closeCurrentPlayerInstance) {
+            RememberPlaybackSpeedPatch.preservePlaybackParametersForReload();
+        }
         if (closeCurrentPlayerInstance && (playerInterface = getPlayerInterface()) != null) {
             playerInterface.patch_dismissPlayer();
 

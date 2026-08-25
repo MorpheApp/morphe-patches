@@ -33,6 +33,10 @@ public final class RememberPlaybackSpeedPatch {
 
     private static volatile boolean newAudioStarted = true; // Actually video, just a flag for audio pitch
 
+    private static float reloadPlaybackSpeed = -2.0f;
+
+    private static float reloadPlaybackAudioPitch = -2.0f;
+
     private static long lastTimeSpeedChanged;
 
     private static long lastTimePitchChanged;
@@ -44,6 +48,11 @@ public final class RememberPlaybackSpeedPatch {
         Logger.printDebug(() -> "newVideoStarted");
         newVideoStarted = true;
         newAudioStarted = true;
+    }
+
+    public static void preservePlaybackParametersForReload() {
+        reloadPlaybackSpeed = VideoInformation.getPlaybackSpeed();
+        reloadPlaybackAudioPitch = VideoInformation.getPlaybackAudioPitch();
     }
 
     /**
@@ -144,8 +153,12 @@ public final class RememberPlaybackSpeedPatch {
 
             VideoInformation.setPlaybackSpeedMenu(menu);
 
-            float defaultSpeed = Settings.PLAYBACK_SPEED_DEFAULT.get();
-            if (DISABLE_PLAYBACK_SPEED_MUSIC && defaultSpeed != 1.0f) {
+            final boolean useReloadPlaybackSpeed = reloadPlaybackSpeed > 0;
+            float defaultSpeed = useReloadPlaybackSpeed
+                    ? reloadPlaybackSpeed
+                    : Settings.PLAYBACK_SPEED_DEFAULT.get();
+            reloadPlaybackSpeed = -2.0f;
+            if (!useReloadPlaybackSpeed && DISABLE_PLAYBACK_SPEED_MUSIC && defaultSpeed != 1.0f) {
                 String videoId = VideoInformation.getVideoId();
                 GetMixPlaylistRequest request = GetMixPlaylistRequest.getRequestForVideoId(videoId);
                 final boolean isMusic = request != null && Boolean.TRUE.equals(request.getResult());
@@ -168,8 +181,12 @@ public final class RememberPlaybackSpeedPatch {
         if (newAudioStarted) {
             newAudioStarted = false;
             
-            final float defaultAudioPitch = Settings.PLAYBACK_AUDIO_PITCH_DEFAULT.get();
-            if (DISABLE_PLAYBACK_SPEED_MUSIC && defaultAudioPitch != 1.0f) {
+            final boolean useReloadAudioPitch = reloadPlaybackAudioPitch > 0;
+            final float defaultAudioPitch = useReloadAudioPitch
+                    ? reloadPlaybackAudioPitch
+                    : Settings.PLAYBACK_AUDIO_PITCH_DEFAULT.get();
+            reloadPlaybackAudioPitch = -2.0f;
+            if (!useReloadAudioPitch && DISABLE_PLAYBACK_SPEED_MUSIC && defaultAudioPitch != 1.0f) {
                 String videoId = VideoInformation.getVideoId();
 
                 // duplicate request, needs refactor along with getPlaybackSpeedOverride
