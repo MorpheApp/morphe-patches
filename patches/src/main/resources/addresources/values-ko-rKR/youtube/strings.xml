@@ -992,10 +992,10 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_theme_color_light_entry_12">밝은 노란색</string>
   <string name="morphe_theme_color_light_entry_13">밝은 주황색</string>
   <string name="morphe_theme_color_light_entry_14">밝은 빨간색</string>
-  <string name="morphe_theme_color_custom_entry">사용자 정의</string>
-  <string name="morphe_theme_color_custom_light_title">사용자 정의 밝은 배경 색상</string>
-  <string name="morphe_theme_color_custom_light_summary">밝은 테마의 배경 색상을 설정할 수 있습니다</string>
-  <string name="morphe_theme_color_change_foreground_title">전경 색상을 변경해 보세요</string>
+  <string name="morphe_theme_color_light_custom_title">사용자 정의 밝은 배경 색상</string>
+  <string name="morphe_theme_color_light_custom_summary">밝은 테마의 배경 색상을 설정할 수 있습니다</string>
+  <string name="morphe_theme_color_change_foreground_title">전경 색상 변경하기</string>
+  <string name="morphe_theme_color_change_foreground_summary">텍스트와 아이콘에 테마 색상을 사용합니다</string>
   <string name="morphe_gradient_loading_screen_title">그라데이션 색상 로딩 화면 활성화하기</string>
   <string name="morphe_gradient_loading_screen_summary">로딩 화면에 단색 대신 그라데이션 배경을 표시합니다</string>
   <string name="morphe_splash_screen_animation_style_title">스플래시 애니메이션 스타일</string>

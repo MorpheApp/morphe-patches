@@ -40,13 +40,15 @@ public class SharedYouTubeSettings extends BaseSettings {
 
     public static final BooleanSetting CHECK_WATCH_HISTORY_DOMAIN_NAME = new BooleanSetting("morphe_check_watch_history_domain_name", TRUE, false, false);
 
+    // Theme
     public static final EnumSetting<ThemeColorDark> THEME_COLOR_DARK = new EnumSetting<>("morphe_theme_color_dark", ThemeColorDark.PURE_BLACK, true);
     public static final EnumSetting<ThemeColorLight> THEME_COLOR_LIGHT = new EnumSetting<>("morphe_theme_color_light", ThemeColorLight.WHITE, true);
-    public static final StringSetting THEME_COLOR_CUSTOM_DARK = new StringSetting("morphe_theme_color_custom_dark", "#0F0F0F", true, new ThemeColorCustomAvailability(THEME_COLOR_DARK));
-    public static final StringSetting THEME_COLOR_CUSTOM_LIGHT = new StringSetting("morphe_theme_color_custom_light", "#FFFFFF", true, new ThemeColorCustomAvailability(THEME_COLOR_LIGHT));
+    public static final StringSetting THEME_COLOR_DARK_CUSTOM = new StringSetting("morphe_theme_color_dark_custom", "#0F0F0F", true, new ThemeColorCustomAvailability(THEME_COLOR_DARK));
+    public static final StringSetting THEME_COLOR_LIGHT_CUSTOM = new StringSetting("morphe_theme_color_light_custom", "#FFFFFF", true, new ThemeColorCustomAvailability(THEME_COLOR_LIGHT));
     public static final BooleanSetting THEME_COLOR_CHANGE_FOREGROUND = new BooleanSetting("morphe_theme_color_change_foreground", false, true, new ThemeColorChangeForegroundAvailability());
-
     public static final BooleanSetting THEME_LAST_USED_DARK_MODE = new BooleanSetting("morphe_theme_last_used_dark_mode", Utils.isDarkModeEnabled(), false, false);
+
+    // Custom branding
     public static final EnumSetting<BrandingTheme> CUSTOM_BRANDING_ICON = new EnumSetting<>("morphe_custom_branding_icon", CustomBrandingPatch.getDefaultIconStyle(), true);
     public static final EnumSetting<NotificationIconTheme> CUSTOM_BRANDING_NOTIFICATION_ICON = new EnumSetting<>("morphe_custom_branding_notification_icon", NotificationIconTheme.FOLLOW, true);
     public static final IntegerSetting CUSTOM_BRANDING_NAME = new IntegerSetting("morphe_custom_branding_name", CustomBrandingPatch.getDefaultAppNameIndex(), true);
@@ -60,7 +62,7 @@ public class SharedYouTubeSettings extends BaseSettings {
     public static final BooleanSetting REPLACE_MUSIC_LINKS_WITH_YOUTUBE = new BooleanSetting("morphe_replace_music_with_youtube", FALSE);
     public static final BooleanSetting REPLACE_LINKS_WITH_SHORTENER = new BooleanSetting("morphe_replace_links_with_shortener", FALSE);
 
-    // Spoof streams
+    // Spoof video streams
     public static final BooleanSetting SPOOF_VIDEO_STREAMS = new BooleanSetting("morphe_spoof_video_streams", TRUE, true, "morphe_spoof_video_streams_user_dialog_message");
     public static final BooleanSetting SPOOF_VIDEO_STREAMS_STATS_FOR_NERDS = new BooleanSetting("morphe_spoof_video_streams_stats_for_nerds", TRUE, parent(SPOOF_VIDEO_STREAMS));
     public static final EnumSetting<JavaScriptVariant> SPOOF_VIDEO_STREAMS_PLAYER_JS_VARIANT = new EnumSetting<>("morphe_spoof_video_streams_player_js_variant", JavaScriptVariant.HOUSE_BRAND, true, new JavaScriptClientAvailability());
@@ -69,6 +71,7 @@ public class SharedYouTubeSettings extends BaseSettings {
     public static final StringSetting OAUTH2_REFRESH_TOKEN = new StringSetting("morphe_oauth2_refresh_token", "", false, false);
     public static final StringSetting SPOOF_VIDEO_STREAMS_CLIENT_IDS = new StringSetting("morphe_spoof_video_streams_clent_id", "", false, false);
 
+    // Network proxy
     public static final BooleanSetting PROXY_ENABLED = new BooleanSetting("morphe_proxy_enabled", FALSE, true);
     public static final StringSetting PROXY_HOST = new StringSetting("morphe_proxy_host", "", true, parent(PROXY_ENABLED));
     public static final IntegerSetting PROXY_PORT = new IntegerSetting("morphe_proxy_port", 8080, true, parent(PROXY_ENABLED));
@@ -84,6 +87,7 @@ public class SharedYouTubeSettings extends BaseSettings {
     public static final BooleanSetting EXTERNAL_DOWNLOADER_FLYOUT_MENU = new BooleanSetting("morphe_external_downloader_flyout_menu", FALSE, parent(EXTERNAL_DOWNLOADER_ACTION_BUTTON));
     public static final StringSetting EXTERNAL_DOWNLOADER_PACKAGE_NAME = new StringSetting("morphe_external_downloader_name", "com.deniscerri.ytdl" /* YTDLnis */, parentsAny(EXTERNAL_DOWNLOADER, EXTERNAL_DOWNLOADER_ACTION_BUTTON));
 
+    // Spoof app version
     public static final BooleanSetting SPOOF_APP_VERSION = new BooleanSetting("morphe_spoof_app_version", FALSE, true, "morphe_spoof_app_version_user_dialog_message");
     public static final StringSetting SPOOF_APP_VERSION_TARGET = new StringSetting("morphe_spoof_app_version_target", getDefaultSpoofAppVersionTarget(), true, parent(SPOOF_APP_VERSION));
 

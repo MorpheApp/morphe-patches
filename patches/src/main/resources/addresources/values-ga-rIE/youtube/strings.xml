@@ -506,9 +506,9 @@ Chun seo a shocrú, cas ar ‘Sruthanna físe bréige’ agus athraigh an ‘Cli
   <string name="morphe_expand_livestream_dvr_duration_title">Leathnaigh fad an DVR sruthú beo</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">Ligeann sé duit craoltaí beo a athchasadh suas le 7 lá san am atá thart</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"B’fhéidir nach mbeidh ‘Fad an DVR sruthú beo a leathnú’ ar fáil
+  <string name="morphe_expand_livestream_dvr_duration_not_available">"B’fhéidir nach mbeidh ‘Fad an DVR sruth beo a leathnú’ ar fáil
 
-Chun seo a shocrú, cas ar ‘Sruthanna físe bréige’ agus athraigh an ‘Cliant réamshocraithe’ go ‘TV Simply’ nó ‘visionOS’"</string>
+Chun seo a shocrú, cas ar ‘Sruthanna físe bréige’ agus athraigh an ‘Cliant réamhshocraithe’ go ‘TV Simply’ nó ‘visionOS’"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Cumasaigh sleamhnán a lorg</string>
   <string name="morphe_slide_to_seek_summary">Cumasaíonn sé seo an sleamhnán chun cuardach a dhéanamh in ionad é a sheinm ag luas 2x nuair a bhrúnn tú agus a choinníonn tú an seinnteoir físe</string>
@@ -984,16 +984,16 @@ Teorainn: Mura bhfuil 'Barra gníomhaíochta seanfhíseáin athchóirithe' múch
   <string name="morphe_theme_color_light_title">Cúlra téama éadrom</string>
   <string name="morphe_theme_color_light_entry_2">Bán</string>
   <string name="morphe_theme_color_light_entry_3">Material You (Bán)</string>
-  <string name="morphe_theme_color_light_entry_9">Bánphinc</string>
+  <string name="morphe_theme_color_light_entry_9">Bándearg éadrom</string>
   <string name="morphe_theme_color_light_entry_10">Gorm éadrom</string>
   <string name="morphe_theme_color_light_entry_11">Glas éadrom</string>
   <string name="morphe_theme_color_light_entry_12">Buí éadrom</string>
   <string name="morphe_theme_color_light_entry_13">Oráiste éadrom</string>
   <string name="morphe_theme_color_light_entry_14">Dearg éadrom</string>
-  <string name="morphe_theme_color_custom_entry">Custamach</string>
-  <string name="morphe_theme_color_custom_light_title">Cúlra éadrom saincheaptha</string>
-  <string name="morphe_theme_color_custom_light_summary">Socraigh dath an chúlra don téama éadrom</string>
-  <string name="morphe_theme_color_change_foreground_title">Athraigh dath an phróram a thaobh tosaigh</string>
+  <string name="morphe_theme_color_light_custom_title">Cúlra solais saincheaptha</string>
+  <string name="morphe_theme_color_light_custom_summary">Socraigh dath cúlra an téama solais</string>
+  <string name="morphe_theme_color_change_foreground_title">Athraigh dath an tulra</string>
+  <string name="morphe_theme_color_change_foreground_summary">Úsáid dath an téama le haghaidh téacs agus deilbhíní</string>
   <string name="morphe_gradient_loading_screen_title">Cumasaigh scáileán luchtaithe</string>
   <string name="morphe_gradient_loading_screen_summary">Taispeánann sé cúlra grádáin ar an scáileán lódála in ionad dath soladach</string>
   <string name="morphe_splash_screen_animation_style_title">Stíl splancscáileáin</string>

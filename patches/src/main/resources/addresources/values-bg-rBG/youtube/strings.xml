@@ -983,16 +983,17 @@ Second \"item\" text"</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Фон на светлата тема</string>
   <string name="morphe_theme_color_light_entry_2">Бяло</string>
+  <string name="morphe_theme_color_light_entry_3">Material You (Бяло)‎</string>
   <string name="morphe_theme_color_light_entry_9">Светлорозово</string>
   <string name="morphe_theme_color_light_entry_10">Светлосиньо</string>
   <string name="morphe_theme_color_light_entry_11">Светлозелено</string>
   <string name="morphe_theme_color_light_entry_12">Светложълто</string>
   <string name="morphe_theme_color_light_entry_13">Светлооранжево</string>
   <string name="morphe_theme_color_light_entry_14">Светлочервено</string>
-  <string name="morphe_theme_color_custom_entry">По избор</string>
-  <string name="morphe_theme_color_custom_light_title">Персонализиран светъл фон</string>
-  <string name="morphe_theme_color_custom_light_summary">ЗадайтеB цвят на фона на светлата тема</string>
+  <string name="morphe_theme_color_light_custom_title">Персонализиран светъл фон</string>
+  <string name="morphe_theme_color_light_custom_summary">Задайте цвета на фона на светлата тема</string>
   <string name="morphe_theme_color_change_foreground_title">Промяна на цвета на предния план</string>
+  <string name="morphe_theme_color_change_foreground_summary">Използвайте цвета на темата за текст и икони</string>
   <string name="morphe_gradient_loading_screen_title">Стил на екрана</string>
   <string name="morphe_gradient_loading_screen_summary">Показва градиентен фон на екрана за зареждане вместо плътен цвят</string>
   <string name="morphe_splash_screen_animation_style_title">Включете personnalized seekbar color</string>

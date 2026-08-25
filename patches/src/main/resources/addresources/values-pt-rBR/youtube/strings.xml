@@ -982,16 +982,17 @@ Limitação: Se 'Restaurar barra de ações de vídeo antiga' estiver desativado
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Fundo do tema claro</string>
   <string name="morphe_theme_color_light_entry_2">Branco</string>
+  <string name="morphe_theme_color_light_entry_3">Material You (Branco)</string>
   <string name="morphe_theme_color_light_entry_9">Rosa claro</string>
   <string name="morphe_theme_color_light_entry_10">Azul claro</string>
   <string name="morphe_theme_color_light_entry_11">Verde claro</string>
   <string name="morphe_theme_color_light_entry_12">Amarelo claro</string>
   <string name="morphe_theme_color_light_entry_13">Laranja claro</string>
   <string name="morphe_theme_color_light_entry_14">Vermelho claro</string>
-  <string name="morphe_theme_color_custom_entry">Personalizado</string>
-  <string name="morphe_theme_color_custom_light_title">Fundo claro personalizado</string>
-  <string name="morphe_theme_color_custom_light_summary">Definir a cor de fundo do tema claro</string>
+  <string name="morphe_theme_color_light_custom_title">Fundo claro personalizado</string>
+  <string name="morphe_theme_color_light_custom_summary">Definir a cor de fundo do tema claro</string>
   <string name="morphe_theme_color_change_foreground_title">Alterar a cor do primeiro plano</string>
+  <string name="morphe_theme_color_change_foreground_summary">Use a cor do tema para texto e ícones</string>
   <string name="morphe_gradient_loading_screen_title">Ativar tela de carregamento em gradiente</string>
   <string name="morphe_gradient_loading_screen_summary">Mostra um gradiente de fundo na tela de carregamento em vez de uma cor sólida</string>
   <string name="morphe_splash_screen_animation_style_title">Estilo da tela inicial</string>

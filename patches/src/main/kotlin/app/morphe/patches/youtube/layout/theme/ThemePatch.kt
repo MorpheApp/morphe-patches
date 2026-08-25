@@ -242,7 +242,7 @@ val themePatch = baseThemePatch(
                         tag = "app.morphe.extension.shared.theme.ThemeColorListPreference"
                     ),
                     TextPreference(
-                        "morphe_theme_color_custom_dark",
+                        "morphe_theme_color_dark_custom",
                         tag = "app.morphe.extension.shared.settings.preference.ColorPickerPreference",
                         inputType = InputType.TEXT_CAP_CHARACTERS
                     ),
@@ -251,11 +251,11 @@ val themePatch = baseThemePatch(
                         tag = "app.morphe.extension.shared.theme.ThemeColorListPreference"
                     ),
                     TextPreference(
-                        "morphe_theme_color_custom_light",
+                        "morphe_theme_color_light_custom",
                         tag = "app.morphe.extension.shared.settings.preference.ColorPickerPreference",
                         inputType = InputType.TEXT_CAP_CHARACTERS
                     ),
-                    SwitchPreference("morphe_theme_color_change_foreground")
+                    SwitchPreference("morphe_theme_color_change_foreground", summary = true)
                 )
             )
         }

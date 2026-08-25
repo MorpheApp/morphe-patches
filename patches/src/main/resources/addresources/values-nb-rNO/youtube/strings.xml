@@ -990,10 +990,10 @@ Begrensning: Hvis 'Gjenopprett gammel videoaksjonslinje' er slått av, er det mu
   <string name="morphe_theme_color_light_entry_12">Lysegul</string>
   <string name="morphe_theme_color_light_entry_13">Lyseoransje</string>
   <string name="morphe_theme_color_light_entry_14">Lyserød</string>
-  <string name="morphe_theme_color_custom_entry">Egendefinert</string>
-  <string name="morphe_theme_color_custom_light_title">Egendefinert bakgrunn for lyst tema</string>
-  <string name="morphe_theme_color_custom_light_summary">Angi bakgrunnsfargen for lyst tema</string>
+  <string name="morphe_theme_color_light_custom_title">Egendefinert lys bakgrunn</string>
+  <string name="morphe_theme_color_light_custom_summary">Angi bakgrunnsfargen for lyst tema</string>
   <string name="morphe_theme_color_change_foreground_title">Endre forgrunnsfarge</string>
+  <string name="morphe_theme_color_change_foreground_summary">Bruk temafargen for tekst og ikoner</string>
   <string name="morphe_gradient_loading_screen_title">Aktiver gradientlasteskjerm</string>
   <string name="morphe_gradient_loading_screen_summary">Viser en gradientbakgrunn på lasteskjermen i stedet for en solid farge</string>
   <string name="morphe_splash_screen_animation_style_title">Splash screen-stil</string>

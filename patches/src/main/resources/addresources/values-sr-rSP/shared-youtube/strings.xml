@@ -32,14 +32,14 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_dark_entry_13">Темно жолта</string>
   <string name="morphe_theme_color_dark_entry_14">Темно наранџаста</string>
   <string name="morphe_theme_color_dark_entry_15">Темно црвена</string>
-  <string name="morphe_theme_color_dark_entry_16">Прилагођено</string>
-  <string name="morphe_theme_color_custom_dark_title">Прилагођена тамна позадина</string>
-  <string name="morphe_theme_color_custom_dark_summary">Поставите боју позадине тамне теме</string>
+  <string name="morphe_theme_color_dark_custom_title">Прилагођена тамна позадина</string>
+  <string name="morphe_theme_color_dark_custom_summary">Подеси боју позадине тамне теме</string>
   <string name="morphe_theme_color_entry_1">Подразумевано у апликацији</string>
   <string name="morphe_theme_color_entry_4">Material You (Неутрална)</string>
   <string name="morphe_theme_color_entry_5">Material You (Примарна)</string>
   <string name="morphe_theme_color_entry_6">Material You (Секундарна)</string>
   <string name="morphe_theme_color_entry_7">Material You (Терцијарна)</string>
+  <string name="morphe_theme_color_custom_entry">Обичај</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Спољна преузимања</string>
   <string name="morphe_external_downloader_name_title">Назив пакета програма за преузимање</string>
@@ -53,7 +53,7 @@ Second \"item\" text"</string>
 Проверите да ли је назив пакета исправан и да ли је апликација инсталирана"</string>
   <string name="morphe_external_downloader_empty_warning">Назив пакета не сме бити празан</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
-  <string name="morphe_custom_branding_name_entry_5">Цустом</string>
+  <string name="morphe_custom_branding_name_entry_5">Обичај</string>
   <string name="morphe_custom_branding_icon_title">Иконица апликације</string>
   <string name="morphe_custom_branding_icon_entry_1">Оригинална</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe сен</string>
@@ -64,7 +64,7 @@ Second \"item\" text"</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
   <string name="morphe_custom_branding_icon_entry_6">Морфе плеј црно</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_7">Цустом</string>
+  <string name="morphe_custom_branding_icon_entry_7">Обичај</string>
   <string name="morphe_custom_branding_notification_icon_title">Икона обавештења</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Усклади икона апликације</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe плеј</string>

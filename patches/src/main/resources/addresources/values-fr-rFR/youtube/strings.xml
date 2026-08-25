@@ -991,10 +991,10 @@ Limitation : Si 'Restaurer l'ancienne barre d'actions vidéo' est désactivé, l
   <string name="morphe_theme_color_light_entry_12">Jaune clair</string>
   <string name="morphe_theme_color_light_entry_13">Orange clair</string>
   <string name="morphe_theme_color_light_entry_14">Rouge clair</string>
-  <string name="morphe_theme_color_custom_entry">Personnalisé</string>
-  <string name="morphe_theme_color_custom_light_title">Arrière-plan clair personnalisé</string>
-  <string name="morphe_theme_color_custom_light_summary">Définir la couleur d\'arrière-plan du thème clair</string>
+  <string name="morphe_theme_color_light_custom_title">Arrière-plan clair personnalisé</string>
+  <string name="morphe_theme_color_light_custom_summary">Définir la couleur d\'arrière-plan du thème clair</string>
   <string name="morphe_theme_color_change_foreground_title">Changer la couleur du premier plan</string>
+  <string name="morphe_theme_color_change_foreground_summary">Utilisez la couleur du thème pour le texte et les icônes</string>
   <string name="morphe_gradient_loading_screen_title">Activer le dégradé sur l\'écran de chargement</string>
   <string name="morphe_gradient_loading_screen_summary">Affiche un arrière-plan dégradé sur l\'écran de chargement au lieu d\'une couleur unie</string>
   <string name="morphe_splash_screen_animation_style_title">Style de l\'écran de lancement</string>

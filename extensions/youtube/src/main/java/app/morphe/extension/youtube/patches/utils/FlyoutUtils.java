@@ -16,6 +16,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Looper;
@@ -104,7 +105,7 @@ public final class FlyoutUtils {
             getAsciiBytes("yt_outline_experimental_share")
     );
 
-    private static final Pattern TITLE_CLEANUP_PATTERN = Pattern.compile("[^a-zA-Z0-9\\s]");
+    private static final Pattern TITLE_CLEANUP_PATTERN = Pattern.compile("[^\\p{L}\\p{N}\\s_&.'+-]");
     private static final Pattern WHITESPACE_PATTERN = Pattern.compile("\\s+");
     private static final Pattern COMMENT_ID_CLEANUP_PATTERN = Pattern.compile("[^A-Za-z0-9_.-]");
 
@@ -174,7 +175,6 @@ public final class FlyoutUtils {
             viewTreeObserver.addOnGlobalLayoutListener(
                     new ViewTreeObserver.OnGlobalLayoutListener() {
                         private boolean alreadyInjectedButton;
-                        private boolean alreadyStyledItems;
 
                         @Override
                         public void onGlobalLayout() {
@@ -191,12 +191,9 @@ public final class FlyoutUtils {
                                         addFlyoutElements(dialog);
                                         alreadyInjectedButton = true;
                                     }
-                                    if (!alreadyStyledItems) {
-                                        alreadyStyledItems = onFlyoutListBound(dialog);
-                                    }
+                                    onFlyoutListBound(dialog);
                                 } else {
                                     alreadyInjectedButton = false;
-                                    alreadyStyledItems = false;
                                 }
                             } catch (Exception ex) {
                                 Logger.printException(() -> "setBottomSheetFlyout onGlobalLayout failure", ex);
@@ -229,6 +226,7 @@ public final class FlyoutUtils {
 
     public static void dismissFlyout() {
         visibleFlyoutButtons.clear();
+        currentButtonIndex = 0;
 
         if (flyoutDialog != null) {
             flyoutDialog.dismiss();
@@ -288,22 +286,21 @@ public final class FlyoutUtils {
 
     /**
      * Applies the changes that are only possible once the menu list has bound its items.
-     *
-     * @return If the changes are applied, or there is nothing to apply.
-     *         False if the list has not bound its items yet, so the caller tries again.
+     * Idempotent, so it can run on every layout pass and reapply itself after the app
+     * binds the list again.
      */
-    private static boolean onFlyoutListBound(Object flyoutPanel) {
+    private static void onFlyoutListBound(Object flyoutPanel) {
         try {
             FlyoutMenuInfo menuInfo = getFlyoutMenuInfo(flyoutPanel, 0);
             if (menuInfo == null) {
-                return true;
+                return;
             }
 
             // The items are inside the list, which is the last view of the menu container.
             LinearLayout menuContainer = menuInfo.menuContainer();
             View lastChild = menuContainer.getChildAt(menuContainer.getChildCount() - 1);
             if (!(lastChild instanceof ViewGroup itemList) || itemList.getChildCount() == 0) {
-                return false;
+                return;
             }
 
             copyListItemTypeface(itemList);
@@ -311,8 +308,6 @@ public final class FlyoutUtils {
         } catch (Exception ex) {
             Logger.printException(() -> "onFlyoutListBound failure", ex);
         }
-
-        return true;
     }
 
     /**
@@ -335,7 +330,7 @@ public final class FlyoutUtils {
         }
 
         View badge = itemList.getChildAt(itemIndex).findViewById(SECONDARY_CONTAINER_ID);
-        if (badge != null) {
+        if (badge != null && badge.getVisibility() != View.GONE) {
             Logger.printDebug(() -> "Hiding the menu item secondary icon");
             badge.setVisibility(View.GONE);
         }
@@ -352,7 +347,11 @@ public final class FlyoutUtils {
         }
 
         if (itemList.getChildAt(0).findViewById(ITEM_TEXT_ID) instanceof TextView itemText) {
-            customItemText.setTypeface(itemText.getTypeface());
+            // setTypeface always requests a layout, so only call it when the font really differs.
+            Typeface itemTypeface = itemText.getTypeface();
+            if (customItemText.getTypeface() != itemTypeface) {
+                customItemText.setTypeface(itemTypeface);
+            }
         }
     }
 
@@ -458,6 +457,16 @@ public final class FlyoutUtils {
         currentButtonIndex++;
 
         visibleFlyoutButtons.add(new Pair<>(currentButtonName, currentButtonIndex));
+    }
+
+    private static boolean containsFlyoutButton(String buttonName) {
+        for (Pair<String, Integer> button : visibleFlyoutButtons) {
+            if (button.first.equals(buttonName)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public static List<Pair<String, Integer>> getVisibleFlyoutButtons() {
@@ -616,7 +625,9 @@ public final class FlyoutUtils {
                 height > 0 ? height : Dim.dp1
         );
 
-        View divider = new View(context);
+        // A plain View measures to the full available width and stretches the whole menu
+        // when the menu is not measured with a fixed width. An empty ViewGroup measures to zero.
+        LinearLayout divider = new LinearLayout(context);
         divider.setLayoutParams(dividerParams);
         // Same 20% of the foreground the app draws its own separators with.
         divider.setBackgroundColor((ThemeUtils.getAppForegroundColor() & 0xFFFFFF) | 0x33000000);
@@ -655,7 +666,7 @@ public final class FlyoutUtils {
      * Injection point.
      */
     public static void extractFlyoutIdFromObject(@Nullable Object bufferObject) {
-        Logger.printDebug(() -> "FlyoutBuffer class: " + ((bufferObject == null)
+        Logger.printDebug(() -> "Flyout buffer class: " + ((bufferObject == null)
                                 ? null : bufferObject.getClass()));
 
         if (bufferObject instanceof FlyoutMenuVideoIdInterface videoIdInterface) {
@@ -765,15 +776,16 @@ public final class FlyoutUtils {
         }
 
         final int requiredScore = Math.max(1, (int) Math.ceil(words.size() * 0.4));
-        final byte[] fixedBuffer = Arrays.copyOfRange(buffer, bestIdx, len);
-        if (bestIdx != -1 && maxScore >= requiredScore) {
+        if (bestIdx >= 0 && maxScore >= requiredScore) {
             for (byte[] VIDEO_ID_PREFIX_BYTES : VIDEO_ID_PREFIXES_BYTES) {
-                final int index = byteIndexOf(fixedBuffer, VIDEO_ID_PREFIX_BYTES);
+                // Search for the video ID prefix after the best title match.
+                int index = byteIndexOf(buffer, VIDEO_ID_PREFIX_BYTES, bestIdx);
+
                 if (index >= 0) {
                     final int videoIdStart = index + VIDEO_ID_PREFIX_BYTES.length;
                     final int videoIdEnd = videoIdStart + 11;
-                    if (videoIdEnd <= fixedBuffer.length) {
-                        flyoutVideoId = new String(fixedBuffer, videoIdStart, 11, StandardCharsets.US_ASCII);
+                    if (videoIdEnd <= buffer.length) {
+                        flyoutVideoId = new String(buffer, videoIdStart, 11, StandardCharsets.US_ASCII);
                         return;
                     }
                 }

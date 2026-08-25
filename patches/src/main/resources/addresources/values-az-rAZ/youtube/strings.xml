@@ -983,15 +983,17 @@ Məhdudiyyət: 'Köhnə video fəaliyyət cizgisini bərpa et' qapadılıbsa, 'D
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">İşıqlı kolorit fonu</string>
   <string name="morphe_theme_color_light_entry_2">Ağ</string>
+  <string name="morphe_theme_color_light_entry_3">Material You (Ağ)</string>
   <string name="morphe_theme_color_light_entry_9">Açıq çəhrayı</string>
   <string name="morphe_theme_color_light_entry_10">Açıq mavi</string>
   <string name="morphe_theme_color_light_entry_11">Açıq yaşıl</string>
   <string name="morphe_theme_color_light_entry_12">Açıq sarı</string>
   <string name="morphe_theme_color_light_entry_13">Açıq narıncı</string>
   <string name="morphe_theme_color_light_entry_14">Açıq qırmızı</string>
-  <string name="morphe_theme_color_custom_entry">Fərdi</string>
-  <string name="morphe_theme_color_custom_light_title">Fərdi işıqlı fon</string>
-  <string name="morphe_theme_color_custom_light_summary">İşıqlı koloritin fon rəngini təyin et</string>
+  <string name="morphe_theme_color_light_custom_title">Fərdi işıqlı fon</string>
+  <string name="morphe_theme_color_light_custom_summary">İşıqlı koloritin fon rəngini təyin et</string>
+  <string name="morphe_theme_color_change_foreground_title">Ön plan rəngini dəyişdir</string>
+  <string name="morphe_theme_color_change_foreground_summary">Mətn və ikonlar üçün mövzu rəngindən istifadə edin</string>
   <string name="morphe_gradient_loading_screen_title">Axarlı yükləmə ekranını aktivləşdir</string>
   <string name="morphe_gradient_loading_screen_summary">Yüklənilmə ekranında bütöv rəng əvəzinə axarlı fonu göstərir</string>
   <string name="morphe_splash_screen_animation_style_title">Sıçrama ekranı üslubu</string>
