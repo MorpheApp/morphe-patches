@@ -86,7 +86,10 @@ public final class FlyoutUtils {
             getAsciiBytes(".ytimg.com/vi/"),
             getAsciiBytes("youtube.com/watch?v=")
     );
-    private static final byte[] KIDS_VIDEO_ELEMENT_BYTES = getAsciiBytes("YouTube Kids");
+    private static final List<byte[]> KIDS_VIDEO_ELEMENTS_BYTES = List.of(
+            getAsciiBytes("video_metadata_carousel.e"),
+            getAsciiBytes("com.google.android.apps.youtube.kids")
+    );
     private static final List<byte[]> VIDEO_ELEMENTS_BYTES = List.of(
             getAsciiBytes("compact_playlist.e"),
             getAsciiBytes("compact_video.e"),
@@ -138,7 +141,7 @@ public final class FlyoutUtils {
             "shorts-comments-panel"
     );
 
-    private static boolean videoMarkedAsForKids = false;
+    private static boolean videoMarkedAsForKids;
 
     public static byte[] getAsciiBytes(String string) {
         return string.getBytes(StandardCharsets.US_ASCII);
@@ -160,7 +163,8 @@ public final class FlyoutUtils {
      * Injection point.
      */
     public static void setVideoMarkedAsForKids(byte[] bytes) {
-        if (byteIndexOf(bytes, KIDS_VIDEO_ELEMENT_BYTES) != -1) {
+        List<Integer> kidsVideoElementsBytesIndexes = byteIndexesOf(bytes, KIDS_VIDEO_ELEMENTS_BYTES);
+        if (!kidsVideoElementsBytesIndexes.isEmpty() && kidsVideoElementsBytesIndexes.size() == KIDS_VIDEO_ELEMENTS_BYTES.size()) {
             videoMarkedAsForKids = true;
         }
     }
