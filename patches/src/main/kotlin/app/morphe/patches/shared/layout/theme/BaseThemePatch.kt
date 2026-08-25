@@ -486,6 +486,25 @@ private fun ResourcePatchContext.declaredColors(colorFiles: List<String>): Map<S
     return declaredColors
 }
 
+/**
+ * The values the app declares for its theme colors, which the app default variant restores.
+ * Only valid until the aliases replace them.
+ */
+private fun ResourcePatchContext.originalColors(colorNames: List<String>): Map<String, String> {
+    val originalColors = LinkedHashMap<String, String>()
+
+    document("res/values/colors.xml").use { document ->
+        document.getNode("resources").forEachChildElement { color ->
+            val name = color.getAttribute("name")
+            if (name in colorNames) {
+                originalColors[name] = color.textContent
+            }
+        }
+    }
+
+    return originalColors
+}
+
 private fun ResourcePatchContext.colorFiles(): List<String> {
     val colorFiles = mutableListOf<String>()
     val resDir = get("res")
@@ -557,13 +576,21 @@ internal fun baseThemeResourcePatch(
             )
         }
 
+        // The aliases replace the colors the app declares, so the app default reads them first.
+        val originalDarkColors = originalColors(darkColorNames)
+        val originalLightColors = if (includeLightColor) {
+            originalColors(lightColorNames)
+        } else {
+            emptyMap()
+        }
+
         val aliasAlphas = addColorAliases(colorFiles, declaredColors, includeLightColor)
-        
+
         val darkAliasAlphas = aliasAlphas.filterKeys { isDarkThemeColorAlias(it) }
         darkAliasNames = darkAliasAlphas.keys.toList()
         addColorVariants(
             THEME_INDEX_OFFSET_DARK, THEME_COLORS_DARK, PALETTE_L_LEVELS_DARK,
-            darkAliasAlphas, true
+            darkAliasAlphas, originalDarkColors, true
         )
 
         if (includeLightColor) {
@@ -571,7 +598,7 @@ internal fun baseThemeResourcePatch(
             lightAliasNames = lightAliasAlphas.keys.toList()
             addColorVariants(
                 THEME_INDEX_OFFSET_LIGHT, THEME_COLORS_LIGHT, PALETTE_L_LEVELS_LIGHT,
-                lightAliasAlphas, false
+                lightAliasAlphas, originalLightColors, false
             )
         }
 
@@ -798,21 +825,23 @@ private fun ResourcePatchContext.addColorVariants(
     colors: List<ThemeColor>,
     lLevels: FloatArray,
     aliasAlphas: Map<String, Int>,
+    originalColors: Map<String, String>,
     isDark: Boolean
 ) {
     // The app default is the only color that keeps the colors the app declares,
     // so it is the only variant that has to undo the alias.
-    val originalColors = LinkedHashMap<String, String>()
-    document("res/values/colors.xml").use { document ->
-        val colorNames = if (isDark) darkColorNames else lightColorNames
-        document.getNode("resources").forEachChildElement { color ->
-            val name = color.getAttribute("name")
-            if (name in colorNames) {
-                originalColors[name] = color.textContent
-            }
+    val appDefaultColors = LinkedHashMap(originalColors)
+
+    // The alias itself is what Morphe draws its own dialogs and settings with, and no name
+    // of the app resolves to it here, so it needs the color of the app of its own.
+    val appColor = if (isDark) appThemeColorDark else appThemeColorLight
+    if (appColor != null) {
+        aliasAlphas.forEach { (name, alpha) ->
+            appDefaultColors[name] = applyAlpha(appColor, alpha)
         }
     }
-    writeColorVariant(indexOffset + 1, originalColors, isDark)
+
+    writeColorVariant(indexOffset + 1, appDefaultColors, isDark)
 
     themeColors(indexOffset, colors, lLevels).forEach { (index, color) ->
         val mappedColors = aliasAlphas.mapValues { (_, alpha) -> applyAlpha(color, alpha) }
