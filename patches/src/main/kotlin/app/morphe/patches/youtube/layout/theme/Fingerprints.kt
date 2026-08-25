@@ -151,3 +151,17 @@ internal object TopBarNewContentCountFingerprint : Fingerprint(
         )
     )
 )
+
+internal object SpinnerThemeHookFingerprint : Fingerprint(
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "spinner"),
+        methodCall(
+            name = "findViewById",
+            location = MatchAfterWithin(2)
+        ),
+        opcode(
+            opcode = Opcode.CHECK_CAST,
+            location = MatchAfterWithin(3)
+        )
+    )
+)

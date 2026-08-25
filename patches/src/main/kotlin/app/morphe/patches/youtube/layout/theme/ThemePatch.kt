@@ -287,7 +287,7 @@ val themePatch = baseThemePatch(
             ListPreference("morphe_splash_screen_animation_style")
         )
 
-        // The splash screen is drawn by the system with the theme of the launcher activity, so
+        // Splash screen is drawn by the system with the theme of the launcher activity, so
         // the activity is handed over as soon as it exists. A patched theme color is
         // already a part of that theme, and no theme is generated to hand over.
         if (!usePatchedThemeColor) {
@@ -396,6 +396,19 @@ val themePatch = baseThemePatch(
                     """
                 )
             }
+        }
+
+        // Popup background of drop-down menus (Spinners) falls back to the Android OS
+        // default, which remains gray and does not go with a custom theme color.
+        SpinnerThemeHookFingerprint.matchAll().forEach { match ->
+            val checkCastIndex = match.instructionMatches.last().index
+            val spinnerRegister = match.method.getInstruction<OneRegisterInstruction>(checkCastIndex).registerA
+
+            match.method.addInstruction(
+                checkCastIndex + 1,
+                "invoke-static { v$spinnerRegister }, " +
+                        "$EXTENSION_CLASS->overrideSpinnerPopupBackground(Landroid/view/View;)V"
+            )
         }
     }
 )

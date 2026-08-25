@@ -10,11 +10,16 @@
 
 package app.morphe.extension.youtube.patches.theme;
 
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import android.widget.Spinner;
+
 import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.theme.BaseThemePatch;
+import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -125,5 +130,19 @@ public class ThemePatch extends BaseThemePatch {
         }
 
         return replacement;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void overrideSpinnerPopupBackground(View view) {
+        try {
+            if (view instanceof Spinner spinner) {
+                int backgroundColor = ThemeUtils.getAppBackgroundColor();
+                spinner.setPopupBackgroundDrawable(new ColorDrawable(backgroundColor));
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "Overriding spinner popup background failed", ex);
+        }
     }
 }
