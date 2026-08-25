@@ -44,7 +44,7 @@ import com.android.tools.smali.dexlib2.Opcode
 val disableFeedFlingClampPatch = bytecodePatch(
     name = "Disable feed fling velocity clamp",
     description = "Fixes YouTube's reduced scroll/fling speed by disabling SnappyRecyclerView's " +
-            "server-configured velocity clamp (issue #94).",
+            "server-configured velocity clamp.",
 ) {
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
