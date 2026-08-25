@@ -8,11 +8,15 @@
 package app.morphe.patches.youtube.layout.scrolling
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
+import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal object SnappyRecyclerViewFlingFingerprint : Fingerprint(
+internal object SnappyRecyclerViewSetFlingLimitFingerprint : Fingerprint(
+    accessFlags =  listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     filters = listOf(
+        checkCast("Lcom/google/android/apps/youtube/app/common/rendering/SnappyRecyclerView;"),
         fieldAccess(
             opcode = Opcode.IPUT_BOOLEAN,
             definingClass = "Lcom/google/android/apps/youtube/app/common/rendering/SnappyRecyclerView;",
