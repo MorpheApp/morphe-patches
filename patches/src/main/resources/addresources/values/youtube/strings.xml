@@ -36,6 +36,9 @@ Second \"item\" text"</string>
     <string name="morphe_remove_background_playback_restrictions_title">Remove background play restrictions</string>
     <string name="morphe_shorts_disable_background_playback_title">Disable background play</string>
 
+    <!-- layout.disableScrollSpeedLimitPatch -->
+    <string name="morphe_disable_scrolling_speed_limit_title">Disable scrolling speed limit</string>
+
     <!-- layout.disableLayoutUpdatesPatch -->
     <string name="morphe_disable_layout_updates_title">Disable layout updates</string>
     <string name="morphe_disable_layout_updates_summary">Prevents the server from updating the app layout</string>
