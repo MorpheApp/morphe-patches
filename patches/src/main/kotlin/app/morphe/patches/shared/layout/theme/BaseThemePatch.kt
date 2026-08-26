@@ -23,10 +23,10 @@ import app.morphe.patcher.patch.colorOption
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.overrideThemeColors
 import app.morphe.util.childElementsSequence
-import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.forEachChildElement
 import app.morphe.util.getNode
 import app.morphe.util.inputStreamFromBundledResource
+import app.morphe.util.matchAllMethodIndicesForEach
 import app.morphe.util.returnEarly
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -330,13 +330,6 @@ internal val THEME_DEFAULT_COLOR_NAMES_LIGHT = setOf(
 )
 
 /**
- * Method the app hands a configuration of the device to, which replaces the configuration of a
- * resources object the app shares. The resource variant of the selected color goes with it.
- */
-private const val UPDATE_CONFIGURATION_METHOD =
-    "Landroid/content/res/Resources;->updateConfiguration(Landroid/content/res/Configuration;Landroid/util/DisplayMetrics;)V"
-
-/**
  * Hooks every context of the app so the app resources resolve
  * with the theme colors selected in the app settings.
  */
@@ -360,27 +353,18 @@ private val themeColorContextHookPatch = bytecodePatch {
 
         // Without this the app resolves the colors it ships with after it leaves
         // picture in picture, because the configuration it hands over is one of the device.
-        Fingerprint(
-            filters = listOf(
-                methodCall(UPDATE_CONFIGURATION_METHOD)
-            )
-        ).matchAll().forEach {
-            it.method.apply {
-                findInstructionIndicesReversedOrThrow(
-                    methodCall(UPDATE_CONFIGURATION_METHOD)
-                ).forEach { index ->
-                    val configurationRegister =
-                        getInstruction<FiveRegisterInstruction>(index).registerD
+        methodCall(
+            "Landroid/content/res/Resources;->updateConfiguration(Landroid/content/res/Configuration;Landroid/util/DisplayMetrics;)V"
+        ).matchAllMethodIndicesForEach { index ->
+            val configurationRegister = getInstruction<FiveRegisterInstruction>(index).registerD
 
-                    addInstructions(
-                        index,
-                        """
-                            invoke-static { v$configurationRegister }, $THEME_COLOR_EXTENSION_CLASS->keepThemeVariant(Landroid/content/res/Configuration;)Landroid/content/res/Configuration;
-                            move-result-object v$configurationRegister
-                        """
-                    )
-                }
-            }
+            addInstructions(
+                index,
+                """
+                    invoke-static { v$configurationRegister }, $THEME_COLOR_EXTENSION_CLASS->keepThemeVariant(Landroid/content/res/Configuration;)Landroid/content/res/Configuration;
+                    move-result-object v$configurationRegister
+                """
+            )
         }
     }
 }
