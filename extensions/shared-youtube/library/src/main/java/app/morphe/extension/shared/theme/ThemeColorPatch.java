@@ -315,12 +315,8 @@ public class ThemeColorPatch {
             }
 
             final boolean changeForeground = SharedYouTubeSettings.THEME_COLOR_CHANGE_FOREGROUND.get();
-            final int darkIndex = dark || changeForeground
-                    ? darkConfigValue
-                    : DARK_INDEX_OFFSET + APP_DEFAULT_CONFIG_VALUE;
-            final int lightIndex = !dark || changeForeground
-                    ? lightConfigValue
-                    : LIGHT_INDEX_OFFSET + APP_DEFAULT_CONFIG_VALUE;
+            final int darkIndex = darkVariantIndex(dark, changeForeground);
+            final int lightIndex = lightVariantIndex(dark, changeForeground);
 
             Context context;
             if (configuration.mcc == mobileCountryCode(darkIndex)
@@ -345,6 +341,62 @@ public class ThemeColorPatch {
             Logger.printException(() -> "wrapContext failure", ex);
             return base;
         }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * The app hands a configuration of the device to {@code Resources.updateConfiguration}, which
+     * replaces the configuration of a resources object the whole app shares. The variant of the
+     * selected color goes with it, and every color the app resolves after that is the one the app
+     * ships with. The app does this after it leaves picture in picture.
+     */
+    public static Configuration keepThemeVariant(Configuration configuration) {
+        try {
+            // A config value is only resolved for a context the patch wrapped,
+            // so this also covers an app the patch was not included in.
+            if (configuration == null || darkConfigValue < 0 || isPatchedTheme()) {
+                return configuration;
+            }
+
+            final boolean dark = isDarkTheme();
+            final boolean changeForeground = SharedYouTubeSettings.THEME_COLOR_CHANGE_FOREGROUND.get();
+
+            Configuration variant = new Configuration(configuration);
+            setVariantOf(variant,
+                    darkVariantIndex(dark, changeForeground),
+                    lightVariantIndex(dark, changeForeground));
+
+            if (configuration.mcc != variant.mcc || configuration.mnc != variant.mnc) {
+                Logger.printDebug(() -> "Theme variant the app replaced: "
+                        + configuration.mcc + "/" + configuration.mnc
+                        + " restored to: " + variant.mcc + "/" + variant.mnc);
+            }
+
+            return variant;
+        } catch (Exception ex) {
+            Logger.printException(() -> "keepThemeVariant failure", ex);
+            return configuration;
+        }
+    }
+
+    /**
+     * The theme the app does not show keeps the colors of the app, unless the app draws its
+     * foreground with them.
+     */
+    private static int darkVariantIndex(boolean dark, boolean changeForeground) {
+        return dark || changeForeground
+                ? darkConfigValue
+                : DARK_INDEX_OFFSET + APP_DEFAULT_CONFIG_VALUE;
+    }
+
+    /**
+     * @see #darkVariantIndex(boolean, boolean)
+     */
+    private static int lightVariantIndex(boolean dark, boolean changeForeground) {
+        return !dark || changeForeground
+                ? lightConfigValue
+                : LIGHT_INDEX_OFFSET + APP_DEFAULT_CONFIG_VALUE;
     }
 
     /**
@@ -932,6 +984,7 @@ public class ThemeColorPatch {
     /**
      * @return If this patch was included during patching.
      */
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public static boolean isPatchIncluded() {
         return false;  // Modified during patching.
     }
