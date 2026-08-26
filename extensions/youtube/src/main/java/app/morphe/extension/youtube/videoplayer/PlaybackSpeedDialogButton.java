@@ -94,7 +94,7 @@ public class PlaybackSpeedDialogButton {
                         VideoInformation.getPlaybackSpeed() == defaultSpeed)
                         ? 1.0f
                         : defaultSpeed;
-                VideoInformation.setPlaybackSpeed(speed);
+                VideoInformation.changePlaybackSpeed(speed);
                 if (speed == 1.0f) {
                     VideoInformation.setAudioPitch(1.0f);
                 }
