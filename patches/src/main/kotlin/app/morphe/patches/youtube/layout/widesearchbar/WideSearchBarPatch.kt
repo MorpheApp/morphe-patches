@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.layout.widesearchbar
 
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
-import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -39,14 +39,23 @@ val wideSearchBarPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("morphe_wide_searchbar")
-        )
-
         if (!is_20_31_or_greater) {
+            // Legacy targets use the app's own wide search bar, which always replaces the logo.
+            PreferenceScreen.GENERAL.addPreferences(
+                ListPreference(
+                    key = "morphe_searchbar_type",
+                    entriesKey = "morphe_searchbar_type_legacy_entries",
+                    entryValuesKey = "morphe_searchbar_type_legacy_entry_values"
+                )
+            )
+
             applyLegacyWideSearchBar()
             return@execute
         }
+
+        PreferenceScreen.GENERAL.addPreferences(
+            ListPreference("morphe_searchbar_type")
+        )
 
         hookToolBar("$EXTENSION_CLASS->setSearchButtonView")
 

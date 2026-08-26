@@ -37,7 +37,20 @@ import app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 @SuppressWarnings("unused")
 public class WideSearchBarPatch {
 
-    private static final Boolean WIDE_SEARCHBAR_ENABLED = Settings.WIDE_SEARCHBAR.get();
+    public enum SearchbarType {
+        DISABLED,
+        /** Search bar is shown beside the header logo. */
+        WIDE,
+        /** Search bar replaces the header logo and spans the entire toolbar. */
+        EXTRA_WIDE;
+
+        public boolean isEnabled() {
+            return this != DISABLED;
+        }
+    }
+
+    private static final SearchbarType SEARCHBAR_TYPE = Settings.SEARCHBAR_TYPE.get();
+    private static final boolean WIDE_SEARCHBAR_ENABLED = SEARCHBAR_TYPE.isEnabled();
     private static final int ID_YOUTUBE_LOGO =
             ResourceUtils.getIdentifier(ResourceType.ID, "youtube_logo");
     private static final int ID_SEARCH_ICON =
@@ -100,8 +113,6 @@ public class WideSearchBarPatch {
                 return;
             }
 
-            final boolean rightToLeftLocale = Utils.isRightToLeftLocale();
-
             final int backgroundColor = ThemeUtils.getEditTextBackground();
             final int textColor = Utils.adjustColorBrightness(
                     ThemeUtils.getAppForegroundColor(), 1.60f, 0.67f);
@@ -128,15 +139,13 @@ public class WideSearchBarPatch {
                 searchIcon = searchIcon.mutate();
                 searchIcon.setTint(textColor);
 
-                if (rightToLeftLocale) {
-                    wideSearchBox.setCompoundDrawablesWithIntrinsicBounds(searchIcon, null, null, null);
-                } else {
-                    wideSearchBox.setCompoundDrawablesWithIntrinsicBounds(null, null, searchIcon, null);
-                }
+                wideSearchBox.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                        null, null, searchIcon, null);
                 wideSearchBox.setCompoundDrawablePadding(Dim.dp8);
             }
 
             View logoView = toolbarViewGroup.findViewById(ID_YOUTUBE_LOGO);
+            final boolean extraWide = SEARCHBAR_TYPE == SearchbarType.EXTRA_WIDE;
             final int sideMargin = Dim.dp10;
             final int searchBarHeight = Dim.dp32;
 
@@ -152,7 +161,19 @@ public class WideSearchBarPatch {
                 currentViewGroupParams = new ViewGroup.MarginLayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT, searchBarHeight
                 );
-                currentViewGroupParams.setMargins(Dim.dp12, 0, Dim.dp12, 0);
+
+                int startMargin = extraWide ? Dim.dp12 : sideMargin;
+                final int endMargin = extraWide ? Dim.dp12 : sideMargin;
+
+                // Search bar fills the toolbar, so it must not overlap the logo that stays visible.
+                if (!extraWide && logoView != null) {
+                    final int measuredWidth = logoView.getMeasuredWidth();
+                    final int logoWidth = measuredWidth > 0 ? measuredWidth : DP115;
+                    startMargin = logoWidth + Dim.dp16;
+                }
+
+                currentViewGroupParams.setMarginStart(startMargin);
+                currentViewGroupParams.setMarginEnd(endMargin);
 
                 if (toolbarViewGroup instanceof FrameLayout) {
                     FrameLayout.LayoutParams frameParams = new FrameLayout.LayoutParams(
@@ -184,7 +205,9 @@ public class WideSearchBarPatch {
                     targetIndex = logoIndex + 1;
                 }
 
-                logoView.setVisibility(View.GONE);
+                if (extraWide) {
+                    logoView.setVisibility(View.GONE);
+                }
             }
 
             toolbarViewGroup.addView(wideSearchBox, targetIndex);

@@ -47,6 +47,7 @@ import app.morphe.extension.youtube.patches.OpenShortsInRegularPlayerPatch.Short
 import app.morphe.extension.youtube.patches.OpenVideosFullscreenHookPatch.OpenFullscreenMode;
 import app.morphe.extension.youtube.patches.PlaybackInFeedsPatch;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
+import app.morphe.extension.youtube.patches.WideSearchBarPatch.SearchbarType;
 import app.morphe.extension.youtube.patches.components.LayoutComponentsFilter.ExpandableCardStyle;
 import app.morphe.extension.youtube.patches.components.PlayerFlyoutMenuComponentsFilter.HideAudioFlyoutMenuAvailability;
 import app.morphe.extension.youtube.patches.spoof.SpoofVideoStreamsPatch.SpoofClientAv1Availability;
@@ -468,7 +469,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting SHOW_TOOLBAR_SETTINGS_BUTTON = new BooleanSetting("morphe_show_toolbar_settings_button", FALSE, true);
     public static final IntegerSetting SHOW_TOOLBAR_SETTINGS_BUTTON_INDEX = new IntegerSetting("morphe_show_toolbar_settings_button_index", 3, true, parent(SHOW_TOOLBAR_SETTINGS_BUTTON));
     public static final BooleanSetting SHOW_TOOLBAR_SETTINGS_BUTTON_TYPE = new BooleanSetting("morphe_show_toolbar_settings_button_type", FALSE, true, parent(SHOW_TOOLBAR_SETTINGS_BUTTON));
-    public static final BooleanSetting WIDE_SEARCHBAR = new BooleanSetting("morphe_wide_searchbar", FALSE, true);
+    public static final EnumSetting<SearchbarType> SEARCHBAR_TYPE = new EnumSetting<>("morphe_searchbar_type", SearchbarType.DISABLED, true);
 
     // Shorts
     public static final BooleanSetting DISABLE_SHORTS_RESUMING_ON_STARTUP = new BooleanSetting("morphe_disable_shorts_resuming_on_startup", FALSE);
@@ -667,6 +668,7 @@ public class Settings extends SharedYouTubeSettings {
     private static final BooleanSetting DEPRECATED_SWIPE_BRIGHTNESS = new BooleanSetting("morphe_swipe_brightness", FALSE);
     private static final BooleanSetting DEPRECATED_SWIPE_VOLUME = new BooleanSetting("morphe_swipe_volume", FALSE);
     private static final BooleanSetting DEPRECATED_SWIPE_SPEED = new BooleanSetting("morphe_swipe_speed", FALSE);
+    private static final BooleanSetting DEPRECATED_WIDE_SEARCHBAR = new BooleanSetting("morphe_wide_searchbar", FALSE, true);
 
     // Unified SponsorBlock keys under the morphe_sb_* namespace (previously raw sb_*).
     private static final BooleanSetting DEPRECATED_SB_ENABLED = new BooleanSetting("sb_enabled", TRUE, false, false);
@@ -742,6 +744,8 @@ public class Settings extends SharedYouTubeSettings {
         migrateSwipeGestureToZone(DEPRECATED_SWIPE_BRIGHTNESS, SWIPE_LEFT_ZONE, SwipeZoneAction.BRIGHTNESS);
         migrateSwipeGestureToZone(DEPRECATED_SWIPE_VOLUME, SWIPE_RIGHT_ZONE, SwipeZoneAction.VOLUME);
         migrateSwipeGestureToZone(DEPRECATED_SWIPE_SPEED, SWIPE_TOP_ZONE, SwipeZoneAction.SPEED);
+
+        migrateWideSearchbarToType();
 
         // SponsorBlock key namespace unification (sb_* -> morphe_sb_*).
         migrateOldSettingToNew(DEPRECATED_SB_ENABLED, SB_ENABLED);
@@ -825,6 +829,21 @@ public class Settings extends SharedYouTubeSettings {
 
         // Must run before any code reads a SegmentCategory setting.
         YouTubeSponsorBlockConfig.install();
+    }
+
+    /**
+     * Older targets have no wide search bar of their own and always replace the logo with it.
+     */
+    private static void migrateWideSearchbarToType() {
+        if (DEPRECATED_WIDE_SEARCHBAR.isSetToDefault()) {
+            return;
+        }
+        if (SEARCHBAR_TYPE.isSetToDefault()) {
+            SEARCHBAR_TYPE.save(VersionCheckPatch.IS_20_31_OR_GREATER
+                    ? SearchbarType.WIDE
+                    : SearchbarType.EXTRA_WIDE);
+        }
+        DEPRECATED_WIDE_SEARCHBAR.resetToDefault();
     }
 
     /**

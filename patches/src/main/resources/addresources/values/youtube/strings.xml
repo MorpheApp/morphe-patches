@@ -943,7 +943,10 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <string name="morphe_player_overlay_opacity_invalid_toast">Player overlay opacity must be between 0-100</string>
 
     <!-- layout.searchbar.wideSearchbarPatch -->
-    <string name="morphe_wide_searchbar_title">Enable wide search bar</string>
+    <string name="morphe_searchbar_type_title">Search bar</string>
+    <string name="morphe_searchbar_type_entry_disabled">Disabled</string>
+    <string name="morphe_searchbar_type_entry_wide">Wide</string>
+    <string name="morphe_searchbar_type_entry_extra_wide">Extra wide</string>
 
     <!-- layout.sponsorblock.sponsorBlockPatch -->
     <string name="morphe_settings_screen_10_sponsorblock_title" translatable="false">SponsorBlock</string>

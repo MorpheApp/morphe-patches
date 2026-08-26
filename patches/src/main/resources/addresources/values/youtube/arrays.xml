@@ -474,6 +474,27 @@
         <item>YOUR_CLIPS</item>
     </string-array>
 
+    <!-- layout.searchbar.wideSearchbarPatch -->
+    <string-array name="morphe_searchbar_type_entries">
+        <item>@string/morphe_searchbar_type_entry_disabled</item>
+        <item>@string/morphe_searchbar_type_entry_wide</item>
+        <item>@string/morphe_searchbar_type_entry_extra_wide</item>
+    </string-array>
+    <string-array name="morphe_searchbar_type_entry_values">
+        <item>DISABLED</item>
+        <item>WIDE</item>
+        <item>EXTRA_WIDE</item>
+    </string-array>
+    <!-- Older targets have no wide search bar of their own and always replace the logo with it. -->
+    <string-array name="morphe_searchbar_type_legacy_entries">
+        <item>@string/morphe_searchbar_type_entry_disabled</item>
+        <item>@string/morphe_searchbar_type_entry_extra_wide</item>
+    </string-array>
+    <string-array name="morphe_searchbar_type_legacy_entry_values">
+        <item>DISABLED</item>
+        <item>EXTRA_WIDE</item>
+    </string-array>
+
     <!-- layout.shortsplayer.shortsPlayerTypePatch -->
     <string-array name="morphe_shorts_player_type_entries">
         <item>@string/morphe_shorts_player_type_shorts</item>
