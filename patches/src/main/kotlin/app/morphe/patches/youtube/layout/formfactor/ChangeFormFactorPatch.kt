@@ -31,7 +31,7 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.findFreeRegister
 import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction22c
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS =
@@ -101,16 +101,25 @@ val changeFormFactorPatch = bytecodePatch(
 
         PlayerLithoElementsListFingerprint.let {
             it.method.apply {
-                val index = it.instructionMatches.first().index
-                val register = getInstruction<BuilderInstruction22c>(index).registerA
-                val free = findFreeRegister(index, register)
+                val instructionIndex = it.instructionMatches[1].index
+                val listRegister = getInstruction<FiveRegisterInstruction>(
+                    instructionIndex
+                ).registerC
+                val listIndexRegister = getInstruction<FiveRegisterInstruction>(
+                    instructionIndex
+                ).registerD
+                val freeRegister = findFreeRegister(
+                    instructionIndex,
+                    listRegister,
+                    listIndexRegister
+                )
 
                 addInstructionsWithLabels(
-                    index + 1,
+                    instructionIndex,
                     """
-                        invoke-static { v$register }, $EXTENSION_CLASS->checkPlayerLithoElementsListSize(Ljava/util/List;)Z
-                        move-result v$free
-                        if-eqz v$free, :empty_list_check
+                        invoke-static { v$listRegister, v$listIndexRegister }, $EXTENSION_CLASS->checkPlayerLithoElementsListSize(Ljava/util/List;I)Z
+                        move-result v$freeRegister
+                        if-nez v$freeRegister, :empty_list_check
                         return-void
                         :empty_list_check
                         nop

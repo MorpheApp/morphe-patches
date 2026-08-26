@@ -141,7 +141,10 @@ public class ChangeFormFactorPatch {
      * onResume() mode instead of onCreate().
      * <p>
      **/
-     public static boolean checkPlayerLithoElementsListSize(List<?> list) {
-        return list.isEmpty();
-    }
+     public static boolean checkPlayerLithoElementsListSize(List<?> list, int listIndex) {
+         if (list == null || list.isEmpty()) {
+             return false;
+         }
+         return listIndex >= 0 && listIndex < list.size();
+     }
 }
