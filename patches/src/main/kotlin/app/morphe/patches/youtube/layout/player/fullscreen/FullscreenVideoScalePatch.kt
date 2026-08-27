@@ -31,12 +31,12 @@ import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.copyResources
 import com.android.tools.smali.dexlib2.AccessFlags
 
-private const val STRETCH_VIDEO_EXTENSION_CLASS =
-    "Lapp/morphe/extension/youtube/patches/StretchVideoPatch;"
+private const val EXTENSION_CLASS_VIDEO_SCALE =
+    "Lapp/morphe/extension/youtube/patches/FullscreenVideoScalePatch;"
 private const val EXTENSION_BUTTON =
-    "Lapp/morphe/extension/youtube/videoplayer/StretchVideoButton;"
+    "Lapp/morphe/extension/youtube/videoplayer/FullscreenVideoScaleButton;"
 
-private val stretchVideoResourcePatch = resourcePatch {
+private val fullscreenVideoScaleResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
         legacyPlayerControlsPatch
@@ -44,24 +44,24 @@ private val stretchVideoResourcePatch = resourcePatch {
 
     execute {
         copyResources(
-            "stretchvideobutton",
+            "fullscreenvideoscalebutton",
             ResourceGroup(
                 "drawable",
-                "morphe_stretch_video_fit.xml",
-                "morphe_stretch_video_fit_bold.xml",
-                "morphe_stretch_video_stretch.xml",
-                "morphe_stretch_video_stretch_bold.xml",
-                "morphe_stretch_video_zoom.xml",
-                "morphe_stretch_video_zoom_bold.xml"
+                "morphe_fullscreen_video_scale_fit.xml",
+                "morphe_fullscreen_video_scale_fit_bold.xml",
+                "morphe_fullscreen_video_scale_stretch.xml",
+                "morphe_fullscreen_video_scale_stretch_bold.xml",
+                "morphe_fullscreen_video_scale_zoom.xml",
+                "morphe_fullscreen_video_scale_zoom_bold.xml"
             )
         )
 
-        addLegacyBottomControl("stretchvideobutton")
+        addLegacyBottomControl("fullscreenvideoscalebutton")
     }
 }
 
 @Suppress("unused")
-val stretchVideoPatch = bytecodePatch(
+val fullscreenVideoScalePatch = bytecodePatch(
     name = "Fullscreen video scale",
     description = "Adds options to stretch or zoom videos to fill the screen in fullscreen mode.",
 ) {
@@ -72,7 +72,7 @@ val stretchVideoPatch = bytecodePatch(
         playerOverlayButtonsSettingsPatch,
         playerOverlayButtonsHookPatch,
         legacyPlayerControlsPatch,
-        stretchVideoResourcePatch
+        fullscreenVideoScaleResourcePatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -83,7 +83,7 @@ val stretchVideoPatch = bytecodePatch(
         )
 
         addPlayerOverlayPreferences(
-            SwitchPreference("morphe_stretch_video_button", summary = true)
+            SwitchPreference("morphe_fullscreen_video_scale_button", summary = true)
         )
 
         addPlayerBottomButton(EXTENSION_BUTTON)
@@ -96,14 +96,14 @@ val stretchVideoPatch = bytecodePatch(
             parameters = listOf(PlayerTypeEnumFingerprint.originalClassDef.type)
         ).method.addInstruction(
             0,
-            "invoke-static { p0 }, $STRETCH_VIDEO_EXTENSION_CLASS->" +
+            "invoke-static { p0 }, $EXTENSION_CLASS_VIDEO_SCALE->" +
                     "attachPlayerOverlay(Landroid/view/View;)V"
         )
 
         YouTubePlayerOverlaysLayoutConstructorFingerprint.matchAll().forEach {
             it.method.addInstruction(
                 it.instructionMatches.first().index,
-                "invoke-static { p0 }, $STRETCH_VIDEO_EXTENSION_CLASS->" +
+                "invoke-static { p0 }, $EXTENSION_CLASS_VIDEO_SCALE->" +
                         "attachPlayerOverlay(Landroid/view/View;)V"
             )
         }
@@ -111,7 +111,7 @@ val stretchVideoPatch = bytecodePatch(
         YouTubePlayerViewOnLayoutFingerprint.let {
             it.method.addInstructionsAtControlFlowLabel(
                 it.instructionMatches.first().index,
-                "invoke-static { p0 }, $STRETCH_VIDEO_EXTENSION_CLASS->" +
+                "invoke-static { p0 }, $EXTENSION_CLASS_VIDEO_SCALE->" +
                         "onPlayerViewLayout(Landroid/view/View;)V"
             )
         }

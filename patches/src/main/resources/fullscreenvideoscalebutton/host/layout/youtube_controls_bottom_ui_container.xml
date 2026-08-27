@@ -7,14 +7,14 @@
     android:layoutDirection="ltr">
 
     <com.google.android.libraries.youtube.common.ui.TouchImageView
-        android:id="@+id/morphe_stretch_video_button"
+        android:id="@+id/fullscreen_video_scale_button"
         style="@style/YouTubePlayerButton"
         android:layout_width="48.0dip"
         android:layout_height="60.0dip"
         android:paddingTop="6.0dp"
         android:paddingBottom="0dp"
         android:scaleType="center"
-        android:src="@drawable/morphe_stretch_video_fit_bold"
+        android:src="@drawable/morphe_fullscreen_video_scale_fit_bold"
         yt:layout_constraintBottom_toTopOf="@+id/quick_actions_container"
         yt:layout_constraintRight_toLeftOf="@+id/fullscreen_button" />
 </android.support.constraint.ConstraintLayout>

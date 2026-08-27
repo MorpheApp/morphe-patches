@@ -17,7 +17,7 @@ import java.util.List;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.innertube.FormatOuterClass.Format;
-import app.morphe.extension.youtube.patches.StretchVideoPatch;
+import app.morphe.extension.youtube.patches.FullscreenVideoScalePatch;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -109,7 +109,7 @@ public final class PrioritizeVideoQualityPatch {
                 final int width = format.getWidth();
                 final int height = format.getHeight();
                 if (width > 16 && width < 8192 && height > 16 && height < 8192) {
-                    StretchVideoPatch.setVideoSize(width, height);
+                    FullscreenVideoScalePatch.setVideoSize(width, height);
                     return;
                 }
             }

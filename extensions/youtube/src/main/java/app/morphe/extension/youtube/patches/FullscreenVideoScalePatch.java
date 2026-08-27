@@ -42,12 +42,20 @@ import kotlin.Unit;
  * Zoom covers the screen uniformly (crops). Default leaves YouTube letterboxing.
  */
 @SuppressWarnings("unused")
-public class StretchVideoPatch {
+public class FullscreenVideoScalePatch {
 
     public enum VideoScaleMode {
-        DEFAULT,
-        STRETCH,
-        ZOOM,
+        DEFAULT("morphe_fullscreen_video_scale_fit", "morphe_fullscreen_video_scale_entry_default"),
+        STRETCH("morphe_fullscreen_video_scale_stretch", "morphe_fullscreen_video_scale_entry_stretch"),
+        ZOOM("morphe_fullscreen_video_scale_zoom", "morphe_fullscreen_video_scale_entry_zoom");
+
+        public final String iconBaseName;
+        public final String toastMessageKey;
+
+        VideoScaleMode(String iconBaseName, String iconResourceName) {
+            this.iconBaseName = iconBaseName;
+            this.toastMessageKey = iconResourceName;
+        }
     }
 
     /**
@@ -120,7 +128,7 @@ public class StretchVideoPatch {
     }
 
     public static void applyScale() {
-        Utils.runOnMainThread(StretchVideoPatch::applyScaleOnMainThread);
+        Utils.runOnMainThread(FullscreenVideoScalePatch::applyScaleOnMainThread);
     }
 
     private static void applyScaleOnMainThread() {

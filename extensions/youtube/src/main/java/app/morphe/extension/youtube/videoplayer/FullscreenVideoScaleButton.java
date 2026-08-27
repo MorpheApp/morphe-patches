@@ -21,12 +21,12 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
-import app.morphe.extension.youtube.patches.StretchVideoPatch;
-import app.morphe.extension.youtube.patches.StretchVideoPatch.VideoScaleMode;
+import app.morphe.extension.youtube.patches.FullscreenVideoScalePatch;
+import app.morphe.extension.youtube.patches.FullscreenVideoScalePatch.VideoScaleMode;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
-public class StretchVideoButton {
+public class FullscreenVideoScaleButton {
 
     @Nullable
     private static LegacyPlayerControlButton legacy;
@@ -39,7 +39,7 @@ public class StretchVideoButton {
     public static void initializeButton(View controlsView) {
         try {
             if (LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS
-                    || !Settings.STRETCH_VIDEO_BUTTON.get()) {
+                    || !Settings.FULLSCREEN_VIDEO_SCALE_BUTTON.get()) {
                 return;
             }
 
@@ -65,10 +65,10 @@ public class StretchVideoButton {
 
             legacy = new LegacyPlayerControlButton(
                     controlsView,
-                    "morphe_stretch_video_button",
+                    "fullscreen_video_scale_button",
                     null,
-                    getIconBaseName(Settings.FULLSCREEN_VIDEO_SCALE.get()),
-                    Settings.STRETCH_VIDEO_BUTTON,
+                    Settings.FULLSCREEN_VIDEO_SCALE.get().iconBaseName,
+                    Settings.FULLSCREEN_VIDEO_SCALE_BUTTON,
                     view -> cycleScaleMode(),
                     null
             );
@@ -87,8 +87,8 @@ public class StretchVideoButton {
             };
             Settings.FULLSCREEN_VIDEO_SCALE.save(next);
             updateButtonIcon(next);
-            StretchVideoPatch.applyScale();
-            Utils.showToastShort(str("morphe_fullscreen_video_scale_toast", str(getEntryKey(next))));
+            FullscreenVideoScalePatch.applyScale();
+            Utils.showToastShort(str("morphe_fullscreen_video_scale_toast", str(next.toastMessageKey)));
         } catch (Exception ex) {
             Logger.printException(() -> "cycleScaleMode failure", ex);
         }
@@ -113,26 +113,10 @@ public class StretchVideoButton {
         }
     }
 
-    private static String getIconBaseName(VideoScaleMode mode) {
-        return switch (mode) {
-            case STRETCH -> "morphe_stretch_video_stretch";
-            case ZOOM -> "morphe_stretch_video_zoom";
-            case DEFAULT -> "morphe_stretch_video_fit";
-        };
-    }
-
     private static String getIconName(VideoScaleMode mode) {
-        String base = getIconBaseName(mode);
+        String base = mode.iconBaseName;
         return LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS
                 ? base
                 : base + "_bold";
-    }
-
-    private static String getEntryKey(VideoScaleMode mode) {
-        return switch (mode) {
-            case STRETCH -> "morphe_fullscreen_video_scale_entry_stretch";
-            case ZOOM -> "morphe_fullscreen_video_scale_entry_zoom";
-            case DEFAULT -> "morphe_fullscreen_video_scale_entry_default";
-        };
     }
 }
