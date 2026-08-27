@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.youtube.layout.buttons.overlay
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
@@ -96,11 +106,12 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
             it.method.apply {
                 val index = it.instructionMatches.first().index
                 val visibilityRegister = getInstruction<FiveRegisterInstruction>(index).registerD
+                val visibilityMethodType = it.instructionMatches.first().getMethodCalled().parameterTypes.last()
 
                 addInstructions(
                     index,
                     """
-                        invoke-static { v$visibilityRegister }, $EXTENSION_CLASS->hideCastButton(I)I
+                        invoke-static { v$visibilityRegister }, $EXTENSION_CLASS->hideCastButton($visibilityMethodType)$visibilityMethodType
                         move-result v$visibilityRegister
                     """
                 )
@@ -115,7 +126,7 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
                 fingerprint.matchAll().forEach {
                     it.method.insertLiteralOverride(
                         it.instructionMatches.first().index,
-                        "$EXTENSION_CLASS->getCastButtonOverride(Z)Z"
+                        "$EXTENSION_CLASS->hideCastButton(Z)Z"
                     )
                 }
             }

@@ -31,7 +31,6 @@ internal object AuthenticationChangeListenerFingerprint : Fingerprint(
             "L"
         ),
         filters = listOf(
-            literal(163),
             string("processFutAsync")
         )
     ),

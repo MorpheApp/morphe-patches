@@ -1,10 +1,22 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.shared.misc.debugging
 
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
@@ -12,9 +24,15 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.ResourceGroup
-import app.morphe.util.cloneMutable
+import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.cloneParameters
 import app.morphe.util.copyResources
+import app.morphe.util.findInstructionIndicesReversedOrThrow
+import app.morphe.util.numberOfParameterRegistersLogical
+import app.morphe.util.p0Register
+import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/EnableDebuggingPatch;"
 
@@ -91,109 +109,73 @@ internal fun enableDebuggingPatch(
             )
         )
 
-        // Hook the methods that look up if a feature flag is active.
-        ExperimentalBooleanFeatureFlagFingerprint.let {
-            it.method.apply {
-                // Not enough registers in the method. Clone the method and use the
-                // original method as an intermediate to call extension code.
+        fun MutableMethod.firstLongParameterRegister(): Int = numberOfParameterRegistersLogical +
+                p0Register +
+                parameterTypes.indexOf("J") -1
 
-                // Copy the method.
-                val helperMethod = cloneMutable(name = "patch_getBooleanFeatureFlag")
+        ExperimentalBooleanFeatureFlagFingerprint.method.cloneParameters().apply {
+            val longParameter1 = firstLongParameterRegister()
+            val longParameter2 = longParameter1 + 1
 
-                // Add the method.
-                it.classDef.methods.add(helperMethod)
+            findInstructionIndicesReversedOrThrow(Opcode.RETURN).forEach { index ->
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
 
-                addInstructions(
-                    0,
-                    """
-                        # Invoke the copied method (helper method).
-                        invoke-static { p0, p1, p2, p3 }, $helperMethod
-                        move-result p0
-                        
-                        # Redefine boolean in the extension.
-                        invoke-static { p0, p1, p2 }, $EXTENSION_CLASS->isBooleanFeatureFlagEnabled(ZJ)Z
-                        move-result p0
-                        
-                        # Since the copied method (helper method) has already been invoked, it just returns.
-                        return p0
+                addInstructionsAtControlFlowLabel(
+                    index,
+                    """ 
+                        invoke-static { v$register, v$longParameter1, v$longParameter2 }, $EXTENSION_CLASS->isBooleanFeatureFlagEnabled(ZJ)Z
+                        move-result v$register
                     """
                 )
             }
         }
 
-        if (hookDoubleFeatureFlag()) ExperimentalDoubleFeatureFlagFingerprint.let {
-            // 21.06+ doesn't have enough registers and needs to also clone.
-            it.method.cloneParameters().apply {
-                val helperMethod = cloneMutable(name = "patch_getDoubleFeatureFlag")
+        fun overrideWideFeatureValue(fingerprint: Fingerprint, extensionMethod: String) {
+            fingerprint.method.cloneParameters().apply {
+                val longParameter = firstLongParameterRegister()
 
-                it.classDef.methods.add(helperMethod)
+                findInstructionIndicesReversedOrThrow(Opcode.RETURN_WIDE).forEach { index ->
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
 
-                addInstructions(
-                    0,
-                    """
-                        # Invoke the copied method (helper method).
-                        invoke-static/range { p0 .. p4 }, $helperMethod
-                        move-result-wide v0
-                        
-                        # Move parameter registers to lower register range to use invoke-static/range.
-                        move-wide v2, p1
-                        move-wide v4, p3
-
-                        invoke-static/range { v0 .. v5 }, $EXTENSION_CLASS->isDoubleFeatureFlagEnabled(DJD)D
-                        move-result-wide v0
-
-                        # Since the copied method (helper method) has already been invoked, it just returns.
-                        return-wide v0
-                    """
-                )
+                    addInstructionsAtControlFlowLabel(
+                        index,
+                        """
+                            move-wide/from16 v0, v$register
+                            move-wide/from16 v2, v$longParameter
+                            move-wide/from16 v4, v${longParameter + 2}
+                            invoke-static/range { v0 .. v5 }, $extensionMethod
+                            move-result-wide v$register
+                        """
+                    )
+                }
             }
         }
 
-        if (hookLongFeatureFlag()) ExperimentalLongFeatureFlagFingerprint.let {
-            it.method.cloneParameters().apply {
-                // Copy the method.
-                val helperMethod = cloneMutable(name = "patch_getLongFeatureFlag")
+        if (hookDoubleFeatureFlag()) overrideWideFeatureValue(
+            ExperimentalDoubleFeatureFlagFingerprint,
+            "$EXTENSION_CLASS->isDoubleFeatureFlagEnabled(DJD)D"
+        )
 
-                // Add the method.
-                it.classDef.methods.add(helperMethod)
+        if (hookLongFeatureFlag()) overrideWideFeatureValue(
+            ExperimentalLongFeatureFlagFingerprint,
+            "$EXTENSION_CLASS->isLongFeatureFlagEnabled(JJJ)J"
+        )
 
-                addInstructions(
-                    0,
-                    """
-                        # Invoke the copied method (helper method).
-                        invoke-static/range { p0 .. p4 }, $helperMethod
-                        move-result-wide v0
-                        
-                        # Move parameter registers to lower register range to use invoke-static/range.
-                        move-wide v2, p1
-                        move-wide v4, p3
+        if (hookStringFeatureFlag()) ExperimentalStringFeatureFlagFingerprint.method.cloneParameters().apply {
+            val longParameter = firstLongParameterRegister()
 
-                        invoke-static/range { v0 .. v5 }, $EXTENSION_CLASS->isLongFeatureFlagEnabled(JJJ)J
-                        move-result-wide v0
+            findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
 
-                        # Since the copied method (helper method) has already been invoked, it just returns.
-                        return-wide v0
-                    """
-                )
-            }
-        }
-
-        if (hookStringFeatureFlag()) ExperimentalStringFeatureFlagFingerprint.let {
-            it.method.apply {
-                val helperMethod = cloneMutable(name = "patch_getStringFeatureFlag")
-
-                it.classDef.methods.add(helperMethod)
-
-                addInstructions(
-                    0,
-                    """
-                        invoke-static { p0, p1, p2, p3 }, $helperMethod
-                        move-result-object p0
-                        
-                        invoke-static { p0, p1, p2, p3 }, $EXTENSION_CLASS->isStringFeatureFlagEnabled(Ljava/lang/String;JLjava/lang/String;)Ljava/lang/String;
-                        move-result-object p0
-                        
-                        return-object p0
+                addInstructionsAtControlFlowLabel(
+                    index,
+                    """ 
+                        move-object/from16 v0, v$register
+                        move-wide/from16 v1, v$longParameter
+                        move-object/from16 v3, v${longParameter + 2}
+                            
+                        invoke-static/range { v0 .. v3 }, $EXTENSION_CLASS->isStringFeatureFlagEnabled(Ljava/lang/String;JLjava/lang/String;)Ljava/lang/String;
+                        move-result-object v$register
                     """
                 )
             }
