@@ -939,12 +939,10 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
 
     <!-- layout.player.fullscreen.stretchVideoPatch -->
     <string name="morphe_fullscreen_video_scale_title">Fullscreen video scale</string>
-    <string name="morphe_fullscreen_video_scale_entry_1">Default</string>
-    <string name="morphe_fullscreen_video_scale_entry_2">Stretch (fill screen)</string>
-    <string name="morphe_fullscreen_video_scale_entry_3">Zoom (crop to fill)</string>
-    <string name="morphe_fullscreen_video_scale_toast_default">Video scale: Default</string>
-    <string name="morphe_fullscreen_video_scale_toast_stretch">Video scale: Stretch</string>
-    <string name="morphe_fullscreen_video_scale_toast_zoom">Video scale: Zoom</string>
+    <string name="morphe_fullscreen_video_scale_entry_default">Default</string>
+    <string name="morphe_fullscreen_video_scale_entry_stretch">Stretch (fill screen)</string>
+    <string name="morphe_fullscreen_video_scale_entry_zoom">Zoom (crop to fill)</string>
+    <string name="morphe_fullscreen_video_scale_toast">Video scale: %s</string>
     <string name="morphe_stretch_video_button_title">Show video scale button</string>
     <string name="morphe_stretch_video_button_summary">Tap to cycle Default, Stretch, and Zoom</string>
 

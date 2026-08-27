@@ -88,7 +88,7 @@ public class StretchVideoButton {
             Settings.FULLSCREEN_VIDEO_SCALE.save(next);
             updateButtonIcon(next);
             StretchVideoPatch.applyScale();
-            Utils.showToastShort(str(getToastKey(next)));
+            Utils.showToastShort(str("morphe_fullscreen_video_scale_toast", str(getEntryKey(next))));
         } catch (Exception ex) {
             Logger.printException(() -> "cycleScaleMode failure", ex);
         }
@@ -128,11 +128,11 @@ public class StretchVideoButton {
                 : base + "_bold";
     }
 
-    private static String getToastKey(VideoScaleMode mode) {
+    private static String getEntryKey(VideoScaleMode mode) {
         return switch (mode) {
-            case STRETCH -> "morphe_fullscreen_video_scale_toast_stretch";
-            case ZOOM -> "morphe_fullscreen_video_scale_toast_zoom";
-            case DEFAULT -> "morphe_fullscreen_video_scale_toast_default";
+            case STRETCH -> "morphe_fullscreen_video_scale_entry_stretch";
+            case ZOOM -> "morphe_fullscreen_video_scale_entry_zoom";
+            case DEFAULT -> "morphe_fullscreen_video_scale_entry_default";
         };
     }
 }

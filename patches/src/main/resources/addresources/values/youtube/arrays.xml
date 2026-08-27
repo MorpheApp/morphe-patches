@@ -328,9 +328,9 @@
 
     <!-- layout.player.fullscreen.stretchVideoPatch -->
     <string-array name="morphe_fullscreen_video_scale_entries">
-        <item>@string/morphe_fullscreen_video_scale_entry_1</item>
-        <item>@string/morphe_fullscreen_video_scale_entry_2</item>
-        <item>@string/morphe_fullscreen_video_scale_entry_3</item>
+        <item>@string/morphe_fullscreen_video_scale_entry_default</item>
+        <item>@string/morphe_fullscreen_video_scale_entry_stretch</item>
+        <item>@string/morphe_fullscreen_video_scale_entry_zoom</item>
     </string-array>
     <string-array name="morphe_fullscreen_video_scale_entry_values">
         <item>DEFAULT</item>
