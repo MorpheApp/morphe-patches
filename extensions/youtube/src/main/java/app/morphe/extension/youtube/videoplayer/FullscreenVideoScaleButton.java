@@ -88,7 +88,6 @@ public class FullscreenVideoScaleButton {
             Settings.FULLSCREEN_VIDEO_SCALE.save(next);
             updateButtonIcon(next);
             FullscreenVideoScalePatch.applyScale();
-            Utils.showToastShort(str("morphe_fullscreen_video_scale_toast", str(next.toastMessageKey)));
         } catch (Exception ex) {
             Logger.printException(() -> "cycleScaleMode failure", ex);
         }

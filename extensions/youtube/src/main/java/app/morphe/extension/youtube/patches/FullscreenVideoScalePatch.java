@@ -45,16 +45,14 @@ import kotlin.Unit;
 public class FullscreenVideoScalePatch {
 
     public enum VideoScaleMode {
-        DEFAULT("morphe_fullscreen_video_scale_fit", "morphe_fullscreen_video_scale_entry_default"),
-        STRETCH("morphe_fullscreen_video_scale_stretch", "morphe_fullscreen_video_scale_entry_stretch"),
-        ZOOM("morphe_fullscreen_video_scale_zoom", "morphe_fullscreen_video_scale_entry_zoom");
+        DEFAULT("morphe_fullscreen_video_scale_fit"),
+        STRETCH("morphe_fullscreen_video_scale_stretch"),
+        ZOOM("morphe_fullscreen_video_scale_zoom");
 
         public final String iconBaseName;
-        public final String toastMessageKey;
 
-        VideoScaleMode(String iconBaseName, String iconResourceName) {
+        VideoScaleMode(String iconBaseName) {
             this.iconBaseName = iconBaseName;
-            this.toastMessageKey = iconResourceName;
         }
     }
 
