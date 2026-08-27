@@ -78,7 +78,7 @@ val fullscreenVideoScalePatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        PreferenceScreen.PLAYER.addPreferences(
+        PreferenceScreen.VIDEO.addPreferences(
             ListPreference("morphe_fullscreen_video_scale")
         )
 
