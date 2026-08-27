@@ -81,6 +81,33 @@ internal object PlayerDragGestureInitFingerprint : Fingerprint(
     )
 )
 
+internal object YouTubePlayerOverlaysLayoutConstructorFingerprint : Fingerprint(
+    definingClass = "/YouTubePlayerOverlaysLayout;",
+    name = "<init>",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    returnType = "V",
+    parameters = listOf("Landroid/content/Context;", "Landroid/util/AttributeSet;")
+)
+
+internal object YouTubePlayerViewOnLayoutFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/apps/youtube/app/player/YouTubePlayerViewNotForReflection;",
+    name = "onLayout",
+    accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Z", "I", "I", "I", "I")
+)
+
+/**
+ * YouTube PlayerView's parent ViewGroup hardcodes 16:9 in onMeasure (1.777f).
+ */
+internal object SixteenNinePlayerViewMeasureFingerprint : Fingerprint(
+    name = "onMeasure",
+    returnType = "V",
+    parameters = listOf("I", "I"),
+    filters = listOf(literal(1.777f)),
+    custom = { _, classDef -> classDef.superclass == "Landroid/view/ViewGroup;" }
+)
+
 internal object FullscreenGestureZoomFingerprint : Fingerprint (
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",

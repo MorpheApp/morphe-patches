@@ -7,5 +7,6 @@ option java_package = "app.morphe.extension.youtube.innertube";
 
 message Format {
     string mimeType = 5;
+    int32 width = 7; // Source aspect for Fullscreen video scale.
     int32 height = 8;
 }
