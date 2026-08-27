@@ -118,11 +118,6 @@ public class Settings extends SharedYouTubeSettings {
     public static final EnumSetting<ExpandableCardStyle> HIDE_EXPANDABLE_CARD = new EnumSetting<>("morphe_hide_expandable_card", ExpandableCardStyle.HIDE_ALL);
     public static final BooleanSetting HIDE_FEED_FLYOUT_MENU = new BooleanSetting("morphe_hide_feed_flyout_menu", FALSE);
     public static final StringSetting  HIDE_FEED_FLYOUT_MENU_FILTER_STRINGS = new StringSetting("morphe_hide_feed_flyout_menu_filter_strings", "", true, parent(HIDE_FEED_FLYOUT_MENU));
-    public static final BooleanSetting HIDE_FILTER_BAR_IN_COMMENTS = new BooleanSetting("morphe_hide_filter_bar_in_comments", FALSE, true);
-    public static final BooleanSetting HIDE_FILTER_BAR_IN_FEED = new BooleanSetting("morphe_hide_filter_bar_in_feed", FALSE, true);
-    public static final BooleanSetting HIDE_FILTER_BAR_IN_HISTORY = new BooleanSetting("morphe_hide_filter_bar_in_history", FALSE);
-    public static final BooleanSetting HIDE_FILTER_BAR_IN_RELATED_VIDEOS = new BooleanSetting("morphe_hide_filter_bar_in_related_videos", FALSE, true);
-    public static final BooleanSetting HIDE_FILTER_BAR_IN_SEARCH = new BooleanSetting("morphe_hide_filter_bar_in_search", FALSE, true);
     public static final BooleanSetting HIDE_FLOATING_MICROPHONE_BUTTON = new BooleanSetting("morphe_hide_floating_microphone_button", TRUE, true);
     public static final BooleanSetting HIDE_GET_PREMIUM_BUTTON = new BooleanSetting("morphe_hide_get_premium_button", FALSE);
     public static final BooleanSetting HIDE_HORIZONTAL_SHELVES = new BooleanSetting("morphe_hide_horizontal_shelves", TRUE);
@@ -149,30 +144,6 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_YOUTUBE_DOODLES = new BooleanSetting("morphe_hide_youtube_doodles", TRUE, true, "morphe_hide_youtube_doodles_user_dialog_message");
     public static final IntegerSetting PLAYBACK_IN_FEEDS = new IntegerSetting("morphe_playback_in_feeds", PlaybackInFeedsPatch.MODE_ALWAYS_ON, true);
 
-    // Alternative thumbnails
-    public static final EnumSetting<ThumbnailOption> ALT_THUMBNAIL_HOME = new EnumSetting<>("morphe_alt_thumbnail_home", ThumbnailOption.ORIGINAL);
-    public static final EnumSetting<ThumbnailOption> ALT_THUMBNAIL_SUBSCRIPTIONS = new EnumSetting<>("morphe_alt_thumbnail_subscription", ThumbnailOption.ORIGINAL);
-    public static final EnumSetting<ThumbnailOption> ALT_THUMBNAIL_LIBRARY = new EnumSetting<>("morphe_alt_thumbnail_library", ThumbnailOption.ORIGINAL);
-    public static final EnumSetting<ThumbnailOption> ALT_THUMBNAIL_PLAYER = new EnumSetting<>("morphe_alt_thumbnail_player", ThumbnailOption.ORIGINAL);
-    public static final EnumSetting<ThumbnailOption> ALT_THUMBNAIL_SEARCH = new EnumSetting<>("morphe_alt_thumbnail_search", ThumbnailOption.ORIGINAL);
-    public static final StringSetting ALT_THUMBNAIL_DEARROW_API_URL = new StringSetting("morphe_alt_thumbnail_dearrow_api_url", "https://dearrow-thumb.ajay.app/api/v1/getThumbnail", true, new DeArrowAvailability());
-    public static final BooleanSetting ALT_THUMBNAIL_DEARROW_CONNECTION_TOAST = new BooleanSetting("morphe_alt_thumbnail_dearrow_connection_toast", TRUE, new DeArrowAvailability());
-    public static final EnumSetting<ThumbnailStillTime> ALT_THUMBNAIL_STILLS_TIME = new EnumSetting<>("morphe_alt_thumbnail_stills_time", ThumbnailStillTime.MIDDLE, new StillImagesAvailability());
-    public static final BooleanSetting ALT_THUMBNAIL_STILLS_FAST = new BooleanSetting("morphe_alt_thumbnail_stills_fast", FALSE, new StillImagesAvailability());
-
-    // Keyword filter
-    public static final BooleanSetting HIDE_KEYWORD_CONTENT_HOME = new BooleanSetting("morphe_hide_keyword_content_home", FALSE);
-    public static final BooleanSetting HIDE_KEYWORD_CONTENT_SUBSCRIPTIONS = new BooleanSetting("morphe_hide_keyword_content_subscriptions", FALSE);
-    public static final BooleanSetting HIDE_KEYWORD_CONTENT_SEARCH = new BooleanSetting("morphe_hide_keyword_content_search", FALSE);
-    public static final BooleanSetting HIDE_KEYWORD_CONTENT_COMMENTS = new BooleanSetting("morphe_hide_keyword_content_comments", FALSE);
-    public static final StringSetting HIDE_KEYWORD_CONTENT_PHRASES = new StringSetting("morphe_hide_keyword_content_phrases", "",
-            parentsAny(HIDE_KEYWORD_CONTENT_HOME, HIDE_KEYWORD_CONTENT_SUBSCRIPTIONS, HIDE_KEYWORD_CONTENT_COMMENTS, HIDE_KEYWORD_CONTENT_SEARCH));
-    public static final LongSetting KEYWORD_HIDE_COUNT_HOME = new LongSetting("morphe_keyword_hide_count_home", 0L);
-    public static final LongSetting KEYWORD_HIDE_COUNT_SUBSCRIPTIONS = new LongSetting("morphe_keyword_hide_count_subscriptions", 0L);
-    public static final LongSetting KEYWORD_HIDE_COUNT_SEARCH = new LongSetting("morphe_keyword_hide_count_search", 0L);
-    public static final LongSetting KEYWORD_HIDE_COUNT_COMMENTS = new LongSetting("morphe_keyword_hide_count_comments", 0L);
-    public static final StringSetting KEYWORD_HIDES_24H = new StringSetting("morphe_keyword_hides_24h", "", false, false);
-
     // AiSList
     public static final BooleanSetting HIDE_AISLIST_BLOCKLIST_HOME = new BooleanSetting("morphe_hide_aislist_blocklist_home", FALSE);
     public static final BooleanSetting HIDE_AISLIST_BLOCKLIST_SEARCH = new BooleanSetting("morphe_hide_aislist_blocklist_search", FALSE);
@@ -185,16 +156,49 @@ public class Settings extends SharedYouTubeSettings {
     public static final LongSetting AISLIST_HIDE_COUNT_SEARCH = new LongSetting("morphe_aislist_hide_count_search", 0L);
     public static final StringSetting AISLIST_HIDES_24H = new StringSetting("morphe_aislist_hides_24h", "", false, false);
 
+    // Alternative thumbnails
+    public static final EnumSetting<ThumbnailOption> ALT_THUMBNAIL_HOME = new EnumSetting<>("morphe_alt_thumbnail_home", ThumbnailOption.ORIGINAL);
+    public static final EnumSetting<ThumbnailOption> ALT_THUMBNAIL_SUBSCRIPTIONS = new EnumSetting<>("morphe_alt_thumbnail_subscription", ThumbnailOption.ORIGINAL);
+    public static final EnumSetting<ThumbnailOption> ALT_THUMBNAIL_LIBRARY = new EnumSetting<>("morphe_alt_thumbnail_library", ThumbnailOption.ORIGINAL);
+    public static final EnumSetting<ThumbnailOption> ALT_THUMBNAIL_PLAYER = new EnumSetting<>("morphe_alt_thumbnail_player", ThumbnailOption.ORIGINAL);
+    public static final EnumSetting<ThumbnailOption> ALT_THUMBNAIL_SEARCH = new EnumSetting<>("morphe_alt_thumbnail_search", ThumbnailOption.ORIGINAL);
+    public static final StringSetting ALT_THUMBNAIL_DEARROW_API_URL = new StringSetting("morphe_alt_thumbnail_dearrow_api_url", "https://dearrow-thumb.ajay.app/api/v1/getThumbnail", true, new DeArrowAvailability());
+    public static final BooleanSetting ALT_THUMBNAIL_DEARROW_CONNECTION_TOAST = new BooleanSetting("morphe_alt_thumbnail_dearrow_connection_toast", TRUE, new DeArrowAvailability());
+    public static final EnumSetting<ThumbnailStillTime> ALT_THUMBNAIL_STILLS_TIME = new EnumSetting<>("morphe_alt_thumbnail_stills_time", ThumbnailStillTime.MIDDLE, new StillImagesAvailability());
+    public static final BooleanSetting ALT_THUMBNAIL_STILLS_FAST = new BooleanSetting("morphe_alt_thumbnail_stills_fast", FALSE, new StillImagesAvailability());
+
     // Channel page
     public static final BooleanSetting HIDE_CHANNEL_TAB = new BooleanSetting("morphe_hide_channel_tab", FALSE);
     public static final StringSetting HIDE_CHANNEL_TAB_FILTER_STRINGS = new StringSetting("morphe_hide_channel_tab_filter_strings", "", true, parent(HIDE_CHANNEL_TAB));
     public static final BooleanSetting HIDE_COMMUNITY_BUTTON = new BooleanSetting("morphe_hide_community_button", TRUE);
     public static final BooleanSetting HIDE_JOIN_BUTTON = new BooleanSetting("morphe_hide_join_button", FALSE);
     public static final BooleanSetting HIDE_LINKS_PREVIEW = new BooleanSetting("morphe_hide_links_preview", TRUE);
+    public static final BooleanSetting HIDE_MEMBERS_ONLY_CHIP = new BooleanSetting("morphe_hide_members_only_chip", FALSE);
     public static final BooleanSetting HIDE_MEMBERS_SHELF = new BooleanSetting("morphe_hide_members_shelf", TRUE);
     public static final BooleanSetting HIDE_POSTS_SHELF = new BooleanSetting("morphe_hide_posts_shelf", TRUE);
     public static final BooleanSetting HIDE_STORE_BUTTON = new BooleanSetting("morphe_hide_store_button", TRUE);
     public static final BooleanSetting HIDE_SUBSCRIBE_BUTTON_IN_CHANNEL_PAGE = new BooleanSetting("morphe_hide_subscribe_button_in_channel_page", FALSE);
+
+    // Filter bar
+    public static final BooleanSetting HIDE_FILTER_BAR_IN_CHANNEL_PAGE = new BooleanSetting("morphe_hide_filter_bar_in_channel_page", FALSE);
+    public static final BooleanSetting HIDE_FILTER_BAR_IN_COMMENTS = new BooleanSetting("morphe_hide_filter_bar_in_comments", FALSE, true);
+    public static final BooleanSetting HIDE_FILTER_BAR_IN_FEED = new BooleanSetting("morphe_hide_filter_bar_in_feed", FALSE, true);
+    public static final BooleanSetting HIDE_FILTER_BAR_IN_HISTORY = new BooleanSetting("morphe_hide_filter_bar_in_history", FALSE);
+    public static final BooleanSetting HIDE_FILTER_BAR_IN_RELATED_VIDEOS = new BooleanSetting("morphe_hide_filter_bar_in_related_videos", FALSE, true);
+    public static final BooleanSetting HIDE_FILTER_BAR_IN_SEARCH = new BooleanSetting("morphe_hide_filter_bar_in_search", FALSE, true);
+
+    // Keyword filter
+    public static final BooleanSetting HIDE_KEYWORD_CONTENT_COMMENTS = new BooleanSetting("morphe_hide_keyword_content_comments", FALSE);
+    public static final BooleanSetting HIDE_KEYWORD_CONTENT_HOME = new BooleanSetting("morphe_hide_keyword_content_home", FALSE);
+    public static final BooleanSetting HIDE_KEYWORD_CONTENT_SEARCH = new BooleanSetting("morphe_hide_keyword_content_search", FALSE);
+    public static final BooleanSetting HIDE_KEYWORD_CONTENT_SUBSCRIPTIONS = new BooleanSetting("morphe_hide_keyword_content_subscriptions", FALSE);
+    public static final StringSetting HIDE_KEYWORD_CONTENT_PHRASES = new StringSetting("morphe_hide_keyword_content_phrases", "",
+            parentsAny(HIDE_KEYWORD_CONTENT_COMMENTS, HIDE_KEYWORD_CONTENT_HOME, HIDE_KEYWORD_CONTENT_SEARCH, HIDE_KEYWORD_CONTENT_SUBSCRIPTIONS));
+    public static final LongSetting KEYWORD_HIDE_COUNT_HOME = new LongSetting("morphe_keyword_hide_count_home", 0L);
+    public static final LongSetting KEYWORD_HIDE_COUNT_SUBSCRIPTIONS = new LongSetting("morphe_keyword_hide_count_subscriptions", 0L);
+    public static final LongSetting KEYWORD_HIDE_COUNT_SEARCH = new LongSetting("morphe_keyword_hide_count_search", 0L);
+    public static final LongSetting KEYWORD_HIDE_COUNT_COMMENTS = new LongSetting("morphe_keyword_hide_count_comments", 0L);
+    public static final StringSetting KEYWORD_HIDES_24H = new StringSetting("morphe_keyword_hides_24h", "", false, false);
 
     // Player
     public static final BooleanSetting DISABLE_CHAPTER_SKIP_DOUBLE_TAP = new BooleanSetting("morphe_disable_chapter_skip_double_tap", FALSE);

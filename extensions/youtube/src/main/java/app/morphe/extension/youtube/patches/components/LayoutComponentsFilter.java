@@ -63,6 +63,8 @@ public final class LayoutComponentsFilter extends Filter {
 
     private final StringFilterGroup channelProfile;
     private final StringFilterGroupList channelProfileGroupList = new StringFilterGroupList();
+    private final StringFilterGroup channelFilterBar;
+    private final StringFilterGroup channelMembersOnlyChipId;
     private final StringFilterGroup chipBar;
     private final StringFilterGroup communityPosts;
     private final StringFilterGroup compactChannelBarInner;
@@ -167,6 +169,16 @@ public final class LayoutComponentsFilter extends Filter {
         final var audioTrackButton = new StringFilterGroup(
                 null,
                 "multi_feed_icon_button"
+        );
+
+        channelFilterBar = new StringFilterGroup(
+                null,
+                "channels_chip_bar.e"
+        );
+
+        channelMembersOnlyChipId = new StringFilterGroup(
+                null,
+                "id.chip.EhAKDgoD6gEACgcaBQoDggEA"
         );
 
         final var channelLinksPreview = new StringFilterGroup(
@@ -415,6 +427,7 @@ public final class LayoutComponentsFilter extends Filter {
         addPathCallbacks(
                 artistCard,
                 audioTrackButton,
+                channelFilterBar,
                 channelLinksPreview,
                 channelMembersShelf,
                 channelProfile,
@@ -473,6 +486,18 @@ public final class LayoutComponentsFilter extends Filter {
 
         // Exceptions are not filtered.
         if (exceptions.matches(path)) {
+            return false;
+        }
+
+        if (matchedGroup == channelFilterBar) {
+            if (Settings.HIDE_FILTER_BAR_IN_CHANNEL_PAGE.get()) {
+                return true;
+            }
+
+            if (Settings.HIDE_MEMBERS_ONLY_CHIP.get()) {
+                return channelMembersOnlyChipId.check(accessibility).isFiltered();
+            }
+
             return false;
         }
 

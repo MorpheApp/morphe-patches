@@ -235,10 +235,10 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 key = "morphe_hide_keyword_content_screen",
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
-                    SwitchPreference("morphe_hide_keyword_content_home"),
-                    SwitchPreference("morphe_hide_keyword_content_subscriptions"),
-                    SwitchPreference("morphe_hide_keyword_content_search"),
                     SwitchPreference("morphe_hide_keyword_content_comments"),
+                    SwitchPreference("morphe_hide_keyword_content_home"),
+                    SwitchPreference("morphe_hide_keyword_content_search"),
+                    SwitchPreference("morphe_hide_keyword_content_subscriptions"),
                     TextPreference("morphe_hide_keyword_content_phrases", inputType = InputType.TEXT_MULTI_LINE),
                     PreferenceCategory(
                         key = "morphe_hide_keyword_content_stats_category",
@@ -327,6 +327,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             PreferenceScreenPreference(
                 key = "morphe_hide_filter_bar_screen",
                 preferences = setOf(
+                    SwitchPreference("morphe_hide_filter_bar_in_channel_page"),
                     SwitchPreference("morphe_hide_filter_bar_in_comments"),
                     SwitchPreference("morphe_hide_filter_bar_in_feed"),
                     SwitchPreference("morphe_hide_filter_bar_in_related_videos"),
@@ -347,6 +348,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_community_button"),
                     SwitchPreference("morphe_hide_join_button"),
                     SwitchPreference("morphe_hide_links_preview", summary = true),
+                    SwitchPreference("morphe_hide_members_only_chip", summary = true),
                     SwitchPreference("morphe_hide_members_shelf", summary = true),
                     SwitchPreference("morphe_hide_posts_shelf"),
                     SwitchPreference("morphe_hide_store_button"),
