@@ -14,6 +14,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.all.misc.clone.setOrGetFallbackPackageName
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
+import app.morphe.patches.shared.misc.settings.preference.IntentPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -95,6 +96,13 @@ internal fun poTokenProviderPatch(
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = setOf(
                     SwitchPreference("morphe_external_potoken_provider", summary = true),
+                    IntentPreference(
+                        key = "morphe_external_potoken_provider_settings",
+                        titleKey = "morphe_external_potoken_provider_about_title",
+                        intent = IntentPreference.Intent("", "app.morphe.pot.helper.MainActivity") {
+                            "app.morphe.pot.helper"
+                        }
+                    ),
                     NonInteractivePreference(
                         key = "morphe_external_potoken_provider_about",
                         tag = "app.morphe.extension.shared.settings.preference.ExternalPoTokenProviderAboutPreference",
