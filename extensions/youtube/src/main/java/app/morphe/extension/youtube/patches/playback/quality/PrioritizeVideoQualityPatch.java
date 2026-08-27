@@ -7,7 +7,6 @@
 
 package app.morphe.extension.youtube.patches.playback.quality;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.protobuf.MessageLite;
@@ -42,7 +41,7 @@ public final class PrioritizeVideoQualityPatch {
      * <p>
      * This function removes all VP9 codecs if the highest resolution video codec is AVC.
      */
-    public static List<MessageLite> prioritizeVideoQuality(@Nullable String videoId, @NonNull List<MessageLite> adaptiveFormats) {
+    public static List<MessageLite> prioritizeVideoQuality(@Nullable String videoId, List<MessageLite> adaptiveFormats) {
         // Stretch maps non-16:9 sources using encoded width/height from the first video format.
         captureVideoAspect(adaptiveFormats);
 
@@ -95,7 +94,7 @@ public final class PrioritizeVideoQualityPatch {
         return adaptiveFormats;
     }
 
-    private static void captureVideoAspect(@NonNull List<MessageLite> adaptiveFormats) {
+    private static void captureVideoAspect(List<MessageLite> adaptiveFormats) {
         try {
             for (MessageLite messageLite : adaptiveFormats) {
                 Format format = Format.parseFrom(messageLite.toByteArray());
@@ -106,15 +105,16 @@ public final class PrioritizeVideoQualityPatch {
                 if (mimeType == null || !mimeType.contains("video")) {
                     continue;
                 }
-                int width = format.getWidth();
-                int height = format.getHeight();
+
+                final int width = format.getWidth();
+                final int height = format.getHeight();
                 if (width > 16 && width < 8192 && height > 16 && height < 8192) {
                     StretchVideoPatch.setVideoSize(width, height);
                     return;
                 }
             }
         } catch (Exception ex) {
-            Logger.printDebug(() -> "captureVideoAspect skipped: " + ex.getMessage());
+            Logger.printException(() -> "captureVideoAspect failure", ex);
         }
     }
 }

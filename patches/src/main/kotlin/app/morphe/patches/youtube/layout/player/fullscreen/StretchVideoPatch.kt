@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/2616
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -27,10 +27,9 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.ResourceGroup
-import app.morphe.util.addInstructionsToEnd
+import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.copyResources
 import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.util.MethodUtil
 
 private const val STRETCH_VIDEO_EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/StretchVideoPatch;"
@@ -91,7 +90,7 @@ val stretchVideoPatch = bytecodePatch(
         initializeLegacyBottomControl(EXTENSION_BUTTON)
 
         Fingerprint(
-            definingClass = "/YouTubePlayerOverlaysLayout;",
+            classFingerprint = YouTubePlayerOverlaysLayoutConstructorFingerprint,
             accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
             returnType = "V",
             parameters = listOf(PlayerTypeEnumFingerprint.originalClassDef.type)
@@ -101,27 +100,25 @@ val stretchVideoPatch = bytecodePatch(
                     "attachPlayerOverlay(Landroid/view/View;)V"
         )
 
-        YouTubePlayerOverlaysLayoutConstructorFingerprint.classDefOrNull?.methods?.forEach { method ->
-            if (!MethodUtil.isConstructor(method) || method.implementation == null) return@forEach
-            method.addInstruction(
-                method.implementation!!.instructions.lastIndex,
+        YouTubePlayerOverlaysLayoutConstructorFingerprint.matchAll().forEach {
+            it.method.addInstruction(
+                it.instructionMatches.first().index,
                 "invoke-static { p0 }, $STRETCH_VIDEO_EXTENSION_CLASS->" +
                         "attachPlayerOverlay(Landroid/view/View;)V"
             )
         }
 
-        YouTubePlayerViewOnLayoutFingerprint.method.addInstructionsToEnd(
-            "invoke-static { p0 }, $STRETCH_VIDEO_EXTENSION_CLASS->" +
-                    "onPlayerViewLayout(Landroid/view/View;)V"
-        )
-
-        SixteenNinePlayerViewMeasureFingerprint.classDefOrNull?.methods?.forEach { method ->
-            if (method.name != "onLayout" || method.parameterTypes.size != 5) return@forEach
-            if (method.implementation == null) return@forEach
-            method.addInstructionsToEnd(
-                "invoke-static { p0 }, $STRETCH_VIDEO_EXTENSION_CLASS->" +
-                        "onPlayerViewLayout(Landroid/view/View;)V"
-            )
+        arrayOf(
+            YouTubePlayerViewOnLayoutFingerprint,
+            SixteenNinePlayerOnLayoutFingerprint
+        ).forEach { fingerprint ->
+            fingerprint.let {
+                it.method.addInstructionsAtControlFlowLabel(
+                    it.instructionMatches.first().index,
+                    "invoke-static { p0 }, $STRETCH_VIDEO_EXTENSION_CLASS->" +
+                            "onPlayerViewLayout(Landroid/view/View;)V"
+                )
+            }
         }
     }
 }

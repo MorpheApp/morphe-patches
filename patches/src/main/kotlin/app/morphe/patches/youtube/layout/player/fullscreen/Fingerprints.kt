@@ -86,7 +86,10 @@ internal object YouTubePlayerOverlaysLayoutConstructorFingerprint : Fingerprint(
     name = "<init>",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     returnType = "V",
-    parameters = listOf("Landroid/content/Context;", "Landroid/util/AttributeSet;")
+    parameters = listOf("Landroid/content/Context;", "Landroid/util/AttributeSet;"),
+    filters = listOf(
+        opcode(Opcode.RETURN_VOID)
+    )
 )
 
 internal object YouTubePlayerViewOnLayoutFingerprint : Fingerprint(
@@ -94,18 +97,29 @@ internal object YouTubePlayerViewOnLayoutFingerprint : Fingerprint(
     name = "onLayout",
     accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf("Z", "I", "I", "I", "I")
+    parameters = listOf("Z", "I", "I", "I", "I"),
+    filters = listOf(
+        opcode(Opcode.RETURN_VOID)
+    )
 )
 
 /**
  * YouTube PlayerView's parent ViewGroup hardcodes 16:9 in onMeasure (1.777f).
  */
-internal object SixteenNinePlayerViewMeasureFingerprint : Fingerprint(
-    name = "onMeasure",
+internal object SixteenNinePlayerOnLayoutFingerprint : Fingerprint(
+    classFingerprint =  Fingerprint(
+        name = "onMeasure",
+        returnType = "V",
+        parameters = listOf("I", "I"),
+        filters = listOf(literal(1.777f)),
+        custom = { _, classDef -> classDef.superclass == "Landroid/view/ViewGroup;" }
+    ),
+    name = "onLayout",
     returnType = "V",
-    parameters = listOf("I", "I"),
-    filters = listOf(literal(1.777f)),
-    custom = { _, classDef -> classDef.superclass == "Landroid/view/ViewGroup;" }
+    parameters = listOf("Z", "I", "I", "I", "I"),
+    filters = listOf(
+        opcode(Opcode.RETURN_VOID)
+    )
 )
 
 internal object FullscreenGestureZoomFingerprint : Fingerprint (

@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/2616
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -9,11 +9,13 @@ package app.morphe.extension.youtube.patches;
 
 import android.app.Activity;
 import android.os.Build;
+import android.util.DisplayMetrics;
 import android.view.SurfaceView;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.Window;
 import android.view.WindowMetrics;
 
 import androidx.annotation.Nullable;
@@ -61,8 +63,7 @@ public class StretchVideoPatch {
 
     @Nullable
     private static ViewTreeObserver.OnPreDrawListener preDrawListener;
-    @Nullable
-    private static View preDrawHost;
+    private static WeakReference<View> preDrawHostRef = new WeakReference<>(null);
     private static boolean preDrawAttached;
 
     static {
@@ -250,23 +251,29 @@ public class StretchVideoPatch {
     private static int[] getDisplaySize() {
         int[] size = new int[]{0, 0};
         Activity activity = Utils.getActivity();
-        if (activity != null && activity.getWindow() != null) {
-            View decor = activity.getWindow().getDecorView();
-            if (decor.getWidth() > 0 && decor.getHeight() > 0) {
-                size[0] = decor.getWidth();
-                size[1] = decor.getHeight();
+
+        if (activity != null) {
+            Window window = activity.getWindow();
+            if (window != null) {
+                View decor = window.getDecorView();
+                if (decor.getWidth() > 0 && decor.getHeight() > 0) {
+                    size[0] = decor.getWidth();
+                    size[1] = decor.getHeight();
+                    return size;
+                }
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                    WindowMetrics metrics = activity.getWindowManager().getCurrentWindowMetrics();
+                    size[0] = metrics.getBounds().width();
+                    size[1] = metrics.getBounds().height();
+                    return size;
+                }
+                DisplayMetrics displayMetrics = activity.getResources().getDisplayMetrics();
+                size[0] = displayMetrics.widthPixels;
+                size[1] = displayMetrics.heightPixels;
                 return size;
             }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                WindowMetrics metrics = activity.getWindowManager().getCurrentWindowMetrics();
-                size[0] = metrics.getBounds().width();
-                size[1] = metrics.getBounds().height();
-                return size;
-            }
-            size[0] = activity.getResources().getDisplayMetrics().widthPixels;
-            size[1] = activity.getResources().getDisplayMetrics().heightPixels;
-            return size;
         }
+
         View playerView = playerViewRef.get();
         if (playerView != null) {
             View root = playerView.getRootView();
@@ -298,13 +305,14 @@ public class StretchVideoPatch {
         }
         view.setPivotX(view.getWidth() / 2f);
         view.setPivotY(view.getHeight() / 2f);
-        view.setScaleX(1f);
-        view.setScaleY(1f);
-        view.setTranslationX(0f);
-        view.setTranslationY(0f);
+        view.setScaleX(1);
+        view.setScaleY(1);
+        view.setTranslationX(0);
+        view.setTranslationY(0);
     }
 
     private static void attachPreDraw(View host) {
+        View preDrawHost = preDrawHostRef.get();
         if (preDrawAttached && preDrawHost == host) {
             return;
         }
@@ -313,6 +321,7 @@ public class StretchVideoPatch {
         if (observer == null || !observer.isAlive()) {
             return;
         }
+
         preDrawListener = () -> {
             try {
                 if (!shouldScale() || Settings.FULLSCREEN_VIDEO_SCALE.get() == VideoScaleMode.DEFAULT) {
@@ -335,7 +344,7 @@ public class StretchVideoPatch {
             return true;
         };
         observer.addOnPreDrawListener(preDrawListener);
-        preDrawHost = host;
+        preDrawHostRef = new WeakReference<>(null);
         preDrawAttached = true;
     }
 
@@ -344,19 +353,20 @@ public class StretchVideoPatch {
             return;
         }
         ViewTreeObserver.OnPreDrawListener listener = preDrawListener;
-        View host = preDrawHost;
+        View preDrawHost = preDrawHostRef.get();
         preDrawListener = null;
-        preDrawHost = null;
+        preDrawHostRef = new WeakReference<>(null);
         preDrawAttached = false;
-        if (listener == null || host == null) {
+        if (listener == null || preDrawHost == null) {
             return;
         }
-        ViewTreeObserver observer = host.getViewTreeObserver();
+        ViewTreeObserver observer = preDrawHost.getViewTreeObserver();
         if (observer != null && observer.isAlive()) {
             observer.removeOnPreDrawListener(listener);
         }
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean shouldScale() {
         PlayerType type = PlayerType.getCurrent();
         if (type == PlayerType.WATCH_WHILE_FULLSCREEN
@@ -372,14 +382,19 @@ public class StretchVideoPatch {
         if (cached != null && cached.isAttachedToWindow() && cached.getWidth() > 0) {
             return cached;
         }
+
         Activity activity = Utils.getActivity();
-        if (activity != null && activity.getWindow() != null) {
-            View found = findPlayerView(activity.getWindow().getDecorView(), 0);
-            if (found != null) {
-                playerViewRef = new WeakReference<>(found);
-                return found;
+        if (activity != null) {
+            Window window = activity.getWindow();
+            if (window != null) {
+                View found = findPlayerView(window.getDecorView(), 0);
+                if (found != null) {
+                    playerViewRef = new WeakReference<>(found);
+                    return found;
+                }
             }
         }
+
         View overlay = overlayRef.get();
         if (overlay != null) {
             View found = findPlayerView(overlay.getRootView(), 0);
@@ -404,7 +419,8 @@ public class StretchVideoPatch {
         if (!(view instanceof ViewGroup group)) {
             return null;
         }
-        for (int i = 0; i < group.getChildCount(); i++) {
+
+        for (int i = 0, getChildCount = group.getChildCount(); i < getChildCount; i++) {
             View found = findPlayerView(group.getChildAt(i), depth + 1);
             if (found != null) {
                 return found;
@@ -418,8 +434,9 @@ public class StretchVideoPatch {
         if (isUsableVideoView(container)) {
             return container;
         }
+
         if (container instanceof ViewGroup group) {
-            for (int i = 0; i < group.getChildCount(); i++) {
+            for (int i = 0, childCount = group.getChildCount(); i < childCount; i++) {
                 View child = group.getChildAt(i);
                 if (isUsableVideoView(child)) {
                     return child;
@@ -434,6 +451,7 @@ public class StretchVideoPatch {
         if (playerView == null) {
             return null;
         }
+
         Class<?> cls = playerView.getClass();
         for (int depth = 0; depth < 8 && cls != null && cls != ViewGroup.class && cls != View.class; depth++) {
             for (Field field : cls.getDeclaredFields()) {
@@ -443,6 +461,7 @@ public class StretchVideoPatch {
                 if (!View.class.isAssignableFrom(field.getType())) {
                     continue;
                 }
+
                 try {
                     field.setAccessible(true);
                     Object value = field.get(playerView);
@@ -450,12 +469,14 @@ public class StretchVideoPatch {
                             && isUsableVideoView(candidate)) {
                         return candidate;
                     }
-                } catch (Exception ignored) {
+                } catch (Exception ex) {
+                    Logger.printDebug(() -> "Ignoring exception", ex); // Ignore exception?
                     // Keep looking.
                 }
             }
             cls = cls.getSuperclass();
         }
+
         return null;
     }
 
