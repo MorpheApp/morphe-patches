@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    https://github.com/google/material-design-icons
-    Icon: aspect_ratio
+    https://github.com/google/material-design-icons/blob/e083cc60a0828fdd3b404cea0cb8a5b900e9c23e/symbols/android/fit_screen/materialsymbolsoutlined/fit_screen_wght200_24px.xml
 
     Copyright 2022 Google
 
@@ -20,9 +19,10 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="24dp"
     android:height="24dp"
-    android:viewportWidth="24"
-    android:viewportHeight="24">
+    android:viewportWidth="960"
+    android:viewportHeight="960">
+
     <path
         android:fillColor="@android:color/white"
-        android:pathData="M19,12h-2v3h-3v2h5v-5zM7,9h3V7H5v5h2V9zM21,3H3c-1.1,0-2,0.9-2,2v14c0,1.1,0.9,2,2,2h18c1.1,0,2-0.9,2-2V5C23,3.9,22.1,3,21,3zM21,19.01H3V4.99h18V19.01z" />
+        android:pathData="M800,360L800,264.62Q800,255.38 792.31,247.69Q784.62,240 775.38,240L680,240L680,200L775.38,200Q803,200 821.5,218.5Q840,237 840,264.62L840,360L800,360ZM120,360L120,264.62Q120,237 138.5,218.5Q157,200 184.62,200L280,200L280,240L184.62,240Q175.38,240 167.69,247.69Q160,255.38 160,264.62L160,360L120,360ZM680,760L680,720L775.38,720Q784.62,720 792.31,712.31Q800,704.62 800,695.38L800,600L840,600L840,695.38Q840,723 821.5,741.5Q803,760 775.38,760L680,760ZM184.62,760Q157,760 138.5,741.5Q120,723 120,695.38L120,600L160,600L160,695.38Q160,704.62 167.69,712.31Q175.38,720 184.62,720L280,720L280,760L184.62,760ZM273.85,606.15L273.85,353.85L686.15,353.85L686.15,606.15L273.85,606.15ZM313.85,566.15L646.15,566.15L646.15,393.85L313.85,393.85L313.85,566.15ZM313.85,566.15L313.85,393.85L313.85,393.85L313.85,566.15L313.85,566.15Z" />
 </vector>

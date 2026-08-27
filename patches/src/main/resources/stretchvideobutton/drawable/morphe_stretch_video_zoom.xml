@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    https://github.com/google/material-design-icons
-    Icon: zoom_out_map
+    https://github.com/google/material-design-icons/blob/e083cc60a0828fdd3b404cea0cb8a5b900e9c23e/symbols/android/zoom_out_map/materialsymbolsoutlined/zoom_out_map_wght200_24px.xml
 
     Copyright 2022 Google
 
@@ -20,9 +19,10 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="24dp"
     android:height="24dp"
-    android:viewportWidth="24"
-    android:viewportHeight="24">
+    android:viewportWidth="960"
+    android:viewportHeight="960">
+
     <path
         android:fillColor="@android:color/white"
-        android:pathData="M15,3l2.3,2.3l-2.89,2.87l1.42,1.42L18.7,6.7L21,9V3h-6zM3,9l2.3-2.3l2.87,2.89l1.42-1.42L6.7,5.3L9,3H3v6zM9,21l-2.3-2.3l2.89-2.87l-1.42-1.42L5.3,17.3L3,15v6h6zM21,15l-2.3,2.3l-2.87-2.89l-1.42,1.42l2.89,2.87L15,21h6v-6z" />
+        android:pathData="M160,800L160,600L200,600L200,731.69L344,587.69L372.31,616L228.31,760L360,760L360,800L160,800ZM600,800L600,760L731.69,760L587.69,616L616,587.69L760,731.69L760,600L800,600L800,800L600,800ZM344,372.31L200,228.31L200,360L160,360L160,160L360,160L360,200L228.31,200L372.31,344L344,372.31ZM616,372.31L587.69,344L731.69,200L600,200L600,160L800,160L800,360L760,360L760,228.31L616,372.31Z" />
 </vector>
