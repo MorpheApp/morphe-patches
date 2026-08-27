@@ -9,6 +9,8 @@ package app.morphe.patches.shared.misc.potoken
 
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
+import app.morphe.patcher.patch.InstallerType
+import app.morphe.patcher.patch.PatchAvailability
 import app.morphe.patcher.patch.ResourcePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
@@ -42,6 +44,14 @@ internal fun poTokenProviderPatch(
     description = "Adds option to get PoToken using an external PoToken minter app.",
     default = false
 ) {
+    // The execute block still has to check the package name, because the CLI does not report one.
+    availability { installer, _ ->
+        when (installer) {
+            InstallerType.MOUNT -> PatchAvailability.UNAVAILABLE
+            InstallerType.STANDARD, InstallerType.SHIZUKU -> PatchAvailability.DISABLED
+        }
+    }
+
     block()
 
     dependsOn(poTokenProviderResourcePatch)
