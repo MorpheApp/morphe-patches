@@ -204,6 +204,19 @@ However, enabling this will also log some user data such as your IP address."</s
     <string name="morphe_remove_viewer_discretion_dialog_title">Remove viewer discretion dialog</string>
     <string name="morphe_remove_viewer_discretion_dialog_summary">This does not bypass the age restriction. It just accepts it automatically</string>
 
+    <!-- misc.potoken.poTokenProviderPatch -->
+    <string name="morphe_potoken_provider_screen_title">PoToken provider</string>
+    <string name="morphe_potoken_provider_screen_summary">Configure PoToken provider to prevent playback issues</string>
+    <string name="morphe_external_potoken_provider_title">External PoToken provider</string>
+    <string name="morphe_external_potoken_provider_summary">"Fixes playback issues using an external PoToken minter (Experimental)
+
+If you are a YouTube Premium user, this setting may not be required"</string>
+    <string name="morphe_external_potoken_provider_user_dialog_message">If it does not work, try force-closing the MicroG.</string>
+    <string name="morphe_external_potoken_provider_about_title" translatable="false">PotHelper</string>
+    <string name="morphe_external_potoken_provider_about_summary">"This is currently under development and may not work
+
+Tap here to download PotHelper"</string>
+
     <!-- misc.spoof.appversion.spoofAppVersionPatch -->
     <string name="morphe_spoof_app_version_title">Spoof app version</string>
     <string name="morphe_spoof_app_version_summary">Tricks the server into thinking you are using an older app version to restore legacy UI features</string>
