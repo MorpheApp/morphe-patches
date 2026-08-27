@@ -103,25 +103,6 @@ internal object YouTubePlayerViewOnLayoutFingerprint : Fingerprint(
     )
 )
 
-/**
- * YouTube PlayerView's parent ViewGroup hardcodes 16:9 in onMeasure (1.777f).
- */
-internal object SixteenNinePlayerOnLayoutFingerprint : Fingerprint(
-    classFingerprint =  Fingerprint(
-        name = "onMeasure",
-        returnType = "V",
-        parameters = listOf("I", "I"),
-        filters = listOf(literal(1.777f)),
-        custom = { _, classDef -> classDef.superclass == "Landroid/view/ViewGroup;" }
-    ),
-    name = "onLayout",
-    returnType = "V",
-    parameters = listOf("Z", "I", "I", "I", "I"),
-    filters = listOf(
-        opcode(Opcode.RETURN_VOID)
-    )
-)
-
 internal object FullscreenGestureZoomFingerprint : Fingerprint (
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",

@@ -108,17 +108,12 @@ val stretchVideoPatch = bytecodePatch(
             )
         }
 
-        arrayOf(
-            YouTubePlayerViewOnLayoutFingerprint,
-            SixteenNinePlayerOnLayoutFingerprint
-        ).forEach { fingerprint ->
-            fingerprint.let {
-                it.method.addInstructionsAtControlFlowLabel(
-                    it.instructionMatches.first().index,
-                    "invoke-static { p0 }, $STRETCH_VIDEO_EXTENSION_CLASS->" +
-                            "onPlayerViewLayout(Landroid/view/View;)V"
-                )
-            }
+        YouTubePlayerViewOnLayoutFingerprint.let {
+            it.method.addInstructionsAtControlFlowLabel(
+                it.instructionMatches.first().index,
+                "invoke-static { p0 }, $STRETCH_VIDEO_EXTENSION_CLASS->" +
+                        "onPlayerViewLayout(Landroid/view/View;)V"
+            )
         }
     }
 }
