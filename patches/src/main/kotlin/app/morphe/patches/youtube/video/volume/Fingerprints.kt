@@ -7,7 +7,7 @@
 
 @file:Suppress("SpellCheckingInspection")
 
-package app.morphe.patches.youtube.video.voiceovertranslation
+package app.morphe.patches.youtube.video.volume
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
