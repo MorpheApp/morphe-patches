@@ -12,6 +12,7 @@ package app.morphe.patches.music.layout.theme
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.is_9_30_or_greater
@@ -29,9 +30,16 @@ import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
+import app.morphe.util.doRecursively
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import org.w3c.dom.Element
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/theme/ThemePatch;"
+
+private const val HEADER_FADE_LAYOUT_CLASS =
+    "app.morphe.extension.music.patches.theme.HeaderFadeLayout"
+
+private const val DETAIL_PAGE_HEADER_LAYOUT = "res/layout/music_element_header.xml"
 
 private val musicColorNamesDark = {
     THEME_DEFAULT_COLOR_NAMES_DARK + setOf(
@@ -41,6 +49,47 @@ private val musicColorNamesDark = {
         "ytm_color_grey_12",
         "material_grey_800"
     )
+}
+
+/**
+ * The header of a playlist, album or artist page ends in a translucent black, which is only
+ * invisible while the app background is pure black.
+ * https://github.com/MorpheApp/morphe-patches/issues/200
+ */
+private val headerFadeResourcePatch = resourcePatch(
+    description = "Fades the header of a detail page into the app background."
+) {
+    execute {
+        if (!get(DETAIL_PAGE_HEADER_LAYOUT).exists()) {
+            return@execute
+        }
+
+        document(DETAIL_PAGE_HEADER_LAYOUT).use { document ->
+            // Replaced after the walk, which would otherwise lose the node it is on.
+            val containers = mutableListOf<Element>()
+
+            document.doRecursively loop@{ node ->
+                if (node !is Element) return@loop
+
+                val idAttribute = node.getAttributeNode("android:id") ?: return@loop
+                if (idAttribute.textContent == "@id/elements_container") {
+                    containers += node
+                }
+            }
+
+            containers.forEach { container ->
+                val fadeLayout = container.ownerDocument.createElement(HEADER_FADE_LAYOUT_CLASS)
+
+                val attributes = container.attributes
+                for (index in 0 until attributes.length) {
+                    val attribute = attributes.item(index)
+                    fadeLayout.setAttribute(attribute.nodeName, attribute.nodeValue)
+                }
+
+                container.parentNode.replaceChild(fadeLayout, container)
+            }
+        }
+    }
 }
 
 @Suppress("unused")
@@ -59,7 +108,8 @@ val themePatch = baseThemePatch(
                 colorNamesDark = musicColorNamesDark,
                 // The theme of the launcher activity, which the system draws the splash with.
                 splashScreenThemeParent = "@style/Theme.YouTubeMusic.Home"
-            )
+            ),
+            headerFadeResourcePatch
         )
 
         compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
