@@ -16,6 +16,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
+import app.morphe.patches.shared.layout.theme.STYLE_DEFAULT_COLOR_NAMES_LIGHT
 import app.morphe.patches.shared.layout.theme.THEME_COLOR_EXTENSION_CLASS
 import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_COLOR_NAMES_DARK
 import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_COLOR_NAMES_LIGHT
@@ -45,15 +46,18 @@ import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import org.w3c.dom.Element
+import kotlin.collections.plus
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/theme/ThemePatch;"
 
 private val youTubeColorNamesDark = {
     THEME_DEFAULT_COLOR_NAMES_DARK + if (is_21_06_or_greater)
         setOf(
-            // yt_ref_color_constants_baseline_black_black0
-            // yt_ref_color_constants_baseline_black_black1
-            // yt_ref_color_constants_baseline_black_black3
+//            "yt_ref_color_constants_default_baseline_black_black0",
+//            "yt_ref_color_constants_default_baseline_black_black1",
+//            "yt_ref_color_constants_default_baseline_black_black2",
+            "yt_ref_color_constants_default_baseline_black_black3",
+//            "yt_ref_color_constants_default_baseline_black_black4",
             "yt_sys_color_baseline_dark_menu_background",
             "yt_sys_color_baseline_dark_static_black",
             "yt_sys_color_baseline_dark_raised_background",
@@ -67,12 +71,59 @@ private val youTubeColorNamesLight = {
     THEME_DEFAULT_COLOR_NAMES_LIGHT + if (is_21_06_or_greater) {
         setOf(
             "yt_sys_color_baseline_light_base_background",
-            "yt_sys_color_baseline_light_raised_background"
+            "yt_sys_color_baseline_light_raised_background",
+
+//            "yt_ref_color_constants_baseline_white_white0",
+//            "yt_ref_color_constants_baseline_white_white1", // Light mode background for many places.
+//            "yt_ref_color_constants_baseline_white_white2",
+//            "yt_ref_color_constants_baseline_white_white3",
+//            "yt_ref_color_constants_baseline_white_white4",
+//            "yt_ref_color_constants_default_baseline_white_white2",
+//            "yt_ref_color_constants_default_baseline_white_white3",
+//            "yt_ref_color_constants_default_baseline_white_white4",
+
+//            "yt_sys_color_baseline_light_menu_background",
+//            "yt_sys_color_baseline_light_static_white",
+//            "yt_sys_color_baseline_light_static_white_background",
+//            "yt_sys_color_baseline_dark_inverted_background",
+//            "yt_sys_color_baseline_dark_static_white",
+//            "yt_sys_color_baseline_dark_static_brand_white",
+//            "yt_sys_color_baseline_dark_static_white_background",
+//            "yt_sys_color_baseline_dark_wordmark_text",
+//            "yt_sys_color_baseline_light_static_brand_white",
+
+//            "yt_sys_color_baseline_dark_wordmark_text",
+//            "yt_sys_color_baseline_light_overlay_solid_wash",
+//            "yt_sys_color_baseline_light_overlay_text_primary",
+//            "yt_sys_color_baseline_light_overlay_touch_response",
+//            "yt_sys_color_baseline_light_touch_response_inverse",
+//            "yt_sys_color_baseline_mobile_light_default_default_text_primary_inverse",
+//            "yt_sys_color_baseline_dark_overlay_solid_wash",
+//            "yt_sys_color_baseline_dark_overlay_text_primary",
+//            "yt_sys_color_baseline_dark_status_bar",
         )
     } else {
         emptySet()
     }
 }
+
+private val youTubeStyleNamesLight = {
+    STYLE_DEFAULT_COLOR_NAMES_LIGHT + if (is_21_35_or_greater) {
+        mapOf(
+            "yt.sys.color.baseline" to setOf(
+                "yt_sys_color_baseline_static_white_background",
+                "yt_sys_color_baseline_base_background",
+//                "yt_sys_color_baseline_menu_background",
+//                "yt_sys_color_baseline_raised_background",
+                // Recolors the settings UI switches, but also incorrectly recolors the player seekbar time.
+//                "yt_sys_color_baseline_static_brand_white",
+            )
+        )
+    } else {
+        emptyMap()
+    }
+}
+
 
 val themePatch = baseThemePatch(
     extensionClassDescriptor = EXTENSION_CLASS,
@@ -222,6 +273,7 @@ val themePatch = baseThemePatch(
                 includeLightColor = true,
                 colorNamesDark = youTubeColorNamesDark,
                 colorNamesLight = youTubeColorNamesLight,
+                styleColorNamesLight = youTubeStyleNamesLight,
                 // The theme of the launcher activity, which the system draws the splash with.
                 splashScreenThemeParent = "@style/Theme.YouTube.Home"
             ),

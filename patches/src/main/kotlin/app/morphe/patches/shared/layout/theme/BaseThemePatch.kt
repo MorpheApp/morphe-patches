@@ -329,6 +329,11 @@ internal val THEME_DEFAULT_COLOR_NAMES_LIGHT = setOf(
     "yt_sys_color_baseline_mobile_light_default_raised_background",
 )
 
+internal val STYLE_DEFAULT_COLOR_NAMES_DARK = emptyMap<String, Set<String>>()
+
+// Style name to color override.
+internal val STYLE_DEFAULT_COLOR_NAMES_LIGHT = emptyMap<String, Set<String>>()
+
 /**
  * Hooks every context of the app so the app resources resolve
  * with the theme colors selected in the app settings.
@@ -541,6 +546,22 @@ private fun ResourcePatchContext.colorFiles(): List<String> {
     return colorFiles
 }
 
+private fun ResourcePatchContext.styleFiles(): List<String> {
+    val styleFiles = mutableListOf<String>()
+    val resDir = get("res")
+    if (!resDir.exists()) return styleFiles
+
+    resDir.listFiles()?.forEach { dir ->
+        if (dir.isDirectory && dir.name.startsWith("values")) {
+            val stylesFile = dir.resolve("styles.xml")
+            if (stylesFile.exists()) {
+                styleFiles.add("res/${dir.name}/styles.xml")
+            }
+        }
+    }
+    return styleFiles
+}
+
 /**
  * @param colorValues All colors the app declares.
  */
@@ -561,12 +582,18 @@ private fun resolveColorValue(color: String, colorValues: Map<String, String>): 
 internal fun baseThemeResourcePatch(
     colorNamesDark: (() -> Set<String>) = { THEME_DEFAULT_COLOR_NAMES_DARK },
     colorNamesLight: (() -> Set<String>) = { THEME_DEFAULT_COLOR_NAMES_LIGHT },
+    styleColorNamesDark: (() -> Map<String, Set<String>>) = { STYLE_DEFAULT_COLOR_NAMES_DARK },
+    styleColorNamesLight: (() -> Map<String, Set<String>>) = { STYLE_DEFAULT_COLOR_NAMES_LIGHT },
     includeLightColor: Boolean = false,
     splashScreenThemeParent: String? = null
 ) = resourcePatch {
     execute {
         val colorFiles = colorFiles()
         val declaredColors = declaredColors(colorFiles)
+        val styleColorNamesDarkMap = styleColorNamesDark()
+        val styleColorNamesLightMap = styleColorNamesLight()
+        val styleFiles = styleFiles()
+
         darkColorNames = themeColorNames(APP_COLOR_NAMES_DARK, colorNamesDark(), declaredColors)
         lightColorNames = if (includeLightColor) {
             themeColorNames(APP_COLOR_NAMES_LIGHT, colorNamesLight(), declaredColors)
@@ -580,7 +607,10 @@ internal fun baseThemeResourcePatch(
         // A color that is set while patching is the only color the app can have,
         // so none of the variants and themes below are of any use.
         if (usePatchedThemeColor) {
-            replaceColors(colorFiles, declaredColors, includeLightColor)
+            replaceColors(
+                colorFiles, styleFiles, declaredColors,
+                styleColorNamesDarkMap, styleColorNamesLightMap, includeLightColor
+            )
             return@execute
         }
 
@@ -604,7 +634,10 @@ internal fun baseThemeResourcePatch(
             emptyMap()
         }
 
-        val aliasAlphas = addColorAliases(colorFiles, declaredColors, includeLightColor)
+        val aliasAlphas = addColorAliases(
+            colorFiles, styleFiles, declaredColors,
+            styleColorNamesDarkMap, styleColorNamesLightMap, includeLightColor
+        )
 
         val darkAliasAlphas = aliasAlphas.filterKeys { isDarkThemeColorAlias(it) }
         darkAliasNames = darkAliasAlphas.keys.toList()
@@ -676,8 +709,11 @@ private fun ResourcePatchContext.verifySettingEntries(
  */
 private fun ResourcePatchContext.replaceColors(
     colorFiles: List<String>,
+    styleFiles: List<String>,
     declaredColors: Map<String, String>,
-    includeLightCOlor: Boolean
+    styleColorNamesDark: Map<String, Set<String>>,
+    styleColorNamesLight: Map<String, Set<String>>,
+    includeLightColor: Boolean
 ) {
     val darkColor = patchedThemeColorDark
     if (!validateColorName(darkColor)) {
@@ -685,7 +721,7 @@ private fun ResourcePatchContext.replaceColors(
     }
 
     val lightColor = patchedThemeColorLight
-    if (includeLightCOlor && !validateColorName(lightColor)) {
+    if (includeLightColor && !validateColorName(lightColor)) {
         throw PatchException("Invalid light theme color: $lightColor")
     }
 
@@ -701,6 +737,29 @@ private fun ResourcePatchContext.replaceColors(
 
                 val alpha = parseAlpha(resolveColorValue(node.textContent, declaredColors))
                 node.textContent = applyAlpha(color, alpha)
+            }
+        }
+    }
+
+    styleFiles.forEach { path ->
+        document(path).use { document ->
+            document.getNode("resources").forEachChildElement { style ->
+                if (style.tagName != "style") return@forEachChildElement
+                val styleName = style.getAttribute("name")
+
+                style.forEachChildElement { item ->
+                    if (item.tagName != "item") return@forEachChildElement
+                    val itemName = item.getAttribute("name")
+
+                    val color = when {
+                        itemName in styleColorNamesDark[styleName].orEmpty() -> darkColor
+                        includeLightColor && itemName in styleColorNamesLight[styleName].orEmpty() -> lightColor
+                        else -> return@forEachChildElement
+                    }
+
+                    val alpha = parseAlpha(resolveColorValue(item.textContent, declaredColors))
+                    item.textContent = applyAlpha(color, alpha)
+                }
             }
         }
     }
@@ -883,7 +942,10 @@ private fun ResourcePatchContext.addColorVariants(
  */
 private fun ResourcePatchContext.addColorAliases(
     colorFiles: List<String>,
+    styleFiles: List<String>,
     declaredColors: Map<String, String>,
+    styleColorNamesDark: Map<String, Set<String>>,
+    styleColorNamesLight: Map<String, Set<String>>,
     includeLightColor: Boolean
 ): Map<String, Int> {
     val aliasAlphas = LinkedHashMap<String, Int>()
@@ -909,6 +971,36 @@ private fun ResourcePatchContext.addColorAliases(
 
                 aliasAlphas[colorAlias] = alpha
                 color.textContent = "@color/$colorAlias"
+            }
+        }
+    }
+
+    styleFiles.forEach { path ->
+        document(path).use { document ->
+            document.getNode("resources").forEachChildElement { style ->
+                if (style.tagName != "style") return@forEachChildElement
+                val styleName = style.getAttribute("name")
+
+                style.forEachChildElement { item ->
+                    if (item.tagName != "item") return@forEachChildElement
+                    val itemName = item.getAttribute("name")
+
+                    val aliasBaseName = when {
+                        itemName in styleColorNamesDark[styleName].orEmpty() -> THEME_COLOR_DARK
+                        includeLightColor && itemName in styleColorNamesLight[styleName].orEmpty() -> THEME_COLOR_LIGHT
+                        else -> return@forEachChildElement
+                    }
+
+                    val alpha = parseAlpha(resolveColorValue(item.textContent, declaredColors))
+                    val colorAlias = if (alpha == 0xFF) {
+                        aliasBaseName
+                    } else {
+                        "${aliasBaseName}_opacity_${"%02X".format(alpha)}"
+                    }
+
+                    aliasAlphas[colorAlias] = alpha
+                    item.textContent = "@color/$colorAlias"
+                }
             }
         }
     }
