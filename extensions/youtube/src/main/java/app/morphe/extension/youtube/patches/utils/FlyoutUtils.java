@@ -164,11 +164,15 @@ public final class FlyoutUtils {
         return flyoutCommentId;
     }
 
-    public static void setVideoMarkedAsForKids(byte[] bytes) {
+    /**
+     * Injection point.
+     */
+    public static byte[] onNewElementsLoaded(byte[] bytes) {
         List<Integer> kidsVideoElementsBytesIndexes = byteIndexesOf(bytes, KIDS_VIDEO_ELEMENTS_BYTES);
         if (!kidsVideoElementsBytesIndexes.isEmpty() && kidsVideoElementsBytesIndexes.size() == KIDS_VIDEO_ELEMENTS_BYTES.size()) {
             videoMarkedAsForKids = true;
         }
+        return bytes;
     }
 
     /**
