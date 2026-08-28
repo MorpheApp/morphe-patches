@@ -18,12 +18,67 @@ import app.morphe.extension.youtube.settings.Settings;
 public class DisableVideoCodecsPatch {
 
     /**
+     * HDR types YouTube checks via {@link Display.HdrCapabilities#getSupportedHdrTypes()}.
+     * HLG is the type HyperOS often omits even when the decoder can play YouTube HDR.
+     */
+    private static final int[] FORCED_HDR_TYPES = {
+            Display.HdrCapabilities.HDR_TYPE_HLG,
+            Display.HdrCapabilities.HDR_TYPE_HDR10,
+            Display.HdrCapabilities.HDR_TYPE_HDR10_PLUS,
+            Display.HdrCapabilities.HDR_TYPE_DOLBY_VISION
+    };
+
+    /**
      * Injection point.
      */
-    public static int[] disableHdrVideo(Display.HdrCapabilities capabilities) {
-        return Settings.DISABLE_HDR_VIDEO.get()
+    public static int[] overrideSupportedHdrTypes(Display.HdrCapabilities capabilities) {
+        if (Settings.DISABLE_HDR_VIDEO.get()) {
+            return new int[0];
+        }
+
+        int[] original = capabilities == null
                 ? new int[0]
                 : capabilities.getSupportedHdrTypes();
+        if (!Settings.FORCE_HDR_VIDEO.get()) {
+            return original;
+        }
+
+        return unionHdrTypes(original);
+    }
+
+    private static int[] unionHdrTypes(int[] original) {
+        if (original == null || original.length == 0) {
+            return FORCED_HDR_TYPES.clone();
+        }
+
+        int missingCount = 0;
+        for (int forced : FORCED_HDR_TYPES) {
+            if (!containsHdrType(original, forced)) {
+                missingCount++;
+            }
+        }
+        if (missingCount == 0) {
+            return original;
+        }
+
+        int[] result = new int[original.length + missingCount];
+        System.arraycopy(original, 0, result, 0, original.length);
+        int index = original.length;
+        for (int forced : FORCED_HDR_TYPES) {
+            if (!containsHdrType(original, forced)) {
+                result[index++] = forced;
+            }
+        }
+        return result;
+    }
+
+    private static boolean containsHdrType(int[] types, int type) {
+        for (int existing : types) {
+            if (existing == type) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

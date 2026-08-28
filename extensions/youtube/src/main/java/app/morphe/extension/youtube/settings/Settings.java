@@ -71,6 +71,8 @@ public class Settings extends SharedYouTubeSettings {
     // Video
     public static final BooleanSetting ADVANCED_VIDEO_QUALITY_MENU = new BooleanSetting("morphe_advanced_video_quality_menu", TRUE);
     public static final BooleanSetting DISABLE_HDR_VIDEO = new BooleanSetting("morphe_disable_hdr_video", FALSE);
+    public static final BooleanSetting FORCE_HDR_VIDEO = new BooleanSetting("morphe_force_hdr_video", FALSE, true,
+            "morphe_force_hdr_video_user_dialog_message", parentNot(DISABLE_HDR_VIDEO));
     public static final BooleanSetting FORCE_AVC_CODEC = new BooleanSetting("morphe_force_avc_codec", FALSE, true, "morphe_force_avc_codec_user_dialog_message");
     public static final BooleanSetting HIDE_PREMIUM_VIDEO_QUALITY = new BooleanSetting("morphe_hide_premium_video_quality", TRUE, true);
     public static final BooleanSetting VIDEO_QUALITY_PRIORITIZE = new BooleanSetting("morphe_video_quality_prioritize", TRUE, true, "morphe_video_quality_prioritize_dialog");
