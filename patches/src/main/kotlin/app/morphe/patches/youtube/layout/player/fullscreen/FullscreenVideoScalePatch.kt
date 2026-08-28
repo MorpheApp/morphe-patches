@@ -25,6 +25,8 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.getPlayerTypeFingerprint
+import app.morphe.patches.youtube.video.format.hookAdaptiveFormat
+import app.morphe.patches.youtube.video.format.videoFormatPatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.copyResources
@@ -70,6 +72,7 @@ val fullscreenVideoScalePatch = bytecodePatch(
         playerOverlayButtonsSettingsPatch,
         playerOverlayButtonsHookPatch,
         legacyPlayerControlsPatch,
+        videoFormatPatch,
         fullscreenVideoScaleResourcePatch
     )
 
@@ -86,6 +89,7 @@ val fullscreenVideoScalePatch = bytecodePatch(
 
         addPlayerBottomButton(EXTENSION_BUTTON)
         initializeLegacyBottomControl(EXTENSION_BUTTON)
+        hookAdaptiveFormat("$EXTENSION_CLASS_VIDEO_SCALE->setVideoAspectRatio")
 
         getPlayerTypeFingerprint().method.addInstruction(
             0,

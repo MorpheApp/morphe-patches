@@ -18,14 +18,17 @@ import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowMetrics;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.util.List;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.youtube.patches.VideoFormat.FormatInterface;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 import kotlin.Unit;
@@ -117,12 +120,22 @@ public class FullscreenVideoScalePatch {
     }
 
     /**
+     * Injection point.
      * Records the encoded video size so Stretch/Zoom can map non-16:9 content.
      */
-    public static void setVideoSize(int width, int height) {
-        if (width > 0 && height > 0) {
-            videoAspectRatio = width / (float) height;
+    public static List<FormatInterface> setVideoAspectRatio(@NonNull List<FormatInterface> adaptiveFormats) {
+        for (FormatInterface format : adaptiveFormats) {
+            String mimeType = format.patch_getMimeType();
+            if (mimeType != null && mimeType.contains("video")) {
+                final int width = format.patch_getWidth();
+                final int height = format.patch_getHeight();
+                if (width > 16 && width < 8192 && height > 16 && height < 8192) {
+                    videoAspectRatio = width / (float) height;
+                    break;
+                }
+            }
         }
+        return adaptiveFormats;
     }
 
     public static void applyScale() {
