@@ -46,6 +46,7 @@ import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.Buttons;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarItemRenderer;
 import app.morphe.extension.youtube.innertube.IconOuterClass.Icon;
 import app.morphe.extension.youtube.innertube.IconOuterClass.YTIconType;
+import app.morphe.extension.youtube.patches.spoof.SpoofOSNamePatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.NavigationBar;
 
@@ -77,9 +78,7 @@ public final class NavigationBarPatch {
      * Injection point.
      */
     public static String swapCreateWithNotificationButton(String osName) {
-        return SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON
-                ? "Android Automotive"
-                : osName;
+        return SpoofOSNamePatch.getOSName(SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON);
     }
 
     /**

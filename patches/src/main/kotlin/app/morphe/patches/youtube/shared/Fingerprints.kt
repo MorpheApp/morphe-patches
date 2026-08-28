@@ -54,6 +54,18 @@ internal object BackgroundPlaybackManagerShortsFingerprint : Fingerprint(
     )
 )
 
+internal object BuildClientContextBodyConstructorFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    returnType = "V",
+    filters = listOf(
+        string("Android Wear"),
+        opcode(Opcode.IF_EQZ),
+        string("Android Automotive", location = MatchAfterImmediately()),
+        string("Android"),
+        fieldAccess(opcode = Opcode.IPUT_OBJECT, location = MatchAfterImmediately())
+    )
+)
+
 internal object EngagementPanelControllerFingerprint : Fingerprint(
     returnType = "L",
     parameters = listOf("L", "L", "Z", "Z"),

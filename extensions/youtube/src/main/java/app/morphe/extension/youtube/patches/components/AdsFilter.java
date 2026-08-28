@@ -23,6 +23,7 @@ import app.morphe.extension.shared.patches.components.ByteArrayFilterGroup;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.Filter;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
+import app.morphe.extension.youtube.patches.spoof.SpoofOSNamePatch;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -254,10 +255,15 @@ public final class AdsFilter extends Filter {
     /**
      * Injection point.
      */
+    public static boolean hideAds(boolean original) {
+        return (Settings.HIDE_GENERAL_ADS.get() && Settings.HIDE_VIDEO_ADS.get()) || original;
+    }
+
+    /**
+     * Injection point.
+     */
     public static String hideAds(String osName) {
-        return Settings.HIDE_GENERAL_ADS.get()
-                ? "Android Automotive"
-                : osName;
+        return SpoofOSNamePatch.getOSName(Settings.HIDE_GENERAL_ADS.get());
     }
 
     /**
@@ -335,8 +341,6 @@ public final class AdsFilter extends Filter {
      * Injection point.
      */
     public static String hideVideoAds(String osName) {
-        return Settings.HIDE_VIDEO_ADS.get()
-                ? "Android Automotive"
-                : osName;
+        return SpoofOSNamePatch.getOSName(Settings.HIDE_VIDEO_ADS.get());
     }
 }
