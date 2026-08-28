@@ -1267,6 +1267,12 @@ Tap here to open DeArrow.ajay.app"</string>
     <string name="morphe_playback_audio_time_stretching_title">Audio time stretching</string>
     <string name="morphe_playback_audio_time_stretching_summary">Allows setting speed and pitch independently, may cause audio artifacts</string>
 
+    <!-- video.livestreams.rememberLivestreamPositionPatch -->
+    <string name="morphe_remember_livestream_position_title">Remember livestream playback position</string>
+    <string name="morphe_remember_livestream_position_summary">For ongoing livestreams, remembers your playback position and resumes from there instead of jumping to the current live position</string>
+    <string name="morphe_remember_livestream_position_resume_when_live_title">Resume even when watched live</string>
+    <string name="morphe_remember_livestream_position_resume_when_live_summary">When reopening a livestream that was watched at the live edge, resume from the last position instead of going to live</string>
+
     <!-- video.codecs.disableVideoCodecsPatch -->
     <string name="morphe_disable_hdr_video_title">Disable HDR video</string>
     <string name="morphe_force_avc_codec_title">Force AVC (H.264) codec</string>
