@@ -10,13 +10,11 @@
 
 package app.morphe.patches.youtube.video.information
 
-import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
@@ -581,16 +579,7 @@ val videoInformationPatch = bytecodePatch(
         // Capture the ExoPlayerImpl reference at its init constructor (only 1 yet)
         // Extension is initialized (Application.onCreate) before starting to play any video.
         // This is required for patch_setPlaybackParameters function.
-        Fingerprint(
-            classFingerprint = setPlaybackParametersFingerprint,
-            name = "<init>",
-            filters = listOf(
-                methodCall(
-                    opcode = Opcode.INVOKE_DIRECT,
-                    name = "<init>"
-                )
-            )
-        ).matchAll().forEach {
+        getExoPlayerImplFingerprint(playbackParametersType).matchAll().forEach {
             val firstInstructionMatch = it.instructionMatches.first()
             val register = firstInstructionMatch.getInstruction<FiveRegisterInstruction>().registerC
             it.method.addInstruction(
@@ -606,31 +595,31 @@ val videoInformationPatch = bytecodePatch(
             interfaces.add(EXTENSION_EXOPLAYERIMPL_INTERFACE)
 
             methods.add(
-                    ImmutableMethod(
-                        type,
-                        "patch_setPlaybackParameters",
-                        listOf(
-                            ImmutableMethodParameter("F", null, null),
-                            ImmutableMethodParameter("F", null, null)
-                        ),
-                        "V",
-                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                        null,
-                        null,
-                        MutableMethodImplementation(4),
-                    ).toMutable().apply {
-                        addInstructions(
-                            0,
-                            """
-                                new-instance v0, $playbackParametersType
-                                invoke-direct { v0, p1, p2 }, $playbackParametersConstructorReference
-                                invoke-virtual { p0, v0 }, $setPlaybackParametersReference
-                                return-void
-                            """
-                        )
-                    }
-                )
-            }
+                ImmutableMethod(
+                    type,
+                    "patch_setPlaybackParameters",
+                    listOf(
+                        ImmutableMethodParameter("F", null, null),
+                        ImmutableMethodParameter("F", null, null)
+                    ),
+                    "V",
+                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                    null,
+                    null,
+                    MutableMethodImplementation(4),
+                ).toMutable().apply {
+                    addInstructions(
+                        0,
+                        """
+                            new-instance v0, $playbackParametersType
+                            invoke-direct { v0, p1, p2 }, $playbackParametersConstructorReference
+                            invoke-virtual { p0, v0 }, $setPlaybackParametersReference
+                            return-void
+                        """
+                    )
+                }
+            )
+        }
 
         // endregion.
 

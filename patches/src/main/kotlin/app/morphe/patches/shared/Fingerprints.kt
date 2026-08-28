@@ -9,6 +9,7 @@ package app.morphe.patches.shared
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.StringComparisonType
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.string
@@ -53,6 +54,27 @@ internal object CurrentAudioVideoFormatToStringFingerprint : Fingerprint(
     returnType = "Ljava/lang/String;",
     parameters = listOf(),
     strings = listOf("currentVideoFormat=")
+)
+
+internal object FormatStreamModelToStringFingerprint : Fingerprint(
+    name = "toString",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/String;",
+    filters = listOf(
+        string(" isDefaultAudioTrack="),
+        string(" audioTrackId="),
+        string(" audioTrackDisplayName="),
+        string(" width="),
+        string(" height="),
+        // formatStreamModelFormatField.
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = "L"
+        ),
+        string("FormatStream(itag="),
+        string(" mimeType=")
+    )
 )
 
 internal object MediaSessionSetPlaybackStateFingerprint : Fingerprint(

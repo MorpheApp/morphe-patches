@@ -14,12 +14,14 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.InstructionLocation.MatchFirst
+import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
+import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.string
 import app.morphe.patches.all.misc.resources.ResourceType
 import app.morphe.patches.all.misc.resources.resourceLiteral
@@ -90,6 +92,32 @@ internal object LayoutConstructorFingerprint : Fingerprint(
     )
 )
 
+private object PlayerTypeEnumFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
+    strings = listOf(
+        "WATCH_WHILE_PICTURE_IN_PICTURE",
+        "NONE",
+        "HIDDEN",
+        "WATCH_WHILE_MINIMIZED",
+        "WATCH_WHILE_MAXIMIZED",
+        "WATCH_WHILE_FULLSCREEN",
+        "WATCH_WHILE_SLIDING_MAXIMIZED_FULLSCREEN",
+        "WATCH_WHILE_SLIDING_MINIMIZED_MAXIMIZED",
+        "WATCH_WHILE_SLIDING_MINIMIZED_DISMISSED",
+        "INLINE_MINIMAL",
+        "VIRTUAL_REALITY_FULLSCREEN",
+    )
+)
+
+internal fun BytecodePatchContext.getPlayerTypeFingerprint() = object : Fingerprint(
+    definingClass = "/YouTubePlayerOverlaysLayout;",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(
+        PlayerTypeEnumFingerprint.originalClassDef.type
+    )
+) {}
+
 internal object YouTubeMainActivityConstructorFingerprint : Fingerprint(
     definingClass = YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
@@ -149,6 +177,16 @@ internal object SeekbarOnDrawFingerprint : Fingerprint(
         methodCall(smali = "Ljava/lang/Math;->round(F)I"),
         opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately())
     )
+)
+
+internal object StartVideoInformerFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    filters = OpcodesFilter.opcodesToFilters(
+        Opcode.INVOKE_INTERFACE,
+        Opcode.RETURN_VOID,
+    ),
+    strings = listOf("pc")
 )
 
 internal object ToolBarButtonFingerprint : Fingerprint(

@@ -146,17 +146,6 @@ internal fun getSetVideoQualityListFingerprint(
     }
 ) {}
 
-internal object FormatStreamModelToStringFingerprint : Fingerprint(
-    name = "toString",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Ljava/lang/String;",
-    strings = listOf(
-        // Strings are partial matches.
-        "isDefaultAudioTrack=",
-        "audioTrackId="
-    )
-)
-
 /**
  * ~ YT 21.25
  * ~ YTM 9.25
