@@ -96,19 +96,18 @@ val disableFullscreenGesturesPatch = bytecodePatch(
             }
         }
 
-        VideoZoomScaleBeginFingerprint.method.apply {
-            addInstructionsWithLabels(
-                0,
-                """
-                    invoke-static { }, $EXTENSION_CLASS->disableZoomGesture()Z
-                    move-result v0
-                    if-eqz v0, :allow_zoom
-                    const/4 v0, 0x0
-                    return v0
-                """,
-                ExternalLabel("allow_zoom", getInstruction(0)),
-            )
-        }
+        VideoZoomScaleBeginFingerprint.method.addInstructionsWithLabels(
+            0,
+            """
+                invoke-static { }, $EXTENSION_CLASS->disableZoomGesture()Z
+                move-result v0
+                if-eqz v0, :allow_zoom
+                const/4 v0, 0x0
+                return v0
+                :allow_zoom
+                nop
+            """
+        )
 
         if (is_20_40_or_greater) {
             FullscreenGestureZoomFingerprint.apply {
