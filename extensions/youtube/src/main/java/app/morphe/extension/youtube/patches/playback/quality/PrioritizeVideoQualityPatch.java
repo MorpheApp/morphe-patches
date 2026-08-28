@@ -19,6 +19,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.innertube.FormatOuterClass.Format;
 import app.morphe.extension.youtube.patches.FullscreenVideoScalePatch;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.ShortsPlayerState;
 
 @SuppressWarnings("unused")
 public final class PrioritizeVideoQualityPatch {
@@ -96,6 +97,11 @@ public final class PrioritizeVideoQualityPatch {
 
     private static void captureVideoAspect(List<MessageLite> adaptiveFormats) {
         try {
+            if (ShortsPlayerState.isOpen()) {
+                Logger.printDebug(() -> "Ignoring shorts video aspect ration");
+                return;
+            }
+
             for (MessageLite messageLite : adaptiveFormats) {
                 Format format = Format.parseFrom(messageLite.toByteArray());
                 if (format == null) {

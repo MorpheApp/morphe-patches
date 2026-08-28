@@ -4,6 +4,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
+import app.morphe.patches.youtube.layout.player.fullscreen.fullscreenVideoScalePatch
 import app.morphe.patches.youtube.misc.playservice.is_20_40_or_greater
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -17,14 +18,16 @@ internal val settingsMenuVideoQualityGroup = mutableSetOf<BasePreference>()
 @Suppress("unused")
 val videoQualityPatch = bytecodePatch(
     name = "Video quality",
-    description = "Adds options to set default video qualities and always use the advanced video quality menu."
+    description = "Adds options to set default video qualities, always use the advanced video quality menu, " +
+            "and to stretch or zoom videos to fill the screen in fullscreen mode. "
 ) {
     dependsOn(
         rememberVideoQualityPatch,
         advancedVideoQualityMenuPatch,
         hidePremiumVideoQualityPatch,
         prioritizeVideoQualityPatch,
-        videoQualityDialogButtonPatch
+        videoQualityDialogButtonPatch,
+        fullscreenVideoScalePatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)

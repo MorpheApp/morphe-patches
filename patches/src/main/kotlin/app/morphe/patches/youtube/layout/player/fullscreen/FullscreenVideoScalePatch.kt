@@ -25,7 +25,6 @@ import app.morphe.patches.youtube.misc.playertype.PlayerTypeEnumFingerprint
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.ResourceGroup
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.copyResources
@@ -60,11 +59,7 @@ private val fullscreenVideoScaleResourcePatch = resourcePatch {
     }
 }
 
-@Suppress("unused")
-val fullscreenVideoScalePatch = bytecodePatch(
-    name = "Fullscreen video scale",
-    description = "Adds options to stretch or zoom videos to fill the screen in fullscreen mode.",
-) {
+val fullscreenVideoScalePatch = bytecodePatch {
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
@@ -74,8 +69,6 @@ val fullscreenVideoScalePatch = bytecodePatch(
         legacyPlayerControlsPatch,
         fullscreenVideoScaleResourcePatch
     )
-
-    compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
         PreferenceScreen.VIDEO.addPreferences(

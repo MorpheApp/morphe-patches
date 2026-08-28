@@ -121,7 +121,9 @@ public class FullscreenVideoScalePatch {
      */
     public static void setVideoSize(int width, int height) {
         if (width > 0 && height > 0) {
-            videoAspectRatio = width / (float) height;
+            final float aspectRation = width / (float) height;
+            videoAspectRatio = aspectRation;
+            Logger.printDebug(() -> "Video aspect ratio: " + aspectRation);
         }
     }
 
