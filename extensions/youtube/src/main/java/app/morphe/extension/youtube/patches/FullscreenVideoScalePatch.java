@@ -371,7 +371,7 @@ public class FullscreenVideoScalePatch {
             return true;
         };
         observer.addOnPreDrawListener(preDrawListener);
-        preDrawHostRef = new WeakReference<>(null);
+        preDrawHostRef = new WeakReference<>(host);
         preDrawAttached = true;
     }
 
