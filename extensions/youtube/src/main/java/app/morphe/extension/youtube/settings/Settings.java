@@ -211,6 +211,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting DISABLE_FULLSCREEN_PULLED_UP_GESTURE = new BooleanSetting("morphe_disable_fullscreen_pulled_up_gesture", FALSE);
     public static final BooleanSetting DISABLE_FULLSCREEN_SLIDING_GESTURE = new BooleanSetting("morphe_disable_fullscreen_sliding_down_gesture", FALSE);
     public static final BooleanSetting DISABLE_FULLSCREEN_DRAGGED_DOWN_GESTURE = new BooleanSetting("morphe_disable_fullscreen_dragged_down_gesture", FALSE);
+    public static final BooleanSetting DISABLE_FULLSCREEN_ZOOM_GESTURE = new BooleanSetting("morphe_disable_fullscreen_zoom_gesture", FALSE);
     public static final BooleanSetting DISABLE_ROLLING_NUMBER_ANIMATIONS = new BooleanSetting("morphe_disable_rolling_number_animations", FALSE);
     public static final EnumSetting<FullscreenMode> EXIT_FULLSCREEN = new EnumSetting<>("morphe_exit_fullscreen", FullscreenMode.DISABLED);
     public static final EnumSetting<VideoScaleMode> FULLSCREEN_VIDEO_SCALE = new EnumSetting<>("morphe_fullscreen_video_scale", VideoScaleMode.DEFAULT);

@@ -11,8 +11,10 @@
 package app.morphe.patches.youtube.layout.player.fullscreen
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -30,7 +32,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 @Suppress("unused")
 val disableFullscreenGesturesPatch = bytecodePatch(
     name = "Disable fullscreen gestures",
-    description = "Adds options to selectively disable gestures for entering and exiting fullscreen mode.",
+    description = "Adds options to selectively disable gestures for entering and exiting fullscreen mode, and to disable pinch-to-zoom.",
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -53,7 +55,8 @@ val disableFullscreenGesturesPatch = bytecodePatch(
                 preferences = setOf(
                     SwitchPreference("morphe_disable_fullscreen_pulled_up_gesture"),
                     SwitchPreference("morphe_disable_fullscreen_dragged_down_gesture"),
-                    SwitchPreference("morphe_disable_fullscreen_sliding_down_gesture")
+                    SwitchPreference("morphe_disable_fullscreen_sliding_down_gesture"),
+                    SwitchPreference("morphe_disable_fullscreen_zoom_gesture")
                 )
             )
         )
@@ -91,6 +94,20 @@ val disableFullscreenGesturesPatch = bytecodePatch(
                     """
                 )
             }
+        }
+
+        VideoZoomScaleBeginFingerprint.method.apply {
+            addInstructionsWithLabels(
+                0,
+                """
+                    invoke-static { }, $EXTENSION_CLASS->disableZoomGesture()Z
+                    move-result v0
+                    if-eqz v0, :allow_zoom
+                    const/4 v0, 0x0
+                    return v0
+                """,
+                ExternalLabel("allow_zoom", getInstruction(0)),
+            )
         }
 
         if (is_20_40_or_greater) {

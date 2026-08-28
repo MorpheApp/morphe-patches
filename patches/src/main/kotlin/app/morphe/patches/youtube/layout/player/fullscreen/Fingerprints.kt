@@ -121,3 +121,22 @@ internal object FullscreenGestureZoomFingerprint : Fingerprint (
         methodCall(opcode = Opcode.INVOKE_VIRTUAL, returnType = "Z", location = MatchAfterWithin(12)),
     )
 )
+
+/**
+ * YouTube player pinch-to-zoom listener.
+ *
+ * Unique among other ScaleGestureDetector listeners (photo picker, creation, etc.):
+ * it implements only OnScaleGestureListener and has both ScaleGestureDetector and GestureDetector fields.
+ */
+internal object VideoZoomScaleBeginFingerprint : Fingerprint(
+    name = "onScaleBegin",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf("Landroid/view/ScaleGestureDetector;"),
+    custom = { _, classDef ->
+        classDef.interfaces.size == 1 &&
+            classDef.interfaces.contains($$"Landroid/view/ScaleGestureDetector$OnScaleGestureListener;") &&
+            classDef.fields.any { it.type == "Landroid/view/ScaleGestureDetector;" } &&
+            classDef.fields.any { it.type == "Landroid/view/GestureDetector;" }
+    }
+)

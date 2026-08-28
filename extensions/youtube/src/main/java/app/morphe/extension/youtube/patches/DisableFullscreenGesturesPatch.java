@@ -38,4 +38,11 @@ public class DisableFullscreenGesturesPatch {
         }
         return false;
     }
+
+    /**
+     * Injection point.
+     */
+    public static boolean disableZoomGesture() {
+        return Settings.DISABLE_FULLSCREEN_ZOOM_GESTURE.get();
+    }
 }
