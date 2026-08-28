@@ -7,8 +7,6 @@
 
 package app.morphe.extension.youtube.patches.playback.quality;
 
-import androidx.annotation.NonNull;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +35,7 @@ public final class PrioritizeVideoQualityPatch {
      * <p>
      * This function removes all VP9 codecs if the highest resolution video codec is AVC.
      */
-    public static List<FormatInterface> prioritizeVideoQuality(@NonNull List<FormatInterface> adaptiveFormats) {
+    public static List<FormatInterface> prioritizeVideoQuality(List<FormatInterface> adaptiveFormats) {
         if (PRIORITIZE_VIDEO_QUALITY) {
             try {
                 int maxHeightAVC = -1;
@@ -57,10 +55,10 @@ public final class PrioritizeVideoQualityPatch {
                     }
                 }
 
-                boolean shouldRemoveVP9 = maxHeightVP9 > 0 && maxHeightVP9 < maxHeightAVC;
+                final boolean shouldRemoveVP9 = maxHeightVP9 > 0 && maxHeightVP9 < maxHeightAVC;
 
                 if (shouldRemoveVP9) {
-                    ArrayList<FormatInterface> newFormats = new ArrayList<>(adaptiveFormats.size());
+                    List<FormatInterface> newFormats = new ArrayList<>(adaptiveFormats.size());
 
                     for (FormatInterface format : adaptiveFormats) {
                         String mimeType = format.patch_getMimeType();

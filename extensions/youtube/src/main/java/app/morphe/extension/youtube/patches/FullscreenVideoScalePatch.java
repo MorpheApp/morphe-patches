@@ -31,6 +31,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.VideoFormat.FormatInterface;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
+import app.morphe.extension.youtube.shared.ShortsPlayerState;
 import kotlin.Unit;
 
 /**
@@ -123,14 +124,21 @@ public class FullscreenVideoScalePatch {
      * Injection point.
      * Records the encoded video size so Stretch/Zoom can map non-16:9 content.
      */
-    public static List<FormatInterface> setVideoAspectRatio(@NonNull List<FormatInterface> adaptiveFormats) {
+    public static List<FormatInterface> setVideoAspectRatio(List<FormatInterface> adaptiveFormats) {
+        if (ShortsPlayerState.isOpen()) {
+            Logger.printDebug(() -> "Ignoring shorts video aspect ratio");
+            return adaptiveFormats;
+        }
+
         for (FormatInterface format : adaptiveFormats) {
             String mimeType = format.patch_getMimeType();
             if (mimeType != null && mimeType.contains("video")) {
                 final int width = format.patch_getWidth();
                 final int height = format.patch_getHeight();
                 if (width > 16 && width < 8192 && height > 16 && height < 8192) {
-                    videoAspectRatio = width / (float) height;
+                    final float aspectRation = width / (float) height;
+                    videoAspectRatio = aspectRation;
+                    Logger.printDebug(() -> "Video aspect ratio: " + aspectRation);
                     break;
                 }
             }
