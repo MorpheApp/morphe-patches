@@ -54,7 +54,7 @@ private val youTubeColorNamesDark = {
     THEME_DEFAULT_COLOR_NAMES_DARK + if (is_21_06_or_greater)
         setOf(
 //            "yt_ref_color_constants_default_baseline_black_black0",
-//            "yt_ref_color_constants_default_baseline_black_black1",
+            "yt_ref_color_constants_default_baseline_black_black1",
 //            "yt_ref_color_constants_default_baseline_black_black2",
             "yt_ref_color_constants_default_baseline_black_black3",
 //            "yt_ref_color_constants_default_baseline_black_black4",
@@ -113,8 +113,8 @@ private val youTubeStyleNamesLight = {
             "yt.sys.color.baseline" to setOf(
                 "yt_sys_color_baseline_static_white_background",
                 "yt_sys_color_baseline_base_background",
-//                "yt_sys_color_baseline_menu_background",
-//                "yt_sys_color_baseline_raised_background",
+                "yt_sys_color_baseline_menu_background",
+                "yt_sys_color_baseline_raised_background",
                 // Recolors the settings UI switches, but also incorrectly recolors the player seekbar time.
 //                "yt_sys_color_baseline_static_brand_white",
             )
