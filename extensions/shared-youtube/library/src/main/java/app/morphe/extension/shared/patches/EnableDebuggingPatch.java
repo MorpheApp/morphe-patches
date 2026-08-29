@@ -39,11 +39,11 @@ public final class EnableDebuggingPatch {
      */
     private static final boolean LOG_FEATURE_FLAGS = BaseSettings.DEBUG.get();
 
-    private static final ConcurrentMap<Long, Boolean> featureFlags = LOG_FEATURE_FLAGS
-            ? new ConcurrentHashMap<>(800, 0.5f, 1)
-            : null;
-
     private static final Map<Long, Boolean> OVERRIDDEN_FEATURE_FLAGS = loadOverriddenFlags();
+
+    private static final ConcurrentMap<Long, Boolean> featureFlags = LOG_FEATURE_FLAGS
+            ? new ConcurrentHashMap<>(3000, 0.5f, 1)
+            : null;
 
     private static Map<Long, Boolean> loadOverriddenFlags() {
         if (!LOG_FEATURE_FLAGS) return Collections.emptyMap();
@@ -64,7 +64,7 @@ public final class EnableDebuggingPatch {
     private static void logFlags(String header, Collection<Long> flags) {
         if (flags.isEmpty()) return;
 
-        StringBuilder sb = new StringBuilder(header);
+        StringBuilder sb = new StringBuilder(header.length() + 12 * flags.size());
         sb.append('\n');
         for (Long flag : flags) {
             sb.append("  ").append(flag).append('\n');
@@ -151,7 +151,7 @@ public final class EnableDebuggingPatch {
      * @return Map of all known flags and their current state
      */
     public static Map<Long, Boolean> getAllLoggedFlags() {
-        if (featureFlags != null) {
+        if (LOG_FEATURE_FLAGS) {
             return Collections.unmodifiableMap(featureFlags);
         }
 
