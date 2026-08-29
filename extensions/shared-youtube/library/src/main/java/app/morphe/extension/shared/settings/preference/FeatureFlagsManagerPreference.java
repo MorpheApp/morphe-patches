@@ -84,8 +84,6 @@ public class FeatureFlagsManagerPreference extends Preference {
             ResourceUtils.getIdentifierOrThrow(ResourceType.DRAWABLE, "morphe_settings_copy_all");
     private static final int DRAWABLE_MORPHE_SETTINGS_IMPORT_EXPORT =
             ResourceUtils.getIdentifierOrThrow(ResourceType.DRAWABLE, "morphe_settings_import_export");
-    private static final int DRAWABLE_MORPHE_SETTINGS_ADD_FLAG =
-            ResourceUtils.getIdentifierOrThrow(ResourceType.DRAWABLE, "morphe_settings_add_flag");
     private static final int DRAWABLE_MORPHE_SETTINGS_BISECT =
             ResourceUtils.getIdentifierOrThrow(ResourceType.DRAWABLE, "morphe_settings_bisect");
     private static final int DRAWABLE_MORPHE_SETTINGS_SEARCH =
@@ -558,8 +556,6 @@ public class FeatureFlagsManagerPreference extends Preference {
         actionButtons.addView(createIconButton(context, DRAWABLE_MORPHE_SETTINGS_COPY_ALL, this::copyFlags));
         actionButtons.addView(createIconButton(context, DRAWABLE_MORPHE_SETTINGS_IMPORT_EXPORT,
                 () -> showImportExportDialog(context)));
-        actionButtons.addView(createIconButton(context, DRAWABLE_MORPHE_SETTINGS_ADD_FLAG,
-                () -> showAddFlagDialog(context)));
         actionButtons.addView(createIconButton(context, DRAWABLE_MORPHE_SETTINGS_BISECT,
                 () -> showBisectStartDialog(context, dialog)));
 
@@ -686,48 +682,6 @@ public class FeatureFlagsManagerPreference extends Preference {
         Utils.showToastShort(str("morphe_debug_feature_flags_manager_toast_copied"));
     }
 
-    /**
-     * Shows a dialog to add a flag the app has not asked for yet, so it can be forced on.
-     */
-    private void showAddFlagDialog(Context context) {
-        EditText input = new EditText(context);
-        input.setInputType(InputType.TYPE_CLASS_NUMBER);
-        input.setTextSize(16);
-        input.setSingleLine(true);
-        input.setHint(str("morphe_debug_feature_flags_manager_add_hint"));
-
-        CustomDialog.create(
-                context,
-                str("morphe_debug_feature_flags_manager_add_title"),
-                null,
-                input,
-                null,
-                () -> addFlag(input.getText().toString()),
-                () -> {},
-                null,
-                null,
-                false
-        ).first.show();
-    }
-
-    private void addFlag(String flagText) {
-        try {
-            Long flag = Long.parseLong(flagText.trim());
-            if (flagStates.containsKey(flag)) {
-                Utils.showToastShort(str("morphe_debug_feature_flags_manager_add_exists"));
-                return;
-            }
-
-            flagStates.put(flag, FlagState.AUTO);
-            SharedYouTubeSettings.KNOWN_FEATURE_FLAGS.save(
-                    EnableDebuggingPatch.serializeFlags(flagStates.keySet()));
-
-            adapter.refresh();
-            updateChips();
-        } catch (NumberFormatException ex) {
-            Utils.showToastShort(str("morphe_debug_feature_flags_manager_add_invalid"));
-        }
-    }
 
     /**
      * Shows a dialog with the current flags as text, which can be shared with
@@ -807,10 +761,21 @@ public class FeatureFlagsManagerPreference extends Preference {
     }
 
     private String buildExportText() {
+        List<Long> on = new ArrayList<>();
+        List<Long> off = new ArrayList<>();
+        for (Long flag : flagStates.keySet()) {
+            if (Boolean.TRUE.equals(loggedFlagStates.get(flag))) {
+                on.add(flag);
+            } else {
+                off.add(flag);
+            }
+        }
+
         return "app=" + Utils.getAppVersionName()
                 + "\nblocked=" + EnableDebuggingPatch.serializeFlags(flagsWithState(FlagState.BLOCKED), ',')
                 + "\nforced=" + EnableDebuggingPatch.serializeFlags(flagsWithState(FlagState.FORCED), ',')
-                + "\nknown=" + EnableDebuggingPatch.serializeFlags(flagStates.keySet(), ',');
+                + "\non=" + EnableDebuggingPatch.serializeFlags(on, ',')
+                + "\noff=" + EnableDebuggingPatch.serializeFlags(off, ',');
     }
 
     /**
@@ -821,7 +786,8 @@ public class FeatureFlagsManagerPreference extends Preference {
         try {
             TreeSet<Long> blocked = new TreeSet<>();
             TreeSet<Long> forced = new TreeSet<>();
-            TreeSet<Long> known = new TreeSet<>();
+            TreeSet<Long> on = new TreeSet<>();
+            TreeSet<Long> off = new TreeSet<>();
 
             for (String line : text.split("\n")) {
                 String trimmed = line.trim();
@@ -834,28 +800,39 @@ public class FeatureFlagsManagerPreference extends Preference {
                 switch (key) {
                     case "blocked": blocked.addAll(EnableDebuggingPatch.parseFlags(value)); break;
                     case "forced": forced.addAll(EnableDebuggingPatch.parseFlags(value)); break;
-                    case "known":
-                    case "active": known.addAll(EnableDebuggingPatch.parseFlags(value)); break;
+                    case "on": on.addAll(EnableDebuggingPatch.parseFlags(value)); break;
+                    case "off": off.addAll(EnableDebuggingPatch.parseFlags(value)); break;
                     default: break; // Ignore anything else, such as the app version.
                 }
             }
 
-            known.addAll(blocked);
-            known.addAll(forced);
-            known.removeAll(FLAGS_TO_IGNORE);
-            if (known.isEmpty()) {
-                Utils.showToastShort(str("morphe_debug_feature_flags_manager_import_failed"));
+            on.removeAll(FLAGS_TO_IGNORE);
+            off.removeAll(FLAGS_TO_IGNORE);
+            blocked.removeAll(FLAGS_TO_IGNORE);
+            forced.removeAll(FLAGS_TO_IGNORE);
+
+            if (on.isEmpty() && off.isEmpty() && blocked.isEmpty() && forced.isEmpty()) {
+                Utils.showToastLong(str("morphe_debug_feature_flags_manager_import_failed"));
                 return;
             }
 
             flagStates.clear();
-            for (Long flag : known) {
-                flagStates.put(flag, blocked.contains(flag)
-                        ? FlagState.BLOCKED
-                        : forced.contains(flag)
-                        ? FlagState.FORCED
-                        : FlagState.AUTO);
+            loggedFlagStates.clear();
+
+            // 1. Add all known flags as AUTO and record their logged state.
+            for (Long flag : on) {
+                flagStates.put(flag, FlagState.AUTO);
+                loggedFlagStates.put(flag, Boolean.TRUE);
             }
+            for (Long flag : off) {
+                flagStates.put(flag, FlagState.AUTO);
+                loggedFlagStates.put(flag, Boolean.FALSE);
+            }
+
+            // 2. Apply user overrides (overwrites the AUTO state).
+            // forced takes priority over AUTO, blocked takes priority over both.
+            for (Long flag : forced) flagStates.put(flag, FlagState.FORCED);
+            for (Long flag : blocked) flagStates.put(flag, FlagState.BLOCKED);
 
             SharedYouTubeSettings.KNOWN_FEATURE_FLAGS.save(
                     EnableDebuggingPatch.serializeFlags(flagStates.keySet()));
@@ -865,10 +842,9 @@ public class FeatureFlagsManagerPreference extends Preference {
             updateChips();
             updateBottomBar();
 
-            Utils.showToastShort(str("morphe_debug_feature_flags_manager_import_success", known.size()));
+            Utils.showToastShort(str("morphe_debug_feature_flags_manager_import_success", flagStates.size()));
         } catch (Exception ex) {
             Logger.printException(() -> "Could not import feature flags", ex);
-            Utils.showToastShort(str("morphe_debug_feature_flags_manager_import_failed"));
         }
     }
 

@@ -59,7 +59,6 @@ internal fun enableDebuggingPatch(
                     "settings",
                     ResourceGroup("drawable",
                         // Feature flags manager buttons.
-                        "morphe_settings_add_flag.xml",
                         "morphe_settings_bisect.xml",
                         "morphe_settings_copy_all.xml",
                         "morphe_settings_deselect_all.xml",

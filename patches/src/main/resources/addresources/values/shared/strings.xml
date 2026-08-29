@@ -131,10 +131,6 @@ You will not be notified of any unexpected events."</string>
     <string name="morphe_debug_feature_flags_manager_toast_reset">Feature flags reset</string>
     <string name="morphe_debug_feature_flags_manager_toast_copied">Feature flags copied to clipboard</string>
     <string name="morphe_debug_feature_flags_manager_toast_no_flags">Restart the app to use this setting</string>
-    <string name="morphe_debug_feature_flags_manager_add_title">Add feature flag</string>
-    <string name="morphe_debug_feature_flags_manager_add_hint">Feature flag ID</string>
-    <string name="morphe_debug_feature_flags_manager_add_invalid">Not a valid feature flag ID</string>
-    <string name="morphe_debug_feature_flags_manager_add_exists">Feature flag is already in the list</string>
     <string name="morphe_debug_feature_flags_manager_import_export_title">Export and import</string>
     <string name="morphe_debug_feature_flags_manager_import_success">Imported %s feature flags</string>
     <string name="morphe_debug_feature_flags_manager_import_failed">No feature flags found</string>
