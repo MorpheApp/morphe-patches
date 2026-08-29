@@ -16,6 +16,7 @@ import java.net.HttpURLConnection;
 import java.nio.charset.StandardCharsets;
 
 import app.morphe.extension.music.patches.scrobbling.ScrobbleManager;
+import app.morphe.extension.music.patches.scrobbling.lastfm.LastFM;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -84,12 +85,19 @@ public class ListenBrainz {
         }
         ScrobbleManager.getInstance().runOnBackgroundThread(() -> {
             try {
+                String effectiveAlbum = album;
+                if ((effectiveAlbum == null || effectiveAlbum.isBlank()) && Settings.SCROBBLING_GUESS_ALBUM.get()) {
+                    try {
+                        String guessed = LastFM.fetchAlbum(artist, track);
+                        if (guessed != null && !guessed.isBlank()) effectiveAlbum = guessed;
+                    } catch (Exception ignored) {}
+                }
                 JSONObject req = new JSONObject();
                 req.put("listen_type", "single");
 
                 JSONObject payload = new JSONObject();
                 payload.put("listened_at", timestamp);
-                payload.put("track_metadata", createTrackMetadata(artist, track, songId, album, duration));
+                payload.put("track_metadata", createTrackMetadata(artist, track, songId, effectiveAlbum, duration));
 
                 JSONArray payloadArray = new JSONArray();
                 payloadArray.put(payload);
@@ -117,11 +125,18 @@ public class ListenBrainz {
         }
         ScrobbleManager.getInstance().runOnBackgroundThread(() -> {
             try {
+                String effectiveAlbum = album;
+                if ((effectiveAlbum == null || effectiveAlbum.isBlank()) && Settings.SCROBBLING_GUESS_ALBUM.get()) {
+                    try {
+                        String guessed = LastFM.fetchAlbum(artist, track);
+                        if (guessed != null && !guessed.isBlank()) effectiveAlbum = guessed;
+                    } catch (Exception ignored) {}
+                }
                 JSONObject req = new JSONObject();
                 req.put("listen_type", "playing_now");
 
                 JSONObject payload = new JSONObject();
-                payload.put("track_metadata", createTrackMetadata(artist, track, songId, album, duration));
+                payload.put("track_metadata", createTrackMetadata(artist, track, songId, effectiveAlbum, duration));
 
                 JSONArray payloadArray = new JSONArray();
                 payloadArray.put(payload);

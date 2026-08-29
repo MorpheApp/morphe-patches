@@ -35,6 +35,19 @@ public class LastFM {
     public static final String API_KEY = "986d00852eea80eda8b2930e0abf5c46";
     public static final String SECRET = "1d802c749ccec53103400582fcaebd01";
 
+    private static final Map<String, CacheEntry> albumCache = new HashMap<>();
+    private static final long CACHE_HIT_TTL = 24 * 60 * 60 * 1000L;
+    private static final long CACHE_MISS_TTL = 60 * 60 * 1000L;
+
+    private static class CacheEntry {
+        final String album;
+        final long expiry;
+        CacheEntry(String album, long expiry) {
+            this.album = album;
+            this.expiry = expiry;
+        }
+    }
+
     public static class Session {
         public String name;
         public String key;
@@ -148,6 +161,67 @@ public class LastFM {
         }
     }
 
+    public static String fetchAlbum(String artist, String track) {
+        if (!Settings.SCROBBLING_GUESS_ALBUM.get()) return null;
+        if (artist == null || artist.isBlank() || track == null || track.isBlank()) return null;
+        String key = artist.toLowerCase() + "\u0000" + track.toLowerCase();
+        synchronized (albumCache) {
+            CacheEntry cached = albumCache.get(key);
+            if (cached != null && System.currentTimeMillis() < cached.expiry) {
+                if (cached.album == null || cached.album.isEmpty()) return null;
+                return cached.album;
+            }
+        }
+        String fetched = null;
+        try {
+            fetched = fetchAlbumNetwork(artist, track);
+        } catch (Exception ignored) {
+            fetched = null;
+        }
+        synchronized (albumCache) {
+            if (albumCache.size() > 200) albumCache.clear();
+            long ttl = fetched != null ? CACHE_HIT_TTL : CACHE_MISS_TTL;
+            albumCache.put(key, new CacheEntry(fetched != null ? fetched : "", System.currentTimeMillis() + ttl));
+        }
+        return fetched;
+    }
+
+    private static String fetchAlbumNetwork(String artist, String track) throws Exception {
+        String url = BASE_URL + "?method=track.getInfo&api_key=" + URLEncoder.encode(API_KEY, "UTF-8")
+                + "&artist=" + URLEncoder.encode(artist, "UTF-8")
+                + "&track=" + URLEncoder.encode(track, "UTF-8")
+                + "&autocorrect=1&format=json";
+        HttpURLConnection conn = Requester.openConnection(url);
+        conn.setRequestMethod("GET");
+        conn.setRequestProperty("User-Agent", USER_AGENT);
+        conn.setConnectTimeout(5000);
+        conn.setReadTimeout(5000);
+        int code = conn.getResponseCode();
+        if (code < 200 || code >= 300) {
+            conn.disconnect();
+            return null;
+        }
+        String response;
+        try (InputStreamReader reader = new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8)) {
+            StringBuilder sb = new StringBuilder();
+            char[] buffer = new char[1024];
+            int read;
+            while ((read = reader.read(buffer)) != -1) sb.append(buffer, 0, read);
+            response = sb.toString();
+        } finally {
+            conn.disconnect();
+        }
+        JSONObject root = new JSONObject(response);
+        if (root.has("error")) return null;
+        if (!root.has("track")) return null;
+        JSONObject trackObj = root.getJSONObject("track");
+        JSONObject albumObj = trackObj.optJSONObject("album");
+        if (albumObj == null) return null;
+        String title = albumObj.optString("title", "");
+        if (title == null || title.isBlank()) return null;
+        return title.trim();
+    }
+
     public static Session getMobileSession(String username, String password) throws Exception {
         Map<String, String> params = new HashMap<>();
         params.put("method", "auth.getMobileSession");
@@ -172,13 +246,20 @@ public class LastFM {
         if (sessionKey == null || sessionKey.isBlank()) return;
         ScrobbleManager.getInstance().runOnBackgroundThread(() -> {
             try {
+                String effectiveAlbum = album;
+                if ((effectiveAlbum == null || effectiveAlbum.isBlank()) && Settings.SCROBBLING_GUESS_ALBUM.get()) {
+                    try {
+                        String guessed = fetchAlbum(artist, track);
+                        if (guessed != null && !guessed.isBlank()) effectiveAlbum = guessed;
+                    } catch (Exception ignored) {}
+                }
                 Map<String, String> params = new HashMap<>();
                 params.put("method", "track.updateNowPlaying");
                 params.put("api_key", API_KEY);
                 params.put("sk", sessionKey);
                 params.put("artist", artist);
                 params.put("track", track);
-                if (album != null && !album.isBlank()) params.put("album", album);
+                if (effectiveAlbum != null && !effectiveAlbum.isBlank()) params.put("album", effectiveAlbum);
                 if (duration != null && duration > 0) params.put("duration", String.valueOf(duration));
 
                 executePostRequest(params);
@@ -240,6 +321,13 @@ public class LastFM {
         if (sessionKey == null || sessionKey.isBlank()) return;
         ScrobbleManager.getInstance().runOnBackgroundThread(() -> {
             try {
+                String effectiveAlbum = album;
+                if ((effectiveAlbum == null || effectiveAlbum.isBlank()) && Settings.SCROBBLING_GUESS_ALBUM.get()) {
+                    try {
+                        String guessed = fetchAlbum(artist, track);
+                        if (guessed != null && !guessed.isBlank()) effectiveAlbum = guessed;
+                    } catch (Exception ignored) {}
+                }
                 Map<String, String> params = new HashMap<>();
                 params.put("method", "track.scrobble");
                 params.put("api_key", API_KEY);
@@ -247,7 +335,7 @@ public class LastFM {
                 params.put("artist[0]", artist);
                 params.put("track[0]", track);
                 params.put("timestamp[0]", String.valueOf(timestamp));
-                if (album != null && !album.isBlank()) params.put("album[0]", album);
+                if (effectiveAlbum != null && !effectiveAlbum.isBlank()) params.put("album[0]", effectiveAlbum);
                 if (duration != null && duration > 0) params.put("duration[0]", String.valueOf(duration));
 
                 String response = executePostRequest(params);

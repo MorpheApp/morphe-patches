@@ -327,6 +327,8 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <string name="morphe_music_scrobbling_custom_regex_summary">Enter a custom regular expression to remove additional text from song titles, artists, or albums. Example: (?i)\\s*\\((clean|explicit)\\)</string>
     <string name="morphe_music_scrobbling_parse_title_title">Parse artist and track from title</string>
     <string name="morphe_music_scrobbling_parse_title_summary">Extract artist and track name from the video title using \" - \" separator. Useful for reuploaded content where the channel name may be used as the artist.</string>
+    <string name="morphe_music_scrobbling_guess_album_title">Fill in missing album</string>
+    <string name="morphe_music_scrobbling_guess_album_summary">When the music does not include an album, look it up on Last.fm so your scrobble is complete</string>
 
     <!-- 'scrobbling' must be kept untranslated -->
     <string name="morphe_music_scrobbling_about_title">About scrobbling</string>
