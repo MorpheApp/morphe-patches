@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/1856
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URLEncoder;
@@ -137,40 +136,22 @@ public class LastFM {
             os.write(postDataBytes);
         }
 
-        int code = conn.getResponseCode();
+        final int code = conn.getResponseCode();
         Logger.printDebug(() -> "Last.fm: Response code: " + code + " for method: " + method);
 
         if (code >= 200 && code < 300) {
-            try (InputStreamReader reader = new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8)) {
-                StringBuilder response = new StringBuilder();
-                char[] buffer = new char[1024];
-                int read;
-                while ((read = reader.read(buffer)) != -1) {
-                    response.append(buffer, 0, read);
-                }
-                return response.toString();
-            }
-        } else {
-            try (InputStreamReader reader = new InputStreamReader(conn.getErrorStream() != null ? conn.getErrorStream() : conn.getInputStream(), StandardCharsets.UTF_8)) {
-                StringBuilder response = new StringBuilder();
-                char[] buffer = new char[1024];
-                int read;
-                while ((read = reader.read(buffer)) != -1) {
-                    response.append(buffer, 0, read);
-                }
-                String errResponse = response.toString();
-                Logger.printInfo(() -> "Last.fm: API error response: " + errResponse + " (HTTP Code: " + code + ")");
-                try {
-                    JSONObject errorObj = new JSONObject(errResponse);
-                    if (errorObj.has("error")) {
-                        throw new LastFMApiException(errorObj.optString("message", "API Error"), errorObj.getInt("error"));
-                    }
-                } catch (LastFMApiException e) {
-                    throw e;
-                } catch (Exception ignored) {}
-                throw new Exception("HTTP error " + code + ": " + errResponse);
+            return Requester.parseString(conn);
+        }
+
+        String errResponse = Requester.parseErrorString(conn);
+        Logger.printInfo(() -> "Last.fm: API error response: " + errResponse + " (HTTP Code: " + code + ")");
+        if (!errResponse.isEmpty()) {
+            JSONObject errorObj = new JSONObject(errResponse);
+            if (errorObj.has("error")) {
+                throw new LastFMApiException(errorObj.optString("message", "API Error"), errorObj.getInt("error"));
             }
         }
+        throw new Exception("HTTP error " + code + (errResponse.isEmpty() ? "" : ": " + errResponse));
     }
 
     @Nullable
@@ -206,21 +187,12 @@ public class LastFM {
         conn.setRequestProperty("User-Agent", USER_AGENT);
         conn.setConnectTimeout(5000);
         conn.setReadTimeout(5000);
-        int code = conn.getResponseCode();
+        final int code = conn.getResponseCode();
         if (code < 200 || code >= 300) {
             conn.disconnect();
             return null;
         }
-        String response;
-        try (InputStreamReader reader = new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8)) {
-            StringBuilder sb = new StringBuilder();
-            char[] buffer = new char[1024];
-            int read;
-            while ((read = reader.read(buffer)) != -1) sb.append(buffer, 0, read);
-            response = sb.toString();
-        } finally {
-            conn.disconnect();
-        }
+        String response = Requester.parseStringAndDisconnect(conn);
         JSONObject root = new JSONObject(response);
         if (root.has("error")) return null;
         if (!root.has("track")) return null;
@@ -256,13 +228,7 @@ public class LastFM {
         if (sessionKey == null || sessionKey.isBlank()) return;
         ScrobbleManager.getInstance().runOnBackgroundThread(() -> {
             try {
-                String effectiveAlbum = album;
-                if ((effectiveAlbum == null || effectiveAlbum.isBlank()) && Settings.SCROBBLING_GUESS_ALBUM.get()) {
-                    try {
-                        String guessed = fetchAlbum(artist, track);
-                        if (guessed != null && !guessed.isBlank()) effectiveAlbum = guessed;
-                    } catch (Exception ignored) {}
-                }
+                String effectiveAlbum = ScrobbleManager.getEffectiveAlbum(artist, track, album);
                 Map<String, String> params = new HashMap<>();
                 params.put("method", "track.updateNowPlaying");
                 params.put("api_key", API_KEY);
@@ -331,13 +297,7 @@ public class LastFM {
         if (sessionKey == null || sessionKey.isBlank()) return;
         ScrobbleManager.getInstance().runOnBackgroundThread(() -> {
             try {
-                String effectiveAlbum = album;
-                if ((effectiveAlbum == null || effectiveAlbum.isBlank()) && Settings.SCROBBLING_GUESS_ALBUM.get()) {
-                    try {
-                        String guessed = fetchAlbum(artist, track);
-                        if (guessed != null && !guessed.isBlank()) effectiveAlbum = guessed;
-                    } catch (Exception ignored) {}
-                }
+                String effectiveAlbum = ScrobbleManager.getEffectiveAlbum(artist, track, album);
                 Map<String, String> params = new HashMap<>();
                 params.put("method", "track.scrobble");
                 params.put("api_key", API_KEY);

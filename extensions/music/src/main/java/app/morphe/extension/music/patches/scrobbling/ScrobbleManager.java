@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/1856
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -12,6 +12,8 @@ import android.media.session.PlaybackState;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Pair;
+
+import androidx.annotation.Nullable;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -461,6 +463,13 @@ public class ScrobbleManager {
                     currentDurationSeconds, songStartedAtSeconds);
         }
         lfScrobbled = true;
+    }
+
+    @Nullable
+    public static String getEffectiveAlbum(String artist, String track, @Nullable String album) {
+        if (album != null && !album.isBlank()) return album;
+        if (!Settings.SCROBBLING_GUESS_ALBUM.get()) return null;
+        return LastFM.fetchAlbum(artist, track);
     }
 
     /**
