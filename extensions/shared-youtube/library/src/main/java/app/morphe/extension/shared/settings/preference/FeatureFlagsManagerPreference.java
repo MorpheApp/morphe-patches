@@ -211,8 +211,7 @@ public class FeatureFlagsManagerPreference extends Preference {
             return;
         }
 
-        TreeSet<Long> knownFlags = loadKnownFlags();
-        if (knownFlags.isEmpty()) {
+        if (!loadFlagStates()) {
             // It's impossible to reach the settings menu without reaching at least one flag.
             // So if there's no flags, then that means the user has just enabled debugging
             // but has not restarted the app yet.
@@ -220,19 +219,6 @@ public class FeatureFlagsManagerPreference extends Preference {
             return;
         }
 
-        Set<Long> blockedFlags = EnableDebuggingPatch.parseFlags(
-                SharedYouTubeSettings.DISABLED_FEATURE_FLAGS.get());
-        Set<Long> forcedFlags = EnableDebuggingPatch.parseFlags(
-                SharedYouTubeSettings.FORCED_FEATURE_FLAGS.get());
-
-        flagStates.clear();
-        for (Long flag : knownFlags) {
-            flagStates.put(flag, blockedFlags.contains(flag)
-                    ? FlagState.BLOCKED
-                    : forcedFlags.contains(flag)
-                    ? FlagState.FORCED
-                    : FlagState.AUTO);
-        }
         filter = FlagFilter.ACTIVE;
         chips.clear();
 
@@ -274,23 +260,43 @@ public class FeatureFlagsManagerPreference extends Preference {
     }
 
     /**
-     * Loads every flag the app has ever asked for and remembers it, since a flag is only
-     * logged while the app runs and a blocked flag is never logged again.
+     * Loads the state of every flag from the app log and the saved settings.
+     *
+     * @return True if at least one flag was detected by the app.
      */
-    private TreeSet<Long> loadKnownFlags() {
+    private boolean loadFlagStates() {
         Map<Long, Boolean> loggedFlags = EnableDebuggingPatch.getAllLoggedFlags();
         loggedFlagStates.clear();
         loggedFlagStates.putAll(loggedFlags);
 
-        TreeSet<Long> flags = new TreeSet<>(loggedFlags.keySet());
-        flags.addAll(EnableDebuggingPatch.parseFlags(SharedYouTubeSettings.KNOWN_FEATURE_FLAGS.get()));
-        flags.addAll(EnableDebuggingPatch.parseFlags(SharedYouTubeSettings.DISABLED_FEATURE_FLAGS.get()));
-        flags.addAll(EnableDebuggingPatch.parseFlags(SharedYouTubeSettings.FORCED_FEATURE_FLAGS.get()));
-        flags.removeAll(FLAGS_TO_IGNORE);
+        Set<Long> blockedFlags = EnableDebuggingPatch.parseFlags(
+                SharedYouTubeSettings.DISABLED_FEATURE_FLAGS.get());
+        Set<Long> forcedFlags = EnableDebuggingPatch.parseFlags(
+                SharedYouTubeSettings.FORCED_FEATURE_FLAGS.get());
 
-        SharedYouTubeSettings.KNOWN_FEATURE_FLAGS.save(EnableDebuggingPatch.serializeFlags(flags));
+        flagStates.clear();
+        // 1. Add logged flags.
+        for (Long flag : loggedFlags.keySet()) {
+            if (FLAGS_TO_IGNORE.contains(flag)) continue;
+            flagStates.put(flag, blockedFlags.contains(flag)
+                    ? FlagState.BLOCKED
+                    : forcedFlags.contains(flag)
+                    ? FlagState.FORCED
+                    : FlagState.AUTO);
+        }
 
-        return flags;
+        // 2. Add overrides that haven't been logged yet.
+        // This ensures they stay in the list so the user can see/remove them.
+        for (Long flag : blockedFlags) {
+            if (FLAGS_TO_IGNORE.contains(flag)) continue;
+            flagStates.putIfAbsent(flag, FlagState.BLOCKED);
+        }
+        for (Long flag : forcedFlags) {
+            if (FLAGS_TO_IGNORE.contains(flag)) continue;
+            flagStates.putIfAbsent(flag, FlagState.FORCED);
+        }
+
+        return !loggedFlags.isEmpty();
     }
 
     /**
@@ -834,8 +840,7 @@ public class FeatureFlagsManagerPreference extends Preference {
             for (Long flag : forced) flagStates.put(flag, FlagState.FORCED);
             for (Long flag : blocked) flagStates.put(flag, FlagState.BLOCKED);
 
-            SharedYouTubeSettings.KNOWN_FEATURE_FLAGS.save(
-                    EnableDebuggingPatch.serializeFlags(flagStates.keySet()));
+            persistFlagStates();
 
             listView.clearChoices();
             adapter.refresh();
