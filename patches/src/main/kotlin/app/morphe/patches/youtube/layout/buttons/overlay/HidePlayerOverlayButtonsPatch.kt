@@ -27,6 +27,7 @@ import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.LayoutConstructorFingerprint
+import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
@@ -108,7 +109,7 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
                 val visibilityRegister = getInstruction<FiveRegisterInstruction>(index).registerD
                 val visibilityMethodType = it.instructionMatches.first().getMethodCalled().parameterTypes.last()
 
-                addInstructions(
+                addInstructionsAtControlFlowLabel(
                     index,
                     """
                         invoke-static { v$visibilityRegister }, $EXTENSION_CLASS->hideCastButton($visibilityMethodType)$visibilityMethodType

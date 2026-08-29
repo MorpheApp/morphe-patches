@@ -97,11 +97,11 @@ public class PlayerOverlayButton {
         }
 
         /**
-         * Adjusts the container's end margin to reserve space for {@code totalButtons}
-         * overlay buttons of the same width as {@code sourceButton}.
+         * Adjusts the container's end margin to reserve space for {@code extraButtonSlots}
+         * overlay buttons using the globally calculated {@code widthPercentage}.
          * Skips the layout pass when the computed value hasn't changed.
          */
-        void updateMargin(int buttonWidth, int totalButtons) {
+        void updateMargin(int buttonWidth, int extraButtonSlots, float widthPercentage) {
             View container = containerRef.get();
             if (container == null) return;
 
@@ -113,9 +113,7 @@ public class PlayerOverlayButton {
                 }
             }
 
-            final int reservedWidth = (int) (totalButtons
-                    * getButtonWidthPercentage(totalButtons, container)
-                    * buttonWidth);
+            final int reservedWidth = (int) (extraButtonSlots * widthPercentage * buttonWidth);
 
             if (lastMarginEnd == reservedWidth) return;
             lastMarginEnd = reservedWidth;
@@ -186,10 +184,15 @@ public class PlayerOverlayButton {
                 );
             }
 
+            final int effectiveCustomButtons = Math.max(0, buttonControllers.size()
+                    - (HIDE_FULLSCREEN_BUTTON_ENABLED ? 1 : 0));
+            final float spacingPercentage = getButtonWidthPercentage(effectiveCustomButtons, source);
+
             // Convert from 0 indexing to 1 indexing.
             final int buttonNumber = buttonControllers.indexOf(this) + (HIDE_FULLSCREEN_BUTTON_ENABLED ? 0 : 1);
             final float xOffset = (int) (source.getX()
-                    - (buttonNumber * (getButtonWidthPercentage(buttonControllers.size(), source) * source.getWidth())));
+                    - (buttonNumber * (spacingPercentage * source.getWidth())));
+
             if (button.getX() != xOffset) {
                 button.setX(xOffset);
             }
@@ -229,10 +232,7 @@ public class PlayerOverlayButton {
                 button.setVisibility(sourceButtonVisibility);
             }
 
-            final int totalLowerButtons = buttonControllers.size() - (HIDE_FULLSCREEN_BUTTON_ENABLED
-                    ? 1
-                    : 0);
-            chapterTitleContainer.updateMargin(source.getWidth(), totalLowerButtons);
+            chapterTitleContainer.updateMargin(source.getWidth(), effectiveCustomButtons, spacingPercentage);
         }
     }
 
@@ -250,11 +250,11 @@ public class PlayerOverlayButton {
     private static final List<PlayerOverlayButtonController> buttonControllers = new ArrayList<>();
 
     /**
-     * Returns the button width percentage based on the total number of buttons,
+     * Returns the button width percentage based on the number of extra button slots needed,
      * so buttons don't overlap the video time bar.
      */
-    private static float getButtonWidthPercentage(int totalButtons, View view) {
-        if (totalButtons <= 1) return 1.0f;
+    private static float getButtonWidthPercentage(int extraButtons, View view) {
+        if (extraButtons <= 1) return 1.0f;
 
         // Landscape has far more horizontal room than portrait, so buttons don't need to
         // pack as tightly to stay clear of the time bar even as more of them are added.
@@ -263,7 +263,7 @@ public class PlayerOverlayButton {
         float minPercentage = landscape ? 0.80f : 0.60f;
 
         // Keep spacing progression to avoid overlapping the time bar.
-        return Math.max(minPercentage, 1.10f - totalButtons * 0.10f);
+        return Math.max(minPercentage, 1.10f - extraButtons * 0.10f);
     }
 
     /**
@@ -276,7 +276,11 @@ public class PlayerOverlayButton {
         if (!(containerView.getParent() instanceof ViewGroup containerViewGroup)) return;
 
         videoHeadingContainer.updateContainerRef(containerViewGroup);
-        videoHeadingContainer.updateMargin(BUTTON_WIDTH, LegacyPlayerControlButton.getTotalUpperButtonCount());
+
+        int totalUpperButtons = LegacyPlayerControlButton.getTotalUpperButtonCount();
+        float spacingPercentage = getButtonWidthPercentage(totalUpperButtons, containerViewGroup);
+
+        videoHeadingContainer.updateMargin(BUTTON_WIDTH, totalUpperButtons, spacingPercentage);
     }
 
     @Nullable
@@ -403,8 +407,7 @@ public class PlayerOverlayButton {
             chapterTitleContainer.updateContainerRef(controlsViewGroup);
             controlsViewGroup.getViewTreeObserver().addOnPreDrawListener(() -> {
                 try {
-                    final int activeCustomButtons = buttonControllers.size();
-                    final int totalLowerButtons = Math.max(0, activeCustomButtons
+                    final int effectiveCustomButtons = Math.max(0, buttonControllers.size()
                             - (Settings.HIDE_FULLSCREEN_BUTTON.get() ? 1 : 0));
 
                     int buttonWidth = BUTTON_WIDTH;
@@ -413,7 +416,8 @@ public class PlayerOverlayButton {
                         buttonWidth = ytSource.getWidth();
                     }
 
-                    chapterTitleContainer.updateMargin(buttonWidth, totalLowerButtons);
+                    float spacingPercentage = getButtonWidthPercentage(effectiveCustomButtons, controlsViewGroup);
+                    chapterTitleContainer.updateMargin(buttonWidth, effectiveCustomButtons, spacingPercentage);
                 } catch (Exception ex) {
                     Logger.printDebug(() -> "Could not update chapter title margin", ex);
                 }

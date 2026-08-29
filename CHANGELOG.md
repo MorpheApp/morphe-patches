@@ -1,3 +1,15 @@
+## [1.41.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.41.0-dev.4...v1.41.0-dev.5) (2026-08-29)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Hide ads:** Prevent unintended navigation button swap ([#2659](https://github.com/MorpheApp/morphe-patches/issues/2659)) ([389d2d3](https://github.com/MorpheApp/morphe-patches/commit/389d2d37ddd14dd102ce98bafa85feedb1df8234))
+* **YouTube - Hide player overlay buttons:** Cast button is not always hidden ([0c9cabf](https://github.com/MorpheApp/morphe-patches/commit/0c9cabfd9c30cc4c80453fc927f6cd0566f1a6b3))
+* **YouTube - PlayerOverlayButton:** Correct spacing when fullscreen button is hidden ([#2663](https://github.com/MorpheApp/morphe-patches/issues/2663)) ([7ddb7c2](https://github.com/MorpheApp/morphe-patches/commit/7ddb7c2870a0a28f1d1df6c2c621d873782f1775))
+
+### ✨ New Features
+
+* **YouTube - Hide layout components:** Add "Hide 'Top fans' button" setting ([#2660](https://github.com/MorpheApp/morphe-patches/issues/2660)) ([1e719f6](https://github.com/MorpheApp/morphe-patches/commit/1e719f614c75163bda9b9bac95bbadfb6268ff1c))
+
 ## [1.41.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.41.0-dev.3...v1.41.0-dev.4) (2026-08-29)
 
 ### 🐛 Bug Fixes

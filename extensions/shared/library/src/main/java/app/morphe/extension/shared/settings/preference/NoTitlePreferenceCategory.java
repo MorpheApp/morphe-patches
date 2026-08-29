@@ -56,14 +56,5 @@ public class NoTitlePreferenceCategory extends PreferenceCategory {
 
         return super.getTitleRes();
     }
-
-    @Override
-    public String getKey() {
-        String key = super.getKey();
-        if (key == null && getPreferenceCount() > 0) {
-            return getPreference(0).getKey();
-        }
-        return key;
-    }
 }
 

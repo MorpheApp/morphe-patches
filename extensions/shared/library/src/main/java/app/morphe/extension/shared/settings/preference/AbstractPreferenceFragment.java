@@ -1144,9 +1144,16 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
                     break;
                 case BY_KEY:
                     String key = preference.getKey();
-                    if (key == null) throw new IllegalStateException(
-                            "Group is sort by key but preference has null key: " + preference
-                    );
+                    if (key == null) {
+                        if (preference instanceof NoTitlePreferenceCategory noTitlePref) {
+                            // Use first preference and not the category.
+                            key = noTitlePref.getPreference(0).getKey();
+                        } else {
+                            throw new IllegalStateException(
+                                    "Group is sort by key but preference has null key: " + preference
+                            );
+                        }
+                    }
                     sortValue = key;
                     break;
                 case UNSORTED:
