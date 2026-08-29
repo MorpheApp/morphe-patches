@@ -343,4 +343,12 @@ public final class AdsFilter extends Filter {
     public static String hideVideoAds(String osName) {
         return SpoofOSNamePatch.getOSName(Settings.HIDE_VIDEO_ADS.get());
     }
+
+    /**
+     * Injection point.
+     */
+    public static String overrideGuideOSName(String osName) {
+        boolean swapButtons = Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON.get();
+        return SpoofOSNamePatch.getOSName(swapButtons);
+    }
 }
