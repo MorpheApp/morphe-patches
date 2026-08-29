@@ -193,8 +193,8 @@ public final class FeatureFlagsBisect {
                 + FIELD_SEPARATOR + EnableDebuggingPatch.serializeFlags(testing, FLAG_SEPARATOR)
                 + FIELD_SEPARATOR + EnableDebuggingPatch.serializeFlags(userBlocked, FLAG_SEPARATOR));
 
-        Logger.printDebug(() -> "Binary search step " + step + ", " + candidates.size()
-                + " candidates, blocking " + testing.size());
+        Logger.printDebug(() -> "Binary search step: " + step + " candidates: " + candidates.size()
+                + " blocking: " + testing.size());
     }
 
     /**

@@ -162,7 +162,6 @@ public final class EnableDebuggingPatch {
             return Collections.unmodifiableMap(featureFlags);
         }
 
-        // In practice this is never reached because at least one flag is always encountered.
         return Collections.emptyMap();
     }
 

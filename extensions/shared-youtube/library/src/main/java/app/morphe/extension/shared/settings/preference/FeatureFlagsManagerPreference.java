@@ -792,8 +792,6 @@ public class FeatureFlagsManagerPreference extends Preference {
         try {
             TreeSet<Long> blocked = new TreeSet<>();
             TreeSet<Long> forced = new TreeSet<>();
-            TreeSet<Long> on = new TreeSet<>();
-            TreeSet<Long> off = new TreeSet<>();
 
             for (String line : text.split("\n")) {
                 String trimmed = line.trim();
@@ -806,48 +804,29 @@ public class FeatureFlagsManagerPreference extends Preference {
                 switch (key) {
                     case "blocked": blocked.addAll(EnableDebuggingPatch.parseFlags(value)); break;
                     case "forced": forced.addAll(EnableDebuggingPatch.parseFlags(value)); break;
-                    case "on": on.addAll(EnableDebuggingPatch.parseFlags(value)); break;
-                    case "off": off.addAll(EnableDebuggingPatch.parseFlags(value)); break;
-                    default: break; // Ignore anything else, such as the app version.
+                    default: break; // Ignore diagnostic flags (on/off) and metadata (app version).
                 }
             }
 
-            on.removeAll(FLAGS_TO_IGNORE);
-            off.removeAll(FLAGS_TO_IGNORE);
             blocked.removeAll(FLAGS_TO_IGNORE);
             forced.removeAll(FLAGS_TO_IGNORE);
 
-            if (on.isEmpty() && off.isEmpty() && blocked.isEmpty() && forced.isEmpty()) {
+            if (blocked.isEmpty() && forced.isEmpty()) {
                 Utils.showToastLong(str("morphe_debug_feature_flags_manager_import_failed"));
                 return;
             }
 
-            flagStates.clear();
-            loggedFlagStates.clear();
+            SharedYouTubeSettings.DISABLED_FEATURE_FLAGS.save(EnableDebuggingPatch.serializeFlags(blocked));
+            SharedYouTubeSettings.FORCED_FEATURE_FLAGS.save(EnableDebuggingPatch.serializeFlags(forced));
 
-            // 1. Add all known flags as AUTO and record their logged state.
-            for (Long flag : on) {
-                flagStates.put(flag, FlagState.AUTO);
-                loggedFlagStates.put(flag, Boolean.TRUE);
-            }
-            for (Long flag : off) {
-                flagStates.put(flag, FlagState.AUTO);
-                loggedFlagStates.put(flag, Boolean.FALSE);
-            }
-
-            // 2. Apply user overrides (overwrites the AUTO state).
-            // forced takes priority over AUTO, blocked takes priority over both.
-            for (Long flag : forced) flagStates.put(flag, FlagState.FORCED);
-            for (Long flag : blocked) flagStates.put(flag, FlagState.BLOCKED);
-
-            persistFlagStates();
+            loadFlagStates();
 
             listView.clearChoices();
             adapter.refresh();
             updateChips();
             updateBottomBar();
 
-            Utils.showToastShort(str("morphe_debug_feature_flags_manager_import_success", flagStates.size()));
+            Utils.showToastShort(str("morphe_debug_feature_flags_manager_import_success", blocked.size() + forced.size()));
         } catch (Exception ex) {
             Logger.printException(() -> "Could not import feature flags", ex);
         }
