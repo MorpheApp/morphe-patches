@@ -7,6 +7,8 @@
 
 package app.morphe.extension.music.patches.scrobbling.lastfm;
 
+import androidx.annotation.Nullable;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -30,21 +32,31 @@ import app.morphe.extension.shared.requests.Requester;
 
 public class LastFM {
     private static final String BASE_URL = "https://ws.audioscrobbler.com/2.0/";
-    private static final String USER_AGENT = "Morphe/" + Utils.getPatchesReleaseVersion() + " (YTMusic/" + Utils.getAppVersionName() + ")";
+    private static final String USER_AGENT = "Morphe/" + Utils.getPatchesReleaseVersion()
+            + " (YTMusic/" + Utils.getAppVersionName() + ")";
 
     public static final String API_KEY = "986d00852eea80eda8b2930e0abf5c46";
     public static final String SECRET = "1d802c749ccec53103400582fcaebd01";
 
-    private static final Map<String, CacheEntry> albumCache = new HashMap<>();
-    private static final long CACHE_HIT_TTL = 24 * 60 * 60 * 1000L;
-    private static final long CACHE_MISS_TTL = 60 * 60 * 1000L;
+    private static final Map<String, CacheEntry> albumCache = Collections.synchronizedMap(
+            Utils.createSizeRestrictedMap(20));
 
     private static class CacheEntry {
-        final String album;
-        final long expiry;
-        CacheEntry(String album, long expiry) {
-            this.album = album;
-            this.expiry = expiry;
+        private static final long CACHE_HIT_TTL = 24 * 60 * 60 * 1000L;
+        private static final long CACHE_MISS_TTL = 60 * 60 * 1000L;
+
+        @Nullable
+        public final String album;
+        private final long expiry;
+
+        CacheEntry(@Nullable String album) {
+            final boolean nullAlbum = album == null || album.isBlank();
+            this.album = nullAlbum ? null : album;
+            this.expiry = System.currentTimeMillis() + (nullAlbum ? CACHE_MISS_TTL : CACHE_HIT_TTL);
+        }
+
+        boolean isValid() {
+            return System.currentTimeMillis() < expiry;
         }
     }
 
@@ -161,31 +173,29 @@ public class LastFM {
         }
     }
 
+    @Nullable
     public static String fetchAlbum(String artist, String track) {
         if (!Settings.SCROBBLING_GUESS_ALBUM.get()) return null;
         if (artist == null || artist.isBlank() || track == null || track.isBlank()) return null;
         String key = artist.toLowerCase() + "\u0000" + track.toLowerCase();
-        synchronized (albumCache) {
-            CacheEntry cached = albumCache.get(key);
-            if (cached != null && System.currentTimeMillis() < cached.expiry) {
-                if (cached.album == null || cached.album.isEmpty()) return null;
-                return cached.album;
-            }
+
+        CacheEntry cached = albumCache.get(key);
+        if (cached != null && cached.isValid()) {
+            return cached.album;
         }
+
         String fetched = null;
         try {
             fetched = fetchAlbumNetwork(artist, track);
-        } catch (Exception ignored) {
-            fetched = null;
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Last.fm: Could not fetch album", ex);
         }
-        synchronized (albumCache) {
-            if (albumCache.size() > 200) albumCache.clear();
-            long ttl = fetched != null ? CACHE_HIT_TTL : CACHE_MISS_TTL;
-            albumCache.put(key, new CacheEntry(fetched != null ? fetched : "", System.currentTimeMillis() + ttl));
-        }
+
+        albumCache.put(key, new CacheEntry(fetched));
         return fetched;
     }
 
+    @Nullable
     private static String fetchAlbumNetwork(String artist, String track) throws Exception {
         String url = BASE_URL + "?method=track.getInfo&api_key=" + URLEncoder.encode(API_KEY, "UTF-8")
                 + "&artist=" + URLEncoder.encode(artist, "UTF-8")
