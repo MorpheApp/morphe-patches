@@ -7,6 +7,8 @@
 
 package app.morphe.extension.shared.settings.preference;
 
+import static app.morphe.extension.shared.StringRef.str;
+
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
@@ -15,6 +17,7 @@ import java.util.List;
 import java.util.TreeSet;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.EnableDebuggingPatch;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
@@ -25,7 +28,7 @@ import app.morphe.extension.shared.settings.SharedYouTubeSettings;
  * The candidates are frozen when the search starts, because a blocked flag is never
  * logged again and the set of logged flags would otherwise shrink on every restart.
  */
-final class FeatureFlagsBisect {
+public final class FeatureFlagsBisect {
 
     enum Result {
         /** More steps are needed. */
@@ -57,6 +60,13 @@ final class FeatureFlagsBisect {
     private int step;
 
     private long foundFlag;
+
+    public static void handleAppStartup() {
+        // Remind the user they are searching for flags
+        if (isActive()) {
+            Utils.showToastShort(str("morphe_debug_feature_flags_manager_bisect_in_progress"));
+        }
+    }
 
     private FeatureFlagsBisect(List<Long> candidates, List<Long> userBlocked, int step) {
         this.candidates = candidates;

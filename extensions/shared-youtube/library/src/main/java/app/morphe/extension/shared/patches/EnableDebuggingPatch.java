@@ -27,6 +27,9 @@ import java.util.concurrent.ConcurrentMap;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.shared.settings.preference.FeatureFlagsBisect;
+
+import static app.morphe.extension.shared.StringRef.str;
 
 @SuppressWarnings("unused")
 public final class EnableDebuggingPatch {
@@ -44,6 +47,10 @@ public final class EnableDebuggingPatch {
     private static final ConcurrentMap<Long, Boolean> featureFlags = LOG_FEATURE_FLAGS
             ? new ConcurrentHashMap<>(3000, 0.5f, 1)
             : null;
+
+    static {
+        FeatureFlagsBisect.handleAppStartup();
+    }
 
     private static Map<Long, Boolean> loadOverriddenFlags() {
         if (!LOG_FEATURE_FLAGS) return Collections.emptyMap();

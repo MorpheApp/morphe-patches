@@ -150,6 +150,7 @@ Reproduce the behavior once before starting, otherwise flags the app has not ask
 %2$s flags left, %3$s of them blocked for this step.
 
 Restart the app, check if the behavior is present, then answer below"</string>
+    <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Feature flag search in progress</string>
     <string name="morphe_debug_feature_flags_manager_bisect_present">Behavior is present</string>
     <string name="morphe_debug_feature_flags_manager_bisect_absent">Behavior is not present</string>
     <string name="morphe_debug_feature_flags_manager_bisect_cancel">Cancel binary search</string>
