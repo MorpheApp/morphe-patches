@@ -10,9 +10,13 @@
 
 package app.morphe.extension.shared.patches;
 
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -39,19 +43,25 @@ public final class EnableDebuggingPatch {
             ? new ConcurrentHashMap<>(800, 0.5f, 1)
             : null;
 
-    private static final Set<Long> DISABLED_FEATURE_FLAGS = parseFlags(SharedYouTubeSettings.DISABLED_FEATURE_FLAGS.get());
+    private static final Map<Long, Boolean> OVERRIDDEN_FEATURE_FLAGS = loadOverriddenFlags();
 
-    private static final Set<Long> FORCED_FEATURE_FLAGS = parseFlags(SharedYouTubeSettings.FORCED_FEATURE_FLAGS.get());
+    private static Map<Long, Boolean> loadOverriddenFlags() {
+        if (!LOG_FEATURE_FLAGS) return Collections.emptyMap();
 
-    // Log all overridden flags on app startup.
-    static {
-        if (LOG_FEATURE_FLAGS) {
-            logFlags("Disabled feature flags:", DISABLED_FEATURE_FLAGS);
-            logFlags("Forced feature flags:", FORCED_FEATURE_FLAGS);
-        }
+        List<Long> disabled = parseFlagList(SharedYouTubeSettings.DISABLED_FEATURE_FLAGS.get());
+        List<Long> forced = parseFlagList(SharedYouTubeSettings.FORCED_FEATURE_FLAGS.get());
+
+        logFlags("Disabled feature flags:", disabled);
+        logFlags("Forced feature flags:", forced);
+
+        Map<Long, Boolean> overrides = new HashMap<>(2 * disabled.size() + forced.size());
+        for (Long flag : disabled) overrides.put(flag, FALSE);
+        for (Long flag : forced) overrides.put(flag, TRUE);
+
+        return Collections.unmodifiableMap(overrides);
     }
 
-    private static void logFlags(String header, Set<Long> flags) {
+    private static void logFlags(String header, Collection<Long> flags) {
         if (flags.isEmpty()) return;
 
         StringBuilder sb = new StringBuilder(header);
@@ -68,13 +78,9 @@ public final class EnableDebuggingPatch {
     public static boolean isBooleanFeatureFlagEnabled(boolean value, long flag) {
         if (LOG_FEATURE_FLAGS) {
             Long flagObj = flag;
-            if (DISABLED_FEATURE_FLAGS.contains(flagObj)) {
-                return false;
-            }
-            // A flag the app turns off is never logged, so forcing one on is the only
-            // way to test what a flag does when the app did not enable it.
-            if (FORCED_FEATURE_FLAGS.contains(flagObj)) {
-                return true;
+            Boolean override = OVERRIDDEN_FEATURE_FLAGS.get(flagObj);
+            if (override != null) {
+                return override;
             }
             // Always add flag but only log if flag is enabled.
             if (featureFlags.putIfAbsent(flagObj, value) == null && value) {
@@ -90,10 +96,11 @@ public final class EnableDebuggingPatch {
      */
     public static double isDoubleFeatureFlagEnabled(double value, long flag, double defaultValue) {
         if (LOG_FEATURE_FLAGS && defaultValue != value) {
-            if (DISABLED_FEATURE_FLAGS.contains(flag)) {
+            Long flagObj = flag;
+            if (FALSE.equals(OVERRIDDEN_FEATURE_FLAGS.get(flagObj))) {
                 return defaultValue;
             }
-            if (featureFlags.putIfAbsent(flag, true) == null) {
+            if (featureFlags.putIfAbsent(flagObj, TRUE) == null) {
                 // Align the log outputs to make post-processing easier.
                 Logger.printDebug(() -> " double feature is enabled: " + flag
                         + " value: " + value + (defaultValue == 0 ? "" : " default: " + defaultValue));
@@ -108,10 +115,11 @@ public final class EnableDebuggingPatch {
      */
     public static long isLongFeatureFlagEnabled(long value, long flag, long defaultValue) {
         if (LOG_FEATURE_FLAGS && defaultValue != value) {
-            if (DISABLED_FEATURE_FLAGS.contains(flag)) {
+            Long flagObj = flag;
+            if (FALSE.equals(OVERRIDDEN_FEATURE_FLAGS.get(flagObj))) {
                 return defaultValue;
             }
-            if (featureFlags.putIfAbsent(flag, true) == null) {
+            if (featureFlags.putIfAbsent(flagObj, TRUE) == null) {
                 Logger.printDebug(() -> "   long feature is enabled: " + flag
                         + " value: " + value + (defaultValue == 0 ? "" : " default: " + defaultValue));
             }
@@ -125,10 +133,11 @@ public final class EnableDebuggingPatch {
      */
     public static String isStringFeatureFlagEnabled(String value, long flag, String defaultValue) {
         if (LOG_FEATURE_FLAGS && !defaultValue.equals(value)) {
-            if (DISABLED_FEATURE_FLAGS.contains(flag)) {
+            Long flagObj = flag;
+            if (FALSE.equals(OVERRIDDEN_FEATURE_FLAGS.get(flagObj))) {
                 return defaultValue;
             }
-            if (featureFlags.putIfAbsent(flag, true) == null) {
+            if (featureFlags.putIfAbsent(flagObj, TRUE) == null) {
                 Logger.printDebug(() -> " string feature is enabled: " + flag
                         + " value: " + value + (defaultValue.isEmpty() ? "" : " default: " + defaultValue));
             }
