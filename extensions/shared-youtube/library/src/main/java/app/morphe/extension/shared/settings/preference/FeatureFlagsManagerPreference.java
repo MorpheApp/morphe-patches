@@ -855,6 +855,24 @@ public class FeatureFlagsManagerPreference extends Preference {
         List<Long> candidates = new ArrayList<>(flagStates.keySet());
         // A forced flag is set by the user and cannot be the cause of an unexpected behavior.
         candidates.removeAll(flagsWithState(FlagState.FORCED));
+        // A blocked flag is already off and cannot be the cause of a behavior that is present.
+        candidates.removeAll(flagsWithState(FlagState.BLOCKED));
+
+        if (candidates.isEmpty()) {
+            CustomDialog.create(
+                    context,
+                    str("morphe_debug_feature_flags_manager_bisect_title"),
+                    str("morphe_debug_feature_flags_manager_bisect_no_candidates"),
+                    null,
+                    null,
+                    null,
+                    () -> {},
+                    null,
+                    null,
+                    false
+            ).first.show();
+            return;
+        }
 
         CustomDialog.create(
                 context,

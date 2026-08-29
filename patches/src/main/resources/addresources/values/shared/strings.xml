@@ -145,6 +145,9 @@ Half of the %s flags are blocked, and after each restart you tell if the behavio
 
 Reproduce the behavior once before starting, otherwise flags the app has not asked for yet are missing from the search"</string>
     <string name="morphe_debug_feature_flags_manager_bisect_start_button">Start</string>
+    <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"No feature flags to search.
+
+Only flags that the app has hit and are not currently forced on can be used in a binary search"</string>
     <string name="morphe_debug_feature_flags_manager_bisect_status">"Step %1$s
 
 %2$s flags left, %3$s of them blocked for this step.
@@ -158,9 +161,9 @@ Restart the app, check if the behavior is present, then answer below"</string>
     <string name="morphe_debug_feature_flags_manager_bisect_found">"Feature flag %s causes the behavior.
 
 It is now blocked"</string>
-    <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"No single feature flag causes the behavior.
+    <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Could not find a feature flag.
 
-It is either not controlled by a client side flag, or more than one flag is involved"</string>
+The app behavior does not appear to be controlled by a feature flag"</string>
 
     <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
     <!-- misc.gms.gmsCoreSupportResourcePatch -->
