@@ -157,6 +157,11 @@ public class CommentsFilter extends Filter {
                 "composer_timestamp_button.e"
         );
 
+        var topFansButton = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_TOP_FANS_BUTTON,
+                "live_viewer_leaderboard_chat_entry_point.e"
+        );
+
         addPathCallbacks(
                 channelGuidelines,
                 chatSummary,
@@ -173,7 +178,8 @@ public class CommentsFilter extends Filter {
                 previewComment,
                 previewCommentDotsSelector,
                 thanksButton,
-                timestampButton
+                timestampButton,
+                topFansButton
         );
     }
 
