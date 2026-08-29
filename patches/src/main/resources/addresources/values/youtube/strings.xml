@@ -1266,7 +1266,7 @@ Tap here to open DeArrow.ajay.app"</string>
     <!-- video.codecs.disableVideoCodecsPatch -->
     <string name="morphe_disable_hdr_video_title">Disable HDR video</string>
     <string name="morphe_force_hdr_video_title">Force HDR video</string>
-    <string name="morphe_force_hdr_video_summary">Makes YouTube treat this display as HDR-capable, including when the OS hides HLG</string>
+    <string name="morphe_force_hdr_video_summary">Forces app to recognize this device as HDR‑capable</string>
     <string name="morphe_force_hdr_video_user_dialog_message">"Use this if HDR decoding works but YouTube does not offer HDR, such as some HyperOS devices that hide HLG.
 
 Limitations:
