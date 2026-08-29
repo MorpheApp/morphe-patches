@@ -166,6 +166,8 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <string name="morphe_music_hide_action_bar_title">Hide action bar</string>
     <string name="morphe_music_hide_like_dislike_button_title">Hide Like and Dislike button</string>
     <string name="morphe_music_hide_comments_button_title">Hide Comments button</string>
+    <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
+    <string name="morphe_music_hide_live_chat_replay_button_title">Hide \'Live chat replay\' button</string>
     <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
     <string name="morphe_music_hide_lyrics_button_title">Hide Lyrics button</string>
     <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -175,7 +177,7 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
     <string name="morphe_music_hide_download_button_title">Hide Download button</string>
     <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
-    <string name="morphe_music_hide_radio_button_title">Hide Start radio button</string>
+    <string name="morphe_music_hide_radio_button_title">Hide \'Start radio\' button</string>
 
     <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
     <string name="morphe_music_hide_flyout_menu_components_screen_title">Flyout menu</string>
