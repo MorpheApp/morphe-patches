@@ -83,13 +83,7 @@ public final class ChannelWhitelistDialog {
                             : str("morphe_channel_whitelist_add"),
                     !isWhitelisted,
                     () -> {
-                        if (isWhitelisted) {
-                            ChannelWhitelist.removeChannel(type, currentChannelId);
-                            Utils.showToastShort(str("morphe_channel_whitelist_channel_removed"));
-                        } else {
-                            ChannelWhitelist.addChannel(type, currentChannelId, currentChannelName);
-                            Utils.showToastShort(str("morphe_channel_whitelist_channel_added"));
-                        }
+                        ChannelWhitelist.toggleChannel(type, currentChannelId, currentChannelName);
                         buildContent(context, type, container);
                     }
             );

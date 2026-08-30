@@ -347,13 +347,7 @@ public final class FlyoutUtils {
                 icon,
                 type.getFlyoutTitle(isWhitelisted),
                 v -> {
-                    if (isWhitelisted) {
-                        ChannelWhitelist.removeChannel(type, channelId);
-                        Utils.showToastShort(str("morphe_channel_whitelist_channel_removed"));
-                    } else {
-                        ChannelWhitelist.addChannel(type, channelId, channelName);
-                        Utils.showToastShort(str("morphe_channel_whitelist_channel_added"));
-                    }
+                    ChannelWhitelist.toggleChannel(type, channelId, channelName);
 
                     dismissFlyout();
                 },

@@ -7,6 +7,8 @@
 
 package app.morphe.extension.youtube.whitelist;
 
+import static app.morphe.extension.shared.StringRef.str;
+
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
@@ -18,6 +20,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.VideoInformation;
 
 /**
@@ -56,6 +59,19 @@ public final class ChannelWhitelist {
 
     public static boolean isEmpty(WhitelistType type) {
         return getWhitelistedChannels(type).isEmpty();
+    }
+
+    /**
+     * Adds the channel if it is not whitelisted yet, removes it if it is, and reports which happened.
+     */
+    public static void toggleChannel(WhitelistType type, String channelId, @Nullable String channelName) {
+        if (isChannelWhitelisted(type, channelId)) {
+            removeChannel(type, channelId);
+            Utils.showToastShort(str("morphe_channel_whitelist_channel_removed"));
+        } else {
+            addChannel(type, channelId, channelName);
+            Utils.showToastShort(str("morphe_channel_whitelist_channel_added"));
+        }
     }
 
     public static void addChannel(WhitelistType type, String channelId, @Nullable String channelName) {
