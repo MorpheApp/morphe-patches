@@ -72,8 +72,8 @@
     <string-array name="morphe_force_app_refresh_rate_type_entry_values">
         <item>ALWAYS</item>
         <item>PORTRAIT</item>
-        <item>LANDSCAPE</item>
-        <item>PORTRAIT_LANDSCAPE</item>
+        <item>FULLSCREEN</item>
+        <item>PORTRAIT_FULLSCREEN</item>
     </string-array>
     
     <!-- layout.theme.baseThemePatch -->

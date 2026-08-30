@@ -34,8 +34,8 @@ public final class BaseForceAppRefreshRatePatch {
     public enum ForceRefreshType {
         ALWAYS,
         PORTRAIT,
-        LANDSCAPE,
-        PORTRAIT_LANDSCAPE
+        FULLSCREEN,
+        PORTRAIT_FULLSCREEN
     }
 
     public static class ForceRefreshRatePlayerOnly implements Setting.Availability {
@@ -60,8 +60,8 @@ public final class BaseForceAppRefreshRatePatch {
     @Nullable
     private static String[] availableRefreshRates;
 
-    private static boolean isPlayerActive;
-    private static boolean isPlayerInPortrait;
+    private static boolean isPlaybackPortrait;
+    private static boolean isPlaybackFullscreen;
 
     @Nullable
     public static Float getPreferredRefreshRate() {
@@ -174,7 +174,7 @@ public final class BaseForceAppRefreshRatePatch {
                 try {
                     targetRefreshRate = Integer.parseInt(refreshString);
                 } catch (Exception ex) {
-                    Logger.printException(() -> "Invalid refresh rate", ex);
+                    Logger.printException(() -> "Invalid refresh rate: " + refreshString, ex);
                     SharedYouTubeSettings.APP_REFRESH_RATE.resetToDefault();
                     setWindowRefreshRate(context, window);
                     return;
@@ -182,9 +182,8 @@ public final class BaseForceAppRefreshRatePatch {
 
                 // Find the highest refresh rate for the current resolution that does not exceed the target.
                 Display.Mode bestMode = Arrays.stream(supportedModes)
-                        .filter(mode ->
-                                mode.getPhysicalWidth() == currentMode.getPhysicalWidth()
-                                        && mode.getPhysicalHeight() == currentMode.getPhysicalHeight())
+                        .filter(mode -> mode.getPhysicalWidth() == currentMode.getPhysicalWidth()
+                                && mode.getPhysicalHeight() == currentMode.getPhysicalHeight())
                         .filter(mode -> Math.round(mode.getRefreshRate()) <= targetRefreshRate)
                         .max(Comparator.comparingDouble(Display.Mode::getRefreshRate))
                         .orElse(null);
@@ -215,13 +214,10 @@ public final class BaseForceAppRefreshRatePatch {
         if (type == ForceRefreshType.ALWAYS) {
             return true;
         }
-        if (!isPlayerActive) {
-            return false;
-        }
         return switch (type) {
-            case PORTRAIT -> isPlayerInPortrait;
-            case LANDSCAPE -> !isPlayerInPortrait;
-            case PORTRAIT_LANDSCAPE -> true;
+            case PORTRAIT -> isPlaybackPortrait;
+            case FULLSCREEN -> isPlaybackFullscreen;
+            case PORTRAIT_FULLSCREEN -> isPlaybackPortrait || isPlaybackFullscreen;
             default -> throw new IllegalStateException();
         };
     }
@@ -250,11 +246,11 @@ public final class BaseForceAppRefreshRatePatch {
         });
     }
 
-    public static void videoPlayerIsActive(boolean overrideActive, boolean isPortrait) {
+    public static void videoPlayerIsActive(boolean portrait, boolean fullscreen) {
         Utils.verifyOnMainThread();
 
-        isPlayerActive = overrideActive;
-        isPlayerInPortrait = isPortrait;
+        isPlaybackPortrait = portrait;
+        isPlaybackFullscreen = fullscreen;
 
         Iterator<WeakReference<Window>> iterator = trackedWindows.iterator();
         while (iterator.hasNext()) {
