@@ -8,6 +8,9 @@ public class SharedSettings extends BaseSettings {
     /** Use the icons declared in the preferences created during patching. If no icons or styles are declared then this setting does nothing. */
     public static final BooleanSetting SHOW_MENU_ICONS = new BooleanSetting("morphe_show_menu_icons", TRUE, true);
 
+    /** Name shown for the Morphe settings: a preset entry value, or a name the user typed. */
+    public static final StringSetting SETTINGS_NAME = new StringSetting("morphe_settings_name", "DEFAULT", true);
+
     public static final StringSetting EXPERIMENTAL_APP_CONFIRMED = new StringSetting("morphe_experimental_app_target_confirmed", "", false, false);
 
     /** If the GmsCore battery optimization dialogs should be shown. */

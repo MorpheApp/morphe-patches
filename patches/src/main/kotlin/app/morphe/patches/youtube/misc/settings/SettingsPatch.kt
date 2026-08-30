@@ -30,6 +30,9 @@ import app.morphe.patches.shared.layout.branding.addLicensePatch
 import app.morphe.patches.shared.misc.checks.experimentalAppNoticePatch
 import app.morphe.patches.shared.misc.initialization.initializationPatch
 import app.morphe.patches.shared.misc.settings.MORPHE_SETTINGS_INTENT
+import app.morphe.patches.shared.misc.settings.SETTINGS_NAME_PREFERENCE_KEY
+import app.morphe.patches.shared.misc.settings.customSettingsNameInstructions
+import app.morphe.patches.shared.misc.settings.customSettingsNamePreference
 import app.morphe.patches.shared.misc.settings.overrideThemeColors
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
@@ -59,12 +62,15 @@ import app.morphe.util.ResourceGroup
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.copyResources
 import app.morphe.util.findElementByAttributeValueOrThrow
+import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 import com.android.tools.smali.dexlib2.util.MethodUtil
@@ -79,7 +85,10 @@ private val settingsResourcePatch = resourcePatch {
         resourceMappingPatch,
         settingsPatch(
             rootPreferences = listOf(
+                // The Cairo layout shows the Morphe name as the category of the entry,
+                // so in both layouts the entry itself is what the name key belongs to.
                 IntentPreference(
+                    key = SETTINGS_NAME_PREFERENCE_KEY,
                     titleKey = "morphe_settings_title",
                     summaryKey = null,
                     intent = newIntent(MORPHE_SETTINGS_INTENT)
@@ -90,6 +99,7 @@ private val settingsResourcePatch = resourcePatch {
                     layout = "@layout/preference_group_title",
                     preferences = setOf(
                         IntentPreference(
+                            key = SETTINGS_NAME_PREFERENCE_KEY,
                             titleKey = "morphe_settings_submenu_title",
                             summaryKey = null,
                             icon = "@drawable/morphe_settings_icon_dynamic",
@@ -252,7 +262,8 @@ val settingsPatch = bytecodePatch(
 
         PreferenceScreen.GENERAL.addPreferences(
             SwitchPreference("morphe_settings_search_history"),
-            SwitchPreference("morphe_show_menu_icons")
+            SwitchPreference("morphe_show_menu_icons"),
+            customSettingsNamePreference()
         )
 
         PreferenceScreen.MISC.addPreferences(
@@ -298,6 +309,39 @@ val settingsPatch = bytecodePatch(
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
                     "$YOUTUBE_ACTIVITY_HOOK_CLASS->useBoldIcons(Z)Z"
+                )
+            }
+        }
+
+        SettingsPreferenceScreenSyntheticFingerprint.let {
+            it.method.apply {
+                // Reuse the method's own getPreferenceScreen call.
+                val getPreferenceScreenIndex = it.instructionMatches[1].index
+                val fragmentRegister =
+                    getInstruction<FiveRegisterInstruction>(getPreferenceScreenIndex).registerC
+                val getPreferenceScreenReference =
+                    getInstruction<ReferenceInstruction>(getPreferenceScreenIndex).reference
+
+                // fragmentRegister must survive, because the settings menu filter patch
+                // adds its own call on it after these instructions.
+                val insertIndex = it.instructionMatches.last().index
+                val screenRegister = findFreeRegister(insertIndex, fragmentRegister)
+                val preferenceRegister =
+                    findFreeRegister(insertIndex, fragmentRegister, screenRegister)
+                val nameRegister =
+                    findFreeRegister(insertIndex, fragmentRegister, screenRegister, preferenceRegister)
+
+                addInstructionsAtControlFlowLabel(
+                    insertIndex,
+                    customSettingsNameInstructions(
+                        getPreferenceScreen = """
+                            invoke-virtual { v$fragmentRegister }, $getPreferenceScreenReference
+                            move-result-object v$screenRegister
+                        """,
+                        screenRegister = screenRegister,
+                        preferenceRegister = preferenceRegister,
+                        nameRegister = nameRegister
+                    )
                 )
             }
         }

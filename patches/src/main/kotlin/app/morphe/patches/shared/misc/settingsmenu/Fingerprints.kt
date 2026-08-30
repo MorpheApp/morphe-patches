@@ -58,3 +58,13 @@ internal object PreferenceGroupGetPreferenceFingerprint : Fingerprint(
         )
     )
 )
+
+/**
+ * PreferenceGroup.findPreference(CharSequence). The only method with this signature.
+ */
+internal object PreferenceGroupFindPreferenceFingerprint : Fingerprint(
+    definingClass = "Landroidx/preference/PreferenceGroup;",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf("Ljava/lang/CharSequence;"),
+    returnType = "Landroidx/preference/Preference;"
+)
