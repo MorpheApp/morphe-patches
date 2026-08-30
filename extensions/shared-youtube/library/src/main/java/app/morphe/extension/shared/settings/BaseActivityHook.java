@@ -24,7 +24,6 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.patches.ForceAppRefreshRatePatch;
 import app.morphe.extension.shared.settings.preference.ToolbarPreferenceFragment;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
@@ -71,9 +70,6 @@ public abstract class BaseActivityHook extends Activity {
      */
     public static void initialize(BaseActivityHook hook, Activity activity) {
         try {
-//            ForceAppRefreshRatePatch.setActivityRefreshRate(hook);
-//            ForceAppRefreshRatePatch.setActivityRefreshRate(activity);
-
             hook.customizeActivityTheme(activity);
             activity.setContentView(hook.getContentViewResourceId());
 

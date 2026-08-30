@@ -65,12 +65,12 @@ public final class ForceAppRefreshRatePatch {
     /**
      * Injection point.
      */
-    public static float getSurfaceRefreshRate(float original) {
+    public static float getRefreshRateOverride(float original) {
         final Float override = getPreferredRefreshRate();
-        if (override == null) {
-            return original;
+        if (override != null) {
+            return override;
         }
-        return override;
+        return original;
     }
 
     /**
@@ -91,7 +91,7 @@ public final class ForceAppRefreshRatePatch {
                 String refreshString = SharedYouTubeSettings.APP_REFRESH_RATE.get();
                 final boolean isDefault = refreshString.equals(DEFAULT_REFRESH_RATE_VALUE);
 
-                if (preferredDisplayModeId == null) {
+                if (preferredDisplayModeId == null || preferredRefreshRate == null) {
                     Display display = Build.VERSION.SDK_INT >= Build.VERSION_CODES.R
                             ? activity.getDisplay()
                             : activity.getWindowManager().getDefaultDisplay();
@@ -163,10 +163,14 @@ public final class ForceAppRefreshRatePatch {
                     return;
                 }
 
+                final float overrideRefreshRate = preferredRefreshRate;
                 Window window = activity.getWindow();
                 window.getDecorView().post(() -> {
                     WindowManager.LayoutParams params = window.getAttributes();
                     params.preferredDisplayModeId = preferredDisplayModeId;
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                        params.preferredRefreshRate = overrideRefreshRate;
+                    }
                     window.setAttributes(params);
                 });
             } catch (Exception ex) {
