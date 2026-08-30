@@ -9,7 +9,6 @@ package app.morphe.extension.youtube.patches;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.text.TextUtils;
@@ -29,6 +28,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.NavigationBar;
@@ -37,7 +37,20 @@ import app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 @SuppressWarnings("unused")
 public class WideSearchBarPatch {
 
-    private static final Boolean WIDE_SEARCHBAR_ENABLED = Settings.WIDE_SEARCHBAR.get();
+    public enum SearchbarType {
+        DISABLED,
+        /** Search bar is shown beside the header logo. */
+        WIDE,
+        /** Search bar replaces the header logo and spans the entire toolbar. */
+        EXTRA_WIDE;
+
+        public boolean isEnabled() {
+            return this != DISABLED;
+        }
+    }
+
+    private static final SearchbarType SEARCHBAR_TYPE = Settings.SEARCHBAR_TYPE.get();
+    private static final boolean WIDE_SEARCHBAR_ENABLED = SEARCHBAR_TYPE.isEnabled();
     private static final int ID_YOUTUBE_LOGO =
             ResourceUtils.getIdentifier(ResourceType.ID, "youtube_logo");
     private static final int ID_SEARCH_ICON =
@@ -100,14 +113,9 @@ public class WideSearchBarPatch {
                 return;
             }
 
-            final boolean rightToLeftLocale = Utils.isRightToLeftLocale();
-            final boolean isDarkModeEnabled = Utils.isDarkModeEnabled();
-            final int textColor = Color.parseColor(isDarkModeEnabled
-                    ? "#AAAAAA"
-                    : "#606060");
-            final int backgroundColor = Color.parseColor(isDarkModeEnabled
-                    ? "#1A1A1A"
-                    : "#F2F2F2");
+            final int backgroundColor = ThemeUtils.getEditTextBackground();
+            final int textColor = Utils.adjustColorBrightness(
+                    ThemeUtils.getAppForegroundColor(), 1.60f, 0.67f);
 
             TextView wideSearchBox = new TextView(toolbarViewGroup.getContext());
             wideSearchBox.setPadding(Dim.dp12, 0, Dim.dp12, 0);
@@ -131,23 +139,20 @@ public class WideSearchBarPatch {
                 searchIcon = searchIcon.mutate();
                 searchIcon.setTint(textColor);
 
-                if (rightToLeftLocale) {
-                    wideSearchBox.setCompoundDrawablesWithIntrinsicBounds(null, null, searchIcon, null);
-                } else {
-                    wideSearchBox.setCompoundDrawablesWithIntrinsicBounds(searchIcon, null, null, null);
-                }
+                wideSearchBox.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                        null, null, searchIcon, null);
                 wideSearchBox.setCompoundDrawablePadding(Dim.dp8);
             }
 
             View logoView = toolbarViewGroup.findViewById(ID_YOUTUBE_LOGO);
+            final boolean extraWide = SEARCHBAR_TYPE == SearchbarType.EXTRA_WIDE;
             final int sideMargin = Dim.dp10;
             final int searchBarHeight = Dim.dp32;
 
             ViewGroup.MarginLayoutParams currentViewGroupParams;
             if (toolbarViewGroup instanceof LinearLayout) {
-                LinearLayout.LayoutParams linearParams = new LinearLayout.LayoutParams(
-                        0, searchBarHeight
-                );
+                LinearLayout.LayoutParams linearParams =
+                        new LinearLayout.LayoutParams(0, searchBarHeight);
                 linearParams.weight = 1.0f;
                 linearParams.gravity = Gravity.CENTER_VERTICAL;
                 currentViewGroupParams = linearParams;
@@ -157,22 +162,18 @@ public class WideSearchBarPatch {
                         ViewGroup.LayoutParams.MATCH_PARENT, searchBarHeight
                 );
 
-                int leftMargin = sideMargin;
-                int rightMargin = sideMargin;
+                int startMargin = extraWide ? Dim.dp12 : sideMargin;
+                final int endMargin = extraWide ? Dim.dp12 : sideMargin;
 
-                if (logoView != null) {
+                // Search bar fills the toolbar, so it must not overlap the logo that stays visible.
+                if (!extraWide && logoView != null) {
                     final int measuredWidth = logoView.getMeasuredWidth();
                     final int logoWidth = measuredWidth > 0 ? measuredWidth : DP115;
-                    final int logoMargin = logoWidth + Dim.dp16;
-
-                    if (rightToLeftLocale) {
-                        rightMargin = logoMargin;
-                    } else {
-                        leftMargin = logoMargin;
-                    }
+                    startMargin = logoWidth + Dim.dp16;
                 }
 
-                currentViewGroupParams.setMargins(leftMargin, 0, rightMargin, 0);
+                currentViewGroupParams.setMarginStart(startMargin);
+                currentViewGroupParams.setMarginEnd(endMargin);
 
                 if (toolbarViewGroup instanceof FrameLayout) {
                     FrameLayout.LayoutParams frameParams = new FrameLayout.LayoutParams(
@@ -202,6 +203,10 @@ public class WideSearchBarPatch {
                 final int logoIndex = toolbarViewGroup.indexOfChild(logoView);
                 if (logoIndex >= 0) {
                     targetIndex = logoIndex + 1;
+                }
+
+                if (extraWide) {
+                    logoView.setVisibility(View.GONE);
                 }
             }
 

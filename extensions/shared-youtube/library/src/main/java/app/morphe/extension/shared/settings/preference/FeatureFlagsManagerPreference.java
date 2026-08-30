@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.shared.settings.preference;
 
 import static app.morphe.extension.shared.StringRef.str;
@@ -6,14 +16,12 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RoundRectShape;
 import android.preference.Preference;
-import android.text.Editable;
 import android.text.InputType;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.Pair;
 import android.util.SparseBooleanArray;
@@ -22,18 +30,28 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.ArrayAdapter;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.Checkable;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Space;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.TreeSet;
 
 import app.morphe.extension.shared.Logger;
@@ -43,12 +61,14 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.EnableDebuggingPatch;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 
 /**
  * A custom preference that opens a dialog for managing feature flags.
- * Allows moving boolean flags between active and blocked states with advanced selection.
+ * Flags can be blocked, forced on, exported and imported, and the flag that causes
+ * an app behavior can be found with a binary search.
  */
 @SuppressWarnings({"deprecation", "unused"})
 public class FeatureFlagsManagerPreference extends Preference {
@@ -59,14 +79,14 @@ public class FeatureFlagsManagerPreference extends Preference {
             ResourceUtils.getIdentifierOrThrow(ResourceType.DRAWABLE, "morphe_settings_deselect_all");
     private static final int DRAWABLE_MORPHE_SETTINGS_COPY_ALL =
             ResourceUtils.getIdentifierOrThrow(ResourceType.DRAWABLE, "morphe_settings_copy_all");
-    private static final int DRAWABLE_MORPHE_SETTINGS_ARROW_RIGHT_ONE =
-            ResourceUtils.getIdentifierOrThrow(ResourceType.DRAWABLE, "morphe_settings_arrow_right_one");
-    private static final int DRAWABLE_MORPHE_SETTINGS_ARROW_RIGHT_DOUBLE =
-            ResourceUtils.getIdentifierOrThrow(ResourceType.DRAWABLE, "morphe_settings_arrow_right_double");
-    private static final int DRAWABLE_MORPHE_SETTINGS_ARROW_LEFT_ONE =
-            ResourceUtils.getIdentifierOrThrow(ResourceType.DRAWABLE, "morphe_settings_arrow_left_one");
-    private static final int DRAWABLE_MORPHE_SETTINGS_ARROW_LEFT_DOUBLE =
-            ResourceUtils.getIdentifierOrThrow(ResourceType.DRAWABLE, "morphe_settings_arrow_left_double");
+    private static final int DRAWABLE_MORPHE_SETTINGS_IMPORT_EXPORT =
+            ResourceUtils.getIdentifierOrThrow(ResourceType.DRAWABLE, "morphe_settings_import_export");
+    private static final int DRAWABLE_MORPHE_SETTINGS_BISECT =
+            ResourceUtils.getIdentifierOrThrow(ResourceType.DRAWABLE, "morphe_settings_bisect");
+    private static final int DRAWABLE_MORPHE_SETTINGS_SEARCH =
+            ResourceUtils.getIdentifierOrThrow(ResourceType.DRAWABLE, "morphe_settings_search_icon_bold");
+    private static final int DRAWABLE_MORPHE_SETTINGS_SEARCH_REMOVE =
+            ResourceUtils.getIdentifierOrThrow(ResourceType.DRAWABLE, "morphe_settings_search_remove_bold");
 
     /**
      * Flags to hide from the UI.
@@ -77,6 +97,43 @@ public class FeatureFlagsManagerPreference extends Preference {
     );
 
     /**
+     * What the app does with a flag.
+     */
+    private enum FlagState {
+        /** The app decides. */
+        AUTO,
+        /** Always off. */
+        BLOCKED,
+        /** Always on. */
+        FORCED
+    }
+
+    /**
+     * Which flags the list shows.
+     */
+    private enum FlagFilter {
+        ACTIVE("morphe_debug_feature_flags_manager_filter_active"),
+        INACTIVE("morphe_debug_feature_flags_manager_filter_inactive"),
+        BLOCKED("morphe_debug_feature_flags_manager_filter_blocked"),
+        FORCED("morphe_debug_feature_flags_manager_filter_forced");
+
+        final String stringKey;
+
+        FlagFilter(String stringKey) {
+            this.stringKey = stringKey;
+        }
+
+        boolean matches(FlagState state, @Nullable Boolean loggedValue) {
+            return switch (this) {
+                case ACTIVE -> state == FlagState.AUTO && Boolean.TRUE.equals(loggedValue);
+                case INACTIVE -> state == FlagState.AUTO && !Boolean.TRUE.equals(loggedValue);
+                case BLOCKED -> state == FlagState.BLOCKED;
+                case FORCED -> state == FlagState.FORCED;
+            };
+        }
+    }
+
+    /**
      * Tracks state for range selection in ListView.
      */
     private static class ListViewSelectionState {
@@ -85,9 +142,30 @@ public class FeatureFlagsManagerPreference extends Preference {
     }
 
     /**
-     * Helper class to pass ListView and Adapter together.
+     * All flags shown in the dialog and what the app does with each of them.
      */
-    private record ColumnViews(ListView listView, FlagAdapter adapter) {}
+    private final TreeMap<Long, FlagState> flagStates = new TreeMap<>();
+
+    /**
+     * The last logged state of each flag.
+     */
+    private final Map<Long, Boolean> loggedFlagStates = new HashMap<>();
+
+    private final Map<FlagFilter, TextView> chips = new LinkedHashMap<>();
+
+    private FlagFilter filter = FlagFilter.ACTIVE;
+
+    private FlagAdapter adapter;
+
+    private ListView listView;
+
+    private EditText searchBox;
+
+    private LinearLayout actionButtons;
+
+    private LinearLayout selectionButtons;
+
+    private ImageButton deselectButton;
 
     {
         setOnPreferenceClickListener(pref -> {
@@ -123,15 +201,14 @@ public class FeatureFlagsManagerPreference extends Preference {
 
         Context context = getContext();
 
-        // Load all known and disabled flags.
-        TreeSet<Long> allKnownFlags = new TreeSet<>(EnableDebuggingPatch.getAllLoggedFlags());
-        allKnownFlags.removeAll(FLAGS_TO_IGNORE);
+        // A search in progress replaces the manager until it is finished or canceled.
+        FeatureFlagsBisect bisect = FeatureFlagsBisect.isActive() ? FeatureFlagsBisect.load() : null;
+        if (bisect != null) {
+            showBisectDialog(context, bisect);
+            return;
+        }
 
-        TreeSet<Long> disabledFlags = new TreeSet<>(EnableDebuggingPatch.parseFlags(
-                SharedYouTubeSettings.DISABLED_FEATURE_FLAGS.get()));
-        disabledFlags.removeAll(FLAGS_TO_IGNORE);
-
-        if (allKnownFlags.isEmpty() && disabledFlags.isEmpty()) {
+        if (!loadFlagStates()) {
             // It's impossible to reach the settings menu without reaching at least one flag.
             // So if there's no flags, then that means the user has just enabled debugging
             // but has not restarted the app yet.
@@ -139,9 +216,8 @@ public class FeatureFlagsManagerPreference extends Preference {
             return;
         }
 
-        TreeSet<Long> availableFlags = new TreeSet<>(allKnownFlags);
-        availableFlags.removeAll(disabledFlags);
-        TreeSet<Long> blockedFlags = new TreeSet<>(disabledFlags);
+        filter = FlagFilter.ACTIVE;
+        chips.clear();
 
         Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                 context,
@@ -149,294 +225,363 @@ public class FeatureFlagsManagerPreference extends Preference {
                 null,
                 null,
                 str("morphe_settings_save"),
-                () -> saveFlags(blockedFlags),
+                this::saveFlags,
                 () -> {},
                 str("morphe_settings_reset"),
                 this::resetFlags,
                 true
         );
 
+        Dialog dialog = dialogPair.first;
         LinearLayout mainLayout = dialogPair.second;
         LinearLayout.LayoutParams contentParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, 0, 1.0f);
 
         // Insert content before the dialog button row.
-        View contentView = createContentView(context, availableFlags, blockedFlags);
+        View contentView = createContentView(context, dialog);
         mainLayout.addView(contentView, mainLayout.getChildCount() - 1, contentParams);
 
-        Dialog dialog = dialogPair.first;
         dialog.show();
 
         Window window = dialog.getWindow();
         if (window != null) {
-            Utils.setDialogWindowParameters(window, Gravity.CENTER, 0, 100, false);
+            WindowManager.LayoutParams params = window.getAttributes();
+            params.height = WindowManager.LayoutParams.MATCH_PARENT;
+            window.setAttributes(params);
+
+            // Keep the buttons reachable while the keyboard is open, and do not
+            // open the keyboard until the search box is tapped.
+            window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN
+                    | WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         }
     }
 
     /**
-     * Creates the main content view with two columns.
+     * Loads the state of every flag from the app log and the saved settings.
+     *
+     * @return True if at least one flag was detected by the app.
      */
-    private View createContentView(Context context, TreeSet<Long> availableFlags, TreeSet<Long> blockedFlags) {
+    private boolean loadFlagStates() {
+        Map<Long, Boolean> loggedFlags = EnableDebuggingPatch.getAllLoggedFlags();
+        loggedFlagStates.clear();
+        loggedFlagStates.putAll(loggedFlags);
+
+        Set<Long> blockedFlags = EnableDebuggingPatch.parseFlags(
+                SharedYouTubeSettings.DISABLED_FEATURE_FLAGS.get());
+        Set<Long> forcedFlags = EnableDebuggingPatch.parseFlags(
+                SharedYouTubeSettings.FORCED_FEATURE_FLAGS.get());
+
+        flagStates.clear();
+        // 1. Add logged flags.
+        for (Long flag : loggedFlags.keySet()) {
+            if (FLAGS_TO_IGNORE.contains(flag)) continue;
+            flagStates.put(flag, blockedFlags.contains(flag)
+                    ? FlagState.BLOCKED
+                    : forcedFlags.contains(flag)
+                    ? FlagState.FORCED
+                    : FlagState.AUTO);
+        }
+
+        // 2. Add overrides that haven't been logged yet.
+        // This ensures they stay in the list so the user can see/remove them.
+        for (Long flag : blockedFlags) {
+            if (FLAGS_TO_IGNORE.contains(flag)) continue;
+            flagStates.putIfAbsent(flag, FlagState.BLOCKED);
+        }
+        for (Long flag : forcedFlags) {
+            if (FLAGS_TO_IGNORE.contains(flag)) continue;
+            flagStates.putIfAbsent(flag, FlagState.FORCED);
+        }
+
+        return !loggedFlags.isEmpty();
+    }
+
+    /**
+     * Creates the dialog content: search box, filter chips, flag list and the bottom buttons.
+     */
+    private View createContentView(Context context, Dialog dialog) {
         LinearLayout contentLayout = new LinearLayout(context);
         contentLayout.setOrientation(LinearLayout.VERTICAL);
 
-        // Headers.
-        TextView availableHeader = createHeader(context, "morphe_debug_feature_flags_manager_active_header");
-        TextView blockedHeader = createHeader(context, "morphe_debug_feature_flags_manager_blocked_header");
+        adapter = new FlagAdapter(context);
+        listView = createListView(context);
 
-        LinearLayout headersLayout = new LinearLayout(context);
-        headersLayout.setOrientation(LinearLayout.HORIZONTAL);
-        headersLayout.addView(availableHeader, new LinearLayout.LayoutParams(
-                0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f));
-        headersLayout.addView(blockedHeader, new LinearLayout.LayoutParams(
-                0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f));
-
-        // Columns.
-        View leftColumn = createColumn(context, availableFlags, availableHeader);
-        View rightColumn = createColumn(context, blockedFlags, blockedHeader);
-
-        ColumnViews leftViews = (ColumnViews) leftColumn.getTag();
-        ColumnViews rightViews = (ColumnViews) rightColumn.getTag();
-
-        updateHeaderCount(availableHeader, leftViews.adapter);
-        updateHeaderCount(blockedHeader, rightViews.adapter);
-
-        // Main columns layout.
-        LinearLayout columnsLayout = new LinearLayout(context);
-        columnsLayout.setOrientation(LinearLayout.HORIZONTAL);
-        columnsLayout.setLayoutParams(new LinearLayout.LayoutParams(
+        searchBox = createSearchBox(context);
+        contentLayout.addView(searchBox);
+        contentLayout.addView(createFilterChips(context));
+        contentLayout.addView(listView, new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, 0, 1f));
-        columnsLayout.addView(leftColumn, new LinearLayout.LayoutParams(
-                0, ViewGroup.LayoutParams.MATCH_PARENT, 1f));
+        contentLayout.addView(createBottomBar(context, dialog));
 
-        Space spaceBetweenColumns = new Space(context);
-        spaceBetweenColumns.setLayoutParams(new LinearLayout.LayoutParams(Dim.dp8, ViewGroup.LayoutParams.MATCH_PARENT));
-        columnsLayout.addView(spaceBetweenColumns);
+        adapter.refresh();
+        updateChips();
+        updateBottomBar();
 
-        columnsLayout.addView(rightColumn, new LinearLayout.LayoutParams(
-                0, ViewGroup.LayoutParams.MATCH_PARENT, 1f));
-
-        // Move buttons below columns.
-        Pair<LinearLayout, LinearLayout> moveButtons = createMoveButtons(context,
-                leftViews.listView, rightViews.listView,
-                availableFlags, blockedFlags, availableHeader, blockedHeader);
-
-        // Layout for buttons row.
-        LinearLayout buttonsRow = new LinearLayout(context);
-        buttonsRow.setOrientation(LinearLayout.HORIZONTAL);
-        buttonsRow.setLayoutParams(new LinearLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-
-        buttonsRow.addView(moveButtons.first, new LinearLayout.LayoutParams(
-                0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f));
-
-        Space spaceBetweenButtons = new Space(context);
-        spaceBetweenButtons.setLayoutParams(new LinearLayout.LayoutParams(Dim.dp8, ViewGroup.LayoutParams.WRAP_CONTENT));
-        buttonsRow.addView(spaceBetweenButtons);
-
-        buttonsRow.addView(moveButtons.second, new LinearLayout.LayoutParams(
-                0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f));
-
-        contentLayout.addView(headersLayout);
-        contentLayout.addView(columnsLayout);
-        contentLayout.addView(buttonsRow);
+        // Take the initial focus so the search box does not open the keyboard.
+        contentLayout.setFocusableInTouchMode(true);
+        contentLayout.requestFocus();
 
         return contentLayout;
     }
 
     /**
-     * Creates a header TextView.
-     */
-    private TextView createHeader(Context context, String tag) {
-        TextView textview = new TextView(context);
-        textview.setTag(tag);
-        textview.setTextSize(16);
-        textview.setTextColor(Utils.getAppForegroundColor());
-        textview.setGravity(Gravity.CENTER);
-
-        return textview;
-    }
-
-    /**
-     * Creates a single column (search + buttons + list).
-     */
-    private View createColumn(Context context, TreeSet<Long> flags, TextView countText) {
-        LinearLayout wrapper = new LinearLayout(context);
-        wrapper.setOrientation(LinearLayout.VERTICAL);
-
-        Pair<ListView, FlagAdapter> pair = createListView(context, flags, countText);
-        ListView listView = pair.first;
-        FlagAdapter adapter = pair.second;
-
-        EditText search = createSearchBox(context, adapter, listView, countText);
-        LinearLayout buttons = createActionButtons(context, listView, adapter);
-
-        listView.setLayoutParams(new LinearLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, 0, 1f));
-        ShapeDrawable background = new ShapeDrawable(new RoundRectShape(
-                Dim.roundedCorners(10), null, null));
-        background.getPaint().setColor(Utils.getEditTextBackground());
-        listView.setPadding(0, Dim.dp4, 0, Dim.dp4);
-        listView.setBackground(background);
-        listView.setOverScrollMode(View.OVER_SCROLL_NEVER);
-
-        wrapper.addView(search);
-        wrapper.addView(buttons);
-        wrapper.addView(listView);
-
-        // Save references for move buttons.
-        wrapper.setTag(new ColumnViews(listView, adapter));
-
-        return wrapper;
-    }
-
-    /**
-     * Updates the header text with the current count.
-     */
-    private void updateHeaderCount(TextView header, FlagAdapter adapter) {
-        header.setText(str((String) header.getTag(), adapter.getCount()));
-    }
-
-    /**
-     * Creates a search box that filters the list.
+     * Creates the search box that filters the list.
      */
     @SuppressLint("ClickableViewAccessibility")
-    private EditText createSearchBox(Context context, FlagAdapter adapter, ListView listView, TextView countText) {
-        EditText search = new EditText(context);
+    private EditText createSearchBox(Context context) {
+        EditText search = CustomDialog.createSearchBar(context,
+                str("morphe_debug_feature_flags_manager_search_hint"), query -> {
+            adapter.setSearchQuery(query);
+            listView.clearChoices();
+            updateChips();
+            updateBottomBar();
+        });
+
         search.setInputType(InputType.TYPE_CLASS_NUMBER);
-        search.setTextSize(16);
-        search.setHint(str("morphe_debug_feature_flags_manager_search_hint"));
-        search.setHapticFeedbackEnabled(false);
-        search.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
 
-        search.addTextChangedListener(new TextWatcher() {
-            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
-                adapter.setSearchQuery(s.toString());
-                listView.clearChoices();
-                updateHeaderCount(countText, adapter);
-                Drawable clearIcon = context.getResources().getDrawable(android.R.drawable.ic_menu_close_clear_cancel);
-                clearIcon.setBounds(0, 0, Dim.dp20, Dim.dp20);
-                search.setCompoundDrawables(null, null, TextUtils.isEmpty(s) ? null : clearIcon, null);
-            }
-            @Override public void afterTextChanged(Editable s) {}
-        });
-
-        search.setOnTouchListener((v, event) -> {
-            if (event.getAction() == MotionEvent.ACTION_UP) {
-                Drawable[] compoundDrawables = search.getCompoundDrawables();
-                if (compoundDrawables[2] != null &&
-                        event.getRawX() >= (search.getRight() - compoundDrawables[2].getBounds().width())) {
-                    search.setText("");
-                    return true;
-                }
-            }
-            return false;
-        });
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.setMargins(0, 0, 0, Dim.dp8);
+        search.setLayoutParams(params);
 
         return search;
     }
 
-    /**
-     * Creates action buttons.
-     */
-    private LinearLayout createActionButtons(Context context, ListView listView, FlagAdapter adapter) {
+    private View createFilterChips(Context context) {
         LinearLayout row = new LinearLayout(context);
         row.setOrientation(LinearLayout.HORIZONTAL);
-        row.setGravity(Gravity.CENTER);
-        row.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
 
-        ImageButton selectAll = createButton(context, DRAWABLE_MORPHE_SETTINGS_SELECT_ALL,
-                () -> {
-                    for (int i = 0, count = adapter.getCount(); i < count; i++) {
-                        listView.setItemChecked(i, true);
-                    }
-                });
+        for (FlagFilter flagFilter : FlagFilter.values()) {
+            TextView chip = createChip(context, flagFilter);
+            chips.put(flagFilter, chip);
+            row.addView(chip);
+        }
 
-        ImageButton clearAll = createButton(context, DRAWABLE_MORPHE_SETTINGS_DESELECT_ALL,
-                () -> {
-                    listView.clearChoices();
-                    adapter.notifyDataSetChanged();
-                });
+        // Chips can be wider than the dialog once the counts are translated.
+        HorizontalScrollView scrollView = new HorizontalScrollView(context);
+        scrollView.setHorizontalScrollBarEnabled(false);
+        scrollView.setOverScrollMode(View.OVER_SCROLL_NEVER);
+        // Fade the chip that is cut off, otherwise nothing shows the row can be scrolled.
+        scrollView.setHorizontalFadingEdgeEnabled(true);
+        scrollView.setFadingEdgeLength(Dim.dp24);
+        scrollView.addView(row);
 
-        ImageButton copy = createButton(context, DRAWABLE_MORPHE_SETTINGS_COPY_ALL,
-                () -> {
-                    List<String> items = new ArrayList<>();
-                    SparseBooleanArray checked = listView.getCheckedItemPositions();
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.setMargins(0, 0, 0, Dim.dp8);
+        scrollView.setLayoutParams(params);
 
-                    if (checked.size() > 0) {
-                        for (int i = 0, count = adapter.getCount(); i < count; i++) {
-                            if (checked.get(i)) {
-                                items.add(adapter.getItem(i));
-                            }
-                        }
-                    } else {
-                        for (Long flag : adapter.getFullFlags()) {
-                            items.add(String.valueOf(flag));
-                        }
-                    }
+        return scrollView;
+    }
 
-                    Utils.setClipboard(TextUtils.join("\n", items));
+    private TextView createChip(Context context, FlagFilter chipFilter) {
+        TextView chip = new TextView(context);
+        chip.setTextSize(13);
+        chip.setSingleLine(true);
+        chip.setGravity(Gravity.CENTER);
+        chip.setPadding(Dim.dp12, Dim.dp6, Dim.dp12, Dim.dp6);
+        chip.setOnClickListener(v -> {
+            filter = chipFilter;
+            listView.clearChoices();
+            adapter.refresh();
+            updateChips();
+            updateBottomBar();
+        });
 
-                    Utils.showToastShort(str("morphe_debug_feature_flags_manager_toast_copied"));
-                });
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.setMargins(0, 0, Dim.dp8, 0);
+        chip.setLayoutParams(params);
 
-        row.addView(selectAll);
-        row.addView(clearAll);
-        row.addView(copy);
-
-        return row;
+        return chip;
     }
 
     /**
-     * Creates the move buttons (left and right groups).
+     * Updates the chip text and highlights the selected chip.
      */
-    private Pair<LinearLayout, LinearLayout> createMoveButtons(Context context,
-                                                               ListView availableListView, ListView blockedListView,
-                                                               TreeSet<Long> availableFlags, TreeSet<Long> blockedFlags,
-                                                               TextView availableCountText, TextView blockedCountText) {
-        // Left group: >> >
-        LinearLayout leftButtons = new LinearLayout(context);
-        leftButtons.setOrientation(LinearLayout.HORIZONTAL);
-        leftButtons.setGravity(Gravity.CENTER);
+    private void updateChips() {
+        for (Map.Entry<FlagFilter, TextView> entry : chips.entrySet()) {
+            FlagFilter chipFilter = entry.getKey();
+            TextView chip = entry.getValue();
 
-        ImageButton moveAllRight = createButton(context, DRAWABLE_MORPHE_SETTINGS_ARROW_RIGHT_DOUBLE,
-                () -> moveFlags(availableListView, blockedListView, availableFlags, blockedFlags,
-                        availableCountText, blockedCountText, true));
+            int flagCount = 0;
+            for (Map.Entry<Long, FlagState> flagEntry : flagStates.entrySet()) {
+                if (chipFilter.matches(flagEntry.getValue(), loggedFlagStates.get(flagEntry.getKey()))) flagCount++;
+            }
 
-        ImageButton moveOneRight = createButton(context, DRAWABLE_MORPHE_SETTINGS_ARROW_RIGHT_ONE,
-                () -> moveFlags(availableListView, blockedListView, availableFlags, blockedFlags,
-                        availableCountText, blockedCountText, false));
+            final boolean selected = chipFilter == filter;
+            chip.setText(str(chipFilter.stringKey, flagCount));
+            chip.setTextColor(selected
+                    ? (Utils.isDarkModeEnabled() ? Color.BLACK : Color.WHITE)
+                    : ThemeUtils.getAppForegroundColor());
 
-        leftButtons.addView(moveAllRight);
-        leftButtons.addView(moveOneRight);
+            chip.setBackground(CustomDialog.createRoundedBackground(16, selected
+                    ? ThemeUtils.getOkButtonBackgroundColor()
+                    : ThemeUtils.getEditTextBackground()));
+        }
+    }
 
-        // Right group: < <<
-        LinearLayout rightButtons = new LinearLayout(context);
-        rightButtons.setOrientation(LinearLayout.HORIZONTAL);
-        rightButtons.setGravity(Gravity.CENTER);
+    /**
+     * The icons use a theme attribute for their color, which is only resolved if the drawable
+     * is loaded with a theme, and the app theme can differ from the dialog theme.
+     */
+    private Drawable createSearchBoxIcon(Context context, int drawableResId) {
+        Drawable icon = context.getDrawable(drawableResId);
+        //noinspection DataFlowIssue
+        icon.setBounds(0, 0, Dim.dp20, Dim.dp20);
+        icon.setTint(ThemeUtils.getAppForegroundColor());
 
-        ImageButton moveOneLeft = createButton(context, DRAWABLE_MORPHE_SETTINGS_ARROW_LEFT_ONE,
-                () -> moveFlags(blockedListView, availableListView, blockedFlags, availableFlags,
-                        blockedCountText, availableCountText, false));
+        return icon;
+    }
 
-        ImageButton moveAllLeft = createButton(context, DRAWABLE_MORPHE_SETTINGS_ARROW_LEFT_DOUBLE,
-                () -> moveFlags(blockedListView, availableListView, blockedFlags, availableFlags,
-                        blockedCountText, availableCountText, true));
+    /**
+     * Creates the flag list with multi-select and range selection.
+     */
+    @SuppressLint("ClickableViewAccessibility")
+    private ListView createListView(Context context) {
+        ListView list = new ListView(context);
+        list.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        list.setDividerHeight(0);
+        list.setAdapter(adapter);
+        list.setPadding(0, Dim.dp4, 0, Dim.dp4);
+        list.setOverScrollMode(View.OVER_SCROLL_NEVER);
+        list.setBackground(CustomDialog.createRoundedBackground(10, ThemeUtils.getEditTextBackground()));
 
-        rightButtons.addView(moveOneLeft);
-        rightButtons.addView(moveAllLeft);
+        final ListViewSelectionState state = new ListViewSelectionState();
 
-        return new Pair<>(leftButtons, rightButtons);
+        list.setOnItemClickListener((parent, view, position, id) -> {
+            if (!state.isRangeSelecting) {
+                state.lastClickedPosition = position;
+            } else {
+                state.isRangeSelecting = false;
+            }
+            updateBottomBar();
+        });
+
+        list.setOnItemLongClickListener((parent, view, position, id) -> {
+            if (state.lastClickedPosition == -1) {
+                list.setItemChecked(position, true);
+                state.lastClickedPosition = position;
+            } else {
+                int start = Math.min(state.lastClickedPosition, position);
+                int end = Math.max(state.lastClickedPosition, position);
+                for (int i = start; i <= end; i++) {
+                    list.setItemChecked(i, true);
+                }
+                state.isRangeSelecting = true;
+            }
+            updateBottomBar();
+            return true;
+        });
+
+        list.setOnTouchListener((view, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                hideKeyboard(view);
+            }
+            if (event.getAction() == MotionEvent.ACTION_UP && state.isRangeSelecting) {
+                state.isRangeSelecting = false;
+            }
+            return false;
+        });
+
+        return list;
+    }
+
+    private void hideKeyboard(View view) {
+        InputMethodManager manager = (InputMethodManager)
+                view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (manager != null) {
+            manager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+        if (searchBox != null) {
+            searchBox.clearFocus();
+        }
+    }
+
+    /**
+     * Creates the bottom bar, which shows the state buttons while flags are selected
+     * and the global actions otherwise.
+     */
+    private View createBottomBar(Context context, Dialog dialog) {
+        LinearLayout bar = new LinearLayout(context);
+        bar.setOrientation(LinearLayout.VERTICAL);
+
+        actionButtons = new LinearLayout(context);
+        actionButtons.setOrientation(LinearLayout.HORIZONTAL);
+        actionButtons.setGravity(Gravity.CENTER);
+        actionButtons.addView(createIconButton(context, DRAWABLE_MORPHE_SETTINGS_SELECT_ALL, () -> {
+            for (int i = 0, count = adapter.getCount(); i < count; i++) {
+                listView.setItemChecked(i, true);
+            }
+            updateBottomBar();
+        }));
+        actionButtons.addView(createIconButton(context, DRAWABLE_MORPHE_SETTINGS_COPY_ALL, this::copyFlags));
+        actionButtons.addView(createIconButton(context, DRAWABLE_MORPHE_SETTINGS_IMPORT_EXPORT,
+                () -> showImportExportDialog(context)));
+        actionButtons.addView(createIconButton(context, DRAWABLE_MORPHE_SETTINGS_BISECT,
+                () -> showBisectStartDialog(context, dialog)));
+
+        selectionButtons = new LinearLayout(context);
+        selectionButtons.setOrientation(LinearLayout.HORIZONTAL);
+        selectionButtons.setGravity(Gravity.CENTER);
+
+        deselectButton = createIconButton(context, DRAWABLE_MORPHE_SETTINGS_DESELECT_ALL, () -> {
+            listView.clearChoices();
+            adapter.notifyDataSetChanged();
+            updateBottomBar();
+        });
+
+        bar.addView(actionButtons);
+        bar.addView(selectionButtons);
+
+        return bar;
+    }
+
+    /**
+     * Shows the state buttons only while flags are selected.
+     */
+    private void updateBottomBar() {
+        final boolean hasSelection = !getSelectedFlags().isEmpty();
+        actionButtons.setVisibility(hasSelection ? View.GONE : View.VISIBLE);
+        selectionButtons.setVisibility(hasSelection ? View.VISIBLE : View.GONE);
+
+        if (hasSelection) {
+            selectionButtons.removeAllViews();
+            Context context = getContext();
+
+            Button actionButton = switch (filter) {
+                case ACTIVE -> createStateButton(context,
+                        "morphe_debug_feature_flags_manager_action_force_off", FlagState.BLOCKED);
+                case INACTIVE -> createStateButton(context,
+                        "morphe_debug_feature_flags_manager_action_force_on", FlagState.FORCED);
+                case BLOCKED, FORCED -> createStateButton(context,
+                        "morphe_debug_feature_flags_manager_action_remove", FlagState.AUTO);
+            };
+
+            selectionButtons.addView(actionButton);
+            selectionButtons.addView(deselectButton);
+        }
+    }
+
+    /**
+     * Creates a button that applies a state to the selected flags.
+     */
+    private Button createStateButton(Context context, String stringKey, FlagState state) {
+        Button button = CustomDialog.createButton(context, null, str(stringKey),
+                () -> applyStateToSelection(state), false, false);
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, Dim.dp36, 1f);
+        params.setMargins(Dim.dp4, Dim.dp8, Dim.dp4, Dim.dp8);
+        button.setLayoutParams(params);
+
+        return button;
     }
 
     /**
      * Creates a styled ImageButton.
      */
     @SuppressLint("ResourceType")
-    private ImageButton createButton(Context context, int drawableResId, Runnable action) {
+    private ImageButton createIconButton(Context context, int drawableResId, Runnable action) {
         ImageButton button = new ImageButton(context);
 
         button.setImageResource(drawableResId);
@@ -457,172 +602,468 @@ public class FeatureFlagsManagerPreference extends Preference {
     }
 
     /**
-     * Custom adapter with search filtering.
+     * @return The selected flags, or an empty list if nothing is selected.
      */
-    private static class FlagAdapter extends ArrayAdapter<String> {
-        private final TreeSet<Long> fullFlags;
+    private List<Long> getSelectedFlags() {
+        List<Long> selected = new ArrayList<>();
+        if (listView == null) return selected;
+
+        SparseBooleanArray checked = listView.getCheckedItemPositions();
+        for (int i = 0, count = adapter.getCount(); i < count; i++) {
+            if (checked.get(i)) {
+                selected.add(adapter.getItem(i));
+            }
+        }
+
+        return selected;
+    }
+
+    private void applyStateToSelection(FlagState state) {
+        for (Long flag : getSelectedFlags()) {
+            flagStates.put(flag, state);
+        }
+
+        listView.clearChoices();
+        adapter.refresh();
+        updateChips();
+        updateBottomBar();
+    }
+
+    /**
+     * Copies the selected flags, or all shown flags if nothing is selected.
+     */
+    private void copyFlags() {
+        List<Long> flags = getSelectedFlags();
+        if (flags.isEmpty()) {
+            for (int i = 0, count = adapter.getCount(); i < count; i++) {
+                flags.add(adapter.getItem(i));
+            }
+        }
+
+        Utils.setClipboard(EnableDebuggingPatch.serializeFlags(flags));
+        Utils.showToastShort(str("morphe_debug_feature_flags_manager_toast_copied"));
+    }
+
+
+    /**
+     * Shows a dialog with the current flags as text, which can be shared with
+     * another device to reproduce the same set of flags.
+     */
+    private void showImportExportDialog(Context context) {
+        EditText editText = new EditText(context);
+        editText.setTextSize(14);
+        editText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+        editText.setSingleLine(false);
+        editText.setText(buildExportText());
+
+        Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
+                context,
+                str("morphe_debug_feature_flags_manager_import_export_title"),
+                null,
+                editText,
+                str("morphe_settings_save"),
+                () -> importText(editText.getText().toString()),
+                () -> {},
+                str("morphe_settings_import_copy"),
+                () -> Utils.setClipboard(editText.getText().toString()),
+                true
+        );
+
+        // Insert the file buttons between the text and the dialog buttons.
+        dialogPair.second.addView(createFileButtons(context, editText), 2);
+
+        dialogPair.first.show();
+    }
+
+    private LinearLayout createFileButtons(Context context, EditText editText) {
+        Button buttonExport = CustomDialog.createButton(context, null,
+                str("morphe_settings_export_file"),
+                () -> exportToFile(editText.getText().toString()), false, false);
+        Button buttonImport = CustomDialog.createButton(context, null,
+                str("morphe_settings_import_file"), () -> importFromFile(editText), false, false);
+
+        return CustomDialog.createButtonRow(context, buttonExport, buttonImport);
+    }
+
+    private void exportToFile(String text) {
+        AbstractPreferenceFragment fragment = AbstractPreferenceFragment.instance.get();
+        if (fragment == null) return;
+
+        fragment.exportTextActivity(AbstractPreferenceFragment.exportFileName("Feature_Flags"), text,
+                success -> Utils.showToastShort(str(success
+                        ? "morphe_debug_feature_flags_manager_export_file_success"
+                        : "morphe_debug_feature_flags_manager_export_file_failed")));
+    }
+
+    private void importFromFile(EditText editText) {
+        AbstractPreferenceFragment fragment = AbstractPreferenceFragment.instance.get();
+        if (fragment == null) return;
+
+        fragment.importTextActivity(text -> {
+            if (text == null) {
+                Utils.showToastShort(str("morphe_debug_feature_flags_manager_import_file_failed"));
+                return;
+            }
+
+            editText.setText(text);
+            Utils.showToastShort(str("morphe_debug_feature_flags_manager_import_file_success"));
+        });
+    }
+
+    /**
+     * @return The flags that are in the given state, in ascending order.
+     */
+    private List<Long> flagsWithState(FlagState state) {
+        List<Long> flags = new ArrayList<>();
+        for (Map.Entry<Long, FlagState> entry : flagStates.entrySet()) {
+            if (entry.getValue() == state) flags.add(entry.getKey());
+        }
+
+        return flags;
+    }
+
+    private String buildExportText() {
+        List<Long> on = new ArrayList<>();
+        List<Long> off = new ArrayList<>();
+        for (Long flag : flagStates.keySet()) {
+            if (Boolean.TRUE.equals(loggedFlagStates.get(flag))) {
+                on.add(flag);
+            } else {
+                off.add(flag);
+            }
+        }
+
+        return "app=" + Utils.getAppVersionName()
+                + "\nblocked=" + EnableDebuggingPatch.serializeFlags(flagsWithState(FlagState.BLOCKED), ',')
+                + "\nforced=" + EnableDebuggingPatch.serializeFlags(flagsWithState(FlagState.FORCED), ',')
+                + "\non=" + EnableDebuggingPatch.serializeFlags(on, ',')
+                + "\noff=" + EnableDebuggingPatch.serializeFlags(off, ',');
+    }
+
+    /**
+     * Applies exported text. Lines that are only flag IDs are treated as blocked flags,
+     * so the output of the copy button can be pasted as well.
+     */
+    private void importText(String text) {
+        try {
+            TreeSet<Long> blocked = new TreeSet<>();
+            TreeSet<Long> forced = new TreeSet<>();
+
+            for (String line : text.split("\n")) {
+                String trimmed = line.trim();
+                if (trimmed.isEmpty() || trimmed.startsWith("#")) continue;
+
+                final int separator = trimmed.indexOf('=');
+                String key = separator < 0 ? "blocked" : trimmed.substring(0, separator).trim();
+                String value = separator < 0 ? trimmed : trimmed.substring(separator + 1);
+
+                switch (key) {
+                    case "blocked": blocked.addAll(EnableDebuggingPatch.parseFlags(value)); break;
+                    case "forced": forced.addAll(EnableDebuggingPatch.parseFlags(value)); break;
+                    default: break; // Ignore diagnostic flags (on/off) and metadata (app version).
+                }
+            }
+
+            blocked.removeAll(FLAGS_TO_IGNORE);
+            forced.removeAll(FLAGS_TO_IGNORE);
+
+            if (blocked.isEmpty() && forced.isEmpty()) {
+                Utils.showToastLong(str("morphe_debug_feature_flags_manager_import_failed"));
+                return;
+            }
+
+            SharedYouTubeSettings.DISABLED_FEATURE_FLAGS.save(EnableDebuggingPatch.serializeFlags(blocked));
+            SharedYouTubeSettings.FORCED_FEATURE_FLAGS.save(EnableDebuggingPatch.serializeFlags(forced));
+
+            loadFlagStates();
+
+            listView.clearChoices();
+            adapter.refresh();
+            updateChips();
+            updateBottomBar();
+
+            Utils.showToastShort(str("morphe_debug_feature_flags_manager_import_success", blocked.size() + forced.size()));
+        } catch (Exception ex) {
+            Logger.printException(() -> "Could not import feature flags", ex);
+        }
+    }
+
+    /**
+     * Explains the binary search, then starts it.
+     */
+    private void showBisectStartDialog(Context context, Dialog managerDialog) {
+        // Only an active flag can cause a behavior that is present, and blocking a flag
+        // the app already has off would only add steps to the search.
+        List<Long> candidates = new ArrayList<>();
+        for (Map.Entry<Long, FlagState> entry : flagStates.entrySet()) {
+            if (FlagFilter.ACTIVE.matches(entry.getValue(), loggedFlagStates.get(entry.getKey()))) {
+                candidates.add(entry.getKey());
+            }
+        }
+
+        if (candidates.isEmpty()) {
+            CustomDialog.create(
+                    context,
+                    str("morphe_debug_feature_flags_manager_bisect_title"),
+                    str("morphe_debug_feature_flags_manager_bisect_no_candidates"),
+                    null,
+                    null,
+                    null,
+                    () -> {},
+                    null,
+                    null,
+                    false
+            ).first.show();
+            return;
+        }
+
+        CustomDialog.create(
+                context,
+                str("morphe_debug_feature_flags_manager_bisect_title"),
+                str("morphe_debug_feature_flags_manager_bisect_start_message", candidates.size()),
+                null,
+                str("morphe_debug_feature_flags_manager_bisect_start_button"),
+                () -> {
+                    // The search blocks flags on top of what is saved, so save the current list first.
+                    persistFlagStates();
+                    FeatureFlagsBisect.start(candidates);
+                    managerDialog.dismiss();
+                    AbstractPreferenceFragment.showRestartDialog(context);
+                },
+                () -> {},
+                null,
+                null,
+                false
+        ).first.show();
+    }
+
+    /**
+     * Shows the three answers of a binary search in progress.
+     */
+    private void showBisectDialog(Context context, FeatureFlagsBisect bisect) {
+        Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
+                context,
+                str("morphe_debug_feature_flags_manager_bisect_title"),
+                str("morphe_debug_feature_flags_manager_bisect_status",
+                        bisect.getStep(), bisect.getRemainingCount(), bisect.getTestingCount()),
+                null,
+                null,
+                null,
+                () -> {},
+                null,
+                null,
+                false
+        );
+
+        Dialog dialog = dialogPair.first;
+        LinearLayout mainLayout = dialogPair.second;
+
+        LinearLayout buttons = new LinearLayout(context);
+        buttons.setOrientation(LinearLayout.VERTICAL);
+        buttons.addView(createBisectButton(context, dialog,
+                "morphe_debug_feature_flags_manager_bisect_present", true,
+                () -> answerBisect(context, bisect, true)));
+        buttons.addView(createBisectButton(context, dialog,
+                "morphe_debug_feature_flags_manager_bisect_absent", false,
+                () -> answerBisect(context, bisect, false)));
+        buttons.addView(createBisectButton(context, dialog,
+                "morphe_debug_feature_flags_manager_bisect_cancel", false,
+                () -> {
+                    bisect.cancel();
+                    Utils.showToastShort(str("morphe_debug_feature_flags_manager_bisect_canceled"));
+                    AbstractPreferenceFragment.showRestartDialog(context);
+                }));
+
+        // Insert the answers before the dialog button row.
+        mainLayout.addView(buttons, mainLayout.getChildCount() - 1,
+                new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+
+        dialog.show();
+    }
+
+    private Button createBisectButton(Context context, Dialog dialog, String stringKey,
+                                      boolean isOkButton, Runnable action) {
+        Button button = CustomDialog.createButton(context, dialog, str(stringKey), action, isOkButton, true);
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, Dim.dp36);
+        params.setMargins(0, Dim.dp8, 0, 0);
+        button.setLayoutParams(params);
+
+        return button;
+    }
+
+    private void answerBisect(Context context, FeatureFlagsBisect bisect, boolean behaviorPresent) {
+        FeatureFlagsBisect.Result result = bisect.answer(behaviorPresent);
+        if (result == FeatureFlagsBisect.Result.CONTINUE) {
+            AbstractPreferenceFragment.showRestartDialog(context);
+            return;
+        }
+
+        String message;
+        if (result == FeatureFlagsBisect.Result.FOUND) {
+            message = str("morphe_debug_feature_flags_manager_bisect_found", bisect.getFoundFlag());
+        } else {
+            // If the behavior went away during the search then a flag is involved,
+            // just not a single one that the search can point at.
+            message = str(bisect.behaviorEverAbsent()
+                    ? "morphe_debug_feature_flags_manager_bisect_exhausted_multiple"
+                    : "morphe_debug_feature_flags_manager_bisect_exhausted");
+        }
+
+        CustomDialog.create(
+                context,
+                str("morphe_debug_feature_flags_manager_bisect_title"),
+                message,
+                null,
+                null,
+                () -> AbstractPreferenceFragment.showRestartDialog(context),
+                null,
+                null,
+                null,
+                false
+        ).first.show();
+    }
+
+    /**
+     * Saves the blocked and forced flags without any user feedback.
+     */
+    private void persistFlagStates() {
+        List<Long> blocked = flagsWithState(FlagState.BLOCKED);
+        List<Long> forced = flagsWithState(FlagState.FORCED);
+
+        SharedYouTubeSettings.DISABLED_FEATURE_FLAGS.save(EnableDebuggingPatch.serializeFlags(blocked));
+        SharedYouTubeSettings.FORCED_FEATURE_FLAGS.save(EnableDebuggingPatch.serializeFlags(forced));
+
+        Logger.printDebug(() -> "Feature flags saved. Blocked: " + blocked.size()
+                + " forced: " + forced.size());
+    }
+
+    /**
+     * Saves the flags and asks to restart.
+     */
+    private void saveFlags() {
+        persistFlagStates();
+        Utils.showToastShort(str("morphe_debug_feature_flags_manager_toast_saved"));
+
+        AbstractPreferenceFragment.showRestartDialog(getContext());
+    }
+
+    /**
+     * Resets all blocked and forced flags.
+     */
+    private void resetFlags() {
+        SharedYouTubeSettings.DISABLED_FEATURE_FLAGS.resetToDefault();
+        SharedYouTubeSettings.FORCED_FEATURE_FLAGS.resetToDefault();
+        Utils.showToastShort(str("morphe_debug_feature_flags_manager_toast_reset"));
+
+        AbstractPreferenceFragment.showRestartDialog(getContext());
+    }
+
+    /**
+     * A row showing a flag and its state, highlighted while selected.
+     */
+    private static class FlagRow extends LinearLayout implements Checkable {
+        private final TextView flagText;
+        private final ShapeDrawable background;
+        private boolean checked;
+
+        FlagRow(Context context) {
+            super(context);
+            setOrientation(HORIZONTAL);
+            setGravity(Gravity.CENTER_VERTICAL);
+            setPadding(Dim.dp12, Dim.dp8, Dim.dp12, Dim.dp8);
+
+            background = CustomDialog.createRoundedBackground(8, Color.TRANSPARENT);
+            setBackground(background);
+
+            flagText = new TextView(context);
+            flagText.setTextSize(15);
+            flagText.setSingleLine(true);
+            flagText.setEllipsize(TextUtils.TruncateAt.END);
+            flagText.setTextColor(ThemeUtils.getAppForegroundColor());
+            addView(flagText, new LayoutParams(0, LayoutParams.WRAP_CONTENT, 1f));
+        }
+
+        void bind(long flag) {
+            flagText.setText(String.valueOf(flag));
+        }
+
+        @Override
+        public void setChecked(boolean checked) {
+            this.checked = checked;
+            int color = ThemeUtils.getAppForegroundColor();
+            int alpha = 0x33;
+            background.getPaint().setColor(checked
+                    ? (alpha << 24) | (color & 0x00FFFFFF)
+                    : Color.TRANSPARENT);
+            invalidate();
+        }
+
+        @Override
+        public boolean isChecked() {
+            return checked;
+        }
+
+        @Override
+        public void toggle() {
+            setChecked(!checked);
+        }
+
+    }
+
+    /**
+     * Shows the flags of the current filter that match the search.
+     */
+    private class FlagAdapter extends BaseAdapter {
+        private final Context context;
+        private final List<Long> shownFlags = new ArrayList<>();
         private String searchQuery = "";
 
-        public FlagAdapter(Context context, TreeSet<Long> fullFlags) {
-            super(context, android.R.layout.simple_list_item_multiple_choice, new ArrayList<>());
-            this.fullFlags = fullFlags;
-            updateFiltered();
+        FlagAdapter(Context context) {
+            this.context = context;
         }
 
-        public void setSearchQuery(String query) {
+        void setSearchQuery(String query) {
             searchQuery = query == null ? "" : query.trim();
-            updateFiltered();
+            refresh();
         }
 
-        private void updateFiltered() {
-            clear();
-            for (Long flag : fullFlags) {
-                String flagString = String.valueOf(flag);
-                if (searchQuery.isEmpty() || flagString.contains(searchQuery)) {
-                    add(flagString);
-                }
+        void refresh() {
+            shownFlags.clear();
+            for (Map.Entry<Long, FlagState> entry : flagStates.entrySet()) {
+                if (!filter.matches(entry.getValue(), loggedFlagStates.get(entry.getKey()))) continue;
+                if (!searchQuery.isEmpty() && !String.valueOf(entry.getKey()).contains(searchQuery)) continue;
+                shownFlags.add(entry.getKey());
             }
             notifyDataSetChanged();
         }
 
-        public void refresh() {
-            updateFiltered();
+        @Override
+        public int getCount() {
+            return shownFlags.size();
         }
 
-        public List<Long> getFullFlags() {
-            return new ArrayList<>(fullFlags);
-        }
-    }
-
-    /**
-     * Creates a ListView with filtering, multi-select, and range selection.
-     */
-    @SuppressLint("ClickableViewAccessibility")
-    private Pair<ListView, FlagAdapter> createListView(Context context,
-                                                       TreeSet<Long> flags, TextView countText) {
-        ListView listView = new ListView(context);
-        listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        listView.setDividerHeight(0);
-
-        FlagAdapter adapter = new FlagAdapter(context, flags);
-        listView.setAdapter(adapter);
-
-        final ListViewSelectionState state = new ListViewSelectionState();
-
-        listView.setOnItemClickListener((parent, view, position, id) -> {
-            if (!state.isRangeSelecting) {
-                state.lastClickedPosition = position;
-            } else {
-                state.isRangeSelecting = false;
-            }
-        });
-
-        listView.setOnItemLongClickListener((parent, view, position, id) -> {
-            if (state.lastClickedPosition == -1) {
-                listView.setItemChecked(position, true);
-                state.lastClickedPosition = position;
-            } else {
-                int start = Math.min(state.lastClickedPosition, position);
-                int end = Math.max(state.lastClickedPosition, position);
-                for (int i = start; i <= end; i++) {
-                    listView.setItemChecked(i, true);
-                }
-                state.isRangeSelecting = true;
-            }
-            return true;
-        });
-
-        listView.setOnTouchListener((view, event) -> {
-            if (event.getAction() == MotionEvent.ACTION_UP && state.isRangeSelecting) {
-                state.isRangeSelecting = false;
-            }
-            return false;
-        });
-
-        return new Pair<>(listView, adapter);
-    }
-
-    /**
-     * Moves selected or all flags from one list to another.
-     *
-     * @param fromListView  Source ListView.
-     * @param toListView    Destination ListView.
-     * @param fromFlags     Source flag set.
-     * @param toFlags       Destination flag set.
-     * @param fromCountText Header showing count of source items.
-     * @param toCountText   Header showing count of destination items.
-     * @param moveAll       If true, move all items; if false, move only selected.
-     */
-    private void moveFlags(ListView fromListView, ListView toListView,
-                           TreeSet<Long> fromFlags, TreeSet<Long> toFlags,
-                           TextView fromCountText, TextView toCountText,
-                           boolean moveAll) {
-        if (fromListView == null || toListView == null) return;
-
-        List<Long> flagsToMove = new ArrayList<>();
-        FlagAdapter fromAdapter = (FlagAdapter) fromListView.getAdapter();
-
-        if (moveAll) {
-            flagsToMove.addAll(fromFlags);
-        } else {
-            SparseBooleanArray checked = fromListView.getCheckedItemPositions();
-            for (int i = 0, count = fromAdapter.getCount(); i < count; i++) {
-                if (checked.get(i)) {
-                    String item = fromAdapter.getItem(i);
-                    if (item != null) {
-                        flagsToMove.add(Long.parseLong(item));
-                    }
-                }
-            }
+        @Override
+        public Long getItem(int position) {
+            return shownFlags.get(position);
         }
 
-        if (flagsToMove.isEmpty()) return;
-
-        for (Long flag : flagsToMove) {
-            fromFlags.remove(flag);
-            toFlags.add(flag);
+        @Override
+        public long getItemId(int position) {
+            return shownFlags.get(position);
         }
 
-        // Clear selections before refreshing.
-        fromListView.clearChoices();
-        toListView.clearChoices();
+        @Override
+        public View getView(int position, @Nullable View convertView, ViewGroup parent) {
+            FlagRow row = convertView instanceof FlagRow
+                    ? (FlagRow) convertView
+                    : new FlagRow(context);
 
-        // Refresh both adapters.
-        fromAdapter.refresh();
-        ((FlagAdapter) toListView.getAdapter()).refresh();
+            row.bind(shownFlags.get(position));
 
-        // Update headers.
-        updateHeaderCount(fromCountText, fromAdapter);
-        updateHeaderCount(toCountText, (FlagAdapter) toListView.getAdapter());
-    }
-
-    /**
-     * Saves blocked flags to settings.
-     */
-    private void saveFlags(TreeSet<Long> blockedFlags) {
-        StringBuilder flagsString = new StringBuilder();
-        for (Long flag : blockedFlags) {
-            //noinspection SizeReplaceableByIsEmpty
-            if (flagsString.length() > 0) {
-                flagsString.append("\n");
-            }
-            flagsString.append(flag);
+            return row;
         }
-
-        SharedYouTubeSettings.DISABLED_FEATURE_FLAGS.save(flagsString.toString());
-        Utils.showToastShort(str("morphe_debug_feature_flags_manager_toast_saved"));
-        Logger.printDebug(() -> "Feature flags saved. Blocked: " + blockedFlags.size());
-
-        AbstractPreferenceFragment.showRestartDialog(getContext());
-    }
-
-    /**
-     * Resets all blocked flags.
-     */
-    private void resetFlags() {
-        SharedYouTubeSettings.DISABLED_FEATURE_FLAGS.resetToDefault();
-        Utils.showToastShort(str("morphe_debug_feature_flags_manager_toast_reset"));
-
-        AbstractPreferenceFragment.showRestartDialog(getContext());
     }
 }

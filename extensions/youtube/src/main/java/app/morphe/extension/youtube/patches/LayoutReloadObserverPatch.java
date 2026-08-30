@@ -7,8 +7,6 @@
  
 package app.morphe.extension.youtube.patches;
 
-import androidx.annotation.NonNull;
-
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -56,4 +54,3 @@ public class LayoutReloadObserverPatch {
     }
 
 }
-

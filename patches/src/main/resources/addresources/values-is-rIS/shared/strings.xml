@@ -107,9 +107,15 @@ Til að þýða ný lönd eða bæta núverandi þýðingar skaltu heimsækja mo
   <string name="morphe_debug_logs_clear_toast">Debug log hreinsað</string>
   <string name="morphe_debug_feature_flags_manager_title">Stjórnari fyrir eiginleikaflagg</string>
   <string name="morphe_debug_feature_flags_manager_summary">Stjórna búlskum eiginleikaflaggum</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Virkar feature flögur (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Lokaðar feature flögur (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Leita í eigindum…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_action_remove">Fjarlægja</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Feature flögur vistaðar</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Feature flögur endurstillaðar</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Feature flögur afritaðar á klemmiborð</string>

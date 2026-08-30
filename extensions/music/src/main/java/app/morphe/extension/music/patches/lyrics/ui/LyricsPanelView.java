@@ -50,6 +50,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.ViewAnimations;
 
@@ -641,9 +642,9 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     private static int lineTextColor() {
         final int colorId = ResourceUtils.getIdentifier(ResourceType.COLOR, APP_PRIMARY_TEXT_COLOR);
         if (colorId == 0) {
-            return Utils.getAppForegroundColor();
+            return ThemeUtils.getAppForegroundColor();
         }
-        return ResourceUtils.getColor(APP_PRIMARY_TEXT_COLOR, Utils.getAppForegroundColor());
+        return ResourceUtils.getColor(APP_PRIMARY_TEXT_COLOR, ThemeUtils.getAppForegroundColor());
     }
 
     private static String sourceText(String providerName) {

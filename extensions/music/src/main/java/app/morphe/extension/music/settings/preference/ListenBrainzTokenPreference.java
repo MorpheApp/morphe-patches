@@ -29,6 +29,7 @@ import app.morphe.extension.music.patches.scrobbling.listenbrainz.ListenBrainz;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 
@@ -90,7 +91,7 @@ public class ListenBrainzTokenPreference extends Preference {
         TextView instruction = new TextView(context);
         instruction.setText(str("morphe_music_listenbrainz_token_dialog_instruction"));
         instruction.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-        instruction.setTextColor(Utils.getAppForegroundColor());
+        instruction.setTextColor(ThemeUtils.getAppForegroundColor());
         LinearLayout.LayoutParams instructionParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -110,7 +111,7 @@ public class ListenBrainzTokenPreference extends Preference {
 
         TextView status = new TextView(context);
         status.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
-        status.setTextColor(Utils.getAppForegroundColor());
+        status.setTextColor(ThemeUtils.getAppForegroundColor());
         status.setVisibility(View.GONE);
 
         Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
@@ -173,7 +174,7 @@ public class ListenBrainzTokenPreference extends Preference {
                         showStatus(status, str("morphe_music_listenbrainz_token_status_empty"), STATUS_COLOR_ERROR);
                         return;
                     }
-                    showStatus(status, str("morphe_music_listenbrainz_token_status_validating"), Utils.getAppForegroundColor());
+                    showStatus(status, str("morphe_music_listenbrainz_token_status_validating"), ThemeUtils.getAppForegroundColor());
                     Utils.runOnBackgroundThread(() -> {
                         try {
                             ListenBrainz.TokenValidation validation = ListenBrainz.validateToken(token);
@@ -240,10 +241,10 @@ public class ListenBrainzTokenPreference extends Preference {
         EditText editText = new EditText(context);
         editText.setSingleLine(true);
         editText.setTextSize(16);
-        editText.setTextColor(Utils.getAppForegroundColor());
+        editText.setTextColor(ThemeUtils.getAppForegroundColor());
         ShapeDrawable background = new ShapeDrawable(new RoundRectShape(
                 Dim.roundedCorners(10), null, null));
-        background.getPaint().setColor(Utils.getEditTextBackground());
+        background.getPaint().setColor(ThemeUtils.getEditTextBackground());
         editText.setPadding(Dim.dp12, Dim.dp8, Dim.dp12, Dim.dp8);
         editText.setBackground(background);
         editText.setClipToOutline(true);

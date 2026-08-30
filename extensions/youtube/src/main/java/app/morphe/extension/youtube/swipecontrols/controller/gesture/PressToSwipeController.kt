@@ -1,10 +1,20 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.youtube.swipecontrols.controller.gesture
 
 import android.view.MotionEvent
+import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeZoneAction
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsHostActivity
 import app.morphe.extension.youtube.swipecontrols.controller.gesture.core.BaseGestureController
-import app.morphe.extension.youtube.swipecontrols.controller.gesture.core.SwipeDetector
-import app.morphe.extension.youtube.swipecontrols.misc.contains
+import app.morphe.extension.youtube.swipecontrols.misc.Point
 import app.morphe.extension.youtube.swipecontrols.misc.toPoint
 
 /**
@@ -16,46 +26,29 @@ class PressToSwipeController(
     private val controller: SwipeControlsHostActivity,
 ) : BaseGestureController(controller) {
     /**
-     * Indicates whether the user is currently in a swipe session.
+     * Where the current swipe session started, or null if there is no session.
      */
-    private var isInSwipeSession = false
-
-    /**
-     * Indicates whether the current swipe session was initiated in the speed zone.
-     */
-    private var isInSpeedSwipeSession = false
+    private var swipeSessionOrigin: Point? = null
 
     override val shouldForceInterceptEvents: Boolean
         get() {
-            val swipe = currentSwipe
-            return (swipe == SwipeDetector.SwipeDirection.VERTICAL && isInSwipeSession) ||
-                    (swipe == SwipeDetector.SwipeDirection.HORIZONTAL && isInSpeedSwipeSession)
+            val origin = swipeSessionOrigin ?: return false
+            return swipeActionAt(origin, currentSwipe) != SwipeZoneAction.OFF
         }
 
     override fun shouldDropMotion(motionEvent: MotionEvent): Boolean = false
 
-    override fun isInSwipeZone(motionEvent: MotionEvent): Boolean {
-        val inVolumeZone = controller.config.enableVolumeControls &&
-            (motionEvent.toPoint() in controller.zones.volume)
-        val inBrightnessZone = controller.config.enableBrightnessControl &&
-            (motionEvent.toPoint() in controller.zones.brightness)
-        val inSpeedZone = controller.config.enableSpeedGestureControl &&
-            (motionEvent.toPoint() in controller.zones.speed)
-        return inVolumeZone || inBrightnessZone || inSpeedZone
-    }
-
     override fun onUp(motionEvent: MotionEvent) {
         super.onUp(motionEvent)
-        isInSwipeSession = false
-        isInSpeedSwipeSession = false
+        swipeSessionOrigin = null
     }
 
     override fun onLongPress(motionEvent: MotionEvent) {
         // enter swipe session with feedback
-        isInSwipeSession = true
-        isInSpeedSwipeSession = controller.config.enableSpeedGestureControl &&
-            motionEvent.toPoint() in controller.zones.speed
-        controller.overlay.onEnterSwipeSession()
+        swipeSessionOrigin = if (isInSwipeZone(motionEvent)) motionEvent.toPoint() else null
+        if (swipeSessionOrigin != null) {
+            controller.overlay.onEnterSwipeSession()
+        }
 
         // send GestureDetector a ACTION_CANCEL event so it will handle further events
         motionEvent.action = MotionEvent.ACTION_CANCEL
@@ -68,21 +61,11 @@ class PressToSwipeController(
         distanceX: Double,
         distanceY: Double,
     ): Boolean {
-        // cancel if not fullscreen
-        if (!controller.config.isFullscreenVideo) return false
-        // cancel if not in swipe session or valid direction
-        if (!shouldForceInterceptEvents) return false
-        val swipe = currentSwipe
-        val fromPoint = from.toPoint()
-        return when (swipe) {
-            SwipeDetector.SwipeDirection.VERTICAL -> when (fromPoint) {
-                in controller.zones.volume -> { scrollVolume(distanceY); true }
-                in controller.zones.brightness -> { scrollBrightness(distanceY); true }
-                else -> false
-            }
-            SwipeDetector.SwipeDirection.HORIZONTAL ->
-                if (isInSpeedSwipeSession) { scrollSpeed(-distanceX); true } else false
-            else -> false
-        }
+        // cancel if not fullscreen or multi-window
+        if (!controller.config.isFullscreenOrMultiWindowVideo) return false
+        // cancel if not in swipe session
+        if (swipeSessionOrigin == null) return false
+
+        return applySwipeAction(from, distanceX, distanceY)
     }
 }

@@ -13,6 +13,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
+import app.morphe.patches.music.misc.playservice.is_9_32_or_greater
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
@@ -46,24 +47,37 @@ val disableDislikeRedirectionPatch = bytecodePatch(
             SwitchPreference("morphe_music_disable_dislike_redirection", summary = true)
         )
 
-        // The notification and player handlers share the same onClick dispatch interface method,
-        // extract its reference here to locate the twin call inside the player handler below.
-        val onClickReference = NotificationLikeButtonOnClickListenerFingerprint.let {
-            it.method.let { method ->
-                val onClickIndex = it.instructionMatches.last().index
-                val reference = method.getInstruction<ReferenceInstruction>(onClickIndex)
-                    .reference
+        if (is_9_32_or_greater) {
+            val notificationFingerprint = NotificationLikeButtonOnClickListenerFingerprint
+            val notificationOnClickIndex = notificationFingerprint.instructionMatches.last().index
+            notificationFingerprint.method.injectRedirectionGuard(notificationOnClickIndex)
 
-                method.injectRedirectionGuard(onClickIndex)
-                reference
+            DislikeButtonOnClickListenerFingerprint.method.apply {
+                val onClickIndex = indexOfFirstInstructionReversedOrThrow {
+                    (opcode == Opcode.INVOKE_INTERFACE || opcode == Opcode.INVOKE_VIRTUAL) &&
+                            getReference<MethodReference>()?.returnType == "V"
+                }
+                injectRedirectionGuard(onClickIndex)
             }
-        }
+        } else {
+            // The notification and player handlers share the same onClick dispatch interface method,
+            // extract its reference here to locate the twin call inside the player handler below.
+            val onClickReference = NotificationLikeButtonOnClickListenerFingerprint.let { fingerprint ->
+                fingerprint.method.let { method ->
+                    val onClickIndex = fingerprint.instructionMatches.last().index
+                    val reference = method.getInstruction<ReferenceInstruction>(onClickIndex).reference
 
-        DislikeButtonOnClickListenerFingerprint.method.apply {
-            val onClickIndex = indexOfFirstInstructionOrThrow {
-                getReference<MethodReference>() == onClickReference
+                    method.injectRedirectionGuard(onClickIndex)
+                    reference
+                }
             }
-            injectRedirectionGuard(onClickIndex)
+
+            DislikeButtonOnClickListenerLegacyFingerprint.method.apply {
+                val onClickIndex = indexOfFirstInstructionOrThrow {
+                    getReference<MethodReference>() == onClickReference
+                }
+                injectRedirectionGuard(onClickIndex)
+            }
         }
     }
 }

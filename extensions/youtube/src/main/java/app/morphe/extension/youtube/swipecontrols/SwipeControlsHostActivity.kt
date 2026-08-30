@@ -5,6 +5,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.MotionEvent
+import android.view.View
 import android.view.ViewGroup
 import android.view.WindowInsets
 import app.morphe.extension.shared.Logger.printDebug
@@ -191,6 +192,16 @@ class SwipeControlsHostActivity : Activity() {
         contentRoot.addView(overlay)
     }
 
+    /**
+     * If the app shares the screen with another app, which the player of a fold device is used
+     * with the same way it is used in fullscreen.
+     *
+     * Picture in picture is a multi window mode as well and is not one of these. The window of
+     * the app is pinned then, and the player it returns to is the maximized one.
+     */
+    val isInSplitScreenMode: Boolean
+        get() = isInMultiWindowMode && !isInPictureInPictureMode
+
     // Flag that indicates whether the brightness has been saved and restored default brightness
     private var isBrightnessSaved = false
 
@@ -201,9 +212,10 @@ class SwipeControlsHostActivity : Activity() {
      */
     private fun onPlayerTypeChanged(type: PlayerType) {
         when {
-            // If saving and restoring brightness is enabled, and the player type is WATCH_WHILE_FULLSCREEN,
+            // If saving and restoring brightness is enabled, and the player type is fullscreen or multi-window,
             // and brightness has already been saved, then restore the screen brightness
-            config.shouldSaveAndRestoreBrightness && type == PlayerType.WATCH_WHILE_FULLSCREEN && isBrightnessSaved -> {
+            config.shouldSaveAndRestoreBrightness && (type == PlayerType.WATCH_WHILE_FULLSCREEN ||
+                    (isInSplitScreenMode && type == PlayerType.WATCH_WHILE_MAXIMIZED)) && isBrightnessSaved -> {
                 screen?.restore()
                 isBrightnessSaved = false
             }
@@ -250,6 +262,8 @@ class SwipeControlsHostActivity : Activity() {
         }
 
     companion object {
+        private const val LOCK_MODE_OVERLAY_NAME = "player_overlay_lock_mode"
+
         /**
          * The currently active swipe controls host.
          * The reference may be null.
@@ -257,6 +271,44 @@ class SwipeControlsHostActivity : Activity() {
         @JvmStatic
         var currentHost: WeakReference<SwipeControlsHostActivity> = WeakReference(null)
             private set
+
+        /**
+         * Container of the native lock screen overlay.
+         * The reference may be null.
+         */
+        private var lockModeOverlay: WeakReference<ViewGroup> = WeakReference(null)
+
+        /**
+         * Whether the native lock screen is currently engaged.
+         *
+         * The container is attached for the entire playback session, and only its Litho content
+         * is mounted while the screen is locked, so the mounted content is what tells both states apart.
+         */
+        val isPlayerLocked: Boolean
+            get() {
+                val overlay = lockModeOverlay.get() ?: return false
+
+                for (i in 0 until overlay.childCount) {
+                    val child = overlay.getChildAt(i)
+                    if (child is ViewGroup && child.childCount > 0) {
+                        return true
+                    }
+                }
+
+                return false
+            }
+
+        /**
+         * Injection point.
+         */
+        @Suppress("unused")
+        @JvmStatic
+        fun setPlayerOverlay(overlay: View, overlayName: String?) {
+            // The same container class wraps every player overlay, and only the name tells them apart.
+            if (LOCK_MODE_OVERLAY_NAME == overlayName && overlay is ViewGroup) {
+                lockModeOverlay = WeakReference(overlay)
+            }
+        }
 
         /**
          * Injection point.

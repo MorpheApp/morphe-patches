@@ -107,13 +107,23 @@ Nem fog értesülni semmilyen váratlan eseményről."</string>
   <string name="morphe_debug_logs_clear_toast">Hibakeresési naplók törölve</string>
   <string name="morphe_debug_feature_flags_manager_title">Funkciójelzők Manager</string>
   <string name="morphe_debug_feature_flags_manager_summary">Logikai funkciójelzők kezelése</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Aktív funkciójelzők (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Blokkolt funkciójelzők (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Keresés a funkciójelzőkben…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Automatikus</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Ki</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Be</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Eltávolítás</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Funkciójelzők mentve</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Funkciójelzők visszaállítva</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Funkciójelzők a vágólapra másolva</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Ehhez a beállításnak a beállítást használni az alkalmazás újraindítása</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Kezdet</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Nyisson a MicroG beállításokat</string>

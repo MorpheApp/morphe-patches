@@ -21,6 +21,25 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Поново покрените да бисте завршили постављање</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Назив апликације</string>
+  <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">Позадина тамне теме</string>
+  <string name="morphe_theme_color_dark_entry_2">Чисто црна</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You (Чиста црна)</string>
+  <string name="morphe_theme_color_dark_entry_9">Класични YouTube</string>
+  <string name="morphe_theme_color_dark_entry_10">Темно розе</string>
+  <string name="morphe_theme_color_dark_entry_11">Темно плава</string>
+  <string name="morphe_theme_color_dark_entry_12">Темно зелена</string>
+  <string name="morphe_theme_color_dark_entry_13">Темно жолта</string>
+  <string name="morphe_theme_color_dark_entry_14">Темно наранџаста</string>
+  <string name="morphe_theme_color_dark_entry_15">Темно црвена</string>
+  <string name="morphe_theme_color_dark_custom_title">Прилагођена тамна позадина</string>
+  <string name="morphe_theme_color_dark_custom_summary">Подеси боју позадине тамне теме</string>
+  <string name="morphe_theme_color_entry_1">Подразумевано у апликацији</string>
+  <string name="morphe_theme_color_entry_4">Material You (Неутрална)</string>
+  <string name="morphe_theme_color_entry_5">Material You (Примарна)</string>
+  <string name="morphe_theme_color_entry_6">Material You (Секундарна)</string>
+  <string name="morphe_theme_color_entry_7">Material You (Терцијарна)</string>
+  <string name="morphe_theme_color_custom_entry">Обичај</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Спољна преузимања</string>
   <string name="morphe_external_downloader_name_title">Назив пакета програма за преузимање</string>
@@ -34,7 +53,7 @@ Second \"item\" text"</string>
 Проверите да ли је назив пакета исправан и да ли је апликација инсталирана"</string>
   <string name="morphe_external_downloader_empty_warning">Назив пакета не сме бити празан</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
-  <string name="morphe_custom_branding_name_entry_5">Цустом</string>
+  <string name="morphe_custom_branding_name_entry_5">Обичај</string>
   <string name="morphe_custom_branding_icon_title">Иконица апликације</string>
   <string name="morphe_custom_branding_icon_entry_1">Оригинална</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe сен</string>
@@ -45,7 +64,7 @@ Second \"item\" text"</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
   <string name="morphe_custom_branding_icon_entry_6">Морфе плеј црно</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_7">Цустом</string>
+  <string name="morphe_custom_branding_icon_entry_7">Обичај</string>
   <string name="morphe_custom_branding_notification_icon_title">Икона обавештења</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Усклади икона апликације</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe плеј</string>
@@ -62,7 +81,7 @@ Second \"item\" text"</string>
 Ако сте корисник YouTube Premium-а, ова поставка вам можда неће бити потребна."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Не можемо да узмемо било који поток клијента</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Искључивање овог подешавања може изазвати проблеме са репродукцијом.</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Пokusajte да укључите: Нагласи поток видеа > Пријава на Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Подразумевани клијент</string>
@@ -132,9 +151,9 @@ Da bi se prijavili, pritisnite nastavak ispod"</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">Повезивање директно ако прокси не успе</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Сакриј огласе преко целог екрана</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">Да бисте користили ову функцију, промените опцију „Лажирани видео стримови” на било који клијент осим Android Studio\'</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">Да бисте користили ову функцију, промените опцију „Лажирани видео стримови” на било који клијент осим „Android Studio” и „Android VR Downgraded”</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Очисти дељене линкове</string>
   <string name="morphe_sanitize_sharing_links_summary">Уклања параметре упита за праћење из дељених линкова.</string>
@@ -165,6 +184,23 @@ Da bi se prijavili, pritisnite nastavak ispod"</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Уклони дијалог о дискрецији гледаоца</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Ово не заобилази старосно ограничење. Само га аутоматски прихвата.</string>
+  <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">PoToken провајдер</string>
+  <string name="morphe_potoken_provider_screen_summary">Конфигуришите PoToken провајдера да бисте спречили проблеме са репродукцијом</string>
+  <string name="morphe_external_potoken_provider_title">Спољни PoToken провајдер</string>
+  <string name="morphe_external_potoken_provider_summary">"Поправља проблеме са репродукцијом користећи спољни PoToken минер (Експериментално)
+
+Ако сте YouTube Premium корисник, ово подешавање можда није потребно"</string>
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"Исправља проблеме са репродукцијом користећи спољни PoToken минтер (експериментално)
+
+Да бисте користили ову функцију, искључите „Спуфинг видео стримова”"</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">Отворите подешавања PotHelper</string>
+  <string name="morphe_external_potoken_provider_settings_summary">Отвори PotHelper подешавања</string>
+  <string name="morphe_external_potoken_provider_about_summary">"Ова функција је тренутно у развоју и можда неће радити
+
+Додирните овде да преузмете PotHelper"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Лажирана верзија апликације</string>
   <string name="morphe_spoof_app_version_summary">Превари сервер да мисли да користите старију верзију апликације како би се вратиле застареле функције корисничког интерфејса</string>

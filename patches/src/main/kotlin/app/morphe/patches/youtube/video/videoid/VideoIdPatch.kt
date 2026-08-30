@@ -14,6 +14,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
+import app.morphe.patches.youtube.misc.addon.EXTENSION_ADD_ON_API_CLASS_DESCRIPTOR
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.video.playerresponse.Hook
@@ -146,5 +147,8 @@ val videoIdPatch = bytecodePatch(
                 backgroundPlaybackInsertIndex = index + 2
             }
         }
+
+        // Inject the call for add-on patch bundles, which cannot hook the video id themselves.
+        hookVideoId("$EXTENSION_ADD_ON_API_CLASS_DESCRIPTOR->videoIdChanged(Ljava/lang/String;)V")
     }
 }

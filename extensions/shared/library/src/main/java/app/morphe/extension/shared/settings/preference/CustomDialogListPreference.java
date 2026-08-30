@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.shared.settings.preference;
 
 import android.app.Dialog;
@@ -21,6 +31,7 @@ import androidx.annotation.Nullable;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 
 /**
@@ -143,13 +154,13 @@ public class CustomDialogListPreference extends ListPreference {
 
             CharSequence itemText = getItem(position);
             holder.itemText.setText(itemText);
-            holder.itemText.setTextColor(Utils.getAppForegroundColor());
+            holder.itemText.setTextColor(ThemeUtils.getAppForegroundColor());
 
             // Show or hide checkmark and placeholder.
             String currentValue = entryValues[position].toString();
             boolean isSelected = currentValue.equals(selectedValue);
             holder.checkIcon.setVisibility(isSelected ? View.VISIBLE : View.GONE);
-            holder.checkIcon.setColorFilter(Utils.getAppForegroundColor());
+            holder.checkIcon.setColorFilter(ThemeUtils.getAppForegroundColor());
             holder.placeholder.setVisibility(isSelected ? View.GONE : View.VISIBLE);
 
             return view;
@@ -174,6 +185,14 @@ public class CustomDialogListPreference extends ListPreference {
 
     public CustomDialogListPreference(Context context) {
         super(context);
+    }
+
+    /**
+     * Opens the selection dialog, as if the preference row itself was tapped.
+     * Allows another preference to present this list on its behalf.
+     */
+    public void showSelectionDialog() {
+        showDialog(null);
     }
 
     @Override

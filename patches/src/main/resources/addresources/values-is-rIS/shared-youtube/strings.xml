@@ -21,6 +21,25 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Endurræstu til að lokar á uppsetninguna</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">App nafn</string>
+  <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">Bakgrunnur fyrir dökkt þema</string>
+  <string name="morphe_theme_color_dark_entry_2">Hreint svart</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You (Hrein svartur)</string>
+  <string name="morphe_theme_color_dark_entry_9">Klassískt YouTube</string>
+  <string name="morphe_theme_color_dark_entry_10">Dökkbleikur</string>
+  <string name="morphe_theme_color_dark_entry_11">Dökkblátt</string>
+  <string name="morphe_theme_color_dark_entry_12">Dökkgrænn</string>
+  <string name="morphe_theme_color_dark_entry_13">Dökkgulur</string>
+  <string name="morphe_theme_color_dark_entry_14">Dökkppelsínugult</string>
+  <string name="morphe_theme_color_dark_entry_15">Dökkrautt</string>
+  <string name="morphe_theme_color_dark_custom_title">Sérsniðinn dökkur bakgrunnur</string>
+  <string name="morphe_theme_color_dark_custom_summary">Stilltu bakgrunnslit á dimmu þema</string>
+  <string name="morphe_theme_color_entry_1">Sjálfgefið</string>
+  <string name="morphe_theme_color_entry_4">Material You (Hlutlaus)</string>
+  <string name="morphe_theme_color_entry_5">Material You (Aðal)</string>
+  <string name="morphe_theme_color_entry_6">Material You (Annað)</string>
+  <string name="morphe_theme_color_entry_7">Material You (Þriðja)</string>
+  <string name="morphe_theme_color_custom_entry">Sérsniðið</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Niðurhaldið</string>
   <string name="morphe_external_downloader_name_title">Nafn pakkans fyrir niðurhal</string>
@@ -62,7 +81,7 @@ Staðfestu að pakkanafnið er rétt og að forritið er uppsett"</string>
 Ef þú ert YouTube Premium notandi gæti þessi stilling verið óþarf"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Ekki tókst að sækja klientastreymi</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Ef þú slökkvir á þessari stillingu gæti það valdið vandræðum við spilun.</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Reyndu að virkja: Spoof myndstreymi > Android VR innskráning</string>
   <string name="morphe_spoof_video_streams_client_type_title">Sjálfgefið tengiliður</string>
@@ -132,9 +151,9 @@ Til að skrá þig inn ýttu á halda áfram hér að neðan"</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">Tengist beint ef proxy virkar ekki</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Falir auglýsingar á fullri skjánum</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">Til að nota þennan eiginleika skaltu breyta \'Spoof video streams\' í hvaða þjónustu sem er nema \'Android Studio\'</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">Til að nota þennan eiginleika, breyttu \'Spoofa myndstrauma\' í hvaða biðlara sem er nema \'Android Studio\' og \'Android VR Downgraded\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Hreinsa deilingshlökki</string>
   <string name="morphe_sanitize_sharing_links_summary">Fjarlægir rekja breytur úr deilingshlökkum</string>
@@ -165,6 +184,23 @@ Athugaðu að einnig kunna að vera skráð ákveðin notendagögn, svo sem IP-t
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Fjarlægja spurningatexta um sjónarhátt</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Þetta hjálpar ekki að umfara aldurstakmarkanirnar. Það samþykkir þær bara sjálfkrafa</string>
+  <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">PoToken-veita</string>
+  <string name="morphe_potoken_provider_screen_summary">Stilltu PoToken-veituna til að koma í veg fyrir spilunarvandamál</string>
+  <string name="morphe_external_potoken_provider_title">Ytri PoToken-veita</string>
+  <string name="morphe_external_potoken_provider_summary">"Lagfærir spilunarvandamál með því að nota ytri PoToken-myntara (tilraunakennt)
+
+Ef þú ert YouTube Premium notandi, gæti þessi stilling ekki verið nauðsynleg"</string>
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"Lagfærir spilunarvandamál með því að nota ytri PoToken útgefanda (Tilraunakennt)
+
+Til að nota þessa eiginleika, slökktu á 'Falsun myndbandsstrauma'"</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">Ef það virkar ekki, reyndu að neyða MicroG til að lokast</string>
+  <string name="morphe_external_potoken_provider_settings_summary">Opnaðu PotHelper stillingar</string>
+  <string name="morphe_external_potoken_provider_about_summary">"Þessi eiginleiki er nú í þróun og gæti ekki virkað
+
+Snertu hér til að hlaða niður PotHelper"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Gerðu app útgáfuna að breytast</string>
   <string name="morphe_spoof_app_version_summary">Blekkur netþjóninn til að láta það virðast eins og þú ert að nota eldri app útgáfu til að endurheimta eldri UI eiginleika</string>

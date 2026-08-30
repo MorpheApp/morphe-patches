@@ -33,7 +33,8 @@ internal fun baseNetworkProxyPatch(
     executeBlock: BytecodePatchContext.() -> Unit = {}
 ) = bytecodePatch(
     name = "Network proxy",
-    description = "Adds settings to route supported network requests through an HTTP or HTTPS proxy."
+    description = "Adds settings to route supported network requests through an HTTP or HTTPS proxy.",
+    default = false
 ) {
 
     block()
@@ -85,7 +86,7 @@ internal fun baseNetworkProxyPatch(
                 val register = getInstruction<OneRegisterInstruction>(index).registerA
                 addInstruction(
                     index,
-                    "invoke-static { v$register }, $EXTENSION_CLASS->recordProxyConfiguredCronetEngine($CRONET_ENGINE_CLASS)V"
+                    "invoke-static { v$register }, $EXTENSION_CLASS->recordCronetEngine($CRONET_ENGINE_CLASS)V"
                 )
             }
         }

@@ -107,9 +107,14 @@ Siz hech qanday kutilmagan voqealar haqida xabardor qilinmaysiz."</string>
   <string name="morphe_debug_logs_clear_toast">Debug loglari tozalandi</string>
   <string name="morphe_debug_feature_flags_manager_title">Funksiyalar bayroqlari menejeri</string>
   <string name="morphe_debug_feature_flags_manager_summary">Boolean funksiya bayroqlarini boshqarish</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Faol funksiya bayroqlari (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Bloklangan funksiya bayroqlari (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Funksionalilik xususiyatlarini qidir…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_toast_saved">Funksiya bayroqlari saqlandi</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Funksiya bayroqlari taqimlandi</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Funksiya bayroqlari nusxalab olindi</string>

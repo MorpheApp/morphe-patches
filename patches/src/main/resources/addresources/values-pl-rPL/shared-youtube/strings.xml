@@ -21,6 +21,25 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Uruchom ponownie, aby dokończyć konfigurację</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Nazwa aplikacji</string>
+  <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">Tło ciemnego motywu</string>
+  <string name="morphe_theme_color_dark_entry_2">Głęboka czerń</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You (Głęboka czerń)</string>
+  <string name="morphe_theme_color_dark_entry_9">Klasyczny YouTube</string>
+  <string name="morphe_theme_color_dark_entry_10">Ciemnoróżowy</string>
+  <string name="morphe_theme_color_dark_entry_11">Ciemnoniebieski</string>
+  <string name="morphe_theme_color_dark_entry_12">Ciemnozielony</string>
+  <string name="morphe_theme_color_dark_entry_13">Ciemnożółty</string>
+  <string name="morphe_theme_color_dark_entry_14">Ciemnopomarańczowy</string>
+  <string name="morphe_theme_color_dark_entry_15">Ciemnoczerwony</string>
+  <string name="morphe_theme_color_dark_custom_title">Niestandardowe ciemne tło</string>
+  <string name="morphe_theme_color_dark_custom_summary">Ustaw kolor tła dla ciemnego motywu</string>
+  <string name="morphe_theme_color_entry_1">Domyślne aplikacji</string>
+  <string name="morphe_theme_color_entry_4">Material You (Neutralny)</string>
+  <string name="morphe_theme_color_entry_5">Material You (Podstawowy)</string>
+  <string name="morphe_theme_color_entry_6">Material You (Drugorzędny)</string>
+  <string name="morphe_theme_color_entry_7">Material You (Trzeciorzędny)</string>
+  <string name="morphe_theme_color_custom_entry">Własny</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Zewnętrzne pobieranie</string>
   <string name="morphe_external_downloader_name_title">Nazwa pakietu aplikacji do pobierania</string>
@@ -57,12 +76,12 @@ Upewnij się, że nazwa pakietu jest poprawna i czy aplikacja jest zainstalowana
   <string name="morphe_spoof_video_streams_screen_title">Fałszowanie strumieni filmów</string>
   <string name="morphe_spoof_video_streams_screen_summary">Skonfiguruj fałszowanie klienta, aby zapobiec problemom z odtwarzaniem</string>
   <string name="morphe_spoof_video_streams_title">Fałszuj strumienie filmów</string>
-  <string name="morphe_spoof_video_streams_summary">"Naprawia problemy z odtwarzaniem u większości użytkowników, wymuszając kompatybilny strumień filmów
+  <string name="morphe_spoof_video_streams_summary">"Naprawia problemy z odtwarzaniem u większości użytkowników, wymuszając zgodny strumień filmów
 
 Jeśli masz YouTube Premium, to ustawienie może nie być wymagane"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Nie można przechwycić żadnego ze strumieni klienta</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Wyłączenie tego ustawienia może spowodować problemy z odtwarzaniem.</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Spróbuj włączyć: Fałszuj strumienie filmów i Logowanie Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Domyślny klient</string>
@@ -132,9 +151,9 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">Łączy się bezpośrednio w przypadku awarii proxy</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Ukryj reklamy pełnoekranowe</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">Aby użyć tej funkcji, zmień opcję \"Fałszowanie strumieni filmów\" na dowolnego klienta z wyjątkiem \"Android Studio\"</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">Aby użyć tej funkcji, zmień opcję \"Fałszowanie strumieni filmów\" na dowolnego klienta z wyjątkiem \"Android Studio\" i \"Android VR Downgraded\"</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Oczyść udostępniane linki</string>
   <string name="morphe_sanitize_sharing_links_summary">Usuwa parametry śledzące z udostępnianych linków</string>
@@ -165,6 +184,23 @@ Pamiętaj jednak, że rejestrowane będą również niektóre dane użytkownika,
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Usuń okno z ostrzeżeniem dla widzów</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">To nie omija ograniczenia wiekowego. Po prostu automatycznie je akceptuje</string>
+  <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">Dostawca PoToken</string>
+  <string name="morphe_potoken_provider_screen_summary">Skonfiguruj dostawcę PoToken, aby zapobiec problemom z odtwarzaniem</string>
+  <string name="morphe_external_potoken_provider_title">Zewnętrzny dostawca PoToken</string>
+  <string name="morphe_external_potoken_provider_summary">"Rozwiązuje problemy z odtwarzaniem za pomocą zewnętrznego generatora PoToken (Eksperymentalne)
+
+Jeśli masz YouTube Premium, to ustawienie może nie być wymagane"</string>
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"Rozwiązuje problemy z odtwarzaniem za pomocą zewnętrznego generatora PoToken (Eksperymentalne)
+
+Aby użyć tej funkcji, wyłącz \"Fałszuj strumienie filmów\""</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">Jeśli to nie zadziała, spróbuj wymusić zatrzymanie microG</string>
+  <string name="morphe_external_potoken_provider_settings_summary">Otwórz ustawienia PotHelper</string>
+  <string name="morphe_external_potoken_provider_about_summary">"Ta funkcja jest obecnie w fazie rozwoju i może nie działać
+
+Dotknij tutaj, aby pobrać PotHelper"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Fałszuj wersję aplikacji</string>
   <string name="morphe_spoof_app_version_summary">Oszukuje serwer, że używasz starszej wersji aplikacji, aby przywrócić klasyczne elementy interfejsu</string>

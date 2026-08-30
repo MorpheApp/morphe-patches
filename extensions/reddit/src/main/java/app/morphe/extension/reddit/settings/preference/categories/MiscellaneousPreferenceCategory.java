@@ -16,12 +16,15 @@ import android.preference.PreferenceScreen;
 import app.morphe.extension.reddit.patches.OpenLinksDirectlyPatch;
 import app.morphe.extension.reddit.patches.OpenLinksExternallyPatch;
 import app.morphe.extension.reddit.patches.SanitizeSharingLinksPatch;
+import app.morphe.extension.reddit.patches.VersionCheckPatch;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.preference.ImportExportPreference;
-import app.morphe.extension.shared.settings.preference.about.MorpheAboutPreference;
 import app.morphe.extension.shared.settings.preference.SortedListPreference;
+import app.morphe.extension.shared.settings.preference.URLLinkPreference;
+import app.morphe.extension.shared.settings.preference.about.MorpheAboutPreference;
 
 @SuppressWarnings("deprecation")
 public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCategory {
@@ -70,6 +73,14 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
                     context,
                     Settings.SANITIZE_SHARING_LINKS
             ));
+        }
+
+        // Include original privacy policy link that was changed to open Morphe settings.
+        if (VersionCheckPatch.is_2026_25_or_greater) {
+            URLLinkPreference preference = new URLLinkPreference(context);
+            preference.setTitle(str("reddit_privacy_policy"));
+            preference.externalURL = ResourceUtils.getString("privacy_policy_uri");
+            addPreference(preference);
         }
     }
 }

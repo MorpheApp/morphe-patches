@@ -25,9 +25,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_summary">서드파티 다운로드 앱을 사용하여 뮤직비디오, 팟캐스트 또는 노래를 다운로드할 수 있습니다</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">오프라인 저장 버튼 재정의하기</string>
-  <string name="morphe_external_downloader_action_button_summary">기본 오프라인 저장 작업 버튼 대신 사용자가 선택한 외부 다운로더를 사용합니다</string>
-  <string name="morphe_external_downloader_flyout_menu_title">오프라인 저장 메뉴 재정의하기</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">기본 피드 \'오프라인 저장\' 메뉴 대신 사용자가 선택한 외부 다운로더를 사용합니다</string>
+  <string name="morphe_external_downloader_action_button_summary">오프라인 저장 작업 버튼으로 기본 다운로더 대신 사용자가 선택한 외부 다운로더를 사용합니다</string>
+  <string name="morphe_external_downloader_flyout_menu_title">동영상 오프라인 저장 메뉴 재정의하기</string>
+  <string name="morphe_external_downloader_flyout_menu_summary">피드 \'동영상 오프라인 저장\' 메뉴로 기본 다운로더 대신 사용자가 선택한 외부 다운로더를 사용합니다</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">정보</string>
@@ -50,7 +50,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">가사 패널</string>
   <string name="morphe_music_hide_lyrics_share_button_title">공유 버튼 숨기기</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">번역 버튼 숨기기</string>
-  <string name="morphe_music_hide_new_from_shelf_title">(아티스트)의 새로운 음악 선반 숨기기</string>
+  <string name="morphe_music_hide_new_from_shelf_title">\'(아티스트)의 새로운 음악\' 선반 숨기기</string>
   <string name="morphe_music_hide_playlist_shelves_title">재생목록 선반 숨기기</string>
   <string name="morphe_music_hide_repeat_button_title">반복 버튼 숨기기</string>
   <string name="morphe_music_hide_shuffle_button_title">셔플 버튼 숨기기</string>
@@ -328,5 +328,5 @@ YouTube Music 8.x에서는 크로스페이드가 작동하지 않습니다. 크�
 서드파티 가사를 찾을 수 없는 경우에는 내장된 가사가 대신 표시됩니다"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - 굵은 아이콘을 비활성화합니다</string>
-  <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - 플레이어에서 위로 스와이프하여 다음 곡 전환, 가사 및 관련 탭을 복원합니다</string>
+  <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - 플레이어에서 \'다음 트랙\', \'가사\' 및 \'관련 항목\' 탭을 복원합니다</string>
 </resources>

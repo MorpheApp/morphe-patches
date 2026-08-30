@@ -93,7 +93,7 @@ public class SaveToWatchLaterRequest {
             if (responseCode == 200) {
                 return Requester.parseJSONObject(connection);
             }
-            handleConnectionError("Save to watch later failed with code: " + responseCode, null);
+            handleConnectionError("Save to Watch later failed with code: " + responseCode, null);
         } catch (SocketTimeoutException ex) {
             handleConnectionError("Connection timeout", ex);
         } catch (IOException ex) {

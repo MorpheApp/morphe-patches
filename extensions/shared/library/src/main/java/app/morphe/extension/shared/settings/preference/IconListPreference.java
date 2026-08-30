@@ -39,6 +39,7 @@ import java.util.Objects;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 
 /**
@@ -344,11 +345,11 @@ public class IconListPreference extends CustomDialogListPreference {
             }
 
             holder.itemText.setText(getItem(position));
-            holder.itemText.setTextColor(Utils.getAppForegroundColor());
+            holder.itemText.setTextColor(ThemeUtils.getAppForegroundColor());
 
             boolean isSelected = entryValues[position].toString().equals(selectedValue);
             holder.checkIcon.setVisibility(isSelected ? View.VISIBLE : View.GONE);
-            holder.checkIcon.setColorFilter(Utils.getAppForegroundColor());
+            holder.checkIcon.setColorFilter(ThemeUtils.getAppForegroundColor());
             holder.placeholder.setVisibility(isSelected ? View.GONE : View.VISIBLE);
 
             if (holder.itemIcon != null) {

@@ -21,6 +21,25 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Herbegin om die opstelling te voltooi</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Program naam</string>
+  <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">Donker tema-agtergrond</string>
+  <string name="morphe_theme_color_dark_entry_2">Suiwer swart</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You (Suiwer swart)</string>
+  <string name="morphe_theme_color_dark_entry_9">Klassieke YouTube</string>
+  <string name="morphe_theme_color_dark_entry_10">Donkerpienk</string>
+  <string name="morphe_theme_color_dark_entry_11">Donkerblou</string>
+  <string name="morphe_theme_color_dark_entry_12">Donkergroen</string>
+  <string name="morphe_theme_color_dark_entry_13">Donkergeel</string>
+  <string name="morphe_theme_color_dark_entry_14">Donkeroranje</string>
+  <string name="morphe_theme_color_dark_entry_15">Donkerrooi</string>
+  <string name="morphe_theme_color_dark_custom_title">Pasmaak donker agtergrond</string>
+  <string name="morphe_theme_color_dark_custom_summary">Stel die agtergrondkleur van die donker tema</string>
+  <string name="morphe_theme_color_entry_1">App-verstek</string>
+  <string name="morphe_theme_color_entry_4">Material You (Neutraal)</string>
+  <string name="morphe_theme_color_entry_5">Material You (Primêre)</string>
+  <string name="morphe_theme_color_entry_6">Material You (Sekondêre)</string>
+  <string name="morphe_theme_color_entry_7">Material You (Tersiêre)</string>
+  <string name="morphe_theme_color_custom_entry">Pasgemaak</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Eksterne aflaaie</string>
   <string name="morphe_external_downloader_name_title">Aflaai pakket naam</string>
@@ -62,7 +81,7 @@ Verifieer dat die pakketnaam korrek is en die app geïnstalleer is"</string>
 As jy 'n YouTube Premium-gebruiker is, is hierdie instelling dalk nie vereis nie"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Kon nie enige kliëntstrome ophaal nie</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Om hierdie instelling af te skakel, kan dit speelprobleme veroorsaak.</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Probeer om dit te aktiveer: Verfraai videostrome &gt; Android VR aanteken</string>
   <string name="morphe_spoof_video_streams_client_type_title">Standaard kliënt</string>
@@ -132,9 +151,9 @@ Om aan te meld, druk voort hieronder"</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">Sluit direk aan as die proxy misluk</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Verberg volskermadvertensies</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">Om hierdie funksie te gebruik, verander \'Verfraai videostrome\' na enige klient behalwe \'Android Studio\'</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">Om hierdie funksie te gebruik, verander \'Spoof video streams\' na enige kliënt behalwe \'Android Studio\' en \'Android VR Downgraded\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Ontsmet deel skakels</string>
   <string name="morphe_sanitize_sharing_links_summary">Verwyder dopnavraagparameters van gedeelde skakels</string>
@@ -165,6 +184,23 @@ Let wel, deur dit in te skakel, sal ook sekere gebruikerdata soos jou IP-adres g
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Verwyder kykersdiskresie-dialoog</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Dit omseil nie die ouderdombeperking nie. Dit aanvaar dit net outomaties</string>
+  <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">PoToken-verskaffer</string>
+  <string name="morphe_potoken_provider_screen_summary">Konfigureer PoToken-verskaffer om speelprobleme te voorkom</string>
+  <string name="morphe_external_potoken_provider_title">Eksterne PoToken-verskaffer</string>
+  <string name="morphe_external_potoken_provider_summary">"Los speelprobleme op deur 'n eksterne PoToken-munter te gebruik (Eksperimenteel)
+
+As jy 'n YouTube Premium-gebruiker is, is hierdie instelling dalk nie nodig nie"</string>
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"Los afspeelprobleme op met 'n eksterne PoToken-verskaffer (Eksperimenteel)
+
+Om hierdie funksie te gebruik, skakel 'Vervals videostrome' af."</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">As dit nie werk nie, probeer om MicroG geforseerd te sluit</string>
+  <string name="morphe_external_potoken_provider_settings_summary">Open PotHelper-instellings</string>
+  <string name="morphe_external_potoken_provider_about_summary">"Hierdie funksie is tans in ontwikkeling en werk dalk nie
+
+Tik hier om PotHelper af te laai"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Valse weergawe van app</string>
   <string name="morphe_spoof_app_version_summary">Mislei die bediener om te dink jy gebruik \'n ouer weergawe van die app om verstoude UI-funksies te herstel</string>

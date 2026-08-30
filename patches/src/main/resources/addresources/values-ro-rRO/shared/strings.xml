@@ -107,13 +107,23 @@ Nu veți fi notificat de niciun eveniment neașteptat."</string>
   <string name="morphe_debug_logs_clear_toast">Jurnalele de depanare au fost șterse</string>
   <string name="morphe_debug_feature_flags_manager_title">Manager de funcții</string>
   <string name="morphe_debug_feature_flags_manager_summary">Gestionați funcțiile booleene</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Steaguri active (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Steaguri blocate (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Caută funcții experimentale…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Automat</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Oprit</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Pornit</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Elimină</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Steagurile au fost salvate</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Steagurile au fost resetați</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Steagurile au fost copiate în clipboard</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Repornește aplicația pentru a utiliza această setare</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Pornire</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Deschide setârii MicroG</string>

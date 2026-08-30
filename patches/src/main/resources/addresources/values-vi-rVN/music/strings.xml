@@ -39,29 +39,29 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_9_misc_title">Khác</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Ẩn menu \"Mua Music Premium\"</string>
-  <string name="morphe_music_hide_music_premium_promotions_title">Ẩn quảng cáo Music Premium</string>
+  <string name="morphe_music_hide_music_premium_promotions_title">Ẩn quảng cáo khuyến mãi Music Premium</string>
   <string name="morphe_music_hide_video_ads_title">Ẩn video quảng cáo</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
-  <string name="morphe_music_hide_audio_video_toggle_title">Ẩn nút bật/tắt Âm thanh / Video</string>
-  <string name="morphe_music_hide_explore_shelf_title">Ẩn Khám phá</string>
-  <string name="morphe_music_hide_grid_shelves_title">Ẩn các kệ lưới</string>
+  <string name="morphe_music_hide_audio_video_toggle_title">Ẩn nút chuyển đổi Bài hát/Video</string>
+  <string name="morphe_music_hide_explore_shelf_title">Ẩn kệ Khám phá</string>
+  <string name="morphe_music_hide_grid_shelves_title">Ẩn kệ dạng lưới</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Ẩn kệ cá nhân hoá</string>
-  <string name="morphe_music_hide_list_shelves_title">Ẩn các kệ danh sách</string>
+  <string name="morphe_music_hide_list_shelves_title">Ẩn kệ dạng danh sách</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Bảng lời nhạc</string>
   <string name="morphe_music_hide_lyrics_share_button_title">Ẩn nút Chia sẻ</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Ẩn nút Dịch lời nhạc</string>
   <string name="morphe_music_hide_new_from_shelf_title">Ẩn kệ \'Mới từ\'</string>
   <string name="morphe_music_hide_playlist_shelves_title">Ẩn các kệ danh sách phát</string>
   <string name="morphe_music_hide_repeat_button_title">Ẩn nút Lặp lại</string>
-  <string name="morphe_music_hide_shuffle_button_title">Ẩn nút Ngẫu nhiên</string>
-  <string name="morphe_music_hide_speed_dial_shelf_title">Ẩn kệ \'Gọi nhanh\'</string>
+  <string name="morphe_music_hide_shuffle_button_title">Ẩn nút Trộn bài</string>
+  <string name="morphe_music_hide_speed_dial_shelf_title">Ẩn kệ \'Phát nhanh\'</string>
   <string name="morphe_music_comments_screen_title">Bình luận</string>
   <string name="morphe_music_comments_screen_summary">Chọn những thành phần sẽ hiển thị trong phần bình luận</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Ẩn Nguyên tắc cộng đồng</string>
-  <string name="morphe_music_hide_comments_context_title">Ẩn thông báo ngữ cảnh</string>
+  <string name="morphe_music_hide_comments_context_title">Ẩn thông báo hướng dẫn</string>
   <string name="morphe_music_hide_comments_emoji_button_title">Ẩn nút Biểu tượng cảm xúc</string>
   <string name="morphe_music_hide_comments_info_button_title">Ẩn nút Thông tin</string>
-  <string name="morphe_music_hide_comments_timestamp_button_title">Ẩn nút Thời gian</string>
+  <string name="morphe_music_hide_comments_timestamp_button_title">Ẩn nút Dấu thời gian</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Chuyển bài</string>
   <string name="morphe_music_crossfade_screen_summary">Trộn các bài hát với nhau khi chuyển bài</string>
@@ -132,8 +132,8 @@ YouTube Music 8.x – hiệu ứng chuyển tiếp chỉ chạy trên 9.x trở 
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Nhớ trạng thái trộn bài</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
-  <string name="morphe_music_disable_dislike_redirection_title">Tắt tính năng chuyển hướng dislike</string>
-  <string name="morphe_music_disable_dislike_redirection_summary">Ngăn việc chuyển đến bản nhạc tiếp theo khi nhấn nút dislike</string>
+  <string name="morphe_music_disable_dislike_redirection_title">Tắt chuyển bài khi bấm không thích</string>
+  <string name="morphe_music_disable_dislike_redirection_summary">Không chuyển sang bài tiếp theo khi bạn bấm nút Không thích</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Ẩn nút Truyền</string>
   <string name="morphe_music_hide_history_button_title">Ẩn nút Lịch sử</string>

@@ -82,7 +82,7 @@ val hidePlayerFlyoutMenuComponentsPatch = bytecodePatch(
         )
 
         addLithoFilter(EXTENSION_FILTER)
-        hookElement("$EXTENSION_CLASS->hideNativeBottomSheetHeader([B)[B")
+        hookElement("$EXTENSION_CLASS->hideNativeBottomSheetHeader")
         hookTreeNodeResult(
             descriptor = "$EXTENSION_CLASS->hideNativeBottomSheetFooter",
             isLazilyConvertedElement = false

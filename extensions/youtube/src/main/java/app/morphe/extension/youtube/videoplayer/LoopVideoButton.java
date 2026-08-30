@@ -34,6 +34,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
@@ -321,7 +322,7 @@ public class LoopVideoButton {
         // Override the DigitsKeyListener that TYPE_CLASS_NUMBER installs — it strips ':',
         // which breaks the TextWatcher colon auto-insertion.
         editText.setKeyListener(android.text.method.DigitsKeyListener.getInstance("0123456789:"));
-        editText.setTextColor(Utils.getAppForegroundColor());
+        editText.setTextColor(ThemeUtils.getAppForegroundColor());
         editText.setHintTextColor(Color.GRAY);
         editText.setBackgroundColor(Color.TRANSPARENT);
         editText.setPadding(0, 0, 0, 0);
@@ -393,7 +394,7 @@ public class LoopVideoButton {
         TextView labelView = new TextView(context);
         labelView.setText(label);
         labelView.setTextSize(13);
-        labelView.setTextColor(Utils.getAppForegroundColor());
+        labelView.setTextColor(ThemeUtils.getAppForegroundColor());
         LinearLayout.LayoutParams labelParams = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -402,7 +403,7 @@ public class LoopVideoButton {
 
         ShapeDrawable fieldBackground = new ShapeDrawable(new RoundRectShape(
                 Dim.roundedCorners(10), null, null));
-        fieldBackground.getPaint().setColor(Utils.getEditTextBackground());
+        fieldBackground.getPaint().setColor(ThemeUtils.getEditTextBackground());
 
         LinearLayout fieldBox = new LinearLayout(context);
         fieldBox.setBackground(fieldBackground);

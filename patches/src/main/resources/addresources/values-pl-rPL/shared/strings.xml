@@ -107,13 +107,64 @@ Nie dostaniesz informacji o żadnych nieoczekiwanych zdarzeniach."</string>
   <string name="morphe_debug_logs_clear_toast">Wyczyszczono logi debugowania</string>
   <string name="morphe_debug_feature_flags_manager_title">Menedżer flag funkcji</string>
   <string name="morphe_debug_feature_flags_manager_summary">Zarządzaj flagami funkcji</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Aktywne flagi funkcji (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Zablokowane flagi funkcji (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Szukaj we flagach funkcji…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Nieakt. (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Akt. (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Zabl. (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Wymusz. (%s)</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Auto</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Wył.</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Wł.</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Wymuś włączenie</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Zablokuj</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Usuń</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Zapisano flagi funkcji</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Zresetowano flagi funkcji</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Skopiowano flagi funkcji do schowka</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Uruchom ponownie aplikację, aby użyć tego ustawienia</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Eksport i import</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">Zaimportowano %s flag</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Nie znaleziono flag</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Pomyślnie wyeksportowano flagi</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Nie udało się wyeksportować flag</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Wczytano flagi, dotknij Zapisz, aby zastosować</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Nie udało się odczytać pliku</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Wyszukiwanie binarne</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Znajduje flagę powodującą określone zachowanie aplikacji.
+
+Połowa z %s flag jest zablokowana. Po każdym restarcie musisz określić, czy zachowanie nadal występuje.
+
+Odtwórz to zachowanie raz przed rozpoczęciem, w przeciwnym razie w wyszukiwaniu zabraknie flag, o które aplikacja jeszcze nie zapytała"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Początek</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Brak flag do przeszukania.
+
+W wyszukiwaniu binarnym można użyć tylko tych flag, o które aplikacja już zapytała i które nie są obecnie wymuszone"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Krok %1$s
+
+Pozostało %2$s flag, z czego %3$s zablokowano dla tego kroku.
+
+Uruchom aplikację ponownie, sprawdź, czy zachowanie występuje, a następnie odpowiedz poniżej"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Trwa wyszukiwanie flagi</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">Zachowanie występuje</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">Zachowanie nie występuje</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Anuluj wyszukiwanie binarne</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Wyszukiwanie binarne anulowane</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"Flaga %s powoduje to zachowanie.
+
+Jest teraz zablokowana"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Nie udało się znaleźć flagi.
+
+Wygląda na to, że to zachowanie aplikacji nie jest kontrolowane przez żadną flagę"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Nie udało się znaleźć pojedynczej flagi.
+
+Zachowanie ustąpiło wcześniej podczas wyszukiwania, więc może za nie odpowiadać więcej niż jedna flaga lub jedna z odpowiedzi była błędna"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Otwórz ustawienia MicroG</string>

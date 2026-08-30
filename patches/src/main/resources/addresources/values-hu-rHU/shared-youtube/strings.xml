@@ -21,6 +21,25 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Indíts újra a beállítások befejezéséhez</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Alkalmazás neve</string>
+  <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">Sötét téma háttér</string>
+  <string name="morphe_theme_color_dark_entry_2">Tiszta fekete</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You (Tiszta fekete)</string>
+  <string name="morphe_theme_color_dark_entry_9">Klasszikus YouTube</string>
+  <string name="morphe_theme_color_dark_entry_10">Sötét rózsaszín</string>
+  <string name="morphe_theme_color_dark_entry_11">Sötét kék</string>
+  <string name="morphe_theme_color_dark_entry_12">Sötét zöld</string>
+  <string name="morphe_theme_color_dark_entry_13">Sötét sárga</string>
+  <string name="morphe_theme_color_dark_entry_14">Sötét narancssárga</string>
+  <string name="morphe_theme_color_dark_entry_15">Sötét vörös</string>
+  <string name="morphe_theme_color_dark_custom_title">Egyedi sötét háttér</string>
+  <string name="morphe_theme_color_dark_custom_summary">Sötét téma háttérszínének beállítása</string>
+  <string name="morphe_theme_color_entry_1">Alkalmazás alapértelmezése</string>
+  <string name="morphe_theme_color_entry_4">Material You (Semleges)</string>
+  <string name="morphe_theme_color_entry_5">Material You (Elsődleges)</string>
+  <string name="morphe_theme_color_entry_6">Material You (Másodlagos)</string>
+  <string name="morphe_theme_color_entry_7">Material You (Harmadlagos)</string>
+  <string name="morphe_theme_color_custom_entry">Egyedi</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Külső letöltések</string>
   <string name="morphe_external_downloader_name_title">Letöltő csomagneve</string>
@@ -62,7 +81,7 @@ Ellenőrizze, hogy a csomagnév helyes-e, és az alkalmazás telepítve van-e."<
 Ha YouTube Premium-felhasználó vagy, ez a beállítás nem feltétlenül szükséges."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Nem találtunk ügyfelek által megosztott folyamokat</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Ennek a beállításnak a kikapcsolása lejátszási problémákat okozhat.</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Próbálja meg a következők engedélyezését: Spoof video streams &gt; Android VR bejelentkezés</string>
   <string name="morphe_spoof_video_streams_client_type_title">Alapértelmezett kliens</string>
@@ -132,9 +151,9 @@ Belépéshez nyomd meg a folytatást alul"</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">Közvetlenül csatlakozzon, ha a proxy nem válaszol.</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Teljesképernyős-hirdetések elrejtése</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">A funkció használatához módosítsa a \"Videóstreamek hamisítása\" beállítást bármely kliensre, kivéve az Android Studiót\'</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">A funkció használatához állítsd át a „Spoof video streams” opciót bármelyik kliensre az „Android Studio” és „Android VR Downgraded” kivételével</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Megosztási linkek tisztítása</string>
   <string name="morphe_sanitize_sharing_links_summary">Eltávolítja a követési paramétereket a megosztott linkekből</string>
@@ -165,6 +184,17 @@ Belépéshez nyomd meg a folytatást alul"</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Nézői figyelmeztetés pálya eltávolítása</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Ez nem kerüli meg az életkori korlátozást, csak automatikusan elfogadja.</string>
+  <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_external_potoken_provider_summary">"Javítja a lejátszási problémákat külső PoToken-kibocsátó használatával (Kísérleti)
+
+Ha Ön YouTube Premium felhasználó, lehet, hogy erre a beállításra nincs szükség"</string>
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_user_dialog_message">Ha nem működik, próbálja meg kényszerűen leállítani a MicroG-t</string>
+  <string name="morphe_external_potoken_provider_settings_summary">Nyissa meg a PotHelper beállításait</string>
+  <string name="morphe_external_potoken_provider_about_summary">"Ez a funkció jelenleg fejlesztés alatt áll, és lehet, hogy nem működik
+
+Koppintson ide a PotHelper letöltéséhez"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Alkalmazásverzió hamisítása</string>
   <string name="morphe_spoof_app_version_summary">A szervert tévedésbe vezeti, hogy egy régebbi alkalmazásverziót használ, ezzel helyreállítva a korábbi felhasználói felület funkcióit.</string>

@@ -43,6 +43,7 @@ import java.util.Set;
 
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
+import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 
 /**
@@ -97,7 +98,7 @@ public class SettingsMenuFilterPickerPreference extends Preference {
             TextView hint = new TextView(context);
             hint.setText(str("morphe_settings_menu_filter_picker_empty"));
             hint.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-            hint.setTextColor(Utils.getAppForegroundColor());
+            hint.setTextColor(ThemeUtils.getAppForegroundColor());
             hint.setPadding(0, 24, 0, 24);
             content.addView(hint, new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,
@@ -218,7 +219,7 @@ public class SettingsMenuFilterPickerPreference extends Preference {
             this.selectedLower = selectedLower;
             this.checkDrawable = Utils.appIsUsingBoldIcons() ? DRAWABLE_CHECKMARK_BOLD : DRAWABLE_CHECKMARK;
             this.childIndentPx = (int) (CHILD_INDENT_DP * context.getResources().getDisplayMetrics().density);
-            this.foregroundColor = Utils.getAppForegroundColor();
+            this.foregroundColor = ThemeUtils.getAppForegroundColor();
         }
 
         @Override public int getCount() { return rows.size(); }

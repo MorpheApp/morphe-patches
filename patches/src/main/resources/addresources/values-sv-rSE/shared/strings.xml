@@ -107,9 +107,16 @@ Du kommer inte att bli meddelad om oväntade händelser."</string>
   <string name="morphe_debug_logs_clear_toast">Felsökningsloggarna rensades</string>
   <string name="morphe_debug_feature_flags_manager_title">Funktionsflagghanterare</string>
   <string name="morphe_debug_feature_flags_manager_summary">Hantera booleska funktionsflaggor</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Aktiva funktionsflaggor (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Blockerade funktionsflaggor (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Sök efter funktionsflaggor…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Automatiskt</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_action_remove">Ta bort</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Funktionsflaggorna sparades</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Funktionsflaggorna återställdes</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Funktionsflaggorna kopierades till urklipp</string>

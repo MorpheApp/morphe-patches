@@ -48,6 +48,16 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_translations">ការបកប្រែ</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">ការបំបាត់កំហុស</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">បិទ</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">បើក</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">ដកចេញ</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->

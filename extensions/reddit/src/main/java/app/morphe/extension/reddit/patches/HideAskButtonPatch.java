@@ -25,7 +25,7 @@ public final class HideAskButtonPatch {
 
     private static boolean isContextNotYetSet() {
         // Possible fix for background crash of app when context is not yet set.
-        if (Utils.getContext() == null) {
+        if (!Utils.isContextSet()) {
             Logger.printInfo(() -> "Cannot hide ask button, context is null");
             return true;
         }

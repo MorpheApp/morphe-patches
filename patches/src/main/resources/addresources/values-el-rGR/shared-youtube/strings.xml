@@ -21,6 +21,25 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Επανεκκινήστε για να ολοκληρωθεί η διαδικασία</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Όνομα εφαρμογής</string>
+  <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">Χρώμα φόντου στο σκούρο θέμα</string>
+  <string name="morphe_theme_color_dark_entry_2">Αληθινό μαύρο</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You (Καθαρό μαύρο)</string>
+  <string name="morphe_theme_color_dark_entry_9">Κλασικό YouTube</string>
+  <string name="morphe_theme_color_dark_entry_10">Σκούρο ροζ</string>
+  <string name="morphe_theme_color_dark_entry_11">Σκούρο μπλε</string>
+  <string name="morphe_theme_color_dark_entry_12">Σκούρο πράσινο</string>
+  <string name="morphe_theme_color_dark_entry_13">Σκούρο κίτρινο</string>
+  <string name="morphe_theme_color_dark_entry_14">Σκούρο πορτοκαλί</string>
+  <string name="morphe_theme_color_dark_entry_15">Σκούρο κόκκινο</string>
+  <string name="morphe_theme_color_dark_custom_title">Προσαρμοσμένο σκοτεινό φόντο</string>
+  <string name="morphe_theme_color_dark_custom_summary">Ορίστε το χρώμα φόντου του σκούρου θέματος</string>
+  <string name="morphe_theme_color_entry_1">Προεπιλογή εφαρμογής</string>
+  <string name="morphe_theme_color_entry_4">Material You (Ουδέτερο)</string>
+  <string name="morphe_theme_color_entry_5">Material You (Πρωτεύον)</string>
+  <string name="morphe_theme_color_entry_6">Material You (Δευτερεύον)</string>
+  <string name="morphe_theme_color_entry_7">Material You (Τριτεύον)</string>
+  <string name="morphe_theme_color_custom_entry">Προσαρμοσμένο</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Εξωτερικές λήψεις</string>
   <string name="morphe_external_downloader_name_title">Όνομα πακέτου εφαρμογής λήψης</string>
@@ -62,7 +81,7 @@ Second \"item\" text"</string>
 Εάν είστε συνδρομητής του YouTube Premium, αυτή η ρύθμιση ενδέχεται να μην απαιτείται."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Αδυναμία λήψης προγράμματος ροής</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Η απενεργοποίηση αυτής της ρύθμισης ενδέχεται να προκαλέσει προβλήματα αναπαραγωγής.</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Δοκιμάστε να ενεργοποιήσετε: Μίμηση ροής βίντεο &gt; Είσοδος με Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Προεπιλεγμένο πρόγραμμα αναπαραγωγής</string>
@@ -132,9 +151,9 @@ Second \"item\" text"</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">Σύνδεση απευθείας αν ο μεσολαβητής αποτύχει</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Διαφημίσεις πλήρους οθόνης</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">Για να χρησιμοποιήσετε αυτήν τη λειτουργία, αλλάξτε την επιλογή «Παραποίηση ροών βίντεο» σε οποιονδήποτε πελάτη εκτός από το Android Studio\'</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">Για να χρησιμοποιήσετε αυτήν τη λειτουργία, αλλάξτε την επιλογή «Παραποίηση ροών βίντεο» σε οποιονδήποτε πελάτη εκτός από το «Android Studio» και το «Android VR Downgraded»</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Καθαρισμός συνδέσμων κατά την κοινοποίηση</string>
   <string name="morphe_sanitize_sharing_links_summary">Οι παράμετροι παρακολούθησης αφαιρούνται από τους συνδέσμους κατά την κοινοποίηση</string>
@@ -165,6 +184,19 @@ Second \"item\" text"</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Αφαίρεση διαλόγου προειδοποίησης για την προτίμηση του θεατή</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Αυτό δεν παρακάμπτει τον περιορισμό ηλικίας. Απλώς τον αποδέχεται αυτόματα</string>
+  <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">Πάροχος PoToken</string>
+  <string name="morphe_potoken_provider_screen_summary">Ρυθμίστε τον πάροχο PoToken για να αποτρέψετε προβλήματα αναπαραγωγής</string>
+  <string name="morphe_external_potoken_provider_title">Εξωτερικός πάροχος PoToken</string>
+  <string name="morphe_external_potoken_provider_summary">"Διορθώνει προβλήματα αναπαραγωγής χρησιμοποιώντας έναν εξωτερικό κατασκευαστή PoToken (Πειραματικό)\n\nΕάν είστε χρήστης του YouTube Premium, αυτή η ρύθμιση μπορεί να μην είναι απαραίτητη"</string>
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"Διορθώνει προβλήματα αναπαραγωγής χρησιμοποιώντας εξωτερικό δημιουργό PoToken (Πειραματικό)
+
+Για να χρησιμοποιήσετε αυτή τη λειτουργία, απενεργοποιήστε την 'Παραποίηση ροών βίντεο'"</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">Εάν δεν λειτουργεί, προσπαθήστε να κλείσετε αναγκαστικά το MicroG</string>
+  <string name="morphe_external_potoken_provider_settings_summary">Ανοίξτε τις ρυθμίσεις του PotHelper</string>
+  <string name="morphe_external_potoken_provider_about_summary">"Αυτή η λειτουργία βρίσκεται υπό ανάπτυξη και μπορεί να μην λειτουργεί\n\nΠατήστε εδώ για να κατεβάσετε το PotHelper"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Παραποίηση έκδοσης εφαρμογής</string>
   <string name="morphe_spoof_app_version_summary">Εξαπατά τον διακομιστή ώστε να νομίζει ότι χρησιμοποιείτε μια παλαιότερη έκδοση εφαρμογής για να επαναφέρετε παλαιότερα στοιχεία διεπαφής χρήστη</string>

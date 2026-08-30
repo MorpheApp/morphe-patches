@@ -22,19 +22,28 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.requests.Route;
+import app.morphe.extension.youtube.patches.VersionCheckPatch;
 
 public final class ConfigRoutes {
 
     private static final String YT_API_URL = "https://youtubei.googleapis.com/youtubei/v1/";
 
     private static final int CLIENT_ID = 3;
-    private static final String CLIENT_VERSION = Utils.getAppVersionName();
+    private static final String CLIENT_VERSION = VersionCheckPatch.IS_21_21_OR_GREATER
+            // It seems that YT 21.21+ includes an experimental flag that is incompatible with the phone layout.
+            // Temporarily restrict to YT 21.20.
+            ? "21.20.402"
+            : Utils.getAppVersionName();
     private static final String PACKAGE_NAME = "com.google.android.youtube";
 
     private static final int CONNECTION_TIMEOUT_MILLISECONDS = 10 * 1000;
 
     public static final Route.CompiledRoute GET_CONFIG = new Route(
-            Route.Method.POST, "config?fields=responseContext.globalConfigGroup.bytesSerializedColdConfigGroup&alt=proto"
+            Route.Method.POST,
+            "config" +
+                    "?fields=responseContext.globalConfigGroup.bytesSerializedColdConfigGroup," +
+                    "responseContext.globalConfigGroup.coldHashData" +
+                    "&alt=proto"
     ).compile();
 
     private ConfigRoutes() {
@@ -49,11 +58,14 @@ public final class ConfigRoutes {
             client.put("deviceModel", Build.MODEL);
             client.put("osName", "Android");
             client.put("osVersion", Build.VERSION.RELEASE);
-            // This is why the patch works.
-            // The modern video action bar is not enabled in tablet cold config data.
-            client.put("platform", "TABLET");
-            client.put("clientFormFactor", "LARGE_FORM_FACTOR");
+            // The modern video action bar is not enabled in tablet / unknown cold config data.
+            client.put("clientFormFactor", "UNKNOWN_FORM_FACTOR");
             client.put("androidSdkVersion", Build.VERSION.SDK_INT);
+            client.put("screenWidthPoints", 1280);
+            client.put("screenHeightPoints", 720);
+            client.put("screenPixelDensity", 4);
+            client.put("screenDensityFloat", 4);
+
             Locale localeDefault = Locale.getDefault();
             client.put("hl", localeDefault.getLanguage());
             client.put("gl", localeDefault.getCountry());

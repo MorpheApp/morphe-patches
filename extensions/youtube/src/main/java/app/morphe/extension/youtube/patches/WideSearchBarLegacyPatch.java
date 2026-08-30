@@ -20,7 +20,8 @@ import app.morphe.extension.youtube.settings.Settings;
 @SuppressWarnings("unused")
 public class WideSearchBarLegacyPatch {
 
-    private static final Boolean WIDE_SEARCHBAR_ENABLED = Settings.WIDE_SEARCHBAR.get();
+    // These targets only have the app's own wide search bar, which always replaces the logo.
+    private static final boolean WIDE_SEARCHBAR_ENABLED = Settings.SEARCHBAR_TYPE.get().isEnabled();
 
     /**
      * Injection point.
@@ -37,17 +38,12 @@ public class WideSearchBarLegacyPatch {
             try {
                 View searchBarView = Utils.getChildViewByResourceName(view, "search_bar");
 
-                final int paddingLeft = searchBarView.getPaddingLeft();
-                final int paddingRight = searchBarView.getPaddingRight();
-                final int paddingTop = searchBarView.getPaddingTop();
-                final int paddingBottom = searchBarView.getPaddingBottom();
-                final int paddingStart = Dim.dp8;
-
-                if (Utils.isRightToLeftLocale()) {
-                    searchBarView.setPadding(paddingLeft, paddingTop, paddingStart, paddingBottom);
-                } else {
-                    searchBarView.setPadding(paddingStart, paddingTop, paddingRight, paddingBottom);
-                }
+                searchBarView.setPaddingRelative(
+                        Dim.dp8,
+                        searchBarView.getPaddingTop(),
+                        searchBarView.getPaddingEnd(),
+                        searchBarView.getPaddingBottom()
+                );
             } catch (Exception ex) {
                 Logger.printException(() -> "setActionBar failure", ex);
             }

@@ -21,6 +21,25 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">설정을 완료하려면 다시 시작하세요</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">앱 이름</string>
+  <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">어두운 테마 배경 색상</string>
+  <string name="morphe_theme_color_dark_entry_2">순수 검정색</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You (순수 검정색)</string>
+  <string name="morphe_theme_color_dark_entry_9">클래식 YouTube</string>
+  <string name="morphe_theme_color_dark_entry_10">어두운 분홍색</string>
+  <string name="morphe_theme_color_dark_entry_11">어두운 파란색</string>
+  <string name="morphe_theme_color_dark_entry_12">어두운 초록색</string>
+  <string name="morphe_theme_color_dark_entry_13">어두운 노란색</string>
+  <string name="morphe_theme_color_dark_entry_14">어두운 주황색</string>
+  <string name="morphe_theme_color_dark_entry_15">어두운 빨간색</string>
+  <string name="morphe_theme_color_dark_custom_title">사용자 정의 어두운 배경 색상</string>
+  <string name="morphe_theme_color_dark_custom_summary">어두운 테마의 배경 색상을 설정할 수 있습니다</string>
+  <string name="morphe_theme_color_entry_1">앱 기본값</string>
+  <string name="morphe_theme_color_entry_4">Material You (뉴트럴)</string>
+  <string name="morphe_theme_color_entry_5">Material You (기본)</string>
+  <string name="morphe_theme_color_entry_6">Material You (2차)</string>
+  <string name="morphe_theme_color_entry_7">Material You (3차)</string>
+  <string name="morphe_theme_color_custom_entry">사용자 정의</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">외부 다운로드</string>
   <string name="morphe_external_downloader_name_title">다운로더 앱 패키지명</string>
@@ -62,7 +81,7 @@ Second \"item\" text"</string>
 YouTube Premium 사용자는 이 설정이 필요하지 않을 수 있습니다"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">클라이언트 스트림을 가져올 수 없습니다</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">이 설정을 비활성화하면 재생 문제가 발생할 수 있습니다.</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">다음을 활성화해 보세요: 동영상 스트림 속이기 &gt; Android VR에 로그인하기</string>
   <string name="morphe_spoof_video_streams_client_type_title">기본 클라이언트</string>
@@ -132,9 +151,9 @@ YouTube Premium 사용자는 이 설정이 필요하지 않을 수 있습니다"
   <string name="morphe_proxy_allow_direct_fallback_summary">프록시 연결에 실패하면 직접 연결합니다</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">전체 화면 광고 숨기기</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">이 기능을 사용하려면, \'동영상 스트림 속이기\'에서 \'기본 클라이언트\'를 \'Android Studio\'를 제외한 다른 클라이언트로 변경하세요</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">이 기능을 사용하려면, \'동영상 스트림 속이기\'에서 \'기본 클라이언트\'를 \'Android Studio\'와 \'Android VR Downgraded\'를 제외한 다른 클라이언트로 변경하세요</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">추적 쿼리를 제거한 링크 공유하기</string>
   <string name="morphe_sanitize_sharing_links_summary">링크를 공유할 경우에 URL에서 추적 쿼리 매개변수를 제거합니다</string>
@@ -163,8 +182,25 @@ YouTube Premium 사용자는 이 설정이 필요하지 않을 수 있습니다"
   <string name="morphe_settings_menu_filter_screen_summary">일반 앱 설정 화면에서 표시되는 이름을 기준으로 항목을 숨깁니다</string>
   <string name="morphe_settings_menu_filter_picker_empty">목록을 생성하려면 일반 앱 설정 화면을 한 번 실행해야 합니다</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">시청 경고 다이얼로그 제거하기</string>
-  <string name="morphe_remove_viewer_discretion_dialog_summary">이 설정은 다이얼로그를 자동으로 허용하기만 하며 연령 제한(성인인증 절차)을 우회할 수 없습니다</string>
+  <string name="morphe_remove_viewer_discretion_dialog_title">시청 경고 대화 상자 제거하기</string>
+  <string name="morphe_remove_viewer_discretion_dialog_summary">이 설정은 대화 상자를 자동으로 허용하기만 하며 연령 제한(성인인증 절차)을 우회할 수 없습니다</string>
+  <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">PoToken 제공자</string>
+  <string name="morphe_potoken_provider_screen_summary">PoToken 제공자를 구성하여 재생 문제를 해결할 수 있습니다</string>
+  <string name="morphe_external_potoken_provider_title">외부 PoToken 제공자</string>
+  <string name="morphe_external_potoken_provider_summary">"외부 PoToken 생성기를 사용하여 재생 문제를 수정합니다 (실험 기능)
+
+YouTube Premium 사용자는 이 설정이 필요하지 않을 수 있습니다"</string>
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"외부 PoToken 생성기를 사용하여 재생 문제를 수정합니다 (실험 기능)
+
+이 기능을 사용하려면, '동영상 스트림 속이기'를 비활성화하세요"</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">이 기능이 작동하지 않는다면, MicroG를 강제로 종료하세요</string>
+  <string name="morphe_external_potoken_provider_settings_summary">PotHelper 설정 열기</string>
+  <string name="morphe_external_potoken_provider_about_summary">"이 기능은 현재 개발 중이며 작동하지 않을 수 있습니다
+
+PotHelper를 다운로드하려면 여기를 탭하세요"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">앱 버전 속이기</string>
   <string name="morphe_spoof_app_version_summary">서버가 사용 중인 앱 버전을 더 오래된 버전으로 인식하도록 속여, 이전 레이아웃 기능을 다시 복원합니다</string>

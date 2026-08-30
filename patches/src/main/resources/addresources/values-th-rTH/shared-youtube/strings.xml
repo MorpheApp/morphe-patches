@@ -21,6 +21,25 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">รีสตาร์ทเพื่อดำเนินการตั้งค่าให้เสร็จสิ้น</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">ชื่อแอป</string>
+  <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">พื้นหลังธีมมืด</string>
+  <string name="morphe_theme_color_dark_entry_2">ดำสนิท</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You (ดำสนิท)</string>
+  <string name="morphe_theme_color_dark_entry_9">YouTube แบบคลาสสิก</string>
+  <string name="morphe_theme_color_dark_entry_10">ชมพูเข้ม</string>
+  <string name="morphe_theme_color_dark_entry_11">น้ำเงินเข้ม</string>
+  <string name="morphe_theme_color_dark_entry_12">เขียวเข้ม</string>
+  <string name="morphe_theme_color_dark_entry_13">เหลืองเข้ม</string>
+  <string name="morphe_theme_color_dark_entry_14">ส้มเข้ม</string>
+  <string name="morphe_theme_color_dark_entry_15">แดงเข้ม</string>
+  <string name="morphe_theme_color_dark_custom_title">พื้นหลังสีมืดแบบกำหนดเอง</string>
+  <string name="morphe_theme_color_dark_custom_summary">ตั้งค่าสีพื้นหลังของธีมมืด</string>
+  <string name="morphe_theme_color_entry_1">ค่าเริ่มต้นของแอป</string>
+  <string name="morphe_theme_color_entry_4">Material You (โทนกลาง)</string>
+  <string name="morphe_theme_color_entry_5">Material You (สีหลัก)</string>
+  <string name="morphe_theme_color_entry_6">Material You (สีรอง)</string>
+  <string name="morphe_theme_color_entry_7">Material You (สีที่สาม)</string>
+  <string name="morphe_theme_color_custom_entry">กำหนดเอง</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">การดาวน์โหลดภายนอก</string>
   <string name="morphe_external_downloader_name_title">ชื่อแพ็คเกจโปรแกรมดาวน์โหลด</string>
@@ -62,7 +81,7 @@ Second \"item\" text"</string>
 หากคุณเป็นผู้ใช้ YouTube Premium การตั้งค่านี้อาจไม่จำเป็น"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">ไม่สามารถดึงข้อมูลไคลเอ็นต์ทั้งหมดได้</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">การปิดการตั้งค่านี้อาจทำให้เกิดปัญหาในการเล่น</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">ลองเปิดใช้งาน: ปลอมแปลงสตรีมวิดีโอ &gt; เข้าสู่ระบบ Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">ไคลเอ็นต์เริ่มต้น</string>
@@ -132,9 +151,9 @@ Second \"item\" text"</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">เชื่อมต่อโดยตรงหากพร็อกซีล้มเหลว</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">ซ่อนโฆษณาแบบเต็มหน้าจอ</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">หากต้องการใช้คุณสมบัตินี้ ให้เปลี่ยน \'ปลอมแปลงสตรีมวิดีโอ\' เป็นไคลเอ็นต์อื่น ๆ ยกเว้น Android Studio\'</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">หากต้องการใช้คุณสมบัตินี้ ให้เปลี่ยน \'ปลอมแปลงสตรีมวิดีโอ\' เป็นไคลเอ็นต์อื่น ๆ ยกเว้น \'Android Studio\' และ \'Android VR Downgraded\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">ล้างข้อมูลลิงก์ที่แชร์</string>
   <string name="morphe_sanitize_sharing_links_summary">พารามิเตอร์การติดตามจะถูกลบออกจากลิงก์ที่แชร์</string>
@@ -165,6 +184,20 @@ Second \"item\" text"</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">ลบกล่องโต้ตอบการพิจารณาของผู้ชม</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">ตัวเลือกนี้ไม่ได้ข้ามข้อจำกัดอายุ แค่ยอมรับอายุโดยอัตโนมัติ</string>
+  <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">ผู้ให้บริการ PoToken</string>
+  <string name="morphe_potoken_provider_screen_summary">กำหนดค่าผู้ให้บริการ PoToken เพื่อป้องกันปัญหาในการเล่น</string>
+  <string name="morphe_external_potoken_provider_title">ผู้ให้บริการ PoToken ภายนอก</string>
+  <string name="morphe_external_potoken_provider_summary">"แก้ไขปัญหาการเล่นวิดีโอเมื่อใช้ตัวสร้าง PoToken ภายนอก (ทดลอง)
+
+หากคุณเป็นผู้ใช้ YouTube Premium การตั้งค่านี้อาจไม่จำเป็น"</string>
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_user_dialog_message">หากไม่ได้ผล ให้ลองบังคับปิด MicroG</string>
+  <string name="morphe_external_potoken_provider_settings_summary">เปิดการตั้งค่า PotHelper</string>
+  <string name="morphe_external_potoken_provider_about_summary">"ฟีเจอร์นี้ยังอยู่ระหว่างการพัฒนาและอาจใช้งานไม่ได้ในขณะนี้
+
+แตะที่นี่เพื่อดาวน์โหลด PotHelper"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">ปลอมแปลงเวอร์ชันแอป</string>
   <string name="morphe_spoof_app_version_summary">หลอกให้เซิร์ฟเวอร์คิดว่าคุณกำลังใช้แอปเวอร์ชันเก่าเพื่อเรียกคืนคุณสมบัติ UI แบบเดิม</string>

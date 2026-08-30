@@ -107,13 +107,22 @@ Et saa ilmoituksia mistään odottamattomista tapahtumista."</string>
   <string name="morphe_debug_logs_clear_toast">Virheenkorjauslokit tyhjennetty</string>
   <string name="morphe_debug_feature_flags_manager_title">Ominaisuuslippujen hallinta</string>
   <string name="morphe_debug_feature_flags_manager_summary">Hallitse totuusarvo-ominaisuuslippuja</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Aktiiviset liput (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Estetyt liput (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Hae ominaisuuslippuja…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Automaattinen</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Päällä</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Poista</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Ominaisuuslippujen tallennus onnistui</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Ominaisuuslippujen palautus</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Liput kopioitu leikepöydälle</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Käynnistä sovellus käyttääksesi tätä asetusta</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Alku</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Avaa MicroG-asetukset</string>

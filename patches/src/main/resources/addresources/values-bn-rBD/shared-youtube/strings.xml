@@ -21,6 +21,25 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">সেটআপ সম্পন্ন করতে রিস্টার্ট করুন</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">অ্যাপের নাম</string>
+  <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">ডার্ক থিমের পটভূমি</string>
+  <string name="morphe_theme_color_dark_entry_2">খাঁটি কালো</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You (খাঁটি কালো)</string>
+  <string name="morphe_theme_color_dark_entry_9">ক্লাসিক YouTube</string>
+  <string name="morphe_theme_color_dark_entry_10">গাঢ় গোলাপি</string>
+  <string name="morphe_theme_color_dark_entry_11">গাঢ় নীল</string>
+  <string name="morphe_theme_color_dark_entry_12">গাঢ় সবুজ</string>
+  <string name="morphe_theme_color_dark_entry_13">গাঢ় হলুদ</string>
+  <string name="morphe_theme_color_dark_entry_14">গাঢ় কমলা</string>
+  <string name="morphe_theme_color_dark_entry_15">গাঢ় লাল</string>
+  <string name="morphe_theme_color_dark_custom_title">কাস্টম গাঢ় পটভূমি</string>
+  <string name="morphe_theme_color_dark_custom_summary">ডার্ক থিমের ব্যাকগ্রাউন্ড রঙ সেট করুন</string>
+  <string name="morphe_theme_color_entry_1">অ্যাপ ডিফল্ট</string>
+  <string name="morphe_theme_color_entry_4">Material You (নিউট্রাল)</string>
+  <string name="morphe_theme_color_entry_5">Material You (প্রাইমারি)</string>
+  <string name="morphe_theme_color_entry_6">Material You (সেকেন্ডারি)</string>
+  <string name="morphe_theme_color_entry_7">Material You (টারশিয়ারি)</string>
+  <string name="morphe_theme_color_custom_entry">কাস্টম</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">বাহিরে ডাউনলোড</string>
   <string name="morphe_external_downloader_name_title">ডাউনলোডারের প্যাকেজ নাম</string>
@@ -62,7 +81,7 @@ Second \"item\" text"</string>
 আপনি যদি YouTube Premium ব্যবহারকারী হন, তবে এই সেটিংসের প্রয়োজন নাও হতে পারে।"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">কোনো ক্লায়েন্ট স্ট্রিম আনতে পারেনি</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">এই সেটিং বন্ধ করলে প্লেব্যাক সমস্যা হতে পারে।</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">চেষ্টা করুন সক্রিয় করতে: ভিডিও স্ট্রিম স্পুফিং > অ্যান্ড্রয়েড ভিআর সাইন ইন করুন</string>
   <string name="morphe_spoof_video_streams_client_type_title">ডিফল্ট ক্লায়েন্ট</string>
@@ -132,9 +151,9 @@ Second \"item\" text"</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">প্রক্সি ব্যর্থ হলে সরাসরি কানেক্ট করুন</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">পূর্ণ স্ক্রীন প্যানেল লুকান</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">এই বৈশিষ্ট্যটি ব্যবহার করতে, \'ভিডিও স্ট্রিম স্পুফ করুন\' অ্যান্ড্রয়েড স্টুডিও ছাড়া অন্য কোনো ক্লায়েন্টে পরিবর্তন করুন।</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">এই বৈশিষ্ট্যটি ব্যবহার করতে, \'ভিডিও স্ট্রিম স্পুফ করুন\' \'Android Studio\' এবং \'Android VR Downgraded\' ছাড়া অন্য কোনো ক্লায়েন্টে পরিবর্তন করুন</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">শেয়ারিং লিঙ্ক স্যানিটাইজ করুন</string>
   <string name="morphe_sanitize_sharing_links_summary">শেয়ার করা লিঙ্ক থেকে ট্র্যাকিং ক্যোয়ারি প্যারামিটার সরানো হয়েছে</string>
@@ -165,6 +184,23 @@ Second \"item\" text"</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">ডিস্ক্রেশন ডায়ালগ সরান</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">এটি বয়স বিধিনিষেধকে এড়িয়ে যায় না। এটি কেবল স্বয়ংক্রিয়ভাবে গ্রহণ করে</string>
+  <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">PoToken প্রদানকারী</string>
+  <string name="morphe_potoken_provider_screen_summary">প্লেব্যাক সমস্যা প্রতিরোধ করতে PoToken প্রদানকারী কনফিগার করুন</string>
+  <string name="morphe_external_potoken_provider_title">বাহ্যিক PoToken প্রদানকারী</string>
+  <string name="morphe_external_potoken_provider_summary">"বাহ্যিক PoToken মিন্টার ব্যবহার করে প্লেব্যাক সমস্যা ঠিক করে (পরীক্ষামূলক)
+
+আপনি যদি YouTube Premium ব্যবহারকারী হন, তাহলে এই সেটিংটির প্রয়োজন নাও হতে পারে।"</string>
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"বহিরাগত PoToken মিন্টার ব্যবহার করে প্লেব্যাক সমস্যা ঠিক করে (পরীক্ষামূলক)
+
+এই বৈশিষ্ট্যটি ব্যবহার করতে, 'ভিডিও স্ট্রিম ছদ্মবেশ' বন্ধ করুন"</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">যদি এটি কাজ না করে, তাহলে MicroG জোর করে বন্ধ করার চেষ্টা করুন।</string>
+  <string name="morphe_external_potoken_provider_settings_summary">PotHelper সেটিংস খুলুন</string>
+  <string name="morphe_external_potoken_provider_about_summary">"এই বৈশিষ্ট্যটি বর্তমানে উন্নয়নাধীন এবং কাজ নাও করতে পারে
+
+PotHelper ডাউনলোড করতে এখানে ট্যাপ করুন।"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">অ্যাপের সংস্করণ স্পুফ করুন</string>
   <string name="morphe_spoof_app_version_summary">পুরোনো ইউজার ইন্টারফেস (UI) ফিচারগুলো ফিরিয়ে আনতে সার্ভারকে এমনভাবে বিভ্রান্ত করে যেন মনে হয় আপনি অ্যাপের একটি পুরোনো সংস্করণ ব্যবহার করছেন</string>

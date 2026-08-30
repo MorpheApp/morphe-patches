@@ -16,7 +16,8 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-  <!-- Overrides built in setting menu with Morphe settings. -->
+  <string name="reddit_privacy_policy">Persónuverndarstefna Reddit</string>
+  <string name="morphe_google_signin_not_available_toast">Google innskráning ekki tiltæk. Notaðu tölvupóst til að skrá þig inn</string>
   <string name="morphe_screen_ads_title">Auglýsingar</string>
   <string name="morphe_hide_post_ads_title">Felja auglýsingar á fóræðinu</string>
   <string name="morphe_hide_comment_ads_title">Felja auglýsingar á athugasmdum</string>

@@ -108,13 +108,61 @@ Vous ne serez plus averti en cas d'événements inattendus."</string>
   <string name="morphe_debug_logs_clear_toast">Journaux de débogage effacés</string>
   <string name="morphe_debug_feature_flags_manager_title">Gestionnaire de flags de fonctionnalités</string>
   <string name="morphe_debug_feature_flags_manager_summary">Gérer les flags de fonctionnalités booléens</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Flags de fonctionnalités actifs (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Flags de fonctionnalités bloqués (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Rechercher des flags de fonctionnalités…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Inactif (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Actif (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Bloqué (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Forcé (%s)</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Auto</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Désactivé</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Activé</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Forcer l’activation</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Bloquer</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Retirer</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Flags de fonctionnalités enregistrés</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Flags de fonctionnalités réinitialisés</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Flags de fonctionnalités copiés dans le presse-papiers</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Redémarrez l\'application pour appliquer ce paramètre</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Exporter et importer</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">%s indicateurs de fonctionnalités importés</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Aucun indicateur de fonctionnalité trouvé</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Les indicateurs de fonctionnalités ont été exportés avec succès</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Échec de l\'exportation des indicateurs de fonctionnalités</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Indicateurs de fonctionnalités chargés, appuyez sur \'Enregistrer\' pour appliquer</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Échec de la lecture du fichier</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Recherche dichotomique</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Trouve quel indicateur de fonctionnalité provoque un comportement de l'application.
+
+La moitié des %s indicateurs sont bloqués et, après chaque redémarrage, vous indiquez si le comportement est toujours présent.
+
+Reproduisez le comportement une seule fois avant de commencer, sinon les indicateurs que l'application n'a pas encore demandés manqueront à la recherche"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Début</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Aucun indicateur de fonctionnalité à rechercher.
+
+Seuls les indicateurs que l'application a activés et qui ne sont pas actuellement forcés peuvent être utilisés dans une recherche dichotomique"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Étape %1$s
+
+%2$s indicateurs restants, %3$s d'entre eux sont bloqués pour cette étape.
+
+Redémarrez l'application, vérifiez si le comportement est présent, puis répondez ci-dessous"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Recherche d\'indicateurs de fonctionnalité en cours</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">Le comportement est présent</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">Le comportement n\'est pas présent</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Annuler la recherche dichotomique</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Recherche dichotomique annulée</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"L'indicateur de fonctionnalité %s provoque le comportement.
+
+Il est maintenant bloqué"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Impossible de trouver un indicateur de fonctionnalité.
+
+Le comportement de l'application ne semble pas être contrôlé par un indicateur de fonctionnalité"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Ouvrir les paramètres de MicroG</string>
@@ -143,7 +191,7 @@ Si les optimisations de la batterie ne sont pas modifiées, vous pourriez rencon
 • La lecture en arrière-plan peut ne pas fonctionner"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Gestion des liens d\'application</string>
-  <string name="morphe_link_handling_summary">Configurer les liens pour qu’ils s’ouvrent dans cette application</string>
+  <string name="morphe_link_handling_summary">Configurer les liens pour qu\'ils s\'ouvrent dans cette application</string>
   <string name="morphe_link_handling_step1_title">Étape 1 : Désactiver les liens de l\'application d\'origine</string>
   <string name="morphe_link_handling_step1_message">Ouvrez les paramètres de l\'application d\'origine et désactivez tous les liens de domaine</string>
   <string name="morphe_link_handling_step2_title">Étape 2 : Activer les liens de l\'application patchée</string>

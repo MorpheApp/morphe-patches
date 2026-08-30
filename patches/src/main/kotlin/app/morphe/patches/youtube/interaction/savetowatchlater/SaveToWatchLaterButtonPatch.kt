@@ -42,8 +42,8 @@ private const val EXTENSION_BUTTON =
 
 @Suppress("unused")
 val saveToWatchLaterButtonPatch = bytecodePatch(
-    name = "Save to watch later",
-    description = "Adds an option to display save to watch later button in the video player.",
+    name = "Save to Watch later",
+    description = "Adds an option to display save to Watch later button in the video player.",
 ) {
     dependsOn(
         saveToWatchLaterButtonResourcePatch,
@@ -70,6 +70,7 @@ val saveToWatchLaterButtonPatch = bytecodePatch(
         addPlayerOverlayPreferences(
             noTitleUnsortedPreferenceCategory(
                 SwitchPreference("morphe_save_to_watch_later_button", summary = true),
+                SwitchPreference("morphe_save_to_watch_later_kids_flyout_button", summary = true),
                 SwitchPreference("morphe_swap_save_and_queue_actions", summary = true),
                 SwitchPreference("morphe_queue_restore", summary = true)
             )

@@ -42,6 +42,7 @@ import java.util.List;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
 import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
@@ -254,7 +255,7 @@ public class VideoQualityDialogButton {
             // Append title part with default foreground color.
             spannableTitle.append(titlePart);
             spannableTitle.setSpan(
-                    new ForegroundColorSpan(Utils.getAppForegroundColor()),
+                    new ForegroundColorSpan(ThemeUtils.getAppForegroundColor()),
                     0,
                     titlePart.length(),
                     Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
@@ -265,7 +266,7 @@ public class VideoQualityDialogButton {
             int separatorStart = spannableTitle.length();
             spannableTitle.append(separatorPart);
             final int adjustedTitleForegroundColor = Utils.adjustColorBrightness(
-                    Utils.getAppForegroundColor(), 1.6f, 0.6f);
+                    ThemeUtils.getAppForegroundColor(), 1.6f, 0.6f);
             spannableTitle.setSpan(
                     new ForegroundColorSpan(adjustedTitleForegroundColor),
                     separatorStart,

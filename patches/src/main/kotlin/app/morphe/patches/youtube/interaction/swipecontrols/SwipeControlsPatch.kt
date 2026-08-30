@@ -1,5 +1,16 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.youtube.interaction.swipecontrols
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -44,9 +55,21 @@ private val swipeControlsResourcePatch = resourcePatch {
         }
 
         PreferenceScreen.SWIPE_CONTROLS.addPreferences(
-            SwitchPreference("morphe_swipe_brightness", summary = true),
-            SwitchPreference("morphe_swipe_volume", summary = true),
-            SwitchPreference("morphe_swipe_speed", summary = true),
+            ListPreference(
+                "morphe_swipe_left_zone",
+                entriesKey = "morphe_swipe_zone_action_entries",
+                entryValuesKey = "morphe_swipe_zone_action_entry_values"
+            ),
+            ListPreference(
+                "morphe_swipe_right_zone",
+                entriesKey = "morphe_swipe_zone_action_entries",
+                entryValuesKey = "morphe_swipe_zone_action_entry_values"
+            ),
+            ListPreference(
+                "morphe_swipe_top_zone",
+                entriesKey = "morphe_swipe_zone_action_entries",
+                entryValuesKey = "morphe_swipe_zone_action_entry_values"
+            ),
             NonInteractivePreference(
                 key = "morphe_swipe_zone_width",
                 tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference"
@@ -73,6 +96,7 @@ private val swipeControlsResourcePatch = resourcePatch {
                 tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference"
             ),
             ListPreference("morphe_swipe_speed_step"),
+            SwitchPreference("morphe_swipe_ignore_when_locked", summary = true),
             SwitchPreference("morphe_swipe_press_to_engage", summary = true),
             SwitchPreference("morphe_swipe_haptic_feedback"),
             SwitchPreference("morphe_swipe_save_and_restore_brightness", summary = true),
@@ -167,6 +191,20 @@ val swipeControlsPatch = bytecodePatch(
                     "$EXTENSION_CLASS->allowSwipeChangeVideo(Z)Z"
                 )
             }
+        }
+
+        PlayerOverlayContainerFingerprint.let {
+            val overlayNameField = it.classDef.fields.first { field ->
+                field.type == "Ljava/lang/String;"
+            }
+
+            it.method.addInstructions(
+                0,
+                """
+                    iget-object v0, p0, $overlayNameField
+                    invoke-static { p0, v0 }, $EXTENSION_CLASS->setPlayerOverlay(Landroid/view/View;Ljava/lang/String;)V
+                """
+            )
         }
     }
 }

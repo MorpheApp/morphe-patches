@@ -107,13 +107,21 @@ Second \"item\" text"</string>
   <string name="morphe_debug_logs_clear_toast">डिबग लॉग्स साफ़ किए गए</string>
   <string name="morphe_debug_feature_flags_manager_title">फ़ीचर फ़्लैग्स मैनेजर</string>
   <string name="morphe_debug_feature_flags_manager_summary">बूलियन फ़ीचर फ़्लैग्स को मैनेज करें</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">सक्रिय फ़ीचर फ़्लैग (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">ब्लॉक किए गए फ़ीचर फ़्लैग (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">फीचर फ़्लैग खोजें…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">स्वचालित</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_action_remove">हटाएं</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">फ़ीचर फ़्लैग सेव किए गए</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">फ़ीचर फ़्लैग रीसेट किए गए</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">फ़ीचर फ़्लैग क्लिपबोर्ड पर कॉपी किए गए</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">इस सेटिंग का उपयोग करने के लिए ऐप को पुनः आरंभ करें</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">शुरू करें</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">माइक्रोजी सेटिंग्स खोलें</string>

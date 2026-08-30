@@ -7,23 +7,34 @@
 
 package app.morphe.patches.youtube.misc.fix.videoactionbar
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
-import app.morphe.patches.shared.misc.media.mediaFetchPlayerConfigPatch
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
+import app.morphe.patches.shared.misc.request.buildRequestPatch
+import app.morphe.patches.shared.misc.request.hookBuildRequest
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.misc.contexthook.Endpoint
+import app.morphe.patches.youtube.misc.contexthook.addClientVersionHook
+import app.morphe.patches.youtube.misc.contexthook.clientContextHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.headerhook.addHeaderHook
-import app.morphe.patches.youtube.misc.headerhook.cronetHeaderHookPatch
-import app.morphe.patches.youtube.misc.playservice.is_20_39_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_20_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
-import app.morphe.patches.youtube.misc.request.buildRequestPatch
-import app.morphe.patches.youtube.misc.request.hookBuildRequest
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.util.getReference
 import app.morphe.util.insertLiteralOverride
+import app.morphe.util.registersUsed
+import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/RestoreOldVideoActionBarPatch;"
+
+private const val EXTENSION_CONFIG_INFO_INTERFACE =
+    $$"Lapp/morphe/extension/youtube/patches/RestoreOldVideoActionBarPatch$ConfigInfoInterface;"
 
 internal val restoreOldVideoActionBarPatch = bytecodePatch(
     description = "Overrides 'X-Youtube-Cold-Config-Data', fixes 'Hide video action buttons' and 'Return YouTube Dislike', "
@@ -32,13 +43,8 @@ internal val restoreOldVideoActionBarPatch = bytecodePatch(
         sharedExtensionPatch,
         settingsPatch,
         versionCheckPatch,
-        buildRequestPatch,
-        cronetHeaderHookPatch,
-        fixProtoLibraryPatch,
-        mediaFetchPlayerConfigPatch(
-            extensionClass = EXTENSION_CLASS,
-            hasMediaSessionFeatureFlag = { is_20_39_or_greater }
-        )
+        clientContextHookPatch,
+        buildRequestPatch
     )
 
     execute {
@@ -46,21 +52,87 @@ internal val restoreOldVideoActionBarPatch = bytecodePatch(
             SwitchPreference("morphe_restore_old_video_action_bar", summary = true)
         )
 
-        // If cold config data is overridden, the related video overlay breaks in fullscreen.
-        // As a workaround for this, restore the old related video overlay.
-        listOf(
-            ModernRelateVideoOverlayFingerprint,
-            RelateVideoOverlayLayoutParamFingerprint
-        ).forEach { fingerprint ->
-            fingerprint.matchAll().forEach {
-                it.method.insertLiteralOverride(
-                    it.instructionMatches.first().index,
-                    "$EXTENSION_CLASS->fixRelatedVideoOverlay(Z)Z"
+        if (is_20_30_or_greater) {
+            hookBuildRequest(
+                descriptor = "$EXTENSION_CLASS->fixVideoActionBar",
+                hookHeader = true
+            )
+
+            val configInfoClass = with(BuildInnerTubeProtoRequestBodyFingerprint) {
+                val match = instructionMatches.first()
+                val index = match.index
+                val instruction = match.instruction
+                val register = instruction.registersUsed[0]
+
+                method.addInstructions(
+                    index,
+                    "invoke-static { v$register }, $EXTENSION_CLASS->fixVideoActionBar($EXTENSION_CONFIG_INFO_INTERFACE)V"
+                )
+
+                instruction.getReference<FieldReference>()!!.type
+            }
+
+            getConfigInfoFingerprint(configInfoClass).let {
+                it.classDef.apply {
+                    interfaces.add(EXTENSION_CONFIG_INFO_INTERFACE)
+
+                    mapOf(
+                        0 to "patch_setColdConfigData",
+                        1 to "patch_setColdHashData"
+                    ).forEach { (matchIndex, interfaceMethodName) ->
+                        val coldDataField = it.instructionMatches[matchIndex].instruction.getReference<FieldReference>()!!
+
+                        methods.add(
+                            ImmutableMethod(
+                                type,
+                                interfaceMethodName,
+                                listOf(
+                                    ImmutableMethodParameter("Ljava/lang/String;", null, null)
+                                ),
+                                "V",
+                                AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                                null,
+                                null,
+                                MutableMethodImplementation(3),
+                            ).toMutable().apply {
+                                addInstructions(
+                                    0,
+                                    """
+                                        iput-object p1, p0, $coldDataField
+                                        return-void
+                                    """
+                                )
+                            }
+                        )
+                    }
+                }
+            }
+
+            // If cold config data is overridden, the related video overlay breaks in fullscreen.
+            // As a workaround for this, restore the old related video overlay.
+            listOf(
+                ModernRelateVideoOverlayFingerprint,
+                RelateVideoOverlayLayoutParamFingerprint
+            ).forEach { fingerprint ->
+                fingerprint.matchAll().forEach {
+                    it.method.insertLiteralOverride(
+                        it.instructionMatches.first().index,
+                        "$EXTENSION_CLASS->fixRelatedVideoOverlay(Z)Z"
+                    )
+                }
+            }
+        } else {
+            // In YT 20.29 or earlier, there are no issues even if the app version is spoofed.
+            // Simply spoofing the app version (in the player).
+            setOf(
+                Endpoint.GET_WATCH,
+                Endpoint.NEXT,
+            ).forEach { endpoint ->
+                addClientVersionHook(
+                    endpoint,
+                    "$EXTENSION_CLASS->getVideoActionBarAppVersionOverride(Ljava/lang/String;)Ljava/lang/String;",
                 )
             }
         }
-
-        addHeaderHook("$EXTENSION_CLASS->fixVideoActionBar(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;")
-        hookBuildRequest("$EXTENSION_CLASS->fetchRequest(Ljava/lang/String;Ljava/util/Map;)V")
     }
 }

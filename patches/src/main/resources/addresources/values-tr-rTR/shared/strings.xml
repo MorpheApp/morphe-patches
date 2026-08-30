@@ -107,13 +107,21 @@ Beklenmedik olaylar hakkında bilgilendirilmeyeceksiniz."</string>
   <string name="morphe_debug_logs_clear_toast">Hata ayıklama kayıtları temizlendi</string>
   <string name="morphe_debug_feature_flags_manager_title">Özellik işaretçileri yöneticisi</string>
   <string name="morphe_debug_feature_flags_manager_summary">Boolean özellik işaretçilerini yönet</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Aktif özellik işaretçileri (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Engellenen özellik işaretçileri (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Özellik işaretlerini ara…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Oto</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_action_remove">Kaldır</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Özellik işaretçileri kaydedildi</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Özellik işaretçileri sıfırlandı</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Özellik işaretçileri panoya kopyalandı</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Bu ayarı kullanmak için uygulamayı yeniden başlatın</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Başlangıç</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">MicroG ayarlarını açın</string>

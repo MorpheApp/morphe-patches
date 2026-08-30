@@ -13,24 +13,21 @@ package app.morphe.patches.shared.misc.spoof
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
-import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.OpcodesFilter.Companion.opcodesToFilters
+import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
-import app.morphe.util.getReference
-import app.morphe.util.indexOfFirstInstruction
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.Method
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val STREAMING_DATA_OUTER_CLASS =
     $$"Lcom/google/protos/youtube/api/innertube/StreamingDataOuterClass$StreamingData;"
 
 internal object CuepointListFingerprint : Fingerprint(
-    definingClass = "Lcom/google/android/apps/youtube/proto/streaming/CuepointListOuterClass\$CuepointList;",
+    definingClass = $$"Lcom/google/android/apps/youtube/proto/streaming/CuepointListOuterClass$CuepointList;",
     name = "<clinit>",
     filters = listOf(
         methodCall(name = "registerDefaultInstance")
@@ -39,7 +36,7 @@ internal object CuepointListFingerprint : Fingerprint(
 
 internal object BuildInitPlaybackRequestFingerprint : Fingerprint(
     returnType = $$"Lorg/chromium/net/UrlRequest$Builder;",
-    filters = OpcodesFilter.opcodesToFilters(
+    filters = opcodesToFilters(
         Opcode.MOVE_RESULT_OBJECT,
         Opcode.IGET_OBJECT, // Moves the request URI string to a register to build the request with.
     ),
@@ -47,80 +44,6 @@ internal object BuildInitPlaybackRequestFingerprint : Fingerprint(
         "Content-Type",
         "Range",
     )
-)
-
-// 21.21+
-internal object BuildPlayerRequestURIBuilderFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
-    returnType = $$"Landroid/net/Uri$Builder;",
-    parameters = listOf(),
-    filters = listOf(
-        string("key"),
-        string("asig"),
-        methodCall($$"Landroid/net/Uri$Builder;->appendQueryParameter(Ljava/lang/String;Ljava/lang/String;)Landroid/net/Uri$Builder;"),
-        opcode(Opcode.RETURN_OBJECT)
-    )
-)
-
-// 21.20 and lower
-internal object BuildPlayerRequestURIFingerprint : Fingerprint(
-    returnType = "Ljava/lang/String;",
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.INVOKE_VIRTUAL, // Register holds player request URI.
-        Opcode.MOVE_RESULT_OBJECT,
-        Opcode.IPUT_OBJECT,
-        Opcode.IGET_OBJECT,
-        Opcode.MONITOR_EXIT,
-        Opcode.RETURN_OBJECT,
-    ),
-    strings = listOf(
-        "key",
-        "asig",
-    )
-)
-
-internal object BuildRequestFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-    returnType = "Lorg/chromium/net/UrlRequest", // UrlRequest; or UrlRequest$Builder;
-    filters = listOf(
-        methodCall(name = "newUrlRequestBuilder")
-    ), // UrlRequest; or UrlRequest$Builder;
-    custom = { methodDef, _ ->
-        // Different targets have slightly different parameters
-
-        // Earlier targets have parameters = listOf(:),
-        // L
-        // Ljava/util/Map;
-        // [B
-        // L
-        // L
-        // L
-        // Lorg/chromium/net/UrlRequest$Callback;
-
-        // Later targets have parameters = listOf(:),
-        // L
-        // Ljava/util/Map;
-        // [B
-        // L
-        // L
-        // L
-        // Lorg/chromium/net/UrlRequest\$Callback;
-        // L
-
-        // 20.16+ uses a refactored and extracted method:
-        // L
-        // Ljava/util/Map;
-        // [B
-        // L
-        // Lorg/chromium/net/UrlRequest$Callback;
-        // L
-
-        val parameterTypes = methodDef.parameterTypes
-        val parameterTypesSize = parameterTypes.size
-        (parameterTypesSize == 6 || parameterTypesSize == 7 || parameterTypesSize == 8) &&
-                parameterTypes[1] == "Ljava/util/Map;" // URL headers.
-                && indexOfNewUrlRequestBuilderExecutorInstruction(methodDef) >= 0
-    }
 )
 
 private object CreateStreamingDataParentFingerprint : Fingerprint(
@@ -271,6 +194,32 @@ internal object NerdsStatsVideoFormatBuilderFingerprint : Fingerprint(
     )
 )
 
+// Feature flag that turns on Platypus programming language code compiled to native C++.
+// This code appears to replace the player config after the streams are loaded.
+// Flag is present in YouTube 19.34, but is missing Platypus stream replacement code until 19.43.
+// Flag and Platypus code is also present in newer versions of YouTube Music.
+internal object MediaFetchHotConfigFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45645570L),
+        opcode(
+            opcode = Opcode.MOVE_RESULT,
+            location = MatchAfterWithin(3)
+        ),
+        anyInstruction(
+            opcode(
+                opcode = Opcode.IF_EQZ,
+                location = MatchAfterWithin(5)
+            ),
+            // Only for YouTube Music 7.29.52
+            fieldAccess(
+                opcode = Opcode.IPUT_BOOLEAN,
+                definingClass = "this",
+                location = MatchAfterWithin(5)
+            )
+        )
+    )
+)
+
 // YT 20.10+, YT Music 8.11 - 8.14.
 // Flag is missing in YT Music 8.15+, and it is not known if a replacement flag/feature exists.
 internal object MediaFetchHotConfigAlternativeFingerprint : Fingerprint(
@@ -289,6 +238,22 @@ internal object PlaybackStartDescriptorFeatureFlagFingerprint : Fingerprint(
     )
 )
 
+internal object MediaSessionFeatureFlagFingerprint : Fingerprint(
+    parameters = listOf(),
+    returnType = "Z",
+    filters = listOf(
+        literal(45640404L),
+        opcode(
+            opcode = Opcode.MOVE_RESULT,
+            location = MatchAfterWithin(3)
+        ),
+        opcode(
+            opcode = Opcode.RETURN,
+            location = MatchAfterWithin(5)
+        )
+    )
+)
+
 // Feature flag that causes Shorts content to freeze and fail to load when scrolling.
 // Flag does not seem to affect Shorts if spoofing is off.
 internal object ReelItemWatchResponseFeatureFlagFingerprint : Fingerprint(
@@ -296,13 +261,3 @@ internal object ReelItemWatchResponseFeatureFlagFingerprint : Fingerprint(
         literal(45638126L)
     )
 )
-
-internal fun indexOfNewUrlRequestBuilderExecutorInstruction(method: Method) = method.indexOfFirstInstruction {
-    val reference = getReference<MethodReference>()
-    opcode == Opcode.INVOKE_VIRTUAL && reference?.definingClass == "Lorg/chromium/net/CronetEngine;"
-            && reference.name == "newUrlRequestBuilder"
-            && reference.parameterTypes.size == 3
-            && reference.parameterTypes[0] == "Ljava/lang/String;"
-            && reference.parameterTypes[1] == $$"Lorg/chromium/net/UrlRequest$Callback;"
-            && reference.parameterTypes[2] == "Ljava/util/concurrent/Executor;"
-}

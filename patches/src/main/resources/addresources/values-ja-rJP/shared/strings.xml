@@ -33,7 +33,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_success">%d 個の設定をインポートしました</string>
   <string name="morphe_settings_import_failure_parse">インポートに失敗しました: %s</string>
   <string name="morphe_settings_search_hint">設定を検索</string>
-  <string name="morphe_settings_search_no_results_title">「%s」に対する検索結果は見つかりませんでした</string>
+  <string name="morphe_settings_search_no_results_title">「%s」に対する検索結果が見つかりませんでした</string>
   <string name="morphe_settings_search_no_results_summary">別のキーワードを試してください</string>
   <string name="morphe_settings_search_recent_searches">最近の検索</string>
   <string name="morphe_settings_search_remove_message">検索履歴から削除しますか？</string>
@@ -107,13 +107,37 @@ Second \"item\" text"</string>
   <string name="morphe_debug_logs_clear_toast">デバッグログを消去しました</string>
   <string name="morphe_debug_feature_flags_manager_title">機能フラグ マネージャー</string>
   <string name="morphe_debug_feature_flags_manager_summary">各機能のオン / オフを制御する機能フラグを管理します</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">有効な機能フラグ (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">無効な機能フラグ (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">機能フラグを検索</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">機能フラグを保存しました</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">オフ (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">オン (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">強制オフ (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">強制オン (%s)</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">自動</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">オフ</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">オン</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">強制オン</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">強制オフ</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">削除</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">機能フラグを適用しました</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">機能フラグをリセットしました</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">機能フラグをクリップボードにコピーしました</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">この機能を使用するにはアプリを再起動してください</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">エクスポートとインポート</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">%s 個の機能フラグをインポートしました</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">機能フラグが見つかりませんでした</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">機能フラグのエクスポートに成功しました</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">機能フラグのエクスポートに失敗しました</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">ファイル入力: [適用] を押して反映</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">ファイルの読み込みに失敗しました</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">二分探索</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">開始</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">MicroG の設定メニューを開く</string>

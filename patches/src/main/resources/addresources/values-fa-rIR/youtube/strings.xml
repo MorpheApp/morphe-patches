@@ -24,12 +24,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_05_player_title">پلیر</string>
   <string name="morphe_settings_screen_11_misc_title">متفرقه</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <!-- layout.disableScrollSpeedLimitPatch -->
   <!-- layout.disableLayoutUpdatesPatch -->
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <!-- 'Invite others to message' should be translated using the same localized wording YouTube displays
           for the card in the Messages section at the top of the Notifications tab. -->
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
@@ -79,6 +81,8 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_zone_label_native">بومی</string>
+  <string name="morphe_swipe_zone_label_off">خاموش</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
   <!-- layout.buttons.action.hideButtonsPatch -->
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
@@ -110,7 +114,7 @@ Second \"item\" text"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -144,13 +148,17 @@ Second \"item\" text"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <!-- layout.hide.time.hideTimestampPatch -->
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
+  <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_entry_1">غیرفعال</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
   <string name="morphe_open_videos_fullscreen_entry_1">غیرفعال</string>
+  <!-- layout.player.fullscreen.stretchVideoPatch -->
+  <!-- layout.player.buttons.muteVideoButtonPatch -->
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <!-- layout.searchbar.wideSearchbarPatch -->
+  <string name="morphe_searchbar_type_entry_disabled">غیرفعال</string>
   <!-- layout.sponsorblock.sponsorBlockPatch -->
   <!-- layout.formfactor.changeFormFactorPatch -->
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
@@ -165,11 +173,12 @@ Second \"item\" text"</string>
   <string name="morphe_playback_in_feeds_entry_off">خاموش</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_type_entry_0">غیرفعال</string>
+  <!-- misc.fix.fixBackToExitGesturePatch -->
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_animation_style_entry_1">غیرفعال</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_3'. -->
+  <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_7'. -->
   <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <!-- layout.thumbnails.alternativeThumbnailsPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -186,8 +195,6 @@ Second \"item\" text"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <!-- 'Force AVC (H.264) codec' should be the same translation used for 'morphe_force_avc_codec_title'. -->
-  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <!-- video.speed.custom.customPlaybackSpeedPatch -->

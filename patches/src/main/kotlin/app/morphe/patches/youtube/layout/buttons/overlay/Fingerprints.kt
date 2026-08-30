@@ -1,6 +1,18 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.youtube.layout.buttons.overlay
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
@@ -10,14 +22,32 @@ import app.morphe.patches.all.misc.resources.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal object PlayerButtonFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+internal object OverlayCastButtonVisibilityFingerprint : Fingerprint(
+    classFingerprint = OverlayCastButtonVisibilityLegacyFingerprint,
+    returnType = "V",
+    parameters = listOf("Landroid/view/View;", "Z"),
+    filters = listOf(
+        methodCall(smali = "Landroid/view/View;->setVisibility(I)V"),
+        methodCall(smali = "Landroid/view/View;->setEnabled(Z)V")
+    )
+)
+
+internal object OverlayCastButtonVisibilityLegacyFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf(),
     filters = listOf(
-        methodCall(name = "setVisibility"),
+        anyInstruction(
+            methodCall(
+                definingClass = "this",
+                parameters = listOf("Landroid/view/View;", "Z")
+            ),
+            methodCall(name = "setVisibility")
+        ),
         literal(11208L)
-    )
+    ),
+    custom = { method, _ ->
+        !AccessFlags.STATIC.isSet(method.accessFlags)
+    }
 )
 
 internal object CastButtonPlayerFeatureFlagFingerprint : Fingerprint(

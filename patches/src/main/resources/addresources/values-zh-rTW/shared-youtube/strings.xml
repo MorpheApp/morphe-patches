@@ -21,6 +21,25 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">重新啟動以完成設定</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">應用程式名稱</string>
+  <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">深色主題背景</string>
+  <string name="morphe_theme_color_dark_entry_2">純黑</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You（純黑）</string>
+  <string name="morphe_theme_color_dark_entry_9">經典 YouTube</string>
+  <string name="morphe_theme_color_dark_entry_10">深粉紅色</string>
+  <string name="morphe_theme_color_dark_entry_11">深藍</string>
+  <string name="morphe_theme_color_dark_entry_12">深綠色</string>
+  <string name="morphe_theme_color_dark_entry_13">深黃色</string>
+  <string name="morphe_theme_color_dark_entry_14">深橙色</string>
+  <string name="morphe_theme_color_dark_entry_15">深紅主題</string>
+  <string name="morphe_theme_color_dark_custom_title">自訂深色背景</string>
+  <string name="morphe_theme_color_dark_custom_summary">設定深色主題的背景顏色</string>
+  <string name="morphe_theme_color_entry_1">應用程式預設</string>
+  <string name="morphe_theme_color_entry_4">Material You（中性）</string>
+  <string name="morphe_theme_color_entry_5">Material You（主要）</string>
+  <string name="morphe_theme_color_entry_6">Material You（次要）</string>
+  <string name="morphe_theme_color_entry_7">Material You（第三色）</string>
+  <string name="morphe_theme_color_custom_entry">自訂</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">外部下載</string>
   <string name="morphe_external_downloader_name_title">下載器套件名稱</string>
@@ -62,7 +81,7 @@ Second \"item\" text"</string>
 如果您是 YouTube Premium 使用者，則可能不需要此設定"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">未能擷取任何用戶端串流</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">關閉此設定可能會導致播放問題。</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">試試啟用：偽裝視訊串流 &gt; Android VR 登入</string>
   <string name="morphe_spoof_video_streams_client_type_title">預設用戶端</string>
@@ -132,9 +151,9 @@ Second \"item\" text"</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">如果代理伺服器失敗，則直接連線</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">隱藏全螢幕廣告</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">若要使用此功能，請將「偽造視訊串流」變更為 Android Studio 以外的任何用戶端</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">若要使用此功能，請將「偽造視訊串流」變更為 Android Studio 和 Android VR Downgraded 以外的任何用戶端。</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">清理分享連結</string>
   <string name="morphe_sanitize_sharing_links_summary">已從分享連結中移除追蹤查詢參數</string>
@@ -165,6 +184,20 @@ Second \"item\" text"</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">移除觀看分級對話方塊</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">這並不會繞過年齡限制，只是自動接受它</string>
+  <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_external_potoken_provider_summary">"使用外部 PoToken minter 修復播放問題（實驗性）
+
+如果您是 YouTube Premium 用戶，可能不需要此設定"</string>
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"使用外部 PoToken 铸造器修復播放問題（實驗性）
+
+要使用此功能，請關閉「欺騙影片串流」"</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">如果無法運作，請嘗試強制關閉 MicroG</string>
+  <string name="morphe_external_potoken_provider_settings_summary">開啟 PotHelper 設定</string>
+  <string name="morphe_external_potoken_provider_about_summary">"此功能目前正在開發中，可能無法運作
+
+點擊此處下載 PotHelper"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">偽裝應用程式版本</string>
   <string name="morphe_spoof_app_version_summary">欺騙伺服器，使其認為您正在使用較舊的應用程式版本，以恢復舊版使用者介面功能</string>

@@ -107,13 +107,21 @@ Second \"item\" text"</string>
   <string name="morphe_debug_logs_clear_toast">ডিবাগ লগ সাফ করা হয়েছে</string>
   <string name="morphe_debug_feature_flags_manager_title">ফিচার ফ্ল্যাগ Manager</string>
   <string name="morphe_debug_feature_flags_manager_summary">বুলিয়ান ফিচার ফ্ল্যাগ পরিচালনা করুন</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">সক্রিয় ফ্ল্যাগ (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">ব্লক করা ফ্ল্যাগ (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">বৈশিষ্ট্য পতাকা অনুসন্ধান করুন…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">স্বতস্ফূর্তভাবে</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_action_remove">সরান</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">ফিচার ফ্ল্যাগ সেভ করা হয়েছে</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">ফিচার ফ্ল্যাগ রিসেট করা হয়েছে</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">ফ্ল্যাগ ক্লিপবোর্ডে কপি করা হয়েছে</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">এই সেটিং ব্যবহার করতে অ্যাপটি পুনরায় চালু করুন</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">শুরু</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">MicroG সেটিংস খুলুন।</string>

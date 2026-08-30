@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-08-08T17:03:44",
-  "description": "## [1.39.1](https://github.com/MorpheApp/morphe-patches/compare/v1.39.0...v1.39.1) (2026-08-08)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Add to queue:** Flyout menu not available in fullscreen ([b270824](https://github.com/MorpheApp/morphe-patches/commit/b270824072a4fc0f8df758ab48ca8090c3965323))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.39.1/patches-1.39.1.mpp",
+  "created_at": "2026-08-30T13:12:02",
+  "description": "## [1.41.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v1.41.0-dev.6...v1.41.0-dev.7) (2026-08-30)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Legacy player controls:** Top bar buttons are hidden in some circumstances ([f429938](https://github.com/MorpheApp/morphe-patches/commit/f429938f5ebde77d811aba4faad37ef01566e954))\n\n### ✨ New Features\n\n* **YouTube Music - Hide music action buttons:** Add \"Hide 'Live chat replay' button\" setting ([#2674](https://github.com/MorpheApp/morphe-patches/issues/2674)) ([d43da80](https://github.com/MorpheApp/morphe-patches/commit/d43da80e8b27a5e767337d3a4c2fec64bb221d59))\n* **YouTube Music:** Add `Play song version in albums` patch ([#2556](https://github.com/MorpheApp/morphe-patches/issues/2556)) ([5093f61](https://github.com/MorpheApp/morphe-patches/commit/5093f6120b39dc87a943b0d90bfc720ddb6b9a53))\n* **YouTube:** Disabled automatic playback pause after opening the player's video settings ([829f4c3](https://github.com/MorpheApp/morphe-patches/commit/829f4c3b64dde3cd0069680f9ecf44cccbcf3038))\n\n### 🔧 Improvements\n\n* **YouTube:** Fix some issues and improve code ([#2688](https://github.com/MorpheApp/morphe-patches/issues/2688)) ([d8fcd8c](https://github.com/MorpheApp/morphe-patches/commit/d8fcd8c04ad72cc2655237e2c3d61d26bd220099))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.41.0-dev.7/patches-1.41.0-dev.7.mpp",
   "signature_download_url": "",
-  "version": "1.39.1"
+  "version": "1.41.0-dev.7"
 }

@@ -20,7 +20,7 @@ import android.webkit.WebView;
 
 import java.util.List;
 
-import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.theme.ThemeUtils;
 
 /**
  * Shows the notices of a single bundled dependency.
@@ -44,8 +44,8 @@ class LicenseTextDialog extends Dialog {
         // same color the page is, rather than whatever the device theme happens to be.
         Window window = getWindow();
         if (window != null) {
-            window.setBackgroundDrawable(new ColorDrawable(Utils.getDialogBackgroundColor()));
-            window.setNavigationBarColor(Utils.getDialogBackgroundColor());
+            window.setBackgroundDrawable(new ColorDrawable(ThemeUtils.getDialogBackgroundColor()));
+            window.setNavigationBarColor(ThemeUtils.getDialogBackgroundColor());
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 window.setNavigationBarContrastEnforced(true);
             }
@@ -62,7 +62,7 @@ class LicenseTextDialog extends Dialog {
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setDisplayZoomControls(false);
         // A WebView paints white until the page is parsed, which flashes as the dialog opens.
-        webView.setBackgroundColor(Utils.getDialogBackgroundColor());
+        webView.setBackgroundColor(ThemeUtils.getDialogBackgroundColor());
         webView.setWebViewClient(new AboutLinksWebClient(getContext(), this));
 
         webView.loadDataWithBaseURL(null, buildHtml(), "text/html", "UTF-8", null);

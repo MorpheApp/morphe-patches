@@ -19,12 +19,16 @@ import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
+import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.string
 import app.morphe.patches.all.misc.resources.ResourceType
 import app.morphe.patches.all.misc.resources.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+
+internal const val CLIENT_INFO_CLASS = $$"Lcom/google/protos/youtube/api/innertube/InnertubeContext$ClientInfo;"
 
 internal const val YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE = "Lcom/google/android/apps/youtube/app/watchwhile/MainActivity;"
 
@@ -49,6 +53,18 @@ internal object BackgroundPlaybackManagerShortsFingerprint : Fingerprint(
     filters = listOf(
         literal(151635310),
         opcode(Opcode.IGET_BOOLEAN, location = MatchAfterWithin(8)),
+    )
+)
+
+internal object BuildClientContextBodyConstructorFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    returnType = "V",
+    filters = listOf(
+        string("Android Wear"),
+        opcode(Opcode.IF_EQZ),
+        string("Android Automotive", location = MatchAfterImmediately()),
+        string("Android"),
+        fieldAccess(opcode = Opcode.IPUT_OBJECT, location = MatchAfterImmediately())
     )
 )
 
@@ -90,6 +106,32 @@ internal object LayoutConstructorFingerprint : Fingerprint(
     )
 )
 
+private object PlayerTypeEnumFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
+    strings = listOf(
+        "WATCH_WHILE_PICTURE_IN_PICTURE",
+        "NONE",
+        "HIDDEN",
+        "WATCH_WHILE_MINIMIZED",
+        "WATCH_WHILE_MAXIMIZED",
+        "WATCH_WHILE_FULLSCREEN",
+        "WATCH_WHILE_SLIDING_MAXIMIZED_FULLSCREEN",
+        "WATCH_WHILE_SLIDING_MINIMIZED_MAXIMIZED",
+        "WATCH_WHILE_SLIDING_MINIMIZED_DISMISSED",
+        "INLINE_MINIMAL",
+        "VIRTUAL_REALITY_FULLSCREEN",
+    )
+)
+
+internal fun BytecodePatchContext.getPlayerTypeFingerprint() = object : Fingerprint(
+    definingClass = "/YouTubePlayerOverlaysLayout;",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(
+        PlayerTypeEnumFingerprint.originalClassDef.type
+    )
+) {}
+
 internal object YouTubeMainActivityConstructorFingerprint : Fingerprint(
     definingClass = YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
@@ -122,20 +164,12 @@ internal object RollingNumberTextViewAnimationUpdateFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Landroid/graphics/Bitmap;"),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.NEW_INSTANCE, // bitmap ImageSpan
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT_OBJECT,
-        Opcode.CONST_4,
-        Opcode.INVOKE_DIRECT,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT,
-        Opcode.CONST_16,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT,
-        Opcode.INT_TO_FLOAT,
-        Opcode.INVOKE_VIRTUAL, // set textview padding using bitmap width
+    filters = listOf(
+        newInstance("Landroid/text/style/ImageSpan;"),
+        methodCall(smali = "Landroid/text/style/ImageSpan;-><init>(Landroid/content/Context;Landroid/graphics/Bitmap;I)V"),
+        methodCall(smali = "Landroid/text/SpannableString;->length()I"),
+        methodCall(smali = "Landroid/text/SpannableString;->setSpan(Ljava/lang/Object;III)V"),
+        methodCall(name = "setText", parameters = listOf("Ljava/lang/CharSequence;"))
     ),
     custom = { _, classDef ->
         classDef.superclass == "Landroid/support/v7/widget/AppCompatTextView;" ||
@@ -157,6 +191,16 @@ internal object SeekbarOnDrawFingerprint : Fingerprint(
         methodCall(smali = "Ljava/lang/Math;->round(F)I"),
         opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately())
     )
+)
+
+internal object StartVideoInformerFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    filters = OpcodesFilter.opcodesToFilters(
+        Opcode.INVOKE_INTERFACE,
+        Opcode.RETURN_VOID,
+    ),
+    strings = listOf("pc")
 )
 
 internal object ToolBarButtonFingerprint : Fingerprint(

@@ -30,6 +30,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">تشتەکان</string>
   <string name="morphe_settings_screen_12_video_title">ڤیدێۆ</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <!-- layout.disableScrollSpeedLimitPatch -->
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_user_dialog_message">"شێوازی ئەپەکە دەگەڕێتەوە بۆ ئەو شێوازەی کە بەکارهاتووە کاتێک بۆ یەکەمجار دامەزراوە.
 
@@ -56,6 +57,7 @@ Second \"item\" text"</string>
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">دوگمەی \'نەویدەیترین ڤیدیۆکان\' بشارەوە</string>
   <string name="morphe_hide_movies_section_title">إوحي بورغه رو فيلي</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">پشکنەی \'ئاگادارکردنەوە\' بێکە</string>
@@ -97,6 +99,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_hype_points_title">خۆپاراستن بۆ خاڵە نیكەكان</string>
   <string name="morphe_hide_subscribe_button_title">شاردنەوەی دوگمەی سەبسکرایب</string>
   <string name="morphe_hide_filter_bar_screen_title">بارەكانى فیلترین</string>
+  <string name="morphe_hide_filter_bar_in_channel_page_title">Hide in channel page</string>
   <string name="morphe_hide_filter_bar_in_feed_title">في پێشكەشانەكاندا نێش</string>
   <string name="morphe_hide_filter_bar_in_related_videos_title">شاردنەوە لە ڤیدیۆ پەیوەندیدارەکان</string>
   <string name="morphe_hide_filter_bar_in_search_title">Hide in search results</string>
@@ -184,9 +187,9 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">دەست لێدان بۆ گەڕان چالاک بکە</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">ئاماژەی ڕووناکی چالاک بکە</string>
-  <string name="morphe_swipe_volume_title">ئاماژەی دەنگ چالاک بکە</string>
   <string name="morphe_swipe_zone_label_native">ڕەسەن</string>
+  <string name="morphe_swipe_zone_label_off">کوژاوە</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
   <string name="morphe_swipe_press_to_engage_title">پەستان چالاک بکە بۆ ئاماژەدان بە لێدان</string>
   <string name="morphe_swipe_haptic_feedback_title">ئامۆژگاری هاپتیک چالاک بکە</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">پاشەکەوتکردن و گەڕاندنەوەی ڕووناکی</string>
@@ -274,12 +277,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_navigation_bar_title">شاردنەوەی پەڕەکانی گەشتکردن</string>
   <string name="morphe_narrow_navigation_buttons_title">جوڵە پێکهاتەکانی دەستنیشانکردن بە پەیوەست بێن</string>
   <string name="morphe_navigation_bar_animations_title">ئەنیمەیشنی پەڕەکانی گەشتکردن چالاک بکە</string>
-  <string name="morphe_disable_translucent_status_bar_title">پەتی دۆخی نیمچە ڕووناک لەکاربخە</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"سنووردارکردنەکان:
- • لەوانەیە لە سەرەوەی ڤیدیۆ پلەیەرەکەدا بارێکی ڕەش دەربکەوێت.
- • دەتوانرێت پەتی گەشتیاری سیستەم بگۆڕێت بۆ ڕوون، هەروەها ناتوانرێت لێدوان لەسەر ڤیدیۆکان بدرێت."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">خۆپیشاندانی بارەگەی ڕوونی خێرای ڕەتکردنەوە</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">خۆپیشاندانی بارەگەی ڕوونی خێرای ڕەتکردنەوە</string>
   <string name="morphe_toolbar_screen_title">بەڵتە</string>
   <string name="morphe_hide_toolbar_cast_button_title">دوگمەی پەخشکردن بشارەوە</string>
   <string name="morphe_hide_toolbar_create_button_title">خۆزگەیەکی دروستکردن فشیۆڕە</string>
@@ -289,7 +286,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_title">خەڵەتە ڕیزكارییەكە</string>
   <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -371,17 +368,21 @@ Second \"item\" text"</string>
   <string name="morphe_hide_timestamp_title">خەڵه‌ت کردنه‌وه‌ی نێوچه‌که‌ی خولیایه‌کان</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">خه‌مه‌كانی ڕێخه‌ڵه‌ت خه‌مه‌كان ڕه‌نگ ده‌كه‌ن.</string>
+  <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_entry_1">نه‌كردوه‌</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
   <string name="morphe_open_videos_fullscreen_entry_1">لەکارخراو</string>
+  <!-- layout.player.fullscreen.stretchVideoPatch -->
+  <string name="morphe_fullscreen_video_scale_entry_default">بنەڕەت</string>
+  <!-- layout.player.buttons.muteVideoButtonPatch -->
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">زینەی دەربانەی خەڵاتکار</string>
   <string name="morphe_player_overlay_opacity_summary">ءيجست سير رنغدي - (0 ري رنحانًح, 100 ري دواق)</string>
   <string name="morphe_player_overlay_opacity_invalid_toast">زینەی دەربانەی خەڵاتکار دەبێت لە نێوان 0-100-دا بێت</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
-  <string name="morphe_wide_searchbar_title">چالۆکەی گەڕانی فراوان چالاک بکە</string>
+  <string name="morphe_searchbar_type_entry_disabled">لەکارخراو</string>
   <!-- layout.sponsorblock.sponsorBlockPatch -->
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_entry_1">بونیاد</string>
@@ -451,6 +452,7 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_opacity_title">شفافی پشتخاڵ</string>
   <string name="morphe_miniplayer_opacity_summary">ءيجست سير رنغدي - (0 ري رنحانًح, 100 ري دواق)</string>
   <string name="morphe_miniplayer_opacity_invalid_toast">زینەی سەرپۆشەکەی مینیپڵەیەر پێویستە لە نێوان 0-100 بێت</string>
+  <!-- misc.fix.fixBackToExitGesturePatch -->
   <!-- layout.theme.themePatch -->
   <string name="morphe_gradient_loading_screen_title">سکرینی بارکردنێکی فڕکێنەرەوە سازشە</string>
   <string name="morphe_splash_screen_animation_style_entry_1">نەخوێتە</string>
@@ -463,7 +465,7 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">لوگۆی سەرەوە</string>
   <string name="morphe_header_logo_entry_1">تاوکی</string>
   <string name="morphe_header_logo_entry_2">سادە</string>
-  <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_3'. -->
+  <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_7'. -->
   <string name="morphe_header_logo_entry_5">باو</string>
   <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <string name="morphe_bypass_image_region_restrictions_title">نەماڵەکانی ئەو سنارانەی وێنە دەڕەقە</string>
@@ -503,8 +505,6 @@ Second \"item\" text"</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">ئۆتە</string>
-  <!-- 'Force AVC (H.264) codec' should be the same translation used for 'morphe_force_avc_codec_title'. -->
-  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_shorts_quality_default_wifi_title">کیفیتی پیش‌نیازکراوی Shorts لە تۆڕی Wi-Fi</string>
   <string name="morphe_shorts_quality_default_mobile_title">کیفیتی پیش‌نیازکراوی Shorts لە تۆڕی مۆبایل</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->

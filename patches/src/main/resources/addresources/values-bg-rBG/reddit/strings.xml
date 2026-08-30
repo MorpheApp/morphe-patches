@@ -16,7 +16,8 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-  <!-- Overrides built in setting menu with Morphe settings. -->
+  <string name="reddit_privacy_policy">Политика за поверителност на Reddit</string>
+  <string name="morphe_google_signin_not_available_toast">Входът с Google не е наличен. Използвайте имейл, за да влезете</string>
   <string name="morphe_screen_ads_title">Реклами</string>
   <string name="morphe_hide_post_ads_title">Скриване на рекламите в потока</string>
   <string name="morphe_hide_comment_ads_title">Скриване на реклами в коментари</string>

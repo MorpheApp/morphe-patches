@@ -10,6 +10,7 @@ import app.morphe.patches.all.misc.resources.ResourceType
 import app.morphe.patches.all.misc.resources.resourceLiteral
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.shared.getPlayerTypeFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
@@ -22,14 +23,7 @@ val playerTypeHookPatch = bytecodePatch(
     dependsOn(sharedExtensionPatch, resourceMappingPatch)
 
     execute {
-        Fingerprint(
-            definingClass = "/YouTubePlayerOverlaysLayout;",
-            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-            returnType = "V",
-            parameters = listOf(
-                PlayerTypeEnumFingerprint.originalClassDef.type
-            )
-        ).method.addInstruction(
+        getPlayerTypeFingerprint().method.addInstruction(
             0,
             "invoke-static { p1 }, $EXTENSION_CLASS->setPlayerType(Ljava/lang/Enum;)V",
         )

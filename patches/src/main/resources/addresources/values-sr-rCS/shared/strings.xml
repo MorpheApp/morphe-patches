@@ -107,13 +107,23 @@ Nećete biti obavešteni ni o kakvim neočekivanim događajima."</string>
   <string name="morphe_debug_logs_clear_toast">Beleške o ispravljanju grešaka obrisane</string>
   <string name="morphe_debug_feature_flags_manager_title">Feature flags Manager</string>
   <string name="morphe_debug_feature_flags_manager_summary">Upravljajte bulovim zastavicama funkcija</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Aktivne karakteristike ( %d )</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Blokirane karakteristike ( %d )</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Pretražite funkcije…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Automatski</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Isključen</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Uključen</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Ukloni</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Karakteristike su sačuvane</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Karakteristike su resetovane</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Karakteristike kopirane u međumemoriju</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Restartujte aplikaciju da biste koristili ovo podešavanje</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Početak</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Otvori postavke MicroG</string>

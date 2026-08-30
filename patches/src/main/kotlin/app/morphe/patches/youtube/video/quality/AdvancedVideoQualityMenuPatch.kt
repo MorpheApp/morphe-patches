@@ -12,9 +12,9 @@ package app.morphe.patches.youtube.video.quality
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.PatchException
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -23,13 +23,19 @@ import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.recyclerviewtree.addRecyclerViewTreeHook
 import app.morphe.patches.youtube.misc.recyclerviewtree.recyclerViewTreeHookPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import app.morphe.util.findFreeRegister
+import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
+
+private const val EXTENSION_FILTER =
+    "Lapp/morphe/extension/youtube/patches/components/AdvancedVideoQualityMenuFilter;"
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/playback/quality/AdvancedVideoQualityMenuPatch;"
 
-private const val EXTENSION_FILTER =
-    "Lapp/morphe/extension/youtube/patches/components/AdvancedVideoQualityMenuFilter;"
+private const val EXTENSION_SHORTS_QUALITY_MENU_INTERFACE =
+    $$"Lapp/morphe/extension/youtube/patches/playback/quality/AdvancedVideoQualityMenuPatch$ShortsQualityMenuInterface;"
 
 internal val advancedVideoQualityMenuPatch = bytecodePatch {
     dependsOn(
@@ -48,38 +54,59 @@ internal val advancedVideoQualityMenuPatch = bytecodePatch {
         // region Patch for the old type of the video quality menu.
         // Used for regular videos when spoofing to old app version,
         // and for the Shorts quality flyout on newer app versions.
-        VideoQualityMenuViewInflateFingerprint.let {
+        ShowVideoQualityQuickMenuFingerprint.matchAll().forEach {
             it.method.apply {
-                val matches = it.instructionMatches
-                val checkCastIndex = matches[matches.lastIndex - 1].index
-                val listViewRegister = getInstruction<OneRegisterInstruction>(checkCastIndex).registerA
+                val match = it.instructionMatches[2]
+                val index = match.index
+                val register = findFreeRegister(index)
 
-                addInstruction(
-                    checkCastIndex + 1,
-                    "invoke-static { v$listViewRegister }, $EXTENSION_CLASS->" +
-                            "addVideoQualityListMenuListener(Landroid/widget/ListView;)V",
+                addInstructionsWithLabels(
+                    index,
+                    """
+                        invoke-static { }, $EXTENSION_CLASS->showShortsQualityMenu()Z
+                        move-result v$register
+                        if-eqz v$register, :ignore
+                        return-void                        
+                        :ignore
+                        nop
+                    """
                 )
             }
         }
 
-        // Force YT to add the 'advanced' quality menu for Shorts.
-        VideoQualityMenuOptionsFingerprint.let {
-            val matches = it.instructionMatches
-            val startIndex = matches.first().index
-            val insertIndex = matches[matches.lastIndex - 1].index
-            if (startIndex != 0) throw PatchException("Unexpected opcode start index: $startIndex")
+        ShortsQualityConstructorFingerprint.let {
+            it.classDef.apply {
+                interfaces.add(EXTENSION_SHORTS_QUALITY_MENU_INTERFACE)
+
+                methods.add(
+                    ImmutableMethod(
+                        type,
+                        "patch_showShortsQualityMenu",
+                        listOf(),
+                        "V",
+                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                        annotations,
+                        null,
+                        MutableMethodImplementation(3),
+                    ).toMutable().apply {
+                        addInstructions(
+                            0,
+                            """
+                                const/4 v0, 0x1
+                                invoke-virtual { p0, v0 }, ${ShortsQualityMenuFingerprint.method}
+                                return-void
+                            """
+                        )
+                    }
+                )
+            }
 
             it.method.apply {
-                val register = getInstruction<OneRegisterInstruction>(insertIndex).registerA
+                val index = it.instructionMatches.first().index
 
-                // A condition controls whether to show the three or four items quality menu.
-                // Force the four items quality menu to make the "Advanced" item visible, necessary for the patch.
-                addInstructions(
-                    insertIndex,
-                    """
-                        invoke-static { v$register }, $EXTENSION_CLASS->forceAdvancedVideoQualityMenuCreation(Z)Z
-                        move-result v$register
-                    """
+                addInstruction(
+                    index,
+                    "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->initialize($EXTENSION_SHORTS_QUALITY_MENU_INTERFACE)V"
                 )
             }
         }

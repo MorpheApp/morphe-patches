@@ -107,13 +107,22 @@ Second \"item\" text"</string>
   <string name="morphe_debug_logs_clear_toast">ล้างบันทึกการแก้ไขข้อบกพร่องแล้ว</string>
   <string name="morphe_debug_feature_flags_manager_title">แฟล็กคุณสมบัติ Manager</string>
   <string name="morphe_debug_feature_flags_manager_summary">จัดการแฟล็กคุณสมบัติบูลีน</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">แฟล็กคุณสมบัติที่ใช้งานอยู่ (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">แฟล็กคุณสมบัติที่ถูกบล็อก (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">ค้นหาแฟล็กคุณสมบัติ…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">อัตโนมัติ</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">ปิด</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_action_remove">นำออก</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">บันทึกแฟล็กคุณสมบัติแล้ว</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">รีเซ็ตแฟล็กคุณสมบัติแล้ว</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">คัดลอกแฟล็กคุณสมบัติไปยังคลิปบอร์ดแล้ว</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">รีสตาร์ทแอปเพื่อใช้การตั้งค่านี้</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">เริ่มต้น</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">เปิดการตั้งค่า MicroG</string>

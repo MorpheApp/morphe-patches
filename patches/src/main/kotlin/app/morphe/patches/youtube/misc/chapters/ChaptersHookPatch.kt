@@ -117,5 +117,20 @@ val chaptersHookPatch = bytecodePatch {
                 )
             }
         }
+
+        HeatMapPeakPointFingerprint.apply {
+            method.apply {
+                val instructionIndex = instructionMatches[1].index
+                val instructionRegister = getInstruction<OneRegisterInstruction>(
+                    instructionIndex
+                ).registerA
+
+                addInstruction(
+                    instructionIndex + 1,
+                    "invoke-static { v$instructionRegister }, $EXTENSION_CLASS->" +
+                            "setHeatMapPeakPoint(Z)V"
+                )
+            }
+        }
     }
 }

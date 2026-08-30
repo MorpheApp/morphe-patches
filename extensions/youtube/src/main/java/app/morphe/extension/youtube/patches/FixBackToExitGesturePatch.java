@@ -14,6 +14,7 @@ import android.app.Activity;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 
 @SuppressWarnings("unused")
@@ -22,6 +23,8 @@ public class FixBackToExitGesturePatch {
      * Time between two back button presses.
      */
     private static final long PRESSED_TIMEOUT_MILLISECONDS = 2000L;
+
+    private static final Boolean BACK_BUTTON_ALWAYS_EXITS_FEED = Settings.BACK_BUTTON_ALWAYS_EXITS_FEED.get();
 
     /**
      * Last time back button was pressed.
@@ -68,6 +71,16 @@ public class FixBackToExitGesturePatch {
                 }, PRESSED_TIMEOUT_MILLISECONDS);
             }
         }
+    }
+
+    /**
+     * Override back button scrolling to the top of the home/subscription feed.
+     */
+    public static boolean allowBackButtonToScrollToTopOfFeed(boolean original) {
+        if (BACK_BUTTON_ALWAYS_EXITS_FEED) {
+            return false;
+        }
+        return original;
     }
 
     /**

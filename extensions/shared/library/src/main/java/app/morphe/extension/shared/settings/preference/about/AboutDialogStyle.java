@@ -11,6 +11,7 @@ import java.util.Locale;
 
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseSettings;
+import app.morphe.extension.shared.theme.ThemeUtils;
 
 /**
  * HTML scaffolding shared by the About and Credits dialogs, styled to match Morphe.
@@ -140,8 +141,8 @@ final class AboutDialogStyle {
         return DOCUMENT_START
                 .replace("{dir}", Utils.isRightToLeftLocale(
                         BaseSettings.MORPHE_LANGUAGE.get().getLocale()) ? "rtl" : "ltr")
-                .replace("{bg}", Utils.getColorHexString(Utils.getDialogBackgroundColor()))
-                .replace("{fg}", Utils.getColorHexString(Utils.getAppForegroundColor()))
+                .replace("{bg}", Utils.getColorHexString(ThemeUtils.getDialogBackgroundColor()))
+                .replace("{fg}", Utils.getColorHexString(ThemeUtils.getAppForegroundColor()))
                 .replace("{accent}", accentColor())
                 .replace("{blue}", MORPHE_BLUE)
                 .replace("{teal}", MORPHE_TEAL);

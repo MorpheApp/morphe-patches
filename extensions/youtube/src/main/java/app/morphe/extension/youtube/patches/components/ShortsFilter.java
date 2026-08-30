@@ -458,7 +458,7 @@ public final class ShortsFilter extends Filter {
                     return false;
                 }
             } else if (matchedGroup == channelProfile) {
-                return true;
+                return !NavigationBar.isSearchBarActive();
             }
 
             return shouldHideShortsFeedItems();
@@ -496,7 +496,7 @@ public final class ShortsFilter extends Filter {
                 // Check ConversationContext to not hide shelf header in channel profile
                 // This value does not exist in the shelf header in the channel profile
                 if (!contextInterface.isHomeFeedOrRelatedVideo()) {
-                    return channelProfileShelfHeader.check(buffer).isFiltered();
+                    return !NavigationBar.isSearchBarActive() && channelProfileShelfHeader.check(buffer).isFiltered();
                 }
 
                 return shouldHideShortsFeedItems();

@@ -21,6 +21,25 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Khởi động lại để hoàn tất thiết lập</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Tên ứng dụng</string>
+  <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">Nền chủ đề tối</string>
+  <string name="morphe_theme_color_dark_entry_2">Đen tuyền</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You (Đen thuần)</string>
+  <string name="morphe_theme_color_dark_entry_9">YouTube cổ điển</string>
+  <string name="morphe_theme_color_dark_entry_10">Hồng đậm</string>
+  <string name="morphe_theme_color_dark_entry_11">Xanh dương đậm</string>
+  <string name="morphe_theme_color_dark_entry_12">Xanh lá đậm</string>
+  <string name="morphe_theme_color_dark_entry_13">Vàng đậm</string>
+  <string name="morphe_theme_color_dark_entry_14">Cam đậm</string>
+  <string name="morphe_theme_color_dark_entry_15">Đỏ đậm</string>
+  <string name="morphe_theme_color_dark_custom_title">Nền tối tùy chỉnh</string>
+  <string name="morphe_theme_color_dark_custom_summary">Đặt màu nền của chủ đề tối</string>
+  <string name="morphe_theme_color_entry_1">Mặc định ứng dụng</string>
+  <string name="morphe_theme_color_entry_4">Material You (Trung tính)</string>
+  <string name="morphe_theme_color_entry_5">Material You (Chính)</string>
+  <string name="morphe_theme_color_entry_6">Material You (Phụ)</string>
+  <string name="morphe_theme_color_entry_7">Material You (Cấp ba)</string>
+  <string name="morphe_theme_color_custom_entry">Tùy chỉnh</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Tải xuống bên ngoài</string>
   <string name="morphe_external_downloader_name_title">Tên gói trình tải xuống</string>
@@ -62,7 +81,7 @@ Kiểm tra xem tên gói có chính xác không và ứng dụng đã được c
 Nếu bạn đã mua gói Premium, có thể không cần thiết phải bật cài đặt này"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Không thể lấy bất kỳ luồng phát nào</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Tắt cài đặt này có thể gây ra lỗi khi phát.</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Hãy thử bật: Giả mạo luồng phát video &gt; Đăng nhập Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Client mặc định</string>
@@ -132,9 +151,9 @@ Bấm tiếp tục bên dưới để đăng nhập"</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">Kết nối trực tiếp nếu proxy gặp sự cố</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Ẩn quảng cáo toàn màn hình</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">Để dùng tính năng này, hãy đổi \'Giả mạo luồng phát video\' thành bất kỳ client nào ngoại trừ Android Studio\'</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">Để dùng tính năng này, hãy đổi \'Giả mạo luồng phát video\' thành bất kỳ client nào ngoại trừ \'Android Studio\' và \'Android VR Downgraded\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Rút gọn liên kết chia sẻ</string>
   <string name="morphe_sanitize_sharing_links_summary">Xóa các tham số theo dõi khỏi liên kết được chia sẻ</string>
@@ -160,11 +179,28 @@ Tuy nhiên, một số dữ liệu người dùng cũng được ghi lại như 
   <string name="morphe_custom_filter_toast_invalid_syntax">Bộ lọc tuỳ chỉnh không hợp lệ: %s</string>
   <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">Bộ lọc menu Cài đặt</string>
-  <string name="morphe_settings_menu_filter_screen_summary">Ẩn các mục trên màn hình cài đặt ứng dụng tiêu chuẩn theo tên hiển thị của chúng</string>
-  <string name="morphe_settings_menu_filter_picker_empty">Mở màn hình cài đặt ứng dụng tiêu chuẩn một lần để điền vào danh sách</string>
+  <string name="morphe_settings_menu_filter_screen_summary">Ẩn các mục trên màn hình cài đặt theo tên hiển thị</string>
+  <string name="morphe_settings_menu_filter_picker_empty">Hãy mở màn hình cài đặt mặc định của ứng dụng ít nhất một lần để tạo danh sách</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Loại bỏ hộp thoại cảnh báo trước khi xem</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Tuỳ chọn này chỉ tự động đồng ý chứ không bỏ qua giới hạn về độ tuổi</string>
+  <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">Nhà cung cấp PoToken</string>
+  <string name="morphe_potoken_provider_screen_summary">Cấu hình nhà cung cấp PoToken để ngăn chặn sự cố phát lại</string>
+  <string name="morphe_external_potoken_provider_title">Nhà cung cấp PoToken bên ngoài</string>
+  <string name="morphe_external_potoken_provider_summary">"Khắc phục các sự cố phát lại bằng cách sử dụng trình tạo PoToken bên ngoài (Thử nghiệm)
+
+Nếu bạn là người dùng YouTube Premium, cài đặt này có thể không cần thiết"</string>
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"Khắc phục sự cố phát lại bằng cách sử dụng trình tạo PoToken bên ngoài (Thử nghiệm)
+
+Để sử dụng tính năng này, hãy tắt 'Giả mạo luồng video'"</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">Nếu nó không hoạt động, hãy thử buộc đóng MicroG</string>
+  <string name="morphe_external_potoken_provider_settings_summary">Mở cài đặt PotHelper</string>
+  <string name="morphe_external_potoken_provider_about_summary">"Tính năng này hiện đang được phát triển và có thể không hoạt động
+
+Nhấn vào đây để tải xuống PotHelper"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Giả mạo phiên bản ứng dụng</string>
   <string name="morphe_spoof_app_version_summary">Khiến server nghĩ rằng bạn đang sử dụng phiên bản cũ để khôi phục giao diện cũ</string>
@@ -176,40 +212,40 @@ Nếu muốn tắt tính năng này sau đó, bạn nên xóa dữ liệu ứng 
   <string name="morphe_spoof_app_version_target_title">Mục tiêu phiên bản giả mạo</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_ryd_failure_connection_timeout">Không thể hiện số Dislike (API hết thời gian chờ)</string>
-  <string name="morphe_ryd_failure_connection_status_code">Lượt không thích không khả dụng ( trạng thái %d)</string>
-  <string name="morphe_ryd_failure_client_rate_limit_requested">Không thể hiện số dislike (đạt giới hạn API ứng dụng)</string>
-  <string name="morphe_ryd_failure_generic">Số lượt không thích không khả dụng (%s)</string>
+  <string name="morphe_ryd_failure_connection_timeout">Tạm thời không thể tải số lượt không thích (hết thời gian chờ API)</string>
+  <string name="morphe_ryd_failure_connection_status_code">Không thể tải số lượt không thích (mã trạng thái %d)</string>
+  <string name="morphe_ryd_failure_client_rate_limit_requested">Không thể tải số lượt không thích (đạt giới hạn API ứng dụng)</string>
+  <string name="morphe_ryd_failure_generic">Không thể hiện số lượt không thích (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
-  <string name="morphe_ryd_video_likes_hidden_by_video_owner">Đã ẩn bởi chủ sở hữu</string>
+  <string name="morphe_ryd_video_likes_hidden_by_video_owner">Đã bị chủ sở hữu ẩn</string>
   <string name="morphe_ryd_enabled_title">Bật Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Hiện số lượt không thích dưới dạng phần trăm</string>
   <string name="morphe_ryd_dislike_percentage_summary">Hiển thị số lượt không thích dưới dạng phần trăm thay vì một con số</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
   <string name="morphe_ryd_compact_layout_title">Dùng nút Thích thu gọn</string>
-  <string name="morphe_ryd_compact_layout_summary">Giảm độ rộng của nút Thích để tiết kiệm không gian</string>
-  <string name="morphe_ryd_estimated_like_title">Hiện lượt thích ước tính</string>
-  <string name="morphe_ryd_estimated_like_summary">Hiển thị số lượt thích ước tính trên các video mà người sáng tạo đã ẩn lượt thích</string>
+  <string name="morphe_ryd_compact_layout_summary">Giảm chiều rộng nút Thích để tiết kiệm không gian</string>
+  <string name="morphe_ryd_estimated_like_title">Hiện số lượt thích ước tính</string>
+  <string name="morphe_ryd_estimated_like_summary">Hiển thị số lượt thích ước tính trên các video mà nhà sáng tạo đã ẩn lượt thích</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Hiện cảnh báo lỗi kết nối</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Hiển thị thông báo khi máy chủ Return YouTube Dislike không khả dụng</string>
   <string name="morphe_ryd_attribution_summary">"Dữ liệu được cung cấp bởi API Return YouTube Dislike
 
-Nhấn vào đây để mở ReturnYouTubeDislike.com"</string>
+Bấm vào đây để mở ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Thống kê API Return YouTube Dislike của thiết bị này</string>
-  <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Thời gian phản hồi API, trung bình</string>
-  <string name="morphe_ryd_statistics_getFetchCallResponseTimeMin_title">Thời gian phản hồi API, tối thiểu</string>
-  <string name="morphe_ryd_statistics_getFetchCallResponseTimeMax_title">Thời gian phản hồi API, tối đa</string>
-  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_title">Thời gian phản hồi API, phương tiện gần nhất</string>
-  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Không thể hiện số Dislike - Đạt giới hạn tốc độ API của máy khách</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_title">Số lượt truy vấn API, số lần gọi</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Không gọi mạng lần nào</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%d lượt gọi mạng đã được thực hiện</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">Số lượt truy vấn API, số lần thất bại</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Không có cuộc gọi mạng nào bị hết thời gian chờ</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d cuộc gọi mạng bị hết thời gian chờ</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">Giới hạn tốc độ máy khách API</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Không gặp giới hạn tốc độ máy khách</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Đã gặp giới hạn tốc độ máy khách %d lần</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%d mili-giây</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Thời gian phản hồi API trung bình</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeMin_title">Thời gian phản hồi API tối thiểu</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeMax_title">Thời gian phản hồi API tối đa</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_title">Thời gian phản hồi API của nội dung gần nhất</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Tạm thời không thể hiện số lượt không thích do API của ứng dụng đã đạt giới hạn yêu cầu</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_title">Số lượt gọi API lấy lượt thích/không thích</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Chưa thực hiện gọi mạng nào</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">Đã thực hiện %d gọi mạng</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">Số lần hết thời gian chờ khi gọi API lấy lượt thích/không thích</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Chưa gọi mạng nào mà bị hết thời gian chờ</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">Có %d lần gọi mạng bị hết thời gian chờ</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">Giới hạn yêu cầu API ứng dụng</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Chưa gặp giới hạn ứng dụng</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Đã gặp giới hạn ứng dụng %d lần</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%d mili giây</string>
 </resources>

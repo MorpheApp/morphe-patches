@@ -107,13 +107,22 @@ Tu nedaî belav bibe de kû dabeş bendê neqezbîn."</string>
   <string name="morphe_debug_logs_clear_toast">Logs debug paqij kirin</string>
   <string name="morphe_debug_feature_flags_manager_title">Destwergêrê bayinatan</string>
   <string name="morphe_debug_feature_flags_manager_summary">Bayinatan booleanan sererast bike</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Nîşanan xwertek karî (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Nîşanan xwertek qutî (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Nîşanên taybetmendiyê bigerin…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Dabe</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Bo</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Lêkirin</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Nîşanan xwertek hatin vekirin</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Nîşanan xwertek hatin veşartin</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Nîşanan xwertek lûsteyê hatin vekirin</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Serîlêdanê appê nûbike ku ev ayar bikarînin</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Destpêk</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Sazîna MicroG veke</string>

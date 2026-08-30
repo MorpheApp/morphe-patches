@@ -16,12 +16,13 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-  <!-- Overrides built in setting menu with Morphe settings. -->
+  <string name="reddit_privacy_policy">Reddit-privacybeleid</string>
+  <string name="morphe_google_signin_not_available_toast">Google-login niet beschikbaar. Gebruik e-mail om in te loggen</string>
   <string name="morphe_screen_ads_title">Advertenties</string>
   <string name="morphe_hide_post_ads_title">Advertenties in de feed verbergen</string>
   <string name="morphe_hide_comment_ads_title">Advertenties in reacties verbergen</string>
   <string name="morphe_screen_navigation_bar_title">Navigatiebalk</string>
-  <string name="morphe_hide_answers_button_title">Antwoordenknop verbergen</string>
+  <string name="morphe_hide_answers_button_title">Knop Antwoorden verbergen</string>
   <string name="morphe_hide_chat_button_title">Chatknop verbergen</string>
   <string name="morphe_hide_create_button_title">Knop Maken verbergen</string>
   <string name="morphe_hide_discover_button_title">Verberg de Discover- of Communities-knop</string>
@@ -49,7 +50,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_ask_button_title">AI-knop verbergen</string>
   <string name="morphe_hide_ask_button_summary">Verbergt de knop \'Vragen\' in de zoekbalk</string>
   <string name="morphe_hide_communities_shelf_title">Verberg communities plank</string>
-  <string name="morphe_hide_communities_shelf_summary">Verbergt het gerelateerde of voorgestelde communities plank in subreddits</string>
+  <string name="morphe_hide_communities_shelf_summary">Verbergt de gerelateerde of voorgestelde communities plank in subreddits</string>
   <string name="morphe_hide_trending_shelves_title">Verberg Trending planken</string>
   <string name="morphe_hide_trending_shelves_summary">Verbergt de Trending planken van de feed en zoekopdrachten</string>
   <string name="morphe_remove_notification_dialog_title">Verwijder notificatie suggestie dialoog</string>

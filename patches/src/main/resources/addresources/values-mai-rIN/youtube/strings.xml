@@ -30,6 +30,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_12_video_title">वीडियो</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">पृष्ठभूमि प्ले प्रतिबन्धहरू हटाउनुहोस्</string>
+  <!-- layout.disableScrollSpeedLimitPatch -->
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">लेआउट अपडेटहरू अक्षम गर्नुहोस्</string>
   <string name="morphe_disable_layout_updates_user_dialog_message">"एप लेआउट पहिलो पटक स्थापना गर्दा प्रयोग गरिएको लेआउटमा फर्किन्छ।
@@ -62,6 +63,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_latest_videos_button_title">“नवीनतम भिडियोहरू” बटन लुकाउनुहोस्</string>
   <string name="morphe_hide_mix_playlists_title">मिक प्लेलिस्ट छिपाएं</string>
   <string name="morphe_hide_movies_section_title">मूवी सेक्शन छिपाएं</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">\'मुझे सूचित करें\' बटन छिपाएं</string>
@@ -209,8 +211,7 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">टैप टू सीक सक्षम करें</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">चमक जेस्चर सक्षम करें</string>
-  <string name="morphe_swipe_volume_title">वॉल्यूम जेस्चर सक्षम करें</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
   <string name="morphe_swipe_press_to_engage_title">प्रेस टू स्वाइप जेस्चर सक्षम करें</string>
   <string name="morphe_swipe_haptic_feedback_title">हैप्टिक फीडबैक सक्षम करें</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">चमक सहेजें और पुनर्स्थापित करें</string>
@@ -293,19 +294,13 @@ Second \"item\" text"</string>
   <string name="morphe_narrow_navigation_buttons_title">संकरी नेविगेशन बटन सक्षम करी</string>
   <string name="morphe_navigation_bar_animations_title">नेभिगेशन बार एनिमेसनहरू सक्षम गर्नुहोस्</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">स्वचालित रूपमा लुकाउने नेभिगेसन बारलाई अक्षम गर्नुहोस्</string>
-  <string name="morphe_disable_translucent_status_bar_title">पारदर्शी स्थिति बारलाई अक्षम गर्नुहोस्</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"प्रतिबन्धहरू:
-• भिडियो प्लेयरको माथिल्लो भागमा कालो बार देखा पर्न सक्छ।
-• प्रणाली नेभिगेसन बार पारदर्शी हुन सक्छ, र भिडियोहरूमा टिप्पणी गर्न सम्भव हुँदैन।"</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">प्रकाश पारदर्शी बारलाई अक्षम गर्नुहोस्</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">डार्क पारदर्शी बारलाई अक्षम गर्नुहोस्</string>
   <string name="morphe_toolbar_screen_title">टूलबार</string>
   <string name="morphe_show_toolbar_settings_button_type_title">सेटिङ बटन कार्य</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">फ्लाईआउट मेनु</string>
   <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -388,15 +383,17 @@ Second \"item\" text"</string>
   <string name="morphe_hide_timestamp_title">भिडियो टाइमस्ट्याम्प लुकाउनुहोस्</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">प्लेयर पपअप प्यानलहरू अक्षम गर्नुहोस्</string>
+  <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_entry_1">निष्क्रिय</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
+  <!-- layout.player.fullscreen.stretchVideoPatch -->
+  <!-- layout.player.buttons.muteVideoButtonPatch -->
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">प्लेयर ओभरले अपारदर्शिता</string>
   <string name="morphe_player_overlay_opacity_invalid_toast">प्लेयर ओभरले अपारदर्शिता 0-100 बीचमा हुनुपर्छ</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
-  <string name="morphe_wide_searchbar_title">चौडो खोज बार सक्षम गर्नुहोस्</string>
   <!-- layout.sponsorblock.sponsorBlockPatch -->
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_entry_1">डिफ़ॉल्ट</string>
@@ -461,6 +458,7 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">पिक्सेल आकार %1$s और %2$s के बीच होखे के चाहिए</string>
   <string name="morphe_miniplayer_opacity_title">ओवरले अपारदर्शिता</string>
   <string name="morphe_miniplayer_opacity_invalid_toast">मिनीप्लेयर ओवरले अपारदर्शिता 0 और 100 के बीच होखे के चहिए</string>
+  <!-- misc.fix.fixBackToExitGesturePatch -->
   <!-- layout.theme.themePatch -->
   <string name="morphe_gradient_loading_screen_title">सक्षम ग्रेडियेंट लोडिंग स्क्रीन</string>
   <string name="morphe_splash_screen_animation_style_title">स्प्लैश स्क्रीन स्टाइल</string>
@@ -473,7 +471,7 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">हेडर लोगो</string>
   <string name="morphe_header_logo_entry_1">डिफ़ॉल्ट</string>
   <string name="morphe_header_logo_entry_2">रेगुलर</string>
-  <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_3'. -->
+  <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_7'. -->
   <string name="morphe_header_logo_entry_5">कस्टम</string>
   <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <string name="morphe_bypass_image_region_restrictions_title">इमेज रीजियन प्रतिबंध बाईपास करी</string>
@@ -518,8 +516,6 @@ Second \"item\" text"</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">ऑटो</string>
-  <!-- 'Force AVC (H.264) codec' should be the same translation used for 'morphe_force_avc_codec_title'. -->
-  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_video_quality_default_wifi_title">Wi-Fi नेटवर्क पर डिफ़ॉल्ट वीडियो गुणवत्ता</string>
   <string name="morphe_video_quality_default_mobile_title">मोबाइल नेटवर्क पर डिफ़ॉल्ट वीडियो गुणवत्ता</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->

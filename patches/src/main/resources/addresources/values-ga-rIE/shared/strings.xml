@@ -107,13 +107,23 @@ Ní chuirfear ar an eolas thú faoi aon imeachtaí gan choinne."</string>
   <string name="morphe_debug_logs_clear_toast">Glanadh logaí dífhabhtaithe</string>
   <string name="morphe_debug_feature_flags_manager_title">Bainisteoir bratacha gnéithe</string>
   <string name="morphe_debug_feature_flags_manager_summary">Bainistigh bratacha gné booléacha</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Bratacha gné gníomhacha (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Bratacha gné blocáilte (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Bratacha gné cuardaigh…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Uath</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">As</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Ar</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Bain</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Bratacha gné sábháilte</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Athshocrú bratacha gnéithe</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Bratacha gné cóipeáilte chuig an ghearrthaisce</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Atosaigh an aip chun an socrú seo a úsáid</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Tosaigh</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Oscail na socruithe MicroG</string>

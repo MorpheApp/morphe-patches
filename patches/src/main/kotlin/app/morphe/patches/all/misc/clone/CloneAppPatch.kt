@@ -120,7 +120,7 @@ private fun applyGetPackageName(oldPackageName: String, vararg classesToChange: 
 val cloneAppPatch = resourcePatch(
     name = "Clone app",
     description = "Changes the app package name to allow installing the same app multiple times. " +
-            "By default \".morphe\" is appended the package name. Each cloned install must " +
+            "By default \".morphe\" is appended to the package name. Each cloned install must " +
             "use a unique package name. Cloning does not work with all apps and using this patch " +
             "may cause app crashes or other unexpected behavior.",
     default = false
@@ -190,6 +190,10 @@ val cloneAppPatch = resourcePatch(
             // Patches and installs but crashes on launch.
             "com.duolingo",
             "tv.twitch.android.app",
+
+            // Resources fail to decode correctly.
+            // https://github.com/MorpheApp/morphe-patcher/issues/178
+            "cn.wps.moffice_eng",
         )
 
         val packageName = packageMetadata.packageName

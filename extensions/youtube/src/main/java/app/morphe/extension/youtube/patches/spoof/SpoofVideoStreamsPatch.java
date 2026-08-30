@@ -1,12 +1,5 @@
 package app.morphe.extension.youtube.patches.spoof;
 
-import static app.morphe.extension.shared.spoof.ClientType.ANDROID_CREATOR;
-import static app.morphe.extension.shared.spoof.ClientType.ANDROID_VR;
-import static app.morphe.extension.shared.spoof.ClientType.ANDROID_XR;
-import static app.morphe.extension.shared.spoof.ClientType.TV_SABR;
-import static app.morphe.extension.shared.spoof.ClientType.VISIONOS_1_02;
-import static app.morphe.extension.shared.spoof.ClientType.VISIONOS_1_03;
-
 import java.util.List;
 
 import app.morphe.extension.shared.settings.Setting;
@@ -21,7 +14,7 @@ public class SpoofVideoStreamsPatch {
         public boolean isAvailable() {
             ClientType client = Settings.SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get();
             return Settings.SPOOF_VIDEO_STREAMS_CLIENT_TYPE.isAvailable()
-                    && (client == ANDROID_VR || client == VISIONOS_1_02);
+                    && (client == ClientType.ANDROID_VR_DASH || client == ClientType.ANDROID_XR_DASH || client == ClientType.VISIONOS_1_02);
         }
 
         @Override
@@ -36,24 +29,26 @@ public class SpoofVideoStreamsPatch {
     public static void setClientOrderToUse() {
         ClientType client = Settings.SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get();
 
-        // Use Android XR (visonOS 1.03) client that has AV1 if user settings allow it.
-        // AVC cannot be forced with Android XR (visonOS 1.03) because it uses VP9 and AV1.
-        // If both settings are on, then force AVC takes priority and Android VR (visionOS 1.02) is used.
+        // Use [Android XR, Android XR Downgraded, visonOS 1.03] client that has AV1 if user settings allow it.
+        // AVC cannot be forced with [Android XR, Android XR Downgraded, visonOS 1.03] because it uses VP9 and AV1.
+        // If both settings are on, then force AVC takes priority and [Android VR, Android VR Downgraded, visonOS 1.02] is used.
         if (Settings.SPOOF_VIDEO_STREAMS_AV1.get() && !Settings.FORCE_AVC_CODEC.get() ) {
-            if (client == ANDROID_VR) {
-                client = ANDROID_XR;
-            } else if (client == VISIONOS_1_02) {
-                client = VISIONOS_1_03;
+            if (client == ClientType.ANDROID_VR_DASH) {
+                client = ClientType.ANDROID_XR_DASH;
+            } else if (client == ClientType.ANDROID_VR_SABR) {
+                client = ClientType.ANDROID_XR_SABR;
+            } else if (client == ClientType.VISIONOS_1_02) {
+                client = ClientType.VISIONOS_1_03;
             }
         }
 
-        // Reels can take up to 1 minute for videos start playback.
-        // Only use it if the user has selected it.
         List<ClientType> availableClients = List.of(
-                TV_SABR,
-                ANDROID_VR,
-                VISIONOS_1_02,
-                ANDROID_CREATOR
+                ClientType.TV_SIMPLY,
+                ClientType.VISIONOS_1_02,
+                ClientType.ANDROID_CREATOR
+                // If not signed in to Android VR, there may be playback issues.
+                // Only use it if the user has selected it.
+                // ClientType.ANDROID_VR_DASH
         );
 
         app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch.setClientsToUse(

@@ -16,7 +16,8 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-  <!-- Overrides built in setting menu with Morphe settings. -->
+  <string name="reddit_privacy_policy">Polityka prywatności Reddita</string>
+  <string name="morphe_google_signin_not_available_toast">Logowanie przez Google niedostępne. Użyj e-maila, aby się zalogować</string>
   <string name="morphe_screen_ads_title">Reklamy</string>
   <string name="morphe_hide_post_ads_title">Ukryj reklamy na stronie głównej</string>
   <string name="morphe_hide_comment_ads_title">Ukryj reklamy w komentarzach</string>

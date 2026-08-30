@@ -1,5 +1,7 @@
 package app.morphe.extension.shared.requests;
 
+import androidx.annotation.Nullable;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,12 +21,13 @@ public class Requester {
         HttpURLConnection openConnection(URL url) throws IOException;
     }
 
+    @Nullable
     private static volatile ConnectionProvider connectionProvider;
 
     private Requester() {
     }
 
-    public static void setConnectionProvider(ConnectionProvider provider) {
+    public static void setConnectionProvider(@Nullable ConnectionProvider provider) {
         connectionProvider = provider;
     }
 

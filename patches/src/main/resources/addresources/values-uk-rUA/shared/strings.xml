@@ -107,13 +107,23 @@ Second \"item\" text"</string>
   <string name="morphe_debug_logs_clear_toast">Журнали налагодження очищено</string>
   <string name="morphe_debug_feature_flags_manager_title">Менеджер експериментальних прапорців</string>
   <string name="morphe_debug_feature_flags_manager_summary">Керувати експериментальними boolean прапорцями</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Активні (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Заблоковані (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Пошук прапорців…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Авто</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Вимкнено</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Увімкнено</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Видалити</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Прапорці збережено</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Прапорці скинуто</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Прапорці скопійовано до буфера обміну</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Перезапустіть застосунок, щоб використовувати це налаштування</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Початок</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Відкриває налаштування MicroG</string>

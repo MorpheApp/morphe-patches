@@ -21,6 +21,25 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Перезавантажте, щоб завершити налаштування</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Назва застосунку</string>
+  <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">Фон темної теми</string>
+  <string name="morphe_theme_color_dark_entry_2">Чисто чорний</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You (чисто чорний)</string>
+  <string name="morphe_theme_color_dark_entry_9">Класичний YouTube</string>
+  <string name="morphe_theme_color_dark_entry_10">Темно-рожевий</string>
+  <string name="morphe_theme_color_dark_entry_11">Темно-синій</string>
+  <string name="morphe_theme_color_dark_entry_12">Темно-зелений</string>
+  <string name="morphe_theme_color_dark_entry_13">Темно-жовтий</string>
+  <string name="morphe_theme_color_dark_entry_14">Темно-помаранчевий</string>
+  <string name="morphe_theme_color_dark_entry_15">Темно-червоний</string>
+  <string name="morphe_theme_color_dark_custom_title">Власний фон темної теми</string>
+  <string name="morphe_theme_color_dark_custom_summary">Встановити колір фону темної теми</string>
+  <string name="morphe_theme_color_entry_1">За замовчуванням</string>
+  <string name="morphe_theme_color_entry_4">Material You (нейтральний)</string>
+  <string name="morphe_theme_color_entry_5">Material You (основний)</string>
+  <string name="morphe_theme_color_entry_6">Material You (вторинний)</string>
+  <string name="morphe_theme_color_entry_7">Material You (третинний)</string>
+  <string name="morphe_theme_color_custom_entry">Власний</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Зовнішні завантажувачі</string>
   <string name="morphe_external_downloader_name_title">Ім\'я пакета завантажувача</string>
@@ -62,7 +81,7 @@ Second \"item\" text"</string>
 Якщо ви є користувачем YouTube Premium, це налаштування може не знадобитися"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Не вдалося отримати жодних клієнтських потоків</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Вимкнення цього налаштування може спричинити проблеми з відтворенням.</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Спробуйте увімкнути: Підміна відеопотоків > Android VR з входом</string>
   <string name="morphe_spoof_video_streams_client_type_title">Типовий клієнт</string>
@@ -132,9 +151,9 @@ Second \"item\" text"</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">Підключатися напряму, якщо проксі недоступний</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Приховати повноекранну рекламу</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">Щоб використовувати цю функцію, змініть клієнт \"Підміни відеопотоків\" на будь-який, окрім \"Android Studio\"</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">Щоб використовувати цю функцію, змініть клієнт \"Підміни відеопотоків\" на будь-який, окрім \"Android Studio\" або \"Android VR Downgraded\"</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Очищувати посилання для поширення</string>
   <string name="morphe_sanitize_sharing_links_summary">Видаляє параметри відстеження з посилань при поширенні</string>
@@ -165,6 +184,23 @@ Second \"item\" text"</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Вилучити діалог про неприйнятний контент</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Це не обходить вікове обмеження. Просто приймає його автоматично</string>
+  <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">Постачальник PoToken</string>
+  <string name="morphe_potoken_provider_screen_summary">Налаштуйте постачальника PoToken для запобігання проблемам з відтворенням</string>
+  <string name="morphe_external_potoken_provider_title">Зовнішній постачальник PoToken</string>
+  <string name="morphe_external_potoken_provider_summary">"Виправляє проблеми з відтворенням за допомогою зовнішнього генератора PoToken (Експериментально)
+
+Якщо ви є користувачем YouTube Premium, це налаштування може не знадобитися"</string>
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"Виправляє проблеми з відтворенням за допомогою зовнішнього генератора PoToken (Експериментально)
+
+Щоб використовувати цю функцію, вимкніть \"Підробляти відеопотоки\""</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">Якщо це не працює, спробуйте примусово закрити MicroG</string>
+  <string name="morphe_external_potoken_provider_settings_summary">Відкрити налаштування PotHelper</string>
+  <string name="morphe_external_potoken_provider_about_summary">"Ця функція наразі в розробці та може не працювати
+
+Натисніть тут, щоб завантажити PotHelper"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Підміна версії застосунку</string>
   <string name="morphe_spoof_app_version_summary">Змушує сервер думати, що ви використовуєте стару версію застосунку, щоб відновити застарілі функції інтерфейсу</string>

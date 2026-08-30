@@ -107,13 +107,21 @@ Nebudete informováni o žádné neočekávané události."</string>
   <string name="morphe_debug_logs_clear_toast">Protokoly ladění vymazány</string>
   <string name="morphe_debug_feature_flags_manager_title">Správce příznaků funkcí</string>
   <string name="morphe_debug_feature_flags_manager_summary">Spravovat logické příznaky funkcí</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Aktivní příznaky funkcí (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Zablokované příznaky funkcí (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Hledat funkce…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Automaticky</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_action_remove">Odstranit</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Příznaky funkcí uloženy</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Příznaky funkcí resetovány</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Příznaky funkcí zkopírovány do schránky</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Restartujte aplikaci, abyste použili toto nastavení</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Začít</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Otevřte nastavení MicroG</string>

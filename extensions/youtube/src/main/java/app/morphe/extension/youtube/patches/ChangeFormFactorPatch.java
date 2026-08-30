@@ -86,6 +86,7 @@ public class ChangeFormFactorPatch {
         if (FORM_FACTOR_TYPE == null) {
             return original;
         }
+
         if (IS_BROKEN_FORM_FACTOR
                 && !PlayerType.getCurrent().isMaximizedOrFullscreen()
                 && !NavigationBar.isSearchBarActive()) {
@@ -141,7 +142,10 @@ public class ChangeFormFactorPatch {
      * onResume() mode instead of onCreate().
      * <p>
      **/
-     public static boolean checkPlayerLithoElementsListSize(List<?> list) {
-        return list.isEmpty();
-    }
+     public static boolean checkPlayerLithoElementsListSize(List<?> list, int listIndex) {
+         if (list == null || list.isEmpty()) {
+             return false;
+         }
+         return listIndex >= 0 && listIndex < list.size();
+     }
 }

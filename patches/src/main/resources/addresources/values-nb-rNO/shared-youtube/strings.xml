@@ -21,6 +21,25 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Start på nytt for å fullføre oppsettet</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Appnavn</string>
+  <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">Bakgrunn for mørkt tema</string>
+  <string name="morphe_theme_color_dark_entry_2">Rent svart</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You (Kremhvit svart)</string>
+  <string name="morphe_theme_color_dark_entry_9">Klassisk YouTube </string>
+  <string name="morphe_theme_color_dark_entry_10">Mørk rosa </string>
+  <string name="morphe_theme_color_dark_entry_11">Mørk blå </string>
+  <string name="morphe_theme_color_dark_entry_12">Mørk grønn </string>
+  <string name="morphe_theme_color_dark_entry_13">Mørk gul </string>
+  <string name="morphe_theme_color_dark_entry_14">Mørk oransje </string>
+  <string name="morphe_theme_color_dark_entry_15">Mørk rød </string>
+  <string name="morphe_theme_color_dark_custom_title">Egendefinert mørk bakgrunn</string>
+  <string name="morphe_theme_color_dark_custom_summary">Angi bakgrunnsfargen for det mørke temaet</string>
+  <string name="morphe_theme_color_entry_1">App-standard</string>
+  <string name="morphe_theme_color_entry_4">Material You (Nøytral) </string>
+  <string name="morphe_theme_color_entry_5">Material You (Primær) </string>
+  <string name="morphe_theme_color_entry_6">Material You (Sekundær) </string>
+  <string name="morphe_theme_color_entry_7">Material You (Tertiær) </string>
+  <string name="morphe_theme_color_custom_entry">Tilpasset</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Eksterne nedlastinger</string>
   <string name="morphe_external_downloader_name_title">Nedlastingspakkenavn</string>
@@ -62,7 +81,7 @@ Verifiser at pakkenavnet er korrekt og appen er installert"</string>
 Hvis du er en YouTube Premium-bruker, er kanskje ikke denne innstillingen nødvendig."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Kunne ikke hente noen klientstrømmer</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Hvis du slår av denne innstillingen, kan det oppstå avspillingsproblemer.</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Prøv å aktivere: Forfalske videostrømmer > Android VR-pålogging</string>
   <string name="morphe_spoof_video_streams_client_type_title">Standardklient</string>
@@ -132,9 +151,9 @@ Trykk på Fortsett nedenfor for å logge på"</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">Koble til direkte hvis proxyen feiler</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Skjul reklamer i fullskjerm</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">For å bruke denne funksjonen, endre \"Spoof video streams\" til en annen klient enn \"Android Studio\".</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">For å bruke denne funksjonen, endre \'Forfalsk videostrømmer\' til en hvilken som helst klient unntatt \'Android Studio\' og \'Android VR Downgraded\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Sanere delingslenker</string>
   <string name="morphe_sanitize_sharing_links_summary">Fjerner sporingsparametere fra delte lenker</string>
@@ -165,6 +184,23 @@ Men, hvis du aktiverer dette, vil også noe brukerdata, som for eksempel IP-adre
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Fjern dialog om forholdsregler for seere</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Dette omgår ikke aldersgrensen. Den godtar bare automatisk</string>
+  <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">PoToken-leverandør</string>
+  <string name="morphe_potoken_provider_screen_summary">Konfigurer PoToken-leverandør for å forhindre avspillingsproblemer</string>
+  <string name="morphe_external_potoken_provider_title">Ekstern PoToken-leverandør</string>
+  <string name="morphe_external_potoken_provider_summary">"Fikser avspillingsproblemer ved å bruke en ekstern PoToken-minter (Eksperimentell)
+
+Hvis du er en YouTube Premium-bruker, er denne innstillingen kanskje ikke nødvendig"</string>
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"Fikser avspillingsproblemer ved bruk av en ekstern PoToken-minter (Eksperimentell)
+
+For å bruke denne funksjonen, slå av 'Forfalsk videostrømmer'"</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">Hvis det ikke fungerer, prøv å tvangsavslutte MicroG</string>
+  <string name="morphe_external_potoken_provider_settings_summary">Åpne PotHelper-innstillinger</string>
+  <string name="morphe_external_potoken_provider_about_summary">"Denne funksjonen er for tiden under utvikling og fungerer kanskje ikke
+
+Trykk her for å laste ned PotHelper"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Forfalske app-versjon</string>
   <string name="morphe_spoof_app_version_summary">Lurer serveren til å tro at du bruker en eldre app-versjon for å gjenopprette gamle brukergrensesnittfunksjoner</string>

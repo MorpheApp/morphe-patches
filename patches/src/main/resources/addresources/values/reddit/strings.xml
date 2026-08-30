@@ -15,8 +15,8 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-    <!-- Overrides built in setting menu with Morphe settings. -->
-    <string name="acknowledgements_title" translatable="false">Morphe</string>
+    <string name="reddit_privacy_policy">Reddit privacy policy</string>
+    <string name="morphe_google_signin_not_available_toast">Google login not available. Use email to login</string>
 
     <string name="morphe_screen_ads_title">Ads</string>
     <string name="morphe_hide_post_ads_title">Hide feed ads</string>

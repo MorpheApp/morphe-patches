@@ -7,6 +7,9 @@
 
 package app.morphe.extension.youtube.patches;
 
+import static app.morphe.extension.shared.StringRef.str;
+
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ListView;
 
@@ -146,7 +149,14 @@ public final class HidePlayerFlyoutMenuPatch {
                             return EMPTY_BYTE_ARRAY;
                         }
                     } else if (HIDE_PLAYER_FLYOUT_CAPTIONS_HEADER && model.hasBottomSheetHeaderModel()) {
-                        return EMPTY_BYTE_ARRAY;
+                        // 'CAPTIONS_HEADER_PATH(bottom_sheet_header.e)' is used not only for captions player flyout menu but also in other places:
+                        // https://github.com/MorpheApp/morphe-patches/issues/2637.
+                        //
+                        // Filter only if the bottom sheet title is 'Captions'.
+                        String bottomSheetTitle = model.getBottomSheetHeaderModel().getHeaderContent().getTitleText();
+                        if (TextUtils.equals(bottomSheetTitle, str("overflow_captions"))) {
+                            return EMPTY_BYTE_ARRAY;
+                        }
                     }
                 }
             } catch (Exception ex) {

@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/2524
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
@@ -10,19 +10,23 @@
 
 package app.morphe.patches.youtube.layout.theme
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
-import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_DARK_COLOR_NAMES
-import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_LIGHT_COLOR_NAMES
+import app.morphe.patches.shared.layout.theme.STYLE_DEFAULT_COLOR_NAMES_DARK
+import app.morphe.patches.shared.layout.theme.STYLE_DEFAULT_COLOR_NAMES_LIGHT
+import app.morphe.patches.shared.layout.theme.THEME_COLOR_EXTENSION_CLASS
+import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_COLOR_NAMES_DARK
+import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_COLOR_NAMES_LIGHT
 import app.morphe.patches.shared.layout.theme.baseThemePatch
 import app.morphe.patches.shared.layout.theme.baseThemeResourcePatch
-import app.morphe.patches.shared.layout.theme.createNotifDrawable
-import app.morphe.patches.shared.layout.theme.darkThemeBackgroundColorOption
-import app.morphe.patches.shared.layout.theme.lightThemeBackgroundColorOption
-import app.morphe.patches.shared.layout.theme.patchCountTextColor
+import app.morphe.patches.shared.layout.theme.patchedThemeColorDark
+import app.morphe.patches.shared.layout.theme.patchedThemeColorLight
+import app.morphe.patches.shared.layout.theme.usePatchedThemeColor
+import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -33,6 +37,7 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_06_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_08_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_35_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -42,25 +47,116 @@ import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import org.w3c.dom.Element
+import kotlin.collections.plus
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/theme/ThemePatch;"
 
+private val youTubeColorNamesDark = {
+    THEME_DEFAULT_COLOR_NAMES_DARK + if (is_21_06_or_greater)
+        setOf(
+//            "yt_ref_color_constants_default_baseline_black_black0",
+            "yt_ref_color_constants_default_baseline_black_black1",
+//            "yt_ref_color_constants_default_baseline_black_black2",
+            "yt_ref_color_constants_default_baseline_black_black3",
+//            "yt_ref_color_constants_default_baseline_black_black4",
+            "yt_sys_color_baseline_dark_menu_background",
+            "yt_sys_color_baseline_dark_static_black",
+            "yt_sys_color_baseline_dark_raised_background",
+            "yt_sys_color_baseline_dark_base_background",
+            "yt_sys_color_baseline_light_inverted_background",
+            "yt_sys_color_baseline_light_static_black"
+        ) else emptySet()
+}
+
+private val youTubeColorNamesLight = {
+    THEME_DEFAULT_COLOR_NAMES_LIGHT + if (is_21_06_or_greater) {
+        setOf(
+            "yt_sys_color_baseline_light_base_background",
+            "yt_sys_color_baseline_light_raised_background",
+
+//            "yt_ref_color_constants_baseline_white_white0",
+//            "yt_ref_color_constants_baseline_white_white1", // Light mode background for many places.
+//            "yt_ref_color_constants_baseline_white_white2",
+//            "yt_ref_color_constants_baseline_white_white3",
+//            "yt_ref_color_constants_baseline_white_white4",
+//            "yt_ref_color_constants_default_baseline_white_white2",
+//            "yt_ref_color_constants_default_baseline_white_white3",
+//            "yt_ref_color_constants_default_baseline_white_white4",
+
+            "yt_sys_color_baseline_light_menu_background",
+//            "yt_sys_color_baseline_light_static_white",
+//            "yt_sys_color_baseline_light_static_white_background",
+//            "yt_sys_color_baseline_dark_inverted_background",
+//            "yt_sys_color_baseline_dark_static_white",
+//            "yt_sys_color_baseline_dark_static_brand_white",
+//            "yt_sys_color_baseline_dark_static_white_background",
+//            "yt_sys_color_baseline_dark_wordmark_text",
+//            "yt_sys_color_baseline_light_static_brand_white",
+
+//            "yt_sys_color_baseline_dark_wordmark_text",
+//            "yt_sys_color_baseline_light_overlay_solid_wash",
+//            "yt_sys_color_baseline_light_overlay_text_primary",
+//            "yt_sys_color_baseline_light_overlay_touch_response",
+//            "yt_sys_color_baseline_light_touch_response_inverse",
+//            "yt_sys_color_baseline_mobile_light_default_default_text_primary_inverse",
+//            "yt_sys_color_baseline_dark_overlay_solid_wash",
+//            "yt_sys_color_baseline_dark_overlay_text_primary",
+//            "yt_sys_color_baseline_dark_status_bar",
+        )
+    } else {
+        emptySet()
+    }
+}
+
+private val youTubeStyleNamesDark = {
+    STYLE_DEFAULT_COLOR_NAMES_DARK + if (is_21_35_or_greater) {
+        mapOf(
+            // The base and raised backgrounds are already covered by the colors they resolve to,
+            // but the menu background resolves to a color that is used elsewhere as well.
+            "yt.sys.color.baseline.dark" to setOf(
+                "yt_sys_color_baseline_menu_background"
+            ),
+            // The carbon color theme has an overlay of its own with colors of its own.
+            "yt.sys.color.baseline.dark.cooler" to setOf(
+                "yt_sys_color_baseline_base_background",
+                "yt_sys_color_baseline_menu_background",
+                "yt_sys_color_baseline_raised_background"
+            )
+        )
+    } else {
+        emptyMap()
+    }
+}
+
+private val youTubeStyleNamesLight = {
+    STYLE_DEFAULT_COLOR_NAMES_LIGHT + if (is_21_35_or_greater) {
+        mapOf(
+            "yt.sys.color.baseline" to setOf(
+                "yt_sys_color_baseline_static_white_background",
+                "yt_sys_color_baseline_base_background",
+                "yt_sys_color_baseline_menu_background",
+                "yt_sys_color_baseline_raised_background",
+                // Recolors the settings UI switches, but also incorrectly recolors the player seekbar time.
+//                "yt_sys_color_baseline_static_brand_white",
+            )
+        )
+    } else {
+        emptyMap()
+    }
+}
+
+
 val themePatch = baseThemePatch(
     extensionClassDescriptor = EXTENSION_CLASS,
-    includeLightThemeOption = true,
+    includeLightColor = true,
     useModernLithoColorHook = {
         is_21_30_or_greater
     },
     block = {
         val themeResourcePatch = resourcePatch {
-            lightThemeBackgroundColorOption()
-            darkThemeBackgroundColorOption()
             dependsOn(resourceMappingPatch)
 
             execute {
-                val lightThemeBackgroundColor = lightThemeBackgroundColorOption.value!!
-                val darkThemeBackgroundColor = darkThemeBackgroundColorOption.value!!
-
                 fun addColorResource(
                     resourceFile: String,
                     colorName: String,
@@ -79,17 +175,19 @@ val themePatch = baseThemePatch(
                     }
                 }
 
-                // Add a dynamic background color to the colors.xml file.
+                // Add a dynamic background color to the colors.xml file. Without a patch option
+                // this is the default value of the app setting, because the system draws the
+                // splash screen before the app can select a background.
                 val splashBackgroundColorKey = "morphe_splash_background_color"
                 addColorResource(
                     "res/values/colors.xml",
                     splashBackgroundColorKey,
-                    lightThemeBackgroundColor
+                    patchedThemeColorLight
                 )
                 addColorResource(
                     "res/values-night/colors.xml",
                     splashBackgroundColorKey,
-                    darkThemeBackgroundColor
+                    patchedThemeColorDark
                 )
 
                 // Edit splash screen files and change the background color.
@@ -180,57 +278,7 @@ val themePatch = baseThemePatch(
                             }
                         }
                     } catch (_: Exception) {
-                    }
-                }
-
-                val isMaterialYouLight = lightThemeBackgroundColor.startsWith("@android:color/system_")
-
-                if (isMaterialYouLight) {
-                    val resDir = get("res")
-                    val lightDotColor = "@android:color/system_accent1_200"
-                    val lightCountBgColor = "@android:color/system_accent1_100"
-                    val lightCountTextColor = "@android:color/system_neutral1_900"
-
-                    createNotifDrawable(resDir, "drawable/morphe_notif_dot_light.xml", lightDotColor, "oval")
-                    createNotifDrawable(resDir, "drawable/morphe_notif_count_light.xml", lightCountBgColor, "rectangle", hasCorners = true)
-                    patchCountTextColor(resDir, lightCountTextColor)
-
-                    val stylesFile = "res/values/styles.xml"
-                    if (get(stylesFile).exists()) {
-                        document(stylesFile).use { document ->
-                            val resources = document.getElementsByTagName("resources").item(0) as? Element ?: return@use
-
-                            resources.forEachChildElement { style ->
-                                if (style.nodeName != "style") return@forEachChildElement
-
-                                val overrides: Map<String, String> = when (style.getAttribute("name")) {
-                                    "PivotBar.Default" -> mapOf(
-                                        "dotBackground" to "@drawable/morphe_notif_dot_light",
-                                        "countBackground" to "@drawable/morphe_notif_count_light"
-                                    )
-                                    "CairoLightThemeUpdates" -> mapOf(
-                                        "ytRedIndicator" to lightDotColor
-                                    )
-                                    else -> return@forEachChildElement
-                                }
-
-                                overrides.forEach { (attrName, attrValue) ->
-                                    var found = false
-                                    style.forEachChildElement { item ->
-                                        if (item.nodeName == "item" && item.getAttribute("name") == attrName) {
-                                            item.textContent = attrValue
-                                            found = true
-                                        }
-                                    }
-                                    if (!found) {
-                                        style.appendChild(document.createElement("item").apply {
-                                            setAttribute("name", attrName)
-                                            textContent = attrValue
-                                        })
-                                    }
-                                }
-                            }
-                        }
+                        // Ignore?
                     }
                 }
             }
@@ -239,32 +287,17 @@ val themePatch = baseThemePatch(
         dependsOn(
             sharedExtensionPatch,
             settingsPatch,
+            resourceMappingPatch,
             seekbarColorPatch,
             versionCheckPatch,
             baseThemeResourcePatch(
-                lightColorReplacement = { lightThemeBackgroundColorOption.value!! },
-                darkColorNames = {
-                    THEME_DEFAULT_DARK_COLOR_NAMES + if (is_21_06_or_greater)
-                        setOf(
-                            // yt_ref_color_constants_baseline_black_black0
-                            // yt_ref_color_constants_baseline_black_black1
-                            // yt_ref_color_constants_baseline_black_black3
-                            "yt_sys_color_baseline_dark_menu_background",
-                            "yt_sys_color_baseline_dark_static_black",
-                            "yt_sys_color_baseline_dark_raised_background",
-                            "yt_sys_color_baseline_dark_base_background",
-                            "yt_sys_color_baseline_light_inverted_background",
-                            "yt_sys_color_baseline_light_static_black"
-                        ) else emptySet()
-                },
-                lightColorNames = {
-                    THEME_DEFAULT_LIGHT_COLOR_NAMES + if (is_21_06_or_greater)
-                        setOf(
-                            "yt_sys_color_baseline_light_base_background",
-                            "yt_sys_color_baseline_light_raised_background"
-                        )
-                    else emptySet()
-                }
+                includeLightColor = true,
+                colorNamesDark = youTubeColorNamesDark,
+                colorNamesLight = youTubeColorNamesLight,
+                styleColorNamesDark = youTubeStyleNamesDark,
+                styleColorNamesLight = youTubeStyleNamesLight,
+                // The theme of the launcher activity, which the system draws the splash with.
+                splashScreenThemeParent = "@style/Theme.YouTube.Home"
             ),
             themeResourcePatch
         )
@@ -273,7 +306,37 @@ val themePatch = baseThemePatch(
     },
 
     executeBlock = {
+        // A patched theme color cannot be changed, so there is nothing to select.
+        val colorPreferences = if (usePatchedThemeColor) {
+            emptyArray<BasePreference>()
+        } else {
+            arrayOf<BasePreference>(
+                noTitleUnsortedPreferenceCategory(
+                    ListPreference(
+                        "morphe_theme_color_dark",
+                        tag = "app.morphe.extension.shared.theme.ThemeColorListPreference"
+                    ),
+                    TextPreference(
+                        "morphe_theme_color_dark_custom",
+                        tag = "app.morphe.extension.shared.settings.preference.ColorPickerPreference",
+                        inputType = InputType.TEXT_CAP_CHARACTERS
+                    ),
+                    ListPreference(
+                        "morphe_theme_color_light",
+                        tag = "app.morphe.extension.shared.theme.ThemeColorListPreference"
+                    ),
+                    TextPreference(
+                        "morphe_theme_color_light_custom",
+                        tag = "app.morphe.extension.shared.settings.preference.ColorPickerPreference",
+                        inputType = InputType.TEXT_CAP_CHARACTERS
+                    ),
+                    SwitchPreference("morphe_theme_color_change_foreground", summary = true)
+                )
+            )
+        }
+
         PreferenceScreen.GENERAL.addPreferences(
+            *colorPreferences,
             SwitchPreference("morphe_gradient_loading_screen", summary = true)
         )
 
@@ -299,6 +362,63 @@ val themePatch = baseThemePatch(
             ListPreference("morphe_splash_screen_animation_style")
         )
 
+        // Splash screen is drawn by the system with the theme of the launcher activity, so
+        // the activity is handed over as soon as it exists. A patched theme color is
+        // already a part of that theme, and no theme is generated to hand over.
+        if (!usePatchedThemeColor) {
+            MainActivityOnCreateFingerprint.method.addInstruction(
+                0,
+                // The register of 'this' is above v15 in this method,
+                // so the range format is needed.
+                "invoke-static/range { p0 .. p0 }, $THEME_COLOR_EXTENSION_CLASS" +
+                        "->setSplashScreenTheme(Landroid/app/Activity;)V"
+            )
+        }
+
+        // Color of the new content indicator of the pivot bar, which is red in the app and does
+        // not go with a Material You color.
+        PivotBarNewContentDotFingerprint.let {
+            it.method.apply {
+                // Both the dot of a tab and the count next to it, and the count is hooked
+                // first so the index of the dot is still valid.
+
+                arrayOf(
+                    it.instructionMatches.last().index,
+                    it.instructionMatches[2].index
+                ).forEach { checkCastIndex ->
+                    val stubRegister = getInstruction<OneRegisterInstruction>(checkCastIndex).registerA
+
+                    addInstruction(
+                        checkCastIndex + 1,
+                        "invoke-static { v$stubRegister }, $THEME_COLOR_EXTENSION_CLASS" +
+                                "->onNewContentIndicator(Landroid/view/ViewStub;)V"
+                    )
+                }
+            }
+        }
+
+        // The notification button of the top bar has an indicator of its own, which is created
+        // by a different class than the one of the pivot bar.
+        TopBarNewContentCountFingerprint.let {
+            it.method.apply {
+                // Both the count of the button and the dot shown without one, and the dot is
+                // hooked first so the index of the count is still valid.
+
+                arrayOf(
+                    it.instructionMatches.last().index,
+                    it.instructionMatches[2].index
+                ).forEach { checkCastIndex ->
+                    val stubRegister = getInstruction<OneRegisterInstruction>(checkCastIndex).registerA
+
+                    addInstruction(
+                        checkCastIndex + 1,
+                        "invoke-static { v$stubRegister }, $THEME_COLOR_EXTENSION_CLASS" +
+                                "->onNewContentIndicator(Landroid/view/ViewStub;)V"
+                    )
+                }
+            }
+        }
+
         UseGradientLoadingScreenFingerprint.matchAll().forEach {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
@@ -306,7 +426,7 @@ val themePatch = baseThemePatch(
             )
         }
 
-        if (is_21_08_or_greater) {
+        if (is_21_08_or_greater && !is_21_35_or_greater) {
             CarbonColorThemeFeatureFlagFingerprint.matchAll().forEach {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
@@ -351,6 +471,19 @@ val themePatch = baseThemePatch(
                     """
                 )
             }
+        }
+
+        // Popup background of drop-down menus (Spinners) falls back to the Android OS
+        // default, which remains gray and does not go with a custom theme color.
+        SpinnerThemeHookFingerprint.matchAll().forEach { match ->
+            val checkCastIndex = match.instructionMatches.last().index
+            val spinnerRegister = match.method.getInstruction<OneRegisterInstruction>(checkCastIndex).registerA
+
+            match.method.addInstruction(
+                checkCastIndex + 1,
+                "invoke-static { v$spinnerRegister }, " +
+                        "$EXTENSION_CLASS->overrideSpinnerPopupBackground(Landroid/view/View;)V"
+            )
         }
     }
 )

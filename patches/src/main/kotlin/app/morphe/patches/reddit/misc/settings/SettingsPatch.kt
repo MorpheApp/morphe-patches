@@ -11,6 +11,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.string
@@ -18,12 +19,14 @@ import app.morphe.patches.all.misc.fix.openurllinks.removeLinkVerification
 import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.all.misc.resources.localesReddit
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.all.misc.resources.setAddResourceLocale
-import app.morphe.patches.all.misc.resources.setPatchStringsReplaceExisting
 import app.morphe.patches.all.misc.updates.disablePlayStoreUpdatesPatch
 import app.morphe.patches.reddit.misc.extension.hooks.redditActivityOnCreateHook
 import app.morphe.patches.reddit.misc.extension.sharedExtensionPatch
 import app.morphe.patches.reddit.misc.fix.signature.spoofSignaturePatch
+import app.morphe.patches.reddit.misc.version.is_2024_03_0_or_greater
+import app.morphe.patches.reddit.misc.version.is_2026_14_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_25_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_30_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
@@ -34,9 +37,12 @@ import app.morphe.util.cloneParameters
 import app.morphe.util.copyResources
 import app.morphe.util.findElementByAttributeValue
 import app.morphe.util.findFreeRegister
-import app.morphe.util.removeFromParent
+import app.morphe.util.p0Register
+import app.morphe.util.registersUsed
+import app.morphe.util.returnEarly
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import java.util.logging.Logger
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/settings/RedditActivityHook;"
@@ -51,6 +57,7 @@ val settingsPatch = bytecodePatch(
         disablePlayStoreUpdatesPatch,
         spoofSignaturePatch,
         removeLinkVerification,
+        resourceMappingPatch,
         addResourcesPatch,
         versionCheckPatch,
         experimentalAppNoticePatch(
@@ -59,14 +66,16 @@ val settingsPatch = bytecodePatch(
         ),
         resourcePatch {
             execute {
-                // Remove localized acknowledgement string.
-                get("res").walk().forEach { file ->
-                    if ("strings.xml" == file.name) {
-                        document(file.absolutePath).use { document ->
-                            document.documentElement.childNodes.findElementByAttributeValue(
-                                "name",
-                                "acknowledgements_title",
-                            )?.removeFromParent()
+                if (is_2026_25_0_or_greater) {
+                    // Change menu item title to Morphe.
+                    get("res").walk().forEach { file ->
+                        if ("strings.xml" == file.name) {
+                            document(file.absolutePath).use { document ->
+                                document.documentElement.childNodes.findElementByAttributeValue(
+                                    "name",
+                                    "label_privacy_policy"
+                                )?.textContent = "Morphe"
+                            }
                         }
                     }
                 }
@@ -76,7 +85,7 @@ val settingsPatch = bytecodePatch(
                     ResourceGroup("drawable",
                         "morphe_ic_dialog_alert.xml",
                         "morphe_settings_custom_checkmark.xml",
-                        "morphe_settings_custom_checkmark_bold.xml",
+                        "morphe_settings_custom_checkmark_bold.xml"
                     ),
                     ResourceGroup("layout",
                         "morphe_custom_list_item_checked.xml"
@@ -91,25 +100,68 @@ val settingsPatch = bytecodePatch(
         addAppResources("shared")
         addAppResources("reddit")
 
-        if (is_2026_25_0_or_greater) {
-            PreferenceDestinationFingerprint.method.addInstructionsWithLabels(
-                0,
+        if (!is_2024_03_0_or_greater) {
+            throw PatchException(
                 """
-                    invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->openMorpheSettings(Ljava/lang/Enum;)Z
-                    move-result v0
-                    if-eqz v0, :ignore
-                    sget-object v0, Lkotlin/Unit;->a:Lkotlin/Unit;
-                    return-object v0
                     
-                    :ignore
-                    nop
+                    !!!
+                    !!! Reddit 2024.02.0 supports only 1 patch.
+                    !!! Select the recommended patches to patch this legacy app version.
+                    !!!
                 """
             )
+        }
+
+        // Turn off Google Play in app update prompt.
+        GooglePlayUpdateCheckFingerprint.method.returnEarly(null);
+
+        // Force Play Store Verification checks to pass.
+        PlayStoreVerificationFingerprint.method.returnEarly(false)
+
+        // Show toast informing that Google sign-in does not work.
+        if (is_2026_14_0_or_greater) {
+            // After clicking a login type, the second Google sign-in button still shows
+            // the Google login dialog. Unclear where this additional UI layout is handled,
+            // but it may be provided server side.
+            GoogleSignInFunctionFingerprint.matchAll(2 .. 3).forEach {
+                val index = it.instructionMatches[1].index
+                val register = it.method.getInstruction(index).registersUsed[3]
+                it.method.addInstructions(
+                    index,
+                    """
+                        invoke-static { }, $EXTENSION_CLASS->getGoogleSignInFunction()Lkotlin/jvm/functions/Function0;
+                        move-result-object v$register
+                    """
+                )
+            }
+        }
+
+        if (is_2026_25_0_or_greater) {
+            StartUrlActivityFingerprint.let {
+                val index = it.instructionMatches.last().index
+                it.method.apply {
+                    val p0Register = p0Register
+                    val free = findFreeRegister(index, p0Register + 1, p0Register + 2)
+                    addInstructionsWithLabels(
+                        index,
+                        """
+                            invoke-static { p1, p2 }, $EXTENSION_CLASS->openMorpheSettings(Landroid/app/Activity;Landroid/net/Uri;)Z
+                            move-result v$free
+                            if-eqz v$free, :ignore
+                            return-void
+                            :ignore
+                            nop
+                        """
+                    )
+                }
+            }
         }
 
         if (is_2026_30_0_or_greater) {
             return@execute
         }
+
+        CheckIntegrityPlayStoreFingerprint.method.returnEarly(0)
 
         /**
          * Replace settings label and icon
@@ -122,9 +174,9 @@ val settingsPatch = bytecodePatch(
                 addInstructions(
                     labelIndex + 1,
                     """
-                            invoke-static { }, $EXTENSION_CLASS->getSettingLabel()Ljava/lang/String;
-                            move-result-object v$labelRegister
-                        """
+                        invoke-static { }, $EXTENSION_CLASS->getSettingLabel()Ljava/lang/String;
+                        move-result-object v$labelRegister
+                    """
                 )
 
                 val iconIndex = it.instructionMatches[2].index
@@ -133,9 +185,9 @@ val settingsPatch = bytecodePatch(
                 addInstructions(
                     iconIndex + 1,
                     """
-                            invoke-static { }, $EXTENSION_CLASS->getSettingIcon()Landroid/graphics/drawable/Drawable;
-                            move-result-object v$iconRegister
-                        """
+                        invoke-static { }, $EXTENSION_CLASS->getSettingIcon()Landroid/graphics/drawable/Drawable;
+                        move-result-object v$iconRegister
+                    """
                 )
             }
         }

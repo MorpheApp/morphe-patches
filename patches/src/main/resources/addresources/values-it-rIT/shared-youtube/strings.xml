@@ -21,6 +21,25 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Riavvia per completare la configurazione</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Nome dell\'app</string>
+  <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">Sfondo del tema scuro</string>
+  <string name="morphe_theme_color_dark_entry_2">Nero assoluto</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You (Nero puro)</string>
+  <string name="morphe_theme_color_dark_entry_9">YouTube classico</string>
+  <string name="morphe_theme_color_dark_entry_10">Rosa scuro</string>
+  <string name="morphe_theme_color_dark_entry_11">Blu scuro</string>
+  <string name="morphe_theme_color_dark_entry_12">Verde scuro</string>
+  <string name="morphe_theme_color_dark_entry_13">Giallo scuro</string>
+  <string name="morphe_theme_color_dark_entry_14">Arancione scuro</string>
+  <string name="morphe_theme_color_dark_entry_15">Rosso scuro</string>
+  <string name="morphe_theme_color_dark_custom_title">Sfondo scuro personalizzato</string>
+  <string name="morphe_theme_color_dark_custom_summary">Imposta il colore di sfondo del tema scuro</string>
+  <string name="morphe_theme_color_entry_1">Predefinito dell\'app</string>
+  <string name="morphe_theme_color_entry_4">Material You (Neutro)</string>
+  <string name="morphe_theme_color_entry_5">Material You (Primario)</string>
+  <string name="morphe_theme_color_entry_6">Material You (Secondario)</string>
+  <string name="morphe_theme_color_entry_7">Material You (Terziario)</string>
+  <string name="morphe_theme_color_custom_entry">Personalizzato</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Download esterni</string>
   <string name="morphe_external_downloader_name_title">Nome del pacchetto del downloader</string>
@@ -62,7 +81,7 @@ Verifica che il nome del pacchetto sia corretto e che l'app sia installata"</str
 Se sei un utente YouTube Premium, questa impostazione potrebbe non essere necessaria."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Impossibile recuperare il flusso da qualsiasi client</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">La disattivazione di questa impostazione potrebbe causare problemi di riproduzione.</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Prova ad abilitare: Falsificazione dei flussi video > Accesso con Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Client predefinito</string>
@@ -132,9 +151,9 @@ Per accedere, premi su Continua di seguito"</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">Connettiti direttamente se il proxy fallisce</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Nascondi le pubblicità a schermo intero</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">Per usare questa funzionalità, cambia \"Falsifica i flussi video\" a qualsiasi client eccetto Android Studio\'</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">Per usare questa funzionalità, cambia \'Falsifica i flussi video\' a qualsiasi client eccetto \'Android Studio\' e \'Android VR Downgraded\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Sanifica collegamenti di condivisione</string>
   <string name="morphe_sanitize_sharing_links_summary">Rimuove i parametri di query di tracciamento dai link condivisi</string>
@@ -165,6 +184,20 @@ Tuttavia, l'abilitazione di questa opzione registrerà anche alcuni dati dell'ut
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Rimuovi il messaggio di avviso per la visione</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Questo non aggira la restrizione di età. Le accetta solo automaticamente</string>
+  <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_external_potoken_provider_summary">"Risolve problemi di riproduzione utilizzando un minter PoToken esterno (Sperimentale)
+
+Se sei un utente YouTube Premium, questa impostazione potrebbe non essere necessaria"</string>
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"Risolve i problemi di riproduzione utilizzando un minter PoToken esterno (Sperimentale)
+
+Per utilizzare questa funzione, disattiva 'Spoof dei flussi video'"</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">Se non funziona, prova a forzare la chiusura di MicroG</string>
+  <string name="morphe_external_potoken_provider_settings_summary">Apri le impostazioni di PotHelper</string>
+  <string name="morphe_external_potoken_provider_about_summary">"Questa funzione è attualmente in sviluppo e potrebbe non funzionare
+
+Tocca qui per scaricare PotHelper"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Simula la versione dell\'app</string>
   <string name="morphe_spoof_app_version_summary">Inganna il server facendogli pensare di stare utilizzando una versione precedente dell\'app, per ripristinare le funzionalità dell\'interfaccia utente precedente</string>

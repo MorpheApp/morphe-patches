@@ -107,13 +107,23 @@ Nebudete informovaný o žiadnych nečakaných udalostiach."</string>
   <string name="morphe_debug_logs_clear_toast">Záznamy ladenia boli vymazané</string>
   <string name="morphe_debug_feature_flags_manager_title">Správca príznakov funkcií</string>
   <string name="morphe_debug_feature_flags_manager_summary">Spravovať príznaky booleovských funkcií</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Aktívne príznaky funkcií (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Blokované príznaky funkcií (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Vyhľadávanie v funkciách…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Auto</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Vypnuté</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Zapnuté</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Vymazať</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Príznaky funkcií uložené</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Príznaky funkcií resetované</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Príznaky funkcií skopírované do schránky</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reštartujte aplikáciu, aby ste mohli použiť toto nastavenie</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Začiatok</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Otvorte nastavenia microG</string>

@@ -107,13 +107,22 @@ Jy sal nie van enige onverwags gebeurtenisse in kennis gestel word nie."</string
   <string name="morphe_debug_logs_clear_toast">Ontfouting logboeke skoongemaak</string>
   <string name="morphe_debug_feature_flags_manager_title">Kenmerkvlae bestuurder</string>
   <string name="morphe_debug_feature_flags_manager_summary">Bestuur booleaanse kenmerkvlae</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Aktiewe kenmerkvlae (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Geblokkeerde kenmerkvlae (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Soek kenmerkvlae</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Af</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Aan</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Verwyder</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Kenmerkvlae is gered</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Kenmerkvlae is teruggesit</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Kenmerkvlae gekopieer na knipbord</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Herstart die program om hierdie instelling te gebruik</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Begin</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Maak MicroG instellings oop</string>

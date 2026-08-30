@@ -21,16 +21,6 @@ import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal object StartVideoInformerFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.INVOKE_INTERFACE,
-        Opcode.RETURN_VOID,
-    ),
-    strings = listOf("pc")
-)
-
 private object SubtitleManagerFingerprintClassFingerprint : Fingerprint(
     returnType = "Z",
     parameters = listOf("L", "Landroid/view/accessibility/CaptioningManager;"),

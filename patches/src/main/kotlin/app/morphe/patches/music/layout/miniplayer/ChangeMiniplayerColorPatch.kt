@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 @file:Suppress("SpellCheckingInspection")
 
 package app.morphe.patches.music.layout.miniplayer
@@ -7,6 +14,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
+import app.morphe.patches.music.misc.playservice.is_9_32_or_greater
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
@@ -44,47 +52,91 @@ val changeMiniplayerColorPatch = bytecodePatch(
             SwitchPreference("morphe_music_change_navigation_bar_color", summary = true)
         )
 
-        SwitchToggleColorFingerprint.let {
-            val colorMathPlayerInvokeVirtualReference = it.instructionMatches.last()
-                .getInstruction<ReferenceInstruction>().reference
+        if (is_9_32_or_greater) {
+            SwitchToggleColorFingerprint.let {
+                val colorMathPlayerFieldReference = it.instructionMatches.last().getFieldAccessed()
 
-            val colorMathPlayerIGetReference = it.instructionMatches[4]
-                .getInstruction<ReferenceInstruction>().reference  as FieldReference
+                val colorMathPlayerIGetReference = it.instructionMatches[4]
+                    .getInstruction<ReferenceInstruction>().reference as FieldReference
 
-            val colorGreyIndex = MiniPlayerConstructorFingerprint.method.indexOfFirstInstructionReversedOrThrow {
-                getReference<MethodReference>()?.name == "getColor"
-            }
-            val iPutIndex = MiniPlayerConstructorFingerprint.method.indexOfFirstInstructionOrThrow(
-                colorGreyIndex, Opcode.IPUT
-            )
-            val colorMathPlayerIPutReference = MiniPlayerConstructorFingerprint.method
-                .getInstruction<ReferenceInstruction>(iPutIndex).reference
-
-            MiniPlayerConstructorFingerprint.classDef.methods.single { method ->
-                method.accessFlags == AccessFlags.PUBLIC.value or AccessFlags.FINAL.value &&
-                        method.returnType == "V" &&
-                        method.parameters == it.originalMethod.parameters
-            }.apply {
-                val insertIndex = indexOfFirstInstructionReversedOrThrow(Opcode.INVOKE_DIRECT)
-                val freeRegister = findFreeRegister(insertIndex)
-
-                // Publish the resolved color so the navigation bar can reuse it.
-                addInstructionsAtControlFlowLabel(
-                    insertIndex,
-                    """
-                        invoke-static {}, $EXTENSION_CLASS->changeMiniplayerColor()Z
-                        move-result v$freeRegister
-                        if-eqz v$freeRegister, :off
-                        invoke-virtual { p1 }, $colorMathPlayerInvokeVirtualReference
-                        move-result-object v$freeRegister
-                        check-cast v$freeRegister, ${colorMathPlayerIGetReference.definingClass}
-                        iget v$freeRegister, v$freeRegister, $colorMathPlayerIGetReference
-                        invoke-static { v$freeRegister }, $EXTENSION_CLASS->setLastMiniplayerColor(I)V
-                        iput v$freeRegister, p0, $colorMathPlayerIPutReference
-                        :off
-                        nop
-                    """
+                val colorGreyIndex = MiniPlayerConstructorFingerprint.method.indexOfFirstInstructionReversedOrThrow {
+                    getReference<MethodReference>()?.name == "getColor"
+                }
+                val iPutIndex = MiniPlayerConstructorFingerprint.method.indexOfFirstInstructionOrThrow(
+                    colorGreyIndex, Opcode.IPUT
                 )
+                val colorMathPlayerIPutReference = MiniPlayerConstructorFingerprint.method
+                    .getInstruction<ReferenceInstruction>(iPutIndex).reference
+
+                MiniPlayerConstructorFingerprint.classDef.methods.single { method ->
+                    method.accessFlags == AccessFlags.PUBLIC.value or AccessFlags.FINAL.value &&
+                            method.returnType == "V" &&
+                            method.parameters == it.originalMethod.parameters
+                }.apply {
+                    val insertIndex = indexOfFirstInstructionReversedOrThrow(Opcode.INVOKE_DIRECT)
+                    val freeRegister = findFreeRegister(insertIndex)
+
+                    // Publish the resolved color so the navigation bar can reuse it.
+                    addInstructionsAtControlFlowLabel(
+                        insertIndex,
+                        """
+                            invoke-static {}, $EXTENSION_CLASS->changeMiniplayerColor()Z
+                            move-result v$freeRegister
+                            if-eqz v$freeRegister, :off
+                            iget-object v$freeRegister, p1, $colorMathPlayerFieldReference
+                            check-cast v$freeRegister, ${colorMathPlayerIGetReference.definingClass}
+                            iget v$freeRegister, v$freeRegister, $colorMathPlayerIGetReference
+                            invoke-static { v$freeRegister }, $EXTENSION_CLASS->setLastMiniplayerColor(I)V
+                            iput v$freeRegister, p0, $colorMathPlayerIPutReference
+                            :off
+                            nop
+                        """
+                    )
+                }
+            }
+        } else {
+            SwitchToggleColorLegacyFingerprint.let {
+                val colorMathPlayerInvokeVirtualReference = it.instructionMatches.last()
+                    .getInstruction<ReferenceInstruction>().reference
+
+                val colorMathPlayerIGetReference = it.instructionMatches[4]
+                    .getInstruction<ReferenceInstruction>().reference as FieldReference
+
+                val colorGreyIndex = MiniPlayerConstructorFingerprint.method.indexOfFirstInstructionReversedOrThrow {
+                    getReference<MethodReference>()?.name == "getColor"
+                }
+                val iPutIndex = MiniPlayerConstructorFingerprint.method.indexOfFirstInstructionOrThrow(
+                    colorGreyIndex, Opcode.IPUT
+                )
+                val colorMathPlayerIPutReference = MiniPlayerConstructorFingerprint.method
+                    .getInstruction<ReferenceInstruction>(iPutIndex).reference
+
+                MiniPlayerConstructorFingerprint.classDef.methods.single { method ->
+                    method.accessFlags == AccessFlags.PUBLIC.value or AccessFlags.FINAL.value &&
+                            method.returnType == "V" &&
+                            method.parameters == it.originalMethod.parameters
+                }.apply {
+                    val insertIndex = indexOfFirstInstructionReversedOrThrow(Opcode.INVOKE_DIRECT)
+                    val freeRegister = findFreeRegister(insertIndex)
+
+                    // Publish the resolved color so the navigation bar can reuse it.
+                    addInstructionsAtControlFlowLabel(
+                        insertIndex,
+                        """
+                            invoke-static {}, $EXTENSION_CLASS->changeMiniplayerColor()Z
+                            move-result v$freeRegister
+                            if-eqz v$freeRegister, :off
+                            invoke-virtual { p1 }, $colorMathPlayerInvokeVirtualReference
+                            move-result-object v$freeRegister
+                            check-cast v$freeRegister, ${colorMathPlayerIGetReference.definingClass}
+                            iget v$freeRegister, v$freeRegister, $colorMathPlayerIGetReference
+                            invoke-static { v$freeRegister }, $EXTENSION_CLASS->setLastMiniplayerColor(I)V
+                            iput v$freeRegister, p0, $colorMathPlayerIPutReference
+                            :off
+                            nop
+                        """
+                    )
+                }
             }
         }
 

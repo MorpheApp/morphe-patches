@@ -25,9 +25,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_summary">Íoslódáil físeáin ceoil, podchraoltaí, nó amhráin le haipeanna íoslódála tríú páirtí</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Sáraigh an cnaipe Íoslódála</string>
-  <string name="morphe_external_downloader_action_button_summary">Úsáideann sé an t-íoslódálaí seachtrach a roghnaigh tú in ionad an chnaipe gníomhaíochta Íoslódáil chaighdeánaigh</string>
+  <string name="morphe_external_downloader_action_button_summary">Úsáideann sé an íoslódálaí seachtrach roghnaithe agat in ionad an chnaipe gnímh Íoslódála stoic</string>
   <string name="morphe_external_downloader_flyout_menu_title">Sáraigh an roghchlár Íoslódála</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">Úsáideann sé an t-íoslódálaí seachtrach a roghnaigh tú in ionad an roghchláir aníos Íoslódáil chaighdeánaigh</string>
+  <string name="morphe_external_downloader_flyout_menu_summary">Úsáideann sé an íoslódálaí seachtrach roghnaithe agat in ionad an roghchláir Íoslódála stoic</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Maidir</string>
@@ -328,5 +328,5 @@ Leanann liricí sioncrónaithe an athsheinm. Má imíonn siad, coigeartaigh an t
 Nuair nach bhfaightear aon liricí tríú páirtí, taispeántar na liricí ionsuite ina n-ionad."</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Díchumasaigh deilbhíní troma</string>
-  <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Athchóirigh tábanna Seo chugainn, Liricí, agus Gaolmhara an imreora</string>
+  <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Athchóirigh an t-imreoir Ar Aghaidh, Liricí, agus na cluaisíní Gaolmhara</string>
 </resources>

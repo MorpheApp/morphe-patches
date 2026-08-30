@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.music.settings;
 
 import android.annotation.SuppressLint;
@@ -20,6 +30,7 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseActivityHook;
 import app.morphe.extension.shared.spoof.SpoofAppVersionPatch;
+import app.morphe.extension.shared.theme.ThemeUtils;
 
 /**
  * Hooks {@code com.google.android.gms.common.api.GoogleApiActivity}
@@ -89,9 +100,9 @@ public class MusicActivityHook extends BaseActivityHook {
         Drawable navigationIcon = MusicPreferenceFragment.getBackButtonDrawable();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             navigationIcon.setColorFilter(new BlendModeColorFilter(
-                    Utils.getAppForegroundColor(), BlendMode.SRC_IN));
+                    ThemeUtils.getAppForegroundColor(), BlendMode.SRC_IN));
         } else {
-            navigationIcon.setColorFilter(Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN);
+            navigationIcon.setColorFilter(ThemeUtils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN);
         }
 
         return navigationIcon;

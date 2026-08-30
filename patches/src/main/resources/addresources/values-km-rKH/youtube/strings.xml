@@ -27,6 +27,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">ផ្សេងៗទៀត</string>
   <string name="morphe_settings_screen_12_video_title">វីដេអូ</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <!-- layout.disableScrollSpeedLimitPatch -->
   <!-- layout.disableLayoutUpdatesPatch -->
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_album_cards_title">លាក់កាតអាល់ប៊ុម</string>
@@ -37,6 +38,7 @@ Second \"item\" text"</string>
           for the card in the Messages section at the top of the Notifications tab. -->
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
@@ -86,6 +88,8 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_zone_label_native">ដើម</string>
+  <string name="morphe_swipe_zone_label_off">បិទ</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
   <!-- layout.buttons.action.hideButtonsPatch -->
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
@@ -118,7 +122,7 @@ Second \"item\" text"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -152,12 +156,16 @@ Second \"item\" text"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <!-- layout.hide.time.hideTimestampPatch -->
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
+  <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
   <string name="morphe_open_videos_fullscreen_entry_1">បានផ្ដាច់</string>
+  <!-- layout.player.fullscreen.stretchVideoPatch -->
+  <!-- layout.player.buttons.muteVideoButtonPatch -->
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <!-- layout.searchbar.wideSearchbarPatch -->
+  <string name="morphe_searchbar_type_entry_disabled">បានផ្ដាច់</string>
   <!-- layout.sponsorblock.sponsorBlockPatch -->
   <!-- layout.formfactor.changeFormFactorPatch -->
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
@@ -171,11 +179,12 @@ Second \"item\" text"</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_entry_off">បិទ</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <!-- misc.fix.fixBackToExitGesturePatch -->
   <!-- layout.theme.themePatch -->
   <string name="morphe_splash_screen_animation_style_entry_1">បានផ្ដាច់</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_3'. -->
+  <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_7'. -->
   <string name="morphe_header_logo_entry_5">ផ្ទាល់ខ្លួន</string>
   <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <!-- layout.thumbnails.alternativeThumbnailsPatch -->
@@ -193,8 +202,6 @@ Second \"item\" text"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <!-- 'Force AVC (H.264) codec' should be the same translation used for 'morphe_force_avc_codec_title'. -->
-  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <!-- video.speed.custom.customPlaybackSpeedPatch -->

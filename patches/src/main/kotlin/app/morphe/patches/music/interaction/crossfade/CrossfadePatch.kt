@@ -976,7 +976,7 @@ val crossfadePatch = bytecodePatch(
                 listenerWrap   = $listenerWrapperField → $listenerSetInWrapper
                 playerChain    = $playerChainField
                 guardField     = ${guardField?.let { "$guardAbstractType->${it.name}:${it.type}" } ?: "n/a (8.x)"}
-            """.trimIndent()
+            """
         }
 
         // --- PlayerCoordinatorAccess on athu ---
@@ -1852,7 +1852,7 @@ val crossfadePatch = bytecodePatch(
                 broadcastMethod = ${broadcastMethodRef.definingClass}->${broadcastMethodRef.name}
                 silentSetMethod = $silentSetMethodRef.definingClass}->${silentSetMethodRef.name}
                 omvPreferred    = $omvPreferredField    
-            """.trimIndent()
+            """
         }
 
         // 6. Add public wrapper on chxp class for the silent setter

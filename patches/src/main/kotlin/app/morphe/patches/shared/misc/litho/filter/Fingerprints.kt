@@ -58,6 +58,12 @@ internal object LithoFilterFingerprint : Fingerprint(
     )
 )
 
+internal object LithoFilterLegacyMethodFingerprint : Fingerprint(
+    definingClass = EXTENSION_CLASS,
+    name = "useLegacyLithoFiltering",
+    returnType = "Z"
+)
+
 internal object ProtobufBufferEncodeFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "[B",

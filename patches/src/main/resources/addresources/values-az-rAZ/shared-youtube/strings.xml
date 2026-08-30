@@ -21,6 +21,25 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Tənzimləməni bitirmək üçün yenidən başlat</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Tətbiq adı</string>
+  <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">Qara kolorit fonu</string>
+  <string name="morphe_theme_color_dark_entry_2">Təmiz qara</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You (Təmiz qara)</string>
+  <string name="morphe_theme_color_dark_entry_9">Klassik YouTube</string>
+  <string name="morphe_theme_color_dark_entry_10">Tünd çəhrayı</string>
+  <string name="morphe_theme_color_dark_entry_11">Tünd mavi</string>
+  <string name="morphe_theme_color_dark_entry_12">Tünd yaşıl</string>
+  <string name="morphe_theme_color_dark_entry_13">Tünd sarı</string>
+  <string name="morphe_theme_color_dark_entry_14">Tünd narıncı</string>
+  <string name="morphe_theme_color_dark_entry_15">Tünd qırmızı</string>
+  <string name="morphe_theme_color_dark_custom_title">Fərdi qaranlıq fon</string>
+  <string name="morphe_theme_color_dark_custom_summary">Qaranlıq koloritin fon rəngini təyin et</string>
+  <string name="morphe_theme_color_entry_1">Tətbiq standartı</string>
+  <string name="morphe_theme_color_entry_4">Material You (Neytral)</string>
+  <string name="morphe_theme_color_entry_5">Material You (Əsas)</string>
+  <string name="morphe_theme_color_entry_6">Material You (İkinci dərəcəli)</string>
+  <string name="morphe_theme_color_entry_7">Material You (Üçüncü dərəcəli)</string>
+  <string name="morphe_theme_color_custom_entry">Fərdi</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Xarici yükləmələr</string>
   <string name="morphe_external_downloader_name_title">Yükləyici paketi adı</string>
@@ -62,7 +81,7 @@ Paket adının düzgün olduğunu və tətbiqin quraşdırıldığını yoxla"</
 YouTube Premium istifadəçisisinizsə, bu tənzimləmə tələb olunmaya bilər"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Hər hansı qəbuledici yayımları əldə etmək olmadı</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Bu tənzimləməni qapatmaq oynatma problemlərinə səbəb ola bilər.</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Aktivləşdirməyə cəhd edin: Video yayımların saxtalaşdır &gt; Android VR girişi</string>
   <string name="morphe_spoof_video_streams_client_type_title">İlkin qəbuledici</string>
@@ -132,9 +151,9 @@ Daxil olmaq üçün aşağıda davam et-i vurun"</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">Proksi sıradan çıxarsa, birbaşa qoşul</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Tam ekran reklamlarını gizlət</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">Bu xüsusiyyəti istifadə etmək üçün \'Video yayımların saxtalaşdırı\' \'Android Studio\' istisna istənilən qəbulediciyə dəyiş</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">Bu xüsusiyyəti istifadə etmək üçün \'Video yayımların saxtalaşdırı\' \'Android Studio\' və \'Android VR Downgraded\' istisna istənilən qəbulediciyə dəyiş</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Paylaşım keçidlərin təmizlə</string>
   <string name="morphe_sanitize_sharing_links_summary">Paylaşılan keçidlərdən izlənmə sorğusu faktorların silir</string>
@@ -165,6 +184,23 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">İzləyici ehtiyat pəncərəsin çıxart</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Bu, yaş məhdudiyyətini ötürmür. Sadəcə bunu birbaşa qəbul edir</string>
+  <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">PoToken təminatçısı</string>
+  <string name="morphe_potoken_provider_screen_summary">Oynatma problemlərin önləmək üçün PoToken təminatçısını tənzimlə</string>
+  <string name="morphe_external_potoken_provider_title">Xarici PoToken təminatçısı</string>
+  <string name="morphe_external_potoken_provider_summary">"Xarici PoToken minter xidmətindən istifadə edərək oynatma problemlərini düzəldir (Təcrübi)
+
+Əgər YouTube Premium istifadəçisisinizsə, bu tənzimləmə tələb olunmaya bilər"</string>
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"Xarici PoToken minter xidmətin istifadə edərək oynatma problemlərini düzəldir (Təcrübi)
+
+Bu xüsusiyyəti istifadə etmək üçün 'Video yayımların saxtalaşdırı' qapat"</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">Əgər bu işləmirsə, MicroG-ni məcburi qapatmağa çalışın</string>
+  <string name="morphe_external_potoken_provider_settings_summary">PotHelper tənzimləmələrini aç</string>
+  <string name="morphe_external_potoken_provider_about_summary">"Bu xüsusiyyət hazırda inkişaf mərhələsindədir və işləməyə bilər
+
+PotHelper-i yükləmək üçün buraya toxun"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Tətbiq versiyasını saxtalaşdır</string>
   <string name="morphe_spoof_app_version_summary">Köhnə UI xüsusiyyətlərini qaytarmaq üçün serveri daha köhnə tətbiq versiyasını istifadə etdiyinizi düşünməyə inandırır</string>

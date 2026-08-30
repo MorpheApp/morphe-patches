@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.youtube.patches.theme;
 
 import static app.morphe.extension.shared.StringRef.str;
@@ -97,6 +107,14 @@ public final class SeekbarColorPatch {
 
     public static int getSeekbarColor() {
         return customSeekbarColor;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean useLotteLaunchSplashScreen(boolean original) {
+        Logger.printDebug(() -> "Lottie splash screen flag: " + original);
+        return true; // Force lottie animation view.
     }
 
     /**

@@ -16,6 +16,8 @@ import android.util.Pair;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import app.morphe.extension.music.patches.album.PlayAlbumSongsPatch;
+import app.morphe.extension.music.patches.album.PlaylistRequest;
 import app.morphe.extension.music.patches.scrobbling.lastfm.LastFM;
 import app.morphe.extension.music.patches.scrobbling.listenbrainz.ListenBrainz;
 import app.morphe.extension.music.settings.Settings;
@@ -135,10 +137,20 @@ public class ScrobbleManager {
         try {
             String songId = metadata.getString(MediaMetadata.METADATA_KEY_MEDIA_ID);
             String album = cleanAlbum(metadata.getString(MediaMetadata.METADATA_KEY_ALBUM));
-            Pair<String, String> resolved = resolveTitleAndArtist(
-                    metadata.getString(MediaMetadata.METADATA_KEY_TITLE),
-                    metadata.getString(MediaMetadata.METADATA_KEY_ARTIST)
-            );
+            String rawTitle = metadata.getString(MediaMetadata.METADATA_KEY_TITLE);
+            String rawArtist = metadata.getString(MediaMetadata.METADATA_KEY_ARTIST);
+
+            // The metadata of a substituted track still describes the music video,
+            // which can name a different version of the song than the one playing.
+            PlaylistRequest.Song song = PlayAlbumSongsPatch.getSong(songId);
+            if (song != null && !song.title().isBlank()) {
+                rawTitle = song.title();
+                if (!song.artist().isBlank()) {
+                    rawArtist = song.artist();
+                }
+            }
+
+            Pair<String, String> resolved = resolveTitleAndArtist(rawTitle, rawArtist);
             String title = resolved.first;
             String artist = resolved.second;
             final int duration = (int) (metadata.getLong(MediaMetadata.METADATA_KEY_DURATION) / 1000);

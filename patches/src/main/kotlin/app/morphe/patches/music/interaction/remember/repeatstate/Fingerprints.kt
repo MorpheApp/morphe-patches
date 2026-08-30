@@ -21,11 +21,26 @@ internal object RepeatTrackFingerprint : Fingerprint(
     parameters = listOf("L", "L"),
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.IGET_OBJECT,
+        Opcode.SGET_OBJECT,
+        Opcode.CHECK_CAST,
+        Opcode.INVOKE_VIRTUAL,
+        Opcode.MOVE_RESULT,
+        Opcode.IF_NEZ
+    ),
+    strings = listOf("w_st")
+)
+
+internal object RepeatTrackLegacyFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L", "L"),
+    filters = OpcodesFilter.opcodesToFilters(
+        Opcode.IGET_OBJECT,
         Opcode.IGET_OBJECT,
         Opcode.SGET_OBJECT,
         Opcode.INVOKE_VIRTUAL,
         Opcode.MOVE_RESULT,
         Opcode.IF_NEZ
     ),
-    strings = listOf ("w_st")
+    strings = listOf("w_st")
 )

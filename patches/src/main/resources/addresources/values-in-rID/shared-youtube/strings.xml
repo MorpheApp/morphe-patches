@@ -21,6 +21,25 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Mulai ulang untuk menyelesaikan penyiapan</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Nama aplikasi</string>
+  <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">Latar belakang tema gelap</string>
+  <string name="morphe_theme_color_dark_entry_2">Hitam pekat</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You (Hitam pekat)</string>
+  <string name="morphe_theme_color_dark_entry_9">YouTube Klasik</string>
+  <string name="morphe_theme_color_dark_entry_10">Pink gelap</string>
+  <string name="morphe_theme_color_dark_entry_11">Biru gelap</string>
+  <string name="morphe_theme_color_dark_entry_12">Hijau gelap</string>
+  <string name="morphe_theme_color_dark_entry_13">Kuning gelap</string>
+  <string name="morphe_theme_color_dark_entry_14">Oranye gelap</string>
+  <string name="morphe_theme_color_dark_entry_15">Merah gelap</string>
+  <string name="morphe_theme_color_dark_custom_title">Latar belakang gelap kustom</string>
+  <string name="morphe_theme_color_dark_custom_summary">Atur warna latar belakang tema gelap</string>
+  <string name="morphe_theme_color_entry_1">Bawaan aplikasi</string>
+  <string name="morphe_theme_color_entry_4">Material You (Netral)</string>
+  <string name="morphe_theme_color_entry_5">Material You (Utama)</string>
+  <string name="morphe_theme_color_entry_6">Material You (Sekunder)</string>
+  <string name="morphe_theme_color_entry_7">Material You (Tersier)</string>
+  <string name="morphe_theme_color_custom_entry">Khusus</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Unduhan eksternal</string>
   <string name="morphe_external_downloader_name_title">Nama paket pengunduh</string>
@@ -62,7 +81,7 @@ Pastikan nama paket benar dan aplikasi sudah terpasang"</string>
 Jika Anda pengguna YouTube Premium, pengaturan ini mungkin tidak diperlukan"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Tidak dapat mengambil aliran klien apa pun</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Mematikan pengaturan ini dapat menyebabkan masalah pemutaran.</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Cobalah mengaktifkan: Palsukan aliran video &gt; Masuk Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Klien bawaan</string>
@@ -132,9 +151,9 @@ Untuk masuk, tekan lanjutkan di bawah ini"</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">Terhubung secara langsung jika proksi gagal</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Sembunyikan iklan layar penuh</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">Untuk menggunakan fitur ini, ubah \'Palsukan aliran video\' ke klien apa pun kecuali Android Studio\'</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">Untuk menggunakan fitur ini, ubah \'Palsukan aliran video\' ke klien apa pun kecuali \'Android Studio\' dan \'Android VR Downgraded\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Bersihkan tautan berbagi</string>
   <string name="morphe_sanitize_sharing_links_summary">Menghapus parameter kueri pelacakan dari tautan yang dibagikan</string>
@@ -165,6 +184,23 @@ Namun, mengaktifkan ini juga akan mencatat beberapa data pengguna seperti alamat
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Hapus dialog pembatasan penonton</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Ini tidak mengabaikan batasan usia. Hanya otomatis menerimanya</string>
+  <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">Penyedia PoToken</string>
+  <string name="morphe_potoken_provider_screen_summary">Konfigurasikan penyedia PoToken untuk mencegah masalah pemutaran</string>
+  <string name="morphe_external_potoken_provider_title">Penyedia PoToken Eksternal</string>
+  <string name="morphe_external_potoken_provider_summary">"Memperbaiki masalah pemutaran saat menggunakan PoToken minter eksternal (Eksperimental)
+
+Jika Anda adalah pengguna YouTube Premium, pengaturan ini mungkin tidak diperlukan"</string>
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"Memperbaiki masalah pemutaran menggunakan pencetak PoToken eksternal (Eksperimental)
+
+Untuk menggunakan fitur ini, matikan 'Memalsukan aliran video'"</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">Jika tidak berhasil, coba hentikan paksa MicroG</string>
+  <string name="morphe_external_potoken_provider_settings_summary">Buka pengaturan PotHelper</string>
+  <string name="morphe_external_potoken_provider_about_summary">"Fitur ini saat ini masih dalam tahap pengembangan dan mungkin tidak berfungsi
+
+Ketuk di sini untuk mengunduh PotHelper"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Palsukan versi aplikasi</string>
   <string name="morphe_spoof_app_version_summary">Mengelabui server agar mengira Anda menggunakan versi aplikasi yang lebih lama untuk mengembalikan fitur UI lama</string>

@@ -21,6 +21,25 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Kurulumu tamamlamak için yeniden başlatın</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Uygulama adı</string>
+  <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">Koyu tema arka planı</string>
+  <string name="morphe_theme_color_dark_entry_2">Saf siyah</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You (Saf siyah)</string>
+  <string name="morphe_theme_color_dark_entry_9">Klasik YouTube</string>
+  <string name="morphe_theme_color_dark_entry_10">Koyu pembe</string>
+  <string name="morphe_theme_color_dark_entry_11">Koyu mavi</string>
+  <string name="morphe_theme_color_dark_entry_12">Koyu yeşil</string>
+  <string name="morphe_theme_color_dark_entry_13">Koyu sarı</string>
+  <string name="morphe_theme_color_dark_entry_14">Koyu turuncu</string>
+  <string name="morphe_theme_color_dark_entry_15">Koyu kırmızı</string>
+  <string name="morphe_theme_color_dark_custom_title">Özel koyu arka plan</string>
+  <string name="morphe_theme_color_dark_custom_summary">Koyu temanın arka plan rengini ayarla</string>
+  <string name="morphe_theme_color_entry_1">Uygulama varsayılanı</string>
+  <string name="morphe_theme_color_entry_4">Material You (Nötr)</string>
+  <string name="morphe_theme_color_entry_5">Material You (Birincil)</string>
+  <string name="morphe_theme_color_entry_6">Material You (İkincil)</string>
+  <string name="morphe_theme_color_entry_7">Material You (Üçüncül)</string>
+  <string name="morphe_theme_color_custom_entry">Özel</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Harici indirmeler</string>
   <string name="morphe_external_downloader_name_title">İndirici paket adı</string>
@@ -62,7 +81,7 @@ Paket adının doğru olduğundan ve uygulamanın yüklü olduğundan emin olun"
 YouTube Premium kullanıcısıysanız, bu ayar gerekli olmayabilir"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Hiçbir istemci akışı alınamadı</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Bu ayarı devre dışı bırakmak oynatma sorunlarına yol açabilir.</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Şunu etkinleştirmeyi dene: Video akışlarını taklit et &gt; Android VR oturum açma</string>
   <string name="morphe_spoof_video_streams_client_type_title">Varsayılan istemci</string>
@@ -132,9 +151,9 @@ Oturum açmak için, devam et butonuna basın."</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">Proxy başarısız olursa doğrudan bağlan</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Tam ekran reklamları gizle</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">Bu özelliği kullanmak için \'Video akışlarını taklit et\' ayarını Android Studio dışındaki herhangi bir istemciye değiştirin\'</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">Bu özelliği kullanmak için, \'Video akışlarını taklit et\' ayarını \'Android Studio\' ve \'Android VR Downgraded\' dışındaki herhangi bir istemciye değiştirin.</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Paylaşım bağlantılarını temizle</string>
   <string name="morphe_sanitize_sharing_links_summary">Paylaşılan bağlantılardan izleme sorgu parametrelerini kaldırır</string>
@@ -165,6 +184,23 @@ Ancak, bunun etkinleştirilmesi IP adresiniz gibi bazı kullanıcı verilerini d
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">İzleyici uyarısı iletişim kutusunu kaldır</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Bu, yaş kısıtlamasını kaldırmaz. Sadece otomatik olarak kabul eder</string>
+  <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">PoToken sağlayıcı</string>
+  <string name="morphe_potoken_provider_screen_summary">Oynatma sorunlarını önlemek için PoToken sağlayıcısını yapılandırın</string>
+  <string name="morphe_external_potoken_provider_title">Harici PoToken sağlayıcı</string>
+  <string name="morphe_external_potoken_provider_summary">"Harici bir PoToken üreteci kullanarak oynatma sorunlarını düzeltir (Deneysel)
+
+YouTube Premium kullanıcısıysanız, bu ayar gerekli olmayabilir"</string>
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"Harici bir PoToken üreticisi kullanarak oynatma sorunlarını düzeltir (Deneysel)
+
+Bu özelliği kullanmak için 'Video akışlarını taklit et' seçeneğini kapatın."</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">Çalışmazsa, MicroG\'u zorla kapatmayı deneyin</string>
+  <string name="morphe_external_potoken_provider_settings_summary">PotHelper ayarlarını açın</string>
+  <string name="morphe_external_potoken_provider_about_summary">"Bu özellik şu anda geliştirme aşamasındadır ve çalışmayabilir
+
+PotHelper'i indirmek için buraya dokunun"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Uygulama sürümünü taklit et</string>
   <string name="morphe_spoof_app_version_summary">Sunucuya daha eski bir uygulama sürümü kullandığınızı düşündürerek eski arayüz özelliklerini geri yükler</string>

@@ -21,20 +21,23 @@ import app.morphe.patcher.util.Document
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.misc.addon.EXTENSION_ADD_ON_API_CLASS_DESCRIPTOR
+import app.morphe.patches.youtube.misc.addon.LEGACY_BUTTON_SLOTS_RESOURCE_DIRECTORY
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_28_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_40_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_08_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_15_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.copyXmlNode
 import app.morphe.util.findElementByAttributeValue
 import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.findFreeRegister
-import app.morphe.util.getReference
 import app.morphe.util.inputStreamFromBundledResource
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -162,6 +165,9 @@ internal val legacyPlayerControlsResourcePatch = resourcePatch {
 
             sourceDocument.close()
         }
+
+        // Button slots of add-on patch bundles, which cannot add a button of their own.
+        addLegacyBottomControl(LEGACY_BUTTON_SLOTS_RESOURCE_DIRECTORY)
     }
 
     finalize {
@@ -234,11 +240,28 @@ val legacyPlayerControlsPatch = bytecodePatch(
             )
         }
 
+        // Override flags that interfere with old player icons override.
+        arrayOf(
+            PlayerControlsModernAccessibilityFeatureFlagFingerprint to is_21_08_or_greater,
+            PlayerCommentTeaserFeatureFlagFingerprint to is_21_15_or_greater,
+            RecycleViewScrollingFlagFingerprint to is_21_15_or_greater
+        ).forEach { (fingerprint, applyChanges) ->
+            if (applyChanges) {
+                fingerprint.matchAll().forEach {
+                    it.method.insertLiteralOverride(
+                        it.instructionMatches.first().index,
+                        "$EXTENSION_CLASS->" +
+                                "allowModernPlayerLayoutFlags(Z)Z"
+                    )
+                }
+            }
+        }
+
         fun overrideExploderLayout(fingerprint: Fingerprint) {
-            fingerprint.matchAll().forEach { match ->
+            fingerprint.matchAll().forEach {
                 // 21.30+ inlines the flag lookup and must patch ~6 places.
-                match.method.insertLiteralOverride(
-                    match.instructionMatches.first().index,
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
                     "$EXTENSION_CLASS->" +
                             "usePlayerBottomControlsExploderLayout(Z)Z"
                 )
@@ -321,5 +344,17 @@ val legacyPlayerControlsPatch = bytecodePatch(
                 inflateTopControlInsertIndex = inflateReturnObjectIndex + 1
             }
         }
+
+        if (is_21_05_or_greater) {
+            ModernPlayerTopControlsFeatureFlagFingerprint.matchAll().forEach {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    "$EXTENSION_CLASS->useModernPlayerTopControls(Z)Z"
+                )
+            }
+        }
+
+        // Buttons of add-on patch bundles, which cannot add a button of their own.
+        initializeLegacyBottomControl(EXTENSION_ADD_ON_API_CLASS_DESCRIPTOR)
     }
 }

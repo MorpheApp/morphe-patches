@@ -33,6 +33,7 @@ Second \"item\" text"</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Keluarkan sekatan main di latar belakang</string>
   <string name="morphe_shorts_disable_background_playback_title">Lumpuhkan main di latar belakang</string>
+  <!-- layout.disableScrollSpeedLimitPatch -->
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">Lumpuhkan kemas kini tataletak</string>
   <string name="morphe_disable_layout_updates_summary">Mengelakkan pelayan daripada mengemas kini tataletak aplikasi</string>
@@ -79,6 +80,7 @@ Perubahan termasuk:
   <string name="morphe_hide_latest_videos_button_summary">Menyorokkan sepanduk \'Video terkini\' biru yang muncul di bahagian atas suapan Laman Utama</string>
   <string name="morphe_hide_mix_playlists_title">Sorokkan senarai main adun</string>
   <string name="morphe_hide_movies_section_title">Sorokkan bahagian filem</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Sorokkan butang \'Beritahu saya\'</string>
@@ -140,18 +142,17 @@ Perubahan termasuk:
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Expand livestream DVR duration' may not be available
+
+To fix this, turn on 'Spoof video streams' and change the 'Default client' to 'TV Simply' or 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Dayakan gerak isyarat kecerahan</string>
-  <string name="morphe_swipe_brightness_summary">Leretkan secara menegak di sebelah kiri pada mod skrin penuh untuk melaraskan kecerahan</string>
-  <string name="morphe_swipe_volume_title">Dayakan gerak isyarat kelantangan</string>
-  <string name="morphe_swipe_volume_summary">Leretkan secara menegak di sebelah kanan pada mod skrin penuh untuk melaraskan kelantangan</string>
-  <string name="morphe_swipe_zone_width_title">Lebar zon kecerahan/kelantangan</string>
-  <string name="morphe_swipe_zone_width_summary">Peratusan bagi setiap sisi skrin yang disediakan untuk gerak isyarat kecerahan dan kelantangan (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Kecerahan</string>
   <string name="morphe_swipe_zone_label_volume">Kelantangan</string>
   <string name="morphe_swipe_zone_label_native">Asli</string>
+  <string name="morphe_swipe_zone_label_off">Mati</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
   <string name="morphe_swipe_press_to_engage_title">Dayakan gerak isyarat tekan untuk leret</string>
   <string name="morphe_swipe_haptic_feedback_title">Dayakan maklum balas sentuhan</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Simpan dan pulihkan kecerahan</string>
@@ -207,7 +208,7 @@ Perubahan termasuk:
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -242,6 +243,7 @@ Perubahan termasuk:
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <!-- layout.hide.time.hideTimestampPatch -->
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
+  <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_entry_1">Dilumpuhkan</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
@@ -250,9 +252,13 @@ Perubahan termasuk:
   <string name="morphe_open_videos_fullscreen_entry_1">Dilumpuhkan</string>
   <string name="morphe_open_videos_fullscreen_entry_2">Potret</string>
   <string name="morphe_open_videos_fullscreen_entry_3">Landskap</string>
+  <!-- layout.player.fullscreen.stretchVideoPatch -->
+  <string name="morphe_fullscreen_video_scale_entry_default">Lalai</string>
+  <!-- layout.player.buttons.muteVideoButtonPatch -->
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_summary">Melaraskan tahap kelutsinaran (0 ialah lut sinar, 100 ialah legap)</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
+  <string name="morphe_searchbar_type_entry_disabled">Dilumpuhkan</string>
   <!-- layout.sponsorblock.sponsorBlockPatch -->
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_entry_1">Lalai</string>
@@ -291,17 +297,21 @@ Tataletak automotif
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_entry_off">Mati</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_not_available_summary">YouTube removed all additional miniplayers. To change the miniplayer type then patch YouTube 21.28.208 or older</string>
   <string name="morphe_miniplayer_type_entry_0">Dilumpuhkan</string>
   <string name="morphe_miniplayer_type_entry_1">Lalai</string>
   <string name="morphe_miniplayer_opacity_summary">Melaraskan tahap kelutsinaran (0 ialah lut sinar, 100 ialah legap)</string>
+  <!-- misc.fix.fixBackToExitGesturePatch -->
   <!-- layout.theme.themePatch -->
+  <string name="morphe_theme_color_light_title">Light theme background</string>
+  <string name="morphe_theme_color_light_entry_2">White</string>
   <string name="morphe_splash_screen_animation_style_entry_1">Tidak dibenarkan</string>
   <string name="morphe_splash_screen_animation_style_entry_3">Monokrom</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logo pengepala</string>
   <string name="morphe_header_logo_entry_1">Lalai</string>
-  <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_3'. -->
+  <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_7'. -->
   <string name="morphe_header_logo_entry_5">Tersuai</string>
   <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <!-- layout.thumbnails.alternativeThumbnailsPatch -->
@@ -322,8 +332,6 @@ Tataletak automotif
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automatik</string>
-  <!-- 'Force AVC (H.264) codec' should be the same translation used for 'morphe_force_avc_codec_title'. -->
-  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <!-- video.speed.custom.customPlaybackSpeedPatch -->

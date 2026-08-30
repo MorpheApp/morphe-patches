@@ -107,13 +107,23 @@ Second \"item\" text"</string>
   <string name="morphe_debug_logs_clear_toast">יומני איתור באגים נוקו</string>
   <string name="morphe_debug_feature_flags_manager_title">Manager דגלי תכונות</string>
   <string name="morphe_debug_feature_flags_manager_summary">נהל דגלי תכונות בוליאניים</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">דגלים פעילים (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">דגלים חסומים (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">חפש דגלי תכונה…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">אוטומטי</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">כבוי</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">דלוק</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">הסר</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">דגלי תכונות נשמרו</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">דגלי תכונות הוחזרו</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">הדגלים הועתקו ללוח</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">הפעל מחדש את האפליקציה כדי להשתמש בהגדרה זו</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">התחלה</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">פתח את הגדרות MicroG</string>

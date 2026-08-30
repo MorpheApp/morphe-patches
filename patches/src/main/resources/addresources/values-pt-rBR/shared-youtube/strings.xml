@@ -20,14 +20,33 @@ Second \"item\" text"</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Reinicie para finalizar a configuração</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
-  <string name="morphe_custom_branding_name_title">Nome do app</string>
+  <string name="morphe_custom_branding_name_title">Nome do aplicativo</string>
+  <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">Fundo do tema escuro</string>
+  <string name="morphe_theme_color_dark_entry_2">Preto puro</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You (Preto puro) - Cor de tema escura 3</string>
+  <string name="morphe_theme_color_dark_entry_9">YouTube Clássico</string>
+  <string name="morphe_theme_color_dark_entry_10">Rosa escuro</string>
+  <string name="morphe_theme_color_dark_entry_11">Azul escuro</string>
+  <string name="morphe_theme_color_dark_entry_12">Verde escuro</string>
+  <string name="morphe_theme_color_dark_entry_13">Amarelo escuro</string>
+  <string name="morphe_theme_color_dark_entry_14">Laranja escuro</string>
+  <string name="morphe_theme_color_dark_entry_15">Vermelho escuro</string>
+  <string name="morphe_theme_color_dark_custom_title">Fundo escuro personalizado</string>
+  <string name="morphe_theme_color_dark_custom_summary">Definir a cor de fundo do tema escuro</string>
+  <string name="morphe_theme_color_entry_1">Aplicativo padrão</string>
+  <string name="morphe_theme_color_entry_4">Material You (Neutro)</string>
+  <string name="morphe_theme_color_entry_5">Material You (Primário)</string>
+  <string name="morphe_theme_color_entry_6">Material You (Secundário)</string>
+  <string name="morphe_theme_color_entry_7">Material You (Terciário)</string>
+  <string name="morphe_theme_color_custom_entry">Personalizado</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Downloads externos</string>
   <string name="morphe_external_downloader_name_title">Nome do pacote do app de download</string>
   <string name="morphe_external_downloader_name_summary">Nome do pacote do seu app de download externo instalado</string>
   <string name="morphe_external_downloader_other_item_hint">Digite o nome do pacote</string>
   <string name="morphe_external_downloader_other_item">Outro</string>
-  <string name="morphe_external_downloader_not_found_title">App não instalado</string>
+  <string name="morphe_external_downloader_not_found_title">Aplicativo não instalado</string>
   <string name="morphe_external_downloader_not_installed_warning">%s não está instalado. Por favor, instale-o.</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Não foi possível encontrar o app instalado com o nome do pacote: %s
 
@@ -35,7 +54,7 @@ Verifique se o nome do pacote está correto e se o app está instalado"</string>
   <string name="morphe_external_downloader_empty_warning">O nome do pacote não pode estar vazio</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Personalizado</string>
-  <string name="morphe_custom_branding_icon_title">Ícone do app</string>
+  <string name="morphe_custom_branding_icon_title">Ícone do aplicativo</string>
   <string name="morphe_custom_branding_icon_entry_1">Original</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe preto</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe escuro</string>
@@ -47,7 +66,7 @@ Verifique se o nome do pacote está correto e se o app está instalado"</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">Personalizado</string>
   <string name="morphe_custom_branding_notification_icon_title">Ícone de notificação</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">Combinar com o ícone do app</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Combinar com o ícone do aplicativo</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Aviso do Morphe</string>
@@ -62,17 +81,17 @@ Verifique se o nome do pacote está correto e se o app está instalado"</string>
 Se você for um usuário do YouTube Premium, esta configuração pode não ser necessária"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Não foi possível obter nenhum stream de cliente.</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Desativar esta configuração pode causar problemas de reprodução.</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
-  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Tente ativar: Simular streams de vídeo e Fazer login no Android VR</string>
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Tente ativar: Simular streams de vídeo &gt; Fazer login no Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Cliente padrão</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Fazer login no Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Login do Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Você não fez login no Android VR. Toque aqui para fazer login.</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Atualmente conectado ao Android VR.</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Para usar essa função, altere \'Cliente padrão\' para Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Conectar ao Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Para usar essa função, altere \"Cliente padrão\" para Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Fazer login no Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Fazer login no Android VR pode corrigir problemas de reprodução para alguns usuários
 
 Para fazer login, pressione continuar abaixo"</string>
@@ -82,11 +101,11 @@ Para fazer login, pressione continuar abaixo"</string>
   <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Código de ativação: %s
 
-1. Toque em 'Abrir site' abaixo para abrir o site 'Conectar um dispositivo'
-2. Cole da área de transferência (ou digite) o código de ativação mostrado acima
-3. Faça login no Google se solicitado. Se você tiver várias contas, escolha a conta do YouTube usada neste app
-4. Toque em 'Permitir o acesso do YouTube VR'
-5. Volte para este app após a mensagem 'Dispositivo conectado' ser exibida"</string>
+1. Toque em \"Abrir site\" abaixo para abrir o site \"Conectar um dispositivo\"
+2. Cole o código de ativação exibido acima a partir da área de transferência (ou digite-o manualmente)
+3. Faça login no Google, se solicitado. Se você tiver várias contas, escolha esta conta do YouTube
+4. Toque em \"Permitir acesso ao YouTube VR\"
+5. Retorne a este aplicativo após chegar à mensagem \"Dispositivo conectado\""</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Abrir site</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Falha ao emitir código de ativação</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Falha ao emitir um token de autenticação</string>
@@ -97,7 +116,7 @@ Para fazer login, pressione continuar abaixo"</string>
 • Se este app não for usado por 6 meses, o Google removerá esta autenticação
 • Você precisará fazer o login novamente se alterar sua senha do Google ou desregistrar este dispositivo das configurações do Google"</string>
   <string name="morphe_oauth2_connection_failure_timeout">\"OAuth2 está temporariamente indisponível (API expirou)\"</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Entrada na Android VR expirou, tente entrar novamente na VR</string>
+  <string name="morphe_oauth2_connection_failure_status_400">O login do Android VR expirou, tente fazer login no VR novamente</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 temporariamente indisponível (status %d)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 temporariamente indisponível</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Não é possível entrar na VR, a autenticação do site não foi aprovada</string>
@@ -132,9 +151,9 @@ Para fazer login, pressione continuar abaixo"</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">Conectar diretamente se o proxy falhar</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Ocultar anúncios em tela cheia</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">Para usar este recurso, mude \'Simular streams de vídeo\' para qualquer cliente, exceto \'Android Studio\'</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">Para usar este recurso, altere \"Simular streams de vídeo\" para qualquer cliente, exceto \"Android Studio\" e \"Android VR Downgraded\"</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Limpar links de compartilhamento</string>
   <string name="morphe_sanitize_sharing_links_summary">Remove parâmetros de rastreamento dos links compartilhados</string>
@@ -144,7 +163,7 @@ Para fazer login, pressione continuar abaixo"</string>
   <string name="morphe_replace_links_with_shortener_summary">Força os vídeos a usar o formato de URL abreviado youtu.be</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_protobuffer_title">Registro de buffer de protocolo</string>
-  <string name="morphe_debug_protobuffer_summary">Adiciona informações de registro adicionais para que os desenvolvedores identifiquem os componentes do app</string>
+  <string name="morphe_debug_protobuffer_summary">Adiciona informações de registro adicionais para que os desenvolvedores identifiquem os componentes do aplicativo</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Ativar esta configuração registrará dados de layout adicionais, incluindo texto na tela para alguns componentes da IU.
 
 Isso pode ajudar a identificar componentes ao criar filtros personalizados.
@@ -160,20 +179,37 @@ No entanto, ativar isso também registrará alguns dados do usuário, como seu e
   <string name="morphe_custom_filter_toast_invalid_syntax">Filtro personalizado inválido: %s</string>
   <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">Filtro do menu de configurações</string>
-  <string name="morphe_settings_menu_filter_screen_summary">Ocultar itens na tela de configurações padrões do app pelo nome visível</string>
+  <string name="morphe_settings_menu_filter_screen_summary">Ocultar itens na tela de configurações do aplicativo padrão pelo nome visível</string>
   <string name="morphe_settings_menu_filter_picker_empty">Abra a tela de configurações do aplicativo padrão uma vez para preencher a lista</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Remover diálogo de discrição do espectador</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Isso não ignora a restrição de idade. Apenas a aceita automaticamente</string>
+  <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">Provedor de PoToken</string>
+  <string name="morphe_potoken_provider_screen_summary">Configure o provedor de PoToken para evitar problemas de reprodução</string>
+  <string name="morphe_external_potoken_provider_title">Provedor externo de PoToken</string>
+  <string name="morphe_external_potoken_provider_summary">"Corrige problemas de reprodução usando um gerador externo de PoToken (Experimental)
+
+Se você é usuário do YouTube Premium, esta configuração pode não ser necessária"</string>
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"Corrige problemas de reprodução usando um gerador externo de PoToken (Experimental)
+
+Para usar este recurso, desative a opção \"Simular streams de vídeo\""</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">Se não funcionar, tente forçar o fechamento do MicroG</string>
+  <string name="morphe_external_potoken_provider_settings_summary">Abrir configurações do PotHelper</string>
+  <string name="morphe_external_potoken_provider_about_summary">"Este recurso está em desenvolvimento e pode não funcionar
+
+Toque aqui para baixar o PotHelper"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_title">Simular a versão do app</string>
-  <string name="morphe_spoof_app_version_summary">Faz o servidor pensar que você está usando uma versão mais antiga do app para restaurar recursos da interface antiga</string>
+  <string name="morphe_spoof_app_version_title">Simular versão do aplicativo</string>
+  <string name="morphe_spoof_app_version_summary">Simula para o servidor que você está usando uma versão mais antiga do aplicativo para restaurar recursos de interface antigos</string>
   <string name="morphe_spoof_app_version_user_dialog_message">"O app se identificará como uma versão mais antiga.
 
 Isso mudará a aparência e os recursos do app, mas efeitos colaterais desconhecidos podem ocorrer.
 
 Se esta opção for desativada posteriormente, é recomendável limpar os dados do app para evitar bugs na interface."</string>
-  <string name="morphe_spoof_app_version_target_title">Versão simulada</string>
+  <string name="morphe_spoof_app_version_target_title">Versão-alvo para simulação do aplicativo</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Não gostei indisponível por um tempo (API expirou)</string>

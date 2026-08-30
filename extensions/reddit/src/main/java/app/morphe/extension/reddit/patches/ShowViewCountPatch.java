@@ -27,7 +27,7 @@ public final class ShowViewCountPatch {
      */
     public static boolean showViewCount(String experimentName, boolean original) {
         // Can be called before app context is set.
-        if (Utils.getContext() == null) {
+        if (!Utils.isContextSet()) {
             Logger.printInfo(() -> "Cannot show view count, context is not yet set");
             return original;
         }

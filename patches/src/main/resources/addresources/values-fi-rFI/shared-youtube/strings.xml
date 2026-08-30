@@ -21,6 +21,25 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Käynnistä uudelleen valituksen suorittamiseksi</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Sovelluksen nimi</string>
+  <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">Tumman teeman tausta</string>
+  <string name="morphe_theme_color_dark_entry_2">Täysin musta</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You (Puhdas musta)</string>
+  <string name="morphe_theme_color_dark_entry_9">Klassinen YouTube</string>
+  <string name="morphe_theme_color_dark_entry_10">Tumma pinkki</string>
+  <string name="morphe_theme_color_dark_entry_11">Tumma sininen</string>
+  <string name="morphe_theme_color_dark_entry_12">Tumma vihreä</string>
+  <string name="morphe_theme_color_dark_entry_13">Tumma keltainen</string>
+  <string name="morphe_theme_color_dark_entry_14">Tumma oranssi</string>
+  <string name="morphe_theme_color_dark_entry_15">Tumma punainen</string>
+  <string name="morphe_theme_color_dark_custom_title">Mukautettu tumma tausta</string>
+  <string name="morphe_theme_color_dark_custom_summary">Aseta tumman teeman taustaväri</string>
+  <string name="morphe_theme_color_entry_1">Sovelluksen oletus</string>
+  <string name="morphe_theme_color_entry_4">Material You (Neutraali)</string>
+  <string name="morphe_theme_color_entry_5">Material You (Pääväri)</string>
+  <string name="morphe_theme_color_entry_6">Material You (Toissijainen)</string>
+  <string name="morphe_theme_color_entry_7">Material You (Tertiääri)</string>
+  <string name="morphe_theme_color_custom_entry">Mukautettu</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Ulkoiset lataukset</string>
   <string name="morphe_external_downloader_name_title">Lataussovelluksen paketin nimi</string>
@@ -62,7 +81,7 @@ Tarkista, että paketin nimi on oikein ja sovellus on asennettu"</string>
 Jos olet YouTube Premium -käyttäjä, tämä asetus ei välttämättä ole tarpeen."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Asiakasvirtoja ei voitu hakea</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Tämän asetuksen poistaminen käytöstä voi aiheuttaa toisto-ongelmia.</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Kokeile ottaa käyttöön: Naamioi videovirrat &gt; Android VR -kirjautuminen</string>
   <string name="morphe_spoof_video_streams_client_type_title">Oletusasiakasohjelma</string>
@@ -132,9 +151,9 @@ Kirjaudu sisään painamalla alta Jatka-painiketta."</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">Yhdistä suoraan, jos proxy epäonnistuu</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Piilota koko näytön mainokset</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">Käyttääksesi tätä ominaisuutta, muuta \"Naamioi videovirrat\" mihin tahansa asiakasohjelmaan paitsi Android Studioon</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">Käyttääksesi tätä ominaisuutta, vaihda \"Naamioi videovirrat\" mihin tahansa asiakasohjelmaan paitsi \"Android Studio\" ja \"Android VR Downgraded\"</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Puhdista jakamislinkit</string>
   <string name="morphe_sanitize_sharing_links_summary">Poistaa seuranta-kyselyparametrit jaetuista linkeistä</string>
@@ -165,6 +184,15 @@ Tämän käyttöönotto kirjaa myös joitakin käyttäjätietoja, kuten IP-osoit
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Poista katsojan harkintaa koskeva valintaikkuna</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Tämä ei ohita ikärajoitusta. Se vain hyväksyy sen automaattisesti</string>
+  <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">PoToken-palveluntarjoaja</string>
+  <string name="morphe_potoken_provider_screen_summary">Määritä PoToken-palveluntarjoaja estääksesi toisto-ongelmat</string>
+  <string name="morphe_external_potoken_provider_title">Ulkoinen PoToken-palveluntarjoaja</string>
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"Korjaa toistoon liittyviä ongelmia käyttämällä ulkoista PoToken-louhijaa (kokeellinen)
+
+Jos haluat käyttää tätä ominaisuutta, ota pois käytöstä 'Spoof video streams' -asetus"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Sovellusversio naamioidaan</string>
   <string name="morphe_spoof_app_version_summary">Huijaa palvelinta luulemaan, että käytät vanhempaa sovellusversiota palauttaaksesi vanhat käyttöliittymäelementit.</string>

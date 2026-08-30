@@ -46,6 +46,7 @@ import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.Buttons;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarItemRenderer;
 import app.morphe.extension.youtube.innertube.IconOuterClass.Icon;
 import app.morphe.extension.youtube.innertube.IconOuterClass.YTIconType;
+import app.morphe.extension.youtube.patches.spoof.SpoofOSNamePatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.NavigationBar;
 
@@ -65,11 +66,7 @@ public final class NavigationBarPatch {
 
     private static final boolean SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON = Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON.get();
 
-    private static final boolean DISABLE_TRANSLUCENT_STATUS_BAR = Settings.DISABLE_TRANSLUCENT_STATUS_BAR.get();
-
-    private static final boolean DISABLE_TRANSLUCENT_NAVIGATION_BAR_LIGHT = Settings.DISABLE_TRANSLUCENT_NAVIGATION_BAR_LIGHT.get();
-
-    private static final boolean DISABLE_TRANSLUCENT_NAVIGATION_BAR_DARK = Settings.DISABLE_TRANSLUCENT_NAVIGATION_BAR_DARK.get();
+    private static final boolean DISABLE_TRANSLUCENT_NAVIGATION = Settings.DISABLE_TRANSLUCENT_NAVIGATION.get();
 
     private static final boolean NARROW_NAVIGATION_BUTTONS = Settings.NARROW_NAVIGATION_BUTTONS.get();
 
@@ -81,9 +78,7 @@ public final class NavigationBarPatch {
      * Injection point.
      */
     public static String swapCreateWithNotificationButton(String osName) {
-        return SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON
-                ? "Android Automotive"
-                : osName;
+        return SpoofOSNamePatch.getOSName(SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON);
     }
 
     /**
@@ -150,46 +145,24 @@ public final class NavigationBarPatch {
      * Injection point.
      */
     public static boolean allowCollapsingToolbarLayout(boolean original) {
-        if (DISABLE_TRANSLUCENT_STATUS_BAR) return false;
+        if (DISABLE_TRANSLUCENT_NAVIGATION) return false;
         return original;
     }
 
     /**
      * Injection point.
      */
-    public static boolean useTranslucentNavigationStatusBar(boolean original) {
+    public static boolean useTranslucentNavigation(boolean original) {
         // Must check Android version, as forcing this on Android 11 or lower causes app hang and crash.
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
             return original;
         }
 
-        if (DISABLE_TRANSLUCENT_STATUS_BAR) {
+        if (DISABLE_TRANSLUCENT_NAVIGATION) {
             return false;
         }
 
         return original;
-    }
-
-    /**
-     * Injection point.
-     */
-    public static boolean useTranslucentNavigationButtons(boolean original) {
-        // Feature requires Android 13+
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
-            return original;
-        }
-
-        if (!DISABLE_TRANSLUCENT_NAVIGATION_BAR_DARK && !DISABLE_TRANSLUCENT_NAVIGATION_BAR_LIGHT) {
-            return original;
-        }
-
-        if (DISABLE_TRANSLUCENT_NAVIGATION_BAR_DARK && DISABLE_TRANSLUCENT_NAVIGATION_BAR_LIGHT) {
-            return false;
-        }
-
-        return Utils.isDarkModeEnabled()
-                ? !DISABLE_TRANSLUCENT_NAVIGATION_BAR_DARK
-                : !DISABLE_TRANSLUCENT_NAVIGATION_BAR_LIGHT;
     }
 
     // Navigation search and settings button

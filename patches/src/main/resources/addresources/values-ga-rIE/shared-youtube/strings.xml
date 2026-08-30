@@ -21,6 +21,25 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Atosaigh chun an socrú a chríochnú</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Ainm an aip</string>
+  <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">Cúlra téama dorcha</string>
+  <string name="morphe_theme_color_dark_entry_2">Dubh íon</string>
+  <string name="morphe_theme_color_dark_entry_3">Ábhar Tusa (Dubh Glan)</string>
+  <string name="morphe_theme_color_dark_entry_9">YouTube Clasaiceach</string>
+  <string name="morphe_theme_color_dark_entry_10">Bándearg dorcha</string>
+  <string name="morphe_theme_color_dark_entry_11">Gorm dorcha</string>
+  <string name="morphe_theme_color_dark_entry_12">Glas dorcha</string>
+  <string name="morphe_theme_color_dark_entry_13">Buí dorcha</string>
+  <string name="morphe_theme_color_dark_entry_14">Oráiste dorcha</string>
+  <string name="morphe_theme_color_dark_entry_15">Dearg dorcha</string>
+  <string name="morphe_theme_color_dark_custom_title">Cúlra dorcha saincheaptha</string>
+  <string name="morphe_theme_color_dark_custom_summary">Socraigh dath cúlra an téama dorcha</string>
+  <string name="morphe_theme_color_entry_1">Réamhshocrú aipe</string>
+  <string name="morphe_theme_color_entry_4">Ábhartha Tusa (Neodrach)</string>
+  <string name="morphe_theme_color_entry_5">Ábhar Tusa (Príomhúil)</string>
+  <string name="morphe_theme_color_entry_6">Ábhar Tusa (Tánaisteach)</string>
+  <string name="morphe_theme_color_entry_7">Ábhar Tusa (Treách)</string>
+  <string name="morphe_theme_color_custom_entry">Saincheaptha</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Íoslódálacha seachtracha</string>
   <string name="morphe_external_downloader_name_title">Ainm pacáiste íoslódáil</string>
@@ -62,7 +81,7 @@ Seiceáil go bhfuil an t-ainm pacáiste ceart agus go bhfuil an aip suiteáilte"
 Mura n-úsáideoir YouTube Premium thú, b'fhéidir nach mbeidh an socrú seo ag teastáil"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Níorbh fhéidir aon sruthanna cliant a fháil</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">D’fhéadfadh fadhbanna athsheinm a bheith mar thoradh ar an socrú seo a mhúchadh.</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Bain triail as na nithe seo a leanas a chumasú: Sruthanna físe bréige &gt; Sínigh isteach Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Cliant réamhshocraithe</string>
@@ -132,9 +151,9 @@ Chun síniú isteach, brúigh lean ar aghaidh thíos"</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">Ceangail go díreach má theipeann ar an seachfhreastalaí</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Folaigh fógraí lánscáileáin</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">Chun an ghné seo a úsáid, athraigh \'Sruthanna físe bréige\' go haon chliant seachas \'Android Studio\'.</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">Chun an ghné seo a úsáid, athraigh \'Spoof video streams\' chuig aon chliant ach amháin \'Android Studio\' agus \'Android VR Downgraded\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Glanadh naisc chomhroinnte</string>
   <string name="morphe_sanitize_sharing_links_summary">Baintear paraiméadair fiosrúcháin rianaithe as naisc chomhroinnte</string>
@@ -165,6 +184,23 @@ Mar sin féin, má chumasaíonn tú é seo, logálfar roinnt sonraí úsáideora
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Bain an dialóg rogha lucht féachana</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Ní théann sé seo thar an srian aoise. Glacann sé leis go huathoibríoch.</string>
+  <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">Soláthraí PoToken</string>
+  <string name="morphe_potoken_provider_screen_summary">Cumraigh soláthraí PoToken chun fadhbanna athsheinm a chosc</string>
+  <string name="morphe_external_potoken_provider_title">Soláthraí seachtrach PoToken</string>
+  <string name="morphe_external_potoken_provider_summary">"Deisíonn sé fadhbanna athsheinm ag baint úsáide as minteoir seachtrach PoToken (Turgnamhach)
+
+Mura bhfuil tú i d’úsáideoir YouTube Premium, b’fhéidir nach mbeidh an socrú seo ag teastáil"</string>
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"Deisíonn sé fadhbanna athsheinm ag baint úsáide as minteoir seachtrach PoToken (Turgnamhach)
+
+Chun an ghné seo a úsáid, múch 'Sruthanna físe bréige'"</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">Mura n-oibríonn sé, déan iarracht MicroG a dhúnadh le fórsa</string>
+  <string name="morphe_external_potoken_provider_settings_summary">Oscail socruithe PotHelper</string>
+  <string name="morphe_external_potoken_provider_about_summary">"Tá an ghné seo á forbairt faoi láthair agus b'fhéidir nach n-oibreoidh sí
+
+Tapáil anseo chun PotHelper a íoslódáil"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Leagan aip bréige</string>
   <string name="morphe_spoof_app_version_summary">Meallann sé an freastalaí le go gceapfá go bhfuil tú ag úsáid seanleagan den aip chun gnéithe oidhreachta den chomhéadan úsáideora a athbhunú.</string>

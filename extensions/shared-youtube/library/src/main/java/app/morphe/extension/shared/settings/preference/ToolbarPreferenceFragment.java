@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.shared.settings.preference;
 
 import android.annotation.SuppressLint;
@@ -20,6 +30,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseActivityHook;
+import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 
 @SuppressWarnings({"deprecation", "RedundantSuppression"})
@@ -48,6 +59,8 @@ public class ToolbarPreferenceFragment extends AbstractPreferenceFragment {
     protected void setPreferenceScreenToolbar(PreferenceScreen parentScreen) {
         for (int i = 0, count = parentScreen.getPreferenceCount(); i < count; i++) {
             Preference childPreference = parentScreen.getPreference(i);
+            setPreferenceIconColor(childPreference);
+
             if (childPreference instanceof PreferenceScreen) {
                 // Recursively set sub preferences.
                 setPreferenceScreenToolbar((PreferenceScreen) childPreference);
@@ -94,7 +107,7 @@ public class ToolbarPreferenceFragment extends AbstractPreferenceFragment {
                             TextView toolbarTextView = Utils.getChildView(toolbar,
                                     true, TextView.class::isInstance);
                             if (toolbarTextView != null) {
-                                toolbarTextView.setTextColor(Utils.getAppForegroundColor());
+                                toolbarTextView.setTextColor(ThemeUtils.getAppForegroundColor());
                                 toolbarTextView.setTextSize(20);
                             }
 
@@ -114,7 +127,7 @@ public class ToolbarPreferenceFragment extends AbstractPreferenceFragment {
 
     /**
      * Sets the system navigation bar color for the activity.
-     * Applies the background color obtained from {@link Utils#getAppBackgroundColor()} to the navigation bar.
+     * Applies the background color obtained from {@link ThemeUtils#getAppBackgroundColor()} to the navigation bar.
      * For Android 10 (API 29) and above, enforces navigation bar contrast to ensure visibility.
      */
     public static void setNavigationBarColor(@Nullable Window window) {
@@ -123,10 +136,26 @@ public class ToolbarPreferenceFragment extends AbstractPreferenceFragment {
             return;
         }
 
-        window.setNavigationBarColor(Utils.getAppBackgroundColor());
+        window.setNavigationBarColor(ThemeUtils.getAppBackgroundColor());
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             window.setNavigationBarContrastEnforced(true);
         }
+    }
+
+    /**
+     * Colors the icon of a preference, which is drawn with the text color of the platform and
+     * not with the color the app uses for its foreground.
+     */
+    private static void setPreferenceIconColor(Preference preference) {
+        Drawable icon = preference.getIcon();
+        if (icon == null) {
+            return;
+        }
+
+        // Mutate, otherwise every user of the same drawable is colored as well.
+        Drawable mutated = icon.mutate();
+        mutated.setTint(ThemeUtils.getAppForegroundColor());
+        preference.setIcon(mutated);
     }
 
     /**
@@ -146,14 +175,14 @@ public class ToolbarPreferenceFragment extends AbstractPreferenceFragment {
      * Customizes the back button drawable.
      */
     protected static void customizeBackButtonDrawable(Drawable drawable) {
-        drawable.setTint(Utils.getAppForegroundColor());
+        drawable.setTint(ThemeUtils.getAppForegroundColor());
     }
 
     /**
      * Allows subclasses to customize the dialog's root view background.
      */
     protected void customizeDialogBackground(ViewGroup rootView) {
-        rootView.setBackgroundColor(Utils.getAppBackgroundColor());
+        rootView.setBackgroundColor(ThemeUtils.getAppBackgroundColor());
     }
 
     /**

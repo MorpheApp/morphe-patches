@@ -21,6 +21,25 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Dest pê bike ku sazkirinê temam bike</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Navê sepanê</string>
+  <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">Paşbingehê mijara tarî</string>
+  <string name="morphe_theme_color_dark_entry_2">Reşê xwerû</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You (Reşê saf)</string>
+  <string name="morphe_theme_color_dark_entry_9">YouTube klasîk</string>
+  <string name="morphe_theme_color_dark_entry_10">Pembe tarî</string>
+  <string name="morphe_theme_color_dark_entry_11">Şîn tarî</string>
+  <string name="morphe_theme_color_dark_entry_12">Kesk tarî</string>
+  <string name="morphe_theme_color_dark_entry_13">Zer tarî</string>
+  <string name="morphe_theme_color_dark_entry_14">Porteqalî tarî</string>
+  <string name="morphe_theme_color_dark_entry_15">Sor tarî</string>
+  <string name="morphe_theme_color_dark_custom_title">Paşxana tarî ya taybet</string>
+  <string name="morphe_theme_color_dark_custom_summary">Rengê paşxana temaya tarî danîn</string>
+  <string name="morphe_theme_color_entry_1">Xwerûya sepanê</string>
+  <string name="morphe_theme_color_entry_4">Material You (Bêalî)</string>
+  <string name="morphe_theme_color_entry_5">Material You (Seretayî)</string>
+  <string name="morphe_theme_color_entry_6">Material You (Duyem)</string>
+  <string name="morphe_theme_color_entry_7">Material You (Sêyem)</string>
+  <string name="morphe_theme_color_custom_entry">Taybet</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Daxazkirinê derve</string>
   <string name="morphe_external_downloader_name_title">Navê pakêta dakêşkerê</string>
@@ -62,7 +81,7 @@ Verast bike navê pakêtê rast e û sepan sazkirî ye"</string>
 Ger hûn bikarhênerê YouTube Premium nebin, ev mîheng dikare pêwîst nebe."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Tiştekî ji goşiyên klijentê neyê pêşbaz kirin</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Dibe ku birêveçûna vê naverokê kêmasiyên lêxistinê hebe.</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Bila veşêre: Spoof video streams > Îqneya VR-a Android</string>
   <string name="morphe_spoof_video_streams_client_type_title">Klijentê default</string>
@@ -130,9 +149,8 @@ Da ku teqezîya nêzîkê bikin, li jêr bidixin 'bidin pêşbaz'."</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">Têkeve rasterast heke proxy têk bibe</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Rekel kiradên ekranê tam</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">Bi ku vê taybetmendiyê bikar bîne, guhêrîna \'Hêrîşkirina hûrbînên vîdyoyê\' bi her kûliyê ji bilî \'Android Studio\' bike.</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Lînkên parvekirinê paqij bike</string>
   <string name="morphe_sanitize_sharing_links_summary">Parametreyên pirsîna şopandinê ji girêdên parvekirî têne çêkirin</string>
@@ -163,6 +181,23 @@ Lê belê, çalak kirina wê dê hin agahiyên bikarhêner wekî navnîşana IP-
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Dialoga hişyariya temaşevanân bidin der</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Ev rêbaza derbasbûna sînorkirina temenî nîn e. Tenê wê bixwe dinirîne</string>
+  <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">Pêşkêşkerê PoToken</string>
+  <string name="morphe_potoken_provider_screen_summary">Pêşkêşkerê PoToken saz bikin ji bo pêşîlêgirtina pirsgirêkên lîstinê</string>
+  <string name="morphe_external_potoken_provider_title">Pêşkêşkerê PoToken ê derveyî</string>
+  <string name="morphe_external_potoken_provider_summary">"Pirsgirêkên lîstinê bi karanîna minterek PoToken a derve çareser dike (Ezmûnî)
+
+Heke hûn bikarhênerek YouTube Premium in, dibe ku ev mîheng ne pêwîst be."</string>
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"Pirsgirêkên lîstinê bi karanîna çêkerek PoToken a derveyî çareser dike (Ezmûnî)
+
+Ji bo bikaranîna vê taybetmendiyê, neçalak bike 'sextekirina streamên vîdyoyê'"</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">Heke ew nexebite, hewl bidin ku MicroG bi zorê bigirin.</string>
+  <string name="morphe_external_potoken_provider_settings_summary">Mîhengên PotHelper vekin.</string>
+  <string name="morphe_external_potoken_provider_about_summary">"Ev taybetmendî niha di bin pêşveçûnê de ye û dibe ku nexebite
+
+Ji bo dakêşana PotHelper li vir bikirtînin."</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Guherîna guhertoya sepanê</string>
   <string name="morphe_spoof_app_version_summary">Serverê dixapînin ku hûn guhertoyek kevnêtir ê sepanê bikar tînin da ku taybetmendiyên berê yên navnîşê vegerînin</string>

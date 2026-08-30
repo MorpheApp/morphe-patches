@@ -22,6 +22,28 @@ Second \"item\" text"</string>
     <!-- layout.branding.baseCustomBrandingPatch -->
     <string name="morphe_custom_branding_name_title">App name</string>
 
+    <!-- layout.theme.baseThemePatch -->
+    <string name="morphe_theme_color_dark_title">Dark theme background</string>
+    <string name="morphe_theme_color_dark_entry_2">Pure black</string>
+    <string name="morphe_theme_color_dark_entry_3">Material You (Pure black)</string>
+    <string name="morphe_theme_color_dark_entry_8" translatable="false">Catppuccin (Mocha)</string>
+    <string name="morphe_theme_color_dark_entry_9">Classic YouTube</string>
+    <string name="morphe_theme_color_dark_entry_10">Dark pink</string>
+    <string name="morphe_theme_color_dark_entry_11">Dark blue</string>
+    <string name="morphe_theme_color_dark_entry_12">Dark green</string>
+    <string name="morphe_theme_color_dark_entry_13">Dark yellow</string>
+    <string name="morphe_theme_color_dark_entry_14">Dark orange</string>
+    <string name="morphe_theme_color_dark_entry_15">Dark red</string>
+    <string name="morphe_theme_color_dark_custom_title">Custom dark background</string>
+    <string name="morphe_theme_color_dark_custom_summary">Set the background color of the dark theme</string>
+
+    <string name="morphe_theme_color_entry_1">App default</string>
+    <string name="morphe_theme_color_entry_4">Material You (Neutral)</string>
+    <string name="morphe_theme_color_entry_5">Material You (Primary)</string>
+    <string name="morphe_theme_color_entry_6">Material You (Secondary)</string>
+    <string name="morphe_theme_color_entry_7">Material You (Tertiary)</string>
+    <string name="morphe_theme_color_custom_entry">Custom</string>
+
     <!-- interaction.downloads.downloadsPatch -->
     <string name="morphe_external_downloader_screen_title">External downloads</string>
     <string name="morphe_external_downloader_name_title">Downloader package name</string>
@@ -67,7 +89,7 @@ Verify the package name is correct and the app is installed"</string>
 If you are a YouTube Premium user, this setting may not be required"</string>
     <string name="morphe_spoof_video_streams_no_clients_toast">Could not fetch any client streams</string>
     <string name="morphe_spoof_video_streams_user_dialog_message">Turning off this setting may cause playback issues.</string>
-    <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+    <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
     <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Try enabling: Spoof video streams > Android VR sign in</string>
     <string name="morphe_spoof_video_streams_client_type_title">Default client</string>
@@ -143,9 +165,9 @@ To sign in, press continue below"</string>
     <!-- ad.hideFullscreenAdsPatch -->
     <string name="morphe_hide_fullscreen_ads_title">Hide fullscreen ads</string>
 
-    <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
-    <string name="morphe_force_original_audio_not_available">To use this feature, change \'Spoof video streams\' to any client except \'Android Studio\'</string>
+    <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+    <string name="morphe_force_original_audio_not_available">To use this feature, change \'Spoof video streams\' to any client except \'Android Studio\' and \'Android VR Downgraded\'</string>
 
     <!-- misc.privacy.sanitizeSharingLinksPatch -->
     <string name="morphe_sanitize_sharing_links_title">Sanitize sharing links</string>
@@ -181,6 +203,25 @@ However, enabling this will also log some user data such as your IP address."</s
     <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
     <string name="morphe_remove_viewer_discretion_dialog_title">Remove viewer discretion dialog</string>
     <string name="morphe_remove_viewer_discretion_dialog_summary">This does not bypass the age restriction. It just accepts it automatically</string>
+
+    <!-- misc.potoken.poTokenProviderPatch -->
+    <string name="morphe_potoken_provider_screen_title">PoToken provider</string>
+    <string name="morphe_potoken_provider_screen_summary">Configure PoToken provider to prevent playback issues</string>
+    <string name="morphe_external_potoken_provider_title">External PoToken provider</string>
+    <string name="morphe_external_potoken_provider_summary">"Fixes playback issues using an external PoToken minter (Experimental)
+
+If you are a YouTube Premium user, this setting may not be required"</string>
+    <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+    <string name="morphe_external_potoken_provider_unavailable_summary">"Fixes playback issues using an external PoToken minter (Experimental)
+
+To use this feature, turn off \'Spoof video streams\'"</string>
+    <string name="morphe_external_potoken_provider_user_dialog_message">If it does not work, try force-closing MicroG</string>
+    <string name="morphe_external_potoken_provider_settings_summary">Open PotHelper settings</string>
+    <string name="morphe_external_potoken_provider_about_title" translatable="false">PotHelper</string>
+    <string name="morphe_external_potoken_provider_about_summary">"This feature is currently under development and may not work
+
+Tap here to download PotHelper"</string>
 
     <!-- misc.spoof.appversion.spoofAppVersionPatch -->
     <string name="morphe_spoof_app_version_title">Spoof app version</string>

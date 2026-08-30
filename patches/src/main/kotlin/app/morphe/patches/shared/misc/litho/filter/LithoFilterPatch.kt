@@ -31,6 +31,7 @@ import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getReference
 import app.morphe.util.insertLiteralOverride
+import app.morphe.util.returnEarly
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -113,6 +114,7 @@ fun addLithoFilter(classDescriptor: String) {
 internal fun sharedLithoFilterPatch(
     hookNonNativeBuffer: () -> Boolean,
     overrideUpbFeatureFlag: () -> Boolean,
+    useLegacyLithoFiltering: () -> Boolean,
     block: BytecodePatchBuilder.() -> Unit,
 ): BytecodePatch = bytecodePatch(
     description = "Hooks the method which parses the bytes into a ComponentContext to filter components."
@@ -120,6 +122,8 @@ internal fun sharedLithoFilterPatch(
     block()
 
     execute {
+        LithoFilterLegacyMethodFingerprint.method.returnEarly(useLegacyLithoFiltering())
+
         // Remove dummy filter from extenion static field
         // and add the filters included during patching.
         LithoFilterFingerprint.let {

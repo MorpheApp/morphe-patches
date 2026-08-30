@@ -21,6 +21,24 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">सेटअप पूर्ण करण्यासाठी रीस्टार्ट करा</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">ॲपचे नाव</string>
+  <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">गडद थीमची पार्श्वभूमी</string>
+  <string name="morphe_theme_color_dark_entry_2">शुद्ध काळा</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You (शुद्ध काळा) ,\"key\":\"morphe_theme_color_dark_entry_3\",\"context\":\"morphe_theme_color_dark_entry_3\",\"maxLength\":null,\"tmSuggestions\":[],\"terms\":[]},{\"id\":30530,\"plurals\":\"\" ,\"text\":\"Material You (तटस्थ)\",\"key\":\"morphe_theme_color_entry_4\",\"context\":\"morphe_theme_color_entry_4\",\"maxLength\":null,\"tmSuggestions\":[],\"terms\":[]},{\"id\":30532,\"text\":\"Material You (प्राथमिक)\",\"key\":\"morphe_theme_color_entry_5\",\"context\":\"morphe_theme_color_entry_5\",\"maxLength\":null,\"tmSuggestions\":[],\"terms\":[]},{\"id\":30534,\"text\":\"Material You (दुय्यम)\",\"key\":\"morphe_theme_color_entry_6\",\"context\":\"morphe_theme_color_entry_6\",\"maxLength\":null,\"tmSuggestions\":[],\"terms\":[]},{\"id\":30536,\"text\":\"Material You (तृतीय)\",\"key\":\"morphe_theme_color_entry_7\",\"context\":\"morphe_theme_color_entry_7\",\"maxLength\":null,\"tmSuggestions\":[],\"terms\":[]},{\"id\":30538,\"text\":\"क्लासिक YouTube\",\"key\":\"morphe_theme_color_dark_entry_9\",\"context\":\"morphe_theme_color_dark_entry_9\",\"maxLength\":null,\"tmSuggestions\":[],\"terms\":[{\"source\":\"YouTube\",\"translatable\":false,\"translation\":\"YouTube\",\"partOfSpeech\":\"PROPN\"}]},{\"id\":30542,\"text\":\"गडद गुलाबी\",\"key\":\"morphe_theme_color_dark_entry_10\",\"context\":\"morphe_theme_color_dark_entry_10\",\"maxLength\":null,\"tmSuggestions\":[],\"terms\":[]},{\"id\":30544,\"text\":\"गडद निळा\",\"key\":\"morphe_theme_color_dark_entry_11\",\"context\":\"morphe_theme_color_dark_entry_11\",\"maxLength\":null,\"tmSuggestions\":[],\"terms\":[]},{\"id\":30546,\"text\":\"गडद हिरवा\",\"key\":\"morphe_theme_color_dark_entry_12\",\"context\":\"morphe_theme_color_dark_entry_12\",\"maxLength\":null,\"tmSuggestions\":[],\"terms\":[]},{\"id\":30548,\"text\":\"गडद पिवळा\",\"key\":\"morphe_theme_color_dark_entry_13\",\"context\":\"morphe_theme_color_dark_entry_13\",\"maxLength\":null,\"tmSuggestions\":[],\"terms\":[]},{\"id\":30550,\"text\":\"गडद नारिंगी\",\"key\":\"morphe_theme_color_dark_entry_14\",\"context\":\"morphe_theme_color_dark_entry_14\",\"maxLength\":null,\"tmSuggestions\":[],\"terms\":[]},{\"id\":30552,\"text\":\"गडद लाल\",\"key\":\"morphe_theme_color_dark_entry_15\",\"context\":\"morphe_theme_color_dark_entry_15\",\"maxLength\":null,\"tmSuggestions\":[],\"terms\":[]},{\"id\":30558,\"text\":\"सानुकूल\",\"key\":\"morphe_theme_color_dark_entry_16\",\"context\":\"morphe_theme_color_dark_entry_16\",\"maxLength\":null,\"tmSuggestions\":[],\"terms\":[]}]}```Here is the translated JSON array: ```json [{</string>
+  <string name="morphe_theme_color_dark_entry_9">क्लासिक YouTube</string>
+  <string name="morphe_theme_color_dark_entry_10">गडद गुलाबी</string>
+  <string name="morphe_theme_color_dark_entry_11">गडद निळा</string>
+  <string name="morphe_theme_color_dark_entry_12">गडद हिरवा</string>
+  <string name="morphe_theme_color_dark_entry_13">गडद पिवळा</string>
+  <string name="morphe_theme_color_dark_entry_14">गडद नारिंगी</string>
+  <string name="morphe_theme_color_dark_entry_15">गडद लाल</string>
+  <string name="morphe_theme_color_dark_custom_title">सानुकूल गडद पार्श्वभूमी</string>
+  <string name="morphe_theme_color_dark_custom_summary">गडद थीमची पार्श्वभूमी रंग सेट करा</string>
+  <string name="morphe_theme_color_entry_1">अॅप डीफॉल्ट</string>
+  <string name="morphe_theme_color_entry_4">मटेरियल यू (तटस्थ)</string>
+  <string name="morphe_theme_color_entry_5">मटेरियल यू (प्राथमिक)</string>
+  <string name="morphe_theme_color_entry_6">मटेरियल यू (दुय्यम)</string>
+  <string name="morphe_theme_color_entry_7">मटेरियल यू (तृतीयक)</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">बाह्य डाउनलोड्स</string>
   <string name="morphe_external_downloader_name_title">डाउनलोडर ॲपचे पॅकेज नाव</string>
@@ -61,7 +79,7 @@ Second \"item\" text"</string>
 जर तुम्ही YouTube Premium वापरकर्ता असाल, तर ही सेटिंग आवश्यक नसेल."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">कोणत्याही क्लायंट स्ट्रीम्स मिळवता आल्या नाहीत</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">हे सेटिंग बंद केल्यास प्लेबॅक समस्या उद्भवू शकतात.</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">\'Android VR साइन इन\' सक्षम करण्याचा प्रयत्न करा &gt;</string>
   <string name="morphe_spoof_video_streams_client_type_title">डीफॉल्ट क्लायंट</string>
@@ -131,9 +149,8 @@ Second \"item\" text"</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">प्रॉक्सी अयशस्वी झाल्यास थेट कनेक्ट करा</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">पूर्ण स्क्रीन जाहिराती लपवा</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">हे वैशिष्ट्य वापरण्यासाठी, \'Spoof video streams\' ला \'Android Studio\' वगळता कोणत्याही क्लायंटमध्ये बदला.</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">सामायिक लिंक संपादित करा</string>
   <string name="morphe_sanitize_sharing_links_summary">सामायिक लिंक्समधून ट्रॅकिंग क्वेरी पॅरामीटर्स काढून टाकते</string>
@@ -164,6 +181,12 @@ Second \"item\" text"</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">व्ह्यूअर डिसcretion संवाद काढा</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">हे वय निर्बंध बायपास करत नाही. हे फक्त ते आपोआप स्वीकारते</string>
+  <!-- misc.potoken.poTokenProviderPatch -->
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"बाह्य PoToken मिंटर वापरून प्लेबॅक समस्या दुरुस्त करते (प्रायोगिक)
+
+ही सुविधा वापरण्यासाठी, 'व्हिडिओ स्ट्रीम्स स्पूफ' बंद करा"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">ॲपची आवृत्ती बदलणे</string>
   <string name="morphe_spoof_app_version_summary">सर्व्हरला जुन्या ॲप आवृत्ती वापरत आहात असे दर्शवून जुन्या UI वैशिष्ट्यांची पुनर्संचयित करणे</string>

@@ -1,4 +1,16 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/2524
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.music.patches.theme;
+
+import androidx.annotation.ColorInt;
 
 import app.morphe.extension.shared.theme.BaseThemePatch;
 
@@ -21,7 +33,8 @@ public class ThemePatch extends BaseThemePatch {
      * @param originalValue The original color value.
      * @return The new or original color value.
      */
-    public static int getValue(int originalValue) {
+    @ColorInt
+    public static int getValue(@ColorInt int originalValue) {
         return processColorValue(originalValue, DARK_VALUES, null);
     }
 }

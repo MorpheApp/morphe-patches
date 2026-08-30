@@ -107,13 +107,21 @@ Second \"item\" text"</string>
   <string name="morphe_debug_logs_clear_toast">Логовете за отстраняване на грешки бяха изчистени</string>
   <string name="morphe_debug_feature_flags_manager_title">Мениджър на флагове на функции</string>
   <string name="morphe_debug_feature_flags_manager_summary">Управление на флагове на логически функции</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Активни индикатори за функции (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Блокирани индикатори за функции (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Търсене на флагове за функции…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Auto</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_action_remove">Премахване</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Индикаторите за функции бяха запазени</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Индикаторите за функции бяха нулирани</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Индикаторите за функции бяха копирани в клипборда</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Рестартирайте приложението, за да използвате тази настройка</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Начало</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Отвори настройките на MicroG</string>

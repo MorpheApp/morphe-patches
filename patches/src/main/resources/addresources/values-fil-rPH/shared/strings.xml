@@ -107,13 +107,22 @@ Hindi ka aabisuhan ng anumang mga hindi inaasahang pangyayari."</string>
   <string name="morphe_debug_logs_clear_toast">Nalinisan ang mga log ng debug</string>
   <string name="morphe_debug_feature_flags_manager_title">Tagapamahala ng mga feature flag</string>
   <string name="morphe_debug_feature_flags_manager_summary">Pamahalaan ang boolean ng mga feature flag</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Mga aktibong flag ng feature (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Mga nakaharang na flag ng feature (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Maghanap ng mga feature flag…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Naka-off</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Naka-on</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Alisin</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Na-save ang mga flag ng feature</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Na-reset ang mga flag ng feature</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Kinopya ang mga flag sa clipboard</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">I-restart ang app upang gamitin ang setting na ito</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Simula</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Buksan ang mga pagpipilian sa MicroG</string>

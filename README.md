@@ -35,14 +35,14 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v1.39.1](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.39.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;136 patches total
+> **[v1.41.0-dev.7](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.41.0-dev.7)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;143 patches total
 <details>
-<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;75 patches</summary>
+<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;80 patches</summary>
 <br>
 
 **🎯 Supported versions:**
 
-| 🧪&nbsp;21.32.2 | 🧪&nbsp;21.31.523 | 🧪&nbsp;21.28.204 | 21.04.223 | 20.51.39 | 20.31.42 | 20.21.37 |
+| 🧪&nbsp;21.35.442 | 🧪&nbsp;21.34.243 | 🧪&nbsp;21.28.208 | 21.04.223 | 20.51.39 | 20.31.42 | 20.21.37 |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -64,18 +64,21 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Disable QUIC protocol](#disable-quic-protocol) | Adds an option to disable QUIC (Quick UDP Internet Connections) network protocol. |  |
 | [Disable Shorts resuming on startup](#disable-shorts-resuming-on-startup) | Adds an option to disable Shorts from resuming on app startup when Shorts were last being watched. |  |
 | [Disable double tap actions](#disable-double-tap-actions) | Adds an option to disable player double tap gestures. |  |
-| [Disable fullscreen gestures](#disable-fullscreen-gestures) | Adds options to selectively disable gestures for entering and exiting fullscreen mode. |  |
+| [Disable fullscreen gestures](#disable-fullscreen-gestures) | Adds options to selectively disable gestures for entering and exiting fullscreen mode, and to disable pinch-to-zoom. |  |
 | [Disable haptic feedback](#disable-haptic-feedback) | Adds an option to disable haptic feedback in the player for various actions. |  |
 | [Disable layout updates](#disable-layout-updates) | Adds an option to disable server side layout updates and use an older UI. |  |
 | [Disable player popup panels](#disable-player-popup-panels) | Adds an option to disable panels (such as live chat) from opening automatically. |  |
+| [Disable playlist autoplay](#disable-playlist-autoplay) | Adds an option to stop a playlist from automatically advancing to the next video. |  |
 | [Disable rolling number animations](#disable-rolling-number-animations) | Adds an option to disable rolling number animations of video view count, user likes, and upload time. |  |
+| [Disable scrolling speed limit](#disable-scrolling-speed-limit) | Adds an option to remove limits of how fast the home and subscription feed can be scrolled. |  |
 | [Disable sign in to TV popup](#disable-sign-in-to-tv-popup) | Adds options to disable the popups asking to sign into or connect to a TV on the same local network. |  |
-| [Disable video codecs](#disable-video-codecs) | Adds options to disable HDR and VP9 codecs. |  |
+| [Disable video codecs](#disable-video-codecs) | Adds options to disable or force HDR, and to disable VP9 codecs. |  |
 | [Double tap to seek](#double-tap-to-seek) | Adds additional double-tap to seek values to the YouTube settings menu. |  |
 | [Downloads](#downloads) | Adds support to download videos with an external downloader app using the in-app download button or a video player action button. |  |
 | [Enable debugging](#enable-debugging) | Adds options for debugging and exporting Morphe logs to the clipboard. |  |
 | [Exit fullscreen mode](#exit-fullscreen-mode) | Adds options to automatically exit fullscreen mode when a video reaches the end. |  |
 | [Force original audio](#force-original-audio) | Adds an option to always use the original audio track. |  |
+| [Fullscreen video scale](#fullscreen-video-scale) | Adds options to stretch or zoom videos to fill the screen in fullscreen mode. |  |
 | [GmsCore support](#gmscore-support) | Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services. |  |
 | [Hide Shorts components](#hide-shorts-components) | Adds options to hide components related to Shorts. | • Hide Shorts app shortcut<br>• Hide Shorts widget |
 | [Hide ads](#hide-ads) | Adds options to hide general ads, Premium promotions and video ads. |  |
@@ -93,6 +96,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Loop video](#loop-video) | Adds an option to loop videos and display loop video button in the video player. |  |
 | [Media notification controls](#media-notification-controls) | Adds options to disable the seekbar and previous/next buttons in the media notification and headphone controls. |  |
 | [Miniplayer](#miniplayer) | Adds options to change the in-app minimized player. Patching 21.28.206 and lower has more miniplayer types to choose from. |  |
+| [Mute button](#mute-button) | Adds an option to show a player button that mutes the video audio. |  |
 | [Navigation bar](#navigation-bar) | Adds options to hide and change the bottom navigation bar (such as the Shorts button)  and the upper navigation toolbar. |  |
 | [Network proxy](#network-proxy) | Adds settings to route supported network requests through an HTTP or HTTPS proxy. |  |
 | [Open Shorts in regular player](#open-shorts-in-regular-player) | Adds options to open Shorts in the regular video player. |  |
@@ -104,12 +108,13 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Play all](#play-all) | Adds an option to play all the videos from a channel and to display play all button in the video player. |  |
 | [Playback in feeds](#playback-in-feeds) | Adds the 'Playback in feeds' setting of YouTube to the Morphe settings, where it is always available even if YouTube hides it. |  |
 | [Playback speed](#playback-speed) | Adds options to customize available playback speeds, set a default playback speed, and show a speed dialog button in the video player. |  |
+| [PoToken provider](#potoken-provider) | Adds option to get PoToken using an external PoToken minter app. |  |
 | [Reload video](#reload-video) | Adds an option to display reload video button in the video player. |  |
 | [Remove background playback restrictions](#remove-background-playback-restrictions) | Removes restrictions on background playback, including playing kids videos in the background. |  |
 | [Remove viewer discretion dialog](#remove-viewer-discretion-dialog) | Adds an option to remove the dialog that appears when opening a video that has been age-restricted by accepting it automatically. This does not bypass the age restriction. |  |
 | [Return YouTube Dislike](#return-youtube-dislike) | Adds an option to show the dislike count of videos with Return YouTube Dislike. |  |
 | [Sanitize sharing links](#sanitize-sharing-links) | Removes the tracking query parameters from shared links. |  |
-| [Save to watch later](#save-to-watch-later) | Adds an option to display save to watch later button in the video player. |  |
+| [Save to Watch later](#save-to-watch-later) | Adds an option to display save to Watch later button in the video player. |  |
 | [Seekbar](#seekbar) | Adds options to show old seekbar thumbnails, disable precise seeking when swiping up on the seekbar, slide to seek instead of playing at 2x speed when pressing and holding, tapping the player seekbar to seek, hiding the video player seekbar, enabling seeking in livestreams, and expanding the livestream DVR duration. |  |
 | [Settings menu filter](#settings-menu-filter) | Adds an option to hide items on the standard YouTube settings screen by their visible name. |  |
 | [Shorts autoplay](#shorts-autoplay) | Adds options to automatically play the next Short. |  |
@@ -118,7 +123,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Spoof device dimensions](#spoof-device-dimensions) | Adds an option to spoof the device dimensions which can unlock higher video qualities. |  |
 | [Spoof video streams](#spoof-video-streams) | Adds options to spoof the client video streams to fix playback. |  |
 | [Swipe controls](#swipe-controls) | Adds options to enable and configure volume and brightness swipe controls. |  |
-| [Theme](#theme) | Adds options for theming and applies a custom background theme (dark background theme defaults to pure black). | • Dark theme background color<br>• Light theme background color |
+| [Theme](#theme) | Adds options for theming, and settings to change the app foreground and background colors. | • Dark theme color<br>• Light theme color |
 | [Video quality](#video-quality) | Adds options to set default video qualities and always use the advanced video quality menu. |  |
 | [Voice over translation](#voice-over-translation) | Adds additional voice over languages using text-to-speech synchronized to the video playback. |  |
 | [Wide search bar](#wide-search-bar) | Adds a wide search bar to the top of the home and subscription feed. |  |
@@ -126,12 +131,12 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 </details>
 
 <details>
-<summary>📦 YouTube Music&nbsp;&nbsp;•&nbsp;&nbsp;39 patches</summary>
+<summary>📦 YouTube Music&nbsp;&nbsp;•&nbsp;&nbsp;41 patches</summary>
 <br>
 
 **🎯 Supported versions:**
 
-| 🧪&nbsp;9.30.52 | 🧪&nbsp;9.29.54 | 🧪&nbsp;9.28.51 | 9.15.51 |
+| 🧪&nbsp;9.34.52 | 🧪&nbsp;9.33.52 | 🧪&nbsp;9.32.51 | 9.15.51 |
 | :---: | :---: | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -162,6 +167,8 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Miniplayer previous and next buttons](#miniplayer-previous-and-next-buttons) | Adds options to show previous and next track buttons in the miniplayer. |  |
 | [Navigation bar](#navigation-bar) | Adds options to hide navigation bar, labels and buttons. |  |
 | [Network proxy](#network-proxy) | Adds settings to route supported network requests through an HTTP or HTTPS proxy. |  |
+| [Play albums songs](#play-albums-songs) | Adds an option to play the song version of album tracks instead of music videos. |  |
+| [PoToken provider](#potoken-provider) | Adds option to get PoToken using an external PoToken minter app. |  |
 | [Remember repeat state](#remember-repeat-state) | Adds an option to remember the repeat state when playing a new track or playlist. |  |
 | [Remember shuffle state](#remember-shuffle-state) | Adds an option to remember the shuffle state when playing a new track or playlist. |  |
 | [Remove background playback restrictions](#remove-background-playback-restrictions) | Removes restrictions on background playback, including playing kids videos in the background. |  |
@@ -173,7 +180,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [SponsorBlock](#sponsorblock) | Adds options to enable and configure SponsorBlock, which can skip non-music segments. |  |
 | [Spoof app version](#spoof-app-version) | Adds an option to trick the app into thinking you are running an older version. |  |
 | [Spoof video streams](#spoof-video-streams) | Adds options to spoof the client video streams to fix playback. |  |
-| [Theme](#theme) | Adds options for theming and applies a custom background theme (dark background theme defaults to pure black). | • Dark theme background color |
+| [Theme](#theme) | Adds options for theming, and settings to change the app foreground and background colors. | • Dark theme color |
 | [Third-party lyrics](#third-party-lyrics) | Adds an option to show synced lyrics from LRCLIB or KuGou in the lyrics panel. |  |
 
 </details>
@@ -184,7 +191,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 
 **🎯 Supported versions:**
 
-| 🧪&nbsp;2026.31.1 | 🧪&nbsp;2026.30.0 | 🧪&nbsp;2026.24.0 | 2026.14.0 | 2026.04.0 |
+| 🧪&nbsp;2026.35.0 | 🧪&nbsp;2026.34.0 | 🧪&nbsp;2026.24.0 | 2026.14.0 | 2026.04.0 |
 | :---: | :---: | :---: | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -217,8 +224,8 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
 | [Change installer source](#change-installer-source) | Spoofs the installer source so the app appears to be installed from an app store. | • Spoofed package installer name |
-| [Clone app](#clone-app) | Changes the app package name to allow installing the same app multiple times. By default ".morphe" is appended the package name. Each cloned install must use a unique package name. Cloning does not work with all apps and using this patch may cause app crashes or other unexpected behavior. | • Package name<br>• Update permissions<br>• Update providers |
-| [Disable Play Store updates](#disable-play-store-updates) | Disables Play Store updates by setting the version code to the maximum allowed. This patch does not work if the app is installed by mounting and may cause unexpected issues with some apps. |  |
+| [Clone app](#clone-app) | Changes the app package name to allow installing the same app multiple times. By default ".morphe" is appended to the package name. Each cloned install must use a unique package name. Cloning does not work with all apps and using this patch may cause app crashes or other unexpected behavior. | • Package name<br>• Update permissions<br>• Update providers |
+| [Disable Play Store updates](#disable-play-store-updates) | Disables Play Store updates by setting the version code to the maximum allowed. This patch may cause unexpected issues with some apps and does not work if the app is installed by root mounting |  |
 | [Override certificate pinning](#override-certificate-pinning) | Overrides certificate pinning, allowing to inspect traffic via a proxy. |  |
 
 </details>

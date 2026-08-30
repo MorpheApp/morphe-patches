@@ -107,9 +107,18 @@ U wordt niet op de hoogte gesteld van onverwachte gebeurtenissen."</string>
   <string name="morphe_debug_logs_clear_toast">Debuglogboeken gewist</string>
   <string name="morphe_debug_feature_flags_manager_title">Functievlaggen Manager</string>
   <string name="morphe_debug_feature_flags_manager_summary">Beheer booleaanse functievlaggen</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Actieve functie-flags (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Geblokkeerde functie-flags (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Zoek in functie-vlaggen…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Automatisch</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Uit</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Aan</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Verwijderen</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Functie-flags opgeslagen</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Functie-flags gereset</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Functie-flags gekopieerd naar klembord</string>

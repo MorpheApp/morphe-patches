@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.music.layout.buttons
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
@@ -13,6 +23,7 @@ import app.morphe.patches.all.misc.resources.getResourceId
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.indexOfFirstInstructionOrThrow
+import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.indexOfFirstLiteralInstructionOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
@@ -46,22 +57,34 @@ val hideButtonsPatch = bytecodePatch(
         )
 
         // Region for hide history button in the top bar.
-        arrayOf(
-            HistoryMenuItemFingerprint to 1,
-            HistoryMenuItemOfflineTabFingerprint to 2
-        ).forEach { (fingerprint, matchIndex) ->
-            fingerprint.method.apply {
-                val targetIndex = fingerprint.instructionMatches[matchIndex].index
-                val targetRegister = getInstruction<FiveRegisterInstruction>(targetIndex).registerD
+        HistoryMenuItemFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches[1].index
+                val register = getInstruction<FiveRegisterInstruction>(index).registerD
 
                 addInstructions(
-                    targetIndex,
+                    index,
                     """
-                        invoke-static { v$targetRegister }, $EXTENSION_CLASS->hideHistoryButton(Z)Z
-                        move-result v$targetRegister
+                        invoke-static { v$register }, $EXTENSION_CLASS->hideHistoryButton(Z)Z
+                        move-result v$register
                     """
                 )
             }
+        }
+
+        HistoryMenuItemOfflineTabFingerprint.method.apply {
+            val index = indexOfFirstInstructionReversedOrThrow(
+                HistoryMenuItemOfflineTabFingerprint.filters!!.last()
+            )
+            val register = getInstruction<FiveRegisterInstruction>(index).registerD
+
+            addInstructions(
+                index,
+                """
+                    invoke-static { v$register }, $EXTENSION_CLASS->hideHistoryButton(Z)Z
+                    move-result v$register
+                """
+            )
         }
 
         // Region for hide cast, search and notification buttons in the top bar.

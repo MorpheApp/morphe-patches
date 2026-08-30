@@ -26,6 +26,7 @@ import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.preference.ColorPickerPreference;
 import app.morphe.extension.shared.sponsorblock.SponsorBlockApi;
 import app.morphe.extension.shared.sponsorblock.SponsorBlockHelpers;
+import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.ColorDot;
 import app.morphe.extension.shared.ui.Dim;
 
@@ -161,7 +162,7 @@ public class SegmentCategoryPreference extends ColorPickerPreference {
 
         // Force explicit foreground color: dialog children do not always inherit the host
         // settings theme's text color, leaving labels unreadable on dark themes.
-        final int foregroundColor = Utils.getAppForegroundColor();
+        final int foregroundColor = ThemeUtils.getAppForegroundColor();
         for (int i = 0; i < dialogBehaviors.length; i++) {
             RadioButton radioButton = new RadioButton(context);
             radioButton.setText(dialogBehaviors[i].description.toString());

@@ -33,7 +33,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_success">Importate %d impostazioni</string>
   <string name="morphe_settings_import_failure_parse">Importazione non riuscita: %s</string>
   <string name="morphe_settings_search_hint">Cerca impostazioni</string>
-  <string name="morphe_settings_search_no_results_title">Nessun risultato trovato per \".%s\"</string>
+  <string name="morphe_settings_search_no_results_title">Nessun risultato trovato per \"%s\"</string>
   <string name="morphe_settings_search_no_results_summary">Prova con un\'altra parola chiave</string>
   <string name="morphe_settings_search_recent_searches">Ricerche recenti</string>
   <string name="morphe_settings_search_remove_message">Rimuovere dalla cronologia di ricerca?</string>
@@ -107,13 +107,21 @@ Non sarai notificato di eventi imprevisti."</string>
   <string name="morphe_debug_logs_clear_toast">Registri di debug cancellati</string>
   <string name="morphe_debug_feature_flags_manager_title">Gestore dei flag di funzionalità</string>
   <string name="morphe_debug_feature_flags_manager_summary">Gestisci i flag booleani delle funzionalità</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Flag di funzionalità attivi (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Flag di funzionalità bloccati (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Cerca flag di funzionalità…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Automatico</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_action_remove">Rimuovi</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Flag di funzionalità salvati</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Flag di funzionalità ripristinati</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Flag di funzionalità copiati negli appunti</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Riavvia l\'app per utilizzare questa impostazione</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Inizio</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Apri le impostazioni di MicroG</string>

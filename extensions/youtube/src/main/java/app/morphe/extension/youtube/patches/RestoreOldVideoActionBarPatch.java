@@ -6,6 +6,8 @@
  */
 package app.morphe.extension.youtube.patches;
 
+import android.net.Uri;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,6 +17,15 @@ import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
 public class RestoreOldVideoActionBarPatch {
+
+    /**
+     * Interface to use obfuscated methods.
+     */
+    public interface ConfigInfoInterface {
+        // Methods are added during patching.
+        void patch_setColdConfigData(String coldConfigData);
+        void patch_setColdHashData(String coldHashData);
+    }
 
     private static final boolean FIX_VIDEO_ACTION_BAR = Settings.RESTORE_OLD_VIDEO_ACTION_BAR.get()
             // If 'Disable layout updates' is enabled, fix is not required.
@@ -29,14 +40,12 @@ public class RestoreOldVideoActionBarPatch {
      * The recent wide rollout of the modern video action bar is also one instance where the server-side kill switch was activated.
      */
     private static final String COLD_CONFIG_DATA_HEADER = "X-Youtube-Cold-Config-Data";
+    private static final String COLD_HASH_DATA_HEADER = "X-Youtube-Cold-Hash-Data";
     private static final String VISITOR_ID_HEADER = "X-Goog-Visitor-Id";
     private static boolean needFetch = true;
 
-    /**
-     * Injection point.
-     */
-    public static void fetchRequest(String url, Map<String, String> requestHeaders) {
-        if (FIX_VIDEO_ACTION_BAR && Settings.COLD_CONFIG_DATA.isSetToDefault()) {
+    private static void fetchRequestIfNeeded(String url, Map<String, String> requestHeaders) {
+        if (Settings.INNERTUBE_COLD_CONFIG_DATA.isSetToDefault() || Settings.INNERTUBE_COLD_HASH_DATA.isSetToDefault()) {
             if (needFetch) {
                 if (requestHeaders != null)  {
                     String visitorId = requestHeaders.get(VISITOR_ID_HEADER);
@@ -50,16 +59,7 @@ public class RestoreOldVideoActionBarPatch {
                         }
 
                         needFetch = false;
-                        ConfigRequest.clear();
                         ConfigRequest.fetchRequest(minHeaders);
-                    }
-                }
-            } else {
-                var request = ConfigRequest.getRequest();
-                if (request != null) {
-                    String newColdConfigData = request.getConfig();
-                    if (Utils.isNotEmpty(newColdConfigData)) {
-                        Settings.COLD_CONFIG_DATA.save(newColdConfigData);
                     }
                 }
             }
@@ -71,41 +71,64 @@ public class RestoreOldVideoActionBarPatch {
     /**
      * Injection point.
      */
-    public static String fixVideoActionBar(String key, String value) {
-        if (FIX_VIDEO_ACTION_BAR && COLD_CONFIG_DATA_HEADER.equals(key)) {
-            String coldConfigData = Settings.COLD_CONFIG_DATA.get();
-            if (Utils.isNotEmpty(coldConfigData)) {
-                return coldConfigData;
+    public static Map<String, String> fixVideoActionBar(String url, Map<String, String> requestHeaders) {
+        if (FIX_VIDEO_ACTION_BAR && url != null) {
+            fetchRequestIfNeeded(url, requestHeaders);
+
+            Uri uri = Uri.parse(url);
+            String path = uri.getPath();
+            if (path != null && path.contains("next") && requestHeaders != null) {
+                if (requestHeaders.get(COLD_CONFIG_DATA_HEADER) != null) {
+                    String coldConfigData = Settings.INNERTUBE_COLD_CONFIG_DATA.get();
+                    if (Utils.isNotEmpty(coldConfigData)) {
+                        requestHeaders.put(COLD_CONFIG_DATA_HEADER, coldConfigData);
+                    }
+                }
+                if (requestHeaders.get(COLD_HASH_DATA_HEADER) != null) {
+                    String coldHashData = Settings.INNERTUBE_COLD_HASH_DATA.get();
+                    if (Utils.isNotEmpty(coldHashData)) {
+                        requestHeaders.put(COLD_HASH_DATA_HEADER, coldHashData);
+                    }
+                }
             }
         }
 
-        return value;
+        return requestHeaders;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void fixVideoActionBar(ConfigInfoInterface configInfo) {
+        if (FIX_VIDEO_ACTION_BAR && configInfo != null) {
+            String coldConfigData = Settings.INNERTUBE_COLD_CONFIG_DATA.get();
+            if (Utils.isNotEmpty(coldConfigData)) {
+                configInfo.patch_setColdConfigData(coldConfigData);
+            }
+            String coldHashData = Settings.INNERTUBE_COLD_HASH_DATA.get();
+            if (Utils.isNotEmpty(coldHashData)) {
+                configInfo.patch_setColdHashData(coldHashData);
+            }
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static String getVideoActionBarAppVersionOverride(String original) {
+        return FIX_VIDEO_ACTION_BAR
+                ? "20.13.41"
+                : original;
     }
 
     /**
      * Injection point.
      */
     public static boolean fixRelatedVideoOverlay(boolean original) {
-        if (FIX_VIDEO_ACTION_BAR && !Settings.COLD_CONFIG_DATA.isSetToDefault()) {
+        if (FIX_VIDEO_ACTION_BAR && !Settings.INNERTUBE_COLD_CONFIG_DATA.isSetToDefault() && !Settings.INNERTUBE_COLD_HASH_DATA.isSetToDefault()) {
             return false;
         }
 
         return original;
-    }
-
-    /**
-     * Injection point.
-     * Turns off a feature flag that interferes with patching operations.
-     */
-    public static boolean useMediaFetchHotConfigReplacement(boolean original) {
-        return !FIX_VIDEO_ACTION_BAR && original;
-    }
-
-    /**
-     * Injection point.
-     * Turns off a feature flag that interferes with patching operations.
-     */
-    public static boolean useMediaSessionFeatureFlag(boolean original) {
-        return !FIX_VIDEO_ACTION_BAR && original;
     }
 }

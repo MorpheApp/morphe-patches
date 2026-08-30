@@ -124,7 +124,7 @@ val overrideCertificatePinningPatch = resourcePatch(
                             </trust-anchors>
                         </debug-overrides>
                     </network-security-config>
-                    """.trimIndentMultiline(),
+                    """.trimIndentMultiline() // Must trim indent.
                 )
             }
         }

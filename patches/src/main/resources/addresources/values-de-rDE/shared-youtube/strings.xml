@@ -21,6 +21,25 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Starte die App neu, um die Einrichtung abzuschließen</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">App-Name</string>
+  <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">Hintergrund des dunklen Designs</string>
+  <string name="morphe_theme_color_dark_entry_2">Reines Schwarz</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You (Tiefschwarz)</string>
+  <string name="morphe_theme_color_dark_entry_9">Klassisches YouTube</string>
+  <string name="morphe_theme_color_dark_entry_10">Dunkelrosa</string>
+  <string name="morphe_theme_color_dark_entry_11">Dunkelblau</string>
+  <string name="morphe_theme_color_dark_entry_12">Dunkelgrün</string>
+  <string name="morphe_theme_color_dark_entry_13">Dunkelgelb</string>
+  <string name="morphe_theme_color_dark_entry_14">Dunkelorange</string>
+  <string name="morphe_theme_color_dark_entry_15">Dunkelrot</string>
+  <string name="morphe_theme_color_dark_custom_title">Benutzerdefinierter dunkler Hintergrund</string>
+  <string name="morphe_theme_color_dark_custom_summary">Legt die Hintergrundfarbe des dunklen Designs fest</string>
+  <string name="morphe_theme_color_entry_1">App-Standard</string>
+  <string name="morphe_theme_color_entry_4">Material You (Neutral)</string>
+  <string name="morphe_theme_color_entry_5">Material You (Primär)</string>
+  <string name="morphe_theme_color_entry_6">Material You (Sekundär)</string>
+  <string name="morphe_theme_color_entry_7">Material You (Tertiär)</string>
+  <string name="morphe_theme_color_custom_entry">Benutzerdefiniert</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Externe Downloads</string>
   <string name="morphe_external_downloader_name_title">Paketname des Downloaders</string>
@@ -62,7 +81,7 @@ Second \"item\" text"</string>
 Als Nutzer von YouTube Premium ist diese Einstellung möglicherweise nicht erforderlich."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Es konnten keine Client-Streams abgerufen werden</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Das Deaktivieren dieser Einstellung kann Wiedergabeprobleme verursachen.</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Versuch, dies zu aktivieren: „Video-Streams spoofen“ &gt; Android VR Anmeldung</string>
   <string name="morphe_spoof_video_streams_client_type_title">Standard-Client</string>
@@ -132,9 +151,9 @@ Um sich anzumelden, drücken Sie unten auf \"Weiter\""</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">Direkt verbinden, wenn der Proxy fehlschlägt</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Vollbild-Werbung ausblenden</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">Um diese Funktion zu nutzen, ändere \"Video-Streams fälschen\" auf einen beliebigen Client außer Android Studio\'</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">Um diese Funktion zu nutzen, ändere \"Video-Streams fälschen\" auf einen beliebigen Client außer \"Android Studio\" und \"Android VR Downgraded\".</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Freigabelinks bereinigen</string>
   <string name="morphe_sanitize_sharing_links_summary">Entfernt Tracking-Parameter aus geteilten Links</string>
@@ -165,6 +184,23 @@ Allerdings werden dabei auch einige Nutzerdaten protokolliert, zum Beispiel dein
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Hinweis zur Altersfreigabe entfernen</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Dies umgeht die Altersbeschränkung nicht. Es akzeptiert sie nur automatisch</string>
+  <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">PoToken-Anbieter</string>
+  <string name="morphe_potoken_provider_screen_summary">PoToken-Anbieter konfigurieren, um Wiedergabeprobleme zu verhindern</string>
+  <string name="morphe_external_potoken_provider_title">Externer PoToken-Anbieter</string>
+  <string name="morphe_external_potoken_provider_summary">"Behebt Wiedergabeprobleme mit einem externen PoToken-Minter (Experimentell)
+
+Wenn du ein YouTube-Premium-Nutzer bist, ist diese Einstellung möglicherweise nicht erforderlich."</string>
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"Behebt Wiedergabeprobleme mit einem externen PoToken-Minter (Experimentell)
+
+Um diese Funktion zu nutzen, deaktiviere 'Video-Streams spoofen'.originalText"</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">Wenn es nicht funktioniert, versuche, MicroG zwangsweise zu beenden.</string>
+  <string name="morphe_external_potoken_provider_settings_summary">Öffne die PotHelper-Einstellungen.</string>
+  <string name="morphe_external_potoken_provider_about_summary">"Diese Funktion befindet sich derzeit in der Entwicklung und funktioniert möglicherweise nicht
+
+Tippe hier, um PotHelper herunterzuladen."</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">App-Version spoofen</string>
   <string name="morphe_spoof_app_version_summary">Täuscht dem Server eine ältere App-Version vor, um ältere UI-Funktionen wiederherzustellen</string>

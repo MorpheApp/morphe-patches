@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.youtube.misc.playercontrols
 
 import app.morphe.patcher.Fingerprint
@@ -26,7 +33,13 @@ internal object PlayerControlsVisibilityEntityModelFingerprint : Fingerprint(
     )
 )
 
- internal object PlayerTopControlsInflateFingerprint : Fingerprint(
+internal object ModernPlayerTopControlsFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45750838L)
+    )
+)
+
+internal object PlayerTopControlsInflateFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf(),
@@ -84,5 +97,24 @@ internal object PlayerControlsFullscreenLargeButtonsFeatureFlagFingerprint : Fin
 internal object PlayerControlsButtonStrokeFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
         literal(45713296)
+    )
+)
+
+internal object PlayerControlsModernAccessibilityFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45757309) // Not completely clear what this flag does.
+    )
+)
+
+internal object PlayerCommentTeaserFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45771730)
+    )
+)
+
+
+internal object RecycleViewScrollingFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45763727)
     )
 )

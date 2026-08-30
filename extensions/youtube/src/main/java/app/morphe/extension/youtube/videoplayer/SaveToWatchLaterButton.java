@@ -24,6 +24,13 @@ import app.morphe.extension.youtube.settings.Settings;
 @SuppressWarnings("unused")
 public class SaveToWatchLaterButton {
 
+    public static final int saveToWatchLaterResourceId =
+            ResourceUtils.getIdentifier(ResourceType.DRAWABLE,
+                    LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS
+                            ? "yt_outline_list_add_black_24"
+                            : "yt_outline_experimental_playlist_add_vd_theme_24"
+            );
+
     static {
         if (Settings.SAVE_TO_WATCH_LATER_BUTTON.get()) {
             LegacyPlayerControlButton.incrementUpperButtonCount();
@@ -52,7 +59,7 @@ public class SaveToWatchLaterButton {
                     }
                     PlaylistPatch.prepareDialogBuilder(controls.getContext(), VideoInformation.getVideoId());
                 } else {
-                    SaveToWatchLaterPatch.saveVideo();
+                    SaveToWatchLaterPatch.saveVideo(VideoInformation.getVideoId());
                 }
                 return null;
             };
@@ -71,11 +78,7 @@ public class SaveToWatchLaterButton {
             );
 
             if (swapSaveAndQueue) {
-                instance.setIcon(ResourceUtils.getIdentifier(ResourceType.DRAWABLE,
-                        LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS
-                                ? "yt_outline_list_add_black_24"
-                                : "yt_outline_experimental_playlist_add_vd_theme_24"
-                ));
+                instance.setIcon(saveToWatchLaterResourceId);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "initialize failure", ex);

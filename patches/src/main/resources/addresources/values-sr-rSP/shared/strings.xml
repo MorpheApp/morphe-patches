@@ -107,13 +107,21 @@ Second \"item\" text"</string>
   <string name="morphe_debug_logs_clear_toast">Лог дебјуговања очишћен</string>
   <string name="morphe_debug_feature_flags_manager_title">Manager ознака функција</string>
   <string name="morphe_debug_feature_flags_manager_summary">Управљај буловским ознакама функција</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Активне ознаке функција (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Блокиране ознаке функција (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Претражи ознаке функција…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Аутоматски</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_action_remove">Уклони</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Ознаке функција сачуване</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Ознаке функција ресетовале</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Ознаке функција копиране у оставу</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Поново покрени апликацију да бисте користили ову поставку</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Početak</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Otvorite postavke MicroG</string>

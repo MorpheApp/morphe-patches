@@ -33,6 +33,8 @@ Second \"item\" text"</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Fjern restriktioner for afspilning i baggrunden</string>
   <string name="morphe_shorts_disable_background_playback_title">Deaktiver baggrundsafspilning</string>
+  <!-- layout.disableScrollSpeedLimitPatch -->
+  <string name="morphe_disable_scrolling_speed_limit_title">Deaktiver begrænsning af rullehastighed</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">Deaktiver opdateringer af layout</string>
   <string name="morphe_disable_layout_updates_summary">Forhindrer serveren i at opdatere applayoutet</string>
@@ -84,6 +86,9 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_latest_videos_button_summary">Skjuler det blå \'Seneste videoer\'-banner, der vises øverst i startfeedet</string>
   <string name="morphe_hide_mix_playlists_title">Skjul mix-playlister</string>
   <string name="morphe_hide_movies_section_title">Skjul filmsektion</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">Skjul overskrift for menuen Notifikationer</string>
+  <string name="morphe_hide_notifications_menu_header_summary">Skjuler overskriften for menuen Notifikationer, når der klikkes på klokkeknappen</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Skjul knappen \'Underret mig\'</string>
@@ -164,16 +169,13 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_explore_podcast_section_title">Skjul sektionen \'Udforsk podcasten\'</string>
   <string name="morphe_hide_featured_channels_section_title">Skjul fremhævede kanaler</string>
   <string name="morphe_hide_featured_links_section_title">Skjul Fremhævede links sektionen</string>
-  <string name="morphe_hide_featured_places_section_title">Skjul sektionen \'Fremhævede steder\'</string>
   <string name="morphe_hide_featured_playlists_section_title">Skjul sektionen \'Fremhævede afspilningslister\'</string>
   <string name="morphe_hide_featured_videos_section_title">Skjul Fremhævede videoer sektionen</string>
-  <string name="morphe_hide_gaming_section_title">Skjul Gaming sektionen</string>
   <string name="morphe_hide_hashtag_section_title">Skjul Hashtag sektionen</string>
-  <string name="morphe_hide_how_this_was_made_section_title">Skjul sektionen \'Sådan er dette indhold blevet lavet\'</string>
+  <string name="morphe_hide_how_this_was_made_section_title">Skjul sektionen \'Sådan blev dette lavet\'</string>
   <string name="morphe_hide_hype_points_title">Skjul Hype-point</string>
   <string name="morphe_hide_info_cards_section_title">Skjul Info cards sektionen</string>
   <string name="morphe_hide_key_concepts_section_title">Skjul \'Nøglebegreber\' sektionen</string>
-  <string name="morphe_hide_music_section_title">Skjul Musik sektionen</string>
   <string name="morphe_hide_quizzes_section_title">Skjul Quizzes sektionen</string>
   <string name="morphe_hide_search_inside_this_video_section_title">Skjul afsnittet \'Søg i denne video\'</string>
   <string name="morphe_hide_subscribe_button_title">Skjul knappen Abonnér</string>
@@ -181,6 +183,7 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_video_details_section_title">Skjul sektionen \'Videodetajler\'</string>
   <string name="morphe_hide_filter_bar_screen_title">Filterbjælke</string>
   <string name="morphe_hide_filter_bar_screen_summary">Vælg, hvor du vil skjule filtrets rullelinje</string>
+  <string name="morphe_hide_filter_bar_in_channel_page_title">Skjul på kanalsiden</string>
   <string name="morphe_hide_filter_bar_in_comments_title">Skjul i kommentarer</string>
   <string name="morphe_hide_filter_bar_in_feed_title">Skjul i feeds</string>
   <string name="morphe_hide_filter_bar_in_related_videos_title">Skjul i relaterede videoer</string>
@@ -197,6 +200,8 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_join_button_title">Skjul knappen Deltag</string>
   <string name="morphe_hide_links_preview_title">Skjul forhåndsvisning af links</string>
   <string name="morphe_hide_links_preview_summary">Skjuler de klikbare web links i kanalens header</string>
+  <string name="morphe_hide_members_only_chip_title">Skjul \'Kun medlemmer\'-chip</string>
+  <string name="morphe_hide_members_only_chip_summary">Skjuler \'Kun medlemmer\'-chip i kanalens filterlinje</string>
   <string name="morphe_hide_members_shelf_title">Skjul medlemshylden</string>
   <string name="morphe_hide_members_shelf_summary">Skjuler listen over kanalmedlemmer</string>
   <string name="morphe_hide_posts_shelf_title">Skjul opslags hylde</string>
@@ -251,6 +256,8 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_comments_gift_button_title">Skjul gave-knap</string>
   <string name="morphe_hide_comments_info_button_title">Skjul Info-knap</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Skjul live chat donatorbjælken</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Skjul tooltips til live-chat</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Skjuler tooltip-popups, der vises nær chat-indtastningsfeltet, såsom meddelelsen om chat kun for abonnenter</string>
   <string name="morphe_hide_comments_preview_comment_title">Skjul forhåndsvisning kommentar</string>
   <string name="morphe_hide_comments_preview_comment_summary">Skjuler kommentar preview under videoen inden åbning af hele kommentarsektionen</string>
   <string name="morphe_hide_comments_thanks_button_title">Skjul \"Tak\"-knap</string>
@@ -259,10 +266,10 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Renser fremhævede søgelinks og efterlader kun den originale tekst</string>
   <string name="morphe_hide_keyword_content_screen_title">Nøgleordsfilter</string>
   <string name="morphe_hide_keyword_content_screen_summary">Vælg specifikke ord eller sætninger for at skjule videoer i feeds og søgninger</string>
+  <string name="morphe_hide_keyword_content_comments_title">Skjul kommentarer efter nøgleord</string>
   <string name="morphe_hide_keyword_content_home_title">Skjul Start videoer med søgeord</string>
   <string name="morphe_hide_keyword_content_search_title">Skjul søgeresultater via søgeord</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Skjul abonnementsvideoer via søgeord</string>
-  <string name="morphe_hide_keyword_content_comments_title">Skjul kommentarer efter nøgleord</string>
   <string name="morphe_hide_keyword_content_phrases_title">Nøgleord at skjule</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
@@ -444,16 +451,19 @@ Info: Virker muligvis ikke på live streams"</string>
   <string name="morphe_reload_video_button_title">Strygning af lysstyrken til den laveste værdi aktiverer systemets automatisk lysstyrke</string>
   <string name="morphe_dismiss_player_not_available_toast">Video-ID er ikke tilgængeligt. Genindlæs venligst videoen manuelt</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
-  <string name="morphe_save_to_watch_later_button_title">Juster gennemsigtighedsniveauet (0 er gennemsigtigt, 100 er uigennemsigtigt)</string>
-  <string name="morphe_save_to_watch_later_button_summary">Tryk for at gemme til senere, tryk og hold for køindstillinger</string>
+  <string name="morphe_save_to_watch_later_button_title">Vis knappen Gem til Se senere</string>
+  <string name="morphe_save_to_watch_later_button_summary">Tryk for at gemme til Se senere, tryk og hold for kø-indstillinger</string>
   <string name="morphe_save_to_watch_later_success_toast">Video gemt i afspilningsliste til senere</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Denne video er allerede gemt i afspilningslisten til senere</string>
   <string name="morphe_save_to_watch_later_error_toast">Kunne ikke gemme denne video i afspilningslisten til senere</string>
+  <string name="morphe_save_to_watch_later_flyout_title">Gem til Se senere</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Vis knappen Gem til Se senere i børnevideoer</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Giver mulighed for at gemme børnerelaterede videoer i menuen \'Se senere\'</string>
   <string name="morphe_queue_flyout_title">Tilføj til Morphe-kø</string>
   <string name="morphe_queue_restore_title">Behold køen mellem sessioner</string>
   <string name="morphe_queue_restore_summary">Køen bevares efter genstart af appen</string>
   <string name="morphe_swap_save_and_queue_actions_title">Byt rundt på Gem og Kø-handlinger</string>
-  <string name="morphe_swap_save_and_queue_actions_summary">Tryk for køindstillinger, tryk og hold for at gemme til senere</string>
+  <string name="morphe_swap_save_and_queue_actions_summary">Tryk for kø-indstillinger, tryk og hold for at gemme til Se senere</string>
   <string name="morphe_queue_override_flyout_menu_title">Erstat feed flyout kø-knap</string>
   <string name="morphe_queue_override_flyout_menu_summary">Åbner Morphe-køen i stedet for YouTube-køen</string>
   <string name="morphe_queue_add_flyout_menu_title">Tilføj feed-flyout-kø-menupunkt</string>
@@ -493,16 +503,17 @@ Info: Virker muligvis ikke på live streams"</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Aktiver miniaturer på søgelinjen</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Viser et videominiaturebillede, når du trækker i søgelinjen</string>
+  <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Mest genafspillet</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_not_available">"'Aktivér livestream DVR' er muligvis ikke tilgængelig
 
-For at løse dette skal du slå 'Spoof videostreams' til og ændre 'Standardklient' til 'TV' eller 'visionOS'"</string>
+For at rette dette skal du slå 'Spoof video streams' til og skifte 'Standardklient' til 'TV Simply' eller 'visionOS'."</string>
   <string name="morphe_expand_livestream_dvr_duration_title">Udvid livestream DVR-varighed</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">Giver dig mulighed for at spole direkte udsendelser op til 7 dage tilbage i tiden</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Udvid varigheden for livestream DVR' er muligvis ikke tilgængelig
+  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Udvid livestream DVR-varighed' er muligvis ikke tilgængelig
 
-For at løse dette skal du slå 'Spoof videostreams' til og ændre 'Standardklient' til 'TV' eller 'visionOS'"</string>
+For at rette dette skal du slå 'Spoof video streams' til og skifte 'Standardklient' til 'TV Simply' eller 'visionOS'."</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Aktivér dias for at søge</string>
   <string name="morphe_slide_to_seek_summary">Aktiverer strygning for at søge i stedet for at afspille med 2x hastighed, når du trykker og holder på videoplayeren</string>
@@ -510,15 +521,18 @@ For at løse dette skal du slå 'Spoof videostreams' til og ændre 'Standardklie
   <string name="morphe_tap_to_seek_title">Aktivér tryk for at søge</string>
   <string name="morphe_tap_to_seek_summary">Tryk blot på søgelinjen for at springe til den position uden at trække i den</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Aktivér lysstyrke-bevægelse</string>
-  <string name="morphe_swipe_brightness_summary">Juster hvor meget lydstyrken ændrer sig under en strygning</string>
-  <string name="morphe_swipe_volume_title">Aktiver lydstyrke-bevægelse</string>
-  <string name="morphe_swipe_volume_summary">Stryg i fuldskærmstilstand for at springe til næste eller forrige video</string>
-  <string name="morphe_swipe_zone_width_title">Lysstyrke/lydstyrke zonebredde</string>
-  <string name="morphe_swipe_zone_width_summary">Procentdel af hver skærmkant reserveret til lysstyrke- og lydstyrkebevægelser (5-50)</string>
+  <string name="morphe_swipe_left_zone_title">Strygebevægelse til venstre</string>
+  <string name="morphe_swipe_right_zone_title">Strygebevægelse til højre</string>
+  <string name="morphe_swipe_top_zone_title">Strygebevægelse opad</string>
+  <string name="morphe_swipe_zone_width_title">Venstre/højre zonebredde</string>
+  <string name="morphe_swipe_zone_width_summary">Procentdel af hver skærmkant reserveret til strygebevægelser til venstre og højre (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Lysstyrke</string>
   <string name="morphe_swipe_zone_label_volume">Lydstyrke</string>
   <string name="morphe_swipe_zone_label_native">Native</string>
+  <string name="morphe_swipe_zone_label_off">Fra</string>
+  <string name="morphe_swipe_ignore_when_locked_title">Ignorer swipes, når den er låst</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">Swipe-bevægelser ignoreres, mens afspilleren er låst med \"Lås skærm\"</string>
   <string name="morphe_swipe_press_to_engage_title">Aktivér tryk for at swipe-bevægelse</string>
   <string name="morphe_swipe_press_to_engage_summary">Kræver tryk og hold, før en swipe-bevægelse genkendes</string>
   <string name="morphe_swipe_haptic_feedback_title">Aktiver haptisk feedback</string>
@@ -547,12 +561,9 @@ For at løse dette skal du slå 'Spoof videostreams' til og ændre 'Standardklie
   <string name="morphe_swipe_volume_sensitivity_summary">Højere værdier øger lydstyrkeændringen pr. strygning</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Lysstyrke strygefølsomhed</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Højere værdier kræver flere strygninger pr. lysstyrketrin</string>
-  <string name="morphe_swipe_speed_title">Aktiver hastighedsbevægelse</string>
-  <string name="morphe_swipe_speed_summary">Stryg vandret i den øverste zone i fuldskærmstilstand for at ændre afspilningshastigheden</string>
   <string name="morphe_swipe_speed_sensitivity_title">Hastigheds strygefølsomhed</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Højere værdier kræver flere strygninger pr. hastighedstrin</string>
   <string name="morphe_swipe_speed_step_title">Hastighedstrin</string>
-  <string name="morphe_swipe_speed_step_summary">Beløb, hvormed afspilningshastigheden ændres pr. trin</string>
   <string name="morphe_swipe_speed_zone_height_title">Hastighedszonens højde</string>
   <string name="morphe_swipe_speed_zone_height_summary">Højden på hastighedsbevægelseszonen som en procentdel af afspillerens højde (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Hastighed</string>
@@ -678,15 +689,8 @@ For at få adgang til Indstillinger skal du aktivere knappen Indstillinger via G
   <string name="morphe_navigation_bar_animations_summary">Animerer overgange, når der skiftes mellem faner</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Deaktiver automatisk skjuling af navigationslinjen</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Holder navigationslinjen synlig under rulning</string>
-  <string name="morphe_disable_translucent_status_bar_title">Deaktiver gennemsigtig statuslinje</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Gør statuslinjen fuldt uigennemsigtig</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Begrænsninger:
-• En sort streg kan vises øverst på videoafspilleren.
-• Systemnavigationsbaren kan blive transparent, og det er ikke muligt at kommentere videoer."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Deaktiver lys gennemsigtig linje</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Gør navigationslinjen fuldt uigennemsigtig i lys tilstand</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Deaktiver mørk gennemsigtig linje</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Gør navigationslinjen fuldt uigennemsigtig i mørk tilstand</string>
+  <string name="morphe_disable_translucent_navigation_title">Deaktiver gennemsigtig navigationslinje</string>
+  <string name="morphe_disable_translucent_navigation_summary">Gør navigations- og statuslinjen helt uigennemsigtig</string>
   <string name="morphe_toolbar_screen_title">Værktøjslinje</string>
   <string name="morphe_toolbar_screen_summary">Vælg, hvilke komponenter der vises i værktøjslinjen</string>
   <string name="morphe_hide_toolbar_cast_button_title">Skjul Cast-knappen</string>
@@ -705,10 +709,10 @@ For at få adgang til Indstillinger skal du aktivere knappen Indstillinger via G
   <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_audio_track_title">Skjul \'Lydspor\'-menuen</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"'Lydspor'-menuen er skjult
 
-For at vise 'Lydspor'-menuen skal du ændre 'Forfalsk videostreams' til enhver klient undtagen 'Android Studio'"</string>
+For at vise 'Lydspor'-menuen skal du ændre 'Forfalsk videostreams' til enhver klient undtagen 'Android Studio' og 'Android VR Downgraded'"</string>
   <string name="morphe_hide_player_flyout_audio_track_footer_title">Skjul \'Lydspor\'-menuens sidefod</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Skjul Undertekster-menuen</string>
@@ -840,6 +844,7 @@ Indstillinger → Afspilning (eller Automatisk afspilning) → Afspil næste vid
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Slå afspiller pop-up paneler fra</string>
   <string name="morphe_disable_player_popup_panels_summary">Deaktiverer automatisk åbning af playliste- og livechat-paneler</string>
+  <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Afslut fuldskærmstilstand ved videoens afslutning</string>
   <string name="morphe_exit_fullscreen_entry_1">Deaktiveret</string>
@@ -848,21 +853,34 @@ Indstillinger → Afspilning (eller Automatisk afspilning) → Afspil næste vid
   <string name="morphe_exit_fullscreen_entry_4">Portræt og landskab</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Gestusser til fuld skærm</string>
-  <string name="morphe_disable_fullscreen_gestures_summary">Afspillergestusser til at indgå eller forlade fuldskærmstilstand</string>
+  <string name="morphe_disable_fullscreen_gestures_summary">Bevægelser i fuldskærmstilstand</string>
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">Deaktiver swipe-op-gestus i portrættilstand</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Deaktiver gestus med nedadstræk i portrættilstand</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Deaktiver gestus med nedadstræk i landskabsttilstand</string>
+  <string name="morphe_disable_fullscreen_zoom_gesture_title">Deaktiver knib-og-zoom-bevægelse</string>
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
   <string name="morphe_open_videos_fullscreen_title">Åbn videoer i fuldskærmstilstand</string>
   <string name="morphe_open_videos_fullscreen_entry_1">Deaktiveret</string>
   <string name="morphe_open_videos_fullscreen_entry_2">Portræt</string>
   <string name="morphe_open_videos_fullscreen_entry_3">Landskab</string>
+  <!-- layout.player.fullscreen.stretchVideoPatch -->
+  <string name="morphe_fullscreen_video_scale_title">Skala for fuldskærmsvideo</string>
+  <string name="morphe_fullscreen_video_scale_entry_default">Standard</string>
+  <string name="morphe_fullscreen_video_scale_entry_stretch">Stræk (fyld skærmen)</string>
+  <string name="morphe_fullscreen_video_scale_entry_zoom">Zoom (beskær for at fylde)</string>
+  <string name="morphe_fullscreen_video_scale_button_title">Vis knappen for videoskala</string>
+  <string name="morphe_fullscreen_video_scale_button_summary">Tryk for at skifte mellem Standard, Stræk og Zoom</string>
+  <!-- layout.player.buttons.muteVideoButtonPatch -->
+  <string name="morphe_mute_video_button_title">Vis mute-knap</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Spiller overlay gennemsigtighed</string>
   <string name="morphe_player_overlay_opacity_summary">Juster gennemsigtighedsniveauet (0 er gennemsigtigt, 100 er uigennemsigtigt)</string>
   <string name="morphe_player_overlay_opacity_invalid_toast">Spiller overlay gennemsigtighed skal være mellem 0-100</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
-  <string name="morphe_wide_searchbar_title">Aktiver bred søgelinje</string>
+  <string name="morphe_searchbar_type_title">Søgefelt</string>
+  <string name="morphe_searchbar_type_entry_disabled">Deaktiveret</string>
+  <string name="morphe_searchbar_type_entry_wide">Bred</string>
+  <string name="morphe_searchbar_type_entry_extra_wide">Ekstra bred</string>
   <!-- layout.sponsorblock.sponsorBlockPatch -->
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Enhedslayout</string>
@@ -899,8 +917,8 @@ Begrænsning: Hvis 'Gendan gammel video-handlingslinje' er slået fra, er 'Flere
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Omgå YouTube Music-knapper</string>
   <string name="morphe_override_youtube_music_buttons_summary">Åbner din foretrukne musik-app i stedet for den indbyggede YouTube Music-app</string>
-  <string name="morphe_music_package_name_title">Musikappens pakkenavn</string>
-  <string name="morphe_music_package_name_summary">Pakkenavn på din installerede musikapp</string>
+  <string name="morphe_custom_music_package_name_title">Pakkenavn for musikappen</string>
+  <string name="morphe_custom_music_package_name_summary">Pakkenavn på din installerede musikapp</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Startside</string>
   <string name="morphe_change_start_page_entry_default">Standard</string>
@@ -950,7 +968,7 @@ Begrænsning: Hvis 'Gendan gammel video-handlingslinje' er slået fra, er 'Flere
   <string name="morphe_miniplayer_disable_resuming_summary">Deaktiverer \'Fortsæt med at se\'-miniafspilleren, en YouTube Premium-funktion, der vises, når appen startes</string>
   <string name="morphe_miniplayer_screen_title">Mini-afspiller</string>
   <string name="morphe_miniplayer_screen_summary">Tilpas udseendet og adfærden af den minimerede videoplayer</string>
-  <string name="morphe_miniplayer_not_available_summary">YouTube har fjernet alle yderligere miniafspillere. For at ændre typen af miniafspiller, skal du patche YouTube 21.28.207 eller en ældre version</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube fjernede alle ekstra miniplayers. For at ændre miniplayer-typen, skal du patche YouTube 21.28.208 eller ældre.</string>
   <string name="morphe_miniplayer_type_title">Type af miniplayer</string>
   <string name="morphe_miniplayer_type_entry_0">Deaktiveret</string>
   <string name="morphe_miniplayer_type_entry_1">Standard</string>
@@ -976,7 +994,23 @@ Begrænsning: Hvis 'Gendan gammel video-handlingslinje' er slået fra, er 'Flere
   <string name="morphe_miniplayer_opacity_title">Overlay uigennemsigtighed</string>
   <string name="morphe_miniplayer_opacity_summary">Juster gennemsigtighedsniveauet (0 er gennemsigtigt, 100 er uigennemsigtigt)</string>
   <string name="morphe_miniplayer_opacity_invalid_toast">Miniplayer overlay gennemsigtighed skal være mellem 0-100</string>
+  <!-- misc.fix.fixBackToExitGesturePatch -->
+  <string name="morphe_back_button_always_exits_feed_title">Tilbageknappen forlader feedet</string>
+  <string name="morphe_back_button_always_exits_feed_summary">Tryk på tilbage afslutter altid appen i stedet for at rulle til toppen af feedet</string>
   <!-- layout.theme.themePatch -->
+  <string name="morphe_theme_color_light_title">Lyst tema baggrund</string>
+  <string name="morphe_theme_color_light_entry_2">Hvid</string>
+  <string name="morphe_theme_color_light_entry_3">Material You (Hvid)!</string>
+  <string name="morphe_theme_color_light_entry_9">Lyse pink</string>
+  <string name="morphe_theme_color_light_entry_10">Lyseblå</string>
+  <string name="morphe_theme_color_light_entry_11">Lysegrøn</string>
+  <string name="morphe_theme_color_light_entry_12">Lysegul</string>
+  <string name="morphe_theme_color_light_entry_13">Lyseorange</string>
+  <string name="morphe_theme_color_light_entry_14">Lyserød</string>
+  <string name="morphe_theme_color_light_custom_title">Tilpasset lys baggrund</string>
+  <string name="morphe_theme_color_light_custom_summary">Indstil baggrundsfarven for det lyse tema</string>
+  <string name="morphe_theme_color_change_foreground_title">Sskift forgrundsfarve</string>
+  <string name="morphe_theme_color_change_foreground_summary">Brug temafarven til tekst og ikoner</string>
   <string name="morphe_gradient_loading_screen_title">Aktiver gradient indlæsning af skærmen</string>
   <string name="morphe_gradient_loading_screen_summary">Viser en gradientbaggrund på indlæsningsskærmen i stedet for en ensfarvet farve</string>
   <string name="morphe_splash_screen_animation_style_title">Splash screen udseende</string>
@@ -994,7 +1028,7 @@ Begrænsning: Hvis 'Gendan gammel video-handlingslinje' er slået fra, er 'Flere
   <string name="morphe_header_logo_title">Sidehovedlogo</string>
   <string name="morphe_header_logo_entry_1">Standard</string>
   <string name="morphe_header_logo_entry_2">Normal</string>
-  <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_3'. -->
+  <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_7'. -->
   <string name="morphe_header_logo_entry_5">Tilpasset</string>
   <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <string name="morphe_bypass_image_region_restrictions_title">Omgå billede regionsrestriktioner</string>
@@ -1066,12 +1100,6 @@ Tryk her for at lære mere om DeArrow"</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automatisk</string>
-  <string name="morphe_override_initial_video_quality_title">Tilsidesæt startvideokvalitet</string>
-  <!-- 'Force AVC (H.264) codec' should be the same translation used for 'morphe_force_avc_codec_title'. -->
-  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_override_initial_video_quality_summary">"Retter et problem, hvor standardvideokvaliteten ikke anvendes umiddelbart efter videoen starter
-
-Begrænsning: Afspilning fungerer muligvis ikke på nogle enheder, hvis 'Spoofe videostrømme' er indstillet til 'Android VR' og 'Tving AVC (H.264) codec' er aktiveret"</string>
   <string name="morphe_remember_video_quality_last_selected_title">Husk videokvalitet</string>
   <string name="morphe_remember_video_quality_last_selected_summary">Anvender din manuelle kvalitetsvalg på alle fremtidige videoer</string>
   <string name="morphe_remember_video_quality_last_selected_toast_title">Kvalitetsændringsmeddelelser</string>
@@ -1111,6 +1139,11 @@ Begrænsning: Afspilning fungerer muligvis ikke på nogle enheder, hvis 'Spoofe 
   <string name="morphe_remember_playback_speed_toast">Ændrede standard afspilningshastighed til: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Brug normal hastighed til musik</string>
   <string name="morphe_disable_playback_speed_music_summary">Afspil altid musikvideoer med 1,0x hastighed</string>
+  <string name="morphe_enable_playback_audio_pitch_controls_title">Aktiver styring af lydtonehøjde</string>
+  <string name="morphe_playback_audio_pitch_default_title">Standard afspilningslydens tonehøjde</string>
+  <string name="morphe_remember_playback_audio_pitch_toast">Ændrede standard tonehøjde til: %s</string>
+  <string name="morphe_playback_audio_time_stretching_title">Tidsstrækning af lyd</string>
+  <string name="morphe_playback_audio_time_stretching_summary">Gør det muligt at indstille hastighed og tonehøjde uafhængigt, hvilket kan forårsage lydartefakter</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Deaktiver HDR-video</string>
   <string name="morphe_force_avc_codec_title">Gennemtving AVC (H.264) codec</string>
@@ -1148,6 +1181,7 @@ Videoafspilning med AV1 kan hakke eller tabe billeder."</string>
   <string name="morphe_spoof_video_streams_about_js">• Hvis deobfuskering mislykkes, kan afspilning mislykkes</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Tving original lyd er ikke tilgængelig</string>
+  <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Log ind på Android er påkrævet</string>
   <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• Kvaliteten kan være begrænset til 720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Afspiller JavaScript-variant</string>

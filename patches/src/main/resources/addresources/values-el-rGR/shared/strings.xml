@@ -107,13 +107,23 @@ Second \"item\" text"</string>
   <string name="morphe_debug_logs_clear_toast">Τα αρχεία καταγραφής εντοπισμού σφαλμάτων εκκαθαρίστηκαν</string>
   <string name="morphe_debug_feature_flags_manager_title">Διαχειριστής λειτουργιών σημαιών</string>
   <string name="morphe_debug_feature_flags_manager_summary">Διαχείριση των boolean λειτουργιών σημαιών</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Ενεργές λειτουργίες σημαιών (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Αποκλεισμένες λειτουργίες σημαιών (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Αναζήτηση λειτουργιών σημαιών</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Αυτόματη</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Ανενεργό</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Ενεργό</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Αφαίρεση</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Οι λειτουργίες σημαιών αποθηκεύτηκαν</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Οι λειτουργίες σημαιών επαναφέρθηκαν</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Οι λειτουργίες σημαιών αντιγράφηκαν στο πρόχειρο</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Επανεκκινήστε την εφαρμογή για να χρησιμοποιήσετε αυτήν τη ρύθμιση</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Αρχή</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Άνοιγμα των ρυθμίσεων MicroG</string>

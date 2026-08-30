@@ -73,6 +73,18 @@ Second \"item\" text"</string>
   <string name="morphe_debug_logs_disabled">تۆمارکردنی چاککردنەوە لەکارخراوە</string>
   <string name="morphe_debug_feature_flags_manager_title">پارێژكاري فڵاگەل و مۆر</string>
   <string name="morphe_debug_feature_flags_manager_summary">بەڕێوەبردنی ئاڵای تایبەتمەندی بوولی</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">خۆرا</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">کوژاوە</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">هەڵکراو</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">سڕینەوە</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">دەستپێکردن</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->

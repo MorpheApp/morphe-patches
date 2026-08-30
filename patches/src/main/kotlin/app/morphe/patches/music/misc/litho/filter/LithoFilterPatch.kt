@@ -17,7 +17,8 @@ val lithoFilterPatch = sharedLithoFilterPatch(
     // Supported YT Music versions always use the native Upb encode path.
     hookNonNativeBuffer = { false },
     // YT Music does not ship the Upb feature flag.
-    overrideUpbFeatureFlag = { false }
+    overrideUpbFeatureFlag = { false },
+    useLegacyLithoFiltering = { false }
 ) {
     dependsOn(
         sharedExtensionPatch,

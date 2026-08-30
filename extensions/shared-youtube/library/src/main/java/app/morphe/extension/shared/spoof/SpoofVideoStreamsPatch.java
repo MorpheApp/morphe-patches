@@ -15,15 +15,18 @@ import android.app.Application;
 import android.net.Uri;
 import android.text.TextUtils;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.AppLanguage;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
@@ -61,6 +64,9 @@ public class SpoofVideoStreamsPatch {
 
     private static final boolean SPOOF_VIDEO_STREAMS = isPatchIncluded() && SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.get();
 
+    @NonNull
+    private static volatile Locale localeOverride = AppLanguage.DEFAULT.getLocale();
+
     private static volatile ClientType preferredClient = ClientType.VISIONOS_1_02;
 
     private static WeakReference<Application> mainActivityRef = new WeakReference<>(null);
@@ -81,6 +87,20 @@ public class SpoofVideoStreamsPatch {
      */
     public static boolean isPatchIncluded() {
         return false;  // Modified during patching.
+    }
+
+    @NonNull
+    public static Locale getLocaleOverride() {
+        return localeOverride;
+    }
+
+    /**
+     * @param locale Locale override for non-authenticated requests.
+     */
+    public static void setLocaleOverride(@Nullable Locale locale) {
+        if (locale != null) {
+            localeOverride = locale;
+        }
     }
 
     public static void setClientsToUse(List<ClientType> availableClients, ClientType client) {
@@ -108,33 +128,15 @@ public class SpoofVideoStreamsPatch {
 
     /**
      * Injection point.
-     * Blocks /get_watch requests by returning an unreachable URI.
+     * Blocks '/get_watch' endpoint requests by returning an unreachable URI.
      *
-     * @param playerRequestUri The URI of the player request.
-     * @return An unreachable URI if the request is a /get_watch request, otherwise the original URI.
+     * @param innerTubeRequestBuilder The URI builder of the innertube request.
+     * @return An unreachable URI builder if the request is a '/get_watch' endpoint, otherwise the original URI.
      */
-    public static Uri blockGetWatchRequest(Uri playerRequestUri) {
+    public static Uri.Builder blockGetWatchRequest(Uri.Builder innerTubeRequestBuilder) {
         if (SPOOF_VIDEO_STREAMS) {
             try {
-                String path = playerRequestUri.getPath();
-
-                if (path != null && path.contains("get_watch")) {
-                    Logger.printDebug(() -> "Blocking 'get_watch' by returning internet connection check URI");
-
-                    return INTERNET_CONNECTION_CHECK_URI;
-                }
-            } catch (Exception ex) {
-                Logger.printException(() -> "blockGetWatchRequest failure", ex);
-            }
-        }
-
-        return playerRequestUri;
-    }
-
-    public static Uri.Builder blockGetWatchRequest(Uri.Builder playerRequestBuilder) {
-        if (SPOOF_VIDEO_STREAMS) {
-            try {
-                String path = playerRequestBuilder.build().getPath();
+                String path = innerTubeRequestBuilder.build().getPath();
 
                 if (path != null && path.contains("get_watch")) {
                     Logger.printDebug(() -> "Blocking 'get_watch' by returning internet connection check URI");
@@ -146,7 +148,7 @@ public class SpoofVideoStreamsPatch {
             }
         }
 
-        return playerRequestBuilder;
+        return innerTubeRequestBuilder;
     }
 
     /**
@@ -288,8 +290,9 @@ public class SpoofVideoStreamsPatch {
                     Logger.printException(() -> "Ignoring request with no ID: " + url);
                     return;
                 }
+                boolean isInline = "1".equals(uri.getQueryParameter("inline"));
 
-                StreamingDataRequest.fetchRequest(id, requestHeaders);
+                StreamingDataRequest.fetchRequest(id, isInline, requestHeaders);
             } catch (Exception ex) {
                 Logger.printException(() -> "buildRequest failure", ex);
             }
@@ -352,6 +355,28 @@ public class SpoofVideoStreamsPatch {
         }
 
         return null;
+    }
+
+    /**
+     * Injection point.
+     * Called after {@link #getPlayerConfig(String)}.
+     */
+    public static boolean hasAndroidMedia(String videoId) {
+        if (SPOOF_VIDEO_STREAMS) {
+            try {
+                StreamingDataRequest request = StreamingDataRequest.getRequestForVideoId(videoId);
+                if (request != null) {
+                    var buffers = request.getStream();
+                    if (buffers != null) {
+                        return buffers.hasAndroidMedia();
+                    }
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "hasAndroidMedia failure", ex);
+            }
+        }
+
+        return false;
     }
 
     /**

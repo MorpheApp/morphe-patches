@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/2100
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -36,7 +36,7 @@ val forceSystemFontPatch = bytecodePatch(
             when (targetMethod.variant) {
                 TypefaceCompatCreateFromResourcesFontFileVariant.LEGACY_STATIC ->
                     """
-                        invoke-static { p4 }, $EXTENSION_CLASS->getSystemTypeface(I)Landroid/graphics/Typeface;
+                        invoke-static { p2, p4 }, $EXTENSION_CLASS->getSystemTypeface(Ljava/lang/String;I)Landroid/graphics/Typeface;
                         move-result-object v0
                         if-eqz v0, :original
                         return-object v0
@@ -46,7 +46,7 @@ val forceSystemFontPatch = bytecodePatch(
 
                 TypefaceCompatCreateFromResourcesFontFileVariant.MODERN_VIRTUAL ->
                     """
-                        invoke-static { p5 }, $EXTENSION_CLASS->getSystemTypeface(I)Landroid/graphics/Typeface;
+                        invoke-static { p4, p5 }, $EXTENSION_CLASS->getSystemTypeface(Ljava/lang/String;I)Landroid/graphics/Typeface;
                         move-result-object v0
                         if-eqz v0, :original
                         return-object v0

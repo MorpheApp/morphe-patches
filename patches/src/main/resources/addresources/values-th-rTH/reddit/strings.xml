@@ -16,7 +16,8 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-  <!-- Overrides built in setting menu with Morphe settings. -->
+  <string name="reddit_privacy_policy">นโยบายความเป็นส่วนตัวของ Reddit</string>
+  <string name="morphe_google_signin_not_available_toast">ไม่สามารถเข้าสู่ระบบด้วย Google ได้ กรุณาใช้อีเมลเพื่อเข้าสู่ระบบ</string>
   <string name="morphe_screen_ads_title">โฆษณา</string>
   <string name="morphe_hide_post_ads_title">ซ่อนโฆษณาในฟีด</string>
   <string name="morphe_hide_comment_ads_title">ซ่อนโฆษณาในความคิดเห็น</string>

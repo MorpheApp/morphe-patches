@@ -16,7 +16,8 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-  <!-- Overrides built in setting menu with Morphe settings. -->
+  <string name="reddit_privacy_policy">Patakaran sa privacy ng Reddit</string>
+  <string name="morphe_google_signin_not_available_toast">Hindi available ang Google login. Gamitin ang email upang mag-login</string>
   <string name="morphe_screen_ads_title">Patalastas</string>
   <string name="morphe_hide_post_ads_title">Itago ang mga patalastas sa feed</string>
   <string name="morphe_hide_comment_ads_title">Itago ang mga patalastas sa komento</string>

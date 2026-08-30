@@ -16,7 +16,10 @@ import java.util.Arrays;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.AppLanguage;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.shared.spoof.ClientType;
+import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 
 @SuppressWarnings("unused")
 public class ForceOriginalAudioPatch {
@@ -34,6 +37,22 @@ public class ForceOriginalAudioPatch {
     private static final boolean FORCE_ORIGINAL_AUDIO = SharedYouTubeSettings.FORCE_ORIGINAL_AUDIO.get();
 
     private static final String DEFAULT_AUDIO_TRACKS_SUFFIX = ".4";
+
+    public static void setEnabled(ClientType client) {
+        if (FORCE_ORIGINAL_AUDIO && SpoofVideoStreamsPatch.isSpoofingEnabled()
+                && !client.canLogin && !client.supportsMultiAudioTracks) {
+            // If client spoofing does not use authentication and lacks multi-audio streams,
+            // then can use any language code for the request and if that requested language is
+            // not available YT uses the original audio language. Authenticated requests ignore
+            // the language code and always use the account language. Use a language that is
+            // not auto-dubbed by YouTube: https://support.google.com/youtube/answer/15569972
+            // but the language is also supported natively by the Meta Quest device that
+            // Android VR is spoofing.
+            AppLanguage override = AppLanguage.NB; // Norwegian Bokmal.
+            Logger.printDebug(() -> "Setting language override: " + override);
+            SpoofVideoStreamsPatch.setLocaleOverride(override.getLocale());
+        }
+    }
 
     /**
      * The available audio tracks of the current video.

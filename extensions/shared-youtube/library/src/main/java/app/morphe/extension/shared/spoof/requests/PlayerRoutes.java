@@ -22,23 +22,24 @@ import java.util.Locale;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.requests.Route;
-import app.morphe.extension.shared.settings.AppLanguage;
 import app.morphe.extension.shared.spoof.ClientType;
+import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.shared.spoof.js.JavaScriptManager;
+import app.morphe.extension.shared.spoof.potoken.PoTokenManager;
 
 public final class PlayerRoutes {
 
     private static final Route.CompiledRoute GET_PLAYER_STREAMING_DATA = new Route(
             Route.Method.POST,
             "player" +
-                    "?fields=responseContext.visitorData,playabilityStatus,streamingData,playerConfig.mediaCommonConfig" +
+                    "?fields=responseContext.visitorData,playabilityStatus,streamingData,playerConfig" +
                     "&alt=proto"
     ).compile();
 
     private static final Route.CompiledRoute GET_REEL_STREAMING_DATA = new Route(
             Route.Method.POST,
             "reel/reel_item_watch" +
-                    "?fields=responseContext.visitorData,playerResponse.playabilityStatus,playerResponse.streamingData,playerResponse.playerConfig.mediaCommonConfig" +
+                    "?fields=responseContext.visitorData,playerResponse.playabilityStatus,playerResponse.streamingData,playerResponse.playerConfig" +
                     "&alt=proto"
     ).compile();
 
@@ -47,7 +48,9 @@ public final class PlayerRoutes {
     private PlayerRoutes() {
     }
 
-    static String createInnertubeBody(ClientType clientType, String videoId, String visitorId) {
+    static String createInnertubeBody(ClientType clientType,
+                                      String videoId,
+                                      String visitorId) {
         JSONObject innerTubeBody = new JSONObject();
 
         try {
@@ -74,9 +77,9 @@ public final class PlayerRoutes {
                 client.put("platform", platform);
             }
 
-            Locale locale = AppLanguage.DEFAULT.getLocale();
-            client.put("hl", locale.getLanguage());
-            client.put("gl", locale.getCountry());
+            Locale streamLocale = SpoofVideoStreamsPatch.getLocaleOverride();
+            client.put("hl", streamLocale.getLanguage());
+            client.put("gl", streamLocale.getCountry());
             context.put("client", client);
 
             if (clientType.usePlayerEndpoint) {
@@ -122,6 +125,15 @@ public final class PlayerRoutes {
                 playbackContext.put("devicePlaybackCapabilities", devicePlaybackCapabilities);
 
                 innerTubeBody.put("playbackContext", playbackContext);
+            }
+
+            if (clientType.requirePoToken) {
+                String poToken = PoTokenManager.getPlayerPoToken(clientType, videoId);
+                if (!TextUtils.isEmpty(poToken)) {
+                    JSONObject serviceIntegrityDimensions = new JSONObject();
+                    serviceIntegrityDimensions.put("poToken", poToken);
+                    innerTubeBody.put("serviceIntegrityDimensions", serviceIntegrityDimensions);
+                }
             }
 
             innerTubeBody.put("context", context);

@@ -95,6 +95,9 @@ public class PlaybackSpeedDialogButton {
                         ? 1.0f
                         : defaultSpeed;
                 VideoInformation.changePlaybackSpeed(speed);
+                if (speed == 1.0f) {
+                    VideoInformation.setAudioPitch(1.0f);
+                }
             } catch (Exception ex) {
                 Logger.printException(() -> "speed button long click failure", ex);
             }

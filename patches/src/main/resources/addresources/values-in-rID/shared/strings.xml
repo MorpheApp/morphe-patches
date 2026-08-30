@@ -105,15 +105,66 @@ Anda tidak akan diberi tahu tentang kejadian yang tidak terduga."</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Pencatatan debug disalin</string>
   <string name="morphe_debug_logs_failed_to_export">Gagal mengekspor pencatatan debug: %s</string>
   <string name="morphe_debug_logs_clear_toast">Pencatatan debug telah dibersihkan</string>
-  <string name="morphe_debug_feature_flags_manager_title">Fitur pengelolaan tanda</string>
-  <string name="morphe_debug_feature_flags_manager_summary">Kelola tanda fitur boolean</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Tanda fitur aktif (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Tanda fitur yang diblokir (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Cari tanda fitur…</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Tanda fitur disimpan</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Tanda fitur diatur ulang</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Tanda fitur disalin ke papan klip</string>
+  <string name="morphe_debug_feature_flags_manager_title">Pengelola feature flag</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Kelola feature flag boolean</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Cari feature flag…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Tidak aktif (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Aktif (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Diblokir (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Dipaksa (%s)</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Otomatis</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Nonaktif</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Aktif</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Paksa aktif</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Blokir</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Hapus</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Feature flag disimpan</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Feature flag diatur ulang</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Feature flag disalin ke papan klip</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Mulai ulang aplikasi untuk menggunakan pengaturan ini</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Ekspor dan impor</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">Mengimpor %s feature flag</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Tidak ada feature flag yang ditemukan</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Feature flag berhasil diekspor</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Gagal mengekspor feature flag</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Feature flag telah dimuat, ketuk Simpan untuk menerapkan</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Gagal membaca berkas</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Pencarian biner</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Menemukan feature flag mana yang menyebabkan perilaku aplikasi tertentu.
+
+Separuh dari flag %s akan diblokir, dan setelah setiap kali dimulai ulang, Anda perlu memastikan apakah perilaku tersebut masih muncul.
+
+Reproduksi perilaku tersebut satu kali sebelum memulai, jika tidak flag yang belum diminta oleh aplikasi tidak akan muncul dalam pencarian"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Mulai</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Tidak ada feature flag untuk dicari.
+
+Hanya flag yang telah diakses oleh aplikasi dan saat ini tidak dipaksa aktif yang dapat digunakan dalam pencarian biner"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Step %1$s
+
+%2$s flag tersisa, %3$s di antaranya diblokir untuk step ini.
+
+Mulai ulang aplikasi, periksa apakah perilaku tersebut muncul, lalu berikan jawaban di bawah ini"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Pencarian feature flag sedang berlangsung</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">Perilaku muncul</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">Perilaku tidak muncul</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Batalkan pencarian biner</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Pencarian biner dibatalkan</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"Feature flag %s menyebabkan perilaku tersebut.
+
+Kini telah diblokir"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Tidak dapat menemukan feature flag
+
+Perilaku aplikasi tampaknya tidak dikendalikan oleh feature flag"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Tidak dapat menemukan satu pun feature flag.
+
+Perilaku tersebut menghilang lebih awal pada saat pencarian, sehingga kemungkinan ada lebih dari satu flag yang terlibat, atau salah satu jawabannya keliru"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Buka pengaturan MicroG</string>
@@ -149,12 +200,12 @@ Jika optimasi baterai tidak diubah, Anda mungkin mengalami:
   <string name="morphe_link_handling_step2_message">Buka pengaturan aplikasi yang ditambal dan aktifkan semua tautan domain</string>
   <string name="morphe_link_handling_open">Buka pengaturan</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Peringatan Uji Coba 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Anda menggunakan versi aplikasi uji coba ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Peringatan Eksperimental 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Anda menggunakan versi aplikasi eksperimental ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
 &lt;br/&gt;&lt;br/&gt;
-🔧 Harap bersiap dengan perilaku aplikasi yang tidak biasa atau bug yang belum teridentifikasi saat kami menyempurnakan tambalan untuk versi aplikasi ini.
+🔧 Harap bersiap dengan perilaku aplikasi yang tidak biasa atau bug yang belum teridentifikasi selagi kami menyempurnakan tambalan untuk versi aplikasi ini.
 &lt;br/&gt;&lt;br/&gt;
-Jika Anda ingin pengalaman yang paling bebas masalah, maka &lt;b&gt;hapus pemasangan&lt;/b&gt; ini dan tambal versi aplikasi yang direkomendasikan ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Saya ingin versi uji coba</string>
+Jika Anda ingin pengalaman tanpa kendala, silakan &lt;b&gt;copot pemasangan&lt;/b&gt; ini dan tambal versi aplikasi yang direkomendasikan ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Saya ingin versi eksperimental</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Saya ingin versi stabil</string>
 </resources>

@@ -14,7 +14,7 @@ import app.morphe.extension.shared.Logger;
 @SuppressWarnings("deprecation")
 public class URLLinkPreference extends Preference {
 
-    protected String externalURL;
+    public String externalURL;
 
     {
         setOnPreferenceClickListener(pref -> {

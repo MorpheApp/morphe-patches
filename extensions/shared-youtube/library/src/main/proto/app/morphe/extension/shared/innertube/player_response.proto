@@ -39,10 +39,38 @@ message StreamingData {
 }
 
 message Format {
+  optional int32 itag = 1;
+  optional int32 bitrate = 6;
+  optional int32 averageBitrate = 31;
+  optional int32 audioChannels = 46;
+  optional int64 approxDurationMs = 44;
+  optional int64 audioSampleRate = 45;
+  optional string mimeType = 5;
   optional string url = 2;
   optional string signatureCipher = 48;
 }
 
 message PlayerConfig {
+  optional AudioConfig audioConfig = 55405814;
+  optional AndroidMedialibConfig androidMedialibConfig = 78958444;
+  optional PlayerGestureConfig playerGestureConfig = 262192541;
+  optional InlinePlaybackConfig inlinePlaybackConfig = 399288314;
 }
 
+message AudioConfig {
+  optional bool muteOnStart = 4;
+}
+
+message AndroidMedialibConfig {
+  optional bool isItag18MainProfile = 3;
+}
+
+message PlayerGestureConfig {
+  optional bool downAndOutPortraitAllowed = 1;
+  optional bool downAndOutLandscapeAllowed = 2;
+}
+
+message InlinePlaybackConfig {
+  optional bool showScrubbingControls = 1;
+  optional bool showAudioControls = 2;
+}

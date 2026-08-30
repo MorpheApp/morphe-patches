@@ -22,8 +22,6 @@ internal object LocaleLanguageManagerConstructorFingerprint : Fingerprint(
     parameters = listOf("Landroid/content/Context;", "Landroid/content/res/Configuration;"),
     filters = listOf(
         methodCall(smali = "Landroid/content/Context;->getApplicationContext()Landroid/content/Context;"),
-        methodCall(smali = "Ljava/util/Locale;->toLanguageTag()Ljava/lang/String;"),
-        methodCall(smali = "Landroid/os/BaseBundle;->putString(Ljava/lang/String;Ljava/lang/String;)V"),
         fieldAccess(smali = "Ljava/util/Locale;->ENGLISH:Ljava/util/Locale;"),
         string("UI_LANGUAGE_TAG")
     )

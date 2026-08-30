@@ -26,6 +26,7 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 
 /**
@@ -63,7 +64,7 @@ class AboutWebViewDialog extends Dialog {
         // Set rounded rectangle background.
         ShapeDrawable mainBackground = new ShapeDrawable(new RoundRectShape(
                 Dim.roundedCorners(28), null, null));
-        mainBackground.getPaint().setColor(Utils.getDialogBackgroundColor());
+        mainBackground.getPaint().setColor(ThemeUtils.getDialogBackgroundColor());
         mainLayout.setBackground(mainBackground);
 
         // Create WebView.
@@ -85,5 +86,4 @@ class AboutWebViewDialog extends Dialog {
             Utils.setDialogWindowParameters(window, Gravity.CENTER, 0, 90, false);
         }
     }
-
 }

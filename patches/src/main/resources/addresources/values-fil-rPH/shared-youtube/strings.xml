@@ -21,6 +21,25 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">I-restart upang tapusin ang pag-setup</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Pangalan ng aplikasyon</string>
+  <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">Background ng madilim na tema</string>
+  <string name="morphe_theme_color_dark_entry_2">Purong itim</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You (Puro itim)</string>
+  <string name="morphe_theme_color_dark_entry_9">Klasikong YouTube</string>
+  <string name="morphe_theme_color_dark_entry_10">Madilim na rosas</string>
+  <string name="morphe_theme_color_dark_entry_11">Madilim na asul</string>
+  <string name="morphe_theme_color_dark_entry_12">Madilim na berde</string>
+  <string name="morphe_theme_color_dark_entry_13">Madilim na dilaw</string>
+  <string name="morphe_theme_color_dark_entry_14">Madilim na kahel</string>
+  <string name="morphe_theme_color_dark_entry_15">Madilim na pula</string>
+  <string name="morphe_theme_color_dark_custom_title">Pasadyang madilim na background</string>
+  <string name="morphe_theme_color_dark_custom_summary">Itakda ang kulay ng background ng madilim na tema</string>
+  <string name="morphe_theme_color_entry_1">Default ng app</string>
+  <string name="morphe_theme_color_entry_4">Material You (Neutral)</string>
+  <string name="morphe_theme_color_entry_5">Material You (Pangunahin)</string>
+  <string name="morphe_theme_color_entry_6">Material You (Pangalawa)</string>
+  <string name="morphe_theme_color_entry_7">Material You (Pangatlo)</string>
+  <string name="morphe_theme_color_custom_entry">Pasadya</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Mga panlabas na pag-download</string>
   <string name="morphe_external_downloader_name_title">Pangalan ng pakete ng tagapag-download</string>
@@ -62,7 +81,7 @@ I-verify na tama ang pangalan ng pakete at naka-install ang app"</string>
 Kung ikaw ay isang gumagamit ng YouTube Premium, maaaring hindi na kailanganin ang setting na ito."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Hindi makuha ang anumang mga stream ng kliyente</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Maaaring magdulot ng isyu sa playback kung pinatay mo ang pagpipilian na ito</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Subukang paganahin: Gayahin ang mga video stream &gt; Pag-sign in sa Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Default na kliyente</string>
@@ -132,9 +151,9 @@ Upang mag-sign in, pindutin ang magpatuloy sa ibaba"</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">Kumonekta nang direkta kung nabigo ang proxy</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Itago ang mga patalastas sa fullscreen</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">Upang gamitin ang tampok na ito, baguhin ang \'Gayahin ang mga video stream\' sa anumang kliyente maliban sa Android Studio\'</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">Upang gamitin ang tampok na ito, baguhin ang \'Spoof video streams\' sa anumang kliyente maliban sa \'Android Studio\' at \'Android VR Downgraded\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">I-sanitize ang mga nakabahaging link</string>
   <string name="morphe_sanitize_sharing_links_summary">Inaalis ang mga parameter ng query sa pagsubaybay mula sa mga ibinahaging link</string>
@@ -165,6 +184,23 @@ Gayunpaman, magtatala din ng ilang datos ng tagagamit ang pagpapagana nito kagay
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Alisin ang dialog para sa pagpapasya ng manonood\",\"key\":\"morphe_remove_viewer_discretion_dialog_title\",\"context\":\"morphe_remove_viewer_discretion_dialog_title\ninteraction.dialog.removeViewerDiscretionDialogPatch\",\"maxLength\":null,\"tmSuggestions\":[],\"terms\":[]},{</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Hindi nito nilalagpasan ang age restriction. Tinatanggap lang nito ito nang awtomatiko</string>
+  <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">Tagapagbigay ng PoToken</string>
+  <string name="morphe_potoken_provider_screen_summary">I-configure ang PoToken provider upang maiwasan ang mga isyu sa pag-playback</string>
+  <string name="morphe_external_potoken_provider_title">Panlabas na PoToken provider</string>
+  <string name="morphe_external_potoken_provider_summary">"Inaayos ang mga isyu sa playback gamit ang panlabas na PoToken minter (Eksperimental)
+
+Kung ikaw ay isang YouTube Premium user, maaaring hindi kinakailangan ang setting na ito"</string>
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"Inaayos ang mga isyu sa pag-playback gamit ang panlabas na PoToken minter (Eksperimental)
+
+Upang gamitin ang feature na ito, i-off ang 'Pekeng video streams'"</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">Kung hindi ito gumana, subukang puwersahang isara ang MicroG</string>
+  <string name="morphe_external_potoken_provider_settings_summary">Buksan ang mga setting ng PotHelper</string>
+  <string name="morphe_external_potoken_provider_about_summary">"Kasalukuyang nasa ilalim ng pag-unlad ang tampok na ito at maaaring hindi gumana
+
+Pindutin dito upang i-download ang PotHelper"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Pekein ang bersyon ng app</string>
   <string name="morphe_spoof_app_version_summary">Niloloko nito ang server para isipin na gumagamit ka ng mas lumang bersyon ng app upang maibalik ang mga dating feature ng UI</string>

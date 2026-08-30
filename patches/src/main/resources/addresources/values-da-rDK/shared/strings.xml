@@ -107,9 +107,16 @@ Du modtager ikke notifikationer om uventede hændelser."</string>
   <string name="morphe_debug_logs_clear_toast">Fejlfindingslogge ryddet</string>
   <string name="morphe_debug_feature_flags_manager_title">Funktionsflag Manager</string>
   <string name="morphe_debug_feature_flags_manager_summary">Administrer boolean funktionsflag</string>
-  <string name="morphe_debug_feature_flags_manager_active_header"> Aktive funktionsflag (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Blokerede funktionsflag (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Søg i funktionsflag</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Automatisk</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_action_remove">Fjern</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Funktionsflag gemt</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Funktionsflag nulstillet</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Funktionsflag kopieret til udklipsholder</string>

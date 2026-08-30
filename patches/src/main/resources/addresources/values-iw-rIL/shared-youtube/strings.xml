@@ -21,6 +21,25 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">הפעל מחדש כדי לסיים את ההגדרות</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">שם האפליקציה</string>
+  <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">רקע ערכת נושא כהה</string>
+  <string name="morphe_theme_color_dark_entry_2">שחור טהור</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You (שחור מוחלט)</string>
+  <string name="morphe_theme_color_dark_entry_9">YouTube קלאסי</string>
+  <string name="morphe_theme_color_dark_entry_10">ורוד כהה</string>
+  <string name="morphe_theme_color_dark_entry_11">כחול כהה</string>
+  <string name="morphe_theme_color_dark_entry_12">ירוק כהה</string>
+  <string name="morphe_theme_color_dark_entry_13">צהוב כהה</string>
+  <string name="morphe_theme_color_dark_entry_14">כתום כהה</string>
+  <string name="morphe_theme_color_dark_entry_15">אדום כהה</string>
+  <string name="morphe_theme_color_dark_custom_title">רקע כהה מותאם אישית</string>
+  <string name="morphe_theme_color_dark_custom_summary">הגדר את צבע הרקע של הנושא הכהה</string>
+  <string name="morphe_theme_color_entry_1">ברירת מחדל של האפליקציה</string>
+  <string name="morphe_theme_color_entry_4">Material You (ניטרלי)</string>
+  <string name="morphe_theme_color_entry_5">Material You (ראשוני)</string>
+  <string name="morphe_theme_color_entry_6">Material You (משני)</string>
+  <string name="morphe_theme_color_entry_7">Material You (שלישי)</string>
+  <string name="morphe_theme_color_custom_entry">מותאם אישית</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">הורדות חיצוניות</string>
   <string name="morphe_external_downloader_name_title">שם חבילת מוריד</string>
@@ -62,7 +81,7 @@ Second \"item\" text"</string>
 אם אתה משתמש YouTube Premium, ייתכן שהגדרת אפשרות זו לא תהיה נחוצה"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Не удалось получить доступ к потокам клиента</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">כיבוי הגדרה זו עלול לגרום לבעיות השמעה.</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Попробуйте включить: Фальшивый поток > Войти в Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">לקוח ברירת מחדל</string>
@@ -132,9 +151,9 @@ Second \"item\" text"</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">התחבר ישירות אם הפרוקסי נכשל</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">הסתר מודעות מסך מלא</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">כדי להשתמש בתכונה זו, שנה את \'זיוף זרמי וידאו\' לכל לקוח מלבד Android Studio\'</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">כדי להשתמש בתכונה זו, שנה את \'זיוף זרמי וידאו\' לכל לקוח מלבד \'Android Studio\' ו\'Android VR Downgraded\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">טיהור קישורי שיתוף</string>
   <string name="morphe_sanitize_sharing_links_summary">מסיר פרמטרים של שאילתות מעקב מקישורי שיתוף</string>
@@ -165,6 +184,23 @@ Second \"item\" text"</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">הסר את תיבת הדו\"ה לגבי התאמת התוכן לצופה</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">פעולה זו אינה עוקפת את הגבלת הגיל. היא רק מאשרת אותה באופן אוטומטי</string>
+  <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">ספק PoToken</string>
+  <string name="morphe_potoken_provider_screen_summary">הגדר את ספק PoToken כדי למנוע בעיות השמעה</string>
+  <string name="morphe_external_potoken_provider_title">ספק PoToken חיצוני</string>
+  <string name="morphe_external_potoken_provider_summary">"מתקן בעיות השמעה באמצעות מחולל PoToken חיצוני (ניסיוני)
+
+אם אתה משתמש ב-YouTube Premium, ייתכן שהגדרה זו אינה נדרשת"</string>
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"פותר בעיות השמעה באמצעות minter PoToken חיצוני (ניסיוני)
+
+כדי להשתמש בתכונה זו, כבה את 'זיוף הזרמות וידאו'\"}"</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">אם זה לא עובד, נסה לסגור בכוח את MicroG</string>
+  <string name="morphe_external_potoken_provider_settings_summary">פתח את הגדרות PotHelper</string>
+  <string name="morphe_external_potoken_provider_about_summary">"תכונה זו נמצאת כרגע בפיתוח וייתכן שלא תעבוד
+
+הקש כאן להורדת PotHelper"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">זייף גרסת אפליקציה</string>
   <string name="morphe_spoof_app_version_summary">מרמה את השרת לחשוב שאתה משתמש בגרסת אפליקציה ישנה יותר כדי לשחזר תכונות ממשק משתמש מדור קודם</string>

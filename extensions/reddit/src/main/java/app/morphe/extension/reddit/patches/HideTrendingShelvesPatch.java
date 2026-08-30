@@ -121,7 +121,7 @@ public final class HideTrendingShelvesPatch {
     public static void setContentLanguages(List<Locale> locales) {
         try {
             if (trendingLabels == null || trendingLabels.length <= 1) {
-                if (Utils.getContext() == null) {
+                if (!Utils.isContextSet()) {
                     Logger.printInfo(() -> "Cannot set content languages, context is null");
                     return;
                 }

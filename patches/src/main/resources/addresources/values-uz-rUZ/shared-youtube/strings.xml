@@ -21,6 +21,25 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Sozlashni tugatish uchun qayta ishga tushirish</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Ilova nomi</string>
+  <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">Qorong\'i mavzu foni</string>
+  <string name="morphe_theme_color_dark_entry_2">Sof qora</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You (To\'laq qora)</string>
+  <string name="morphe_theme_color_dark_entry_9">Klassik YouTube</string>
+  <string name="morphe_theme_color_dark_entry_10">To\'q pushti</string>
+  <string name="morphe_theme_color_dark_entry_11">To\'q ko\'k</string>
+  <string name="morphe_theme_color_dark_entry_12">To\'q yashil</string>
+  <string name="morphe_theme_color_dark_entry_13">To\'q sariq</string>
+  <string name="morphe_theme_color_dark_entry_14">To\'q to\'q sariq</string>
+  <string name="morphe_theme_color_dark_entry_15">To\'q qizil</string>
+  <string name="morphe_theme_color_dark_custom_title">Maxsus qorong\'u fon</string>
+  <string name="morphe_theme_color_dark_custom_summary">Qorong\'u mavzu fon rangini sozlang</string>
+  <string name="morphe_theme_color_entry_1">App standarti</string>
+  <string name="morphe_theme_color_entry_4">Material You (Neytral)</string>
+  <string name="morphe_theme_color_entry_5">Material You (Asosiy)</string>
+  <string name="morphe_theme_color_entry_6">Material You (Yordamchi)</string>
+  <string name="morphe_theme_color_entry_7">Material You (Uchinchi darajali)</string>
+  <string name="morphe_theme_color_custom_entry">Maxsus</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Tashqi yuklamalar</string>
   <string name="morphe_external_downloader_name_title">Yuklab olish paketi nomi</string>
@@ -62,7 +81,7 @@ Paket nomi to'g'ri ekanligini va ilova o'rnatilganligini tekshiring"</string>
 Agar siz YouTube Premium foydalanuvchisi bo‘lsangiz, ushbu sozlash talab qilinmasligi mumkin"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Klient oqimlari topilmadi</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Ushbu sozlamani o‘chirish o‘ynatishda muammolarga olib kelishi mumkin.</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Agar mijozlar topilmasa: Android VR ga kirish imkoniyatini sinab ko‘ring</string>
   <string name="morphe_spoof_video_streams_client_type_title">Standart klient</string>
@@ -132,9 +151,9 @@ Kirish uchun quyida 'Davom etish' tugmasini bosing"</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">Proksi ishlamay qolsa to‘g‘ridan-to‘g‘ri ulanish</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">To‘liq ekranli reklamalarni yashirish</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">Ushbu funksiyadan foydalanish uchun, \"Видео оқимларини бураш\"ни \'Android Studio\'dan\' tashqari har qanday mijozga o\'zgartiring.</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">Bu xususiyatdan foydalanish uchun, \'Video oqimlarini soxtalashtirish\'ni \'Android Studio\' va \'Android VR Downgraded\' dan boshqa istalgan mijozga o\'zgartiring.</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Ulash linklarini sanitizatsiya qilish</string>
   <string name="morphe_sanitize_sharing_links_summary">Ulash manzillaridan kuzatuv parametrlarini olib tashlaydi</string>
@@ -165,6 +184,23 @@ Shu bilan birga, bu sizning IP-manzilingiz kabi ba'zi foydalanuvchi ma'lumotlari
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Tomoshabinlar uchun ogohlantirish dialogini olib tashlash</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Bu yosh chegarasini chetlab o\'tmaydi. U shunchaki avtomatik ravishda rozilik bildiradi</string>
+  <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">PoToken provayderi</string>
+  <string name="morphe_potoken_provider_screen_summary">PoToken provayderini sozlang, ijro muammolarini oldini olish uchun</string>
+  <string name="morphe_external_potoken_provider_title">Tashqi PoToken provayderi</string>
+  <string name="morphe_external_potoken_provider_summary">"Tashqi PoToken minter yordamida ijro etish muammolarini tuzatadi (Eksperimental)
+
+Agar siz YouTube Premium foydalanuvchisi bo'lsangiz, bu sozlama talab qilinmasligi mumkin"</string>
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"Tashqi PoToken minter yordamida ijro etishdagi muammolarni tuzatadi (Eksperimental)
+
+Bu xususiyatdan foydalanish uchun 'Video oqimlarini soxtalashtirish' ni o'chiring."</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">Agar u ishlamasa, MicroG-ni majburiy yopib ko\'ring</string>
+  <string name="morphe_external_potoken_provider_settings_summary">PotHelper sozlamalarini oching</string>
+  <string name="morphe_external_potoken_provider_about_summary">"Bu funksiya hozirda ishlab chiqilmoqda va ishlamasligi mumkin
+
+PotHelper-ni yuklab olish uchun shu yerga bosing"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Ilova versiyasini buzish</string>
   <string name="morphe_spoof_app_version_summary">Serverni eski ilova versiyasidan foydalanayotganingizni o\'ylashga majburlaydi, bu esa eski UI xususiyatlarini qaytarish uchun</string>

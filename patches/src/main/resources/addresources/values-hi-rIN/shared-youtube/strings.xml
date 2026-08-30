@@ -21,6 +21,25 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">सेटिंग को पूरा करने के लिए रीस्टार्ट करें</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">एप्प नैम</string>
+  <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">डार्क थीम की पृष्ठभूमि</string>
+  <string name="morphe_theme_color_dark_entry_2">शुद्ध काला</string>
+  <string name="morphe_theme_color_dark_entry_3">मटेरियल यू (शुद्ध काला)</string>
+  <string name="morphe_theme_color_dark_entry_9">क्लासिक यूट्यूब</string>
+  <string name="morphe_theme_color_dark_entry_10">गहरा गुलाबी</string>
+  <string name="morphe_theme_color_dark_entry_11">गहरा नीला</string>
+  <string name="morphe_theme_color_dark_entry_12">गहरा हरा</string>
+  <string name="morphe_theme_color_dark_entry_13">गहरा पीला</string>
+  <string name="morphe_theme_color_dark_entry_14">गहरा नारंगी</string>
+  <string name="morphe_theme_color_dark_entry_15">गहरा लाल</string>
+  <string name="morphe_theme_color_dark_custom_title">कस्टम डार्क बैकग्राउंड</string>
+  <string name="morphe_theme_color_dark_custom_summary">डार्क थीम का बैकग्राउंड रंग सेट करें</string>
+  <string name="morphe_theme_color_entry_1">ऐप डिफ़ॉल्ट</string>
+  <string name="morphe_theme_color_entry_4">मटेरियल यू (न्यूट्रल)</string>
+  <string name="morphe_theme_color_entry_5">मटेरियल यू (प्राथमिक)</string>
+  <string name="morphe_theme_color_entry_6">मटेरियल यू (द्वितीयक)</string>
+  <string name="morphe_theme_color_entry_7">मटेरियल यू (तृतीयक)</string>
+  <string name="morphe_theme_color_custom_entry">कस्टम</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">बाहरी डाउनलोड्स</string>
   <string name="morphe_external_downloader_name_title">डाउनलोडर पैकेज नाम</string>
@@ -62,7 +81,7 @@ Second \"item\" text"</string>
 यदि आप YouTube Premium उपयोगकर्ता हैं, तो यह सेटिंग आवश्यक नहीं हो सकती है।"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">कोई क्लायंट स्ट्रीम्स प्राप्त नहीं किए गए</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">इस सेटिंग को बंद करना प्लेबैक समस्याओं को उत्पन्न कर सकता है।</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">सुझाव: वीडियो स्ट्रीम्स को फर्ज़ करें > एंड्रॉइड वीआर साइन इन करें</string>
   <string name="morphe_spoof_video_streams_client_type_title">डिफ़ॉल्ट क्लायंट</string>
@@ -132,9 +151,9 @@ Second \"item\" text"</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">यदि प्रॉक्सी विफल हो जाती है तो सीधे कनेक्ट करें</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">छुपाएं फुलस्क्रीन विज्ञापन</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">इस सुविधा का उपयोग करने के लिए, \'Spoof video streams\' को \'Android Studio\' के अलावा किसी भी क्लाइंट में बदलें।</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">इस सुविधा का उपयोग करने के लिए, \'वीडियो स्ट्रीम स्पूफ\' को \'Android Studio\' और \'Android VR Downgraded\' को छोड़कर किसी भी क्लाइंट में बदलें।</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">शेयरिंग लिंक्स को साफ़ करें</string>
   <string name="morphe_sanitize_sharing_links_summary">साझा लिंक से ट्रैकिंग क्वेरी पैरामीटर हटाता है</string>
@@ -165,6 +184,20 @@ Second \"item\" text"</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">देखने वाले के लिए चेतावनी संवाद हटाएँ</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">यह आयु प्रतिबंध को दरकिनार नहीं करता है। यह केवल इसे स्वचालित रूप से स्वीकार करता है</string>
+  <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_external_potoken_provider_summary">"बाहरी PoToken मिंटर का उपयोग करके प्लेबैक समस्याओं को ठीक करता है (प्रयोगात्मक)
+
+यदि आप YouTube Premium उपयोगकर्ता हैं, तो यह सेटिंग आवश्यक नहीं हो सकती है"</string>
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"बाहरी PoToken मिंटर का उपयोग करके प्लेबैक समस्याओं को ठीक करता है (प्रयोगात्मक)
+
+इस सुविधा का उपयोग करने के लिए, 'स्पूफ वीडियो स्ट्रीम' बंद करें"</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">यदि यह काम नहीं करता है, तो MicroG को बलपूर्वक बंद करने का प्रयास करें</string>
+  <string name="morphe_external_potoken_provider_settings_summary">PotHelper सेटिंग्स खोलें</string>
+  <string name="morphe_external_potoken_provider_about_summary">"यह सुविधा वर्तमान में विकास के अधीन है और यह काम नहीं कर सकती है
+
+PotHelper डाउनलोड करने के लिए यहां टैप करें"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">ऐप का स्पूफ संस्करण</string>
   <string name="morphe_spoof_app_version_summary">यह सर्वर को धोखा देता है कि आप पुराने ऐप संस्करण का उपयोग कर रहे हैं ताकि पुरानी यूआई सुविधाओं को बहाल किया जा सके।</string>

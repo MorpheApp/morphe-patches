@@ -21,6 +21,25 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Reporniți pentru a finaliza configurarea</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Numele aplicației</string>
+  <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">Fundalul temei întunecate</string>
+  <string name="morphe_theme_color_dark_entry_2">Negru pur</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You (Negru pur)</string>
+  <string name="morphe_theme_color_dark_entry_9">YouTube clasic</string>
+  <string name="morphe_theme_color_dark_entry_10">Roz închis</string>
+  <string name="morphe_theme_color_dark_entry_11">Albastru închis</string>
+  <string name="morphe_theme_color_dark_entry_12">Verde închis</string>
+  <string name="morphe_theme_color_dark_entry_13">Galben închis</string>
+  <string name="morphe_theme_color_dark_entry_14">Portocaliu închis</string>
+  <string name="morphe_theme_color_dark_entry_15">Roșu închis</string>
+  <string name="morphe_theme_color_dark_custom_title">Fond întunecat personalizat</string>
+  <string name="morphe_theme_color_dark_custom_summary">Setați culoarea de fundal a temei întunecate</string>
+  <string name="morphe_theme_color_entry_1">Implicitul aplicației</string>
+  <string name="morphe_theme_color_entry_4">Material You (Neutru)</string>
+  <string name="morphe_theme_color_entry_5">Material You (Primar)</string>
+  <string name="morphe_theme_color_entry_6">Material You (Secundar)</string>
+  <string name="morphe_theme_color_entry_7">Material You (Tertiar)</string>
+  <string name="morphe_theme_color_custom_entry">Personalizat</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Descărcări externe</string>
   <string name="morphe_external_downloader_name_title">Numele pachetului aplicației de descărcare</string>
@@ -62,7 +81,7 @@ Verificați dacă numele pachetului este corect și aplicația este instalată"<
 Dacă ești un utilizator YouTube Premium, această setare s-ar putea să nu fie necesară"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Nu s-a putut încărca nicio client stream</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Dezactivarea acestei setări poate cauza probleme de redare.</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Încearcă activarea: Spoof video streams > Autentificare Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Client implicit</string>
@@ -132,9 +151,9 @@ Pentru a te apăsa, apăsă butonul Continu de mai jos"</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">Conectează-te direct dacă proxy-ul eșuează</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Ascunde reclame pe tot ecranul</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">Pentru a utiliza această funcție, modificați \"Falsificare fluxuri video\" la orice client, cu excepția Android Studio\'</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">Pentru a utiliza această funcție, modificați \'Falsificare fluxuri video\' la orice client, cu excepția \'Android Studio\' și \'Android VR Downgraded\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Igienizează linkurile de partajare</string>
   <string name="morphe_sanitize_sharing_links_summary">Elimină parametrii de interogare de urmărire din linkurile partajate</string>
@@ -165,6 +184,23 @@ Cu toate acestea, activarea acestei opțiuni va înregistra și unele date ale u
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Eliminați dialogul de avertizare pentru publicul vizionator</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Acest lucru nu ocolește restricția de vârstă. Doar o acceptă automat</string>
+  <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">Furnizor PoToken</string>
+  <string name="morphe_potoken_provider_screen_summary">Configurați furnizorul PoToken pentru a preveni problemele de redare</string>
+  <string name="morphe_external_potoken_provider_title">Furnizor extern PoToken</string>
+  <string name="morphe_external_potoken_provider_summary">"Corectează problemele de redare folosind un minter PoToken extern (Experimental)
+
+Dacă ești utilizator YouTube Premium, această setare poate să nu fie necesară"</string>
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"Corectează problemele de redare folosind un minter PoToken extern (Experimental)
+
+Pentru a utiliza această funcție, dezactivați 'Spoof video streams'"</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">Dacă nu funcționează, încearcă să forțezi închiderea MicroG</string>
+  <string name="morphe_external_potoken_provider_settings_summary">Deschide setările PotHelper</string>
+  <string name="morphe_external_potoken_provider_about_summary">"Această funcție este în curs de dezvoltare și poate să nu funcționeze
+
+Atinge aici pentru a descărca PotHelper"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Falsifică versiunea aplicației</string>
   <string name="morphe_spoof_app_version_summary">Păcălește serverul să creadă că folosești o versiune mai veche a aplicației pentru a restabili funcționalități UI vechi</string>

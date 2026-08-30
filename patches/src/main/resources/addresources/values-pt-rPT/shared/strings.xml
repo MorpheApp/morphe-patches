@@ -107,13 +107,21 @@ Não será notificado de quaisquer eventos inesperados."</string>
   <string name="morphe_debug_logs_clear_toast">Registos de depuração limpos</string>
   <string name="morphe_debug_feature_flags_manager_title">Manager de sinalizadores de recurso</string>
   <string name="morphe_debug_feature_flags_manager_summary">Gerenciar sinalizadores de recurso booleanos</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Sinalizadores de recurso ativos (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Sinalizadores de recurso bloqueados (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Pesquisar funcionalidades…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Automático</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_action_remove">Remover</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Sinalizadores de recurso guardados</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Sinalizadores de recurso reiniciados</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Sinalizadores de recurso copiados para a área de transferência</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reinicie a aplicação para usar esta configuração</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Início</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Abrir as configurações do MicroG</string>

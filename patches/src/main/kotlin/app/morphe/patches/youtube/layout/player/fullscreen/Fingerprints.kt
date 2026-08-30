@@ -81,6 +81,28 @@ internal object PlayerDragGestureInitFingerprint : Fingerprint(
     )
 )
 
+internal object YouTubePlayerOverlaysLayoutConstructorFingerprint : Fingerprint(
+    definingClass = "/YouTubePlayerOverlaysLayout;",
+    name = "<init>",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    returnType = "V",
+    parameters = listOf("Landroid/content/Context;", "Landroid/util/AttributeSet;"),
+    filters = listOf(
+        opcode(Opcode.RETURN_VOID)
+    )
+)
+
+internal object YouTubePlayerViewOnLayoutFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/apps/youtube/app/player/YouTubePlayerViewNotForReflection;",
+    name = "onLayout",
+    accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Z", "I", "I", "I", "I"),
+    filters = listOf(
+        opcode(Opcode.RETURN_VOID)
+    )
+)
+
 internal object FullscreenGestureZoomFingerprint : Fingerprint (
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
@@ -98,4 +120,23 @@ internal object FullscreenGestureZoomFingerprint : Fingerprint (
         opcode(opcode = Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
         methodCall(opcode = Opcode.INVOKE_VIRTUAL, returnType = "Z", location = MatchAfterWithin(12)),
     )
+)
+
+/**
+ * YouTube player pinch-to-zoom listener.
+ *
+ * Unique among other ScaleGestureDetector listeners (photo picker, creation, etc.):
+ * it implements only OnScaleGestureListener and has both ScaleGestureDetector and GestureDetector fields.
+ */
+internal object VideoZoomScaleBeginFingerprint : Fingerprint(
+    name = "onScaleBegin",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf("Landroid/view/ScaleGestureDetector;"),
+    custom = { _, classDef ->
+        classDef.interfaces.size == 1 &&
+            classDef.interfaces.contains($$"Landroid/view/ScaleGestureDetector$OnScaleGestureListener;") &&
+            classDef.fields.any { it.type == "Landroid/view/ScaleGestureDetector;" } &&
+            classDef.fields.any { it.type == "Landroid/view/GestureDetector;" }
+    }
 )

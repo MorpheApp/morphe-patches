@@ -129,16 +129,13 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_explore_podcast_section"),
                     SwitchPreference("morphe_hide_featured_channels_section"),
                     SwitchPreference("morphe_hide_featured_links_section"),
-                    SwitchPreference("morphe_hide_featured_places_section"),
                     SwitchPreference("morphe_hide_featured_playlists_section"),
                     SwitchPreference("morphe_hide_featured_videos_section"),
-                    SwitchPreference("morphe_hide_gaming_section"),
                     SwitchPreference("morphe_hide_hashtag_section"),
                     SwitchPreference("morphe_hide_how_this_was_made_section"),
                     SwitchPreference("morphe_hide_hype_points"),
                     SwitchPreference("morphe_hide_info_cards_section"),
                     SwitchPreference("morphe_hide_key_concepts_section"),
-                    SwitchPreference("morphe_hide_music_section"),
                     SwitchPreference("morphe_hide_quizzes_section"),
                     SwitchPreference("morphe_hide_search_inside_this_video_section"),
                     SwitchPreference("morphe_hide_subscribe_button"),
@@ -174,9 +171,11 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_comments_gift_button"),
                     SwitchPreference("morphe_hide_comments_info_button"),
                     SwitchPreference("morphe_hide_comments_live_chat_donators_bar"),
+                    SwitchPreference("morphe_hide_comments_live_chat_tooltips", summary = true),
                     SwitchPreference("morphe_hide_comments_preview_comment", summary = true),
                     SwitchPreference("morphe_hide_comments_thanks_button"),
                     SwitchPreference("morphe_hide_comments_timestamp_button"),
+                    SwitchPreference("morphe_hide_comments_top_fans_button"),
                     SwitchPreference("morphe_sanitize_comments_highlighted_search_links", summary = true)
                 ),
                 sorting = Sorting.UNSORTED
@@ -237,10 +236,10 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 key = "morphe_hide_keyword_content_screen",
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
-                    SwitchPreference("morphe_hide_keyword_content_home"),
-                    SwitchPreference("morphe_hide_keyword_content_subscriptions"),
-                    SwitchPreference("morphe_hide_keyword_content_search"),
                     SwitchPreference("morphe_hide_keyword_content_comments"),
+                    SwitchPreference("morphe_hide_keyword_content_home"),
+                    SwitchPreference("morphe_hide_keyword_content_search"),
+                    SwitchPreference("morphe_hide_keyword_content_subscriptions"),
                     TextPreference("morphe_hide_keyword_content_phrases", inputType = InputType.TEXT_MULTI_LINE),
                     PreferenceCategory(
                         key = "morphe_hide_keyword_content_stats_category",
@@ -329,6 +328,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             PreferenceScreenPreference(
                 key = "morphe_hide_filter_bar_screen",
                 preferences = setOf(
+                    SwitchPreference("morphe_hide_filter_bar_in_channel_page"),
                     SwitchPreference("morphe_hide_filter_bar_in_comments"),
                     SwitchPreference("morphe_hide_filter_bar_in_feed"),
                     SwitchPreference("morphe_hide_filter_bar_in_related_videos"),
@@ -349,6 +349,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_community_button"),
                     SwitchPreference("morphe_hide_join_button"),
                     SwitchPreference("morphe_hide_links_preview", summary = true),
+                    SwitchPreference("morphe_hide_members_only_chip", summary = true),
                     SwitchPreference("morphe_hide_members_shelf", summary = true),
                     SwitchPreference("morphe_hide_posts_shelf"),
                     SwitchPreference("morphe_hide_store_button"),
@@ -392,6 +393,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_latest_videos_button", summary = true),
             SwitchPreference("morphe_hide_mix_playlists"),
             SwitchPreference("morphe_hide_movies_section"),
+            SwitchPreference("morphe_hide_notifications_menu_header", summary = true),
             SwitchPreference("morphe_hide_notify_me_button", summary = true),
             SwitchPreference("morphe_hide_playables", summary = true),
             SwitchPreference("morphe_hide_search_term_thumbnails", summary = true),
@@ -595,7 +597,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // region hide comments carousel
 
-        hookElement("$COMMENTS_FILTER->onCommentsLoaded([B)[B")
+        hookElement("$COMMENTS_FILTER->onCommentsLoaded")
 
         // endregion
 
@@ -1015,6 +1017,25 @@ val hideLayoutComponentsPatch = bytecodePatch(
                         """
                     )
                 }
+            }
+        }
+
+        // endregion
+
+        // region hide live chat tooltips
+
+        TooltipAnchorViewFingerprint.let {
+            it.method.apply {
+                val anchorFieldGetIndex = it.instructionMatches.first().index
+                val anchorRegister = getInstruction<TwoRegisterInstruction>(anchorFieldGetIndex).registerA
+
+                addInstructions(
+                    anchorFieldGetIndex + 1,
+                    """
+                        invoke-static { v$anchorRegister }, $COMMENTS_FILTER->hideLiveChatTooltip(Landroid/view/View;)Landroid/view/View;
+                        move-result-object v$anchorRegister
+                    """
+                )
             }
         }
 

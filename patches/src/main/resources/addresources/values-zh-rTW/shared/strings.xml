@@ -107,13 +107,23 @@ Second \"item\" text"</string>
   <string name="morphe_debug_logs_clear_toast">Debug 記錄已清除</string>
   <string name="morphe_debug_feature_flags_manager_title">功能標記管理器</string>
   <string name="morphe_debug_feature_flags_manager_summary">管理布林功能標記</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">已啟用功能標籤 (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">已封鎖功能標籤 (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">搜尋功能標籤…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">自動</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">關閉</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">開啟</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">刪除</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">功能標籤已儲存</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">功能標籤已重設</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">功能標籤已複製到剪貼簿</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">重新啟動應用程式以使用此設定</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">開始</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">開啟 MicroG 設定</string>

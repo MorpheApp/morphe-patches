@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.patches;
 
 import android.view.View;
@@ -30,13 +37,28 @@ public final class HidePlayerOverlayButtonsPatch {
      * Injection point.
      */
     public static int hideCastButton(int original) {
-        return Settings.HIDE_CAST_BUTTON.get() ? View.GONE : original;
+        if (Settings.HIDE_CAST_BUTTON.get()) {
+            return View.GONE;
+        }
+
+        return original;
     }
 
     /**
      * Injection point.
      */
-    public static boolean getCastButtonOverride(boolean original) {
+    public static void hideCastButton(View parentView) {
+        if (!Settings.HIDE_CAST_BUTTON.get()) {
+            return;
+        }
+
+        hideView(parentView, "media_route_button");
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean hideCastButton(boolean original) {
         if (Settings.HIDE_CAST_BUTTON.get()) {
             return false;
         }
@@ -91,12 +113,6 @@ public final class HidePlayerOverlayButtonsPatch {
     private static final boolean HIDE_PLAYER_PREVIOUS_NEXT_BUTTONS_ENABLED
             = Settings.HIDE_PLAYER_PREVIOUS_NEXT_BUTTONS.get();
 
-    private static final int PLAYER_CONTROL_PREVIOUS_BUTTON_TOUCH_AREA_ID = ResourceUtils.getIdentifierOrThrow(
-            ResourceType.ID, "player_control_previous_button_touch_area");
-
-    private static final int PLAYER_CONTROL_NEXT_BUTTON_TOUCH_AREA_ID = ResourceUtils.getIdentifierOrThrow(
-            ResourceType.ID, "player_control_next_button_touch_area");
-
     /**
      * Injection point.
      */
@@ -105,17 +121,11 @@ public final class HidePlayerOverlayButtonsPatch {
             return;
         }
 
-        // Must use a deferred call to main thread to hide the button.
-        // Otherwise, the layout crashes if set to hidden now.
-        Utils.runOnMainThread(() -> {
-            hideView(parentView, PLAYER_CONTROL_PREVIOUS_BUTTON_TOUCH_AREA_ID);
-            hideView(parentView, PLAYER_CONTROL_NEXT_BUTTON_TOUCH_AREA_ID);
-        });
+        hideView(parentView, "player_control_previous_button_touch_area");
+        hideView(parentView, "player_control_next_button_touch_area");
     }
 
 
-    private static final int PLAYER_OVERFLOW_BUTTON_ID = ResourceUtils.getIdentifierOrThrow(
-            ResourceType.ID, "player_overflow_button");
     /**
      * Injection point.
      */
@@ -124,7 +134,7 @@ public final class HidePlayerOverlayButtonsPatch {
             return;
         }
 
-        Utils.runOnMainThread(() -> hideView(parentView, PLAYER_OVERFLOW_BUTTON_ID));
+        hideView(parentView, "player_overflow_button");
     }
 
     /**
@@ -165,16 +175,22 @@ public final class HidePlayerOverlayButtonsPatch {
         return rootView;
     }
 
-    private static void hideView(View parentView, int resourceId) {
-        View nextPreviousButton = parentView.findViewById(resourceId);
+    private static void hideView(View parentView, String name) {
+        int resourceId = ResourceUtils.getIdentifierOrThrow(ResourceType.ID, name);
 
-        if (nextPreviousButton == null) {
-            Logger.printException(() -> "Could not find player previous/next button");
-            return;
-        }
+        // Must use a deferred call to main thread to hide the button.
+        // Otherwise, the layout crashes if set to hidden now.
+        Utils.runOnMainThread(() -> {
+            View targetView = parentView.findViewById(resourceId);
 
-        Logger.printDebug(() -> "Hiding previous/next button");
-        Utils.hideViewByRemovingFromParentUnderCondition(true, nextPreviousButton);
+            if (targetView == null) {
+                Logger.printException(() -> "Could not find player button: R.id." + name);
+                return;
+            }
+
+            Logger.printDebug(() -> "Hiding player button: R.id." + name);
+            Utils.hideViewByRemovingFromParentUnderCondition(true, targetView);
+        });
     }
 
     private static void removeImageViewsBackgroundRecursive(View currentView) {

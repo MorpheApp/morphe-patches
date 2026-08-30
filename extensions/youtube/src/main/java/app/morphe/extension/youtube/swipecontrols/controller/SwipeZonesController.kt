@@ -15,6 +15,7 @@ import android.util.TypedValue
 import android.view.View
 import app.morphe.extension.shared.ResourceType
 import app.morphe.extension.shared.ResourceUtils.getIdentifier
+import app.morphe.extension.shared.settings.preference.SeekBarPreference
 import app.morphe.extension.youtube.settings.Settings
 import app.morphe.extension.youtube.swipecontrols.misc.Rectangle
 import app.morphe.extension.youtube.swipecontrols.misc.applyDimension
@@ -24,19 +25,21 @@ import kotlin.math.min
  *  +------------------------------------------------------------------+
  *  |                         40dp (top dead)                          |
  *  +----------+-------------+----------------+-------------+----------+
- *  |          |  brightness |     speed      |   volume    |          |
+ *  |          |    left     |      top       |    right    |          |
  *  |  20dp    |    (↑ ↓)    |     (← →)      |    (↑ ↓)    |  20dp    |
- *  |          |  + speed    |   speed_h%     |  + speed    |          |
+ *  |          |    + top    |   speed_h%     |    + top    |          |
  *  +- - - - - +- - - - - - -+- - - - - - - - +- - - - - - -+- - - - - +
- *  |  dead    |  brightness |     dead       |   volume    |  dead    |
+ *  |  dead    |    left     |     dead       |    right    |  dead    |
  *  |          |   zone_w%   |   100-2*z%     |   zone_w%   |          |
  *  +----------+-------------+----------------+-------------+----------+
  *  |                        60dp (bottom dead)                        |
  *  +------------------------------------------------------------------+
  *
- *  brightness / volume - vertical swipe (↑ ↓), span full effective height
- *  speed               - horizontal swipe (← →), top speed_h% of effective height;
- *                        overlaps with the top of brightness and volume zones
+ *  left / right - vertical swipe (↑ ↓), span full effective height
+ *  top          - horizontal swipe (← →), top speed_h% of effective height;
+ *                 overlaps with the top of the left and right zones
+ *
+ *  Each zone performs the action it is assigned in the settings.
  */
 @Suppress("PrivatePropertyName")
 class SwipeZonesController(
@@ -86,27 +89,12 @@ class SwipeZonesController(
         }
 
     /**
-     * The rectangle of the volume control zone.
+     * The rectangle of the left control zone.
      */
-    val volume: Rectangle
+    val left: Rectangle
         get() {
             val eRect = effectiveSwipeRect
-            val zoneWidth = (eRect.width * maxOf(5, minOf(50, Settings.SWIPE_ZONE_WIDTH.get()))) / 100
-            return Rectangle(
-                eRect.right - zoneWidth,
-                eRect.top,
-                zoneWidth,
-                eRect.height,
-            )
-        }
-
-    /**
-     * The rectangle of the screen brightness control zone.
-     */
-    val brightness: Rectangle
-        get() {
-            val eRect = effectiveSwipeRect
-            val zoneWidth = (eRect.width * maxOf(5, minOf(50, Settings.SWIPE_ZONE_WIDTH.get()))) / 100
+            val zoneWidth = (eRect.width * SeekBarPreference.clampToRange(Settings.SWIPE_ZONE_WIDTH)) / 100
             return Rectangle(
                 eRect.left,
                 eRect.top,
@@ -116,13 +104,27 @@ class SwipeZonesController(
         }
 
     /**
-     * The rectangle of the playback speed control zone (top strip of the effective swipe area).
-     * Height is controlled by [Settings.SWIPE_SPEED_ZONE_HEIGHT] as a percentage of the player height.
+     * The rectangle of the right control zone.
      */
-    val speed: Rectangle
+    val right: Rectangle
         get() {
             val eRect = effectiveSwipeRect
-            val zoneHeight = (eRect.height * maxOf(5, minOf(75, Settings.SWIPE_SPEED_ZONE_HEIGHT.get()))) / 100
+            val zoneWidth = (eRect.width * SeekBarPreference.clampToRange(Settings.SWIPE_ZONE_WIDTH)) / 100
+            return Rectangle(
+                eRect.right - zoneWidth,
+                eRect.top,
+                zoneWidth,
+                eRect.height,
+            )
+        }
+
+    /**
+     * The rectangle of the top control zone.
+     */
+    val top: Rectangle
+        get() {
+            val eRect = effectiveSwipeRect
+            val zoneHeight = (eRect.height * SeekBarPreference.clampToRange(Settings.SWIPE_SPEED_ZONE_HEIGHT)) / 100
             return Rectangle(
                 eRect.left,
                 eRect.top,

@@ -1,6 +1,21 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.shared.requests;
 
 public class Route {
+    public enum Method {
+        GET,
+        POST
+    }
+
     private final String route;
     private final Method method;
     private final int paramCount;
@@ -10,8 +25,9 @@ public class Route {
         this.route = route;
         this.paramCount = countMatches(route, '{');
 
-        if (paramCount != countMatches(route, '}'))
+        if (paramCount != countMatches(route, '}')) {
             throw new IllegalArgumentException("Not enough parameters");
+        }
     }
 
     public Method getMethod() {
@@ -20,15 +36,20 @@ public class Route {
 
     public CompiledRoute compile(String... params) {
         if (params.length != paramCount)
-            throw new IllegalArgumentException("Error compiling route [" + route + "], incorrect amount of parameters provided. " +
-                    "Expected: " + paramCount + ", provided: " + params.length);
+            throw new IllegalArgumentException("Error compiling route [" + route + "]. "
+                    + "Incorrect amount of parameters provided, expected: " + paramCount
+                    + " provided: " + params.length);
 
-        StringBuilder compiledRoute = new StringBuilder(route);
+        StringBuilder compiledRoute = new StringBuilder();
+        int lastEnd = 0;
         for (int i = 0; i < paramCount; i++) {
-            int paramStart = compiledRoute.indexOf("{");
-            int paramEnd = compiledRoute.indexOf("}");
-            compiledRoute.replace(paramStart, paramEnd + 1, params[i]);
+            int paramStart = route.indexOf("{", lastEnd);
+            int paramEnd = route.indexOf("}", paramStart);
+            compiledRoute.append(route, lastEnd, paramStart);
+            compiledRoute.append(params[i]);
+            lastEnd = paramEnd + 1;
         }
+        compiledRoute.append(route.substring(lastEnd));
         return new CompiledRoute(this, compiledRoute.toString());
     }
 
@@ -45,7 +66,7 @@ public class Route {
             return compiledRoute;
         }
 
-        public Method getMethod() {
+        Method getMethod() {
             return baseRoute.method;
         }
     }
@@ -57,10 +78,5 @@ public class Route {
                 count++;
         }
         return count;
-    }
-
-    public enum Method {
-        GET,
-        POST
     }
 }

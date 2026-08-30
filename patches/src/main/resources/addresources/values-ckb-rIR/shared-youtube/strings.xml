@@ -21,6 +21,8 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">دەستپێکردنەوە بۆ تەواوکردنی ئامادەکردن</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">ناوی ئەپ</string>
+  <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_custom_entry">باو</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">دانه‌کانی دەرەکی</string>
   <string name="morphe_external_downloader_name_title">Downloader package name</string>
@@ -48,7 +50,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_title">گەڕانەوە سەر ڕاستەقینەی ڕاستگۆ</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">هیچ ڕاستگۆیەکی ئەندازی نەیادەخرێت</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">خەڵادانەوەی ئەم ناسنامەیە دەبێتە هۆی کێشە لە پەرباسەدا.</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">دۆخراوه‌ت: ڕاستکردنه‌وه‌ی ڕێگه‌ی ڤیدیو &gt; چوارده‌وه‌ی Android VR-ه‌ ده‌رباره‌ی نۆی‌ن</string>
   <string name="morphe_spoof_video_streams_client_type_title">ئەگەر سەرەکی</string>
@@ -96,8 +98,8 @@ Da te'îl bikin, li ser berdewam bikin xwarê"</string>
   <!-- misc.proxy.networkProxyPatch -->
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">شاردنەوەی ڕیکلامەکانی پڕ شاشە</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">خەڵەتەکانی هەڵواسانی دەړووستن</string>
   <string name="morphe_sanitize_sharing_links_summary">پارامیتەرەکانی بەدواکەوتنی پرس لە لینکە هاوبەشەکان لادەبات</string>
@@ -116,6 +118,9 @@ Da te'îl bikin, li ser berdewam bikin xwarê"</string>
   <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_summary">هقاسي نابي سفاح را مانعي تيستيًد نابي. قاس فاري قبلة ديرياحيدي</string>
+  <!-- misc.potoken.poTokenProviderPatch -->
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_summary">Tricks the server into thinking you are using an older app version to restore legacy UI features</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->

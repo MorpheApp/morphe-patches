@@ -107,13 +107,21 @@ Second \"item\" text"</string>
   <string name="morphe_debug_logs_clear_toast">Журналы отладки очищены</string>
   <string name="morphe_debug_feature_flags_manager_title">Флаги функций Manager</string>
   <string name="morphe_debug_feature_flags_manager_summary">Управление логическими флагами функций</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Флажки активных функций (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Флажки заблокированных функций (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Поиск флажков функций…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Авто</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_action_remove">Удалить</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Флажки функций сохранены</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Флажки функций сброшены</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Флажки функций скопированы в буфер обмена</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Перезапустите приложение, чтобы использовать эту настройку</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Начало</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Откройте настройки MicroG</string>

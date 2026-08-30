@@ -13,6 +13,7 @@ package app.morphe.patches.youtube.layout.returnyoutubedislike
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
@@ -41,6 +42,7 @@ import app.morphe.patches.youtube.video.videoid.videoIdPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.cloneParameters
 import app.morphe.util.findFreeRegister
+import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
@@ -52,7 +54,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/ReturnYouTubeDislikePatch;"
@@ -278,26 +279,26 @@ val returnYouTubeDislikePatch = bytecodePatch(
             // The rolling number Span is missing styling since it's initially set as a String.
             // Modify the UI text view and use the styled like/dislike Span.
             // Initial TextView is set in this method.
-            RollingNumberTextViewFingerprint.method,
+            RollingNumberTextViewFingerprint,
             // Videos less than 24 hours after uploaded, like counts will be updated in real time.
             // Whenever like counts are updated, TextView is set in this method.
-            RollingNumberTextViewAnimationUpdateFingerprint.method,
-        ).forEach { insertMethod ->
-            insertMethod.apply {
-                val setTextIndex = indexOfFirstInstructionOrThrow {
-                    getReference<MethodReference>()?.name == "setText"
+            RollingNumberTextViewAnimationUpdateFingerprint,
+        ).forEach { fingerprint ->
+            fingerprint.method.apply {
+                findInstructionIndicesReversedOrThrow(
+                    methodCall(name = "setText")
+                ).forEach { setTextIndex ->
+                    val textViewRegister = getInstruction<FiveRegisterInstruction>(setTextIndex).registerC
+                    val textSpanRegister = getInstruction<FiveRegisterInstruction>(setTextIndex).registerD
+
+                    addInstructions(
+                        setTextIndex,
+                        """
+                            invoke-static { v$textViewRegister, v$textSpanRegister }, $EXTENSION_CLASS->updateRollingNumber(Landroid/widget/TextView;Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+                            move-result-object v$textSpanRegister
+                        """
+                    )
                 }
-
-                val textViewRegister = getInstruction<FiveRegisterInstruction>(setTextIndex).registerC
-                val textSpanRegister = getInstruction<FiveRegisterInstruction>(setTextIndex).registerD
-
-                addInstructions(
-                    setTextIndex,
-                    """
-                        invoke-static { v$textViewRegister, v$textSpanRegister }, $EXTENSION_CLASS->updateRollingNumber(Landroid/widget/TextView;Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
-                        move-result-object v$textSpanRegister
-                    """
-                )
             }
         }
 

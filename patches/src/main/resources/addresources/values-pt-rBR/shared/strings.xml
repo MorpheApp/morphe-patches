@@ -54,7 +54,7 @@ Second \"item\" text"</string>
   <string name="morphe_language_user_dialog_message">"Traduções para alguns idiomas podem estar faltando ou incompletas.
 
 Para traduzir novos idiomas ou melhorar as traduções existentes, visite morphe.software/translate"</string>
-  <string name="morphe_language_DEFAULT">Idioma do app</string>
+  <string name="morphe_language_DEFAULT">Idioma do aplicativo</string>
   <string name="morphe_pref_import_export_title">Importar / Exportar</string>
   <string name="morphe_pref_import_export_summary">Importar / Exportar as configurações do Morphe</string>
   <string name="morphe_settings_import_file">Importar do arquivo</string>
@@ -107,13 +107,37 @@ Você não será notificado sobre nenhum evento inesperado."</string>
   <string name="morphe_debug_logs_clear_toast">Registros de depuração limpos</string>
   <string name="morphe_debug_feature_flags_manager_title">Gerenciador de sinalizadores de recursos</string>
   <string name="morphe_debug_feature_flags_manager_summary">Gerenciar sinalizadores de recursos booleanos</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Flags de recurso ativas (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Flags de recurso bloqueadas (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Pesquisar flags de recursos…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Inativo (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Ativo (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Bloqueado (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Forçado (%s)</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Automático</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Desativado</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Ativado</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Forçar ativação</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Bloquear</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Remover</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Flags de recurso salvas</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Flags de recurso redefinidas</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Flags de recurso copiadas para a área de transferência</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reinicie o app para usar esta configuração</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reinicie o aplicativo para usar esta configuração</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Exportar e importar</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">%s sinalizadores de recursos importados</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Nenhum sinalizador de recurso encontrado</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Sinalizadores de recursos exportados com sucesso</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Falha ao exportar os sinalizadores de recursos</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Sinalizadores de recursos carregados, toque em Salvar para aplicar</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Falha ao ler o arquivo</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Busca binária</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Começo</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Abrir as configurações do MicroG</string>
@@ -141,20 +165,20 @@ Se as otimizações de bateria não forem alteradas, você poderá ter:
 • As notificações podem não funcionar
 • A reprodução em segundo plano pode não funcionar"</string>
   <!-- misc.gms.linkHandlingPatch -->
-  <string name="morphe_link_handling_title">Gerenciamento de links do app</string>
-  <string name="morphe_link_handling_summary">Configurar links para abrir neste app</string>
-  <string name="morphe_link_handling_step1_title">Passo 1: Desative links do app original</string>
-  <string name="morphe_link_handling_step1_message">Abra as configurações do app original e desative todos os links de domínio</string>
-  <string name="morphe_link_handling_step2_title">Passo 2: Ative links do app patcheado</string>
-  <string name="morphe_link_handling_step2_message">Abra as configurações do app patcheado e ative todos os links de domínio</string>
+  <string name="morphe_link_handling_title">Gerenciamento de links do aplicativo</string>
+  <string name="morphe_link_handling_summary">Configurar links para abrir neste aplicativo</string>
+  <string name="morphe_link_handling_step1_title">Etapa 1: Desative links do aplicativo original</string>
+  <string name="morphe_link_handling_step1_message">Abra as configurações do aplicativo original e desative todos os links de domínio</string>
+  <string name="morphe_link_handling_step2_title">Passo 2: Ative links do aplicativo patcheado</string>
+  <string name="morphe_link_handling_step2_message">Abra as configurações do aplicativo patcheado e ative todos os links de domínio</string>
   <string name="morphe_link_handling_open">Abrir configurações</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Alerta Experimental 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Você está usando uma versão experimental do app ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+  <string name="morphe_experimental_app_version_dialog_message">"Você está usando uma versão experimental do aplicativo ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
 &lt;br/&gt;&lt;br/&gt;
-🔧 Espere comportamentos estranhos do app ou bugs não identificados enquanto ajustamos as correções para esta versão do app.
+🔧 Espere comportamentos inesperados no aplicativo ou bugs não identificados enquanto ajustamos os patches para esta versão do aplicativo.
 &lt;br/&gt;&lt;br/&gt;
-Se você deseja a experiência mais tranquila, então &lt;b&gt;desinstale&lt;/b&gt; este e utilize a versão recomendada do app ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+Se quiser uma experiência com menos problemas, então &lt;b&gt;desinstale&lt;/b&gt; esta versão e aplique os patches na versão recomendada do aplicativo ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ I want experimental</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ I want stable</string>
 </resources>

@@ -101,12 +101,18 @@ Second \"item\" text"</string>
   <string name="morphe_debug_logs_clear_toast">डिबग लगहरू खाली गरियो</string>
   <string name="morphe_debug_feature_flags_manager_title">विशेषता झण्डा प्रबन्धक</string>
   <string name="morphe_debug_feature_flags_manager_summary">बूलियन सुविधा झण्डाहरू प्रबन्ध गर्नुहोस्</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">सक्रिय सुविधा झण्डाहरू (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">अवरुद्ध सुविधा झण्डाहरू (%d)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_toast_saved">सुविधा झण्डाहरू सुरक्षित गरियो</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">सुविधा झण्डाहरू रिसेट गरियो</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">सुविधा झण्डाहरू क्लिपबोर्डमा प्रतिलिपि गरियो</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">यो सेटिङ प्रयोग गर्न एप पुनःसुरु गर्नुहोस्</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">शुरू</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">माइक्रोज सेटिङहरू खोल्नुहोस्</string>

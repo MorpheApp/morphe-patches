@@ -14,6 +14,8 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.patch.InstallerType
+import app.morphe.patcher.patch.PatchAvailability
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.ResourcePatch
 import app.morphe.patcher.patch.ResourcePatchBuilder
@@ -34,7 +36,6 @@ import app.morphe.util.copyResources
 import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.removeFromParent
 import app.morphe.util.returnEarly
-import app.morphe.util.trimIndentMultiline
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import org.w3c.dom.Element
@@ -111,6 +112,14 @@ internal fun baseCustomBrandingPatch(
     description = "Adds options to change the app icon and app name. " +
             "Branding cannot be changed for mounted (root) installations."
 ) {
+
+    availability { installer, _ ->
+        when (installer) {
+            InstallerType.MOUNT -> PatchAvailability.DISABLED
+            else -> PatchAvailability.ENABLED
+        }
+    }
+
     val customName by stringOption(
         key = "customName",
         title = "App name",
@@ -140,7 +149,7 @@ internal fun baseCustomBrandingPatch(
               $USER_CUSTOM_NOTIFICATION_ICON_XML_FILE_NAME
             - PNG raster images placed in the matching 'drawable-<dpi>' folders:
               ${notificationIconPngDirectories.map { (dpi, dim) -> "- $dpi/$USER_CUSTOM_NOTIFICATION_ICON_PNG_FILE_NAME ($dim)" }.joinToString("\n")}
-        """.trimIndentMultiline()
+        """
     )
 
     block()

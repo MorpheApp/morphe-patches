@@ -1,7 +1,6 @@
 package app.morphe.patches.youtube.layout.hide.player.popup
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.string
@@ -14,15 +13,15 @@ internal object PlayerPopupPanelsFingerprint : Fingerprint(
     filters = listOf(
         string(
             "triggered_on_ui_ready",
-            location = MatchAfterWithin(6),
+            location = MatchAfterWithin(6)
         ),
         methodCall(
             smali = "Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;",
-            location = MatchAfterImmediately(),
+            location = MatchAfterWithin(3)
         ),
         methodCall(
             smali = "Ljava/util/Iterator;->hasNext()Z",
-            location = MatchAfterWithin(4),
-        ),
+            location = MatchAfterWithin(4)
+        )
     )
 )

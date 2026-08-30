@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.patches.music.layout.miniplayer
 
 import app.morphe.patcher.Fingerprint
@@ -46,6 +53,21 @@ internal object NavigationBarTabLayoutFingerprint : Fingerprint(
 )
 
 internal object SwitchToggleColorFingerprint : Fingerprint(
+    classFingerprint = MiniPlayerConstructorFingerprint,
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L", "J"),
+    filters = listOf(
+        methodCall(opcode = Opcode.INVOKE_STATIC, smali = "Lj$/time/Duration;->ofMillis(J)Lj$/time/Duration;"),
+        opcode(Opcode.IF_NE),
+        opcode(Opcode.IGET_OBJECT, location = MatchAfterImmediately()),
+        opcode(Opcode.GOTO, location = MatchAfterWithin(5)),
+        fieldAccess(opcode = Opcode.IGET, type = "I", location = MatchAfterWithin(5)),
+        fieldAccess(opcode = Opcode.IGET_OBJECT, type = "L", location = MatchAfterWithin(5)),
+    )
+)
+
+internal object SwitchToggleColorLegacyFingerprint : Fingerprint(
     classFingerprint = MiniPlayerConstructorFingerprint,
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
     returnType = "V",

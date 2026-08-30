@@ -24,12 +24,12 @@ Second \"item\" text"</string>
   <string name="morphe_sb_square_layout_title">Usar diseño cuadrado</string>
   <string name="morphe_sb_square_layout_summary">Utiliza esquinas cuadradas para los botones y controles de SponsorBlock</string>
   <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
-  <string name="morphe_sb_compact_skip_button_title">Usar botón compacto \"Omitir\"</string>
-  <string name="morphe_sb_compact_skip_button_summary">Reduce el ancho del botón \"Omitir\" para ahorrar espacio</string>
-  <string name="morphe_sb_auto_hide_skip_button_title">Ocultar automáticamente el botón \"Omitir\"</string>
-  <string name="morphe_sb_auto_hide_skip_button_summary">Oculta el botón \"Omitir\" a los pocos segundos, en lugar de mantenerlo visible todo el segmento</string>
-  <string name="morphe_sb_auto_hide_skip_button_duration_title">Duración del botón \"Omitir\"</string>
-  <string name="morphe_sb_auto_hide_skip_button_duration_summary">Establece el tiempo que permanece visible el botón \"Omitir\"</string>
+  <string name="morphe_sb_compact_skip_button_title">Usar botón compacto Omitir</string>
+  <string name="morphe_sb_compact_skip_button_summary">Reduce el ancho del botón Omitir para ahorrar espacio</string>
+  <string name="morphe_sb_auto_hide_skip_button_title">Ocultar automáticamente el botón Omitir</string>
+  <string name="morphe_sb_auto_hide_skip_button_summary">Oculta el botón Omitir a los pocos segundos, en lugar de mantenerlo visible todo el segmento</string>
+  <string name="morphe_sb_auto_hide_skip_button_duration_title">Duración del botón Omitir</string>
+  <string name="morphe_sb_auto_hide_skip_button_duration_summary">Establece el tiempo que permanece visible el botón Omitir</string>
   <string name="morphe_sb_toast_on_skip_title">Mostrar notificación al omitir</string>
   <string name="morphe_sb_toast_on_skip_summary">Muestra una notificación cuando se omite un segmento automáticamente</string>
   <string name="morphe_sb_toast_on_skip_duration_title">Duración de la notificación de omisión</string>
@@ -103,12 +103,12 @@ Tu ID de usuario es como una contraseña y nunca debe compartirse."</string>
   <string name="morphe_sb_segments_sponsor">Patrocinador</string>
   <string name="morphe_sb_segments_sponsor_summary">Promociones pagadas, enlaces de afiliados y anuncios directos. No incluye autopromoción ni menciones gratuitas a causas, creadores, sitios web o productos que les gusten</string>
   <string name="morphe_sb_segments_selfpromo">Autopromoción / no pagada</string>
-  <string name="morphe_sb_segments_selfpromo_summary">Similar a \"Patrocinador\", pero para autopromoción o promociones no pagadas. Incluye menciones a merchandising, donaciones o información sobre colaboradores</string>
+  <string name="morphe_sb_segments_selfpromo_summary">Similar a Patrocinador, pero para autopromoción o promociones no pagadas. Incluye menciones a merchandising, donaciones o información sobre colaboradores</string>
   <string name="morphe_sb_segments_interaction">Recordatorio de interacción (suscripción)</string>
-  <string name="morphe_sb_segments_interaction_summary">Un breve recordatorio para que des \"Me gusta\", te suscribas o sigas al creador. Si es largo o trata sobre algo específico, debería ir en la sección de autopromoción</string>
+  <string name="morphe_sb_segments_interaction_summary">Un breve recordatorio para que des \'Me gusta\', te suscribas o sigas al creador. Si es largo o trata sobre algo específico, debería ir en la sección de autopromoción</string>
   <string name="morphe_sb_segments_highlight">Destacado</string>
   <string name="morphe_sb_segments_highlight_summary">El momento del vídeo que busca la mayoría</string>
-  <string name="morphe_sb_segments_intro">Intro / Animación de introducción</string>
+  <string name="morphe_sb_segments_intro">Interrupción / Animación de introducción</string>
   <string name="morphe_sb_segments_intro_summary">Un intervalo sin contenido. Puede ser una pausa, un fotograma estático o una animación repetitiva. No incluye transiciones con información</string>
   <string name="morphe_sb_segments_outro">Tarjetas finales / Créditos</string>
   <string name="morphe_sb_segments_outro_summary">Créditos o el momento en que aparecen las tarjetas finales de YouTube. No incluye conclusiones con información</string>
@@ -155,7 +155,7 @@ Tu ID de usuario es como una contraseña y nunca debe compartirse."</string>
   <string name="morphe_sb_skipped_multiple_segments">Varios segmentos omitidos</string>
   <string name="morphe_sb_skip_automatically">Omitir automáticamente</string>
   <string name="morphe_sb_skip_automatically_once">Omitir automáticamente una vez</string>
-  <string name="morphe_sb_skip_showbutton">Mostrar botón \"Omitir\"</string>
+  <string name="morphe_sb_skip_showbutton">Mostrar botón Omitir</string>
   <string name="morphe_sb_skip_seekbaronly">Mostrar en la barra de progreso</string>
   <string name="morphe_sb_skip_ignore">Desactivado</string>
   <string name="morphe_sb_submit_failed_invalid">No se puede enviar el segmento: %s</string>
@@ -214,7 +214,7 @@ Si no vas a enviar un destacado, pulsa Cancelar y marca la segunda ubicación."<
   <string name="morphe_sb_new_segment_highlight_submit">Enviar destacado</string>
   <string name="morphe_sb_stats_title">Estadísticas</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
-  <string name="morphe_sb_stats_connection_failure">Estadísticas no disponibles temporalmente (la API está inactiva)</string>
+  <string name="morphe_sb_stats_connection_failure">Estadísticas no disponibles temporalmente (la API está caída)</string>
   <string name="morphe_sb_stats_loading">Cargando…</string>
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock está desactivado</string>
   <string name="morphe_sb_stats_username">Tu nombre de usuario: &lt;b&gt;%s&lt;/b&gt;</string>
@@ -236,7 +236,7 @@ Si no vas a enviar un destacado, pulsa Cancelar y marca la segunda ubicación."<
   <string name="morphe_sb_stats_saved_second_format">%s segundos</string>
   <string name="morphe_sb_color_opacity_label">Opacidad:</string>
   <string name="morphe_sb_color_dot_label">Color:</string>
-  <string name="morphe_sb_about_title">Información</string>
+  <string name="morphe_sb_about_title">Acerca de</string>
   <string name="morphe_sb_about_api_summary">"Los datos los proporciona la API de SponsorBlock.
 
 Pulsa aquí para abrir Sponsor.ajay.app y ver las descargas para otras plataformas"</string>

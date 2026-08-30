@@ -33,6 +33,8 @@ Second \"item\" text"</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Achtergrond afspeelbeperkingen verwijderen</string>
   <string name="morphe_shorts_disable_background_playback_title">Schakel afspelen in achtergrond uit</string>
+  <!-- layout.disableScrollSpeedLimitPatch -->
+  <string name="morphe_disable_scrolling_speed_limit_title">Scrolsnelheidslimiet uitschakelen</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">Layout-updates uitschakelen</string>
   <string name="morphe_disable_layout_updates_summary">Voorkomt dat de server de app-lay-out bijwerkt</string>
@@ -84,6 +86,9 @@ Wijzigingen zijn:
   <string name="morphe_hide_latest_videos_button_summary">Verbergt de blauwe \'Nieuwste video\'s\'-banner die bovenaan de Home-feed verschijnt</string>
   <string name="morphe_hide_mix_playlists_title">Mix-afspeellijsten verbergen</string>
   <string name="morphe_hide_movies_section_title">Verberg films sectie</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">Verberg de menukop van Meldingen</string>
+  <string name="morphe_hide_notifications_menu_header_summary">Verbergt de menukop van Meldingen wanneer je op de belknop klikt</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">\'Herinnering sturen\' knop verbergen</string>
@@ -164,16 +169,13 @@ Wijzigingen zijn:
   <string name="morphe_hide_explore_podcast_section_title">Verberg \'Explore the podcast\'-sectie</string>
   <string name="morphe_hide_featured_channels_section_title">Verberg Uitgelichte kanalen sectie</string>
   <string name="morphe_hide_featured_links_section_title">Verberg Uitgelichte links sectie</string>
-  <string name="morphe_hide_featured_places_section_title">Verberg \'Uitgelichte plaatsen\' sectie</string>
   <string name="morphe_hide_featured_playlists_section_title">Verberg Featured afspeellijsten sectie</string>
   <string name="morphe_hide_featured_videos_section_title">Verberg Uitgelichte video\'s sectie</string>
-  <string name="morphe_hide_gaming_section_title">Verberg Gaming sectie</string>
   <string name="morphe_hide_hashtag_section_title">Verberg de \"Hashtag\" sectie</string>
-  <string name="morphe_hide_how_this_was_made_section_title">Verberg \'Hoe deze content is gemaakt\' sectie</string>
+  <string name="morphe_hide_how_this_was_made_section_title">Verberg sectie \'Hoe dit is gemaakt\'</string>
   <string name="morphe_hide_hype_points_title">Verberg Hype-punten</string>
   <string name="morphe_hide_info_cards_section_title">Verberg Info kaarten sectie</string>
   <string name="morphe_hide_key_concepts_section_title">Verberg \'Belangrijkste begrippen\' sectie</string>
-  <string name="morphe_hide_music_section_title">Verberg Muziek sectie</string>
   <string name="morphe_hide_quizzes_section_title">Verberg Quizzen sectie</string>
   <string name="morphe_hide_search_inside_this_video_section_title">Verberg de sectie \'Zoeken in deze video\'</string>
   <string name="morphe_hide_subscribe_button_title">Verberg de knop \"Abonneren\"</string>
@@ -181,6 +183,7 @@ Wijzigingen zijn:
   <string name="morphe_hide_video_details_section_title">Verberg \'Videodetails\' sectie</string>
   <string name="morphe_hide_filter_bar_screen_title">Filterbaren</string>
   <string name="morphe_hide_filter_bar_screen_summary">Kies waar u de scrollende filterbalk wilt verbergen</string>
+  <string name="morphe_hide_filter_bar_in_channel_page_title">Verbergen op kanaalpagina</string>
   <string name="morphe_hide_filter_bar_in_comments_title">Verbergen in reacties</string>
   <string name="morphe_hide_filter_bar_in_feed_title">Verbergen in feeds</string>
   <string name="morphe_hide_filter_bar_in_related_videos_title">Verbergen in gerelateerde video\'s</string>
@@ -197,6 +200,8 @@ Wijzigingen zijn:
   <string name="morphe_hide_join_button_title">Verberg de knop \"Word lid\"</string>
   <string name="morphe_hide_links_preview_title">Linksvoorbeeld verbergen</string>
   <string name="morphe_hide_links_preview_summary">Verbergt de klikbare weblinks in de kanaalkoptekst</string>
+  <string name="morphe_hide_members_only_chip_title">Verberg chip \'Alleen leden\'</string>
+  <string name="morphe_hide_members_only_chip_summary">Verbergt de chip \'Alleen leden\' in de kanaalfilterbalk</string>
   <string name="morphe_hide_members_shelf_title">Ledenplank verbergen</string>
   <string name="morphe_hide_members_shelf_summary">Verbergt de lijst met kanaalleden</string>
   <string name="morphe_hide_posts_shelf_title">Berichtenplank verbergen</string>
@@ -251,6 +256,8 @@ Wijzigingen zijn:
   <string name="morphe_hide_comments_gift_button_title">Verberg cadeauknop</string>
   <string name="morphe_hide_comments_info_button_title">Verberg Info-knop</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Verberg de donateur balk van live chat</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">Verberg live chat-tooltips</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">Verbergt tooltippop-ups die verschijnen bij de chat-invoerbalk, zoals de melding voor alleen abonnees</string>
   <string name="morphe_hide_comments_preview_comment_title">Reactie in preview verbergen</string>
   <string name="morphe_hide_comments_preview_comment_summary">Verbergt het commentaarvoorbeeldunder de video voordat de volledige commentaarsectie wordt geopend</string>
   <string name="morphe_hide_comments_thanks_button_title">Verberg de knop \'Bedankt\'</string>
@@ -259,10 +266,10 @@ Wijzigingen zijn:
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Schoont gehighlighte search URL\'s op, zodat alleen de originele tekst overblijft</string>
   <string name="morphe_hide_keyword_content_screen_title">Trefwoordfilter</string>
   <string name="morphe_hide_keyword_content_screen_summary">Kies specifieke woorden of zinsdelen om video\'s in feeds en zoekopdrachten te verbergen</string>
+  <string name="morphe_hide_keyword_content_comments_title">Verberg reacties op trefwoorden</string>
   <string name="morphe_hide_keyword_content_home_title">Home-video\'s verbergen door keywords</string>
   <string name="morphe_hide_keyword_content_search_title">Zoekresultaten verbergen door keywords</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Abonnementsvideo\'s verbergen door keywords</string>
-  <string name="morphe_hide_keyword_content_comments_title">Verberg reacties op trefwoorden</string>
   <string name="morphe_hide_keyword_content_phrases_title">Keywords om te verbergen</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
@@ -444,16 +451,19 @@ Info: Werkt mogelijk niet op livestreams"</string>
   <string name="morphe_reload_video_button_title">Toon Video opnieuw laden-knop</string>
   <string name="morphe_dismiss_player_not_available_toast">Video-ID is niet beschikbaar. Laad de video handmatig opnieuw</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
-  <string name="morphe_save_to_watch_later_button_title">Toon Opslaan om later te bekijken-knop</string>
-  <string name="morphe_save_to_watch_later_button_summary">Tik om later te bewaren, tik en vasthouden voor wachtrijopties</string>
+  <string name="morphe_save_to_watch_later_button_title">Toon knop Opslaan in Watch later</string>
+  <string name="morphe_save_to_watch_later_button_summary">Tik om op te slaan in Watch later, tik en houd vast voor wachtrijopties</string>
   <string name="morphe_save_to_watch_later_success_toast">Video succesvol opgeslagen in afspeellijst \'Bekijk later\'</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Deze video is al opgeslagen in de afspeellijst \'Bekijk later\'</string>
   <string name="morphe_save_to_watch_later_error_toast">Kan deze video niet opslaan in de afspeellijst \'Bekijk later\'</string>
+  <string name="morphe_save_to_watch_later_flyout_title">Opslaan in Watch later</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_title">Toon knop Opslaan in Watch later bij kindervideo\'s</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Maakt het mogelijk om kindervideo\'s op te slaan in het menu \'Later bekijken\'</string>
   <string name="morphe_queue_flyout_title">Toevoegen aan Morphe-wachtrij</string>
   <string name="morphe_queue_restore_title">Wachtrij behouden tussen sessies</string>
   <string name="morphe_queue_restore_summary">Wachtrij blijft behouden na het opnieuw starten van de app</string>
   <string name="morphe_swap_save_and_queue_actions_title">Verwissel de acties Opslaan en Wachtrij</string>
-  <string name="morphe_swap_save_and_queue_actions_summary">Tik voor wachtrijopties, tik en houd ingedrukt om later te bekijken</string>
+  <string name="morphe_swap_save_and_queue_actions_summary">Tik voor wachtrijopties, tik en houd vast om op te slaan in Later bekijken</string>
   <string name="morphe_queue_override_flyout_menu_title">Vervang wachtrij flyout-knop</string>
   <string name="morphe_queue_override_flyout_menu_summary">Opent de Morphe-wachtrij in plaats van de YouTube-wachtrij</string>
   <string name="morphe_queue_add_flyout_menu_title">Feed-flyoutmenu-item toevoegen</string>
@@ -493,16 +503,17 @@ Info: Werkt mogelijk niet op livestreams"</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Activeer zoekbalk miniaturen</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Toont een video miniatuur terwijl je de zoekbalk versleept</string>
+  <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Meest bekeken</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"'Enable livestream DVR' is mogelijk niet beschikbaar
+  <string name="morphe_livestream_dvr_not_available">"'Livestream-DVR inschakelen' is mogelijk niet beschikbaar
 
-Om dit op te lossen, schakel 'Spoof videostreams' in en wijzig de 'Standaardclient' naar 'TV' of 'visionOS'"</string>
+Om dit op te lossen, schakel je 'Videostreams spoofen' in en wijzig je de 'Standaardclient' naar 'TV Simply' of 'visionOS'"</string>
   <string name="morphe_expand_livestream_dvr_duration_title">Livestream DVR-duur uitbreiden</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">Hiermee kunt u live uitzendingen tot 7 dagen terugspoelen</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Expand livestream DVR duration' is mogelijk niet beschikbaar
+  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Livestream-DVR-duur uitbreiden' is mogelijk niet beschikbaar
 
-Om dit op te lossen, schakel 'Spoof videostreams' in en wijzig de 'Standaardclient' naar 'TV' of 'visionOS'"</string>
+Om dit op te lossen, schakel je 'Video streams spoofen' in en wijzig je de 'Standaardclient' naar 'TV Simply' of 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Schuiven om te zoeken inschakelen</string>
   <string name="morphe_slide_to_seek_summary">Schakelt \'Schuif om te zoeken\' in in plaats van af te spelen op 2x snelheid wanneer je op de videospeler drukt en vasthoudt</string>
@@ -510,15 +521,18 @@ Om dit op te lossen, schakel 'Spoof videostreams' in en wijzig de 'Standaardclie
   <string name="morphe_tap_to_seek_title">Tikken om te zoeken inschakelen</string>
   <string name="morphe_tap_to_seek_summary">Tik gewoon op de schuifbalk om naar die positie te springen zonder deze te slepen</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">Helderheidsbeweging inschakelen</string>
-  <string name="morphe_swipe_brightness_summary">Veeg verticaal aan de linkerkant van de volledig schermmodus om de helderheid aan te passen</string>
-  <string name="morphe_swipe_volume_title">Volumebeweging inschakelen</string>
-  <string name="morphe_swipe_volume_summary">Veeg verticaal aan de rechterkant van de volledig schermmodus om het volume aan te passen</string>
-  <string name="morphe_swipe_zone_width_title">Helderheid/volume zone breedte</string>
-  <string name="morphe_swipe_zone_width_summary">Percentage van elke schermrand gereserveerd voor helderheid en volume gebaren (5-50)</string>
+  <string name="morphe_swipe_left_zone_title">Veeggebaar naar links</string>
+  <string name="morphe_swipe_right_zone_title">Veeggebaar naar rechts</string>
+  <string name="morphe_swipe_top_zone_title">Veeggebaar naar boven</string>
+  <string name="morphe_swipe_zone_width_title">Breedte links/rechts zone</string>
+  <string name="morphe_swipe_zone_width_summary">Percentage van elke schermrand gereserveerd voor veeggebaren naar links en rechts (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">Helderheid</string>
   <string name="morphe_swipe_zone_label_volume">Volume</string>
   <string name="morphe_swipe_zone_label_native">Native</string>
+  <string name="morphe_swipe_zone_label_off">Uit</string>
+  <string name="morphe_swipe_ignore_when_locked_title">Veegbewegingen negeren wanneer vergrendeld</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">Veegbewegingen worden genegeerd terwijl de speler is vergrendeld met \'Vergrendelscherm\'</string>
   <string name="morphe_swipe_press_to_engage_title">\"Druk om te vegen\" beweging inschakelen</string>
   <string name="morphe_swipe_press_to_engage_summary">Vereist indrukken en vasthouden voordat een veegbeweging wordt herkend</string>
   <string name="morphe_swipe_haptic_feedback_title">Haptische feedback inschakelen</string>
@@ -547,12 +561,9 @@ Om dit op te lossen, schakel 'Spoof videostreams' in en wijzig de 'Standaardclie
   <string name="morphe_swipe_volume_sensitivity_summary">Hogere waarden vergroten de volume verandering per veegbeweging</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Veeggevoeligheid helderheid</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Hogere waarden vereisen meer vegen per helderheidsstap</string>
-  <string name="morphe_swipe_speed_title">Snelheidsgebare inschakelen</string>
-  <string name="morphe_swipe_speed_summary">Veeg horizontaal in de bovenste zone van de volledigschermmodus om de afspeelsnelheid te wijzigen</string>
   <string name="morphe_swipe_speed_sensitivity_title">Veeggevoeligheid snelheid</string>
   <string name="morphe_swipe_speed_sensitivity_summary">Hogere waarden vereisen meer vegen per snelheidsstap</string>
   <string name="morphe_swipe_speed_step_title">Snelheid stap</string>
-  <string name="morphe_swipe_speed_step_summary">Hoeveelheid waarmee de afspeelsnelheid per stap verandert</string>
   <string name="morphe_swipe_speed_zone_height_title">Hoogte van de snelheidszone</string>
   <string name="morphe_swipe_speed_zone_height_summary">Hoogte van de snelheidsgebied als percentage van de hoogte van de speler (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Snelheid</string>
@@ -678,15 +689,8 @@ Om Instellingen te openen, schakelt u de knop Instellingen in via Algemeen → W
   <string name="morphe_navigation_bar_animations_summary">Maakt de navigatiebalk volledig ondoorzichtig in de lichte modus</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Automatisch verbergen van de navigatiebalk uitschakelen</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Maakt de navigatiebalk volledig ondoorzichtig in de donkere modus</string>
-  <string name="morphe_disable_translucent_status_bar_title">Transparante statusbalk uitschakelen</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Kies welke componenten er in het flyoutmenu verschijnen</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Beperkingen:
-• Een zwarte streep kan bovenaan de videospeler verschijnen.
-• De systeemnavigatiebalk kan transparant worden en het is niet mogelijk om op videos te reageren."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Transparante lichte navigatiebalk uitschakelen</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Verberg \'Audiotrack\'-menu</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Schakel de donkere doorschijnende balk uit</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Maakt de navigatiebalk volledig opdicht in donkere modus</string>
+  <string name="morphe_disable_translucent_navigation_title">Transparante navigatiebalk uitschakelen</string>
+  <string name="morphe_disable_translucent_navigation_summary">Maakt de navigatie- en statusbalk volledig ondoorzichtig</string>
   <string name="morphe_toolbar_screen_title">Balkon</string>
   <string name="morphe_toolbar_screen_summary">Verberg \'Audiotrack\'-menuvoet</string>
   <string name="morphe_hide_toolbar_cast_button_title">Verberg Cast-knop</string>
@@ -705,10 +709,10 @@ Om Instellingen te openen, schakelt u de knop Instellingen in via Algemeen → W
   <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_audio_track_title">Verberg \'Audiotrack\'-menu</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Het menu 'Audio Track' is verborgen
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"'Audio Track'-menu is verborgen
 
-Om het menu 'Audio Track' weer te geven, wijzig 'Video streams spoofen' naar een andere client dan 'Android Studio'"</string>
+Om het 'Audio Track'-menu weer te geven, wijzig 'Spoof video streams' naar elke client behalve 'Android Studio' en 'Android VR Downgraded'"</string>
   <string name="morphe_hide_player_flyout_audio_track_footer_title">Verberg \'Audiotrack\'-menuvoet</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Verberg Ondertitel-menu</string>
@@ -840,6 +844,7 @@ Instellingen → Weergave (of automatisch afspelen) → Volgende video automatis
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Uitschakelen speler pop-up panelen</string>
   <string name="morphe_disable_player_popup_panels_summary">Schakelt het automatisch openen van playlist- en livechatpanelen uit</string>
+  <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Verlaat de volledige schermmodus aan het einde van de video</string>
   <string name="morphe_exit_fullscreen_entry_1">Uitgeschakeld</string>
@@ -848,21 +853,34 @@ Instellingen → Weergave (of automatisch afspelen) → Volgende video automatis
   <string name="morphe_exit_fullscreen_entry_4">Portret en landschap</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Volledig scherm gebaren</string>
-  <string name="morphe_disable_fullscreen_gestures_summary">Spelergebaren om de volledige schermmodus te openen of te verlaten</string>
+  <string name="morphe_disable_fullscreen_gestures_summary">Spelergebaren in volledig scherm</string>
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">Schakel swipe-up gebaar in portretmodus uit</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Schakel gebaar vegen omlaag in portretmodus uit</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Schakel gebaar vegen omlaag in landschapmodus uit</string>
+  <string name="morphe_disable_fullscreen_zoom_gesture_title">Knijpen om te zoomen uitschakelen</string>
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
   <string name="morphe_open_videos_fullscreen_title">Video\'s openen in volledig schermmodus</string>
   <string name="morphe_open_videos_fullscreen_entry_1">Uitgeschakeld</string>
   <string name="morphe_open_videos_fullscreen_entry_2">Portret</string>
   <string name="morphe_open_videos_fullscreen_entry_3">Landschap</string>
+  <!-- layout.player.fullscreen.stretchVideoPatch -->
+  <string name="morphe_fullscreen_video_scale_title">Videoschaal op volledig scherm</string>
+  <string name="morphe_fullscreen_video_scale_entry_default">Standaard</string>
+  <string name="morphe_fullscreen_video_scale_entry_stretch">Uitrekken (vul scherm)</string>
+  <string name="morphe_fullscreen_video_scale_entry_zoom">Zoom (bijsnijden om te vullen)</string>
+  <string name="morphe_fullscreen_video_scale_button_title">Toon videoschaalknop</string>
+  <string name="morphe_fullscreen_video_scale_button_summary">Tik om te wisselen tussen Standaard, Uitrekken en Zoom</string>
+  <!-- layout.player.buttons.muteVideoButtonPatch -->
+  <string name="morphe_mute_video_button_title">Mute-knop tonen</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Speler-overlaytransparantie</string>
   <string name="morphe_player_overlay_opacity_summary">Pas het transparantieniveau aan (0 is transparant, 100 is ondoorzichtig)</string>
   <string name="morphe_player_overlay_opacity_invalid_toast">De transparantie van de speler-overlay moet tussen 0-100 liggen</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
-  <string name="morphe_wide_searchbar_title">Schakel de brede zoekbalk in</string>
+  <string name="morphe_searchbar_type_title">Zoekbalk</string>
+  <string name="morphe_searchbar_type_entry_disabled">Uitgeschakeld</string>
+  <string name="morphe_searchbar_type_entry_wide">Breed</string>
+  <string name="morphe_searchbar_type_entry_extra_wide">Extra breed</string>
   <!-- layout.sponsorblock.sponsorBlockPatch -->
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Apparaatindeling</string>
@@ -899,8 +917,8 @@ Beperking: Als 'Herstel oude video acties balk' is uitgeschakeld, is de \"Meer v
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">YouTube-muziekknopen overschrijven</string>
   <string name="morphe_override_youtube_music_buttons_summary">Opent je voorkeursmuziekapp in plaats van de standaard YouTube Music-app</string>
-  <string name="morphe_music_package_name_title">Naam van het muziek-app pakket</string>
-  <string name="morphe_music_package_name_summary">Pakketnaam van uw geïnstalleerde muziek-app</string>
+  <string name="morphe_custom_music_package_name_title">Muziekapp-pakketnaam</string>
+  <string name="morphe_custom_music_package_name_summary">Pakketnaam van je geïnstalleerde muziekapp</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Startpagina</string>
   <string name="morphe_change_start_page_entry_default">Standaard</string>
@@ -950,7 +968,7 @@ Beperking: Als 'Herstel oude video acties balk' is uitgeschakeld, is de \"Meer v
   <string name="morphe_miniplayer_disable_resuming_summary">Schakelt de \'Doorgaan met kijken\'-minispeler uit, een functie van YouTube Premium die verschijnt bij het opstarten van de app</string>
   <string name="morphe_miniplayer_screen_title">Minispeler</string>
   <string name="morphe_miniplayer_screen_summary">Pas het uiterlijk en het gedrag van de geminimaliseerde videospeler aan</string>
-  <string name="morphe_miniplayer_not_available_summary">YouTube heeft alle extra mini-spelers verwijderd. Om het type mini-speler te wijzigen, patch dan YouTube 21.28.207 of ouder</string>
+  <string name="morphe_miniplayer_not_available_summary">YouTube heeft alle extra miniplayers verwijderd. Om het type miniplayer te wijzigen, patch YouTube 21.28.208 of ouder.</string>
   <string name="morphe_miniplayer_type_title">\"miniplayer\"-type</string>
   <string name="morphe_miniplayer_type_entry_0">Uitgeschakeld</string>
   <string name="morphe_miniplayer_type_entry_1">Standaard</string>
@@ -976,7 +994,23 @@ Beperking: Als 'Herstel oude video acties balk' is uitgeschakeld, is de \"Meer v
   <string name="morphe_miniplayer_opacity_title">Dekking van de overlay</string>
   <string name="morphe_miniplayer_opacity_summary">Pas het transparantieniveau aan (0 is transparant, 100 is ondoorzichtig)</string>
   <string name="morphe_miniplayer_opacity_invalid_toast">Minispeler overlay transparantie moet tussen de 0-100 zijn</string>
+  <!-- misc.fix.fixBackToExitGesturePatch -->
+  <string name="morphe_back_button_always_exits_feed_title">De terugknop verlaat de feed</string>
+  <string name="morphe_back_button_always_exits_feed_summary">De terugknop sluit altijd de app af in plaats van naar de bovenkant van de feed te scrollen</string>
   <!-- layout.theme.themePatch -->
+  <string name="morphe_theme_color_light_title">Achtergrond van het lichtthema</string>
+  <string name="morphe_theme_color_light_entry_2">Wit</string>
+  <string name="morphe_theme_color_light_entry_3">Material You (Wit)</string>
+  <string name="morphe_theme_color_light_entry_9">Lichtroze</string>
+  <string name="morphe_theme_color_light_entry_10">Lichtblauw</string>
+  <string name="morphe_theme_color_light_entry_11">Lichtgroen</string>
+  <string name="morphe_theme_color_light_entry_12">Lichtgeel</string>
+  <string name="morphe_theme_color_light_entry_13">Lichtoranje</string>
+  <string name="morphe_theme_color_light_entry_14">Lichtrood</string>
+  <string name="morphe_theme_color_light_custom_title">Aangepaste lichte achtergrond</string>
+  <string name="morphe_theme_color_light_custom_summary">Stel de achtergrondkleur van het lichte thema in</string>
+  <string name="morphe_theme_color_change_foreground_title">Voorgrondkleur wijzigen</string>
+  <string name="morphe_theme_color_change_foreground_summary">Gebruik de themakleur voor tekst en pictogrammen</string>
   <string name="morphe_gradient_loading_screen_title">Schakel het laden van het verloopscherm in</string>
   <string name="morphe_gradient_loading_screen_summary">Toont een verloop achtergrond op het laadscherm in plaats van een effen kleur</string>
   <string name="morphe_splash_screen_animation_style_title">Stijl van opstartscherm</string>
@@ -994,7 +1028,7 @@ Beperking: Als 'Herstel oude video acties balk' is uitgeschakeld, is de \"Meer v
   <string name="morphe_header_logo_title">Headerlogo</string>
   <string name="morphe_header_logo_entry_1">Standaard</string>
   <string name="morphe_header_logo_entry_2">Normaal</string>
-  <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_3'. -->
+  <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_7'. -->
   <string name="morphe_header_logo_entry_5">Aangepast</string>
   <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <string name="morphe_bypass_image_region_restrictions_title">Omzeil beperkingen voor het weergeven van afbeeldingen in bepaalde regio\'s</string>
@@ -1066,12 +1100,6 @@ Tik hier om meer te weten te komen over DeArrow"</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automatisch</string>
-  <string name="morphe_override_initial_video_quality_title">Overschrijf de initiële video kwaliteit</string>
-  <!-- 'Force AVC (H.264) codec' should be the same translation used for 'morphe_force_avc_codec_title'. -->
-  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_override_initial_video_quality_summary">"Lost een probleem op waarbij de standaard videokwaliteit niet direct wordt toegepast nadat de video is gestart
-
-Beperking: Afspelen werkt mogelijk niet op sommige apparaten als 'Video streams spoofen' is ingesteld op 'Android VR' en 'Forceer AVC (H.264) codec' is ingeschakeld"</string>
   <string name="morphe_remember_video_quality_last_selected_title">Onthoud video kwaliteit</string>
   <string name="morphe_remember_video_quality_last_selected_summary">Past je handmatige kwaliteitselectie toe op alle toekomstige video’s</string>
   <string name="morphe_remember_video_quality_last_selected_toast_title">Kwaliteitsverandering meldingen</string>
@@ -1111,6 +1139,11 @@ Beperking: Afspelen werkt mogelijk niet op sommige apparaten als 'Video streams 
   <string name="morphe_remember_playback_speed_toast">Standaard afspeelsnelheid gewijzigd naar: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Gebruik normale snelheid voor muziek</string>
   <string name="morphe_disable_playback_speed_music_summary">Speel muziekvideo\'s altijd af op 1.0x snelheid</string>
+  <string name="morphe_enable_playback_audio_pitch_controls_title">Audio-toonhoogtebediening inschakelen</string>
+  <string name="morphe_playback_audio_pitch_default_title">Standaard toonhoogte audioafspeling</string>
+  <string name="morphe_remember_playback_audio_pitch_toast">Standaard toonhoogte audio gewijzigd naar: %s</string>
+  <string name="morphe_playback_audio_time_stretching_title">Audio tijdstretching</string>
+  <string name="morphe_playback_audio_time_stretching_summary">Maakt het mogelijk om snelheid en toonhoogte onafhankelijk van elkaar in te stellen, wat audio-artefacten kan veroorzaken</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR-video uitschakelen</string>
   <string name="morphe_force_avc_codec_title">Forceer AVC (H.264) codec</string>
@@ -1148,6 +1181,7 @@ Het afspelen van video met AV1 kan haperen of frames overslaan."</string>
   <string name="morphe_spoof_video_streams_about_js">• Als deontminering mislukt, kan afspelen mislukken</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Oorspronkelijke audio forceren is niet beschikbaar</string>
+  <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Inloggen op Android VR is vereist</string>
   <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• De kwaliteit kan beperkt zijn tot 720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Player JavaScript variant</string>

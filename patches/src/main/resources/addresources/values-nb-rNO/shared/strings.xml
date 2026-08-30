@@ -107,9 +107,15 @@ Du vil ikke bli varslet om uventede hendelser."</string>
   <string name="morphe_debug_logs_clear_toast">Feilsøkingslogger slettet</string>
   <string name="morphe_debug_feature_flags_manager_title">Funksjonsflagg-behandler</string>
   <string name="morphe_debug_feature_flags_manager_summary">Administrer boolske feature flags</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Aktive funksjonsflagg (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Blokkerte funksjonsflagg (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Søk etter funksjonsflagg…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_action_remove">Fjern</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Feature flags lagret</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Feature flags tilbakestilt</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Feature flags kopiert til utklippstavlen</string>

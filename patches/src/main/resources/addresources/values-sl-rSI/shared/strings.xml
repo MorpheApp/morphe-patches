@@ -107,13 +107,20 @@ Pričakujete dogodke."</string>
   <string name="morphe_debug_logs_clear_toast">Odstranjevanje beleženja napak</string>
   <string name="morphe_debug_feature_flags_manager_title">Upravljalec zastav funkcij</string>
   <string name="morphe_debug_feature_flags_manager_summary">Upravljajte logičnimi zastavami funkcij</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Aktivne funkcije (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Blokirane funkcije (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Išči funkcije…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_action_remove">Odstrani</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Funkcije so shranjene</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Funkcije so obnovljene</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Funkcije so kopirane v odložišče</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Za uporabo te nastavitve znova zaženite aplikacijo</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Začetek</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Odprite nastavitve MicroG</string>

@@ -16,7 +16,8 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-  <!-- Overrides built in setting menu with Morphe settings. -->
+  <string name="reddit_privacy_policy">Polasaí príobháideachta Reddit</string>
+  <string name="morphe_google_signin_not_available_toast">Níl logáil isteach Google ar fáil. Úsáid ríomhphost chun logáil isteach.</string>
   <string name="morphe_screen_ads_title">Fógraí</string>
   <string name="morphe_hide_post_ads_title">Folaigh fógraí beatha</string>
   <string name="morphe_hide_comment_ads_title">Folaigh fógraí tráchta</string>

@@ -21,6 +21,25 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">設定を完了するには再起動してください</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">アプリ名</string>
+  <!-- layout.theme.baseThemePatch -->
+  <string name="morphe_theme_color_dark_title">ダークモードのテーマ</string>
+  <string name="morphe_theme_color_dark_entry_2">ピュアブラック</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You（ピュアブラック）</string>
+  <string name="morphe_theme_color_dark_entry_9">旧ダークテーマ（YouTube）</string>
+  <string name="morphe_theme_color_dark_entry_10">ダークピンク</string>
+  <string name="morphe_theme_color_dark_entry_11">ダークブルー</string>
+  <string name="morphe_theme_color_dark_entry_12">ダークグリーン</string>
+  <string name="morphe_theme_color_dark_entry_13">ダークイエロー</string>
+  <string name="morphe_theme_color_dark_entry_14">ダークオレンジ</string>
+  <string name="morphe_theme_color_dark_entry_15">ダークレッド</string>
+  <string name="morphe_theme_color_dark_custom_title">ダークモードのカスタムテーマ</string>
+  <string name="morphe_theme_color_dark_custom_summary">ダークモードのカスタムテーマの色の値を設定します</string>
+  <string name="morphe_theme_color_entry_1">アプリのデフォルト</string>
+  <string name="morphe_theme_color_entry_4">Material You（中間色）</string>
+  <string name="morphe_theme_color_entry_5">Material You（主要色）</string>
+  <string name="morphe_theme_color_entry_6">Material You（副次色）</string>
+  <string name="morphe_theme_color_entry_7">Material You（第三色）</string>
+  <string name="morphe_theme_color_custom_entry">カスタム</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">外部ダウンロード</string>
   <string name="morphe_external_downloader_name_title">外部ダウンローダーのパッケージ名</string>
@@ -55,14 +74,14 @@ Second \"item\" text"</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">今後表示しない</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">動画ストリームを偽装</string>
-  <string name="morphe_spoof_video_streams_screen_summary">動画再生の失敗を回避するために、偽装するクライアントを設定します</string>
+  <string name="morphe_spoof_video_streams_screen_summary">動画の再生が止まる問題を回避するために、偽装するクライアントを設定します</string>
   <string name="morphe_spoof_video_streams_title">動画ストリームを偽装</string>
-  <string name="morphe_spoof_video_streams_summary">"互換性のある動画ストリームを取得することにより、多くの環境で再生不能問題を解消します
+  <string name="morphe_spoof_video_streams_summary">"互換性のある動画ストリームを取得することによって、動画の再生が止まる問題を多くの環境で解決します
 
-YouTube Premiumのユーザーの場合、この設定は必要ない場合があります。"</string>
+YouTube Premium を利用している場合、この設定は必要ない場合があります"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">クライアントの動画ストリームを取得できませんでした</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">この設定をオフにすると、動画の再生に失敗するようになる可能性があります。</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <string name="morphe_spoof_video_streams_user_dialog_message">この設定をオフにすると、動画の再生が止まる問題が発生する可能性があります。</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">以下を試す: [動画ストリームを偽装] &gt; [Android VR (ログイン)] をオン</string>
   <string name="morphe_spoof_video_streams_client_type_title">デフォルトのクライアント</string>
@@ -73,7 +92,7 @@ YouTube Premiumのユーザーの場合、この設定は必要ない場合が�
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">この機能を使用するには、[デフォルトのクライアント] を Android VR に変更してください</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Android VR にログイン</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR にログインすると、一部のユーザーの再生に関する問題が解決する場合があります。
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR にログインすると、動画の再生が止まる問題が一部のユーザーで解決する場合があります。
 
 ログインするには、[続行] をタップしてください"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">続行</string>
@@ -109,7 +128,7 @@ YouTube Premiumのユーザーの場合、この設定は必要ない場合が�
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">オーディオ DRC を無効化</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
-  <string name="morphe_force_original_audio_title">オリジナルの音声を強制的に使用</string>
+  <string name="morphe_force_original_audio_title">オリジナルの音声を常に使用</string>
   <string name="morphe_force_original_audio_summary">常にオリジナルの音声トラック (言語) を再生します。オートダビングを含む吹き替えの音声トラックは再生されなくなります</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">ネットワーク プロキシ</string>
@@ -132,9 +151,9 @@ YouTube Premiumのユーザーの場合、この設定は必要ない場合が�
   <string name="morphe_proxy_allow_direct_fallback_summary">プロキシ接続に失敗したときに直接接続に切り替えます</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">全画面広告を非表示</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">この機能を使用するには、[動画ストリームを偽装] のクライアントを「Android Studio」以外に変更してください</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_force_original_audio_not_available">この機能を使用するには、[動画ストリームを偽装] のクライアントを「Android Studio」および「Android VR Downgraded」を除く任意のクライアントに設定してください</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">共有リンクを無害化</string>
   <string name="morphe_sanitize_sharing_links_summary">共有リンクから追跡パラメータを削除します</string>
@@ -165,14 +184,31 @@ YouTube Premiumのユーザーの場合、この設定は必要ない場合が�
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">「ご自身の責任」ダイアログを削除</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">この機能は、年齢制限を回避するものではありません。ダイアログによる確認に対して自動的に同意するだけです</string>
+  <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">PoToken の生成</string>
+  <string name="morphe_potoken_provider_screen_summary">動画の再生が止まる問題を回避するために PoToken の生成に関する設定を行います</string>
+  <string name="morphe_external_potoken_provider_title">外部ツールによる PoToken 生成</string>
+  <string name="morphe_external_potoken_provider_summary">"外部ツールで PoToken を生成することによって、動画の再生が止まる問題を解決します (実験的機能)
+
+YouTube Premium を利用している場合、この設定は必要ない可能性があります"</string>
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"外部ツールで PoToken を生成することによって、動画の再生が止まる問題を解決します (実験的機能)
+
+この機能を使用するには、[動画ストリームを偽装] をオフにしてください"</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">正常に動作しない場合は、MicroG の強制停止をお試しください</string>
+  <string name="morphe_external_potoken_provider_settings_summary">PotHelper の設定を開く</string>
+  <string name="morphe_external_potoken_provider_about_summary">"この機能は現在開発中のため、正常に動作しない可能性があります
+
+ここをタップすると PotHelper をダウンロードします"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">アプリのバージョンを偽装</string>
   <string name="morphe_spoof_app_version_summary">古いバージョンのアプリを使用しているとサーバーに認識させて、以前の UI デザインや機能を復元します</string>
   <string name="morphe_spoof_app_version_user_dialog_message">"アプリのバージョンを古いバージョンに偽装します。
 
-これにより、アプリの表示と機能が変更されますが、予期せぬ副作用が発生する可能性があります。
+アプリの外観と機能を変更することができますが、予期しない副作用が引き起こされる可能性があります。
 
-後でオフにした場合は、UI の不具合を防ぐためにアプリデータを消去することをお勧めします。"</string>
+偽装をオフに戻した際には、UI の不具合を防ぐためにアプリデータを消去することを推奨します。"</string>
   <string name="morphe_spoof_app_version_target_title">アプリバージョンの偽装先</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->

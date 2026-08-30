@@ -107,13 +107,23 @@ Gözlənilməz hallardan xəbərdar olmayacaqsınız."</string>
   <string name="morphe_debug_logs_clear_toast">Sazlanma qeydləri təmizləndi</string>
   <string name="morphe_debug_feature_flags_manager_title">Xüsusiyyət nişançıları idarəedicisi</string>
   <string name="morphe_debug_feature_flags_manager_summary">Boolean xüsusiyyət nişançıların idarə et</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">İşlək xüsusiyyət nişançıları (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Əngəllənən xüsusiyyət nişançıları (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Xüsusiyyət nişançıların axtar…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Avtomatik</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Qapalı</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Açıq</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Sil</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Xüsusiyyət nişançıları saxlanıldı</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Xüsusiyyət nişançıları sıfırlandı</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Xüsusiyyət nişançıları buferə köçürüldü</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Bu seçimi istifadə etmək üçün tətbiqi yenidən başlat</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Başlanğıc</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">MicroG tənzimləmələrin aç</string>

@@ -33,6 +33,8 @@ Second \"item\" text"</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">إزالة قيود التشغيل في الخلفية</string>
   <string name="morphe_shorts_disable_background_playback_title">تعطيل التشغيل في الخلفية</string>
+  <!-- layout.disableScrollSpeedLimitPatch -->
+  <string name="morphe_disable_scrolling_speed_limit_title">تعطيل تحديد سرعة التمرير</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">تعطيل تحديثات المظهر</string>
   <string name="morphe_disable_layout_updates_summary">يمنع الخادم من تحديث تخطيط التطبيق</string>
@@ -84,6 +86,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_latest_videos_button_summary">يخفي اللافتة الزرقاء \'أحدث مقاطع الفيديو\' التي تظهر في الجزء العلوي من خلاصة الصفحة الرئيسية</string>
   <string name="morphe_hide_mix_playlists_title">إخفاء قوائم تشغيل التشكيلة</string>
   <string name="morphe_hide_movies_section_title">إخفاء قسم الأفلام</string>
+  <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_notifications_menu_header_title">إخفاء عنوان قائمة الإشعارات</string>
+  <string name="morphe_hide_notifications_menu_header_summary">يخفي عنوان قائمة الإشعارات عند النقر على زر الجرس</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">إخفاء زر \'إرسال إشعار إليّ\'</string>
@@ -164,16 +169,13 @@ Second \"item\" text"</string>
   <string name="morphe_hide_explore_podcast_section_title">إخفاء قسم \'استكشاف البودكاست\'</string>
   <string name="morphe_hide_featured_channels_section_title">إخفاء قسم القنوات المميّزة</string>
   <string name="morphe_hide_featured_links_section_title">إخفاء قسم الروابط المميزة</string>
-  <string name="morphe_hide_featured_places_section_title">إخفاء قسم \'الأماكن المميزة\'</string>
   <string name="morphe_hide_featured_playlists_section_title">إخفاء قسم  قوائم التشغيل المميزة</string>
   <string name="morphe_hide_featured_videos_section_title">إخفاء قسم الفيديوهات المميزة</string>
-  <string name="morphe_hide_gaming_section_title">إخفاء قسم الألعاب</string>
   <string name="morphe_hide_hashtag_section_title">إخفاء قسم الهاشتاغ</string>
   <string name="morphe_hide_how_this_was_made_section_title">إخفاء قسم \'طريقة صناعة هذا المحتوى\'</string>
   <string name="morphe_hide_hype_points_title">إخفاء نقاط التشجيع</string>
   <string name="morphe_hide_info_cards_section_title">إخفاء قسم بطاقات المعلومات</string>
   <string name="morphe_hide_key_concepts_section_title">إخفاء قسم \'المفاهيم الرئيسية\'</string>
-  <string name="morphe_hide_music_section_title">إخفاء قسم \'الموسيقى\'</string>
   <string name="morphe_hide_quizzes_section_title">إخفاء قسم الاختبارات</string>
   <string name="morphe_hide_search_inside_this_video_section_title">إخفاء قسم \'البحث داخل هذا الفيديو\'</string>
   <string name="morphe_hide_subscribe_button_title">إخفاء زر اشتراك</string>
@@ -181,6 +183,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_details_section_title">إخفاء قسم \'تفاصيل الفيديو\'</string>
   <string name="morphe_hide_filter_bar_screen_title">شريط الفئة</string>
   <string name="morphe_hide_filter_bar_screen_summary">اختر مكان إخفاء شريط التصفية المتحرك</string>
+  <string name="morphe_hide_filter_bar_in_channel_page_title">إخفاء في صفحة القناة</string>
   <string name="morphe_hide_filter_bar_in_comments_title">إخفاء في التعليقات</string>
   <string name="morphe_hide_filter_bar_in_feed_title">إخفاء في الخلاصات</string>
   <string name="morphe_hide_filter_bar_in_related_videos_title">إخفاء في الفيديوهات ذات الصلة</string>
@@ -197,6 +200,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_join_button_title">إخفاء زر الانضمام</string>
   <string name="morphe_hide_links_preview_title">إخفاء عرض الروابط</string>
   <string name="morphe_hide_links_preview_summary">يخفي روابط الويب القابلة للنقر في اعلى صفحة القناة</string>
+  <string name="morphe_hide_members_only_chip_title">إخفاء عنصر \'الأعضاء فقط\'</string>
+  <string name="morphe_hide_members_only_chip_summary">يُخفي عنصر \'الأعضاء فقط\' في شريط تصفية القناة</string>
   <string name="morphe_hide_members_shelf_title">إخفاء رف الأعضاء</string>
   <string name="morphe_hide_members_shelf_summary">يخفي قائمة أعضاء القناة</string>
   <string name="morphe_hide_posts_shelf_title">إخفاء رف المنشورات</string>
@@ -214,7 +219,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_learning_menu_title">إخفاء قائمة محتوى تعليمي</string>
   <string name="morphe_hide_live_menu_title">إخفاء قائمة بث مباشر</string>
   <string name="morphe_hide_memberships_menu_title">إخفاء قائمة العضويات</string>
-  <string name="morphe_hide_movies_menu_title">إخفاء قائمة \'الأفلام والتلفزيون\'</string>
+  <string name="morphe_hide_movies_menu_title">إخفاء قائمة \'الأفلام &amp; التلفزيون\'</string>
   <string name="morphe_hide_music_menu_title">إخفاء قائمة الموسيقى</string>
   <string name="morphe_hide_news_menu_title">إخفاء قائمة الأخبار</string>
   <string name="morphe_hide_playables_menu_title">إخفاء قائمة هيّا نلعب</string>
@@ -251,18 +256,21 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_gift_button_title">إخفاء زر الهدايا</string>
   <string name="morphe_hide_comments_info_button_title">إخفاء زر المعلومات</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">إخفاء شريط مُتبرِّعي المحادثة المباشرة</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_title">إخفاء تلميحات المحادثة المباشرة</string>
+  <string name="morphe_hide_comments_live_chat_tooltips_summary">يُخفي نوافذ التلميحات المنبثقة التي تظهر بجوار شريط كتابة المحادثة، مثل إشعار المحادثة مخصصة للمشتركين فقط</string>
   <string name="morphe_hide_comments_preview_comment_title">إخفاء تعليق المعاينة</string>
   <string name="morphe_hide_comments_preview_comment_summary">يخفي تعليق المعاينة أسفل الفيديو قبل فتح قسم التعليقات الكامل</string>
   <string name="morphe_hide_comments_thanks_button_title">إخفاء زر شكرًا</string>
   <string name="morphe_hide_comments_timestamp_button_title">إخفاء زر الطابع الزمني</string>
+  <string name="morphe_hide_comments_top_fans_button_title">إخفاء زر \'أهم المعجبين\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">تنظيف روابط البحث المميزة</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">ينظف روابط البحث المميزة، ويترك فقط النص الأصلي العادي</string>
   <string name="morphe_hide_keyword_content_screen_title">تصفية الكلمات المفتاحية</string>
   <string name="morphe_hide_keyword_content_screen_summary">اختر كلمات أو عبارات محددة لإخفاء الفيديوهات في الخلاصات ونتائج البحث</string>
+  <string name="morphe_hide_keyword_content_comments_title">إخفاء التعليقات بواسطة الكلمات المفتاحية</string>
   <string name="morphe_hide_keyword_content_home_title">إخفاء فيديوهات الصفحة الرئيسية بواسطة الكلمات المفتاحية</string>
   <string name="morphe_hide_keyword_content_search_title">إخفاء نتائج البحث عن طريق الكلمات المفتاحية</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">إخفاء الفيديوهات الخاصة بالاشتراكات عن طريق الكلمات المفتاحية</string>
-  <string name="morphe_hide_keyword_content_comments_title">إخفاء التعليقات بواسطة الكلمات المفتاحية</string>
   <string name="morphe_hide_keyword_content_phrases_title">الكلمات المفتاحية المراد إخفاؤها</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
@@ -449,10 +457,13 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_dismiss_player_not_available_toast">معرف الفيديو غير متاح. يرجى إعادة تحميل الفيديو يدويًا</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">عرض زر الحفظ في المشاهدة لاحقًا</string>
-  <string name="morphe_save_to_watch_later_button_summary">اضغط لحفظه لمشاهدته لاحقًا، واضغط مع الاستمرار لخيارات قائمة الانتظار</string>
+  <string name="morphe_save_to_watch_later_button_summary">انقر للحفظ في المشاهدة لاحقًا، واضغط مع الاستمرار لخيارات قائمة الانتظار</string>
   <string name="morphe_save_to_watch_later_success_toast">تم حفظ الفيديو بنجاح في قائمة المشاهدة لاحقًا</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">هذا الفيديو محفوظ بالفعل في قائمة المشاهدة لاحقًا</string>
   <string name="morphe_save_to_watch_later_error_toast">لا يمكن حفظ هذا الفيديو في قائمة المشاهدة لاحقًا</string>
+  <string name="morphe_save_to_watch_later_flyout_title">الحفظ في المشاهدة لاحقًا</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_title">عرض زر الحفظ في المشاهدة لاحقًا بفيديوهات الأطفال</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">يسمح بحفظ الفيديوهات المتعلقة بالأطفال في قائمة \'المشاهدة لاحقًا\'</string>
   <string name="morphe_queue_flyout_title">إضافة الى قائمة انتظار Morphe</string>
   <string name="morphe_queue_restore_title">احتفظ بقائمة الانتظار بين الجلسات</string>
   <string name="morphe_queue_restore_summary">تبقى قائمة الانتظار محفوظة بعد إعادة تشغيل التطبيق</string>
@@ -497,16 +508,17 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">تمكين مصغرات شريط التقدم</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">يعرض صورة مصغرة للفيديو أثناء سحب شريط التقدم</string>
+  <string name="morphe_seekbar_thumbnail_heatmap_peak_point">الأكثر إعادة</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"قد لا يكون 'تمكين رجوع البث المباشر' متاحًا
+  <string name="morphe_livestream_dvr_not_available">"قد لا يكون 'تمكين التنقل في البث المباشر' متاحًا
 
-لإصلاح ذلك، قم بتشغيل 'Spoof Video Streams' وغيّر 'العميل الافتراضي' إلى 'TV' أو 'visionOS'"</string>
+لإصلاح ذلك، قم بتشغيل 'Spoof Video Streams' وغيّر 'العميل الافتراضي' إلى 'TV Simply' أو 'visionOS'"</string>
   <string name="morphe_expand_livestream_dvr_duration_title">زيادة مدة رجوع البث المباشر</string>
   <string name="morphe_expand_livestream_dvr_duration_summary">يسمح لك بإعادة تشغيل البث المباشر لمدة تصل إلى 7 أيام مضت</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_expand_livestream_dvr_duration_not_available">"قد لا يكون 'زيادة مدة رجوع البث المباشر' متاحًا
 
-لإصلاح ذلك، قم بتشغيل 'Spoof Video Streams' وغيّر 'العميل الافتراضي' إلى 'TV' أو 'visionOS'"</string>
+لإصلاح ذلك، قم بتشغيل 'Spoof Video Streams' وغيّر 'العميل الافتراضي' إلى 'TV Simply' أو 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">تمكين التمرير للتقديم أو الترجيع</string>
   <string name="morphe_slide_to_seek_summary">تمكين التمرير للتنقل بدلًا من التشغيل بسرعة 2x عند الضغط مع الاستمرار على مشغل الفيديو</string>
@@ -514,15 +526,18 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_tap_to_seek_title">تمكين النقر للتمرير</string>
   <string name="morphe_tap_to_seek_summary">اضغط فقط على شريط التقدم للانتقال إلى ذلك الموضع دون سحبه</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
-  <string name="morphe_swipe_brightness_title">تمكين إيماءة السطوع</string>
-  <string name="morphe_swipe_brightness_summary">مرِّر عموديًا على الجانب الأيسر من وضع ملء الشاشة لضبط مستوى السطوع</string>
-  <string name="morphe_swipe_volume_title">تمكين إيماءة الصوت</string>
-  <string name="morphe_swipe_volume_summary">مرِّر عموديًا على الجانب الأيمن من وضع ملء الشاشة لضبط مستوى الصوت</string>
-  <string name="morphe_swipe_zone_width_title">عرض منطقة السطوع/الصوت</string>
-  <string name="morphe_swipe_zone_width_summary">نسبة كل حافة من حواف الشاشة المخصصة لإيماءات السطوع و الصوت (5-50)</string>
+  <string name="morphe_swipe_left_zone_title">إيماءة التمرير لليسار</string>
+  <string name="morphe_swipe_right_zone_title">إيماءة التمرير لليمين</string>
+  <string name="morphe_swipe_top_zone_title">إيماءة التمرير للأعلى</string>
+  <string name="morphe_swipe_zone_width_title">عرض منطقة اليسار/اليمين</string>
+  <string name="morphe_swipe_zone_width_summary">نسبة كل حافة من حواف الشاشة المخصصة لإيماءات التمرير لليسار واليمين (5-50)</string>
   <string name="morphe_swipe_zone_label_brightness">السطوع</string>
   <string name="morphe_swipe_zone_label_volume">الصوت</string>
   <string name="morphe_swipe_zone_label_native">الأصل</string>
+  <string name="morphe_swipe_zone_label_off">متوقف</string>
+  <string name="morphe_swipe_ignore_when_locked_title">تجاهل التمرير عند القفل</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
+  <string name="morphe_swipe_ignore_when_locked_summary">يتم تجاهل إيماءات التمرير أثناء قفل المشغل باستخدام \'قفل الشاشة\'</string>
   <string name="morphe_swipe_press_to_engage_title">تمكين الضغط لتمرير الإيماءة</string>
   <string name="morphe_swipe_press_to_engage_summary">يتطلب الضغط مع الاستمرار قبل التعرف على إيماءة التمرير</string>
   <string name="morphe_swipe_haptic_feedback_title">الاهتزاز عند الضغط</string>
@@ -551,12 +566,9 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_swipe_volume_sensitivity_summary">القيم الأعلى تزيد من تغيُّر مستوى الصوت مع كل تمريرة</string>
   <string name="morphe_swipe_brightness_sensitivity_title">حساسية تمرير مستوى السطوع</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">القيم الأعلى تتطلب التمرير أكثر لكل مستوى سطوع</string>
-  <string name="morphe_swipe_speed_title">تمكين إيماءة السرعة</string>
-  <string name="morphe_swipe_speed_summary">مرِّر أفقيًا في المنطقة العلوية بوضع ملء الشاشة لتغيير سرعة التشغيل</string>
   <string name="morphe_swipe_speed_sensitivity_title">حساسية تمرير السرعة</string>
   <string name="morphe_swipe_speed_sensitivity_summary">القيم الأعلى تتطلب التمرير أكثر لكل درجة سرعة</string>
   <string name="morphe_swipe_speed_step_title">مستوى تغيير السرعة</string>
-  <string name="morphe_swipe_speed_step_summary">مقدار تغيّر سرعة التشغيل مع كل نقرة</string>
   <string name="morphe_swipe_speed_zone_height_title">ارتفاع منطقة السرعة</string>
   <string name="morphe_swipe_speed_zone_height_summary">ارتفاع منطقة إيماءة السرعة كنسبة مئوية من ارتفاع المشغل (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">السرعة</string>
@@ -685,15 +697,8 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_navigation_bar_animations_summary">يُفعّل الانتقالات المتحركة عند التبديل بين علامات التبويب</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">تعطيل إخفاء شريط التنقل تلقائيًا</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">يبقي شريط التنقل ظاهرًا أثناء التمرير</string>
-  <string name="morphe_disable_translucent_status_bar_title">تعطيل شريط الحالة الشفاف</string>
-  <string name="morphe_disable_translucent_status_bar_summary">يجعل شريط الحالة معتمًا تمامًا</string>
-  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"القيود:
-• قد يظهر شريط أسود في أعلى مشغل الفيديو.
-• يمكن أن يتغير شريط التنقل في النظام إلى شفاف، ولا يمكن التعليق على الفيديوهات."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">تعطيل الشريط الشفاف الفاتح</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">يجعل شريط التنقل معتمًا تمامًا في الوضع الفاتح</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">تعطيل الشريط الشفاف الداكن</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">يجعل شريط التنقل معتمًا تمامًا في الوضع الداكن</string>
+  <string name="morphe_disable_translucent_navigation_title">تعطيل شريط التنقل الشفاف</string>
+  <string name="morphe_disable_translucent_navigation_summary">يجعل شريط التنقل وشريط الحالة معتمين تمامًا</string>
   <string name="morphe_toolbar_screen_title">شريط الأدوات</string>
   <string name="morphe_toolbar_screen_summary">اختر المكونات التي تظهر في شريط الأدوات</string>
   <string name="morphe_hide_toolbar_cast_button_title">إخفاء زر البث</string>
@@ -712,10 +717,10 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_audio_track_title">إخفاء قائمة \'المقطع الصوتي\'</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' must be kept untranslated. -->
+          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"تم إخفاء قائمة 'المقطع الصوتي'
 
-لعرض قائمة 'المقطع الصوتي'، غيّر 'Spoof Video Streams' إلى أي عميل باستثناء 'Android Studio'"</string>
+لعرض قائمة 'المقطع الصوتي'، غيّر 'Spoof Video Streams' إلى أي عميل باستثناء 'Android Studio' و 'Android VR Downgraded'"</string>
   <string name="morphe_hide_player_flyout_audio_track_footer_title">إخفاء نص قائمة \'المقطع الصوتي\' السفلي</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">إخفاء قائمة الترجمة</string>
@@ -847,6 +852,9 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">تعطيل لوحات المشغل المنبثقة</string>
   <string name="morphe_disable_player_popup_panels_summary">يعطل فتح اللوحات الخاصة بقائمة التشغيل والمحادثة المباشرة تلقائيًا</string>
+  <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
+  <string name="morphe_disable_playlist_autoplay_title">تعطيل تشغيل قوائم التشغيل تلقائيًا</string>
+  <string name="morphe_disable_playlist_autoplay_summary">يمنع قوائم التشغيل من الانتقال التلقائي إلى الفيديو التالي</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">الخروج من وضع ملء الشاشة عند انتهاء الفيديو</string>
   <string name="morphe_exit_fullscreen_entry_1">معطل</string>
@@ -855,21 +863,34 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_exit_fullscreen_entry_4">بالطول والعرض</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">إيماءات ملء الشاشة</string>
-  <string name="morphe_disable_fullscreen_gestures_summary">إيماءات المشغل للدخول أو الخروج من وضع ملء الشاشة</string>
+  <string name="morphe_disable_fullscreen_gestures_summary">إيماءات المشغل في وضع ملء الشاشة</string>
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">تعطيل إيماءة التمرير لأعلى في الوضع الرأسي</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">تعطيل إيماءة التمرير لأسفل في الوضع الرأسي</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">تعطيل إيماءة التمرير لأسفل في الوضع الأفقي</string>
+  <string name="morphe_disable_fullscreen_zoom_gesture_title">تعطيل إيماءة التكبير بالإصبع</string>
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
   <string name="morphe_open_videos_fullscreen_title">فتح الفيديوهات بوضع ملء الشاشة</string>
   <string name="morphe_open_videos_fullscreen_entry_1">معطّل</string>
   <string name="morphe_open_videos_fullscreen_entry_2">بالطول</string>
   <string name="morphe_open_videos_fullscreen_entry_3">بالعرض</string>
+  <!-- layout.player.fullscreen.stretchVideoPatch -->
+  <string name="morphe_fullscreen_video_scale_title">مقياس الفيديو بملء الشاشة</string>
+  <string name="morphe_fullscreen_video_scale_entry_default">الوضع الافتراضي</string>
+  <string name="morphe_fullscreen_video_scale_entry_stretch">تمديد (ملء الشاشة)</string>
+  <string name="morphe_fullscreen_video_scale_entry_zoom">تكبير (قص لملء الفراغ)</string>
+  <string name="morphe_fullscreen_video_scale_button_title">عرض زر مقياس الفيديو</string>
+  <string name="morphe_fullscreen_video_scale_button_summary">انقر للتنقل بين الوضع الافتراضي، التمديد، والتكبير</string>
+  <!-- layout.player.buttons.muteVideoButtonPatch -->
+  <string name="morphe_mute_video_button_title">عرض زر كتم الصوت</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">شفافية واجهة المشغل</string>
   <string name="morphe_player_overlay_opacity_summary">ضبط مستوى الشفافية (0 شفاف، 100 معتم)</string>
   <string name="morphe_player_overlay_opacity_invalid_toast">شفافية واجهة المشغل يجب أن تكون بين 0-100</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
-  <string name="morphe_wide_searchbar_title">تمكين شريط البحث العريض</string>
+  <string name="morphe_searchbar_type_title">شريط البحث</string>
+  <string name="morphe_searchbar_type_entry_disabled">معطّل</string>
+  <string name="morphe_searchbar_type_entry_wide">عريض</string>
+  <string name="morphe_searchbar_type_entry_extra_wide">عريض جدا</string>
   <!-- layout.sponsorblock.sponsorBlockPatch -->
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">تخطيط الجهاز</string>
@@ -906,8 +927,8 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">تغيير وظيفة أزرار YouTube Music</string>
   <string name="morphe_override_youtube_music_buttons_summary">يفتح تطبيق الموسيقى المفضل لديك بدلًا من تطبيق YouTube Music الافتراضي</string>
-  <string name="morphe_music_package_name_title">اسم حزمة تطبيق الموسيقى</string>
-  <string name="morphe_music_package_name_summary">اسم حزمة تطبيق الموسيقى المثبت لديك</string>
+  <string name="morphe_custom_music_package_name_title">اسم حزمة تطبيق الموسيقى</string>
+  <string name="morphe_custom_music_package_name_summary">اسم حزمة تطبيق الموسيقى المثبت لديك</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">صفحة البدء</string>
   <string name="morphe_change_start_page_entry_default">الافتراضي</string>
@@ -957,7 +978,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_miniplayer_disable_resuming_summary">يعطّل مشغل \'متابعة المشاهدة\' المصغر، وهي ميزة YouTube Premium تظهر عند بدء تشغيل التطبيق</string>
   <string name="morphe_miniplayer_screen_title">المشغل المصغر</string>
   <string name="morphe_miniplayer_screen_summary">تخصيص مظهر ونمط مشغل الفيديو المصغر</string>
-  <string name="morphe_miniplayer_not_available_summary">أزال YouTube كل مشغلات الفيديو المصغر الإضافية. لتغيير نوع المشغل المصغر قم بتعديل YouTube بإصدار 21.28.207 أو أقدم</string>
+  <string name="morphe_miniplayer_not_available_summary">أزال YouTube كل مشغلات الفيديو المصغر الإضافية. لتغيير نوع المشغل المصغر قم بتعديل YouTube بإصدار 21.28.208 أو أقدم</string>
   <string name="morphe_miniplayer_type_title">نوع المشغل المصغر</string>
   <string name="morphe_miniplayer_type_entry_0">معطّل</string>
   <string name="morphe_miniplayer_type_entry_1">إفتراضي</string>
@@ -983,7 +1004,23 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_miniplayer_opacity_title">شفافية الواجهة</string>
   <string name="morphe_miniplayer_opacity_summary">ضبط مستوى الشفافية (0 شفاف، 100 معتم)</string>
   <string name="morphe_miniplayer_opacity_invalid_toast">شفافية واجهة المشغل المصغر يجب أن تكون بين 0-100</string>
+  <!-- misc.fix.fixBackToExitGesturePatch -->
+  <string name="morphe_back_button_always_exits_feed_title">زر الرجوع يخرج من الخلاصة</string>
+  <string name="morphe_back_button_always_exits_feed_summary">الضغط على زر الرجوع يؤدي دائمًا إلى الخروج من التطبيق بدلًا من التمرير إلى أعلى الخلاصة</string>
   <!-- layout.theme.themePatch -->
+  <string name="morphe_theme_color_light_title">خلفية المظهر الفاتح</string>
+  <string name="morphe_theme_color_light_entry_2">أبيض</string>
+  <string name="morphe_theme_color_light_entry_3">Material You (أبيض)</string>
+  <string name="morphe_theme_color_light_entry_9">وردي فاتح</string>
+  <string name="morphe_theme_color_light_entry_10">أزرق فاتح</string>
+  <string name="morphe_theme_color_light_entry_11">أخضر فاتح</string>
+  <string name="morphe_theme_color_light_entry_12">أصفر فاتح</string>
+  <string name="morphe_theme_color_light_entry_13">برتقالي فاتح</string>
+  <string name="morphe_theme_color_light_entry_14">أحمر فاتح</string>
+  <string name="morphe_theme_color_light_custom_title">خلفية فاتحة مخصصة</string>
+  <string name="morphe_theme_color_light_custom_summary">تعيين لون خلفية المظهر الفاتح</string>
+  <string name="morphe_theme_color_change_foreground_title">تغيير لون المقدمة</string>
+  <string name="morphe_theme_color_change_foreground_summary">استخدام لون المظهر للنص والأيقونات</string>
   <string name="morphe_gradient_loading_screen_title">تمكين شاشة التحميل المتدرجة</string>
   <string name="morphe_gradient_loading_screen_summary">يعرض خلفية متدرجة على شاشة التحميل بدلًا من لون ثابت</string>
   <string name="morphe_splash_screen_animation_style_title">نمط الشاشة الترحيبية</string>
@@ -1001,7 +1038,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_header_logo_title">علامة الشعار</string>
   <string name="morphe_header_logo_entry_1">الافتراضي</string>
   <string name="morphe_header_logo_entry_2">القياسي</string>
-  <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_3'. -->
+  <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_7'. -->
   <string name="morphe_header_logo_entry_5">مخصص</string>
   <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <string name="morphe_bypass_image_region_restrictions_title">تجاوز قيود منطقة الصورة</string>
@@ -1073,12 +1110,6 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">تلقائي</string>
-  <string name="morphe_override_initial_video_quality_title">تطبيق جودة الفيديو تلقائيًا عند التشغيل</string>
-  <!-- 'Force AVC (H.264) codec' should be the same translation used for 'morphe_force_avc_codec_title'. -->
-  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_override_initial_video_quality_summary">"يُصلح مشكلة عدم تطبيق جودة الفيديو الافتراضية فور بدء تشغيل الفيديو
-
-ملاحظة: قد لا يعمل التشغيل على بعض الأجهزة إذا تم ضبط 'Spoof Video Streams' على 'Android VR' مع تمكين 'فرض برنامج ترميز AVC (H264)'"</string>
   <string name="morphe_remember_video_quality_last_selected_title">تذكر جودة الفيديو</string>
   <string name="morphe_remember_video_quality_last_selected_summary">يطبق تحديد الجودة اليدوي على جميع الفيديوهات المستقبلية</string>
   <string name="morphe_remember_video_quality_last_selected_toast_title">إشعارات تغيير الجودة</string>
@@ -1118,8 +1149,21 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_remember_playback_speed_toast">تم تغيير سرعة التشغيل الافتراضية إلى: %s</string>
   <string name="morphe_disable_playback_speed_music_title">استخدام السرعة العادية للموسيقى</string>
   <string name="morphe_disable_playback_speed_music_summary">تشغيل فيديوهات الموسيقى دائمًا بسرعة 1.0x</string>
+  <string name="morphe_enable_playback_audio_pitch_controls_title">تمكين التحكم في طبقة الصوت</string>
+  <string name="morphe_playback_audio_pitch_default_title">طبقة صوت التشغيل الافتراضية</string>
+  <string name="morphe_remember_playback_audio_pitch_toast">تم تغيير طبقة الصوت الافتراضية إلى: %s</string>
+  <string name="morphe_playback_audio_time_stretching_title">تمديد زمن الصوت</string>
+  <string name="morphe_playback_audio_time_stretching_summary">يتيح ضبط السرعة وطبقة الصوت بشكل مستقل، وقد يسبب تشوهات في الصوت</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">تعطيل فيديو HDR</string>
+  <string name="morphe_force_hdr_video_title">فرض فيديو HDR</string>
+  <string name="morphe_force_hdr_video_summary">إجبار التطبيق على التعرف على هذا الجهاز بأنه يدعم تقنية HDR</string>
+  <string name="morphe_force_hdr_video_user_dialog_message">"استخدم هذا الخيار إذا كان فك ترميز HDR يعمل، لكن تطبيق YouTube لا يتيح خيار HDR، كما في بعض أجهزة HyperOS التي تُخفي دعم HLG.
+
+القيود:
+• قد تظهر الألوان غير دقيقة إذا كانت الشاشة لا تدعم عرض محتوى HDR فعليًا
+• قد يفشل التشغيل إذا تعذّر على وحدة فك الترميز معالجة محتوى HDR
+• يظل تشغيل HDR معتمدًا على عميل Spoof Video Streams"</string>
   <string name="morphe_force_avc_codec_title">فرض برنامج ترميز AVC (H.264)</string>
   <string name="morphe_force_avc_codec_user_dialog_message">"الفوائد:
 • يمكن أن يحسن عمر البطارية
@@ -1155,6 +1199,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_spoof_video_streams_about_js">• إذا فشل فك التشفير، قد يفشل التشغيل</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• فرض الصوت الأصلي غير متاح</string>
+  <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• يلزم تسجيل الدخول إلى Android VR</string>
   <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• قد تكون الجودة محدودة بدقة 720p</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">متغير JavaScript الخاص بالمشغل</string>

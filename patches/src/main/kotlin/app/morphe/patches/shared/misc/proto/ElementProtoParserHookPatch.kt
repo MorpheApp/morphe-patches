@@ -67,7 +67,7 @@ fun hookElement(
 ) = elementProtoParserMethodRef.get()!!.addInstructions(
     2,
     """
-        invoke-static { p0 }, $methodDescriptor
+        invoke-static { p0 }, $methodDescriptor([B)[B
         move-result-object p0
     """
 )
