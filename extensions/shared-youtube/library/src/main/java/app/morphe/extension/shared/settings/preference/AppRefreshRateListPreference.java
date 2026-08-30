@@ -8,7 +8,7 @@
 package app.morphe.extension.shared.settings.preference;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.shared.patches.BaseForceAppRefreshRatePatch.DEFAULT_REFRESH_RATE_VALUE;
+import static app.morphe.extension.shared.patches.BaseAppRefreshRatePatch.DEFAULT_REFRESH_RATE_VALUE;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -16,43 +16,43 @@ import android.util.AttributeSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.morphe.extension.shared.patches.BaseForceAppRefreshRatePatch;
+import app.morphe.extension.shared.patches.BaseAppRefreshRatePatch;
 
 @SuppressWarnings({"unused", "deprecation"})
-public class ForceAppRefreshRateListPreference extends CustomDialogListPreference {
+public class AppRefreshRateListPreference extends CustomDialogListPreference {
 
-    public ForceAppRefreshRateListPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public AppRefreshRateListPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init();
     }
 
-    public ForceAppRefreshRateListPreference(Context context, AttributeSet attrs, int defStyleAttr) {
+    public AppRefreshRateListPreference(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
 
-    public ForceAppRefreshRateListPreference(Context context, AttributeSet attrs) {
+    public AppRefreshRateListPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public ForceAppRefreshRateListPreference(Context context) {
+    public AppRefreshRateListPreference(Context context) {
         super(context);
         init();
     }
 
     private void init() {
-        String[] available = BaseForceAppRefreshRatePatch.getAvailableRefreshRates();
+        String[] available = BaseAppRefreshRatePatch.getAvailableRefreshRates();
 
         List<String> entries = new ArrayList<>();
         List<String> values = new ArrayList<>();
 
-        entries.add(str("morphe_force_app_refresh_rate_default"));
+        entries.add(str("morphe_app_refresh_rate_default"));
         values.add(DEFAULT_REFRESH_RATE_VALUE);
 
         if (available != null) {
             for (String fps : available) {
-                entries.add(str("morphe_force_app_refresh_rate_fps", fps));
+                entries.add(str("morphe_app_refresh_rate_fps", fps));
                 values.add(fps);
             }
         }

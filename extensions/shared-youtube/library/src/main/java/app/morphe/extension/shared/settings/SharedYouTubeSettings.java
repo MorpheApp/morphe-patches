@@ -2,14 +2,14 @@ package app.morphe.extension.shared.settings;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
-import static app.morphe.extension.shared.patches.BaseForceAppRefreshRatePatch.DEFAULT_REFRESH_RATE_VALUE;
+import static app.morphe.extension.shared.patches.BaseAppRefreshRatePatch.DEFAULT_REFRESH_RATE_VALUE;
 import static app.morphe.extension.shared.settings.Setting.migrateOldSettingToNew;
 import static app.morphe.extension.shared.settings.Setting.parent;
 import static app.morphe.extension.shared.settings.Setting.parentsAny;
 
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.patches.BaseForceAppRefreshRatePatch.ForceRefreshRatePlayerOnly;
-import app.morphe.extension.shared.patches.BaseForceAppRefreshRatePatch.ForceRefreshType;
+import app.morphe.extension.shared.patches.BaseAppRefreshRatePatch.AppRefreshType;
+import app.morphe.extension.shared.patches.BaseAppRefreshRatePatch.RefreshRateType;
 import app.morphe.extension.shared.patches.CustomBrandingPatch;
 import app.morphe.extension.shared.patches.CustomBrandingPatch.BrandingTheme;
 import app.morphe.extension.shared.patches.CustomBrandingPatch.NotificationIconTheme;
@@ -101,8 +101,8 @@ public class SharedYouTubeSettings extends BaseSettings {
     public static final BooleanSetting SPOOF_APP_VERSION = new BooleanSetting("morphe_spoof_app_version", FALSE, true, "morphe_spoof_app_version_user_dialog_message");
     public static final StringSetting SPOOF_APP_VERSION_TARGET = new StringSetting("morphe_spoof_app_version_target", getDefaultSpoofAppVersionTarget(), true, parent(SPOOF_APP_VERSION));
 
-    public static final StringSetting APP_REFRESH_RATE = new StringSetting("morphe_force_app_refresh_rate", DEFAULT_REFRESH_RATE_VALUE, true);
-    public static final EnumSetting<ForceRefreshType> APP_REFRESH_RATE_TYPE = new EnumSetting<>("morphe_force_app_refresh_rate_type", ForceRefreshType.ALWAYS, true, new ForceRefreshRatePlayerOnly());
+    public static final StringSetting APP_REFRESH_RATE = new StringSetting("morphe_app_refresh_rate", DEFAULT_REFRESH_RATE_VALUE, true);
+    public static final EnumSetting<AppRefreshType> APP_REFRESH_RATE_TYPE = new EnumSetting<>("morphe_app_refresh_rate_type", AppRefreshType.ALWAYS, true, new RefreshRateType());
 
     // Return YouTube Dislike
     public static final BooleanSetting RYD_ENABLED = new BooleanSetting("morphe_ryd_enabled", TRUE);

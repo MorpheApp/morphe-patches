@@ -22,31 +22,31 @@ import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/BaseForceAppRefreshRatePatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/BaseAppRefreshRatePatch;"
 
-fun baseForceAppRefreshRatePatch(
+fun baseAppRefreshRatePatch(
     preferenceScreen: BasePreferenceScreen.Screen,
     useRefreshRateType: Boolean,
     block: BytecodePatchBuilder.() -> Unit,
     executeBlock: BytecodePatchContext.() -> Unit = {},
 ) = bytecodePatch(
-    name = "Force app refresh rate",
-    description = "Forces the app to run at a different refresh rate."
+    name = "App refresh rate",
+    description = "Adds an option to change the app refresh rate."
 ) {
     block()
 
     execute {
         val refreshPreference = NonInteractivePreference(
-            key = "morphe_force_app_refresh_rate",
+            key = "morphe_app_refresh_rate",
             summaryKey = null,
-            tag = "app.morphe.extension.shared.settings.preference.ForceAppRefreshRateListPreference",
+            tag = "app.morphe.extension.shared.settings.preference.AppRefreshRateListPreference",
             selectable = true
         )
         preferenceScreen.addPreferences(
             if (useRefreshRateType) {
                 noTitleUnsortedPreferenceCategory(
                     refreshPreference,
-                    ListPreference("morphe_force_app_refresh_rate_type")
+                    ListPreference("morphe_app_refresh_rate_type")
                 )
             } else {
                 refreshPreference

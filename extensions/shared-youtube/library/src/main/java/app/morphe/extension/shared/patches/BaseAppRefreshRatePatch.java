@@ -29,16 +29,16 @@ import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
 @SuppressWarnings({"deprecation", "unused"})
-public final class BaseForceAppRefreshRatePatch {
+public final class BaseAppRefreshRatePatch {
 
-    public enum ForceRefreshType {
+    public enum AppRefreshType {
         ALWAYS,
         PORTRAIT,
         FULLSCREEN,
         PORTRAIT_FULLSCREEN
     }
 
-    public static class ForceRefreshRatePlayerOnly implements Setting.Availability {
+    public static class RefreshRateType implements Setting.Availability {
         @Override
         public boolean isAvailable() {
             return !SharedYouTubeSettings.APP_REFRESH_RATE.isSetToDefault();

@@ -8,18 +8,17 @@
 package app.morphe.patches.youtube.misc.refreshrate
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patches.shared.misc.refreshrate.baseForceAppRefreshRatePatch
+import app.morphe.patches.shared.misc.refreshrate.baseAppRefreshRatePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 
-private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/ForceAppRefreshRatePatch;"
-
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/AppRefreshRatePatch;"
 
 @Suppress("unused")
-val forceAppRefreshRatePatch = baseForceAppRefreshRatePatch(
+val appRefreshRatePatch = baseAppRefreshRatePatch(
     preferenceScreen = PreferenceScreen.MISC,
     useRefreshRateType = true,
     block = {
