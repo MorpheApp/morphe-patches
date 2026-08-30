@@ -80,7 +80,8 @@ public abstract class BaseActivityHook extends Activity {
                 return;
             }
 
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU && !ENABLE_PREDICTIVE_BACK_ANIMATION) {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU
+                    && !ENABLE_PREDICTIVE_BACK_ANIMATION) {
                 activity.getOnBackInvokedDispatcher().registerOnBackInvokedCallback(
                         android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT,
                         activity::finish

@@ -8,9 +8,9 @@
 package app.morphe.extension.shared.patches;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Build;
 import android.view.Display;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -21,7 +21,6 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
 @SuppressWarnings({"deprecation", "unused"})
@@ -67,7 +66,7 @@ public final class ForceAppRefreshRatePatch {
      */
     public static float getRefreshRateOverride(float original) {
         final Float override = getPreferredRefreshRate();
-        if (override != null) {
+        if (override != null && override > 0) {
             return override;
         }
         return original;
@@ -77,12 +76,11 @@ public final class ForceAppRefreshRatePatch {
      * Injection point.
      */
     public static void setActivityRefreshRate(Activity activity) {
-        if (!isPatchIncluded()) {
-            return;
-        }
+        setWindowRefreshRate(activity, activity.getWindow());
+    }
 
-        if (!Utils.isContextSet()) {
-            Logger.printInfo(() -> "Cannot set refresh rate, context is null: " + activity);
+    public static void setWindowRefreshRate(Context context, @Nullable Window window) {
+        if (!isPatchIncluded() || window == null) {
             return;
         }
 
@@ -92,9 +90,15 @@ public final class ForceAppRefreshRatePatch {
                 final boolean isDefault = refreshString.equals(DEFAULT_REFRESH_RATE_VALUE);
 
                 if (preferredDisplayModeId == null || preferredRefreshRate == null) {
-                    Display display = Build.VERSION.SDK_INT >= Build.VERSION_CODES.R
-                            ? activity.getDisplay()
-                            : activity.getWindowManager().getDefaultDisplay();
+                    Display display;
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                        display = context.getDisplay();
+                    } else {
+                        WindowManager windowManager = (WindowManager) context
+                                .getSystemService(Context.WINDOW_SERVICE);
+                        display = windowManager.getDefaultDisplay();
+                    }
+
                     if (display == null) {
                         Logger.printDebug(() -> "No Display available; cannot set preferred mode");
                         preferredDisplayModeId = -1;
@@ -131,7 +135,7 @@ public final class ForceAppRefreshRatePatch {
                     } catch (Exception ex) {
                         Logger.printException(() -> "Invalid refresh rate", ex);
                         SharedYouTubeSettings.APP_REFRESH_RATE.resetToDefault();
-                        setActivityRefreshRate(activity);
+                        setWindowRefreshRate(context, window);
                         return;
                     }
 
@@ -164,7 +168,6 @@ public final class ForceAppRefreshRatePatch {
                 }
 
                 final float overrideRefreshRate = preferredRefreshRate;
-                Window window = activity.getWindow();
                 window.getDecorView().post(() -> {
                     WindowManager.LayoutParams params = window.getAttributes();
                     params.preferredDisplayModeId = preferredDisplayModeId;
@@ -174,7 +177,7 @@ public final class ForceAppRefreshRatePatch {
                     window.setAttributes(params);
                 });
             } catch (Exception ex) {
-                Logger.printException(() -> "setActivityRefreshRate failure", ex);
+                Logger.printException(() -> "setWindowRefreshRate failure", ex);
             }
         }
     }
