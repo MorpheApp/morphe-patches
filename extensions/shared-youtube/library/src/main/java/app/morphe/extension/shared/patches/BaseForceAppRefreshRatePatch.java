@@ -131,14 +131,10 @@ public final class BaseForceAppRefreshRatePatch {
             final boolean isDefault = refreshString.equals(DEFAULT_REFRESH_RATE_VALUE);
 
             if (preferredDisplayModeId == null || preferredRefreshRate == null) {
-                Display display;
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                    display = context.getDisplay();
-                } else {
-                    WindowManager windowManager = (WindowManager) context
-                            .getSystemService(Context.WINDOW_SERVICE);
-                    display = windowManager.getDefaultDisplay();
-                }
+                Display display = Build.VERSION.SDK_INT >= Build.VERSION_CODES.R
+                        ? context.getDisplay()
+                        : ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE))
+                        .getDefaultDisplay();
 
                 if (display == null) {
                     Logger.printDebug(() -> "No Display available; cannot set preferred mode");
@@ -210,15 +206,11 @@ public final class BaseForceAppRefreshRatePatch {
     }
 
     private static boolean shouldOverrideRefreshRate() {
-        ForceRefreshType type = SharedYouTubeSettings.APP_REFRESH_RATE_TYPE.get();
-        if (type == ForceRefreshType.ALWAYS) {
-            return true;
-        }
-        return switch (type) {
+        return switch (SharedYouTubeSettings.APP_REFRESH_RATE_TYPE.get()) {
+            case ALWAYS -> true;
             case PORTRAIT -> isPlaybackPortrait;
             case FULLSCREEN -> isPlaybackFullscreen;
             case PORTRAIT_FULLSCREEN -> isPlaybackPortrait || isPlaybackFullscreen;
-            default -> throw new IllegalStateException();
         };
     }
 
