@@ -11,7 +11,6 @@ import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.shared.patches.BaseForceAppRefreshRatePatch.DEFAULT_REFRESH_RATE_VALUE;
 
 import android.content.Context;
-import android.preference.ListPreference;
 import android.util.AttributeSet;
 
 import java.util.ArrayList;
@@ -20,7 +19,7 @@ import java.util.List;
 import app.morphe.extension.shared.patches.BaseForceAppRefreshRatePatch;
 
 @SuppressWarnings({"unused", "deprecation"})
-public class ForceAppRefreshRateListPreference extends ListPreference {
+public class ForceAppRefreshRateListPreference extends CustomDialogListPreference {
 
     public ForceAppRefreshRateListPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
