@@ -81,21 +81,19 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
             getResourceId(ResourceType.ID, "player_control_next_button_touch_area")
             getResourceId(ResourceType.ID, "player_control_previous_button_touch_area")
             getResourceId(ResourceType.ID, "player_overflow_button")
+            getResourceId(ResourceType.ID, "media_route_button")
 
             it.method.apply {
                 val insertIndex = it.instructionMatches.last().index
                 val viewRegister = getInstruction<FiveRegisterInstruction>(insertIndex).registerC
 
-                addInstruction(
+                addInstructions(
                     insertIndex,
-                    "invoke-static { v$viewRegister }, $EXTENSION_CLASS" +
-                            "->hidePreviousNextButtons(Landroid/view/View;)V",
-                )
-
-                addInstruction(
-                    insertIndex,
-                    "invoke-static { v$viewRegister }, $EXTENSION_CLASS" +
-                            "->hideSettingsButton(Landroid/view/View;)V",
+                    """
+                        invoke-static { v$viewRegister }, $EXTENSION_CLASS->hideCastButton(Landroid/view/View;)V
+                        invoke-static { v$viewRegister }, $EXTENSION_CLASS->hidePreviousNextButtons(Landroid/view/View;)V
+                        invoke-static { v$viewRegister }, $EXTENSION_CLASS->hideSettingsButton(Landroid/view/View;)V
+                    """
                 )
             }
         }
