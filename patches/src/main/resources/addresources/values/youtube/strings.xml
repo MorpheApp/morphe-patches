@@ -343,6 +343,8 @@ Limitations:
 Tap here to open AiSlopList.com and see downloads for other platforms"</string>
 
     <!-- ad.hideAdsPatch -->
+    <string name="morphe_ads_channel_whitelist_title">Channel ad whitelist</string>
+    <string name="morphe_ads_channel_whitelist_summary">Videos from whitelisted channels play with ads, so their creators are paid. Ads stay blocked on every other channel</string>
     <string name="morphe_hide_creator_store_shelf_title">Hide creator store shelf</string>
     <string name="morphe_hide_end_screen_store_banner_title">Hide end screen store banner</string>
     <string name="morphe_hide_general_ads_title">Hide general ads</string>
@@ -353,6 +355,15 @@ Tap here to open AiSlopList.com and see downloads for other platforms"</string>
     <string name="morphe_hide_shopping_links_title">Hide shopping links</string>
     <string name="morphe_hide_video_ads_title">Hide video ads</string>
     <string name="morphe_hide_youtube_premium_promotions_title">Hide YouTube Premium promotions</string>
+
+    <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
+    <string name="morphe_channel_whitelist_current_channel">Current channel:</string>
+    <string name="morphe_channel_whitelist_add">Add to whitelist</string>
+    <string name="morphe_channel_whitelist_remove">Remove</string>
+    <string name="morphe_channel_whitelist_channels_header">Whitelisted channels</string>
+    <string name="morphe_channel_whitelist_empty">No channels whitelisted</string>
+    <string name="morphe_channel_whitelist_channel_added">Channel added to whitelist</string>
+    <string name="morphe_channel_whitelist_channel_removed">Channel removed from whitelist</string>
 
     <!-- interaction.doubletap.doubleTapLengthPatch -->
     <string name="morphe_double_tap_length_3s" translatable="false">3</string>

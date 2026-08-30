@@ -107,6 +107,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_SELF_SPONSOR = new BooleanSetting("morphe_hide_self_sponsor_ads", TRUE);
     public static final BooleanSetting HIDE_SHOPPING_LINKS = new BooleanSetting("morphe_hide_shopping_links", TRUE);
     public static final BooleanSetting HIDE_VIDEO_ADS = new BooleanSetting("morphe_hide_video_ads", TRUE, true);
+    public static final StringSetting ADS_CHANNEL_WHITELIST = new StringSetting("morphe_ads_channel_whitelist", "", true, parent(HIDE_VIDEO_ADS));
     public static final BooleanSetting HIDE_YOUTUBE_PREMIUM_PROMOTIONS = new BooleanSetting("morphe_hide_youtube_premium_promotions", TRUE);
 
     // Feed

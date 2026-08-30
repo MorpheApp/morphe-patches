@@ -42,6 +42,7 @@ import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val SB_PREFERENCES_PACKAGE = "app.morphe.extension.youtube.sponsorblock.preferences"
+private const val YOUTUBE_PREFERENCES_PACKAGE = "app.morphe.extension.youtube.settings.preference"
 private const val SEGMENT_CATEGORY_PREFERENCE_TAG =
     "app.morphe.extension.shared.sponsorblock.objects.SegmentCategoryPreference"
 
@@ -133,7 +134,7 @@ private val sponsorBlockResourcePatch = resourcePatch {
                     ),
                     NonInteractivePreference(
                         key = "morphe_sb_channel_whitelist",
-                        tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockChannelWhitelistPreference",
+                        tag = "$YOUTUBE_PREFERENCES_PACKAGE.ChannelWhitelistPreference",
                         selectable = true
                     ),
                     SwitchPreference("morphe_sb_toast_on_whitelisted_channel", summary = true),

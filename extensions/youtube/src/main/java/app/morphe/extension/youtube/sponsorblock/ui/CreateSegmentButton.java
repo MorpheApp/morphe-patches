@@ -3,10 +3,11 @@ package app.morphe.extension.youtube.sponsorblock.ui;
 import android.view.View;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.shared.sponsorblock.SegmentPlaybackController;
-import app.morphe.extension.youtube.sponsorblock.SponsorBlockUtils;
+import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton;
+import app.morphe.extension.youtube.whitelist.ChannelWhitelistDialog;
+import app.morphe.extension.youtube.whitelist.WhitelistType;
 
 @SuppressWarnings("unused")
 public class CreateSegmentButton {
@@ -32,7 +33,7 @@ public class CreateSegmentButton {
                             : LegacyPlayerControlButton.ButtonVisibility.DISABLED,
                     v -> SponsorBlockViewController.toggleNewSegmentLayoutVisibility(),
                     v -> {
-                        SponsorBlockUtils.showChannelWhitelistDialog(v.getContext());
+                        ChannelWhitelistDialog.show(v.getContext(), WhitelistType.SPONSOR_BLOCK);
                         return true;
                     }
             );
