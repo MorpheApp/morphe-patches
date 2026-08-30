@@ -8,11 +8,11 @@ import static app.morphe.extension.shared.settings.Setting.parent;
 import static app.morphe.extension.shared.settings.Setting.parentsAny;
 
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.patches.BaseForceAppRefreshRatePatch.ForceRefreshRatePlayerOnly;
 import app.morphe.extension.shared.patches.BaseForceAppRefreshRatePatch.ForceRefreshType;
 import app.morphe.extension.shared.patches.CustomBrandingPatch;
 import app.morphe.extension.shared.patches.CustomBrandingPatch.BrandingTheme;
 import app.morphe.extension.shared.patches.CustomBrandingPatch.NotificationIconTheme;
-import app.morphe.extension.shared.patches.BaseForceAppRefreshRatePatch.ForceRefreshRatePlayerOnly;
 import app.morphe.extension.shared.patches.PoTokenProviderPatch.PoTokenProviderAvailability;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch.JavaScriptClientAvailability;
 import app.morphe.extension.shared.spoof.js.JavaScriptVariant;
@@ -102,7 +102,7 @@ public class SharedYouTubeSettings extends BaseSettings {
     public static final StringSetting SPOOF_APP_VERSION_TARGET = new StringSetting("morphe_spoof_app_version_target", getDefaultSpoofAppVersionTarget(), true, parent(SPOOF_APP_VERSION));
 
     public static final StringSetting APP_REFRESH_RATE = new StringSetting("morphe_force_app_refresh_rate", DEFAULT_REFRESH_RATE_VALUE, true);
-    public static final EnumSetting<ForceRefreshType> APP_REFRESH_RATE_TYPE = new EnumSetting<>("morphe_force_app_refresh_rate_type", ForceRefreshType.ALWAYS, new ForceRefreshRatePlayerOnly());
+    public static final EnumSetting<ForceRefreshType> APP_REFRESH_RATE_TYPE = new EnumSetting<>("morphe_force_app_refresh_rate_type", ForceRefreshType.ALWAYS, true, new ForceRefreshRatePlayerOnly());
 
     // Return YouTube Dislike
     public static final BooleanSetting RYD_ENABLED = new BooleanSetting("morphe_ryd_enabled", TRUE);
