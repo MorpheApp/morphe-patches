@@ -25,7 +25,7 @@ import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
  * the music video, so the app keeps the album queue it built and never restarts the player.
  */
 @SuppressWarnings("unused")
-public class AlbumMusicVideoPatch {
+public class PlayAlbumSongsPatch {
 
     /**
      * An album track, identified the same way the player response identifies it.
@@ -72,11 +72,11 @@ public class AlbumMusicVideoPatch {
     };
 
     static {
-        StreamingDataRequest.setVideoIdResolver(AlbumMusicVideoPatch::resolveVideoIdToFetch);
+        StreamingDataRequest.setVideoIdResolver(PlayAlbumSongsPatch::resolveVideoIdToFetch);
     }
 
     private static boolean isEnabled() {
-        return Settings.PLAY_SONG_VERSION_IN_ALBUMS.get();
+        return Settings.PLAY_ALBUMS_SONGS.get();
     }
 
     /**

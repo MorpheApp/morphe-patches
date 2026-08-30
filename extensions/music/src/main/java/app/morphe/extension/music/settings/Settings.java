@@ -150,7 +150,7 @@ public class Settings extends SharedYouTubeSettings {
     // Miscellaneous
     public static final EnumSetting<ClientType> SPOOF_VIDEO_STREAMS_CLIENT_TYPE = new EnumSetting<>("morphe_spoof_video_streams_client_type", ClientType.VISIONOS_1_02, true, parent(SPOOF_VIDEO_STREAMS));
 
-    public static final BooleanSetting PLAY_SONG_VERSION_IN_ALBUMS = new BooleanSetting("morphe_music_play_song_version_in_albums", FALSE, true, parent(SPOOF_VIDEO_STREAMS));
+    public static final BooleanSetting PLAY_ALBUMS_SONGS = new BooleanSetting("morphe_music_play_album_songs", FALSE, true, parent(SPOOF_VIDEO_STREAMS));
 
     // Scrobbling
     public static final BooleanSetting LISTENBRAINZ_SCROBBLING = new BooleanSetting("morphe_music_listenbrainz_enabled", FALSE, true);

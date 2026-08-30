@@ -20,12 +20,12 @@ import app.morphe.patches.music.video.playerresponse.musicPlayerResponseMethodHo
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 
 private const val EXTENSION_CLASS =
-    "Lapp/morphe/extension/music/patches/album/AlbumMusicVideoPatch;"
+    "Lapp/morphe/extension/music/patches/album/PlayAlbumSongsPatch;"
 
 @Suppress("unused")
-val playSongVersionInAlbumsPatch = bytecodePatch(
-    name = "Play song version in albums",
-    description = "Adds an option to play the song version of album tracks that are music videos."
+val playAlbumSongsPatch = bytecodePatch(
+    name = "Play albums songs",
+    description = "Adds an option to play the song version of album tracks instead of music videos."
 ) {
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
 
@@ -40,7 +40,7 @@ val playSongVersionInAlbumsPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.MISC.addPreferences(
-            SwitchPreference("morphe_music_play_song_version_in_albums", summary = true)
+            SwitchPreference("morphe_music_play_album_songs", summary = true)
         )
 
         addPlayerResponseMethodHook(

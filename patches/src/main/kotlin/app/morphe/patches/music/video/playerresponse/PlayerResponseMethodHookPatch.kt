@@ -47,7 +47,7 @@ val musicPlayerResponseMethodHookPatch = bytecodePatch(
         fun hookVideoId(hook: Hook) {
             playerResponseMethod.addInstruction(
                 0,
-                "invoke-static {$REGISTER_VIDEO_ID}, $hook"
+                "invoke-static { $REGISTER_VIDEO_ID }, $hook"
             )
             numberOfInstructionsAdded++
         }
@@ -55,7 +55,7 @@ val musicPlayerResponseMethodHookPatch = bytecodePatch(
         fun hookVideoIdAndPlaylistId(hook: Hook) {
             playerResponseMethod.addInstruction(
                 0,
-                "invoke-static {$REGISTER_VIDEO_ID, $REGISTER_PLAYLIST_ID, $REGISTER_PLAYLIST_INDEX}, $hook"
+                "invoke-static { $REGISTER_VIDEO_ID, $REGISTER_PLAYLIST_ID, $REGISTER_PLAYLIST_INDEX }, $hook"
             )
             numberOfInstructionsAdded++
         }
@@ -64,7 +64,7 @@ val musicPlayerResponseMethodHookPatch = bytecodePatch(
             playerResponseMethod.addInstructions(
                 0,
                 """
-                    invoke-static {$REGISTER_VIDEO_ID, v0}, $hook
+                    invoke-static { $REGISTER_VIDEO_ID, v0 }, $hook
                     move-result-object v0
                 """
             )
@@ -72,11 +72,9 @@ val musicPlayerResponseMethodHookPatch = bytecodePatch(
         }
 
         // Reverse the order in order to preserve insertion order of the hooks.
-        val beforeVideoIdHooks =
-            hooks.filterIsInstance<Hook.ProtoBufferParameterBeforeVideoId>().asReversed()
+        val beforeVideoIdHooks = hooks.filterIsInstance<Hook.ProtoBufferParameterBeforeVideoId>().asReversed()
         val videoIdHooks = hooks.filterIsInstance<Hook.VideoId>().asReversed()
-        val videoIdAndPlaylistIdHooks =
-            hooks.filterIsInstance<Hook.VideoIdAndPlaylistId>().asReversed()
+        val videoIdAndPlaylistIdHooks = hooks.filterIsInstance<Hook.VideoIdAndPlaylistId>().asReversed()
         val afterVideoIdHooks = hooks.filterIsInstance<Hook.PlayerParameter>().asReversed()
 
         // Add the hooks in this specific order as they insert instructions at the beginning of the method.

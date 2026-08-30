@@ -16,7 +16,7 @@ import android.util.Pair;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import app.morphe.extension.music.patches.album.AlbumMusicVideoPatch;
+import app.morphe.extension.music.patches.album.PlayAlbumSongsPatch;
 import app.morphe.extension.music.patches.album.PlaylistRequest;
 import app.morphe.extension.music.patches.scrobbling.lastfm.LastFM;
 import app.morphe.extension.music.patches.scrobbling.listenbrainz.ListenBrainz;
@@ -142,7 +142,7 @@ public class ScrobbleManager {
 
             // The metadata of a substituted track still describes the music video,
             // which can name a different version of the song than the one playing.
-            PlaylistRequest.Song song = AlbumMusicVideoPatch.getSong(songId);
+            PlaylistRequest.Song song = PlayAlbumSongsPatch.getSong(songId);
             if (song != null && !song.title().isBlank()) {
                 rawTitle = song.title();
                 if (!song.artist().isBlank()) {

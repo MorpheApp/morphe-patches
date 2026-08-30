@@ -27,8 +27,9 @@ Second \"item\" text"</string>
     <string name="morphe_header_logo_entry_3">Custom</string>
 
     <!-- misc.album.albumMusicVideoPatch -->
-    <string name="morphe_music_play_song_version_in_albums_title">Play song version in albums</string>
-    <string name="morphe_music_play_song_version_in_albums_summary">Some album tracks are music videos. Play the song version of those tracks instead. Requires \'Spoof video streams\'</string>
+    <string name="morphe_music_play_album_songs_title">Play album audio tracks</string>
+    <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+    <string name="morphe_music_play_album_songs_summary">Play the album audio only version of songs instead of a music video. Requires \'Spoof video streams\'</string>
 
     <!-- interaction.downloads.downloadsPatch -->
     <string name="morphe_external_downloader_screen_summary">Download music videos, podcasts, or songs with third-party downloading apps</string>
