@@ -225,25 +225,23 @@ public final class BaseForceAppRefreshRatePatch {
     private static void applyRefreshRateToWindow(Window window) {
         final boolean shouldOverride = shouldOverrideRefreshRate();
 
-        window.getDecorView().post(() -> {
-            WindowManager.LayoutParams params = window.getAttributes();
-            int modeId = 0;
-            float refreshRate = 0f;
+        WindowManager.LayoutParams params = window.getAttributes();
+        int modeId = 0;
+        float refreshRate = 0f;
 
-            if (shouldOverride && preferredDisplayModeId != null && preferredDisplayModeId > 0) {
-                modeId = preferredDisplayModeId;
+        if (shouldOverride && preferredDisplayModeId != null && preferredDisplayModeId > 0) {
+            modeId = preferredDisplayModeId;
 
-                if (preferredRefreshRate != null) {
-                    refreshRate = preferredRefreshRate;
-                }
+            if (preferredRefreshRate != null) {
+                refreshRate = preferredRefreshRate;
             }
+        }
 
-            params.preferredDisplayModeId = modeId;
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                params.preferredRefreshRate = refreshRate;
-            }
-            window.setAttributes(params);
-        });
+        params.preferredDisplayModeId = modeId;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            params.preferredRefreshRate = refreshRate;
+        }
+        window.setAttributes(params);
     }
 
     public static void videoPlayerIsActive(boolean portrait, boolean fullscreen) {
