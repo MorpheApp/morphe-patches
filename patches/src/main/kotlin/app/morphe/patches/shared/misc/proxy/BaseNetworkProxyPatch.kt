@@ -28,7 +28,7 @@ internal const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/Netwo
 internal fun baseNetworkProxyPatch(
     preferenceScreen: BasePreferenceScreen.Screen,
     targetUsesProxyListInt: BytecodePatchBuilder.() -> Boolean,
-    patchNotCompatibleMessage: BytecodePatchBuilder.() -> String?,
+    patchNotCompatibleMessage: BytecodePatchBuilder.() -> String? = { null },
     block: BytecodePatchBuilder.() -> Unit,
     executeBlock: BytecodePatchContext.() -> Unit = {}
 ) = bytecodePatch(
@@ -79,7 +79,7 @@ internal fun baseNetworkProxyPatch(
         BuildExperimentalFingerprint.method.apply {
             addInstruction(
                 0,
-                "invoke-static { p0 }, $EXTENSION_CLASS->applyProxyOptions(Lorg/chromium/net/CronetEngine\$Builder;)V"
+                $$"invoke-static { p0 }, $$EXTENSION_CLASS->applyProxyOptions(Lorg/chromium/net/CronetEngine$Builder;)V"
             )
 
             findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->

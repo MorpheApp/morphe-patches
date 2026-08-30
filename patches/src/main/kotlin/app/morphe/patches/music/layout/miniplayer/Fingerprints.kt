@@ -190,19 +190,6 @@ internal object MiniPlayerDefaultTextFingerprint : Fingerprint(
 )
 
 /**
- * 9.02 and lower.
- */
-internal object MiniPlayerDefaultTextLegacyFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    parameters = listOf("Ljava/lang/Object;"),
-    returnType = "V",
-    filters = listOf(
-        opcode(Opcode.IF_NE),
-        resourceLiteral(ResourceType.STRING, "mini_player_default_text")
-    )
-)
-
-/**
  * 9.02+
  */
 internal object PlayerPageBehaviorFingerprint : Fingerprint(

@@ -65,19 +65,3 @@ internal object PlaybackQueueShuffleButtonFingerprint : Fingerprint(
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
     )
 )
-
-internal object QueueLoopButtonFingerprint : Fingerprint(
-    filters = listOf(
-        resourceLiteral(ResourceType.ID, "queue_loop"),
-        methodCall(opcode = Opcode.INVOKE_VIRTUAL, name = "findViewById"),
-        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
-    )
-)
-
-internal object QueueShuffleButtonFingerprint : Fingerprint(
-    filters = listOf(
-        resourceLiteral(ResourceType.ID, "queue_shuffle_button"),
-        methodCall(opcode = Opcode.INVOKE_VIRTUAL, name = "findViewById"),
-        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
-    )
-)

@@ -82,18 +82,6 @@ internal object HideSubscribedChannelsBarConstructorFingerprint : Fingerprint(
     }
 )
 
-/**
- * 20.21
- */
-internal object HideSubscribedChannelsBarConstructorLegacyFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    filters = listOf(
-        resourceLiteral(ResourceType.ID, "parent_container"),
-        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterWithin(3)),
-        newInstance($$"Landroid/widget/LinearLayout$LayoutParams;", location = MatchAfterWithin(5))
-    )
-)
-
 internal object HideSubscribedChannelsBarLandscapeFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf(),

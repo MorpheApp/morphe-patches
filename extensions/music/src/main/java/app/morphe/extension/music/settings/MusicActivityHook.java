@@ -21,7 +21,6 @@ import android.preference.PreferenceFragment;
 import android.view.View;
 import android.widget.Toolbar;
 
-import app.morphe.extension.music.patches.VersionCheckPatch;
 import app.morphe.extension.music.settings.preference.MusicPreferenceFragment;
 import app.morphe.extension.music.settings.search.MusicSearchViewController;
 import app.morphe.extension.shared.Logger;
@@ -43,7 +42,6 @@ public class MusicActivityHook extends BaseActivityHook {
     public static MusicSearchViewController searchViewController;
 
     private static final boolean USE_BOLD_ICONS = Settings.SETTINGS_INITIALIZED.get()
-            && VersionCheckPatch.IS_8_40_OR_GREATER
             && !SpoofAppVersionPatch.isSpoofingToLessThan("8.40.00");
 
     static {

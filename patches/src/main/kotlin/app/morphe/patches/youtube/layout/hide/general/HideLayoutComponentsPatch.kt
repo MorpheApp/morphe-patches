@@ -42,7 +42,6 @@ import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.litho.node.treeNodeElementHookPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
-import app.morphe.patches.youtube.misc.playservice.is_20_21_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_26_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_11_or_greater
@@ -417,11 +416,9 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_youtube_doodles", summary = true)
         )
 
-        if (is_20_21_or_greater) {
-            PreferenceScreen.FEED.addPreferences(
-                SwitchPreference("morphe_hide_you_may_like_section")
-            )
-        }
+        PreferenceScreen.FEED.addPreferences(
+            SwitchPreference("morphe_hide_you_may_like_section")
+        )
 
         PreferenceScreen.GENERAL.addPreferences(
             PreferenceScreenPreference(
@@ -551,9 +548,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
         // region hide subscribed channels bar
 
         // Tablet
-        val constructorFingerprint = if (is_20_21_or_greater)
-            HideSubscribedChannelsBarConstructorFingerprint
-        else HideSubscribedChannelsBarConstructorLegacyFingerprint
+        val constructorFingerprint = HideSubscribedChannelsBarConstructorFingerprint
 
         constructorFingerprint.let {
             it.method.injectHideViewCall(
@@ -792,96 +787,94 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // region hide you may like section
 
-        if (is_20_21_or_greater) {
-            val searchSuggestionEndpointField = SearchSuggestionEndpointFingerprint
-                .instructionMatches.first().instruction.getReference<FieldReference>()!!
-            val searchSuggestionEndpointClass = searchSuggestionEndpointField.definingClass
+        val searchSuggestionEndpointField = SearchSuggestionEndpointFingerprint
+            .instructionMatches.first().instruction.getReference<FieldReference>()!!
+        val searchSuggestionEndpointClass = searchSuggestionEndpointField.definingClass
 
-            SearchBoxTypingStringFingerprint.let {
-                it.method.apply {
-                    // A collection of search suggestions.
-                    // This includes trending search (also known as 'You may like' section) and your search history.
-                    val searchSuggestionCollectionField =
-                        it.instructionMatches.first().instruction.getReference<FieldReference>()!!
-                    val typedStringField =
-                        it.instructionMatches[2].instruction.getReference<FieldReference>()!!
+        SearchBoxTypingStringFingerprint.let {
+            it.method.apply {
+                // A collection of search suggestions.
+                // This includes trending search (also known as 'You may like' section) and your search history.
+                val searchSuggestionCollectionField =
+                    it.instructionMatches.first().instruction.getReference<FieldReference>()!!
+                val typedStringField =
+                    it.instructionMatches[2].instruction.getReference<FieldReference>()!!
 
-                    val helperMethod = ImmutableMethod(
-                        definingClass,
-                        "patch_setSearchSuggestions",
-                        listOf(
-                            ImmutableMethodParameter(
-                                parameterTypes.first().toString(),
-                                null,
-                                null
-                            )
-                        ),
-                        "V",
-                        AccessFlags.PRIVATE.value or AccessFlags.FINAL.value,
-                        annotations,
-                        null,
-                        MutableMethodImplementation(7),
-                    ).toMutable().apply {
-                        addInstructionsWithLabels(
-                            0,
-                            """
-                                move-object/from16 v0, p1
-                                iget-object v1, v0, $typedStringField
-                                
-                                # Check if the setting is enabled and if the typed string is empty.
-                                invoke-static { v1 }, $LAYOUT_COMPONENTS_FILTER->hideYouMayLikeSection(Ljava/lang/String;)Z
-                                move-result v1
-                                
-                                # If the setting is disabled or the typed string is not empty, do nothing.
-                                if-eqz v1, :ignore
-
-                                ## Get a collection of search suggestions.
-                                iget-object v1, v0, $searchSuggestionCollectionField
-                                
-                                # Iterate through the collection and check if the search suggestion is the search history.
-                                invoke-interface { v1 }, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
-                                move-result-object v2
-                                
-                                :loop
-                                invoke-interface { v2 }, Ljava/util/Iterator;->hasNext()Z
-                                move-result v3
-                                if-eqz v3, :exit
-                                invoke-interface { v2 }, Ljava/util/Iterator;->next()Ljava/lang/Object;
-                                move-result-object v3
-                                instance-of v4, v3, $searchSuggestionEndpointClass
-                                if-eqz v4, :loop
-                                check-cast v3, $searchSuggestionEndpointClass
-
-                                # Each search suggestion has a command endpoint.
-                                # If the search suggestion is the search history, the command includes the keyword '/delete'.
-                                iget-object v4, v3, $searchSuggestionEndpointField
-                                invoke-static { v3, v4 }, $LAYOUT_COMPONENTS_FILTER->isSearchHistory(Ljava/lang/Object;Ljava/lang/String;)Z
-                                move-result v3
-                                
-                                # If this search suggestion is the search history, do nothing.
-                                if-nez v3, :loop
-                                
-                                # If this search suggestion is not the search history, remove it from the search suggestions collection.
-                                invoke-interface { v2 }, Ljava/util/Iterator;->remove()V
-                                goto :loop
-
-                                # Save the updated collection to a field.
-                                :exit
-                                iput-object v1, v0, $searchSuggestionCollectionField
-
-                                :ignore
-                                return-void
-                            """
+                val helperMethod = ImmutableMethod(
+                    definingClass,
+                    "patch_setSearchSuggestions",
+                    listOf(
+                        ImmutableMethodParameter(
+                            parameterTypes.first().toString(),
+                            null,
+                            null
                         )
-                    }
-
-                    it.classDef.methods.add(helperMethod)
-
-                    addInstruction(
+                    ),
+                    "V",
+                    AccessFlags.PRIVATE.value or AccessFlags.FINAL.value,
+                    annotations,
+                    null,
+                    MutableMethodImplementation(7),
+                ).toMutable().apply {
+                    addInstructionsWithLabels(
                         0,
-                        "invoke-direct/range { p0 .. p1 }, $helperMethod"
+                        """
+                            move-object/from16 v0, p1
+                            iget-object v1, v0, $typedStringField
+                            
+                            # Check if the setting is enabled and if the typed string is empty.
+                            invoke-static { v1 }, $LAYOUT_COMPONENTS_FILTER->hideYouMayLikeSection(Ljava/lang/String;)Z
+                            move-result v1
+                            
+                            # If the setting is disabled or the typed string is not empty, do nothing.
+                            if-eqz v1, :ignore
+
+                            ## Get a collection of search suggestions.
+                            iget-object v1, v0, $searchSuggestionCollectionField
+                            
+                            # Iterate through the collection and check if the search suggestion is the search history.
+                            invoke-interface { v1 }, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
+                            move-result-object v2
+                            
+                            :loop
+                            invoke-interface { v2 }, Ljava/util/Iterator;->hasNext()Z
+                            move-result v3
+                            if-eqz v3, :exit
+                            invoke-interface { v2 }, Ljava/util/Iterator;->next()Ljava/lang/Object;
+                            move-result-object v3
+                            instance-of v4, v3, $searchSuggestionEndpointClass
+                            if-eqz v4, :loop
+                            check-cast v3, $searchSuggestionEndpointClass
+
+                            # Each search suggestion has a command endpoint.
+                            # If the search suggestion is the search history, the command includes the keyword '/delete'.
+                            iget-object v4, v3, $searchSuggestionEndpointField
+                            invoke-static { v3, v4 }, $LAYOUT_COMPONENTS_FILTER->isSearchHistory(Ljava/lang/Object;Ljava/lang/String;)Z
+                            move-result v3
+                            
+                            # If this search suggestion is the search history, do nothing.
+                            if-nez v3, :loop
+                            
+                            # If this search suggestion is not the search history, remove it from the search suggestions collection.
+                            invoke-interface { v2 }, Ljava/util/Iterator;->remove()V
+                            goto :loop
+
+                            # Save the updated collection to a field.
+                            :exit
+                            iput-object v1, v0, $searchSuggestionCollectionField
+
+                            :ignore
+                            return-void
+                        """
                     )
                 }
+
+                it.classDef.methods.add(helperMethod)
+
+                addInstruction(
+                    0,
+                    "invoke-direct/range { p0 .. p1 }, $helperMethod"
+                )
             }
         }
 
