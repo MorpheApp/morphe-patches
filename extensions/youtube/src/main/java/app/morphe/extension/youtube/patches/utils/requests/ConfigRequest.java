@@ -42,10 +42,12 @@ public class ConfigRequest {
         CompletableFuture<ConfigGroup> future = CompletableFuture.supplyAsync(() -> send(requestHeader));
         try {
             ConfigGroup configGroup = future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
-            String coldConfigData = configGroup.coldConfigData;
-            String coldHashData = configGroup.coldHashData;
-            Settings.INNERTUBE_COLD_CONFIG_DATA.save(coldConfigData);
-            Settings.INNERTUBE_COLD_HASH_DATA.save(coldHashData);
+            if (configGroup != null) {
+                String coldConfigData = configGroup.coldConfigData;
+                String coldHashData = configGroup.coldHashData;
+                Settings.INNERTUBE_COLD_CONFIG_DATA.save(coldConfigData);
+                Settings.INNERTUBE_COLD_HASH_DATA.save(coldHashData);
+            }
         } catch (TimeoutException ex) {
             Logger.printInfo(() -> "getConfigGroup timed out", ex);
             future.cancel(true);

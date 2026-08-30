@@ -122,7 +122,8 @@ internal val restoreOldVideoActionBarPatch = bytecodePatch(
                 }
             }
         } else {
-            // Since there are no side effects, this version simply spoofs the app version in the player.
+            // In YT 20.29 or earlier, there are no issues even if the app version is spoofed.
+            // Simply spoofing the app version (in the player).
             setOf(
                 Endpoint.GET_WATCH,
                 Endpoint.NEXT,
