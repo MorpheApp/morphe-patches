@@ -8,6 +8,7 @@
 package app.morphe.patches.shared
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.checkCast
@@ -62,7 +63,10 @@ internal object BuildInnerTubeProtoRequestUriFingerprint : Fingerprint(
             // YT 21.20, YTM 9.18
             methodCall($$"Landroid/net/Uri$Builder;->build()Landroid/net/Uri;"),
             // YT 21.21+, YTM 9.19+
-            opcode(Opcode.RETURN_OBJECT)
+            opcode(
+                opcode = Opcode.RETURN_OBJECT,
+                location = MatchAfterWithin(5)
+            )
         )
     )
 )
