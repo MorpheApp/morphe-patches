@@ -10,6 +10,8 @@ package app.morphe.extension.shared.patches;
 import android.app.Activity;
 import android.os.Build;
 import android.view.Display;
+import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.annotation.GuardedBy;
@@ -25,31 +27,31 @@ import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 @SuppressWarnings({"deprecation", "unused"})
 public final class ForceAppRefreshRatePatch {
 
-    public enum RefreshRate {
-        FPS_DEFAULT(-1),
-        FPS_30(30),
-        FPS_60(60),
-        FPS_120(120);
-
-        public final int fps;
-
-        RefreshRate(int fps) {
-            this.fps = fps;
-        }
-    }
+    public static String DEFAULT_REFRESH_RATE_VALUE = "DEFAULT";
 
     @Nullable
-    @GuardedBy("ForceRefreshRatePatch.class")
+    @GuardedBy("ForceAppRefreshRatePatch.class")
     private static Integer preferredDisplayModeId;
 
     @Nullable
-    @GuardedBy("ForceRefreshRatePatch.class")
+    @GuardedBy("ForceAppRefreshRatePatch.class")
     private static Float preferredRefreshRate;
+
+    @Nullable
+    @GuardedBy("ForceAppRefreshRatePatch.class")
+    private static String[] availableRefreshRates;
 
     @Nullable
     public static Float getPreferredRefreshRate() {
         synchronized (ForceAppRefreshRatePatch.class) {
             return preferredRefreshRate;
+        }
+    }
+
+    @Nullable
+    public static String[] getAvailableRefreshRates() {
+        synchronized (ForceAppRefreshRatePatch.class) {
+            return availableRefreshRates;
         }
     }
 
@@ -86,10 +88,8 @@ public final class ForceAppRefreshRatePatch {
 
         synchronized (ForceAppRefreshRatePatch.class) {
             try {
-                RefreshRate rate = SharedYouTubeSettings.REFRESH_RATE.get();
-                if (rate == RefreshRate.FPS_DEFAULT) {
-                    return;
-                }
+                String refreshString = SharedYouTubeSettings.APP_REFRESH_RATE.get();
+                final boolean isDefault = refreshString.equals(DEFAULT_REFRESH_RATE_VALUE);
 
                 if (preferredDisplayModeId == null) {
                     Display display = Build.VERSION.SDK_INT >= Build.VERSION_CODES.R
@@ -97,6 +97,8 @@ public final class ForceAppRefreshRatePatch {
                             : activity.getWindowManager().getDefaultDisplay();
                     if (display == null) {
                         Logger.printDebug(() -> "No Display available; cannot set preferred mode");
+                        preferredDisplayModeId = -1;
+                        preferredRefreshRate = -1f;
                         return;
                     }
 
@@ -107,7 +109,31 @@ public final class ForceAppRefreshRatePatch {
                     }
 
                     Display.Mode currentMode = display.getMode();
-                    final int targetRefreshRate = rate.fps;
+
+                    // Detect and store available refresh rates for the current resolution.
+                    availableRefreshRates = Arrays.stream(supportedModes)
+                            .filter(mode -> mode.getPhysicalWidth() == currentMode.getPhysicalWidth() &&
+                                    mode.getPhysicalHeight() == currentMode.getPhysicalHeight())
+                            .map(mode -> String.valueOf(Math.round(mode.getRefreshRate())))
+                            .distinct()
+                            .sorted(Comparator.comparingInt(Integer::parseInt))
+                            .toArray(String[]::new);
+
+                    if (isDefault) {
+                        preferredDisplayModeId = -1;
+                        preferredRefreshRate = -1f;
+                        return;
+                    }
+
+                    final int targetRefreshRate;
+                    try {
+                        targetRefreshRate = Integer.parseInt(refreshString);
+                    } catch (Exception ex) {
+                        Logger.printException(() -> "Invalid refresh rate", ex);
+                        SharedYouTubeSettings.APP_REFRESH_RATE.resetToDefault();
+                        setActivityRefreshRate(activity);
+                        return;
+                    }
 
                     // Find the highest refresh rate for the current resolution that does not exceed the target.
                     Display.Mode bestMode = Arrays.stream(supportedModes)
@@ -133,13 +159,16 @@ public final class ForceAppRefreshRatePatch {
                             + " " + Math.round(preferredRefreshRate) + "Hz");
                 }
 
-                if (preferredDisplayModeId < 0) {
-                    return; // No suitable mode to use.
+                if (isDefault || preferredDisplayModeId < 0) {
+                    return;
                 }
 
-                WindowManager.LayoutParams params = activity.getWindow().getAttributes();
-                params.preferredDisplayModeId = preferredDisplayModeId;
-                activity.getWindow().setAttributes(params);
+                Window window = activity.getWindow();
+                window.getDecorView().post(() -> {
+                    WindowManager.LayoutParams params = window.getAttributes();
+                    params.preferredDisplayModeId = preferredDisplayModeId;
+                    window.setAttributes(params);
+                });
             } catch (Exception ex) {
                 Logger.printException(() -> "setActivityRefreshRate failure", ex);
             }

@@ -71,7 +71,8 @@ public abstract class BaseActivityHook extends Activity {
      */
     public static void initialize(BaseActivityHook hook, Activity activity) {
         try {
-            ForceAppRefreshRatePatch.setActivityRefreshRate(activity);
+//            ForceAppRefreshRatePatch.setActivityRefreshRate(hook);
+//            ForceAppRefreshRatePatch.setActivityRefreshRate(activity);
 
             hook.customizeActivityTheme(activity);
             activity.setContentView(hook.getContentViewResourceId());
