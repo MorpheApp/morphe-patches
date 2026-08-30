@@ -21,6 +21,7 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/Force
 @Suppress("unused")
 val forceAppRefreshRatePatch = baseForceAppRefreshRatePatch(
     preferenceScreen = PreferenceScreen.MISC,
+    useRefreshRateType = true,
     block = {
         dependsOn(
             sharedExtensionPatch,

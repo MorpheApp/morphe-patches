@@ -26,6 +26,7 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/BaseFo
 
 fun baseForceAppRefreshRatePatch(
     preferenceScreen: BasePreferenceScreen.Screen,
+    useRefreshRateType: Boolean,
     block: BytecodePatchBuilder.() -> Unit,
     executeBlock: BytecodePatchContext.() -> Unit = {},
 ) = bytecodePatch(
@@ -35,16 +36,21 @@ fun baseForceAppRefreshRatePatch(
     block()
 
     execute {
+        val refreshPreference = NonInteractivePreference(
+            key = "morphe_force_app_refresh_rate",
+            summaryKey = null,
+            tag = "app.morphe.extension.shared.settings.preference.ForceAppRefreshRateListPreference",
+            selectable = true
+        )
         preferenceScreen.addPreferences(
-            noTitleUnsortedPreferenceCategory(
-                NonInteractivePreference(
-                    key = "morphe_force_app_refresh_rate",
-                    summaryKey = null,
-                    tag = "app.morphe.extension.shared.settings.preference.ForceAppRefreshRateListPreference",
-                    selectable = true
-                ),
-                ListPreference("morphe_force_app_refresh_rate_type")
-            )
+            if (useRefreshRateType) {
+                noTitleUnsortedPreferenceCategory(
+                    refreshPreference,
+                    ListPreference("morphe_force_app_refresh_rate_type")
+                )
+            } else {
+                refreshPreference
+            }
         )
 
         ActivityOnCreateFingerprint.matchAll().forEach {

@@ -16,6 +16,7 @@ import app.morphe.patches.shared.misc.refreshrate.baseForceAppRefreshRatePatch
 @Suppress("unused")
 val forceAppRefreshRatePatch = baseForceAppRefreshRatePatch(
     preferenceScreen = PreferenceScreen.MISC,
+    useRefreshRateType = false,
     block = {
         dependsOn(
             sharedExtensionPatch,
