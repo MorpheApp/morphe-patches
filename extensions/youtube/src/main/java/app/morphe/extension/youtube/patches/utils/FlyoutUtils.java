@@ -61,6 +61,8 @@ import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.EngagementPanel;
 import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
+import app.morphe.extension.youtube.whitelist.ChannelWhitelist;
+import app.morphe.extension.youtube.whitelist.WhitelistType;
 
 @SuppressWarnings("unused")
 public final class FlyoutUtils {
@@ -81,6 +83,7 @@ public final class FlyoutUtils {
     ) {}
 
     public static final int CHANNEL_ID_LENGTH = 24;
+    private static final byte[] CHANNEL_ID_PREFIX_BYTES = getAsciiBytes("UC");
     private static final byte[] PLAYLIST_ID_PREFIXES_BYTES =
             getAsciiBytes("playlist?list=");
     private static final List<byte[]> VIDEO_ID_PREFIXES_BYTES = List.of(
@@ -127,6 +130,10 @@ public final class FlyoutUtils {
                             : "yt_outline_experimental_clock_vd_theme_24"
             );
     private static final String saveToWatchLaterButtonName = str("morphe_save_to_watch_later_flyout_title");
+    private static final Drawable adWhitelistDrawable =
+            ResourceUtils.getDrawable("morphe_settings_screen_01_ads");
+    private static final Drawable playbackSpeedWhitelistDrawable =
+            ResourceUtils.getDrawable("morphe_settings_screen_12_video");
 
     private static WeakReference<TextView> customItemTextRef = new WeakReference<>(null);
 
@@ -141,6 +148,8 @@ public final class FlyoutUtils {
     private static String flyoutVideoId = "";
     private static String flyoutPlaylistId = "";
     private static String flyoutCommentId = "";
+    private static String flyoutChannelId = "";
+    private static String flyoutChannelName = "";
     private static final List<String> commentsPanelNames = List.of(
             "comment-item-section",
             "shorts-comments-panel"
@@ -303,9 +312,47 @@ public final class FlyoutUtils {
             );
         }
 
+        if (Settings.ADS_CHANNEL_WHITELIST_FLYOUT_MENU.get()) {
+            nextButtonIndex = addWhitelistButton(
+                    flyoutPanel, WhitelistType.ADS, adWhitelistDrawable, nextButtonIndex);
+        }
+
+        if (Settings.PLAYBACK_SPEED_CHANNEL_WHITELIST_FLYOUT_MENU.get()) {
+            nextButtonIndex = addWhitelistButton(
+                    flyoutPanel, WhitelistType.PLAYBACK_SPEED, playbackSpeedWhitelistDrawable, nextButtonIndex);
+        }
+
         if (nextButtonIndex > 0) {
             addDivider(flyoutPanel, nextButtonIndex);
         }
+    }
+
+    private static int addWhitelistButton(Object flyoutPanel, WhitelistType type,
+                                          Drawable icon, int index) {
+        final String channelId = flyoutChannelId;
+        if (channelId.isEmpty()) {
+            return index;
+        }
+        final String channelName = flyoutChannelName;
+        final boolean isWhitelisted = ChannelWhitelist.isChannelWhitelisted(type, channelId);
+
+        return addFlyoutButton(
+                flyoutPanel,
+                icon,
+                type.getFlyoutTitle(isWhitelisted),
+                v -> {
+                    if (isWhitelisted) {
+                        ChannelWhitelist.removeChannel(type, channelId);
+                        Utils.showToastShort(str("morphe_channel_whitelist_channel_removed"));
+                    } else {
+                        ChannelWhitelist.addChannel(type, channelId, channelName);
+                        Utils.showToastShort(str("morphe_channel_whitelist_channel_added"));
+                    }
+
+                    dismissFlyout();
+                },
+                index
+        );
     }
 
     /**
@@ -531,6 +578,8 @@ public final class FlyoutUtils {
                             () -> {
                                 flyoutVideoId = "";
                                 flyoutPlaylistId = "";
+                                flyoutChannelId = "";
+                                flyoutChannelName = "";
                             },
                             500
                     );
@@ -735,6 +784,8 @@ public final class FlyoutUtils {
                             setFlyoutPlaylistId(flyoutBuffer);
 
                             setFlyoutVideoId(flyoutBuffer, description.toString());
+
+                            setFlyoutChannel(flyoutBuffer, description.toString());
                         }
                     }
                     parent = parent.getParent();
@@ -815,6 +866,69 @@ public final class FlyoutUtils {
                 }
             }
         }
+    }
+
+    private static void setFlyoutChannel(byte[] buffer, String description) {
+        for (int index = byteIndexOf(buffer, CHANNEL_ID_PREFIX_BYTES);
+             index >= 0;
+             index = byteIndexOf(buffer, CHANNEL_ID_PREFIX_BYTES, index + 1)) {
+            if (isValidChannelId(buffer, index)) {
+                flyoutChannelId = new String(buffer, index, CHANNEL_ID_LENGTH, StandardCharsets.US_ASCII);
+                flyoutChannelName = findChannelName(description);
+                return;
+            }
+        }
+    }
+
+    /**
+     * The channel name is the only text the accessibility description repeats in two adjacent
+     * parts, as "Go to channel <name>" is always followed by "<name>". Matching those parts
+     * finds the name without depending on the app language.
+     */
+    private static String findChannelName(String description) {
+        String[] parts = description.split(" - ");
+        String name = "";
+
+        for (int i = 1; i < parts.length; i++) {
+            String previousPart = parts[i - 1];
+            String part = parts[i];
+
+            for (int length = Math.min(previousPart.length(), part.length());
+                 length > name.length(); length--) {
+                String candidate = part.substring(0, length);
+                if (previousPart.endsWith(candidate)) {
+                    name = candidate;
+                    break;
+                }
+            }
+        }
+
+        return name.length() > 1 ? name : "";
+    }
+
+    /**
+     * Channel ids are always 24 characters long and start with "UC", and the remaining
+     * 22 characters are URL safe Base64.
+     *
+     * @param buffer The buffer to check.
+     * @param index  The start index of the "UC" prefix.
+     * @return If the buffer holds a valid channel id at the given index.
+     */
+    public static boolean isValidChannelId(byte[] buffer, int index) {
+        final int lastIndex = index + CHANNEL_ID_LENGTH;
+        if (index < 0 || lastIndex > buffer.length) {
+            return false;
+        }
+
+        for (int i = index + 2; i < lastIndex; i++) {
+            final byte b = buffer[i];
+            final boolean isValid = (b >= 'A' && b <= 'Z') || (b >= 'a' && b <= 'z') ||
+                    (b >= '0' && b <= '9') || b == '-' || b == '_';
+            if (!isValid) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private static void setFlyoutPlaylistId(byte[] flyoutBuffer) {

@@ -18,20 +18,22 @@ import app.morphe.extension.youtube.settings.Settings;
  * A feature that can be turned off for individual channels.
  */
 public enum WhitelistType {
-    ADS(Settings.ADS_CHANNEL_WHITELIST, "morphe_ads_channel_whitelist_title"),
-    PLAYBACK_SPEED(Settings.PLAYBACK_SPEED_CHANNEL_WHITELIST, "morphe_playback_speed_channel_whitelist_title"),
-    SPONSOR_BLOCK(Settings.SB_CHANNEL_WHITELIST, "morphe_sb_channel_whitelist_title");
+    ADS(Settings.ADS_CHANNEL_WHITELIST),
+    PLAYBACK_SPEED(Settings.PLAYBACK_SPEED_CHANNEL_WHITELIST),
+    SPONSOR_BLOCK(Settings.SB_CHANNEL_WHITELIST);
 
     public final StringSetting setting;
-    private final String titleKey;
 
-    WhitelistType(StringSetting setting, String titleKey) {
+    WhitelistType(StringSetting setting) {
         this.setting = setting;
-        this.titleKey = titleKey;
     }
 
     public String getTitle() {
-        return str(titleKey);
+        return str(setting.key + "_title");
+    }
+
+    public String getFlyoutTitle(boolean isWhitelisted) {
+        return str(setting.key + (isWhitelisted ? "_flyout_remove" : "_flyout_add"));
     }
 
     /**
