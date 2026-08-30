@@ -19,6 +19,7 @@ import app.morphe.extension.youtube.settings.Settings;
  */
 public enum WhitelistType {
     ADS(Settings.ADS_CHANNEL_WHITELIST, "morphe_ads_channel_whitelist_title"),
+    PLAYBACK_SPEED(Settings.PLAYBACK_SPEED_CHANNEL_WHITELIST, "morphe_playback_speed_channel_whitelist_title"),
     SPONSOR_BLOCK(Settings.SB_CHANNEL_WHITELIST, "morphe_sb_channel_whitelist_title");
 
     public final StringSetting setting;
