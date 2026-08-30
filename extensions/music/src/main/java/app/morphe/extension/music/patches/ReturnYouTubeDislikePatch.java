@@ -47,7 +47,7 @@ public class ReturnYouTubeDislikePatch {
      * Called when a litho text component is initially created,
      * and also when a Span is later reused again (such as scrolling off/on screen).
      * <p>
-     * This method is sometimes called on the main thread, but it usually is called _off_ the main thread.
+     * This method is sometimes called on the main thread, but it is usually called _off_ the main thread.
      * This method can be called multiple times for the same UI element (including after dislikes was added).
      *
      * @param original Original char sequence was created or reused by Litho.

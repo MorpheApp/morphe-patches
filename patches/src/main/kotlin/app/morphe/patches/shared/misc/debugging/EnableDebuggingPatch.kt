@@ -30,7 +30,6 @@ import app.morphe.util.copyResources
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.numberOfParameterRegistersLogical
 import app.morphe.util.p0Register
-import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 

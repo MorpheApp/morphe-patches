@@ -21,7 +21,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -37,18 +36,15 @@ import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.preference.TwoStatePreference;
-import android.text.Editable;
 import android.text.InputType;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.text.style.BackgroundColorSpan;
 import android.text.style.ForegroundColorSpan;
 import android.util.Pair;
 import android.view.HapticFeedbackConstants;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -86,6 +82,7 @@ import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedSettings;
 import app.morphe.extension.shared.settings.preference.about.MorpheAboutPreference;
+import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 
@@ -683,7 +680,9 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     public void importActivity() {
         importTextActivity(text -> {
             if (text == null) {
-                showLocalizedToast("morphe_settings_import_file_failed", "Failed to import settings");
+                showLocalizedToast(
+                        "morphe_settings_import_file_failed",
+                        "Failed to import settings");
                 return;
             }
 
@@ -898,6 +897,11 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
             ListView logViewer = new ListView(context);
             LogAdapter logAdapter = new LogAdapter(context, logLines);
             logViewer.setAdapter(logAdapter);
+            logViewer.setDividerHeight(0);
+            logViewer.setPadding(0, Dim.dp4, 0, Dim.dp4);
+            logViewer.setOverScrollMode(View.OVER_SCROLL_NEVER);
+            logViewer.setBackground(CustomDialog.createRoundedBackground(10, ThemeUtils.getEditTextBackground()));
+            logViewer.setClipToOutline(true);
 
             Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                     context,
@@ -917,51 +921,22 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
             int margin = Dim.dp(16);
 
-            EditText searchBar = new EditText(context);
-            searchBar.setTextSize(16);
-            searchBar.setHint(str("morphe_debug_logs_search_hint"));
-            searchBar.setSingleLine(true);
-            searchBar.setHapticFeedbackEnabled(false);
+            final Handler searchHandler = new Handler(Looper.getMainLooper());
+            final Runnable[] searchRunnable = {null};
+
+            EditText searchBar = CustomDialog.createSearchBar(context,
+                    str("morphe_debug_logs_search_hint"), query -> {
+                if (searchRunnable[0] != null) {
+                    searchHandler.removeCallbacks(searchRunnable[0]);
+                }
+                searchRunnable[0] = () -> logAdapter.filter(query);
+                searchHandler.postDelayed(searchRunnable[0], 200);
+            });
 
             LinearLayout.LayoutParams searchParams = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            searchParams.setMargins(0, 0, 0, margin);
+            searchParams.setMargins(0, 0, 0, Dim.dp8);
             searchBar.setLayoutParams(searchParams);
-
-            searchBar.addTextChangedListener(new TextWatcher() {
-                final Handler searchHandler = new Handler(Looper.getMainLooper());
-                Runnable searchRunnable;
-
-                @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-                @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    final String query = s.toString();
-
-                    Drawable clearIcon = context.getDrawable(android.R.drawable.ic_menu_close_clear_cancel);
-                    if (clearIcon != null) {
-                        clearIcon.setBounds(0, 0, Dim.dp20, Dim.dp20);
-                    }
-                    searchBar.setCompoundDrawables(
-                            null, null, TextUtils.isEmpty(s) ? null : clearIcon, null);
-
-                    if (searchRunnable != null) searchHandler.removeCallbacks(searchRunnable);
-
-                    searchRunnable = () -> logAdapter.filter(query);
-                    searchHandler.postDelayed(searchRunnable, 200);
-                }
-                @Override public void afterTextChanged(Editable s) {}
-            });
-
-            searchBar.setOnTouchListener((v, event) -> {
-                if (event.getAction() == MotionEvent.ACTION_UP) {
-                    Drawable[] compoundDrawables = searchBar.getCompoundDrawables();
-                    if (compoundDrawables[2] != null && event.getRawX() >=
-                            (searchBar.getRight() - compoundDrawables[2].getBounds().width())) {
-                        searchBar.setText("");
-                        return true;
-                    }
-                }
-                return false;
-            });
 
             LinearLayout fileButtonsContainer = new LinearLayout(context);
             fileButtonsContainer.setOrientation(LinearLayout.HORIZONTAL);
@@ -982,7 +957,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
             LinearLayout.LayoutParams listParams = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT, 0, 1.0f);
-            listParams.setMargins(0, margin / 2, 0, 0);
+            listParams.setMargins(0, 0, 0, 0);
             logViewer.setLayoutParams(listParams);
 
             LinearLayout mainLayout = dialogPair.second;

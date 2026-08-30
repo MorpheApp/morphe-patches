@@ -19,12 +19,9 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RoundRectShape;
 import android.preference.Preference;
-import android.text.Editable;
 import android.text.InputType;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.Pair;
 import android.util.SparseBooleanArray;
@@ -332,49 +329,15 @@ public class FeatureFlagsManagerPreference extends Preference {
      */
     @SuppressLint("ClickableViewAccessibility")
     private EditText createSearchBox(Context context) {
-        EditText search = new EditText(context);
+        EditText search = CustomDialog.createSearchBar(context,
+                str("morphe_debug_feature_flags_manager_search_hint"), query -> {
+            adapter.setSearchQuery(query);
+            listView.clearChoices();
+            updateChips();
+            updateBottomBar();
+        });
+
         search.setInputType(InputType.TYPE_CLASS_NUMBER);
-        search.setTextSize(16);
-        search.setSingleLine(true);
-        search.setHint(str("morphe_debug_feature_flags_manager_search_hint"));
-        search.setTextColor(ThemeUtils.getAppForegroundColor());
-        search.setHapticFeedbackEnabled(false);
-        search.setPadding(Dim.dp12, Dim.dp8, Dim.dp12, Dim.dp8);
-        search.setCompoundDrawablePadding(Dim.dp8);
-
-        ShapeDrawable background = new ShapeDrawable(new RoundRectShape(
-                Dim.roundedCorners(20), null, null));
-        background.getPaint().setColor(ThemeUtils.getEditTextBackground());
-        search.setBackground(background);
-
-        Drawable searchIcon = createSearchBoxIcon(context, DRAWABLE_MORPHE_SETTINGS_SEARCH);
-        Drawable clearIcon = createSearchBoxIcon(context, DRAWABLE_MORPHE_SETTINGS_SEARCH_REMOVE);
-        search.setCompoundDrawables(searchIcon, null, null, null);
-
-        search.addTextChangedListener(new TextWatcher() {
-            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
-                adapter.setSearchQuery(s.toString());
-                listView.clearChoices();
-                updateChips();
-                updateBottomBar();
-                search.setCompoundDrawables(searchIcon, null,
-                        TextUtils.isEmpty(s) ? null : clearIcon, null);
-            }
-            @Override public void afterTextChanged(Editable s) {}
-        });
-
-        search.setOnTouchListener((v, event) -> {
-            if (event.getAction() == MotionEvent.ACTION_UP) {
-                Drawable[] compoundDrawables = search.getCompoundDrawables();
-                if (compoundDrawables[2] != null &&
-                        event.getRawX() >= (search.getRight() - compoundDrawables[2].getBounds().width())) {
-                    search.setText("");
-                    return true;
-                }
-            }
-            return false;
-        });
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -452,12 +415,9 @@ public class FeatureFlagsManagerPreference extends Preference {
                     ? (Utils.isDarkModeEnabled() ? Color.BLACK : Color.WHITE)
                     : ThemeUtils.getAppForegroundColor());
 
-            ShapeDrawable background = new ShapeDrawable(new RoundRectShape(
-                    Dim.roundedCorners(16), null, null));
-            background.getPaint().setColor(selected
+            chip.setBackground(CustomDialog.createRoundedBackground(16, selected
                     ? ThemeUtils.getOkButtonBackgroundColor()
-                    : ThemeUtils.getEditTextBackground());
-            chip.setBackground(background);
+                    : ThemeUtils.getEditTextBackground()));
         }
     }
 
@@ -485,11 +445,7 @@ public class FeatureFlagsManagerPreference extends Preference {
         list.setAdapter(adapter);
         list.setPadding(0, Dim.dp4, 0, Dim.dp4);
         list.setOverScrollMode(View.OVER_SCROLL_NEVER);
-
-        ShapeDrawable background = new ShapeDrawable(new RoundRectShape(
-                Dim.roundedCorners(10), null, null));
-        background.getPaint().setColor(ThemeUtils.getEditTextBackground());
-        list.setBackground(background);
+        list.setBackground(CustomDialog.createRoundedBackground(10, ThemeUtils.getEditTextBackground()));
 
         final ListViewSelectionState state = new ListViewSelectionState();
 
@@ -1019,8 +975,7 @@ public class FeatureFlagsManagerPreference extends Preference {
             setGravity(Gravity.CENTER_VERTICAL);
             setPadding(Dim.dp12, Dim.dp8, Dim.dp12, Dim.dp8);
 
-            background = new ShapeDrawable(new RoundRectShape(Dim.roundedCorners(8), null, null));
-            background.getPaint().setColor(Color.TRANSPARENT);
+            background = CustomDialog.createRoundedBackground(8, Color.TRANSPARENT);
             setBackground(background);
 
             flagText = new TextView(context);
