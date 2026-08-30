@@ -131,9 +131,9 @@ public final class FlyoutUtils {
             );
     private static final String saveToWatchLaterButtonName = str("morphe_save_to_watch_later_flyout_title");
     private static final Drawable adWhitelistDrawable =
-            ResourceUtils.getDrawable("morphe_settings_screen_01_ads");
+            getSettingsScreenDrawable("morphe_settings_screen_01_ads");
     private static final Drawable playbackSpeedWhitelistDrawable =
-            ResourceUtils.getDrawable("morphe_settings_screen_12_video");
+            getSettingsScreenDrawable("morphe_settings_screen_12_video");
 
     private static WeakReference<TextView> customItemTextRef = new WeakReference<>(null);
 
@@ -156,6 +156,12 @@ public final class FlyoutUtils {
     );
 
     private static boolean videoMarkedAsForKids;
+
+    private static Drawable getSettingsScreenDrawable(String drawableName) {
+        return ResourceUtils.getDrawable(Utils.appIsUsingBoldIcons()
+                ? drawableName + "_bold"
+                : drawableName);
+    }
 
     public static byte[] getAsciiBytes(String string) {
         return string.getBytes(StandardCharsets.US_ASCII);
