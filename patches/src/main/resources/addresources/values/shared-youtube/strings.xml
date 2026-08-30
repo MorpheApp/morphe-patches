@@ -237,6 +237,11 @@ If later turned off, it is recommended to clear the app data to prevent UI bugs.
     <string name="morphe_force_app_refresh_rate_title">App refresh rate</string>
     <string name="morphe_force_app_refresh_rate_default">Default</string>
     <string name="morphe_force_app_refresh_rate_fps">%s FPS</string>
+    <string name="morphe_force_app_refresh_rate_type_title">Override refresh rate</string>
+    <string name="morphe_force_app_refresh_rate_type_entry_1">Always</string>
+    <string name="morphe_force_app_refresh_rate_type_entry_2">Playback portrait</string>
+    <string name="morphe_force_app_refresh_rate_type_entry_3">Playback fullscreen</string>
+    <string name="morphe_force_app_refresh_rate_type_entry_4">Playback portrait and fullscreen</string>
 
     <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
     <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->

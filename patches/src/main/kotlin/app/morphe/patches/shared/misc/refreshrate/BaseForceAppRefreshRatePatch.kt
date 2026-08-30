@@ -11,19 +11,23 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.BytecodePatchBuilder
+import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
+import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
+import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.util.matchAllMethodIndicesForEach
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/ForceAppRefreshRatePatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/BaseForceAppRefreshRatePatch;"
 
 fun baseForceAppRefreshRatePatch(
     preferenceScreen: BasePreferenceScreen.Screen,
-    block: BytecodePatchBuilder.() -> Unit
+    block: BytecodePatchBuilder.() -> Unit,
+    executeBlock: BytecodePatchContext.() -> Unit = {},
 ) = bytecodePatch(
     name = "Force app refresh rate",
     description = "Forces the app to run at a different refresh rate."
@@ -32,11 +36,14 @@ fun baseForceAppRefreshRatePatch(
 
     execute {
         preferenceScreen.addPreferences(
-            NonInteractivePreference(
-                key = "morphe_force_app_refresh_rate",
-                summaryKey = null,
-                tag = "app.morphe.extension.shared.settings.preference.ForceAppRefreshRateListPreference",
-                selectable = true
+            noTitleUnsortedPreferenceCategory(
+                NonInteractivePreference(
+                    key = "morphe_force_app_refresh_rate",
+                    summaryKey = null,
+                    tag = "app.morphe.extension.shared.settings.preference.ForceAppRefreshRateListPreference",
+                    selectable = true
+                ),
+                ListPreference("morphe_force_app_refresh_rate_type")
             )
         )
 
@@ -79,5 +86,7 @@ fun baseForceAppRefreshRatePatch(
         }
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS)
+
+        executeBlock()
     }
 }

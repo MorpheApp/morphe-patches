@@ -8,7 +8,7 @@
 package app.morphe.extension.shared.settings.preference;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.shared.patches.ForceAppRefreshRatePatch.DEFAULT_REFRESH_RATE_VALUE;
+import static app.morphe.extension.shared.patches.BaseForceAppRefreshRatePatch.DEFAULT_REFRESH_RATE_VALUE;
 
 import android.content.Context;
 import android.preference.ListPreference;
@@ -17,7 +17,7 @@ import android.util.AttributeSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.morphe.extension.shared.patches.ForceAppRefreshRatePatch;
+import app.morphe.extension.shared.patches.BaseForceAppRefreshRatePatch;
 
 @SuppressWarnings({"unused", "deprecation"})
 public class ForceAppRefreshRateListPreference extends ListPreference {
@@ -43,7 +43,7 @@ public class ForceAppRefreshRateListPreference extends ListPreference {
     }
 
     private void init() {
-        String[] available = ForceAppRefreshRatePatch.getAvailableRefreshRates();
+        String[] available = BaseForceAppRefreshRatePatch.getAvailableRefreshRates();
 
         List<String> entries = new ArrayList<>();
         List<String> values = new ArrayList<>();

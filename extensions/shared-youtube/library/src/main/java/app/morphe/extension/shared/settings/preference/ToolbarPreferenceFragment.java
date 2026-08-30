@@ -29,7 +29,7 @@ import androidx.annotation.Nullable;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.patches.ForceAppRefreshRatePatch;
+import app.morphe.extension.shared.patches.BaseForceAppRefreshRatePatch;
 import app.morphe.extension.shared.settings.BaseActivityHook;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
@@ -80,7 +80,7 @@ public class ToolbarPreferenceFragment extends AbstractPreferenceFragment {
                             setNavigationBarColor(preferenceScreenDialog.getWindow());
 
                             // Set the refresh rate for submenus.
-                            ForceAppRefreshRatePatch.setWindowRefreshRate(
+                            BaseForceAppRefreshRatePatch.setWindowRefreshRate(
                                     childScreen.getContext(),
                                     preferenceScreenDialog.getWindow()
                             );
