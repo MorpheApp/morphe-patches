@@ -28,6 +28,8 @@ import app.morphe.patches.all.misc.resources.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
+internal const val CLIENT_INFO_CLASS = $$"Lcom/google/protos/youtube/api/innertube/InnertubeContext$ClientInfo;"
+
 internal const val YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE = "Lcom/google/android/apps/youtube/app/watchwhile/MainActivity;"
 
 internal object ActionBarSearchResultsFingerprint : Fingerprint(

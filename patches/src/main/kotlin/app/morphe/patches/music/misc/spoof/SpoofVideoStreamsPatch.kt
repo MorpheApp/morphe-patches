@@ -17,7 +17,6 @@ import app.morphe.patches.music.misc.playservice.is_8_15_or_greater
 import app.morphe.patches.music.misc.playservice.is_8_35_or_greater
 import app.morphe.patches.music.misc.playservice.is_8_40_or_greater
 import app.morphe.patches.music.misc.playservice.is_9_12_or_greater
-import app.morphe.patches.music.misc.playservice.is_9_19_or_greater
 import app.morphe.patches.music.misc.playservice.is_9_24_or_greater
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
@@ -37,7 +36,6 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
     fixParsePlaybackResponseFeatureFlag = { is_7_33_or_greater && !is_9_24_or_greater },
     fixMediaSessionFeatureFlag = { is_8_40_or_greater },
     fixReelItemWatchResponseFeatureFlag = { false },
-    useNewRequestBuilderFingerprint = { is_9_19_or_greater },
     restoreMissingCuepointMethod = { is_8_35_or_greater && !is_9_12_or_greater },
 
     block = {

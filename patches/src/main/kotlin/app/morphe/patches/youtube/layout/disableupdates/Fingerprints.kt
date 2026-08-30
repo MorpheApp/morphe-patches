@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.patches.youtube.misc.headerhook
+package app.morphe.patches.youtube.layout.disableupdates
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.string

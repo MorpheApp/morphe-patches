@@ -10,12 +10,9 @@
 
 package app.morphe.patches.youtube.layout.formfactor
 
-import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -30,8 +27,7 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.findFreeRegister
-import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import app.morphe.util.registersUsed
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS =
@@ -60,19 +56,7 @@ val changeFormFactorPatch = bytecodePatch(
             )
         )
 
-        Fingerprint(
-            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-            returnType = "L",
-            parameters = listOf(),
-            filters = listOf(
-                fieldAccess(smali = "Landroid/os/Build;->MODEL:Ljava/lang/String;"),
-                fieldAccess(
-                    definingClass = FormFactorEnumConstructorFingerprint.originalClassDef.type,
-                    type = "I",
-                    location = MatchAfterWithin(50)
-                )
-            )
-        ).let {
+        getInnerTubeClientConfigFingerprint().let {
             it.method.apply {
                 val index = it.instructionMatches.last().index
                 val register = getInstruction<TwoRegisterInstruction>(index).registerA
@@ -101,21 +85,19 @@ val changeFormFactorPatch = bytecodePatch(
 
         PlayerLithoElementsListFingerprint.let {
             it.method.apply {
-                val instructionIndex = it.instructionMatches[1].index
-                val listRegister = getInstruction<FiveRegisterInstruction>(
-                    instructionIndex
-                ).registerC
-                val listIndexRegister = getInstruction<FiveRegisterInstruction>(
-                    instructionIndex
-                ).registerD
+                val match = it.instructionMatches[1]
+                val index = match.index
+                val instruction = match.instruction
+                val listRegister = instruction.registersUsed[0]
+                val listIndexRegister = instruction.registersUsed[1]
                 val freeRegister = findFreeRegister(
-                    instructionIndex,
+                    index,
                     listRegister,
                     listIndexRegister
                 )
 
                 addInstructionsWithLabels(
-                    instructionIndex,
+                    index,
                     """
                         invoke-static { v$listRegister, v$listIndexRegister }, $EXTENSION_CLASS->checkPlayerLithoElementsListSize(Ljava/util/List;I)Z
                         move-result v$freeRegister

@@ -16,8 +16,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
-import app.morphe.patches.youtube.misc.playservice.is_20_34_or_greater
-import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
@@ -33,14 +31,9 @@ internal val fixLikeButtonPatch = bytecodePatch{
     dependsOn(
         sharedExtensionPatch,
         playerTypeHookPatch,
-        versionCheckPatch,
     )
 
     execute {
-        if (!is_20_34_or_greater) {
-            return@execute
-        }
-
         val (lottieAnimationUrlPrimaryFingerprint, lottieAnimationUrlSecondaryFingerprint) =
             with(LottieAnimationViewTagFingerprint) {
                 val index = instructionMatches.first().index

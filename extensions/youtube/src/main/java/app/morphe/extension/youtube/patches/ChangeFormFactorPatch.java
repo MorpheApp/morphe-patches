@@ -86,6 +86,7 @@ public class ChangeFormFactorPatch {
         if (FORM_FACTOR_TYPE == null) {
             return original;
         }
+
         if (IS_BROKEN_FORM_FACTOR
                 && !PlayerType.getCurrent().isMaximizedOrFullscreen()
                 && !NavigationBar.isSearchBarActive()) {

@@ -9,9 +9,12 @@ package app.morphe.patches.shared
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.StringComparisonType
+import app.morphe.patcher.anyInstruction
+import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -45,6 +48,22 @@ internal object GoogleApiActivityOnCreateFingerprint : Fingerprint(
 internal object BoldIconsFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
         literal(45685201L)
+    )
+)
+
+internal object BuildInnerTubeProtoRequestUriFingerprint : Fingerprint(
+    parameters = listOf(),
+    filters = listOf(
+        string("key"),
+        string("asig"),
+        checkCast("Ljava/lang/String;"),
+        methodCall($$"Landroid/net/Uri$Builder;->appendQueryParameter(Ljava/lang/String;Ljava/lang/String;)Landroid/net/Uri$Builder;"),
+        anyInstruction(
+            // YT 21.20, YTM 9.18
+            methodCall($$"Landroid/net/Uri$Builder;->build()Landroid/net/Uri;"),
+            // YT 21.21+, YTM 9.19+
+            opcode(Opcode.RETURN_OBJECT)
+        )
     )
 )
 

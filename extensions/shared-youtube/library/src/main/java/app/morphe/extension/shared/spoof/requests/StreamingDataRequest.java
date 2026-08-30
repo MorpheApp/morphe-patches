@@ -206,15 +206,15 @@ public class StreamingDataRequest {
     @Nullable
     private static HttpURLConnection send(ClientType clientType,
                                           String videoId,
-                                          Map<String, String> playerHeaders,
+                                          String authorization,
                                           boolean showErrorToasts) {
         Utils.verifyOffMainThread();
 
         Objects.requireNonNull(clientType);
         Objects.requireNonNull(videoId);
-        Objects.requireNonNull(playerHeaders);
 
         final long startTime = System.currentTimeMillis();
+        final boolean authHeadersIncludes = Utils.isNotEmpty(authorization);
 
         try {
             HttpURLConnection connection = PlayerRoutes.getPlayerResponseConnectionFromRoute(clientType);
@@ -222,9 +222,6 @@ public class StreamingDataRequest {
             connection.setReadTimeout(HTTP_TIMEOUT_MILLISECONDS);
 
             authHeadersOverrides = false;
-
-            String authorization = playerHeaders.get(AUTHORIZATION_HEADER);
-            boolean authHeadersIncludes = Utils.isNotEmpty(authorization);
 
             // Auth header is required, but the user is not logged in. These clients are skipped:
             // ANDROID_CREATOR, ANDROID_MUSIC_REEL, ANDROID_MUSIC_NO_SDK.
@@ -438,9 +435,10 @@ public class StreamingDataRequest {
         return false;
     }
 
-    private static StreamData fetch(String videoId, boolean isInline, @Nullable Map<String, String> playerHeaders) {
+    private static StreamData fetch(String videoId, boolean isInline, Map<String, String> playerHeaders) {
         final boolean debugEnabled = BaseSettings.DEBUG.get();
         final long fetchStartTime = System.currentTimeMillis();
+        String authorization = playerHeaders.get(AUTHORIZATION_HEADER);
 
         // Retry with different client if empty response body is received.
         int i = 0;
@@ -452,13 +450,13 @@ public class StreamingDataRequest {
             // Show an error if the last client type fails, or if debug is enabled then show for all attempts.
             final boolean showErrorToast = (++i == clientOrderToUse.length) || debugEnabled;
 
-            HttpURLConnection connection = send(clientType, videoId, playerHeaders, showErrorToast);
+            HttpURLConnection connection = send(clientType, videoId, authorization, showErrorToast);
             StreamData streamingData = buildPlayerResponseBuffer(clientType, connection, videoId, isInline);
 
             if (clientType == ClientType.TV_SABR && fallbackWithTVDash) {
                 fallbackWithTVDash = false;
                 clientType = ClientType.TV_DASH;
-                HttpURLConnection fallBackConnection = send(clientType, videoId, playerHeaders, showErrorToast);
+                HttpURLConnection fallBackConnection = send(clientType, videoId, authorization, showErrorToast);
                 streamingData = buildPlayerResponseBuffer(clientType, fallBackConnection, videoId, isInline);
             }
 

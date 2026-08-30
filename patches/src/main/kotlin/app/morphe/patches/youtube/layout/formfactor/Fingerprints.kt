@@ -12,13 +12,15 @@ package app.morphe.patches.youtube.layout.formfactor
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
+import app.morphe.patcher.patch.BytecodePatchContext
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal object FormFactorEnumConstructorFingerprint : Fingerprint(
+private object FormFactorEnumConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
     strings = listOf(
         "UNKNOWN_FORM_FACTOR",
@@ -27,6 +29,20 @@ internal object FormFactorEnumConstructorFingerprint : Fingerprint(
         "AUTOMOTIVE_FORM_FACTOR"
     )
 )
+
+internal fun BytecodePatchContext.getInnerTubeClientConfigFingerprint() = object : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf(),
+    filters = listOf(
+        fieldAccess(smali = "Landroid/os/Build;->MODEL:Ljava/lang/String;"),
+        fieldAccess(
+            definingClass = FormFactorEnumConstructorFingerprint.originalClassDef.type,
+            type = "I",
+            location = MatchAfterWithin(50)
+        )
+    )
+) {}
 
 internal object PlayerLithoElementsListFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),

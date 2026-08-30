@@ -11,15 +11,14 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import app.morphe.patches.youtube.shared.BuildClientContextBodyConstructorFingerprint
+import app.morphe.patches.youtube.shared.CLIENT_INFO_CLASS
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-
-internal const val CLIENT_INFO_CLASS =
-    $$"Lcom/google/protos/youtube/api/innertube/InnertubeContext$ClientInfo;"
 
 // 21.33+
 internal object AuthenticationChangeListenerFingerprint : Fingerprint(
