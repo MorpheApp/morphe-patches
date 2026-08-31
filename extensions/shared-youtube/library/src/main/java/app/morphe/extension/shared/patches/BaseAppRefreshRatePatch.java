@@ -66,15 +66,6 @@ public final class BaseAppRefreshRatePatch {
     }
 
     @Nullable
-    public static Float getPreferredRefreshRate() {
-        Utils.verifyOnMainThread();
-        if (!shouldOverrideRefreshRate()) {
-            return null;
-        }
-        return preferredRefreshRate;
-    }
-
-    @Nullable
     public static String[] getAvailableRefreshRates() {
         Utils.verifyOnMainThread();
         return availableRefreshRates;
@@ -94,17 +85,6 @@ public final class BaseAppRefreshRatePatch {
             case FULLSCREEN -> isPlaybackFullscreen;
             case PORTRAIT_FULLSCREEN -> isPlaybackPortrait || isPlaybackFullscreen;
         };
-    }
-
-    /**
-     * Injection point.
-     */
-    public static float getRefreshRateOverride(float original) {
-        final Float override = getPreferredRefreshRate();
-        if (override != null && override > 0) {
-            return override;
-        }
-        return original;
     }
 
     /**

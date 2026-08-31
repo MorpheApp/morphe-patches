@@ -59,6 +59,7 @@ import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.injectHideViewCall
+import app.morphe.util.registersUsed
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -747,18 +748,22 @@ val hideLayoutComponentsPatch = bytecodePatch(
             }
         }
 
-        arrayOf(
-            RelatedChipCloudFingerprint to RelatedChipCloudFingerprint.instructionMatches[2].index,
-            RelatedChipCloudMirrorClassFingerprint to RelatedChipCloudMirrorClassFingerprint.instructionMatches.last().index,
-            RelatedChipCloudMirrorClassFingerprint to RelatedChipCloudMirrorClassFingerprint.instructionMatches[2].index
-        ).forEach { (fingerprint, recyclerViewIndex) ->
-            fingerprint.method.apply {
-                val recyclerViewRegister = getInstruction<OneRegisterInstruction>(recyclerViewIndex).registerA
+        mapOf(
+            RelatedChipCloudFingerprint to 2,
+            RelatedChipCloudMirrorClassFingerprint to 4,
+            RelatedChipCloudMirrorClassFingerprint to 2
+        ).forEach { (fingerprint, matchIndex) ->
+            fingerprint.let {
+                it.method.apply {
+                    val match = it.instructionMatches[matchIndex]
+                    val index = match.index
+                    val register = match.instruction.registersUsed[0]
 
-                addInstruction(
-                    recyclerViewIndex + 1,
-                    "invoke-static { v$recyclerViewRegister }, $LAYOUT_COMPONENTS_FILTER->hideInRelatedVideos(Landroid/support/v7/widget/RecyclerView;)V"
-                )
+                    addInstruction(
+                        index + 1,
+                        "invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER->hideInRelatedVideos(Landroid/view/View;)V"
+                    )
+                }
             }
         }
 
