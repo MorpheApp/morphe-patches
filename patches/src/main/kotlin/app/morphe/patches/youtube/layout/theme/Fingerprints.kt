@@ -28,6 +28,34 @@ internal object UseGradientLoadingScreenFingerprint : Fingerprint(
     )
 )
 
+/**
+ * The app colors a text of its own with a span, using a color that the server sent with the text
+ * and not a color resource, so no resource variant of the theme can replace it.
+ */
+internal object LithoTextSpanColorFingerprint : Fingerprint(
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT,
+            smali = "Landroid/text/style/ForegroundColorSpan;-><init>(I)V"
+        )
+    )
+)
+
+/**
+ * An icon is colored the same way, with a value the app tints the drawable with.
+ */
+internal object IconDrawableColorFilterFingerprint : Fingerprint(
+    filters = listOf(
+        methodCall(smali = $$"Landroid/graphics/drawable/Drawable;->setColorFilter(ILandroid/graphics/PorterDuff$Mode;)V")
+    )
+)
+
+internal object IconImageColorFilterFingerprint : Fingerprint(
+    filters = listOf(
+        methodCall(smali = $$"Landroid/widget/ImageView;->setColorFilter(ILandroid/graphics/PorterDuff$Mode;)V")
+    )
+)
+
 internal object CarbonColorThemeFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
         literal(45760313)

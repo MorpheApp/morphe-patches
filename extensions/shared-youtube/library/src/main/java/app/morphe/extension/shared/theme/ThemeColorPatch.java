@@ -540,6 +540,48 @@ public class ThemeColorPatch {
     }
 
     /**
+     * The primary text colors of each theme. The white the app keeps for what it draws on a
+     * thumbnail or a video is left out, because that has to stay readable on any of them.
+     */
+    private static final int[] DARK_THEME_FOREGROUND_VALUES = {
+            0xFFF1F1F1, // Default palette.
+            0xFFF2F2F5, // Carbon palette.
+    };
+
+    private static final int[] LIGHT_THEME_FOREGROUND_VALUES = {
+            0xFF0F0F0F, // Default palette.
+            0xFF09090A, // Carbon palette.
+    };
+
+    /**
+     * Injection point.
+     * <p>
+     * The color of a text or an icon the app colors itself, which is a value and not a color
+     * resource, so the value of the app is matched instead of replacing a resource.
+     */
+    @ColorInt
+    public static int getForegroundColor(@ColorInt int originalValue) {
+        try {
+            if (isAppDefaultColor()
+                    || !SharedYouTubeSettings.THEME_COLOR_CHANGE_FOREGROUND.get()) {
+                return originalValue;
+            }
+
+            // The app draws its foreground with the color of the theme it does not show.
+            final boolean dark = isDarkTheme();
+            for (int value : dark ? DARK_THEME_FOREGROUND_VALUES : LIGHT_THEME_FOREGROUND_VALUES) {
+                if (value == originalValue) {
+                    return themeColor(!dark);
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "getForegroundColor failure", ex);
+        }
+
+        return originalValue;
+    }
+
+    /**
      * If the app shows its dark theme.
      * <p>
      * The theme of the app is resolved after the first contexts of the app attach, and the theme

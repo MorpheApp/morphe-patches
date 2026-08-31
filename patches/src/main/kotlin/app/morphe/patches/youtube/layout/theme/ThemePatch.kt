@@ -44,6 +44,7 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.forEachChildElement
 import app.morphe.util.insertLiteralOverride
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import org.w3c.dom.Element
@@ -59,6 +60,7 @@ private val youTubeColorNamesDark = {
 //            "yt_ref_color_constants_default_baseline_black_black2",
             "yt_ref_color_constants_default_baseline_black_black3",
 //            "yt_ref_color_constants_default_baseline_black_black4",
+            "yt_ref_color_constants_cooler_baseline_black_black3",
             "yt_sys_color_baseline_dark_menu_background",
             "yt_sys_color_baseline_dark_static_black",
             "yt_sys_color_baseline_dark_raised_background",
@@ -80,8 +82,9 @@ private val youTubeColorNamesLight = {
 //            "yt_ref_color_constants_baseline_white_white3",
 //            "yt_ref_color_constants_baseline_white_white4",
 //            "yt_ref_color_constants_default_baseline_white_white2",
-//            "yt_ref_color_constants_default_baseline_white_white3",
 //            "yt_ref_color_constants_default_baseline_white_white4",
+            "yt_ref_color_constants_default_baseline_white_white3",
+            "yt_ref_color_constants_cooler_baseline_white_white3",
 
             "yt_sys_color_baseline_light_menu_background",
 //            "yt_sys_color_baseline_light_static_white",
@@ -414,6 +417,31 @@ val themePatch = baseThemePatch(
                         checkCastIndex + 1,
                         "invoke-static { v$stubRegister }, $THEME_COLOR_EXTENSION_CLASS" +
                                 "->onNewContentIndicator(Landroid/view/ViewStub;)V"
+                    )
+                }
+            }
+        }
+
+        // The app colors its own text and icons with a value, so every place that hands one
+        // over is given the color of the selected theme instead.
+        arrayOf(
+            LithoTextSpanColorFingerprint,
+            IconDrawableColorFilterFingerprint,
+            IconImageColorFilterFingerprint
+        ).forEach { fingerprint ->
+            fingerprint.matchAll().forEach {
+                it.method.apply {
+                    val index = it.instructionMatches.first().index
+                    val colorRegister = getInstruction<FiveRegisterInstruction>(index).registerD
+
+                    // The color can be in a parameter register above v15,
+                    // so the range format is used.
+                    addInstructions(
+                        index,
+                        """
+                            invoke-static/range { v$colorRegister .. v$colorRegister }, $THEME_COLOR_EXTENSION_CLASS->getForegroundColor(I)I
+                            move-result v$colorRegister
+                        """
                     )
                 }
             }
