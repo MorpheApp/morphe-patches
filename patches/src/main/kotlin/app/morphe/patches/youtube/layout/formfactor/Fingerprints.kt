@@ -44,7 +44,7 @@ internal fun BytecodePatchContext.getInnerTubeClientConfigFingerprint() = object
     )
 ) {}
 
-internal object PlayerLithoElementsListFingerprint : Fingerprint(
+internal object RepeatedItemSectionRendererFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
     returnType = "V",
     strings = listOf("Number of sectionList models must be equal to the number of section states"),
