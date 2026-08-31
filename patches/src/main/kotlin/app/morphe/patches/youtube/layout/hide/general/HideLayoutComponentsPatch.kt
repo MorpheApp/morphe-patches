@@ -52,6 +52,8 @@ import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.patches.youtube.shared.ModernRelateVideoOverlayFingerprint
+import app.morphe.patches.youtube.shared.RelateVideoOverlayLayoutParamFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
@@ -59,6 +61,7 @@ import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.injectHideViewCall
+import app.morphe.util.insertLiteralOverride
 import app.morphe.util.registersUsed
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -764,6 +767,20 @@ val hideLayoutComponentsPatch = bytecodePatch(
                         "invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER->hideInRelatedVideos(Landroid/view/View;)V"
                     )
                 }
+            }
+        }
+
+        // fix: related video overlay is broken due to patch.
+        listOf(
+            ModernRelateVideoOverlayFingerprint,
+            RelateVideoOverlayLayoutParamFingerprint
+        ).forEach { fingerprint ->
+            fingerprint.clearMatch()
+            fingerprint.matchAll().forEach {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    "$LAYOUT_COMPONENTS_FILTER->hideInRelatedVideos(Z)Z"
+                )
             }
         }
 

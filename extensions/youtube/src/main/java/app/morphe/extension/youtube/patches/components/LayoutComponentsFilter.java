@@ -676,6 +676,13 @@ public final class LayoutComponentsFilter extends Filter {
     /**
      * Injection point.
      */
+    public static boolean hideInRelatedVideos(boolean original) {
+        return !Settings.HIDE_FILTER_BAR_IN_RELATED_VIDEOS.get() && original;
+    }
+
+    /**
+     * Injection point.
+     */
     public static void hideInRelatedVideos(@Nullable View view) {
         if (view == null) return;
         Utils.hideViewUnderCondition(Settings.HIDE_FILTER_BAR_IN_RELATED_VIDEOS.get(), view);
