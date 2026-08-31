@@ -10,6 +10,7 @@ package app.morphe.patches.youtube.misc.fix.videoactionbar
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
+import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.request.buildRequestPatch
 import app.morphe.patches.shared.misc.request.hookBuildRequest
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -46,7 +47,8 @@ internal val restoreOldVideoActionBarPatch = bytecodePatch(
         settingsPatch,
         versionCheckPatch,
         clientContextHookPatch,
-        buildRequestPatch
+        buildRequestPatch,
+        fixProtoLibraryPatch
     )
 
     execute {
