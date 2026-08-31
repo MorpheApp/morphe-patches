@@ -21,6 +21,9 @@ public final class AppRefreshRatePatch {
      * Injection point.
      */
     public static void initialize(Activity activity) {
+        if (!BaseAppRefreshRatePatch.isPatchEnabled()) {
+            return;
+        }
         VideoState.getOnChange().addObserver((VideoState state) -> {
             updatePlayerIsActive(PlayerType.getCurrent(), state);
             return Unit.INSTANCE;
@@ -34,7 +37,7 @@ public final class AppRefreshRatePatch {
 
     private static void updatePlayerIsActive(PlayerType type, VideoState state) {
         final boolean isPlaying = state == VideoState.PLAYING;
-        BaseAppRefreshRatePatch.videoPlayerIsActive(
+        BaseAppRefreshRatePatch.setVideoPlayerIsActive(
                 isPlaying && type == PlayerType.WATCH_WHILE_MAXIMIZED,
                 isPlaying && type == PlayerType.WATCH_WHILE_FULLSCREEN
         );

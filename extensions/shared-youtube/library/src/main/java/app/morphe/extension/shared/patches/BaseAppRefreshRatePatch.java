@@ -85,6 +85,20 @@ public final class BaseAppRefreshRatePatch {
         return false;  // Modified during patching.
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
+    public static boolean isPatchEnabled() {
+        return isPatchIncluded() && !SharedYouTubeSettings.APP_REFRESH_RATE.isSetToDefault();
+    }
+
+    private static boolean shouldOverrideRefreshRate() {
+        return switch (SharedYouTubeSettings.APP_REFRESH_RATE_TYPE.get()) {
+            case ALWAYS -> true;
+            case PORTRAIT -> isPlaybackPortrait;
+            case FULLSCREEN -> isPlaybackFullscreen;
+            case PORTRAIT_FULLSCREEN -> isPlaybackPortrait || isPlaybackFullscreen;
+        };
+    }
+
     /**
      * Injection point.
      */
@@ -110,20 +124,22 @@ public final class BaseAppRefreshRatePatch {
 
         Utils.verifyOnMainThread();
 
-        // Track the window and clean up collected references.
-        boolean alreadyTracked = false;
-        Iterator<WeakReference<Window>> iterator = trackedWindows.iterator();
-        while (iterator.hasNext()) {
-            Window tracked = iterator.next().get();
-            if (tracked == null) {
-                iterator.remove();
-            } else if (tracked == window) {
-                alreadyTracked = true;
+        if (isPatchEnabled()) {
+            // Track the window and clean up collected references.
+            boolean alreadyTracked = false;
+            Iterator<WeakReference<Window>> iterator = trackedWindows.iterator();
+            while (iterator.hasNext()) {
+                Window tracked = iterator.next().get();
+                if (tracked == null) {
+                    iterator.remove();
+                } else if (tracked == window) {
+                    alreadyTracked = true;
+                }
             }
-        }
 
-        if (!alreadyTracked) {
-            trackedWindows.add(new WeakReference<>(window));
+            if (!alreadyTracked) {
+                trackedWindows.add(new WeakReference<>(window));
+            }
         }
 
         try {
@@ -160,6 +176,9 @@ public final class BaseAppRefreshRatePatch {
                         .sorted(Comparator.comparingInt(Integer::parseInt))
                         .toArray(String[]::new);
 
+                Logger.printDebug(() -> "Refresh rates available: "
+                        + Arrays.toString(availableRefreshRates));
+
                 if (isDefault) {
                     preferredDisplayModeId = -1;
                     preferredRefreshRate = -1f;
@@ -194,24 +213,14 @@ public final class BaseAppRefreshRatePatch {
 
                 preferredDisplayModeId = bestMode.getModeId();
                 preferredRefreshRate = bestMode.getRefreshRate();
-                Logger.printDebug(() -> "Forcing display mode: "
-                        + bestMode.getPhysicalWidth() + "x" + bestMode.getPhysicalHeight()
-                        + " " + Math.round(preferredRefreshRate) + "Hz");
             }
 
-            applyRefreshRateToWindow(window);
+            if (isPatchEnabled()) {
+                applyRefreshRateToWindow(window);
+            }
         } catch (Exception ex) {
             Logger.printException(() -> "setWindowRefreshRate failure", ex);
         }
-    }
-
-    private static boolean shouldOverrideRefreshRate() {
-        return switch (SharedYouTubeSettings.APP_REFRESH_RATE_TYPE.get()) {
-            case ALWAYS -> true;
-            case PORTRAIT -> isPlaybackPortrait;
-            case FULLSCREEN -> isPlaybackFullscreen;
-            case PORTRAIT_FULLSCREEN -> isPlaybackPortrait || isPlaybackFullscreen;
-        };
     }
 
     private static void applyRefreshRateToWindow(Window window) {
@@ -236,7 +245,7 @@ public final class BaseAppRefreshRatePatch {
         window.setAttributes(params);
     }
 
-    public static void videoPlayerIsActive(boolean portrait, boolean fullscreen) {
+    public static void setVideoPlayerIsActive(boolean portrait, boolean fullscreen) {
         Utils.verifyOnMainThread();
 
         isPlaybackPortrait = portrait;

@@ -61,6 +61,8 @@ fun baseAppRefreshRatePatch(
             )
         }
 
+        if (true) return@execute
+
         VideoFrameReleaseHelperSetFrameRateFingerprint.method.addInstructions(
             0,
             """
