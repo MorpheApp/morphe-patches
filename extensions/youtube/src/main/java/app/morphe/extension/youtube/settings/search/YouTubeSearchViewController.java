@@ -1,3 +1,16 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/2712
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ * https://gitlab.com/ReVanced/revanced-patches/-/merge_requests/4881
+ * https://gitlab.com/ReVanced/revanced-patches/-/merge_requests/5806
+ * https://gitlab.com/ReVanced/revanced-patches/-/merge_requests/5838
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.youtube.settings.search;
 
 import android.app.Activity;
@@ -6,7 +19,6 @@ import android.preference.PreferenceScreen;
 import android.view.View;
 import android.widget.Toolbar;
 
-import app.morphe.extension.shared.settings.search.BaseSearchResultItem;
 import app.morphe.extension.shared.settings.search.BaseSearchResultsAdapter;
 import app.morphe.extension.shared.settings.search.BaseSearchViewController;
 import app.morphe.extension.youtube.settings.preference.YouTubePreferenceFragment;
@@ -34,10 +46,6 @@ public class YouTubeSearchViewController extends BaseSearchViewController {
     @Override
     protected boolean isSpecialPreferenceGroup(Preference preference) {
         return false;
-    }
-
-    @Override
-    protected void setupSpecialPreferenceListeners(BaseSearchResultItem item) {
     }
 
     // Adapter to wrap YouTubePreferenceFragment to BasePreferenceFragment interface.

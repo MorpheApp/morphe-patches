@@ -1,9 +1,12 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/2712
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ * https://gitlab.com/ReVanced/revanced-patches/-/merge_requests/4881
+ * https://gitlab.com/ReVanced/revanced-patches/-/merge_requests/5806
+ * https://gitlab.com/ReVanced/revanced-patches/-/merge_requests/5838
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
@@ -16,7 +19,6 @@ import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
-import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
@@ -39,6 +41,7 @@ import androidx.annotation.Nullable;
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -218,27 +221,22 @@ public abstract class BaseSearchResultsAdapter extends ArrayAdapter<BaseSearchRe
 
     protected void bindRegularViewHolder(BaseSearchResultItem item, RegularViewHolder holder, View view) {
         BaseSearchResultItem.PreferenceSearchItem prefItem = (BaseSearchResultItem.PreferenceSearchItem) item;
-        prefItem.refreshHighlighting();
-        holder.titleView.setText(item.highlightedTitle);
-        holder.summaryView.setText(item.highlightedSummary);
-        holder.summaryView.setVisibility(TextUtils.isEmpty(item.highlightedSummary) ? View.GONE : View.VISIBLE);
+        Pattern queryPattern = searchViewController.getCurrentQueryPattern();
+        CharSequence summary = prefItem.getDisplaySummary(queryPattern);
+        holder.titleView.setText(prefItem.getDisplayTitle(queryPattern));
+        holder.summaryView.setText(summary);
+        holder.summaryView.setVisibility(TextUtils.isEmpty(summary) ? View.GONE : View.VISIBLE);
         setupPreferenceView(view, holder.titleView, holder.summaryView, prefItem.preference,
-                () -> {
-                    handlePreferenceClick(prefItem.preference);
-                    if (prefItem.preference instanceof ListPreference) {
-                        prefItem.refreshHighlighting();
-                        holder.summaryView.setText(prefItem.getCurrentEffectiveSummary());
-                        holder.summaryView.setVisibility(TextUtils.isEmpty(prefItem.highlightedSummary) ? View.GONE : View.VISIBLE);
-                        notifyDataSetChanged();
-                    }
-                },
+                () -> handlePreferenceClick(prefItem),
                 () -> navigateAndScrollToPreference(item));
     }
 
     protected void bindSwitchViewHolder(BaseSearchResultItem item, SwitchViewHolder holder, View view) {
         BaseSearchResultItem.PreferenceSearchItem prefItem = (BaseSearchResultItem.PreferenceSearchItem) item;
         SwitchPreference switchPref = (SwitchPreference) prefItem.preference;
-        holder.titleView.setText(item.highlightedTitle);
+        Pattern queryPattern = searchViewController.getCurrentQueryPattern();
+        CharSequence summary = prefItem.getDisplaySummary(queryPattern);
+        holder.titleView.setText(prefItem.getDisplayTitle(queryPattern));
         holder.switchWidget.setBackground(null); // Remove ripple/highlight.
         // Sync switch state with preference without animation.
         boolean currentState = switchPref.isChecked();
@@ -246,15 +244,13 @@ public abstract class BaseSearchResultsAdapter extends ArrayAdapter<BaseSearchRe
             holder.switchWidget.setChecked(currentState);
             holder.switchWidget.jumpDrawablesToCurrentState();
         }
-        holder.summaryView.setText(prefItem.highlightedSummary);
-        holder.summaryView.setVisibility(TextUtils.isEmpty(prefItem.highlightedSummary) ? View.GONE : View.VISIBLE);
+        holder.summaryView.setText(summary);
+        holder.summaryView.setVisibility(TextUtils.isEmpty(summary) ? View.GONE : View.VISIBLE);
         setupPreferenceView(view, holder.titleView, holder.summaryView, switchPref,
                 () -> {
                     boolean newState = !switchPref.isChecked();
                     switchPref.setChecked(newState);
                     holder.switchWidget.setChecked(newState);
-                    holder.summaryView.setText(prefItem.highlightedSummary);
-                    holder.summaryView.setVisibility(TextUtils.isEmpty(prefItem.highlightedSummary) ? View.GONE : View.VISIBLE);
                     if (switchPref.getOnPreferenceChangeListener() != null) {
                         switchPref.getOnPreferenceChangeListener().onPreferenceChange(switchPref, newState);
                     }
@@ -266,24 +262,28 @@ public abstract class BaseSearchResultsAdapter extends ArrayAdapter<BaseSearchRe
 
     protected void bindColorViewHolder(BaseSearchResultItem item, ColorViewHolder holder, View view) {
         BaseSearchResultItem.PreferenceSearchItem prefItem = (BaseSearchResultItem.PreferenceSearchItem) item;
-        holder.titleView.setText(item.highlightedTitle);
-        holder.summaryView.setText(item.highlightedSummary);
-        holder.summaryView.setVisibility(TextUtils.isEmpty(item.highlightedSummary) ? View.GONE : View.VISIBLE);
+        Pattern queryPattern = searchViewController.getCurrentQueryPattern();
+        CharSequence summary = prefItem.getDisplaySummary(queryPattern);
+        holder.titleView.setText(prefItem.getDisplayTitle(queryPattern));
+        holder.summaryView.setText(summary);
+        holder.summaryView.setVisibility(TextUtils.isEmpty(summary) ? View.GONE : View.VISIBLE);
         ColorDot.applyColorDot(holder.colorDot, prefItem.getColor(), prefItem.preference.isEnabled());
         setupPreferenceView(view, holder.titleView, holder.summaryView, prefItem.preference,
-                () -> handlePreferenceClick(prefItem.preference),
+                () -> handlePreferenceClick(prefItem),
                 () -> navigateAndScrollToPreference(item));
     }
 
     protected void bindGroupHeaderViewHolder(BaseSearchResultItem item, GroupHeaderViewHolder holder, View view) {
-        holder.pathView.setText(item.highlightedTitle);
+        holder.pathView.setText(item.getDisplayTitle(null));
         view.setOnClickListener(v -> navigateToTargetScreen(item));
     }
 
     protected void bindNoResultsViewHolder(BaseSearchResultItem item, NoResultsViewHolder holder) {
-        holder.titleView.setText(item.highlightedTitle);
-        holder.summaryView.setText(item.highlightedSummary);
-        holder.summaryView.setVisibility(TextUtils.isEmpty(item.highlightedSummary) ? View.GONE : View.VISIBLE);
+        BaseSearchResultItem.PreferenceSearchItem prefItem = (BaseSearchResultItem.PreferenceSearchItem) item;
+        CharSequence summary = prefItem.getDisplaySummary(null);
+        holder.titleView.setText(prefItem.getDisplayTitle(null));
+        holder.summaryView.setText(summary);
+        holder.summaryView.setVisibility(TextUtils.isEmpty(summary) ? View.GONE : View.VISIBLE);
         holder.iconView.setImageDrawable(BaseSearchViewController.getSearchIconDrawable());
     }
 
@@ -591,19 +591,27 @@ public abstract class BaseSearchResultsAdapter extends ArrayAdapter<BaseSearchRe
     }
 
     /**
+     * Clicks the preference of a result row, carrying the query highlighting into a list dialog.
+     */
+    private void handlePreferenceClick(BaseSearchResultItem.PreferenceSearchItem item) {
+        if (item.preference instanceof CustomDialogListPreference listPref) {
+            // Cleared by the preference itself once its dialog is dismissed.
+            CharSequence[] highlightedEntries =
+                    item.getHighlightedEntries(searchViewController.getCurrentQueryPattern());
+            if (highlightedEntries != null) {
+                listPref.setHighlightedEntriesForDialog(highlightedEntries);
+            }
+        }
+
+        handlePreferenceClick(item.preference);
+    }
+
+    /**
      * Handles preference click actions by invoking the preference's performClick method via reflection.
      */
     @SuppressWarnings("all")
     private void handlePreferenceClick(Preference preference) {
         try {
-            if (preference instanceof CustomDialogListPreference listPref) {
-                BaseSearchResultItem.PreferenceSearchItem searchItem =
-                        searchViewController.findSearchItemByPreference(preference);
-                if (searchItem != null && searchItem.isEntriesHighlightingApplied()) {
-                    listPref.setHighlightedEntriesForDialog(searchItem.getHighlightedEntries());
-                }
-            }
-
             Method m = Preference.class.getDeclaredMethod("performClick", PreferenceScreen.class);
             m.setAccessible(true);
             m.invoke(preference, fragment.getPreferenceScreenForSearch());
