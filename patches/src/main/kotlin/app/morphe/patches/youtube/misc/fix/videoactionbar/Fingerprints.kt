@@ -43,5 +43,3 @@ internal fun getConfigInfoFingerprint(configInfoClass: String) = object : Finger
         )
     )
 ) {}
-
-
