@@ -8,7 +8,6 @@
 package app.morphe.extension.shared.settings.preference;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.shared.patches.BaseAppRefreshRatePatch.DEFAULT_REFRESH_RATE_VALUE;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -17,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.morphe.extension.shared.patches.BaseAppRefreshRatePatch;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
 @SuppressWarnings({"unused", "deprecation"})
 public class AppRefreshRateListPreference extends CustomDialogListPreference {
@@ -48,7 +48,7 @@ public class AppRefreshRateListPreference extends CustomDialogListPreference {
         List<String> values = new ArrayList<>();
 
         entries.add(str("morphe_app_refresh_rate_default"));
-        values.add(DEFAULT_REFRESH_RATE_VALUE);
+        values.add(SharedYouTubeSettings.APP_REFRESH_RATE.defaultValue);
 
         if (available != null) {
             for (String fps : available) {

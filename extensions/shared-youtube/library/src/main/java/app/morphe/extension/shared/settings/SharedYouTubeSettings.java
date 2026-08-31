@@ -2,7 +2,6 @@ package app.morphe.extension.shared.settings;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
-import static app.morphe.extension.shared.patches.BaseAppRefreshRatePatch.DEFAULT_REFRESH_RATE_VALUE;
 import static app.morphe.extension.shared.settings.Setting.migrateOldSettingToNew;
 import static app.morphe.extension.shared.settings.Setting.parent;
 import static app.morphe.extension.shared.settings.Setting.parentsAny;
@@ -101,7 +100,7 @@ public class SharedYouTubeSettings extends BaseSettings {
     public static final BooleanSetting SPOOF_APP_VERSION = new BooleanSetting("morphe_spoof_app_version", FALSE, true, "morphe_spoof_app_version_user_dialog_message");
     public static final StringSetting SPOOF_APP_VERSION_TARGET = new StringSetting("morphe_spoof_app_version_target", getDefaultSpoofAppVersionTarget(), true, parent(SPOOF_APP_VERSION));
 
-    public static final StringSetting APP_REFRESH_RATE = new StringSetting("morphe_app_refresh_rate", DEFAULT_REFRESH_RATE_VALUE, true);
+    public static final StringSetting APP_REFRESH_RATE = new StringSetting("morphe_app_refresh_rate", "DEFAULT", true);
     public static final EnumSetting<AppRefreshType> APP_REFRESH_RATE_TYPE = new EnumSetting<>("morphe_app_refresh_rate_type", AppRefreshType.ALWAYS, true, new RefreshRateType());
 
     // Return YouTube Dislike

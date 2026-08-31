@@ -61,16 +61,6 @@ fun baseAppRefreshRatePatch(
             )
         }
 
-        if (true) return@execute
-
-        VideoFrameReleaseHelperSetFrameRateFingerprint.method.addInstructions(
-            0,
-            """
-                invoke-static { p1 }, $EXTENSION_CLASS->getRefreshRateOverride(F)F
-                move-result p1
-            """
-        )
-
         listOf(
             DisplayGetRefreshRateFingerprint,
             DisplayModeGetRefreshRateFingerprint

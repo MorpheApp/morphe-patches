@@ -24,6 +24,7 @@ public final class AppRefreshRatePatch {
         if (!BaseAppRefreshRatePatch.isPatchEnabled()) {
             return;
         }
+
         VideoState.getOnChange().addObserver((VideoState state) -> {
             updatePlayerIsActive(PlayerType.getCurrent(), state);
             return Unit.INSTANCE;

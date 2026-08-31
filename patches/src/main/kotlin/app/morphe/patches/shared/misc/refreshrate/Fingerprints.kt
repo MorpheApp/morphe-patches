@@ -9,8 +9,6 @@ package app.morphe.patches.shared.misc.refreshrate
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.string
-import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 internal object ActivityOnCreateFingerprint : Fingerprint(
@@ -18,14 +16,6 @@ internal object ActivityOnCreateFingerprint : Fingerprint(
     custom = { _, classDef ->
         classDef.superclass == "Landroid/app/Activity;"
     }
-)
-
-internal object VideoFrameReleaseHelperSetFrameRateFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-    parameters = listOf("Landroid/view/Surface;", "F"),
-    filters = listOf(
-        string("Failed to call Surface.setFrameRate")
-    )
 )
 
 internal object DisplayGetRefreshRateFingerprint : Fingerprint(

@@ -50,8 +50,6 @@ public final class BaseAppRefreshRatePatch {
         }
     }
 
-    public static String DEFAULT_REFRESH_RATE_VALUE = "DEFAULT";
-
     private static final List<WeakReference<Window>> trackedWindows = new ArrayList<>();
     @Nullable
     private static Integer preferredDisplayModeId;
@@ -62,6 +60,10 @@ public final class BaseAppRefreshRatePatch {
 
     private static boolean isPlaybackPortrait;
     private static boolean isPlaybackFullscreen;
+
+    public static boolean isPatchEnabled() {
+        return isPatchIncluded() && !SharedYouTubeSettings.APP_REFRESH_RATE.isSetToDefault();
+    }
 
     @Nullable
     public static Float getPreferredRefreshRate() {
@@ -83,11 +85,6 @@ public final class BaseAppRefreshRatePatch {
      */
     private static boolean isPatchIncluded() {
         return false;  // Modified during patching.
-    }
-
-    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
-    public static boolean isPatchEnabled() {
-        return isPatchIncluded() && !SharedYouTubeSettings.APP_REFRESH_RATE.isSetToDefault();
     }
 
     private static boolean shouldOverrideRefreshRate() {
@@ -123,30 +120,8 @@ public final class BaseAppRefreshRatePatch {
         }
 
         Utils.verifyOnMainThread();
-
-        if (isPatchEnabled()) {
-            // Track the window and clean up collected references.
-            boolean alreadyTracked = false;
-            Iterator<WeakReference<Window>> iterator = trackedWindows.iterator();
-            while (iterator.hasNext()) {
-                Window tracked = iterator.next().get();
-                if (tracked == null) {
-                    iterator.remove();
-                } else if (tracked == window) {
-                    alreadyTracked = true;
-                }
-            }
-
-            if (!alreadyTracked) {
-                trackedWindows.add(new WeakReference<>(window));
-            }
-        }
-
         try {
-            String refreshString = SharedYouTubeSettings.APP_REFRESH_RATE.get();
-            final boolean isDefault = refreshString.equals(DEFAULT_REFRESH_RATE_VALUE);
-
-            if (preferredDisplayModeId == null || preferredRefreshRate == null) {
+            if (availableRefreshRates == null) {
                 Display display = Build.VERSION.SDK_INT >= Build.VERSION_CODES.R
                         ? context.getDisplay()
                         : ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE))
@@ -166,46 +141,46 @@ public final class BaseAppRefreshRatePatch {
                 }
 
                 Display.Mode currentMode = display.getMode();
-
-                // Detect and store available refresh rates for the current resolution.
-                availableRefreshRates = Arrays.stream(supportedModes)
+                Display.Mode[] resolutionModes = Arrays.stream(supportedModes)
                         .filter(mode -> mode.getPhysicalWidth() == currentMode.getPhysicalWidth() &&
                                 mode.getPhysicalHeight() == currentMode.getPhysicalHeight())
+                        .toArray(Display.Mode[]::new);
+
+                // Detect and store available refresh rates for the current resolution.
+                availableRefreshRates = Arrays.stream(resolutionModes)
                         .map(mode -> String.valueOf(Math.round(mode.getRefreshRate())))
                         .distinct()
                         .sorted(Comparator.comparingInt(Integer::parseInt))
                         .toArray(String[]::new);
 
-                Logger.printDebug(() -> "Refresh rates available: "
-                        + Arrays.toString(availableRefreshRates));
+                Logger.printDebug(() -> "Refresh rates available: " + Arrays.toString(availableRefreshRates));
 
-                if (isDefault) {
+                if (!isPatchEnabled()) {
                     preferredDisplayModeId = -1;
                     preferredRefreshRate = -1f;
                     return;
                 }
 
+                String refreshRateString = SharedYouTubeSettings.APP_REFRESH_RATE.get();
                 final int targetRefreshRate;
                 try {
-                    targetRefreshRate = Integer.parseInt(refreshString);
+                    targetRefreshRate = Integer.parseInt(refreshRateString);
                 } catch (Exception ex) {
-                    Logger.printException(() -> "Invalid refresh rate: " + refreshString, ex);
+                    Logger.printException(() -> "Invalid refresh rate: " + refreshRateString, ex);
                     SharedYouTubeSettings.APP_REFRESH_RATE.resetToDefault();
                     setWindowRefreshRate(context, window);
                     return;
                 }
 
                 // Find the highest refresh rate for the current resolution that does not exceed the target.
-                Display.Mode bestMode = Arrays.stream(supportedModes)
-                        .filter(mode -> mode.getPhysicalWidth() == currentMode.getPhysicalWidth()
-                                && mode.getPhysicalHeight() == currentMode.getPhysicalHeight())
+                Display.Mode bestMode = Arrays.stream(resolutionModes)
                         .filter(mode -> Math.round(mode.getRefreshRate()) <= targetRefreshRate)
                         .max(Comparator.comparingDouble(Display.Mode::getRefreshRate))
                         .orElse(null);
 
                 if (bestMode == null) {
                     // Should never happen.
-                    Logger.printDebug(() -> "Could not find any suitable display modes");
+                    Logger.printException(() -> "Could not find any suitable display modes");
                     preferredDisplayModeId = -1;
                     preferredRefreshRate = -1f;
                     return;
@@ -216,6 +191,22 @@ public final class BaseAppRefreshRatePatch {
             }
 
             if (isPatchEnabled()) {
+                // Track the window and clean up collected references.
+                boolean alreadyTracked = false;
+                Iterator<WeakReference<Window>> iterator = trackedWindows.iterator();
+                while (iterator.hasNext()) {
+                    Window tracked = iterator.next().get();
+                    if (tracked == null) {
+                        iterator.remove();
+                    } else if (tracked == window) {
+                        alreadyTracked = true;
+                    }
+                }
+
+                if (!alreadyTracked) {
+                    trackedWindows.add(new WeakReference<>(window));
+                }
+
                 applyRefreshRateToWindow(window);
             }
         } catch (Exception ex) {
@@ -233,7 +224,7 @@ public final class BaseAppRefreshRatePatch {
         if (shouldOverride && preferredDisplayModeId != null && preferredDisplayModeId > 0) {
             modeId = preferredDisplayModeId;
 
-            if (preferredRefreshRate != null) {
+            if (preferredRefreshRate != null && preferredRefreshRate > 0) {
                 refreshRate = preferredRefreshRate;
             }
         }
