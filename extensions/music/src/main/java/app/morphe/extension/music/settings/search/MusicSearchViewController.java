@@ -14,13 +14,11 @@
 package app.morphe.extension.music.settings.search;
 
 import android.app.Activity;
-import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.view.View;
 import android.widget.Toolbar;
 
 import app.morphe.extension.music.settings.preference.MusicPreferenceFragment;
-import app.morphe.extension.shared.settings.search.BaseSearchResultsAdapter;
 import app.morphe.extension.shared.settings.search.BaseSearchViewController;
 
 /**
@@ -36,17 +34,6 @@ public class MusicSearchViewController extends BaseSearchViewController {
 
     private MusicSearchViewController(Activity activity, Toolbar toolbar, MusicPreferenceFragment fragment) {
         super(activity, toolbar, new PreferenceFragmentAdapter(fragment));
-    }
-
-    @Override
-    protected BaseSearchResultsAdapter createSearchResultsAdapter() {
-        return new MusicSearchResultsAdapter(activity, filteredSearchItems, fragment, this);
-    }
-
-    @Override
-    protected boolean isSpecialPreferenceGroup(Preference preference) {
-        // Music doesn't have SponsorBlock, so no special groups.
-        return false;
     }
 
     // Static method for handling Activity finish

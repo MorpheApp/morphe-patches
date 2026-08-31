@@ -69,7 +69,7 @@ import app.morphe.extension.shared.ui.Dim;
  */
 @SuppressWarnings("deprecation")
 public abstract class BaseSearchViewController {
-    protected BaseSearchResultsAdapter searchResultsAdapter;
+    protected SearchResultsAdapter searchResultsAdapter;
     protected boolean isSearchActive;
     protected boolean isShowingSearchHistory;
     protected final Activity activity;
@@ -224,7 +224,7 @@ public abstract class BaseSearchViewController {
         ListView searchResultsListView = new ListView(activity);
         searchResultsListView.setDivider(null);
         searchResultsListView.setDividerHeight(0);
-        searchResultsAdapter = createSearchResultsAdapter();
+        searchResultsAdapter = new SearchResultsAdapter(activity, filteredSearchItems, fragment, this);
         searchResultsListView.setAdapter(searchResultsAdapter);
 
         // Add results list into container.
@@ -258,11 +258,6 @@ public abstract class BaseSearchViewController {
         });
     }
 
-    // Abstract methods that subclasses must implement.
-    protected abstract BaseSearchResultsAdapter createSearchResultsAdapter();
-    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
-    protected abstract boolean isSpecialPreferenceGroup(Preference preference);
-
     // Abstract interface for preference fragments.
     public interface BasePreferenceFragment {
         PreferenceScreen getPreferenceScreenForSearch();
@@ -281,7 +276,6 @@ public abstract class BaseSearchViewController {
     protected boolean shouldIncludePreference(Preference preference, int currentDepth, int includeDepth) {
         return includeDepth <= currentDepth
                 && !(preference instanceof PreferenceCategory)
-                && !isSpecialPreferenceGroup(preference)
                 && !(preference instanceof PreferenceScreen);
     }
 
@@ -422,8 +416,7 @@ public abstract class BaseSearchViewController {
                 List<String> newKeys = new ArrayList<>(parentKeys);
 
                 // Append the group title to the path and save key for navigation.
-                if (!isSpecialPreferenceGroup(preference)
-                        && !(preference instanceof NoTitlePreferenceCategory)) {
+                if (!(preference instanceof NoTitlePreferenceCategory)) {
                     CharSequence title = preference.getTitle();
                     if (!TextUtils.isEmpty(title)) {
                         newPath = TextUtils.isEmpty(parentPath)

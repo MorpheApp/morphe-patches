@@ -54,15 +54,14 @@ import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.ColorDot;
 
 /**
- * Abstract adapter for displaying search results in overlay ListView with ViewHolder pattern.
+ * Adapter for displaying search results in overlay ListView with ViewHolder pattern.
  */
 @SuppressWarnings("deprecation")
-public abstract class BaseSearchResultsAdapter extends ArrayAdapter<BaseSearchResultItem> {
+public class SearchResultsAdapter extends ArrayAdapter<BaseSearchResultItem> {
     protected final LayoutInflater inflater;
     protected final BaseSearchViewController.BasePreferenceFragment fragment;
     protected final BaseSearchViewController searchViewController;
     protected AnimatorSet currentAnimator;
-    protected abstract PreferenceScreen getMainPreferenceScreen();
 
     protected static final int BLINK_DURATION = 400;
     protected static final int PAUSE_BETWEEN_BLINKS = 100;
@@ -105,9 +104,9 @@ public abstract class BaseSearchResultsAdapter extends ArrayAdapter<BaseSearchRe
         ImageView iconView;
     }
 
-    public BaseSearchResultsAdapter(Context context, List<BaseSearchResultItem> items,
-                                    BaseSearchViewController.BasePreferenceFragment fragment,
-                                    BaseSearchViewController searchViewController) {
+    public SearchResultsAdapter(Context context, List<BaseSearchResultItem> items,
+                                BaseSearchViewController.BasePreferenceFragment fragment,
+                                BaseSearchViewController searchViewController) {
         super(context, 0, items);
         this.inflater = LayoutInflater.from(context);
         this.fragment = fragment;
@@ -219,13 +218,23 @@ public abstract class BaseSearchResultsAdapter extends ArrayAdapter<BaseSearchRe
         }
     }
 
+    /**
+     * Fills the title and summary from the preference as it is right now.
+     *
+     * @param queryPattern The query to highlight, or null to show the text as is.
+     */
+    private void bindTitleAndSummary(BaseSearchResultItem.PreferenceSearchItem item, TextView titleView,
+                                     TextView summaryView, @Nullable Pattern queryPattern) {
+        CharSequence summary = item.getDisplaySummary(queryPattern);
+        titleView.setText(item.getDisplayTitle(queryPattern));
+        summaryView.setText(summary);
+        summaryView.setVisibility(TextUtils.isEmpty(summary) ? View.GONE : View.VISIBLE);
+    }
+
     protected void bindRegularViewHolder(BaseSearchResultItem item, RegularViewHolder holder, View view) {
         BaseSearchResultItem.PreferenceSearchItem prefItem = (BaseSearchResultItem.PreferenceSearchItem) item;
-        Pattern queryPattern = searchViewController.getCurrentQueryPattern();
-        CharSequence summary = prefItem.getDisplaySummary(queryPattern);
-        holder.titleView.setText(prefItem.getDisplayTitle(queryPattern));
-        holder.summaryView.setText(summary);
-        holder.summaryView.setVisibility(TextUtils.isEmpty(summary) ? View.GONE : View.VISIBLE);
+        bindTitleAndSummary(prefItem, holder.titleView, holder.summaryView,
+                searchViewController.getCurrentQueryPattern());
         setupPreferenceView(view, holder.titleView, holder.summaryView, prefItem.preference,
                 () -> handlePreferenceClick(prefItem),
                 () -> navigateAndScrollToPreference(item));
@@ -234,9 +243,8 @@ public abstract class BaseSearchResultsAdapter extends ArrayAdapter<BaseSearchRe
     protected void bindSwitchViewHolder(BaseSearchResultItem item, SwitchViewHolder holder, View view) {
         BaseSearchResultItem.PreferenceSearchItem prefItem = (BaseSearchResultItem.PreferenceSearchItem) item;
         SwitchPreference switchPref = (SwitchPreference) prefItem.preference;
-        Pattern queryPattern = searchViewController.getCurrentQueryPattern();
-        CharSequence summary = prefItem.getDisplaySummary(queryPattern);
-        holder.titleView.setText(prefItem.getDisplayTitle(queryPattern));
+        bindTitleAndSummary(prefItem, holder.titleView, holder.summaryView,
+                searchViewController.getCurrentQueryPattern());
         holder.switchWidget.setBackground(null); // Remove ripple/highlight.
         // Sync switch state with preference without animation.
         boolean currentState = switchPref.isChecked();
@@ -244,8 +252,6 @@ public abstract class BaseSearchResultsAdapter extends ArrayAdapter<BaseSearchRe
             holder.switchWidget.setChecked(currentState);
             holder.switchWidget.jumpDrawablesToCurrentState();
         }
-        holder.summaryView.setText(summary);
-        holder.summaryView.setVisibility(TextUtils.isEmpty(summary) ? View.GONE : View.VISIBLE);
         setupPreferenceView(view, holder.titleView, holder.summaryView, switchPref,
                 () -> {
                     boolean newState = !switchPref.isChecked();
@@ -262,11 +268,8 @@ public abstract class BaseSearchResultsAdapter extends ArrayAdapter<BaseSearchRe
 
     protected void bindColorViewHolder(BaseSearchResultItem item, ColorViewHolder holder, View view) {
         BaseSearchResultItem.PreferenceSearchItem prefItem = (BaseSearchResultItem.PreferenceSearchItem) item;
-        Pattern queryPattern = searchViewController.getCurrentQueryPattern();
-        CharSequence summary = prefItem.getDisplaySummary(queryPattern);
-        holder.titleView.setText(prefItem.getDisplayTitle(queryPattern));
-        holder.summaryView.setText(summary);
-        holder.summaryView.setVisibility(TextUtils.isEmpty(summary) ? View.GONE : View.VISIBLE);
+        bindTitleAndSummary(prefItem, holder.titleView, holder.summaryView,
+                searchViewController.getCurrentQueryPattern());
         ColorDot.applyColorDot(holder.colorDot, prefItem.getColor(), prefItem.preference.isEnabled());
         setupPreferenceView(view, holder.titleView, holder.summaryView, prefItem.preference,
                 () -> handlePreferenceClick(prefItem),
@@ -280,10 +283,7 @@ public abstract class BaseSearchResultsAdapter extends ArrayAdapter<BaseSearchRe
 
     protected void bindNoResultsViewHolder(BaseSearchResultItem item, NoResultsViewHolder holder) {
         BaseSearchResultItem.PreferenceSearchItem prefItem = (BaseSearchResultItem.PreferenceSearchItem) item;
-        CharSequence summary = prefItem.getDisplaySummary(null);
-        holder.titleView.setText(prefItem.getDisplayTitle(null));
-        holder.summaryView.setText(summary);
-        holder.summaryView.setVisibility(TextUtils.isEmpty(summary) ? View.GONE : View.VISIBLE);
+        bindTitleAndSummary(prefItem, holder.titleView, holder.summaryView, null);
         holder.iconView.setImageDrawable(BaseSearchViewController.getSearchIconDrawable());
     }
 
@@ -329,7 +329,7 @@ public abstract class BaseSearchResultsAdapter extends ArrayAdapter<BaseSearchRe
         Preference targetPreference = prefItem.preference;
 
         fragment.getView().post(() -> {
-            ListView listView = targetScreen == getMainPreferenceScreen()
+            ListView listView = targetScreen == fragment.getPreferenceScreenForSearch()
                     ? getPreferenceListView()
                     : targetScreen.getDialog().findViewById(android.R.id.list);
 
@@ -397,7 +397,7 @@ public abstract class BaseSearchResultsAdapter extends ArrayAdapter<BaseSearchRe
      * Navigates to the final PreferenceScreen using preference keys or titles as fallback.
      */
     protected PreferenceScreen navigateToTargetScreen(BaseSearchResultItem item) {
-        PreferenceScreen currentScreen = getMainPreferenceScreen();
+        PreferenceScreen currentScreen = fragment.getPreferenceScreenForSearch();
         Preference targetPref = null;
 
         // Try key-based navigation first.

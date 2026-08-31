@@ -14,12 +14,10 @@
 package app.morphe.extension.youtube.settings.search;
 
 import android.app.Activity;
-import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.view.View;
 import android.widget.Toolbar;
 
-import app.morphe.extension.shared.settings.search.BaseSearchResultsAdapter;
 import app.morphe.extension.shared.settings.search.BaseSearchViewController;
 import app.morphe.extension.youtube.settings.preference.YouTubePreferenceFragment;
 
@@ -36,16 +34,6 @@ public class YouTubeSearchViewController extends BaseSearchViewController {
 
     private YouTubeSearchViewController(Activity activity, Toolbar toolbar, YouTubePreferenceFragment fragment) {
         super(activity, toolbar, new PreferenceFragmentAdapter(fragment));
-    }
-
-    @Override
-    protected BaseSearchResultsAdapter createSearchResultsAdapter() {
-        return new YouTubeSearchResultsAdapter(activity, filteredSearchItems, fragment, this);
-    }
-
-    @Override
-    protected boolean isSpecialPreferenceGroup(Preference preference) {
-        return false;
     }
 
     // Adapter to wrap YouTubePreferenceFragment to BasePreferenceFragment interface.
