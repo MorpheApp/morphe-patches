@@ -23,10 +23,15 @@ import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/lyrics/LyricsPatch;"
+private const val LOCKSCREEN_CLASS = "Lapp/morphe/extension/music/patches/lyrics/LockScreenLyrics;"
+private const val MINIPLAYER_LYRICS_CLASS = "Lapp/morphe/extension/music/patches/lyrics/MiniPlayerLyrics;"
 
 private const val LYRICS_PANEL_FILTER =
     "Lapp/morphe/extension/music/patches/components/LyricsPanelFilter;"
@@ -34,7 +39,7 @@ private const val LYRICS_PANEL_FILTER =
 @Suppress("unused")
 val lyricsPatch = bytecodePatch(
     name = "Third-party lyrics",
-    description = "Adds an option to show synced lyrics from LRCLIB or KuGou in the lyrics panel."
+    description = "Adds an option to show synced lyrics from LRCLIB, QQ, KuGou or Netease in the lyrics panel."
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -61,8 +66,11 @@ val lyricsPatch = bytecodePatch(
             SwitchPreference("morphe_music_lyrics_enabled", summary = true),
             ListPreference("morphe_music_lyrics_source"),
             SwitchPreference("morphe_music_lyrics_tap_to_seek", summary = true),
+            SwitchPreference("morphe_music_lyrics_word_sync", summary = true),
             SwitchPreference("morphe_music_lyrics_show_copy_button"),
             SwitchPreference("morphe_music_lyrics_show_translate_button"),
+            SwitchPreference("morphe_music_lyrics_mediasession"),
+            SwitchPreference("morphe_music_lyrics_miniplayer"),
             NonInteractivePreference(
                 key = "morphe_music_lyrics_text_size",
                 summaryKey = "morphe_music_lyrics_text_size_summary",
@@ -89,6 +97,25 @@ val lyricsPatch = bytecodePatch(
         MediaSessionSetMetadataFingerprint.hookMediaSessionArgument(
             "$EXTENSION_CLASS->onSetMetadata(Landroid/media/MediaMetadata;)V"
         )
+
+        MediaSessionSetMetadataFingerprint.let {
+            it.clearMatch()
+            val method = it.method
+            val index = it.instructionMatches.first().index
+            val instruction = method.getInstruction<FiveRegisterInstruction>(index)
+            val sessionRegister = instruction.registerC
+            val metadataRegister = instruction.registerD
+            method.addInstruction(
+                index,
+                "invoke-static { v$sessionRegister, v$metadataRegister }, " +
+                    "$LOCKSCREEN_CLASS->onMediaSessionSetMetadata(Landroid/media/session/MediaSession;Landroid/media/MediaMetadata;)V"
+            )
+            method.addInstruction(
+                index,
+                "invoke-static { v$sessionRegister, v$metadataRegister }, " +
+                    "$MINIPLAYER_LYRICS_CLASS->onMediaSessionSetMetadata(Landroid/media/session/MediaSession;Landroid/media/MediaMetadata;)V"
+            )
+        }
 
         MediaSessionSetPlaybackStateFingerprint.hookMediaSessionArgument(
             "$EXTENSION_CLASS->onSetPlaybackState(Landroid/media/session/PlaybackState;)V"

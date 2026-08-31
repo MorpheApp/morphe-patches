@@ -22,6 +22,7 @@ import java.util.List;
 import app.morphe.extension.music.patches.lyrics.LrcParser;
 import app.morphe.extension.music.patches.lyrics.Lyrics;
 import app.morphe.extension.music.patches.lyrics.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.LyricsfileParser;
 import app.morphe.extension.music.patches.lyrics.TrackInfo;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
@@ -118,6 +119,25 @@ public final class LrcLibProvider implements LyricsProvider {
         if (response.optBoolean("instrumental", false)) {
             Logger.printDebug(() -> "LRCLIB reports an instrumental track");
             return Lyrics.NOT_FOUND;
+        }
+
+        String lyricsFile = optString(response, "lyricsFile");
+        if (lyricsFile == null) {
+            lyricsFile = optString(response, "lyricsfile");
+        }
+        if (lyricsFile != null) {
+            Lyrics fromFile = LyricsfileParser.parse(lyricsFile, name());
+            if (fromFile != null && !fromFile.isEmpty()) {
+                return fromFile;
+            }
+        }
+
+        String enhanced = optString(response, "enhancedLyrics");
+        if (enhanced != null) {
+            List<LyricsLine> lines = LrcParser.parseSynced(enhanced);
+            if (!lines.isEmpty()) {
+                return new Lyrics(lines, name(), true);
+            }
         }
 
         String synced = optString(response, "syncedLyrics");

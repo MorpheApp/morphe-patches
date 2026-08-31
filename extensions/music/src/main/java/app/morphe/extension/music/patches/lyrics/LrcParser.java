@@ -78,9 +78,10 @@ public final class LrcParser {
                 continue;
             }
 
-            String text = stripWordTimestamps(line.substring(index)).trim();
+            BodyParse body = parseBody(line.substring(index));
+            String text = body.text.trim();
             for (long time : timestamps) {
-                lines.add(new LyricsLine(Math.max(0, time + fileOffsetMs), text));
+                lines.add(new LyricsLine(Math.max(0, time + fileOffsetMs), text, body.words));
             }
         }
 
@@ -90,6 +91,89 @@ public final class LrcParser {
 
         lines.sort(Comparator.comparingLong(LyricsLine::startTimeMs));
         return lines;
+    }
+
+    private static final class BodyParse {
+        final String text;
+        final List<Word> words;
+
+        BodyParse(String text, List<Word> words) {
+            this.text = text;
+            this.words = words;
+        }
+    }
+
+    private static BodyParse parseBody(String body) {
+        if (body.indexOf('<') < 0) {
+            return new BodyParse(body, List.of());
+        }
+
+        List<Word> words = new ArrayList<>();
+        StringBuilder full = new StringBuilder();
+        long pendingStart = LyricsLine.NO_TIME;
+        StringBuilder pending = new StringBuilder();
+        int index = 0;
+
+        while (index < body.length()) {
+            char character = body.charAt(index);
+            if (character == '<') {
+                int end = body.indexOf('>', index);
+                if (end < 0) {
+                    pending.append(body.substring(index));
+                    break;
+                }
+
+                long time = parseTimestamp(body.substring(index + 1, end));
+                if (pendingStart != LyricsLine.NO_TIME) {
+                    String word = pending.toString();
+                    words.add(new Word(pendingStart, LyricsLine.NO_TIME, word));
+                    full.append(word);
+                }
+                if (time != LyricsLine.NO_TIME) {
+                    pendingStart = time;
+                }
+                pending.setLength(0);
+                index = end + 1;
+            } else {
+                pending.append(character);
+                index++;
+            }
+        }
+
+        if (pendingStart == LyricsLine.NO_TIME) {
+            // No valid tag was found; treat the whole body as a plain line.
+            return new BodyParse(body, List.of());
+        }
+
+        String word = pending.toString();
+        words.add(new Word(pendingStart, LyricsLine.NO_TIME, word));
+        full.append(word);
+        inferWordEnds(words);
+        return new BodyParse(full.toString().trim(), words);
+    }
+
+    private static void inferWordEnds(List<Word> words) {
+        for (int i = 0; i < words.size() - 1; i++) {
+            Word word = words.get(i);
+            if (word.endMs() == LyricsLine.NO_TIME) {
+                words.set(i, new Word(word.startMs(), words.get(i + 1).startMs(), word.text()));
+            }
+        }
+    }
+
+    public static String formatLine(LyricsLine line) {
+        StringBuilder builder = new StringBuilder(formatTimestamp(line.startTimeMs()));
+        if (line.hasWords()) {
+            for (Word word : line.words()) {
+                builder.append('<')
+                        .append(formatWordTimestamp(word.startMs()))
+                        .append('>')
+                        .append(word.text());
+            }
+        } else {
+            builder.append(line.text());
+        }
+        return builder.toString();
     }
 
     /**
@@ -194,27 +278,19 @@ public final class LrcParser {
     }
 
     /**
-     * Removes word level timestamps of enhanced LRC, such as {@code <00:12.00>}.
+     * Formats a line level timestamp as {@code [mm:ss.xx]} for the LRC cache.
      */
-    private static String stripWordTimestamps(String text) {
-        if (text.indexOf('<') < 0) {
-            return text;
-        }
+    private static String formatTimestamp(long timeMs) {
+        final long minutes = timeMs / 60_000;
+        final long seconds = (timeMs / 1000) % 60;
+        final long hundredths = (timeMs % 1000) / 10;
+        return String.format(Locale.US, "[%02d:%02d.%02d]", minutes, seconds, hundredths);
+    }
 
-        StringBuilder builder = new StringBuilder(text.length());
-        int index = 0;
-        while (index < text.length()) {
-            char character = text.charAt(index);
-            if (character == '<') {
-                int end = text.indexOf('>', index);
-                if (end > 0) {
-                    index = end + 1;
-                    continue;
-                }
-            }
-            builder.append(character);
-            index++;
-        }
-        return builder.toString();
+    private static String formatWordTimestamp(long timeMs) {
+        final long minutes = timeMs / 60_000;
+        final long seconds = (timeMs / 1000) % 60;
+        final long hundredths = (timeMs % 1000) / 10;
+        return String.format(Locale.US, "%02d:%02d.%02d", minutes, seconds, hundredths);
     }
 }

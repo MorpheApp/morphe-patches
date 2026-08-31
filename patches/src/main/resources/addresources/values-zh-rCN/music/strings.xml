@@ -302,17 +302,22 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <string name="morphe_music_lyrics_enabled_summary">从第三方服务获取歌词，如果找不到则回退到内置歌词</string>
   <string name="morphe_music_lyrics_source_title">歌词服务</string>
   <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
-  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB，然后是酷狗</string>
+  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB然后QQ然后KuGou然后NetEase</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">点击歌词行以跳转</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">点击一行将跳到歌曲的该时刻</string>
   <string name="morphe_music_lyrics_show_copy_button_title">显示复制按钮</string>
   <string name="morphe_music_lyrics_show_translate_button_title">显示翻译按钮</string>
+  <string name="morphe_music_lyrics_word_sync_title">逐词同步高亮</string>
+  <string name="morphe_music_lyrics_word_sync_summary">当歌词包含逐词时间信息时，随音乐高亮每一个词</string>
+  <string name="morphe_music_lyrics_mediasession_title">在媒体通知卡片中显示歌词</string>
+  <string name="morphe_music_lyrics_miniplayer_title">在迷你播放器中显示歌词</string>
   <string name="morphe_music_lyrics_text_size_title">文本大小</string>
   <string name="morphe_music_lyrics_text_size_summary">歌词文本的大小</string>
   <string name="morphe_music_lyrics_offset_ms_title">时间偏移</string>
   <string name="morphe_music_lyrics_offset_ms_summary">将同步歌词向前或向后移动。如果歌词超前于歌曲，请使用正值</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">来源：%s</string>
+  <string name="morphe_music_lyrics_translated_by_google">由 Google 翻译</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_show">翻译</string>
   <string name="morphe_music_lyrics_translate_hide">显示原始歌词</string>

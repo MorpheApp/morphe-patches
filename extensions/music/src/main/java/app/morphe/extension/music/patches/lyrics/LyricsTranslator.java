@@ -45,7 +45,7 @@ public final class LyricsTranslator {
     /**
      * Translates the lyrics of a track, using the cache when possible.
      */
-    public static void translate(TrackInfo track, Lyrics lyrics, Callback callback) {
+    public static void translate(TrackInfo track, Lyrics lyrics, LyricsSource source, Callback callback) {
         Utils.verifyOnMainThread();
 
         List<String> lines = new ArrayList<>(lyrics.lines().size());
@@ -56,11 +56,11 @@ public final class LyricsTranslator {
         final String language = deviceLanguage();
 
         executor.execute(() -> {
-            List<String> translated = LyricsCache.getTranslation(track, language, lines.size());
+            List<String> translated = LyricsCache.getTranslation(track, source, language, lines.size());
             if (translated == null) {
                 translated = translateOnline(lines, language);
                 if (translated != null) {
-                    LyricsCache.putTranslation(track, language, translated);
+                    LyricsCache.putTranslation(track, source, language, translated);
                 }
             }
 
@@ -105,7 +105,7 @@ public final class LyricsTranslator {
                 translated.addAll(translatedBatch);
             }
         } catch (Exception ex) {
-            Logger.printException(() -> "Could not translate the lyrics", ex);
+            Logger.printDebug(() -> "Could not translate the lyrics", ex);
             return null;
         }
 

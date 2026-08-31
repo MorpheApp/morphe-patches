@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
@@ -48,8 +47,8 @@ final class LyricsCache {
     }
 
     @Nullable
-    static synchronized Lyrics get(TrackInfo track) {
-        String key = track.cacheKey();
+    static synchronized Lyrics get(TrackInfo track, LyricsSource source) {
+        String key = key(track, source);
         Lyrics cached = memoryCache.get(key);
         if (cached != null) {
             return cached;
@@ -62,8 +61,8 @@ final class LyricsCache {
         return fromDisk;
     }
 
-    static synchronized void put(TrackInfo track, Lyrics lyrics) {
-        String key = track.cacheKey();
+    static synchronized void put(TrackInfo track, LyricsSource source, Lyrics lyrics) {
+        String key = key(track, source);
         memoryCache.put(key, lyrics);
         writeToDisk(key, lyrics);
     }
@@ -74,9 +73,10 @@ final class LyricsCache {
      */
     @Nullable
     static synchronized List<String> getTranslation(TrackInfo track,
+                                                    LyricsSource source,
                                                     String language,
                                                     int expectedLineCount) {
-        File file = translationFile(track, language);
+        File file = translationFile(track, source, language);
         if (file == null || !file.exists()) {
             return null;
         }
@@ -93,9 +93,10 @@ final class LyricsCache {
     }
 
     static synchronized void putTranslation(TrackInfo track,
+                                            LyricsSource source,
                                             String language,
                                             List<String> lines) {
-        File file = translationFile(track, language);
+        File file = translationFile(track, source, language);
         if (file == null) {
             return;
         }
@@ -109,13 +110,22 @@ final class LyricsCache {
     }
 
     @Nullable
-    private static File translationFile(TrackInfo track, String language) {
+    private static File translationFile(TrackInfo track, LyricsSource source, String language) {
         File directory = cacheDirectory();
         if (directory == null) {
             return null;
         }
         return new File(directory,
-                Integer.toHexString(track.cacheKey().hashCode()) + "." + language + ".txt");
+                Integer.toHexString(key(track, source).hashCode()) + "." + language + ".txt");
+    }
+
+    /**
+     * Cache key that also captures the chosen lyrics source, so that switching
+     * the source (for example to QQ or NetEase) forces a fresh fetch instead of
+     * returning lyrics cached under a different source.
+     */
+    private static String key(TrackInfo track, LyricsSource source) {
+        return track.cacheKey() + "|" + source.name();
     }
 
     @Nullable
@@ -178,7 +188,7 @@ final class LyricsCache {
                 fileLines.add(HEADER_SYNCED + lyrics.synced());
                 for (LyricsLine line : lyrics.lines()) {
                     fileLines.add(lyrics.synced()
-                            ? formatTimestamp(line.startTimeMs()) + line.text()
+                            ? LrcParser.formatLine(line)
                             : line.text());
                 }
             }
@@ -214,13 +224,6 @@ final class LyricsCache {
                 Logger.printDebug(() -> "Could not delete " + file);
             }
         }
-    }
-
-    private static String formatTimestamp(long timeMs) {
-        final long minutes = timeMs / 60_000;
-        final long seconds = (timeMs / 1000) % 60;
-        final long hundredths = (timeMs % 1000) / 10;
-        return String.format(Locale.US, "[%02d:%02d.%02d]", minutes, seconds, hundredths);
     }
 
     @Nullable

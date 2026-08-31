@@ -346,20 +346,27 @@ To ensure scrobbling is synced during background playback, ensure that YouTube M
     <string name="morphe_music_lyrics_enabled_title">Use third-party lyrics</string>
     <string name="morphe_music_lyrics_enabled_summary">Shows lyrics from a third-party service, falling back to the built-in lyrics when none are found</string>
     <string name="morphe_music_lyrics_source_title">Lyrics service</string>
-    <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
-    <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, then KuGou</string>
+    <!-- 'LRCLIB', 'KuGou', 'NetEase' and 'QQ' are service names and must be kept untranslated -->
+    <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, then QQ, then KuGou, then NetEase</string>
     <string name="morphe_music_lyrics_source_entry_lrclib" translatable="false">LRCLIB</string>
+    <string name="morphe_music_lyrics_source_entry_qq" translatable="false">QQ</string>
     <string name="morphe_music_lyrics_source_entry_kugou" translatable="false">KuGou</string>
+    <string name="morphe_music_lyrics_source_entry_netease" translatable="false">NetEase</string>
     <string name="morphe_music_lyrics_tap_to_seek_title">Tap a line to seek</string>
     <string name="morphe_music_lyrics_tap_to_seek_summary">Tapping a line jumps to that moment in the song</string>
     <string name="morphe_music_lyrics_show_copy_button_title">Show Copy button</string>
     <string name="morphe_music_lyrics_show_translate_button_title">Show Translate button</string>
+    <string name="morphe_music_lyrics_word_sync_title">Word-sync highlight</string>
+    <string name="morphe_music_lyrics_word_sync_summary">Highlights each word in time with the music when the lyrics carry word timing</string>
+    <string name="morphe_music_lyrics_mediasession_title">Show MediaSession Lyrics on lock screen</string>
+    <string name="morphe_music_lyrics_miniplayer_title">Show lyrics in the miniplayer</string>
     <string name="morphe_music_lyrics_text_size_title">Text size</string>
     <string name="morphe_music_lyrics_text_size_summary">Size of the lyrics text</string>
     <string name="morphe_music_lyrics_offset_ms_title">Timing offset</string>
     <string name="morphe_music_lyrics_offset_ms_summary">Shift synced lyrics forwards or backwards. Use a positive value if the lyrics run ahead of the song</string>
     <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
     <string name="morphe_music_lyrics_source_label">Source: %s</string>
+    <string name="morphe_music_lyrics_translated_by_google">Translated by Google</string>
     <!-- Tappable label under the lyrics that turns the translation on. -->
     <string name="morphe_music_lyrics_translate_show">Translate</string>
     <string name="morphe_music_lyrics_translate_hide">Show original</string>

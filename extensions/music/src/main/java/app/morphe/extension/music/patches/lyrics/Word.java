@@ -7,14 +7,7 @@
 
 package app.morphe.extension.music.patches.lyrics;
 
-/**
- * Third party lyrics backends, in the order they are queried.
- */
-public enum LyricsSource {
-    LRCLIB_THEN_KUGOU,
-    LRCLIB,
-    KUGOU,
-    NETEASE,
-    QQ,
-    SUBTITLES
+public record Word(long startMs, long endMs, String text) {
+
+    public static final long NO_TIME = -1;
 }

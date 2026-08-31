@@ -22,12 +22,18 @@ public record Lyrics(List<LyricsLine> lines, String providerName, boolean synced
     /** Marker for a track that was looked up successfully but has no lyrics anywhere. */
     public static final Lyrics NOT_FOUND = new Lyrics(Collections.emptyList(), "", false);
 
+    public static final String CAPTIONS_PROVIDER = "Captions";
+
     public Lyrics {
         lines = Collections.unmodifiableList(lines);
     }
 
     public boolean isEmpty() {
         return lines.isEmpty();
+    }
+
+    public boolean isSubtitles() {
+        return CAPTIONS_PROVIDER.equals(providerName);
     }
 
     /**

@@ -87,7 +87,11 @@ public final class VideoInformation {
             // Seeking very close to the end causes a seek loop; push past the video end instead.
             final long adjusted = (len - seekTime > 500) ? seekTime : Integer.MAX_VALUE;
             Logger.printDebug(() -> "VideoInformation: seekTo " + adjusted + "ms");
-            return overrideVideoTime(adjusted);
+            final boolean seeked = overrideVideoTime(adjusted);
+            if (seeked && seekTime > 0) {
+                videoTime = seekTime;
+            }
+            return seeked;
         } catch (Exception ex) {
             Logger.printException(() -> "seekTo failed", ex);
             return false;

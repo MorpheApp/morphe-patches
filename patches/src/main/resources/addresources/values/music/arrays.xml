@@ -155,11 +155,15 @@
     <string-array name="morphe_music_lyrics_source_entries">
         <item>@string/morphe_music_lyrics_source_entry_lrclib_then_kugou</item>
         <item>@string/morphe_music_lyrics_source_entry_lrclib</item>
+        <item>@string/morphe_music_lyrics_source_entry_qq</item>
         <item>@string/morphe_music_lyrics_source_entry_kugou</item>
+        <item>@string/morphe_music_lyrics_source_entry_netease</item>
     </string-array>
     <string-array name="morphe_music_lyrics_source_entry_values">
         <item>LRCLIB_THEN_KUGOU</item>
         <item>LRCLIB</item>
         <item>KUGOU</item>
+        <item>NETEASE</item>
+        <item>QQ</item>
     </string-array>
 </resources>

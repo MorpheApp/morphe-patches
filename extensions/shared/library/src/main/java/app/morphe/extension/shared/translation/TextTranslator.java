@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 
 import org.json.JSONArray;
 
+import java.io.IOException;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URLEncoder;
@@ -36,6 +37,13 @@ public final class TextTranslator {
 
     private static final int CONNECT_TIMEOUT_MILLISECONDS = 10_000;
     private static final int READ_TIMEOUT_MILLISECONDS = 15_000;
+
+    /**
+     * The public endpoint is rate limited and intermittently returns 4xx/5xx, so a short
+     * retry with backoff turns most transient blips into successful translations.
+     */
+    private static final int MAX_ATTEMPTS = 3;
+    private static final long INITIAL_BACKOFF_MILLISECONDS = 500;
 
     /**
      * Batches are built by character budget rather than line count, so request
@@ -109,40 +117,89 @@ public final class TextTranslator {
             joined.append(line);
         }
 
-        HttpURLConnection connection = Requester.openConnection(GOOGLE_TRANSLATE_URL + targetLanguage);
-        connection.setRequestMethod("POST");
-        connection.setConnectTimeout(CONNECT_TIMEOUT_MILLISECONDS);
-        connection.setReadTimeout(READ_TIMEOUT_MILLISECONDS);
-        connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-        connection.setRequestProperty("User-Agent", "Mozilla/5.0");
-        connection.setDoOutput(true);
+        final String body = "q=" + URLEncoder.encode(joined.toString(), StandardCharsets.UTF_8.name());
 
-        //noinspection CharsetObjectCanBeUsed
-        byte[] body = ("q=" + URLEncoder.encode(joined.toString(), StandardCharsets.UTF_8.name()))
-                .getBytes(StandardCharsets.UTF_8);
-        connection.setFixedLengthStreamingMode(body.length);
-        try (OutputStream stream = connection.getOutputStream()) {
-            stream.write(body);
+        Exception lastFailure = null;
+        for (int attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
+            if (attempt > 0) {
+                sleepQuietly(INITIAL_BACKOFF_MILLISECONDS * attempt);
+            }
+
+            final int attemptNumber = attempt + 1;
+            HttpURLConnection connection = null;
+            try {
+                connection = Requester.openConnection(GOOGLE_TRANSLATE_URL + targetLanguage);
+                connection.setRequestMethod("POST");
+                connection.setConnectTimeout(CONNECT_TIMEOUT_MILLISECONDS);
+                connection.setReadTimeout(READ_TIMEOUT_MILLISECONDS);
+                connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+                connection.setRequestProperty("User-Agent", "Mozilla/5.0");
+                connection.setDoOutput(true);
+
+                //noinspection CharsetObjectCanBeUsed
+                byte[] payload = body.getBytes(StandardCharsets.UTF_8);
+                connection.setFixedLengthStreamingMode(payload.length);
+                try (OutputStream stream = connection.getOutputStream()) {
+                    stream.write(payload);
+                }
+
+                final int code = connection.getResponseCode();
+                if (code == 200) {
+                    // Response: [[["translated","original",...],...],null,"src_lang",...]
+                    // The endpoint splits into sentences; concatenating restores the lines that were sent.
+                    JSONArray sentences = new JSONArray(Requester.parseString(connection)).getJSONArray(0);
+                    StringBuilder translated = new StringBuilder();
+                    for (int i = 0, length = sentences.length(); i < length; i++) {
+                        translated.append(sentences.getJSONArray(i).getString(0));
+                    }
+
+                    Logger.printDebug(() -> "Translation complete: " + targetLanguage
+                            + " lines: " + lines.size()
+                            + " attempt: " + attemptNumber
+                            + " fetchTime: " + (System.currentTimeMillis() - startTime) + "ms");
+                    return Arrays.asList(translated.toString().split("\n", -1));
+                }
+
+                // A non-2xx response: read the body through the error stream, because
+                // parseString() would throw on the error stream and hide the real status.
+                String response = Requester.parseErrorString(connection);
+                TranslationHttpException httpFailure = new TranslationHttpException(code,
+                        "Translation HTTP status: " + code
+                                + " language: " + targetLanguage
+                                + " response: " + response);
+                if (!isRetryable(code) || attempt == MAX_ATTEMPTS - 1) {
+                    throw httpFailure;
+                }
+                lastFailure = httpFailure;
+                Logger.printInfo(() -> "Translation attempt " + attemptNumber
+                        + " failed (" + code + "), retrying");
+            } catch (IOException ex) {
+                if (attempt == MAX_ATTEMPTS - 1) {
+                    throw ex;
+                }
+                lastFailure = ex;
+                Logger.printInfo(() -> "Translation attempt " + attemptNumber
+                        + " failed (" + ex.getClass().getSimpleName() + "), retrying");
+            } finally {
+                if (connection != null) {
+                    connection.disconnect();
+                }
+            }
         }
 
-        final int code = connection.getResponseCode();
-        if (code != 200) {
-            throw new TranslationHttpException(code, "Translation HTTP status: " + code
-                    + " language: " + targetLanguage
-                    + " response: " + Requester.parseString(connection));
-        }
+        throw lastFailure != null ? lastFailure : new IOException(
+                "Translation failed after " + MAX_ATTEMPTS + " attempts");
+    }
 
-        // Response: [[["translated","original",...],...],null,"src_lang",...]
-        // The endpoint splits into sentences; concatenating restores the lines that were sent.
-        JSONArray sentences = new JSONArray(Requester.parseString(connection)).getJSONArray(0);
-        StringBuilder translated = new StringBuilder();
-        for (int i = 0, length = sentences.length(); i < length; i++) {
-            translated.append(sentences.getJSONArray(i).getString(0));
-        }
+    private static boolean isRetryable(int code) {
+        return code == 403 || code == 404 || code == 429 || (code >= 500 && code <= 599);
+    }
 
-        Logger.printDebug(() -> "Translation complete: " + targetLanguage
-                + " lines: " + lines.size()
-                + " fetchTime: " + (System.currentTimeMillis() - startTime) + "ms");
-        return Arrays.asList(translated.toString().split("\n", -1));
+    private static void sleepQuietly(long millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
     }
 }
