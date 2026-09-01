@@ -25,7 +25,7 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 internal object HookAdaptiveFormatsFingerprint : Fingerprint(
     definingClass = EXTENSION_CLASS,
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
-    name = "hookAdaptiveFormats"
+    name = "privateHookAdaptiveFormats"
 )
 
 internal object VideoStreamingDataConstructorFingerprint : Fingerprint(
