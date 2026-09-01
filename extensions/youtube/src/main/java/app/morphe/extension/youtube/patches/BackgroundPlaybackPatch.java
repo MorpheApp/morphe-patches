@@ -35,6 +35,13 @@ public class BackgroundPlaybackPatch {
     private static boolean receiverRegistered = false;
 
     /**
+     * Injection point. Called during app initialization via onCreateHook.
+     */
+    public static void initialize(VideoInformation.PlaybackController controller) {
+        initialize();
+    }
+
+    /**
      * Injection point. Called during app initialization.
      */
     public static void initialize() {
