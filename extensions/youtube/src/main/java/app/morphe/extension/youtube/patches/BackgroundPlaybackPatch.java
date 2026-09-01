@@ -1,17 +1,105 @@
 package app.morphe.extension.youtube.patches;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.media.AudioDeviceInfo;
+import android.media.AudioManager;
+import android.os.Build;
+import android.os.SystemClock;
+import android.view.KeyEvent;
+
+import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
+import app.morphe.extension.youtube.shared.VideoState;
 
 @SuppressWarnings("unused")
 public class BackgroundPlaybackPatch {
+
+    public enum AutoPauseOnLockMode {
+        OFF,
+        ALWAYS,
+        EXCEPT_WIRELESS_AUDIO
+    }
 
     private static final boolean REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS
             = Settings.REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS.get();
 
     private static final boolean REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS_SHORTS
             = !Settings.DISABLE_SHORTS_BACKGROUND_PLAYBACK.get();
+
+    private static boolean receiverRegistered = false;
+
+    /**
+     * Injection point. Called during app initialization.
+     */
+    public static void initialize() {
+        Context ctx = Utils.getContext();
+        if (!receiverRegistered && ctx != null) {
+            try {
+                ctx.registerReceiver(new BroadcastReceiver() {
+                    @Override
+                    public void onReceive(Context c, Intent i) {
+                        if (i != null && Intent.ACTION_SCREEN_OFF.equals(i.getAction())) {
+                            handleScreenOff(c);
+                        }
+                    }
+                }, new IntentFilter(Intent.ACTION_SCREEN_OFF));
+                receiverRegistered = true;
+            } catch (Exception ex) {
+                Logger.printException(() -> "BackgroundPlaybackPatch: Failed to register receiver", ex);
+            }
+        }
+    }
+
+    private static void handleScreenOff(Context context) {
+        AutoPauseOnLockMode mode = Settings.AUTO_PAUSE_ON_LOCK.get();
+        if (mode == AutoPauseOnLockMode.OFF || VideoState.getCurrent() != VideoState.PLAYING) {
+            return;
+        }
+
+        if (mode == AutoPauseOnLockMode.EXCEPT_WIRELESS_AUDIO && isWirelessAudioConnected(context)) {
+            return;
+        }
+
+        AudioManager am = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+        if (am != null) {
+            long now = SystemClock.uptimeMillis();
+            am.dispatchMediaKeyEvent(new KeyEvent(now, now, KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_MEDIA_PAUSE, 0));
+            am.dispatchMediaKeyEvent(new KeyEvent(now, now, KeyEvent.ACTION_UP, KeyEvent.KEYCODE_MEDIA_PAUSE, 0));
+        }
+    }
+
+    private static boolean isWirelessAudioConnected(Context context) {
+        AudioManager am = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+        if (am == null) return false;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            AudioDeviceInfo[] devices = am.getDevices(AudioManager.GET_DEVICES_OUTPUTS);
+            if (devices != null) {
+                for (AudioDeviceInfo d : devices) {
+                    int t = d.getType();
+                    if (t == AudioDeviceInfo.TYPE_BLUETOOTH_A2DP
+                            || t == AudioDeviceInfo.TYPE_BLUETOOTH_SCO
+                            || t == AudioDeviceInfo.TYPE_HEARING_AID) {
+                        return true;
+                    }
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                        if (t == AudioDeviceInfo.TYPE_BLE_HEADSET
+                                || t == AudioDeviceInfo.TYPE_BLE_SPEAKER
+                                || t == AudioDeviceInfo.TYPE_BLE_BROADCAST) {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        return am.isBluetoothA2dpOn() || am.isBluetoothScoOn();
+    }
 
     /**
      * Injection point.

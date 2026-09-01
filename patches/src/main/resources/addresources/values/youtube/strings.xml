@@ -35,6 +35,10 @@ Second \"item\" text"</string>
     <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
     <string name="morphe_remove_background_playback_restrictions_title">Remove background play restrictions</string>
     <string name="morphe_shorts_disable_background_playback_title">Disable background play</string>
+    <string name="morphe_auto_pause_on_screen_lock_title">Auto pause when device is locked</string>
+    <string name="morphe_auto_pause_on_screen_lock_off">Off</string>
+    <string name="morphe_auto_pause_on_screen_lock_always">Always pause when locked</string>
+    <string name="morphe_auto_pause_on_screen_lock_except_wireless">Pause unless wireless audio is connected</string>
 
     <!-- layout.disableScrollSpeedLimitPatch -->
     <string name="morphe_disable_scrolling_speed_limit_title">Disable scrolling speed limit</string>
