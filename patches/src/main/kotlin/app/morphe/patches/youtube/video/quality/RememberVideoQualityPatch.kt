@@ -24,6 +24,7 @@ import app.morphe.patches.youtube.shared.VideoQualityChangedFingerprint
 import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.findFieldFromToString
+import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS =
@@ -102,6 +103,18 @@ val rememberVideoQualityPatch = bytecodePatch {
                 addInstruction(
                     index + 1,
                     "invoke-static { v$register }, $EXTENSION_CLASS->userChangedQuality(I)V",
+                )
+            }
+        }
+
+        // If this flag is enabled, Shorts restart whenever the quality changes.
+        listOf(
+            ShortsQualityChangeObserverPrimaryFeatureFlagFingerprint,
+            ShortsQualityChangeObserverSecondaryFeatureFlagFingerprint
+        ).forEach { fingerprint ->
+            fingerprint.matchAll().forEach {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index, false
                 )
             }
         }
