@@ -941,46 +941,68 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // region hide channel tab
 
-        if (is_21_20_or_greater) {
-            ChannelTabAddFingerprint.method.apply {
-                val channelTabBuilderMethod = if (is_21_25_or_greater)
-                    ChannelTabBuilderFingerprint.method
-                else ChannelTabBuilderLegacyFingerprint.method
-
-                val targetIndex = indexOfFirstInstructionReversedOrThrow {
-                    val reference = getReference<MethodReference>()
-                    reference?.returnType == channelTabBuilderMethod.returnType &&
-                            reference.parameterTypes == channelTabBuilderMethod.parameterTypes
+        ChannelTabRendererFingerprint.let { match ->
+            match.method.apply {
+                val iteratorIndex = indexOfFirstInstructionReversedOrThrow {
+                    getReference<MethodReference>()?.name == "hasNext"
                 }
-                val objectIndex = indexOfFirstInstructionReversedOrThrow(
-                    targetIndex,
-                    Opcode.IGET_OBJECT
-                )
-                val register = getInstruction<TwoRegisterInstruction>(objectIndex).registerA
-                val insertIndex = objectIndex + 1
-                val free = findFreeRegister(insertIndex, register)
 
-                addInstructionsWithLabels(
-                    insertIndex,
-                    """
-                        invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER->hideChannelTab(Ljava/lang/String;)Z
-                        move-result v$free
-                        if-eqz v$free, :ignore
-                        return-void
-                        :ignore
-                        nop
-                    """
-                )
-            }
-        } else {
-            ChannelTabRendererFingerprint.let { match ->
-                match.method.apply {
-                    val iteratorIndex = indexOfFirstInstructionReversedOrThrow {
-                        getReference<MethodReference>()?.name == "hasNext"
+                val iteratorRegister = getInstruction<FiveRegisterInstruction>(iteratorIndex).registerC
+
+                if (is_21_20_or_greater) {
+                    val addMethod = ChannelTabAddFingerprint.method
+                    val channelTabBuilderMethod = if (is_21_25_or_greater)
+                        ChannelTabBuilderFingerprint.method
+                    else ChannelTabBuilderLegacyFingerprint.method
+
+                    val targetIndex = addMethod.indexOfFirstInstructionReversedOrThrow {
+                        val reference = getReference<MethodReference>()
+                        reference?.returnType == channelTabBuilderMethod.returnType &&
+                                reference.parameterTypes == channelTabBuilderMethod.parameterTypes
                     }
 
+                    val objectIndex = addMethod.indexOfFirstInstructionReversedOrThrow(
+                        targetIndex, Opcode.IGET_OBJECT)
+                    val titleStringFieldRef = addMethod.getInstruction<ReferenceInstruction>(
+                        objectIndex).reference as FieldReference
+                    val nextIndex = indexOfFirstInstructionOrThrow(iteratorIndex) {
+                        getReference<MethodReference>()?.name == "next"
+                    }
+
+                    val protoObjectIndex = indexOfFirstInstructionOrThrow(nextIndex) {
+                        opcode == Opcode.IGET_OBJECT
+                    }
+
+                    val protoInstruction = getInstruction<TwoRegisterInstruction>(protoObjectIndex)
+                    val protoRegister = protoInstruction.registerA
+                    val auluRegister = protoInstruction.registerB
+                    val auluFieldRef = getInstruction<ReferenceInstruction>(
+                        protoObjectIndex).reference as FieldReference
+
+                    val checkCastIndex = indexOfFirstInstructionOrThrow(protoObjectIndex) {
+                        opcode == Opcode.CHECK_CAST
+                    }
+
+                    val checkCastRef = getInstruction<ReferenceInstruction>(checkCastIndex).reference
+                    val insertIndex = checkCastIndex + 1
+
+                    addInstructionsWithLabels(
+                        insertIndex,
+                        """
+                            iget-object v$protoRegister, v$protoRegister, $titleStringFieldRef
+                            invoke-static { v$protoRegister }, $LAYOUT_COMPONENTS_FILTER->hideChannelTab(Ljava/lang/String;)Z
+                            move-result v$protoRegister
+                            if-eqz v$protoRegister, :ignore
+                            invoke-interface { v$iteratorRegister }, Ljava/util/Iterator;->remove()V
+                            goto :next_iterator
+                            :ignore
+                            iget-object v$protoRegister, v$auluRegister, $auluFieldRef
+                            check-cast v$protoRegister, $checkCastRef
+                        """,
+                        ExternalLabel("next_iterator", getInstruction(iteratorIndex))
+                    )
+                } else {
                     val channelTabBuilderMethod = ChannelTabBuilderLegacyFingerprint.method
-                    val iteratorRegister = getInstruction<FiveRegisterInstruction>(iteratorIndex).registerC
                     val targetIndex = indexOfFirstInstructionReversedOrThrow {
                         val reference = (this as? ReferenceInstruction)?.reference as? MethodReference
                         opcode == Opcode.INVOKE_INTERFACE &&
@@ -988,7 +1010,8 @@ val hideLayoutComponentsPatch = bytecodePatch(
                                 reference.parameterTypes == channelTabBuilderMethod.parameterTypes
                     }
 
-                    val objectIndex = indexOfFirstInstructionReversedOrThrow(targetIndex, Opcode.IGET_OBJECT)
+                    val objectIndex = indexOfFirstInstructionReversedOrThrow(
+                        targetIndex, Opcode.IGET_OBJECT)
                     val objectInstruction = getInstruction<TwoRegisterInstruction>(objectIndex)
                     val objectReference = getInstruction<ReferenceInstruction>(objectIndex).reference
 
