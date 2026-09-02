@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/2719
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.youtube.patches;
 
 import android.content.BroadcastReceiver;
@@ -32,34 +42,28 @@ public class BackgroundPlaybackPatch {
     private static final boolean REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS_SHORTS
             = !Settings.DISABLE_SHORTS_BACKGROUND_PLAYBACK.get();
 
-    private static boolean receiverRegistered = false;
+    private static boolean receiverRegistered;
 
     /**
      * Injection point. Called during app initialization via onCreateHook.
      */
     public static void initialize(VideoInformation.PlaybackController controller) {
-        initialize();
-    }
-
-    /**
-     * Injection point. Called during app initialization.
-     */
-    public static void initialize() {
-        Context ctx = Utils.getContext();
-        if (!receiverRegistered && ctx != null) {
-            try {
-                ctx.registerReceiver(new BroadcastReceiver() {
-                    @Override
-                    public void onReceive(Context c, Intent i) {
-                        if (i != null && Intent.ACTION_SCREEN_OFF.equals(i.getAction())) {
-                            handleScreenOff(c);
-                        }
+        if (receiverRegistered) {
+            return;
+        }
+        try {
+            Utils.getContext().registerReceiver(new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    if (intent != null && Intent.ACTION_SCREEN_OFF.equals(intent.getAction())) {
+                        handleScreenOff(context);
                     }
-                }, new IntentFilter(Intent.ACTION_SCREEN_OFF));
-                receiverRegistered = true;
-            } catch (Exception ex) {
-                Logger.printException(() -> "BackgroundPlaybackPatch: Failed to register receiver", ex);
-            }
+                }
+            }, new IntentFilter(Intent.ACTION_SCREEN_OFF));
+        } catch (Exception ex) {
+            Logger.printException(() -> "initialize failure", ex);
+        } finally {
+            receiverRegistered = true;
         }
     }
 
@@ -75,7 +79,7 @@ public class BackgroundPlaybackPatch {
 
         AudioManager am = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
         if (am != null) {
-            long now = SystemClock.uptimeMillis();
+            final long now = SystemClock.uptimeMillis();
             am.dispatchMediaKeyEvent(new KeyEvent(now, now, KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_MEDIA_PAUSE, 0));
             am.dispatchMediaKeyEvent(new KeyEvent(now, now, KeyEvent.ACTION_UP, KeyEvent.KEYCODE_MEDIA_PAUSE, 0));
         }
@@ -85,27 +89,25 @@ public class BackgroundPlaybackPatch {
         AudioManager am = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
         if (am == null) return false;
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            AudioDeviceInfo[] devices = am.getDevices(AudioManager.GET_DEVICES_OUTPUTS);
-            if (devices != null) {
-                for (AudioDeviceInfo d : devices) {
-                    int t = d.getType();
-                    if (t == AudioDeviceInfo.TYPE_BLUETOOTH_A2DP
-                            || t == AudioDeviceInfo.TYPE_BLUETOOTH_SCO
-                            || t == AudioDeviceInfo.TYPE_HEARING_AID) {
-                        return true;
-                    }
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                        if (t == AudioDeviceInfo.TYPE_BLE_HEADSET
-                                || t == AudioDeviceInfo.TYPE_BLE_SPEAKER
-                                || t == AudioDeviceInfo.TYPE_BLE_BROADCAST) {
-                            return true;
-                        }
-                    }
+        // noinspection WrongConstant // Suppress bogus IDE warning.
+        AudioDeviceInfo[] devices = am.getDevices(AudioManager.GET_DEVICES_OUTPUTS);
+        for (AudioDeviceInfo device : devices) {
+            final int type = device.getType();
+            if (type == AudioDeviceInfo.TYPE_BLUETOOTH_A2DP
+                    || type == AudioDeviceInfo.TYPE_BLUETOOTH_SCO
+                    || type == AudioDeviceInfo.TYPE_HEARING_AID) {
+                return true;
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                if (type == AudioDeviceInfo.TYPE_BLE_HEADSET
+                        || type == AudioDeviceInfo.TYPE_BLE_SPEAKER
+                        || type == AudioDeviceInfo.TYPE_BLE_BROADCAST) {
+                    return true;
                 }
             }
         }
-        return am.isBluetoothA2dpOn() || am.isBluetoothScoOn();
+
+        return false;
     }
 
     /**
