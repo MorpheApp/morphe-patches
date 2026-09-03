@@ -28,32 +28,23 @@ internal object UseGradientLoadingScreenFingerprint : Fingerprint(
     )
 )
 
-/**
- * The app colors a text of its own with a span, using a color that the server sent with the text
- * and not a color resource, so no resource variant of the theme can replace it.
- */
-internal object LithoTextSpanColorFingerprint : Fingerprint(
-    filters = listOf(
-        methodCall(
-            opcode = Opcode.INVOKE_DIRECT,
-            smali = "Landroid/text/style/ForegroundColorSpan;-><init>(I)V"
+internal object LithoImageColorFilterFingerprint : Fingerprint(
+    classFingerprint = Fingerprint(
+        name = "draw",
+        parameters = listOf("Landroid/graphics/Canvas;"),
+        returnType = "V",
+        filters = listOf(
+            methodCall(
+                smali = $$"Landroid/graphics/BitmapShader;-><init>(Landroid/graphics/Bitmap;Landroid/graphics/Shader$TileMode;Landroid/graphics/Shader$TileMode;)V"
+            ),
+            methodCall(
+                smali = "Landroid/graphics/Canvas;->drawRect(Landroid/graphics/RectF;Landroid/graphics/Paint;)V"
+            )
         )
-    )
-)
-
-/**
- * An icon is colored the same way, with a value the app tints the drawable with.
- */
-internal object IconDrawableColorFilterFingerprint : Fingerprint(
-    filters = listOf(
-        methodCall(smali = $$"Landroid/graphics/drawable/Drawable;->setColorFilter(ILandroid/graphics/PorterDuff$Mode;)V")
-    )
-)
-
-internal object IconImageColorFilterFingerprint : Fingerprint(
-    filters = listOf(
-        methodCall(smali = $$"Landroid/widget/ImageView;->setColorFilter(ILandroid/graphics/PorterDuff$Mode;)V")
-    )
+    ),
+    name = "setColorFilter",
+    parameters = listOf("Landroid/graphics/ColorFilter;"),
+    returnType = "V"
 )
 
 internal object CarbonColorThemeFeatureFlagFingerprint : Fingerprint(

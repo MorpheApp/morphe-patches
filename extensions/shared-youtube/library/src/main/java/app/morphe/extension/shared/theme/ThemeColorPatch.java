@@ -11,7 +11,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
@@ -553,6 +559,15 @@ public class ThemeColorPatch {
             0xFF09090A, // Carbon palette.
     };
 
+    private static boolean isForegroundValue(@ColorInt int value, boolean dark) {
+        for (int foreground : dark ? DARK_THEME_FOREGROUND_VALUES : LIGHT_THEME_FOREGROUND_VALUES) {
+            if (foreground == value) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * Injection point.
      * <p>
@@ -562,6 +577,13 @@ public class ThemeColorPatch {
     @ColorInt
     public static int getForegroundColor(@ColorInt int originalValue) {
         try {
+            // Almost every color that arrives here is not one of the app foreground, and matching
+            // the value first keeps all of those to a handful of comparisons.
+            final boolean darkValue = isForegroundValue(originalValue, true);
+            if (!darkValue && !isForegroundValue(originalValue, false)) {
+                return originalValue;
+            }
+
             if (isAppDefaultColor()
                     || !SharedYouTubeSettings.THEME_COLOR_CHANGE_FOREGROUND.get()) {
                 return originalValue;
@@ -569,16 +591,86 @@ public class ThemeColorPatch {
 
             // The app draws its foreground with the color of the theme it does not show.
             final boolean dark = isDarkTheme();
-            for (int value : dark ? DARK_THEME_FOREGROUND_VALUES : LIGHT_THEME_FOREGROUND_VALUES) {
-                if (value == originalValue) {
-                    return themeColor(!dark);
-                }
+            if (dark == darkValue) {
+                return themeColor(!dark);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "getForegroundColor failure", ex);
         }
 
         return originalValue;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * The colors of a tint list the app builds for a text or an icon it colors itself.
+     * They are handed over as an array and not as a value, so the array is rewritten
+     * before the list of it is created.
+     */
+    public static void replaceForegroundColors(int[] colors) {
+        try {
+            if (colors == null) {
+                return;
+            }
+
+            for (int i = 0; i < colors.length; i++) {
+                colors[i] = getForegroundColor(colors[i]);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "replaceForegroundColors failure", ex);
+        }
+    }
+
+    /**
+     * The single pixel a filter is applied to, to read the color of it. The color a filter holds
+     * is not part of the SDK, and what the filter leaves on an opaque pixel is the same color.
+     */
+    private static final Bitmap filterProbe =
+            Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
+
+    /**
+     * Injection point.
+     * <p>
+     * The color of an icon of a Litho component, which the app keeps inside a filter on the paint
+     * of the drawable, so the filter is replaced with one of the color of the theme.
+     */
+    public static ColorFilter getForegroundColorFilter(ColorFilter filter) {
+        try {
+            if (filter == null
+                    || isAppDefaultColor()
+                    || !SharedYouTubeSettings.THEME_COLOR_CHANGE_FOREGROUND.get()) {
+                return filter;
+            }
+
+            final int color = filterColor(filter);
+            final int replaced = getForegroundColor(color);
+            if (replaced != color) {
+                return new PorterDuffColorFilter(replaced, PorterDuff.Mode.SRC_IN);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "getForegroundColorFilter failure", ex);
+        }
+
+        return filter;
+    }
+
+    /**
+     * The color a filter leaves on an opaque pixel, which for a filter that tints an icon is the
+     * color the icon is drawn with.
+     */
+    @ColorInt
+    private static int filterColor(ColorFilter filter) {
+        Paint paint = new Paint();
+        paint.setColor(Color.WHITE);
+        paint.setColorFilter(filter);
+
+        synchronized (filterProbe) {
+            // The pixel is painted over, so what it holds from the filter before must be gone.
+            filterProbe.eraseColor(Color.TRANSPARENT);
+            new Canvas(filterProbe).drawRect(0, 0, 1, 1, paint);
+            return filterProbe.getPixel(0, 0);
+        }
     }
 
     /**

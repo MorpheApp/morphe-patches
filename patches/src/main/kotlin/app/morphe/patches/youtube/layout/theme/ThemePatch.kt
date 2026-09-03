@@ -13,6 +13,7 @@ package app.morphe.patches.youtube.layout.theme
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
@@ -44,11 +45,11 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.forEachChildElement
 import app.morphe.util.insertLiteralOverride
-import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import app.morphe.util.matchAllMethodIndicesForEach
+import app.morphe.util.registersUsed
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import org.w3c.dom.Element
-import kotlin.collections.plus
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/theme/ThemePatch;"
 
@@ -148,6 +149,56 @@ private val youTubeStyleNamesLight = {
     }
 }
 
+/**
+ * Every call that hands over a color the app colors a text or an icon of its own with, and the
+ * position the color has in the registers of the call. Such a color is a value and not a color
+ * resource, so no resource variant of the theme can replace it.
+ *
+ * The class a call is declared with is left out where the method is inherited, because the same
+ * method called with a subclass is a reference of its own that a declared class would not match.
+ */
+private val FOREGROUND_COLOR_CALLS = listOf(
+    methodCall(
+        definingClass = "Landroid/text/style/ForegroundColorSpan;",
+        name = "<init>",
+        parameters = listOf("I"),
+        returnType = "V"
+    ) to 1,
+    methodCall(
+        definingClass = "Landroid/graphics/PorterDuffColorFilter;",
+        name = "<init>",
+        parameters = listOf("I", $$"Landroid/graphics/PorterDuff$Mode;"),
+        returnType = "V"
+    ) to 1,
+    methodCall(
+        definingClass = "Landroid/graphics/BlendModeColorFilter;",
+        name = "<init>",
+        parameters = listOf("I", "Landroid/graphics/BlendMode;"),
+        returnType = "V"
+    ) to 1,
+    // A tint list of a single color, which is how the app tints an icon of a Litho component.
+    methodCall(
+        definingClass = "Landroid/content/res/ColorStateList;",
+        name = "valueOf",
+        parameters = listOf("I"),
+        returnType = "Landroid/content/res/ColorStateList;"
+    ) to 0,
+    methodCall(
+        name = "setColorFilter",
+        parameters = listOf("I", $$"Landroid/graphics/PorterDuff$Mode;"),
+        returnType = "V"
+    ) to 1,
+    methodCall(
+        name = "setColorFilter",
+        parameters = listOf("I"),
+        returnType = "V"
+    ) to 1,
+    methodCall(
+        name = "setTint",
+        parameters = listOf("I"),
+        returnType = "V"
+    ) to 1
+)
 
 val themePatch = baseThemePatch(
     extensionClassDescriptor = EXTENSION_CLASS,
@@ -424,28 +475,51 @@ val themePatch = baseThemePatch(
 
         // The app colors its own text and icons with a value, so every place that hands one
         // over is given the color of the selected theme instead.
-        arrayOf(
-            LithoTextSpanColorFingerprint,
-            IconDrawableColorFilterFingerprint,
-            IconImageColorFilterFingerprint
-        ).forEach { fingerprint ->
-            fingerprint.matchAll().forEach {
-                it.method.apply {
-                    val index = it.instructionMatches.first().index
-                    val colorRegister = getInstruction<FiveRegisterInstruction>(index).registerD
+        FOREGROUND_COLOR_CALLS.forEach { (filter, colorPosition) ->
+            filter.matchAllMethodIndicesForEach(requireMatches = false) { index ->
+                val colorRegister = getInstruction(index).registersUsed[colorPosition]
 
-                    // The color can be in a parameter register above v15,
-                    // so the range format is used.
-                    addInstructions(
-                        index,
-                        """
-                            invoke-static/range { v$colorRegister .. v$colorRegister }, $THEME_COLOR_EXTENSION_CLASS->getForegroundColor(I)I
-                            move-result v$colorRegister
-                        """
-                    )
-                }
+                // The color can be in a parameter register above v15,
+                // so the range format is used.
+                addInstructions(
+                    index,
+                    """
+                        invoke-static/range { v$colorRegister .. v$colorRegister }, $THEME_COLOR_EXTENSION_CLASS->getForegroundColor(I)I
+                        move-result v$colorRegister
+                    """
+                )
             }
         }
+
+        // A tint list the app builds hands its colors over as an array, so the array is rewritten
+        // in place. Replacing the list itself would give the register of the list a type of its
+        // own, which the verifier rejects where the register is reused.
+        methodCall(
+            definingClass = "Landroid/content/res/ColorStateList;",
+            name = "<init>",
+            parameters = listOf("[[I", "[I"),
+            returnType = "V"
+        ).matchAllMethodIndicesForEach(requireMatches = false) { index ->
+            val colorsRegister = getInstruction(index).registersUsed[2]
+
+            addInstruction(
+                index,
+                "invoke-static/range { v$colorsRegister .. v$colorsRegister }, " +
+                        "$THEME_COLOR_EXTENSION_CLASS->replaceForegroundColors([I)V"
+            )
+        }
+
+        // The app colors an icon of a Litho component with a filter the drawable keeps on its
+        // own paint, so the color never reaches a call that hands one over as a value. The
+        // filter is replaced on the parameter of the call, which is a register the replacement
+        // always fits.
+        LithoImageColorFilterFingerprint.method.addInstructions(
+            0,
+            """
+                invoke-static { p1 }, $THEME_COLOR_EXTENSION_CLASS->getForegroundColorFilter(Landroid/graphics/ColorFilter;)Landroid/graphics/ColorFilter;
+                move-result-object p1
+            """
+        )
 
         UseGradientLoadingScreenFingerprint.matchAll().forEach {
             it.method.insertLiteralOverride(
