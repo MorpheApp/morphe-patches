@@ -521,6 +521,21 @@ val themePatch = baseThemePatch(
             """
         )
 
+        // The color of a Lottie layer is played from the animation itself, so it reaches no
+        // call that hands a color over and no resource of the app either. It has a replacement
+        // of its own, because the artwork of an animation is drawn with a plain white or black.
+        LottieLayerColorFingerprint.matchAllMethodIndicesForEach { index ->
+            val colorRegister = getInstruction(index).registersUsed[1]
+
+            addInstructions(
+                index,
+                """
+                    invoke-static/range { v$colorRegister .. v$colorRegister }, $THEME_COLOR_EXTENSION_CLASS->getForegroundLottieColor(I)I
+                    move-result v$colorRegister
+                """
+            )
+        }
+
         UseGradientLoadingScreenFingerprint.matchAll().forEach {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,

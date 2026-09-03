@@ -623,6 +623,42 @@ public class ThemeColorPatch {
     }
 
     /**
+     * Injection point.
+     * <p>
+     * The color of a layer of a Lottie animation, which the app plays for its like button.
+     * <p>
+     * An animation carries the artwork of itself, and the artwork of an icon is drawn with the
+     * plain white or black of a theme instead of the color the app uses everywhere else. Only a
+     * layer of an animation is matched with them, because the app keeps that white for what it
+     * draws on a thumbnail or a video, where it has to stay readable.
+     */
+    @ColorInt
+    public static int getForegroundLottieColor(@ColorInt int originalValue) {
+        try {
+            // A layer is drawn with the alpha of the animation, which the color carries.
+            final int opaque = originalValue | 0xFF000000;
+            if (opaque != Color.WHITE && opaque != Color.BLACK) {
+                return getForegroundColor(originalValue);
+            }
+
+            if (isAppDefaultColor()
+                    || !SharedYouTubeSettings.THEME_COLOR_CHANGE_FOREGROUND.get()) {
+                return originalValue;
+            }
+
+            // The artwork of an icon is white while the app is dark, and black while it is not.
+            final boolean dark = isDarkTheme();
+            if (dark == (opaque == Color.WHITE)) {
+                return (originalValue & 0xFF000000) | (themeColor(!dark) & 0x00FFFFFF);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "getForegroundLottieColor failure", ex);
+        }
+
+        return originalValue;
+    }
+
+    /**
      * The single pixel a filter is applied to, to read the color of it. The color a filter holds
      * is not part of the SDK, and what the filter leaves on an opaque pixel is the same color.
      */

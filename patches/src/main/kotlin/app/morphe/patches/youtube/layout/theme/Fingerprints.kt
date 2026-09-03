@@ -47,6 +47,18 @@ internal object LithoImageColorFilterFingerprint : Fingerprint(
     returnType = "V"
 )
 
+internal object LottieLayerColorFingerprint : Fingerprint(
+    parameters = listOf(
+        "Landroid/graphics/Canvas;",
+        "Landroid/graphics/Matrix;",
+        "I"
+    ),
+    returnType = "V",
+    filters = listOf(
+        methodCall(smali = "Landroid/graphics/Paint;->setColor(I)V")
+    )
+)
+
 internal object CarbonColorThemeFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
         literal(45760313)
