@@ -11,6 +11,8 @@
 package app.morphe.extension.youtube.patches.components;
 
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewStub;
 import android.widget.FrameLayout;
 
 import com.google.android.libraries.youtube.rendering.ui.pivotbar.PivotBar;
@@ -662,6 +664,31 @@ public final class ShortsFilter extends Filter {
     public static void setPivotBar(PivotBar view) {
         if (HIDE_SHORTS_NAVIGATION_BAR) {
             pivotBarRef = new WeakReference<>(view);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideGestureHints(View view) {
+        if (Settings.HIDE_SHORTS_GESTURE_HINTS.get() && view instanceof ViewStub stub) {
+
+            stub.setOnInflateListener((stubView, inflatedView) -> {
+
+                inflatedView.setVisibility(View.GONE);
+
+                ViewGroup.LayoutParams params = inflatedView.getLayoutParams();
+                if (params != null) {
+                    params.width = 0;
+                    params.height = 0;
+
+                    if (params instanceof ViewGroup.MarginLayoutParams marginParams) {
+                        marginParams.setMargins(0, 0, 0, 0);
+                    }
+
+                    inflatedView.setLayoutParams(params);
+                }
+            });
         }
     }
 }

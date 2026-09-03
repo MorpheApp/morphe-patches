@@ -856,8 +856,6 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <string name="morphe_fullscreen_large_seekbar_title">Enable fullscreen large seekbar</string>
 
     <!-- layout.hide.shorts.hideShortsComponentsPatch -->
-    <string name="morphe_shorts_player_screen_title">Shorts player</string>
-    <string name="morphe_shorts_player_screen_summary">Choose which components appear in the Shorts player</string>
     <string name="morphe_hide_shorts_category_title">Hide Shorts</string>
     <string name="morphe_hide_shorts_channel_title">Hide in channel page</string>
     <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -867,45 +865,48 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <string name="morphe_hide_shorts_subscriptions_title">Hide in Subscriptions feed</string>
     <string name="morphe_hide_shorts_video_description_title">Hide in video description</string>
     <string name="morphe_hide_shorts_history_title">Hide in watch history</string>
+    <string name="morphe_shorts_player_screen_title">Shorts player</string>
+    <string name="morphe_shorts_player_screen_summary">Choose which components appear in the Shorts player</string>
+    <string name="morphe_disable_shorts_double_tap_to_like_title">Disable double-tap to like</string>
     <string name="morphe_hide_shorts_ai_button_title">Hide AI button</string>
     <string name="morphe_hide_shorts_auto_dubbed_label_title">Hide \'Auto-dubbed\' label</string>
-    <string name="morphe_hide_shorts_super_thanks_button_title">Hide \'Buy Super Thanks\' button</string>
+    <string name="morphe_hide_shorts_channel_bar_title">Hide channel bar</string>
+    <string name="morphe_hide_shorts_comments_button_title">Hide Comments button</string>
     <string name="morphe_hide_shorts_effect_button_title">Hide Effect button</string>
+    <string name="morphe_hide_shorts_full_video_link_label_title">Hide video link label</string>
+    <string name="morphe_hide_shorts_gesture_hints_title">Hide gesture hints</string>
     <string name="morphe_hide_shorts_green_screen_button_title">Hide \'Green screen\' button</string>
     <string name="morphe_hide_shorts_hashtag_button_title">Hide Hashtag button</string>
+    <string name="morphe_hide_shorts_info_panel_title">Hide info panel</string>
     <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_shorts_join_button_title">Hide Join button</string>
+    <string name="morphe_hide_shorts_like_button_title">Hide Like button</string>
+    <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
+    <string name="morphe_hide_shorts_like_fountain_title">Hide Like button fountain animation</string>
     <string name="morphe_hide_shorts_live_preview_title">Hide live preview</string>
     <string name="morphe_hide_shorts_location_label_title">Hide location label</string>
+    <string name="morphe_hide_shorts_navigation_bar_title">Hide navigation bar</string>
     <string name="morphe_hide_shorts_new_posts_button_title">Hide \'New posts\' button</string>
     <string name="morphe_hide_shorts_paused_overlay_buttons_title">Hide paused overlay buttons</string>
     <string name="morphe_hide_shorts_preview_comment_title">Hide preview comment</string>
+    <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
+    <string name="morphe_hide_shorts_remix_button_title">Hide Remix button</string>
+    <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+    <string name="morphe_hide_shorts_save_button_title">Hide Save button</string>
     <string name="morphe_hide_shorts_save_sound_button_title">Hide \'Save music\' button</string>
     <string name="morphe_hide_shorts_search_suggestions_title">Hide search suggestions</string>
+    <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
+    <string name="morphe_hide_shorts_share_button_title">Hide Share button</string>
     <string name="morphe_hide_shorts_shop_button_title">Hide Shop button</string>
+    <string name="morphe_hide_shorts_sound_button_title">Hide Sound button</string>
+    <string name="morphe_hide_shorts_sound_metadata_label_title">Hide sound metadata label</string>
     <string name="morphe_hide_shorts_subscribe_button_title">Hide Subscribe button</string>
+    <string name="morphe_hide_shorts_super_thanks_button_title">Hide \'Buy Super Thanks\' button</string>
     <string name="morphe_hide_shorts_tagged_products_title">Hide tagged products</string>
     <string name="morphe_hide_shorts_upcoming_button_title">Hide Upcoming button</string>
     <string name="morphe_hide_shorts_use_sound_button_title">Hide \'Use this sound\' button</string>
     <string name="morphe_hide_shorts_use_template_button_title">Hide \'Use this template\' button</string>
-    <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
-    <string name="morphe_hide_shorts_like_fountain_title">Hide Like button fountain animation</string>
-    <string name="morphe_hide_shorts_like_button_title">Hide Like button</string>
-    <string name="morphe_hide_shorts_comments_button_title">Hide Comments button</string>
-    <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-    <string name="morphe_hide_shorts_save_button_title">Hide Save button</string>
-    <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-    <string name="morphe_hide_shorts_share_button_title">Hide Share button</string>
-    <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-    <string name="morphe_hide_shorts_remix_button_title">Hide Remix button</string>
-    <string name="morphe_hide_shorts_sound_button_title">Hide Sound button</string>
-    <string name="morphe_hide_shorts_info_panel_title">Hide info panel</string>
-    <string name="morphe_hide_shorts_channel_bar_title">Hide channel bar</string>
     <string name="morphe_hide_shorts_video_title_title">Hide video title</string>
-    <string name="morphe_hide_shorts_sound_metadata_label_title">Hide sound metadata label</string>
-    <string name="morphe_hide_shorts_full_video_link_label_title">Hide video link label</string>
-    <string name="morphe_disable_shorts_double_tap_to_like_title">Disable double-tap to like</string>
-    <string name="morphe_hide_shorts_navigation_bar_title">Hide navigation bar</string>
 
     <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
     <string name="morphe_hide_end_screen_suggested_video_title">Hide end screen suggested video</string>
