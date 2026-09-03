@@ -590,7 +590,8 @@ internal object AccountListFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL, AccessFlags.SYNTHETIC),
     returnType = "V",
     filters = listOf(
-        resourceLiteral(ResourceType.ATTR, "ytCallToAction")
+        resourceLiteral(ResourceType.ATTR, "ytCallToAction"),
+        methodCall(opcode = Opcode.INVOKE_VIRTUAL, name = "setText")
     )
 )
 
