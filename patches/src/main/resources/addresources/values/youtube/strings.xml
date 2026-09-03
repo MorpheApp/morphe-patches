@@ -602,7 +602,6 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_swipe_overlay_timeout_summary">The amount of milliseconds the overlay is visible</string>
     <string name="morphe_swipe_overlay_background_opacity_title">Swipe overlay background opacity</string>
     <string name="morphe_swipe_overlay_background_opacity_summary">Adjust the transparency level (0 is transparent, 100 is opaque)</string>
-    <string name="morphe_swipe_overlay_background_opacity_invalid_toast">Swipe opacity must be between 0-100</string>
     <string name="morphe_swipe_overlay_progress_brightness_color_title">Swipe overlay brightness color</string>
     <string name="morphe_swipe_overlay_progress_brightness_color_summary">Set the color of the brightness controls progress bar</string>
     <string name="morphe_swipe_overlay_progress_volume_color_title">Swipe overlay volume color</string>
@@ -611,7 +610,6 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_swipe_overlay_progress_speed_color_summary">Set the color of the playback speed controls progress bar</string>
     <string name="morphe_swipe_text_overlay_size_title">Swipe overlay text size</string>
     <string name="morphe_swipe_text_overlay_size_summary">Adjust the size of the on-screen text (1-30)</string>
-    <string name="morphe_swipe_text_overlay_size_invalid_toast">The text size must be between 1-30</string>
     <string name="morphe_swipe_threshold_title">Swipe magnitude threshold</string>
     <string name="morphe_swipe_threshold_summary">Set the required swipe distance before an adjustment triggers</string>
     <string name="morphe_swipe_volume_sensitivity_title">Volume swipe sensitivity</string>
@@ -828,6 +826,8 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <string name="morphe_hide_fullscreen_button_title">Hide Fullscreen button</string>
     <string name="morphe_hide_player_control_buttons_background_title">Hide player controls background</string>
     <string name="morphe_hide_player_control_buttons_background_summary">Hides the dark shading surrounding the video player controls</string>
+    <string name="morphe_player_control_buttons_background_opacity_title">Control buttons background opacity</string>
+    <string name="morphe_player_control_buttons_background_opacity_summary">Adjust the opacity of the circle behind the player control buttons (0 is invisible, 100 is solid)</string>
     <string name="morphe_hide_player_previous_next_buttons_title">Hide Previous &amp; Next buttons</string>
     <string name="morphe_hide_settings_button_title">Hide Settings button</string>
 
@@ -967,7 +967,6 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
     <string name="morphe_player_overlay_opacity_title">Player overlay opacity</string>
     <string name="morphe_player_overlay_opacity_summary">Adjust the transparency level (0 is transparent, 100 is opaque)</string>
-    <string name="morphe_player_overlay_opacity_invalid_toast">Player overlay opacity must be between 0-100</string>
 
     <!-- layout.searchbar.wideSearchbarPatch -->
     <string name="morphe_searchbar_type_title">Search bar</string>
@@ -1099,7 +1098,6 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <string name="morphe_miniplayer_width_dip_invalid_toast">Pixel size must be between %1$s and %2$s</string>
     <string name="morphe_miniplayer_opacity_title">Overlay opacity</string>
     <string name="morphe_miniplayer_opacity_summary">Adjust the transparency level (0 is transparent, 100 is opaque)</string>
-    <string name="morphe_miniplayer_opacity_invalid_toast">Miniplayer overlay opacity must be between 0-100</string>
 
     <!-- misc.fix.fixBackToExitGesturePatch -->
     <string name="morphe_back_button_always_exits_feed_title">Back button exits the feed</string>

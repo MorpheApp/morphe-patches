@@ -34,6 +34,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
+import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -153,18 +154,8 @@ public final class MiniplayerPatch {
             "yt_outline_replay_arrow_vd_theme_24"
     );
 
-    private static final int OPACITY_LEVEL;
-
-    static {
-        int opacity = Settings.MINIPLAYER_OPACITY.get();
-
-        if (opacity < 0 || opacity > 100) {
-            Utils.showToastLong(str("morphe_miniplayer_opacity_invalid_toast"));
-            opacity = Settings.MINIPLAYER_OPACITY.resetToDefault();
-        }
-
-        OPACITY_LEVEL = (opacity * 255) / 100;
-    }
+    private static final int OPACITY_LEVEL =
+            (SeekBarPreference.clampToRange(Settings.MINIPLAYER_OPACITY) * 255) / 100;
 
     public static final class MiniplayerHorizontalDragAvailability implements Setting.Availability {
         @Override

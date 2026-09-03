@@ -19,6 +19,7 @@ import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.all.misc.resources.ResourceType
 import app.morphe.patches.all.misc.resources.getResourceId
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
+import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -45,8 +46,8 @@ private const val EXTENSION_CLASS =
 
 val hidePlayerOverlayButtonsPatch = bytecodePatch(
     name = "Hide player overlay buttons",
-    description = "Adds options to hide the player Cast, Autoplay, Captions, Previous & Next buttons, and the player " +
-        "control buttons background.",
+    description = "Adds options to hide the player Cast, Autoplay, Captions, Previous & Next buttons," +
+            " and to hide or change the opacity of the player control buttons background.",
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -69,6 +70,10 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
                 SwitchPreference("morphe_hide_player_control_buttons_background", summary = true),
                 SwitchPreference("morphe_hide_player_previous_next_buttons"),
                 SwitchPreference("morphe_hide_settings_button"),
+            ),
+            NonInteractivePreference(
+                key = "morphe_player_control_buttons_background_opacity",
+                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
             )
         )
 
@@ -260,7 +265,7 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
                         # The result of the inflate method is by default not moved to a register after the method is called.
                         # 21.21+ now uses the returned inflated view but the changes here still work.
                         move-result-object v$freeRegister
-                        invoke-static { v$freeRegister }, $EXTENSION_CLASS->hidePlayerControlButtonsBackground(Landroid/view/View;)Landroid/view/View;
+                        invoke-static { v$freeRegister }, $EXTENSION_CLASS->styleControlButtonsBackground(Landroid/view/View;)Landroid/view/View;
                     """
                 )
             }
