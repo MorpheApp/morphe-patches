@@ -53,6 +53,8 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.returnyoutubedislike.requests.RYDVoteData;
 import app.morphe.extension.shared.returnyoutubedislike.requests.ReturnYouTubeDislikeAPI;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.shared.theme.ThemeColorPatch;
+import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 
 /**
@@ -319,9 +321,12 @@ public class ReturnYouTubeDislike {
                 }
 
                 if (originalDislikeSpan != null && replacementLikeDislikeSpan != null) {
-                    if (spansHaveEqualTextAndColor(original, originalDislikeSpan)) {
-                        final Spanned originalSpanFinal = original;
-                        Logger.printDebug(() -> "Replacing span: " + originalSpanFinal + " with " +
+                    // Check if colors match to fix changing light/dark mode while player is opened
+                    // and avoid recreating the span. But if theme foreground color is replaced
+                    // then always use replacement span as-is.
+                    if ((ThemeColorPatch.isPatchIncluded() && SharedYouTubeSettings.THEME_COLOR_CHANGE_FOREGROUND.get())
+                            || spansHaveEqualTextAndColor(original, originalDislikeSpan)) {
+                        Logger.printDebug(() -> "Replacing span: " + original + " with " +
                                 "previously created dislike span of data: " + videoId);
                         return replacementLikeDislikeSpan;
                     }
@@ -426,6 +431,24 @@ public class ReturnYouTubeDislike {
         return new SpannableString(builder);
     }
 
+    private static SpannableString setSpanForegroundColor(SpannableString span) {
+        if (ThemeColorPatch.isPatchIncluded()) {
+            // Remove any existing colors
+            ForegroundColorSpan[] existing = span.getSpans(0, span.length(), ForegroundColorSpan.class);
+            for (ForegroundColorSpan fcs : existing) {
+                span.removeSpan(fcs);
+            }
+
+            span.setSpan(
+                    new ForegroundColorSpan(ThemeUtils.getAppForegroundColor()),
+                    0,
+                    span.length(),
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+            );
+        }
+        return span;
+    }
+
     /**
      * @return If the text is likely for a previously created likes/dislikes segmented span.
      */
@@ -452,8 +475,8 @@ public class ReturnYouTubeDislike {
     }
 
     protected static SpannableString newSpanUsingStylingOfAnotherSpan(Spanned sourceStyle, CharSequence newSpanText) {
-        if (sourceStyle == newSpanText && sourceStyle instanceof SpannableString) {
-            return (SpannableString) sourceStyle;
+        if (sourceStyle == newSpanText && sourceStyle instanceof SpannableString spannable) {
+            return setSpanForegroundColor(spannable);
         }
 
         SpannableString destination = new SpannableString(newSpanText);
@@ -461,6 +484,9 @@ public class ReturnYouTubeDislike {
         for (Object span : spans) {
             destination.setSpan(span, 0, destination.length(), sourceStyle.getSpanFlags(span));
         }
+
+        // Apply theme color.
+        setSpanForegroundColor(destination);
 
         return destination;
     }
