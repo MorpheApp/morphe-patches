@@ -158,6 +158,8 @@ public class Settings extends SharedYouTubeSettings {
     public static final LongSetting AISLIST_HIDE_COUNT_HOME = new LongSetting("morphe_aislist_hide_count_home", 0L);
     public static final LongSetting AISLIST_HIDE_COUNT_SEARCH = new LongSetting("morphe_aislist_hide_count_search", 0L);
     public static final StringSetting AISLIST_HIDES_24H = new StringSetting("morphe_aislist_hides_24h", "", false, false);
+    public static final BooleanSetting AISLIST_SUBMIT_FLYOUT_MENU = new BooleanSetting("morphe_aislist_submit_flyout_menu", FALSE);
+    public static final StringSetting AISLIST_SUBMIT_USERNAME = new StringSetting("morphe_aislist_submit_username", "", parent(AISLIST_SUBMIT_FLYOUT_MENU));
 
     // Alternative thumbnails
     public static final EnumSetting<ThumbnailOption> ALT_THUMBNAIL_HOME = new EnumSetting<>("morphe_alt_thumbnail_home", ThumbnailOption.ORIGINAL);

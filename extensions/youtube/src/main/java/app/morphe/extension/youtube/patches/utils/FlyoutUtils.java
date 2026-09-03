@@ -128,6 +128,13 @@ public final class FlyoutUtils {
                             : "yt_outline_experimental_clock_vd_theme_24"
             );
     private static final String saveToWatchLaterButtonName = str("morphe_save_to_watch_later_flyout_title");
+    private static final Drawable aiSListSubmitDrawable =
+            ResourceUtils.getDrawable(
+                    LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS
+                            ? "yt_outline_flag_black_24"
+                            : "yt_outline_experimental_flag_vd_theme_24"
+            );
+    private static final String aiSListSubmitButtonName = str("morphe_aislist_submit_title");
 
     private static WeakReference<TextView> customItemTextRef = new WeakReference<>(null);
 
@@ -305,9 +312,40 @@ public final class FlyoutUtils {
             );
         }
 
+        if (Settings.AISLIST_SUBMIT_FLYOUT_MENU.get()) {
+            String videoId = getSubmittableVideoId();
+            if (!videoId.isEmpty()) {
+                nextButtonIndex = addFlyoutButton(
+                        flyoutPanel,
+                        aiSListSubmitDrawable,
+                        aiSListSubmitButtonName,
+                        v -> {
+                            AiSListSubmitDialog.show(videoId);
+
+                            dismissFlyout();
+                        },
+                        nextButtonIndex
+                );
+            }
+        }
+
         if (nextButtonIndex > 0) {
             addDivider(flyoutPanel, nextButtonIndex);
         }
+    }
+
+    /**
+     * @return The video the flyout belongs to. The player menu has no feed item to read the id
+     *         from, so the video that is playing is used for it instead.
+     */
+    private static String getSubmittableVideoId() {
+        if (!flyoutVideoId.isEmpty()) {
+            return flyoutVideoId;
+        }
+        if (PlayerType.getCurrent().isMaximizedOrFullscreen()) {
+            return VideoInformation.getVideoId();
+        }
+        return "";
     }
 
     /**

@@ -304,6 +304,17 @@ val hideLayoutComponentsPatch = bytecodePatch(
                         )
                     ),
                     PreferenceCategory(
+                        key = "morphe_aislist_submit_category",
+                        sorting = Sorting.UNSORTED,
+                        preferences = setOf(
+                            SwitchPreference("morphe_aislist_submit_flyout_menu", summary = true),
+                            TextPreference(
+                                key = "morphe_aislist_submit_username",
+                                inputType = InputType.TEXT
+                            )
+                        )
+                    ),
+                    PreferenceCategory(
                         key = "morphe_hide_aislist_stats_category",
                         titleKey = "morphe_hide_stats_category_title",
                         sorting = Sorting.UNSORTED,
