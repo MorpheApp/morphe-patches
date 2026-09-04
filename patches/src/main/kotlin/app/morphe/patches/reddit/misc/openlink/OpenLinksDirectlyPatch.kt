@@ -21,6 +21,8 @@ val openLinksDirectlyPatch = bytecodePatch(
     name = "Open links directly",
     description = "Adds an option to skip over redirection URLs in external links."
 ) {
+    category("Integrations")
+
     compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(

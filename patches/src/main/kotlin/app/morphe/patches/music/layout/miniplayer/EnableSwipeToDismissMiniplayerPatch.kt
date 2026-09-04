@@ -46,6 +46,8 @@ val enableSwipeToDismissMiniplayerPatch = bytecodePatch(
     name = "Enable swipe to dismiss miniplayer",
     description = "Adds an option to enable dismissing the miniplayer by swiping down on it."
 ) {
+    category("Player")
+
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,

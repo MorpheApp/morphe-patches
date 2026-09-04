@@ -27,6 +27,8 @@ val disablePlaylistAutoplayPatch = bytecodePatch(
     name = "Disable playlist autoplay",
     description = "Adds an option to stop a playlist from automatically advancing to the next video.",
 ) {
+    category("Player")
+
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,

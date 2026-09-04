@@ -36,6 +36,7 @@ internal fun baseNetworkProxyPatch(
     description = "Adds settings to route supported network requests through an HTTP or HTTPS proxy.",
     default = false
 ) {
+    category("Privacy and network")
 
     block()
 

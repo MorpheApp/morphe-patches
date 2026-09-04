@@ -25,6 +25,8 @@ val hideCommunitiesShelf = bytecodePatch(
     name = "Hide communities shelf",
     description = "Adds an option to hide the related or suggested communities shelf in subreddits."
 ) {
+    category("Hide layout")
+
     compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(settingsPatch, versionCheckPatch)

@@ -36,6 +36,8 @@ val playbackInFeedsPatch = bytecodePatch(
     description = "Adds the 'Playback in feeds' setting of YouTube to the Morphe settings, " +
             "where it is always available even if YouTube hides it."
 ) {
+    category("Layout")
+
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,

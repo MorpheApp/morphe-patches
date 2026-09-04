@@ -31,6 +31,8 @@ val disableHapticFeedbackPatch = bytecodePatch(
     name = "Disable haptic feedback",
     description = "Adds an option to disable haptic feedback in the player for various actions.",
 ) {
+    category("Interaction")
+
     dependsOn(settingsPatch)
 
     compatibleWith(COMPATIBILITY_YOUTUBE)

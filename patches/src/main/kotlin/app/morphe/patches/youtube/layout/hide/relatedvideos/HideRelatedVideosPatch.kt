@@ -43,6 +43,8 @@ val hideRelatedVideosPatch = bytecodePatch(
     name = "Hide related videos",
     description = "Adds options to hide related videos."
 ) {
+    category("Hide layout")
+
     dependsOn(
         settingsPatch,
         sharedExtensionPatch,

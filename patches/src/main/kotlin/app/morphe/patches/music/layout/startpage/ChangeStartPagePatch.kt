@@ -30,6 +30,8 @@ val changeStartPagePatch = bytecodePatch(
     name = "Change start page",
     description = "Adds an option to set which page the app opens in instead of the homepage.",
 ) {
+    category("Layout")
+
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,

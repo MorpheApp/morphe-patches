@@ -112,6 +112,7 @@ internal fun baseCustomBrandingPatch(
     description = "Adds options to change the app icon and app name. " +
             "Branding cannot be changed for mounted (root) installations."
 ) {
+    category("Layout")
 
     availability { installer, _ ->
         when (installer) {

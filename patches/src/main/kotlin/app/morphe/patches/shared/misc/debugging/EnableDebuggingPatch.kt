@@ -50,6 +50,7 @@ internal fun enableDebuggingPatch(
     name = "Enable debugging",
     description = "Adds options for debugging and exporting Morphe logs to the clipboard.",
 ) {
+    category("Miscellaneous")
 
     dependsOn(
         resourcePatch {

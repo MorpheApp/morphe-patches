@@ -40,6 +40,8 @@ val hideNavigationButtonsPatch = bytecodePatch(
     name = "Hide navigation buttons",
     description = "Adds options to hide buttons in the navigation bar."
 ) {
+    category("Hide layout")
+
     compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(settingsPatch, versionCheckPatch)

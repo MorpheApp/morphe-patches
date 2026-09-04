@@ -42,6 +42,8 @@ val hideFlyoutMenuComponentsPatch = bytecodePatch(
     name = "Hide flyout menu components",
     description = "Adds options to hide individual items from the player and queue flyout menus."
 ) {
+    category("Hide layout")
+
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,

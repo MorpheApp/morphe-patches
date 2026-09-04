@@ -34,6 +34,8 @@ val hideTrendingShelvesPatch = bytecodePatch(
     name = "Hide Trending shelves",
     description = "Adds an option to hide the Trending shelves from feed and search suggestions."
 ) {
+    category("Hide layout")
+
     compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(settingsPatch, versionCheckPatch)

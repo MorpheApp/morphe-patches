@@ -35,6 +35,8 @@ val disableDislikeRedirectionPatch = bytecodePatch(
     description = "Adds an option to prevent skipping to the next track when the dislike " +
             "button is pressed."
 ) {
+    category("Interaction")
+
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,

@@ -87,6 +87,8 @@ internal fun spoofVideoStreamsPatch(
     name = "Spoof video streams",
     description = "Adds options to spoof the client video streams to fix playback."
 ) {
+    category("Spoofing")
+
     block()
 
     dependsOn(

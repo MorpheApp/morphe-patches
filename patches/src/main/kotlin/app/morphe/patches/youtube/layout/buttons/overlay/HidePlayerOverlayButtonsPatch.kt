@@ -49,6 +49,8 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
     description = "Adds options to hide the player Cast, Autoplay, Captions, Previous & Next buttons, " +
             "and to hide or change the opacity of the player control buttons background.",
 ) {
+    category("Player")
+
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,

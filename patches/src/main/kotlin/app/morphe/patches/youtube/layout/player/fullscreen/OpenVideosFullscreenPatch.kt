@@ -16,6 +16,8 @@ val openVideosFullscreenPatch = bytecodePatch(
     name = "Open videos fullscreen",
     description = "Adds options to automatically open videos in fullscreen portrait or landscape mode."
 ) {
+    category("Player")
+
     dependsOn(
         openVideosFullscreenHookPatch,
         settingsPatch,

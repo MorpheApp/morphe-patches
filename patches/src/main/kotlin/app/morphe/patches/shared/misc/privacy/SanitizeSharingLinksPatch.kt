@@ -30,6 +30,8 @@ internal fun sanitizeSharingLinksPatch(
     name = "Sanitize sharing links",
     description = "Removes the tracking query parameters from shared links.",
 ) {
+    category("Privacy and network")
+
     block()
 
     execute {

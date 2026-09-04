@@ -39,6 +39,8 @@ val scrobblingPatch = bytecodePatch(
     name = "Scrobbling",
     description = "Adds options to add played tracks to Last.fm and ListenBrainz."
 ) {
+    category("Integrations")
+
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,

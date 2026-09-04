@@ -36,6 +36,8 @@ internal fun baseChangeHeaderPatch(
     name = "Change header",
     description = "Adds an option to change the header logo in the top left corner of the app."
 ) {
+    category("Layout")
+
     val customHeaderResourceFileNames = variants.map { variant ->
         "${CUSTOM_HEADER_RESOURCE_NAME}_$variant.png"
     }.toTypedArray()

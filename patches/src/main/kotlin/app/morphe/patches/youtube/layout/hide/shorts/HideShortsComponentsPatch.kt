@@ -169,6 +169,8 @@ val hideShortsComponentsPatch = bytecodePatch(
     name = "Hide Shorts components",
     description = "Adds options to hide components related to Shorts."
 ) {
+    category("Hide layout")
+
     dependsOn(
         engagementPanelHookPatch,
         hideShortsComponentsResourcePatch,

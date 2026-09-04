@@ -41,6 +41,8 @@ val overrideCertificatePinningPatch = resourcePatch(
     description = "Overrides certificate pinning, allowing to inspect traffic via a proxy.",
     default = false
 ) {
+    category("Privacy and network")
+
     execute {
         val resXmlDirectory = get("res/xml")
         var networkSecurityFileName = "network_security_config.xml"

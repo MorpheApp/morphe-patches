@@ -37,6 +37,8 @@ val hideLayoutComponentsPatch = bytecodePatch(
     name = "Hide layout components",
     description = "Adds options to hide general layout components."
 ) {
+    category("Hide layout")
+
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,

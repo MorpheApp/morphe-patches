@@ -36,6 +36,8 @@ val lyricsPatch = bytecodePatch(
     name = "Third-party lyrics",
     description = "Adds an option to show synced lyrics from LRCLIB or KuGou in the lyrics panel."
 ) {
+    category("Integrations")
+
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,

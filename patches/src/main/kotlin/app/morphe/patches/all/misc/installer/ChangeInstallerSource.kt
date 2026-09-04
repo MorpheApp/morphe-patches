@@ -17,6 +17,8 @@ val changeInstallerSource = resourcePatch(
     description = "Spoofs the installer source so the app appears to be installed from an app store.",
     default = false
 ) {
+    category("Spoofing")
+
     val packageInstallerName = stringOption(
         key = "packageInstallerName",
         default = "com.android.vending",

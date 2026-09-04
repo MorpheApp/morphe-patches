@@ -77,6 +77,8 @@ val navigationBarPatch = bytecodePatch(
     description = "Adds options to hide and change the bottom navigation bar (such as the Shorts button) "
             + " and the upper navigation toolbar."
 ) {
+    category("Layout")
+
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,

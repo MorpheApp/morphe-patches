@@ -28,6 +28,8 @@ val disableScrollSpeedLimitPatch = bytecodePatch(
     description = "Adds an option to remove limits of how fast the home and " +
             "subscription feed can be scrolled."
 ) {
+    category("Layout")
+
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     dependsOn(

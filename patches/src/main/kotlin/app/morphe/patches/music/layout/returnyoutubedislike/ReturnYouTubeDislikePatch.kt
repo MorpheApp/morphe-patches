@@ -64,6 +64,8 @@ val returnYouTubeDislikePatch = bytecodePatch(
     name = "Return YouTube Dislike",
     description = "Adds an option to show the dislike count of tracks with Return YouTube Dislike.",
 ) {
+    category("Integrations")
+
     dependsOn(
         returnYouTubeDislikeResourcePatch,
         settingsPatch,

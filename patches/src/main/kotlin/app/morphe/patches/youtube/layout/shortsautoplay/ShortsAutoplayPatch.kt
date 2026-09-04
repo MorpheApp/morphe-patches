@@ -44,6 +44,8 @@ val shortsAutoplayPatch = bytecodePatch(
     name = "Shorts autoplay",
     description = "Adds options to automatically play the next Short.",
 ) {
+    category("Layout")
+
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,

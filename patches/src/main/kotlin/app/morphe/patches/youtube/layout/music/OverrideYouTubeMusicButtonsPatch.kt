@@ -48,6 +48,8 @@ val overrideYouTubeMusicButtonsPatch = bytecodePatch(
     name = "Override YouTube Music buttons",
     description = "Overrides YouTube Music buttons to open Morphe Music or any compatible third-party client.",
 ) {
+    category("Integrations")
+
     dependsOn(settingsPatch)
     dependsOn(overrideYouTubeMusicManifestPatch())
     compatibleWith(COMPATIBILITY_YOUTUBE)

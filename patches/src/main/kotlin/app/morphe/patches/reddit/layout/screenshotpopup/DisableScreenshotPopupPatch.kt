@@ -23,6 +23,8 @@ val disableScreenshotPopupPatch = bytecodePatch(
     name = "Disable screenshot popup",
     description = "Adds an option to disable the popup that appears when taking a screenshot."
 ) {
+    category("Hide layout")
+
     compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(settingsPatch)

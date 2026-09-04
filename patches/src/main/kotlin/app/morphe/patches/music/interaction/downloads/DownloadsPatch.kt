@@ -53,6 +53,8 @@ val downloadsPatch = bytecodePatch(
     name = "Downloads",
     description = "Adds support to download songs with an external downloader app using the in-app download button.",
 ) {
+    category("Interaction")
+
     dependsOn(
         downloadsResourcePatch,
         settingsPatch,

@@ -20,6 +20,8 @@ internal fun checkWatchHistoryDomainNameResolutionPatch(
     name = "Check watch history domain name resolution",
     description = "Checks if the device DNS server is preventing user watch history from being saved.",
 ) {
+    category("Privacy and network")
+
     block()
 
     execute {

@@ -227,6 +227,8 @@ val sponsorBlockPatch = bytecodePatch(
     name = "SponsorBlock",
     description = "Adds options to enable and configure SponsorBlock, which can skip undesired video segments such as sponsored content."
 ) {
+    category("Integrations")
+
     dependsOn(
         sharedExtensionPatch,
         resourceMappingPatch,

@@ -17,6 +17,8 @@ val bypassLinkRedirectsPatch = bytecodePatch(
     name = "Bypass link redirects",
     description = "Adds an option to bypass redirects and open the original link directly.",
 ) {
+    category("Privacy and network")
+
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,

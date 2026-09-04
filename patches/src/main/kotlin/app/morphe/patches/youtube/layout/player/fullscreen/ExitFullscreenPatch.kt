@@ -25,6 +25,7 @@ internal val exitFullscreenPatch = bytecodePatch(
     name = "Exit fullscreen mode",
     description = "Adds options to automatically exit fullscreen mode when a video reaches the end."
 ) {
+    category("Player")
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
 

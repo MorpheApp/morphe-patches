@@ -23,6 +23,8 @@ val spoofSignaturePatch = bytecodePatch(
     name = "Spoof signature",
     description = "Spoofs the signature of the app to fix notification issues."
 ) {
+    category("Spoofing")
+
     compatibleWith(COMPATIBILITY_REDDIT_INCLUDING_LEGACY)
 
     dependsOn(sharedExtensionPatch, changeInstallerSource, versionCheckPatch)

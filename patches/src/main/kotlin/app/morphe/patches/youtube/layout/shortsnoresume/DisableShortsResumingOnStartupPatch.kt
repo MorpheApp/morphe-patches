@@ -30,6 +30,8 @@ val disableShortsResumingOnStartupPatch = bytecodePatch(
     name = "Disable Shorts resuming on startup",
     description = "Adds an option to disable Shorts from resuming on app startup when Shorts were last being watched.",
 ) {
+    category("Layout")
+
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,

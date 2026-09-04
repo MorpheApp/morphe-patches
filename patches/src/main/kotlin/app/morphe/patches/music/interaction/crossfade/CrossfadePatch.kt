@@ -177,6 +177,8 @@ val crossfadePatch = bytecodePatch(
     description = "Adds a true dual-player crossfade between consecutive tracks. " +
             "Requires YouTube Music 9.00 or newer; on older versions the patch is a no-op.",
 ) {
+    category("Video and audio")
+
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,

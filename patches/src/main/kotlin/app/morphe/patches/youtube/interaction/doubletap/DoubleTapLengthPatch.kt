@@ -12,6 +12,8 @@ val doubleTapLengthPatch = resourcePatch(
     name = "Double tap to seek",
     description = "Adds additional double-tap to seek values to the YouTube settings menu."
 ) {
+    category("Interaction")
+
     dependsOn(
         sharedExtensionPatch,
     )

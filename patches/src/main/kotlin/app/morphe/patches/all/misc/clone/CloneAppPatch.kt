@@ -125,6 +125,8 @@ val cloneAppPatch = resourcePatch(
             "may cause app crashes or other unexpected behavior.",
     default = false
 ) {
+    category("Miscellaneous")
+
     packageNameOption = stringOption(
         key = "packageName",
         default = "Default",

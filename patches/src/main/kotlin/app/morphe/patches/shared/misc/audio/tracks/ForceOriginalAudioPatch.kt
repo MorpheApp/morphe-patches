@@ -61,6 +61,7 @@ internal fun forceOriginalAudioPatch(
     name = "Force original audio",
     description = "Adds an option to always use the original audio track.",
 ) {
+    category("Video and audio")
 
     block()
 

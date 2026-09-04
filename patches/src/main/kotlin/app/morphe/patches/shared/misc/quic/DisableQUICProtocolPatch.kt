@@ -23,6 +23,8 @@ internal fun disableQUICProtocolPatch(
     name = "Disable QUIC protocol",
     description = "Adds an option to disable QUIC (Quick UDP Internet Connections) network protocol."
 ) {
+    category("Privacy and network")
+
     block()
 
     execute {

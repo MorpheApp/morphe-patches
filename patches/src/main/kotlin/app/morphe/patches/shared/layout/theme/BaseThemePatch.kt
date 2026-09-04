@@ -387,6 +387,8 @@ internal fun baseThemePatch(
     name = "Theme",
     description = "Adds options for theming, and settings to change the app foreground and background colors.",
 ) {
+    category("Layout")
+
     darkThemeColorOption()
 
     if (includeLightColor) {

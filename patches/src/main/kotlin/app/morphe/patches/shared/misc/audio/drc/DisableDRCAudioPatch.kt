@@ -28,6 +28,7 @@ internal fun disableDRCAudioPatch(
     name = "Disable DRC audio",
     description = "Adds an option to disable DRC (Dynamic Range Compression) audio."
 ) {
+    category("Video and audio")
 
     block()
 

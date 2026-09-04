@@ -22,6 +22,8 @@ val showViewCountPatch = bytecodePatch(
     name = "Show view count",
     description = "Adds an option to show the view count of Posts."
 ) {
+    category("Layout")
+
     compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(

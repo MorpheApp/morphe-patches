@@ -26,6 +26,8 @@ val openChannelOfLiveAvatarPatch = bytecodePatch(
     name = "Open channel of live avatar",
     description = "Adds an option to prevent a channel's current live video from opening when tapping its avatar."
 ) {
+    category("Interaction")
+
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     dependsOn(

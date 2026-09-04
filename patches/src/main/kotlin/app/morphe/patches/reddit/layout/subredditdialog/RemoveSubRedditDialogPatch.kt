@@ -24,6 +24,8 @@ val removeSubRedditDialogPatch = bytecodePatch(
     name = "Remove subreddit dialog",
     description = "Adds options to remove the NSFW community warning and notifications suggestion dialogs by dismissing them automatically."
 ) {
+    category("Hide layout")
+
     compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(

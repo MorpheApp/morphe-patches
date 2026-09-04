@@ -19,6 +19,8 @@ val hideRelatedVideoOverlayPatch = bytecodePatch(
     name = "Hide related video overlay",
     description = "Adds an option to hide the related video overlay shown when swiping up in fullscreen.",
 ) {
+    category("Player")
+
     dependsOn(
         settingsPatch,
         sharedExtensionPatch,

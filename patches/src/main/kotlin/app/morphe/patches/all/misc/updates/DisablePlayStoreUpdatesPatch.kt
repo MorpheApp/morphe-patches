@@ -76,6 +76,7 @@ internal val disablePlayStoreUpdatesPatch = bytecodePatch(
             "app is installed by root mounting",
     default = false
 ) {
+    category("Miscellaneous")
 
     dependsOn(disablePlayStoreUpdatesResourcePatch)
 

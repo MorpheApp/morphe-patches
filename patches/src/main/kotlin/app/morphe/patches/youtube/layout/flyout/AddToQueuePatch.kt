@@ -75,6 +75,8 @@ val addToQueuePatch = bytecodePatch(
     name = "Add to queue",
     description = "Overrides the feed flyout 'Play next in queue' with the Morphe video queue."
 ) {
+    category("Interaction")
+
     dependsOn(
         settingsPatch,
         sharedExtensionPatch,

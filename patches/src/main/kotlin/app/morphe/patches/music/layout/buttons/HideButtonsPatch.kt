@@ -36,6 +36,8 @@ val hideButtonsPatch = bytecodePatch(
     name = "Hide buttons",
     description = "Adds options to hide the cast, history, notification, and search buttons."
 ) {
+    category("Hide layout")
+
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,

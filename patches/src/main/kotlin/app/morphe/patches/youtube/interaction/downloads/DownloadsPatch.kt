@@ -66,6 +66,8 @@ val downloadsPatch = bytecodePatch(
     description = "Adds support to download videos with an external downloader app " +
         "using the in-app download button or a video player action button.",
 ) {
+    category("Interaction")
+
     dependsOn(
         downloadsResourcePatch,
         videoInformationPatch,

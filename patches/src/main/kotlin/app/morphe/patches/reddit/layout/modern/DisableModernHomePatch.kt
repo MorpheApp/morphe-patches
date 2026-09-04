@@ -28,6 +28,8 @@ val disableModernHomePatch = bytecodePatch(
     name = "Disable modern home",
     description = "Adds an option to disable the modern home UI. This patch works with Reddit 2026.24.0 and earlier."
 ) {
+    category("Layout")
+
     compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(settingsPatch, versionCheckPatch)

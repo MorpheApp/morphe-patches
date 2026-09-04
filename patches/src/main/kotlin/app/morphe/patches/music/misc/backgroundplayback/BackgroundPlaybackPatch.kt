@@ -11,6 +11,8 @@ val backgroundPlaybackPatch = bytecodePatch(
     name = "Remove background playback restrictions",
     description = "Removes restrictions on background playback, including playing kids videos in the background.",
 ) {
+    category("Video and audio")
+
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,

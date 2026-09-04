@@ -28,6 +28,8 @@ val rememberRepeatStatePatch = bytecodePatch(
     name = "Remember repeat state",
     description = "Adds an option to remember the repeat state when playing a new track or playlist."
 ) {
+    category("Interaction")
+
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,

@@ -31,6 +31,7 @@ internal fun openSystemShareSheetPatch(
     name = "Open system share sheet",
     description = "Adds an option to always open the system share sheet instead of the in-app share sheet."
 ) {
+    category("Integrations")
 
     dependsOn(
         sharedExtensionPatch,

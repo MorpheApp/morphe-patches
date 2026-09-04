@@ -23,6 +23,8 @@ val disableLayoutUpdatesPatch = bytecodePatch(
     name = "Disable layout updates",
     description = "Adds an option to disable server side layout updates and use an older UI.",
 ) {
+    category("Miscellaneous")
+
     dependsOn(
         sharedExtensionPatch,
         settingsPatch

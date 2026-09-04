@@ -35,6 +35,8 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
     name = "Open Shorts in regular player",
     description = "Adds options to open Shorts in the regular video player.",
 ) {
+    category("Player")
+
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,

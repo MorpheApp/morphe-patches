@@ -32,6 +32,8 @@ val hideAdsPatch = bytecodePatch(
     name = "Hide ads",
     description = "Adds options to hide ads."
 ) {
+    category("Ads")
+
     compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(settingsPatch, versionCheckPatch)

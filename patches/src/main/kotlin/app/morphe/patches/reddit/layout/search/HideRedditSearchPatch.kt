@@ -19,6 +19,8 @@ val hideRedditSearchPatch = resourcePatch(
             "This patch does not work with root mounting",
     default = false
 ) {
+    category("Hide layout")
+
     compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(spoofSignaturePatch)

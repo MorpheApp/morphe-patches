@@ -16,6 +16,8 @@ val captionsPatch = bytecodePatch(
     name = "Captions",
     description = "Adds an option to disable captions from being automatically enabled or to set caption cookies.",
 ) {
+    category("Video and audio")
+
     dependsOn(
         autoCaptionsPatch,
         captionCookiesPatch,

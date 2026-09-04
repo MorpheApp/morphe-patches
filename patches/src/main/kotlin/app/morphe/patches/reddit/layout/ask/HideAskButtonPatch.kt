@@ -24,6 +24,8 @@ val hideAskButtonPatch = bytecodePatch(
     name = "Hide Ask button",
     description = "Adds an option to hide Ask button in the search bar."
 ) {
+    category("Hide layout")
+
     compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(

@@ -28,6 +28,8 @@ val mediaNotificationControlsPatch = bytecodePatch(
     description = "Adds options to disable the seekbar and previous/next buttons in the " +
             "media notification and headphone controls.",
 ) {
+    category("Integrations")
+
     dependsOn(
         sharedExtensionPatch,
         settingsPatch

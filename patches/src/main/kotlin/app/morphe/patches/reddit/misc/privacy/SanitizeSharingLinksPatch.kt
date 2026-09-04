@@ -21,6 +21,8 @@ val sanitizeSharingLinksPatch = bytecodePatch(
     name = "Sanitize sharing links",
     description = "Adds an option to sanitize sharing links by removing tracking query parameters."
 ) {
+    category("Privacy and network")
+
     compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(settingsPatch)

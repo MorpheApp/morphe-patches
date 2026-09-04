@@ -22,6 +22,8 @@ val customBrandingNamePatch = resourcePatch(
     description = "Changes the Reddit app name to the name specified in patch options.",
     default = false
 ) {
+    category("Layout")
+
     compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(spoofSignaturePatch)

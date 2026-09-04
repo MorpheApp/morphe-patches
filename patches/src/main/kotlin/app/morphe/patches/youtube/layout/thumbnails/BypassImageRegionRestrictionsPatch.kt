@@ -17,6 +17,8 @@ val bypassImageRegionRestrictionsPatch = bytecodePatch(
     description = "Adds an option to use a different host for user avatar and channel images " +
         "and can fix missing images that are blocked in some countries.",
 ) {
+    category("Privacy and network")
+
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,

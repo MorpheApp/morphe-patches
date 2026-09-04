@@ -29,6 +29,8 @@ val videoQualityPatch = bytecodePatch(
     name = "Video quality",
     description = "Adds options to set default video qualities and always use the advanced video quality menu."
 ) {
+    category("Video and audio")
+
     dependsOn(
         rememberVideoQualityPatch,
         advancedVideoQualityMenuPatch,

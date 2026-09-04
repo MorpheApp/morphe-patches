@@ -17,6 +17,8 @@ val hideFilterBarPatch = bytecodePatch(
     name = "Hide filter bar",
     description = "Adds an option to hide the filter bar at the top of the homepage."
 ) {
+    category("Hide layout")
+
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,

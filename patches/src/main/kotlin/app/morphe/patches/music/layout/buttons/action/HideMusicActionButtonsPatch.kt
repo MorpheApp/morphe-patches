@@ -35,6 +35,8 @@ val hideMusicActionButtonsPatch = bytecodePatch(
     name = "Hide music action buttons",
     description = "Adds options to hide action buttons under the player."
 ) {
+    category("Player")
+
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,

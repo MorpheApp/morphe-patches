@@ -35,6 +35,8 @@ val hideAdsPatch = bytecodePatch(
     name = "Hide ads",
     description = "Adds options to hide fullscreen ads, Premium promotions and video ads."
 ) {
+    category("Ads")
+
     dependsOn(
         sharedExtensionPatch,
         hideFullscreenAdsPatch(PreferenceScreen.ADS),

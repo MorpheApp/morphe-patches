@@ -99,6 +99,8 @@ val hideLayoutComponentsPatch = bytecodePatch(
     description = "Adds options to hide general layout components."
 
 ) {
+    category("Hide layout")
+
     dependsOn(
         lithoFilterPatch,
         settingsPatch,

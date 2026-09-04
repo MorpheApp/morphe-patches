@@ -31,6 +31,8 @@ val hideSettingsMenuFilterPatch = bytecodePatch(
     name = "Settings menu filter",
     description = "Adds an option to hide items on the standard YouTube settings screen by their visible name."
 ) {
+    category("Hide layout")
+
     dependsOn(
         settingsPatch,
         sharedExtensionPatch

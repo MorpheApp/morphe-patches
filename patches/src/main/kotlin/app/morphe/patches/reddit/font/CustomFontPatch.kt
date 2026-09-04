@@ -22,6 +22,8 @@ val customFontPatch = bytecodePatch(
     description = "Adds an option to replace Reddit Sans / Roboto with a custom TTF or OTF font file at runtime.",
     default = true,
 ) {
+    category("Layout")
+
     compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(settingsPatch)

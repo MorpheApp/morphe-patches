@@ -42,6 +42,8 @@ internal fun poTokenProviderPatch(
     name = "PoToken provider",
     description = "Adds option to get PoToken using an external PoToken minter app."
 ) {
+    category("Spoofing")
+
     // The execute block still has to check the package name, because the CLI does not report one.
     availability { installer, _ ->
         when (installer) {

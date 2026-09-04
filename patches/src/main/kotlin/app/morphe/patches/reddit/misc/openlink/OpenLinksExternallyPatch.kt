@@ -22,6 +22,8 @@ val openLinksExternallyPatch = bytecodePatch(
     name = "Open links externally",
     description = "Adds an option to always open links in your browser instead of with the in-app-browser."
 ) {
+    category("Integrations")
+
     compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(

@@ -33,6 +33,8 @@ val playbackSpeedPatch = bytecodePatch(
     description = "Adds options to customize available playback speeds, set a default playback speed, " +
         "and show a speed dialog button in the video player.",
 ) {
+    category("Video and audio")
+
     dependsOn(
         customPlaybackSpeedPatch,
         rememberPlaybackSpeedPatch,

@@ -29,6 +29,8 @@ val hideSidebarComponentsPatch = bytecodePatch(
     name = "Hide sidebar components",
     description = "Adds options to hide the sidebar components."
 ) {
+    category("Hide layout")
+
     compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(settingsPatch)

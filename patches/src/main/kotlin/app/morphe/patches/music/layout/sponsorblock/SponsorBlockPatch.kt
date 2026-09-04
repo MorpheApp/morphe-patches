@@ -41,6 +41,8 @@ val musicSponsorBlockPatch = bytecodePatch(
     name = "SponsorBlock",
     description = "Adds options to enable and configure SponsorBlock, which can skip non-music segments."
 ) {
+    category("Integrations")
+
     dependsOn(
         sharedExtensionPatch,
         musicVideoInformationPatch,

@@ -19,6 +19,8 @@ val customPlayerOverlayOpacityPatch = bytecodePatch(
     name = "Custom player overlay opacity",
     description = "Adds an option to change the opacity of the video player background when player controls are visible.",
 ) {
+    category("Player")
+
     dependsOn(settingsPatch,
         resourceMappingPatch,
         playerOverlayButtonsSettingsPatch

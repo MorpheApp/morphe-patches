@@ -22,6 +22,8 @@ val forceSystemFontPatch = bytecodePatch(
     description = "Adds an option that renders Reddit with the device system font instead of Reddit Sans / Roboto.",
     default = true,
 ) {
+    category("Layout")
+
     compatibleWith(COMPATIBILITY_REDDIT)
 
     dependsOn(settingsPatch)

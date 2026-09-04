@@ -51,6 +51,8 @@ val playAllButtonPatch = bytecodePatch(
     name = "Play all",
     description = "Adds an option to play all the videos from a channel and to display play all button in the video player.",
 ) {
+    category("Interaction")
+
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,

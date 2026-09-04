@@ -30,6 +30,8 @@ val disableSignInToTVPopupPatch = bytecodePatch(
     description = "Adds options to disable the popups asking to sign into or connect to a TV " +
         "on the same local network.",
 ) {
+    category("Hide layout")
+
     dependsOn(
         settingsPatch,
         sharedExtensionPatch,

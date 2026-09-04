@@ -31,6 +31,8 @@ val disableVideoCodecsPatch = bytecodePatch(
     name = "Disable video codecs",
     description = "Adds options to disable or force HDR, and to disable VP9 codecs.",
 ) {
+    category("Video and audio")
+
     dependsOn(
         sharedExtensionPatch,
         settingsPatch

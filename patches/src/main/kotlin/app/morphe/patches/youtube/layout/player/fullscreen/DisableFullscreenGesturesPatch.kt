@@ -34,6 +34,8 @@ val disableFullscreenGesturesPatch = bytecodePatch(
     name = "Disable fullscreen gestures",
     description = "Adds options to selectively disable gestures for entering and exiting fullscreen mode, and to disable pinch-to-zoom.",
 ) {
+    category("Player")
+
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,

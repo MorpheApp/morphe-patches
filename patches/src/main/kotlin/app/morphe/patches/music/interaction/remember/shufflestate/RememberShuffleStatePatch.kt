@@ -41,6 +41,8 @@ val rememberShuffleStatePatch = bytecodePatch(
     name = "Remember shuffle state",
     description = "Adds an option to remember the shuffle state when playing a new track or playlist."
 ) {
+    category("Interaction")
+
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,

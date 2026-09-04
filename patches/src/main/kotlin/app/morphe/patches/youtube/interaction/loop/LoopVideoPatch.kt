@@ -30,6 +30,8 @@ val loopVideoPatch = bytecodePatch(
     name = "Loop video",
     description = "Adds an option to loop videos and display loop video button in the video player.",
 ) {
+    category("Interaction")
+
     dependsOn(
         sharedExtensionPatch,
         loopVideoButtonPatch,

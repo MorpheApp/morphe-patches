@@ -58,6 +58,8 @@ val voiceOverTranslationPatch = bytecodePatch(
     name = "Voice over translation",
     description = "Adds additional voice over languages using text-to-speech synchronized to the video playback.",
 ) {
+    category("Video and audio")
+
     dependsOn(
         sharedExtensionPatch,
         videoInformationPatch,
