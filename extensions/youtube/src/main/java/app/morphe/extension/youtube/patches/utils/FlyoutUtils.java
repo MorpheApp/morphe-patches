@@ -132,12 +132,19 @@ public final class FlyoutUtils {
                             : "yt_outline_experimental_clock_vd_theme_24"
             );
     private static final String saveToWatchLaterButtonName = str("morphe_save_to_watch_later_flyout_title");
+    private static final Drawable aiSListSubmitDrawable =
+            ResourceUtils.getDrawable(
+                    LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS
+                            ? "yt_outline_flag_black_24"
+                            : "yt_outline_experimental_flag_vd_theme_24"
+            );
+    private static final String aiSListSubmitButtonName = str("morphe_aislist_submit_title");
     private static final Drawable adWhitelistDrawable =
             getSettingsScreenDrawable("morphe_settings_screen_01_ads");
     private static final Drawable playbackSpeedWhitelistDrawable =
             getSettingsScreenDrawable("morphe_settings_screen_12_video");
 
-    private static WeakReference<TextView> customItemTextRef = new WeakReference<>(null);
+    private static final List<WeakReference<TextView>> customItemTextRefs = new ArrayList<>();
 
     private static String currentButtonName = "";
     private static int currentButtonIndex;
@@ -290,6 +297,10 @@ public final class FlyoutUtils {
     private static void addFlyoutElements(Object flyoutPanel) {
         int nextButtonIndex = 0;
 
+        // The items of the menu that is closing are gone, and their typeface is copied
+        // onto whatever this call adds instead.
+        customItemTextRefs.clear();
+
         // TODO: Add playlists compatibility to Morphe's queue.
         if (Settings.QUEUE_ADD_FLYOUT_MENU.get() &&
                 flyoutPlaylistId.isEmpty() &&
@@ -321,6 +332,23 @@ public final class FlyoutUtils {
             );
         }
 
+        if (Settings.AISLIST_SUBMIT_FLYOUT_MENU.get()) {
+            String videoId = getSubmittableVideoId();
+            if (!videoId.isEmpty()) {
+                nextButtonIndex = addFlyoutButton(
+                        flyoutPanel,
+                        aiSListSubmitDrawable,
+                        aiSListSubmitButtonName,
+                        v -> {
+                            AiSListSubmitDialog.show(videoId);
+
+                            dismissFlyout();
+                        },
+                        nextButtonIndex
+                );
+            }
+        }
+
         if (Settings.ADS_CHANNEL_WHITELIST_FLYOUT_MENU.get()) {
             nextButtonIndex = addWhitelistButton(
                     flyoutPanel, WhitelistType.ADS, adWhitelistDrawable, nextButtonIndex);
@@ -334,6 +362,20 @@ public final class FlyoutUtils {
         if (nextButtonIndex > 0) {
             addDivider(flyoutPanel, nextButtonIndex);
         }
+    }
+
+    /**
+     * @return The video the flyout belongs to. The player menu has no feed item to read the id
+     *         from, so the video that is playing is used for it instead.
+     */
+    private static String getSubmittableVideoId() {
+        if (!flyoutVideoId.isEmpty()) {
+            return flyoutVideoId;
+        }
+        if (PlayerType.getCurrent().isMaximizedOrFullscreen()) {
+            return VideoInformation.getVideoId();
+        }
+        return "";
     }
 
     private static int addWhitelistButton(Object flyoutPanel, WhitelistType type,
@@ -428,16 +470,19 @@ public final class FlyoutUtils {
      * so the custom item only matches them by taking the typeface of a bound item.
      */
     private static void copyListItemTypeface(ViewGroup itemList) {
-        TextView customItemText = customItemTextRef.get();
-        if (customItemText == null || ITEM_TEXT_ID == 0) {
+        if (customItemTextRefs.isEmpty() || ITEM_TEXT_ID == 0) {
             return;
         }
 
         if (itemList.getChildAt(0).findViewById(ITEM_TEXT_ID) instanceof TextView itemText) {
-            // setTypeface always requests a layout, so only call it when the font really differs.
             Typeface itemTypeface = itemText.getTypeface();
-            if (customItemText.getTypeface() != itemTypeface) {
-                customItemText.setTypeface(itemTypeface);
+
+            for (WeakReference<TextView> customItemTextRef : customItemTextRefs) {
+                TextView customItemText = customItemTextRef.get();
+                // setTypeface always requests a layout, so only call it when the font really differs.
+                if (customItemText != null && customItemText.getTypeface() != itemTypeface) {
+                    customItemText.setTypeface(itemTypeface);
+                }
             }
         }
     }
@@ -679,7 +724,7 @@ public final class FlyoutUtils {
         TextView textView = customButton.findViewById(ITEM_TEXT_ID);
         if (textView != null) {
             textView.setText(text);
-            customItemTextRef = new WeakReference<>(textView);
+            customItemTextRefs.add(new WeakReference<>(textView));
         }
 
         ImageView iconView = customButton.findViewById(

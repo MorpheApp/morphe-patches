@@ -346,6 +346,32 @@ Limitations:
     <string name="morphe_hide_aislist_attribution_summary">"Data is provided by AiSList
 
 Tap here to open AiSlopList.com and see downloads for other platforms"</string>
+    <string name="morphe_aislist_submit_category_title">Report AI channels</string>
+    <string name="morphe_aislist_submit_flyout_menu_title">Add report entry to video menu</string>
+    <string name="morphe_aislist_submit_flyout_menu_summary">Add an entry to the video menu that reports the channel of a video to AiSList</string>
+    <string name="morphe_aislist_submit_username_title">Submitter name</string>
+    <string name="morphe_aislist_submit_username_summary">Name shown next to your reports on the public AiSList leaderboard. Reporting is unavailable while this is empty</string>
+    <string name="morphe_aislist_submit_title">Report AI channel</string>
+    <string name="morphe_aislist_submit_dialog_message">"Submit %s to AiSList, using this video as evidence?
+
+Only report channels that:
+• Use AI voices, visuals, scripts or music as their main content
+• Mass produce content with AI tools and little human work
+
+Do not report channels that only discuss AI, or use AI for some parts of their videos.
+
+Reports are public and are reviewed before a channel is added to a list. Removal is only possible through a request on GitHub"</string>
+    <string name="morphe_aislist_submit_already_blocklisted">This channel is already on the AiSList blocklist</string>
+    <string name="morphe_aislist_submit_already_warnlisted">This channel is already on the AiSList warnlist</string>
+    <string name="morphe_aislist_submit_dialog_confirm">Report</string>
+    <string name="morphe_aislist_submit_no_username">Set a submitter name in the AI channel filter settings to report channels</string>
+    <string name="morphe_aislist_submit_resolving">Looking up the channel…</string>
+    <string name="morphe_aislist_submit_failed_channel">Cannot find the channel of this video</string>
+    <string name="morphe_aislist_submit_success">Channel reported and awaiting review</string>
+    <string name="morphe_aislist_submit_failed_conflict">AiSList could not save the report, try again later</string>
+    <string name="morphe_aislist_submit_failed_rate_limit">Too many reports were sent, try again later</string>
+    <string name="morphe_aislist_submit_failed_rejected">AiSList rejected the report</string>
+    <string name="morphe_aislist_submit_failed">Report failed, check your connection</string>
 
     <!-- ad.hideAdsPatch -->
     <string name="morphe_ads_channel_whitelist_title">Channel ad whitelist</string>
