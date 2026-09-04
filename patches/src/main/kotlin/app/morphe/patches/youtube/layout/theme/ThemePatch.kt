@@ -48,12 +48,14 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.LayoutConstructorFingerprint
 import app.morphe.util.forEachChildElement
+import app.morphe.util.getReference
 import app.morphe.util.insertLiteralOverride
 import app.morphe.util.matchAllMethodIndicesForEach
 import app.morphe.util.registersUsed
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.WideLiteralInstruction
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import org.w3c.dom.Element
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/theme/ThemePatch;"
@@ -69,6 +71,14 @@ private val STATIC_WHITE_ATTRIBUTE_NAMES = setOf(
 
 /** Value of 'android.R.color.white'. A public id of the framework never changes. */
 private const val ANDROID_WHITE_COLOR_ID = 0x106000B
+
+/** Parameters of the method the app tints a player transport button with. */
+private val PLAYER_BUTTON_TINT_PARAMETERS = listOf(
+    "Lcom/google/android/libraries/youtube/common/ui/TouchImageView;",
+    "I",
+    "Landroid/graphics/drawable/Drawable;",
+    "I"
+)
 
 private val youTubeColorNamesDark = {
     THEME_DEFAULT_COLOR_NAMES_DARK + if (is_21_06_or_greater)
@@ -529,15 +539,25 @@ val themePatch = baseThemePatch(
         val staticWhiteColorId = getResourceId(ResourceType.COLOR, STATIC_WHITE_COLOR_NAME)
 
         LayoutConstructorFingerprint.method.apply {
-            implementation!!.instructions.toList().withIndex()
-                .filter { (_, instruction) ->
-                    (instruction as? WideLiteralInstruction)?.wideLiteral == staticWhiteColorId
-                }
-                .forEach { (index, instruction) ->
-                    val colorRegister = (instruction as OneRegisterInstruction).registerA
+            val methodInstructions = implementation!!.instructions.toList()
 
-                    replaceInstruction(index, "const v$colorRegister, $ANDROID_WHITE_COLOR_ID")
-                }
+            // A target that tints no button uses the color for something else of its own here.
+            val tintsPlayerButtons = methodInstructions.any { instruction ->
+                instruction.getReference<MethodReference>()
+                    ?.parameterTypes?.map(CharSequence::toString) == PLAYER_BUTTON_TINT_PARAMETERS
+            }
+
+            if (tintsPlayerButtons) {
+                methodInstructions.withIndex()
+                    .filter { (_, instruction) ->
+                        (instruction as? WideLiteralInstruction)?.wideLiteral == staticWhiteColorId
+                    }
+                    .forEach { (index, instruction) ->
+                        val colorRegister = (instruction as OneRegisterInstruction).registerA
+
+                        replaceInstruction(index, "const v$colorRegister, $ANDROID_WHITE_COLOR_ID")
+                    }
+            }
         }
 
         // A tint list the app builds hands its colors over as an array, so the array is rewritten
