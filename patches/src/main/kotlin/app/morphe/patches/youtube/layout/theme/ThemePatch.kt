@@ -18,7 +18,7 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.all.misc.resources.ResourceType
-import app.morphe.patches.all.misc.resources.getResourceId
+import app.morphe.patches.all.misc.resources.resourceLiteral
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.layout.theme.STYLE_DEFAULT_COLOR_NAMES_DARK
 import app.morphe.patches.shared.layout.theme.STYLE_DEFAULT_COLOR_NAMES_LIGHT
@@ -38,6 +38,7 @@ import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.layout.seekbar.seekbarColorPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_06_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_08_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
@@ -47,15 +48,13 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.LayoutConstructorFingerprint
+import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.forEachChildElement
-import app.morphe.util.getReference
 import app.morphe.util.insertLiteralOverride
 import app.morphe.util.matchAllMethodIndicesForEach
 import app.morphe.util.registersUsed
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.WideLiteralInstruction
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import org.w3c.dom.Element
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/theme/ThemePatch;"
@@ -71,14 +70,6 @@ private val STATIC_WHITE_ATTRIBUTE_NAMES = setOf(
 
 /** Value of 'android.R.color.white'. A public id of the framework never changes. */
 private const val ANDROID_WHITE_COLOR_ID = 0x106000B
-
-/** Parameters of the method the app tints a player transport button with. */
-private val PLAYER_BUTTON_TINT_PARAMETERS = listOf(
-    "Lcom/google/android/libraries/youtube/common/ui/TouchImageView;",
-    "I",
-    "Landroid/graphics/drawable/Drawable;",
-    "I"
-)
 
 private val youTubeColorNamesDark = {
     THEME_DEFAULT_COLOR_NAMES_DARK + if (is_21_06_or_greater)
@@ -263,8 +254,8 @@ val themePatch = baseThemePatch(
 
                     resourcesNode.forEachChildElement { style ->
                         style.forEachChildElement { item ->
-                            if (item.getAttribute("name") in STATIC_WHITE_ATTRIBUTE_NAMES
-                                && item.textContent == "@color/$STATIC_WHITE_COLOR_NAME"
+                            if (item.textContent == "@color/$STATIC_WHITE_COLOR_NAME"
+                                && item.getAttribute("name") in STATIC_WHITE_ATTRIBUTE_NAMES
                             ) {
                                 item.textContent = "@android:color/white"
                             }
@@ -536,27 +527,14 @@ val themePatch = baseThemePatch(
 
         // The player previous and next buttons read the same color as a value and not through
         // an attribute, so the id itself is swapped. A disabled one carries a gray of its own.
-        val staticWhiteColorId = getResourceId(ResourceType.COLOR, STATIC_WHITE_COLOR_NAME)
-
-        LayoutConstructorFingerprint.method.apply {
-            val methodInstructions = implementation!!.instructions.toList()
-
-            // A target that tints no button uses the color for something else of its own here.
-            val tintsPlayerButtons = methodInstructions.any { instruction ->
-                instruction.getReference<MethodReference>()
-                    ?.parameterTypes?.map(CharSequence::toString) == PLAYER_BUTTON_TINT_PARAMETERS
-            }
-
-            if (tintsPlayerButtons) {
-                methodInstructions.withIndex()
-                    .filter { (_, instruction) ->
-                        (instruction as? WideLiteralInstruction)?.wideLiteral == staticWhiteColorId
-                    }
-                    .forEach { (index, instruction) ->
-                        val colorRegister = (instruction as OneRegisterInstruction).registerA
-
-                        replaceInstruction(index, "const v$colorRegister, $ANDROID_WHITE_COLOR_ID")
-                    }
+        if (is_20_31_or_greater) {
+            LayoutConstructorFingerprint.method.apply {
+                findInstructionIndicesReversedOrThrow(
+                    resourceLiteral(ResourceType.COLOR, STATIC_WHITE_COLOR_NAME)
+                ).forEach { index ->
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
+                    replaceInstruction(index, "const v$register, $ANDROID_WHITE_COLOR_ID")
+                }
             }
         }
 
