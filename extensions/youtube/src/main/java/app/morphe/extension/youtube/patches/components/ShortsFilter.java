@@ -618,16 +618,20 @@ public final class ShortsFilter extends Filter {
      * Injection point.
      */
     public static void hidePivotBar(String tag) {
-        if (HIDE_SHORTS_NAVIGATION_BAR) {
-            if (REEL_WATCH_FRAGMENT_INIT_PLAYBACK.contains(tag)) {
-                PivotBar pivotBar = pivotBarRef.get();
-                if (pivotBar == null) return;
+        try {
+            if (HIDE_SHORTS_NAVIGATION_BAR) {
+                if (REEL_WATCH_FRAGMENT_INIT_PLAYBACK.contains(tag)) {
+                    PivotBar pivotBar = pivotBarRef.get();
+                    if (pivotBar == null) return;
 
-                Logger.printDebug(() -> "Hiding pivot bar by setting to GONE");
-                pivotBar.setVisibility(View.GONE);
-            } else {
-                Logger.printDebug(() -> "Ignoring tag: " + tag);
+                    Logger.printDebug(() -> "Hiding pivot bar by setting to GONE");
+                    pivotBar.setVisibility(View.GONE);
+                } else {
+                    Logger.printDebug(() -> "Ignoring tag: " + tag);
+                }
             }
+        } catch (Exception ex) {
+            Logger.printException(() -> "hidePivotBar failure", ex);
         }
     }
 
@@ -635,26 +639,30 @@ public final class ShortsFilter extends Filter {
      * Injection point.
      */
     public static void setBottomBarContainer(View view) {
-        if (HIDE_SHORTS_NAVIGATION_BAR && view.getLayoutParams() instanceof FrameLayout.LayoutParams lp) {
-            bottomBarContainerRef = new WeakReference<>(view);
-            if (originalLayoutParams == null) {
-                originalLayoutParams = lp;
+        try {
+            if (HIDE_SHORTS_NAVIGATION_BAR && view.getLayoutParams() instanceof FrameLayout.LayoutParams lp) {
+                bottomBarContainerRef = new WeakReference<>(view);
+                if (originalLayoutParams == null) {
+                    originalLayoutParams = lp;
 
-                ShortsPlayerState.getOnChange().addObserver((Boolean isOpen) -> {
-                    View navigationBar = bottomBarContainerRef.get();
-                    if (navigationBar != null && navigationBar.getLayoutParams() instanceof FrameLayout.LayoutParams) {
-                        FrameLayout.LayoutParams params;
-                        if (isOpen) {
-                            params = zeroLayoutParams;
-                            Logger.printDebug(() -> "Hiding bottom bar container by setting layout params");
-                        } else {
-                            params = originalLayoutParams;
+                    ShortsPlayerState.getOnChange().addObserver((Boolean isOpen) -> {
+                        View navigationBar = bottomBarContainerRef.get();
+                        if (navigationBar != null && navigationBar.getLayoutParams() instanceof FrameLayout.LayoutParams) {
+                            FrameLayout.LayoutParams params;
+                            if (isOpen) {
+                                params = zeroLayoutParams;
+                                Logger.printDebug(() -> "Hiding bottom bar container by setting layout params");
+                            } else {
+                                params = originalLayoutParams;
+                            }
+                            navigationBar.setLayoutParams(params);
                         }
-                        navigationBar.setLayoutParams(params);
-                    }
-                    return Unit.INSTANCE;
-                });
+                        return Unit.INSTANCE;
+                    });
+                }
             }
+        } catch (Exception ex) {
+            Logger.printException(() -> "setBottomBarContainer failure", ex);
         }
     }
 
@@ -671,24 +679,27 @@ public final class ShortsFilter extends Filter {
      * Injection point.
      */
     public static void hideGestureHints(View view) {
-        if (Settings.HIDE_SHORTS_GESTURE_HINTS.get() && view instanceof ViewStub stub) {
+        try {
+            if (Settings.HIDE_SHORTS_GESTURE_HINTS.get() && view instanceof ViewStub stub) {
+                stub.setOnInflateListener((stubView, inflatedView) -> {
 
-            stub.setOnInflateListener((stubView, inflatedView) -> {
+                    inflatedView.setVisibility(View.GONE);
 
-                inflatedView.setVisibility(View.GONE);
+                    ViewGroup.LayoutParams params = inflatedView.getLayoutParams();
+                    if (params != null) {
+                        params.width = 0;
+                        params.height = 0;
 
-                ViewGroup.LayoutParams params = inflatedView.getLayoutParams();
-                if (params != null) {
-                    params.width = 0;
-                    params.height = 0;
+                        if (params instanceof ViewGroup.MarginLayoutParams marginParams) {
+                            marginParams.setMargins(0, 0, 0, 0);
+                        }
 
-                    if (params instanceof ViewGroup.MarginLayoutParams marginParams) {
-                        marginParams.setMargins(0, 0, 0, 0);
+                        inflatedView.setLayoutParams(params);
                     }
-
-                    inflatedView.setLayoutParams(params);
-                }
-            });
+                });
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "hideGestureHints failure", ex);
         }
     }
 }
