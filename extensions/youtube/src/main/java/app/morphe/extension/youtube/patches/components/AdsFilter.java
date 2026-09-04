@@ -24,6 +24,7 @@ import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.Filter;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
 import app.morphe.extension.youtube.patches.NavigationBarPatch;
+import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.spoof.SpoofOSNamePatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.whitelist.ChannelWhitelist;
@@ -337,8 +338,15 @@ public final class AdsFilter extends Filter {
      * Injection point.
      */
     public static boolean hideVideoAds() {
-        return Settings.HIDE_VIDEO_ADS.get()
-                && !ChannelWhitelist.isCurrentChannelWhitelisted(WhitelistType.ADS);
+        if (!Settings.HIDE_VIDEO_ADS.get()) {
+            return false;
+        }
+
+        final boolean whitelisted = ChannelWhitelist.isCurrentChannelWhitelisted(WhitelistType.ADS);
+        Logger.printDebug(() -> (whitelisted ? "Allowing" : "Hiding") + " video ads of channel: "
+                + VideoInformation.getChannelId());
+
+        return !whitelisted;
     }
 
     /**
