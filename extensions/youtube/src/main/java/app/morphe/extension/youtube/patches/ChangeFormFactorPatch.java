@@ -61,8 +61,8 @@ public class ChangeFormFactorPatch {
     @Nullable
     private static final Integer FORM_FACTOR_TYPE = FORM_FACTOR.formFactorType;
     private static final boolean IS_BROKEN_FORM_FACTOR = FORM_FACTOR.isBroken;
-    private static final boolean TABLET_LAYOUT_IN_PLAYER =
-            FORM_FACTOR != FormFactor.LARGE && Settings.TABLET_LAYOUT_IN_PLAYER.get();
+    private static final boolean TABLET_LAYOUT_IN_PLAYER = VersionCheckPatch.IS_20_31_OR_GREATER
+            && FORM_FACTOR != FormFactor.LARGE && Settings.TABLET_LAYOUT_IN_PLAYER.get();
 
     public static final class TabletLayoutInPlayerAvailability implements Setting.Availability {
         @Override
@@ -86,6 +86,7 @@ public class ChangeFormFactorPatch {
         if (FORM_FACTOR_TYPE == null) {
             return original;
         }
+
         if (IS_BROKEN_FORM_FACTOR
                 && !PlayerType.getCurrent().isMaximizedOrFullscreen()
                 && !NavigationBar.isSearchBarActive()) {
@@ -136,15 +137,12 @@ public class ChangeFormFactorPatch {
     /**
      * Injection point.
      * <p>
-     * This method check whatever the list of player's litho elements is empty, when the tablet
-     * layout setting is set to off but the app is not restarted correctly, by running in
-     * onResume() mode instead of onCreate().
+     * If the form factor is spoofed as a tablet, 'shelfRenderer' is used instead of 'itemSectionRenderer'.
+     * Sometimes the app attempts to parse with 'itemSectionRenderer' instead of 'shelfRenderer', in which case the app crashes.
+     * As a workaround for this, parsing is ignored if an invalid itemSectionRender index is detected.
      * <p>
      **/
-     public static boolean checkPlayerLithoElementsListSize(List<?> list, int listIndex) {
-         if (list == null || list.isEmpty()) {
-             return false;
-         }
-         return listIndex >= 0 && listIndex < list.size();
+     public static boolean checkItemSectionRenderer(List<?> list, int listIndex) {
+         return list != null && !list.isEmpty() && listIndex >= 0 && listIndex < list.size();
      }
 }

@@ -33,7 +33,13 @@ internal object PlayerControlsVisibilityEntityModelFingerprint : Fingerprint(
     )
 )
 
- internal object PlayerTopControlsInflateFingerprint : Fingerprint(
+internal object ModernPlayerTopControlsFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45750838L)
+    )
+)
+
+internal object PlayerTopControlsInflateFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf(),

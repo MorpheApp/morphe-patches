@@ -21,7 +21,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -37,19 +36,15 @@ import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.preference.TwoStatePreference;
-import android.text.Editable;
 import android.text.InputType;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.text.style.BackgroundColorSpan;
 import android.text.style.ForegroundColorSpan;
 import android.util.Pair;
-import android.util.TypedValue;
 import android.view.HapticFeedbackConstants;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -76,16 +71,19 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Scanner;
+import java.util.function.Consumer;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.patches.SettingsNamePatch;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedSettings;
 import app.morphe.extension.shared.settings.preference.about.MorpheAboutPreference;
+import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 
@@ -215,7 +213,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
         PreferenceScreen root = getPreferenceScreen();
         if (root == null) return null;
         List<CharSequence> path = new ArrayList<>();
-        path.add(str("morphe_settings_title"));
+        path.add(SettingsNamePatch.getSettingsName());
         if (target == root) return path;
         return searchPreferencePath(root, target, path) ? path : null;
     }
@@ -274,12 +272,14 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
     private ComponentCallbacks2 configurationListener;
     private int currentUiMode = -1;
-    private static final int READ_REQUEST_CODE = 42;
-    private static final int WRITE_REQUEST_CODE = 43;
-    private static final int WRITE_LOGS_REQUEST_CODE = 44;
+    private static final int WRITE_TEXT_REQUEST_CODE = 45;
+    private static final int READ_TEXT_REQUEST_CODE = 46;
 
     private String existingSettings = "";
-    private String pendingLogsToExport = null;
+
+    private String pendingTextToExport = null;
+    private Consumer<Boolean> pendingTextExportResult = null;
+    private Consumer<String> pendingTextImportResult = null;
 
     private EditText currentImportExportEditText;
     private Dialog currentImportExportDialog = null;
@@ -608,26 +608,13 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
             currentImportExportDialog = dialogPair.first;
 
-            final int margin = Dim.dp4;
-
             Button buttonExport = CustomDialog.createButton(context, null,
                     str("morphe_settings_export_file"), this::exportActivity, false, false);
             Button buttonImport = CustomDialog.createButton(context, null,
                     str("morphe_settings_import_file"), this::importActivity, false, false);
 
-            LinearLayout.LayoutParams exportParams = new LinearLayout.LayoutParams(0, Dim.dp36, 1.0f);
-            exportParams.setMargins(0, 0, margin, 0);
-            buttonExport.setLayoutParams(exportParams);
-
-            LinearLayout.LayoutParams importParams = new LinearLayout.LayoutParams(0, Dim.dp36, 1.0f);
-            importParams.setMargins(margin, 0, 0, 0);
-            buttonImport.setLayoutParams(importParams);
-
-            LinearLayout fileButtonsContainer = getLinearLayout(context);
-            fileButtonsContainer.addView(buttonExport);
-            fileButtonsContainer.addView(buttonImport);
-
-            dialogPair.second.addView(fileButtonsContainer, 2);
+            dialogPair.second.addView(
+                    CustomDialog.createButtonRow(context, buttonExport, buttonImport), 2);
 
             dialogPair.first.setOnDismissListener(d -> {
                 currentImportExportEditText = null;
@@ -658,20 +645,6 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     }
 
     @NonNull
-    private static LinearLayout getLinearLayout(Context context) {
-        LinearLayout fileButtonsContainer = new LinearLayout(context);
-        fileButtonsContainer.setOrientation(LinearLayout.HORIZONTAL);
-        LinearLayout.LayoutParams fbParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-
-        int marginTop = (int) TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_DIP, 16f, context.getResources().getDisplayMetrics());
-        fbParams.setMargins(0, marginTop, 0, 0);
-        fileButtonsContainer.setLayoutParams(fbParams);
-        return fileButtonsContainer;
-    }
-
-    @NonNull
     private EditText getEditText(Context context) {
         EditText editText = new EditText(context);
         editText.setText(existingSettings);
@@ -684,33 +657,123 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
         return editText;
     }
 
+    /**
+     * @param kind What is exported, such as the settings or the debug logs.
+     * @return App name, kind and date, suggested as the name of an exported file.
+     */
+    public static String exportFileName(String kind) {
+        String appName = Utils.getApplicationName().replaceAll("\\s+", "_");
+        String date = new SimpleDateFormat("yyyy-MM-dd", Locale.US).format(new Date());
+
+        return appName + "_" + kind + "_" + date + ".txt";
+    }
+
     public void exportActivity() {
+        String textToExport = currentImportExportEditText != null
+                ? currentImportExportEditText.getText().toString()
+                : existingSettings;
+
+        exportTextActivity(exportFileName("Settings"), textToExport, success -> showLocalizedToast(
+                success ? "morphe_settings_export_file_success" : "morphe_settings_export_file_failed",
+                success ? "Settings exported successfully" : "Failed to export settings"));
+    }
+
+    public void importActivity() {
+        importTextActivity(text -> {
+            if (text == null) {
+                showLocalizedToast(
+                        "morphe_settings_import_file_failed",
+                        "Failed to import settings");
+                return;
+            }
+
+            if (currentImportExportEditText != null) {
+                currentImportExportEditText.setText(text);
+                showLocalizedToast("morphe_settings_import_file_success",
+                        "Settings imported successfully, tap Save to apply");
+            } else {
+                importSettingsText(getContext(), text);
+            }
+        });
+    }
+
+    /**
+     * Opens the file picker to save arbitrary text, for preferences that have
+     * their own import and export dialog.
+     *
+     * @param fileName Name suggested to the user.
+     * @param text     Text to write.
+     * @param onResult Called with the result, or not called if the user picks no file.
+     */
+    public void exportTextActivity(String fileName, String text, Consumer<Boolean> onResult) {
         try {
-            Setting.exportToJson(getActivity());
-            String appName = Utils.getApplicationName();
-            String safeAppName = appName.replaceAll("\\s+", "_");
-            String formatDate = new SimpleDateFormat("yyyy-MM-dd", Locale.US).format(new Date());
-            String fileName = safeAppName + "_Settings_" + formatDate + ".txt";
+            pendingTextToExport = text;
+            pendingTextExportResult = onResult;
 
             Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
             intent.addCategory(Intent.CATEGORY_OPENABLE);
             intent.setType("text/plain");
             intent.putExtra(Intent.EXTRA_TITLE, fileName);
-            startActivityForResult(intent, WRITE_REQUEST_CODE);
+            startActivityForResult(intent, WRITE_TEXT_REQUEST_CODE);
         } catch (Exception ex) {
-            Logger.printException(() -> "exportActivity failure", ex);
+            Logger.printException(() -> "exportTextActivity failure", ex);
         }
     }
 
-    public void importActivity() {
+    /**
+     * Opens the file picker to read arbitrary text, for preferences that have
+     * their own import and export dialog.
+     *
+     * @param onResult Called with the text read, or null if it could not be read.
+     *                 Not called if the user picks no file.
+     */
+    public void importTextActivity(Consumer<String> onResult) {
         try {
+            pendingTextImportResult = onResult;
+
             Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
             intent.addCategory(Intent.CATEGORY_OPENABLE);
             intent.setType("*/*");
-            startActivityForResult(intent, READ_REQUEST_CODE);
+            startActivityForResult(intent, READ_TEXT_REQUEST_CODE);
         } catch (Exception ex) {
-            Logger.printException(() -> "importActivity failure", ex);
+            Logger.printException(() -> "importTextActivity failure", ex);
         }
+    }
+
+    private void saveTextToUri(Uri uri) {
+        if (pendingTextExportResult == null) return;
+
+        boolean success = false;
+        try (OutputStream out = getContext().getContentResolver().openOutputStream(uri, "rwt")) {
+            if (out != null) {
+                out.write(pendingTextToExport.getBytes(StandardCharsets.UTF_8));
+                success = true;
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "saveTextToUri failure", ex);
+        }
+
+        pendingTextExportResult.accept(success);
+        pendingTextToExport = null;
+        pendingTextExportResult = null;
+    }
+
+    @SuppressWarnings("CharsetObjectCanBeUsed")
+    private void readTextFromUri(Uri uri) {
+        if (pendingTextImportResult == null) return;
+
+        String text = null;
+        try (InputStream in = getContext().getContentResolver().openInputStream(uri)) {
+            if (in != null) {
+                Scanner scanner = new Scanner(in, StandardCharsets.UTF_8.name()).useDelimiter("\\A");
+                text = scanner.hasNext() ? scanner.next() : "";
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "readTextFromUri failure", ex);
+        }
+
+        pendingTextImportResult.accept(text);
+        pendingTextImportResult = null;
     }
 
     private void exportToClipboard(String logsToExport) {
@@ -735,53 +798,15 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
         }
     }
 
-    @SuppressWarnings("deprecation")
     private void exportToFile(String logsToExport) {
-        try {
-            if (!BaseSettings.DEBUG.get() || logsToExport == null || logsToExport.trim().isEmpty()) {
-                Utils.showToastShort(str("morphe_debug_logs_none_found"));
-                return;
-            }
-
-            pendingLogsToExport = logsToExport;
-
-            String appName = Utils.getApplicationName();
-            String safeAppName = appName.replaceAll("\\s+", "_");
-
-            String formatDate = new SimpleDateFormat("yyyy-MM-dd", Locale.US).format(new Date());
-            String fileName = safeAppName + "_Debug_Logs_" + formatDate + ".txt";
-
-            Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
-            intent.addCategory(Intent.CATEGORY_OPENABLE);
-            intent.setType("text/plain");
-            intent.putExtra(Intent.EXTRA_TITLE, fileName);
-
-            startActivityForResult(intent, WRITE_LOGS_REQUEST_CODE);
-        } catch (Exception ex) {
-            Logger.printException(() -> "Failed to launch file picker", ex);
+        if (!BaseSettings.DEBUG.get() || logsToExport == null || logsToExport.trim().isEmpty()) {
+            Utils.showToastShort(str("morphe_debug_logs_none_found"));
+            return;
         }
-    }
 
-    private void saveLogsToUri(Uri uri) {
-        if (pendingLogsToExport == null) return;
-
-        try {
-            try (OutputStream out = getContext().getContentResolver().openOutputStream(uri, "rwt")) {
-                if (out != null) {
-                    out.write(pendingLogsToExport.getBytes(StandardCharsets.UTF_8));
-                }
-            }
-
-            String messageKey = "morphe_debug_export_logs_success";
-            Utils.showToastLong(ResourceUtils.getIdentifier(ResourceType.STRING, messageKey) != 0
-                    ? str(messageKey)
-                    : "Debug logs exported successfully");
-        } catch (Exception e) {
-            Utils.showToastLong("Failed to export debug logs");
-            Logger.printException(() -> "saveLogsToUri failure", e);
-        } finally {
-            pendingLogsToExport = null;
-        }
+        exportTextActivity(exportFileName("Debug_Logs"), logsToExport, success -> showLocalizedToast(
+                success ? "morphe_debug_export_logs_success" : "morphe_debug_export_logs_failed",
+                success ? "Debug logs exported successfully" : "Failed to export debug logs"));
     }
 
     private static class LogAdapter extends BaseAdapter {
@@ -873,6 +898,11 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
             ListView logViewer = new ListView(context);
             LogAdapter logAdapter = new LogAdapter(context, logLines);
             logViewer.setAdapter(logAdapter);
+            logViewer.setDividerHeight(0);
+            logViewer.setPadding(0, Dim.dp4, 0, Dim.dp4);
+            logViewer.setOverScrollMode(View.OVER_SCROLL_NEVER);
+            logViewer.setBackground(CustomDialog.createRoundedBackground(10, ThemeUtils.getEditTextBackground()));
+            logViewer.setClipToOutline(true);
 
             Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                     context,
@@ -892,51 +922,22 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
             int margin = Dim.dp(16);
 
-            EditText searchBar = new EditText(context);
-            searchBar.setTextSize(16);
-            searchBar.setHint(str("morphe_debug_logs_search_hint"));
-            searchBar.setSingleLine(true);
-            searchBar.setHapticFeedbackEnabled(false);
+            final Handler searchHandler = new Handler(Looper.getMainLooper());
+            final Runnable[] searchRunnable = {null};
+
+            EditText searchBar = CustomDialog.createSearchBar(context,
+                    str("morphe_debug_logs_search_hint"), query -> {
+                if (searchRunnable[0] != null) {
+                    searchHandler.removeCallbacks(searchRunnable[0]);
+                }
+                searchRunnable[0] = () -> logAdapter.filter(query);
+                searchHandler.postDelayed(searchRunnable[0], 200);
+            });
 
             LinearLayout.LayoutParams searchParams = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            searchParams.setMargins(0, 0, 0, margin);
+            searchParams.setMargins(0, 0, 0, Dim.dp8);
             searchBar.setLayoutParams(searchParams);
-
-            searchBar.addTextChangedListener(new TextWatcher() {
-                final Handler searchHandler = new Handler(Looper.getMainLooper());
-                Runnable searchRunnable;
-
-                @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-                @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    final String query = s.toString();
-
-                    Drawable clearIcon = context.getDrawable(android.R.drawable.ic_menu_close_clear_cancel);
-                    if (clearIcon != null) {
-                        clearIcon.setBounds(0, 0, Dim.dp20, Dim.dp20);
-                    }
-                    searchBar.setCompoundDrawables(
-                            null, null, TextUtils.isEmpty(s) ? null : clearIcon, null);
-
-                    if (searchRunnable != null) searchHandler.removeCallbacks(searchRunnable);
-
-                    searchRunnable = () -> logAdapter.filter(query);
-                    searchHandler.postDelayed(searchRunnable, 200);
-                }
-                @Override public void afterTextChanged(Editable s) {}
-            });
-
-            searchBar.setOnTouchListener((v, event) -> {
-                if (event.getAction() == MotionEvent.ACTION_UP) {
-                    Drawable[] compoundDrawables = searchBar.getCompoundDrawables();
-                    if (compoundDrawables[2] != null && event.getRawX() >=
-                            (searchBar.getRight() - compoundDrawables[2].getBounds().width())) {
-                        searchBar.setText("");
-                        return true;
-                    }
-                }
-                return false;
-            });
 
             LinearLayout fileButtonsContainer = new LinearLayout(context);
             fileButtonsContainer.setOrientation(LinearLayout.HORIZONTAL);
@@ -957,7 +958,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
             LinearLayout.LayoutParams listParams = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT, 0, 1.0f);
-            listParams.setMargins(0, margin / 2, 0, 0);
+            listParams.setMargins(0, 0, 0, 0);
             logViewer.setLayoutParams(listParams);
 
             LinearLayout mainLayout = dialogPair.second;
@@ -982,12 +983,10 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == WRITE_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
-            exportTextToFile(data.getData());
-        } else if (requestCode == READ_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
-            importTextFromFile(data.getData());
-        } else if (requestCode == WRITE_LOGS_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
-            saveLogsToUri(data.getData());
+        if (requestCode == WRITE_TEXT_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
+            saveTextToUri(data.getData());
+        } else if (requestCode == READ_TEXT_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
+            readTextFromUri(data.getData());
         }
     }
 
@@ -996,51 +995,6 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
             Utils.showToastLong(str(resourceKey));
         } else {
             Utils.showToastLong(fallbackMessage);
-        }
-    }
-
-    private void exportTextToFile(Uri uri) {
-        try (OutputStream out = getContext().getContentResolver().openOutputStream(uri, "rwt")) {
-            if (out != null) {
-                String textToExport = existingSettings;
-                if (currentImportExportEditText != null) {
-                    textToExport = currentImportExportEditText.getText().toString();
-                }
-                out.write(textToExport.getBytes(StandardCharsets.UTF_8));
-
-                showLocalizedToast(
-                        "morphe_settings_export_file_success",
-                        "Settings exported successfully");
-            }
-        } catch (Exception e) {
-            showLocalizedToast(
-                    "morphe_settings_export_file_failed",
-                    "Failed to export settings");
-            Logger.printException(() -> "exportTextToFile failure", e);
-        }
-    }
-
-    @SuppressWarnings("CharsetObjectCanBeUsed")
-    private void importTextFromFile(Uri uri) {
-        try (InputStream in = getContext().getContentResolver().openInputStream(uri)) {
-            if (in != null) {
-                Scanner scanner = new Scanner(in, StandardCharsets.UTF_8.name()).useDelimiter("\\A");
-                String result = scanner.hasNext() ? scanner.next() : "";
-
-                if (currentImportExportEditText != null) {
-                    currentImportExportEditText.setText(result);
-                    showLocalizedToast(
-                            "morphe_settings_import_file_success",
-                            "Settings imported successfully, tap Save to apply");
-                } else {
-                    importSettingsText(getContext(), result);
-                }
-            }
-        } catch (Exception e) {
-            showLocalizedToast(
-                    "morphe_settings_import_file_failed",
-                    "Failed to import settings");
-            Logger.printException(() -> "importTextFromFile failure", e);
         }
     }
 
@@ -1165,7 +1119,18 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
                     sortValue = Utils.removePunctuationToLowercase(preference.getTitle());
                     break;
                 case BY_KEY:
-                    sortValue = preference.getKey();
+                    String key = preference.getKey();
+                    if (key == null) {
+                        if (preference instanceof NoTitlePreferenceCategory noTitlePref) {
+                            // Use first preference and not the category.
+                            key = noTitlePref.getPreference(0).getKey();
+                        } else {
+                            throw new IllegalStateException(
+                                    "Group is sort by key but preference has null key: " + preference
+                            );
+                        }
+                    }
+                    sortValue = key;
                     break;
                 case UNSORTED:
                     continue; // Keep original sorting.

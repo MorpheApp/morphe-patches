@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Tá stair chuardaigh folamh</string>
   <string name="morphe_settings_search_empty_history_summary">Chun stair an chuardaigh a shábháil, clóscríobh iarratas cuardaigh agus brúigh Iontráil</string>
   <string name="morphe_settings_search_history_title">Taispeáin stair cuardaigh na socruithe</string>
+  <string name="morphe_settings_name_title">Ainm socruithe Morphe</string>
+  <string name="morphe_settings_name_default_item">Réamhshocrú</string>
+  <string name="morphe_settings_name_entry_2">Breiseáin</string>
+  <string name="morphe_settings_name_entry_3">Coigeartuithe</string>
+  <string name="morphe_settings_name_entry_4">Am morphing</string>
+  <string name="morphe_settings_name_custom_item">Saincheaptha</string>
+  <string name="morphe_settings_name_custom_item_hint">Cuir isteach ainm</string>
+  <string name="morphe_settings_name_empty_warning">Ní féidir an t-ainm a fhágáil folamh</string>
   <string name="morphe_show_menu_icons_title">Taispeáin deilbhíní socruithe Morphe</string>
   <string name="morphe_settings_menu_copy_path">Cóipeáilte: %s</string>
   <string name="morphe_language_title">Teanga Morphe</string>
@@ -107,13 +115,64 @@ Ní chuirfear ar an eolas thú faoi aon imeachtaí gan choinne."</string>
   <string name="morphe_debug_logs_clear_toast">Glanadh logaí dífhabhtaithe</string>
   <string name="morphe_debug_feature_flags_manager_title">Bainisteoir bratacha gnéithe</string>
   <string name="morphe_debug_feature_flags_manager_summary">Bainistigh bratacha gné booléacha</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Bratacha gné gníomhacha (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Bratacha gné blocáilte (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Bratacha gné cuardaigh…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Neamhghníomhach (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Gníomhach (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Blocáilte (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Éigeantach (%s)</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Uath</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">As</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Ar</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Fórsa ar</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Bloc</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Bain</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Bratacha gné sábháilte</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Athshocrú bratacha gnéithe</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Bratacha gné cóipeáilte chuig an ghearrthaisce</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Atosaigh an aip chun an socrú seo a úsáid</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Easpórtáil agus iompórtáil</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">Iompórtáilte %s brataí gné</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Níor aimsíodh aon bhrataí gné</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Easpórtáladh brataí gné go rathúil</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Theip ar easpórtáil na mbrataí gné</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Brataí gné lódáilte, brúigh Sábháil le cur i bhfeidhm</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Theip ar an gcomhad a léamh</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Cuardach dénártha</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Faigheann sé amach céard is cúis le hiompar aip.
+
+Tá leath de na %s brataí blocáilte, agus tar éis gach atosaigh insíonn tú an bhfuil an t-iompar fós i láthair.
+
+Atáirg an t-iompar uair amháin sula dtosaíonn tú, ar shlí eile beidh brataí nach bhfuil iarrtha ag an aip fós in easnamh ón gcuardach."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Tosaigh</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Níl aon bhrat le cuardach.
+
+Ní féidir ach brataí a bhfuil an aip tar éis teacht orthu agus nach bhfuil éigeantach faoi láthair a úsáid i gcuardach dénártha."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Céim %1$s
+
+%2$s brataí fágtha, agus %3$s díobh blocáilte don chéim seo.
+
+Atosaigh an aip, seiceáil an bhfuil an t-iompar i láthair, ansin freagair thíos."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Cuardach bratach gné ar siúl</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">Tá iompar i láthair</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">Níl an t-iompar i láthair</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Cealaigh cuardach dénártha</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Cuardach dénártha cealaithe</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"Is é brat gné %s is cúis leis an iompar.
+
+Tá sé blocáilte anois."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Níorbh fhéidir bratach gné a aimsiú.
+
+Ní cosúil go bhfuil iompar an aip á rialú ag bratach gné."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Níor aimsíodh bratach gné amháin.
+
+D’imigh an t-iompar níos luaithe sa chuardach, mar sin d’fhéadfadh níos mó ná bratach amháin a bheith i gceist nó go raibh ceann de na freagraí mícheart."</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Oscail na socruithe MicroG</string>

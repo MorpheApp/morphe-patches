@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">搜索历史为空</string>
   <string name="morphe_settings_search_empty_history_summary">要保存搜索历史，请键入搜索查询并按回车键</string>
   <string name="morphe_settings_search_history_title">显示设置搜索历史记录</string>
+  <string name="morphe_settings_name_title">Morphe 设置名称</string>
+  <string name="morphe_settings_name_default_item">默认</string>
+  <string name="morphe_settings_name_entry_2">附加</string>
+  <string name="morphe_settings_name_entry_3">微调</string>
+  <string name="morphe_settings_name_entry_4">变形时间</string>
+  <string name="morphe_settings_name_custom_item">自定义</string>
+  <string name="morphe_settings_name_custom_item_hint">输入名称</string>
+  <string name="morphe_settings_name_empty_warning">名称不能为空</string>
   <string name="morphe_show_menu_icons_title">显示Morphe设置图标</string>
   <string name="morphe_settings_menu_copy_path">已复制：%s</string>
   <string name="morphe_language_title">Morphe 语言</string>
@@ -107,13 +115,64 @@ Second \"item\" text"</string>
   <string name="morphe_debug_logs_clear_toast">调试日志已清除</string>
   <string name="morphe_debug_feature_flags_manager_title">功能标志 Manager</string>
   <string name="morphe_debug_feature_flags_manager_summary">管理布尔功能标志</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">活动功能标志 (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">已阻止的功能标志 (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">搜索功能标志…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">未启用 (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">已启用 (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">已阻止 (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">强制 (%s)</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">自动</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">关</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">开</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">强制开启</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">阻止</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">移除</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">功能标志已保存</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">功能标志已重置</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">功能标志已复制到剪贴板</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">为了使用此设置，请重启应用</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">导出和导入</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">已导入 %s 个功能开关</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">未找到功能开关</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">功能开关导出成功</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">导出功能开关失败</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">功能开关已加载，点击保存以应用</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">读取文件失败</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">二分查找</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"找出哪个功能开关导致应用行为。
+
+将半数的 %s 个开关阻止，每次重启后，你需告知该行为是否仍然存在。
+
+开始前请先重现该行为一次，否则应用尚未请求的开关将不会出现在搜索中。"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">开始</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"没有可搜索的功能开关。
+
+只有应用已命中且当前未强制开启的开关才能用于二分查找。"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"第 %1$s 步
+
+剩余 %2$s 个开关，其中 %3$s 个被阻止用于此步。
+
+重启应用，检查行为是否存在，然后在下方回答。"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">功能开关搜索进行中</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">行为存在</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">行为不存在</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">取消二分查找</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">已取消二分查找</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"功能开关 %s 导致该行为。
+
+它现已被阻止"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"未找到功能开关。
+
+应用行为似乎不受功能开关控制。"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"未能找到单一功能开关。
+
+在搜索早期行为就消失了，因此可能有多个开关涉及，或者某个答案有误。"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">打开 MicroG 设置</string>

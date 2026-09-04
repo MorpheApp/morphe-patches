@@ -142,7 +142,7 @@ public class ThemePatch extends BaseThemePatch {
                 spinner.setPopupBackgroundDrawable(new ColorDrawable(backgroundColor));
             }
         } catch (Exception ex) {
-            Logger.printException(() -> "Overriding spinner popup background failed", ex);
+            Logger.printException(() -> "overrideSpinnerPopupBackground failure", ex);
         }
     }
 }

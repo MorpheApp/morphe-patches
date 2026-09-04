@@ -50,7 +50,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_title">گەڕانەوە سەر ڕاستەقینەی ڕاستگۆ</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">هیچ ڕاستگۆیەکی ئەندازی نەیادەخرێت</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">خەڵادانەوەی ئەم ناسنامەیە دەبێتە هۆی کێشە لە پەرباسەدا.</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">دۆخراوه‌ت: ڕاستکردنه‌وه‌ی ڕێگه‌ی ڤیدیو &gt; چوارده‌وه‌ی Android VR-ه‌ ده‌رباره‌ی نۆی‌ن</string>
   <string name="morphe_spoof_video_streams_client_type_title">ئەگەر سەرەکی</string>
@@ -98,7 +98,7 @@ Da te'îl bikin, li ser berdewam bikin xwarê"</string>
   <!-- misc.proxy.networkProxyPatch -->
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">شاردنەوەی ڕیکلامەکانی پڕ شاشە</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">خەڵەتەکانی هەڵواسانی دەړووستن</string>
@@ -119,8 +119,12 @@ Da te'îl bikin, li ser berdewam bikin xwarê"</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_summary">هقاسي نابي سفاح را مانعي تيستيًد نابي. قاس فاري قبلة ديرياحيدي</string>
   <!-- misc.potoken.poTokenProviderPatch -->
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_summary">Tricks the server into thinking you are using an older app version to restore legacy UI features</string>
+  <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_default">بنەڕەت</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <!-- Video likes have been set to hidden by the video uploader. -->

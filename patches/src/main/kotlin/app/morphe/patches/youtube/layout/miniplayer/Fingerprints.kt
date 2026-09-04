@@ -10,7 +10,6 @@
 package app.morphe.patches.youtube.layout.miniplayer
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter

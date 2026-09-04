@@ -33,6 +33,10 @@ Second \"item\" text"</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Odstrani omejitve predvajanja v ozadju</string>
   <string name="morphe_shorts_disable_background_playback_title">Onemogoči predvajanje v ozadju</string>
+  <string name="morphe_auto_pause_on_screen_lock_title">Samodejni premor, ko je naprava zaklenjena</string>
+  <string name="morphe_auto_pause_on_screen_lock_off">Izklopljeno</string>
+  <string name="morphe_auto_pause_on_screen_lock_always">Vedno začasno ustavi, ko je naprava zaklenjena</string>
+  <string name="morphe_auto_pause_on_screen_lock_except_wireless">Začasno ustavi, razen če je povezana brezžična avdio naprava</string>
   <!-- layout.disableScrollSpeedLimitPatch -->
   <string name="morphe_disable_scrolling_speed_limit_title">Onemogoči omejitev hitrosti drsenja</string>
   <!-- layout.disableLayoutUpdatesPatch -->
@@ -160,6 +164,7 @@ Spremembe vključujejo:
   <string name="morphe_hide_ask_section_title">Skrij odsek \'Vprašaj\'</string>
   <string name="morphe_hide_attributes_section_title">Skrij odsek \'Atributi\'</string>
   <string name="morphe_hide_attributes_section_summary">Skrije odseke \'Predstavljeni kraji\', \'Igre\', \'Glasba\' in \'Osebe\'</string>
+  <string name="morphe_hide_channel_links_section_title">Skrij razdelek s povezavami kanala</string>
   <string name="morphe_hide_chapters_section_title">Skrij odsek \'Poglavja\'</string>
   <string name="morphe_hide_corrections_section_title">Skrij odsek \'Popravki\'</string>
   <string name="morphe_hide_course_progress_section_title">Skrij odsek \'Napredek tečaja\'</string>
@@ -262,6 +267,7 @@ Spremembe vključujejo:
   <string name="morphe_hide_comments_preview_comment_summary">Skrije predogled komentarja pod videoposnetkom, preden se odpre celoten oddelek za komentarje</string>
   <string name="morphe_hide_comments_thanks_button_title">Skrij gumb \'Hvala\'</string>
   <string name="morphe_hide_comments_timestamp_button_title">Skrij gumb Časovni žig</string>
+  <string name="morphe_hide_comments_top_fans_button_title">Skrij gumb »Najboljši oboževalci«</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Počisti poudarjene povezave iskanja</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Počisti poudarjene povezave iskanja in pusti samo prvotno besedilo</string>
   <string name="morphe_hide_keyword_content_screen_title">Filtr ključnih besed</string>
@@ -545,7 +551,6 @@ Opozorilo: morda ne deluje na prenosih v živo"</string>
   <string name="morphe_swipe_overlay_timeout_summary">Čas, ki traja prikaz pojavnega okna</string>
   <string name="morphe_swipe_overlay_background_opacity_title">Prosojnost ozadja pojavnega okna</string>
   <string name="morphe_swipe_overlay_background_opacity_summary">Prilagodite raven preglednosti (0 je pregledna, 100 je neprosojna)</string>
-  <string name="morphe_swipe_overlay_background_opacity_invalid_toast">Prosojnost mora biti med 0-100</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_title">Barva vidne indikacije svetlosti</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_summary">Nastavite barvo vrstice napredka nadzora svetlosti</string>
   <string name="morphe_swipe_overlay_progress_volume_color_title">Barva vidne indikacije glasnosti</string>
@@ -554,7 +559,6 @@ Opozorilo: morda ne deluje na prenosih v živo"</string>
   <string name="morphe_swipe_overlay_progress_speed_color_summary">Nastavi barvo vrstice napredka za nadzor hitrosti predvajanja</string>
   <string name="morphe_swipe_text_overlay_size_title">Velikost pisave pojavnega okna</string>
   <string name="morphe_swipe_text_overlay_size_summary">Prilagodite velikost besedila na zaslonu (1-30)</string>
-  <string name="morphe_swipe_text_overlay_size_invalid_toast">Velikost pisave mora biti med 1-30</string>
   <string name="morphe_swipe_threshold_title">Prag drsenja</string>
   <string name="morphe_swipe_threshold_summary">Nastavite zahtevano razdaljo drsenja, preden se sproži prilagoditev</string>
   <string name="morphe_swipe_volume_sensitivity_title">Občutljivost drsenja glasnosti</string>
@@ -708,42 +712,44 @@ Za dostop do Nastavitev omogočite gumb Nastavitve prek Splošno → Vrstica →
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Menijski izmen</string>
   <string name="morphe_hide_player_flyout_summary">Izberite, katere komponente se bodo pojavile v pojavnem meniju</string>
-  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_audio_track_title">Skrij meni \'Zvočna pot\'</string>
+  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_additional_settings_title">Skrij »Dodatne nastavitve« / več menija</string>
+  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_ambient_mode_title">Skrij meni »Ambientni način«</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+         'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">" 'Audio Track' meni je skrit
 
 Za prikaz menija 'Audio Track' spremenite 'Spoofanje video tokov' v katerega koli odjemalca, razen 'Android Studio' in 'Android VR Downgraded'."</string>
+  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_audio_track_title">Skrij meni \'Zvočna pot\'</string>
   <string name="morphe_hide_player_flyout_audio_track_footer_title">Skrij noga menija \'Zvočna pot\'</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Skrij meni \'Napisi\'</string>
   <string name="morphe_hide_player_flyout_captions_footer_title">Skrij noga menija \'Napisi\'</string>
   <string name="morphe_hide_player_flyout_captions_header_title">Skrij glavo menija »Podnapisi«</string>
-  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_additional_settings_title">Skrij »Dodatne nastavitve« / več menija</string>
-  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_sleep_timer_title">Skrij meni »Časovnik za spanje«</string>
-  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_loop_video_title">Skrij meni »Zanka videa«</string>
-  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_ambient_mode_title">Skrij meni »Ambientni način«</string>
-  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_stable_volume_title">Skrij meni »Stabilna glasnost«</string>
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_help_title">Skrij meni »Pomoc in povratne informacije«</string>
-  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_speed_title">Skrij meni »Hitrost predvajanja«</string>
-  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_lock_screen_title">Skrij meni »Zakleni zaslon«</string>
   <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_listen_with_youtube_music_title">Skrij meni »Poslušaj z glasbo YouTube«</string>
-  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_watch_in_vr_title">Skrij meni »Oglej v VR«</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_lock_screen_title">Skrij meni »Zakleni zaslon«</string>
+  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_loop_video_title">Skrij meni »Zanka videa«</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_on_the_go_title">Skrij meni »Na poti«</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_quality_title">Skrij meni »Kakovost«</string>
   <string name="morphe_hide_player_flyout_quality_footer_title">Skrij noga menija »Kakovost«</string>
   <string name="morphe_hide_player_flyout_quality_header_title">Skrij noga menija »Kakovost«</string>
+  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_sleep_timer_title">Skrij meni »Časovnik za spanje«</string>
+  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_speed_title">Skrij meni »Hitrost predvajanja«</string>
+  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_stable_volume_title">Skrij meni »Stabilna glasnost«</string>
+  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_watch_in_vr_title">Skrij meni »Oglej v VR«</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Skrij predogled samodejnega predvajanja.</string>
   <string name="morphe_hide_autoplay_preview_summary">Skrije prihajajoči predogled videa v celozaslonskem načinu pred samodejnim predvajanjem</string>
@@ -758,6 +764,8 @@ Za prikaz menija 'Audio Track' spremenite 'Spoofanje video tokov' v katerega kol
   <string name="morphe_hide_fullscreen_button_title">Skrij gumb za celozaslonski način</string>
   <string name="morphe_hide_player_control_buttons_background_title">Skrij ozadje gumbov za nadzor predvajanja</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Skrije temno senčenje okoli gumbov predvajalnika videa</string>
+  <string name="morphe_player_control_buttons_background_opacity_title">Prosojnost kontrolnih gumbov</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Prilagodi prosojnost kroga v ozadju gumbov za upravljanje predvajalnika (0 je nevidno, 100 je neprosojno)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Skrij gumba »Prejšnji« in »Naslednji«</string>
   <string name="morphe_hide_settings_button_title">Skrij gumb za nastavitve</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -846,6 +854,9 @@ Nastavitve → Predvajanje (ali Samodejno predvajanje) → Samodejno predvajanje
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Onemogoči pojavne okenske plošče predvajalnika</string>
   <string name="morphe_disable_player_popup_panels_summary">Onemogoči samodejno odpiranje ploščic s seznamom predvajanja in klepetom v živo</string>
+  <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
+  <string name="morphe_disable_playlist_autoplay_title">Onemogoči samodejno predvajanje v predvajalnih seznamih</string>
+  <string name="morphe_disable_playlist_autoplay_summary">Preprečuje samodejno napredovanje na naslednji video v predvajalnih seznamih</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Zapusti celozaslonski način ob koncu videa</string>
   <string name="morphe_exit_fullscreen_entry_1">Onemogočeno</string>
@@ -854,9 +865,11 @@ Nastavitve → Predvajanje (ali Samodejno predvajanje) → Samodejno predvajanje
   <string name="morphe_exit_fullscreen_entry_4">Portretni in ležeči način</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Gesture za celozaslonski način</string>
+  <string name="morphe_disable_fullscreen_gestures_summary">Poteze predvajalnika v celozaslonskem načinu</string>
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">Onemogoči gesto potegnjenja navzgor v portretnem načinu</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Onemogoči potez navzdol na portretnem zaslonu</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Onemogoči potez navzdol na ležečem zaslonu</string>
+  <string name="morphe_disable_fullscreen_zoom_gesture_title">Onemogoči potezo za povečavo s ščipanjem</string>
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
   <string name="morphe_open_videos_fullscreen_title">Odprite videoposnetke v načinu polnega zaslona</string>
   <string name="morphe_open_videos_fullscreen_entry_1">Onemogočeno</string>
@@ -870,10 +883,10 @@ Nastavitve → Predvajanje (ali Samodejno predvajanje) → Samodejno predvajanje
   <string name="morphe_fullscreen_video_scale_button_title">Prikaži gumb za merilo videa</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Tapnite za preklapljanje med Privzeto, Raztegni in Povečaj</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
+  <string name="morphe_mute_video_button_title">Prikaži gumb za utišanje</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Opaznost prekrivnega sloja predvajalnika</string>
   <string name="morphe_player_overlay_opacity_summary">Prilagodite raven preglednosti (0 je pregleden, 100 je neprozoren)</string>
-  <string name="morphe_player_overlay_opacity_invalid_toast">Prosojna plast predloge za predvajanje mora biti med 0 in 100</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_searchbar_type_title">Iskalna vrstica</string>
   <string name="morphe_searchbar_type_entry_disabled">Onemogočeno</string>
@@ -888,18 +901,20 @@ Nastavitve → Predvajanje (ali Samodejno predvajanje) → Samodejno predvajanje
   <string name="morphe_change_form_factor_entry_4">Avto</string>
   <string name="morphe_change_form_factor_user_dialog_message">"Spremembe vključujejo:
 
-Postava za tablice
-• Skrite objave skupnosti
+Postavitev za tablice
+• Objave skupnosti so skrite
 • Nastavitev predvajanja v virih ni na voljo
-• Gumb Remix in gumb Zvok nista na voljo v Shortsu
-• Prikaže se staro dejanje z videoposnetkom, ki ni zmanjšano
+• Gumba Remix in Zvok v Shorts nista na voljo
+• Prekrivni element »Več videoposnetkov« morda ni na voljo
+• Prikazana je stara vrstica z dejanji videa v razširjenem stanju
 
-Postava za avtomobilski zaslon
+Postavitev za avtomobile
 • Vir je organiziran po temah in kanalih
 • Nastavitev predvajanja v virih ni na voljo
-• Gumb Remix in gumb Zvok nista na voljo v Shortsu
-• Shorts se odprejo v rednem predvajalniku
-• Prikaže se staro dejanje z videoposnetkom, ki ni zmanjšano"</string>
+• Gumba Remix in Zvok v Shorts nista na voljo
+• Prekrivni element »Več videoposnetkov« morda ni na voljo
+• Shorts se odprejo v običajnem predvajalniku
+• Prikazana je stara vrstica z dejanji videa v razširjenem stanju"</string>
   <string name="morphe_tablet_layout_in_player_title">Omogoči postavitev za tablične računalnike v predvajalniku</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Ponastavi prejšnjo postavitev predvajalnika
@@ -991,7 +1006,6 @@ Omejitev: Če je možnost »Ponastavi staro vrstico za videoposnetke« izkloplje
   <string name="morphe_miniplayer_width_dip_invalid_toast">Velikost v pikslih mora biti med %1$s in %2$s</string>
   <string name="morphe_miniplayer_opacity_title">Opaznost</string>
   <string name="morphe_miniplayer_opacity_summary">Prilagodite raven preglednosti (0 je pregleden, 100 je neprozoren)</string>
-  <string name="morphe_miniplayer_opacity_invalid_toast">Opaznost prekrivnega okna predvajalnika mora biti med 0-100</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Gumb za nazaj zapre vir</string>
   <string name="morphe_back_button_always_exits_feed_summary">Pritisk na gumb za nazaj vedno zapre aplikacijo namesto, da bi se pomaknila na vrh vira</string>
@@ -1144,6 +1158,14 @@ Tapnite tukaj, da odprete DeArrow.ajay.app"</string>
   <string name="morphe_playback_audio_time_stretching_summary">Omogoča neodvisno nastavitev hitrosti in višine tona, kar lahko povzroči artefakte zvoka</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Onemogoči HDR video</string>
+  <string name="morphe_force_hdr_video_title">Vsili HDR video</string>
+  <string name="morphe_force_hdr_video_summary">Sili aplikacijo, da to napravo prepozna kot HDR-sposobno</string>
+  <string name="morphe_force_hdr_video_user_dialog_message">"Uporabite to, če HDR-dekodiranje deluje, vendar YouTube ne ponuja HDR, na primer pri nekaterih napravah HyperOS, ki skrivajo HLG.
+
+Omejitve:
+• Barve so lahko videti napačne, če zaslon dejansko ne more prikazati HDR
+• Predvajanje lahko ne uspe, če dekoder ne obvlada HDR
+• HDR je še vedno odvisen od odjemalca za ponarejanje video tokov"</string>
   <string name="morphe_force_avc_codec_title">Prisilna uporaba kodeka AVC (H.264)</string>
   <string name="morphe_force_avc_codec_user_dialog_message">"Prednosti:
 • Izboljša lahko življenjsko dobo baterije

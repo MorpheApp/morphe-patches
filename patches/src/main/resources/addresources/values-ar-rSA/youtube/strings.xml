@@ -33,6 +33,10 @@ Second \"item\" text"</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">إزالة قيود التشغيل في الخلفية</string>
   <string name="morphe_shorts_disable_background_playback_title">تعطيل التشغيل في الخلفية</string>
+  <string name="morphe_auto_pause_on_screen_lock_title">إيقاف التشغيل تلقائيًا عند قفل الجهاز</string>
+  <string name="morphe_auto_pause_on_screen_lock_off">إيقاف</string>
+  <string name="morphe_auto_pause_on_screen_lock_always">إيقاف التشغيل دائمًا عند القفل</string>
+  <string name="morphe_auto_pause_on_screen_lock_except_wireless">إيقاف التشغيل إلا إذا كان الصوت اللاسلكي متصلًا</string>
   <!-- layout.disableScrollSpeedLimitPatch -->
   <string name="morphe_disable_scrolling_speed_limit_title">تعطيل تحديد سرعة التمرير</string>
   <!-- layout.disableLayoutUpdatesPatch -->
@@ -160,6 +164,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_ask_section_title">إخفاء قسم طرح سؤال</string>
   <string name="morphe_hide_attributes_section_title">إخفاء قسم السمات</string>
   <string name="morphe_hide_attributes_section_summary">يخفي أقسام الأماكن المميزة، الألعاب، الموسيقى، والأشخاص المذكورين</string>
+  <string name="morphe_hide_channel_links_section_title">إخفاء قسم روابط القناة</string>
   <string name="morphe_hide_chapters_section_title">إخفاء قسم الفصول</string>
   <string name="morphe_hide_corrections_section_title">إخفاء قسم التصحيحات</string>
   <string name="morphe_hide_course_progress_section_title">إخفاء قسم تقدّم الدورة التدريبية</string>
@@ -262,6 +267,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_preview_comment_summary">يخفي تعليق المعاينة أسفل الفيديو قبل فتح قسم التعليقات الكامل</string>
   <string name="morphe_hide_comments_thanks_button_title">إخفاء زر شكرًا</string>
   <string name="morphe_hide_comments_timestamp_button_title">إخفاء زر الطابع الزمني</string>
+  <string name="morphe_hide_comments_top_fans_button_title">إخفاء زر \'أهم المعجبين\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">تنظيف روابط البحث المميزة</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">ينظف روابط البحث المميزة، ويترك فقط النص الأصلي العادي</string>
   <string name="morphe_hide_keyword_content_screen_title">تصفية الكلمات المفتاحية</string>
@@ -549,7 +555,6 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_swipe_overlay_timeout_summary">مقدار الوقت الذي تظهر فيه واجهة التمرير بعد التغيير بجزء الثانية</string>
   <string name="morphe_swipe_overlay_background_opacity_title">تعتيم خلفية واجهة التمرير</string>
   <string name="morphe_swipe_overlay_background_opacity_summary">ضبط مستوى الشفافية (0 شفاف ، 100 معتم)</string>
-  <string name="morphe_swipe_overlay_background_opacity_invalid_toast">يجب أن تكون شفافية التمرير بين 0-100</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_title">لون نمط إيماءة السطوع</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_summary">تعيين لون شريط تقدم عناصر التحكم في مستوى السطوع</string>
   <string name="morphe_swipe_overlay_progress_volume_color_title">لون نمط إيماءة الصوت</string>
@@ -558,7 +563,6 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_swipe_overlay_progress_speed_color_summary">تعيين لون شريط تقدم عناصر التحكم في السرعة</string>
   <string name="morphe_swipe_text_overlay_size_title">حجم نص نمط إيماءة التمرير</string>
   <string name="morphe_swipe_text_overlay_size_summary">ضبط حجم النص على الشاشة (1-30)</string>
-  <string name="morphe_swipe_text_overlay_size_invalid_toast">يجب أن يكون حجم النص بين 1-30</string>
   <string name="morphe_swipe_threshold_title">مقدار حد التمرير</string>
   <string name="morphe_swipe_threshold_summary">تعيين مسافة التمرير المطلوبة قبل بدء التعديل</string>
   <string name="morphe_swipe_volume_sensitivity_title">حساسية تمرير مستوى الصوت</string>
@@ -713,42 +717,44 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">القائمة المنبثقة</string>
   <string name="morphe_hide_player_flyout_summary">اختر المكونات التي تظهر في القائمة المنبثقة</string>
-  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_audio_track_title">إخفاء قائمة \'المقطع الصوتي\'</string>
+  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_additional_settings_title">إخفاء قائمة إعدادات إضافية / المزيد</string>
+  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_ambient_mode_title">إخفاء قائمة \'وضع الإضاءة السينمائية\'</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+         'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"تم إخفاء قائمة 'المقطع الصوتي'
 
 لعرض قائمة 'المقطع الصوتي'، غيّر 'Spoof Video Streams' إلى أي عميل باستثناء 'Android Studio' و 'Android VR Downgraded'"</string>
+  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_audio_track_title">إخفاء قائمة \'المقطع الصوتي\'</string>
   <string name="morphe_hide_player_flyout_audio_track_footer_title">إخفاء نص قائمة \'المقطع الصوتي\' السفلي</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">إخفاء قائمة الترجمة</string>
   <string name="morphe_hide_player_flyout_captions_footer_title">إخفاء نص قائمة الترجمة السفلي</string>
   <string name="morphe_hide_player_flyout_captions_header_title">إخفاء عنوان قائمة الترجمة</string>
-  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_additional_settings_title">إخفاء قائمة إعدادات إضافية / المزيد</string>
-  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_sleep_timer_title">إخفاء قائمة \'مؤقت النوم\'</string>
-  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_loop_video_title">إخفاء قائمة \'تكرار الفيديو\'</string>
-  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_ambient_mode_title">إخفاء قائمة \'وضع الإضاءة السينمائية\'</string>
-  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_stable_volume_title">إخفاء قائمة \'مستوى الصوت الثابت\'</string>
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_help_title">إخفاء قائمة \'المساعدة &amp; الملاحظات\'</string>
-  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_speed_title">إخفاء قائمة \'سرعة التشغيل\'</string>
-  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_lock_screen_title">إخفاء قائمة \'قفل الشاشة\'</string>
   <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_listen_with_youtube_music_title">إخفاء قائمة \'سماع الأغاني على YouTube Music\'</string>
-  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_watch_in_vr_title">إخفاء قائمة المشاهدة في الوضع الافتراضي</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_lock_screen_title">إخفاء قائمة \'قفل الشاشة\'</string>
+  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_loop_video_title">إخفاء قائمة \'تكرار الفيديو\'</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_on_the_go_title">إخفاء قائمة \'وضع التنقّل\'</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_quality_title">إخفاء قائمة الجودة</string>
   <string name="morphe_hide_player_flyout_quality_footer_title">إخفاء نص قائمة الجودة السفلي</string>
   <string name="morphe_hide_player_flyout_quality_header_title">إخفاء عنوان قائمة الجودة</string>
+  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_sleep_timer_title">إخفاء قائمة \'مؤقت النوم\'</string>
+  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_speed_title">إخفاء قائمة \'سرعة التشغيل\'</string>
+  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_stable_volume_title">إخفاء قائمة \'مستوى الصوت الثابت\'</string>
+  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_watch_in_vr_title">إخفاء قائمة المشاهدة في الوضع الافتراضي</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">إخفاء عرض التشغيل التلقائي</string>
   <string name="morphe_hide_autoplay_preview_summary">يخفي عرض مشاهدة الفيديو التالي بـملء الشاشة قبل بدء التشغيل التلقائي</string>
@@ -763,6 +769,8 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_hide_fullscreen_button_title">إخفاء زر ملء الشاشة</string>
   <string name="morphe_hide_player_control_buttons_background_title">إخفاء خلفية عناصر التحكم بالمشغل</string>
   <string name="morphe_hide_player_control_buttons_background_summary">يخفي التظليل الداكن المحيط بأزرار التحكم في مشغل الفيديو</string>
+  <string name="morphe_player_control_buttons_background_opacity_title">شفافية خلفية أزرار التحكم</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">اضبط شفافية الدائرة خلف أزرار التحكم في المشغل (0 غير مرئي، 100 معتم)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">إخفاء أزرار السابق &amp; التالي</string>
   <string name="morphe_hide_settings_button_title">إخفاء زر الإعدادات</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -851,6 +859,9 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">تعطيل لوحات المشغل المنبثقة</string>
   <string name="morphe_disable_player_popup_panels_summary">يعطل فتح اللوحات الخاصة بقائمة التشغيل والمحادثة المباشرة تلقائيًا</string>
+  <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
+  <string name="morphe_disable_playlist_autoplay_title">تعطيل تشغيل قوائم التشغيل تلقائيًا</string>
+  <string name="morphe_disable_playlist_autoplay_summary">يمنع قوائم التشغيل من الانتقال التلقائي إلى الفيديو التالي</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">الخروج من وضع ملء الشاشة عند انتهاء الفيديو</string>
   <string name="morphe_exit_fullscreen_entry_1">معطل</string>
@@ -881,7 +892,6 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">شفافية واجهة المشغل</string>
   <string name="morphe_player_overlay_opacity_summary">ضبط مستوى الشفافية (0 شفاف، 100 معتم)</string>
-  <string name="morphe_player_overlay_opacity_invalid_toast">شفافية واجهة المشغل يجب أن تكون بين 0-100</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_searchbar_type_title">شريط البحث</string>
   <string name="morphe_searchbar_type_entry_disabled">معطّل</string>
@@ -900,12 +910,14 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
 • يتم إخفاء مشاركات المجتمع
 • إعداد التشغيل في الخلاصات غير متوفر
 • زر ريمكس وزر الصوت غير متوفرين في Shorts
+• قد لا تتوفر واجهة 'المزيد من الفيديوهات'
 • شريط إجراءات الفيديو غير مطوي
 
 تصميم Automotive
 • الخلاصة مُنظمة حسب المواضيع والقنوات
 • إعداد التشغيل في الخلاصات غير متوفر
 • زر ريمكس وزر الصوت غير متوفرين في Shorts
+• قد لا تتوفر واجهة 'المزيد من الفيديوهات'
 • فيديوهات Shorts تفتح في المشغل العادي
 • شريط إجراءات الفيديو غير مطوي"</string>
   <string name="morphe_tablet_layout_in_player_title">تمكين تخطيط الجهاز اللوحي في المشغل</string>
@@ -999,7 +1011,6 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_miniplayer_width_dip_invalid_toast">حجم البكسل يجب أن يكون بين %1$s و %2$s</string>
   <string name="morphe_miniplayer_opacity_title">شفافية الواجهة</string>
   <string name="morphe_miniplayer_opacity_summary">ضبط مستوى الشفافية (0 شفاف، 100 معتم)</string>
-  <string name="morphe_miniplayer_opacity_invalid_toast">شفافية واجهة المشغل المصغر يجب أن تكون بين 0-100</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">زر الرجوع يخرج من الخلاصة</string>
   <string name="morphe_back_button_always_exits_feed_summary">الضغط على زر الرجوع يؤدي دائمًا إلى الخروج من التطبيق بدلًا من التمرير إلى أعلى الخلاصة</string>
@@ -1152,6 +1163,14 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_playback_audio_time_stretching_summary">يتيح ضبط السرعة وطبقة الصوت بشكل مستقل، وقد يسبب تشوهات في الصوت</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">تعطيل فيديو HDR</string>
+  <string name="morphe_force_hdr_video_title">فرض فيديو HDR</string>
+  <string name="morphe_force_hdr_video_summary">إجبار التطبيق على التعرف على هذا الجهاز بأنه يدعم تقنية HDR</string>
+  <string name="morphe_force_hdr_video_user_dialog_message">"استخدم هذا الخيار إذا كان فك ترميز HDR يعمل، لكن تطبيق YouTube لا يتيح خيار HDR، كما في بعض أجهزة HyperOS التي تُخفي دعم HLG.
+
+القيود:
+• قد تظهر الألوان غير دقيقة إذا كانت الشاشة لا تدعم عرض محتوى HDR فعليًا
+• قد يفشل التشغيل إذا تعذّر على وحدة فك الترميز معالجة محتوى HDR
+• يظل تشغيل HDR معتمدًا على عميل Spoof Video Streams"</string>
   <string name="morphe_force_avc_codec_title">فرض برنامج ترميز AVC (H.264)</string>
   <string name="morphe_force_avc_codec_user_dialog_message">"الفوائد:
 • يمكن أن يحسن عمر البطارية

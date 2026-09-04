@@ -84,36 +84,6 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
 
         flyoutMenuBufferGroupList.addAll(
                 new ByteArrayFilterGroup(
-                        Settings.HIDE_PLAYER_FLYOUT_CAPTIONS,
-                        "closed_caption_",
-                        "yt_outline_experimental_closed_captions_"
-                ),
-                new ByteArrayFilterGroup(
-                        Settings.HIDE_PLAYER_FLYOUT_LISTEN_WITH_YOUTUBE_MUSIC,
-                        "yt_outline_youtube_music_",
-                        "yt_outline_experimental_youtube_music_"
-                ),
-                new ByteArrayFilterGroup(
-                        Settings.HIDE_PLAYER_FLYOUT_HELP,
-                        "yt_outline_question_circle_",
-                        "yt_outline_experimental_help_circle_"
-                ),
-                new ByteArrayFilterGroup(
-                        Settings.HIDE_PLAYER_FLYOUT_LOCK_SCREEN,
-                        "yt_outline_lock_",
-                        "yt_outline_experimental_lock_"
-                ),
-                new ByteArrayFilterGroup(
-                        Settings.HIDE_PLAYER_FLYOUT_SPEED,
-                        "yt_outline_play_arrow_half_circle_",
-                        "yt_outline_experimental_play_circle_half_dashed_"
-                ),
-                new ByteArrayFilterGroup(
-                        Settings.HIDE_PLAYER_FLYOUT_AUDIO_TRACK,
-                        "yt_outline_person_",
-                        "yt_outline_experimental_person_"
-                ),
-                new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_ADDITIONAL_SETTINGS,
                         "yt_outline_gear_",
                         "yt_outline_experimental_gear_"
@@ -124,10 +94,39 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
                         "yt_outline_experimental_ambient_mode_"
                 ),
                 new ByteArrayFilterGroup(
-                        Settings.HIDE_PLAYER_FLYOUT_STABLE_VOLUME,
-                        "volume_stable_",
-                        "yt_fill_experimental_stable_volume_",
-                        "yt_outline_experimental_stable_volume_"
+                        Settings.HIDE_PLAYER_FLYOUT_AUDIO_TRACK,
+                        "yt_outline_person_",
+                        "yt_outline_experimental_person_"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_PLAYER_FLYOUT_CAPTIONS,
+                        "closed_caption_",
+                        "yt_outline_experimental_closed_captions_"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_PLAYER_FLYOUT_HELP,
+                        "yt_outline_question_circle_",
+                        "yt_outline_experimental_help_circle_"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_PLAYER_FLYOUT_LISTEN_WITH_YOUTUBE_MUSIC,
+                        "yt_outline_youtube_music_",
+                        "yt_outline_experimental_youtube_music_"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_PLAYER_FLYOUT_LOCK_SCREEN,
+                        "yt_outline_lock_",
+                        "yt_outline_experimental_lock_"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_PLAYER_FLYOUT_ON_THE_GO,
+                        "yt_outline_headset_",
+                        "yt_outline_experimental_headset_"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_PLAYER_FLYOUT_QUALITY,
+                        "yt_outline_adjust_",
+                        "yt_outline_experimental_adjust_"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_SLEEP_TIMER,
@@ -135,14 +134,20 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
                         "yt_outline_experimental_sleep_timer_"
                 ),
                 new ByteArrayFilterGroup(
+                        Settings.HIDE_PLAYER_FLYOUT_SPEED,
+                        "yt_outline_play_arrow_half_circle_",
+                        "yt_outline_experimental_play_circle_half_dashed_"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_PLAYER_FLYOUT_STABLE_VOLUME,
+                        "volume_stable_",
+                        "yt_fill_experimental_stable_volume_",
+                        "yt_outline_experimental_stable_volume_"
+                ),
+                new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_WATCH_IN_VR,
                         "yt_outline_vr_",
                         "yt_outline_experimental_vr_"
-                ),
-                new ByteArrayFilterGroup(
-                        Settings.HIDE_PLAYER_FLYOUT_QUALITY,
-                        "yt_outline_adjust_",
-                        "yt_outline_experimental_adjust_"
                 )
         );
     }

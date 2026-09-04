@@ -21,6 +21,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">לוגו כותרת</string>
   <string name="morphe_header_logo_entry_1">ברירת מחדל</string>
   <string name="morphe_header_logo_entry_3">מותג</string>
+  <!-- misc.album.albumMusicVideoPatch -->
+  <string name="morphe_music_play_album_songs_title">נגן רצועות אודיו של האלבום</string>
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <string name="morphe_music_play_album_songs_summary">נגן את גרסת האודיפ בלבד של שירי האלבום במקום קליפ. דורש \'זיוף הזרמות וידאו\'</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">הורד קליפי מוזיקה, פודקאסטים או שירים באמצעות אפליקציות הורדה של צד שלישי</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -145,6 +149,8 @@ YouTube Music 8.x - מעבר הצלילים פועל רק בגרסה 9.x ומע�
   <string name="morphe_music_hide_action_bar_title">הסתר סרגל פעולות</string>
   <string name="morphe_music_hide_like_dislike_button_title">הסתר כפתור אהבתי ודיסלייק</string>
   <string name="morphe_music_hide_comments_button_title">הסתר כפתור תגובות</string>
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_live_chat_replay_button_title">הסתר את כפתור \'שידור חוזר של הצ\'אט החי\'</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_lyrics_button_title">הסתר כפתור מילים</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -154,7 +160,7 @@ YouTube Music 8.x - מעבר הצלילים פועל רק בגרסה 9.x ומע�
   <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_download_button_title">הסתר לחצן הורדה</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_radio_button_title">הסתר התחל רדיו</string>
+  <string name="morphe_music_hide_radio_button_title">הסתר את כפתור \'התחל רדיו\'</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">תפריט נשלף</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">בחר אילו רכיבים יופיעו בתפריטים הנשלפים של הנגן והתור</string>

@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Povijest pretraživanja je prazna</string>
   <string name="morphe_settings_search_empty_history_summary">Za spremanje povijesti pretraživanja upišite upit za pretraživanje i pritisnite Enter</string>
   <string name="morphe_settings_search_history_title">Prikaži povijest pretraživanja postavki</string>
+  <string name="morphe_settings_name_title">Naziv Morphe postavki</string>
+  <string name="morphe_settings_name_default_item">Zadano</string>
+  <string name="morphe_settings_name_entry_2">Dodatno</string>
+  <string name="morphe_settings_name_entry_3">Prilagodbe</string>
+  <string name="morphe_settings_name_entry_4">Vrijeme morfinga</string>
+  <string name="morphe_settings_name_custom_item">Prilagođeno</string>
+  <string name="morphe_settings_name_custom_item_hint">Unesite naziv</string>
+  <string name="morphe_settings_name_empty_warning">Naziv ne može biti prazan</string>
   <string name="morphe_show_menu_icons_title">Prikaži ikone postavki Morphea</string>
   <string name="morphe_settings_menu_copy_path">Kopirano: %s</string>
   <string name="morphe_language_title">Morphe jezik</string>
@@ -107,13 +115,64 @@ Nećete biti obaviješteni ni o kakvim neočekivanim događajima."</string>
   <string name="morphe_debug_logs_clear_toast">Izbrisani zapisi o ispravljanju pogrešaka</string>
   <string name="morphe_debug_feature_flags_manager_title">Upravitelj zastavica značajki</string>
   <string name="morphe_debug_feature_flags_manager_summary">Upravljanje zastavicama logičkih značajki</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Aktivne zastavice (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Blokirane zastave značajki (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Potraži zastavice značajki…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Neaktivno (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Aktivno (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Blokirano (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Prisilno (%s)</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Automatski</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Isključeno</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Uključeno</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Prisilno uključi</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Blokiraj</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Ukloni</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Zastavice značajki spremljene</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Zastavice značajki poništene</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Zastavice značajki kopirane u međuspremnik</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Ponovno pokreni aplikaciju kako bi se koristila ova postavka</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Izvoz i uvoz</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">Uvezeno %s zastavica</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Nema pronađenih zastavica</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Zastavice uspješno izvezene</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Neuspješan izvoz zastavica</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Zastavice učitane, dodirnite Spremi za primjenu</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Neuspješno čitanje datoteke</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Binarno pretraživanje</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Pronalazi koja zastavica uzrokuje ponašanje aplikacije.
+
+Polovica od %s zastavica je blokirana, a nakon svakog ponovnog pokretanja recite je li ponašanje i dalje prisutno.
+
+Ponovite ponašanje jednom prije početka, inače zastavice koje aplikacija još nije tražila nedostaju u pretraživanju."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Početak</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Nema zastavica za pretraživanje.
+
+Samo zastavice koje je aplikacija koristila i koje trenutno nisu prisilno uključene mogu se koristiti u binarnom pretraživanju."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Korak %1$s
+
+Preostalo je %2$s zastavica, %3$s od njih je blokirano za ovaj korak.
+
+Ponovno pokrenite aplikaciju, provjerite je li ponašanje prisutno, zatim odgovorite ispod."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Pretraživanje zastavica u tijeku</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">Ponašanje je prisutno</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">Ponašanje nije prisutno</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Odustani od binarnog pretraživanja</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Binarno pretraživanje otkazano</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"Zastavica %s uzrokuje ponašanje.
+
+Sada je blokirana."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Nije moguće pronaći zastavicu.
+
+Čini se da ponašanje aplikacije nije kontrolirano zastavicom."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Nije moguće pronaći nijednu zastavicu.
+
+Ponašanje je nestalo ranije u pretraživanju, pa je možda uključeno više zastavica ili je jedan od odgovora bio pogrešan."</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Otvorite MicroG postavke </string>

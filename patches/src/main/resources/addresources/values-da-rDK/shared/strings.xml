@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Søgehistorikken er tom</string>
   <string name="morphe_settings_search_empty_history_summary">For at gemme søgehistorik skal du skrive en søgeforespørgsel og trykke på Enter</string>
   <string name="morphe_settings_search_history_title">Vis indstillingssøgehistorik</string>
+  <string name="morphe_settings_name_title">Morphe indstillingsnavn</string>
+  <string name="morphe_settings_name_default_item">Standard</string>
+  <string name="morphe_settings_name_entry_2">Ekstra</string>
+  <string name="morphe_settings_name_entry_3">Justeringer</string>
+  <string name="morphe_settings_name_entry_4">Morphing-tid</string>
+  <string name="morphe_settings_name_custom_item">Brugerdefineret</string>
+  <string name="morphe_settings_name_custom_item_hint">Indtast et navn</string>
+  <string name="morphe_settings_name_empty_warning">Navnet må ikke være tomt</string>
   <string name="morphe_show_menu_icons_title">Vis Morphe-indstillingsikoner</string>
   <string name="morphe_settings_menu_copy_path">Kopieret: %s</string>
   <string name="morphe_language_title">Morphe-sprog</string>
@@ -107,13 +115,64 @@ Du modtager ikke notifikationer om uventede hændelser."</string>
   <string name="morphe_debug_logs_clear_toast">Fejlfindingslogge ryddet</string>
   <string name="morphe_debug_feature_flags_manager_title">Funktionsflag Manager</string>
   <string name="morphe_debug_feature_flags_manager_summary">Administrer boolean funktionsflag</string>
-  <string name="morphe_debug_feature_flags_manager_active_header"> Aktive funktionsflag (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Blokerede funktionsflag (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Søg i funktionsflag</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Ikke aktiv (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Aktiv (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Blokeret (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Tvunget (%s)</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Automatisk</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Fra</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Til</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Tving til</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Bloker</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Fjern</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Funktionsflag gemt</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Funktionsflag nulstillet</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Funktionsflag kopieret til udklipsholder</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Genstart appen for at bruge denne indstilling</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Eksport og import</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">Importerede %s funktionsflag</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Ingen funktionsflag fundet</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Funktionsflag eksporteret</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Kunne ikke eksportere funktionsflag</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Funktionsflag indlæst, tryk Gem for at anvende</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Kunne ikke læse filen</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Binær søgning</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Finder ud af, hvilket funktionsflag der forårsager en app-adfærd.
+
+Halvdelen af %s flagene er blokeret, og efter hver genstart fortæller du, om adfærden stadig er til stede.
+
+Reproducer adfærden en gang, før du starter, ellers er flag, som appen ikke har bedt om endnu, ikke med i søgningen"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Start</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Ingen funktionsflag at søge i.
+
+Kun flag, som appen har berørt, og som ikke er tvunget til, kan bruges i en binær søgning"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Trin %1$s
+
+%2$s flag, %3$s af dem er blokeret for dette trin.
+
+Genstart appen, kontrollér om adfærden er til stede, og svar derefter"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Søgning efter funktionsflag i gang</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">Adfærden er til stede</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">Adfærden er ikke til stede</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Annuller binær søgning</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Binær søgning annulleret</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"Funktionsflag %s forårsager adfærden.
+
+Det er nu blokeret"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Kunne ikke finde et funktionsflag.
+
+App-adfærden ser ikke ud til at være styret af et funktionsflag"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Kunne ikke finde et enkelt funktionsflag.
+
+Adfærden forsvandt tidligere i søgningen, så mere end ét flag kan være involveret, eller et af svarene var forkert"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Åbn MicroG-indstillingerne</string>

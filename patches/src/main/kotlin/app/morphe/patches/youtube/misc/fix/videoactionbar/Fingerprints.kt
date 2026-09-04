@@ -8,24 +8,38 @@
 package app.morphe.patches.youtube.misc.fix.videoactionbar
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
-import app.morphe.patcher.literal
-import app.morphe.patcher.methodCall
-import app.morphe.patcher.opcode
-import app.morphe.patches.all.misc.resources.ResourceType
-import app.morphe.patches.all.misc.resources.resourceLiteral
-import com.android.tools.smali.dexlib2.AccessFlags
+import app.morphe.patcher.fieldAccess
+import app.morphe.patches.shared.BuildInnerTubeProtoRequestUriFingerprint
+import app.morphe.patches.youtube.shared.CLIENT_INFO_CLASS
 import com.android.tools.smali.dexlib2.Opcode
 
-internal object ModernRelateVideoOverlayFingerprint : Fingerprint(
+internal object BuildInnerTubeProtoRequestBodyFingerprint : Fingerprint(
+    classFingerprint = BuildInnerTubeProtoRequestUriFingerprint,
+    parameters = listOf("L"),
+    returnType = "Lcom/google/protobuf/MessageLite;",
     filters = listOf(
-        literal(45614162L)
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = CLIENT_INFO_CLASS
+        )
     )
 )
 
-internal object RelateVideoOverlayLayoutParamFingerprint : Fingerprint(
+internal fun getConfigInfoFingerprint(configInfoClass: String) = object : Fingerprint(
+    definingClass = configInfoClass,
+    name = "<init>",
+    parameters = listOf(),
+    returnType = "V",
     filters = listOf(
-        literal(45661108L)
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/String;"
+        ),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/String;"
+        )
     )
-)
-
+) {}

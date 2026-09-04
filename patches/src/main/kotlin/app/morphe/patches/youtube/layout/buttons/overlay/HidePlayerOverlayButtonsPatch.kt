@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.youtube.layout.buttons.overlay
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
@@ -9,14 +19,17 @@ import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.all.misc.resources.ResourceType
 import app.morphe.patches.all.misc.resources.getResourceId
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
+import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_28_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_35_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.LayoutConstructorFingerprint
+import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
@@ -33,8 +46,8 @@ private const val EXTENSION_CLASS =
 
 val hidePlayerOverlayButtonsPatch = bytecodePatch(
     name = "Hide player overlay buttons",
-    description = "Adds options to hide the player Cast, Autoplay, Captions, Previous & Next buttons, and the player " +
-        "control buttons background.",
+    description = "Adds options to hide the player Cast, Autoplay, Captions, Previous & Next buttons, " +
+            "and to hide or change the opacity of the player control buttons background.",
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -57,6 +70,10 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
                 SwitchPreference("morphe_hide_player_control_buttons_background", summary = true),
                 SwitchPreference("morphe_hide_player_previous_next_buttons"),
                 SwitchPreference("morphe_hide_settings_button"),
+            ),
+            NonInteractivePreference(
+                key = "morphe_player_control_buttons_background_opacity",
+                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
             )
         )
 
@@ -69,21 +86,19 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
             getResourceId(ResourceType.ID, "player_control_next_button_touch_area")
             getResourceId(ResourceType.ID, "player_control_previous_button_touch_area")
             getResourceId(ResourceType.ID, "player_overflow_button")
+            getResourceId(ResourceType.ID, "media_route_button")
 
             it.method.apply {
                 val insertIndex = it.instructionMatches.last().index
                 val viewRegister = getInstruction<FiveRegisterInstruction>(insertIndex).registerC
 
-                addInstruction(
+                addInstructions(
                     insertIndex,
-                    "invoke-static { v$viewRegister }, $EXTENSION_CLASS" +
-                            "->hidePreviousNextButtons(Landroid/view/View;)V",
-                )
-
-                addInstruction(
-                    insertIndex,
-                    "invoke-static { v$viewRegister }, $EXTENSION_CLASS" +
-                            "->hideSettingsButton(Landroid/view/View;)V",
+                    """
+                        invoke-static { v$viewRegister }, $EXTENSION_CLASS->hideCastButton(Landroid/view/View;)V
+                        invoke-static { v$viewRegister }, $EXTENSION_CLASS->hidePreviousNextButtons(Landroid/view/View;)V
+                        invoke-static { v$viewRegister }, $EXTENSION_CLASS->hideSettingsButton(Landroid/view/View;)V
+                    """
                 )
             }
         }
@@ -92,18 +107,40 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
 
         // region Hide cast button.
 
-        PlayerButtonFingerprint.let {
-            it.method.apply {
-                val index = it.instructionMatches.first().index
-                val visibilityRegister = getInstruction<FiveRegisterInstruction>(index).registerD
+        if (is_21_35_or_greater) {
+            OverlayCastButtonVisibilityFingerprint.let {
+                it.method.apply {
+                    var instructionIndex = it.instructionMatches.first().index
+                    var instructionRegister = getInstruction<FiveRegisterInstruction>(
+                        instructionIndex
+                    ).registerD
 
-                addInstructions(
-                    index,
-                    """
-                        invoke-static { v$visibilityRegister }, $EXTENSION_CLASS->hideCastButton(I)I
-                        move-result v$visibilityRegister
-                    """
-                )
+                    addInstructions(
+                        instructionIndex,
+                        """
+                            invoke-static { v$instructionRegister }, $EXTENSION_CLASS->hideCastButton(I)I
+                            move-result v$instructionRegister
+                        """
+                    )
+                }
+            }
+        } else {
+            OverlayCastButtonVisibilityLegacyFingerprint.let {
+                it.method.apply {
+                    val index = it.instructionMatches.first().index
+                    val visibilityRegister =
+                        getInstruction<FiveRegisterInstruction>(index).registerD
+                    val visibilityMethodType =
+                        it.instructionMatches.first().getMethodCalled().parameterTypes.last()
+
+                    addInstructionsAtControlFlowLabel(
+                        index,
+                        """
+                            invoke-static { v$visibilityRegister }, $EXTENSION_CLASS->hideCastButton($visibilityMethodType)$visibilityMethodType
+                            move-result v$visibilityRegister
+                        """
+                    )
+                }
             }
         }
 
@@ -115,7 +152,7 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
                 fingerprint.matchAll().forEach {
                     it.method.insertLiteralOverride(
                         it.instructionMatches.first().index,
-                        "$EXTENSION_CLASS->getCastButtonOverride(Z)Z"
+                        "$EXTENSION_CLASS->hideCastButton(Z)Z"
                     )
                 }
             }
@@ -228,7 +265,7 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
                         # The result of the inflate method is by default not moved to a register after the method is called.
                         # 21.21+ now uses the returned inflated view but the changes here still work.
                         move-result-object v$freeRegister
-                        invoke-static { v$freeRegister }, $EXTENSION_CLASS->hidePlayerControlButtonsBackground(Landroid/view/View;)Landroid/view/View;
+                        invoke-static { v$freeRegister }, $EXTENSION_CLASS->styleControlButtonsBackground(Landroid/view/View;)Landroid/view/View;
                     """
                 )
             }

@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">سجل البحث فارغ</string>
   <string name="morphe_settings_search_empty_history_summary">لحفظ سجل البحث، اكتب استعلام بحث واضغط على Enter</string>
   <string name="morphe_settings_search_history_title">عرض سجل بحث الإعدادات</string>
+  <string name="morphe_settings_name_title">اسم إعدادات Morphe</string>
+  <string name="morphe_settings_name_default_item">الافتراضي</string>
+  <string name="morphe_settings_name_entry_2">الإضافات</string>
+  <string name="morphe_settings_name_entry_3">الأدوات</string>
+  <string name="morphe_settings_name_entry_4">Morphing time</string>
+  <string name="morphe_settings_name_custom_item">مخصّص</string>
+  <string name="morphe_settings_name_custom_item_hint">أدخل اسم</string>
+  <string name="morphe_settings_name_empty_warning">خانة الاسم لايمكن ان تكون فارغه</string>
   <string name="morphe_show_menu_icons_title">عرض أيقونات إعدادات Morphe</string>
   <string name="morphe_settings_menu_copy_path">تم نسخ: %s</string>
   <string name="morphe_language_title">لغة Morphe</string>
@@ -107,13 +115,64 @@ Second \"item\" text"</string>
   <string name="morphe_debug_logs_clear_toast">تم مسح سجلات التصحيح</string>
   <string name="morphe_debug_feature_flags_manager_title">مدير Feature Flags</string>
   <string name="morphe_debug_feature_flags_manager_summary">إدارة Feature Flags الثنائية</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Feature Flags نشطة (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Feature Flags محظورة (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">البحث عن Feature Flags...</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">غير نشط (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">نشط (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">محظور (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">مفروض (%s)</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">تلقائي</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">إيقاف</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">تشغيل</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">فرض التفعيل</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">حظر</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">إزالة</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">تم حفظ Feature Flags</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">تمت إعادة تعيين Feature Flags</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">تم نسخ Feature Flags إلى الحافظة</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">أعد تشغيل التطبيق لاستخدام هذا الإعداد</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">تصدير واستيراد</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">تم استيراد %s من Feature Flags</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">لم يتم العثور على أي Feature Flags</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">تم تصدير Feature Flags بنجاح</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">فشل تصدير Feature Flags</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">تم تحميل Feature Flags، اضغط على حفظ للتطبيق</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">فشل قراءة الملف</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">البحث الثنائي</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"يُحدد أي Feature Flag يتسبب في سلوك معين للتطبيق.
+
+يتم حظر نصف الـ Flags البالغ عددها %s، وبعد كل إعادة تشغيل للتطبيق تحدد ما إذا كان السلوك لا يزال يظهر.
+
+أعد تكرار السلوك مرة واحدة قبل البدء، وإلا فلن تُدرج الـ Flags التي لم يطلبها التطبيق بعد في البحث"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">بدء</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"لا توجد Feature Flags للبحث فيها.
+
+يمكن فقط استخدام الـ Flags التي استدعاها التطبيق وليست مفروضة التشغيل حاليًا في البحث الثنائي"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"الخطوة %1$s
+
+تبقت %2$s من Flags، تم حظر %3$s منها في هذه الخطوة.
+
+أعد تشغيل التطبيق، وتحقق مما إذا كان السلوك يظهر، ثم أجب أدناه"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">جارٍ البحث في Feature Flag</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">السلوك موجود</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">السلوك غير موجود</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">إلغاء البحث الثنائي</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">تم إلغاء البحث الثنائي</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"Feature Flag التالية %s تتسبب في هذا السلوك.
+
+تم حظرها الآن"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"تعذر العثور على Feature Flag.
+
+يبدو أن سلوك التطبيق لا يتم التحكم به عبر Feature Flag "</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"تعذر العثور على Feature Flag واحد بعينه.
+
+اختفى السلوك في خطوة سابقة أثناء البحث، لذا قد يكون هناك أكثر من flag متسبب في ذلك أو أن إحدى الإجابات كانت غير صحيحة"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">فتح إعدادات MicroG</string>

@@ -10,6 +10,7 @@
 
 package app.morphe.patches.youtube.ad
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
@@ -20,6 +21,8 @@ import app.morphe.patches.all.misc.resources.getResourceId
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.ad.hideFullscreenAdsPatch
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
+import app.morphe.patches.shared.misc.proto.hookElement
+import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.hide.shelves.hideHorizontalShelvesPatch
 import app.morphe.patches.youtube.misc.contexthook.Endpoint
@@ -30,13 +33,14 @@ import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
-import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.patches.youtube.shared.BuildClientContextBodyConstructorFingerprint
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.findMutableMethodOf
 import app.morphe.util.injectHideViewCall
+import app.morphe.util.registersUsed
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -67,6 +71,11 @@ private val hideAdsResourcePatch = resourcePatch {
             SwitchPreference("morphe_hide_self_sponsor_ads"),
             SwitchPreference("morphe_hide_shopping_links"),
             SwitchPreference("morphe_hide_video_ads"),
+            NonInteractivePreference(
+                key = "morphe_ads_channel_whitelist",
+                tag = "app.morphe.extension.youtube.settings.preference.ChannelWhitelistPreference",
+                selectable = true
+            ),
             SwitchPreference("morphe_hide_youtube_premium_promotions"),
         )
 
@@ -110,6 +119,22 @@ val hideAdsPatch = bytecodePatch(
                     nop
                 """
             )
+        }
+
+        BuildClientContextBodyConstructorFingerprint.let {
+            it.method.apply {
+                val match = it.instructionMatches[1]
+                val index = match.index
+                val register = match.instruction.registersUsed[0]
+
+                addInstructions(
+                    index,
+                    """
+                        invoke-static { v$register }, $EXTENSION_CLASS->hideAds(Z)Z
+                        move-result v$register
+                    """
+                )
+            }
         }
 
         // Hide YouTube Premium promotions
@@ -261,8 +286,13 @@ val hideAdsPatch = bytecodePatch(
         ).forEach { endpoint ->
             addOSNameHook(
                 endpoint,
-                "$EXTENSION_CLASS->hideVideoAds(Ljava/lang/String;)Ljava/lang/String;",
+                "$EXTENSION_CLASS->hideVideoAds(Ljava/lang/String;)Ljava/lang/String;"
             )
         }
+
+        addOSNameHook(
+            Endpoint.GUIDE,
+            "$EXTENSION_CLASS->overrideGuideOSName(Ljava/lang/String;)Ljava/lang/String;"
+        )
     }
 }

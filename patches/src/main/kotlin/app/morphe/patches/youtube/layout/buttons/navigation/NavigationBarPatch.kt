@@ -51,6 +51,7 @@ import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getReference
 import app.morphe.util.insertLiteralOverride
+import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -125,6 +126,7 @@ val navigationBarPatch = bytecodePatch(
             Endpoint.GUIDE,
             "$EXTENSION_CLASS->swapCreateWithNotificationButton(Ljava/lang/String;)Ljava/lang/String;"
         )
+        setExtensionIsPatchIncluded(EXTENSION_CLASS)
 
         // Hide navigation button labels.
         CreatePivotBarFingerprint.let {

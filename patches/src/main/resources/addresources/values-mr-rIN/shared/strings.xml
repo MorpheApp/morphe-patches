@@ -107,9 +107,14 @@ Second \"item\" text"</string>
   <string name="morphe_debug_logs_clear_toast">डीबग लॉग क्लियर केले</string>
   <string name="morphe_debug_feature_flags_manager_title">वैशिष्ट्ये व्यवस्थापन</string>
   <string name="morphe_debug_feature_flags_manager_summary">बूलियन वैशिष्ट्ये व्यवस्थापित करा</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">सक्रिय फीचर फ्लॅग (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">ब्लॉक केलेले फीचर फ्लॅग (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">वैशिष्ट्य ध्वज शोधा…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_toast_saved">फीचर फ्लॅग सेव्ह केले</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">फीचर फ्लॅग रीसेट केले</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">फीचर फ्लॅग क्लिपबोर्डवर कॉपी केले</string>

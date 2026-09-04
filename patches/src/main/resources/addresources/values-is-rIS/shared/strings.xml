@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Leitarsaga er tóm</string>
   <string name="morphe_settings_search_empty_history_summary">Til að vista leitarsögu skaltu slá inn leitarfyrirspurn og ýta á Enter</string>
   <string name="morphe_settings_search_history_title">Sýna leitarsögu</string>
+  <string name="morphe_settings_name_title">Morphe-stillingaheiti</string>
+  <string name="morphe_settings_name_default_item">Sjálfgefið</string>
+  <string name="morphe_settings_name_entry_2">Viðbætur</string>
+  <string name="morphe_settings_name_entry_3">Fínstillingar</string>
+  <string name="morphe_settings_name_entry_4">Morphing-tími</string>
+  <string name="morphe_settings_name_custom_item">Sérsniðið</string>
+  <string name="morphe_settings_name_custom_item_hint">Sláðu inn heiti</string>
+  <string name="morphe_settings_name_empty_warning">Heitið má ekki vera tómt</string>
   <string name="morphe_show_menu_icons_title">Sýna Morphe stillingatafnar</string>
   <string name="morphe_settings_menu_copy_path">Afritað: %s</string>
   <string name="morphe_language_title">Morphe tungumál</string>
@@ -107,13 +115,64 @@ Til að þýða ný lönd eða bæta núverandi þýðingar skaltu heimsækja mo
   <string name="morphe_debug_logs_clear_toast">Debug log hreinsað</string>
   <string name="morphe_debug_feature_flags_manager_title">Stjórnari fyrir eiginleikaflagg</string>
   <string name="morphe_debug_feature_flags_manager_summary">Stjórna búlskum eiginleikaflaggum</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Virkar feature flögur (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Lokaðar feature flögur (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Leita í eigindum…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Óvirkt (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Virk (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Lokað (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Þvingað (%s)</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Sjálf</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Slökkt</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Kveikt</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Þvinga á</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Loka</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Fjarlægja</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Feature flögur vistaðar</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Feature flögur endurstillaðar</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Feature flögur afritaðar á klemmiborð</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Endurræstu appið til að nota þessa stillingu</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Út- og innflutningur</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">Fluttir inn %s feature flags</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Engin feature flags fundust</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Tókst að flytja út feature flags</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Mistókst að flytja út feature flags</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Feature flags hlaðið, ýttu á Vista til að beita</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Mistókst að lesa skrána</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Tvíundarleit</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Finnur hvaða feature flag veldur hegðun appsins.
+
+Helmingur af %s flöggum er lokaður, og eftir hverja endurræsingu segirðu hvort hegðunin sé enn til staðar.
+
+Endurtaktu hegðunina einu sinni áður en þú byrjar, annars vantar flögg sem appið hefur ekki óskað eftir ennþá í leitina."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Byrja</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Engin feature flags til leitar.
+
+Aðeins flögg sem appið hefur rekist á og ekki er þvingað á núna geta verið notuð í tvíundarleit."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Skref %1$s
+
+%2$s flögg eftir, %3$s af þeim lokuð fyrir þetta skref.
+
+Endurræstu appið, athugaðu hvort hegðunin sé til staðar, svarðu svo hér að neðan."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Leit að feature flag í gangi</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">Hegðun er til staðar</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">Hegðun er ekki til staðar</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Hætta við tvíundarleit</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Tvíundarleit hætt</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"Feature flag %s veldur hegðuninni.
+
+Það er nú lokað"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Gat ekki fundið feature flag.
+
+Hegðun appsins virðist ekki vera stjórnað af feature flag"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Gat ekki fundið eitt einasta feature flag.
+
+Hegðunin hvarf fyrr í leitinni, svo mögulega er fleiri en eitt flagg í hlut eða eitt svar var rangt."</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Opna MicroG stillingar</string>

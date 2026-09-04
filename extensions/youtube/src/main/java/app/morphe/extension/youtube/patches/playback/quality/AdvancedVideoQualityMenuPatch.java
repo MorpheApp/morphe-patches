@@ -1,9 +1,22 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.youtube.patches.playback.quality;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
+
+import androidx.annotation.NonNull;
+
+import java.lang.ref.WeakReference;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -17,7 +30,28 @@ import app.morphe.extension.youtube.settings.Settings;
 public final class AdvancedVideoQualityMenuPatch {
 
     /**
+     * Interface to use obfuscated methods.
+     */
+    public interface ShortsQualityMenuInterface {
+        // Method is added during patching.
+        void patch_showShortsQualityMenu();
+    }
+
+    private static WeakReference<ShortsQualityMenuInterface> shortsQualityMenuRef = new WeakReference<>(null);
+
+    /**
+     * Injection point.
+     * <p>
+     * Shorts quality flyout.
+     */
+    public static void initialize(@NonNull ShortsQualityMenuInterface shortsQualityMenu) {
+        shortsQualityMenuRef = new WeakReference<>(shortsQualityMenu);
+    }
+
+    /**
      * Injection point.  Regular videos.
+     * <p>
+     * Regular video quality flyout.
      */
     public static void onFlyoutMenuCreate(RecyclerView recyclerView) {
         if (!Settings.ADVANCED_VIDEO_QUALITY_MENU.get()) return;
@@ -59,40 +93,17 @@ public final class AdvancedVideoQualityMenuPatch {
     /**
      * Injection point.
      * <p>
-     * Shorts video quality flyout.
+     * Shorts quality flyout.
      */
-    public static void addVideoQualityListMenuListener(ListView listView) {
-        if (!Settings.ADVANCED_VIDEO_QUALITY_MENU.get()) return;
-
-        listView.setOnHierarchyChangeListener(new ViewGroup.OnHierarchyChangeListener() {
-            @Override
-            public void onChildViewAdded(View parent, View child) {
-                try {
-                    parent.setVisibility(View.GONE);
-
-                    final var indexOfAdvancedQualityMenuItem = 4;
-                    if (listView.indexOfChild(child) != indexOfAdvancedQualityMenuItem) return;
-
-                    listView.setSoundEffectsEnabled(false);
-                    final var qualityItemMenuPosition = 4;
-                    listView.performItemClick(null, qualityItemMenuPosition, 0);
-                } catch (Exception ex) {
-                    Logger.printException(() -> "showAdvancedVideoQualityMenu failure", ex);
-                }
+    public static boolean showShortsQualityMenu() {
+        if (Settings.ADVANCED_VIDEO_QUALITY_MENU.get()) {
+            ShortsQualityMenuInterface shortsQualityMenu = shortsQualityMenuRef.get();
+            if (shortsQualityMenu != null) {
+                Utils.runOnMainThread(shortsQualityMenu::patch_showShortsQualityMenu);
+                return true;
             }
+        }
 
-            @Override
-            public void onChildViewRemoved(View parent, View child) {
-            }
-        });
-    }
-
-    /**
-     * Injection point.
-     * <p>
-     * Used to force the creation of the advanced menu item for the Shorts quality flyout.
-     */
-    public static boolean forceAdvancedVideoQualityMenuCreation(boolean original) {
-        return Settings.ADVANCED_VIDEO_QUALITY_MENU.get() || original;
+        return false;
     }
 }

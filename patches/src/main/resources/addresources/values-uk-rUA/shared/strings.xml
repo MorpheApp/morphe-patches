@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Історія пошуку порожня</string>
   <string name="morphe_settings_search_empty_history_summary">Щоб зберегти історію пошуку, введіть пошуковий запит і натисніть Enter</string>
   <string name="morphe_settings_search_history_title">Показувати історію пошуку налаштувань</string>
+  <string name="morphe_settings_name_title">Назва налаштувань Morphe</string>
+  <string name="morphe_settings_name_default_item">Типова</string>
+  <string name="morphe_settings_name_entry_2">Екстра налаштування</string>
+  <string name="morphe_settings_name_entry_3">Твіки</string>
+  <string name="morphe_settings_name_entry_4">Час морфінгу</string>
+  <string name="morphe_settings_name_custom_item">Власна</string>
+  <string name="morphe_settings_name_custom_item_hint">Введіть назву</string>
+  <string name="morphe_settings_name_empty_warning">Назва не може бути порожньою</string>
   <string name="morphe_show_menu_icons_title">Показувати іконки в налаштуваннях Morphe</string>
   <string name="morphe_settings_menu_copy_path">Скопійовано: %s</string>
   <string name="morphe_language_title">Мова налаштувань Morphe</string>
@@ -107,13 +115,64 @@ Second \"item\" text"</string>
   <string name="morphe_debug_logs_clear_toast">Журнали налагодження очищено</string>
   <string name="morphe_debug_feature_flags_manager_title">Менеджер експериментальних прапорців</string>
   <string name="morphe_debug_feature_flags_manager_summary">Керувати експериментальними boolean прапорцями</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Активні (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Заблоковані (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Пошук прапорців…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Неактивно (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Активно (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Заблоковано (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Примусово (%s)</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Авто</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Вимк.</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Увімк.</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Примусово увімкнено</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Заблокувати</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Видалити</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Прапорці збережено</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Прапорці скинуто</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Прапорці скопійовано до буфера обміну</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Перезапустіть застосунок, щоб використовувати це налаштування</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Експорт та імпорт</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">Імпортовано %s прапорців функцій</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Не знайдено прапорців функцій</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Прапорці функцій успішно експортовано</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Не вдалося експортувати прапорці функцій</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Прапорці функцій завантажено, натисніть \"Зберегти\" для застосування</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Не вдалося прочитати файл</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Бінарний пошук</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Знаходить, який прапорець функції спричиняє певну поведінку застосунку.
+
+Половина з %s прапорців блокується, і після кожного перезапуску ви повідомляєте, чи поведінка все ще присутня.
+
+Відтворіть поведінку один раз перед початком, інакше прапорці, які застосунок ще не запитував, будуть відсутні в пошуку"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Почати</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Немає прапорців функцій для пошуку.
+
+У бінарному пошуку можна використовувати лише прапорці, які застосунок вже запитував і які наразі не примусово увімкнені"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Крок %1$s
+
+Залишилось прапорців: %2$s, з них заблоковано на цьому кроці: %3$s.
+
+Перезапустіть застосунок, перевірте, чи присутня поведінка, потім дайте відповідь нижче"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Триває пошук прапорців функцій</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">Поведінка присутня</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">Поведінка відсутня</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Скасувати бінарний пошук</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Бінарний пошук скасовано</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"Прапорець функції %s спричиняє цю поведінку.
+
+Тепер його заблоковано"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Не вдалося знайти прапорець функції.
+
+Схоже, поведінка застосунку не контролюється жодним прапорцем функції"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Не вдалося знайти окремий прапорець функції.
+
+Поведінка зникла раніше в процесі пошуку, тож можливо, задіяно декілька прапорців, або одна з відповідей була неправильною"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Відкриває налаштування MicroG</string>

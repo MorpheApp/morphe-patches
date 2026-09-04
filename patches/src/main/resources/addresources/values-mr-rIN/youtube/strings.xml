@@ -519,7 +519,6 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_swipe_overlay_timeout_summary">ओव्हरले किती मिलीसेकंद दृश्यमान आहे</string>
   <string name="morphe_swipe_overlay_background_opacity_title">स्वाइप ओव्हरले पार्श्वभूमी अस्पष्टता</string>
   <string name="morphe_swipe_overlay_background_opacity_summary">ऑन-स्क्रीन मजकूराचा आकार समायोजित करा (1-30)</string>
-  <string name="morphe_swipe_overlay_background_opacity_invalid_toast">स्वाइप अस्पष्टता 0-100 दरम्यान असणे आवश्यक आहे</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_title">स्वाइप ओव्हरले रंग</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_summary">ऍडजस्टमेंट ट्रिगर होण्यापूर्वी आवश्यक स्वाइप अंतर सेट करा</string>
   <string name="morphe_swipe_overlay_progress_volume_color_title">स्वाइप ओव्हरले व्हॉल्यूम रंग</string>
@@ -528,7 +527,6 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_swipe_overlay_progress_speed_color_summary">प्लेबॅक वेग नियंत्रण प्रगती बारचा रंग सेट करा</string>
   <string name="morphe_swipe_text_overlay_size_title">स्वाइप ओव्हरले मजकूर आकार</string>
   <string name="morphe_swipe_text_overlay_size_summary">पुढील किंवा मागील व्हिडिओवर जाण्यासाठी फुलस्क्रीन मोडमध्ये स्वाइप करा</string>
-  <string name="morphe_swipe_text_overlay_size_invalid_toast">मजकूर आकार 1-30 दरम्यान असणे आवश्यक आहे</string>
   <string name="morphe_swipe_threshold_title">स्वाइप परिमाण थ्रेशोल्ड</string>
   <string name="morphe_swipe_threshold_summary">तळाच्या नेव्हिगेशन बारमध्ये कोणते बटण दिसतात ते निवडा</string>
   <string name="morphe_swipe_volume_sensitivity_title">व्हॉल्यूम स्वॅप संवेदनशीलता</string>
@@ -680,39 +678,40 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">पॉपआउट मेनू</string>
   <string name="morphe_hide_player_flyout_summary">प्लेअर फ्लायआउटमध्ये कोणते घटक दिसतात ते निवडा</string>
+  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_additional_settings_title">\'अतिरिक्त सेटिंग्ज\' / \'अधिक\' मेनू लपवा</string>
+  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_ambient_mode_title">\'एम्बियंट मोड\' (Ambient mode) मेनू लपवा</string>
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
+         'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_audio_track_title">\'ऑडिओ ट्रॅक\' मेनू लपवा</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_footer_title">\'ऑडिओ ट्रॅक\' मेनू फुटर लपवा</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">\'कॅप्शन\' मेनू लपवा</string>
   <string name="morphe_hide_player_flyout_captions_footer_title">\'कॅप्शन\' मेनू फुटर लपवा</string>
   <string name="morphe_hide_player_flyout_captions_header_title">\'कॅपशन्स\' (Captions) मेनू हेडर लपवा</string>
-  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_additional_settings_title">\'अतिरिक्त सेटिंग्ज\' / \'अधिक\' मेनू लपवा</string>
-  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_sleep_timer_title">\'स्लीप टाइमर\' (Sleep timer) मेनू लपवा</string>
-  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_loop_video_title">\'व्हिडिओ लूप करा\' (Loop video) मेनू लपवा</string>
-  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_ambient_mode_title">\'एम्बियंट मोड\' (Ambient mode) मेनू लपवा</string>
-  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_stable_volume_title">\'स्थिर व्हॉल्यूम\' (Stable volume) मेनू लपवा</string>
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_help_title">\'मदत आणि अभिप्राय\' (Help &amp; feedback) मेनू लपवा</string>
-  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_speed_title">\'प्लेबॅक वेग\' (Playback speed) मेनू लपवा</string>
-  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_lock_screen_title">\'लॉक स्क्रीन\' (Lock screen) मेनू लपवा</string>
   <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_listen_with_youtube_music_title">\'YouTube Music सोबत ऐका\' (Listen with YouTube Music) मेनू लपवा</string>
-  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_watch_in_vr_title">\'VR मध्ये पहा\' (Watch in VR) मेनू लपवा</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_lock_screen_title">\'लॉक स्क्रीन\' (Lock screen) मेनू लपवा</string>
+  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_loop_video_title">\'व्हिडिओ लूप करा\' (Loop video) मेनू लपवा</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_quality_title">क्वालिटी मेनू लपवा</string>
   <string name="morphe_hide_player_flyout_quality_footer_title">क्वालिटी मेनू फुटर लपवा</string>
   <string name="morphe_hide_player_flyout_quality_header_title">क्वालिटी मेनू हेडर लपवा</string>
+  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_sleep_timer_title">\'स्लीप टाइमर\' (Sleep timer) मेनू लपवा</string>
+  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_speed_title">\'प्लेबॅक वेग\' (Playback speed) मेनू लपवा</string>
+  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_stable_volume_title">\'स्थिर व्हॉल्यूम\' (Stable volume) मेनू लपवा</string>
+  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_watch_in_vr_title">\'VR मध्ये पहा\' (Watch in VR) मेनू लपवा</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">ऑटोपले प्रिव्ह्यू लपवा</string>
   <string name="morphe_hide_autoplay_preview_summary">ऑटोप्ले सुरू होण्यापूर्वी फुलस्क्रीनमध्ये आगामी व्हिडिओ पूर्वावलोकन लपवते</string>
@@ -814,6 +813,7 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">प्लेअर पॉपअप पॅनेल अक्षम करा</string>
   <string name="morphe_disable_player_popup_panels_summary">स्वयंचलितपणे उघडणाऱ्या प्लेलिस्ट आणि लाइव्ह चॅट पॅनेल अक्षम करते</string>
+  <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">व्हिडिओ समाप्त झाल्यावर फुलस्क्रीन मोडमधून बाहेर पडा</string>
   <string name="morphe_exit_fullscreen_entry_1">अक्षम</string>
@@ -822,9 +822,11 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_exit_fullscreen_entry_4">पोर्ट्रेट (Portrait) आणि लँडस्केप (Landscape)</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">पूर्ण स्क्रीन हावभाव</string>
+  <string name="morphe_disable_fullscreen_gestures_summary">फुलस्क्रीन मोडमधील प्लेयर जेश्चर</string>
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">पोर्ट्रेट स्वाइप-अप हावभाव अक्षम करा</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">पोर्ट्रेट स्वाइप-डाउन हावभाव अक्षम करा</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">लँडस्केप स्वाइप-डाउन हावभाव अक्षम करा</string>
+  <string name="morphe_disable_fullscreen_zoom_gesture_title">पिंच-टू-झूम जेश्चर अक्षम करा</string>
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
   <string name="morphe_open_videos_fullscreen_title">व्हिडिओ फुलस्क्रीन मोडमध्ये उघडा</string>
   <string name="morphe_open_videos_fullscreen_entry_1">अक्षम</string>
@@ -832,10 +834,10 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_open_videos_fullscreen_entry_3">लँडस्केप</string>
   <!-- layout.player.fullscreen.stretchVideoPatch -->
   <!-- layout.player.buttons.muteVideoButtonPatch -->
+  <string name="morphe_mute_video_button_title">म्यूट बटण दाखवा</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">प्लेअर ओव्हरले अपारदर्शकता</string>
   <string name="morphe_player_overlay_opacity_summary">ओव्हरले (Overlay) पातळी समायोजित करा (0 म्हणजे पारदर्शक, 100 म्हणजे अपारदर्शक)</string>
-  <string name="morphe_player_overlay_opacity_invalid_toast">प्लेअर ओव्हरले अपारदर्शकता 0-100 दरम्यान असावी</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
   <!-- layout.sponsorblock.sponsorBlockPatch -->
   <!-- layout.formfactor.changeFormFactorPatch -->
@@ -844,20 +846,6 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_change_form_factor_entry_2">फोन</string>
   <string name="morphe_change_form_factor_entry_3">टॅबलेट</string>
   <string name="morphe_change_form_factor_entry_4">ऑटोमोटिव्ह</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"बदल समाविष्ट आहेत:
-
-टॅबलेट लेआउट
-• समुदाय पोस्ट लपविल्या आहेत
-• फीडमधील प्लेबॅक सेटिंग उपलब्ध नाही
-• शॉर्ट्समध्ये रीमिक्स बटण आणि साउंड बटण उपलब्ध नाही
-• जुना व्हिडिओ ॲक्शन बार कोसळलेला नाही
-
-ऑटोमोटिव्ह लेआउट
-• फीड विषयानुसार आणि चॅनेलनुसार आयोजित केले जाते
-• फीडमधील प्लेबॅक सेटिंग उपलब्ध नाही
-• शॉर्ट्समध्ये रीमिक्स बटण आणि साउंड बटण उपलब्ध नाही
-• शॉर्ट्स नियमित प्लेयरमध्ये उघडतात
-• जुना व्हिडिओ ॲक्शन बार कोसळलेला नाही"</string>
   <string name="morphe_tablet_layout_in_player_title">प्लेअरमध्ये टॅबलेट लेआउट सक्षम करा</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"जुना प्लेयर लेआउट पुनर्स्थापित करते
@@ -947,7 +935,6 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_miniplayer_width_dip_invalid_toast">पिक्सेल आकार %1$s आणि %2$s दरम्यान असणे आवश्यक आहे</string>
   <string name="morphe_miniplayer_opacity_title">ओव्हरले अपारदर्शकता</string>
   <string name="morphe_miniplayer_opacity_summary">ओव्हरले (Overlay) पातळी समायोजित (Adjust) करा (0 म्हणजे पारदर्शक, 100 म्हणजे अपारदर्शक)</string>
-  <string name="morphe_miniplayer_opacity_invalid_toast">मिनीप्लेअर ओव्हरले अपारदर्शकता 0-100 दरम्यान असणे आवश्यक आहे</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">लाइट थीम पार्श्वभूमी</string>

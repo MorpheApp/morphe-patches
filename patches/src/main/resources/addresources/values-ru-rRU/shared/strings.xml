@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">История поиска пуста</string>
   <string name="morphe_settings_search_empty_history_summary">Для сохранения истории поиска введите поисковый запрос и нажмите Enter</string>
   <string name="morphe_settings_search_history_title">Показать историю поиска настроек</string>
+  <string name="morphe_settings_name_title">Настройки Morphe</string>
+  <string name="morphe_settings_name_default_item">По умолчанию</string>
+  <string name="morphe_settings_name_entry_2">Прочее</string>
+  <string name="morphe_settings_name_entry_3">Дополнительно</string>
+  <string name="morphe_settings_name_entry_4">Время перевоплощения</string>
+  <string name="morphe_settings_name_custom_item">Пользовательское</string>
+  <string name="morphe_settings_name_custom_item_hint">Укажите название</string>
+  <string name="morphe_settings_name_empty_warning">Поле имени не может быть пустым</string>
   <string name="morphe_show_menu_icons_title">Показать иконки в настройках Morphe</string>
   <string name="morphe_settings_menu_copy_path">Скопировано: %s</string>
   <string name="morphe_language_title">Язык настроек Morphe</string>
@@ -107,13 +115,64 @@ Second \"item\" text"</string>
   <string name="morphe_debug_logs_clear_toast">Журналы отладки очищены</string>
   <string name="morphe_debug_feature_flags_manager_title">Флаги функций Manager</string>
   <string name="morphe_debug_feature_flags_manager_summary">Управление логическими флагами функций</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Флажки активных функций (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Флажки заблокированных функций (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Поиск флажков функций…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Отключено (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Включено (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Заблокировано (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Принудительно (%s)</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Авто</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Выкл</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Вкл</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Принудительно включить</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Принудительно выкл. (%s)</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Удалить</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Флажки функций сохранены</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Флажки функций сброшены</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Флажки функций скопированы в буфер обмена</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Перезапустите приложение, чтобы использовать эту настройку</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Экспорт и импорт</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">Импортировано флагов функций: %s</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Флаги функций не найдены</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Флаги функций успешно экспортированы</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Не удалось экспортировать флаги функций</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Флаги загружены, нажмите Сохранить для применения</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Не удалось прочитать файл</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Бинарный поиск</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Позволяет найти, какой флаг функции вызывает поведение приложения.
+
+Половина из %s флагов блокируется, и после каждого перезапуска вы сообщаете, сохраняется ли поведение.
+
+Воспроизведите поведение один раз перед началом поиска, иначе флаги, которые приложение ещё не запрашивало, не будут участвовать в поиске"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Начало</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Нет флагов функций для поиска.
+
+В бинарном поиске можно использовать только те флаги, с которыми приложение уже сталкивалось и которые в данный момент не включены принудительно"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Шаг %1$s
+
+Осталось %2$s флагов, %3$s из них заблокированы для этого шага.
+
+Перезапустите приложение, проверьте, есть ли поведение, и ответьте ниже"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Выполняется поиск флага функции</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">Поведение сохранилось</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">Поведение отсутствует</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Отменить бинарный поиск</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Бинарный поиск отменён</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"Флаг функции %s вызывает поведение.
+
+Теперь он заблокирован"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Не удалось найти флаг функции.
+
+Похоже, поведение приложения не управляется флагом функции"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Не удалось найти один флаг функции.
+
+Поведение исчезло ранее в поиске, поэтому, возможно, задействовано более одного флага или один из ответов был неверным"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Откройте настройки MicroG</string>

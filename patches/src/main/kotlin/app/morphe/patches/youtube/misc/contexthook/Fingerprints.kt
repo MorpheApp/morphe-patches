@@ -15,11 +15,10 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
+import app.morphe.patches.youtube.shared.BuildClientContextBodyConstructorFingerprint
+import app.morphe.patches.youtube.shared.CLIENT_INFO_CLASS
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-
-internal const val CLIENT_INFO_CLASS =
-    $$"Lcom/google/protos/youtube/api/innertube/InnertubeContext$ClientInfo;"
 
 // 21.33+
 internal object AuthenticationChangeListenerFingerprint : Fingerprint(
@@ -31,7 +30,6 @@ internal object AuthenticationChangeListenerFingerprint : Fingerprint(
             "L"
         ),
         filters = listOf(
-            literal(163),
             string("processFutAsync")
         )
     ),
@@ -49,19 +47,6 @@ internal object AuthenticationChangeListenerLegacyFingerprint : Fingerprint(
     strings = listOf("Authentication changed while request was being made"),
     filters = listOf(
         methodCall(opcode = Opcode.INVOKE_VIRTUAL, parameters = emptyList(), returnType = "L")
-    )
-)
-
-
-private object BuildClientContextBodyConstructorFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    returnType = "V",
-    filters = listOf(
-        string("Android Wear"),
-        opcode(Opcode.IF_EQZ),
-        string("Android Automotive", location = MatchAfterImmediately()),
-        string("Android"),
-        fieldAccess(opcode = Opcode.IPUT_OBJECT, location = MatchAfterImmediately())
     )
 )
 

@@ -13,9 +13,15 @@ package app.morphe.patches.youtube.layout.theme
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.resourceLiteral
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
+import app.morphe.patches.shared.layout.theme.STYLE_DEFAULT_COLOR_NAMES_DARK
+import app.morphe.patches.shared.layout.theme.STYLE_DEFAULT_COLOR_NAMES_LIGHT
 import app.morphe.patches.shared.layout.theme.THEME_COLOR_EXTENSION_CLASS
 import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_COLOR_NAMES_DARK
 import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_COLOR_NAMES_LIGHT
@@ -32,27 +38,48 @@ import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.layout.seekbar.seekbarColorPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_06_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_08_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_35_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.patches.youtube.shared.LayoutConstructorFingerprint
+import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.forEachChildElement
 import app.morphe.util.insertLiteralOverride
+import app.morphe.util.matchAllMethodIndicesForEach
+import app.morphe.util.registersUsed
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import org.w3c.dom.Element
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/theme/ThemePatch;"
 
+/** The background of the light theme, and also the white the app draws over a video. */
+private const val STATIC_WHITE_COLOR_NAME = "yt_white1"
+
+/** The attributes of the second use, which have to stay white to be readable. */
+private val STATIC_WHITE_ATTRIBUTE_NAMES = setOf(
+    "ytStaticWhite",
+    "ytOverlayIconActiveOther"
+)
+
+/** Value of 'android.R.color.white'. A public id of the framework never changes. */
+private const val ANDROID_WHITE_COLOR_ID = 0x106000B
+
 private val youTubeColorNamesDark = {
     THEME_DEFAULT_COLOR_NAMES_DARK + if (is_21_06_or_greater)
         setOf(
-            // yt_ref_color_constants_baseline_black_black0
-            // yt_ref_color_constants_baseline_black_black1
-            // yt_ref_color_constants_baseline_black_black3
+//            "yt_ref_color_constants_default_baseline_black_black0",
+            "yt_ref_color_constants_default_baseline_black_black1",
+//            "yt_ref_color_constants_default_baseline_black_black2",
+            "yt_ref_color_constants_default_baseline_black_black3",
+//            "yt_ref_color_constants_default_baseline_black_black4",
+            "yt_ref_color_constants_cooler_baseline_black_black3",
             "yt_sys_color_baseline_dark_menu_background",
             "yt_sys_color_baseline_dark_static_black",
             "yt_sys_color_baseline_dark_raised_background",
@@ -66,12 +93,130 @@ private val youTubeColorNamesLight = {
     THEME_DEFAULT_COLOR_NAMES_LIGHT + if (is_21_06_or_greater) {
         setOf(
             "yt_sys_color_baseline_light_base_background",
-            "yt_sys_color_baseline_light_raised_background"
+            "yt_sys_color_baseline_light_raised_background",
+
+//            "yt_ref_color_constants_baseline_white_white0",
+//            "yt_ref_color_constants_baseline_white_white1", // Light mode background for many places.
+//            "yt_ref_color_constants_baseline_white_white2",
+//            "yt_ref_color_constants_baseline_white_white3",
+//            "yt_ref_color_constants_baseline_white_white4",
+//            "yt_ref_color_constants_default_baseline_white_white2",
+//            "yt_ref_color_constants_default_baseline_white_white4",
+            "yt_ref_color_constants_default_baseline_white_white3",
+            "yt_ref_color_constants_cooler_baseline_white_white3",
+
+            "yt_sys_color_baseline_light_menu_background",
+//            "yt_sys_color_baseline_light_static_white",
+//            "yt_sys_color_baseline_light_static_white_background",
+//            "yt_sys_color_baseline_dark_inverted_background",
+//            "yt_sys_color_baseline_dark_static_white",
+//            "yt_sys_color_baseline_dark_static_brand_white",
+//            "yt_sys_color_baseline_dark_static_white_background",
+//            "yt_sys_color_baseline_dark_wordmark_text",
+//            "yt_sys_color_baseline_light_static_brand_white",
+
+//            "yt_sys_color_baseline_dark_wordmark_text",
+//            "yt_sys_color_baseline_light_overlay_solid_wash",
+//            "yt_sys_color_baseline_light_overlay_text_primary",
+//            "yt_sys_color_baseline_light_overlay_touch_response",
+//            "yt_sys_color_baseline_light_touch_response_inverse",
+//            "yt_sys_color_baseline_mobile_light_default_default_text_primary_inverse",
+//            "yt_sys_color_baseline_dark_overlay_solid_wash",
+//            "yt_sys_color_baseline_dark_overlay_text_primary",
+//            "yt_sys_color_baseline_dark_status_bar",
         )
     } else {
         emptySet()
     }
 }
+
+private val youTubeStyleNamesDark = {
+    STYLE_DEFAULT_COLOR_NAMES_DARK + if (is_21_35_or_greater) {
+        mapOf(
+            // The base and raised backgrounds are already covered by the colors they resolve to,
+            // but the menu background resolves to a color that is used elsewhere as well.
+            "yt.sys.color.baseline.dark" to setOf(
+                "yt_sys_color_baseline_menu_background"
+            ),
+            // The carbon color theme has an overlay of its own with colors of its own.
+            "yt.sys.color.baseline.dark.cooler" to setOf(
+                "yt_sys_color_baseline_base_background",
+                "yt_sys_color_baseline_menu_background",
+                "yt_sys_color_baseline_raised_background"
+            )
+        )
+    } else {
+        emptyMap()
+    }
+}
+
+private val youTubeStyleNamesLight = {
+    STYLE_DEFAULT_COLOR_NAMES_LIGHT + if (is_21_35_or_greater) {
+        mapOf(
+            "yt.sys.color.baseline" to setOf(
+                "yt_sys_color_baseline_static_white_background",
+                "yt_sys_color_baseline_base_background",
+                "yt_sys_color_baseline_menu_background",
+                "yt_sys_color_baseline_raised_background",
+                // Recolors the settings UI switches, but also incorrectly recolors the player seekbar time.
+//                "yt_sys_color_baseline_static_brand_white",
+            )
+        )
+    } else {
+        emptyMap()
+    }
+}
+
+/**
+ * Every call that hands over a color the app colors a text or an icon of its own with, and the
+ * position the color has in the registers of the call. Such a color is a value and not a color
+ * resource, so no resource variant of the theme can replace it.
+ *
+ * The class a call is declared with is left out where the method is inherited, because the same
+ * method called with a subclass is a reference of its own that a declared class would not match.
+ */
+private val FOREGROUND_COLOR_CALLS = listOf(
+    methodCall(
+        definingClass = "Landroid/text/style/ForegroundColorSpan;",
+        name = "<init>",
+        parameters = listOf("I"),
+        returnType = "V"
+    ) to 1,
+    methodCall(
+        definingClass = "Landroid/graphics/PorterDuffColorFilter;",
+        name = "<init>",
+        parameters = listOf("I", $$"Landroid/graphics/PorterDuff$Mode;"),
+        returnType = "V"
+    ) to 1,
+    methodCall(
+        definingClass = "Landroid/graphics/BlendModeColorFilter;",
+        name = "<init>",
+        parameters = listOf("I", "Landroid/graphics/BlendMode;"),
+        returnType = "V"
+    ) to 1,
+    // A tint list of a single color, which is how the app tints an icon of a Litho component.
+    methodCall(
+        definingClass = "Landroid/content/res/ColorStateList;",
+        name = "valueOf",
+        parameters = listOf("I"),
+        returnType = "Landroid/content/res/ColorStateList;"
+    ) to 0,
+    methodCall(
+        name = "setColorFilter",
+        parameters = listOf("I", $$"Landroid/graphics/PorterDuff$Mode;"),
+        returnType = "V"
+    ) to 1,
+    methodCall(
+        name = "setColorFilter",
+        parameters = listOf("I"),
+        returnType = "V"
+    ) to 1,
+    methodCall(
+        name = "setTint",
+        parameters = listOf("I"),
+        returnType = "V"
+    ) to 1
+)
 
 val themePatch = baseThemePatch(
     extensionClassDescriptor = EXTENSION_CLASS,
@@ -99,6 +244,22 @@ val themePatch = baseThemePatch(
                                 textContent = colorValue
                             }
                         )
+                    }
+                }
+
+                // Replacing the resource repaints both of its uses, because the resource system
+                // cannot tell them apart, so these attributes keep the value the app gives them.
+                document("res/values/styles.xml").use { document ->
+                    val resourcesNode = document.getElementsByTagName("resources").item(0) as Element
+
+                    resourcesNode.forEachChildElement { style ->
+                        style.forEachChildElement { item ->
+                            if (item.textContent == "@color/$STATIC_WHITE_COLOR_NAME"
+                                && item.getAttribute("name") in STATIC_WHITE_ATTRIBUTE_NAMES
+                            ) {
+                                item.textContent = "@android:color/white"
+                            }
+                        }
                     }
                 }
 
@@ -221,6 +382,8 @@ val themePatch = baseThemePatch(
                 includeLightColor = true,
                 colorNamesDark = youTubeColorNamesDark,
                 colorNamesLight = youTubeColorNamesLight,
+                styleColorNamesDark = youTubeStyleNamesDark,
+                styleColorNamesLight = youTubeStyleNamesLight,
                 // The theme of the launcher activity, which the system draws the splash with.
                 splashScreenThemeParent = "@style/Theme.YouTube.Home"
             ),
@@ -344,6 +507,82 @@ val themePatch = baseThemePatch(
             }
         }
 
+        // The app colors its own text and icons with a value, so every place that hands one
+        // over is given the color of the selected theme instead.
+        FOREGROUND_COLOR_CALLS.forEach { (filter, colorPosition) ->
+            filter.matchAllMethodIndicesForEach(requireMatches = false) { index ->
+                val colorRegister = getInstruction(index).registersUsed[colorPosition]
+
+                // The color can be in a parameter register above v15,
+                // so the range format is used.
+                addInstructions(
+                    index,
+                    """
+                        invoke-static/range { v$colorRegister .. v$colorRegister }, $THEME_COLOR_EXTENSION_CLASS->getForegroundColor(I)I
+                        move-result v$colorRegister
+                    """
+                )
+            }
+        }
+
+        // The player previous and next buttons read the same color as a value and not through
+        // an attribute, so the id itself is swapped. A disabled one carries a gray of its own.
+        if (is_20_31_or_greater) {
+            LayoutConstructorFingerprint.method.apply {
+                findInstructionIndicesReversedOrThrow(
+                    resourceLiteral(ResourceType.COLOR, STATIC_WHITE_COLOR_NAME)
+                ).forEach { index ->
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
+                    replaceInstruction(index, "const v$register, $ANDROID_WHITE_COLOR_ID")
+                }
+            }
+        }
+
+        // A tint list the app builds hands its colors over as an array, so the array is rewritten
+        // in place. Replacing the list itself would give the register of the list a type of its
+        // own, which the verifier rejects where the register is reused.
+        methodCall(
+            definingClass = "Landroid/content/res/ColorStateList;",
+            name = "<init>",
+            parameters = listOf("[[I", "[I"),
+            returnType = "V"
+        ).matchAllMethodIndicesForEach(requireMatches = false) { index ->
+            val colorsRegister = getInstruction(index).registersUsed[2]
+
+            addInstruction(
+                index,
+                "invoke-static/range { v$colorsRegister .. v$colorsRegister }, " +
+                        "$THEME_COLOR_EXTENSION_CLASS->replaceForegroundColors([I)V"
+            )
+        }
+
+        // The app colors an icon of a Litho component with a filter the drawable keeps on its
+        // own paint, so the color never reaches a call that hands one over as a value. The
+        // filter is replaced on the parameter of the call, which is a register the replacement
+        // always fits.
+        LithoImageColorFilterFingerprint.method.addInstructions(
+            0,
+            """
+                invoke-static { p1 }, $THEME_COLOR_EXTENSION_CLASS->getForegroundColorFilter(Landroid/graphics/ColorFilter;)Landroid/graphics/ColorFilter;
+                move-result-object p1
+            """
+        )
+
+        // The color of a Lottie layer is played from the animation itself, so it reaches no
+        // call that hands a color over and no resource of the app either. It has a replacement
+        // of its own, because the artwork of an animation is drawn with a plain white or black.
+        LottieLayerColorFingerprint.matchAllMethodIndicesForEach { index ->
+            val colorRegister = getInstruction(index).registersUsed[1]
+
+            addInstructions(
+                index,
+                """
+                    invoke-static/range { v$colorRegister .. v$colorRegister }, $THEME_COLOR_EXTENSION_CLASS->getForegroundLottieColor(I)I
+                    move-result v$colorRegister
+                """
+            )
+        }
+
         UseGradientLoadingScreenFingerprint.matchAll().forEach {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
@@ -351,7 +590,7 @@ val themePatch = baseThemePatch(
             )
         }
 
-        if (is_21_08_or_greater) {
+        if (is_21_08_or_greater && !is_21_35_or_greater) {
             CarbonColorThemeFeatureFlagFingerprint.matchAll().forEach {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,

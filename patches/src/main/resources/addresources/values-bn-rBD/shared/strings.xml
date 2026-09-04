@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">অনুসন্ধান ইতিহাস খালি</string>
   <string name="morphe_settings_search_empty_history_summary">অনুসন্ধান ইতিহাস সংরক্ষণ করতে, একটি অনুসন্ধানের প্রশ্ন টাইপ করুন এবং এন্টার চাপুন</string>
   <string name="morphe_settings_search_history_title">অনুসন্ধান সেটিংসের ইতিহাস দেখান</string>
+  <string name="morphe_settings_name_title">Morphe সেটিংসের নাম</string>
+  <string name="morphe_settings_name_default_item">ডিফল্ট</string>
+  <string name="morphe_settings_name_entry_2">অতিরিক্ত</string>
+  <string name="morphe_settings_name_entry_3">টুইকস</string>
+  <string name="morphe_settings_name_entry_4">মরফিং সময়</string>
+  <string name="morphe_settings_name_custom_item">কাস্টম</string>
+  <string name="morphe_settings_name_custom_item_hint">একটি নাম লিখুন</string>
+  <string name="morphe_settings_name_empty_warning">নাম খালি হতে পারবে না</string>
   <string name="morphe_show_menu_icons_title">Morphe সেটিং আইকন দেখান</string>
   <string name="morphe_settings_menu_copy_path">কপি করা হয়েছে: %s</string>
   <string name="morphe_language_title">Morphe ভাষা</string>
@@ -107,13 +115,64 @@ Second \"item\" text"</string>
   <string name="morphe_debug_logs_clear_toast">ডিবাগ লগ সাফ করা হয়েছে</string>
   <string name="morphe_debug_feature_flags_manager_title">ফিচার ফ্ল্যাগ Manager</string>
   <string name="morphe_debug_feature_flags_manager_summary">বুলিয়ান ফিচার ফ্ল্যাগ পরিচালনা করুন</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">সক্রিয় ফ্ল্যাগ (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">ব্লক করা ফ্ল্যাগ (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">বৈশিষ্ট্য পতাকা অনুসন্ধান করুন…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">নিষ্ক্রিয় (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">সক্রিয় (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">অবরুদ্ধ (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">বাধ্যতামূলক (%s)</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">স্বতস্ফূর্তভাবে</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">বন্ধ</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">চালু</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">জোর করে চালু</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">অবরুদ্ধ</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">সরান</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">ফিচার ফ্ল্যাগ সেভ করা হয়েছে</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">ফিচার ফ্ল্যাগ রিসেট করা হয়েছে</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">ফ্ল্যাগ ক্লিপবোর্ডে কপি করা হয়েছে</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">এই সেটিং ব্যবহার করতে অ্যাপটি পুনরায় চালু করুন</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">এক্সপোর্ট এবং ইমপোর্ট</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">%sটি ফিচার ফ্ল্যাগ ইমপোর্ট করা হয়েছে</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">কোনো ফিচার ফ্ল্যাগ পাওয়া যায়নি</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">ফিচার ফ্ল্যাগ সফলভাবে এক্সপোর্ট করা হয়েছে</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">ফিচার ফ্ল্যাগ এক্সপোর্ট করা ব্যর্থ হয়েছে</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">ফিচার ফ্ল্যাগ লোড হয়েছে, প্রয়োগ করতে সংরক্ষণ ট্যাপ করুন</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">ফাইলটি পড়া ব্যর্থ হয়েছে</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">বাইনারি অনুসন্ধান</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"কোন ফিচার ফ্ল্যাগ অ্যাপের আচরণের কারণ তা খুঁজে বের করে।
+
+%s সংখ্যক ফ্ল্যাগের অর্ধেক অবরুদ্ধ করা হয়, এবং প্রতিটি পুনরায় চালু করার পর আপনি বলুন আচরণটি এখনও আছে কিনা।
+
+শুরুর আগে একবার আচরণটি পুনরুত্পাদন করুন, অন্যথায় অ্যাপটি এখনও জিজ্ঞাসা করেনি এমন ফ্ল্যাগগুলি অনুসন্ধান থেকে অনুপস্থিত থাকবে।"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">শুরু</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"অনুসন্ধান করার জন্য কোনো ফিচার ফ্ল্যাগ নেই।
+
+শুধুমাত্র যে ফ্ল্যাগগুলি অ্যাপটি ব্যবহার করেছে এবং বর্তমানে জোর করে চালু নেই সেগুলি বাইনারি অনুসন্ধানে ব্যবহার করা যেতে পারে।"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"ধাপ %1$s
+
+%2$sটি ফ্ল্যাগ বাকি, এগুলির মধ্যে %3$sটি এই ধাপে অবরুদ্ধ।
+
+অ্যাপটি পুনরায় চালু করুন, আচরণটি আছে কিনা পরীক্ষা করুন, তারপর নিচে উত্তর দিন।"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">ফিচার ফ্ল্যাগ অনুসন্ধান চলছে</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">আচরণটি বিদ্যমান</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">আচরণটি বিদ্যমান নয়</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">বাইনারি অনুসন্ধান বাতিল করুন</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">বাইনারি অনুসন্ধান বাতিল করা হয়েছে</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"ফিচার ফ্ল্যাগ %s আচরণের কারণ।
+
+এটি এখন অবরুদ্ধ।"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"কোনো ফিচার ফ্ল্যাগ খুঁজে পাওয়া যায়নি।
+
+অ্যাপের আচরণটি কোনো ফিচার ফ্ল্যাগ দ্বারা নিয়ন্ত্রিত বলে মনে হচ্ছে না।"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"একক কোনো ফিচার ফ্ল্যাগ খুঁজে পাওয়া যায়নি।
+
+অনুসন্ধানের সময় আচরণটি আগেই চলে গেছে, তাই একাধিক ফ্ল্যাগ জড়িত থাকতে পারে অথবা একটি উত্তর ভুল ছিল।"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">MicroG সেটিংস খুলুন।</string>

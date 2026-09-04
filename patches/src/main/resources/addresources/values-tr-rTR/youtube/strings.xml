@@ -33,6 +33,10 @@ Second \"item\" text"</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Arka planda oynatma kısıtlamalarını kaldır</string>
   <string name="morphe_shorts_disable_background_playback_title">Arka planda oynatmayı devre dışı bırak</string>
+  <string name="morphe_auto_pause_on_screen_lock_title">Cihaz kilitliyken otomatik duraklat</string>
+  <string name="morphe_auto_pause_on_screen_lock_off">Kapalı</string>
+  <string name="morphe_auto_pause_on_screen_lock_always">Kilitliyken her zaman duraklat</string>
+  <string name="morphe_auto_pause_on_screen_lock_except_wireless">Kablosuz ses bağlı değilse duraklat</string>
   <!-- layout.disableScrollSpeedLimitPatch -->
   <string name="morphe_disable_scrolling_speed_limit_title">Kaydırma hız sınırını devre dışı bırak</string>
   <!-- layout.disableLayoutUpdatesPatch -->
@@ -160,6 +164,7 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_ask_section_title">Soru bölümünü gizle</string>
   <string name="morphe_hide_attributes_section_title">Özellikler bölümünü gizle</string>
   <string name="morphe_hide_attributes_section_summary">Öne çıkan yerler, Oyunlar, Müzik ve Bahsedilen kişiler bölümlerini gizler</string>
+  <string name="morphe_hide_channel_links_section_title">Kanal bağlantıları bölümünü gizle</string>
   <string name="morphe_hide_chapters_section_title">Bölümler kısmını gizle</string>
   <string name="morphe_hide_corrections_section_title">Düzeltmeler bölümünü gizle</string>
   <string name="morphe_hide_course_progress_section_title">\'Kursun ilerleme durumu\' bölümünü gizle</string>
@@ -262,6 +267,7 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_comments_preview_comment_summary">Tam yorumlar bölümünü açmadan önce videonun altındaki yorum ön izlemesini gizler</string>
   <string name="morphe_hide_comments_thanks_button_title">Teşekkürler düğmesini gizle</string>
   <string name="morphe_hide_comments_timestamp_button_title">Zaman damgası düğmesini gizle</string>
+  <string name="morphe_hide_comments_top_fans_button_title">\'En iyi hayranlar\' düğmesini gizle</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Öne çıkan arama bağlantılarını temizle</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Öne çıkan arama bağlantılarını temizler, yalnızca orijinal düz metni bırakır</string>
   <string name="morphe_hide_keyword_content_screen_title">Anahtar kelime filtresi</string>
@@ -545,7 +551,6 @@ Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini aç ve 'Vars
   <string name="morphe_swipe_overlay_timeout_summary">Panelin görünür olduğu milisaniye miktarı</string>
   <string name="morphe_swipe_overlay_background_opacity_title">Kaydırma paneli arka plan opaklığı</string>
   <string name="morphe_swipe_overlay_background_opacity_summary">Şeffaflık seviyesini ayarlayın (0 şeffaf, 100 opak)</string>
-  <string name="morphe_swipe_overlay_background_opacity_invalid_toast">Kaydırma opaklığı 0-100 arasında olmalıdır</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_title">Kaydırma katmanı parlaklık rengi</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_summary">Parlaklık kontrolleri ilerleme çubuğunun rengini ayarlayın</string>
   <string name="morphe_swipe_overlay_progress_volume_color_title">Kaydırma katmanı ses rengi</string>
@@ -554,7 +559,6 @@ Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini aç ve 'Vars
   <string name="morphe_swipe_overlay_progress_speed_color_summary">Oynatma hızı kontrolleri ilerleme çubuğunun rengini ayarlayın</string>
   <string name="morphe_swipe_text_overlay_size_title">Kaydırma katmanı metin boyutu</string>
   <string name="morphe_swipe_text_overlay_size_summary">Ekrandaki metin boyutunu ayarlayın (1-30)</string>
-  <string name="morphe_swipe_text_overlay_size_invalid_toast">Metin boyutu 1-30 arasında olmalıdır</string>
   <string name="morphe_swipe_threshold_title">Kaydırma büyüklük eşiği</string>
   <string name="morphe_swipe_threshold_summary">Bir ayarlamanın tetiklenmesi için gerekli kaydırma mesafesini ayarlayın</string>
   <string name="morphe_swipe_volume_sensitivity_title">Ses kaydırma hassasiyeti</string>
@@ -708,42 +712,44 @@ Ayarlara erişmek için, Genel → Araç Çubuğu → Ayarları Göster yoluyla 
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Açılır menü</string>
   <string name="morphe_hide_player_flyout_summary">Açılır menüde hangi bileşenlerin görüneceğini seçin</string>
-  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_audio_track_title">\'Ses Parçası\' menüsünü gizle</string>
+  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_additional_settings_title">\'Ek ayarlar\' / Diğer menüsünü gizle</string>
+  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_ambient_mode_title">\'Ambiyans modu\' menüsünü gizle</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+         'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"'Ses Parçası' menüsü gizli
 
 'Ses Parçası' menüsünü görüntülemek için, 'Video akışlarını taklit et'i 'Android Studio' ve 'Android VR Downgraded' dışındaki herhangi bir istemciye değiştirin"</string>
+  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_audio_track_title">\'Ses Parçası\' menüsünü gizle</string>
   <string name="morphe_hide_player_flyout_audio_track_footer_title">\'Ses Parçası\' menüsü alt bilgisini gizle</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Altyazılar menüsünü gizle</string>
   <string name="morphe_hide_player_flyout_captions_footer_title">Altyazılar menüsü alt bilgisini gizle</string>
   <string name="morphe_hide_player_flyout_captions_header_title">Altyazılar menüsü başlığını gizle</string>
-  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_additional_settings_title">\'Ek ayarlar\' / Diğer menüsünü gizle</string>
-  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_sleep_timer_title">\'Uyku modu zamanlayıcı\' menüsünü gizle</string>
-  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_loop_video_title">\'Videoyu döngüye al\' menüsünü gizle</string>
-  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_ambient_mode_title">\'Ambiyans modu\' menüsünü gizle</string>
-  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_stable_volume_title">\'Sabit ses\' menüsünü gizle</string>
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_help_title">\'Yardım ve geri bildirim\' menüsünü gizle</string>
-  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_speed_title">\'Oynatma hızı\' menüsünü gizle</string>
-  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_lock_screen_title">\'Ekranı kilitle\' menüsünü gizle</string>
   <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_listen_with_youtube_music_title">\"YouTube Music\'le dinleyin\" menüsünü gizle</string>
-  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_watch_in_vr_title">\'VR modunda izle\' menüsünü gizle</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_lock_screen_title">\'Ekranı kilitle\' menüsünü gizle</string>
+  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_loop_video_title">\'Videoyu döngüye al\' menüsünü gizle</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_on_the_go_title">\'Hareket halinde\' menüsünü gizle</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_quality_title">Kalite menüsünü gizle</string>
   <string name="morphe_hide_player_flyout_quality_footer_title">Kalite menüsü alt bilgisini gizle</string>
   <string name="morphe_hide_player_flyout_quality_header_title">Kalite menüsü başlığını gizle</string>
+  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_sleep_timer_title">\'Uyku modu zamanlayıcı\' menüsünü gizle</string>
+  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_speed_title">\'Oynatma hızı\' menüsünü gizle</string>
+  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_stable_volume_title">\'Sabit ses\' menüsünü gizle</string>
+  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_watch_in_vr_title">\'VR modunda izle\' menüsünü gizle</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Otomatik oynatma ön izlemesini gizle</string>
   <string name="morphe_hide_autoplay_preview_summary">Otomatik oynatma başlamadan önce, tam ekrandaki yaklaşan video ön izlemesini gizler</string>
@@ -758,6 +764,8 @@ Ayarlara erişmek için, Genel → Araç Çubuğu → Ayarları Göster yoluyla 
   <string name="morphe_hide_fullscreen_button_title">Tam ekran düğmesini gizle</string>
   <string name="morphe_hide_player_control_buttons_background_title">Oynatıcı kontrolleri arka planını gizle</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Video oynatıcı kontrollerinin etrafındaki koyu gölgelendirmeyi gizler</string>
+  <string name="morphe_player_control_buttons_background_opacity_title">Düğme arka plan opaklığı</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Oynatıcı düğmelerinin arkasındaki döngünün opaklığını ayarlayın (0 görünmez, 100 opak)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Önceki &amp; Sonraki düğmelerini gizle</string>
   <string name="morphe_hide_settings_button_title">Ayarlar düğmesini gizle</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -846,6 +854,9 @@ Ayarlar → Oynatma (veya Otomatik Oynatma) → Sonraki videoyu otomatik oynat"<
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Oynatıcı açılır panellerini devre dışı bırak</string>
   <string name="morphe_disable_player_popup_panels_summary">Oynatma listesi ve canlı sohbet panellerinin otomatik olarak açılmasını devre dışı bırakır</string>
+  <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
+  <string name="morphe_disable_playlist_autoplay_title">Çalma listelerinin otomatik olarak sonraki videoya geçmesini engeller</string>
+  <string name="morphe_disable_playlist_autoplay_summary">Çalma listelerinin otomatik olarak bir sonraki videoya geçmesini engeller</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Video bittiğinde tam ekran modundan çıkar</string>
   <string name="morphe_exit_fullscreen_entry_1">Devre dışı</string>
@@ -854,9 +865,11 @@ Ayarlar → Oynatma (veya Otomatik Oynatma) → Sonraki videoyu otomatik oynat"<
   <string name="morphe_exit_fullscreen_entry_4">Dikey ve yatay</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Tam ekran hareketleri</string>
+  <string name="morphe_disable_fullscreen_gestures_summary">Tam ekran modunda oynatıcı hareketleri</string>
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">Dikey modda yukarı kaydırma hareketini devre dışı bırak</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Dikey modda aşağı kaydırma hareketini devre dışı bırak</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Yatay modda aşağı kaydırma hareketini devre dışı bırak</string>
+  <string name="morphe_disable_fullscreen_zoom_gesture_title">Kıstırma ile yakınlaştırma hareketini devre dışı bırak</string>
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
   <string name="morphe_open_videos_fullscreen_title">Videoları tam ekran modunda aç</string>
   <string name="morphe_open_videos_fullscreen_entry_1">Devre dışı</string>
@@ -870,10 +883,10 @@ Ayarlar → Oynatma (veya Otomatik Oynatma) → Sonraki videoyu otomatik oynat"<
   <string name="morphe_fullscreen_video_scale_button_title">Video ölçeği düğmesini göster</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Varsayılan, Esnet ve Yakınlaştır arasında geçiş yapmak için dokunun</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
+  <string name="morphe_mute_video_button_title">Sessiz düğmesini göster</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Oynatıcı katmanı opaklığı</string>
   <string name="morphe_player_overlay_opacity_summary">Şeffaflık düzeyini ayarlayın (0 şeffaf, 100 opak)</string>
-  <string name="morphe_player_overlay_opacity_invalid_toast">Oynatıcı katmanı opaklığı 0-100 arasında olmalıdır</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_searchbar_type_title">Arama çubuğu</string>
   <string name="morphe_searchbar_type_entry_disabled">Devre dışı</string>
@@ -886,20 +899,22 @@ Ayarlar → Oynatma (veya Otomatik Oynatma) → Sonraki videoyu otomatik oynat"<
   <string name="morphe_change_form_factor_entry_2">Telefon</string>
   <string name="morphe_change_form_factor_entry_3">Tablet</string>
   <string name="morphe_change_form_factor_entry_4">Otomotiv</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Değişiklikler şunları içerir:
+  <string name="morphe_change_form_factor_user_dialog_message">"Değişiklikler:
 
 Tablet düzeni
-• Topluluk gönderileri gizlenmiştir
-• Akış ayarlarında oynatma mevcut değildir
-• Remix düğmesi ve Ses düğmesi Shorts'ta mevcut değildir
-• Daraltılmamış, eski video eylem çubuğu gösterilir
+• Topluluk gönderileri gizlenir
+• Akışlarda oynatma ayarı kullanılamaz
+• Shorts'ta Remix düğmesi ve Ses düğmesi bulunmaz
+• 'Daha fazla video' katmanı kullanılamayabilir
+• Daraltılmamış eski video eylem çubuğu gösterilir
 
 Otomotiv düzeni
-• Akış konulara ve kanallara göre düzenlenmiştir
-• Akış ayarlarında oynatma mevcut değildir
-• Remix düğmesi ve Ses düğmesi Shorts'ta mevcut değildir
-• Shorts normal oynatıcıda açılır
-• Daraltılmamış, eski video eylem çubuğu gösterilir"</string>
+• Akış, konulara ve kanallara göre düzenlenmiştir
+• Akışlarda oynatma ayarı kullanılamaz
+• Shorts'ta Remix düğmesi ve Ses düğmesi kullanılamaz
+• \"Daha fazla video\" katmanı kullanılamayabilir
+• Shorts, normal oynatıcıda açılır
+• Daraltılmamış eski video eylem çubuğu gösterilir"</string>
   <string name="morphe_tablet_layout_in_player_title">Oynatıcıda tablet düzenini etkinleştir</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Eski oynatıcı düzenini geri yükler
@@ -991,7 +1006,6 @@ Sınırlamalar: 'Eski video eylem çubuğunu geri yükle' kapatılırsa, 'Daha f
   <string name="morphe_miniplayer_width_dip_invalid_toast">Piksel boyutu %1$s ve %2$s arasında olmalıdır</string>
   <string name="morphe_miniplayer_opacity_title">Katman opaklığı</string>
   <string name="morphe_miniplayer_opacity_summary">Oynatma katmanının şeffaflık düzeyini ayarlayın (0 şeffaf, 100 opak)</string>
-  <string name="morphe_miniplayer_opacity_invalid_toast">Mini oynatıcı katman opaklığı 0-100 arasında olmalıdır</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Geri düğmesi akıştan çıkar</string>
   <string name="morphe_back_button_always_exits_feed_summary">Geri tuşuna basmak, akışın en üstüne kaydırmak yerine her zaman uygulamadan çıkar.  This is a placeholder to ensure validity.</string>
@@ -1144,6 +1158,14 @@ DeArrow hakkında daha fazla bilgi edinmek için buraya dokunun"</string>
   <string name="morphe_playback_audio_time_stretching_summary">Hızın ve perdenin birbirinden bağımsız olarak ayarlanmasına izin verir, ses bozulmalarına neden olabilir</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR videoyu devre dışı bırak</string>
+  <string name="morphe_force_hdr_video_title">HDR videoyu zorla</string>
+  <string name="morphe_force_hdr_video_summary">Uygulamayı bu cihazı HDR destekli olarak tanımaya zorlar</string>
+  <string name="morphe_force_hdr_video_user_dialog_message">"Bunu, HDR kod çözme çalışıyorsa ancak YouTube HDR sunmuyorsa kullanın, örneğin HLG'yi gizleyen bazı HyperOS cihazları gibi.
+
+Sınırlamalar:
+• Ekran gerçekten HDR gösteremiyorsa renkler yanlış görünebilir
+• Kod çözücü HDR'yi işleyemezse oynatma başarısız olabilir
+• HDR hala spoof video akışı istemcisine bağlıdır"</string>
   <string name="morphe_force_avc_codec_title">AVC (H.264) kodeğini zorla</string>
   <string name="morphe_force_avc_codec_user_dialog_message">"Faydaları:
 • Pil ömrünü iyileştirebilir

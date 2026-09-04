@@ -81,7 +81,7 @@ Second \"item\" text"</string>
 Ако сте потребител на YouTube Premium, тази настройка може да не е необходима."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Не може да се изтеглят клиентски потоци</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Изключването на тази настройка може да причини проблеми при възпроизвеждане.</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Пробвайте да вкл. Подправяне на видеопотокове &gt; Вход в Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Клиент по подразбиране</string>
@@ -151,7 +151,7 @@ Second \"item\" text"</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">Свържи се директно, ако проксито не успее</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Скриване на целите реклами</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_force_original_audio_not_available">За да използвате тази функция, променете \'Spoof video streams\' на всеки клиент освен \'Android Studio\' и \'Android VR Downgraded\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
@@ -185,6 +185,22 @@ Second \"item\" text"</string>
   <string name="morphe_remove_viewer_discretion_dialog_title">Премахване на диалога за предупреждение за съдържанието</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Това не заобикаля ограничението за възраст. Просто го приема автоматично</string>
   <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">PoToken доставчик</string>
+  <string name="morphe_potoken_provider_screen_summary">Конфигурирайте доставчика на PoToken, за да предотвратите проблеми с възпроизвеждането</string>
+  <string name="morphe_external_potoken_provider_title">Външен PoToken доставчик</string>
+  <string name="morphe_external_potoken_provider_summary">"Поправя проблеми с възпроизвеждането чрез външен PoToken генератор (експериментално)
+
+Ако сте потребител на YouTube Premium, тази настройка може да не е необходима"</string>
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"Поправя проблеми с възпроизвеждането чрез външен PoToken минтер (Експериментално)
+
+За да използвате тази функция, изключете „Подправяне на видео потоци“"</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">Ако не работи, опитайте да затворите принудително MicroG</string>
+  <string name="morphe_external_potoken_provider_settings_summary">Отворете настройките на PotHelper</string>
+  <string name="morphe_external_potoken_provider_about_summary">"Тази функция в момента е в процес на разработка и може да не работи
+
+Докоснете тук, за да изтеглите PotHelper"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Подменя версия на приложението</string>
   <string name="morphe_spoof_app_version_summary">Заблуждава сървъра, карайки го да мисли, че използвате по-стара версия на приложението, за да възстанови стари функции на потребителския интерфейс.</string>
@@ -194,6 +210,15 @@ Second \"item\" text"</string>
 
 Ако по-късно бъде изключено, се препоръчва изчистване на данните на приложението, за да се предотвратят грешки в потребителския интерфейс."</string>
   <string name="morphe_spoof_app_version_target_title">Цел за подмяна на версията на приложението</string>
+  <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_title">Честота на опресняване на приложението</string>
+  <string name="morphe_app_refresh_rate_default">По подразбиране</string>
+  <string name="morphe_app_refresh_rate_fps">%s fps</string>
+  <string name="morphe_app_refresh_rate_type_title">Задаване на честота на опресняване</string>
+  <string name="morphe_app_refresh_rate_type_entry_1">Винаги</string>
+  <string name="morphe_app_refresh_rate_type_entry_2">Възпроизвеждане в портретен режим</string>
+  <string name="morphe_app_refresh_rate_type_entry_3">Възпроизвеждане на цял екран</string>
+  <string name="morphe_app_refresh_rate_type_entry_4">Възпроизвеждане в портретен режим и на цял екран</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Временно недостъпни нехаресвания (изтече времето за отговор на API)</string>

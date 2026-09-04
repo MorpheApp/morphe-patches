@@ -7,6 +7,8 @@
 
 package app.morphe.extension.shared.settings.preference;
 
+import static app.morphe.extension.shared.StringRef.str;
+
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
@@ -33,7 +35,7 @@ public class ExternalPoTokenProviderPreference extends SwitchPreference {
 
         public void onActivityResumed(@NonNull Activity activity) {
             Logger.printDebug(() -> "onActivityResumed");
-            setEnabled(SharedYouTubeSettings.EXTERNAL_POTOKEN_PROVIDER.isAvailable());
+            updateUI();
         }
 
         public void onActivityCreated(@NonNull Activity a, @Nullable Bundle b) {}
@@ -66,6 +68,22 @@ public class ExternalPoTokenProviderPreference extends SwitchPreference {
     protected void onPrepareForRemoval() {
         super.onPrepareForRemoval();
         unregisterApplicationOnResumeCallback();
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        updateUI(); // Needed to update summary after Spoof stream is disabled but not restarted.
+    }
+
+    private void updateUI() {
+        final boolean available = SharedYouTubeSettings.EXTERNAL_POTOKEN_PROVIDER.isAvailable();
+        super.setEnabled(available);
+
+        String summaryKey = available
+                    ? "morphe_external_potoken_provider_summary"
+                    : "morphe_external_potoken_provider_unavailable_summary";
+        setSummary(str(summaryKey));
     }
 
     public ExternalPoTokenProviderPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {

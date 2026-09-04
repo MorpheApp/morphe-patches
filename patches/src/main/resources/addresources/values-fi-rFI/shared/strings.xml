@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Hakuhistoria on tyhjä</string>
   <string name="morphe_settings_search_empty_history_summary">Tallennaaksesi hakuhistorian, kirjoita hakukysely ja paina Enter-näppäintä</string>
   <string name="morphe_settings_search_history_title">Näytä asetusten hakuhistoria</string>
+  <string name="morphe_settings_name_title">Morphe-asetuksen nimi</string>
+  <string name="morphe_settings_name_default_item">Oletus</string>
+  <string name="morphe_settings_name_entry_2">Lisäasetukset</string>
+  <string name="morphe_settings_name_entry_3">Hienosäädöt</string>
+  <string name="morphe_settings_name_entry_4">Morphing-aika</string>
+  <string name="morphe_settings_name_custom_item">Mukautettu</string>
+  <string name="morphe_settings_name_custom_item_hint">Anna nimi</string>
+  <string name="morphe_settings_name_empty_warning">Nimi ei voi olla tyhjä</string>
   <string name="morphe_show_menu_icons_title">Näytä Morphe-asetuskuvakkeet</string>
   <string name="morphe_settings_menu_copy_path">Kopioitu: %s</string>
   <string name="morphe_language_title">Morphen kieli</string>
@@ -107,13 +115,62 @@ Et saa ilmoituksia mistään odottamattomista tapahtumista."</string>
   <string name="morphe_debug_logs_clear_toast">Virheenkorjauslokit tyhjennetty</string>
   <string name="morphe_debug_feature_flags_manager_title">Ominaisuuslippujen hallinta</string>
   <string name="morphe_debug_feature_flags_manager_summary">Hallitse totuusarvo-ominaisuuslippuja</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Aktiiviset liput (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Estetyt liput (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Hae ominaisuuslippuja…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Ei aktiivinen (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Aktiivinen (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Estetty (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Pakotettu (%s)</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Automaattinen</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Pois</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Päällä</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Pakota päälle</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Estä</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Poista</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Ominaisuuslippujen tallennus onnistui</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Ominaisuuslippujen palautus</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Liput kopioitu leikepöydälle</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Käynnistä sovellus käyttääksesi tätä asetusta</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Vie ja tuo</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">Tuodut ominaisuusliput: %s</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Ei löytynyt ominaisuuslippuja</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Ominaisuusliput viety onnistuneesti</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Ominaisuuslippujen vienti epäonnistui</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Ominaisuusliput ladattu, napauta Tallenna ottaaksesi käyttöön</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Tiedoston lukeminen epäonnistui</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Binäärihaku</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Selvittää, mikä ominaisuuslippu aiheuttaa sovelluksen toiminnan.
+
+Puolet %s lipusta on estetty, ja jokaisen uudelleenkäynnistyksen jälkeen kerrot, onko toiminta edelleen olemassa.
+
+Toista toiminta kerran ennen aloitusta, muuten ominaisuusliput, joita sovellus ei ole vielä kysynyt, puuttuvat hausta."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Alku</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Ei ominaisuuslippuja haettavaksi."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Vaihe %1$s
+
+Lippuja jäljellä: %2$s, joista %3$s estetty tässä vaiheessa.
+
+Käynnistä sovellus uudelleen, tarkista, onko käyttäytyminen läsnä, ja vastaa alla."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Ominaisuuslippuhaku käynnissä</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">Toiminta on olemassa</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">Toimintaa ei ole olemassa</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Peruuta binäärihaku</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Binäärihaku peruutettu</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"Ominaisuuslippu %s aiheuttaa toiminnan.
+
+Se on nyt estetty"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Ei löytynyt ominaisuuslippua.
+
+Sovelluksen toiminta ei näytä riippuvan ominaisuuslipusta"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Ei löytynyt yhtään ominaisuuslippua.
+
+Toiminta katosi aiemmin haussa, joten mukana voi olla useampi lippu tai jokin vastaus oli väärin"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Avaa MicroG-asetukset</string>

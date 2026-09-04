@@ -81,7 +81,7 @@ Second \"item\" text"</string>
 Якщо ви є користувачем YouTube Premium, це налаштування може не знадобитися"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Не вдалося отримати жодних клієнтських потоків</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Вимкнення цього налаштування може спричинити проблеми з відтворенням.</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Спробуйте увімкнути: Підміна відеопотоків > Android VR з входом</string>
   <string name="morphe_spoof_video_streams_client_type_title">Типовий клієнт</string>
@@ -151,7 +151,7 @@ Second \"item\" text"</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">Підключатися напряму, якщо проксі недоступний</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Приховати повноекранну рекламу</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_force_original_audio_not_available">Щоб використовувати цю функцію, змініть клієнт \"Підміни відеопотоків\" на будь-який, окрім \"Android Studio\" або \"Android VR Downgraded\"</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
@@ -191,6 +191,11 @@ Second \"item\" text"</string>
   <string name="morphe_external_potoken_provider_summary">"Виправляє проблеми з відтворенням за допомогою зовнішнього генератора PoToken (Експериментально)
 
 Якщо ви є користувачем YouTube Premium, це налаштування може не знадобитися"</string>
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"Виправляє проблеми з відтворенням за допомогою зовнішнього генератора PoToken (Експериментально)
+
+Щоб використовувати цю функцію, вимкніть \"Підробляти відеопотоки\""</string>
   <string name="morphe_external_potoken_provider_user_dialog_message">Якщо це не працює, спробуйте примусово закрити MicroG</string>
   <string name="morphe_external_potoken_provider_settings_summary">Відкрити налаштування PotHelper</string>
   <string name="morphe_external_potoken_provider_about_summary">"Ця функція наразі в розробці та може не працювати
@@ -205,6 +210,15 @@ Second \"item\" text"</string>
 
 Якщо пізніше вимкнути, рекомендується очистити дані застосунку, щоб запобігти помилкам інтерфейсу."</string>
   <string name="morphe_spoof_app_version_target_title">Підмінити версію застосунку на</string>
+  <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_title">Частота оновлення застосунку</string>
+  <string name="morphe_app_refresh_rate_default">Типова</string>
+  <string name="morphe_app_refresh_rate_fps">%s FPS</string>
+  <string name="morphe_app_refresh_rate_type_title">Замінити частоту оновлення</string>
+  <string name="morphe_app_refresh_rate_type_entry_1">Завжди</string>
+  <string name="morphe_app_refresh_rate_type_entry_2">Портретне відтворення</string>
+  <string name="morphe_app_refresh_rate_type_entry_3">Повноекранне відтворення</string>
+  <string name="morphe_app_refresh_rate_type_entry_4">Портретне та повноекранне відтворення</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Дизлайки тимчасово недоступні (тайм-аут API)</string>

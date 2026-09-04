@@ -35,6 +35,10 @@ Second \"item\" text"</string>
     <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
     <string name="morphe_remove_background_playback_restrictions_title">Remove background play restrictions</string>
     <string name="morphe_shorts_disable_background_playback_title">Disable background play</string>
+    <string name="morphe_auto_pause_on_screen_lock_title">Auto pause when device is locked</string>
+    <string name="morphe_auto_pause_on_screen_lock_off">Off</string>
+    <string name="morphe_auto_pause_on_screen_lock_always">Always pause when locked</string>
+    <string name="morphe_auto_pause_on_screen_lock_except_wireless">Pause unless wireless audio is connected</string>
 
     <!-- layout.disableScrollSpeedLimitPatch -->
     <string name="morphe_disable_scrolling_speed_limit_title">Disable scrolling speed limit</string>
@@ -167,6 +171,7 @@ Changes include:
     <string name="morphe_hide_ask_section_title">Hide Ask section</string>
     <string name="morphe_hide_attributes_section_title">Hide Attributes section</string>
     <string name="morphe_hide_attributes_section_summary">Hides Featured places, Games, Music, and People mentioned sections</string>
+    <string name="morphe_hide_channel_links_section_title">Hide Channel links section</string>
     <string name="morphe_hide_chapters_section_title">Hide Chapters section</string>
     <string name="morphe_hide_corrections_section_title">Hide Corrections section</string>
     <string name="morphe_hide_course_progress_section_title">Hide \'Course progress\' section</string>
@@ -273,6 +278,7 @@ Changes include:
     <string name="morphe_hide_comments_preview_comment_summary">Hides the comment preview under video before opening the full comments section</string>
     <string name="morphe_hide_comments_thanks_button_title">Hide Thanks button</string>
     <string name="morphe_hide_comments_timestamp_button_title">Hide Timestamp button</string>
+    <string name="morphe_hide_comments_top_fans_button_title">Hide \'Top fans\' button</string>
     <string name="morphe_sanitize_comments_highlighted_search_links_title">Sanitize highlighted search links</string>
     <string name="morphe_sanitize_comments_highlighted_search_links_summary">Sanitizes highlighted search links, leaving only the original plain text</string>
 
@@ -340,8 +346,38 @@ Limitations:
     <string name="morphe_hide_aislist_attribution_summary">"Data is provided by AiSList
 
 Tap here to open AiSlopList.com and see downloads for other platforms"</string>
+    <string name="morphe_aislist_submit_category_title">Report AI channels</string>
+    <string name="morphe_aislist_submit_flyout_menu_title">Add report entry to video menu</string>
+    <string name="morphe_aislist_submit_flyout_menu_summary">Add an entry to the video menu that reports the channel of a video to AiSList</string>
+    <string name="morphe_aislist_submit_username_title">Submitter name</string>
+    <string name="morphe_aislist_submit_username_summary">Name shown next to your reports on the public AiSList leaderboard. Reporting is unavailable while this is empty</string>
+    <string name="morphe_aislist_submit_title">Report AI channel</string>
+    <string name="morphe_aislist_submit_dialog_message">"Submit %s to AiSList, using this video as evidence?
+
+Only report channels that:
+• Use AI voices, visuals, scripts or music as their main content
+• Mass produce content with AI tools and little human work
+
+Do not report channels that only discuss AI, or use AI for some parts of their videos.
+
+Reports are public and are reviewed before a channel is added to a list. Removal is only possible through a request on GitHub"</string>
+    <string name="morphe_aislist_submit_already_blocklisted">This channel is already on the AiSList blocklist</string>
+    <string name="morphe_aislist_submit_already_warnlisted">This channel is already on the AiSList warnlist</string>
+    <string name="morphe_aislist_submit_dialog_confirm">Report</string>
+    <string name="morphe_aislist_submit_no_username">Set a submitter name in the AI channel filter settings to report channels</string>
+    <string name="morphe_aislist_submit_resolving">Looking up the channel…</string>
+    <string name="morphe_aislist_submit_failed_channel">Cannot find the channel of this video</string>
+    <string name="morphe_aislist_submit_success">Channel reported and awaiting review</string>
+    <string name="morphe_aislist_submit_failed_conflict">AiSList could not save the report, try again later</string>
+    <string name="morphe_aislist_submit_failed_rate_limit">Too many reports were sent, try again later</string>
+    <string name="morphe_aislist_submit_failed_rejected">AiSList rejected the report</string>
+    <string name="morphe_aislist_submit_failed">Report failed, check your connection</string>
 
     <!-- ad.hideAdsPatch -->
+    <string name="morphe_ads_channel_whitelist_title">Channel ad whitelist</string>
+    <string name="morphe_ads_channel_whitelist_summary">Videos from whitelisted channels play with ads, so their creators are paid. Ads stay blocked on every other channel</string>
+    <string name="morphe_ads_channel_whitelist_flyout_add">Add channel to ad whitelist</string>
+    <string name="morphe_ads_channel_whitelist_flyout_remove">Remove channel from ad whitelist</string>
     <string name="morphe_hide_creator_store_shelf_title">Hide creator store shelf</string>
     <string name="morphe_hide_end_screen_store_banner_title">Hide end screen store banner</string>
     <string name="morphe_hide_general_ads_title">Hide general ads</string>
@@ -352,6 +388,15 @@ Tap here to open AiSlopList.com and see downloads for other platforms"</string>
     <string name="morphe_hide_shopping_links_title">Hide shopping links</string>
     <string name="morphe_hide_video_ads_title">Hide video ads</string>
     <string name="morphe_hide_youtube_premium_promotions_title">Hide YouTube Premium promotions</string>
+
+    <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
+    <string name="morphe_channel_whitelist_current_channel">Current channel:</string>
+    <string name="morphe_channel_whitelist_add">Add to whitelist</string>
+    <string name="morphe_channel_whitelist_remove">Remove</string>
+    <string name="morphe_channel_whitelist_channels_header">Whitelisted channels</string>
+    <string name="morphe_channel_whitelist_empty">No channels whitelisted</string>
+    <string name="morphe_channel_whitelist_channel_added">Channel added to whitelist</string>
+    <string name="morphe_channel_whitelist_channel_removed">Channel removed from whitelist</string>
 
     <!-- interaction.doubletap.doubleTapLengthPatch -->
     <string name="morphe_double_tap_length_3s" translatable="false">3</string>
@@ -512,6 +557,10 @@ Info: May not work on live streams"</string>
     <string name="morphe_queue_override_flyout_menu_summary">Opens the Morphe queue instead of the YouTube queue</string>
     <string name="morphe_queue_add_flyout_menu_title">Add feed flyout queue menu item</string>
     <string name="morphe_queue_add_flyout_menu_summary">Adds an additional flyout item. Enable this if \"Add to queue\" is not shown</string>
+    <string name="morphe_ads_channel_whitelist_flyout_menu_title">Ad whitelist in flyout menu</string>
+    <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Adds a flyout item that lets ads play on the channel of that video</string>
+    <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Speed whitelist in flyout menu</string>
+    <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Adds a flyout item that always plays the channel of that video at 1.0x speed</string>
     <string name="morphe_queue_manager_check_failed_auth">Not logged in</string>
     <string name="morphe_queue_manager_check_failed_playlist_id">No playlist ID</string>
     <string name="morphe_queue_manager_check_failed_queue">Queue is empty</string>
@@ -596,7 +645,6 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_swipe_overlay_timeout_summary">The amount of milliseconds the overlay is visible</string>
     <string name="morphe_swipe_overlay_background_opacity_title">Swipe overlay background opacity</string>
     <string name="morphe_swipe_overlay_background_opacity_summary">Adjust the transparency level (0 is transparent, 100 is opaque)</string>
-    <string name="morphe_swipe_overlay_background_opacity_invalid_toast">Swipe opacity must be between 0-100</string>
     <string name="morphe_swipe_overlay_progress_brightness_color_title">Swipe overlay brightness color</string>
     <string name="morphe_swipe_overlay_progress_brightness_color_summary">Set the color of the brightness controls progress bar</string>
     <string name="morphe_swipe_overlay_progress_volume_color_title">Swipe overlay volume color</string>
@@ -605,7 +653,6 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_swipe_overlay_progress_speed_color_summary">Set the color of the playback speed controls progress bar</string>
     <string name="morphe_swipe_text_overlay_size_title">Swipe overlay text size</string>
     <string name="morphe_swipe_text_overlay_size_summary">Adjust the size of the on-screen text (1-30)</string>
-    <string name="morphe_swipe_text_overlay_size_invalid_toast">The text size must be between 1-30</string>
     <string name="morphe_swipe_threshold_title">Swipe magnitude threshold</string>
     <string name="morphe_swipe_threshold_summary">Set the required swipe distance before an adjustment triggers</string>
     <string name="morphe_swipe_volume_sensitivity_title">Volume swipe sensitivity</string>
@@ -768,42 +815,44 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
     <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
     <string name="morphe_hide_player_flyout_title">Flyout menu</string>
     <string name="morphe_hide_player_flyout_summary">Choose which components appear in the flyout menu</string>
-    <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
-    <string name="morphe_hide_player_flyout_audio_track_title">Hide \'Audio Track\' menu</string>
+    <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
+    <string name="morphe_hide_player_flyout_additional_settings_title">Hide \'Additional settings\' / More menu</string>
+    <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
+    <string name="morphe_hide_player_flyout_ambient_mode_title">Hide \'Ambient mode\' menu</string>
     <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+         'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
     <string name="morphe_hide_player_flyout_audio_track_not_available">"\'Audio Track\' menu is hidden
 
 To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client except \'Android Studio\' and \'Android VR Downgraded\'"</string>
+    <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
+    <string name="morphe_hide_player_flyout_audio_track_title">Hide \'Audio Track\' menu</string>
     <string name="morphe_hide_player_flyout_audio_track_footer_title">Hide \'Audio Track\' menu footer</string>
     <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
     <string name="morphe_hide_player_flyout_captions_title">Hide Captions menu</string>
     <string name="morphe_hide_player_flyout_captions_footer_title">Hide Captions menu footer</string>
     <string name="morphe_hide_player_flyout_captions_header_title">Hide Captions menu header</string>
-    <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
-    <string name="morphe_hide_player_flyout_additional_settings_title">Hide \'Additional settings\' / More menu</string>
-    <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
-    <string name="morphe_hide_player_flyout_sleep_timer_title">Hide \'Sleep timer\' menu</string>
-    <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
-    <string name="morphe_hide_player_flyout_loop_video_title">Hide \'Loop video\' menu</string>
-    <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
-    <string name="morphe_hide_player_flyout_ambient_mode_title">Hide \'Ambient mode\' menu</string>
-    <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
-    <string name="morphe_hide_player_flyout_stable_volume_title">Hide \'Stable volume\' menu</string>
     <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
     <string name="morphe_hide_player_flyout_help_title">Hide \'Help &amp; feedback\' menu</string>
-    <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
-    <string name="morphe_hide_player_flyout_speed_title">Hide \'Playback speed\' menu</string>
-    <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
-    <string name="morphe_hide_player_flyout_lock_screen_title">Hide \'Lock screen\' menu</string>
     <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
     <string name="morphe_hide_player_flyout_listen_with_youtube_music_title">Hide \'Listen with YouTube Music\' menu</string>
-    <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
-    <string name="morphe_hide_player_flyout_watch_in_vr_title">Hide \'Watch in VR\' menu</string>
+    <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
+    <string name="morphe_hide_player_flyout_lock_screen_title">Hide \'Lock screen\' menu</string>
+    <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
+    <string name="morphe_hide_player_flyout_loop_video_title">Hide \'Loop video\' menu</string>
+    <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+    <string name="morphe_hide_player_flyout_on_the_go_title">Hide \'On-the-go\' menu</string>
     <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
     <string name="morphe_hide_player_flyout_quality_title">Hide Quality menu</string>
     <string name="morphe_hide_player_flyout_quality_footer_title">Hide Quality menu footer</string>
     <string name="morphe_hide_player_flyout_quality_header_title">Hide Quality menu header</string>
+    <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
+    <string name="morphe_hide_player_flyout_sleep_timer_title">Hide \'Sleep timer\' menu</string>
+    <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
+    <string name="morphe_hide_player_flyout_speed_title">Hide \'Playback speed\' menu</string>
+    <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
+    <string name="morphe_hide_player_flyout_stable_volume_title">Hide \'Stable volume\' menu</string>
+    <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
+    <string name="morphe_hide_player_flyout_watch_in_vr_title">Hide \'Watch in VR\' menu</string>
 
     <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
     <string name="morphe_hide_autoplay_preview_title">Hide autoplay preview</string>
@@ -820,6 +869,8 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <string name="morphe_hide_fullscreen_button_title">Hide Fullscreen button</string>
     <string name="morphe_hide_player_control_buttons_background_title">Hide player controls background</string>
     <string name="morphe_hide_player_control_buttons_background_summary">Hides the dark shading surrounding the video player controls</string>
+    <string name="morphe_player_control_buttons_background_opacity_title">Control buttons background opacity</string>
+    <string name="morphe_player_control_buttons_background_opacity_summary">Adjust the opacity of the circle behind the player control buttons (0 is invisible, 100 is solid)</string>
     <string name="morphe_hide_player_previous_next_buttons_title">Hide Previous &amp; Next buttons</string>
     <string name="morphe_hide_settings_button_title">Hide Settings button</string>
 
@@ -848,8 +899,6 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <string name="morphe_fullscreen_large_seekbar_title">Enable fullscreen large seekbar</string>
 
     <!-- layout.hide.shorts.hideShortsComponentsPatch -->
-    <string name="morphe_shorts_player_screen_title">Shorts player</string>
-    <string name="morphe_shorts_player_screen_summary">Choose which components appear in the Shorts player</string>
     <string name="morphe_hide_shorts_category_title">Hide Shorts</string>
     <string name="morphe_hide_shorts_channel_title">Hide in channel page</string>
     <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -859,45 +908,48 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <string name="morphe_hide_shorts_subscriptions_title">Hide in Subscriptions feed</string>
     <string name="morphe_hide_shorts_video_description_title">Hide in video description</string>
     <string name="morphe_hide_shorts_history_title">Hide in watch history</string>
+    <string name="morphe_shorts_player_screen_title">Shorts player</string>
+    <string name="morphe_shorts_player_screen_summary">Choose which components appear in the Shorts player</string>
+    <string name="morphe_disable_shorts_double_tap_to_like_title">Disable double-tap to like</string>
     <string name="morphe_hide_shorts_ai_button_title">Hide AI button</string>
     <string name="morphe_hide_shorts_auto_dubbed_label_title">Hide \'Auto-dubbed\' label</string>
-    <string name="morphe_hide_shorts_super_thanks_button_title">Hide \'Buy Super Thanks\' button</string>
+    <string name="morphe_hide_shorts_channel_bar_title">Hide channel bar</string>
+    <string name="morphe_hide_shorts_comments_button_title">Hide Comments button</string>
     <string name="morphe_hide_shorts_effect_button_title">Hide Effect button</string>
+    <string name="morphe_hide_shorts_full_video_link_label_title">Hide video link label</string>
+    <string name="morphe_hide_shorts_gesture_hints_title">Hide gesture hints</string>
     <string name="morphe_hide_shorts_green_screen_button_title">Hide \'Green screen\' button</string>
     <string name="morphe_hide_shorts_hashtag_button_title">Hide Hashtag button</string>
+    <string name="morphe_hide_shorts_info_panel_title">Hide info panel</string>
     <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_shorts_join_button_title">Hide Join button</string>
+    <string name="morphe_hide_shorts_like_button_title">Hide Like button</string>
+    <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
+    <string name="morphe_hide_shorts_like_fountain_title">Hide Like button fountain animation</string>
     <string name="morphe_hide_shorts_live_preview_title">Hide live preview</string>
     <string name="morphe_hide_shorts_location_label_title">Hide location label</string>
+    <string name="morphe_hide_shorts_navigation_bar_title">Hide navigation bar</string>
     <string name="morphe_hide_shorts_new_posts_button_title">Hide \'New posts\' button</string>
     <string name="morphe_hide_shorts_paused_overlay_buttons_title">Hide paused overlay buttons</string>
     <string name="morphe_hide_shorts_preview_comment_title">Hide preview comment</string>
+    <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
+    <string name="morphe_hide_shorts_remix_button_title">Hide Remix button</string>
+    <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+    <string name="morphe_hide_shorts_save_button_title">Hide Save button</string>
     <string name="morphe_hide_shorts_save_sound_button_title">Hide \'Save music\' button</string>
     <string name="morphe_hide_shorts_search_suggestions_title">Hide search suggestions</string>
+    <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
+    <string name="morphe_hide_shorts_share_button_title">Hide Share button</string>
     <string name="morphe_hide_shorts_shop_button_title">Hide Shop button</string>
+    <string name="morphe_hide_shorts_sound_button_title">Hide Sound button</string>
+    <string name="morphe_hide_shorts_sound_metadata_label_title">Hide sound metadata label</string>
     <string name="morphe_hide_shorts_subscribe_button_title">Hide Subscribe button</string>
+    <string name="morphe_hide_shorts_super_thanks_button_title">Hide \'Buy Super Thanks\' button</string>
     <string name="morphe_hide_shorts_tagged_products_title">Hide tagged products</string>
     <string name="morphe_hide_shorts_upcoming_button_title">Hide Upcoming button</string>
     <string name="morphe_hide_shorts_use_sound_button_title">Hide \'Use this sound\' button</string>
     <string name="morphe_hide_shorts_use_template_button_title">Hide \'Use this template\' button</string>
-    <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
-    <string name="morphe_hide_shorts_like_fountain_title">Hide Like button fountain animation</string>
-    <string name="morphe_hide_shorts_like_button_title">Hide Like button</string>
-    <string name="morphe_hide_shorts_comments_button_title">Hide Comments button</string>
-    <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-    <string name="morphe_hide_shorts_save_button_title">Hide Save button</string>
-    <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-    <string name="morphe_hide_shorts_share_button_title">Hide Share button</string>
-    <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-    <string name="morphe_hide_shorts_remix_button_title">Hide Remix button</string>
-    <string name="morphe_hide_shorts_sound_button_title">Hide Sound button</string>
-    <string name="morphe_hide_shorts_info_panel_title">Hide info panel</string>
-    <string name="morphe_hide_shorts_channel_bar_title">Hide channel bar</string>
     <string name="morphe_hide_shorts_video_title_title">Hide video title</string>
-    <string name="morphe_hide_shorts_sound_metadata_label_title">Hide sound metadata label</string>
-    <string name="morphe_hide_shorts_full_video_link_label_title">Hide video link label</string>
-    <string name="morphe_disable_shorts_double_tap_to_like_title">Disable double-tap to like</string>
-    <string name="morphe_hide_shorts_navigation_bar_title">Hide navigation bar</string>
 
     <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
     <string name="morphe_hide_end_screen_suggested_video_title">Hide end screen suggested video</string>
@@ -919,6 +971,10 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
     <string name="morphe_disable_player_popup_panels_title">Disable player popup panels</string>
     <string name="morphe_disable_player_popup_panels_summary">Disables playlist and live chat panels from opening automatically</string>
+
+    <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
+    <string name="morphe_disable_playlist_autoplay_title">Disable playlist autoplay</string>
+    <string name="morphe_disable_playlist_autoplay_summary">Prevents playlists from automatically advancing to the next video</string>
 
     <!-- layout.player.fullscreen.exitFullscreenPatch -->
     <string name="morphe_exit_fullscreen_title">Exit fullscreen mode on video end</string>
@@ -955,7 +1011,6 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
     <string name="morphe_player_overlay_opacity_title">Player overlay opacity</string>
     <string name="morphe_player_overlay_opacity_summary">Adjust the transparency level (0 is transparent, 100 is opaque)</string>
-    <string name="morphe_player_overlay_opacity_invalid_toast">Player overlay opacity must be between 0-100</string>
 
     <!-- layout.searchbar.wideSearchbarPatch -->
     <string name="morphe_searchbar_type_title">Search bar</string>
@@ -977,12 +1032,14 @@ Tablet layout
 • Community posts are hidden
 • Playback in feeds setting is not available
 • Remix button and Sound button are not available in Shorts
+• 'More videos' overlay may not be available
 • Non collapsed old video action bar is shown
 
 Automotive layout
 • Feed is organized by topics and channels
 • Playback in feeds setting is not available
 • Remix button and Sound button are not available in Shorts
+• 'More videos' overlay may not be available
 • Shorts open in the regular player
 • Non collapsed old video action bar is shown"</string>
     <string name="morphe_tablet_layout_in_player_title">Enable tablet layout in player</string>
@@ -1085,7 +1142,6 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <string name="morphe_miniplayer_width_dip_invalid_toast">Pixel size must be between %1$s and %2$s</string>
     <string name="morphe_miniplayer_opacity_title">Overlay opacity</string>
     <string name="morphe_miniplayer_opacity_summary">Adjust the transparency level (0 is transparent, 100 is opaque)</string>
-    <string name="morphe_miniplayer_opacity_invalid_toast">Miniplayer overlay opacity must be between 0-100</string>
 
     <!-- misc.fix.fixBackToExitGesturePatch -->
     <string name="morphe_back_button_always_exits_feed_title">Back button exits the feed</string>
@@ -1261,6 +1317,10 @@ Tap here to open DeArrow.ajay.app"</string>
     <string name="morphe_remember_playback_speed_toast">Changed default playback speed to: %s</string>
     <string name="morphe_disable_playback_speed_music_title">Use normal speed for music</string>
     <string name="morphe_disable_playback_speed_music_summary">Always play music videos at 1.0x speed</string>
+    <string name="morphe_playback_speed_channel_whitelist_title">Channel speed whitelist</string>
+    <string name="morphe_playback_speed_channel_whitelist_summary">Videos from whitelisted channels always play at 1.0x speed</string>
+    <string name="morphe_playback_speed_channel_whitelist_flyout_add">Add channel to speed whitelist</string>
+    <string name="morphe_playback_speed_channel_whitelist_flyout_remove">Remove channel from speed whitelist</string>
     <string name="morphe_enable_playback_audio_pitch_controls_title">Enable audio pitch controls</string> 
     <string name="morphe_playback_audio_pitch_default_title">Default playback audio pitch</string>
     <string name="morphe_remember_playback_audio_pitch_toast">Changed default audio pitch to: %s</string>
@@ -1275,6 +1335,14 @@ Tap here to open DeArrow.ajay.app"</string>
 
     <!-- video.codecs.disableVideoCodecsPatch -->
     <string name="morphe_disable_hdr_video_title">Disable HDR video</string>
+    <string name="morphe_force_hdr_video_title">Force HDR video</string>
+    <string name="morphe_force_hdr_video_summary">Forces app to recognize this device as HDR‑capable</string>
+    <string name="morphe_force_hdr_video_user_dialog_message">"Use this if HDR decoding works but YouTube does not offer HDR, such as some HyperOS devices that hide HLG.
+
+Limitations:
+• Colors may look wrong if the display cannot actually show HDR
+• Playback may fail if the decoder cannot handle HDR
+• HDR still depends on the spoof video streams client"</string>
     <string name="morphe_force_avc_codec_title">Force AVC (H.264) codec</string>
     <string name="morphe_force_avc_codec_user_dialog_message">"Benefits:
 • Can improve battery life

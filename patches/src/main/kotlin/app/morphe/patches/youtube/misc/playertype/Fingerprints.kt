@@ -9,23 +9,6 @@ import app.morphe.patches.all.misc.resources.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal object PlayerTypeEnumFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
-    strings = listOf(
-        "WATCH_WHILE_PICTURE_IN_PICTURE",
-        "NONE",
-        "HIDDEN",
-        "WATCH_WHILE_MINIMIZED",
-        "WATCH_WHILE_MAXIMIZED",
-        "WATCH_WHILE_FULLSCREEN",
-        "WATCH_WHILE_SLIDING_MAXIMIZED_FULLSCREEN",
-        "WATCH_WHILE_SLIDING_MINIMIZED_MAXIMIZED",
-        "WATCH_WHILE_SLIDING_MINIMIZED_DISMISSED",
-        "INLINE_MINIMAL",
-        "VIRTUAL_REALITY_FULLSCREEN",
-    )
-)
-
 internal object ReelWatchPagerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Landroid/view/View;",

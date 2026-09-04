@@ -48,6 +48,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Нема пронајдено историја на пребарување</string>
   <string name="morphe_settings_search_empty_history_summary">За да ја зачувате историјата на пребарување, откучете пребарувачка прашање и притиснете Enter</string>
   <string name="morphe_settings_search_history_title">Прикажи историја на пребарувања на поставки</string>
+  <string name="morphe_settings_name_default_item">Стандардно</string>
+  <string name="morphe_settings_name_custom_item">По нарачка</string>
   <string name="morphe_show_menu_icons_title">Прикажи икони за поставки Morphe</string>
   <string name="morphe_language_title">Јазик на Morphe</string>
   <string name="morphe_language_user_dialog_message">"Преводи за некои јазици може да им недостигаат или да бидат нецелосни.
@@ -104,12 +106,21 @@ Second \"item\" text"</string>
   <string name="morphe_debug_logs_clear_toast">Завршни поруки за грешки се обришани</string>
   <string name="morphe_debug_feature_flags_manager_title">Менаџер за ознаки за функции</string>
   <string name="morphe_debug_feature_flags_manager_summary">Управление на булеан ознаки за функции</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Активни ознаки за функции (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Заблокирани ознаки за функции (%d)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Исклучено</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Вклучено</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Отстрани</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Ознаките за функции се зачувани</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Ознаките за функции се вратени</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Ознаките за функции се копирани во привремениот простор</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Рестартирај ја апликацијата за да ја користите оваа настройка</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Табела на водечки спонзори SponsorBlock</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Отвори ги поставките на MicroG</string>

@@ -52,6 +52,7 @@ val hideMusicActionButtonsPatch = bytecodePatch(
                     SwitchPreference("morphe_music_hide_action_bar"),
                     SwitchPreference("morphe_music_hide_like_dislike_button"),
                     SwitchPreference("morphe_music_hide_comments_button"),
+                    SwitchPreference("morphe_music_hide_live_chat_replay_button"),
                     SwitchPreference("morphe_music_hide_lyrics_button"),
                     SwitchPreference("morphe_music_hide_share_button"),
                     SwitchPreference("morphe_music_hide_save_button"),

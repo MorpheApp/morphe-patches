@@ -21,6 +21,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">Logo ng Header</string>
   <string name="morphe_header_logo_entry_1">Panimula</string>
   <string name="morphe_header_logo_entry_3">Pasadya</string>
+  <!-- misc.album.albumMusicVideoPatch -->
+  <string name="morphe_music_play_album_songs_title">I-play ang mga audio track ng album</string>
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <string name="morphe_music_play_album_songs_summary">I-play ang bersyon ng audio-only ng mga kanta sa album sa halip na music video. Nangangailangan ng \'Spoof video streams\'</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">I-download ang mga music video, podcast, o kanta gamit ang mga app sa pag-download mula sa third-party</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -145,6 +149,8 @@ YouTube Music 8.x — tumatakbo lamang ang crossfade sa 9.x at mas bago"</string
   <string name="morphe_music_hide_action_bar_title">Itago ang action bar</string>
   <string name="morphe_music_hide_like_dislike_button_title">Itago ang pindutan ng Like at Dislike</string>
   <string name="morphe_music_hide_comments_button_title">Itago ang pindutan ng Komento</string>
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_live_chat_replay_button_title">Itago ang button na \'Live chat replay\'</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_lyrics_button_title">Itago ang pindutan ng Lyrics</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -154,7 +160,7 @@ YouTube Music 8.x — tumatakbo lamang ang crossfade sa 9.x at mas bago"</string
   <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_download_button_title">Itago ang button na I-download</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_radio_button_title">Itago ang button na Simulan ang radio</string>
+  <string name="morphe_music_hide_radio_button_title">Itago ang pindutan ng \'Start radio\'</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Lumabas na menu</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Piliin kung aling mga bahagi ang lalabas sa mga menu ng player at pila</string>

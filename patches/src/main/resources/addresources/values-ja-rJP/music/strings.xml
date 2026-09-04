@@ -21,6 +21,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">ヘッダーロゴ</string>
   <string name="morphe_header_logo_entry_1">デフォルト</string>
   <string name="morphe_header_logo_entry_3">カスタム</string>
+  <!-- misc.album.albumMusicVideoPatch -->
+  <string name="morphe_music_play_album_songs_title">アルバムを音声のみモードで再生</string>
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <string name="morphe_music_play_album_songs_summary">アルバムを再生するときに、動画モードに切り替わることなくすべての曲を音声のみモードで再生します。[動画ストリームを偽装] が必要です</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">サードパーティ製のダウンロード アプリで、ミュージック ビデオ、ポッドキャスト、楽曲をダウンロードします</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -145,6 +149,8 @@ YouTube Music 8.x — クロスフェードは9.x以降でのみ実行されま�
   <string name="morphe_music_hide_action_bar_title">アクションバーを非表示</string>
   <string name="morphe_music_hide_like_dislike_button_title">高評価ボタンと低評価ボタンを非表示</string>
   <string name="morphe_music_hide_comments_button_title">コメントボタンを非表示</string>
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_live_chat_replay_button_title">「チャットのリプレイ」ボタンを非表示</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_lyrics_button_title">歌詞ボタンを非表示</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->

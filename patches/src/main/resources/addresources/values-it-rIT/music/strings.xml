@@ -21,6 +21,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">Logo dell\'intestazione</string>
   <string name="morphe_header_logo_entry_1">Predefinito</string>
   <string name="morphe_header_logo_entry_3">Personalizzato</string>
+  <!-- misc.album.albumMusicVideoPatch -->
+  <string name="morphe_music_play_album_songs_title">Riproduci le tracce audio dell\'album</string>
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <string name="morphe_music_play_album_songs_summary">Riproduci la versione solo audio delle canzoni dell\'album invece di un video musicale. Richiede \'Simula i flussi video\'</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Scarica video musicali, podcast o canzoni con app di download di terze parti</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -145,6 +149,8 @@ YouTube Music 8.x: il crossfade funziona solo su 9.x e versioni successive"</str
   <string name="morphe_music_hide_action_bar_title">Nascondi la barra azione</string>
   <string name="morphe_music_hide_like_dislike_button_title">Nascondi Mi Piace e Non Mi Piace</string>
   <string name="morphe_music_hide_comments_button_title">Nascondi il pulsante Commenti</string>
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_live_chat_replay_button_title">Nascondi il pulsante \"Riproduci chat live\"</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_lyrics_button_title">Nascondi il pulsante Testi</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -154,7 +160,7 @@ YouTube Music 8.x: il crossfade funziona solo su 9.x e versioni successive"</str
   <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_download_button_title">Nascondi il pulsante Download</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_radio_button_title">Nascondi il pulsante Avvia radio</string>
+  <string name="morphe_music_hide_radio_button_title">Nascondi il pulsante \'Avvia radio\'</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Menù a comparsa</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Scegli quali componenti mostrare nei menù del lettore e della coda</string>

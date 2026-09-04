@@ -21,6 +21,8 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">Logo-ya serê</string>
   <string name="morphe_header_logo_entry_1">Bixwe</string>
   <string name="morphe_header_logo_entry_3">Şêwazî</string>
+  <!-- misc.album.albumMusicVideoPatch -->
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Vîdyoyên muzîkê, podcast an stran bi sepanên dakêşkirina sêjiyê dakêşîne</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -145,6 +147,7 @@ YouTube Music 8.x — crossfade tenê li 9.x û nûjenertirîn de dimeşe"</stri
   <string name="morphe_music_hide_action_bar_title">Çekûlbarê bigihîne</string>
   <string name="morphe_music_hide_like_dislike_button_title">Butona Hezdikirin û Nefesgirtinê veşêrin</string>
   <string name="morphe_music_hide_comments_button_title">Butona Şîroveyan veşêrin</string>
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_lyrics_button_title">Butona Sözan veşêrin</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -154,7 +157,6 @@ YouTube Music 8.x — crossfade tenê li 9.x û nûjenertirîn de dimeşe"</stri
   <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_download_button_title">Dîmena Butona Dakêşkirinê</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_radio_button_title">Dîmena Butona Destpêkirina Radyoyê</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Menûya pêşbaz</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Hilbijêre ku kîjan pêkhatî di menuya lîstikvan de xuya bibin</string>

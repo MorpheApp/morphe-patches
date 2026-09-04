@@ -11,16 +11,19 @@
  * https://gitlab.com/ReVanced/revanced-patches/-/commit/584b00fd87f83504b8886e4f3f674f8c3943cd91
  * https://gitlab.com/ReVanced/revanced-patches/-/commit/14a8f4fb96f5e2a4bc264a54115e0870b1a1ffa8
  * https://github.com/MorpheApp/morphe-patches/commit/f5371ca998c019609c2b5558b3408ab1fec065c8
+ * https://github.com/MorpheApp/morphe-patches/pull/2638
  *
- * See the included NOTICE file for §7(c) terms that apply to Morphe contributions.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
 
 package app.morphe.extension.shared.ui;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.text.Spanned;
@@ -38,8 +41,10 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseSettings;
@@ -98,6 +103,25 @@ public class CustomDialog {
     }
 
     /**
+     * Creates an EditText styled like the one {@link #create} shows,
+     * for dialogs that build their own content layout.
+     */
+    public static EditText createEditText(Context context) {
+        EditText editText = new EditText(context);
+        editText.setTextSize(16);
+        editText.setTextColor(ThemeUtils.getAppForegroundColor());
+
+        ShapeDrawable background = new ShapeDrawable(new RoundRectShape(
+                Dim.roundedCorners(10), null, null));
+        background.getPaint().setColor(ThemeUtils.getEditTextBackground());
+        editText.setPadding(Dim.dp8, Dim.dp8, Dim.dp8, Dim.dp8);
+        editText.setBackground(background);
+        editText.setClipToOutline(true);
+
+        return editText;
+    }
+
+    /**
      * Initializes a custom dialog with the specified parameters.
      *
      * @param context                     Context used to create the dialog.
@@ -123,7 +147,8 @@ public class CustomDialog {
         mainLayout = createMainLayout();
         addTitle(title);
         addContent(message, editText);
-        addButtons(okButtonText, onOkClick, onCancelClick, neutralButtonText, onNeutralClick, dismissDialogOnNeutralClick, accentOkButton);
+        addButtons(okButtonText, onOkClick, onCancelClick, neutralButtonText,
+                onNeutralClick, dismissDialogOnNeutralClick, accentOkButton);
 
         // Set dialog content and window attributes.
         dialog.setContentView(mainLayout);
@@ -142,13 +167,7 @@ public class CustomDialog {
         LinearLayout layout = new LinearLayout(context);
         layout.setOrientation(LinearLayout.VERTICAL);
         layout.setPadding(Dim.dp24, Dim.dp16, Dim.dp24, Dim.dp24);
-
-        // Set rounded rectangle background.
-        ShapeDrawable background = new ShapeDrawable(new RoundRectShape(
-                Dim.roundedCorners(28), null, null));
-        // Dialog background.
-        background.getPaint().setColor(ThemeUtils.getDialogBackgroundColor());
-        layout.setBackground(background);
+        layout.setBackground(createRoundedBackground(28, ThemeUtils.getDialogBackgroundColor()));
 
         return layout;
     }
@@ -198,11 +217,8 @@ public class CustomDialog {
 
         // EditText (if provided).
         if (editText != null) {
-            ShapeDrawable background = new ShapeDrawable(new RoundRectShape(
-                    Dim.roundedCorners(10), null, null));
-            background.getPaint().setColor(ThemeUtils.getEditTextBackground());
+            scrollView.setBackground(createRoundedBackground(10, ThemeUtils.getEditTextBackground()));
             scrollView.setPadding(Dim.dp8, Dim.dp8, Dim.dp8, Dim.dp8);
-            scrollView.setBackground(background);
             scrollView.setClipToOutline(true);
 
             // Remove EditText from its current parent, if any.
@@ -268,7 +284,8 @@ public class CustomDialog {
 
         // Create buttons in order: Neutral, Cancel, OK.
         if (neutralButtonText != null && onNeutralClick != null) {
-            Button neutralButton = createButton(context, dialog, neutralButtonText, onNeutralClick, false, dismissDialogOnNeutralClick);
+            Button neutralButton = createButton(context, dialog, neutralButtonText,
+                    onNeutralClick, false, dismissDialogOnNeutralClick);
             buttons.add(neutralButton);
             buttonWidths.add(measureButtonWidth(neutralButton));
         }
@@ -322,14 +339,10 @@ public class CustomDialog {
         // Clear theme-imposed minimum width so text is never clipped with ellipsis.
         button.setMinWidth(0);
         button.setMinimumWidth(0);
-
         // Background color for OK button (inversion) and Cancel/Neutral buttons.
-        ShapeDrawable background = new ShapeDrawable(new RoundRectShape(
-                Dim.roundedCorners(20), null, null));
-        background.getPaint().setColor(isOkButton
+        button.setBackground(createRoundedBackground(20, isOkButton
                 ? ThemeUtils.getOkButtonBackgroundColor()
-                : ThemeUtils.getCancelOrNeutralButtonBackgroundColor());
-        button.setBackground(background);
+                : ThemeUtils.getCancelOrNeutralButtonBackgroundColor()));
 
         button.setTextColor(Utils.isDarkModeEnabled()
                 ? (isOkButton ? Color.BLACK : Color.WHITE)
@@ -343,6 +356,36 @@ public class CustomDialog {
         });
 
         return button;
+    }
+
+    /**
+     * Creates a row of two equally sized buttons, to add to a dialog layout
+     * in addition to the dialog buttons.
+     *
+     * @param context Context used to create the row.
+     * @param first   Button shown on the left.
+     * @param second  Button shown on the right.
+     * @return The created row.
+     */
+    public static LinearLayout createButtonRow(Context context, Button first, Button second) {
+        LinearLayout.LayoutParams firstParams = new LinearLayout.LayoutParams(0, Dim.dp36, 1.0f);
+        firstParams.setMargins(0, 0, Dim.dp4, 0);
+        first.setLayoutParams(firstParams);
+
+        LinearLayout.LayoutParams secondParams = new LinearLayout.LayoutParams(0, Dim.dp36, 1.0f);
+        secondParams.setMargins(Dim.dp4, 0, 0, 0);
+        second.setLayoutParams(secondParams);
+
+        LinearLayout row = new LinearLayout(context);
+        row.setOrientation(LinearLayout.HORIZONTAL);
+        LinearLayout.LayoutParams rowParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        rowParams.setMargins(0, Dim.dp16, 0, 0);
+        row.setLayoutParams(rowParams);
+        row.addView(first);
+        row.addView(second);
+
+        return row;
     }
 
     /**
@@ -510,5 +553,85 @@ public class CustomDialog {
                 buttonContainer.addView(spacer);
             }
         }
+    }
+
+    /**
+     * Creates a styled modern search bar with a functional clear button.
+     *
+     * @param context Context used to create the EditText.
+     * @param hint The placeholder text to display.
+     * @param onQueryChanged Callback triggered when the text changes.
+     * @return The configured EditText search bar.
+     */
+    @SuppressLint("ClickableViewAccessibility")
+    public static EditText createSearchBar(Context context, String hint, Consumer<String> onQueryChanged) {
+        EditText searchBar = new EditText(context);
+        searchBar.setTextSize(16);
+        searchBar.setHint(hint);
+        searchBar.setSingleLine(true);
+        searchBar.setTextColor(ThemeUtils.getAppForegroundColor());
+        searchBar.setHapticFeedbackEnabled(false);
+        searchBar.setPadding(Dim.dp12, Dim.dp8, Dim.dp12, Dim.dp8);
+        searchBar.setCompoundDrawablePadding(Dim.dp8);
+        searchBar.setBackground(createRoundedBackground(20, ThemeUtils.getEditTextBackground()));
+
+        int searchIconResId = ResourceUtils.getIdentifierOrThrow(
+                ResourceType.DRAWABLE, "morphe_settings_search_icon_bold");
+        int clearIconResId = ResourceUtils.getIdentifierOrThrow(
+                ResourceType.DRAWABLE, "morphe_settings_search_remove_bold");
+
+        Drawable searchIcon = context.getDrawable(searchIconResId);
+        if (searchIcon != null) {
+            searchIcon.setBounds(0, 0, Dim.dp20, Dim.dp20);
+            searchIcon.setTint(ThemeUtils.getAppForegroundColor());
+        }
+
+        Drawable clearIcon = context.getDrawable(clearIconResId);
+        if (clearIcon != null) {
+            clearIcon.setBounds(0, 0, Dim.dp20, Dim.dp20);
+            clearIcon.setTint(ThemeUtils.getAppForegroundColor());
+        }
+
+        searchBar.setCompoundDrawables(searchIcon, null, null, null);
+
+        searchBar.addTextChangedListener(new android.text.TextWatcher() {
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
+                searchBar.setCompoundDrawables(searchIcon, null,
+                        TextUtils.isEmpty(s) ? null : clearIcon, null);
+                if (onQueryChanged != null) {
+                    onQueryChanged.accept(s.toString());
+                }
+            }
+            @Override public void afterTextChanged(android.text.Editable s) {}
+        });
+
+        searchBar.setOnTouchListener((v, event) -> {
+            if (event.getAction() == android.view.MotionEvent.ACTION_UP) {
+                Drawable[] drawables = searchBar.getCompoundDrawables();
+                if (drawables[2] != null && event.getRawX() >=
+                        (searchBar.getRight() - drawables[2].getBounds().width() - searchBar.getPaddingRight())) {
+                    searchBar.setText("");
+                    return true;
+                }
+            }
+            return false;
+        });
+
+        return searchBar;
+    }
+
+    /**
+     * Creates a rounded solid color background drawable.
+     *
+     * @param radiusDp The corner radius in dp.
+     * @param color The solid color for the background.
+     * @return The configured ShapeDrawable.
+     */
+    public static ShapeDrawable createRoundedBackground(int radiusDp, int color) {
+        ShapeDrawable background = new ShapeDrawable(new RoundRectShape(
+                Dim.roundedCorners(radiusDp), null, null));
+        background.getPaint().setColor(color);
+        return background;
     }
 }

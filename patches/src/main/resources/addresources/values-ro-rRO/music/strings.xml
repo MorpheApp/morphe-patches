@@ -21,6 +21,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">Siglă antet</string>
   <string name="morphe_header_logo_entry_1">Implicit</string>
   <string name="morphe_header_logo_entry_3">Personalizat</string>
+  <!-- misc.album.albumMusicVideoPatch -->
+  <string name="morphe_music_play_album_songs_title">Redă piesele audio ale albumului</string>
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <string name="morphe_music_play_album_songs_summary">Redă numai versiunea audio a melodiilor din album în loc de un videoclip muzical. Necesită \'Spoof video streams\'</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Descarcă videoclipuri muzicale, podcasturi sau melodii folosind aplicații de descărcare terțe</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -145,6 +149,8 @@ YouTube Music 8.x — estomparea încrucișată funcționează doar pe 9.x și v
   <string name="morphe_music_hide_action_bar_title">Ascunde bara de acțiune</string>
   <string name="morphe_music_hide_like_dislike_button_title">Ascunde butonul Like și Dislike</string>
   <string name="morphe_music_hide_comments_button_title">Ascunde butonul Comentarii</string>
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_live_chat_replay_button_title">Ascunde butonul \'Reluarea chatului live\'</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_lyrics_button_title">Ascunde butonul Versuri</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -154,7 +160,7 @@ YouTube Music 8.x — estomparea încrucișată funcționează doar pe 9.x și v
   <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_download_button_title">Ascunde butonul Descarcă</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_radio_button_title">Ascunde butonul Pornește radioul</string>
+  <string name="morphe_music_hide_radio_button_title">Ascunde butonul \'Pornește radioul\'</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Meniu flyout</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Alegeți ce componente apar în meniurile flyout ale playerului și cozii.</string>

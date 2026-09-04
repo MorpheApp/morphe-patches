@@ -33,6 +33,10 @@ Second \"item\" text"</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Зняти обмеження фонового відтворення</string>
   <string name="morphe_shorts_disable_background_playback_title">Вимкнути фонове відтворення</string>
+  <string name="morphe_auto_pause_on_screen_lock_title">Автоматично призупиняти, коли пристрій заблоковано</string>
+  <string name="morphe_auto_pause_on_screen_lock_off">Вимкнено</string>
+  <string name="morphe_auto_pause_on_screen_lock_always">Завжди призупиняти при блокуванні</string>
+  <string name="morphe_auto_pause_on_screen_lock_except_wireless">Призупиняти, якщо не підключено бездротовий звук</string>
   <!-- layout.disableScrollSpeedLimitPatch -->
   <string name="morphe_disable_scrolling_speed_limit_title">Вимкнути обмеження швидкості прокручування</string>
   <!-- layout.disableLayoutUpdatesPatch -->
@@ -160,6 +164,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_ask_section_title">Приховати секцію \"Запитати\"</string>
   <string name="morphe_hide_attributes_section_title">Приховати секцію \"Атрибути\"</string>
   <string name="morphe_hide_attributes_section_summary">Приховує секції \"Рекомендовані місця\", \"Ігри\", \"Музика\" та \"Згадані люди\"</string>
+  <string name="morphe_hide_channel_links_section_title">Приховати секцію \"Посилання каналу\"</string>
   <string name="morphe_hide_chapters_section_title">Приховати секцію \"Розділи\"</string>
   <string name="morphe_hide_corrections_section_title">Приховати секцію \"Виправлення\"</string>
   <string name="morphe_hide_course_progress_section_title">Приховати секцію \"Прогрес курсу\"</string>
@@ -262,6 +267,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_preview_comment_summary">Приховує попередній перегляд коментаря під відео до повного відкриття секції коментарів</string>
   <string name="morphe_hide_comments_thanks_button_title">Приховати кнопку \"Дякую\"</string>
   <string name="morphe_hide_comments_timestamp_button_title">Приховати кнопку позначки часу</string>
+  <string name="morphe_hide_comments_top_fans_button_title">Приховати кнопку \"Топ фанати\"</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Очищувати виділені пошукові посилання</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Очищує виділені пошукові посилання, залишаючи лише оригінальний звичайний текст</string>
   <string name="morphe_hide_keyword_content_screen_title">Фільтр ключових слів</string>
@@ -545,7 +551,6 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_overlay_timeout_summary">Скільки мілісекунд спливаюча панель при жесті буде показуватися</string>
   <string name="morphe_swipe_overlay_background_opacity_title">Затемнення фону панелі жесту</string>
   <string name="morphe_swipe_overlay_background_opacity_summary">Налаштовує рівень прозорості (0 це прозоро, 100 це непрозоро)</string>
-  <string name="morphe_swipe_overlay_background_opacity_invalid_toast">Значення затемнення панелі жесту має бути в межах від 0 до 100</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_title">Колір смуги прогресу яскравості</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_summary">Встановлює колір індикатора яскравості</string>
   <string name="morphe_swipe_overlay_progress_volume_color_title">Колір смуги прогресу гучності</string>
@@ -554,7 +559,6 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_overlay_progress_speed_color_summary">Встановлює колір індикатора швидкості відтворення</string>
   <string name="morphe_swipe_text_overlay_size_title">Розмір тексту панелі жесту</string>
   <string name="morphe_swipe_text_overlay_size_summary">Налаштовує розміру тексту на екрані (від 1 до 30)</string>
-  <string name="morphe_swipe_text_overlay_size_invalid_toast">Розмір тексту має бути від 1 до 30</string>
   <string name="morphe_swipe_threshold_title">Поріг величини жесту</string>
   <string name="morphe_swipe_threshold_summary">Встановлює мінімальну дистанцію свайпу для спрацювання</string>
   <string name="morphe_swipe_volume_sensitivity_title">Чутливість жесту гучності</string>
@@ -708,42 +712,44 @@ Second \"item\" text"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Висувне меню</string>
   <string name="morphe_hide_player_flyout_summary">Виберіть, які компоненти будуть показуватися у висувному меню</string>
-  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_audio_track_title">Приховати меню \"Звукова доріжка\"</string>
+  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_additional_settings_title">Приховати меню \"Додаткові налаштування\" / \"Більше\"</string>
+  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_ambient_mode_title">Приховати меню \"Кінематографічне освітлення\"</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+         'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Пункт меню \"Звукова доріжка\" приховано
 
 Для того, щоб пункт меню \"Звукова доріжка\" показувався, змініть клієнт \"Підміни відеопотоків\" на будь-який, окрім \"Android Studio\" або \"Android VR Downgraded\""</string>
+  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_audio_track_title">Приховати меню \"Звукова доріжка\"</string>
   <string name="morphe_hide_player_flyout_audio_track_footer_title">Приховати нижній колонтитул меню \"Звукова доріжка\"</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Приховати меню \"Субтитри\"</string>
   <string name="morphe_hide_player_flyout_captions_footer_title">Приховати нижній колонтитул меню \"Субтитри\"</string>
   <string name="morphe_hide_player_flyout_captions_header_title">Приховати заголовок \"Субтитри\"</string>
-  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_additional_settings_title">Приховати меню \"Додаткові налаштування\" / \"Більше\"</string>
-  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_sleep_timer_title">Приховати меню \"Таймер сну\"</string>
-  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_loop_video_title">Приховати меню \"Повторювати відео\"</string>
-  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_ambient_mode_title">Приховати меню \"Кінематографічне освітлення\"</string>
-  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_stable_volume_title">Приховати меню \"Стабілізувати гучність\"</string>
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_help_title">Приховати меню \"Довідка й відгуки\"</string>
-  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_speed_title">Приховати меню \"Швидкість відтворення\"</string>
-  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_lock_screen_title">Приховати меню \"Заблокувати екран\"</string>
   <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_listen_with_youtube_music_title">Приховати меню \"Слухати в YouTube Music\"</string>
-  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_watch_in_vr_title">Приховати меню \"Дивитись у VR\"</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_lock_screen_title">Приховати меню \"Заблокувати екран\"</string>
+  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_loop_video_title">Приховати меню \"Повторювати відео\"</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_on_the_go_title">Приховати меню \"У дорозі\"</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_quality_title">Приховати меню \"Якість\"</string>
   <string name="morphe_hide_player_flyout_quality_footer_title">Приховати нижній колонтитул меню \"Якість\"</string>
   <string name="morphe_hide_player_flyout_quality_header_title">Приховати заголовок меню \"Якість\"</string>
+  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_sleep_timer_title">Приховати меню \"Таймер сну\"</string>
+  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_speed_title">Приховати меню \"Швидкість відтворення\"</string>
+  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_stable_volume_title">Приховати меню \"Стабілізувати гучність\"</string>
+  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_watch_in_vr_title">Приховати меню \"Дивитись у VR\"</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Приховати попередній перегляд</string>
   <string name="morphe_hide_autoplay_preview_summary">Приховує попередній перегляд наступного відео перед автозапуском у повноекранному режимі</string>
@@ -758,6 +764,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_fullscreen_button_title">Приховати кнопку \"Повний екран\"</string>
   <string name="morphe_hide_player_control_buttons_background_title">Приховати фон кнопок керування плеєром</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Приховує темне затемнення навколо елементів керування плеєром</string>
+  <string name="morphe_player_control_buttons_background_opacity_title">Прозорість фону кнопок керування</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Налаштуйте прозорість кола за кнопками керування плеєром (0 - невидиме, 100 - суцільне)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Приховати кнопки \"Попереднє\" та \"Наступне\"</string>
   <string name="morphe_hide_settings_button_title">Приховати кнопку \"Налаштування\"</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -845,6 +853,9 @@ Second \"item\" text"</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Вимкнути спливаючі панелі плеєра</string>
   <string name="morphe_disable_player_popup_panels_summary">Вимикає автоматичне відкриття панелей списку відтворення та чату у прямому ефірі</string>
+  <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
+  <string name="morphe_disable_playlist_autoplay_title">Вимкнути автовідтворення списку відтворення</string>
+  <string name="morphe_disable_playlist_autoplay_summary">Запобігає автоматичному переходу списку відтворення до наступного відео</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Вийти з повноекранного режиму в кінці відео</string>
   <string name="morphe_exit_fullscreen_entry_1">Вимкнено</string>
@@ -853,9 +864,11 @@ Second \"item\" text"</string>
   <string name="morphe_exit_fullscreen_entry_4">Портретний і альбомний</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Повноекранні жести</string>
+  <string name="morphe_disable_fullscreen_gestures_summary">Жести плеєра у повноекранному режимі</string>
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">Вимкнути жест свайпу вгору у портретному режимі</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Вимкнути жест свайпу вниз у портретному режимі</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Вимкнути жест свайпу вниз у ландшафтному режимі</string>
+  <string name="morphe_disable_fullscreen_zoom_gesture_title">Вимкнути жест масштабування щипком</string>
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
   <string name="morphe_open_videos_fullscreen_title">Відкривати відео у повноекранному режимі</string>
   <string name="morphe_open_videos_fullscreen_entry_1">Вимкнено</string>
@@ -873,7 +886,6 @@ Second \"item\" text"</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Затемнення плеєра при натисканні</string>
   <string name="morphe_player_overlay_opacity_summary">Налаштовує рівень прозорості (0 це прозоро, 100 це непрозоро)</string>
-  <string name="morphe_player_overlay_opacity_invalid_toast">Значення затемнення плеєра має бути в межах від 0 до 100</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_searchbar_type_title">Панель пошуку</string>
   <string name="morphe_searchbar_type_entry_disabled">Вимкнена</string>
@@ -888,18 +900,20 @@ Second \"item\" text"</string>
   <string name="morphe_change_form_factor_entry_4">Автомобільний</string>
   <string name="morphe_change_form_factor_user_dialog_message">"Зміни включають:
 
-Макет для планшетів
-• Публікації спільноти приховані
-• Налаштування відтворення у стрічках недоступне
-• Кнопки \"Ремікс\" та \"Звук\" недоступні в Short
-• Панель дій відео не згорнута
+Планшетний макет
+• Дописи спільноти приховані
+• Налаштування \"Відтворення в стрічках\" недоступне
+• Кнопки \"Ремікс\" та \"Звук\" недоступні в Shorts
+• Накладка \"Більше відео\" може бути недоступна
+• Відображається нерозгорнута стара панель дій відео
 
 Автомобільний макет
 • Стрічка організована за темами та каналами
-• Налаштування відтворення у стрічках недоступне
-• Кнопки \"Ремікс\" та \"Звук\" недоступні в Short
-• Short відкриваються у звичайному плеєрі
-• Панель дій відео не згорнута"</string>
+• Налаштування \"Відтворення в стрічках\" недоступне
+• Кнопки \"Ремікс\" та \"Звук\" недоступні в Shorts
+• Накладка \"Більше відео\" може бути недоступна
+• Shorts відкриваються у звичайному плеєрі
+• Відображається нерозгорнута стара панель дій відео"</string>
   <string name="morphe_tablet_layout_in_player_title">Увімкнути планшетний макет у плеєрі</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Відновлює старий макет плеєра
@@ -991,7 +1005,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">Розмір у пікселях повинен бути від %1$s до %2$s</string>
   <string name="morphe_miniplayer_opacity_title">Затемнення мініплеєра</string>
   <string name="morphe_miniplayer_opacity_summary">Налаштовує рівень прозорості (0 це прозоро, 100 це непрозоро)</string>
-  <string name="morphe_miniplayer_opacity_invalid_toast">Значення затемнення мініплеєра має бути від 0 до 100</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Кнопка \"Назад\" виходить зі стрічки</string>
   <string name="morphe_back_button_always_exits_feed_summary">Натискання кнопки \"Назад\" завжди закриває застосунок замість прокручування до початку стрічки</string>
@@ -1144,6 +1157,14 @@ Second \"item\" text"</string>
   <string name="morphe_playback_audio_time_stretching_summary">Дозволяє налаштовувати швидкість і висоту тону незалежно, може спричиняти звукові артефакти</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Вимкнути HDR відео</string>
+  <string name="morphe_force_hdr_video_title">Примусово вмикати HDR-відео</string>
+  <string name="morphe_force_hdr_video_summary">Примусово змушує застосунок розпізнавати цей пристрій як такий, що підтримує HDR</string>
+  <string name="morphe_force_hdr_video_user_dialog_message">"Використовуйте це, якщо декодування HDR працює, але YouTube не пропонує HDR, наприклад на деяких пристроях HyperOS, які приховують HLG.
+
+Обмеження:
+• Кольори можуть виглядати неправильно, якщо дисплей насправді не підтримує HDR
+• Відтворення може не вдатися, якщо декодер не може обробити HDR
+• HDR все ще залежить від клієнта підробки відеопотоків"</string>
   <string name="morphe_force_avc_codec_title">Примусово використовувати кодек AVC (H.264)</string>
   <string name="morphe_force_avc_codec_user_dialog_message">"Переваги:
 • Може покращити час роботи від батареї

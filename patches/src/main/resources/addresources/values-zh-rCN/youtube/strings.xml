@@ -33,6 +33,10 @@ Second \"item\" text"</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">移除后台播放限制</string>
   <string name="morphe_shorts_disable_background_playback_title">禁用 Shorts 后台播放</string>
+  <string name="morphe_auto_pause_on_screen_lock_title">设备锁定时自动暂停</string>
+  <string name="morphe_auto_pause_on_screen_lock_off">关闭</string>
+  <string name="morphe_auto_pause_on_screen_lock_always">锁定时始终暂停</string>
+  <string name="morphe_auto_pause_on_screen_lock_except_wireless">除非连接无线音频，否则暂停</string>
   <!-- layout.disableScrollSpeedLimitPatch -->
   <string name="morphe_disable_scrolling_speed_limit_title">禁用滚动速度限制</string>
   <!-- layout.disableLayoutUpdatesPatch -->
@@ -160,6 +164,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_ask_section_title">隐藏“提问”部分</string>
   <string name="morphe_hide_attributes_section_title">隐藏“属性”部分</string>
   <string name="morphe_hide_attributes_section_summary">隐藏“精选地点”、“游戏”、“音乐”和“提及的人物”部分</string>
+  <string name="morphe_hide_channel_links_section_title">隐藏频道链接部分</string>
   <string name="morphe_hide_chapters_section_title">隐藏“章节”部分</string>
   <string name="morphe_hide_corrections_section_title">隐藏“更正”部分</string>
   <string name="morphe_hide_course_progress_section_title">隐藏“课程进度”部分</string>
@@ -262,6 +267,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_preview_comment_summary">隐藏在打开完整评论部分之前，视频下方的评论预览</string>
   <string name="morphe_hide_comments_thanks_button_title">隐藏感谢按钮</string>
   <string name="morphe_hide_comments_timestamp_button_title">隐藏时间戳按钮</string>
+  <string name="morphe_hide_comments_top_fans_button_title">隐藏“Top fans”按钮</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">清理高亮显示的搜索链接</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">清理高亮显示的搜索链接，仅保留原始纯文本</string>
   <string name="morphe_hide_keyword_content_screen_title">关键词过滤</string>
@@ -545,7 +551,6 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_overlay_timeout_summary">覆盖层可见的毫秒数</string>
   <string name="morphe_swipe_overlay_background_opacity_title">滑动提示层背景的不透明度</string>
   <string name="morphe_swipe_overlay_background_opacity_summary">使状态栏完全不透明</string>
-  <string name="morphe_swipe_overlay_background_opacity_invalid_toast">滑动不透明度必须介于 0-100 之间</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_title">滑动提示层亮度颜色</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_summary">设置亮度控制进度条的颜色</string>
   <string name="morphe_swipe_overlay_progress_volume_color_title">滑动提示层音量颜色</string>
@@ -554,7 +559,6 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_overlay_progress_speed_color_summary">设置播放速度控制进度条的颜色</string>
   <string name="morphe_swipe_text_overlay_size_title">滑动提示层文字大小</string>
   <string name="morphe_swipe_text_overlay_size_summary">选择要在工具栏中显示的组件</string>
-  <string name="morphe_swipe_text_overlay_size_invalid_toast">文字大小必须在 1-30 之间</string>
   <string name="morphe_swipe_threshold_title">滑动幅度阈值</string>
   <string name="morphe_swipe_threshold_summary">设置触发调整所需的滑动距离</string>
   <string name="morphe_swipe_volume_sensitivity_title">音量滑动灵敏度</string>
@@ -708,42 +712,44 @@ Second \"item\" text"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">弹出菜单</string>
   <string name="morphe_hide_player_flyout_summary">选择在浮动菜单中显示哪些组件</string>
-  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_audio_track_title">隐藏“音轨”菜单</string>
+  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_additional_settings_title">隐藏“其他设置”/更多菜单</string>
+  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_ambient_mode_title">隐藏“环境模式”菜单</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+         'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"“音频轨道”菜单已隐藏
 
 要显示“音频轨道”菜单，请将“伪装视频流”更改为除“Android Studio”和“Android VR 降级”以外的任何客户端"</string>
+  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_audio_track_title">隐藏“音轨”菜单</string>
   <string name="morphe_hide_player_flyout_audio_track_footer_title">隐藏“音轨”菜单页脚</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">隐藏字幕菜单</string>
   <string name="morphe_hide_player_flyout_captions_footer_title">隐藏字幕菜单页脚</string>
   <string name="morphe_hide_player_flyout_captions_header_title">隐藏字幕菜单标题</string>
-  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_additional_settings_title">隐藏“其他设置”/更多菜单</string>
-  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_sleep_timer_title">隐藏“睡眠定时器”菜单</string>
-  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_loop_video_title">隐藏“循环播放视频”菜单</string>
-  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_ambient_mode_title">隐藏“环境模式”菜单</string>
-  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_stable_volume_title">隐藏“稳定音量”菜单</string>
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_help_title">隐藏“帮助和反馈”菜单</string>
-  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_speed_title">隐藏“播放速度”菜单</string>
-  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_lock_screen_title">隐藏“锁定屏幕”菜单</string>
   <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_listen_with_youtube_music_title">隐藏“使用 YouTube Music 播放”菜单</string>
-  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_watch_in_vr_title">隐藏“在 VR 模式下观看”菜单</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_lock_screen_title">隐藏“锁定屏幕”菜单</string>
+  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_loop_video_title">隐藏“循环播放视频”菜单</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_on_the_go_title">隐藏\'离线\'菜单</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_quality_title">隐藏画质菜单</string>
   <string name="morphe_hide_player_flyout_quality_footer_title">隐藏画质菜单页脚</string>
   <string name="morphe_hide_player_flyout_quality_header_title">隐藏画质菜单标题</string>
+  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_sleep_timer_title">隐藏“睡眠定时器”菜单</string>
+  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_speed_title">隐藏“播放速度”菜单</string>
+  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_stable_volume_title">隐藏“稳定音量”菜单</string>
+  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_watch_in_vr_title">隐藏“在 VR 模式下观看”菜单</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">隐藏自动播放预览</string>
   <string name="morphe_hide_autoplay_preview_summary">隐藏即将播放的视频预览，在自动播放开始前</string>
@@ -846,6 +852,9 @@ Second \"item\" text"</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">禁用播放器弹出面板</string>
   <string name="morphe_disable_player_popup_panels_summary">禁用播放列表和直播聊天面板的自动打开</string>
+  <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
+  <string name="morphe_disable_playlist_autoplay_title">禁用播放列表自动播放</string>
+  <string name="morphe_disable_playlist_autoplay_summary">防止播放列表自动跳转到下一个视频</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">在视频结束时退出全屏模式</string>
   <string name="morphe_exit_fullscreen_entry_1">已禁用</string>
@@ -854,9 +863,11 @@ Second \"item\" text"</string>
   <string name="morphe_exit_fullscreen_entry_4">纵向和横向显示</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">全屏手势</string>
+  <string name="morphe_disable_fullscreen_gestures_summary">全屏模式下的播放器手势</string>
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">禁用向上滑动返回手势</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">禁用竖屏下滑手势</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">禁用横屏下滑手势</string>
+  <string name="morphe_disable_fullscreen_zoom_gesture_title">禁用捏合缩放手势</string>
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
   <string name="morphe_open_videos_fullscreen_title">以全屏模式打开视频</string>
   <string name="morphe_open_videos_fullscreen_entry_1">已禁用</string>
@@ -870,10 +881,10 @@ Second \"item\" text"</string>
   <string name="morphe_fullscreen_video_scale_button_title">显示视频缩放按钮</string>
   <string name="morphe_fullscreen_video_scale_button_summary">点击循环切换默认、拉伸和缩放</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
+  <string name="morphe_mute_video_button_title">显示静音按钮</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">播放器叠加层不透明度</string>
   <string name="morphe_player_overlay_opacity_summary">调整透明度 (0 为透明，100 为不透明)</string>
-  <string name="morphe_player_overlay_opacity_invalid_toast">播放器叠加层不透明度必须介于 0-100 之间</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_searchbar_type_title">搜索栏</string>
   <string name="morphe_searchbar_type_entry_disabled">已禁用</string>
@@ -886,20 +897,22 @@ Second \"item\" text"</string>
   <string name="morphe_change_form_factor_entry_2">手机</string>
   <string name="morphe_change_form_factor_entry_3">平板电脑</string>
   <string name="morphe_change_form_factor_entry_4">汽车</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"更改包括：
+  <string name="morphe_change_form_factor_user_dialog_message">"更改内容包括：
 
 平板电脑布局
 • 社区帖子已隐藏
-• 消息流中播放不可用
-• Shorts 中没有混音按钮和声音按钮
-• 显示未折叠的旧视频操作栏
+• 信息流中的播放设置不可用
+• Remix 按钮和声音按钮在 Shorts 中不可用
+• “更多视频”叠加层可能不可用
+• 显示未折叠的旧版视频操作栏
 
 汽车布局
-• 消息流按主题和频道组织
-• 消息流中播放不可用
-• Shorts 中没有混音按钮和声音按钮
+• 信息流按主题和频道组织
+• 信息流中的播放设置不可用
+• Remix 按钮和声音按钮在 Shorts 中不可用
+• “更多视频”叠加层可能不可用
 • Shorts 在常规播放器中打开
-• 显示未折叠的旧视频操作栏"</string>
+• 显示未折叠的旧版视频操作栏"</string>
   <string name="morphe_tablet_layout_in_player_title">在播放器中启用平板电脑布局</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"恢复旧版播放器布局
@@ -991,7 +1004,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">像素大小必须介于 %1$s 和 %2$s 之间</string>
   <string name="morphe_miniplayer_opacity_title">覆盖层不透明度</string>
   <string name="morphe_miniplayer_opacity_summary">调整透明度 (0 为透明，100 为不透明)</string>
-  <string name="morphe_miniplayer_opacity_invalid_toast">小型播放器叠加层的透明度必须介于 0-100 之间</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">返回按钮退出信息流</string>
   <string name="morphe_back_button_always_exits_feed_summary">按返回键总是退出应用，而不是滚动到信息流顶部</string>
@@ -1144,6 +1156,14 @@ Second \"item\" text"</string>
   <string name="morphe_playback_audio_time_stretching_summary">Allows setting speed and pitch independently, may cause audio artifacts</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">禁用 HDR 视频</string>
+  <string name="morphe_force_hdr_video_title">强制 HDR 视频</string>
+  <string name="morphe_force_hdr_video_summary">强制应用将此设备识别为 HDR 兼容设备</string>
+  <string name="morphe_force_hdr_video_user_dialog_message">"如果 HDR 解码有效但 YouTube 不提供 HDR 时使用，例如某些 HyperOS 设备隐藏 HLG。
+
+限制：
+• 如果显示器实际上无法显示 HDR，则颜色可能会出现错误
+• 如果解码器无法处理 HDR，则播放可能会失败
+• HDR 仍然取决于 spoof 视频流客户端"</string>
   <string name="morphe_force_avc_codec_title">强制 AVC (H.264) 编解码器</string>
   <string name="morphe_force_avc_codec_user_dialog_message">"优点：
 • 可延长电池续航时间

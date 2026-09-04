@@ -7,7 +7,6 @@
 
 package app.morphe.patches.youtube.layout.player.fullscreen
 
-import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
@@ -21,15 +20,16 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addLegacyBottomControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeLegacyBottomControl
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
-import app.morphe.patches.youtube.misc.playertype.PlayerTypeEnumFingerprint
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.patches.youtube.shared.getPlayerTypeFingerprint
+import app.morphe.patches.youtube.video.format.hookAdaptiveFormat
+import app.morphe.patches.youtube.video.format.videoFormatPatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.copyResources
-import com.android.tools.smali.dexlib2.AccessFlags
 
 private const val EXTENSION_CLASS_VIDEO_SCALE =
     "Lapp/morphe/extension/youtube/patches/FullscreenVideoScalePatch;"
@@ -72,6 +72,7 @@ val fullscreenVideoScalePatch = bytecodePatch(
         playerOverlayButtonsSettingsPatch,
         playerOverlayButtonsHookPatch,
         legacyPlayerControlsPatch,
+        videoFormatPatch,
         fullscreenVideoScaleResourcePatch
     )
 
@@ -88,13 +89,9 @@ val fullscreenVideoScalePatch = bytecodePatch(
 
         addPlayerBottomButton(EXTENSION_BUTTON)
         initializeLegacyBottomControl(EXTENSION_BUTTON)
+        hookAdaptiveFormat("$EXTENSION_CLASS_VIDEO_SCALE->setVideoAspectRatio")
 
-        Fingerprint(
-            classFingerprint = YouTubePlayerOverlaysLayoutConstructorFingerprint,
-            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-            returnType = "V",
-            parameters = listOf(PlayerTypeEnumFingerprint.originalClassDef.type)
-        ).method.addInstruction(
+        getPlayerTypeFingerprint().method.addInstruction(
             0,
             "invoke-static { p0 }, $EXTENSION_CLASS_VIDEO_SCALE->" +
                     "attachPlayerOverlay(Landroid/view/View;)V"

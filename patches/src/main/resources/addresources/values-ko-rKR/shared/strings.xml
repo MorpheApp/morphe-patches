@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">검색 기록이 비어 있습니다</string>
   <string name="morphe_settings_search_empty_history_summary">검색 기록을 저장하려면 검색어를 입력하고 엔터키를 탭하세요</string>
   <string name="morphe_settings_search_history_title">설정 검색 기록 표시하기</string>
+  <string name="morphe_settings_name_title">Morphe 설정 이름</string>
+  <string name="morphe_settings_name_default_item">기본값</string>
+  <string name="morphe_settings_name_entry_2">Extras</string>
+  <string name="morphe_settings_name_entry_3">Tweaks</string>
+  <string name="morphe_settings_name_entry_4">Morphing Time</string>
+  <string name="morphe_settings_name_custom_item">사용자 정의</string>
+  <string name="morphe_settings_name_custom_item_hint">이름을 입력하세요</string>
+  <string name="morphe_settings_name_empty_warning">이름을 비워 둘 수 없습니다</string>
   <string name="morphe_show_menu_icons_title">Morphe 설정 아이콘 표시하기</string>
   <string name="morphe_settings_menu_copy_path">복사됨: %s</string>
   <string name="morphe_language_title">Morphe 언어</string>
@@ -107,13 +115,64 @@ Second \"item\" text"</string>
   <string name="morphe_debug_logs_clear_toast">디버그 로그를 삭제하였습니다</string>
   <string name="morphe_debug_feature_flags_manager_title">기능 플래그 관리자</string>
   <string name="morphe_debug_feature_flags_manager_summary">부울 기능 플래그를 관리할 수 있습니다</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">활성된 기능 플래그 (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">차단된 기능 플래그 (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">기능 플래그 검색…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">비활성화됨 (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">활성화됨 (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">차단됨 (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">강제됨 (%s)</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">자동</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">꺼짐</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">켜짐</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">강제로 켜기</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">차단</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">제거</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">기능 플래그를 저장하였습니다</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">기능 플래그를 초기화하였습니다</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">기능 플래그를 클립보드에 복사하였습니다</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">이 설정을 사용하려면 앱을 다시 시작하세요</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">내보내기 및 가져오기</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">%s 개의 기능 플래그를 가져왔습니다</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">기능 플래그를 찾을 수 없습니다</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">기능 플래그를 성공적으로 내보냈습니다</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">기능 플래그를 내보낼 수 없습니다</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">기능 플래그를 블러왔습니다. 적용하려면 저장을 탭하세요</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">파일을 읽을 수 없습니다</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">이진 탐색</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"앱 동작을 유발하는 기능 플래그를 찾습니다
+
+%s 개의 플래그 중 절반이 차단되며, 다시 시작한 후에 동작이 여전히 존재하는지 알려줍니다
+
+시작하기 전에 동작을 한 번 재현해야 합니다. 그렇지 않으면 앱에서 아직 요청하지 않은 플래그가 검색에서 누락됩니다"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">시작</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"검색할 기능 플래그가 없습니다
+
+앱이 사용했지만 현재 강제로 활성화되지 않은 플래그만 이진 탐색에 사용할 수 있습니다"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"%1$s 단계
+
+%2$s 개의 플래그가 남아있고, 그중 %3$s 개가 이 단계에서 차단되었습니다
+
+앱을 다시 시작하고, 동작이 발생하는지 확인한 후 아래에서 답변을 선택하세요"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">기능 플래그 검색 진행 중</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">동작이 존재합니다</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">동작이 존재하지 않습니다</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">이진 탐색 취소</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">이진 탐색이 취소되었습니다</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"기능 플래그 %s가 해당 동작을 유발합니다
+
+이제 차단되었습니다"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"기능 플래그를 찾을 수 없습니다
+
+앱 동작이 기능 플래그에 의해 제어되지 않는 것 같습니다"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"단 하나의 기능 플래그도 찾지 못하였습니다
+
+검색을 진행하는 중에 해당 동작이 사라졌기 때문에, 여러 개의 플래그가 관련되어 있을 수도 있고, 앞서 제시된 답변 중 하나가 잘못되었을 수도 있습니다"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">MicroG 설정을 실행할 수 있습니다</string>

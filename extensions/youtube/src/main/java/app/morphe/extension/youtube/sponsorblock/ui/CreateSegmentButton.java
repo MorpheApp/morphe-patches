@@ -1,12 +1,23 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.youtube.sponsorblock.ui;
 
 import android.view.View;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.shared.sponsorblock.SegmentPlaybackController;
-import app.morphe.extension.youtube.sponsorblock.SponsorBlockUtils;
+import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton;
+import app.morphe.extension.youtube.whitelist.ChannelWhitelistDialog;
+import app.morphe.extension.youtube.whitelist.WhitelistType;
 
 @SuppressWarnings("unused")
 public class CreateSegmentButton {
@@ -32,7 +43,7 @@ public class CreateSegmentButton {
                             : LegacyPlayerControlButton.ButtonVisibility.DISABLED,
                     v -> SponsorBlockViewController.toggleNewSegmentLayoutVisibility(),
                     v -> {
-                        SponsorBlockUtils.showChannelWhitelistDialog(v.getContext());
+                        ChannelWhitelistDialog.show(v.getContext(), WhitelistType.SPONSOR_BLOCK);
                         return true;
                     }
             );

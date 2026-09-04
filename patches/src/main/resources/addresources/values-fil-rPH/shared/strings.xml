@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Walang laman ang kasaysayan sa paghahanap</string>
   <string name="morphe_settings_search_empty_history_summary">Upang i-save ang kasaysayan sa paghahanap, mag-type ng isang paghahanap at pindutin ang Enter</string>
   <string name="morphe_settings_search_history_title">Ipakita ang pagpipilian ng kasaysayan sa paghahanap</string>
+  <string name="morphe_settings_name_title">Pangalan ng mga setting ng Morphe</string>
+  <string name="morphe_settings_name_default_item">Panimula</string>
+  <string name="morphe_settings_name_entry_2">Mga dagdag</string>
+  <string name="morphe_settings_name_entry_3">Mga pagsasaayos</string>
+  <string name="morphe_settings_name_entry_4">Oras ng pag-morph</string>
+  <string name="morphe_settings_name_custom_item">Pasadya</string>
+  <string name="morphe_settings_name_custom_item_hint">Maglagay ng pangalan</string>
+  <string name="morphe_settings_name_empty_warning">Hindi maaaring walang laman ang pangalan</string>
   <string name="morphe_show_menu_icons_title">Ipakita ang mga icon ng pagpipilian ng Morphe</string>
   <string name="morphe_settings_menu_copy_path">Kinopya: %s</string>
   <string name="morphe_language_title">Wika ng Morphe</string>
@@ -107,13 +115,64 @@ Hindi ka aabisuhan ng anumang mga hindi inaasahang pangyayari."</string>
   <string name="morphe_debug_logs_clear_toast">Nalinisan ang mga log ng debug</string>
   <string name="morphe_debug_feature_flags_manager_title">Tagapamahala ng mga feature flag</string>
   <string name="morphe_debug_feature_flags_manager_summary">Pamahalaan ang boolean ng mga feature flag</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Mga aktibong flag ng feature (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Mga nakaharang na flag ng feature (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Maghanap ng mga feature flag…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Hindi aktibo (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Aktibo (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Haharang (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Pilitin (%s)</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Awtomatiko</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Naka-off</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Naka-on</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Pilitin bukas</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Harangan</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Alisin</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Na-save ang mga flag ng feature</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Na-reset ang mga flag ng feature</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Kinopya ang mga flag sa clipboard</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">I-restart ang app upang gamitin ang setting na ito</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">I-export at i-import</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">Na-import %s na mga flag</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Walang nakitang flag</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Matagumpay na na-export ang mga flag</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Nabigong ma-export ang mga flag</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Na-load ang mga flag, i-tap ang I-save upang ilapat</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Nabigong basahin ang file</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Binary search</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Naghahanap kung aling flag ang nagiging sanhi ng pag-uugali ng app.
+
+Half ng %s na mga flag ay hinarang, at pagkatapos ng bawat pag-restart, sinasabi mo kung naroroon pa rin ang pag-uugali.
+
+Kumpirmahin ang pag-uugali bago magsimula, kung hindi, ang mga flag na hindi pa hinihiling ng app ay nawawala sa paghahanap"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Simula</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Walang flag na mahahanap.
+
+Tanging ang mga flag na na-hit ng app at hindi kasalukuyang pinilit bukas ang maaaring gamitin sa isang binary search"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Hakbang %1$s
+
+%2$s na mga flag ang natitira, %3$s sa mga ito ang hinarang para sa hakbang na ito.
+
+I-restart ang app, tingnan kung naroroon pa rin ang pag-uugali, pagkatapos ay sagutin sa ibaba"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Nangyayari ang paghahanap ng flag</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">Naroroon ang pag-uugali</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">Hindi naroroon ang pag-uugali</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Kanselahin ang binary search</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Kinansela ang binary search</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"Ang flag na %s ang sanhi ng pag-uugali.
+
+Hinarang na ito"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Hindi mahanap ang isang flag.
+
+Ang pag-uugali ng app ay tila hindi kontrolado ng isang flag"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Hindi mahanap ang isang flag.
+
+Nawala ang pag-uugali noong mas maaga sa paghahanap, kaya maaaring kasangkot ang higit sa isang flag o mali ang isa sa mga sagot"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Buksan ang mga pagpipilian sa MicroG</string>

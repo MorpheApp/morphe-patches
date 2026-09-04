@@ -47,6 +47,8 @@ Second \"item\" text"</string>
 • دەستکارییەکانی باوک دەلێن سەردا دەستکارییەکانی منداڵێ نەبێت"</string>
   <string name="morphe_settings_search_empty_history_summary">دقققبردانه ريستوريان دموسهيةريانه، دقققبردقاريان بررسوريانه إنترار إنترارقه</string>
   <string name="morphe_settings_search_history_title">دۆزینەوەی مێشۆکەکان، تێکستی ڕاگەڕەیی دەربارەی مێشۆکانی دەستکارییەک.</string>
+  <string name="morphe_settings_name_default_item">بنەڕەت</string>
+  <string name="morphe_settings_name_custom_item">باو</string>
   <string name="morphe_show_menu_icons_title">نیشانەکانی ڕێکدالەکانی مورفە بنێرن</string>
   <string name="morphe_language_title">زمانی مورفە</string>
   <string name="morphe_language_user_dialog_message">"فريتة‌ي بة‌شي‌كه‌ي زوانه‌كانيش نه‌بوون، يان بة‌تەواوه‌ نه‌كه‌ون.\n\nبۆ وه‌رگێڕانێكی زوانه‌ تازه‌كان ياخود باشكردنێكی وه‌رگێڕانه‌كانی ئێستا، سه‌رداني morphe.software/translate بكه‌"</string>
@@ -64,6 +66,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_donate">خۆڵبەخش</string>
   <string name="morphe_settings_about_links_credits">کۆددان</string>
   <string name="morphe_settings_about_links_licenses">دەربارەی نوسینەکانی لایسەنسی</string>
+  <string name="morphe_settings_about_licenses_loading">بارکردن…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">سەرپێچوان</string>
   <string name="morphe_debug_toast_on_error_title">نیشاندانی ڕێوشوێنی Morphe-ی نیشاده</string>
@@ -73,6 +76,18 @@ Second \"item\" text"</string>
   <string name="morphe_debug_logs_disabled">تۆمارکردنی چاککردنەوە لەکارخراوە</string>
   <string name="morphe_debug_feature_flags_manager_title">پارێژكاري فڵاگەل و مۆر</string>
   <string name="morphe_debug_feature_flags_manager_summary">بەڕێوەبردنی ئاڵای تایبەتمەندی بوولی</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">خۆرا</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">کوژاوە</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">هەڵکراو</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">سڕینەوە</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">دەستپێکردن</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->

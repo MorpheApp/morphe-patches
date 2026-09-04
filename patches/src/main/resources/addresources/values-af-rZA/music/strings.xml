@@ -21,6 +21,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">Hoofopskrif logo</string>
   <string name="morphe_header_logo_entry_1">Verstek</string>
   <string name="morphe_header_logo_entry_3">Pasgemaak</string>
+  <!-- misc.album.albumMusicVideoPatch -->
+  <string name="morphe_music_play_album_songs_title">Speel albumklankbane</string>
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <string name="morphe_music_play_album_songs_summary">Speel die album-oudio-weergawe van liedjies in plaas van \'n musiekvideo. Vereis \'Vervals videostrome\'</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Laai musiekvideo\'s, podcasts of liedjies af met derdeparty-aflaai-programme</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -145,6 +149,8 @@ YouTube Music 8.x — vervaag loop slegs op 9.x en nuwer"</string>
   <string name="morphe_music_hide_action_bar_title">Verberg aksiebalk</string>
   <string name="morphe_music_hide_like_dislike_button_title">Verberg Hou van- en Nie-van-knoppie</string>
   <string name="morphe_music_hide_comments_button_title">Verberg Kemente-knoppie</string>
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_live_chat_replay_button_title">Verberg \'Live-kletsherhaling\'-knoppie</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_lyrics_button_title">Verberg Lirieke-knoppie</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -154,7 +160,7 @@ YouTube Music 8.x — vervaag loop slegs op 9.x en nuwer"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_download_button_title">Verberg Aflaai-knoppie</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_radio_button_title">Verberg Radio-beginknoppie</string>
+  <string name="morphe_music_hide_radio_button_title">Verberg \'Begin radio\'-knoppie</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Vloumenu</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Kies watter komponente in die speler- en tou-vloumenus verskyn</string>

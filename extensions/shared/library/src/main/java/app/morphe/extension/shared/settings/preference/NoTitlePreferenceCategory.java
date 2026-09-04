@@ -7,6 +7,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
+import app.morphe.extension.shared.Utils;
+
 /**
  * Empty preference category with no title, used to organize and group related preferences together.
  */

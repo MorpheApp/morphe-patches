@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Το ιστορικό αναζήτησης είναι κενό</string>
   <string name="morphe_settings_search_empty_history_summary">Για να αποθηκεύσετε το ιστορικό αναζήτησης, πληκτρολογήστε ένα ερώτημα αναζήτησης και πατήστε Enter</string>
   <string name="morphe_settings_search_history_title">Εμφάνιση ιστορικού αναζήτησης ρυθμίσεων</string>
+  <string name="morphe_settings_name_title">Όνομα ρυθμίσεων Morphe</string>
+  <string name="morphe_settings_name_default_item">Προεπιλογή</string>
+  <string name="morphe_settings_name_entry_2">Επιπλέον</string>
+  <string name="morphe_settings_name_entry_3">Προσαρμογές</string>
+  <string name="morphe_settings_name_entry_4">Χρόνος μορφοποίησης</string>
+  <string name="morphe_settings_name_custom_item">Προσαρμοσμένο</string>
+  <string name="morphe_settings_name_custom_item_hint">Εισαγάγετε ένα όνομα</string>
+  <string name="morphe_settings_name_empty_warning">Το όνομα δεν μπορεί να είναι κενό</string>
   <string name="morphe_show_menu_icons_title">Εμφάνιση εικονιδίων στις ρυθμίσεις του Morphe</string>
   <string name="morphe_settings_menu_copy_path">Αντιγράφηκε: %s</string>
   <string name="morphe_language_title">Γλώσσα ρυθμίσεων του Morphe</string>
@@ -107,13 +115,64 @@ Second \"item\" text"</string>
   <string name="morphe_debug_logs_clear_toast">Τα αρχεία καταγραφής εντοπισμού σφαλμάτων εκκαθαρίστηκαν</string>
   <string name="morphe_debug_feature_flags_manager_title">Διαχειριστής λειτουργιών σημαιών</string>
   <string name="morphe_debug_feature_flags_manager_summary">Διαχείριση των boolean λειτουργιών σημαιών</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Ενεργές λειτουργίες σημαιών (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Αποκλεισμένες λειτουργίες σημαιών (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Αναζήτηση λειτουργιών σημαιών</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Ανενεργό (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Ενεργό (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Αποκλεισμένο (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Εξαναγκασμένο (%s)</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Αυτόματη</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Ανενεργό</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Ενεργό</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Αναγκαστική ενεργοποίηση</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Αποκλεισμός</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Αφαίρεση</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Οι λειτουργίες σημαιών αποθηκεύτηκαν</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Οι λειτουργίες σημαιών επαναφέρθηκαν</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Οι λειτουργίες σημαιών αντιγράφηκαν στο πρόχειρο</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Επανεκκινήστε την εφαρμογή για να χρησιμοποιήσετε αυτήν τη ρύθμιση</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Εξαγωγή και εισαγωγή</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">Εισήχθησαν %s σημαίες λειτουργίας</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Δεν βρέθηκαν σημαίες λειτουργίας</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Οι σημαίες λειτουργίας εξήχθησαν επιτυχώς</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Αποτυχία εξαγωγής σημαιών λειτουργίας</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Οι σημαίες λειτουργίας φορτώθηκαν, πατήστε Αποθήκευση για εφαρμογή</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Αποτυχία ανάγνωσης του αρχείου</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Δυαδική αναζήτηση</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Βρίσκει ποια σημαία λειτουργίας προκαλεί συμπεριφορά της εφαρμογής.
+
+Το ήμισυ των %s σημαιών είναι αποκλεισμένο, και μετά από κάθε επανεκκίνηση αναφέρετε αν η συμπεριφορά εξακολουθεί να υπάρχει.
+
+Αναπαράγετε τη συμπεριφορά μία φορά πριν ξεκινήσετε, διαφορετικά σημαίες που η εφαρμογή δεν έχει ζητήσει ακόμα λείπουν από την αναζήτηση."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Αρχή</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Δεν υπάρχουν σημαίες λειτουργίας για αναζήτηση.
+
+Μόνο σημαίες που η εφαρμογή έχει χρησιμοποιήσει και δεν είναι επί του παρόντος εξαναγκασμένες μπορούν να χρησιμοποιηθούν σε δυαδική αναζήτηση."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Βήμα %1$s
+
+%2$s σημαίες απομένουν, %3$s από αυτές αποκλεισμένες για αυτό το βήμα.
+
+Επανεκκινήστε την εφαρμογή, ελέγξτε αν η συμπεριφορά είναι παρούσα, και απαντήστε παρακάτω."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Η αναζήτηση σημαίας λειτουργίας βρίσκεται σε εξέλιξη</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">Η συμπεριφορά είναι παρούσα</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">Η συμπεριφορά δεν είναι παρούσα</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Ακύρωση δυαδικής αναζήτησης</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Η δυαδική αναζήτηση ακυρώθηκε</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"Η σημαία λειτουργίας %s προκαλεί τη συμπεριφορά.
+
+Είναι τώρα αποκλεισμένη."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Δεν ήταν δυνατό να βρεθεί μια σημαία λειτουργίας.
+
+Η συμπεριφορά της εφαρμογής δεν φαίνεται να ελέγχεται από μια σημαία λειτουργίας."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Δεν ήταν δυνατό να βρεθεί μία μόνο σημαία λειτουργίας.
+
+Η συμπεριφορά εξαφανίστηκε νωρίτερα στην αναζήτηση, οπότε μπορεί να εμπλέκονται περισσότερες από μία σημαίες ή μία από τις απαντήσεις ήταν λάθος."</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Άνοιγμα των ρυθμίσεων MicroG</string>

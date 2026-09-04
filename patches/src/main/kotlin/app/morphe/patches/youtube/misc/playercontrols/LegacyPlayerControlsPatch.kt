@@ -28,6 +28,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_28_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_40_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_08_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_15_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -341,6 +342,15 @@ val legacyPlayerControlsPatch = bytecodePatch(
                 val inflateReturnObjectIndex = it.instructionMatches.last().index
                 inflateTopControlRegister = getInstruction<OneRegisterInstruction>(inflateReturnObjectIndex).registerA
                 inflateTopControlInsertIndex = inflateReturnObjectIndex + 1
+            }
+        }
+
+        if (is_21_05_or_greater) {
+            ModernPlayerTopControlsFeatureFlagFingerprint.matchAll().forEach {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    "$EXTENSION_CLASS->useModernPlayerTopControls(Z)Z"
+                )
             }
         }
 

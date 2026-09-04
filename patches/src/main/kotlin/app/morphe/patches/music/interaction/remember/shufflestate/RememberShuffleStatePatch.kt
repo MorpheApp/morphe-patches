@@ -14,7 +14,6 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
-import app.morphe.patches.music.misc.playservice.is_8_03_or_greater
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -62,22 +61,11 @@ val rememberShuffleStatePatch = bytecodePatch(
             fingerprint.method.apply {
                 val startIndex = fingerprint.instructionMatches.first().index
 
-                val indexAndRegister = if (is_8_03_or_greater) {
-                    val index = indexOfFirstInstructionReversedOrThrow(startIndex,
-                        methodCall(opcode = Opcode.INVOKE_VIRTUAL, returnType = enumClass)
-                    )
-                    val register = getInstruction<OneRegisterInstruction>(index + 1).registerA
-                    Pair(index + 2, register)
-                } else {
-                    val index = indexOfFirstInstructionReversedOrThrow(startIndex,
-                        methodCall(opcode = Opcode.INVOKE_DIRECT, returnType = "Ljava/lang/String;")
-                    )
-                    val register = getInstruction<FiveRegisterInstruction>(index).registerD
-                    Pair(index, register)
-                }
-
-                val enumIndex = indexAndRegister.first
-                val enumRegister = indexAndRegister.second
+                val enumMethodIndex = indexOfFirstInstructionReversedOrThrow(startIndex,
+                    methodCall(opcode = Opcode.INVOKE_VIRTUAL, returnType = enumClass)
+                )
+                val enumRegister = getInstruction<OneRegisterInstruction>(enumMethodIndex + 1).registerA
+                val enumIndex = enumMethodIndex + 2
 
                 addInstruction(
                     enumIndex,
@@ -133,21 +121,19 @@ val rememberShuffleStatePatch = bytecodePatch(
                 val clonedMethod = shuffleMethod.cloneMutable(
                     accessFlags = shuffleMethod.accessFlags.toPublicAccessFlags(),
                     name = "shuffleTracks",
-                    additionalRegisters = if (is_8_03_or_greater) 1 else 0,
+                    additionalRegisters = 1,
                     parameters = listOf(
                         ImmutableMethodParameter(enumClass, emptySet(), "enumClass")
                     )
                 )
 
-                if (is_8_03_or_greater) {
-                    val ordinalIndex = clonedMethod.indexOfFirstInstruction(ordinalFilter)
-                    val register = clonedMethod.getInstruction<FiveRegisterInstruction>(ordinalIndex).registerC
+                val ordinalIndex = clonedMethod.indexOfFirstInstruction(ordinalFilter)
+                val ordinalRegister = clonedMethod.getInstruction<FiveRegisterInstruction>(ordinalIndex).registerC
 
-                    clonedMethod.addInstruction(
-                        ordinalIndex,
-                        "move-object/from16 v$register, p1"
-                    )
-                }
+                clonedMethod.addInstruction(
+                    ordinalIndex,
+                    "move-object/from16 v$ordinalRegister, p1"
+                )
 
                 shuffleMutableClass.methods.add(clonedMethod)
             }

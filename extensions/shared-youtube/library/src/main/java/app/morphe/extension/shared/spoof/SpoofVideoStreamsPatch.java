@@ -128,33 +128,15 @@ public class SpoofVideoStreamsPatch {
 
     /**
      * Injection point.
-     * Blocks /get_watch requests by returning an unreachable URI.
+     * Blocks '/get_watch' endpoint requests by returning an unreachable URI.
      *
-     * @param playerRequestUri The URI of the player request.
-     * @return An unreachable URI if the request is a /get_watch request, otherwise the original URI.
+     * @param innerTubeRequestBuilder The URI builder of the innertube request.
+     * @return An unreachable URI builder if the request is a '/get_watch' endpoint, otherwise the original URI.
      */
-    public static Uri blockGetWatchRequest(Uri playerRequestUri) {
+    public static Uri.Builder blockGetWatchRequest(Uri.Builder innerTubeRequestBuilder) {
         if (SPOOF_VIDEO_STREAMS) {
             try {
-                String path = playerRequestUri.getPath();
-
-                if (path != null && path.contains("get_watch")) {
-                    Logger.printDebug(() -> "Blocking 'get_watch' by returning internet connection check URI");
-
-                    return INTERNET_CONNECTION_CHECK_URI;
-                }
-            } catch (Exception ex) {
-                Logger.printException(() -> "blockGetWatchRequest failure", ex);
-            }
-        }
-
-        return playerRequestUri;
-    }
-
-    public static Uri.Builder blockGetWatchRequest(Uri.Builder playerRequestBuilder) {
-        if (SPOOF_VIDEO_STREAMS) {
-            try {
-                String path = playerRequestBuilder.build().getPath();
+                String path = innerTubeRequestBuilder.build().getPath();
 
                 if (path != null && path.contains("get_watch")) {
                     Logger.printDebug(() -> "Blocking 'get_watch' by returning internet connection check URI");
@@ -166,7 +148,7 @@ public class SpoofVideoStreamsPatch {
             }
         }
 
-        return playerRequestBuilder;
+        return innerTubeRequestBuilder;
     }
 
     /**
@@ -191,6 +173,48 @@ public class SpoofVideoStreamsPatch {
         }
 
         return originalUrlString;
+    }
+
+    /**
+     * Supplies the length of the video the streams are really of, when it is not the video the
+     * app thinks it is playing.
+     */
+    public interface VideoLengthResolver {
+        /**
+         * @return Length in seconds, or zero to keep the length of the app.
+         */
+        long getVideoLengthSeconds(@NonNull String videoId);
+    }
+
+    @Nullable
+    private static volatile VideoLengthResolver videoLengthResolver;
+
+    public static void setVideoLengthResolver(@Nullable VideoLengthResolver resolver) {
+        videoLengthResolver = resolver;
+    }
+
+    /**
+     * Injection point.
+     * The app takes the length of the track from the response of the video it asked for, which is
+     * not the video the streams are of when another one is served in its place.
+     *
+     * @return Length in seconds, or zero to keep the length of the app.
+     */
+    public static long getVideoLengthSeconds(String videoId) {
+        try {
+            VideoLengthResolver resolver = videoLengthResolver;
+            if (resolver == null || videoId == null) return 0;
+
+            final long lengthSeconds = resolver.getVideoLengthSeconds(videoId);
+            if (lengthSeconds > 0) {
+                Logger.printDebug(() -> "Overriding video length of: " + videoId
+                        + " with: " + lengthSeconds + " seconds");
+            }
+            return lengthSeconds;
+        } catch (Exception ex) {
+            Logger.printException(() -> "getVideoLengthSeconds failure", ex);
+            return 0;
+        }
     }
 
     /**

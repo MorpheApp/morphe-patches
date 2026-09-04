@@ -64,7 +64,7 @@ public class PoTokenProviderPatch {
 
     private static boolean isPoTokenProviderAvailable() {
         // To minimize confusion, it works only when 'Spoof video streams' is turned off.
-        if (!SpoofVideoStreamsPatch.isSpoofingEnabled()) {
+        if (!SpoofVideoStreamsPatch.isPatchIncluded() || !SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.get()) {
             try {
                 if (Utils.getContext().getPackageManager().getApplicationInfo(PO_TOKEN_HELPER_PACKAGE_NAME, 0).enabled) {
                     Logger.printDebug(() -> "App installed: " + PO_TOKEN_HELPER_PACKAGE_NAME);

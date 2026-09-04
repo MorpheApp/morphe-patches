@@ -9,7 +9,9 @@ package app.morphe.extension.music.shared;
 
 import androidx.annotation.NonNull;
 
+import java.util.Collection;
 import java.util.Objects;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -20,6 +22,13 @@ import app.morphe.extension.shared.Utils;
  */
 @SuppressWarnings("unused")
 public final class VideoInformation {
+
+    /** Notified when the app starts another video. */
+    public interface VideoIdListener {
+        void newVideoId(@NonNull String videoId);
+    }
+
+    private static final Collection<VideoIdListener> videoIdListeners = new CopyOnWriteArrayList<>();
 
     @NonNull
     private static String videoId = "";
@@ -48,11 +57,23 @@ public final class VideoInformation {
         return videoId;
     }
 
+    public static void addVideoIdListener(@NonNull VideoIdListener listener) {
+        videoIdListeners.add(listener);
+    }
+
     /** Injection point. Stored for downstream patches; SponsorBlock routes its own id hook. */
     public static void setVideoId(@NonNull String newVideoId) {
         if (Objects.equals(newVideoId, videoId)) return;
         Logger.printDebug(() -> "VideoInformation: new video id: " + newVideoId);
         videoId = newVideoId;
+
+        for (VideoIdListener listener : videoIdListeners) {
+            try {
+                listener.newVideoId(newVideoId);
+            } catch (Exception ex) {
+                Logger.printException(() -> "newVideoId failure", ex);
+            }
+        }
     }
 
     /** Injection point. Called on main thread ~every 1000ms. */
@@ -62,7 +83,9 @@ public final class VideoInformation {
 
     /** Injection point. */
     public static void setVideoLength(final long length) {
-        if (videoLength != length) videoLength = length;
+        if (videoLength == length) return;
+        Logger.printDebug(() -> "VideoInformation: new video length: " + length);
+        videoLength = length;
     }
 
     public static long getVideoLength() { return videoLength; }

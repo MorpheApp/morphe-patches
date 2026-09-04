@@ -136,10 +136,49 @@ public class StreamingDataRequest {
 
     private final Future<StreamData> future;
 
+    /**
+     * Substitutes the video the streams are fetched for, while the streams are still served to the
+     * app under the video id it asked for. Used to play a different recording of the same track
+     * without the app noticing that its queue holds another video.
+     */
+    public interface VideoIdResolver {
+        /**
+         * Called off the main thread, and may block while it resolves.
+         *
+         * @return The video to fetch streams from, or the same video id to leave it alone.
+         */
+        String resolveVideoIdToFetch(String videoId);
+    }
+
+    @Nullable
+    private static volatile VideoIdResolver videoIdResolver;
+
+    public static void setVideoIdResolver(@Nullable VideoIdResolver resolver) {
+        videoIdResolver = resolver;
+    }
+
+    private static String resolveVideoIdToFetch(String videoId) {
+        VideoIdResolver resolver = videoIdResolver;
+        if (resolver == null) {
+            return videoId;
+        }
+        try {
+            String resolved = resolver.resolveVideoIdToFetch(videoId);
+            if (resolved != null && !resolved.equals(videoId)) {
+                Logger.printDebug(() -> "Fetching streams of " + resolved + " for: " + videoId);
+                return resolved;
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "resolveVideoIdToFetch failure", ex);
+        }
+        return videoId;
+    }
+
     private StreamingDataRequest(String videoId, boolean isInline, Map<String, String> playerHeaders) {
         this.videoId = videoId;
         this.isInline = isInline;
-        this.future = Utils.submitOnBackgroundThread(() -> fetch(videoId, isInline, playerHeaders));
+        this.future = Utils.submitOnBackgroundThread(
+                () -> fetch(resolveVideoIdToFetch(videoId), isInline, playerHeaders));
     }
 
     public static void fetchRequest(String videoId, boolean isInline, Map<String, String> fetchHeaders) {
@@ -167,15 +206,15 @@ public class StreamingDataRequest {
     @Nullable
     private static HttpURLConnection send(ClientType clientType,
                                           String videoId,
-                                          Map<String, String> playerHeaders,
+                                          String authorization,
                                           boolean showErrorToasts) {
         Utils.verifyOffMainThread();
 
         Objects.requireNonNull(clientType);
         Objects.requireNonNull(videoId);
-        Objects.requireNonNull(playerHeaders);
 
         final long startTime = System.currentTimeMillis();
+        final boolean authHeadersIncludes = Utils.isNotEmpty(authorization);
 
         try {
             HttpURLConnection connection = PlayerRoutes.getPlayerResponseConnectionFromRoute(clientType);
@@ -183,9 +222,6 @@ public class StreamingDataRequest {
             connection.setReadTimeout(HTTP_TIMEOUT_MILLISECONDS);
 
             authHeadersOverrides = false;
-
-            String authorization = playerHeaders.get(AUTHORIZATION_HEADER);
-            boolean authHeadersIncludes = Utils.isNotEmpty(authorization);
 
             // Auth header is required, but the user is not logged in. These clients are skipped:
             // ANDROID_CREATOR, ANDROID_MUSIC_REEL, ANDROID_MUSIC_NO_SDK.
@@ -399,9 +435,10 @@ public class StreamingDataRequest {
         return false;
     }
 
-    private static StreamData fetch(String videoId, boolean isInline, @Nullable Map<String, String> playerHeaders) {
+    private static StreamData fetch(String videoId, boolean isInline, Map<String, String> playerHeaders) {
         final boolean debugEnabled = BaseSettings.DEBUG.get();
         final long fetchStartTime = System.currentTimeMillis();
+        String authorization = playerHeaders.get(AUTHORIZATION_HEADER);
 
         // Retry with different client if empty response body is received.
         int i = 0;
@@ -413,13 +450,13 @@ public class StreamingDataRequest {
             // Show an error if the last client type fails, or if debug is enabled then show for all attempts.
             final boolean showErrorToast = (++i == clientOrderToUse.length) || debugEnabled;
 
-            HttpURLConnection connection = send(clientType, videoId, playerHeaders, showErrorToast);
+            HttpURLConnection connection = send(clientType, videoId, authorization, showErrorToast);
             StreamData streamingData = buildPlayerResponseBuffer(clientType, connection, videoId, isInline);
 
             if (clientType == ClientType.TV_SABR && fallbackWithTVDash) {
                 fallbackWithTVDash = false;
                 clientType = ClientType.TV_DASH;
-                HttpURLConnection fallBackConnection = send(clientType, videoId, playerHeaders, showErrorToast);
+                HttpURLConnection fallBackConnection = send(clientType, videoId, authorization, showErrorToast);
                 streamingData = buildPlayerResponseBuffer(clientType, fallBackConnection, videoId, isInline);
             }
 

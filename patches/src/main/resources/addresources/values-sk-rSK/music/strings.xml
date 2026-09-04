@@ -21,6 +21,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">Logo hlavičky</string>
   <string name="morphe_header_logo_entry_1">Predvolené</string>
   <string name="morphe_header_logo_entry_3">Vlastné</string>
+  <!-- misc.album.albumMusicVideoPatch -->
+  <string name="morphe_music_play_album_songs_title">Prehrať audio skladby albumu</string>
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <string name="morphe_music_play_album_songs_summary">Prehráva iba audio verziu skladieb albumu namiesto hudobného videa. Vyžaduje \'Spoof video streamy\'</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Stiahnite si hudobné videá, podcasty alebo piesne pomocou sťahovacích aplikácií tretích strán</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -145,6 +149,8 @@ YouTube Music 8.x – crossfade funguje iba vo verzii 9.x a novších"</string>
   <string name="morphe_music_hide_action_bar_title">Skryť akčný panel</string>
   <string name="morphe_music_hide_like_dislike_button_title">Skryť tlačidlá Páči sa mi a Nepáči sa mi</string>
   <string name="morphe_music_hide_comments_button_title">Skryť tlačidlo Komentáre</string>
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_live_chat_replay_button_title">Skryť tlačidlo \'Prehratie chatu zo záznamu\'</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_lyrics_button_title">Skryť tlačidlo Texty</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -154,7 +160,7 @@ YouTube Music 8.x – crossfade funguje iba vo verzii 9.x a novších"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_download_button_title">Skryť tlačidlo Stiahnuť</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_radio_button_title">Skryť tlačidlo Spustiť rádio</string>
+  <string name="morphe_music_hide_radio_button_title">Skryť tlačidlo \'Spustiť rádio\'</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Rozbaľovacie menu</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Vyberte, ktoré komponenty sa zobrazia v menu prehrávača a fronty</string>

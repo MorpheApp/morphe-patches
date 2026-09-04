@@ -22,7 +22,6 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMuta
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
-import app.morphe.patches.youtube.misc.playservice.is_20_21_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_28_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.shared.ActionBarSearchResultsFingerprint
@@ -136,7 +135,7 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
                 )
             }
 
-            if (is_20_21_or_greater && !is_20_28_or_greater) {
+            if (!is_20_28_or_greater) {
                 val imageResourceIntTabMethod = PivotBarButtonsCreateResourceIntViewFingerprint.originalMethod
                 addHook(NavigationHook.NAVIGATION_TAB_LOADED) predicate@{
                     MethodUtil.methodSignaturesMatch(

@@ -79,7 +79,7 @@ Second \"item\" text"</string>
 जर तुम्ही YouTube Premium वापरकर्ता असाल, तर ही सेटिंग आवश्यक नसेल."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">कोणत्याही क्लायंट स्ट्रीम्स मिळवता आल्या नाहीत</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">हे सेटिंग बंद केल्यास प्लेबॅक समस्या उद्भवू शकतात.</string>
-  <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">\'Android VR साइन इन\' सक्षम करण्याचा प्रयत्न करा &gt;</string>
   <string name="morphe_spoof_video_streams_client_type_title">डीफॉल्ट क्लायंट</string>
@@ -149,7 +149,7 @@ Second \"item\" text"</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">प्रॉक्सी अयशस्वी झाल्यास थेट कनेक्ट करा</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">पूर्ण स्क्रीन जाहिराती लपवा</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">सामायिक लिंक संपादित करा</string>
@@ -182,6 +182,11 @@ Second \"item\" text"</string>
   <string name="morphe_remove_viewer_discretion_dialog_title">व्ह्यूअर डिसcretion संवाद काढा</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">हे वय निर्बंध बायपास करत नाही. हे फक्त ते आपोआप स्वीकारते</string>
   <!-- misc.potoken.poTokenProviderPatch -->
+  <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
+         'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_unavailable_summary">"बाह्य PoToken मिंटर वापरून प्लेबॅक समस्या दुरुस्त करते (प्रायोगिक)
+
+ही सुविधा वापरण्यासाठी, 'व्हिडिओ स्ट्रीम्स स्पूफ' बंद करा"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">ॲपची आवृत्ती बदलणे</string>
   <string name="morphe_spoof_app_version_summary">सर्व्हरला जुन्या ॲप आवृत्ती वापरत आहात असे दर्शवून जुन्या UI वैशिष्ट्यांची पुनर्संचयित करणे</string>
@@ -191,6 +196,7 @@ Second \"item\" text"</string>
 
 नंतर हे बंद केल्यास, UI बग टाळण्यासाठी ॲप डेटा साफ करण्याची शिफारस केली जाते."</string>
   <string name="morphe_spoof_app_version_target_title">ॲप आवृत्ती बदलण्याचे लक्ष्य</string>
+  <!-- misc.framerate.baseAppRefreshRatePatch -->
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout"> dislikes तात्पुरते उपलब्ध नाहीत (API वेळेत समाप्त)</string>

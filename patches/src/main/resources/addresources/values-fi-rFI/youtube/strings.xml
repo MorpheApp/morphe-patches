@@ -33,6 +33,10 @@ Second \"item\" text"</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Poista taustatoiston rajoitukset</string>
   <string name="morphe_shorts_disable_background_playback_title">Poista Shortsien taustatoisto käytöstä</string>
+  <string name="morphe_auto_pause_on_screen_lock_title">Automaattinen tauko, kun laite on lukittu</string>
+  <string name="morphe_auto_pause_on_screen_lock_off">Pois</string>
+  <string name="morphe_auto_pause_on_screen_lock_always">Tauota aina, kun laite on lukittu</string>
+  <string name="morphe_auto_pause_on_screen_lock_except_wireless">Tauota, ellei langatonta ääntä ole yhdistetty</string>
   <!-- layout.disableScrollSpeedLimitPatch -->
   <string name="morphe_disable_scrolling_speed_limit_title">Poista vieritysnopeuden rajoitus</string>
   <!-- layout.disableLayoutUpdatesPatch -->
@@ -160,6 +164,7 @@ Muutoksia ovat muun muassa:
   <string name="morphe_hide_ask_section_title">Piilota Kysy-osio</string>
   <string name="morphe_hide_attributes_section_title">Piilota Ominaisuudet-osio</string>
   <string name="morphe_hide_attributes_section_summary">Piilottaa Esitellyt paikat, Pelit, Musiikki ja Mainitut ihmiset -osiot</string>
+  <string name="morphe_hide_channel_links_section_title">Piilota kanavan linkit -osio</string>
   <string name="morphe_hide_chapters_section_title">Piilota Luvut-osio</string>
   <string name="morphe_hide_corrections_section_title">Piilota Korjaukset-osio</string>
   <string name="morphe_hide_course_progress_section_title">Piilota \"Kurssin edistyminen\" -osio</string>
@@ -262,6 +267,7 @@ Muutoksia ovat muun muassa:
   <string name="morphe_hide_comments_preview_comment_summary">Piilottaa kommenttien esikatselun videon alapuolella ennen koko kommenttiosion avaamista</string>
   <string name="morphe_hide_comments_thanks_button_title">Piilota Kiitos-painike</string>
   <string name="morphe_hide_comments_timestamp_button_title">Piilota aikaleima-painike</string>
+  <string name="morphe_hide_comments_top_fans_button_title">Piilota \'Top-fanit\' -painike</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Puhdistaa korostettujen hakulinkkien koodin</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Puhdistaa korostettujen hakulinkkien koodin jättäen jäljelle vain alkuperäisen tekstin</string>
   <string name="morphe_hide_keyword_content_screen_title">Avainsanasuodatin</string>
@@ -545,7 +551,6 @@ Tämän korjaamiseksi, ota 'Väärennä videostriimeja' käyttöön ja vaihtaa '
   <string name="morphe_swipe_overlay_timeout_summary">Kuinka monta millisekuntia ikkuna on näkyvissä</string>
   <string name="morphe_swipe_overlay_background_opacity_title">Pyyhkäisyn peittokuvan taustan läpinäkymättömyys</string>
   <string name="morphe_swipe_overlay_background_opacity_summary">Aseta äänenvoimakkuuden edistymispalkin väri</string>
-  <string name="morphe_swipe_overlay_background_opacity_invalid_toast">Pyyhkäisyn läpinäkymättömyys oltava välillä 0-100</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_title">Kirkkauspyyhkäisyn peittokuvan väri</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_summary">Säädä näytön tekstin kokoa (1-30)</string>
   <string name="morphe_swipe_overlay_progress_volume_color_title">Äänenvoimakkuuspyyhkäisyn peittokuvan väri</string>
@@ -554,7 +559,6 @@ Tämän korjaamiseksi, ota 'Väärennä videostriimeja' käyttöön ja vaihtaa '
   <string name="morphe_swipe_overlay_progress_speed_color_summary">Aseta toistonopeuden säätöjen edistymispalkin väri</string>
   <string name="morphe_swipe_text_overlay_size_title">Pyyhkäisyn peittokuvan tekstin koko</string>
   <string name="morphe_swipe_text_overlay_size_summary">Säädä, kuinka äänenvoimakkuus muuttuu pyyhkäisyn aikana</string>
-  <string name="morphe_swipe_text_overlay_size_invalid_toast">Tekstin koon tulee olla välillä 1-30</string>
   <string name="morphe_swipe_threshold_title">Pyyhkäisyn kynnysraja</string>
   <string name="morphe_swipe_threshold_summary">Pyyhkäise koko näytön tilassa siirtyäksesi seuraavaan tai edelliseen videoon</string>
   <string name="morphe_swipe_volume_sensitivity_title">Äänenvoimakkuuspyyhkäisyn herkkyys</string>
@@ -708,42 +712,44 @@ Saadaksesi asetukset, ota Asetukset-painike käyttöön kohdasta Yleiset → Ty�
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Ponnahdusvalikko</string>
   <string name="morphe_hide_player_flyout_summary">Valitse, mitkä komponentit näkyvät avattavassa valikossa</string>
-  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_audio_track_title">Piilota \"Ääniraita\"-valikko</string>
+  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_additional_settings_title">Piilota \"Lisäasetukset / Lisää\"-valikko</string>
+  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_ambient_mode_title">Piilota \"Elokuvatila\"-valikko</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+         'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Ääniraitavalikko on piilotettu
 
 Jos haluat näyttää ääniraitavalikon, vaihda \"Naamioi videovirrat\" -asetukseksi mihin tahansa asiakassovellukseen paitsi \"Android Studio\" ja \"Android VR Downgraded\"."</string>
+  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_audio_track_title">Piilota \"Ääniraita\"-valikko</string>
   <string name="morphe_hide_player_flyout_audio_track_footer_title">Piilota \'Ääniraita\'-valikon alatunniste</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Piilota Tekstitykset-valikko</string>
   <string name="morphe_hide_player_flyout_captions_footer_title">Piilota Tekstitykset-valikon alatunniste</string>
   <string name="morphe_hide_player_flyout_captions_header_title">Piilota Tekstitykset-valikon yläotsikko</string>
-  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_additional_settings_title">Piilota \"Lisäasetukset / Lisää\"-valikko</string>
-  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_sleep_timer_title">Piilota \"Uniajastin\"-valikko</string>
-  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_loop_video_title">Piilota \"Toista videota jatkuvasti\"-valikko</string>
-  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_ambient_mode_title">Piilota \"Elokuvatila\"-valikko</string>
-  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_stable_volume_title">Piilota \"Tasainen äänenvoimakkuus\"-valikko</string>
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_help_title">Piilota \"Ohjeet ja palaute\"-valikko</string>
-  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_speed_title">Piilota \"Toistonopeus\"-valikko</string>
-  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_lock_screen_title">Piilota \"Näytön lukitus\"-valikko</string>
   <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_listen_with_youtube_music_title">Piilota \"Kuuntele YouTube Musicissa\"-valikko</string>
-  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_watch_in_vr_title">Piilota \"Katso VR-tilassa\"-valikko</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_lock_screen_title">Piilota \"Näytön lukitus\"-valikko</string>
+  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_loop_video_title">Piilota \"Toista videota jatkuvasti\"-valikko</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_on_the_go_title">Piilota \'Matkalla\'-valikko</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_quality_title">Piilota Laatu-valikko</string>
   <string name="morphe_hide_player_flyout_quality_footer_title">Piilota Laatu-valikon alatunniste</string>
   <string name="morphe_hide_player_flyout_quality_header_title">Piilota Laatu-valikon yläosa</string>
+  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_sleep_timer_title">Piilota \"Uniajastin\"-valikko</string>
+  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_speed_title">Piilota \"Toistonopeus\"-valikko</string>
+  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_stable_volume_title">Piilota \"Tasainen äänenvoimakkuus\"-valikko</string>
+  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_watch_in_vr_title">Piilota \"Katso VR-tilassa\"-valikko</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Piilota automaattinen esikatselu</string>
   <string name="morphe_hide_autoplay_preview_summary">Piilottaa seuraavan videon esikatselun koko näytössä automaattisen toiston alkaessa</string>
@@ -758,6 +764,8 @@ Jos haluat näyttää ääniraitavalikon, vaihda \"Naamioi videovirrat\" -asetuk
   <string name="morphe_hide_fullscreen_button_title">Piilota kokoruutupainike</string>
   <string name="morphe_hide_player_control_buttons_background_title">Piilota soittimen ohjainten tausta</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Piilottaa tumman varjostuksen videotoiston säätimien ympäriltä</string>
+  <string name="morphe_player_control_buttons_background_opacity_title">Säätöpainikkeiden taustan läpinäkyvyys</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Säädä soittimen säätöpainikkeiden takana olevan ympyrän läpinäkyvyyttä (0 on näkymätön, 100 on kiinteä)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Piilota Edellinen ja Seuraava -painikkeeet</string>
   <string name="morphe_hide_settings_button_title">Piilota Asetukset-painike</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -846,6 +854,9 @@ Asetukset → Toisto (tai Automaattinen toisto) → Toista seuraava video"</stri
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Poista soittimen ponnahdusikkunat mainokset</string>
   <string name="morphe_disable_player_popup_panels_summary">Poistaa automaattisesti avautuvien soittolistan ja live-chatin paneelien käytön</string>
+  <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
+  <string name="morphe_disable_playlist_autoplay_title">Poista soittolistan automaattinen toisto käytöstä</string>
+  <string name="morphe_disable_playlist_autoplay_summary">Estää soittolistoja siirtymästä automaattisesti seuraavaan videoon</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Poistuu koko näytön tilasta videon lopussa</string>
   <string name="morphe_exit_fullscreen_entry_1">Pois käytöstä</string>
@@ -854,9 +865,11 @@ Asetukset → Toisto (tai Automaattinen toisto) → Toista seuraava video"</stri
   <string name="morphe_exit_fullscreen_entry_4">Pysty ja vaaka</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Koko näytön eleet</string>
+  <string name="morphe_disable_fullscreen_gestures_summary">Soittimen eleet koko näytön tilassa</string>
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">Poista käytöstä pystysuuntainen ylöspäin pyyhkäisy ele</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Poista muotokuvasuuntaisen sivunäppäilyele</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Poista maisemakuvauksen sivunäppäilyele</string>
+  <string name="morphe_disable_fullscreen_zoom_gesture_title">Poista nipistyszoomin ele käytöstä</string>
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
   <string name="morphe_open_videos_fullscreen_title">Avaa videot koko näytön tilassa</string>
   <string name="morphe_open_videos_fullscreen_entry_1">Pois käytöstä</string>
@@ -870,10 +883,10 @@ Asetukset → Toisto (tai Automaattinen toisto) → Toista seuraava video"</stri
   <string name="morphe_fullscreen_video_scale_button_title">Näytä videon skaalauspainike</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Napauta vaihtaaksesi oletuksen, venytyksen ja zoomin välillä</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
+  <string name="morphe_mute_video_button_title">Näytä mykistyspainike</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Soittimen peittokuvan läpinäkymättömyys</string>
   <string name="morphe_player_overlay_opacity_summary">Säädä läpinäkyvyys (0 on täysin läpinäkyvä, 100 on peittävä)</string>
-  <string name="morphe_player_overlay_opacity_invalid_toast">Soittimen peittokuvan läpinäkymättömyyden tulee olla 0–100 välillä</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_searchbar_type_title">Hakupalkki</string>
   <string name="morphe_searchbar_type_entry_disabled">Pois käytöstä</string>
@@ -888,18 +901,20 @@ Asetukset → Toisto (tai Automaattinen toisto) → Toista seuraava video"</stri
   <string name="morphe_change_form_factor_entry_4">Ajoneuvo</string>
   <string name="morphe_change_form_factor_user_dialog_message">"Muutokset sisältävät:
 
-Tablettinäkymä
-• Yhteisöjulkaisut on piilotettu
-• Toiston syötteissä -asetus ei ole käytettävissä
-• Remix-painike ja Ääni-painike eivät ole käytettävissä Shortseissa
-• Vanha videotoimintopalkki ei ole kokoonpainettu
+Tabletin asettelu
+• Yhteisön julkaisut ovat piilotettuja
+• Toisto syötteissä -asetus ei ole käytettävissä
+• Remix-painike ja äänipainike eivät ole käytettävissä Shortseissa
+• 'Lisää videoita' -peittokuva ei ehkä ole käytettävissä
+• Vanha, tiivistämätön video-toimintapalkki on näkyvissä
 
-Autonäyttö
+Auton asettelu
 • Syöte on järjestetty aiheiden ja kanavien mukaan
-• Toiston syötteissä -asetus ei ole käytettävissä
-• Remix-painike ja Ääni-painike eivät ole käytettävissä Shortseissa
-• Shorts-videot avautuvat tavallisessa soittimessa
-• Vanha videotoimintopalkki ei ole kokoonpainettu"</string>
+• Toisto syötteissä -asetus ei ole käytettävissä
+• Remix-painike ja äänipainike eivät ole käytettävissä Shortseissa
+• 'Lisää videoita' -peittokuva ei ehkä ole käytettävissä
+• Shorts avautuvat tavallisessa soittimessa
+• Vanha, tiivistämätön video-toimintapalkki on näkyvissä"</string>
   <string name="morphe_tablet_layout_in_player_title">Ota tablettiasettelun käyttöön soittimessa</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Palauttaa vanhan soittimen asettelun
@@ -991,7 +1006,6 @@ Rajoitus: Jos \"Palauta vanha videotoimintopalkki\" on poissa käytöstä, \"Lis
   <string name="morphe_miniplayer_width_dip_invalid_toast">Pikselikoon tulee olla %1$s ja %2$s välillä</string>
   <string name="morphe_miniplayer_opacity_title">Peittokuvan läpinäkymättömyys</string>
   <string name="morphe_miniplayer_opacity_summary">Säädä läpinäkyvyys (0 on täysin läpinäkyvä, 100 on peittävä)</string>
-  <string name="morphe_miniplayer_opacity_invalid_toast">Minisoittimen peittokuvan läpinäkymättömyyden tulee olla 0–100 välillä</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Takaisin-painike sulkee syötteen</string>
   <string name="morphe_back_button_always_exits_feed_summary">Takaisin-painikkeen painaminen sulkee aina sovelluksen sen sijaan, että se vierittäisi syötteen alkuun</string>
@@ -1144,6 +1158,14 @@ Napauta tästä saadaksesi lisätietoja DeArrowista"</string>
   <string name="morphe_playback_audio_time_stretching_summary">Mahdollistaa nopeuden ja äänenkorkeuden säätämisen toisistaan riippumatta, saattaa aiheuttaa äänihäiriöitä</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Poista HDR-video käytöstä</string>
+  <string name="morphe_force_hdr_video_title">Pakota HDR-video</string>
+  <string name="morphe_force_hdr_video_summary">Pakottaa sovelluksen tunnistamaan tämän laitteen HDR-yhteensopivaksi</string>
+  <string name="morphe_force_hdr_video_user_dialog_message">"Käytä tätä, jos HDR-dekoodaus toimii, mutta YouTube ei tarjoa HDR:ää, kuten jotkin HyperOS-laitteet, jotka piilottavat HLG:n.
+
+Rajoitukset:
+• Värit voivat näyttää vääriltä, jos näyttö ei oikeasti pysty näyttämään HDR:ää
+• Toisto voi epäonnistua, jos dekooderi ei pysty käsittelemään HDR:ää
+• HDR riippuu edelleen videovirtoja huijaavasta asiakasohjelmasta"</string>
   <string name="morphe_force_avc_codec_title">Pakota AVC (H.264) -koodekki</string>
   <string name="morphe_force_avc_codec_user_dialog_message">"Hyödyt:
 • Voi parantaa akunkestoa

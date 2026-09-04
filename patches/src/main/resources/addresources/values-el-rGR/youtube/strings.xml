@@ -23,16 +23,20 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_02_alt_thumbnails_title">Εναλλακτικές μικρογραφίες</string>
   <string name="morphe_settings_screen_03_feed_title">Ροή</string>
   <string name="morphe_settings_screen_04_general_title">Γενικά</string>
-  <string name="morphe_settings_screen_05_player_title">Αναπαραγωγέας</string>
+  <string name="morphe_settings_screen_05_player_title">Πρόγραμμα αναπαραγωγής</string>
   <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Γραμμή προόδου</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Έλεγχος με σάρωση οθόνης</string>
   <string name="morphe_settings_screen_11_misc_title">Διάφορα</string>
   <string name="morphe_settings_screen_12_video_title">Βίντεο</string>
-  <string name="morphe_restore_old_settings_menus_title">Επαναφορά παλιών ρυθμίσεων μενού</string>
+  <string name="morphe_restore_old_settings_menus_title">Επαναφορά του παλιού μενού ρυθμίσεων YouTube</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Κατάργηση περιορισμών αναπαραγωγής στο παρασκήνιο</string>
-  <string name="morphe_shorts_disable_background_playback_title">Απενεργοποίηση αναπαραγωγής παρασκηνίου για τα Shorts</string>
+  <string name="morphe_shorts_disable_background_playback_title">Απενεργοποίηση αναπαραγωγής παρασκηνίου</string>
+  <string name="morphe_auto_pause_on_screen_lock_title">Αυτόματη παύση όταν η συσκευή είναι κλειδωμένη</string>
+  <string name="morphe_auto_pause_on_screen_lock_off">Ανενεργό</string>
+  <string name="morphe_auto_pause_on_screen_lock_always">Πάντα παύση όταν η συσκευή είναι κλειδωμένη</string>
+  <string name="morphe_auto_pause_on_screen_lock_except_wireless">Παύση εκτός αν είναι συνδεδεμένη ασύρματη συσκευή ήχου</string>
   <!-- layout.disableScrollSpeedLimitPatch -->
   <string name="morphe_disable_scrolling_speed_limit_title">Απενεργοποίηση ορίου ταχύτητας κύλισης</string>
   <!-- layout.disableLayoutUpdatesPatch -->
@@ -60,9 +64,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_album_cards_summary">Απόκρυψη των καρτών άλμπουμ κάτω από την περιγραφή του καλλιτέχνη</string>
   <string name="morphe_hide_artist_cards_title">Απόκρυψη \"Κάρτες καλλιτεχνών\"</string>
   <string name="morphe_hide_artist_cards_summary">Απόκρυψη της κάρτας του καλλιτέχνη στο πάνω μέρος των αποτελεσμάτων αναζήτησης</string>
-  <string name="morphe_hide_auto_dubbed_label_title">Απόκρυψη ετικέτας \'Αυτόματου μεταγλωττισμού\'</string>
-  <string name="morphe_hide_community_posts_title">Απόκρυψη \"Δημοσιεύσεις Κοινότητας\"</string>
-  <string name="morphe_hide_compact_banner_title">Απόκρυψη \"Συμπαγή Μπάνερ\"</string>
+  <string name="morphe_hide_auto_dubbed_label_title">Απόκρυψη ετικέτας \'Αυτόματης μεταγλώττισης\'</string>
+  <string name="morphe_hide_community_posts_title">Απόκρυψη \"Δημοσιεύσεων Κοινότητας\"</string>
+  <string name="morphe_hide_compact_banner_title">Απόκρυψη \"Συμπαγών Μπάνερ\"</string>
   <string name="morphe_hide_compact_banner_summary">Απόκρυψη συμπυκτωμένων διαφημιστικών banners και διαστήματος μεταξύ ορισμένων στοιχείων</string>
   <string name="morphe_hide_expandable_card_title">Επεκτάσιμες κάρτες κάτω από τα βίντεο</string>
   <string name="morphe_hide_expandable_card_entry_1">Προβολή όλων</string>
@@ -160,6 +164,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_ask_section_title">Απόκρυψη τμήματος Ερωτήσεων</string>
   <string name="morphe_hide_attributes_section_title">Απόκρυψη τμήματος Χαρακτηριστικών</string>
   <string name="morphe_hide_attributes_section_summary">Απόκρυψη των τμημάτων Επιλεγμένα μέρη, Παιχνίδια, Μουσική και «Οι χρήστες ανέφεραν»</string>
+  <string name="morphe_hide_channel_links_section_title">Απόκρυψη ενότητας συνδέσμων καναλιού</string>
   <string name="morphe_hide_chapters_section_title">Απόκρυψη τμήματος Κεφαλαίων</string>
   <string name="morphe_hide_corrections_section_title">Απόκρυψη τμήματος Διορθώσεων</string>
   <string name="morphe_hide_course_progress_section_title">Απόκρυψη τμήματος «Πρόοδος μαθήματος»</string>
@@ -262,6 +267,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_preview_comment_summary">Απόκρυψη της προεπισκόπησης σχολίων κάτω από το βίντεο πριν ανοίξετε την πλήρη ενότητα σχολίων</string>
   <string name="morphe_hide_comments_thanks_button_title">Κουμπί «Σας ευχαριστούμε»</string>
   <string name="morphe_hide_comments_timestamp_button_title">Απόκρυψη κουμπιού ώρας</string>
+  <string name="morphe_hide_comments_top_fans_button_title">Απόκρυψη κουμπιού \'Κορυφαίοι θαυμαστές\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Απολυμαίνετε τις διασυνδεδεμένες αναζητήσεις</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Απολυμαίνει τις διασυνδεδεμένες αναζητήσεις, αφήνοντας μόνο το αρχικό απλό κείμενο</string>
   <string name="morphe_hide_keyword_content_screen_title">Φίλτρο λέξεων-κλειδιών</string>
@@ -545,7 +551,6 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_overlay_timeout_summary">Το χρονικό διάστημα χιλιοστών του δευτερολέπτου που είναι ορατό το πλαίσιο σάρωσης</string>
   <string name="morphe_swipe_overlay_background_opacity_title">Αδιαφάνεια φόντου σάρωσης</string>
   <string name="morphe_swipe_overlay_background_opacity_summary">Ρυθμίστε το επίπεδο διαφάνειας (0 είναι διαφανές, 100 είναι αδιαφανές)</string>
-  <string name="morphe_swipe_overlay_background_opacity_invalid_toast">Η αδιαφάνεια σάρωσης πρέπει να είναι μεταξύ 0-100</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_title">Χρώμα γραμμής σάρωσης για φωτεινότητα</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_summary">Απόκρυψη κουμπιού \"Σταμάτα διαφημίσεις\"</string>
   <string name="morphe_swipe_overlay_progress_volume_color_title">Χρώμα γραμμής σάρωσης για ένταση ήχου</string>
@@ -553,8 +558,7 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_overlay_progress_speed_color_title">Χρώμα γραμμής σάρωσης για ταχύτητα</string>
   <string name="morphe_swipe_overlay_progress_speed_color_summary">Ορίστε το χρώμα της γραμμής προόδου για τα χειριστήρια ταχύτητας αναπαραγωγής</string>
   <string name="morphe_swipe_text_overlay_size_title">Μέγεθος κειμένου φόντου σάρωσης</string>
-  <string name="morphe_swipe_text_overlay_size_summary">Απόκρυψη κουμπιού Αναφοράς</string>
-  <string name="morphe_swipe_text_overlay_size_invalid_toast">Το μέγεθος κειμένου πρέπει να είναι μεταξύ 1-30</string>
+  <string name="morphe_swipe_text_overlay_size_summary">Προσαρμόστε το μέγεθος του κειμένου που εμφανίζεται στην οθόνη (1-30)</string>
   <string name="morphe_swipe_threshold_title">Κατώτατο όριο μεγέθους σάρωσης</string>
   <string name="morphe_swipe_threshold_summary">Ορίστε την απαιτούμενη απόσταση μεταφοράς πριν ενεργοποιηθεί μια ρύθμιση</string>
   <string name="morphe_swipe_volume_sensitivity_title">Ευαισθησία σάρωσης έντασης ήχου</string>
@@ -708,42 +712,44 @@ Second \"item\" text"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Αναδυόμενο μενού ρυθμίσεων</string>
   <string name="morphe_hide_player_flyout_summary">Επιλέξτε ποια στοιχεία θα εμφανίζονται στο αναδυόμενο μενού</string>
-  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_audio_track_title">Κρύψτε το μενού \'Ήχος\'</string>
+  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_additional_settings_title">Κρύψτε το μενού \'Πρόσθετες ρυθμίσεις\' / Περισσότερα</string>
+  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_ambient_mode_title">Κρύψτε το μενού \'Λειτουργία περιβάλλοντος\'</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+         'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Το μενού 'Audio Track' είναι κρυφό
 
 Για να εμφανίσετε το μενού 'Audio Track', αλλάξτε την επιλογή 'Πλαστογράφηση ροών βίντεο' σε οποιονδήποτε πελάτη εκτός από 'Android Studio' και 'Android VR Downgraded'."</string>
+  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_audio_track_title">Κρύψτε το μενού \'Ήχος\'</string>
   <string name="morphe_hide_player_flyout_audio_track_footer_title">Κρύψτε την υποσημείωση του μενού \'Ήχος\'</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Κρύψτε το μενού \'Υπότιτλοι\'</string>
   <string name="morphe_hide_player_flyout_captions_footer_title">Κρύψτε την υποσημείωση του μενού \'Υπότιτλοι\'</string>
   <string name="morphe_hide_player_flyout_captions_header_title">Κρύψτε την κεφαλίδα του μενού \'Υπότιτλοι\'</string>
-  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_additional_settings_title">Κρύψτε το μενού \'Πρόσθετες ρυθμίσεις\' / Περισσότερα</string>
-  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_sleep_timer_title">Κρύψτε το μενού \'Χρονόμετρο ύπνου\'</string>
-  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_loop_video_title">Κρύψτε το μενού \'Επανάληψη βίντεο\'</string>
-  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_ambient_mode_title">Κρύψτε το μενού \'Λειτουργία περιβάλλοντος\'</string>
-  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_stable_volume_title">Κρύψτε το μενού \'Σταθερή ένταση\'</string>
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_help_title">Κρύψτε το μενού \'Βοήθεια &amp; σχόλια\'</string>
-  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_speed_title">Κρύψτε το μενού \'Ταχύτητα αναπαραγωγής\'</string>
-  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_lock_screen_title">Κρύψτε το μενού \'Οθόνη κλειδώματος\'</string>
   <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_listen_with_youtube_music_title">Κρύψτε το μενού \'Ακρόαση με YouTube Music\'</string>
-  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_watch_in_vr_title">Κρύψτε το μενού \'Προβολή σε VR\'</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_lock_screen_title">Κρύψτε το μενού \'Οθόνη κλειδώματος\'</string>
+  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_loop_video_title">Κρύψτε το μενού \'Επανάληψη βίντεο\'</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_on_the_go_title">Απόκρυψη μενού \'Εν κινήσει\'</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_quality_title">Κρύψτε το μενού \'Ποιότητα\'</string>
   <string name="morphe_hide_player_flyout_quality_footer_title">Κρύψτε την υποσημείωση του μενού \'Ποιότητα\'</string>
   <string name="morphe_hide_player_flyout_quality_header_title">Κρύψτε την κεφαλίδα του μενού \'Ποιότητα\'</string>
+  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_sleep_timer_title">Κρύψτε το μενού \'Χρονόμετρο ύπνου\'</string>
+  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_speed_title">Κρύψτε το μενού \'Ταχύτητα αναπαραγωγής\'</string>
+  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_stable_volume_title">Κρύψτε το μενού \'Σταθερή ένταση\'</string>
+  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_watch_in_vr_title">Κρύψτε το μενού \'Προβολή σε VR\'</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Απόκρυψη προεπισκόπισης αυτόματης αναπαραγωγής</string>
   <string name="morphe_hide_autoplay_preview_summary">Κρύβει την προεπισκόπηση του επόμενου βίντεο σε πλήρη οθόνη πριν ξεκινήσει η αυτόματη αναπαραγωγή</string>
@@ -758,6 +764,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_fullscreen_button_title">Κρύψτε το κουμπί \'Πλήρης οθόνη\'</string>
   <string name="morphe_hide_player_control_buttons_background_title">Φόντο κουμπιών ελέγχου οθόνης αναπαραγωγής</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Κρύβει την σκοτεινή σκίαση γύρω από τα στοιχεία ελέγχου του αναπαραγωγέα βίντεο</string>
+  <string name="morphe_player_control_buttons_background_opacity_title">Αδιαφάνεια φόντου κουμπιών ελέγχου</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Προσαρμόστε την αδιαφάνεια του κύκλου πίσω από τα κουμπιά ελέγχου του προγράμματος αναπαραγωγής (0 είναι αόρατο, 100 είναι πλήρως αδιαφανές)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Κουμπιά προηγούμενου &amp; επόμενου βίντεο</string>
   <string name="morphe_hide_settings_button_title">Κρύψτε το κουμπί \'Ρυθμίσεις\'</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -846,6 +854,9 @@ Second \"item\" text"</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Απενεργοποίηση αναδυόμενων διαφημίσεων παίκτη</string>
   <string name="morphe_disable_player_popup_panels_summary">Απενεργοποιεί την αυτόματη εμφάνιση των πλαισίων λίστας αναπαραγωγής και ζωντανής συνομιλίας</string>
+  <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
+  <string name="morphe_disable_playlist_autoplay_title">Απενεργοποίηση αυτόματης αναπαραγωγής των λιστών αναπαραγωγής</string>
+  <string name="morphe_disable_playlist_autoplay_summary">Αποτρέπει τις λίστες αναπαραγωγής από το να συνεχίζουν αυτόματα στο επόμενο βίντεο</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Έξοδος από τη λειτουργία πλήρους οθόνης στο τέλος του βίντεο</string>
   <string name="morphe_exit_fullscreen_entry_1">Ανενεργό</string>
@@ -854,9 +865,11 @@ Second \"item\" text"</string>
   <string name="morphe_exit_fullscreen_entry_4">Κατακόρυφη και οριζόντια</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Ζητήματα πλήρους οθόνης</string>
+  <string name="morphe_disable_fullscreen_gestures_summary">Χειρονομίες προγράμματος αναπαραγωγής σε πλήρη οθόνη</string>
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">Απενεργοποίηση χειρονομίας σάρωσης προς τα πάνω σε κατακόρυφο προσανατολισμό</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Απενεργοποίηση χειρονομίας σάρωσης προς τα κάτω σε κατακόρυφη προβολή</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Απενεργοποίηση χειρονομίας σάρωσης προς τα κάτω σε οριζόντια προβολή</string>
+  <string name="morphe_disable_fullscreen_zoom_gesture_title">Απενεργοποίηση χειρονομίας ζουμ με τσίμπημα</string>
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
   <string name="morphe_open_videos_fullscreen_title">Άνοιγμα βίντεο σε πλήρη οθόνη</string>
   <string name="morphe_open_videos_fullscreen_entry_1">Απενεργοποιημένο</string>
@@ -870,10 +883,10 @@ Second \"item\" text"</string>
   <string name="morphe_fullscreen_video_scale_button_title">Εμφάνιση κουμπιού κλίμακας βίντεο</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Πατήστε για εναλλαγή Προεπιλεγμένο, Τάνυση, και Μεγέθυνση</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
+  <string name="morphe_mute_video_button_title">Εμφάνιση κουμπιού σίγασης</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Αδιαφάνεια φόντου οθόνης αναπαραγωγής</string>
   <string name="morphe_player_overlay_opacity_summary">Ρυθμίστε το επίπεδο διαφάνειας (0 είναι διαφανές, 100 είναι αδιαφανές)</string>
-  <string name="morphe_player_overlay_opacity_invalid_toast">Η αδιαφάνεια φόντου οθόνης αναπαραγωγής πρέπει να είναι μεταξύ 0-100</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_searchbar_type_title">Γραμμή αναζήτησης</string>
   <string name="morphe_searchbar_type_entry_disabled">Απενεργοποιημένο</string>
@@ -886,20 +899,7 @@ Second \"item\" text"</string>
   <string name="morphe_change_form_factor_entry_2">Τηλέφωνο</string>
   <string name="morphe_change_form_factor_entry_3">Ταμπλετ</string>
   <string name="morphe_change_form_factor_entry_4">Αυτοκίνητο</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Οι αλλαγές περιλαμβάνουν:
-
-Διάταξη για ταμπλέτες
-• Οι δημοσιεύσεις στην κοινότητα είναι κρυφές
-• Η ρύθμιση αναπαραγωγής στις ροές δεν είναι διαθέσιμη
-• Το κουμπί \"Remix\" και το κουμπί \"Ήχος\" δεν είναι διαθέσιμα στα Shorts
-• Εμφανίζεται η παλιά γραμμή ενεργειών βίντεο χωρίς κατάρρευση
-
-Διάταξη για αυτοκίνητα
-• Η ροή είναι οργανωμένη ανά θέματα και κανάλια
-• Η ρύθμιση αναπαραγωγής στις ροές δεν είναι διαθέσιμη
-• Το κουμπί \"Remix\" και το κουμπί \"Ήχος\" δεν είναι διαθέσιμα στα Shorts
-• Τα Shorts ανοίγουν στον κανονικό player
-• Εμφανίζεται η παλιά γραμμή ενεργειών βίντεο χωρίς κατάρρευση"</string>
+  <string name="morphe_change_form_factor_user_dialog_message">"Οι αλλαγές περιλαμβάνουν:\n\nΔιάταξη tablet\n• Οι αναρτήσεις κοινότητας είναι κρυφές\n• Η ρύθμιση «Αναπαραγωγή στις ροές» δεν είναι διαθέσιμη\n• Το κουμπί Remix και το κουμπί ήχου δεν είναι διαθέσιμα στα Shorts\n• Η επικάλυψη «Περισσότερα βίντεο» ενδέχεται να μην είναι διαθέσιμη\n• Εμφανίζεται η μη συμπτυγμένη παλιά γραμμή ενεργειών βίντεο\n\nΔιάταξη αυτοκινήτου\n• Η ροή είναι οργανωμένη ανά θέμα και κανάλι\n• Η ρύθμιση «Αναπαραγωγή στις ροές» δεν είναι διαθέσιμη\n• Το κουμπί Remix και το κουμπί ήχου δεν είναι διαθέσιμα στα Shorts\n• Η επικάλυψη «Περισσότερα βίντεο» ενδέχεται να μην είναι διαθέσιμη\n• Τα Shorts ανοίγουν στο κανονικό πρόγραμμα αναπαραγωγής\n• Εμφανίζεται η μη συμπτυγμένη παλιά γραμμή ενεργειών βίντεο"</string>
   <string name="morphe_tablet_layout_in_player_title">Ενεργοποίηση διάταξης για tablet στον παίκτη</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Επαναφέρει την παλιά διάταξη του παίκτη
@@ -991,7 +991,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">Τα pixel πρέπει να είναι μεταξύ %1$s και %2$s</string>
   <string name="morphe_miniplayer_opacity_title">Αδιαφάνεια φόντου παρασκηνίου</string>
   <string name="morphe_miniplayer_opacity_summary">Ρυθμίστε το επίπεδο διαφάνειας (0 είναι διαφανές, 100 είναι αδιαφανές)</string>
-  <string name="morphe_miniplayer_opacity_invalid_toast">Η αδιαφάνεια φόντου οθόνης αναπαραγωγής πρέπει να είναι μεταξύ 0-100</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Το κουμπί πίσω βγαίνει από τη ροή</string>
   <string name="morphe_back_button_always_exits_feed_summary">Πατώντας πίσω βγαίνετε πάντα από την εφαρμογή αντί να μεταφέρεστε στην κορυφή της ροής.</string>
@@ -1144,6 +1143,14 @@ Second \"item\" text"</string>
   <string name="morphe_playback_audio_time_stretching_summary">Επιτρέπει τη ρύθμιση της ταχύτητας και του τόνου ανεξάρτητα, κάτι που μπορεί να προκαλέσει παραμορφώσεις στον ήχο</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Απενεργοποίηση βίντεο HDR</string>
+  <string name="morphe_force_hdr_video_title">Επιβολή βίντεο HDR</string>
+  <string name="morphe_force_hdr_video_summary">Αναγκάζει την εφαρμογή να θεωρεί αυτή τη συσκευή ως συμβατή με HDR</string>
+  <string name="morphe_force_hdr_video_user_dialog_message">"Χρησιμοποιήστε αυτή την επιλογή αν η αποκωδικοποίηση HDR λειτουργεί αλλά το YouTube δεν προσφέρει HDR, όπως σε κάποιες συσκευές HyperOS που κρύβουν το HLG.
+
+Προβλήματα:
+• Τα χρώματα μπορεί να φαίνονται λανθασμένα αν στην πραγματικότητα η οθόνη δεν μπορεί να απεικονίσει HDR
+• Η αναπαραγωγή μπορεί να αποτύχει αν ο αποκωδικοποιητής δεν μπορεί να χειριστεί το HDR
+• Το HDR εξαρτάται και από το επιλεγμένο πρόγραμμα-πελάτη παραποίησης ροών βίντεο"</string>
   <string name="morphe_force_avc_codec_title">Εξαναγκάζει τον κωδικοποιητή AVC (H.264)</string>
   <string name="morphe_force_avc_codec_user_dialog_message">"Οφέλη:
 • Μπορεί να βελτιώσει τη διάρκεια ζωής της μπαταρίας

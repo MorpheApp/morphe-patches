@@ -2,7 +2,6 @@ package app.morphe.extension.youtube.shared
 
 import app.morphe.extension.shared.Logger
 import app.morphe.extension.youtube.patches.VideoInformation
-import app.morphe.extension.youtube.shared.Event
 
 /**
  * VideoState playback state.
@@ -13,13 +12,10 @@ enum class VideoState {
     PAUSED,
     RECOVERABLE_ERROR,
     UNRECOVERABLE_ERROR,
-
     /**
      * @see [VideoInformation.isAtEndOfVideo]
      */
-    ENDED,
-
-    ;
+    ENDED;
 
     companion object {
 

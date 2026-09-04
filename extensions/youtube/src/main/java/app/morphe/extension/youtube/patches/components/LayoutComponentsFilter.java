@@ -12,7 +12,6 @@ package app.morphe.extension.youtube.patches.components;
 
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
@@ -253,6 +252,7 @@ public final class LayoutComponentsFilter extends Filter {
 
         communityPosts = new StringFilterGroup(
                 Settings.HIDE_COMMUNITY_POSTS,
+                "images_post_responsive_root.e",
                 "images_post_root.e",
                 "images_post_root_slim.e",
                 "images_post_slim.e", // may be obsolete and no longer needed.
@@ -674,20 +674,19 @@ public final class LayoutComponentsFilter extends Filter {
                 : height;
     }
 
-    private static final boolean HIDE_FILTER_BAR_IN_RELATED_VIDEOS_ENABLED
-            = Settings.HIDE_FILTER_BAR_IN_RELATED_VIDEOS.get();
+    /**
+     * Injection point.
+     */
+    public static boolean hideInRelatedVideos(boolean original) {
+        return !Settings.HIDE_FILTER_BAR_IN_RELATED_VIDEOS.get() && original;
+    }
 
     /**
      * Injection point.
      */
-    public static void hideInRelatedVideos(@Nullable RecyclerView chipRecyclerView) {
-        if (chipRecyclerView == null) {
-            return;
-        }
-
-        if (HIDE_FILTER_BAR_IN_RELATED_VIDEOS_ENABLED) {
-            chipRecyclerView.setVisibility(RecyclerView.GONE);
-        }
+    public static void hideInRelatedVideos(@Nullable View view) {
+        if (view == null) return;
+        Utils.hideViewUnderCondition(Settings.HIDE_FILTER_BAR_IN_RELATED_VIDEOS.get(), view);
     }
 
     private static final boolean HIDE_YOUTUBE_DOODLES_ENABLED = Settings.HIDE_YOUTUBE_DOODLES.get();

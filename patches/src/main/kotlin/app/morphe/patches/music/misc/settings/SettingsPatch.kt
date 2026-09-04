@@ -7,6 +7,7 @@
 
 package app.morphe.patches.music.misc.settings
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.all.misc.fix.openurllinks.removeLinkVerification
@@ -19,7 +20,6 @@ import app.morphe.patches.all.misc.resources.setAddResourceLocale
 import app.morphe.patches.music.misc.extension.hooks.youTubeMusicApplicationInitOnCreateHook
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.gms.Constants.MUSIC_PACKAGE_NAME
-import app.morphe.patches.music.misc.playservice.is_8_40_or_greater
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.BoldIconsFeatureFlagFingerprint
@@ -27,6 +27,9 @@ import app.morphe.patches.shared.GoogleApiActivityOnCreateFingerprint
 import app.morphe.patches.shared.misc.checks.experimentalAppNoticePatch
 import app.morphe.patches.shared.misc.initialization.initializationPatch
 import app.morphe.patches.shared.misc.settings.MORPHE_SETTINGS_INTENT
+import app.morphe.patches.shared.misc.settings.SETTINGS_NAME_PREFERENCE_KEY
+import app.morphe.patches.shared.misc.settings.customSettingsNameInstructions
+import app.morphe.patches.shared.misc.settings.customSettingsNamePreference
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.InputType
@@ -42,8 +45,12 @@ import app.morphe.patches.youtube.misc.settings.modifyActivityForSettingsInjecti
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 import app.morphe.util.copyXmlNode
+import app.morphe.util.getFreeRegisterProvider
+import app.morphe.util.getReference
 import app.morphe.util.inputStreamFromBundledResource
 import app.morphe.util.insertLiteralOverride
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 private const val MUSIC_ACTIVITY_HOOK_CLASS = "Lapp/morphe/extension/music/settings/MusicActivityHook;"
 
@@ -55,6 +62,7 @@ private val settingsResourcePatch = resourcePatch {
         settingsPatch(
             rootPreferences = listOf(
                 IntentPreference(
+                    key = SETTINGS_NAME_PREFERENCE_KEY,
                     titleKey = "morphe_settings_title",
                     summaryKey = null,
                     intent = newIntent(MORPHE_SETTINGS_INTENT),
@@ -159,7 +167,8 @@ val settingsPatch = bytecodePatch(
 
         PreferenceScreen.GENERAL.addPreferences(
             SwitchPreference("morphe_settings_search_history"),
-            SwitchPreference("morphe_show_menu_icons")
+            SwitchPreference("morphe_show_menu_icons"),
+            customSettingsNamePreference()
         )
 
         PreferenceScreen.MISC.addPreferences(
@@ -176,19 +185,46 @@ val settingsPatch = bytecodePatch(
             )
         )
 
+        SettingsHeadersOnCreatePreferencesFingerprint.let {
+            val fragmentField = it.instructionMatches.last()
+                .instruction.getReference<FieldReference>()!!
+
+            it.method.apply {
+                val insertIndex = implementation!!.instructions.size - 1
+                val peerRegister = it.instructionMatches[1]
+                    .getInstruction<OneRegisterInstruction>().registerA
+                val registerProvider = getFreeRegisterProvider(insertIndex, 3, peerRegister)
+                val screenRegister = registerProvider.getFreeRegister()
+                val preferenceRegister = registerProvider.getFreeRegister()
+                val nameRegister = registerProvider.getFreeRegister()
+
+                addInstructionsWithLabels(
+                    insertIndex,
+                    customSettingsNameInstructions(
+                        getPreferenceScreen = """
+                            iget-object v$screenRegister, v$peerRegister, $fragmentField
+                            invoke-virtual { v$screenRegister }, $SETTINGS_HEADERS_FRAGMENT_CLASS->getPreferenceScreen()Landroidx/preference/PreferenceScreen;
+                            move-result-object v$screenRegister
+                        """,
+                        screenRegister = screenRegister,
+                        preferenceRegister = preferenceRegister,
+                        nameRegister = nameRegister
+                    )
+                )
+            }
+        }
+
         modifyActivityForSettingsInjection(
             GoogleApiActivityOnCreateFingerprint,
             MUSIC_ACTIVITY_HOOK_CLASS,
             true
         )
 
-        if (is_8_40_or_greater) {
-            BoldIconsFeatureFlagFingerprint.matchAll().forEach {
-                it.method.insertLiteralOverride(
-                    it.instructionMatches.first().index,
-                    "$MUSIC_ACTIVITY_HOOK_CLASS->useBoldIcons(Z)Z"
-                )
-            }
+        BoldIconsFeatureFlagFingerprint.matchAll().forEach {
+            it.method.insertLiteralOverride(
+                it.instructionMatches.first().index,
+                "$MUSIC_ACTIVITY_HOOK_CLASS->useBoldIcons(Z)Z"
+            )
         }
     }
 

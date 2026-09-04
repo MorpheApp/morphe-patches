@@ -75,6 +75,12 @@ internal object AutomaticForegroundPlaybackResumeFeatureFlagFingerprint : Finger
     )
 )
 
+internal object AutomaticPlaybackPausedInFlyoutFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45741823L)
+    )
+)
+
 internal object KidsBackgroundPlaybackPolicyControllerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",

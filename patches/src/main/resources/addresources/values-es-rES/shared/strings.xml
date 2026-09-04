@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">El historial de búsqueda está vacío</string>
   <string name="morphe_settings_search_empty_history_summary">Para guardar el historial de búsqueda, escribe una consulta de búsqueda y pulsa Enter</string>
   <string name="morphe_settings_search_history_title">Mostrar historial de búsqueda de ajustes</string>
+  <string name="morphe_settings_name_title">Nombre de los ajustes de Morphe</string>
+  <string name="morphe_settings_name_default_item">Predeterminado</string>
+  <string name="morphe_settings_name_entry_2">Extras</string>
+  <string name="morphe_settings_name_entry_3">Modificaciones</string>
+  <string name="morphe_settings_name_entry_4">Hora de Morphear</string>
+  <string name="morphe_settings_name_custom_item">Personalizado</string>
+  <string name="morphe_settings_name_custom_item_hint">Introduce un nombre</string>
+  <string name="morphe_settings_name_empty_warning">El nombre no puede estar vacío</string>
   <string name="morphe_show_menu_icons_title">Mostrar iconos de ajustes de Morphe</string>
   <string name="morphe_settings_menu_copy_path">Copiado: %s</string>
   <string name="morphe_language_title">Idioma de Morphe</string>
@@ -107,13 +115,64 @@ No se te notificará de ningún evento inesperado."</string>
   <string name="morphe_debug_logs_clear_toast">Registros de depuración borrados</string>
   <string name="morphe_debug_feature_flags_manager_title">Gestor de indicadores de funciones</string>
   <string name="morphe_debug_feature_flags_manager_summary">Gestiona indicadores de funciones booleanos</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Indicadores de funciones activas (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Indicadores de funciones bloqueadas (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Buscar indicadores de funciones…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">No activo (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Activo (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Bloqueado (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Forzado (%s)</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Automático</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Desactivado</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Activado</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Forzar activación</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Bloquear</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Quitar</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Indicadores de funciones guardados</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Indicadores de funciones restablecidos</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Indicadores de funciones copiados al portapapeles</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reinicia la app para usar este ajuste</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Exportar e importar</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">Importados %s indicadores de funciones</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">No se encontraron indicadores de funciones</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Indicadores de funciones exportados correctamente</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Error al exportar los indicadores de funciones</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Indicadores de funciones cargados, pulsa Guardar para aplicar</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Error al leer el archivo</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Búsqueda binaria</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Encuentra qué indicador de funciones causa un comportamiento de la aplicación.
+
+Se bloquean la mitad de los %s indicadores, y tras cada reinicio tú dices si el comportamiento sigue presente.
+
+Reproduce el comportamiento una vez antes de empezar; de lo contrario, los indicadores que la aplicación aún no ha solicitado faltarán en la búsqueda"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Inicio</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"No hay indicadores de funciones para buscar.
+
+Solo los indicadores que la aplicación ha alcanzado y que no están forzados actualmente se pueden usar en una búsqueda binaria"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Paso %1$s
+
+%2$s indicadores restantes, %3$s de ellos bloqueados para este paso.
+
+Reinicia la aplicación, comprueba si el comportamiento sigue presente y responde a continuación"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Búsqueda de indicadores de funciones en curso</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">El comportamiento está presente</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">El comportamiento no está presente</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Cancelar búsqueda binaria</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Búsqueda binaria cancelada</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"El indicador de funciones %s causa el comportamiento.
+
+Ahora está bloqueado"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"No se pudo encontrar un indicador de funciones.
+
+El comportamiento de la aplicación no parece estar controlado por un indicador de funciones"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"No se pudo encontrar un único indicador de funciones.
+
+El comportamiento desapareció antes en la búsqueda, por lo que puede que estén involucrados más de un indicador o que alguna de las respuestas haya sido incorrecta"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Abrir la configuración de MicroG</string>

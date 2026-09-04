@@ -16,12 +16,12 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
 import java.util.Map;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.youtube.innertube.ConfigResponseOuterClass.ConfigResponse;
 import app.morphe.extension.youtube.innertube.ConfigResponseOuterClass.Context;
 import app.morphe.extension.youtube.innertube.ConfigResponseOuterClass.GlobalConfigGroup;
@@ -29,48 +29,37 @@ import app.morphe.extension.youtube.innertube.ConfigResponseOuterClass.RawColdCo
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
 public class ConfigRequest {
     private static final int MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 20 * 1000;
-    private static ConfigRequest configRequest;
-    private final Future<String> future;
 
-    private ConfigRequest(Map<String, String> requestHeader) {
-        this.future = Utils.submitOnBackgroundThread(() -> send(requestHeader));
-    }
-
-    @Nullable
-    public String getConfig() {
-        try {
-            if (BaseSettings.DEBUG.get() && !future.isDone() && Utils.isCurrentlyOnMainThread()) {
-                Logger.printException(() -> "Debug: Blocking main thread");
-            }
-            return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
-        } catch (TimeoutException ex) {
-            Logger.printInfo(() -> "getConfig timed out", ex);
-        } catch (InterruptedException ex) {
-            Logger.printException(() -> "getConfig interrupted", ex);
-            Thread.currentThread().interrupt();
-        } catch (ExecutionException ex) {
-            Logger.printException(() -> "getConfig failure", ex);
-        }
-        return null;
-    }
-
-    public static void clear() {
-        configRequest = null;
+    private record ConfigGroup(String coldConfigData, String coldHashData) {
     }
 
     public static void fetchRequest(Map<String, String> requestHeader) {
-        if (configRequest == null) {
-            configRequest = new ConfigRequest(requestHeader);
+        CompletableFuture<ConfigGroup> future = CompletableFuture.supplyAsync(() -> send(requestHeader));
+        try {
+            ConfigGroup configGroup = future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
+            if (configGroup != null) {
+                String coldConfigData = configGroup.coldConfigData;
+                String coldHashData = configGroup.coldHashData;
+                Settings.INNERTUBE_COLD_CONFIG_DATA.save(coldConfigData);
+                Settings.INNERTUBE_COLD_HASH_DATA.save(coldHashData);
+            }
+        } catch (TimeoutException ex) {
+            Logger.printInfo(() -> "getConfigGroup timed out", ex);
+            future.cancel(true);
+        } catch (CancellationException ex) {
+            Logger.printInfo(() -> "getConfigGroup was previously cancelled");
+        } catch (InterruptedException ex) {
+            Logger.printException(() -> "getConfigGroup interrupted", ex);
+            future.cancel(true);
+            Thread.currentThread().interrupt(); // Restore interrupt status flag.
+        } catch (ExecutionException ex) {
+            Logger.printException(() -> "getConfigGroup failure", ex);
         }
-    }
-
-    @Nullable
-    public static ConfigRequest getRequest() {
-        return configRequest;
     }
 
     private static void handleConnectionError(String toastMessage, @Nullable Exception ex) {
@@ -78,7 +67,7 @@ public class ConfigRequest {
     }
 
     @Nullable
-    private static String parse(@NonNull HttpURLConnection connection) {
+    private static ConfigGroup parse(@NonNull HttpURLConnection connection) {
         try (InputStream inputStream = connection.getInputStream()) {
             ConfigResponse configResponse = ConfigResponse.parseFrom(inputStream);
             if (!configResponse.hasContext()) {
@@ -91,16 +80,22 @@ public class ConfigRequest {
                 return null;
             }
             GlobalConfigGroup globalConfigGroup = context.getGlobalConfigGroup();
+            String coldHashData = globalConfigGroup.getColdHashData();
+            if (!Utils.isNotEmpty(coldHashData)) {
+                Logger.printDebug(() -> "ColdHashData is empty");
+                return null;
+            }
             if (!globalConfigGroup.hasRawColdConfigGroup()) {
                 Logger.printDebug(() -> "RawColdConfigGroup is empty");
                 return null;
             }
             RawColdConfigGroup rawColdConfigGroup = globalConfigGroup.getRawColdConfigGroup();
-            if (!rawColdConfigGroup.hasConfigData()) {
+            String coldConfigData = rawColdConfigGroup.getConfigData();
+            if (!Utils.isNotEmpty(coldConfigData)) {
                 Logger.printDebug(() -> "ConfigData is empty");
                 return null;
             }
-            return rawColdConfigGroup.getConfigData();
+            return new ConfigGroup(coldConfigData, coldHashData);
         } catch (Exception e) {
             Logger.printException(() -> "Parse failed", e);
         }
@@ -109,7 +104,7 @@ public class ConfigRequest {
     }
 
     @Nullable
-    private static String send(Map<String, String> requestHeader) {
+    private static ConfigGroup send(Map<String, String> requestHeader) {
         Utils.verifyOffMainThread();
 
         final long startTime = System.currentTimeMillis();

@@ -46,6 +46,8 @@ Second \"item\" text"</string>
 • As buscas ignoran maiúsculas e signos de puntuación
 • Os axustes pais aparecen por riba dos axustes fillos desactivados"</string>
   <string name="morphe_settings_search_empty_history_title">O historial de buscas está baleiro</string>
+  <string name="morphe_settings_name_default_item">Predefinido</string>
+  <string name="morphe_settings_name_custom_item">Personalizado</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_dev_header">Nota</string>
   <string name="morphe_settings_about_links_dev_body">Esta é una versión preliminar e podería experimentar problemas inesperados</string>
@@ -70,6 +72,16 @@ Second \"item\" text"</string>
 Non se lle notificará de ningún evento inesperado."</string>
   <string name="morphe_debug_export_logs_title">Exportar rexistros de depuración</string>
   <string name="morphe_debug_logs_disabled">O rexistro de depuración está desactivado</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, four of these are shown in one row. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Off</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">On</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Eliminar</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->

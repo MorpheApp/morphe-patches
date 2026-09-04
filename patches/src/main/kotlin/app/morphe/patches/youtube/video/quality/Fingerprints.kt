@@ -12,25 +12,35 @@ package app.morphe.patches.youtube.video.quality
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
-import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
-import app.morphe.patcher.newInstance
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import app.morphe.patches.all.misc.resources.ResourceType
 import app.morphe.patches.all.misc.resources.resourceLiteral
 import app.morphe.patches.shared.CurrentAudioVideoFormatToStringFingerprint
-import app.morphe.patches.youtube.shared.VideoStreamingDataToStringFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 internal const val FIXED_RESOLUTION_STRING = ", initialPlaybackVideoQualityFixedResolution="
 
-internal object NewAdvancedQualityMenuStyleFlyout : Fingerprint(
+internal object NewFlyoutMenuFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
         literal(45712556)
+    )
+)
+
+internal object ShortsQualityChangeObserverPrimaryFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45387052)
+    )
+)
+
+internal object ShortsQualityChangeObserverSecondaryFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45399743)
     )
 )
 
@@ -100,28 +110,6 @@ internal fun getPlaybackStartParametersConstructorFingerprint(
     )
 ) {}
 
-internal object VideoStreamingDataConstructorFingerprint : Fingerprint(
-    classFingerprint = VideoStreamingDataToStringFingerprint,
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    returnType = "V",
-    filters = listOf(
-        fieldAccess(
-            opcode = Opcode.IGET_OBJECT,
-            definingClass = $$"Lcom/google/protos/youtube/api/innertube/StreamingDataOuterClass$StreamingData;"
-        ),
-        fieldAccess(
-            opcode = Opcode.IGET_OBJECT,
-            definingClass = "this",
-            type = "Ljava/lang/String;"
-        ),
-        newInstance("Ljava/util/ArrayList;"),
-        fieldAccess(
-            opcode = Opcode.IGET_OBJECT,
-            definingClass = $$"Lcom/google/protos/youtube/api/innertube/StreamingDataOuterClass$StreamingData;"
-        )
-    ),
-)
-
 private object VideoQualityItemOnClickParentFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
@@ -141,41 +129,49 @@ internal object VideoQualityItemOnClickFingerprint : Fingerprint(
     )
 )
 
-internal object VideoQualityMenuOptionsFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.STATIC),
-    returnType = "[L",
-    parameters = listOf("Landroid/content/Context", "L", "L"),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.CONST_4, // First instruction of method.
-        Opcode.CONST_4,
-        Opcode.IF_EQZ,
-        Opcode.IGET_BOOLEAN, // Use the quality menu, that contains the advanced menu.
-        Opcode.IF_NEZ,
-    ) + resourceLiteral(
-        ResourceType.STRING, "video_quality_quick_menu_advanced_menu_description"
+internal object ShowVideoQualityQuickMenuFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    strings = listOf("VIDEO_QUALITIES_QUICK_MENU_BOTTOM_SHEET_FRAGMENT"),
+    filters = listOf(
+        opcode(Opcode.MOVE_RESULT),
+        opcode(
+            opcode = Opcode.IF_NEZ,
+            location = MatchAfterWithin(3)
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "getSupportFragmentManager",
+            location = MatchAfterWithin(3)
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf("L", "Ljava/lang/String;"),
+            returnType = "V",
+            location = MatchAfterWithin(5)
+        )
     )
 )
 
-internal object VideoQualityMenuViewInflateFingerprint : Fingerprint(
+internal object ShortsQualityMenuFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "L",
-    parameters = listOf("L", "L", "L"),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.INVOKE_SUPER,
-        Opcode.CONST,
-        Opcode.CONST_4,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT_OBJECT,
-        Opcode.CONST,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT_OBJECT,
-        Opcode.CONST_16,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.CONST,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT_OBJECT,
-        Opcode.CHECK_CAST,
-    ) + resourceLiteral(
-        ResourceType.LAYOUT, "video_quality_bottom_sheet_list_fragment_title"
+    parameters = listOf("Z"),
+    returnType = "V",
+    filters = listOf(
+        resourceLiteral(
+            type = ResourceType.STRING,
+            name = "video_quality_unavailable_announcement"
+        )
+    )
+)
+
+internal object ShortsQualityConstructorFingerprint : Fingerprint(
+    classFingerprint = ShortsQualityMenuFingerprint,
+    name = "<init>",
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this"
+        )
     )
 )

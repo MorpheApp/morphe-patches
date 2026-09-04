@@ -1,9 +1,12 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/2712
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ * https://gitlab.com/ReVanced/revanced-patches/-/merge_requests/4881
+ * https://gitlab.com/ReVanced/revanced-patches/-/merge_requests/5806
+ * https://gitlab.com/ReVanced/revanced-patches/-/merge_requests/5838
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
@@ -14,8 +17,9 @@ import static app.morphe.extension.shared.StringRef.str;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.preference.Preference;
@@ -36,6 +40,7 @@ import android.widget.SearchView;
 import android.widget.Toolbar;
 
 import androidx.annotation.ColorInt;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import java.util.ArrayList;
@@ -54,8 +59,6 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.AppLanguage;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.Setting;
-import app.morphe.extension.shared.settings.preference.ColorPickerPreference;
-import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
 import app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
@@ -66,7 +69,7 @@ import app.morphe.extension.shared.ui.Dim;
  */
 @SuppressWarnings("deprecation")
 public abstract class BaseSearchViewController {
-    protected BaseSearchResultsAdapter searchResultsAdapter;
+    protected SearchResultsAdapter searchResultsAdapter;
     protected boolean isSearchActive;
     protected boolean isShowingSearchHistory;
     protected final Activity activity;
@@ -82,6 +85,19 @@ public abstract class BaseSearchViewController {
     protected Object nativeBackCallback;
     protected SearchHistoryManager searchHistoryManager;
     protected SearchView searchView;
+
+    /**
+     * The query the result rows highlight, or null when nothing is being searched.
+     */
+    @Nullable
+    protected Pattern currentQueryPattern;
+
+    /**
+     * Result rows read the preferences when they are bound, so any preference that updates itself
+     * at runtime only needs the list to be told to rebind.
+     */
+    private final SharedPreferences.OnSharedPreferenceChangeListener preferenceChangeListener =
+            (sharedPreferences, key) -> Utils.runOnMainThread(this::refreshSearchResults);
 
     protected static final int MAX_SEARCH_RESULTS = 50; // Maximum number of search results displayed.
 
@@ -208,7 +224,7 @@ public abstract class BaseSearchViewController {
         ListView searchResultsListView = new ListView(activity);
         searchResultsListView.setDivider(null);
         searchResultsListView.setDividerHeight(0);
-        searchResultsAdapter = createSearchResultsAdapter();
+        searchResultsAdapter = new SearchResultsAdapter(activity, filteredSearchItems, fragment, this);
         searchResultsListView.setAdapter(searchResultsAdapter);
 
         // Add results list into container.
@@ -242,12 +258,6 @@ public abstract class BaseSearchViewController {
         });
     }
 
-    // Abstract methods that subclasses must implement.
-    protected abstract BaseSearchResultsAdapter createSearchResultsAdapter();
-    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
-    protected abstract boolean isSpecialPreferenceGroup(Preference preference);
-    protected abstract void setupSpecialPreferenceListeners(BaseSearchResultItem item);
-
     // Abstract interface for preference fragments.
     public interface BasePreferenceFragment {
         PreferenceScreen getPreferenceScreenForSearch();
@@ -266,7 +276,6 @@ public abstract class BaseSearchViewController {
     protected boolean shouldIncludePreference(Preference preference, int currentDepth, int includeDepth) {
         return includeDepth <= currentDepth
                 && !(preference instanceof PreferenceCategory)
-                && !isSpecialPreferenceGroup(preference)
                 && !(preference instanceof PreferenceScreen);
     }
 
@@ -364,60 +373,12 @@ public abstract class BaseSearchViewController {
                             }
                         }
                     }
-                    setupPreferenceListeners();
                     Logger.printDebug(() -> "Collected " + allSearchItems.size() + " searchable preferences");
                 }
             } catch (Exception ex) {
                 Logger.printException(() -> "Failed to initialize search data", ex);
             }
         });
-    }
-
-    /**
-     * Sets up listeners for preferences to keep search results in sync when preference values change.
-     */
-    protected void setupPreferenceListeners() {
-        for (BaseSearchResultItem item : allSearchItems) {
-            // Skip non-preference items.
-            if (!(item instanceof BaseSearchResultItem.PreferenceSearchItem prefItem)) continue;
-            Preference pref = prefItem.preference;
-
-            if (pref instanceof ColorPickerPreference colorPref) {
-                colorPref.setOnColorChangeListener((prefKey, newColor) -> {
-                    BaseSearchResultItem.PreferenceSearchItem searchItem =
-                            (BaseSearchResultItem.PreferenceSearchItem) keyToSearchItem.get(prefKey);
-                    if (searchItem != null) {
-                        searchItem.setColor(newColor);
-                        refreshSearchResults();
-                    }
-                });
-            } else if (pref instanceof CustomDialogListPreference listPref) {
-                listPref.setOnPreferenceChangeListener((preference, newValue) -> {
-                    BaseSearchResultItem.PreferenceSearchItem searchItem =
-                            (BaseSearchResultItem.PreferenceSearchItem) keyToSearchItem.get(preference.getKey());
-                    if (searchItem == null) return true;
-
-                    int index = listPref.findIndexOfValue(newValue.toString());
-                    if (index >= 0) {
-                        // Check if a static summary is set.
-                        boolean isStaticSummary = listPref.getStaticSummary() != null;
-                        if (!isStaticSummary) {
-                            // Only update summary if it is not static.
-                            CharSequence newSummary = listPref.getEntries()[index];
-                            listPref.setSummary(newSummary);
-                        }
-                    }
-
-                    listPref.clearHighlightedEntriesForDialog();
-                    searchItem.refreshHighlighting();
-                    refreshSearchResults();
-                    return true;
-                });
-            }
-
-            // Let subclasses handle special preferences.
-            setupSpecialPreferenceListeners(item);
-        }
     }
 
     /**
@@ -455,8 +416,7 @@ public abstract class BaseSearchViewController {
                 List<String> newKeys = new ArrayList<>(parentKeys);
 
                 // Append the group title to the path and save key for navigation.
-                if (!isSpecialPreferenceGroup(preference)
-                        && !(preference instanceof NoTitlePreferenceCategory)) {
+                if (!(preference instanceof NoTitlePreferenceCategory)) {
                     CharSequence title = preference.getTitle();
                     if (!TextUtils.isEmpty(title)) {
                         newPath = TextUtils.isEmpty(parentPath)
@@ -483,19 +443,10 @@ public abstract class BaseSearchViewController {
      */
     protected void filterAndShowResults(String query) {
         hideSearchHistory();
-        // Keep track of the previously displayed items to clear their highlights.
-        List<BaseSearchResultItem> previouslyDisplayedItems = new ArrayList<>(filteredSearchItems);
-
         filteredSearchItems.clear();
 
         String queryLower = Utils.normalizeTextToLowercase(query);
-        Pattern queryPattern = Pattern.compile(Pattern.quote(queryLower), Pattern.CASE_INSENSITIVE);
-
-        // Clear highlighting only for items that were previously visible.
-        // This avoids iterating through all items on every keystroke during filtering.
-        for (BaseSearchResultItem item : previouslyDisplayedItems) {
-            item.clearHighlighting();
-        }
+        currentQueryPattern = Pattern.compile(Pattern.quote(queryLower), Pattern.CASE_INSENSITIVE);
 
         // Collect matched items first.
         List<BaseSearchResultItem> matched = new ArrayList<>();
@@ -503,7 +454,6 @@ public abstract class BaseSearchViewController {
         for (BaseSearchResultItem item : allSearchItems) {
             if (matchCount >= MAX_SEARCH_RESULTS) break; // Stop after collecting max results.
             if (item.matchesQuery(queryLower)) {
-                item.applyHighlighting(queryPattern);
                 matched.add(item);
                 matchCount++;
             }
@@ -521,9 +471,6 @@ public abstract class BaseSearchViewController {
                         BaseSearchResultItem parentItem = keyToSearchItem.get(parentSetting.key);
                         if (parentItem != null && !addedParentKeys.contains(parentSetting.key)) {
                             if (!parentItem.matchesQuery(queryLower)) {
-                                // Apply highlighting to parent items even if they don't match the query.
-                                // This ensures they get their current effective summary calculated.
-                                parentItem.applyHighlighting(queryPattern);
                                 filteredSearchItems.add(parentItem);
                             }
                             addedParentKeys.add(parentSetting.key);
@@ -574,6 +521,7 @@ public abstract class BaseSearchViewController {
      */
     protected void openSearch() {
         isSearchActive = true;
+        Setting.preferences.preferences.registerOnSharedPreferenceChangeListener(preferenceChangeListener);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && nativeBackCallback == null) {
             nativeBackCallback = PredictiveBackHandler.register(activity, this::handleBackPress);
@@ -598,6 +546,7 @@ public abstract class BaseSearchViewController {
     public void closeSearch() {
         isSearchActive = false;
         isShowingSearchHistory = false;
+        Setting.preferences.preferences.unregisterOnSharedPreferenceChangeListener(preferenceChangeListener);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && nativeBackCallback != null) {
             PredictiveBackHandler.unregister(activity, nativeBackCallback);
@@ -616,10 +565,7 @@ public abstract class BaseSearchViewController {
         // Hide keyboard and reset soft input mode.
         inputMethodManager.hideSoftInputFromWindow(searchView.getWindowToken(), 0);
         activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-        // Clear highlighting for all search items.
-        for (BaseSearchResultItem item : allSearchItems) {
-            item.clearHighlighting();
-        }
+        currentQueryPattern = null;
 
         searchResultsAdapter.notifyDataSetChanged();
     }
@@ -659,10 +605,8 @@ public abstract class BaseSearchViewController {
     protected void hideSearchResults() {
         overlayContainer.setVisibility(View.GONE);
         filteredSearchItems.clear();
+        currentQueryPattern = null;
         searchResultsAdapter.notifyDataSetChanged();
-        for (BaseSearchResultItem item : allSearchItems) {
-            item.clearHighlighting();
-        }
     }
 
     /**
@@ -674,31 +618,9 @@ public abstract class BaseSearchViewController {
         }
     }
 
-    /**
-     * Finds a search item corresponding to the given preference.
-     *
-     * @param preference The preference to find a search item for.
-     * @return The corresponding PreferenceSearchItem, or null if not found.
-     */
-    public BaseSearchResultItem.PreferenceSearchItem findSearchItemByPreference(Preference preference) {
-        // First, search in filtered results.
-        for (BaseSearchResultItem item : filteredSearchItems) {
-            if (item instanceof BaseSearchResultItem.PreferenceSearchItem prefItem) {
-                if (prefItem.preference == preference) {
-                    return prefItem;
-                }
-            }
-        }
-        // If not found, search in all items.
-        for (BaseSearchResultItem item : allSearchItems) {
-            if (item instanceof BaseSearchResultItem.PreferenceSearchItem prefItem) {
-                if (prefItem.preference == preference) {
-                    return prefItem;
-                }
-            }
-        }
-
-        return null;
+    @Nullable
+    public Pattern getCurrentQueryPattern() {
+        return currentQueryPattern;
     }
 
     /**

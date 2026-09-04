@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Axtarış tarixçəsi boşdur</string>
   <string name="morphe_settings_search_empty_history_summary">Axtarış tarixçəsini saxlamaq üçün axtarış sorğusu yazın və Daxil Et-ə basın</string>
   <string name="morphe_settings_search_history_title">Tənzimləmə axtarış tarixçəsin göstər</string>
+  <string name="morphe_settings_name_title">Morphe tənzimləmələrinin adı</string>
+  <string name="morphe_settings_name_default_item">İlkin</string>
+  <string name="morphe_settings_name_entry_2">Əlavələr</string>
+  <string name="morphe_settings_name_entry_3">İncə tənzimləmələr</string>
+  <string name="morphe_settings_name_entry_4">Morphing vaxtı</string>
+  <string name="morphe_settings_name_custom_item">Fərdi</string>
+  <string name="morphe_settings_name_custom_item_hint">Ad daxil edin</string>
+  <string name="morphe_settings_name_empty_warning">Ad boş ola bilməz</string>
   <string name="morphe_show_menu_icons_title">Morphe tənzimləmə nişanların göstər</string>
   <string name="morphe_settings_menu_copy_path">Köçürüldü: %s</string>
   <string name="morphe_language_title">Morphe dili</string>
@@ -107,13 +115,64 @@ Gözlənilməz hallardan xəbərdar olmayacaqsınız."</string>
   <string name="morphe_debug_logs_clear_toast">Sazlanma qeydləri təmizləndi</string>
   <string name="morphe_debug_feature_flags_manager_title">Xüsusiyyət nişançıları idarəedicisi</string>
   <string name="morphe_debug_feature_flags_manager_summary">Boolean xüsusiyyət nişançıların idarə et</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">İşlək xüsusiyyət nişançıları (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Əngəllənən xüsusiyyət nişançıları (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Xüsusiyyət nişançıların axtar…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">İşlək deyil (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">İşlək (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Bloklandı (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Məcburi (%s)</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Avtomatik</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Qapalı</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Açıq</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Məcburi aktiv et</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Əngəllə</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Sil</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Xüsusiyyət nişançıları saxlanıldı</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Xüsusiyyət nişançıları sıfırlandı</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Xüsusiyyət nişançıları buferə köçürüldü</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Bu seçimi istifadə etmək üçün tətbiqi yenidən başlat</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">İxrac və idxal</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">%s xüsusiyyət nişançıları idxal olundu</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Xüsusiyyət nişançıları tapılmadı</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Xüsusiyyət nişançıları uğurla ixrac olundu</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Xüsusiyyət nişançılarını ixrac etmək alınmadı</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Xüsusiyyət nişançıları yükləndi, tətbiq etmək üçün Saxlaya toxun</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Faylı oxumaq olmadı</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">İkili axtarış</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Tətbiqin məlum davranışına hansı xüsusiyyət nişançısının səbəb olduğunu tapır.
+
+%s nişançılarının yarısı bloklanır və hər yenidən başlatmadan sonra davranış hələ də mövcuddursa bildirin.
+
+Başlamazdan əvvəl davranışı bir dəfə təkrarlayın, əks halda tətbiqin hələ sorğu etmədiyi nişançılar axtarışda çatışmaya bilər"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Başlanğıc</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Axtarış üçün xüsusiyyət nişançısı yoxdur.
+
+İkili axtarışda yalnız tətbiqin qarşılaşdığı və hazırda məcburi olmayan nişançılar istifadə oluna bilər"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Mərhələ %1$s
+
+%2$s nişançı qalıb, onlardan %3$s-i bu mərhələ üçün bloklanıb.
+
+Tətbiqi yenidən başladın, davranışın mövcudluğunu yoxlayın və sonra aşağıda cavablandırın"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Xüsusiyyət nişançısı axtarışı davam edir</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">Davranış mövcuddur</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">Davranış mövcud deyil</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">İkili axtarışı ləğv et</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">İkili axtarış ləğv edildi</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"Davranışa %s xüsusiyyət nişançısı səbəb olur.
+
+İndi o bloklanıb"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Xüsusiyyət nişançısını tapmaq olmadı.
+
+Tətbiq davranışının xüsusiyyət nişançısı tərəfindən idarə olunduğu görünmür"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Tək bir xüsusiyyət nişançısını tapmaq olmadı.
+
+Davranış axtarışın əvvəlində itdi, buna görə də birdən çox nişançı rol oynaya bilər və ya cavablardan biri yanlış idi"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">MicroG tənzimləmələrin aç</string>

@@ -21,6 +21,8 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">हेडर लोगो</string>
   <string name="morphe_header_logo_entry_1">डीफॉल्ट</string>
   <string name="morphe_header_logo_entry_3">कस्टम</string>
+  <!-- misc.album.albumMusicVideoPatch -->
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">तृतीय-पक्ष डाउनलोडिंग ॲप्स वापरून संगीत व्हिडिओ, पॉडकास्ट किंवा गाणी डाउनलोड करा</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -145,6 +147,7 @@ YouTube Music 8.x – क्रॉसFade फक्त 9.x आणि त्य�
   <string name="morphe_music_hide_action_bar_title">ॲक्शन बार लपवा</string>
   <string name="morphe_music_hide_like_dislike_button_title">लाईक आणि डिसलाईक बटण लपवा</string>
   <string name="morphe_music_hide_comments_button_title">टिप्पण्या बटण लपवा</string>
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_lyrics_button_title">गीत (Lyrics) बटण लपवा</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -154,7 +157,6 @@ YouTube Music 8.x – क्रॉसFade फक्त 9.x आणि त्य�
   <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_download_button_title">डाउनलोड बटण लपवा</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_radio_button_title">रेडिओ सुरू करा बटण लपवा</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">फ्लयआउट मेनू</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">प्लेअर आणि रांगेतील फ्लयआउट मेनूमध्ये कोणते घटक दिसू द्यायचे ते निवडा</string>

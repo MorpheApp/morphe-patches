@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Историја претраге је празна</string>
   <string name="morphe_settings_search_empty_history_summary">Да бисте сачували историју претраге, унесите упит за претрагу и притисните Enter</string>
   <string name="morphe_settings_search_history_title">Прикажи историју претраге подешавања</string>
+  <string name="morphe_settings_name_title">Назив Morphe подешавања</string>
+  <string name="morphe_settings_name_default_item">Подразумеван</string>
+  <string name="morphe_settings_name_entry_2">Додатно</string>
+  <string name="morphe_settings_name_entry_3">Побољшања</string>
+  <string name="morphe_settings_name_entry_4">Време морфинга</string>
+  <string name="morphe_settings_name_custom_item">Обичај</string>
+  <string name="morphe_settings_name_custom_item_hint">Унесите име</string>
+  <string name="morphe_settings_name_empty_warning">Име не може бити празно</string>
   <string name="morphe_show_menu_icons_title">Прикажи иконице подешавања Morphe-а</string>
   <string name="morphe_settings_menu_copy_path">Копирано: %s</string>
   <string name="morphe_language_title">Језик Morphe-a</string>
@@ -107,13 +115,64 @@ Second \"item\" text"</string>
   <string name="morphe_debug_logs_clear_toast">Лог дебјуговања очишћен</string>
   <string name="morphe_debug_feature_flags_manager_title">Manager ознака функција</string>
   <string name="morphe_debug_feature_flags_manager_summary">Управљај буловским ознакама функција</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Активне ознаке функција (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Блокиране ознаке функција (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Претражи ознаке функција…</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Неактивно (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Активно (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Блокирано (%s)</string>
+  <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Принудно (%s)</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Аутоматски</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Искључено</string>
+  <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Укључено</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Принудно укључи</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Блокирај</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">Уклони</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Ознаке функција сачуване</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Ознаке функција ресетовале</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Ознаке функција копиране у оставу</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Поново покрени апликацију да бисте користили ову поставку</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Извоз и увоз</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">Увезено %s функцијских заставица</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Нису пронађене заставице функција</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Успешно извезене заставице функција</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Грешка при извозу заставица функција</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Учитане заставице функција. Додирните Сачувај за примену.</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Грешка при читању датотеке</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Бинарна претрага</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Проналази који feature flag изазива понашање апликације.
+
+Половина од %s заставица је блокирана, а након сваког поновног покретања кажете да ли је понашање још увек присутно.
+
+Репродукујте понашање једном пре почетка, у супротном заставице које апликација још није затражила недостају у претрази"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Početak</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Нема заставица функција за претрагу.
+
+Само заставице које је апликација користила и нису тренутно принудно укључене могу се користити у бинарној претрази."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Корак %1$s
+
+Преостале заставице: %2$s, од којих је блокирано %3$s за овај корак.
+
+Поново покрените апликацију, проверите да ли је понашање присутно, а затим одговорите испод"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Претрага заставица функција у току</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">Понашање је присутно</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">Понашање није присутно</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Откажи бинарну претрагу</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Бинарна претрага отказана</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"Заставица функције %s узрокује понашање.
+
+Сада је блокирана."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Није пронађена ниједна заставица функције.
+
+Чини се да понашање апликације не контролише ниједна заставица функције."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Није пронађена ниједна заставица функције.
+
+Понашање је нестало раније у претрази, па је могуће укључено више заставица или је један од одговора био погрешан."</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Otvorite postavke MicroG</string>
