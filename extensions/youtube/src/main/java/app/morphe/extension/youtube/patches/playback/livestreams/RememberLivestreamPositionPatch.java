@@ -1,12 +1,23 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/2753
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.patches.playback.livestreams;
 
-import android.content.SharedPreferences;
+import androidx.annotation.Nullable;
 
+import org.json.JSONObject;
+
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -77,31 +88,22 @@ public final class RememberLivestreamPositionPatch {
      */
     private static final int MAX_SAVED_STREAMS = 100;
 
-    private static final String STORAGE_KEY_PREFIX = "morphe_livestream_playback_position_";
-
-    /**
-     * Changed during patching.
-     */
-    private static boolean isPatchIncluded() {
-        return false; // Modified during patching.
-    }
-
     /**
      * Duration of the current video when first observed. Zero if not yet observed.
      */
-    private static volatile long baselineVideoLength;
+    private static long baselineVideoLength;
 
     /**
      * True if the current video was confirmed to be an ongoing livestream.
      */
-    private static volatile boolean livestreamConfirmed;
+    private static boolean livestreamConfirmed;
 
     private static long lastSaveTime;
 
     /**
      * Incremented on every new video, used to cancel pending restore checks.
      */
-    private static volatile long newVideoGeneration;
+    private static long newVideoGeneration;
 
     private static int restoreAttempts;
 
@@ -110,45 +112,39 @@ public final class RememberLivestreamPositionPatch {
      * While pending, saving is suppressed, otherwise the live playback position
      * would overwrite the saved position before it can be restored.
      */
-    private static volatile boolean restorePending;
+    private static boolean restorePending;
 
-    private static final class SavedPosition {
-        final long position;
-        final long videoLength;
-        final long timestamp;
+    @Nullable
+    private static Map<String, SavedPosition> savedPositions;
 
-        SavedPosition(long position, long videoLength, long timestamp) {
-            this.position = position;
-            this.videoLength = videoLength;
-            this.timestamp = timestamp;
-        }
+    private record SavedPosition(long position, long videoLength, long timestamp) {
     }
 
     /**
      * Injection point.
      */
     public static void newVideoStarted(VideoInformation.PlaybackController ignoredPlayerController) {
-        final boolean settingEnabled = Settings.REMEMBER_LIVESTREAM_POSITION.get();
-        final boolean resumeWhenLive = Settings.REMEMBER_LIVESTREAM_POSITION_RESUME_WHEN_LIVE.get();
-        Logger.printDebug(() -> "RememberLivestream newVideoStarted id=" + VideoInformation.getVideoId()
-                + " gen=" + (newVideoGeneration + 1)
-                + " patchIncluded=" + isPatchIncluded()
-                + " settingEnabled=" + settingEnabled
-                + " resumeWhenLive=" + resumeWhenLive);
+        try {
+            Utils.verifyOnMainThread();
+            final boolean settingEnabled = Settings.REMEMBER_LIVESTREAM_POSITION.get();
+            final boolean resumeWhenLive = Settings.REMEMBER_LIVESTREAM_POSITION_RESUME_WHEN_LIVE.get();
 
-        baselineVideoLength = 0;
-        livestreamConfirmed = false;
-        lastSaveTime = 0;
-        restoreAttempts = 0;
-        restorePending = false;
-        newVideoGeneration++;
+            baselineVideoLength = 0;
+            livestreamConfirmed = false;
+            lastSaveTime = 0;
+            restoreAttempts = 0;
+            restorePending = false;
+            newVideoGeneration++;
 
-        if (!settingEnabled) {
-            return;
+            if (!settingEnabled) {
+                return;
+            }
+
+            restorePending = true;
+            startRestoreCheck(newVideoGeneration);
+        } catch (Exception ex) {
+            Logger.printException(() -> "newVideoStarted failure", ex);
         }
-
-        restorePending = true;
-        startRestoreCheck(newVideoGeneration);
     }
 
     /**
@@ -186,7 +182,8 @@ public final class RememberLivestreamPositionPatch {
                     return;
                 }
                 livestreamConfirmed = true;
-                Logger.printDebug(() -> "RememberLivestream Detected ongoing livestream len=" + videoLength + " base=" + baselineVideoLength);
+                Logger.printDebug(() -> "Detected ongoing livestream len: " + videoLength
+                        + " base: " + baselineVideoLength);
             }
 
             final long now = System.currentTimeMillis();
@@ -201,25 +198,25 @@ public final class RememberLivestreamPositionPatch {
         }
     }
 
-    private static void startRestoreCheck(final long generation) {
+    private static void startRestoreCheck(long generation) {
         Utils.runOnMainThreadDelayed(() -> checkRestore(generation), RESTORE_POLL_DELAY_MS);
     }
 
-    private static void checkRestore(final long generation) {
+    private static void checkRestore(long generation) {
         try {
             if (generation != newVideoGeneration) {
                 // Another video started meanwhile.
                 return;
             }
 
-            final String videoId = VideoInformation.getVideoId();
+            String videoId = VideoInformation.getVideoId();
             if (videoId.isEmpty()) {
                 // Video id not available yet.
                 rescheduleOrGiveUp(generation);
                 return;
             }
 
-            final SavedPosition saved = loadPlaybackPosition(videoId);
+            SavedPosition saved = loadPlaybackPosition(videoId);
             if (saved == null) {
                 // Nothing remembered for this video. Allow saving again.
                 restorePending = false;
@@ -236,16 +233,16 @@ public final class RememberLivestreamPositionPatch {
 
             // The stream is still ongoing and advanced since it was last watched.
             final boolean watchedAtLiveEdge = saved.videoLength - saved.position < LIVE_EDGE_THRESHOLD_MS;
-            Logger.printDebug(() -> "RememberLivestream checkRestore id=" + videoId
-                    + " savedPos=" + saved.position + " savedLen=" + saved.videoLength
-                    + " curLen=" + videoLength + " liveEdge=" + watchedAtLiveEdge);
+            Logger.printDebug(() -> "CheckRestore id: " + videoId
+                    + " savedPos: " + saved.position + " savedLen: " + saved.videoLength
+                    + " curLen: " + videoLength + " liveEdge: " + watchedAtLiveEdge);
 
             if (!watchedAtLiveEdge || Settings.REMEMBER_LIVESTREAM_POSITION_RESUME_WHEN_LIVE.get()) {
                 // Delete the saved position only after the seek is confirmed (or given up on).
                 attemptRestoreSeek(generation, videoId, saved.position, 1);
             } else {
                 // Watched at the live edge and resuming is disabled. Consume the position.
-                Logger.printDebug(() -> "RememberLivestream was watched live, jumping to the live edge");
+                Logger.printDebug(() -> "Video was watched live, seeking to the play head");
                 restorePending = false;
                 deletePlaybackPosition(videoId);
             }
@@ -255,15 +252,15 @@ public final class RememberLivestreamPositionPatch {
         }
     }
 
-    private static void attemptRestoreSeek(final long generation, final String videoId,
-                                           final long targetPositionMs, final int attempt) {
+    private static void attemptRestoreSeek(long generation, String videoId,
+                                           long targetPositionMs, int attempt) {
         if (generation != newVideoGeneration) {
             return;
         }
 
         final boolean seekAccepted = VideoInformation.seekTo(targetPositionMs);
-        Logger.printDebug(() -> "RememberLivestream restore attempt " + attempt + "/" + RESTORE_SEEK_MAX_ATTEMPTS
-                + " target=" + targetPositionMs + " accepted=" + seekAccepted);
+        Logger.printDebug(() -> "Restore attempt: " + attempt + "/" + RESTORE_SEEK_MAX_ATTEMPTS
+                + " target: " + targetPositionMs + " accepted: " + seekAccepted);
 
         Utils.runOnMainThreadDelayed(() -> {
             if (generation != newVideoGeneration) {
@@ -272,7 +269,7 @@ public final class RememberLivestreamPositionPatch {
 
             final long currentTime = VideoInformation.getVideoTime();
             if (Math.abs(currentTime - targetPositionMs) <= RESTORE_SEEK_TOLERANCE_MS) {
-                Logger.printDebug(() -> "RememberLivestream Restored livestream playback position: " + currentTime);
+                Logger.printDebug(() -> "Restored livestream playback position: " + currentTime);
                 restorePending = false;
                 deletePlaybackPosition(videoId);
                 return;
@@ -284,25 +281,80 @@ public final class RememberLivestreamPositionPatch {
                 return;
             }
 
-            Logger.printDebug(() -> "RememberLivestream restore gave up. Current time: " + currentTime);
+            Logger.printDebug(() -> "Restore gave up. Current time: " + currentTime);
             restorePending = false;
             deletePlaybackPosition(videoId);
         }, RESTORE_SEEK_RETRY_DELAY_MS);
     }
 
-    private static void rescheduleOrGiveUp(final long generation) {
+    private static void rescheduleOrGiveUp(long generation) {
+        Utils.verifyOnMainThread();
         if (++restoreAttempts <= RESTORE_MAX_ATTEMPTS) {
             startRestoreCheck(generation);
             return;
         }
 
-        Logger.printDebug(() -> "RememberLivestream restore polling gave up. videoId=" + VideoInformation.getVideoId()
-                + " videoLength=" + VideoInformation.getVideoLength());
+        Logger.printDebug(() -> "Restore polling gave up. videoId:"
+                + VideoInformation.getVideoId() + " videoLength: " + VideoInformation.getVideoLength());
         restorePending = false;
     }
 
-    private static SharedPreferences preferences() {
-        return Setting.preferences.preferences;
+    private static synchronized Map<String, SavedPosition> getSavedPositions() {
+        if (savedPositions == null) {
+            savedPositions = loadSavedPositions();
+        }
+        return savedPositions;
+    }
+
+    private static Map<String, SavedPosition> loadSavedPositions() {
+        String raw = Settings.REMEMBER_LIVESTREAM_POSITION_TIMES.get();
+        if (raw.isEmpty()) {
+            return Collections.emptyMap();
+        }
+
+        try {
+            JSONObject json = new JSONObject(raw);
+            Iterator<String> keys = json.keys();
+            Map<String, SavedPosition> map = new HashMap<>(2 * json.length());
+            while (keys.hasNext()) {
+                String videoId = keys.next();
+                JSONObject entry = json.optJSONObject(videoId);
+                if (entry != null) {
+                    final long position = entry.optLong("position", -1);
+                    final long videoLength = entry.optLong("videoLength", -1);
+                    final long timestamp = entry.optLong("timestamp", -1);
+                    if (position >= 0 && videoLength >= 0) {
+                        map.put(videoId, new SavedPosition(position, videoLength, timestamp));
+                    }
+                }
+            }
+            return map;
+        } catch (Exception ex) {
+            Logger.printException(() -> "Failed to load livestream positions setting", ex);
+            Settings.REMEMBER_LIVESTREAM_POSITION_TIMES.resetToDefault();
+            return Collections.emptyMap();
+        }
+    }
+
+    private static void saveSavedPositions() {
+        if (savedPositions == null) {
+            return;
+        }
+
+        try {
+            JSONObject json = new JSONObject();
+            for (Map.Entry<String, SavedPosition> entry : savedPositions.entrySet()) {
+                SavedPosition pos = entry.getValue();
+                JSONObject entryJson = new JSONObject();
+                entryJson.put("position", pos.position);
+                entryJson.put("videoLength", pos.videoLength);
+                entryJson.put("timestamp", pos.timestamp);
+                json.put(entry.getKey(), entryJson);
+            }
+            Settings.REMEMBER_LIVESTREAM_POSITION_TIMES.save(json.toString());
+        } catch (Exception ex) {
+            Logger.printException(() -> "Failed to save livestream positions setting", ex);
+        }
     }
 
     private static void savePlaybackPosition(String videoId, long positionMs, long videoLengthMs) {
@@ -310,105 +362,42 @@ public final class RememberLivestreamPositionPatch {
             return;
         }
 
-        final SharedPreferences preferences = preferences();
-        preferences.edit()
-                .putString(STORAGE_KEY_PREFIX + videoId,
-                        positionMs + "|" + videoLengthMs + "|" + System.currentTimeMillis())
-                .apply();
-        Logger.printDebug(() -> "RememberLivestream saved pos=" + positionMs + " len=" + videoLengthMs + " id=" + videoId);
+        Map<String, SavedPosition> map = getSavedPositions();
+        map.put(videoId, new SavedPosition(positionMs, videoLengthMs, System.currentTimeMillis()));
+        Logger.printDebug(() -> "Saved pos: " + positionMs
+                + " len: " + videoLengthMs + " id: " + videoId);
 
-        trimSavedPositions(preferences);
+        trimSavedPositions();
+        saveSavedPositions();
     }
 
     private static SavedPosition loadPlaybackPosition(String videoId) {
-        final String encoded = preferences().getString(STORAGE_KEY_PREFIX + videoId, null);
-        if (encoded == null) {
-            return null;
-        }
-
-        final String[] parts = encoded.split("\\|");
-        if (parts.length != 3) {
-            deletePlaybackPosition(videoId);
-            return null;
-        }
-
-        try {
-            return new SavedPosition(Long.parseLong(parts[0]),
-                    Long.parseLong(parts[1]), Long.parseLong(parts[2]));
-        } catch (NumberFormatException ex) {
-            deletePlaybackPosition(videoId);
-            return null;
-        }
+        return getSavedPositions().get(videoId);
     }
 
     private static void deletePlaybackPosition(String videoId) {
-        preferences().edit().remove(STORAGE_KEY_PREFIX + videoId).apply();
+        Map<String, SavedPosition> map = getSavedPositions();
+        if (map.remove(videoId) != null) {
+            saveSavedPositions();
+        }
     }
 
-    private static void trimSavedPositions(SharedPreferences preferences) {
-        final Map<String, ?> all = preferences.getAll();
+    private static void trimSavedPositions() {
+        Map<String, SavedPosition> map = getSavedPositions();
 
-        // Only the entries belonging to this patch are counted and trimmed.
-        // The settings preferences file contains many unrelated entries,
-        // so the total entry count cannot be used.
-        String oldestKey = null;
-        long oldestTimestamp = Long.MAX_VALUE;
-        int savedCount = 0;
-        for (Map.Entry<String, ?> entry : all.entrySet()) {
-            if (!entry.getKey().startsWith(STORAGE_KEY_PREFIX)) {
-                continue;
-            }
-
-            final Object value = entry.getValue();
-            final String[] parts = value instanceof String
-                    ? ((String) value).split("\\|")
-                    : null;
-            boolean valid = parts != null && parts.length == 3;
-            if (valid) {
-                try {
-                    final long timestamp = Long.parseLong(parts[2]);
-                    if (timestamp < oldestTimestamp) {
-                        oldestTimestamp = timestamp;
-                        oldestKey = entry.getKey();
-                    }
-                } catch (NumberFormatException ex) {
-                    valid = false;
+        while (map.size() > MAX_SAVED_STREAMS) {
+            String oldestKey = null;
+            long oldestTimestamp = Long.MAX_VALUE;
+            for (Map.Entry<String, SavedPosition> entry : map.entrySet()) {
+                if (entry.getValue().timestamp < oldestTimestamp) {
+                    oldestTimestamp = entry.getValue().timestamp;
+                    oldestKey = entry.getKey();
                 }
             }
-
-            if (valid) {
-                savedCount++;
+            if (oldestKey != null) {
+                map.remove(oldestKey);
             } else {
-                // Corrupted entry. Delete it.
-                preferences.edit().remove(entry.getKey()).apply();
-            }
-        }
-
-        // Delete the oldest entries until below the limit.
-        while (savedCount > MAX_SAVED_STREAMS && oldestKey != null) {
-            preferences.edit().remove(oldestKey).apply();
-            savedCount--;
-
-            // Find the next oldest entry.
-            oldestKey = null;
-            oldestTimestamp = Long.MAX_VALUE;
-            for (Map.Entry<String, ?> entry : preferences.getAll().entrySet()) {
-                if (!entry.getKey().startsWith(STORAGE_KEY_PREFIX) || !(entry.getValue() instanceof String)) {
-                    continue;
-                }
-                try {
-                    final String[] parts = ((String) entry.getValue()).split("\\|");
-                    if (parts.length != 3) {
-                        continue;
-                    }
-                    final long timestamp = Long.parseLong(parts[2]);
-                    if (timestamp < oldestTimestamp) {
-                        oldestTimestamp = timestamp;
-                        oldestKey = entry.getKey();
-                    }
-                } catch (NumberFormatException ex) {
-                    // Ignore. Will be cleaned up on the next trim.
-                }
+                break;
             }
         }
     }

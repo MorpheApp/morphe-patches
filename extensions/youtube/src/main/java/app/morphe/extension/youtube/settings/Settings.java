@@ -35,6 +35,7 @@ import app.morphe.extension.youtube.patches.ChangeFormFactorPatch.TabletLayoutIn
 import app.morphe.extension.youtube.patches.ChangeHeaderPatch.HeaderLogo;
 import app.morphe.extension.youtube.patches.ChangeStartPagePatch.StartPage;
 import app.morphe.extension.youtube.patches.ExitFullscreenPatch.FullscreenMode;
+import app.morphe.extension.youtube.patches.FullscreenVideoScalePatch.VideoScaleMode;
 import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch.RestoreOldPlayerButtonsAvailability;
 import app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerAnyModernAvailability;
 import app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerHideOverlayButtonsAvailability;
@@ -46,7 +47,6 @@ import app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType;
 import app.morphe.extension.youtube.patches.OpenShortsInRegularPlayerPatch.ShortsPlayerType;
 import app.morphe.extension.youtube.patches.OpenVideosFullscreenHookPatch.OpenFullscreenMode;
 import app.morphe.extension.youtube.patches.PlaybackInFeedsPatch;
-import app.morphe.extension.youtube.patches.FullscreenVideoScalePatch.VideoScaleMode;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.patches.WideSearchBarPatch.SearchbarType;
 import app.morphe.extension.youtube.patches.components.LayoutComponentsFilter.ExpandableCardStyle;
@@ -82,6 +82,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting REMEMBER_SHORTS_QUALITY_LAST_SELECTED = new BooleanSetting("morphe_remember_shorts_quality_last_selected", FALSE);
     public static final BooleanSetting REMEMBER_LIVESTREAM_POSITION = new BooleanSetting("morphe_remember_livestream_position", FALSE);
     public static final BooleanSetting REMEMBER_LIVESTREAM_POSITION_RESUME_WHEN_LIVE = new BooleanSetting("morphe_remember_livestream_position_resume_when_live", FALSE, false, parent(REMEMBER_LIVESTREAM_POSITION));
+    public static final StringSetting REMEMBER_LIVESTREAM_POSITION_TIMES = new StringSetting("morphe_remember_livestream_position_times", "", false, false);
     public static final BooleanSetting REMEMBER_VIDEO_QUALITY_LAST_SELECTED_TOAST = new BooleanSetting("morphe_remember_video_quality_last_selected_toast", TRUE, false, parentsAny(REMEMBER_VIDEO_QUALITY_LAST_SELECTED, REMEMBER_SHORTS_QUALITY_LAST_SELECTED));
 
     // Speed

@@ -1,14 +1,13 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/2753
  *
- * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.patches.youtube.video.livestreams
 
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -19,7 +18,6 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.patches.youtube.video.information.videoTimeHook
-import app.morphe.util.setExtensionIsPatchIncluded
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/playback/livestreams/RememberLivestreamPositionPatch;"
@@ -39,8 +37,6 @@ val rememberLivestreamPositionPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        setExtensionIsPatchIncluded(EXTENSION_CLASS)
-
         PreferenceScreen.VIDEO.addPreferences(
             // Keep the preferences organized together.
             PreferenceCategory(
@@ -48,7 +44,7 @@ val rememberLivestreamPositionPatch = bytecodePatch(
                 titleKey = null,
                 sorting = Sorting.UNSORTED,
                 tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                preferences = mutableSetOf<BasePreference>(
+                preferences = setOf(
                     SwitchPreference("morphe_remember_livestream_position", summary = true),
                     SwitchPreference("morphe_remember_livestream_position_resume_when_live", summary = true)
                 )
