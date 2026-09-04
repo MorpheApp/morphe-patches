@@ -17,6 +17,8 @@ import android.widget.LinearLayout;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.CustomDialog;
+import app.morphe.extension.youtube.patches.components.AiSListFilter;
+import app.morphe.extension.youtube.patches.utils.requests.AiSListRequester;
 import app.morphe.extension.youtube.patches.utils.requests.AiSListSubmitRequest;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -45,14 +47,23 @@ public final class AiSListSubmitDialog {
 
             Utils.runOnBackgroundThread(() -> {
                 String handle = AiSListSubmitRequest.fetchChannelHandle(videoId);
+                if (handle == null) {
+                    Utils.showToastShort(str("morphe_aislist_submit_failed_channel"));
+                    return;
+                }
 
-                Utils.runOnMainThread(() -> {
-                    if (handle == null) {
-                        Utils.showToastShort(str("morphe_aislist_submit_failed_channel"));
-                        return;
-                    }
-                    showConfirmDialog(videoId, handle, username);
-                });
+                AiSListRequester.fetchIfStale();
+                AiSListFilter.ListedIn listedIn = AiSListFilter.listContainingHandle(handle);
+                if (listedIn != null) {
+                    // Each list names itself in a whole sentence, because a language that
+                    // inflects the list name cannot build one from a substituted noun.
+                    Utils.showToastShort(str(listedIn == AiSListFilter.ListedIn.BLOCKLIST
+                            ? "morphe_aislist_submit_already_blocklisted"
+                            : "morphe_aislist_submit_already_warnlisted"));
+                    return;
+                }
+
+                Utils.runOnMainThread(() -> showConfirmDialog(videoId, handle, username));
             });
         } catch (Exception ex) {
             Logger.printException(() -> "show failure", ex);
