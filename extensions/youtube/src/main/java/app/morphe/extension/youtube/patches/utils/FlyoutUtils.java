@@ -136,7 +136,7 @@ public final class FlyoutUtils {
             );
     private static final String aiSListSubmitButtonName = str("morphe_aislist_submit_title");
 
-    private static WeakReference<TextView> customItemTextRef = new WeakReference<>(null);
+    private static final List<WeakReference<TextView>> customItemTextRefs = new ArrayList<>();
 
     private static String currentButtonName = "";
     private static int currentButtonIndex;
@@ -281,6 +281,10 @@ public final class FlyoutUtils {
     private static void addFlyoutElements(Object flyoutPanel) {
         int nextButtonIndex = 0;
 
+        // The items of the menu that is closing are gone, and their typeface is copied
+        // onto whatever this call adds instead.
+        customItemTextRefs.clear();
+
         // TODO: Add playlists compatibility to Morphe's queue.
         if (Settings.QUEUE_ADD_FLYOUT_MENU.get() &&
                 flyoutPlaylistId.isEmpty() &&
@@ -405,16 +409,19 @@ public final class FlyoutUtils {
      * so the custom item only matches them by taking the typeface of a bound item.
      */
     private static void copyListItemTypeface(ViewGroup itemList) {
-        TextView customItemText = customItemTextRef.get();
-        if (customItemText == null || ITEM_TEXT_ID == 0) {
+        if (customItemTextRefs.isEmpty() || ITEM_TEXT_ID == 0) {
             return;
         }
 
         if (itemList.getChildAt(0).findViewById(ITEM_TEXT_ID) instanceof TextView itemText) {
-            // setTypeface always requests a layout, so only call it when the font really differs.
             Typeface itemTypeface = itemText.getTypeface();
-            if (customItemText.getTypeface() != itemTypeface) {
-                customItemText.setTypeface(itemTypeface);
+
+            for (WeakReference<TextView> customItemTextRef : customItemTextRefs) {
+                TextView customItemText = customItemTextRef.get();
+                // setTypeface always requests a layout, so only call it when the font really differs.
+                if (customItemText != null && customItemText.getTypeface() != itemTypeface) {
+                    customItemText.setTypeface(itemTypeface);
+                }
             }
         }
     }
@@ -648,7 +655,7 @@ public final class FlyoutUtils {
         TextView textView = customButton.findViewById(ITEM_TEXT_ID);
         if (textView != null) {
             textView.setText(text);
-            customItemTextRef = new WeakReference<>(textView);
+            customItemTextRefs.add(new WeakReference<>(textView));
         }
 
         ImageView iconView = customButton.findViewById(
