@@ -64,6 +64,12 @@ public class GmsCoreSupportPatch {
     @Nullable
     private static volatile Boolean DONT_KILL_MY_APP_MANUFACTURER_SUPPORTED;
 
+    /**
+     * Minimum supported MicroG version. Installs below this version
+     * get a dialog prompting the user to update.
+     */
+    private static final String MIN_GMS_CORE_VERSION = "7.0.0";
+
     private static String getOriginalPackageName() {
         return null; // Modified during patching.
     }
@@ -168,6 +174,13 @@ public class GmsCoreSupportPatch {
                 return;
             }
 
+            // Check if GmsCore is outdated.
+            if (isMicroGOutdated(context)) {
+                Logger.printInfo(() -> "GmsCore is outdated, prompting the user to update");
+                showOutdatedMicroGDialog(context);
+                return;
+            }
+
             // Check if GmsCore is whitelisted from battery optimizations.
             if (isAndroidAutomotive(context)) {
                 // Ignore Android Automotive devices (Google built-in),
@@ -207,6 +220,72 @@ public class GmsCoreSupportPatch {
         } catch (Exception ex) {
             Logger.printException(() -> "checkGmsCore failure", ex);
         }
+    }
+
+    private static void showOutdatedMicroGDialog(Activity context) {
+        // Use a delay to allow the activity to finish initializing.
+        // Otherwise, if device is in dark mode the dialog is shown with wrong color scheme.
+        Utils.runOnMainThreadDelayed(() -> {
+            Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
+                    context,
+                    str("gms_core_dialog_title"), // Title.
+                    str("gms_core_dialog_outdated_message"), // Message.
+                    null, // No EditText.
+                    str("gms_core_dialog_update_text"), // Update button text.
+                    () -> open(context, getGmsCoreDownload()), // Update action.
+                    () -> { }, // Ignore action: dismiss the dialog.
+                    null, // No Neutral button text.
+                    null, // No Neutral button action.
+                    true // Dismiss dialog when onNeutralClick.
+            );
+
+            Dialog dialog = dialogPair.first;
+            dialog.setCancelable(true);
+            Utils.showDialog(context, dialog);
+        }, 100);
+    }
+
+    /**
+     * @return If the installed MicroG version is older than the minimum supported version.
+     */
+    private static boolean isMicroGOutdated(Context context) {
+        try {
+            String versionName = context.getPackageManager()
+                    .getPackageInfo(GMS_CORE_PACKAGE_NAME, 0).versionName;
+            int[] installed = parseVersion(versionName);
+            int[] minimum = parseVersion(MIN_GMS_CORE_VERSION);
+            if (installed == null || minimum == null) {
+                // Unknown version format, do not nag the user.
+                return false;
+            }
+            for (int i = 0; i < 3; i++) {
+                if (installed[i] != minimum[i]) return installed[i] < minimum[i];
+            }
+            return false;
+        } catch (PackageManager.NameNotFoundException e) {
+            // Already handled by the GmsCore installed check.
+            return false;
+        }
+    }
+
+    /**
+     * Parses a MicroG version name such as "7.1.0-dev.2" into its numeric parts.
+     * Returns null if the version does not start with a parseable number.
+     */
+    @Nullable
+    private static int[] parseVersion(String versionName) {
+        if (versionName == null) return null;
+        String[] parts = versionName.split("-")[0].split("\\.");
+        int[] parsed = new int[3];
+        for (int i = 0; i < Math.min(3, parts.length); i++) {
+            try {
+                parsed[i] = Integer.parseInt(parts[i]);
+            } catch (NumberFormatException e) {
+                if (i == 0) return null;
+                break;
+            }
+        }
+        return parsed;
     }
 
     @SuppressLint("BatteryLife") // Permission is part of GmsCore
