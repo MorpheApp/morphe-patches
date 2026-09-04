@@ -19,6 +19,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
@@ -29,10 +30,14 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 
+import java.io.IOException;
+
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -65,10 +70,11 @@ public class GmsCoreSupportPatch {
     private static volatile Boolean DONT_KILL_MY_APP_MANUFACTURER_SUPPORTED;
 
     /**
-     * Minimum supported MicroG version. Installs below this version
-     * get a dialog prompting the user to update.
+     * Raw URL of the MicroG-RE build file on the main (latest stable) branch.
+     * Used to determine the latest stable MicroG version.
      */
-    private static final String MIN_GMS_CORE_VERSION = "7.0.0";
+    private static final String MICROG_VERSION_RAW_URL =
+            "https://raw.githubusercontent.com/MorpheApp/MicroG-RE/main/build.gradle";
 
     private static String getOriginalPackageName() {
         return null; // Modified during patching.
@@ -175,11 +181,7 @@ public class GmsCoreSupportPatch {
             }
 
             // Check if GmsCore is outdated.
-            if (isMicroGOutdated(context)) {
-                Logger.printInfo(() -> "GmsCore is outdated, prompting the user to update");
-                showOutdatedMicroGDialog(context);
-                return;
-            }
+            checkForMicroGUpdate(context);
 
             // Check if GmsCore is whitelisted from battery optimizations.
             if (isAndroidAutomotive(context)) {
@@ -222,21 +224,25 @@ public class GmsCoreSupportPatch {
         }
     }
 
-    private static void showOutdatedMicroGDialog(Activity context) {
+    private static final String UPDATE_DIALOG_PREFS = "morphe_gms_core_patch";
+    private static final String UPDATE_DIALOG_IGNORED_VERSION_KEY = "morphe_gms_core_update_dialog_ignored_version";
+
+    private static void showOutdatedMicroGDialog(Activity context, String installedVersion, String latestVersion) {
         // Use a delay to allow the activity to finish initializing.
         // Otherwise, if device is in dark mode the dialog is shown with wrong color scheme.
         Utils.runOnMainThreadDelayed(() -> {
             Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                     context,
                     str("gms_core_dialog_title"), // Title.
-                    str("gms_core_dialog_outdated_message"), // Message.
+                    String.format(Locale.ROOT,
+                            str("gms_core_dialog_outdated_message"), installedVersion, latestVersion), // Message.
                     null, // No EditText.
                     str("gms_core_dialog_update_text"), // Update button text.
                     () -> open(context, getGmsCoreDownload()), // Update action.
-                    () -> { }, // Ignore action: dismiss the dialog.
-                    null, // No Neutral button text.
-                    null, // No Neutral button action.
-                    true // Dismiss dialog when onNeutralClick.
+                    null, // No Cancel button.
+                    str("gms_core_dialog_ignore_text"), // Ignore button text.
+                    () -> setIgnoredUpdateVersion(context, latestVersion), // Ignore action: persist and dismiss.
+                    true // Dismiss dialog when the Ignore button is clicked.
             );
 
             Dialog dialog = dialogPair.first;
@@ -246,26 +252,82 @@ public class GmsCoreSupportPatch {
     }
 
     /**
-     * @return If the installed MicroG version is older than the minimum supported version.
+     * Compares the installed MicroG version against the latest stable version fetched from GitHub,
+     * and shows the update dialog when the installed version is older. Runs in the background.
      */
-    private static boolean isMicroGOutdated(Context context) {
+    private static void checkForMicroGUpdate(Activity context) {
+        Utils.runOnBackgroundThread(() -> {
+            try {
+                String installedVersionName = context.getPackageManager()
+                        .getPackageInfo(GMS_CORE_PACKAGE_NAME, 0).versionName;
+                if (installedVersionName == null || parseVersion(installedVersionName) == null) {
+                    // Unknown installed version format, do not nag the user.
+                    return;
+                }
+                String latestVersionName = fetchLatestMicroGVersion();
+                if (latestVersionName == null || compareVersions(installedVersionName, latestVersionName) >= 0) {
+                    // Version could not be fetched, or MicroG is already up to date.
+                    return;
+                }
+                String ignoredVersion = getIgnoredUpdateVersion(context);
+                if (!ignoredVersion.isEmpty() && compareVersions(latestVersionName, ignoredVersion) <= 0) {
+                    // The user already ignored this version (or a newer one), do not ask again.
+                    return;
+                }
+                Logger.printInfo(() -> "MicroG is outdated. Installed: " + installedVersionName
+                        + ", latest: " + latestVersionName);
+                Utils.runOnMainThread(() -> showOutdatedMicroGDialog(context, installedVersionName, latestVersionName));
+            } catch (Exception ex) {
+                Logger.printInfo(() -> "Could not check MicroG update: " + ex);
+            }
+        });
+    }
+
+    /**
+     * @return The latest stable MicroG version name from the main branch of the MicroG-RE repository,
+     *         or null if it could not be fetched or parsed.
+     */
+    @Nullable
+    private static String fetchLatestMicroGVersion() throws IOException {
+        HttpURLConnection connection = Requester.openConnection(MICROG_VERSION_RAW_URL);
+        connection.setConnectTimeout(5000);
+        connection.setReadTimeout(5000);
+        String body;
         try {
-            String versionName = context.getPackageManager()
-                    .getPackageInfo(GMS_CORE_PACKAGE_NAME, 0).versionName;
-            int[] installed = parseVersion(versionName);
-            int[] minimum = parseVersion(MIN_GMS_CORE_VERSION);
-            if (installed == null || minimum == null) {
-                // Unknown version format, do not nag the user.
-                return false;
-            }
-            for (int i = 0; i < 3; i++) {
-                if (installed[i] != minimum[i]) return installed[i] < minimum[i];
-            }
-            return false;
-        } catch (PackageManager.NameNotFoundException e) {
-            // Already handled by the GmsCore installed check.
-            return false;
+            if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) return null;
+            body = Requester.parseString(connection);
+        } finally {
+            connection.disconnect();
         }
+        Matcher matcher = Pattern.compile("(?m)^\\s*def ourGmsVersionName\\s*=\\s*\"([^\"]+)\"").matcher(body);
+        return matcher.find() ? matcher.group(1) : null;
+    }
+
+    /**
+     * @return The latest MicroG version the user chose to ignore, or an empty string if never ignored.
+     */
+    private static String getIgnoredUpdateVersion(Context context) {
+        return context.getSharedPreferences(UPDATE_DIALOG_PREFS, Context.MODE_PRIVATE)
+                .getString(UPDATE_DIALOG_IGNORED_VERSION_KEY, "");
+    }
+
+    private static void setIgnoredUpdateVersion(Context context, String version) {
+        context.getSharedPreferences(UPDATE_DIALOG_PREFS, Context.MODE_PRIVATE)
+                .edit().putString(UPDATE_DIALOG_IGNORED_VERSION_KEY, version).apply();
+    }
+
+    /**
+     * Compares two MicroG version names such as "7.1.0-dev.2".
+     * @return A negative value if a is older than b, zero if equal, a positive value if newer.
+     */
+    private static int compareVersions(String a, String b) {
+        int[] av = parseVersion(a);
+        int[] bv = parseVersion(b);
+        if (av == null || bv == null) return 0;
+        for (int i = 0; i < 3; i++) {
+            if (av[i] != bv[i]) return Integer.compare(av[i], bv[i]);
+        }
+        return 0;
     }
 
     /**
