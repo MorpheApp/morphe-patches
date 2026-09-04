@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.preference.BulletPointPreference;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.youtube.patches.components.AiSListFilter;
 import app.morphe.extension.youtube.patches.utils.requests.AiSListRequester;
@@ -79,9 +80,10 @@ public final class AiSListSubmitDialog {
         Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                 activity,
                 str("morphe_aislist_submit_title"),
-                str("morphe_aislist_submit_dialog_message", handle),
-                null,                                            // No EditText.
-                str("morphe_aislist_submit_dialog_confirm"),     // OK button text.
+                BulletPointPreference.formatIntoBulletPoints(
+                        str("morphe_aislist_submit_dialog_message", handle)),
+                null,                                    // No EditText.
+                str("morphe_aislist_submit_dialog_confirm"), // OK button text.
                 () -> submit(videoId, handle, username),         // OK button action.
                 () -> {},                                        // Cancel button action (dismiss only).
                 null,                                            // No Neutral button text.
