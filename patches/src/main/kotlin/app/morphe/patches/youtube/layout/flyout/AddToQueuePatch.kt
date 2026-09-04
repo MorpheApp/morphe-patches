@@ -60,6 +60,9 @@ private const val EXTENSION_UTILS_CLASS =
 private const val EXTENSION_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/ChannelPageFlyoutFilter;"
 
+private const val EXTENSION_PLAYER_OVERFLOW_MENU_FILTER =
+    "Lapp/morphe/extension/youtube/patches/components/PlayerOverflowMenuFilter;"
+
 private const val EXTENSION_FLYOUT_MENU_VIDEO_ID_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/utils/FlyoutUtils$FlyoutMenuVideoIdInterface;"
 
@@ -344,6 +347,7 @@ val addToQueuePatch = bytecodePatch(
         }
 
         addLithoFilter(EXTENSION_FILTER)
+        addLithoFilter(EXTENSION_PLAYER_OVERFLOW_MENU_FILTER)
         hookElement("$EXTENSION_UTILS_CLASS->onNewElementsLoaded")
         StartVideoInformerFingerprint.method.addInstruction(
             0,

@@ -57,6 +57,7 @@ import app.morphe.extension.youtube.patches.AddToQueuePatch;
 import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
 import app.morphe.extension.youtube.patches.SaveToWatchLaterPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
+import app.morphe.extension.youtube.patches.components.PlayerOverflowMenuFilter;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.EngagementPanel;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -337,19 +338,32 @@ public final class FlyoutUtils {
 
     private static int addWhitelistButton(Object flyoutPanel, WhitelistType type,
                                           Drawable icon, int index) {
-        final String channelId = flyoutChannelId;
+        String channelId = flyoutChannelId;
+        String channelName = flyoutChannelName;
+
         if (channelId.isEmpty()) {
-            return index;
+            // The player menu belongs to the video being played instead of a list item,
+            // so it carries no element the channel could be read from.
+            if (!PlayerOverflowMenuFilter.isMenuRendered()) {
+                return index;
+            }
+            channelId = VideoInformation.getChannelId();
+            channelName = VideoInformation.getChannelName();
+            if (channelId.isEmpty()) {
+                return index;
+            }
         }
-        final String channelName = flyoutChannelName;
-        final boolean isWhitelisted = ChannelWhitelist.isChannelWhitelisted(type, channelId);
+
+        final String whitelistChannelId = channelId;
+        final String whitelistChannelName = channelName;
+        final boolean isWhitelisted = ChannelWhitelist.isChannelWhitelisted(type, whitelistChannelId);
 
         return addFlyoutButton(
                 flyoutPanel,
                 icon,
                 type.getFlyoutTitle(isWhitelisted),
                 v -> {
-                    ChannelWhitelist.toggleChannel(type, channelId, channelName);
+                    ChannelWhitelist.toggleChannel(type, whitelistChannelId, whitelistChannelName);
 
                     dismissFlyout();
                 },
@@ -482,6 +496,11 @@ public final class FlyoutUtils {
                     ? createFlyoutDivider(context)
                     : addFlyoutButton(context, menuInfo.menuContainer(), icon, text, clickListener);
 
+            // Only the element that ends up under the drag handle has to clear it.
+            if (index == 0 && view.getLayoutParams() instanceof ViewGroup.MarginLayoutParams marginParams) {
+                marginParams.topMargin = getDragHandleHeight(menuInfo.menuContainer());
+            }
+
             int fixedIndex = menuInfo.adjustedIndex();
             menuInfo.menuContainer().addView(view, fixedIndex);
 
@@ -582,6 +601,7 @@ public final class FlyoutUtils {
                                 flyoutPlaylistId = "";
                                 flyoutChannelId = "";
                                 flyoutChannelName = "";
+                                PlayerOverflowMenuFilter.resetMenuRendered();
                             },
                             500
                     );
@@ -671,10 +691,6 @@ public final class FlyoutUtils {
             iconView.setImageTintList(ColorStateList.valueOf(textView != null
                     ? textView.getCurrentTextColor()
                     : ThemeUtils.getAppForegroundColor()));
-        }
-
-        if (customButton.getLayoutParams() instanceof ViewGroup.MarginLayoutParams marginParams) {
-            marginParams.topMargin = getDragHandleHeight(parent);
         }
 
         // The layout reserves space for a secondary icon this item does not have.
