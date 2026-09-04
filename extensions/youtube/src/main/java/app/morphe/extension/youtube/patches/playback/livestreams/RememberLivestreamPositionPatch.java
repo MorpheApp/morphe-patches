@@ -11,7 +11,6 @@ import androidx.annotation.Nullable;
 
 import org.json.JSONObject;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -224,7 +223,7 @@ public final class RememberLivestreamPositionPatch {
             }
 
             final long videoLength = VideoInformation.getVideoLength();
-            if (videoLength <= 0 || videoLength < saved.videoLength + LIVESTREAM_DURATION_GROWTH_ON_REOPEN_MS) {
+            if (videoLength <= 0 || videoLength < saved.videoLength() + LIVESTREAM_DURATION_GROWTH_ON_REOPEN_MS) {
                 // The duration has not yet grown beyond the saved value, so it is not yet
                 // confirmed the stream is still ongoing. Keep checking for a while.
                 rescheduleOrGiveUp(generation);
@@ -232,14 +231,14 @@ public final class RememberLivestreamPositionPatch {
             }
 
             // The stream is still ongoing and advanced since it was last watched.
-            final boolean watchedAtLiveEdge = saved.videoLength - saved.position < LIVE_EDGE_THRESHOLD_MS;
+            final boolean watchedAtLiveEdge = saved.videoLength() - saved.position() < LIVE_EDGE_THRESHOLD_MS;
             Logger.printDebug(() -> "CheckRestore id: " + videoId
-                    + " savedPos: " + saved.position + " savedLen: " + saved.videoLength
+                    + " savedPos: " + saved.position() + " savedLen: " + saved.videoLength()
                     + " curLen: " + videoLength + " liveEdge: " + watchedAtLiveEdge);
 
             if (!watchedAtLiveEdge || Settings.REMEMBER_LIVESTREAM_POSITION_RESUME_WHEN_LIVE.get()) {
                 // Delete the saved position only after the seek is confirmed (or given up on).
-                attemptRestoreSeek(generation, videoId, saved.position, 1);
+                attemptRestoreSeek(generation, videoId, saved.position(), 1);
             } else {
                 // Watched at the live edge and resuming is disabled. Consume the position.
                 Logger.printDebug(() -> "Video was watched live, seeking to the play head");
@@ -299,7 +298,7 @@ public final class RememberLivestreamPositionPatch {
         restorePending = false;
     }
 
-    private static synchronized Map<String, SavedPosition> getSavedPositions() {
+    private static Map<String, SavedPosition> getSavedPositions() {
         if (savedPositions == null) {
             savedPositions = loadSavedPositions();
         }
@@ -309,7 +308,7 @@ public final class RememberLivestreamPositionPatch {
     private static Map<String, SavedPosition> loadSavedPositions() {
         String raw = Settings.REMEMBER_LIVESTREAM_POSITION_TIMES.get();
         if (raw.isEmpty()) {
-            return Collections.emptyMap();
+            return new HashMap<>();
         }
 
         try {
@@ -332,7 +331,7 @@ public final class RememberLivestreamPositionPatch {
         } catch (Exception ex) {
             Logger.printException(() -> "Failed to load livestream positions setting", ex);
             Settings.REMEMBER_LIVESTREAM_POSITION_TIMES.resetToDefault();
-            return Collections.emptyMap();
+            return new HashMap<>();
         }
     }
 
@@ -346,9 +345,9 @@ public final class RememberLivestreamPositionPatch {
             for (Map.Entry<String, SavedPosition> entry : savedPositions.entrySet()) {
                 SavedPosition pos = entry.getValue();
                 JSONObject entryJson = new JSONObject();
-                entryJson.put("position", pos.position);
-                entryJson.put("videoLength", pos.videoLength);
-                entryJson.put("timestamp", pos.timestamp);
+                entryJson.put("position", pos.position());
+                entryJson.put("videoLength", pos.videoLength());
+                entryJson.put("timestamp", pos.timestamp());
                 json.put(entry.getKey(), entryJson);
             }
             Settings.REMEMBER_LIVESTREAM_POSITION_TIMES.save(json.toString());
@@ -389,8 +388,8 @@ public final class RememberLivestreamPositionPatch {
             String oldestKey = null;
             long oldestTimestamp = Long.MAX_VALUE;
             for (Map.Entry<String, SavedPosition> entry : map.entrySet()) {
-                if (entry.getValue().timestamp < oldestTimestamp) {
-                    oldestTimestamp = entry.getValue().timestamp;
+                if (entry.getValue().timestamp() < oldestTimestamp) {
+                    oldestTimestamp = entry.getValue().timestamp();
                     oldestKey = entry.getKey();
                 }
             }
