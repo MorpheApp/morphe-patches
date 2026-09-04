@@ -8,9 +8,8 @@
 package app.morphe.patches.youtube.video.livestreams
 
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
-import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -39,15 +38,9 @@ val rememberLivestreamPositionPatch = bytecodePatch(
     execute {
         PreferenceScreen.VIDEO.addPreferences(
             // Keep the preferences organized together.
-            PreferenceCategory(
-                key = "morphe_02_video_livestream_key", // Dummy key to sort after the video quality settings.
-                titleKey = null,
-                sorting = Sorting.UNSORTED,
-                tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                preferences = setOf(
-                    SwitchPreference("morphe_remember_livestream_position", summary = true),
-                    SwitchPreference("morphe_remember_livestream_position_resume_when_live", summary = true)
-                )
+            noTitleUnsortedPreferenceCategory(
+                SwitchPreference("morphe_remember_livestream_position", summary = true),
+                SwitchPreference("morphe_remember_livestream_position_resume_when_live", summary = true)
             )
         )
 
